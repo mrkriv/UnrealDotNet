@@ -3,6 +3,13 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	/// <summary>
+	/// Actor is the base class for an Object that can be placed or spawned in a level.
+	/// Actors may contain a collection of ActorComponents, which can be used to control how actors move, how they are rendered, etc.
+	/// The other main function of an Actor is the replication of properties and function calls across the network during play.
+	/// See: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/
+	/// See: UActorComponent
+	/// </summary>
 	public class AActor : UObject
 	{
 		private readonly IntPtr NativePointer;
@@ -29,8 +36,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// Returns true if this actor has been rendered "recently", with a tolerance in seconds to define what "recent" means.
 		/// e.g.: If a tolerance of 0.1 is used, this function will return true only if the actor was rendered in the last 0.1 seconds of game time.
-		/// @param Tolerance  How many seconds ago the actor last render time can be and still count as having been "recently" rendered.
-		/// @return Whether this actor was recently rendered.
+		/// <param name="Tolerance">How many seconds ago the actor last render time can be and still count as having been "recently" rendered.</param>
+		/// <returns>Whether this actor was recently rendered.</returns>
 		/// </summary>
 		public bool WasRecentlyRendered(float Tolerance)
 		{
@@ -97,7 +104,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// Sets the tick interval of this actor's primary tick function. Will not enable a disabled tick function. Takes effect on next tick.
-		/// @param TickInterval   The rate at which this actor should be ticking
+		/// <param name="TickInterval">The rate at which this actor should be ticking</param>
 		/// </summary>
 		public void SetActorTickInterval(float TickInterval)
 		{
@@ -121,7 +128,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Set this actor's tick functions to be enabled or disabled. Only has an effect if the function is registered
 		/// This only modifies the tick function on actor itself
-		/// @param       bEnabled        Whether it should be enabled or not
+		/// <param name="bEnabled">Whether it should be enabled or not</param>
 		/// </summary>
 		public void SetActorTickEnabled(bool bEnabled)
 		{
@@ -132,7 +139,7 @@ namespace UnrealEngine
 		private static extern bool Call_IsSelectable(IntPtr Self);
 		
 		/// <summary>
-		/// @return        Returns true if this actor can EVER be selected in a level in the editor.  Can be overridden by specific actors to make them unselectable.
+		/// <returns>??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????</returns>
 		/// </summary>
 		public bool IsSelectable()
 		{
@@ -143,7 +150,7 @@ namespace UnrealEngine
 		private static extern bool Call_IsEditable(IntPtr Self);
 		
 		/// <summary>
-		/// @return        Returns true if this actor is allowed to be displayed, selected and manipulated by the editor.
+		/// <returns>Returns true if this actor is allowed to be displayed, selected and manipulated by the editor.</returns>
 		/// </summary>
 		public bool IsEditable()
 		{
@@ -154,8 +161,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsTemporarilyHiddenInEditor(IntPtr Self, bool bIncludeParent);
 		
 		/// <summary>
-		/// @param  bIncludeParent - Whether to recurse up child actor hierarchy or not
-		/// @return Whether or not this actor is hidden in the editor for the duration of the current editor session
+		/// <param name="bIncludeParent">- Whether to recurse up child actor hierarchy or not</param>
+		/// <returns>Whether or not this actor is hidden in the editor for the duration of the current editor session</returns>
 		/// </summary>
 		public bool IsTemporarilyHiddenInEditor(bool bIncludeParent)
 		{
@@ -167,7 +174,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// Sets whether or not this actor is hidden in the editor for the duration of the current editor session
-		/// @param bIsHidden     True if the actor is hidden
+		/// <param name="bIsHidden">True if the actor is hidden</param>
 		/// </summary>
 		public void SetIsTemporarilyHiddenInEditor(bool bIsHidden)
 		{
@@ -190,7 +197,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// Simple accessor to check if the actor is hidden upon editor startup
-		/// @return      true if the actor is hidden upon editor startup; false if it is not
+		/// <returns>true if the actor is hidden upon editor startup; false if it is not</returns>
 		/// </summary>
 		public bool IsHiddenEdAtStartup()
 		{
@@ -214,8 +221,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// Construction script, the place to spawn components and do other setup.
 		/// @note Name used in CreateBlueprint function
-		/// @param       Location        The location.
-		/// @param       Rotation        The rotation.
+		/// <param name="Location">The location.</param>
+		/// <param name="Rotation">The rotation.</param>
 		/// </summary>
 		public void UserConstructionScript()
 		{
@@ -393,7 +400,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// Sets the actor to be hidden in the game
-		/// @param  bNewHidden      Whether or not to hide the actor and all its components
+		/// <param name="bNewHidden">Whether or not to hide the actor and all its components</param>
 		/// </summary>
 		public void SetActorHiddenInGame(bool bNewHidden)
 		{
@@ -427,7 +434,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// Set whether this actor's movement replicates to network clients.
-		/// @param bInReplicateMovement Whether this Actor's movement replicates to clients.
+		/// <param name="bInReplicateMovement">Whether this Actor's movement replicates to clients.</param>
 		/// </summary>
 		public void SetReplicateMovement(bool bInReplicateMovement)
 		{
@@ -441,7 +448,7 @@ namespace UnrealEngine
 		/// Set whether this actor replicates to network clients. When this actor is spawned on the server it will be sent to clients as well.
 		/// Properties flagged for replication will update on clients if they change on the server.
 		/// Internally changes the RemoteRole property and handles the cases where the actor needs to be added to the network actor list.
-		/// @param bInReplicates Whether this Actor replicates to network clients.
+		/// <param name="bInReplicates">Whether this Actor replicates to network clients.</param>
 		/// See: https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Replication/
 		/// </summary>
 		public void SetReplicates(bool bInReplicates)

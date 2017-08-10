@@ -2,7 +2,7 @@
 #include "UObject/UnrealType.h"
 #include "ScriptGeneratorLog.h"
 #include "Misc/Paths.h"
-#include "Regex.h"
+#include <regex>	//#include "Regex.h" wtf?
 
 static const FString CPP_API_NAME = TEXT("UNREALDOTNETRUNTIME");
 static const FString CPP_Function_Prefix = TEXT("Call_");
@@ -45,9 +45,13 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 	CodeCS
 		.AppendLine("using System;")
 		.AppendLine("using System.Runtime.InteropServices;")
-		.AppendLine()	
+		.AppendLine()
 		.AppendLine("namespace %s", *CS_Namespace_Name)
-		.OpenBrace()
+		.OpenBrace();
+
+	ExportSummaryCS(CodeCS, Class->GetToolTipText());
+
+	CodeCS
 		.AppendLine("public class %s : %s", *ClassNameCPP, TEXT("UObject"))	// *GetClassNameCPP(Class->GetOwnerClass())
 		.OpenBrace()
 		.AppendLine("private readonly IntPtr NativePointer;")
@@ -295,9 +299,25 @@ void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FTex
 
 	for (auto& row : Rows)
 	{
-		//if(row.StartsWith(TEXT("@param"))	//<param name="bNewHidden"></param>
-		//if(row.StartsWith(TEXT("@return"))	//<returns></returns>
-		code.AppendLine("/// %s", *row);
+		const std::regex ParamPattern("\\@param\\s+(\\w+)\\s+(.*)");	// \@param\s+(\w+)\s+(.*)
+		const std::regex ReturnPattern("\\@return\\s+(.*)");			// \@return\s+(.*)
+		std::cmatch math;
+
+		UE_LOG(LogUnrealDotNetGenerator, Log, TEXT("%s"), *row);
+
+		if (std::regex_match(TCHAR_TO_UTF8(*row), math, ParamPattern))
+		{
+			code.AppendLine("/// <param name=\"%s\">%s</param>", 
+				UTF8_TO_TCHAR(std::string(math[1].first, math[1].second).c_str()),
+				UTF8_TO_TCHAR(std::string(math[2].first, math[2].second).c_str()));
+		}
+		else if (std::regex_match(TCHAR_TO_UTF8(*row), math, ReturnPattern))
+		{
+			code.AppendLine("/// <returns>%s</returns>", 
+				UTF8_TO_TCHAR(std::string(math[1].first, math[1].second).c_str()));
+		}
+		else
+			code.AppendLine("/// %s", *row);
 	}
 
 	code.AppendLine("/// </summary>");
