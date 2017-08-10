@@ -17,11 +17,15 @@ FGenericScriptCodeGenerator::FGenericScriptCodeGenerator(const FString& RootLoca
 
 void FGenericScriptCodeGenerator::ExportClass(UClass* Class, const FString& SourceHeaderFilename, const FString& GeneratedHeaderFilename, bool bHasChanged)
 {
-	if (!CanExportClass(Class))
+	if (CanExportClass(Class))
 	{
+		AllExportClass.Add({ Class, SourceHeaderFilename, GeneratedHeaderFilename });
 		return;
 	}
-	
+}
+
+void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString& SourceHeaderFilename, const FString& GeneratedHeaderFilename)
+{
 	UE_LOG(LogUnrealDotNetGenerator, Log, TEXT("Exporting class %s"), *Class->GetName());
 
 	const FString ClassNameCPP = GetClassNameCPP(Class);
@@ -105,6 +109,16 @@ bool FGenericScriptCodeGenerator::CanExportFunction(UFunction* Function)
 	{
 		auto typeName = GetPropertyTypeCPP(*It, CPPF_ArgumentOrReturnValue);
 
+		if (typeName != "UObject" && (
+			typeName.StartsWith("U", ESearchCase::CaseSensitive) ||
+			typeName.StartsWith("A", ESearchCase::CaseSensitive)))
+		{
+			if (!AllExportClass.ContainsByPredicate([typeName](ClassExportInfo& info) { return GetClassNameCPP(info.Class) == typeName; }))
+			{
+				return false;
+			}
+		}
+		
 		if (typeName.StartsWith("F", ESearchCase::CaseSensitive))
 		{
 			// Struct dont support
@@ -282,6 +296,11 @@ bool FGenericScriptCodeGenerator::CanExportClass(UClass* Class)
 
 void FGenericScriptCodeGenerator::FinishExport()
 {
+	for (auto& info : AllExportClass)
+	{
+		ExportClass_Real(info.Class, info.SourceHeaderFilename, info.GeneratedHeaderFilename);
+	}
+
 	GenerateMainCpp();
 	RenameTempFiles();
 }

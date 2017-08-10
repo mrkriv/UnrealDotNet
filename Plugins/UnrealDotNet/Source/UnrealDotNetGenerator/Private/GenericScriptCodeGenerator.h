@@ -4,15 +4,24 @@
 #include "ScriptCodeGeneratorBase.h"
 #include "CodeBuilder.h"
 
+struct ClassExportInfo
+{
+	UClass* Class;
+	const FString SourceHeaderFilename;
+	const FString GeneratedHeaderFilename;
+};
+
 class FGenericScriptCodeGenerator : public FScriptCodeGeneratorBase
 {
 protected:
 
 	TArray<FString> AllScriptHeaders;
 	TArray<FString> AllSourceClassHeaders;
-
+	TArray<ClassExportInfo> AllExportClass;
+	
 	void GenerateMainCpp();
-
+	
+	void ExportClass_Real(UClass* Class, const FString& SourceHeaderFilename, const FString& GeneratedHeaderFilename);
 	void ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, FString& DeclareExternFragment);
 	void ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, const FString& DeclareExternFragment);
 

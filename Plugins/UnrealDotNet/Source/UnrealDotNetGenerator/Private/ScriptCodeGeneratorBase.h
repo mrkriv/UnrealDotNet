@@ -34,7 +34,7 @@ protected:
 	/** Re-bases the local path to build path */
 	FString RebaseToBuildPath(const FString& FileName) const;
 	/** Converts a UClass name to C++ class name (with U/A prefix) */
-	FString GetClassNameCPP(UClass* Class);
+	static FString GetClassNameCPP(UClass* Class);
 	/** Gets C++ friendly property type name. */
 	FString GetPropertyTypeCPP(UProperty* Property, uint32 PortFlags = 0);
 

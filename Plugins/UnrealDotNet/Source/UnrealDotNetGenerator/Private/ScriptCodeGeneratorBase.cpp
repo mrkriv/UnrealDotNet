@@ -3,6 +3,7 @@
 #include "ScriptGeneratorLog.h"
 #include "CoreMinimal.h"
 #include "UObject/UnrealType.h"
+#include "Misc/Paths.h"
 
 FScriptCodeGeneratorBase::FScriptCodeGeneratorBase(const FString& InRootLocalPath, const FString& InRootBuildPath, const FString& InOutputDirectory, const FString& InIncludeBase)
 {
