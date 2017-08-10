@@ -1,24 +1,11 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
-namespace UnrealDotNetWrapper
+namespace UnrealEngine
 {
     public class Program
     {
-        public static string Main()
+        public static void Main()
         {
-            try
-            {
-                return "123";
-            }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
         }
     }
 }

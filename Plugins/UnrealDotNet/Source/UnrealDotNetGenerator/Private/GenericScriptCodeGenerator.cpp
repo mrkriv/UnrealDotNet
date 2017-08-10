@@ -2,6 +2,7 @@
 #include "UObject/UnrealType.h"
 #include "ScriptGeneratorLog.h"
 #include "Misc/Paths.h"
+#include "Regex.h"
 
 static const FString CPP_API_NAME = TEXT("UNREALDOTNETRUNTIME");
 static const FString CPP_Function_Prefix = TEXT("Call_");
@@ -99,6 +100,9 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 
 bool FGenericScriptCodeGenerator::CanExportFunction(UFunction* Function)
 {
+	if (!FScriptCodeGeneratorBase::CanExportFunction(Function))
+		return false;
+
 	if (Function->GetFName() == "ReceivePointDamage")
 		return false;
 
@@ -258,6 +262,8 @@ void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FSt
 	code.AppendLine("private static extern %s;", *DeclareExternFragment.Replace(TEXT("INT_PTR"), TEXT("IntPtr")));
 	code.AppendLine();
 
+	ExportSummaryCS(code, Function->GetToolTipText());
+
 	code.AppendLine("public %s %s(%s)", *returnCSType, *Function->GetFName().ToString(), *DeclareFragment);
 	code.OpenBrace();
 
@@ -273,6 +279,28 @@ void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FSt
 	code.CloseBrace();
 	code.AppendLine();
 	code.AppendLine();
+}
+
+void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FText& ToolTipText)
+{
+	if (ToolTipText.IsEmpty())
+		return;
+
+	TArray<FString> Rows;
+
+	FString ToolTipTextString = ToolTipText.ToString().Replace(TEXT("\r"), TEXT(""));
+	ToolTipTextString.ParseIntoArray(Rows, TEXT("\n"), true);
+
+	code.AppendLine("/// <summary>");
+
+	for (auto& row : Rows)
+	{
+		//if(row.StartsWith(TEXT("@param"))	//<param name="bNewHidden"></param>
+		//if(row.StartsWith(TEXT("@return"))	//<returns></returns>
+		code.AppendLine("/// %s", *row);
+	}
+
+	code.AppendLine("/// </summary>");
 }
 
 void FGenericScriptCodeGenerator::ExportPropertyCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex)

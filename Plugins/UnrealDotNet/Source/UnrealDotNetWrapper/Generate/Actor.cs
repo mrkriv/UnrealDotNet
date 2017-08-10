@@ -16,8 +16,8 @@ namespace UnrealEngine
 		private static extern void Call_ForceNetUpdate(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Force actor to be updated to clients
+		/// </summary>
 		public void ForceNetUpdate()
 		{
 			Call_ForceNetUpdate((IntPtr)this);
@@ -27,8 +27,11 @@ namespace UnrealEngine
 		private static extern bool Call_WasRecentlyRendered(IntPtr Self, float Tolerance);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns true if this actor has been rendered "recently", with a tolerance in seconds to define what "recent" means.
+		/// e.g.: If a tolerance of 0.1 is used, this function will return true only if the actor was rendered in the last 0.1 seconds of game time.
+		/// @param Tolerance  How many seconds ago the actor last render time can be and still count as having been "recently" rendered.
+		/// @return Whether this actor was recently rendered.
+		/// </summary>
 		public bool WasRecentlyRendered(float Tolerance)
 		{
 			return Call_WasRecentlyRendered((IntPtr)this, Tolerance);
@@ -38,8 +41,8 @@ namespace UnrealEngine
 		private static extern void Call_K2_OnReset(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Event called when this Actor is reset to its initial state - used when restarting level without reloading.
+		/// </summary>
 		public void K2_OnReset()
 		{
 			Call_K2_OnReset((IntPtr)this);
@@ -49,8 +52,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsChildActor(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns whether this Actor was spawned by a child actor component
+		/// </summary>
 		public bool IsChildActor()
 		{
 			return Call_IsChildActor((IntPtr)this);
@@ -60,8 +63,8 @@ namespace UnrealEngine
 		private static extern void Call_FlushNetDormancy(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Forces dormant actor to replicate but doesn't change NetDormancy state (i.e., they will go dormant again if left dormant)
+		/// </summary>
 		public void FlushNetDormancy()
 		{
 			Call_FlushNetDormancy((IntPtr)this);
@@ -71,8 +74,8 @@ namespace UnrealEngine
 		private static extern void Call_OnRep_ReplicatedMovement(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// ReplicatedMovement struct replication event
+		/// </summary>
 		public void OnRep_ReplicatedMovement()
 		{
 			Call_OnRep_ReplicatedMovement((IntPtr)this);
@@ -82,8 +85,8 @@ namespace UnrealEngine
 		private static extern float Call_GetActorTickInterval(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns the tick interval of this actor's primary tick function
+		/// </summary>
 		public float GetActorTickInterval()
 		{
 			return Call_GetActorTickInterval((IntPtr)this);
@@ -93,8 +96,9 @@ namespace UnrealEngine
 		private static extern void Call_SetActorTickInterval(IntPtr Self, float TickInterval);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Sets the tick interval of this actor's primary tick function. Will not enable a disabled tick function. Takes effect on next tick.
+		/// @param TickInterval   The rate at which this actor should be ticking
+		/// </summary>
 		public void SetActorTickInterval(float TickInterval)
 		{
 			Call_SetActorTickInterval((IntPtr)this, TickInterval);
@@ -104,8 +108,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsActorTickEnabled(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns whether this actor has tick enabled or not
+		/// </summary>
 		public bool IsActorTickEnabled()
 		{
 			return Call_IsActorTickEnabled((IntPtr)this);
@@ -115,8 +119,10 @@ namespace UnrealEngine
 		private static extern void Call_SetActorTickEnabled(IntPtr Self, bool bEnabled);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Set this actor's tick functions to be enabled or disabled. Only has an effect if the function is registered
+		/// This only modifies the tick function on actor itself
+		/// @param       bEnabled        Whether it should be enabled or not
+		/// </summary>
 		public void SetActorTickEnabled(bool bEnabled)
 		{
 			Call_SetActorTickEnabled((IntPtr)this, bEnabled);
@@ -126,8 +132,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsSelectable(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// @return        Returns true if this actor can EVER be selected in a level in the editor.  Can be overridden by specific actors to make them unselectable.
+		/// </summary>
 		public bool IsSelectable()
 		{
 			return Call_IsSelectable((IntPtr)this);
@@ -137,8 +143,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsEditable(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// @return        Returns true if this actor is allowed to be displayed, selected and manipulated by the editor.
+		/// </summary>
 		public bool IsEditable()
 		{
 			return Call_IsEditable((IntPtr)this);
@@ -148,8 +154,9 @@ namespace UnrealEngine
 		private static extern bool Call_IsTemporarilyHiddenInEditor(IntPtr Self, bool bIncludeParent);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// @param  bIncludeParent - Whether to recurse up child actor hierarchy or not
+		/// @return Whether or not this actor is hidden in the editor for the duration of the current editor session
+		/// </summary>
 		public bool IsTemporarilyHiddenInEditor(bool bIncludeParent)
 		{
 			return Call_IsTemporarilyHiddenInEditor((IntPtr)this, bIncludeParent);
@@ -159,8 +166,9 @@ namespace UnrealEngine
 		private static extern void Call_SetIsTemporarilyHiddenInEditor(IntPtr Self, bool bIsHidden);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Sets whether or not this actor is hidden in the editor for the duration of the current editor session
+		/// @param bIsHidden     True if the actor is hidden
+		/// </summary>
 		public void SetIsTemporarilyHiddenInEditor(bool bIsHidden)
 		{
 			Call_SetIsTemporarilyHiddenInEditor((IntPtr)this, bIsHidden);
@@ -170,8 +178,8 @@ namespace UnrealEngine
 		private static extern bool Call_IsHiddenEd(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns true if this actor is hidden in the editor viewports.
+		/// </summary>
 		public bool IsHiddenEd()
 		{
 			return Call_IsHiddenEd((IntPtr)this);
@@ -181,8 +189,9 @@ namespace UnrealEngine
 		private static extern bool Call_IsHiddenEdAtStartup(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Simple accessor to check if the actor is hidden upon editor startup
+		/// @return      true if the actor is hidden upon editor startup; false if it is not
+		/// </summary>
 		public bool IsHiddenEdAtStartup()
 		{
 			return Call_IsHiddenEdAtStartup((IntPtr)this);
@@ -192,8 +201,8 @@ namespace UnrealEngine
 		private static extern void Call_ReceiveDestroyed(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Receive Destroyed
+		/// </summary>
 		public void ReceiveDestroyed()
 		{
 			Call_ReceiveDestroyed((IntPtr)this);
@@ -203,8 +212,11 @@ namespace UnrealEngine
 		private static extern void Call_UserConstructionScript(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Construction script, the place to spawn components and do other setup.
+		/// @note Name used in CreateBlueprint function
+		/// @param       Location        The location.
+		/// @param       Rotation        The rotation.
+		/// </summary>
 		public void UserConstructionScript()
 		{
 			Call_UserConstructionScript((IntPtr)this);
@@ -214,8 +226,8 @@ namespace UnrealEngine
 		private static extern float Call_GetLifeSpan(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Get the remaining lifespan of this actor. If zero is returned the actor lives forever.
+		/// </summary>
 		public float GetLifeSpan()
 		{
 			return Call_GetLifeSpan((IntPtr)this);
@@ -225,8 +237,8 @@ namespace UnrealEngine
 		private static extern void Call_SetLifeSpan(IntPtr Self, float InLifespan);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Set the lifespan of this actor. When it expires the object will be destroyed. If requested lifespan is 0, the timer is cleared and the actor will not be destroyed.
+		/// </summary>
 		public void SetLifeSpan(float InLifespan)
 		{
 			Call_SetLifeSpan((IntPtr)this, InLifespan);
@@ -236,8 +248,8 @@ namespace UnrealEngine
 		private static extern void Call_ReceiveActorEndCursorOver(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Event when this actor has the mouse moved off of it with the clickable interface.
+		/// </summary>
 		public void ReceiveActorEndCursorOver()
 		{
 			Call_ReceiveActorEndCursorOver((IntPtr)this);
@@ -247,8 +259,8 @@ namespace UnrealEngine
 		private static extern void Call_ReceiveActorBeginCursorOver(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Event when this actor has the mouse moved over it with the clickable interface.
+		/// </summary>
 		public void ReceiveActorBeginCursorOver()
 		{
 			Call_ReceiveActorBeginCursorOver((IntPtr)this);
@@ -258,8 +270,8 @@ namespace UnrealEngine
 		private static extern void Call_ReceiveTick(IntPtr Self, float DeltaSeconds);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Event called every frame
+		/// </summary>
 		public void ReceiveTick(float DeltaSeconds)
 		{
 			Call_ReceiveTick((IntPtr)this, DeltaSeconds);
@@ -269,30 +281,19 @@ namespace UnrealEngine
 		private static extern bool Call_IsActorBeingDestroyed(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Is Actor Being Destroyed
+		/// </summary>
 		public bool IsActorBeingDestroyed()
 		{
 			return Call_IsActorBeingDestroyed((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_ReceiveBeginPlay(IntPtr Self);
-		
-		/// <summary>
-		/// 
-		/// <summary>
-		public void ReceiveBeginPlay()
-		{
-			Call_ReceiveBeginPlay((IntPtr)this);
-		}
-		
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		private static extern float Call_GetGameTimeSinceCreation(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// The number of seconds (in game time) since this Actor was created, relative to Get Game Time In Seconds.
+		/// </summary>
 		public float GetGameTimeSinceCreation()
 		{
 			return Call_GetGameTimeSinceCreation((IntPtr)this);
@@ -302,8 +303,8 @@ namespace UnrealEngine
 		private static extern void Call_SetTickableWhenPaused(IntPtr Self, bool bTickableWhenPaused);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Sets whether this actor can tick when paused.
+		/// </summary>
 		public void SetTickableWhenPaused(bool bTickableWhenPaused)
 		{
 			Call_SetTickableWhenPaused((IntPtr)this, bTickableWhenPaused);
@@ -313,8 +314,8 @@ namespace UnrealEngine
 		private static extern bool Call_GetTickableWhenPaused(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Gets whether this actor can tick when paused.
+		/// </summary>
 		public bool GetTickableWhenPaused()
 		{
 			return Call_GetTickableWhenPaused((IntPtr)this);
@@ -324,8 +325,9 @@ namespace UnrealEngine
 		private static extern float Call_GetActorTimeDilation(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Get CustomTimeDilation - this can be used for input control or speed control for slomo.
+		/// We don't want to scale input globally because input can be used for UI, which do not care for TimeDilation.
+		/// </summary>
 		public float GetActorTimeDilation()
 		{
 			return Call_GetActorTimeDilation((IntPtr)this);
@@ -335,8 +337,8 @@ namespace UnrealEngine
 		private static extern void Call_DetachRootComponentFromParent(IntPtr Self, bool bMaintainWorldPosition);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Detach Root Component from Parent
+		/// </summary>
 		public void DetachRootComponentFromParent(bool bMaintainWorldPosition)
 		{
 			Call_DetachRootComponentFromParent((IntPtr)this, bMaintainWorldPosition);
@@ -346,8 +348,8 @@ namespace UnrealEngine
 		private static extern bool Call_HasAuthority(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Returns whether this actor has network authority
+		/// </summary>
 		public bool HasAuthority()
 		{
 			return Call_HasAuthority((IntPtr)this);
@@ -357,8 +359,8 @@ namespace UnrealEngine
 		private static extern void Call_K2_DestroyActor(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Destroy the actor
+		/// </summary>
 		public void K2_DestroyActor()
 		{
 			Call_K2_DestroyActor((IntPtr)this);
@@ -368,8 +370,8 @@ namespace UnrealEngine
 		private static extern bool Call_GetActorEnableCollision(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Get current state of collision for the whole actor
+		/// </summary>
 		public bool GetActorEnableCollision()
 		{
 			return Call_GetActorEnableCollision((IntPtr)this);
@@ -379,8 +381,8 @@ namespace UnrealEngine
 		private static extern void Call_SetActorEnableCollision(IntPtr Self, bool bNewActorEnableCollision);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Allows enabling/disabling collision for the whole actor
+		/// </summary>
 		public void SetActorEnableCollision(bool bNewActorEnableCollision)
 		{
 			Call_SetActorEnableCollision((IntPtr)this, bNewActorEnableCollision);
@@ -390,8 +392,9 @@ namespace UnrealEngine
 		private static extern void Call_SetActorHiddenInGame(IntPtr Self, bool bNewHidden);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Sets the actor to be hidden in the game
+		/// @param  bNewHidden      Whether or not to hide the actor and all its components
+		/// </summary>
 		public void SetActorHiddenInGame(bool bNewHidden)
 		{
 			Call_SetActorHiddenInGame((IntPtr)this, bNewHidden);
@@ -401,8 +404,8 @@ namespace UnrealEngine
 		private static extern void Call_OnRep_Instigator(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Called on clients when Instigator is replicated.
+		/// </summary>
 		public void OnRep_Instigator()
 		{
 			Call_OnRep_Instigator((IntPtr)this);
@@ -412,8 +415,8 @@ namespace UnrealEngine
 		private static extern void Call_OnRep_AttachmentReplication(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Called on client when updated AttachmentReplication value is received for this actor.
+		/// </summary>
 		public void OnRep_AttachmentReplication()
 		{
 			Call_OnRep_AttachmentReplication((IntPtr)this);
@@ -423,8 +426,9 @@ namespace UnrealEngine
 		private static extern void Call_SetReplicateMovement(IntPtr Self, bool bInReplicateMovement);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Set whether this actor's movement replicates to network clients.
+		/// @param bInReplicateMovement Whether this Actor's movement replicates to clients.
+		/// </summary>
 		public void SetReplicateMovement(bool bInReplicateMovement)
 		{
 			Call_SetReplicateMovement((IntPtr)this, bInReplicateMovement);
@@ -434,30 +438,23 @@ namespace UnrealEngine
 		private static extern void Call_SetReplicates(IntPtr Self, bool bInReplicates);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Set whether this actor replicates to network clients. When this actor is spawned on the server it will be sent to clients as well.
+		/// Properties flagged for replication will update on clients if they change on the server.
+		/// Internally changes the RemoteRole property and handles the cases where the actor needs to be added to the network actor list.
+		/// @param bInReplicates Whether this Actor replicates to network clients.
+		/// See: https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Replication/
+		/// </summary>
 		public void SetReplicates(bool bInReplicates)
 		{
 			Call_SetReplicates((IntPtr)this, bInReplicates);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_OnRep_Owner(IntPtr Self);
-		
-		/// <summary>
-		/// 
-		/// <summary>
-		public void OnRep_Owner()
-		{
-			Call_OnRep_Owner((IntPtr)this);
-		}
-		
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		private static extern void Call_TearOff(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Networking - Server - TearOff this actor to stop replication to clients. Will set bTearOff to true.
+		/// </summary>
 		public void TearOff()
 		{
 			Call_TearOff((IntPtr)this);
@@ -467,8 +464,8 @@ namespace UnrealEngine
 		private static extern void Call_OnRep_ReplicateMovement(IntPtr Self);
 		
 		/// <summary>
-		/// 
-		/// <summary>
+		/// Called on client when updated bReplicateMovement value is received for this actor.
+		/// </summary>
 		public void OnRep_ReplicateMovement()
 		{
 			Call_OnRep_ReplicateMovement((IntPtr)this);
