@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "UnrealDotNetWrapper": {
+      "commandName": "Project"
+    }
+  }
+}

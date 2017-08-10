@@ -1,0 +1,16 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{3644993B-43B5-E2D9-FFEC-3E9B88893335}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "DotUnrealExample",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	]
+}

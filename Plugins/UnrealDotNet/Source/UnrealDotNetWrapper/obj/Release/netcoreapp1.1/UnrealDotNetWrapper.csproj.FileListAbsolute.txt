@@ -1,0 +1,9 @@
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\bin\Release\netcoreapp1.1\UnrealDotNetWrapper.deps.json
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\bin\Release\netcoreapp1.1\UnrealDotNetWrapper.runtimeconfig.json
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\bin\Release\netcoreapp1.1\UnrealDotNetWrapper.runtimeconfig.dev.json
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\bin\Release\netcoreapp1.1\UnrealDotNetWrapper.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\bin\Release\netcoreapp1.1\UnrealDotNetWrapper.pdb
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\obj\Release\netcoreapp1.1\UnrealDotNetWrapper.csprojResolveAssemblyReference.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\obj\Release\netcoreapp1.1\UnrealDotNetWrapper.AssemblyInfo.cs
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\obj\Release\netcoreapp1.1\UnrealDotNetWrapper.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\UnrealDotNetWrapper\obj\Release\netcoreapp1.1\UnrealDotNetWrapper.pdb
