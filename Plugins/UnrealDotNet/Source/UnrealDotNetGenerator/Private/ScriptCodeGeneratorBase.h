@@ -44,9 +44,9 @@ protected:
 	/** Returns true if the specified class can be exported */
 	virtual bool CanExportClass(UClass* Class);
 	/** Returns true if the specified function can be exported */
-	virtual bool CanExportFunction(const FString& ClassNameCPP, UClass* Class, UFunction* Function);
+	virtual bool CanExportFunction(UFunction* Function);
 	/** Returns true if the specified property can be exported */
-	virtual bool CanExportProperty(const FString& ClassNameCPP, UClass* Class, UProperty* Property);
+	virtual bool CanExportProperty(UProperty* Property);
 
 public:
 

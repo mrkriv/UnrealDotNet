@@ -9,14 +9,11 @@ namespace UnrealDotNetWrapper
 {
     public class Program
     {
-        [DllImport("UE4Editor-UnrealDotNetRuntime")]
-        public static extern bool Call_WasRecentlyRendered();
-
         public static string Main()
         {
             try
             {
-                return Call_WasRecentlyRendered() ? "1" : "0";
+                return "123";
             }
             catch (Exception e)
             {

@@ -6,12 +6,14 @@
     <ApplicationIcon />
     <OutputTypeEx>library</OutputTypeEx>
     <StartupObject />
+    <PackageId>UnrealDotNetWrapper</PackageId>
+    <RootNamespace>UnrealEngine</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\..\Binaries\Win64\</OutputPath>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="1.1.2" />
   </ItemGroup>

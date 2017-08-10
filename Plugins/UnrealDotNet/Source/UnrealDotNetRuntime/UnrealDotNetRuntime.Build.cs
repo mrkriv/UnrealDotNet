@@ -49,8 +49,6 @@ public class UnrealDotNetRuntime : ModuleRules
                 "GeometryCache",
                 "Niagara",
                 "MediaAssets",
-                "Paper2D",
-                "OnlineSubsystemUtils",
                 "Projects"
             }
         );

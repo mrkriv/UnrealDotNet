@@ -8,15 +8,13 @@ class FGenericScriptCodeGenerator : public FScriptCodeGeneratorBase
 {
 protected:
 
-	TArray<FString> FunctionMapCode;
 	TArray<FString> AllScriptHeaders;
 	TArray<FString> AllSourceClassHeaders;
 
-	void GeneratedDotnetMap();
 	void GenerateMainCpp();
 
-	void ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function);
-	void ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function);
+	void ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, FString& DeclareExternFragment);
+	void ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, const FString& DeclareExternFragment);
 
 	void ExportPropertyCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex);
 	void ExportPropertyCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex);
@@ -28,6 +26,7 @@ protected:
 	FString GenerateReturnValueHandler(const FString& ClassNameCPP, UClass* Class, UFunction* Function, UProperty* ReturnValue);
 
 	virtual bool CanExportClass(UClass* Class) override;
+	virtual bool CanExportFunction(UFunction* Function) override;
 
 public:
 

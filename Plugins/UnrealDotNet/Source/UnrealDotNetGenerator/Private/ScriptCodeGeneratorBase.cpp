@@ -150,7 +150,7 @@ bool FScriptCodeGeneratorBase::CanExportClass(UClass* Class)
 	return bCanExport;
 }
 
-bool FScriptCodeGeneratorBase::CanExportFunction(const FString& ClassNameCPP, UClass* Class, UFunction* Function)
+bool FScriptCodeGeneratorBase::CanExportFunction(UFunction* Function)
 {
 	if ((Function->FunctionFlags & FUNC_Delegate))
 	{
@@ -179,14 +179,8 @@ bool FScriptCodeGeneratorBase::CanExportFunction(const FString& ClassNameCPP, UC
 	return true;
 }
 
-bool FScriptCodeGeneratorBase::CanExportProperty(const FString& ClassNameCPP, UClass* Class, UProperty* Property)
+bool FScriptCodeGeneratorBase::CanExportProperty(UProperty* Property)
 {
-	// Property must be DLL exported
-	if (!(Class->ClassFlags & CLASS_RequiredAPI))
-	{
-		return false;
-	}
-
 	// Only public, editable properties can be exported
 	if (!Property->HasAnyFlags(RF_Public) ||
 		(Property->PropertyFlags & CPF_Protected) ||

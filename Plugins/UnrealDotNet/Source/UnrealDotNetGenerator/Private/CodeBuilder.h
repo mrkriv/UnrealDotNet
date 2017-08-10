@@ -22,6 +22,14 @@ public:
 		return *this;
 	}
 
+	FORCEINLINE FCodeBuilder& AppendIF(const bool IsNeedAppend, const FString& text)
+	{
+		if(IsNeedAppend)
+			Report += text;
+
+		return *this;
+	}
+
 	FORCEINLINE FCodeBuilder& Append(const FString& text)
 	{
 		Report += text;
@@ -36,10 +44,28 @@ public:
 	}
 
 	template<typename... ArgTypes>
+	FORCEINLINE FCodeBuilder& AppendIF(const bool IsNeedAppend, const FString& text, ArgTypes... args)
+	{
+		if (IsNeedAppend)
+			Report += FString::Printf(*text, args...);
+
+		return *this;
+	}
+
+	template<typename... ArgTypes>
 	FORCEINLINE FCodeBuilder& AppendLine(const FString& text, ArgTypes... args)
 	{
 		Report += FString::Printf(*text, args...);
 		return AppendLine();
+	}
+
+	template<typename... ArgTypes>
+	FORCEINLINE FCodeBuilder& AppendLineIF(const bool IsNeedAppend, const FString& text, ArgTypes... args)
+	{
+		if (IsNeedAppend)
+			AppendLine(text, args...);
+
+		return *this;
 	}
 
 	FORCEINLINE FCodeBuilder& AppendLine(const FString& text)
@@ -51,6 +77,14 @@ public:
 	FORCEINLINE FCodeBuilder& AppendLine(const TCHAR* Line)
 	{
 		AppendLine(FString(Line));
+		return *this;
+	}
+
+	FORCEINLINE FCodeBuilder& AppendLineIF(const bool IsNeedAppend, const FString& text)
+	{
+		if (IsNeedAppend)
+			AppendLine(text);
+
 		return *this;
 	}
 
@@ -67,7 +101,7 @@ public:
 
 	FORCEINLINE FCodeBuilder& CloseBrace()
 	{
-		return Untab().AppendLine().AppendLine("}");
+		return Untab().AppendLine().Append("}");
 	}
 
 	FORCEINLINE void Clear()
@@ -88,5 +122,11 @@ public:
 		return *this;
 	}
 
+	FORCEINLINE const TCHAR* operator*()
+	{
+		return *Report;
+	}
+
+	FORCEINLINE bool IsEmpty() const { return Report.IsEmpty(); }
 	FORCEINLINE const FString& ToString() const { return Report; }
 };
