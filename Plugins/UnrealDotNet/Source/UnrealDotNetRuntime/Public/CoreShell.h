@@ -18,8 +18,11 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 
 public:
 
-	UFUNCTION(BlueprintCallable, Category = UnrealDotNet)
-	static int RunTest();
+	UFUNCTION(BlueprintCallable, Category = DotNet)
+	static void ReloadDotnetHost();
+
+	UFUNCTION(BlueprintCallable, Category = DotNet)
+	static FString RunTest(AActor* Actor);
 
 	static void Initialize();
 	static void Uninitialize();

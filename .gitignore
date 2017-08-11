@@ -78,3 +78,6 @@ Plugins/*/Intermediate/
 Plugins/*/Binaries/
 *.pdb
 .vscode/
+Plugins/UnrealDotNet/Source/GameLogic/obj/
+Plugins/UnrealDotNet/Source/UnrealDotNetWrapper/obj/
+Plugins/UnrealDotNet/Resources/Dotnet/

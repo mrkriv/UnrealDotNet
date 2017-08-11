@@ -14,7 +14,7 @@ namespace UnrealEngine
 	{
 		private readonly IntPtr NativePointer;
 		
-		internal AActor(IntPtr Adress)
+		public AActor(IntPtr Adress)
 		{
 			NativePointer = Adress;
 		}

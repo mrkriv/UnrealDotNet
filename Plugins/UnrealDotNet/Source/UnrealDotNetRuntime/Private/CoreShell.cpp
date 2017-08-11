@@ -19,19 +19,17 @@ DEFINE_LOG_CATEGORY(CoreShell);
 ICLRRuntimeHost2* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;
 
-static const FString coreCLRDirectory = L"Resources\\Dotnet\\1.1.2\\";
-static const FString coreCLRDll = L"coreclr.dll";
-static const FString runtimeNamespace = L"UnrealRuntime";
-static const FString tpaExtensions[] =
-{
-	L"*.dll"
-	L"*.exe"
-};
+static const FString PluginName = "UnrealDotNet";
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\1.1.2\\");
+static const FString DotnetLib_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64\\netcoreapp1.1\\");
+static const FString CoreCLR_Name = "coreclr.dll";
+static const FString Dotnet_Namespace = "GameLogic";
+static const FString TpaExtensions[] = { "*.dll", "*.exe" };
 
 void UCoreShell::Initialize()
 {
-	Host = CreateHost(coreCLRDirectory / coreCLRDll);
-	DomainID = CreateDomain(Host, "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Binaries\\Win64\\netcoreapp1.1\\");
+	Host = CreateHost(CoreCLR_Path / CoreCLR_Name);
+	DomainID = CreateDomain(Host, DotnetLib_Path);
 }
 
 ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
@@ -63,7 +61,7 @@ ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
 			STARTUP_FLAGS::STARTUP_SINGLE_APPDOMAIN |					// All code executes in the default AppDomain
 																		// (required to use the runtimeHost->ExecuteAssembly helper function)
 			STARTUP_FLAGS::STARTUP_LOADER_OPTIMIZATION_SINGLE_DOMAIN	// Prevents domain-neutral loading
-		)
+			)
 	);
 
 	hr = Host->Start();
@@ -88,9 +86,9 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppP
 
 	FString trustedPlatformAssemblies;
 
-	for (int i = 0; i < _countof(tpaExtensions); i++)
+	for (int i = 0; i < _countof(TpaExtensions); i++)
 	{
-		FString searchMask = coreCLRDirectory + tpaExtensions[i];
+		FString searchMask = CoreCLR_Path + TpaExtensions[i];
 
 		WIN32_FIND_DATAW findData;
 		HANDLE fileHandle = FindFirstFileW(*searchMask, &findData);
@@ -99,7 +97,7 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppP
 		{
 			do
 			{
-				FString file = coreCLRDirectory + FString(findData.cFileName);
+				FString file = CoreCLR_Path + FString(findData.cFileName);
 				trustedPlatformAssemblies += file + L";";
 			} while (FindNextFileW(fileHandle, &findData));
 
@@ -109,7 +107,7 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppP
 
 	FString appPaths = targetAppPath;
 	FString appNiPaths = targetAppPath + L";" + targetAppPath + L"NI";
-	FString nativeDllSearchDirectories = appPaths + L";" + coreCLRDirectory + L";";
+	FString nativeDllSearchDirectories = appPaths + L";" + CoreCLR_Path + L";";
 	FString platformResourceRoots = appPaths;
 	FString appDomainCompatSwitch = L"UseLatestBehaviorWhenTFMNotSpecified";
 
@@ -165,22 +163,26 @@ void UCoreShell::Uninitialize()
 	Host->Release();
 }
 
-typedef int(__stdcall InvokeFp)(INT_PTR method, INT_PTR obj);
-
-int UCoreShell::RunTest()
+void UCoreShell::ReloadDotnetHost()
 {
-	typedef char*(__stdcall InvokeFp)();
+	Host->UnloadAppDomain(DomainID, true);
+	DomainID = CreateDomain(Host, DotnetLib_Path);
+}
+
+FString UCoreShell::RunTest(AActor* Actor)
+{
+	typedef char*(__stdcall InvokeFp)(AActor*);
 
 	InvokeFp* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate
 	(
-		DomainID, 
-		L"UnrealRuntime, Version=1.0.0.0, Culture=neutral",
-		L"UnrealRuntime.Program", L"Main",
+		DomainID,
+		L"GameLogic, Version=1.0.0.0, Culture=neutral",
+		L"GameLogic.MyManageActor", L"TestManageCall",
 		(INT_PTR*)&manageMethod
 	);
 
-	FString str = manageMethod();
-
-	return 0;
+	FString str = manageMethod(Actor);
+	return str;
+	//return FString(ANSI_TO_TCHAR(result));
 }
