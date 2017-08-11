@@ -3,6 +3,12 @@
 #include "Misc/Paths.h"
 #include "ExportForDotnetLib.inl"
 
+//             |
+//             |
+//             |
+// Поный треш \ /
+//             `
+
 #pragma warning(push)
 #pragma warning(disable:4005)
 #pragma warning(disable:4668)
@@ -16,6 +22,7 @@
 #pragma warning(pop)
 
 DEFINE_LOG_CATEGORY(CoreShell);
+DEFINE_LOG_CATEGORY(NetCoreRuntime);
 
 ICLRRuntimeHost2* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;
@@ -27,6 +34,10 @@ static const FString CoreCLR_Name = "coreclr.dll";
 static const FString Dotnet_Namespace = "GameLogic";
 static const FString Dotnet_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
 static const FString TpaExtensions[] = { "*.dll", "*.exe" };
+
+extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_E(char* Message) { UE_LOG(NetCoreRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_W(char* Message) { UE_LOG(NetCoreRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_L(char* Message) { UE_LOG(NetCoreRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 
 void UCoreShell::Initialize()
 {
@@ -171,19 +182,34 @@ void UCoreShell::ReloadDotnetHost()
 	DomainID = CreateDomain(Host, DotnetLib_Path);
 }
 
-FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument)
+void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method)
 {
-	typedef char*(__stdcall InvokeFp)(char*);
-
-	InvokeFp* manageMethod = NULL;
+	void* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate
 	(
 		DomainID,
-		std::wstring(*Dotnet_Assemble).c_str(),
+		std::wstring(*Assemble).c_str(),
 		std::wstring(*FullClassName).c_str(),
 		std::wstring(*Method).c_str(),
 		(INT_PTR*)&manageMethod
 	);
+
+	if (manageMethod == NULL)
+	{
+		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %"), *Method, *FullClassName, *Assemble);
+	}
+
+	return manageMethod;
+}
+
+FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument)
+{
+	typedef char*(__stdcall InvokeFp)(char*);
+
+	InvokeFp* manageMethod = (InvokeFp*)GetMethodPtr(Dotnet_Assemble, FullClassName, Method);
+
+	if (manageMethod == NULL)
+		return "";
 
 	auto str = manageMethod(TCHAR_TO_UTF8(*Argument));
 	return FString(UTF8_TO_TCHAR(str));

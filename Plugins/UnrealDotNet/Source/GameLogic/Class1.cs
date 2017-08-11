@@ -9,11 +9,9 @@ namespace GameLogic
         {
         }
 
-        public static string TestManageCall(IntPtr Adress)
+        public void Tick(float DeltaTime)
         {
-            var actor = new AActor(Adress);
-
-            return "It work!";
+            ULog("Hey!");
         }
     }
 }

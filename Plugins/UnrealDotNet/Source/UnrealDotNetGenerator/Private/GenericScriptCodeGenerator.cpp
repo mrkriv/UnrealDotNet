@@ -59,7 +59,7 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 		.OpenBrace()
 		.AppendLine("private readonly IntPtr NativePointer;")
 		.AppendLine()
-		.AppendLine("public %s(IntPtr Adress)", *ClassNameCPP)
+		.AppendLine("public partial %s(IntPtr Adress)", *ClassNameCPP)
 		.OpenBrace()
 		.Append("NativePointer = Adress;")
 		.CloseBrace()
