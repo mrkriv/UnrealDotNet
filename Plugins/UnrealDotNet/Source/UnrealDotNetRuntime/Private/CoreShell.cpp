@@ -1,39 +1,37 @@
 #include "UnrealDotNet.h"
 #include "CoreShell.h"
+#include "Misc/Paths.h"
 #include "ExportForDotnetLib.inl"
-#include <windows.h>
 
-#pragma optimize("", off)
+#pragma warning(push)
+#pragma warning(disable:4005)
+#pragma warning(disable:4668)
+
+#include "inc/mscoree.h"
+#include "Windows/WindowsSystemIncludes.h"
+#include "Windows/WIndowsPlatform.h"
+#include "Windows/WindowsPlatformProcess.h"
+
+#pragma warning(pop)
 
 DEFINE_LOG_CATEGORY(CoreShell);
 
 ICLRRuntimeHost2* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;
 
-static const FString coreCLRDirectory = L"C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\1.1.2\\";
+static const FString coreCLRDirectory = L"Resources\\Dotnet\\1.1.2\\";
 static const FString coreCLRDll = L"coreclr.dll";
+static const FString runtimeNamespace = L"UnrealRuntime";
 static const FString tpaExtensions[] =
 {
 	L"*.dll"
+	L"*.exe"
 };
 
 void UCoreShell::Initialize()
 {
 	Host = CreateHost(coreCLRDirectory / coreCLRDll);
 	DomainID = CreateDomain(Host, "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Binaries\\Win64\\netcoreapp1.1\\");
-
-	typedef char*(__stdcall InvokeFp)();
-
-	InvokeFp* manageMethod = NULL;
-	HRESULT hr = Host->CreateDelegate
-	(
-		DomainID, 
-		L"UnrealDotNetWrapper, Version=1.0.0.0, Culture=neutral",
-		L"UnrealDotNetWrapper.Program", L"Main",
-		(INT_PTR*)&manageMethod
-	);
-
-	FString str = manageMethod();
 }
 
 ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
@@ -47,7 +45,7 @@ ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
 	}
 
 	ICLRRuntimeHost2* Host;
-	auto pfnGetCLRRuntimeHost = (FnGetCLRRuntimeHost)::GetProcAddress(coreCLR, "GetCLRRuntimeHost");
+	auto pfnGetCLRRuntimeHost = reinterpret_cast<FnGetCLRRuntimeHost>((INT_PTR)::GetProcAddress(coreCLR, "GetCLRRuntimeHost"));
 
 	if (!pfnGetCLRRuntimeHost)
 	{
@@ -171,19 +169,18 @@ typedef int(__stdcall InvokeFp)(INT_PTR method, INT_PTR obj);
 
 int UCoreShell::RunTest()
 {
+	typedef char*(__stdcall InvokeFp)();
+
 	InvokeFp* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate
 	(
-		DomainID, L"Managed, Version=1.0.0.0, Culture=neutral",
-		L"Managed.Program", L"Invoke",
+		DomainID, 
+		L"UnrealRuntime, Version=1.0.0.0, Culture=neutral",
+		L"UnrealRuntime.Program", L"Main",
 		(INT_PTR*)&manageMethod
 	);
 
-	//auto impl = NewObject<UCoreShell>();
-	//auto m = &UCoreShell::Calc;
+	FString str = manageMethod();
 
-	//return manageMethod(*(INT_PTR*)&m, (INT_PTR)impl);
 	return 0;
 }
-
-#pragma optimize("", on)

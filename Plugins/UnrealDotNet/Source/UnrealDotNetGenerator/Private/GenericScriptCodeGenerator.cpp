@@ -39,6 +39,9 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 		.AppendLine("#pragma once")
 		.AppendLine("#include \"%s\"", *RebaseToBuildPath(SourceHeaderFilename))
 		.AppendLine()
+		.AppendLine("#pragma warning(push)")
+		.AppendLine("#pragma warning(disable:4996)")
+		.AppendLine()
 		.AppendLine("extern \"C\"")
 		.OpenBrace();
 
@@ -83,7 +86,10 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 		return;
 	}
 
-	CodeCPP.CloseBrace();
+	CodeCPP
+		.CloseBrace()
+		.AppendLine()
+		.AppendLine("#pragma warning(pop)");
 
 	CodeCS
 		.AppendLine("public static explicit operator IntPtr(%s Self)", *ClassNameCPP)

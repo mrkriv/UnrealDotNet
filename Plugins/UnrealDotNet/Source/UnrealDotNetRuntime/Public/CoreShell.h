@@ -1,6 +1,6 @@
 #pragma once
 
-#include "inc/mscoree.h"
+#include "Windows/MinimalWindowsApi.h"
 #include "CoreShell.generated.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(CoreShell, Log, All);
@@ -10,11 +10,11 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 {
 	GENERATED_BODY()
 
-	static ICLRRuntimeHost2* Host;
+	static struct ICLRRuntimeHost2* Host;
 	static DWORD DomainID;
 
-	static ICLRRuntimeHost2* CreateHost(const FString& coreCLRPath);
-	static DWORD CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppPath);
+	static struct ICLRRuntimeHost2* CreateHost(const FString& coreCLRPath);
+	static DWORD CreateDomain(struct ICLRRuntimeHost2* Host, const FString& targetAppPath);
 
 public:
 
