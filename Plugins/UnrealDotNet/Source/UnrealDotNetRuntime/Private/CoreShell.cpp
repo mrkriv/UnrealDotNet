@@ -11,6 +11,7 @@
 #include "Windows/WindowsSystemIncludes.h"
 #include "Windows/WIndowsPlatform.h"
 #include "Windows/WindowsPlatformProcess.h"
+#include <string>
 
 #pragma warning(pop)
 
@@ -24,6 +25,7 @@ static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::Ga
 static const FString DotnetLib_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64\\netcoreapp1.1\\");
 static const FString CoreCLR_Name = "coreclr.dll";
 static const FString Dotnet_Namespace = "GameLogic";
+static const FString Dotnet_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
 static const FString TpaExtensions[] = { "*.dll", "*.exe" };
 
 void UCoreShell::Initialize()
@@ -169,20 +171,20 @@ void UCoreShell::ReloadDotnetHost()
 	DomainID = CreateDomain(Host, DotnetLib_Path);
 }
 
-FString UCoreShell::RunTest(AActor* Actor)
+FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument)
 {
-	typedef char*(__stdcall InvokeFp)(AActor*);
+	typedef char*(__stdcall InvokeFp)(char*);
 
 	InvokeFp* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate
 	(
 		DomainID,
-		L"GameLogic, Version=1.0.0.0, Culture=neutral",
-		L"GameLogic.MyManageActor", L"TestManageCall",
+		std::wstring(*Dotnet_Assemble).c_str(),
+		std::wstring(*FullClassName).c_str(),
+		std::wstring(*Method).c_str(),
 		(INT_PTR*)&manageMethod
 	);
 
-	FString str = manageMethod(Actor);
-	return str;
-	//return FString(ANSI_TO_TCHAR(result));
+	auto str = manageMethod(TCHAR_TO_UTF8(*Argument));
+	return FString(UTF8_TO_TCHAR(str));
 }

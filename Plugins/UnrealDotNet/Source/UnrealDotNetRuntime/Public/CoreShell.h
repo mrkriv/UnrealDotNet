@@ -22,7 +22,7 @@ public:
 	static void ReloadDotnetHost();
 
 	UFUNCTION(BlueprintCallable, Category = DotNet)
-	static FString RunTest(AActor* Actor);
+	static FString RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument);
 
 	static void Initialize();
 	static void Uninitialize();
