@@ -30,8 +30,9 @@ public:
 
 	static void* GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method);
 
+
 	template<typename... ArgumentT>
-	static void InvokeInWrapper(const FString& FullClassName, const FString& Method, ArgumentT... Aruments)
+	static void InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)
 	{
 		typedef void(__stdcall InvokeFp)(ArgumentT...);
 
@@ -42,13 +43,13 @@ public:
 			manageMethod(Aruments...);
 		}
 	}
-
+	
 	template<typename ReturtT, typename... ArgumentT>
-	static ReturtT InvokeInWrapper(const FString& FullClassName, const FString& Method, ArgumentT... Aruments)
+	static ReturtT InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)
 	{
 		typedef ReturtT(__stdcall InvokeFp)(ArgumentT...);
 
-		InvokeFp* manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, FullClassName, Method);
+		auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, FullClassName, Method);
 
 		if (manageMethod != NULL)
 		{
@@ -56,6 +57,51 @@ public:
 		}
 
 		return ReturtT();
+	}
+
+
+	static void InvokeInObject(UObject* Object, const FString& Method)
+	{
+		typedef void(__stdcall InvokeFp)(UObject*, char*);
+
+		const static auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, "UnrealEngine.UObject", "Invoke");
+
+		if (manageMethod != NULL)
+		{
+			manageMethod(Object, TCHAR_TO_UTF8(*Method));
+		}
+	}
+
+private:
+	template<typename T>
+	static size_t CopyParamsToArray(char* dist, const T& arg)
+	{
+		*(T*)dist = arg;
+		return sizeof(T);
+	}
+
+	template<typename T, typename... Args>
+	static size_t CopyParamsToArray(char* dist, const T& arg, Args&&... args)
+	{
+		*(T*)dist = arg;
+		return sizeof(T) + CopyParamsToArray(dist + sizeof(T), args...);
+	}
+
+public:
+	template<typename... ArgumentT>
+	static void InvokeInObject(UObject* Object, const FString& Method, const ArgumentT&... Aruments)
+	{
+		typedef void(__stdcall InvokeFp)(UObject*, char*, void*, int);
+
+		const static auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, "UnrealEngine.UObject", "Invoke");
+
+		if (manageMethod != NULL)
+		{
+			static char buffer[96];
+			auto len = CopyParamsToArray(buffer, Aruments...);
+
+			manageMethod(Object, TCHAR_TO_UTF8(*Method), buffer, len);
+		}
 	}
 
 	static void Initialize();

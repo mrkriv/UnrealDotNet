@@ -9,7 +9,7 @@ namespace GameLogic
         {
         }
 
-        public void Tick(float DeltaTime)
+        public void OnTick(float DeltaTime)
         {
             ULog("Hey!");
         }

@@ -196,7 +196,7 @@ void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClass
 
 	if (manageMethod == NULL)
 	{
-		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %"), *Method, *FullClassName, *Assemble);
+		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %"), *FullClassName, *Method, *Assemble);
 	}
 
 	return manageMethod;

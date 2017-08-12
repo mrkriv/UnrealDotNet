@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq.Expressions;
+using System.IO;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnrealEngine
 {
@@ -52,14 +47,22 @@ namespace UnrealEngine
                 return false;
             }
 
-            var obj = constructor.Invoke(new object[] { Adress });
-            Wrappers.Add(Adress, obj);
+            try
+            {
+                var obj = constructor.Invoke(new object[] { Adress });
+                Wrappers.Add(Adress, obj);
+            }
+            catch (Exception e)
+            {
+                ULog_Error($"Failed create object, exception:{e}\n{e.StackTrace}");
+                return false;
+            }
 
             ULog_Debug($"Create object, Type:{ClassName}, Adress:{Adress}");
             return true;
         }
 
-        public static void CallMethod(IntPtr Adress, string MethodName)
+        public static void Invoke(IntPtr Adress, string MethodName, IntPtr Arguments, int Size)
         {
             if (!Wrappers.TryGetValue(Adress, out var obj))
             {
@@ -74,8 +77,77 @@ namespace UnrealEngine
                 return;
             }
 
-            //ULog_Debug($"Call method {MethodName} in {Adress}"); // disable spam
-            method.Invoke(obj, null);
+            var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
+            if (!IsSuccess)
+            {
+                ULog_Error($"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
+                return;
+            }
+
+            try
+            {
+                //ULog_Debug($"Call method {MethodName} in {Adress}"); // disable spam
+                method.Invoke(obj, Params);
+            }
+            catch (Exception e)
+            {
+                ULog_Error($"Exception:{e}\n{e.StackTrace}");
+            }
+        }
+
+        private static object[] ParceParams(MethodBase Method, IntPtr Arguments, int Size, out bool IsSuccess)
+        {
+            var spec = Method.GetParameters();
+            var Params = spec.Length == 0 ? null : new object[spec.Length];
+
+            if ((spec.Length == 0 && Size != 0) || (spec.Length != 0 && Size == 0))
+            {
+                IsSuccess = false;
+                return null;
+            }
+
+            if (Params != null)
+            {
+                var buff = new byte[Size];
+                Marshal.Copy(Arguments, buff, 0, Size);
+
+                using (var br = new BinaryReader(new MemoryStream(buff)))
+                {
+                    try
+                    {
+                        for (var i = 0; i < spec.Length; i++)
+                        {
+                            if (spec[i].ParameterType == typeof(IntPtr))
+                            {
+                                Params[i] = Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>() ? (IntPtr)br.ReadInt32() : (IntPtr)br.ReadInt64();
+                            }
+                            else
+                            {
+                                switch (Type.GetTypeCode(spec[i].ParameterType))
+                                {
+                                    case TypeCode.String: Params[i] = br.ReadString(); break;
+                                    case TypeCode.Boolean: Params[i] = br.ReadBoolean(); break;
+                                    case TypeCode.Single: Params[i] = br.ReadSingle(); break;
+                                    case TypeCode.Byte: Params[i] = br.ReadByte(); break;
+                                    case TypeCode.Char: Params[i] = br.ReadChar(); break;
+                                    case TypeCode.Int16: Params[i] = br.ReadInt16(); break;
+                                    case TypeCode.Int32: Params[i] = br.ReadInt32(); break;
+                                    case TypeCode.Int64: Params[i] = br.ReadInt64(); break;
+                                    case TypeCode.Double: Params[i] = br.ReadDouble(); break;
+                                }
+                            }
+                        }
+                    }
+                    catch (EndOfStreamException)
+                    {
+                        IsSuccess = false;
+                        return null;
+                    }
+                }
+            }
+
+            IsSuccess = true;
+            return Params;
         }
 
         public static void RemoveWrapper(IntPtr Adress)

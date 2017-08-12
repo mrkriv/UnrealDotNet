@@ -7033,8 +7033,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
-      "Microsoft.NETCore.App >= 1.1.2",
-      "Microsoft.NETCore.Runtime.CoreCLR >= 1.1.2"
+      "Microsoft.NETCore.App >= 1.1.2"
     ]
   },
   "packageFolders": {
@@ -7064,10 +7063,6 @@
             "target": "Package",
             "version": "1.1.2",
             "autoReferenced": true
-          },
-          "Microsoft.NETCore.Runtime.CoreCLR": {
-            "target": "Package",
-            "version": "1.1.2"
           }
         }
       }
