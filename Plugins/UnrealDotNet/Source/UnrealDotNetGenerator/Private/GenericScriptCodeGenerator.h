@@ -34,6 +34,7 @@ protected:
 	void ExportSummaryCS(FCodeBuilder& code, const FText& ToolTipText); 
 	
 	FString ReplaceCppTypeToCS(const FString& CPPType);
+	FString GetFieldName(UField* Field);
 
 	void SaveCPP(FCodeBuilder& code, const FString Name);
 	void SaveCS(FCodeBuilder& code, const FString Name);

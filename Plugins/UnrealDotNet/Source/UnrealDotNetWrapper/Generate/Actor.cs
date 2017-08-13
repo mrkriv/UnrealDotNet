@@ -67,7 +67,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event called when this Actor is reset to its initial state - used when restarting level without reloading.
 		/// </summary>
-		public void K2_OnReset()
+		public void OnReset()
 		{
 			Call_K2_OnReset((IntPtr)this);
 		}
@@ -92,7 +92,7 @@ namespace UnrealEngine
 		/// <param name="DestRotation">The target rotation at the destination</param>
 		/// <returns>true if the actor has been successfully moved, or false if it couldn't fit.</returns>
 		/// </summary>
-		public bool K2_TeleportTo(FVector DestLocation, FRotator DestRotation)
+		public bool Teleport(FVector DestLocation, FRotator DestRotation)
 		{
 			return Call_K2_TeleportTo((IntPtr)this, DestLocation, DestRotation);
 		}
@@ -252,7 +252,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Receive Destroyed
 		/// </summary>
-		public void ReceiveDestroyed()
+		public void Destroyed()
 		{
 			Call_ReceiveDestroyed((IntPtr)this);
 		}
@@ -266,7 +266,7 @@ namespace UnrealEngine
 		/// <param name="Location">The location.</param>
 		/// <param name="Rotation">The rotation.</param>
 		/// </summary>
-		public void UserConstructionScript()
+		public void ConstructionScript()
 		{
 			Call_UserConstructionScript((IntPtr)this);
 		}
@@ -299,7 +299,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event when this actor is under the mouse when left mouse button is released while using the clickable interface.
 		/// </summary>
-		public void ReceiveActorOnReleased(FKey ButtonReleased)
+		public void ActorOnReleased(FKey ButtonReleased)
 		{
 			Call_ReceiveActorOnReleased((IntPtr)this, ButtonReleased);
 		}
@@ -310,7 +310,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event when this actor is clicked by the mouse when using the clickable interface.
 		/// </summary>
-		public void ReceiveActorOnClicked(FKey ButtonPressed)
+		public void ActorOnClicked(FKey ButtonPressed)
 		{
 			Call_ReceiveActorOnClicked((IntPtr)this, ButtonPressed);
 		}
@@ -321,7 +321,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event when this actor has the mouse moved off of it with the clickable interface.
 		/// </summary>
-		public void ReceiveActorEndCursorOver()
+		public void ActorEndCursorOver()
 		{
 			Call_ReceiveActorEndCursorOver((IntPtr)this);
 		}
@@ -332,7 +332,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event when this actor has the mouse moved over it with the clickable interface.
 		/// </summary>
-		public void ReceiveActorBeginCursorOver()
+		public void ActorBeginCursorOver()
 		{
 			Call_ReceiveActorBeginCursorOver((IntPtr)this);
 		}
@@ -343,7 +343,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Event called every frame
 		/// </summary>
-		public void ReceiveTick(float DeltaSeconds)
+		public void Tick(float DeltaSeconds)
 		{
 			Call_ReceiveTick((IntPtr)this, DeltaSeconds);
 		}
@@ -421,7 +421,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Detach Root Component from Parent
 		/// </summary>
-		public void DetachRootComponentFromParent(bool bMaintainWorldPosition)
+		public void DetachActorFromActorDeprecated(bool bMaintainWorldPosition)
 		{
 			Call_DetachRootComponentFromParent((IntPtr)this, bMaintainWorldPosition);
 		}
@@ -443,7 +443,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Destroy the actor
 		/// </summary>
-		public void K2_DestroyActor()
+		public void DestroyActor()
 		{
 			Call_K2_DestroyActor((IntPtr)this);
 		}
@@ -538,7 +538,7 @@ namespace UnrealEngine
 		///                      If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// <returns>Whether the rotation was successfully set.</returns>
 		/// </summary>
-		public bool K2_SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
+		public bool SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
 		{
 			return Call_K2_SetActorRotation((IntPtr)this, NewRotation, bTeleportPhysics);
 		}
@@ -605,7 +605,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Returns rotation of the RootComponent of this Actor.
 		/// </summary>
-		public FRotator K2_GetActorRotation()
+		public FRotator GetActorRotation()
 		{
 			return Call_K2_GetActorRotation((IntPtr)this);
 		}
@@ -616,7 +616,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// Returns the location of the RootComponent of this Actor
 		/// </summary>
-		public FVector K2_GetActorLocation()
+		public FVector GetActorLocation()
 		{
 			return Call_K2_GetActorLocation((IntPtr)this);
 		}
@@ -628,7 +628,7 @@ namespace UnrealEngine
 		/// Get the actor-to-world transform.
 		/// <returns>The transform that transforms from actor space to world space.</returns>
 		/// </summary>
-		public FTransform GetTransform()
+		public FTransform GetActorTransform()
 		{
 			return Call_GetTransform((IntPtr)this);
 		}

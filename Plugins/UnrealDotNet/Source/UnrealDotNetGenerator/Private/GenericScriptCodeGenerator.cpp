@@ -394,22 +394,24 @@ void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FSt
 				.Append("%s %s", *typeName, *It->GetName());
 		}
 	}
+	
+	auto cpp_name = Function->GetFName().ToString();
 
 	code.AppendLine("[DllImport(\"%s\")]", *CS_NativeDLL_Name);
-	code.Append("private static extern %s %s%s(IntPtr Self", *returnType, *CPP_Function_Prefix, *Function->GetFName().ToString());
+	code.Append("private static extern %s %s%s(IntPtr Self", *returnType, *CPP_Function_Prefix, *cpp_name);
 	code.AppendIF(!DeclareFragment.IsEmpty(), ", %s", *DeclareFragment.ToString());
 	code.AppendLine(");");
 	code.AppendLine();
 
 	ExportSummaryCS(code, Function->GetToolTipText());
 
-	code.AppendLine("public %s %s(%s)", *returnType, *Function->GetFName().ToString(), *DeclareFragment);
+	code.AppendLine("public %s %s(%s)", *returnType, *GetFieldName(Function), *DeclareFragment);
 	code.OpenBrace();
 
 	code.AppendIF(!returnVoid, "return ");
 	code.AppendIF(returnPointer, "new %s(", *returnType);
 
-	code.Append(TEXT("%s%s((IntPtr)this%s)"), *CPP_Function_Prefix, *Function->GetFName().ToString(), *CallFragment);
+	code.Append(TEXT("%s%s((IntPtr)this%s)"), *CPP_Function_Prefix, *cpp_name, *CallFragment);
 
 	code.AppendIF(returnPointer, ")");
 
@@ -516,6 +518,19 @@ FString FGenericScriptCodeGenerator::ReplaceCppTypeToCS(const FString& CPPType)
 	if (CPPType == "int64") return "Int64";
 
 	return CPPType;
+}
+
+FString FGenericScriptCodeGenerator::GetFieldName(UField* Field)
+{
+	if (Field->HasMetaData("DisplayName"))
+	{
+		auto name = Field->GetMetaData("DisplayName");
+		return name.Replace(TEXT(" "), TEXT("")).Replace(TEXT("("), TEXT("")).Replace(TEXT(")"), TEXT(""));
+	}
+	else
+	{
+		return Field->GetFName().ToString();
+	}
 }
 
 #pragma optimize("", on)
