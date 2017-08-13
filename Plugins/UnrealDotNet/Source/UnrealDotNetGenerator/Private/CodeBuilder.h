@@ -8,6 +8,15 @@ class FCodeBuilder
 	FString caheTab;
 
 public:
+	FCodeBuilder()
+	{
+	}
+	
+	FCodeBuilder(const FCodeBuilder& Base)
+	{
+		caheTab = Base.caheTab;
+	}
+
 	FORCEINLINE FCodeBuilder& Tab()
 	{
 		caheTab += '\t';

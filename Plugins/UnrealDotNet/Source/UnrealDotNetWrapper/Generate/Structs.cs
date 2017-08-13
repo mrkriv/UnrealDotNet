@@ -8,7 +8,7 @@ namespace UnrealEngine
 	/// A point or direction FVector in 3d space.
 	/// The full C++ class is located here: Engine\Source\Runtime\Core\Public\Math\Vector.h
 	/// </summary>
-	[StructLayout(LayoutKind.Explicit, Size = 12)]
+	[StructLayout(LayoutKind.Explicit, Size = 12, Pack = 4)]
 	public struct FVector
 	{
 		/// <summary>
@@ -35,7 +35,7 @@ namespace UnrealEngine
 	/// An orthogonal rotation in 3d space.
 	/// The full C++ class is located here: Engine\Source\Runtime\Core\Public\Math\Rotator.h
 	/// </summary>
-	[StructLayout(LayoutKind.Explicit, Size = 12)]
+	[StructLayout(LayoutKind.Explicit, Size = 12, Pack = 4)]
 	public struct FRotator
 	{
 		/// <summary>
@@ -61,7 +61,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// Key
 	/// </summary>
-	[StructLayout(LayoutKind.Explicit, Size = 12)]
+	[StructLayout(LayoutKind.Explicit, Size = 12, Pack = 4)]
 	public struct FKey
 	{
 		/// <summary>
@@ -76,7 +76,7 @@ namespace UnrealEngine
 	/// Quaternion.
 	/// The full C++ class is located here: Engine\Source\Runtime\Core\Public\Math\Quat.h
 	/// </summary>
-	[StructLayout(LayoutKind.Explicit, Size = 16)]
+	[StructLayout(LayoutKind.Explicit, Size = 16, Pack = 16)]
 	public struct FQuat
 	{
 		/// <summary>
@@ -109,7 +109,7 @@ namespace UnrealEngine
 	/// Transform composed of Quat/Translation/Scale.
 	/// The full C++ class is located here: Engine\Source\Runtime\Core\Public\Math\Transform.h
 	/// </summary>
-	[StructLayout(LayoutKind.Explicit, Size = 48)]
+	[StructLayout(LayoutKind.Explicit, Size = 48, Pack = 16)]
 	public struct FTransform
 	{
 		/// <summary>

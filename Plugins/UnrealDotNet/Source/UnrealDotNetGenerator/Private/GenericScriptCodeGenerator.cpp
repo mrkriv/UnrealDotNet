@@ -8,7 +8,10 @@
 
 static const FString CPP_API_NAME = TEXT("UNREALDOTNETRUNTIME");
 static const FString CPP_Function_Prefix = TEXT("Call_");
-static const FString CPP_OtrReturn_Name = TEXT("OutResultValue");
+static const FString CPP_Structure_Postfix = TEXT("_ExternC");
+static const FString CPP_OutReturn_Name = TEXT("OutResultValue");
+static const FString CPP_TranferBuff = TEXT("StuructTranferBuffer");
+static const FString CPP_TranferOffest = TEXT("StuructTranferOffest");
 static const FString CS_Namespace_Name = TEXT("UnrealEngine");
 static const FString CS_NativeDLL_Name = TEXT("UE4Editor-UnrealDotNetRuntime");
 static const FString CS_Project_Path = TEXT("..\\..\\..\\..\\..\\..\\Source\\UnrealDotNetWrapper\\Generate");
@@ -170,6 +173,7 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 
 	CodeCPP
 		.AppendLine("#pragma once")
+		//.AppendLine("#include \"Structs%s\"", *GenerateCppPostfix)
 		.AppendLine("#include \"%s\"", *RebaseToBuildPath(SourceHeaderFilename))
 		.AppendLine()
 		.AppendLine("#pragma warning(push)")
@@ -237,6 +241,17 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 void FGenericScriptCodeGenerator::ExportStruct()
 {
 	FCodeBuilder CodeCS;
+	FCodeBuilder CodeCPP;
+
+	CodeCPP
+		.AppendLine("#pragma once")
+		.AppendLine("#pragma pack(push, 1)")
+		.AppendLine()
+		.AppendLine("#include \"Engine.h\"")
+		.AppendLine("#include \"CoreMinimal.h\"")
+		.AppendLine()
+		.AppendLine("extern \"C\"")
+		.OpenBrace();
 
 	CodeCS
 		.AppendLine("using System;")
@@ -248,12 +263,18 @@ void FGenericScriptCodeGenerator::ExportStruct()
 
 	for (auto& Struct : AllExportStructs)
 	{
+		//ExportStructCPP(CodeCPP, Struct);
 		ExportStructCS(CodeCS, Struct);
 	}
 
 	CodeCS.CloseBrace();
 
+	CodeCPP
+		.CloseBrace()
+		.AppendLine("#pragma pack(pop)");
+
 	SaveCS(CodeCS, "Structs");
+	//SaveCPP(CodeCPP, "Structs");
 }
 
 void FGenericScriptCodeGenerator::ExportStructCS(FCodeBuilder& code, UScriptStruct* Struct)
@@ -261,7 +282,7 @@ void FGenericScriptCodeGenerator::ExportStructCS(FCodeBuilder& code, UScriptStru
 	ExportSummaryCS(code, Struct->GetToolTipText());
 
 	code
-		.AppendLine("[StructLayout(LayoutKind.Explicit, Size = %d)]", Struct->GetStructureSize())
+		.AppendLine("[StructLayout(LayoutKind.Explicit, Size = %d, Pack = %d)]", Struct->GetStructureSize(), Struct->MinAlignment)
 		.AppendLine("public struct %s", *Struct->GetStructCPPName())
 		.OpenBrace();
 
@@ -285,6 +306,43 @@ void FGenericScriptCodeGenerator::ExportStructCS(FCodeBuilder& code, UScriptStru
 		.AppendLine();
 }
 
+void FGenericScriptCodeGenerator::ExportStructCPP(FCodeBuilder& code, UScriptStruct* Struct)
+{
+	auto name = Struct->GetStructCPPName() + CPP_Structure_Postfix;
+
+	code
+		.AppendLine("struct %s", *name)
+		.OpenBrace();
+
+	FCodeBuilder constr(code);
+
+	constr
+		.AppendLine("%s(const %s&& _copy_val)", *name, *Struct->GetStructCPPName())
+		.OpenBrace();
+
+	auto it = Struct->Children;
+	while (it != NULL)
+	{
+		auto prop = (UProperty*)it;
+		if (prop)
+		{
+			code.AppendLine("%s %s;", *prop->GetCPPType(), *prop->GetNameCPP());
+			constr.AppendLine("%s = _copy_val.%s", *prop->GetNameCPP(), *prop->GetNameCPP());
+		}
+		it = it->Next;
+	}
+
+	constr
+		.CloseBrace()
+		.AppendLine();
+
+	code 
+		.Append(constr.ToString())
+		.CloseBrace()
+		.AppendLine(";")
+		.AppendLine();
+}
+
 void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function)
 {
 	FCodeBuilder CallFragment;
@@ -294,25 +352,37 @@ void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FS
 	bool returnVoid = true;
 	bool returnNameOrText = false;
 	bool returnPointer = false;
+	bool returnStruct = false;
+	size_t offest = 0;
 
 	for (TFieldIterator<UProperty> It(Function); It; ++It)
 	{
 		auto typeName_orig = GetPropertyTypeCPP(*It, CPPF_ArgumentOrReturnValue);
 		auto typeName = typeName_orig;
+		bool isNameOrText = false;
+		bool isStruct = false;
+		bool isPointer = false;
 
 		if (typeName.EndsWith("*"))
 		{
 			typeName = "INT_PTR";
+			isPointer = true;
 		}
 		else if (typeName == "FName" || typeName == "FString")
 		{
 			typeName = "char*";
+			isNameOrText = true;
+		}
+		else if (typeName.StartsWith(TEXT("F"), ESearchCase::CaseSensitive))
+		{
+			isStruct = true;
 		}
 
 		if (It->GetPropertyFlags() & CPF_ReturnParm)
 		{
-			returnNameOrText = typeName == "char*";
-			returnPointer = typeName == "INT_PTR";
+			returnNameOrText = isNameOrText;
+			returnPointer = isPointer;
+			returnStruct = isStruct;
 			returnType = typeName;
 			returnVoid = false;
 		}
@@ -320,26 +390,147 @@ void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FS
 		{
 			CallFragment.AppendIF(!CallFragment.IsEmpty(), ", ");
 
-			if (typeName == "INT_PTR")
+			if (isStruct)
 			{
-				CallFragment.Append("(class %s)", *typeName_orig);
+				CallFragment.AppendIF(isStruct, "*(%s*)(void*)(&%s[%s+%d])", *typeName_orig, *CPP_TranferBuff, *CPP_TranferOffest, offest);
+				offest += Cast<UStructProperty>(*It)->Struct->GetStructureSize();
 			}
+			else
+			{
+				CallFragment.AppendIF(isPointer, "(class %s)", *typeName_orig);
+				CallFragment.Append(It->GetName());
 
-			CallFragment.Append(It->GetName());
-			DeclareFragment.Append(", %s %s", *typeName, *It->GetName());
+				DeclareFragment.Append(", %s %s", *typeName, *It->GetName());
+			}
 		}
 	}
 
-	code.AppendLine("%s_API %s %s%s(INT_PTR Self%s)", *CPP_API_NAME, *returnType, *CPP_Function_Prefix, *Function->GetFName().ToString(), *DeclareFragment.ToString());
+	auto returnRype_Real = returnStruct ? TEXT("INT_PTR") : returnType;
+
+	code.AppendLine("%s_API %s %s%s(INT_PTR Self%s)", *CPP_API_NAME, *returnRype_Real, *CPP_Function_Prefix, *Function->GetFName().ToString(), *DeclareFragment.ToString());
 	code.OpenBrace();
 
-	code.AppendIF(!returnVoid, "return ");
-	code.AppendIF(returnPointer, "(INT_PTR)");
-	code.AppendIF(returnNameOrText, "TCHAR_TO_ANSI(*");
+	if (returnStruct)
+	{
+		code.AppendLine("auto _result_ptr = (%s*)(void*)(&%s[%s+%d]);", *returnType, *CPP_TranferBuff, *CPP_TranferOffest, offest);
+		code.Append("*_result_ptr = ");
+	}
+	else
+	{
+		code.AppendIF(!returnVoid, "return ");
+		code.AppendIF(returnPointer, "(INT_PTR)");
+		code.AppendIF(returnNameOrText, "TCHAR_TO_ANSI(*");
+	}
 
 	code.Append(TEXT("((%s*)Self)->%s(%s)"), *ClassNameCPP, *Function->GetFName().ToString(), *CallFragment);
 
-	code.AppendIF(returnNameOrText, ".ToString())");
+	if (returnStruct)
+	{
+		code.AppendLine(";");
+		code.Append("return (INT_PTR)_result_ptr;");
+	}
+	else
+	{
+		code.AppendIF(returnNameOrText, ".ToString())");
+		code.Append(";");
+	}
+
+	code.CloseBrace();
+	code.AppendLine();
+	code.AppendLine();
+}
+
+void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function)
+{
+	FCodeBuilder DeclareExternFragment(code);
+	FCodeBuilder DeclareCSFragment(code);
+	FCodeBuilder CallFragment(code);
+	FCodeBuilder MethodFragment(code);
+
+	FString returnType = TEXT("void");
+	MethodFragment.Tab();
+
+	bool returnVoid = true;
+	bool returnPointer = false;
+	bool returnStruct = false;
+	size_t offest = 0;
+
+	for (TFieldIterator<UProperty> It(Function); It; ++It)
+	{
+		auto typeName_orig = GetPropertyTypeCPP(*It, CPPF_ArgumentOrReturnValue);
+		auto typeName = typeName_orig;
+		bool isPointer = false;
+		bool isStruct = false;
+		
+		if (typeName.EndsWith("*"))
+		{
+			typeName.RemoveFromEnd("*");
+			isPointer = true;
+		}
+		else
+			typeName = ReplaceCppTypeToCS(typeName);
+
+		if (typeName.StartsWith(TEXT("F"), ESearchCase::CaseSensitive))
+		{
+			isStruct = true;
+		}
+
+		if (It->GetPropertyFlags() & CPF_ReturnParm)
+		{
+			returnType = typeName;
+			returnPointer = isPointer;
+			returnStruct = isStruct;
+			returnVoid = false;
+		}
+		else
+		{
+			if (isStruct)
+			{
+				MethodFragment.AppendLine("Marshal.StructureToPtr(%s, GetTranferBufferPtr()+%d, false);", *It->GetName(), offest);
+				offest += Cast<UStructProperty>(*It)->Struct->GetStructureSize();
+			}
+			else
+			{
+				CallFragment
+					.Append(", ")
+					.AppendIF(isPointer, "(IntPtr)")
+					.Append(It->GetName());
+
+				DeclareExternFragment
+					.AppendIF(!DeclareExternFragment.IsEmpty(), ", ")
+					.Append("%s %s", *typeName, *It->GetName());
+			}
+
+			DeclareCSFragment
+				.AppendIF(!DeclareCSFragment.IsEmpty(), ", ")
+				.Append("%s %s", *typeName, *It->GetName());
+		}
+	}
+	
+	auto cpp_name = Function->GetFName().ToString();
+	auto returnRype_Real = returnStruct ? TEXT("IntPtr") : returnType;
+
+	code.AppendLine("[DllImport(\"%s\")]", *CS_NativeDLL_Name);
+	code.Append("private static extern %s %s%s(IntPtr Self", *returnRype_Real, *CPP_Function_Prefix, *cpp_name);
+	code.AppendIF(!DeclareExternFragment.IsEmpty(), ", %s", *DeclareExternFragment.ToString());
+	code.AppendLine(");");
+	code.AppendLine();
+
+	ExportSummaryCS(code, Function->GetToolTipText());
+
+	code.AppendLine("public %s %s(%s)", *returnType, *GetFieldName(Function), *DeclareCSFragment);
+	code.OpenBrace();
+
+	code.AppendLineIF(!MethodFragment.IsEmpty(), MethodFragment.ToString());
+
+	code.AppendIF(!returnVoid, "return ");
+	code.AppendIF(returnPointer, "new %s(", *returnType);
+	code.AppendIF(returnStruct, "Marshal.PtrToStructure<%s>(", *returnType);
+
+	code.Append(TEXT("%s%s((IntPtr)this%s)"), *CPP_Function_Prefix, *cpp_name, *CallFragment);
+
+	code.AppendIF(returnPointer, ")");
+	code.AppendIF(returnStruct, ")");
 
 	code.Append(";");
 
@@ -350,76 +541,6 @@ void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FS
 
 void FGenericScriptCodeGenerator::ExportPropertyCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex)
 {
-}
-
-void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function)
-{
-	FCodeBuilder DeclareFragment;
-	FCodeBuilder CallFragment;
-
-	FString returnType = TEXT("void");
-
-	bool returnVoid = true;
-	bool returnPointer = false;
-
-	for (TFieldIterator<UProperty> It(Function); It; ++It)
-	{
-		auto typeName_orig = GetPropertyTypeCPP(*It, CPPF_ArgumentOrReturnValue);
-		auto typeName = typeName_orig;
-		bool isPointer = false;
-
-		if (typeName.EndsWith("*"))
-		{
-			typeName.RemoveFromEnd("*");
-			isPointer = true;
-		}
-		else
-			typeName = ReplaceCppTypeToCS(typeName);
-
-		if (It->GetPropertyFlags() & CPF_ReturnParm)
-		{
-			returnType = typeName;
-			returnPointer = isPointer;
-			returnVoid = false;
-		}
-		else
-		{
-			CallFragment
-				.Append(", ")
-				.AppendIF(isPointer, "(IntPtr)")
-				.Append(It->GetName());
-
-			DeclareFragment
-				.AppendIF(!DeclareFragment.IsEmpty(), ", ")
-				.Append("%s %s", *typeName, *It->GetName());
-		}
-	}
-	
-	auto cpp_name = Function->GetFName().ToString();
-
-	code.AppendLine("[DllImport(\"%s\")]", *CS_NativeDLL_Name);
-	code.Append("private static extern %s %s%s(IntPtr Self", *returnType, *CPP_Function_Prefix, *cpp_name);
-	code.AppendIF(!DeclareFragment.IsEmpty(), ", %s", *DeclareFragment.ToString());
-	code.AppendLine(");");
-	code.AppendLine();
-
-	ExportSummaryCS(code, Function->GetToolTipText());
-
-	code.AppendLine("public %s %s(%s)", *returnType, *GetFieldName(Function), *DeclareFragment);
-	code.OpenBrace();
-
-	code.AppendIF(!returnVoid, "return ");
-	code.AppendIF(returnPointer, "new %s(", *returnType);
-
-	code.Append(TEXT("%s%s((IntPtr)this%s)"), *CPP_Function_Prefix, *cpp_name, *CallFragment);
-
-	code.AppendIF(returnPointer, ")");
-
-	code.Append(";");
-
-	code.CloseBrace();
-	code.AppendLine();
-	code.AppendLine();
 }
 
 void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FText& ToolTipText)
@@ -439,8 +560,6 @@ void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FTex
 		const std::regex ParamPattern("\\@param\\s+(\\w+)\\s+(.*)");	// \@param\s+(\w+)\s+(.*)
 		const std::regex ReturnPattern("\\@return\\s+(.*)");			// \@return\s+(.*)
 		std::cmatch math;
-
-		UE_LOG(LogUnrealDotNetGenerator, Log, TEXT("%s"), *row);
 
 		if (std::regex_match(TCHAR_TO_UTF8(*row), math, ParamPattern))
 		{

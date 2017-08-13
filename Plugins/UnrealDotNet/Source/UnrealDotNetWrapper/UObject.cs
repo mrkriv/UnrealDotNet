@@ -19,6 +19,12 @@ namespace UnrealEngine
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
         private static extern void Call_ULOG_L(string Message);
 
+        [DllImport("UE4Editor-UnrealDotNetRuntime")]
+        private static extern IntPtr Call_GetTranferBufferPtr();
+
+        [DllImport("UE4Editor-UnrealDotNetRuntime")]
+        private static extern Int64 Call_GetTranferBufferOffest();
+
         #endregion DllImport
 
         private static readonly Assembly GameLogicAssembly = Assembly.Load(new AssemblyName("GameLogic, Version=1.0.0.0, Culture=neutral"));
@@ -174,5 +180,9 @@ namespace UnrealEngine
         public static void ULog_Warning(string Message) => Call_ULOG_W(Message);
 
         public static void ULog_Error(string Message) => Call_ULOG_E(Message);
+
+        public static IntPtr GetTranferBufferPtr() => Call_GetTranferBufferPtr();
+
+        public static Int64 GetTranferBufferOffest() => Call_GetTranferBufferOffest();
     }
 }

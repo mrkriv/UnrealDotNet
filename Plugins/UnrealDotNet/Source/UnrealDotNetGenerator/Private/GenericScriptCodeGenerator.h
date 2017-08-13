@@ -26,6 +26,7 @@ protected:
 	void ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function);
 	void ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function);
 
+	void ExportStructCPP(FCodeBuilder& code, UScriptStruct* Struct);
 	void ExportStructCS(FCodeBuilder& code, UScriptStruct* Struct);
 
 	void ExportPropertyCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex);

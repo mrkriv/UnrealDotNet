@@ -20,7 +20,7 @@ namespace UnrealEngine
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_GetActorEyesViewPoint(IntPtr Self, FVector OutLocation, FRotator OutRotation);
+		private static extern void Call_GetActorEyesViewPoint(IntPtr Self);
 		
 		/// <summary>
 		/// Returns the point of view of the actor.
@@ -33,7 +33,10 @@ namespace UnrealEngine
 		/// </summary>
 		public void GetActorEyesViewPoint(FVector OutLocation, FRotator OutRotation)
 		{
-			Call_GetActorEyesViewPoint((IntPtr)this, OutLocation, OutRotation);
+			Marshal.StructureToPtr(OutLocation, GetTranferBufferPtr()+0, false);
+			Marshal.StructureToPtr(OutRotation, GetTranferBufferPtr()+12, false);
+			
+			Call_GetActorEyesViewPoint((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
@@ -84,7 +87,7 @@ namespace UnrealEngine
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern bool Call_K2_TeleportTo(IntPtr Self, FVector DestLocation, FRotator DestRotation);
+		private static extern bool Call_K2_TeleportTo(IntPtr Self);
 		
 		/// <summary>
 		/// Teleport this actor to a new location. If the actor doesn't fit exactly at the location specified, tries to slightly move it out of walls and such.
@@ -94,7 +97,10 @@ namespace UnrealEngine
 		/// </summary>
 		public bool Teleport(FVector DestLocation, FRotator DestRotation)
 		{
-			return Call_K2_TeleportTo((IntPtr)this, DestLocation, DestRotation);
+			Marshal.StructureToPtr(DestLocation, GetTranferBufferPtr()+0, false);
+			Marshal.StructureToPtr(DestRotation, GetTranferBufferPtr()+12, false);
+			
+			return Call_K2_TeleportTo((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
@@ -294,25 +300,29 @@ namespace UnrealEngine
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_ReceiveActorOnReleased(IntPtr Self, FKey ButtonReleased);
+		private static extern void Call_ReceiveActorOnReleased(IntPtr Self);
 		
 		/// <summary>
 		/// Event when this actor is under the mouse when left mouse button is released while using the clickable interface.
 		/// </summary>
 		public void ActorOnReleased(FKey ButtonReleased)
 		{
-			Call_ReceiveActorOnReleased((IntPtr)this, ButtonReleased);
+			Marshal.StructureToPtr(ButtonReleased, GetTranferBufferPtr()+0, false);
+			
+			Call_ReceiveActorOnReleased((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_ReceiveActorOnClicked(IntPtr Self, FKey ButtonPressed);
+		private static extern void Call_ReceiveActorOnClicked(IntPtr Self);
 		
 		/// <summary>
 		/// Event when this actor is clicked by the mouse when using the clickable interface.
 		/// </summary>
 		public void ActorOnClicked(FKey ButtonPressed)
 		{
-			Call_ReceiveActorOnClicked((IntPtr)this, ButtonPressed);
+			Marshal.StructureToPtr(ButtonPressed, GetTranferBufferPtr()+0, false);
+			
+			Call_ReceiveActorOnClicked((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
@@ -483,18 +493,18 @@ namespace UnrealEngine
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetActorRelativeScale3D(IntPtr Self);
+		private static extern IntPtr Call_GetActorRelativeScale3D(IntPtr Self);
 		
 		/// <summary>
 		/// Return the actor's relative scale 3d
 		/// </summary>
 		public FVector GetActorRelativeScale3D()
 		{
-			return Call_GetActorRelativeScale3D((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetActorRelativeScale3D((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_SetActorRelativeScale3D(IntPtr Self, FVector NewRelativeScale);
+		private static extern void Call_SetActorRelativeScale3D(IntPtr Self);
 		
 		/// <summary>
 		/// Set the actor's RootComponent to the specified relative scale 3d
@@ -502,33 +512,37 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetActorRelativeScale3D(FVector NewRelativeScale)
 		{
-			Call_SetActorRelativeScale3D((IntPtr)this, NewRelativeScale);
+			Marshal.StructureToPtr(NewRelativeScale, GetTranferBufferPtr()+0, false);
+			
+			Call_SetActorRelativeScale3D((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetActorScale3D(IntPtr Self);
+		private static extern IntPtr Call_GetActorScale3D(IntPtr Self);
 		
 		/// <summary>
 		/// Returns the Actor's world-space scale.
 		/// </summary>
 		public FVector GetActorScale3D()
 		{
-			return Call_GetActorScale3D((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetActorScale3D((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_SetActorScale3D(IntPtr Self, FVector NewScale3D);
+		private static extern void Call_SetActorScale3D(IntPtr Self);
 		
 		/// <summary>
 		/// Set the Actor's world-space scale.
 		/// </summary>
 		public void SetActorScale3D(FVector NewScale3D)
 		{
-			Call_SetActorScale3D((IntPtr)this, NewScale3D);
+			Marshal.StructureToPtr(NewScale3D, GetTranferBufferPtr()+0, false);
+			
+			Call_SetActorScale3D((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern bool Call_K2_SetActorRotation(IntPtr Self, FRotator NewRotation, bool bTeleportPhysics);
+		private static extern bool Call_K2_SetActorRotation(IntPtr Self, bool bTeleportPhysics);
 		
 		/// <summary>
 		/// Set the Actor's rotation instantly to the specified rotation.
@@ -540,22 +554,24 @@ namespace UnrealEngine
 		/// </summary>
 		public bool SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
 		{
-			return Call_K2_SetActorRotation((IntPtr)this, NewRotation, bTeleportPhysics);
+			Marshal.StructureToPtr(NewRotation, GetTranferBufferPtr()+0, false);
+			
+			return Call_K2_SetActorRotation((IntPtr)this, bTeleportPhysics);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetVelocity(IntPtr Self);
+		private static extern IntPtr Call_GetVelocity(IntPtr Self);
 		
 		/// <summary>
 		/// Returns velocity (in cm/s (Unreal Units/second) of the rootcomponent if it is either using physics or has an associated MovementComponent
 		/// </summary>
 		public FVector GetVelocity()
 		{
-			return Call_GetVelocity((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetVelocity((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void Call_GetActorBounds(IntPtr Self, bool bOnlyCollidingComponents, FVector Origin, FVector BoxExtent);
+		private static extern void Call_GetActorBounds(IntPtr Self, bool bOnlyCollidingComponents);
 		
 		/// <summary>
 		/// Returns the bounding box of all components that make up this Actor (excluding ChildActorComponents).
@@ -563,66 +579,69 @@ namespace UnrealEngine
 		/// </summary>
 		public void GetActorBounds(bool bOnlyCollidingComponents, FVector Origin, FVector BoxExtent)
 		{
-			Call_GetActorBounds((IntPtr)this, bOnlyCollidingComponents, Origin, BoxExtent);
+			Marshal.StructureToPtr(Origin, GetTranferBufferPtr()+0, false);
+			Marshal.StructureToPtr(BoxExtent, GetTranferBufferPtr()+12, false);
+			
+			Call_GetActorBounds((IntPtr)this, bOnlyCollidingComponents);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetActorRightVector(IntPtr Self);
+		private static extern IntPtr Call_GetActorRightVector(IntPtr Self);
 		
 		/// <summary>
 		/// Get the right (Y) vector (length 1.0) from this Actor, in world space.
 		/// </summary>
 		public FVector GetActorRightVector()
 		{
-			return Call_GetActorRightVector((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetActorRightVector((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetActorUpVector(IntPtr Self);
+		private static extern IntPtr Call_GetActorUpVector(IntPtr Self);
 		
 		/// <summary>
 		/// Get the up (Z) vector (length 1.0) from this Actor, in world space.
 		/// </summary>
 		public FVector GetActorUpVector()
 		{
-			return Call_GetActorUpVector((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetActorUpVector((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetActorForwardVector(IntPtr Self);
+		private static extern IntPtr Call_GetActorForwardVector(IntPtr Self);
 		
 		/// <summary>
 		/// Get the forward (X) vector (length 1.0) from this Actor, in world space.
 		/// </summary>
 		public FVector GetActorForwardVector()
 		{
-			return Call_GetActorForwardVector((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_GetActorForwardVector((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FRotator Call_K2_GetActorRotation(IntPtr Self);
+		private static extern IntPtr Call_K2_GetActorRotation(IntPtr Self);
 		
 		/// <summary>
 		/// Returns rotation of the RootComponent of this Actor.
 		/// </summary>
 		public FRotator GetActorRotation()
 		{
-			return Call_K2_GetActorRotation((IntPtr)this);
+			return Marshal.PtrToStructure<FRotator>(Call_K2_GetActorRotation((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_K2_GetActorLocation(IntPtr Self);
+		private static extern IntPtr Call_K2_GetActorLocation(IntPtr Self);
 		
 		/// <summary>
 		/// Returns the location of the RootComponent of this Actor
 		/// </summary>
 		public FVector GetActorLocation()
 		{
-			return Call_K2_GetActorLocation((IntPtr)this);
+			return Marshal.PtrToStructure<FVector>(Call_K2_GetActorLocation((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FTransform Call_GetTransform(IntPtr Self);
+		private static extern IntPtr Call_GetTransform(IntPtr Self);
 		
 		/// <summary>
 		/// Get the actor-to-world transform.
@@ -630,29 +649,33 @@ namespace UnrealEngine
 		/// </summary>
 		public FTransform GetActorTransform()
 		{
-			return Call_GetTransform((IntPtr)this);
+			return Marshal.PtrToStructure<FTransform>(Call_GetTransform((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern FVector Call_GetInputVectorAxisValue(IntPtr Self, FKey InputAxisKey);
+		private static extern IntPtr Call_GetInputVectorAxisValue(IntPtr Self);
 		
 		/// <summary>
 		/// Gets the value of the input axis key if input is enabled for this actor.
 		/// </summary>
 		public FVector GetInputVectorAxisValue(FKey InputAxisKey)
 		{
-			return Call_GetInputVectorAxisValue((IntPtr)this, InputAxisKey);
+			Marshal.StructureToPtr(InputAxisKey, GetTranferBufferPtr()+0, false);
+			
+			return Marshal.PtrToStructure<FVector>(Call_GetInputVectorAxisValue((IntPtr)this));
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern float Call_GetInputAxisKeyValue(IntPtr Self, FKey InputAxisKey);
+		private static extern float Call_GetInputAxisKeyValue(IntPtr Self);
 		
 		/// <summary>
 		/// Gets the value of the input axis key if input is enabled for this actor.
 		/// </summary>
 		public float GetInputAxisKeyValue(FKey InputAxisKey)
 		{
-			return Call_GetInputAxisKeyValue((IntPtr)this, InputAxisKey);
+			Marshal.StructureToPtr(InputAxisKey, GetTranferBufferPtr()+0, false);
+			
+			return Call_GetInputAxisKeyValue((IntPtr)this);
 		}
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]

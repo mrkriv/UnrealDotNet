@@ -2,4 +2,5 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp1.1\GameLogic.dll" /&gt;&#xD;
   &lt;Assembly Path="D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp1.1\UnrealDotNetWrapper.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\vladi\.nuget\packages\system.runtime.interopservices\4.3.0\ref\netcoreapp1.1\System.Runtime.InteropServices.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

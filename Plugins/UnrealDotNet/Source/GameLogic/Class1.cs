@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using UnrealEngine;
 
 namespace GameLogic
@@ -11,7 +12,10 @@ namespace GameLogic
 
         public void OnTick(float DeltaTime)
         {
-            ULog(DeltaTime.ToString());
+            var rot = GetActorRotation();
+            rot.Yaw += DeltaTime * 60;
+
+            SetActorRotation(rot, false);
         }
     }
 }
