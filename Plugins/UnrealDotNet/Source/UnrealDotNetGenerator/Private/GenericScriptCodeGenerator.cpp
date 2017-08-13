@@ -4,16 +4,151 @@
 #include "Misc/Paths.h"
 #include <regex>	//#include "Regex.h" wtf?
 
+#pragma optimize("", off)
+
 static const FString CPP_API_NAME = TEXT("UNREALDOTNETRUNTIME");
 static const FString CPP_Function_Prefix = TEXT("Call_");
 static const FString CPP_OtrReturn_Name = TEXT("OutResultValue");
 static const FString CS_Namespace_Name = TEXT("UnrealEngine");
 static const FString CS_NativeDLL_Name = TEXT("UE4Editor-UnrealDotNetRuntime");
-static const FString CS_Project_Path = TEXT("Source\\UnrealDotNetWrapper\\Generate");
+static const FString CS_Project_Path = TEXT("..\\..\\..\\..\\..\\..\\Source\\UnrealDotNetWrapper\\Generate");
+static const FString GenerateCppPostfix = TEXT("_export.h");
+static const FString GenerateCSPostfix = TEXT(".cs");
+static const FString GenerateMainCppName = TEXT("ExportForDotnetGenerated.inl");
 
 FGenericScriptCodeGenerator::FGenericScriptCodeGenerator(const FString& RootLocalPath, const FString& RootBuildPath, const FString& OutputDirectory, const FString& InIncludeBase)
 	: FScriptCodeGeneratorBase(RootLocalPath, RootBuildPath, OutputDirectory, InIncludeBase)
 {
+}
+
+bool FGenericScriptCodeGenerator::CanExportClass(UClass* Class)
+{
+	if (!FScriptCodeGeneratorBase::CanExportClass(Class))
+		return false;
+
+	const FString ClassNameCPP = GetClassNameCPP(Class);
+
+	if (ClassNameCPP != TEXT("AActor"))
+		return false;
+
+	bool found = false;
+	for (TFieldIterator<UFunction> FuncIt(Class, EFieldIteratorFlags::ExcludeSuper); FuncIt; ++FuncIt)
+	{
+		if (CanExportFunction(*FuncIt))
+			found = true;
+	}
+
+	return found;
+}
+
+bool FGenericScriptCodeGenerator::CanExportFunction(UFunction* Function)
+{
+	if (!FScriptCodeGeneratorBase::CanExportFunction(Function))
+		return false;
+
+	if (Function->GetFName() == "ReceivePointDamage")
+		return false;
+
+	if (Function->GetFName() == "GetInstigator")
+		return false;
+
+	for (TFieldIterator<UProperty> It(Function); It; ++It)
+	{
+		if (!CanExportProperty(*It))
+			return false;
+	}
+
+	return true;
+}
+
+bool FGenericScriptCodeGenerator::CanExportProperty(UProperty* Property)
+{
+	auto typeName = GetPropertyTypeCPP(Property, CPPF_ArgumentOrReturnValue);
+
+	if (typeName != "UObject" && (
+		typeName.StartsWith("U", ESearchCase::CaseSensitive) ||
+		typeName.StartsWith("A", ESearchCase::CaseSensitive)))
+	{
+		if (!AllExportClass.ContainsByPredicate([typeName](ClassExportInfo& info) { return GetClassNameCPP(info.Class) == typeName; }))
+		{
+			return false;
+		}
+	}
+
+	if (typeName.Contains("<", ESearchCase::CaseSensitive))
+	{
+		// Template contaner dont support
+		return false;
+	}
+	if (typeName.StartsWith("T", ESearchCase::CaseSensitive))
+	{
+		// Template contaner dont support
+		return false;
+	}
+	else if (typeName.StartsWith("E", ESearchCase::CaseSensitive))
+	{
+		// Enumerate dont support
+		return false;
+	}
+
+	auto StructProp = Cast<UStructProperty>(Property);
+
+	if (StructProp != NULL && StructProp->Struct != NULL)
+	{
+		auto it = StructProp->Struct->Children;
+		while (it != NULL)
+		{
+			auto p = Cast<UProperty>(it);
+			if (p != NULL && !CanExportProperty(p))
+				return false;
+
+			it = it->Next;
+		}
+	}
+
+	return true;
+}
+
+void FGenericScriptCodeGenerator::CollectExportInfo(UClass* Class)
+{
+	for (TFieldIterator<UFunction> FuncIt(Class, EFieldIteratorFlags::ExcludeSuper); FuncIt; ++FuncIt)
+	{
+		if (CanExportFunction(*FuncIt))
+			CollectExportInfo(*FuncIt);
+	}
+}
+
+void FGenericScriptCodeGenerator::CollectExportInfo(UFunction* Function)
+{
+	for (TFieldIterator<UProperty> It(Function); It; ++It)
+	{
+		if (CanExportProperty(*It))
+			CollectExportInfo(*It);
+	}
+}
+
+void FGenericScriptCodeGenerator::CollectExportInfo(UField* Property)
+{
+	auto StructProp = Cast<UStructProperty>(Property);
+
+	if (StructProp != NULL && StructProp->Struct != NULL)
+	{
+		auto it = StructProp->Struct->Children;
+		while (it != NULL)
+		{
+			auto p = Cast<UProperty>(it);
+			if (p != NULL)
+			{
+				if (!CanExportProperty(p))
+					return;
+
+				CollectExportInfo(it);
+			}
+			it = it->Next;
+		}
+
+		AllExportStructs.AddUnique(StructProp->Struct);
+	}
 }
 
 void FGenericScriptCodeGenerator::ExportClass(UClass* Class, const FString& SourceHeaderFilename, const FString& GeneratedHeaderFilename, bool bHasChanged)
@@ -21,7 +156,7 @@ void FGenericScriptCodeGenerator::ExportClass(UClass* Class, const FString& Sour
 	if (CanExportClass(Class))
 	{
 		AllExportClass.Add({ Class, SourceHeaderFilename, GeneratedHeaderFilename });
-		return;
+		CollectExportInfo(Class);
 	}
 }
 
@@ -30,8 +165,6 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 	UE_LOG(LogUnrealDotNetGenerator, Log, TEXT("Exporting class %s"), *Class->GetName());
 
 	const FString ClassNameCPP = GetClassNameCPP(Class);
-	AllSourceClassHeaders.Add(SourceHeaderFilename);
-
 	FCodeBuilder CodeCPP;
 	FCodeBuilder CodeCS;
 
@@ -55,19 +188,18 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 	ExportSummaryCS(CodeCS, Class->GetToolTipText());
 
 	CodeCS
-		.AppendLine("public class %s : %s", *ClassNameCPP, TEXT("UObject"))	// *GetClassNameCPP(Class->GetOwnerClass())
+		.AppendLine("public partial class %s : %s", *ClassNameCPP, TEXT("UObject"))	// *GetClassNameCPP(Class->GetOwnerClass())
 		.OpenBrace()
 		.AppendLine("private readonly IntPtr NativePointer;")
 		.AppendLine()
-		.AppendLine("public partial %s(IntPtr Adress)", *ClassNameCPP)
+		.AppendLine("public %s(IntPtr Adress)", *ClassNameCPP)
 		.OpenBrace()
 		.Append("NativePointer = Adress;")
 		.CloseBrace()
 		.AppendLine()
 		.AppendLine();
 
-	bool canExport = false;
-	for (TFieldIterator<UFunction> FuncIt(Class, EFieldIteratorFlags::ExcludeSuper); FuncIt; ++FuncIt, canExport = true)
+	for (TFieldIterator<UFunction> FuncIt(Class, EFieldIteratorFlags::ExcludeSuper); FuncIt; ++FuncIt)
 	{
 		UFunction* Function = *FuncIt;
 
@@ -75,15 +207,9 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 		{
 			UE_LOG(LogUnrealDotNetGenerator, Log, TEXT("Export for dotnet %s.%s"), *ClassNameCPP, *Function->GetName());
 
-			FString DeclareExternFragment;
-			ExportFunctionCPP(CodeCPP, ClassNameCPP, Class, Function, DeclareExternFragment);
-			ExportFunctionCS(CodeCS, ClassNameCPP, Class, Function, DeclareExternFragment);
+			ExportFunctionCPP(CodeCPP, ClassNameCPP, Class, Function);
+			ExportFunctionCS(CodeCS, ClassNameCPP, Class, Function);
 		}
-	}
-
-	if (!canExport)
-	{
-		return;
 	}
 
 	CodeCPP
@@ -96,64 +222,70 @@ void FGenericScriptCodeGenerator::ExportClass_Real(UClass* Class, const FString&
 		.OpenBrace()
 		.Append("return Self.NativePointer;")
 		.CloseBrace()
+		.AppendLine()
+		.AppendLine("public static implicit operator %s(IntPtr Adress)", *ClassNameCPP)
+		.OpenBrace()
+		.Append("return Adress == IntPtr.Zero ? null : new %s(Adress);", *ClassNameCPP)
+		.CloseBrace()
 		.CloseBrace()
 		.CloseBrace();
 
-	FString CPPFilePath = FPaths::Combine(GeneratedCodePath, Class->GetName() + "_export.h");
-	FString CSFilePath = FPaths::Combine(GeneratedCodePath, TEXT("..\\..\\..\\..\\..\\..\\"), CS_Project_Path, Class->GetName() + ".cs");
-
-	AllScriptHeaders.Add(CPPFilePath);
-
-	SaveHeaderIfChanged(CPPFilePath, CodeCPP.ToString());
-	SaveHeaderIfChanged(CSFilePath, CodeCS.ToString());
+	SaveCPP(CodeCPP, Class->GetName());
+	SaveCS(CodeCS, Class->GetName());
 }
 
-bool FGenericScriptCodeGenerator::CanExportFunction(UFunction* Function)
+void FGenericScriptCodeGenerator::ExportStruct()
 {
-	if (!FScriptCodeGeneratorBase::CanExportFunction(Function))
-		return false;
+	FCodeBuilder CodeCS;
 
-	if (Function->GetFName() == "ReceivePointDamage")
-		return false;
+	CodeCS
+		.AppendLine("using System;")
+		.AppendLine("using System.Runtime.CompilerServices;")
+		.AppendLine("using System.Runtime.InteropServices;")
+		.AppendLine()
+		.AppendLine("namespace %s", *CS_Namespace_Name)
+		.OpenBrace();
 
-	if (Function->GetFName() == "GetInstigator")
-		return false;
-
-	for (TFieldIterator<UProperty> It(Function); It; ++It)
+	for (auto& Struct : AllExportStructs)
 	{
-		auto typeName = GetPropertyTypeCPP(*It, CPPF_ArgumentOrReturnValue);
-
-		if (typeName != "UObject" && (
-			typeName.StartsWith("U", ESearchCase::CaseSensitive) ||
-			typeName.StartsWith("A", ESearchCase::CaseSensitive)))
-		{
-			if (!AllExportClass.ContainsByPredicate([typeName](ClassExportInfo& info) { return GetClassNameCPP(info.Class) == typeName; }))
-			{
-				return false;
-			}
-		}
-		
-		if (typeName.StartsWith("F", ESearchCase::CaseSensitive))
-		{
-			// Struct dont support
-			return false;
-		}
-		else if (typeName.StartsWith("T", ESearchCase::CaseSensitive))
-		{
-			// Template contaner dont support
-			return false;
-		}
-		else if (typeName.StartsWith("E", ESearchCase::CaseSensitive))
-		{
-			// Enumerate dont support
-			return false;
-		}
+		ExportStructCS(CodeCS, Struct);
 	}
 
-	return true;
+	CodeCS.CloseBrace();
+
+	SaveCS(CodeCS, "Structs");
 }
 
-void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, FString& DeclareExternFragment)
+void FGenericScriptCodeGenerator::ExportStructCS(FCodeBuilder& code, UScriptStruct* Struct)
+{
+	ExportSummaryCS(code, Struct->GetToolTipText());
+
+	code
+		.AppendLine("[StructLayout(LayoutKind.Explicit, Size = %d)]", Struct->GetStructureSize())
+		.AppendLine("public struct %s", *Struct->GetStructCPPName())
+		.OpenBrace();
+
+	auto it = Struct->Children;
+	while (it != NULL)
+	{
+		auto prop = (UProperty*)it;
+		if (prop)
+		{
+			ExportSummaryCS(code, prop->GetToolTipText());
+
+			code.AppendLine("[FieldOffset(%d)]", prop->GetSize());
+			code.AppendLine("public %s %s;", *ReplaceCppTypeToCS(prop->GetCPPType()), *prop->GetNameCPP());
+			code.AppendLine();
+		}
+		it = it->Next;
+	}
+
+	code
+		.CloseBrace()
+		.AppendLine();
+}
+
+void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function)
 {
 	FCodeBuilder CallFragment;
 	FCodeBuilder DeclareFragment;
@@ -187,7 +319,7 @@ void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FS
 		else
 		{
 			CallFragment.AppendIF(!CallFragment.IsEmpty(), ", ");
-			
+
 			if (typeName == "INT_PTR")
 			{
 				CallFragment.Append("(class %s)", *typeName_orig);
@@ -198,10 +330,7 @@ void FGenericScriptCodeGenerator::ExportFunctionCPP(FCodeBuilder& code, const FS
 		}
 	}
 
-	DeclareExternFragment =
-		FString::Printf(TEXT("%s %s%s(INT_PTR Self%s)"), *returnType, *CPP_Function_Prefix, *Function->GetFName().ToString(), *DeclareFragment.ToString());
-	
-	code.AppendLine("%s_API %s", *CPP_API_NAME, *DeclareExternFragment);
+	code.AppendLine("%s_API %s %s%s(INT_PTR Self%s)", *CPP_API_NAME, *returnType, *CPP_Function_Prefix, *Function->GetFName().ToString(), *DeclareFragment.ToString());
 	code.OpenBrace();
 
 	code.AppendIF(!returnVoid, "return ");
@@ -223,12 +352,12 @@ void FGenericScriptCodeGenerator::ExportPropertyCPP(FCodeBuilder& code, const FS
 {
 }
 
-void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function, const FString& DeclareExternFragment)
+void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UFunction* Function)
 {
 	FCodeBuilder DeclareFragment;
 	FCodeBuilder CallFragment;
 
-	FString returnCSType = TEXT("void");
+	FString returnType = TEXT("void");
 
 	bool returnVoid = true;
 	bool returnPointer = false;
@@ -244,14 +373,12 @@ void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FSt
 			typeName.RemoveFromEnd("*");
 			isPointer = true;
 		}
-		else if (typeName == "FName" || typeName == "FString")
-		{
-			typeName = "string";
-		}
+		else
+			typeName = ReplaceCppTypeToCS(typeName);
 
 		if (It->GetPropertyFlags() & CPF_ReturnParm)
 		{
-			returnCSType = typeName;
+			returnType = typeName;
 			returnPointer = isPointer;
 			returnVoid = false;
 		}
@@ -269,16 +396,18 @@ void FGenericScriptCodeGenerator::ExportFunctionCS(FCodeBuilder& code, const FSt
 	}
 
 	code.AppendLine("[DllImport(\"%s\")]", *CS_NativeDLL_Name);
-	code.AppendLine("private static extern %s;", *DeclareExternFragment.Replace(TEXT("INT_PTR"), TEXT("IntPtr")));
+	code.Append("private static extern %s %s%s(IntPtr Self", *returnType, *CPP_Function_Prefix, *Function->GetFName().ToString());
+	code.AppendIF(!DeclareFragment.IsEmpty(), ", %s", *DeclareFragment.ToString());
+	code.AppendLine(");");
 	code.AppendLine();
 
 	ExportSummaryCS(code, Function->GetToolTipText());
 
-	code.AppendLine("public %s %s(%s)", *returnCSType, *Function->GetFName().ToString(), *DeclareFragment);
+	code.AppendLine("public %s %s(%s)", *returnType, *Function->GetFName().ToString(), *DeclareFragment);
 	code.OpenBrace();
 
 	code.AppendIF(!returnVoid, "return ");
-	code.AppendIF(returnPointer, "new %s(", *returnCSType);
+	code.AppendIF(returnPointer, "new %s(", *returnType);
 
 	code.Append(TEXT("%s%s((IntPtr)this%s)"), *CPP_Function_Prefix, *Function->GetFName().ToString(), *CallFragment);
 
@@ -313,13 +442,13 @@ void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FTex
 
 		if (std::regex_match(TCHAR_TO_UTF8(*row), math, ParamPattern))
 		{
-			code.AppendLine("/// <param name=\"%s\">%s</param>", 
+			code.AppendLine("/// <param name=\"%s\">%s</param>",
 				UTF8_TO_TCHAR(std::string(math[1].first, math[1].second).c_str()),
 				UTF8_TO_TCHAR(std::string(math[2].first, math[2].second).c_str()));
 		}
 		else if (std::regex_match(TCHAR_TO_UTF8(*row), math, ReturnPattern))
 		{
-			code.AppendLine("/// <returns>%s</returns>", 
+			code.AppendLine("/// <returns>%s</returns>",
 				UTF8_TO_TCHAR(std::string(math[1].first, math[1].second).c_str()));
 		}
 		else
@@ -331,25 +460,12 @@ void FGenericScriptCodeGenerator::ExportSummaryCS(FCodeBuilder& code, const FTex
 
 void FGenericScriptCodeGenerator::ExportPropertyCS(FCodeBuilder& code, const FString& ClassNameCPP, UClass* Class, UProperty* Property, int32 PropertyIndex)
 {
-
-}
-
-bool FGenericScriptCodeGenerator::CanExportClass(UClass* Class)
-{
-	bool bCanExport = FScriptCodeGeneratorBase::CanExportClass(Class);
-	if (bCanExport)
-	{
-		const FString ClassNameCPP = GetClassNameCPP(Class);
-
-		if (ClassNameCPP != TEXT("AActor"))
-			return false;
-
-	}
-	return bCanExport;
 }
 
 void FGenericScriptCodeGenerator::FinishExport()
 {
+	ExportStruct();
+
 	for (auto& info : AllExportClass)
 	{
 		ExportClass_Real(info.Class, info.SourceHeaderFilename, info.GeneratedHeaderFilename);
@@ -363,46 +479,43 @@ void FGenericScriptCodeGenerator::GenerateMainCpp()
 {
 	FCodeBuilder code;
 
-	for (auto& HeaderFilename : AllScriptHeaders)
+	for (auto& HeaderFilename : AllCppHeaders)
 	{
 		FString NewFilename(FPaths::GetCleanFilename(HeaderFilename));
 		code.AppendLine(TEXT("#include \"%s\""), *NewFilename);
 	}
 
-	FString Filename = GeneratedCodePath / TEXT("ExportForDotnetLib.inl");
+	FString Filename = GeneratedCodePath / GenerateMainCppName;
 	SaveHeaderIfChanged(Filename, code.ToString());
 }
 
-FString FGenericScriptCodeGenerator::GenerateWrapperFunctionDeclaration(const FString& ClassNameCPP, UClass* Class, UFunction* Function)
+void FGenericScriptCodeGenerator::SaveCPP(FCodeBuilder& code, const FString Name)
 {
-	return GenerateWrapperFunctionDeclaration(ClassNameCPP, Class, Function->GetName());
+	auto Path = FPaths::Combine(GeneratedCodePath, Name + GenerateCppPostfix);
+	AllCppHeaders.Add(FPaths::GetCleanFilename(Path));
+
+	SaveHeaderIfChanged(Path, code.ToString());
 }
 
-FString FGenericScriptCodeGenerator::GenerateWrapperFunctionDeclaration(const FString& ClassNameCPP, UClass* Class, const FString& FunctionName)
+void FGenericScriptCodeGenerator::SaveCS(FCodeBuilder& code, const FString Name)
 {
-	return FString::Printf(TEXT("int32 %s_%s(void* InScriptContext)"), *Class->GetName(), *FunctionName);
+	auto Path = FPaths::Combine(GeneratedCodePath, CS_Project_Path, Name + GenerateCSPostfix);;
+	SaveHeaderIfChanged(Path, code.ToString());
 }
 
-FString FGenericScriptCodeGenerator::GenerateFunctionParamDeclaration(const FString& ClassNameCPP, UClass* Class, UFunction* Function, UProperty* Param)
+FString FGenericScriptCodeGenerator::ReplaceCppTypeToCS(const FString& CPPType)
 {
-	FString ParamDecl;
-	if (Param->IsA(UObjectPropertyBase::StaticClass()) || Param->IsA(UClassProperty::StaticClass()))
-	{
-		ParamDecl = FString::Printf(TEXT("UObject* %s = nullptr;"), *Param->GetName());
-	}
-	else
-	{
-		ParamDecl = FString::Printf(TEXT("%s %s = %s();"), *GetPropertyTypeCPP(Param, CPPF_ArgumentOrReturnValue), *Param->GetName(), *GetPropertyTypeCPP(Param, CPPF_ArgumentOrReturnValue));
-	}
-	return ParamDecl;
+	if (CPPType == "FString") return "string";
+	if (CPPType == "FName") return "string";
+	if (CPPType == "uint8") return "byte";
+	if (CPPType == "uint16") return "UInt16";
+	if (CPPType == "uint32") return "UInt32";
+	if (CPPType == "uint64") return "UInt64";
+	if (CPPType == "int16") return "Int16";
+	if (CPPType == "int32") return "Int32";
+	if (CPPType == "int64") return "Int64";
+
+	return CPPType;
 }
 
-FString FGenericScriptCodeGenerator::GenerateObjectDeclarationFromContext(const FString& ClassNameCPP, UClass* Class)
-{
-	return FString::Printf(TEXT("UObject* Obj = (UObject*)InScriptContext;"));
-}
-
-FString FGenericScriptCodeGenerator::GenerateReturnValueHandler(const FString& ClassNameCPP, UClass* Class, UFunction* Function, UProperty* ReturnValue)
-{
-	return TEXT("return 0;");
-}
+#pragma optimize("", on)

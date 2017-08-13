@@ -1,7 +1,7 @@
 #include "UnrealDotNet.h"
 #include "CoreShell.h"
 #include "Misc/Paths.h"
-#include "ExportForDotnetLib.inl"
+#include "ExportForDotnet.inl"
 
 //             |
 //             |
@@ -34,10 +34,6 @@ static const FString CoreCLR_Name = "coreclr.dll";
 static const FString Dotnet_Namespace = "GameLogic";
 static const FString Dotnet_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
 static const FString TpaExtensions[] = { "*.dll", "*.exe" };
-
-extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_E(char* Message) { UE_LOG(NetCoreRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
-extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_W(char* Message) { UE_LOG(NetCoreRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
-extern "C" UNREALDOTNETRUNTIME_API void Call_ULOG_L(char* Message) { UE_LOG(NetCoreRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 
 void UCoreShell::Initialize()
 {

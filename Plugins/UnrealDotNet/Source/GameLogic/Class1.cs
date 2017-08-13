@@ -11,7 +11,7 @@ namespace GameLogic
 
         public void OnTick(float DeltaTime)
         {
-            ULog("Hey!");
+            ULog(DeltaTime.ToString());
         }
     }
 }

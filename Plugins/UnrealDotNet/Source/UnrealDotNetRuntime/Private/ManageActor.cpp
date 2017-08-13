@@ -2,8 +2,6 @@
 #include "ManageActor.h"
 #include "CoreShell.h"
 
-#pragma optimize("", off)
-
 AManageActor::AManageActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -34,5 +32,3 @@ void AManageActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 	Super::EndPlay(EndPlayReason);
 }
-
-#pragma optimize("", on)
