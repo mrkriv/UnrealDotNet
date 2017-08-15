@@ -6,37 +6,36 @@
 DECLARE_LOG_CATEGORY_EXTERN(CoreShell, Log, All);
 DECLARE_LOG_CATEGORY_EXTERN(NetCoreRuntime, Log, All);
 
-static const FString Wrapper_Namespace = "UnrealEngine";
-static const FString Wrapper_Assemble = "UnrealDotNetWrapper, Version=1.0.0.0, Culture=neutral";
-
 UCLASS()
 class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 {
 	GENERATED_BODY()
 
-	static struct ICLRRuntimeHost2* Host;
+	static struct ICLRRuntimeHost4* Host;
+	static FString AssemblyGuid;
 	static DWORD DomainID;
 
-	static struct ICLRRuntimeHost2* CreateHost(const FString& coreCLRPath);
-	static DWORD CreateDomain(struct ICLRRuntimeHost2* Host, const FString& targetAppPath);
-
+	static struct ICLRRuntimeHost4* CreateHost(const FString& coreCLRPath);
+	static DWORD CreateDomain(struct ICLRRuntimeHost4* Host, const FString& targetAppPath);
+	static void UpdateGameLib();
+	static void OnDirectoryChanged(const TArray<struct FFileChangeData>& FileChanges);
+	
 public:
 
-	UFUNCTION(BlueprintCallable, Category = DotNet)
-	static void ReloadDotnetHost();
+	static FString UnrealEngine_Assemble;
+	static FString GameLogic_Assemble;
 
 	UFUNCTION(BlueprintCallable, Category = DotNet)
 	static FString RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument);
 
 	static void* GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method);
 
-
 	template<typename... ArgumentT>
 	static void InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)
 	{
 		typedef void(__stdcall InvokeFp)(ArgumentT...);
 
-		auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, FullClassName, Method);
+		auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, FullClassName, Method);
 
 		if (manageMethod != NULL)
 		{
@@ -44,19 +43,19 @@ public:
 		}
 	}
 	
-	template<typename ReturtT, typename... ArgumentT>
-	static ReturtT InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)
+	template<typename ReturtType, int Stop, typename... ArgumentT>
+	static ReturtType InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)
 	{
-		typedef ReturtT(__stdcall InvokeFp)(ArgumentT...);
+		typedef ReturtType(__stdcall InvokeFp)(ArgumentT...);
 
-		auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, FullClassName, Method);
+		auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, FullClassName, Method);
 
 		if (manageMethod != NULL)
 		{
 			return manageMethod(Aruments...);
 		}
 
-		return ReturtT();
+		return ReturtType();
 	}
 
 
@@ -64,7 +63,7 @@ public:
 	{
 		typedef void(__stdcall InvokeFp)(UObject*, char*);
 
-		const static auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, "UnrealEngine.UObject", "Invoke");
+		const static auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, "UnrealEngine.NativeManager", "Invoke");
 
 		if (manageMethod != NULL)
 		{
@@ -93,7 +92,7 @@ public:
 	{
 		typedef void(__stdcall InvokeFp)(UObject*, char*, void*, int);
 
-		const static auto manageMethod = (InvokeFp*)GetMethodPtr(Wrapper_Assemble, "UnrealEngine.UObject", "Invoke");
+		const static auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, "UnrealEngine.NativeManager", "Invoke");
 
 		if (manageMethod != NULL)
 		{

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <OutputTypeEx>library</OutputTypeEx>
+    <PackageId>GameLogic</PackageId>
+    <AssemblyName>GameLogicXXXXXXXX</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\Binaries\Win64\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotReloadUtilit\HotReloadUtilit.csproj" />
+    <ProjectReference Include="..\UnrealEngine\UnrealEngine.csproj" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -pre $(OutDir) $(ProjectDir)" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -post $(OutDir) $(ProjectDir)" />
+  </Target>
+
+</Project>

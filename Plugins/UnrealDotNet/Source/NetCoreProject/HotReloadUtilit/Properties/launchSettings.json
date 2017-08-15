@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HotReloadUtilit": {
+      "commandName": "Project",
+      "commandLineArgs": "-pre D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\GameLogic"
+    }
+  }
+}

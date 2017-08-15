@@ -1,0 +1,9 @@
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogic.csprojResolveAssemblyReference.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogic.csproj.CoreCompileInputs.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogic.AssemblyInfoInputs.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogic.AssemblyInfo.cs
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp2.0\GameLogicXXXXXXXX.deps.json
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp2.0\GameLogicXXXXXXXX.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp2.0\GameLogicXXXXXXXX.pdb
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogicXXXXXXXX.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\GameLogic\obj\Debug\netcoreapp2.0\GameLogicXXXXXXXX.pdb

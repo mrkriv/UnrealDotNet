@@ -1,0 +1,9 @@
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\bin\Release\netcoreapp2.0\UnrealEngine.deps.json
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\bin\Release\netcoreapp2.0\UnrealEngine.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\bin\Release\netcoreapp2.0\UnrealEngine.pdb
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.csprojResolveAssemblyReference.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.csproj.CoreCompileInputs.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.AssemblyInfoInputs.cache
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.AssemblyInfo.cs
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.dll
+D:\ue4\DotUnrealExample\Plugins\UnrealDotNet\Source\NetCoreProject\UnrealEngine\obj\Release\netcoreapp2.0\UnrealEngine.pdb

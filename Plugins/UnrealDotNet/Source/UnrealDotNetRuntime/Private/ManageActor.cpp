@@ -13,8 +13,11 @@ void AManageActor::BeginPlay()
 
 	if (!ManageClassName.IsEmpty())
 	{
-		bIsManageAttach = UCoreShell::InvokeInWrapper<bool>("UnrealEngine.UObject", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName));
+		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName));
 	}
+
+	if (bIsManageAttach)
+		UCoreShell::InvokeInObject(this, "OnBeginPlay");
 }
 
 void AManageActor::Tick(float DeltaTime)
@@ -28,7 +31,10 @@ void AManageActor::Tick(float DeltaTime)
 void AManageActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	if (bIsManageAttach)
-		UCoreShell::InvokeInWrapper("UnrealEngine.UObject", "RemoveWrapper", this);
+		UCoreShell::InvokeInObject(this, "OnEndPlay");
+
+	if (bIsManageAttach)
+		UCoreShell::InvokeInWrapper("UnrealEngine.NativeManager", "RemoveWrapper", this);
 
 	Super::EndPlay(EndPlayReason);
 }

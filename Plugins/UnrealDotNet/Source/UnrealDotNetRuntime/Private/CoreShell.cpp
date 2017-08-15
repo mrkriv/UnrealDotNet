@@ -1,6 +1,8 @@
 #include "UnrealDotNet.h"
 #include "CoreShell.h"
 #include "Misc/Paths.h"
+#include "IDirectoryWatcher.h"
+#include "DirectoryWatcherModule.h"
 #include "ExportForDotnet.inl"
 
 //             |
@@ -13,7 +15,7 @@
 #pragma warning(disable:4005)
 #pragma warning(disable:4668)
 
-#include "inc/mscoree.h"
+#include "inc/MSCOREE.h"
 #include "Windows/WindowsSystemIncludes.h"
 #include "Windows/WIndowsPlatform.h"
 #include "Windows/WindowsPlatformProcess.h"
@@ -24,24 +26,74 @@
 DEFINE_LOG_CATEGORY(CoreShell);
 DEFINE_LOG_CATEGORY(NetCoreRuntime);
 
-ICLRRuntimeHost2* UCoreShell::Host = NULL;
-DWORD UCoreShell::DomainID = 0;
-
 static const FString PluginName = "UnrealDotNet";
-static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\1.1.2\\");
-static const FString DotnetLib_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64\\netcoreapp1.1\\");
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\2.0.0\\");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64");
+static const FString HotreloadHook_Filename = "HotReload\\hotreload";
 static const FString CoreCLR_Name = "coreclr.dll";
-static const FString Dotnet_Namespace = "GameLogic";
-static const FString Dotnet_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
-static const FString TpaExtensions[] = { "*.dll", "*.exe" };
+
+FString UCoreShell::AssemblyGuid;
+FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Culture=neutral";
+FString UCoreShell::GameLogic_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
+
+ICLRRuntimeHost4* UCoreShell::Host = NULL;
+DWORD UCoreShell::DomainID = 0;
 
 void UCoreShell::Initialize()
 {
 	Host = CreateHost(CoreCLR_Path / CoreCLR_Name);
-	DomainID = CreateDomain(Host, DotnetLib_Path);
+	DomainID = CreateDomain(Host, Domain_Path);
+
+	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
+	if (DirectoryWatcher)
+	{
+		FDelegateHandle DirectoryChangedHandle;
+		auto Callback = IDirectoryWatcher::FDirectoryChanged::CreateStatic(&UCoreShell::OnDirectoryChanged);
+		DirectoryWatcher->RegisterDirectoryChangedCallback_Handle(Domain_Path, Callback, DirectoryChangedHandle);
+	}
 }
 
-ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
+void UCoreShell::OnDirectoryChanged(const TArray<FFileChangeData>& FileChanges)
+{
+	for (auto& change : FileChanges)
+	{
+		if (FPaths::GetCleanFilename(change.Filename) == FPaths::GetCleanFilename(HotreloadHook_Filename))
+		{
+			UpdateGameLib();
+			return;
+		}
+	}
+}
+
+void UCoreShell::UpdateGameLib()
+{
+	if (Host == NULL)
+		return;
+	
+	FString NewAssemblyGuid;
+	if (FFileHelper::LoadFileToString(NewAssemblyGuid, *(Domain_Path / HotreloadHook_Filename)))
+	{
+		NewAssemblyGuid = NewAssemblyGuid.TrimTrailing();
+		if (NewAssemblyGuid == AssemblyGuid)
+			return;
+
+		AssemblyGuid = NewAssemblyGuid;
+
+		char* name = InvokeInWrapper<char*, 0, char*, char*>("UnrealEngine.NativeManager", "UpdateGameLib", TCHAR_TO_UTF8(*Domain_Path), TCHAR_TO_UTF8(*AssemblyGuid));
+		GameLogic_Assemble = FString(UTF8_TO_TCHAR(name));
+
+		if (GameLogic_Assemble.IsEmpty())
+		{
+			UE_LOG(CoreShell, Error, TEXT("Hot reload for net core failed :("));
+		}
+		else
+		{
+			UE_LOG(CoreShell, Log, TEXT("Hot reload done, current assembly: %s"), *GameLogic_Assemble);
+		}
+	}
+}
+
+ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 {
 	HMODULE coreCLR = LoadLibraryExW(*coreCLRPath, NULL, 0);
 
@@ -51,7 +103,7 @@ ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
 		return NULL;
 	}
 
-	ICLRRuntimeHost2* Host;
+	ICLRRuntimeHost4* Host;
 	auto pfnGetCLRRuntimeHost = reinterpret_cast<FnGetCLRRuntimeHost>((INT_PTR)::GetProcAddress(coreCLR, "GetCLRRuntimeHost"));
 
 	if (!pfnGetCLRRuntimeHost)
@@ -60,7 +112,7 @@ ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
 		return NULL;
 	}
 
-	HRESULT hr = pfnGetCLRRuntimeHost(IID_ICLRRuntimeHost2, (IUnknown**)&Host);
+	HRESULT hr = pfnGetCLRRuntimeHost(IID_ICLRRuntimeHost4, (IUnknown**)&Host);
 
 	hr = Host->SetStartupFlags
 	(
@@ -88,13 +140,14 @@ ICLRRuntimeHost2* UCoreShell::CreateHost(const FString& coreCLRPath)
 	return Host;
 }
 
-DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppPath)
+DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppPath)
 {
 	if (Host == NULL)
 		return -1;
 
 	FString trustedPlatformAssemblies;
 
+	static const FString TpaExtensions[] = { "*.dll", "*.exe" };
 	for (int i = 0; i < _countof(TpaExtensions); i++)
 	{
 		FString searchMask = CoreCLR_Path + TpaExtensions[i];
@@ -120,12 +173,9 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppP
 	FString platformResourceRoots = appPaths;
 	FString appDomainCompatSwitch = L"UseLatestBehaviorWhenTFMNotSpecified";
 
-	//nativeDllSearchDirectories += L"D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Binaries\\Win64;";
-	//nativeDllSearchDirectories += L"D:\\ue4\\DotUnrealExample\\Binaries\\Win64;";
-
 	int appDomainFlags =
 		// APPDOMAIN_FORCE_TRIVIAL_WAIT_OPERATIONS |		// Do not pump messages during wait
-		// APPDOMAIN_SECURITY_SANDBOXED |					// Causes assemblies not from the TPA list to be loaded as partially trusted
+		APPDOMAIN_SECURITY_SANDBOXED |					// Causes assemblies not from the TPA list to be loaded as partially trusted
 		APPDOMAIN_ENABLE_PLATFORM_SPECIFIC_APPS |			// Enable platform-specific assemblies to run
 		APPDOMAIN_ENABLE_PINVOKE_AND_CLASSIC_COMINTEROP |	// Allow PInvoking from non-TPA assemblies
 		APPDOMAIN_DISABLE_TRANSPARENCY_ENFORCEMENT;			// Entirely disables transparency checks
@@ -150,13 +200,13 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost2* Host, const FString& targetAppP
 		*platformResourceRoots,
 		*appDomainCompatSwitch
 	};
-
+	
 	HRESULT hr = Host->CreateAppDomainWithManager
 	(
-		L"Unreal Host AppDomain",		// Friendly AD name
+		std::wstring(*PluginName).c_str(),
 		appDomainFlags,
-		NULL,							// Optional AppDomain manager assembly name
-		NULL,							// Optional AppDomain manager type (including namespace)
+		NULL,
+		NULL,
 		sizeof(propertyKeys) / sizeof(wchar_t*),
 		propertyKeys,
 		propertyValues,
@@ -170,12 +220,6 @@ void UCoreShell::Uninitialize()
 	Host->UnloadAppDomain(DomainID, true);
 	Host->Stop();
 	Host->Release();
-}
-
-void UCoreShell::ReloadDotnetHost()
-{
-	Host->UnloadAppDomain(DomainID, true);
-	DomainID = CreateDomain(Host, DotnetLib_Path);
 }
 
 void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method)
@@ -192,7 +236,7 @@ void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClass
 
 	if (manageMethod == NULL)
 	{
-		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %"), *FullClassName, *Method, *Assemble);
+		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
 	}
 
 	return manageMethod;
@@ -202,7 +246,7 @@ FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString&
 {
 	typedef char*(__stdcall InvokeFp)(char*);
 
-	InvokeFp* manageMethod = (InvokeFp*)GetMethodPtr(Dotnet_Assemble, FullClassName, Method);
+	InvokeFp* manageMethod = (InvokeFp*)GetMethodPtr(GameLogic_Assemble, FullClassName, Method);
 
 	if (manageMethod == NULL)
 		return "";

@@ -39,17 +39,18 @@ public class UnrealDotNetRuntime : ModuleRules
                 "Engine",
                 "InputCore",
                 "SlateCore",
-                "NetworkReplayStreaming",
-                "AIModule",
-                "PacketHandler",
-                "MovieSceneTracks",
-                "MovieScene",
+                //"NetworkReplayStreaming",
+                //"AIModule",
+                //"PacketHandler",
+                //"MovieSceneTracks",
+                //"MovieScene",
                 "Slate",
                 "UMG",
-                "GeometryCache",
-                "Niagara",
-                "MediaAssets",
-                "Projects"
+                //"GeometryCache",
+                //"Niagara",
+                //"MediaAssets",
+                //"Projects",
+                "DirectoryWatcher"
             }
         );
         
