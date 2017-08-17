@@ -10,7 +10,23 @@ namespace Generator
     {
         public static void Main(string[] args)
         {
-            using (var fileStream = new StreamReader(@"C:\Users\vladi\Desktop\Actor.h"))
+            var files = new[] { @"C:\Users\vladi\Desktop\Actor.h" };
+
+            var visitor = new GenMetadataVisitor();
+            foreach (var file in files)
+            {
+                AppendFile(file, visitor);
+            }
+
+            var metadata = visitor.GetClasses();
+
+            metadata.ForEach(Console.WriteLine);
+            Console.ReadKey();
+        }
+
+        private static void AppendFile(string file, GenMetadataVisitor visitor)
+        {
+            using (var fileStream = new StreamReader(file))
             {
                 var inputStream = new AntlrInputStream(fileStream);
 
@@ -20,15 +36,14 @@ namespace Generator
                 var parser = new CPP14Parser(commonTokenStream);
                 var context = parser.translationunit();
 
+                visitor.Append(context);
+
                 //foreach (var ch in context.children)
                 //{
                 //    Dump(ch, 0);
                 //}
 
                 //Console.Read();
-
-                var visitor = new GeneratorVisitor();
-                visitor.Visit(context);
             }
         }
 
