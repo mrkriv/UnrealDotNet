@@ -4,8 +4,6 @@
 #include "Misc/Paths.h"
 #include <regex>	//#include "Regex.h" wtf?
 
-#pragma optimize("", off)
-
 static const FString CPP_API_NAME = TEXT("UNREALDOTNETRUNTIME");
 static const FString CPP_Function_Prefix = TEXT("Call_");
 static const FString CPP_Structure_Postfix = TEXT("_ExternC");
@@ -651,5 +649,3 @@ FString FGenericScriptCodeGenerator::GetFieldName(UField* Field)
 		return Field->GetFName().ToString();
 	}
 }
-
-#pragma optimize("", on)

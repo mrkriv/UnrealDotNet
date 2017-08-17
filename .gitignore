@@ -81,3 +81,4 @@ Plugins/*/Binaries/
 Plugins/UnrealDotNet/Source/GameLogic/obj/
 Plugins/UnrealDotNet/Source/UnrealDotNetWrapper/obj/
 Plugins/UnrealDotNet/Resources/Dotnet/
+Plugins/UnrealDotNet/Source/NetCoreProject/Generator/obj/
