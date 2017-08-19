@@ -14,7 +14,7 @@ namespace Generator
 
         public static void Main(string[] args)
         {
-            var output = @"C: \Users\vladi\Desktop\";
+            var output = @"C:\Users\vladi\Desktop";
             var files = new[]
             {
                 @"C:\Users\vladi\Desktop\Actor.h"
@@ -44,7 +44,7 @@ namespace Generator
             Console.WriteLine($"Total generate time {genTime / 1000.0}s");
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         private static void AppendFile(string file, MetadataVisitor visitor)

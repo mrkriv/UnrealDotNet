@@ -7,7 +7,9 @@ namespace Generator.Metadata
         public bool IsConst { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
+        public bool IsVoid => Type == "void";
 
+        public string Type { get; protected set; }
         public string Name { get; set; }
 
         public override string ToString()
@@ -27,8 +29,6 @@ namespace Generator.Metadata
 
     public class PrimitiveVariable : Variable
     {
-        public string Type { get; }
-
         public static readonly string[] PrimitiveTypes =
         {
             "void",
@@ -67,6 +67,7 @@ namespace Generator.Metadata
         public ClassVariable(Class ClassType)
         {
             this.ClassType = ClassType;
+            this.Type = ClassType.Name;
         }
 
         public override string ToString()

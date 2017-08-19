@@ -10,7 +10,7 @@ namespace Generator
 
         public CoreWriter(string FilePath)
         {
-            tw = new StreamWriter(FilePath);
+            tw = new StreamWriter(File.OpenWrite(FilePath));
         }
 
         public CoreWriter(TextWriter tw)
@@ -18,9 +18,24 @@ namespace Generator
             this.tw = tw;
         }
 
+        public void Write(bool NeedWrite, string Text)
+        {
+            if (NeedWrite)
+                tw.Write(Text);
+        }
+
         public void Write(string Text)
         {
             tw.Write(Text);
+        }
+
+        public void WriteLine(bool NeedWrite, string Line)
+        {
+            if (NeedWrite)
+            {
+                tw.WriteLine(Line);
+                WriteTab();
+            }
         }
 
         public void WriteLine(string Line)
@@ -51,7 +66,7 @@ namespace Generator
         {
             tab--;
             WriteLine();
-            tw.Write("}");
+            tw.WriteLine("}");
         }
 
         private void WriteTab()
