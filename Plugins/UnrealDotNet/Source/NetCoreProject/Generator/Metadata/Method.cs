@@ -10,9 +10,15 @@ namespace Generator.Metadata
 
         public string Name { get; set; }
 
+        public Method(string Name)
+        {
+            InputTypes = new List<Variable>();
+            this.Name = Name;
+        }
+
         public override string ToString()
         {
-            return $"{ReturnType} {Name} ({InputTypes.Count})";
+            return $"{ReturnType} {Name} ({string.Join(',', InputTypes)})";
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Generator
 {
     internal static class Program
     {
+        private static bool CreateJsonDump = false;
+
         public static void Main(string[] args)
         {
             var files = new[] { @"C:\Users\vladi\Desktop\Actor.h" };
@@ -20,7 +22,20 @@ namespace Generator
 
             var metadata = visitor.GetClasses();
 
-            metadata.ForEach(Console.WriteLine);
+            foreach (var cl in metadata)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(cl.IsImplemented ? cl.Name : $"{cl.Name} (Not Implemented)");
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                foreach (var method in cl.Methods)
+                {
+                    Console.WriteLine("\t" + method);
+                }
+
+                Console.WriteLine();
+            }
+
             Console.ReadKey();
         }
 
@@ -38,32 +53,47 @@ namespace Generator
 
                 visitor.Append(context);
 
-                //foreach (var ch in context.children)
-                //{
-                //    Dump(ch, 0);
-                //}
+                if (!CreateJsonDump)
+                    return;
 
-                //Console.Read();
+                using (var jsonDump = new StreamWriter($"{Path.GetFileName(file)}.json"))
+                {
+                    jsonDump.Write("{");
+
+                    for (var i = 0; i < context.ChildCount; i++)
+                    {
+                        if (i != 0)
+                            jsonDump.Write(",");
+
+                        Dump(jsonDump, context.GetChild(i));
+                    }
+
+                    jsonDump.Write("}");
+                }
             }
         }
 
-        private static void Dump(IParseTree Tree, int tab)
+        private static void Dump(TextWriter file, IParseTree Tree)
         {
-            Console.WriteLine($"{new string(' ', tab)}{Tree.GetType().Name}");
-
             if (Tree.ChildCount == 0)
             {
-                var old = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"{new string(' ', tab)}{Tree.GetText()}");
-                Console.ForegroundColor = old;
+                file.Write($"\"Terminal\": \"{Tree.GetText()}\"");
             }
             else
             {
+                var name = Tree.GetType().Name.Replace("Context", "");
+                file.Write($"\"{name}\":");
+                file.Write("{");
+
                 for (var i = 0; i < Tree.ChildCount; i++)
                 {
-                    Dump(Tree.GetChild(i), tab + 1);
+                    if (i != 0)
+                        file.Write(",");
+
+                    Dump(file, Tree.GetChild(i));
                 }
+
+                file.Write("}");
             }
         }
     }

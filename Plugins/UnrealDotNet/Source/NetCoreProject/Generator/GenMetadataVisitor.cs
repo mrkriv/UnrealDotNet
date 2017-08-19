@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Transactions;
+using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using Generator.Metadata;
 using static CPP14Parser;
 
@@ -26,11 +29,11 @@ namespace Generator
         {
             Classes.TryGetValue(name, out Class Class);
 
-            if (Class == null)
-            {
-                Class = new Class { Name = name };
-                Classes.Add(name, Class);
-            }
+            if (Class != null)
+                return Class;
+
+            Class = new Class(name);
+            Classes.Add(name, Class);
 
             return Class;
         }
@@ -41,6 +44,7 @@ namespace Generator
             var name = head.FindFirst<ClassheadnameContext>().GetText();
 
             CurrentClass = GetClass(name);
+            CurrentClass.IsImplemented = true;
 
             var baseDec = head.FindFirst<BaseclauseContext>();
             if (baseDec != null)
@@ -50,7 +54,7 @@ namespace Generator
             }
 
             Ignore = true;
-            VisitChildren(context);
+            VisitMemberspecification(context.FindFirst<MemberspecificationContext>(false));
 
             CurrentClass = null;
             return null;
@@ -61,12 +65,63 @@ namespace Generator
             if (Ignore || CurrentClass == null)
                 return null;
 
-            var returnType = context.FindFirst<DeclspecifierseqContext>().GetText();
+            var name = context.FindFirst<NoptrdeclaratorContext>().FindFirst<TerminalNodeImpl>().GetText();
+            var Parameters = context.FindFirst<ParameterdeclarationclauseContext>();
 
-            var method = new Method();
-            method.Name = context.FindFirst<UnqualifiedidContext>().GetText();
+            var method = new Method(name)
+            {
+                ReturnType = ParceVariableForReturn(context),
+                InputTypes = Parameters.FindAll<ParameterdeclarationContext>().Reverse()
+                    .Select(ParceVariable).ToList()
+            };
+
+            CurrentClass.Methods.Add(method);
 
             return null;
+        }
+
+        private Variable ParceVariable(ParserRuleContext context)
+        {
+            var declarator = context.FindFirst<DeclaratorContext>();
+            var Ptrdeclarator = declarator.FindFirst<PtroperatorContext>();
+
+            var variable = ParceVariableMain(context, Ptrdeclarator);
+            variable.Name = declarator.FindFirst<NoptrdeclaratorContext>().FindFirst<TerminalNodeImpl>().GetText();
+
+            return variable;
+        }
+
+        private Variable ParceVariableForReturn(ParserRuleContext context)
+        {
+            var Ptrdeclarator = context.FindFirst<PtrdeclaratorContext>().FindFirst<PtroperatorContext>(false);
+            return ParceVariableMain(context, Ptrdeclarator);
+        }
+
+        private Variable ParceVariableMain(ParserRuleContext context, ParserRuleContext Ptrdeclarator)
+        {
+            var declspecRoot = context.FindFirst<DeclspecifierseqContext>();
+            var declspec = declspecRoot.FindFirst<DeclspecifierseqContext>() ?? declspecRoot;
+
+            var types = declspec.FindAll<TerminalNodeImpl>().Select(n => n.GetText());
+            types = types.Where(s => s != "struct" && s != "class");
+            var type = string.Join(' ', types);
+
+            Variable variable;
+
+            if (PrimitiveVariable.PrimitiveTypes.Contains(type))
+                variable = new PrimitiveVariable(type);
+            else
+                variable = new ClassVariable(GetClass(type));
+
+            variable.IsConst = declspecRoot.FindFirst<CvqualifierContext>() != null;
+
+            if (Ptrdeclarator != null)
+            {
+                variable.IsReference = Ptrdeclarator.GetText() == "&";
+                variable.IsPointer = Ptrdeclarator.GetText() == "*";
+            }
+
+            return variable;
         }
 
         public override object VisitAccessspecifier(AccessspecifierContext context)
