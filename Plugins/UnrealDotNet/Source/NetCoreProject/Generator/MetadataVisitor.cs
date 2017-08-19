@@ -9,16 +9,13 @@ using static CPP14Parser;
 
 namespace Generator
 {
-    public class GenMetadataVisitor : CPP14BaseVisitor<object>
+    public class MetadataVisitor : CPP14BaseVisitor<object>
     {
         private readonly Dictionary<string, Class> Classes = new Dictionary<string, Class>();
         private Class CurrentClass;
         private bool Ignore;
 
-        public List<Class> GetClasses()
-        {
-            return Classes.Values.ToList();
-        }
+        public Domain GetDomain() => new Domain { Classes = Classes.Values.ToList() };
 
         public void Append(TranslationunitContext Translationunit)
         {

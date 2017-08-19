@@ -1,48 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using Generator.Metadata;
 
 namespace Generator
 {
     internal static class Program
     {
-        private static bool CreateJsonDump = false;
+        private static readonly Stopwatch Watch = new Stopwatch();
 
         public static void Main(string[] args)
         {
-            var files = new[] { @"C:\Users\vladi\Desktop\Actor.h" };
+            var output = @"C: \Users\vladi\Desktop\";
+            var files = new[]
+            {
+                @"C:\Users\vladi\Desktop\Actor.h"
+            };
 
-            var visitor = new GenMetadataVisitor();
+            Watch.Start();
+
+            var visitor = new MetadataVisitor();
             foreach (var file in files)
             {
                 AppendFile(file, visitor);
             }
 
-            var metadata = visitor.GetClasses();
+            Watch.Stop();
+            var parceTime = Watch.ElapsedMilliseconds;
 
-            foreach (var cl in metadata)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(cl.IsImplemented ? cl.Name : $"{cl.Name} (Not Implemented)");
+            Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
 
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                foreach (var method in cl.Methods)
-                {
-                    Console.WriteLine("\t" + method);
-                }
+            var domain = visitor.GetDomain();
+            domain.Print();
 
-                Console.WriteLine();
-            }
+            Watch.Start();
+            Codegenretor.GenarateTo(domain, output);
+            Watch.Stop();
+
+            var genTime = Watch.ElapsedMilliseconds - parceTime;
+            Console.WriteLine($"Total generate time {genTime / 1000.0}s");
+            Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             Console.ReadKey();
         }
 
-        private static void AppendFile(string file, GenMetadataVisitor visitor)
+        private static void AppendFile(string file, MetadataVisitor visitor)
         {
             using (var fileStream = new StreamReader(file))
             {
+                var watch = new Stopwatch();
+                watch.Start();
+
                 var inputStream = new AntlrInputStream(fileStream);
 
                 var lexer = new CPP14Lexer(inputStream);
@@ -51,49 +62,14 @@ namespace Generator
                 var parser = new CPP14Parser(commonTokenStream);
                 var context = parser.translationunit();
 
+                var parceTime = watch.ElapsedMilliseconds;
+
                 visitor.Append(context);
 
-                if (!CreateJsonDump)
-                    return;
+                watch.Stop();
 
-                using (var jsonDump = new StreamWriter($"{Path.GetFileName(file)}.json"))
-                {
-                    jsonDump.Write("{");
-
-                    for (var i = 0; i < context.ChildCount; i++)
-                    {
-                        if (i != 0)
-                            jsonDump.Write(",");
-
-                        Dump(jsonDump, context.GetChild(i));
-                    }
-
-                    jsonDump.Write("}");
-                }
-            }
-        }
-
-        private static void Dump(TextWriter file, IParseTree Tree)
-        {
-            if (Tree.ChildCount == 0)
-            {
-                file.Write($"\"Terminal\": \"{Tree.GetText()}\"");
-            }
-            else
-            {
-                var name = Tree.GetType().Name.Replace("Context", "");
-                file.Write($"\"{name}\":");
-                file.Write("{");
-
-                for (var i = 0; i < Tree.ChildCount; i++)
-                {
-                    if (i != 0)
-                        file.Write(",");
-
-                    Dump(file, Tree.GetChild(i));
-                }
-
-                file.Write("}");
+                var visitTime = watch.ElapsedMilliseconds - parceTime;
+                Console.WriteLine($"{file}: Parce {parceTime}ms, Visit {visitTime}ms");
             }
         }
     }
