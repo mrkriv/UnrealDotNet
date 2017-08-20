@@ -44,6 +44,10 @@ namespace Generator
                 cw.WriteLine("private readonly IntPtr NativePointer;");
                 cw.WriteLine();
                 cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
+
+                if (Class.BaseClass != null)
+                    cw.WriteLine("\t: base(Adress)");
+
                 cw.OpenBlock();
                 cw.WriteLine("NativePointer = Adress;");
                 cw.CloseBlock();
@@ -78,7 +82,7 @@ namespace Generator
                     var call = string.Join(", ", inputs);
 
                     cw.WriteLine(
-                        $"public {ExportVariable(method.ReturnType)} {method.Name}({param});");
+                        $"public {ExportVariable(method.ReturnType)} {method.Name}({param})");
 
                     cw.OpenBlock();
 
@@ -115,12 +119,35 @@ namespace Generator
 
         private static string ExportVariable(Variable variable)
         {
-            var result = variable.Type;
+            var result = ReplaceTypeCPPtoCS(variable);
 
             if (!string.IsNullOrEmpty(variable.Name))
                 result += " " + variable.Name;
 
             return result;
+        }
+
+        private static string ReplaceTypeCPPtoCS(Variable variable)
+        {
+            switch (variable.Type)
+            {
+                case "uint8":
+                    return "byte";
+
+                case "int32":
+                    return "Int32";
+
+                case "FString":
+                case "FText":
+                case "FName":
+                    return "string";
+
+                case "INT_PTR":
+                    return "IntPtr";
+
+                default:
+                    return variable.Type;
+            }
         }
     }
 }

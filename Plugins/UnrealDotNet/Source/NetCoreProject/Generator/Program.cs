@@ -14,7 +14,19 @@ namespace Generator
 
         public static void Main(string[] args)
         {
-            var output = @"C:\Users\vladi\Desktop";
+            if (args.Length != 1)
+            {
+                PrintError("The first command line parameter must be the path to the dotnet project 'UnrealEngine'.");
+                return;
+            }
+
+            var output = Path.Combine(args[0], "Generate");
+
+            if (!Directory.Exists(output))
+            {
+                PrintError($"Output directory '{output}' is not exists");
+            }
+
             var files = new[]
             {
                 @"C:\Users\vladi\Desktop\Actor.h"
@@ -45,6 +57,13 @@ namespace Generator
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             Console.ReadKey();
+        }
+
+        private static void PrintError(string msg)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Error: " + msg);
+            Console.ResetColor();
         }
 
         private static void AppendFile(string file, MetadataVisitor visitor)

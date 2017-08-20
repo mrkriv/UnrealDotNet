@@ -16,4 +16,8 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BaseTypes\" />
+  </ItemGroup>
+
 </Project>

@@ -10,6 +10,9 @@ namespace Generator
 
         public CoreWriter(string FilePath)
         {
+            if (File.Exists(FilePath))
+                File.Delete(FilePath);
+
             tw = new StreamWriter(File.OpenWrite(FilePath));
         }
 

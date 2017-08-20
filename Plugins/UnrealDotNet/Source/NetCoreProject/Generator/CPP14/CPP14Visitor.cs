@@ -860,12 +860,6 @@ public interface ICPP14Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitUdefine([NotNull] CPP14Parser.UdefineContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CPP14Parser.ugennerated"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitUgennerated([NotNull] CPP14Parser.UgenneratedContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="CPP14Parser.uclass"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
