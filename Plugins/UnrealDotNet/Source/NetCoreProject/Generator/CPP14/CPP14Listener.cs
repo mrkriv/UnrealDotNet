@@ -1411,6 +1411,16 @@ public interface ICPP14Listener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitUdefine([NotNull] CPP14Parser.UdefineContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.ugennerated"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUgennerated([NotNull] CPP14Parser.UgenneratedContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.ugennerated"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUgennerated([NotNull] CPP14Parser.UgenneratedContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CPP14Parser.uclass"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

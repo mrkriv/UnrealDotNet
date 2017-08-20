@@ -1691,6 +1691,18 @@ public partial class CPP14BaseListener : ICPP14Listener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitUdefine([NotNull] CPP14Parser.UdefineContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.ugennerated"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUgennerated([NotNull] CPP14Parser.UgenneratedContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.ugennerated"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUgennerated([NotNull] CPP14Parser.UgenneratedContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CPP14Parser.uclass"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

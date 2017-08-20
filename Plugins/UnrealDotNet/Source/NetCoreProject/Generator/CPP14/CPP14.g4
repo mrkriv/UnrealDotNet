@@ -985,7 +985,14 @@ udefine
 	ufunction
 	| uproperty
 	| udeprecated
-	| 'GENERATED_BODY()'
+	| UGENNERATED
+;
+
+UGENNERATED
+:
+	'GENERATED_BODY()'
+	| 'GENERATED_UCLASS_BODY()'
+	| 'GENERATED_STRUCT_BODY()'
 ;
 
 uclass
@@ -1031,7 +1038,7 @@ umetaParametrList
 
 umetaParametr
 :
-	umetaParametrKey
+	umetaParametrValue
 	| umetaParametrKey '=' umetaParametrValue
 	| umetaParametrKey '=' '(' umetaParametrList ')'
 ;
