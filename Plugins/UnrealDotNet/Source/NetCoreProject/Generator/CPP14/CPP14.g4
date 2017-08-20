@@ -486,6 +486,7 @@ declaration
 	| namespacedefinition
 	| emptydeclaration
 	| attributedeclaration
+	| udefineTopLevel
 ;
 
 blockdeclaration
@@ -971,6 +972,81 @@ functiondefinition
 	functionbody
 ;
 
+udefineTopLevel
+:
+	uclass
+	| ustruct
+	| uenum
+	| UEAPI
+;
+
+udefine
+:
+	ufunction
+	| uproperty
+	| udeprecated
+	| 'GENERATED_BODY()'
+;
+
+uclass
+:
+	'UCLASS' umeta
+;
+
+ustruct
+:
+	'USTRUCT' umeta
+;
+
+uenum
+:
+	'UENUM' umeta
+;
+
+ufunction
+:
+	'UFUNCTION' umeta
+;
+
+uproperty
+:
+	'UPROPERTY' umeta
+;
+
+udeprecated
+:
+	'DEPRECATED' '(' literal ',' literal ')'
+;
+
+umeta
+:
+	'(' umetaParametrList? ')'
+;
+
+umetaParametrList
+:
+	umetaParametr
+	| umetaParametr ',' umetaParametrList
+;
+
+umetaParametr
+:
+	umetaParametrKey
+	| umetaParametrKey '=' umetaParametrValue
+	| umetaParametrKey '=' '(' umetaParametrList ')'
+;
+
+umetaParametrKey
+:
+	Identifier
+;
+
+umetaParametrValue
+:
+	Identifier
+	| literal
+;
+
 functionbody
 :
 	ctorinitializer? compoundstatement
@@ -1023,13 +1099,18 @@ classspecifier
 
 classhead
 :
-	classkey attributespecifierseq? classheadname classvirtspecifier? baseclause?
-	| classkey attributespecifierseq? baseclause?
+	classkey classUEAPI? attributespecifierseq? classheadname classvirtspecifier? baseclause?
+	| classkey classUEAPI? attributespecifierseq? baseclause?
 ;
 
 classheadname
 :
 	nestednamespecifier? classname
+;
+
+classUEAPI
+:
+	UEAPI
 ;
 
 classvirtspecifier
@@ -1059,6 +1140,7 @@ memberdeclaration
 	| templatedeclaration
 	| aliasdeclaration
 	| emptydeclaration
+	| udefine
 ;
 
 memberdeclaratorlist
@@ -1998,6 +2080,11 @@ theoperator
 	| '->'
 	| '(' ')'
 	| '[' ']'
+;
+
+UEAPI
+:
+	[A-Z]+ '_API'
 ;
 
 /*Lexer*/

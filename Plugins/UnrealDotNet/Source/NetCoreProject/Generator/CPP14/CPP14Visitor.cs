@@ -848,6 +848,84 @@ public interface ICPP14Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunctiondefinition([NotNull] CPP14Parser.FunctiondefinitionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.udefineTopLevel"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUdefineTopLevel([NotNull] CPP14Parser.UdefineTopLevelContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.udefine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUdefine([NotNull] CPP14Parser.UdefineContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.uclass"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUclass([NotNull] CPP14Parser.UclassContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.ustruct"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUstruct([NotNull] CPP14Parser.UstructContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.uenum"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUenum([NotNull] CPP14Parser.UenumContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.ufunction"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUfunction([NotNull] CPP14Parser.UfunctionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.uproperty"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUproperty([NotNull] CPP14Parser.UpropertyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.udeprecated"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUdeprecated([NotNull] CPP14Parser.UdeprecatedContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.umeta"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUmeta([NotNull] CPP14Parser.UmetaContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.umetaParametrList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUmetaParametrList([NotNull] CPP14Parser.UmetaParametrListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.umetaParametr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUmetaParametr([NotNull] CPP14Parser.UmetaParametrContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.umetaParametrKey"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUmetaParametrKey([NotNull] CPP14Parser.UmetaParametrKeyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.umetaParametrValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUmetaParametrValue([NotNull] CPP14Parser.UmetaParametrValueContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CPP14Parser.functionbody"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -907,6 +985,12 @@ public interface ICPP14Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClassheadname([NotNull] CPP14Parser.ClassheadnameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CPP14Parser.classUEAPI"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitClassUEAPI([NotNull] CPP14Parser.ClassUEAPIContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CPP14Parser.classvirtspecifier"/>.
 	/// </summary>

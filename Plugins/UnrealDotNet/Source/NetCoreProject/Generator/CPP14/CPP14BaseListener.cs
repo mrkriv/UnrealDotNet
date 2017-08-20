@@ -1667,6 +1667,162 @@ public partial class CPP14BaseListener : ICPP14Listener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctiondefinition([NotNull] CPP14Parser.FunctiondefinitionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.udefineTopLevel"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUdefineTopLevel([NotNull] CPP14Parser.UdefineTopLevelContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.udefineTopLevel"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUdefineTopLevel([NotNull] CPP14Parser.UdefineTopLevelContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.udefine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUdefine([NotNull] CPP14Parser.UdefineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.udefine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUdefine([NotNull] CPP14Parser.UdefineContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.uclass"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUclass([NotNull] CPP14Parser.UclassContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.uclass"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUclass([NotNull] CPP14Parser.UclassContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.ustruct"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUstruct([NotNull] CPP14Parser.UstructContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.ustruct"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUstruct([NotNull] CPP14Parser.UstructContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.uenum"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUenum([NotNull] CPP14Parser.UenumContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.uenum"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUenum([NotNull] CPP14Parser.UenumContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.ufunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUfunction([NotNull] CPP14Parser.UfunctionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.ufunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUfunction([NotNull] CPP14Parser.UfunctionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.uproperty"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUproperty([NotNull] CPP14Parser.UpropertyContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.uproperty"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUproperty([NotNull] CPP14Parser.UpropertyContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.udeprecated"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUdeprecated([NotNull] CPP14Parser.UdeprecatedContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.udeprecated"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUdeprecated([NotNull] CPP14Parser.UdeprecatedContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.umeta"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUmeta([NotNull] CPP14Parser.UmetaContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.umeta"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUmeta([NotNull] CPP14Parser.UmetaContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.umetaParametrList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUmetaParametrList([NotNull] CPP14Parser.UmetaParametrListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.umetaParametrList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUmetaParametrList([NotNull] CPP14Parser.UmetaParametrListContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.umetaParametr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUmetaParametr([NotNull] CPP14Parser.UmetaParametrContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.umetaParametr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUmetaParametr([NotNull] CPP14Parser.UmetaParametrContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.umetaParametrKey"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUmetaParametrKey([NotNull] CPP14Parser.UmetaParametrKeyContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.umetaParametrKey"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUmetaParametrKey([NotNull] CPP14Parser.UmetaParametrKeyContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.umetaParametrValue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUmetaParametrValue([NotNull] CPP14Parser.UmetaParametrValueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.umetaParametrValue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUmetaParametrValue([NotNull] CPP14Parser.UmetaParametrValueContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CPP14Parser.functionbody"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -1786,6 +1942,18 @@ public partial class CPP14BaseListener : ICPP14Listener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitClassheadname([NotNull] CPP14Parser.ClassheadnameContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CPP14Parser.classUEAPI"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterClassUEAPI([NotNull] CPP14Parser.ClassUEAPIContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CPP14Parser.classUEAPI"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitClassUEAPI([NotNull] CPP14Parser.ClassUEAPIContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="CPP14Parser.classvirtspecifier"/>.
 	/// <para>The default implementation does nothing.</para>

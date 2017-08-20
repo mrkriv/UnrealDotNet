@@ -62,8 +62,31 @@ namespace Generator
             if (Ignore || CurrentClass == null)
                 return null;
 
+            var meta = context.FindFirst<UmetaContext>();
+            var nop = context.FindFirst<NoptrdeclaratorContext>();
+
+            if (meta != null)
+            {
+                VisitMetadata(meta);
+            }
+            else if (nop != null)
+            {
+                VisitFunction(context);
+            }
+
+            return null;
+        }
+
+        private void VisitMetadata(UmetaContext context)
+        {
+            var metadata = context.FindAll<UmetaParametrContext>();
+        }
+
+        private void VisitFunction(ParserRuleContext context)
+        {
             var name = context.FindFirst<NoptrdeclaratorContext>().FindFirst<TerminalNodeImpl>().GetText();
             var Parameters = context.FindFirst<ParameterdeclarationclauseContext>();
+            var metadata = context.FindFirst<UmetaContext>()?.FindAll<UmetaParametrContext>();
 
             var method = new Method(name)
             {
@@ -73,8 +96,6 @@ namespace Generator
             };
 
             CurrentClass.Methods.Add(method);
-
-            return null;
         }
 
         private Variable ParceVariable(ParserRuleContext context)

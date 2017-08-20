@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Generator.Metadata
 {
@@ -14,6 +15,20 @@ namespace Generator.Metadata
         {
             InputTypes = new List<Variable>();
             this.Name = Name;
+        }
+
+        public IEnumerable<Class> Dependent
+        {
+            get
+            {
+                var list = InputTypes.OfType<ClassVariable>().Select(v => v.ClassType).ToList();
+
+                var returnClass = ReturnType as ClassVariable;
+                if (returnClass != null)
+                    list.Insert(0, returnClass.ClassType);
+
+                return list;
+            }
         }
 
         public override string ToString()

@@ -49,8 +49,10 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine();
 
+                var methods = Class.Methods.Where(m => m.Dependent.All(c => c.IsImplemented));
+
                 cw.WriteLine("#region DLLInmport");
-                foreach (var method in Class.Methods)
+                foreach (var method in methods)
                 {
                     var inputs = method.InputTypes.Select(ExportVariable).ToList();
                     inputs.Insert(0, "IntPtr Self");
@@ -67,7 +69,7 @@ namespace Generator
                 cw.WriteLine();
                 cw.WriteLine("#region ExternMethods");
 
-                foreach (var method in Class.Methods)
+                foreach (var method in methods)
                 {
                     var inputs = method.InputTypes.Select(t => t.Name).ToList();
                     inputs.Insert(0, "NativePointer");

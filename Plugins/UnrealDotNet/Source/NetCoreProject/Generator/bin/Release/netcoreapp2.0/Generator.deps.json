@@ -1,0 +1,38 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "d5b16cde85661870ae83a9f93f3565cff40a4f00"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "Generator/1.0.0": {
+        "dependencies": {
+          "Antlr4.Runtime.Standard": "4.7.1"
+        },
+        "runtime": {
+          "Generator.dll": {}
+        }
+      },
+      "Antlr4.Runtime.Standard/4.7.1": {
+        "runtime": {
+          "lib/netstandard/Antlr4.Runtime.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Generator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Antlr4.Runtime.Standard/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D7veSH9FoHAZAp6BDJTRfZfJOgqpuRvPGkomU7F3m3PWf15rYwj2reWvqzDXFZj8Q5rniuUA7VLYdpbQYNqKPw==",
+      "path": "antlr4.runtime.standard/4.7.1",
+      "hashPath": "antlr4.runtime.standard.4.7.1.nupkg.sha512"
+    }
+  }
+}
