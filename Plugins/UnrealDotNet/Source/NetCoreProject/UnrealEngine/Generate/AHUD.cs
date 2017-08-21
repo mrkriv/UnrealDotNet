@@ -5,22 +5,13 @@ namespace UnrealEngine
 {
 	public partial class AHUD : AActor
 	{
-		private readonly IntPtr NativePointer;
-		
 		public AHUD(IntPtr Adress)
 			: base(Adress)
 		{
-			NativePointer = Adress;
 			
 		}
 
 		#region DLLInmport
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern float E_LastHUDRenderTime(IntPtr Self);
-		
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern float E_RenderDelta(IntPtr Self);
-		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		private static extern void E_ShowHUD(IntPtr Self);
 		
@@ -34,7 +25,10 @@ namespace UnrealEngine
 		private static extern void E_RemoveAllDebugStrings(IntPtr Self);
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		private static extern void E_ReceiveDrawHUD(IntPtr Self, Int32 SizeX, Int32 SizeY);
+		private static extern void E_RemoveDebugText(IntPtr Self, AActor SrcActor, bool bLeaveDurationText);
+		
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		private static extern void E_ReceiveDrawHUD(IntPtr Self, int SizeX, int SizeY);
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		private static extern void E_ReceiveHitBoxClick(IntPtr Self, string BoxName);
@@ -70,6 +64,12 @@ namespace UnrealEngine
 		private static extern void E_NotifyBindPostProcessEffects(IntPtr Self);
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		private static extern void E_RemovePostRenderedActor(IntPtr Self, AActor A);
+		
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		private static extern void E_AddPostRenderedActor(IntPtr Self, AActor A);
+		
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		private static extern bool E_ShouldDisplayDebug(IntPtr Self, string DebugType);
 		
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
@@ -96,18 +96,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public float LastHUDRenderTime()
-		{
-			return E_LastHUDRenderTime(NativePointer);
-			
-		}
-
-		public float RenderDelta()
-		{
-			return E_RenderDelta(NativePointer);
-			
-		}
-
 		public void ShowHUD()
 		{
 			E_ShowHUD(NativePointer);
@@ -132,7 +120,13 @@ namespace UnrealEngine
 			
 		}
 
-		public void ReceiveDrawHUD(Int32 SizeX, Int32 SizeY)
+		public void RemoveDebugText(AActor SrcActor, bool bLeaveDurationText)
+		{
+			E_RemoveDebugText(NativePointer, SrcActor, bLeaveDurationText);
+			
+		}
+
+		public void ReceiveDrawHUD(int SizeX, int SizeY)
 		{
 			E_ReceiveDrawHUD(NativePointer, SizeX, SizeY);
 			
@@ -201,6 +195,18 @@ namespace UnrealEngine
 		public void NotifyBindPostProcessEffects()
 		{
 			E_NotifyBindPostProcessEffects(NativePointer);
+			
+		}
+
+		public void RemovePostRenderedActor(AActor A)
+		{
+			E_RemovePostRenderedActor(NativePointer, A);
+			
+		}
+
+		public void AddPostRenderedActor(AActor A)
+		{
+			E_AddPostRenderedActor(NativePointer, A);
 			
 		}
 

@@ -8,6 +8,7 @@ namespace Generator.Metadata
         public Class BaseClass { get; set; }
         public List<Method> Methods { get; set; }
         public bool IsImplemented { get; set; }
+        public string SourceFile { get; set; }
 
         public Class(string Name)
         {

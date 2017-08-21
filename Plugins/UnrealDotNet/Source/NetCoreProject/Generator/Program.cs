@@ -14,23 +14,20 @@ namespace Generator
 
         public static void Main(string[] args)
         {
-            if (args.Length != 1)
+            if (args.Length != 2)
             {
-                PrintError("The first command line parameter must be the path to the dotnet project 'UnrealEngine'.");
+                PrintError("The first command line parameter must be the path to UnrealDotNet plugin.");
+                PrintError("The second parameter must point to the engine folder");
                 return;
             }
 
-            var output = Path.Combine(args[0], "Generate");
+            var output = Path.Combine(args[0], "Source");
+            var files = Directory.GetFiles(args[1], "*.h", SearchOption.AllDirectories);
 
             if (!Directory.Exists(output))
             {
-                PrintError($"Output directory '{output}' is not exists");
+                PrintError($"Project directory '{output}' is not exists");
             }
-
-            var files = new[]
-            {
-                @"C:\Users\vladi\Desktop\Actor.h"
-            };
 
             Watch.Start();
 
@@ -62,7 +59,7 @@ namespace Generator
         private static void PrintError(string msg)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Error: " + msg);
+            Console.WriteLine(msg);
             Console.ResetColor();
         }
 
@@ -83,7 +80,7 @@ namespace Generator
 
                 var parceTime = watch.ElapsedMilliseconds;
 
-                visitor.Append(context);
+                visitor.Append(context, file);
 
                 watch.Stop();
 

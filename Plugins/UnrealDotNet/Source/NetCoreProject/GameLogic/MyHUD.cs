@@ -1,14 +1,11 @@
 using System;
-using System.Runtime.InteropServices;
 using UnrealEngine;
 
 namespace GameLogic
 {
-    public class MyManageActor : AActor
+    public class MyHUD : AHUD
     {
-        private float v, a = 50;
-
-        public MyManageActor(IntPtr Adress) : base(Adress)
+        public MyHUD(IntPtr Adress) : base(Adress)
         {
         }
 
@@ -19,12 +16,7 @@ namespace GameLogic
 
         public override void OnTick(float DeltaTime)
         {
-            var rot = GetActorRotation();
-            rot.Yaw += DeltaTime * v;
-            v += a * DeltaTime;
-
-            SetActorRotation(rot, false);
-
+            ULog("Work!");
             base.OnTick(DeltaTime);
         }
 

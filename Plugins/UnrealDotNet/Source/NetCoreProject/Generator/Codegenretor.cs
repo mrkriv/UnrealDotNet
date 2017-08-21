@@ -11,17 +11,23 @@ namespace Generator
     {
         private const string DllImportName = "UE4Editor-UnrealDotNetRuntime";
         private const string ExportPrefix = "E_";
+        private const string EnginePathSeg = @"Engine\Source\Runtime";
+        private const string CPP_API = "UNREALDOTNETRUNTIME_API";
 
         public static void GenarateTo(Domain domain, string OutputDir)
         {
-            foreach (var cl in domain.Classes)
-            {
-                if (!cl.IsImplemented)
-                    continue;
+            var outputCS = Path.Combine(OutputDir, "NetCoreProject", "UnrealEngine", "Generate");
+            var outputCPP = Path.Combine(OutputDir, "UnrealDotNetRuntime", "Private", "Generate");
 
-                GenerateCS(cl, Path.Combine(OutputDir, cl.Name));
-                //GenerateCPP(cl, Path.Combine(OutputDir, cl.Name));
+            var Classes = domain.Classes.Where(cl => cl.IsImplemented);
+
+            foreach (var cl in Classes)
+            {
+                GenerateCS(cl, Path.Combine(outputCS, cl.Name));
+                GenerateCPP(cl, Path.Combine(outputCPP, cl.Name));
             }
+
+            GenerateCPPIndex(Classes, Path.Combine(outputCPP, "Index"));
         }
 
         private static void GenerateCS(Class Class, string OutputPath)
@@ -41,16 +47,23 @@ namespace Generator
                 cw.WriteLine();
                 cw.OpenBlock();
 
-                cw.WriteLine("private readonly IntPtr NativePointer;");
-                cw.WriteLine();
-                cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
-
-                if (Class.BaseClass != null)
+                if (Class.BaseClass == null)
+                {
+                    cw.WriteLine("protected readonly IntPtr NativePointer;");
+                    cw.WriteLine();
+                    cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
+                    cw.OpenBlock();
+                    cw.WriteLine("NativePointer = Adress;");
+                    cw.CloseBlock();
+                }
+                else
+                {
+                    cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
                     cw.WriteLine("\t: base(Adress)");
+                    cw.OpenBlock();
+                    cw.CloseBlock();
+                }
 
-                cw.OpenBlock();
-                cw.WriteLine("NativePointer = Adress;");
-                cw.CloseBlock();
                 cw.WriteLine();
 
                 var methods = Class.Methods.Where(m => m.Dependent.All(c => c.IsImplemented));
@@ -58,14 +71,14 @@ namespace Generator
                 cw.WriteLine("#region DLLInmport");
                 foreach (var method in methods)
                 {
-                    var inputs = method.InputTypes.Select(ExportVariable).ToList();
+                    var inputs = method.InputTypes.Select(ExportVariableCS).ToList();
                     inputs.Insert(0, "IntPtr Self");
 
                     var param = string.Join(", ", inputs);
 
                     cw.WriteLine($"[DllImport(\"{DllImportName}\")]");
                     cw.WriteLine(
-                        $"private static extern {ExportVariable(method.ReturnType)} {ExportPrefix}{method.Name}({param});");
+                        $"private static extern {ExportVariableCS(method.ReturnType)} {ExportPrefix}{method.Name}({param});");
                     cw.WriteLine();
                 }
 
@@ -78,11 +91,11 @@ namespace Generator
                     var inputs = method.InputTypes.Select(t => t.Name).ToList();
                     inputs.Insert(0, "NativePointer");
 
-                    var param = string.Join(", ", method.InputTypes.Select(ExportVariable));
+                    var param = string.Join(", ", method.InputTypes.Select(ExportVariableCS));
                     var call = string.Join(", ", inputs);
 
                     cw.WriteLine(
-                        $"public {ExportVariable(method.ReturnType)} {method.Name}({param})");
+                        $"public {ExportVariableCS(method.ReturnType)} {method.Name}({param})");
 
                     cw.OpenBlock();
 
@@ -114,12 +127,63 @@ namespace Generator
 
         private static void GenerateCPP(Class Class, string OutputPath)
         {
-            var cw = new CoreWriter(OutputPath + ".cpp");
+            using (var cw = new CoreWriter(OutputPath + ".inl"))
+            {
+                var methods = Class.Methods.Where(m => m.Dependent.All(c => c.IsImplemented));
+
+                var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
+                var SourceFile = index == -1 ? Class.SourceFile : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
+                SourceFile = SourceFile.Replace("\\", "/");
+
+                cw.WriteLine($"#include \"{SourceFile}\"");
+                cw.WriteLine();
+                cw.WriteLine("extern \"C\"");
+                cw.OpenBlock();
+
+                foreach (var method in methods)
+                {
+                    var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
+
+                    inputs.Insert(0, "INT_PTR Self");
+
+                    var param = string.Join(", ", inputs);
+                    var call = string.Join(", ", method.InputTypes.Select(t => t.Name));
+
+                    cw.WriteLine($"{CPP_API} {ExportVariableCPP(method.ReturnType)} {ExportPrefix}{method.Name}({param})");
+                    cw.OpenBlock();
+
+                    cw.Write(!method.ReturnType.IsVoid, "return ");
+                    cw.WriteLine($"(({Class.Name}*)Self)->{method.Name}({call});");
+
+                    cw.CloseBlock();
+                    cw.WriteLine();
+                }
+
+                cw.CloseBlock();
+            }
         }
 
-        private static string ExportVariable(Variable variable)
+        private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
         {
-            var result = ReplaceTypeCPPtoCS(variable);
+            using (var cw = new CoreWriter(OutputPath + ".inl"))
+            {
+                cw.WriteLine("#pragma warning(push)");
+                cw.WriteLine("#pragma warning(disable:4996)");
+                cw.WriteLine();
+
+                foreach (var Class in Classes)
+                {
+                    cw.WriteLine($"#include \"{Class.Name}.inl\"");
+                }
+
+                cw.WriteLine();
+                cw.WriteLine("#pragma warning(pop)");
+            }
+        }
+
+        private static string ExportVariableCS(Variable variable)
+        {
+            var result = variable.GetTypeCS();
 
             if (!string.IsNullOrEmpty(variable.Name))
                 result += " " + variable.Name;
@@ -127,27 +191,14 @@ namespace Generator
             return result;
         }
 
-        private static string ReplaceTypeCPPtoCS(Variable variable)
+        private static string ExportVariableCPP(Variable variable)
         {
-            switch (variable.Type)
-            {
-                case "uint8":
-                    return "byte";
+            var result = variable.GetTypeCPP();
 
-                case "int32":
-                    return "Int32";
+            if (!string.IsNullOrEmpty(variable.Name))
+                result += " " + variable.Name;
 
-                case "FString":
-                case "FText":
-                case "FName":
-                    return "string";
-
-                case "INT_PTR":
-                    return "IntPtr";
-
-                default:
-                    return variable.Type;
-            }
+            return result;
         }
     }
 }

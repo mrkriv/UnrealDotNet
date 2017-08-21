@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Transactions;
@@ -13,12 +14,14 @@ namespace Generator
     {
         private readonly Dictionary<string, Class> Classes = new Dictionary<string, Class>();
         private Class CurrentClass;
+        private string CurrentFile;
         private bool Ignore;
 
         public Domain GetDomain() => new Domain { Classes = Classes.Values.ToList() };
 
-        public void Append(TranslationunitContext Translationunit)
+        public void Append(TranslationunitContext Translationunit, string file)
         {
+            CurrentFile = file;
             Visit(Translationunit);
         }
 
@@ -41,7 +44,12 @@ namespace Generator
             var name = head.FindFirst<ClassheadnameContext>().GetText();
 
             CurrentClass = GetClass(name);
+
+            if (CurrentClass.IsImplemented)
+                return null;
+
             CurrentClass.IsImplemented = true;
+            CurrentClass.SourceFile = CurrentFile;
 
             var baseDec = head.FindFirst<BaseclauseContext>();
             if (baseDec != null)
@@ -51,7 +59,9 @@ namespace Generator
             }
 
             Ignore = true;
-            VisitMemberspecification(context.FindFirst<MemberspecificationContext>(false));
+            var m = context.FindFirst<MemberspecificationContext>(false);
+            if (m != null)
+                VisitMemberspecification(m);
 
             CurrentClass = null;
             return null;
@@ -63,13 +73,13 @@ namespace Generator
                 return null;
 
             var meta = context.FindFirst<UmetaContext>();
-            var nop = context.FindFirst<NoptrdeclaratorContext>();
+            var Parameters = context.FindFirst<ParameterdeclarationclauseContext>();
 
             if (meta != null)
             {
                 VisitMetadata(meta);
             }
-            else if (nop != null)
+            else if (Parameters != null)
             {
                 VisitFunction(context);
             }
