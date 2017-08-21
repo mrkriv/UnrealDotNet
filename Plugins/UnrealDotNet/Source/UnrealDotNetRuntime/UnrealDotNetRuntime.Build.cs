@@ -37,12 +37,18 @@ public class UnrealDotNetRuntime : ModuleRules
                 "InputCore",
                 "SlateCore",
                 "UMG",
-                "DirectoryWatcher"
             }
         );
 
         if (UEBuildConfiguration.bBuildEditor == true)
         {
+            PrivateDependencyModuleNames.AddRange(
+                new string[]
+                {
+                    "DirectoryWatcher"
+                }
+            );
+
             PublicDependencyModuleNames.AddRange(
                 new string[]
                 {

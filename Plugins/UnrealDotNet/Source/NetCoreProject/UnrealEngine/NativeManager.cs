@@ -9,8 +9,20 @@ namespace UnrealEngine
 {
     public static class NativeManager
     {
-        private static Assembly GameLogicAssembly = Assembly.Load(new AssemblyName("GameLogic, Version=1.0.0.0, Culture=neutral"));
+        private static Assembly GameLogicAssembly;
         private static Dictionary<IntPtr, object> Wrappers = new Dictionary<IntPtr, object>();
+
+        static NativeManager()
+        {
+            try
+            {
+                GameLogicAssembly = Assembly.Load(new AssemblyName("GameLogic, Version=1.0.0.0, Culture=neutral"));
+            }
+            catch (Exception e)
+            {
+                UObject.ULog_Error(e.ToString());
+            }
+        }
 
         public static string UpdateGameLib(string BinariesPath, string guid)
         {

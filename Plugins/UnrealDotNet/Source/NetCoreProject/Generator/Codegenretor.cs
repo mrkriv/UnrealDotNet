@@ -9,10 +9,11 @@ namespace Generator
 {
     internal class Codegenretor
     {
-        private const string DllImportName = "UE4Editor-UnrealDotNetRuntime";
+        private const string DllEditorImportName = "UE4Editor-UnrealDotNetRuntime";
+        private const string DllPaksImportName = "DotUnrealExample.exe";
         private const string ExportPrefix = "E_";
         private const string EnginePathSeg = @"Engine\Source\Runtime";
-        private const string CPP_API = "UNREALDOTNETRUNTIME_API";
+        private const string CPP_API = "DOTNET_EXPORT";
 
         public static void GenarateTo(Domain domain, string OutputDir)
         {
@@ -76,7 +77,11 @@ namespace Generator
 
                     var param = string.Join(", ", inputs);
 
-                    cw.WriteLine($"[DllImport(\"{DllImportName}\")]");
+                    cw.WriteLine("#if PACING");
+                    cw.WriteLine($"[DllImport(\"{DllPaksImportName}\")]");
+                    cw.WriteLine("#else");
+                    cw.WriteLine($"[DllImport(\"{DllEditorImportName}\")]");
+                    cw.WriteLine("#endif");
                     cw.WriteLine(
                         $"private static extern {ExportVariableCS(method.ReturnType)} {ExportPrefix}{method.Name}({param});");
                     cw.WriteLine();

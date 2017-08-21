@@ -13,8 +13,6 @@
   "EnabledByDefault": true,
   "CanContainContent": false,
   "IsBetaVersion": true,
-  "Installed": false,
-  "CanBeUsedWithUnrealHeaderTool": true,
 
   "Modules": [
     {

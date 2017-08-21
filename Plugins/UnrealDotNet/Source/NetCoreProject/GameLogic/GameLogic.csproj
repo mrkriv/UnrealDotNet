@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -pre $(OutDir) $(ProjectDir)" />
+    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -pre $(OutDir) $(ProjectDir) $(ConfigurationName)" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -post $(OutDir) $(ProjectDir)" />
+    <Exec Command="dotnet $(OutDir)\HotReloadUtilit.dll -post $(OutDir) $(ProjectDir) $(ConfigurationName)" />
   </Target>
 
 </Project>

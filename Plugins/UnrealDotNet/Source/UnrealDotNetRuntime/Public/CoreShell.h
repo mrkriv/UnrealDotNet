@@ -17,9 +17,12 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 
 	static struct ICLRRuntimeHost4* CreateHost(const FString& coreCLRPath);
 	static DWORD CreateDomain(struct ICLRRuntimeHost4* Host, const FString& targetAppPath);
+
+#if WITH_EDITOR
 	static void UpdateGameLib();
 	static void OnDirectoryChanged(const TArray<struct FFileChangeData>& FileChanges);
-	
+#endif
+
 public:
 
 	static FString UnrealEngine_Assemble;

@@ -1,15 +1,21 @@
-#include "UnrealDotNet.h"
+#include "UnrealDotNetRuntime.h"
 #include "CoreShell.h"
 #include "Misc/Paths.h"
+#include "ExportForDotnet.inl"
+
+#if WITH_EDITOR
 #include "IDirectoryWatcher.h"
 #include "DirectoryWatcherModule.h"
-#include "ExportForDotnet.inl"
+#endif
 
 //             |
 //             |
 //             |
 // Поный треш \ /
 //             `
+
+#pragma warning(push)
+#pragma warning(disable:4458)
 
 #pragma warning(push)
 #pragma warning(disable:4005)
@@ -26,11 +32,18 @@
 DEFINE_LOG_CATEGORY(DotNetShell);
 DEFINE_LOG_CATEGORY(DotNetRuntime);
 
+#if WITH_EDITOR
 static const FString PluginName = "UnrealDotNet";
 static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\2.0.0\\");
 static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64");
 static const FString HotreloadHook_Filename = "HotReload\\hotreload";
 static const FString CoreCLR_Name = "coreclr.dll";
+#else
+static const FString PluginName = "UnrealDotNet";
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GameDir() / "Binaries\\Dotnet\\2.0.0\\");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GameDir() / "Binaries\\Win64");
+static const FString CoreCLR_Name = "coreclr.dll";
+#endif
 
 FString UCoreShell::AssemblyGuid;
 FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Culture=neutral";
@@ -44,6 +57,7 @@ void UCoreShell::Initialize()
 	Host = CreateHost(CoreCLR_Path / CoreCLR_Name);
 	DomainID = CreateDomain(Host, Domain_Path);
 
+#if WITH_EDITOR
 	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
 	if (DirectoryWatcher)
 	{
@@ -51,8 +65,10 @@ void UCoreShell::Initialize()
 		auto Callback = IDirectoryWatcher::FDirectoryChanged::CreateStatic(&UCoreShell::OnDirectoryChanged);
 		DirectoryWatcher->RegisterDirectoryChangedCallback_Handle(Domain_Path, Callback, DirectoryChangedHandle);
 	}
+#endif
 }
 
+#if WITH_EDITOR
 void UCoreShell::OnDirectoryChanged(const TArray<FFileChangeData>& FileChanges)
 {
 	for (auto& change : FileChanges)
@@ -92,6 +108,7 @@ void UCoreShell::UpdateGameLib()
 		}
 	}
 }
+#endif
 
 ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 {
@@ -224,6 +241,8 @@ void UCoreShell::Uninitialize()
 
 void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method)
 {
+	UE_LOG(DotNetShell, Log, TEXT("Find manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
+
 	void* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate
 	(
@@ -254,3 +273,5 @@ FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString&
 	auto str = manageMethod(TCHAR_TO_UTF8(*Argument));
 	return FString(UTF8_TO_TCHAR(str));
 }
+
+#pragma warning(pop)

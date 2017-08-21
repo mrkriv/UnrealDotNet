@@ -9,7 +9,7 @@ class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD
 {
 	GENERATED_BODY()
 
-		bool bIsManageAttach;
+	bool bIsManageAttach;
 public:
 	AManageHUD();
 

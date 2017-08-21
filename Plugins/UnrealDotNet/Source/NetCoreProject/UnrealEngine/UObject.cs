@@ -12,6 +12,23 @@ namespace UnrealEngine
 
         #region DllImport
 
+#if PACING
+		[DllImport("DotUnrealExample.exe")]
+        private static extern void E_ULOG_E(string Message);
+
+        [DllImport("DotUnrealExample.exe")]
+        private static extern void E_ULOG_W(string Message);
+
+        [DllImport("DotUnrealExample.exe")]
+        private static extern void E_ULOG_L(string Message);
+
+        [DllImport("DotUnrealExample.exe")]
+        private static extern IntPtr E_GetTranferBufferPtr();
+
+        [DllImport("DotUnrealExample.exe")]
+        private static extern Int64 E_GetTranferBufferOffest();
+#else
+
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
         private static extern void E_ULOG_E(string Message);
 
@@ -27,6 +44,8 @@ namespace UnrealEngine
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
         private static extern Int64 E_GetTranferBufferOffest();
 
+#endif
+
         #endregion DllImport
 
         public UObject(IntPtr Adress)
@@ -36,9 +55,9 @@ namespace UnrealEngine
 
         public static void ULog_Debug(string Message)
         {
-#if DEBUG
+            //#if DEBUG
             E_ULOG_L(Message);
-#endif
+            //#endif
         }
 
         public static void ULog(string Message) => E_ULOG_L(Message);

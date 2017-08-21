@@ -12,85 +12,193 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ShowHUD(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ShowDebug(IntPtr Self, string DebugType);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ShowDebugToggleSubCategory(IntPtr Self, string Category);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_RemoveAllDebugStrings(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_RemoveDebugText(IntPtr Self, AActor SrcActor, bool bLeaveDurationText);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ReceiveDrawHUD(IntPtr Self, int SizeX, int SizeY);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ReceiveHitBoxClick(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_NotifyHitBoxClick(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ReceiveHitBoxRelease(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_NotifyHitBoxRelease(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ReceiveHitBoxBeginCursorOver(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_NotifyHitBoxBeginCursorOver(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ReceiveHitBoxEndCursorOver(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_NotifyHitBoxEndCursorOver(IntPtr Self, string BoxName);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_PostInitializeComponents(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_DrawSafeZoneOverlay(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_NotifyBindPostProcessEffects(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_RemovePostRenderedActor(IntPtr Self, AActor A);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_AddPostRenderedActor(IntPtr Self, AActor A);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern bool E_ShouldDisplayDebug(IntPtr Self, string DebugType);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ShowDebugInfo(IntPtr Self, float YL, float YPos);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_PostRender(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_DrawHUD(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_OnLostFocusPause(IntPtr Self, bool bEnable);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_DrawDebugTextList(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_HandleBugScreenShot(IntPtr Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern bool E_AnyCurrentHitBoxHits(IntPtr Self);
 		
 		#endregion

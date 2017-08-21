@@ -17,11 +17,28 @@ namespace HotReloadUtilit
         private const string GameLogic = "GameLogicXXXXXXXX";
         private const string Wrapper = "UnrealEngine";
 
+        private static string Mode;
+        private static string OutDir;
+        private static string Configuration;
+
         public static void Main(string[] args)
         {
-            if (Process.GetProcessesByName("UE4Editor").Any())
+            if (args.Length != 3)
             {
-                switch (args[0])
+                Console.WriteLine("Comand line format:");
+                Console.WriteLine("-pre|-post <OutDir> <Configuration>");
+                return;
+            }
+
+            Mode = args[0];
+            OutDir = args[1];
+            Configuration = args[2];
+
+            var isHotReload = Configuration == "Debug" && Process.GetProcessesByName("UE4Editor").Any();
+
+            if (isHotReload)
+            {
+                switch (Mode)
                 {
                     case "-pre": PreHotBuild(args); break;
                     case "-post": PostHotBuild(args); break;
@@ -29,7 +46,7 @@ namespace HotReloadUtilit
             }
             else
             {
-                switch (args[0])
+                switch (Mode)
                 {
                     case "-pre": PreBuild(args); break;
                     case "-post": PostBuild(args); break;
@@ -46,22 +63,21 @@ namespace HotReloadUtilit
         {
             Console.WriteLine("Completion of assembly");
 
-            SetAssemblyName(args[1] + $"\\{GameLogic}.dll", "");
+            SetAssemblyName(OutDir + $"\\{GameLogic}.dll", "");
 
-            File.Copy(args[1] + $"\\{GameLogic}.dll", args[1] + $"\\..\\GameLogic.dll", true);
-            File.Copy(args[1] + $"\\{Wrapper}.dll", args[1] + $"\\..\\{Wrapper}.dll", true);
+            File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + $"\\..\\GameLogic.dll", true);
+            File.Copy(OutDir + $"\\{Wrapper}.dll", OutDir + $"\\..\\{Wrapper}.dll", true);
 
-            if (Directory.Exists(args[1] + HotDir))
-                Directory.Delete(args[1] + HotDir, true);
+            if (Directory.Exists(OutDir + HotDir))
+                Directory.Delete(OutDir + HotDir, true);
         }
-
 
         private static void PreHotBuild(IReadOnlyList<string> args)
         {
             var guid = Guid.NewGuid().ToString().Substring(0, 8);
             Console.WriteLine("Preparation of assembly for hot reload GUID:" + guid);
-            
-            var hotrelod = Path.Combine(args[1], HotreloadTmp);
+
+            var hotrelod = Path.Combine(OutDir, HotreloadTmp);
             if (!Directory.Exists(Path.GetDirectoryName(hotrelod)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(hotrelod));
@@ -72,14 +88,14 @@ namespace HotReloadUtilit
 
         private static void PostHotBuild(IReadOnlyList<string> args)
         {
-            var guid = File.ReadAllText(args[1] + "\\" + HotreloadTmp);
+            var guid = File.ReadAllText(OutDir + "\\" + HotreloadTmp);
 
             Console.WriteLine("Completion of assembly for hot reload GUID:" + guid);
 
-            SetAssemblyName(args[1] + $"\\{GameLogic}.dll", guid);
+            SetAssemblyName(OutDir + $"\\{GameLogic}.dll", guid);
 
-            File.Copy(args[1] + $"\\{GameLogic}.dll", args[1] + HotDir + $"\\GameLogic{guid}.dll", true);
-            File.WriteAllText(args[1] + "\\" + Hotreload, guid);
+            File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + HotDir + $"\\GameLogic{guid}.dll", true);
+            File.WriteAllText(OutDir + "\\" + Hotreload, guid);
         }
 
         private static void SetAssemblyName(string path, string guid)
@@ -115,7 +131,6 @@ namespace HotReloadUtilit
                     asm[i + j] = 0;
                 }
             }
-            
 
             File.WriteAllBytes(path, asm);
         }
