@@ -14,7 +14,6 @@ public class UnrealDotNetRuntime : ModuleRules
             }
         );
 
-
         PrivateIncludePaths.AddRange(
             new string[]
             {
@@ -22,14 +21,12 @@ public class UnrealDotNetRuntime : ModuleRules
             }
         );
 
-
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
                 "Core",
             }
         );
-
 
         PrivateDependencyModuleNames.AddRange(
             new string[]
@@ -39,31 +36,19 @@ public class UnrealDotNetRuntime : ModuleRules
                 "Engine",
                 "InputCore",
                 "SlateCore",
-                //"NetworkReplayStreaming",
-                //"AIModule",
-                //"PacketHandler",
-                //"MovieSceneTracks",
-                //"MovieScene",
-                "Slate",
                 "UMG",
-                //"GeometryCache",
-                //"Niagara",
-                //"MediaAssets",
-                //"Projects",
                 "DirectoryWatcher"
             }
         );
-        
+
         if (UEBuildConfiguration.bBuildEditor == true)
         {
-
             PublicDependencyModuleNames.AddRange(
                 new string[]
                 {
                     "UnrealEd",
                 }
             );
-
         }
 
         DynamicallyLoadedModuleNames.AddRange(
