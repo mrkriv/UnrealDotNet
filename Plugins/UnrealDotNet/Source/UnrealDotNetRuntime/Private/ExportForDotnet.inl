@@ -3,9 +3,9 @@ static size_t StuructTranferOffest = 0;
 
 #include "Generate/Index.inl"
 
-extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_E(char* Message) { UE_LOG(NetCoreRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
-extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_W(char* Message) { UE_LOG(NetCoreRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
-extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_L(char* Message) { UE_LOG(NetCoreRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_W(char* Message) { UE_LOG(DotNetRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+extern "C" UNREALDOTNETRUNTIME_API void E_ULOG_L(char* Message) { UE_LOG(DotNetRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 
 extern "C" UNREALDOTNETRUNTIME_API INT_PTR E_GetTranferBufferPtr() { return (INT_PTR)&StuructTranferBuffer[0]; }
 extern "C" UNREALDOTNETRUNTIME_API size_t E_GetTranferBufferOffest() { return StuructTranferOffest; }
@@ -23,7 +23,7 @@ extern "C" UNREALDOTNETRUNTIME_API size_t E_GetTranferBufferOffest() { return St
 //		auto func = Object->FindFunctionByName(UTF8_TO_TCHAR(FunctionName));
 //		if (func == NULL)
 //		{
-//			UE_LOG(NetCoreRuntime, Error, TEXT("Type %s have not %s function"), *Object->GetName(), UTF8_TO_TCHAR(FunctionName));
+//			UE_LOG(DotNetRuntime, Error, TEXT("Type %s have not %s function"), *Object->GetName(), UTF8_TO_TCHAR(FunctionName));
 //			return;
 //		}
 //

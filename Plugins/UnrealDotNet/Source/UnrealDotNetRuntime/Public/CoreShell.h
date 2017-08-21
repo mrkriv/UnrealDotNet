@@ -3,8 +3,8 @@
 #include "Windows/MinimalWindowsApi.h"
 #include "CoreShell.generated.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(CoreShell, Log, All);
-DECLARE_LOG_CATEGORY_EXTERN(NetCoreRuntime, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(DotNetShell, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(DotNetRuntime, Log, All);
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UCoreShell : public UObject

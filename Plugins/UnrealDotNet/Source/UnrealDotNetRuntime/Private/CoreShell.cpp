@@ -23,8 +23,8 @@
 
 #pragma warning(pop)
 
-DEFINE_LOG_CATEGORY(CoreShell);
-DEFINE_LOG_CATEGORY(NetCoreRuntime);
+DEFINE_LOG_CATEGORY(DotNetShell);
+DEFINE_LOG_CATEGORY(DotNetRuntime);
 
 static const FString PluginName = "UnrealDotNet";
 static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\2.0.0\\");
@@ -84,11 +84,11 @@ void UCoreShell::UpdateGameLib()
 
 		if (GameLogic_Assemble.IsEmpty())
 		{
-			UE_LOG(CoreShell, Error, TEXT("Hot reload for net core failed :("));
+			UE_LOG(DotNetShell, Error, TEXT("Hot reload for net core failed :("));
 		}
 		else
 		{
-			UE_LOG(CoreShell, Log, TEXT("Hot reload done, current assembly: %s"), *GameLogic_Assemble);
+			UE_LOG(DotNetShell, Log, TEXT("Hot reload done, current assembly: %s"), *GameLogic_Assemble);
 		}
 	}
 }
@@ -99,7 +99,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (!coreCLR)
 	{
-		UE_LOG(CoreShell, Error, TEXT("ERROR - coreCLR dll not found\n"));
+		UE_LOG(DotNetShell, Error, TEXT("ERROR - coreCLR dll not found\n"));
 		return NULL;
 	}
 
@@ -108,7 +108,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (!pfnGetCLRRuntimeHost)
 	{
-		UE_LOG(CoreShell, Error, TEXT("ERROR - not found host lib:\n%s\n"), *coreCLRPath);
+		UE_LOG(DotNetShell, Error, TEXT("ERROR - not found host lib:\n%s\n"), *coreCLRPath);
 		return NULL;
 	}
 
@@ -129,12 +129,12 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (FAILED(hr))
 	{
-		UE_LOG(CoreShell, Error, TEXT("ERROR - Failed to start the runtime.\nError code:%x\n"), hr);
+		UE_LOG(DotNetShell, Error, TEXT("ERROR - Failed to start the runtime.\nError code:%x\n"), hr);
 		return NULL;
 	}
 	else
 	{
-		UE_LOG(CoreShell, Log, TEXT("Runtime started\n\n"));
+		UE_LOG(DotNetShell, Log, TEXT("Runtime started\n\n"));
 	}
 
 	return Host;
@@ -236,7 +236,7 @@ void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClass
 
 	if (manageMethod == NULL)
 	{
-		UE_LOG(CoreShell, Error, TEXT("Not found manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
+		UE_LOG(DotNetShell, Error, TEXT("Not found manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
 	}
 
 	return manageMethod;
