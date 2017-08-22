@@ -6,11 +6,11 @@ using System.Transactions;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Generator.Metadata;
-using static CPP14Parser;
+using static UHeaderParser;
 
 namespace Generator
 {
-    public class MetadataVisitor : CPP14BaseVisitor<object>
+    public class MetadataVisitor : UHeaderBaseVisitor<object>
     {
         private readonly Dictionary<string, Class> Classes = new Dictionary<string, Class>();
         private Class CurrentClass;
@@ -19,7 +19,7 @@ namespace Generator
 
         public Domain GetDomain() => new Domain { Classes = Classes.Values.ToList() };
 
-        public void Append(TranslationunitContext Translationunit, string file)
+        public void Append(TranslationUnitContext Translationunit, string file)
         {
             CurrentFile = file;
             Visit(Translationunit);
@@ -38,121 +38,64 @@ namespace Generator
             return Class;
         }
 
-        public override object VisitClassspecifier(ClassspecifierContext context)
+        public override object VisitClassDeclaration(ClassDeclarationContext context)
         {
-            var head = context.GetChild<ClassheadContext>(0);
-            var name = head.FindFirst<ClassheadnameContext>().GetText();
+            CurrentClass = GetClass(context.ChildText<ClassNameContext>());
 
-            CurrentClass = GetClass(name);
-
-            if (CurrentClass.IsImplemented)
-                return null;
-
-            CurrentClass.IsImplemented = true;
             CurrentClass.SourceFile = CurrentFile;
+            CurrentClass.IsImplemented = true;
+            CurrentClass.IsStructure = context.ChildText<ClassTypeContext>() == "struct";
 
-            var baseDec = head.FindFirst<BaseclauseContext>();
-            if (baseDec != null)
+            var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
+            if (parentClassName != null)
             {
-                var baseName = baseDec.FindFirst<BasetypespecifierContext>().GetText();
-                CurrentClass.BaseClass = GetClass(baseName);
+                CurrentClass.BaseClass = GetClass(parentClassName);
             }
 
-            Ignore = true;
-            var m = context.FindFirst<MemberspecificationContext>(false);
-            if (m != null)
-                VisitMemberspecification(m);
+            VisitClassBody(context.Child<ClassBodyContext>());
 
-            CurrentClass = null;
             return null;
         }
 
-        public override object VisitMemberdeclaration(MemberdeclarationContext context)
+        public override object VisitMethod(MethodContext context)
         {
             if (Ignore || CurrentClass == null)
                 return null;
 
-            var meta = context.FindFirst<UmetaContext>();
-            var Parameters = context.FindFirst<ParameterdeclarationclauseContext>();
-
-            if (meta != null)
+            var method = new Method(context.ChildText<MethodNameContext>())
             {
-                VisitMetadata(meta);
-            }
-            else if (Parameters != null)
-            {
-                VisitFunction(context);
-            }
-
-            return null;
-        }
-
-        private void VisitMetadata(UmetaContext context)
-        {
-            var metadata = context.FindAll<UmetaParametrContext>();
-        }
-
-        private void VisitFunction(ParserRuleContext context)
-        {
-            var name = context.FindFirst<NoptrdeclaratorContext>().FindFirst<TerminalNodeImpl>().GetText();
-            var Parameters = context.FindFirst<ParameterdeclarationclauseContext>();
-            var metadata = context.FindFirst<UmetaContext>()?.FindAll<UmetaParametrContext>();
-
-            var method = new Method(name)
-            {
-                ReturnType = ParceVariableForReturn(context),
-                InputTypes = Parameters.FindAll<ParameterdeclarationContext>().Reverse()
-                    .Select(ParceVariable).ToList()
+                ReturnType = ParceType(context.Child<TypeContext>()),
+                InputTypes = context.FindAll<MethodParametrContext>().Reverse()
+                    .Select(ParceParam).ToList()
             };
 
             CurrentClass.Methods.Add(method);
+
+            return base.VisitMethod(context);
         }
 
-        private Variable ParceVariable(ParserRuleContext context)
+        private Variable ParceParam(MethodParametrContext context)
         {
-            var declarator = context.FindFirst<DeclaratorContext>();
-            var Ptrdeclarator = declarator.FindFirst<PtroperatorContext>();
-
-            var variable = ParceVariableMain(context, Ptrdeclarator);
-            variable.Name = declarator.FindFirst<NoptrdeclaratorContext>().FindFirst<TerminalNodeImpl>().GetText();
+            var variable = ParceType(context.Child<TypeContext>());
+            variable.Name = context.ChildText<MethodParametrNameContext>();
 
             return variable;
         }
 
-        private Variable ParceVariableForReturn(ParserRuleContext context)
+        private Variable ParceType(TypeContext context)
         {
-            var Ptrdeclarator = context.FindFirst<PtrdeclaratorContext>().FindFirst<PtroperatorContext>(false);
-            return ParceVariableMain(context, Ptrdeclarator);
-        }
-
-        private Variable ParceVariableMain(ParserRuleContext context, ParserRuleContext Ptrdeclarator)
-        {
-            var declspecRoot = context.FindFirst<DeclspecifierseqContext>();
-            var declspec = declspecRoot.FindFirst<DeclspecifierseqContext>() ?? declspecRoot;
-
-            var types = declspec.FindAll<TerminalNodeImpl>().Select(n => n.GetText());
-            types = types.Where(s => s != "struct" && s != "class");
-            var type = string.Join(' ', types);
-
+            var typeName = context.GetText();
             Variable variable;
 
-            if (PrimitiveVariable.PrimitiveTypes.Contains(type))
-                variable = new PrimitiveVariable(type);
+            if (PrimitiveVariable.PrimitiveTypes.Contains(typeName))
+                variable = new PrimitiveVariable(typeName);
             else
-                variable = new ClassVariable(GetClass(type));
-
-            variable.IsConst = declspecRoot.FindFirst<CvqualifierContext>() != null;
-
-            if (Ptrdeclarator != null)
-            {
-                variable.IsReference = Ptrdeclarator.GetText() == "&";
-                variable.IsPointer = Ptrdeclarator.GetText() == "*";
-            }
+                variable = new ClassVariable(GetClass(typeName));
 
             return variable;
         }
 
-        public override object VisitAccessspecifier(AccessspecifierContext context)
+        public override object VisitAccessSpecifier(AccessSpecifierContext context)
         {
             Ignore = context.GetText() != "public";
             return null;

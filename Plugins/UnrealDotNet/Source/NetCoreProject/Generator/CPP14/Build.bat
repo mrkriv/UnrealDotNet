@@ -1,1 +1,0 @@
-java -jar antlr-4.7-complete.jar -Dlanguage=CSharp -no-listener -visitor CPP14.g4

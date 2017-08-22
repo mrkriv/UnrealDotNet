@@ -13,10 +13,29 @@ namespace Generator.Metadata
 
             foreach (var cl in Classes)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(cl.IsImplemented ? cl.Name : $"{cl.Name} (Not Implemented)");
-
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(cl.IsStructure ? "Struct " : "Class ");
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(cl.Name);
+
+                if (cl.BaseClass != null)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.Write(" base of ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(cl.BaseClass.Name);
+                }
+
+                if (!cl.IsImplemented)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.Write(" (Not Implemented)");
+                }
+
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 foreach (var method in cl.Methods)
                 {
                     Console.WriteLine("\t" + method);

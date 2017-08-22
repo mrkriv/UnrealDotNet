@@ -25,12 +25,6 @@ namespace UnrealEngine
 
         [DllImport("DotUnrealExample.exe")]
         private static extern void E_ScreenDebugMessage(string Message, float Time, byte R, byte G, byte B);
-
-        [DllImport("DotUnrealExample.exe")]
-        private static extern IntPtr E_GetTranferBufferPtr();
-
-        [DllImport("DotUnrealExample.exe")]
-        private static extern Int64 E_GetTranferBufferOffest();
 #else
 
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
@@ -79,9 +73,5 @@ namespace UnrealEngine
         {
             E_ScreenDebugMessage(Message, Time, Color.R, Color.G, Color.B);
         }
-
-        public static IntPtr GetTranferBufferPtr() => E_GetTranferBufferPtr();
-
-        public static Int64 GetTranferBufferOffest() => E_GetTranferBufferOffest();
     }
 }

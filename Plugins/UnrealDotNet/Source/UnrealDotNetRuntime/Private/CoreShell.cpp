@@ -8,12 +8,6 @@
 #include "DirectoryWatcherModule.h"
 #endif
 
-//             |
-//             |
-//             |
-// Поный треш \ /
-//             `
-
 #pragma warning(push)
 #pragma warning(disable:4458)
 
@@ -22,6 +16,8 @@
 #pragma warning(disable:4668)
 
 #include "inc/MSCOREE.h"
+
+// TODO: Переписать на что то менее платформо-зависимое
 #include "Windows/WindowsSystemIncludes.h"
 #include "Windows/WIndowsPlatform.h"
 #include "Windows/WindowsPlatformProcess.h"
@@ -55,9 +51,6 @@ void UCoreShell::Initialize()
 {
 	Host = CreateHost(CoreCLR_Path / CoreCLR_Name);
 	DomainID = CreateDomain(Host, Domain_Path);
-
-	UE_LOG(DotNetShell, Log, TEXT("CoreCLR_Path: %s"), *CoreCLR_Path);
-	UE_LOG(DotNetShell, Log, TEXT("Domain_Path: %s"), *Domain_Path);
 
 #if WITH_EDITOR
 	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
@@ -254,8 +247,6 @@ void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClass
 		UE_LOG(DotNetShell, Error, TEXT("CoreCLR is not load"));
 		return NULL;
 	}
-
-	UE_LOG(DotNetShell, Log, TEXT("Find manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
 
 	void* manageMethod = NULL;
 	HRESULT hr = Host->CreateDelegate

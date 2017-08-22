@@ -6,6 +6,16 @@ using Antlr4.Runtime.Tree;
 
 public static class Extensions
 {
+    public static string ChildText<T>(this ParserRuleContext Tree) where T : IParseTree
+    {
+        return Tree?.GetChild<T>(0)?.GetText();
+    }
+
+    public static T Child<T>(this ParserRuleContext Tree) where T : IParseTree
+    {
+        return Tree == null ? default(T) : Tree.GetChild<T>(0);
+    }
+
     public static T FindFirst<T>(this ParserRuleContext Tree, bool Recursive = true) where T : IParseTree
     {
         if (Tree == null)

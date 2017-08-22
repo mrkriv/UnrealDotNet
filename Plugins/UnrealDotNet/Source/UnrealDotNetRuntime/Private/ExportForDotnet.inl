@@ -1,6 +1,3 @@
-static char StuructTranferBuffer[1024] = { 0 };
-static size_t StuructTranferOffest = 0;
-
 #ifndef DOTNET_EXPORT
 # if defined(WIN32)
 #   define DOTNET_EXPORT __declspec(dllexport)
@@ -10,9 +7,6 @@ static size_t StuructTranferOffest = 0;
 #endif
 
 #include "Generate/Index.inl"
-
-extern "C" DOTNET_EXPORT INT_PTR E_GetTranferBufferPtr() { return (INT_PTR)&StuructTranferBuffer[0]; }
-extern "C" DOTNET_EXPORT size_t E_GetTranferBufferOffest() { return StuructTranferOffest; }
 
 extern "C" DOTNET_EXPORT void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_W(char* Message) { UE_LOG(DotNetRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
