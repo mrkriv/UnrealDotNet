@@ -16,6 +16,11 @@ public static class Extensions
         return Tree == null ? default(T) : Tree.GetChild<T>(0);
     }
 
+    public static bool FoundChild<T>(this ParserRuleContext Tree) where T : IParseTree
+    {
+        return Tree != null && Tree.GetChild<T>(0) != null;
+    }
+
     public static T FindFirst<T>(this ParserRuleContext Tree, bool Recursive = true) where T : IParseTree
     {
         if (Tree == null)

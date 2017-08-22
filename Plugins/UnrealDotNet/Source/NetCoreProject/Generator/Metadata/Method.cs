@@ -8,6 +8,8 @@ namespace Generator.Metadata
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
         public Class OwnerClass { get; set; }
+        public bool IsConst { get; set; }
+        public bool IsVirtual { get; set; }
 
         public string Name { get; set; }
 

@@ -2,33 +2,38 @@ grammar UHeader;
 
 /*Basic concepts*/
 translationUnit
-	: topLevelOutClass* EOF
+	: 
+	(classPreDeclaration
+	| classDeclaration
+	| uDefine
+	| preprocessDerective)*// For debug, replace with topLevelElement
+	 EOF
 ;
 
-topLevelOutClass
+/*topLevelElement
 	: classPreDeclaration
 	| classDeclaration
 	| uDefine
 	| preprocessDerective
-;
+;*/
 
-topLevelInClass
+/*classLevelElement
 	: accessSpecifierContainer
 	| method
 	| uDefine
 	| preprocessDerective
-;
+;*/
 
 /* Class */
 classPreDeclaration
-	: classType className ';'
+	: classOrStruct className ';'
 ;
 
 classDeclaration
-	: classType className classParentList? '{' classBody '}' ';'
+	: classOrStruct className classParentList? '{' classBody '}' ';'
 ;
 
-classType
+classOrStruct
 	: Class
 	| Struct
 ;
@@ -42,7 +47,10 @@ className
 ;
 
 classBody
-	: topLevelInClass*
+	: (accessSpecifierContainer
+	| method
+	| uDefine
+	| preprocessDerective)* // For debug, replace with classLevelElement
 ;
 
 
@@ -85,7 +93,7 @@ uMetaParamValue
 /* Method */
 
 method
-	: type methodName '(' methodParamsList? ')' Const? (methodBody | ';')
+	: isVirtual? type methodName '(' methodParamsList? ')' isConst? (methodBody | ';')
 ;
 
 methodParamsList
@@ -106,7 +114,9 @@ methodBody
 ;
 
 methodBodyContent
-	: methodBody?
+	: ~(BracketsOpen | BracketsClose)* (
+		(BracketsOpen methodBodyContent BracketsClose methodBodyContent)?
+	)
 ;
 
 methodName
@@ -114,7 +124,15 @@ methodName
 ;
 
 type
-	: Const? (Class|Struct)? AddressQuant* Identifier AddressQuant*
+	: isConst? classOrStruct? AddressQuant* Identifier AddressQuant*
+;
+
+isVirtual
+	: Virtual
+;
+
+isConst
+	: Const
 ;
 
 accessSpecifierContainer
@@ -133,14 +151,6 @@ accessSpecifier
 preprocessDerective
 	: SingleLineDerective 
 	| MultiLineDerective 
-;
-
-SingleLineDerective
-	: '#' ~[\n]+
-;
-
-MultiLineDerective
-	: '#' (~[\n]*? '\\' '\r'? '\n')+ ~[\n]+
 ;
 
 
@@ -187,6 +197,22 @@ Extern
 	: 'extern'
 ;
 
+BracketsOpen
+	: '{'
+;
+
+BracketsClose
+	: '}'
+;
+
+SingleLineDerective
+	: '#' ~[\n]+
+;
+
+MultiLineDerective
+	: '#' (~[\n]*? '\\' '\r'? '\n')+ ~[\n]+
+;
+
 Identifier
 	: NONDIGIT (NONDIGIT | DIGIT)*
 ;
@@ -210,7 +236,7 @@ Literal
 fragment
 Schar
 	: ~["\\\r\n]
-	| Simpleescapesequence
+	| SomeEscapeSequence
 ;
 
 fragment
@@ -219,18 +245,27 @@ Boolean
 ;
 
 fragment
-Simpleescapesequence
+SomeEscapeSequence
 	: '\\\''
 	| '\\"'
-	| '\\?'
 	| '\\\\'
-	| '\\a'
-	| '\\b'
-	| '\\f'
 	| '\\n'
 	| '\\r'
 	| '\\t'
-	| '\\v'
+;
+
+fragment
+SIGN
+	: [+-]
+;
+
+fragment
+SpecalSymbol
+	: ~[a-zA-Z_0-9\n\r \t]
+;
+
+Skiped
+	: (SpecalSymbol | SIGN) -> skip
 ;
 
 Whitespace
@@ -238,10 +273,7 @@ Whitespace
 ;
 
 Newline
-	: (
-		'\r' '\n'?
-		| '\n'
-	) -> skip
+	: ( '\r' '\n'? | '\n') -> skip
 ;
 
 BlockComment
