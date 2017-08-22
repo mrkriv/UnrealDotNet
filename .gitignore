@@ -80,3 +80,4 @@ Plugins/*/Binaries/
 .vscode/
 Plugins/UnrealDotNet/Source/NetCoreProject/*/obj/
 Plugins/UnrealDotNet/Dotnet/
+Plugins/UnrealDotNet/Source/NetCoreProject/Generator/UHeader/.antlr/
