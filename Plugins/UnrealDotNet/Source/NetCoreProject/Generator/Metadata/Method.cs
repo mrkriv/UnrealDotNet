@@ -10,6 +10,8 @@ namespace Generator.Metadata
         public Class OwnerClass { get; set; }
         public bool IsConst { get; set; }
         public bool IsVirtual { get; set; }
+        public bool IsStatic { get; set; }
+        public bool IsTemplate { get; set; }
 
         public string Name { get; set; }
 

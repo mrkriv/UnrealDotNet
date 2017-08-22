@@ -28,6 +28,12 @@ namespace Generator.Metadata
                     Console.Write(cl.BaseClass.Name);
                 }
 
+                if (cl.IsTemplate)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.Write(" (Template)");
+                }
+
                 if (!cl.IsImplemented)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -53,6 +59,8 @@ namespace Generator.Metadata
 
             if (method.IsConst) ext.Add("const");
             if (method.IsVirtual) ext.Add("virtual");
+            if (method.IsTemplate) ext.Add("template");
+            if (method.IsStatic) ext.Add("static");
 
             Console.Write("\t");
             PrintVariable(method.ReturnType);

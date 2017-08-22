@@ -164,6 +164,24 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitMethodName([NotNull] UHeaderParser.MethodNameContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.property"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitProperty([NotNull] UHeaderParser.PropertyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.propertyName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropertyName([NotNull] UHeaderParser.PropertyNameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.propertyDefaultValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropertyDefaultValue([NotNull] UHeaderParser.PropertyDefaultValueContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.type"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -188,6 +206,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTypeName([NotNull] UHeaderParser.TypeNameContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.typeTemplateName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTypeTemplateName([NotNull] UHeaderParser.TypeTemplateNameContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isVirtual"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -199,6 +223,42 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIsConst([NotNull] UHeaderParser.IsConstContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isStatic"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsStatic([NotNull] UHeaderParser.IsStaticContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.templateDefine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTemplateDefine([NotNull] UHeaderParser.TemplateDefineContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTemplateParamList([NotNull] UHeaderParser.TemplateParamListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParam"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTemplateParam([NotNull] UHeaderParser.TemplateParamContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamType"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTemplateParamType([NotNull] UHeaderParser.TemplateParamTypeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamLiter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTemplateParamLiter([NotNull] UHeaderParser.TemplateParamLiterContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.accessSpecifierContainer"/>.
 	/// </summary>

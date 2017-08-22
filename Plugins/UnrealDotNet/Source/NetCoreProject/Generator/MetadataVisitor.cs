@@ -45,6 +45,7 @@ namespace Generator
             CurrentClass.SourceFile = CurrentFile;
             CurrentClass.IsImplemented = true;
             CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
+            CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
 
             var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
             if (parentClassName != null)
@@ -65,7 +66,10 @@ namespace Generator
             var method = new Method(context.ChildText<MethodNameContext>())
             {
                 IsConst = context.FoundChild<IsConstContext>(),
+                IsStatic = context.FoundChild<IsStaticContext>(),
                 IsVirtual = context.FoundChild<IsVirtualContext>(),
+                IsTemplate = context.FoundChild<TemplateDefineContext>(),
+
                 ReturnType = ParceType(context.Child<TypeContext>()),
                 InputTypes = context.FindAll<MethodParametrContext>().Reverse()
                     .Select(ParceParam).ToList()

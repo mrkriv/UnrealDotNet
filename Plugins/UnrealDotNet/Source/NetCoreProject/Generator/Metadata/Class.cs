@@ -9,6 +9,7 @@ namespace Generator.Metadata
         public List<Method> Methods { get; set; }
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
+        public bool IsTemplate { get; set; }
         public string SourceFile { get; set; }
 
         public Class(string Name)

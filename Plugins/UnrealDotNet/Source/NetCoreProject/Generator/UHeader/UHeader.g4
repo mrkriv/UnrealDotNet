@@ -30,7 +30,7 @@ classPreDeclaration
 ;
 
 classDeclaration
-	: classOrStruct className classParentList? '{' classBody '}' ';'
+	: templateDefine? classOrStruct className classParentList? '{' classBody '}' ';'
 ;
 
 classOrStruct
@@ -49,6 +49,7 @@ className
 classBody
 	: (accessSpecifierContainer
 	| method
+	| property
 	| uDefine
 	| preprocessDerective)* // For debug, replace with classLevelElement
 ;
@@ -93,7 +94,7 @@ uMetaParamValue
 /* Method */
 
 method
-	: isVirtual? type methodName '(' methodParamsList? ')' isConst? (methodBody | ';')
+	: templateDefine? isStatic? isVirtual? type methodName '(' methodParamsList? ')' isConst? (methodBody | ';')
 ;
 
 methodParamsList
@@ -128,6 +129,25 @@ methodName
 	: Identifier
 ;
 
+
+/* Property */
+
+property
+	: isStatic? type propertyName ( ('=' | ':') propertyDefaultValue )? ';'
+;
+
+propertyName
+	: Identifier
+;
+
+propertyDefaultValue
+	: Identifier
+	| Literal
+;
+
+
+/* Type */
+
 type
 	: isConst? classOrStruct? (isPtrQuant | isRefQuant)? typeName (isPtrQuant | isRefQuant)?
 ;
@@ -142,6 +162,11 @@ isRefQuant
 
 typeName
 	: Identifier
+	| typeTemplateName ('<' typeName '>')
+;
+
+typeTemplateName
+	: Identifier
 ;
 
 isVirtual
@@ -151,6 +176,34 @@ isVirtual
 isConst
 	: Const
 ;
+
+isStatic
+	: Static
+;
+
+
+/* Template */
+
+templateDefine
+	: Template '<' templateParamList '>'
+	;
+
+templateParamList
+	: templateParam
+	| templateParam ',' templateParamList
+	;
+
+templateParam
+	: templateParamType templateParamLiter
+	;
+
+templateParamType
+	: Identifier
+	;
+
+templateParamLiter
+	: Identifier
+	;
 
 accessSpecifierContainer
 	: accessSpecifier ':'
@@ -213,8 +266,16 @@ Const
 	: 'const'
 ;
 
+Static
+	: 'static'
+;
+
 Extern
 	: 'extern'
+;
+
+Template
+	: 'template'
 ;
 
 BracketsOpen
@@ -291,7 +352,7 @@ SpecalSymbol
 ;
 
 Skiped
-	: (SpecalSymbol | SIGN) -> skip
+	: (SpecalSymbol | SIGN) /*-> skip*/
 ;
 
 Whitespace
