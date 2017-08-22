@@ -101,7 +101,7 @@ namespace UnrealEngine
 
             try
             {
-                //ULog_Debug($"Call method {MethodName} in {Adress}"); // disable spam
+                UObject.ULog_Debug($"Call method {MethodName} in {Adress}");
                 method.Invoke(obj, Params);
             }
             catch (Exception e)

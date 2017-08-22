@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -23,6 +24,9 @@ namespace UnrealEngine
         private static extern void E_ULOG_L(string Message);
 
         [DllImport("DotUnrealExample.exe")]
+        private static extern void E_ScreenDebugMessage(string Message, float Time, byte R, byte G, byte B);
+
+        [DllImport("DotUnrealExample.exe")]
         private static extern IntPtr E_GetTranferBufferPtr();
 
         [DllImport("DotUnrealExample.exe")]
@@ -37,6 +41,9 @@ namespace UnrealEngine
 
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
         private static extern void E_ULOG_L(string Message);
+
+        [DllImport("UE4Editor-UnrealDotNetRuntime")]
+        private static extern void E_ScreenDebugMessage(string Message, float Time, byte R, byte G, byte B);
 
         [DllImport("UE4Editor-UnrealDotNetRuntime")]
         private static extern IntPtr E_GetTranferBufferPtr();
@@ -65,6 +72,13 @@ namespace UnrealEngine
         public static void ULog_Warning(string Message) => E_ULOG_W(Message);
 
         public static void ULog_Error(string Message) => E_ULOG_E(Message);
+
+        public static void ScreenDebugMessage(string Message, float Time = 2.0f) => ScreenDebugMessage(Message, Time, Color.Gold);
+
+        public static void ScreenDebugMessage(string Message, float Time, Color Color)
+        {
+            E_ScreenDebugMessage(Message, Time, Color.R, Color.G, Color.B);
+        }
 
         public static IntPtr GetTranferBufferPtr() => E_GetTranferBufferPtr();
 

@@ -11,12 +11,17 @@ static size_t StuructTranferOffest = 0;
 
 #include "Generate/Index.inl"
 
+extern "C" DOTNET_EXPORT INT_PTR E_GetTranferBufferPtr() { return (INT_PTR)&StuructTranferBuffer[0]; }
+extern "C" DOTNET_EXPORT size_t E_GetTranferBufferOffest() { return StuructTranferOffest; }
+
 extern "C" DOTNET_EXPORT void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_W(char* Message) { UE_LOG(DotNetRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_L(char* Message) { UE_LOG(DotNetRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 
-extern "C" DOTNET_EXPORT INT_PTR E_GetTranferBufferPtr() { return (INT_PTR)&StuructTranferBuffer[0]; }
-extern "C" DOTNET_EXPORT size_t E_GetTranferBufferOffest() { return StuructTranferOffest; }
+extern "C" DOTNET_EXPORT void E_ScreenDebugMessage(char* Message, float Time, uint8 R, uint8 G, uint8 B)
+{
+	GEngine->AddOnScreenDebugMessage(-1, Time, FColor(R, G, B), UTF8_TO_TCHAR(Message));
+}
 
 //extern "C"
 //{

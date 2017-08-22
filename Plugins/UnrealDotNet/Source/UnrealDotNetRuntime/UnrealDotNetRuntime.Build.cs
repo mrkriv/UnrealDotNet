@@ -1,3 +1,4 @@
+using System.IO;
 using UnrealBuildTool;
 
 public class UnrealDotNetRuntime : ModuleRules
@@ -62,5 +63,22 @@ public class UnrealDotNetRuntime : ModuleRules
             {
             }
         );
+
+        if (Target.Type != TargetRules.TargetType.Editor)
+        {
+            string BaseDirectory = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", ".."));
+            string GameLogicDLLDirectory = Path.Combine(BaseDirectory, "Dotnet", "GameLogic");
+            string DotnetDLLDirectory = Path.Combine(BaseDirectory, "Dotnet", "2.0.0");
+
+            foreach (string Plugin in Directory.EnumerateFiles(GameLogicDLLDirectory, "*.dll", SearchOption.AllDirectories))
+            {
+                RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(GameLogicDLLDirectory, Plugin)));
+            }
+
+            foreach (string Plugin in Directory.EnumerateFiles(DotnetDLLDirectory, "*.dll", SearchOption.AllDirectories))
+            {
+                RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(DotnetDLLDirectory, Plugin)));
+            }
+        }
     }
 }

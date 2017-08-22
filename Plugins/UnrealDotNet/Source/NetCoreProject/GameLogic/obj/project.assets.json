@@ -704,9 +704,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\GameLogic\\GameLogic.csproj",
       "projectName": "GameLogic",
@@ -732,11 +729,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\UnrealEngine\\UnrealEngine.csproj": {
-              "projectPath": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\UnrealEngine\\UnrealEngine.csproj"
-            },
             "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj": {
               "projectPath": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj"
+            },
+            "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\UnrealEngine\\UnrealEngine.csproj": {
+              "projectPath": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\UnrealEngine\\UnrealEngine.csproj"
             }
           }
         }

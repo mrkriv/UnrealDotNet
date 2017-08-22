@@ -32,17 +32,16 @@
 DEFINE_LOG_CATEGORY(DotNetShell);
 DEFINE_LOG_CATEGORY(DotNetRuntime);
 
+static const FString PluginName = "UnrealDotNet";
+static const FString CoreCLR_Name = "coreclr.dll";
+
 #if WITH_EDITOR
-static const FString PluginName = "UnrealDotNet";
-static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Resources\\Dotnet\\2.0.0\\");
-static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries\\Win64");
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries" / "Win64");
 static const FString HotreloadHook_Filename = "HotReload\\hotreload";
-static const FString CoreCLR_Name = "coreclr.dll";
 #else
-static const FString PluginName = "UnrealDotNet";
-static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GameDir() / "Binaries\\Dotnet\\2.0.0\\");
-static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GameDir() / "Binaries\\Win64");
-static const FString CoreCLR_Name = "coreclr.dll";
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "GameLogic");
 #endif
 
 FString UCoreShell::AssemblyGuid;
@@ -56,6 +55,9 @@ void UCoreShell::Initialize()
 {
 	Host = CreateHost(CoreCLR_Path / CoreCLR_Name);
 	DomainID = CreateDomain(Host, Domain_Path);
+
+	UE_LOG(DotNetShell, Log, TEXT("CoreCLR_Path: %s"), *CoreCLR_Path);
+	UE_LOG(DotNetShell, Log, TEXT("Domain_Path: %s"), *Domain_Path);
 
 #if WITH_EDITOR
 	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
@@ -116,7 +118,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (!coreCLR)
 	{
-		UE_LOG(DotNetShell, Error, TEXT("ERROR - coreCLR dll not found\n"));
+		UE_LOG(DotNetShell, Error, TEXT("CoreCLR dll not found '%s'"), *coreCLRPath);
 		return NULL;
 	}
 
@@ -125,7 +127,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (!pfnGetCLRRuntimeHost)
 	{
-		UE_LOG(DotNetShell, Error, TEXT("ERROR - not found host lib:\n%s\n"), *coreCLRPath);
+		UE_LOG(DotNetShell, Error, TEXT("Not found host lib '%s'"), *coreCLRPath);
 		return NULL;
 	}
 
@@ -146,12 +148,12 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 
 	if (FAILED(hr))
 	{
-		UE_LOG(DotNetShell, Error, TEXT("ERROR - Failed to start the runtime.\nError code:%x\n"), hr);
+		UE_LOG(DotNetShell, Error, TEXT("Failed to start the runtime. Code:%x"), hr);
 		return NULL;
 	}
 	else
 	{
-		UE_LOG(DotNetShell, Log, TEXT("Runtime started\n\n"));
+		UE_LOG(DotNetShell, Log, TEXT("Dotnet host started"));
 	}
 
 	return Host;
@@ -160,7 +162,10 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppPath)
 {
 	if (Host == NULL)
+	{
+		UE_LOG(DotNetShell, Error, TEXT("CoreCLR is not load"));
 		return -1;
+	}
 
 	FString trustedPlatformAssemblies;
 
@@ -234,6 +239,9 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppP
 
 void UCoreShell::Uninitialize()
 {
+	if (Host == NULL)
+		return;
+
 	Host->UnloadAppDomain(DomainID, true);
 	Host->Stop();
 	Host->Release();
@@ -241,6 +249,12 @@ void UCoreShell::Uninitialize()
 
 void* UCoreShell::GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method)
 {
+	if (Host == NULL)
+	{
+		UE_LOG(DotNetShell, Error, TEXT("CoreCLR is not load"));
+		return NULL;
+	}
+
 	UE_LOG(DotNetShell, Log, TEXT("Find manage method %s.%s in %s"), *FullClassName, *Method, *Assemble);
 
 	void* manageMethod = NULL;

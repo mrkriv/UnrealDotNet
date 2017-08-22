@@ -1,24 +1,35 @@
 {
   "FileVersion": 3,
-  "Version": 1,
-  "VersionName": "1.0",
+  "Version": 20,
+  "VersionName": "0.2",
   "FriendlyName": "UnrealDotNet",
-  "Description": "",
+  "Description": "Support dotnet",
   "Category": "Other",
-  "CreatedBy": "",
-  "CreatedByURL": "",
-  "DocsURL": "",
-  "MarketplaceURL": "",
-  "SupportURL": "",
   "EnabledByDefault": true,
-  "CanContainContent": false,
+  "CanContainContent": true,
   "IsBetaVersion": true,
 
   "Modules": [
     {
       "Name": "UnrealDotNetRuntime",
       "Type": "Runtime",
-      "LoadingPhase": "PreDefault"
+      "LoadingPhase": "PreDefault",
+      "WhitelistPlatforms": [ "Win64" ]
+    },
+    {
+      "Name": "UnrealDotNetEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
     }
-  ]
+  ],
+  "PreBuildSteps": {
+    "Win64": [
+      "dotnet build $(PluginDir)\\Source\\NetCoreProject\\GameLogic -o ..\\..\\..\\Binaries\\Win64\\netcoreapp2.0 -c Debug",
+      "dotnet build $(PluginDir)\\Source\\NetCoreProject\\GameLogic -o ..\\..\\..\\Binaries\\Win64\\netcoreapp2.0 -c Release"
+    ]
+  },
+  "PostBuildSteps": {
+    "Win64": [
+    ]
+  }
 }
