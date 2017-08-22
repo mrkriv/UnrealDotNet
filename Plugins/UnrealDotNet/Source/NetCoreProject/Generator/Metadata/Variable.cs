@@ -11,6 +11,7 @@ namespace Generator.Metadata
         public bool IsVoid => Type == "void";
 
         public string Type { get; protected set; }
+        public string Default { get; set; }
         public string Name { get; set; }
 
         public virtual string GetTypeCS()

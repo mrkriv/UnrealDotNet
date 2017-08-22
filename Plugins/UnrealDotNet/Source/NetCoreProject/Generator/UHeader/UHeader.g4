@@ -102,11 +102,16 @@ methodParamsList
 ;
 
 methodParametr
-	: type methodParametrName
+	: type methodParametrName ('=' methodParametrDefaultValue)?
 ;
 
 methodParametrName
 	: Identifier
+;
+
+methodParametrDefaultValue
+	: Identifier
+	| Literal
 ;
 
 methodBody
@@ -124,7 +129,19 @@ methodName
 ;
 
 type
-	: isConst? classOrStruct? AddressQuant* Identifier AddressQuant*
+	: isConst? classOrStruct? (isPtrQuant | isRefQuant)? typeName (isPtrQuant | isRefQuant)?
+;
+
+isPtrQuant
+	: PtrQuant
+;
+
+isRefQuant
+	: RefQuant
+;
+
+typeName
+	: Identifier
 ;
 
 isVirtual
@@ -156,9 +173,12 @@ preprocessDerective
 
 /*Lexer*/
 
-AddressQuant
+PtrQuant
 	: '*'
-	| '&'
+;
+
+RefQuant
+	: '&'
 ;
 
 Private
@@ -228,9 +248,15 @@ DIGIT
 ;
 
 Literal
-	: DIGIT
-	| Boolean
+	: Boolean
+	| RealDIGIT
 	| '"' Schar* '"'
+;
+
+fragment
+RealDIGIT
+	: DIGIT* '.'? DIGIT+ 'f'?
+	| DIGIT+ '.' 'f'?
 ;
 
 fragment
@@ -261,7 +287,7 @@ SIGN
 
 fragment
 SpecalSymbol
-	: ~[a-zA-Z_0-9\n\r \t]
+	: ~[a-zA-Z_0-9\n\r \t&*]
 ;
 
 Skiped

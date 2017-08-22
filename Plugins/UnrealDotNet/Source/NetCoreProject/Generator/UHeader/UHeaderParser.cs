@@ -36,39 +36,43 @@ public partial class UHeaderParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, SingleLineDerective=9, 
-		MultiLineDerective=10, AddressQuant=11, Private=12, Protected=13, Public=14, 
-		Inline=15, Virtual=16, Class=17, Struct=18, Const=19, Extern=20, Identifier=21, 
-		Literal=22, Whitespace=23, Newline=24, BlockComment=25, LineComment=26;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, PtrQuant=7, RefQuant=8, 
+		Private=9, Protected=10, Public=11, Inline=12, Virtual=13, Class=14, Struct=15, 
+		Const=16, Extern=17, BracketsOpen=18, BracketsClose=19, SingleLineDerective=20, 
+		MultiLineDerective=21, Identifier=22, Literal=23, Skiped=24, Whitespace=25, 
+		Newline=26, BlockComment=27, LineComment=28;
 	public const int
-		RULE_translationUnit = 0, RULE_topLevelOutClass = 1, RULE_topLevelInClass = 2, 
-		RULE_classPreDeclaration = 3, RULE_classDeclaration = 4, RULE_classType = 5, 
-		RULE_classParentList = 6, RULE_className = 7, RULE_classBody = 8, RULE_uDefine = 9, 
-		RULE_uDefineName = 10, RULE_uMeta = 11, RULE_uMetaParametrList = 12, RULE_uMetaParametr = 13, 
-		RULE_uMetaParamKey = 14, RULE_uMetaParamValue = 15, RULE_method = 16, 
-		RULE_methodParams = 17, RULE_methodParametr = 18, RULE_methodParametrName = 19, 
-		RULE_methodBody = 20, RULE_methodBodyContent = 21, RULE_methodName = 22, 
-		RULE_type = 23, RULE_accessSpecifierContainer = 24, RULE_accessSpecifier = 25, 
-		RULE_preprocessDerective = 26;
+		RULE_translationUnit = 0, RULE_classPreDeclaration = 1, RULE_classDeclaration = 2, 
+		RULE_classOrStruct = 3, RULE_classParentList = 4, RULE_className = 5, 
+		RULE_classBody = 6, RULE_uDefine = 7, RULE_uDefineName = 8, RULE_uMeta = 9, 
+		RULE_uMetaParametrList = 10, RULE_uMetaParametr = 11, RULE_uMetaParamKey = 12, 
+		RULE_uMetaParamValue = 13, RULE_method = 14, RULE_methodParamsList = 15, 
+		RULE_methodParametr = 16, RULE_methodParametrName = 17, RULE_methodParametrDefaultValue = 18, 
+		RULE_methodBody = 19, RULE_methodBodyContent = 20, RULE_methodName = 21, 
+		RULE_type = 22, RULE_isPtrQuant = 23, RULE_isRefQuant = 24, RULE_typeName = 25, 
+		RULE_isVirtual = 26, RULE_isConst = 27, RULE_accessSpecifierContainer = 28, 
+		RULE_accessSpecifier = 29, RULE_preprocessDerective = 30;
 	public static readonly string[] ruleNames = {
-		"translationUnit", "topLevelOutClass", "topLevelInClass", "classPreDeclaration", 
-		"classDeclaration", "classType", "classParentList", "className", "classBody", 
-		"uDefine", "uDefineName", "uMeta", "uMetaParametrList", "uMetaParametr", 
-		"uMetaParamKey", "uMetaParamValue", "method", "methodParams", "methodParametr", 
-		"methodParametrName", "methodBody", "methodBodyContent", "methodName", 
-		"type", "accessSpecifierContainer", "accessSpecifier", "preprocessDerective"
+		"translationUnit", "classPreDeclaration", "classDeclaration", "classOrStruct", 
+		"classParentList", "className", "classBody", "uDefine", "uDefineName", 
+		"uMeta", "uMetaParametrList", "uMetaParametr", "uMetaParamKey", "uMetaParamValue", 
+		"method", "methodParamsList", "methodParametr", "methodParametrName", 
+		"methodParametrDefaultValue", "methodBody", "methodBodyContent", "methodName", 
+		"type", "isPtrQuant", "isRefQuant", "typeName", "isVirtual", "isConst", 
+		"accessSpecifierContainer", "accessSpecifier", "preprocessDerective"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "';'", "'{'", "'}'", "':'", "'('", "')'", "','", "'='", null, null, 
-		null, "'private'", "'protected'", "'public'", "'inline'", "'virtual'", 
-		"'class'", "'struct'", "'const'", "'extern'"
+		null, "';'", "':'", "'('", "')'", "','", "'='", "'*'", "'&'", "'private'", 
+		"'protected'", "'public'", "'inline'", "'virtual'", "'class'", "'struct'", 
+		"'const'", "'extern'", "'{'", "'}'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, null, null, null, null, null, null, "SingleLineDerective", 
-		"MultiLineDerective", "AddressQuant", "Private", "Protected", "Public", 
-		"Inline", "Virtual", "Class", "Struct", "Const", "Extern", "Identifier", 
-		"Literal", "Whitespace", "Newline", "BlockComment", "LineComment"
+		null, null, null, null, null, null, null, "PtrQuant", "RefQuant", "Private", 
+		"Protected", "Public", "Inline", "Virtual", "Class", "Struct", "Const", 
+		"Extern", "BracketsOpen", "BracketsClose", "SingleLineDerective", "MultiLineDerective", 
+		"Identifier", "Literal", "Skiped", "Whitespace", "Newline", "BlockComment", 
+		"LineComment"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -103,11 +107,29 @@ public partial class UHeaderParser : Parser {
 	}
 	public partial class TranslationUnitContext : ParserRuleContext {
 		public ITerminalNode Eof() { return GetToken(UHeaderParser.Eof, 0); }
-		public TopLevelOutClassContext[] topLevelOutClass() {
-			return GetRuleContexts<TopLevelOutClassContext>();
+		public ClassPreDeclarationContext[] classPreDeclaration() {
+			return GetRuleContexts<ClassPreDeclarationContext>();
 		}
-		public TopLevelOutClassContext topLevelOutClass(int i) {
-			return GetRuleContext<TopLevelOutClassContext>(i);
+		public ClassPreDeclarationContext classPreDeclaration(int i) {
+			return GetRuleContext<ClassPreDeclarationContext>(i);
+		}
+		public ClassDeclarationContext[] classDeclaration() {
+			return GetRuleContexts<ClassDeclarationContext>();
+		}
+		public ClassDeclarationContext classDeclaration(int i) {
+			return GetRuleContext<ClassDeclarationContext>(i);
+		}
+		public UDefineContext[] uDefine() {
+			return GetRuleContexts<UDefineContext>();
+		}
+		public UDefineContext uDefine(int i) {
+			return GetRuleContext<UDefineContext>(i);
+		}
+		public PreprocessDerectiveContext[] preprocessDerective() {
+			return GetRuleContexts<PreprocessDerectiveContext>();
+		}
+		public PreprocessDerectiveContext preprocessDerective(int i) {
+			return GetRuleContext<PreprocessDerectiveContext>(i);
 		}
 		public TranslationUnitContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -129,160 +151,41 @@ public partial class UHeaderParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 57;
+			State = 68;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SingleLineDerective) | (1L << MultiLineDerective) | (1L << Class) | (1L << Struct) | (1L << Identifier))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Class) | (1L << Struct) | (1L << SingleLineDerective) | (1L << MultiLineDerective) | (1L << Identifier))) != 0)) {
 				{
-				{
-				State = 54; topLevelOutClass();
+				State = 66;
+				ErrorHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
+				case 1:
+					{
+					State = 62; classPreDeclaration();
+					}
+					break;
+				case 2:
+					{
+					State = 63; classDeclaration();
+					}
+					break;
+				case 3:
+					{
+					State = 64; uDefine();
+					}
+					break;
+				case 4:
+					{
+					State = 65; preprocessDerective();
+					}
+					break;
 				}
 				}
-				State = 59;
+				State = 70;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 60; Match(Eof);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class TopLevelOutClassContext : ParserRuleContext {
-		public ClassPreDeclarationContext classPreDeclaration() {
-			return GetRuleContext<ClassPreDeclarationContext>(0);
-		}
-		public ClassDeclarationContext classDeclaration() {
-			return GetRuleContext<ClassDeclarationContext>(0);
-		}
-		public UDefineContext uDefine() {
-			return GetRuleContext<UDefineContext>(0);
-		}
-		public PreprocessDerectiveContext preprocessDerective() {
-			return GetRuleContext<PreprocessDerectiveContext>(0);
-		}
-		public TopLevelOutClassContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_topLevelOutClass; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTopLevelOutClass(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public TopLevelOutClassContext topLevelOutClass() {
-		TopLevelOutClassContext _localctx = new TopLevelOutClassContext(Context, State);
-		EnterRule(_localctx, 2, RULE_topLevelOutClass);
-		try {
-			State = 66;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 62; classPreDeclaration();
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 63; classDeclaration();
-				}
-				break;
-			case 3:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 64; uDefine();
-				}
-				break;
-			case 4:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 65; preprocessDerective();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class TopLevelInClassContext : ParserRuleContext {
-		public AccessSpecifierContainerContext accessSpecifierContainer() {
-			return GetRuleContext<AccessSpecifierContainerContext>(0);
-		}
-		public MethodContext method() {
-			return GetRuleContext<MethodContext>(0);
-		}
-		public UDefineContext uDefine() {
-			return GetRuleContext<UDefineContext>(0);
-		}
-		public PreprocessDerectiveContext preprocessDerective() {
-			return GetRuleContext<PreprocessDerectiveContext>(0);
-		}
-		public TopLevelInClassContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_topLevelInClass; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTopLevelInClass(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public TopLevelInClassContext topLevelInClass() {
-		TopLevelInClassContext _localctx = new TopLevelInClassContext(Context, State);
-		EnterRule(_localctx, 4, RULE_topLevelInClass);
-		try {
-			State = 72;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 68; accessSpecifierContainer();
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 69; method();
-				}
-				break;
-			case 3:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 70; uDefine();
-				}
-				break;
-			case 4:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 71; preprocessDerective();
-				}
-				break;
+			State = 71; Match(Eof);
 			}
 		}
 		catch (RecognitionException re) {
@@ -297,8 +200,8 @@ public partial class UHeaderParser : Parser {
 	}
 
 	public partial class ClassPreDeclarationContext : ParserRuleContext {
-		public ClassTypeContext classType() {
-			return GetRuleContext<ClassTypeContext>(0);
+		public ClassOrStructContext classOrStruct() {
+			return GetRuleContext<ClassOrStructContext>(0);
 		}
 		public ClassNameContext className() {
 			return GetRuleContext<ClassNameContext>(0);
@@ -318,13 +221,13 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public ClassPreDeclarationContext classPreDeclaration() {
 		ClassPreDeclarationContext _localctx = new ClassPreDeclarationContext(Context, State);
-		EnterRule(_localctx, 6, RULE_classPreDeclaration);
+		EnterRule(_localctx, 2, RULE_classPreDeclaration);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 74; classType();
-			State = 75; className();
-			State = 76; Match(T__0);
+			State = 73; classOrStruct();
+			State = 74; className();
+			State = 75; Match(T__0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -339,8 +242,8 @@ public partial class UHeaderParser : Parser {
 	}
 
 	public partial class ClassDeclarationContext : ParserRuleContext {
-		public ClassTypeContext classType() {
-			return GetRuleContext<ClassTypeContext>(0);
+		public ClassOrStructContext classOrStruct() {
+			return GetRuleContext<ClassOrStructContext>(0);
 		}
 		public ClassNameContext className() {
 			return GetRuleContext<ClassNameContext>(0);
@@ -366,26 +269,26 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public ClassDeclarationContext classDeclaration() {
 		ClassDeclarationContext _localctx = new ClassDeclarationContext(Context, State);
-		EnterRule(_localctx, 8, RULE_classDeclaration);
+		EnterRule(_localctx, 4, RULE_classDeclaration);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 78; classType();
-			State = 79; className();
-			State = 81;
+			State = 77; classOrStruct();
+			State = 78; className();
+			State = 80;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__3) {
+			if (_la==T__1) {
 				{
-				State = 80; classParentList();
+				State = 79; classParentList();
 				}
 			}
 
-			State = 83; Match(T__1);
-			State = 84; classBody();
-			State = 85; Match(T__2);
-			State = 86; Match(T__0);
+			State = 82; Match(BracketsOpen);
+			State = 83; classBody();
+			State = 84; Match(BracketsClose);
+			State = 85; Match(T__0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -399,30 +302,30 @@ public partial class UHeaderParser : Parser {
 		return _localctx;
 	}
 
-	public partial class ClassTypeContext : ParserRuleContext {
+	public partial class ClassOrStructContext : ParserRuleContext {
 		public ITerminalNode Class() { return GetToken(UHeaderParser.Class, 0); }
 		public ITerminalNode Struct() { return GetToken(UHeaderParser.Struct, 0); }
-		public ClassTypeContext(ParserRuleContext parent, int invokingState)
+		public ClassOrStructContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_classType; } }
+		public override int RuleIndex { get { return RULE_classOrStruct; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitClassType(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassOrStruct(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ClassTypeContext classType() {
-		ClassTypeContext _localctx = new ClassTypeContext(Context, State);
-		EnterRule(_localctx, 10, RULE_classType);
+	public ClassOrStructContext classOrStruct() {
+		ClassOrStructContext _localctx = new ClassOrStructContext(Context, State);
+		EnterRule(_localctx, 6, RULE_classOrStruct);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 88;
+			State = 87;
 			_la = TokenStream.LA(1);
 			if ( !(_la==Class || _la==Struct) ) {
 			ErrorHandler.RecoverInline(this);
@@ -466,22 +369,22 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public ClassParentListContext classParentList() {
 		ClassParentListContext _localctx = new ClassParentListContext(Context, State);
-		EnterRule(_localctx, 12, RULE_classParentList);
+		EnterRule(_localctx, 8, RULE_classParentList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 90; Match(T__3);
-			State = 92;
+			State = 89; Match(T__1);
+			State = 91;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Private) | (1L << Protected) | (1L << Public))) != 0)) {
 				{
-				State = 91; accessSpecifier();
+				State = 90; accessSpecifier();
 				}
 			}
 
-			State = 94; className();
+			State = 93; className();
 			}
 		}
 		catch (RecognitionException re) {
@@ -512,11 +415,11 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public ClassNameContext className() {
 		ClassNameContext _localctx = new ClassNameContext(Context, State);
-		EnterRule(_localctx, 14, RULE_className);
+		EnterRule(_localctx, 10, RULE_className);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 96; Match(Identifier);
+			State = 95; Match(Identifier);
 			}
 		}
 		catch (RecognitionException re) {
@@ -531,11 +434,29 @@ public partial class UHeaderParser : Parser {
 	}
 
 	public partial class ClassBodyContext : ParserRuleContext {
-		public TopLevelInClassContext[] topLevelInClass() {
-			return GetRuleContexts<TopLevelInClassContext>();
+		public AccessSpecifierContainerContext[] accessSpecifierContainer() {
+			return GetRuleContexts<AccessSpecifierContainerContext>();
 		}
-		public TopLevelInClassContext topLevelInClass(int i) {
-			return GetRuleContext<TopLevelInClassContext>(i);
+		public AccessSpecifierContainerContext accessSpecifierContainer(int i) {
+			return GetRuleContext<AccessSpecifierContainerContext>(i);
+		}
+		public MethodContext[] method() {
+			return GetRuleContexts<MethodContext>();
+		}
+		public MethodContext method(int i) {
+			return GetRuleContext<MethodContext>(i);
+		}
+		public UDefineContext[] uDefine() {
+			return GetRuleContexts<UDefineContext>();
+		}
+		public UDefineContext uDefine(int i) {
+			return GetRuleContext<UDefineContext>(i);
+		}
+		public PreprocessDerectiveContext[] preprocessDerective() {
+			return GetRuleContexts<PreprocessDerectiveContext>();
+		}
+		public PreprocessDerectiveContext preprocessDerective(int i) {
+			return GetRuleContext<PreprocessDerectiveContext>(i);
 		}
 		public ClassBodyContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -552,21 +473,42 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public ClassBodyContext classBody() {
 		ClassBodyContext _localctx = new ClassBodyContext(Context, State);
-		EnterRule(_localctx, 16, RULE_classBody);
+		EnterRule(_localctx, 12, RULE_classBody);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 101;
+			State = 103;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SingleLineDerective) | (1L << MultiLineDerective) | (1L << AddressQuant) | (1L << Private) | (1L << Protected) | (1L << Public) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Identifier))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PtrQuant) | (1L << RefQuant) | (1L << Private) | (1L << Protected) | (1L << Public) | (1L << Virtual) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << SingleLineDerective) | (1L << MultiLineDerective) | (1L << Identifier))) != 0)) {
 				{
-				{
-				State = 98; topLevelInClass();
+				State = 101;
+				ErrorHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(TokenStream,4,Context) ) {
+				case 1:
+					{
+					State = 97; accessSpecifierContainer();
+					}
+					break;
+				case 2:
+					{
+					State = 98; method();
+					}
+					break;
+				case 3:
+					{
+					State = 99; uDefine();
+					}
+					break;
+				case 4:
+					{
+					State = 100; preprocessDerective();
+					}
+					break;
 				}
 				}
-				State = 103;
+				State = 105;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -605,21 +547,21 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UDefineContext uDefine() {
 		UDefineContext _localctx = new UDefineContext(Context, State);
-		EnterRule(_localctx, 18, RULE_uDefine);
+		EnterRule(_localctx, 14, RULE_uDefine);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 104; uDefineName();
-			State = 105; Match(T__4);
-			State = 106; uMeta();
-			State = 107; Match(T__5);
-			State = 109;
+			State = 106; uDefineName();
+			State = 107; Match(T__2);
+			State = 108; uMeta();
+			State = 109; Match(T__3);
+			State = 111;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==T__0) {
 				{
-				State = 108; Match(T__0);
+				State = 110; Match(T__0);
 				}
 			}
 
@@ -653,11 +595,11 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UDefineNameContext uDefineName() {
 		UDefineNameContext _localctx = new UDefineNameContext(Context, State);
-		EnterRule(_localctx, 20, RULE_uDefineName);
+		EnterRule(_localctx, 16, RULE_uDefineName);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 111; Match(Identifier);
+			State = 113; Match(Identifier);
 			}
 		}
 		catch (RecognitionException re) {
@@ -690,17 +632,17 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UMetaContext uMeta() {
 		UMetaContext _localctx = new UMetaContext(Context, State);
-		EnterRule(_localctx, 22, RULE_uMeta);
+		EnterRule(_localctx, 18, RULE_uMeta);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 114;
+			State = 116;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << AddressQuant) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Identifier) | (1L << Literal))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PtrQuant) | (1L << RefQuant) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Identifier) | (1L << Literal))) != 0)) {
 				{
-				State = 113; uMetaParametrList();
+				State = 115; uMetaParametrList();
 				}
 			}
 
@@ -739,23 +681,23 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UMetaParametrListContext uMetaParametrList() {
 		UMetaParametrListContext _localctx = new UMetaParametrListContext(Context, State);
-		EnterRule(_localctx, 24, RULE_uMetaParametrList);
+		EnterRule(_localctx, 20, RULE_uMetaParametrList);
 		try {
-			State = 121;
+			State = 123;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 116; uMetaParametr();
+				State = 118; uMetaParametr();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 117; uMetaParametr();
-				State = 118; Match(T__6);
-				State = 119; uMetaParametrList();
+				State = 119; uMetaParametr();
+				State = 120; Match(T__4);
+				State = 121; uMetaParametrList();
 				}
 				break;
 			}
@@ -796,33 +738,33 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UMetaParametrContext uMetaParametr() {
 		UMetaParametrContext _localctx = new UMetaParametrContext(Context, State);
-		EnterRule(_localctx, 26, RULE_uMetaParametr);
+		EnterRule(_localctx, 22, RULE_uMetaParametr);
 		try {
-			State = 134;
+			State = 136;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 123; uMetaParamKey();
+				State = 125; uMetaParamKey();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 124; uMetaParamKey();
-				State = 125; Match(T__7);
-				State = 126; uMetaParamValue();
+				State = 126; uMetaParamKey();
+				State = 127; Match(T__5);
+				State = 128; uMetaParamValue();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 128; uMetaParamKey();
-				State = 129; Match(T__7);
-				State = 130; Match(T__4);
-				State = 131; uMetaParametrList();
-				State = 132; Match(T__5);
+				State = 130; uMetaParamKey();
+				State = 131; Match(T__5);
+				State = 132; Match(T__2);
+				State = 133; uMetaParametrList();
+				State = 134; Match(T__3);
 				}
 				break;
 			}
@@ -858,25 +800,26 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UMetaParamKeyContext uMetaParamKey() {
 		UMetaParamKeyContext _localctx = new UMetaParamKeyContext(Context, State);
-		EnterRule(_localctx, 28, RULE_uMetaParamKey);
+		EnterRule(_localctx, 24, RULE_uMetaParamKey);
 		try {
-			State = 138;
+			State = 140;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case AddressQuant:
+			case PtrQuant:
+			case RefQuant:
 			case Class:
 			case Struct:
 			case Const:
 			case Identifier:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 136; type();
+				State = 138; type();
 				}
 				break;
 			case Literal:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 137; Match(Literal);
+				State = 139; Match(Literal);
 				}
 				break;
 			default:
@@ -914,25 +857,26 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public UMetaParamValueContext uMetaParamValue() {
 		UMetaParamValueContext _localctx = new UMetaParamValueContext(Context, State);
-		EnterRule(_localctx, 30, RULE_uMetaParamValue);
+		EnterRule(_localctx, 26, RULE_uMetaParamValue);
 		try {
-			State = 142;
+			State = 144;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case AddressQuant:
+			case PtrQuant:
+			case RefQuant:
 			case Class:
 			case Struct:
 			case Const:
 			case Identifier:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 140; type();
+				State = 142; type();
 				}
 				break;
 			case Literal:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 141; Match(Literal);
+				State = 143; Match(Literal);
 				}
 				break;
 			default:
@@ -960,10 +904,15 @@ public partial class UHeaderParser : Parser {
 		public MethodBodyContext methodBody() {
 			return GetRuleContext<MethodBodyContext>(0);
 		}
-		public MethodParamsContext methodParams() {
-			return GetRuleContext<MethodParamsContext>(0);
+		public IsVirtualContext isVirtual() {
+			return GetRuleContext<IsVirtualContext>(0);
 		}
-		public ITerminalNode Const() { return GetToken(UHeaderParser.Const, 0); }
+		public MethodParamsListContext methodParamsList() {
+			return GetRuleContext<MethodParamsListContext>(0);
+		}
+		public IsConstContext isConst() {
+			return GetRuleContext<IsConstContext>(0);
+		}
 		public MethodContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -979,44 +928,53 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodContext method() {
 		MethodContext _localctx = new MethodContext(Context, State);
-		EnterRule(_localctx, 32, RULE_method);
+		EnterRule(_localctx, 28, RULE_method);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 144; type();
-			State = 145; methodName();
-			State = 146; Match(T__4);
-			State = 148;
+			State = 147;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << AddressQuant) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Identifier))) != 0)) {
+			if (_la==Virtual) {
 				{
-				State = 147; methodParams();
+				State = 146; isVirtual();
 				}
 			}
 
-			State = 150; Match(T__5);
-			State = 152;
+			State = 149; type();
+			State = 150; methodName();
+			State = 151; Match(T__2);
+			State = 153;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PtrQuant) | (1L << RefQuant) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Identifier))) != 0)) {
+				{
+				State = 152; methodParamsList();
+				}
+			}
+
+			State = 155; Match(T__3);
+			State = 157;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==Const) {
 				{
-				State = 151; Match(Const);
+				State = 156; isConst();
 				}
 			}
 
-			State = 156;
+			State = 161;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case T__1:
+			case BracketsOpen:
 				{
-				State = 154; methodBody();
+				State = 159; methodBody();
 				}
 				break;
 			case T__0:
 				{
-				State = 155; Match(T__0);
+				State = 160; Match(T__0);
 				}
 				break;
 			default:
@@ -1035,45 +993,45 @@ public partial class UHeaderParser : Parser {
 		return _localctx;
 	}
 
-	public partial class MethodParamsContext : ParserRuleContext {
+	public partial class MethodParamsListContext : ParserRuleContext {
 		public MethodParametrContext methodParametr() {
 			return GetRuleContext<MethodParametrContext>(0);
 		}
-		public MethodParamsContext methodParams() {
-			return GetRuleContext<MethodParamsContext>(0);
+		public MethodParamsListContext methodParamsList() {
+			return GetRuleContext<MethodParamsListContext>(0);
 		}
-		public MethodParamsContext(ParserRuleContext parent, int invokingState)
+		public MethodParamsListContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_methodParams; } }
+		public override int RuleIndex { get { return RULE_methodParamsList; } }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMethodParams(this);
+			if (typedVisitor != null) return typedVisitor.VisitMethodParamsList(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public MethodParamsContext methodParams() {
-		MethodParamsContext _localctx = new MethodParamsContext(Context, State);
-		EnterRule(_localctx, 34, RULE_methodParams);
+	public MethodParamsListContext methodParamsList() {
+		MethodParamsListContext _localctx = new MethodParamsListContext(Context, State);
+		EnterRule(_localctx, 30, RULE_methodParamsList);
 		try {
-			State = 163;
+			State = 168;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,15,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 158; methodParametr();
+				State = 163; methodParametr();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 159; methodParametr();
-				State = 160; Match(T__6);
-				State = 161; methodParams();
+				State = 164; methodParametr();
+				State = 165; Match(T__4);
+				State = 166; methodParamsList();
 				}
 				break;
 			}
@@ -1096,6 +1054,9 @@ public partial class UHeaderParser : Parser {
 		public MethodParametrNameContext methodParametrName() {
 			return GetRuleContext<MethodParametrNameContext>(0);
 		}
+		public MethodParametrDefaultValueContext methodParametrDefaultValue() {
+			return GetRuleContext<MethodParametrDefaultValueContext>(0);
+		}
 		public MethodParametrContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1111,12 +1072,23 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodParametrContext methodParametr() {
 		MethodParametrContext _localctx = new MethodParametrContext(Context, State);
-		EnterRule(_localctx, 36, RULE_methodParametr);
+		EnterRule(_localctx, 32, RULE_methodParametr);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 165; type();
-			State = 166; methodParametrName();
+			State = 170; type();
+			State = 171; methodParametrName();
+			State = 174;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==T__5) {
+				{
+				State = 172; Match(T__5);
+				State = 173; methodParametrDefaultValue();
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -1147,11 +1119,56 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodParametrNameContext methodParametrName() {
 		MethodParametrNameContext _localctx = new MethodParametrNameContext(Context, State);
-		EnterRule(_localctx, 38, RULE_methodParametrName);
+		EnterRule(_localctx, 34, RULE_methodParametrName);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 168; Match(Identifier);
+			State = 176; Match(Identifier);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MethodParametrDefaultValueContext : ParserRuleContext {
+		public ITerminalNode Identifier() { return GetToken(UHeaderParser.Identifier, 0); }
+		public ITerminalNode Literal() { return GetToken(UHeaderParser.Literal, 0); }
+		public MethodParametrDefaultValueContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_methodParametrDefaultValue; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitMethodParametrDefaultValue(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MethodParametrDefaultValueContext methodParametrDefaultValue() {
+		MethodParametrDefaultValueContext _localctx = new MethodParametrDefaultValueContext(Context, State);
+		EnterRule(_localctx, 36, RULE_methodParametrDefaultValue);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 178;
+			_la = TokenStream.LA(1);
+			if ( !(_la==Identifier || _la==Literal) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1184,13 +1201,13 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodBodyContext methodBody() {
 		MethodBodyContext _localctx = new MethodBodyContext(Context, State);
-		EnterRule(_localctx, 40, RULE_methodBody);
+		EnterRule(_localctx, 38, RULE_methodBody);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 170; Match(T__1);
-			State = 171; methodBodyContent();
-			State = 172; Match(T__2);
+			State = 180; Match(BracketsOpen);
+			State = 181; methodBodyContent();
+			State = 182; Match(BracketsClose);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1205,8 +1222,19 @@ public partial class UHeaderParser : Parser {
 	}
 
 	public partial class MethodBodyContentContext : ParserRuleContext {
-		public MethodBodyContext methodBody() {
-			return GetRuleContext<MethodBodyContext>(0);
+		public ITerminalNode[] BracketsOpen() { return GetTokens(UHeaderParser.BracketsOpen); }
+		public ITerminalNode BracketsOpen(int i) {
+			return GetToken(UHeaderParser.BracketsOpen, i);
+		}
+		public ITerminalNode[] BracketsClose() { return GetTokens(UHeaderParser.BracketsClose); }
+		public ITerminalNode BracketsClose(int i) {
+			return GetToken(UHeaderParser.BracketsClose, i);
+		}
+		public MethodBodyContentContext[] methodBodyContent() {
+			return GetRuleContexts<MethodBodyContentContext>();
+		}
+		public MethodBodyContentContext methodBodyContent(int i) {
+			return GetRuleContext<MethodBodyContentContext>(i);
 		}
 		public MethodBodyContentContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -1223,20 +1251,46 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodBodyContentContext methodBodyContent() {
 		MethodBodyContentContext _localctx = new MethodBodyContentContext(Context, State);
-		EnterRule(_localctx, 42, RULE_methodBodyContent);
+		EnterRule(_localctx, 40, RULE_methodBodyContent);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 175;
+			State = 187;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__1) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << PtrQuant) | (1L << RefQuant) | (1L << Private) | (1L << Protected) | (1L << Public) | (1L << Inline) | (1L << Virtual) | (1L << Class) | (1L << Struct) | (1L << Const) | (1L << Extern) | (1L << SingleLineDerective) | (1L << MultiLineDerective) | (1L << Identifier) | (1L << Literal) | (1L << Skiped) | (1L << Whitespace) | (1L << Newline) | (1L << BlockComment) | (1L << LineComment))) != 0)) {
 				{
-				State = 174; methodBody();
+				{
+				State = 184;
+				_la = TokenStream.LA(1);
+				if ( _la <= 0 || (_la==BracketsOpen || _la==BracketsClose) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				}
+				}
+				State = 189;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			{
+			State = 195;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==BracketsOpen) {
+				{
+				State = 190; Match(BracketsOpen);
+				State = 191; methodBodyContent();
+				State = 192; Match(BracketsClose);
+				State = 193; methodBodyContent();
 				}
 			}
 
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1267,11 +1321,11 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public MethodNameContext methodName() {
 		MethodNameContext _localctx = new MethodNameContext(Context, State);
-		EnterRule(_localctx, 44, RULE_methodName);
+		EnterRule(_localctx, 42, RULE_methodName);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 177; Match(Identifier);
+			State = 197; Match(Identifier);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1286,14 +1340,27 @@ public partial class UHeaderParser : Parser {
 	}
 
 	public partial class TypeContext : ParserRuleContext {
-		public ITerminalNode Identifier() { return GetToken(UHeaderParser.Identifier, 0); }
-		public ITerminalNode Const() { return GetToken(UHeaderParser.Const, 0); }
-		public ITerminalNode[] AddressQuant() { return GetTokens(UHeaderParser.AddressQuant); }
-		public ITerminalNode AddressQuant(int i) {
-			return GetToken(UHeaderParser.AddressQuant, i);
+		public TypeNameContext typeName() {
+			return GetRuleContext<TypeNameContext>(0);
 		}
-		public ITerminalNode Class() { return GetToken(UHeaderParser.Class, 0); }
-		public ITerminalNode Struct() { return GetToken(UHeaderParser.Struct, 0); }
+		public IsConstContext isConst() {
+			return GetRuleContext<IsConstContext>(0);
+		}
+		public ClassOrStructContext classOrStruct() {
+			return GetRuleContext<ClassOrStructContext>(0);
+		}
+		public IsPtrQuantContext[] isPtrQuant() {
+			return GetRuleContexts<IsPtrQuantContext>();
+		}
+		public IsPtrQuantContext isPtrQuant(int i) {
+			return GetRuleContext<IsPtrQuantContext>(i);
+		}
+		public IsRefQuantContext[] isRefQuant() {
+			return GetRuleContexts<IsRefQuantContext>();
+		}
+		public IsRefQuantContext isRefQuant(int i) {
+			return GetRuleContext<IsRefQuantContext>(i);
+		}
 		public TypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1309,64 +1376,244 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public TypeContext type() {
 		TypeContext _localctx = new TypeContext(Context, State);
-		EnterRule(_localctx, 46, RULE_type);
+		EnterRule(_localctx, 44, RULE_type);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 180;
+			State = 200;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==Const) {
 				{
-				State = 179; Match(Const);
+				State = 199; isConst();
 				}
 			}
 
-			State = 183;
+			State = 203;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==Class || _la==Struct) {
 				{
-				State = 182;
-				_la = TokenStream.LA(1);
-				if ( !(_la==Class || _la==Struct) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
+				State = 202; classOrStruct();
 				}
 			}
 
-			State = 188;
+			State = 207;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==AddressQuant) {
+			switch (TokenStream.LA(1)) {
+			case PtrQuant:
 				{
+				State = 205; isPtrQuant();
+				}
+				break;
+			case RefQuant:
 				{
-				State = 185; Match(AddressQuant);
+				State = 206; isRefQuant();
 				}
-				}
-				State = 190;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
+				break;
+			case Identifier:
+				break;
+			default:
+				break;
 			}
-			State = 191; Match(Identifier);
-			State = 195;
+			State = 209; typeName();
+			State = 212;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==AddressQuant) {
+			switch (TokenStream.LA(1)) {
+			case PtrQuant:
 				{
+				State = 210; isPtrQuant();
+				}
+				break;
+			case RefQuant:
 				{
-				State = 192; Match(AddressQuant);
+				State = 211; isRefQuant();
 				}
-				}
-				State = 197;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
+				break;
+			case T__3:
+			case T__4:
+			case T__5:
+			case Identifier:
+				break;
+			default:
+				break;
 			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IsPtrQuantContext : ParserRuleContext {
+		public ITerminalNode PtrQuant() { return GetToken(UHeaderParser.PtrQuant, 0); }
+		public IsPtrQuantContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_isPtrQuant; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIsPtrQuant(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IsPtrQuantContext isPtrQuant() {
+		IsPtrQuantContext _localctx = new IsPtrQuantContext(Context, State);
+		EnterRule(_localctx, 46, RULE_isPtrQuant);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 214; Match(PtrQuant);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IsRefQuantContext : ParserRuleContext {
+		public ITerminalNode RefQuant() { return GetToken(UHeaderParser.RefQuant, 0); }
+		public IsRefQuantContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_isRefQuant; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIsRefQuant(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IsRefQuantContext isRefQuant() {
+		IsRefQuantContext _localctx = new IsRefQuantContext(Context, State);
+		EnterRule(_localctx, 48, RULE_isRefQuant);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 216; Match(RefQuant);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class TypeNameContext : ParserRuleContext {
+		public ITerminalNode Identifier() { return GetToken(UHeaderParser.Identifier, 0); }
+		public TypeNameContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_typeName; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTypeName(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TypeNameContext typeName() {
+		TypeNameContext _localctx = new TypeNameContext(Context, State);
+		EnterRule(_localctx, 50, RULE_typeName);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 218; Match(Identifier);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IsVirtualContext : ParserRuleContext {
+		public ITerminalNode Virtual() { return GetToken(UHeaderParser.Virtual, 0); }
+		public IsVirtualContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_isVirtual; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIsVirtual(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IsVirtualContext isVirtual() {
+		IsVirtualContext _localctx = new IsVirtualContext(Context, State);
+		EnterRule(_localctx, 52, RULE_isVirtual);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 220; Match(Virtual);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IsConstContext : ParserRuleContext {
+		public ITerminalNode Const() { return GetToken(UHeaderParser.Const, 0); }
+		public IsConstContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_isConst; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IUHeaderVisitor<TResult> typedVisitor = visitor as IUHeaderVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIsConst(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IsConstContext isConst() {
+		IsConstContext _localctx = new IsConstContext(Context, State);
+		EnterRule(_localctx, 54, RULE_isConst);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 222; Match(Const);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1399,12 +1646,12 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public AccessSpecifierContainerContext accessSpecifierContainer() {
 		AccessSpecifierContainerContext _localctx = new AccessSpecifierContainerContext(Context, State);
-		EnterRule(_localctx, 48, RULE_accessSpecifierContainer);
+		EnterRule(_localctx, 56, RULE_accessSpecifierContainer);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 198; accessSpecifier();
-			State = 199; Match(T__3);
+			State = 224; accessSpecifier();
+			State = 225; Match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1437,12 +1684,12 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public AccessSpecifierContext accessSpecifier() {
 		AccessSpecifierContext _localctx = new AccessSpecifierContext(Context, State);
-		EnterRule(_localctx, 50, RULE_accessSpecifier);
+		EnterRule(_localctx, 58, RULE_accessSpecifier);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 201;
+			State = 227;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Private) | (1L << Protected) | (1L << Public))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1482,12 +1729,12 @@ public partial class UHeaderParser : Parser {
 	[RuleVersion(0)]
 	public PreprocessDerectiveContext preprocessDerective() {
 		PreprocessDerectiveContext _localctx = new PreprocessDerectiveContext(Context, State);
-		EnterRule(_localctx, 52, RULE_preprocessDerective);
+		EnterRule(_localctx, 60, RULE_preprocessDerective);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 203;
+			State = 229;
 			_la = TokenStream.LA(1);
 			if ( !(_la==SingleLineDerective || _la==MultiLineDerective) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1511,7 +1758,7 @@ public partial class UHeaderParser : Parser {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\x1C', '\xD0', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\x5964', '\x3', '\x1E', '\xEA', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 
 		'\x6', '\t', '\x6', '\x4', '\a', '\t', '\a', '\x4', '\b', '\t', '\b', 
 		'\x4', '\t', '\t', '\t', '\x4', '\n', '\t', '\n', '\x4', '\v', '\t', '\v', 
@@ -1521,161 +1768,184 @@ public partial class UHeaderParser : Parser {
 		'\x13', '\x4', '\x14', '\t', '\x14', '\x4', '\x15', '\t', '\x15', '\x4', 
 		'\x16', '\t', '\x16', '\x4', '\x17', '\t', '\x17', '\x4', '\x18', '\t', 
 		'\x18', '\x4', '\x19', '\t', '\x19', '\x4', '\x1A', '\t', '\x1A', '\x4', 
-		'\x1B', '\t', '\x1B', '\x4', '\x1C', '\t', '\x1C', '\x3', '\x2', '\a', 
-		'\x2', ':', '\n', '\x2', '\f', '\x2', '\xE', '\x2', '=', '\v', '\x2', 
-		'\x3', '\x2', '\x3', '\x2', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', 
-		'\x3', '\x3', '\x5', '\x3', '\x45', '\n', '\x3', '\x3', '\x4', '\x3', 
-		'\x4', '\x3', '\x4', '\x3', '\x4', '\x5', '\x4', 'K', '\n', '\x4', '\x3', 
-		'\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x5', '\x3', '\x6', '\x3', 
-		'\x6', '\x3', '\x6', '\x5', '\x6', 'T', '\n', '\x6', '\x3', '\x6', '\x3', 
-		'\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', '\a', '\x3', '\a', 
-		'\x3', '\b', '\x3', '\b', '\x5', '\b', '_', '\n', '\b', '\x3', '\b', '\x3', 
-		'\b', '\x3', '\t', '\x3', '\t', '\x3', '\n', '\a', '\n', '\x66', '\n', 
-		'\n', '\f', '\n', '\xE', '\n', 'i', '\v', '\n', '\x3', '\v', '\x3', '\v', 
-		'\x3', '\v', '\x3', '\v', '\x3', '\v', '\x5', '\v', 'p', '\n', '\v', '\x3', 
-		'\f', '\x3', '\f', '\x3', '\r', '\x5', '\r', 'u', '\n', '\r', '\x3', '\xE', 
-		'\x3', '\xE', '\x3', '\xE', '\x3', '\xE', '\x3', '\xE', '\x5', '\xE', 
-		'|', '\n', '\xE', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', 
-		'\x3', '\xF', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', '\x3', '\xF', 
-		'\x3', '\xF', '\x3', '\xF', '\x5', '\xF', '\x89', '\n', '\xF', '\x3', 
-		'\x10', '\x3', '\x10', '\x5', '\x10', '\x8D', '\n', '\x10', '\x3', '\x11', 
-		'\x3', '\x11', '\x5', '\x11', '\x91', '\n', '\x11', '\x3', '\x12', '\x3', 
-		'\x12', '\x3', '\x12', '\x3', '\x12', '\x5', '\x12', '\x97', '\n', '\x12', 
-		'\x3', '\x12', '\x3', '\x12', '\x5', '\x12', '\x9B', '\n', '\x12', '\x3', 
-		'\x12', '\x3', '\x12', '\x5', '\x12', '\x9F', '\n', '\x12', '\x3', '\x13', 
-		'\x3', '\x13', '\x3', '\x13', '\x3', '\x13', '\x3', '\x13', '\x5', '\x13', 
-		'\xA6', '\n', '\x13', '\x3', '\x14', '\x3', '\x14', '\x3', '\x14', '\x3', 
-		'\x15', '\x3', '\x15', '\x3', '\x16', '\x3', '\x16', '\x3', '\x16', '\x3', 
-		'\x16', '\x3', '\x17', '\x5', '\x17', '\xB2', '\n', '\x17', '\x3', '\x18', 
-		'\x3', '\x18', '\x3', '\x19', '\x5', '\x19', '\xB7', '\n', '\x19', '\x3', 
-		'\x19', '\x5', '\x19', '\xBA', '\n', '\x19', '\x3', '\x19', '\a', '\x19', 
-		'\xBD', '\n', '\x19', '\f', '\x19', '\xE', '\x19', '\xC0', '\v', '\x19', 
-		'\x3', '\x19', '\x3', '\x19', '\a', '\x19', '\xC4', '\n', '\x19', '\f', 
-		'\x19', '\xE', '\x19', '\xC7', '\v', '\x19', '\x3', '\x1A', '\x3', '\x1A', 
-		'\x3', '\x1A', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1C', '\x3', '\x1C', 
-		'\x3', '\x1C', '\x2', '\x2', '\x1D', '\x2', '\x4', '\x6', '\b', '\n', 
-		'\f', '\xE', '\x10', '\x12', '\x14', '\x16', '\x18', '\x1A', '\x1C', '\x1E', 
-		' ', '\"', '$', '&', '(', '*', ',', '.', '\x30', '\x32', '\x34', '\x36', 
-		'\x2', '\x5', '\x3', '\x2', '\x13', '\x14', '\x3', '\x2', '\xE', '\x10', 
-		'\x3', '\x2', '\v', '\f', '\x2', '\xCE', '\x2', ';', '\x3', '\x2', '\x2', 
-		'\x2', '\x4', '\x44', '\x3', '\x2', '\x2', '\x2', '\x6', 'J', '\x3', '\x2', 
-		'\x2', '\x2', '\b', 'L', '\x3', '\x2', '\x2', '\x2', '\n', 'P', '\x3', 
-		'\x2', '\x2', '\x2', '\f', 'Z', '\x3', '\x2', '\x2', '\x2', '\xE', '\\', 
-		'\x3', '\x2', '\x2', '\x2', '\x10', '\x62', '\x3', '\x2', '\x2', '\x2', 
-		'\x12', 'g', '\x3', '\x2', '\x2', '\x2', '\x14', 'j', '\x3', '\x2', '\x2', 
-		'\x2', '\x16', 'q', '\x3', '\x2', '\x2', '\x2', '\x18', 't', '\x3', '\x2', 
-		'\x2', '\x2', '\x1A', '{', '\x3', '\x2', '\x2', '\x2', '\x1C', '\x88', 
-		'\x3', '\x2', '\x2', '\x2', '\x1E', '\x8C', '\x3', '\x2', '\x2', '\x2', 
-		' ', '\x90', '\x3', '\x2', '\x2', '\x2', '\"', '\x92', '\x3', '\x2', '\x2', 
-		'\x2', '$', '\xA5', '\x3', '\x2', '\x2', '\x2', '&', '\xA7', '\x3', '\x2', 
-		'\x2', '\x2', '(', '\xAA', '\x3', '\x2', '\x2', '\x2', '*', '\xAC', '\x3', 
-		'\x2', '\x2', '\x2', ',', '\xB1', '\x3', '\x2', '\x2', '\x2', '.', '\xB3', 
-		'\x3', '\x2', '\x2', '\x2', '\x30', '\xB6', '\x3', '\x2', '\x2', '\x2', 
-		'\x32', '\xC8', '\x3', '\x2', '\x2', '\x2', '\x34', '\xCB', '\x3', '\x2', 
-		'\x2', '\x2', '\x36', '\xCD', '\x3', '\x2', '\x2', '\x2', '\x38', ':', 
-		'\x5', '\x4', '\x3', '\x2', '\x39', '\x38', '\x3', '\x2', '\x2', '\x2', 
-		':', '=', '\x3', '\x2', '\x2', '\x2', ';', '\x39', '\x3', '\x2', '\x2', 
-		'\x2', ';', '<', '\x3', '\x2', '\x2', '\x2', '<', '>', '\x3', '\x2', '\x2', 
-		'\x2', '=', ';', '\x3', '\x2', '\x2', '\x2', '>', '?', '\a', '\x2', '\x2', 
-		'\x3', '?', '\x3', '\x3', '\x2', '\x2', '\x2', '@', '\x45', '\x5', '\b', 
-		'\x5', '\x2', '\x41', '\x45', '\x5', '\n', '\x6', '\x2', '\x42', '\x45', 
-		'\x5', '\x14', '\v', '\x2', '\x43', '\x45', '\x5', '\x36', '\x1C', '\x2', 
-		'\x44', '@', '\x3', '\x2', '\x2', '\x2', '\x44', '\x41', '\x3', '\x2', 
-		'\x2', '\x2', '\x44', '\x42', '\x3', '\x2', '\x2', '\x2', '\x44', '\x43', 
-		'\x3', '\x2', '\x2', '\x2', '\x45', '\x5', '\x3', '\x2', '\x2', '\x2', 
-		'\x46', 'K', '\x5', '\x32', '\x1A', '\x2', 'G', 'K', '\x5', '\"', '\x12', 
-		'\x2', 'H', 'K', '\x5', '\x14', '\v', '\x2', 'I', 'K', '\x5', '\x36', 
-		'\x1C', '\x2', 'J', '\x46', '\x3', '\x2', '\x2', '\x2', 'J', 'G', '\x3', 
-		'\x2', '\x2', '\x2', 'J', 'H', '\x3', '\x2', '\x2', '\x2', 'J', 'I', '\x3', 
-		'\x2', '\x2', '\x2', 'K', '\a', '\x3', '\x2', '\x2', '\x2', 'L', 'M', 
-		'\x5', '\f', '\a', '\x2', 'M', 'N', '\x5', '\x10', '\t', '\x2', 'N', 'O', 
-		'\a', '\x3', '\x2', '\x2', 'O', '\t', '\x3', '\x2', '\x2', '\x2', 'P', 
-		'Q', '\x5', '\f', '\a', '\x2', 'Q', 'S', '\x5', '\x10', '\t', '\x2', 'R', 
-		'T', '\x5', '\xE', '\b', '\x2', 'S', 'R', '\x3', '\x2', '\x2', '\x2', 
-		'S', 'T', '\x3', '\x2', '\x2', '\x2', 'T', 'U', '\x3', '\x2', '\x2', '\x2', 
-		'U', 'V', '\a', '\x4', '\x2', '\x2', 'V', 'W', '\x5', '\x12', '\n', '\x2', 
-		'W', 'X', '\a', '\x5', '\x2', '\x2', 'X', 'Y', '\a', '\x3', '\x2', '\x2', 
-		'Y', '\v', '\x3', '\x2', '\x2', '\x2', 'Z', '[', '\t', '\x2', '\x2', '\x2', 
-		'[', '\r', '\x3', '\x2', '\x2', '\x2', '\\', '^', '\a', '\x6', '\x2', 
-		'\x2', ']', '_', '\x5', '\x34', '\x1B', '\x2', '^', ']', '\x3', '\x2', 
-		'\x2', '\x2', '^', '_', '\x3', '\x2', '\x2', '\x2', '_', '`', '\x3', '\x2', 
-		'\x2', '\x2', '`', '\x61', '\x5', '\x10', '\t', '\x2', '\x61', '\xF', 
-		'\x3', '\x2', '\x2', '\x2', '\x62', '\x63', '\a', '\x17', '\x2', '\x2', 
-		'\x63', '\x11', '\x3', '\x2', '\x2', '\x2', '\x64', '\x66', '\x5', '\x6', 
-		'\x4', '\x2', '\x65', '\x64', '\x3', '\x2', '\x2', '\x2', '\x66', 'i', 
-		'\x3', '\x2', '\x2', '\x2', 'g', '\x65', '\x3', '\x2', '\x2', '\x2', 'g', 
-		'h', '\x3', '\x2', '\x2', '\x2', 'h', '\x13', '\x3', '\x2', '\x2', '\x2', 
-		'i', 'g', '\x3', '\x2', '\x2', '\x2', 'j', 'k', '\x5', '\x16', '\f', '\x2', 
-		'k', 'l', '\a', '\a', '\x2', '\x2', 'l', 'm', '\x5', '\x18', '\r', '\x2', 
-		'm', 'o', '\a', '\b', '\x2', '\x2', 'n', 'p', '\a', '\x3', '\x2', '\x2', 
-		'o', 'n', '\x3', '\x2', '\x2', '\x2', 'o', 'p', '\x3', '\x2', '\x2', '\x2', 
-		'p', '\x15', '\x3', '\x2', '\x2', '\x2', 'q', 'r', '\a', '\x17', '\x2', 
-		'\x2', 'r', '\x17', '\x3', '\x2', '\x2', '\x2', 's', 'u', '\x5', '\x1A', 
-		'\xE', '\x2', 't', 's', '\x3', '\x2', '\x2', '\x2', 't', 'u', '\x3', '\x2', 
-		'\x2', '\x2', 'u', '\x19', '\x3', '\x2', '\x2', '\x2', 'v', '|', '\x5', 
-		'\x1C', '\xF', '\x2', 'w', 'x', '\x5', '\x1C', '\xF', '\x2', 'x', 'y', 
-		'\a', '\t', '\x2', '\x2', 'y', 'z', '\x5', '\x1A', '\xE', '\x2', 'z', 
-		'|', '\x3', '\x2', '\x2', '\x2', '{', 'v', '\x3', '\x2', '\x2', '\x2', 
-		'{', 'w', '\x3', '\x2', '\x2', '\x2', '|', '\x1B', '\x3', '\x2', '\x2', 
-		'\x2', '}', '\x89', '\x5', '\x1E', '\x10', '\x2', '~', '\x7F', '\x5', 
-		'\x1E', '\x10', '\x2', '\x7F', '\x80', '\a', '\n', '\x2', '\x2', '\x80', 
-		'\x81', '\x5', ' ', '\x11', '\x2', '\x81', '\x89', '\x3', '\x2', '\x2', 
-		'\x2', '\x82', '\x83', '\x5', '\x1E', '\x10', '\x2', '\x83', '\x84', '\a', 
-		'\n', '\x2', '\x2', '\x84', '\x85', '\a', '\a', '\x2', '\x2', '\x85', 
-		'\x86', '\x5', '\x1A', '\xE', '\x2', '\x86', '\x87', '\a', '\b', '\x2', 
-		'\x2', '\x87', '\x89', '\x3', '\x2', '\x2', '\x2', '\x88', '}', '\x3', 
-		'\x2', '\x2', '\x2', '\x88', '~', '\x3', '\x2', '\x2', '\x2', '\x88', 
-		'\x82', '\x3', '\x2', '\x2', '\x2', '\x89', '\x1D', '\x3', '\x2', '\x2', 
-		'\x2', '\x8A', '\x8D', '\x5', '\x30', '\x19', '\x2', '\x8B', '\x8D', '\a', 
-		'\x18', '\x2', '\x2', '\x8C', '\x8A', '\x3', '\x2', '\x2', '\x2', '\x8C', 
-		'\x8B', '\x3', '\x2', '\x2', '\x2', '\x8D', '\x1F', '\x3', '\x2', '\x2', 
-		'\x2', '\x8E', '\x91', '\x5', '\x30', '\x19', '\x2', '\x8F', '\x91', '\a', 
-		'\x18', '\x2', '\x2', '\x90', '\x8E', '\x3', '\x2', '\x2', '\x2', '\x90', 
-		'\x8F', '\x3', '\x2', '\x2', '\x2', '\x91', '!', '\x3', '\x2', '\x2', 
-		'\x2', '\x92', '\x93', '\x5', '\x30', '\x19', '\x2', '\x93', '\x94', '\x5', 
-		'.', '\x18', '\x2', '\x94', '\x96', '\a', '\a', '\x2', '\x2', '\x95', 
-		'\x97', '\x5', '$', '\x13', '\x2', '\x96', '\x95', '\x3', '\x2', '\x2', 
-		'\x2', '\x96', '\x97', '\x3', '\x2', '\x2', '\x2', '\x97', '\x98', '\x3', 
-		'\x2', '\x2', '\x2', '\x98', '\x9A', '\a', '\b', '\x2', '\x2', '\x99', 
-		'\x9B', '\a', '\x15', '\x2', '\x2', '\x9A', '\x99', '\x3', '\x2', '\x2', 
-		'\x2', '\x9A', '\x9B', '\x3', '\x2', '\x2', '\x2', '\x9B', '\x9E', '\x3', 
-		'\x2', '\x2', '\x2', '\x9C', '\x9F', '\x5', '*', '\x16', '\x2', '\x9D', 
-		'\x9F', '\a', '\x3', '\x2', '\x2', '\x9E', '\x9C', '\x3', '\x2', '\x2', 
-		'\x2', '\x9E', '\x9D', '\x3', '\x2', '\x2', '\x2', '\x9F', '#', '\x3', 
-		'\x2', '\x2', '\x2', '\xA0', '\xA6', '\x5', '&', '\x14', '\x2', '\xA1', 
-		'\xA2', '\x5', '&', '\x14', '\x2', '\xA2', '\xA3', '\a', '\t', '\x2', 
-		'\x2', '\xA3', '\xA4', '\x5', '$', '\x13', '\x2', '\xA4', '\xA6', '\x3', 
-		'\x2', '\x2', '\x2', '\xA5', '\xA0', '\x3', '\x2', '\x2', '\x2', '\xA5', 
-		'\xA1', '\x3', '\x2', '\x2', '\x2', '\xA6', '%', '\x3', '\x2', '\x2', 
-		'\x2', '\xA7', '\xA8', '\x5', '\x30', '\x19', '\x2', '\xA8', '\xA9', '\x5', 
-		'(', '\x15', '\x2', '\xA9', '\'', '\x3', '\x2', '\x2', '\x2', '\xAA', 
-		'\xAB', '\a', '\x17', '\x2', '\x2', '\xAB', ')', '\x3', '\x2', '\x2', 
-		'\x2', '\xAC', '\xAD', '\a', '\x4', '\x2', '\x2', '\xAD', '\xAE', '\x5', 
-		',', '\x17', '\x2', '\xAE', '\xAF', '\a', '\x5', '\x2', '\x2', '\xAF', 
-		'+', '\x3', '\x2', '\x2', '\x2', '\xB0', '\xB2', '\x5', '*', '\x16', '\x2', 
-		'\xB1', '\xB0', '\x3', '\x2', '\x2', '\x2', '\xB1', '\xB2', '\x3', '\x2', 
-		'\x2', '\x2', '\xB2', '-', '\x3', '\x2', '\x2', '\x2', '\xB3', '\xB4', 
-		'\a', '\x17', '\x2', '\x2', '\xB4', '/', '\x3', '\x2', '\x2', '\x2', '\xB5', 
-		'\xB7', '\a', '\x15', '\x2', '\x2', '\xB6', '\xB5', '\x3', '\x2', '\x2', 
-		'\x2', '\xB6', '\xB7', '\x3', '\x2', '\x2', '\x2', '\xB7', '\xB9', '\x3', 
-		'\x2', '\x2', '\x2', '\xB8', '\xBA', '\t', '\x2', '\x2', '\x2', '\xB9', 
-		'\xB8', '\x3', '\x2', '\x2', '\x2', '\xB9', '\xBA', '\x3', '\x2', '\x2', 
-		'\x2', '\xBA', '\xBE', '\x3', '\x2', '\x2', '\x2', '\xBB', '\xBD', '\a', 
-		'\r', '\x2', '\x2', '\xBC', '\xBB', '\x3', '\x2', '\x2', '\x2', '\xBD', 
-		'\xC0', '\x3', '\x2', '\x2', '\x2', '\xBE', '\xBC', '\x3', '\x2', '\x2', 
-		'\x2', '\xBE', '\xBF', '\x3', '\x2', '\x2', '\x2', '\xBF', '\xC1', '\x3', 
-		'\x2', '\x2', '\x2', '\xC0', '\xBE', '\x3', '\x2', '\x2', '\x2', '\xC1', 
-		'\xC5', '\a', '\x17', '\x2', '\x2', '\xC2', '\xC4', '\a', '\r', '\x2', 
-		'\x2', '\xC3', '\xC2', '\x3', '\x2', '\x2', '\x2', '\xC4', '\xC7', '\x3', 
-		'\x2', '\x2', '\x2', '\xC5', '\xC3', '\x3', '\x2', '\x2', '\x2', '\xC5', 
-		'\xC6', '\x3', '\x2', '\x2', '\x2', '\xC6', '\x31', '\x3', '\x2', '\x2', 
-		'\x2', '\xC7', '\xC5', '\x3', '\x2', '\x2', '\x2', '\xC8', '\xC9', '\x5', 
-		'\x34', '\x1B', '\x2', '\xC9', '\xCA', '\a', '\x6', '\x2', '\x2', '\xCA', 
-		'\x33', '\x3', '\x2', '\x2', '\x2', '\xCB', '\xCC', '\t', '\x3', '\x2', 
-		'\x2', '\xCC', '\x35', '\x3', '\x2', '\x2', '\x2', '\xCD', '\xCE', '\t', 
-		'\x4', '\x2', '\x2', '\xCE', '\x37', '\x3', '\x2', '\x2', '\x2', '\x17', 
-		';', '\x44', 'J', 'S', '^', 'g', 'o', 't', '{', '\x88', '\x8C', '\x90', 
-		'\x96', '\x9A', '\x9E', '\xA5', '\xB1', '\xB6', '\xB9', '\xBE', '\xC5',
+		'\x1B', '\t', '\x1B', '\x4', '\x1C', '\t', '\x1C', '\x4', '\x1D', '\t', 
+		'\x1D', '\x4', '\x1E', '\t', '\x1E', '\x4', '\x1F', '\t', '\x1F', '\x4', 
+		' ', '\t', ' ', '\x3', '\x2', '\x3', '\x2', '\x3', '\x2', '\x3', '\x2', 
+		'\a', '\x2', '\x45', '\n', '\x2', '\f', '\x2', '\xE', '\x2', 'H', '\v', 
+		'\x2', '\x3', '\x2', '\x3', '\x2', '\x3', '\x3', '\x3', '\x3', '\x3', 
+		'\x3', '\x3', '\x3', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x5', 
+		'\x4', 'S', '\n', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', '\x4', '\x3', 
+		'\x4', '\x3', '\x4', '\x3', '\x5', '\x3', '\x5', '\x3', '\x6', '\x3', 
+		'\x6', '\x5', '\x6', '^', '\n', '\x6', '\x3', '\x6', '\x3', '\x6', '\x3', 
+		'\a', '\x3', '\a', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x3', '\b', 
+		'\a', '\b', 'h', '\n', '\b', '\f', '\b', '\xE', '\b', 'k', '\v', '\b', 
+		'\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x5', 
+		'\t', 'r', '\n', '\t', '\x3', '\n', '\x3', '\n', '\x3', '\v', '\x5', '\v', 
+		'w', '\n', '\v', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', '\f', '\x3', 
+		'\f', '\x5', '\f', '~', '\n', '\f', '\x3', '\r', '\x3', '\r', '\x3', '\r', 
+		'\x3', '\r', '\x3', '\r', '\x3', '\r', '\x3', '\r', '\x3', '\r', '\x3', 
+		'\r', '\x3', '\r', '\x3', '\r', '\x5', '\r', '\x8B', '\n', '\r', '\x3', 
+		'\xE', '\x3', '\xE', '\x5', '\xE', '\x8F', '\n', '\xE', '\x3', '\xF', 
+		'\x3', '\xF', '\x5', '\xF', '\x93', '\n', '\xF', '\x3', '\x10', '\x5', 
+		'\x10', '\x96', '\n', '\x10', '\x3', '\x10', '\x3', '\x10', '\x3', '\x10', 
+		'\x3', '\x10', '\x5', '\x10', '\x9C', '\n', '\x10', '\x3', '\x10', '\x3', 
+		'\x10', '\x5', '\x10', '\xA0', '\n', '\x10', '\x3', '\x10', '\x3', '\x10', 
+		'\x5', '\x10', '\xA4', '\n', '\x10', '\x3', '\x11', '\x3', '\x11', '\x3', 
+		'\x11', '\x3', '\x11', '\x3', '\x11', '\x5', '\x11', '\xAB', '\n', '\x11', 
+		'\x3', '\x12', '\x3', '\x12', '\x3', '\x12', '\x3', '\x12', '\x5', '\x12', 
+		'\xB1', '\n', '\x12', '\x3', '\x13', '\x3', '\x13', '\x3', '\x14', '\x3', 
+		'\x14', '\x3', '\x15', '\x3', '\x15', '\x3', '\x15', '\x3', '\x15', '\x3', 
+		'\x16', '\a', '\x16', '\xBC', '\n', '\x16', '\f', '\x16', '\xE', '\x16', 
+		'\xBF', '\v', '\x16', '\x3', '\x16', '\x3', '\x16', '\x3', '\x16', '\x3', 
+		'\x16', '\x3', '\x16', '\x5', '\x16', '\xC6', '\n', '\x16', '\x3', '\x17', 
+		'\x3', '\x17', '\x3', '\x18', '\x5', '\x18', '\xCB', '\n', '\x18', '\x3', 
+		'\x18', '\x5', '\x18', '\xCE', '\n', '\x18', '\x3', '\x18', '\x3', '\x18', 
+		'\x5', '\x18', '\xD2', '\n', '\x18', '\x3', '\x18', '\x3', '\x18', '\x3', 
+		'\x18', '\x5', '\x18', '\xD7', '\n', '\x18', '\x3', '\x19', '\x3', '\x19', 
+		'\x3', '\x1A', '\x3', '\x1A', '\x3', '\x1B', '\x3', '\x1B', '\x3', '\x1C', 
+		'\x3', '\x1C', '\x3', '\x1D', '\x3', '\x1D', '\x3', '\x1E', '\x3', '\x1E', 
+		'\x3', '\x1E', '\x3', '\x1F', '\x3', '\x1F', '\x3', ' ', '\x3', ' ', '\x3', 
+		' ', '\x2', '\x2', '!', '\x2', '\x4', '\x6', '\b', '\n', '\f', '\xE', 
+		'\x10', '\x12', '\x14', '\x16', '\x18', '\x1A', '\x1C', '\x1E', ' ', '\"', 
+		'$', '&', '(', '*', ',', '.', '\x30', '\x32', '\x34', '\x36', '\x38', 
+		':', '<', '>', '\x2', '\a', '\x3', '\x2', '\x10', '\x11', '\x3', '\x2', 
+		'\x18', '\x19', '\x3', '\x2', '\x14', '\x15', '\x3', '\x2', '\v', '\r', 
+		'\x3', '\x2', '\x16', '\x17', '\x2', '\xE9', '\x2', '\x46', '\x3', '\x2', 
+		'\x2', '\x2', '\x4', 'K', '\x3', '\x2', '\x2', '\x2', '\x6', 'O', '\x3', 
+		'\x2', '\x2', '\x2', '\b', 'Y', '\x3', '\x2', '\x2', '\x2', '\n', '[', 
+		'\x3', '\x2', '\x2', '\x2', '\f', '\x61', '\x3', '\x2', '\x2', '\x2', 
+		'\xE', 'i', '\x3', '\x2', '\x2', '\x2', '\x10', 'l', '\x3', '\x2', '\x2', 
+		'\x2', '\x12', 's', '\x3', '\x2', '\x2', '\x2', '\x14', 'v', '\x3', '\x2', 
+		'\x2', '\x2', '\x16', '}', '\x3', '\x2', '\x2', '\x2', '\x18', '\x8A', 
+		'\x3', '\x2', '\x2', '\x2', '\x1A', '\x8E', '\x3', '\x2', '\x2', '\x2', 
+		'\x1C', '\x92', '\x3', '\x2', '\x2', '\x2', '\x1E', '\x95', '\x3', '\x2', 
+		'\x2', '\x2', ' ', '\xAA', '\x3', '\x2', '\x2', '\x2', '\"', '\xAC', '\x3', 
+		'\x2', '\x2', '\x2', '$', '\xB2', '\x3', '\x2', '\x2', '\x2', '&', '\xB4', 
+		'\x3', '\x2', '\x2', '\x2', '(', '\xB6', '\x3', '\x2', '\x2', '\x2', '*', 
+		'\xBD', '\x3', '\x2', '\x2', '\x2', ',', '\xC7', '\x3', '\x2', '\x2', 
+		'\x2', '.', '\xCA', '\x3', '\x2', '\x2', '\x2', '\x30', '\xD8', '\x3', 
+		'\x2', '\x2', '\x2', '\x32', '\xDA', '\x3', '\x2', '\x2', '\x2', '\x34', 
+		'\xDC', '\x3', '\x2', '\x2', '\x2', '\x36', '\xDE', '\x3', '\x2', '\x2', 
+		'\x2', '\x38', '\xE0', '\x3', '\x2', '\x2', '\x2', ':', '\xE2', '\x3', 
+		'\x2', '\x2', '\x2', '<', '\xE5', '\x3', '\x2', '\x2', '\x2', '>', '\xE7', 
+		'\x3', '\x2', '\x2', '\x2', '@', '\x45', '\x5', '\x4', '\x3', '\x2', '\x41', 
+		'\x45', '\x5', '\x6', '\x4', '\x2', '\x42', '\x45', '\x5', '\x10', '\t', 
+		'\x2', '\x43', '\x45', '\x5', '>', ' ', '\x2', '\x44', '@', '\x3', '\x2', 
+		'\x2', '\x2', '\x44', '\x41', '\x3', '\x2', '\x2', '\x2', '\x44', '\x42', 
+		'\x3', '\x2', '\x2', '\x2', '\x44', '\x43', '\x3', '\x2', '\x2', '\x2', 
+		'\x45', 'H', '\x3', '\x2', '\x2', '\x2', '\x46', '\x44', '\x3', '\x2', 
+		'\x2', '\x2', '\x46', 'G', '\x3', '\x2', '\x2', '\x2', 'G', 'I', '\x3', 
+		'\x2', '\x2', '\x2', 'H', '\x46', '\x3', '\x2', '\x2', '\x2', 'I', 'J', 
+		'\a', '\x2', '\x2', '\x3', 'J', '\x3', '\x3', '\x2', '\x2', '\x2', 'K', 
+		'L', '\x5', '\b', '\x5', '\x2', 'L', 'M', '\x5', '\f', '\a', '\x2', 'M', 
+		'N', '\a', '\x3', '\x2', '\x2', 'N', '\x5', '\x3', '\x2', '\x2', '\x2', 
+		'O', 'P', '\x5', '\b', '\x5', '\x2', 'P', 'R', '\x5', '\f', '\a', '\x2', 
+		'Q', 'S', '\x5', '\n', '\x6', '\x2', 'R', 'Q', '\x3', '\x2', '\x2', '\x2', 
+		'R', 'S', '\x3', '\x2', '\x2', '\x2', 'S', 'T', '\x3', '\x2', '\x2', '\x2', 
+		'T', 'U', '\a', '\x14', '\x2', '\x2', 'U', 'V', '\x5', '\xE', '\b', '\x2', 
+		'V', 'W', '\a', '\x15', '\x2', '\x2', 'W', 'X', '\a', '\x3', '\x2', '\x2', 
+		'X', '\a', '\x3', '\x2', '\x2', '\x2', 'Y', 'Z', '\t', '\x2', '\x2', '\x2', 
+		'Z', '\t', '\x3', '\x2', '\x2', '\x2', '[', ']', '\a', '\x4', '\x2', '\x2', 
+		'\\', '^', '\x5', '<', '\x1F', '\x2', ']', '\\', '\x3', '\x2', '\x2', 
+		'\x2', ']', '^', '\x3', '\x2', '\x2', '\x2', '^', '_', '\x3', '\x2', '\x2', 
+		'\x2', '_', '`', '\x5', '\f', '\a', '\x2', '`', '\v', '\x3', '\x2', '\x2', 
+		'\x2', '\x61', '\x62', '\a', '\x18', '\x2', '\x2', '\x62', '\r', '\x3', 
+		'\x2', '\x2', '\x2', '\x63', 'h', '\x5', ':', '\x1E', '\x2', '\x64', 'h', 
+		'\x5', '\x1E', '\x10', '\x2', '\x65', 'h', '\x5', '\x10', '\t', '\x2', 
+		'\x66', 'h', '\x5', '>', ' ', '\x2', 'g', '\x63', '\x3', '\x2', '\x2', 
+		'\x2', 'g', '\x64', '\x3', '\x2', '\x2', '\x2', 'g', '\x65', '\x3', '\x2', 
+		'\x2', '\x2', 'g', '\x66', '\x3', '\x2', '\x2', '\x2', 'h', 'k', '\x3', 
+		'\x2', '\x2', '\x2', 'i', 'g', '\x3', '\x2', '\x2', '\x2', 'i', 'j', '\x3', 
+		'\x2', '\x2', '\x2', 'j', '\xF', '\x3', '\x2', '\x2', '\x2', 'k', 'i', 
+		'\x3', '\x2', '\x2', '\x2', 'l', 'm', '\x5', '\x12', '\n', '\x2', 'm', 
+		'n', '\a', '\x5', '\x2', '\x2', 'n', 'o', '\x5', '\x14', '\v', '\x2', 
+		'o', 'q', '\a', '\x6', '\x2', '\x2', 'p', 'r', '\a', '\x3', '\x2', '\x2', 
+		'q', 'p', '\x3', '\x2', '\x2', '\x2', 'q', 'r', '\x3', '\x2', '\x2', '\x2', 
+		'r', '\x11', '\x3', '\x2', '\x2', '\x2', 's', 't', '\a', '\x18', '\x2', 
+		'\x2', 't', '\x13', '\x3', '\x2', '\x2', '\x2', 'u', 'w', '\x5', '\x16', 
+		'\f', '\x2', 'v', 'u', '\x3', '\x2', '\x2', '\x2', 'v', 'w', '\x3', '\x2', 
+		'\x2', '\x2', 'w', '\x15', '\x3', '\x2', '\x2', '\x2', 'x', '~', '\x5', 
+		'\x18', '\r', '\x2', 'y', 'z', '\x5', '\x18', '\r', '\x2', 'z', '{', '\a', 
+		'\a', '\x2', '\x2', '{', '|', '\x5', '\x16', '\f', '\x2', '|', '~', '\x3', 
+		'\x2', '\x2', '\x2', '}', 'x', '\x3', '\x2', '\x2', '\x2', '}', 'y', '\x3', 
+		'\x2', '\x2', '\x2', '~', '\x17', '\x3', '\x2', '\x2', '\x2', '\x7F', 
+		'\x8B', '\x5', '\x1A', '\xE', '\x2', '\x80', '\x81', '\x5', '\x1A', '\xE', 
+		'\x2', '\x81', '\x82', '\a', '\b', '\x2', '\x2', '\x82', '\x83', '\x5', 
+		'\x1C', '\xF', '\x2', '\x83', '\x8B', '\x3', '\x2', '\x2', '\x2', '\x84', 
+		'\x85', '\x5', '\x1A', '\xE', '\x2', '\x85', '\x86', '\a', '\b', '\x2', 
+		'\x2', '\x86', '\x87', '\a', '\x5', '\x2', '\x2', '\x87', '\x88', '\x5', 
+		'\x16', '\f', '\x2', '\x88', '\x89', '\a', '\x6', '\x2', '\x2', '\x89', 
+		'\x8B', '\x3', '\x2', '\x2', '\x2', '\x8A', '\x7F', '\x3', '\x2', '\x2', 
+		'\x2', '\x8A', '\x80', '\x3', '\x2', '\x2', '\x2', '\x8A', '\x84', '\x3', 
+		'\x2', '\x2', '\x2', '\x8B', '\x19', '\x3', '\x2', '\x2', '\x2', '\x8C', 
+		'\x8F', '\x5', '.', '\x18', '\x2', '\x8D', '\x8F', '\a', '\x19', '\x2', 
+		'\x2', '\x8E', '\x8C', '\x3', '\x2', '\x2', '\x2', '\x8E', '\x8D', '\x3', 
+		'\x2', '\x2', '\x2', '\x8F', '\x1B', '\x3', '\x2', '\x2', '\x2', '\x90', 
+		'\x93', '\x5', '.', '\x18', '\x2', '\x91', '\x93', '\a', '\x19', '\x2', 
+		'\x2', '\x92', '\x90', '\x3', '\x2', '\x2', '\x2', '\x92', '\x91', '\x3', 
+		'\x2', '\x2', '\x2', '\x93', '\x1D', '\x3', '\x2', '\x2', '\x2', '\x94', 
+		'\x96', '\x5', '\x36', '\x1C', '\x2', '\x95', '\x94', '\x3', '\x2', '\x2', 
+		'\x2', '\x95', '\x96', '\x3', '\x2', '\x2', '\x2', '\x96', '\x97', '\x3', 
+		'\x2', '\x2', '\x2', '\x97', '\x98', '\x5', '.', '\x18', '\x2', '\x98', 
+		'\x99', '\x5', ',', '\x17', '\x2', '\x99', '\x9B', '\a', '\x5', '\x2', 
+		'\x2', '\x9A', '\x9C', '\x5', ' ', '\x11', '\x2', '\x9B', '\x9A', '\x3', 
+		'\x2', '\x2', '\x2', '\x9B', '\x9C', '\x3', '\x2', '\x2', '\x2', '\x9C', 
+		'\x9D', '\x3', '\x2', '\x2', '\x2', '\x9D', '\x9F', '\a', '\x6', '\x2', 
+		'\x2', '\x9E', '\xA0', '\x5', '\x38', '\x1D', '\x2', '\x9F', '\x9E', '\x3', 
+		'\x2', '\x2', '\x2', '\x9F', '\xA0', '\x3', '\x2', '\x2', '\x2', '\xA0', 
+		'\xA3', '\x3', '\x2', '\x2', '\x2', '\xA1', '\xA4', '\x5', '(', '\x15', 
+		'\x2', '\xA2', '\xA4', '\a', '\x3', '\x2', '\x2', '\xA3', '\xA1', '\x3', 
+		'\x2', '\x2', '\x2', '\xA3', '\xA2', '\x3', '\x2', '\x2', '\x2', '\xA4', 
+		'\x1F', '\x3', '\x2', '\x2', '\x2', '\xA5', '\xAB', '\x5', '\"', '\x12', 
+		'\x2', '\xA6', '\xA7', '\x5', '\"', '\x12', '\x2', '\xA7', '\xA8', '\a', 
+		'\a', '\x2', '\x2', '\xA8', '\xA9', '\x5', ' ', '\x11', '\x2', '\xA9', 
+		'\xAB', '\x3', '\x2', '\x2', '\x2', '\xAA', '\xA5', '\x3', '\x2', '\x2', 
+		'\x2', '\xAA', '\xA6', '\x3', '\x2', '\x2', '\x2', '\xAB', '!', '\x3', 
+		'\x2', '\x2', '\x2', '\xAC', '\xAD', '\x5', '.', '\x18', '\x2', '\xAD', 
+		'\xB0', '\x5', '$', '\x13', '\x2', '\xAE', '\xAF', '\a', '\b', '\x2', 
+		'\x2', '\xAF', '\xB1', '\x5', '&', '\x14', '\x2', '\xB0', '\xAE', '\x3', 
+		'\x2', '\x2', '\x2', '\xB0', '\xB1', '\x3', '\x2', '\x2', '\x2', '\xB1', 
+		'#', '\x3', '\x2', '\x2', '\x2', '\xB2', '\xB3', '\a', '\x18', '\x2', 
+		'\x2', '\xB3', '%', '\x3', '\x2', '\x2', '\x2', '\xB4', '\xB5', '\t', 
+		'\x3', '\x2', '\x2', '\xB5', '\'', '\x3', '\x2', '\x2', '\x2', '\xB6', 
+		'\xB7', '\a', '\x14', '\x2', '\x2', '\xB7', '\xB8', '\x5', '*', '\x16', 
+		'\x2', '\xB8', '\xB9', '\a', '\x15', '\x2', '\x2', '\xB9', ')', '\x3', 
+		'\x2', '\x2', '\x2', '\xBA', '\xBC', '\n', '\x4', '\x2', '\x2', '\xBB', 
+		'\xBA', '\x3', '\x2', '\x2', '\x2', '\xBC', '\xBF', '\x3', '\x2', '\x2', 
+		'\x2', '\xBD', '\xBB', '\x3', '\x2', '\x2', '\x2', '\xBD', '\xBE', '\x3', 
+		'\x2', '\x2', '\x2', '\xBE', '\xC5', '\x3', '\x2', '\x2', '\x2', '\xBF', 
+		'\xBD', '\x3', '\x2', '\x2', '\x2', '\xC0', '\xC1', '\a', '\x14', '\x2', 
+		'\x2', '\xC1', '\xC2', '\x5', '*', '\x16', '\x2', '\xC2', '\xC3', '\a', 
+		'\x15', '\x2', '\x2', '\xC3', '\xC4', '\x5', '*', '\x16', '\x2', '\xC4', 
+		'\xC6', '\x3', '\x2', '\x2', '\x2', '\xC5', '\xC0', '\x3', '\x2', '\x2', 
+		'\x2', '\xC5', '\xC6', '\x3', '\x2', '\x2', '\x2', '\xC6', '+', '\x3', 
+		'\x2', '\x2', '\x2', '\xC7', '\xC8', '\a', '\x18', '\x2', '\x2', '\xC8', 
+		'-', '\x3', '\x2', '\x2', '\x2', '\xC9', '\xCB', '\x5', '\x38', '\x1D', 
+		'\x2', '\xCA', '\xC9', '\x3', '\x2', '\x2', '\x2', '\xCA', '\xCB', '\x3', 
+		'\x2', '\x2', '\x2', '\xCB', '\xCD', '\x3', '\x2', '\x2', '\x2', '\xCC', 
+		'\xCE', '\x5', '\b', '\x5', '\x2', '\xCD', '\xCC', '\x3', '\x2', '\x2', 
+		'\x2', '\xCD', '\xCE', '\x3', '\x2', '\x2', '\x2', '\xCE', '\xD1', '\x3', 
+		'\x2', '\x2', '\x2', '\xCF', '\xD2', '\x5', '\x30', '\x19', '\x2', '\xD0', 
+		'\xD2', '\x5', '\x32', '\x1A', '\x2', '\xD1', '\xCF', '\x3', '\x2', '\x2', 
+		'\x2', '\xD1', '\xD0', '\x3', '\x2', '\x2', '\x2', '\xD1', '\xD2', '\x3', 
+		'\x2', '\x2', '\x2', '\xD2', '\xD3', '\x3', '\x2', '\x2', '\x2', '\xD3', 
+		'\xD6', '\x5', '\x34', '\x1B', '\x2', '\xD4', '\xD7', '\x5', '\x30', '\x19', 
+		'\x2', '\xD5', '\xD7', '\x5', '\x32', '\x1A', '\x2', '\xD6', '\xD4', '\x3', 
+		'\x2', '\x2', '\x2', '\xD6', '\xD5', '\x3', '\x2', '\x2', '\x2', '\xD6', 
+		'\xD7', '\x3', '\x2', '\x2', '\x2', '\xD7', '/', '\x3', '\x2', '\x2', 
+		'\x2', '\xD8', '\xD9', '\a', '\t', '\x2', '\x2', '\xD9', '\x31', '\x3', 
+		'\x2', '\x2', '\x2', '\xDA', '\xDB', '\a', '\n', '\x2', '\x2', '\xDB', 
+		'\x33', '\x3', '\x2', '\x2', '\x2', '\xDC', '\xDD', '\a', '\x18', '\x2', 
+		'\x2', '\xDD', '\x35', '\x3', '\x2', '\x2', '\x2', '\xDE', '\xDF', '\a', 
+		'\xF', '\x2', '\x2', '\xDF', '\x37', '\x3', '\x2', '\x2', '\x2', '\xE0', 
+		'\xE1', '\a', '\x12', '\x2', '\x2', '\xE1', '\x39', '\x3', '\x2', '\x2', 
+		'\x2', '\xE2', '\xE3', '\x5', '<', '\x1F', '\x2', '\xE3', '\xE4', '\a', 
+		'\x4', '\x2', '\x2', '\xE4', ';', '\x3', '\x2', '\x2', '\x2', '\xE5', 
+		'\xE6', '\t', '\x5', '\x2', '\x2', '\xE6', '=', '\x3', '\x2', '\x2', '\x2', 
+		'\xE7', '\xE8', '\t', '\x6', '\x2', '\x2', '\xE8', '?', '\x3', '\x2', 
+		'\x2', '\x2', '\x1A', '\x44', '\x46', 'R', ']', 'g', 'i', 'q', 'v', '}', 
+		'\x8A', '\x8E', '\x92', '\x95', '\x9B', '\x9F', '\xA3', '\xAA', '\xB0', 
+		'\xBD', '\xC5', '\xCA', '\xCD', '\xD1', '\xD6',
 	};
 
 	public static readonly ATN _ATN =

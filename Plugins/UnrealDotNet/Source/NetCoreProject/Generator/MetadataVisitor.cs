@@ -80,19 +80,24 @@ namespace Generator
         {
             var variable = ParceType(context.Child<TypeContext>());
             variable.Name = context.ChildText<MethodParametrNameContext>();
+            variable.Default = context.ChildText<MethodParametrDefaultValueContext>();
 
             return variable;
         }
 
         private Variable ParceType(TypeContext context)
         {
-            var typeName = context.GetText();
+            var typeName = context.ChildText<TypeNameContext>();
             Variable variable;
 
             if (PrimitiveVariable.PrimitiveTypes.Contains(typeName))
                 variable = new PrimitiveVariable(typeName);
             else
                 variable = new ClassVariable(GetClass(typeName));
+
+            variable.IsConst = context.FoundChild<IsConstContext>();
+            variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
+            variable.IsReference = context.FoundChild<IsRefQuantContext>();
 
             return variable;
         }
