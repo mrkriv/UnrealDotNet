@@ -24,7 +24,7 @@ namespace Generator.Metadata
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Write(" base of ");
-                    Console.ForegroundColor = cl.BaseClass.IsImplemented ? ConsoleColor.Cyan : ConsoleColor.DarkRed;
+                    Console.ForegroundColor = cl.BaseClass.IsImplemented ? ConsoleColor.Cyan : ConsoleColor.Red;
                     Console.Write(cl.BaseClass.Name);
                 }
 
@@ -36,7 +36,7 @@ namespace Generator.Metadata
 
                 if (!cl.IsImplemented)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(" (Not Implemented)");
                 }
 
@@ -65,8 +65,10 @@ namespace Generator.Metadata
             Console.Write("\t");
             PrintVariable(method.ReturnType);
 
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($" {method.Name} ");
             Console.ResetColor();
-            Console.Write($" {method.Name} (");
+            Console.Write("(");
 
             for (var i = 0; i < method.InputTypes.Count; i++)
             {
@@ -97,18 +99,18 @@ namespace Generator.Metadata
 
             if (ext.Any())
             {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.ResetColor();
                 Console.Write(string.Join(" ", ext) + " ");
             }
 
             var clVar = variable as ClassVariable;
-            Console.ForegroundColor = clVar?.ClassType.IsImplemented == false ? ConsoleColor.DarkRed : ConsoleColor.Cyan;
+            Console.ForegroundColor = clVar?.ClassType.IsImplemented == false ? ConsoleColor.Red : ConsoleColor.Cyan;
 
             Console.Write(variable.Type);
 
             if (!string.IsNullOrEmpty(variable.Name))
             {
-                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(" " + variable.Name);
             }
 
