@@ -38,17 +38,23 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTranslationUnit([NotNull] UHeaderParser.TranslationUnitContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="UHeaderParser.classPreDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="UHeaderParser.typePreDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitClassPreDeclaration([NotNull] UHeaderParser.ClassPreDeclarationContext context);
+	Result VisitTypePreDeclaration([NotNull] UHeaderParser.TypePreDeclarationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClassDeclaration([NotNull] UHeaderParser.ClassDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.classOrStructOrEnum"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitClassOrStructOrEnum([NotNull] UHeaderParser.ClassOrStructOrEnumContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classOrStruct"/>.
 	/// </summary>
@@ -73,6 +79,36 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClassBody([NotNull] UHeaderParser.ClassBodyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumDeclaration([NotNull] UHeaderParser.EnumDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumParent"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumParent([NotNull] UHeaderParser.EnumParentContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumName([NotNull] UHeaderParser.EnumNameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElementList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumElementList([NotNull] UHeaderParser.EnumElementListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumElement([NotNull] UHeaderParser.EnumElementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uDefine"/>.
 	/// </summary>
@@ -116,6 +152,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitUMetaParamValue([NotNull] UHeaderParser.UMetaParamValueContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.constructor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstructor([NotNull] UHeaderParser.ConstructorContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.method"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -145,6 +187,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitMethodParametrDefaultValue([NotNull] UHeaderParser.MethodParametrDefaultValueContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValue([NotNull] UHeaderParser.ValueContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodBody"/>.
 	/// </summary>

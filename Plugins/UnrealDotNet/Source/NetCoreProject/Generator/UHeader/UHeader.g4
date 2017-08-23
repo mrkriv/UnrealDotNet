@@ -3,8 +3,10 @@ grammar UHeader;
 /*Basic concepts*/
 translationUnit
 	: 
-	(classPreDeclaration
+	(typePreDeclaration
 	| classDeclaration
+	| enumDeclaration
+	| property
 	| uDefine
 	| preprocessDerective)*// For debug, replace with topLevelElement
 	 EOF
@@ -24,13 +26,20 @@ translationUnit
 	| preprocessDerective
 ;*/
 
-/* Class */
-classPreDeclaration
-	: classOrStruct className ';'
+typePreDeclaration
+	: classOrStructOrEnum className ';'
 ;
 
+/* Class */
+
 classDeclaration
-	: templateDefine? classOrStruct className classParentList? '{' classBody '}' ';'
+	: templateDefine? classOrStruct className (DotDot classParentList)? '{' classBody '}' ';'
+;
+
+classOrStructOrEnum
+	: Class
+	| Struct
+	| Enum
 ;
 
 classOrStruct
@@ -39,7 +48,8 @@ classOrStruct
 ;
 
 classParentList
-	: ':' accessSpecifier? className
+	: accessSpecifier? className
+	| accessSpecifier? className ',' classParentList
 ;
 
 className
@@ -49,11 +59,37 @@ className
 classBody
 	: (accessSpecifierContainer
 	| method
+	| constructor
 	| property
 	| uDefine
+	| classDeclaration
+	| enumDeclaration
 	| preprocessDerective)* // For debug, replace with classLevelElement
 ;
 
+
+/* Enum */
+
+enumDeclaration
+	: Enum Class? enumName enumParent? '{' enumElementList '}' ';'
+;
+
+enumParent
+	: DotDot className
+;
+
+enumName
+	: Identifier
+	;
+
+enumElementList
+	: enumElement
+	| enumElement ',' enumElementList ','?
+	;
+
+enumElement
+	: Identifier
+	;
 
 /* UnrealDefine */
 
@@ -82,19 +118,23 @@ uMetaParametr
 
 uMetaParamKey
 	: type
-	| Literal
+	| value
 ;
 
 uMetaParamValue
 	: type
-	| Literal
+	| value
 ;
 
 
 /* Method */
 
+constructor
+	: Inline? methodName '(' methodParamsList? ')' methodBody? ';'?
+;
+
 method
-	: templateDefine? isStatic? isVirtual? type methodName '(' methodParamsList? ')' isConst? (methodBody | ';')
+	: Inline? Extern? templateDefine? isStatic? isVirtual? type methodName '(' methodParamsList? ')' isConst? Override? methodBody? ';'?
 ;
 
 methodParamsList
@@ -111,7 +151,11 @@ methodParametrName
 ;
 
 methodParametrDefaultValue
-	: Identifier
+	: value
+;
+
+value
+	: Identifier (DotDot+ Identifier)? ('(' methodParametrDefaultValue ')')?
 	| Literal
 ;
 
@@ -133,7 +177,7 @@ methodName
 /* Property */
 
 property
-	: isStatic? type propertyName ( ('=' | ':') propertyDefaultValue )? ';'
+	: Extern? isStatic? type propertyName ( ('=' | DotDot) propertyDefaultValue )? ';'
 ;
 
 propertyName
@@ -141,15 +185,15 @@ propertyName
 ;
 
 propertyDefaultValue
-	: Identifier
-	| Literal
+	: Identifier ('(' propertyDefaultValue ')')?
+	| value
 ;
 
 
 /* Type */
 
 type
-	: isConst? classOrStruct? (isPtrQuant | isRefQuant)? typeName (isPtrQuant | isRefQuant)?
+	: isConst? classOrStructOrEnum? (isPtrQuant | isRefQuant)? typeName (isPtrQuant | isRefQuant)? isConst? (isPtrQuant | isRefQuant)?
 ;
 
 isPtrQuant
@@ -161,8 +205,8 @@ isRefQuant
 ;
 
 typeName
-	: Identifier
-	| typeTemplateName ('<' typeName '>')
+	: Identifier (DotDot+ Identifier)?
+	| typeTemplateName ('<' type '>')
 ;
 
 typeTemplateName
@@ -199,6 +243,9 @@ templateParam
 
 templateParamType
 	: Identifier
+	| Class 
+	| Struct
+	| Enum
 	;
 
 templateParamLiter
@@ -206,7 +253,7 @@ templateParamLiter
 	;
 
 accessSpecifierContainer
-	: accessSpecifier ':'
+	: accessSpecifier DotDot
 ;
 
 accessSpecifier
@@ -248,6 +295,7 @@ Public
 
 Inline
 	: 'inline'
+	| 'FORCEINLINE'
 ;
 
 Virtual
@@ -262,6 +310,10 @@ Struct
 	: 'struct'
 ;
 
+Enum
+	: 'enum'
+;
+
 Const
 	: 'const'
 ;
@@ -274,6 +326,10 @@ Extern
 	: 'extern'
 ;
 
+Override
+	: 'override'
+;
+
 Template
 	: 'template'
 ;
@@ -284,6 +340,10 @@ BracketsOpen
 
 BracketsClose
 	: '}'
+;
+
+DotDot
+	: ':'
 ;
 
 SingleLineDerective
