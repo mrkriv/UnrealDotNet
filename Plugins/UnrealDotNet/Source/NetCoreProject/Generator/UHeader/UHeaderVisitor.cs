@@ -38,6 +38,18 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTranslationUnit([NotNull] UHeaderParser.TranslationUnitContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.namespaceUnit"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNamespaceUnit([NotNull] UHeaderParser.NamespaceUnitContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.namespaceName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNamespaceName([NotNull] UHeaderParser.NamespaceNameContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.typePreDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -73,6 +85,18 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClassName([NotNull] UHeaderParser.ClassNameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.classAlignDefine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitClassAlignDefine([NotNull] UHeaderParser.ClassAlignDefineContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.classAlignValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitClassAlignValue([NotNull] UHeaderParser.ClassAlignValueContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classBody"/>.
 	/// </summary>

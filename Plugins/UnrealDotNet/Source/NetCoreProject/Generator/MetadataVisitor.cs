@@ -55,6 +55,8 @@ namespace Generator
 
             VisitClassBody(context.Child<ClassBodyContext>());
 
+            CurrentClass = null;
+
             return null;
         }
 

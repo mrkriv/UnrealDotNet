@@ -11,19 +11,33 @@ translationUnit
 	| property
 	| typeDefine
 	| uDefine
+	| namespaceUnit
 	| preprocessDerective)*
 	 EOF
 ;
+
+
+/* Namespace */
+
+namespaceUnit
+	: Namespace namespaceName '{' translationUnit '}'
+	;
+
+namespaceName
+	: Identifier 
+	;
+
 
 typePreDeclaration
 	: classOrStructOrEnum className ';'
 	| isFriend classOrStructOrEnum? className ';'
 ;
 
+
 /* Class */
 
 classDeclaration
-	: templateDefine? classOrStruct className (DotDot classParentList)? '{' classBody '}' ';'
+	: templateDefine? classOrStruct className (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
 ;
 
 classOrStructOrEnum
@@ -46,6 +60,14 @@ className
 	: Identifier
 	| Identifier '<' className (',' className)? '>'
 ;
+
+classAlignDefine
+	: GCC_ALIGN '(' classAlignValue ')'
+	;
+
+classAlignValue
+	: Literal+
+	;
 
 classBody
 	: (accessSpecifierContainer
@@ -135,7 +157,7 @@ uMetaParamValue
 /* Method */
 
 constructor
-	: Explicit? Inline? methodName '(' methodParamsList? ')' (':' constructorInitializerList)? methodBody? ';'?
+	: Explicit? Inline? methodName '(' methodParamsList? ')' isConst? (':' constructorInitializerList)?  methodBody? ';'?
 ;
 
 constructorInitializerList
@@ -188,13 +210,12 @@ methodBodyContent
 
 methodName
 	: Identifier (DotDot DotDot methodName)?
-	| Operator methodOperator
+	| Operator methodOperator?
 ;
 
 methodOperator
-	: ( PtrQuant | PtrQuant | SpecalSymbol | '=' | '<' | '>' )+
+	: ( PtrQuant | PtrQuant | SpecalSymbol | '=' | '<' | '>' | Identifier)+
 ;
-
 
 /* Property */
 
@@ -387,6 +408,14 @@ BracketsOpen
 
 BracketsClose
 	: '}'
+;
+
+GCC_ALIGN
+	: 'GCC_ALIGN'
+;
+
+Namespace
+	: 'namespace'
 ;
 
 DotDot
