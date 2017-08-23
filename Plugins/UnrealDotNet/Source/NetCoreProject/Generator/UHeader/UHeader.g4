@@ -9,27 +9,15 @@ translationUnit
 	| classDeclaration
 	| enumDeclaration
 	| property
+	| typeDefine
 	| uDefine
-	| preprocessDerective)*// For debug, replace with topLevelElement
+	| preprocessDerective)*
 	 EOF
 ;
 
-/*topLevelElement
-	: classPreDeclaration
-	| classDeclaration
-	| uDefine
-	| preprocessDerective
-;*/
-
-/*classLevelElement
-	: accessSpecifierContainer
-	| method
-	| uDefine
-	| preprocessDerective
-;*/
-
 typePreDeclaration
 	: classOrStructOrEnum className ';'
+	| isFriend classOrStructOrEnum? className ';'
 ;
 
 /* Class */
@@ -56,7 +44,7 @@ classParentList
 
 className
 	: Identifier
-	| Identifier '<' Identifier '>'
+	| Identifier '<' className (',' className)? '>'
 ;
 
 classBody
@@ -65,9 +53,11 @@ classBody
 	| constructor
 	| property
 	| uDefine
+	| typeDefine
 	| classDeclaration
 	| enumDeclaration
-	| preprocessDerective)* // For debug, replace with classLevelElement
+	| typePreDeclaration
+	| preprocessDerective)*
 ;
 
 
@@ -97,6 +87,13 @@ enumElement
 
 enumElementName
 	: Identifier
+	;
+
+
+/* typeDefine */
+
+typeDefine
+	: Typedef type typeName ';'
 	;
 
 /* UnrealDefine */
@@ -147,14 +144,14 @@ constructorInitializerList
 	;
 
 constructorInitializer
-	: methodParametrName '(' methodParametrDefaultValue ')'
+	: methodParametrName '(' methodParametrDefaultValue? ')'
 	;
 
 method
 	: templateDefine? (
 		(isFriend? Inline? Extern? isStatic? isVirtual?) |
 		(isFriend? isStatic? Inline? Extern? isVirtual?)
-	) type methodName '(' methodParamsList? ')' isConst? Override? methodBody? ';'?
+	) type methodName '(' methodParamsList? ')' isConst? Override? Final? methodBody? ';'?
 ;
 
 methodParamsList
@@ -231,7 +228,7 @@ isRefQuant
 
 typeName
 	: Identifier (DotDot+ Identifier)?
-	| typeTemplateName ('<' type '>')
+	| typeTemplateName ('<' type (',' type)* '>')
 ;
 
 typeTemplateName
@@ -267,7 +264,7 @@ templateParamList
 	;
 
 templateParam
-	: templateParamType templateParamLiter
+	: templateParamType templateParamLiter ('=' propertyDefaultValue)?
 	;
 
 templateParamType
@@ -352,6 +349,10 @@ Const
 	: 'const'
 ;
 
+Final
+	: 'final'
+;
+
 Static
 	: 'static'
 ;
@@ -374,6 +375,10 @@ Friend
 
 Operator
 	: 'operator'
+;
+
+Typedef
+	: 'typedef'
 ;
 
 BracketsOpen

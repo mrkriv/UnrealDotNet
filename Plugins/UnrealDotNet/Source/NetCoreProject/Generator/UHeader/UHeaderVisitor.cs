@@ -116,6 +116,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitEnumElementName([NotNull] UHeaderParser.EnumElementNameContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.typeDefine"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTypeDefine([NotNull] UHeaderParser.TypeDefineContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uDefine"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
