@@ -39,12 +39,33 @@ namespace Generator.Metadata
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(" (Not Implemented)");
                 }
-
-                Console.WriteLine();
-
-                foreach (var method in cl.Methods)
+                else
                 {
-                    PrintMehod(method);
+                    Console.WriteLine();
+
+                    if (cl.Property.Count != 0)
+                    {
+                        Console.WriteLine($"Property: ({cl.Property.Count})");
+
+                        foreach (var prop in cl.Property)
+                        {
+                            Console.Write("\t");
+                            PrintVariable(prop);
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine();
+                    }
+
+                    if (cl.Methods.Count != 0)
+                    {
+                        Console.WriteLine($"Methods: ({cl.Methods.Count})");
+
+                        foreach (var method in cl.Methods)
+                        {
+                            PrintMehod(method);
+                        }
+                    }
                 }
 
                 Console.WriteLine();

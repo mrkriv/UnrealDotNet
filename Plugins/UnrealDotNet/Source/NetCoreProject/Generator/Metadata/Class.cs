@@ -7,6 +7,7 @@ namespace Generator.Metadata
         public string Name { get; }
         public Class BaseClass { get; set; }
         public List<Method> Methods { get; set; }
+        public List<Variable> Property { get; set; }
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
         public bool IsTemplate { get; set; }
@@ -15,6 +16,8 @@ namespace Generator.Metadata
         public Class(string Name)
         {
             Methods = new List<Method>();
+            Property = new List<Variable>();
+
             IsImplemented = false;
             this.Name = Name;
         }

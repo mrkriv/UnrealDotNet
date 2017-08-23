@@ -60,40 +60,54 @@ namespace Generator
             return null;
         }
 
+        public override object VisitProperty(PropertyContext context)
+        {
+            if (Ignore || CurrentClass == null)
+                return null;
+
+            var variable = ParceType(context.type());
+            variable.Name = context.propertyName().GetText();
+            variable.Default = context.propertyDefaultValue()?.GetText();
+
+            CurrentClass.Property.Add(variable);
+
+            return null;
+        }
+
         public override object VisitMethod(MethodContext context)
         {
             if (Ignore || CurrentClass == null)
                 return null;
 
-            var method = new Method(context.ChildText<MethodNameContext>())
+            var method = new Method(context.methodName().GetText())
             {
-                IsConst = context.FoundChild<IsConstContext>(),
-                IsStatic = context.FoundChild<IsStaticContext>(),
-                IsVirtual = context.FoundChild<IsVirtualContext>(),
-                IsTemplate = context.FoundChild<TemplateDefineContext>(),
+                IsConst = context.isConst() != null,
+                IsStatic = context.isStatic() != null,
+                IsVirtual = context.isVirtual() != null,
+                IsTemplate = context.templateDefine() != null,
 
-                ReturnType = ParceType(context.Child<TypeContext>()),
+                ReturnType = ParceType(context.type()),
                 InputTypes = context.FindAll<MethodParametrContext>().Reverse()
                     .Select(ParceParam).ToList()
             };
 
             CurrentClass.Methods.Add(method);
 
-            return base.VisitMethod(context);
+            return null;
         }
 
         private Variable ParceParam(MethodParametrContext context)
         {
-            var variable = ParceType(context.Child<TypeContext>());
-            variable.Name = context.ChildText<MethodParametrNameContext>();
-            variable.Default = context.ChildText<MethodParametrDefaultValueContext>();
+            var variable = ParceType(context.type());
+            variable.Name = context.methodParametrName()?.GetText();
+            variable.Default = context.methodParametrDefaultValue()?.GetText();
 
             return variable;
         }
 
         private Variable ParceType(TypeContext context)
         {
-            var typeName = context.ChildText<TypeNameContext>();
+            var typeName = context.typeName().GetText();
             Variable variable;
 
             if (PrimitiveVariable.PrimitiveTypes.Contains(typeName))
@@ -101,9 +115,9 @@ namespace Generator
             else
                 variable = new ClassVariable(GetClass(typeName));
 
-            variable.IsConst = context.FoundChild<IsConstContext>();
-            variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
-            variable.IsReference = context.FoundChild<IsRefQuantContext>();
+            variable.IsConst = context.isConst().Length != 0;
+            variable.IsPointer = context.isPtrQuant().Length != 0;
+            variable.IsReference = context.isRefQuant().Length != 0;
 
             return variable;
         }
