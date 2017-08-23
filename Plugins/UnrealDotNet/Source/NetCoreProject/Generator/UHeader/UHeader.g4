@@ -4,6 +4,8 @@ grammar UHeader;
 translationUnit
 	: 
 	(typePreDeclaration
+	| method
+	| constructor
 	| classDeclaration
 	| enumDeclaration
 	| property
@@ -54,6 +56,7 @@ classParentList
 
 className
 	: Identifier
+	| Identifier '<' Identifier '>'
 ;
 
 classBody
@@ -72,6 +75,7 @@ classBody
 
 enumDeclaration
 	: Enum Class? enumName enumParent? '{' enumElementList '}' ';'
+	| Enum '{' enumElementList '}' ';'
 ;
 
 enumParent
@@ -88,6 +92,10 @@ enumElementList
 	;
 
 enumElement
+	: enumElementName ( ('=' | DotDot) propertyDefaultValue )?
+	;
+
+enumElementName
 	: Identifier
 	;
 
@@ -130,11 +138,23 @@ uMetaParamValue
 /* Method */
 
 constructor
-	: Inline? methodName '(' methodParamsList? ')' methodBody? ';'?
+	: Explicit? Inline? methodName '(' methodParamsList? ')' (':' constructorInitializerList)? methodBody? ';'?
 ;
 
+constructorInitializerList
+	: constructorInitializer
+	| constructorInitializer ',' constructorInitializerList
+	;
+
+constructorInitializer
+	: methodParametrName '(' methodParametrDefaultValue ')'
+	;
+
 method
-	: Inline? Extern? templateDefine? isStatic? isVirtual? type methodName '(' methodParamsList? ')' isConst? Override? methodBody? ';'?
+	: templateDefine? (
+		(isFriend? Inline? Extern? isStatic? isVirtual?) |
+		(isFriend? isStatic? Inline? Extern? isVirtual?)
+	) type methodName '(' methodParamsList? ')' isConst? Override? methodBody? ';'?
 ;
 
 methodParamsList
@@ -143,7 +163,7 @@ methodParamsList
 ;
 
 methodParametr
-	: type methodParametrName ('=' methodParametrDefaultValue)?
+	: type (methodParametrName ('=' methodParametrDefaultValue)?)?
 ;
 
 methodParametrName
@@ -170,7 +190,12 @@ methodBodyContent
 ;
 
 methodName
-	: Identifier
+	: Identifier (DotDot DotDot methodName)?
+	| Operator methodOperator
+;
+
+methodOperator
+	: ( PtrQuant | PtrQuant | SpecalSymbol | '=' | '<' | '>' )+
 ;
 
 
@@ -225,11 +250,15 @@ isStatic
 	: Static
 ;
 
+isFriend
+	: Friend
+;
+
 
 /* Template */
 
 templateDefine
-	: Template '<' templateParamList '>'
+	: Template '<' templateParamList? '>'
 	;
 
 templateParamList
@@ -296,7 +325,12 @@ Public
 Inline
 	: 'inline'
 	| 'FORCEINLINE'
+	| 'FORCEINLINE_DEBUGGABLE'
 ;
+
+Explicit
+	: 'explicit'
+	;
 
 Virtual
 	: 'virtual'
@@ -334,6 +368,14 @@ Template
 	: 'template'
 ;
 
+Friend
+	: 'friend'
+;
+
+Operator
+	: 'operator'
+;
+
 BracketsOpen
 	: '{'
 ;
@@ -355,7 +397,7 @@ MultiLineDerective
 ;
 
 Identifier
-	: NONDIGIT (NONDIGIT | DIGIT)*
+	: NONDIGIT (NONDIGIT | DIGIT | '.')*
 ;
 
 fragment
@@ -406,13 +448,8 @@ SIGN
 	: [+-]
 ;
 
-fragment
 SpecalSymbol
 	: ~[a-zA-Z_0-9\n\r \t&*]
-;
-
-Skiped
-	: (SpecalSymbol | SIGN) /*-> skip*/
 ;
 
 Whitespace

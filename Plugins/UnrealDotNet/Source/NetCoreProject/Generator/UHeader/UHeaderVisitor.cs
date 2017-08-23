@@ -110,6 +110,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitEnumElement([NotNull] UHeaderParser.EnumElementContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElementName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumElementName([NotNull] UHeaderParser.EnumElementNameContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uDefine"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -157,6 +163,18 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitConstructor([NotNull] UHeaderParser.ConstructorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.constructorInitializerList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstructorInitializerList([NotNull] UHeaderParser.ConstructorInitializerListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.constructorInitializer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstructorInitializer([NotNull] UHeaderParser.ConstructorInitializerContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.method"/>.
 	/// </summary>
@@ -211,6 +229,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitMethodName([NotNull] UHeaderParser.MethodNameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.methodOperator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMethodOperator([NotNull] UHeaderParser.MethodOperatorContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.property"/>.
 	/// </summary>
@@ -277,6 +301,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIsStatic([NotNull] UHeaderParser.IsStaticContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isFriend"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsFriend([NotNull] UHeaderParser.IsFriendContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateDefine"/>.
 	/// </summary>
