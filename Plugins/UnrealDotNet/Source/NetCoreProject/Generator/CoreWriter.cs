@@ -1,55 +1,56 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using System.Text;
 
 namespace Generator
 {
-    public class CoreWriter : IDisposable
+    public class CoreWriter
     {
-        private readonly TextWriter tw;
+        private StringBuilder sb = new StringBuilder();
         private int tab;
 
-        public CoreWriter(string FilePath)
+        public CoreWriter()
         {
-            if (File.Exists(FilePath))
-                File.Delete(FilePath);
-
-            tw = new StreamWriter(File.OpenWrite(FilePath));
         }
 
-        public CoreWriter(TextWriter tw)
+        public CoreWriter(CoreWriter CoreWriter)
         {
-            this.tw = tw;
+            tab = CoreWriter.tab;
         }
 
         public void Write(bool NeedWrite, string Text)
         {
             if (NeedWrite)
-                tw.Write(Text);
+                sb.Append(Text);
+        }
+
+        public void Write(CoreWriter CoreWriter)
+        {
+            sb.Append(CoreWriter.sb);
         }
 
         public void Write(string Text)
         {
-            tw.Write(Text);
+            sb.Append(Text);
         }
 
         public void WriteLine(bool NeedWrite, string Line)
         {
             if (NeedWrite)
             {
-                tw.WriteLine(Line);
+                sb.AppendLine(Line);
                 WriteTab();
             }
         }
 
         public void WriteLine(string Line)
         {
-            tw.WriteLine(Line);
+            sb.AppendLine(Line);
             WriteTab();
         }
 
         public void WriteLine()
         {
-            tw.WriteLine();
+            sb.AppendLine();
             WriteTab();
         }
 
@@ -60,7 +61,7 @@ namespace Generator
 
         public void OpenBlock()
         {
-            tw.Write("{");
+            sb.Append("{");
             tab++;
             WriteLine();
         }
@@ -68,23 +69,23 @@ namespace Generator
         public void CloseBlock()
         {
             tab--;
-            WriteLine();
-            tw.WriteLine("}");
+            sb.Remove(sb.Length - 1, 1);
+            sb.AppendLine("}");
         }
 
         private void WriteTab()
         {
-            tw.Write(new string('\t', tab));
+            sb.Append(new string('\t', tab));
         }
 
         public override string ToString()
         {
-            return tw.ToString();
+            return sb.ToString();
         }
 
-        public void Dispose()
+        public void SaveToFile(string FilePath)
         {
-            tw.Dispose();
+            File.WriteAllText(FilePath, sb.ToString());
         }
     }
 }

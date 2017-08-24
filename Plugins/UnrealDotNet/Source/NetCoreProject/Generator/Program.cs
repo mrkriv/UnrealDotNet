@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Antlr4.Runtime;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
-using Generator.Metadata;
 
 namespace Generator
 {
@@ -49,7 +45,7 @@ namespace Generator
             domain.Print();
 
             Watch.Start();
-            //  Codegenretor.GenarateTo(domain, output);
+            Codegenretor.GenarateDomain(domain, output);
             Watch.Stop();
 
             var genTime = Watch.ElapsedMilliseconds - parceTime;

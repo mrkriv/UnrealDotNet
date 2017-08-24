@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace HotReloadUtilit
 {
@@ -82,7 +79,7 @@ namespace HotReloadUtilit
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                File.Copy(OutDir + $"\\{GameLogic}.dll", dir + "\\GameLogic.dll", true);
+                File.Copy(OutDir + $"\\{GameLogic}.dll", dir + $"\\GameLogic.dll", true);
                 File.Copy(OutDir + $"\\{Wrapper}.dll", dir + $"\\{Wrapper}.dll", true);
             }
 

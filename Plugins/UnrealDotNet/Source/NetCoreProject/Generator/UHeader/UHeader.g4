@@ -20,7 +20,7 @@ translationUnit
 /* Namespace */
 
 namespaceUnit
-	: Namespace namespaceName '{' translationUnit '}'
+	: Namespace namespaceName '{' translationUnit '}' ';'?
 	;
 
 namespaceName
@@ -146,6 +146,7 @@ uMetaParametr
 uMetaParamKey
 	: type
 	| value
+	| uMetaParamKey '|' uMetaParamKey
 ;
 
 uMetaParamValue
@@ -173,7 +174,7 @@ method
 	: templateDefine? (
 		(isFriend? Inline? Extern? isStatic? isVirtual?) |
 		(isFriend? isStatic? Inline? Extern? isVirtual?)
-	) type methodName '(' methodParamsList? ')' isConst? Override? Final? methodBody? ';'?
+	) type methodName '(' methodParamsList? ')' isConst? isOverride? Final? methodBody? ';'?
 ;
 
 methodParamsList
@@ -194,8 +195,7 @@ methodParametrDefaultValue
 ;
 
 value
-	: Identifier (DotDot+ Identifier)? ('(' methodParametrDefaultValue ')')?
-	| Literal
+	: (Identifier|Literal) ((SpecalSymbol|DotDot|'<'|'>'|'|')+ (Identifier|Literal))? ('(' methodParametrDefaultValue ')')?
 ;
 
 methodBody
@@ -214,7 +214,7 @@ methodName
 ;
 
 methodOperator
-	: ( PtrQuant | PtrQuant | SpecalSymbol | '=' | '<' | '>' | Identifier)+
+	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | Identifier)+
 ;
 
 /* Property */
@@ -258,6 +258,10 @@ typeTemplateName
 
 isVirtual
 	: Virtual
+;
+
+isOverride
+	: Override
 ;
 
 isConst

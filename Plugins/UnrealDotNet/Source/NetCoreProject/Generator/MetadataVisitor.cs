@@ -1,11 +1,6 @@
-﻿using System;
+﻿using Generator.Metadata;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Transactions;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
-using Generator.Metadata;
 using static UHeaderParser;
 
 namespace Generator
@@ -16,12 +11,16 @@ namespace Generator
         private Class CurrentClass;
         private string CurrentFile;
         private bool Ignore;
+        private bool IsPublicBlock;
+        private int PreprocessorIfCount;
 
-        public Domain GetDomain() => new Domain { Classes = Classes.Values.ToList() };
+        public Domain GetDomain() => new Domain { Classes = Classes.Values.OrderBy(c => c.Name).ToList() };
 
         public void Append(TranslationUnitContext Translationunit, string file)
         {
+            PreprocessorIfCount = 0;
             CurrentFile = file;
+
             Visit(Translationunit);
         }
 
@@ -40,12 +39,17 @@ namespace Generator
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
         {
+            var NamespaceBaseClass = CurrentClass;
+
             CurrentClass = GetClass(context.ChildText<ClassNameContext>());
 
             CurrentClass.SourceFile = CurrentFile;
             CurrentClass.IsImplemented = true;
             CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
+
+            IsPublicBlock = CurrentClass.IsStructure;
+            Ignore = IsPublicBlock;
 
             var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
             if (parentClassName != null)
@@ -55,7 +59,8 @@ namespace Generator
 
             VisitClassBody(context.Child<ClassBodyContext>());
 
-            CurrentClass = null;
+            CurrentClass.NamespaceBaseClass = NamespaceBaseClass;
+            CurrentClass = NamespaceBaseClass;
 
             return null;
         }
@@ -84,14 +89,18 @@ namespace Generator
                 IsConst = context.isConst() != null,
                 IsStatic = context.isStatic() != null,
                 IsVirtual = context.isVirtual() != null,
+                IsOverride = context.isOverride() != null,
                 IsTemplate = context.templateDefine() != null,
+                OwnerClass = CurrentClass,
+                Operator = context.methodName().methodOperator()?.GetText(),
 
                 ReturnType = ParceType(context.type()),
                 InputTypes = context.FindAll<MethodParametrContext>().Reverse()
                     .Select(ParceParam).ToList()
             };
 
-            CurrentClass.Methods.Add(method);
+            if (!CurrentClass.Methods.Any(m => m.Equals(method)))
+                CurrentClass.Methods.Add(method);
 
             return null;
         }
@@ -122,9 +131,36 @@ namespace Generator
             return variable;
         }
 
+        public override object VisitPreprocessDerective(PreprocessDerectiveContext context)
+        {
+            var text = context.GetText();
+            if (text.StartsWith("#if "))
+            {
+                if (text.StartsWith("#if WITH_EDITOR"))
+                {
+                    Ignore = true;
+                }
+
+                if (Ignore)
+                    PreprocessorIfCount++;
+            }
+            else if (text.StartsWith("#endif") && Ignore)
+            {
+                PreprocessorIfCount--;
+                if (PreprocessorIfCount == 0)
+                {
+                    Ignore = !IsPublicBlock;
+                }
+            }
+
+            return base.VisitPreprocessDerective(context);
+        }
+
         public override object VisitAccessSpecifier(AccessSpecifierContext context)
         {
-            Ignore = context.GetText() != "public";
+            IsPublicBlock = context.GetText() == "public";
+            Ignore = !(IsPublicBlock && PreprocessorIfCount == 0);
+
             return null;
         }
     }

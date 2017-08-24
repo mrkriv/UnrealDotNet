@@ -22,12 +22,6 @@
       "LoadingPhase": "Default"
     }
   ],
-  "PreBuildSteps": {
-    "Win64": [
-      "dotnet build $(PluginDir)\\Source\\NetCoreProject\\GameLogic -o ..\\..\\..\\Binaries\\Win64\\netcoreapp2.0 -c Debug",
-      "dotnet build $(PluginDir)\\Source\\NetCoreProject\\GameLogic -o ..\\..\\..\\Binaries\\Win64\\netcoreapp2.0 -c Release"
-    ]
-  },
   "PostBuildSteps": {
     "Win64": [
     ]

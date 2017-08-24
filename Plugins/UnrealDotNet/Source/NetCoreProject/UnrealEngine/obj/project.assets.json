@@ -669,9 +669,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\UnrealEngine\\UnrealEngine.csproj",
       "projectName": "UnrealEngine",

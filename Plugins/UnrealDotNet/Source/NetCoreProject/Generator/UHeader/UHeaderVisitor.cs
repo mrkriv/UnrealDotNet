@@ -320,6 +320,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitIsVirtual([NotNull] UHeaderParser.IsVirtualContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isOverride"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsOverride([NotNull] UHeaderParser.IsOverrideContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isConst"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
