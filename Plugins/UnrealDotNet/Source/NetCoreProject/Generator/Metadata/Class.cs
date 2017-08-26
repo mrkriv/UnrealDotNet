@@ -5,6 +5,7 @@ namespace Generator.Metadata
 {
     public class Class
     {
+        public Dictionary<string, string> UMeta;
         public string Name { get; }
         public Class BaseClass { get; set; }
         public Class NamespaceBaseClass { get; set; }
@@ -40,6 +41,7 @@ namespace Generator.Metadata
         {
             Methods = new List<Method>();
             Property = new List<Variable>();
+            UMeta = new Dictionary<string, string>();
 
             IsImplemented = false;
             this.Name = Name;

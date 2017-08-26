@@ -1,6 +1,9 @@
-﻿using Generator.Metadata;
+﻿using System;
+using Generator.Metadata;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading;
 using static UHeaderParser;
 
 namespace Generator
@@ -8,6 +11,7 @@ namespace Generator
     public class MetadataVisitor : UHeaderBaseVisitor<object>
     {
         private readonly Dictionary<string, Class> Classes = new Dictionary<string, Class>();
+        private Dictionary<string, string> CurrentUMeta;
         private Class CurrentClass;
         private string CurrentFile;
         private bool Ignore;
@@ -47,6 +51,7 @@ namespace Generator
             CurrentClass.IsImplemented = true;
             CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
+            CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
 
             IsPublicBlock = CurrentClass.IsStructure;
             Ignore = !IsPublicBlock;
@@ -58,6 +63,7 @@ namespace Generator
             }
 
             VisitClassBody(context.Child<ClassBodyContext>());
+            CurrentUMeta = null;
 
             CurrentClass.NamespaceBaseClass = NamespaceBaseClass;
             CurrentClass = NamespaceBaseClass;
@@ -73,8 +79,10 @@ namespace Generator
             var variable = ParceType(context.type());
             variable.Name = context.propertyName().GetText();
             variable.Default = context.propertyDefaultValue()?.GetText();
+            variable.UMeta = CurrentUMeta ?? variable.UMeta;
 
             CurrentClass.Property.Add(variable);
+            CurrentUMeta = null;
 
             return null;
         }
@@ -92,6 +100,7 @@ namespace Generator
                 IsVirtual = context.isVirtual() != null,
                 IsOverride = context.isOverride() != null,
                 IsTemplate = context.templateDefine() != null,
+                UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
                 OwnerClass = CurrentClass,
                 Operator = context.methodName().methodOperator()?.GetText(),
 
@@ -102,6 +111,34 @@ namespace Generator
 
             if (!CurrentClass.Methods.Any(m => m.Equals(method)))
                 CurrentClass.Methods.Add(method);
+
+            CurrentUMeta = null;
+            return null;
+        }
+
+        public override object VisitUMeta(UMetaContext context)
+        {
+            CurrentUMeta = new Dictionary<string, string>();
+
+            VisitUMetaParametrList(context.uMetaParametrList());
+
+            return null;
+        }
+
+        public override object VisitUMetaParametr(UMetaParametrContext context)
+        {
+            var key = context.uMetaParamKey().GetText();
+            var value = context.uMetaParamValue()?.GetText();
+            var paramList = context.uMetaParametrList();
+
+            if (paramList != null)
+            {
+                VisitUMetaParametrList(paramList);
+            }
+            else if (!CurrentUMeta.ContainsKey(key))
+            {
+                CurrentUMeta.Add(key, value != null ? value.Trim('"') : "");
+            }
 
             return null;
         }

@@ -35,7 +35,7 @@ namespace GameLogic
             };
 
             SetActorScale3D(scale);
-            K2_SetActorRotation(rot, false);
+            SetActorRotation(rot, false);
         }
 
         public override void OnEndPlay()

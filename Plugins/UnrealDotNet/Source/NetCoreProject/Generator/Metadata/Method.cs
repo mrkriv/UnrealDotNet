@@ -6,7 +6,7 @@ namespace Generator.Metadata
 {
     public class Method : IEquatable<Method>
     {
-        public Dictionary<string, object> UMeta;
+        public Dictionary<string, string> UMeta;
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
         public Class OwnerClass { get; set; }
@@ -22,7 +22,7 @@ namespace Generator.Metadata
 
         public Method(string Name)
         {
-            UMeta = new Dictionary<string, object>();
+            UMeta = new Dictionary<string, string>();
             InputTypes = new List<Variable>();
             this.Name = Name;
         }
@@ -70,6 +70,17 @@ namespace Generator.Metadata
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
             return Equals((Method)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -1034007683;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Variable>.Default.GetHashCode(ReturnType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<Variable>>.Default.GetHashCode(InputTypes);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Class>.Default.GetHashCode(OwnerClass);
+            hashCode = hashCode * -1521134295 + IsConst.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
         }
     }
 }

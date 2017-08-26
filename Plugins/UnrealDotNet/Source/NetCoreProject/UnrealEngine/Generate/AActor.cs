@@ -30,7 +30,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_AActor_SetAutonomousProxy(IntPtr Self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare);
+		private static extern void E_AActor_SetAutonomousProxy(IntPtr Self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare = true);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -142,7 +142,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_AActor_Destroy(IntPtr Self, bool bNetForce, bool bShouldModifyLevel);
+		private static extern bool E_AActor_Destroy(IntPtr Self, bool bNetForce = false, bool bShouldModifyLevel = true);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -212,7 +212,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_AActor_TeleportTo(IntPtr Self, FVector DestLocation, FRotator DestRotation, bool bIsATest, bool bNoCheck);
+		private static extern bool E_AActor_TeleportTo(IntPtr Self, FVector DestLocation, FRotator DestRotation, bool bIsATest = false, bool bNoCheck = false);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -226,7 +226,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_AActor_DebugShowComponentHierarchy(IntPtr Self, string Info, bool bShowPosition);
+		private static extern void E_AActor_DebugShowComponentHierarchy(IntPtr Self, string Info, bool bShowPosition = true);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -248,7 +248,7 @@ namespace UnrealEngine
 			E_AActor_SetReplicates(NativePointer, bInReplicates);
 		}
 
-		public void SetAutonomousProxy(bool bInAutonomousProxy, bool bAllowForcePropertyCompare)
+		public void SetAutonomousProxy(bool bInAutonomousProxy, bool bAllowForcePropertyCompare = true)
 		{
 			E_AActor_SetAutonomousProxy(NativePointer, bInAutonomousProxy, bAllowForcePropertyCompare);
 		}
@@ -268,17 +268,17 @@ namespace UnrealEngine
 			return E_AActor_AllowReceiveTickEventOnDedicatedServer(NativePointer);
 		}
 
-		public FTransform GetTransform()
+		public FTransform GetActorTransform()
 		{
 			return E_AActor_GetTransform(NativePointer);
 		}
 
-		public FVector K2_GetActorLocation()
+		public FVector GetActorLocation()
 		{
 			return E_AActor_K2_GetActorLocation(NativePointer);
 		}
 
-		public FRotator K2_GetActorRotation()
+		public FRotator GetActorRotation()
 		{
 			return E_AActor_K2_GetActorRotation(NativePointer);
 		}
@@ -288,7 +288,7 @@ namespace UnrealEngine
 			E_AActor_GetActorBounds(NativePointer, bOnlyCollidingComponents, Origin, BoxExtent);
 		}
 
-		public bool K2_SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
+		public bool SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
 		{
 			return E_AActor_K2_SetActorRotation(NativePointer, NewRotation, bTeleportPhysics);
 		}
@@ -323,12 +323,12 @@ namespace UnrealEngine
 			return E_AActor_GetGameTimeSinceCreation(NativePointer);
 		}
 
-		public void ReceiveTick(float DeltaSeconds)
+		public void Tick(float DeltaSeconds)
 		{
 			E_AActor_ReceiveTick(NativePointer, DeltaSeconds);
 		}
 
-		public bool Destroy(bool bNetForce, bool bShouldModifyLevel)
+		public bool Destroy(bool bNetForce = false, bool bShouldModifyLevel = true)
 		{
 			return E_AActor_Destroy(NativePointer, bNetForce, bShouldModifyLevel);
 		}
@@ -378,17 +378,17 @@ namespace UnrealEngine
 			return E_AActor_IncrementalRegisterComponents(NativePointer, NumComponentsToRegister);
 		}
 
-		public bool TeleportTo(FVector DestLocation, FRotator DestRotation, bool bIsATest, bool bNoCheck)
+		public bool TeleportTo(FVector DestLocation, FRotator DestRotation, bool bIsATest = false, bool bNoCheck = false)
 		{
 			return E_AActor_TeleportTo(NativePointer, DestLocation, DestRotation, bIsATest, bNoCheck);
 		}
 
-		public bool K2_TeleportTo(FVector DestLocation, FRotator DestRotation)
+		public bool Teleport(FVector DestLocation, FRotator DestRotation)
 		{
 			return E_AActor_K2_TeleportTo(NativePointer, DestLocation, DestRotation);
 		}
 
-		public void DebugShowComponentHierarchy(string Info, bool bShowPosition)
+		public void DebugShowComponentHierarchy(string Info, bool bShowPosition = true)
 		{
 			E_AActor_DebugShowComponentHierarchy(NativePointer, Info, bShowPosition);
 		}

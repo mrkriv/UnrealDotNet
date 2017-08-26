@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Generator.Metadata
 {
     public abstract class Variable : IEquatable<Variable>
     {
+        public Dictionary<string, string> UMeta;
         public bool IsConst { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
@@ -12,6 +14,11 @@ namespace Generator.Metadata
         public string Type { get; protected set; }
         public string Default { get; set; }
         public string Name { get; set; }
+
+        public Variable()
+        {
+            UMeta = new Dictionary<string, string>();
+        }
 
         public virtual string GetTypeCS()
         {
@@ -50,6 +57,14 @@ namespace Generator.Metadata
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
             return Equals((Variable)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -1979447941;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
         }
     }
 

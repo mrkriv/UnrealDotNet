@@ -152,8 +152,10 @@ namespace Generator
                 var param = string.Join(", ", method.InputTypes.Select(ExportVariable));
                 var call = string.Join(", ", inputs);
 
+                var name = method.UMeta.ContainsKey("DisplayName") ? method.UMeta["DisplayName"] : method.Name;
+
                 cw.WriteLine(
-                    $"public {ExportVariable(method.ReturnType)} {method.Name}({param})");
+                    $"public {ExportVariable(method.ReturnType)} {name}({param})");
 
                 cw.OpenBlock();
 
@@ -169,9 +171,29 @@ namespace Generator
                 var result = variable.GetTypeCS();
 
                 if (!string.IsNullOrEmpty(variable.Name))
+                {
+                    var name = variable.UMeta.ContainsKey("DisplayName") ? variable.UMeta["DisplayName"] : variable.Name;
                     result += " " + variable.Name;
 
+                    if (ValidateDefaultValue(variable.Default))
+                        result += " = " + variable.Default;
+                }
+
                 return result;
+            }
+
+            private static bool ValidateDefaultValue(string value)
+            {
+                if (bool.TryParse(value, out var _r1))
+                    return true;
+
+                if (int.TryParse(value, out var _r3))
+                    return true;
+
+                if (float.TryParse(value, out var _r2))
+                    return true;
+
+                return false;
             }
         }
     }
