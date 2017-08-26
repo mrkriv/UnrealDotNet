@@ -14,6 +14,7 @@ namespace Generator
         private Dictionary<string, string> CurrentUMeta;
         private Class CurrentClass;
         private string CurrentFile;
+        private string CurrentComment;
         private bool Ignore;
         private bool IsPublicBlock;
         private int PreprocessorIfCount;
@@ -23,6 +24,7 @@ namespace Generator
         public void Append(TranslationUnitContext Translationunit, string file)
         {
             PreprocessorIfCount = 0;
+            CurrentComment = "";
             CurrentFile = file;
 
             Visit(Translationunit);
@@ -52,6 +54,7 @@ namespace Generator
             CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
+            CurrentClass.Description = CurrentComment;
 
             IsPublicBlock = CurrentClass.IsStructure;
             Ignore = !IsPublicBlock;
@@ -64,6 +67,7 @@ namespace Generator
 
             VisitClassBody(context.Child<ClassBodyContext>());
             CurrentUMeta = null;
+            CurrentComment = "";
 
             CurrentClass.NamespaceBaseClass = NamespaceBaseClass;
             CurrentClass = NamespaceBaseClass;
@@ -80,9 +84,11 @@ namespace Generator
             variable.Name = context.propertyName().GetText();
             variable.Default = context.propertyDefaultValue()?.GetText();
             variable.UMeta = CurrentUMeta ?? variable.UMeta;
+            variable.Description = CurrentComment;
 
             CurrentClass.Property.Add(variable);
             CurrentUMeta = null;
+            CurrentComment = "";
 
             return null;
         }
@@ -101,6 +107,7 @@ namespace Generator
                 IsOverride = context.isOverride() != null,
                 IsTemplate = context.templateDefine() != null,
                 UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
+                Description = CurrentComment,
                 OwnerClass = CurrentClass,
                 Operator = context.methodName().methodOperator()?.GetText(),
 
@@ -113,6 +120,7 @@ namespace Generator
                 CurrentClass.Methods.Add(method);
 
             CurrentUMeta = null;
+            CurrentComment = "";
             return null;
         }
 
@@ -198,6 +206,14 @@ namespace Generator
         {
             IsPublicBlock = context.GetText() == "public";
             Ignore = !(IsPublicBlock && PreprocessorIfCount == 0);
+
+            return null;
+        }
+
+        public override object VisitComment(CommentContext context)
+        {
+            if (Classes != null)
+                CurrentComment = context.GetText();
 
             return null;
         }

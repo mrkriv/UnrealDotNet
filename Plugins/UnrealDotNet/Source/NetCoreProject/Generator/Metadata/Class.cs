@@ -14,6 +14,7 @@ namespace Generator.Metadata
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
         public bool IsTemplate { get; set; }
+        public string Description { get; set; }
         public string SourceFile { get; set; }
 
         public string FullName => NamespaceBaseClass != null ? NamespaceBaseClass.FullName + "." + Name : Name;

@@ -104,6 +104,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitClassBody([NotNull] UHeaderParser.ClassBodyContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.comment"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComment([NotNull] UHeaderParser.CommentContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

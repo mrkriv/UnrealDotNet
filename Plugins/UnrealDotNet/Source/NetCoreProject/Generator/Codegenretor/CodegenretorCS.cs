@@ -29,6 +29,8 @@ namespace Generator
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
+                GenerateSummaty(cw, Class.Description);
+
                 cw.Write(Class.IsStructure
                     ? $"public partial struct {Class.Name}"
                     : $"public partial class {Class.Name}");
@@ -57,6 +59,7 @@ namespace Generator
                 {
                     foreach (var prop in Class.Property.Where(DefaultPropertyFilter))
                     {
+                        GenerateSummaty(cw, prop.Description);
                         cw.WriteLine($"public {ExportVariable(prop)} {{ get; set; }}");
                     }
                     cw.WriteLine();
@@ -154,6 +157,8 @@ namespace Generator
 
                 var name = method.UMeta.ContainsKey("DisplayName") ? method.UMeta["DisplayName"] : method.Name;
 
+                GenerateSummaty(cw, method.Description);
+
                 cw.WriteLine(
                     $"public {ExportVariable(method.ReturnType)} {name}({param})");
 
@@ -164,6 +169,24 @@ namespace Generator
 
                 cw.CloseBlock();
                 cw.WriteLine();
+            }
+
+            private static void GenerateSummaty(CoreWriter cw, string Description)
+            {
+                if (string.IsNullOrEmpty(Description))
+                    return;
+
+                var rows = Description.Split('\n');
+
+                cw.WriteLine();
+                cw.WriteLine("/// <summary>");
+
+                foreach (var row in rows)
+                {
+                    cw.WriteLine("/// " + row.Trim(' ', '\t', '*', '/', '\\'));
+                }
+
+                cw.WriteLine("/// </summary>");
             }
 
             private static string ExportVariable(Variable variable)

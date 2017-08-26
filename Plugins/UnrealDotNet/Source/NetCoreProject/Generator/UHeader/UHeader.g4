@@ -12,6 +12,7 @@ translationUnit
 	| typeDefine
 	| uDefine
 	| namespaceUnit
+	| comment
 	| preprocessDerective)*
 	 EOF
 ;
@@ -79,9 +80,13 @@ classBody
 	| classDeclaration
 	| enumDeclaration
 	| typePreDeclaration
+	| comment
 	| preprocessDerective)*
 ;
 
+comment
+	: ExportComment
+	;
 
 /* Enum */
 
@@ -104,7 +109,7 @@ enumElementList
 	;
 
 enumElement
-	: enumElementName ( ('=' | DotDot) propertyDefaultValue )?
+	: comment? enumElementName ( ('=' | DotDot) propertyDefaultValue )?
 	;
 
 enumElementName
@@ -498,10 +503,14 @@ Newline
 	: ( '\r' '\n'? | '\n') -> skip
 ;
 
+ExportComment
+	: '/**' .*? '*/'
+;
+
 BlockComment
-	: '/*' .*? '*/' -> skip
+	: '/*' .*? '*/'  -> skip
 ;
 
 LineComment
-	: '//' ~[\r\n]* -> skip
+	: '//' ~[\r\n]*  -> skip
 ;

@@ -13,6 +13,7 @@ namespace Generator.Metadata
 
         public string Type { get; protected set; }
         public string Default { get; set; }
+        public string Description { get; set; }
         public string Name { get; set; }
 
         public Variable()
