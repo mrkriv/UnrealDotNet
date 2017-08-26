@@ -42,13 +42,25 @@ namespace Generator
                    m.Dependent.All(c => c.IsImplemented && c.NamespaceBaseClass == null) &&
                    m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
                    !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
-                   !m.IsOverride;
+                   !m.IsOverride &&
+                   m.Operator == null && // TODO: экспортировать операторы
+                   !m.isFriend;
         }
 
         private static bool DefaultPropertyFilter(Variable m)
         {
             return (m as ClassVariable)?.ClassType.IsImplemented != false &&
                    !m.IsConst; // TODO: константные поля
+        }
+
+        private static string GetCPPMethodName(Method method)
+        {
+            if (method.Operator == null)
+            {
+                return ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
+            }
+
+            return ExportOperatorPrefix + method.OwnerClass.Name + "_" + method.Name;
         }
     }
 }

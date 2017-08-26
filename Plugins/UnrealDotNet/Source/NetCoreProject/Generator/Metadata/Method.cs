@@ -6,6 +6,7 @@ namespace Generator.Metadata
 {
     public class Method : IEquatable<Method>
     {
+        public Dictionary<string, object> UMeta;
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
         public Class OwnerClass { get; set; }
@@ -13,6 +14,7 @@ namespace Generator.Metadata
         public bool IsVirtual { get; set; }
         public bool IsOverride { get; set; }
         public bool IsStatic { get; set; }
+        public bool isFriend { get; set; }
         public bool IsTemplate { get; set; }
         public string Operator { get; set; }
 
@@ -20,6 +22,7 @@ namespace Generator.Metadata
 
         public Method(string Name)
         {
+            UMeta = new Dictionary<string, object>();
             InputTypes = new List<Variable>();
             this.Name = Name;
         }

@@ -164,16 +164,6 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static string GetCPPMethodName(Method method)
-            {
-                if (method.Operator == null)
-                {
-                    return ExportPrefix + method.Name;
-                }
-
-                return ExportOperatorPrefix + method.Name;
-            }
-
             private static string ExportVariable(Variable variable)
             {
                 var result = variable.GetTypeCS();

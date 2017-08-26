@@ -1,6 +1,7 @@
 ﻿using Generator.Metadata;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
@@ -16,40 +17,33 @@ namespace Generator
 
                 Directory.GetFiles(OutputDir, "*.h").ToList().ForEach(File.Delete);
 
-                foreach (var cl in Classes)
+                foreach (var cl in Classes.Where(c => !c.IsStructure))
                 {
                     GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
                 }
 
-                GenerateCPPIndex(Classes, Path.Combine(OutputDir, "Index"));
+                GenerateStructs(Classes.Where(c => c.IsStructure), Path.Combine(OutputDir, "Structures"));
+                GenerateCPPIndex(Classes.Where(c => !c.IsStructure), Path.Combine(OutputDir, "Index"));
             }
+
+            #region Class
 
             private static void GenerateClass(Class Class, string OutputPath)
             {
                 var cw = new CoreWriter();
 
                 var methods = Class.Methods.Where(DefaultMethodFilter);
-                methods = methods.Where(m => m.Operator == null);
-
-                var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
-                var SourceFile = index == -1
-                    ? Class.SourceFile
-                    : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
-
-                SourceFile = SourceFile.Replace("\\", "/");
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
                 cw.WriteLine($"#include \"CoreMinimal.h\"");
-                cw.WriteLine($"#include \"{SourceFile}\"");
+                cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
-                foreach (var cl in Class.Dependent.Where(cl => cl.IsImplemented && cl.IsStructure && cl != Class))
+                var isUsingStruct = Class.Dependent.Any(cl => cl.IsImplemented && cl.IsStructure);
+                if (isUsingStruct)
                 {
-                    cw.WriteLine($"#include \"{cl.Name}.h\"");
+                    cw.WriteLine($"#include \"Structures.h\"");
                 }
-
-                cw.WriteLine();
-                GenerateClassUtilitesTop(cw, Class);
 
                 cw.WriteLine();
                 cw.WriteLine("extern \"C\"");
@@ -61,69 +55,19 @@ namespace Generator
                 }
 
                 cw.CloseBlock();
+
                 cw.SaveToFile(OutputPath + ".h");
             }
 
-            private static void GenerateClassUtilitesTop(CoreWriter cw, Class Class)
+            private static string GetSourceFileName(Class Class)
             {
-                if (Class.IsStructure)
-                {
-                    cw.WriteLine("extern \"C\"");
-                    cw.OpenBlock();
+                var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
+                var SourceFile = index == -1
+                    ? Class.SourceFile
+                    : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
 
-                    cw.WriteLine("typedef struct");
-                    cw.OpenBlock();
-
-                    foreach (var prop in Class.Property.Where(p => !p.IsConst))
-                    {
-                        cw.WriteLine($"{prop.Type} {prop.Name};");
-                    }
-                    cw.CloseBlock();
-                    cw.WriteLine($"E_ST_{Class.Name}, *E_ST_{Class.Name}_REF;");
-
-                    cw.CloseBlock();
-                    cw.WriteLine();
-
-                    GenerateStructConvMethodIN(cw, Class);
-                    GenerateStructConvMethodTO(cw, Class);
-                }
-                else
-                {
-                }
-            }
-
-            private static void GenerateStructConvMethodIN(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine($"FORCEINLINE E_ST_{Class.Name} CONV_ST_{Class.Name}_IN({Class.Name} In)");
-                cw.OpenBlock();
-                cw.WriteLine($"E_ST_{Class.Name} var;");
-
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
-                {
-                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
-                }
-
-                cw.WriteLine();
-                cw.WriteLine("return var;");
-                cw.CloseBlock();
-                cw.WriteLine();
-            }
-
-            private static void GenerateStructConvMethodTO(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine($"FORCEINLINE {Class.Name} CONV_ST_{Class.Name}_TO(E_ST_{Class.Name} In)");
-                cw.OpenBlock();
-                cw.WriteLine($"{Class.Name} var;");
-
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
-                {
-                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
-                }
-
-                cw.WriteLine();
-                cw.WriteLine("return var;");
-                cw.CloseBlock();
-                cw.WriteLine();
+                SourceFile = SourceFile.Replace("\\", "/");
+                return SourceFile;
             }
 
             private static void GenerateMethod(CoreWriter cw, Class Class, Method method)
@@ -212,15 +156,141 @@ namespace Generator
                 }
             }
 
-            private static string GetCPPMethodName(Method method)
+            #endregion Class
+
+            #region Struct
+
+            private static void GenerateStructs(IEnumerable<Class> Structures, string OutputPath)
             {
-                if (method.Operator == null)
+                var cw = new CoreWriter();
+
+                cw.WriteLine("#pragma once");
+                cw.WriteLine();
+                cw.WriteLine($"#include \"CoreMinimal.h\"");
+
+                var Classes = SortByDependent(Structures);
+
+                foreach (var Class in Classes)
                 {
-                    return ExportPrefix + method.Name;
+                    cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
                 }
 
-                return ExportOperatorPrefix + method.Name;
+                cw.WriteLine();
+
+                foreach (var Class in Classes)
+                {
+                    cw.WriteLine();
+                    GenerateStructUtilites(cw, Class);
+                }
+
+                cw.WriteLine();
+                cw.WriteLine("extern \"C\"");
+                cw.OpenBlock();
+
+                foreach (var Class in Classes)
+                {
+                    cw.WriteLine();
+                    cw.WriteLine($"/*\t{Class.Name}\t*/");
+                    cw.WriteLine();
+
+                    foreach (var method in Class.Methods.Where(DefaultMethodFilter))
+                    {
+                        GenerateMethod(cw, Class, method);
+                    }
+                }
+
+                cw.CloseBlock();
+
+                cw.SaveToFile(OutputPath + ".h");
             }
+
+            private static List<Class> SortByDependent(IEnumerable<Class> Structures)
+            {
+                var result = new List<Class>();
+                var source = Structures.ToList();
+
+                while (source.Any())
+                {
+                    var any = false;
+                    for (var i = 0; i < source.Count; i++)
+                    {
+                        if (!source[i].PropertyDependent.All(cl => result.Contains(cl)))
+                            continue;
+
+                        result.Add(source[i]);
+                        source.RemoveAt(i);
+                        any = true;
+                        i--;
+                    }
+
+                    if (any)
+                        continue;
+
+                    Console.WriteLine("These structures can not be exported because they have a cyclic dependence");
+                    source.ForEach(Console.WriteLine);
+                    break;
+                }
+
+                return result;
+            }
+
+            private static void GenerateStructUtilites(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine("extern \"C\"");
+                cw.OpenBlock();
+
+                cw.WriteLine("typedef struct");
+                cw.OpenBlock();
+
+                foreach (var prop in Class.Property.Where(p => !p.IsConst))
+                {
+                    cw.WriteLine($"{prop.Type} {prop.Name};");
+                }
+                cw.CloseBlock();
+                cw.WriteLine($"E_ST_{Class.Name}, *E_ST_{Class.Name}_REF;");
+
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                GenerateStructConvMethodIN(cw, Class);
+                GenerateStructConvMethodTO(cw, Class);
+            }
+
+            private static void GenerateStructConvMethodIN(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine($"FORCEINLINE E_ST_{Class.Name} CONV_ST_{Class.Name}_IN({Class.Name} In)");
+                cw.OpenBlock();
+                cw.WriteLine($"E_ST_{Class.Name} var;");
+
+                foreach (var prop in Class.Property.Where(p => !p.IsConst))
+                {
+                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
+                }
+
+                cw.WriteLine();
+                cw.WriteLine("return var;");
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            private static void GenerateStructConvMethodTO(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine($"FORCEINLINE {Class.Name} CONV_ST_{Class.Name}_TO(E_ST_{Class.Name} In)");
+                cw.OpenBlock();
+                cw.WriteLine($"{Class.Name} var;");
+
+                foreach (var prop in Class.Property.Where(p => !p.IsConst))
+                {
+                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
+                }
+
+                cw.WriteLine();
+                cw.WriteLine("return var;");
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            #endregion Struct
 
             private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
             {

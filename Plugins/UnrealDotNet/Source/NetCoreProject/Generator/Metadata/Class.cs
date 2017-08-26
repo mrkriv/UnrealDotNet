@@ -17,14 +17,22 @@ namespace Generator.Metadata
 
         public string FullName => NamespaceBaseClass != null ? NamespaceBaseClass.FullName + "." + Name : Name;
 
-        public IEnumerable<Class> Dependent
+        public IEnumerable<Class> PropertyDependent
         {
             get
             {
                 var list = Property.OfType<ClassVariable>().Select(v => v.ClassType);
-                list = Methods.Select(m => m.Dependent).Aggregate(list, (current, md) => current.Concat(md));
+                return list.Where(cl => cl != this).Distinct().OrderBy(cl => cl.Name);
+            }
+        }
 
-                return list.Distinct().OrderBy(cl => cl.Name);
+        public IEnumerable<Class> Dependent
+        {
+            get
+            {
+                var list = Methods.Select(m => m.Dependent).Aggregate(PropertyDependent, (current, md) => current.Concat(md));
+
+                return list.Where(cl => cl != this).Distinct().OrderBy(cl => cl.Name);
             }
         }
 

@@ -42,7 +42,7 @@ namespace Generator
             Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             var domain = visitor.GetDomain();
-            domain.Print();
+            domain.Print(false);
 
             Watch.Start();
             Codegenretor.GenarateDomain(domain, output);

@@ -20,14 +20,22 @@ namespace GameLogic
         {
             Time += DeltaTime;
 
+            var rot = new FRotator
+            {
+                Yaw = Time * 10,
+                Pitch = 10,
+                Roll = 15
+            };
+
             var scale = new FVector
             {
-                X = (float)Math.Sin(Time),
-                Y = (float)Math.Cos(Time),
-                Z = 1.0f
+                X = 2 + (float)Math.Sin(Time),
+                Y = 2 + (float)Math.Cos(Time),
+                Z = 2.0f
             };
 
             SetActorScale3D(scale);
+            K2_SetActorRotation(rot, false);
         }
 
         public override void OnEndPlay()

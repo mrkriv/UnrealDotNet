@@ -49,7 +49,7 @@ namespace Generator
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
 
             IsPublicBlock = CurrentClass.IsStructure;
-            Ignore = IsPublicBlock;
+            Ignore = !IsPublicBlock;
 
             var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
             if (parentClassName != null)
@@ -88,6 +88,7 @@ namespace Generator
             {
                 IsConst = context.isConst() != null,
                 IsStatic = context.isStatic() != null,
+                isFriend = context.isFriend() != null,
                 IsVirtual = context.isVirtual() != null,
                 IsOverride = context.isOverride() != null,
                 IsTemplate = context.templateDefine() != null,

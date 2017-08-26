@@ -8,7 +8,7 @@ namespace Generator.Metadata
     {
         public List<Class> Classes = new List<Class>();
 
-        public void Print()
+        public void Print(bool Full)
         {
             Console.WriteLine();
 
@@ -41,10 +41,18 @@ namespace Generator.Metadata
                 }
                 else
                 {
+                    if (!Full)
+                    {
+                        Console.ResetColor();
+                        Console.WriteLine($"\tProperty: ({cl.Property.Count}) Methods: ({cl.Methods.Count})");
+                        continue;
+                    }
+
                     Console.WriteLine();
 
                     if (cl.Property.Count != 0)
                     {
+                        Console.ResetColor();
                         Console.WriteLine($"Property: ({cl.Property.Count})");
 
                         foreach (var prop in cl.Property)
@@ -59,6 +67,7 @@ namespace Generator.Metadata
 
                     if (cl.Methods.Count != 0)
                     {
+                        Console.ResetColor();
                         Console.WriteLine($"Methods: ({cl.Methods.Count})");
 
                         foreach (var method in cl.Methods)
