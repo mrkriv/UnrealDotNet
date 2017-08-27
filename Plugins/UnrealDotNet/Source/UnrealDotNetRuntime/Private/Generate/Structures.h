@@ -1,14 +1,39 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "World.h"
 #include "Math/Quat.h"
 #include "Math/Rotator.h"
-#include "Math/TransformVectorized.h"
+#include "Math/TransformNonVectorized.h"
 #include "Math/Vector.h"
 #include "Math/Vector2D.h"
 #include "Math/Vector4.h"
 #include "Math/Box.h"
 #include "Math/Box2D.h"
+#include "World.h"
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FLevelCollection, *E_ST_FLevelCollection_REF;
+}
+
+FORCEINLINE E_ST_FLevelCollection CONV_ST_FLevelCollection_IN(FLevelCollection In)
+{
+	E_ST_FLevelCollection var;
+	
+	return var;
+}
+
+FORCEINLINE FLevelCollection CONV_ST_FLevelCollection_TO(E_ST_FLevelCollection In)
+{
+	FLevelCollection var;
+	
+	return var;
+}
 
 
 extern "C"
@@ -263,9 +288,64 @@ FORCEINLINE FBox2D CONV_ST_FBox2D_TO(E_ST_FBox2D In)
 
 extern "C"
 {
+	typedef struct
+	{
+		FVector CamPosition;
+		FRotator CamRotation;
+		float CamOrthoZoom;
+		bool CamUpdated;
+	}
+E_ST_FLevelViewportInfo, *E_ST_FLevelViewportInfo_REF;
+}
+
+FORCEINLINE E_ST_FLevelViewportInfo CONV_ST_FLevelViewportInfo_IN(FLevelViewportInfo In)
+{
+	E_ST_FLevelViewportInfo var;
+	var.CamPosition = In.CamPosition;
+	var.CamRotation = In.CamRotation;
+	var.CamOrthoZoom = In.CamOrthoZoom;
+	var.CamUpdated = In.CamUpdated;
+	
+	return var;
+}
+
+FORCEINLINE FLevelViewportInfo CONV_ST_FLevelViewportInfo_TO(E_ST_FLevelViewportInfo In)
+{
+	FLevelViewportInfo var;
+	var.CamPosition = In.CamPosition;
+	var.CamRotation = In.CamRotation;
+	var.CamOrthoZoom = In.CamOrthoZoom;
+	var.CamUpdated = In.CamUpdated;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	
+	/*	FLevelCollection	*/
+	
+	DOTNET_EXPORT bool E_FLevelCollection_IsVisible(E_ST_FLevelCollection Self)
+	{
+		return CONV_ST_FLevelCollection_TO(Self).IsVisible();
+	}
+
+	DOTNET_EXPORT void E_FLevelCollection_SetIsVisible(E_ST_FLevelCollection Self, bool bInIsVisible)
+	{
+		auto _p0 = bInIsVisible;
+		CONV_ST_FLevelCollection_TO(Self).SetIsVisible(_p0);
+	}
+
 	
 	/*	FQuat	*/
 	
+	DOTNET_EXPORT E_ST_FQuat E_OP_FQuat_p(E_ST_FQuat Self, E_ST_FQuat Q)
+	{
+		auto _p0 = CONV_ST_FQuat_TO(Q);
+		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).operator+(_p0));
+	}
+
 	DOTNET_EXPORT bool E_FQuat_Equals(E_ST_FQuat Self, E_ST_FQuat Q, float Tolerance)
 	{
 		auto _p0 = CONV_ST_FQuat_TO(Q);
@@ -277,6 +357,12 @@ extern "C"
 	{
 		auto _p0 = Tolerance;
 		return CONV_ST_FQuat_TO(Self).IsIdentity(_p0);
+	}
+
+	DOTNET_EXPORT float E_OP_FQuat_i(E_ST_FQuat Self, E_ST_FQuat Q)
+	{
+		auto _p0 = CONV_ST_FQuat_TO(Q);
+		return CONV_ST_FQuat_TO(Self).operator|(_p0);
 	}
 
 	DOTNET_EXPORT E_ST_FQuat E_FQuat_MakeFromEuler(E_ST_FQuat Self, E_ST_FVector Euler)
@@ -413,6 +499,18 @@ extern "C"
 	
 	/*	FRotator	*/
 	
+	DOTNET_EXPORT E_ST_FRotator E_OP_FRotator_p(E_ST_FRotator Self, E_ST_FRotator R)
+	{
+		auto _p0 = CONV_ST_FRotator_TO(R);
+		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).operator+(_p0));
+	}
+
+	DOTNET_EXPORT E_ST_FRotator E_OP_FRotator_m(E_ST_FRotator Self, float Scale)
+	{
+		auto _p0 = Scale;
+		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).operator*(_p0));
+	}
+
 	DOTNET_EXPORT bool E_FRotator_IsNearlyZero(E_ST_FRotator Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
@@ -493,14 +591,167 @@ extern "C"
 		CONV_ST_FTransform_TO(Self).DiagnosticCheckNaN_Scale3D();
 	}
 
+	DOTNET_EXPORT E_ST_FTransform E_FTransform_Inverse(E_ST_FTransform Self)
+	{
+		return CONV_ST_FTransform_IN(CONV_ST_FTransform_TO(Self).Inverse());
+	}
+
+	DOTNET_EXPORT void E_FTransform_Blend(E_ST_FTransform Self, E_ST_FTransform Atom1, E_ST_FTransform Atom2, float Alpha)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(Atom1);
+		auto _p1 = CONV_ST_FTransform_TO(Atom2);
+		auto _p2 = Alpha;
+		CONV_ST_FTransform_TO(Self).Blend(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_FTransform_BlendWith(E_ST_FTransform Self, E_ST_FTransform OtherAtom, float Alpha)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(OtherAtom);
+		auto _p1 = Alpha;
+		CONV_ST_FTransform_TO(Self).BlendWith(_p0, _p1);
+	}
+
+	DOTNET_EXPORT E_ST_FTransform E_OP_FTransform_p(E_ST_FTransform Self, E_ST_FTransform Atom)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(Atom);
+		return CONV_ST_FTransform_IN(CONV_ST_FTransform_TO(Self).operator+(_p0));
+	}
+
+	DOTNET_EXPORT bool E_FTransform_AnyHasNegativeScale(E_ST_FTransform Self, E_ST_FVector InScale3D, E_ST_FVector InOtherScale3D)
+	{
+		auto _p0 = CONV_ST_FVector_TO(InScale3D);
+		auto _p1 = CONV_ST_FVector_TO(InOtherScale3D);
+		return CONV_ST_FTransform_TO(Self).AnyHasNegativeScale(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_FTransform_RemoveScaling(E_ST_FTransform Self, float Tolerance)
+	{
+		auto _p0 = Tolerance;
+		CONV_ST_FTransform_TO(Self).RemoveScaling(_p0);
+	}
+
+	DOTNET_EXPORT float E_FTransform_GetMaximumAxisScale(E_ST_FTransform Self)
+	{
+		return CONV_ST_FTransform_TO(Self).GetMaximumAxisScale();
+	}
+
+	DOTNET_EXPORT E_ST_FVector4 E_FTransform_TransformFVector4(E_ST_FTransform Self, E_ST_FVector4 V)
+	{
+		auto _p0 = CONV_ST_FVector4_TO(V);
+		return CONV_ST_FVector4_IN(CONV_ST_FTransform_TO(Self).TransformFVector4(_p0));
+	}
+
+	DOTNET_EXPORT E_ST_FVector E_FTransform_TransformPosition(E_ST_FTransform Self, E_ST_FVector V)
+	{
+		auto _p0 = CONV_ST_FVector_TO(V);
+		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).TransformPosition(_p0));
+	}
+
+	DOTNET_EXPORT E_ST_FVector E_FTransform_GetSafeScaleReciprocal(E_ST_FTransform Self, E_ST_FVector InScale, float Tolerance)
+	{
+		auto _p0 = CONV_ST_FVector_TO(InScale);
+		auto _p1 = Tolerance;
+		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).GetSafeScaleReciprocal(_p0, _p1));
+	}
+
+	DOTNET_EXPORT E_ST_FVector E_FTransform_GetLocation(E_ST_FTransform Self)
+	{
+		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).GetLocation());
+	}
+
+	DOTNET_EXPORT E_ST_FRotator E_FTransform_Rotator(E_ST_FTransform Self)
+	{
+		return CONV_ST_FRotator_IN(CONV_ST_FTransform_TO(Self).Rotator());
+	}
+
+	DOTNET_EXPORT bool E_FTransform_ContainsNaN(E_ST_FTransform Self)
+	{
+		return CONV_ST_FTransform_TO(Self).ContainsNaN();
+	}
+
+	DOTNET_EXPORT bool E_FTransform_AreRotationsEqual(E_ST_FTransform Self, E_ST_FTransform A, E_ST_FTransform B, float Tolerance)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(A);
+		auto _p1 = CONV_ST_FTransform_TO(B);
+		auto _p2 = Tolerance;
+		return CONV_ST_FTransform_TO(Self).AreRotationsEqual(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT bool E_FTransform_RotationEquals(E_ST_FTransform Self, E_ST_FTransform Other, float Tolerance)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(Other);
+		auto _p1 = Tolerance;
+		return CONV_ST_FTransform_TO(Self).RotationEquals(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_FTransform_Multiply(E_ST_FTransform Self, E_ST_FTransform OutTransform, E_ST_FTransform A, E_ST_FTransform B)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(OutTransform);
+		auto _p1 = CONV_ST_FTransform_TO(A);
+		auto _p2 = CONV_ST_FTransform_TO(B);
+		CONV_ST_FTransform_TO(Self).Multiply(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_FTransform_SetComponents(E_ST_FTransform Self, E_ST_FQuat InRotation, E_ST_FVector InTranslation, E_ST_FVector InScale3D)
+	{
+		auto _p0 = CONV_ST_FQuat_TO(InRotation);
+		auto _p1 = CONV_ST_FVector_TO(InTranslation);
+		auto _p2 = CONV_ST_FVector_TO(InScale3D);
+		CONV_ST_FTransform_TO(Self).SetComponents(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_FTransform_SetIdentity(E_ST_FTransform Self)
+	{
+		CONV_ST_FTransform_TO(Self).SetIdentity();
+	}
+
+	DOTNET_EXPORT E_ST_FVector E_FTransform_AddTranslations(E_ST_FTransform Self, E_ST_FTransform A, E_ST_FTransform B)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(A);
+		auto _p1 = CONV_ST_FTransform_TO(B);
+		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).AddTranslations(_p0, _p1));
+	}
+
+	DOTNET_EXPORT void E_FTransform_SetTranslationAndScale3D(E_ST_FTransform Self, E_ST_FVector NewTranslation, E_ST_FVector NewScale3D)
+	{
+		auto _p0 = CONV_ST_FVector_TO(NewTranslation);
+		auto _p1 = CONV_ST_FVector_TO(NewScale3D);
+		CONV_ST_FTransform_TO(Self).SetTranslationAndScale3D(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_FTransform_BlendFromIdentityAndAccumulate(E_ST_FTransform Self, E_ST_FTransform FinalAtom, E_ST_FTransform SourceAtom, float BlendWeight)
+	{
+		auto _p0 = CONV_ST_FTransform_TO(FinalAtom);
+		auto _p1 = CONV_ST_FTransform_TO(SourceAtom);
+		auto _p2 = BlendWeight;
+		CONV_ST_FTransform_TO(Self).BlendFromIdentityAndAccumulate(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT E_ST_FQuat E_FTransform_GetRotation(E_ST_FTransform Self)
+	{
+		return CONV_ST_FQuat_IN(CONV_ST_FTransform_TO(Self).GetRotation());
+	}
+
 	
 	/*	FVector	*/
 	
+	DOTNET_EXPORT E_ST_FVector E_OP_FVector_u(E_ST_FVector Self, E_ST_FVector V)
+	{
+		auto _p0 = CONV_ST_FVector_TO(V);
+		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).operator^(_p0));
+	}
+
 	DOTNET_EXPORT E_ST_FVector E_FVector_CrossProduct(E_ST_FVector Self, E_ST_FVector A, E_ST_FVector B)
 	{
 		auto _p0 = CONV_ST_FVector_TO(A);
 		auto _p1 = CONV_ST_FVector_TO(B);
 		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).CrossProduct(_p0, _p1));
+	}
+
+	DOTNET_EXPORT float E_OP_FVector_i(E_ST_FVector Self, E_ST_FVector V)
+	{
+		auto _p0 = CONV_ST_FVector_TO(V);
+		return CONV_ST_FVector_TO(Self).operator|(_p0);
 	}
 
 	DOTNET_EXPORT float E_FVector_DotProduct(E_ST_FVector Self, E_ST_FVector A, E_ST_FVector B)
@@ -658,6 +909,24 @@ extern "C"
 	
 	/*	FVector2D	*/
 	
+	DOTNET_EXPORT E_ST_FVector2D E_OP_FVector2D_p(E_ST_FVector2D Self, E_ST_FVector2D V)
+	{
+		auto _p0 = CONV_ST_FVector2D_TO(V);
+		return CONV_ST_FVector2D_IN(CONV_ST_FVector2D_TO(Self).operator+(_p0));
+	}
+
+	DOTNET_EXPORT E_ST_FVector2D E_OP_FVector2D_m(E_ST_FVector2D Self, float Scale)
+	{
+		auto _p0 = Scale;
+		return CONV_ST_FVector2D_IN(CONV_ST_FVector2D_TO(Self).operator*(_p0));
+	}
+
+	DOTNET_EXPORT float E_OP_FVector2D_i(E_ST_FVector2D Self, E_ST_FVector2D V)
+	{
+		auto _p0 = CONV_ST_FVector2D_TO(V);
+		return CONV_ST_FVector2D_TO(Self).operator|(_p0);
+	}
+
 	DOTNET_EXPORT float E_FVector2D_DotProduct(E_ST_FVector2D Self, E_ST_FVector2D A, E_ST_FVector2D B)
 	{
 		auto _p0 = CONV_ST_FVector2D_TO(A);
@@ -728,6 +997,12 @@ extern "C"
 	
 	/*	FVector4	*/
 	
+	DOTNET_EXPORT E_ST_FVector4 E_OP_FVector4_p(E_ST_FVector4 Self, E_ST_FVector4 V)
+	{
+		auto _p0 = CONV_ST_FVector4_TO(V);
+		return CONV_ST_FVector4_IN(CONV_ST_FVector4_TO(Self).operator+(_p0));
+	}
+
 	DOTNET_EXPORT bool E_FVector4_Equals(E_ST_FVector4 Self, E_ST_FVector4 V, float Tolerance)
 	{
 		auto _p0 = CONV_ST_FVector4_TO(V);
@@ -785,6 +1060,12 @@ extern "C"
 	
 	/*	FBox	*/
 	
+	DOTNET_EXPORT E_ST_FVector E_OP_FBox_oc(E_ST_FBox Self, int32 Index)
+	{
+		auto _p0 = Index;
+		return CONV_ST_FVector_IN(CONV_ST_FBox_TO(Self).operator[](_p0));
+	}
+
 	DOTNET_EXPORT float E_FBox_ComputeSquaredDistanceToPoint(E_ST_FBox Self, E_ST_FVector Point)
 	{
 		auto _p0 = CONV_ST_FVector_TO(Point);
@@ -841,6 +1122,12 @@ extern "C"
 	
 	/*	FBox2D	*/
 	
+	DOTNET_EXPORT E_ST_FVector2D E_OP_FBox2D_oc(E_ST_FBox2D Self, int32 Index)
+	{
+		auto _p0 = Index;
+		return CONV_ST_FVector2D_IN(CONV_ST_FBox2D_TO(Self).operator[](_p0));
+	}
+
 	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(E_ST_FBox2D Self, E_ST_FVector2D Point)
 	{
 		auto _p0 = CONV_ST_FVector2D_TO(Point);
@@ -887,4 +1174,7 @@ extern "C"
 		return CONV_ST_FBox2D_TO(Self).IsInside(_p0);
 	}
 
+	
+	/*	FLevelViewportInfo	*/
+	
 }

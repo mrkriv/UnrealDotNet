@@ -12,7 +12,7 @@ namespace Generator.Metadata
         {
             Console.WriteLine();
 
-            foreach (var cl in Classes)
+            foreach (var cl in Classes.OrderBy(cl => cl.IsImplemented ? 0 : 1))
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write(cl.IsStructure ? "Struct " : "Class ");

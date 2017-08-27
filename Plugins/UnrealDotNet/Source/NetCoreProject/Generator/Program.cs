@@ -59,7 +59,7 @@ namespace Generator
         {
             var code = File.ReadAllText(file);
 
-            var replaceRegex = new Regex(",?[A-Z_]+_API"); // Remove fucking API
+            var replaceRegex = new Regex("(,?[A-Z_]+_API)|(PRAGMA_[A-Z_]+)"); // Remove fucking API
             code = replaceRegex.Replace(code, "");
 
             using (var ms = new MemoryStream(Encoding.ASCII.GetBytes(code)))

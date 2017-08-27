@@ -30,7 +30,7 @@ namespaceName
 
 
 typePreDeclaration
-	: classOrStructOrEnum className ';'
+	: templateDefine? classOrStructOrEnum className ';'
 	| isFriend classOrStructOrEnum? className ';'
 ;
 
@@ -38,7 +38,7 @@ typePreDeclaration
 /* Class */
 
 classDeclaration
-	: templateDefine? classOrStruct className (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
+	: templateDefine? classOrStruct className Final? (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
 ;
 
 classOrStructOrEnum
@@ -91,7 +91,7 @@ comment
 /* Enum */
 
 enumDeclaration
-	: Enum Class? enumName enumParent? '{' enumElementList '}' ';'
+	: Enum Class? enumName enumParent? ('{' enumElementList '}')? ';'
 	| Enum '{' enumElementList '}' ';'
 ;
 
@@ -163,7 +163,7 @@ uMetaParamValue
 /* Method */
 
 constructor
-	: Explicit? Inline? methodName '(' methodParamsList? ')' isConst? (':' constructorInitializerList)?  methodBody? ';'?
+	: (Explicit|Inline)* isDestructor? methodName '(' methodParamsList? ')' isConst? (':' constructorInitializerList)?  (methodBody|isDelete)? ';'?
 ;
 
 constructorInitializerList
@@ -176,10 +176,7 @@ constructorInitializer
 	;
 
 method
-	: templateDefine? (
-		(isFriend? Inline? Extern? isStatic? isVirtual?) |
-		(isFriend? isStatic? Inline? Extern? isVirtual?)
-	) type methodName '(' methodParamsList? ')' isConst? isOverride? Final? methodBody? ';'?
+	: templateDefine? (isFriend|Inline|Extern|isStatic|isVirtual)* type methodName '(' methodParamsList? ')' isConst? isOverride? Final? (methodBody|isDelete)? ';'?
 ;
 
 methodParamsList
@@ -196,11 +193,12 @@ methodParametrName
 ;
 
 methodParametrDefaultValue
-	: value
+	: value (',' value)*
 ;
 
 value
-	: (Identifier|Literal) ((SpecalSymbol|DotDot|'<'|'>'|'|')+ (Identifier|Literal))? ('(' methodParametrDefaultValue ')')?
+	: (isPtrQuant | isRefQuant)? (Identifier|Literal) ((SpecalSymbol|DotDot|'<'|'>'|'|')+ (Identifier|Literal))? 
+		('(' methodParametrDefaultValue ')')?
 ;
 
 methodBody
@@ -219,13 +217,13 @@ methodName
 ;
 
 methodOperator
-	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | Identifier)+
+	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | '[' | ']' | Identifier)+
 ;
 
 /* Property */
 
 property
-	: Extern? isStatic? type propertyName ( ('=' | DotDot) propertyDefaultValue )? ';'
+	: Extern? isStatic? type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
 ;
 
 propertyName
@@ -281,6 +279,22 @@ isFriend
 	: Friend
 ;
 
+isDestructor
+	: Tilda
+;
+
+isDelete
+	: '=' Delete
+;
+
+isArray
+	: '[' arrayLen ']' 
+;
+
+arrayLen
+	: Literal
+;
+
 
 /* Template */
 
@@ -294,7 +308,7 @@ templateParamList
 	;
 
 templateParam
-	: templateParamType templateParamLiter ('=' propertyDefaultValue)?
+	: templateParamType templateParamLiter? ('=' propertyDefaultValue)?
 	;
 
 templateParamType
@@ -417,6 +431,14 @@ BracketsOpen
 
 BracketsClose
 	: '}'
+;
+
+Tilda
+	: '~'
+;
+
+Delete
+	: 'delete'
 ;
 
 GCC_ALIGN

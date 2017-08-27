@@ -350,6 +350,30 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitIsFriend([NotNull] UHeaderParser.IsFriendContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isDestructor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsDestructor([NotNull] UHeaderParser.IsDestructorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isDelete"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsDelete([NotNull] UHeaderParser.IsDeleteContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isArray"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsArray([NotNull] UHeaderParser.IsArrayContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.arrayLen"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArrayLen([NotNull] UHeaderParser.ArrayLenContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateDefine"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

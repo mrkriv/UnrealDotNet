@@ -3,31 +3,27 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	
+	/// <summary>
+	/// Floating point quaternion that can represent a rotation about an axis in 3-D space.
+	/// The X, Y, Z, W components also double as the Axis/Angle format.
+	/// Order matters when composing quaternions: C = A * B will yield a quaternion C that logically
+	/// first applies B then A to any subsequent transformation (right first, then left).
+	/// Note that this is the opposite order of FTransform multiplication.
+	/// Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in local space by DeltaRotation.
+	/// Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in world space by DeltaRotation.
+	/// </summary>
 	public partial struct FQuat
 	{
 		
-		
-		/// <summary>
-		/// The quaternion's X-component.
-		/// </summary>
-		public float X { get; set; }
-		
-		/// <summary>
-		/// The quaternion's Y-component.
-		/// </summary>
-		public float Y { get; set; }
-		
-		/// <summary>
-		/// The quaternion's Z-component.
-		/// </summary>
-		public float Z { get; set; }
-		
-		/// <summary>
-		/// The quaternion's W-component.
-		/// </summary>
-		public float W { get; set; }
-		
 		#region DLLInmport
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FQuat E_OP_FQuat_p(FQuat Self, FQuat Q);
+		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
@@ -41,6 +37,13 @@ namespace UnrealEngine
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
 		private static extern bool E_FQuat_IsIdentity(FQuat Self, float Tolerance);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_OP_FQuat_i(FQuat Self, FQuat Q);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -177,269 +180,225 @@ namespace UnrealEngine
 		
 		#endregion
 		
+		#region Property
+		
+		/// <summary>
+		/// The quaternion's X-component.
+		/// </summary>
+		public float X { get; set; } 
+		
+		/// <summary>
+		/// The quaternion's Y-component.
+		/// </summary>
+		public float Y { get; set; } 
+		
+		/// <summary>
+		/// The quaternion's Z-component.
+		/// </summary>
+		public float Z { get; set; } 
+		
+		/// <summary>
+		/// The quaternion's W-component.
+		/// </summary>
+		public float W { get; set; } 
+		#endregion
+		
 		#region ExternMethods
 		
 		/// <summary>
-		/// 
-		/// Checks whether another Quaternion is equal to this, within specified tolerance.
-		/// 
-		/// @param Q The other Quaternion.
-		/// @param Tolerance Error tolerance for comparison with other Quaternion.
-		/// @return true if two Quaternions are equal, within specified tolerance, otherwise false.
-		/// 
+		/// Gets the result of adding a Quaternion to this.
+		/// This is a component-wise addition; composing quaternions should be done via multiplication.
+		/// @param Q The Quaternion to add.
+		/// @return The result of addition.
+		/// </summary>
+		public static FQuat operator+(FQuat Self, FQuat Q)
+			=> E_OP_FQuat_p(Self, Q);
+		
+		
+		/// <summary>
+		/// Checks whether another Quaternion is equal to this, within specified tolerance.
+		/// @param Q The other Quaternion.
+		/// @param Tolerance Error tolerance for comparison with other Quaternion.
+		/// @return true if two Quaternions are equal, within specified tolerance, otherwise false.
 		/// </summary>
 		public bool Equals(FQuat Q, float Tolerance)
-		{
-			return E_FQuat_Equals(this, Q, Tolerance);
-		}
-
+			=> E_FQuat_Equals(this, Q, Tolerance);
+		
 		
 		/// <summary>
-		/// 
-		/// Checks whether this Quaternion is an Identity Quaternion.
-		/// Assumes Quaternion tested is normalized.
-		/// 
-		/// @param Tolerance Error tolerance for comparison with Identity Quaternion.
-		/// @return true if Quaternion is a normalized Identity Quaternion.
-		/// 
+		/// Checks whether this Quaternion is an Identity Quaternion.
+		/// Assumes Quaternion tested is normalized.
+		/// @param Tolerance Error tolerance for comparison with Identity Quaternion.
+		/// @return true if Quaternion is a normalized Identity Quaternion.
 		/// </summary>
 		public bool IsIdentity(float Tolerance)
-		{
-			return E_FQuat_IsIdentity(this, Tolerance);
-		}
-
+			=> E_FQuat_IsIdentity(this, Tolerance);
+		
 		
 		/// <summary>
-		/// 
-		/// Convert a vector of floating-point Euler angles (in degrees) into a Quaternion.
-		/// 
-		/// @param Euler the Euler angles
-		/// @return constructed FQuat
-		/// 
+		/// Calculates dot product of two quaternions.
+		/// @param Q The other quaternions.
+		/// @return The dot product.
+		/// </summary>
+		public static float operator|(FQuat Self, FQuat Q)
+			=> E_OP_FQuat_i(Self, Q);
+		
+		
+		/// <summary>
+		/// Convert a vector of floating-point Euler angles (in degrees) into a Quaternion.
+		/// @param Euler the Euler angles
+		/// @return constructed FQuat
 		/// </summary>
 		public FQuat MakeFromEuler(FVector Euler)
-		{
-			return E_FQuat_MakeFromEuler(this, Euler);
-		}
-
+			=> E_FQuat_MakeFromEuler(this, Euler);
+		
 		
 		/// <summary>
 		/// Convert a Quaternion into floating-point Euler angles (in degrees).
 		/// </summary>
 		public FVector Euler()
-		{
-			return E_FQuat_Euler(this);
-		}
-
+			=> E_FQuat_Euler(this);
+		
 		
 		/// <summary>
-		/// 
-		/// Normalize this quaternion if it is large enough.
-		/// If it is too small, returns an identity quaternion.
-		/// 
-		/// @param Tolerance Minimum squared length of quaternion for normalization.
-		/// 
+		/// Normalize this quaternion if it is large enough.
+		/// If it is too small, returns an identity quaternion.
+		/// @param Tolerance Minimum squared length of quaternion for normalization.
 		/// </summary>
 		public void Normalize(float Tolerance)
-		{
-			E_FQuat_Normalize(this, Tolerance);
-		}
-
+			=> E_FQuat_Normalize(this, Tolerance);
+		
 		
 		/// <summary>
-		/// 
-		/// Get a normalized copy of this quaternion.
-		/// If it is too small, returns an identity quaternion.
-		/// 
-		/// @param Tolerance Minimum squared length of quaternion for normalization.
-		/// 
+		/// Get a normalized copy of this quaternion.
+		/// If it is too small, returns an identity quaternion.
+		/// @param Tolerance Minimum squared length of quaternion for normalization.
 		/// </summary>
 		public FQuat GetNormalized(float Tolerance)
-		{
-			return E_FQuat_GetNormalized(this, Tolerance);
-		}
-
+			=> E_FQuat_GetNormalized(this, Tolerance);
+		
 		public bool IsNormalized()
-		{
-			return E_FQuat_IsNormalized(this);
-		}
-
+			=> E_FQuat_IsNormalized(this);
+		
 		
 		/// <summary>
-		/// 
-		/// Get the length of this quaternion.
-		/// 
-		/// @return The length of this quaternion.
-		/// 
+		/// Get the length of this quaternion.
+		/// @return The length of this quaternion.
 		/// </summary>
 		public float Size()
-		{
-			return E_FQuat_Size(this);
-		}
-
+			=> E_FQuat_Size(this);
+		
 		
 		/// <summary>
-		/// 
-		/// get the axis and angle of rotation of this quaternion
-		/// 
-		/// @param Axis{out] vector of axis of the quaternion
-		/// @param Angle{out] angle of the quaternion
-		/// @warning : assumes normalized quaternions.
-		/// 
+		/// get the axis and angle of rotation of this quaternion
+		/// @param Axis{out] vector of axis of the quaternion
+		/// @param Angle{out] angle of the quaternion
+		/// @warning : assumes normalized quaternions.
 		/// </summary>
 		public void ToAxisAndAngle(FVector Axis, float Angle)
-		{
-			E_FQuat_ToAxisAndAngle(this, Axis, Angle);
-		}
-
+			=> E_FQuat_ToAxisAndAngle(this, Axis, Angle);
+		
 		
 		/// <summary>
-		/// 
-		/// Get the swing and twist decomposition for a specified axis
-		/// 
-		/// @param InTwistAxis Axis to use for decomposition
-		/// @param OutSwing swing component quaternion
-		/// @param OutTwist Twist component quaternion
-		/// @warning assumes normalised quaternion and twist axis
-		/// 
+		/// Get the swing and twist decomposition for a specified axis
+		/// @param InTwistAxis Axis to use for decomposition
+		/// @param OutSwing swing component quaternion
+		/// @param OutTwist Twist component quaternion
+		/// @warning assumes normalised quaternion and twist axis
 		/// </summary>
 		public void ToSwingTwist(FVector InTwistAxis, FQuat OutSwing, FQuat OutTwist)
-		{
-			E_FQuat_ToSwingTwist(this, InTwistAxis, OutSwing, OutTwist);
-		}
-
+			=> E_FQuat_ToSwingTwist(this, InTwistAxis, OutSwing, OutTwist);
+		
 		
 		/// <summary>
-		/// 
-		/// Rotate a vector by this quaternion.
-		/// 
-		/// @param V the vector to be rotated
-		/// @return vector after rotation
-		/// 
+		/// Rotate a vector by this quaternion.
+		/// @param V the vector to be rotated
+		/// @return vector after rotation
 		/// </summary>
 		public FVector RotateVector(FVector V)
-		{
-			return E_FQuat_RotateVector(this, V);
-		}
-
+			=> E_FQuat_RotateVector(this, V);
+		
 		
 		/// <summary>
-		/// 
-		/// @return quaternion with W=0 and V=theta*v.
-		/// 
+		/// @return quaternion with W=0 and V=theta*v.
 		/// </summary>
 		public FQuat Log()
-		{
-			return E_FQuat_Log(this);
-		}
-
+			=> E_FQuat_Log(this);
+		
 		
 		/// <summary>
-		/// 
-		/// Enforce that the delta between this Quaternion and another one represents
-		/// the shortest possible rotation angle
-		/// 
+		/// Enforce that the delta between this Quaternion and another one represents
+		/// the shortest possible rotation angle
 		/// </summary>
 		public void EnforceShortestArcWith(FQuat OtherQuat)
-		{
-			E_FQuat_EnforceShortestArcWith(this, OtherQuat);
-		}
-
+			=> E_FQuat_EnforceShortestArcWith(this, OtherQuat);
+		
 		
 		/// <summary>
 		/// Get the FRotator representation of this Quaternion.
 		/// </summary>
 		public FRotator Rotator()
-		{
-			return E_FQuat_Rotator(this);
-		}
-
+			=> E_FQuat_Rotator(this);
+		
 		
 		/// <summary>
-		/// 
-		/// Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length.
-		/// 
+		/// Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length.
 		/// </summary>
 		public FQuat FindBetween(FVector Vector1, FVector Vector2)
-		{
-			return E_FQuat_FindBetween(this, Vector1, Vector2);
-		}
-
+			=> E_FQuat_FindBetween(this, Vector1, Vector2);
+		
 		
 		/// <summary>
-		/// 
-		/// Error measure (angle) between two quaternions, ranged [0..1].
-		/// Returns the hypersphere-angle between two quaternions; alignment shouldn't matter, though 
-		/// @note normalized input is expected.
-		/// 
+		/// Error measure (angle) between two quaternions, ranged [0..1].
+		/// Returns the hypersphere-angle between two quaternions; alignment shouldn't matter, though
+		/// @note normalized input is expected.
 		/// </summary>
 		public float Error(FQuat Q1, FQuat Q2)
-		{
-			return E_FQuat_Error(this, Q1, Q2);
-		}
-
+			=> E_FQuat_Error(this, Q1, Q2);
+		
 		
 		/// <summary>
-		/// 
-		/// Fast Linear Quaternion Interpolation.
-		/// Result is NOT normalized.
-		/// 
+		/// Fast Linear Quaternion Interpolation.
+		/// Result is NOT normalized.
 		/// </summary>
 		public FQuat FastLerp(FQuat A, FQuat B, float Alpha)
-		{
-			return E_FQuat_FastLerp(this, A, B, Alpha);
-		}
-
+			=> E_FQuat_FastLerp(this, A, B, Alpha);
+		
 		
 		/// <summary>
-		/// 
-		/// Bi-Linear Quaternion interpolation.
-		/// Result is NOT normalized.
-		/// 
+		/// Bi-Linear Quaternion interpolation.
+		/// Result is NOT normalized.
 		/// </summary>
 		public FQuat FastBilerp(FQuat P00, FQuat P10, FQuat P01, FQuat P11, float FracX, float FracY)
-		{
-			return E_FQuat_FastBilerp(this, P00, P10, P01, P11, FracX, FracY);
-		}
-
+			=> E_FQuat_FastBilerp(this, P00, P10, P01, P11, FracX, FracY);
+		
 		
 		/// <summary>
 		/// Spherical interpolation. Will correct alignment. Result is NOT normalized.
 		/// </summary>
 		public FQuat Slerp_NotNormalized(FQuat Quat1, FQuat Quat2, float Slerp)
-		{
-			return E_FQuat_Slerp_NotNormalized(this, Quat1, Quat2, Slerp);
-		}
-
+			=> E_FQuat_Slerp_NotNormalized(this, Quat1, Quat2, Slerp);
+		
 		
 		/// <summary>
-		/// 
-		/// Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized.
-		/// This will correct alignment by ensuring that the shortest path is taken.
-		/// 
+		/// Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized.
+		/// This will correct alignment by ensuring that the shortest path is taken.
 		/// </summary>
 		public FQuat Squad(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float Alpha)
-		{
-			return E_FQuat_Squad(this, quat1, tang1, quat2, tang2, Alpha);
-		}
-
+			=> E_FQuat_Squad(this, quat1, tang1, quat2, tang2, Alpha);
+		
 		
 		/// <summary>
-		/// 
-		/// Calculate tangents between given points
-		/// 
-		/// @param PrevP quaternion at P-1
-		/// @param P quaternion to return the tangent
-		/// @param NextP quaternion P+1
-		/// @param Tension @todo document
-		/// @param OutTan Out control point
-		/// 
+		/// Calculate tangents between given points
+		/// @param PrevP quaternion at P-1
+		/// @param P quaternion to return the tangent
+		/// @param NextP quaternion P+1
+		/// @param Tension @todo document
+		/// @param OutTan Out control point
 		/// </summary>
 		public void CalcTangents(FQuat PrevP, FQuat P, FQuat NextP, float Tension, FQuat OutTan)
-		{
-			E_FQuat_CalcTangents(this, PrevP, P, NextP, Tension, OutTan);
-		}
-
+			=> E_FQuat_CalcTangents(this, PrevP, P, NextP, Tension, OutTan);
+		
 		#endregion
 		
 	}}

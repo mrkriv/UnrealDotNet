@@ -14,7 +14,7 @@ namespace Generator.Metadata
         public bool IsVirtual { get; set; }
         public bool IsOverride { get; set; }
         public bool IsStatic { get; set; }
-        public bool isFriend { get; set; }
+        public bool IsFriend { get; set; }
         public bool IsTemplate { get; set; }
         public string Operator { get; set; }
         public string Description { get; set; }

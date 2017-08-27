@@ -100,12 +100,12 @@ namespace Generator
 
             var method = new Method(context.methodName().GetText())
             {
-                IsConst = context.isConst() != null,
-                IsStatic = context.isStatic() != null,
-                isFriend = context.isFriend() != null,
-                IsVirtual = context.isVirtual() != null,
-                IsOverride = context.isOverride() != null,
-                IsTemplate = context.templateDefine() != null,
+                IsConst = context.FoundChild<IsConstContext>(),
+                IsStatic = context.FoundChild<IsStaticContext>(),
+                IsFriend = context.FoundChild<IsFriendContext>(),
+                IsVirtual = context.FoundChild<IsVirtualContext>(),
+                IsOverride = context.FoundChild<IsOverrideContext>(),
+                IsTemplate = context.FoundChild<TemplateDefineContext>(),
                 UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
                 Description = CurrentComment,
                 OwnerClass = CurrentClass,
@@ -118,6 +118,31 @@ namespace Generator
 
             if (!CurrentClass.Methods.Any(m => m.Equals(method)))
                 CurrentClass.Methods.Add(method);
+
+            CurrentUMeta = null;
+            CurrentComment = "";
+            return null;
+        }
+
+        public override object VisitConstructor(ConstructorContext context)
+        {
+            if (Ignore || CurrentClass == null)
+                return null;
+
+            var method = new Method(context.methodName().GetText())
+            {
+                IsConst = context.FoundChild<IsConstContext>(),
+                UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
+                Description = CurrentComment,
+                OwnerClass = CurrentClass,
+                Operator = context.methodName().methodOperator()?.GetText(),
+
+                InputTypes = context.FindAll<MethodParametrContext>().Reverse()
+                    .Select(ParceParam).ToList()
+            };
+
+            if (!CurrentClass.Constructors.Any(m => m.Equals(method)))
+                CurrentClass.Constructors.Add(method);
 
             CurrentUMeta = null;
             CurrentComment = "";
@@ -170,9 +195,9 @@ namespace Generator
             else
                 variable = new ClassVariable(GetClass(typeName));
 
-            variable.IsConst = context.isConst().Length != 0;
-            variable.IsPointer = context.isPtrQuant().Length != 0;
-            variable.IsReference = context.isRefQuant().Length != 0;
+            variable.IsConst = context.FoundChild<IsConstContext>();
+            variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
+            variable.IsReference = context.FoundChild<IsRefQuantContext>();
 
             return variable;
         }

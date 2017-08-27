@@ -10,6 +10,7 @@ namespace Generator.Metadata
         public Class BaseClass { get; set; }
         public Class NamespaceBaseClass { get; set; }
         public List<Method> Methods { get; set; }
+        public List<Method> Constructors { get; set; }
         public List<Variable> Property { get; set; }
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
@@ -42,6 +43,7 @@ namespace Generator.Metadata
         {
             Methods = new List<Method>();
             Property = new List<Variable>();
+            Constructors = new List<Method>();
             UMeta = new Dictionary<string, string>();
 
             IsImplemented = false;

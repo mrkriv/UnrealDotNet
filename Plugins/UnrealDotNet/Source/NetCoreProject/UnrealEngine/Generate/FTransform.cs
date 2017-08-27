@@ -3,9 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	
+	/// <summary>
+	/// Transform composed of Scale, Rotation (as a quaternion), and Translation.
+	/// Transforms can be used to convert from one space to another, for example by transforming
+	/// positions and directions from local space to world space.
+	/// Transformation of position vectors is applied in the order:  Scale -> Rotate -> Translate.
+	/// Transformation of direction vectors is applied in the order: Scale -> Rotate.
+	/// Order matters when composing transforms: C = A * B will yield a transform C that logically
+	/// first applies A then B to any subsequent transformation. Note that this is the opposite order of quaternion (FQuat) multiplication.
+	/// Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in local space by DeltaRotation.
+	/// Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in world space by DeltaRotation.
+	/// </summary>
 	public partial struct FTransform
 	{
-		
 		
 		#region DLLInmport
 		#if PACING
@@ -15,14 +26,307 @@ namespace UnrealEngine
 		#endif
 		private static extern void E_FTransform_DiagnosticCheckNaN_Scale3D(FTransform Self);
 		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FTransform E_FTransform_Inverse(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_Blend(FTransform Self, FTransform Atom1, FTransform Atom2, float Alpha);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_BlendWith(FTransform Self, FTransform OtherAtom, float Alpha);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FTransform E_OP_FTransform_p(FTransform Self, FTransform Atom);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FTransform_AnyHasNegativeScale(FTransform Self, FVector InScale3D, FVector InOtherScale3D);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_RemoveScaling(FTransform Self, float Tolerance);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_FTransform_GetMaximumAxisScale(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector4 E_FTransform_TransformFVector4(FTransform Self, FVector4 V);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_FTransform_TransformPosition(FTransform Self, FVector V);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_FTransform_GetSafeScaleReciprocal(FTransform Self, FVector InScale, float Tolerance);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_FTransform_GetLocation(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FRotator E_FTransform_Rotator(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FTransform_ContainsNaN(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FTransform_AreRotationsEqual(FTransform Self, FTransform A, FTransform B, float Tolerance);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FTransform_RotationEquals(FTransform Self, FTransform Other, float Tolerance);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_Multiply(FTransform Self, FTransform OutTransform, FTransform A, FTransform B);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_SetComponents(FTransform Self, FQuat InRotation, FVector InTranslation, FVector InScale3D);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_SetIdentity(FTransform Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_FTransform_AddTranslations(FTransform Self, FTransform A, FTransform B);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_SetTranslationAndScale3D(FTransform Self, FVector NewTranslation, FVector NewScale3D);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_FTransform_BlendFromIdentityAndAccumulate(FTransform Self, FTransform FinalAtom, FTransform SourceAtom, float BlendWeight);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FQuat E_FTransform_GetRotation(FTransform Self);
+		
+		#endregion
+		
+		#region Property
 		#endregion
 		
 		#region ExternMethods
 		public void DiagnosticCheckNaN_Scale3D()
-		{
-			E_FTransform_DiagnosticCheckNaN_Scale3D(this);
-		}
-
+			=> E_FTransform_DiagnosticCheckNaN_Scale3D(this);
+		
+		
+		/// <summary>
+		/// Convert this Transform to inverse.
+		/// </summary>
+		public FTransform Inverse()
+			=> E_FTransform_Inverse(this);
+		
+		
+		/// <summary>
+		/// Set this transform to the weighted blend of the supplied two transforms.
+		/// </summary>
+		public void Blend(FTransform Atom1, FTransform Atom2, float Alpha)
+			=> E_FTransform_Blend(this, Atom1, Atom2, Alpha);
+		
+		
+		/// <summary>
+		/// Set this Transform to the weighted blend of it and the supplied Transform.
+		/// </summary>
+		public void BlendWith(FTransform OtherAtom, float Alpha)
+			=> E_FTransform_BlendWith(this, OtherAtom, Alpha);
+		
+		
+		/// <summary>
+		/// Quaternion addition is wrong here. This is just a special case for linear interpolation.
+		/// Use only within blends!!
+		/// Rotation part is NOT normalized!!
+		/// </summary>
+		public static FTransform operator+(FTransform Self, FTransform Atom)
+			=> E_OP_FTransform_p(Self, Atom);
+		
+		public bool AnyHasNegativeScale(FVector InScale3D, FVector InOtherScale3D)
+			=> E_FTransform_AnyHasNegativeScale(this, InScale3D, InOtherScale3D);
+		
+		public void RemoveScaling(float Tolerance)
+			=> E_FTransform_RemoveScaling(this, Tolerance);
+		
+		public float GetMaximumAxisScale()
+			=> E_FTransform_GetMaximumAxisScale(this);
+		
+		public FVector4 TransformFVector4(FVector4 V)
+			=> E_FTransform_TransformFVector4(this, V);
+		
+		public FVector TransformPosition(FVector V)
+			=> E_FTransform_TransformPosition(this, V);
+		
+		public FVector GetSafeScaleReciprocal(FVector InScale, float Tolerance)
+			=> E_FTransform_GetSafeScaleReciprocal(this, InScale, Tolerance);
+		
+		public FVector GetLocation()
+			=> E_FTransform_GetLocation(this);
+		
+		public FRotator Rotator()
+			=> E_FTransform_Rotator(this);
+		
+		
+		/// <summary>
+		/// Checks the components for non-finite values (NaN or Inf).
+		/// @return Returns true if any component (rotation, translation, or scale) is not finite.
+		/// </summary>
+		public bool ContainsNaN()
+			=> E_FTransform_ContainsNaN(this);
+		
+		public bool AreRotationsEqual(FTransform A, FTransform B, float Tolerance)
+			=> E_FTransform_AreRotationsEqual(this, A, B, Tolerance);
+		
+		public bool RotationEquals(FTransform Other, float Tolerance)
+			=> E_FTransform_RotationEquals(this, Other, Tolerance);
+		
+		
+		/// <summary>
+		/// Create a new transform: OutTransform = A * B.
+		/// Order matters when composing transforms : A * B will yield a transform that logically first applies A then B to any subsequent transformation.
+		/// @param  OutTransform pointer to transform that will store the result of A * B.
+		/// @param  A Transform A.
+		/// @param  B Transform B.
+		/// </summary>
+		public void Multiply(FTransform OutTransform, FTransform A, FTransform B)
+			=> E_FTransform_Multiply(this, OutTransform, A, B);
+		
+		
+		/// <summary>
+		/// Sets the components
+		/// @param InRotation The new value for the Rotation component
+		/// @param InTranslation The new value for the Translation component
+		/// @param InScale3D The new value for the Scale3D component
+		/// </summary>
+		public void SetComponents(FQuat InRotation, FVector InTranslation, FVector InScale3D)
+			=> E_FTransform_SetComponents(this, InRotation, InTranslation, InScale3D);
+		
+		
+		/// <summary>
+		/// Sets the components to the identity transform:
+		/// Rotation = (0,0,0,1)
+		/// Translation = (0,0,0)
+		/// Scale3D = (1,1,1)
+		/// </summary>
+		public void SetIdentity()
+			=> E_FTransform_SetIdentity(this);
+		
+		
+		/// <summary>
+		/// Add the translations from two FTransforms and return the result.
+		/// @return A.Translation + B.Translation
+		/// </summary>
+		public FVector AddTranslations(FTransform A, FTransform B)
+			=> E_FTransform_AddTranslations(this, A, B);
+		
+		
+		/// <summary>
+		/// Sets both the translation and Scale3D components at the same time
+		/// @param NewTranslation The new value for the translation component
+		/// @param NewScale3D The new value for the Scale3D component
+		/// </summary>
+		public void SetTranslationAndScale3D(FVector NewTranslation, FVector NewScale3D)
+			=> E_FTransform_SetTranslationAndScale3D(this, NewTranslation, NewScale3D);
+		
+		
+		/// <summary>
+		/// Blends the Identity transform with a weighted source transform and accumulates that into a destination transform
+		/// SourceAtom = Blend(Identity, SourceAtom, BlendWeight)
+		/// FinalAtom.Rotation = SourceAtom.Rotation * FinalAtom.Rotation
+		/// FinalAtom.Translation += SourceAtom.Translation
+		/// FinalAtom.Scale3D *= SourceAtom.Scale3D
+		/// @param FinalAtom [in/out] The atom to accumulate the blended source atom into
+		/// @param SourceAtom The target transformation (used when BlendWeight = 1); this is modified during the process
+		/// @param BlendWeight The blend weight between Identity and SourceAtom
+		/// </summary>
+		public void BlendFromIdentityAndAccumulate(FTransform FinalAtom, FTransform SourceAtom, float BlendWeight)
+			=> E_FTransform_BlendFromIdentityAndAccumulate(this, FinalAtom, SourceAtom, BlendWeight);
+		
+		
+		/// <summary>
+		/// Returns the rotation component
+		/// @return The rotation component
+		/// </summary>
+		public FQuat GetRotation()
+			=> E_FTransform_GetRotation(this);
+		
 		#endregion
 		
 	}}

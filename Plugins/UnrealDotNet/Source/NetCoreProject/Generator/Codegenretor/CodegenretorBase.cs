@@ -41,15 +41,16 @@ namespace Generator
             return !m.IsTemplate &&
                    m.Dependent.All(c => c.IsImplemented && c.NamespaceBaseClass == null) &&
                    m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
+                   m.Operator?.Contains("=") != true && // TODO: поддержка операторов с присвоением
+                   (m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
                    !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
                    !m.IsOverride &&
-                   m.Operator == null && // TODO: экспортировать операторы
-                   !m.isFriend;
+                   !m.IsFriend;
         }
 
         private static bool DefaultPropertyFilter(Variable m)
         {
-            return (m as ClassVariable)?.ClassType.IsImplemented != false &&
+            return (!(m is ClassVariable) || DefaultClassFilter(((ClassVariable)m).ClassType)) &&
                    !m.IsConst; // TODO: константные поля
         }
 
@@ -60,7 +61,22 @@ namespace Generator
                 return ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
             }
 
-            return ExportOperatorPrefix + method.OwnerClass.Name + "_" + method.Name;
+            return ExportOperatorPrefix + method.OwnerClass.Name + "_" + GetOperatorName(method);
+        }
+
+        private static string GetOperatorName(Method method)
+        {
+            return method.Operator
+                .Replace('=', 'e')
+                .Replace('!', 'n')
+                .Replace('+', 'p')
+                .Replace('-', 'm')
+                .Replace('/', 'd')
+                .Replace('*', 'm')
+                .Replace('|', 'i')
+                .Replace('^', 'u')
+                .Replace('[', 'o')
+                .Replace(']', 'c');
         }
     }
 }
