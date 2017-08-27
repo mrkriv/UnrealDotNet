@@ -30,13 +30,6 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FWorldContext_AddRef(FWorldContext Self, UWorld WorldPtr);
-		
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
 		private static extern void E_FWorldContext_SetCurrentWorld(FWorldContext Self, UWorld World);
 		
 		#if PACING
@@ -64,13 +57,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// Adds an external reference
-		/// </summary>
-		public void AddRef(UWorld WorldPtr)
-			=> E_FWorldContext_AddRef(this, WorldPtr);
-		
 		
 		/// <summary>
 		/// Set CurrentWorld and update external reference pointers to reflect this

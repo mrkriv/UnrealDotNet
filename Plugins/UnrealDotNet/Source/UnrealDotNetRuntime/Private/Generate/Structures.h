@@ -9,6 +9,7 @@
 #include "Engine.h"
 #include "Engine.h"
 #include "Engine.h"
+#include "Engine.h"
 #include "Math/Quat.h"
 #include "Math/Rotator.h"
 #include "Engine.h"
@@ -18,13 +19,11 @@
 #include "Math/Vector.h"
 #include "Math/Vector2D.h"
 #include "Math/Vector4.h"
-#include "Engine/World.h"
 #include "Engine.h"
 #include "Math/Box.h"
 #include "Math/Box2D.h"
 #include "Engine.h"
 #include "Engine/World.h"
-#include "Engine.h"
 #include "Engine.h"
 
 
@@ -164,6 +163,29 @@ FORCEINLINE E_ST_FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_IN(FLevelSt
 FORCEINLINE FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_TO(E_ST_FLevelStreamingStatus In)
 {
 	FLevelStreamingStatus var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FNamedNetDriver, *E_ST_FNamedNetDriver_REF;
+}
+
+FORCEINLINE E_ST_FNamedNetDriver CONV_ST_FNamedNetDriver_IN(FNamedNetDriver In)
+{
+	E_ST_FNamedNetDriver var;
+	
+	return var;
+}
+
+FORCEINLINE FNamedNetDriver CONV_ST_FNamedNetDriver_TO(E_ST_FNamedNetDriver In)
+{
+	FNamedNetDriver var;
 	
 	return var;
 }
@@ -477,32 +499,6 @@ extern "C"
 {
 	typedef struct
 	{
-		int32 CurrentFrame;
-	}
-E_ST_FWorldAsyncTraceState, *E_ST_FWorldAsyncTraceState_REF;
-}
-
-FORCEINLINE E_ST_FWorldAsyncTraceState CONV_ST_FWorldAsyncTraceState_IN(FWorldAsyncTraceState In)
-{
-	E_ST_FWorldAsyncTraceState var;
-	var.CurrentFrame = In.CurrentFrame;
-	
-	return var;
-}
-
-FORCEINLINE FWorldAsyncTraceState CONV_ST_FWorldAsyncTraceState_TO(E_ST_FWorldAsyncTraceState In)
-{
-	FWorldAsyncTraceState var;
-	var.CurrentFrame = In.CurrentFrame;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
 		uint8 TravelType;
 		int32 PIEInstance;
 		bool RunAsDedicated;
@@ -666,32 +662,6 @@ extern "C"
 {
 	typedef struct
 	{
-		FNetDriverDefinition NetDriverDef;
-	}
-E_ST_FNamedNetDriver, *E_ST_FNamedNetDriver_REF;
-}
-
-FORCEINLINE E_ST_FNamedNetDriver CONV_ST_FNamedNetDriver_IN(FNamedNetDriver In)
-{
-	E_ST_FNamedNetDriver var;
-	var.NetDriverDef = In.NetDriverDef;
-	
-	return var;
-}
-
-FORCEINLINE FNamedNetDriver CONV_ST_FNamedNetDriver_TO(E_ST_FNamedNetDriver In)
-{
-	FNamedNetDriver var;
-	var.NetDriverDef = In.NetDriverDef;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
 		float TimeToDisplay;
 		float CurrentTimeDisplayed;
 		FVector2D TextScale;
@@ -760,6 +730,9 @@ extern "C"
 
 	
 	/*	FLevelStreamingStatus	*/
+	
+	
+	/*	FNamedNetDriver	*/
 	
 	
 	/*	FNetDriverDefinition	*/
@@ -1489,17 +1462,8 @@ extern "C"
 	}
 
 	
-	/*	FWorldAsyncTraceState	*/
-	
-	
 	/*	FWorldContext	*/
 	
-	DOTNET_EXPORT void E_FWorldContext_AddRef(E_ST_FWorldContext Self, UWorld& WorldPtr)
-	{
-		auto _p0 = WorldPtr;
-		CONV_ST_FWorldContext_TO(Self).AddRef(_p0);
-	}
-
 	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(E_ST_FWorldContext Self, UWorld* World)
 	{
 		auto _p0 = World;
@@ -1633,9 +1597,6 @@ extern "C"
 	
 	
 	/*	FLevelViewportInfo	*/
-	
-	
-	/*	FNamedNetDriver	*/
 	
 	
 	/*	FScreenMessageString	*/

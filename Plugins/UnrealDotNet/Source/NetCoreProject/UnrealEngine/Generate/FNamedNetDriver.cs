@@ -15,11 +15,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		
-		/// <summary>
-		/// Definition associated with this net driver
-		/// </summary>
-		public FNetDriverDefinition NetDriverDef { get; set; } 
 		#endregion
 		
 		#region ExternMethods

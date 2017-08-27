@@ -53,13 +53,6 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_AActor_OnSubobjectCreatedFromReplication(IntPtr Self, UObject NewSubobject);
-		
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
 		private static extern bool E_AActor_AllowReceiveTickEventOnDedicatedServer(IntPtr Self);
 		
 		#if PACING
@@ -420,13 +413,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void CopyRemoteRoleFrom(AActor CopyFromActor)
 			=> E_AActor_CopyRemoteRoleFrom(NativePointer, CopyFromActor);
-		
-		
-		/// <summary>
-		/// Called on the actor when a new subobject is dynamically created via replication
-		/// </summary>
-		public void OnSubobjectCreatedFromReplication(UObject NewSubobject)
-			=> E_AActor_OnSubobjectCreatedFromReplication(NativePointer, NewSubobject);
 		
 		
 		/// <summary>

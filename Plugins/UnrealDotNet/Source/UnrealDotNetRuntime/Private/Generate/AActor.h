@@ -30,12 +30,6 @@ extern "C"
 		((AActor*)Self)->CopyRemoteRoleFrom(_p0);
 	}
 
-	DOTNET_EXPORT void E_AActor_OnSubobjectCreatedFromReplication(INT_PTR Self, UObject* NewSubobject)
-	{
-		auto _p0 = NewSubobject;
-		((AActor*)Self)->OnSubobjectCreatedFromReplication(_p0);
-	}
-
 	DOTNET_EXPORT bool E_AActor_AllowReceiveTickEventOnDedicatedServer(INT_PTR Self)
 	{
 		return ((AActor*)Self)->AllowReceiveTickEventOnDedicatedServer();
