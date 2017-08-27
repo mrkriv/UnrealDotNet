@@ -2,7 +2,6 @@
 #pragma warning(disable:4996)
 
 #include "AActor.h"
-#include "FSeamlessTravelHandler.h"
 #include "UEngine.h"
 #include "UWorld.h"
 #include "UWorldProxy.h"

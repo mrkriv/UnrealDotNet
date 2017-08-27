@@ -171,13 +171,6 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_BlendFromIdentityAndAccumulate(FTransform Self, FTransform FinalAtom, FTransform SourceAtom, float BlendWeight);
-		
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
 		private static extern FQuat E_FTransform_GetRotation(FTransform Self);
 		
 		#endregion
@@ -245,8 +238,8 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// Checks the components for non-finite values (NaN or Inf).
-		/// @return Returns true if any component (rotation, translation, or scale) is not finite.
+		/// Checks the components for NaN's
+		/// @return Returns true if any component (rotation, translation, or scale) is a NAN
 		/// </summary>
 		public bool ContainsNaN()
 			=> E_FTransform_ContainsNaN(this);
@@ -257,14 +250,6 @@ namespace UnrealEngine
 		public bool RotationEquals(FTransform Other, float Tolerance)
 			=> E_FTransform_RotationEquals(this, Other, Tolerance);
 		
-		
-		/// <summary>
-		/// Create a new transform: OutTransform = A * B.
-		/// Order matters when composing transforms : A * B will yield a transform that logically first applies A then B to any subsequent transformation.
-		/// @param  OutTransform pointer to transform that will store the result of A * B.
-		/// @param  A Transform A.
-		/// @param  B Transform B.
-		/// </summary>
 		public void Multiply(FTransform OutTransform, FTransform A, FTransform B)
 			=> E_FTransform_Multiply(this, OutTransform, A, B);
 		
@@ -304,20 +289,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTranslationAndScale3D(FVector NewTranslation, FVector NewScale3D)
 			=> E_FTransform_SetTranslationAndScale3D(this, NewTranslation, NewScale3D);
-		
-		
-		/// <summary>
-		/// Blends the Identity transform with a weighted source transform and accumulates that into a destination transform
-		/// SourceAtom = Blend(Identity, SourceAtom, BlendWeight)
-		/// FinalAtom.Rotation = SourceAtom.Rotation * FinalAtom.Rotation
-		/// FinalAtom.Translation += SourceAtom.Translation
-		/// FinalAtom.Scale3D *= SourceAtom.Scale3D
-		/// @param FinalAtom [in/out] The atom to accumulate the blended source atom into
-		/// @param SourceAtom The target transformation (used when BlendWeight = 1); this is modified during the process
-		/// @param BlendWeight The blend weight between Identity and SourceAtom
-		/// </summary>
-		public void BlendFromIdentityAndAccumulate(FTransform FinalAtom, FTransform SourceAtom, float BlendWeight)
-			=> E_FTransform_BlendFromIdentityAndAccumulate(this, FinalAtom, SourceAtom, BlendWeight);
 		
 		
 		/// <summary>

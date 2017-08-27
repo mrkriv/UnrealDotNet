@@ -13,17 +13,15 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                var Classes = domain.Classes.Where(DefaultClassFilter);
-
                 Directory.GetFiles(OutputDir, "*.h").ToList().ForEach(File.Delete);
 
-                foreach (var cl in Classes.Where(c => !c.IsStructure))
+                foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
                     GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
                 }
 
-                GenerateStructs(Classes.Where(c => c.IsStructure), Path.Combine(OutputDir, "Structures"));
-                GenerateCPPIndex(Classes.Where(c => !c.IsStructure), Path.Combine(OutputDir, "Index"));
+                GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(OutputDir, "Structures"));
+                GenerateCPPIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(OutputDir, "Index"));
             }
 
             #region Class
@@ -31,8 +29,6 @@ namespace Generator
             private static void GenerateClass(Class Class, string OutputPath)
             {
                 var cw = new CoreWriter();
-
-                var methods = Class.Methods.Where(DefaultMethodFilter);
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
@@ -49,7 +45,7 @@ namespace Generator
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
-                foreach (var method in methods)
+                foreach (var method in Class.Methods)
                 {
                     GenerateMethod(cw, Class, method);
                 }
@@ -82,7 +78,13 @@ namespace Generator
                     $"{CPP_API} {ExportVariableCPP(method.ReturnType)} {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
-                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
+                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
+                {
+                    if (method.InputTypes[i].NeedRefOperator())
+                        return "&_p" + i;
+                    return "_p" + i;
+                }));
+
                 for (var i = 0; i < method.InputTypes.Count; i++)
                 {
                     var m = method.InputTypes[i];
@@ -193,7 +195,7 @@ namespace Generator
                     cw.WriteLine($"/*\t{Class.Name}\t*/");
                     cw.WriteLine();
 
-                    foreach (var method in Class.Methods.Where(DefaultMethodFilter))
+                    foreach (var method in Class.Methods)
                     {
                         GenerateMethod(cw, Class, method);
                     }

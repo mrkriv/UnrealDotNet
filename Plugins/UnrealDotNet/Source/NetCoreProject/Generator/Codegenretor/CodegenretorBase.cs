@@ -27,33 +27,6 @@ namespace Generator
             CPP.GenarateDomain(domain, outputCPP);
         }
 
-        private static bool DefaultClassFilter(Class cl)
-        {
-            return cl.IsImplemented &&
-                   !cl.IsTemplate && // TODO: поддержка шаблоннх классов
-                   cl.BaseClass?.IsImplemented != false &&
-                   cl.NamespaceBaseClass == null && // TODO: поддержка вложенных классов
-                   cl.Methods.Count + cl.Property.Count != 0;
-        }
-
-        private static bool DefaultMethodFilter(Method m)
-        {
-            return !m.IsTemplate &&
-                   m.Dependent.All(c => c.IsImplemented && c.NamespaceBaseClass == null) &&
-                   m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
-                   m.Operator?.Contains("=") != true && // TODO: поддержка операторов с присвоением
-                   (m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
-                   !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
-                   !m.IsOverride &&
-                   !m.IsFriend;
-        }
-
-        private static bool DefaultPropertyFilter(Variable m)
-        {
-            return (!(m is ClassVariable) || DefaultClassFilter(((ClassVariable)m).ClassType)) &&
-                   !m.IsConst; // TODO: константные поля
-        }
-
         private static string GetCPPMethodName(Method method)
         {
             if (method.Operator == null)

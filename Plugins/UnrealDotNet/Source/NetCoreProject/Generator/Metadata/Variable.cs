@@ -45,6 +45,11 @@ namespace Generator.Metadata
             return result;
         }
 
+        public virtual bool NeedRefOperator()
+        {
+            return IsPointer;
+        }
+
         public bool Equals(Variable other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -145,6 +150,19 @@ namespace Generator.Metadata
             }
         }
 
+        public override bool NeedRefOperator()
+        {
+            switch (Type)
+            {
+                case "FString":
+                case "TCHAR":
+                    return false;
+
+                default:
+                    return IsPointer;
+            }
+        }
+
         public override string ToString()
         {
             var b = base.ToString();
@@ -171,6 +189,11 @@ namespace Generator.Metadata
                 return ClassType.Name + "*";
 
             return ClassType.Name;
+        }
+
+        public override bool NeedRefOperator()
+        {
+            return ClassType.IsStructure && IsPointer;
         }
 
         public override string ToString()

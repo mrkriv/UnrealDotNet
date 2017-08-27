@@ -1,16 +1,103 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "World.h"
+#include "Engine.h"
+#include "Engine.h"
+#include "Engine.h"
+#include "Engine/World.h"
+#include "Engine/World.h"
+#include "Engine.h"
+#include "Engine.h"
+#include "Engine.h"
 #include "Math/Quat.h"
 #include "Math/Rotator.h"
-#include "Math/TransformNonVectorized.h"
+#include "Engine.h"
+#include "Engine.h"
+#include "Engine.h"
+#include "Math/TransformVectorized.h"
 #include "Math/Vector.h"
 #include "Math/Vector2D.h"
 #include "Math/Vector4.h"
+#include "Engine/World.h"
+#include "Engine.h"
 #include "Math/Box.h"
 #include "Math/Box2D.h"
-#include "World.h"
+#include "Engine.h"
+#include "Engine/World.h"
+#include "Engine.h"
+#include "Engine.h"
+
+
+extern "C"
+{
+	typedef struct
+	{
+		bool InstanceOnly;
+	}
+E_ST_FClassRedirect, *E_ST_FClassRedirect_REF;
+}
+
+FORCEINLINE E_ST_FClassRedirect CONV_ST_FClassRedirect_IN(FClassRedirect In)
+{
+	E_ST_FClassRedirect var;
+	var.InstanceOnly = In.InstanceOnly;
+	
+	return var;
+}
+
+FORCEINLINE FClassRedirect CONV_ST_FClassRedirect_TO(E_ST_FClassRedirect In)
+{
+	FClassRedirect var;
+	var.InstanceOnly = In.InstanceOnly;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FFullyLoadedPackagesInfo, *E_ST_FFullyLoadedPackagesInfo_REF;
+}
+
+FORCEINLINE E_ST_FFullyLoadedPackagesInfo CONV_ST_FFullyLoadedPackagesInfo_IN(FFullyLoadedPackagesInfo In)
+{
+	E_ST_FFullyLoadedPackagesInfo var;
+	
+	return var;
+}
+
+FORCEINLINE FFullyLoadedPackagesInfo CONV_ST_FFullyLoadedPackagesInfo_TO(E_ST_FFullyLoadedPackagesInfo In)
+{
+	FFullyLoadedPackagesInfo var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FGameNameRedirect, *E_ST_FGameNameRedirect_REF;
+}
+
+FORCEINLINE E_ST_FGameNameRedirect CONV_ST_FGameNameRedirect_IN(FGameNameRedirect In)
+{
+	E_ST_FGameNameRedirect var;
+	
+	return var;
+}
+
+FORCEINLINE FGameNameRedirect CONV_ST_FGameNameRedirect_TO(E_ST_FGameNameRedirect In)
+{
+	FGameNameRedirect var;
+	
+	return var;
+}
 
 
 extern "C"
@@ -31,6 +118,98 @@ FORCEINLINE E_ST_FLevelCollection CONV_ST_FLevelCollection_IN(FLevelCollection I
 FORCEINLINE FLevelCollection CONV_ST_FLevelCollection_TO(E_ST_FLevelCollection In)
 {
 	FLevelCollection var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FLevelStreamingGCHelper, *E_ST_FLevelStreamingGCHelper_REF;
+}
+
+FORCEINLINE E_ST_FLevelStreamingGCHelper CONV_ST_FLevelStreamingGCHelper_IN(FLevelStreamingGCHelper In)
+{
+	E_ST_FLevelStreamingGCHelper var;
+	
+	return var;
+}
+
+FORCEINLINE FLevelStreamingGCHelper CONV_ST_FLevelStreamingGCHelper_TO(E_ST_FLevelStreamingGCHelper In)
+{
+	FLevelStreamingGCHelper var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FLevelStreamingStatus, *E_ST_FLevelStreamingStatus_REF;
+}
+
+FORCEINLINE E_ST_FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_IN(FLevelStreamingStatus In)
+{
+	E_ST_FLevelStreamingStatus var;
+	
+	return var;
+}
+
+FORCEINLINE FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_TO(E_ST_FLevelStreamingStatus In)
+{
+	FLevelStreamingStatus var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FNetDriverDefinition, *E_ST_FNetDriverDefinition_REF;
+}
+
+FORCEINLINE E_ST_FNetDriverDefinition CONV_ST_FNetDriverDefinition_IN(FNetDriverDefinition In)
+{
+	E_ST_FNetDriverDefinition var;
+	
+	return var;
+}
+
+FORCEINLINE FNetDriverDefinition CONV_ST_FNetDriverDefinition_TO(E_ST_FNetDriverDefinition In)
+{
+	FNetDriverDefinition var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FPluginRedirect, *E_ST_FPluginRedirect_REF;
+}
+
+FORCEINLINE E_ST_FPluginRedirect CONV_ST_FPluginRedirect_IN(FPluginRedirect In)
+{
+	E_ST_FPluginRedirect var;
+	
+	return var;
+}
+
+FORCEINLINE FPluginRedirect CONV_ST_FPluginRedirect_TO(E_ST_FPluginRedirect In)
+{
+	FPluginRedirect var;
 	
 	return var;
 }
@@ -98,6 +277,78 @@ FORCEINLINE FRotator CONV_ST_FRotator_TO(E_ST_FRotator In)
 	var.Pitch = In.Pitch;
 	var.Yaw = In.Yaw;
 	var.Roll = In.Roll;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+		float In;
+	}
+E_ST_FStatColorMapEntry, *E_ST_FStatColorMapEntry_REF;
+}
+
+FORCEINLINE E_ST_FStatColorMapEntry CONV_ST_FStatColorMapEntry_IN(FStatColorMapEntry In)
+{
+	E_ST_FStatColorMapEntry var;
+	var.In = In.In;
+	
+	return var;
+}
+
+FORCEINLINE FStatColorMapEntry CONV_ST_FStatColorMapEntry_TO(E_ST_FStatColorMapEntry In)
+{
+	FStatColorMapEntry var;
+	var.In = In.In;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FStatColorMapping, *E_ST_FStatColorMapping_REF;
+}
+
+FORCEINLINE E_ST_FStatColorMapping CONV_ST_FStatColorMapping_IN(FStatColorMapping In)
+{
+	E_ST_FStatColorMapping var;
+	
+	return var;
+}
+
+FORCEINLINE FStatColorMapping CONV_ST_FStatColorMapping_TO(E_ST_FStatColorMapping In)
+{
+	FStatColorMapping var;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+	}
+E_ST_FStructRedirect, *E_ST_FStructRedirect_REF;
+}
+
+FORCEINLINE E_ST_FStructRedirect CONV_ST_FStructRedirect_IN(FStructRedirect In)
+{
+	E_ST_FStructRedirect var;
+	
+	return var;
+}
+
+FORCEINLINE FStructRedirect CONV_ST_FStructRedirect_TO(E_ST_FStructRedirect In)
+{
+	FStructRedirect var;
 	
 	return var;
 }
@@ -226,6 +477,67 @@ extern "C"
 {
 	typedef struct
 	{
+		int32 CurrentFrame;
+	}
+E_ST_FWorldAsyncTraceState, *E_ST_FWorldAsyncTraceState_REF;
+}
+
+FORCEINLINE E_ST_FWorldAsyncTraceState CONV_ST_FWorldAsyncTraceState_IN(FWorldAsyncTraceState In)
+{
+	E_ST_FWorldAsyncTraceState var;
+	var.CurrentFrame = In.CurrentFrame;
+	
+	return var;
+}
+
+FORCEINLINE FWorldAsyncTraceState CONV_ST_FWorldAsyncTraceState_TO(E_ST_FWorldAsyncTraceState In)
+{
+	FWorldAsyncTraceState var;
+	var.CurrentFrame = In.CurrentFrame;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+		uint8 TravelType;
+		int32 PIEInstance;
+		bool RunAsDedicated;
+		bool bWaitingOnOnlineSubsystem;
+	}
+E_ST_FWorldContext, *E_ST_FWorldContext_REF;
+}
+
+FORCEINLINE E_ST_FWorldContext CONV_ST_FWorldContext_IN(FWorldContext In)
+{
+	E_ST_FWorldContext var;
+	var.TravelType = In.TravelType;
+	var.PIEInstance = In.PIEInstance;
+	var.RunAsDedicated = In.RunAsDedicated;
+	var.bWaitingOnOnlineSubsystem = In.bWaitingOnOnlineSubsystem;
+	
+	return var;
+}
+
+FORCEINLINE FWorldContext CONV_ST_FWorldContext_TO(E_ST_FWorldContext In)
+{
+	FWorldContext var;
+	var.TravelType = In.TravelType;
+	var.PIEInstance = In.PIEInstance;
+	var.RunAsDedicated = In.RunAsDedicated;
+	var.bWaitingOnOnlineSubsystem = In.bWaitingOnOnlineSubsystem;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
 		FVector Min;
 		FVector Max;
 		uint8 IsValid;
@@ -290,6 +602,35 @@ extern "C"
 {
 	typedef struct
 	{
+		FVector Location;
+		FRotator Rotation;
+	}
+E_ST_FDropNoteInfo, *E_ST_FDropNoteInfo_REF;
+}
+
+FORCEINLINE E_ST_FDropNoteInfo CONV_ST_FDropNoteInfo_IN(FDropNoteInfo In)
+{
+	E_ST_FDropNoteInfo var;
+	var.Location = In.Location;
+	var.Rotation = In.Rotation;
+	
+	return var;
+}
+
+FORCEINLINE FDropNoteInfo CONV_ST_FDropNoteInfo_TO(E_ST_FDropNoteInfo In)
+{
+	FDropNoteInfo var;
+	var.Location = In.Location;
+	var.Rotation = In.Rotation;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
 		FVector CamPosition;
 		FRotator CamRotation;
 		float CamOrthoZoom;
@@ -323,6 +664,73 @@ FORCEINLINE FLevelViewportInfo CONV_ST_FLevelViewportInfo_TO(E_ST_FLevelViewport
 
 extern "C"
 {
+	typedef struct
+	{
+		FNetDriverDefinition NetDriverDef;
+	}
+E_ST_FNamedNetDriver, *E_ST_FNamedNetDriver_REF;
+}
+
+FORCEINLINE E_ST_FNamedNetDriver CONV_ST_FNamedNetDriver_IN(FNamedNetDriver In)
+{
+	E_ST_FNamedNetDriver var;
+	var.NetDriverDef = In.NetDriverDef;
+	
+	return var;
+}
+
+FORCEINLINE FNamedNetDriver CONV_ST_FNamedNetDriver_TO(E_ST_FNamedNetDriver In)
+{
+	FNamedNetDriver var;
+	var.NetDriverDef = In.NetDriverDef;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	typedef struct
+	{
+		float TimeToDisplay;
+		float CurrentTimeDisplayed;
+		FVector2D TextScale;
+	}
+E_ST_FScreenMessageString, *E_ST_FScreenMessageString_REF;
+}
+
+FORCEINLINE E_ST_FScreenMessageString CONV_ST_FScreenMessageString_IN(FScreenMessageString In)
+{
+	E_ST_FScreenMessageString var;
+	var.TimeToDisplay = In.TimeToDisplay;
+	var.CurrentTimeDisplayed = In.CurrentTimeDisplayed;
+	var.TextScale = In.TextScale;
+	
+	return var;
+}
+
+FORCEINLINE FScreenMessageString CONV_ST_FScreenMessageString_TO(E_ST_FScreenMessageString In)
+{
+	FScreenMessageString var;
+	var.TimeToDisplay = In.TimeToDisplay;
+	var.CurrentTimeDisplayed = In.CurrentTimeDisplayed;
+	var.TextScale = In.TextScale;
+	
+	return var;
+}
+
+
+extern "C"
+{
+	
+	/*	FClassRedirect	*/
+	
+	
+	/*	FFullyLoadedPackagesInfo	*/
+	
+	
+	/*	FGameNameRedirect	*/
+	
 	
 	/*	FLevelCollection	*/
 	
@@ -337,6 +745,28 @@ extern "C"
 		CONV_ST_FLevelCollection_TO(Self).SetIsVisible(_p0);
 	}
 
+	
+	/*	FLevelStreamingGCHelper	*/
+	
+	DOTNET_EXPORT void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(E_ST_FLevelStreamingGCHelper Self)
+	{
+		CONV_ST_FLevelStreamingGCHelper_TO(Self).AddGarbageCollectorCallback();
+	}
+
+	DOTNET_EXPORT int32 E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(E_ST_FLevelStreamingGCHelper Self)
+	{
+		return CONV_ST_FLevelStreamingGCHelper_TO(Self).GetNumLevelsPendingPurge();
+	}
+
+	
+	/*	FLevelStreamingStatus	*/
+	
+	
+	/*	FNetDriverDefinition	*/
+	
+	
+	/*	FPluginRedirect	*/
+	
 	
 	/*	FQuat	*/
 	
@@ -584,6 +1014,15 @@ extern "C"
 	}
 
 	
+	/*	FStatColorMapEntry	*/
+	
+	
+	/*	FStatColorMapping	*/
+	
+	
+	/*	FStructRedirect	*/
+	
+	
 	/*	FTransform	*/
 	
 	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Scale3D(E_ST_FTransform Self)
@@ -689,7 +1128,7 @@ extern "C"
 		auto _p0 = CONV_ST_FTransform_TO(OutTransform);
 		auto _p1 = CONV_ST_FTransform_TO(A);
 		auto _p2 = CONV_ST_FTransform_TO(B);
-		CONV_ST_FTransform_TO(Self).Multiply(_p0, _p1, _p2);
+		CONV_ST_FTransform_TO(Self).Multiply(&_p0, &_p1, &_p2);
 	}
 
 	DOTNET_EXPORT void E_FTransform_SetComponents(E_ST_FTransform Self, E_ST_FQuat InRotation, E_ST_FVector InTranslation, E_ST_FVector InScale3D)
@@ -717,14 +1156,6 @@ extern "C"
 		auto _p0 = CONV_ST_FVector_TO(NewTranslation);
 		auto _p1 = CONV_ST_FVector_TO(NewScale3D);
 		CONV_ST_FTransform_TO(Self).SetTranslationAndScale3D(_p0, _p1);
-	}
-
-	DOTNET_EXPORT void E_FTransform_BlendFromIdentityAndAccumulate(E_ST_FTransform Self, E_ST_FTransform FinalAtom, E_ST_FTransform SourceAtom, float BlendWeight)
-	{
-		auto _p0 = CONV_ST_FTransform_TO(FinalAtom);
-		auto _p1 = CONV_ST_FTransform_TO(SourceAtom);
-		auto _p2 = BlendWeight;
-		CONV_ST_FTransform_TO(Self).BlendFromIdentityAndAccumulate(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT E_ST_FQuat E_FTransform_GetRotation(E_ST_FTransform Self)
@@ -1058,6 +1489,29 @@ extern "C"
 	}
 
 	
+	/*	FWorldAsyncTraceState	*/
+	
+	
+	/*	FWorldContext	*/
+	
+	DOTNET_EXPORT void E_FWorldContext_AddRef(E_ST_FWorldContext Self, UWorld& WorldPtr)
+	{
+		auto _p0 = WorldPtr;
+		CONV_ST_FWorldContext_TO(Self).AddRef(_p0);
+	}
+
+	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(E_ST_FWorldContext Self, UWorld* World)
+	{
+		auto _p0 = World;
+		CONV_ST_FWorldContext_TO(Self).SetCurrentWorld(_p0);
+	}
+
+	DOTNET_EXPORT UWorld* E_FWorldContext_World(E_ST_FWorldContext Self)
+	{
+		return CONV_ST_FWorldContext_TO(Self).World();
+	}
+
+	
 	/*	FBox	*/
 	
 	DOTNET_EXPORT E_ST_FVector E_OP_FBox_oc(E_ST_FBox Self, int32 Index)
@@ -1175,6 +1629,15 @@ extern "C"
 	}
 
 	
+	/*	FDropNoteInfo	*/
+	
+	
 	/*	FLevelViewportInfo	*/
+	
+	
+	/*	FNamedNetDriver	*/
+	
+	
+	/*	FScreenMessageString	*/
 	
 }

@@ -33,6 +33,7 @@ public class UnrealDotNetRuntime : ModuleRules
             new string[]
             {
                 "Core",
+                "Engine",
                 "CoreUObject",
                 "Engine",
                 "InputCore",

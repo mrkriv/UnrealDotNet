@@ -49,7 +49,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		public FSeamlessTravelHandler SeamlessTravelHandler { get; set; } 
 		
 		/// <summary>
 		/// TravelType for pending client connects

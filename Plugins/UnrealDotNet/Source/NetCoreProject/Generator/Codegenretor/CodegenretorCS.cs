@@ -12,11 +12,9 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                var Classes = domain.Classes.Where(DefaultClassFilter);
-
                 Directory.GetFiles(OutputDir, "*.cs").ToList().ForEach(File.Delete);
 
-                foreach (var cl in Classes)
+                foreach (var cl in domain.Classes)
                 {
                     GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
                 }
@@ -33,9 +31,7 @@ namespace Generator
 
                 GenerateSummaty(cw, Class.Description);
 
-                cw.Write(Class.IsStructure
-                    ? $"public partial struct {Class.Name}"
-                    : $"public partial class {Class.Name}");
+                cw.Write($"public partial {(Class.IsStructure ? "struct" : "class")} {Class.Name}");
 
                 if (Class.BaseClass != null)
                     cw.Write($" : {Class.BaseClass.Name}");
@@ -48,9 +44,7 @@ namespace Generator
                 var cw_DllImport = new CoreWriter(cw);
                 var cw_ExternMethods = new CoreWriter(cw);
 
-                var mt = Class.Methods.Where(DefaultMethodFilter);
-
-                foreach (var method in Class.Methods.Where(DefaultMethodFilter))
+                foreach (var method in Class.Methods)
                 {
                     GenerateMethodDLLImport(cw_DllImport, Class, method);
                     GenerateMethodBody(cw_ExternMethods, Class, method);
@@ -64,10 +58,7 @@ namespace Generator
                 cw.WriteLine();
 
                 cw.WriteLine("#region Property");
-                foreach (var prop in Class.Property.Where(DefaultPropertyFilter))
-                {
-                    GenerateProperty(cw, prop);
-                }
+                Class.Property.ForEach(p => GenerateProperty(cw, p));
                 cw.WriteLine("#endregion");
                 cw.WriteLine();
 

@@ -42,6 +42,9 @@ namespace Generator
             Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             var domain = visitor.GetDomain();
+
+            Filter.FiltreDomainForExport(domain);
+
             domain.Print(false);
 
             Watch.Start();

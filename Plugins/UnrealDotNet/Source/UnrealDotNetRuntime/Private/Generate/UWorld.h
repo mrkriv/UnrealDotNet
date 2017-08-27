@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "World.h"
+#include "Engine/World.h"
 #include "Structures.h"
 
 extern "C"
