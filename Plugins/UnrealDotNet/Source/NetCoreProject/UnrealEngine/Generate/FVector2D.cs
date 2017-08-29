@@ -71,21 +71,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FVector2D_p(FVector2D Self, IntPtr V);
+		private static extern IntPtr E_OPER_FVector2D_p(FVector2D Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FVector2D_m(FVector2D Self, float Scale);
+		private static extern IntPtr E_OPER_FVector2D_m(FVector2D Self, float Scale);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_OP_FVector2D_i(FVector2D Self, IntPtr V);
+		private static extern float E_OPER_FVector2D_i(FVector2D Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -197,7 +197,7 @@ namespace UnrealEngine
 		/// @return The result of adding the vectors together.
 		/// </summary>
 		public static FVector2D operator+(FVector2D Self, FVector2D V)
-			=> E_OP_FVector2D_p(Self, V);
+			=> E_OPER_FVector2D_p(Self, V);
 		
 		
 		/// <summary>
@@ -206,7 +206,7 @@ namespace UnrealEngine
 		/// @return The result of scaling this vector.
 		/// </summary>
 		public static FVector2D operator*(FVector2D Self, float Scale)
-			=> E_OP_FVector2D_m(Self, Scale);
+			=> E_OPER_FVector2D_m(Self, Scale);
 		
 		
 		/// <summary>
@@ -215,7 +215,7 @@ namespace UnrealEngine
 		/// @return The dot product.
 		/// </summary>
 		public static float operator|(FVector2D Self, FVector2D V)
-			=> E_OP_FVector2D_i(Self, V);
+			=> E_OPER_FVector2D_i(Self, V);
 		
 		
 		/// <summary>

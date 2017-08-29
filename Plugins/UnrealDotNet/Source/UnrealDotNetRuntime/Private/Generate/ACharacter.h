@@ -3,6 +3,18 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 
+class E_PROTECTED_WRAP_ACharacter : protected ACharacter
+{
+	public:
+	bool DoJump_WRAP(bool bReplayingMoves)
+	{
+		auto _p0 = bReplayingMoves;
+		return DoJump(_p0);
+	}
+
+}
+;
+
 extern "C"
 {
 	DOTNET_EXPORT void E_ACharacter_CacheInitialMeshOffset(INT_PTR Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
@@ -53,6 +65,12 @@ extern "C"
 	DOTNET_EXPORT bool E_ACharacter_CanJump(INT_PTR Self)
 	{
 		return ((ACharacter*)Self)->CanJump();
+	}
+
+	DOTNET_EXPORT bool E_ACharacter_DoJump(INT_PTR Self, bool bReplayingMoves)
+	{
+		auto _p0 = bReplayingMoves;
+		return ((E_PROTECTED_WRAP_ACharacter*)Self)->DoJump_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT void E_ACharacter_LaunchCharacter(INT_PTR Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)

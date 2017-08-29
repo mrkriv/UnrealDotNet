@@ -3,6 +3,17 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 
+class E_PROTECTED_WRAP_AHUD : protected AHUD
+{
+	public:
+	APawn* GetOwningPawn_WRAP()
+	{
+		return GetOwningPawn();
+	}
+
+}
+;
+
 extern "C"
 {
 	DOTNET_EXPORT void E_AHUD_ShowHUD(INT_PTR Self)
@@ -37,6 +48,11 @@ extern "C"
 		auto _p2 = *(FVector*)WorldPosition;
 		auto _p3 = *(FVector*)WorldDirection;
 		((AHUD*)Self)->Deproject(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT APawn* E_AHUD_GetOwningPawn(INT_PTR Self)
+	{
+		return ((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP();
 	}
 
 	DOTNET_EXPORT void E_AHUD_DrawActorOverlays(INT_PTR Self, INT_PTR Viewpoint, INT_PTR ViewRotation)

@@ -85,7 +85,7 @@ extern "C"
 	DOTNET_EXPORT float E_Struct_FQuat_W_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->W; }
 	DOTNET_EXPORT void E_Struct_FQuat_W_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->W = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FQuat_p(INT_PTR Self, INT_PTR Q)
+	DOTNET_EXPORT INT_PTR E_OPER_FQuat_p(INT_PTR Self, INT_PTR Q)
 	{
 		auto _p0 = *(FQuat*)Q;
 		return (INT_PTR) new FQuat(((FQuat*)Self)->operator+(_p0));
@@ -104,7 +104,7 @@ extern "C"
 		return ((FQuat*)Self)->IsIdentity(_p0);
 	}
 
-	DOTNET_EXPORT float E_OP_FQuat_i(INT_PTR Self, INT_PTR Q)
+	DOTNET_EXPORT float E_OPER_FQuat_i(INT_PTR Self, INT_PTR Q)
 	{
 		auto _p0 = *(FQuat*)Q;
 		return ((FQuat*)Self)->operator|(_p0);
@@ -255,13 +255,13 @@ extern "C"
 	DOTNET_EXPORT float E_Struct_FRotator_Roll_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Roll; }
 	DOTNET_EXPORT void E_Struct_FRotator_Roll_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Roll = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FRotator_p(INT_PTR Self, INT_PTR R)
+	DOTNET_EXPORT INT_PTR E_OPER_FRotator_p(INT_PTR Self, INT_PTR R)
 	{
 		auto _p0 = *(FRotator*)R;
 		return (INT_PTR) new FRotator(((FRotator*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_OP_FRotator_m(INT_PTR Self, float Scale)
+	DOTNET_EXPORT INT_PTR E_OPER_FRotator_m(INT_PTR Self, float Scale)
 	{
 		auto _p0 = Scale;
 		return (INT_PTR) new FRotator(((FRotator*)Self)->operator*(_p0));
@@ -387,7 +387,7 @@ extern "C"
 		((FTransform*)Self)->BlendWith(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_OP_FTransform_p(INT_PTR Self, INT_PTR Atom)
+	DOTNET_EXPORT INT_PTR E_OPER_FTransform_p(INT_PTR Self, INT_PTR Atom)
 	{
 		auto _p0 = *(FTransform*)Atom;
 		return (INT_PTR) new FTransform(((FTransform*)Self)->operator+(_p0));
@@ -514,7 +514,7 @@ extern "C"
 	DOTNET_EXPORT float E_Struct_FVector_Z_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->Z; }
 	DOTNET_EXPORT void E_Struct_FVector_Z_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->Z = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FVector_u(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_OPER_FVector_u(INT_PTR Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
 		return (INT_PTR) new FVector(((FVector*)Self)->operator^(_p0));
@@ -527,7 +527,7 @@ extern "C"
 		return (INT_PTR) new FVector(((FVector*)Self)->CrossProduct(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_OP_FVector_i(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT float E_OPER_FVector_i(INT_PTR Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
 		return ((FVector*)Self)->operator|(_p0);
@@ -696,19 +696,19 @@ extern "C"
 	DOTNET_EXPORT float E_Struct_FVector2D_Y_GET(INT_PTR Ptr) { return ((FVector2D*)Ptr)->Y; }
 	DOTNET_EXPORT void E_Struct_FVector2D_Y_SET(INT_PTR Ptr, float Value) { ((FVector2D*)Ptr)->Y = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FVector2D_p(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_OPER_FVector2D_p(INT_PTR Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector2D*)V;
 		return (INT_PTR) new FVector2D(((FVector2D*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_OP_FVector2D_m(INT_PTR Self, float Scale)
+	DOTNET_EXPORT INT_PTR E_OPER_FVector2D_m(INT_PTR Self, float Scale)
 	{
 		auto _p0 = Scale;
 		return (INT_PTR) new FVector2D(((FVector2D*)Self)->operator*(_p0));
 	}
 
-	DOTNET_EXPORT float E_OP_FVector2D_i(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT float E_OPER_FVector2D_i(INT_PTR Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector2D*)V;
 		return ((FVector2D*)Self)->operator|(_p0);
@@ -798,7 +798,7 @@ extern "C"
 	DOTNET_EXPORT float E_Struct_FVector4_W_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->W; }
 	DOTNET_EXPORT void E_Struct_FVector4_W_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->W = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FVector4_p(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_OPER_FVector4_p(INT_PTR Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector4*)V;
 		return (INT_PTR) new FVector4(((FVector4*)Self)->operator+(_p0));
@@ -922,7 +922,7 @@ extern "C"
 	DOTNET_EXPORT uint8 E_Struct_FBox_IsValid_GET(INT_PTR Ptr) { return ((FBox*)Ptr)->IsValid; }
 	DOTNET_EXPORT void E_Struct_FBox_IsValid_SET(INT_PTR Ptr, uint8 Value) { ((FBox*)Ptr)->IsValid = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FBox_oc(INT_PTR Self, int32 Index)
+	DOTNET_EXPORT INT_PTR E_OPER_FBox_oc(INT_PTR Self, int32 Index)
 	{
 		auto _p0 = Index;
 		return (INT_PTR) new FVector(((FBox*)Self)->operator[](_p0));
@@ -995,7 +995,7 @@ extern "C"
 	DOTNET_EXPORT bool E_Struct_FBox2D_bIsValid_GET(INT_PTR Ptr) { return ((FBox2D*)Ptr)->bIsValid; }
 	DOTNET_EXPORT void E_Struct_FBox2D_bIsValid_SET(INT_PTR Ptr, bool Value) { ((FBox2D*)Ptr)->bIsValid = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_OP_FBox2D_oc(INT_PTR Self, int32 Index)
+	DOTNET_EXPORT INT_PTR E_OPER_FBox2D_oc(INT_PTR Self, int32 Index)
 	{
 		auto _p0 = Index;
 		return (INT_PTR) new FVector2D(((FBox2D*)Self)->operator[](_p0));

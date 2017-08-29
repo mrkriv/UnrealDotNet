@@ -14,6 +14,9 @@ namespace Generator
             {
                 Directory.GetFiles(OutputDir, "*.cs").ToList().ForEach(File.Delete);
 
+                //var ms = domain.Classes.Select(cl => cl.Methods.AsEnumerable()).Aggregate((a, b) => a.Concat(b)).Where(m => m.IsVirtual);
+                var ms = domain.Classes.Select(cl => cl.Methods.AsEnumerable()).Aggregate((a, b) => a.Concat(b)).Where(m => m.AccessModifier == AccessModifier.Private);
+
                 foreach (var cl in domain.Classes)
                 {
                     GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
@@ -79,8 +82,11 @@ namespace Generator
 
             private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
             {
+                if (Class.IsStructure && prop.AccessModifier != AccessModifier.Public)
+                    return;
+
                 GenerateSummaty(cw, prop.Description);
-                cw.WriteLine($"public {ExportVariable(prop, false)}");
+                cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {ExportVariable(prop, false)}");
                 cw.OpenBlock();
 
                 cw.WriteLine($"get => E_Struct_{Class.Name}_{prop.Name}_GET(NativePointer);");
@@ -164,6 +170,9 @@ namespace Generator
 
             private static void GenerateMethodDLLImport(CoreWriter cw, Class Class, Method method)
             {
+                if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
+                    return;
+
                 var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
                 inputs.Insert(0, (Class.IsStructure ? Class.Name : "IntPtr") + " Self");
 
@@ -186,6 +195,9 @@ namespace Generator
 
             private static void GenerateMethodBody(CoreWriter cw, Class Class, Method method)
             {
+                if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
+                    return;
+
                 var inputs = method.InputTypes.Select(t => t.Name).ToList();
 
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m)));
@@ -201,7 +213,7 @@ namespace Generator
                 else
                 {
                     inputs.Insert(0, Class.IsStructure ? "this" : "NativePointer");
-                    cw.WriteLine($"public {ExportVariable(method.ReturnType)} {name}({param})");
+                    cw.WriteLine($"{method.AccessModifier.ToString().ToLower()} {ExportVariable(method.ReturnType)} {name}({param})");
                 }
 
                 if (haveBody)

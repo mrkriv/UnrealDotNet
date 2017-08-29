@@ -97,7 +97,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FVector4_p(FVector4 Self, IntPtr V);
+		private static extern IntPtr E_OPER_FVector4_p(FVector4 Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -215,7 +215,7 @@ namespace UnrealEngine
 		/// @return The result of vector addition.
 		/// </summary>
 		public static FVector4 operator+(FVector4 Self, FVector4 V)
-			=> E_OP_FVector4_p(Self, V);
+			=> E_OPER_FVector4_p(Self, V);
 		
 		
 		/// <summary>

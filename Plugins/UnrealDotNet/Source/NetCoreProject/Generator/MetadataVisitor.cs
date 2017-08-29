@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using static UHeaderParser;
+using Enum = System.Enum;
 
 namespace Generator
 {
@@ -16,7 +17,7 @@ namespace Generator
         private string CurrentFile;
         private string CurrentComment;
         private bool Ignore;
-        private bool IsPublicBlock;
+        private AccessModifier AccessModifier;
         private int PreprocessorIfCount;
 
         public Domain GetDomain() => new Domain { Classes = Classes.Values.OrderBy(c => c.Name).ToList() };
@@ -56,8 +57,8 @@ namespace Generator
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
             CurrentClass.Description = CurrentComment;
 
-            IsPublicBlock = CurrentClass.IsStructure;
-            Ignore = !IsPublicBlock;
+            AccessModifier = CurrentClass.IsStructure ? AccessModifier.Public : AccessModifier.Private;
+            Ignore = AccessModifier == AccessModifier.Private;
 
             var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
             if (parentClassName != null)
@@ -85,6 +86,7 @@ namespace Generator
             variable.Default = context.propertyDefaultValue()?.GetText();
             variable.UMeta = CurrentUMeta ?? variable.UMeta;
             variable.Description = CurrentComment;
+            variable.AccessModifier = AccessModifier;
 
             CurrentClass.Property.Add(variable);
             CurrentUMeta = null;
@@ -107,6 +109,7 @@ namespace Generator
                 IsOverride = context.FoundChild<IsOverrideContext>(),
                 IsTemplate = context.FoundChild<TemplateDefineContext>(),
                 UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
+                AccessModifier = AccessModifier,
                 Description = CurrentComment,
                 OwnerClass = CurrentClass,
                 Operator = context.methodName().methodOperator()?.GetText(),
@@ -136,6 +139,7 @@ namespace Generator
                 Description = CurrentComment,
                 OwnerClass = CurrentClass,
                 Operator = context.methodName().methodOperator()?.GetText(),
+                AccessModifier = AccessModifier,
 
                 InputTypes = context.FindAll<MethodParametrContext>().Reverse()
                     .Select(ParceParam).ToList()
@@ -220,7 +224,7 @@ namespace Generator
                 PreprocessorIfCount--;
                 if (PreprocessorIfCount == 0)
                 {
-                    Ignore = !IsPublicBlock;
+                    Ignore = AccessModifier == AccessModifier.Private;
                 }
             }
 
@@ -229,8 +233,10 @@ namespace Generator
 
         public override object VisitAccessSpecifier(AccessSpecifierContext context)
         {
-            IsPublicBlock = context.GetText() == "public";
-            Ignore = !(IsPublicBlock && PreprocessorIfCount == 0);
+            Enum.TryParse(typeof(AccessModifier), context.GetText(), true, out var result);
+            AccessModifier = (AccessModifier)result;
+
+            Ignore = AccessModifier == AccessModifier.Private || PreprocessorIfCount != 0;
 
             return null;
         }

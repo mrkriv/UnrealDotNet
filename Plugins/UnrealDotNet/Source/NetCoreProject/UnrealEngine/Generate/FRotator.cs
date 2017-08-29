@@ -85,14 +85,14 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FRotator_p(FRotator Self, IntPtr R);
+		private static extern IntPtr E_OPER_FRotator_p(FRotator Self, IntPtr R);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FRotator_m(FRotator Self, float Scale);
+		private static extern IntPtr E_OPER_FRotator_m(FRotator Self, float Scale);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -221,7 +221,7 @@ namespace UnrealEngine
 		/// @return The result of adding a rotator to this.
 		/// </summary>
 		public static FRotator operator+(FRotator Self, FRotator R)
-			=> E_OP_FRotator_p(Self, R);
+			=> E_OPER_FRotator_p(Self, R);
 		
 		
 		/// <summary>
@@ -230,7 +230,7 @@ namespace UnrealEngine
 		/// @return The result of scaling.
 		/// </summary>
 		public static FRotator operator*(FRotator Self, float Scale)
-			=> E_OP_FRotator_m(Self, Scale);
+			=> E_OPER_FRotator_m(Self, Scale);
 		
 		
 		/// <summary>

@@ -81,7 +81,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FTransform_p(FTransform Self, IntPtr Atom);
+		private static extern IntPtr E_OPER_FTransform_p(FTransform Self, IntPtr Atom);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -239,7 +239,7 @@ namespace UnrealEngine
 		/// Rotation part is NOT normalized!!
 		/// </summary>
 		public static FTransform operator+(FTransform Self, FTransform Atom)
-			=> E_OP_FTransform_p(Self, Atom);
+			=> E_OPER_FTransform_p(Self, Atom);
 		
 		public bool AnyHasNegativeScale(FVector InScale3D, FVector InOtherScale3D)
 			=> E_FTransform_AnyHasNegativeScale(this, InScale3D, InOtherScale3D);

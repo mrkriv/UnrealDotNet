@@ -88,6 +88,13 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern APawn E_AHUD_GetOwningPawn(IntPtr Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_AHUD_DrawActorOverlays(IntPtr Self, IntPtr Viewpoint, IntPtr ViewRotation);
 		
 		#if PACING
@@ -166,6 +173,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void Deproject(float ScreenX, float ScreenY, FVector WorldPosition, FVector WorldDirection)
 			=> E_AHUD_Deproject(NativePointer, ScreenX, ScreenY, WorldPosition, WorldDirection);
+		
+		
+		/// <summary>
+		/// Returns the Pawn for this HUD's player.
+		/// </summary>
+		protected APawn GetOwningPawn()
+			=> E_AHUD_GetOwningPawn(NativePointer);
 		
 		
 		/// <summary>

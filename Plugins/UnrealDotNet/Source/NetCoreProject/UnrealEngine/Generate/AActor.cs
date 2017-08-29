@@ -220,6 +220,19 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern byte E_Struct_AActor_bReplicates_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_AActor_bReplicates_SET(IntPtr Ptr, byte Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern int E_Struct_AActor_InputPriority_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -402,6 +415,19 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern byte E_Struct_AActor_bCanBeInCluster_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_AActor_bCanBeInCluster_SET(IntPtr Ptr, byte Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern float E_Struct_AActor_CreationTime_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -422,6 +448,32 @@ namespace UnrealEngine
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
 		private static extern void E_Struct_AActor_Instigator_SET(IntPtr Ptr, APawn Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_AActor_InitialLifeSpan_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_AActor_InitialLifeSpan_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern byte E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -474,6 +526,13 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern bool E_AActor_HasNetOwner(IntPtr Self);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_AActor_SetReplicates(IntPtr Self, bool bInReplicates);
 		
 		#if PACING
@@ -489,13 +548,6 @@ namespace UnrealEngine
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
 		private static extern void E_AActor_CopyRemoteRoleFrom(IntPtr Self, AActor CopyFromActor);
-		
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
-		private static extern bool E_AActor_AllowReceiveTickEventOnDedicatedServer(IntPtr Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -838,6 +890,17 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// If true, this actor will replicate to remote machines
+		/// @see SetReplicates()
+		/// </summary>
+		protected byte bReplicates
+		{
+			get => E_Struct_AActor_bReplicates_GET(NativePointer);
+			set => E_Struct_AActor_bReplicates_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// The priority of this input component when pushed in to the stack.
 		/// </summary>
 		public int InputPriority
@@ -969,6 +1032,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// If true, this actor can be put inside of a GC Cluster to improve Garbage Collection performance
+		/// </summary>
+		protected byte bCanBeInCluster
+		{
+			get => E_Struct_AActor_bCanBeInCluster_GET(NativePointer);
+			set => E_Struct_AActor_bCanBeInCluster_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// The time this actor was created, relative to World->GetTimeSeconds().
 		/// @see UWorld::GetTimeSeconds()
 		/// </summary>
@@ -986,6 +1059,22 @@ namespace UnrealEngine
 		{
 			get => E_Struct_AActor_Instigator_GET(NativePointer);
 			set => E_Struct_AActor_Instigator_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// How long this Actor lives before dying, 0=forever. Note this is the INITIAL value and should not be modified once play has begun.
+		/// </summary>
+		protected float InitialLifeSpan
+		{
+			get => E_Struct_AActor_InitialLifeSpan_GET(NativePointer);
+			set => E_Struct_AActor_InitialLifeSpan_SET(NativePointer, value);
+		}
+
+		protected byte bAllowReceiveTickEventOnDedicatedServer
+		{
+			get => E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(NativePointer);
+			set => E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(NativePointer, value);
 		}
 
 		public byte bActorSeamlessTraveled
@@ -1022,6 +1111,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Does this actor have an owner responsible for replication? (APlayerController typically)
+		/// @return true if this actor can call RPCs or false if no such owner chain exists
+		/// </summary>
+		protected bool HasNetOwner()
+			=> E_AActor_HasNetOwner(NativePointer);
+		
+		
+		/// <summary>
 		/// Set whether this actor replicates to network clients. When this actor is spawned on the server it will be sent to clients as well.
 		/// Properties flagged for replication will update on clients if they change on the server.
 		/// Internally changes the RemoteRole property and handles the cases where the actor needs to be added to the network actor list.
@@ -1044,13 +1141,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void CopyRemoteRoleFrom(AActor CopyFromActor)
 			=> E_AActor_CopyRemoteRoleFrom(NativePointer, CopyFromActor);
-		
-		
-		/// <summary>
-		/// Return the value of bAllowReceiveTickEventOnDedicatedServer, indicating whether the Blueprint ReceiveTick() event will occur on dedicated servers.
-		/// </summary>
-		public bool AllowReceiveTickEventOnDedicatedServer()
-			=> E_AActor_AllowReceiveTickEventOnDedicatedServer(NativePointer);
 		
 		
 		/// <summary>

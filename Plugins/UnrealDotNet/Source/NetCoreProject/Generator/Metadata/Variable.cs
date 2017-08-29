@@ -9,14 +9,14 @@ namespace Generator.Metadata
         public bool IsConst { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
-        public bool IsVoid => Type == "void";
+        public AccessModifier AccessModifier { get; set; }
 
         public string Type { get; protected set; }
         public string Default { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
 
-        public Variable()
+        protected Variable()
         {
             UMeta = new Dictionary<string, string>();
         }

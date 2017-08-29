@@ -3,11 +3,26 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
+class E_PROTECTED_WRAP_AActor : protected AActor
+{
+public:
+	bool HasNetOwner_WRAP()
+	{
+		return HasNetOwner();
+	}
+}
+;
+
 extern "C"
 {
 	DOTNET_EXPORT void E_AActor_OnRep_ReplicateMovement(INT_PTR Self)
 	{
 		((AActor*)Self)->OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT bool E_AActor_HasNetOwner(INT_PTR Self)
+	{
+		return ((E_PROTECTED_WRAP_AActor*)Self)->HasNetOwner_WRAP();
 	}
 
 	DOTNET_EXPORT void E_AActor_SetReplicates(INT_PTR Self, bool bInReplicates)
@@ -27,11 +42,6 @@ extern "C"
 	{
 		auto _p0 = CopyFromActor;
 		((AActor*)Self)->CopyRemoteRoleFrom(_p0);
-	}
-
-	DOTNET_EXPORT bool E_AActor_AllowReceiveTickEventOnDedicatedServer(INT_PTR Self)
-	{
-		return ((AActor*)Self)->AllowReceiveTickEventOnDedicatedServer();
 	}
 
 	DOTNET_EXPORT INT_PTR E_AActor_GetTransform(INT_PTR Self)
@@ -214,5 +224,4 @@ extern "C"
 		auto _p0 = *(FTransform*)Transform;
 		((AActor*)Self)->OnConstruction(_p0);
 	}
-
 }

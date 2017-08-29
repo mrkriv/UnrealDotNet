@@ -25,6 +25,110 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern FBasedMovementInfo E_Struct_ACharacter_BasedMovement_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_BasedMovement_SET(IntPtr Ptr, FBasedMovementInfo Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FBasedMovementInfo E_Struct_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_ReplicatedBasedMovement_SET(IntPtr Ptr, FBasedMovementInfo Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_ACharacter_AnimRootMotionTranslationScale_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_AnimRootMotionTranslationScale_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_Struct_ACharacter_BaseTranslationOffset_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_BaseTranslationOffset_SET(IntPtr Ptr, FVector Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FQuat E_Struct_ACharacter_BaseRotationOffset_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_BaseRotationOffset_SET(IntPtr Ptr, FQuat Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern byte E_Struct_ACharacter_ReplicatedMovementMode_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_ReplicatedMovementMode_SET(IntPtr Ptr, byte Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_Struct_ACharacter_bInBaseReplication_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_ACharacter_bInBaseReplication_SET(IntPtr Ptr, bool Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern float E_Struct_ACharacter_CrouchedEyeHeight_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -166,6 +270,13 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern bool E_ACharacter_DoJump(IntPtr Self, bool bReplayingMoves);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_ACharacter_LaunchCharacter(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
 		
 		#if PACING
@@ -227,6 +338,58 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		protected FBasedMovementInfo BasedMovement
+		{
+			get => E_Struct_ACharacter_BasedMovement_GET(NativePointer);
+			set => E_Struct_ACharacter_BasedMovement_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// Replicated version of relative movement. Read-only on simulated proxies!
+		/// </summary>
+		protected FBasedMovementInfo ReplicatedBasedMovement
+		{
+			get => E_Struct_ACharacter_ReplicatedBasedMovement_GET(NativePointer);
+			set => E_Struct_ACharacter_ReplicatedBasedMovement_SET(NativePointer, value);
+		}
+
+		protected float AnimRootMotionTranslationScale
+		{
+			get => E_Struct_ACharacter_AnimRootMotionTranslationScale_GET(NativePointer);
+			set => E_Struct_ACharacter_AnimRootMotionTranslationScale_SET(NativePointer, value);
+		}
+
+		protected FVector BaseTranslationOffset
+		{
+			get => E_Struct_ACharacter_BaseTranslationOffset_GET(NativePointer);
+			set => E_Struct_ACharacter_BaseTranslationOffset_SET(NativePointer, value);
+		}
+
+		protected FQuat BaseRotationOffset
+		{
+			get => E_Struct_ACharacter_BaseRotationOffset_GET(NativePointer);
+			set => E_Struct_ACharacter_BaseRotationOffset_SET(NativePointer, value);
+		}
+
+		protected float ReplicatedServerLastTransformUpdateTimeStamp
+		{
+			get => E_Struct_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_GET(NativePointer);
+			set => E_Struct_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_SET(NativePointer, value);
+		}
+
+		protected byte ReplicatedMovementMode
+		{
+			get => E_Struct_ACharacter_ReplicatedMovementMode_GET(NativePointer);
+			set => E_Struct_ACharacter_ReplicatedMovementMode_SET(NativePointer, value);
+		}
+
+		protected bool bInBaseReplication
+		{
+			get => E_Struct_ACharacter_bInBaseReplication_GET(NativePointer);
+			set => E_Struct_ACharacter_bInBaseReplication_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Default crouched eye height
@@ -362,6 +525,15 @@ namespace UnrealEngine
 		/// </summary>
 		public bool CanJump()
 			=> E_ACharacter_CanJump(NativePointer);
+		
+		
+		/// <summary>
+		/// Player Jumped. Called internally when a jump has been detected because bPressedJump was true.
+		/// @param	bReplayingMoves: true if this is being done as part of replaying moves on a locally controlled client after a server correction.
+		/// @return	True if the jump was allowed by CanJump() and if CharacterMovement->Jump() succeeded.
+		/// </summary>
+		protected bool DoJump(bool bReplayingMoves)
+			=> E_ACharacter_DoJump(NativePointer, bReplayingMoves);
 		
 		
 		/// <summary>

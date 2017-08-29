@@ -35,18 +35,42 @@ namespace Generator
                 cw.WriteLine($"#include \"CoreMinimal.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
+                GenerateProtctedWrap(cw, Class);
+
                 cw.WriteLine();
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
                 foreach (var method in Class.Methods)
                 {
-                    GenerateMethod(cw, Class, method);
+                    GenerateMethod(cw, method);
                 }
 
                 cw.CloseBlock();
 
                 cw.SaveToFile(OutputPath + ".h");
+            }
+
+            private static void GenerateProtctedWrap(CoreWriter cw, Class Class)
+            {
+                var methods = Class.Methods.Where(m => m.AccessModifier == AccessModifier.Protected);
+
+                if (!methods.Any())
+                    return;
+
+                cw.WriteLine();
+                cw.WriteLine($"class {ExportProtectedPrefix}{Class.Name} : protected {Class.Name}");
+                cw.OpenBlock();
+                cw.WriteLine("public:");
+
+                foreach (var mt in methods)
+                {
+                    GenerateMethodProtctedWrap(cw, mt);
+                }
+
+                cw.CloseBlock();
+                cw.Write(";");
+                cw.WriteLine();
             }
 
             private static string GetSourceFileName(Class Class)
@@ -60,10 +84,9 @@ namespace Generator
                 return SourceFile;
             }
 
-            private static void GenerateMethod(CoreWriter cw, Class Class, Method method)
+            private static void GenerateMethod(CoreWriter cw, Method method)
             {
                 var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
-
                 inputs.Insert(0, "INT_PTR Self");
 
                 var param = string.Join(", ", inputs);
@@ -72,23 +95,13 @@ namespace Generator
                     $"{CPP_API} {ExportVariableCPP(method.ReturnType)} {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
-                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
-                {
-                    if (method.InputTypes[i].NeedRefOperator())
-                        return "&_p" + i;
-                    return "_p" + i;
-                }));
-
                 for (var i = 0; i < method.InputTypes.Count; i++)
                 {
                     var m = method.InputTypes[i];
                     cw.WriteLine($"auto _p{i} = {VarNameForCall(m)};");
                 }
 
-                if (!method.ReturnType.IsVoid)
-                {
-                    cw.Write("return ");
-                }
+                cw.Write(method.ReturnType.Type != "void", "return ");
 
                 var needClose = false;
                 var retClass = method.ReturnType as ClassVariable;
@@ -99,11 +112,63 @@ namespace Generator
                     needClose = true;
                 }
 
-                cw.Write($"(({Class.Name}*)Self)->{method.Name}({call})");
+                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
+                {
+                    if (method.InputTypes[i].NeedRefOperator())
+                        return "&_p" + i;
+                    return "_p" + i;
+                }));
 
-                if (needClose)
-                    cw.Write(")");
+                if (method.AccessModifier == AccessModifier.Public)
+                {
+                    cw.Write($"(({method.OwnerClass.Name}*)Self)->{method.Name}({call})");
+                }
+                else
+                {
+                    cw.Write($"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
+                }
 
+                cw.Write(needClose, ")");
+                cw.WriteLine(";");
+
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            private static void GenerateMethodProtctedWrap(CoreWriter cw, Method method)
+            {
+                var param = string.Join(", ", method.InputTypes.Select(ExportVariableCPP));
+
+                cw.WriteLine(
+                    $"{ExportVariableCPP(method.ReturnType)} {method.Name}{ExportProtectedPostfix}({param})");
+                cw.OpenBlock();
+
+                for (var i = 0; i < method.InputTypes.Count; i++)
+                {
+                    var m = method.InputTypes[i];
+                    cw.WriteLine($"auto _p{i} = {VarNameForCall(m)};");
+                }
+
+                cw.Write(method.ReturnType.Type != "void", "return ");
+
+                var needClose = false;
+                var retClass = method.ReturnType as ClassVariable;
+
+                if (retClass != null && retClass.ClassType.IsStructure)
+                {
+                    cw.Write($"(INT_PTR) new {retClass.ClassType.Name}(");
+                    needClose = true;
+                }
+
+                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
+                {
+                    if (method.InputTypes[i].NeedRefOperator())
+                        return "&_p" + i;
+                    return "_p" + i;
+                }));
+
+                cw.Write($"{method.Name}({call})");
+                cw.Write(needClose, ")");
                 cw.WriteLine(";");
 
                 cw.CloseBlock();
@@ -176,9 +241,9 @@ namespace Generator
 
                     GenerateStructUtilites(cw, Class);
 
-                    foreach (var method in Class.Methods)
+                    foreach (var method in Class.Methods.Where(m => m.AccessModifier == AccessModifier.Public))
                     {
-                        GenerateMethod(cw, Class, method);
+                        GenerateMethod(cw, method);
                     }
                 }
 
@@ -223,7 +288,7 @@ namespace Generator
                 cw.WriteLine($"return (INT_PTR) new {Class.Name}(); }}");
                 cw.WriteLine();
 
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
+                foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
                 {
                     var baseName = $"E_Struct_{Class.Name}_{prop.Name}";
 

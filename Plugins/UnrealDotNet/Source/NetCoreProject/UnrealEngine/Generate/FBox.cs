@@ -86,7 +86,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FBox_oc(FBox Self, int Index);
+		private static extern IntPtr E_OPER_FBox_oc(FBox Self, int Index);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]

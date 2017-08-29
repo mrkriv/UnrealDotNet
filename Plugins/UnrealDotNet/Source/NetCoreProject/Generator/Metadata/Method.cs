@@ -4,11 +4,19 @@ using System.Linq;
 
 namespace Generator.Metadata
 {
+    public enum AccessModifier
+    {
+        Private,
+        Protected,
+        Public
+    }
+
     public class Method : IEquatable<Method>
     {
         public Dictionary<string, string> UMeta;
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
+        public AccessModifier AccessModifier { get; set; }
         public Class OwnerClass { get; set; }
         public bool IsConst { get; set; }
         public bool IsVirtual { get; set; }

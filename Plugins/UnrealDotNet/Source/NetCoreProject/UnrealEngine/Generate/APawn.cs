@@ -62,6 +62,32 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
+		private static extern FVector E_Struct_APawn_ControlInputVector_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_APawn_ControlInputVector_SET(IntPtr Ptr, FVector Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector E_Struct_APawn_LastControlInputVector_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_APawn_LastControlInputVector_SET(IntPtr Ptr, FVector Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
 		private static extern void E_APawn_PawnMakeNoise(IntPtr Self, float Loudness, IntPtr NoiseLocation, bool bUseNoiseMakerLocation, AActor NoiseMaker);
 		
 		#if PACING
@@ -203,6 +229,18 @@ namespace UnrealEngine
 		{
 			get => E_Struct_APawn_AllowedYawError_GET(NativePointer);
 			set => E_Struct_APawn_AllowedYawError_SET(NativePointer, value);
+		}
+
+		protected FVector ControlInputVector
+		{
+			get => E_Struct_APawn_ControlInputVector_GET(NativePointer);
+			set => E_Struct_APawn_ControlInputVector_SET(NativePointer, value);
+		}
+
+		protected FVector LastControlInputVector
+		{
+			get => E_Struct_APawn_LastControlInputVector_GET(NativePointer);
+			set => E_Struct_APawn_LastControlInputVector_SET(NativePointer, value);
 		}
 
 		#endregion

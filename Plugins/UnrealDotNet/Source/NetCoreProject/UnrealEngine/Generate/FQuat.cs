@@ -103,7 +103,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FQuat_p(FQuat Self, IntPtr Q);
+		private static extern IntPtr E_OPER_FQuat_p(FQuat Self, IntPtr Q);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -124,7 +124,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_OP_FQuat_i(FQuat Self, IntPtr Q);
+		private static extern float E_OPER_FQuat_i(FQuat Self, IntPtr Q);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -313,7 +313,7 @@ namespace UnrealEngine
 		/// @return The result of addition.
 		/// </summary>
 		public static FQuat operator+(FQuat Self, FQuat Q)
-			=> E_OP_FQuat_p(Self, Q);
+			=> E_OPER_FQuat_p(Self, Q);
 		
 		
 		/// <summary>
@@ -342,7 +342,7 @@ namespace UnrealEngine
 		/// @return The dot product.
 		/// </summary>
 		public static float operator|(FQuat Self, FQuat Q)
-			=> E_OP_FQuat_i(Self, Q);
+			=> E_OPER_FQuat_i(Self, Q);
 		
 		
 		/// <summary>

@@ -84,7 +84,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern IntPtr E_OP_FVector_u(FVector Self, IntPtr V);
+		private static extern IntPtr E_OPER_FVector_u(FVector Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -98,7 +98,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_OP_FVector_i(FVector Self, IntPtr V);
+		private static extern float E_OPER_FVector_i(FVector Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -304,7 +304,7 @@ namespace UnrealEngine
 		/// @return The cross product.
 		/// </summary>
 		public static FVector operator^(FVector Self, FVector V)
-			=> E_OP_FVector_u(Self, V);
+			=> E_OPER_FVector_u(Self, V);
 		
 		
 		/// <summary>
@@ -323,7 +323,7 @@ namespace UnrealEngine
 		/// @return The dot product.
 		/// </summary>
 		public static float operator|(FVector Self, FVector V)
-			=> E_OP_FVector_i(Self, V);
+			=> E_OPER_FVector_i(Self, V);
 		
 		
 		/// <summary>

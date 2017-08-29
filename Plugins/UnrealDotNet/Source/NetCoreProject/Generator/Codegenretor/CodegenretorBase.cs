@@ -14,8 +14,10 @@ namespace Generator
         protected const string EnginePathSeg = @"Engine\Source\Runtime";
 
         protected const string ExportPrefix = "E_";
-        protected const string ExportOperatorPrefix = ExportPrefix + "OP_";
-        protected const string ExportPropertyPrefix = ExportPrefix + "PR_";
+        protected const string ExportOperatorPrefix = ExportPrefix + "OPER_";
+        protected const string ExportPropertyPrefix = ExportPrefix + "PROP_";
+        protected const string ExportProtectedPrefix = ExportPrefix + "PROTECTED_WRAP_";
+        protected const string ExportProtectedPostfix = "_WRAP";
         protected const string CPP_API = "DOTNET_EXPORT";
 
         public static void GenarateDomain(Domain domain, string OutputDir)
