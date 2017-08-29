@@ -45,26 +45,26 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector2D_X_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector2D_X_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector2D_X_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector2D_Y_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector2D_Y_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector2D_Y_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -173,8 +173,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float X
 		{
-			get => E_Struct_FVector2D_X_GET(NativePointer);
-			set => E_Struct_FVector2D_X_SET(NativePointer, value);
+			get => E_PROP_FVector2D_X_GET(NativePointer);
+			set => E_PROP_FVector2D_X_SET(NativePointer, value);
 		}
 
 		
@@ -183,8 +183,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Y
 		{
-			get => E_Struct_FVector2D_Y_GET(NativePointer);
-			set => E_Struct_FVector2D_Y_SET(NativePointer, value);
+			get => E_PROP_FVector2D_Y_GET(NativePointer);
+			set => E_PROP_FVector2D_Y_SET(NativePointer, value);
 		}
 
 		#endregion

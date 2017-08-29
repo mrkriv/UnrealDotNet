@@ -45,39 +45,39 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_Struct_FBox2D_Min_GET(IntPtr Ptr);
+		private static extern FVector2D E_PROP_FBox2D_Min_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_Struct_FBox2D_Max_GET(IntPtr Ptr);
+		private static extern FVector2D E_PROP_FBox2D_Max_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox2D_Max_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FBox2D_Max_SET(IntPtr Ptr, FVector2D Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FBox2D_bIsValid_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -151,8 +151,8 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector2D Min
 		{
-			get => E_Struct_FBox2D_Min_GET(NativePointer);
-			set => E_Struct_FBox2D_Min_SET(NativePointer, value);
+			get => E_PROP_FBox2D_Min_GET(NativePointer);
+			set => E_PROP_FBox2D_Min_SET(NativePointer, value);
 		}
 
 		
@@ -161,8 +161,8 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector2D Max
 		{
-			get => E_Struct_FBox2D_Max_GET(NativePointer);
-			set => E_Struct_FBox2D_Max_SET(NativePointer, value);
+			get => E_PROP_FBox2D_Max_GET(NativePointer);
+			set => E_PROP_FBox2D_Max_SET(NativePointer, value);
 		}
 
 		
@@ -171,8 +171,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bIsValid
 		{
-			get => E_Struct_FBox2D_bIsValid_GET(NativePointer);
-			set => E_Struct_FBox2D_bIsValid_SET(NativePointer, value);
+			get => E_PROP_FBox2D_bIsValid_GET(NativePointer);
+			set => E_PROP_FBox2D_bIsValid_SET(NativePointer, value);
 		}
 
 		#endregion

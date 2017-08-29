@@ -45,78 +45,78 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_FLevelViewportInfo_CamPosition_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_FLevelViewportInfo_CamPosition_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FLevelViewportInfo_CamPosition_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FLevelViewportInfo_CamPosition_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_Struct_FLevelViewportInfo_CamRotation_GET(IntPtr Ptr);
+		private static extern FRotator E_PROP_FLevelViewportInfo_CamRotation_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FLevelViewportInfo_CamRotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FLevelViewportInfo_CamRotation_SET(IntPtr Ptr, FRotator Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);
+		private static extern float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FLevelViewportInfo_CamOrthoZoom_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FLevelViewportInfo_CamUpdated_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FLevelViewportInfo_CamUpdated_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FLevelViewportInfo_CamUpdated_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FLevelViewportInfo_CamUpdated_SET(IntPtr Ptr, bool Value);
 		
 		#endregion
 		
 		#region Property
 		public FVector CamPosition
 		{
-			get => E_Struct_FLevelViewportInfo_CamPosition_GET(NativePointer);
-			set => E_Struct_FLevelViewportInfo_CamPosition_SET(NativePointer, value);
+			get => E_PROP_FLevelViewportInfo_CamPosition_GET(NativePointer);
+			set => E_PROP_FLevelViewportInfo_CamPosition_SET(NativePointer, value);
 		}
 
 		public FRotator CamRotation
 		{
-			get => E_Struct_FLevelViewportInfo_CamRotation_GET(NativePointer);
-			set => E_Struct_FLevelViewportInfo_CamRotation_SET(NativePointer, value);
+			get => E_PROP_FLevelViewportInfo_CamRotation_GET(NativePointer);
+			set => E_PROP_FLevelViewportInfo_CamRotation_SET(NativePointer, value);
 		}
 
 		public float CamOrthoZoom
 		{
-			get => E_Struct_FLevelViewportInfo_CamOrthoZoom_GET(NativePointer);
-			set => E_Struct_FLevelViewportInfo_CamOrthoZoom_SET(NativePointer, value);
+			get => E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(NativePointer);
+			set => E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(NativePointer, value);
 		}
 
 		public bool CamUpdated
 		{
-			get => E_Struct_FLevelViewportInfo_CamUpdated_GET(NativePointer);
-			set => E_Struct_FLevelViewportInfo_CamUpdated_SET(NativePointer, value);
+			get => E_PROP_FLevelViewportInfo_CamUpdated_GET(NativePointer);
+			set => E_PROP_FLevelViewportInfo_CamUpdated_SET(NativePointer, value);
 		}
 
 		#endregion

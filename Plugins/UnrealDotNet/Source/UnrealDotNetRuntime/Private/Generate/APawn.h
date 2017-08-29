@@ -5,6 +5,15 @@
 
 extern "C"
 {
+	DOTNET_EXPORT float E_PROP_APawn_BaseEyeHeight_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->BaseEyeHeight; }
+	DOTNET_EXPORT void E_PROP_APawn_BaseEyeHeight_SET(INT_PTR Ptr, float Value) { ((APawn*)Ptr)->BaseEyeHeight = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_APawn_RemoteViewPitch_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->RemoteViewPitch; }
+	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(INT_PTR Ptr, uint8 Value) { ((APawn*)Ptr)->RemoteViewPitch = Value; }
+	
+	DOTNET_EXPORT float E_PROP_APawn_AllowedYawError_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->AllowedYawError; }
+	DOTNET_EXPORT void E_PROP_APawn_AllowedYawError_SET(INT_PTR Ptr, float Value) { ((APawn*)Ptr)->AllowedYawError = Value; }
+	
 	DOTNET_EXPORT void E_APawn_PawnMakeNoise(INT_PTR Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
 	{
 		auto _p0 = Loudness;

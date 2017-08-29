@@ -17,6 +17,24 @@ class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 
 extern "C"
 {
+	DOTNET_EXPORT float E_PROP_ACharacter_CrouchedEyeHeight_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->CrouchedEyeHeight; }
+	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->CrouchedEyeHeight = Value; }
+	
+	DOTNET_EXPORT float E_PROP_ACharacter_JumpKeyHoldTime_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpKeyHoldTime; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpKeyHoldTime_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->JumpKeyHoldTime = Value; }
+	
+	DOTNET_EXPORT float E_PROP_ACharacter_JumpMaxHoldTime_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpMaxHoldTime; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxHoldTime_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->JumpMaxHoldTime = Value; }
+	
+	DOTNET_EXPORT int32 E_PROP_ACharacter_JumpMaxCount_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpMaxCount; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxCount_SET(INT_PTR Ptr, int32 Value) { ((ACharacter*)Ptr)->JumpMaxCount = Value; }
+	
+	DOTNET_EXPORT int32 E_PROP_ACharacter_JumpCurrentCount_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpCurrentCount; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpCurrentCount_SET(INT_PTR Ptr, int32 Value) { ((ACharacter*)Ptr)->JumpCurrentCount = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_ACharacter_RepRootMotion_GET(INT_PTR Ptr) { return (INT_PTR) new FRepRootMotionMontage(((ACharacter*)Ptr)->RepRootMotion); }
+	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((ACharacter*)Ptr)->RepRootMotion = *(FRepRootMotionMontage*)Value; }
+	
 	DOTNET_EXPORT void E_ACharacter_CacheInitialMeshOffset(INT_PTR Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
 	{
 		auto _p0 = *(FVector*)MeshRelativeLocation;

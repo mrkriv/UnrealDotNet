@@ -45,40 +45,40 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_FDropNoteInfo_Location_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_FDropNoteInfo_Location_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FDropNoteInfo_Location_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FDropNoteInfo_Location_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_Struct_FDropNoteInfo_Rotation_GET(IntPtr Ptr);
+		private static extern FRotator E_PROP_FDropNoteInfo_Rotation_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FDropNoteInfo_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FDropNoteInfo_Rotation_SET(IntPtr Ptr, FRotator Value);
 		
 		#endregion
 		
 		#region Property
 		public FVector Location
 		{
-			get => E_Struct_FDropNoteInfo_Location_GET(NativePointer);
-			set => E_Struct_FDropNoteInfo_Location_SET(NativePointer, value);
+			get => E_PROP_FDropNoteInfo_Location_GET(NativePointer);
+			set => E_PROP_FDropNoteInfo_Location_SET(NativePointer, value);
 		}
 
 		public FRotator Rotation
 		{
-			get => E_Struct_FDropNoteInfo_Rotation_GET(NativePointer);
-			set => E_Struct_FDropNoteInfo_Rotation_SET(NativePointer, value);
+			get => E_PROP_FDropNoteInfo_Rotation_GET(NativePointer);
+			set => E_PROP_FDropNoteInfo_Rotation_SET(NativePointer, value);
 		}
 
 		#endregion

@@ -25,390 +25,377 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bInTick_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bInTick_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bInTick_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bInTick_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bIsBuilt_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bIsBuilt_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bIsBuilt_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsBuilt_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bTickNewlySpawned_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bTickNewlySpawned_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bPostTickComponentUpdate_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bPostTickComponentUpdate_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_UWorld_PlayerNum_GET(IntPtr Ptr);
+		private static extern int E_PROP_UWorld_PlayerNum_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_PlayerNum_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_UWorld_PlayerNum_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_TimeSinceLastPendingKillPurge_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_TimeSinceLastPendingKillPurge_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_FullPurgeTriggered_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_FullPurgeTriggered_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_FullPurgeTriggered_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_FullPurgeTriggered_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bShouldDelayGarbageCollect_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bShouldDelayGarbageCollect_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bShouldDelayGarbageCollect_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bShouldDelayGarbageCollect_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bIsWorldInitialized_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bIsWorldInitialized_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bIsWorldInitialized_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsWorldInitialized_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_UWorld_StreamingVolumeUpdateDelay_GET(IntPtr Ptr);
+		private static extern int E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_StreamingVolumeUpdateDelay_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bIsLevelStreamingFrozen_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bIsLevelStreamingFrozen_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bIsLevelStreamingFrozen_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsLevelStreamingFrozen_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bShouldForceUnloadStreamingLevels_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bShouldForceUnloadStreamingLevels_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bShouldForceVisibleStreamingLevels_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bShouldForceVisibleStreamingLevels_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bShouldForceVisibleStreamingLevels_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bShouldForceVisibleStreamingLevels_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bIsRunningConstructionScript_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bIsRunningConstructionScript_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bIsRunningConstructionScript_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsRunningConstructionScript_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bShouldSimulatePhysics_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bShouldSimulatePhysics_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bShouldSimulatePhysics_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bShouldSimulatePhysics_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bCreateRenderStateForHiddenComponents_GET(IntPtr Ptr);
+		private static extern bool E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bCreateRenderStateForHiddenComponents_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_UWorld_bDebugDrawAllTraceTags_GET(IntPtr Ptr);
+		private static extern double E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_bDebugDrawAllTraceTags_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(IntPtr Ptr, double Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern double E_Struct_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_TimeSeconds_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(IntPtr Ptr, double Value);
+		private static extern void E_PROP_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_TimeSeconds_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_UnpausedTimeSeconds_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_UnpausedTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_UnpausedTimeSeconds_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_RealTimeSeconds_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_UnpausedTimeSeconds_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_RealTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_RealTimeSeconds_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_AudioTimeSeconds_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_RealTimeSeconds_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_AudioTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_AudioTimeSeconds_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_DeltaTimeSeconds_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_AudioTimeSeconds_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_DeltaTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_DeltaTimeSeconds_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_PauseDelay_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_DeltaTimeSeconds_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_PauseDelay_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_PauseDelay_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_UWorld_OriginOffsetThisFrame_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_PauseDelay_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_OriginOffsetThisFrame_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_UWorld_OriginOffsetThisFrame_GET(IntPtr Ptr);
+		private static extern float E_PROP_UWorld_NextSwitchCountdown_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_OriginOffsetThisFrame_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_UWorld_NextSwitchCountdown_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_UWorld_NextSwitchCountdown_GET(IntPtr Ptr);
+		private static extern int E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_NextSwitchCountdown_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_UWorld_NumTextureStreamingUnbuiltComponents_GET(IntPtr Ptr);
+		private static extern int E_PROP_UWorld_NumTextureStreamingDirtyResources_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_UWorld_NumTextureStreamingUnbuiltComponents_SET(IntPtr Ptr, int Value);
-		
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
-		private static extern int E_Struct_UWorld_NumTextureStreamingDirtyResources_GET(IntPtr Ptr);
-		#if PACING
-		[DllImport("DotUnrealExample.exe")]
-		#else
-		[DllImport("UE4Editor-UnrealDotNetRuntime")]
-		#endif
-		private static extern void E_Struct_UWorld_NumTextureStreamingDirtyResources_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -601,8 +588,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bInTick
 		{
-			get => E_Struct_UWorld_bInTick_GET(NativePointer);
-			set => E_Struct_UWorld_bInTick_SET(NativePointer, value);
+			get => E_PROP_UWorld_bInTick_GET(NativePointer);
+			set => E_PROP_UWorld_bInTick_SET(NativePointer, value);
 		}
 
 		
@@ -611,8 +598,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bIsBuilt
 		{
-			get => E_Struct_UWorld_bIsBuilt_GET(NativePointer);
-			set => E_Struct_UWorld_bIsBuilt_SET(NativePointer, value);
+			get => E_PROP_UWorld_bIsBuilt_GET(NativePointer);
+			set => E_PROP_UWorld_bIsBuilt_SET(NativePointer, value);
 		}
 
 		
@@ -621,8 +608,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bTickNewlySpawned
 		{
-			get => E_Struct_UWorld_bTickNewlySpawned_GET(NativePointer);
-			set => E_Struct_UWorld_bTickNewlySpawned_SET(NativePointer, value);
+			get => E_PROP_UWorld_bTickNewlySpawned_GET(NativePointer);
+			set => E_PROP_UWorld_bTickNewlySpawned_SET(NativePointer, value);
 		}
 
 		
@@ -632,8 +619,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bPostTickComponentUpdate
 		{
-			get => E_Struct_UWorld_bPostTickComponentUpdate_GET(NativePointer);
-			set => E_Struct_UWorld_bPostTickComponentUpdate_SET(NativePointer, value);
+			get => E_PROP_UWorld_bPostTickComponentUpdate_GET(NativePointer);
+			set => E_PROP_UWorld_bPostTickComponentUpdate_SET(NativePointer, value);
 		}
 
 		
@@ -642,8 +629,8 @@ namespace UnrealEngine
 		/// </summary>
 		public int PlayerNum
 		{
-			get => E_Struct_UWorld_PlayerNum_GET(NativePointer);
-			set => E_Struct_UWorld_PlayerNum_SET(NativePointer, value);
+			get => E_PROP_UWorld_PlayerNum_GET(NativePointer);
+			set => E_PROP_UWorld_PlayerNum_SET(NativePointer, value);
 		}
 
 		
@@ -652,8 +639,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float TimeSinceLastPendingKillPurge
 		{
-			get => E_Struct_UWorld_TimeSinceLastPendingKillPurge_GET(NativePointer);
-			set => E_Struct_UWorld_TimeSinceLastPendingKillPurge_SET(NativePointer, value);
+			get => E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(NativePointer);
+			set => E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(NativePointer, value);
 		}
 
 		
@@ -662,8 +649,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool FullPurgeTriggered
 		{
-			get => E_Struct_UWorld_FullPurgeTriggered_GET(NativePointer);
-			set => E_Struct_UWorld_FullPurgeTriggered_SET(NativePointer, value);
+			get => E_PROP_UWorld_FullPurgeTriggered_GET(NativePointer);
+			set => E_PROP_UWorld_FullPurgeTriggered_SET(NativePointer, value);
 		}
 
 		
@@ -672,8 +659,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bShouldDelayGarbageCollect
 		{
-			get => E_Struct_UWorld_bShouldDelayGarbageCollect_GET(NativePointer);
-			set => E_Struct_UWorld_bShouldDelayGarbageCollect_SET(NativePointer, value);
+			get => E_PROP_UWorld_bShouldDelayGarbageCollect_GET(NativePointer);
+			set => E_PROP_UWorld_bShouldDelayGarbageCollect_SET(NativePointer, value);
 		}
 
 		
@@ -682,8 +669,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bIsWorldInitialized
 		{
-			get => E_Struct_UWorld_bIsWorldInitialized_GET(NativePointer);
-			set => E_Struct_UWorld_bIsWorldInitialized_SET(NativePointer, value);
+			get => E_PROP_UWorld_bIsWorldInitialized_GET(NativePointer);
+			set => E_PROP_UWorld_bIsWorldInitialized_SET(NativePointer, value);
 		}
 
 		
@@ -692,8 +679,8 @@ namespace UnrealEngine
 		/// </summary>
 		public int StreamingVolumeUpdateDelay
 		{
-			get => E_Struct_UWorld_StreamingVolumeUpdateDelay_GET(NativePointer);
-			set => E_Struct_UWorld_StreamingVolumeUpdateDelay_SET(NativePointer, value);
+			get => E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(NativePointer);
+			set => E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(NativePointer, value);
 		}
 
 		
@@ -702,8 +689,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bIsLevelStreamingFrozen
 		{
-			get => E_Struct_UWorld_bIsLevelStreamingFrozen_GET(NativePointer);
-			set => E_Struct_UWorld_bIsLevelStreamingFrozen_SET(NativePointer, value);
+			get => E_PROP_UWorld_bIsLevelStreamingFrozen_GET(NativePointer);
+			set => E_PROP_UWorld_bIsLevelStreamingFrozen_SET(NativePointer, value);
 		}
 
 		
@@ -712,8 +699,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bShouldForceUnloadStreamingLevels
 		{
-			get => E_Struct_UWorld_bShouldForceUnloadStreamingLevels_GET(NativePointer);
-			set => E_Struct_UWorld_bShouldForceUnloadStreamingLevels_SET(NativePointer, value);
+			get => E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(NativePointer);
+			set => E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(NativePointer, value);
 		}
 
 		
@@ -722,8 +709,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bShouldForceVisibleStreamingLevels
 		{
-			get => E_Struct_UWorld_bShouldForceVisibleStreamingLevels_GET(NativePointer);
-			set => E_Struct_UWorld_bShouldForceVisibleStreamingLevels_SET(NativePointer, value);
+			get => E_PROP_UWorld_bShouldForceVisibleStreamingLevels_GET(NativePointer);
+			set => E_PROP_UWorld_bShouldForceVisibleStreamingLevels_SET(NativePointer, value);
 		}
 
 		
@@ -732,8 +719,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bDoDelayedUpdateCullDistanceVolumes
 		{
-			get => E_Struct_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(NativePointer);
-			set => E_Struct_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(NativePointer, value);
+			get => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(NativePointer);
+			set => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(NativePointer, value);
 		}
 
 		
@@ -742,8 +729,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bHack_Force_UsesGameHiddenFlags_True
 		{
-			get => E_Struct_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(NativePointer);
-			set => E_Struct_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(NativePointer, value);
+			get => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(NativePointer);
+			set => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(NativePointer, value);
 		}
 
 		
@@ -752,8 +739,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bIsRunningConstructionScript
 		{
-			get => E_Struct_UWorld_bIsRunningConstructionScript_GET(NativePointer);
-			set => E_Struct_UWorld_bIsRunningConstructionScript_SET(NativePointer, value);
+			get => E_PROP_UWorld_bIsRunningConstructionScript_GET(NativePointer);
+			set => E_PROP_UWorld_bIsRunningConstructionScript_SET(NativePointer, value);
 		}
 
 		
@@ -763,8 +750,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bShouldSimulatePhysics
 		{
-			get => E_Struct_UWorld_bShouldSimulatePhysics_GET(NativePointer);
-			set => E_Struct_UWorld_bShouldSimulatePhysics_SET(NativePointer, value);
+			get => E_PROP_UWorld_bShouldSimulatePhysics_GET(NativePointer);
+			set => E_PROP_UWorld_bShouldSimulatePhysics_SET(NativePointer, value);
 		}
 
 		
@@ -773,18 +760,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bCreateRenderStateForHiddenComponents
 		{
-			get => E_Struct_UWorld_bCreateRenderStateForHiddenComponents_GET(NativePointer);
-			set => E_Struct_UWorld_bCreateRenderStateForHiddenComponents_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// When set to true, all scene queries will be drawn
-		/// </summary>
-		public bool bDebugDrawAllTraceTags
-		{
-			get => E_Struct_UWorld_bDebugDrawAllTraceTags_GET(NativePointer);
-			set => E_Struct_UWorld_bDebugDrawAllTraceTags_SET(NativePointer, value);
+			get => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(NativePointer);
+			set => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(NativePointer, value);
 		}
 
 		
@@ -793,8 +770,8 @@ namespace UnrealEngine
 		/// </summary>
 		public double LastTimeUnbuiltLightingWasEncountered
 		{
-			get => E_Struct_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(NativePointer);
-			set => E_Struct_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(NativePointer, value);
+			get => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(NativePointer);
+			set => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(NativePointer, value);
 		}
 
 		
@@ -803,8 +780,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float TimeSeconds
 		{
-			get => E_Struct_UWorld_TimeSeconds_GET(NativePointer);
-			set => E_Struct_UWorld_TimeSeconds_SET(NativePointer, value);
+			get => E_PROP_UWorld_TimeSeconds_GET(NativePointer);
+			set => E_PROP_UWorld_TimeSeconds_SET(NativePointer, value);
 		}
 
 		
@@ -813,8 +790,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float UnpausedTimeSeconds
 		{
-			get => E_Struct_UWorld_UnpausedTimeSeconds_GET(NativePointer);
-			set => E_Struct_UWorld_UnpausedTimeSeconds_SET(NativePointer, value);
+			get => E_PROP_UWorld_UnpausedTimeSeconds_GET(NativePointer);
+			set => E_PROP_UWorld_UnpausedTimeSeconds_SET(NativePointer, value);
 		}
 
 		
@@ -823,8 +800,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float RealTimeSeconds
 		{
-			get => E_Struct_UWorld_RealTimeSeconds_GET(NativePointer);
-			set => E_Struct_UWorld_RealTimeSeconds_SET(NativePointer, value);
+			get => E_PROP_UWorld_RealTimeSeconds_GET(NativePointer);
+			set => E_PROP_UWorld_RealTimeSeconds_SET(NativePointer, value);
 		}
 
 		
@@ -833,8 +810,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float AudioTimeSeconds
 		{
-			get => E_Struct_UWorld_AudioTimeSeconds_GET(NativePointer);
-			set => E_Struct_UWorld_AudioTimeSeconds_SET(NativePointer, value);
+			get => E_PROP_UWorld_AudioTimeSeconds_GET(NativePointer);
+			set => E_PROP_UWorld_AudioTimeSeconds_SET(NativePointer, value);
 		}
 
 		
@@ -843,8 +820,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float DeltaTimeSeconds
 		{
-			get => E_Struct_UWorld_DeltaTimeSeconds_GET(NativePointer);
-			set => E_Struct_UWorld_DeltaTimeSeconds_SET(NativePointer, value);
+			get => E_PROP_UWorld_DeltaTimeSeconds_GET(NativePointer);
+			set => E_PROP_UWorld_DeltaTimeSeconds_SET(NativePointer, value);
 		}
 
 		
@@ -853,8 +830,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float PauseDelay
 		{
-			get => E_Struct_UWorld_PauseDelay_GET(NativePointer);
-			set => E_Struct_UWorld_PauseDelay_SET(NativePointer, value);
+			get => E_PROP_UWorld_PauseDelay_GET(NativePointer);
+			set => E_PROP_UWorld_PauseDelay_SET(NativePointer, value);
 		}
 
 		
@@ -863,8 +840,8 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector OriginOffsetThisFrame
 		{
-			get => E_Struct_UWorld_OriginOffsetThisFrame_GET(NativePointer);
-			set => E_Struct_UWorld_OriginOffsetThisFrame_SET(NativePointer, value);
+			get => E_PROP_UWorld_OriginOffsetThisFrame_GET(NativePointer);
+			set => E_PROP_UWorld_OriginOffsetThisFrame_SET(NativePointer, value);
 		}
 
 		
@@ -873,8 +850,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float NextSwitchCountdown
 		{
-			get => E_Struct_UWorld_NextSwitchCountdown_GET(NativePointer);
-			set => E_Struct_UWorld_NextSwitchCountdown_SET(NativePointer, value);
+			get => E_PROP_UWorld_NextSwitchCountdown_GET(NativePointer);
+			set => E_PROP_UWorld_NextSwitchCountdown_SET(NativePointer, value);
 		}
 
 		
@@ -883,8 +860,8 @@ namespace UnrealEngine
 		/// </summary>
 		public int NumTextureStreamingUnbuiltComponents
 		{
-			get => E_Struct_UWorld_NumTextureStreamingUnbuiltComponents_GET(NativePointer);
-			set => E_Struct_UWorld_NumTextureStreamingUnbuiltComponents_SET(NativePointer, value);
+			get => E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(NativePointer);
+			set => E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(NativePointer, value);
 		}
 
 		
@@ -893,8 +870,8 @@ namespace UnrealEngine
 		/// </summary>
 		public int NumTextureStreamingDirtyResources
 		{
-			get => E_Struct_UWorld_NumTextureStreamingDirtyResources_GET(NativePointer);
-			set => E_Struct_UWorld_NumTextureStreamingDirtyResources_SET(NativePointer, value);
+			get => E_PROP_UWorld_NumTextureStreamingDirtyResources_GET(NativePointer);
+			set => E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(NativePointer, value);
 		}
 
 		#endregion

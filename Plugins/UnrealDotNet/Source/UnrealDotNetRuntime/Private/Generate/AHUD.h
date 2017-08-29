@@ -16,6 +16,12 @@ class E_PROTECTED_WRAP_AHUD : protected AHUD
 
 extern "C"
 {
+	DOTNET_EXPORT float E_PROP_AHUD_LastHUDRenderTime_GET(INT_PTR Ptr) { return ((AHUD*)Ptr)->LastHUDRenderTime; }
+	DOTNET_EXPORT void E_PROP_AHUD_LastHUDRenderTime_SET(INT_PTR Ptr, float Value) { ((AHUD*)Ptr)->LastHUDRenderTime = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AHUD_RenderDelta_GET(INT_PTR Ptr) { return ((AHUD*)Ptr)->RenderDelta; }
+	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(INT_PTR Ptr, float Value) { ((AHUD*)Ptr)->RenderDelta = Value; }
+	
 	DOTNET_EXPORT void E_AHUD_ShowHUD(INT_PTR Self)
 	{
 		((AHUD*)Self)->ShowHUD();

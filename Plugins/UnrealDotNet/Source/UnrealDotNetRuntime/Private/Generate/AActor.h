@@ -5,16 +5,119 @@
 
 class E_PROTECTED_WRAP_AActor : protected AActor
 {
-public:
+	public:
 	bool HasNetOwner_WRAP()
 	{
 		return HasNetOwner();
 	}
+
 }
 ;
 
 extern "C"
 {
+	DOTNET_EXPORT float E_PROP_AActor_CustomTimeDilation_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->CustomTimeDilation; }
+	DOTNET_EXPORT void E_PROP_AActor_CustomTimeDilation_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->CustomTimeDilation = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bHidden_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bHidden; }
+	DOTNET_EXPORT void E_PROP_AActor_bHidden_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bHidden = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bNetTemporary_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bNetTemporary; }
+	DOTNET_EXPORT void E_PROP_AActor_bNetTemporary_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bNetTemporary = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bNetStartup_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bNetStartup; }
+	DOTNET_EXPORT void E_PROP_AActor_bNetStartup_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bNetStartup = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bOnlyRelevantToOwner_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bOnlyRelevantToOwner; }
+	DOTNET_EXPORT void E_PROP_AActor_bOnlyRelevantToOwner_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bOnlyRelevantToOwner = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bAlwaysRelevant_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bAlwaysRelevant; }
+	DOTNET_EXPORT void E_PROP_AActor_bAlwaysRelevant_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bAlwaysRelevant = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bReplicateMovement_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bReplicateMovement; }
+	DOTNET_EXPORT void E_PROP_AActor_bReplicateMovement_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bReplicateMovement = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bTearOff_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bTearOff; }
+	DOTNET_EXPORT void E_PROP_AActor_bTearOff_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bTearOff = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bExchangedRoles_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bExchangedRoles; }
+	DOTNET_EXPORT void E_PROP_AActor_bExchangedRoles_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bExchangedRoles = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bPendingNetUpdate_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bPendingNetUpdate; }
+	DOTNET_EXPORT void E_PROP_AActor_bPendingNetUpdate_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bPendingNetUpdate = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bNetLoadOnClient_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bNetLoadOnClient; }
+	DOTNET_EXPORT void E_PROP_AActor_bNetLoadOnClient_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bNetLoadOnClient = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bNetUseOwnerRelevancy_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bNetUseOwnerRelevancy; }
+	DOTNET_EXPORT void E_PROP_AActor_bNetUseOwnerRelevancy_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bNetUseOwnerRelevancy = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bBlockInput_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bBlockInput; }
+	DOTNET_EXPORT void E_PROP_AActor_bBlockInput_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bBlockInput = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bRunningUserConstructionScript_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bRunningUserConstructionScript; }
+	DOTNET_EXPORT void E_PROP_AActor_bRunningUserConstructionScript_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bRunningUserConstructionScript = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bAllowTickBeforeBeginPlay_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bAllowTickBeforeBeginPlay; }
+	DOTNET_EXPORT void E_PROP_AActor_bAllowTickBeforeBeginPlay_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bAllowTickBeforeBeginPlay = Value; }
+	
+	DOTNET_EXPORT int32 E_PROP_AActor_InputPriority_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->InputPriority; }
+	DOTNET_EXPORT void E_PROP_AActor_InputPriority_SET(INT_PTR Ptr, int32 Value) { ((AActor*)Ptr)->InputPriority = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_NetCullDistanceSquared_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->NetCullDistanceSquared; }
+	DOTNET_EXPORT void E_PROP_AActor_NetCullDistanceSquared_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->NetCullDistanceSquared = Value; }
+	
+	DOTNET_EXPORT int32 E_PROP_AActor_NetTag_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->NetTag; }
+	DOTNET_EXPORT void E_PROP_AActor_NetTag_SET(INT_PTR Ptr, int32 Value) { ((AActor*)Ptr)->NetTag = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_NetUpdateTime_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->NetUpdateTime; }
+	DOTNET_EXPORT void E_PROP_AActor_NetUpdateTime_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->NetUpdateTime = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_NetUpdateFrequency_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->NetUpdateFrequency; }
+	DOTNET_EXPORT void E_PROP_AActor_NetUpdateFrequency_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->NetUpdateFrequency = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_MinNetUpdateFrequency_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->MinNetUpdateFrequency; }
+	DOTNET_EXPORT void E_PROP_AActor_MinNetUpdateFrequency_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->MinNetUpdateFrequency = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_NetPriority_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->NetPriority; }
+	DOTNET_EXPORT void E_PROP_AActor_NetPriority_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->NetPriority = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_LastNetUpdateTime_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->LastNetUpdateTime; }
+	DOTNET_EXPORT void E_PROP_AActor_LastNetUpdateTime_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->LastNetUpdateTime = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bAutoDestroyWhenFinished_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bAutoDestroyWhenFinished; }
+	DOTNET_EXPORT void E_PROP_AActor_bAutoDestroyWhenFinished_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bAutoDestroyWhenFinished = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bCanBeDamaged_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bCanBeDamaged; }
+	DOTNET_EXPORT void E_PROP_AActor_bCanBeDamaged_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bCanBeDamaged = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bCollideWhenPlacing_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bCollideWhenPlacing; }
+	DOTNET_EXPORT void E_PROP_AActor_bCollideWhenPlacing_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bCollideWhenPlacing = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bFindCameraComponentWhenViewTarget_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bFindCameraComponentWhenViewTarget; }
+	DOTNET_EXPORT void E_PROP_AActor_bFindCameraComponentWhenViewTarget_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bFindCameraComponentWhenViewTarget = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bRelevantForNetworkReplays_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bRelevantForNetworkReplays; }
+	DOTNET_EXPORT void E_PROP_AActor_bRelevantForNetworkReplays_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bRelevantForNetworkReplays = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bGenerateOverlapEventsDuringLevelStreaming; }
+	DOTNET_EXPORT void E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bGenerateOverlapEventsDuringLevelStreaming = Value; }
+	
+	DOTNET_EXPORT float E_PROP_AActor_CreationTime_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->CreationTime; }
+	DOTNET_EXPORT void E_PROP_AActor_CreationTime_SET(INT_PTR Ptr, float Value) { ((AActor*)Ptr)->CreationTime = Value; }
+	
+	DOTNET_EXPORT APawn* E_PROP_AActor_Instigator_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->Instigator; }
+	DOTNET_EXPORT void E_PROP_AActor_Instigator_SET(INT_PTR Ptr, APawn* Value) { ((AActor*)Ptr)->Instigator = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bActorSeamlessTraveled_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bActorSeamlessTraveled; }
+	DOTNET_EXPORT void E_PROP_AActor_bActorSeamlessTraveled_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bActorSeamlessTraveled = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bIgnoresOriginShifting_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bIgnoresOriginShifting; }
+	DOTNET_EXPORT void E_PROP_AActor_bIgnoresOriginShifting_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bIgnoresOriginShifting = Value; }
+	
+	DOTNET_EXPORT uint8 E_PROP_AActor_bEnableAutoLODGeneration_GET(INT_PTR Ptr) { return ((AActor*)Ptr)->bEnableAutoLODGeneration; }
+	DOTNET_EXPORT void E_PROP_AActor_bEnableAutoLODGeneration_SET(INT_PTR Ptr, uint8 Value) { ((AActor*)Ptr)->bEnableAutoLODGeneration = Value; }
+	
 	DOTNET_EXPORT void E_AActor_OnRep_ReplicateMovement(INT_PTR Self)
 	{
 		((AActor*)Self)->OnRep_ReplicateMovement();
@@ -224,4 +327,5 @@ extern "C"
 		auto _p0 = *(FTransform*)Transform;
 		((AActor*)Self)->OnConstruction(_p0);
 	}
+
 }

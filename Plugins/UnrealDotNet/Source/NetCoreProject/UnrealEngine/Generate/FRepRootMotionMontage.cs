@@ -45,65 +45,65 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FRepRootMotionMontage_bIsActive_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FRepRootMotionMontage_bIsActive_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRepRootMotionMontage_bIsActive_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FRepRootMotionMontage_bIsActive_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FRepRootMotionMontage_Position_GET(IntPtr Ptr);
+		private static extern float E_PROP_FRepRootMotionMontage_Position_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRepRootMotionMontage_Position_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FRepRootMotionMontage_Position_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_Struct_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
+		private static extern FRotator E_PROP_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, FRotator Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FRepRootMotionMontage_bRelativePosition_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FRepRootMotionMontage_bRelativePosition_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRepRootMotionMontage_bRelativePosition_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FRepRootMotionMontage_bRelativePosition_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FRepRootMotionMontage_bRelativeRotation_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -124,32 +124,32 @@ namespace UnrealEngine
 		#region Property
 		public bool bIsActive
 		{
-			get => E_Struct_FRepRootMotionMontage_bIsActive_GET(NativePointer);
-			set => E_Struct_FRepRootMotionMontage_bIsActive_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_bIsActive_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_bIsActive_SET(NativePointer, value);
 		}
 
 		public float Position
 		{
-			get => E_Struct_FRepRootMotionMontage_Position_GET(NativePointer);
-			set => E_Struct_FRepRootMotionMontage_Position_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_Position_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Position_SET(NativePointer, value);
 		}
 
 		public FRotator Rotation
 		{
-			get => E_Struct_FRepRootMotionMontage_Rotation_GET(NativePointer);
-			set => E_Struct_FRepRootMotionMontage_Rotation_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_Rotation_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Rotation_SET(NativePointer, value);
 		}
 
 		public bool bRelativePosition
 		{
-			get => E_Struct_FRepRootMotionMontage_bRelativePosition_GET(NativePointer);
-			set => E_Struct_FRepRootMotionMontage_bRelativePosition_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_bRelativePosition_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_bRelativePosition_SET(NativePointer, value);
 		}
 
 		public bool bRelativeRotation
 		{
-			get => E_Struct_FRepRootMotionMontage_bRelativeRotation_GET(NativePointer);
-			set => E_Struct_FRepRootMotionMontage_bRelativeRotation_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(NativePointer, value);
 		}
 
 		#endregion

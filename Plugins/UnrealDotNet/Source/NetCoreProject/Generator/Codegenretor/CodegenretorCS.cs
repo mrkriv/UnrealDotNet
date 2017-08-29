@@ -89,8 +89,8 @@ namespace Generator
                 cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {ExportVariable(prop, false)}");
                 cw.OpenBlock();
 
-                cw.WriteLine($"get => E_Struct_{Class.Name}_{prop.Name}_GET(NativePointer);");
-                cw.WriteLine($"set => E_Struct_{Class.Name}_{prop.Name}_SET(NativePointer, value);");
+                cw.WriteLine($"get => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
+                cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, value);");
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -156,7 +156,7 @@ namespace Generator
 
                 foreach (var prop in Class.Property.Where(p => !p.IsConst))
                 {
-                    var baseName = $"E_Struct_{Class.Name}_{prop.Name}";
+                    var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                     WriteDLLImport(cw);
                     cw.WriteLine($"private static extern {prop.GetTypeCS()} {baseName}_GET(IntPtr Ptr);");

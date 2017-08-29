@@ -41,6 +41,11 @@ namespace Generator
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
+                foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
+                {
+                    GenerateProperty(cw, Class, prop);
+                }
+
                 foreach (var method in Class.Methods)
                 {
                     GenerateMethod(cw, method);
@@ -222,9 +227,7 @@ namespace Generator
                 cw.WriteLine();
                 cw.WriteLine($"#include \"CoreMinimal.h\"");
 
-                var Classes = SortByDependent(Structures);
-
-                foreach (var header in Classes.Select(GetSourceFileName).Distinct())
+                foreach (var header in Structures.Select(GetSourceFileName).Distinct())
                 {
                     cw.WriteLine($"#include \"{header}\"");
                 }
@@ -233,7 +236,7 @@ namespace Generator
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
-                foreach (var Class in Classes)
+                foreach (var Class in Structures)
                 {
                     cw.WriteLine();
                     cw.WriteLine($"/*\t{Class.Name}\t*/");
@@ -252,36 +255,6 @@ namespace Generator
                 cw.SaveToFile(OutputPath + ".h");
             }
 
-            private static List<Class> SortByDependent(IEnumerable<Class> Structures)
-            {
-                var result = new List<Class>();
-                var source = Structures.ToList();
-
-                while (source.Any())
-                {
-                    var any = false;
-                    for (var i = 0; i < source.Count; i++)
-                    {
-                        if (!source[i].PropertyDependent.All(cl => result.Contains(cl)))
-                            continue;
-
-                        result.Add(source[i]);
-                        source.RemoveAt(i);
-                        any = true;
-                        i--;
-                    }
-
-                    if (!any)
-                    {
-                        Console.WriteLine("These structures can not be exported because they have a cyclic dependence");
-                        source.ForEach(Console.WriteLine);
-                        break;
-                    }
-                }
-
-                return result;
-            }
-
             private static void GenerateStructUtilites(CoreWriter cw, Class Class)
             {
                 cw.Write($"{CPP_API} INT_PTR E_CreateStruct_{Class.Name}() {{ ");
@@ -290,29 +263,34 @@ namespace Generator
 
                 foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
                 {
-                    var baseName = $"E_Struct_{Class.Name}_{prop.Name}";
-
-                    var propClass = prop as ClassVariable;
-                    if (propClass?.ClassType.IsStructure == true)
-                    {
-                        var clName = propClass.ClassType.Name;
-                        cw.WriteLine(
-                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR) new {clName}((({Class.Name}*)Ptr)->{prop.Name}); }}");
-
-                        cw.WriteLine(
-                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
-                    }
-                    else
-                    {
-                        cw.WriteLine(
-                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
-
-                        cw.WriteLine(
-                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
-                    }
-
-                    cw.WriteLine();
+                    GenerateProperty(cw, Class, prop);
                 }
+            }
+
+            private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
+            {
+                var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
+
+                var propClass = prop as ClassVariable;
+                if (propClass?.ClassType.IsStructure == true)
+                {
+                    var clName = propClass.ClassType.Name;
+                    cw.WriteLine(
+                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR) new {clName}((({Class.Name}*)Ptr)->{prop.Name}); }}");
+
+                    cw.WriteLine(
+                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
+                }
+                else
+                {
+                    cw.WriteLine(
+                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
+
+                    cw.WriteLine(
+                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                }
+
+                cw.WriteLine();
             }
 
             #endregion Struct

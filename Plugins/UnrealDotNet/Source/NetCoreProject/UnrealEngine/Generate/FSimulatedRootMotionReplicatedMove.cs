@@ -41,40 +41,40 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FSimulatedRootMotionReplicatedMove_Time_GET(IntPtr Ptr);
+		private static extern float E_PROP_FSimulatedRootMotionReplicatedMove_Time_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FSimulatedRootMotionReplicatedMove_Time_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FSimulatedRootMotionReplicatedMove_Time_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRepRootMotionMontage E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_GET(IntPtr Ptr);
+		private static extern FRepRootMotionMontage E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_SET(IntPtr Ptr, FRepRootMotionMontage Value);
+		private static extern void E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_SET(IntPtr Ptr, FRepRootMotionMontage Value);
 		
 		#endregion
 		
 		#region Property
 		public float Time
 		{
-			get => E_Struct_FSimulatedRootMotionReplicatedMove_Time_GET(NativePointer);
-			set => E_Struct_FSimulatedRootMotionReplicatedMove_Time_SET(NativePointer, value);
+			get => E_PROP_FSimulatedRootMotionReplicatedMove_Time_GET(NativePointer);
+			set => E_PROP_FSimulatedRootMotionReplicatedMove_Time_SET(NativePointer, value);
 		}
 
 		public FRepRootMotionMontage RootMotion
 		{
-			get => E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_GET(NativePointer);
-			set => E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_SET(NativePointer, value);
+			get => E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_GET(NativePointer);
+			set => E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_SET(NativePointer, value);
 		}
 
 		#endregion

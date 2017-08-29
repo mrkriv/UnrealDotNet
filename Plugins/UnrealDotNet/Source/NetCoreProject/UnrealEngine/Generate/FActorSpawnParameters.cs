@@ -41,39 +41,39 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern AActor E_Struct_FActorSpawnParameters_Template_GET(IntPtr Ptr);
+		private static extern AActor E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FActorSpawnParameters_Template_SET(IntPtr Ptr, AActor Value);
+		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, AActor Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern AActor E_Struct_FActorSpawnParameters_Owner_GET(IntPtr Ptr);
+		private static extern AActor E_PROP_FActorSpawnParameters_Owner_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FActorSpawnParameters_Owner_SET(IntPtr Ptr, AActor Value);
+		private static extern void E_PROP_FActorSpawnParameters_Owner_SET(IntPtr Ptr, AActor Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern APawn E_Struct_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
+		private static extern APawn E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, APawn Value);
+		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, APawn Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -87,20 +87,20 @@ namespace UnrealEngine
 		#region Property
 		public AActor Template
 		{
-			get => E_Struct_FActorSpawnParameters_Template_GET(NativePointer);
-			set => E_Struct_FActorSpawnParameters_Template_SET(NativePointer, value);
+			get => E_PROP_FActorSpawnParameters_Template_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_Template_SET(NativePointer, value);
 		}
 
 		public AActor Owner
 		{
-			get => E_Struct_FActorSpawnParameters_Owner_GET(NativePointer);
-			set => E_Struct_FActorSpawnParameters_Owner_SET(NativePointer, value);
+			get => E_PROP_FActorSpawnParameters_Owner_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_Owner_SET(NativePointer, value);
 		}
 
 		public APawn Instigator
 		{
-			get => E_Struct_FActorSpawnParameters_Instigator_GET(NativePointer);
-			set => E_Struct_FActorSpawnParameters_Instigator_SET(NativePointer, value);
+			get => E_PROP_FActorSpawnParameters_Instigator_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_Instigator_SET(NativePointer, value);
 		}
 
 		#endregion

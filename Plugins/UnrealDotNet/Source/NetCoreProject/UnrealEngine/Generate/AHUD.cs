@@ -27,26 +27,26 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
+		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AHUD_RenderDelta_GET(IntPtr Ptr);
+		private static extern float E_PROP_AHUD_RenderDelta_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AHUD_RenderDelta_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AHUD_RenderDelta_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -134,8 +134,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float LastHUDRenderTime
 		{
-			get => E_Struct_AHUD_LastHUDRenderTime_GET(NativePointer);
-			set => E_Struct_AHUD_LastHUDRenderTime_SET(NativePointer, value);
+			get => E_PROP_AHUD_LastHUDRenderTime_GET(NativePointer);
+			set => E_PROP_AHUD_LastHUDRenderTime_SET(NativePointer, value);
 		}
 
 		
@@ -144,8 +144,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float RenderDelta
 		{
-			get => E_Struct_AHUD_RenderDelta_GET(NativePointer);
-			set => E_Struct_AHUD_RenderDelta_SET(NativePointer, value);
+			get => E_PROP_AHUD_RenderDelta_GET(NativePointer);
+			set => E_PROP_AHUD_RenderDelta_SET(NativePointer, value);
 		}
 
 		#endregion

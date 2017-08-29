@@ -45,52 +45,52 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector4_X_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector4_X_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector4_X_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector4_X_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector4_Y_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector4_Y_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector4_Y_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector4_Y_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector4_Z_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector4_Z_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector4_Z_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FVector4_W_GET(IntPtr Ptr);
+		private static extern float E_PROP_FVector4_W_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FVector4_W_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FVector4_W_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -171,8 +171,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float X
 		{
-			get => E_Struct_FVector4_X_GET(NativePointer);
-			set => E_Struct_FVector4_X_SET(NativePointer, value);
+			get => E_PROP_FVector4_X_GET(NativePointer);
+			set => E_PROP_FVector4_X_SET(NativePointer, value);
 		}
 
 		
@@ -181,8 +181,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Y
 		{
-			get => E_Struct_FVector4_Y_GET(NativePointer);
-			set => E_Struct_FVector4_Y_SET(NativePointer, value);
+			get => E_PROP_FVector4_Y_GET(NativePointer);
+			set => E_PROP_FVector4_Y_SET(NativePointer, value);
 		}
 
 		
@@ -191,8 +191,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Z
 		{
-			get => E_Struct_FVector4_Z_GET(NativePointer);
-			set => E_Struct_FVector4_Z_SET(NativePointer, value);
+			get => E_PROP_FVector4_Z_GET(NativePointer);
+			set => E_PROP_FVector4_Z_SET(NativePointer, value);
 		}
 
 		
@@ -201,8 +201,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float W
 		{
-			get => E_Struct_FVector4_W_GET(NativePointer);
-			set => E_Struct_FVector4_W_SET(NativePointer, value);
+			get => E_PROP_FVector4_W_GET(NativePointer);
+			set => E_PROP_FVector4_W_SET(NativePointer, value);
 		}
 
 		#endregion

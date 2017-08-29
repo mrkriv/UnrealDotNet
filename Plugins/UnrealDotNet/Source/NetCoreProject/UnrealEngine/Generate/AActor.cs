@@ -25,494 +25,494 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_CustomTimeDilation_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_CustomTimeDilation_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_CustomTimeDilation_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_CustomTimeDilation_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bHidden_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bHidden_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bHidden_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bHidden_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bNetTemporary_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bNetTemporary_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bNetTemporary_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bNetTemporary_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bNetStartup_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bNetStartup_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bNetStartup_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bNetStartup_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bOnlyRelevantToOwner_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bOnlyRelevantToOwner_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bOnlyRelevantToOwner_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bOnlyRelevantToOwner_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bAlwaysRelevant_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bAlwaysRelevant_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bAlwaysRelevant_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bAlwaysRelevant_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bReplicateMovement_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bReplicateMovement_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bReplicateMovement_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bReplicateMovement_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bTearOff_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bTearOff_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bTearOff_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bTearOff_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bExchangedRoles_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bExchangedRoles_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bExchangedRoles_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bExchangedRoles_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bPendingNetUpdate_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bPendingNetUpdate_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bPendingNetUpdate_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bPendingNetUpdate_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bNetLoadOnClient_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bNetLoadOnClient_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bNetLoadOnClient_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bNetLoadOnClient_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bNetUseOwnerRelevancy_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bNetUseOwnerRelevancy_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bNetUseOwnerRelevancy_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bNetUseOwnerRelevancy_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bBlockInput_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bBlockInput_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bBlockInput_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bBlockInput_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bRunningUserConstructionScript_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bRunningUserConstructionScript_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bRunningUserConstructionScript_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bRunningUserConstructionScript_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bAllowTickBeforeBeginPlay_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bAllowTickBeforeBeginPlay_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bAllowTickBeforeBeginPlay_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bAllowTickBeforeBeginPlay_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bReplicates_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bReplicates_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bReplicates_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bReplicates_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_AActor_InputPriority_GET(IntPtr Ptr);
+		private static extern int E_PROP_AActor_InputPriority_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_InputPriority_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_AActor_InputPriority_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_NetCullDistanceSquared_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_NetCullDistanceSquared_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_NetCullDistanceSquared_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_NetCullDistanceSquared_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_AActor_NetTag_GET(IntPtr Ptr);
+		private static extern int E_PROP_AActor_NetTag_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_NetTag_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_AActor_NetTag_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_NetUpdateTime_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_NetUpdateTime_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_NetUpdateTime_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_NetUpdateTime_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_NetUpdateFrequency_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_NetUpdateFrequency_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_NetUpdateFrequency_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_NetUpdateFrequency_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_MinNetUpdateFrequency_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_MinNetUpdateFrequency_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_MinNetUpdateFrequency_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_MinNetUpdateFrequency_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_NetPriority_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_NetPriority_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_NetPriority_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_NetPriority_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_LastNetUpdateTime_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_LastNetUpdateTime_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_LastNetUpdateTime_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_LastNetUpdateTime_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bAutoDestroyWhenFinished_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bAutoDestroyWhenFinished_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bAutoDestroyWhenFinished_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bAutoDestroyWhenFinished_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bCanBeDamaged_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bCanBeDamaged_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bCanBeDamaged_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bCanBeDamaged_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bCollideWhenPlacing_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bCollideWhenPlacing_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bCollideWhenPlacing_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bCollideWhenPlacing_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bFindCameraComponentWhenViewTarget_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bFindCameraComponentWhenViewTarget_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bFindCameraComponentWhenViewTarget_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bFindCameraComponentWhenViewTarget_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bRelevantForNetworkReplays_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bRelevantForNetworkReplays_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bRelevantForNetworkReplays_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bRelevantForNetworkReplays_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bGenerateOverlapEventsDuringLevelStreaming_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bGenerateOverlapEventsDuringLevelStreaming_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bCanBeInCluster_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bCanBeInCluster_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bCanBeInCluster_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bCanBeInCluster_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_CreationTime_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_CreationTime_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_CreationTime_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_CreationTime_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern APawn E_Struct_AActor_Instigator_GET(IntPtr Ptr);
+		private static extern APawn E_PROP_AActor_Instigator_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_Instigator_SET(IntPtr Ptr, APawn Value);
+		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, APawn Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_AActor_InitialLifeSpan_GET(IntPtr Ptr);
+		private static extern float E_PROP_AActor_InitialLifeSpan_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_InitialLifeSpan_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_AActor_InitialLifeSpan_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bActorSeamlessTraveled_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bActorSeamlessTraveled_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bActorSeamlessTraveled_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bActorSeamlessTraveled_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bIgnoresOriginShifting_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bIgnoresOriginShifting_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bIgnoresOriginShifting_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bIgnoresOriginShifting_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_AActor_bEnableAutoLODGeneration_GET(IntPtr Ptr);
+		private static extern byte E_PROP_AActor_bEnableAutoLODGeneration_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_AActor_bEnableAutoLODGeneration_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_AActor_bEnableAutoLODGeneration_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -754,8 +754,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float CustomTimeDilation
 		{
-			get => E_Struct_AActor_CustomTimeDilation_GET(NativePointer);
-			set => E_Struct_AActor_CustomTimeDilation_SET(NativePointer, value);
+			get => E_PROP_AActor_CustomTimeDilation_GET(NativePointer);
+			set => E_PROP_AActor_CustomTimeDilation_SET(NativePointer, value);
 		}
 
 		
@@ -765,20 +765,20 @@ namespace UnrealEngine
 		/// </summary>
 		public byte ActorHiddenInGame
 		{
-			get => E_Struct_AActor_bHidden_GET(NativePointer);
-			set => E_Struct_AActor_bHidden_SET(NativePointer, value);
+			get => E_PROP_AActor_bHidden_GET(NativePointer);
+			set => E_PROP_AActor_bHidden_SET(NativePointer, value);
 		}
 
 		public byte bNetTemporary
 		{
-			get => E_Struct_AActor_bNetTemporary_GET(NativePointer);
-			set => E_Struct_AActor_bNetTemporary_SET(NativePointer, value);
+			get => E_PROP_AActor_bNetTemporary_GET(NativePointer);
+			set => E_PROP_AActor_bNetTemporary_SET(NativePointer, value);
 		}
 
 		public byte bNetStartup
 		{
-			get => E_Struct_AActor_bNetStartup_GET(NativePointer);
-			set => E_Struct_AActor_bNetStartup_SET(NativePointer, value);
+			get => E_PROP_AActor_bNetStartup_GET(NativePointer);
+			set => E_PROP_AActor_bNetStartup_SET(NativePointer, value);
 		}
 
 		
@@ -787,8 +787,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bOnlyRelevantToOwner
 		{
-			get => E_Struct_AActor_bOnlyRelevantToOwner_GET(NativePointer);
-			set => E_Struct_AActor_bOnlyRelevantToOwner_SET(NativePointer, value);
+			get => E_PROP_AActor_bOnlyRelevantToOwner_GET(NativePointer);
+			set => E_PROP_AActor_bOnlyRelevantToOwner_SET(NativePointer, value);
 		}
 
 		
@@ -797,8 +797,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bAlwaysRelevant
 		{
-			get => E_Struct_AActor_bAlwaysRelevant_GET(NativePointer);
-			set => E_Struct_AActor_bAlwaysRelevant_SET(NativePointer, value);
+			get => E_PROP_AActor_bAlwaysRelevant_GET(NativePointer);
+			set => E_PROP_AActor_bAlwaysRelevant_SET(NativePointer, value);
 		}
 
 		
@@ -810,20 +810,20 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bReplicateMovement
 		{
-			get => E_Struct_AActor_bReplicateMovement_GET(NativePointer);
-			set => E_Struct_AActor_bReplicateMovement_SET(NativePointer, value);
+			get => E_PROP_AActor_bReplicateMovement_GET(NativePointer);
+			set => E_PROP_AActor_bReplicateMovement_SET(NativePointer, value);
 		}
 
 		public byte bTearOff
 		{
-			get => E_Struct_AActor_bTearOff_GET(NativePointer);
-			set => E_Struct_AActor_bTearOff_SET(NativePointer, value);
+			get => E_PROP_AActor_bTearOff_GET(NativePointer);
+			set => E_PROP_AActor_bTearOff_SET(NativePointer, value);
 		}
 
 		public byte bExchangedRoles
 		{
-			get => E_Struct_AActor_bExchangedRoles_GET(NativePointer);
-			set => E_Struct_AActor_bExchangedRoles_SET(NativePointer, value);
+			get => E_PROP_AActor_bExchangedRoles_GET(NativePointer);
+			set => E_PROP_AActor_bExchangedRoles_SET(NativePointer, value);
 		}
 
 		
@@ -832,8 +832,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bPendingNetUpdate
 		{
-			get => E_Struct_AActor_bPendingNetUpdate_GET(NativePointer);
-			set => E_Struct_AActor_bPendingNetUpdate_SET(NativePointer, value);
+			get => E_PROP_AActor_bPendingNetUpdate_GET(NativePointer);
+			set => E_PROP_AActor_bPendingNetUpdate_SET(NativePointer, value);
 		}
 
 		
@@ -842,8 +842,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bNetLoadOnClient
 		{
-			get => E_Struct_AActor_bNetLoadOnClient_GET(NativePointer);
-			set => E_Struct_AActor_bNetLoadOnClient_SET(NativePointer, value);
+			get => E_PROP_AActor_bNetLoadOnClient_GET(NativePointer);
+			set => E_PROP_AActor_bNetLoadOnClient_SET(NativePointer, value);
 		}
 
 		
@@ -852,8 +852,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bNetUseOwnerRelevancy
 		{
-			get => E_Struct_AActor_bNetUseOwnerRelevancy_GET(NativePointer);
-			set => E_Struct_AActor_bNetUseOwnerRelevancy_SET(NativePointer, value);
+			get => E_PROP_AActor_bNetUseOwnerRelevancy_GET(NativePointer);
+			set => E_PROP_AActor_bNetUseOwnerRelevancy_SET(NativePointer, value);
 		}
 
 		
@@ -862,8 +862,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bBlockInput
 		{
-			get => E_Struct_AActor_bBlockInput_GET(NativePointer);
-			set => E_Struct_AActor_bBlockInput_SET(NativePointer, value);
+			get => E_PROP_AActor_bBlockInput_GET(NativePointer);
+			set => E_PROP_AActor_bBlockInput_SET(NativePointer, value);
 		}
 
 		
@@ -872,8 +872,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bRunningUserConstructionScript
 		{
-			get => E_Struct_AActor_bRunningUserConstructionScript_GET(NativePointer);
-			set => E_Struct_AActor_bRunningUserConstructionScript_SET(NativePointer, value);
+			get => E_PROP_AActor_bRunningUserConstructionScript_GET(NativePointer);
+			set => E_PROP_AActor_bRunningUserConstructionScript_SET(NativePointer, value);
 		}
 
 		
@@ -884,8 +884,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bAllowTickBeforeBeginPlay
 		{
-			get => E_Struct_AActor_bAllowTickBeforeBeginPlay_GET(NativePointer);
-			set => E_Struct_AActor_bAllowTickBeforeBeginPlay_SET(NativePointer, value);
+			get => E_PROP_AActor_bAllowTickBeforeBeginPlay_GET(NativePointer);
+			set => E_PROP_AActor_bAllowTickBeforeBeginPlay_SET(NativePointer, value);
 		}
 
 		
@@ -895,8 +895,8 @@ namespace UnrealEngine
 		/// </summary>
 		protected byte bReplicates
 		{
-			get => E_Struct_AActor_bReplicates_GET(NativePointer);
-			set => E_Struct_AActor_bReplicates_SET(NativePointer, value);
+			get => E_PROP_AActor_bReplicates_GET(NativePointer);
+			set => E_PROP_AActor_bReplicates_SET(NativePointer, value);
 		}
 
 		
@@ -905,8 +905,8 @@ namespace UnrealEngine
 		/// </summary>
 		public int InputPriority
 		{
-			get => E_Struct_AActor_InputPriority_GET(NativePointer);
-			set => E_Struct_AActor_InputPriority_SET(NativePointer, value);
+			get => E_PROP_AActor_InputPriority_GET(NativePointer);
+			set => E_PROP_AActor_InputPriority_SET(NativePointer, value);
 		}
 
 		
@@ -915,14 +915,14 @@ namespace UnrealEngine
 		/// </summary>
 		public float NetCullDistanceSquared
 		{
-			get => E_Struct_AActor_NetCullDistanceSquared_GET(NativePointer);
-			set => E_Struct_AActor_NetCullDistanceSquared_SET(NativePointer, value);
+			get => E_PROP_AActor_NetCullDistanceSquared_GET(NativePointer);
+			set => E_PROP_AActor_NetCullDistanceSquared_SET(NativePointer, value);
 		}
 
 		public int NetTag
 		{
-			get => E_Struct_AActor_NetTag_GET(NativePointer);
-			set => E_Struct_AActor_NetTag_SET(NativePointer, value);
+			get => E_PROP_AActor_NetTag_GET(NativePointer);
+			set => E_PROP_AActor_NetTag_SET(NativePointer, value);
 		}
 
 		
@@ -931,8 +931,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float NetUpdateTime
 		{
-			get => E_Struct_AActor_NetUpdateTime_GET(NativePointer);
-			set => E_Struct_AActor_NetUpdateTime_SET(NativePointer, value);
+			get => E_PROP_AActor_NetUpdateTime_GET(NativePointer);
+			set => E_PROP_AActor_NetUpdateTime_SET(NativePointer, value);
 		}
 
 		
@@ -941,8 +941,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float NetUpdateFrequency
 		{
-			get => E_Struct_AActor_NetUpdateFrequency_GET(NativePointer);
-			set => E_Struct_AActor_NetUpdateFrequency_SET(NativePointer, value);
+			get => E_PROP_AActor_NetUpdateFrequency_GET(NativePointer);
+			set => E_PROP_AActor_NetUpdateFrequency_SET(NativePointer, value);
 		}
 
 		
@@ -951,8 +951,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float MinNetUpdateFrequency
 		{
-			get => E_Struct_AActor_MinNetUpdateFrequency_GET(NativePointer);
-			set => E_Struct_AActor_MinNetUpdateFrequency_SET(NativePointer, value);
+			get => E_PROP_AActor_MinNetUpdateFrequency_GET(NativePointer);
+			set => E_PROP_AActor_MinNetUpdateFrequency_SET(NativePointer, value);
 		}
 
 		
@@ -961,8 +961,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float NetPriority
 		{
-			get => E_Struct_AActor_NetPriority_GET(NativePointer);
-			set => E_Struct_AActor_NetPriority_SET(NativePointer, value);
+			get => E_PROP_AActor_NetPriority_GET(NativePointer);
+			set => E_PROP_AActor_NetPriority_SET(NativePointer, value);
 		}
 
 		
@@ -972,8 +972,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float LastNetUpdateTime
 		{
-			get => E_Struct_AActor_LastNetUpdateTime_GET(NativePointer);
-			set => E_Struct_AActor_LastNetUpdateTime_SET(NativePointer, value);
+			get => E_PROP_AActor_LastNetUpdateTime_GET(NativePointer);
+			set => E_PROP_AActor_LastNetUpdateTime_SET(NativePointer, value);
 		}
 
 		
@@ -982,8 +982,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bAutoDestroyWhenFinished
 		{
-			get => E_Struct_AActor_bAutoDestroyWhenFinished_GET(NativePointer);
-			set => E_Struct_AActor_bAutoDestroyWhenFinished_SET(NativePointer, value);
+			get => E_PROP_AActor_bAutoDestroyWhenFinished_GET(NativePointer);
+			set => E_PROP_AActor_bAutoDestroyWhenFinished_SET(NativePointer, value);
 		}
 
 		
@@ -994,14 +994,14 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bCanBeDamaged
 		{
-			get => E_Struct_AActor_bCanBeDamaged_GET(NativePointer);
-			set => E_Struct_AActor_bCanBeDamaged_SET(NativePointer, value);
+			get => E_PROP_AActor_bCanBeDamaged_GET(NativePointer);
+			set => E_PROP_AActor_bCanBeDamaged_SET(NativePointer, value);
 		}
 
 		public byte bCollideWhenPlacing
 		{
-			get => E_Struct_AActor_bCollideWhenPlacing_GET(NativePointer);
-			set => E_Struct_AActor_bCollideWhenPlacing_SET(NativePointer, value);
+			get => E_PROP_AActor_bCollideWhenPlacing_GET(NativePointer);
+			set => E_PROP_AActor_bCollideWhenPlacing_SET(NativePointer, value);
 		}
 
 		
@@ -1010,14 +1010,14 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bFindCameraComponentWhenViewTarget
 		{
-			get => E_Struct_AActor_bFindCameraComponentWhenViewTarget_GET(NativePointer);
-			set => E_Struct_AActor_bFindCameraComponentWhenViewTarget_SET(NativePointer, value);
+			get => E_PROP_AActor_bFindCameraComponentWhenViewTarget_GET(NativePointer);
+			set => E_PROP_AActor_bFindCameraComponentWhenViewTarget_SET(NativePointer, value);
 		}
 
 		public byte bRelevantForNetworkReplays
 		{
-			get => E_Struct_AActor_bRelevantForNetworkReplays_GET(NativePointer);
-			set => E_Struct_AActor_bRelevantForNetworkReplays_SET(NativePointer, value);
+			get => E_PROP_AActor_bRelevantForNetworkReplays_GET(NativePointer);
+			set => E_PROP_AActor_bRelevantForNetworkReplays_SET(NativePointer, value);
 		}
 
 		
@@ -1026,8 +1026,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bGenerateOverlapEventsDuringLevelStreaming
 		{
-			get => E_Struct_AActor_bGenerateOverlapEventsDuringLevelStreaming_GET(NativePointer);
-			set => E_Struct_AActor_bGenerateOverlapEventsDuringLevelStreaming_SET(NativePointer, value);
+			get => E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_GET(NativePointer);
+			set => E_PROP_AActor_bGenerateOverlapEventsDuringLevelStreaming_SET(NativePointer, value);
 		}
 
 		
@@ -1036,8 +1036,8 @@ namespace UnrealEngine
 		/// </summary>
 		protected byte bCanBeInCluster
 		{
-			get => E_Struct_AActor_bCanBeInCluster_GET(NativePointer);
-			set => E_Struct_AActor_bCanBeInCluster_SET(NativePointer, value);
+			get => E_PROP_AActor_bCanBeInCluster_GET(NativePointer);
+			set => E_PROP_AActor_bCanBeInCluster_SET(NativePointer, value);
 		}
 
 		
@@ -1047,8 +1047,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float CreationTime
 		{
-			get => E_Struct_AActor_CreationTime_GET(NativePointer);
-			set => E_Struct_AActor_CreationTime_SET(NativePointer, value);
+			get => E_PROP_AActor_CreationTime_GET(NativePointer);
+			set => E_PROP_AActor_CreationTime_SET(NativePointer, value);
 		}
 
 		
@@ -1057,8 +1057,8 @@ namespace UnrealEngine
 		/// </summary>
 		public APawn Instigator
 		{
-			get => E_Struct_AActor_Instigator_GET(NativePointer);
-			set => E_Struct_AActor_Instigator_SET(NativePointer, value);
+			get => E_PROP_AActor_Instigator_GET(NativePointer);
+			set => E_PROP_AActor_Instigator_SET(NativePointer, value);
 		}
 
 		
@@ -1067,20 +1067,20 @@ namespace UnrealEngine
 		/// </summary>
 		protected float InitialLifeSpan
 		{
-			get => E_Struct_AActor_InitialLifeSpan_GET(NativePointer);
-			set => E_Struct_AActor_InitialLifeSpan_SET(NativePointer, value);
+			get => E_PROP_AActor_InitialLifeSpan_GET(NativePointer);
+			set => E_PROP_AActor_InitialLifeSpan_SET(NativePointer, value);
 		}
 
 		protected byte bAllowReceiveTickEventOnDedicatedServer
 		{
-			get => E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(NativePointer);
-			set => E_Struct_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(NativePointer, value);
+			get => E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(NativePointer);
+			set => E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(NativePointer, value);
 		}
 
 		public byte bActorSeamlessTraveled
 		{
-			get => E_Struct_AActor_bActorSeamlessTraveled_GET(NativePointer);
-			set => E_Struct_AActor_bActorSeamlessTraveled_SET(NativePointer, value);
+			get => E_PROP_AActor_bActorSeamlessTraveled_GET(NativePointer);
+			set => E_PROP_AActor_bActorSeamlessTraveled_SET(NativePointer, value);
 		}
 
 		
@@ -1089,8 +1089,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bIgnoresOriginShifting
 		{
-			get => E_Struct_AActor_bIgnoresOriginShifting_GET(NativePointer);
-			set => E_Struct_AActor_bIgnoresOriginShifting_SET(NativePointer, value);
+			get => E_PROP_AActor_bIgnoresOriginShifting_GET(NativePointer);
+			set => E_PROP_AActor_bIgnoresOriginShifting_SET(NativePointer, value);
 		}
 
 		
@@ -1099,8 +1099,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte bEnableAutoLODGeneration
 		{
-			get => E_Struct_AActor_bEnableAutoLODGeneration_GET(NativePointer);
-			set => E_Struct_AActor_bEnableAutoLODGeneration_SET(NativePointer, value);
+			get => E_PROP_AActor_bEnableAutoLODGeneration_GET(NativePointer);
+			set => E_PROP_AActor_bEnableAutoLODGeneration_SET(NativePointer, value);
 		}
 
 		#endregion

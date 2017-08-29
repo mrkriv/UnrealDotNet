@@ -23,65 +23,65 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_APawn_BaseEyeHeight_GET(IntPtr Ptr);
+		private static extern float E_PROP_APawn_BaseEyeHeight_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_APawn_RemoteViewPitch_GET(IntPtr Ptr);
+		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_APawn_AllowedYawError_GET(IntPtr Ptr);
+		private static extern float E_PROP_APawn_AllowedYawError_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_APawn_AllowedYawError_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_APawn_AllowedYawError_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_APawn_ControlInputVector_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_APawn_ControlInputVector_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_APawn_ControlInputVector_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_APawn_ControlInputVector_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_APawn_LastControlInputVector_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_APawn_LastControlInputVector_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_APawn_LastControlInputVector_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_APawn_LastControlInputVector_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -211,14 +211,14 @@ namespace UnrealEngine
 		/// </summary>
 		public float BaseEyeHeight
 		{
-			get => E_Struct_APawn_BaseEyeHeight_GET(NativePointer);
-			set => E_Struct_APawn_BaseEyeHeight_SET(NativePointer, value);
+			get => E_PROP_APawn_BaseEyeHeight_GET(NativePointer);
+			set => E_PROP_APawn_BaseEyeHeight_SET(NativePointer, value);
 		}
 
 		public byte RemoteViewPitch
 		{
-			get => E_Struct_APawn_RemoteViewPitch_GET(NativePointer);
-			set => E_Struct_APawn_RemoteViewPitch_SET(NativePointer, value);
+			get => E_PROP_APawn_RemoteViewPitch_GET(NativePointer);
+			set => E_PROP_APawn_RemoteViewPitch_SET(NativePointer, value);
 		}
 
 		
@@ -227,20 +227,20 @@ namespace UnrealEngine
 		/// </summary>
 		public float AllowedYawError
 		{
-			get => E_Struct_APawn_AllowedYawError_GET(NativePointer);
-			set => E_Struct_APawn_AllowedYawError_SET(NativePointer, value);
+			get => E_PROP_APawn_AllowedYawError_GET(NativePointer);
+			set => E_PROP_APawn_AllowedYawError_SET(NativePointer, value);
 		}
 
 		protected FVector ControlInputVector
 		{
-			get => E_Struct_APawn_ControlInputVector_GET(NativePointer);
-			set => E_Struct_APawn_ControlInputVector_SET(NativePointer, value);
+			get => E_PROP_APawn_ControlInputVector_GET(NativePointer);
+			set => E_PROP_APawn_ControlInputVector_SET(NativePointer, value);
 		}
 
 		protected FVector LastControlInputVector
 		{
-			get => E_Struct_APawn_LastControlInputVector_GET(NativePointer);
-			set => E_Struct_APawn_LastControlInputVector_SET(NativePointer, value);
+			get => E_PROP_APawn_LastControlInputVector_GET(NativePointer);
+			set => E_PROP_APawn_LastControlInputVector_SET(NativePointer, value);
 		}
 
 		#endregion

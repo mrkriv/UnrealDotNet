@@ -47,39 +47,39 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_FBox_Min_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_FBox_Min_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox_Min_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FBox_Min_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_Struct_FBox_Max_GET(IntPtr Ptr);
+		private static extern FVector E_PROP_FBox_Max_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox_Max_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FBox_Max_SET(IntPtr Ptr, FVector Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_FBox_IsValid_GET(IntPtr Ptr);
+		private static extern byte E_PROP_FBox_IsValid_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FBox_IsValid_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_FBox_IsValid_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -160,8 +160,8 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector Min
 		{
-			get => E_Struct_FBox_Min_GET(NativePointer);
-			set => E_Struct_FBox_Min_SET(NativePointer, value);
+			get => E_PROP_FBox_Min_GET(NativePointer);
+			set => E_PROP_FBox_Min_SET(NativePointer, value);
 		}
 
 		
@@ -170,8 +170,8 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector Max
 		{
-			get => E_Struct_FBox_Max_GET(NativePointer);
-			set => E_Struct_FBox_Max_SET(NativePointer, value);
+			get => E_PROP_FBox_Max_GET(NativePointer);
+			set => E_PROP_FBox_Max_SET(NativePointer, value);
 		}
 
 		
@@ -180,8 +180,8 @@ namespace UnrealEngine
 		/// </summary>
 		public byte IsValid
 		{
-			get => E_Struct_FBox_IsValid_GET(NativePointer);
-			set => E_Struct_FBox_IsValid_SET(NativePointer, value);
+			get => E_PROP_FBox_IsValid_GET(NativePointer);
+			set => E_PROP_FBox_IsValid_SET(NativePointer, value);
 		}
 
 		#endregion

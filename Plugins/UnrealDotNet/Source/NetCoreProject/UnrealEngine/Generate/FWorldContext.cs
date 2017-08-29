@@ -59,52 +59,52 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern byte E_Struct_FWorldContext_TravelType_GET(IntPtr Ptr);
+		private static extern byte E_PROP_FWorldContext_TravelType_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FWorldContext_TravelType_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_FWorldContext_TravelType_SET(IntPtr Ptr, byte Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern int E_Struct_FWorldContext_PIEInstance_GET(IntPtr Ptr);
+		private static extern int E_PROP_FWorldContext_PIEInstance_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FWorldContext_PIEInstance_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_FWorldContext_PIEInstance_SET(IntPtr Ptr, int Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FWorldContext_RunAsDedicated_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FWorldContext_RunAsDedicated_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FWorldContext_RunAsDedicated_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FWorldContext_RunAsDedicated_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FWorldContext_bWaitingOnOnlineSubsystem_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FWorldContext_bWaitingOnOnlineSubsystem_SET(IntPtr Ptr, bool Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -129,20 +129,20 @@ namespace UnrealEngine
 		/// </summary>
 		public byte TravelType
 		{
-			get => E_Struct_FWorldContext_TravelType_GET(NativePointer);
-			set => E_Struct_FWorldContext_TravelType_SET(NativePointer, value);
+			get => E_PROP_FWorldContext_TravelType_GET(NativePointer);
+			set => E_PROP_FWorldContext_TravelType_SET(NativePointer, value);
 		}
 
 		public int PIEInstance
 		{
-			get => E_Struct_FWorldContext_PIEInstance_GET(NativePointer);
-			set => E_Struct_FWorldContext_PIEInstance_SET(NativePointer, value);
+			get => E_PROP_FWorldContext_PIEInstance_GET(NativePointer);
+			set => E_PROP_FWorldContext_PIEInstance_SET(NativePointer, value);
 		}
 
 		public bool RunAsDedicated
 		{
-			get => E_Struct_FWorldContext_RunAsDedicated_GET(NativePointer);
-			set => E_Struct_FWorldContext_RunAsDedicated_SET(NativePointer, value);
+			get => E_PROP_FWorldContext_RunAsDedicated_GET(NativePointer);
+			set => E_PROP_FWorldContext_RunAsDedicated_SET(NativePointer, value);
 		}
 
 		
@@ -151,8 +151,8 @@ namespace UnrealEngine
 		/// </summary>
 		public bool bWaitingOnOnlineSubsystem
 		{
-			get => E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_GET(NativePointer);
-			set => E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_SET(NativePointer, value);
+			get => E_PROP_FWorldContext_bWaitingOnOnlineSubsystem_GET(NativePointer);
+			set => E_PROP_FWorldContext_bWaitingOnOnlineSubsystem_SET(NativePointer, value);
 		}
 
 		#endregion

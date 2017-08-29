@@ -13,6 +13,8 @@ namespace GameLogic
 
         public override void OnBeginPlay()
         {
+            ULog(ActorHiddenInGame.ToString());
+
             base.OnBeginPlay();
         }
 

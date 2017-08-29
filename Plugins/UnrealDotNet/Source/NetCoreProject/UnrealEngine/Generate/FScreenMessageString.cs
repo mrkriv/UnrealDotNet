@@ -45,59 +45,59 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FScreenMessageString_TimeToDisplay_GET(IntPtr Ptr);
+		private static extern float E_PROP_FScreenMessageString_TimeToDisplay_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FScreenMessageString_TimeToDisplay_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FScreenMessageString_TimeToDisplay_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FScreenMessageString_CurrentTimeDisplayed_GET(IntPtr Ptr);
+		private static extern float E_PROP_FScreenMessageString_CurrentTimeDisplayed_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FScreenMessageString_CurrentTimeDisplayed_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FScreenMessageString_CurrentTimeDisplayed_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_Struct_FScreenMessageString_TextScale_GET(IntPtr Ptr);
+		private static extern FVector2D E_PROP_FScreenMessageString_TextScale_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FScreenMessageString_TextScale_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FScreenMessageString_TextScale_SET(IntPtr Ptr, FVector2D Value);
 		
 		#endregion
 		
 		#region Property
 		public float TimeToDisplay
 		{
-			get => E_Struct_FScreenMessageString_TimeToDisplay_GET(NativePointer);
-			set => E_Struct_FScreenMessageString_TimeToDisplay_SET(NativePointer, value);
+			get => E_PROP_FScreenMessageString_TimeToDisplay_GET(NativePointer);
+			set => E_PROP_FScreenMessageString_TimeToDisplay_SET(NativePointer, value);
 		}
 
 		public float CurrentTimeDisplayed
 		{
-			get => E_Struct_FScreenMessageString_CurrentTimeDisplayed_GET(NativePointer);
-			set => E_Struct_FScreenMessageString_CurrentTimeDisplayed_SET(NativePointer, value);
+			get => E_PROP_FScreenMessageString_CurrentTimeDisplayed_GET(NativePointer);
+			set => E_PROP_FScreenMessageString_CurrentTimeDisplayed_SET(NativePointer, value);
 		}
 
 		public FVector2D TextScale
 		{
-			get => E_Struct_FScreenMessageString_TextScale_GET(NativePointer);
-			set => E_Struct_FScreenMessageString_TextScale_SET(NativePointer, value);
+			get => E_PROP_FScreenMessageString_TextScale_GET(NativePointer);
+			set => E_PROP_FScreenMessageString_TextScale_SET(NativePointer, value);
 		}
 
 		#endregion

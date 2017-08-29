@@ -41,21 +41,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_Struct_FClassRedirect_InstanceOnly_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FClassRedirect_InstanceOnly_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FClassRedirect_InstanceOnly_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FClassRedirect_InstanceOnly_SET(IntPtr Ptr, bool Value);
 		
 		#endregion
 		
 		#region Property
 		public bool InstanceOnly
 		{
-			get => E_Struct_FClassRedirect_InstanceOnly_GET(NativePointer);
-			set => E_Struct_FClassRedirect_InstanceOnly_SET(NativePointer, value);
+			get => E_PROP_FClassRedirect_InstanceOnly_GET(NativePointer);
+			set => E_PROP_FClassRedirect_InstanceOnly_SET(NativePointer, value);
 		}
 
 		#endregion

@@ -41,21 +41,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FStatColorMapEntry_In_GET(IntPtr Ptr);
+		private static extern float E_PROP_FStatColorMapEntry_In_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FStatColorMapEntry_In_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FStatColorMapEntry_In_SET(IntPtr Ptr, float Value);
 		
 		#endregion
 		
 		#region Property
 		public float In
 		{
-			get => E_Struct_FStatColorMapEntry_In_GET(NativePointer);
-			set => E_Struct_FStatColorMapEntry_In_SET(NativePointer, value);
+			get => E_PROP_FStatColorMapEntry_In_GET(NativePointer);
+			set => E_PROP_FStatColorMapEntry_In_SET(NativePointer, value);
 		}
 
 		#endregion

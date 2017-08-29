@@ -46,39 +46,39 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FRotator_Pitch_GET(IntPtr Ptr);
+		private static extern float E_PROP_FRotator_Pitch_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRotator_Pitch_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FRotator_Pitch_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FRotator_Yaw_GET(IntPtr Ptr);
+		private static extern float E_PROP_FRotator_Yaw_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRotator_Yaw_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FRotator_Yaw_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_Struct_FRotator_Roll_GET(IntPtr Ptr);
+		private static extern float E_PROP_FRotator_Roll_GET(IntPtr Ptr);
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_Struct_FRotator_Roll_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FRotator_Roll_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -187,8 +187,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Pitch
 		{
-			get => E_Struct_FRotator_Pitch_GET(NativePointer);
-			set => E_Struct_FRotator_Pitch_SET(NativePointer, value);
+			get => E_PROP_FRotator_Pitch_GET(NativePointer);
+			set => E_PROP_FRotator_Pitch_SET(NativePointer, value);
 		}
 
 		
@@ -197,8 +197,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Yaw
 		{
-			get => E_Struct_FRotator_Yaw_GET(NativePointer);
-			set => E_Struct_FRotator_Yaw_SET(NativePointer, value);
+			get => E_PROP_FRotator_Yaw_GET(NativePointer);
+			set => E_PROP_FRotator_Yaw_SET(NativePointer, value);
 		}
 
 		
@@ -207,8 +207,8 @@ namespace UnrealEngine
 		/// </summary>
 		public float Roll
 		{
-			get => E_Struct_FRotator_Roll_GET(NativePointer);
-			set => E_Struct_FRotator_Roll_SET(NativePointer, value);
+			get => E_PROP_FRotator_Roll_GET(NativePointer);
+			set => E_PROP_FRotator_Roll_SET(NativePointer, value);
 		}
 
 		#endregion
