@@ -2,7 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Structures.h"
 
 extern "C"
 {
@@ -35,39 +34,39 @@ extern "C"
 		return ((AActor*)Self)->AllowReceiveTickEventOnDedicatedServer();
 	}
 
-	DOTNET_EXPORT E_ST_FTransform E_AActor_GetTransform(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_AActor_GetTransform(INT_PTR Self)
 	{
-		return CONV_ST_FTransform_IN(((AActor*)Self)->GetTransform());
+		return (INT_PTR) new FTransform(((AActor*)Self)->GetTransform());
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_AActor_K2_GetActorLocation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_AActor_K2_GetActorLocation(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(((AActor*)Self)->K2_GetActorLocation());
+		return (INT_PTR) new FVector(((AActor*)Self)->K2_GetActorLocation());
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_AActor_K2_GetActorRotation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_AActor_K2_GetActorRotation(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_IN(((AActor*)Self)->K2_GetActorRotation());
+		return (INT_PTR) new FRotator(((AActor*)Self)->K2_GetActorRotation());
 	}
 
-	DOTNET_EXPORT void E_AActor_GetActorBounds(INT_PTR Self, bool bOnlyCollidingComponents, E_ST_FVector Origin, E_ST_FVector BoxExtent)
+	DOTNET_EXPORT void E_AActor_GetActorBounds(INT_PTR Self, bool bOnlyCollidingComponents, INT_PTR Origin, INT_PTR BoxExtent)
 	{
 		auto _p0 = bOnlyCollidingComponents;
-		auto _p1 = CONV_ST_FVector_TO(Origin);
-		auto _p2 = CONV_ST_FVector_TO(BoxExtent);
+		auto _p1 = *(FVector*)Origin;
+		auto _p2 = *(FVector*)BoxExtent;
 		((AActor*)Self)->GetActorBounds(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_AActor_K2_SetActorRotation(INT_PTR Self, E_ST_FRotator NewRotation, bool bTeleportPhysics)
+	DOTNET_EXPORT bool E_AActor_K2_SetActorRotation(INT_PTR Self, INT_PTR NewRotation, bool bTeleportPhysics)
 	{
-		auto _p0 = CONV_ST_FRotator_TO(NewRotation);
+		auto _p0 = *(FRotator*)NewRotation;
 		auto _p1 = bTeleportPhysics;
 		return ((AActor*)Self)->K2_SetActorRotation(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AActor_SetActorScale3D(INT_PTR Self, E_ST_FVector NewScale3D)
+	DOTNET_EXPORT void E_AActor_SetActorScale3D(INT_PTR Self, INT_PTR NewScale3D)
 	{
-		auto _p0 = CONV_ST_FVector_TO(NewScale3D);
+		auto _p0 = *(FVector*)NewScale3D;
 		((AActor*)Self)->SetActorScale3D(_p0);
 	}
 
@@ -75,6 +74,12 @@ extern "C"
 	{
 		auto _p0 = OtherActor;
 		return ((AActor*)Self)->GetDistanceTo(_p0);
+	}
+
+	DOTNET_EXPORT void E_AActor_K2_DestroyComponent(INT_PTR Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		((AActor*)Self)->K2_DestroyComponent(_p0);
 	}
 
 	DOTNET_EXPORT float E_AActor_GetActorTimeDilation(INT_PTR Self)
@@ -117,14 +122,14 @@ extern "C"
 		return ((AActor*)Self)->IsOwnedBy(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_AActor_GetActorQuat(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_AActor_GetActorQuat(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(((AActor*)Self)->GetActorQuat());
+		return (INT_PTR) new FQuat(((AActor*)Self)->GetActorQuat());
 	}
 
-	DOTNET_EXPORT void E_AActor_ApplyWorldOffset(INT_PTR Self, E_ST_FVector InOffset, bool bWorldShift)
+	DOTNET_EXPORT void E_AActor_ApplyWorldOffset(INT_PTR Self, INT_PTR InOffset, bool bWorldShift)
 	{
-		auto _p0 = CONV_ST_FVector_TO(InOffset);
+		auto _p0 = *(FVector*)InOffset;
 		auto _p1 = bWorldShift;
 		((AActor*)Self)->ApplyWorldOffset(_p0, _p1);
 	}
@@ -136,9 +141,9 @@ extern "C"
 		((AActor*)Self)->RegisterAllActorTickFunctions(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AActor_PostNetReceiveVelocity(INT_PTR Self, E_ST_FVector NewVelocity)
+	DOTNET_EXPORT void E_AActor_PostNetReceiveVelocity(INT_PTR Self, INT_PTR NewVelocity)
 	{
-		auto _p0 = CONV_ST_FVector_TO(NewVelocity);
+		auto _p0 = *(FVector*)NewVelocity;
 		((AActor*)Self)->PostNetReceiveVelocity(_p0);
 	}
 
@@ -147,11 +152,11 @@ extern "C"
 		return ((AActor*)Self)->GetOwner();
 	}
 
-	DOTNET_EXPORT bool E_AActor_IsReplayRelevantFor(INT_PTR Self, AActor* RealViewer, AActor* ViewTarget, E_ST_FVector SrcLocation, float CullDistanceSquared)
+	DOTNET_EXPORT bool E_AActor_IsReplayRelevantFor(INT_PTR Self, AActor* RealViewer, AActor* ViewTarget, INT_PTR SrcLocation, float CullDistanceSquared)
 	{
 		auto _p0 = RealViewer;
 		auto _p1 = ViewTarget;
-		auto _p2 = CONV_ST_FVector_TO(SrcLocation);
+		auto _p2 = *(FVector*)SrcLocation;
 		auto _p3 = CullDistanceSquared;
 		return ((AActor*)Self)->IsReplayRelevantFor(_p0, _p1, _p2, _p3);
 	}
@@ -164,25 +169,36 @@ extern "C"
 		return ((AActor*)Self)->IsRelevancyOwnerFor(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT void E_AActor_PostSpawnInitialize(INT_PTR Self, INT_PTR SpawnTransform, AActor* InOwner, APawn* InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)
+	{
+		auto _p0 = *(FTransform*)SpawnTransform;
+		auto _p1 = InOwner;
+		auto _p2 = InInstigator;
+		auto _p3 = bRemoteOwned;
+		auto _p4 = bNoFail;
+		auto _p5 = bDeferConstruction;
+		((AActor*)Self)->PostSpawnInitialize(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
 	DOTNET_EXPORT bool E_AActor_IncrementalRegisterComponents(INT_PTR Self, int32 NumComponentsToRegister)
 	{
 		auto _p0 = NumComponentsToRegister;
 		return ((AActor*)Self)->IncrementalRegisterComponents(_p0);
 	}
 
-	DOTNET_EXPORT bool E_AActor_TeleportTo(INT_PTR Self, E_ST_FVector DestLocation, E_ST_FRotator DestRotation, bool bIsATest, bool bNoCheck)
+	DOTNET_EXPORT bool E_AActor_TeleportTo(INT_PTR Self, INT_PTR DestLocation, INT_PTR DestRotation, bool bIsATest, bool bNoCheck)
 	{
-		auto _p0 = CONV_ST_FVector_TO(DestLocation);
-		auto _p1 = CONV_ST_FRotator_TO(DestRotation);
+		auto _p0 = *(FVector*)DestLocation;
+		auto _p1 = *(FRotator*)DestRotation;
 		auto _p2 = bIsATest;
 		auto _p3 = bNoCheck;
 		return ((AActor*)Self)->TeleportTo(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT bool E_AActor_K2_TeleportTo(INT_PTR Self, E_ST_FVector DestLocation, E_ST_FRotator DestRotation)
+	DOTNET_EXPORT bool E_AActor_K2_TeleportTo(INT_PTR Self, INT_PTR DestLocation, INT_PTR DestRotation)
 	{
-		auto _p0 = CONV_ST_FVector_TO(DestLocation);
-		auto _p1 = CONV_ST_FRotator_TO(DestRotation);
+		auto _p0 = *(FVector*)DestLocation;
+		auto _p1 = *(FRotator*)DestRotation;
 		return ((AActor*)Self)->K2_TeleportTo(_p0, _p1);
 	}
 
@@ -193,9 +209,9 @@ extern "C"
 		((AActor*)Self)->DebugShowComponentHierarchy(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AActor_OnConstruction(INT_PTR Self, E_ST_FTransform Transform)
+	DOTNET_EXPORT void E_AActor_OnConstruction(INT_PTR Self, INT_PTR Transform)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(Transform);
+		auto _p0 = *(FTransform*)Transform;
 		((AActor*)Self)->OnConstruction(_p0);
 	}
 

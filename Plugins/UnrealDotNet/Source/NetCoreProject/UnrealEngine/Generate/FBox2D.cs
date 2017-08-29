@@ -7,8 +7,23 @@ namespace UnrealEngine
 	/// <summary>
 	/// Implements a rectangular 2D Box.
 	/// </summary>
-	public partial struct FBox2D
+	public partial class FBox2D
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FBox2D()
+		{
+			NativePointer = E_CreateStruct_FBox2D();
+			IsRef = false;
+		}
+
+		internal FBox2D(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
 		#if PACING
@@ -16,21 +31,74 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_OP_FBox2D_oc(FBox2D Self, int Index);
+		private static extern IntPtr E_CreateStruct_FBox2D();
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D Self, FVector2D Point);
+		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FBox2D E_FBox2D_ExpandBy(FBox2D Self, float W);
+		private static extern FVector2D E_Struct_FBox2D_Min_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern FVector2D E_Struct_FBox2D_Max_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FBox2D_Max_SET(IntPtr Ptr, FVector2D Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_Struct_FBox2D_bIsValid_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_OP_FBox2D_oc(FBox2D Self, int Index);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D Self, IntPtr Point);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_FBox2D_ExpandBy(FBox2D Self, float W);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -44,21 +112,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_FBox2D_GetCenter(FBox2D Self);
+		private static extern IntPtr E_FBox2D_GetCenter(FBox2D Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FBox2D_GetCenterAndExtents(FBox2D Self, FVector2D center, FVector2D Extents);
+		private static extern void E_FBox2D_GetCenterAndExtents(FBox2D Self, IntPtr center, IntPtr Extents);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_FBox2D_GetClosestPointTo(FBox2D Self, FVector2D Point);
+		private static extern IntPtr E_FBox2D_GetClosestPointTo(FBox2D Self, IntPtr Point);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -72,7 +140,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FBox2D_IsInside(FBox2D Self, FVector2D TestPoint);
+		private static extern bool E_FBox2D_IsInside(FBox2D Self, IntPtr TestPoint);
 		
 		#endregion
 		
@@ -81,17 +149,32 @@ namespace UnrealEngine
 		/// <summary>
 		/// Holds the box's minimum point.
 		/// </summary>
-		public FVector2D Min { get; set; } 
+		public FVector2D Min
+		{
+			get => E_Struct_FBox2D_Min_GET(NativePointer);
+			set => E_Struct_FBox2D_Min_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Holds the box's maximum point.
 		/// </summary>
-		public FVector2D Max { get; set; } 
+		public FVector2D Max
+		{
+			get => E_Struct_FBox2D_Max_GET(NativePointer);
+			set => E_Struct_FBox2D_Max_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Holds a flag indicating whether this box is valid.
 		/// </summary>
-		public bool bIsValid { get; set; } 
+		public bool bIsValid
+		{
+			get => E_Struct_FBox2D_bIsValid_GET(NativePointer);
+			set => E_Struct_FBox2D_bIsValid_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -180,4 +263,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FBox2D Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FBox2D(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FBox2D(Adress, false);
+		}}}

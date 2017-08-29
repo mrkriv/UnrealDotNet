@@ -35,12 +35,6 @@ namespace Generator
                 cw.WriteLine($"#include \"CoreMinimal.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
-                var isUsingStruct = Class.Dependent.Any(cl => cl.IsImplemented && cl.IsStructure);
-                if (isUsingStruct)
-                {
-                    cw.WriteLine($"#include \"Structures.h\"");
-                }
-
                 cw.WriteLine();
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
@@ -70,7 +64,7 @@ namespace Generator
             {
                 var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
 
-                inputs.Insert(0, Class.IsStructure ? $"E_ST_{Class.Name} Self" : "INT_PTR Self");
+                inputs.Insert(0, "INT_PTR Self");
 
                 var param = string.Join(", ", inputs);
 
@@ -96,25 +90,20 @@ namespace Generator
                     cw.Write("return ");
                 }
 
-                int CloseBracket = 0;
-
+                var needClose = false;
                 var retClass = method.ReturnType as ClassVariable;
+
                 if (retClass != null && retClass.ClassType.IsStructure)
                 {
-                    cw.Write($"CONV_ST_{retClass.ClassType.Name}_IN(");
-                    CloseBracket++;
+                    cw.Write($"(INT_PTR) new {retClass.ClassType.Name}(");
+                    needClose = true;
                 }
 
-                if (Class.IsStructure)
-                {
-                    cw.Write($"CONV_ST_{Class.Name}_TO(Self).{method.Name}({call})");
-                }
-                else
-                {
-                    cw.Write($"(({Class.Name}*)Self)->{method.Name}({call})");
-                }
+                cw.Write($"(({Class.Name}*)Self)->{method.Name}({call})");
 
-                cw.Write(new string(')', CloseBracket));
+                if (needClose)
+                    cw.Write(")");
+
                 cw.WriteLine(";");
 
                 cw.CloseBlock();
@@ -129,33 +118,31 @@ namespace Generator
                     if (!varClass.ClassType.IsStructure)
                         return varClass.Name;
 
-                    return $"CONV_ST_{varClass.ClassType.Name}_TO({varClass.Name})";
+                    return $"*({varClass.ClassType.Name}*){varClass.Name}";
+                }
+
+                var result = "";
+                var needClose = true;
+
+                if (variable.Type == "TCHAR")
+                {
+                    result += "UTF8_TO_TCHAR(";
+                }
+                else if (variable.Type == "FString")
+                {
+                    result += "TEXT(";
                 }
                 else
                 {
-                    var result = "";
-                    var needClose = true;
-
-                    if (variable.Type == "TCHAR")
-                    {
-                        result += "UTF8_TO_TCHAR(";
-                    }
-                    else if (variable.Type == "FString")
-                    {
-                        result += "TEXT(";
-                    }
-                    else
-                    {
-                        needClose = false;
-                    }
-
-                    result += variable.Name;
-
-                    if (needClose)
-                        result += ")";
-
-                    return result;
+                    needClose = false;
                 }
+
+                result += variable.Name;
+
+                if (needClose)
+                    result += ")";
+
+                return result;
             }
 
             #endregion Class
@@ -172,17 +159,9 @@ namespace Generator
 
                 var Classes = SortByDependent(Structures);
 
-                foreach (var Class in Classes)
+                foreach (var header in Classes.Select(GetSourceFileName).Distinct())
                 {
-                    cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
-                }
-
-                cw.WriteLine();
-
-                foreach (var Class in Classes)
-                {
-                    cw.WriteLine();
-                    GenerateStructUtilites(cw, Class);
+                    cw.WriteLine($"#include \"{header}\"");
                 }
 
                 cw.WriteLine();
@@ -194,6 +173,8 @@ namespace Generator
                     cw.WriteLine();
                     cw.WriteLine($"/*\t{Class.Name}\t*/");
                     cw.WriteLine();
+
+                    GenerateStructUtilites(cw, Class);
 
                     foreach (var method in Class.Methods)
                     {
@@ -225,12 +206,12 @@ namespace Generator
                         i--;
                     }
 
-                    if (any)
-                        continue;
-
-                    Console.WriteLine("These structures can not be exported because they have a cyclic dependence");
-                    source.ForEach(Console.WriteLine);
-                    break;
+                    if (!any)
+                    {
+                        Console.WriteLine("These structures can not be exported because they have a cyclic dependence");
+                        source.ForEach(Console.WriteLine);
+                        break;
+                    }
                 }
 
                 return result;
@@ -238,58 +219,35 @@ namespace Generator
 
             private static void GenerateStructUtilites(CoreWriter cw, Class Class)
             {
-                cw.WriteLine("extern \"C\"");
-                cw.OpenBlock();
-
-                cw.WriteLine("typedef struct");
-                cw.OpenBlock();
+                cw.Write($"{CPP_API} INT_PTR E_CreateStruct_{Class.Name}() {{ ");
+                cw.WriteLine($"return (INT_PTR) new {Class.Name}(); }}");
+                cw.WriteLine();
 
                 foreach (var prop in Class.Property.Where(p => !p.IsConst))
                 {
-                    cw.WriteLine($"{prop.Type} {prop.Name};");
+                    var baseName = $"E_Struct_{Class.Name}_{prop.Name}";
+
+                    var propClass = prop as ClassVariable;
+                    if (propClass?.ClassType.IsStructure == true)
+                    {
+                        var clName = propClass.ClassType.Name;
+                        cw.WriteLine(
+                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR) new {clName}((({Class.Name}*)Ptr)->{prop.Name}); }}");
+
+                        cw.WriteLine(
+                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
+                    }
+                    else
+                    {
+                        cw.WriteLine(
+                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
+
+                        cw.WriteLine(
+                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                    }
+
+                    cw.WriteLine();
                 }
-                cw.CloseBlock();
-                cw.WriteLine($"E_ST_{Class.Name}, *E_ST_{Class.Name}_REF;");
-
-                cw.CloseBlock();
-                cw.WriteLine();
-
-                GenerateStructConvMethodIN(cw, Class);
-                GenerateStructConvMethodTO(cw, Class);
-            }
-
-            private static void GenerateStructConvMethodIN(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine($"FORCEINLINE E_ST_{Class.Name} CONV_ST_{Class.Name}_IN({Class.Name} In)");
-                cw.OpenBlock();
-                cw.WriteLine($"E_ST_{Class.Name} var;");
-
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
-                {
-                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
-                }
-
-                cw.WriteLine();
-                cw.WriteLine("return var;");
-                cw.CloseBlock();
-                cw.WriteLine();
-            }
-
-            private static void GenerateStructConvMethodTO(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine($"FORCEINLINE {Class.Name} CONV_ST_{Class.Name}_TO(E_ST_{Class.Name} In)");
-                cw.OpenBlock();
-                cw.WriteLine($"{Class.Name} var;");
-
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
-                {
-                    cw.WriteLine($"var.{prop.Name} = In.{prop.Name};");
-                }
-
-                cw.WriteLine();
-                cw.WriteLine("return var;");
-                cw.CloseBlock();
-                cw.WriteLine();
             }
 
             #endregion Struct
@@ -300,6 +258,8 @@ namespace Generator
                 cw.WriteLine("#pragma warning(push)");
                 cw.WriteLine("#pragma warning(disable:4996)");
                 cw.WriteLine();
+
+                cw.WriteLine($"#include \"Structures.h\"");
 
                 foreach (var Class in Classes)
                 {
@@ -313,20 +273,7 @@ namespace Generator
 
             private static string ExportVariableCPP(Variable variable)
             {
-                string result;
-
-                var varClass = variable as ClassVariable;
-                if (varClass != null && varClass.ClassType.IsStructure)
-                {
-                    result = $"E_ST_{varClass.ClassType.Name}";
-
-                    //if (varClass.IsReference || varClass.IsPointer)
-                    //    result += "_REF";
-                }
-                else
-                {
-                    result = variable.GetTypeCPP();
-                }
+                var result = variable.GetTypeCPP();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                     result += " " + variable.Name;

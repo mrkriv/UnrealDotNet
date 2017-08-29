@@ -26,6 +26,11 @@ namespace Generator.Metadata
             return Type;
         }
 
+        public virtual string GetTypeCSForExtend()
+        {
+            return Type;
+        }
+
         public virtual string GetTypeCPP()
         {
             return Type;
@@ -135,6 +140,11 @@ namespace Generator.Metadata
             }
         }
 
+        public override string GetTypeCSForExtend()
+        {
+            return GetTypeCS();
+        }
+
         public override string GetTypeCPP()
         {
             switch (Type)
@@ -182,11 +192,27 @@ namespace Generator.Metadata
 
         public override string GetTypeCPP()
         {
+            if (ClassType.IsStructure)
+                return "INT_PTR";
+
             if (IsReference)
                 return ClassType.Name + "&";
 
             if (IsPointer)
                 return ClassType.Name + "*";
+
+            return ClassType.Name;
+        }
+
+        public override string GetTypeCS()
+        {
+            return ClassType.Name;
+        }
+
+        public override string GetTypeCSForExtend()
+        {
+            if (ClassType.IsStructure)
+                return "IntPtr";
 
             return ClassType.Name;
         }

@@ -8,8 +8,23 @@ namespace UnrealEngine
 	/// Implements a container for rotation information.
 	/// All rotation values are stored in degrees.
 	/// </summary>
-	public partial struct FRotator
+	public partial class FRotator
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FRotator()
+		{
+			NativePointer = E_CreateStruct_FRotator();
+			IsRef = false;
+		}
+
+		internal FRotator(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
 		#if PACING
@@ -17,14 +32,67 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_OP_FRotator_p(FRotator Self, FRotator R);
+		private static extern IntPtr E_CreateStruct_FRotator();
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_OP_FRotator_m(FRotator Self, float Scale);
+		private static extern void E_DeleteStruct(IntPtr Adress);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FRotator_Pitch_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FRotator_Pitch_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FRotator_Yaw_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FRotator_Yaw_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FRotator_Roll_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FRotator_Roll_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_OP_FRotator_p(FRotator Self, IntPtr R);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_OP_FRotator_m(FRotator Self, float Scale);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -45,35 +113,35 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FRotator_Equals(FRotator Self, FRotator R, float Tolerance);
+		private static extern bool E_FRotator_Equals(FRotator Self, IntPtr R, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_FRotator_Add(FRotator Self, float DeltaPitch, float DeltaYaw, float DeltaRoll);
+		private static extern IntPtr E_FRotator_Add(FRotator Self, float DeltaPitch, float DeltaYaw, float DeltaRoll);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FRotator_Vector(FRotator Self);
+		private static extern IntPtr E_FRotator_Vector(FRotator Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FRotator_Quaternion(FRotator Self);
+		private static extern IntPtr E_FRotator_Quaternion(FRotator Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FRotator_RotateVector(FRotator Self, FVector V);
+		private static extern IntPtr E_FRotator_RotateVector(FRotator Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -87,7 +155,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FRotator_GetWindingAndRemainder(FRotator Self, FRotator Winding, FRotator Remainder);
+		private static extern void E_FRotator_GetWindingAndRemainder(FRotator Self, IntPtr Winding, IntPtr Remainder);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -108,7 +176,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_FRotator_MakeFromEuler(FRotator Self, FVector Euler);
+		private static extern IntPtr E_FRotator_MakeFromEuler(FRotator Self, IntPtr Euler);
 		
 		#endregion
 		
@@ -117,17 +185,32 @@ namespace UnrealEngine
 		/// <summary>
 		/// Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down)
 		/// </summary>
-		public float Pitch { get; set; } 
+		public float Pitch
+		{
+			get => E_Struct_FRotator_Pitch_GET(NativePointer);
+			set => E_Struct_FRotator_Pitch_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South.
 		/// </summary>
-		public float Yaw { get; set; } 
+		public float Yaw
+		{
+			get => E_Struct_FRotator_Yaw_GET(NativePointer);
+			set => E_Struct_FRotator_Yaw_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW.
 		/// </summary>
-		public float Roll { get; set; } 
+		public float Roll
+		{
+			get => E_Struct_FRotator_Roll_GET(NativePointer);
+			set => E_Struct_FRotator_Roll_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -261,4 +344,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FRotator Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FRotator(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FRotator(Adress, false);
+		}}}

@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Generator.Metadata;
 
 namespace Generator
 {
     public static class Filter
     {
+        private static readonly Regex replaceRegex = new Regex("(,?[A-Z_]+_API)|(PRAGMA_[A-Z_]+)");
+
         public static string[] ClassBlackList =
         {
             "FSeamlessTravelHandler",
+            "FLevelCollection",
             "FWorldAsyncTraceState"
         };
 
@@ -23,6 +27,11 @@ namespace Generator
             //}
         };
 
+        public static string FilterSourceCode(string code)
+        {
+            return replaceRegex.Replace(code, "");
+        }
+
         public static void FiltreDomainForExport(Domain domain)
         {
             domain.Classes = domain.Classes.Where(ClassFilter).ToList();
@@ -31,6 +40,25 @@ namespace Generator
             {
                 cl.Methods = cl.Methods.Where(MethodFilter).ToList();
                 cl.Property = cl.Property.Where(PropertyFilter).ToList();
+
+                RemoveMethodDublicatedName(cl);
+            }
+        }
+
+        private static void RemoveMethodDublicatedName(Class cl)
+        {
+            foreach (var method in cl.Methods)
+            {
+                if (!method.UMeta.TryGetValue("DisplayName", out var name))
+                    continue;
+
+                var dublicated = cl.Methods.Where(m => m.Name == name || m.UMeta.ContainsKey("DisplayName") && m.UMeta["DisplayName"] == name)
+                    .ToList();
+
+                if (dublicated.Count > 1)
+                {
+                    dublicated.ForEach(m => m.UMeta.Remove("DisplayName"));
+                }
             }
         }
 

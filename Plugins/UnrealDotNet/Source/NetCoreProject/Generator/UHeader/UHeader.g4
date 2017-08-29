@@ -109,7 +109,7 @@ enumElementList
 	;
 
 enumElement
-	: comment? enumElementName ( ('=' | DotDot) propertyDefaultValue )?
+	: comment? enumElementName ( ('=' | DotDot) propertyDefaultValue )? uDefine?
 	;
 
 enumElementName
@@ -176,7 +176,7 @@ constructorInitializer
 	;
 
 method
-	: templateDefine? (isFriend|Inline|Extern|isStatic|isVirtual)* type methodName '(' methodParamsList? ')' isConst? isOverride? Final? (methodBody|isDelete)? ';'?
+	: templateDefine? (Constexpr|isFriend|Inline|Extern|isStatic|isVirtual)* type methodName '(' methodParamsList? ')' isConst? isOverride? Final? (methodBody|isDelete)? ';'?
 ;
 
 methodParamsList
@@ -198,7 +198,7 @@ methodParametrDefaultValue
 
 value
 	: (isPtrQuant | isRefQuant)? (Identifier|Literal) ((SpecalSymbol|DotDot|'<'|'>'|'|')+ (Identifier|Literal))? 
-		('(' methodParametrDefaultValue ')')?
+		('(' methodParametrDefaultValue? ')')?
 ;
 
 methodBody
@@ -223,7 +223,7 @@ methodOperator
 /* Property */
 
 property
-	: Extern? isStatic? type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
+	: (Mutable|Extern|isStatic)* type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
 ;
 
 propertyName
@@ -405,6 +405,10 @@ Extern
 	: 'extern'
 ;
 
+Mutable
+	: 'mutable'
+;
+
 Override
 	: 'override'
 ;
@@ -423,6 +427,10 @@ Operator
 
 Typedef
 	: 'typedef'
+;
+
+Constexpr
+	: 'CONSTEXPR'
 ;
 
 BracketsOpen

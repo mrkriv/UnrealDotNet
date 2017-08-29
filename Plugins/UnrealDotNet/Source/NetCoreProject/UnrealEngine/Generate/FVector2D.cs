@@ -7,8 +7,23 @@ namespace UnrealEngine
 	/// <summary>
 	/// A vector in 2-D space composed of components (X, Y) with floating point precision.
 	/// </summary>
-	public partial struct FVector2D
+	public partial class FVector2D
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FVector2D()
+		{
+			NativePointer = E_CreateStruct_FVector2D();
+			IsRef = false;
+		}
+
+		internal FVector2D(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
 		#if PACING
@@ -16,35 +31,75 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_OP_FVector2D_p(FVector2D Self, FVector2D V);
+		private static extern IntPtr E_CreateStruct_FVector2D();
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_OP_FVector2D_m(FVector2D Self, float Scale);
+		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_OP_FVector2D_i(FVector2D Self, FVector2D V);
+		private static extern float E_Struct_FVector2D_X_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FVector2D_X_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_FVector2D_DotProduct(FVector2D Self, FVector2D A, FVector2D B);
+		private static extern float E_Struct_FVector2D_Y_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FVector2D_Y_SET(IntPtr Ptr, float Value);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FVector2D_Equals(FVector2D Self, FVector2D V, float Tolerance);
+		private static extern IntPtr E_OP_FVector2D_p(FVector2D Self, IntPtr V);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_OP_FVector2D_m(FVector2D Self, float Scale);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_OP_FVector2D_i(FVector2D Self, IntPtr V);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_FVector2D_DotProduct(FVector2D Self, IntPtr A, IntPtr B);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FVector2D_Equals(FVector2D Self, IntPtr V, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -79,7 +134,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FVector2D_ToDirectionAndLength(FVector2D Self, FVector2D OutDir, float OutLength);
+		private static extern void E_FVector2D_ToDirectionAndLength(FVector2D Self, IntPtr OutDir, float OutLength);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -93,7 +148,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector2D E_FVector2D_ClampAxes(FVector2D Self, float MinAxisVal, float MaxAxisVal);
+		private static extern IntPtr E_FVector2D_ClampAxes(FVector2D Self, float MinAxisVal, float MaxAxisVal);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -107,7 +162,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FVector2D_SphericalToUnitCartesian(FVector2D Self);
+		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(FVector2D Self);
 		
 		#endregion
 		
@@ -116,12 +171,22 @@ namespace UnrealEngine
 		/// <summary>
 		/// Vector's X component.
 		/// </summary>
-		public float X { get; set; } 
+		public float X
+		{
+			get => E_Struct_FVector2D_X_GET(NativePointer);
+			set => E_Struct_FVector2D_X_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Vector's Y component.
 		/// </summary>
-		public float Y { get; set; } 
+		public float Y
+		{
+			get => E_Struct_FVector2D_Y_GET(NativePointer);
+			set => E_Struct_FVector2D_Y_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -244,4 +309,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FVector2D Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FVector2D(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FVector2D(Adress, false);
+		}}}

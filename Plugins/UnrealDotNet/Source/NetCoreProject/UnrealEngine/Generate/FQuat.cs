@@ -13,8 +13,23 @@ namespace UnrealEngine
 	/// Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in local space by DeltaRotation.
 	/// Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in world space by DeltaRotation.
 	/// </summary>
-	public partial struct FQuat
+	public partial class FQuat
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FQuat()
+		{
+			NativePointer = E_CreateStruct_FQuat();
+			IsRef = false;
+		}
+
+		internal FQuat(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
 		#if PACING
@@ -22,14 +37,80 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_OP_FQuat_p(FQuat Self, FQuat Q);
+		private static extern IntPtr E_CreateStruct_FQuat();
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FQuat_Equals(FQuat Self, FQuat Q, float Tolerance);
+		private static extern void E_DeleteStruct(IntPtr Adress);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FQuat_X_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FQuat_X_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FQuat_Y_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FQuat_Y_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FQuat_Z_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FQuat_Z_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern float E_Struct_FQuat_W_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FQuat_W_SET(IntPtr Ptr, float Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_OP_FQuat_p(FQuat Self, IntPtr Q);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_FQuat_Equals(FQuat Self, IntPtr Q, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -43,21 +124,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_OP_FQuat_i(FQuat Self, FQuat Q);
+		private static extern float E_OP_FQuat_i(FQuat Self, IntPtr Q);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_MakeFromEuler(FQuat Self, FVector Euler);
+		private static extern IntPtr E_FQuat_MakeFromEuler(FQuat Self, IntPtr Euler);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FQuat_Euler(FQuat Self);
+		private static extern IntPtr E_FQuat_Euler(FQuat Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -71,7 +152,7 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_GetNormalized(FQuat Self, float Tolerance);
+		private static extern IntPtr E_FQuat_GetNormalized(FQuat Self, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -92,91 +173,91 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FQuat_ToAxisAndAngle(FQuat Self, FVector Axis, float Angle);
+		private static extern void E_FQuat_ToAxisAndAngle(FQuat Self, IntPtr Axis, float Angle);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FQuat_ToSwingTwist(FQuat Self, FVector InTwistAxis, FQuat OutSwing, FQuat OutTwist);
+		private static extern void E_FQuat_ToSwingTwist(FQuat Self, IntPtr InTwistAxis, IntPtr OutSwing, IntPtr OutTwist);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FQuat_RotateVector(FQuat Self, FVector V);
+		private static extern IntPtr E_FQuat_RotateVector(FQuat Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_Log(FQuat Self);
+		private static extern IntPtr E_FQuat_Log(FQuat Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FQuat_EnforceShortestArcWith(FQuat Self, FQuat OtherQuat);
+		private static extern void E_FQuat_EnforceShortestArcWith(FQuat Self, IntPtr OtherQuat);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_FQuat_Rotator(FQuat Self);
+		private static extern IntPtr E_FQuat_Rotator(FQuat Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_FindBetween(FQuat Self, FVector Vector1, FVector Vector2);
+		private static extern IntPtr E_FQuat_FindBetween(FQuat Self, IntPtr Vector1, IntPtr Vector2);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern float E_FQuat_Error(FQuat Self, FQuat Q1, FQuat Q2);
+		private static extern float E_FQuat_Error(FQuat Self, IntPtr Q1, IntPtr Q2);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_FastLerp(FQuat Self, FQuat A, FQuat B, float Alpha);
+		private static extern IntPtr E_FQuat_FastLerp(FQuat Self, IntPtr A, IntPtr B, float Alpha);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_FastBilerp(FQuat Self, FQuat P00, FQuat P10, FQuat P01, FQuat P11, float FracX, float FracY);
+		private static extern IntPtr E_FQuat_FastBilerp(FQuat Self, IntPtr P00, IntPtr P10, IntPtr P01, IntPtr P11, float FracX, float FracY);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_Slerp_NotNormalized(FQuat Self, FQuat Quat1, FQuat Quat2, float Slerp);
+		private static extern IntPtr E_FQuat_Slerp_NotNormalized(FQuat Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FQuat_Squad(FQuat Self, FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float Alpha);
+		private static extern IntPtr E_FQuat_Squad(FQuat Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FQuat_CalcTangents(FQuat Self, FQuat PrevP, FQuat P, FQuat NextP, float Tension, FQuat OutTan);
+		private static extern void E_FQuat_CalcTangents(FQuat Self, IntPtr PrevP, IntPtr P, IntPtr NextP, float Tension, IntPtr OutTan);
 		
 		#endregion
 		
@@ -185,22 +266,42 @@ namespace UnrealEngine
 		/// <summary>
 		/// The quaternion's X-component.
 		/// </summary>
-		public float X { get; set; } 
+		public float X
+		{
+			get => E_Struct_FQuat_X_GET(NativePointer);
+			set => E_Struct_FQuat_X_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// The quaternion's Y-component.
 		/// </summary>
-		public float Y { get; set; } 
+		public float Y
+		{
+			get => E_Struct_FQuat_Y_GET(NativePointer);
+			set => E_Struct_FQuat_Y_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// The quaternion's Z-component.
 		/// </summary>
-		public float Z { get; set; } 
+		public float Z
+		{
+			get => E_Struct_FQuat_Z_GET(NativePointer);
+			set => E_Struct_FQuat_Z_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// The quaternion's W-component.
 		/// </summary>
-		public float W { get; set; } 
+		public float W
+		{
+			get => E_Struct_FQuat_W_GET(NativePointer);
+			set => E_Struct_FQuat_W_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -401,4 +502,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FQuat Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FQuat(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FQuat(Adress, false);
+		}}}

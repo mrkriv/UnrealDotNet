@@ -21,10 +21,91 @@ namespace UnrealEngine
 	/// world context. If the PIE UWorld changes, the UEditorEngine::PlayWorld pointer will be automatically updated. This is done with AddRef() and
 	/// SetCurrentWorld().
 	/// </summary>
-	public partial struct FWorldContext
+	public partial class FWorldContext
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FWorldContext()
+		{
+			NativePointer = E_CreateStruct_FWorldContext();
+			IsRef = false;
+		}
+
+		internal FWorldContext(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_CreateStruct_FWorldContext();
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_DeleteStruct(IntPtr Adress);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern byte E_Struct_FWorldContext_TravelType_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FWorldContext_TravelType_SET(IntPtr Ptr, byte Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern int E_Struct_FWorldContext_PIEInstance_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FWorldContext_PIEInstance_SET(IntPtr Ptr, int Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_Struct_FWorldContext_RunAsDedicated_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FWorldContext_RunAsDedicated_SET(IntPtr Ptr, bool Value);
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern bool E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_GET(IntPtr Ptr);
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_SET(IntPtr Ptr, bool Value);
+		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
@@ -46,14 +127,34 @@ namespace UnrealEngine
 		/// <summary>
 		/// TravelType for pending client connects
 		/// </summary>
-		public byte TravelType { get; set; } 
-		public int PIEInstance { get; set; } 
-		public bool RunAsDedicated { get; set; } 
+		public byte TravelType
+		{
+			get => E_Struct_FWorldContext_TravelType_GET(NativePointer);
+			set => E_Struct_FWorldContext_TravelType_SET(NativePointer, value);
+		}
+
+		public int PIEInstance
+		{
+			get => E_Struct_FWorldContext_PIEInstance_GET(NativePointer);
+			set => E_Struct_FWorldContext_PIEInstance_SET(NativePointer, value);
+		}
+
+		public bool RunAsDedicated
+		{
+			get => E_Struct_FWorldContext_RunAsDedicated_GET(NativePointer);
+			set => E_Struct_FWorldContext_RunAsDedicated_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// Is this world context waiting for an online login to complete (for PIE)
 		/// </summary>
-		public bool bWaitingOnOnlineSubsystem { get; set; } 
+		public bool bWaitingOnOnlineSubsystem
+		{
+			get => E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_GET(NativePointer);
+			set => E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -69,4 +170,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FWorldContext Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FWorldContext(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FWorldContext(Adress, false);
+		}}}

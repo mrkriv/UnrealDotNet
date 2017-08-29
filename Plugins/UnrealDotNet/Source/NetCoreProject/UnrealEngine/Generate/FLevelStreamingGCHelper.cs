@@ -8,10 +8,39 @@ namespace UnrealEngine
 	/// Helper structure encapsulating functionality used to defer marking actors and their components as pending
 	/// kill till right before garbage collection by registering a callback.
 	/// </summary>
-	public partial struct FLevelStreamingGCHelper
+	public partial class FLevelStreamingGCHelper
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FLevelStreamingGCHelper()
+		{
+			NativePointer = E_CreateStruct_FLevelStreamingGCHelper();
+			IsRef = false;
+		}
+
+		internal FLevelStreamingGCHelper(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_CreateStruct_FLevelStreamingGCHelper();
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_DeleteStruct(IntPtr Adress);
+		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
@@ -48,4 +77,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FLevelStreamingGCHelper Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FLevelStreamingGCHelper(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FLevelStreamingGCHelper(Adress, false);
+		}}}

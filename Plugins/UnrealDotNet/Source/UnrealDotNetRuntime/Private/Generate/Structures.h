@@ -2,1603 +2,1132 @@
 
 #include "CoreMinimal.h"
 #include "Engine.h"
-#include "Engine.h"
-#include "Engine.h"
 #include "Engine/World.h"
-#include "Engine/World.h"
-#include "Engine.h"
-#include "Engine.h"
-#include "Engine.h"
-#include "Engine.h"
 #include "Math/Quat.h"
 #include "Math/Rotator.h"
-#include "Engine.h"
-#include "Engine.h"
-#include "Engine.h"
 #include "Math/TransformVectorized.h"
 #include "Math/Vector.h"
 #include "Math/Vector2D.h"
 #include "Math/Vector4.h"
-#include "Engine.h"
+#include "GameFramework/Character.h"
 #include "Math/Box.h"
 #include "Math/Box2D.h"
-#include "Engine.h"
-#include "Engine/World.h"
-#include "Engine.h"
-
-
-extern "C"
-{
-	typedef struct
-	{
-		bool InstanceOnly;
-	}
-E_ST_FClassRedirect, *E_ST_FClassRedirect_REF;
-}
-
-FORCEINLINE E_ST_FClassRedirect CONV_ST_FClassRedirect_IN(FClassRedirect In)
-{
-	E_ST_FClassRedirect var;
-	var.InstanceOnly = In.InstanceOnly;
-	
-	return var;
-}
-
-FORCEINLINE FClassRedirect CONV_ST_FClassRedirect_TO(E_ST_FClassRedirect In)
-{
-	FClassRedirect var;
-	var.InstanceOnly = In.InstanceOnly;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FFullyLoadedPackagesInfo, *E_ST_FFullyLoadedPackagesInfo_REF;
-}
-
-FORCEINLINE E_ST_FFullyLoadedPackagesInfo CONV_ST_FFullyLoadedPackagesInfo_IN(FFullyLoadedPackagesInfo In)
-{
-	E_ST_FFullyLoadedPackagesInfo var;
-	
-	return var;
-}
-
-FORCEINLINE FFullyLoadedPackagesInfo CONV_ST_FFullyLoadedPackagesInfo_TO(E_ST_FFullyLoadedPackagesInfo In)
-{
-	FFullyLoadedPackagesInfo var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FGameNameRedirect, *E_ST_FGameNameRedirect_REF;
-}
-
-FORCEINLINE E_ST_FGameNameRedirect CONV_ST_FGameNameRedirect_IN(FGameNameRedirect In)
-{
-	E_ST_FGameNameRedirect var;
-	
-	return var;
-}
-
-FORCEINLINE FGameNameRedirect CONV_ST_FGameNameRedirect_TO(E_ST_FGameNameRedirect In)
-{
-	FGameNameRedirect var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FLevelCollection, *E_ST_FLevelCollection_REF;
-}
-
-FORCEINLINE E_ST_FLevelCollection CONV_ST_FLevelCollection_IN(FLevelCollection In)
-{
-	E_ST_FLevelCollection var;
-	
-	return var;
-}
-
-FORCEINLINE FLevelCollection CONV_ST_FLevelCollection_TO(E_ST_FLevelCollection In)
-{
-	FLevelCollection var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FLevelStreamingGCHelper, *E_ST_FLevelStreamingGCHelper_REF;
-}
-
-FORCEINLINE E_ST_FLevelStreamingGCHelper CONV_ST_FLevelStreamingGCHelper_IN(FLevelStreamingGCHelper In)
-{
-	E_ST_FLevelStreamingGCHelper var;
-	
-	return var;
-}
-
-FORCEINLINE FLevelStreamingGCHelper CONV_ST_FLevelStreamingGCHelper_TO(E_ST_FLevelStreamingGCHelper In)
-{
-	FLevelStreamingGCHelper var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FLevelStreamingStatus, *E_ST_FLevelStreamingStatus_REF;
-}
-
-FORCEINLINE E_ST_FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_IN(FLevelStreamingStatus In)
-{
-	E_ST_FLevelStreamingStatus var;
-	
-	return var;
-}
-
-FORCEINLINE FLevelStreamingStatus CONV_ST_FLevelStreamingStatus_TO(E_ST_FLevelStreamingStatus In)
-{
-	FLevelStreamingStatus var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FNamedNetDriver, *E_ST_FNamedNetDriver_REF;
-}
-
-FORCEINLINE E_ST_FNamedNetDriver CONV_ST_FNamedNetDriver_IN(FNamedNetDriver In)
-{
-	E_ST_FNamedNetDriver var;
-	
-	return var;
-}
-
-FORCEINLINE FNamedNetDriver CONV_ST_FNamedNetDriver_TO(E_ST_FNamedNetDriver In)
-{
-	FNamedNetDriver var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FNetDriverDefinition, *E_ST_FNetDriverDefinition_REF;
-}
-
-FORCEINLINE E_ST_FNetDriverDefinition CONV_ST_FNetDriverDefinition_IN(FNetDriverDefinition In)
-{
-	E_ST_FNetDriverDefinition var;
-	
-	return var;
-}
-
-FORCEINLINE FNetDriverDefinition CONV_ST_FNetDriverDefinition_TO(E_ST_FNetDriverDefinition In)
-{
-	FNetDriverDefinition var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FPluginRedirect, *E_ST_FPluginRedirect_REF;
-}
-
-FORCEINLINE E_ST_FPluginRedirect CONV_ST_FPluginRedirect_IN(FPluginRedirect In)
-{
-	E_ST_FPluginRedirect var;
-	
-	return var;
-}
-
-FORCEINLINE FPluginRedirect CONV_ST_FPluginRedirect_TO(E_ST_FPluginRedirect In)
-{
-	FPluginRedirect var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float X;
-		float Y;
-		float Z;
-		float W;
-	}
-E_ST_FQuat, *E_ST_FQuat_REF;
-}
-
-FORCEINLINE E_ST_FQuat CONV_ST_FQuat_IN(FQuat In)
-{
-	E_ST_FQuat var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	var.W = In.W;
-	
-	return var;
-}
-
-FORCEINLINE FQuat CONV_ST_FQuat_TO(E_ST_FQuat In)
-{
-	FQuat var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	var.W = In.W;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float Pitch;
-		float Yaw;
-		float Roll;
-	}
-E_ST_FRotator, *E_ST_FRotator_REF;
-}
-
-FORCEINLINE E_ST_FRotator CONV_ST_FRotator_IN(FRotator In)
-{
-	E_ST_FRotator var;
-	var.Pitch = In.Pitch;
-	var.Yaw = In.Yaw;
-	var.Roll = In.Roll;
-	
-	return var;
-}
-
-FORCEINLINE FRotator CONV_ST_FRotator_TO(E_ST_FRotator In)
-{
-	FRotator var;
-	var.Pitch = In.Pitch;
-	var.Yaw = In.Yaw;
-	var.Roll = In.Roll;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float In;
-	}
-E_ST_FStatColorMapEntry, *E_ST_FStatColorMapEntry_REF;
-}
-
-FORCEINLINE E_ST_FStatColorMapEntry CONV_ST_FStatColorMapEntry_IN(FStatColorMapEntry In)
-{
-	E_ST_FStatColorMapEntry var;
-	var.In = In.In;
-	
-	return var;
-}
-
-FORCEINLINE FStatColorMapEntry CONV_ST_FStatColorMapEntry_TO(E_ST_FStatColorMapEntry In)
-{
-	FStatColorMapEntry var;
-	var.In = In.In;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FStatColorMapping, *E_ST_FStatColorMapping_REF;
-}
-
-FORCEINLINE E_ST_FStatColorMapping CONV_ST_FStatColorMapping_IN(FStatColorMapping In)
-{
-	E_ST_FStatColorMapping var;
-	
-	return var;
-}
-
-FORCEINLINE FStatColorMapping CONV_ST_FStatColorMapping_TO(E_ST_FStatColorMapping In)
-{
-	FStatColorMapping var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FStructRedirect, *E_ST_FStructRedirect_REF;
-}
-
-FORCEINLINE E_ST_FStructRedirect CONV_ST_FStructRedirect_IN(FStructRedirect In)
-{
-	E_ST_FStructRedirect var;
-	
-	return var;
-}
-
-FORCEINLINE FStructRedirect CONV_ST_FStructRedirect_TO(E_ST_FStructRedirect In)
-{
-	FStructRedirect var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-	}
-E_ST_FTransform, *E_ST_FTransform_REF;
-}
-
-FORCEINLINE E_ST_FTransform CONV_ST_FTransform_IN(FTransform In)
-{
-	E_ST_FTransform var;
-	
-	return var;
-}
-
-FORCEINLINE FTransform CONV_ST_FTransform_TO(E_ST_FTransform In)
-{
-	FTransform var;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float X;
-		float Y;
-		float Z;
-	}
-E_ST_FVector, *E_ST_FVector_REF;
-}
-
-FORCEINLINE E_ST_FVector CONV_ST_FVector_IN(FVector In)
-{
-	E_ST_FVector var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	
-	return var;
-}
-
-FORCEINLINE FVector CONV_ST_FVector_TO(E_ST_FVector In)
-{
-	FVector var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float X;
-		float Y;
-	}
-E_ST_FVector2D, *E_ST_FVector2D_REF;
-}
-
-FORCEINLINE E_ST_FVector2D CONV_ST_FVector2D_IN(FVector2D In)
-{
-	E_ST_FVector2D var;
-	var.X = In.X;
-	var.Y = In.Y;
-	
-	return var;
-}
-
-FORCEINLINE FVector2D CONV_ST_FVector2D_TO(E_ST_FVector2D In)
-{
-	FVector2D var;
-	var.X = In.X;
-	var.Y = In.Y;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float X;
-		float Y;
-		float Z;
-		float W;
-	}
-E_ST_FVector4, *E_ST_FVector4_REF;
-}
-
-FORCEINLINE E_ST_FVector4 CONV_ST_FVector4_IN(FVector4 In)
-{
-	E_ST_FVector4 var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	var.W = In.W;
-	
-	return var;
-}
-
-FORCEINLINE FVector4 CONV_ST_FVector4_TO(E_ST_FVector4 In)
-{
-	FVector4 var;
-	var.X = In.X;
-	var.Y = In.Y;
-	var.Z = In.Z;
-	var.W = In.W;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		uint8 TravelType;
-		int32 PIEInstance;
-		bool RunAsDedicated;
-		bool bWaitingOnOnlineSubsystem;
-	}
-E_ST_FWorldContext, *E_ST_FWorldContext_REF;
-}
-
-FORCEINLINE E_ST_FWorldContext CONV_ST_FWorldContext_IN(FWorldContext In)
-{
-	E_ST_FWorldContext var;
-	var.TravelType = In.TravelType;
-	var.PIEInstance = In.PIEInstance;
-	var.RunAsDedicated = In.RunAsDedicated;
-	var.bWaitingOnOnlineSubsystem = In.bWaitingOnOnlineSubsystem;
-	
-	return var;
-}
-
-FORCEINLINE FWorldContext CONV_ST_FWorldContext_TO(E_ST_FWorldContext In)
-{
-	FWorldContext var;
-	var.TravelType = In.TravelType;
-	var.PIEInstance = In.PIEInstance;
-	var.RunAsDedicated = In.RunAsDedicated;
-	var.bWaitingOnOnlineSubsystem = In.bWaitingOnOnlineSubsystem;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		FVector Min;
-		FVector Max;
-		uint8 IsValid;
-	}
-E_ST_FBox, *E_ST_FBox_REF;
-}
-
-FORCEINLINE E_ST_FBox CONV_ST_FBox_IN(FBox In)
-{
-	E_ST_FBox var;
-	var.Min = In.Min;
-	var.Max = In.Max;
-	var.IsValid = In.IsValid;
-	
-	return var;
-}
-
-FORCEINLINE FBox CONV_ST_FBox_TO(E_ST_FBox In)
-{
-	FBox var;
-	var.Min = In.Min;
-	var.Max = In.Max;
-	var.IsValid = In.IsValid;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		FVector2D Min;
-		FVector2D Max;
-		bool bIsValid;
-	}
-E_ST_FBox2D, *E_ST_FBox2D_REF;
-}
-
-FORCEINLINE E_ST_FBox2D CONV_ST_FBox2D_IN(FBox2D In)
-{
-	E_ST_FBox2D var;
-	var.Min = In.Min;
-	var.Max = In.Max;
-	var.bIsValid = In.bIsValid;
-	
-	return var;
-}
-
-FORCEINLINE FBox2D CONV_ST_FBox2D_TO(E_ST_FBox2D In)
-{
-	FBox2D var;
-	var.Min = In.Min;
-	var.Max = In.Max;
-	var.bIsValid = In.bIsValid;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		FVector Location;
-		FRotator Rotation;
-	}
-E_ST_FDropNoteInfo, *E_ST_FDropNoteInfo_REF;
-}
-
-FORCEINLINE E_ST_FDropNoteInfo CONV_ST_FDropNoteInfo_IN(FDropNoteInfo In)
-{
-	E_ST_FDropNoteInfo var;
-	var.Location = In.Location;
-	var.Rotation = In.Rotation;
-	
-	return var;
-}
-
-FORCEINLINE FDropNoteInfo CONV_ST_FDropNoteInfo_TO(E_ST_FDropNoteInfo In)
-{
-	FDropNoteInfo var;
-	var.Location = In.Location;
-	var.Rotation = In.Rotation;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		FVector CamPosition;
-		FRotator CamRotation;
-		float CamOrthoZoom;
-		bool CamUpdated;
-	}
-E_ST_FLevelViewportInfo, *E_ST_FLevelViewportInfo_REF;
-}
-
-FORCEINLINE E_ST_FLevelViewportInfo CONV_ST_FLevelViewportInfo_IN(FLevelViewportInfo In)
-{
-	E_ST_FLevelViewportInfo var;
-	var.CamPosition = In.CamPosition;
-	var.CamRotation = In.CamRotation;
-	var.CamOrthoZoom = In.CamOrthoZoom;
-	var.CamUpdated = In.CamUpdated;
-	
-	return var;
-}
-
-FORCEINLINE FLevelViewportInfo CONV_ST_FLevelViewportInfo_TO(E_ST_FLevelViewportInfo In)
-{
-	FLevelViewportInfo var;
-	var.CamPosition = In.CamPosition;
-	var.CamRotation = In.CamRotation;
-	var.CamOrthoZoom = In.CamOrthoZoom;
-	var.CamUpdated = In.CamUpdated;
-	
-	return var;
-}
-
-
-extern "C"
-{
-	typedef struct
-	{
-		float TimeToDisplay;
-		float CurrentTimeDisplayed;
-		FVector2D TextScale;
-	}
-E_ST_FScreenMessageString, *E_ST_FScreenMessageString_REF;
-}
-
-FORCEINLINE E_ST_FScreenMessageString CONV_ST_FScreenMessageString_IN(FScreenMessageString In)
-{
-	E_ST_FScreenMessageString var;
-	var.TimeToDisplay = In.TimeToDisplay;
-	var.CurrentTimeDisplayed = In.CurrentTimeDisplayed;
-	var.TextScale = In.TextScale;
-	
-	return var;
-}
-
-FORCEINLINE FScreenMessageString CONV_ST_FScreenMessageString_TO(E_ST_FScreenMessageString In)
-{
-	FScreenMessageString var;
-	var.TimeToDisplay = In.TimeToDisplay;
-	var.CurrentTimeDisplayed = In.CurrentTimeDisplayed;
-	var.TextScale = In.TextScale;
-	
-	return var;
-}
-
 
 extern "C"
 {
 	
 	/*	FClassRedirect	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FClassRedirect() { return (INT_PTR) new FClassRedirect(); }
+	
+	DOTNET_EXPORT bool E_Struct_FClassRedirect_InstanceOnly_GET(INT_PTR Ptr) { return ((FClassRedirect*)Ptr)->InstanceOnly; }
+	DOTNET_EXPORT void E_Struct_FClassRedirect_InstanceOnly_SET(INT_PTR Ptr, bool Value) { ((FClassRedirect*)Ptr)->InstanceOnly = Value; }
+	
 	
 	/*	FFullyLoadedPackagesInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFullyLoadedPackagesInfo() { return (INT_PTR) new FFullyLoadedPackagesInfo(); }
 	
 	
 	/*	FGameNameRedirect	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FGameNameRedirect() { return (INT_PTR) new FGameNameRedirect(); }
 	
-	/*	FLevelCollection	*/
-	
-	DOTNET_EXPORT bool E_FLevelCollection_IsVisible(E_ST_FLevelCollection Self)
-	{
-		return CONV_ST_FLevelCollection_TO(Self).IsVisible();
-	}
-
-	DOTNET_EXPORT void E_FLevelCollection_SetIsVisible(E_ST_FLevelCollection Self, bool bInIsVisible)
-	{
-		auto _p0 = bInIsVisible;
-		CONV_ST_FLevelCollection_TO(Self).SetIsVisible(_p0);
-	}
-
 	
 	/*	FLevelStreamingGCHelper	*/
 	
-	DOTNET_EXPORT void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(E_ST_FLevelStreamingGCHelper Self)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingGCHelper() { return (INT_PTR) new FLevelStreamingGCHelper(); }
+	
+	DOTNET_EXPORT void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(INT_PTR Self)
 	{
-		CONV_ST_FLevelStreamingGCHelper_TO(Self).AddGarbageCollectorCallback();
+		((FLevelStreamingGCHelper*)Self)->AddGarbageCollectorCallback();
 	}
 
-	DOTNET_EXPORT int32 E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(E_ST_FLevelStreamingGCHelper Self)
+	DOTNET_EXPORT int32 E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(INT_PTR Self)
 	{
-		return CONV_ST_FLevelStreamingGCHelper_TO(Self).GetNumLevelsPendingPurge();
+		return ((FLevelStreamingGCHelper*)Self)->GetNumLevelsPendingPurge();
 	}
 
 	
 	/*	FLevelStreamingStatus	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus() { return (INT_PTR) new FLevelStreamingStatus(); }
+	
 	
 	/*	FNamedNetDriver	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FNamedNetDriver() { return (INT_PTR) new FNamedNetDriver(); }
 	
 	
 	/*	FNetDriverDefinition	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FNetDriverDefinition() { return (INT_PTR) new FNetDriverDefinition(); }
+	
 	
 	/*	FPluginRedirect	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPluginRedirect() { return (INT_PTR) new FPluginRedirect(); }
 	
 	
 	/*	FQuat	*/
 	
-	DOTNET_EXPORT E_ST_FQuat E_OP_FQuat_p(E_ST_FQuat Self, E_ST_FQuat Q)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat() { return (INT_PTR) new FQuat(); }
+	
+	DOTNET_EXPORT float E_Struct_FQuat_X_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->X; }
+	DOTNET_EXPORT void E_Struct_FQuat_X_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->X = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FQuat_Y_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->Y; }
+	DOTNET_EXPORT void E_Struct_FQuat_Y_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->Y = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FQuat_Z_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->Z; }
+	DOTNET_EXPORT void E_Struct_FQuat_Z_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->Z = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FQuat_W_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->W; }
+	DOTNET_EXPORT void E_Struct_FQuat_W_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->W = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FQuat_p(INT_PTR Self, INT_PTR Q)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(Q);
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).operator+(_p0));
+		auto _p0 = *(FQuat*)Q;
+		return (INT_PTR) new FQuat(((FQuat*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FQuat_Equals(E_ST_FQuat Self, E_ST_FQuat Q, float Tolerance)
+	DOTNET_EXPORT bool E_FQuat_Equals(INT_PTR Self, INT_PTR Q, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(Q);
+		auto _p0 = *(FQuat*)Q;
 		auto _p1 = Tolerance;
-		return CONV_ST_FQuat_TO(Self).Equals(_p0, _p1);
+		return ((FQuat*)Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FQuat_IsIdentity(E_ST_FQuat Self, float Tolerance)
+	DOTNET_EXPORT bool E_FQuat_IsIdentity(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FQuat_TO(Self).IsIdentity(_p0);
+		return ((FQuat*)Self)->IsIdentity(_p0);
 	}
 
-	DOTNET_EXPORT float E_OP_FQuat_i(E_ST_FQuat Self, E_ST_FQuat Q)
+	DOTNET_EXPORT float E_OP_FQuat_i(INT_PTR Self, INT_PTR Q)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(Q);
-		return CONV_ST_FQuat_TO(Self).operator|(_p0);
+		auto _p0 = *(FQuat*)Q;
+		return ((FQuat*)Self)->operator|(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_MakeFromEuler(E_ST_FQuat Self, E_ST_FVector Euler)
+	DOTNET_EXPORT INT_PTR E_FQuat_MakeFromEuler(INT_PTR Self, INT_PTR Euler)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Euler);
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).MakeFromEuler(_p0));
+		auto _p0 = *(FVector*)Euler;
+		return (INT_PTR) new FQuat(((FQuat*)Self)->MakeFromEuler(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FQuat_Euler(E_ST_FQuat Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Euler(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(CONV_ST_FQuat_TO(Self).Euler());
+		return (INT_PTR) new FVector(((FQuat*)Self)->Euler());
 	}
 
-	DOTNET_EXPORT void E_FQuat_Normalize(E_ST_FQuat Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		CONV_ST_FQuat_TO(Self).Normalize(_p0);
-	}
-
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_GetNormalized(E_ST_FQuat Self, float Tolerance)
+	DOTNET_EXPORT void E_FQuat_Normalize(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).GetNormalized(_p0));
+		((FQuat*)Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FQuat_IsNormalized(E_ST_FQuat Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetNormalized(INT_PTR Self, float Tolerance)
 	{
-		return CONV_ST_FQuat_TO(Self).IsNormalized();
+		auto _p0 = Tolerance;
+		return (INT_PTR) new FQuat(((FQuat*)Self)->GetNormalized(_p0));
 	}
 
-	DOTNET_EXPORT float E_FQuat_Size(E_ST_FQuat Self)
+	DOTNET_EXPORT bool E_FQuat_IsNormalized(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_TO(Self).Size();
+		return ((FQuat*)Self)->IsNormalized();
 	}
 
-	DOTNET_EXPORT void E_FQuat_ToAxisAndAngle(E_ST_FQuat Self, E_ST_FVector Axis, float Angle)
+	DOTNET_EXPORT float E_FQuat_Size(INT_PTR Self)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Axis);
+		return ((FQuat*)Self)->Size();
+	}
+
+	DOTNET_EXPORT void E_FQuat_ToAxisAndAngle(INT_PTR Self, INT_PTR Axis, float Angle)
+	{
+		auto _p0 = *(FVector*)Axis;
 		auto _p1 = Angle;
-		CONV_ST_FQuat_TO(Self).ToAxisAndAngle(_p0, _p1);
+		((FQuat*)Self)->ToAxisAndAngle(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FQuat_ToSwingTwist(E_ST_FQuat Self, E_ST_FVector InTwistAxis, E_ST_FQuat OutSwing, E_ST_FQuat OutTwist)
+	DOTNET_EXPORT void E_FQuat_ToSwingTwist(INT_PTR Self, INT_PTR InTwistAxis, INT_PTR OutSwing, INT_PTR OutTwist)
 	{
-		auto _p0 = CONV_ST_FVector_TO(InTwistAxis);
-		auto _p1 = CONV_ST_FQuat_TO(OutSwing);
-		auto _p2 = CONV_ST_FQuat_TO(OutTwist);
-		CONV_ST_FQuat_TO(Self).ToSwingTwist(_p0, _p1, _p2);
+		auto _p0 = *(FVector*)InTwistAxis;
+		auto _p1 = *(FQuat*)OutSwing;
+		auto _p2 = *(FQuat*)OutTwist;
+		((FQuat*)Self)->ToSwingTwist(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FQuat_RotateVector(E_ST_FQuat Self, E_ST_FVector V)
+	DOTNET_EXPORT INT_PTR E_FQuat_RotateVector(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
-		return CONV_ST_FVector_IN(CONV_ST_FQuat_TO(Self).RotateVector(_p0));
+		auto _p0 = *(FVector*)V;
+		return (INT_PTR) new FVector(((FQuat*)Self)->RotateVector(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_Log(E_ST_FQuat Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Log(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).Log());
+		return (INT_PTR) new FQuat(((FQuat*)Self)->Log());
 	}
 
-	DOTNET_EXPORT void E_FQuat_EnforceShortestArcWith(E_ST_FQuat Self, E_ST_FQuat OtherQuat)
+	DOTNET_EXPORT void E_FQuat_EnforceShortestArcWith(INT_PTR Self, INT_PTR OtherQuat)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(OtherQuat);
-		CONV_ST_FQuat_TO(Self).EnforceShortestArcWith(_p0);
+		auto _p0 = *(FQuat*)OtherQuat;
+		((FQuat*)Self)->EnforceShortestArcWith(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FQuat_Rotator(E_ST_FQuat Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Rotator(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_IN(CONV_ST_FQuat_TO(Self).Rotator());
+		return (INT_PTR) new FRotator(((FQuat*)Self)->Rotator());
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_FindBetween(E_ST_FQuat Self, E_ST_FVector Vector1, E_ST_FVector Vector2)
+	DOTNET_EXPORT INT_PTR E_FQuat_FindBetween(INT_PTR Self, INT_PTR Vector1, INT_PTR Vector2)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Vector1);
-		auto _p1 = CONV_ST_FVector_TO(Vector2);
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).FindBetween(_p0, _p1));
+		auto _p0 = *(FVector*)Vector1;
+		auto _p1 = *(FVector*)Vector2;
+		return (INT_PTR) new FQuat(((FQuat*)Self)->FindBetween(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_FQuat_Error(E_ST_FQuat Self, E_ST_FQuat Q1, E_ST_FQuat Q2)
+	DOTNET_EXPORT float E_FQuat_Error(INT_PTR Self, INT_PTR Q1, INT_PTR Q2)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(Q1);
-		auto _p1 = CONV_ST_FQuat_TO(Q2);
-		return CONV_ST_FQuat_TO(Self).Error(_p0, _p1);
+		auto _p0 = *(FQuat*)Q1;
+		auto _p1 = *(FQuat*)Q2;
+		return ((FQuat*)Self)->Error(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_FastLerp(E_ST_FQuat Self, E_ST_FQuat A, E_ST_FQuat B, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_FastLerp(INT_PTR Self, INT_PTR A, INT_PTR B, float Alpha)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(A);
-		auto _p1 = CONV_ST_FQuat_TO(B);
+		auto _p0 = *(FQuat*)A;
+		auto _p1 = *(FQuat*)B;
 		auto _p2 = Alpha;
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).FastLerp(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat(((FQuat*)Self)->FastLerp(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_FastBilerp(E_ST_FQuat Self, E_ST_FQuat P00, E_ST_FQuat P10, E_ST_FQuat P01, E_ST_FQuat P11, float FracX, float FracY)
+	DOTNET_EXPORT INT_PTR E_FQuat_FastBilerp(INT_PTR Self, INT_PTR P00, INT_PTR P10, INT_PTR P01, INT_PTR P11, float FracX, float FracY)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(P00);
-		auto _p1 = CONV_ST_FQuat_TO(P10);
-		auto _p2 = CONV_ST_FQuat_TO(P01);
-		auto _p3 = CONV_ST_FQuat_TO(P11);
+		auto _p0 = *(FQuat*)P00;
+		auto _p1 = *(FQuat*)P10;
+		auto _p2 = *(FQuat*)P01;
+		auto _p3 = *(FQuat*)P11;
 		auto _p4 = FracX;
 		auto _p5 = FracY;
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).FastBilerp(_p0, _p1, _p2, _p3, _p4, _p5));
+		return (INT_PTR) new FQuat(((FQuat*)Self)->FastBilerp(_p0, _p1, _p2, _p3, _p4, _p5));
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_Slerp_NotNormalized(E_ST_FQuat Self, E_ST_FQuat Quat1, E_ST_FQuat Quat2, float Slerp)
+	DOTNET_EXPORT INT_PTR E_FQuat_Slerp_NotNormalized(INT_PTR Self, INT_PTR Quat1, INT_PTR Quat2, float Slerp)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(Quat1);
-		auto _p1 = CONV_ST_FQuat_TO(Quat2);
+		auto _p0 = *(FQuat*)Quat1;
+		auto _p1 = *(FQuat*)Quat2;
 		auto _p2 = Slerp;
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).Slerp_NotNormalized(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat(((FQuat*)Self)->Slerp_NotNormalized(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FQuat_Squad(E_ST_FQuat Self, E_ST_FQuat quat1, E_ST_FQuat tang1, E_ST_FQuat quat2, E_ST_FQuat tang2, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_Squad(INT_PTR Self, INT_PTR quat1, INT_PTR tang1, INT_PTR quat2, INT_PTR tang2, float Alpha)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(quat1);
-		auto _p1 = CONV_ST_FQuat_TO(tang1);
-		auto _p2 = CONV_ST_FQuat_TO(quat2);
-		auto _p3 = CONV_ST_FQuat_TO(tang2);
+		auto _p0 = *(FQuat*)quat1;
+		auto _p1 = *(FQuat*)tang1;
+		auto _p2 = *(FQuat*)quat2;
+		auto _p3 = *(FQuat*)tang2;
 		auto _p4 = Alpha;
-		return CONV_ST_FQuat_IN(CONV_ST_FQuat_TO(Self).Squad(_p0, _p1, _p2, _p3, _p4));
+		return (INT_PTR) new FQuat(((FQuat*)Self)->Squad(_p0, _p1, _p2, _p3, _p4));
 	}
 
-	DOTNET_EXPORT void E_FQuat_CalcTangents(E_ST_FQuat Self, E_ST_FQuat PrevP, E_ST_FQuat P, E_ST_FQuat NextP, float Tension, E_ST_FQuat OutTan)
+	DOTNET_EXPORT void E_FQuat_CalcTangents(INT_PTR Self, INT_PTR PrevP, INT_PTR P, INT_PTR NextP, float Tension, INT_PTR OutTan)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(PrevP);
-		auto _p1 = CONV_ST_FQuat_TO(P);
-		auto _p2 = CONV_ST_FQuat_TO(NextP);
+		auto _p0 = *(FQuat*)PrevP;
+		auto _p1 = *(FQuat*)P;
+		auto _p2 = *(FQuat*)NextP;
 		auto _p3 = Tension;
-		auto _p4 = CONV_ST_FQuat_TO(OutTan);
-		CONV_ST_FQuat_TO(Self).CalcTangents(_p0, _p1, _p2, _p3, _p4);
+		auto _p4 = *(FQuat*)OutTan;
+		((FQuat*)Self)->CalcTangents(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	
 	/*	FRotator	*/
 	
-	DOTNET_EXPORT E_ST_FRotator E_OP_FRotator_p(E_ST_FRotator Self, E_ST_FRotator R)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotator() { return (INT_PTR) new FRotator(); }
+	
+	DOTNET_EXPORT float E_Struct_FRotator_Pitch_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Pitch; }
+	DOTNET_EXPORT void E_Struct_FRotator_Pitch_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Pitch = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FRotator_Yaw_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Yaw; }
+	DOTNET_EXPORT void E_Struct_FRotator_Yaw_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Yaw = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FRotator_Roll_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Roll; }
+	DOTNET_EXPORT void E_Struct_FRotator_Roll_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Roll = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FRotator_p(INT_PTR Self, INT_PTR R)
 	{
-		auto _p0 = CONV_ST_FRotator_TO(R);
-		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).operator+(_p0));
+		auto _p0 = *(FRotator*)R;
+		return (INT_PTR) new FRotator(((FRotator*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_OP_FRotator_m(E_ST_FRotator Self, float Scale)
+	DOTNET_EXPORT INT_PTR E_OP_FRotator_m(INT_PTR Self, float Scale)
 	{
 		auto _p0 = Scale;
-		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).operator*(_p0));
+		return (INT_PTR) new FRotator(((FRotator*)Self)->operator*(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FRotator_IsNearlyZero(E_ST_FRotator Self, float Tolerance)
+	DOTNET_EXPORT bool E_FRotator_IsNearlyZero(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FRotator_TO(Self).IsNearlyZero(_p0);
+		return ((FRotator*)Self)->IsNearlyZero(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FRotator_IsZero(E_ST_FRotator Self)
+	DOTNET_EXPORT bool E_FRotator_IsZero(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_TO(Self).IsZero();
+		return ((FRotator*)Self)->IsZero();
 	}
 
-	DOTNET_EXPORT bool E_FRotator_Equals(E_ST_FRotator Self, E_ST_FRotator R, float Tolerance)
+	DOTNET_EXPORT bool E_FRotator_Equals(INT_PTR Self, INT_PTR R, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FRotator_TO(R);
+		auto _p0 = *(FRotator*)R;
 		auto _p1 = Tolerance;
-		return CONV_ST_FRotator_TO(Self).Equals(_p0, _p1);
+		return ((FRotator*)Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FRotator_Add(E_ST_FRotator Self, float DeltaPitch, float DeltaYaw, float DeltaRoll)
+	DOTNET_EXPORT INT_PTR E_FRotator_Add(INT_PTR Self, float DeltaPitch, float DeltaYaw, float DeltaRoll)
 	{
 		auto _p0 = DeltaPitch;
 		auto _p1 = DeltaYaw;
 		auto _p2 = DeltaRoll;
-		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).Add(_p0, _p1, _p2));
+		return (INT_PTR) new FRotator(((FRotator*)Self)->Add(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FRotator_Vector(E_ST_FRotator Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Vector(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(CONV_ST_FRotator_TO(Self).Vector());
+		return (INT_PTR) new FVector(((FRotator*)Self)->Vector());
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FRotator_Quaternion(E_ST_FRotator Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Quaternion(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(CONV_ST_FRotator_TO(Self).Quaternion());
+		return (INT_PTR) new FQuat(((FRotator*)Self)->Quaternion());
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FRotator_RotateVector(E_ST_FRotator Self, E_ST_FVector V)
+	DOTNET_EXPORT INT_PTR E_FRotator_RotateVector(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
-		return CONV_ST_FVector_IN(CONV_ST_FRotator_TO(Self).RotateVector(_p0));
+		auto _p0 = *(FVector*)V;
+		return (INT_PTR) new FVector(((FRotator*)Self)->RotateVector(_p0));
 	}
 
-	DOTNET_EXPORT void E_FRotator_Normalize(E_ST_FRotator Self)
+	DOTNET_EXPORT void E_FRotator_Normalize(INT_PTR Self)
 	{
-		CONV_ST_FRotator_TO(Self).Normalize();
+		((FRotator*)Self)->Normalize();
 	}
 
-	DOTNET_EXPORT void E_FRotator_GetWindingAndRemainder(E_ST_FRotator Self, E_ST_FRotator Winding, E_ST_FRotator Remainder)
+	DOTNET_EXPORT void E_FRotator_GetWindingAndRemainder(INT_PTR Self, INT_PTR Winding, INT_PTR Remainder)
 	{
-		auto _p0 = CONV_ST_FRotator_TO(Winding);
-		auto _p1 = CONV_ST_FRotator_TO(Remainder);
-		CONV_ST_FRotator_TO(Self).GetWindingAndRemainder(_p0, _p1);
+		auto _p0 = *(FRotator*)Winding;
+		auto _p1 = *(FRotator*)Remainder;
+		((FRotator*)Self)->GetWindingAndRemainder(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FRotator_ClampAxis(E_ST_FRotator Self, float Angle)
-	{
-		auto _p0 = Angle;
-		return CONV_ST_FRotator_TO(Self).ClampAxis(_p0);
-	}
-
-	DOTNET_EXPORT uint8 E_FRotator_CompressAxisToByte(E_ST_FRotator Self, float Angle)
+	DOTNET_EXPORT float E_FRotator_ClampAxis(INT_PTR Self, float Angle)
 	{
 		auto _p0 = Angle;
-		return CONV_ST_FRotator_TO(Self).CompressAxisToByte(_p0);
+		return ((FRotator*)Self)->ClampAxis(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FRotator_MakeFromEuler(E_ST_FRotator Self, E_ST_FVector Euler)
+	DOTNET_EXPORT uint8 E_FRotator_CompressAxisToByte(INT_PTR Self, float Angle)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Euler);
-		return CONV_ST_FRotator_IN(CONV_ST_FRotator_TO(Self).MakeFromEuler(_p0));
+		auto _p0 = Angle;
+		return ((FRotator*)Self)->CompressAxisToByte(_p0);
+	}
+
+	DOTNET_EXPORT INT_PTR E_FRotator_MakeFromEuler(INT_PTR Self, INT_PTR Euler)
+	{
+		auto _p0 = *(FVector*)Euler;
+		return (INT_PTR) new FRotator(((FRotator*)Self)->MakeFromEuler(_p0));
 	}
 
 	
 	/*	FStatColorMapEntry	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FStatColorMapEntry() { return (INT_PTR) new FStatColorMapEntry(); }
+	
+	DOTNET_EXPORT float E_Struct_FStatColorMapEntry_In_GET(INT_PTR Ptr) { return ((FStatColorMapEntry*)Ptr)->In; }
+	DOTNET_EXPORT void E_Struct_FStatColorMapEntry_In_SET(INT_PTR Ptr, float Value) { ((FStatColorMapEntry*)Ptr)->In = Value; }
+	
 	
 	/*	FStatColorMapping	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FStatColorMapping() { return (INT_PTR) new FStatColorMapping(); }
 	
 	
 	/*	FStructRedirect	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FStructRedirect() { return (INT_PTR) new FStructRedirect(); }
+	
 	
 	/*	FTransform	*/
 	
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Scale3D(E_ST_FTransform Self)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform() { return (INT_PTR) new FTransform(); }
+	
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Scale3D(INT_PTR Self)
 	{
-		CONV_ST_FTransform_TO(Self).DiagnosticCheckNaN_Scale3D();
+		((FTransform*)Self)->DiagnosticCheckNaN_Scale3D();
 	}
 
-	DOTNET_EXPORT E_ST_FTransform E_FTransform_Inverse(E_ST_FTransform Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_Inverse(INT_PTR Self)
 	{
-		return CONV_ST_FTransform_IN(CONV_ST_FTransform_TO(Self).Inverse());
+		return (INT_PTR) new FTransform(((FTransform*)Self)->Inverse());
 	}
 
-	DOTNET_EXPORT void E_FTransform_Blend(E_ST_FTransform Self, E_ST_FTransform Atom1, E_ST_FTransform Atom2, float Alpha)
+	DOTNET_EXPORT void E_FTransform_Blend(INT_PTR Self, INT_PTR Atom1, INT_PTR Atom2, float Alpha)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(Atom1);
-		auto _p1 = CONV_ST_FTransform_TO(Atom2);
+		auto _p0 = *(FTransform*)Atom1;
+		auto _p1 = *(FTransform*)Atom2;
 		auto _p2 = Alpha;
-		CONV_ST_FTransform_TO(Self).Blend(_p0, _p1, _p2);
+		((FTransform*)Self)->Blend(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_BlendWith(E_ST_FTransform Self, E_ST_FTransform OtherAtom, float Alpha)
+	DOTNET_EXPORT void E_FTransform_BlendWith(INT_PTR Self, INT_PTR OtherAtom, float Alpha)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(OtherAtom);
+		auto _p0 = *(FTransform*)OtherAtom;
 		auto _p1 = Alpha;
-		CONV_ST_FTransform_TO(Self).BlendWith(_p0, _p1);
+		((FTransform*)Self)->BlendWith(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FTransform E_OP_FTransform_p(E_ST_FTransform Self, E_ST_FTransform Atom)
+	DOTNET_EXPORT INT_PTR E_OP_FTransform_p(INT_PTR Self, INT_PTR Atom)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(Atom);
-		return CONV_ST_FTransform_IN(CONV_ST_FTransform_TO(Self).operator+(_p0));
+		auto _p0 = *(FTransform*)Atom;
+		return (INT_PTR) new FTransform(((FTransform*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AnyHasNegativeScale(E_ST_FTransform Self, E_ST_FVector InScale3D, E_ST_FVector InOtherScale3D)
+	DOTNET_EXPORT bool E_FTransform_AnyHasNegativeScale(INT_PTR Self, INT_PTR InScale3D, INT_PTR InOtherScale3D)
 	{
-		auto _p0 = CONV_ST_FVector_TO(InScale3D);
-		auto _p1 = CONV_ST_FVector_TO(InOtherScale3D);
-		return CONV_ST_FTransform_TO(Self).AnyHasNegativeScale(_p0, _p1);
+		auto _p0 = *(FVector*)InScale3D;
+		auto _p1 = *(FVector*)InOtherScale3D;
+		return ((FTransform*)Self)->AnyHasNegativeScale(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FTransform_RemoveScaling(E_ST_FTransform Self, float Tolerance)
+	DOTNET_EXPORT void E_FTransform_RemoveScaling(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		CONV_ST_FTransform_TO(Self).RemoveScaling(_p0);
+		((FTransform*)Self)->RemoveScaling(_p0);
 	}
 
-	DOTNET_EXPORT float E_FTransform_GetMaximumAxisScale(E_ST_FTransform Self)
+	DOTNET_EXPORT float E_FTransform_GetMaximumAxisScale(INT_PTR Self)
 	{
-		return CONV_ST_FTransform_TO(Self).GetMaximumAxisScale();
+		return ((FTransform*)Self)->GetMaximumAxisScale();
 	}
 
-	DOTNET_EXPORT E_ST_FVector4 E_FTransform_TransformFVector4(E_ST_FTransform Self, E_ST_FVector4 V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformFVector4(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector4_TO(V);
-		return CONV_ST_FVector4_IN(CONV_ST_FTransform_TO(Self).TransformFVector4(_p0));
+		auto _p0 = *(FVector4*)V;
+		return (INT_PTR) new FVector4(((FTransform*)Self)->TransformFVector4(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FTransform_TransformPosition(E_ST_FTransform Self, E_ST_FVector V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformPosition(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
-		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).TransformPosition(_p0));
+		auto _p0 = *(FVector*)V;
+		return (INT_PTR) new FVector(((FTransform*)Self)->TransformPosition(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FTransform_GetSafeScaleReciprocal(E_ST_FTransform Self, E_ST_FVector InScale, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetSafeScaleReciprocal(INT_PTR Self, INT_PTR InScale, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FVector_TO(InScale);
+		auto _p0 = *(FVector*)InScale;
 		auto _p1 = Tolerance;
-		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).GetSafeScaleReciprocal(_p0, _p1));
+		return (INT_PTR) new FVector(((FTransform*)Self)->GetSafeScaleReciprocal(_p0, _p1));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FTransform_GetLocation(E_ST_FTransform Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetLocation(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).GetLocation());
+		return (INT_PTR) new FVector(((FTransform*)Self)->GetLocation());
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FTransform_Rotator(E_ST_FTransform Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_Rotator(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_IN(CONV_ST_FTransform_TO(Self).Rotator());
+		return (INT_PTR) new FRotator(((FTransform*)Self)->Rotator());
 	}
 
-	DOTNET_EXPORT bool E_FTransform_ContainsNaN(E_ST_FTransform Self)
+	DOTNET_EXPORT bool E_FTransform_ContainsNaN(INT_PTR Self)
 	{
-		return CONV_ST_FTransform_TO(Self).ContainsNaN();
+		return ((FTransform*)Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AreRotationsEqual(E_ST_FTransform Self, E_ST_FTransform A, E_ST_FTransform B, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_AreRotationsEqual(INT_PTR Self, INT_PTR A, INT_PTR B, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(A);
-		auto _p1 = CONV_ST_FTransform_TO(B);
+		auto _p0 = *(FTransform*)A;
+		auto _p1 = *(FTransform*)B;
 		auto _p2 = Tolerance;
-		return CONV_ST_FTransform_TO(Self).AreRotationsEqual(_p0, _p1, _p2);
+		return ((FTransform*)Self)->AreRotationsEqual(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_RotationEquals(E_ST_FTransform Self, E_ST_FTransform Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_RotationEquals(INT_PTR Self, INT_PTR Other, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(Other);
+		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return CONV_ST_FTransform_TO(Self).RotationEquals(_p0, _p1);
+		return ((FTransform*)Self)->RotationEquals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FTransform_Multiply(E_ST_FTransform Self, E_ST_FTransform OutTransform, E_ST_FTransform A, E_ST_FTransform B)
+	DOTNET_EXPORT void E_FTransform_Multiply(INT_PTR Self, INT_PTR OutTransform, INT_PTR A, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(OutTransform);
-		auto _p1 = CONV_ST_FTransform_TO(A);
-		auto _p2 = CONV_ST_FTransform_TO(B);
-		CONV_ST_FTransform_TO(Self).Multiply(&_p0, &_p1, &_p2);
+		auto _p0 = *(FTransform*)OutTransform;
+		auto _p1 = *(FTransform*)A;
+		auto _p2 = *(FTransform*)B;
+		((FTransform*)Self)->Multiply(&_p0, &_p1, &_p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetComponents(E_ST_FTransform Self, E_ST_FQuat InRotation, E_ST_FVector InTranslation, E_ST_FVector InScale3D)
+	DOTNET_EXPORT void E_FTransform_SetComponents(INT_PTR Self, INT_PTR InRotation, INT_PTR InTranslation, INT_PTR InScale3D)
 	{
-		auto _p0 = CONV_ST_FQuat_TO(InRotation);
-		auto _p1 = CONV_ST_FVector_TO(InTranslation);
-		auto _p2 = CONV_ST_FVector_TO(InScale3D);
-		CONV_ST_FTransform_TO(Self).SetComponents(_p0, _p1, _p2);
+		auto _p0 = *(FQuat*)InRotation;
+		auto _p1 = *(FVector*)InTranslation;
+		auto _p2 = *(FVector*)InScale3D;
+		((FTransform*)Self)->SetComponents(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetIdentity(E_ST_FTransform Self)
+	DOTNET_EXPORT void E_FTransform_SetIdentity(INT_PTR Self)
 	{
-		CONV_ST_FTransform_TO(Self).SetIdentity();
+		((FTransform*)Self)->SetIdentity();
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FTransform_AddTranslations(E_ST_FTransform Self, E_ST_FTransform A, E_ST_FTransform B)
+	DOTNET_EXPORT INT_PTR E_FTransform_AddTranslations(INT_PTR Self, INT_PTR A, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(A);
-		auto _p1 = CONV_ST_FTransform_TO(B);
-		return CONV_ST_FVector_IN(CONV_ST_FTransform_TO(Self).AddTranslations(_p0, _p1));
+		auto _p0 = *(FTransform*)A;
+		auto _p1 = *(FTransform*)B;
+		return (INT_PTR) new FVector(((FTransform*)Self)->AddTranslations(_p0, _p1));
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetTranslationAndScale3D(E_ST_FTransform Self, E_ST_FVector NewTranslation, E_ST_FVector NewScale3D)
+	DOTNET_EXPORT void E_FTransform_SetTranslationAndScale3D(INT_PTR Self, INT_PTR NewTranslation, INT_PTR NewScale3D)
 	{
-		auto _p0 = CONV_ST_FVector_TO(NewTranslation);
-		auto _p1 = CONV_ST_FVector_TO(NewScale3D);
-		CONV_ST_FTransform_TO(Self).SetTranslationAndScale3D(_p0, _p1);
+		auto _p0 = *(FVector*)NewTranslation;
+		auto _p1 = *(FVector*)NewScale3D;
+		((FTransform*)Self)->SetTranslationAndScale3D(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FTransform_GetRotation(E_ST_FTransform Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetRotation(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(CONV_ST_FTransform_TO(Self).GetRotation());
+		return (INT_PTR) new FQuat(((FTransform*)Self)->GetRotation());
 	}
 
 	
 	/*	FVector	*/
 	
-	DOTNET_EXPORT E_ST_FVector E_OP_FVector_u(E_ST_FVector Self, E_ST_FVector V)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector() { return (INT_PTR) new FVector(); }
+	
+	DOTNET_EXPORT float E_Struct_FVector_X_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->X; }
+	DOTNET_EXPORT void E_Struct_FVector_X_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->X = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector_Y_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->Y; }
+	DOTNET_EXPORT void E_Struct_FVector_Y_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->Y = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector_Z_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->Z; }
+	DOTNET_EXPORT void E_Struct_FVector_Z_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->Z = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FVector_u(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
-		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).operator^(_p0));
+		auto _p0 = *(FVector*)V;
+		return (INT_PTR) new FVector(((FVector*)Self)->operator^(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FVector_CrossProduct(E_ST_FVector Self, E_ST_FVector A, E_ST_FVector B)
+	DOTNET_EXPORT INT_PTR E_FVector_CrossProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FVector_TO(A);
-		auto _p1 = CONV_ST_FVector_TO(B);
-		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).CrossProduct(_p0, _p1));
+		auto _p0 = *(FVector*)A;
+		auto _p1 = *(FVector*)B;
+		return (INT_PTR) new FVector(((FVector*)Self)->CrossProduct(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_OP_FVector_i(E_ST_FVector Self, E_ST_FVector V)
+	DOTNET_EXPORT float E_OP_FVector_i(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
-		return CONV_ST_FVector_TO(Self).operator|(_p0);
+		auto _p0 = *(FVector*)V;
+		return ((FVector*)Self)->operator|(_p0);
 	}
 
-	DOTNET_EXPORT float E_FVector_DotProduct(E_ST_FVector Self, E_ST_FVector A, E_ST_FVector B)
+	DOTNET_EXPORT float E_FVector_DotProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FVector_TO(A);
-		auto _p1 = CONV_ST_FVector_TO(B);
-		return CONV_ST_FVector_TO(Self).DotProduct(_p0, _p1);
+		auto _p0 = *(FVector*)A;
+		auto _p1 = *(FVector*)B;
+		return ((FVector*)Self)->DotProduct(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector_Equals(E_ST_FVector Self, E_ST_FVector V, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
+		auto _p0 = *(FVector*)V;
 		auto _p1 = Tolerance;
-		return CONV_ST_FVector_TO(Self).Equals(_p0, _p1);
+		return ((FVector*)Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector_AllComponentsEqual(E_ST_FVector Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_AllComponentsEqual(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FVector_TO(Self).AllComponentsEqual(_p0);
+		return ((FVector*)Self)->AllComponentsEqual(_p0);
 	}
 
-	DOTNET_EXPORT void E_FVector_Set(E_ST_FVector Self, float InX, float InY, float InZ)
+	DOTNET_EXPORT void E_FVector_Set(INT_PTR Self, float InX, float InY, float InZ)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
 		auto _p2 = InZ;
-		CONV_ST_FVector_TO(Self).Set(_p0, _p1, _p2);
+		((FVector*)Self)->Set(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT float E_FVector_GetMax(E_ST_FVector Self)
+	DOTNET_EXPORT float E_FVector_GetMax(INT_PTR Self)
 	{
-		return CONV_ST_FVector_TO(Self).GetMax();
+		return ((FVector*)Self)->GetMax();
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsZero(E_ST_FVector Self)
+	DOTNET_EXPORT bool E_FVector_IsZero(INT_PTR Self)
 	{
-		return CONV_ST_FVector_TO(Self).IsZero();
+		return ((FVector*)Self)->IsZero();
 	}
 
-	DOTNET_EXPORT bool E_FVector_Normalize(E_ST_FVector Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_Normalize(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FVector_TO(Self).Normalize(_p0);
+		return ((FVector*)Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT void E_FVector_ToDirectionAndLength(E_ST_FVector Self, E_ST_FVector OutDir, float OutLength)
+	DOTNET_EXPORT void E_FVector_ToDirectionAndLength(INT_PTR Self, INT_PTR OutDir, float OutLength)
 	{
-		auto _p0 = CONV_ST_FVector_TO(OutDir);
+		auto _p0 = *(FVector*)OutDir;
 		auto _p1 = OutLength;
-		CONV_ST_FVector_TO(Self).ToDirectionAndLength(_p0, _p1);
+		((FVector*)Self)->ToDirectionAndLength(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FVector_GridSnap(E_ST_FVector Self, float GridSz)
+	DOTNET_EXPORT INT_PTR E_FVector_GridSnap(INT_PTR Self, float GridSz)
 	{
 		auto _p0 = GridSz;
-		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).GridSnap(_p0));
+		return (INT_PTR) new FVector(((FVector*)Self)->GridSnap(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FVector_GetClampedToSize(E_ST_FVector Self, float Min, float Max)
+	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToSize(INT_PTR Self, float Min, float Max)
 	{
 		auto _p0 = Min;
 		auto _p1 = Max;
-		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).GetClampedToSize(_p0, _p1));
+		return (INT_PTR) new FVector(((FVector*)Self)->GetClampedToSize(_p0, _p1));
 	}
 
-	DOTNET_EXPORT void E_FVector_AddBounded(E_ST_FVector Self, E_ST_FVector V, float Radius)
+	DOTNET_EXPORT void E_FVector_AddBounded(INT_PTR Self, INT_PTR V, float Radius)
 	{
-		auto _p0 = CONV_ST_FVector_TO(V);
+		auto _p0 = *(FVector*)V;
 		auto _p1 = Radius;
-		CONV_ST_FVector_TO(Self).AddBounded(_p0, _p1);
+		((FVector*)Self)->AddBounded(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FVector_RotateAngleAxis(E_ST_FVector Self, float AngleDeg, E_ST_FVector Axis)
+	DOTNET_EXPORT INT_PTR E_FVector_RotateAngleAxis(INT_PTR Self, float AngleDeg, INT_PTR Axis)
 	{
 		auto _p0 = AngleDeg;
-		auto _p1 = CONV_ST_FVector_TO(Axis);
-		return CONV_ST_FVector_IN(CONV_ST_FVector_TO(Self).RotateAngleAxis(_p0, _p1));
+		auto _p1 = *(FVector*)Axis;
+		return (INT_PTR) new FVector(((FVector*)Self)->RotateAngleAxis(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_FVector_CosineAngle2D(E_ST_FVector Self, E_ST_FVector B)
+	DOTNET_EXPORT float E_FVector_CosineAngle2D(INT_PTR Self, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FVector_TO(B);
-		return CONV_ST_FVector_TO(Self).CosineAngle2D(_p0);
+		auto _p0 = *(FVector*)B;
+		return ((FVector*)Self)->CosineAngle2D(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FVector_ToOrientationRotator(E_ST_FVector Self)
+	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationRotator(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_IN(CONV_ST_FVector_TO(Self).ToOrientationRotator());
+		return (INT_PTR) new FRotator(((FVector*)Self)->ToOrientationRotator());
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FVector_ToOrientationQuat(E_ST_FVector Self)
+	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationQuat(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(CONV_ST_FVector_TO(Self).ToOrientationQuat());
+		return (INT_PTR) new FQuat(((FVector*)Self)->ToOrientationQuat());
 	}
 
-	DOTNET_EXPORT void E_FVector_FindBestAxisVectors(E_ST_FVector Self, E_ST_FVector Axis1, E_ST_FVector Axis2)
+	DOTNET_EXPORT void E_FVector_FindBestAxisVectors(INT_PTR Self, INT_PTR Axis1, INT_PTR Axis2)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Axis1);
-		auto _p1 = CONV_ST_FVector_TO(Axis2);
-		CONV_ST_FVector_TO(Self).FindBestAxisVectors(_p0, _p1);
+		auto _p0 = *(FVector*)Axis1;
+		auto _p1 = *(FVector*)Axis2;
+		((FVector*)Self)->FindBestAxisVectors(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FVector_UnwindEuler(E_ST_FVector Self)
+	DOTNET_EXPORT void E_FVector_UnwindEuler(INT_PTR Self)
 	{
-		CONV_ST_FVector_TO(Self).UnwindEuler();
+		((FVector*)Self)->UnwindEuler();
 	}
 
-	DOTNET_EXPORT E_ST_FVector2D E_FVector_UnitCartesianToSpherical(E_ST_FVector Self)
+	DOTNET_EXPORT INT_PTR E_FVector_UnitCartesianToSpherical(INT_PTR Self)
 	{
-		return CONV_ST_FVector2D_IN(CONV_ST_FVector_TO(Self).UnitCartesianToSpherical());
+		return (INT_PTR) new FVector2D(((FVector*)Self)->UnitCartesianToSpherical());
 	}
 
-	DOTNET_EXPORT void E_FVector_CreateOrthonormalBasis(E_ST_FVector Self, E_ST_FVector XAxis, E_ST_FVector YAxis, E_ST_FVector ZAxis)
+	DOTNET_EXPORT void E_FVector_CreateOrthonormalBasis(INT_PTR Self, INT_PTR XAxis, INT_PTR YAxis, INT_PTR ZAxis)
 	{
-		auto _p0 = CONV_ST_FVector_TO(XAxis);
-		auto _p1 = CONV_ST_FVector_TO(YAxis);
-		auto _p2 = CONV_ST_FVector_TO(ZAxis);
-		CONV_ST_FVector_TO(Self).CreateOrthonormalBasis(_p0, _p1, _p2);
+		auto _p0 = *(FVector*)XAxis;
+		auto _p1 = *(FVector*)YAxis;
+		auto _p2 = *(FVector*)ZAxis;
+		((FVector*)Self)->CreateOrthonormalBasis(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FVector_PointsAreSame(E_ST_FVector Self, E_ST_FVector P, E_ST_FVector Q)
+	DOTNET_EXPORT bool E_FVector_PointsAreSame(INT_PTR Self, INT_PTR P, INT_PTR Q)
 	{
-		auto _p0 = CONV_ST_FVector_TO(P);
-		auto _p1 = CONV_ST_FVector_TO(Q);
-		return CONV_ST_FVector_TO(Self).PointsAreSame(_p0, _p1);
+		auto _p0 = *(FVector*)P;
+		auto _p1 = *(FVector*)Q;
+		return ((FVector*)Self)->PointsAreSame(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector_PointsAreNear(E_ST_FVector Self, E_ST_FVector Point1, E_ST_FVector Point2, float Dist)
+	DOTNET_EXPORT bool E_FVector_PointsAreNear(INT_PTR Self, INT_PTR Point1, INT_PTR Point2, float Dist)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Point1);
-		auto _p1 = CONV_ST_FVector_TO(Point2);
+		auto _p0 = *(FVector*)Point1;
+		auto _p1 = *(FVector*)Point2;
 		auto _p2 = Dist;
-		return CONV_ST_FVector_TO(Self).PointsAreNear(_p0, _p1, _p2);
+		return ((FVector*)Self)->PointsAreNear(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT float E_FVector_PointPlaneDist(E_ST_FVector Self, E_ST_FVector Point, E_ST_FVector PlaneBase, E_ST_FVector PlaneNormal)
+	DOTNET_EXPORT float E_FVector_PointPlaneDist(INT_PTR Self, INT_PTR Point, INT_PTR PlaneBase, INT_PTR PlaneNormal)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Point);
-		auto _p1 = CONV_ST_FVector_TO(PlaneBase);
-		auto _p2 = CONV_ST_FVector_TO(PlaneNormal);
-		return CONV_ST_FVector_TO(Self).PointPlaneDist(_p0, _p1, _p2);
+		auto _p0 = *(FVector*)Point;
+		auto _p1 = *(FVector*)PlaneBase;
+		auto _p2 = *(FVector*)PlaneNormal;
+		return ((FVector*)Self)->PointPlaneDist(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FVector_Coplanar(E_ST_FVector Self, E_ST_FVector Base1, E_ST_FVector Normal1, E_ST_FVector Base2, E_ST_FVector Normal2, float ParallelCosineThreshold)
+	DOTNET_EXPORT bool E_FVector_Coplanar(INT_PTR Self, INT_PTR Base1, INT_PTR Normal1, INT_PTR Base2, INT_PTR Normal2, float ParallelCosineThreshold)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Base1);
-		auto _p1 = CONV_ST_FVector_TO(Normal1);
-		auto _p2 = CONV_ST_FVector_TO(Base2);
-		auto _p3 = CONV_ST_FVector_TO(Normal2);
+		auto _p0 = *(FVector*)Base1;
+		auto _p1 = *(FVector*)Normal1;
+		auto _p2 = *(FVector*)Base2;
+		auto _p3 = *(FVector*)Normal2;
 		auto _p4 = ParallelCosineThreshold;
-		return CONV_ST_FVector_TO(Self).Coplanar(_p0, _p1, _p2, _p3, _p4);
+		return ((FVector*)Self)->Coplanar(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	
 	/*	FVector2D	*/
 	
-	DOTNET_EXPORT E_ST_FVector2D E_OP_FVector2D_p(E_ST_FVector2D Self, E_ST_FVector2D V)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D() { return (INT_PTR) new FVector2D(); }
+	
+	DOTNET_EXPORT float E_Struct_FVector2D_X_GET(INT_PTR Ptr) { return ((FVector2D*)Ptr)->X; }
+	DOTNET_EXPORT void E_Struct_FVector2D_X_SET(INT_PTR Ptr, float Value) { ((FVector2D*)Ptr)->X = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector2D_Y_GET(INT_PTR Ptr) { return ((FVector2D*)Ptr)->Y; }
+	DOTNET_EXPORT void E_Struct_FVector2D_Y_SET(INT_PTR Ptr, float Value) { ((FVector2D*)Ptr)->Y = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FVector2D_p(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(V);
-		return CONV_ST_FVector2D_IN(CONV_ST_FVector2D_TO(Self).operator+(_p0));
+		auto _p0 = *(FVector2D*)V;
+		return (INT_PTR) new FVector2D(((FVector2D*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT E_ST_FVector2D E_OP_FVector2D_m(E_ST_FVector2D Self, float Scale)
+	DOTNET_EXPORT INT_PTR E_OP_FVector2D_m(INT_PTR Self, float Scale)
 	{
 		auto _p0 = Scale;
-		return CONV_ST_FVector2D_IN(CONV_ST_FVector2D_TO(Self).operator*(_p0));
+		return (INT_PTR) new FVector2D(((FVector2D*)Self)->operator*(_p0));
 	}
 
-	DOTNET_EXPORT float E_OP_FVector2D_i(E_ST_FVector2D Self, E_ST_FVector2D V)
+	DOTNET_EXPORT float E_OP_FVector2D_i(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(V);
-		return CONV_ST_FVector2D_TO(Self).operator|(_p0);
+		auto _p0 = *(FVector2D*)V;
+		return ((FVector2D*)Self)->operator|(_p0);
 	}
 
-	DOTNET_EXPORT float E_FVector2D_DotProduct(E_ST_FVector2D Self, E_ST_FVector2D A, E_ST_FVector2D B)
+	DOTNET_EXPORT float E_FVector2D_DotProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(A);
-		auto _p1 = CONV_ST_FVector2D_TO(B);
-		return CONV_ST_FVector2D_TO(Self).DotProduct(_p0, _p1);
+		auto _p0 = *(FVector2D*)A;
+		auto _p1 = *(FVector2D*)B;
+		return ((FVector2D*)Self)->DotProduct(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_Equals(E_ST_FVector2D Self, E_ST_FVector2D V, float Tolerance)
+	DOTNET_EXPORT bool E_FVector2D_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(V);
+		auto _p0 = *(FVector2D*)V;
 		auto _p1 = Tolerance;
-		return CONV_ST_FVector2D_TO(Self).Equals(_p0, _p1);
+		return ((FVector2D*)Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FVector2D_Set(E_ST_FVector2D Self, float InX, float InY)
+	DOTNET_EXPORT void E_FVector2D_Set(INT_PTR Self, float InX, float InY)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
-		CONV_ST_FVector2D_TO(Self).Set(_p0, _p1);
+		((FVector2D*)Self)->Set(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector2D_GetMax(E_ST_FVector2D Self)
+	DOTNET_EXPORT float E_FVector2D_GetMax(INT_PTR Self)
 	{
-		return CONV_ST_FVector2D_TO(Self).GetMax();
+		return ((FVector2D*)Self)->GetMax();
 	}
 
-	DOTNET_EXPORT void E_FVector2D_Normalize(E_ST_FVector2D Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		CONV_ST_FVector2D_TO(Self).Normalize(_p0);
-	}
-
-	DOTNET_EXPORT bool E_FVector2D_IsNearlyZero(E_ST_FVector2D Self, float Tolerance)
+	DOTNET_EXPORT void E_FVector2D_Normalize(INT_PTR Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return CONV_ST_FVector2D_TO(Self).IsNearlyZero(_p0);
+		((FVector2D*)Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT void E_FVector2D_ToDirectionAndLength(E_ST_FVector2D Self, E_ST_FVector2D OutDir, float OutLength)
+	DOTNET_EXPORT bool E_FVector2D_IsNearlyZero(INT_PTR Self, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(OutDir);
+		auto _p0 = Tolerance;
+		return ((FVector2D*)Self)->IsNearlyZero(_p0);
+	}
+
+	DOTNET_EXPORT void E_FVector2D_ToDirectionAndLength(INT_PTR Self, INT_PTR OutDir, float OutLength)
+	{
+		auto _p0 = *(FVector2D*)OutDir;
 		auto _p1 = OutLength;
-		CONV_ST_FVector2D_TO(Self).ToDirectionAndLength(_p0, _p1);
+		((FVector2D*)Self)->ToDirectionAndLength(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_IsZero(E_ST_FVector2D Self)
+	DOTNET_EXPORT bool E_FVector2D_IsZero(INT_PTR Self)
 	{
-		return CONV_ST_FVector2D_TO(Self).IsZero();
+		return ((FVector2D*)Self)->IsZero();
 	}
 
-	DOTNET_EXPORT E_ST_FVector2D E_FVector2D_ClampAxes(E_ST_FVector2D Self, float MinAxisVal, float MaxAxisVal)
+	DOTNET_EXPORT INT_PTR E_FVector2D_ClampAxes(INT_PTR Self, float MinAxisVal, float MaxAxisVal)
 	{
 		auto _p0 = MinAxisVal;
 		auto _p1 = MaxAxisVal;
-		return CONV_ST_FVector2D_IN(CONV_ST_FVector2D_TO(Self).ClampAxes(_p0, _p1));
+		return (INT_PTR) new FVector2D(((FVector2D*)Self)->ClampAxes(_p0, _p1));
 	}
 
-	DOTNET_EXPORT void E_FVector2D_DiagnosticCheckNaN(E_ST_FVector2D Self)
+	DOTNET_EXPORT void E_FVector2D_DiagnosticCheckNaN(INT_PTR Self)
 	{
-		CONV_ST_FVector2D_TO(Self).DiagnosticCheckNaN();
+		((FVector2D*)Self)->DiagnosticCheckNaN();
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FVector2D_SphericalToUnitCartesian(E_ST_FVector2D Self)
+	DOTNET_EXPORT INT_PTR E_FVector2D_SphericalToUnitCartesian(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(CONV_ST_FVector2D_TO(Self).SphericalToUnitCartesian());
+		return (INT_PTR) new FVector(((FVector2D*)Self)->SphericalToUnitCartesian());
 	}
 
 	
 	/*	FVector4	*/
 	
-	DOTNET_EXPORT E_ST_FVector4 E_OP_FVector4_p(E_ST_FVector4 Self, E_ST_FVector4 V)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4() { return (INT_PTR) new FVector4(); }
+	
+	DOTNET_EXPORT float E_Struct_FVector4_X_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->X; }
+	DOTNET_EXPORT void E_Struct_FVector4_X_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->X = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector4_Y_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->Y; }
+	DOTNET_EXPORT void E_Struct_FVector4_Y_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->Y = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector4_Z_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->Z; }
+	DOTNET_EXPORT void E_Struct_FVector4_Z_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->Z = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FVector4_W_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->W; }
+	DOTNET_EXPORT void E_Struct_FVector4_W_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->W = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FVector4_p(INT_PTR Self, INT_PTR V)
 	{
-		auto _p0 = CONV_ST_FVector4_TO(V);
-		return CONV_ST_FVector4_IN(CONV_ST_FVector4_TO(Self).operator+(_p0));
+		auto _p0 = *(FVector4*)V;
+		return (INT_PTR) new FVector4(((FVector4*)Self)->operator+(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FVector4_Equals(E_ST_FVector4 Self, E_ST_FVector4 V, float Tolerance)
+	DOTNET_EXPORT bool E_FVector4_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
 	{
-		auto _p0 = CONV_ST_FVector4_TO(V);
+		auto _p0 = *(FVector4*)V;
 		auto _p1 = Tolerance;
-		return CONV_ST_FVector4_TO(Self).Equals(_p0, _p1);
+		return ((FVector4*)Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector4_IsUnit3(E_ST_FVector4 Self, float LengthSquaredTolerance)
+	DOTNET_EXPORT bool E_FVector4_IsUnit3(INT_PTR Self, float LengthSquaredTolerance)
 	{
 		auto _p0 = LengthSquaredTolerance;
-		return CONV_ST_FVector4_TO(Self).IsUnit3(_p0);
+		return ((FVector4*)Self)->IsUnit3(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FRotator E_FVector4_ToOrientationRotator(E_ST_FVector4 Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationRotator(INT_PTR Self)
 	{
-		return CONV_ST_FRotator_IN(CONV_ST_FVector4_TO(Self).ToOrientationRotator());
+		return (INT_PTR) new FRotator(((FVector4*)Self)->ToOrientationRotator());
 	}
 
-	DOTNET_EXPORT E_ST_FQuat E_FVector4_ToOrientationQuat(E_ST_FVector4 Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationQuat(INT_PTR Self)
 	{
-		return CONV_ST_FQuat_IN(CONV_ST_FVector4_TO(Self).ToOrientationQuat());
+		return (INT_PTR) new FQuat(((FVector4*)Self)->ToOrientationQuat());
 	}
 
-	DOTNET_EXPORT void E_FVector4_Set(E_ST_FVector4 Self, float InX, float InY, float InZ, float InW)
+	DOTNET_EXPORT void E_FVector4_Set(INT_PTR Self, float InX, float InY, float InZ, float InW)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
 		auto _p2 = InZ;
 		auto _p3 = InW;
-		CONV_ST_FVector4_TO(Self).Set(_p0, _p1, _p2, _p3);
+		((FVector4*)Self)->Set(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT float E_FVector4_Size3(E_ST_FVector4 Self)
+	DOTNET_EXPORT float E_FVector4_Size3(INT_PTR Self)
 	{
-		return CONV_ST_FVector4_TO(Self).Size3();
+		return ((FVector4*)Self)->Size3();
 	}
 
-	DOTNET_EXPORT bool E_FVector4_ContainsNaN(E_ST_FVector4 Self)
+	DOTNET_EXPORT bool E_FVector4_ContainsNaN(INT_PTR Self)
 	{
-		return CONV_ST_FVector4_TO(Self).ContainsNaN();
+		return ((FVector4*)Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT void E_FVector4_FindBestAxisVectors3(E_ST_FVector4 Self, E_ST_FVector4 Axis1, E_ST_FVector4 Axis2)
+	DOTNET_EXPORT void E_FVector4_FindBestAxisVectors3(INT_PTR Self, INT_PTR Axis1, INT_PTR Axis2)
 	{
-		auto _p0 = CONV_ST_FVector4_TO(Axis1);
-		auto _p1 = CONV_ST_FVector4_TO(Axis2);
-		CONV_ST_FVector4_TO(Self).FindBestAxisVectors3(_p0, _p1);
+		auto _p0 = *(FVector4*)Axis1;
+		auto _p1 = *(FVector4*)Axis2;
+		((FVector4*)Self)->FindBestAxisVectors3(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FVector4_DiagnosticCheckNaN(E_ST_FVector4 Self)
+	DOTNET_EXPORT void E_FVector4_DiagnosticCheckNaN(INT_PTR Self)
 	{
-		CONV_ST_FVector4_TO(Self).DiagnosticCheckNaN();
+		((FVector4*)Self)->DiagnosticCheckNaN();
 	}
 
 	
 	/*	FWorldContext	*/
 	
-	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(E_ST_FWorldContext Self, UWorld* World)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FWorldContext() { return (INT_PTR) new FWorldContext(); }
+	
+	DOTNET_EXPORT uint8 E_Struct_FWorldContext_TravelType_GET(INT_PTR Ptr) { return ((FWorldContext*)Ptr)->TravelType; }
+	DOTNET_EXPORT void E_Struct_FWorldContext_TravelType_SET(INT_PTR Ptr, uint8 Value) { ((FWorldContext*)Ptr)->TravelType = Value; }
+	
+	DOTNET_EXPORT int32 E_Struct_FWorldContext_PIEInstance_GET(INT_PTR Ptr) { return ((FWorldContext*)Ptr)->PIEInstance; }
+	DOTNET_EXPORT void E_Struct_FWorldContext_PIEInstance_SET(INT_PTR Ptr, int32 Value) { ((FWorldContext*)Ptr)->PIEInstance = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FWorldContext_RunAsDedicated_GET(INT_PTR Ptr) { return ((FWorldContext*)Ptr)->RunAsDedicated; }
+	DOTNET_EXPORT void E_Struct_FWorldContext_RunAsDedicated_SET(INT_PTR Ptr, bool Value) { ((FWorldContext*)Ptr)->RunAsDedicated = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_GET(INT_PTR Ptr) { return ((FWorldContext*)Ptr)->bWaitingOnOnlineSubsystem; }
+	DOTNET_EXPORT void E_Struct_FWorldContext_bWaitingOnOnlineSubsystem_SET(INT_PTR Ptr, bool Value) { ((FWorldContext*)Ptr)->bWaitingOnOnlineSubsystem = Value; }
+	
+	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(INT_PTR Self, UWorld* World)
 	{
 		auto _p0 = World;
-		CONV_ST_FWorldContext_TO(Self).SetCurrentWorld(_p0);
+		((FWorldContext*)Self)->SetCurrentWorld(_p0);
 	}
 
-	DOTNET_EXPORT UWorld* E_FWorldContext_World(E_ST_FWorldContext Self)
+	DOTNET_EXPORT UWorld* E_FWorldContext_World(INT_PTR Self)
 	{
-		return CONV_ST_FWorldContext_TO(Self).World();
+		return ((FWorldContext*)Self)->World();
+	}
+
+	
+	/*	FBasedMovementInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBasedMovementInfo() { return (INT_PTR) new FBasedMovementInfo(); }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FBasedMovementInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FBasedMovementInfo*)Ptr)->Rotation); }
+	DOTNET_EXPORT void E_Struct_FBasedMovementInfo_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FBasedMovementInfo*)Ptr)->Rotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FBasedMovementInfo_bServerHasBaseComponent_GET(INT_PTR Ptr) { return ((FBasedMovementInfo*)Ptr)->bServerHasBaseComponent; }
+	DOTNET_EXPORT void E_Struct_FBasedMovementInfo_bServerHasBaseComponent_SET(INT_PTR Ptr, bool Value) { ((FBasedMovementInfo*)Ptr)->bServerHasBaseComponent = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FBasedMovementInfo_bRelativeRotation_GET(INT_PTR Ptr) { return ((FBasedMovementInfo*)Ptr)->bRelativeRotation; }
+	DOTNET_EXPORT void E_Struct_FBasedMovementInfo_bRelativeRotation_SET(INT_PTR Ptr, bool Value) { ((FBasedMovementInfo*)Ptr)->bRelativeRotation = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FBasedMovementInfo_bServerHasVelocity_GET(INT_PTR Ptr) { return ((FBasedMovementInfo*)Ptr)->bServerHasVelocity; }
+	DOTNET_EXPORT void E_Struct_FBasedMovementInfo_bServerHasVelocity_SET(INT_PTR Ptr, bool Value) { ((FBasedMovementInfo*)Ptr)->bServerHasVelocity = Value; }
+	
+	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeLocation(INT_PTR Self)
+	{
+		return ((FBasedMovementInfo*)Self)->HasRelativeLocation();
 	}
 
 	
 	/*	FBox	*/
 	
-	DOTNET_EXPORT E_ST_FVector E_OP_FBox_oc(E_ST_FBox Self, int32 Index)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox() { return (INT_PTR) new FBox(); }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FBox_Min_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBox*)Ptr)->Min); }
+	DOTNET_EXPORT void E_Struct_FBox_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox*)Ptr)->Min = *(FVector*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FBox_Max_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBox*)Ptr)->Max); }
+	DOTNET_EXPORT void E_Struct_FBox_Max_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox*)Ptr)->Max = *(FVector*)Value; }
+	
+	DOTNET_EXPORT uint8 E_Struct_FBox_IsValid_GET(INT_PTR Ptr) { return ((FBox*)Ptr)->IsValid; }
+	DOTNET_EXPORT void E_Struct_FBox_IsValid_SET(INT_PTR Ptr, uint8 Value) { ((FBox*)Ptr)->IsValid = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FBox_oc(INT_PTR Self, int32 Index)
 	{
 		auto _p0 = Index;
-		return CONV_ST_FVector_IN(CONV_ST_FBox_TO(Self).operator[](_p0));
+		return (INT_PTR) new FVector(((FBox*)Self)->operator[](_p0));
 	}
 
-	DOTNET_EXPORT float E_FBox_ComputeSquaredDistanceToPoint(E_ST_FBox Self, E_ST_FVector Point)
+	DOTNET_EXPORT float E_FBox_ComputeSquaredDistanceToPoint(INT_PTR Self, INT_PTR Point)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Point);
-		return CONV_ST_FBox_TO(Self).ComputeSquaredDistanceToPoint(_p0);
+		auto _p0 = *(FVector*)Point;
+		return ((FBox*)Self)->ComputeSquaredDistanceToPoint(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FBox_GetCenter(E_ST_FBox Self)
+	DOTNET_EXPORT INT_PTR E_FBox_GetCenter(INT_PTR Self)
 	{
-		return CONV_ST_FVector_IN(CONV_ST_FBox_TO(Self).GetCenter());
+		return (INT_PTR) new FVector(((FBox*)Self)->GetCenter());
 	}
 
-	DOTNET_EXPORT void E_FBox_GetCenterAndExtents(E_ST_FBox Self, E_ST_FVector center, E_ST_FVector Extents)
+	DOTNET_EXPORT void E_FBox_GetCenterAndExtents(INT_PTR Self, INT_PTR center, INT_PTR Extents)
 	{
-		auto _p0 = CONV_ST_FVector_TO(center);
-		auto _p1 = CONV_ST_FVector_TO(Extents);
-		CONV_ST_FBox_TO(Self).GetCenterAndExtents(_p0, _p1);
+		auto _p0 = *(FVector*)center;
+		auto _p1 = *(FVector*)Extents;
+		((FBox*)Self)->GetCenterAndExtents(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FVector E_FBox_GetClosestPointTo(E_ST_FBox Self, E_ST_FVector Point)
+	DOTNET_EXPORT INT_PTR E_FBox_GetClosestPointTo(INT_PTR Self, INT_PTR Point)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Point);
-		return CONV_ST_FVector_IN(CONV_ST_FBox_TO(Self).GetClosestPointTo(_p0));
+		auto _p0 = *(FVector*)Point;
+		return (INT_PTR) new FVector(((FBox*)Self)->GetClosestPointTo(_p0));
 	}
 
-	DOTNET_EXPORT float E_FBox_GetVolume(E_ST_FBox Self)
+	DOTNET_EXPORT float E_FBox_GetVolume(INT_PTR Self)
 	{
-		return CONV_ST_FBox_TO(Self).GetVolume();
+		return ((FBox*)Self)->GetVolume();
 	}
 
-	DOTNET_EXPORT void E_FBox_Init(E_ST_FBox Self)
+	DOTNET_EXPORT void E_FBox_Init(INT_PTR Self)
 	{
-		CONV_ST_FBox_TO(Self).Init();
+		((FBox*)Self)->Init();
 	}
 
-	DOTNET_EXPORT E_ST_FBox E_FBox_InverseTransformBy(E_ST_FBox Self, E_ST_FTransform M)
+	DOTNET_EXPORT INT_PTR E_FBox_InverseTransformBy(INT_PTR Self, INT_PTR M)
 	{
-		auto _p0 = CONV_ST_FTransform_TO(M);
-		return CONV_ST_FBox_IN(CONV_ST_FBox_TO(Self).InverseTransformBy(_p0));
+		auto _p0 = *(FTransform*)M;
+		return (INT_PTR) new FBox(((FBox*)Self)->InverseTransformBy(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FBox_IsInside(E_ST_FBox Self, E_ST_FVector In)
+	DOTNET_EXPORT bool E_FBox_IsInside(INT_PTR Self, INT_PTR In)
 	{
-		auto _p0 = CONV_ST_FVector_TO(In);
-		return CONV_ST_FBox_TO(Self).IsInside(_p0);
+		auto _p0 = *(FVector*)In;
+		return ((FBox*)Self)->IsInside(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FBox E_FBox_BuildAABB(E_ST_FBox Self, E_ST_FVector Origin, E_ST_FVector Extent)
+	DOTNET_EXPORT INT_PTR E_FBox_BuildAABB(INT_PTR Self, INT_PTR Origin, INT_PTR Extent)
 	{
-		auto _p0 = CONV_ST_FVector_TO(Origin);
-		auto _p1 = CONV_ST_FVector_TO(Extent);
-		return CONV_ST_FBox_IN(CONV_ST_FBox_TO(Self).BuildAABB(_p0, _p1));
+		auto _p0 = *(FVector*)Origin;
+		auto _p1 = *(FVector*)Extent;
+		return (INT_PTR) new FBox(((FBox*)Self)->BuildAABB(_p0, _p1));
 	}
 
 	
 	/*	FBox2D	*/
 	
-	DOTNET_EXPORT E_ST_FVector2D E_OP_FBox2D_oc(E_ST_FBox2D Self, int32 Index)
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox2D() { return (INT_PTR) new FBox2D(); }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FBox2D_Min_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FBox2D*)Ptr)->Min); }
+	DOTNET_EXPORT void E_Struct_FBox2D_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox2D*)Ptr)->Min = *(FVector2D*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FBox2D_Max_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FBox2D*)Ptr)->Max); }
+	DOTNET_EXPORT void E_Struct_FBox2D_Max_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox2D*)Ptr)->Max = *(FVector2D*)Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FBox2D_bIsValid_GET(INT_PTR Ptr) { return ((FBox2D*)Ptr)->bIsValid; }
+	DOTNET_EXPORT void E_Struct_FBox2D_bIsValid_SET(INT_PTR Ptr, bool Value) { ((FBox2D*)Ptr)->bIsValid = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_OP_FBox2D_oc(INT_PTR Self, int32 Index)
 	{
 		auto _p0 = Index;
-		return CONV_ST_FVector2D_IN(CONV_ST_FBox2D_TO(Self).operator[](_p0));
+		return (INT_PTR) new FVector2D(((FBox2D*)Self)->operator[](_p0));
 	}
 
-	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(E_ST_FBox2D Self, E_ST_FVector2D Point)
+	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(INT_PTR Self, INT_PTR Point)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(Point);
-		return CONV_ST_FBox2D_TO(Self).ComputeSquaredDistanceToPoint(_p0);
+		auto _p0 = *(FVector2D*)Point;
+		return ((FBox2D*)Self)->ComputeSquaredDistanceToPoint(_p0);
 	}
 
-	DOTNET_EXPORT E_ST_FBox2D E_FBox2D_ExpandBy(E_ST_FBox2D Self, float W)
+	DOTNET_EXPORT INT_PTR E_FBox2D_ExpandBy(INT_PTR Self, float W)
 	{
 		auto _p0 = W;
-		return CONV_ST_FBox2D_IN(CONV_ST_FBox2D_TO(Self).ExpandBy(_p0));
+		return (INT_PTR) new FBox2D(((FBox2D*)Self)->ExpandBy(_p0));
 	}
 
-	DOTNET_EXPORT float E_FBox2D_GetArea(E_ST_FBox2D Self)
+	DOTNET_EXPORT float E_FBox2D_GetArea(INT_PTR Self)
 	{
-		return CONV_ST_FBox2D_TO(Self).GetArea();
+		return ((FBox2D*)Self)->GetArea();
 	}
 
-	DOTNET_EXPORT E_ST_FVector2D E_FBox2D_GetCenter(E_ST_FBox2D Self)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetCenter(INT_PTR Self)
 	{
-		return CONV_ST_FVector2D_IN(CONV_ST_FBox2D_TO(Self).GetCenter());
+		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetCenter());
 	}
 
-	DOTNET_EXPORT void E_FBox2D_GetCenterAndExtents(E_ST_FBox2D Self, E_ST_FVector2D center, E_ST_FVector2D Extents)
+	DOTNET_EXPORT void E_FBox2D_GetCenterAndExtents(INT_PTR Self, INT_PTR center, INT_PTR Extents)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(center);
-		auto _p1 = CONV_ST_FVector2D_TO(Extents);
-		CONV_ST_FBox2D_TO(Self).GetCenterAndExtents(_p0, _p1);
+		auto _p0 = *(FVector2D*)center;
+		auto _p1 = *(FVector2D*)Extents;
+		((FBox2D*)Self)->GetCenterAndExtents(_p0, _p1);
 	}
 
-	DOTNET_EXPORT E_ST_FVector2D E_FBox2D_GetClosestPointTo(E_ST_FBox2D Self, E_ST_FVector2D Point)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetClosestPointTo(INT_PTR Self, INT_PTR Point)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(Point);
-		return CONV_ST_FVector2D_IN(CONV_ST_FBox2D_TO(Self).GetClosestPointTo(_p0));
+		auto _p0 = *(FVector2D*)Point;
+		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetClosestPointTo(_p0));
 	}
 
-	DOTNET_EXPORT void E_FBox2D_Init(E_ST_FBox2D Self)
+	DOTNET_EXPORT void E_FBox2D_Init(INT_PTR Self)
 	{
-		CONV_ST_FBox2D_TO(Self).Init();
+		((FBox2D*)Self)->Init();
 	}
 
-	DOTNET_EXPORT bool E_FBox2D_IsInside(E_ST_FBox2D Self, E_ST_FVector2D TestPoint)
+	DOTNET_EXPORT bool E_FBox2D_IsInside(INT_PTR Self, INT_PTR TestPoint)
 	{
-		auto _p0 = CONV_ST_FVector2D_TO(TestPoint);
-		return CONV_ST_FBox2D_TO(Self).IsInside(_p0);
+		auto _p0 = *(FVector2D*)TestPoint;
+		return ((FBox2D*)Self)->IsInside(_p0);
 	}
 
 	
 	/*	FDropNoteInfo	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDropNoteInfo() { return (INT_PTR) new FDropNoteInfo(); }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FDropNoteInfo_Location_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FDropNoteInfo*)Ptr)->Location); }
+	DOTNET_EXPORT void E_Struct_FDropNoteInfo_Location_SET(INT_PTR Ptr, INT_PTR Value) { ((FDropNoteInfo*)Ptr)->Location = *(FVector*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FDropNoteInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FDropNoteInfo*)Ptr)->Rotation); }
+	DOTNET_EXPORT void E_Struct_FDropNoteInfo_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FDropNoteInfo*)Ptr)->Rotation = *(FRotator*)Value; }
+	
 	
 	/*	FLevelViewportInfo	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelViewportInfo() { return (INT_PTR) new FLevelViewportInfo(); }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FLevelViewportInfo_CamPosition_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FLevelViewportInfo*)Ptr)->CamPosition); }
+	DOTNET_EXPORT void E_Struct_FLevelViewportInfo_CamPosition_SET(INT_PTR Ptr, INT_PTR Value) { ((FLevelViewportInfo*)Ptr)->CamPosition = *(FVector*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FLevelViewportInfo_CamRotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FLevelViewportInfo*)Ptr)->CamRotation); }
+	DOTNET_EXPORT void E_Struct_FLevelViewportInfo_CamRotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FLevelViewportInfo*)Ptr)->CamRotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT float E_Struct_FLevelViewportInfo_CamOrthoZoom_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamOrthoZoom; }
+	DOTNET_EXPORT void E_Struct_FLevelViewportInfo_CamOrthoZoom_SET(INT_PTR Ptr, float Value) { ((FLevelViewportInfo*)Ptr)->CamOrthoZoom = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FLevelViewportInfo_CamUpdated_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamUpdated; }
+	DOTNET_EXPORT void E_Struct_FLevelViewportInfo_CamUpdated_SET(INT_PTR Ptr, bool Value) { ((FLevelViewportInfo*)Ptr)->CamUpdated = Value; }
+	
+	
+	/*	FRepRootMotionMontage	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRepRootMotionMontage() { return (INT_PTR) new FRepRootMotionMontage(); }
+	
+	DOTNET_EXPORT bool E_Struct_FRepRootMotionMontage_bIsActive_GET(INT_PTR Ptr) { return ((FRepRootMotionMontage*)Ptr)->bIsActive; }
+	DOTNET_EXPORT void E_Struct_FRepRootMotionMontage_bIsActive_SET(INT_PTR Ptr, bool Value) { ((FRepRootMotionMontage*)Ptr)->bIsActive = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FRepRootMotionMontage_Position_GET(INT_PTR Ptr) { return ((FRepRootMotionMontage*)Ptr)->Position; }
+	DOTNET_EXPORT void E_Struct_FRepRootMotionMontage_Position_SET(INT_PTR Ptr, float Value) { ((FRepRootMotionMontage*)Ptr)->Position = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FRepRootMotionMontage_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FRepRootMotionMontage*)Ptr)->Rotation); }
+	DOTNET_EXPORT void E_Struct_FRepRootMotionMontage_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FRepRootMotionMontage*)Ptr)->Rotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FRepRootMotionMontage_bRelativePosition_GET(INT_PTR Ptr) { return ((FRepRootMotionMontage*)Ptr)->bRelativePosition; }
+	DOTNET_EXPORT void E_Struct_FRepRootMotionMontage_bRelativePosition_SET(INT_PTR Ptr, bool Value) { ((FRepRootMotionMontage*)Ptr)->bRelativePosition = Value; }
+	
+	DOTNET_EXPORT bool E_Struct_FRepRootMotionMontage_bRelativeRotation_GET(INT_PTR Ptr) { return ((FRepRootMotionMontage*)Ptr)->bRelativeRotation; }
+	DOTNET_EXPORT void E_Struct_FRepRootMotionMontage_bRelativeRotation_SET(INT_PTR Ptr, bool Value) { ((FRepRootMotionMontage*)Ptr)->bRelativeRotation = Value; }
+	
+	DOTNET_EXPORT void E_FRepRootMotionMontage_Clear(INT_PTR Self)
+	{
+		((FRepRootMotionMontage*)Self)->Clear();
+	}
+
+	DOTNET_EXPORT bool E_FRepRootMotionMontage_HasRootMotion(INT_PTR Self)
+	{
+		return ((FRepRootMotionMontage*)Self)->HasRootMotion();
+	}
+
 	
 	/*	FScreenMessageString	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScreenMessageString() { return (INT_PTR) new FScreenMessageString(); }
+	
+	DOTNET_EXPORT float E_Struct_FScreenMessageString_TimeToDisplay_GET(INT_PTR Ptr) { return ((FScreenMessageString*)Ptr)->TimeToDisplay; }
+	DOTNET_EXPORT void E_Struct_FScreenMessageString_TimeToDisplay_SET(INT_PTR Ptr, float Value) { ((FScreenMessageString*)Ptr)->TimeToDisplay = Value; }
+	
+	DOTNET_EXPORT float E_Struct_FScreenMessageString_CurrentTimeDisplayed_GET(INT_PTR Ptr) { return ((FScreenMessageString*)Ptr)->CurrentTimeDisplayed; }
+	DOTNET_EXPORT void E_Struct_FScreenMessageString_CurrentTimeDisplayed_SET(INT_PTR Ptr, float Value) { ((FScreenMessageString*)Ptr)->CurrentTimeDisplayed = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FScreenMessageString_TextScale_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FScreenMessageString*)Ptr)->TextScale); }
+	DOTNET_EXPORT void E_Struct_FScreenMessageString_TextScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FScreenMessageString*)Ptr)->TextScale = *(FVector2D*)Value; }
+	
+	
+	/*	FSimulatedRootMotionReplicatedMove	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSimulatedRootMotionReplicatedMove() { return (INT_PTR) new FSimulatedRootMotionReplicatedMove(); }
+	
+	DOTNET_EXPORT float E_Struct_FSimulatedRootMotionReplicatedMove_Time_GET(INT_PTR Ptr) { return ((FSimulatedRootMotionReplicatedMove*)Ptr)->Time; }
+	DOTNET_EXPORT void E_Struct_FSimulatedRootMotionReplicatedMove_Time_SET(INT_PTR Ptr, float Value) { ((FSimulatedRootMotionReplicatedMove*)Ptr)->Time = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_GET(INT_PTR Ptr) { return (INT_PTR) new FRepRootMotionMontage(((FSimulatedRootMotionReplicatedMove*)Ptr)->RootMotion); }
+	DOTNET_EXPORT void E_Struct_FSimulatedRootMotionReplicatedMove_RootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((FSimulatedRootMotionReplicatedMove*)Ptr)->RootMotion = *(FRepRootMotionMontage*)Value; }
 	
 }

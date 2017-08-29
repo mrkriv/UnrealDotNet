@@ -6,11 +6,19 @@
 # endif
 #endif
 
+template<class T>
+FORCEINLINE INT_PTR ExportStruct(T&& value)
+{
+	return (INT_PTR) new T(value);
+}
+
 #include "Generate/Index.h"
 
 extern "C" DOTNET_EXPORT void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_W(char* Message) { UE_LOG(DotNetRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_L(char* Message) { UE_LOG(DotNetRuntime, Log, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
+
+extern "C" DOTNET_EXPORT void E_DeleteStruct(INT_PTR Adress) { delete (void*)Adress; }
 
 extern "C" DOTNET_EXPORT void E_ScreenDebugMessage(char* Message, float Time, uint8 R, uint8 G, uint8 B)
 {

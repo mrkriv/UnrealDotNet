@@ -15,10 +15,39 @@ namespace UnrealEngine
 	/// Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in local space by DeltaRotation.
 	/// Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in world space by DeltaRotation.
 	/// </summary>
-	public partial struct FTransform
+	public partial class FTransform
 	{
+		private readonly IntPtr NativePointer;
+		private readonly bool IsRef;
+		
+		public FTransform()
+		{
+			NativePointer = E_CreateStruct_FTransform();
+			IsRef = false;
+		}
+
+		internal FTransform(IntPtr NativePointer, bool IsRef)
+		{
+			this.NativePointer = NativePointer;
+			this.IsRef = IsRef;
+		}
+
 		
 		#region DLLInmport
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern IntPtr E_CreateStruct_FTransform();
+		
+		#if PACING
+		[DllImport("DotUnrealExample.exe")]
+		#else
+		[DllImport("UE4Editor-UnrealDotNetRuntime")]
+		#endif
+		private static extern void E_DeleteStruct(IntPtr Adress);
+		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
@@ -31,35 +60,35 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FTransform E_FTransform_Inverse(FTransform Self);
+		private static extern IntPtr E_FTransform_Inverse(FTransform Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_Blend(FTransform Self, FTransform Atom1, FTransform Atom2, float Alpha);
+		private static extern void E_FTransform_Blend(FTransform Self, IntPtr Atom1, IntPtr Atom2, float Alpha);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_BlendWith(FTransform Self, FTransform OtherAtom, float Alpha);
+		private static extern void E_FTransform_BlendWith(FTransform Self, IntPtr OtherAtom, float Alpha);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FTransform E_OP_FTransform_p(FTransform Self, FTransform Atom);
+		private static extern IntPtr E_OP_FTransform_p(FTransform Self, IntPtr Atom);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FTransform_AnyHasNegativeScale(FTransform Self, FVector InScale3D, FVector InOtherScale3D);
+		private static extern bool E_FTransform_AnyHasNegativeScale(FTransform Self, IntPtr InScale3D, IntPtr InOtherScale3D);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -80,35 +109,35 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector4 E_FTransform_TransformFVector4(FTransform Self, FVector4 V);
+		private static extern IntPtr E_FTransform_TransformFVector4(FTransform Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FTransform_TransformPosition(FTransform Self, FVector V);
+		private static extern IntPtr E_FTransform_TransformPosition(FTransform Self, IntPtr V);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FTransform_GetSafeScaleReciprocal(FTransform Self, FVector InScale, float Tolerance);
+		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(FTransform Self, IntPtr InScale, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FTransform_GetLocation(FTransform Self);
+		private static extern IntPtr E_FTransform_GetLocation(FTransform Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FRotator E_FTransform_Rotator(FTransform Self);
+		private static extern IntPtr E_FTransform_Rotator(FTransform Self);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -122,28 +151,28 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FTransform_AreRotationsEqual(FTransform Self, FTransform A, FTransform B, float Tolerance);
+		private static extern bool E_FTransform_AreRotationsEqual(FTransform Self, IntPtr A, IntPtr B, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern bool E_FTransform_RotationEquals(FTransform Self, FTransform Other, float Tolerance);
+		private static extern bool E_FTransform_RotationEquals(FTransform Self, IntPtr Other, float Tolerance);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_Multiply(FTransform Self, FTransform OutTransform, FTransform A, FTransform B);
+		private static extern void E_FTransform_Multiply(FTransform Self, IntPtr OutTransform, IntPtr A, IntPtr B);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_SetComponents(FTransform Self, FQuat InRotation, FVector InTranslation, FVector InScale3D);
+		private static extern void E_FTransform_SetComponents(FTransform Self, IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
@@ -157,21 +186,21 @@ namespace UnrealEngine
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FVector E_FTransform_AddTranslations(FTransform Self, FTransform A, FTransform B);
+		private static extern IntPtr E_FTransform_AddTranslations(FTransform Self, IntPtr A, IntPtr B);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern void E_FTransform_SetTranslationAndScale3D(FTransform Self, FVector NewTranslation, FVector NewScale3D);
+		private static extern void E_FTransform_SetTranslationAndScale3D(FTransform Self, IntPtr NewTranslation, IntPtr NewScale3D);
 		
 		#if PACING
 		[DllImport("DotUnrealExample.exe")]
 		#else
 		[DllImport("UE4Editor-UnrealDotNetRuntime")]
 		#endif
-		private static extern FQuat E_FTransform_GetRotation(FTransform Self);
+		private static extern IntPtr E_FTransform_GetRotation(FTransform Self);
 		
 		#endregion
 		
@@ -300,4 +329,12 @@ namespace UnrealEngine
 		
 		#endregion
 		
-	}}
+		public static implicit operator IntPtr(FTransform Self)
+		{
+			return Self.NativePointer;
+		}
+
+		public static implicit operator FTransform(IntPtr Adress)
+		{
+			return Adress == IntPtr.Zero ? null : new FTransform(Adress, false);
+		}}}

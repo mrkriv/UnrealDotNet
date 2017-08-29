@@ -60,13 +60,11 @@ namespace Generator
 
         private static void AppendFile(string file, MetadataVisitor visitor)
         {
-            var code = File.ReadAllText(file);
-
-            var replaceRegex = new Regex("(,?[A-Z_]+_API)|(PRAGMA_[A-Z_]+)"); // Remove fucking API
-            code = replaceRegex.Replace(code, "");
+            var code = Filter.FilterSourceCode(File.ReadAllText(file));
 
             using (var ms = new MemoryStream(Encoding.ASCII.GetBytes(code)))
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 var watch = new Stopwatch();
                 watch.Start();
 
@@ -84,9 +82,9 @@ namespace Generator
 
                 watch.Stop();
 
-                //PrintTokens(commonTokenStream);
-
                 var visitTime = watch.ElapsedMilliseconds - parceTime;
+
+                Console.ResetColor();
                 Console.WriteLine($"{file}: Parce {parceTime}ms, Visit {visitTime}ms");
             }
         }

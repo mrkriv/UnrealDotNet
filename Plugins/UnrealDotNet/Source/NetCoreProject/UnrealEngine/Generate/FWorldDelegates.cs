@@ -5,13 +5,13 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Proxy class that allows verification on GWorld accesses.
+	/// World delegates
 	/// </summary>
-	public partial class UWorldProxy
+	public partial class FWorldDelegates
 	{
 		protected readonly IntPtr NativePointer;
 		
-		public UWorldProxy(IntPtr Adress)
+		public FWorldDelegates(IntPtr Adress)
 		{
 			NativePointer = Adress;
 		}
@@ -26,12 +26,12 @@ namespace UnrealEngine
 		#region ExternMethods
 		#endregion
 		
-		public static implicit operator IntPtr(UWorldProxy Self)
+		public static implicit operator IntPtr(FWorldDelegates Self)
 		{
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UWorldProxy(IntPtr Adress)
+		public static implicit operator FWorldDelegates(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UWorldProxy(Adress);
+			return Adress == IntPtr.Zero ? null : new FWorldDelegates(Adress);
 		}}}
