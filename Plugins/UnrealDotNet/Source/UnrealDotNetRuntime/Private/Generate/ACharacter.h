@@ -16,14 +16,29 @@ class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 
 extern "C"
 {
-	DOTNET_EXPORT char* E_PROP_ACharacter_MeshComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->MeshComponentName.ToString()); }
-	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->MeshComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT char* E_PROP_ACharacter_MeshComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
+	{
+		auto _result = ((ACharacter*)Ptr)->MeshComponentName.ToString();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->MeshComponentName = FName(UTF8_TO_TCHAR(Value)); }
 	
-	DOTNET_EXPORT char* E_PROP_ACharacter_CharacterMovementComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->CharacterMovementComponentName.ToString()); }
-	DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CharacterMovementComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT char* E_PROP_ACharacter_CharacterMovementComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
+	{
+		auto _result = ((ACharacter*)Ptr)->CharacterMovementComponentName.ToString();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CharacterMovementComponentName = FName(UTF8_TO_TCHAR(Value)); }
 	
-	DOTNET_EXPORT char* E_PROP_ACharacter_CapsuleComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->CapsuleComponentName.ToString()); }
-	DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CapsuleComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT char* E_PROP_ACharacter_CapsuleComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
+	{
+		auto _result = ((ACharacter*)Ptr)->CapsuleComponentName.ToString();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CapsuleComponentName = FName(UTF8_TO_TCHAR(Value)); }
 	
 	DOTNET_EXPORT float E_PROP_ACharacter_CrouchedEyeHeight_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->CrouchedEyeHeight; }
 	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->CrouchedEyeHeight = Value; }

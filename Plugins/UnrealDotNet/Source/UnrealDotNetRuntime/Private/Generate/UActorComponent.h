@@ -62,17 +62,6 @@ extern "C"
 		((UActorComponent*)Self)->RegisterComponentWithWorld(_p0);
 	}
 
-	DOTNET_EXPORT ULevel* E_UActorComponent_GetComponentLevel(INT_PTR Self)
-	{
-		return ((UActorComponent*)Self)->GetComponentLevel();
-	}
-
-	DOTNET_EXPORT bool E_UActorComponent_ComponentIsInLevel(INT_PTR Self, ULevel* TestLevel)
-	{
-		auto _p0 = TestLevel;
-		return ((UActorComponent*)Self)->ComponentIsInLevel(_p0);
-	}
-
 	DOTNET_EXPORT bool E_UActorComponent_ComponentIsInPersistentLevel(INT_PTR Self, bool bIncludeLevelStreamingPersistent)
 	{
 		auto _p0 = bIncludeLevelStreamingPersistent;

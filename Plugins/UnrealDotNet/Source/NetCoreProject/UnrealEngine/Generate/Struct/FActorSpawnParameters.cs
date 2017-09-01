@@ -49,11 +49,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, APawn Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern ULevel E_PROP_FActorSpawnParameters_OverrideLevel_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FActorSpawnParameters_OverrideLevel_SET(IntPtr Ptr, ULevel Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(FActorSpawnParameters Self);
 		
 		#endregion
@@ -81,12 +76,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FActorSpawnParameters_Instigator_GET(NativePointer);
 			set => E_PROP_FActorSpawnParameters_Instigator_SET(NativePointer, value);
-		}
-
-		public ULevel OverrideLevel
-		{
-			get => E_PROP_FActorSpawnParameters_OverrideLevel_GET(NativePointer);
-			set => E_PROP_FActorSpawnParameters_OverrideLevel_SET(NativePointer, value);
 		}
 
 		#endregion

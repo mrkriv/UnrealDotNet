@@ -405,17 +405,6 @@ extern "C"
 		return ((AActor*)Self)->K2_TeleportTo(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_AActor_IsInLevel(INT_PTR Self, ULevel* TestLevel)
-	{
-		auto _p0 = TestLevel;
-		return ((AActor*)Self)->IsInLevel(_p0);
-	}
-
-	DOTNET_EXPORT ULevel* E_AActor_GetLevel(INT_PTR Self)
-	{
-		return ((AActor*)Self)->GetLevel();
-	}
-
 	DOTNET_EXPORT void E_AActor_DebugShowOneComponentHierarchy(INT_PTR Self, USceneComponent* SceneComp, int32 NestLevel, bool bShowPosition)
 	{
 		auto _p0 = SceneComp;

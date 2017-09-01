@@ -18,6 +18,9 @@ namespace Generator
             "FSplinePositionLinearApproximation",
             "FStaticMeshComponentLODInfo",
             "FGaussianSumBloomSettings",
+            "FPendingAutoReceiveInputActor",
+            "FPrecomputedVolumeDistanceField",
+            "FPrecomputedVisibilityHandler",
         };
 
         public static string[] ClassImplementedList =

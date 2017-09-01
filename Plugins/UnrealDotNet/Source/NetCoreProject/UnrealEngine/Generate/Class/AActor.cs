@@ -356,12 +356,6 @@ namespace UnrealEngine
 		private static extern bool E_AActor_K2_TeleportTo(IntPtr Self, IntPtr DestLocation, IntPtr DestRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_AActor_IsInLevel(IntPtr Self, IntPtr TestLevel);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_AActor_GetLevel(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_AActor_DebugShowOneComponentHierarchy(IntPtr Self, IntPtr SceneComp, int NestLevel, bool bShowPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -1110,21 +1104,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool Teleport(FVector DestLocation, FRotator DestRotation)
 			=> E_AActor_K2_TeleportTo(NativePointer, DestLocation, DestRotation);
-		
-		
-		/// <summary>
-		/// Returns true if this actor is contained by TestLevel.
-		/// @todo seamless: update once Actor->Outer != Level
-		/// </summary>
-		public bool IsInLevel(ULevel TestLevel)
-			=> E_AActor_IsInLevel(NativePointer, TestLevel);
-		
-		
-		/// <summary>
-		/// Return the ULevel that this Actor is part of.
-		/// </summary>
-		public ULevel GetLevel()
-			=> E_AActor_GetLevel(NativePointer);
 		
 		
 		/// <summary>

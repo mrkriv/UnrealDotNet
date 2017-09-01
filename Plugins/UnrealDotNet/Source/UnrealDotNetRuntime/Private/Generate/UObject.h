@@ -93,29 +93,14 @@ extern "C"
 		((UObject*)Self)->ExecuteUbergraph(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_ULineBatchComponent(INT_PTR Self, char* Name)
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UCapsuleComponent(INT_PTR Self, char* Name)
 	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class ULineBatchComponent>(FName(UTF8_TO_TCHAR(Name)));
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UCapsuleComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(INT_PTR Self, char* Name)
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBrushComponent(INT_PTR Self, char* Name)
 	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDrawFrustumComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDrawSphereComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDrawSphereComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UModelComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UModelComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UMeshComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBrushComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
 	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USplineComponent(INT_PTR Self, char* Name)
@@ -128,44 +113,14 @@ extern "C"
 		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBillboardComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBoxComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBoxComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBrushComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBrushComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UVectorFieldComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UVectorFieldComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UTextRenderComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UTextRenderComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UInstancedStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UShapeComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UShapeComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
 	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UArrowComponent(INT_PTR Self, char* Name)
 	{
 		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UArrowComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UStaticMeshComponent(INT_PTR Self, char* Name)
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UModelComponent(INT_PTR Self, char* Name)
 	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UModelComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
 	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(INT_PTR Self, char* Name)
@@ -173,14 +128,59 @@ extern "C"
 		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UMaterialBillboardComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UCapsuleComponent(INT_PTR Self, char* Name)
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UShapeComponent(INT_PTR Self, char* Name)
 	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UCapsuleComponent>(FName(UTF8_TO_TCHAR(Name)));
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UShapeComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDrawSphereComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDrawSphereComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDrawFrustumComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UTextRenderComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UTextRenderComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UMeshComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UVectorFieldComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UVectorFieldComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UInstancedStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBoxComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBoxComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
 	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USplineMeshComponent(INT_PTR Self, char* Name)
 	{
 		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USplineMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UStaticMeshComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_ULineBatchComponent(INT_PTR Self, char* Name)
+	{
+		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class ULineBatchComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
 	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USphereComponent(INT_PTR Self, char* Name)

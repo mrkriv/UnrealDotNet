@@ -37,9 +37,6 @@ namespace UnrealEngine
 		private static extern void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(FLevelStreamingGCHelper Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FLevelStreamingGCHelper_RequestUnload(FLevelStreamingGCHelper Self, IntPtr InLevel);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(FLevelStreamingGCHelper Self);
 		
 		#endregion
@@ -51,14 +48,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void AddGarbageCollectorCallback()
 			=> E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(this);
-		
-		
-		/// <summary>
-		/// Request to be unloaded.
-		/// @param InLevel	Level that should be unloaded
-		/// </summary>
-		public void RequestUnload(ULevel InLevel)
-			=> E_FLevelStreamingGCHelper_RequestUnload(this, InLevel);
 		
 		
 		/// <summary>

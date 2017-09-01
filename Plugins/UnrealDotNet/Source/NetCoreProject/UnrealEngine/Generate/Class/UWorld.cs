@@ -186,12 +186,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UWorld_SetCurrentLevel(IntPtr Self, IntPtr InLevel);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UWorld_GetCurrentLevel(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_CreateFXSystem(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -234,15 +228,6 @@ namespace UnrealEngine
 		private static extern void E_UWorld_CleanupWorld(IntPtr Self, bool bSessionEnded, bool bCleanupResources, IntPtr NewWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_InvalidateModelGeometry(IntPtr Self, IntPtr InLevel);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_AddToWorld(IntPtr Self, IntPtr Level, IntPtr LevelTransform);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_RemoveFromWorld(IntPtr Self, IntPtr Level, bool bAllowIncrementalRemoval);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_DestroyWorld(IntPtr Self, bool bInformEngineOfWorld, IntPtr NewWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -259,12 +244,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UWorld_GetLevel(IntPtr Self, int InLevelIndex);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UWorld_ContainsLevel(IntPtr Self, IntPtr InLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_DuplicateRequestedLevels(IntPtr Self, string MapName);
@@ -654,21 +633,6 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Set the CurrentLevel for this world.
-		/// @return true if the current level changed.
-		/// </summary>
-		public bool SetCurrentLevel(ULevel InLevel)
-			=> E_UWorld_SetCurrentLevel(NativePointer, InLevel);
-		
-		
-		/// <summary>
-		/// Get the CurrentLevel for this world.
-		/// </summary>
-		public ULevel GetCurrentLevel()
-			=> E_UWorld_GetCurrentLevel(NativePointer);
-		
-		
-		/// <summary>
 		/// Creates a new FX system for this world
 		/// </summary>
 		public void CreateFXSystem()
@@ -780,33 +744,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// Invalidates the cached data used to render the levels' UModel.
-		/// @param	InLevel		Level to invalidate. If this is NULL it will affect ALL levels
-		/// </summary>
-		public void InvalidateModelGeometry(ULevel InLevel)
-			=> E_UWorld_InvalidateModelGeometry(NativePointer, InLevel);
-		
-		
-		/// <summary>
-		/// Associates the passed in level with the world. The work to make the level visible is spread across several frames and this
-		/// function has to be called till it returns true for the level to be visible/ associated with the world and no longer be in
-		/// a limbo state.
-		/// @param Level				Level object we should add
-		/// @param LevelTransform	Transformation to apply to each actor in the level
-		/// </summary>
-		public void AddToWorld(ULevel Level, FTransform LevelTransform)
-			=> E_UWorld_AddToWorld(NativePointer, Level, LevelTransform);
-		
-		
-		/// <summary>
-		/// Dissociates the passed in level from the world. The removal is blocking.
-		/// @param Level			Level object we should remove
-		/// </summary>
-		public void RemoveFromWorld(ULevel Level, bool bAllowIncrementalRemoval = false)
-			=> E_UWorld_RemoveFromWorld(NativePointer, Level, bAllowIncrementalRemoval);
-		
-		
-		/// <summary>
 		/// Destroy this World instance. If destroying the world to load a different world, supply it here to prevent GC of the new world or it's sublevels.
 		/// </summary>
 		public void DestroyWorld(bool bInformEngineOfWorld, UWorld NewWorld = null)
@@ -855,20 +792,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void ProcessLevelStreamingVolumes(FVector OverrideViewLocation = null)
 			=> E_UWorld_ProcessLevelStreamingVolumes(NativePointer, OverrideViewLocation);
-		
-		
-		/// <summary>
-		/// Return the level with the given index.
-		/// </summary>
-		public ULevel GetLevel(int InLevelIndex)
-			=> E_UWorld_GetLevel(NativePointer, InLevelIndex);
-		
-		
-		/// <summary>
-		/// Does the level list contain the given level.
-		/// </summary>
-		public bool ContainsLevel(ULevel InLevel)
-			=> E_UWorld_ContainsLevel(NativePointer, InLevel);
 		
 		
 		/// <summary>

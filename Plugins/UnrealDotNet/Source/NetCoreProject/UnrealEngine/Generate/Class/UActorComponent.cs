@@ -51,12 +51,6 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_RegisterComponentWithWorld(IntPtr Self, IntPtr InWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UActorComponent_GetComponentLevel(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UActorComponent_ComponentIsInLevel(IntPtr Self, IntPtr TestLevel);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UActorComponent_ComponentIsInPersistentLevel(IntPtr Self, bool bIncludeLevelStreamingPersistent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -141,20 +135,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void RegisterComponentWithWorld(UWorld InWorld)
 			=> E_UActorComponent_RegisterComponentWithWorld(NativePointer, InWorld);
-		
-		
-		/// <summary>
-		/// Return the ULevel that this Component is part of.
-		/// </summary>
-		public ULevel GetComponentLevel()
-			=> E_UActorComponent_GetComponentLevel(NativePointer);
-		
-		
-		/// <summary>
-		/// Returns true if this actor is contained by TestLevel.
-		/// </summary>
-		public bool ComponentIsInLevel(ULevel TestLevel)
-			=> E_UActorComponent_ComponentIsInLevel(NativePointer, TestLevel);
 		
 		
 		/// <summary>

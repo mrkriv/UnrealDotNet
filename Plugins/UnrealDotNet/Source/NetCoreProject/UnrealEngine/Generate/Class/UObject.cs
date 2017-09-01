@@ -52,19 +52,10 @@ namespace UnrealEngine
 		private static extern void E_UObject_ExecuteUbergraph(IntPtr Self, int EntryPoint);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_ULineBatchComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UCapsuleComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawSphereComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UModelComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMeshComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBrushComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_USplineComponent(IntPtr Self, string Name);
@@ -73,37 +64,46 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBillboardComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBoxComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBrushComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UVectorFieldComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UTextRenderComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UShapeComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UArrowComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UStaticMeshComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UModelComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UCapsuleComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UShapeComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawSphereComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UTextRenderComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMeshComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UVectorFieldComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBoxComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_USplineMeshComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UStaticMeshComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_ULineBatchComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_USphereComponent(IntPtr Self, string Name);
@@ -206,20 +206,11 @@ namespace UnrealEngine
 		public void ExecuteUbergraph(int EntryPoint)
 			=> E_UObject_ExecuteUbergraph(NativePointer, EntryPoint);
 		
-		public ULineBatchComponent CreateOptionalDefaultSubobject_ULineBatchComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_ULineBatchComponent(NativePointer, Name);
+		public UCapsuleComponent CreateOptionalDefaultSubobject_UCapsuleComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UCapsuleComponent(NativePointer, Name);
 		
-		public UDrawFrustumComponent CreateOptionalDefaultSubobject_UDrawFrustumComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(NativePointer, Name);
-		
-		public UDrawSphereComponent CreateOptionalDefaultSubobject_UDrawSphereComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDrawSphereComponent(NativePointer, Name);
-		
-		public UModelComponent CreateOptionalDefaultSubobject_UModelComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UModelComponent(NativePointer, Name);
-		
-		public UMeshComponent CreateOptionalDefaultSubobject_UMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UMeshComponent(NativePointer, Name);
+		public UBrushComponent CreateOptionalDefaultSubobject_UBrushComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UBrushComponent(NativePointer, Name);
 		
 		public USplineComponent CreateOptionalDefaultSubobject_USplineComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_USplineComponent(NativePointer, Name);
@@ -227,38 +218,47 @@ namespace UnrealEngine
 		public UBillboardComponent CreateOptionalDefaultSubobject_UBillboardComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UBillboardComponent(NativePointer, Name);
 		
-		public UBoxComponent CreateOptionalDefaultSubobject_UBoxComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBoxComponent(NativePointer, Name);
-		
-		public UBrushComponent CreateOptionalDefaultSubobject_UBrushComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBrushComponent(NativePointer, Name);
-		
-		public UVectorFieldComponent CreateOptionalDefaultSubobject_UVectorFieldComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UVectorFieldComponent(NativePointer, Name);
-		
-		public UTextRenderComponent CreateOptionalDefaultSubobject_UTextRenderComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UTextRenderComponent(NativePointer, Name);
-		
-		public UInstancedStaticMeshComponent CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(NativePointer, Name);
-		
-		public UShapeComponent CreateOptionalDefaultSubobject_UShapeComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UShapeComponent(NativePointer, Name);
-		
 		public UArrowComponent CreateOptionalDefaultSubobject_UArrowComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UArrowComponent(NativePointer, Name);
 		
-		public UStaticMeshComponent CreateOptionalDefaultSubobject_UStaticMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UStaticMeshComponent(NativePointer, Name);
+		public UModelComponent CreateOptionalDefaultSubobject_UModelComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UModelComponent(NativePointer, Name);
 		
 		public UMaterialBillboardComponent CreateOptionalDefaultSubobject_UMaterialBillboardComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(NativePointer, Name);
 		
-		public UCapsuleComponent CreateOptionalDefaultSubobject_UCapsuleComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UCapsuleComponent(NativePointer, Name);
+		public UShapeComponent CreateOptionalDefaultSubobject_UShapeComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UShapeComponent(NativePointer, Name);
+		
+		public UDrawSphereComponent CreateOptionalDefaultSubobject_UDrawSphereComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UDrawSphereComponent(NativePointer, Name);
+		
+		public UDrawFrustumComponent CreateOptionalDefaultSubobject_UDrawFrustumComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(NativePointer, Name);
+		
+		public UTextRenderComponent CreateOptionalDefaultSubobject_UTextRenderComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UTextRenderComponent(NativePointer, Name);
+		
+		public UMeshComponent CreateOptionalDefaultSubobject_UMeshComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UMeshComponent(NativePointer, Name);
+		
+		public UVectorFieldComponent CreateOptionalDefaultSubobject_UVectorFieldComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UVectorFieldComponent(NativePointer, Name);
+		
+		public UInstancedStaticMeshComponent CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(NativePointer, Name);
+		
+		public UBoxComponent CreateOptionalDefaultSubobject_UBoxComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UBoxComponent(NativePointer, Name);
 		
 		public USplineMeshComponent CreateOptionalDefaultSubobject_USplineMeshComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_USplineMeshComponent(NativePointer, Name);
+		
+		public UStaticMeshComponent CreateOptionalDefaultSubobject_UStaticMeshComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UStaticMeshComponent(NativePointer, Name);
+		
+		public ULineBatchComponent CreateOptionalDefaultSubobject_ULineBatchComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_ULineBatchComponent(NativePointer, Name);
 		
 		public USphereComponent CreateOptionalDefaultSubobject_USphereComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_USphereComponent(NativePointer, Name);

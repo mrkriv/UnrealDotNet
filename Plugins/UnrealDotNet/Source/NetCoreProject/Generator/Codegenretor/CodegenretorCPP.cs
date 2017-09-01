@@ -312,40 +312,45 @@ namespace Generator
                 }
                 else
                 {
-                    var getPre = "";
-                    var setPre = "";
-                    var getPost = "";
-                    var setPost = "";
-
-                    switch (prop.Type)
+                    if (prop.Type == "FText" || prop.Type == "FName" || prop.Type == "FString")
                     {
-                        case "FText":
-                            getPre = "TCHAR_TO_UTF8(*";
-                            getPost = ".ToString())";
-                            setPre = "FText::FromString(FString(";
-                            setPost = "))";
-                            break;
+                        cw.WriteLine($"{CPP_API} char* {baseName}_GET(INT_PTR Ptr, int& ResultStringLen)");
+                        cw.OpenBlock();
 
-                        case "FName":
-                            getPre = "TCHAR_TO_UTF8(*";
-                            getPost = ".ToString())";
-                            setPre = "FName(UTF8_TO_TCHAR(";
-                            setPost = "))";
-                            break;
+                        cw.WriteLine(prop.Type == "FString"
+                            ? $"auto _result = (({Class.Name}*)Ptr)->{prop.Name};"
+                            : $"auto _result = (({Class.Name}*)Ptr)->{prop.Name}.ToString();");
 
-                        case "FString":
-                            getPre = "TCHAR_TO_UTF8(*";
-                            getPost = ")";
-                            setPre = "FString(";
-                            setPost = ")";
-                            break;
+                        cw.WriteLine("ResultStringLen = _result.Len();");
+                        cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
+                        cw.CloseBlock();
+
+                        cw.Write($"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = ");
+                        switch (prop.Type)
+                        {
+                            case "FText":
+                                cw.Write($"FText::FromString(UTF8_TO_TCHAR(Value))");
+                                break;
+
+                            case "FName":
+                                cw.Write($"FName(UTF8_TO_TCHAR(Value))");
+                                break;
+
+                            case "FString":
+                                cw.Write($"UTF8_TO_TCHAR(Value)");
+                                break;
+                        }
+
+                        cw.WriteLine("; }");
                     }
+                    else
+                    {
+                        cw.WriteLine(
+                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
 
-                    cw.WriteLine(
-                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return {getPre}(({Class.Name}*)Ptr)->{prop.Name}{getPost}; }}");
-
-                    cw.WriteLine(
-                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = {setPre}Value{setPost}; }}");
+                        cw.WriteLine(
+                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                    }
                 }
 
                 cw.WriteLine();
@@ -360,7 +365,7 @@ namespace Generator
                 cw.WriteLine("#pragma warning(disable:4996)");
                 cw.WriteLine();
 
-                cw.WriteLine($"#include \"Structures.h\"");
+                cw.WriteLine("#include \"Structures.h\"");
 
                 foreach (var Class in Classes)
                 {
