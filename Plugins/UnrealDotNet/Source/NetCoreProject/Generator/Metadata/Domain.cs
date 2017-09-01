@@ -8,6 +8,12 @@ namespace Generator.Metadata
     {
         public List<Class> Classes = new List<Class>();
 
+        public Domain(IEnumerable<Class> Classes)
+        {
+            this.Classes = Classes.ToList();
+            this.Classes.ForEach(cl => cl.Domain = this);
+        }
+
         public void Print(bool Full)
         {
             Console.WriteLine();

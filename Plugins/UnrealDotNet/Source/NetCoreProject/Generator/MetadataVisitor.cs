@@ -1,17 +1,15 @@
 ﻿using System;
 using Generator.Metadata;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading;
+using System.Collections.Concurrent;
 using static UHeaderParser;
-using Enum = System.Enum;
 
 namespace Generator
 {
     public class MetadataVisitor : UHeaderBaseVisitor<object>
     {
-        private readonly Dictionary<string, Class> Classes = new Dictionary<string, Class>();
+        private readonly ConcurrentDictionary<string, Class> Classes;
         private Dictionary<string, string> CurrentUMeta;
         private Class CurrentClass;
         private string CurrentFile;
@@ -20,7 +18,12 @@ namespace Generator
         private AccessModifier AccessModifier;
         private int PreprocessorIfCount;
 
-        public Domain GetDomain() => new Domain { Classes = Classes.Values.OrderBy(c => c.Name).ToList() };
+        public MetadataVisitor(ConcurrentDictionary<string, Class> classes)
+        {
+            Classes = classes;
+        }
+
+        public Domain GetDomain() => new Domain(Classes.Values.OrderBy(c => c.Name));
 
         public void Append(TranslationUnitContext Translationunit, string file)
         {
@@ -35,13 +38,7 @@ namespace Generator
         {
             Classes.TryGetValue(name, out Class Class);
 
-            if (Class != null)
-                return Class;
-
-            Class = new Class(name);
-            Classes.Add(name, Class);
-
-            return Class;
+            return Class ?? Classes.GetOrAdd(name, new Class(name));
         }
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
@@ -233,7 +230,7 @@ namespace Generator
 
         public override object VisitAccessSpecifier(AccessSpecifierContext context)
         {
-            Enum.TryParse(typeof(AccessModifier), context.GetText(), true, out var result);
+            System.Enum.TryParse(typeof(AccessModifier), context.GetText(), true, out var result);
             AccessModifier = (AccessModifier)result;
 
             Ignore = AccessModifier == AccessModifier.Private || PreprocessorIfCount != 0;

@@ -12,14 +12,12 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                Directory.GetFiles(OutputDir, "*.cs").ToList().ForEach(File.Delete);
-
-                //var ms = domain.Classes.Select(cl => cl.Methods.AsEnumerable()).Aggregate((a, b) => a.Concat(b)).Where(m => m.IsVirtual);
-                var ms = domain.Classes.Select(cl => cl.Methods.AsEnumerable()).Aggregate((a, b) => a.Concat(b)).Where(m => m.AccessModifier == AccessModifier.Private);
+                Directory.GetFiles(OutputDir, "*.cs", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
 
                 foreach (var cl in domain.Classes)
                 {
-                    GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
+                    var subdir = cl.IsStructure ? "Struct" : "Class";
+                    GenerateClass(cl, Path.Combine(OutputDir, subdir, cl.Name));
                 }
             }
 
@@ -46,8 +44,10 @@ namespace Generator
 
                 var cw_DllImport = new CoreWriter(cw);
                 var cw_ExternMethods = new CoreWriter(cw);
+                var cw_Property = new CoreWriter(cw);
 
                 GenerateClassDLLImport(cw_DllImport, Class);
+                Class.Property.ForEach(p => GenerateProperty(cw_Property, Class, p));
 
                 foreach (var method in Class.Methods)
                 {
@@ -55,22 +55,40 @@ namespace Generator
                     GenerateMethodBody(cw_ExternMethods, Class, method);
                 }
 
+                if (Class.Name == "UObject")
+                {
+                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.IsChild("UPrimitiveComponent")))
+                    {
+                        GenereteSubobjectUtilitsDLL(cw_DllImport, cl);
+                        GenereteSubobjectUtilitsMethods(cw_ExternMethods, cl);
+                    }
+                }
+
                 cw.WriteLine();
 
-                cw.WriteLine("#region DLLInmport");
-                cw.Write(cw_DllImport);
-                cw.WriteLine("#endregion");
-                cw.WriteLine();
+                if (!cw_DllImport.IsEmpty())
+                {
+                    cw.WriteLine("#region DLLInmport");
+                    cw.Write(cw_DllImport);
+                    cw.WriteLine("#endregion");
+                    cw.WriteLine();
+                }
 
-                cw.WriteLine("#region Property");
-                Class.Property.ForEach(p => GenerateProperty(cw, Class, p));
-                cw.WriteLine("#endregion");
-                cw.WriteLine();
+                if (!cw_Property.IsEmpty())
+                {
+                    cw.WriteLine("#region Property");
+                    cw.Write(cw_Property);
+                    cw.WriteLine("#endregion");
+                    cw.WriteLine();
+                }
 
-                cw.WriteLine("#region ExternMethods");
-                cw.Write(cw_ExternMethods);
-                cw.WriteLine("#endregion");
-                cw.WriteLine();
+                if (!cw_ExternMethods.IsEmpty())
+                {
+                    cw.WriteLine("#region ExternMethods");
+                    cw.Write(cw_ExternMethods);
+                    cw.WriteLine("#endregion");
+                    cw.WriteLine();
+                }
 
                 GenerateClassUtilitesButtom(cw, Class);
 
@@ -173,24 +191,28 @@ namespace Generator
                 if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
                     return;
 
+                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
+                                    method.ReturnType.Type == "FString";
+
                 var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
                 inputs.Insert(0, (Class.IsStructure ? Class.Name : "IntPtr") + " Self");
 
+                if (genStringWrap)
+                    inputs.Add("out int ResultStringLen");
+
                 var param = string.Join(", ", inputs);
+                var ret = genStringWrap ? "IntPtr" : ExportVariable(method.ReturnType, false, true);
 
                 WriteDLLImport(cw);
                 cw.WriteLine(
-                    $"private static extern {ExportVariable(method.ReturnType, false, true)} {GetCPPMethodName(method)}({param});");
+                    $"private static extern {ret} {GetCPPMethodName(method)}({param});");
                 cw.WriteLine();
             }
 
             private static void WriteDLLImport(CoreWriter cw)
             {
-                cw.WriteLine("#if PACING");
-                cw.WriteLine($"[DllImport(\"{DllPaksImportName}\")]");
-                cw.WriteLine("#else");
-                cw.WriteLine($"[DllImport(\"{DllEditorImportName}\")]");
-                cw.WriteLine("#endif");
+                cw.WriteLine(
+                    "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]");
             }
 
             private static void GenerateMethodBody(CoreWriter cw, Class Class, Method method)
@@ -198,14 +220,22 @@ namespace Generator
                 if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
                     return;
 
+                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
+                                    method.ReturnType.Type == "FString";
+
                 var inputs = method.InputTypes.Select(t => t.Name).ToList();
 
-                var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m)));
-                var name = method.UMeta.ContainsKey("DisplayName") ? method.UMeta["DisplayName"].Replace(" ", "") : method.Name;
+                var genDefault = ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
+                var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, genDefault)));
+                var name = GetMethodDisplayName(method);
 
                 GenerateSummaty(cw, method.Description);
+                cw.Write(method.AccessModifier.ToString().ToLower() + " ");
 
-                bool haveBody = true;
+                if (method.Name == "ToString")
+                    cw.Write("override ");
+
+                var haveBody = true;
                 if (method.Operator != null)
                 {
                     haveBody = GenerateOperatorHead(cw, method, param, inputs);
@@ -213,34 +243,49 @@ namespace Generator
                 else
                 {
                     inputs.Insert(0, Class.IsStructure ? "this" : "NativePointer");
-                    cw.WriteLine($"{method.AccessModifier.ToString().ToLower()} {ExportVariable(method.ReturnType)} {name}({param})");
+                    cw.WriteLine($"{ExportVariable(method.ReturnType)} {name}({param})");
                 }
 
                 if (haveBody)
                 {
-                    cw.WriteLine($"\t=> {GetCPPMethodName(method)}({string.Join(", ", inputs)});");
+                    if (genStringWrap)
+                    {
+                        inputs.Add("out int ResultStringLen");
+                        cw.WriteLine(
+                            $"\t=> Marshal.PtrToStringUTF8({GetCPPMethodName(method)}({string.Join(", ", inputs)}), ResultStringLen);");
+                    }
+                    else
+                    {
+                        cw.WriteLine($"\t=> {GetCPPMethodName(method)}({string.Join(", ", inputs)});");
+                    }
                 }
 
                 cw.WriteLine();
+            }
+
+            private static string GetMethodDisplayName(Method method)
+            {
+                if (method.UMeta.ContainsKey("DisplayName"))
+                {
+                    return DisplayNameRegex.Replace(method.UMeta["DisplayName"], "");
+                }
+                return method.Name;
             }
 
             private static bool GenerateOperatorHead(CoreWriter cw, Method method, string param, IList<string> inputs)
             {
                 if (method.Operator == "[]")
                 {
-                    cw.WriteLine($"public {ExportVariable(method.ReturnType)} this[{param}]");
+                    cw.WriteLine($"{ExportVariable(method.ReturnType)} this[{param}]");
                     cw.OpenBlock();
                     cw.WriteLine("get => throw new NotImplementedException();");
                     cw.WriteLine("set => throw new NotImplementedException();");
                     cw.CloseBlock();
                     return false;
                 }
-                else
-                {
-                    inputs.Insert(0, "Self");
-                    cw.WriteLine(
-                        $"public static {ExportVariable(method.ReturnType)} operator{method.Operator}({method.OwnerClass.Name} Self, {param})");
-                }
+                inputs.Insert(0, "Self");
+                cw.WriteLine(
+                    $"static {ExportVariable(method.ReturnType)} operator{method.Operator}({method.OwnerClass.Name} Self, {param})");
                 return true;
             }
 
@@ -289,13 +334,30 @@ namespace Generator
                 }
             }
 
+            private static void GenereteSubobjectUtilitsDLL(CoreWriter cw, Class Class)
+            {
+                WriteDLLImport(cw);
+                cw.WriteLine(
+                    $"private static extern IntPtr {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(IntPtr Self, string Name);");
+                cw.WriteLine();
+            }
+
+            private static void GenereteSubobjectUtilitsMethods(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine($"public {Class.Name} CreateOptionalDefaultSubobject_{Class.Name}(string Name) ");
+                cw.WriteLine($"\t=> {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(NativePointer, Name);");
+                cw.WriteLine();
+            }
+
             private static string ExportVariable(Variable variable, bool IncludeDefault = true, bool ForExtern = false)
             {
                 var result = ForExtern ? variable.GetTypeCSForExtend() : variable.GetTypeCS();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                 {
-                    var name = variable.UMeta.ContainsKey("DisplayName") ? variable.UMeta["DisplayName"].Replace(" ", "") : variable.Name;
+                    var name = variable.UMeta.ContainsKey("DisplayName")
+                        ? variable.UMeta["DisplayName"].Replace(" ", "")
+                        : variable.Name;
                     result += " " + name;
 
                     if (IncludeDefault)

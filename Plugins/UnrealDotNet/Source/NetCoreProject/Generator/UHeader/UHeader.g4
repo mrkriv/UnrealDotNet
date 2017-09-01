@@ -163,7 +163,7 @@ uMetaParamValue
 /* Method */
 
 constructor
-	: (Explicit|Inline)* isDestructor? methodName '(' methodParamsList? ')' isConst? (':' constructorInitializerList)?  (methodBody|isDelete)? ';'?
+	: (Explicit|Inline|isVirtual)* isDestructor? methodName '(' methodParamsList? ')' isConst? (':' constructorInitializerList)?  (methodBody|isDelete)? ';'?
 ;
 
 constructorInitializerList
@@ -217,7 +217,7 @@ methodName
 ;
 
 methodOperator
-	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | '[' | ']' | Identifier)+
+	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | '[' | ']' | '&' | Identifier)+
 ;
 
 /* Property */
@@ -486,6 +486,7 @@ DIGIT
 Literal
 	: Boolean
 	| RealDIGIT
+	| '0x' DIGIT+
 	| '"' Schar* '"'
 ;
 

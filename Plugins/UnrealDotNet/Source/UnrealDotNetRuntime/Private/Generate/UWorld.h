@@ -59,6 +59,12 @@ extern "C"
 	DOTNET_EXPORT bool E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->bCreateRenderStateForHiddenComponents; }
 	DOTNET_EXPORT void E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(INT_PTR Ptr, bool Value) { ((UWorld*)Ptr)->bCreateRenderStateForHiddenComponents = Value; }
 	
+	DOTNET_EXPORT char* E_PROP_UWorld_DebugDrawTraceTag_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UWorld*)Ptr)->DebugDrawTraceTag.ToString()); }
+	DOTNET_EXPORT void E_PROP_UWorld_DebugDrawTraceTag_SET(INT_PTR Ptr, char* Value) { ((UWorld*)Ptr)->DebugDrawTraceTag = FName(UTF8_TO_TCHAR(Value)); }
+	
+	DOTNET_EXPORT bool E_PROP_UWorld_bDebugDrawAllTraceTags_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->bDebugDrawAllTraceTags; }
+	DOTNET_EXPORT void E_PROP_UWorld_bDebugDrawAllTraceTags_SET(INT_PTR Ptr, bool Value) { ((UWorld*)Ptr)->bDebugDrawAllTraceTags = Value; }
+	
 	DOTNET_EXPORT double E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->LastTimeUnbuiltLightingWasEncountered; }
 	DOTNET_EXPORT void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(INT_PTR Ptr, double Value) { ((UWorld*)Ptr)->LastTimeUnbuiltLightingWasEncountered = Value; }
 	
@@ -83,8 +89,14 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_UWorld_OriginOffsetThisFrame_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((UWorld*)Ptr)->OriginOffsetThisFrame); }
 	DOTNET_EXPORT void E_PROP_UWorld_OriginOffsetThisFrame_SET(INT_PTR Ptr, INT_PTR Value) { ((UWorld*)Ptr)->OriginOffsetThisFrame = *(FVector*)Value; }
 	
+	DOTNET_EXPORT char* E_PROP_UWorld_NextURL_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UWorld*)Ptr)->NextURL); }
+	DOTNET_EXPORT void E_PROP_UWorld_NextURL_SET(INT_PTR Ptr, char* Value) { ((UWorld*)Ptr)->NextURL = FString(Value); }
+	
 	DOTNET_EXPORT float E_PROP_UWorld_NextSwitchCountdown_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NextSwitchCountdown; }
 	DOTNET_EXPORT void E_PROP_UWorld_NextSwitchCountdown_SET(INT_PTR Ptr, float Value) { ((UWorld*)Ptr)->NextSwitchCountdown = Value; }
+	
+	DOTNET_EXPORT char* E_PROP_UWorld_CommittedPersistentLevelName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UWorld*)Ptr)->CommittedPersistentLevelName.ToString()); }
+	DOTNET_EXPORT void E_PROP_UWorld_CommittedPersistentLevelName_SET(INT_PTR Ptr, char* Value) { ((UWorld*)Ptr)->CommittedPersistentLevelName = FName(UTF8_TO_TCHAR(Value)); }
 	
 	DOTNET_EXPORT int32 E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NumTextureStreamingUnbuiltComponents; }
 	DOTNET_EXPORT void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(INT_PTR Ptr, int32 Value) { ((UWorld*)Ptr)->NumTextureStreamingUnbuiltComponents = Value; }
@@ -92,6 +104,17 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_UWorld_NumTextureStreamingDirtyResources_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NumTextureStreamingDirtyResources; }
 	DOTNET_EXPORT void E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(INT_PTR Ptr, int32 Value) { ((UWorld*)Ptr)->NumTextureStreamingDirtyResources = Value; }
 	
+	DOTNET_EXPORT bool E_UWorld_SetCurrentLevel(INT_PTR Self, ULevel* InLevel)
+	{
+		auto _p0 = InLevel;
+		return ((UWorld*)Self)->SetCurrentLevel(_p0);
+	}
+
+	DOTNET_EXPORT ULevel* E_UWorld_GetCurrentLevel(INT_PTR Self)
+	{
+		return ((UWorld*)Self)->GetCurrentLevel();
+	}
+
 	DOTNET_EXPORT void E_UWorld_CreateFXSystem(INT_PTR Self)
 	{
 		((UWorld*)Self)->CreateFXSystem();
@@ -106,6 +129,12 @@ extern "C"
 	DOTNET_EXPORT bool E_UWorld_ShouldTick(INT_PTR Self)
 	{
 		return ((UWorld*)Self)->ShouldTick();
+	}
+
+	DOTNET_EXPORT bool E_UWorld_DebugDrawSceneQueries(INT_PTR Self, char* UsedTraceTag)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(UsedTraceTag));
+		return ((UWorld*)Self)->DebugDrawSceneQueries(_p0);
 	}
 
 	DOTNET_EXPORT int32 E_UWorld_GetNumPawns(INT_PTR Self)
@@ -154,12 +183,39 @@ extern "C"
 		((UWorld*)Self)->UpdateWorldComponents(_p0, _p1);
 	}
 
+	DOTNET_EXPORT void E_UWorld_UpdateCullDistanceVolumes(INT_PTR Self, AActor* ActorToUpdate, UPrimitiveComponent* ComponentToUpdate)
+	{
+		auto _p0 = ActorToUpdate;
+		auto _p1 = ComponentToUpdate;
+		((UWorld*)Self)->UpdateCullDistanceVolumes(_p0, _p1);
+	}
+
 	DOTNET_EXPORT void E_UWorld_CleanupWorld(INT_PTR Self, bool bSessionEnded, bool bCleanupResources, UWorld* NewWorld)
 	{
 		auto _p0 = bSessionEnded;
 		auto _p1 = bCleanupResources;
 		auto _p2 = NewWorld;
 		((UWorld*)Self)->CleanupWorld(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_UWorld_InvalidateModelGeometry(INT_PTR Self, ULevel* InLevel)
+	{
+		auto _p0 = InLevel;
+		((UWorld*)Self)->InvalidateModelGeometry(_p0);
+	}
+
+	DOTNET_EXPORT void E_UWorld_AddToWorld(INT_PTR Self, ULevel* Level, INT_PTR LevelTransform)
+	{
+		auto _p0 = Level;
+		auto _p1 = *(FTransform*)LevelTransform;
+		((UWorld*)Self)->AddToWorld(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_UWorld_RemoveFromWorld(INT_PTR Self, ULevel* Level, bool bAllowIncrementalRemoval)
+	{
+		auto _p0 = Level;
+		auto _p1 = bAllowIncrementalRemoval;
+		((UWorld*)Self)->RemoveFromWorld(_p0, _p1);
 	}
 
 	DOTNET_EXPORT void E_UWorld_DestroyWorld(INT_PTR Self, bool bInformEngineOfWorld, UWorld* NewWorld)
@@ -198,6 +254,24 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)OverrideViewLocation;
 		((UWorld*)Self)->ProcessLevelStreamingVolumes(&_p0);
+	}
+
+	DOTNET_EXPORT ULevel* E_UWorld_GetLevel(INT_PTR Self, int32 InLevelIndex)
+	{
+		auto _p0 = InLevelIndex;
+		return ((UWorld*)Self)->GetLevel(_p0);
+	}
+
+	DOTNET_EXPORT bool E_UWorld_ContainsLevel(INT_PTR Self, ULevel* InLevel)
+	{
+		auto _p0 = InLevel;
+		return ((UWorld*)Self)->ContainsLevel(_p0);
+	}
+
+	DOTNET_EXPORT void E_UWorld_DuplicateRequestedLevels(INT_PTR Self, char* MapName)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(MapName));
+		((UWorld*)Self)->DuplicateRequestedLevels(_p0);
 	}
 
 	DOTNET_EXPORT bool E_UWorld_EditorDestroyActor(INT_PTR Self, AActor* Actor, bool bShouldModifyLevel)
@@ -254,6 +328,62 @@ extern "C"
 	DOTNET_EXPORT int32 E_UWorld_GetProgressDenominator(INT_PTR Self)
 	{
 		return ((UWorld*)Self)->GetProgressDenominator();
+	}
+
+	DOTNET_EXPORT char* E_UWorld_GetLocalURL(INT_PTR Self, int& ResultStringLen)
+	{
+		auto _result = ((UWorld*)Self)->GetLocalURL();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT bool E_UWorld_ServerTravel(INT_PTR Self, char* InURL, bool bAbsolute, bool bShouldSkipGameNotify)
+	{
+		auto _p0 = FString(InURL);
+		auto _p1 = bAbsolute;
+		auto _p2 = bShouldSkipGameNotify;
+		return ((UWorld*)Self)->ServerTravel(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT char* E_UWorld_ConvertToPIEPackageName(INT_PTR Self, char* PackageName, int32 PIEInstanceID, int& ResultStringLen)
+	{
+		auto _p0 = FString(PackageName);
+		auto _p1 = PIEInstanceID;
+		auto _result = ((UWorld*)Self)->ConvertToPIEPackageName(_p0, _p1);
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT char* E_UWorld_StripPIEPrefixFromPackageName(INT_PTR Self, char* PackageName, char* Prefix, int& ResultStringLen)
+	{
+		auto _p0 = FString(PackageName);
+		auto _p1 = FString(Prefix);
+		auto _result = ((UWorld*)Self)->StripPIEPrefixFromPackageName(_p0, _p1);
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT char* E_UWorld_BuildPIEPackagePrefix(INT_PTR Self, int32 PIEInstanceID, int& ResultStringLen)
+	{
+		auto _p0 = PIEInstanceID;
+		auto _result = ((UWorld*)Self)->BuildPIEPackagePrefix(_p0);
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT UWorld* E_UWorld_DuplicateWorldForPIE(INT_PTR Self, char* PackageName, UWorld* OwningWorld)
+	{
+		auto _p0 = FString(PackageName);
+		auto _p1 = OwningWorld;
+		return ((UWorld*)Self)->DuplicateWorldForPIE(_p0, _p1);
+	}
+
+	DOTNET_EXPORT char* E_UWorld_RemovePIEPrefix(INT_PTR Self, char* Source, int& ResultStringLen)
+	{
+		auto _p0 = FString(Source);
+		auto _result = ((UWorld*)Self)->RemovePIEPrefix(_p0);
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
 	}
 
 }

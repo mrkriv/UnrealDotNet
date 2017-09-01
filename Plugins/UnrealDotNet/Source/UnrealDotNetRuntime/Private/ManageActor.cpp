@@ -24,7 +24,7 @@ void AManageActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(bIsManageAttach)
+	if (bIsManageAttach)
 		UCoreShell::InvokeInObject(this, "OnTick", DeltaTime);
 }
 

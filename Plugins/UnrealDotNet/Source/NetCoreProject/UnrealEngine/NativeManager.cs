@@ -9,6 +9,12 @@ namespace UnrealEngine
 {
     public static class NativeManager
     {
+#if PACING
+        public const string UnrealDotNetDLL = "DotUnrealExample.exe";
+#else
+        public const string UnrealDotNetDLL = "UE4Editor-UnrealDotNetRuntime";
+#endif
+
         private static Assembly GameLogicAssembly;
         private static Dictionary<IntPtr, object> Wrappers = new Dictionary<IntPtr, object>();
 
@@ -101,7 +107,7 @@ namespace UnrealEngine
 
             try
             {
-                UObject.ULog_Debug($"Call method {MethodName} in {Adress}");
+                //UObject.ULog_Debug($"Call method {MethodName} in {Adress}");
                 method.Invoke(obj, Params);
             }
             catch (Exception e)

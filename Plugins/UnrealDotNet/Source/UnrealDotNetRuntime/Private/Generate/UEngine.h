@@ -1,10 +1,52 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine.h"
+#include "Engine/Engine.h"
 
 extern "C"
 {
+	DOTNET_EXPORT UObject* E_PROP_UEngine_GameSingleton_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->GameSingleton; }
+	DOTNET_EXPORT void E_PROP_UEngine_GameSingleton_SET(INT_PTR Ptr, UObject* Value) { ((UEngine*)Ptr)->GameSingleton = Value; }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_PlayOnConsoleSaveDir_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->PlayOnConsoleSaveDir); }
+	DOTNET_EXPORT void E_PROP_UEngine_PlayOnConsoleSaveDir_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->PlayOnConsoleSaveDir = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_WireframeMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->WireframeMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_WireframeMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->WireframeMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_LevelColorationLitMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->LevelColorationLitMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_LevelColorationLitMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->LevelColorationLitMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->LevelColorationUnlitMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->LevelColorationUnlitMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_LightingTexelDensityName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->LightingTexelDensityName); }
+	DOTNET_EXPORT void E_PROP_UEngine_LightingTexelDensityName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->LightingTexelDensityName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_ShadedLevelColorationLitMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->ShadedLevelColorationLitMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_ShadedLevelColorationLitMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->ShadedLevelColorationLitMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->ShadedLevelColorationUnlitMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->ShadedLevelColorationUnlitMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorMaterialName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorMaterialName); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorMaterialName = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorViewModeMaterialName_ColorOnly_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorViewModeMaterialName_ColorOnly); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorViewModeMaterialName_ColorOnly_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorViewModeMaterialName_ColorOnly = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorViewModeMaterialName_AlphaAsColor_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorViewModeMaterialName_AlphaAsColor); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorViewModeMaterialName_AlphaAsColor_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorViewModeMaterialName_AlphaAsColor = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorViewModeMaterialName_RedOnly_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorViewModeMaterialName_RedOnly); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorViewModeMaterialName_RedOnly_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorViewModeMaterialName_RedOnly = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorViewModeMaterialName_GreenOnly_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorViewModeMaterialName_GreenOnly); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorViewModeMaterialName_GreenOnly_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorViewModeMaterialName_GreenOnly = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_VertexColorViewModeMaterialName_BlueOnly_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->VertexColorViewModeMaterialName_BlueOnly); }
+	DOTNET_EXPORT void E_PROP_UEngine_VertexColorViewModeMaterialName_BlueOnly_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->VertexColorViewModeMaterialName_BlueOnly = FString(Value); }
+	
 	DOTNET_EXPORT float E_PROP_UEngine_MaxPixelShaderAdditiveComplexityCount_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->MaxPixelShaderAdditiveComplexityCount; }
 	DOTNET_EXPORT void E_PROP_UEngine_MaxPixelShaderAdditiveComplexityCount_SET(INT_PTR Ptr, float Value) { ((UEngine*)Ptr)->MaxPixelShaderAdditiveComplexityCount = Value; }
 	
@@ -50,6 +92,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_UEngine_StreamingDistanceFactor_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->StreamingDistanceFactor; }
 	DOTNET_EXPORT void E_PROP_UEngine_StreamingDistanceFactor_SET(INT_PTR Ptr, float Value) { ((UEngine*)Ptr)->StreamingDistanceFactor = Value; }
 	
+	DOTNET_EXPORT char* E_PROP_UEngine_TransitionDescription_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->TransitionDescription); }
+	DOTNET_EXPORT void E_PROP_UEngine_TransitionDescription_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->TransitionDescription = FString(Value); }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_TransitionGameMode_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->TransitionGameMode); }
+	DOTNET_EXPORT void E_PROP_UEngine_TransitionGameMode_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->TransitionGameMode = FString(Value); }
+	
 	DOTNET_EXPORT float E_PROP_UEngine_MeshLODRange_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->MeshLODRange; }
 	DOTNET_EXPORT void E_PROP_UEngine_MeshLODRange_SET(INT_PTR Ptr, float Value) { ((UEngine*)Ptr)->MeshLODRange = Value; }
 	
@@ -79,6 +127,9 @@ extern "C"
 	
 	DOTNET_EXPORT float E_PROP_UEngine_MinDesiredFrameRate_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->MinDesiredFrameRate; }
 	DOTNET_EXPORT void E_PROP_UEngine_MinDesiredFrameRate_SET(INT_PTR Ptr, float Value) { ((UEngine*)Ptr)->MinDesiredFrameRate = Value; }
+	
+	DOTNET_EXPORT char* E_PROP_UEngine_ParticleEventManagerClassPath_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((UEngine*)Ptr)->ParticleEventManagerClassPath); }
+	DOTNET_EXPORT void E_PROP_UEngine_ParticleEventManagerClassPath_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->ParticleEventManagerClassPath = FString(Value); }
 	
 	DOTNET_EXPORT float E_PROP_UEngine_SelectionHighlightIntensity_GET(INT_PTR Ptr) { return ((UEngine*)Ptr)->SelectionHighlightIntensity; }
 	DOTNET_EXPORT void E_PROP_UEngine_SelectionHighlightIntensity_SET(INT_PTR Ptr, float Value) { ((UEngine*)Ptr)->SelectionHighlightIntensity = Value; }

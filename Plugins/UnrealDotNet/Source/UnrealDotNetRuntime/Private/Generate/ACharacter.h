@@ -8,8 +8,7 @@ class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 	public:
 	bool DoJump_WRAP(bool bReplayingMoves)
 	{
-		auto _p0 = bReplayingMoves;
-		return DoJump(_p0);
+		return DoJump(bReplayingMoves);
 	}
 
 }
@@ -17,6 +16,15 @@ class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 
 extern "C"
 {
+	DOTNET_EXPORT char* E_PROP_ACharacter_MeshComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->MeshComponentName.ToString()); }
+	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->MeshComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	
+	DOTNET_EXPORT char* E_PROP_ACharacter_CharacterMovementComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->CharacterMovementComponentName.ToString()); }
+	DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CharacterMovementComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	
+	DOTNET_EXPORT char* E_PROP_ACharacter_CapsuleComponentName_GET(INT_PTR Ptr) { return TCHAR_TO_UTF8(*((ACharacter*)Ptr)->CapsuleComponentName.ToString()); }
+	DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CapsuleComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	
 	DOTNET_EXPORT float E_PROP_ACharacter_CrouchedEyeHeight_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->CrouchedEyeHeight; }
 	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->CrouchedEyeHeight = Value; }
 	
@@ -35,6 +43,14 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_ACharacter_RepRootMotion_GET(INT_PTR Ptr) { return (INT_PTR) new FRepRootMotionMontage(((ACharacter*)Ptr)->RepRootMotion); }
 	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((ACharacter*)Ptr)->RepRootMotion = *(FRepRootMotionMontage*)Value; }
 	
+	DOTNET_EXPORT void E_ACharacter_SetBase(INT_PTR Self, UPrimitiveComponent* NewBase, char* BoneName, bool bNotifyActor)
+	{
+		auto _p0 = NewBase;
+		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = bNotifyActor;
+		((ACharacter*)Self)->SetBase(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT void E_ACharacter_CacheInitialMeshOffset(INT_PTR Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
 	{
 		auto _p0 = *(FVector*)MeshRelativeLocation;
@@ -132,6 +148,12 @@ extern "C"
 		((ACharacter*)Self)->UpdateFromCompressedFlags(_p0);
 	}
 
+	DOTNET_EXPORT void E_ACharacter_RootMotionDebugClientPrintOnScreen(INT_PTR Self, char* InString)
+	{
+		auto _p0 = FString(InString);
+		((ACharacter*)Self)->RootMotionDebugClientPrintOnScreen(_p0);
+	}
+
 	DOTNET_EXPORT bool E_ACharacter_RestoreReplicatedMove(INT_PTR Self, INT_PTR RootMotionRepMove)
 	{
 		auto _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
@@ -150,6 +172,11 @@ extern "C"
 		auto _p0 = *(FVector*)OldLocation;
 		auto _p1 = *(FQuat*)OldRotation;
 		((ACharacter*)Self)->OnUpdateSimulatedPosition(_p0, _p1);
+	}
+
+	DOTNET_EXPORT UCapsuleComponent* E_ACharacter_GetCapsuleComponent(INT_PTR Self)
+	{
+		return ((ACharacter*)Self)->GetCapsuleComponent();
 	}
 
 }

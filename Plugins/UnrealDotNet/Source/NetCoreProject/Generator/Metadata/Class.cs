@@ -7,6 +7,7 @@ namespace Generator.Metadata
     {
         public Dictionary<string, string> UMeta;
         public string Name { get; }
+        public Domain Domain { get; set; }
         public Class BaseClass { get; set; }
         public Class NamespaceBaseClass { get; set; }
         public List<Method> Methods { get; set; }
@@ -48,6 +49,20 @@ namespace Generator.Metadata
 
             IsImplemented = false;
             this.Name = Name;
+        }
+
+        public bool IsChild(string ClassName)
+        {
+            var cl = BaseClass;
+            while (cl != null)
+            {
+                if (cl.Name == ClassName)
+                    return true;
+
+                cl = cl.BaseClass;
+            }
+
+            return false;
         }
 
         public override string ToString()

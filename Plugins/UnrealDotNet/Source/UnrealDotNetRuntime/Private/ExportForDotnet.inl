@@ -6,12 +6,6 @@
 # endif
 #endif
 
-template<class T>
-FORCEINLINE INT_PTR ExportStruct(T&& value)
-{
-	return (INT_PTR) new T(value);
-}
-
 #include "Generate/Index.h"
 
 extern "C" DOTNET_EXPORT void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
@@ -25,23 +19,23 @@ extern "C" DOTNET_EXPORT void E_ScreenDebugMessage(char* Message, float Time, ui
 	GEngine->AddOnScreenDebugMessage(-1, Time, FColor(R, G, B), UTF8_TO_TCHAR(Message));
 }
 
-//extern "C"
-//{
-//	UNREALDOTNETRUNTIME_API void E_UFUNCTION(UObject* Object, char* FunctionName, char* Arguments)
-//	{
-//		if (Object == NULL || FunctionName == NULL || Arguments == NULL)
-//		{
-//			UE_LOG(NetCoreRuntime, Error, TEXT("Invoke UFUNCTION error, argument is null"));
-//			return;
-//		}
-//
-//		auto func = Object->FindFunctionByName(UTF8_TO_TCHAR(FunctionName));
-//		if (func == NULL)
-//		{
-//			UE_LOG(DotNetRuntime, Error, TEXT("Type %s have not %s function"), *Object->GetName(), UTF8_TO_TCHAR(FunctionName));
-//			return;
-//		}
-//
-//		Class->ProcessEvent(func, Arguments);
-//	}
-//}
+extern "C"
+{
+	DOTNET_EXPORT void E_UFUNCTION(UObject* Object, char* FunctionName, char* Arguments)
+	{
+		if (Object == NULL || FunctionName == NULL || Arguments == NULL)
+		{
+			UE_LOG(DotNetRuntime, Error, TEXT("Invoke UFUNCTION error, argument is null"));
+			return;
+		}
+
+		auto func = Object->GetClass()->FindFunctionByName(UTF8_TO_TCHAR(FunctionName));
+		if (func == NULL)
+		{
+			UE_LOG(DotNetRuntime, Error, TEXT("Type %s have not %s function"), *Object->GetName(), UTF8_TO_TCHAR(FunctionName));
+			return;
+		}
+
+		Object->ProcessEvent(func, Arguments);
+	}
+}

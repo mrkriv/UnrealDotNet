@@ -14,6 +14,16 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_APawn_AllowedYawError_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->AllowedYawError; }
 	DOTNET_EXPORT void E_PROP_APawn_AllowedYawError_SET(INT_PTR Ptr, float Value) { ((APawn*)Ptr)->AllowedYawError = Value; }
 	
+	DOTNET_EXPORT UPrimitiveComponent* E_APawn_GetMovementBase(INT_PTR Self)
+	{
+		return ((APawn*)Self)->GetMovementBase();
+	}
+
+	DOTNET_EXPORT UPawnNoiseEmitterComponent* E_APawn_GetPawnNoiseEmitterComponent(INT_PTR Self)
+	{
+		return ((APawn*)Self)->GetPawnNoiseEmitterComponent();
+	}
+
 	DOTNET_EXPORT void E_APawn_PawnMakeNoise(INT_PTR Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
 	{
 		auto _p0 = Loudness;

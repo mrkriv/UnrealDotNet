@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Generator
@@ -78,6 +79,11 @@ namespace Generator
             sb.Append(new string('\t', tab));
         }
 
+        public bool IsEmpty()
+        {
+            return sb.Length == 0;
+        }
+
         public override string ToString()
         {
             return sb.ToString();
@@ -85,6 +91,11 @@ namespace Generator
 
         public void SaveToFile(string FilePath)
         {
+            if (!Directory.Exists(Path.GetDirectoryName(FilePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+            }
+
             File.WriteAllText(FilePath, sb.ToString());
         }
     }

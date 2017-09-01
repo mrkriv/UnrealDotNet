@@ -20,6 +20,12 @@ extern "C"
 		return ((UActorComponent*)Self)->GetOwner();
 	}
 
+	DOTNET_EXPORT bool E_UActorComponent_ComponentHasTag(INT_PTR Self, char* Tag)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(Tag));
+		return ((UActorComponent*)Self)->ComponentHasTag(_p0);
+	}
+
 	DOTNET_EXPORT void E_UActorComponent_Activate(INT_PTR Self, bool bReset)
 	{
 		auto _p0 = bReset;
@@ -56,10 +62,34 @@ extern "C"
 		((UActorComponent*)Self)->RegisterComponentWithWorld(_p0);
 	}
 
+	DOTNET_EXPORT ULevel* E_UActorComponent_GetComponentLevel(INT_PTR Self)
+	{
+		return ((UActorComponent*)Self)->GetComponentLevel();
+	}
+
+	DOTNET_EXPORT bool E_UActorComponent_ComponentIsInLevel(INT_PTR Self, ULevel* TestLevel)
+	{
+		auto _p0 = TestLevel;
+		return ((UActorComponent*)Self)->ComponentIsInLevel(_p0);
+	}
+
 	DOTNET_EXPORT bool E_UActorComponent_ComponentIsInPersistentLevel(INT_PTR Self, bool bIncludeLevelStreamingPersistent)
 	{
 		auto _p0 = bIncludeLevelStreamingPersistent;
 		return ((UActorComponent*)Self)->ComponentIsInPersistentLevel(_p0);
+	}
+
+	DOTNET_EXPORT char* E_UActorComponent_GetReadableName(INT_PTR Self, int& ResultStringLen)
+	{
+		auto _result = ((UActorComponent*)Self)->GetReadableName();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT void E_UActorComponent_K2_DestroyComponent(INT_PTR Self, UObject* Object)
+	{
+		auto _p0 = Object;
+		((UActorComponent*)Self)->K2_DestroyComponent(_p0);
 	}
 
 	DOTNET_EXPORT void E_UActorComponent_AddTickPrerequisiteActor(INT_PTR Self, AActor* PrerequisiteActor)

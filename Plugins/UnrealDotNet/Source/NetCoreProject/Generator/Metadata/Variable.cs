@@ -50,6 +50,26 @@ namespace Generator.Metadata
             return result;
         }
 
+        public string GetTypeCPPOgiginal()
+        {
+            var result = "";
+
+            if (IsConst)
+                result += "const ";
+
+            result += Type;
+
+            if (IsPointer)
+                result += "*";
+            if (IsReference)
+                result += "&";
+
+            if (!string.IsNullOrEmpty(Name))
+                result += " " + Name;
+
+            return result;
+        }
+
         public virtual bool NeedRefOperator()
         {
             return IsPointer;
@@ -90,11 +110,10 @@ namespace Generator.Metadata
             "int32",
             "int64",
             "bool",
-            //"FString",
-            //"FText",
-            //"FName",
+            "FString",
+            "FText",
+            "FName",
             "string",
-            "TCHAR",
             "float",
             "double",
             "char",
@@ -126,10 +145,9 @@ namespace Generator.Metadata
                 case "uint64":
                     return "ulong";
 
-                //case "FString":
-                //case "FText":
-                //case "FName":
-                case "TCHAR":
+                case "FString":
+                case "FText":
+                case "FName":
                     return "string";
 
                 case "INT_PTR":
@@ -150,9 +168,8 @@ namespace Generator.Metadata
             switch (Type)
             {
                 case "FString":
-                case "TCHAR":
-                    //case "FText":
-                    //case "FName":
+                case "FText":
+                case "FName":
                     return "char*";
 
                 default:
@@ -165,7 +182,8 @@ namespace Generator.Metadata
             switch (Type)
             {
                 case "FString":
-                case "TCHAR":
+                case "FText":
+                case "FName":
                     return false;
 
                 default:
@@ -211,10 +229,7 @@ namespace Generator.Metadata
 
         public override string GetTypeCSForExtend()
         {
-            if (ClassType.IsStructure)
-                return "IntPtr";
-
-            return ClassType.Name;
+            return "IntPtr";
         }
 
         public override bool NeedRefOperator()

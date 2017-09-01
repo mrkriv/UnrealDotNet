@@ -5,6 +5,7 @@ namespace GameLogic
 {
     public class MyActor : AActor
     {
+        private UBoxComponent Box;
         private float Time;
 
         public MyActor(IntPtr Adress) : base(Adress)
@@ -13,7 +14,9 @@ namespace GameLogic
 
         public override void OnBeginPlay()
         {
-            ULog(ActorHiddenInGame.ToString());
+            Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+
+            CallFunction("TestBlueprintMethod", "Abadracedapa 2.5");
 
             base.OnBeginPlay();
         }
@@ -36,7 +39,16 @@ namespace GameLogic
                 Z = 2.0f
             };
 
-            SetActorScale3D(scale);
+            if (Box != null)
+            {
+                ULog(Box.GetFName() + " " + scale);
+                Box.SetRelativeScale3D(scale);
+            }
+            else
+            {
+                ULog_Error("Box is null");
+            }
+
             SetActorRotation(rot, false);
         }
 

@@ -13,7 +13,7 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                Directory.GetFiles(OutputDir, "*.h").ToList().ForEach(File.Delete);
+                Directory.GetFiles(OutputDir, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
 
                 foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
@@ -49,6 +49,14 @@ namespace Generator
                 foreach (var method in Class.Methods)
                 {
                     GenerateMethod(cw, method);
+                }
+
+                if (Class.Name == "UObject")
+                {
+                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.IsChild("UPrimitiveComponent")))
+                    {
+                        GenereteSubobjectUtilitsMethods(cw, cl);
+                    }
                 }
 
                 cw.CloseBlock();
@@ -91,13 +99,20 @@ namespace Generator
 
             private static void GenerateMethod(CoreWriter cw, Method method)
             {
+                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
+                                    method.ReturnType.Type == "FString";
+
                 var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
                 inputs.Insert(0, "INT_PTR Self");
 
+                if (genStringWrap)
+                {
+                    inputs.Add("int& ResultStringLen");
+                }
+
                 var param = string.Join(", ", inputs);
 
-                cw.WriteLine(
-                    $"{CPP_API} {ExportVariableCPP(method.ReturnType)} {GetCPPMethodName(method)}({param})");
+                cw.WriteLine($"{CPP_API} {ExportVariableCPP(method.ReturnType)} {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
                 for (var i = 0; i < method.InputTypes.Count; i++)
@@ -106,15 +121,17 @@ namespace Generator
                     cw.WriteLine($"auto _p{i} = {VarNameForCall(m)};");
                 }
 
-                cw.Write(method.ReturnType.Type != "void", "return ");
+                if (method.ReturnType.Type != "void")
+                {
+                    cw.Write(genStringWrap ? "auto _result = " : "return ");
+                }
 
-                var needClose = false;
+                var bCloseCount = 0;
                 var retClass = method.ReturnType as ClassVariable;
-
                 if (retClass != null && retClass.ClassType.IsStructure)
                 {
                     cw.Write($"(INT_PTR) new {retClass.ClassType.Name}(");
-                    needClose = true;
+                    bCloseCount++;
                 }
 
                 var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
@@ -130,11 +147,36 @@ namespace Generator
                 }
                 else
                 {
-                    cw.Write($"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
+                    cw.Write(
+                        $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
                 }
 
-                cw.Write(needClose, ")");
+                if (method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName")
+                {
+                    cw.Write(".ToString()");
+                }
+
+                cw.Write(new string(')', bCloseCount));
                 cw.WriteLine(";");
+
+                if (genStringWrap)
+                {
+                    cw.WriteLine("ResultStringLen = _result.Len();");
+                    cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
+                }
+
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            private static void GenereteSubobjectUtilitsMethods(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine(
+                    $"{CPP_API} INT_PTR {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(INT_PTR Self, char* Name)");
+                cw.OpenBlock();
+
+                cw.WriteLine(
+                    $"return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class {Class.Name}>(FName(UTF8_TO_TCHAR(Name)));");
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -142,38 +184,15 @@ namespace Generator
 
             private static void GenerateMethodProtctedWrap(CoreWriter cw, Method method)
             {
-                var param = string.Join(", ", method.InputTypes.Select(ExportVariableCPP));
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
 
                 cw.WriteLine(
-                    $"{ExportVariableCPP(method.ReturnType)} {method.Name}{ExportProtectedPostfix}({param})");
+                    $"{method.ReturnType.GetTypeCPPOgiginal()} {method.Name}{ExportProtectedPostfix}({param})");
                 cw.OpenBlock();
-
-                for (var i = 0; i < method.InputTypes.Count; i++)
-                {
-                    var m = method.InputTypes[i];
-                    cw.WriteLine($"auto _p{i} = {VarNameForCall(m)};");
-                }
 
                 cw.Write(method.ReturnType.Type != "void", "return ");
 
-                var needClose = false;
-                var retClass = method.ReturnType as ClassVariable;
-
-                if (retClass != null && retClass.ClassType.IsStructure)
-                {
-                    cw.Write($"(INT_PTR) new {retClass.ClassType.Name}(");
-                    needClose = true;
-                }
-
-                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
-                {
-                    if (method.InputTypes[i].NeedRefOperator())
-                        return "&_p" + i;
-                    return "_p" + i;
-                }));
-
-                cw.Write($"{method.Name}({call})");
-                cw.Write(needClose, ")");
+                cw.Write($"{method.Name}({string.Join(", ", method.InputTypes.Select(p => p.Name))})");
                 cw.WriteLine(";");
 
                 cw.CloseBlock();
@@ -192,25 +211,35 @@ namespace Generator
                 }
 
                 var result = "";
-                var needClose = true;
+                var bCloseCount = 1;
 
-                if (variable.Type == "TCHAR")
+                switch (variable.Type)
                 {
-                    result += "UTF8_TO_TCHAR(";
-                }
-                else if (variable.Type == "FString")
-                {
-                    result += "TEXT(";
-                }
-                else
-                {
-                    needClose = false;
+                    case "TCHAR":
+                        result += "UTF8_TO_TCHAR(";
+                        break;
+
+                    case "FString":
+                        result += "FString(";
+                        break;
+
+                    case "FName":
+                        result += "FName(UTF8_TO_TCHAR(";
+                        bCloseCount = 2;
+                        break;
+
+                    case "FText":
+                        result += "FText::FromString(FString(";
+                        bCloseCount = 2;
+                        break;
+
+                    default:
+                        bCloseCount = 0;
+                        break;
                 }
 
                 result += variable.Name;
-
-                if (needClose)
-                    result += ")";
+                result += new string(')', bCloseCount);
 
                 return result;
             }
@@ -283,11 +312,40 @@ namespace Generator
                 }
                 else
                 {
-                    cw.WriteLine(
-                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
+                    var getPre = "";
+                    var setPre = "";
+                    var getPost = "";
+                    var setPost = "";
+
+                    switch (prop.Type)
+                    {
+                        case "FText":
+                            getPre = "TCHAR_TO_UTF8(*";
+                            getPost = ".ToString())";
+                            setPre = "FText::FromString(FString(";
+                            setPost = "))";
+                            break;
+
+                        case "FName":
+                            getPre = "TCHAR_TO_UTF8(*";
+                            getPost = ".ToString())";
+                            setPre = "FName(UTF8_TO_TCHAR(";
+                            setPost = "))";
+                            break;
+
+                        case "FString":
+                            getPre = "TCHAR_TO_UTF8(*";
+                            getPost = ")";
+                            setPre = "FString(";
+                            setPost = ")";
+                            break;
+                    }
 
                     cw.WriteLine(
-                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return {getPre}(({Class.Name}*)Ptr)->{prop.Name}{getPost}; }}");
+
+                    cw.WriteLine(
+                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = {setPre}Value{setPost}; }}");
                 }
 
                 cw.WriteLine();

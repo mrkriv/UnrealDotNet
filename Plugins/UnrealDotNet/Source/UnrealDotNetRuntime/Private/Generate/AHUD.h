@@ -27,6 +27,12 @@ extern "C"
 		((AHUD*)Self)->ShowHUD();
 	}
 
+	DOTNET_EXPORT void E_AHUD_ShowDebug(INT_PTR Self, char* DebugType)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(DebugType));
+		((AHUD*)Self)->ShowDebug(_p0);
+	}
+
 	DOTNET_EXPORT void E_AHUD_RemoveDebugText(INT_PTR Self, AActor* SrcActor, bool bLeaveDurationText)
 	{
 		auto _p0 = SrcActor;
@@ -39,6 +45,12 @@ extern "C"
 		auto _p0 = SizeX;
 		auto _p1 = SizeY;
 		((AHUD*)Self)->ReceiveDrawHUD(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxClick(INT_PTR Self, char* BoxName)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		((AHUD*)Self)->ReceiveHitBoxClick(_p0);
 	}
 
 	DOTNET_EXPORT INT_PTR E_AHUD_Project(INT_PTR Self, INT_PTR Location)
@@ -54,6 +66,16 @@ extern "C"
 		auto _p2 = *(FVector*)WorldPosition;
 		auto _p3 = *(FVector*)WorldDirection;
 		((AHUD*)Self)->Deproject(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT void E_AHUD_AddHitBox(INT_PTR Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
+	{
+		auto _p0 = *(FVector2D*)Position;
+		auto _p1 = *(FVector2D*)Size;
+		auto _p2 = FName(UTF8_TO_TCHAR(InName));
+		auto _p3 = bConsumesInput;
+		auto _p4 = Priority;
+		((AHUD*)Self)->AddHitBox(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT APawn* E_AHUD_GetOwningPawn(INT_PTR Self)
@@ -72,6 +94,12 @@ extern "C"
 	{
 		auto _p0 = A;
 		((AHUD*)Self)->RemovePostRenderedActor(_p0);
+	}
+
+	DOTNET_EXPORT bool E_AHUD_ShouldDisplayDebug(INT_PTR Self, char* DebugType)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(DebugType));
+		return ((AHUD*)Self)->ShouldDisplayDebug(_p0);
 	}
 
 	DOTNET_EXPORT void E_AHUD_ShowDebugInfo(INT_PTR Self, float YL, float YPos)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Generator.Metadata;
 
 namespace Generator
@@ -19,6 +20,8 @@ namespace Generator
         protected const string ExportProtectedPrefix = ExportPrefix + "PROTECTED_WRAP_";
         protected const string ExportProtectedPostfix = "_WRAP";
         protected const string CPP_API = "DOTNET_EXPORT";
+
+        protected static readonly Regex DisplayNameRegex = new Regex(@"[^\w_]");
 
         public static void GenarateDomain(Domain domain, string OutputDir)
         {

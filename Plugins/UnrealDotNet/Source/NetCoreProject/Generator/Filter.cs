@@ -13,18 +13,28 @@ namespace Generator
         {
             "FSeamlessTravelHandler",
             "FLevelCollection",
-            "FWorldAsyncTraceState"
+            "FWorldAsyncTraceState",
+            "FMarkActorIsBeingDestroyed",
+            "FSplinePositionLinearApproximation",
+            "FStaticMeshComponentLODInfo",
+            "FGaussianSumBloomSettings",
+        };
+
+        public static string[] ClassImplementedList =
+        {
+            //"UObjectBaseUtility",
         };
 
         public static Dictionary<string, string[]> MethodBlackList = new Dictionary<string, string[]>
         {
-            //{
-            //    "Class", new[]
-            //    {
-            //        "Method1",
-            //        "Method2"
-            //    }
-            //}
+            { "UObjectBase", new[] { "Register" }},
+            { "UObject", new[] { "PreSaveRoot" }},
+
+            { "UObjectBaseUtility", new[] { "CreateClusterFromObject" }},
+            { "UModelComponent", new[] { "CommitSurfaces" }},
+            { "ULightmassPortalComponent", new[] { "UpdatePreviewShape" }},
+            { "UWindDirectionalSourceComponent", new[] { "SetStrength" }},
+            { "USceneCaptureComponent", new[] { "GetSettingForShowFlag" }},
         };
 
         public static string FilterSourceCode(string code)
@@ -66,20 +76,19 @@ namespace Generator
         {
             return cl.IsImplemented &&
                    !cl.IsTemplate && // TODO: поддержка шаблоннх классов
-                   cl.BaseClass?.IsImplemented != false &&
+                   (cl.BaseClass == null || ClassFilter(cl.BaseClass) || ClassImplementedList.Contains(cl.BaseClass.Name)) &&
                    cl.NamespaceBaseClass == null && // TODO: поддержка вложенных классов
-                   cl.Methods.Count + cl.Property.Count != 0 &&
                    !ClassBlackList.Contains(cl.Name);
         }
 
         public static bool MethodFilter(Method m)
         {
             return !m.IsTemplate &&
-                    m.InputTypes.All(v => (v.IsPointer && v.IsReference) != true) &&
+                    m.InputTypes.All(v => (v.IsPointer && v.IsReference) != true && v.Type != "void") &&
                     m.Dependent.All(ClassFilter) &&
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
-                    m.Operator?.Contains("=") != true && // TODO: поддержка операторов с присвоением
-                    (m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
+                    m.Operator == null && // TODO: поддержка операторов
+                                          //(m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
                     !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
                     !m.IsOverride &&
                     !m.IsFriend &&

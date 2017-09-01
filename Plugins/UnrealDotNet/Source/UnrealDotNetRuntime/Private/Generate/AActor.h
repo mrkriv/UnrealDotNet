@@ -147,6 +147,31 @@ extern "C"
 		((AActor*)Self)->CopyRemoteRoleFrom(_p0);
 	}
 
+	DOTNET_EXPORT void E_AActor_SetNetDriverName(INT_PTR Self, char* NewNetDriverName)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(NewNetDriverName));
+		((AActor*)Self)->SetNetDriverName(_p0);
+	}
+
+	DOTNET_EXPORT char* E_AActor_GetNetDriverName(INT_PTR Self, int& ResultStringLen)
+	{
+		auto _result = ((AActor*)Self)->GetNetDriverName().ToString();
+		ResultStringLen = _result.Len();
+		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT void E_AActor_OnSubobjectCreatedFromReplication(INT_PTR Self, UObject* NewSubobject)
+	{
+		auto _p0 = NewSubobject;
+		((AActor*)Self)->OnSubobjectCreatedFromReplication(_p0);
+	}
+
+	DOTNET_EXPORT float E_AActor_GetInputAxisValue(INT_PTR Self, char* InputAxisName)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(InputAxisName));
+		return ((AActor*)Self)->GetInputAxisValue(_p0);
+	}
+
 	DOTNET_EXPORT INT_PTR E_AActor_GetTransform(INT_PTR Self)
 	{
 		return (INT_PTR) new FTransform(((AActor*)Self)->GetTransform());
@@ -170,6 +195,11 @@ extern "C"
 		((AActor*)Self)->GetActorBounds(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT USceneComponent* E_AActor_K2_GetRootComponent(INT_PTR Self)
+	{
+		return ((AActor*)Self)->K2_GetRootComponent();
+	}
+
 	DOTNET_EXPORT bool E_AActor_K2_SetActorRotation(INT_PTR Self, INT_PTR NewRotation, bool bTeleportPhysics)
 	{
 		auto _p0 = *(FRotator*)NewRotation;
@@ -189,10 +219,39 @@ extern "C"
 		return ((AActor*)Self)->GetDistanceTo(_p0);
 	}
 
+	DOTNET_EXPORT UActorComponent* E_AActor_AddComponent(INT_PTR Self, char* TemplateName, bool bManualAttachment, INT_PTR RelativeTransform, UObject* ComponentTemplateContext)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(TemplateName));
+		auto _p1 = bManualAttachment;
+		auto _p2 = *(FTransform*)RelativeTransform;
+		auto _p3 = ComponentTemplateContext;
+		return ((AActor*)Self)->AddComponent(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT void E_AActor_K2_DestroyComponent(INT_PTR Self, UActorComponent* Component)
 	{
 		auto _p0 = Component;
 		((AActor*)Self)->K2_DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT void E_AActor_SnapRootComponentTo(INT_PTR Self, AActor* InParentActor, char* InSocketName)
+	{
+		auto _p0 = InParentActor;
+		auto _p1 = FName(UTF8_TO_TCHAR(InSocketName));
+		((AActor*)Self)->SnapRootComponentTo(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_AActor_DetachSceneComponentsFromParent(INT_PTR Self, USceneComponent* InParentComponent, bool bMaintainWorldPosition)
+	{
+		auto _p0 = InParentComponent;
+		auto _p1 = bMaintainWorldPosition;
+		((AActor*)Self)->DetachSceneComponentsFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT bool E_AActor_ActorHasTag(INT_PTR Self, char* Tag)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(Tag));
+		return ((AActor*)Self)->ActorHasTag(_p0);
 	}
 
 	DOTNET_EXPORT float E_AActor_GetActorTimeDilation(INT_PTR Self)
@@ -216,6 +275,16 @@ extern "C"
 		return ((AActor*)Self)->GetGameTimeSinceCreation();
 	}
 
+	DOTNET_EXPORT void E_AActor_MakeNoise(INT_PTR Self, float Loudness, APawn* NoiseInstigator, INT_PTR NoiseLocation, float MaxRange, char* Tag)
+	{
+		auto _p0 = Loudness;
+		auto _p1 = NoiseInstigator;
+		auto _p2 = *(FVector*)NoiseLocation;
+		auto _p3 = MaxRange;
+		auto _p4 = FName(UTF8_TO_TCHAR(Tag));
+		((AActor*)Self)->MakeNoise(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT void E_AActor_ReceiveTick(INT_PTR Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
@@ -233,6 +302,17 @@ extern "C"
 	{
 		auto _p0 = TestOwner;
 		return ((AActor*)Self)->IsOwnedBy(_p0);
+	}
+
+	DOTNET_EXPORT UPrimitiveComponent* E_AActor_GetRootPrimitiveComponent(INT_PTR Self)
+	{
+		return ((AActor*)Self)->GetRootPrimitiveComponent();
+	}
+
+	DOTNET_EXPORT bool E_AActor_SetRootComponent(INT_PTR Self, USceneComponent* NewRootComponent)
+	{
+		auto _p0 = NewRootComponent;
+		return ((AActor*)Self)->SetRootComponent(_p0);
 	}
 
 	DOTNET_EXPORT INT_PTR E_AActor_GetActorQuat(INT_PTR Self)
@@ -293,6 +373,16 @@ extern "C"
 		((AActor*)Self)->PostSpawnInitialize(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
+	DOTNET_EXPORT UPlayer* E_AActor_GetNetOwningPlayer(INT_PTR Self)
+	{
+		return ((AActor*)Self)->GetNetOwningPlayer();
+	}
+
+	DOTNET_EXPORT UChildActorComponent* E_AActor_GetParentComponent(INT_PTR Self)
+	{
+		return ((AActor*)Self)->GetParentComponent();
+	}
+
 	DOTNET_EXPORT bool E_AActor_IncrementalRegisterComponents(INT_PTR Self, int32 NumComponentsToRegister)
 	{
 		auto _p0 = NumComponentsToRegister;
@@ -315,11 +405,23 @@ extern "C"
 		return ((AActor*)Self)->K2_TeleportTo(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AActor_DebugShowComponentHierarchy(INT_PTR Self, char* Info, bool bShowPosition)
+	DOTNET_EXPORT bool E_AActor_IsInLevel(INT_PTR Self, ULevel* TestLevel)
 	{
-		auto _p0 = UTF8_TO_TCHAR(Info);
-		auto _p1 = bShowPosition;
-		((AActor*)Self)->DebugShowComponentHierarchy(_p0, _p1);
+		auto _p0 = TestLevel;
+		return ((AActor*)Self)->IsInLevel(_p0);
+	}
+
+	DOTNET_EXPORT ULevel* E_AActor_GetLevel(INT_PTR Self)
+	{
+		return ((AActor*)Self)->GetLevel();
+	}
+
+	DOTNET_EXPORT void E_AActor_DebugShowOneComponentHierarchy(INT_PTR Self, USceneComponent* SceneComp, int32 NestLevel, bool bShowPosition)
+	{
+		auto _p0 = SceneComp;
+		auto _p1 = NestLevel;
+		auto _p2 = bShowPosition;
+		((AActor*)Self)->DebugShowOneComponentHierarchy(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT void E_AActor_OnConstruction(INT_PTR Self, INT_PTR Transform)

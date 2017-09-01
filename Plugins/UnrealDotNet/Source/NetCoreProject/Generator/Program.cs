@@ -29,19 +29,12 @@ namespace Generator
             }
 
             Watch.Start();
-
-            var visitor = new MetadataVisitor();
-            foreach (var file in files)
-            {
-                AppendFile(file, visitor);
-            }
-
+            var domain = ParceManager.Parce(files);
             Watch.Stop();
+
             var parceTime = Watch.ElapsedMilliseconds;
 
             Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
-
-            var domain = visitor.GetDomain();
 
             Filter.FiltreDomainForExport(domain);
 
@@ -56,49 +49,6 @@ namespace Generator
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             Console.ReadKey();
-        }
-
-        private static void AppendFile(string file, MetadataVisitor visitor)
-        {
-            var code = Filter.FilterSourceCode(File.ReadAllText(file));
-
-            using (var ms = new MemoryStream(Encoding.ASCII.GetBytes(code)))
-            {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                var watch = new Stopwatch();
-                watch.Start();
-
-                var inputStream = new AntlrInputStream(ms);
-
-                var lexer = new UHeaderLexer(inputStream);
-                var commonTokenStream = new CommonTokenStream(lexer);
-
-                var parser = new UHeaderParser(commonTokenStream);
-                var context = parser.translationUnit();
-
-                var parceTime = watch.ElapsedMilliseconds;
-
-                visitor.Append(context, file);
-
-                watch.Stop();
-
-                var visitTime = watch.ElapsedMilliseconds - parceTime;
-
-                Console.ResetColor();
-                Console.WriteLine($"{file}: Parce {parceTime}ms, Visit {visitTime}ms");
-            }
-        }
-
-        private static void PrintTokens(BufferedTokenStream commonTokenStream)
-        {
-            foreach (var token in commonTokenStream.GetTokens())
-            {
-                Console.Write(token.Type == -1 ? "n/a" : UHeaderLexer.ruleNames[token.Type - 1]);
-
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("\t" + token.Text);
-                Console.ResetColor();
-            }
         }
 
         private static void PrintError(string msg)
