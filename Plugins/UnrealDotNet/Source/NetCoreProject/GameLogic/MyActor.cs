@@ -18,6 +18,8 @@ namespace GameLogic
             //  Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
             ULog("Tadaaam!");
             CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
+
+            ULog(NativeManager.GetMetadata());
         }
 
         public override void Tick(float DeltaTime)

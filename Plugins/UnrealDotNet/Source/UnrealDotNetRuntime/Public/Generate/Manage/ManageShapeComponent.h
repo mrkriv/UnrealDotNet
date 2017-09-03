@@ -13,7 +13,7 @@ class UNREALDOTNETRUNTIME_API UManageShapeComponent : public UShapeComponent
 	
 	public:
 	UPROPERTY(EditDefaultsOnly, Category = "C#")
-	FString ManageClassName;
+	FDotnetTypeName ManageClassName;
 	
 	
 public:

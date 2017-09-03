@@ -13,7 +13,7 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor
 	
 	public:
 	UPROPERTY(EditDefaultsOnly, Category = "C#")
-	FString ManageClassName;
+	FDotnetTypeName ManageClassName;
 	
 	
 public:

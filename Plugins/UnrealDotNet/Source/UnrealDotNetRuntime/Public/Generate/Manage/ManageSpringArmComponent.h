@@ -13,7 +13,7 @@ class UNREALDOTNETRUNTIME_API UManageSpringArmComponent : public USpringArmCompo
 	
 	public:
 	UPROPERTY(EditDefaultsOnly, Category = "C#")
-	FString ManageClassName;
+	FDotnetTypeName ManageClassName;
 	
 protected:
 	

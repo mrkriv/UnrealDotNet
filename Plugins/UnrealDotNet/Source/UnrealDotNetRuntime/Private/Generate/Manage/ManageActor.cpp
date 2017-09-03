@@ -23,9 +23,10 @@ void AManageActor::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
 
 void AManageActor::BeginPlay()
 {
-	if (!ManageClassName.IsEmpty())
+	if (!ManageClassName.FullName.IsEmpty())
 	{
-		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName));
+		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.FullName));
+		
 		if(bIsManageAttach)
 			PrimaryActorTick.bCanEverTick = true;
 	}

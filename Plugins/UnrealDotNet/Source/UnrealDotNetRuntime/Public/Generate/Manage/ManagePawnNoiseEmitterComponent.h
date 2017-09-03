@@ -13,7 +13,7 @@ class UNREALDOTNETRUNTIME_API UManagePawnNoiseEmitterComponent : public UPawnNoi
 	
 	public:
 	UPROPERTY(EditDefaultsOnly, Category = "C#")
-	FString ManageClassName;
+	FDotnetTypeName ManageClassName;
 	
 	
 public:

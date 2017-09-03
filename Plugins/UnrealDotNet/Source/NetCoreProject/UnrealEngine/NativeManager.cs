@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
+using Newtonsoft.Json;
 
 namespace UnrealEngine
 {
@@ -23,7 +24,8 @@ namespace UnrealEngine
         {
             try
             {
-                GameLogicAssembly = Assembly.Load(new AssemblyName("GameLogic, Version=1.0.0.0, Culture=neutral"));
+                GameLogicAssembly =
+                    Assembly.Load(new AssemblyName("GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral"));
             }
             catch (Exception e)
             {
@@ -35,7 +37,9 @@ namespace UnrealEngine
         {
             try
             {
-                GameLogicAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(BinariesPath + @"\HotReload\GameLogic" + guid + ".dll");
+                GameLogicAssembly =
+                    AssemblyLoadContext.Default.LoadFromAssemblyPath(BinariesPath + @"\HotReload\GameLogic" + guid +
+                                                                     ".dll");
                 Wrappers = new Dictionary<IntPtr, object>();
 
                 return GameLogicAssembly?.FullName ?? "";
@@ -100,17 +104,20 @@ namespace UnrealEngine
                     return;
                 }
 
-                var method = obj.GetType().GetMethod(MethodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                var method = obj.GetType().GetMethod(MethodName,
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (method == null)
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call method {MethodName} in {Adress}, method not found in {obj.GetType()}");
+                    UObjectBaseUtility.ULog_Error(
+                        $"Failed call method {MethodName} in {Adress}, method not found in {obj.GetType()}");
                     return;
                 }
 
                 var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
                 if (!IsSuccess)
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
+                    UObjectBaseUtility.ULog_Error(
+                        $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
 
@@ -141,21 +148,49 @@ namespace UnrealEngine
                         {
                             if (spec[i].ParameterType == typeof(IntPtr))
                             {
-                                Params[i] = Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>() ? (IntPtr)br.ReadInt32() : (IntPtr)br.ReadInt64();
+                                Params[i] = Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>()
+                                    ? (IntPtr)br.ReadInt32()
+                                    : (IntPtr)br.ReadInt64();
                             }
                             else
                             {
                                 switch (Type.GetTypeCode(spec[i].ParameterType))
                                 {
-                                    case TypeCode.String: Params[i] = br.ReadString(); break;
-                                    case TypeCode.Boolean: Params[i] = br.ReadBoolean(); break;
-                                    case TypeCode.Single: Params[i] = br.ReadSingle(); break;
-                                    case TypeCode.Byte: Params[i] = br.ReadByte(); break;
-                                    case TypeCode.Char: Params[i] = br.ReadChar(); break;
-                                    case TypeCode.Int16: Params[i] = br.ReadInt16(); break;
-                                    case TypeCode.Int32: Params[i] = br.ReadInt32(); break;
-                                    case TypeCode.Int64: Params[i] = br.ReadInt64(); break;
-                                    case TypeCode.Double: Params[i] = br.ReadDouble(); break;
+                                    case TypeCode.String:
+                                        Params[i] = br.ReadString();
+                                        break;
+
+                                    case TypeCode.Boolean:
+                                        Params[i] = br.ReadBoolean();
+                                        break;
+
+                                    case TypeCode.Single:
+                                        Params[i] = br.ReadSingle();
+                                        break;
+
+                                    case TypeCode.Byte:
+                                        Params[i] = br.ReadByte();
+                                        break;
+
+                                    case TypeCode.Char:
+                                        Params[i] = br.ReadChar();
+                                        break;
+
+                                    case TypeCode.Int16:
+                                        Params[i] = br.ReadInt16();
+                                        break;
+
+                                    case TypeCode.Int32:
+                                        Params[i] = br.ReadInt32();
+                                        break;
+
+                                    case TypeCode.Int64:
+                                        Params[i] = br.ReadInt64();
+                                        break;
+
+                                    case TypeCode.Double:
+                                        Params[i] = br.ReadDouble();
+                                        break;
                                 }
                             }
                         }
@@ -186,7 +221,17 @@ namespace UnrealEngine
 
         public static string GetMetadata()
         {
-            return "";
+            var classes = GameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
+
+            return JsonConvert.SerializeObject(
+                new
+                {
+                    Types = classes.Select(t => new
+                    {
+                        Name = t.FullName,
+                        Base = t.BaseType.Name
+                    })
+                });
         }
     }
 }

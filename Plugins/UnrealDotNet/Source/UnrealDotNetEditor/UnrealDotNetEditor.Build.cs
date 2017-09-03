@@ -4,6 +4,7 @@ public class UnrealDotNetEditor : ModuleRules
 {
     public UnrealDotNetEditor(ReadOnlyTargetRules Target) : base(Target)
     {
+        //bEnforceIWYU = false;
         PrivatePCHHeaderFile = "Private/UnrealDotNetEditorPCH.h";
 
         PublicIncludePaths.AddRange(
@@ -34,19 +35,23 @@ public class UnrealDotNetEditor : ModuleRules
                 "Kismet",
                 "BlueprintGraph",
                 "UMG",
-            }
-        );
-
-        PrivateDependencyModuleNames.AddRange(
-            new string[]
-            {
                 "LevelEditor",
                 "GameProjectGeneration",
                 "MessageLog",
                 "EditorStyle",
                 "MainFrame",
                 "SlateCore",
-                "Slate"
+                "Slate",
+                "PropertyEditor",
+                "UnrealDotNetRuntime",
+                "Json",
+                "JsonUtilities",
+            }
+        );
+
+        PrivateDependencyModuleNames.AddRange(
+            new string[]
+            {
             }
         );
 

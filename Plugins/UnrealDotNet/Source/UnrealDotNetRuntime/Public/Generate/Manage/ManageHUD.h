@@ -13,7 +13,7 @@ class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD
 	
 	public:
 	UPROPERTY(EditDefaultsOnly, Category = "C#")
-	FString ManageClassName;
+	FDotnetTypeName ManageClassName;
 	
 	
 public:

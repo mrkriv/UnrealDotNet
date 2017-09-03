@@ -29,9 +29,9 @@ void UManageActorComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorl
 
 void UManageActorComponent::BeginPlay()
 {
-	if (!ManageClassName.IsEmpty())
+	if (!ManageClassName.FullName.IsEmpty())
 	{
-		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName));
+		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.FullName));
 	}
 
 	Super::BeginPlay();

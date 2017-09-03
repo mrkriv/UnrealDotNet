@@ -113,7 +113,7 @@ namespace Generator
 
                 cw.WriteLine("public:");
                 cw.WriteLine("UPROPERTY(EditDefaultsOnly, Category = \"C#\")");
-                cw.WriteLine("FString ManageClassName;");
+                cw.WriteLine("FDotnetTypeName ManageClassName;");
                 cw.WriteLine();
 
                 var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public);
@@ -189,12 +189,13 @@ namespace Generator
 
                 if (method.Name == "BeginPlay")
                 {
-                    cw.WriteLine("if (!ManageClassName.IsEmpty())");
+                    cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
                     cw.OpenBlock();
-                    cw.WriteLine($"bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName));");
+                    cw.WriteLine($"bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.FullName));");
 
                     if (method.OwnerClass.IsChild("AActor"))
                     {
+                        cw.WriteLine();
                         cw.WriteLine("if(bIsManageAttach)");
                         cw.WriteLine("\tPrimaryActorTick.bCanEverTick = true;");
                     }
