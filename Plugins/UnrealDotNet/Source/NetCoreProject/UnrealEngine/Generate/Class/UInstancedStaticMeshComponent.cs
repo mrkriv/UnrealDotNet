@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A component that efficiently renders multiple instances of the same StaticMesh.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageInstancedStaticMeshComponent
+	/// <para>A component that efficiently renders multiple instances of the same StaticMesh. </para>
 	/// </summary>
-	public partial class UInstancedStaticMeshComponent : UStaticMeshComponent
+	public  partial class UInstancedStaticMeshComponent : UStaticMeshComponent
 	{
 		public UInstancedStaticMeshComponent(IntPtr Adress)
 			: base(Adress)
@@ -26,7 +27,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// This was prebuilt, grass system use it, never destroy it.
+		/// <para>This was prebuilt, grass system use it, never destroy it. </para>
 		/// </summary>
 		public bool bPerInstanceRenderDataWasPrebuilt
 		{
@@ -43,5 +44,7 @@ namespace UnrealEngine
 
 		public static implicit operator UInstancedStaticMeshComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UInstancedStaticMeshComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UInstancedStaticMeshComponent ?? new UInstancedStaticMeshComponent(Adress);
 		}}}

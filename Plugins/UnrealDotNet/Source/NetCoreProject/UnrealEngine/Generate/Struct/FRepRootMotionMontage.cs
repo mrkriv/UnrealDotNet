@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Replicated data when playing a root motion montage.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageRepRootMotionMontage
+	/// <para>Replicated data when playing a root motion montage. </para>
 	/// </summary>
-	public partial class FRepRootMotionMontage
+	public  partial class FRepRootMotionMontage : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FRepRootMotionMontage()
+		public FRepRootMotionMontage() : base(E_CreateStruct_FRepRootMotionMontage(), false)
 		{
-			NativePointer = E_CreateStruct_FRepRootMotionMontage();
-			IsRef = false;
 		}
 
-		internal FRepRootMotionMontage(IntPtr NativePointer, bool IsRef)
+		internal FRepRootMotionMontage(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,22 +24,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRepRootMotionMontage();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_PROP_FRepRootMotionMontage_bIsActive_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FRepRootMotionMontage_bIsActive_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_PROP_FRepRootMotionMontage_Position_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FRepRootMotionMontage_bRelativePosition_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_Position_SET(IntPtr Ptr, float Value);
+		private static extern void E_PROP_FRepRootMotionMontage_bRelativePosition_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FRotator E_PROP_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
+		private static extern bool E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern UPrimitiveComponent E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
@@ -58,14 +49,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_MovementBaseBoneName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FRepRootMotionMontage_bRelativePosition_GET(IntPtr Ptr);
+		private static extern float E_PROP_FRepRootMotionMontage_Position_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_bRelativePosition_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FRepRootMotionMontage_Position_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(IntPtr Ptr);
+		private static extern FRotator E_PROP_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, FRotator Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_FRepRootMotionMontage_Clear(FRepRootMotionMontage Self);
@@ -82,16 +73,16 @@ namespace UnrealEngine
 			set => E_PROP_FRepRootMotionMontage_bIsActive_SET(NativePointer, value);
 		}
 
-		public float Position
+		public bool bRelativePosition
 		{
-			get => E_PROP_FRepRootMotionMontage_Position_GET(NativePointer);
-			set => E_PROP_FRepRootMotionMontage_Position_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_bRelativePosition_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_bRelativePosition_SET(NativePointer, value);
 		}
 
-		public FRotator Rotation
+		public bool bRelativeRotation
 		{
-			get => E_PROP_FRepRootMotionMontage_Rotation_GET(NativePointer);
-			set => E_PROP_FRepRootMotionMontage_Rotation_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(NativePointer, value);
 		}
 
 		public UPrimitiveComponent MovementBase
@@ -106,16 +97,16 @@ namespace UnrealEngine
 			set => E_PROP_FRepRootMotionMontage_MovementBaseBoneName_SET(NativePointer, value);
 		}
 
-		public bool bRelativePosition
+		public float Position
 		{
-			get => E_PROP_FRepRootMotionMontage_bRelativePosition_GET(NativePointer);
-			set => E_PROP_FRepRootMotionMontage_bRelativePosition_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_Position_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Position_SET(NativePointer, value);
 		}
 
-		public bool bRelativeRotation
+		public FRotator Rotation
 		{
-			get => E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(NativePointer);
-			set => E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(NativePointer, value);
+			get => E_PROP_FRepRootMotionMontage_Rotation_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Rotation_SET(NativePointer, value);
 		}
 
 		#endregion
@@ -123,14 +114,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Clear root motion sources and root motion montage
+		/// <para>Clear root motion sources and root motion montage </para>
 		/// </summary>
 		public void Clear()
 			=> E_FRepRootMotionMontage_Clear(this);
 		
 		
 		/// <summary>
-		/// Is Valid - animation root motion only
+		/// <para>Is Valid - animation root motion only </para>
 		/// </summary>
 		public bool HasRootMotion()
 			=> E_FRepRootMotionMontage_HasRootMotion(this);

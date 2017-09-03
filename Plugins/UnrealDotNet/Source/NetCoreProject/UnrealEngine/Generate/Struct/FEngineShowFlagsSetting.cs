@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FEngineShowFlagsSetting
+	public  partial class FEngineShowFlagsSetting : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FEngineShowFlagsSetting()
+		public FEngineShowFlagsSetting() : base(E_CreateStruct_FEngineShowFlagsSetting(), false)
 		{
-			NativePointer = E_CreateStruct_FEngineShowFlagsSetting();
-			IsRef = false;
 		}
 
-		internal FEngineShowFlagsSetting(IntPtr NativePointer, bool IsRef)
+		internal FEngineShowFlagsSetting(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,31 +19,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FEngineShowFlagsSetting();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern bool E_PROP_FEngineShowFlagsSetting_Enabled_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FEngineShowFlagsSetting_Enabled_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FEngineShowFlagsSetting_ShowFlagName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FEngineShowFlagsSetting_ShowFlagName_SET(IntPtr Ptr, string Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FEngineShowFlagsSetting_Enabled_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FEngineShowFlagsSetting_Enabled_SET(IntPtr Ptr, bool Value);
-		
 		#endregion
 		
 		#region Property
-		public string ShowFlagName
-		{
-			get => E_PROP_FEngineShowFlagsSetting_ShowFlagName_GET(NativePointer);
-			set => E_PROP_FEngineShowFlagsSetting_ShowFlagName_SET(NativePointer, value);
-		}
-
 		public bool Enabled
 		{
 			get => E_PROP_FEngineShowFlagsSetting_Enabled_GET(NativePointer);
 			set => E_PROP_FEngineShowFlagsSetting_Enabled_SET(NativePointer, value);
+		}
+
+		public string ShowFlagName
+		{
+			get => E_PROP_FEngineShowFlagsSetting_ShowFlagName_GET(NativePointer);
+			set => E_PROP_FEngineShowFlagsSetting_ShowFlagName_SET(NativePointer, value);
 		}
 
 		#endregion

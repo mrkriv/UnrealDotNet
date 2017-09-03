@@ -13,15 +13,29 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                Directory.GetFiles(OutputDir, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                var OutputPriveteGen = Path.Combine(OutputDir, "Private", "Generate");
+                var OutputPublicGet = Path.Combine(OutputDir, "Public", "Generate");
+
+                var OutputPriveteExport = Path.Combine(OutputPriveteGen, "Export");
+                var OutputPriveteManage = Path.Combine(OutputPriveteGen, "Manage");
+                var OutputPublicManage = Path.Combine(OutputPublicGet, "Manage");
+
+                Directory.GetFiles(OutputPriveteGen, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                Directory.GetFiles(OutputPublicGet, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
 
                 foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
-                    GenerateClass(cl, Path.Combine(OutputDir, cl.Name));
+                    GenerateClass(cl, Path.Combine(OutputPriveteExport, cl.Name));
                 }
 
-                GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(OutputDir, "Structures"));
-                GenerateCPPIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(OutputDir, "Index"));
+                GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(OutputPriveteExport, "Structures"));
+                GenerateCPPIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(OutputPriveteExport, "Index"));
+
+                foreach (var cl in domain.Classes.Where(c => !c.IsStructure && !c.IsFinal))
+                {
+                    GenerateManageClassH(cl, OutputPublicManage);
+                    GenerateManageClassCPP(cl, OutputPriveteManage);
+                }
             }
 
             #region Class
@@ -31,11 +45,15 @@ namespace Generator
                 var cw = new CoreWriter();
 
                 cw.WriteLine("#pragma once");
+                cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
                 cw.WriteLine($"#include \"CoreMinimal.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
-                GenerateProtctedWrap(cw, Class);
+                if (!Class.IsFinal)
+                {
+                    GenerateProtctedWrap(cw, Class);
+                }
 
                 cw.WriteLine();
                 cw.WriteLine("extern \"C\"");
@@ -53,28 +71,160 @@ namespace Generator
 
                 if (Class.Name == "UObject")
                 {
-                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.IsChild("UPrimitiveComponent")))
+                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.UMeta.ContainsKey("BlueprintSpawnableComponent")))
                     {
                         GenereteSubobjectUtilitsMethods(cw, cl);
                     }
                 }
 
                 cw.CloseBlock();
+                cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
                 cw.SaveToFile(OutputPath + ".h");
+            }
+
+            private static void GenerateManageClassH(Class Class, string OutputPath)
+            {
+                var methods = Filter.GetVirtualMethods(Class);
+
+                if (!methods.Any())
+                    return;
+
+                var liter = Class.Name.First();
+                var baseName = Class.Name.Substring(1);
+
+                var cw = new CoreWriter();
+
+                cw.WriteLine($"#pragma once");
+                cw.WriteLine($"PRAGMA_DISABLE_DEPRECATION_WARNINGS");
+                cw.WriteLine();
+                cw.WriteLine($"#include \"CoreShell.h\"");
+                cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
+                cw.WriteLine();
+
+                cw.WriteLine("UCLASS()");
+                cw.WriteLine($"class {CPP_API_UE} {liter}Manage{baseName} : public {Class.Name}");
+                cw.OpenBlock();
+
+                cw.WriteLine("GENERATED_BODY()");
+                cw.WriteLine();
+                cw.WriteLine("bool bIsManageAttach = false;");
+                cw.WriteLine();
+
+                cw.WriteLine("public:");
+                cw.WriteLine("UPROPERTY(EditDefaultsOnly, Category = \"C#\")");
+                cw.WriteLine("FString ManageClassName;");
+                cw.WriteLine();
+
+                var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public);
+                var protectedM = methods.Where(m => m.AccessModifier == AccessModifier.Protected);
+
+                if (publicM.Any())
+                {
+                    cw.WriteLine();
+                    cw.WriteLineNoTab("public:");
+                    cw.WriteLine();
+                    publicM.ForEach(m => GenerateManageMethodHead(cw, m));
+                }
+
+                if (protectedM.Any())
+                {
+                    cw.WriteLineNoTab("protected:");
+                    cw.WriteLine();
+                    protectedM.ForEach(m => GenerateManageMethodHead(cw, m));
+                }
+
+                cw.CloseBlock();
+                cw.Write(";");
+                cw.WriteLine();
+
+                cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
+
+                cw.SaveToFile(Path.Combine(OutputPath, "Manage" + baseName + ".h"));
+            }
+
+            private static void GenerateManageClassCPP(Class Class, string OutputPath)
+            {
+                var methods = Filter.GetVirtualMethods(Class);
+
+                if (!methods.Any())
+                    return;
+
+                var baseName = Class.Name.Substring(1);
+
+                var cw = new CoreWriter();
+
+                cw.WriteLine($"#include \"{CPP_PCH}.h\"");
+                cw.WriteLine($"#include \"Generate/Manage/Manage{baseName}.h\"");
+                cw.WriteLine();
+                cw.WriteLine($"PRAGMA_DISABLE_DEPRECATION_WARNINGS");
+                cw.WriteLine();
+
+                methods.ForEach(m => GenerateManageMethod(cw, m));
+
+                cw.WriteLine($"PRAGMA_ENABLE_DEPRECATION_WARNINGS");
+
+                cw.SaveToFile(Path.Combine(OutputPath, "Manage" + baseName + ".cpp"));
+            }
+
+            private static void GenerateManageMethodHead(CoreWriter cw, Method method)
+            {
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
+
+                cw.WriteLine($"virtual {method.ReturnType.GetTypeCPPOgiginal()} {method.Name}({param}) override;");
+                cw.WriteLine();
+            }
+
+            private static void GenerateManageMethod(CoreWriter cw, Method method)
+            {
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
+                var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
+                var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
+
+                var liter = method.OwnerClass.Name.First();
+                var baseName = method.OwnerClass.Name.Substring(1);
+
+                cw.WriteLine($"{method.ReturnType.GetTypeCPPOgiginal()} {liter}Manage{baseName}::{method.Name}({param})");
+                cw.OpenBlock();
+
+                if (method.Name == "BeginPlay")
+                {
+                    cw.WriteLine("if (!ManageClassName.IsEmpty())");
+                    cw.OpenBlock();
+                    cw.WriteLine($"bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName));");
+
+                    if (method.OwnerClass.IsChild("AActor"))
+                    {
+                        cw.WriteLine("if(bIsManageAttach)");
+                        cw.WriteLine("\tPrimaryActorTick.bCanEverTick = true;");
+                    }
+
+                    cw.CloseBlock();
+                    cw.WriteLine();
+                }
+
+                cw.WriteLine($"Super::{method.Name}({call});");
+
+                if (method.ReturnType.Type != "void")
+                    cw.Write("return ");
+
+                cw.WriteLine($"if(bIsManageAttach) UCoreShell::InvokeInObject(this, \"{method.Name}\"{callInObject});");
+
+                cw.CloseBlock();
+                cw.WriteLine();
             }
 
             private static void GenerateProtctedWrap(CoreWriter cw, Class Class)
             {
                 var methods = Class.Methods.Where(m => m.AccessModifier == AccessModifier.Protected);
 
-                if (!methods.Any())
+                if (!methods.Any() || Class.IsFinal)
                     return;
 
                 cw.WriteLine();
                 cw.WriteLine($"class {ExportProtectedPrefix}{Class.Name} : protected {Class.Name}");
                 cw.OpenBlock();
-                cw.WriteLine("public:");
+                cw.WriteLineNoTab("public:");
 
                 foreach (var mt in methods)
                 {
@@ -99,6 +249,9 @@ namespace Generator
 
             private static void GenerateMethod(CoreWriter cw, Method method)
             {
+                if (method.OwnerClass.IsFinal && method.AccessModifier != AccessModifier.Public)
+                    return;
+
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
 
@@ -307,8 +460,11 @@ namespace Generator
                     cw.WriteLine(
                         $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR) new {clName}((({Class.Name}*)Ptr)->{prop.Name}); }}");
 
-                    cw.WriteLine(
-                        $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
+                    if (!prop.IsReadOnly())
+                    {
+                        cw.WriteLine(
+                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
+                    }
                 }
                 else
                 {
@@ -325,31 +481,38 @@ namespace Generator
                         cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
                         cw.CloseBlock();
 
-                        cw.Write($"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = ");
-                        switch (prop.Type)
+                        if (!prop.IsReadOnly())
                         {
-                            case "FText":
-                                cw.Write($"FText::FromString(UTF8_TO_TCHAR(Value))");
-                                break;
+                            cw.Write(
+                                $"\t{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = ");
+                            switch (prop.Type)
+                            {
+                                case "FText":
+                                    cw.Write("FText::FromString(UTF8_TO_TCHAR(Value))");
+                                    break;
 
-                            case "FName":
-                                cw.Write($"FName(UTF8_TO_TCHAR(Value))");
-                                break;
+                                case "FName":
+                                    cw.Write("FName(UTF8_TO_TCHAR(Value))");
+                                    break;
 
-                            case "FString":
-                                cw.Write($"UTF8_TO_TCHAR(Value)");
-                                break;
+                                case "FString":
+                                    cw.Write("UTF8_TO_TCHAR(Value)");
+                                    break;
+                            }
+
+                            cw.WriteLine("; }");
                         }
-
-                        cw.WriteLine("; }");
                     }
                     else
                     {
                         cw.WriteLine(
                             $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
 
-                        cw.WriteLine(
-                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                        if (!prop.IsReadOnly())
+                        {
+                            cw.WriteLine(
+                                $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
+                        }
                     }
                 }
 
@@ -361,10 +524,8 @@ namespace Generator
             private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
             {
                 var cw = new CoreWriter();
-                cw.WriteLine("#pragma warning(push)");
-                cw.WriteLine("#pragma warning(disable:4996)");
+                cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
-
                 cw.WriteLine("#include \"Structures.h\"");
 
                 foreach (var Class in Classes)
@@ -373,7 +534,8 @@ namespace Generator
                 }
 
                 cw.WriteLine();
-                cw.WriteLine("#pragma warning(pop)");
+                cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
+
                 cw.SaveToFile(OutputPath + ".h");
             }
 

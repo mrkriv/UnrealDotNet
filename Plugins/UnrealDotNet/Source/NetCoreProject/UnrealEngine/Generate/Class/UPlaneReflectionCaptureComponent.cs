@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class UPlaneReflectionCaptureComponent : UReflectionCaptureComponent
+	public  partial class UPlaneReflectionCaptureComponent : UReflectionCaptureComponent
 	{
 		public UPlaneReflectionCaptureComponent(IntPtr Adress)
 			: base(Adress)
@@ -18,5 +18,7 @@ namespace UnrealEngine
 
 		public static implicit operator UPlaneReflectionCaptureComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UPlaneReflectionCaptureComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UPlaneReflectionCaptureComponent ?? new UPlaneReflectionCaptureComponent(Adress);
 		}}}

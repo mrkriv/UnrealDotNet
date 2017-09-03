@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// ShapeComponent is a PrimitiveComponent that is represented by a simple geometrical shape (sphere, capsule, box, etc).
+	/// Класс не может быть наследован в Вашем коде, используйте ManageShapeComponent
+	/// <para>ShapeComponent is a PrimitiveComponent that is represented by a simple geometrical shape (sphere, capsule, box, etc). </para>
 	/// </summary>
-	public partial class UShapeComponent : UPrimitiveComponent
+	public  partial class UShapeComponent : UPrimitiveComponent
 	{
 		public UShapeComponent(IntPtr Adress)
 			: base(Adress)
@@ -29,7 +30,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// If the body setup can be shared (i.e. there have been no alterations compared to the CDO)
+		/// <para>If the body setup can be shared (i.e. there have been no alterations compared to the CDO) </para>
 		/// </summary>
 		protected byte bUseArchetypeBodySetup
 		{
@@ -42,10 +43,10 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Update the body setup parameters based on shape information
+		/// <para>Update the body setup parameters based on shape information </para>
 		/// </summary>
-		public void UpdateBodySetup()
-			=> E_UShapeComponent_UpdateBodySetup(NativePointer);
+		public virtual void UpdateBodySetup()
+			=> E_UShapeComponent_UpdateBodySetup(this);
 		
 		#endregion
 		
@@ -56,5 +57,7 @@ namespace UnrealEngine
 
 		public static implicit operator UShapeComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UShapeComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UShapeComponent ?? new UShapeComponent(Adress);
 		}}}

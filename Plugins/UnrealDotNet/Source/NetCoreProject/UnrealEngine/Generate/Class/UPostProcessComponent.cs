@@ -5,10 +5,11 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// PostProcessComponent. Enables Post process controls for blueprints.
-	/// Will use a parent UShapeComponent to provide volume data if available.
+	/// Класс не может быть наследован в Вашем коде, используйте ManagePostProcessComponent
+	/// <para>PostProcessComponent. Enables Post process controls for blueprints. </para>
+	/// <para>Will use a parent UShapeComponent to provide volume data if available. </para>
 	/// </summary>
-	public partial class UPostProcessComponent : USceneComponent
+	public  partial class UPostProcessComponent : USceneComponent
 	{
 		public UPostProcessComponent(IntPtr Adress)
 			: base(Adress)
@@ -23,5 +24,7 @@ namespace UnrealEngine
 
 		public static implicit operator UPostProcessComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UPostProcessComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UPostProcessComponent ?? new UPostProcessComponent(Adress);
 		}}}

@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// View state needed to create a scene capture renderer
+	/// Класс не может быть наследован в Вашем коде, используйте ManageSceneCaptureViewInfo
+	/// <para>View state needed to create a scene capture renderer </para>
 	/// </summary>
-	public partial class FSceneCaptureViewInfo
+	public  partial class FSceneCaptureViewInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FSceneCaptureViewInfo()
+		public FSceneCaptureViewInfo() : base(E_CreateStruct_FSceneCaptureViewInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FSceneCaptureViewInfo();
-			IsRef = false;
 		}
 
-		internal FSceneCaptureViewInfo(IntPtr NativePointer, bool IsRef)
+		internal FSceneCaptureViewInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FSceneCaptureViewInfo();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(IntPtr Ptr);
@@ -42,7 +33,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// View state needed to create a scene capture renderer
+		/// <para>View state needed to create a scene capture renderer </para>
 		/// </summary>
 		public FVector ViewLocation
 		{

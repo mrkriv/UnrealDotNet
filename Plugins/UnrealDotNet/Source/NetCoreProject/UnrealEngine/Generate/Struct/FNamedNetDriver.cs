@@ -5,33 +5,24 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Active and named net drivers instantiated from an FNetDriverDefinition
-	/// The net driver will remain instantiated on this struct until it is destroyed
+	/// Класс не может быть наследован в Вашем коде, используйте ManageNamedNetDriver
+	/// <para>Active and named net drivers instantiated from an FNetDriverDefinition </para>
+	/// <para>The net driver will remain instantiated on this struct until it is destroyed </para>
 	/// </summary>
-	public partial class FNamedNetDriver
+	public  partial class FNamedNetDriver : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FNamedNetDriver()
+		public FNamedNetDriver() : base(E_CreateStruct_FNamedNetDriver(), false)
 		{
-			NativePointer = E_CreateStruct_FNamedNetDriver();
-			IsRef = false;
 		}
 
-		internal FNamedNetDriver(IntPtr NativePointer, bool IsRef)
+		internal FNamedNetDriver(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FNamedNetDriver();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#endregion
 		

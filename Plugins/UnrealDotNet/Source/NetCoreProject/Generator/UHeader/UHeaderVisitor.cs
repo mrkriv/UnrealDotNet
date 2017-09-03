@@ -350,6 +350,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitIsFriend([NotNull] UHeaderParser.IsFriendContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.isFinal"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsFinal([NotNull] UHeaderParser.IsFinalContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isDestructor"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

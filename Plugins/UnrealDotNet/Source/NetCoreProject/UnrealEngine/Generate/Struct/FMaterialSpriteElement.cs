@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FMaterialSpriteElement
+	public  partial class FMaterialSpriteElement : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FMaterialSpriteElement()
+		public FMaterialSpriteElement() : base(E_CreateStruct_FMaterialSpriteElement(), false)
 		{
-			NativePointer = E_CreateStruct_FMaterialSpriteElement();
-			IsRef = false;
 		}
 
-		internal FMaterialSpriteElement(IntPtr NativePointer, bool IsRef)
+		internal FMaterialSpriteElement(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FMaterialSpriteElement();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FMaterialSpriteElement_BaseSizeX_GET(IntPtr Ptr);
@@ -43,7 +33,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// The base width of the sprite, multiplied with the DistanceToSizeCurve.
+		/// <para>The base width of the sprite, multiplied with the DistanceToSizeCurve. </para>
 		/// </summary>
 		public float BaseSizeX
 		{
@@ -53,7 +43,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// The base height of the sprite, multiplied with the DistanceToSizeCurve.
+		/// <para>The base height of the sprite, multiplied with the DistanceToSizeCurve. </para>
 		/// </summary>
 		public float BaseSizeY
 		{

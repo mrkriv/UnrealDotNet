@@ -21,7 +21,7 @@ namespace UnrealEngine
         private static extern void E_ScreenDebugMessage(string Message, float Time, byte R, byte G, byte B);
 
         [DllImport(NativeManager.UnrealDotNetDLL)]
-        private static extern void E_UFUNCTION(IntPtr Object, string Function, string Arguments);
+        private static extern void E_Call_UFunction(IntPtr Object, string NameWithArguments);
 
         #endregion DllImport
 
@@ -32,7 +32,9 @@ namespace UnrealEngine
             //#endif
         }
 
-        public void CallFunction(string Function, string Arguments) => E_UFUNCTION(NativePointer, Function, Arguments);
+        public void CallFunction(string Function) => E_Call_UFunction(NativePointer, Function);
+
+        public void CallFunction(string Function, params object[] Params) => E_Call_UFunction(NativePointer, Function + " " + string.Join(' ', Params));
 
         public static void ULog(string Message) => E_ULOG_L(Message);
 

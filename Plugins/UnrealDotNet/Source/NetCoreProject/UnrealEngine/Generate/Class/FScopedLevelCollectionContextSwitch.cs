@@ -5,17 +5,16 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A helper RAII class to set the relevant context on a UWorld for a particular FLevelCollection within a scope.
-	/// The constructor will set the PersistentLevel, GameState, NetDriver, and DemoNetDriver on the world and
-	/// the destructor will restore the original values.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageScopedLevelCollectionContextSwitch
+	/// <para>A helper RAII class to set the relevant context on a UWorld for a particular FLevelCollection within a scope. </para>
+	/// <para>The constructor will set the PersistentLevel, GameState, NetDriver, and DemoNetDriver on the world and </para>
+	/// <para>the destructor will restore the original values. </para>
 	/// </summary>
-	public partial class FScopedLevelCollectionContextSwitch
+	public  partial class FScopedLevelCollectionContextSwitch : NativeWrapper
 	{
-		protected readonly IntPtr NativePointer;
-		
 		public FScopedLevelCollectionContextSwitch(IntPtr Adress)
+			: base(Adress)
 		{
-			NativePointer = Adress;
 		}
 
 		
@@ -26,5 +25,7 @@ namespace UnrealEngine
 
 		public static implicit operator FScopedLevelCollectionContextSwitch(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FScopedLevelCollectionContextSwitch(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as FScopedLevelCollectionContextSwitch ?? new FScopedLevelCollectionContextSwitch(Adress);
 		}}}

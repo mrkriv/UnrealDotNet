@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct that contains one entry for each vector interpolation performed by the timeline
+	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineVectorTrack
+	/// <para>Struct that contains one entry for each vector interpolation performed by the timeline </para>
 	/// </summary>
-	public partial class FTimelineVectorTrack
+	public  partial class FTimelineVectorTrack : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FTimelineVectorTrack()
+		public FTimelineVectorTrack() : base(E_CreateStruct_FTimelineVectorTrack(), false)
 		{
-			NativePointer = E_CreateStruct_FTimelineVectorTrack();
-			IsRef = false;
 		}
 
-		internal FTimelineVectorTrack(IntPtr NativePointer, bool IsRef)
+		internal FTimelineVectorTrack(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FTimelineVectorTrack();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FTimelineVectorTrack_TrackName_GET(IntPtr Ptr);

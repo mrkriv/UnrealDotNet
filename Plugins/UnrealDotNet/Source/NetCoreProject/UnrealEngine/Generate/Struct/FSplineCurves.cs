@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Types of coordinate space accepted by the functions.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageSplineCurves
+	/// <para>Types of coordinate space accepted by the functions. </para>
 	/// </summary>
-	public partial class FSplineCurves
+	public  partial class FSplineCurves : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FSplineCurves()
+		public FSplineCurves() : base(E_CreateStruct_FSplineCurves(), false)
 		{
-			NativePointer = E_CreateStruct_FSplineCurves();
-			IsRef = false;
 		}
 
-		internal FSplineCurves(IntPtr NativePointer, bool IsRef)
+		internal FSplineCurves(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,46 +24,43 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplineCurves();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FSplineCurves_UpdateSpline(FSplineCurves Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_FSplineCurves_GetSegmentLength(FSplineCurves Self, int Index, float Param, bool bClosedLoop, IntPtr Scale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_FSplineCurves_GetSplineLength(FSplineCurves Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_FSplineCurves_UpdateSpline(FSplineCurves Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// Update the spline's internal data according to the passed-in params
-		/// @param	bClosedLoop				Whether the spline is to be considered as a closed loop.
-		/// @param	bStationaryEndpoints	Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors.
-		/// @param	ReparamStepsPerSegment	Number of steps per spline segment to place in the reparameterization table
-		/// @param	bLoopPositionOverride	Whether to override the loop position with LoopPosition
-		/// @param	LoopPosition			The loop position to use instead of the last key
-		/// @param	Scale3D					The world scale to override
-		/// </summary>
-		public void UpdateSpline(bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, FVector Scale3D)
-			=> E_FSplineCurves_UpdateSpline(this, bClosedLoop, bStationaryEndpoints, ReparamStepsPerSegment, bLoopPositionOverride, LoopPosition, Scale3D);
-		
-		
-		/// <summary>
-		/// Returns the length of the specified spline segment up to the parametric value given
+		/// <para>Returns the length of the specified spline segment up to the parametric value given </para>
 		/// </summary>
 		public float GetSegmentLength(int Index, float Param, bool bClosedLoop, FVector Scale3D)
 			=> E_FSplineCurves_GetSegmentLength(this, Index, Param, bClosedLoop, Scale3D);
 		
 		
 		/// <summary>
-		/// Returns total length along this spline
+		/// <para>Returns total length along this spline </para>
 		/// </summary>
 		public float GetSplineLength()
 			=> E_FSplineCurves_GetSplineLength(this);
+		
+		
+		/// <summary>
+		/// <para>Update the spline's internal data according to the passed-in params </para>
+		/// <param name="bClosedLoop">Whether the spline is to be considered as a closed loop. </param>
+		/// <param name="bStationaryEndpoints">Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors. </param>
+		/// <param name="ReparamStepsPerSegment">Number of steps per spline segment to place in the reparameterization table </param>
+		/// <param name="bLoopPositionOverride">Whether to override the loop position with LoopPosition </param>
+		/// <param name="LoopPosition">The loop position to use instead of the last key </param>
+		/// <param name="Scale3D">The world scale to override </param>
+		/// </summary>
+		public void UpdateSpline(bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, FVector Scale3D)
+			=> E_FSplineCurves_UpdateSpline(this, bClosedLoop, bStationaryEndpoints, ReparamStepsPerSegment, bLoopPositionOverride, LoopPosition, Scale3D);
 		
 		#endregion
 		

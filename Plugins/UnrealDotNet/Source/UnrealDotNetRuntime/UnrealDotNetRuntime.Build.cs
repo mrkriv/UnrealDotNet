@@ -26,19 +26,37 @@ public class UnrealDotNetRuntime : ModuleRules
             new string[]
             {
                 "Core",
+                "CoreUObject",
+                "Json",
+                "SlateCore",
+                "Slate",
+                "InputCore",
+                "Messaging",
+                "RenderCore",
+                "RHI",
+                "ShaderCore",
+                "UtilityShaders",
+                "AssetRegistry",
+                "EngineMessages",
+                "EngineSettings",
+                "SynthBenchmark",
+                "GameplayTags",
+                "AIModule",
+                "DatabaseSupport",
+                "PacketHandler",
+                "HardwareSurvey",
             }
         );
 
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "Core",
                 "Engine",
-                "CoreUObject",
-                "Engine",
-                "InputCore",
-                "SlateCore",
+                "AppFramework",
                 "UMG",
+                "Projects",
+                "Analytics",
+                "AnalyticsET"
             }
         );
 

@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Converts a stencil mask from the editor's USTRUCT version to the version the renderer uses.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageRendererStencilMaskEvaluation
+	/// <para>Converts a stencil mask from the editor's USTRUCT version to the version the renderer uses. </para>
 	/// </summary>
-	public partial class FRendererStencilMaskEvaluation
+	public  partial class FRendererStencilMaskEvaluation : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FRendererStencilMaskEvaluation()
+		public FRendererStencilMaskEvaluation() : base(E_CreateStruct_FRendererStencilMaskEvaluation(), false)
 		{
-			NativePointer = E_CreateStruct_FRendererStencilMaskEvaluation();
-			IsRef = false;
 		}
 
-		internal FRendererStencilMaskEvaluation(IntPtr NativePointer, bool IsRef)
+		internal FRendererStencilMaskEvaluation(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FRendererStencilMaskEvaluation();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#endregion
 		

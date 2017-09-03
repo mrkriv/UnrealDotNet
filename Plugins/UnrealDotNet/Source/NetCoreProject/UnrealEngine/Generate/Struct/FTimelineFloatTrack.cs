@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct that contains one entry for each vector interpolation performed by the timeline
+	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineFloatTrack
+	/// <para>Struct that contains one entry for each vector interpolation performed by the timeline </para>
 	/// </summary>
-	public partial class FTimelineFloatTrack
+	public  partial class FTimelineFloatTrack : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FTimelineFloatTrack()
+		public FTimelineFloatTrack() : base(E_CreateStruct_FTimelineFloatTrack(), false)
 		{
-			NativePointer = E_CreateStruct_FTimelineFloatTrack();
-			IsRef = false;
 		}
 
-		internal FTimelineFloatTrack(IntPtr NativePointer, bool IsRef)
+		internal FTimelineFloatTrack(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,31 +24,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FTimelineFloatTrack();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern string E_PROP_FTimelineFloatTrack_FloatPropertyName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FTimelineFloatTrack_FloatPropertyName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FTimelineFloatTrack_TrackName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FTimelineFloatTrack_TrackName_SET(IntPtr Ptr, string Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FTimelineFloatTrack_FloatPropertyName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FTimelineFloatTrack_FloatPropertyName_SET(IntPtr Ptr, string Value);
-		
 		#endregion
 		
 		#region Property
-		public string TrackName
-		{
-			get => E_PROP_FTimelineFloatTrack_TrackName_GET(NativePointer);
-			set => E_PROP_FTimelineFloatTrack_TrackName_SET(NativePointer, value);
-		}
-
 		public string FloatPropertyName
 		{
 			get => E_PROP_FTimelineFloatTrack_FloatPropertyName_GET(NativePointer);
 			set => E_PROP_FTimelineFloatTrack_FloatPropertyName_SET(NativePointer, value);
+		}
+
+		public string TrackName
+		{
+			get => E_PROP_FTimelineFloatTrack_TrackName_GET(NativePointer);
+			set => E_PROP_FTimelineFloatTrack_TrackName_SET(NativePointer, value);
 		}
 
 		#endregion

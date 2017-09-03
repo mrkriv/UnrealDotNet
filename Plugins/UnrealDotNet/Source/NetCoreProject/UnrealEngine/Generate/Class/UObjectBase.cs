@@ -3,22 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class UObjectBase
+	public  partial class UObjectBase : NativeWrapper
 	{
-		protected readonly IntPtr NativePointer;
-		
 		public UObjectBase(IntPtr Adress)
+			: base(Adress)
 		{
-			NativePointer = Adress;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObjectBase_LowLevelRename(IntPtr Self, string NewName, IntPtr NewOuter);
+		private static extern IntPtr E_UObjectBase_GetFName(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObjectBase_RegisterDependencies(IntPtr Self);
+		private static extern IntPtr E_UObjectBase_GetOuter(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UObjectBase_IsValidLowLevel(IntPtr Self);
@@ -27,54 +25,54 @@ namespace UnrealEngine
 		private static extern bool E_UObjectBase_IsValidLowLevelFast(IntPtr Self, bool bRecursive);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObjectBase_GetOuter(IntPtr Self);
+		private static extern void E_UObjectBase_LowLevelRename(IntPtr Self, string NewName, IntPtr NewOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObjectBase_GetFName(IntPtr Self, out int ResultStringLen);
+		private static extern void E_UObjectBase_RegisterDependencies(IntPtr Self);
 		
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// Just change the FName and Outer and rehash into name hash tables. For use by higher level rename functions.
-		/// @param NewName	new name for this object
-		/// @param NewOuter	new outer for this object, if NULL, outer will be unchanged
-		/// </summary>
-		protected void LowLevelRename(string NewName, UObject NewOuter = null)
-			=> E_UObjectBase_LowLevelRename(NativePointer, NewName, NewOuter);
-		
-		
-		/// <summary>
-		/// Force any base classes to be registered first
-		/// </summary>
-		protected void RegisterDependencies()
-			=> E_UObjectBase_RegisterDependencies(NativePointer);
-		
-		
-		/// <summary>
-		/// Checks to see if the object appears to be valid
-		/// @return true if this appears to be a valid object
-		/// </summary>
-		public bool IsValidLowLevel()
-			=> E_UObjectBase_IsValidLowLevel(NativePointer);
-		
-		
-		/// <summary>
-		/// Faster version of IsValidLowLevel.
-		/// Checks to see if the object appears to be valid by checking pointers and their alignment.
-		/// Name and InternalIndex checks are less accurate than IsValidLowLevel.
-		/// @param bRecursive true if the Class pointer should be checked with IsValidLowLevelFast
-		/// @return true if this appears to be a valid object
-		/// </summary>
-		public bool IsValidLowLevelFast(bool bRecursive = true)
-			=> E_UObjectBase_IsValidLowLevelFast(NativePointer, bRecursive);
+		public string GetFName()
+			=> Marshal.PtrToStringUTF8(E_UObjectBase_GetFName(this, out int ResultStringLen), ResultStringLen);
 		
 		public UObject GetOuter()
-			=> E_UObjectBase_GetOuter(NativePointer);
+			=> E_UObjectBase_GetOuter(this);
 		
-		public string GetFName()
-			=> Marshal.PtrToStringUTF8(E_UObjectBase_GetFName(NativePointer, out int ResultStringLen), ResultStringLen);
+		
+		/// <summary>
+		/// <para>Checks to see if the object appears to be valid </para>
+		/// <return>true if this appears to be a valid object </return>
+		/// </summary>
+		public bool IsValidLowLevel()
+			=> E_UObjectBase_IsValidLowLevel(this);
+		
+		
+		/// <summary>
+		/// <para>Faster version of IsValidLowLevel. </para>
+		/// <para>Checks to see if the object appears to be valid by checking pointers and their alignment. </para>
+		/// <para>Name and InternalIndex checks are less accurate than IsValidLowLevel. </para>
+		/// <param name="bRecursive">true if the Class pointer should be checked with IsValidLowLevelFast </param>
+		/// <return>true if this appears to be a valid object </return>
+		/// </summary>
+		public bool IsValidLowLevelFast(bool bRecursive = true)
+			=> E_UObjectBase_IsValidLowLevelFast(this, bRecursive);
+		
+		
+		/// <summary>
+		/// <para>Just change the FName and Outer and rehash into name hash tables. For use by higher level rename functions. </para>
+		/// <param name="NewName">new name for this object </param>
+		/// <param name="NewOuter">new outer for this object, if NULL, outer will be unchanged </param>
+		/// </summary>
+		protected void LowLevelRename(string NewName, UObject NewOuter = null)
+			=> E_UObjectBase_LowLevelRename(this, NewName, NewOuter);
+		
+		
+		/// <summary>
+		/// <para>Force any base classes to be registered first </para>
+		/// </summary>
+		protected virtual void RegisterDependencies()
+			=> E_UObjectBase_RegisterDependencies(this);
 		
 		#endregion
 		
@@ -85,5 +83,7 @@ namespace UnrealEngine
 
 		public static implicit operator UObjectBase(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UObjectBase(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UObjectBase ?? new UObjectBase(Adress);
 		}}}

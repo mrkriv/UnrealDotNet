@@ -5,15 +5,14 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// World delegates
+	/// Класс не может быть наследован в Вашем коде, используйте ManageWorldDelegates
+	/// <para>World delegates </para>
 	/// </summary>
-	public partial class FWorldDelegates
+	public  partial class FWorldDelegates : NativeWrapper
 	{
-		protected readonly IntPtr NativePointer;
-		
 		public FWorldDelegates(IntPtr Adress)
+			: base(Adress)
 		{
-			NativePointer = Adress;
 		}
 
 		
@@ -24,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator FWorldDelegates(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FWorldDelegates(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as FWorldDelegates ?? new FWorldDelegates(Adress);
 		}}}

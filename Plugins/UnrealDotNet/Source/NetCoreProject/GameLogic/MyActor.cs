@@ -3,25 +3,24 @@ using UnrealEngine;
 
 namespace GameLogic
 {
-    public class MyActor : AActor
+    public class MyActor : ManageActor
     {
-        private UBoxComponent Box;
+        // private UBoxComponent Box;
         private float Time;
 
         public MyActor(IntPtr Adress) : base(Adress)
         {
         }
 
-        public override void OnBeginPlay()
+        protected override void BeginPlay()
         {
-            Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
-
-            CallFunction("TestBlueprintMethod", "Abadracedapa 2.5");
-
-            base.OnBeginPlay();
+            // PrimaryActorTick.bCanEverTick = 1;
+            //  Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+            ULog("Tadaaam!");
+            CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
         }
 
-        public override void OnTick(float DeltaTime)
+        public override void Tick(float DeltaTime)
         {
             Time += DeltaTime;
 
@@ -39,22 +38,18 @@ namespace GameLogic
                 Z = 2.0f
             };
 
-            if (Box != null)
-            {
-                ULog(Box.GetFName() + " " + scale);
-                Box.SetRelativeScale3D(scale);
-            }
-            else
-            {
-                ULog_Error("Box is null");
-            }
+            //if (Box != null)
+            //{
+            //    ULog(Box.GetFName() + " " + scale);
+            //    Box.SetRelativeScale3D(scale);
+            //}
+            //else
+            //{
+            //    ULog_Error("Box is null");
+            //}
 
+            ULog("asd!");
             SetActorRotation(rot, false);
-        }
-
-        public override void OnEndPlay()
-        {
-            base.OnEndPlay();
         }
     }
 }

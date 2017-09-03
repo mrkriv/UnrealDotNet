@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FPreCulledStaticMeshSection
+	public  partial class FPreCulledStaticMeshSection : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FPreCulledStaticMeshSection()
+		public FPreCulledStaticMeshSection() : base(E_CreateStruct_FPreCulledStaticMeshSection(), false)
 		{
-			NativePointer = E_CreateStruct_FPreCulledStaticMeshSection();
-			IsRef = false;
 		}
 
-		internal FPreCulledStaticMeshSection(IntPtr NativePointer, bool IsRef)
+		internal FPreCulledStaticMeshSection(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FPreCulledStaticMeshSection();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#endregion
 		

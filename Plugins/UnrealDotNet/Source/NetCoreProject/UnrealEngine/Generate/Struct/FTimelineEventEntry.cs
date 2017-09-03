@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct that contains one entry for an 'event' during the timeline
+	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineEventEntry
+	/// <para>Struct that contains one entry for an 'event' during the timeline </para>
 	/// </summary>
-	public partial class FTimelineEventEntry
+	public  partial class FTimelineEventEntry : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FTimelineEventEntry()
+		public FTimelineEventEntry() : base(E_CreateStruct_FTimelineEventEntry(), false)
 		{
-			NativePointer = E_CreateStruct_FTimelineEventEntry();
-			IsRef = false;
 		}
 
-		internal FTimelineEventEntry(IntPtr NativePointer, bool IsRef)
+		internal FTimelineEventEntry(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FTimelineEventEntry();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FTimelineEventEntry_Time_GET(IntPtr Ptr);

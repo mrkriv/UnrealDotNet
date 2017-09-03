@@ -5,11 +5,12 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// This component tries to maintain its children at a fixed distance from the parent,
-	/// but will retract the children if there is a collision, and spring back when there is no collision.
-	/// Example: Use as a 'camera boom' to keep the follow camera for a player from colliding into the world.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageSpringArmComponent
+	/// <para>This component tries to maintain its children at a fixed distance from the parent, </para>
+	/// <para>but will retract the children if there is a collision, and spring back when there is no collision. </para>
+	/// <para>Example: Use as a 'camera boom' to keep the follow camera for a player from colliding into the world. </para>
 	/// </summary>
-	public partial class USpringArmComponent : USceneComponent
+	public  partial class USpringArmComponent : USceneComponent
 	{
 		public USpringArmComponent(IntPtr Adress)
 			: base(Adress)
@@ -18,6 +19,11 @@ namespace UnrealEngine
 
 		
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(IntPtr Ptr, bool Value);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_USpringArmComponent_RelativeSocketLocation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -29,22 +35,25 @@ namespace UnrealEngine
 		private static extern void E_PROP_USpringArmComponent_RelativeSocketRotation_SET(IntPtr Ptr, FQuat Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_USpringArmComponent_UpdateDesiredArmLocation(IntPtr Self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr Self, IntPtr DesiredArmLocation, IntPtr TraceHitLocation, bool bHitSomething, float DeltaTime);
 		
 		#endregion
 		
 		#region Property
 		
 		/// <summary>
-		/// Cached component-space socket location
+		/// <para>DEPRECATED variable: use "bUsePawnControlRotation" instead. Existing code using this value may not behave correctly. </para>
+		/// <para>This is not a UPROPERTY, with good reason: we don't want to serialize in old values. </para>
+		/// </summary>
+		public bool bUseControllerViewRotation
+		{
+			get => E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(NativePointer);
+			set => E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Cached component-space socket location </para>
 		/// </summary>
 		protected FVector RelativeSocketLocation
 		{
@@ -54,7 +63,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// Cached component-space socket rotation
+		/// <para>Cached component-space socket rotation </para>
 		/// </summary>
 		protected FQuat RelativeSocketRotation
 		{
@@ -62,34 +71,15 @@ namespace UnrealEngine
 			set => E_PROP_USpringArmComponent_RelativeSocketRotation_SET(NativePointer, value);
 		}
 
-		
-		/// <summary>
-		/// DEPRECATED variable: use "bUsePawnControlRotation" instead. Existing code using this value may not behave correctly.
-		/// This is not a UPROPERTY, with good reason: we don't want to serialize in old values.
-		/// </summary>
-		public bool bUseControllerViewRotation
-		{
-			get => E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(NativePointer);
-			set => E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done
+		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
 		/// </summary>
-		protected void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime)
-			=> E_USpringArmComponent_UpdateDesiredArmLocation(NativePointer, bDoTrace, bDoLocationLag, bDoRotationLag, DeltaTime);
-		
-		
-		/// <summary>
-		/// This function allows subclasses to blend the trace hit location with the desired arm location;
-		/// by default it returns bHitSomething ? TraceHitLocation : DesiredArmLocation
-		/// </summary>
-		protected FVector BlendLocations(FVector DesiredArmLocation, FVector TraceHitLocation, bool bHitSomething, float DeltaTime)
-			=> E_USpringArmComponent_BlendLocations(NativePointer, DesiredArmLocation, TraceHitLocation, bHitSomething, DeltaTime);
+		protected virtual void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime)
+			=> E_USpringArmComponent_UpdateDesiredArmLocation(this, bDoTrace, bDoLocationLag, bDoRotationLag, DeltaTime);
 		
 		#endregion
 		
@@ -100,5 +90,7 @@ namespace UnrealEngine
 
 		public static implicit operator USpringArmComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new USpringArmComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as USpringArmComponent ?? new USpringArmComponent(Adress);
 		}}}

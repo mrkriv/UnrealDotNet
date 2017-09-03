@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FBatchedMesh
+	public  partial class FBatchedMesh : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FBatchedMesh()
+		public FBatchedMesh() : base(E_CreateStruct_FBatchedMesh(), false)
 		{
-			NativePointer = E_CreateStruct_FBatchedMesh();
-			IsRef = false;
 		}
 
-		internal FBatchedMesh(IntPtr NativePointer, bool IsRef)
+		internal FBatchedMesh(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FBatchedMesh();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern byte E_PROP_FBatchedMesh_DepthPriority_GET(IntPtr Ptr);

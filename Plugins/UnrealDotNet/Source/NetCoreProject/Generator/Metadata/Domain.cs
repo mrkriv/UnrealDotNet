@@ -6,11 +6,11 @@ namespace Generator.Metadata
 {
     public class Domain
     {
-        public List<Class> Classes = new List<Class>();
+        public List<Class> Classes;
 
         public Domain(IEnumerable<Class> Classes)
         {
-            this.Classes = Classes.ToList();
+            this.Classes = Filter.FilterClasses(Classes);
             this.Classes.ForEach(cl => cl.Domain = this);
         }
 

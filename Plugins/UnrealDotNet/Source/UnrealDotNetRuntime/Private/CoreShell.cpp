@@ -1,7 +1,7 @@
 #include "UnrealDotNetRuntime.h"
 #include "CoreShell.h"
 #include "Misc/Paths.h"
-#include "ExportForDotnet.inl"
+#include "DotnetExport.inl"
 
 #if WITH_EDITOR
 #include "IDirectoryWatcher.h"
@@ -80,7 +80,7 @@ void UCoreShell::UpdateGameLib()
 {
 	if (Host == NULL)
 		return;
-	
+
 	FString NewAssemblyGuid;
 	if (FFileHelper::LoadFileToString(NewAssemblyGuid, *(Domain_Path / HotreloadHook_Filename)))
 	{
@@ -215,7 +215,7 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppP
 		*platformResourceRoots,
 		*appDomainCompatSwitch
 	};
-	
+
 	HRESULT hr = Host->CreateAppDomainWithManager
 	(
 		std::wstring(*PluginName).c_str(),

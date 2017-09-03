@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FLensBloomSettings
+	public  partial class FLensBloomSettings : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FLensBloomSettings()
+		public FLensBloomSettings() : base(E_CreateStruct_FLensBloomSettings(), false)
 		{
-			NativePointer = E_CreateStruct_FLensBloomSettings();
-			IsRef = false;
 		}
 
-		internal FLensBloomSettings(IntPtr NativePointer, bool IsRef)
+		internal FLensBloomSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FLensBloomSettings();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FConvolutionBloomSettings E_PROP_FLensBloomSettings_Convolution_GET(IntPtr Ptr);
@@ -38,7 +28,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// Bloom convolution method specific settings.
+		/// <para>Bloom convolution method specific settings. </para>
 		/// </summary>
 		public FConvolutionBloomSettings Convolution
 		{

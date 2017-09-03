@@ -5,24 +5,18 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Helper structure encapsulating functionality used to defer marking actors and their components as pending
-	/// kill till right before garbage collection by registering a callback.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelStreamingGCHelper
+	/// <para>Helper structure encapsulating functionality used to defer marking actors and their components as pending </para>
+	/// <para>kill till right before garbage collection by registering a callback. </para>
 	/// </summary>
-	public partial class FLevelStreamingGCHelper
+	public  partial class FLevelStreamingGCHelper : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FLevelStreamingGCHelper()
+		public FLevelStreamingGCHelper() : base(E_CreateStruct_FLevelStreamingGCHelper(), false)
 		{
-			NativePointer = E_CreateStruct_FLevelStreamingGCHelper();
-			IsRef = false;
 		}
 
-		internal FLevelStreamingGCHelper(IntPtr NativePointer, bool IsRef)
+		internal FLevelStreamingGCHelper(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -31,30 +25,48 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLevelStreamingGCHelper();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(FLevelStreamingGCHelper Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(FLevelStreamingGCHelper Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(FLevelStreamingGCHelper Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(FLevelStreamingGCHelper Self);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// Register with the garbage collector to receive callbacks pre and post garbage collection
+		/// <para>Register with the garbage collector to receive callbacks pre and post garbage collection </para>
 		/// </summary>
 		public void AddGarbageCollectorCallback()
 			=> E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(this);
 		
 		
 		/// <summary>
-		/// @return	The number of levels pending a purge by the garbage collector
+		/// <return>The number of levels pending a purge by the garbage collector </return>
 		/// </summary>
 		public int GetNumLevelsPendingPurge()
 			=> E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(this);
+		
+		
+		/// <summary>
+		/// <para>Prepares levels that are marked for unload for the GC call by marking their actors and components as </para>
+		/// <para>pending kill. </para>
+		/// </summary>
+		public void PrepareStreamedOutLevelsForGC()
+			=> E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(this);
+		
+		
+		/// <summary>
+		/// <para>Verify that the level packages are no longer around. </para>
+		/// </summary>
+		public void VerifyLevelsGotRemovedByGC()
+			=> E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(this);
 		
 		#endregion
 		

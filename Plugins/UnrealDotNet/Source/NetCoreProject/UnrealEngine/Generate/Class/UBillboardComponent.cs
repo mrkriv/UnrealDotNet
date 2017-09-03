@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A 2d texture that will be rendered always facing the camera.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageBillboardComponent
+	/// <para>A 2d texture that will be rendered always facing the camera. </para>
 	/// </summary>
-	public partial class UBillboardComponent : UPrimitiveComponent
+	public  partial class UBillboardComponent : UPrimitiveComponent
 	{
 		public UBillboardComponent(IntPtr Adress)
 			: base(Adress)
@@ -22,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator UBillboardComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UBillboardComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UBillboardComponent ?? new UBillboardComponent(Adress);
 		}}}

@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Overlap info consisting of the primitive and the body that is overlapping
+	/// Класс не может быть наследован в Вашем коде, используйте ManageOverlapInfo
+	/// <para>Overlap info consisting of the primitive and the body that is overlapping </para>
 	/// </summary>
-	public partial class FOverlapInfo
+	public  partial class FOverlapInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FOverlapInfo()
+		public FOverlapInfo() : base(E_CreateStruct_FOverlapInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FOverlapInfo();
-			IsRef = false;
 		}
 
-		internal FOverlapInfo(IntPtr NativePointer, bool IsRef)
+		internal FOverlapInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FOverlapInfo();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_PROP_FOverlapInfo_bFromSweep_GET(IntPtr Ptr);

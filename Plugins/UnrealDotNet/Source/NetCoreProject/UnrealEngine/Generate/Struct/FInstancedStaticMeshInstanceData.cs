@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FInstancedStaticMeshInstanceData
+	public  partial class FInstancedStaticMeshInstanceData : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FInstancedStaticMeshInstanceData()
+		public FInstancedStaticMeshInstanceData() : base(E_CreateStruct_FInstancedStaticMeshInstanceData(), false)
 		{
-			NativePointer = E_CreateStruct_FInstancedStaticMeshInstanceData();
-			IsRef = false;
 		}
 
-		internal FInstancedStaticMeshInstanceData(IntPtr NativePointer, bool IsRef)
+		internal FInstancedStaticMeshInstanceData(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FInstancedStaticMeshInstanceData();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector2D E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_GET(IntPtr Ptr);

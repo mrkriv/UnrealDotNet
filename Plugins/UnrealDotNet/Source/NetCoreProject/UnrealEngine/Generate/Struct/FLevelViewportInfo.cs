@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Saved editor viewport state information
+	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelViewportInfo
+	/// <para>Saved editor viewport state information </para>
 	/// </summary>
-	public partial class FLevelViewportInfo
+	public  partial class FLevelViewportInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FLevelViewportInfo()
+		public FLevelViewportInfo() : base(E_CreateStruct_FLevelViewportInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FLevelViewportInfo();
-			IsRef = false;
 		}
 
-		internal FLevelViewportInfo(IntPtr NativePointer, bool IsRef)
+		internal FLevelViewportInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,7 +24,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLevelViewportInfo();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_FLevelViewportInfo_CamPosition_GET(IntPtr Ptr);
@@ -43,11 +39,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FLevelViewportInfo_CamRotation_SET(IntPtr Ptr, FRotator Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_PROP_FLevelViewportInfo_CamUpdated_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FLevelViewportInfo_CamUpdated_SET(IntPtr Ptr, bool Value);
@@ -55,6 +46,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public float CamOrthoZoom
+		{
+			get => E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(NativePointer);
+			set => E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(NativePointer, value);
+		}
+
 		public FVector CamPosition
 		{
 			get => E_PROP_FLevelViewportInfo_CamPosition_GET(NativePointer);
@@ -65,12 +62,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FLevelViewportInfo_CamRotation_GET(NativePointer);
 			set => E_PROP_FLevelViewportInfo_CamRotation_SET(NativePointer, value);
-		}
-
-		public float CamOrthoZoom
-		{
-			get => E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(NativePointer);
-			set => E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(NativePointer, value);
 		}
 
 		public bool CamUpdated

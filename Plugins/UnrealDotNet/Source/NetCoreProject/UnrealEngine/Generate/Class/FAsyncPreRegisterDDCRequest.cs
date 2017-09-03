@@ -3,13 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FAsyncPreRegisterDDCRequest
+	public  partial class FAsyncPreRegisterDDCRequest : NativeWrapper
 	{
-		protected readonly IntPtr NativePointer;
-		
 		public FAsyncPreRegisterDDCRequest(IntPtr Adress)
+			: base(Adress)
 		{
-			NativePointer = Adress;
 		}
 
 		
@@ -20,5 +18,7 @@ namespace UnrealEngine
 
 		public static implicit operator FAsyncPreRegisterDDCRequest(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAsyncPreRegisterDDCRequest(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as FAsyncPreRegisterDDCRequest ?? new FAsyncPreRegisterDDCRequest(Adress);
 		}}}

@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct used to indicate one active morph target that should be applied to this USkeletalMesh when rendered.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageActiveMorphTarget
+	/// <para>Struct used to indicate one active morph target that should be applied to this USkeletalMesh when rendered. </para>
 	/// </summary>
-	public partial class FActiveMorphTarget
+	public  partial class FActiveMorphTarget : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FActiveMorphTarget()
+		public FActiveMorphTarget() : base(E_CreateStruct_FActiveMorphTarget(), false)
 		{
-			NativePointer = E_CreateStruct_FActiveMorphTarget();
-			IsRef = false;
 		}
 
-		internal FActiveMorphTarget(IntPtr NativePointer, bool IsRef)
+		internal FActiveMorphTarget(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FActiveMorphTarget();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FActiveMorphTarget_WeightIndex_GET(IntPtr Ptr);
@@ -42,7 +33,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// Index into the array of weights for the Morph target, between 0.0 and 1.0.
+		/// <para>Index into the array of weights for the Morph target, between 0.0 and 1.0. </para>
 		/// </summary>
 		public int WeightIndex
 		{

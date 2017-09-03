@@ -3,13 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FReflectionCaptureFullHDR
+	public  partial class FReflectionCaptureFullHDR : NativeWrapper
 	{
-		protected readonly IntPtr NativePointer;
-		
 		public FReflectionCaptureFullHDR(IntPtr Adress)
+			: base(Adress)
 		{
-			NativePointer = Adress;
 		}
 
 		
@@ -35,7 +33,7 @@ namespace UnrealEngine
 		
 		#region ExternMethods
 		public bool HasValidData()
-			=> E_FReflectionCaptureFullHDR_HasValidData(NativePointer);
+			=> E_FReflectionCaptureFullHDR_HasValidData(this);
 		
 		#endregion
 		
@@ -46,5 +44,7 @@ namespace UnrealEngine
 
 		public static implicit operator FReflectionCaptureFullHDR(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FReflectionCaptureFullHDR(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as FReflectionCaptureFullHDR ?? new FReflectionCaptureFullHDR(Adress);
 		}}}

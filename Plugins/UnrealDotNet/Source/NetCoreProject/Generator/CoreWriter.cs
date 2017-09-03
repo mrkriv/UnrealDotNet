@@ -43,6 +43,19 @@ namespace Generator
             }
         }
 
+        public void WriteLineNoTab(string Line)
+        {
+            sb.Remove(sb.Length - 1, 1);
+            sb.AppendLine(Line);
+            WriteTab();
+        }
+
+        public void WriteNoTab(string Line)
+        {
+            sb.Remove(sb.Length - 1, 1);
+            sb.Append(Line);
+        }
+
         public void WriteLine(string Line)
         {
             sb.AppendLine(Line);

@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Mapping info for destructible chunk user data.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageDestructibleChunkInfo
+	/// <para>Mapping info for destructible chunk user data. </para>
 	/// </summary>
-	public partial class FDestructibleChunkInfo
+	public  partial class FDestructibleChunkInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FDestructibleChunkInfo()
+		public FDestructibleChunkInfo() : base(E_CreateStruct_FDestructibleChunkInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FDestructibleChunkInfo();
-			IsRef = false;
 		}
 
-		internal FDestructibleChunkInfo(IntPtr NativePointer, bool IsRef)
+		internal FDestructibleChunkInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FDestructibleChunkInfo();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FDestructibleChunkInfo_ChunkIndex_GET(IntPtr Ptr);
@@ -42,7 +33,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// Index of the chunk this data belongs to
+		/// <para>Index of the chunk this data belongs to </para>
 		/// </summary>
 		public int ChunkIndex
 		{

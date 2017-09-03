@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Renders text in the world with given font. Contains usual font related attributes such as Scale, Alignment, Color etc.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageTextRenderComponent
+	/// <para>Renders text in the world with given font. Contains usual font related attributes such as Scale, Alignment, Color etc. </para>
 	/// </summary>
-	public partial class UTextRenderComponent : UPrimitiveComponent
+	public  partial class UTextRenderComponent : UPrimitiveComponent
 	{
 		public UTextRenderComponent(IntPtr Adress)
 			: base(Adress)
@@ -22,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator UTextRenderComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UTextRenderComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UTextRenderComponent ?? new UTextRenderComponent(Adress);
 		}}}

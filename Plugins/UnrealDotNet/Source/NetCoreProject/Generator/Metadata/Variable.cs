@@ -5,7 +5,7 @@ namespace Generator.Metadata
 {
     public abstract class Variable : IEquatable<Variable>
     {
-        public Dictionary<string, string> UMeta;
+        public Dictionary<string, string> UMeta { get; set; }
         public bool IsConst { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
@@ -24,6 +24,11 @@ namespace Generator.Metadata
         public virtual string GetTypeCS()
         {
             return Type;
+        }
+
+        public virtual bool IsReadOnly()
+        {
+            return false;
         }
 
         public virtual string GetTypeCSForExtend()
@@ -50,7 +55,7 @@ namespace Generator.Metadata
             return result;
         }
 
-        public string GetTypeCPPOgiginal()
+        public string GetTypeCPPOgiginal(bool NoName = false)
         {
             var result = "";
 
@@ -64,7 +69,7 @@ namespace Generator.Metadata
             if (IsReference)
                 result += "&";
 
-            if (!string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(Name) && !NoName)
                 result += " " + Name;
 
             return result;
@@ -86,8 +91,7 @@ namespace Generator.Metadata
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Variable)obj);
+            return obj.GetType() == GetType() && Equals((Variable)obj);
         }
 
         public override int GetHashCode()
@@ -220,6 +224,11 @@ namespace Generator.Metadata
                 return ClassType.Name + "*";
 
             return ClassType.Name;
+        }
+
+        public override bool IsReadOnly()
+        {
+            return ClassType.IsReadOnly;
         }
 
         public override string GetTypeCS()

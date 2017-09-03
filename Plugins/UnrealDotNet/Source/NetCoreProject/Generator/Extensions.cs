@@ -104,4 +104,12 @@ public static class Extensions
     {
         return string.Compare(Self, B, StringComparison.Ordinal);
     }
+
+    public static void ForEach<T>(this IEnumerable<T> Enumerable, Action<T> Action)
+    {
+        foreach (var item in Enumerable)
+        {
+            Action(item);
+        }
+    }
 }

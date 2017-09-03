@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FActorSpawnParameters
+	public  partial class FActorSpawnParameters : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FActorSpawnParameters()
+		public FActorSpawnParameters() : base(E_CreateStruct_FActorSpawnParameters(), false)
 		{
-			NativePointer = E_CreateStruct_FActorSpawnParameters();
-			IsRef = false;
 		}
 
-		internal FActorSpawnParameters(IntPtr NativePointer, bool IsRef)
+		internal FActorSpawnParameters(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,7 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FActorSpawnParameters();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern APawn E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, APawn Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FActorSpawnParameters_Name_GET(IntPtr Ptr);
@@ -34,19 +29,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Name_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern AActor E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, AActor Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern AActor E_PROP_FActorSpawnParameters_Owner_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FActorSpawnParameters_Owner_SET(IntPtr Ptr, AActor Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern APawn E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
+		private static extern AActor E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, APawn Value);
+		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, AActor Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(FActorSpawnParameters Self);
@@ -54,16 +44,16 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public APawn Instigator
+		{
+			get => E_PROP_FActorSpawnParameters_Instigator_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_Instigator_SET(NativePointer, value);
+		}
+
 		public string Name
 		{
 			get => E_PROP_FActorSpawnParameters_Name_GET(NativePointer);
 			set => E_PROP_FActorSpawnParameters_Name_SET(NativePointer, value);
-		}
-
-		public AActor Template
-		{
-			get => E_PROP_FActorSpawnParameters_Template_GET(NativePointer);
-			set => E_PROP_FActorSpawnParameters_Template_SET(NativePointer, value);
 		}
 
 		public AActor Owner
@@ -72,10 +62,10 @@ namespace UnrealEngine
 			set => E_PROP_FActorSpawnParameters_Owner_SET(NativePointer, value);
 		}
 
-		public APawn Instigator
+		public AActor Template
 		{
-			get => E_PROP_FActorSpawnParameters_Instigator_GET(NativePointer);
-			set => E_PROP_FActorSpawnParameters_Instigator_SET(NativePointer, value);
+			get => E_PROP_FActorSpawnParameters_Template_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_Template_SET(NativePointer, value);
 		}
 
 		#endregion

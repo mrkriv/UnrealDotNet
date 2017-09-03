@@ -18,6 +18,10 @@ namespace Generator
                 {
                     var subdir = cl.IsStructure ? "Struct" : "Class";
                     GenerateClass(cl, Path.Combine(OutputDir, subdir, cl.Name));
+
+                    var methods = Filter.GetVirtualMethods(cl);
+                    if (methods.Any())
+                        GenerateManageClass(cl, Path.Combine(OutputDir, "Manage"));
                 }
             }
 
@@ -30,14 +34,11 @@ namespace Generator
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
-                GenerateSummaty(cw, Class.Description);
+                GenerateSummaty(cw, Class.Description, "Класс не может быть наследован в Вашем коде, используйте Manage" + Class.Name.Substring(1));
 
-                cw.Write($"public partial class {Class.Name}");
+                var baseClass = Class.BaseClass != null ? Class.BaseClass.Name : (Class.IsStructure ? "NativeStructWrapper" : "NativeWrapper");
 
-                if (Class.BaseClass != null)
-                    cw.Write($" : {Class.BaseClass.Name}");
-
-                cw.WriteLine();
+                cw.WriteLine($"public {(Class.IsFinal ? "sealed" : "")} partial class {Class.Name} : {baseClass}");
                 cw.OpenBlock();
 
                 GenerateClassUtilitesTop(cw, Class);
@@ -57,7 +58,7 @@ namespace Generator
 
                 if (Class.Name == "UObject")
                 {
-                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.IsChild("UPrimitiveComponent")))
+                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.UMeta.ContainsKey("BlueprintSpawnableComponent")))
                     {
                         GenereteSubobjectUtilitsDLL(cw_DllImport, cl);
                         GenereteSubobjectUtilitsMethods(cw_ExternMethods, cl);
@@ -98,6 +99,52 @@ namespace Generator
                 cw.SaveToFile(OutputPath + ".cs");
             }
 
+            private static void GenerateManageClass(Class Class, string OutputPath)
+            {
+                var cw = new CoreWriter();
+                cw.WriteLine("using System;");
+                cw.WriteLine("using System.Runtime.InteropServices;");
+                cw.WriteLine();
+                cw.WriteLine("namespace UnrealEngine");
+                cw.OpenBlock();
+
+                var manageClass = new Class("Manage" + Class.Name.Substring(1));
+
+                GenerateSummaty(cw, Class.Description, "Этот класс может быть наследованн");
+
+                cw.WriteLine($"public partial class {manageClass.Name} : {Class.Name}");
+                cw.OpenBlock();
+
+                GenerateClassUtilitesTop(cw, manageClass);
+
+                foreach (var method in Filter.GetVirtualMethods(Class))
+                {
+                    GenerateManageMethod(cw, method);
+                }
+
+                GenerateClassUtilitesButtom(cw, manageClass);
+
+                cw.CloseBlock();
+                cw.CloseBlock();
+
+                cw.SaveToFile(Path.Combine(OutputPath, manageClass.Name + ".cs"));
+            }
+
+            private static void GenerateManageMethod(CoreWriter cw, Method method)
+            {
+                var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, false)));
+                var inputs = method.InputTypes.Select(t => t.Name).ToList();
+                var name = GetMethodDisplayName(method);
+
+                GenerateSummaty(cw, method.Description);
+
+                cw.Write(method.AccessModifier.ToString().ToLower() + " ");
+                cw.WriteLine($"override {ExportVariable(method.ReturnType)} {name}({param}) {{ }}");
+                // cw.WriteLine($"\t=> base.{name}({string.Join(", ", inputs)});");
+
+                cw.WriteLine();
+            }
+
             private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
             {
                 if (Class.IsStructure && prop.AccessModifier != AccessModifier.Public)
@@ -108,7 +155,9 @@ namespace Generator
                 cw.OpenBlock();
 
                 cw.WriteLine($"get => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
-                cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, value);");
+
+                if (!prop.IsReadOnly())
+                    cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, value);");
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -118,40 +167,21 @@ namespace Generator
             {
                 if (Class.IsStructure)
                 {
-                    cw.WriteLine("private readonly IntPtr NativePointer;");
-                    cw.WriteLine("private readonly bool IsRef;");
-                    cw.WriteLine();
-                    cw.WriteLine($"public {Class.Name}()");
+                    cw.WriteLine($"public {Class.Name}() : base(E_CreateStruct_{Class.Name}(), false)");
                     cw.OpenBlock();
-                    cw.WriteLine($"NativePointer = E_CreateStruct_{Class.Name}();");
-                    cw.WriteLine("IsRef = false;");
                     cw.CloseBlock();
                     cw.WriteLine();
-                    cw.WriteLine($"internal {Class.Name}(IntPtr NativePointer, bool IsRef)");
+                    cw.WriteLine($"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
                     cw.OpenBlock();
-                    cw.WriteLine("this.NativePointer = NativePointer;");
-                    cw.WriteLine("this.IsRef = IsRef;");
                     cw.CloseBlock();
                     cw.WriteLine();
                 }
                 else
                 {
-                    if (Class.BaseClass == null)
-                    {
-                        cw.WriteLine("protected readonly IntPtr NativePointer;");
-                        cw.WriteLine();
-                        cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
-                        cw.OpenBlock();
-                        cw.WriteLine("NativePointer = Adress;");
-                        cw.CloseBlock();
-                    }
-                    else
-                    {
-                        cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
-                        cw.WriteLine("\t: base(Adress)");
-                        cw.OpenBlock();
-                        cw.CloseBlock();
-                    }
+                    cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
+                    cw.WriteLine("\t: base(Adress)");
+                    cw.OpenBlock();
+                    cw.CloseBlock();
                     cw.WriteLine();
                 }
             }
@@ -162,10 +192,6 @@ namespace Generator
                 {
                     WriteDLLImport(cw);
                     cw.WriteLine($"private static extern IntPtr E_CreateStruct_{Class.Name}();");
-                    cw.WriteLine();
-
-                    WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern void E_DeleteStruct(IntPtr Adress);");
                     cw.WriteLine();
                 }
                 else
@@ -179,8 +205,12 @@ namespace Generator
                     WriteDLLImport(cw);
                     cw.WriteLine($"private static extern {prop.GetTypeCS()} {baseName}_GET(IntPtr Ptr);");
 
-                    WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCS()} Value);");
+                    if (!prop.IsReadOnly())
+                    {
+                        WriteDLLImport(cw);
+                        cw.WriteLine(
+                            $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCS()} Value);");
+                    }
 
                     cw.WriteLine();
                 }
@@ -188,9 +218,6 @@ namespace Generator
 
             private static void GenerateMethodDLLImport(CoreWriter cw, Class Class, Method method)
             {
-                if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
-                    return;
-
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
 
@@ -209,30 +236,23 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void WriteDLLImport(CoreWriter cw)
-            {
-                cw.WriteLine(
-                    "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]");
-            }
-
             private static void GenerateMethodBody(CoreWriter cw, Class Class, Method method)
             {
-                if (Class.IsStructure && method.AccessModifier != AccessModifier.Public)
-                    return;
-
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
 
                 var inputs = method.InputTypes.Select(t => t.Name).ToList();
 
-                var genDefault = ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
+                var genDefault = !method.IsVirtual && ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
+
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, genDefault)));
                 var name = GetMethodDisplayName(method);
 
                 GenerateSummaty(cw, method.Description);
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
+                cw.Write(method.IsVirtual, "virtual ");
 
-                if (method.Name == "ToString")
+                if (method.Name == "ToString" && !method.InputTypes.Any())
                     cw.Write("override ");
 
                 var haveBody = true;
@@ -242,7 +262,7 @@ namespace Generator
                 }
                 else
                 {
-                    inputs.Insert(0, Class.IsStructure ? "this" : "NativePointer");
+                    inputs.Insert(0, "this");
                     cw.WriteLine($"{ExportVariable(method.ReturnType)} {name}({param})");
                 }
 
@@ -263,15 +283,6 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static string GetMethodDisplayName(Method method)
-            {
-                if (method.UMeta.ContainsKey("DisplayName"))
-                {
-                    return DisplayNameRegex.Replace(method.UMeta["DisplayName"], "");
-                }
-                return method.Name;
-            }
-
             private static bool GenerateOperatorHead(CoreWriter cw, Method method, string param, IList<string> inputs)
             {
                 if (method.Operator == "[]")
@@ -289,7 +300,7 @@ namespace Generator
                 return true;
             }
 
-            private static void GenerateSummaty(CoreWriter cw, string Description)
+            private static void GenerateSummaty(CoreWriter cw, string Description, string Insert = "")
             {
                 if (string.IsNullOrEmpty(Description))
                     return;
@@ -299,12 +310,30 @@ namespace Generator
                 cw.WriteLine();
                 cw.WriteLine("/// <summary>");
 
+                cw.WriteLine(!string.IsNullOrEmpty(Insert), "/// " + Insert);
+
                 foreach (var row in rows)
                 {
                     var format = row.Trim(' ', '\t', '*', '/', '\\', '\n', '\r');
 
-                    if (format != "")
-                        cw.WriteLine("/// " + format);
+                    if (format == "")
+                        continue;
+
+                    var match = SummaryParamRegex.Match(format);
+                    if (match.Success)
+                    {
+                        cw.WriteLine($"/// <param name=\"{match.Groups[1]}\">{match.Groups[2]} </param>");
+                    }
+                    else
+                    {
+                        match = SummaryReturnRegex.Match(format);
+                        if (match.Success)
+                        {
+                            cw.WriteLine($"/// <return>{match.Groups[1]} </return>");
+                        }
+                        else
+                            cw.WriteLine($"/// <para>{format} </para>");
+                    }
                 }
 
                 cw.WriteLine("/// </summary>");
@@ -329,7 +358,9 @@ namespace Generator
                 {
                     cw.WriteLine($"public static implicit operator {Class.Name}(IntPtr Adress)");
                     cw.OpenBlock();
-                    cw.WriteLine($"return Adress == IntPtr.Zero ? null : new {Class.Name}(Adress);");
+                    cw.WriteLine($"if (Adress == IntPtr.Zero)");
+                    cw.WriteLine($"\treturn null;");
+                    cw.WriteLine($"return NativeManager.GetWrapper(Adress) as {Class.Name} ?? new {Class.Name}(Adress);");
                     cw.CloseBlock();
                 }
             }
@@ -349,16 +380,39 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            private static void WriteDLLImport(CoreWriter cw)
+            {
+                cw.WriteLine(
+                    "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]");
+            }
+
+            private static string GetMethodDisplayName(Method method)
+            {
+                // TODO: проверить есть ли метод с таким именем
+                if (method.UMeta.ContainsKey("DisplayName"))
+                {
+                    return DisplayNameRegex.Replace(method.UMeta["DisplayName"], "");
+                }
+                return method.Name;
+            }
+
+            private static string GetPropertyDisplayName(Variable variable)
+            {
+                // TODO: проверить есть ли метод с таким именем
+                if (variable.UMeta.ContainsKey("DisplayName"))
+                {
+                    return DisplayNameRegex.Replace(variable.UMeta["DisplayName"], "");
+                }
+                return variable.Name;
+            }
+
             private static string ExportVariable(Variable variable, bool IncludeDefault = true, bool ForExtern = false)
             {
                 var result = ForExtern ? variable.GetTypeCSForExtend() : variable.GetTypeCS();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                 {
-                    var name = variable.UMeta.ContainsKey("DisplayName")
-                        ? variable.UMeta["DisplayName"].Replace(" ", "")
-                        : variable.Name;
-                    result += " " + name;
+                    result += " " + GetPropertyDisplayName(variable);
 
                     if (IncludeDefault)
                     {

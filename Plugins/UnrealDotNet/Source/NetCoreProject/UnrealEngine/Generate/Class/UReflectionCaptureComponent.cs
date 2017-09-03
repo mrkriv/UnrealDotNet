@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Construct the reflection source from the specified cubemap.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageReflectionCaptureComponent
+	/// <para>Construct the reflection source from the specified cubemap. </para>
 	/// </summary>
-	public partial class UReflectionCaptureComponent : USceneComponent
+	public  partial class UReflectionCaptureComponent : USceneComponent
 	{
 		public UReflectionCaptureComponent(IntPtr Adress)
 			: base(Adress)
@@ -22,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator UReflectionCaptureComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UReflectionCaptureComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UReflectionCaptureComponent ?? new UReflectionCaptureComponent(Adress);
 		}}}

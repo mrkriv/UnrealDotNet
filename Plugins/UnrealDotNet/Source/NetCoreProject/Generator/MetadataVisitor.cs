@@ -51,6 +51,7 @@ namespace Generator
             CurrentClass.IsImplemented = true;
             CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
+            CurrentClass.IsFinal = context.FoundChild<IsFinalContext>();
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
             CurrentClass.Description = CurrentComment;
 
@@ -100,6 +101,7 @@ namespace Generator
             var method = new Method(context.methodName().GetText())
             {
                 IsConst = context.FoundChild<IsConstContext>(),
+                IsFinal = context.FoundChild<IsFinalContext>(),
                 IsStatic = context.FoundChild<IsStaticContext>(),
                 IsFriend = context.FoundChild<IsFriendContext>(),
                 IsVirtual = context.FoundChild<IsVirtualContext>(),

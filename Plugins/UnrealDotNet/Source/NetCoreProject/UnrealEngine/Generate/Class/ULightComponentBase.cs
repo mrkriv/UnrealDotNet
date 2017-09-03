@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class ULightComponentBase : USceneComponent
+	public  partial class ULightComponentBase : USceneComponent
 	{
 		public ULightComponentBase(IntPtr Adress)
 			: base(Adress)
@@ -18,5 +18,7 @@ namespace UnrealEngine
 
 		public static implicit operator ULightComponentBase(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new ULightComponentBase(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as ULightComponentBase ?? new ULightComponentBase(Adress);
 		}}}

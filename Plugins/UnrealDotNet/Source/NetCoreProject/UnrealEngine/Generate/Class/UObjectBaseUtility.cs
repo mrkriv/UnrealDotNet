@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class UObjectBaseUtility : UObjectBase
+	public  partial class UObjectBaseUtility : UObjectBase
 	{
 		public UObjectBaseUtility(IntPtr Adress)
 			: base(Adress)
@@ -13,108 +13,241 @@ namespace UnrealEngine
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObjectBaseUtility_IsPendingKill(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObjectBaseUtility_MarkPendingKill(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObjectBaseUtility_IsRooted(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObjectBaseUtility_GetFullName(IntPtr Self, IntPtr StopOuter, out int ResultStringLen);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UObjectBaseUtility_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObjectBaseUtility_GetPathName(IntPtr Self, IntPtr StopOuter, string ResultString);
+		private static extern void E_UObjectBaseUtility_AddToRoot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_AppendName(IntPtr Self, string ResultString);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_ClearPendingKill(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_CreateCluster(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_UObjectBaseUtility_GetFullGroupName(IntPtr Self, bool bStartWithOuter, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObjectBaseUtility_IsIn(IntPtr Self, IntPtr SomeOuter);
+		private static extern IntPtr E_UObjectBaseUtility_GetFullName(IntPtr Self, IntPtr StopOuter, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_UObjectBaseUtility_GetLinkerIndex(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern int E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern int E_UObjectBaseUtility_GetLinkerUE4Version(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsDefaultSubobject(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsIn(IntPtr Self, IntPtr SomeOuter);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsNative(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsPendingKill(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsPendingKillOrUnreachable(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsRooted(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_IsUnreachable(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_MarkPackageDirty(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_MarkPendingKill(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_OnClusterMarkedAsPendingKill(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObjectBaseUtility_RemoveFromRoot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UObjectBaseUtility_ThisThreadAtomicallyClearedRFUnreachable(IntPtr Self);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// Checks the PendingKill flag to see if it is dead but memory still valid
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
 		/// </summary>
-		public bool IsPendingKill()
-			=> E_UObjectBaseUtility_IsPendingKill(NativePointer);
+		public virtual void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_UObjectBaseUtility_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		
+		public void AddToRoot()
+			=> E_UObjectBaseUtility_AddToRoot(this);
+		
+		public void AppendName(string ResultString)
+			=> E_UObjectBaseUtility_AppendName(this, ResultString);
 		
 		
 		/// <summary>
-		/// Marks this object as RF_PendingKill.
+		/// <para>Unmarks this object as PendingKill. </para>
 		/// </summary>
-		public void MarkPendingKill()
-			=> E_UObjectBaseUtility_MarkPendingKill(NativePointer);
+		public void ClearPendingKill()
+			=> E_UObjectBaseUtility_ClearPendingKill(this);
 		
 		
 		/// <summary>
-		/// Returns true if this object is explicitly rooted
-		/// @return true if the object was explicitly added as part of the root set.
+		/// <para>Called after PostLoad to create UObject cluster </para>
 		/// </summary>
-		public bool IsRooted()
-			=> E_UObjectBaseUtility_IsRooted(NativePointer);
+		public virtual void CreateCluster()
+			=> E_UObjectBaseUtility_CreateCluster(this);
 		
 		
 		/// <summary>
-		/// Returns the fully qualified pathname for this object as well as the name of the class, in the format:
-		/// 'ClassName Outermost[.Outer].Name'.
-		/// @param	StopOuter	if specified, indicates that the output string should be relative to this object.  if StopOuter
-		/// does not exist in this object's Outer chain, the result would be the same as passing NULL.
-		/// @note	safe to call on NULL object pointers!
-		/// </summary>
-		public string GetFullName(UObject StopOuter = null)
-			=> Marshal.PtrToStringUTF8(E_UObjectBaseUtility_GetFullName(NativePointer, StopOuter, out int ResultStringLen), ResultStringLen);
-		
-		
-		/// <summary>
-		/// Adds this objects to a GC cluster that already exists
-		/// @param ClusterRootOrObjectFromCluster Object that belongs to the cluster we want to add this object to.
-		/// @param Add this object to the target cluster as a mutable object without adding this object's references.
-		/// </summary>
-		public void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject = false)
-			=> E_UObjectBaseUtility_AddToCluster(NativePointer, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
-		
-		
-		/// <summary>
-		/// Internal version of GetPathName() that eliminates lots of copies.
-		/// </summary>
-		protected void GetPathName(UObject StopOuter, string ResultString)
-			=> E_UObjectBaseUtility_GetPathName(NativePointer, StopOuter, ResultString);
-		
-		
-		/// <summary>
-		/// Walks up the chain of packages until it reaches the top level, which it ignores.
-		/// @param	bStartWithOuter		whether to include this object's name in the returned string
-		/// @return	string containing the path name for this object, minus the outermost-package's name
+		/// <para>Walks up the chain of packages until it reaches the top level, which it ignores. </para>
+		/// <param name="bStartWithOuter">whether to include this object's name in the returned string </param>
+		/// <return>string containing the path name for this object, minus the outermost-package's name </return>
 		/// </summary>
 		public string GetFullGroupName(bool bStartWithOuter)
-			=> Marshal.PtrToStringUTF8(E_UObjectBaseUtility_GetFullGroupName(NativePointer, bStartWithOuter, out int ResultStringLen), ResultStringLen);
+			=> Marshal.PtrToStringUTF8(E_UObjectBaseUtility_GetFullGroupName(this, bStartWithOuter, out int ResultStringLen), ResultStringLen);
 		
 		
 		/// <summary>
-		/// @return	true if the specified object appears somewhere in this object's outer chain.
+		/// <para>Returns the fully qualified pathname for this object as well as the name of the class, in the format: </para>
+		/// <para>'ClassName Outermost[.Outer].Name'. </para>
+		/// <param name="StopOuter">if specified, indicates that the output string should be relative to this object.  if StopOuter </param>
+		/// <para>does not exist in this object's Outer chain, the result would be the same as passing NULL. </para>
+		/// <para>@note	safe to call on NULL object pointers! </para>
 		/// </summary>
-		public bool IsIn(UObject SomeOuter)
-			=> E_UObjectBaseUtility_IsIn(NativePointer, SomeOuter);
+		public string GetFullName(UObject StopOuter = null)
+			=> Marshal.PtrToStringUTF8(E_UObjectBaseUtility_GetFullName(this, StopOuter, out int ResultStringLen), ResultStringLen);
 		
 		
 		/// <summary>
-		/// Returns this object's LinkerIndex.
-		/// @return	the index into my linker's ExportMap for the FObjectExport
-		/// corresponding to this object.
+		/// <para>Returns this object's LinkerIndex. </para>
+		/// <return>the index into my linker's ExportMap for the FObjectExport </return>
+		/// <para>corresponding to this object. </para>
 		/// </summary>
 		public int GetLinkerIndex()
-			=> E_UObjectBaseUtility_GetLinkerIndex(NativePointer);
+			=> E_UObjectBaseUtility_GetLinkerIndex(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the licensee version of the linker for this object. </para>
+		/// <return>the licensee version of the engine's package file when this object </return>
+		/// <para>was last saved, or GPackageFileLicenseeVersion (current version) if </para>
+		/// <para>this object does not have a linker, which indicates that </para>
+		/// <para>a) this object is a native only class, or </para>
+		/// <para>b) this object's linker has been detached, in which case it is already fully loaded </para>
+		/// </summary>
+		public int GetLinkerLicenseeUE4Version()
+			=> E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the UE4 version of the linker for this object. </para>
+		/// <return>the UE4 version of the engine's package file when this object </return>
+		/// <para>was last saved, or GPackageFileUE4Version (current version) if </para>
+		/// <para>this object does not have a linker, which indicates that </para>
+		/// <para>a) this object is a native only class, or </para>
+		/// <para>b) this object's linker has been detached, in which case it is already fully loaded </para>
+		/// </summary>
+		public int GetLinkerUE4Version()
+			=> E_UObjectBaseUtility_GetLinkerUE4Version(this);
+		
+		
+		/// <summary>
+		/// <para>Returns whether this component was instanced from a component/subobject template, or if it is a component/subobject template. </para>
+		/// <para>This is based on a name comparison with the outer class instance lookup table </para>
+		/// <return>true if this component was instanced from a template.  false if this component was created manually at runtime. </return>
+		/// </summary>
+		public bool IsDefaultSubobject()
+			=> E_UObjectBaseUtility_IsDefaultSubobject(this);
+		
+		
+		/// <summary>
+		/// <return>true if the specified object appears somewhere in this object's outer chain. </return>
+		/// </summary>
+		public bool IsIn(UObject SomeOuter)
+			=> E_UObjectBaseUtility_IsIn(this, SomeOuter);
+		
+		
+		/// <summary>
+		/// <para>Checks if the object is native. </para>
+		/// </summary>
+		public bool IsNative()
+			=> E_UObjectBaseUtility_IsNative(this);
+		
+		
+		/// <summary>
+		/// <para>Checks the PendingKill flag to see if it is dead but memory still valid </para>
+		/// </summary>
+		public bool IsPendingKill()
+			=> E_UObjectBaseUtility_IsPendingKill(this);
+		
+		
+		/// <summary>
+		/// <para>Checks if the object is pending kill or unreachable. </para>
+		/// </summary>
+		public bool IsPendingKillOrUnreachable()
+			=> E_UObjectBaseUtility_IsPendingKillOrUnreachable(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is explicitly rooted </para>
+		/// <return>true if the object was explicitly added as part of the root set. </return>
+		/// </summary>
+		public bool IsRooted()
+			=> E_UObjectBaseUtility_IsRooted(this);
+		
+		
+		/// <summary>
+		/// <para>Checks if the object is unreachable. </para>
+		/// </summary>
+		public bool IsUnreachable()
+			=> E_UObjectBaseUtility_IsUnreachable(this);
+		
+		
+		/// <summary>
+		/// <para>Finds the outermost package and marks it dirty. </para>
+		/// <para>The editor suppresses this behavior during load as it is against policy to dirty packages simply by loading them. </para>
+		/// <return>false if the request to mark the package dirty was suppressed by the editor and true otherwise. </return>
+		/// </summary>
+		public bool MarkPackageDirty()
+			=> E_UObjectBaseUtility_MarkPackageDirty(this);
+		
+		
+		/// <summary>
+		/// <para>Marks this object as RF_PendingKill. </para>
+		/// </summary>
+		public void MarkPendingKill()
+			=> E_UObjectBaseUtility_MarkPendingKill(this);
+		
+		
+		/// <summary>
+		/// <para>Called during Garbage Collection to perform additional cleanup when the cluster is about to be destroyed due to PendingKill flag being set on it. </para>
+		/// </summary>
+		public virtual void OnClusterMarkedAsPendingKill()
+			=> E_UObjectBaseUtility_OnClusterMarkedAsPendingKill(this);
+		
+		public void RemoveFromRoot()
+			=> E_UObjectBaseUtility_RemoveFromRoot(this);
+		
+		
+		/// <summary>
+		/// <para>Atomically clear the unreachable flag </para>
+		/// <return>true if we are the thread that cleared RF_Unreachable </return>
+		/// </summary>
+		public bool ThisThreadAtomicallyClearedRFUnreachable()
+			=> E_UObjectBaseUtility_ThisThreadAtomicallyClearedRFUnreachable(this);
 		
 		#endregion
 		
@@ -125,5 +258,7 @@ namespace UnrealEngine
 
 		public static implicit operator UObjectBaseUtility(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UObjectBaseUtility(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UObjectBaseUtility ?? new UObjectBaseUtility(Adress);
 		}}}

@@ -5,10 +5,11 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// SpectatorPawns are simple pawns that can fly around the world, used by
-	/// PlayerControllers when in the spectator state.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageSpectatorPawn
+	/// <para>SpectatorPawns are simple pawns that can fly around the world, used by </para>
+	/// <para>PlayerControllers when in the spectator state. </para>
 	/// </summary>
-	public partial class ASpectatorPawn : ADefaultPawn
+	public  partial class ASpectatorPawn : ADefaultPawn
 	{
 		public ASpectatorPawn(IntPtr Adress)
 			: base(Adress)
@@ -23,5 +24,7 @@ namespace UnrealEngine
 
 		public static implicit operator ASpectatorPawn(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new ASpectatorPawn(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as ASpectatorPawn ?? new ASpectatorPawn(Adress);
 		}}}

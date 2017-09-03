@@ -38,7 +38,7 @@ typePreDeclaration
 /* Class */
 
 classDeclaration
-	: templateDefine? classOrStruct className Final? (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
+	: templateDefine? classOrStruct className isFinal? (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
 ;
 
 classOrStructOrEnum
@@ -176,7 +176,7 @@ constructorInitializer
 	;
 
 method
-	: templateDefine? (Constexpr|isFriend|Inline|Extern|isStatic|isVirtual)* type methodName '(' methodParamsList? ')' isConst? isOverride? Final? (methodBody|isDelete)? ';'?
+	: templateDefine? (Constexpr|isFriend|Inline|Extern|isStatic|isVirtual)* type methodName '(' methodParamsList? ')' isConst? isOverride? isFinal? (methodBody|isDelete)? ';'?
 ;
 
 methodParamsList
@@ -252,7 +252,7 @@ isRefQuant
 
 typeName
 	: Identifier (DotDot+ Identifier)?
-	| typeTemplateName ('<' type (',' type)* '>')
+	| typeTemplateName ('<' (type|Literal) (',' (type|Literal))* '>')
 ;
 
 typeTemplateName
@@ -277,6 +277,10 @@ isStatic
 
 isFriend
 	: Friend
+;
+
+isFinal
+	: Final
 ;
 
 isDestructor

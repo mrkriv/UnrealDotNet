@@ -19,6 +19,9 @@ namespace Generator
             var mult = Environment.ProcessorCount;
             var tasks = new List<Task>();
 
+            var Watch = new Stopwatch();
+            Watch.Start();
+
             for (var i = 0; i < mult; i++)
             {
                 var visitor = new MetadataVisitor(Classes);
@@ -28,6 +31,8 @@ namespace Generator
             }
 
             Task.WaitAll(tasks.ToArray());
+
+            Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
 
             return new Domain(Classes.Values);
         }

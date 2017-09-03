@@ -5,33 +5,24 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct to allow direct access to the AttachChildren array for a handful of cases that will require more work than can be done
-	/// immediately to fix up in light of the privatization steps
+	/// Класс не может быть наследован в Вашем коде, используйте ManageDirectAttachChildrenAccessor
+	/// <para>Struct to allow direct access to the AttachChildren array for a handful of cases that will require more work than can be done </para>
+	/// <para>immediately to fix up in light of the privatization steps </para>
 	/// </summary>
-	public partial class FDirectAttachChildrenAccessor
+	public  partial class FDirectAttachChildrenAccessor : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FDirectAttachChildrenAccessor()
+		public FDirectAttachChildrenAccessor() : base(E_CreateStruct_FDirectAttachChildrenAccessor(), false)
 		{
-			NativePointer = E_CreateStruct_FDirectAttachChildrenAccessor();
-			IsRef = false;
 		}
 
-		internal FDirectAttachChildrenAccessor(IntPtr NativePointer, bool IsRef)
+		internal FDirectAttachChildrenAccessor(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FDirectAttachChildrenAccessor();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		#endregion
 		

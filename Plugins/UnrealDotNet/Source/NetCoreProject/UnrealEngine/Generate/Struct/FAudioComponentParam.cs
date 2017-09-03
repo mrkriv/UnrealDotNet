@@ -5,24 +5,18 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct used for storing one per-instance named parameter for this AudioComponent.
-	/// Certain nodes in the SoundCue may reference parameters by name so they can be adjusted per-instance.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageAudioComponentParam
+	/// <para>Struct used for storing one per-instance named parameter for this AudioComponent. </para>
+	/// <para>Certain nodes in the SoundCue may reference parameters by name so they can be adjusted per-instance. </para>
 	/// </summary>
-	public partial class FAudioComponentParam
+	public  partial class FAudioComponentParam : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FAudioComponentParam()
+		public FAudioComponentParam() : base(E_CreateStruct_FAudioComponentParam(), false)
 		{
-			NativePointer = E_CreateStruct_FAudioComponentParam();
-			IsRef = false;
 		}
 
-		internal FAudioComponentParam(IntPtr NativePointer, bool IsRef)
+		internal FAudioComponentParam(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -31,12 +25,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FAudioComponentParam();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
+		private static extern bool E_PROP_FAudioComponentParam_BoolParam_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FAudioComponentParam_ParamName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FAudioComponentParam_ParamName_SET(IntPtr Ptr, string Value);
+		private static extern void E_PROP_FAudioComponentParam_BoolParam_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FAudioComponentParam_FloatParam_GET(IntPtr Ptr);
@@ -44,22 +35,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAudioComponentParam_FloatParam_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FAudioComponentParam_BoolParam_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FAudioComponentParam_BoolParam_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FAudioComponentParam_IntParam_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FAudioComponentParam_IntParam_SET(IntPtr Ptr, int Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FAudioComponentParam_ParamName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FAudioComponentParam_ParamName_SET(IntPtr Ptr, string Value);
+		
 		#endregion
 		
 		#region Property
-		public string ParamName
+		public bool BoolParam
 		{
-			get => E_PROP_FAudioComponentParam_ParamName_GET(NativePointer);
-			set => E_PROP_FAudioComponentParam_ParamName_SET(NativePointer, value);
+			get => E_PROP_FAudioComponentParam_BoolParam_GET(NativePointer);
+			set => E_PROP_FAudioComponentParam_BoolParam_SET(NativePointer, value);
 		}
 
 		public float FloatParam
@@ -68,16 +59,16 @@ namespace UnrealEngine
 			set => E_PROP_FAudioComponentParam_FloatParam_SET(NativePointer, value);
 		}
 
-		public bool BoolParam
-		{
-			get => E_PROP_FAudioComponentParam_BoolParam_GET(NativePointer);
-			set => E_PROP_FAudioComponentParam_BoolParam_SET(NativePointer, value);
-		}
-
 		public int IntParam
 		{
 			get => E_PROP_FAudioComponentParam_IntParam_GET(NativePointer);
 			set => E_PROP_FAudioComponentParam_IntParam_SET(NativePointer, value);
+		}
+
+		public string ParamName
+		{
+			get => E_PROP_FAudioComponentParam_ParamName_GET(NativePointer);
+			set => E_PROP_FAudioComponentParam_ParamName_SET(NativePointer, value);
 		}
 
 		#endregion

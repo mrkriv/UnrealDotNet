@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Information about the sprite category
+	/// Класс не может быть наследован в Вашем коде, используйте ManageSpriteCategoryInfo
+	/// <para>Information about the sprite category </para>
 	/// </summary>
-	public partial class FSpriteCategoryInfo
+	public  partial class FSpriteCategoryInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FSpriteCategoryInfo()
+		public FSpriteCategoryInfo() : base(E_CreateStruct_FSpriteCategoryInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FSpriteCategoryInfo();
-			IsRef = false;
 		}
 
-		internal FSpriteCategoryInfo(IntPtr NativePointer, bool IsRef)
+		internal FSpriteCategoryInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,22 +24,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSpriteCategoryInfo();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FSpriteCategoryInfo_Category_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FSpriteCategoryInfo_Category_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FSpriteCategoryInfo_DisplayName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSpriteCategoryInfo_DisplayName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FSpriteCategoryInfo_Description_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FSpriteCategoryInfo_Description_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FSpriteCategoryInfo_DisplayName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FSpriteCategoryInfo_DisplayName_SET(IntPtr Ptr, string Value);
 		
 		#endregion
 		
@@ -56,16 +47,16 @@ namespace UnrealEngine
 			set => E_PROP_FSpriteCategoryInfo_Category_SET(NativePointer, value);
 		}
 
-		public string DisplayName
-		{
-			get => E_PROP_FSpriteCategoryInfo_DisplayName_GET(NativePointer);
-			set => E_PROP_FSpriteCategoryInfo_DisplayName_SET(NativePointer, value);
-		}
-
 		public string Description
 		{
 			get => E_PROP_FSpriteCategoryInfo_Description_GET(NativePointer);
 			set => E_PROP_FSpriteCategoryInfo_Description_SET(NativePointer, value);
+		}
+
+		public string DisplayName
+		{
+			get => E_PROP_FSpriteCategoryInfo_DisplayName_GET(NativePointer);
+			set => E_PROP_FSpriteCategoryInfo_DisplayName_SET(NativePointer, value);
 		}
 
 		#endregion

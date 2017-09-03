@@ -21,6 +21,23 @@ namespace Generator
             "FPendingAutoReceiveInputActor",
             "FPrecomputedVolumeDistanceField",
             "FPrecomputedVisibilityHandler",
+            "FUObjectItem",
+
+            "UForceFeedbackComponent",
+            "USplineComponent",
+            "USplineMeshComponent",
+            "UApplicationLifecycleComponent",
+            "UPlatformEventsComponent",
+            "UStereoLayerComponent",
+            "UModelComponent",
+            "UWindDirectionalSourceComponent",
+
+            "FPrimitiveComponentPostPhysicsTickFunction",
+            "FStartPhysicsTickFunction",
+            "FEndPhysicsTickFunction",
+            "FStartAsyncSimulationFunction",
+            "FSkeletalMeshComponentEndPhysicsTickFunction",
+            "FSkeletalMeshComponentClothTickFunction",
         };
 
         public static string[] ClassImplementedList =
@@ -38,6 +55,16 @@ namespace Generator
             { "ULightmassPortalComponent", new[] { "UpdatePreviewShape" }},
             { "UWindDirectionalSourceComponent", new[] { "SetStrength" }},
             { "USceneCaptureComponent", new[] { "GetSettingForShowFlag" }},
+            { "UAudioComponent", new[] { "UpdateInteriorSettings" }},
+            { "UTimelineComponent", new[] { "OnRep_Timeline" }},
+            { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
+
+            { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
+        };
+
+        public static string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
+        {
+            "FTickFunction",
         };
 
         public static string FilterSourceCode(string code)
@@ -45,17 +72,21 @@ namespace Generator
             return replaceRegex.Replace(code, "");
         }
 
-        public static void FiltreDomainForExport(Domain domain)
+        public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
-            domain.Classes = domain.Classes.Where(ClassFilter).ToList();
+            var classes = Classes.Where(ClassFilter).OrderBy(cl => cl.Name).ToList();
 
-            foreach (var cl in domain.Classes)
+            foreach (var cl in classes)
             {
-                cl.Methods = cl.Methods.Where(MethodFilter).ToList();
-                cl.Property = cl.Property.Where(PropertyFilter).ToList();
+                cl.IsReadOnly = ReadOnlyClass.Any(name => cl.IsChild(name));
+
+                cl.Methods = cl.Methods.Where(MethodFilter).OrderBy(m => m.Name).ToList();
+                cl.Property = cl.Property.Where(PropertyFilter).OrderBy(p => p.Name).ToList();
 
                 RemoveMethodDublicatedName(cl);
             }
+
+            return classes;
         }
 
         private static void RemoveMethodDublicatedName(Class cl)
@@ -87,14 +118,16 @@ namespace Generator
         public static bool MethodFilter(Method m)
         {
             return !m.IsTemplate &&
-                    m.InputTypes.All(v => (v.IsPointer && v.IsReference) != true && v.Type != "void") &&
+                    !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
+                    !m.IsOverride &&
+                    !m.IsFriend &&
+                    !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type == "void" || v.IsReadOnly()) &&
+                    (!m.IsVirtual || m.Operator == null && !m.OwnerClass.IsFinal && m.ReturnType.Type == "void") &&
                     m.Dependent.All(ClassFilter) &&
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
                     m.Operator == null && // TODO: поддержка операторов
                                           //(m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
-                    !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
-                    !m.IsOverride &&
-                    !m.IsFriend &&
+                    (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
                     (!MethodBlackList.ContainsKey(m.OwnerClass.Name) || !MethodBlackList[m.OwnerClass.Name].Contains(m.Name));
         }
 
@@ -103,6 +136,14 @@ namespace Generator
             return (!(m is ClassVariable) || ClassFilter(((ClassVariable)m).ClassType)) &&
                     m.NeedRefOperator() == false &&
                    !m.IsConst; // TODO: константные поля
+        }
+
+        public static IEnumerable<Method> GetVirtualMethods(Class Class)
+        {
+            if (Class.IsFinal || Class.IsStructure || Class.Name == "UObjectBase" || Class.Name == "UObjectBaseUtility")
+                return new Method[0];
+
+            return Class.Methods.Where(m => m.IsVirtual && !m.IsConst && m.ReturnType.Type == "void");
         }
     }
 }

@@ -5,11 +5,12 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A brush component defines a shape that can be modified within the editor. They are used both as part of BSP building, and for volumes.
-	/// @see https://docs.unrealengine.com/latest/INT/Engine/Actors/Volumes
-	/// @see https://docs.unrealengine.com/latest/INT/Engine/Actors/Brushes
+	/// Класс не может быть наследован в Вашем коде, используйте ManageBrushComponent
+	/// <para>A brush component defines a shape that can be modified within the editor. They are used both as part of BSP building, and for volumes. </para>
+	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Actors/Volumes </para>
+	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Actors/Brushes </para>
 	/// </summary>
-	public partial class UBrushComponent : UPrimitiveComponent
+	public  partial class UBrushComponent : UPrimitiveComponent
 	{
 		public UBrushComponent(IntPtr Adress)
 			: base(Adress)
@@ -26,10 +27,10 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Create the AggGeom collection-of-convex-primitives from the Brush UModel data.
+		/// <para>Create the AggGeom collection-of-convex-primitives from the Brush UModel data. </para>
 		/// </summary>
 		public void BuildSimpleBrushCollision()
-			=> E_UBrushComponent_BuildSimpleBrushCollision(NativePointer);
+			=> E_UBrushComponent_BuildSimpleBrushCollision(this);
 		
 		#endregion
 		
@@ -40,5 +41,7 @@ namespace UnrealEngine
 
 		public static implicit operator UBrushComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UBrushComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UBrushComponent ?? new UBrushComponent(Adress);
 		}}}

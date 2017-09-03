@@ -5,23 +5,17 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Implements a rectangular 2D Box.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageBox2D
+	/// <para>Implements a rectangular 2D Box. </para>
 	/// </summary>
-	public partial class FBox2D
+	public  partial class FBox2D : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FBox2D()
+		public FBox2D() : base(E_CreateStruct_FBox2D(), false)
 		{
-			NativePointer = E_CreateStruct_FBox2D();
-			IsRef = false;
 		}
 
-		internal FBox2D(IntPtr NativePointer, bool IsRef)
+		internal FBox2D(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -30,12 +24,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBox2D();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
+		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FBox2D_Min_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector2D E_PROP_FBox2D_Max_GET(IntPtr Ptr);
@@ -43,9 +34,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox2D_Max_SET(IntPtr Ptr, FVector2D Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
+		private static extern FVector2D E_PROP_FBox2D_Min_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D Self, IntPtr Point);
@@ -66,10 +57,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_FBox2D_GetClosestPointTo(FBox2D Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_FBox2D_GetExtent(FBox2D Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_FBox2D_GetSize(FBox2D Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_FBox2D_Init(FBox2D Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBox2D_IsInside(FBox2D Self, IntPtr TestPoint);
+		private static extern bool E_FBox2D_Intersect(FBox2D Self, IntPtr other);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_FBox2D_ShiftBy(FBox2D Self, IntPtr Offset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_FBox2D_ToString(FBox2D Self, out int ResultStringLen);
@@ -79,17 +79,17 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// Holds the box's minimum point.
+		/// <para>Holds a flag indicating whether this box is valid. </para>
 		/// </summary>
-		public FVector2D Min
+		public bool bIsValid
 		{
-			get => E_PROP_FBox2D_Min_GET(NativePointer);
-			set => E_PROP_FBox2D_Min_SET(NativePointer, value);
+			get => E_PROP_FBox2D_bIsValid_GET(NativePointer);
+			set => E_PROP_FBox2D_bIsValid_SET(NativePointer, value);
 		}
 
 		
 		/// <summary>
-		/// Holds the box's maximum point.
+		/// <para>Holds the box's maximum point. </para>
 		/// </summary>
 		public FVector2D Max
 		{
@@ -99,12 +99,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// Holds a flag indicating whether this box is valid.
+		/// <para>Holds the box's minimum point. </para>
 		/// </summary>
-		public bool bIsValid
+		public FVector2D Min
 		{
-			get => E_PROP_FBox2D_bIsValid_GET(NativePointer);
-			set => E_PROP_FBox2D_bIsValid_SET(NativePointer, value);
+			get => E_PROP_FBox2D_Min_GET(NativePointer);
+			set => E_PROP_FBox2D_Min_SET(NativePointer, value);
 		}
 
 		#endregion
@@ -112,79 +112,106 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Calculates the distance of a point to this box.
-		/// @param Point The point.
-		/// @return The distance.
+		/// <para>Calculates the distance of a point to this box. </para>
+		/// <param name="Point">The point. </param>
+		/// <return>The distance. </return>
 		/// </summary>
 		public float ComputeSquaredDistanceToPoint(FVector2D Point)
 			=> E_FBox2D_ComputeSquaredDistanceToPoint(this, Point);
 		
 		
 		/// <summary>
-		/// Increase the bounding box volume.
-		/// @param W The size to increase volume by.
-		/// @return A new bounding box increased in size.
+		/// <para>Increase the bounding box volume. </para>
+		/// <param name="W">The size to increase volume by. </param>
+		/// <return>A new bounding box increased in size. </return>
 		/// </summary>
 		public FBox2D ExpandBy(float W)
 			=> E_FBox2D_ExpandBy(this, W);
 		
 		
 		/// <summary>
-		/// Gets the box area.
-		/// @return Box area.
-		/// @see GetCenter, GetCenterAndExtents, GetExtent, GetSize
+		/// <para>Gets the box area. </para>
+		/// <return>Box area. </return>
+		/// <para>@see GetCenter, GetCenterAndExtents, GetExtent, GetSize </para>
 		/// </summary>
 		public float GetArea()
 			=> E_FBox2D_GetArea(this);
 		
 		
 		/// <summary>
-		/// Gets the box's center point.
-		/// @return Th center point.
-		/// @see GetArea, GetCenterAndExtents, GetExtent, GetSize
+		/// <para>Gets the box's center point. </para>
+		/// <return>Th center point. </return>
+		/// <para>@see GetArea, GetCenterAndExtents, GetExtent, GetSize </para>
 		/// </summary>
 		public FVector2D GetCenter()
 			=> E_FBox2D_GetCenter(this);
 		
 		
 		/// <summary>
-		/// Get the center and extents
-		/// @param center[out] reference to center point
-		/// @param Extents[out] reference to the extent around the center
-		/// @see GetArea, GetCenter, GetExtent, GetSize
+		/// <para>Get the center and extents </para>
+		/// <para>@param center[out] reference to center point </para>
+		/// <para>@param Extents[out] reference to the extent around the center </para>
+		/// <para>@see GetArea, GetCenter, GetExtent, GetSize </para>
 		/// </summary>
 		public void GetCenterAndExtents(FVector2D center, FVector2D Extents)
 			=> E_FBox2D_GetCenterAndExtents(this, center, Extents);
 		
 		
 		/// <summary>
-		/// Calculates the closest point on or inside the box to a given point in space.
-		/// @param Point The point in space.
-		/// @return The closest point on or inside the box.
+		/// <para>Calculates the closest point on or inside the box to a given point in space. </para>
+		/// <param name="Point">The point in space. </param>
+		/// <return>The closest point on or inside the box. </return>
 		/// </summary>
 		public FVector2D GetClosestPointTo(FVector2D Point)
 			=> E_FBox2D_GetClosestPointTo(this, Point);
 		
 		
 		/// <summary>
-		/// Set the initial values of the bounding box to Zero.
+		/// <para>Gets the box extents around the center. </para>
+		/// <return>Box extents. </return>
+		/// <para>@see GetArea, GetCenter, GetCenterAndExtents, GetSize </para>
+		/// </summary>
+		public FVector2D GetExtent()
+			=> E_FBox2D_GetExtent(this);
+		
+		
+		/// <summary>
+		/// <para>Gets the box size. </para>
+		/// <return>Box size. </return>
+		/// <para>@see GetArea, GetCenter, GetCenterAndExtents, GetExtent </para>
+		/// </summary>
+		public FVector2D GetSize()
+			=> E_FBox2D_GetSize(this);
+		
+		
+		/// <summary>
+		/// <para>Set the initial values of the bounding box to Zero. </para>
 		/// </summary>
 		public void Init()
 			=> E_FBox2D_Init(this);
 		
 		
 		/// <summary>
-		/// Checks whether the given point is inside this box.
-		/// @param Point The point to test.
-		/// @return true if the point is inside this box, otherwise false.
+		/// <para>Checks whether the given box intersects this box. </para>
+		/// <param name="other">bounding box to test intersection </param>
+		/// <return>true if boxes intersect, false otherwise. </return>
 		/// </summary>
-		public bool IsInside(FVector2D TestPoint)
-			=> E_FBox2D_IsInside(this, TestPoint);
+		public bool Intersect(FBox2D other)
+			=> E_FBox2D_Intersect(this, other);
 		
 		
 		/// <summary>
-		/// Get a textual representation of this box.
-		/// @return A string describing the box.
+		/// <para>Shift bounding box position. </para>
+		/// <param name="The">offset vector to shift by. </param>
+		/// <return>A new shifted bounding box. </return>
+		/// </summary>
+		public FBox2D ShiftBy(FVector2D Offset)
+			=> E_FBox2D_ShiftBy(this, Offset);
+		
+		
+		/// <summary>
+		/// <para>Get a textual representation of this box. </para>
+		/// <return>A string describing the box. </return>
 		/// </summary>
 		public override string ToString()
 			=> Marshal.PtrToStringUTF8(E_FBox2D_ToString(this, out int ResultStringLen), ResultStringLen);

@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FClassRedirect
+	public  partial class FClassRedirect : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FClassRedirect()
+		public FClassRedirect() : base(E_CreateStruct_FClassRedirect(), false)
 		{
-			NativePointer = E_CreateStruct_FClassRedirect();
-			IsRef = false;
 		}
 
-		internal FClassRedirect(IntPtr NativePointer, bool IsRef)
+		internal FClassRedirect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,7 +19,29 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FClassRedirect();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern bool E_PROP_FClassRedirect_InstanceOnly_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClassRedirect_InstanceOnly_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FClassRedirect_NewClassClass_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClassRedirect_NewClassClass_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FClassRedirect_NewClassName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClassRedirect_NewClassName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FClassRedirect_NewClassPackage_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClassRedirect_NewClassPackage_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern string E_PROP_FClassRedirect_NewSubobjName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClassRedirect_NewSubobjName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FClassRedirect_ObjectName_GET(IntPtr Ptr);
@@ -39,38 +54,43 @@ namespace UnrealEngine
 		private static extern void E_PROP_FClassRedirect_OldClassName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FClassRedirect_NewClassName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClassRedirect_NewClassName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FClassRedirect_OldSubobjName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FClassRedirect_OldSubobjName_SET(IntPtr Ptr, string Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FClassRedirect_NewSubobjName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClassRedirect_NewSubobjName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FClassRedirect_NewClassClass_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClassRedirect_NewClassClass_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FClassRedirect_NewClassPackage_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClassRedirect_NewClassPackage_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_PROP_FClassRedirect_InstanceOnly_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClassRedirect_InstanceOnly_SET(IntPtr Ptr, bool Value);
-		
 		#endregion
 		
 		#region Property
+		public bool InstanceOnly
+		{
+			get => E_PROP_FClassRedirect_InstanceOnly_GET(NativePointer);
+			set => E_PROP_FClassRedirect_InstanceOnly_SET(NativePointer, value);
+		}
+
+		public string NewClassClass
+		{
+			get => E_PROP_FClassRedirect_NewClassClass_GET(NativePointer);
+			set => E_PROP_FClassRedirect_NewClassClass_SET(NativePointer, value);
+		}
+
+		public string NewClassName
+		{
+			get => E_PROP_FClassRedirect_NewClassName_GET(NativePointer);
+			set => E_PROP_FClassRedirect_NewClassName_SET(NativePointer, value);
+		}
+
+		public string NewClassPackage
+		{
+			get => E_PROP_FClassRedirect_NewClassPackage_GET(NativePointer);
+			set => E_PROP_FClassRedirect_NewClassPackage_SET(NativePointer, value);
+		}
+
+		public string NewSubobjName
+		{
+			get => E_PROP_FClassRedirect_NewSubobjName_GET(NativePointer);
+			set => E_PROP_FClassRedirect_NewSubobjName_SET(NativePointer, value);
+		}
+
 		public string ObjectName
 		{
 			get => E_PROP_FClassRedirect_ObjectName_GET(NativePointer);
@@ -83,40 +103,10 @@ namespace UnrealEngine
 			set => E_PROP_FClassRedirect_OldClassName_SET(NativePointer, value);
 		}
 
-		public string NewClassName
-		{
-			get => E_PROP_FClassRedirect_NewClassName_GET(NativePointer);
-			set => E_PROP_FClassRedirect_NewClassName_SET(NativePointer, value);
-		}
-
 		public string OldSubobjName
 		{
 			get => E_PROP_FClassRedirect_OldSubobjName_GET(NativePointer);
 			set => E_PROP_FClassRedirect_OldSubobjName_SET(NativePointer, value);
-		}
-
-		public string NewSubobjName
-		{
-			get => E_PROP_FClassRedirect_NewSubobjName_GET(NativePointer);
-			set => E_PROP_FClassRedirect_NewSubobjName_SET(NativePointer, value);
-		}
-
-		public string NewClassClass
-		{
-			get => E_PROP_FClassRedirect_NewClassClass_GET(NativePointer);
-			set => E_PROP_FClassRedirect_NewClassClass_SET(NativePointer, value);
-		}
-
-		public string NewClassPackage
-		{
-			get => E_PROP_FClassRedirect_NewClassPackage_GET(NativePointer);
-			set => E_PROP_FClassRedirect_NewClassPackage_SET(NativePointer, value);
-		}
-
-		public bool InstanceOnly
-		{
-			get => E_PROP_FClassRedirect_InstanceOnly_GET(NativePointer);
-			set => E_PROP_FClassRedirect_InstanceOnly_SET(NativePointer, value);
 		}
 
 		#endregion

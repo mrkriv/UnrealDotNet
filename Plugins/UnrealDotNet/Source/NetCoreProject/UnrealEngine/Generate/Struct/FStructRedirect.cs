@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FStructRedirect
+	public  partial class FStructRedirect : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FStructRedirect()
+		public FStructRedirect() : base(E_CreateStruct_FStructRedirect(), false)
 		{
-			NativePointer = E_CreateStruct_FStructRedirect();
-			IsRef = false;
 		}
 
-		internal FStructRedirect(IntPtr NativePointer, bool IsRef)
+		internal FStructRedirect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,31 +19,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FStructRedirect();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern string E_PROP_FStructRedirect_NewStructName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FStructRedirect_NewStructName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FStructRedirect_OldStructName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FStructRedirect_OldStructName_SET(IntPtr Ptr, string Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern string E_PROP_FStructRedirect_NewStructName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FStructRedirect_NewStructName_SET(IntPtr Ptr, string Value);
-		
 		#endregion
 		
 		#region Property
-		public string OldStructName
-		{
-			get => E_PROP_FStructRedirect_OldStructName_GET(NativePointer);
-			set => E_PROP_FStructRedirect_OldStructName_SET(NativePointer, value);
-		}
-
 		public string NewStructName
 		{
 			get => E_PROP_FStructRedirect_NewStructName_GET(NativePointer);
 			set => E_PROP_FStructRedirect_NewStructName_SET(NativePointer, value);
+		}
+
+		public string OldStructName
+		{
+			get => E_PROP_FStructRedirect_OldStructName_GET(NativePointer);
+			set => E_PROP_FStructRedirect_OldStructName_SET(NativePointer, value);
 		}
 
 		#endregion

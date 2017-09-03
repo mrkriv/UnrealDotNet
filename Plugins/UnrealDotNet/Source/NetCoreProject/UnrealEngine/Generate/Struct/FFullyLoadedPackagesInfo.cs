@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Struct to help hold information about packages needing to be fully-loaded for DLC, etc.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageFullyLoadedPackagesInfo
+	/// <para>Struct to help hold information about packages needing to be fully-loaded for DLC, etc. </para>
 	/// </summary>
-	public partial class FFullyLoadedPackagesInfo
+	public  partial class FFullyLoadedPackagesInfo : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FFullyLoadedPackagesInfo()
+		public FFullyLoadedPackagesInfo() : base(E_CreateStruct_FFullyLoadedPackagesInfo(), false)
 		{
-			NativePointer = E_CreateStruct_FFullyLoadedPackagesInfo();
-			IsRef = false;
 		}
 
-		internal FFullyLoadedPackagesInfo(IntPtr NativePointer, bool IsRef)
+		internal FFullyLoadedPackagesInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FFullyLoadedPackagesInfo();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FFullyLoadedPackagesInfo_Tag_GET(IntPtr Ptr);

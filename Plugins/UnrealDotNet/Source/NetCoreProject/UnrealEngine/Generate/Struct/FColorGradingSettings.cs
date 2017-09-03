@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FColorGradingSettings
+	public  partial class FColorGradingSettings : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FColorGradingSettings()
+		public FColorGradingSettings() : base(E_CreateStruct_FColorGradingSettings(), false)
 		{
-			NativePointer = E_CreateStruct_FColorGradingSettings();
-			IsRef = false;
 		}
 
-		internal FColorGradingSettings(IntPtr NativePointer, bool IsRef)
+		internal FColorGradingSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,22 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FColorGradingSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Global_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FColorGradingSettings_Global_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Shadows_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FColorGradingSettings_Shadows_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Midtones_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FColorGradingSettings_Midtones_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Highlights_GET(IntPtr Ptr);
@@ -49,14 +29,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_FColorGradingSettings_Highlights_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_PROP_FColorGradingSettings_ShadowsMax_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FColorGradingSettings_ShadowsMax_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FColorGradingSettings_HighlightsMin_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FColorGradingSettings_HighlightsMin_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Midtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FColorGradingSettings_Midtones_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern FColorGradePerRangeSettings E_PROP_FColorGradingSettings_Shadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FColorGradingSettings_Shadows_SET(IntPtr Ptr, FColorGradePerRangeSettings Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern float E_PROP_FColorGradingSettings_ShadowsMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FColorGradingSettings_ShadowsMax_SET(IntPtr Ptr, float Value);
 		
 		#endregion
 		
@@ -67,10 +57,16 @@ namespace UnrealEngine
 			set => E_PROP_FColorGradingSettings_Global_SET(NativePointer, value);
 		}
 
-		public FColorGradePerRangeSettings Shadows
+		public FColorGradePerRangeSettings Highlights
 		{
-			get => E_PROP_FColorGradingSettings_Shadows_GET(NativePointer);
-			set => E_PROP_FColorGradingSettings_Shadows_SET(NativePointer, value);
+			get => E_PROP_FColorGradingSettings_Highlights_GET(NativePointer);
+			set => E_PROP_FColorGradingSettings_Highlights_SET(NativePointer, value);
+		}
+
+		public float HighlightsMin
+		{
+			get => E_PROP_FColorGradingSettings_HighlightsMin_GET(NativePointer);
+			set => E_PROP_FColorGradingSettings_HighlightsMin_SET(NativePointer, value);
 		}
 
 		public FColorGradePerRangeSettings Midtones
@@ -79,22 +75,16 @@ namespace UnrealEngine
 			set => E_PROP_FColorGradingSettings_Midtones_SET(NativePointer, value);
 		}
 
-		public FColorGradePerRangeSettings Highlights
+		public FColorGradePerRangeSettings Shadows
 		{
-			get => E_PROP_FColorGradingSettings_Highlights_GET(NativePointer);
-			set => E_PROP_FColorGradingSettings_Highlights_SET(NativePointer, value);
+			get => E_PROP_FColorGradingSettings_Shadows_GET(NativePointer);
+			set => E_PROP_FColorGradingSettings_Shadows_SET(NativePointer, value);
 		}
 
 		public float ShadowsMax
 		{
 			get => E_PROP_FColorGradingSettings_ShadowsMax_GET(NativePointer);
 			set => E_PROP_FColorGradingSettings_ShadowsMax_SET(NativePointer, value);
-		}
-
-		public float HighlightsMin
-		{
-			get => E_PROP_FColorGradingSettings_HighlightsMin_GET(NativePointer);
-			set => E_PROP_FColorGradingSettings_HighlightsMin_SET(NativePointer, value);
 		}
 
 		#endregion

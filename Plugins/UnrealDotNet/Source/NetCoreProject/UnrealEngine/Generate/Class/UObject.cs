@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class UObject : UObjectBaseUtility
+	public  partial class UObject : UObjectBaseUtility
 	{
 		public UObject(IntPtr Adress)
 			: base(Adress)
@@ -13,255 +13,352 @@ namespace UnrealEngine
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObject_GetDetailedInfoInternal(IntPtr Self, out int ResultStringLen);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObject_PostInitProperties(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObject_PostSaveRoot(IntPtr Self, bool bCleanupIsRequired);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObject_Modify(IntPtr Self, bool bAlwaysMarkDirty);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObject_CanModify(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObject_IsReadyForFinishDestroy(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObject_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
+		private static extern void E_UObject_BeginDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UObject_CanCreateInCurrentContext(IntPtr Self, IntPtr Template);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObject_GetDesc(IntPtr Self, out int ResultStringLen);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObject_GetWorld(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
+		private static extern bool E_UObject_CanModify(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UObject_ExecuteUbergraph(IntPtr Self, int EntryPoint);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UCapsuleComponent(IntPtr Self, string Name);
+		private static extern void E_UObject_FinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBrushComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USplineComponent(IntPtr Self, string Name);
+		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBillboardComponent(IntPtr Self, string Name);
+		private static extern bool E_UObject_IsSelected(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostCDOContruct(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostEditImport(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostInitProperties(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostLoad(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostNetReceive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostRepNotifies(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PostSaveRoot(IntPtr Self, bool bCleanupIsRequired);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PreDestroyFromReplication(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_PreNetReceive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UObject_ShutdownAfterError(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UArrowComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UModelComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UAudioComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UShapeComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawSphereComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UTextRenderComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMeshComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UVectorFieldComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBillboardComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBoxComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USplineMeshComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UCapsuleComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UChildActorComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDecalComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDirectionalLightComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPlanarReflectionComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPointLightComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPostProcessComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneCaptureComponent2D(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneCaptureComponentCube(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UShapeComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USkyLightComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USphereComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USpotLightComponent(IntPtr Self, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_USpringArmComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateOptionalDefaultSubobject_UStaticMeshComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_ULineBatchComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UTextRenderComponent(IntPtr Self, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USphereComponent(IntPtr Self, string Name);
+		private static extern IntPtr E_CreateOptionalDefaultSubobject_UVectorFieldComponent(IntPtr Self, string Name);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// This function actually does the work for the GetDetailInfo and is virtual.
-		/// It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers
+		/// <para>Called before destroying the object.  This is called immediately upon deciding to destroy the object, to allow the object to begin an </para>
+		/// <para>asynchronous cleanup process. </para>
 		/// </summary>
-		protected string GetDetailedInfoInternal()
-			=> Marshal.PtrToStringUTF8(E_UObject_GetDetailedInfoInternal(NativePointer, out int ResultStringLen), ResultStringLen);
+		public virtual void BeginDestroy()
+			=> E_UObject_BeginDestroy(this);
 		
 		
 		/// <summary>
-		/// Called after the C++ constructor and after the properties have been initialized, including those loaded from config.
-		/// mainly this is to emulate some behavior of when the constructor was called after the properties were initialized.
-		/// </summary>
-		public void PostInitProperties()
-			=> E_UObject_PostInitProperties(NativePointer);
-		
-		
-		/// <summary>
-		/// Called from within SavePackage on the passed in base/ root. This function is being called after the package
-		/// has been saved and can perform cleanup.
-		/// @param	bCleanupIsRequired	Whether PreSaveRoot dirtied state that needs to be cleaned up
-		/// </summary>
-		public void PostSaveRoot(bool bCleanupIsRequired)
-			=> E_UObject_PostSaveRoot(NativePointer, bCleanupIsRequired);
-		
-		
-		/// <summary>
-		/// Note that the object will be modified.  If we are currently recording into the
-		/// transaction buffer (undo/redo), save a copy of this object into the buffer and
-		/// marks the package as needing to be saved.
-		/// @param	bAlwaysMarkDirty	if true, marks the package dirty even if we aren't
-		/// currently recording an active undo/redo transaction
-		/// @return true if the object was saved to the transaction buffer
-		/// </summary>
-		public bool Modify(bool bAlwaysMarkDirty = true)
-			=> E_UObject_Modify(NativePointer, bAlwaysMarkDirty);
-		
-		
-		/// <summary>
-		/// Utility to allow overrides of Modify to avoid doing work if the base class is not going modify anyways.
-		/// </summary>
-		public bool CanModify()
-			=> E_UObject_CanModify(NativePointer);
-		
-		
-		/// <summary>
-		/// Called to check if the object is ready for FinishDestroy.  This is called after BeginDestroy to check the completion of the
-		/// potentially asynchronous object cleanup.
-		/// @return True if the object's asynchronous cleanup has completed and it is ready for FinishDestroy to be called.
-		/// </summary>
-		public bool IsReadyForFinishDestroy()
-			=> E_UObject_IsReadyForFinishDestroy(NativePointer);
-		
-		
-		/// <summary>
-		/// Test the selection state of a UObject
-		/// @return		true if the object is selected, false otherwise.
-		/// @todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better
-		/// </summary>
-		public void PostRename(UObject OldOuter, string OldName)
-			=> E_UObject_PostRename(NativePointer, OldOuter, OldName);
-		
-		
-		/// <summary>
-		/// Determines if you can create an object from the supplied template in the current context (editor, client only, dedicated server, game/listen)
-		/// This calls NeedsLoadForClient & NeedsLoadForServer
+		/// <para>Determines if you can create an object from the supplied template in the current context (editor, client only, dedicated server, game/listen) </para>
+		/// <para>This calls NeedsLoadForClient & NeedsLoadForServer </para>
 		/// </summary>
 		public bool CanCreateInCurrentContext(UObject Template)
-			=> E_UObject_CanCreateInCurrentContext(NativePointer, Template);
+			=> E_UObject_CanCreateInCurrentContext(this, Template);
 		
 		
 		/// <summary>
-		/// @return a one line description of an object for viewing in the thumbnail view of the generic browser
+		/// <para>Utility to allow overrides of Modify to avoid doing work if the base class is not going modify anyways. </para>
 		/// </summary>
-		public string GetDesc()
-			=> Marshal.PtrToStringUTF8(E_UObject_GetDesc(NativePointer, out int ResultStringLen), ResultStringLen);
-		
-		public UWorld GetWorld()
-			=> E_UObject_GetWorld(NativePointer);
-		
-		public UWorld GetWorldChecked(bool bSupported)
-			=> E_UObject_GetWorldChecked(NativePointer, bSupported);
-		
-		
-		/// <summary>
-		/// Returns whether native properties are identical to the one of the passed in component.
-		/// @param	Other	Other component to compare against
-		/// @return true if native properties are identical, false otherwise
-		/// </summary>
-		public bool AreNativePropertiesIdenticalTo(UObject Other)
-			=> E_UObject_AreNativePropertiesIdenticalTo(NativePointer, Other);
+		public bool CanModify()
+			=> E_UObject_CanModify(this);
 		
 		public void ExecuteUbergraph(int EntryPoint)
-			=> E_UObject_ExecuteUbergraph(NativePointer, EntryPoint);
+			=> E_UObject_ExecuteUbergraph(this, EntryPoint);
 		
-		public UCapsuleComponent CreateOptionalDefaultSubobject_UCapsuleComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UCapsuleComponent(NativePointer, Name);
 		
-		public UBrushComponent CreateOptionalDefaultSubobject_UBrushComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBrushComponent(NativePointer, Name);
+		/// <summary>
+		/// <para>Called to finish destroying the object.  After UObject::FinishDestroy is called, the object's memory should no longer be accessed. </para>
+		/// <para>note: because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's </para>
+		/// <para>FinishDestroy() method, rather than at the beginning. </para>
+		/// </summary>
+		public virtual void FinishDestroy()
+			=> E_UObject_FinishDestroy(this);
 		
-		public USplineComponent CreateOptionalDefaultSubobject_USplineComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USplineComponent(NativePointer, Name);
+		public UWorld GetWorldChecked(bool bSupported)
+			=> E_UObject_GetWorldChecked(this, bSupported);
 		
-		public UBillboardComponent CreateOptionalDefaultSubobject_UBillboardComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBillboardComponent(NativePointer, Name);
+		public bool ImplementsGetWorld()
+			=> E_UObject_ImplementsGetWorld(this);
+		
+		
+		/// <summary>
+		/// <para>Test the selection state of a UObject </para>
+		/// <return>true if the object is selected, false otherwise. </return>
+		/// <para>@todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better </para>
+		/// </summary>
+		public bool IsSelected()
+			=> E_UObject_IsSelected(this);
+		
+		
+		/// <summary>
+		/// <para>Called after the C++ constructor has run on the CDO for a class. This is an obscure routine used to deal with the recursion </para>
+		/// <para>in the construction of the default materials </para>
+		/// </summary>
+		public virtual void PostCDOContruct()
+			=> E_UObject_PostCDOContruct(this);
+		
+		
+		/// <summary>
+		/// <para>Called after importing property values for this object (paste, duplicate or .t3d import) </para>
+		/// <para>Allow the object to perform any cleanup for properties which shouldn't be duplicated or </para>
+		/// <para>are unsupported by the script serialization </para>
+		/// </summary>
+		public virtual void PostEditImport()
+			=> E_UObject_PostEditImport(this);
+		
+		
+		/// <summary>
+		/// <para>Called after the C++ constructor and after the properties have been initialized, including those loaded from config. </para>
+		/// <para>mainly this is to emulate some behavior of when the constructor was called after the properties were initialized. </para>
+		/// </summary>
+		public virtual void PostInitProperties()
+			=> E_UObject_PostInitProperties(this);
+		
+		
+		/// <summary>
+		/// <para>Do any object-specific cleanup required immediately after loading an object, </para>
+		/// <para>and immediately after any undo/redo. </para>
+		/// </summary>
+		public virtual void PostLoad()
+			=> E_UObject_PostLoad(this);
+		
+		
+		/// <summary>
+		/// <para>Called right after receiving a bunch </para>
+		/// </summary>
+		public virtual void PostNetReceive()
+			=> E_UObject_PostNetReceive(this);
+		
+		
+		/// <summary>
+		/// <para>Test the selection state of a UObject </para>
+		/// <return>true if the object is selected, false otherwise. </return>
+		/// <para>@todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better </para>
+		/// </summary>
+		public virtual void PostRename(UObject OldOuter, string OldName)
+			=> E_UObject_PostRename(this, OldOuter, OldName);
+		
+		
+		/// <summary>
+		/// <para>Called right after calling all OnRep notifies (called even when there are no notifies) </para>
+		/// </summary>
+		public virtual void PostRepNotifies()
+			=> E_UObject_PostRepNotifies(this);
+		
+		
+		/// <summary>
+		/// <para>Called from within SavePackage on the passed in base/ root. This function is being called after the package </para>
+		/// <para>has been saved and can perform cleanup. </para>
+		/// <param name="bCleanupIsRequired">Whether PreSaveRoot dirtied state that needs to be cleaned up </param>
+		/// </summary>
+		public virtual void PostSaveRoot(bool bCleanupIsRequired)
+			=> E_UObject_PostSaveRoot(this, bCleanupIsRequired);
+		
+		
+		/// <summary>
+		/// <para>Called right before being marked for destruction due to network replication </para>
+		/// </summary>
+		public virtual void PreDestroyFromReplication()
+			=> E_UObject_PreDestroyFromReplication(this);
+		
+		
+		/// <summary>
+		/// <para>Called right before receiving a bunch </para>
+		/// </summary>
+		public virtual void PreNetReceive()
+			=> E_UObject_PreNetReceive(this);
+		
+		public virtual void ShutdownAfterError()
+			=> E_UObject_ShutdownAfterError(this);
 		
 		public UArrowComponent CreateOptionalDefaultSubobject_UArrowComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UArrowComponent(NativePointer, Name);
 		
-		public UModelComponent CreateOptionalDefaultSubobject_UModelComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UModelComponent(NativePointer, Name);
+		public UAudioComponent CreateOptionalDefaultSubobject_UAudioComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UAudioComponent(NativePointer, Name);
 		
-		public UMaterialBillboardComponent CreateOptionalDefaultSubobject_UMaterialBillboardComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(NativePointer, Name);
-		
-		public UShapeComponent CreateOptionalDefaultSubobject_UShapeComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UShapeComponent(NativePointer, Name);
-		
-		public UDrawSphereComponent CreateOptionalDefaultSubobject_UDrawSphereComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDrawSphereComponent(NativePointer, Name);
-		
-		public UDrawFrustumComponent CreateOptionalDefaultSubobject_UDrawFrustumComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDrawFrustumComponent(NativePointer, Name);
-		
-		public UTextRenderComponent CreateOptionalDefaultSubobject_UTextRenderComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UTextRenderComponent(NativePointer, Name);
-		
-		public UMeshComponent CreateOptionalDefaultSubobject_UMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UMeshComponent(NativePointer, Name);
-		
-		public UVectorFieldComponent CreateOptionalDefaultSubobject_UVectorFieldComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UVectorFieldComponent(NativePointer, Name);
-		
-		public UInstancedStaticMeshComponent CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(NativePointer, Name);
+		public UBillboardComponent CreateOptionalDefaultSubobject_UBillboardComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UBillboardComponent(NativePointer, Name);
 		
 		public UBoxComponent CreateOptionalDefaultSubobject_UBoxComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UBoxComponent(NativePointer, Name);
 		
-		public USplineMeshComponent CreateOptionalDefaultSubobject_USplineMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USplineMeshComponent(NativePointer, Name);
+		public UCapsuleComponent CreateOptionalDefaultSubobject_UCapsuleComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UCapsuleComponent(NativePointer, Name);
+		
+		public UChildActorComponent CreateOptionalDefaultSubobject_UChildActorComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UChildActorComponent(NativePointer, Name);
+		
+		public UDecalComponent CreateOptionalDefaultSubobject_UDecalComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UDecalComponent(NativePointer, Name);
+		
+		public UDirectionalLightComponent CreateOptionalDefaultSubobject_UDirectionalLightComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UDirectionalLightComponent(NativePointer, Name);
+		
+		public UExponentialHeightFogComponent CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(NativePointer, Name);
+		
+		public UInstancedStaticMeshComponent CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(NativePointer, Name);
+		
+		public UMaterialBillboardComponent CreateOptionalDefaultSubobject_UMaterialBillboardComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(NativePointer, Name);
+		
+		public UPawnNoiseEmitterComponent CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(NativePointer, Name);
+		
+		public UPlanarReflectionComponent CreateOptionalDefaultSubobject_UPlanarReflectionComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UPlanarReflectionComponent(NativePointer, Name);
+		
+		public UPointLightComponent CreateOptionalDefaultSubobject_UPointLightComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UPointLightComponent(NativePointer, Name);
+		
+		public UPostProcessComponent CreateOptionalDefaultSubobject_UPostProcessComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UPostProcessComponent(NativePointer, Name);
+		
+		public USceneCaptureComponent2D CreateOptionalDefaultSubobject_USceneCaptureComponent2D(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USceneCaptureComponent2D(NativePointer, Name);
+		
+		public USceneCaptureComponentCube CreateOptionalDefaultSubobject_USceneCaptureComponentCube(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USceneCaptureComponentCube(NativePointer, Name);
+		
+		public USceneComponent CreateOptionalDefaultSubobject_USceneComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USceneComponent(NativePointer, Name);
+		
+		public UShapeComponent CreateOptionalDefaultSubobject_UShapeComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UShapeComponent(NativePointer, Name);
+		
+		public USkyLightComponent CreateOptionalDefaultSubobject_USkyLightComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USkyLightComponent(NativePointer, Name);
+		
+		public USphereComponent CreateOptionalDefaultSubobject_USphereComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USphereComponent(NativePointer, Name);
+		
+		public USpotLightComponent CreateOptionalDefaultSubobject_USpotLightComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USpotLightComponent(NativePointer, Name);
+		
+		public USpringArmComponent CreateOptionalDefaultSubobject_USpringArmComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_USpringArmComponent(NativePointer, Name);
 		
 		public UStaticMeshComponent CreateOptionalDefaultSubobject_UStaticMeshComponent(string Name) 
 			=> E_CreateOptionalDefaultSubobject_UStaticMeshComponent(NativePointer, Name);
 		
-		public ULineBatchComponent CreateOptionalDefaultSubobject_ULineBatchComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_ULineBatchComponent(NativePointer, Name);
+		public UTextRenderComponent CreateOptionalDefaultSubobject_UTextRenderComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UTextRenderComponent(NativePointer, Name);
 		
-		public USphereComponent CreateOptionalDefaultSubobject_USphereComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USphereComponent(NativePointer, Name);
+		public UVectorFieldComponent CreateOptionalDefaultSubobject_UVectorFieldComponent(string Name) 
+			=> E_CreateOptionalDefaultSubobject_UVectorFieldComponent(NativePointer, Name);
 		
 		#endregion
 		
@@ -272,5 +369,7 @@ namespace UnrealEngine
 
 		public static implicit operator UObject(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UObject(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UObject ?? new UObject(Adress);
 		}}}

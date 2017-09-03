@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Player: Corresponds to a real player (a local camera or remote net player).
+	/// Класс не может быть наследован в Вашем коде, используйте ManagePlayer
+	/// <para>Player: Corresponds to a real player (a local camera or remote net player). </para>
 	/// </summary>
-	public partial class UPlayer : UObject
+	public  partial class UPlayer : UObject
 	{
 		public UPlayer(IntPtr Adress)
 			: base(Adress)
@@ -24,12 +25,12 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// Executes the Exec() command
-		/// @param Command command to execute (string of commands optionally separated by a | (pipe))
-		/// @param bWriteToLog write out to the log
+		/// <para>Executes the Exec() command </para>
+		/// <param name="Command">command to execute (string of commands optionally separated by a | (pipe)) </param>
+		/// <param name="bWriteToLog">write out to the log </param>
 		/// </summary>
 		public string ConsoleCommand(string Cmd, bool bWriteToLog = true)
-			=> Marshal.PtrToStringUTF8(E_UPlayer_ConsoleCommand(NativePointer, Cmd, bWriteToLog, out int ResultStringLen), ResultStringLen);
+			=> Marshal.PtrToStringUTF8(E_UPlayer_ConsoleCommand(this, Cmd, bWriteToLog, out int ResultStringLen), ResultStringLen);
 		
 		#endregion
 		
@@ -40,5 +41,7 @@ namespace UnrealEngine
 
 		public static implicit operator UPlayer(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UPlayer(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UPlayer ?? new UPlayer(Adress);
 		}}}

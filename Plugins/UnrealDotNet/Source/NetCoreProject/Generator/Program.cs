@@ -30,25 +30,9 @@ namespace Generator
 
             Watch.Start();
             var domain = ParceManager.Parce(files);
-            Watch.Stop();
-
-            var parceTime = Watch.ElapsedMilliseconds;
-
-            Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
-
-            Filter.FiltreDomainForExport(domain);
-
-            domain.Print(false);
-
-            Watch.Start();
             Codegenretor.GenarateDomain(domain, output);
-            Watch.Stop();
 
-            var genTime = Watch.ElapsedMilliseconds - parceTime;
-            Console.WriteLine($"Total generate time {genTime / 1000.0}s");
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
-
-            Console.ReadKey();
         }
 
         private static void PrintError(string msg)

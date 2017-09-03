@@ -5,11 +5,12 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Pawn is the base class of all actors that can be possessed by players or AI.
-	/// They are the physical representations of players and creatures in a level.
-	/// @see https://docs.unrealengine.com/latest/INT/Gameplay/Framework/Pawn
+	/// Класс не может быть наследован в Вашем коде, используйте ManagePawn
+	/// <para>Pawn is the base class of all actors that can be possessed by players or AI. </para>
+	/// <para>They are the physical representations of players and creatures in a level. </para>
+	/// <para>@see https://docs.unrealengine.com/latest/INT/Gameplay/Framework/Pawn </para>
 	/// </summary>
-	public partial class APawn : AActor
+	public  partial class APawn : AActor
 	{
 		public APawn(IntPtr Adress)
 			: base(Adress)
@@ -19,19 +20,14 @@ namespace UnrealEngine
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_PROP_APawn_BaseEyeHeight_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_APawn_AllowedYawError_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_APawn_AllowedYawError_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern float E_PROP_APawn_BaseEyeHeight_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_APawn_ControlInputVector_GET(IntPtr Ptr);
@@ -44,89 +40,151 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_LastControlInputVector_SET(IntPtr Ptr, FVector Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_APawn_GetMovementBase(IntPtr Self);
+		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_APawn_GetPawnNoiseEmitterComponent(IntPtr Self);
+		private static extern void E_APawn_AddControllerPitchInput(IntPtr Self, float Val);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_PawnMakeNoise(IntPtr Self, float Loudness, IntPtr NoiseLocation, bool bUseNoiseMakerLocation, IntPtr NoiseMaker);
+		private static extern void E_APawn_AddControllerRollInput(IntPtr Self, float Val);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_TurnOff(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_PawnStartFire(IntPtr Self, byte FireModeNum);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_SetRemoteViewPitch(IntPtr Self, float NewRemoteViewPitch);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_APawn_ReachedDesiredRotation(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_APawn_GetDefaultHalfHeight(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_APawn_IsControlled(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_APawn_GetControlRotation(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_SetCanAffectNavigationGeneration(IntPtr Self, bool bNewValue, bool bForceUpdate);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_APawn_GetGravityDirection(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_FaceRotation(IntPtr Self, IntPtr NewControlRotation, float DeltaTime);
+		private static extern void E_APawn_AddControllerYawInput(IntPtr Self, float Val);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_APawn_AddMovementInput(IntPtr Self, IntPtr WorldDirection, float ScaleValue, bool bForce);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_ClientSetRotation(IntPtr Self, IntPtr NewRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_DestroyPlayerInputComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_DetachFromControllerPendingDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_FaceRotation(IntPtr Self, IntPtr NewControlRotation, float DeltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetControlRotation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetGravityDirection(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_GetPendingMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_APawn_InputEnabled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_APawn_Internal_AddMovementInput(IntPtr Self, IntPtr WorldAccel, bool bForce);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_Internal_ConsumeMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_Internal_GetLastMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_Internal_GetMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_Internal_GetPendingMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_APawn_IsControlled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_APawn_K2_GetMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_LaunchPawn(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_APawn_MoveIgnoreActorAdd(IntPtr Self, IntPtr ActorToIgnore);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_ClientSetRotation(IntPtr Self, IntPtr NewRotation);
+		private static extern void E_APawn_MoveIgnoreActorRemove(IntPtr Self, IntPtr ActorToIgnore);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_APawn_LaunchPawn(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
+		private static extern void E_APawn_OnRep_Controller(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_OnRep_PlayerState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_PawnClientRestart(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_PawnMakeNoise(IntPtr Self, float Loudness, IntPtr NoiseLocation, bool bUseNoiseMakerLocation, IntPtr NoiseMaker);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_PawnStartFire(IntPtr Self, byte FireModeNum);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_RecalculateBaseEyeHeight(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_Restart(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_SetCanAffectNavigationGeneration(IntPtr Self, bool bNewValue, bool bForceUpdate);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_SetPlayerDefaults(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_SetRemoteViewPitch(IntPtr Self, float NewRemoteViewPitch);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_SpawnDefaultController(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_TurnOff(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_UnPossessed(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_UpdateNavAgent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_APawn_UpdateNavigationRelevance(IntPtr Self);
 		
 		#endregion
 		
 		#region Property
 		
 		/// <summary>
-		/// Base eye height above collision center.
-		/// </summary>
-		public float BaseEyeHeight
-		{
-			get => E_PROP_APawn_BaseEyeHeight_GET(NativePointer);
-			set => E_PROP_APawn_BaseEyeHeight_SET(NativePointer, value);
-		}
-
-		public byte RemoteViewPitch
-		{
-			get => E_PROP_APawn_RemoteViewPitch_GET(NativePointer);
-			set => E_PROP_APawn_RemoteViewPitch_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// Max difference between pawn's Rotation.Yaw and GetDesiredRotation().Yaw for pawn to be considered as having reached its desired rotation
+		/// <para>Max difference between pawn's Rotation.Yaw and GetDesiredRotation().Yaw for pawn to be considered as having reached its desired rotation </para>
 		/// </summary>
 		public float AllowedYawError
 		{
 			get => E_PROP_APawn_AllowedYawError_GET(NativePointer);
 			set => E_PROP_APawn_AllowedYawError_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Base eye height above collision center. </para>
+		/// </summary>
+		public float BaseEyeHeight
+		{
+			get => E_PROP_APawn_BaseEyeHeight_GET(NativePointer);
+			set => E_PROP_APawn_BaseEyeHeight_SET(NativePointer, value);
 		}
 
 		protected FVector ControlInputVector
@@ -141,151 +199,312 @@ namespace UnrealEngine
 			set => E_PROP_APawn_LastControlInputVector_SET(NativePointer, value);
 		}
 
+		public byte RemoteViewPitch
+		{
+			get => E_PROP_APawn_RemoteViewPitch_GET(NativePointer);
+			set => E_PROP_APawn_RemoteViewPitch_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// Return PrimitiveComponent we are based on (standing on, attached to, and moving on).
+		/// <para>Add input (affecting Pitch) to the Controller's ControlRotation, if it is a local PlayerController. </para>
+		/// <para>This value is multiplied by the PlayerController's InputPitchScale value. </para>
+		/// <param name="Val">Amount to add to Pitch. This value is multiplied by the PlayerController's InputPitchScale value. </param>
+		/// <para>@see PlayerController::InputPitchScale </para>
 		/// </summary>
-		public UPrimitiveComponent GetMovementBase()
-			=> E_APawn_GetMovementBase(NativePointer);
+		public virtual void AddControllerPitchInput(float Val)
+			=> E_APawn_AddControllerPitchInput(this, Val);
 		
 		
 		/// <summary>
-		/// Return our PawnNoiseEmitterComponent, if any. Default implementation returns the first PawnNoiseEmitterComponent found in the components array.
-		/// If one isn't found, then it tries to find one on the Pawn's current Controller.
+		/// <para>Add input (affecting Roll) to the Controller's ControlRotation, if it is a local PlayerController. </para>
+		/// <para>This value is multiplied by the PlayerController's InputRollScale value. </para>
+		/// <param name="Val">Amount to add to Roll. This value is multiplied by the PlayerController's InputRollScale value. </param>
+		/// <para>@see PlayerController::InputRollScale </para>
 		/// </summary>
-		public UPawnNoiseEmitterComponent GetPawnNoiseEmitterComponent()
-			=> E_APawn_GetPawnNoiseEmitterComponent(NativePointer);
+		public virtual void AddControllerRollInput(float Val)
+			=> E_APawn_AddControllerRollInput(this, Val);
 		
 		
 		/// <summary>
-		/// Inform AIControllers that you've made a noise they might hear (they are sent a HearNoise message if they have bHearNoises==true)
-		/// The instigator of this sound is the pawn which is used to call MakeNoise.
-		/// @param Loudness - is the relative loudness of this noise (range 0.0 to 1.0).  Directly affects the hearing range specified by the AI's HearingThreshold.
-		/// @param NoiseLocation - Position of noise source.  If zero vector, use the actor's location.
-		/// @param bUseNoiseMakerLocation - If true, use the location of the NoiseMaker rather than NoiseLocation.  If false, use NoiseLocation.
-		/// @param NoiseMaker - Which actor is the source of the noise.  Not to be confused with the Noise Instigator, which is responsible for the noise (and is the pawn on which this function is called).  If not specified, the pawn instigating the noise will be used as the NoiseMaker
+		/// <para>Add input (affecting Yaw) to the Controller's ControlRotation, if it is a local PlayerController. </para>
+		/// <para>This value is multiplied by the PlayerController's InputYawScale value. </para>
+		/// <param name="Val">Amount to add to Yaw. This value is multiplied by the PlayerController's InputYawScale value. </param>
+		/// <para>@see PlayerController::InputYawScale </para>
 		/// </summary>
-		public void PawnMakeNoise(float Loudness, FVector NoiseLocation, bool bUseNoiseMakerLocation = true, AActor NoiseMaker = null)
-			=> E_APawn_PawnMakeNoise(NativePointer, Loudness, NoiseLocation, bUseNoiseMakerLocation, NoiseMaker);
+		public virtual void AddControllerYawInput(float Val)
+			=> E_APawn_AddControllerYawInput(this, Val);
 		
 		
 		/// <summary>
-		/// Freeze pawn - stop sounds, animations, physics, weapon firing
+		/// <para>Add movement input along the given world direction vector (usually normalized) scaled by 'ScaleValue'. If ScaleValue < 0, movement will be in the opposite direction. </para>
+		/// <para>Base Pawn classes won't automatically apply movement, it's up to the user to do so in a Tick event. Subclasses such as Character and DefaultPawn automatically handle this input and move. </para>
+		/// <param name="WorldDirection">Direction in world space to apply input </param>
+		/// <param name="ScaleValue">Scale to apply to input. This can be used for analog input, ie a value of 0.5 applies half the normal value, while -1.0 would reverse the direction. </param>
+		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
+		/// <para>@see GetPendingMovementInputVector(), GetLastMovementInputVector(), ConsumeMovementInputVector() </para>
 		/// </summary>
-		public void TurnOff()
-			=> E_APawn_TurnOff(NativePointer);
+		public virtual void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
+			=> E_APawn_AddMovementInput(this, WorldDirection, ScaleValue, bForce);
 		
 		
 		/// <summary>
-		/// Handle StartFire() passed from PlayerController
+		/// <para>Deprecated, misleading name and redundant </para>
 		/// </summary>
-		public void PawnStartFire(byte FireModeNum = 0)
-			=> E_APawn_PawnStartFire(NativePointer, FireModeNum);
+		public virtual void ClientSetRotation(FRotator NewRotation)
+			=> E_APawn_ClientSetRotation(this, NewRotation);
 		
 		
 		/// <summary>
-		/// Set Pawn ViewPitch, so we can see where remote clients are looking.
-		/// Maps 360.0 degrees into a byte
-		/// @param	NewRemoteViewPitch	Pitch component to replicate to remote (non owned) clients.
+		/// <para>Destroys the player input component and removes any references to it. </para>
 		/// </summary>
-		public void SetRemoteViewPitch(float NewRemoteViewPitch)
-			=> E_APawn_SetRemoteViewPitch(NativePointer, NewRemoteViewPitch);
+		protected virtual void DestroyPlayerInputComponent()
+			=> E_APawn_DestroyPlayerInputComponent(this);
 		
 		
 		/// <summary>
-		/// Gets the owning actor of the Movement Base Component on which the pawn is standing.
+		/// <para>Call this function to detach safely pawn from its controller, knowing that we will be destroyed soon. </para>
 		/// </summary>
-		public AActor GetMovementBaseActor(APawn Pawn)
-			=> E_APawn_GetMovementBaseActor(NativePointer, Pawn);
-		
-		public bool ReachedDesiredRotation()
-			=> E_APawn_ReachedDesiredRotation(NativePointer);
+		public virtual void DetachFromControllerPendingDestroy()
+			=> E_APawn_DetachFromControllerPendingDestroy(this);
 		
 		
 		/// <summary>
-		/// @return The half-height of the default Pawn, scaled by the component scale. By default returns the half-height of the RootComponent, regardless of whether it is registered or collidable.
+		/// <para>Updates Pawn's rotation to the given rotation, assumed to be the Controller's ControlRotation. Respects the bUseControllerRotation* settings. </para>
 		/// </summary>
-		public float GetDefaultHalfHeight()
-			=> E_APawn_GetDefaultHalfHeight(NativePointer);
+		public virtual void FaceRotation(FRotator NewControlRotation, float DeltaTime)
+			=> E_APawn_FaceRotation(this, NewControlRotation, DeltaTime);
 		
 		
 		/// <summary>
-		/// See if this actor is currently being controlled
-		/// </summary>
-		public bool IsControlled()
-			=> E_APawn_IsControlled(NativePointer);
-		
-		
-		/// <summary>
-		/// Get the rotation of the Controller, often the 'view' rotation of this Pawn.
+		/// <para>Get the rotation of the Controller, often the 'view' rotation of this Pawn. </para>
 		/// </summary>
 		public FRotator GetControlRotation()
-			=> E_APawn_GetControlRotation(NativePointer);
+			=> E_APawn_GetControlRotation(this);
 		
 		
 		/// <summary>
-		/// Use SetCanAffectNavigationGeneration to change this value at runtime.
-		/// Note that calling this function at runtime will result in any navigation change only if runtime navigation generation is enabled.
-		/// </summary>
-		public void SetCanAffectNavigationGeneration(bool bNewValue, bool bForceUpdate = false)
-			=> E_APawn_SetCanAffectNavigationGeneration(NativePointer, bNewValue, bForceUpdate);
-		
-		
-		/// <summary>
-		/// @return vector direction of gravity
+		/// <return>vector direction of gravity </return>
 		/// </summary>
 		public FVector GetGravityDirection()
-			=> E_APawn_GetGravityDirection(NativePointer);
+			=> E_APawn_GetGravityDirection(this);
 		
 		
 		/// <summary>
-		/// Updates Pawn's rotation to the given rotation, assumed to be the Controller's ControlRotation. Respects the bUseControllerRotation* settings.
+		/// <para>Return the last input vector in world space that was processed by ConsumeMovementInputVector(), which is usually done by the Pawn or PawnMovementComponent. </para>
+		/// <para>Any user that needs to know about the input that last affected movement should use this function. </para>
+		/// <para>For example an animation update would want to use this, since by default the order of updates in a frame is: </para>
+		/// <para>PlayerController (device input) -> MovementComponent -> Pawn -> Mesh (animations) </para>
+		/// <return>The last input vector in world space that was processed by ConsumeMovementInputVector(). </return>
+		/// <para>@see AddMovementInput(), GetPendingMovementInputVector(), ConsumeMovementInputVector() </para>
 		/// </summary>
-		public void FaceRotation(FRotator NewControlRotation, float DeltaTime)
-			=> E_APawn_FaceRotation(NativePointer, NewControlRotation, DeltaTime);
+		public FVector GetLastMovementInputVector()
+			=> E_APawn_GetLastMovementInputVector(this);
 		
 		
 		/// <summary>
-		/// Add movement input along the given world direction vector (usually normalized) scaled by 'ScaleValue'. If ScaleValue < 0, movement will be in the opposite direction.
-		/// Base Pawn classes won't automatically apply movement, it's up to the user to do so in a Tick event. Subclasses such as Character and DefaultPawn automatically handle this input and move.
-		/// @param WorldDirection	Direction in world space to apply input
-		/// @param ScaleValue		Scale to apply to input. This can be used for analog input, ie a value of 0.5 applies half the normal value, while -1.0 would reverse the direction.
-		/// @param bForce			If true always add the input, ignoring the result of IsMoveInputIgnored().
-		/// @see GetPendingMovementInputVector(), GetLastMovementInputVector(), ConsumeMovementInputVector()
+		/// <para>Gets the owning actor of the Movement Base Component on which the pawn is standing. </para>
 		/// </summary>
-		public void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce = false)
-			=> E_APawn_AddMovementInput(NativePointer, WorldDirection, ScaleValue, bForce);
+		public AActor GetMovementBaseActor(APawn Pawn)
+			=> E_APawn_GetMovementBaseActor(this, Pawn);
 		
 		
 		/// <summary>
-		/// Internal function meant for use only within Pawn or by a PawnMovementComponent. Adds movement input if not ignored, or if forced.
+		/// <para>(Deprecated) Return the input vector in world space. </para>
+		/// </summary>
+		public FVector GetMovementInputVector()
+			=> E_APawn_GetMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Return the pending input vector in world space. This is the most up-to-date value of the input vector, pending ConsumeMovementInputVector() which clears it, </para>
+		/// <para>Usually only a PawnMovementComponent will want to read this value, or the Pawn itself if it is responsible for movement. </para>
+		/// <return>The pending input vector in world space. </return>
+		/// <para>@see AddMovementInput(), GetLastMovementInputVector(), ConsumeMovementInputVector() </para>
+		/// </summary>
+		public FVector GetPendingMovementInputVector()
+			=> E_APawn_GetPendingMovementInputVector(this);
+		
+		public bool InputEnabled()
+			=> E_APawn_InputEnabled(this);
+		
+		
+		/// <summary>
+		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. Adds movement input if not ignored, or if forced. </para>
 		/// </summary>
 		public void Internal_AddMovementInput(FVector WorldAccel, bool bForce = false)
-			=> E_APawn_Internal_AddMovementInput(NativePointer, WorldAccel, bForce);
+			=> E_APawn_Internal_AddMovementInput(this, WorldAccel, bForce);
 		
 		
 		/// <summary>
-		/// Add an Actor to ignore by Pawn's movement collision
+		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. LastControlInputVector is updated with initial value of ControlInputVector. Returns ControlInputVector and resets it to zero. </para>
 		/// </summary>
-		public void MoveIgnoreActorAdd(AActor ActorToIgnore)
-			=> E_APawn_MoveIgnoreActorAdd(NativePointer, ActorToIgnore);
+		public FVector Internal_ConsumeMovementInputVector()
+			=> E_APawn_Internal_ConsumeMovementInputVector(this);
 		
 		
 		/// <summary>
-		/// Deprecated, misleading name and redundant
+		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. Returns the value of LastControlInputVector. </para>
 		/// </summary>
-		public void ClientSetRotation(FRotator NewRotation)
-			=> E_APawn_ClientSetRotation(NativePointer, NewRotation);
+		public FVector Internal_GetLastMovementInputVector()
+			=> E_APawn_Internal_GetLastMovementInputVector(this);
 		
 		
 		/// <summary>
-		/// (Deprecated) Launch Character with LaunchVelocity
+		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. </para>
+		/// </summary>
+		public FVector Internal_GetMovementInputVector()
+			=> E_APawn_Internal_GetMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. Returns the value of ControlInputVector. </para>
+		/// </summary>
+		public FVector Internal_GetPendingMovementInputVector()
+			=> E_APawn_Internal_GetPendingMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>See if this actor is currently being controlled </para>
+		/// </summary>
+		public bool IsControlled()
+			=> E_APawn_IsControlled(this);
+		
+		
+		/// <summary>
+		/// <para>(Deprecated) Return the input vector in world space. </para>
+		/// </summary>
+		public FVector K2_GetMovementInputVector()
+			=> E_APawn_K2_GetMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>(Deprecated) Launch Character with LaunchVelocity </para>
 		/// </summary>
 		public void LaunchPawn(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
-			=> E_APawn_LaunchPawn(NativePointer, LaunchVelocity, bXYOverride, bZOverride);
+			=> E_APawn_LaunchPawn(this, LaunchVelocity, bXYOverride, bZOverride);
+		
+		
+		/// <summary>
+		/// <para>Add an Actor to ignore by Pawn's movement collision </para>
+		/// </summary>
+		public void MoveIgnoreActorAdd(AActor ActorToIgnore)
+			=> E_APawn_MoveIgnoreActorAdd(this, ActorToIgnore);
+		
+		
+		/// <summary>
+		/// <para>Remove an Actor to ignore by Pawn's movement collision </para>
+		/// </summary>
+		public void MoveIgnoreActorRemove(AActor ActorToIgnore)
+			=> E_APawn_MoveIgnoreActorRemove(this, ActorToIgnore);
+		
+		public virtual void OnRep_Controller()
+			=> E_APawn_OnRep_Controller(this);
+		
+		public virtual void OnRep_PlayerState()
+			=> E_APawn_OnRep_PlayerState(this);
+		
+		
+		/// <summary>
+		/// <para>Tell client that the Pawn is begin restarted. Calls Restart(). </para>
+		/// </summary>
+		public virtual void PawnClientRestart()
+			=> E_APawn_PawnClientRestart(this);
+		
+		
+		/// <summary>
+		/// <para>Inform AIControllers that you've made a noise they might hear (they are sent a HearNoise message if they have bHearNoises==true) </para>
+		/// <para>The instigator of this sound is the pawn which is used to call MakeNoise. </para>
+		/// <param name="Loudness">- is the relative loudness of this noise (range 0.0 to 1.0).  Directly affects the hearing range specified by the AI's HearingThreshold. </param>
+		/// <param name="NoiseLocation">- Position of noise source.  If zero vector, use the actor's location. </param>
+		/// <param name="bUseNoiseMakerLocation">- If true, use the location of the NoiseMaker rather than NoiseLocation.  If false, use NoiseLocation. </param>
+		/// <param name="NoiseMaker">- Which actor is the source of the noise.  Not to be confused with the Noise Instigator, which is responsible for the noise (and is the pawn on which this function is called).  If not specified, the pawn instigating the noise will be used as the NoiseMaker </param>
+		/// </summary>
+		public void PawnMakeNoise(float Loudness, FVector NoiseLocation, bool bUseNoiseMakerLocation = true, AActor NoiseMaker = null)
+			=> E_APawn_PawnMakeNoise(this, Loudness, NoiseLocation, bUseNoiseMakerLocation, NoiseMaker);
+		
+		
+		/// <summary>
+		/// <para>Handle StartFire() passed from PlayerController </para>
+		/// </summary>
+		public virtual void PawnStartFire(byte FireModeNum)
+			=> E_APawn_PawnStartFire(this, FireModeNum);
+		
+		
+		/// <summary>
+		/// <para>Set BaseEyeHeight based on current state. </para>
+		/// </summary>
+		public virtual void RecalculateBaseEyeHeight()
+			=> E_APawn_RecalculateBaseEyeHeight(this);
+		
+		
+		/// <summary>
+		/// <para>Called when the Pawn is being restarted (usually by being possessed by a Controller). </para>
+		/// </summary>
+		public virtual void Restart()
+			=> E_APawn_Restart(this);
+		
+		
+		/// <summary>
+		/// <para>Use SetCanAffectNavigationGeneration to change this value at runtime. </para>
+		/// <para>Note that calling this function at runtime will result in any navigation change only if runtime navigation generation is enabled. </para>
+		/// </summary>
+		public void SetCanAffectNavigationGeneration(bool bNewValue, bool bForceUpdate = false)
+			=> E_APawn_SetCanAffectNavigationGeneration(this, bNewValue, bForceUpdate);
+		
+		
+		/// <summary>
+		/// <para>Make sure pawn properties are back to default. </para>
+		/// </summary>
+		public virtual void SetPlayerDefaults()
+			=> E_APawn_SetPlayerDefaults(this);
+		
+		
+		/// <summary>
+		/// <para>Set Pawn ViewPitch, so we can see where remote clients are looking. </para>
+		/// <para>Maps 360.0 degrees into a byte </para>
+		/// <param name="NewRemoteViewPitch">Pitch component to replicate to remote (non owned) clients. </param>
+		/// </summary>
+		public void SetRemoteViewPitch(float NewRemoteViewPitch)
+			=> E_APawn_SetRemoteViewPitch(this, NewRemoteViewPitch);
+		
+		
+		/// <summary>
+		/// <para>Spawn default controller for this Pawn, and get possessed by it. </para>
+		/// </summary>
+		public virtual void SpawnDefaultController()
+			=> E_APawn_SpawnDefaultController(this);
+		
+		
+		/// <summary>
+		/// <para>Freeze pawn - stop sounds, animations, physics, weapon firing </para>
+		/// </summary>
+		public virtual void TurnOff()
+			=> E_APawn_TurnOff(this);
+		
+		
+		/// <summary>
+		/// <para>Called when our Controller no longer possesses us. </para>
+		/// </summary>
+		public virtual void UnPossessed()
+			=> E_APawn_UnPossessed(this);
+		
+		
+		/// <summary>
+		/// <para>updates MovementComponent's parameters used by navigation system </para>
+		/// </summary>
+		public void UpdateNavAgent()
+			=> E_APawn_UpdateNavAgent(this);
+		
+		
+		/// <summary>
+		/// <para>update all components relevant for navigation generators to match bCanAffectNavigationGeneration flag </para>
+		/// </summary>
+		public virtual void UpdateNavigationRelevance()
+			=> E_APawn_UpdateNavigationRelevance(this);
 		
 		#endregion
 		
@@ -296,5 +515,7 @@ namespace UnrealEngine
 
 		public static implicit operator APawn(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new APawn(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as APawn ?? new APawn(Adress);
 		}}}

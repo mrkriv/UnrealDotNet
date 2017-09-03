@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// level streaming updates that should be applied immediately after committing the map change
+	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelStreamingStatus
+	/// <para>level streaming updates that should be applied immediately after committing the map change </para>
 	/// </summary>
-	public partial class FLevelStreamingStatus
+	public  partial class FLevelStreamingStatus : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FLevelStreamingStatus()
+		public FLevelStreamingStatus() : base(E_CreateStruct_FLevelStreamingStatus(), false)
 		{
-			NativePointer = E_CreateStruct_FLevelStreamingStatus();
-			IsRef = false;
 		}
 
-		internal FLevelStreamingStatus(IntPtr NativePointer, bool IsRef)
+		internal FLevelStreamingStatus(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FLevelStreamingStatus_PackageName_GET(IntPtr Ptr);

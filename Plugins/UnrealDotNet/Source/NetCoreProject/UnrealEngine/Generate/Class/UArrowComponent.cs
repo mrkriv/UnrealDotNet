@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A simple arrow rendered using lines. Useful for indicating which way an object is facing.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageArrowComponent
+	/// <para>A simple arrow rendered using lines. Useful for indicating which way an object is facing. </para>
 	/// </summary>
-	public partial class UArrowComponent : UPrimitiveComponent
+	public  partial class UArrowComponent : UPrimitiveComponent
 	{
 		public UArrowComponent(IntPtr Adress)
 			: base(Adress)
@@ -22,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator UArrowComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UArrowComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UArrowComponent ?? new UArrowComponent(Adress);
 		}}}

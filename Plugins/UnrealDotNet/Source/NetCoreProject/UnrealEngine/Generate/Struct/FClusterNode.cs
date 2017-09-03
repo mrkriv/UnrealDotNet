@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FClusterNode
+	public  partial class FClusterNode : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FClusterNode()
+		public FClusterNode() : base(E_CreateStruct_FClusterNode(), false)
 		{
-			NativePointer = E_CreateStruct_FClusterNode();
-			IsRef = false;
 		}
 
-		internal FClusterNode(IntPtr NativePointer, bool IsRef)
+		internal FClusterNode(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,7 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FClusterNode();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
+		private static extern FVector E_PROP_FClusterNode_BoundMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FClusterNode_BoundMax_SET(IntPtr Ptr, FVector Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_FClusterNode_BoundMin_GET(IntPtr Ptr);
@@ -39,19 +34,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FClusterNode_FirstChild_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FClusterNode_BoundMax_GET(IntPtr Ptr);
+		private static extern int E_PROP_FClusterNode_FirstInstance_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClusterNode_BoundMax_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FClusterNode_FirstInstance_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FClusterNode_LastChild_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FClusterNode_LastChild_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern int E_PROP_FClusterNode_FirstInstance_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClusterNode_FirstInstance_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FClusterNode_LastInstance_GET(IntPtr Ptr);
@@ -61,6 +51,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public FVector BoundMax
+		{
+			get => E_PROP_FClusterNode_BoundMax_GET(NativePointer);
+			set => E_PROP_FClusterNode_BoundMax_SET(NativePointer, value);
+		}
+
 		public FVector BoundMin
 		{
 			get => E_PROP_FClusterNode_BoundMin_GET(NativePointer);
@@ -73,22 +69,16 @@ namespace UnrealEngine
 			set => E_PROP_FClusterNode_FirstChild_SET(NativePointer, value);
 		}
 
-		public FVector BoundMax
+		public int FirstInstance
 		{
-			get => E_PROP_FClusterNode_BoundMax_GET(NativePointer);
-			set => E_PROP_FClusterNode_BoundMax_SET(NativePointer, value);
+			get => E_PROP_FClusterNode_FirstInstance_GET(NativePointer);
+			set => E_PROP_FClusterNode_FirstInstance_SET(NativePointer, value);
 		}
 
 		public int LastChild
 		{
 			get => E_PROP_FClusterNode_LastChild_GET(NativePointer);
 			set => E_PROP_FClusterNode_LastChild_SET(NativePointer, value);
-		}
-
-		public int FirstInstance
-		{
-			get => E_PROP_FClusterNode_FirstInstance_GET(NativePointer);
-			set => E_PROP_FClusterNode_FirstInstance_SET(NativePointer, value);
 		}
 
 		public int LastInstance

@@ -5,7 +5,7 @@ namespace Generator.Metadata
 {
     public class Class
     {
-        public Dictionary<string, string> UMeta;
+        public Dictionary<string, string> UMeta { get; set; }
         public string Name { get; }
         public Domain Domain { get; set; }
         public Class BaseClass { get; set; }
@@ -16,6 +16,9 @@ namespace Generator.Metadata
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
         public bool IsTemplate { get; set; }
+        public bool IsReadOnly { get; set; }
+        public bool IsFinal { get; set; }
+
         public string Description { get; set; }
         public string SourceFile { get; set; }
 
@@ -53,7 +56,7 @@ namespace Generator.Metadata
 
         public bool IsChild(string ClassName)
         {
-            var cl = BaseClass;
+            var cl = this;
             while (cl != null)
             {
                 if (cl.Name == ClassName)

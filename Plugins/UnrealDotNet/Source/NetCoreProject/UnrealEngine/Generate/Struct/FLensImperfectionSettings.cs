@@ -3,30 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FLensImperfectionSettings
+	public  partial class FLensImperfectionSettings : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FLensImperfectionSettings()
+		public FLensImperfectionSettings() : base(E_CreateStruct_FLensImperfectionSettings(), false)
 		{
-			NativePointer = E_CreateStruct_FLensImperfectionSettings();
-			IsRef = false;
 		}
 
-		internal FLensImperfectionSettings(IntPtr NativePointer, bool IsRef)
+		internal FLensImperfectionSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FLensImperfectionSettings();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(IntPtr Ptr);
@@ -38,7 +28,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// BloomDirtMask intensity
+		/// <para>BloomDirtMask intensity </para>
 		/// </summary>
 		public float DirtMaskIntensity
 		{

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
@@ -26,7 +27,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObject.ULog_Error(e.ToString());
+                UObjectBaseUtility.ULog_Error(e.ToString());
             }
         }
 
@@ -41,30 +42,36 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObject.ULog_Error(e.ToString());
+                UObjectBaseUtility.ULog_Error(e.ToString());
                 return "";
             }
+        }
+
+        public static object GetWrapper(IntPtr Adress)
+        {
+            Wrappers.TryGetValue(Adress, out var result);
+            return result;
         }
 
         public static bool AddWrapper(IntPtr Adress, string ClassName)
         {
             if (Wrappers.ContainsKey(Adress))
             {
-                UObject.ULog_Warning($"Object is already registered. Type:{ClassName}, Adress:{Adress}");
+                UObjectBaseUtility.ULog_Warning($"Object is already registered. Type:{ClassName}, Adress:{Adress}");
                 return false;
             }
 
             var type = GameLogicAssembly.GetType(ClassName);
             if (type == null)
             {
-                UObject.ULog_Error($"Failed create object, type {ClassName} not found");
+                UObjectBaseUtility.ULog_Error($"Failed create object, type {ClassName} not found");
                 return false;
             }
 
             var constructor = type.GetConstructor(new[] { typeof(IntPtr) });
             if (constructor == null)
             {
-                UObject.ULog_Error($"Failed create object, type {ClassName} not have IntPtr constructor");
+                UObjectBaseUtility.ULog_Error($"Failed create object, type {ClassName} not have IntPtr constructor");
                 return false;
             }
 
@@ -75,44 +82,44 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObject.ULog_Error($"Failed create object, exception:{e}\n{e.StackTrace}");
+                UObjectBaseUtility.ULog_Error($"Failed create object, exception:{e}\n{e.StackTrace}");
                 return false;
             }
 
-            UObject.ULog_Debug($"Create object, Type:{ClassName}, Adress:{Adress}");
+            UObjectBaseUtility.ULog_Debug($"Create object, Type:{ClassName}, Adress:{Adress}");
             return true;
         }
 
         public static void Invoke(IntPtr Adress, string MethodName, IntPtr Arguments, int Size)
         {
-            if (!Wrappers.TryGetValue(Adress, out var obj))
-            {
-                UObject.ULog_Error($"Failed call method {MethodName}, {Adress} not found");
-                return;
-            }
-
-            var method = obj.GetType().GetMethod(MethodName);
-            if (method == null)
-            {
-                UObject.ULog_Error($"Failed call method {MethodName} in {Adress}, method not found in {obj.GetType()}");
-                return;
-            }
-
-            var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
-            if (!IsSuccess)
-            {
-                UObject.ULog_Error($"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
-                return;
-            }
-
             try
             {
-                //UObject.ULog_Debug($"Call method {MethodName} in {Adress}");
+                if (!Wrappers.TryGetValue(Adress, out var obj))
+                {
+                    UObjectBaseUtility.ULog_Error($"Failed call method {MethodName}, {Adress} not found");
+                    return;
+                }
+
+                var method = obj.GetType().GetMethod(MethodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (method == null)
+                {
+                    UObjectBaseUtility.ULog_Error($"Failed call method {MethodName} in {Adress}, method not found in {obj.GetType()}");
+                    return;
+                }
+
+                var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
+                if (!IsSuccess)
+                {
+                    UObjectBaseUtility.ULog_Error($"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
+                    return;
+                }
+
+                //UObjectBaseUtility.ULog_Debug($"Call method {MethodName} in {Adress}");
                 method.Invoke(obj, Params);
             }
             catch (Exception e)
             {
-                UObject.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
             }
         }
 
@@ -169,12 +176,17 @@ namespace UnrealEngine
         {
             if (Wrappers.Remove(Adress))
             {
-                UObject.ULog_Debug($"Free object {Adress}");
+                UObjectBaseUtility.ULog_Debug($"Free object {Adress}");
             }
             else
             {
-                UObject.ULog_Warning($"Failed free object, {Adress} not found");
+                UObjectBaseUtility.ULog_Warning($"Failed free object, {Adress} not found");
             }
+        }
+
+        public static string GetMetadata()
+        {
+            return "";
         }
     }
 }

@@ -5,34 +5,25 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Container for describing various types of netdrivers available to the engine
-	/// The engine will try to construct a netdriver of a given type and, failing that,
-	/// the fallback version.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageNetDriverDefinition
+	/// <para>Container for describing various types of netdrivers available to the engine </para>
+	/// <para>The engine will try to construct a netdriver of a given type and, failing that, </para>
+	/// <para>the fallback version. </para>
 	/// </summary>
-	public partial class FNetDriverDefinition
+	public  partial class FNetDriverDefinition : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FNetDriverDefinition()
+		public FNetDriverDefinition() : base(E_CreateStruct_FNetDriverDefinition(), false)
 		{
-			NativePointer = E_CreateStruct_FNetDriverDefinition();
-			IsRef = false;
 		}
 
-		internal FNetDriverDefinition(IntPtr NativePointer, bool IsRef)
+		internal FNetDriverDefinition(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FNetDriverDefinition();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FNetDriverDefinition_DefName_GET(IntPtr Ptr);

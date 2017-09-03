@@ -3,21 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class FBatchedPoint
+	public  partial class FBatchedPoint : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FBatchedPoint()
+		public FBatchedPoint() : base(E_CreateStruct_FBatchedPoint(), false)
 		{
-			NativePointer = E_CreateStruct_FBatchedPoint();
-			IsRef = false;
 		}
 
-		internal FBatchedPoint(IntPtr NativePointer, bool IsRef)
+		internal FBatchedPoint(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
@@ -26,12 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBatchedPoint();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
-		
+		private static extern byte E_PROP_FBatchedPoint_DepthPriority_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FBatchedPoint_Position_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBatchedPoint_Position_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FBatchedPoint_DepthPriority_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FBatchedPoint_PointSize_GET(IntPtr Ptr);
@@ -39,22 +29,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBatchedPoint_PointSize_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern FVector E_PROP_FBatchedPoint_Position_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_FBatchedPoint_Position_SET(IntPtr Ptr, FVector Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FBatchedPoint_RemainingLifeTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_FBatchedPoint_RemainingLifeTime_SET(IntPtr Ptr, float Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern byte E_PROP_FBatchedPoint_DepthPriority_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBatchedPoint_DepthPriority_SET(IntPtr Ptr, byte Value);
-		
 		#endregion
 		
 		#region Property
-		public FVector Position
+		public byte DepthPriority
 		{
-			get => E_PROP_FBatchedPoint_Position_GET(NativePointer);
-			set => E_PROP_FBatchedPoint_Position_SET(NativePointer, value);
+			get => E_PROP_FBatchedPoint_DepthPriority_GET(NativePointer);
+			set => E_PROP_FBatchedPoint_DepthPriority_SET(NativePointer, value);
 		}
 
 		public float PointSize
@@ -63,16 +53,16 @@ namespace UnrealEngine
 			set => E_PROP_FBatchedPoint_PointSize_SET(NativePointer, value);
 		}
 
+		public FVector Position
+		{
+			get => E_PROP_FBatchedPoint_Position_GET(NativePointer);
+			set => E_PROP_FBatchedPoint_Position_SET(NativePointer, value);
+		}
+
 		public float RemainingLifeTime
 		{
 			get => E_PROP_FBatchedPoint_RemainingLifeTime_GET(NativePointer);
 			set => E_PROP_FBatchedPoint_RemainingLifeTime_SET(NativePointer, value);
-		}
-
-		public byte DepthPriority
-		{
-			get => E_PROP_FBatchedPoint_DepthPriority_GET(NativePointer);
-			set => E_PROP_FBatchedPoint_DepthPriority_SET(NativePointer, value);
 		}
 
 		#endregion

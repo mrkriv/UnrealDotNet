@@ -13,16 +13,17 @@ namespace Generator.Metadata
 
     public class Method : IEquatable<Method>
     {
-        public Dictionary<string, string> UMeta;
+        public Dictionary<string, string> UMeta { get; set; }
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
         public AccessModifier AccessModifier { get; set; }
         public Class OwnerClass { get; set; }
         public bool IsConst { get; set; }
-        public bool IsVirtual { get; set; }
-        public bool IsOverride { get; set; }
+        public bool IsFinal { get; set; }
         public bool IsStatic { get; set; }
         public bool IsFriend { get; set; }
+        public bool IsVirtual { get; set; }
+        public bool IsOverride { get; set; }
         public bool IsTemplate { get; set; }
         public string Operator { get; set; }
         public string Description { get; set; }
@@ -60,12 +61,12 @@ namespace Generator.Metadata
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            if (InputTypes.Count != other.InputTypes.Count ||
+            if (Name != other.Name ||
+                InputTypes.Count != other.InputTypes.Count ||
                 !Equals(ReturnType, other.ReturnType) ||
                 !Equals(OwnerClass, other.OwnerClass) ||
                 IsConst != other.IsConst ||
-                IsTemplate != other.IsTemplate &&
-                !string.Equals(Name, other.Name))
+                IsTemplate != other.IsTemplate)
             {
                 return false;
             }

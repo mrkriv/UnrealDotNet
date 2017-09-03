@@ -5,9 +5,10 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// A sphere generally used for simple collision. Bounds are rendered as lines in the editor.
+	/// Класс не может быть наследован в Вашем коде, используйте ManageDrawSphereComponent
+	/// <para>A sphere generally used for simple collision. Bounds are rendered as lines in the editor. </para>
 	/// </summary>
-	public partial class UDrawSphereComponent : USphereComponent
+	public  partial class UDrawSphereComponent : USphereComponent
 	{
 		public UDrawSphereComponent(IntPtr Adress)
 			: base(Adress)
@@ -22,5 +23,7 @@ namespace UnrealEngine
 
 		public static implicit operator UDrawSphereComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new UDrawSphereComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as UDrawSphereComponent ?? new UDrawSphereComponent(Adress);
 		}}}

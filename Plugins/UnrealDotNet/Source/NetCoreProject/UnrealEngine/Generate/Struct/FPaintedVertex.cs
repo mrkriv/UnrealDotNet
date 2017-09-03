@@ -5,32 +5,23 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// Cached vertex information at the time the mesh was painted.
+	/// Класс не может быть наследован в Вашем коде, используйте ManagePaintedVertex
+	/// <para>Cached vertex information at the time the mesh was painted. </para>
 	/// </summary>
-	public partial class FPaintedVertex
+	public  partial class FPaintedVertex : NativeStructWrapper
 	{
-		private readonly IntPtr NativePointer;
-		private readonly bool IsRef;
-		
-		public FPaintedVertex()
+		public FPaintedVertex() : base(E_CreateStruct_FPaintedVertex(), false)
 		{
-			NativePointer = E_CreateStruct_FPaintedVertex();
-			IsRef = false;
 		}
 
-		internal FPaintedVertex(IntPtr NativePointer, bool IsRef)
+		internal FPaintedVertex(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
-			this.NativePointer = NativePointer;
-			this.IsRef = IsRef;
 		}
 
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FPaintedVertex();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_DeleteStruct(IntPtr Adress);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern FVector E_PROP_FPaintedVertex_Position_GET(IntPtr Ptr);

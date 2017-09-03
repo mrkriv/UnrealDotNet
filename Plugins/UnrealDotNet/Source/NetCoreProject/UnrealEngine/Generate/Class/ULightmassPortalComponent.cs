@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public partial class ULightmassPortalComponent : USceneComponent
+	public  partial class ULightmassPortalComponent : USceneComponent
 	{
 		public ULightmassPortalComponent(IntPtr Adress)
 			: base(Adress)
@@ -18,5 +18,7 @@ namespace UnrealEngine
 
 		public static implicit operator ULightmassPortalComponent(IntPtr Adress)
 		{
-			return Adress == IntPtr.Zero ? null : new ULightmassPortalComponent(Adress);
+			if (Adress == IntPtr.Zero)
+				return null;
+			return NativeManager.GetWrapper(Adress) as ULightmassPortalComponent ?? new ULightmassPortalComponent(Adress);
 		}}}
