@@ -187,6 +187,9 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_OnUnregister(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UActorComponent_ReceiveBeginPlay(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UActorComponent_ReceiveTick(IntPtr Self, float DeltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -634,6 +637,14 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void OnUnregister()
 			=> E_UActorComponent_OnUnregister(this);
+		
+		
+		/// <summary>
+		/// <para>Blueprint implementable event for when the component is beginning play, called before its Owner's BeginPlay on Actor BeginPlay </para>
+		/// <para>or when the component is dynamically created if the Actor has already BegunPlay. </para>
+		/// </summary>
+		public void ReceiveBeginPlay()
+			=> E_UActorComponent_ReceiveBeginPlay(this);
 		
 		
 		/// <summary>

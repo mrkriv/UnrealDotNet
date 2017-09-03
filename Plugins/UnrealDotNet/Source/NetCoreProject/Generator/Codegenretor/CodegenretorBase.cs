@@ -24,7 +24,6 @@ namespace Generator
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";
 
-        protected static readonly Regex DisplayNameRegex = new Regex(@"[^\w_]");
         protected static readonly Regex SummaryParamRegex = new Regex(@"@param\s+(\w+)\s+(.*)");
         protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\s+(.*)");
 

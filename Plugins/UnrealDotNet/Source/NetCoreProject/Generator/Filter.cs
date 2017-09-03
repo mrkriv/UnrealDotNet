@@ -91,13 +91,15 @@ namespace Generator
 
         private static void RemoveMethodDublicatedName(Class cl)
         {
-            foreach (var method in cl.Methods)
+            var primitivs = cl.Methods.Cast<Primitive>().Concat(cl.Property);
+
+            foreach (var prim in primitivs)
             {
-                if (!method.UMeta.TryGetValue("DisplayName", out var name))
+                if (!prim.UMeta.ContainsKey("DisplayName"))
                     continue;
 
-                var dublicated = cl.Methods.Where(m => m.Name == name || m.UMeta.ContainsKey("DisplayName") && m.UMeta["DisplayName"] == name)
-                    .ToList();
+                var name = prim.GetDisplayName();
+                var dublicated = primitivs.Where(m => name == m.GetDisplayName()).ToList();
 
                 if (dublicated.Count > 1)
                 {

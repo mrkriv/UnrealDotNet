@@ -11,12 +11,10 @@ namespace Generator.Metadata
         Public
     }
 
-    public class Method : IEquatable<Method>
+    public class Method : Primitive, IEquatable<Method>
     {
-        public Dictionary<string, string> UMeta { get; set; }
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
-        public AccessModifier AccessModifier { get; set; }
         public Class OwnerClass { get; set; }
         public bool IsConst { get; set; }
         public bool IsFinal { get; set; }
@@ -24,15 +22,10 @@ namespace Generator.Metadata
         public bool IsFriend { get; set; }
         public bool IsVirtual { get; set; }
         public bool IsOverride { get; set; }
-        public bool IsTemplate { get; set; }
         public string Operator { get; set; }
-        public string Description { get; set; }
-
-        public string Name { get; set; }
 
         public Method(string Name)
         {
-            UMeta = new Dictionary<string, string>();
             InputTypes = new List<Variable>();
             this.Name = Name;
         }

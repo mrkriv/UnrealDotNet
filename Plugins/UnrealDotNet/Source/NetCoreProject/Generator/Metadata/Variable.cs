@@ -3,18 +3,14 @@ using System.Collections.Generic;
 
 namespace Generator.Metadata
 {
-    public abstract class Variable : IEquatable<Variable>
+    public abstract class Variable : Primitive, IEquatable<Variable>
     {
-        public Dictionary<string, string> UMeta { get; set; }
         public bool IsConst { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
-        public AccessModifier AccessModifier { get; set; }
 
         public string Type { get; protected set; }
         public string Default { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
 
         protected Variable()
         {

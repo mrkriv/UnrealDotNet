@@ -134,12 +134,11 @@ namespace Generator
             {
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, false)));
                 var inputs = method.InputTypes.Select(t => t.Name).ToList();
-                var name = GetMethodDisplayName(method);
 
                 GenerateSummaty(cw, method.Description);
 
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
-                cw.WriteLine($"override {ExportVariable(method.ReturnType)} {name}({param}) {{ }}");
+                cw.WriteLine($"override {ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param}) {{ }}");
                 // cw.WriteLine($"\t=> base.{name}({string.Join(", ", inputs)});");
 
                 cw.WriteLine();
@@ -246,7 +245,6 @@ namespace Generator
                 var genDefault = !method.IsVirtual && ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
 
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, genDefault)));
-                var name = GetMethodDisplayName(method);
 
                 GenerateSummaty(cw, method.Description);
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
@@ -263,7 +261,7 @@ namespace Generator
                 else
                 {
                     inputs.Insert(0, "this");
-                    cw.WriteLine($"{ExportVariable(method.ReturnType)} {name}({param})");
+                    cw.WriteLine($"{ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param})");
                 }
 
                 if (haveBody)
@@ -386,33 +384,13 @@ namespace Generator
                     "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]");
             }
 
-            private static string GetMethodDisplayName(Method method)
-            {
-                // TODO: проверить есть ли метод с таким именем
-                if (method.UMeta.ContainsKey("DisplayName"))
-                {
-                    return DisplayNameRegex.Replace(method.UMeta["DisplayName"], "");
-                }
-                return method.Name;
-            }
-
-            private static string GetPropertyDisplayName(Variable variable)
-            {
-                // TODO: проверить есть ли метод с таким именем
-                if (variable.UMeta.ContainsKey("DisplayName"))
-                {
-                    return DisplayNameRegex.Replace(variable.UMeta["DisplayName"], "");
-                }
-                return variable.Name;
-            }
-
             private static string ExportVariable(Variable variable, bool IncludeDefault = true, bool ForExtern = false)
             {
                 var result = ForExtern ? variable.GetTypeCSForExtend() : variable.GetTypeCS();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                 {
-                    result += " " + GetPropertyDisplayName(variable);
+                    result += " " + variable.GetDisplayName();
 
                     if (IncludeDefault)
                     {

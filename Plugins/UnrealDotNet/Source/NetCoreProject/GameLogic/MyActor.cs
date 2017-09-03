@@ -17,8 +17,8 @@ namespace GameLogic
             try
             {
                 PrimaryActorTick.bCanEverTick = 1;
-
-                //  Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+                
+                // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
 
                 CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
             }

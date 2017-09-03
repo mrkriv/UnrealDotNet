@@ -347,6 +347,11 @@ extern "C"
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnUnregister_WRAP();
 	}
 
+	DOTNET_EXPORT void E_UActorComponent_ReceiveBeginPlay(INT_PTR Self)
+	{
+		((UActorComponent*)Self)->ReceiveBeginPlay();
+	}
+
 	DOTNET_EXPORT void E_UActorComponent_ReceiveTick(INT_PTR Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;

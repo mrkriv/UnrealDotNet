@@ -3,10 +3,8 @@ using System.Linq;
 
 namespace Generator.Metadata
 {
-    public class Class
+    public class Class : Primitive
     {
-        public Dictionary<string, string> UMeta { get; set; }
-        public string Name { get; }
         public Domain Domain { get; set; }
         public Class BaseClass { get; set; }
         public Class NamespaceBaseClass { get; set; }
@@ -15,11 +13,8 @@ namespace Generator.Metadata
         public List<Variable> Property { get; set; }
         public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
-        public bool IsTemplate { get; set; }
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
-
-        public string Description { get; set; }
         public string SourceFile { get; set; }
 
         public string FullName => NamespaceBaseClass != null ? NamespaceBaseClass.FullName + "." + Name : Name;
@@ -48,7 +43,6 @@ namespace Generator.Metadata
             Methods = new List<Method>();
             Property = new List<Variable>();
             Constructors = new List<Method>();
-            UMeta = new Dictionary<string, string>();
 
             IsImplemented = false;
             this.Name = Name;
