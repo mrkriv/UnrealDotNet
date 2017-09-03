@@ -19,9 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLensSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FLensBloomSettings E_PROP_FLensSettings_Bloom_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FLensSettings_Bloom_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FLensSettings_Bloom_SET(IntPtr Ptr, FLensBloomSettings Value);
+		private static extern void E_PROP_FLensSettings_Bloom_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FLensSettings_ChromaticAberration_GET(IntPtr Ptr);
@@ -29,9 +29,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FLensSettings_ChromaticAberration_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FLensImperfectionSettings E_PROP_FLensSettings_Imperfections_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FLensSettings_Imperfections_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FLensSettings_Imperfections_SET(IntPtr Ptr, FLensImperfectionSettings Value);
+		private static extern void E_PROP_FLensSettings_Imperfections_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

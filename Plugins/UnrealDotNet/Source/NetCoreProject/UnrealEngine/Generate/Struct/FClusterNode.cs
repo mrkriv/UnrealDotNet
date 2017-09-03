@@ -19,14 +19,14 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FClusterNode();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FClusterNode_BoundMax_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FClusterNode_BoundMax_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClusterNode_BoundMax_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FClusterNode_BoundMax_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FClusterNode_BoundMin_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FClusterNode_BoundMin_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FClusterNode_BoundMin_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FClusterNode_BoundMin_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_PROP_FClusterNode_FirstChild_GET(IntPtr Ptr);

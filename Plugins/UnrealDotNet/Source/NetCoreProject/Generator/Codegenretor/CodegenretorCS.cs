@@ -203,13 +203,13 @@ namespace Generator
                     var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                     WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern {prop.GetTypeCS()} {baseName}_GET(IntPtr Ptr);");
+                    cw.WriteLine($"private static extern {prop.GetTypeCSForExtend()} {baseName}_GET(IntPtr Ptr);");
 
                     if (!prop.IsReadOnly())
                     {
                         WriteDLLImport(cw);
                         cw.WriteLine(
-                            $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCS()} Value);");
+                            $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
                     }
 
                     cw.WriteLine();

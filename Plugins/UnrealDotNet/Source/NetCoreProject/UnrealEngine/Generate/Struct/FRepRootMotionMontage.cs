@@ -39,9 +39,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern UPrimitiveComponent E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_MovementBase_SET(IntPtr Ptr, UPrimitiveComponent Value);
+		private static extern void E_PROP_FRepRootMotionMontage_MovementBase_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FRepRootMotionMontage_MovementBaseBoneName_GET(IntPtr Ptr);
@@ -54,9 +54,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_Position_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FRotator E_PROP_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_FRepRootMotionMontage_Clear(FRepRootMotionMontage Self);

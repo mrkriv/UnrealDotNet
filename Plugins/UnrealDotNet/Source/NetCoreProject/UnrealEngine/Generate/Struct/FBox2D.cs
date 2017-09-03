@@ -29,14 +29,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FBox2D_Max_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FBox2D_Max_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBox2D_Max_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FBox2D_Max_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FBox2D_Min_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FBox2D_Min_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D Self, IntPtr Point);

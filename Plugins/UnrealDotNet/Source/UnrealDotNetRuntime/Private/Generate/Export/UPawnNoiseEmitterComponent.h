@@ -6,7 +6,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT INT_PTR E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((UPawnNoiseEmitterComponent*)Ptr)->LastRemoteNoisePosition); }
+	DOTNET_EXPORT INT_PTR E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_GET(INT_PTR Ptr) { return (INT_PTR)&((UPawnNoiseEmitterComponent*)Ptr)->LastRemoteNoisePosition; }
 	DOTNET_EXPORT void E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_SET(INT_PTR Ptr, INT_PTR Value) { ((UPawnNoiseEmitterComponent*)Ptr)->LastRemoteNoisePosition = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_GET(INT_PTR Ptr) { return ((UPawnNoiseEmitterComponent*)Ptr)->NoiseLifetime; }

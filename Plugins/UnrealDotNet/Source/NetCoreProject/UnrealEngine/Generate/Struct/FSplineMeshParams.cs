@@ -25,14 +25,14 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplineMeshParams();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FSplineMeshParams_EndOffset_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_EndOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_EndOffset_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FSplineMeshParams_EndOffset_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplineMeshParams_EndPos_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_EndPos_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_EndPos_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplineMeshParams_EndPos_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FSplineMeshParams_EndRoll_GET(IntPtr Ptr);
@@ -40,24 +40,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_FSplineMeshParams_EndRoll_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FSplineMeshParams_EndScale_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_EndScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_EndScale_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FSplineMeshParams_EndScale_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplineMeshParams_EndTangent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_EndTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_EndTangent_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplineMeshParams_EndTangent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FSplineMeshParams_StartOffset_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_StartOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_StartOffset_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FSplineMeshParams_StartOffset_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplineMeshParams_StartPos_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_StartPos_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_StartPos_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplineMeshParams_StartPos_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FSplineMeshParams_StartRoll_GET(IntPtr Ptr);
@@ -65,14 +65,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FSplineMeshParams_StartRoll_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FSplineMeshParams_StartScale_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_StartScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_StartScale_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FSplineMeshParams_StartScale_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplineMeshParams_StartTangent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplineMeshParams_StartTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplineMeshParams_StartTangent_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplineMeshParams_StartTangent_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

@@ -172,9 +172,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_InputPriority_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern APawn E_PROP_AActor_Instigator_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_AActor_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, APawn Value);
+		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_AActor_LastNetUpdateTime_GET(IntPtr Ptr);
@@ -217,12 +217,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_NetUpdateTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FActorTickFunction E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern USceneComponent E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, USceneComponent Value);
+		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_AActor_ActorHasTag(IntPtr Self, string Tag);

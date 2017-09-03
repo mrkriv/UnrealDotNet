@@ -19,9 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplinePoint();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplinePoint_ArriveTangent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplinePoint_ArriveTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplinePoint_ArriveTangent_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplinePoint_ArriveTangent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FSplinePoint_InputKey_GET(IntPtr Ptr);
@@ -29,24 +29,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_FSplinePoint_InputKey_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplinePoint_LeaveTangent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplinePoint_LeaveTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplinePoint_LeaveTangent_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplinePoint_LeaveTangent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplinePoint_Position_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplinePoint_Position_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplinePoint_Position_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplinePoint_Position_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FRotator E_PROP_FSplinePoint_Rotation_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplinePoint_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplinePoint_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FSplinePoint_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FSplinePoint_Scale_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FSplinePoint_Scale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FSplinePoint_Scale_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FSplinePoint_Scale_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

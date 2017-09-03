@@ -47,7 +47,7 @@ namespace Generator
                 cw.WriteLine("#pragma once");
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
-                cw.WriteLine($"#include \"CoreMinimal.h\"");
+                cw.WriteLine("#include \"CoreMinimal.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
                 if (!Class.IsFinal)
@@ -95,10 +95,10 @@ namespace Generator
 
                 var cw = new CoreWriter();
 
-                cw.WriteLine($"#pragma once");
-                cw.WriteLine($"PRAGMA_DISABLE_DEPRECATION_WARNINGS");
+                cw.WriteLine("#pragma once");
+                cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
-                cw.WriteLine($"#include \"CoreShell.h\"");
+                cw.WriteLine("#include \"CoreShell.h\"");
                 cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
                 cw.WriteLine();
 
@@ -157,12 +157,12 @@ namespace Generator
                 cw.WriteLine($"#include \"{CPP_PCH}.h\"");
                 cw.WriteLine($"#include \"Generate/Manage/Manage{baseName}.h\"");
                 cw.WriteLine();
-                cw.WriteLine($"PRAGMA_DISABLE_DEPRECATION_WARNINGS");
+                cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
 
                 methods.ForEach(m => GenerateManageMethod(cw, m));
 
-                cw.WriteLine($"PRAGMA_ENABLE_DEPRECATION_WARNINGS");
+                cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
                 cw.SaveToFile(Path.Combine(OutputPath, "Manage" + baseName + ".cpp"));
             }
@@ -191,25 +191,22 @@ namespace Generator
                 {
                     cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
                     cw.OpenBlock();
-                    cw.WriteLine($"bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.FullName));");
-
-                    if (method.OwnerClass.IsChild("AActor"))
-                    {
-                        cw.WriteLine();
-                        cw.WriteLine("if(bIsManageAttach)");
-                        cw.WriteLine("\tPrimaryActorTick.bCanEverTick = true;");
-                    }
-
+                    cw.WriteLine("bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.FullName));");
                     cw.CloseBlock();
                     cw.WriteLine();
+                    cw.WriteLine($"if(bIsManageAttach) UCoreShell::InvokeInObject(this, \"{method.Name}\"{callInObject});");
                 }
 
-                cw.WriteLine($"Super::{method.Name}({call});");
+                cw.WriteLine($"Super::{method.Name}({call});");     // todo: убрать это отсюда и вызывать из управляемого кода
 
-                if (method.ReturnType.Type != "void")
-                    cw.Write("return ");
+                if (method.Name != "BeginPlay")
+                {
+                    if (method.ReturnType.Type != "void")
+                        cw.Write("return ");
 
-                cw.WriteLine($"if(bIsManageAttach) UCoreShell::InvokeInObject(this, \"{method.Name}\"{callInObject});");
+                    cw.WriteLine(
+                        $"if(bIsManageAttach) UCoreShell::InvokeInObject(this, \"{method.Name}\"{callInObject});");
+                }
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -295,15 +292,9 @@ namespace Generator
                     return "_p" + i;
                 }));
 
-                if (method.AccessModifier == AccessModifier.Public)
-                {
-                    cw.Write($"(({method.OwnerClass.Name}*)Self)->{method.Name}({call})");
-                }
-                else
-                {
-                    cw.Write(
-                        $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
-                }
+                cw.Write(method.AccessModifier == AccessModifier.Public
+                    ? $"(({method.OwnerClass.Name}*)Self)->{method.Name}({call})"
+                    : $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
 
                 if (method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName")
                 {
@@ -408,7 +399,7 @@ namespace Generator
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
-                cw.WriteLine($"#include \"CoreMinimal.h\"");
+                cw.WriteLine("#include \"CoreMinimal.h\"");
 
                 foreach (var header in Structures.Select(GetSourceFileName).Distinct())
                 {
@@ -459,7 +450,7 @@ namespace Generator
                 {
                     var clName = propClass.ClassType.Name;
                     cw.WriteLine(
-                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR) new {clName}((({Class.Name}*)Ptr)->{prop.Name}); }}");
+                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR)&(({Class.Name}*)Ptr)->{prop.Name}; }}");
 
                     if (!prop.IsReadOnly())
                     {

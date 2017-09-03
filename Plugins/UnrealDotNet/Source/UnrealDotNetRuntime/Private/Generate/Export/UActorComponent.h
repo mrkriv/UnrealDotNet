@@ -62,7 +62,7 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR) new FActorComponentTickFunction(((UActorComponent*)Ptr)->PrimaryComponentTick); }
+	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR)&((UActorComponent*)Ptr)->PrimaryComponentTick; }
 	
 	DOTNET_EXPORT void E_UActorComponent_Activate(INT_PTR Self, bool bReset)
 	{

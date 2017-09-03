@@ -29,9 +29,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBatchedPoint_PointSize_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FBatchedPoint_Position_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FBatchedPoint_Position_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FBatchedPoint_Position_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FBatchedPoint_Position_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FBatchedPoint_RemainingLifeTime_GET(IntPtr Ptr);

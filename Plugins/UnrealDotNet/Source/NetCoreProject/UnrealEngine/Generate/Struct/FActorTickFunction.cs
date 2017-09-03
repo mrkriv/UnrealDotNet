@@ -24,9 +24,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FActorTickFunction();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern AActor E_PROP_FActorTickFunction_Target_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FActorTickFunction_Target_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FActorTickFunction_Target_SET(IntPtr Ptr, AActor Value);
+		private static extern void E_PROP_FActorTickFunction_Target_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

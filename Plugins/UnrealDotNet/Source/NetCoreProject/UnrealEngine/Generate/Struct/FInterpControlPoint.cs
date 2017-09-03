@@ -39,9 +39,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FInterpControlPoint_Percentage_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FInterpControlPoint_PositionControlPoint_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FInterpControlPoint_PositionControlPoint_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FInterpControlPoint_PositionControlPoint_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FInterpControlPoint_PositionControlPoint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FInterpControlPoint_StartTime_GET(IntPtr Ptr);

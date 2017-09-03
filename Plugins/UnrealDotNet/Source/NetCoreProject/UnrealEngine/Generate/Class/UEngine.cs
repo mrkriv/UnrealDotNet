@@ -59,9 +59,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameCycles_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern UObject E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, UObject Value);
+		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_UEngine_HoverHighlightIntensity_GET(IntPtr Ptr);

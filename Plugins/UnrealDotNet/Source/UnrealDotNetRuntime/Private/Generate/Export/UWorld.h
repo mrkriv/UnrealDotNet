@@ -96,7 +96,7 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NumTextureStreamingUnbuiltComponents; }
 	DOTNET_EXPORT void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(INT_PTR Ptr, int32 Value) { ((UWorld*)Ptr)->NumTextureStreamingUnbuiltComponents = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_UWorld_OriginOffsetThisFrame_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((UWorld*)Ptr)->OriginOffsetThisFrame); }
+	DOTNET_EXPORT INT_PTR E_PROP_UWorld_OriginOffsetThisFrame_GET(INT_PTR Ptr) { return (INT_PTR)&((UWorld*)Ptr)->OriginOffsetThisFrame; }
 	DOTNET_EXPORT void E_PROP_UWorld_OriginOffsetThisFrame_SET(INT_PTR Ptr, INT_PTR Value) { ((UWorld*)Ptr)->OriginOffsetThisFrame = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_UWorld_PauseDelay_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->PauseDelay; }
@@ -120,7 +120,7 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_UWorld_UnpausedTimeSeconds_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->UnpausedTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_UnpausedTimeSeconds_SET(INT_PTR Ptr, float Value) { ((UWorld*)Ptr)->UnpausedTimeSeconds = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_UWorld_URL_GET(INT_PTR Ptr) { return (INT_PTR) new FURL(((UWorld*)Ptr)->URL); }
+	DOTNET_EXPORT INT_PTR E_PROP_UWorld_URL_GET(INT_PTR Ptr) { return (INT_PTR)&((UWorld*)Ptr)->URL; }
 	DOTNET_EXPORT void E_PROP_UWorld_URL_SET(INT_PTR Ptr, INT_PTR Value) { ((UWorld*)Ptr)->URL = *(FURL*)Value; }
 	
 	DOTNET_EXPORT void E_UWorld_AddNetworkActor(INT_PTR Self, AActor* Actor)

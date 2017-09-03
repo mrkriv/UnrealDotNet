@@ -26,13 +26,10 @@ void AManageActor::BeginPlay()
 	if (!ManageClassName.FullName.IsEmpty())
 	{
 		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.FullName));
-		
-		if(bIsManageAttach)
-			PrimaryActorTick.bCanEverTick = true;
 	}
 
-	Super::BeginPlay();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginPlay");
+	Super::BeginPlay();
 }
 
 void AManageActor::ClearCrossLevelReferences()

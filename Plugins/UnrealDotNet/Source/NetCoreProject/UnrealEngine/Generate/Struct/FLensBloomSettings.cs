@@ -19,9 +19,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLensBloomSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FConvolutionBloomSettings E_PROP_FLensBloomSettings_Convolution_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FLensBloomSettings_Convolution_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FLensBloomSettings_Convolution_SET(IntPtr Ptr, FConvolutionBloomSettings Value);
+		private static extern void E_PROP_FLensBloomSettings_Convolution_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

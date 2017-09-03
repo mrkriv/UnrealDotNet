@@ -24,9 +24,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FConvolutionBloomSettings_BufferScale_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FConvolutionBloomSettings_CenterUV_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FConvolutionBloomSettings_CenterUV_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FConvolutionBloomSettings_CenterUV_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FConvolutionBloomSettings_CenterUV_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FConvolutionBloomSettings_PreFilterMax_GET(IntPtr Ptr);

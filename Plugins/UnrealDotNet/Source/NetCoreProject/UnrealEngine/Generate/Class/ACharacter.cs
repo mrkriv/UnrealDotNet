@@ -27,19 +27,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_AnimRootMotionTranslationScale_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FBasedMovementInfo E_PROP_ACharacter_BasedMovement_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_ACharacter_BasedMovement_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_ACharacter_BasedMovement_SET(IntPtr Ptr, FBasedMovementInfo Value);
+		private static extern void E_PROP_ACharacter_BasedMovement_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FQuat E_PROP_ACharacter_BaseRotationOffset_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_ACharacter_BaseRotationOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_ACharacter_BaseRotationOffset_SET(IntPtr Ptr, FQuat Value);
+		private static extern void E_PROP_ACharacter_BaseRotationOffset_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_ACharacter_BaseTranslationOffset_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_ACharacter_BaseTranslationOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_ACharacter_BaseTranslationOffset_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_ACharacter_BaseTranslationOffset_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_PROP_ACharacter_bInBaseReplication_GET(IntPtr Ptr);
@@ -87,9 +87,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FBasedMovementInfo E_PROP_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_ACharacter_ReplicatedBasedMovement_SET(IntPtr Ptr, FBasedMovementInfo Value);
+		private static extern void E_PROP_ACharacter_ReplicatedBasedMovement_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern byte E_PROP_ACharacter_ReplicatedMovementMode_GET(IntPtr Ptr);
@@ -102,9 +102,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FRepRootMotionMontage E_PROP_ACharacter_RepRootMotion_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_ACharacter_RepRootMotion_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, FRepRootMotionMontage Value);
+		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_ACharacter_BaseChange(IntPtr Self);

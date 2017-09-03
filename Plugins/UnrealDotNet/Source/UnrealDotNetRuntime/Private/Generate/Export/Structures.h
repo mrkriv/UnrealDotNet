@@ -102,7 +102,7 @@ extern "C"
 	DOTNET_EXPORT bool E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_GET(INT_PTR Ptr) { return ((FAnimationEvaluationContext*)Ptr)->bDuplicateToCacheCurve; }
 	DOTNET_EXPORT void E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(INT_PTR Ptr, bool Value) { ((FAnimationEvaluationContext*)Ptr)->bDuplicateToCacheCurve = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FAnimationEvaluationContext*)Ptr)->RootBoneTranslation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(INT_PTR Ptr) { return (INT_PTR)&((FAnimationEvaluationContext*)Ptr)->RootBoneTranslation; }
 	DOTNET_EXPORT void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(INT_PTR Ptr, INT_PTR Value) { ((FAnimationEvaluationContext*)Ptr)->RootBoneTranslation = *(FVector*)Value; }
 	
 	DOTNET_EXPORT void E_FAnimationEvaluationContext_Clear(INT_PTR Self)
@@ -163,7 +163,7 @@ extern "C"
 	DOTNET_EXPORT UPrimitiveComponent* E_PROP_FBasedMovementInfo_MovementBase_GET(INT_PTR Ptr) { return ((FBasedMovementInfo*)Ptr)->MovementBase; }
 	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_MovementBase_SET(INT_PTR Ptr, UPrimitiveComponent* Value) { ((FBasedMovementInfo*)Ptr)->MovementBase = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBasedMovementInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FBasedMovementInfo*)Ptr)->Rotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBasedMovementInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FBasedMovementInfo*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FBasedMovementInfo*)Ptr)->Rotation = *(FRotator*)Value; }
 	
 	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeLocation(INT_PTR Self)
@@ -194,13 +194,13 @@ extern "C"
 	DOTNET_EXPORT uint8 E_PROP_FBatchedLine_DepthPriority_GET(INT_PTR Ptr) { return ((FBatchedLine*)Ptr)->DepthPriority; }
 	DOTNET_EXPORT void E_PROP_FBatchedLine_DepthPriority_SET(INT_PTR Ptr, uint8 Value) { ((FBatchedLine*)Ptr)->DepthPriority = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBatchedLine_End_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBatchedLine*)Ptr)->End); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBatchedLine_End_GET(INT_PTR Ptr) { return (INT_PTR)&((FBatchedLine*)Ptr)->End; }
 	DOTNET_EXPORT void E_PROP_FBatchedLine_End_SET(INT_PTR Ptr, INT_PTR Value) { ((FBatchedLine*)Ptr)->End = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FBatchedLine_RemainingLifeTime_GET(INT_PTR Ptr) { return ((FBatchedLine*)Ptr)->RemainingLifeTime; }
 	DOTNET_EXPORT void E_PROP_FBatchedLine_RemainingLifeTime_SET(INT_PTR Ptr, float Value) { ((FBatchedLine*)Ptr)->RemainingLifeTime = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBatchedLine_Start_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBatchedLine*)Ptr)->Start); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBatchedLine_Start_GET(INT_PTR Ptr) { return (INT_PTR)&((FBatchedLine*)Ptr)->Start; }
 	DOTNET_EXPORT void E_PROP_FBatchedLine_Start_SET(INT_PTR Ptr, INT_PTR Value) { ((FBatchedLine*)Ptr)->Start = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FBatchedLine_Thickness_GET(INT_PTR Ptr) { return ((FBatchedLine*)Ptr)->Thickness; }
@@ -228,7 +228,7 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FBatchedPoint_PointSize_GET(INT_PTR Ptr) { return ((FBatchedPoint*)Ptr)->PointSize; }
 	DOTNET_EXPORT void E_PROP_FBatchedPoint_PointSize_SET(INT_PTR Ptr, float Value) { ((FBatchedPoint*)Ptr)->PointSize = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBatchedPoint_Position_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBatchedPoint*)Ptr)->Position); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBatchedPoint_Position_GET(INT_PTR Ptr) { return (INT_PTR)&((FBatchedPoint*)Ptr)->Position; }
 	DOTNET_EXPORT void E_PROP_FBatchedPoint_Position_SET(INT_PTR Ptr, INT_PTR Value) { ((FBatchedPoint*)Ptr)->Position = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FBatchedPoint_RemainingLifeTime_GET(INT_PTR Ptr) { return ((FBatchedPoint*)Ptr)->RemainingLifeTime; }
@@ -242,10 +242,10 @@ extern "C"
 	DOTNET_EXPORT uint8 E_PROP_FBox_IsValid_GET(INT_PTR Ptr) { return ((FBox*)Ptr)->IsValid; }
 	DOTNET_EXPORT void E_PROP_FBox_IsValid_SET(INT_PTR Ptr, uint8 Value) { ((FBox*)Ptr)->IsValid = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBox_Max_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBox*)Ptr)->Max); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBox_Max_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox*)Ptr)->Max; }
 	DOTNET_EXPORT void E_PROP_FBox_Max_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox*)Ptr)->Max = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBox_Min_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FBox*)Ptr)->Min); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBox_Min_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox*)Ptr)->Min; }
 	DOTNET_EXPORT void E_PROP_FBox_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox*)Ptr)->Min = *(FVector*)Value; }
 	
 	DOTNET_EXPORT INT_PTR E_FBox_BuildAABB(INT_PTR Self, INT_PTR Origin, INT_PTR Extent)
@@ -356,10 +356,10 @@ extern "C"
 	DOTNET_EXPORT bool E_PROP_FBox2D_bIsValid_GET(INT_PTR Ptr) { return ((FBox2D*)Ptr)->bIsValid; }
 	DOTNET_EXPORT void E_PROP_FBox2D_bIsValid_SET(INT_PTR Ptr, bool Value) { ((FBox2D*)Ptr)->bIsValid = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBox2D_Max_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FBox2D*)Ptr)->Max); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBox2D_Max_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox2D*)Ptr)->Max; }
 	DOTNET_EXPORT void E_PROP_FBox2D_Max_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox2D*)Ptr)->Max = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FBox2D_Min_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FBox2D*)Ptr)->Min); }
+	DOTNET_EXPORT INT_PTR E_PROP_FBox2D_Min_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox2D*)Ptr)->Min; }
 	DOTNET_EXPORT void E_PROP_FBox2D_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox2D*)Ptr)->Min = *(FVector2D*)Value; }
 	
 	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(INT_PTR Self, INT_PTR Point)
@@ -540,13 +540,13 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FClosestPointOnPhysicsAsset_BoneName_SET(INT_PTR Ptr, char* Value) { ((FClosestPointOnPhysicsAsset*)Ptr)->BoneName = FName(UTF8_TO_TCHAR(Value)); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FClosestPointOnPhysicsAsset_ClosestWorldPosition_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FClosestPointOnPhysicsAsset*)Ptr)->ClosestWorldPosition); }
+	DOTNET_EXPORT INT_PTR E_PROP_FClosestPointOnPhysicsAsset_ClosestWorldPosition_GET(INT_PTR Ptr) { return (INT_PTR)&((FClosestPointOnPhysicsAsset*)Ptr)->ClosestWorldPosition; }
 	DOTNET_EXPORT void E_PROP_FClosestPointOnPhysicsAsset_ClosestWorldPosition_SET(INT_PTR Ptr, INT_PTR Value) { ((FClosestPointOnPhysicsAsset*)Ptr)->ClosestWorldPosition = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FClosestPointOnPhysicsAsset_Distance_GET(INT_PTR Ptr) { return ((FClosestPointOnPhysicsAsset*)Ptr)->Distance; }
 	DOTNET_EXPORT void E_PROP_FClosestPointOnPhysicsAsset_Distance_SET(INT_PTR Ptr, float Value) { ((FClosestPointOnPhysicsAsset*)Ptr)->Distance = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FClosestPointOnPhysicsAsset_Normal_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FClosestPointOnPhysicsAsset*)Ptr)->Normal); }
+	DOTNET_EXPORT INT_PTR E_PROP_FClosestPointOnPhysicsAsset_Normal_GET(INT_PTR Ptr) { return (INT_PTR)&((FClosestPointOnPhysicsAsset*)Ptr)->Normal; }
 	DOTNET_EXPORT void E_PROP_FClosestPointOnPhysicsAsset_Normal_SET(INT_PTR Ptr, INT_PTR Value) { ((FClosestPointOnPhysicsAsset*)Ptr)->Normal = *(FVector*)Value; }
 	
 	
@@ -554,10 +554,10 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FClusterNode() { return (INT_PTR) new FClusterNode(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FClusterNode_BoundMax_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FClusterNode*)Ptr)->BoundMax); }
+	DOTNET_EXPORT INT_PTR E_PROP_FClusterNode_BoundMax_GET(INT_PTR Ptr) { return (INT_PTR)&((FClusterNode*)Ptr)->BoundMax; }
 	DOTNET_EXPORT void E_PROP_FClusterNode_BoundMax_SET(INT_PTR Ptr, INT_PTR Value) { ((FClusterNode*)Ptr)->BoundMax = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FClusterNode_BoundMin_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FClusterNode*)Ptr)->BoundMin); }
+	DOTNET_EXPORT INT_PTR E_PROP_FClusterNode_BoundMin_GET(INT_PTR Ptr) { return (INT_PTR)&((FClusterNode*)Ptr)->BoundMin; }
 	DOTNET_EXPORT void E_PROP_FClusterNode_BoundMin_SET(INT_PTR Ptr, INT_PTR Value) { ((FClusterNode*)Ptr)->BoundMin = *(FVector*)Value; }
 	
 	DOTNET_EXPORT int32 E_PROP_FClusterNode_FirstChild_GET(INT_PTR Ptr) { return ((FClusterNode*)Ptr)->FirstChild; }
@@ -577,19 +577,19 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FColorGradePerRangeSettings() { return (INT_PTR) new FColorGradePerRangeSettings(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Contrast_GET(INT_PTR Ptr) { return (INT_PTR) new FVector4(((FColorGradePerRangeSettings*)Ptr)->Contrast); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Contrast_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradePerRangeSettings*)Ptr)->Contrast; }
 	DOTNET_EXPORT void E_PROP_FColorGradePerRangeSettings_Contrast_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradePerRangeSettings*)Ptr)->Contrast = *(FVector4*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Gain_GET(INT_PTR Ptr) { return (INT_PTR) new FVector4(((FColorGradePerRangeSettings*)Ptr)->Gain); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Gain_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradePerRangeSettings*)Ptr)->Gain; }
 	DOTNET_EXPORT void E_PROP_FColorGradePerRangeSettings_Gain_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradePerRangeSettings*)Ptr)->Gain = *(FVector4*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Gamma_GET(INT_PTR Ptr) { return (INT_PTR) new FVector4(((FColorGradePerRangeSettings*)Ptr)->Gamma); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Gamma_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradePerRangeSettings*)Ptr)->Gamma; }
 	DOTNET_EXPORT void E_PROP_FColorGradePerRangeSettings_Gamma_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradePerRangeSettings*)Ptr)->Gamma = *(FVector4*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Offset_GET(INT_PTR Ptr) { return (INT_PTR) new FVector4(((FColorGradePerRangeSettings*)Ptr)->Offset); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Offset_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradePerRangeSettings*)Ptr)->Offset; }
 	DOTNET_EXPORT void E_PROP_FColorGradePerRangeSettings_Offset_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradePerRangeSettings*)Ptr)->Offset = *(FVector4*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Saturation_GET(INT_PTR Ptr) { return (INT_PTR) new FVector4(((FColorGradePerRangeSettings*)Ptr)->Saturation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradePerRangeSettings_Saturation_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradePerRangeSettings*)Ptr)->Saturation; }
 	DOTNET_EXPORT void E_PROP_FColorGradePerRangeSettings_Saturation_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradePerRangeSettings*)Ptr)->Saturation = *(FVector4*)Value; }
 	
 	
@@ -597,19 +597,19 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FColorGradingSettings() { return (INT_PTR) new FColorGradingSettings(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Global_GET(INT_PTR Ptr) { return (INT_PTR) new FColorGradePerRangeSettings(((FColorGradingSettings*)Ptr)->Global); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Global_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradingSettings*)Ptr)->Global; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_Global_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradingSettings*)Ptr)->Global = *(FColorGradePerRangeSettings*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Highlights_GET(INT_PTR Ptr) { return (INT_PTR) new FColorGradePerRangeSettings(((FColorGradingSettings*)Ptr)->Highlights); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Highlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradingSettings*)Ptr)->Highlights; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_Highlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradingSettings*)Ptr)->Highlights = *(FColorGradePerRangeSettings*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FColorGradingSettings_HighlightsMin_GET(INT_PTR Ptr) { return ((FColorGradingSettings*)Ptr)->HighlightsMin; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_HighlightsMin_SET(INT_PTR Ptr, float Value) { ((FColorGradingSettings*)Ptr)->HighlightsMin = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Midtones_GET(INT_PTR Ptr) { return (INT_PTR) new FColorGradePerRangeSettings(((FColorGradingSettings*)Ptr)->Midtones); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Midtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradingSettings*)Ptr)->Midtones; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_Midtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradingSettings*)Ptr)->Midtones = *(FColorGradePerRangeSettings*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Shadows_GET(INT_PTR Ptr) { return (INT_PTR) new FColorGradePerRangeSettings(((FColorGradingSettings*)Ptr)->Shadows); }
+	DOTNET_EXPORT INT_PTR E_PROP_FColorGradingSettings_Shadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FColorGradingSettings*)Ptr)->Shadows; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_Shadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FColorGradingSettings*)Ptr)->Shadows = *(FColorGradePerRangeSettings*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FColorGradingSettings_ShadowsMax_GET(INT_PTR Ptr) { return ((FColorGradingSettings*)Ptr)->ShadowsMax; }
@@ -623,7 +623,7 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FConvolutionBloomSettings_BufferScale_GET(INT_PTR Ptr) { return ((FConvolutionBloomSettings*)Ptr)->BufferScale; }
 	DOTNET_EXPORT void E_PROP_FConvolutionBloomSettings_BufferScale_SET(INT_PTR Ptr, float Value) { ((FConvolutionBloomSettings*)Ptr)->BufferScale = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FConvolutionBloomSettings_CenterUV_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FConvolutionBloomSettings*)Ptr)->CenterUV); }
+	DOTNET_EXPORT INT_PTR E_PROP_FConvolutionBloomSettings_CenterUV_GET(INT_PTR Ptr) { return (INT_PTR)&((FConvolutionBloomSettings*)Ptr)->CenterUV; }
 	DOTNET_EXPORT void E_PROP_FConvolutionBloomSettings_CenterUV_SET(INT_PTR Ptr, INT_PTR Value) { ((FConvolutionBloomSettings*)Ptr)->CenterUV = *(FVector2D*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FConvolutionBloomSettings_PreFilterMax_GET(INT_PTR Ptr) { return ((FConvolutionBloomSettings*)Ptr)->PreFilterMax; }
@@ -664,10 +664,10 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FDropNoteInfo_Comment_SET(INT_PTR Ptr, char* Value) { ((FDropNoteInfo*)Ptr)->Comment = UTF8_TO_TCHAR(Value); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FDropNoteInfo_Location_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FDropNoteInfo*)Ptr)->Location); }
+	DOTNET_EXPORT INT_PTR E_PROP_FDropNoteInfo_Location_GET(INT_PTR Ptr) { return (INT_PTR)&((FDropNoteInfo*)Ptr)->Location; }
 	DOTNET_EXPORT void E_PROP_FDropNoteInfo_Location_SET(INT_PTR Ptr, INT_PTR Value) { ((FDropNoteInfo*)Ptr)->Location = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FDropNoteInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FDropNoteInfo*)Ptr)->Rotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FDropNoteInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FDropNoteInfo*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FDropNoteInfo_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FDropNoteInfo*)Ptr)->Rotation = *(FRotator*)Value; }
 	
 	
@@ -763,10 +763,10 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FInstancedStaticMeshInstanceData() { return (INT_PTR) new FInstancedStaticMeshInstanceData(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FInstancedStaticMeshInstanceData*)Ptr)->LightmapUVBias_DEPRECATED); }
+	DOTNET_EXPORT INT_PTR E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((FInstancedStaticMeshInstanceData*)Ptr)->LightmapUVBias_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((FInstancedStaticMeshInstanceData*)Ptr)->LightmapUVBias_DEPRECATED = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FInstancedStaticMeshInstanceData_ShadowmapUVBias_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FInstancedStaticMeshInstanceData*)Ptr)->ShadowmapUVBias_DEPRECATED); }
+	DOTNET_EXPORT INT_PTR E_PROP_FInstancedStaticMeshInstanceData_ShadowmapUVBias_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((FInstancedStaticMeshInstanceData*)Ptr)->ShadowmapUVBias_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_FInstancedStaticMeshInstanceData_ShadowmapUVBias_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((FInstancedStaticMeshInstanceData*)Ptr)->ShadowmapUVBias_DEPRECATED = *(FVector2D*)Value; }
 	
 	
@@ -788,7 +788,7 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FInterpControlPoint_Percentage_GET(INT_PTR Ptr) { return ((FInterpControlPoint*)Ptr)->Percentage; }
 	DOTNET_EXPORT void E_PROP_FInterpControlPoint_Percentage_SET(INT_PTR Ptr, float Value) { ((FInterpControlPoint*)Ptr)->Percentage = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FInterpControlPoint_PositionControlPoint_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FInterpControlPoint*)Ptr)->PositionControlPoint); }
+	DOTNET_EXPORT INT_PTR E_PROP_FInterpControlPoint_PositionControlPoint_GET(INT_PTR Ptr) { return (INT_PTR)&((FInterpControlPoint*)Ptr)->PositionControlPoint; }
 	DOTNET_EXPORT void E_PROP_FInterpControlPoint_PositionControlPoint_SET(INT_PTR Ptr, INT_PTR Value) { ((FInterpControlPoint*)Ptr)->PositionControlPoint = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FInterpControlPoint_StartTime_GET(INT_PTR Ptr) { return ((FInterpControlPoint*)Ptr)->StartTime; }
@@ -799,7 +799,7 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLensBloomSettings() { return (INT_PTR) new FLensBloomSettings(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FLensBloomSettings_Convolution_GET(INT_PTR Ptr) { return (INT_PTR) new FConvolutionBloomSettings(((FLensBloomSettings*)Ptr)->Convolution); }
+	DOTNET_EXPORT INT_PTR E_PROP_FLensBloomSettings_Convolution_GET(INT_PTR Ptr) { return (INT_PTR)&((FLensBloomSettings*)Ptr)->Convolution; }
 	DOTNET_EXPORT void E_PROP_FLensBloomSettings_Convolution_SET(INT_PTR Ptr, INT_PTR Value) { ((FLensBloomSettings*)Ptr)->Convolution = *(FConvolutionBloomSettings*)Value; }
 	
 	
@@ -815,13 +815,13 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLensSettings() { return (INT_PTR) new FLensSettings(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FLensSettings_Bloom_GET(INT_PTR Ptr) { return (INT_PTR) new FLensBloomSettings(((FLensSettings*)Ptr)->Bloom); }
+	DOTNET_EXPORT INT_PTR E_PROP_FLensSettings_Bloom_GET(INT_PTR Ptr) { return (INT_PTR)&((FLensSettings*)Ptr)->Bloom; }
 	DOTNET_EXPORT void E_PROP_FLensSettings_Bloom_SET(INT_PTR Ptr, INT_PTR Value) { ((FLensSettings*)Ptr)->Bloom = *(FLensBloomSettings*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FLensSettings_ChromaticAberration_GET(INT_PTR Ptr) { return ((FLensSettings*)Ptr)->ChromaticAberration; }
 	DOTNET_EXPORT void E_PROP_FLensSettings_ChromaticAberration_SET(INT_PTR Ptr, float Value) { ((FLensSettings*)Ptr)->ChromaticAberration = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FLensSettings_Imperfections_GET(INT_PTR Ptr) { return (INT_PTR) new FLensImperfectionSettings(((FLensSettings*)Ptr)->Imperfections); }
+	DOTNET_EXPORT INT_PTR E_PROP_FLensSettings_Imperfections_GET(INT_PTR Ptr) { return (INT_PTR)&((FLensSettings*)Ptr)->Imperfections; }
 	DOTNET_EXPORT void E_PROP_FLensSettings_Imperfections_SET(INT_PTR Ptr, INT_PTR Value) { ((FLensSettings*)Ptr)->Imperfections = *(FLensImperfectionSettings*)Value; }
 	
 	
@@ -870,10 +870,10 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamOrthoZoom; }
 	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(INT_PTR Ptr, float Value) { ((FLevelViewportInfo*)Ptr)->CamOrthoZoom = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FLevelViewportInfo_CamPosition_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FLevelViewportInfo*)Ptr)->CamPosition); }
+	DOTNET_EXPORT INT_PTR E_PROP_FLevelViewportInfo_CamPosition_GET(INT_PTR Ptr) { return (INT_PTR)&((FLevelViewportInfo*)Ptr)->CamPosition; }
 	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamPosition_SET(INT_PTR Ptr, INT_PTR Value) { ((FLevelViewportInfo*)Ptr)->CamPosition = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FLevelViewportInfo_CamRotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FLevelViewportInfo*)Ptr)->CamRotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FLevelViewportInfo_CamRotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FLevelViewportInfo*)Ptr)->CamRotation; }
 	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamRotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FLevelViewportInfo*)Ptr)->CamRotation = *(FRotator*)Value; }
 	
 	DOTNET_EXPORT bool E_PROP_FLevelViewportInfo_CamUpdated_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamUpdated; }
@@ -942,7 +942,7 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FPaintedVertex() { return (INT_PTR) new FPaintedVertex(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FPaintedVertex_Position_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FPaintedVertex*)Ptr)->Position); }
+	DOTNET_EXPORT INT_PTR E_PROP_FPaintedVertex_Position_GET(INT_PTR Ptr) { return (INT_PTR)&((FPaintedVertex*)Ptr)->Position; }
 	DOTNET_EXPORT void E_PROP_FPaintedVertex_Position_SET(INT_PTR Ptr, INT_PTR Value) { ((FPaintedVertex*)Ptr)->Position = *(FVector*)Value; }
 	
 	
@@ -1325,7 +1325,7 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FRepRootMotionMontage_Position_GET(INT_PTR Ptr) { return ((FRepRootMotionMontage*)Ptr)->Position; }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_Position_SET(INT_PTR Ptr, float Value) { ((FRepRootMotionMontage*)Ptr)->Position = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FRepRootMotionMontage_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FRepRootMotionMontage*)Ptr)->Rotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FRepRootMotionMontage_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FRepRootMotionMontage*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FRepRootMotionMontage*)Ptr)->Rotation = *(FRotator*)Value; }
 	
 	DOTNET_EXPORT void E_FRepRootMotionMontage_Clear(INT_PTR Self)
@@ -1497,7 +1497,7 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSceneCaptureViewInfo() { return (INT_PTR) new FSceneCaptureViewInfo(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSceneCaptureViewInfo*)Ptr)->ViewLocation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(INT_PTR Ptr) { return (INT_PTR)&((FSceneCaptureViewInfo*)Ptr)->ViewLocation; }
 	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewLocation_SET(INT_PTR Ptr, INT_PTR Value) { ((FSceneCaptureViewInfo*)Ptr)->ViewLocation = *(FVector*)Value; }
 	
 	
@@ -1516,7 +1516,7 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FScreenMessageString_ScreenMessage_SET(INT_PTR Ptr, char* Value) { ((FScreenMessageString*)Ptr)->ScreenMessage = UTF8_TO_TCHAR(Value); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FScreenMessageString_TextScale_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FScreenMessageString*)Ptr)->TextScale); }
+	DOTNET_EXPORT INT_PTR E_PROP_FScreenMessageString_TextScale_GET(INT_PTR Ptr) { return (INT_PTR)&((FScreenMessageString*)Ptr)->TextScale; }
 	DOTNET_EXPORT void E_PROP_FScreenMessageString_TextScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FScreenMessageString*)Ptr)->TextScale = *(FVector2D*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FScreenMessageString_TimeToDisplay_GET(INT_PTR Ptr) { return ((FScreenMessageString*)Ptr)->TimeToDisplay; }
@@ -1527,7 +1527,7 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSimulatedRootMotionReplicatedMove() { return (INT_PTR) new FSimulatedRootMotionReplicatedMove(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_GET(INT_PTR Ptr) { return (INT_PTR) new FRepRootMotionMontage(((FSimulatedRootMotionReplicatedMove*)Ptr)->RootMotion); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_GET(INT_PTR Ptr) { return (INT_PTR)&((FSimulatedRootMotionReplicatedMove*)Ptr)->RootMotion; }
 	DOTNET_EXPORT void E_PROP_FSimulatedRootMotionReplicatedMove_RootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((FSimulatedRootMotionReplicatedMove*)Ptr)->RootMotion = *(FRepRootMotionMontage*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FSimulatedRootMotionReplicatedMove_Time_GET(INT_PTR Ptr) { return ((FSimulatedRootMotionReplicatedMove*)Ptr)->Time; }
@@ -1568,34 +1568,34 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplineMeshParams() { return (INT_PTR) new FSplineMeshParams(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndOffset_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FSplineMeshParams*)Ptr)->EndOffset); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndOffset_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->EndOffset; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_EndOffset_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->EndOffset = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndPos_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplineMeshParams*)Ptr)->EndPos); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndPos_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->EndPos; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_EndPos_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->EndPos = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FSplineMeshParams_EndRoll_GET(INT_PTR Ptr) { return ((FSplineMeshParams*)Ptr)->EndRoll; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_EndRoll_SET(INT_PTR Ptr, float Value) { ((FSplineMeshParams*)Ptr)->EndRoll = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndScale_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FSplineMeshParams*)Ptr)->EndScale); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndScale_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->EndScale; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_EndScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->EndScale = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndTangent_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplineMeshParams*)Ptr)->EndTangent); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_EndTangent_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->EndTangent; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_EndTangent_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->EndTangent = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartOffset_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FSplineMeshParams*)Ptr)->StartOffset); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartOffset_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->StartOffset; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_StartOffset_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->StartOffset = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartPos_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplineMeshParams*)Ptr)->StartPos); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartPos_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->StartPos; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_StartPos_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->StartPos = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FSplineMeshParams_StartRoll_GET(INT_PTR Ptr) { return ((FSplineMeshParams*)Ptr)->StartRoll; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_StartRoll_SET(INT_PTR Ptr, float Value) { ((FSplineMeshParams*)Ptr)->StartRoll = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartScale_GET(INT_PTR Ptr) { return (INT_PTR) new FVector2D(((FSplineMeshParams*)Ptr)->StartScale); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartScale_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->StartScale; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_StartScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->StartScale = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartTangent_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplineMeshParams*)Ptr)->StartTangent); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplineMeshParams_StartTangent_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplineMeshParams*)Ptr)->StartTangent; }
 	DOTNET_EXPORT void E_PROP_FSplineMeshParams_StartTangent_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplineMeshParams*)Ptr)->StartTangent = *(FVector*)Value; }
 	
 	
@@ -1603,22 +1603,22 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplinePoint() { return (INT_PTR) new FSplinePoint(); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_ArriveTangent_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplinePoint*)Ptr)->ArriveTangent); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_ArriveTangent_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->ArriveTangent; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_ArriveTangent_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->ArriveTangent = *(FVector*)Value; }
 	
 	DOTNET_EXPORT float E_PROP_FSplinePoint_InputKey_GET(INT_PTR Ptr) { return ((FSplinePoint*)Ptr)->InputKey; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_InputKey_SET(INT_PTR Ptr, float Value) { ((FSplinePoint*)Ptr)->InputKey = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_LeaveTangent_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplinePoint*)Ptr)->LeaveTangent); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_LeaveTangent_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->LeaveTangent; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_LeaveTangent_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->LeaveTangent = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Position_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplinePoint*)Ptr)->Position); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Position_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->Position; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_Position_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->Position = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Rotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((FSplinePoint*)Ptr)->Rotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->Rotation = *(FRotator*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Scale_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((FSplinePoint*)Ptr)->Scale); }
+	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_Scale_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->Scale; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_Scale_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->Scale = *(FVector*)Value; }
 	
 	
@@ -3306,10 +3306,10 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FWorldContext_ContextHandle_SET(INT_PTR Ptr, char* Value) { ((FWorldContext*)Ptr)->ContextHandle = FName(UTF8_TO_TCHAR(Value)); }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FWorldContext_LastRemoteURL_GET(INT_PTR Ptr) { return (INT_PTR) new FURL(((FWorldContext*)Ptr)->LastRemoteURL); }
+	DOTNET_EXPORT INT_PTR E_PROP_FWorldContext_LastRemoteURL_GET(INT_PTR Ptr) { return (INT_PTR)&((FWorldContext*)Ptr)->LastRemoteURL; }
 	DOTNET_EXPORT void E_PROP_FWorldContext_LastRemoteURL_SET(INT_PTR Ptr, INT_PTR Value) { ((FWorldContext*)Ptr)->LastRemoteURL = *(FURL*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_FWorldContext_LastURL_GET(INT_PTR Ptr) { return (INT_PTR) new FURL(((FWorldContext*)Ptr)->LastURL); }
+	DOTNET_EXPORT INT_PTR E_PROP_FWorldContext_LastURL_GET(INT_PTR Ptr) { return (INT_PTR)&((FWorldContext*)Ptr)->LastURL; }
 	DOTNET_EXPORT void E_PROP_FWorldContext_LastURL_SET(INT_PTR Ptr, INT_PTR Value) { ((FWorldContext*)Ptr)->LastURL = *(FURL*)Value; }
 	
 	DOTNET_EXPORT char* E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(INT_PTR Ptr, int& ResultStringLen)

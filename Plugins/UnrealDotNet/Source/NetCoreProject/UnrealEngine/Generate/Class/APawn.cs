@@ -30,14 +30,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_APawn_ControlInputVector_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_APawn_ControlInputVector_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_APawn_ControlInputVector_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_APawn_ControlInputVector_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_APawn_LastControlInputVector_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_APawn_LastControlInputVector_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_APawn_LastControlInputVector_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_APawn_LastControlInputVector_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);

@@ -29,14 +29,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FDropNoteInfo_Comment_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_FDropNoteInfo_Location_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FDropNoteInfo_Location_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FDropNoteInfo_Location_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_FDropNoteInfo_Location_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FRotator E_PROP_FDropNoteInfo_Rotation_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FDropNoteInfo_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FDropNoteInfo_Rotation_SET(IntPtr Ptr, FRotator Value);
+		private static extern void E_PROP_FDropNoteInfo_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
 		

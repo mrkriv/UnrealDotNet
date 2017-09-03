@@ -22,7 +22,7 @@ namespace UnrealEngine
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FActorComponentTickFunction E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UActorComponent_Activate(IntPtr Self, bool bReset);

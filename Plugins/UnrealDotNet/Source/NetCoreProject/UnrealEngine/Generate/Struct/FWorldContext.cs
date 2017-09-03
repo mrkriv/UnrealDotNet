@@ -48,14 +48,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_ContextHandle_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FURL E_PROP_FWorldContext_LastRemoteURL_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FWorldContext_LastRemoteURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FWorldContext_LastRemoteURL_SET(IntPtr Ptr, FURL Value);
+		private static extern void E_PROP_FWorldContext_LastRemoteURL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FURL E_PROP_FWorldContext_LastURL_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FWorldContext_LastURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FWorldContext_LastURL_SET(IntPtr Ptr, FURL Value);
+		private static extern void E_PROP_FWorldContext_LastURL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(IntPtr Ptr);

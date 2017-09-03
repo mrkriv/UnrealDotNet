@@ -34,8 +34,8 @@ void UManageActorComponent::BeginPlay()
 		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.FullName));
 	}
 
-	Super::BeginPlay();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginPlay");
+	Super::BeginPlay();
 }
 
 void UManageActorComponent::CreateRenderState_Concurrent()

@@ -62,22 +62,22 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentToWorld_GET(INT_PTR Ptr) { return (INT_PTR) new FTransform(((USceneComponent*)Ptr)->ComponentToWorld); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentToWorld_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->ComponentToWorld; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->ComponentToWorld = *(FTransform*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentVelocity_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((USceneComponent*)Ptr)->ComponentVelocity); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentVelocity_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->ComponentVelocity; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->ComponentVelocity = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeLocation_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((USceneComponent*)Ptr)->RelativeLocation); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeLocation_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeLocation; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeLocation_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeLocation = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeRotation_GET(INT_PTR Ptr) { return (INT_PTR) new FRotator(((USceneComponent*)Ptr)->RelativeRotation); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeRotation_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeRotation; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeRotation_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeRotation = *(FRotator*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeScale3D_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((USceneComponent*)Ptr)->RelativeScale3D); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeScale3D_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeScale3D; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeScale3D = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR) new FVector(((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED); }
+	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
 	
 	DOTNET_EXPORT bool E_USceneComponent_AreDynamicDataChangesAllowed(INT_PTR Self, bool bIgnoreStationary)

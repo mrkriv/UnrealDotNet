@@ -14,12 +14,18 @@ namespace GameLogic
 
         protected override void BeginPlay()
         {
-            // PrimaryActorTick.bCanEverTick = 1;
-            //  Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
-            ULog("Tadaaam!");
-            CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
+            try
+            {
+                PrimaryActorTick.bCanEverTick = 1;
 
-            ULog(NativeManager.GetMetadata());
+                //  Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+
+                CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
+            }
+            catch (Exception e)
+            {
+                ULog_Error(e.ToString());
+            }
         }
 
         public override void Tick(float DeltaTime)
@@ -50,7 +56,6 @@ namespace GameLogic
             //    ULog_Error("Box is null");
             //}
 
-            ULog("asd!");
             SetActorRotation(rot, false);
         }
     }

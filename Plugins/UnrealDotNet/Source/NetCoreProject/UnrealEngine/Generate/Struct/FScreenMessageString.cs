@@ -34,9 +34,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FScreenMessageString_ScreenMessage_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector2D E_PROP_FScreenMessageString_TextScale_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_FScreenMessageString_TextScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_FScreenMessageString_TextScale_SET(IntPtr Ptr, FVector2D Value);
+		private static extern void E_PROP_FScreenMessageString_TextScale_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_FScreenMessageString_TimeToDisplay_GET(IntPtr Ptr);

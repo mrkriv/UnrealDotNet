@@ -18,9 +18,9 @@ namespace UnrealEngine
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern FVector E_PROP_UBoxComponent_BoxExtent_GET(IntPtr Ptr);
+		private static extern IntPtr E_PROP_UBoxComponent_BoxExtent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_PROP_UBoxComponent_BoxExtent_SET(IntPtr Ptr, FVector Value);
+		private static extern void E_PROP_UBoxComponent_BoxExtent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_UBoxComponent_GetScaledBoxExtent(IntPtr Self);
