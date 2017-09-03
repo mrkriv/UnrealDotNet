@@ -42,7 +42,7 @@ static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::Gam
 
 FString UCoreShell::AssemblyGuid;
 FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Culture=neutral";
-FString UCoreShell::GameLogic_Assemble = "GameLogic, Version=1.0.0.0, Culture=neutral";
+FString UCoreShell::GameLogic_Assemble = "GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral";
 
 ICLRRuntimeHost4* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;

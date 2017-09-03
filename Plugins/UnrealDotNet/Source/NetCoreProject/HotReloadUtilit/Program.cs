@@ -65,12 +65,14 @@ namespace HotReloadUtilit
         {
             Console.WriteLine("Completion of assembly");
 
-            SetAssemblyName(OutDir + $"\\{GameLogic}.dll", "");
+            //SetAssemblyName(OutDir + $"\\{GameLogic}.dll", "");
 
             if (Configuration == "Debug")
             {
-                File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + $"\\..\\GameLogic.dll", true);
+                File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + $"\\..\\{GameLogic}.dll", true);
+                File.Copy(OutDir + $"\\{GameLogic}.pdb", OutDir + $"\\..\\{GameLogic}.pdb", true);
                 File.Copy(OutDir + $"\\{Wrapper}.dll", OutDir + $"\\..\\{Wrapper}.dll", true);
+                File.Copy(OutDir + $"\\{Wrapper}.pdb", OutDir + $"\\..\\{Wrapper}.pdb", true);
             }
             else
             {
@@ -79,7 +81,7 @@ namespace HotReloadUtilit
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                File.Copy(OutDir + $"\\{GameLogic}.dll", dir + $"\\GameLogic.dll", true);
+                File.Copy(OutDir + $"\\{GameLogic}.dll", dir + $"\\{GameLogic}.dll", true);
                 File.Copy(OutDir + $"\\{Wrapper}.dll", dir + $"\\{Wrapper}.dll", true);
             }
 
@@ -110,6 +112,7 @@ namespace HotReloadUtilit
             SetAssemblyName(OutDir + $"\\{GameLogic}.dll", guid);
 
             File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + HotDir + $"\\GameLogic{guid}.dll", true);
+            File.Copy(OutDir + $"\\{GameLogic}.pdb", OutDir + HotDir + $"\\GameLogic{guid}.pdb", true);
             File.WriteAllText(OutDir + "\\" + Hotreload, guid);
         }
 
