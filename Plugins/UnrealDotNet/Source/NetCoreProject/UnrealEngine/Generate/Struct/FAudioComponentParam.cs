@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageAudioComponentParam
-	/// <para>Struct used for storing one per-instance named parameter for this AudioComponent. </para>
-	/// <para>Certain nodes in the SoundCue may reference parameters by name so they can be adjusted per-instance. </para>
-	/// </summary>
 	public  partial class FAudioComponentParam : NativeStructWrapper
 	{
 		public FAudioComponentParam() : base(E_CreateStruct_FAudioComponentParam(), false)

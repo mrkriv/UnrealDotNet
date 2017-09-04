@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePrimitiveComponent
-	/// <para>PrimitiveComponents are SceneComponents that contain or generate some sort of geometry, generally to be rendered or used as collision data. </para>
-	/// <para>There are several subclasses for the various types of geometry, but the most common by far are the ShapeComponents (Capsule, Sphere, Box), StaticMeshComponent, and SkeletalMeshComponent. </para>
-	/// <para>ShapeComponents generate geometry that is used for collision detection but are not rendered, while StaticMeshComponents and SkeletalMeshComponents contain pre-built geometry that is rendered, but can also be used for collision detection. </para>
-	/// </summary>
 	public  partial class UPrimitiveComponent : USceneComponent
 	{
 		public UPrimitiveComponent(IntPtr Adress)
@@ -38,6 +31,11 @@ namespace UnrealEngine
 		private static extern int E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_UPrimitiveComponent_LastCheckedAllCollideableDescendantsTime_GET(IntPtr Ptr);
@@ -247,6 +245,9 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_SetCustomDepthStencilValue(IntPtr Self, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UPrimitiveComponent_SetCustomDepthStencilWriteMask(IntPtr Self, byte WriteMaskBit);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UPrimitiveComponent_SetEnableGravity(IntPtr Self, bool bGravityEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -368,6 +369,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(NativePointer);
 			set => E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Mask used for stencil buffer writes. </para>
+		/// </summary>
+		public ERendererStencilMask CustomDepthStencilWriteMask
+		{
+			get => (ERendererStencilMask)E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -891,6 +902,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetCustomDepthStencilValue(int Value)
 			=> E_UPrimitiveComponent_SetCustomDepthStencilValue(this, Value);
+		
+		
+		/// <summary>
+		/// <para>Sets the CustomDepth stencil write mask and marks the render state dirty. </para>
+		/// </summary>
+		public void SetCustomDepthStencilWriteMask(ERendererStencilMask WriteMaskBit)
+			=> E_UPrimitiveComponent_SetCustomDepthStencilWriteMask(this, (byte)WriteMaskBit);
 		
 		
 		/// <summary>

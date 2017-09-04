@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageBox
-	/// <para>Implements an axis-aligned box. </para>
-	/// <para>Boxes describe an axis-aligned extent in three dimensions. They are used for many different things in the </para>
-	/// <para>Engine and in games, such as bounding volumes, collision detection and visibility calculation. </para>
-	/// </summary>
 	public  partial class FBox : NativeStructWrapper
 	{
 		public FBox() : base(E_CreateStruct_FBox(), false)

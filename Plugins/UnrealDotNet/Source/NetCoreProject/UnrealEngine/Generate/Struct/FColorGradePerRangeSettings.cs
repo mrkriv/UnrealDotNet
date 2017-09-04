@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageColorGradePerRangeSettings
-	/// <para>Fast Fourier Transform Image based convolution, intended for cinematics (too expensive for games) </para>
-	/// </summary>
 	public  partial class FColorGradePerRangeSettings : NativeStructWrapper
 	{
 		public FColorGradePerRangeSettings() : base(E_CreateStruct_FColorGradePerRangeSettings(), false)

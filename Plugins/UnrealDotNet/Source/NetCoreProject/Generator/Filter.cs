@@ -32,17 +32,22 @@ namespace Generator
             "UModelComponent",
             "UWindDirectionalSourceComponent",
 
-            "FPrimitiveComponentPostPhysicsTickFunction",
+            "FPrimitiveComponentPostPhysicsTickFunction", // TODO: не экспортировать структуры без конструктора по умочанию
             "FStartPhysicsTickFunction",
             "FEndPhysicsTickFunction",
             "FStartAsyncSimulationFunction",
             "FSkeletalMeshComponentEndPhysicsTickFunction",
             "FSkeletalMeshComponentClothTickFunction",
+            "FAsyncPreRegisterDDCRequest",
+            "FFixedUObjectArray",
+            "FScopedLevelCollectionContextSwitch",
+
+            "FWorldDelegates",
         };
 
-        public static string[] ClassImplementedList =
+        public static string[] EnumBlackList =
         {
-            //"UObjectBaseUtility",
+            "Type",
         };
 
         public static Dictionary<string, string[]> MethodBlackList = new Dictionary<string, string[]>
@@ -74,7 +79,7 @@ namespace Generator
 
         public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
-            var classes = Classes.Where(ClassFilter).OrderBy(cl => cl.Name).ToList();
+            var classes = Classes.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
 
             foreach (var cl in classes)
             {
@@ -87,6 +92,11 @@ namespace Generator
             }
 
             return classes;
+        }
+
+        public static List<Enum> FilterEnum(IEnumerable<Enum> enums)
+        {
+            return enums.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
         }
 
         private static void RemoveMethodDublicatedName(Class cl)
@@ -108,13 +118,32 @@ namespace Generator
             }
         }
 
-        public static bool ClassFilter(Class cl)
+        private static bool ClassFilter(Class cl)
         {
-            return cl.IsImplemented &&
-                   !cl.IsTemplate && // TODO: поддержка шаблоннх классов
-                   (cl.BaseClass == null || ClassFilter(cl.BaseClass) || ClassImplementedList.Contains(cl.BaseClass.Name)) &&
-                   cl.NamespaceBaseClass == null && // TODO: поддержка вложенных классов
+            return (cl.BaseClass == null || TypeFilter(cl.BaseClass)) &&
                    !ClassBlackList.Contains(cl.Name);
+        }
+
+        private static bool EunmFilter(Enum en)
+        {
+            return en.Fields.Any() &&
+                    !EnumBlackList.Contains(en.Name);
+        }
+
+        public static bool TypeFilter(Type cl)
+        {
+            if (!cl.IsImplemented ||
+                cl.IsTemplate ||
+                cl.NamespaceBaseType != null)
+                return false;
+
+            if (cl is Enum)
+                return EunmFilter(cl as Enum);
+
+            if (cl is Class)
+                return ClassFilter(cl as Class);
+
+            return true;
         }
 
         public static bool MethodFilter(Method m)
@@ -125,19 +154,19 @@ namespace Generator
                     !m.IsFriend &&
                     !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type == "void" || v.IsReadOnly()) &&
                     (!m.IsVirtual || m.Operator == null && !m.OwnerClass.IsFinal && m.ReturnType.Type == "void") &&
-                    m.Dependent.All(ClassFilter) &&
+                    m.Dependent.All(TypeFilter) &&
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
                     m.Operator == null && // TODO: поддержка операторов
-                                          //(m.Operator == null || m.InputTypes.Count != 0) && // TODO: поддержка унарных операторов
                     (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
                     (!MethodBlackList.ContainsKey(m.OwnerClass.Name) || !MethodBlackList[m.OwnerClass.Name].Contains(m.Name));
         }
 
         public static bool PropertyFilter(Variable m)
         {
-            return (!(m is ClassVariable) || ClassFilter(((ClassVariable)m).ClassType)) &&
-                    m.NeedRefOperator() == false &&
-                   !m.IsConst; // TODO: константные поля
+            return !m.IsConst &&
+                   m.NeedRefOperator() == false &&
+                   (!(m is EnumVariable) || TypeFilter(((EnumVariable)m).Enum)) &&
+                   (!(m is ClassVariable) || TypeFilter(((ClassVariable)m).Class));
         }
 
         public static IEnumerable<Method> GetVirtualMethods(Class Class)
@@ -145,7 +174,7 @@ namespace Generator
             if (Class.IsFinal || Class.IsStructure || Class.Name == "UObjectBase" || Class.Name == "UObjectBaseUtility")
                 return new Method[0];
 
-            return Class.Methods.Where(m => m.IsVirtual && !m.IsConst && m.ReturnType.Type == "void");
+            return Class.Methods.Where(m => m.IsVirtual && !m.IsConst && m.ReturnType.Type == "void" && m.InputTypes.All(t => !t.IsReadOnly()));
         }
     }
 }

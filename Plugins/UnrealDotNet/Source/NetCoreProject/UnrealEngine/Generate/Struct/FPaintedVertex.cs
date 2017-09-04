@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePaintedVertex
-	/// <para>Cached vertex information at the time the mesh was painted. </para>
-	/// </summary>
 	public  partial class FPaintedVertex : NativeStructWrapper
 	{
 		public FPaintedVertex() : base(E_CreateStruct_FPaintedVertex(), false)

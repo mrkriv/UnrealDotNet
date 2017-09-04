@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
 using Generator.Metadata;
+using Type = Generator.Metadata.Type;
 
 namespace Generator
 {
@@ -15,7 +16,7 @@ namespace Generator
     {
         public static Domain Parce(string[] files)
         {
-            var Classes = new ConcurrentDictionary<string, Class>();
+            var Types = new ConcurrentDictionary<string, Type>();
             var mult = Environment.ProcessorCount;
             var tasks = new List<Task>();
 
@@ -24,7 +25,7 @@ namespace Generator
 
             for (var i = 0; i < mult; i++)
             {
-                var visitor = new MetadataVisitor(Classes);
+                var visitor = new MetadataVisitor(Types);
 
                 var i1 = i;
                 tasks.Add(Task.Run(() => { ParceSolo(files, i1, mult, visitor); }));
@@ -34,7 +35,7 @@ namespace Generator
 
             Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
 
-            return new Domain(Classes.Values);
+            return new Domain(Types.Values);
         }
 
         private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor)

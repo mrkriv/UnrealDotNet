@@ -62,6 +62,9 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT EComponentCreationMethod E_PROP_UActorComponent_CreationMethod_GET(INT_PTR Ptr) { return ((UActorComponent*)Ptr)->CreationMethod; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(INT_PTR Ptr, EComponentCreationMethod Value) { ((UActorComponent*)Ptr)->CreationMethod = Value; }
+	
 	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR)&((UActorComponent*)Ptr)->PrimaryComponentTick; }
 	
 	DOTNET_EXPORT void E_UActorComponent_Activate(INT_PTR Self, bool bReset)
@@ -167,6 +170,11 @@ extern "C"
 		return ((UActorComponent*)Self)->GetIsReplicated();
 	}
 
+	DOTNET_EXPORT ENetMode E_UActorComponent_GetNetMode(INT_PTR Self)
+	{
+		return ((UActorComponent*)Self)->GetNetMode();
+	}
+
 	DOTNET_EXPORT AActor* E_UActorComponent_GetOwner(INT_PTR Self)
 	{
 		return ((UActorComponent*)Self)->GetOwner();
@@ -228,6 +236,12 @@ extern "C"
 	DOTNET_EXPORT bool E_UActorComponent_IsEditableWhenInherited(INT_PTR Self)
 	{
 		return ((UActorComponent*)Self)->IsEditableWhenInherited();
+	}
+
+	DOTNET_EXPORT bool E_UActorComponent_IsNetMode(INT_PTR Self, ENetMode Mode)
+	{
+		auto _p0 = Mode;
+		return ((UActorComponent*)Self)->IsNetMode(_p0);
 	}
 
 	DOTNET_EXPORT bool E_UActorComponent_IsNetSimulating(INT_PTR Self)
@@ -476,6 +490,12 @@ extern "C"
 	{
 		auto _p0 = bTickableWhenPaused;
 		((UActorComponent*)Self)->SetTickableWhenPaused(_p0);
+	}
+
+	DOTNET_EXPORT void E_UActorComponent_SetTickGroup(INT_PTR Self, ETickingGroup NewTickGroup)
+	{
+		auto _p0 = NewTickGroup;
+		((UActorComponent*)Self)->SetTickGroup(_p0);
 	}
 
 	DOTNET_EXPORT void E_UActorComponent_ToggleActive(INT_PTR Self)

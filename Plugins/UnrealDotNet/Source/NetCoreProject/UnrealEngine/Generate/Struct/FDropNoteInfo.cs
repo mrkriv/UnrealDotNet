@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageDropNoteInfo
-	/// <para>Info about one note dropped in the map during PIE. </para>
-	/// </summary>
 	public  partial class FDropNoteInfo : NativeStructWrapper
 	{
 		public FDropNoteInfo() : base(E_CreateStruct_FDropNoteInfo(), false)

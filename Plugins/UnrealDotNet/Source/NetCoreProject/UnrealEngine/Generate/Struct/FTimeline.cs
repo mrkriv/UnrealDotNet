@@ -70,6 +70,9 @@ namespace UnrealEngine
 		private static extern void E_FTimeline_SetTimelineLength(FTimeline Self, float NewLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_FTimeline_SetTimelineLengthMode(FTimeline Self, byte NewMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_FTimeline_Stop(FTimeline Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -196,6 +199,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTimelineLength(float NewLength)
 			=> E_FTimeline_SetTimelineLength(this, NewLength);
+		
+		
+		/// <summary>
+		/// <para>Sets the timeline length mode </para>
+		/// </summary>
+		public void SetTimelineLengthMode(ETimelineLengthMode NewMode)
+			=> E_FTimeline_SetTimelineLengthMode(this, (byte)NewMode);
 		
 		
 		/// <summary>

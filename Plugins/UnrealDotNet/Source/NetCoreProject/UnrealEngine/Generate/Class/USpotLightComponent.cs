@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSpotLightComponent
-	/// <para>A spot light component emits a directional cone shaped light (Eg a Torch). </para>
-	/// </summary>
 	public  partial class USpotLightComponent : UPointLightComponent
 	{
 		public USpotLightComponent(IntPtr Adress)

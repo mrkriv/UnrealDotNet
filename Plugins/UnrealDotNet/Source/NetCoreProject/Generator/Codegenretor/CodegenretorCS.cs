@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Generator.Metadata;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
+using Enum = Generator.Metadata.Enum;
 
 namespace Generator
 {
@@ -23,6 +25,8 @@ namespace Generator
                     if (methods.Any())
                         GenerateManageClass(cl, Path.Combine(OutputDir, "Manage"));
                 }
+
+                GenerateEnums(domain.Enums, Path.Combine(OutputDir, "Enums"));
             }
 
             private static void GenerateClass(Class Class, string OutputPath)
@@ -34,7 +38,7 @@ namespace Generator
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
-                GenerateSummaty(cw, Class.Description, "Класс не может быть наследован в Вашем коде, используйте Manage" + Class.Name.Substring(1));
+                GenerateSummaty(cw, Class, "Класс не может быть наследован в Вашем коде, используйте Manage" + Class.Name.Substring(1));
 
                 var baseClass = Class.BaseClass != null ? Class.BaseClass.Name : (Class.IsStructure ? "NativeStructWrapper" : "NativeWrapper");
 
@@ -110,7 +114,7 @@ namespace Generator
 
                 var manageClass = new Class("Manage" + Class.Name.Substring(1));
 
-                GenerateSummaty(cw, Class.Description, "Этот класс может быть наследованн");
+                GenerateSummaty(cw, Class, "Этот класс может быть наследованн");
 
                 cw.WriteLine($"public partial class {manageClass.Name} : {Class.Name}");
                 cw.OpenBlock();
@@ -133,9 +137,8 @@ namespace Generator
             private static void GenerateManageMethod(CoreWriter cw, Method method)
             {
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, false)));
-                var inputs = method.InputTypes.Select(t => t.Name).ToList();
 
-                GenerateSummaty(cw, method.Description);
+                GenerateSummaty(cw, method);
 
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
                 cw.WriteLine($"override {ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param}) {{ }}");
@@ -149,14 +152,17 @@ namespace Generator
                 if (Class.IsStructure && prop.AccessModifier != AccessModifier.Public)
                     return;
 
-                GenerateSummaty(cw, prop.Description);
+                GenerateSummaty(cw, prop);
                 cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {ExportVariable(prop, false)}");
                 cw.OpenBlock();
 
-                cw.WriteLine($"get => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
+                var convGet = prop is EnumVariable ? $"({prop.Type})" : "";
+                var convSet = prop is EnumVariable ? $"(byte)" : "";
+
+                cw.WriteLine($"get => {convGet}{ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
 
                 if (!prop.IsReadOnly())
-                    cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, value);");
+                    cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, {convSet}value);");
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -240,13 +246,13 @@ namespace Generator
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
 
-                var inputs = method.InputTypes.Select(t => t.Name).ToList();
+                var inputs = method.InputTypes.Select(VarNameForCall).ToList();
 
                 var genDefault = !method.IsVirtual && ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
 
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, genDefault)));
 
-                GenerateSummaty(cw, method.Description);
+                GenerateSummaty(cw, method);
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
                 cw.Write(method.IsVirtual, "virtual ");
 
@@ -274,7 +280,14 @@ namespace Generator
                     }
                     else
                     {
-                        cw.WriteLine($"\t=> {GetCPPMethodName(method)}({string.Join(", ", inputs)});");
+                        cw.Write("\t=> ");
+
+                        if (method.ReturnType is EnumVariable)
+                        {
+                            cw.Write($"({method.ReturnType.Type})");
+                        }
+
+                        cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
                     }
                 }
 
@@ -298,12 +311,50 @@ namespace Generator
                 return true;
             }
 
-            private static void GenerateSummaty(CoreWriter cw, string Description, string Insert = "")
+            private static void GenerateEnums(IEnumerable<Enum> Enums, string OutputPath)
             {
-                if (string.IsNullOrEmpty(Description))
+                var cw = new CoreWriter();
+                cw.WriteLine("namespace UnrealEngine");
+                cw.OpenBlock();
+
+                Enums.ForEach(en => GenerateEnum(cw, en));
+
+                cw.CloseBlock();
+
+                cw.SaveToFile(OutputPath + ".cs");
+            }
+
+            private static void GenerateEnum(CoreWriter cw, Enum Enum)
+            {
+                GenerateSummaty(cw, Enum);
+
+                cw.WriteLine($"public enum {Enum.Name} : byte");
+                cw.OpenBlock();
+
+                foreach (var field in Enum.Fields)
+                {
+                    GenerateSummaty(cw, field);
+
+                    cw.Write(field.Name);
+
+                    if (!string.IsNullOrEmpty(field.Value))
+                    {
+                        cw.Write($" = {field.Value}");
+                    }
+
+                    cw.WriteLine(",");
+                }
+
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            private static void GenerateSummaty(CoreWriter cw, Primitive primitive, string Insert = "")
+            {
+                if (string.IsNullOrEmpty(primitive.Description))
                     return;
 
-                var rows = Description.Split('\n');
+                var rows = primitive.Description.Split('\n');
 
                 cw.WriteLine();
                 cw.WriteLine("/// <summary>");
@@ -401,6 +452,14 @@ namespace Generator
                 }
 
                 return result;
+            }
+
+            private static string VarNameForCall(Variable variable)
+            {
+                if (variable is EnumVariable)
+                    return $"(byte){variable.Name}";
+
+                return variable.Name;
             }
 
             private static string ValidateDefaultValue(string value)

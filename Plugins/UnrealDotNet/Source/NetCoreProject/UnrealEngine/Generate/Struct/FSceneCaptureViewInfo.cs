@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSceneCaptureViewInfo
-	/// <para>View state needed to create a scene capture renderer </para>
-	/// </summary>
 	public  partial class FSceneCaptureViewInfo : NativeStructWrapper
 	{
 		public FSceneCaptureViewInfo() : base(E_CreateStruct_FSceneCaptureViewInfo(), false)
@@ -31,10 +26,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		
-		/// <summary>
-		/// <para>View state needed to create a scene capture renderer </para>
-		/// </summary>
 		public FVector ViewLocation
 		{
 			get => E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(NativePointer);

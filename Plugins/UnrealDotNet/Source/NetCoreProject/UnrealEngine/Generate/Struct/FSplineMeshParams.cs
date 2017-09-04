@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSplineMeshParams
-	/// <para>Structure that holds info about spline, passed to renderer to deform UStaticMesh. </para>
-	/// <para>Also used by Lightmass, so be sure to update Lightmass::FSplineMeshParams and the static lighting code if this changes! </para>
-	/// </summary>
 	public  partial class FSplineMeshParams : NativeStructWrapper
 	{
 		public FSplineMeshParams() : base(E_CreateStruct_FSplineMeshParams(), false)

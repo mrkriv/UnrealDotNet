@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSceneComponent
-	/// <para>A SceneComponent has a transform and supports attachment, but has no rendering or collision capabilities. </para>
-	/// <para>Useful as a 'dummy' component in the hierarchy to offset others. </para>
-	/// <para>@see [Scene Components](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html#scenecomponents) </para>
-	/// </summary>
 	public  partial class USceneComponent : UActorComponent
 	{
 		public USceneComponent(IntPtr Adress)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSceneCaptureComponentCube
-	/// <para>Used to capture a 'snapshot' of the scene from a 6 planes and feed it to a render target. </para>
-	/// </summary>
 	public  partial class USceneCaptureComponentCube : USceneCaptureComponent
 	{
 		public USceneCaptureComponentCube(IntPtr Adress)

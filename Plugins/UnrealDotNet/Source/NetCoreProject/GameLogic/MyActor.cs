@@ -17,10 +17,12 @@ namespace GameLogic
             try
             {
                 PrimaryActorTick.bCanEverTick = 1;
-                
+
                 // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
 
                 CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
+
+                ScreenDebugMessage(GetNetMode().ToString());
             }
             catch (Exception e)
             {

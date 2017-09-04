@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSphereComponent
-	/// <para>A sphere generally used for simple collision. Bounds are rendered as lines in the editor. </para>
-	/// </summary>
 	public  partial class USphereComponent : UShapeComponent
 	{
 		public USphereComponent(IntPtr Adress)

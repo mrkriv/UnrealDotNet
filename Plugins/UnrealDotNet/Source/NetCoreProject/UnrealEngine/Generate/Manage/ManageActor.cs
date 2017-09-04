@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>Actor is the base class for an Object that can be placed or spawned in a level. </para>
-	/// <para>Actors may contain a collection of ActorComponents, which can be used to control how actors move, how they are rendered, etc. </para>
-	/// <para>The other main function of an Actor is the replication of properties and function calls across the network during play. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors </para>
-	/// <para>@see UActorComponent </para>
-	/// </summary>
 	public partial class ManageActor : AActor
 	{
 		public ManageActor(IntPtr Adress)

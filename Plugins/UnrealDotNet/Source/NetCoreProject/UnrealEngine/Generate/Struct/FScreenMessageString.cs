@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageScreenMessageString
-	/// <para>Helper struct for tracking on screen messages. </para>
-	/// </summary>
 	public  partial class FScreenMessageString : NativeStructWrapper
 	{
 		public FScreenMessageString() : base(E_CreateStruct_FScreenMessageString(), false)

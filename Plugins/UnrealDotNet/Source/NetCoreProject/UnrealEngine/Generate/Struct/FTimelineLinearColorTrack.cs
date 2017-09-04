@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineLinearColorTrack
-	/// <para>Struct that contains one entry for each linear color interpolation performed by the timeline </para>
-	/// </summary>
 	public  partial class FTimelineLinearColorTrack : NativeStructWrapper
 	{
 		public FTimelineLinearColorTrack() : base(E_CreateStruct_FTimelineLinearColorTrack(), false)

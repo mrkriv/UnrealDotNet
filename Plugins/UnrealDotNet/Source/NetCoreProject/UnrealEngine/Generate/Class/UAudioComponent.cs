@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageAudioComponent
-	/// <para>AudioComponent is used to play a Sound </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Audio/Overview/index.html </para>
-	/// <para>@see USoundBase </para>
-	/// </summary>
 	public  partial class UAudioComponent : USceneComponent
 	{
 		public UAudioComponent(IntPtr Adress)

@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>Abstract base class of all Engine classes, responsible for management of systems critical to editor or game systems. </para>
-	/// <para>Also defines default classes for certain engine systems. </para>
-	/// </summary>
 	public partial class ManageEngine : UEngine
 	{
 		public ManageEngine(IntPtr Adress)

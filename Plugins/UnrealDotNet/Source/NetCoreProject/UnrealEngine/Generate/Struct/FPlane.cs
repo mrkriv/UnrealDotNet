@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePlane
-	/// <para>Structure for three dimensional planes. </para>
-	/// <para>Stores the coeffecients as Xx+Yy+Zz=W. </para>
-	/// <para>Note that this is different from many other Plane classes that use Xx+Yy+Zz+W=0. </para>
-	/// </summary>
 	public  partial class FPlane : FVector
 	{
 		public FPlane() : base(E_CreateStruct_FPlane(), false)

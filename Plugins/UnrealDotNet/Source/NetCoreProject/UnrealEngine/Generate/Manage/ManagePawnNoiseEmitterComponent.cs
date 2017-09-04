@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>PawnNoiseEmitterComponent tracks noise event data used by SensingComponents to hear a Pawn. </para>
-	/// <para>This component is intended to exist on either a Pawn or its Controller. It does nothing on network clients. </para>
-	/// </summary>
 	public partial class ManagePawnNoiseEmitterComponent : UPawnNoiseEmitterComponent
 	{
 		public ManagePawnNoiseEmitterComponent(IntPtr Adress)

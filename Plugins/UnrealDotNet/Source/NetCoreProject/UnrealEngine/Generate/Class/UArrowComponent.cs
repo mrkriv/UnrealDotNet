@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageArrowComponent
-	/// <para>A simple arrow rendered using lines. Useful for indicating which way an object is facing. </para>
-	/// </summary>
 	public  partial class UArrowComponent : UPrimitiveComponent
 	{
 		public UArrowComponent(IntPtr Adress)

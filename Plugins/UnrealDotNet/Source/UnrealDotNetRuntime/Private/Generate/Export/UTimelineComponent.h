@@ -111,6 +111,12 @@ extern "C"
 		((UTimelineComponent*)Self)->SetTimelineLength(_p0);
 	}
 
+	DOTNET_EXPORT void E_UTimelineComponent_SetTimelineLengthMode(INT_PTR Self, ETimelineLengthMode NewLengthMode)
+	{
+		auto _p0 = NewLengthMode;
+		((UTimelineComponent*)Self)->SetTimelineLengthMode(_p0);
+	}
+
 	DOTNET_EXPORT void E_UTimelineComponent_Stop(INT_PTR Self)
 	{
 		((UTimelineComponent*)Self)->Stop();

@@ -82,6 +82,9 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_UWorld_NextSwitchCountdown_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NextSwitchCountdown; }
 	DOTNET_EXPORT void E_PROP_UWorld_NextSwitchCountdown_SET(INT_PTR Ptr, float Value) { ((UWorld*)Ptr)->NextSwitchCountdown = Value; }
 	
+	DOTNET_EXPORT ETravelType E_PROP_UWorld_NextTravelType_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->NextTravelType; }
+	DOTNET_EXPORT void E_PROP_UWorld_NextTravelType_SET(INT_PTR Ptr, ETravelType Value) { ((UWorld*)Ptr)->NextTravelType = Value; }
+	
 	DOTNET_EXPORT char* E_PROP_UWorld_NextURL_GET(INT_PTR Ptr, int& ResultStringLen)
 	{
 		auto _result = ((UWorld*)Ptr)->NextURL;
@@ -110,6 +113,9 @@ extern "C"
 	
 	DOTNET_EXPORT int32 E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->StreamingVolumeUpdateDelay; }
 	DOTNET_EXPORT void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(INT_PTR Ptr, int32 Value) { ((UWorld*)Ptr)->StreamingVolumeUpdateDelay = Value; }
+	
+	DOTNET_EXPORT ETickingGroup E_PROP_UWorld_TickGroup_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->TickGroup; }
+	DOTNET_EXPORT void E_PROP_UWorld_TickGroup_SET(INT_PTR Ptr, ETickingGroup Value) { ((UWorld*)Ptr)->TickGroup = Value; }
 	
 	DOTNET_EXPORT float E_PROP_UWorld_TimeSeconds_GET(INT_PTR Ptr) { return ((UWorld*)Ptr)->TimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_TimeSeconds_SET(INT_PTR Ptr, float Value) { ((UWorld*)Ptr)->TimeSeconds = Value; }
@@ -153,6 +159,11 @@ extern "C"
 	DOTNET_EXPORT void E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(INT_PTR Self)
 	{
 		((UWorld*)Self)->AsyncLoadAlwaysLoadedLevelsForSeamlessTravel();
+	}
+
+	DOTNET_EXPORT ENetMode E_UWorld_AttemptDeriveFromURL(INT_PTR Self)
+	{
+		return ((UWorld*)Self)->AttemptDeriveFromURL();
 	}
 
 	DOTNET_EXPORT void E_UWorld_BeginPlay(INT_PTR Self)
@@ -243,11 +254,6 @@ extern "C"
 		return ((UWorld*)Self)->DebugDrawSceneQueries(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_DelayGarbageCollection(INT_PTR Self)
-	{
-		((UWorld*)Self)->DelayGarbageCollection();
-	}
-
 	DOTNET_EXPORT void E_UWorld_DelayStreamingVolumeUpdates(INT_PTR Self, int32 InFrameDelay)
 	{
 		auto _p0 = InFrameDelay;
@@ -265,13 +271,6 @@ extern "C"
 	DOTNET_EXPORT void E_UWorld_DestroyDemoNetDriver(INT_PTR Self)
 	{
 		((UWorld*)Self)->DestroyDemoNetDriver();
-	}
-
-	DOTNET_EXPORT void E_UWorld_DestroyWorld(INT_PTR Self, bool bInformEngineOfWorld, UWorld* NewWorld)
-	{
-		auto _p0 = bInformEngineOfWorld;
-		auto _p1 = NewWorld;
-		((UWorld*)Self)->DestroyWorld(_p0, _p1);
 	}
 
 	DOTNET_EXPORT void E_UWorld_DuplicateRequestedLevels(INT_PTR Self, char* MapName)
@@ -362,6 +361,11 @@ extern "C"
 		return ((UWorld*)Self)->GetMonoFarFieldCullingDistance();
 	}
 
+	DOTNET_EXPORT ENetMode E_UWorld_GetNetMode(INT_PTR Self)
+	{
+		return ((UWorld*)Self)->GetNetMode();
+	}
+
 	DOTNET_EXPORT int32 E_UWorld_GetNonDefaultPhysicsVolumeCount(INT_PTR Self)
 	{
 		return ((UWorld*)Self)->GetNonDefaultPhysicsVolumeCount();
@@ -385,11 +389,6 @@ extern "C"
 	DOTNET_EXPORT float E_UWorld_GetRealTimeSeconds(INT_PTR Self)
 	{
 		return ((UWorld*)Self)->GetRealTimeSeconds();
-	}
-
-	DOTNET_EXPORT float E_UWorld_GetTimeBetweenGarbageCollectionPasses(INT_PTR Self)
-	{
-		return ((UWorld*)Self)->GetTimeBetweenGarbageCollectionPasses();
 	}
 
 	DOTNET_EXPORT float E_UWorld_GetTimeSeconds(INT_PTR Self)
@@ -465,6 +464,12 @@ extern "C"
 		return ((UWorld*)Self)->IsNavigationRebuilt();
 	}
 
+	DOTNET_EXPORT bool E_UWorld_IsNetMode(INT_PTR Self, ENetMode Mode)
+	{
+		auto _p0 = Mode;
+		return ((UWorld*)Self)->IsNetMode(_p0);
+	}
+
 	DOTNET_EXPORT bool E_UWorld_IsPaused(INT_PTR Self)
 	{
 		return ((UWorld*)Self)->IsPaused();
@@ -533,16 +538,6 @@ extern "C"
 		((UWorld*)Self)->MarkActorComponentForNeededEndOfFrameUpdate(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_MarkObjectsPendingKill(INT_PTR Self)
-	{
-		((UWorld*)Self)->MarkObjectsPendingKill();
-	}
-
-	DOTNET_EXPORT void E_UWorld_PerformGarbageCollectionAndCleanupActors(INT_PTR Self)
-	{
-		((UWorld*)Self)->PerformGarbageCollectionAndCleanupActors();
-	}
-
 	DOTNET_EXPORT void E_UWorld_ProcessLevelStreamingVolumes(INT_PTR Self, INT_PTR OverrideViewLocation)
 	{
 		auto _p0 = *(FVector*)OverrideViewLocation;
@@ -593,6 +588,13 @@ extern "C"
 		return ((UWorld*)Self)->RequiresHitProxies();
 	}
 
+	DOTNET_EXPORT void E_UWorld_RunTickGroup(INT_PTR Self, ETickingGroup Group, bool bBlockTillComplete)
+	{
+		auto _p0 = Group;
+		auto _p1 = bBlockTillComplete;
+		((UWorld*)Self)->RunTickGroup(_p0, _p1);
+	}
+
 	DOTNET_EXPORT void E_UWorld_SendAllEndOfFrameUpdates(INT_PTR Self)
 	{
 		((UWorld*)Self)->SendAllEndOfFrameUpdates();
@@ -620,12 +622,6 @@ extern "C"
 	{
 		auto _p0 = bInShouldTick;
 		((UWorld*)Self)->SetShouldTick(_p0);
-	}
-
-	DOTNET_EXPORT void E_UWorld_SetTimeUntilNextGarbageCollection(INT_PTR Self, float MinTimeUntilNextPass)
-	{
-		auto _p0 = MinTimeUntilNextPass;
-		((UWorld*)Self)->SetTimeUntilNextGarbageCollection(_p0);
 	}
 
 	DOTNET_EXPORT void E_UWorld_SetupParameterCollectionInstances(INT_PTR Self)
@@ -656,6 +652,13 @@ extern "C"
 		auto _result = ((UWorld*)Self)->StripPIEPrefixFromPackageName(_p0, _p1);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
+	}
+
+	DOTNET_EXPORT void E_UWorld_Tick(INT_PTR Self, ELevelTick TickType, float DeltaSeconds)
+	{
+		auto _p0 = TickType;
+		auto _p1 = DeltaSeconds;
+		((UWorld*)Self)->Tick(_p0, _p1);
 	}
 
 	DOTNET_EXPORT void E_UWorld_TickNetClient(INT_PTR Self, float DeltaSeconds)

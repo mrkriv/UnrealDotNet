@@ -3,37 +3,21 @@ using System.Linq;
 
 namespace Generator.Metadata
 {
-    public class Class : Primitive
+    public class Class : Type
     {
-        public Domain Domain { get; set; }
         public Class BaseClass { get; set; }
-        public Class NamespaceBaseClass { get; set; }
         public List<Method> Methods { get; set; }
         public List<Method> Constructors { get; set; }
         public List<Variable> Property { get; set; }
-        public bool IsImplemented { get; set; }
         public bool IsStructure { get; set; }
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
-        public string SourceFile { get; set; }
-
-        public string FullName => NamespaceBaseClass != null ? NamespaceBaseClass.FullName + "." + Name : Name;
 
         public IEnumerable<Class> PropertyDependent
         {
             get
             {
-                var list = Property.OfType<ClassVariable>().Select(v => v.ClassType);
-                return list.Where(cl => cl != this).Distinct().OrderBy(cl => cl.Name);
-            }
-        }
-
-        public IEnumerable<Class> Dependent
-        {
-            get
-            {
-                var list = Methods.Select(m => m.Dependent).Aggregate(PropertyDependent, (current, md) => current.Concat(md));
-
+                var list = Property.OfType<ClassVariable>().Select(v => v.Class);
                 return list.Where(cl => cl != this).Distinct().OrderBy(cl => cl.Name);
             }
         }
@@ -60,11 +44,6 @@ namespace Generator.Metadata
             }
 
             return false;
-        }
-
-        public override string ToString()
-        {
-            return Name;
         }
     }
 }

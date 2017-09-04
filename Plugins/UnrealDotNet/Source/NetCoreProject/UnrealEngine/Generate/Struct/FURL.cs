@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageURL
-	/// <para>Invalid version. </para>
-	/// </summary>
 	public  partial class FURL : NativeStructWrapper
 	{
 		public FURL() : base(E_CreateStruct_FURL(), false)

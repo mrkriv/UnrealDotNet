@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageDrawFrustumComponent
-	/// <para>Utility component for drawing a view frustum. Origin is at the component location, frustum points down position X axis. </para>
-	/// </summary>
 	public  partial class UDrawFrustumComponent : UPrimitiveComponent
 	{
 		public UDrawFrustumComponent(IntPtr Adress)

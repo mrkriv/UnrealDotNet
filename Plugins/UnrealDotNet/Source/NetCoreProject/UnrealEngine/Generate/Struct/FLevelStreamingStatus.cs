@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelStreamingStatus
-	/// <para>level streaming updates that should be applied immediately after committing the map change </para>
-	/// </summary>
 	public  partial class FLevelStreamingStatus : NativeStructWrapper
 	{
 		public FLevelStreamingStatus() : base(E_CreateStruct_FLevelStreamingStatus(), false)

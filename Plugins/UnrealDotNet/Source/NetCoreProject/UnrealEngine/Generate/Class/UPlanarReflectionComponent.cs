@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePlanarReflectionComponent
-	/// <para>UPlanarReflectionComponent </para>
-	/// </summary>
 	public  partial class UPlanarReflectionComponent : USceneCaptureComponent
 	{
 		public UPlanarReflectionComponent(IntPtr Adress)

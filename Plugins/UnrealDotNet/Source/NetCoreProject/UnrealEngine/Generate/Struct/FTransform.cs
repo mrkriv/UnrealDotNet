@@ -3,19 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageTransform
-	/// <para>Transform composed of Scale, Rotation (as a quaternion), and Translation. </para>
-	/// <para>Transforms can be used to convert from one space to another, for example by transforming </para>
-	/// <para>positions and directions from local space to world space. </para>
-	/// <para>Transformation of position vectors is applied in the order:  Scale -> Rotate -> Translate. </para>
-	/// <para>Transformation of direction vectors is applied in the order: Scale -> Rotate. </para>
-	/// <para>Order matters when composing transforms: C = A * B will yield a transform C that logically </para>
-	/// <para>first applies A then B to any subsequent transformation. Note that this is the opposite order of quaternion (FQuat) multiplication. </para>
-	/// <para>Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in local space by DeltaRotation. </para>
-	/// <para>Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in world space by DeltaRotation. </para>
-	/// </summary>
 	public  partial class FTransform : NativeStructWrapper
 	{
 		public FTransform() : base(E_CreateStruct_FTransform(), false)

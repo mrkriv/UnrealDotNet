@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageBox2D
-	/// <para>Implements a rectangular 2D Box. </para>
-	/// </summary>
 	public  partial class FBox2D : NativeStructWrapper
 	{
 		public FBox2D() : base(E_CreateStruct_FBox2D(), false)

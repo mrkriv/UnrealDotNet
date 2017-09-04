@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageChildActorComponent
-	/// <para>A component that spawns an Actor when registered, and destroys it when unregistered. </para>
-	/// </summary>
 	public  partial class UChildActorComponent : USceneComponent
 	{
 		public UChildActorComponent(IntPtr Adress)

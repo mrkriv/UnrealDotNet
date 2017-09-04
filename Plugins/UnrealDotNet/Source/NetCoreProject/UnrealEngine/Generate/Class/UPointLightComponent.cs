@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePointLightComponent
-	/// <para>A light component which emits light from a single point equally in all directions. </para>
-	/// </summary>
 	public  partial class UPointLightComponent : ULightComponent
 	{
 		public UPointLightComponent(IntPtr Adress)

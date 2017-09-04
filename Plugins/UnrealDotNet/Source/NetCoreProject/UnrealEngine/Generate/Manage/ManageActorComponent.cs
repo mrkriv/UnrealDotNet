@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>ActorComponent is the base class for components that define reusable behavior that can be added to different types of Actors. </para>
-	/// <para>ActorComponents that have a transform are known as SceneComponents and those that can be rendered are PrimitiveComponents. </para>
-	/// <para>@see [ActorComponent](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html#actorcomponents) </para>
-	/// <para>@see USceneComponent </para>
-	/// <para>@see UPrimitiveComponent </para>
-	/// </summary>
 	public partial class ManageActorComponent : UActorComponent
 	{
 		public ManageActorComponent(IntPtr Adress)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSkyLightComponent
-	/// <para>Construct the sky light from the specified cubemap. </para>
-	/// </summary>
 	public  partial class USkyLightComponent : ULightComponentBase
 	{
 		public USkyLightComponent(IntPtr Adress)

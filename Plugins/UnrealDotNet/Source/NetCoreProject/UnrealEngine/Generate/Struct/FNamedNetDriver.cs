@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageNamedNetDriver
-	/// <para>Active and named net drivers instantiated from an FNetDriverDefinition </para>
-	/// <para>The net driver will remain instantiated on this struct until it is destroyed </para>
-	/// </summary>
 	public  partial class FNamedNetDriver : NativeStructWrapper
 	{
 		public FNamedNetDriver() : base(E_CreateStruct_FNamedNetDriver(), false)

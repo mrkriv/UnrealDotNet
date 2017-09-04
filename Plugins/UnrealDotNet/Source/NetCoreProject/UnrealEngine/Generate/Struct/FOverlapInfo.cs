@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageOverlapInfo
-	/// <para>Overlap info consisting of the primitive and the body that is overlapping </para>
-	/// </summary>
 	public  partial class FOverlapInfo : NativeStructWrapper
 	{
 		public FOverlapInfo() : base(E_CreateStruct_FOverlapInfo(), false)

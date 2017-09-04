@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageVector
-	/// <para>A vector in 3-D space composed of components (X, Y, Z) with floating point precision. </para>
-	/// </summary>
 	public  partial class FVector : NativeStructWrapper
 	{
 		public FVector() : base(E_CreateStruct_FVector(), false)

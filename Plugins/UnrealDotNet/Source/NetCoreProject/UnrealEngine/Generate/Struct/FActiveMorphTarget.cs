@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageActiveMorphTarget
-	/// <para>Struct used to indicate one active morph target that should be applied to this USkeletalMesh when rendered. </para>
-	/// </summary>
 	public  partial class FActiveMorphTarget : NativeStructWrapper
 	{
 		public FActiveMorphTarget() : base(E_CreateStruct_FActiveMorphTarget(), false)

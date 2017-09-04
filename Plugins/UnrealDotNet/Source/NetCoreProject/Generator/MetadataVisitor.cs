@@ -4,26 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.Concurrent;
 using static UHeaderParser;
+using Enum = Generator.Metadata.Enum;
+using Type = Generator.Metadata.Type;
 
 namespace Generator
 {
     public class MetadataVisitor : UHeaderBaseVisitor<object>
     {
-        private readonly ConcurrentDictionary<string, Class> Classes;
+        private readonly ConcurrentDictionary<string, Type> Types;
         private Dictionary<string, string> CurrentUMeta;
+        private AccessModifier AccessModifier;
         private Class CurrentClass;
+        private Enum CurrentEnum;
         private string CurrentFile;
         private string CurrentComment;
         private bool Ignore;
-        private AccessModifier AccessModifier;
         private int PreprocessorIfCount;
 
-        public MetadataVisitor(ConcurrentDictionary<string, Class> classes)
+        public MetadataVisitor(ConcurrentDictionary<string, Type> types)
         {
-            Classes = classes;
+            Types = types;
         }
-
-        public Domain GetDomain() => new Domain(Classes.Values.OrderBy(c => c.Name));
 
         public void Append(TranslationUnitContext Translationunit, string file)
         {
@@ -34,11 +35,20 @@ namespace Generator
             Visit(Translationunit);
         }
 
+        private Type GetType(string name)
+        {
+            var liter = name.First();
+            return Types.GetOrAdd(name, liter == 'E' ? (Type)new Enum(name) : new Class(name));
+        }
+
         private Class GetClass(string name)
         {
-            Classes.TryGetValue(name, out Class Class);
+            return (Class)Types.GetOrAdd(name, new Class(name));
+        }
 
-            return Class ?? Classes.GetOrAdd(name, new Class(name));
+        private Enum GetEnum(string name)
+        {
+            return (Enum)Types.GetOrAdd(name, new Enum(name));
         }
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
@@ -49,7 +59,7 @@ namespace Generator
 
             CurrentClass.SourceFile = CurrentFile;
             CurrentClass.IsImplemented = true;
-            CurrentClass.IsStructure = context.ChildText<ClassOrStructContext>() == "struct";
+            CurrentClass.IsStructure = CurrentClass.Name.First() == 'F';    //context.ChildText<ClassOrStructContext>() == "struct";
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
             CurrentClass.IsFinal = context.FoundChild<IsFinalContext>();
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
@@ -64,12 +74,53 @@ namespace Generator
                 CurrentClass.BaseClass = GetClass(parentClassName);
             }
 
-            VisitClassBody(context.Child<ClassBodyContext>());
             CurrentUMeta = null;
             CurrentComment = "";
 
-            CurrentClass.NamespaceBaseClass = NamespaceBaseClass;
+            VisitClassBody(context.Child<ClassBodyContext>());
+
+            CurrentClass.NamespaceBaseType = NamespaceBaseClass;
             CurrentClass = NamespaceBaseClass;
+
+            return null;
+        }
+
+        public override object VisitEnumDeclaration(EnumDeclarationContext context)
+        {
+            var name = context.enumName()?.GetText();
+
+            if (string.IsNullOrEmpty(name))
+                return null;
+
+            CurrentEnum = GetEnum(name);
+            CurrentEnum.UMeta = CurrentUMeta ?? new Dictionary<string, string>();
+            CurrentEnum.Description = CurrentComment;
+            CurrentEnum.IsImplemented = true;
+
+            CurrentUMeta = null;
+            CurrentComment = "";
+
+            var body = context.enumElementList();
+
+            if (body != null)
+                VisitEnumElementList(body);
+
+            CurrentEnum = null;
+            return null;
+        }
+
+        public override object VisitEnumElement(EnumElementContext context)
+        {
+            CurrentEnum?.Fields.Add(new Enum.Field
+            {
+                Name = context.enumElementName().GetText(),
+                Value = context.propertyDefaultValue()?.GetText(),
+                UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
+                Description = CurrentComment,
+            });
+
+            CurrentUMeta = null;
+            CurrentComment = "";
 
             return null;
         }
@@ -131,21 +182,26 @@ namespace Generator
             if (Ignore || CurrentClass == null)
                 return null;
 
-            var method = new Method(context.methodName().GetText())
+            var name = context.methodName().GetText();
+
+            if (name == CurrentClass.Name)
             {
-                IsConst = context.FoundChild<IsConstContext>(),
-                UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
-                Description = CurrentComment,
-                OwnerClass = CurrentClass,
-                Operator = context.methodName().methodOperator()?.GetText(),
-                AccessModifier = AccessModifier,
+                var method = new Method(context.methodName().GetText())
+                {
+                    IsConst = context.FoundChild<IsConstContext>(),
+                    UMeta = CurrentUMeta ?? new Dictionary<string, string>(),
+                    Description = CurrentComment,
+                    OwnerClass = CurrentClass,
+                    Operator = context.methodName().methodOperator()?.GetText(),
+                    AccessModifier = AccessModifier,
 
-                InputTypes = context.FindAll<MethodParametrContext>().Reverse()
-                    .Select(ParceParam).ToList()
-            };
+                    InputTypes = context.FindAll<MethodParametrContext>().Reverse()
+                        .Select(ParceParam).ToList()
+                };
 
-            if (!CurrentClass.Constructors.Any(m => m.Equals(method)))
-                CurrentClass.Constructors.Add(method);
+                if (!CurrentClass.Constructors.Any(m => m.Equals(method)))
+                    CurrentClass.Constructors.Add(method);
+            }
 
             CurrentUMeta = null;
             CurrentComment = "";
@@ -194,9 +250,21 @@ namespace Generator
             Variable variable;
 
             if (PrimitiveVariable.PrimitiveTypes.Contains(typeName))
+            {
                 variable = new PrimitiveVariable(typeName);
+            }
             else
-                variable = new ClassVariable(GetClass(typeName));
+            {
+                var type = GetType(typeName);
+                if (type is Class)
+                {
+                    variable = new ClassVariable((Class)type);
+                }
+                else
+                {
+                    variable = new EnumVariable((Enum)type);
+                }
+            }
 
             variable.IsConst = context.FoundChild<IsConstContext>();
             variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
@@ -242,7 +310,7 @@ namespace Generator
 
         public override object VisitComment(CommentContext context)
         {
-            if (Classes != null)
+            if (CurrentClass != null || CurrentEnum != null)
                 CurrentComment = context.GetText();
 
             return null;

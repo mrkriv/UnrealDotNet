@@ -279,9 +279,9 @@ namespace Generator
 
                 var bCloseCount = 0;
                 var retClass = method.ReturnType as ClassVariable;
-                if (retClass != null && retClass.ClassType.IsStructure)
+                if (retClass != null && retClass.Class.IsStructure)
                 {
-                    cw.Write($"(INT_PTR) new {retClass.ClassType.Name}(");
+                    cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
                     bCloseCount++;
                 }
 
@@ -349,10 +349,10 @@ namespace Generator
                 var varClass = variable as ClassVariable;
                 if (varClass != null)
                 {
-                    if (!varClass.ClassType.IsStructure)
+                    if (!varClass.Class.IsStructure)
                         return varClass.Name;
 
-                    return $"*({varClass.ClassType.Name}*){varClass.Name}";
+                    return $"*({varClass.Class.Name}*){varClass.Name}";
                 }
 
                 var result = "";
@@ -446,9 +446,9 @@ namespace Generator
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 var propClass = prop as ClassVariable;
-                if (propClass?.ClassType.IsStructure == true)
+                if (propClass?.Class.IsStructure == true)
                 {
-                    var clName = propClass.ClassType.Name;
+                    var clName = propClass.Class.Name;
                     cw.WriteLine(
                         $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR)&(({Class.Name}*)Ptr)->{prop.Name}; }}");
 

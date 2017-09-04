@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageNetDriverDefinition
-	/// <para>Container for describing various types of netdrivers available to the engine </para>
-	/// <para>The engine will try to construct a netdriver of a given type and, failing that, </para>
-	/// <para>the fallback version. </para>
-	/// </summary>
 	public  partial class FNetDriverDefinition : NativeStructWrapper
 	{
 		public FNetDriverDefinition() : base(E_CreateStruct_FNetDriverDefinition(), false)

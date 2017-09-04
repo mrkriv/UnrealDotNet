@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSpectatorPawn
-	/// <para>SpectatorPawns are simple pawns that can fly around the world, used by </para>
-	/// <para>PlayerControllers when in the spectator state. </para>
-	/// </summary>
 	public  partial class ASpectatorPawn : ADefaultPawn
 	{
 		public ASpectatorPawn(IntPtr Adress)

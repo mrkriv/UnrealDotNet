@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageDefaultPawn
-	/// <para>DefaultPawn implements a simple Pawn with spherical collision and built-in flying movement. </para>
-	/// <para>@see UFloatingPawnMovement </para>
-	/// </summary>
 	public  partial class ADefaultPawn : APawn
 	{
 		public ADefaultPawn(IntPtr Adress)

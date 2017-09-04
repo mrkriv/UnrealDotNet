@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageShapeComponent
-	/// <para>ShapeComponent is a PrimitiveComponent that is represented by a simple geometrical shape (sphere, capsule, box, etc). </para>
-	/// </summary>
 	public  partial class UShapeComponent : UPrimitiveComponent
 	{
 		public UShapeComponent(IntPtr Adress)

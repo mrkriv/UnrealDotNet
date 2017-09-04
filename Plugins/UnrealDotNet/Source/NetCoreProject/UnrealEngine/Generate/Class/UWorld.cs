@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageWorld
-	/// <para>The World is the top level object representing a map or a sandbox in which Actors and Components will exist and be rendered. </para>
-	/// <para>A World can be a single Persistent Level with an optional list of streaming levels that are loaded and unloaded via volumes and blueprint functions </para>
-	/// <para>or it can be a collection of levels organized with a World Composition. </para>
-	/// <para>In a standalone game, generally only a single World exists except during seamless area transitions when both a destination and current world exists. </para>
-	/// <para>In the editor many Worlds exist: The level being edited, each PIE instance, each editor tool which has an interactive rendered viewport, and many more. </para>
-	/// </summary>
 	public sealed partial class UWorld : UObject
 	{
 		public UWorld(IntPtr Adress)
@@ -132,6 +123,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_NextSwitchCountdown_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_PROP_UWorld_NextTravelType_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_UWorld_NextTravelType_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern string E_PROP_UWorld_NextURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_UWorld_NextURL_SET(IntPtr Ptr, string Value);
@@ -172,6 +168,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_PROP_UWorld_TickGroup_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_UWorld_TickGroup_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_UWorld_TimeSeconds_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_PROP_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
@@ -208,6 +209,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_UWorld_AttemptDeriveFromURL(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_BeginPlay(IntPtr Self);
@@ -255,9 +259,6 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_DebugDrawSceneQueries(IntPtr Self, string UsedTraceTag);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_DelayGarbageCollection(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_DelayStreamingVolumeUpdates(IntPtr Self, int InFrameDelay);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -265,9 +266,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_DestroyDemoNetDriver(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_DestroyWorld(IntPtr Self, bool bInformEngineOfWorld, IntPtr NewWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_DuplicateRequestedLevels(IntPtr Self, string MapName);
@@ -315,6 +313,9 @@ namespace UnrealEngine
 		private static extern float E_UWorld_GetMonoFarFieldCullingDistance(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_UWorld_GetNetMode(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_UWorld_GetNonDefaultPhysicsVolumeCount(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -328,9 +329,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_UWorld_GetRealTimeSeconds(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_UWorld_GetTimeBetweenGarbageCollectionPasses(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_UWorld_GetTimeSeconds(IntPtr Self);
@@ -375,6 +373,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_IsNavigationRebuilt(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UWorld_IsNetMode(IntPtr Self, byte Mode);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UWorld_IsPaused(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -414,12 +415,6 @@ namespace UnrealEngine
 		private static extern void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(IntPtr Self, IntPtr Component, bool bForceGameThread);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_MarkObjectsPendingKill(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_PerformGarbageCollectionAndCleanupActors(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -444,6 +439,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_RequiresHitProxies(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UWorld_RunTickGroup(IntPtr Self, byte Group, bool bBlockTillComplete);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_SendAllEndOfFrameUpdates(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -459,9 +457,6 @@ namespace UnrealEngine
 		private static extern void E_UWorld_SetShouldTick(IntPtr Self, bool bInShouldTick);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UWorld_SetTimeUntilNextGarbageCollection(IntPtr Self, float MinTimeUntilNextPass);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_SetupParameterCollectionInstances(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -475,6 +470,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_UWorld_StripPIEPrefixFromPackageName(IntPtr Self, string PackageName, string Prefix, out int ResultStringLen);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UWorld_Tick(IntPtr Self, byte TickType, float DeltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UWorld_TickNetClient(IntPtr Self, float DeltaSeconds);
@@ -739,6 +737,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>The type of travel to perform next when doing a server travel </para>
+		/// </summary>
+		public ETravelType NextTravelType
+		{
+			get => (ETravelType)E_PROP_UWorld_NextTravelType_GET(NativePointer);
+			set => E_PROP_UWorld_NextTravelType_SET(NativePointer, (byte)value);
+		}
+
+		
+		/// <summary>
 		/// <para>The URL to be used for the upcoming server travel </para>
 		/// </summary>
 		public string NextURL
@@ -815,6 +823,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(NativePointer);
 			set => E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The current ticking group </para>
+		/// </summary>
+		public ETickingGroup TickGroup
+		{
+			get => (ETickingGroup)E_PROP_UWorld_TickGroup_GET(NativePointer);
+			set => E_PROP_UWorld_TickGroup_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -905,6 +923,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void AsyncLoadAlwaysLoadedLevelsForSeamlessTravel()
 			=> E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(this);
+		
+		
+		/// <summary>
+		/// <para>Attempts to derive the net mode from URL </para>
+		/// </summary>
+		public ENetMode AttemptDeriveFromURL()
+			=> (ENetMode)E_UWorld_AttemptDeriveFromURL(this);
 		
 		
 		/// <summary>
@@ -1018,13 +1043,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Requests a one frame delay of Garbage Collection </para>
-		/// </summary>
-		public void DelayGarbageCollection()
-			=> E_UWorld_DelayGarbageCollection(this);
-		
-		
-		/// <summary>
 		/// <para>Sets the number of frames to delay Streaming Volume updating, </para>
 		/// <para>useful if you preload a bunch of levels but the camera hasn't caught up yet </para>
 		/// </summary>
@@ -1051,13 +1069,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void DestroyDemoNetDriver()
 			=> E_UWorld_DestroyDemoNetDriver(this);
-		
-		
-		/// <summary>
-		/// <para>Destroy this World instance. If destroying the world to load a different world, supply it here to prevent GC of the new world or it's sublevels. </para>
-		/// </summary>
-		public void DestroyWorld(bool bInformEngineOfWorld, UWorld NewWorld = null)
-			=> E_UWorld_DestroyWorld(this, bInformEngineOfWorld, NewWorld);
 		
 		
 		/// <summary>
@@ -1174,6 +1185,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the net mode this world is running under. </para>
+		/// <para>@see IsNetMode() </para>
+		/// </summary>
+		public ENetMode GetNetMode()
+			=> (ENetMode)E_UWorld_GetNetMode(this);
+		
+		
+		/// <summary>
 		/// <para>Get the count of all PhysicsVolumes in the world that are not a DefaultPhysicsVolume. </para>
 		/// </summary>
 		public int GetNonDefaultPhysicsVolumeCount()
@@ -1207,13 +1226,6 @@ namespace UnrealEngine
 		/// </summary>
 		public float GetRealTimeSeconds()
 			=> E_UWorld_GetRealTimeSeconds(this);
-		
-		
-		/// <summary>
-		/// <para>Returns the current desired time between garbage collection passes (not the time remaining) </para>
-		/// </summary>
-		public float GetTimeBetweenGarbageCollectionPasses()
-			=> E_UWorld_GetTimeBetweenGarbageCollectionPasses(this);
 		
 		
 		/// <summary>
@@ -1317,6 +1329,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Test whether net mode is the given mode. </para>
+		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
+		/// <para>because it can check the static build flags without considering PIE. </para>
+		/// </summary>
+		public bool IsNetMode(ENetMode Mode)
+			=> E_UWorld_IsNetMode(this, (byte)Mode);
+		
+		
+		/// <summary>
 		/// <return>true if the world is in the paused state </return>
 		/// </summary>
 		public bool IsPaused()
@@ -1406,20 +1427,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Marks all objects that have this World as an Outer as pending kill </para>
-		/// </summary>
-		public void MarkObjectsPendingKill()
-			=> E_UWorld_MarkObjectsPendingKill(this);
-		
-		
-		/// <summary>
-		/// <para>Interface to allow WorldSettings to request immediate garbage collection </para>
-		/// </summary>
-		public void PerformGarbageCollectionAndCleanupActors()
-			=> E_UWorld_PerformGarbageCollectionAndCleanupActors(this);
-		
-		
-		/// <summary>
 		/// <para>Issues level streaming load/unload requests based on whether </para>
 		/// <para>local players are inside/outside level streaming volumes. </para>
 		/// <param name="OverrideViewLocation">Optional position used to override the location used to calculate current streaming volumes </param>
@@ -1483,6 +1490,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Run a tick group, ticking all actors and components </para>
+		/// <param name="Group">- Ticking group to run </param>
+		/// <param name="bBlockTillComplete">- if true, do not return until all ticks are complete </param>
+		/// </summary>
+		public void RunTickGroup(ETickingGroup Group, bool bBlockTillComplete)
+			=> E_UWorld_RunTickGroup(this, (byte)Group, bBlockTillComplete);
+		
+		
+		/// <summary>
 		/// <para>Send all render updates to the rendering thread. </para>
 		/// </summary>
 		public void SendAllEndOfFrameUpdates()
@@ -1526,15 +1542,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Updates the timer (as a one-off) that is used to trigger garbage collection; this should only be used for things </para>
-		/// <para>like performance tests, using it recklessly can dramatically increase memory usage and cost of the eventual GC. </para>
-		/// <para>Note: Things that force a GC will still force a GC after using this method (and they will also reset the timer) </para>
-		/// </summary>
-		public void SetTimeUntilNextGarbageCollection(float MinTimeUntilNextPass)
-			=> E_UWorld_SetTimeUntilNextGarbageCollection(this, MinTimeUntilNextPass);
-		
-		
-		/// <summary>
 		/// <para>Creates instances for each parameter collection in memory.  Called when a world is created. </para>
 		/// </summary>
 		public void SetupParameterCollectionInstances()
@@ -1567,6 +1574,14 @@ namespace UnrealEngine
 		/// </summary>
 		public string StripPIEPrefixFromPackageName(string PackageName, string Prefix)
 			=> Marshal.PtrToStringUTF8(E_UWorld_StripPIEPrefixFromPackageName(this, PackageName, Prefix, out int ResultStringLen), ResultStringLen);
+		
+		
+		/// <summary>
+		/// <para>Update the level after a variable amount of time, DeltaSeconds, has passed. </para>
+		/// <para>All child actors are ticked after their owners have been ticked. </para>
+		/// </summary>
+		public void Tick(ELevelTick TickType, float DeltaSeconds)
+			=> E_UWorld_Tick(this, (byte)TickType, DeltaSeconds);
 		
 		
 		/// <summary>

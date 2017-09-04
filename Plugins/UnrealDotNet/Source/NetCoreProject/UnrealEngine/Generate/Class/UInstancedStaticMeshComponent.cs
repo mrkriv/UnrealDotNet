@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageInstancedStaticMeshComponent
-	/// <para>A component that efficiently renders multiple instances of the same StaticMesh. </para>
-	/// </summary>
 	public  partial class UInstancedStaticMeshComponent : UStaticMeshComponent
 	{
 		public UInstancedStaticMeshComponent(IntPtr Adress)

@@ -6,9 +6,7 @@ namespace UnrealEngine
 	
 	/// <summary>
 	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineComponent
-	/// <para>TimelineComponent holds a series of events, floats, vectors or colors with associated keyframes. </para>
-	/// <para>Events can be triggered at keyframes along the timeline. </para>
-	/// <para>Floats, vectors, and colors are interpolated between keyframes along the timeline. </para>
+	/// <para>Returns the time value of the last keyframe in any of the timeline's curves </para>
 	/// </summary>
 	public  partial class UTimelineComponent : UActorComponent
 	{
@@ -75,6 +73,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UTimelineComponent_SetTimelineLength(IntPtr Self, float NewLength);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UTimelineComponent_SetTimelineLengthMode(IntPtr Self, byte NewLengthMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UTimelineComponent_Stop(IntPtr Self);
@@ -216,6 +217,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTimelineLength(float NewLength)
 			=> E_UTimelineComponent_SetTimelineLength(this, NewLength);
+		
+		
+		/// <summary>
+		/// <para>Sets the length mode of the timeline </para>
+		/// </summary>
+		public void SetTimelineLengthMode(ETimelineLengthMode NewLengthMode)
+			=> E_UTimelineComponent_SetTimelineLengthMode(this, (byte)NewLengthMode);
 		
 		
 		/// <summary>

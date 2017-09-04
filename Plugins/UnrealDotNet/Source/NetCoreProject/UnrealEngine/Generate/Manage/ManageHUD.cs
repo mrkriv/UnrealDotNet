@@ -3,17 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>Base class of the heads-up display. This has a canvas and a debug canvas on which primitives can be drawn. </para>
-	/// <para>It also contains a list of simple hit boxes that can be used for simple item click detection. </para>
-	/// <para>A method of rendering debug text is also included. </para>
-	/// <para>Provides some simple methods for rendering text, textures, rectangles and materials which can also be accessed from blueprints. </para>
-	/// <para>@see UCanvas </para>
-	/// <para>@see FHUDHitBox </para>
-	/// <para>@see FDebugTextInfo </para>
-	/// </summary>
 	public partial class ManageHUD : AHUD
 	{
 		public ManageHUD(IntPtr Adress)

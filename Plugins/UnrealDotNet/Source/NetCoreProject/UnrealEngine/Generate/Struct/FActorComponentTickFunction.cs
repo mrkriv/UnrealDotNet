@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageActorComponentTickFunction
-	/// <para>Tick function that calls UActorComponent::ConditionalTick </para>
-	/// </summary>
 	public  partial class FActorComponentTickFunction : FTickFunction
 	{
 		public FActorComponentTickFunction() : base(E_CreateStruct_FActorComponentTickFunction(), false)

@@ -22,9 +22,6 @@ namespace UnrealEngine
 		private static extern bool E_UObject_CanModify(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_UObject_ExecuteUbergraph(IntPtr Self, int EntryPoint);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UObject_FinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -172,9 +169,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool CanModify()
 			=> E_UObject_CanModify(this);
-		
-		public void ExecuteUbergraph(int EntryPoint)
-			=> E_UObject_ExecuteUbergraph(this, EntryPoint);
 		
 		
 		/// <summary>

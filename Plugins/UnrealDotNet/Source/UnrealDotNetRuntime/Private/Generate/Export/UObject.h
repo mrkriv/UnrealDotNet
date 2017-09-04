@@ -22,12 +22,6 @@ extern "C"
 		return ((UObject*)Self)->CanModify();
 	}
 
-	DOTNET_EXPORT void E_UObject_ExecuteUbergraph(INT_PTR Self, int32 EntryPoint)
-	{
-		auto _p0 = EntryPoint;
-		((UObject*)Self)->ExecuteUbergraph(_p0);
-	}
-
 	DOTNET_EXPORT void E_UObject_FinishDestroy(INT_PTR Self)
 	{
 		((UObject*)Self)->FinishDestroy();

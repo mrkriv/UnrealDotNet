@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageDestructibleChunkInfo
-	/// <para>Mapping info for destructible chunk user data. </para>
-	/// </summary>
 	public  partial class FDestructibleChunkInfo : NativeStructWrapper
 	{
 		public FDestructibleChunkInfo() : base(E_CreateStruct_FDestructibleChunkInfo(), false)

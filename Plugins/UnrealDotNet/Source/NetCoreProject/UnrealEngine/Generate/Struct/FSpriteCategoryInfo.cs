@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSpriteCategoryInfo
-	/// <para>Information about the sprite category </para>
-	/// </summary>
 	public  partial class FSpriteCategoryInfo : NativeStructWrapper
 	{
 		public FSpriteCategoryInfo() : base(E_CreateStruct_FSpriteCategoryInfo(), false)

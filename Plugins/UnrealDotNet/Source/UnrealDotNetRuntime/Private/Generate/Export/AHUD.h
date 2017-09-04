@@ -214,5 +214,12 @@ extern "C"
 		((AHUD*)Self)->ShowHUD();
 	}
 
+	DOTNET_EXPORT bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(INT_PTR Self, INT_PTR ClickLocation, EInputEvent InEventType)
+	{
+		auto _p0 = *(FVector2D*)ClickLocation;
+		auto _p1 = InEventType;
+		return ((AHUD*)Self)->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

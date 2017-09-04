@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageExponentialHeightFogComponent
-	/// <para>Used to create fogging effects such as clouds but with a density that is related to the height of the fog. </para>
-	/// </summary>
 	public  partial class UExponentialHeightFogComponent : USceneComponent
 	{
 		public UExponentialHeightFogComponent(IntPtr Adress)

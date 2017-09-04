@@ -30,17 +30,14 @@ namespace Generator.Metadata
             this.Name = Name;
         }
 
-        public IEnumerable<Class> Dependent
+        public IEnumerable<Type> Dependent
         {
             get
             {
-                var list = InputTypes.OfType<ClassVariable>().Select(v => v.ClassType).ToList();
+                var ll = InputTypes.Concat(new[] { ReturnType });
 
-                var returnClass = ReturnType as ClassVariable;
-                if (returnClass != null)
-                    list.Insert(0, returnClass.ClassType);
-
-                return list.Distinct();
+                return ll.OfType<ClassVariable>().Select(v => (Type)v.Class).Concat(
+                        ll.OfType<EnumVariable>().Select(v => (Type)v.Enum)).Distinct();
             }
         }
 

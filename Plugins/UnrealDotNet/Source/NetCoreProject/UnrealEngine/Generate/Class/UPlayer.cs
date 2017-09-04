@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePlayer
-	/// <para>Player: Corresponds to a real player (a local camera or remote net player). </para>
-	/// </summary>
 	public  partial class UPlayer : UObject
 	{
 		public UPlayer(IntPtr Adress)

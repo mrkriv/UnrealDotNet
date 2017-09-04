@@ -3,17 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageHUD
-	/// <para>Base class of the heads-up display. This has a canvas and a debug canvas on which primitives can be drawn. </para>
-	/// <para>It also contains a list of simple hit boxes that can be used for simple item click detection. </para>
-	/// <para>A method of rendering debug text is also included. </para>
-	/// <para>Provides some simple methods for rendering text, textures, rectangles and materials which can also be accessed from blueprints. </para>
-	/// <para>@see UCanvas </para>
-	/// <para>@see FHUDHitBox </para>
-	/// <para>@see FDebugTextInfo </para>
-	/// </summary>
 	public  partial class AHUD : AActor
 	{
 		public AHUD(IntPtr Adress)
@@ -125,6 +114,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_AHUD_ShowHUD(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(IntPtr Self, IntPtr ClickLocation, byte InEventType);
 		
 		#endregion
 		
@@ -348,6 +340,15 @@ namespace UnrealEngine
 		
 		public virtual void ShowHUD()
 			=> E_AHUD_ShowHUD(this);
+		
+		
+		/// <summary>
+		/// <para>Update the list of hitboxes and dispatch events for any hits. </para>
+		/// <param name="ClickLocation">Location of the click event </param>
+		/// <param name="InEventType">Type of input event that triggered the call. </param>
+		/// </summary>
+		public bool UpdateAndDispatchHitBoxClickEvents(FVector2D ClickLocation, EInputEvent InEventType)
+			=> E_AHUD_UpdateAndDispatchHitBoxClickEvents(this, ClickLocation, (byte)InEventType);
 		
 		#endregion
 		

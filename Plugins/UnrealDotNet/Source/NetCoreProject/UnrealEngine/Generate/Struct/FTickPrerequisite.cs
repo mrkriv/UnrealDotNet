@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageTickPrerequisite
-	/// <para>This is small structure to hold prerequisite tick functions </para>
-	/// </summary>
 	public  partial class FTickPrerequisite : NativeStructWrapper
 	{
 		public FTickPrerequisite() : base(E_CreateStruct_FTickPrerequisite(), false)

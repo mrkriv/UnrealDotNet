@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageRotator
-	/// <para>Implements a container for rotation information. </para>
-	/// <para>All rotation values are stored in degrees. </para>
-	/// </summary>
 	public  partial class FRotator : NativeStructWrapper
 	{
 		public FRotator() : base(E_CreateStruct_FRotator(), false)

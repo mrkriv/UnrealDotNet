@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageMeshComponent
-	/// <para>MeshComponent is an abstract base for any component that is an instance of a renderable collection of triangles. </para>
-	/// <para>@see UStaticMeshComponent </para>
-	/// <para>@see USkeletalMeshComponent </para>
-	/// </summary>
 	public  partial class UMeshComponent : UPrimitiveComponent
 	{
 		public UMeshComponent(IntPtr Adress)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageReflectionCaptureComponent
-	/// <para>Construct the reflection source from the specified cubemap. </para>
-	/// </summary>
 	public  partial class UReflectionCaptureComponent : USceneComponent
 	{
 		public UReflectionCaptureComponent(IntPtr Adress)

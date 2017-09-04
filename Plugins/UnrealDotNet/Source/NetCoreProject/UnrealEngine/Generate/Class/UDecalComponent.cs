@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageDecalComponent
-	/// <para>A material that is rendered onto the surface of a mesh. A kind of 'bumper sticker' for a model. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Actors/DecalActor </para>
-	/// <para>@see UDecalActor </para>
-	/// </summary>
 	public  partial class UDecalComponent : USceneComponent
 	{
 		public UDecalComponent(IntPtr Adress)

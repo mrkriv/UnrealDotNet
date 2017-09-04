@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageFullyLoadedPackagesInfo
-	/// <para>Struct to help hold information about packages needing to be fully-loaded for DLC, etc. </para>
-	/// </summary>
 	public  partial class FFullyLoadedPackagesInfo : NativeStructWrapper
 	{
 		public FFullyLoadedPackagesInfo() : base(E_CreateStruct_FFullyLoadedPackagesInfo(), false)

@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Этот класс может быть наследованн
-	/// <para>Characters are Pawns that have a mesh, collision, and built-in movement logic. </para>
-	/// <para>They are responsible for all physical interaction between the player or AI and the world, and also implement basic networking and input models. </para>
-	/// <para>They are designed for a vertically-oriented player representation that can walk, jump, fly, and swim through the world using CharacterMovementComponent. </para>
-	/// <para>@see APawn, UCharacterMovementComponent </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Gameplay/Framework/Pawn/Character </para>
-	/// </summary>
 	public partial class ManageCharacter : ACharacter
 	{
 		public ManageCharacter(IntPtr Adress)

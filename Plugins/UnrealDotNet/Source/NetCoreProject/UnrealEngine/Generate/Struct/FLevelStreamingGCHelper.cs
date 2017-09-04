@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelStreamingGCHelper
-	/// <para>Helper structure encapsulating functionality used to defer marking actors and their components as pending </para>
-	/// <para>kill till right before garbage collection by registering a callback. </para>
-	/// </summary>
 	public  partial class FLevelStreamingGCHelper : NativeStructWrapper
 	{
 		public FLevelStreamingGCHelper() : base(E_CreateStruct_FLevelStreamingGCHelper(), false)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageCapsuleComponent
-	/// <para>A capsule generally used for simple collision. Bounds are rendered as lines in the editor. </para>
-	/// </summary>
 	public  partial class UCapsuleComponent : UShapeComponent
 	{
 		public UCapsuleComponent(IntPtr Adress)

@@ -22,6 +22,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Math/Plane.h"
 #include "Math/Quat.h"
+#include "Components/ReflectionCaptureComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "Math/Rotator.h"
 #include "Components/SplineComponent.h"
@@ -1293,6 +1294,19 @@ extern "C"
 	}
 
 	
+	/*	FReflectionCaptureFullHDR	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FReflectionCaptureFullHDR() { return (INT_PTR) new FReflectionCaptureFullHDR(); }
+	
+	DOTNET_EXPORT int32 E_PROP_FReflectionCaptureFullHDR_CubemapSize_GET(INT_PTR Ptr) { return ((FReflectionCaptureFullHDR*)Ptr)->CubemapSize; }
+	DOTNET_EXPORT void E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(INT_PTR Ptr, int32 Value) { ((FReflectionCaptureFullHDR*)Ptr)->CubemapSize = Value; }
+	
+	DOTNET_EXPORT bool E_FReflectionCaptureFullHDR_HasValidData(INT_PTR Self)
+	{
+		return ((FReflectionCaptureFullHDR*)Self)->HasValidData();
+	}
+
+	
 	/*	FRendererStencilMaskEvaluation	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRendererStencilMaskEvaluation() { return (INT_PTR) new FRendererStencilMaskEvaluation(); }
@@ -1852,6 +1866,12 @@ extern "C"
 	{
 		auto _p0 = NewLength;
 		((FTimeline*)Self)->SetTimelineLength(_p0);
+	}
+
+	DOTNET_EXPORT void E_FTimeline_SetTimelineLengthMode(INT_PTR Self, ETimelineLengthMode NewMode)
+	{
+		auto _p0 = NewMode;
+		((FTimeline*)Self)->SetTimelineLengthMode(_p0);
 	}
 
 	DOTNET_EXPORT void E_FTimeline_Stop(INT_PTR Self)

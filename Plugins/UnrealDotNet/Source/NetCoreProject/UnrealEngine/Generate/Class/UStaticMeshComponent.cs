@@ -3,14 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageStaticMeshComponent
-	/// <para>StaticMeshComponent is used to create an instance of a UStaticMesh. </para>
-	/// <para>A static mesh is a piece of geometry that consists of a static set of polygons. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Content/Types/StaticMeshes </para>
-	/// <para>@see UStaticMesh </para>
-	/// </summary>
 	public  partial class UStaticMeshComponent : UMeshComponent
 	{
 		public UStaticMeshComponent(IntPtr Adress)

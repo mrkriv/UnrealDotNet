@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManagePawn
-	/// <para>Pawn is the base class of all actors that can be possessed by players or AI. </para>
-	/// <para>They are the physical representations of players and creatures in a level. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Gameplay/Framework/Pawn </para>
-	/// </summary>
 	public  partial class APawn : AActor
 	{
 		public APawn(IntPtr Adress)

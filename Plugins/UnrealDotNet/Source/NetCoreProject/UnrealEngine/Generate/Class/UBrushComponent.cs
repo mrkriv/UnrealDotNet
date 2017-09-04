@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageBrushComponent
-	/// <para>A brush component defines a shape that can be modified within the editor. They are used both as part of BSP building, and for volumes. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Actors/Volumes </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Engine/Actors/Brushes </para>
-	/// </summary>
 	public  partial class UBrushComponent : UPrimitiveComponent
 	{
 		public UBrushComponent(IntPtr Adress)

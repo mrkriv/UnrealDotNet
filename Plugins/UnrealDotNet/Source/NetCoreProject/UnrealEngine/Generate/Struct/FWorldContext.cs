@@ -3,25 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageWorldContext
-	/// <para>FWorldContext </para>
-	/// <para>A context for dealing with UWorlds at the engine level. As the engine brings up and destroys world, we need a way to keep straight </para>
-	/// <para>what world belongs to what. </para>
-	/// <para>WorldContexts can be thought of as a track. By default we have 1 track that we load and unload levels on. Adding a second context is adding </para>
-	/// <para>a second track; another track of progression for worlds to live on. </para>
-	/// <para>For the GameEngine, there will be one WorldContext until we decide to support multiple simultaneous worlds. </para>
-	/// <para>For the EditorEngine, there may be one WorldContext for the EditorWorld and one for the PIE World. </para>
-	/// <para>FWorldContext provides both a way to manage 'the current PIE UWorld*' as well as state that goes along with connecting/travelling to </para>
-	/// <para>new worlds. </para>
-	/// <para>FWorldContext should remain internal to the UEngine classes. Outside code should not keep pointers or try to manage FWorldContexts directly. </para>
-	/// <para>Outside code can steal deal with UWorld*, and pass UWorld*s into Engine level functions. The Engine code can look up the relevant context </para>
-	/// <para>for a given UWorld*. </para>
-	/// <para>For convenience, FWorldContext can maintain outside pointers to UWorld*s. For example, PIE can tie UWorld* UEditorEngine::PlayWorld to the PIE </para>
-	/// <para>world context. If the PIE UWorld changes, the UEditorEngine::PlayWorld pointer will be automatically updated. This is done with AddRef() and </para>
-	/// <para>SetCurrentWorld(). </para>
-	/// </summary>
 	public  partial class FWorldContext : NativeStructWrapper
 	{
 		public FWorldContext() : base(E_CreateStruct_FWorldContext(), false)

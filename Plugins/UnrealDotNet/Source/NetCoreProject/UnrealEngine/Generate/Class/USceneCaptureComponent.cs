@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSceneCaptureComponent
-	/// <para>Render only primitives in the ShowOnlyActors list, or components specified with ShowOnlyComponent(). </para>
-	/// </summary>
 	public  partial class USceneCaptureComponent : USceneComponent
 	{
 		public USceneCaptureComponent(IntPtr Adress)

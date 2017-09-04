@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageWorldProxy
-	/// <para>Proxy class that allows verification on GWorld accesses. </para>
-	/// </summary>
 	public  partial class UWorldProxy : NativeWrapper
 	{
 		public UWorldProxy(IntPtr Adress)

@@ -6,7 +6,7 @@ namespace UnrealEngine
 	
 	/// <summary>
 	/// Класс не может быть наследован в Вашем коде, используйте ManageLevelViewportInfo
-	/// <para>Saved editor viewport state information </para>
+	/// <para>Static array of level packages that have been marked by PrepareStreamedOutLevelsForGC </para>
 	/// </summary>
 	public  partial class FLevelViewportInfo : NativeStructWrapper
 	{

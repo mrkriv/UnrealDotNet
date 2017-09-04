@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineVectorTrack
-	/// <para>Struct that contains one entry for each vector interpolation performed by the timeline </para>
-	/// </summary>
 	public  partial class FTimelineVectorTrack : NativeStructWrapper
 	{
 		public FTimelineVectorTrack() : base(E_CreateStruct_FTimelineVectorTrack(), false)

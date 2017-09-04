@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageVector4
-	/// <para>A 4D homogeneous vector, 4x1 FLOATs, 16-byte aligned. </para>
-	/// </summary>
 	public  partial class FVector4 : NativeStructWrapper
 	{
 		public FVector4() : base(E_CreateStruct_FVector4(), false)

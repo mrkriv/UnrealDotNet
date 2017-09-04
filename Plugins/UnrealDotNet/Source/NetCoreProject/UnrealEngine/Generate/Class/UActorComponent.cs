@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageActorComponent
-	/// <para>ActorComponent is the base class for components that define reusable behavior that can be added to different types of Actors. </para>
-	/// <para>ActorComponents that have a transform are known as SceneComponents and those that can be rendered are PrimitiveComponents. </para>
-	/// <para>@see [ActorComponent](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html#actorcomponents) </para>
-	/// <para>@see USceneComponent </para>
-	/// <para>@see UPrimitiveComponent </para>
-	/// </summary>
 	public  partial class UActorComponent : UObject
 	{
 		public UActorComponent(IntPtr Adress)
@@ -21,6 +12,11 @@ namespace UnrealEngine
 
 		
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
 		
@@ -82,6 +78,9 @@ namespace UnrealEngine
 		private static extern bool E_UActorComponent_GetIsReplicated(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_UActorComponent_GetNetMode(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_UActorComponent_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -116,6 +115,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UActorComponent_IsEditableWhenInherited(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_UActorComponent_IsNetMode(IntPtr Self, byte Mode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UActorComponent_IsNetSimulating(IntPtr Self);
@@ -256,6 +258,9 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_SetTickableWhenPaused(IntPtr Self, bool bTickableWhenPaused);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_UActorComponent_SetTickGroup(IntPtr Self, byte NewTickGroup);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UActorComponent_ToggleActive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -267,6 +272,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public EComponentCreationMethod CreationMethod
+		{
+			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
+			set => E_PROP_UActorComponent_CreationMethod_SET(NativePointer, (byte)value);
+		}
+
 		
 		/// <summary>
 		/// <para>Main tick function for the Actor </para>
@@ -421,6 +432,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the network mode (dedicated server, client, standalone, etc) for this component. </para>
+		/// <para>@see IsNetMode() </para>
+		/// </summary>
+		public ENetMode GetNetMode()
+			=> (ENetMode)E_UActorComponent_GetNetMode(this);
+		
+		
+		/// <summary>
 		/// <para>Follow the Outer chain to get the  AActor  that 'Owns' this component </para>
 		/// </summary>
 		public AActor GetOwner()
@@ -487,6 +506,15 @@ namespace UnrealEngine
 		
 		public bool IsEditableWhenInherited()
 			=> E_UActorComponent_IsEditableWhenInherited(this);
+		
+		
+		/// <summary>
+		/// <para>Test whether net mode is the given mode. </para>
+		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
+		/// <para>because it can check the static build flags without considering PIE. </para>
+		/// </summary>
+		public bool IsNetMode(ENetMode Mode)
+			=> E_UActorComponent_IsNetMode(this, (byte)Mode);
 		
 		
 		/// <summary>
@@ -809,6 +837,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTickableWhenPaused(bool bTickableWhenPaused)
 			=> E_UActorComponent_SetTickableWhenPaused(this, bTickableWhenPaused);
+		
+		
+		/// <summary>
+		/// <para>Changes the ticking group for this component </para>
+		/// </summary>
+		public void SetTickGroup(ETickingGroup NewTickGroup)
+			=> E_UActorComponent_SetTickGroup(this, (byte)NewTickGroup);
 		
 		
 		/// <summary>

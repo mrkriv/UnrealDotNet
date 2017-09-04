@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageTickFunction
-	/// <para>Abstract Base class for all tick functions. </para>
-	/// </summary>
 	public  partial class FTickFunction : NativeStructWrapper
 	{
 		public FTickFunction() : base(E_CreateStruct_FTickFunction(), false)

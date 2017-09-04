@@ -23,5 +23,10 @@ namespace Generator.Metadata
         {
             return UMeta.ContainsKey("DisplayName") ? DisplayNameRegex.Replace(UMeta["DisplayName"], "") : Name;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

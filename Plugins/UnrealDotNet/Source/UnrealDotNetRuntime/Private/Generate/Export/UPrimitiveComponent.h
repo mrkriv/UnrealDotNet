@@ -44,6 +44,9 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CustomDepthStencilValue; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->CustomDepthStencilValue = Value; }
 	
+	DOTNET_EXPORT ERendererStencilMask E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CustomDepthStencilWriteMask; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(INT_PTR Ptr, ERendererStencilMask Value) { ((UPrimitiveComponent*)Ptr)->CustomDepthStencilWriteMask = Value; }
+	
 	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LastRenderTime_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LastRenderTime; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastRenderTime_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LastRenderTime = Value; }
 	
@@ -405,6 +408,12 @@ extern "C"
 	{
 		auto _p0 = Value;
 		((UPrimitiveComponent*)Self)->SetCustomDepthStencilValue(_p0);
+	}
+
+	DOTNET_EXPORT void E_UPrimitiveComponent_SetCustomDepthStencilWriteMask(INT_PTR Self, ERendererStencilMask WriteMaskBit)
+	{
+		auto _p0 = WriteMaskBit;
+		((UPrimitiveComponent*)Self)->SetCustomDepthStencilWriteMask(_p0);
 	}
 
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetEnableGravity(INT_PTR Self, bool bGravityEnabled)

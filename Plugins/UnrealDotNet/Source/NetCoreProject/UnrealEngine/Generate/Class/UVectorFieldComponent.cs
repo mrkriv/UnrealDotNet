@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageVectorFieldComponent
-	/// <para>A Component referencing a vector field. </para>
-	/// </summary>
 	public  partial class UVectorFieldComponent : UPrimitiveComponent
 	{
 		public UVectorFieldComponent(IntPtr Adress)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageInterpControlPoint
-	/// <para>Repeatedly lerp from start to end and back </para>
-	/// </summary>
 	public  partial class FInterpControlPoint : NativeStructWrapper
 	{
 		public FInterpControlPoint() : base(E_CreateStruct_FInterpControlPoint(), false)

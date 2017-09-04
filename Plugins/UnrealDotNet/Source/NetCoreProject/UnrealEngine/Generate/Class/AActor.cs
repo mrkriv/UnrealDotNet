@@ -3,15 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageActor
-	/// <para>Actor is the base class for an Object that can be placed or spawned in a level. </para>
-	/// <para>Actors may contain a collection of ActorComponents, which can be used to control how actors move, how they are rendered, etc. </para>
-	/// <para>The other main function of an Actor is the replication of properties and function calls across the network during play. </para>
-	/// <para>@see https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors </para>
-	/// <para>@see UActorComponent </para>
-	/// </summary>
 	public  partial class AActor : UObject
 	{
 		public AActor(IntPtr Adress)
@@ -357,6 +348,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_GetNetDriverName(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern byte E_AActor_GetNetMode(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_AActor_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -427,6 +421,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_AActor_IsMatineeControlled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern bool E_AActor_IsNetMode(IntPtr Self, byte Mode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_AActor_IsOverlappingActor(IntPtr Self, IntPtr Other);
@@ -655,6 +652,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_AActor_Tick(IntPtr Self, float DeltaSeconds);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern void E_AActor_TickActor(IntPtr Self, float DeltaTime, byte TickType, IntPtr ThisTickFunction);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_AActor_UninitializeComponents(IntPtr Self);
@@ -1394,6 +1394,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the network mode (dedicated server, client, standalone, etc) for this actor. </para>
+		/// <para>@see IsNetMode() </para>
+		/// </summary>
+		public ENetMode GetNetMode()
+			=> (ENetMode)E_AActor_GetNetMode(this);
+		
+		
+		/// <summary>
 		/// <para>Get the owner of this Actor, used primarily for network replication. </para>
 		/// <return>Actor that owns this Actor </return>
 		/// </summary>
@@ -1559,6 +1567,15 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsMatineeControlled()
 			=> E_AActor_IsMatineeControlled(this);
+		
+		
+		/// <summary>
+		/// <para>Test whether net mode is the given mode. </para>
+		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
+		/// <para>because it can check the static build flags without considering PIE. </para>
+		/// </summary>
+		public bool IsNetMode(ENetMode Mode)
+			=> E_AActor_IsNetMode(this, (byte)Mode);
 		
 		
 		/// <summary>
@@ -2094,6 +2111,16 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Tick(float DeltaSeconds)
 			=> E_AActor_Tick(this, DeltaSeconds);
+		
+		
+		/// <summary>
+		/// <para>ticks the actor </para>
+		/// <param name="DeltaTime">The time slice of this tick </param>
+		/// <param name="TickType">The type of tick that is happening </param>
+		/// <param name="ThisTickFunction">The tick function that is firing, useful for getting the completion handle </param>
+		/// </summary>
+		public virtual void TickActor(float DeltaTime, ELevelTick TickType, FActorTickFunction ThisTickFunction)
+			=> E_AActor_TickActor(this, DeltaTime, (byte)TickType, ThisTickFunction);
 		
 		
 		/// <summary>

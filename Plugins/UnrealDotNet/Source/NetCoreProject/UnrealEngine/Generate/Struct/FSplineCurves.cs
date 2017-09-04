@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSplineCurves
-	/// <para>Types of coordinate space accepted by the functions. </para>
-	/// </summary>
 	public  partial class FSplineCurves : NativeStructWrapper
 	{
 		public FSplineCurves() : base(E_CreateStruct_FSplineCurves(), false)

@@ -3,17 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageQuat
-	/// <para>Floating point quaternion that can represent a rotation about an axis in 3-D space. </para>
-	/// <para>The X, Y, Z, W components also double as the Axis/Angle format. </para>
-	/// <para>Order matters when composing quaternions: C = A * B will yield a quaternion C that logically </para>
-	/// <para>first applies B then A to any subsequent transformation (right first, then left). </para>
-	/// <para>Note that this is the opposite order of FTransform multiplication. </para>
-	/// <para>Example: LocalToWorld = (LocalToWorld * DeltaRotation) will change rotation in local space by DeltaRotation. </para>
-	/// <para>Example: LocalToWorld = (DeltaRotation * LocalToWorld) will change rotation in world space by DeltaRotation. </para>
-	/// </summary>
 	public  partial class FQuat : NativeStructWrapper
 	{
 		public FQuat() : base(E_CreateStruct_FQuat(), false)

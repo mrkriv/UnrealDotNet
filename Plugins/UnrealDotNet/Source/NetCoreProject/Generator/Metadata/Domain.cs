@@ -7,11 +7,29 @@ namespace Generator.Metadata
     public class Domain
     {
         public List<Class> Classes;
+        public List<Enum> Enums;
 
-        public Domain(IEnumerable<Class> Classes)
+        public Domain(IEnumerable<Type> Types)
         {
-            this.Classes = Filter.FilterClasses(Classes);
-            this.Classes.ForEach(cl => cl.Domain = this);
+            Classes = new List<Class>();
+            Enums = new List<Enum>();
+
+            foreach (var type in Types)
+            {
+                type.Domain = this;
+
+                if (type is Class)
+                {
+                    Classes.Add(type as Class);
+                }
+                else if (type is Enum)
+                {
+                    Enums.Add(type as Enum);
+                }
+            }
+
+            Classes = Filter.FilterClasses(Classes);
+            Enums = Filter.FilterEnum(Enums);
         }
 
         public void Print(bool Full)
@@ -140,7 +158,7 @@ namespace Generator.Metadata
             }
 
             var clVar = variable as ClassVariable;
-            Console.ForegroundColor = clVar?.ClassType.IsImplemented == false ? ConsoleColor.Red : ConsoleColor.Cyan;
+            Console.ForegroundColor = clVar?.Class.IsImplemented == false ? ConsoleColor.Red : ConsoleColor.Cyan;
 
             Console.Write(variable.Type);
 

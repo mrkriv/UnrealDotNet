@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageExposureSettings
-	/// <para>Settings to allow designers to override the automatic expose </para>
-	/// </summary>
 	public  partial class FExposureSettings : NativeStructWrapper
 	{
 		public FExposureSettings() : base(E_CreateStruct_FExposureSettings(), false)

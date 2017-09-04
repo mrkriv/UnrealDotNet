@@ -386,6 +386,11 @@ extern "C"
 		return TCHAR_TO_UTF8(*_result);
 	}
 
+	DOTNET_EXPORT ENetMode E_AActor_GetNetMode(INT_PTR Self)
+	{
+		return ((AActor*)Self)->GetNetMode();
+	}
+
 	DOTNET_EXPORT AActor* E_AActor_GetOwner(INT_PTR Self)
 	{
 		return ((AActor*)Self)->GetOwner();
@@ -508,6 +513,12 @@ extern "C"
 	DOTNET_EXPORT bool E_AActor_IsMatineeControlled(INT_PTR Self)
 	{
 		return ((AActor*)Self)->IsMatineeControlled();
+	}
+
+	DOTNET_EXPORT bool E_AActor_IsNetMode(INT_PTR Self, ENetMode Mode)
+	{
+		auto _p0 = Mode;
+		return ((AActor*)Self)->IsNetMode(_p0);
 	}
 
 	DOTNET_EXPORT bool E_AActor_IsOverlappingActor(INT_PTR Self, AActor* Other)
@@ -940,6 +951,14 @@ extern "C"
 	{
 		auto _p0 = DeltaSeconds;
 		((AActor*)Self)->Tick(_p0);
+	}
+
+	DOTNET_EXPORT void E_AActor_TickActor(INT_PTR Self, float DeltaTime, ELevelTick TickType, INT_PTR ThisTickFunction)
+	{
+		auto _p0 = DeltaTime;
+		auto _p1 = TickType;
+		auto _p2 = *(FActorTickFunction*)ThisTickFunction;
+		((AActor*)Self)->TickActor(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT void E_AActor_UninitializeComponents(INT_PTR Self)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageRepRootMotionMontage
-	/// <para>Replicated data when playing a root motion montage. </para>
-	/// </summary>
 	public  partial class FRepRootMotionMontage : NativeStructWrapper
 	{
 		public FRepRootMotionMontage() : base(E_CreateStruct_FRepRootMotionMontage(), false)

@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageRendererStencilMaskEvaluation
-	/// <para>Converts a stencil mask from the editor's USTRUCT version to the version the renderer uses. </para>
-	/// </summary>
 	public  partial class FRendererStencilMaskEvaluation : NativeStructWrapper
 	{
 		public FRendererStencilMaskEvaluation() : base(E_CreateStruct_FRendererStencilMaskEvaluation(), false)

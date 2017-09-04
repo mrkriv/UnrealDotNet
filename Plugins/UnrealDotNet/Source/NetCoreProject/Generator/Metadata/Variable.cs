@@ -200,36 +200,36 @@ namespace Generator.Metadata
 
     public class ClassVariable : Variable
     {
-        public Class ClassType { get; }
+        public Class Class { get; }
 
         public ClassVariable(Class ClassType)
         {
-            this.ClassType = ClassType;
+            this.Class = ClassType;
             this.Type = ClassType.Name;
         }
 
         public override string GetTypeCPP()
         {
-            if (ClassType.IsStructure)
+            if (Class.IsStructure)
                 return "INT_PTR";
 
             if (IsReference)
-                return ClassType.Name + "&";
+                return Class.Name + "&";
 
             if (IsPointer)
-                return ClassType.Name + "*";
+                return Class.Name + "*";
 
-            return ClassType.Name;
+            return Class.Name;
         }
 
         public override bool IsReadOnly()
         {
-            return ClassType.IsReadOnly;
+            return Class.IsReadOnly;
         }
 
         public override string GetTypeCS()
         {
-            return ClassType.Name;
+            return Class.Name;
         }
 
         public override string GetTypeCSForExtend()
@@ -239,13 +239,45 @@ namespace Generator.Metadata
 
         public override bool NeedRefOperator()
         {
-            return ClassType.IsStructure && IsPointer;
+            return Class.IsStructure && IsPointer;
         }
 
         public override string ToString()
         {
             var b = base.ToString();
-            return string.IsNullOrEmpty(Name) ? b + ClassType : $"{b}{ClassType} {Name}";
+            return string.IsNullOrEmpty(Name) ? b + Class : $"{b}{Class} {Name}";
+        }
+    }
+
+    public class EnumVariable : Variable
+    {
+        public Enum Enum { get; }
+
+        public EnumVariable(Enum Enum)
+        {
+            this.Enum = Enum;
+            this.Type = Enum.Name;
+        }
+
+        public override string GetTypeCPP()
+        {
+            return Type;
+        }
+
+        public override string GetTypeCS()
+        {
+            return Type;
+        }
+
+        public override string GetTypeCSForExtend()
+        {
+            return "byte";
+        }
+
+        public override string ToString()
+        {
+            var b = base.ToString();
+            return string.IsNullOrEmpty(Name) ? b + Enum : $"{b}{Enum} {Name}";
         }
     }
 }

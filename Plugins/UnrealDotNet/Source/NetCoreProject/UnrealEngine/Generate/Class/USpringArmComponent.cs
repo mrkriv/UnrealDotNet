@@ -3,13 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageSpringArmComponent
-	/// <para>This component tries to maintain its children at a fixed distance from the parent, </para>
-	/// <para>but will retract the children if there is a collision, and spring back when there is no collision. </para>
-	/// <para>Example: Use as a 'camera boom' to keep the follow camera for a player from colliding into the world. </para>
-	/// </summary>
 	public  partial class USpringArmComponent : USceneComponent
 	{
 		public USpringArmComponent(IntPtr Adress)

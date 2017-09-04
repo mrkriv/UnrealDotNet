@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageBasedMovementInfo
-	/// <para>Struct to hold information about the "base" object the character is standing on. </para>
-	/// </summary>
 	public  partial class FBasedMovementInfo : NativeStructWrapper
 	{
 		public FBasedMovementInfo() : base(E_CreateStruct_FBasedMovementInfo(), false)
