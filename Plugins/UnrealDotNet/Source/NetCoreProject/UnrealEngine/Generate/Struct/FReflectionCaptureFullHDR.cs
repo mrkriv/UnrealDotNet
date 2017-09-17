@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FReflectionCaptureFullHDR_HasValidData(FReflectionCaptureFullHDR Self);
+		private static extern bool E_FReflectionCaptureFullHDR_HasValidData(IntPtr Self);
 		
 		#endregion
 		

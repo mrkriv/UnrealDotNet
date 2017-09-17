@@ -59,19 +59,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Valid_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FURL_FilterURLString(FURL Self, string Str);
+		private static extern void E_FURL_FilterURLString(IntPtr Self, string Str);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FURL_IsInternal(FURL Self);
+		private static extern bool E_FURL_IsInternal(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FURL_IsLocalInternal(FURL Self);
+		private static extern bool E_FURL_IsLocalInternal(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FURL_StaticExit(FURL Self);
+		private static extern void E_FURL_StaticExit(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FURL_StaticInit(FURL Self);
+		private static extern void E_FURL_StaticInit(IntPtr Self);
 		
 		#endregion
 		

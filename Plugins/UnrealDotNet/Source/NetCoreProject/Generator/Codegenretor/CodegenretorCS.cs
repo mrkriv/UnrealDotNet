@@ -227,7 +227,7 @@ namespace Generator
                                     method.ReturnType.Type == "FString";
 
                 var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
-                inputs.Insert(0, (Class.IsStructure ? Class.Name : "IntPtr") + " Self");
+                inputs.Insert(0, "IntPtr Self");
 
                 if (genStringWrap)
                     inputs.Add("out int ResultStringLen");

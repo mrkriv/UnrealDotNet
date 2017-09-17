@@ -19,211 +19,211 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FTransform();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_AddToTranslation(FTransform Self, IntPtr DeltaTranslation);
+		private static extern void E_FTransform_AddToTranslation(IntPtr Self, IntPtr DeltaTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_AddTranslations(FTransform Self, IntPtr A, IntPtr B);
+		private static extern IntPtr E_FTransform_AddTranslations(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_AnyHasNegativeScale(FTransform Self, IntPtr InScale3D, IntPtr InOtherScale3D);
+		private static extern bool E_FTransform_AnyHasNegativeScale(IntPtr Self, IntPtr InScale3D, IntPtr InOtherScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_AreRotationsEqual(FTransform Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AreRotationsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_AreScale3DsEqual(FTransform Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AreScale3DsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_AreTranslationsEqual(FTransform Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AreTranslationsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_Blend(FTransform Self, IntPtr Atom1, IntPtr Atom2, float Alpha);
+		private static extern void E_FTransform_Blend(IntPtr Self, IntPtr Atom1, IntPtr Atom2, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_BlendWith(FTransform Self, IntPtr OtherAtom, float Alpha);
+		private static extern void E_FTransform_BlendWith(IntPtr Self, IntPtr OtherAtom, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_ConcatenateRotation(FTransform Self, IntPtr DeltaRotation);
+		private static extern void E_FTransform_ConcatenateRotation(IntPtr Self, IntPtr DeltaRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_ContainsNaN(FTransform Self);
+		private static extern bool E_FTransform_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_CopyRotation(FTransform Self, IntPtr Other);
+		private static extern void E_FTransform_CopyRotation(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_CopyRotationPart(FTransform Self, IntPtr SrcBA);
+		private static extern void E_FTransform_CopyRotationPart(IntPtr Self, IntPtr SrcBA);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_CopyScale3D(FTransform Self, IntPtr Other);
+		private static extern void E_FTransform_CopyScale3D(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_CopyTranslation(FTransform Self, IntPtr Other);
+		private static extern void E_FTransform_CopyTranslation(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_CopyTranslationAndScale3D(FTransform Self, IntPtr SrcBA);
+		private static extern void E_FTransform_CopyTranslationAndScale3D(IntPtr Self, IntPtr SrcBA);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DebugPrint(FTransform Self);
+		private static extern void E_FTransform_DebugPrint(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DiagnosticCheck_IsValid(FTransform Self);
+		private static extern void E_FTransform_DiagnosticCheck_IsValid(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_All(FTransform Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_All(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Rotate(FTransform Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Rotate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Scale3D(FTransform Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Scale3D(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Translate(FTransform Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Translate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_Equals(FTransform Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_Equals(IntPtr Self, IntPtr Other, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_EqualsNoScale(FTransform Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_EqualsNoScale(IntPtr Self, IntPtr Other, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTransform_GetDeterminant(FTransform Self);
+		private static extern float E_FTransform_GetDeterminant(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetLocation(FTransform Self);
+		private static extern IntPtr E_FTransform_GetLocation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTransform_GetMaximumAxisScale(FTransform Self);
+		private static extern float E_FTransform_GetMaximumAxisScale(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTransform_GetMinimumAxisScale(FTransform Self);
+		private static extern float E_FTransform_GetMinimumAxisScale(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetRelativeTransform(FTransform Self, IntPtr Other);
+		private static extern IntPtr E_FTransform_GetRelativeTransform(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetRelativeTransformReverse(FTransform Self, IntPtr Other);
+		private static extern IntPtr E_FTransform_GetRelativeTransformReverse(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetRotation(FTransform Self);
+		private static extern IntPtr E_FTransform_GetRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetRotationV(FTransform Self);
+		private static extern IntPtr E_FTransform_GetRotationV(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(FTransform Self, IntPtr InScale, float Tolerance);
+		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(IntPtr Self, IntPtr InScale, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetScale3D(FTransform Self);
+		private static extern IntPtr E_FTransform_GetScale3D(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetScale3DV(FTransform Self);
+		private static extern IntPtr E_FTransform_GetScale3DV(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetTranslation(FTransform Self);
+		private static extern IntPtr E_FTransform_GetTranslation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_GetTranslationV(FTransform Self);
+		private static extern IntPtr E_FTransform_GetTranslationV(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_InitFromString(FTransform Self, string InSourceString);
+		private static extern bool E_FTransform_InitFromString(IntPtr Self, string InSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_Inverse(FTransform Self);
+		private static extern IntPtr E_FTransform_Inverse(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_InverseTransformPosition(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformPosition(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_InverseTransformPositionNoScale(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformPositionNoScale(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_InverseTransformVector(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformVector(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_InverseTransformVectorNoScale(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformVectorNoScale(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_IsRotationNormalized(FTransform Self);
+		private static extern bool E_FTransform_IsRotationNormalized(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_IsValid(FTransform Self);
+		private static extern bool E_FTransform_IsValid(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_Multiply(FTransform Self, IntPtr OutTransform, IntPtr A, IntPtr B);
+		private static extern void E_FTransform_Multiply(IntPtr Self, IntPtr OutTransform, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_MultiplyScale3D(FTransform Self, IntPtr Scale3DMultiplier);
+		private static extern void E_FTransform_MultiplyScale3D(IntPtr Self, IntPtr Scale3DMultiplier);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_NormalizeRotation(FTransform Self);
+		private static extern void E_FTransform_NormalizeRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_RemoveScaling(FTransform Self, float Tolerance);
+		private static extern void E_FTransform_RemoveScaling(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_RotationEquals(FTransform Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_RotationEquals(IntPtr Self, IntPtr Other, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_Rotator(FTransform Self);
+		private static extern IntPtr E_FTransform_Rotator(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_Scale3DEquals(FTransform Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_Scale3DEquals(IntPtr Self, IntPtr Other, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetComponents(FTransform Self, IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
+		private static extern void E_FTransform_SetComponents(IntPtr Self, IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetIdentity(FTransform Self);
+		private static extern void E_FTransform_SetIdentity(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetLocation(FTransform Self, IntPtr Origin);
+		private static extern void E_FTransform_SetLocation(IntPtr Self, IntPtr Origin);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetRotation(FTransform Self, IntPtr NewRotation);
+		private static extern void E_FTransform_SetRotation(IntPtr Self, IntPtr NewRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetScale3D(FTransform Self, IntPtr NewScale3D);
+		private static extern void E_FTransform_SetScale3D(IntPtr Self, IntPtr NewScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetToRelativeTransform(FTransform Self, IntPtr ParentTransform);
+		private static extern void E_FTransform_SetToRelativeTransform(IntPtr Self, IntPtr ParentTransform);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetTranslation(FTransform Self, IntPtr NewTranslation);
+		private static extern void E_FTransform_SetTranslation(IntPtr Self, IntPtr NewTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTransform_SetTranslationAndScale3D(FTransform Self, IntPtr NewTranslation, IntPtr NewScale3D);
+		private static extern void E_FTransform_SetTranslationAndScale3D(IntPtr Self, IntPtr NewTranslation, IntPtr NewScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_SubtractTranslations(FTransform Self, IntPtr A, IntPtr B);
+		private static extern IntPtr E_FTransform_SubtractTranslations(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_ToHumanReadableString(FTransform Self, out int ResultStringLen);
+		private static extern IntPtr E_FTransform_ToHumanReadableString(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_ToString(FTransform Self, out int ResultStringLen);
+		private static extern IntPtr E_FTransform_ToString(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformFVector4(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformFVector4(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformFVector4NoScale(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformFVector4NoScale(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformPosition(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformPosition(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformPositionNoScale(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformPositionNoScale(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformVector(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformVector(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FTransform_TransformVectorNoScale(FTransform Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformVectorNoScale(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTransform_TranslationEquals(FTransform Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_TranslationEquals(IntPtr Self, IntPtr Other, float Tolerance);
 		
 		#endregion
 		

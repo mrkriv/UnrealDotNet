@@ -29,7 +29,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FExposureSettings_LogOffset_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FExposureSettings_ToString(FExposureSettings Self, out int ResultStringLen);
+		private static extern IntPtr E_FExposureSettings_ToString(IntPtr Self, out int ResultStringLen);
 		
 		#endregion
 		

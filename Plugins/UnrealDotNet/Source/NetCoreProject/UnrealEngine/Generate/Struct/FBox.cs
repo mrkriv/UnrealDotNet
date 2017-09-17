@@ -34,55 +34,55 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox_Min_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_BuildAABB(FBox Self, IntPtr Origin, IntPtr Extent);
+		private static extern IntPtr E_FBox_BuildAABB(IntPtr Self, IntPtr Origin, IntPtr Extent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FBox_ComputeSquaredDistanceToPoint(FBox Self, IntPtr Point);
+		private static extern float E_FBox_ComputeSquaredDistanceToPoint(IntPtr Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_GetCenter(FBox Self);
+		private static extern IntPtr E_FBox_GetCenter(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FBox_GetCenterAndExtents(FBox Self, IntPtr center, IntPtr Extents);
+		private static extern void E_FBox_GetCenterAndExtents(IntPtr Self, IntPtr center, IntPtr Extents);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_GetClosestPointTo(FBox Self, IntPtr Point);
+		private static extern IntPtr E_FBox_GetClosestPointTo(IntPtr Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_GetExtent(FBox Self);
+		private static extern IntPtr E_FBox_GetExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_GetSize(FBox Self);
+		private static extern IntPtr E_FBox_GetSize(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FBox_GetVolume(FBox Self);
+		private static extern float E_FBox_GetVolume(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FBox_Init(FBox Self);
+		private static extern void E_FBox_Init(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBox_Intersect(FBox Self, IntPtr other);
+		private static extern bool E_FBox_Intersect(IntPtr Self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBox_IntersectXY(FBox Self, IntPtr Other);
+		private static extern bool E_FBox_IntersectXY(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_InverseTransformBy(FBox Self, IntPtr M);
+		private static extern IntPtr E_FBox_InverseTransformBy(IntPtr Self, IntPtr M);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBox_IsInsideOrOn(FBox Self, IntPtr In);
+		private static extern bool E_FBox_IsInsideOrOn(IntPtr Self, IntPtr In);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_MoveTo(FBox Self, IntPtr Destination);
+		private static extern IntPtr E_FBox_MoveTo(IntPtr Self, IntPtr Destination);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_Overlap(FBox Self, IntPtr Other);
+		private static extern IntPtr E_FBox_Overlap(IntPtr Self, IntPtr Other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_ShiftBy(FBox Self, IntPtr Offset);
+		private static extern IntPtr E_FBox_ShiftBy(IntPtr Self, IntPtr Offset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox_ToString(FBox Self, out int ResultStringLen);
+		private static extern IntPtr E_FBox_ToString(IntPtr Self, out int ResultStringLen);
 		
 		#endregion
 		

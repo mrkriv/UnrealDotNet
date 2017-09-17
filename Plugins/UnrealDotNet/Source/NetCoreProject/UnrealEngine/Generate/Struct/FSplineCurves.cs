@@ -19,13 +19,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplineCurves();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FSplineCurves_GetSegmentLength(FSplineCurves Self, int Index, float Param, bool bClosedLoop, IntPtr Scale3D);
+		private static extern float E_FSplineCurves_GetSegmentLength(IntPtr Self, int Index, float Param, bool bClosedLoop, IntPtr Scale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FSplineCurves_GetSplineLength(FSplineCurves Self);
+		private static extern float E_FSplineCurves_GetSplineLength(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FSplineCurves_UpdateSpline(FSplineCurves Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
+		private static extern void E_FSplineCurves_UpdateSpline(IntPtr Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
 		
 		#endregion
 		

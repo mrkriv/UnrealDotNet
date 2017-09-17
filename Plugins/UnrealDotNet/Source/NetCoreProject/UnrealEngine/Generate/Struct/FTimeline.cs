@@ -19,64 +19,64 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FTimeline();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTimeline_GetPlaybackPosition(FTimeline Self);
+		private static extern float E_FTimeline_GetPlaybackPosition(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTimeline_GetPlayRate(FTimeline Self);
+		private static extern float E_FTimeline_GetPlayRate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FTimeline_GetTimelineLength(FTimeline Self);
+		private static extern float E_FTimeline_GetTimelineLength(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTimeline_IsLooping(FTimeline Self);
+		private static extern bool E_FTimeline_IsLooping(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTimeline_IsPlaying(FTimeline Self);
+		private static extern bool E_FTimeline_IsPlaying(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTimeline_IsReversing(FTimeline Self);
+		private static extern bool E_FTimeline_IsReversing(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_Play(FTimeline Self);
+		private static extern void E_FTimeline_Play(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_PlayFromStart(FTimeline Self);
+		private static extern void E_FTimeline_PlayFromStart(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_Reverse(FTimeline Self);
+		private static extern void E_FTimeline_Reverse(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_ReverseFromEnd(FTimeline Self);
+		private static extern void E_FTimeline_ReverseFromEnd(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetDirectionPropertyName(FTimeline Self, string InDirectionPropertyName);
+		private static extern void E_FTimeline_SetDirectionPropertyName(IntPtr Self, string InDirectionPropertyName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetLooping(FTimeline Self, bool bNewLooping);
+		private static extern void E_FTimeline_SetLooping(IntPtr Self, bool bNewLooping);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetNewTime(FTimeline Self, float NewTime);
+		private static extern void E_FTimeline_SetNewTime(IntPtr Self, float NewTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetPlaybackPosition(FTimeline Self, float NewPosition, bool bFireEvents, bool bFireUpdate);
+		private static extern void E_FTimeline_SetPlaybackPosition(IntPtr Self, float NewPosition, bool bFireEvents, bool bFireUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetPlayRate(FTimeline Self, float NewRate);
+		private static extern void E_FTimeline_SetPlayRate(IntPtr Self, float NewRate);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetPropertySetObject(FTimeline Self, IntPtr NewPropertySetObject);
+		private static extern void E_FTimeline_SetPropertySetObject(IntPtr Self, IntPtr NewPropertySetObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetTimelineLength(FTimeline Self, float NewLength);
+		private static extern void E_FTimeline_SetTimelineLength(IntPtr Self, float NewLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_SetTimelineLengthMode(FTimeline Self, byte NewMode);
+		private static extern void E_FTimeline_SetTimelineLengthMode(IntPtr Self, byte NewMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_Stop(FTimeline Self);
+		private static extern void E_FTimeline_Stop(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTimeline_TickTimeline(FTimeline Self, float DeltaTime);
+		private static extern void E_FTimeline_TickTimeline(IntPtr Self, float DeltaTime);
 		
 		#endregion
 		

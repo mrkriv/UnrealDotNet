@@ -39,7 +39,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(FActorSpawnParameters Self);
+		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(IntPtr Self);
 		
 		#endregion
 		

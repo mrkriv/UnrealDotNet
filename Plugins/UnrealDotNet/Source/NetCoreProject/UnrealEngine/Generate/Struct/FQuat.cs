@@ -39,133 +39,133 @@ namespace UnrealEngine
 		private static extern void E_PROP_FQuat_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FQuat_AngularDistance(FQuat Self, IntPtr Q);
+		private static extern float E_FQuat_AngularDistance(IntPtr Self, IntPtr Q);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FQuat_CalcTangents(FQuat Self, IntPtr PrevP, IntPtr P, IntPtr NextP, float Tension, IntPtr OutTan);
+		private static extern void E_FQuat_CalcTangents(IntPtr Self, IntPtr PrevP, IntPtr P, IntPtr NextP, float Tension, IntPtr OutTan);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FQuat_ContainsNaN(FQuat Self);
+		private static extern bool E_FQuat_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FQuat_EnforceShortestArcWith(FQuat Self, IntPtr OtherQuat);
+		private static extern void E_FQuat_EnforceShortestArcWith(IntPtr Self, IntPtr OtherQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FQuat_Equals(FQuat Self, IntPtr Q, float Tolerance);
+		private static extern bool E_FQuat_Equals(IntPtr Self, IntPtr Q, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FQuat_Error(FQuat Self, IntPtr Q1, IntPtr Q2);
+		private static extern float E_FQuat_Error(IntPtr Self, IntPtr Q1, IntPtr Q2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FQuat_ErrorAutoNormalize(FQuat Self, IntPtr A, IntPtr B);
+		private static extern float E_FQuat_ErrorAutoNormalize(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Euler(FQuat Self);
+		private static extern IntPtr E_FQuat_Euler(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Exp(FQuat Self);
+		private static extern IntPtr E_FQuat_Exp(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_FastBilerp(FQuat Self, IntPtr P00, IntPtr P10, IntPtr P01, IntPtr P11, float FracX, float FracY);
+		private static extern IntPtr E_FQuat_FastBilerp(IntPtr Self, IntPtr P00, IntPtr P10, IntPtr P01, IntPtr P11, float FracX, float FracY);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_FastLerp(FQuat Self, IntPtr A, IntPtr B, float Alpha);
+		private static extern IntPtr E_FQuat_FastLerp(IntPtr Self, IntPtr A, IntPtr B, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_FindBetween(FQuat Self, IntPtr Vector1, IntPtr Vector2);
+		private static extern IntPtr E_FQuat_FindBetween(IntPtr Self, IntPtr Vector1, IntPtr Vector2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_FindBetweenNormals(FQuat Self, IntPtr Normal1, IntPtr Normal2);
+		private static extern IntPtr E_FQuat_FindBetweenNormals(IntPtr Self, IntPtr Normal1, IntPtr Normal2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_FindBetweenVectors(FQuat Self, IntPtr Vector1, IntPtr Vector2);
+		private static extern IntPtr E_FQuat_FindBetweenVectors(IntPtr Self, IntPtr Vector1, IntPtr Vector2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetAxisX(FQuat Self);
+		private static extern IntPtr E_FQuat_GetAxisX(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetAxisY(FQuat Self);
+		private static extern IntPtr E_FQuat_GetAxisY(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetAxisZ(FQuat Self);
+		private static extern IntPtr E_FQuat_GetAxisZ(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetForwardVector(FQuat Self);
+		private static extern IntPtr E_FQuat_GetForwardVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetNormalized(FQuat Self, float Tolerance);
+		private static extern IntPtr E_FQuat_GetNormalized(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetRightVector(FQuat Self);
+		private static extern IntPtr E_FQuat_GetRightVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetRotationAxis(FQuat Self);
+		private static extern IntPtr E_FQuat_GetRotationAxis(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_GetUpVector(FQuat Self);
+		private static extern IntPtr E_FQuat_GetUpVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Inverse(FQuat Self);
+		private static extern IntPtr E_FQuat_Inverse(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FQuat_IsIdentity(FQuat Self, float Tolerance);
+		private static extern bool E_FQuat_IsIdentity(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FQuat_IsNormalized(FQuat Self);
+		private static extern bool E_FQuat_IsNormalized(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Log(FQuat Self);
+		private static extern IntPtr E_FQuat_Log(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_MakeFromEuler(FQuat Self, IntPtr Euler);
+		private static extern IntPtr E_FQuat_MakeFromEuler(IntPtr Self, IntPtr Euler);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FQuat_Normalize(FQuat Self, float Tolerance);
+		private static extern void E_FQuat_Normalize(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_RotateVector(FQuat Self, IntPtr V);
+		private static extern IntPtr E_FQuat_RotateVector(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Rotator(FQuat Self);
+		private static extern IntPtr E_FQuat_Rotator(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FQuat_Size(FQuat Self);
+		private static extern float E_FQuat_Size(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FQuat_SizeSquared(FQuat Self);
+		private static extern float E_FQuat_SizeSquared(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Slerp(FQuat Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
+		private static extern IntPtr E_FQuat_Slerp(IntPtr Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Slerp_NotNormalized(FQuat Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
+		private static extern IntPtr E_FQuat_Slerp_NotNormalized(IntPtr Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_SlerpFullPath(FQuat Self, IntPtr quat1, IntPtr quat2, float Alpha);
+		private static extern IntPtr E_FQuat_SlerpFullPath(IntPtr Self, IntPtr quat1, IntPtr quat2, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_SlerpFullPath_NotNormalized(FQuat Self, IntPtr quat1, IntPtr quat2, float Alpha);
+		private static extern IntPtr E_FQuat_SlerpFullPath_NotNormalized(IntPtr Self, IntPtr quat1, IntPtr quat2, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Squad(FQuat Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
+		private static extern IntPtr E_FQuat_Squad(IntPtr Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_SquadFullPath(FQuat Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
+		private static extern IntPtr E_FQuat_SquadFullPath(IntPtr Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FQuat_ToAxisAndAngle(FQuat Self, IntPtr Axis, float Angle);
+		private static extern void E_FQuat_ToAxisAndAngle(IntPtr Self, IntPtr Axis, float Angle);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_ToString(FQuat Self, out int ResultStringLen);
+		private static extern IntPtr E_FQuat_ToString(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FQuat_ToSwingTwist(FQuat Self, IntPtr InTwistAxis, IntPtr OutSwing, IntPtr OutTwist);
+		private static extern void E_FQuat_ToSwingTwist(IntPtr Self, IntPtr InTwistAxis, IntPtr OutSwing, IntPtr OutTwist);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_UnrotateVector(FQuat Self, IntPtr V);
+		private static extern IntPtr E_FQuat_UnrotateVector(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FQuat_Vector(FQuat Self);
+		private static extern IntPtr E_FQuat_Vector(IntPtr Self);
 		
 		#endregion
 		

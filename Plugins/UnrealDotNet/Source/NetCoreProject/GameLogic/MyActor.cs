@@ -22,15 +22,10 @@ namespace GameLogic
             //try
             //{
             PrimaryActorTick.bCanEverTick = 1;
-
-          //  ScreenDebugMessage(GetRootComponent().GetWorldTransform().ToString());
+            
+            ScreenDebugMessage($"=> { GetRootComponent().GetWorldLocation().ToString()}");
             // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
 
-            CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
-
-            ScreenDebugMessage(Speed.ToString());
-
-            ScreenDebugMessage(GetNetMode().ToString());
             //}
             //catch (Exception e)
             //{

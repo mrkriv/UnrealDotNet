@@ -74,10 +74,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_TravelURL_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FWorldContext_SetCurrentWorld(FWorldContext Self, IntPtr World);
+		private static extern void E_FWorldContext_SetCurrentWorld(IntPtr Self, IntPtr World);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FWorldContext_World(FWorldContext Self);
+		private static extern IntPtr E_FWorldContext_World(IntPtr Self);
 		
 		#endregion
 		

@@ -49,16 +49,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBasedMovementInfo_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBasedMovementInfo_HasRelativeLocation(FBasedMovementInfo Self);
+		private static extern bool E_FBasedMovementInfo_HasRelativeLocation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBasedMovementInfo_HasRelativePosition(FBasedMovementInfo Self);
+		private static extern bool E_FBasedMovementInfo_HasRelativePosition(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBasedMovementInfo_HasRelativeRotation(FBasedMovementInfo Self);
+		private static extern bool E_FBasedMovementInfo_HasRelativeRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBasedMovementInfo_IsBaseUnresolved(FBasedMovementInfo Self);
+		private static extern bool E_FBasedMovementInfo_IsBaseUnresolved(IntPtr Self);
 		
 		#endregion
 		

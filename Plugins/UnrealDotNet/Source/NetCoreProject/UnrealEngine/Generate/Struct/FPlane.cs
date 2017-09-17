@@ -24,13 +24,13 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPlane_W_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FPlane_Equals(FPlane Self, IntPtr V, float Tolerance);
+		private static extern bool E_FPlane_Equals(IntPtr Self, IntPtr V, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FPlane_Flip(FPlane Self);
+		private static extern IntPtr E_FPlane_Flip(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FPlane_PlaneDot(FPlane Self, IntPtr P);
+		private static extern float E_FPlane_PlaneDot(IntPtr Self, IntPtr P);
 		
 		#endregion
 		

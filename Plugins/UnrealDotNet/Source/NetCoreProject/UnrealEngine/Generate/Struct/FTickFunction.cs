@@ -54,22 +54,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FTickFunction_TickInterval_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTickFunction_IsCompletionHandleValid(FTickFunction Self);
+		private static extern bool E_FTickFunction_IsCompletionHandleValid(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTickFunction_IsTickFunctionEnabled(FTickFunction Self);
+		private static extern bool E_FTickFunction_IsTickFunctionEnabled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FTickFunction_IsTickFunctionRegistered(FTickFunction Self);
+		private static extern bool E_FTickFunction_IsTickFunctionRegistered(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTickFunction_SetPriorityIncludingPrerequisites(FTickFunction Self, bool bInHighPriority);
+		private static extern void E_FTickFunction_SetPriorityIncludingPrerequisites(IntPtr Self, bool bInHighPriority);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTickFunction_SetTickFunctionEnable(FTickFunction Self, bool bInEnabled);
+		private static extern void E_FTickFunction_SetTickFunctionEnable(IntPtr Self, bool bInEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FTickFunction_UnRegisterTickFunction(FTickFunction Self);
+		private static extern void E_FTickFunction_UnRegisterTickFunction(IntPtr Self);
 		
 		#endregion
 		

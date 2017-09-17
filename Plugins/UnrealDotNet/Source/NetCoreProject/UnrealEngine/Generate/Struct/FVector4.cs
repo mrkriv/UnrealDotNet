@@ -39,70 +39,70 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector4_Component(FVector4 Self, int Index);
+		private static extern float E_FVector4_Component(IntPtr Self, int Index);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector4_ContainsNaN(FVector4 Self);
+		private static extern bool E_FVector4_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector4_DiagnosticCheckNaN(FVector4 Self);
+		private static extern void E_FVector4_DiagnosticCheckNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector4_Equals(FVector4 Self, IntPtr V, float Tolerance);
+		private static extern bool E_FVector4_Equals(IntPtr Self, IntPtr V, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector4_FindBestAxisVectors3(FVector4 Self, IntPtr Axis1, IntPtr Axis2);
+		private static extern void E_FVector4_FindBestAxisVectors3(IntPtr Self, IntPtr Axis1, IntPtr Axis2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_GetSafeNormal(FVector4 Self, float Tolerance);
+		private static extern IntPtr E_FVector4_GetSafeNormal(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_GetUnsafeNormal3(FVector4 Self);
+		private static extern IntPtr E_FVector4_GetUnsafeNormal3(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector4_InitFromString(FVector4 Self, string InSourceString);
+		private static extern bool E_FVector4_InitFromString(IntPtr Self, string InSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector4_IsNearlyZero3(FVector4 Self, float Tolerance);
+		private static extern bool E_FVector4_IsNearlyZero3(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector4_IsUnit3(FVector4 Self, float LengthSquaredTolerance);
+		private static extern bool E_FVector4_IsUnit3(IntPtr Self, float LengthSquaredTolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_Reflect3(FVector4 Self, IntPtr Normal);
+		private static extern IntPtr E_FVector4_Reflect3(IntPtr Self, IntPtr Normal);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_Rotation(FVector4 Self);
+		private static extern IntPtr E_FVector4_Rotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_SafeNormal(FVector4 Self, float Tolerance);
+		private static extern IntPtr E_FVector4_SafeNormal(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector4_Set(FVector4 Self, float InX, float InY, float InZ, float InW);
+		private static extern void E_FVector4_Set(IntPtr Self, float InX, float InY, float InZ, float InW);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector4_Size(FVector4 Self);
+		private static extern float E_FVector4_Size(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector4_Size3(FVector4 Self);
+		private static extern float E_FVector4_Size3(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector4_SizeSquared(FVector4 Self);
+		private static extern float E_FVector4_SizeSquared(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector4_SizeSquared3(FVector4 Self);
+		private static extern float E_FVector4_SizeSquared3(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_ToOrientationQuat(FVector4 Self);
+		private static extern IntPtr E_FVector4_ToOrientationQuat(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_ToOrientationRotator(FVector4 Self);
+		private static extern IntPtr E_FVector4_ToOrientationRotator(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_ToString(FVector4 Self, out int ResultStringLen);
+		private static extern IntPtr E_FVector4_ToString(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector4_UnsafeNormal3(FVector4 Self);
+		private static extern IntPtr E_FVector4_UnsafeNormal3(IntPtr Self);
 		
 		#endregion
 		

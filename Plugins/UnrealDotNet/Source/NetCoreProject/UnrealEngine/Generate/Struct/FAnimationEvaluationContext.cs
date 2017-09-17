@@ -44,10 +44,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FAnimationEvaluationContext_Clear(FAnimationEvaluationContext Self);
+		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FAnimationEvaluationContext_Copy(FAnimationEvaluationContext Self, IntPtr Other);
+		private static extern void E_FAnimationEvaluationContext_Copy(IntPtr Self, IntPtr Other);
 		
 		#endregion
 		

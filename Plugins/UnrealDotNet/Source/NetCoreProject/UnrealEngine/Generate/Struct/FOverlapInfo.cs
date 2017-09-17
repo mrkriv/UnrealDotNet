@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FOverlapInfo_bFromSweep_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern int E_FOverlapInfo_GetBodyIndex(FOverlapInfo Self);
+		private static extern int E_FOverlapInfo_GetBodyIndex(IntPtr Self);
 		
 		#endregion
 		

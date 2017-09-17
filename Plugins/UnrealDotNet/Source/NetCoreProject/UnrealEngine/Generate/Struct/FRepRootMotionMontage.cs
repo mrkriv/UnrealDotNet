@@ -54,10 +54,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FRepRootMotionMontage_Clear(FRepRootMotionMontage Self);
+		private static extern void E_FRepRootMotionMontage_Clear(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FRepRootMotionMontage_HasRootMotion(FRepRootMotionMontage Self);
+		private static extern bool E_FRepRootMotionMontage_HasRootMotion(IntPtr Self);
 		
 		#endregion
 		

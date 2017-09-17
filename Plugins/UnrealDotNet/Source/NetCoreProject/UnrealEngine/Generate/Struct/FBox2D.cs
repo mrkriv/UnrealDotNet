@@ -34,40 +34,40 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D Self, IntPtr Point);
+		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(IntPtr Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_ExpandBy(FBox2D Self, float W);
+		private static extern IntPtr E_FBox2D_ExpandBy(IntPtr Self, float W);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FBox2D_GetArea(FBox2D Self);
+		private static extern float E_FBox2D_GetArea(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_GetCenter(FBox2D Self);
+		private static extern IntPtr E_FBox2D_GetCenter(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FBox2D_GetCenterAndExtents(FBox2D Self, IntPtr center, IntPtr Extents);
+		private static extern void E_FBox2D_GetCenterAndExtents(IntPtr Self, IntPtr center, IntPtr Extents);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_GetClosestPointTo(FBox2D Self, IntPtr Point);
+		private static extern IntPtr E_FBox2D_GetClosestPointTo(IntPtr Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_GetExtent(FBox2D Self);
+		private static extern IntPtr E_FBox2D_GetExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_GetSize(FBox2D Self);
+		private static extern IntPtr E_FBox2D_GetSize(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FBox2D_Init(FBox2D Self);
+		private static extern void E_FBox2D_Init(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FBox2D_Intersect(FBox2D Self, IntPtr other);
+		private static extern bool E_FBox2D_Intersect(IntPtr Self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_ShiftBy(FBox2D Self, IntPtr Offset);
+		private static extern IntPtr E_FBox2D_ShiftBy(IntPtr Self, IntPtr Offset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FBox2D_ToString(FBox2D Self, out int ResultStringLen);
+		private static extern IntPtr E_FBox2D_ToString(IntPtr Self, out int ResultStringLen);
 		
 		#endregion
 		

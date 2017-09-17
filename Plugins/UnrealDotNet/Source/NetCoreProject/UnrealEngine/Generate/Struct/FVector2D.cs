@@ -29,85 +29,85 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_ClampAxes(FVector2D Self, float MinAxisVal, float MaxAxisVal);
+		private static extern IntPtr E_FVector2D_ClampAxes(IntPtr Self, float MinAxisVal, float MaxAxisVal);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector2D_ContainsNaN(FVector2D Self);
+		private static extern bool E_FVector2D_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_CrossProduct(FVector2D Self, IntPtr A, IntPtr B);
+		private static extern float E_FVector2D_CrossProduct(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector2D_DiagnosticCheckNaN(FVector2D Self);
+		private static extern void E_FVector2D_DiagnosticCheckNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_Distance(FVector2D Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector2D_Distance(IntPtr Self, IntPtr V1, IntPtr V2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_DistSquared(FVector2D Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector2D_DistSquared(IntPtr Self, IntPtr V1, IntPtr V2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_DotProduct(FVector2D Self, IntPtr A, IntPtr B);
+		private static extern float E_FVector2D_DotProduct(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector2D_Equals(FVector2D Self, IntPtr V, float Tolerance);
+		private static extern bool E_FVector2D_Equals(IntPtr Self, IntPtr V, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_GetAbs(FVector2D Self);
+		private static extern IntPtr E_FVector2D_GetAbs(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_GetAbsMax(FVector2D Self);
+		private static extern float E_FVector2D_GetAbsMax(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_GetMax(FVector2D Self);
+		private static extern float E_FVector2D_GetMax(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_GetMin(FVector2D Self);
+		private static extern float E_FVector2D_GetMin(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_GetRotated(FVector2D Self, float AngleDeg);
+		private static extern IntPtr E_FVector2D_GetRotated(IntPtr Self, float AngleDeg);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_GetSafeNormal(FVector2D Self, float Tolerance);
+		private static extern IntPtr E_FVector2D_GetSafeNormal(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_GetSignVector(FVector2D Self);
+		private static extern IntPtr E_FVector2D_GetSignVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector2D_InitFromString(FVector2D Self, string InSourceString);
+		private static extern bool E_FVector2D_InitFromString(IntPtr Self, string InSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector2D_IsNearlyZero(FVector2D Self, float Tolerance);
+		private static extern bool E_FVector2D_IsNearlyZero(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern bool E_FVector2D_IsZero(FVector2D Self);
+		private static extern bool E_FVector2D_IsZero(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector2D_Normalize(FVector2D Self, float Tolerance);
+		private static extern void E_FVector2D_Normalize(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_RoundToVector(FVector2D Self);
+		private static extern IntPtr E_FVector2D_RoundToVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_SafeNormal(FVector2D Self, float Tolerance);
+		private static extern IntPtr E_FVector2D_SafeNormal(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector2D_Set(FVector2D Self, float InX, float InY);
+		private static extern void E_FVector2D_Set(IntPtr Self, float InX, float InY);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_Size(FVector2D Self);
+		private static extern float E_FVector2D_Size(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern float E_FVector2D_SizeSquared(FVector2D Self);
+		private static extern float E_FVector2D_SizeSquared(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(FVector2D Self);
+		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern void E_FVector2D_ToDirectionAndLength(FVector2D Self, IntPtr OutDir, float OutLength);
+		private static extern void E_FVector2D_ToDirectionAndLength(IntPtr Self, IntPtr OutDir, float OutLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_FVector2D_ToString(FVector2D Self, out int ResultStringLen);
+		private static extern IntPtr E_FVector2D_ToString(IntPtr Self, out int ResultStringLen);
 		
 		#endregion
 		
