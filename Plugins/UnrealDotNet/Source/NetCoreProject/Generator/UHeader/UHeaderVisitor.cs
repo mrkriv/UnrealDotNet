@@ -194,6 +194,18 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitUMetaParamValue([NotNull] UHeaderParser.UMetaParamValueContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.undefineBlock"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUndefineBlock([NotNull] UHeaderParser.UndefineBlockContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.undefineContent"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUndefineContent([NotNull] UHeaderParser.UndefineContentContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.constructor"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

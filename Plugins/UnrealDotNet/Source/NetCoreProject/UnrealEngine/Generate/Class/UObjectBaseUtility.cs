@@ -10,7 +10,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int E_UObjectBaseUtility_GetLinkerIndex(IntPtr Self);

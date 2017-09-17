@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UMeshComponent(UObject Parent = null, string Name = "MeshComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UMeshComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UMeshComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UMeshComponent_CacheMaterialParameterNameIndices(IntPtr Self);
 		

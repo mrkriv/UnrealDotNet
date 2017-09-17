@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UPostProcessComponent(UObject Parent = null, string Name = "PostProcessComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UPostProcessComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UPostProcessComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UPostProcessComponent Self)
 		{

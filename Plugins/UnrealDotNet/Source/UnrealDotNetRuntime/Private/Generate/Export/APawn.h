@@ -26,6 +26,12 @@ extern "C"
 	DOTNET_EXPORT uint8 E_PROP_APawn_RemoteViewPitch_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->RemoteViewPitch; }
 	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(INT_PTR Ptr, uint8 Value) { ((APawn*)Ptr)->RemoteViewPitch = Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_APawn(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<APawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_APawn_AddControllerPitchInput(INT_PTR Self, float Val)
 	{
 		auto _p0 = Val;

@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UObject(UObject Parent = null, string Name = "Object")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UObject(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UObject(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UObject_BeginDestroy(IntPtr Self);
 		
@@ -65,84 +73,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UObject_ShutdownAfterError(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UArrowComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UAudioComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBillboardComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UBoxComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UCapsuleComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UChildActorComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDecalComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UDirectionalLightComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPlanarReflectionComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPointLightComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UPostProcessComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneCaptureComponent2D(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneCaptureComponentCube(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USceneComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UShapeComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USkyLightComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USphereComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USpotLightComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_USpringArmComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UStaticMeshComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UTextRenderComponent(IntPtr Self, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-		private static extern IntPtr E_CreateOptionalDefaultSubobject_UVectorFieldComponent(IntPtr Self, string Name);
 		
 		#endregion
 		
@@ -275,84 +205,6 @@ namespace UnrealEngine
 		
 		public virtual void ShutdownAfterError()
 			=> E_UObject_ShutdownAfterError(this);
-		
-		public UArrowComponent CreateOptionalDefaultSubobject_UArrowComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UArrowComponent(NativePointer, Name);
-		
-		public UAudioComponent CreateOptionalDefaultSubobject_UAudioComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UAudioComponent(NativePointer, Name);
-		
-		public UBillboardComponent CreateOptionalDefaultSubobject_UBillboardComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBillboardComponent(NativePointer, Name);
-		
-		public UBoxComponent CreateOptionalDefaultSubobject_UBoxComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UBoxComponent(NativePointer, Name);
-		
-		public UCapsuleComponent CreateOptionalDefaultSubobject_UCapsuleComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UCapsuleComponent(NativePointer, Name);
-		
-		public UChildActorComponent CreateOptionalDefaultSubobject_UChildActorComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UChildActorComponent(NativePointer, Name);
-		
-		public UDecalComponent CreateOptionalDefaultSubobject_UDecalComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDecalComponent(NativePointer, Name);
-		
-		public UDirectionalLightComponent CreateOptionalDefaultSubobject_UDirectionalLightComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UDirectionalLightComponent(NativePointer, Name);
-		
-		public UExponentialHeightFogComponent CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(NativePointer, Name);
-		
-		public UInstancedStaticMeshComponent CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(NativePointer, Name);
-		
-		public UMaterialBillboardComponent CreateOptionalDefaultSubobject_UMaterialBillboardComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(NativePointer, Name);
-		
-		public UPawnNoiseEmitterComponent CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(NativePointer, Name);
-		
-		public UPlanarReflectionComponent CreateOptionalDefaultSubobject_UPlanarReflectionComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UPlanarReflectionComponent(NativePointer, Name);
-		
-		public UPointLightComponent CreateOptionalDefaultSubobject_UPointLightComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UPointLightComponent(NativePointer, Name);
-		
-		public UPostProcessComponent CreateOptionalDefaultSubobject_UPostProcessComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UPostProcessComponent(NativePointer, Name);
-		
-		public USceneCaptureComponent2D CreateOptionalDefaultSubobject_USceneCaptureComponent2D(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USceneCaptureComponent2D(NativePointer, Name);
-		
-		public USceneCaptureComponentCube CreateOptionalDefaultSubobject_USceneCaptureComponentCube(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USceneCaptureComponentCube(NativePointer, Name);
-		
-		public USceneComponent CreateOptionalDefaultSubobject_USceneComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USceneComponent(NativePointer, Name);
-		
-		public UShapeComponent CreateOptionalDefaultSubobject_UShapeComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UShapeComponent(NativePointer, Name);
-		
-		public USkyLightComponent CreateOptionalDefaultSubobject_USkyLightComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USkyLightComponent(NativePointer, Name);
-		
-		public USphereComponent CreateOptionalDefaultSubobject_USphereComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USphereComponent(NativePointer, Name);
-		
-		public USpotLightComponent CreateOptionalDefaultSubobject_USpotLightComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USpotLightComponent(NativePointer, Name);
-		
-		public USpringArmComponent CreateOptionalDefaultSubobject_USpringArmComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_USpringArmComponent(NativePointer, Name);
-		
-		public UStaticMeshComponent CreateOptionalDefaultSubobject_UStaticMeshComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UStaticMeshComponent(NativePointer, Name);
-		
-		public UTextRenderComponent CreateOptionalDefaultSubobject_UTextRenderComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UTextRenderComponent(NativePointer, Name);
-		
-		public UVectorFieldComponent CreateOptionalDefaultSubobject_UVectorFieldComponent(string Name) 
-			=> E_CreateOptionalDefaultSubobject_UVectorFieldComponent(NativePointer, Name);
 		
 		#endregion
 		

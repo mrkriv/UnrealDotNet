@@ -22,6 +22,12 @@ public:
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UMeshComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UMeshComponent_CacheMaterialParameterNameIndices(INT_PTR Self)
 	{
 		((E_PROTECTED_WRAP_UMeshComponent*)Self)->CacheMaterialParameterNameIndices_WRAP();

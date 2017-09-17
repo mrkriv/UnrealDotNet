@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UCapsuleComponent(UObject Parent = null, string Name = "CapsuleComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UCapsuleComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UCapsuleComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_UCapsuleComponent_CapsuleHalfHeight_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]

@@ -10,7 +10,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
 		public static implicit operator IntPtr(UEngineBaseTypes Self)
 		{
 			return Self.NativePointer;

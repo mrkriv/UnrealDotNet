@@ -6,7 +6,7 @@ namespace GameLogic
 {
     public class MyActor : ManageActor
     {
-        // private UBoxComponent Box;
+        private UBoxComponent Box;
 
         [EditAnywhere, DefaultValue(10.0f)]
         public float Speed { get; set; }
@@ -19,18 +19,29 @@ namespace GameLogic
 
         protected override void BeginPlay()
         {
-            //try
-            //{
-            PrimaryActorTick.bCanEverTick = 1;
-            
-            ScreenDebugMessage($"=> { GetRootComponent().GetWorldLocation().ToString()}");
-            // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+            try
+            {
+                PrimaryActorTick.bCanEverTick = 1;
 
-            //}
-            //catch (Exception e)
-            //{
-            //    ULog_Error(e.ToString());
-            //}
+                ScreenDebugMessage($"=> { GetRootComponent().GetWorldTransform()}");
+
+
+                Box = new UBoxComponent(this, "Simple Child");
+                Box.RegisterComponent();
+
+                //FAttachmentTransformRules transformRules = new FAttachmentTransformRules
+                //{
+                //    LocationRule = EAttachmentRule.SnapToTarget,
+                //    RotationRule = EAttachmentRule.SnapToTarget,
+                //    ScaleRule = EAttachmentRule.SnapToTarget
+                //};
+
+                //Box.AttachToComponent(GetRootComponent(), transformRules, "");
+            }
+            catch (Exception e)
+            {
+                ULog_Error(e.ToString());
+            }
         }
 
         public override void Tick(float DeltaTime)

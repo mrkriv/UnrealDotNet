@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UDirectionalLightComponent(UObject Parent = null, string Name = "DirectionalLightComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UDirectionalLightComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UDirectionalLightComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UDirectionalLightComponent Self)
 		{

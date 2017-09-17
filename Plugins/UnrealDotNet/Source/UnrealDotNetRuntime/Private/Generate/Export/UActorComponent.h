@@ -67,6 +67,12 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR)&((UActorComponent*)Ptr)->PrimaryComponentTick; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UActorComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UActorComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UActorComponent_Activate(INT_PTR Self, bool bReset)
 	{
 		auto _p0 = bReset;

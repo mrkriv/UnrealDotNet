@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UPlanarReflectionComponent(UObject Parent = null, string Name = "PlanarReflectionComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UPlanarReflectionComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UPlanarReflectionComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_UPlanarReflectionComponent_AngleFromPlaneFadeEnd_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]

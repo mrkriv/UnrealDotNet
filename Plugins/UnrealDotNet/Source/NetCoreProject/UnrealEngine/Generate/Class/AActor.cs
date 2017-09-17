@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public AActor(UObject Parent = null, string Name = "Actor")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_AActor(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_AActor(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern byte E_PROP_AActor_bActorSeamlessTraveled_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]

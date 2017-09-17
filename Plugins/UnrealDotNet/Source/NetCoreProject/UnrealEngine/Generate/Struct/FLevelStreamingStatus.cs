@@ -13,7 +13,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus();

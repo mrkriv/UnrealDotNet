@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public USceneCaptureComponent(UObject Parent = null, string Name = "SceneCaptureComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_USceneCaptureComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_USceneCaptureComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_USceneCaptureComponent_ClearHiddenComponents(IntPtr Self);
 		

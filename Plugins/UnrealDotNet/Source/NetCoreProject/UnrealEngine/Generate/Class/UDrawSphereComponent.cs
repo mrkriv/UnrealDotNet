@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UDrawSphereComponent(UObject Parent = null, string Name = "DrawSphereComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UDrawSphereComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UDrawSphereComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UDrawSphereComponent Self)
 		{

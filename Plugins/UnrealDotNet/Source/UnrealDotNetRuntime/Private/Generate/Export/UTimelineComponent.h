@@ -6,6 +6,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UTimelineComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UTimelineComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT bool E_UTimelineComponent_GetIgnoreTimeDilation(INT_PTR Self)
 	{
 		return ((UTimelineComponent*)Self)->GetIgnoreTimeDilation();

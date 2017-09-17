@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UPlaneReflectionCaptureComponent(UObject Parent = null, string Name = "PlaneReflectionCaptureComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UPlaneReflectionCaptureComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UPlaneReflectionCaptureComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UPlaneReflectionCaptureComponent Self)
 		{

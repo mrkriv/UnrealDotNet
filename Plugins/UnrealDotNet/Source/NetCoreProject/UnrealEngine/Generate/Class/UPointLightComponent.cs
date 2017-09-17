@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UPointLightComponent(UObject Parent = null, string Name = "PointLightComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UPointLightComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UPointLightComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UPointLightComponent Self)
 		{

@@ -6,6 +6,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UBoxComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UBoxComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT INT_PTR E_UBoxComponent_GetScaledBoxExtent(INT_PTR Self)
 	{
 		return (INT_PTR) new FVector(((UBoxComponent*)Self)->GetScaledBoxExtent());

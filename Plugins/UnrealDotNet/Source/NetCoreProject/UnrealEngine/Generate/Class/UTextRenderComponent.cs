@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UTextRenderComponent(UObject Parent = null, string Name = "TextRenderComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UTextRenderComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UTextRenderComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UTextRenderComponent Self)
 		{

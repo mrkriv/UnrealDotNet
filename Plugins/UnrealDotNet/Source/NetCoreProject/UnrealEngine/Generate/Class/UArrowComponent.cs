@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UArrowComponent(UObject Parent = null, string Name = "ArrowComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UArrowComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UArrowComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UArrowComponent Self)
 		{

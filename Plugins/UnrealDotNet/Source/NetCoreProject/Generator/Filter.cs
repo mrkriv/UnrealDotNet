@@ -43,6 +43,18 @@ namespace Generator
             "FScopedLevelCollectionContextSwitch",
 
             "FWorldDelegates",
+            "FSkelMeshSkinWeightInfo",
+
+            "FPostProcessSettings", // TODO: DisplayName не валиден (начинается с цифры)
+        };
+
+        public static string[] NewObjectBlackList =
+        {
+            "UScene",
+            "UWorldProxy",
+            "UObjectBase",
+            "UObjectBaseUtility",
+            "UEngineBaseTypes",
         };
 
         public static string[] EnumBlackList =

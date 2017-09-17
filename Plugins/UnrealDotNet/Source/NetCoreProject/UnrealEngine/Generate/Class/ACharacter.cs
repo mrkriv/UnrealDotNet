@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public ACharacter(UObject Parent = null, string Name = "Character")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ACharacter(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ACharacter(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_ACharacter_AnimRootMotionTranslationScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
@@ -153,6 +161,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_ACharacter_GetCapsuleComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_ACharacter_GetMesh(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern byte E_ACharacter_GetReplicatedMovementMode(IntPtr Self);
@@ -522,6 +533,13 @@ namespace UnrealEngine
 		/// </summary>
 		public UCapsuleComponent GetCapsuleComponent()
 			=> E_ACharacter_GetCapsuleComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Returns Mesh subobject </para>
+		/// </summary>
+		public USkeletalMeshComponent GetMesh()
+			=> E_ACharacter_GetMesh(this);
 		
 		
 		/// <summary>

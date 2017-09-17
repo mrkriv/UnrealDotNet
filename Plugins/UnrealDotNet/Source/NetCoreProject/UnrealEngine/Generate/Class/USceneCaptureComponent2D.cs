@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public USceneCaptureComponent2D(UObject Parent = null, string Name = "SceneCaptureComponent2D")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_USceneCaptureComponent2D(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_USceneCaptureComponent2D(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(USceneCaptureComponent2D Self)
 		{

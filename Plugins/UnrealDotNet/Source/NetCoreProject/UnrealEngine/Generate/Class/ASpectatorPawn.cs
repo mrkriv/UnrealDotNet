@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public ASpectatorPawn(UObject Parent = null, string Name = "SpectatorPawn")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ASpectatorPawn(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ASpectatorPawn(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(ASpectatorPawn Self)
 		{

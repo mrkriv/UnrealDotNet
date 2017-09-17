@@ -30,6 +30,12 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_ADefaultPawn_MovementComponentName_SET(INT_PTR Ptr, char* Value) { ((ADefaultPawn*)Ptr)->MovementComponentName = FName(UTF8_TO_TCHAR(Value)); }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_ADefaultPawn(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<ADefaultPawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT USphereComponent* E_ADefaultPawn_GetCollisionComponent(INT_PTR Self)
 	{
 		return ((ADefaultPawn*)Self)->GetCollisionComponent();

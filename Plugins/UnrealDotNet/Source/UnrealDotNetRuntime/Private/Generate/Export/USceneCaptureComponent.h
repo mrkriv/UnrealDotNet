@@ -17,6 +17,12 @@ public:
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_USceneCaptureComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<USceneCaptureComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_USceneCaptureComponent_ClearHiddenComponents(INT_PTR Self)
 	{
 		((USceneCaptureComponent*)Self)->ClearHiddenComponents();

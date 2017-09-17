@@ -1548,6 +1548,41 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FSimulatedRootMotionReplicatedMove_Time_SET(INT_PTR Ptr, float Value) { ((FSimulatedRootMotionReplicatedMove*)Ptr)->Time = Value; }
 	
 	
+	/*	FSkelMeshComponentLODInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSkelMeshComponentLODInfo() { return (INT_PTR) new FSkelMeshComponentLODInfo(); }
+	
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideSkinWeights(INT_PTR Self)
+	{
+		((FSkelMeshComponentLODInfo*)Self)->BeginReleaseOverrideSkinWeights();
+	}
+
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(INT_PTR Self)
+	{
+		((FSkelMeshComponentLODInfo*)Self)->BeginReleaseOverrideVertexColors();
+	}
+
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_CleanUp(INT_PTR Self)
+	{
+		((FSkelMeshComponentLODInfo*)Self)->CleanUp();
+	}
+
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(INT_PTR Self)
+	{
+		((FSkelMeshComponentLODInfo*)Self)->ReleaseOverrideSkinWeightsAndBlock();
+	}
+
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideVertexColorsAndBlock(INT_PTR Self)
+	{
+		((FSkelMeshComponentLODInfo*)Self)->ReleaseOverrideVertexColorsAndBlock();
+	}
+
+	
+	/*	FSkelMeshRefPoseOverride	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSkelMeshRefPoseOverride() { return (INT_PTR) new FSkelMeshRefPoseOverride(); }
+	
+	
 	/*	FSplineCurves	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplineCurves() { return (INT_PTR) new FSplineCurves(); }
@@ -3309,6 +3344,11 @@ extern "C"
 	
 	DOTNET_EXPORT float E_PROP_FWeightedBlendable_Weight_GET(INT_PTR Ptr) { return ((FWeightedBlendable*)Ptr)->Weight; }
 	DOTNET_EXPORT void E_PROP_FWeightedBlendable_Weight_SET(INT_PTR Ptr, float Value) { ((FWeightedBlendable*)Ptr)->Weight = Value; }
+	
+	
+	/*	FWeightedBlendables	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FWeightedBlendables() { return (INT_PTR) new FWeightedBlendables(); }
 	
 	
 	/*	FWorldContext	*/

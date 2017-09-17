@@ -6,6 +6,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_ULightComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<ULightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT bool E_ULightComponent_AffectsPrimitive(INT_PTR Self, UPrimitiveComponent* Primitive)
 	{
 		auto _p0 = Primitive;

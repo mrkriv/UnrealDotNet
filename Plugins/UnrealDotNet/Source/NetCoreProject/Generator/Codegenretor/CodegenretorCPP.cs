@@ -64,17 +64,14 @@ namespace Generator
                     GenerateProperty(cw, Class, prop);
                 }
 
+                if (!Filter.NewObjectBlackList.Contains(Class.Name))
+                {
+                    GenegateNewObjectMethod(cw, Class);
+                }
+
                 foreach (var method in Class.Methods)
                 {
                     GenerateMethod(cw, method);
-                }
-
-                if (Class.Name == "UObject")
-                {
-                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.UMeta.ContainsKey("BlueprintSpawnableComponent")))
-                    {
-                        GenereteSubobjectUtilitsMethods(cw, cl);
-                    }
                 }
 
                 cw.CloseBlock();
@@ -234,6 +231,16 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            private static void GenegateNewObjectMethod(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine();
+                cw.WriteLine($"{CPP_API} INT_PTR {ExportPrefix}NewObject_{Class.Name}(UObject* Parent, char* Name)");
+                cw.OpenBlock();
+                cw.WriteLine($"return (INT_PTR)NewObject<{Class.Name}>(Parent, FName(UTF8_TO_TCHAR(Name)));");
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
             private static string GetSourceFileName(Class Class)
             {
                 var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
@@ -309,19 +316,6 @@ namespace Generator
                     cw.WriteLine("ResultStringLen = _result.Len();");
                     cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
                 }
-
-                cw.CloseBlock();
-                cw.WriteLine();
-            }
-
-            private static void GenereteSubobjectUtilitsMethods(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine(
-                    $"{CPP_API} INT_PTR {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(INT_PTR Self, char* Name)");
-                cw.OpenBlock();
-
-                cw.WriteLine(
-                    $"return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class {Class.Name}>(FName(UTF8_TO_TCHAR(Name)));");
 
                 cw.CloseBlock();
                 cw.WriteLine();

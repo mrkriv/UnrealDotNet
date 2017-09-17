@@ -71,6 +71,12 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_VisibilityId_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->VisibilityId; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_VisibilityId_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->VisibilityId = Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UPrimitiveComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UPrimitiveComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UPrimitiveComponent_AddAngularImpulse(INT_PTR Self, INT_PTR Impulse, char* BoneName, bool bVelChange)
 	{
 		auto _p0 = *(FVector*)Impulse;

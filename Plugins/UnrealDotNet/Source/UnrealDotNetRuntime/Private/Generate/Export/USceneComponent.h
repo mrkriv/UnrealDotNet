@@ -80,6 +80,12 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<USceneComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT bool E_USceneComponent_AreDynamicDataChangesAllowed(INT_PTR Self, bool bIgnoreStationary)
 	{
 		auto _p0 = bIgnoreStationary;

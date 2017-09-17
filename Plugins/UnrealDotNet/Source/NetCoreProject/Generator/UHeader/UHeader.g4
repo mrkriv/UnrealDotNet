@@ -159,6 +159,17 @@ uMetaParamValue
 	| value
 ;
 
+/* Undefine */
+
+undefineBlock
+	: '(' undefineContent ')'
+;
+
+undefineContent
+	: ~('(' | ')')* (
+		('(' undefineContent ')' undefineContent)?
+	)
+;
 
 /* Method */
 
@@ -173,6 +184,7 @@ constructorInitializerList
 
 constructorInitializer
 	: methodParametrName '(' methodParametrDefaultValue? ')'
+	| methodParametrName undefineBlock
 	;
 
 method

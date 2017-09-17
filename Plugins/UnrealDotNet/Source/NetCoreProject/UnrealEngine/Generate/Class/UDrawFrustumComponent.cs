@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UDrawFrustumComponent(UObject Parent = null, string Name = "DrawFrustumComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UDrawFrustumComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UDrawFrustumComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UDrawFrustumComponent Self)
 		{

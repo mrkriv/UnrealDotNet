@@ -4,7 +4,7 @@ namespace UnrealEngine
 {
     public abstract class NativeWrapper
     {
-        protected readonly IntPtr NativePointer;
+        protected IntPtr NativePointer;
 
         protected NativeWrapper(IntPtr Adress)
         {

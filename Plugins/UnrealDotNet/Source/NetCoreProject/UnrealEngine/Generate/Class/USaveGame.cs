@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public USaveGame(UObject Parent = null, string Name = "SaveGame")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_USaveGame(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_USaveGame(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(USaveGame Self)
 		{

@@ -28,6 +28,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_AHUD_RenderDelta_GET(INT_PTR Ptr) { return ((AHUD*)Ptr)->RenderDelta; }
 	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(INT_PTR Ptr, float Value) { ((AHUD*)Ptr)->RenderDelta = Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_AHUD(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<AHUD>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_AHUD_AddHitBox(INT_PTR Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
 	{
 		auto _p0 = *(FVector2D*)Position;

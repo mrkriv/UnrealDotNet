@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public AHUD(UObject Parent = null, string Name = "HUD")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_AHUD(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_AHUD(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]

@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public ULightComponentBase(UObject Parent = null, string Name = "LightComponentBase")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ULightComponentBase(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ULightComponentBase(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(ULightComponentBase Self)
 		{

@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public UVectorFieldComponent(UObject Parent = null, string Name = "VectorFieldComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UVectorFieldComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UVectorFieldComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(UVectorFieldComponent Self)
 		{

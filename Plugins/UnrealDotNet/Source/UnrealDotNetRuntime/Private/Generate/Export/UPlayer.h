@@ -6,6 +6,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UPlayer(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UPlayer>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT char* E_UPlayer_ConsoleCommand(INT_PTR Self, char* Cmd, bool bWriteToLog, int& ResultStringLen)
 	{
 		auto _p0 = FString(Cmd);

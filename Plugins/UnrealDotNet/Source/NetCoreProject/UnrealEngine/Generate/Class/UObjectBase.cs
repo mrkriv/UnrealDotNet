@@ -10,7 +10,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_UObjectBase_GetFName(IntPtr Self, out int ResultStringLen);

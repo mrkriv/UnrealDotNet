@@ -17,6 +17,12 @@ public:
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UAudioComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UAudioComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT char* E_UAudioComponent_GetAudioComponentUserID(INT_PTR Self, int& ResultStringLen)
 	{
 		auto _result = ((UAudioComponent*)Self)->GetAudioComponentUserID().ToString();

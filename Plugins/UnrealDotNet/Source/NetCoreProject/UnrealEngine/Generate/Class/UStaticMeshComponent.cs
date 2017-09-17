@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UStaticMeshComponent(UObject Parent = null, string Name = "StaticMeshComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UStaticMeshComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UStaticMeshComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern void E_UStaticMeshComponent_AddSpeedTreeWind(IntPtr Self);
 		

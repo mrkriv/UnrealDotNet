@@ -17,6 +17,12 @@ public:
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UDecalComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UDecalComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT INT_PTR E_UDecalComponent_GetTransformIncludingDecalSize(INT_PTR Self)
 	{
 		return (INT_PTR) new FTransform(((UDecalComponent*)Self)->GetTransformIncludingDecalSize());

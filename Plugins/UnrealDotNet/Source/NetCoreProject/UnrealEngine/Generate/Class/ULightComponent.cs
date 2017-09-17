@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public ULightComponent(UObject Parent = null, string Name = "LightComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ULightComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ULightComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr Self, IntPtr Primitive);
 		

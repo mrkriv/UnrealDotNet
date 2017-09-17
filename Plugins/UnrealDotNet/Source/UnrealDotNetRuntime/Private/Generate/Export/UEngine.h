@@ -230,6 +230,12 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_UEngine_WireframeMaterialName_SET(INT_PTR Ptr, char* Value) { ((UEngine*)Ptr)->WireframeMaterialName = UTF8_TO_TCHAR(Value); }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UEngine(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UEngine_ParseCommandline(INT_PTR Self)
 	{
 		((UEngine*)Self)->ParseCommandline();

@@ -45,7 +45,7 @@ namespace Generator
                 cw.WriteLine($"public {(Class.IsFinal ? "sealed" : "")} partial class {Class.Name} : {baseClass}");
                 cw.OpenBlock();
 
-                GenerateClassUtilitesTop(cw, Class);
+                GenerateClassUtilitesTop(cw, Class, false);
 
                 var cw_DllImport = new CoreWriter(cw);
                 var cw_ExternMethods = new CoreWriter(cw);
@@ -59,18 +59,7 @@ namespace Generator
                     GenerateMethodDLLImport(cw_DllImport, Class, method);
                     GenerateMethodBody(cw_ExternMethods, Class, method);
                 }
-
-                if (Class.Name == "UObject")
-                {
-                    foreach (var cl in Class.Domain.Classes.Where(cl => cl.UMeta.ContainsKey("BlueprintSpawnableComponent")))
-                    {
-                        GenereteSubobjectUtilitsDLL(cw_DllImport, cl);
-                        GenereteSubobjectUtilitsMethods(cw_ExternMethods, cl);
-                    }
-                }
-
-                cw.WriteLine();
-
+                
                 if (!cw_DllImport.IsEmpty())
                 {
                     cw.WriteLine("#region DLLInmport");
@@ -119,7 +108,7 @@ namespace Generator
                 cw.WriteLine($"public partial class {manageClass.Name} : {Class.Name}");
                 cw.OpenBlock();
 
-                GenerateClassUtilitesTop(cw, manageClass);
+                GenerateClassUtilitesTop(cw, manageClass, true);
 
                 foreach (var method in Filter.GetVirtualMethods(Class))
                 {
@@ -168,11 +157,11 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateClassUtilitesTop(CoreWriter cw, Class Class)
+            private static void GenerateClassUtilitesTop(CoreWriter cw, Class Class, bool ForManage)
             {
                 if (Class.IsStructure)
                 {
-                    cw.WriteLine($"public {Class.Name}() : base(E_CreateStruct_{Class.Name}(), false)");
+                    cw.WriteLine($"public {Class.Name}() : base({ExportPrefix}CreateStruct_{Class.Name}(), false)");
                     cw.OpenBlock();
                     cw.CloseBlock();
                     cw.WriteLine();
@@ -188,6 +177,16 @@ namespace Generator
                     cw.OpenBlock();
                     cw.CloseBlock();
                     cw.WriteLine();
+
+                    if (!ForManage && !Filter.NewObjectBlackList.Contains(Class.Name))
+                    {
+                        cw.WriteLine($"public {Class.Name}(UObject Parent = null, string Name = \"{Class.Name.Substring(1)}\")");
+                        cw.WriteLine("\t: base(IntPtr.Zero)");
+                        cw.OpenBlock();
+                        cw.WriteLine($"NativePointer = {ExportPrefix}NewObject_{Class.Name}(Parent, Name);");
+                        cw.CloseBlock();
+                        cw.WriteLine();
+                    }
                 }
             }
 
@@ -196,11 +195,17 @@ namespace Generator
                 if (Class.IsStructure)
                 {
                     WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern IntPtr E_CreateStruct_{Class.Name}();");
+                    cw.WriteLine($"private static extern IntPtr {ExportPrefix}CreateStruct_{Class.Name}();");
                     cw.WriteLine();
                 }
                 else
                 {
+                    if (!Filter.NewObjectBlackList.Contains(Class.Name))
+                    {
+                        WriteDLLImport(cw);
+                        cw.WriteLine($"private static extern IntPtr {ExportPrefix}NewObject_{Class.Name}(IntPtr Parent, string Name);");
+                        cw.WriteLine();
+                    }
                 }
 
                 foreach (var prop in Class.Property.Where(p => !p.IsConst))
@@ -412,21 +417,6 @@ namespace Generator
                     cw.WriteLine($"return NativeManager.GetWrapper(Adress) as {Class.Name} ?? new {Class.Name}(Adress);");
                     cw.CloseBlock();
                 }
-            }
-
-            private static void GenereteSubobjectUtilitsDLL(CoreWriter cw, Class Class)
-            {
-                WriteDLLImport(cw);
-                cw.WriteLine(
-                    $"private static extern IntPtr {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(IntPtr Self, string Name);");
-                cw.WriteLine();
-            }
-
-            private static void GenereteSubobjectUtilitsMethods(CoreWriter cw, Class Class)
-            {
-                cw.WriteLine($"public {Class.Name} CreateOptionalDefaultSubobject_{Class.Name}(string Name) ");
-                cw.WriteLine($"\t=> {ExportPrefix}CreateOptionalDefaultSubobject_{Class.Name}(NativePointer, Name);");
-                cw.WriteLine();
             }
 
             private static void WriteDLLImport(CoreWriter cw)

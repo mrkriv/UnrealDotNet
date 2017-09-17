@@ -6,6 +6,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UObject(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UObject>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UObject_BeginDestroy(INT_PTR Self)
 	{
 		((UObject*)Self)->BeginDestroy();
@@ -99,136 +105,6 @@ extern "C"
 	DOTNET_EXPORT void E_UObject_ShutdownAfterError(INT_PTR Self)
 	{
 		((UObject*)Self)->ShutdownAfterError();
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UArrowComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UArrowComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UAudioComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UAudioComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBillboardComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBillboardComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UBoxComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UBoxComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UCapsuleComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UCapsuleComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UChildActorComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UChildActorComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDecalComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDecalComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UDirectionalLightComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UDirectionalLightComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UExponentialHeightFogComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UExponentialHeightFogComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UInstancedStaticMeshComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UInstancedStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UMaterialBillboardComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UMaterialBillboardComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UPawnNoiseEmitterComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UPawnNoiseEmitterComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UPlanarReflectionComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UPlanarReflectionComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UPointLightComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UPointLightComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UPostProcessComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UPostProcessComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USceneCaptureComponent2D(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USceneCaptureComponent2D>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USceneCaptureComponentCube(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USceneCaptureComponentCube>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USceneComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USceneComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UShapeComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UShapeComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USkyLightComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USkyLightComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USphereComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USphereComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USpotLightComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USpotLightComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_USpringArmComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class USpringArmComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UStaticMeshComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UStaticMeshComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UTextRenderComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UTextRenderComponent>(FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT INT_PTR E_CreateOptionalDefaultSubobject_UVectorFieldComponent(INT_PTR Self, char* Name)
-	{
-		return (INT_PTR)((UObject*)Self)->CreateOptionalDefaultSubobject<class UVectorFieldComponent>(FName(UTF8_TO_TCHAR(Name)));
 	}
 
 }

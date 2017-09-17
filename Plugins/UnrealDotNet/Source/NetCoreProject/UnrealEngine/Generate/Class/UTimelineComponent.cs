@@ -15,8 +15,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public UTimelineComponent(UObject Parent = null, string Name = "TimelineComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_UTimelineComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_UTimelineComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern bool E_UTimelineComponent_GetIgnoreTimeDilation(IntPtr Self);
 		

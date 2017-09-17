@@ -129,6 +129,12 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_UWorld_URL_GET(INT_PTR Ptr) { return (INT_PTR)&((UWorld*)Ptr)->URL; }
 	DOTNET_EXPORT void E_PROP_UWorld_URL_SET(INT_PTR Ptr, INT_PTR Value) { ((UWorld*)Ptr)->URL = *(FURL*)Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UWorld(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UWorld>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_UWorld_AddNetworkActor(INT_PTR Self, AActor* Actor)
 	{
 		auto _p0 = Actor;

@@ -10,6 +10,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public ULineBatchComponent(UObject Parent = null, string Name = "LineBatchComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ULineBatchComponent(Parent, Name);
+		}
+
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ULineBatchComponent(IntPtr Parent, string Name);
+		
+		#endregion
 		
 		public static implicit operator IntPtr(ULineBatchComponent Self)
 		{

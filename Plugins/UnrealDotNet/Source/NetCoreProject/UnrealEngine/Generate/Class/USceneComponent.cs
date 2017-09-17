@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public USceneComponent(UObject Parent = null, string Name = "SceneComponent")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_USceneComponent(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_USceneComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern IntPtr E_PROP_USceneComponent_ComponentToWorld_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]

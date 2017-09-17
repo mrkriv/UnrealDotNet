@@ -74,6 +74,12 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_ACharacter_RepRootMotion_GET(INT_PTR Ptr) { return (INT_PTR)&((ACharacter*)Ptr)->RepRootMotion; }
 	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((ACharacter*)Ptr)->RepRootMotion = *(FRepRootMotionMontage*)Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<ACharacter>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT void E_ACharacter_BaseChange(INT_PTR Self)
 	{
 		((E_PROTECTED_WRAP_ACharacter*)Self)->BaseChange_WRAP();
@@ -171,6 +177,11 @@ extern "C"
 	DOTNET_EXPORT UCapsuleComponent* E_ACharacter_GetCapsuleComponent(INT_PTR Self)
 	{
 		return ((ACharacter*)Self)->GetCapsuleComponent();
+	}
+
+	DOTNET_EXPORT USkeletalMeshComponent* E_ACharacter_GetMesh(INT_PTR Self)
+	{
+		return ((ACharacter*)Self)->GetMesh();
 	}
 
 	DOTNET_EXPORT uint8 E_ACharacter_GetReplicatedMovementMode(INT_PTR Self)

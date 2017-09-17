@@ -136,6 +136,12 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_PROP_AActor_PrimaryActorTick_GET(INT_PTR Ptr) { return (INT_PTR)&((AActor*)Ptr)->PrimaryActorTick; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_AActor(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<AActor>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT bool E_AActor_ActorHasTag(INT_PTR Self, char* Tag)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(Tag));

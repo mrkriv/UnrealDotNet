@@ -10,8 +10,16 @@ namespace UnrealEngine
 		{
 		}
 
-		
+		public ALight(UObject Parent = null, string Name = "Light")
+			: base(IntPtr.Zero)
+		{
+			NativePointer = E_NewObject_ALight(Parent, Name);
+		}
+
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern IntPtr E_NewObject_ALight(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern float E_ALight_GetBrightness(IntPtr Self);
 		

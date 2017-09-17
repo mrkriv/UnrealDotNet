@@ -101,7 +101,9 @@ void UCoreShell::UpdateGameLib()
 		else
 		{
 			UE_LOG(DotNetShell, Log, TEXT("Hot reload done, current assembly: %s"), *GameLogic_Assemble);
-			OnAssembleLoad.Execute();
+
+			if (OnAssembleLoad.IsBound())
+				OnAssembleLoad.Execute();
 		}
 	}
 }

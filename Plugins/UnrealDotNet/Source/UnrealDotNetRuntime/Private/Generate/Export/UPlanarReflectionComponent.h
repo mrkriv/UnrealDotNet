@@ -42,6 +42,12 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_UPlanarReflectionComponent_ScreenPercentage_GET(INT_PTR Ptr) { return ((UPlanarReflectionComponent*)Ptr)->ScreenPercentage; }
 	DOTNET_EXPORT void E_PROP_UPlanarReflectionComponent_ScreenPercentage_SET(INT_PTR Ptr, int32 Value) { ((UPlanarReflectionComponent*)Ptr)->ScreenPercentage = Value; }
 	
+	
+	DOTNET_EXPORT INT_PTR E_NewObject_UPlanarReflectionComponent(UObject* Parent, char* Name)
+	{
+		return (INT_PTR)NewObject<UPlanarReflectionComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
 	DOTNET_EXPORT int32 E_UPlanarReflectionComponent_GetPlanarReflectionId(INT_PTR Self)
 	{
 		return ((UPlanarReflectionComponent*)Self)->GetPlanarReflectionId();
