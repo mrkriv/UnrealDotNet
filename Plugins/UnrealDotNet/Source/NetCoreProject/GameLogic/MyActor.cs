@@ -10,8 +10,7 @@ namespace GameLogic
 
         [EditAnywhere, DefaultValue(10.0f)]
         public float Speed { get; set; }
-
-        [EditAnywhere]
+        
         public float Time { get; set; }
 
         public MyActor(IntPtr Adress) : base(Adress)

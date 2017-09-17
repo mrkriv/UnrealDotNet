@@ -3,8 +3,6 @@
 #include "JsonUtilities.h"
 #include "DotnetTypeName.generated.h"
 
-#pragma optimize("", off)
-
 USTRUCT(BlueprintType)
 struct FDotnetPropertyValue
 {
@@ -61,5 +59,3 @@ public:
 		PropertyValue.RemoveAll([Properys](auto prop) { return !Properys.Contains(prop.Name); });
 	}
 };
-
-#pragma optimize("", on)

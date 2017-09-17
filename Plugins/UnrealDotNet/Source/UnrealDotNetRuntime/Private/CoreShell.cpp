@@ -43,6 +43,7 @@ static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::Gam
 FString UCoreShell::AssemblyGuid;
 FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Culture=neutral";
 FString UCoreShell::GameLogic_Assemble = "GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral";
+FSimpleDelegate UCoreShell::OnAssembleLoad;
 
 ICLRRuntimeHost4* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;
@@ -100,6 +101,7 @@ void UCoreShell::UpdateGameLib()
 		else
 		{
 			UE_LOG(DotNetShell, Log, TEXT("Hot reload done, current assembly: %s"), *GameLogic_Assemble);
+			OnAssembleLoad.Execute();
 		}
 	}
 }

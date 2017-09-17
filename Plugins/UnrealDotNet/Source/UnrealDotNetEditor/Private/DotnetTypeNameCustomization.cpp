@@ -34,8 +34,6 @@ FDotnetTypeNameCustomization::FDotnetTypeNameCustomization()
 {
 }
 
-#pragma optimize("", off)
-
 void FDotnetTypeNameCustomization::CustomizeHeader(TSharedRef<IPropertyHandle> StructPropertyHandle, FDetailWidgetRow& HeaderRow, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
 {
 	static const FName PropertyName_FullName = GET_MEMBER_NAME_CHECKED(FDotnetTypeName, FullName);
@@ -110,9 +108,14 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 				}
 			}
 		}
-
-		DotnetTypeName->RemoveOtherProperys(propertys);
 	}
+
+	DotnetTypeName->RemoveOtherProperys(propertys);
+
+	UCoreShell::OnAssembleLoad.BindLambda([&StructBuilder]()
+	{
+		StructBuilder.GetParentCategory().GetParentLayout().ForceRefreshDetails(); 
+	});
 }
 
 TSharedPtr<FJsonObject> FDotnetTypeNameCustomization::GetMetadata()
@@ -148,5 +151,3 @@ void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& 
 		}
 	}
 }
-
-#pragma optimize("", on)

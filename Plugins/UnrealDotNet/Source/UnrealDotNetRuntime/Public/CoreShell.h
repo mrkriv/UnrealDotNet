@@ -28,6 +28,8 @@ public:
 	static FString UnrealEngine_Assemble;
 	static FString GameLogic_Assemble;
 
+	static FSimpleDelegate OnAssembleLoad;
+
 	UFUNCTION(BlueprintCallable, Category = DotNet)
 	static FString RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument);
 
