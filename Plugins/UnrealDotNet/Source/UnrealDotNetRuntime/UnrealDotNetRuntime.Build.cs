@@ -27,7 +27,6 @@ public class UnrealDotNetRuntime : ModuleRules
             {
                 "Core",
                 "CoreUObject",
-                "Json",
                 "SlateCore",
                 "Slate",
                 "InputCore",
@@ -45,6 +44,8 @@ public class UnrealDotNetRuntime : ModuleRules
                 "DatabaseSupport",
                 "PacketHandler",
                 "HardwareSurvey",
+                "Json",
+                "JsonUtilities",
             }
         );
 

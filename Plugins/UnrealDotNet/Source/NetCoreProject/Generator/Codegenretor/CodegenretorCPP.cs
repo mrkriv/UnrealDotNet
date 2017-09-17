@@ -112,7 +112,7 @@ namespace Generator
                 cw.WriteLine();
 
                 cw.WriteLine("public:");
-                cw.WriteLine("UPROPERTY(EditDefaultsOnly, Category = \"C#\")");
+                cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
                 cw.WriteLine("FDotnetTypeName ManageClassName;");
                 cw.WriteLine();
 
@@ -191,7 +191,7 @@ namespace Generator
                 {
                     cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
                     cw.OpenBlock();
-                    cw.WriteLine("bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.FullName));");
+                    cw.WriteLine("bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));");
                     cw.CloseBlock();
                     cw.WriteLine();
                     cw.WriteLine($"if(bIsManageAttach) UCoreShell::InvokeInObject(this, \"{method.Name}\"{callInObject});");

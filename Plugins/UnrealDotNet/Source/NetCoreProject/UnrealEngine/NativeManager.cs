@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
+using System.ComponentModel;
 
 namespace UnrealEngine
 {
@@ -57,8 +59,11 @@ namespace UnrealEngine
             return result;
         }
 
-        public static bool AddWrapper(IntPtr Adress, string ClassName)
+        public static bool AddWrapper(IntPtr Adress, string DotnetTypeName)
         {
+            var TypeName = JsonConvert.DeserializeObject<FDotnetTypeName>(DotnetTypeName);
+            var ClassName = TypeName.FullName;
+
             if (Wrappers.ContainsKey(Adress))
             {
                 UObjectBaseUtility.ULog_Warning($"Object is already registered. Type:{ClassName}, Adress:{Adress}");
@@ -82,6 +87,26 @@ namespace UnrealEngine
             try
             {
                 var obj = constructor.Invoke(new object[] { Adress });
+                foreach (var prop in TypeName.PropertyValue)
+                {
+                    var pi = obj.GetType().GetProperty(prop.Name);
+
+                    if (pi == null)
+                    {
+                        UObjectBaseUtility.ULog_Error($"Type {ClassName} have not {prop.Name}");
+                        continue;
+                    }
+
+                    try
+                    {
+                        pi.SetValue(obj, Convert.ChangeType(prop.Value, pi.PropertyType), null);
+                    }
+                    catch
+                    {
+                        UObjectBaseUtility.ULog_Error($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {ClassName}.{prop.Name})");
+                    }
+                }
+
                 Wrappers.Add(Adress, obj);
             }
             catch (Exception e)
@@ -229,7 +254,14 @@ namespace UnrealEngine
                     Types = classes.Select(t => new
                     {
                         Name = t.FullName,
-                        Base = t.BaseType.Name
+                        Base = t.BaseType.Name,
+                        Propertys = t.GetProperties().Where(PropertyConvert.FilterPropertyForEditor).Select(p => new
+                        {
+                            Name = p.Name,
+                            Type = p.PropertyType.FullName,
+                            CanEdit = PropertyConvert.CanEditPropertyInEditor(p),
+                            Default = p.GetDefaultValue<object>()?.ToString() ?? ""
+                        })
                     })
                 });
         }

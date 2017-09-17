@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using UnrealEngine;
 
 namespace GameLogic
@@ -6,7 +7,12 @@ namespace GameLogic
     public class MyActor : ManageActor
     {
         // private UBoxComponent Box;
-        private float Time;
+
+        [EditAnywhere, DefaultValue(10.0f)]
+        public float Speed { get; set; }
+
+        [EditAnywhere]
+        public float Time { get; set; }
 
         public MyActor(IntPtr Adress) : base(Adress)
         {
@@ -14,20 +20,23 @@ namespace GameLogic
 
         protected override void BeginPlay()
         {
-            try
-            {
-                PrimaryActorTick.bCanEverTick = 1;
+            //try
+            //{
+            PrimaryActorTick.bCanEverTick = 1;
 
-                // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
+          //  ScreenDebugMessage(GetRootComponent().GetWorldTransform().ToString());
+            // Box = CreateOptionalDefaultSubobject_UBoxComponent("Test");
 
-                CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
+            CallFunction("TestBlueprintMethod", "Abadracedapa", 2.5f);
 
-                ScreenDebugMessage(GetNetMode().ToString());
-            }
-            catch (Exception e)
-            {
-                ULog_Error(e.ToString());
-            }
+            ScreenDebugMessage(Speed.ToString());
+
+            ScreenDebugMessage(GetNetMode().ToString());
+            //}
+            //catch (Exception e)
+            //{
+            //    ULog_Error(e.ToString());
+            //}
         }
 
         public override void Tick(float DeltaTime)
@@ -36,9 +45,9 @@ namespace GameLogic
 
             var rot = new FRotator
             {
-                Yaw = Time * 10,
-                Pitch = 10,
-                Roll = 15
+                Yaw = Time * Speed,
+                Pitch = 0,
+                Roll = 0
             };
 
             var scale = new FVector

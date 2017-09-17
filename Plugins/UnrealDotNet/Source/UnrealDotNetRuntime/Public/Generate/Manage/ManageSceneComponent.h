@@ -12,7 +12,7 @@ class UNREALDOTNETRUNTIME_API UManageSceneComponent : public USceneComponent
 	bool bIsManageAttach = false;
 	
 	public:
-	UPROPERTY(EditDefaultsOnly, Category = "C#")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
 	

@@ -6,16 +6,6 @@
 DECLARE_LOG_CATEGORY_EXTERN(DotNetShell, Log, All);
 DECLARE_LOG_CATEGORY_EXTERN(DotNetRuntime, Log, All);
 
-USTRUCT(BlueprintType)
-struct FDotnetTypeName
-{
-	GENERATED_BODY()
-
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString FullName;
-};
-
 UCLASS()
 class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 {

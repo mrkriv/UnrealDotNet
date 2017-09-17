@@ -12,7 +12,7 @@ class UNREALDOTNETRUNTIME_API UManageSpringArmComponent : public USpringArmCompo
 	bool bIsManageAttach = false;
 	
 	public:
-	UPROPERTY(EditDefaultsOnly, Category = "C#")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
 protected:

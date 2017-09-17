@@ -12,7 +12,7 @@ class UNREALDOTNETRUNTIME_API UManagePawnNoiseEmitterComponent : public UPawnNoi
 	bool bIsManageAttach = false;
 	
 	public:
-	UPROPERTY(EditDefaultsOnly, Category = "C#")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
 	
