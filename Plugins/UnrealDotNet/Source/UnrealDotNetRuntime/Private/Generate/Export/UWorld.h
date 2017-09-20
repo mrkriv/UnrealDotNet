@@ -299,15 +299,6 @@ extern "C"
 		return ((UWorld*)Self)->EditorDestroyActor(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_EncroachingBlockingGeometry(INT_PTR Self, AActor* TestActor, INT_PTR TestLocation, INT_PTR TestRotation, INT_PTR ProposedAdjustment)
-	{
-		auto _p0 = TestActor;
-		auto _p1 = *(FVector*)TestLocation;
-		auto _p2 = *(FRotator*)TestRotation;
-		auto _p3 = *(FVector*)ProposedAdjustment;
-		return ((UWorld*)Self)->EncroachingBlockingGeometry(_p0, _p1, _p2, &_p3);
-	}
-
 	DOTNET_EXPORT void E_UWorld_EnsureCollisionTreeIsBuilt(INT_PTR Self)
 	{
 		((UWorld*)Self)->EnsureCollisionTreeIsBuilt();
@@ -542,12 +533,6 @@ extern "C"
 		auto _p0 = Component;
 		auto _p1 = bForceGameThread;
 		((UWorld*)Self)->MarkActorComponentForNeededEndOfFrameUpdate(_p0, _p1);
-	}
-
-	DOTNET_EXPORT void E_UWorld_ProcessLevelStreamingVolumes(INT_PTR Self, INT_PTR OverrideViewLocation)
-	{
-		auto _p0 = *(FVector*)OverrideViewLocation;
-		((UWorld*)Self)->ProcessLevelStreamingVolumes(&_p0);
 	}
 
 	DOTNET_EXPORT void E_UWorld_PropagateLightingScenarioChange(INT_PTR Self, bool bLevelWasMadeVisible)

@@ -117,6 +117,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Changes the collision channel that this object uses when it moves </para>
+		/// <param name="Channel">The new channel for this component to use </param>
+		/// </summary>
+		public override void SetCollisionObjectType(ECollisionChannel Channel) { }
+		
+		
+		/// <summary>
 		/// <para>Set Collision Profile Name </para>
 		/// <para>This function is called by constructors when they set ProfileName </para>
 		/// <para>This will change current CollisionProfileName to be this, and overwrite Collision Setting </para>

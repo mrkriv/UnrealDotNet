@@ -81,6 +81,12 @@ void UManagePrimitiveComponent::SetAngularDamping(float InDamping)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAngularDamping", InDamping);
 }
 
+void UManagePrimitiveComponent::SetCollisionObjectType(ECollisionChannel Channel)
+{
+	Super::SetCollisionObjectType(Channel);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetCollisionObjectType", Channel);
+}
+
 void UManagePrimitiveComponent::SetCollisionProfileName(FName InCollisionProfileName)
 {
 	Super::SetCollisionProfileName(InCollisionProfileName);

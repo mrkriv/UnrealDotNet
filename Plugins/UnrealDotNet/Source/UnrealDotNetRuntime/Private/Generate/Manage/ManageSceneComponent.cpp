@@ -3,6 +3,12 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+void UManageSceneComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
+{
+	Super::DetachFromComponent(DetachmentRules);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+}
+
 void UManageSceneComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
 	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);

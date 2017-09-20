@@ -12,6 +12,14 @@ namespace UnrealEngine
 		HasBegunPlay,
 	}
 
+	public enum EActorMetricsType : byte
+	{
+		METRICS_VERTS,
+		METRICS_TRIS,
+		METRICS_SECTIONS,
+		METRICS_MAX,
+	}
+
 	public enum EAllowKinematicDeferral : byte
 	{
 		AllowDeferral,
@@ -27,11 +35,37 @@ namespace UnrealEngine
 		AAM_MAX,
 	}
 
+	public enum EAspectRatioAxisConstraint : byte
+	{
+		AspectRatio_MaintainYFOV,
+		AspectRatio_MaintainXFOV,
+		AspectRatio_MajorAxisFOV,
+		AspectRatio_MAX,
+	}
+
+	public enum EAttachmentRule : byte
+	{
+		KeepRelative,
+		KeepWorld,
+		SnapToTarget,
+	}
+
 	public enum EAutoExposureMethod : byte
 	{
 		AEM_Histogram,
 		AEM_Basic,
 		AEM_MAX,
+	}
+
+	public enum EBlendMode : byte
+	{
+		BLEND_Opaque,
+		BLEND_Masked,
+		BLEND_Translucent,
+		BLEND_Additive,
+		BLEND_Modulate,
+		BLEND_AlphaComposite,
+		BLEND_MAX,
 	}
 
 	public enum EBloomMethod : byte
@@ -57,6 +91,42 @@ namespace UnrealEngine
 		ECB_MAX,
 	}
 
+	public enum ECollisionChannel : byte
+	{
+		ECC_WorldStatic,
+		ECC_WorldDynamic,
+		ECC_Pawn,
+		ECC_Visibility,
+		ECC_Camera,
+		ECC_PhysicsBody,
+		ECC_Vehicle,
+		ECC_Destructible,
+		ECC_EngineTraceChannel1,
+		ECC_EngineTraceChannel2,
+		ECC_EngineTraceChannel3,
+		ECC_EngineTraceChannel4,
+		ECC_EngineTraceChannel5,
+		ECC_EngineTraceChannel6,
+		ECC_GameTraceChannel1,
+		ECC_GameTraceChannel2,
+		ECC_GameTraceChannel3,
+		ECC_GameTraceChannel4,
+		ECC_GameTraceChannel5,
+		ECC_GameTraceChannel6,
+		ECC_GameTraceChannel7,
+		ECC_GameTraceChannel8,
+		ECC_GameTraceChannel9,
+		ECC_GameTraceChannel10,
+		ECC_GameTraceChannel11,
+		ECC_GameTraceChannel12,
+		ECC_GameTraceChannel13,
+		ECC_GameTraceChannel14,
+		ECC_GameTraceChannel15,
+		ECC_GameTraceChannel16,
+		ECC_GameTraceChannel17,
+		ECC_GameTraceChannel18,
+	}
+
 	public enum EComponentCreationMethod : byte
 	{
 		Native,
@@ -78,6 +148,12 @@ namespace UnrealEngine
 		DOFM_Gaussian,
 		DOFM_CircleDOF,
 		DOFM_MAX,
+	}
+
+	public enum EDetachmentRule : byte
+	{
+		KeepRelative,
+		KeepWorld,
 	}
 
 	public enum EDetailMode : byte
@@ -126,6 +202,13 @@ namespace UnrealEngine
 		EHTA_Right,
 	}
 
+	public enum EIndirectLightingCacheQuality : byte
+	{
+		ILCQ_Off,
+		ILCQ_Point,
+		ILCQ_Volume,
+	}
+
 	public enum EInputEvent : byte
 	{
 		IE_Pressed = 0,
@@ -150,6 +233,51 @@ namespace UnrealEngine
 		LEVELTICK_ViewportsOnly = 1,
 		LEVELTICK_All = 2,
 		LEVELTICK_PauseTick = 3,
+	}
+
+	public enum ELightingBuildQuality : byte
+	{
+		Quality_Preview,
+		Quality_Medium,
+		Quality_High,
+		Quality_Production,
+		Quality_MAX,
+	}
+
+	public enum EMaterialSamplerType : byte
+	{
+		SAMPLERTYPE_Color,
+		SAMPLERTYPE_Grayscale,
+		SAMPLERTYPE_Alpha,
+		SAMPLERTYPE_Normal,
+		SAMPLERTYPE_Masks,
+		SAMPLERTYPE_DistanceFieldFont,
+		SAMPLERTYPE_LinearColor,
+		SAMPLERTYPE_LinearGrayscale,
+		SAMPLERTYPE_MAX,
+	}
+
+	public enum EMaterialShadingModel : byte
+	{
+		MSM_Unlit,
+		MSM_DefaultLit,
+		MSM_Subsurface,
+		MSM_PreintegratedSkin,
+		MSM_ClearCoat,
+		MSM_SubsurfaceProfile,
+		MSM_TwoSidedFoliage,
+		MSM_Hair,
+		MSM_Cloth,
+		MSM_Eye,
+		MSM_MAX,
+	}
+
+	public enum EMaterialTessellationMode : byte
+	{
+		MTM_NoTessellation,
+		MTM_FlatTessellation,
+		MTM_PNTriangles,
+		MTM_MAX,
 	}
 
 	public enum EMouseCaptureMode : byte
@@ -177,6 +305,18 @@ namespace UnrealEngine
 		MOVECOMP_DisableBlockingOverlapDispatch = 0x0008,
 	}
 
+	public enum EMovementMode : byte
+	{
+		MOVE_None,
+		MOVE_Walking,
+		MOVE_NavWalking,
+		MOVE_Falling,
+		MOVE_Swimming,
+		MOVE_Flying,
+		MOVE_Custom,
+		MOVE_MAX,
+	}
+
 	public enum ENetMode : byte
 	{
 		NM_Standalone,
@@ -184,6 +324,21 @@ namespace UnrealEngine
 		NM_ListenServer,
 		NM_Client,
 		NM_MAX,
+	}
+
+	public enum ENetworkSmoothingMode : byte
+	{
+		Disabled,
+		Linear,
+		Exponential,
+		Replay,
+	}
+
+	public enum EOcclusionCombineMode : byte
+	{
+		OCM_Minimum,
+		OCM_Multiply,
+		OCM_MAX,
 	}
 
 	public enum EPhysBodyOp : byte
@@ -201,6 +356,12 @@ namespace UnrealEngine
 	{
 		CapturedScene,
 		SpecifiedCubemap,
+	}
+
+	public enum ERefractionMode : byte
+	{
+		RM_IndexOfRefraction,
+		RM_PixelNormalOffset,
 	}
 
 	public enum ERelativeTransformSpace : byte
@@ -225,11 +386,44 @@ namespace UnrealEngine
 		ERSM_128,
 	}
 
+	public enum ESamplerSourceMode : byte
+	{
+		SSM_FromTextureAsset,
+		SSM_Wrap_WorldGroupSettings,
+		SSM_Clamp_WorldGroupSettings,
+	}
+
+	public enum ESceneCaptureCompositeMode : byte
+	{
+		SCCM_Overwrite,
+		SCCM_Additive,
+		SCCM_Composite,
+	}
+
 	public enum ESceneCapturePrimitiveRenderMode : byte
 	{
 		PRM_LegacySceneCapture,
 		PRM_RenderScenePrimitives,
 		PRM_UseShowOnlyList,
+	}
+
+	public enum ESceneCaptureSource : byte
+	{
+		SCS_SceneColorHDR,
+		SCS_SceneColorHDRNoAlpha,
+		SCS_FinalColorLDR,
+		SCS_SceneColorSceneDepth,
+		SCS_SceneDepth,
+		SCS_DeviceDepth,
+		SCS_Normal,
+		SCS_BaseColor,
+	}
+
+	public enum ESceneDepthPriorityGroup : byte
+	{
+		SDPG_World,
+		SDPG_Foreground,
+		SDPG_MAX,
 	}
 
 	public enum EShapeBodySetupHelper : byte
@@ -317,6 +511,13 @@ namespace UnrealEngine
 		TL_LastKeyFrame,
 	}
 
+	public enum ETrailWidthMode : byte
+	{
+		ETrailWidthMode_FromCentre,
+		ETrailWidthMode_FromFirst,
+		ETrailWidthMode_FromSecond,
+	}
+
 	public enum ETransitionType : byte
 	{
 		TT_None,
@@ -329,12 +530,42 @@ namespace UnrealEngine
 		TT_MAX,
 	}
 
+	public enum ETranslucencyLightingMode : byte
+	{
+		TLM_VolumetricNonDirectional,
+		TLM_VolumetricDirectional,
+		TLM_VolumetricPerVertexNonDirectional,
+		TLM_VolumetricPerVertexDirectional,
+		TLM_Surface,
+		TLM_SurfacePerPixelLighting,
+		TLM_MAX,
+	}
+
 	public enum ETravelType : byte
 	{
 		TRAVEL_Absolute,
 		TRAVEL_Partial,
 		TRAVEL_Relative,
 		TRAVEL_MAX,
+	}
+
+	public enum ETriangleSortAxis : byte
+	{
+		TSA_X_Axis,
+		TSA_Y_Axis,
+		TSA_Z_Axis,
+		TSA_MAX,
+	}
+
+	public enum ETriangleSortOption : byte
+	{
+		TRISORT_None,
+		TRISORT_CenterRadialDistance,
+		TRISORT_Random,
+		TRISORT_MergeContiguous,
+		TRISORT_Custom,
+		TRISORT_CustomLeftRight,
+		TRISORT_MAX,
 	}
 
 	public enum EUpdateTransformFlags : byte

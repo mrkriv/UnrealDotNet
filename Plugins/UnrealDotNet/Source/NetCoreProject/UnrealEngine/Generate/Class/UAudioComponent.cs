@@ -17,16 +17,16 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UAudioComponent(IntPtr Parent, string Name);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UAudioComponent_GetAudioComponentUserID(IntPtr Self, out int ResultStringLen);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_PlayInternal(IntPtr Self, float StartTime, float FadeInDuration, float FadeVolumeLevel);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_SetSoundParameter(IntPtr Self, IntPtr Param);
 		
 		#endregion
@@ -61,4 +61,6 @@ namespace UnrealEngine
 			if (Adress == IntPtr.Zero)
 				return null;
 			return NativeManager.GetWrapper(Adress) as UAudioComponent ?? new UAudioComponent(Adress);
-		}}}
+		}
+}
+}

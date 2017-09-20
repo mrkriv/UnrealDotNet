@@ -17,22 +17,22 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UMeshComponent(IntPtr Parent, string Name);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_CacheMaterialParameterNameIndices(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UMeshComponent_GetScalarParameterDefaultValue(IntPtr Self, string ParameterName);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_SetScalarParameterValueOnMaterials(IntPtr Self, string ParameterName, float ParameterValue);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_SetVectorParameterValueOnMaterials(IntPtr Self, string ParameterName, IntPtr ParameterValue);
 		
 		#endregion
@@ -87,4 +87,6 @@ namespace UnrealEngine
 			if (Adress == IntPtr.Zero)
 				return null;
 			return NativeManager.GetWrapper(Adress) as UMeshComponent ?? new UMeshComponent(Adress);
-		}}}
+		}
+}
+}

@@ -17,19 +17,19 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UDecalComponent(IntPtr Parent, string Name);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UDecalComponent_GetTransformIncludingDecalSize(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDecalComponent_LifeSpanCallback(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDecalComponent_PushSelectionToProxy(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDecalComponent_SetLifeSpan(IntPtr Self, float LifeSpan);
 		
 		#endregion
@@ -67,4 +67,6 @@ namespace UnrealEngine
 			if (Adress == IntPtr.Zero)
 				return null;
 			return NativeManager.GetWrapper(Adress) as UDecalComponent ?? new UDecalComponent(Adress);
-		}}}
+		}
+}
+}

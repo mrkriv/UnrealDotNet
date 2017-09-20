@@ -5,28 +5,29 @@ namespace UnrealEngine
 {
 	public  partial class FLevelStreamingGCHelper : NativeStructWrapper
 	{
-		public FLevelStreamingGCHelper() : base(E_CreateStruct_FLevelStreamingGCHelper(), false)
-		{
-		}
-
 		internal FLevelStreamingGCHelper(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FLevelStreamingGCHelper() :
+			base(E_CreateStruct_FLevelStreamingGCHelper(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingGCHelper();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(IntPtr Self);
 		
 		#endregion
@@ -71,4 +72,6 @@ namespace UnrealEngine
 		public static implicit operator FLevelStreamingGCHelper(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLevelStreamingGCHelper(Adress, false);
-		}}}
+		}
+}
+}

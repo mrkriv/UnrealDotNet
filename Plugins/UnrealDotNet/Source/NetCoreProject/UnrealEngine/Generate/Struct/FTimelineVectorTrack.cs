@@ -5,26 +5,27 @@ namespace UnrealEngine
 {
 	public  partial class FTimelineVectorTrack : NativeStructWrapper
 	{
-		public FTimelineVectorTrack() : base(E_CreateStruct_FTimelineVectorTrack(), false)
-		{
-		}
-
 		internal FTimelineVectorTrack(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FTimelineVectorTrack() :
+			base(E_CreateStruct_FTimelineVectorTrack(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FTimelineVectorTrack();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern string E_PROP_FTimelineVectorTrack_TrackName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FTimelineVectorTrack_TrackName_SET(IntPtr Ptr, string Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern string E_PROP_FTimelineVectorTrack_VectorPropertyName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FTimelineVectorTrack_VectorPropertyName_SET(IntPtr Ptr, string Value);
 		
 		#endregion
@@ -52,4 +53,6 @@ namespace UnrealEngine
 		public static implicit operator FTimelineVectorTrack(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTimelineVectorTrack(Adress, false);
-		}}}
+		}
+}
+}

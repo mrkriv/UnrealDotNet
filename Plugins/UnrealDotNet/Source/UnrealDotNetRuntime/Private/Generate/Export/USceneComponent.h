@@ -92,6 +92,14 @@ extern "C"
 		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->AreDynamicDataChangesAllowed_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT bool E_USceneComponent_AttachToComponent(INT_PTR Self, USceneComponent* InParent, INT_PTR AttachmentRules, char* InSocketName)
+	{
+		auto _p0 = InParent;
+		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
+		auto _p2 = FName(UTF8_TO_TCHAR(InSocketName));
+		return ((USceneComponent*)Self)->AttachToComponent(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT void E_USceneComponent_CalcBoundingCylinder(INT_PTR Self, float CylinderRadius, float CylinderHalfHeight)
 	{
 		auto _p0 = CylinderRadius;
@@ -129,6 +137,12 @@ extern "C"
 	DOTNET_EXPORT void E_USceneComponent_ConditionalUpdateComponentToWorld(INT_PTR Self)
 	{
 		((USceneComponent*)Self)->ConditionalUpdateComponentToWorld();
+	}
+
+	DOTNET_EXPORT void E_USceneComponent_DetachFromComponent(INT_PTR Self, INT_PTR DetachmentRules)
+	{
+		auto _p0 = *(FDetachmentTransformRules*)DetachmentRules;
+		((USceneComponent*)Self)->DetachFromComponent(_p0);
 	}
 
 	DOTNET_EXPORT void E_USceneComponent_DetachFromParent(INT_PTR Self, bool bMaintainWorldPosition, bool bCallModify)
@@ -242,6 +256,26 @@ extern "C"
 	DOTNET_EXPORT bool E_USceneComponent_IsQueryCollisionEnabled(INT_PTR Self)
 	{
 		return ((USceneComponent*)Self)->IsQueryCollisionEnabled();
+	}
+
+	DOTNET_EXPORT bool E_USceneComponent_K2_AttachToComponent(INT_PTR Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
+	{
+		auto _p0 = Parent;
+		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = LocationRule;
+		auto _p3 = RotationRule;
+		auto _p4 = ScaleRule;
+		auto _p5 = bWeldSimulatedBodies;
+		return ((USceneComponent*)Self)->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
+	DOTNET_EXPORT void E_USceneComponent_K2_DetachFromComponent(INT_PTR Self, EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule, bool bCallModify)
+	{
+		auto _p0 = LocationRule;
+		auto _p1 = RotationRule;
+		auto _p2 = ScaleRule;
+		auto _p3 = bCallModify;
+		((USceneComponent*)Self)->K2_DetachFromComponent(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT INT_PTR E_USceneComponent_K2_GetComponentLocation(INT_PTR Self)

@@ -5,16 +5,17 @@ namespace UnrealEngine
 {
 	public  partial class FNamedNetDriver : NativeStructWrapper
 	{
-		public FNamedNetDriver() : base(E_CreateStruct_FNamedNetDriver(), false)
-		{
-		}
-
 		internal FNamedNetDriver(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FNamedNetDriver() :
+			base(E_CreateStruct_FNamedNetDriver(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FNamedNetDriver();
 		
 		#endregion
@@ -27,4 +28,6 @@ namespace UnrealEngine
 		public static implicit operator FNamedNetDriver(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FNamedNetDriver(Adress, false);
-		}}}
+		}
+}
+}

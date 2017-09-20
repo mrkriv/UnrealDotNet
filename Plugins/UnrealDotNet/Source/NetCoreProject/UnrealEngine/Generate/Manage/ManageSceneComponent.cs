@@ -13,6 +13,13 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
+		/// <param name="DetachmentRules">How to handle transforms & modification when detaching. </param>
+		/// </summary>
+		public override void DetachFromComponent(FDetachmentTransformRules DetachmentRules) { }
+		
+		
+		/// <summary>
+		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
 		/// <param name="bMaintainWorldPosition">If true, update the relative location of the component to keep its world position the same </param>
 		/// <param name="bCallModify">If true, call Modify() on the component and the current attach parent component </param>
 		/// </summary>

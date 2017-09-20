@@ -161,14 +161,7 @@ namespace Generator
             {
                 if (Class.IsStructure)
                 {
-                    cw.WriteLine($"public {Class.Name}() : base({ExportPrefix}CreateStruct_{Class.Name}(), false)");
-                    cw.OpenBlock();
-                    cw.CloseBlock();
-                    cw.WriteLine();
-                    cw.WriteLine($"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
-                    cw.OpenBlock();
-                    cw.CloseBlock();
-                    cw.WriteLine();
+                    GenerateStructConstructors(cw, Class);
                 }
                 else
                 {
@@ -189,14 +182,11 @@ namespace Generator
                     }
                 }
             }
-
             private static void GenerateClassDLLImport(CoreWriter cw, Class Class)
             {
                 if (Class.IsStructure)
                 {
-                    WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern IntPtr {ExportPrefix}CreateStruct_{Class.Name}();");
-                    cw.WriteLine();
+                    GenerateStructConstructorsDLLImport(cw, Class);
                 }
                 else
                 {
@@ -222,6 +212,45 @@ namespace Generator
                             $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
                     }
 
+                    cw.WriteLine();
+                }
+            }
+
+            private static void GenerateStructConstructors(CoreWriter cw, Class Class)
+            {
+                cw.WriteLine(
+                    $"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
+                cw.OpenBlock();
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                foreach (var ctr in Class.Constructors)
+                {
+                    var ctrFullName = GetExportConstructorFullName(ctr);
+                    var call = string.Join(", ", ctr.InputTypes.Select(VarNameForCall).ToList());
+                    var param = string.Join(", ", ctr.InputTypes.Select(m => ExportVariable(m, false)));
+
+                    GenerateSummaty(cw, ctr);
+
+                    cw.WriteLine($"public {Class.Name}({param}) :");
+                    cw.WriteLine($"\tbase({ctrFullName}({call}), false)");
+
+                    cw.OpenBlock();
+                    cw.CloseBlock();
+                    cw.WriteLine();
+                }
+            }
+
+            private static void GenerateStructConstructorsDLLImport(CoreWriter cw, Class Class)
+            {
+                foreach (var ctr in Class.Constructors)
+                {
+                    var param = string.Join(", ", ctr.InputTypes.Select(m => ExportVariable(m, false, true)));
+
+                    var ctrFullName = GetExportConstructorFullName(ctr);
+
+                    WriteDLLImport(cw);
+                    cw.WriteLine($"private static extern IntPtr {ctrFullName}({param});");
                     cw.WriteLine();
                 }
             }

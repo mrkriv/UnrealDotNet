@@ -17,7 +17,7 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USceneCaptureComponent2D(IntPtr Parent, string Name);
 		
 		#endregion
@@ -32,4 +32,6 @@ namespace UnrealEngine
 			if (Adress == IntPtr.Zero)
 				return null;
 			return NativeManager.GetWrapper(Adress) as USceneCaptureComponent2D ?? new USceneCaptureComponent2D(Adress);
-		}}}
+		}
+}
+}

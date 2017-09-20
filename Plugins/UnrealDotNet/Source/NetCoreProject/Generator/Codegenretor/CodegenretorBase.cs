@@ -51,6 +51,16 @@ namespace Generator
             return ExportOperatorPrefix + method.OwnerClass.Name + "_" + GetOperatorName(method);
         }
 
+        private static string GetExportConstructorFullName(Method ctr)
+        {
+            var signature = string.Join("_", ctr.InputTypes.Select(m => m.Type));
+            if (signature.Any())
+                signature = "_" + signature;
+
+            return $"{ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
+        }
+
+
         private static string GetOperatorName(Method method)
         {
             return method.Operator

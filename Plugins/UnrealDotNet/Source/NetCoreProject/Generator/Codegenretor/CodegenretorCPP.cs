@@ -346,7 +346,12 @@ namespace Generator
                     if (!varClass.Class.IsStructure)
                         return varClass.Name;
 
-                    return $"*({varClass.Class.Name}*){varClass.Name}";
+                    var prefix = "";
+
+                    if (!variable.IsPointer)
+                        prefix += "*";
+
+                    return $"{prefix}({varClass.Class.Name}*){varClass.Name}";
                 }
 
                 var result = "";
@@ -425,13 +430,26 @@ namespace Generator
 
             private static void GenerateStructUtilites(CoreWriter cw, Class Class)
             {
-                cw.Write($"{CPP_API} INT_PTR E_CreateStruct_{Class.Name}() {{ ");
-                cw.WriteLine($"return (INT_PTR) new {Class.Name}(); }}");
-                cw.WriteLine();
+                GenerateStructConstructors(cw, Class);
 
                 foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
                 {
                     GenerateProperty(cw, Class, prop);
+                }
+            }
+            
+            private static void GenerateStructConstructors(CoreWriter cw, Class Class)
+            {
+                foreach (var ctr in Class.Constructors)
+                {
+                    var param = string.Join(", ", ctr.InputTypes.Select(ExportVariableCPP));
+                    var call = string.Join(", ", ctr.InputTypes.Select(VarNameForCall));
+
+                    var ctrFullName = GetExportConstructorFullName(ctr);
+
+                    cw.Write($"{CPP_API} INT_PTR {ctrFullName}({param}) {{ ");
+                    cw.WriteLine($"return (INT_PTR) new {Class.Name}({call}); }}");
+                    cw.WriteLine();
                 }
             }
 

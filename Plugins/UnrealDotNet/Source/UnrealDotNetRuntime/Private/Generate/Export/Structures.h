@@ -5,6 +5,7 @@
 #include "Engine/EngineBaseTypes.h"
 #include "Engine/World.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Engine/EngineTypes.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Character.h"
 #include "Components/LineBatchComponent.h"
@@ -118,7 +119,40 @@ extern "C"
 	}
 
 	
+	/*	FAttachmentTransformRules	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_bool(EAttachmentRule InRule, bool bInWeldSimulatedBodies) { return (INT_PTR) new FAttachmentTransformRules(InRule, bInWeldSimulatedBodies); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_EAttachmentRule_EAttachmentRule_bool(EAttachmentRule InLocationRule, EAttachmentRule InRotationRule, EAttachmentRule InScaleRule, bool bInWeldSimulatedBodies) { return (INT_PTR) new FAttachmentTransformRules(InLocationRule, InRotationRule, InScaleRule, bInWeldSimulatedBodies); }
+	
+	DOTNET_EXPORT bool E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_GET(INT_PTR Ptr) { return ((FAttachmentTransformRules*)Ptr)->bWeldSimulatedBodies; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_SET(INT_PTR Ptr, bool Value) { ((FAttachmentTransformRules*)Ptr)->bWeldSimulatedBodies = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET(INT_PTR Ptr) { return (INT_PTR)&((FAttachmentTransformRules*)Ptr)->KeepRelativeTransform; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_KeepRelativeTransform_SET(INT_PTR Ptr, INT_PTR Value) { ((FAttachmentTransformRules*)Ptr)->KeepRelativeTransform = *(FAttachmentTransformRules*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET(INT_PTR Ptr) { return (INT_PTR)&((FAttachmentTransformRules*)Ptr)->KeepWorldTransform; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_KeepWorldTransform_SET(INT_PTR Ptr, INT_PTR Value) { ((FAttachmentTransformRules*)Ptr)->KeepWorldTransform = *(FAttachmentTransformRules*)Value; }
+	
+	DOTNET_EXPORT EAttachmentRule E_PROP_FAttachmentTransformRules_LocationRule_GET(INT_PTR Ptr) { return ((FAttachmentTransformRules*)Ptr)->LocationRule; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_LocationRule_SET(INT_PTR Ptr, EAttachmentRule Value) { ((FAttachmentTransformRules*)Ptr)->LocationRule = Value; }
+	
+	DOTNET_EXPORT EAttachmentRule E_PROP_FAttachmentTransformRules_RotationRule_GET(INT_PTR Ptr) { return ((FAttachmentTransformRules*)Ptr)->RotationRule; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_RotationRule_SET(INT_PTR Ptr, EAttachmentRule Value) { ((FAttachmentTransformRules*)Ptr)->RotationRule = Value; }
+	
+	DOTNET_EXPORT EAttachmentRule E_PROP_FAttachmentTransformRules_ScaleRule_GET(INT_PTR Ptr) { return ((FAttachmentTransformRules*)Ptr)->ScaleRule; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_ScaleRule_SET(INT_PTR Ptr, EAttachmentRule Value) { ((FAttachmentTransformRules*)Ptr)->ScaleRule = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET(INT_PTR Ptr) { return (INT_PTR)&((FAttachmentTransformRules*)Ptr)->SnapToTargetIncludingScale; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FAttachmentTransformRules*)Ptr)->SnapToTargetIncludingScale = *(FAttachmentTransformRules*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET(INT_PTR Ptr) { return (INT_PTR)&((FAttachmentTransformRules*)Ptr)->SnapToTargetNotIncludingScale; }
+	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_SET(INT_PTR Ptr, INT_PTR Value) { ((FAttachmentTransformRules*)Ptr)->SnapToTargetNotIncludingScale = *(FAttachmentTransformRules*)Value; }
+	
+	
 	/*	FAudioComponentParam	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAudioComponentParam_FName(char* Name) { return (INT_PTR) new FAudioComponentParam(FName(UTF8_TO_TCHAR(Name))); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FAudioComponentParam() { return (INT_PTR) new FAudioComponentParam(); }
 	
@@ -240,6 +274,12 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox() { return (INT_PTR) new FBox(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox_int32(int32 _p0) { return (INT_PTR) new FBox(_p0); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox_FVector_FVector(INT_PTR InMin, INT_PTR InMax) { return (INT_PTR) new FBox(*(FVector*)InMin, *(FVector*)InMax); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox_FVector_int32(INT_PTR Points, int32 Count) { return (INT_PTR) new FBox((FVector*)Points, Count); }
+	
 	DOTNET_EXPORT uint8 E_PROP_FBox_IsValid_GET(INT_PTR Ptr) { return ((FBox*)Ptr)->IsValid; }
 	DOTNET_EXPORT void E_PROP_FBox_IsValid_SET(INT_PTR Ptr, uint8 Value) { ((FBox*)Ptr)->IsValid = Value; }
 	
@@ -353,6 +393,12 @@ extern "C"
 	/*	FBox2D	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox2D() { return (INT_PTR) new FBox2D(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox2D_int32(int32 _p0) { return (INT_PTR) new FBox2D(_p0); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox2D_FVector2D_FVector2D(INT_PTR InMin, INT_PTR InMax) { return (INT_PTR) new FBox2D(*(FVector2D*)InMin, *(FVector2D*)InMax); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBox2D_FVector2D_int32(INT_PTR Points, int32 Count) { return (INT_PTR) new FBox2D((FVector2D*)Points, Count); }
 	
 	DOTNET_EXPORT bool E_PROP_FBox2D_bIsValid_GET(INT_PTR Ptr) { return ((FBox2D*)Ptr)->bIsValid; }
 	DOTNET_EXPORT void E_PROP_FBox2D_bIsValid_SET(INT_PTR Ptr, bool Value) { ((FBox2D*)Ptr)->bIsValid = Value; }
@@ -648,6 +694,33 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FDestructibleChunkInfo_ChunkIndex_SET(INT_PTR Ptr, int32 Value) { ((FDestructibleChunkInfo*)Ptr)->ChunkIndex = Value; }
 	
 	
+	/*	FDetachmentTransformRules	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool(EDetachmentRule InRule, bool bInCallModify) { return (INT_PTR) new FDetachmentTransformRules(InRule, bInCallModify); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool(EDetachmentRule InLocationRule, EDetachmentRule InRotationRule, EDetachmentRule InScaleRule, bool bInCallModify) { return (INT_PTR) new FDetachmentTransformRules(InLocationRule, InRotationRule, InScaleRule, bInCallModify); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(INT_PTR AttachmentRules, bool bInCallModify) { return (INT_PTR) new FDetachmentTransformRules(*(FAttachmentTransformRules*)AttachmentRules, bInCallModify); }
+	
+	DOTNET_EXPORT bool E_PROP_FDetachmentTransformRules_bCallModify_GET(INT_PTR Ptr) { return ((FDetachmentTransformRules*)Ptr)->bCallModify; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_bCallModify_SET(INT_PTR Ptr, bool Value) { ((FDetachmentTransformRules*)Ptr)->bCallModify = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET(INT_PTR Ptr) { return (INT_PTR)&((FDetachmentTransformRules*)Ptr)->KeepRelativeTransform; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_KeepRelativeTransform_SET(INT_PTR Ptr, INT_PTR Value) { ((FDetachmentTransformRules*)Ptr)->KeepRelativeTransform = *(FDetachmentTransformRules*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET(INT_PTR Ptr) { return (INT_PTR)&((FDetachmentTransformRules*)Ptr)->KeepWorldTransform; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_KeepWorldTransform_SET(INT_PTR Ptr, INT_PTR Value) { ((FDetachmentTransformRules*)Ptr)->KeepWorldTransform = *(FDetachmentTransformRules*)Value; }
+	
+	DOTNET_EXPORT EDetachmentRule E_PROP_FDetachmentTransformRules_LocationRule_GET(INT_PTR Ptr) { return ((FDetachmentTransformRules*)Ptr)->LocationRule; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_LocationRule_SET(INT_PTR Ptr, EDetachmentRule Value) { ((FDetachmentTransformRules*)Ptr)->LocationRule = Value; }
+	
+	DOTNET_EXPORT EDetachmentRule E_PROP_FDetachmentTransformRules_RotationRule_GET(INT_PTR Ptr) { return ((FDetachmentTransformRules*)Ptr)->RotationRule; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_RotationRule_SET(INT_PTR Ptr, EDetachmentRule Value) { ((FDetachmentTransformRules*)Ptr)->RotationRule = Value; }
+	
+	DOTNET_EXPORT EDetachmentRule E_PROP_FDetachmentTransformRules_ScaleRule_GET(INT_PTR Ptr) { return ((FDetachmentTransformRules*)Ptr)->ScaleRule; }
+	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_ScaleRule_SET(INT_PTR Ptr, EDetachmentRule Value) { ((FDetachmentTransformRules*)Ptr)->ScaleRule = Value; }
+	
+	
 	/*	FDirectAttachChildrenAccessor	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDirectAttachChildrenAccessor() { return (INT_PTR) new FDirectAttachChildrenAccessor(); }
@@ -780,6 +853,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FInterpControlPoint() { return (INT_PTR) new FInterpControlPoint(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FInterpControlPoint_FVector_bool(INT_PTR InPosition, bool bIsRelative) { return (INT_PTR) new FInterpControlPoint(*(FVector*)InPosition, bIsRelative); }
+	
 	DOTNET_EXPORT bool E_PROP_FInterpControlPoint_bPositionIsRelative_GET(INT_PTR Ptr) { return ((FInterpControlPoint*)Ptr)->bPositionIsRelative; }
 	DOTNET_EXPORT void E_PROP_FInterpControlPoint_bPositionIsRelative_SET(INT_PTR Ptr, bool Value) { ((FInterpControlPoint*)Ptr)->bPositionIsRelative = Value; }
 	
@@ -853,6 +928,8 @@ extern "C"
 	
 	/*	FLevelStreamingStatus	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(char* InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int32 InLODIndex) { return (INT_PTR) new FLevelStreamingStatus(FName(UTF8_TO_TCHAR(InPackageName)), bInShouldBeLoaded, bInShouldBeVisible, InLODIndex); }
+	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus() { return (INT_PTR) new FLevelStreamingStatus(); }
 	
 	DOTNET_EXPORT char* E_PROP_FLevelStreamingStatus_PackageName_GET(INT_PTR Ptr, int& ResultStringLen)
@@ -868,6 +945,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelViewportInfo() { return (INT_PTR) new FLevelViewportInfo(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(INT_PTR InCamPosition, INT_PTR InCamRotation, float InCamOrthoZoom) { return (INT_PTR) new FLevelViewportInfo(*(FVector*)InCamPosition, *(FRotator*)InCamRotation, InCamOrthoZoom); }
+	
 	DOTNET_EXPORT float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamOrthoZoom; }
 	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(INT_PTR Ptr, float Value) { ((FLevelViewportInfo*)Ptr)->CamOrthoZoom = Value; }
 	
@@ -879,6 +958,20 @@ extern "C"
 	
 	DOTNET_EXPORT bool E_PROP_FLevelViewportInfo_CamUpdated_GET(INT_PTR Ptr) { return ((FLevelViewportInfo*)Ptr)->CamUpdated; }
 	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamUpdated_SET(INT_PTR Ptr, bool Value) { ((FLevelViewportInfo*)Ptr)->CamUpdated = Value; }
+	
+	
+	/*	FLightingChannels	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLightingChannels() { return (INT_PTR) new FLightingChannels(); }
+	
+	DOTNET_EXPORT bool E_PROP_FLightingChannels_bChannel0_GET(INT_PTR Ptr) { return ((FLightingChannels*)Ptr)->bChannel0; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel0_SET(INT_PTR Ptr, bool Value) { ((FLightingChannels*)Ptr)->bChannel0 = Value; }
+	
+	DOTNET_EXPORT bool E_PROP_FLightingChannels_bChannel1_GET(INT_PTR Ptr) { return ((FLightingChannels*)Ptr)->bChannel1; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel1_SET(INT_PTR Ptr, bool Value) { ((FLightingChannels*)Ptr)->bChannel1 = Value; }
+	
+	DOTNET_EXPORT bool E_PROP_FLightingChannels_bChannel2_GET(INT_PTR Ptr) { return ((FLightingChannels*)Ptr)->bChannel2; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel2_SET(INT_PTR Ptr, bool Value) { ((FLightingChannels*)Ptr)->bChannel2 = Value; }
 	
 	
 	/*	FMaterialSpriteElement	*/
@@ -930,6 +1023,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FOverlapInfo() { return (INT_PTR) new FOverlapInfo(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FOverlapInfo_UPrimitiveComponent_int32(UPrimitiveComponent* InComponent, int32 InBodyIndex) { return (INT_PTR) new FOverlapInfo(InComponent, InBodyIndex); }
+	
 	DOTNET_EXPORT bool E_PROP_FOverlapInfo_bFromSweep_GET(INT_PTR Ptr) { return ((FOverlapInfo*)Ptr)->bFromSweep; }
 	DOTNET_EXPORT void E_PROP_FOverlapInfo_bFromSweep_SET(INT_PTR Ptr, bool Value) { ((FOverlapInfo*)Ptr)->bFromSweep = Value; }
 	
@@ -950,6 +1045,18 @@ extern "C"
 	/*	FPlane	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane() { return (INT_PTR) new FPlane(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_FPlane(INT_PTR P) { return (INT_PTR) new FPlane(*(FPlane*)P); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_FVector4(INT_PTR V) { return (INT_PTR) new FPlane(*(FVector4*)V); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_float_float_float_float(float InX, float InY, float InZ, float InW) { return (INT_PTR) new FPlane(InX, InY, InZ, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_FVector_float(INT_PTR InNormal, float InW) { return (INT_PTR) new FPlane(*(FVector*)InNormal, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_FVector_FVector(INT_PTR InBase, INT_PTR InNormal) { return (INT_PTR) new FPlane(*(FVector*)InBase, *(FVector*)InNormal); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane_FVector_FVector_FVector(INT_PTR A, INT_PTR B, INT_PTR C) { return (INT_PTR) new FPlane(*(FVector*)A, *(FVector*)B, *(FVector*)C); }
 	
 	DOTNET_EXPORT float E_PROP_FPlane_W_GET(INT_PTR Ptr) { return ((FPlane*)Ptr)->W; }
 	DOTNET_EXPORT void E_PROP_FPlane_W_SET(INT_PTR Ptr, float Value) { ((FPlane*)Ptr)->W = Value; }
@@ -1002,6 +1109,14 @@ extern "C"
 	/*	FQuat	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat() { return (INT_PTR) new FQuat(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_float_float_float_float(float InX, float InY, float InZ, float InW) { return (INT_PTR) new FQuat(InX, InY, InZ, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FQuat(INT_PTR Q) { return (INT_PTR) new FQuat(*(FQuat*)Q); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FRotator(INT_PTR R) { return (INT_PTR) new FQuat(*(FRotator*)R); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FVector_float(INT_PTR Axis, float AngleRad) { return (INT_PTR) new FQuat(*(FVector*)Axis, AngleRad); }
 	
 	DOTNET_EXPORT float E_PROP_FQuat_W_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->W; }
 	DOTNET_EXPORT void E_PROP_FQuat_W_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->W = Value; }
@@ -1357,6 +1472,12 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotator() { return (INT_PTR) new FRotator(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotator_float(float InF) { return (INT_PTR) new FRotator(InF); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotator_float_float_float(float InPitch, float InYaw, float InRoll) { return (INT_PTR) new FRotator(InPitch, InYaw, InRoll); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotator_FQuat(INT_PTR Quat) { return (INT_PTR) new FRotator(*(FQuat*)Quat); }
+	
 	DOTNET_EXPORT float E_PROP_FRotator_Pitch_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Pitch; }
 	DOTNET_EXPORT void E_PROP_FRotator_Pitch_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Pitch = Value; }
 	
@@ -1651,6 +1772,8 @@ extern "C"
 	/*	FSplinePoint	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplinePoint() { return (INT_PTR) new FSplinePoint(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplinePoint_float_FVector(float InInputKey, INT_PTR InPosition) { return (INT_PTR) new FSplinePoint(InInputKey, *(FVector*)InPosition); }
 	
 	DOTNET_EXPORT INT_PTR E_PROP_FSplinePoint_ArriveTangent_GET(INT_PTR Ptr) { return (INT_PTR)&((FSplinePoint*)Ptr)->ArriveTangent; }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_ArriveTangent_SET(INT_PTR Ptr, INT_PTR Value) { ((FSplinePoint*)Ptr)->ArriveTangent = *(FVector*)Value; }
@@ -1996,6 +2119,20 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform() { return (INT_PTR) new FTransform(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FVector(INT_PTR InTranslation) { return (INT_PTR) new FTransform(*(FVector*)InTranslation); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FQuat(INT_PTR InRotation) { return (INT_PTR) new FTransform(*(FQuat*)InRotation); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FRotator(INT_PTR InRotation) { return (INT_PTR) new FTransform(*(FRotator*)InRotation); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FQuat_FVector_FVector(INT_PTR InRotation, INT_PTR InTranslation, INT_PTR InScale3D) { return (INT_PTR) new FTransform(*(FQuat*)InRotation, *(FVector*)InTranslation, *(FVector*)InScale3D); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FRotator_FVector_FVector(INT_PTR InRotation, INT_PTR InTranslation, INT_PTR InScale3D) { return (INT_PTR) new FTransform(*(FRotator*)InRotation, *(FVector*)InTranslation, *(FVector*)InScale3D); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FTransform(INT_PTR InTransform) { return (INT_PTR) new FTransform(*(FTransform*)InTransform); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(INT_PTR InX, INT_PTR InY, INT_PTR InZ, INT_PTR InTranslation) { return (INT_PTR) new FTransform(*(FVector*)InX, *(FVector*)InY, *(FVector*)InZ, *(FVector*)InTranslation); }
+	
 	DOTNET_EXPORT void E_FTransform_AddToTranslation(INT_PTR Self, INT_PTR DeltaTranslation)
 	{
 		auto _p0 = *(FVector*)DeltaTranslation;
@@ -2254,14 +2391,6 @@ extern "C"
 		return ((FTransform*)Self)->IsValid();
 	}
 
-	DOTNET_EXPORT void E_FTransform_Multiply(INT_PTR Self, INT_PTR OutTransform, INT_PTR A, INT_PTR B)
-	{
-		auto _p0 = *(FTransform*)OutTransform;
-		auto _p1 = *(FTransform*)A;
-		auto _p2 = *(FTransform*)B;
-		((FTransform*)Self)->Multiply(&_p0, &_p1, &_p2);
-	}
-
 	DOTNET_EXPORT void E_FTransform_MultiplyScale3D(INT_PTR Self, INT_PTR Scale3DMultiplier)
 	{
 		auto _p0 = *(FVector*)Scale3DMultiplier;
@@ -2415,8 +2544,6 @@ extern "C"
 	
 	/*	FURL	*/
 	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FURL() { return (INT_PTR) new FURL(); }
-	
 	DOTNET_EXPORT bool E_PROP_FURL_bDefaultsInitialized_GET(INT_PTR Ptr) { return ((FURL*)Ptr)->bDefaultsInitialized; }
 	DOTNET_EXPORT void E_PROP_FURL_bDefaultsInitialized_SET(INT_PTR Ptr, bool Value) { ((FURL*)Ptr)->bDefaultsInitialized = Value; }
 	
@@ -2496,6 +2623,14 @@ extern "C"
 	/*	FVector	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector() { return (INT_PTR) new FVector(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_float(float InF) { return (INT_PTR) new FVector(InF); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_float_float_float(float InX, float InY, float InZ) { return (INT_PTR) new FVector(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FVector2D_float(INT_PTR V, float InZ) { return (INT_PTR) new FVector(*(FVector2D*)V, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FVector4(INT_PTR V) { return (INT_PTR) new FVector(*(FVector4*)V); }
 	
 	DOTNET_EXPORT float E_PROP_FVector_X_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->X; }
 	DOTNET_EXPORT void E_PROP_FVector_X_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->X = Value; }
@@ -3025,6 +3160,10 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D() { return (INT_PTR) new FVector2D(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_float_float(float InX, float InY) { return (INT_PTR) new FVector2D(InX, InY); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_FVector(INT_PTR V) { return (INT_PTR) new FVector2D(*(FVector*)V); }
+	
 	DOTNET_EXPORT float E_PROP_FVector2D_X_GET(INT_PTR Ptr) { return ((FVector2D*)Ptr)->X; }
 	DOTNET_EXPORT void E_PROP_FVector2D_X_SET(INT_PTR Ptr, float Value) { ((FVector2D*)Ptr)->X = Value; }
 	
@@ -3193,7 +3332,11 @@ extern "C"
 	
 	/*	FVector4	*/
 	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4() { return (INT_PTR) new FVector4(); }
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_FVector_float(INT_PTR InVector, float InW) { return (INT_PTR) new FVector4(*(FVector*)InVector, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_float_float_float_float(float InX, float InY, float InZ, float InW) { return (INT_PTR) new FVector4(InX, InY, InZ, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_FVector2D_FVector2D(INT_PTR InXY, INT_PTR InZW) { return (INT_PTR) new FVector4(*(FVector2D*)InXY, *(FVector2D*)InZW); }
 	
 	DOTNET_EXPORT float E_PROP_FVector4_W_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->W; }
 	DOTNET_EXPORT void E_PROP_FVector4_W_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->W = Value; }
@@ -3338,6 +3481,8 @@ extern "C"
 	/*	FWeightedBlendable	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FWeightedBlendable() { return (INT_PTR) new FWeightedBlendable(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FWeightedBlendable_float_UObject(float InWeight, UObject* InObject) { return (INT_PTR) new FWeightedBlendable(InWeight, InObject); }
 	
 	DOTNET_EXPORT UObject* E_PROP_FWeightedBlendable_Object_GET(INT_PTR Ptr) { return ((FWeightedBlendable*)Ptr)->Object; }
 	DOTNET_EXPORT void E_PROP_FWeightedBlendable_Object_SET(INT_PTR Ptr, UObject* Value) { ((FWeightedBlendable*)Ptr)->Object = Value; }

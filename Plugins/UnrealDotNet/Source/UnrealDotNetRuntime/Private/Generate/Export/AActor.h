@@ -186,6 +186,22 @@ extern "C"
 		((AActor*)Self)->ApplyWorldOffset(_p0, _p1);
 	}
 
+	DOTNET_EXPORT void E_AActor_AttachToActor(INT_PTR Self, AActor* ParentActor, INT_PTR AttachmentRules, char* SocketName)
+	{
+		auto _p0 = ParentActor;
+		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
+		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		((AActor*)Self)->AttachToActor(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_AActor_AttachToComponent(INT_PTR Self, USceneComponent* Parent, INT_PTR AttachmentRules, char* SocketName)
+	{
+		auto _p0 = Parent;
+		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
+		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		((AActor*)Self)->AttachToComponent(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT void E_AActor_BeginPlay(INT_PTR Self)
 	{
 		((E_PROTECTED_WRAP_AActor*)Self)->BeginPlay_WRAP();
@@ -230,6 +246,19 @@ extern "C"
 	DOTNET_EXPORT void E_AActor_DestroyConstructedComponents(INT_PTR Self)
 	{
 		((AActor*)Self)->DestroyConstructedComponents();
+	}
+
+	DOTNET_EXPORT void E_AActor_DetachAllSceneComponents(INT_PTR Self, USceneComponent* InParentComponent, INT_PTR DetachmentRules)
+	{
+		auto _p0 = InParentComponent;
+		auto _p1 = *(FDetachmentTransformRules*)DetachmentRules;
+		((AActor*)Self)->DetachAllSceneComponents(_p0, _p1);
+	}
+
+	DOTNET_EXPORT void E_AActor_DetachFromActor(INT_PTR Self, INT_PTR DetachmentRules)
+	{
+		auto _p0 = *(FDetachmentTransformRules*)DetachmentRules;
+		((AActor*)Self)->DetachFromActor(_p0);
 	}
 
 	DOTNET_EXPORT void E_AActor_DetachRootComponentFromParent(INT_PTR Self, bool bMaintainWorldPosition)
@@ -559,6 +588,28 @@ extern "C"
 		return ((AActor*)Self)->IsRootComponentStationary();
 	}
 
+	DOTNET_EXPORT void E_AActor_K2_AttachToActor(INT_PTR Self, AActor* ParentActor, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
+	{
+		auto _p0 = ParentActor;
+		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = LocationRule;
+		auto _p3 = RotationRule;
+		auto _p4 = ScaleRule;
+		auto _p5 = bWeldSimulatedBodies;
+		((AActor*)Self)->K2_AttachToActor(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
+	DOTNET_EXPORT void E_AActor_K2_AttachToComponent(INT_PTR Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
+	{
+		auto _p0 = Parent;
+		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = LocationRule;
+		auto _p3 = RotationRule;
+		auto _p4 = ScaleRule;
+		auto _p5 = bWeldSimulatedBodies;
+		((AActor*)Self)->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
 	DOTNET_EXPORT void E_AActor_K2_DestroyActor(INT_PTR Self)
 	{
 		((AActor*)Self)->K2_DestroyActor();
@@ -568,6 +619,14 @@ extern "C"
 	{
 		auto _p0 = Component;
 		((AActor*)Self)->K2_DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT void E_AActor_K2_DetachFromActor(INT_PTR Self, EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule)
+	{
+		auto _p0 = LocationRule;
+		auto _p1 = RotationRule;
+		auto _p2 = ScaleRule;
+		((AActor*)Self)->K2_DetachFromActor(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT INT_PTR E_AActor_K2_GetActorLocation(INT_PTR Self)

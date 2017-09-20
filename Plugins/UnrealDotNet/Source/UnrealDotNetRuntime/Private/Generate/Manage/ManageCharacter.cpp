@@ -87,6 +87,12 @@ void AManageCharacter::OnJumped_Implementation()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnJumped_Implementation");
 }
 
+void AManageCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+	Super::OnMovementModeChanged(PrevMovementMode, PreviousCustomMode);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnMovementModeChanged", PrevMovementMode, PreviousCustomMode);
+}
+
 void AManageCharacter::OnRep_IsCrouched()
 {
 	Super::OnRep_IsCrouched();

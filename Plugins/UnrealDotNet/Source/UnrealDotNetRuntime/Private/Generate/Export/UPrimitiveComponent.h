@@ -59,6 +59,9 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LDMaxDrawDistance_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LDMaxDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LDMaxDrawDistance_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LDMaxDrawDistance = Value; }
 	
+	DOTNET_EXPORT INT_PTR E_PROP_UPrimitiveComponent_LightingChannels_GET(INT_PTR Ptr) { return (INT_PTR)&((UPrimitiveComponent*)Ptr)->LightingChannels; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LightingChannels_SET(INT_PTR Ptr, INT_PTR Value) { ((UPrimitiveComponent*)Ptr)->LightingChannels = *(FLightingChannels*)Value; }
+	
 	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LpvBiasMultiplier_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LpvBiasMultiplier; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LpvBiasMultiplier_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LpvBiasMultiplier = Value; }
 	
@@ -398,11 +401,19 @@ extern "C"
 		((UPrimitiveComponent*)Self)->SetCenterOfMass(_p0, _p1);
 	}
 
+	DOTNET_EXPORT void E_UPrimitiveComponent_SetCollisionObjectType(INT_PTR Self, ECollisionChannel Channel)
+	{
+		auto _p0 = Channel;
+		((UPrimitiveComponent*)Self)->SetCollisionObjectType(_p0);
+	}
+
+#pragma optimize("", off)
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetCollisionProfileName(INT_PTR Self, char* InCollisionProfileName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(InCollisionProfileName));
 		((UPrimitiveComponent*)Self)->SetCollisionProfileName(_p0);
 	}
+#pragma optimize("", on)
 
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetCullDistance(INT_PTR Self, float NewCullDistance)
 	{
@@ -420,6 +431,12 @@ extern "C"
 	{
 		auto _p0 = WriteMaskBit;
 		((UPrimitiveComponent*)Self)->SetCustomDepthStencilWriteMask(_p0);
+	}
+
+	DOTNET_EXPORT void E_UPrimitiveComponent_SetDepthPriorityGroup(INT_PTR Self, ESceneDepthPriorityGroup NewDepthPriorityGroup)
+	{
+		auto _p0 = NewDepthPriorityGroup;
+		((UPrimitiveComponent*)Self)->SetDepthPriorityGroup(_p0);
 	}
 
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetEnableGravity(INT_PTR Self, bool bGravityEnabled)
@@ -543,6 +560,13 @@ extern "C"
 	{
 		auto _p0 = NewTranslucentSortPriority;
 		((UPrimitiveComponent*)Self)->SetTranslucentSortPriority(_p0);
+	}
+
+	DOTNET_EXPORT void E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(INT_PTR Self, bool bNewUseViewOwnerDepthPriorityGroup, ESceneDepthPriorityGroup NewViewOwnerDepthPriorityGroup)
+	{
+		auto _p0 = bNewUseViewOwnerDepthPriorityGroup;
+		auto _p1 = NewViewOwnerDepthPriorityGroup;
+		((UPrimitiveComponent*)Self)->SetViewOwnerDepthPriorityGroup(_p0, _p1);
 	}
 
 	DOTNET_EXPORT bool E_UPrimitiveComponent_ShouldComponentAddToScene(INT_PTR Self)

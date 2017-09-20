@@ -44,6 +44,8 @@ public:
 	
 	virtual void OnJumped_Implementation() override;
 	
+	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode) override;
+	
 	virtual void OnRep_IsCrouched() override;
 	
 	virtual void OnRep_ReplicatedBasedMovement() override;

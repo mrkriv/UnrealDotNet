@@ -7,7 +7,7 @@ namespace UnrealEngine
     {
         protected readonly bool IsRef;
 
-        [DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
         private static extern void E_DeleteStruct(IntPtr Adress);
 
         public NativeStructWrapper(IntPtr NativePointer) : base(NativePointer)

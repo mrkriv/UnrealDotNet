@@ -5,25 +5,26 @@ namespace UnrealEngine
 {
 	public  partial class FSplineCurves : NativeStructWrapper
 	{
-		public FSplineCurves() : base(E_CreateStruct_FSplineCurves(), false)
-		{
-		}
-
 		internal FSplineCurves(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FSplineCurves() :
+			base(E_CreateStruct_FSplineCurves(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSplineCurves();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FSplineCurves_GetSegmentLength(IntPtr Self, int Index, float Param, bool bClosedLoop, IntPtr Scale3D);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FSplineCurves_GetSplineLength(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSplineCurves_UpdateSpline(IntPtr Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
 		
 		#endregion
@@ -66,4 +67,6 @@ namespace UnrealEngine
 		public static implicit operator FSplineCurves(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSplineCurves(Adress, false);
-		}}}
+		}
+}
+}

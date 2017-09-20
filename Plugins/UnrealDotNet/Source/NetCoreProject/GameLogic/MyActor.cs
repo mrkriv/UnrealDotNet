@@ -23,20 +23,26 @@ namespace GameLogic
             {
                 PrimaryActorTick.bCanEverTick = 1;
 
-                ScreenDebugMessage($"=> { GetRootComponent().GetWorldTransform()}");
-
-
                 Box = new UBoxComponent(this, "Simple Child");
                 Box.RegisterComponent();
 
-                //FAttachmentTransformRules transformRules = new FAttachmentTransformRules
-                //{
-                //    LocationRule = EAttachmentRule.SnapToTarget,
-                //    RotationRule = EAttachmentRule.SnapToTarget,
-                //    ScaleRule = EAttachmentRule.SnapToTarget
-                //};
+                var transformRules = new FAttachmentTransformRules(
+                    EAttachmentRule.SnapToTarget,
+                    EAttachmentRule.SnapToTarget,
+                    EAttachmentRule.SnapToTarget,
+                    false
+                );
 
-                //Box.AttachToComponent(GetRootComponent(), transformRules, "");
+                var root = GetRootComponent();
+                var root_sm = root as UStaticMeshComponent;
+
+                ScreenDebugMessage(root_sm?.GetFName() ?? "null");  // todo: Создавать обертку с учетом наследования
+                
+                Box.AttachToComponent(GetRootComponent(), transformRules, "");
+                
+                Box.SetCollisionProfileName("BlockAll");
+                Box.SetBoxExtent(new FVector(100, 100, 100), false);
+                Box.SetHiddenInGame(false);
             }
             catch (Exception e)
             {
@@ -54,23 +60,6 @@ namespace GameLogic
                 Pitch = 0,
                 Roll = 0
             };
-
-            var scale = new FVector
-            {
-                X = 2 + (float)Math.Sin(Time),
-                Y = 2 + (float)Math.Cos(Time),
-                Z = 2.0f
-            };
-
-            //if (Box != null)
-            //{
-            //    ULog(Box.GetFName() + " " + scale);
-            //    Box.SetRelativeScale3D(scale);
-            //}
-            //else
-            //{
-            //    ULog_Error("Box is null");
-            //}
 
             SetActorRotation(rot, false);
         }

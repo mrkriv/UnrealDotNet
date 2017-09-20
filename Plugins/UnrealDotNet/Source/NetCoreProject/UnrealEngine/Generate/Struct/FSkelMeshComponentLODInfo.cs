@@ -5,31 +5,32 @@ namespace UnrealEngine
 {
 	public  partial class FSkelMeshComponentLODInfo : NativeStructWrapper
 	{
-		public FSkelMeshComponentLODInfo() : base(E_CreateStruct_FSkelMeshComponentLODInfo(), false)
-		{
-		}
-
 		internal FSkelMeshComponentLODInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FSkelMeshComponentLODInfo() :
+			base(E_CreateStruct_FSkelMeshComponentLODInfo(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSkelMeshComponentLODInfo();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideSkinWeights(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_CleanUp(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_ReleaseOverrideVertexColorsAndBlock(IntPtr Self);
 		
 		#endregion
@@ -60,4 +61,6 @@ namespace UnrealEngine
 		public static implicit operator FSkelMeshComponentLODInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSkelMeshComponentLODInfo(Adress, false);
-		}}}
+		}
+}
+}

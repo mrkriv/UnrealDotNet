@@ -59,7 +59,7 @@ namespace Generator
 
             CurrentClass.SourceFile = CurrentFile;
             CurrentClass.IsImplemented = true;
-            CurrentClass.IsStructure = CurrentClass.Name.First() == 'F';    //context.ChildText<ClassOrStructContext>() == "struct";
+            CurrentClass.IsStructure = CurrentClass.Name.First() == 'F';
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
             CurrentClass.IsFinal = context.FoundChild<IsFinalContext>();
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
@@ -194,6 +194,7 @@ namespace Generator
                     OwnerClass = CurrentClass,
                     Operator = context.methodName().methodOperator()?.GetText(),
                     AccessModifier = AccessModifier,
+                    ReturnType = new ClassVariable(CurrentClass),
 
                     InputTypes = context.FindAll<MethodParametrContext>().Reverse()
                         .Select(ParceParam).ToList()

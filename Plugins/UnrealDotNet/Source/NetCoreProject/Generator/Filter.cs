@@ -76,6 +76,11 @@ namespace Generator
             { "UTimelineComponent", new[] { "OnRep_Timeline" }},
             { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
 
+            { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: * в **
+            { "FTransform", new[] { "Multiply" }},
+            { "UWorld", new[] { "EncroachingBlockingGeometry", "ProcessLevelStreamingVolumes" }},
+            
+
             { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
         };
 
@@ -92,13 +97,15 @@ namespace Generator
         public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
             var classes = Classes.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
-
+            
             foreach (var cl in classes)
             {
                 cl.IsReadOnly = ReadOnlyClass.Any(name => cl.IsChild(name));
 
                 cl.Methods = cl.Methods.Where(MethodFilter).OrderBy(m => m.Name).ToList();
                 cl.Property = cl.Property.Where(PropertyFilter).OrderBy(p => p.Name).ToList();
+
+                FilterConstructors(cl);
 
                 RemoveMethodDublicatedName(cl);
             }
@@ -109,6 +116,34 @@ namespace Generator
         public static List<Enum> FilterEnum(IEnumerable<Enum> enums)
         {
             return enums.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+        }
+
+        private static void FilterConstructors(Class cl)
+        {
+            if (!cl.Constructors.Any())
+            {
+                var ctr = new Method(cl.Name)
+                {
+                    ReturnType = new ClassVariable(cl),
+                    OwnerClass = cl,
+                };
+
+                cl.Constructors.Add(ctr);
+            }
+            else
+            {
+                cl.Constructors = cl.Constructors.Where(MethodFilter)
+                    .Where(m=>m.AccessModifier == AccessModifier.Public).OrderBy(m => m.Name).ToList();
+
+                foreach (var m in cl.Constructors)
+                {
+                    var counter = 0;
+                    foreach (var t in m.InputTypes)
+                    {
+                        t.Name = t.Name ?? "_p" + counter++;
+                    }
+                }
+            }
         }
 
         private static void RemoveMethodDublicatedName(Class cl)
@@ -167,7 +202,7 @@ namespace Generator
                     !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type == "void" || v.IsReadOnly()) &&
                     (!m.IsVirtual || m.Operator == null && !m.OwnerClass.IsFinal && m.ReturnType.Type == "void") &&
                     m.Dependent.All(TypeFilter) &&
-                    m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) == 1 && // TODO: поддержка перегрузок
+                    m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
                     m.Operator == null && // TODO: поддержка операторов
                     (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
                     (!MethodBlackList.ContainsKey(m.OwnerClass.Name) || !MethodBlackList[m.OwnerClass.Name].Contains(m.Name));

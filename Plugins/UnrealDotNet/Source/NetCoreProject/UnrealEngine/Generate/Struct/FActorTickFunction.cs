@@ -5,21 +5,22 @@ namespace UnrealEngine
 {
 	public  partial class FActorTickFunction : FTickFunction
 	{
-		public FActorTickFunction() : base(E_CreateStruct_FActorTickFunction(), false)
-		{
-		}
-
 		internal FActorTickFunction(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FActorTickFunction() :
+			base(E_CreateStruct_FActorTickFunction(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FActorTickFunction();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FActorTickFunction_Target_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorTickFunction_Target_SET(IntPtr Ptr, IntPtr Value);
 		
 		#endregion
@@ -45,4 +46,6 @@ namespace UnrealEngine
 		public static implicit operator FActorTickFunction(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FActorTickFunction(Adress, false);
-		}}}
+		}
+}
+}

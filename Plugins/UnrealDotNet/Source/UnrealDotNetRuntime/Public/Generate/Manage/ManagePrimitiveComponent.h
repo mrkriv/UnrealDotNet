@@ -42,6 +42,8 @@ public:
 	
 	virtual void SetAngularDamping(float InDamping) override;
 	
+	virtual void SetCollisionObjectType(ECollisionChannel Channel) override;
+	
 	virtual void SetCollisionProfileName(FName InCollisionProfileName) override;
 	
 	virtual void SetEnableGravity(bool bGravityEnabled) override;

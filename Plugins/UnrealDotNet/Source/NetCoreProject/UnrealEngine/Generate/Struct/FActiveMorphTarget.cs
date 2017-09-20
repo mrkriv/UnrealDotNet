@@ -5,21 +5,22 @@ namespace UnrealEngine
 {
 	public  partial class FActiveMorphTarget : NativeStructWrapper
 	{
-		public FActiveMorphTarget() : base(E_CreateStruct_FActiveMorphTarget(), false)
-		{
-		}
-
 		internal FActiveMorphTarget(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FActiveMorphTarget() :
+			base(E_CreateStruct_FActiveMorphTarget(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FActiveMorphTarget();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_FActiveMorphTarget_WeightIndex_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActiveMorphTarget_WeightIndex_SET(IntPtr Ptr, int Value);
 		
 		#endregion
@@ -45,4 +46,6 @@ namespace UnrealEngine
 		public static implicit operator FActiveMorphTarget(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FActiveMorphTarget(Adress, false);
-		}}}
+		}
+}
+}

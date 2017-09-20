@@ -5,16 +5,17 @@ namespace UnrealEngine
 {
 	public  partial class FSkelMeshRefPoseOverride : NativeStructWrapper
 	{
-		public FSkelMeshRefPoseOverride() : base(E_CreateStruct_FSkelMeshRefPoseOverride(), false)
-		{
-		}
-
 		internal FSkelMeshRefPoseOverride(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FSkelMeshRefPoseOverride() :
+			base(E_CreateStruct_FSkelMeshRefPoseOverride(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSkelMeshRefPoseOverride();
 		
 		#endregion
@@ -27,4 +28,6 @@ namespace UnrealEngine
 		public static implicit operator FSkelMeshRefPoseOverride(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSkelMeshRefPoseOverride(Adress, false);
-		}}}
+		}
+}
+}

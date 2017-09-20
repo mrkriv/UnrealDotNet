@@ -5,16 +5,17 @@ namespace UnrealEngine
 {
 	public  partial class FRendererStencilMaskEvaluation : NativeStructWrapper
 	{
-		public FRendererStencilMaskEvaluation() : base(E_CreateStruct_FRendererStencilMaskEvaluation(), false)
-		{
-		}
-
 		internal FRendererStencilMaskEvaluation(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		public FRendererStencilMaskEvaluation() :
+			base(E_CreateStruct_FRendererStencilMaskEvaluation(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FRendererStencilMaskEvaluation();
 		
 		#endregion
@@ -27,4 +28,6 @@ namespace UnrealEngine
 		public static implicit operator FRendererStencilMaskEvaluation(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FRendererStencilMaskEvaluation(Adress, false);
-		}}}
+		}
+}
+}

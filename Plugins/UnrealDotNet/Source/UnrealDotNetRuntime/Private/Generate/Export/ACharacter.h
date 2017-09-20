@@ -216,6 +216,15 @@ extern "C"
 		((ACharacter*)Self)->K2_OnEndCrouch(_p0, _p1);
 	}
 
+	DOTNET_EXPORT void E_ACharacter_K2_OnMovementModeChanged(INT_PTR Self, EMovementMode PrevMovementMode, EMovementMode NewMovementMode, uint8 PrevCustomMode, uint8 NewCustomMode)
+	{
+		auto _p0 = PrevMovementMode;
+		auto _p1 = NewMovementMode;
+		auto _p2 = PrevCustomMode;
+		auto _p3 = NewCustomMode;
+		((ACharacter*)Self)->K2_OnMovementModeChanged(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT void E_ACharacter_K2_OnStartCrouch(INT_PTR Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
@@ -265,6 +274,13 @@ extern "C"
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
 		((ACharacter*)Self)->OnLaunched(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_ACharacter_OnMovementModeChanged(INT_PTR Self, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+	{
+		auto _p0 = PrevMovementMode;
+		auto _p1 = PreviousCustomMode;
+		((ACharacter*)Self)->OnMovementModeChanged(_p0, _p1);
 	}
 
 	DOTNET_EXPORT void E_ACharacter_OnRep_IsCrouched(INT_PTR Self)

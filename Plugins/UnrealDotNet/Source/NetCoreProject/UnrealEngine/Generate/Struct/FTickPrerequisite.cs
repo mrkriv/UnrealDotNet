@@ -5,16 +5,21 @@ namespace UnrealEngine
 {
 	public  partial class FTickPrerequisite : NativeStructWrapper
 	{
-		public FTickPrerequisite() : base(E_CreateStruct_FTickPrerequisite(), false)
-		{
-		}
-
 		internal FTickPrerequisite(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Noop constructor. </para>
+		/// </summary>
+		public FTickPrerequisite() :
+			base(E_CreateStruct_FTickPrerequisite(), false)
+		{
+		}
+
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FTickPrerequisite();
 		
 		#endregion
@@ -27,4 +32,6 @@ namespace UnrealEngine
 		public static implicit operator FTickPrerequisite(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTickPrerequisite(Adress, false);
-		}}}
+		}
+}
+}

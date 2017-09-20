@@ -94,6 +94,14 @@ namespace UnrealEngine
 		
 		public override void OnJumped_Implementation() { }
 		
+		
+		/// <summary>
+		/// <para>Called from CharacterMovementComponent to notify the character that the movement mode has changed. </para>
+		/// <param name="PrevMovementMode">Movement mode before the change </param>
+		/// <param name="PrevCustomMode">Custom mode before the change (applicable if PrevMovementMode is Custom) </param>
+		/// </summary>
+		public override void OnMovementModeChanged(EMovementMode PrevMovementMode, byte PreviousCustomMode) { }
+		
 		public override void OnRep_IsCrouched() { }
 		
 		public override void OnRep_ReplicatedBasedMovement() { }
