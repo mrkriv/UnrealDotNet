@@ -10,7 +10,7 @@ namespace GameLogic
 
         [EditAnywhere, DefaultValue(10.0f)]
         public float Speed { get; set; }
-        
+
         public float Time { get; set; }
 
         public MyActor(IntPtr Adress) : base(Adress)
@@ -37,9 +37,9 @@ namespace GameLogic
                 var root_sm = root as UStaticMeshComponent;
 
                 ScreenDebugMessage(root_sm?.GetFName() ?? "null");
-                
+
                 Box.AttachToComponent(root, transformRules, "");
-                
+
                 Box.SetCollisionProfileName("BlockAll");
                 Box.SetBoxExtent(new FVector(100, 100, 100), false);
                 Box.SetHiddenInGame(false);

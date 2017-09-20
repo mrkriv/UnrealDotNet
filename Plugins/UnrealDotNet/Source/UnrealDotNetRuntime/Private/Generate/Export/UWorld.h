@@ -135,590 +135,605 @@ extern "C"
 		return (INT_PTR)NewObject<UWorld>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UWorld_AddNetworkActor(INT_PTR Self, AActor* Actor)
+	DOTNET_EXPORT void E_UWorld_AddNetworkActor(UWorld* Self, AActor* Actor)
 	{
 		auto _p0 = Actor;
-		((UWorld*)Self)->AddNetworkActor(_p0);
+		(Self)->AddNetworkActor(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_AddPawn(INT_PTR Self, APawn* Pawn)
+	DOTNET_EXPORT void E_UWorld_AddPawn(UWorld* Self, APawn* Pawn)
 	{
 		auto _p0 = Pawn;
-		((UWorld*)Self)->AddPawn(_p0);
+		(Self)->AddPawn(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_AllowLevelLoadRequests(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_AllowLevelLoadRequests(UWorld* Self)
 	{
-		return ((UWorld*)Self)->AllowLevelLoadRequests();
+		return (Self)->AllowLevelLoadRequests();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_AreActorsInitialized(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_AreActorsInitialized(UWorld* Self)
 	{
-		return ((UWorld*)Self)->AreActorsInitialized();
+		return (Self)->AreActorsInitialized();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_AreAlwaysLoadedLevelsLoaded(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_AreAlwaysLoadedLevelsLoaded(UWorld* Self)
 	{
-		return ((UWorld*)Self)->AreAlwaysLoadedLevelsLoaded();
+		return (Self)->AreAlwaysLoadedLevelsLoaded();
 	}
 
-	DOTNET_EXPORT void E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(UWorld* Self)
 	{
-		((UWorld*)Self)->AsyncLoadAlwaysLoadedLevelsForSeamlessTravel();
+		(Self)->AsyncLoadAlwaysLoadedLevelsForSeamlessTravel();
 	}
 
-	DOTNET_EXPORT ENetMode E_UWorld_AttemptDeriveFromURL(INT_PTR Self)
+	DOTNET_EXPORT ENetMode E_UWorld_AttemptDeriveFromURL(UWorld* Self)
 	{
-		return ((UWorld*)Self)->AttemptDeriveFromURL();
+		return (Self)->AttemptDeriveFromURL();
 	}
 
-	DOTNET_EXPORT void E_UWorld_BeginPlay(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_BeginPlay(UWorld* Self)
 	{
-		((UWorld*)Self)->BeginPlay();
+		(Self)->BeginPlay();
 	}
 
-	DOTNET_EXPORT void E_UWorld_BroadcastLevelsChanged(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_BroadcastLevelsChanged(UWorld* Self)
 	{
-		((UWorld*)Self)->BroadcastLevelsChanged();
+		(Self)->BroadcastLevelsChanged();
 	}
 
-	DOTNET_EXPORT char* E_UWorld_BuildPIEPackagePrefix(INT_PTR Self, int32 PIEInstanceID, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UWorld_BuildPIEPackagePrefix(UWorld* Self, int32 PIEInstanceID, int& ResultStringLen)
 	{
 		auto _p0 = PIEInstanceID;
-		auto _result = ((UWorld*)Self)->BuildPIEPackagePrefix(_p0);
+		auto _result = (Self)->BuildPIEPackagePrefix(_p0);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_UWorld_CancelPendingMapChange(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_CancelPendingMapChange(UWorld* Self)
 	{
-		((UWorld*)Self)->CancelPendingMapChange();
+		(Self)->CancelPendingMapChange();
 	}
 
-	DOTNET_EXPORT void E_UWorld_CleanupWorld(INT_PTR Self, bool bSessionEnded, bool bCleanupResources, UWorld* NewWorld)
+	DOTNET_EXPORT void E_UWorld_CleanupWorld(UWorld* Self, bool bSessionEnded, bool bCleanupResources, UWorld* NewWorld)
 	{
 		auto _p0 = bSessionEnded;
 		auto _p1 = bCleanupResources;
 		auto _p2 = NewWorld;
-		((UWorld*)Self)->CleanupWorld(_p0, _p1, _p2);
+		(Self)->CleanupWorld(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_UWorld_ClearActorComponentEndOfFrameUpdate(INT_PTR Self, UActorComponent* Component)
+	DOTNET_EXPORT void E_UWorld_ClearActorComponentEndOfFrameUpdate(UWorld* Self, UActorComponent* Component)
 	{
 		auto _p0 = Component;
-		((UWorld*)Self)->ClearActorComponentEndOfFrameUpdate(_p0);
+		(Self)->ClearActorComponentEndOfFrameUpdate(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_ClearWorldComponents(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_ClearWorldComponents(UWorld* Self)
 	{
-		((UWorld*)Self)->ClearWorldComponents();
+		(Self)->ClearWorldComponents();
 	}
 
-	DOTNET_EXPORT void E_UWorld_CommitMapChange(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_CommitMapChange(UWorld* Self)
 	{
-		((UWorld*)Self)->CommitMapChange();
+		(Self)->CommitMapChange();
 	}
 
-	DOTNET_EXPORT void E_UWorld_CommitModelSurfaces(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_CommitModelSurfaces(UWorld* Self)
 	{
-		((UWorld*)Self)->CommitModelSurfaces();
+		(Self)->CommitModelSurfaces();
 	}
 
-	DOTNET_EXPORT void E_UWorld_ConditionallyBuildStreamingData(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_ConditionallyBuildStreamingData(UWorld* Self)
 	{
-		((UWorld*)Self)->ConditionallyBuildStreamingData();
+		(Self)->ConditionallyBuildStreamingData();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_ContainsActor(INT_PTR Self, AActor* Actor)
+	DOTNET_EXPORT bool E_UWorld_ContainsActor(UWorld* Self, AActor* Actor)
 	{
 		auto _p0 = Actor;
-		return ((UWorld*)Self)->ContainsActor(_p0);
+		return (Self)->ContainsActor(_p0);
 	}
 
-	DOTNET_EXPORT char* E_UWorld_ConvertToPIEPackageName(INT_PTR Self, char* PackageName, int32 PIEInstanceID, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UWorld_ConvertToPIEPackageName(UWorld* Self, char* PackageName, int32 PIEInstanceID, int& ResultStringLen)
 	{
 		auto _p0 = FString(PackageName);
 		auto _p1 = PIEInstanceID;
-		auto _result = ((UWorld*)Self)->ConvertToPIEPackageName(_p0, _p1);
+		auto _result = (Self)->ConvertToPIEPackageName(_p0, _p1);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_UWorld_CreateFXSystem(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_CreateFXSystem(UWorld* Self)
 	{
-		((UWorld*)Self)->CreateFXSystem();
+		(Self)->CreateFXSystem();
 	}
 
-	DOTNET_EXPORT void E_UWorld_CreatePhysicsScene(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_CreatePhysicsScene(UWorld* Self)
 	{
-		((UWorld*)Self)->CreatePhysicsScene();
+		(Self)->CreatePhysicsScene();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_DebugDrawSceneQueries(INT_PTR Self, char* UsedTraceTag)
+	DOTNET_EXPORT bool E_UWorld_DebugDrawSceneQueries(UWorld* Self, char* UsedTraceTag)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(UsedTraceTag));
-		return ((UWorld*)Self)->DebugDrawSceneQueries(_p0);
+		return (Self)->DebugDrawSceneQueries(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_DelayStreamingVolumeUpdates(INT_PTR Self, int32 InFrameDelay)
+	DOTNET_EXPORT void E_UWorld_DelayStreamingVolumeUpdates(UWorld* Self, int32 InFrameDelay)
 	{
 		auto _p0 = InFrameDelay;
-		((UWorld*)Self)->DelayStreamingVolumeUpdates(_p0);
+		(Self)->DelayStreamingVolumeUpdates(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_DestroyActor(INT_PTR Self, AActor* Actor, bool bNetForce, bool bShouldModifyLevel)
+	DOTNET_EXPORT bool E_UWorld_DestroyActor(UWorld* Self, AActor* Actor, bool bNetForce, bool bShouldModifyLevel)
 	{
 		auto _p0 = Actor;
 		auto _p1 = bNetForce;
 		auto _p2 = bShouldModifyLevel;
-		return ((UWorld*)Self)->DestroyActor(_p0, _p1, _p2);
+		return (Self)->DestroyActor(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_UWorld_DestroyDemoNetDriver(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_DestroyDemoNetDriver(UWorld* Self)
 	{
-		((UWorld*)Self)->DestroyDemoNetDriver();
+		(Self)->DestroyDemoNetDriver();
 	}
 
-	DOTNET_EXPORT void E_UWorld_DuplicateRequestedLevels(INT_PTR Self, char* MapName)
+	DOTNET_EXPORT void E_UWorld_DuplicateRequestedLevels(UWorld* Self, char* MapName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(MapName));
-		((UWorld*)Self)->DuplicateRequestedLevels(_p0);
+		(Self)->DuplicateRequestedLevels(_p0);
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_UWorld_DuplicateWorldForPIE(INT_PTR Self, char* PackageName, UWorld* OwningWorld)
+	DOTNET_EXPORT ObjectPointerDescription E_UWorld_DuplicateWorldForPIE(UWorld* Self, char* PackageName, UWorld* OwningWorld)
 	{
 		auto _p0 = FString(PackageName);
 		auto _p1 = OwningWorld;
-		return MakePrtDesc(((UWorld*)Self)->DuplicateWorldForPIE(_p0, _p1));
+		return MakePrtDesc((Self)->DuplicateWorldForPIE(_p0, _p1));
 	}
 
-	DOTNET_EXPORT bool E_UWorld_EditorDestroyActor(INT_PTR Self, AActor* Actor, bool bShouldModifyLevel)
+	DOTNET_EXPORT bool E_UWorld_EditorDestroyActor(UWorld* Self, AActor* Actor, bool bShouldModifyLevel)
 	{
 		auto _p0 = Actor;
 		auto _p1 = bShouldModifyLevel;
-		return ((UWorld*)Self)->EditorDestroyActor(_p0, _p1);
+		return (Self)->EditorDestroyActor(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_EnsureCollisionTreeIsBuilt(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_EncroachingBlockingGeometry(UWorld* Self, AActor* TestActor, INT_PTR TestLocation, INT_PTR TestRotation, INT_PTR ProposedAdjustment)
 	{
-		((UWorld*)Self)->EnsureCollisionTreeIsBuilt();
+		auto _p0 = TestActor;
+		auto _p1 = *(FVector*)TestLocation;
+		auto _p2 = *(FRotator*)TestRotation;
+		auto _p3 = (FVector*)ProposedAdjustment;
+		return (Self)->EncroachingBlockingGeometry(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_FindTeleportSpot(INT_PTR Self, AActor* TestActor, INT_PTR PlaceLocation, INT_PTR PlaceRotation)
+	DOTNET_EXPORT void E_UWorld_EnsureCollisionTreeIsBuilt(UWorld* Self)
+	{
+		(Self)->EnsureCollisionTreeIsBuilt();
+	}
+
+	DOTNET_EXPORT bool E_UWorld_FindTeleportSpot(UWorld* Self, AActor* TestActor, INT_PTR PlaceLocation, INT_PTR PlaceRotation)
 	{
 		auto _p0 = TestActor;
 		auto _p1 = *(FVector*)PlaceLocation;
 		auto _p2 = *(FRotator*)PlaceRotation;
-		return ((UWorld*)Self)->FindTeleportSpot(_p0, _p1, _p2);
+		return (Self)->FindTeleportSpot(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_UWorld_FinishPhysicsSim(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_FinishPhysicsSim(UWorld* Self)
 	{
-		((UWorld*)Self)->FinishPhysicsSim();
+		(Self)->FinishPhysicsSim();
 	}
 
-	DOTNET_EXPORT void E_UWorld_ForceGarbageCollection(INT_PTR Self, bool bFullPurge)
+	DOTNET_EXPORT void E_UWorld_ForceGarbageCollection(UWorld* Self, bool bFullPurge)
 	{
 		auto _p0 = bFullPurge;
-		((UWorld*)Self)->ForceGarbageCollection(_p0);
+		(Self)->ForceGarbageCollection(_p0);
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetActorCount(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetActorCount(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetActorCount();
+		return (Self)->GetActorCount();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetAudioTimeSeconds(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetAudioTimeSeconds(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetAudioTimeSeconds();
+		return (Self)->GetAudioTimeSeconds();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetDefaultGravityZ(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetDefaultGravityZ(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetDefaultGravityZ();
+		return (Self)->GetDefaultGravityZ();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetDeltaSeconds(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetDeltaSeconds(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetDeltaSeconds();
+		return (Self)->GetDeltaSeconds();
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetDetailMode(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetDetailMode(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetDetailMode();
+		return (Self)->GetDetailMode();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetGravityZ(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetGravityZ(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetGravityZ();
+		return (Self)->GetGravityZ();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetMonoFarFieldCullingDistance(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetMonoFarFieldCullingDistance(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetMonoFarFieldCullingDistance();
+		return (Self)->GetMonoFarFieldCullingDistance();
 	}
 
-	DOTNET_EXPORT ENetMode E_UWorld_GetNetMode(INT_PTR Self)
+	DOTNET_EXPORT ENetMode E_UWorld_GetNetMode(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetNetMode();
+		return (Self)->GetNetMode();
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetNonDefaultPhysicsVolumeCount(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetNonDefaultPhysicsVolumeCount(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetNonDefaultPhysicsVolumeCount();
+		return (Self)->GetNonDefaultPhysicsVolumeCount();
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetNumLevels(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetNumLevels(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetNumLevels();
+		return (Self)->GetNumLevels();
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetNumPawns(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetNumPawns(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetNumPawns();
+		return (Self)->GetNumPawns();
 	}
 
-	DOTNET_EXPORT int32 E_UWorld_GetProgressDenominator(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UWorld_GetProgressDenominator(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetProgressDenominator();
+		return (Self)->GetProgressDenominator();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetRealTimeSeconds(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetRealTimeSeconds(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetRealTimeSeconds();
+		return (Self)->GetRealTimeSeconds();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetTimeSeconds(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetTimeSeconds(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetTimeSeconds();
+		return (Self)->GetTimeSeconds();
 	}
 
-	DOTNET_EXPORT float E_UWorld_GetUnpausedTimeSeconds(INT_PTR Self)
+	DOTNET_EXPORT float E_UWorld_GetUnpausedTimeSeconds(UWorld* Self)
 	{
-		return ((UWorld*)Self)->GetUnpausedTimeSeconds();
+		return (Self)->GetUnpausedTimeSeconds();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_HasBegunPlay(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_HasBegunPlay(UWorld* Self)
 	{
-		return ((UWorld*)Self)->HasBegunPlay();
+		return (Self)->HasBegunPlay();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_HasDefaultPhysicsVolume(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_HasDefaultPhysicsVolume(UWorld* Self)
 	{
-		return ((UWorld*)Self)->HasDefaultPhysicsVolume();
+		return (Self)->HasDefaultPhysicsVolume();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_HasEndOfFrameUpdates(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_HasEndOfFrameUpdates(UWorld* Self)
 	{
-		return ((UWorld*)Self)->HasEndOfFrameUpdates();
+		return (Self)->HasEndOfFrameUpdates();
 	}
 
-	DOTNET_EXPORT void E_UWorld_InitializeActorsForPlay(INT_PTR Self, INT_PTR InURL, bool bResetTime)
+	DOTNET_EXPORT void E_UWorld_InitializeActorsForPlay(UWorld* Self, INT_PTR InURL, bool bResetTime)
 	{
 		auto _p0 = *(FURL*)InURL;
 		auto _p1 = bResetTime;
-		((UWorld*)Self)->InitializeActorsForPlay(_p0, _p1);
+		(Self)->InitializeActorsForPlay(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_InvalidateModelSurface(INT_PTR Self, bool bCurrentLevelOnly)
+	DOTNET_EXPORT void E_UWorld_InvalidateModelSurface(UWorld* Self, bool bCurrentLevelOnly)
 	{
 		auto _p0 = bCurrentLevelOnly;
-		((UWorld*)Self)->InvalidateModelSurface(_p0);
+		(Self)->InvalidateModelSurface(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsCameraMoveable(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsCameraMoveable(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsCameraMoveable();
+		return (Self)->IsCameraMoveable();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsClient(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsClient(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsClient();
+		return (Self)->IsClient();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsEditorWorld(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsEditorWorld(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsEditorWorld();
+		return (Self)->IsEditorWorld();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsGameWorld(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsGameWorld(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsGameWorld();
+		return (Self)->IsGameWorld();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsInSeamlessTravel(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsInSeamlessTravel(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsInSeamlessTravel();
+		return (Self)->IsInSeamlessTravel();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsMapChangeReady(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsMapChangeReady(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsMapChangeReady();
+		return (Self)->IsMapChangeReady();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsNavigationRebuilt(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsNavigationRebuilt(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsNavigationRebuilt();
+		return (Self)->IsNavigationRebuilt();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsNetMode(INT_PTR Self, ENetMode Mode)
+	DOTNET_EXPORT bool E_UWorld_IsNetMode(UWorld* Self, ENetMode Mode)
 	{
 		auto _p0 = Mode;
-		return ((UWorld*)Self)->IsNetMode(_p0);
+		return (Self)->IsNetMode(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPaused(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPaused(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPaused();
+		return (Self)->IsPaused();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPlayInEditor(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPlayInEditor(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPlayInEditor();
+		return (Self)->IsPlayInEditor();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPlayingReplay(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPlayingReplay(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPlayingReplay();
+		return (Self)->IsPlayingReplay();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPlayInMobilePreview(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPlayInMobilePreview(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPlayInMobilePreview();
+		return (Self)->IsPlayInMobilePreview();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPlayInPreview(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPlayInPreview(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPlayInPreview();
+		return (Self)->IsPlayInPreview();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPlayInVulkanPreview(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPlayInVulkanPreview(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPlayInVulkanPreview();
+		return (Self)->IsPlayInVulkanPreview();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPreparingMapChange(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPreparingMapChange(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPreparingMapChange();
+		return (Self)->IsPreparingMapChange();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsPreviewWorld(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsPreviewWorld(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsPreviewWorld();
+		return (Self)->IsPreviewWorld();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsRecordingClientReplay(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsRecordingClientReplay(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsRecordingClientReplay();
+		return (Self)->IsRecordingClientReplay();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsServer(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsServer(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsServer();
+		return (Self)->IsServer();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_IsVisibilityRequestPending(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_IsVisibilityRequestPending(UWorld* Self)
 	{
-		return ((UWorld*)Self)->IsVisibilityRequestPending();
+		return (Self)->IsVisibilityRequestPending();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_Listen(INT_PTR Self, INT_PTR InURL)
+	DOTNET_EXPORT bool E_UWorld_Listen(UWorld* Self, INT_PTR InURL)
 	{
 		auto _p0 = *(FURL*)InURL;
-		return ((UWorld*)Self)->Listen(_p0);
+		return (Self)->Listen(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(INT_PTR Self, UActorComponent* Component, bool bForceGameThread)
+	DOTNET_EXPORT void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(UWorld* Self, UActorComponent* Component, bool bForceGameThread)
 	{
 		auto _p0 = Component;
 		auto _p1 = bForceGameThread;
-		((UWorld*)Self)->MarkActorComponentForNeededEndOfFrameUpdate(_p0, _p1);
+		(Self)->MarkActorComponentForNeededEndOfFrameUpdate(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_PropagateLightingScenarioChange(INT_PTR Self, bool bLevelWasMadeVisible)
+	DOTNET_EXPORT void E_UWorld_ProcessLevelStreamingVolumes(UWorld* Self, INT_PTR OverrideViewLocation)
+	{
+		auto _p0 = (FVector*)OverrideViewLocation;
+		(Self)->ProcessLevelStreamingVolumes(_p0);
+	}
+
+	DOTNET_EXPORT void E_UWorld_PropagateLightingScenarioChange(UWorld* Self, bool bLevelWasMadeVisible)
 	{
 		auto _p0 = bLevelWasMadeVisible;
-		((UWorld*)Self)->PropagateLightingScenarioChange(_p0);
+		(Self)->PropagateLightingScenarioChange(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_RemoveActor(INT_PTR Self, AActor* Actor, bool bShouldModifyLevel)
+	DOTNET_EXPORT void E_UWorld_RemoveActor(UWorld* Self, AActor* Actor, bool bShouldModifyLevel)
 	{
 		auto _p0 = Actor;
 		auto _p1 = bShouldModifyLevel;
-		((UWorld*)Self)->RemoveActor(_p0, _p1);
+		(Self)->RemoveActor(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_RemoveNetworkActor(INT_PTR Self, AActor* Actor)
+	DOTNET_EXPORT void E_UWorld_RemoveNetworkActor(UWorld* Self, AActor* Actor)
 	{
 		auto _p0 = Actor;
-		((UWorld*)Self)->RemoveNetworkActor(_p0);
+		(Self)->RemoveNetworkActor(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_RemovePawn(INT_PTR Self, APawn* Pawn)
+	DOTNET_EXPORT void E_UWorld_RemovePawn(UWorld* Self, APawn* Pawn)
 	{
 		auto _p0 = Pawn;
-		((UWorld*)Self)->RemovePawn(_p0);
+		(Self)->RemovePawn(_p0);
 	}
 
-	DOTNET_EXPORT char* E_UWorld_RemovePIEPrefix(INT_PTR Self, char* Source, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UWorld_RemovePIEPrefix(UWorld* Self, char* Source, int& ResultStringLen)
 	{
 		auto _p0 = FString(Source);
-		auto _result = ((UWorld*)Self)->RemovePIEPrefix(_p0);
+		auto _result = (Self)->RemovePIEPrefix(_p0);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_UWorld_RenameToPIEWorld(INT_PTR Self, int32 PIEInstanceID)
+	DOTNET_EXPORT void E_UWorld_RenameToPIEWorld(UWorld* Self, int32 PIEInstanceID)
 	{
 		auto _p0 = PIEInstanceID;
-		((UWorld*)Self)->RenameToPIEWorld(_p0);
+		(Self)->RenameToPIEWorld(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_RequiresHitProxies(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_RequiresHitProxies(UWorld* Self)
 	{
-		return ((UWorld*)Self)->RequiresHitProxies();
+		return (Self)->RequiresHitProxies();
 	}
 
-	DOTNET_EXPORT void E_UWorld_RunTickGroup(INT_PTR Self, ETickingGroup Group, bool bBlockTillComplete)
+	DOTNET_EXPORT void E_UWorld_RunTickGroup(UWorld* Self, ETickingGroup Group, bool bBlockTillComplete)
 	{
 		auto _p0 = Group;
 		auto _p1 = bBlockTillComplete;
-		((UWorld*)Self)->RunTickGroup(_p0, _p1);
+		(Self)->RunTickGroup(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_SendAllEndOfFrameUpdates(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_SendAllEndOfFrameUpdates(UWorld* Self)
 	{
-		((UWorld*)Self)->SendAllEndOfFrameUpdates();
+		(Self)->SendAllEndOfFrameUpdates();
 	}
 
-	DOTNET_EXPORT bool E_UWorld_SetGameMode(INT_PTR Self, INT_PTR InURL)
+	DOTNET_EXPORT bool E_UWorld_SetGameMode(UWorld* Self, INT_PTR InURL)
 	{
 		auto _p0 = *(FURL*)InURL;
-		return ((UWorld*)Self)->SetGameMode(_p0);
+		return (Self)->SetGameMode(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_SetMapNeedsLightingFullyRebuilt(INT_PTR Self, int32 InNumLightingUnbuiltObjects)
+	DOTNET_EXPORT void E_UWorld_SetMapNeedsLightingFullyRebuilt(UWorld* Self, int32 InNumLightingUnbuiltObjects)
 	{
 		auto _p0 = InNumLightingUnbuiltObjects;
-		((UWorld*)Self)->SetMapNeedsLightingFullyRebuilt(_p0);
+		(Self)->SetMapNeedsLightingFullyRebuilt(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_SetSeamlessTravelMidpointPause(INT_PTR Self, bool bNowPaused)
+	DOTNET_EXPORT void E_UWorld_SetSeamlessTravelMidpointPause(UWorld* Self, bool bNowPaused)
 	{
 		auto _p0 = bNowPaused;
-		((UWorld*)Self)->SetSeamlessTravelMidpointPause(_p0);
+		(Self)->SetSeamlessTravelMidpointPause(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_SetShouldTick(INT_PTR Self, bool bInShouldTick)
+	DOTNET_EXPORT void E_UWorld_SetShouldTick(UWorld* Self, bool bInShouldTick)
 	{
 		auto _p0 = bInShouldTick;
-		((UWorld*)Self)->SetShouldTick(_p0);
+		(Self)->SetShouldTick(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_SetupParameterCollectionInstances(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_SetupParameterCollectionInstances(UWorld* Self)
 	{
-		((UWorld*)Self)->SetupParameterCollectionInstances();
+		(Self)->SetupParameterCollectionInstances();
 	}
 
-	DOTNET_EXPORT void E_UWorld_SetupPhysicsTickFunctions(INT_PTR Self, float DeltaSeconds)
+	DOTNET_EXPORT void E_UWorld_SetupPhysicsTickFunctions(UWorld* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
-		((UWorld*)Self)->SetupPhysicsTickFunctions(_p0);
+		(Self)->SetupPhysicsTickFunctions(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_ShouldTick(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_ShouldTick(UWorld* Self)
 	{
-		return ((UWorld*)Self)->ShouldTick();
+		return (Self)->ShouldTick();
 	}
 
-	DOTNET_EXPORT void E_UWorld_StartPhysicsSim(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_StartPhysicsSim(UWorld* Self)
 	{
-		((UWorld*)Self)->StartPhysicsSim();
+		(Self)->StartPhysicsSim();
 	}
 
-	DOTNET_EXPORT char* E_UWorld_StripPIEPrefixFromPackageName(INT_PTR Self, char* PackageName, char* Prefix, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UWorld_StripPIEPrefixFromPackageName(UWorld* Self, char* PackageName, char* Prefix, int& ResultStringLen)
 	{
 		auto _p0 = FString(PackageName);
 		auto _p1 = FString(Prefix);
-		auto _result = ((UWorld*)Self)->StripPIEPrefixFromPackageName(_p0, _p1);
+		auto _result = (Self)->StripPIEPrefixFromPackageName(_p0, _p1);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_UWorld_Tick(INT_PTR Self, ELevelTick TickType, float DeltaSeconds)
+	DOTNET_EXPORT void E_UWorld_Tick(UWorld* Self, ELevelTick TickType, float DeltaSeconds)
 	{
 		auto _p0 = TickType;
 		auto _p1 = DeltaSeconds;
-		((UWorld*)Self)->Tick(_p0, _p1);
+		(Self)->Tick(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_TickNetClient(INT_PTR Self, float DeltaSeconds)
+	DOTNET_EXPORT void E_UWorld_TickNetClient(UWorld* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
-		((UWorld*)Self)->TickNetClient(_p0);
+		(Self)->TickNetClient(_p0);
 	}
 
-	DOTNET_EXPORT float E_UWorld_TimeSince(INT_PTR Self, float Time)
+	DOTNET_EXPORT float E_UWorld_TimeSince(UWorld* Self, float Time)
 	{
 		auto _p0 = Time;
-		return ((UWorld*)Self)->TimeSince(_p0);
+		return (Self)->TimeSince(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_TransferBlueprintDebugReferences(INT_PTR Self, UWorld* NewWorld)
+	DOTNET_EXPORT void E_UWorld_TransferBlueprintDebugReferences(UWorld* Self, UWorld* NewWorld)
 	{
 		auto _p0 = NewWorld;
-		((UWorld*)Self)->TransferBlueprintDebugReferences(_p0);
+		(Self)->TransferBlueprintDebugReferences(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_TriggerStreamingDataRebuild(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_TriggerStreamingDataRebuild(UWorld* Self)
 	{
-		((UWorld*)Self)->TriggerStreamingDataRebuild();
+		(Self)->TriggerStreamingDataRebuild();
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateActorComponentEndOfFrameUpdateState(INT_PTR Self, UActorComponent* Component)
+	DOTNET_EXPORT void E_UWorld_UpdateActorComponentEndOfFrameUpdateState(UWorld* Self, UActorComponent* Component)
 	{
 		auto _p0 = Component;
-		((UWorld*)Self)->UpdateActorComponentEndOfFrameUpdateState(_p0);
+		(Self)->UpdateActorComponentEndOfFrameUpdateState(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateAllReflectionCaptures(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_UpdateAllReflectionCaptures(UWorld* Self)
 	{
-		((UWorld*)Self)->UpdateAllReflectionCaptures();
+		(Self)->UpdateAllReflectionCaptures();
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateAllSkyCaptures(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_UpdateAllSkyCaptures(UWorld* Self)
 	{
-		((UWorld*)Self)->UpdateAllSkyCaptures();
+		(Self)->UpdateAllSkyCaptures();
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateCullDistanceVolumes(INT_PTR Self, AActor* ActorToUpdate, UPrimitiveComponent* ComponentToUpdate)
+	DOTNET_EXPORT void E_UWorld_UpdateCullDistanceVolumes(UWorld* Self, AActor* ActorToUpdate, UPrimitiveComponent* ComponentToUpdate)
 	{
 		auto _p0 = ActorToUpdate;
 		auto _p1 = ComponentToUpdate;
-		((UWorld*)Self)->UpdateCullDistanceVolumes(_p0, _p1);
+		(Self)->UpdateCullDistanceVolumes(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateLevelStreaming(INT_PTR Self)
+	DOTNET_EXPORT void E_UWorld_UpdateLevelStreaming(UWorld* Self)
 	{
-		((UWorld*)Self)->UpdateLevelStreaming();
+		(Self)->UpdateLevelStreaming();
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateParameterCollectionInstances(INT_PTR Self, bool bUpdateInstanceUniformBuffers)
+	DOTNET_EXPORT void E_UWorld_UpdateParameterCollectionInstances(UWorld* Self, bool bUpdateInstanceUniformBuffers)
 	{
 		auto _p0 = bUpdateInstanceUniformBuffers;
-		((UWorld*)Self)->UpdateParameterCollectionInstances(_p0);
+		(Self)->UpdateParameterCollectionInstances(_p0);
 	}
 
-	DOTNET_EXPORT void E_UWorld_UpdateWorldComponents(INT_PTR Self, bool bRerunConstructionScripts, bool bCurrentLevelOnly)
+	DOTNET_EXPORT void E_UWorld_UpdateWorldComponents(UWorld* Self, bool bRerunConstructionScripts, bool bCurrentLevelOnly)
 	{
 		auto _p0 = bRerunConstructionScripts;
 		auto _p1 = bCurrentLevelOnly;
-		((UWorld*)Self)->UpdateWorldComponents(_p0, _p1);
+		(Self)->UpdateWorldComponents(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_UWorld_UsesGameHiddenFlags(INT_PTR Self)
+	DOTNET_EXPORT bool E_UWorld_UsesGameHiddenFlags(UWorld* Self)
 	{
-		return ((UWorld*)Self)->UsesGameHiddenFlags();
+		return (Self)->UsesGameHiddenFlags();
 	}
 
 }

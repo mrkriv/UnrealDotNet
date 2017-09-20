@@ -65,8 +65,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Change the box extent size. This is the unscaled size, before component scale is applied. </para>
-		/// <para>@param	InBoxExtent: new extent (radius) for the box. </para>
-		/// <para>@param	bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor. </para>
+		/// <param name="InBoxExtent">new extent (radius) for the box. </param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
 		public void SetBoxExtent(FVector InBoxExtent, bool bUpdateOverlaps = true)
 			=> E_UBoxComponent_SetBoxExtent(this, InBoxExtent, bUpdateOverlaps);

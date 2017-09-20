@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
-using Newtonsoft.Json;
-using System.Linq.Expressions;
-using System.ComponentModel;
-using System.Text;
 
 namespace UnrealEngine
 {
@@ -73,7 +70,7 @@ namespace UnrealEngine
                 type = typeof(T);
             }
 
-            var ctor = type.GetConstructor(new[] {typeof(IntPtr)});
+            var ctor = type.GetConstructor(new[] { typeof(IntPtr) });
 
             if (ctor == null)
             {
@@ -81,7 +78,7 @@ namespace UnrealEngine
                 return null;
             }
 
-            var obj = ctor.Invoke(new[] {(object) PtrDesc.Pointer}) as T;
+            var obj = ctor.Invoke(new[] { (object)PtrDesc.Pointer }) as T;
 
             return obj;
         }

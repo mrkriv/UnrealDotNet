@@ -34,197 +34,197 @@ extern "C"
 		return (INT_PTR)NewObject<AHUD>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_AHUD_AddHitBox(INT_PTR Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
+	DOTNET_EXPORT void E_AHUD_AddHitBox(AHUD* Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
 	{
 		auto _p0 = *(FVector2D*)Position;
 		auto _p1 = *(FVector2D*)Size;
 		auto _p2 = FName(UTF8_TO_TCHAR(InName));
 		auto _p3 = bConsumesInput;
 		auto _p4 = Priority;
-		((AHUD*)Self)->AddHitBox(_p0, _p1, _p2, _p3, _p4);
+		(Self)->AddHitBox(_p0, _p1, _p2, _p3, _p4);
 	}
 
-	DOTNET_EXPORT void E_AHUD_AddPostRenderedActor(INT_PTR Self, AActor* A)
+	DOTNET_EXPORT void E_AHUD_AddPostRenderedActor(AHUD* Self, AActor* A)
 	{
 		auto _p0 = A;
-		((AHUD*)Self)->AddPostRenderedActor(_p0);
+		(Self)->AddPostRenderedActor(_p0);
 	}
 
-	DOTNET_EXPORT bool E_AHUD_AnyCurrentHitBoxHits(INT_PTR Self)
+	DOTNET_EXPORT bool E_AHUD_AnyCurrentHitBoxHits(AHUD* Self)
 	{
-		return ((AHUD*)Self)->AnyCurrentHitBoxHits();
+		return (Self)->AnyCurrentHitBoxHits();
 	}
 
-	DOTNET_EXPORT void E_AHUD_Deproject(INT_PTR Self, float ScreenX, float ScreenY, INT_PTR WorldPosition, INT_PTR WorldDirection)
+	DOTNET_EXPORT void E_AHUD_Deproject(AHUD* Self, float ScreenX, float ScreenY, INT_PTR WorldPosition, INT_PTR WorldDirection)
 	{
 		auto _p0 = ScreenX;
 		auto _p1 = ScreenY;
 		auto _p2 = *(FVector*)WorldPosition;
 		auto _p3 = *(FVector*)WorldDirection;
-		((AHUD*)Self)->Deproject(_p0, _p1, _p2, _p3);
+		(Self)->Deproject(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT void E_AHUD_DrawActorOverlays(INT_PTR Self, INT_PTR Viewpoint, INT_PTR ViewRotation)
+	DOTNET_EXPORT void E_AHUD_DrawActorOverlays(AHUD* Self, INT_PTR Viewpoint, INT_PTR ViewRotation)
 	{
 		auto _p0 = *(FVector*)Viewpoint;
 		auto _p1 = *(FRotator*)ViewRotation;
-		((AHUD*)Self)->DrawActorOverlays(_p0, _p1);
+		(Self)->DrawActorOverlays(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AHUD_DrawDebugTextList(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_DrawDebugTextList(AHUD* Self)
 	{
-		((AHUD*)Self)->DrawDebugTextList();
+		(Self)->DrawDebugTextList();
 	}
 
-	DOTNET_EXPORT void E_AHUD_DrawHUD(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_DrawHUD(AHUD* Self)
 	{
-		((AHUD*)Self)->DrawHUD();
+		(Self)->DrawHUD();
 	}
 
-	DOTNET_EXPORT void E_AHUD_DrawSafeZoneOverlay(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_DrawSafeZoneOverlay(AHUD* Self)
 	{
-		((AHUD*)Self)->DrawSafeZoneOverlay();
+		(Self)->DrawSafeZoneOverlay();
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_AHUD_GetOwningPawn(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AHUD_GetOwningPawn(AHUD* Self)
 	{
 		return MakePrtDesc(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
 	}
 
-	DOTNET_EXPORT void E_AHUD_HandleBugScreenShot(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_HandleBugScreenShot(AHUD* Self)
 	{
-		((AHUD*)Self)->HandleBugScreenShot();
+		(Self)->HandleBugScreenShot();
 	}
 
-	DOTNET_EXPORT bool E_AHUD_IsCanvasValid_WarnIfNot(INT_PTR Self)
+	DOTNET_EXPORT bool E_AHUD_IsCanvasValid_WarnIfNot(AHUD* Self)
 	{
 		return ((E_PROTECTED_WRAP_AHUD*)Self)->IsCanvasValid_WarnIfNot_WRAP();
 	}
 
-	DOTNET_EXPORT void E_AHUD_NotifyBindPostProcessEffects(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_NotifyBindPostProcessEffects(AHUD* Self)
 	{
-		((AHUD*)Self)->NotifyBindPostProcessEffects();
+		(Self)->NotifyBindPostProcessEffects();
 	}
 
-	DOTNET_EXPORT void E_AHUD_NotifyHitBoxBeginCursorOver(INT_PTR Self, char* BoxName)
-	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->NotifyHitBoxBeginCursorOver(_p0);
-	}
-
-	DOTNET_EXPORT void E_AHUD_NotifyHitBoxClick(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_NotifyHitBoxBeginCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->NotifyHitBoxClick(_p0);
+		(Self)->NotifyHitBoxBeginCursorOver(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_NotifyHitBoxEndCursorOver(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_NotifyHitBoxClick(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->NotifyHitBoxEndCursorOver(_p0);
+		(Self)->NotifyHitBoxClick(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_NotifyHitBoxRelease(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_NotifyHitBoxEndCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->NotifyHitBoxRelease(_p0);
+		(Self)->NotifyHitBoxEndCursorOver(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_OnLostFocusPause(INT_PTR Self, bool bEnable)
+	DOTNET_EXPORT void E_AHUD_NotifyHitBoxRelease(AHUD* Self, char* BoxName)
+	{
+		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		(Self)->NotifyHitBoxRelease(_p0);
+	}
+
+	DOTNET_EXPORT void E_AHUD_OnLostFocusPause(AHUD* Self, bool bEnable)
 	{
 		auto _p0 = bEnable;
-		((AHUD*)Self)->OnLostFocusPause(_p0);
+		(Self)->OnLostFocusPause(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_PostRender(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_PostRender(AHUD* Self)
 	{
-		((AHUD*)Self)->PostRender();
+		(Self)->PostRender();
 	}
 
-	DOTNET_EXPORT INT_PTR E_AHUD_Project(INT_PTR Self, INT_PTR Location)
+	DOTNET_EXPORT INT_PTR E_AHUD_Project(AHUD* Self, INT_PTR Location)
 	{
 		auto _p0 = *(FVector*)Location;
-		return (INT_PTR) new FVector(((AHUD*)Self)->Project(_p0));
+		return (INT_PTR) new FVector((Self)->Project(_p0));
 	}
 
-	DOTNET_EXPORT void E_AHUD_ReceiveDrawHUD(INT_PTR Self, int32 SizeX, int32 SizeY)
+	DOTNET_EXPORT void E_AHUD_ReceiveDrawHUD(AHUD* Self, int32 SizeX, int32 SizeY)
 	{
 		auto _p0 = SizeX;
 		auto _p1 = SizeY;
-		((AHUD*)Self)->ReceiveDrawHUD(_p0, _p1);
+		(Self)->ReceiveDrawHUD(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxBeginCursorOver(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxBeginCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->ReceiveHitBoxBeginCursorOver(_p0);
+		(Self)->ReceiveHitBoxBeginCursorOver(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxClick(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxClick(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->ReceiveHitBoxClick(_p0);
+		(Self)->ReceiveHitBoxClick(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxEndCursorOver(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxEndCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->ReceiveHitBoxEndCursorOver(_p0);
+		(Self)->ReceiveHitBoxEndCursorOver(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxRelease(INT_PTR Self, char* BoxName)
+	DOTNET_EXPORT void E_AHUD_ReceiveHitBoxRelease(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
-		((AHUD*)Self)->ReceiveHitBoxRelease(_p0);
+		(Self)->ReceiveHitBoxRelease(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_RemoveAllDebugStrings(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_RemoveAllDebugStrings(AHUD* Self)
 	{
-		((AHUD*)Self)->RemoveAllDebugStrings();
+		(Self)->RemoveAllDebugStrings();
 	}
 
-	DOTNET_EXPORT void E_AHUD_RemoveDebugText(INT_PTR Self, AActor* SrcActor, bool bLeaveDurationText)
+	DOTNET_EXPORT void E_AHUD_RemoveDebugText(AHUD* Self, AActor* SrcActor, bool bLeaveDurationText)
 	{
 		auto _p0 = SrcActor;
 		auto _p1 = bLeaveDurationText;
-		((AHUD*)Self)->RemoveDebugText(_p0, _p1);
+		(Self)->RemoveDebugText(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AHUD_RemovePostRenderedActor(INT_PTR Self, AActor* A)
+	DOTNET_EXPORT void E_AHUD_RemovePostRenderedActor(AHUD* Self, AActor* A)
 	{
 		auto _p0 = A;
-		((AHUD*)Self)->RemovePostRenderedActor(_p0);
+		(Self)->RemovePostRenderedActor(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ShowDebug(INT_PTR Self, char* DebugType)
+	DOTNET_EXPORT void E_AHUD_ShowDebug(AHUD* Self, char* DebugType)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(DebugType));
-		((AHUD*)Self)->ShowDebug(_p0);
+		(Self)->ShowDebug(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ShowDebugInfo(INT_PTR Self, float YL, float YPos)
+	DOTNET_EXPORT void E_AHUD_ShowDebugInfo(AHUD* Self, float YL, float YPos)
 	{
 		auto _p0 = YL;
 		auto _p1 = YPos;
-		((AHUD*)Self)->ShowDebugInfo(_p0, _p1);
+		(Self)->ShowDebugInfo(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ShowDebugToggleSubCategory(INT_PTR Self, char* Category)
+	DOTNET_EXPORT void E_AHUD_ShowDebugToggleSubCategory(AHUD* Self, char* Category)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(Category));
-		((AHUD*)Self)->ShowDebugToggleSubCategory(_p0);
+		(Self)->ShowDebugToggleSubCategory(_p0);
 	}
 
-	DOTNET_EXPORT void E_AHUD_ShowHUD(INT_PTR Self)
+	DOTNET_EXPORT void E_AHUD_ShowHUD(AHUD* Self)
 	{
-		((AHUD*)Self)->ShowHUD();
+		(Self)->ShowHUD();
 	}
 
-	DOTNET_EXPORT bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(INT_PTR Self, INT_PTR ClickLocation, EInputEvent InEventType)
+	DOTNET_EXPORT bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(AHUD* Self, INT_PTR ClickLocation, EInputEvent InEventType)
 	{
 		auto _p0 = *(FVector2D*)ClickLocation;
 		auto _p1 = InEventType;
-		return ((AHUD*)Self)->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
+		return (Self)->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
 	}
 
 }

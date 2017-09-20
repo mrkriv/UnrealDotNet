@@ -189,8 +189,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Get the center and extents </para>
-		/// <para>@param center[out] reference to center point </para>
-		/// <para>@param Extents[out] reference to the extent around the center </para>
+		/// <param name="center">out] reference to center point </param>
+		/// <param name="Extents">out] reference to the extent around the center </param>
 		/// <para>@see GetArea, GetCenter, GetExtent, GetSize </para>
 		/// </summary>
 		public void GetCenterAndExtents(FVector2D center, FVector2D Extents)

@@ -48,9 +48,9 @@ extern "C"
 		return (INT_PTR)NewObject<UPlanarReflectionComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT int32 E_UPlanarReflectionComponent_GetPlanarReflectionId(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UPlanarReflectionComponent_GetPlanarReflectionId(UPlanarReflectionComponent* Self)
 	{
-		return ((UPlanarReflectionComponent*)Self)->GetPlanarReflectionId();
+		return (Self)->GetPlanarReflectionId();
 	}
 
 }

@@ -13,7 +13,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Activates the SceneComponent </para>
-		/// <param name="bReset">- The value to assign to HiddenGame. </param>
+		/// <param name="bReset">The value to assign to HiddenGame. </param>
 		/// </summary>
 		public override void Activate(bool bReset) { }
 		
@@ -102,7 +102,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called when a component is destroyed </para>
-		/// <param name="bDestroyingHierarchy">- True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
+		/// <param name="bDestroyingHierarchy">True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
 		/// </summary>
 		public override void OnComponentDestroyed(bool bDestroyingHierarchy) { }
 		
@@ -133,7 +133,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Virtual call chain to register all tick functions </para>
-		/// <param name="bRegister">- true to register, false, to unregister </param>
+		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
 		protected override void RegisterComponentTickFunctions(bool bRegister) { }
 		
@@ -165,28 +165,28 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Sets whether the component is active or not </para>
-		/// <param name="bNewActive">- The new active state of the component </param>
+		/// <param name="bNewActive">The new active state of the component </param>
 		/// </summary>
 		public override void SetActive(bool bNewActive, bool bReset) { }
 		
 		
 		/// <summary>
 		/// <para>Sets whether the component should be auto activate or not. Only safe during construction scripts. </para>
-		/// <param name="bNewAutoActivate">- The new auto activate state of the component </param>
+		/// <param name="bNewAutoActivate">The new auto activate state of the component </param>
 		/// </summary>
 		public override void SetAutoActivate(bool bNewAutoActivate) { }
 		
 		
 		/// <summary>
 		/// <para>Set this component's tick functions to be enabled or disabled. Only has an effect if the function is registered </para>
-		/// <param name="bEnabled">- Whether it should be enabled or not </param>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
 		/// </summary>
 		public override void SetComponentTickEnabled(bool bEnabled) { }
 		
 		
 		/// <summary>
 		/// <para>Spawns a task on GameThread that will call SetComponentTickEnabled </para>
-		/// <param name="bEnabled">- Whether it should be enabled or not </param>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
 		/// </summary>
 		public override void SetComponentTickEnabledAsync(bool bEnabled) { }
 		

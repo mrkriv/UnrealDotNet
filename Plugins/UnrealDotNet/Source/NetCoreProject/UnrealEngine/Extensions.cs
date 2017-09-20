@@ -1,8 +1,8 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.ComponentModel;
-using System;
+using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
@@ -52,10 +52,11 @@ namespace UnrealEngine
             {
                 case MemberTypes.Property:
                     break;
+
                 default:
                     throw new Exception("Member is not property");
             }
-            
+
             return ((PropertyInfo)member).GetDefaultValue<T>();
         }
     }

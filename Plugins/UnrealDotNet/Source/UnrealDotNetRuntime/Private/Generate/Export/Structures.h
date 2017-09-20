@@ -74,9 +74,9 @@ extern "C"
 	DOTNET_EXPORT AActor* E_PROP_FActorSpawnParameters_Template_GET(INT_PTR Ptr) { return ((FActorSpawnParameters*)Ptr)->Template; }
 	DOTNET_EXPORT void E_PROP_FActorSpawnParameters_Template_SET(INT_PTR Ptr, AActor* Value) { ((FActorSpawnParameters*)Ptr)->Template = Value; }
 	
-	DOTNET_EXPORT bool E_FActorSpawnParameters_IsRemoteOwned(INT_PTR Self)
+	DOTNET_EXPORT bool E_FActorSpawnParameters_IsRemoteOwned(FActorSpawnParameters* Self)
 	{
-		return ((FActorSpawnParameters*)Self)->IsRemoteOwned();
+		return (Self)->IsRemoteOwned();
 	}
 
 	
@@ -107,15 +107,15 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(INT_PTR Ptr) { return (INT_PTR)&((FAnimationEvaluationContext*)Ptr)->RootBoneTranslation; }
 	DOTNET_EXPORT void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(INT_PTR Ptr, INT_PTR Value) { ((FAnimationEvaluationContext*)Ptr)->RootBoneTranslation = *(FVector*)Value; }
 	
-	DOTNET_EXPORT void E_FAnimationEvaluationContext_Clear(INT_PTR Self)
+	DOTNET_EXPORT void E_FAnimationEvaluationContext_Clear(FAnimationEvaluationContext* Self)
 	{
-		((FAnimationEvaluationContext*)Self)->Clear();
+		(Self)->Clear();
 	}
 
-	DOTNET_EXPORT void E_FAnimationEvaluationContext_Copy(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT void E_FAnimationEvaluationContext_Copy(FAnimationEvaluationContext* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FAnimationEvaluationContext*)Other;
-		((FAnimationEvaluationContext*)Self)->Copy(_p0);
+		(Self)->Copy(_p0);
 	}
 
 	
@@ -201,24 +201,24 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FBasedMovementInfo_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FBasedMovementInfo*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FBasedMovementInfo*)Ptr)->Rotation = *(FRotator*)Value; }
 	
-	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeLocation(INT_PTR Self)
+	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeLocation(FBasedMovementInfo* Self)
 	{
-		return ((FBasedMovementInfo*)Self)->HasRelativeLocation();
+		return (Self)->HasRelativeLocation();
 	}
 
-	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativePosition(INT_PTR Self)
+	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativePosition(FBasedMovementInfo* Self)
 	{
-		return ((FBasedMovementInfo*)Self)->HasRelativePosition();
+		return (Self)->HasRelativePosition();
 	}
 
-	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeRotation(INT_PTR Self)
+	DOTNET_EXPORT bool E_FBasedMovementInfo_HasRelativeRotation(FBasedMovementInfo* Self)
 	{
-		return ((FBasedMovementInfo*)Self)->HasRelativeRotation();
+		return (Self)->HasRelativeRotation();
 	}
 
-	DOTNET_EXPORT bool E_FBasedMovementInfo_IsBaseUnresolved(INT_PTR Self)
+	DOTNET_EXPORT bool E_FBasedMovementInfo_IsBaseUnresolved(FBasedMovementInfo* Self)
 	{
-		return ((FBasedMovementInfo*)Self)->IsBaseUnresolved();
+		return (Self)->IsBaseUnresolved();
 	}
 
 	
@@ -289,102 +289,102 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FBox_Min_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox*)Ptr)->Min; }
 	DOTNET_EXPORT void E_PROP_FBox_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox*)Ptr)->Min = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_FBox_BuildAABB(INT_PTR Self, INT_PTR Origin, INT_PTR Extent)
+	DOTNET_EXPORT INT_PTR E_FBox_BuildAABB(FBox* Self, INT_PTR Origin, INT_PTR Extent)
 	{
 		auto _p0 = *(FVector*)Origin;
 		auto _p1 = *(FVector*)Extent;
-		return (INT_PTR) new FBox(((FBox*)Self)->BuildAABB(_p0, _p1));
+		return (INT_PTR) new FBox((Self)->BuildAABB(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_FBox_ComputeSquaredDistanceToPoint(INT_PTR Self, INT_PTR Point)
+	DOTNET_EXPORT float E_FBox_ComputeSquaredDistanceToPoint(FBox* Self, INT_PTR Point)
 	{
 		auto _p0 = *(FVector*)Point;
-		return ((FBox*)Self)->ComputeSquaredDistanceToPoint(_p0);
+		return (Self)->ComputeSquaredDistanceToPoint(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_GetCenter(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox_GetCenter(FBox* Self)
 	{
-		return (INT_PTR) new FVector(((FBox*)Self)->GetCenter());
+		return (INT_PTR) new FVector((Self)->GetCenter());
 	}
 
-	DOTNET_EXPORT void E_FBox_GetCenterAndExtents(INT_PTR Self, INT_PTR center, INT_PTR Extents)
+	DOTNET_EXPORT void E_FBox_GetCenterAndExtents(FBox* Self, INT_PTR center, INT_PTR Extents)
 	{
 		auto _p0 = *(FVector*)center;
 		auto _p1 = *(FVector*)Extents;
-		((FBox*)Self)->GetCenterAndExtents(_p0, _p1);
+		(Self)->GetCenterAndExtents(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_GetClosestPointTo(INT_PTR Self, INT_PTR Point)
+	DOTNET_EXPORT INT_PTR E_FBox_GetClosestPointTo(FBox* Self, INT_PTR Point)
 	{
 		auto _p0 = *(FVector*)Point;
-		return (INT_PTR) new FVector(((FBox*)Self)->GetClosestPointTo(_p0));
+		return (INT_PTR) new FVector((Self)->GetClosestPointTo(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_GetExtent(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox_GetExtent(FBox* Self)
 	{
-		return (INT_PTR) new FVector(((FBox*)Self)->GetExtent());
+		return (INT_PTR) new FVector((Self)->GetExtent());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_GetSize(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox_GetSize(FBox* Self)
 	{
-		return (INT_PTR) new FVector(((FBox*)Self)->GetSize());
+		return (INT_PTR) new FVector((Self)->GetSize());
 	}
 
-	DOTNET_EXPORT float E_FBox_GetVolume(INT_PTR Self)
+	DOTNET_EXPORT float E_FBox_GetVolume(FBox* Self)
 	{
-		return ((FBox*)Self)->GetVolume();
+		return (Self)->GetVolume();
 	}
 
-	DOTNET_EXPORT void E_FBox_Init(INT_PTR Self)
+	DOTNET_EXPORT void E_FBox_Init(FBox* Self)
 	{
-		((FBox*)Self)->Init();
+		(Self)->Init();
 	}
 
-	DOTNET_EXPORT bool E_FBox_Intersect(INT_PTR Self, INT_PTR other)
+	DOTNET_EXPORT bool E_FBox_Intersect(FBox* Self, INT_PTR other)
 	{
 		auto _p0 = *(FBox*)other;
-		return ((FBox*)Self)->Intersect(_p0);
+		return (Self)->Intersect(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FBox_IntersectXY(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT bool E_FBox_IntersectXY(FBox* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FBox*)Other;
-		return ((FBox*)Self)->IntersectXY(_p0);
+		return (Self)->IntersectXY(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_InverseTransformBy(INT_PTR Self, INT_PTR M)
+	DOTNET_EXPORT INT_PTR E_FBox_InverseTransformBy(FBox* Self, INT_PTR M)
 	{
 		auto _p0 = *(FTransform*)M;
-		return (INT_PTR) new FBox(((FBox*)Self)->InverseTransformBy(_p0));
+		return (INT_PTR) new FBox((Self)->InverseTransformBy(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FBox_IsInsideOrOn(INT_PTR Self, INT_PTR In)
+	DOTNET_EXPORT bool E_FBox_IsInsideOrOn(FBox* Self, INT_PTR In)
 	{
 		auto _p0 = *(FVector*)In;
-		return ((FBox*)Self)->IsInsideOrOn(_p0);
+		return (Self)->IsInsideOrOn(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_MoveTo(INT_PTR Self, INT_PTR Destination)
+	DOTNET_EXPORT INT_PTR E_FBox_MoveTo(FBox* Self, INT_PTR Destination)
 	{
 		auto _p0 = *(FVector*)Destination;
-		return (INT_PTR) new FBox(((FBox*)Self)->MoveTo(_p0));
+		return (INT_PTR) new FBox((Self)->MoveTo(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_Overlap(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT INT_PTR E_FBox_Overlap(FBox* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FBox*)Other;
-		return (INT_PTR) new FBox(((FBox*)Self)->Overlap(_p0));
+		return (INT_PTR) new FBox((Self)->Overlap(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox_ShiftBy(INT_PTR Self, INT_PTR Offset)
+	DOTNET_EXPORT INT_PTR E_FBox_ShiftBy(FBox* Self, INT_PTR Offset)
 	{
 		auto _p0 = *(FVector*)Offset;
-		return (INT_PTR) new FBox(((FBox*)Self)->ShiftBy(_p0));
+		return (INT_PTR) new FBox((Self)->ShiftBy(_p0));
 	}
 
-	DOTNET_EXPORT char* E_FBox_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FBox_ToString(FBox* Self, int& ResultStringLen)
 	{
-		auto _result = ((FBox*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
@@ -409,71 +409,71 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FBox2D_Min_GET(INT_PTR Ptr) { return (INT_PTR)&((FBox2D*)Ptr)->Min; }
 	DOTNET_EXPORT void E_PROP_FBox2D_Min_SET(INT_PTR Ptr, INT_PTR Value) { ((FBox2D*)Ptr)->Min = *(FVector2D*)Value; }
 	
-	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(INT_PTR Self, INT_PTR Point)
+	DOTNET_EXPORT float E_FBox2D_ComputeSquaredDistanceToPoint(FBox2D* Self, INT_PTR Point)
 	{
 		auto _p0 = *(FVector2D*)Point;
-		return ((FBox2D*)Self)->ComputeSquaredDistanceToPoint(_p0);
+		return (Self)->ComputeSquaredDistanceToPoint(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_ExpandBy(INT_PTR Self, float W)
+	DOTNET_EXPORT INT_PTR E_FBox2D_ExpandBy(FBox2D* Self, float W)
 	{
 		auto _p0 = W;
-		return (INT_PTR) new FBox2D(((FBox2D*)Self)->ExpandBy(_p0));
+		return (INT_PTR) new FBox2D((Self)->ExpandBy(_p0));
 	}
 
-	DOTNET_EXPORT float E_FBox2D_GetArea(INT_PTR Self)
+	DOTNET_EXPORT float E_FBox2D_GetArea(FBox2D* Self)
 	{
-		return ((FBox2D*)Self)->GetArea();
+		return (Self)->GetArea();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_GetCenter(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetCenter(FBox2D* Self)
 	{
-		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetCenter());
+		return (INT_PTR) new FVector2D((Self)->GetCenter());
 	}
 
-	DOTNET_EXPORT void E_FBox2D_GetCenterAndExtents(INT_PTR Self, INT_PTR center, INT_PTR Extents)
+	DOTNET_EXPORT void E_FBox2D_GetCenterAndExtents(FBox2D* Self, INT_PTR center, INT_PTR Extents)
 	{
 		auto _p0 = *(FVector2D*)center;
 		auto _p1 = *(FVector2D*)Extents;
-		((FBox2D*)Self)->GetCenterAndExtents(_p0, _p1);
+		(Self)->GetCenterAndExtents(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_GetClosestPointTo(INT_PTR Self, INT_PTR Point)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetClosestPointTo(FBox2D* Self, INT_PTR Point)
 	{
 		auto _p0 = *(FVector2D*)Point;
-		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetClosestPointTo(_p0));
+		return (INT_PTR) new FVector2D((Self)->GetClosestPointTo(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_GetExtent(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetExtent(FBox2D* Self)
 	{
-		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetExtent());
+		return (INT_PTR) new FVector2D((Self)->GetExtent());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_GetSize(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FBox2D_GetSize(FBox2D* Self)
 	{
-		return (INT_PTR) new FVector2D(((FBox2D*)Self)->GetSize());
+		return (INT_PTR) new FVector2D((Self)->GetSize());
 	}
 
-	DOTNET_EXPORT void E_FBox2D_Init(INT_PTR Self)
+	DOTNET_EXPORT void E_FBox2D_Init(FBox2D* Self)
 	{
-		((FBox2D*)Self)->Init();
+		(Self)->Init();
 	}
 
-	DOTNET_EXPORT bool E_FBox2D_Intersect(INT_PTR Self, INT_PTR other)
+	DOTNET_EXPORT bool E_FBox2D_Intersect(FBox2D* Self, INT_PTR other)
 	{
 		auto _p0 = *(FBox2D*)other;
-		return ((FBox2D*)Self)->Intersect(_p0);
+		return (Self)->Intersect(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FBox2D_ShiftBy(INT_PTR Self, INT_PTR Offset)
+	DOTNET_EXPORT INT_PTR E_FBox2D_ShiftBy(FBox2D* Self, INT_PTR Offset)
 	{
 		auto _p0 = *(FVector2D*)Offset;
-		return (INT_PTR) new FBox2D(((FBox2D*)Self)->ShiftBy(_p0));
+		return (INT_PTR) new FBox2D((Self)->ShiftBy(_p0));
 	}
 
-	DOTNET_EXPORT char* E_FBox2D_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FBox2D_ToString(FBox2D* Self, int& ResultStringLen)
 	{
-		auto _result = ((FBox2D*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
@@ -510,6 +510,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FCameraExposureSettings_SpeedUp_GET(INT_PTR Ptr) { return ((FCameraExposureSettings*)Ptr)->SpeedUp; }
 	DOTNET_EXPORT void E_PROP_FCameraExposureSettings_SpeedUp_SET(INT_PTR Ptr, float Value) { ((FCameraExposureSettings*)Ptr)->SpeedUp = Value; }
 	
+	DOTNET_EXPORT void E_FCameraExposureSettings_ExportToPostProcessSettings(FCameraExposureSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FClassRedirect	*/
 	
@@ -662,6 +668,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FColorGradingSettings_ShadowsMax_GET(INT_PTR Ptr) { return ((FColorGradingSettings*)Ptr)->ShadowsMax; }
 	DOTNET_EXPORT void E_PROP_FColorGradingSettings_ShadowsMax_SET(INT_PTR Ptr, float Value) { ((FColorGradingSettings*)Ptr)->ShadowsMax = Value; }
 	
+	DOTNET_EXPORT void E_FColorGradingSettings_ExportToPostProcessSettings(FColorGradingSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FConvolutionBloomSettings	*/
 	
@@ -685,6 +697,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FConvolutionBloomSettings_Size_GET(INT_PTR Ptr) { return ((FConvolutionBloomSettings*)Ptr)->Size; }
 	DOTNET_EXPORT void E_PROP_FConvolutionBloomSettings_Size_SET(INT_PTR Ptr, float Value) { ((FConvolutionBloomSettings*)Ptr)->Size = Value; }
 	
+	DOTNET_EXPORT void E_FConvolutionBloomSettings_ExportToPostProcessSettings(FConvolutionBloomSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FDestructibleChunkInfo	*/
 	
@@ -771,9 +789,9 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_FExposureSettings_LogOffset_GET(INT_PTR Ptr) { return ((FExposureSettings*)Ptr)->LogOffset; }
 	DOTNET_EXPORT void E_PROP_FExposureSettings_LogOffset_SET(INT_PTR Ptr, int32 Value) { ((FExposureSettings*)Ptr)->LogOffset = Value; }
 	
-	DOTNET_EXPORT char* E_FExposureSettings_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FExposureSettings_ToString(FExposureSettings* Self, int& ResultStringLen)
 	{
-		auto _result = ((FExposureSettings*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
@@ -798,6 +816,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FFilmStockSettings_WhiteClip_GET(INT_PTR Ptr) { return ((FFilmStockSettings*)Ptr)->WhiteClip; }
 	DOTNET_EXPORT void E_PROP_FFilmStockSettings_WhiteClip_SET(INT_PTR Ptr, float Value) { ((FFilmStockSettings*)Ptr)->WhiteClip = Value; }
 	
+	DOTNET_EXPORT void E_FFilmStockSettings_ExportToPostProcessSettings(FFilmStockSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FFullyLoadedPackagesInfo	*/
 	
@@ -878,6 +902,12 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FLensBloomSettings_Convolution_GET(INT_PTR Ptr) { return (INT_PTR)&((FLensBloomSettings*)Ptr)->Convolution; }
 	DOTNET_EXPORT void E_PROP_FLensBloomSettings_Convolution_SET(INT_PTR Ptr, INT_PTR Value) { ((FLensBloomSettings*)Ptr)->Convolution = *(FConvolutionBloomSettings*)Value; }
 	
+	DOTNET_EXPORT void E_FLensBloomSettings_ExportToPostProcessSettings(FLensBloomSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FLensImperfectionSettings	*/
 	
@@ -886,6 +916,12 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(INT_PTR Ptr) { return ((FLensImperfectionSettings*)Ptr)->DirtMaskIntensity; }
 	DOTNET_EXPORT void E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(INT_PTR Ptr, float Value) { ((FLensImperfectionSettings*)Ptr)->DirtMaskIntensity = Value; }
 	
+	DOTNET_EXPORT void E_FLensImperfectionSettings_ExportToPostProcessSettings(FLensImperfectionSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FLensSettings	*/
 	
@@ -900,29 +936,35 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FLensSettings_Imperfections_GET(INT_PTR Ptr) { return (INT_PTR)&((FLensSettings*)Ptr)->Imperfections; }
 	DOTNET_EXPORT void E_PROP_FLensSettings_Imperfections_SET(INT_PTR Ptr, INT_PTR Value) { ((FLensSettings*)Ptr)->Imperfections = *(FLensImperfectionSettings*)Value; }
 	
+	DOTNET_EXPORT void E_FLensSettings_ExportToPostProcessSettings(FLensSettings* Self, INT_PTR OutPostProcessSettings)
+	{
+		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
+		(Self)->ExportToPostProcessSettings(_p0);
+	}
+
 	
 	/*	FLevelStreamingGCHelper	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingGCHelper() { return (INT_PTR) new FLevelStreamingGCHelper(); }
 	
-	DOTNET_EXPORT void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(INT_PTR Self)
+	DOTNET_EXPORT void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(FLevelStreamingGCHelper* Self)
 	{
-		((FLevelStreamingGCHelper*)Self)->AddGarbageCollectorCallback();
+		(Self)->AddGarbageCollectorCallback();
 	}
 
-	DOTNET_EXPORT int32 E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(INT_PTR Self)
+	DOTNET_EXPORT int32 E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(FLevelStreamingGCHelper* Self)
 	{
-		return ((FLevelStreamingGCHelper*)Self)->GetNumLevelsPendingPurge();
+		return (Self)->GetNumLevelsPendingPurge();
 	}
 
-	DOTNET_EXPORT void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(INT_PTR Self)
+	DOTNET_EXPORT void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(FLevelStreamingGCHelper* Self)
 	{
-		((FLevelStreamingGCHelper*)Self)->PrepareStreamedOutLevelsForGC();
+		(Self)->PrepareStreamedOutLevelsForGC();
 	}
 
-	DOTNET_EXPORT void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(INT_PTR Self)
+	DOTNET_EXPORT void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(FLevelStreamingGCHelper* Self)
 	{
-		((FLevelStreamingGCHelper*)Self)->VerifyLevelsGotRemovedByGC();
+		(Self)->VerifyLevelsGotRemovedByGC();
 	}
 
 	
@@ -1028,9 +1070,9 @@ extern "C"
 	DOTNET_EXPORT bool E_PROP_FOverlapInfo_bFromSweep_GET(INT_PTR Ptr) { return ((FOverlapInfo*)Ptr)->bFromSweep; }
 	DOTNET_EXPORT void E_PROP_FOverlapInfo_bFromSweep_SET(INT_PTR Ptr, bool Value) { ((FOverlapInfo*)Ptr)->bFromSweep = Value; }
 	
-	DOTNET_EXPORT int32 E_FOverlapInfo_GetBodyIndex(INT_PTR Self)
+	DOTNET_EXPORT int32 E_FOverlapInfo_GetBodyIndex(FOverlapInfo* Self)
 	{
-		return ((FOverlapInfo*)Self)->GetBodyIndex();
+		return (Self)->GetBodyIndex();
 	}
 
 	
@@ -1061,22 +1103,22 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FPlane_W_GET(INT_PTR Ptr) { return ((FPlane*)Ptr)->W; }
 	DOTNET_EXPORT void E_PROP_FPlane_W_SET(INT_PTR Ptr, float Value) { ((FPlane*)Ptr)->W = Value; }
 	
-	DOTNET_EXPORT bool E_FPlane_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
+	DOTNET_EXPORT bool E_FPlane_Equals(FPlane* Self, INT_PTR V, float Tolerance)
 	{
 		auto _p0 = *(FPlane*)V;
 		auto _p1 = Tolerance;
-		return ((FPlane*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FPlane_Flip(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FPlane_Flip(FPlane* Self)
 	{
-		return (INT_PTR) new FPlane(((FPlane*)Self)->Flip());
+		return (INT_PTR) new FPlane((Self)->Flip());
 	}
 
-	DOTNET_EXPORT float E_FPlane_PlaneDot(INT_PTR Self, INT_PTR P)
+	DOTNET_EXPORT float E_FPlane_PlaneDot(FPlane* Self, INT_PTR P)
 	{
 		auto _p0 = *(FVector*)P;
-		return ((FPlane*)Self)->PlaneDot(_p0);
+		return (Self)->PlaneDot(_p0);
 	}
 
 	
@@ -1100,6 +1142,393 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FPluginRedirect_OldPluginName_SET(INT_PTR Ptr, char* Value) { ((FPluginRedirect*)Ptr)->OldPluginName = UTF8_TO_TCHAR(Value); }
 	
+	
+	/*	FPostProcessSettings	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPostProcessSettings() { return (INT_PTR) new FPostProcessSettings(); }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientCubemapIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientCubemapIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientCubemapIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientCubemapIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionBias_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionBias; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionBias_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionBias = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionDistance_DEPRECATED_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionDistance_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionDistance_DEPRECATED_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionDistance_DEPRECATED = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionFadeDistance_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionFadeDistance; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionFadeDistance_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionFadeDistance = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionFadeRadius_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionFadeRadius; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionFadeRadius_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionFadeRadius = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionMipBlend_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipBlend; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionMipBlend_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipBlend = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionMipScale_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipScale; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionMipScale_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipScale = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionMipThreshold_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipThreshold; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionMipThreshold_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionMipThreshold = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionPower_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionPower; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionPower_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionPower = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionQuality_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionQuality; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionQuality_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionQuality = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionRadius_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionRadius; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionRadius_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionRadius = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AmbientOcclusionStaticFraction_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AmbientOcclusionStaticFraction; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionStaticFraction_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AmbientOcclusionStaticFraction = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureBias_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureBias; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureBias_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureBias = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureHighPercent_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureHighPercent; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureHighPercent_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureHighPercent = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureLowPercent_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureLowPercent; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureLowPercent_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureLowPercent = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureMaxBrightness_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureMaxBrightness; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureMaxBrightness_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureMaxBrightness = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureMinBrightness_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureMinBrightness; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureMinBrightness_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureMinBrightness = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureSpeedDown_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureSpeedDown; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureSpeedDown_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureSpeedDown = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_AutoExposureSpeedUp_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->AutoExposureSpeedUp; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureSpeedUp_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->AutoExposureSpeedUp = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom1Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom1Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom1Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom1Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom2Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom2Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom2Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom2Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom3Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom3Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom3Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom3Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom4Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom4Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom4Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom4Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom5Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom5Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom5Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom5Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_Bloom6Size_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->Bloom6Size; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom6Size_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->Bloom6Size = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomConvolutionBufferScale_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomConvolutionBufferScale; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionBufferScale_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionBufferScale = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_BloomConvolutionCenterUV_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->BloomConvolutionCenterUV; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionCenterUV_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionCenterUV = *(FVector2D*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilter_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilter_DEPRECATED = *(FVector*)Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMax_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMax; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMax_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMax = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMin_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMin; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMin_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMin = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMult_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMult; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMult_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionPreFilterMult = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomConvolutionSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomConvolutionSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomConvolutionSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomDirtMaskIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomDirtMaskIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomSizeScale_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomSizeScale; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomSizeScale_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomSizeScale = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_BloomThreshold_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->BloomThreshold; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomThreshold_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->BloomThreshold = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorContrast_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorContrast; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorContrast_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorContrast = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorContrastHighlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorContrastHighlights; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorContrastHighlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorContrastHighlights = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorContrastMidtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorContrastMidtones; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorContrastMidtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorContrastMidtones = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorContrastShadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorContrastShadows; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorContrastShadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorContrastShadows = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ColorCorrectionHighlightsMin_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ColorCorrectionHighlightsMin; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorCorrectionHighlightsMin_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ColorCorrectionHighlightsMin = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ColorCorrectionShadowsMax_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ColorCorrectionShadowsMax; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorCorrectionShadowsMax_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ColorCorrectionShadowsMax = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGain_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGain; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGain_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGain = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGainHighlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGainHighlights; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGainHighlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGainHighlights = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGainMidtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGainMidtones; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGainMidtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGainMidtones = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGainShadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGainShadows; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGainShadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGainShadows = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGamma_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGamma; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGamma_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGamma = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGammaHighlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGammaHighlights; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGammaHighlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGammaHighlights = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGammaMidtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGammaMidtones; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGammaMidtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGammaMidtones = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorGammaShadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorGammaShadows; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGammaShadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorGammaShadows = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ColorGradingIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ColorGradingIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorGradingIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ColorGradingIntensity = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorOffset_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorOffset; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorOffset_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorOffset = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorOffsetHighlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorOffsetHighlights; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorOffsetHighlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorOffsetHighlights = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorOffsetMidtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorOffsetMidtones; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorOffsetMidtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorOffsetMidtones = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorOffsetShadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorOffsetShadows; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorOffsetShadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorOffsetShadows = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorSaturation_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorSaturation; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorSaturation_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorSaturation = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorSaturationHighlights_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorSaturationHighlights; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorSaturationHighlights_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorSaturationHighlights = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorSaturationMidtones_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorSaturationMidtones; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorSaturationMidtones_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorSaturationMidtones = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_ColorSaturationShadows_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->ColorSaturationShadows; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorSaturationShadows_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->ColorSaturationShadows = *(FVector4*)Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldColorThreshold_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldColorThreshold; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldColorThreshold_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldColorThreshold = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldDepthBlurAmount_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldDepthBlurAmount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldDepthBlurAmount_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldDepthBlurAmount = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldDepthBlurRadius_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldDepthBlurRadius; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldDepthBlurRadius_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldDepthBlurRadius = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldFarBlurSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldFarBlurSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldFarBlurSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldFarBlurSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldFarTransitionRegion_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldFarTransitionRegion; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldFarTransitionRegion_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldFarTransitionRegion = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldFocalDistance_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldFocalDistance; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldFocalDistance_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldFocalDistance = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldFocalRegion_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldFocalRegion; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldFocalRegion_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldFocalRegion = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldFstop_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldFstop; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldFstop_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldFstop = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldMaxBokehSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldMaxBokehSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldMaxBokehSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldMaxBokehSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldNearBlurSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldNearBlurSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldNearBlurSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldNearBlurSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldNearTransitionRegion_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldNearTransitionRegion; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldNearTransitionRegion_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldNearTransitionRegion = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldOcclusion_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldOcclusion; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldOcclusion_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldOcclusion = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldScale_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldScale; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldScale_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldScale = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldSensorWidth_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldSensorWidth; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldSensorWidth_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldSensorWidth = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldSizeThreshold_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldSizeThreshold; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldSizeThreshold_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldSizeThreshold = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldSkyFocusDistance_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldSkyFocusDistance; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldSkyFocusDistance_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldSkyFocusDistance = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->DepthOfFieldVignetteSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->DepthOfFieldVignetteSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmBlackClip_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmBlackClip; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmBlackClip_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmBlackClip = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmContrast_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmContrast; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmContrast_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmContrast = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmDynamicRange_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmDynamicRange; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmDynamicRange_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmDynamicRange = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmHealAmount_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmHealAmount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmHealAmount_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmHealAmount = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmSaturation_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmSaturation; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmSaturation_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmSaturation = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmShadowTintAmount_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmShadowTintAmount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmShadowTintAmount_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmShadowTintAmount = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmShadowTintBlend_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmShadowTintBlend; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmShadowTintBlend_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmShadowTintBlend = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmShoulder_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmShoulder; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmShoulder_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmShoulder = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmSlope_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmSlope; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmSlope_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmSlope = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmToe_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmToe; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmToe_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmToe = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmToeAmount_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmToeAmount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmToeAmount_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmToeAmount = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_FilmWhiteClip_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->FilmWhiteClip; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmWhiteClip_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->FilmWhiteClip = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_GrainIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->GrainIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_GrainIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->GrainIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_GrainJitter_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->GrainJitter; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_GrainJitter_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->GrainJitter = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_HistogramLogMax_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->HistogramLogMax; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_HistogramLogMax_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->HistogramLogMax = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_HistogramLogMin_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->HistogramLogMin; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_HistogramLogMin_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->HistogramLogMin = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_IndirectLightingIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->IndirectLightingIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_IndirectLightingIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->IndirectLightingIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LensFlareBokehSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LensFlareBokehSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LensFlareBokehSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LensFlareBokehSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LensFlareIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LensFlareIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LensFlareIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LensFlareIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LensFlareThreshold_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LensFlareThreshold; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LensFlareThreshold_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LensFlareThreshold = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVDiffuseOcclusionExponent_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVDiffuseOcclusionExponent; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDiffuseOcclusionExponent_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVDiffuseOcclusionExponent = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVDiffuseOcclusionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVDiffuseOcclusionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDiffuseOcclusionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVDiffuseOcclusionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVDirectionalOcclusionFadeRange_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionFadeRange; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDirectionalOcclusionFadeRange_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionFadeRange = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVDirectionalOcclusionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDirectionalOcclusionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVDirectionalOcclusionRadius_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionRadius; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDirectionalOcclusionRadius_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVDirectionalOcclusionRadius = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVEmissiveInjectionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVEmissiveInjectionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVEmissiveInjectionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVEmissiveInjectionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVFadeRange_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVFadeRange; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVFadeRange_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVFadeRange = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVGeometryVolumeBias_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVGeometryVolumeBias; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVGeometryVolumeBias_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVGeometryVolumeBias = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVSecondaryBounceIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVSecondaryBounceIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVSecondaryBounceIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVSecondaryBounceIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVSecondaryOcclusionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVSecondaryOcclusionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVSecondaryOcclusionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVSecondaryOcclusionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVSpecularOcclusionExponent_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVSpecularOcclusionExponent; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVSpecularOcclusionExponent_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVSpecularOcclusionExponent = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVSpecularOcclusionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVSpecularOcclusionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVSpecularOcclusionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVSpecularOcclusionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_LPVVplInjectionBias_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->LPVVplInjectionBias; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVVplInjectionBias_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->LPVVplInjectionBias = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_MotionBlurAmount_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->MotionBlurAmount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_MotionBlurAmount_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->MotionBlurAmount = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_MotionBlurMax_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->MotionBlurMax; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_MotionBlurMax_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->MotionBlurMax = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_MotionBlurPerObjectSize_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->MotionBlurPerObjectSize; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_MotionBlurPerObjectSize_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->MotionBlurPerObjectSize = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_SceneFringeIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->SceneFringeIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_SceneFringeIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->SceneFringeIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ScreenPercentage_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ScreenPercentage; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ScreenPercentage_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ScreenPercentage = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ScreenSpaceReflectionIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ScreenSpaceReflectionIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionIntensity = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ScreenSpaceReflectionMaxRoughness_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionMaxRoughness; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ScreenSpaceReflectionMaxRoughness_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionMaxRoughness = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_ScreenSpaceReflectionQuality_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionQuality; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ScreenSpaceReflectionQuality_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->ScreenSpaceReflectionQuality = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_VignetteIntensity_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->VignetteIntensity; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_VignetteIntensity_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->VignetteIntensity = Value; }
+	
+	DOTNET_EXPORT INT_PTR E_PROP_FPostProcessSettings_WeightedBlendables_GET(INT_PTR Ptr) { return (INT_PTR)&((FPostProcessSettings*)Ptr)->WeightedBlendables; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_WeightedBlendables_SET(INT_PTR Ptr, INT_PTR Value) { ((FPostProcessSettings*)Ptr)->WeightedBlendables = *(FWeightedBlendables*)Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_WhiteTemp_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->WhiteTemp; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_WhiteTemp_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->WhiteTemp = Value; }
+	
+	DOTNET_EXPORT float E_PROP_FPostProcessSettings_WhiteTint_GET(INT_PTR Ptr) { return ((FPostProcessSettings*)Ptr)->WhiteTint; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_WhiteTint_SET(INT_PTR Ptr, float Value) { ((FPostProcessSettings*)Ptr)->WhiteTint = Value; }
+	
+	DOTNET_EXPORT void E_FPostProcessSettings_OnAfterLoad(FPostProcessSettings* Self)
+	{
+		(Self)->OnAfterLoad();
+	}
+
+	DOTNET_EXPORT void E_FPostProcessSettings_SetBaseValues(FPostProcessSettings* Self)
+	{
+		(Self)->SetBaseValues();
+	}
+
 	
 	/*	FPreCulledStaticMeshSection	*/
 	
@@ -1130,65 +1559,65 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FQuat_Z_GET(INT_PTR Ptr) { return ((FQuat*)Ptr)->Z; }
 	DOTNET_EXPORT void E_PROP_FQuat_Z_SET(INT_PTR Ptr, float Value) { ((FQuat*)Ptr)->Z = Value; }
 	
-	DOTNET_EXPORT float E_FQuat_AngularDistance(INT_PTR Self, INT_PTR Q)
+	DOTNET_EXPORT float E_FQuat_AngularDistance(FQuat* Self, INT_PTR Q)
 	{
 		auto _p0 = *(FQuat*)Q;
-		return ((FQuat*)Self)->AngularDistance(_p0);
+		return (Self)->AngularDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_FQuat_CalcTangents(INT_PTR Self, INT_PTR PrevP, INT_PTR P, INT_PTR NextP, float Tension, INT_PTR OutTan)
+	DOTNET_EXPORT void E_FQuat_CalcTangents(FQuat* Self, INT_PTR PrevP, INT_PTR P, INT_PTR NextP, float Tension, INT_PTR OutTan)
 	{
 		auto _p0 = *(FQuat*)PrevP;
 		auto _p1 = *(FQuat*)P;
 		auto _p2 = *(FQuat*)NextP;
 		auto _p3 = Tension;
 		auto _p4 = *(FQuat*)OutTan;
-		((FQuat*)Self)->CalcTangents(_p0, _p1, _p2, _p3, _p4);
+		(Self)->CalcTangents(_p0, _p1, _p2, _p3, _p4);
 	}
 
-	DOTNET_EXPORT bool E_FQuat_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT bool E_FQuat_ContainsNaN(FQuat* Self)
 	{
-		return ((FQuat*)Self)->ContainsNaN();
+		return (Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT void E_FQuat_EnforceShortestArcWith(INT_PTR Self, INT_PTR OtherQuat)
+	DOTNET_EXPORT void E_FQuat_EnforceShortestArcWith(FQuat* Self, INT_PTR OtherQuat)
 	{
 		auto _p0 = *(FQuat*)OtherQuat;
-		((FQuat*)Self)->EnforceShortestArcWith(_p0);
+		(Self)->EnforceShortestArcWith(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FQuat_Equals(INT_PTR Self, INT_PTR Q, float Tolerance)
+	DOTNET_EXPORT bool E_FQuat_Equals(FQuat* Self, INT_PTR Q, float Tolerance)
 	{
 		auto _p0 = *(FQuat*)Q;
 		auto _p1 = Tolerance;
-		return ((FQuat*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FQuat_Error(INT_PTR Self, INT_PTR Q1, INT_PTR Q2)
+	DOTNET_EXPORT float E_FQuat_Error(FQuat* Self, INT_PTR Q1, INT_PTR Q2)
 	{
 		auto _p0 = *(FQuat*)Q1;
 		auto _p1 = *(FQuat*)Q2;
-		return ((FQuat*)Self)->Error(_p0, _p1);
+		return (Self)->Error(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FQuat_ErrorAutoNormalize(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT float E_FQuat_ErrorAutoNormalize(FQuat* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FQuat*)A;
 		auto _p1 = *(FQuat*)B;
-		return ((FQuat*)Self)->ErrorAutoNormalize(_p0, _p1);
+		return (Self)->ErrorAutoNormalize(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Euler(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Euler(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->Euler());
+		return (INT_PTR) new FVector((Self)->Euler());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Exp(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Exp(FQuat* Self)
 	{
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Exp());
+		return (INT_PTR) new FQuat((Self)->Exp());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_FastBilerp(INT_PTR Self, INT_PTR P00, INT_PTR P10, INT_PTR P01, INT_PTR P11, float FracX, float FracY)
+	DOTNET_EXPORT INT_PTR E_FQuat_FastBilerp(FQuat* Self, INT_PTR P00, INT_PTR P10, INT_PTR P01, INT_PTR P11, float FracX, float FracY)
 	{
 		auto _p0 = *(FQuat*)P00;
 		auto _p1 = *(FQuat*)P10;
@@ -1196,216 +1625,216 @@ extern "C"
 		auto _p3 = *(FQuat*)P11;
 		auto _p4 = FracX;
 		auto _p5 = FracY;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->FastBilerp(_p0, _p1, _p2, _p3, _p4, _p5));
+		return (INT_PTR) new FQuat((Self)->FastBilerp(_p0, _p1, _p2, _p3, _p4, _p5));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_FastLerp(INT_PTR Self, INT_PTR A, INT_PTR B, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_FastLerp(FQuat* Self, INT_PTR A, INT_PTR B, float Alpha)
 	{
 		auto _p0 = *(FQuat*)A;
 		auto _p1 = *(FQuat*)B;
 		auto _p2 = Alpha;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->FastLerp(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat((Self)->FastLerp(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_FindBetween(INT_PTR Self, INT_PTR Vector1, INT_PTR Vector2)
+	DOTNET_EXPORT INT_PTR E_FQuat_FindBetween(FQuat* Self, INT_PTR Vector1, INT_PTR Vector2)
 	{
 		auto _p0 = *(FVector*)Vector1;
 		auto _p1 = *(FVector*)Vector2;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->FindBetween(_p0, _p1));
+		return (INT_PTR) new FQuat((Self)->FindBetween(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_FindBetweenNormals(INT_PTR Self, INT_PTR Normal1, INT_PTR Normal2)
+	DOTNET_EXPORT INT_PTR E_FQuat_FindBetweenNormals(FQuat* Self, INT_PTR Normal1, INT_PTR Normal2)
 	{
 		auto _p0 = *(FVector*)Normal1;
 		auto _p1 = *(FVector*)Normal2;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->FindBetweenNormals(_p0, _p1));
+		return (INT_PTR) new FQuat((Self)->FindBetweenNormals(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_FindBetweenVectors(INT_PTR Self, INT_PTR Vector1, INT_PTR Vector2)
+	DOTNET_EXPORT INT_PTR E_FQuat_FindBetweenVectors(FQuat* Self, INT_PTR Vector1, INT_PTR Vector2)
 	{
 		auto _p0 = *(FVector*)Vector1;
 		auto _p1 = *(FVector*)Vector2;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->FindBetweenVectors(_p0, _p1));
+		return (INT_PTR) new FQuat((Self)->FindBetweenVectors(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisX(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisX(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetAxisX());
+		return (INT_PTR) new FVector((Self)->GetAxisX());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisY(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisY(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetAxisY());
+		return (INT_PTR) new FVector((Self)->GetAxisY());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisZ(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetAxisZ(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetAxisZ());
+		return (INT_PTR) new FVector((Self)->GetAxisZ());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_GetForwardVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetForwardVector(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetForwardVector());
+		return (INT_PTR) new FVector((Self)->GetForwardVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_GetNormalized(INT_PTR Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->GetNormalized(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FQuat_GetRightVector(INT_PTR Self)
-	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetRightVector());
-	}
-
-	DOTNET_EXPORT INT_PTR E_FQuat_GetRotationAxis(INT_PTR Self)
-	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetRotationAxis());
-	}
-
-	DOTNET_EXPORT INT_PTR E_FQuat_GetUpVector(INT_PTR Self)
-	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->GetUpVector());
-	}
-
-	DOTNET_EXPORT INT_PTR E_FQuat_Inverse(INT_PTR Self)
-	{
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Inverse());
-	}
-
-	DOTNET_EXPORT bool E_FQuat_IsIdentity(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetNormalized(FQuat* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FQuat*)Self)->IsIdentity(_p0);
+		return (INT_PTR) new FQuat((Self)->GetNormalized(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FQuat_IsNormalized(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetRightVector(FQuat* Self)
 	{
-		return ((FQuat*)Self)->IsNormalized();
+		return (INT_PTR) new FVector((Self)->GetRightVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Log(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetRotationAxis(FQuat* Self)
 	{
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Log());
+		return (INT_PTR) new FVector((Self)->GetRotationAxis());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_MakeFromEuler(INT_PTR Self, INT_PTR Euler)
+	DOTNET_EXPORT INT_PTR E_FQuat_GetUpVector(FQuat* Self)
+	{
+		return (INT_PTR) new FVector((Self)->GetUpVector());
+	}
+
+	DOTNET_EXPORT INT_PTR E_FQuat_Inverse(FQuat* Self)
+	{
+		return (INT_PTR) new FQuat((Self)->Inverse());
+	}
+
+	DOTNET_EXPORT bool E_FQuat_IsIdentity(FQuat* Self, float Tolerance)
+	{
+		auto _p0 = Tolerance;
+		return (Self)->IsIdentity(_p0);
+	}
+
+	DOTNET_EXPORT bool E_FQuat_IsNormalized(FQuat* Self)
+	{
+		return (Self)->IsNormalized();
+	}
+
+	DOTNET_EXPORT INT_PTR E_FQuat_Log(FQuat* Self)
+	{
+		return (INT_PTR) new FQuat((Self)->Log());
+	}
+
+	DOTNET_EXPORT INT_PTR E_FQuat_MakeFromEuler(FQuat* Self, INT_PTR Euler)
 	{
 		auto _p0 = *(FVector*)Euler;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->MakeFromEuler(_p0));
+		return (INT_PTR) new FQuat((Self)->MakeFromEuler(_p0));
 	}
 
-	DOTNET_EXPORT void E_FQuat_Normalize(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT void E_FQuat_Normalize(FQuat* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		((FQuat*)Self)->Normalize(_p0);
+		(Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_RotateVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FQuat_RotateVector(FQuat* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FQuat*)Self)->RotateVector(_p0));
+		return (INT_PTR) new FVector((Self)->RotateVector(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Rotator(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Rotator(FQuat* Self)
 	{
-		return (INT_PTR) new FRotator(((FQuat*)Self)->Rotator());
+		return (INT_PTR) new FRotator((Self)->Rotator());
 	}
 
-	DOTNET_EXPORT float E_FQuat_Size(INT_PTR Self)
+	DOTNET_EXPORT float E_FQuat_Size(FQuat* Self)
 	{
-		return ((FQuat*)Self)->Size();
+		return (Self)->Size();
 	}
 
-	DOTNET_EXPORT float E_FQuat_SizeSquared(INT_PTR Self)
+	DOTNET_EXPORT float E_FQuat_SizeSquared(FQuat* Self)
 	{
-		return ((FQuat*)Self)->SizeSquared();
+		return (Self)->SizeSquared();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Slerp(INT_PTR Self, INT_PTR Quat1, INT_PTR Quat2, float Slerp)
-	{
-		auto _p0 = *(FQuat*)Quat1;
-		auto _p1 = *(FQuat*)Quat2;
-		auto _p2 = Slerp;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Slerp(_p0, _p1, _p2));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FQuat_Slerp_NotNormalized(INT_PTR Self, INT_PTR Quat1, INT_PTR Quat2, float Slerp)
+	DOTNET_EXPORT INT_PTR E_FQuat_Slerp(FQuat* Self, INT_PTR Quat1, INT_PTR Quat2, float Slerp)
 	{
 		auto _p0 = *(FQuat*)Quat1;
 		auto _p1 = *(FQuat*)Quat2;
 		auto _p2 = Slerp;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Slerp_NotNormalized(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat((Self)->Slerp(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_SlerpFullPath(INT_PTR Self, INT_PTR quat1, INT_PTR quat2, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_Slerp_NotNormalized(FQuat* Self, INT_PTR Quat1, INT_PTR Quat2, float Slerp)
+	{
+		auto _p0 = *(FQuat*)Quat1;
+		auto _p1 = *(FQuat*)Quat2;
+		auto _p2 = Slerp;
+		return (INT_PTR) new FQuat((Self)->Slerp_NotNormalized(_p0, _p1, _p2));
+	}
+
+	DOTNET_EXPORT INT_PTR E_FQuat_SlerpFullPath(FQuat* Self, INT_PTR quat1, INT_PTR quat2, float Alpha)
 	{
 		auto _p0 = *(FQuat*)quat1;
 		auto _p1 = *(FQuat*)quat2;
 		auto _p2 = Alpha;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->SlerpFullPath(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat((Self)->SlerpFullPath(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_SlerpFullPath_NotNormalized(INT_PTR Self, INT_PTR quat1, INT_PTR quat2, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_SlerpFullPath_NotNormalized(FQuat* Self, INT_PTR quat1, INT_PTR quat2, float Alpha)
 	{
 		auto _p0 = *(FQuat*)quat1;
 		auto _p1 = *(FQuat*)quat2;
 		auto _p2 = Alpha;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->SlerpFullPath_NotNormalized(_p0, _p1, _p2));
+		return (INT_PTR) new FQuat((Self)->SlerpFullPath_NotNormalized(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Squad(INT_PTR Self, INT_PTR quat1, INT_PTR tang1, INT_PTR quat2, INT_PTR tang2, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_Squad(FQuat* Self, INT_PTR quat1, INT_PTR tang1, INT_PTR quat2, INT_PTR tang2, float Alpha)
 	{
 		auto _p0 = *(FQuat*)quat1;
 		auto _p1 = *(FQuat*)tang1;
 		auto _p2 = *(FQuat*)quat2;
 		auto _p3 = *(FQuat*)tang2;
 		auto _p4 = Alpha;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->Squad(_p0, _p1, _p2, _p3, _p4));
+		return (INT_PTR) new FQuat((Self)->Squad(_p0, _p1, _p2, _p3, _p4));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_SquadFullPath(INT_PTR Self, INT_PTR quat1, INT_PTR tang1, INT_PTR quat2, INT_PTR tang2, float Alpha)
+	DOTNET_EXPORT INT_PTR E_FQuat_SquadFullPath(FQuat* Self, INT_PTR quat1, INT_PTR tang1, INT_PTR quat2, INT_PTR tang2, float Alpha)
 	{
 		auto _p0 = *(FQuat*)quat1;
 		auto _p1 = *(FQuat*)tang1;
 		auto _p2 = *(FQuat*)quat2;
 		auto _p3 = *(FQuat*)tang2;
 		auto _p4 = Alpha;
-		return (INT_PTR) new FQuat(((FQuat*)Self)->SquadFullPath(_p0, _p1, _p2, _p3, _p4));
+		return (INT_PTR) new FQuat((Self)->SquadFullPath(_p0, _p1, _p2, _p3, _p4));
 	}
 
-	DOTNET_EXPORT void E_FQuat_ToAxisAndAngle(INT_PTR Self, INT_PTR Axis, float Angle)
+	DOTNET_EXPORT void E_FQuat_ToAxisAndAngle(FQuat* Self, INT_PTR Axis, float Angle)
 	{
 		auto _p0 = *(FVector*)Axis;
 		auto _p1 = Angle;
-		((FQuat*)Self)->ToAxisAndAngle(_p0, _p1);
+		(Self)->ToAxisAndAngle(_p0, _p1);
 	}
 
-	DOTNET_EXPORT char* E_FQuat_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FQuat_ToString(FQuat* Self, int& ResultStringLen)
 	{
-		auto _result = ((FQuat*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_FQuat_ToSwingTwist(INT_PTR Self, INT_PTR InTwistAxis, INT_PTR OutSwing, INT_PTR OutTwist)
+	DOTNET_EXPORT void E_FQuat_ToSwingTwist(FQuat* Self, INT_PTR InTwistAxis, INT_PTR OutSwing, INT_PTR OutTwist)
 	{
 		auto _p0 = *(FVector*)InTwistAxis;
 		auto _p1 = *(FQuat*)OutSwing;
 		auto _p2 = *(FQuat*)OutTwist;
-		((FQuat*)Self)->ToSwingTwist(_p0, _p1, _p2);
+		(Self)->ToSwingTwist(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_UnrotateVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FQuat_UnrotateVector(FQuat* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FQuat*)Self)->UnrotateVector(_p0));
+		return (INT_PTR) new FVector((Self)->UnrotateVector(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FQuat_Vector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FQuat_Vector(FQuat* Self)
 	{
-		return (INT_PTR) new FVector(((FQuat*)Self)->Vector());
+		return (INT_PTR) new FVector((Self)->Vector());
 	}
 
 	
@@ -1416,9 +1845,9 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_FReflectionCaptureFullHDR_CubemapSize_GET(INT_PTR Ptr) { return ((FReflectionCaptureFullHDR*)Ptr)->CubemapSize; }
 	DOTNET_EXPORT void E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(INT_PTR Ptr, int32 Value) { ((FReflectionCaptureFullHDR*)Ptr)->CubemapSize = Value; }
 	
-	DOTNET_EXPORT bool E_FReflectionCaptureFullHDR_HasValidData(INT_PTR Self)
+	DOTNET_EXPORT bool E_FReflectionCaptureFullHDR_HasValidData(FReflectionCaptureFullHDR* Self)
 	{
-		return ((FReflectionCaptureFullHDR*)Self)->HasValidData();
+		return (Self)->HasValidData();
 	}
 
 	
@@ -1457,14 +1886,14 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_PROP_FRepRootMotionMontage_Rotation_GET(INT_PTR Ptr) { return (INT_PTR)&((FRepRootMotionMontage*)Ptr)->Rotation; }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_Rotation_SET(INT_PTR Ptr, INT_PTR Value) { ((FRepRootMotionMontage*)Ptr)->Rotation = *(FRotator*)Value; }
 	
-	DOTNET_EXPORT void E_FRepRootMotionMontage_Clear(INT_PTR Self)
+	DOTNET_EXPORT void E_FRepRootMotionMontage_Clear(FRepRootMotionMontage* Self)
 	{
-		((FRepRootMotionMontage*)Self)->Clear();
+		(Self)->Clear();
 	}
 
-	DOTNET_EXPORT bool E_FRepRootMotionMontage_HasRootMotion(INT_PTR Self)
+	DOTNET_EXPORT bool E_FRepRootMotionMontage_HasRootMotion(FRepRootMotionMontage* Self)
 	{
-		return ((FRepRootMotionMontage*)Self)->HasRootMotion();
+		return (Self)->HasRootMotion();
 	}
 
 	
@@ -1487,144 +1916,144 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FRotator_Yaw_GET(INT_PTR Ptr) { return ((FRotator*)Ptr)->Yaw; }
 	DOTNET_EXPORT void E_PROP_FRotator_Yaw_SET(INT_PTR Ptr, float Value) { ((FRotator*)Ptr)->Yaw = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_FRotator_Add(INT_PTR Self, float DeltaPitch, float DeltaYaw, float DeltaRoll)
+	DOTNET_EXPORT INT_PTR E_FRotator_Add(FRotator* Self, float DeltaPitch, float DeltaYaw, float DeltaRoll)
 	{
 		auto _p0 = DeltaPitch;
 		auto _p1 = DeltaYaw;
 		auto _p2 = DeltaRoll;
-		return (INT_PTR) new FRotator(((FRotator*)Self)->Add(_p0, _p1, _p2));
+		return (INT_PTR) new FRotator((Self)->Add(_p0, _p1, _p2));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_Clamp(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Clamp(FRotator* Self)
 	{
-		return (INT_PTR) new FRotator(((FRotator*)Self)->Clamp());
+		return (INT_PTR) new FRotator((Self)->Clamp());
 	}
 
-	DOTNET_EXPORT float E_FRotator_ClampAxis(INT_PTR Self, float Angle)
-	{
-		auto _p0 = Angle;
-		return ((FRotator*)Self)->ClampAxis(_p0);
-	}
-
-	DOTNET_EXPORT uint8 E_FRotator_CompressAxisToByte(INT_PTR Self, float Angle)
+	DOTNET_EXPORT float E_FRotator_ClampAxis(FRotator* Self, float Angle)
 	{
 		auto _p0 = Angle;
-		return ((FRotator*)Self)->CompressAxisToByte(_p0);
+		return (Self)->ClampAxis(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FRotator_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT uint8 E_FRotator_CompressAxisToByte(FRotator* Self, float Angle)
 	{
-		return ((FRotator*)Self)->ContainsNaN();
+		auto _p0 = Angle;
+		return (Self)->CompressAxisToByte(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FRotator_Equals(INT_PTR Self, INT_PTR R, float Tolerance)
+	DOTNET_EXPORT bool E_FRotator_ContainsNaN(FRotator* Self)
+	{
+		return (Self)->ContainsNaN();
+	}
+
+	DOTNET_EXPORT bool E_FRotator_Equals(FRotator* Self, INT_PTR R, float Tolerance)
 	{
 		auto _p0 = *(FRotator*)R;
 		auto _p1 = Tolerance;
-		return ((FRotator*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_Euler(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Euler(FRotator* Self)
 	{
-		return (INT_PTR) new FVector(((FRotator*)Self)->Euler());
+		return (INT_PTR) new FVector((Self)->Euler());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_GetDenormalized(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_GetDenormalized(FRotator* Self)
 	{
-		return (INT_PTR) new FRotator(((FRotator*)Self)->GetDenormalized());
+		return (INT_PTR) new FRotator((Self)->GetDenormalized());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_GetInverse(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_GetInverse(FRotator* Self)
 	{
-		return (INT_PTR) new FRotator(((FRotator*)Self)->GetInverse());
+		return (INT_PTR) new FRotator((Self)->GetInverse());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_GetNormalized(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_GetNormalized(FRotator* Self)
 	{
-		return (INT_PTR) new FRotator(((FRotator*)Self)->GetNormalized());
+		return (INT_PTR) new FRotator((Self)->GetNormalized());
 	}
 
-	DOTNET_EXPORT void E_FRotator_GetWindingAndRemainder(INT_PTR Self, INT_PTR Winding, INT_PTR Remainder)
+	DOTNET_EXPORT void E_FRotator_GetWindingAndRemainder(FRotator* Self, INT_PTR Winding, INT_PTR Remainder)
 	{
 		auto _p0 = *(FRotator*)Winding;
 		auto _p1 = *(FRotator*)Remainder;
-		((FRotator*)Self)->GetWindingAndRemainder(_p0, _p1);
+		(Self)->GetWindingAndRemainder(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_GridSnap(INT_PTR Self, INT_PTR RotGrid)
+	DOTNET_EXPORT INT_PTR E_FRotator_GridSnap(FRotator* Self, INT_PTR RotGrid)
 	{
 		auto _p0 = *(FRotator*)RotGrid;
-		return (INT_PTR) new FRotator(((FRotator*)Self)->GridSnap(_p0));
+		return (INT_PTR) new FRotator((Self)->GridSnap(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FRotator_InitFromString(INT_PTR Self, char* InSourceString)
+	DOTNET_EXPORT bool E_FRotator_InitFromString(FRotator* Self, char* InSourceString)
 	{
 		auto _p0 = FString(InSourceString);
-		return ((FRotator*)Self)->InitFromString(_p0);
+		return (Self)->InitFromString(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FRotator_IsNearlyZero(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FRotator_IsNearlyZero(FRotator* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FRotator*)Self)->IsNearlyZero(_p0);
+		return (Self)->IsNearlyZero(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FRotator_IsZero(INT_PTR Self)
+	DOTNET_EXPORT bool E_FRotator_IsZero(FRotator* Self)
 	{
-		return ((FRotator*)Self)->IsZero();
+		return (Self)->IsZero();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_MakeFromEuler(INT_PTR Self, INT_PTR Euler)
+	DOTNET_EXPORT INT_PTR E_FRotator_MakeFromEuler(FRotator* Self, INT_PTR Euler)
 	{
 		auto _p0 = *(FVector*)Euler;
-		return (INT_PTR) new FRotator(((FRotator*)Self)->MakeFromEuler(_p0));
+		return (INT_PTR) new FRotator((Self)->MakeFromEuler(_p0));
 	}
 
-	DOTNET_EXPORT void E_FRotator_Normalize(INT_PTR Self)
+	DOTNET_EXPORT void E_FRotator_Normalize(FRotator* Self)
 	{
-		((FRotator*)Self)->Normalize();
+		(Self)->Normalize();
 	}
 
-	DOTNET_EXPORT float E_FRotator_NormalizeAxis(INT_PTR Self, float Angle)
+	DOTNET_EXPORT float E_FRotator_NormalizeAxis(FRotator* Self, float Angle)
 	{
 		auto _p0 = Angle;
-		return ((FRotator*)Self)->NormalizeAxis(_p0);
+		return (Self)->NormalizeAxis(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_Quaternion(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Quaternion(FRotator* Self)
 	{
-		return (INT_PTR) new FQuat(((FRotator*)Self)->Quaternion());
+		return (INT_PTR) new FQuat((Self)->Quaternion());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_RotateVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FRotator_RotateVector(FRotator* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FRotator*)Self)->RotateVector(_p0));
+		return (INT_PTR) new FVector((Self)->RotateVector(_p0));
 	}
 
-	DOTNET_EXPORT char* E_FRotator_ToCompactString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FRotator_ToCompactString(FRotator* Self, int& ResultStringLen)
 	{
-		auto _result = ((FRotator*)Self)->ToCompactString();
+		auto _result = (Self)->ToCompactString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT char* E_FRotator_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FRotator_ToString(FRotator* Self, int& ResultStringLen)
 	{
-		auto _result = ((FRotator*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_UnrotateVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FRotator_UnrotateVector(FRotator* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FRotator*)Self)->UnrotateVector(_p0));
+		return (INT_PTR) new FVector((Self)->UnrotateVector(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FRotator_Vector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FRotator_Vector(FRotator* Self)
 	{
-		return (INT_PTR) new FVector(((FRotator*)Self)->Vector());
+		return (INT_PTR) new FVector((Self)->Vector());
 	}
 
 	
@@ -1673,29 +2102,29 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSkelMeshComponentLODInfo() { return (INT_PTR) new FSkelMeshComponentLODInfo(); }
 	
-	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideSkinWeights(INT_PTR Self)
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideSkinWeights(FSkelMeshComponentLODInfo* Self)
 	{
-		((FSkelMeshComponentLODInfo*)Self)->BeginReleaseOverrideSkinWeights();
+		(Self)->BeginReleaseOverrideSkinWeights();
 	}
 
-	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(INT_PTR Self)
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(FSkelMeshComponentLODInfo* Self)
 	{
-		((FSkelMeshComponentLODInfo*)Self)->BeginReleaseOverrideVertexColors();
+		(Self)->BeginReleaseOverrideVertexColors();
 	}
 
-	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_CleanUp(INT_PTR Self)
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_CleanUp(FSkelMeshComponentLODInfo* Self)
 	{
-		((FSkelMeshComponentLODInfo*)Self)->CleanUp();
+		(Self)->CleanUp();
 	}
 
-	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(INT_PTR Self)
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(FSkelMeshComponentLODInfo* Self)
 	{
-		((FSkelMeshComponentLODInfo*)Self)->ReleaseOverrideSkinWeightsAndBlock();
+		(Self)->ReleaseOverrideSkinWeightsAndBlock();
 	}
 
-	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideVertexColorsAndBlock(INT_PTR Self)
+	DOTNET_EXPORT void E_FSkelMeshComponentLODInfo_ReleaseOverrideVertexColorsAndBlock(FSkelMeshComponentLODInfo* Self)
 	{
-		((FSkelMeshComponentLODInfo*)Self)->ReleaseOverrideVertexColorsAndBlock();
+		(Self)->ReleaseOverrideVertexColorsAndBlock();
 	}
 
 	
@@ -1708,21 +2137,21 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplineCurves() { return (INT_PTR) new FSplineCurves(); }
 	
-	DOTNET_EXPORT float E_FSplineCurves_GetSegmentLength(INT_PTR Self, int32 Index, float Param, bool bClosedLoop, INT_PTR Scale3D)
+	DOTNET_EXPORT float E_FSplineCurves_GetSegmentLength(FSplineCurves* Self, int32 Index, float Param, bool bClosedLoop, INT_PTR Scale3D)
 	{
 		auto _p0 = Index;
 		auto _p1 = Param;
 		auto _p2 = bClosedLoop;
 		auto _p3 = *(FVector*)Scale3D;
-		return ((FSplineCurves*)Self)->GetSegmentLength(_p0, _p1, _p2, _p3);
+		return (Self)->GetSegmentLength(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT float E_FSplineCurves_GetSplineLength(INT_PTR Self)
+	DOTNET_EXPORT float E_FSplineCurves_GetSplineLength(FSplineCurves* Self)
 	{
-		return ((FSplineCurves*)Self)->GetSplineLength();
+		return (Self)->GetSplineLength();
 	}
 
-	DOTNET_EXPORT void E_FSplineCurves_UpdateSpline(INT_PTR Self, bool bClosedLoop, bool bStationaryEndpoints, int32 ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, INT_PTR Scale3D)
+	DOTNET_EXPORT void E_FSplineCurves_UpdateSpline(FSplineCurves* Self, bool bClosedLoop, bool bStationaryEndpoints, int32 ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, INT_PTR Scale3D)
 	{
 		auto _p0 = bClosedLoop;
 		auto _p1 = bStationaryEndpoints;
@@ -1730,7 +2159,7 @@ extern "C"
 		auto _p3 = bLoopPositionOverride;
 		auto _p4 = LoopPosition;
 		auto _p5 = *(FVector*)Scale3D;
-		((FSplineCurves*)Self)->UpdateSpline(_p0, _p1, _p2, _p3, _p4, _p5);
+		(Self)->UpdateSpline(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	
@@ -1890,36 +2319,36 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FTickFunction_TickInterval_GET(INT_PTR Ptr) { return ((FTickFunction*)Ptr)->TickInterval; }
 	DOTNET_EXPORT void E_PROP_FTickFunction_TickInterval_SET(INT_PTR Ptr, float Value) { ((FTickFunction*)Ptr)->TickInterval = Value; }
 	
-	DOTNET_EXPORT bool E_FTickFunction_IsCompletionHandleValid(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTickFunction_IsCompletionHandleValid(FTickFunction* Self)
 	{
-		return ((FTickFunction*)Self)->IsCompletionHandleValid();
+		return (Self)->IsCompletionHandleValid();
 	}
 
-	DOTNET_EXPORT bool E_FTickFunction_IsTickFunctionEnabled(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTickFunction_IsTickFunctionEnabled(FTickFunction* Self)
 	{
-		return ((FTickFunction*)Self)->IsTickFunctionEnabled();
+		return (Self)->IsTickFunctionEnabled();
 	}
 
-	DOTNET_EXPORT bool E_FTickFunction_IsTickFunctionRegistered(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTickFunction_IsTickFunctionRegistered(FTickFunction* Self)
 	{
-		return ((FTickFunction*)Self)->IsTickFunctionRegistered();
+		return (Self)->IsTickFunctionRegistered();
 	}
 
-	DOTNET_EXPORT void E_FTickFunction_SetPriorityIncludingPrerequisites(INT_PTR Self, bool bInHighPriority)
+	DOTNET_EXPORT void E_FTickFunction_SetPriorityIncludingPrerequisites(FTickFunction* Self, bool bInHighPriority)
 	{
 		auto _p0 = bInHighPriority;
-		((FTickFunction*)Self)->SetPriorityIncludingPrerequisites(_p0);
+		(Self)->SetPriorityIncludingPrerequisites(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTickFunction_SetTickFunctionEnable(INT_PTR Self, bool bInEnabled)
+	DOTNET_EXPORT void E_FTickFunction_SetTickFunctionEnable(FTickFunction* Self, bool bInEnabled)
 	{
 		auto _p0 = bInEnabled;
-		((FTickFunction*)Self)->SetTickFunctionEnable(_p0);
+		(Self)->SetTickFunctionEnable(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTickFunction_UnRegisterTickFunction(INT_PTR Self)
+	DOTNET_EXPORT void E_FTickFunction_UnRegisterTickFunction(FTickFunction* Self)
 	{
-		((FTickFunction*)Self)->UnRegisterTickFunction();
+		(Self)->UnRegisterTickFunction();
 	}
 
 	
@@ -1932,115 +2361,115 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTimeline() { return (INT_PTR) new FTimeline(); }
 	
-	DOTNET_EXPORT float E_FTimeline_GetPlaybackPosition(INT_PTR Self)
+	DOTNET_EXPORT float E_FTimeline_GetPlaybackPosition(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->GetPlaybackPosition();
+		return (Self)->GetPlaybackPosition();
 	}
 
-	DOTNET_EXPORT float E_FTimeline_GetPlayRate(INT_PTR Self)
+	DOTNET_EXPORT float E_FTimeline_GetPlayRate(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->GetPlayRate();
+		return (Self)->GetPlayRate();
 	}
 
-	DOTNET_EXPORT float E_FTimeline_GetTimelineLength(INT_PTR Self)
+	DOTNET_EXPORT float E_FTimeline_GetTimelineLength(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->GetTimelineLength();
+		return (Self)->GetTimelineLength();
 	}
 
-	DOTNET_EXPORT bool E_FTimeline_IsLooping(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTimeline_IsLooping(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->IsLooping();
+		return (Self)->IsLooping();
 	}
 
-	DOTNET_EXPORT bool E_FTimeline_IsPlaying(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTimeline_IsPlaying(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->IsPlaying();
+		return (Self)->IsPlaying();
 	}
 
-	DOTNET_EXPORT bool E_FTimeline_IsReversing(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTimeline_IsReversing(FTimeline* Self)
 	{
-		return ((FTimeline*)Self)->IsReversing();
+		return (Self)->IsReversing();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_Play(INT_PTR Self)
+	DOTNET_EXPORT void E_FTimeline_Play(FTimeline* Self)
 	{
-		((FTimeline*)Self)->Play();
+		(Self)->Play();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_PlayFromStart(INT_PTR Self)
+	DOTNET_EXPORT void E_FTimeline_PlayFromStart(FTimeline* Self)
 	{
-		((FTimeline*)Self)->PlayFromStart();
+		(Self)->PlayFromStart();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_Reverse(INT_PTR Self)
+	DOTNET_EXPORT void E_FTimeline_Reverse(FTimeline* Self)
 	{
-		((FTimeline*)Self)->Reverse();
+		(Self)->Reverse();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_ReverseFromEnd(INT_PTR Self)
+	DOTNET_EXPORT void E_FTimeline_ReverseFromEnd(FTimeline* Self)
 	{
-		((FTimeline*)Self)->ReverseFromEnd();
+		(Self)->ReverseFromEnd();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetDirectionPropertyName(INT_PTR Self, char* InDirectionPropertyName)
+	DOTNET_EXPORT void E_FTimeline_SetDirectionPropertyName(FTimeline* Self, char* InDirectionPropertyName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(InDirectionPropertyName));
-		((FTimeline*)Self)->SetDirectionPropertyName(_p0);
+		(Self)->SetDirectionPropertyName(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetLooping(INT_PTR Self, bool bNewLooping)
+	DOTNET_EXPORT void E_FTimeline_SetLooping(FTimeline* Self, bool bNewLooping)
 	{
 		auto _p0 = bNewLooping;
-		((FTimeline*)Self)->SetLooping(_p0);
+		(Self)->SetLooping(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetNewTime(INT_PTR Self, float NewTime)
+	DOTNET_EXPORT void E_FTimeline_SetNewTime(FTimeline* Self, float NewTime)
 	{
 		auto _p0 = NewTime;
-		((FTimeline*)Self)->SetNewTime(_p0);
+		(Self)->SetNewTime(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetPlaybackPosition(INT_PTR Self, float NewPosition, bool bFireEvents, bool bFireUpdate)
+	DOTNET_EXPORT void E_FTimeline_SetPlaybackPosition(FTimeline* Self, float NewPosition, bool bFireEvents, bool bFireUpdate)
 	{
 		auto _p0 = NewPosition;
 		auto _p1 = bFireEvents;
 		auto _p2 = bFireUpdate;
-		((FTimeline*)Self)->SetPlaybackPosition(_p0, _p1, _p2);
+		(Self)->SetPlaybackPosition(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetPlayRate(INT_PTR Self, float NewRate)
+	DOTNET_EXPORT void E_FTimeline_SetPlayRate(FTimeline* Self, float NewRate)
 	{
 		auto _p0 = NewRate;
-		((FTimeline*)Self)->SetPlayRate(_p0);
+		(Self)->SetPlayRate(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetPropertySetObject(INT_PTR Self, UObject* NewPropertySetObject)
+	DOTNET_EXPORT void E_FTimeline_SetPropertySetObject(FTimeline* Self, UObject* NewPropertySetObject)
 	{
 		auto _p0 = NewPropertySetObject;
-		((FTimeline*)Self)->SetPropertySetObject(_p0);
+		(Self)->SetPropertySetObject(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetTimelineLength(INT_PTR Self, float NewLength)
+	DOTNET_EXPORT void E_FTimeline_SetTimelineLength(FTimeline* Self, float NewLength)
 	{
 		auto _p0 = NewLength;
-		((FTimeline*)Self)->SetTimelineLength(_p0);
+		(Self)->SetTimelineLength(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_SetTimelineLengthMode(INT_PTR Self, ETimelineLengthMode NewMode)
+	DOTNET_EXPORT void E_FTimeline_SetTimelineLengthMode(FTimeline* Self, ETimelineLengthMode NewMode)
 	{
 		auto _p0 = NewMode;
-		((FTimeline*)Self)->SetTimelineLengthMode(_p0);
+		(Self)->SetTimelineLengthMode(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTimeline_Stop(INT_PTR Self)
+	DOTNET_EXPORT void E_FTimeline_Stop(FTimeline* Self)
 	{
-		((FTimeline*)Self)->Stop();
+		(Self)->Stop();
 	}
 
-	DOTNET_EXPORT void E_FTimeline_TickTimeline(INT_PTR Self, float DeltaTime)
+	DOTNET_EXPORT void E_FTimeline_TickTimeline(FTimeline* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((FTimeline*)Self)->TickTimeline(_p0);
+		(Self)->TickTimeline(_p0);
 	}
 
 	
@@ -2133,412 +2562,420 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(INT_PTR InX, INT_PTR InY, INT_PTR InZ, INT_PTR InTranslation) { return (INT_PTR) new FTransform(*(FVector*)InX, *(FVector*)InY, *(FVector*)InZ, *(FVector*)InTranslation); }
 	
-	DOTNET_EXPORT void E_FTransform_AddToTranslation(INT_PTR Self, INT_PTR DeltaTranslation)
+	DOTNET_EXPORT void E_FTransform_AddToTranslation(FTransform* Self, INT_PTR DeltaTranslation)
 	{
 		auto _p0 = *(FVector*)DeltaTranslation;
-		((FTransform*)Self)->AddToTranslation(_p0);
+		(Self)->AddToTranslation(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_AddTranslations(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT INT_PTR E_FTransform_AddTranslations(FTransform* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FTransform*)A;
 		auto _p1 = *(FTransform*)B;
-		return (INT_PTR) new FVector(((FTransform*)Self)->AddTranslations(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->AddTranslations(_p0, _p1));
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AnyHasNegativeScale(INT_PTR Self, INT_PTR InScale3D, INT_PTR InOtherScale3D)
+	DOTNET_EXPORT bool E_FTransform_AnyHasNegativeScale(FTransform* Self, INT_PTR InScale3D, INT_PTR InOtherScale3D)
 	{
 		auto _p0 = *(FVector*)InScale3D;
 		auto _p1 = *(FVector*)InOtherScale3D;
-		return ((FTransform*)Self)->AnyHasNegativeScale(_p0, _p1);
+		return (Self)->AnyHasNegativeScale(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AreRotationsEqual(INT_PTR Self, INT_PTR A, INT_PTR B, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_AreRotationsEqual(FTransform* Self, INT_PTR A, INT_PTR B, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)A;
 		auto _p1 = *(FTransform*)B;
 		auto _p2 = Tolerance;
-		return ((FTransform*)Self)->AreRotationsEqual(_p0, _p1, _p2);
+		return (Self)->AreRotationsEqual(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AreScale3DsEqual(INT_PTR Self, INT_PTR A, INT_PTR B, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_AreScale3DsEqual(FTransform* Self, INT_PTR A, INT_PTR B, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)A;
 		auto _p1 = *(FTransform*)B;
 		auto _p2 = Tolerance;
-		return ((FTransform*)Self)->AreScale3DsEqual(_p0, _p1, _p2);
+		return (Self)->AreScale3DsEqual(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_AreTranslationsEqual(INT_PTR Self, INT_PTR A, INT_PTR B, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_AreTranslationsEqual(FTransform* Self, INT_PTR A, INT_PTR B, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)A;
 		auto _p1 = *(FTransform*)B;
 		auto _p2 = Tolerance;
-		return ((FTransform*)Self)->AreTranslationsEqual(_p0, _p1, _p2);
+		return (Self)->AreTranslationsEqual(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_Blend(INT_PTR Self, INT_PTR Atom1, INT_PTR Atom2, float Alpha)
+	DOTNET_EXPORT void E_FTransform_Blend(FTransform* Self, INT_PTR Atom1, INT_PTR Atom2, float Alpha)
 	{
 		auto _p0 = *(FTransform*)Atom1;
 		auto _p1 = *(FTransform*)Atom2;
 		auto _p2 = Alpha;
-		((FTransform*)Self)->Blend(_p0, _p1, _p2);
+		(Self)->Blend(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_BlendWith(INT_PTR Self, INT_PTR OtherAtom, float Alpha)
+	DOTNET_EXPORT void E_FTransform_BlendWith(FTransform* Self, INT_PTR OtherAtom, float Alpha)
 	{
 		auto _p0 = *(FTransform*)OtherAtom;
 		auto _p1 = Alpha;
-		((FTransform*)Self)->BlendWith(_p0, _p1);
+		(Self)->BlendWith(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FTransform_ConcatenateRotation(INT_PTR Self, INT_PTR DeltaRotation)
+	DOTNET_EXPORT void E_FTransform_ConcatenateRotation(FTransform* Self, INT_PTR DeltaRotation)
 	{
 		auto _p0 = *(FQuat*)DeltaRotation;
-		((FTransform*)Self)->ConcatenateRotation(_p0);
+		(Self)->ConcatenateRotation(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTransform_ContainsNaN(FTransform* Self)
 	{
-		return ((FTransform*)Self)->ContainsNaN();
+		return (Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT void E_FTransform_CopyRotation(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT void E_FTransform_CopyRotation(FTransform* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FTransform*)Other;
-		((FTransform*)Self)->CopyRotation(_p0);
+		(Self)->CopyRotation(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_CopyRotationPart(INT_PTR Self, INT_PTR SrcBA)
+	DOTNET_EXPORT void E_FTransform_CopyRotationPart(FTransform* Self, INT_PTR SrcBA)
 	{
 		auto _p0 = *(FTransform*)SrcBA;
-		((FTransform*)Self)->CopyRotationPart(_p0);
+		(Self)->CopyRotationPart(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_CopyScale3D(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT void E_FTransform_CopyScale3D(FTransform* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FTransform*)Other;
-		((FTransform*)Self)->CopyScale3D(_p0);
+		(Self)->CopyScale3D(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_CopyTranslation(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT void E_FTransform_CopyTranslation(FTransform* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FTransform*)Other;
-		((FTransform*)Self)->CopyTranslation(_p0);
+		(Self)->CopyTranslation(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_CopyTranslationAndScale3D(INT_PTR Self, INT_PTR SrcBA)
+	DOTNET_EXPORT void E_FTransform_CopyTranslationAndScale3D(FTransform* Self, INT_PTR SrcBA)
 	{
 		auto _p0 = *(FTransform*)SrcBA;
-		((FTransform*)Self)->CopyTranslationAndScale3D(_p0);
+		(Self)->CopyTranslationAndScale3D(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_DebugPrint(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DebugPrint(FTransform* Self)
 	{
-		((FTransform*)Self)->DebugPrint();
+		(Self)->DebugPrint();
 	}
 
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheck_IsValid(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheck_IsValid(FTransform* Self)
 	{
-		((FTransform*)Self)->DiagnosticCheck_IsValid();
+		(Self)->DiagnosticCheck_IsValid();
 	}
 
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_All(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_All(FTransform* Self)
 	{
-		((FTransform*)Self)->DiagnosticCheckNaN_All();
+		(Self)->DiagnosticCheckNaN_All();
 	}
 
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Rotate(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Rotate(FTransform* Self)
 	{
-		((FTransform*)Self)->DiagnosticCheckNaN_Rotate();
+		(Self)->DiagnosticCheckNaN_Rotate();
 	}
 
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Scale3D(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Scale3D(FTransform* Self)
 	{
-		((FTransform*)Self)->DiagnosticCheckNaN_Scale3D();
+		(Self)->DiagnosticCheckNaN_Scale3D();
 	}
 
-	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Translate(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_DiagnosticCheckNaN_Translate(FTransform* Self)
 	{
-		((FTransform*)Self)->DiagnosticCheckNaN_Translate();
+		(Self)->DiagnosticCheckNaN_Translate();
 	}
 
-	DOTNET_EXPORT bool E_FTransform_Equals(INT_PTR Self, INT_PTR Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_Equals(FTransform* Self, INT_PTR Other, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return ((FTransform*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_EqualsNoScale(INT_PTR Self, INT_PTR Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_EqualsNoScale(FTransform* Self, INT_PTR Other, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return ((FTransform*)Self)->EqualsNoScale(_p0, _p1);
+		return (Self)->EqualsNoScale(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FTransform_GetDeterminant(INT_PTR Self)
+	DOTNET_EXPORT float E_FTransform_GetDeterminant(FTransform* Self)
 	{
-		return ((FTransform*)Self)->GetDeterminant();
+		return (Self)->GetDeterminant();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetLocation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetLocation(FTransform* Self)
 	{
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetLocation());
+		return (INT_PTR) new FVector((Self)->GetLocation());
 	}
 
-	DOTNET_EXPORT float E_FTransform_GetMaximumAxisScale(INT_PTR Self)
+	DOTNET_EXPORT float E_FTransform_GetMaximumAxisScale(FTransform* Self)
 	{
-		return ((FTransform*)Self)->GetMaximumAxisScale();
+		return (Self)->GetMaximumAxisScale();
 	}
 
-	DOTNET_EXPORT float E_FTransform_GetMinimumAxisScale(INT_PTR Self)
+	DOTNET_EXPORT float E_FTransform_GetMinimumAxisScale(FTransform* Self)
 	{
-		return ((FTransform*)Self)->GetMinimumAxisScale();
+		return (Self)->GetMinimumAxisScale();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetRelativeTransform(INT_PTR Self, INT_PTR Other)
-	{
-		auto _p0 = *(FTransform*)Other;
-		return (INT_PTR) new FTransform(((FTransform*)Self)->GetRelativeTransform(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FTransform_GetRelativeTransformReverse(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetRelativeTransform(FTransform* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FTransform*)Other;
-		return (INT_PTR) new FTransform(((FTransform*)Self)->GetRelativeTransformReverse(_p0));
+		return (INT_PTR) new FTransform((Self)->GetRelativeTransform(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetRotation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetRelativeTransformReverse(FTransform* Self, INT_PTR Other)
 	{
-		return (INT_PTR) new FQuat(((FTransform*)Self)->GetRotation());
+		auto _p0 = *(FTransform*)Other;
+		return (INT_PTR) new FTransform((Self)->GetRelativeTransformReverse(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetRotationV(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetRotation(FTransform* Self)
 	{
-		return (INT_PTR) new FQuat(((FTransform*)Self)->GetRotationV());
+		return (INT_PTR) new FQuat((Self)->GetRotation());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetSafeScaleReciprocal(INT_PTR Self, INT_PTR InScale, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetRotationV(FTransform* Self)
+	{
+		return (INT_PTR) new FQuat((Self)->GetRotationV());
+	}
+
+	DOTNET_EXPORT INT_PTR E_FTransform_GetSafeScaleReciprocal(FTransform* Self, INT_PTR InScale, float Tolerance)
 	{
 		auto _p0 = *(FVector*)InScale;
 		auto _p1 = Tolerance;
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetSafeScaleReciprocal(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->GetSafeScaleReciprocal(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetScale3D(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetScale3D(FTransform* Self)
 	{
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetScale3D());
+		return (INT_PTR) new FVector((Self)->GetScale3D());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetScale3DV(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetScale3DV(FTransform* Self)
 	{
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetScale3DV());
+		return (INT_PTR) new FVector((Self)->GetScale3DV());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetTranslation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetTranslation(FTransform* Self)
 	{
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetTranslation());
+		return (INT_PTR) new FVector((Self)->GetTranslation());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_GetTranslationV(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_GetTranslationV(FTransform* Self)
 	{
-		return (INT_PTR) new FVector(((FTransform*)Self)->GetTranslationV());
+		return (INT_PTR) new FVector((Self)->GetTranslationV());
 	}
 
-	DOTNET_EXPORT bool E_FTransform_InitFromString(INT_PTR Self, char* InSourceString)
+	DOTNET_EXPORT bool E_FTransform_InitFromString(FTransform* Self, char* InSourceString)
 	{
 		auto _p0 = FString(InSourceString);
-		return ((FTransform*)Self)->InitFromString(_p0);
+		return (Self)->InitFromString(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_Inverse(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_Inverse(FTransform* Self)
 	{
-		return (INT_PTR) new FTransform(((FTransform*)Self)->Inverse());
+		return (INT_PTR) new FTransform((Self)->Inverse());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformPosition(INT_PTR Self, INT_PTR V)
-	{
-		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->InverseTransformPosition(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformPositionNoScale(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformPosition(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->InverseTransformPositionNoScale(_p0));
+		return (INT_PTR) new FVector((Self)->InverseTransformPosition(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformPositionNoScale(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->InverseTransformVector(_p0));
+		return (INT_PTR) new FVector((Self)->InverseTransformPositionNoScale(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformVectorNoScale(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformVector(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->InverseTransformVectorNoScale(_p0));
+		return (INT_PTR) new FVector((Self)->InverseTransformVector(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FTransform_IsRotationNormalized(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_InverseTransformVectorNoScale(FTransform* Self, INT_PTR V)
 	{
-		return ((FTransform*)Self)->IsRotationNormalized();
+		auto _p0 = *(FVector*)V;
+		return (INT_PTR) new FVector((Self)->InverseTransformVectorNoScale(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FTransform_IsValid(INT_PTR Self)
+	DOTNET_EXPORT bool E_FTransform_IsRotationNormalized(FTransform* Self)
 	{
-		return ((FTransform*)Self)->IsValid();
+		return (Self)->IsRotationNormalized();
 	}
 
-	DOTNET_EXPORT void E_FTransform_MultiplyScale3D(INT_PTR Self, INT_PTR Scale3DMultiplier)
+	DOTNET_EXPORT bool E_FTransform_IsValid(FTransform* Self)
+	{
+		return (Self)->IsValid();
+	}
+
+	DOTNET_EXPORT void E_FTransform_Multiply(FTransform* Self, INT_PTR OutTransform, INT_PTR A, INT_PTR B)
+	{
+		auto _p0 = (FTransform*)OutTransform;
+		auto _p1 = (FTransform*)A;
+		auto _p2 = (FTransform*)B;
+		(Self)->Multiply(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT void E_FTransform_MultiplyScale3D(FTransform* Self, INT_PTR Scale3DMultiplier)
 	{
 		auto _p0 = *(FVector*)Scale3DMultiplier;
-		((FTransform*)Self)->MultiplyScale3D(_p0);
+		(Self)->MultiplyScale3D(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_NormalizeRotation(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_NormalizeRotation(FTransform* Self)
 	{
-		((FTransform*)Self)->NormalizeRotation();
+		(Self)->NormalizeRotation();
 	}
 
-	DOTNET_EXPORT void E_FTransform_RemoveScaling(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT void E_FTransform_RemoveScaling(FTransform* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		((FTransform*)Self)->RemoveScaling(_p0);
+		(Self)->RemoveScaling(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FTransform_RotationEquals(INT_PTR Self, INT_PTR Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_RotationEquals(FTransform* Self, INT_PTR Other, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return ((FTransform*)Self)->RotationEquals(_p0, _p1);
+		return (Self)->RotationEquals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_Rotator(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FTransform_Rotator(FTransform* Self)
 	{
-		return (INT_PTR) new FRotator(((FTransform*)Self)->Rotator());
+		return (INT_PTR) new FRotator((Self)->Rotator());
 	}
 
-	DOTNET_EXPORT bool E_FTransform_Scale3DEquals(INT_PTR Self, INT_PTR Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_Scale3DEquals(FTransform* Self, INT_PTR Other, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return ((FTransform*)Self)->Scale3DEquals(_p0, _p1);
+		return (Self)->Scale3DEquals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetComponents(INT_PTR Self, INT_PTR InRotation, INT_PTR InTranslation, INT_PTR InScale3D)
+	DOTNET_EXPORT void E_FTransform_SetComponents(FTransform* Self, INT_PTR InRotation, INT_PTR InTranslation, INT_PTR InScale3D)
 	{
 		auto _p0 = *(FQuat*)InRotation;
 		auto _p1 = *(FVector*)InTranslation;
 		auto _p2 = *(FVector*)InScale3D;
-		((FTransform*)Self)->SetComponents(_p0, _p1, _p2);
+		(Self)->SetComponents(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetIdentity(INT_PTR Self)
+	DOTNET_EXPORT void E_FTransform_SetIdentity(FTransform* Self)
 	{
-		((FTransform*)Self)->SetIdentity();
+		(Self)->SetIdentity();
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetLocation(INT_PTR Self, INT_PTR Origin)
+	DOTNET_EXPORT void E_FTransform_SetLocation(FTransform* Self, INT_PTR Origin)
 	{
 		auto _p0 = *(FVector*)Origin;
-		((FTransform*)Self)->SetLocation(_p0);
+		(Self)->SetLocation(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetRotation(INT_PTR Self, INT_PTR NewRotation)
+	DOTNET_EXPORT void E_FTransform_SetRotation(FTransform* Self, INT_PTR NewRotation)
 	{
 		auto _p0 = *(FQuat*)NewRotation;
-		((FTransform*)Self)->SetRotation(_p0);
+		(Self)->SetRotation(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetScale3D(INT_PTR Self, INT_PTR NewScale3D)
+	DOTNET_EXPORT void E_FTransform_SetScale3D(FTransform* Self, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewScale3D;
-		((FTransform*)Self)->SetScale3D(_p0);
+		(Self)->SetScale3D(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetToRelativeTransform(INT_PTR Self, INT_PTR ParentTransform)
+	DOTNET_EXPORT void E_FTransform_SetToRelativeTransform(FTransform* Self, INT_PTR ParentTransform)
 	{
 		auto _p0 = *(FTransform*)ParentTransform;
-		((FTransform*)Self)->SetToRelativeTransform(_p0);
+		(Self)->SetToRelativeTransform(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetTranslation(INT_PTR Self, INT_PTR NewTranslation)
+	DOTNET_EXPORT void E_FTransform_SetTranslation(FTransform* Self, INT_PTR NewTranslation)
 	{
 		auto _p0 = *(FVector*)NewTranslation;
-		((FTransform*)Self)->SetTranslation(_p0);
+		(Self)->SetTranslation(_p0);
 	}
 
-	DOTNET_EXPORT void E_FTransform_SetTranslationAndScale3D(INT_PTR Self, INT_PTR NewTranslation, INT_PTR NewScale3D)
+	DOTNET_EXPORT void E_FTransform_SetTranslationAndScale3D(FTransform* Self, INT_PTR NewTranslation, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewTranslation;
 		auto _p1 = *(FVector*)NewScale3D;
-		((FTransform*)Self)->SetTranslationAndScale3D(_p0, _p1);
+		(Self)->SetTranslationAndScale3D(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_SubtractTranslations(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT INT_PTR E_FTransform_SubtractTranslations(FTransform* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FTransform*)A;
 		auto _p1 = *(FTransform*)B;
-		return (INT_PTR) new FVector(((FTransform*)Self)->SubtractTranslations(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->SubtractTranslations(_p0, _p1));
 	}
 
-	DOTNET_EXPORT char* E_FTransform_ToHumanReadableString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FTransform_ToHumanReadableString(FTransform* Self, int& ResultStringLen)
 	{
-		auto _result = ((FTransform*)Self)->ToHumanReadableString();
+		auto _result = (Self)->ToHumanReadableString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT char* E_FTransform_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FTransform_ToString(FTransform* Self, int& ResultStringLen)
 	{
-		auto _result = ((FTransform*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformFVector4(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformFVector4(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector4*)V;
-		return (INT_PTR) new FVector4(((FTransform*)Self)->TransformFVector4(_p0));
+		return (INT_PTR) new FVector4((Self)->TransformFVector4(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformFVector4NoScale(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformFVector4NoScale(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector4*)V;
-		return (INT_PTR) new FVector4(((FTransform*)Self)->TransformFVector4NoScale(_p0));
+		return (INT_PTR) new FVector4((Self)->TransformFVector4NoScale(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformPosition(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformPosition(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->TransformPosition(_p0));
+		return (INT_PTR) new FVector((Self)->TransformPosition(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformPositionNoScale(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformPositionNoScale(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->TransformPositionNoScale(_p0));
+		return (INT_PTR) new FVector((Self)->TransformPositionNoScale(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformVector(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformVector(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->TransformVector(_p0));
+		return (INT_PTR) new FVector((Self)->TransformVector(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FTransform_TransformVectorNoScale(INT_PTR Self, INT_PTR V)
+	DOTNET_EXPORT INT_PTR E_FTransform_TransformVectorNoScale(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
-		return (INT_PTR) new FVector(((FTransform*)Self)->TransformVectorNoScale(_p0));
+		return (INT_PTR) new FVector((Self)->TransformVectorNoScale(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FTransform_TranslationEquals(INT_PTR Self, INT_PTR Other, float Tolerance)
+	DOTNET_EXPORT bool E_FTransform_TranslationEquals(FTransform* Self, INT_PTR Other, float Tolerance)
 	{
 		auto _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
-		return ((FTransform*)Self)->TranslationEquals(_p0, _p1);
+		return (Self)->TranslationEquals(_p0, _p1);
 	}
 
 	
@@ -2593,30 +3030,30 @@ extern "C"
 	DOTNET_EXPORT int32 E_PROP_FURL_Valid_GET(INT_PTR Ptr) { return ((FURL*)Ptr)->Valid; }
 	DOTNET_EXPORT void E_PROP_FURL_Valid_SET(INT_PTR Ptr, int32 Value) { ((FURL*)Ptr)->Valid = Value; }
 	
-	DOTNET_EXPORT void E_FURL_FilterURLString(INT_PTR Self, char* Str)
+	DOTNET_EXPORT void E_FURL_FilterURLString(FURL* Self, char* Str)
 	{
 		auto _p0 = FString(Str);
-		((FURL*)Self)->FilterURLString(_p0);
+		(Self)->FilterURLString(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FURL_IsInternal(INT_PTR Self)
+	DOTNET_EXPORT bool E_FURL_IsInternal(FURL* Self)
 	{
-		return ((FURL*)Self)->IsInternal();
+		return (Self)->IsInternal();
 	}
 
-	DOTNET_EXPORT bool E_FURL_IsLocalInternal(INT_PTR Self)
+	DOTNET_EXPORT bool E_FURL_IsLocalInternal(FURL* Self)
 	{
-		return ((FURL*)Self)->IsLocalInternal();
+		return (Self)->IsLocalInternal();
 	}
 
-	DOTNET_EXPORT void E_FURL_StaticExit(INT_PTR Self)
+	DOTNET_EXPORT void E_FURL_StaticExit(FURL* Self)
 	{
-		((FURL*)Self)->StaticExit();
+		(Self)->StaticExit();
 	}
 
-	DOTNET_EXPORT void E_FURL_StaticInit(INT_PTR Self)
+	DOTNET_EXPORT void E_FURL_StaticInit(FURL* Self)
 	{
-		((FURL*)Self)->StaticInit();
+		(Self)->StaticInit();
 	}
 
 	
@@ -2641,518 +3078,518 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FVector_Z_GET(INT_PTR Ptr) { return ((FVector*)Ptr)->Z; }
 	DOTNET_EXPORT void E_PROP_FVector_Z_SET(INT_PTR Ptr, float Value) { ((FVector*)Ptr)->Z = Value; }
 	
-	DOTNET_EXPORT void E_FVector_AddBounded(INT_PTR Self, INT_PTR V, float Radius)
+	DOTNET_EXPORT void E_FVector_AddBounded(FVector* Self, INT_PTR V, float Radius)
 	{
 		auto _p0 = *(FVector*)V;
 		auto _p1 = Radius;
-		((FVector*)Self)->AddBounded(_p0, _p1);
+		(Self)->AddBounded(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector_AllComponentsEqual(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_AllComponentsEqual(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector*)Self)->AllComponentsEqual(_p0);
+		return (Self)->AllComponentsEqual(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_BoundToCube(INT_PTR Self, float Radius)
+	DOTNET_EXPORT INT_PTR E_FVector_BoundToCube(FVector* Self, float Radius)
 	{
 		auto _p0 = Radius;
-		return (INT_PTR) new FVector(((FVector*)Self)->BoundToCube(_p0));
+		return (INT_PTR) new FVector((Self)->BoundToCube(_p0));
 	}
 
-	DOTNET_EXPORT float E_FVector_BoxPushOut(INT_PTR Self, INT_PTR Normal, INT_PTR Size)
+	DOTNET_EXPORT float E_FVector_BoxPushOut(FVector* Self, INT_PTR Normal, INT_PTR Size)
 	{
 		auto _p0 = *(FVector*)Normal;
 		auto _p1 = *(FVector*)Size;
-		return ((FVector*)Self)->BoxPushOut(_p0, _p1);
+		return (Self)->BoxPushOut(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ClampMaxSize(INT_PTR Self, float MaxSize)
+	DOTNET_EXPORT INT_PTR E_FVector_ClampMaxSize(FVector* Self, float MaxSize)
 	{
 		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(((FVector*)Self)->ClampMaxSize(_p0));
+		return (INT_PTR) new FVector((Self)->ClampMaxSize(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ClampMaxSize2D(INT_PTR Self, float MaxSize)
+	DOTNET_EXPORT INT_PTR E_FVector_ClampMaxSize2D(FVector* Self, float MaxSize)
 	{
 		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(((FVector*)Self)->ClampMaxSize2D(_p0));
+		return (INT_PTR) new FVector((Self)->ClampMaxSize2D(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ClampSize(INT_PTR Self, float Min, float Max)
+	DOTNET_EXPORT INT_PTR E_FVector_ClampSize(FVector* Self, float Min, float Max)
 	{
 		auto _p0 = Min;
 		auto _p1 = Max;
-		return (INT_PTR) new FVector(((FVector*)Self)->ClampSize(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->ClampSize(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ClampSize2D(INT_PTR Self, float Min, float Max)
+	DOTNET_EXPORT INT_PTR E_FVector_ClampSize2D(FVector* Self, float Min, float Max)
 	{
 		auto _p0 = Min;
 		auto _p1 = Max;
-		return (INT_PTR) new FVector(((FVector*)Self)->ClampSize2D(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->ClampSize2D(_p0, _p1));
 	}
 
-	DOTNET_EXPORT bool E_FVector_Coincident(INT_PTR Self, INT_PTR Normal1, INT_PTR Normal2, float ParallelCosineThreshold)
+	DOTNET_EXPORT bool E_FVector_Coincident(FVector* Self, INT_PTR Normal1, INT_PTR Normal2, float ParallelCosineThreshold)
 	{
 		auto _p0 = *(FVector*)Normal1;
 		auto _p1 = *(FVector*)Normal2;
 		auto _p2 = ParallelCosineThreshold;
-		return ((FVector*)Self)->Coincident(_p0, _p1, _p2);
+		return (Self)->Coincident(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ComponentMax(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT INT_PTR E_FVector_ComponentMax(FVector* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FVector*)Other;
-		return (INT_PTR) new FVector(((FVector*)Self)->ComponentMax(_p0));
+		return (INT_PTR) new FVector((Self)->ComponentMax(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ComponentMin(INT_PTR Self, INT_PTR Other)
+	DOTNET_EXPORT INT_PTR E_FVector_ComponentMin(FVector* Self, INT_PTR Other)
 	{
 		auto _p0 = *(FVector*)Other;
-		return (INT_PTR) new FVector(((FVector*)Self)->ComponentMin(_p0));
+		return (INT_PTR) new FVector((Self)->ComponentMin(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FVector_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector_ContainsNaN(FVector* Self)
 	{
-		return ((FVector*)Self)->ContainsNaN();
+		return (Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT bool E_FVector_Coplanar(INT_PTR Self, INT_PTR Base1, INT_PTR Normal1, INT_PTR Base2, INT_PTR Normal2, float ParallelCosineThreshold)
+	DOTNET_EXPORT bool E_FVector_Coplanar(FVector* Self, INT_PTR Base1, INT_PTR Normal1, INT_PTR Base2, INT_PTR Normal2, float ParallelCosineThreshold)
 	{
 		auto _p0 = *(FVector*)Base1;
 		auto _p1 = *(FVector*)Normal1;
 		auto _p2 = *(FVector*)Base2;
 		auto _p3 = *(FVector*)Normal2;
 		auto _p4 = ParallelCosineThreshold;
-		return ((FVector*)Self)->Coplanar(_p0, _p1, _p2, _p3, _p4);
+		return (Self)->Coplanar(_p0, _p1, _p2, _p3, _p4);
 	}
 
-	DOTNET_EXPORT float E_FVector_CosineAngle2D(INT_PTR Self, INT_PTR B)
+	DOTNET_EXPORT float E_FVector_CosineAngle2D(FVector* Self, INT_PTR B)
 	{
 		auto _p0 = *(FVector*)B;
-		return ((FVector*)Self)->CosineAngle2D(_p0);
+		return (Self)->CosineAngle2D(_p0);
 	}
 
-	DOTNET_EXPORT void E_FVector_CreateOrthonormalBasis(INT_PTR Self, INT_PTR XAxis, INT_PTR YAxis, INT_PTR ZAxis)
+	DOTNET_EXPORT void E_FVector_CreateOrthonormalBasis(FVector* Self, INT_PTR XAxis, INT_PTR YAxis, INT_PTR ZAxis)
 	{
 		auto _p0 = *(FVector*)XAxis;
 		auto _p1 = *(FVector*)YAxis;
 		auto _p2 = *(FVector*)ZAxis;
-		((FVector*)Self)->CreateOrthonormalBasis(_p0, _p1, _p2);
+		(Self)->CreateOrthonormalBasis(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_CrossProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT INT_PTR E_FVector_CrossProduct(FVector* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FVector*)A;
 		auto _p1 = *(FVector*)B;
-		return (INT_PTR) new FVector(((FVector*)Self)->CrossProduct(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->CrossProduct(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_DegreesToRadians(INT_PTR Self, INT_PTR DegVector)
+	DOTNET_EXPORT INT_PTR E_FVector_DegreesToRadians(FVector* Self, INT_PTR DegVector)
 	{
 		auto _p0 = *(FVector*)DegVector;
-		return (INT_PTR) new FVector(((FVector*)Self)->DegreesToRadians(_p0));
+		return (INT_PTR) new FVector((Self)->DegreesToRadians(_p0));
 	}
 
-	DOTNET_EXPORT float E_FVector_Dist(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_Dist(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->Dist(_p0, _p1);
+		return (Self)->Dist(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_Dist2D(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_Dist2D(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->Dist2D(_p0, _p1);
+		return (Self)->Dist2D(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_Distance(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_Distance(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->Distance(_p0, _p1);
+		return (Self)->Distance(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_DistSquared(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_DistSquared(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->DistSquared(_p0, _p1);
+		return (Self)->DistSquared(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_DistSquared2D(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_DistSquared2D(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->DistSquared2D(_p0, _p1);
+		return (Self)->DistSquared2D(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_DistSquaredXY(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_DistSquaredXY(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->DistSquaredXY(_p0, _p1);
+		return (Self)->DistSquaredXY(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_DistXY(INT_PTR Self, INT_PTR V1, INT_PTR V2)
+	DOTNET_EXPORT float E_FVector_DistXY(FVector* Self, INT_PTR V1, INT_PTR V2)
 	{
 		auto _p0 = *(FVector*)V1;
 		auto _p1 = *(FVector*)V2;
-		return ((FVector*)Self)->DistXY(_p0, _p1);
+		return (Self)->DistXY(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector_DotProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT float E_FVector_DotProduct(FVector* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FVector*)A;
 		auto _p1 = *(FVector*)B;
-		return ((FVector*)Self)->DotProduct(_p0, _p1);
+		return (Self)->DotProduct(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_Equals(FVector* Self, INT_PTR V, float Tolerance)
 	{
 		auto _p0 = *(FVector*)V;
 		auto _p1 = Tolerance;
-		return ((FVector*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FVector_FindBestAxisVectors(INT_PTR Self, INT_PTR Axis1, INT_PTR Axis2)
+	DOTNET_EXPORT void E_FVector_FindBestAxisVectors(FVector* Self, INT_PTR Axis1, INT_PTR Axis2)
 	{
 		auto _p0 = *(FVector*)Axis1;
 		auto _p1 = *(FVector*)Axis2;
-		((FVector*)Self)->FindBestAxisVectors(_p0, _p1);
+		(Self)->FindBestAxisVectors(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetAbs(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_GetAbs(FVector* Self)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->GetAbs());
+		return (INT_PTR) new FVector((Self)->GetAbs());
 	}
 
-	DOTNET_EXPORT float E_FVector_GetAbsMax(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_GetAbsMax(FVector* Self)
 	{
-		return ((FVector*)Self)->GetAbsMax();
+		return (Self)->GetAbsMax();
 	}
 
-	DOTNET_EXPORT float E_FVector_GetAbsMin(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_GetAbsMin(FVector* Self)
 	{
-		return ((FVector*)Self)->GetAbsMin();
+		return (Self)->GetAbsMin();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToMaxSize(INT_PTR Self, float MaxSize)
-	{
-		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetClampedToMaxSize(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToMaxSize2D(INT_PTR Self, float MaxSize)
+	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToMaxSize(FVector* Self, float MaxSize)
 	{
 		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetClampedToMaxSize2D(_p0));
+		return (INT_PTR) new FVector((Self)->GetClampedToMaxSize(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToSize(INT_PTR Self, float Min, float Max)
+	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToMaxSize2D(FVector* Self, float MaxSize)
+	{
+		auto _p0 = MaxSize;
+		return (INT_PTR) new FVector((Self)->GetClampedToMaxSize2D(_p0));
+	}
+
+	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToSize(FVector* Self, float Min, float Max)
 	{
 		auto _p0 = Min;
 		auto _p1 = Max;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetClampedToSize(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->GetClampedToSize(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToSize2D(INT_PTR Self, float Min, float Max)
+	DOTNET_EXPORT INT_PTR E_FVector_GetClampedToSize2D(FVector* Self, float Min, float Max)
 	{
 		auto _p0 = Min;
 		auto _p1 = Max;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetClampedToSize2D(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->GetClampedToSize2D(_p0, _p1));
 	}
 
-	DOTNET_EXPORT float E_FVector_GetMax(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_GetMax(FVector* Self)
 	{
-		return ((FVector*)Self)->GetMax();
+		return (Self)->GetMax();
 	}
 
-	DOTNET_EXPORT float E_FVector_GetMin(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_GetMin(FVector* Self)
 	{
-		return ((FVector*)Self)->GetMin();
+		return (Self)->GetMin();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetSafeNormal(INT_PTR Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetSafeNormal(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FVector_GetSafeNormal2D(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FVector_GetSafeNormal(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(((FVector*)Self)->GetSafeNormal2D(_p0));
+		return (INT_PTR) new FVector((Self)->GetSafeNormal(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetSignVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_GetSafeNormal2D(FVector* Self, float Tolerance)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->GetSignVector());
+		auto _p0 = Tolerance;
+		return (INT_PTR) new FVector((Self)->GetSafeNormal2D(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GetUnsafeNormal(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_GetSignVector(FVector* Self)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->GetUnsafeNormal());
+		return (INT_PTR) new FVector((Self)->GetSignVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_GridSnap(INT_PTR Self, float GridSz)
+	DOTNET_EXPORT INT_PTR E_FVector_GetUnsafeNormal(FVector* Self)
+	{
+		return (INT_PTR) new FVector((Self)->GetUnsafeNormal());
+	}
+
+	DOTNET_EXPORT INT_PTR E_FVector_GridSnap(FVector* Self, float GridSz)
 	{
 		auto _p0 = GridSz;
-		return (INT_PTR) new FVector(((FVector*)Self)->GridSnap(_p0));
+		return (INT_PTR) new FVector((Self)->GridSnap(_p0));
 	}
 
-	DOTNET_EXPORT float E_FVector_HeadingAngle(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_HeadingAngle(FVector* Self)
 	{
-		return ((FVector*)Self)->HeadingAngle();
+		return (Self)->HeadingAngle();
 	}
 
-	DOTNET_EXPORT bool E_FVector_InitFromString(INT_PTR Self, char* InSourceString)
+	DOTNET_EXPORT bool E_FVector_InitFromString(FVector* Self, char* InSourceString)
 	{
 		auto _p0 = FString(InSourceString);
-		return ((FVector*)Self)->InitFromString(_p0);
+		return (Self)->InitFromString(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsNearlyZero(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_IsNearlyZero(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector*)Self)->IsNearlyZero(_p0);
+		return (Self)->IsNearlyZero(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsNormalized(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector_IsNormalized(FVector* Self)
 	{
-		return ((FVector*)Self)->IsNormalized();
+		return (Self)->IsNormalized();
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsUniform(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_IsUniform(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector*)Self)->IsUniform(_p0);
+		return (Self)->IsUniform(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsUnit(INT_PTR Self, float LengthSquaredTolerance)
+	DOTNET_EXPORT bool E_FVector_IsUnit(FVector* Self, float LengthSquaredTolerance)
 	{
 		auto _p0 = LengthSquaredTolerance;
-		return ((FVector*)Self)->IsUnit(_p0);
+		return (Self)->IsUnit(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector_IsZero(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector_IsZero(FVector* Self)
 	{
-		return ((FVector*)Self)->IsZero();
+		return (Self)->IsZero();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_MirrorByPlane(INT_PTR Self, INT_PTR Plane)
+	DOTNET_EXPORT INT_PTR E_FVector_MirrorByPlane(FVector* Self, INT_PTR Plane)
 	{
 		auto _p0 = *(FPlane*)Plane;
-		return (INT_PTR) new FVector(((FVector*)Self)->MirrorByPlane(_p0));
+		return (INT_PTR) new FVector((Self)->MirrorByPlane(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_MirrorByVector(INT_PTR Self, INT_PTR MirrorNormal)
+	DOTNET_EXPORT INT_PTR E_FVector_MirrorByVector(FVector* Self, INT_PTR MirrorNormal)
 	{
 		auto _p0 = *(FVector*)MirrorNormal;
-		return (INT_PTR) new FVector(((FVector*)Self)->MirrorByVector(_p0));
+		return (INT_PTR) new FVector((Self)->MirrorByVector(_p0));
 	}
 
-	DOTNET_EXPORT bool E_FVector_Normalize(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector_Normalize(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector*)Self)->Normalize(_p0);
+		return (Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector_Orthogonal(INT_PTR Self, INT_PTR Normal1, INT_PTR Normal2, float OrthogonalCosineThreshold)
+	DOTNET_EXPORT bool E_FVector_Orthogonal(FVector* Self, INT_PTR Normal1, INT_PTR Normal2, float OrthogonalCosineThreshold)
 	{
 		auto _p0 = *(FVector*)Normal1;
 		auto _p1 = *(FVector*)Normal2;
 		auto _p2 = OrthogonalCosineThreshold;
-		return ((FVector*)Self)->Orthogonal(_p0, _p1, _p2);
+		return (Self)->Orthogonal(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FVector_Parallel(INT_PTR Self, INT_PTR Normal1, INT_PTR Normal2, float ParallelCosineThreshold)
+	DOTNET_EXPORT bool E_FVector_Parallel(FVector* Self, INT_PTR Normal1, INT_PTR Normal2, float ParallelCosineThreshold)
 	{
 		auto _p0 = *(FVector*)Normal1;
 		auto _p1 = *(FVector*)Normal2;
 		auto _p2 = ParallelCosineThreshold;
-		return ((FVector*)Self)->Parallel(_p0, _p1, _p2);
+		return (Self)->Parallel(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT float E_FVector_PointPlaneDist(INT_PTR Self, INT_PTR Point, INT_PTR PlaneBase, INT_PTR PlaneNormal)
+	DOTNET_EXPORT float E_FVector_PointPlaneDist(FVector* Self, INT_PTR Point, INT_PTR PlaneBase, INT_PTR PlaneNormal)
 	{
 		auto _p0 = *(FVector*)Point;
 		auto _p1 = *(FVector*)PlaneBase;
 		auto _p2 = *(FVector*)PlaneNormal;
-		return ((FVector*)Self)->PointPlaneDist(_p0, _p1, _p2);
+		return (Self)->PointPlaneDist(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FVector_PointsAreNear(INT_PTR Self, INT_PTR Point1, INT_PTR Point2, float Dist)
+	DOTNET_EXPORT bool E_FVector_PointsAreNear(FVector* Self, INT_PTR Point1, INT_PTR Point2, float Dist)
 	{
 		auto _p0 = *(FVector*)Point1;
 		auto _p1 = *(FVector*)Point2;
 		auto _p2 = Dist;
-		return ((FVector*)Self)->PointsAreNear(_p0, _p1, _p2);
+		return (Self)->PointsAreNear(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT bool E_FVector_PointsAreSame(INT_PTR Self, INT_PTR P, INT_PTR Q)
+	DOTNET_EXPORT bool E_FVector_PointsAreSame(FVector* Self, INT_PTR P, INT_PTR Q)
 	{
 		auto _p0 = *(FVector*)P;
 		auto _p1 = *(FVector*)Q;
-		return ((FVector*)Self)->PointsAreSame(_p0, _p1);
+		return (Self)->PointsAreSame(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_Projection(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_Projection(FVector* Self)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->Projection());
+		return (INT_PTR) new FVector((Self)->Projection());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ProjectOnTo(INT_PTR Self, INT_PTR A)
+	DOTNET_EXPORT INT_PTR E_FVector_ProjectOnTo(FVector* Self, INT_PTR A)
 	{
 		auto _p0 = *(FVector*)A;
-		return (INT_PTR) new FVector(((FVector*)Self)->ProjectOnTo(_p0));
+		return (INT_PTR) new FVector((Self)->ProjectOnTo(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ProjectOnToNormal(INT_PTR Self, INT_PTR Normal)
+	DOTNET_EXPORT INT_PTR E_FVector_ProjectOnToNormal(FVector* Self, INT_PTR Normal)
 	{
 		auto _p0 = *(FVector*)Normal;
-		return (INT_PTR) new FVector(((FVector*)Self)->ProjectOnToNormal(_p0));
+		return (INT_PTR) new FVector((Self)->ProjectOnToNormal(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_RadiansToDegrees(INT_PTR Self, INT_PTR RadVector)
+	DOTNET_EXPORT INT_PTR E_FVector_RadiansToDegrees(FVector* Self, INT_PTR RadVector)
 	{
 		auto _p0 = *(FVector*)RadVector;
-		return (INT_PTR) new FVector(((FVector*)Self)->RadiansToDegrees(_p0));
+		return (INT_PTR) new FVector((Self)->RadiansToDegrees(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_Reciprocal(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_Reciprocal(FVector* Self)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->Reciprocal());
+		return (INT_PTR) new FVector((Self)->Reciprocal());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_RotateAngleAxis(INT_PTR Self, float AngleDeg, INT_PTR Axis)
+	DOTNET_EXPORT INT_PTR E_FVector_RotateAngleAxis(FVector* Self, float AngleDeg, INT_PTR Axis)
 	{
 		auto _p0 = AngleDeg;
 		auto _p1 = *(FVector*)Axis;
-		return (INT_PTR) new FVector(((FVector*)Self)->RotateAngleAxis(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->RotateAngleAxis(_p0, _p1));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_Rotation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_Rotation(FVector* Self)
 	{
-		return (INT_PTR) new FRotator(((FVector*)Self)->Rotation());
+		return (INT_PTR) new FRotator((Self)->Rotation());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_SafeNormal(INT_PTR Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(((FVector*)Self)->SafeNormal(_p0));
-	}
-
-	DOTNET_EXPORT INT_PTR E_FVector_SafeNormal2D(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FVector_SafeNormal(FVector* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(((FVector*)Self)->SafeNormal2D(_p0));
+		return (INT_PTR) new FVector((Self)->SafeNormal(_p0));
 	}
 
-	DOTNET_EXPORT void E_FVector_Set(INT_PTR Self, float InX, float InY, float InZ)
+	DOTNET_EXPORT INT_PTR E_FVector_SafeNormal2D(FVector* Self, float Tolerance)
+	{
+		auto _p0 = Tolerance;
+		return (INT_PTR) new FVector((Self)->SafeNormal2D(_p0));
+	}
+
+	DOTNET_EXPORT void E_FVector_Set(FVector* Self, float InX, float InY, float InZ)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
 		auto _p2 = InZ;
-		((FVector*)Self)->Set(_p0, _p1, _p2);
+		(Self)->Set(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT float E_FVector_Size(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_Size(FVector* Self)
 	{
-		return ((FVector*)Self)->Size();
+		return (Self)->Size();
 	}
 
-	DOTNET_EXPORT float E_FVector_Size2D(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_Size2D(FVector* Self)
 	{
-		return ((FVector*)Self)->Size2D();
+		return (Self)->Size2D();
 	}
 
-	DOTNET_EXPORT float E_FVector_SizeSquared(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_SizeSquared(FVector* Self)
 	{
-		return ((FVector*)Self)->SizeSquared();
+		return (Self)->SizeSquared();
 	}
 
-	DOTNET_EXPORT float E_FVector_SizeSquared2D(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector_SizeSquared2D(FVector* Self)
 	{
-		return ((FVector*)Self)->SizeSquared2D();
+		return (Self)->SizeSquared2D();
 	}
 
-	DOTNET_EXPORT char* E_FVector_ToCompactString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector_ToCompactString(FVector* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector*)Self)->ToCompactString();
+		auto _result = (Self)->ToCompactString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT char* E_FVector_ToCompactText(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector_ToCompactText(FVector* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector*)Self)->ToCompactText().ToString();
+		auto _result = (Self)->ToCompactText().ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_FVector_ToDirectionAndLength(INT_PTR Self, INT_PTR OutDir, float OutLength)
+	DOTNET_EXPORT void E_FVector_ToDirectionAndLength(FVector* Self, INT_PTR OutDir, float OutLength)
 	{
 		auto _p0 = *(FVector*)OutDir;
 		auto _p1 = OutLength;
-		((FVector*)Self)->ToDirectionAndLength(_p0, _p1);
+		(Self)->ToDirectionAndLength(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationQuat(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationQuat(FVector* Self)
 	{
-		return (INT_PTR) new FQuat(((FVector*)Self)->ToOrientationQuat());
+		return (INT_PTR) new FQuat((Self)->ToOrientationQuat());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationRotator(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_ToOrientationRotator(FVector* Self)
 	{
-		return (INT_PTR) new FRotator(((FVector*)Self)->ToOrientationRotator());
+		return (INT_PTR) new FRotator((Self)->ToOrientationRotator());
 	}
 
-	DOTNET_EXPORT char* E_FVector_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector_ToString(FVector* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT char* E_FVector_ToText(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector_ToText(FVector* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector*)Self)->ToText().ToString();
+		auto _result = (Self)->ToText().ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT float E_FVector_Triple(INT_PTR Self, INT_PTR X, INT_PTR Y, INT_PTR Z)
+	DOTNET_EXPORT float E_FVector_Triple(FVector* Self, INT_PTR X, INT_PTR Y, INT_PTR Z)
 	{
 		auto _p0 = *(FVector*)X;
 		auto _p1 = *(FVector*)Y;
 		auto _p2 = *(FVector*)Z;
-		return ((FVector*)Self)->Triple(_p0, _p1, _p2);
+		return (Self)->Triple(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_UnitCartesianToSpherical(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_UnitCartesianToSpherical(FVector* Self)
 	{
-		return (INT_PTR) new FVector2D(((FVector*)Self)->UnitCartesianToSpherical());
+		return (INT_PTR) new FVector2D((Self)->UnitCartesianToSpherical());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_UnsafeNormal(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector_UnsafeNormal(FVector* Self)
 	{
-		return (INT_PTR) new FVector(((FVector*)Self)->UnsafeNormal());
+		return (INT_PTR) new FVector((Self)->UnsafeNormal());
 	}
 
-	DOTNET_EXPORT void E_FVector_UnwindEuler(INT_PTR Self)
+	DOTNET_EXPORT void E_FVector_UnwindEuler(FVector* Self)
 	{
-		((FVector*)Self)->UnwindEuler();
+		(Self)->UnwindEuler();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector_VectorPlaneProject(INT_PTR Self, INT_PTR V, INT_PTR PlaneNormal)
+	DOTNET_EXPORT INT_PTR E_FVector_VectorPlaneProject(FVector* Self, INT_PTR V, INT_PTR PlaneNormal)
 	{
 		auto _p0 = *(FVector*)V;
 		auto _p1 = *(FVector*)PlaneNormal;
-		return (INT_PTR) new FVector(((FVector*)Self)->VectorPlaneProject(_p0, _p1));
+		return (INT_PTR) new FVector((Self)->VectorPlaneProject(_p0, _p1));
 	}
 
 	
@@ -3170,161 +3607,161 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FVector2D_Y_GET(INT_PTR Ptr) { return ((FVector2D*)Ptr)->Y; }
 	DOTNET_EXPORT void E_PROP_FVector2D_Y_SET(INT_PTR Ptr, float Value) { ((FVector2D*)Ptr)->Y = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_FVector2D_ClampAxes(INT_PTR Self, float MinAxisVal, float MaxAxisVal)
+	DOTNET_EXPORT INT_PTR E_FVector2D_ClampAxes(FVector2D* Self, float MinAxisVal, float MaxAxisVal)
 	{
 		auto _p0 = MinAxisVal;
 		auto _p1 = MaxAxisVal;
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->ClampAxes(_p0, _p1));
+		return (INT_PTR) new FVector2D((Self)->ClampAxes(_p0, _p1));
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector2D_ContainsNaN(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->ContainsNaN();
+		return (Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT float E_FVector2D_CrossProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
-	{
-		auto _p0 = *(FVector2D*)A;
-		auto _p1 = *(FVector2D*)B;
-		return ((FVector2D*)Self)->CrossProduct(_p0, _p1);
-	}
-
-	DOTNET_EXPORT void E_FVector2D_DiagnosticCheckNaN(INT_PTR Self)
-	{
-		((FVector2D*)Self)->DiagnosticCheckNaN();
-	}
-
-	DOTNET_EXPORT float E_FVector2D_Distance(INT_PTR Self, INT_PTR V1, INT_PTR V2)
-	{
-		auto _p0 = *(FVector2D*)V1;
-		auto _p1 = *(FVector2D*)V2;
-		return ((FVector2D*)Self)->Distance(_p0, _p1);
-	}
-
-	DOTNET_EXPORT float E_FVector2D_DistSquared(INT_PTR Self, INT_PTR V1, INT_PTR V2)
-	{
-		auto _p0 = *(FVector2D*)V1;
-		auto _p1 = *(FVector2D*)V2;
-		return ((FVector2D*)Self)->DistSquared(_p0, _p1);
-	}
-
-	DOTNET_EXPORT float E_FVector2D_DotProduct(INT_PTR Self, INT_PTR A, INT_PTR B)
+	DOTNET_EXPORT float E_FVector2D_CrossProduct(FVector2D* Self, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = *(FVector2D*)A;
 		auto _p1 = *(FVector2D*)B;
-		return ((FVector2D*)Self)->DotProduct(_p0, _p1);
+		return (Self)->CrossProduct(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
+	DOTNET_EXPORT void E_FVector2D_DiagnosticCheckNaN(FVector2D* Self)
+	{
+		(Self)->DiagnosticCheckNaN();
+	}
+
+	DOTNET_EXPORT float E_FVector2D_Distance(FVector2D* Self, INT_PTR V1, INT_PTR V2)
+	{
+		auto _p0 = *(FVector2D*)V1;
+		auto _p1 = *(FVector2D*)V2;
+		return (Self)->Distance(_p0, _p1);
+	}
+
+	DOTNET_EXPORT float E_FVector2D_DistSquared(FVector2D* Self, INT_PTR V1, INT_PTR V2)
+	{
+		auto _p0 = *(FVector2D*)V1;
+		auto _p1 = *(FVector2D*)V2;
+		return (Self)->DistSquared(_p0, _p1);
+	}
+
+	DOTNET_EXPORT float E_FVector2D_DotProduct(FVector2D* Self, INT_PTR A, INT_PTR B)
+	{
+		auto _p0 = *(FVector2D*)A;
+		auto _p1 = *(FVector2D*)B;
+		return (Self)->DotProduct(_p0, _p1);
+	}
+
+	DOTNET_EXPORT bool E_FVector2D_Equals(FVector2D* Self, INT_PTR V, float Tolerance)
 	{
 		auto _p0 = *(FVector2D*)V;
 		auto _p1 = Tolerance;
-		return ((FVector2D*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector2D_GetAbs(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector2D_GetAbs(FVector2D* Self)
 	{
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->GetAbs());
+		return (INT_PTR) new FVector2D((Self)->GetAbs());
 	}
 
-	DOTNET_EXPORT float E_FVector2D_GetAbsMax(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector2D_GetAbsMax(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->GetAbsMax();
+		return (Self)->GetAbsMax();
 	}
 
-	DOTNET_EXPORT float E_FVector2D_GetMax(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector2D_GetMax(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->GetMax();
+		return (Self)->GetMax();
 	}
 
-	DOTNET_EXPORT float E_FVector2D_GetMin(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector2D_GetMin(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->GetMin();
+		return (Self)->GetMin();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector2D_GetRotated(INT_PTR Self, float AngleDeg)
+	DOTNET_EXPORT INT_PTR E_FVector2D_GetRotated(FVector2D* Self, float AngleDeg)
 	{
 		auto _p0 = AngleDeg;
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->GetRotated(_p0));
+		return (INT_PTR) new FVector2D((Self)->GetRotated(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector2D_GetSafeNormal(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FVector2D_GetSafeNormal(FVector2D* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->GetSafeNormal(_p0));
+		return (INT_PTR) new FVector2D((Self)->GetSafeNormal(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector2D_GetSignVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector2D_GetSignVector(FVector2D* Self)
 	{
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->GetSignVector());
+		return (INT_PTR) new FVector2D((Self)->GetSignVector());
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_InitFromString(INT_PTR Self, char* InSourceString)
+	DOTNET_EXPORT bool E_FVector2D_InitFromString(FVector2D* Self, char* InSourceString)
 	{
 		auto _p0 = FString(InSourceString);
-		return ((FVector2D*)Self)->InitFromString(_p0);
+		return (Self)->InitFromString(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_IsNearlyZero(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector2D_IsNearlyZero(FVector2D* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector2D*)Self)->IsNearlyZero(_p0);
+		return (Self)->IsNearlyZero(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector2D_IsZero(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector2D_IsZero(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->IsZero();
+		return (Self)->IsZero();
 	}
 
-	DOTNET_EXPORT void E_FVector2D_Normalize(INT_PTR Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		((FVector2D*)Self)->Normalize(_p0);
-	}
-
-	DOTNET_EXPORT INT_PTR E_FVector2D_RoundToVector(INT_PTR Self)
-	{
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->RoundToVector());
-	}
-
-	DOTNET_EXPORT INT_PTR E_FVector2D_SafeNormal(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT void E_FVector2D_Normalize(FVector2D* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector2D(((FVector2D*)Self)->SafeNormal(_p0));
+		(Self)->Normalize(_p0);
 	}
 
-	DOTNET_EXPORT void E_FVector2D_Set(INT_PTR Self, float InX, float InY)
+	DOTNET_EXPORT INT_PTR E_FVector2D_RoundToVector(FVector2D* Self)
+	{
+		return (INT_PTR) new FVector2D((Self)->RoundToVector());
+	}
+
+	DOTNET_EXPORT INT_PTR E_FVector2D_SafeNormal(FVector2D* Self, float Tolerance)
+	{
+		auto _p0 = Tolerance;
+		return (INT_PTR) new FVector2D((Self)->SafeNormal(_p0));
+	}
+
+	DOTNET_EXPORT void E_FVector2D_Set(FVector2D* Self, float InX, float InY)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
-		((FVector2D*)Self)->Set(_p0, _p1);
+		(Self)->Set(_p0, _p1);
 	}
 
-	DOTNET_EXPORT float E_FVector2D_Size(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector2D_Size(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->Size();
+		return (Self)->Size();
 	}
 
-	DOTNET_EXPORT float E_FVector2D_SizeSquared(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector2D_SizeSquared(FVector2D* Self)
 	{
-		return ((FVector2D*)Self)->SizeSquared();
+		return (Self)->SizeSquared();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector2D_SphericalToUnitCartesian(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector2D_SphericalToUnitCartesian(FVector2D* Self)
 	{
-		return (INT_PTR) new FVector(((FVector2D*)Self)->SphericalToUnitCartesian());
+		return (INT_PTR) new FVector((Self)->SphericalToUnitCartesian());
 	}
 
-	DOTNET_EXPORT void E_FVector2D_ToDirectionAndLength(INT_PTR Self, INT_PTR OutDir, float OutLength)
+	DOTNET_EXPORT void E_FVector2D_ToDirectionAndLength(FVector2D* Self, INT_PTR OutDir, float OutLength)
 	{
 		auto _p0 = *(FVector2D*)OutDir;
 		auto _p1 = OutLength;
-		((FVector2D*)Self)->ToDirectionAndLength(_p0, _p1);
+		(Self)->ToDirectionAndLength(_p0, _p1);
 	}
 
-	DOTNET_EXPORT char* E_FVector2D_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector2D_ToString(FVector2D* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector2D*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
@@ -3350,131 +3787,131 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_FVector4_Z_GET(INT_PTR Ptr) { return ((FVector4*)Ptr)->Z; }
 	DOTNET_EXPORT void E_PROP_FVector4_Z_SET(INT_PTR Ptr, float Value) { ((FVector4*)Ptr)->Z = Value; }
 	
-	DOTNET_EXPORT float E_FVector4_Component(INT_PTR Self, int32 Index)
+	DOTNET_EXPORT float E_FVector4_Component(FVector4* Self, int32 Index)
 	{
 		auto _p0 = Index;
-		return ((FVector4*)Self)->Component(_p0);
+		return (Self)->Component(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector4_ContainsNaN(INT_PTR Self)
+	DOTNET_EXPORT bool E_FVector4_ContainsNaN(FVector4* Self)
 	{
-		return ((FVector4*)Self)->ContainsNaN();
+		return (Self)->ContainsNaN();
 	}
 
-	DOTNET_EXPORT void E_FVector4_DiagnosticCheckNaN(INT_PTR Self)
+	DOTNET_EXPORT void E_FVector4_DiagnosticCheckNaN(FVector4* Self)
 	{
-		((FVector4*)Self)->DiagnosticCheckNaN();
+		(Self)->DiagnosticCheckNaN();
 	}
 
-	DOTNET_EXPORT bool E_FVector4_Equals(INT_PTR Self, INT_PTR V, float Tolerance)
+	DOTNET_EXPORT bool E_FVector4_Equals(FVector4* Self, INT_PTR V, float Tolerance)
 	{
 		auto _p0 = *(FVector4*)V;
 		auto _p1 = Tolerance;
-		return ((FVector4*)Self)->Equals(_p0, _p1);
+		return (Self)->Equals(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_FVector4_FindBestAxisVectors3(INT_PTR Self, INT_PTR Axis1, INT_PTR Axis2)
+	DOTNET_EXPORT void E_FVector4_FindBestAxisVectors3(FVector4* Self, INT_PTR Axis1, INT_PTR Axis2)
 	{
 		auto _p0 = *(FVector4*)Axis1;
 		auto _p1 = *(FVector4*)Axis2;
-		((FVector4*)Self)->FindBestAxisVectors3(_p0, _p1);
+		(Self)->FindBestAxisVectors3(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_GetSafeNormal(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FVector4_GetSafeNormal(FVector4* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector4(((FVector4*)Self)->GetSafeNormal(_p0));
+		return (INT_PTR) new FVector4((Self)->GetSafeNormal(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_GetUnsafeNormal3(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_GetUnsafeNormal3(FVector4* Self)
 	{
-		return (INT_PTR) new FVector4(((FVector4*)Self)->GetUnsafeNormal3());
+		return (INT_PTR) new FVector4((Self)->GetUnsafeNormal3());
 	}
 
-	DOTNET_EXPORT bool E_FVector4_InitFromString(INT_PTR Self, char* InSourceString)
+	DOTNET_EXPORT bool E_FVector4_InitFromString(FVector4* Self, char* InSourceString)
 	{
 		auto _p0 = FString(InSourceString);
-		return ((FVector4*)Self)->InitFromString(_p0);
+		return (Self)->InitFromString(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector4_IsNearlyZero3(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT bool E_FVector4_IsNearlyZero3(FVector4* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return ((FVector4*)Self)->IsNearlyZero3(_p0);
+		return (Self)->IsNearlyZero3(_p0);
 	}
 
-	DOTNET_EXPORT bool E_FVector4_IsUnit3(INT_PTR Self, float LengthSquaredTolerance)
+	DOTNET_EXPORT bool E_FVector4_IsUnit3(FVector4* Self, float LengthSquaredTolerance)
 	{
 		auto _p0 = LengthSquaredTolerance;
-		return ((FVector4*)Self)->IsUnit3(_p0);
+		return (Self)->IsUnit3(_p0);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_Reflect3(INT_PTR Self, INT_PTR Normal)
+	DOTNET_EXPORT INT_PTR E_FVector4_Reflect3(FVector4* Self, INT_PTR Normal)
 	{
 		auto _p0 = *(FVector4*)Normal;
-		return (INT_PTR) new FVector4(((FVector4*)Self)->Reflect3(_p0));
+		return (INT_PTR) new FVector4((Self)->Reflect3(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_Rotation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_Rotation(FVector4* Self)
 	{
-		return (INT_PTR) new FRotator(((FVector4*)Self)->Rotation());
+		return (INT_PTR) new FRotator((Self)->Rotation());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_SafeNormal(INT_PTR Self, float Tolerance)
+	DOTNET_EXPORT INT_PTR E_FVector4_SafeNormal(FVector4* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector4(((FVector4*)Self)->SafeNormal(_p0));
+		return (INT_PTR) new FVector4((Self)->SafeNormal(_p0));
 	}
 
-	DOTNET_EXPORT void E_FVector4_Set(INT_PTR Self, float InX, float InY, float InZ, float InW)
+	DOTNET_EXPORT void E_FVector4_Set(FVector4* Self, float InX, float InY, float InZ, float InW)
 	{
 		auto _p0 = InX;
 		auto _p1 = InY;
 		auto _p2 = InZ;
 		auto _p3 = InW;
-		((FVector4*)Self)->Set(_p0, _p1, _p2, _p3);
+		(Self)->Set(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT float E_FVector4_Size(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector4_Size(FVector4* Self)
 	{
-		return ((FVector4*)Self)->Size();
+		return (Self)->Size();
 	}
 
-	DOTNET_EXPORT float E_FVector4_Size3(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector4_Size3(FVector4* Self)
 	{
-		return ((FVector4*)Self)->Size3();
+		return (Self)->Size3();
 	}
 
-	DOTNET_EXPORT float E_FVector4_SizeSquared(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector4_SizeSquared(FVector4* Self)
 	{
-		return ((FVector4*)Self)->SizeSquared();
+		return (Self)->SizeSquared();
 	}
 
-	DOTNET_EXPORT float E_FVector4_SizeSquared3(INT_PTR Self)
+	DOTNET_EXPORT float E_FVector4_SizeSquared3(FVector4* Self)
 	{
-		return ((FVector4*)Self)->SizeSquared3();
+		return (Self)->SizeSquared3();
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationQuat(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationQuat(FVector4* Self)
 	{
-		return (INT_PTR) new FQuat(((FVector4*)Self)->ToOrientationQuat());
+		return (INT_PTR) new FQuat((Self)->ToOrientationQuat());
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationRotator(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_ToOrientationRotator(FVector4* Self)
 	{
-		return (INT_PTR) new FRotator(((FVector4*)Self)->ToOrientationRotator());
+		return (INT_PTR) new FRotator((Self)->ToOrientationRotator());
 	}
 
-	DOTNET_EXPORT char* E_FVector4_ToString(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_FVector4_ToString(FVector4* Self, int& ResultStringLen)
 	{
-		auto _result = ((FVector4*)Self)->ToString();
+		auto _result = (Self)->ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT INT_PTR E_FVector4_UnsafeNormal3(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_FVector4_UnsafeNormal3(FVector4* Self)
 	{
-		return (INT_PTR) new FVector4(((FVector4*)Self)->UnsafeNormal3());
+		return (INT_PTR) new FVector4((Self)->UnsafeNormal3());
 	}
 
 	
@@ -3558,15 +3995,15 @@ extern "C"
 	}
 	DOTNET_EXPORT void E_PROP_FWorldContext_TravelURL_SET(INT_PTR Ptr, char* Value) { ((FWorldContext*)Ptr)->TravelURL = UTF8_TO_TCHAR(Value); }
 	
-	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(INT_PTR Self, UWorld* World)
+	DOTNET_EXPORT void E_FWorldContext_SetCurrentWorld(FWorldContext* Self, UWorld* World)
 	{
 		auto _p0 = World;
-		((FWorldContext*)Self)->SetCurrentWorld(_p0);
+		(Self)->SetCurrentWorld(_p0);
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_FWorldContext_World(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_FWorldContext_World(FWorldContext* Self)
 	{
-		return MakePrtDesc(((FWorldContext*)Self)->World());
+		return MakePrtDesc((Self)->World());
 	}
 
 }

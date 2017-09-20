@@ -159,7 +159,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Calculates distance between plane and a point. </para>
 		/// <param name="P">The other point. </param>
-		/// <return>>0: point is in front of the plane, <0: behind, =0: on the plane. </return>
+		/// <return>0: point is in front of the plane, <0: behind, =0: on the plane. </return>
 		/// </summary>
 		public float PlaneDot(FVector P)
 			=> E_FPlane_PlaneDot(this, P);

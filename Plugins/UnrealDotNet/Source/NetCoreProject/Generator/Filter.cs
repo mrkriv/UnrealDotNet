@@ -44,8 +44,6 @@ namespace Generator
 
             "FWorldDelegates",
             "FSkelMeshSkinWeightInfo",
-
-            "FPostProcessSettings", // TODO: DisplayName не валиден (начинается с цифры)
         };
 
         public static string[] NewObjectBlackList =
@@ -76,9 +74,7 @@ namespace Generator
             { "UTimelineComponent", new[] { "OnRep_Timeline" }},
             { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
 
-            { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: * в **
-            { "FTransform", new[] { "Multiply" }},
-            { "UWorld", new[] { "EncroachingBlockingGeometry", "ProcessLevelStreamingVolumes" }},
+            { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
             
 
             { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
@@ -177,18 +173,20 @@ namespace Generator
                     !EnumBlackList.Contains(en.Name);
         }
 
-        public static bool TypeFilter(Type cl)
+        public static bool TypeFilter(Type type)
         {
-            if (!cl.IsImplemented ||
-                cl.IsTemplate ||
-                cl.NamespaceBaseType != null)
+            if (!type.IsImplemented ||
+                type.IsTemplate ||
+                type.NamespaceBaseType != null)
                 return false;
 
-            if (cl is Enum)
-                return EunmFilter(cl as Enum);
+            var en = type as Enum;
+            if (en != null)
+                return EunmFilter(en);
 
-            if (cl is Class)
-                return ClassFilter(cl as Class);
+            var cl = type as Class;
+            if (cl != null)
+                return ClassFilter(cl);
 
             return true;
         }
@@ -203,17 +201,26 @@ namespace Generator
                     (!m.IsVirtual || m.Operator == null && !m.OwnerClass.IsFinal && m.ReturnType.Type == "void") &&
                     m.Dependent.All(TypeFilter) &&
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
-                    m.Operator == null && // TODO: поддержка операторов
+                    m.Operator == null &&
                     (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
                     (!MethodBlackList.ContainsKey(m.OwnerClass.Name) || !MethodBlackList[m.OwnerClass.Name].Contains(m.Name));
         }
 
         public static bool PropertyFilter(Variable m)
         {
-            return !m.IsConst &&
-                   m.NeedRefOperator() == false &&
-                   (!(m is EnumVariable) || TypeFilter(((EnumVariable)m).Enum)) &&
-                   (!(m is ClassVariable) || TypeFilter(((ClassVariable)m).Class));
+            if (m.IsConst)
+                return false;
+
+            if (m is EnumVariable && !TypeFilter(((EnumVariable)m).Enum))
+                return false;
+
+            if (m is ClassVariable && !TypeFilter(((ClassVariable)m).Class))
+                return false;
+
+            if (m is ClassVariable && m.IsPointer && ((ClassVariable)m).Class.IsStructure)
+                return false;
+
+            return true;
         }
 
         public static IEnumerable<Method> GetVirtualMethods(Class Class)

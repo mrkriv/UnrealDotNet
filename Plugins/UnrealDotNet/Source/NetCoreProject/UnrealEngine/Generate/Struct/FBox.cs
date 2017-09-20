@@ -195,8 +195,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Gets the center and extents of this box. </para>
-		/// <para>@param center[out] Will contain the box center point. </para>
-		/// <para>@param Extents[out] Will contain the extent around the center. </para>
+		/// <param name="center">out] Will contain the box center point. </param>
+		/// <param name="Extents">out] Will contain the extent around the center. </param>
 		/// <para>@see GetCenter, GetExtent, GetSize, GetVolume </para>
 		/// </summary>
 		public void GetCenterAndExtents(FVector center, FVector Extents)

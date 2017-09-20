@@ -24,8 +24,8 @@ namespace Generator
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";
 
-        protected static readonly Regex SummaryParamRegex = new Regex(@"@param\s+(\w+)\s+(.*)");
-        protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\s+(.*)");
+        protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
+        protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");
 
         public static void GenarateDomain(Domain domain, string OutputDir)
         {
@@ -43,12 +43,7 @@ namespace Generator
 
         private static string GetCPPMethodName(Method method)
         {
-            if (method.Operator == null)
-            {
-                return ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
-            }
-
-            return ExportOperatorPrefix + method.OwnerClass.Name + "_" + GetOperatorName(method);
+            return ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
         }
 
         private static string GetExportConstructorFullName(Method ctr)
@@ -58,22 +53,6 @@ namespace Generator
                 signature = "_" + signature;
 
             return $"{ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
-        }
-
-
-        private static string GetOperatorName(Method method)
-        {
-            return method.Operator
-                .Replace('=', 'e')
-                .Replace('!', 'n')
-                .Replace('+', 'p')
-                .Replace('-', 'm')
-                .Replace('/', 'd')
-                .Replace('*', 'm')
-                .Replace('|', 'i')
-                .Replace('^', 'u')
-                .Replace('[', 'o')
-                .Replace(']', 'c');
         }
     }
 }

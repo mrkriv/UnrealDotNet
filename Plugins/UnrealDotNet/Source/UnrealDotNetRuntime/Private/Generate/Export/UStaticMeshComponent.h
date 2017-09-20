@@ -12,90 +12,90 @@ extern "C"
 		return (INT_PTR)NewObject<UStaticMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_AddSpeedTreeWind(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_AddSpeedTreeWind(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->AddSpeedTreeWind();
+		(Self)->AddSpeedTreeWind();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_CachePaintedDataIfNecessary(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_CachePaintedDataIfNecessary(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->CachePaintedDataIfNecessary();
+		(Self)->CachePaintedDataIfNecessary();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(INT_PTR Self, UStaticMeshComponent* SourceComponent)
+	DOTNET_EXPORT void E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent* Self, UStaticMeshComponent* SourceComponent)
 	{
 		auto _p0 = SourceComponent;
-		((UStaticMeshComponent*)Self)->CopyInstanceVertexColorsIfCompatible(_p0);
+		(Self)->CopyInstanceVertexColorsIfCompatible(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(INT_PTR Self, bool bRebuildingStaticMesh)
+	DOTNET_EXPORT bool E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(UStaticMeshComponent* Self, bool bRebuildingStaticMesh)
 	{
 		auto _p0 = bRebuildingStaticMesh;
-		return ((UStaticMeshComponent*)Self)->FixupOverrideColorsIfNecessary(_p0);
+		return (Self)->FixupOverrideColorsIfNecessary(_p0);
 	}
 
-	DOTNET_EXPORT int32 E_UStaticMeshComponent_GetBlueprintCreatedComponentIndex(INT_PTR Self)
+	DOTNET_EXPORT int32 E_UStaticMeshComponent_GetBlueprintCreatedComponentIndex(UStaticMeshComponent* Self)
 	{
-		return ((UStaticMeshComponent*)Self)->GetBlueprintCreatedComponentIndex();
+		return (Self)->GetBlueprintCreatedComponentIndex();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_GetEstimatedLightMapResolution(INT_PTR Self, int32 Width, int32 Height)
+	DOTNET_EXPORT void E_UStaticMeshComponent_GetEstimatedLightMapResolution(UStaticMeshComponent* Self, int32 Width, int32 Height)
 	{
 		auto _p0 = Width;
 		auto _p1 = Height;
-		((UStaticMeshComponent*)Self)->GetEstimatedLightMapResolution(_p0, _p1);
+		(Self)->GetEstimatedLightMapResolution(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(INT_PTR Self, int32 InWidth, int32 InHeight, int32 OutLightMapMemoryUsage, int32 OutShadowMapMemoryUsage)
+	DOTNET_EXPORT void E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(UStaticMeshComponent* Self, int32 InWidth, int32 InHeight, int32 OutLightMapMemoryUsage, int32 OutShadowMapMemoryUsage)
 	{
 		auto _p0 = InWidth;
 		auto _p1 = InHeight;
 		auto _p2 = OutLightMapMemoryUsage;
 		auto _p3 = OutShadowMapMemoryUsage;
-		((UStaticMeshComponent*)Self)->GetTextureLightAndShadowMapMemoryUsage(_p0, _p1, _p2, _p3);
+		(Self)->GetTextureLightAndShadowMapMemoryUsage(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_ReleaseResources(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_ReleaseResources(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->ReleaseResources();
+		(Self)->ReleaseResources();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveInstanceVertexColors(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveInstanceVertexColors(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->RemoveInstanceVertexColors();
+		(Self)->RemoveInstanceVertexColors();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(INT_PTR Self, int32 LODToRemoveColorsFrom)
+	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(UStaticMeshComponent* Self, int32 LODToRemoveColorsFrom)
 	{
 		auto _p0 = LODToRemoveColorsFrom;
-		((UStaticMeshComponent*)Self)->RemoveInstanceVertexColorsFromLOD(_p0);
+		(Self)->RemoveInstanceVertexColorsFromLOD(_p0);
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveSpeedTreeWind(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_RemoveSpeedTreeWind(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->RemoveSpeedTreeWind();
+		(Self)->RemoveSpeedTreeWind();
 	}
 
-	DOTNET_EXPORT bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(INT_PTR Self)
+	DOTNET_EXPORT bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(UStaticMeshComponent* Self)
 	{
-		return ((UStaticMeshComponent*)Self)->RequiresOverrideVertexColorsFixup();
+		return (Self)->RequiresOverrideVertexColorsFixup();
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_SetMaterialPreview(INT_PTR Self, int32 InMaterialIndexPreview)
+	DOTNET_EXPORT void E_UStaticMeshComponent_SetMaterialPreview(UStaticMeshComponent* Self, int32 InMaterialIndexPreview)
 	{
 		auto _p0 = InMaterialIndexPreview;
-		((UStaticMeshComponent*)Self)->SetMaterialPreview(_p0);
+		(Self)->SetMaterialPreview(_p0);
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_SetSectionPreview(INT_PTR Self, int32 InSectionIndexPreview)
+	DOTNET_EXPORT void E_UStaticMeshComponent_SetSectionPreview(UStaticMeshComponent* Self, int32 InSectionIndexPreview)
 	{
 		auto _p0 = InSectionIndexPreview;
-		((UStaticMeshComponent*)Self)->SetSectionPreview(_p0);
+		(Self)->SetSectionPreview(_p0);
 	}
 
-	DOTNET_EXPORT void E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(INT_PTR Self)
+	DOTNET_EXPORT void E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(UStaticMeshComponent* Self)
 	{
-		((UStaticMeshComponent*)Self)->UpdateCollisionFromStaticMesh();
+		(Self)->UpdateCollisionFromStaticMesh();
 	}
 
 }

@@ -1,7 +1,6 @@
 ﻿using Generator.Metadata;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
@@ -261,7 +260,7 @@ namespace Generator
                                     method.ReturnType.Type == "FString";
 
                 var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
-                inputs.Insert(0, "INT_PTR Self");
+                inputs.Insert(0, $"{method.OwnerClass.Name}* Self");
 
                 if (genStringWrap)
                 {
@@ -300,15 +299,10 @@ namespace Generator
                     }
                 }
 
-                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
-                {
-                    if (method.InputTypes[i].NeedRefOperator())
-                        return "&_p" + i;
-                    return "_p" + i;
-                }));
+                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
 
                 cw.Write(method.AccessModifier == AccessModifier.Public
-                    ? $"(({method.OwnerClass.Name}*)Self)->{method.Name}({call})"
+                    ? $"(Self)->{method.Name}({call})"
                     : $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
 
                 if (method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName")
@@ -445,7 +439,7 @@ namespace Generator
                     GenerateProperty(cw, Class, prop);
                 }
             }
-            
+
             private static void GenerateStructConstructors(CoreWriter cw, Class Class)
             {
                 foreach (var ctr in Class.Constructors)

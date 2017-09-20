@@ -189,7 +189,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Set Morph Target with Name and Value(0-1) </para>
-		/// <param name="bRemoveZeroWeight">: Used by editor code when it should stay in the active list with zero weight </param>
+		/// <param name="bRemoveZeroWeight">Used by editor code when it should stay in the active list with zero weight </param>
 		/// </summary>
 		public void SetMorphTarget(string MorphTargetName, float Value, bool bRemoveZeroWeight = true)
 			=> E_USkeletalMeshComponent_SetMorphTarget(this, MorphTargetName, Value, bRemoveZeroWeight);

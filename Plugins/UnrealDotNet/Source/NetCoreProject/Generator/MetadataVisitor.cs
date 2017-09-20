@@ -270,7 +270,7 @@ namespace Generator
             variable.IsConst = context.FoundChild<IsConstContext>();
             variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
             variable.IsReference = context.FoundChild<IsRefQuantContext>();
-
+            
             return variable;
         }
 

@@ -12,11 +12,11 @@ extern "C"
 		return (INT_PTR)NewObject<UPlayer>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT char* E_UPlayer_ConsoleCommand(INT_PTR Self, char* Cmd, bool bWriteToLog, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UPlayer_ConsoleCommand(UPlayer* Self, char* Cmd, bool bWriteToLog, int& ResultStringLen)
 	{
 		auto _p0 = FString(Cmd);
 		auto _p1 = bWriteToLog;
-		auto _result = ((UPlayer*)Self)->ConsoleCommand(_p0, _p1);
+		auto _result = (Self)->ConsoleCommand(_p0, _p1);
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}

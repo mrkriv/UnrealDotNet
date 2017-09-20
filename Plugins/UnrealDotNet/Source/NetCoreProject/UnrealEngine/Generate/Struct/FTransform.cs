@@ -249,6 +249,9 @@ namespace UnrealEngine
 		private static extern bool E_FTransform_IsValid(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FTransform_Multiply(IntPtr Self, IntPtr OutTransform, IntPtr A, IntPtr B);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_MultiplyScale3D(IntPtr Self, IntPtr Scale3DMultiplier);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -575,6 +578,9 @@ namespace UnrealEngine
 		
 		public bool IsValid()
 			=> E_FTransform_IsValid(this);
+		
+		public void Multiply(FTransform OutTransform, FTransform A, FTransform B)
+			=> E_FTransform_Multiply(this, OutTransform, A, B);
 		
 		
 		/// <summary>

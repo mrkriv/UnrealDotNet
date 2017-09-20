@@ -5,7 +5,8 @@ namespace Generator.Metadata
 {
     public abstract class Primitive
     {
-        protected static readonly Regex DisplayNameRegex = new Regex(@"[^\w_]");
+        protected static readonly Regex DisplayReplaceNameRegex = new Regex(@"[^\w_]");
+        protected static readonly Regex DisplayValidNameRegex = new Regex(@"^[A-Za-z]\w+");
 
         public Dictionary<string, string> UMeta { get; set; }
         public AccessModifier AccessModifier { get; set; }
@@ -21,7 +22,15 @@ namespace Generator.Metadata
 
         public string GetDisplayName()
         {
-            return UMeta.ContainsKey("DisplayName") ? DisplayNameRegex.Replace(UMeta["DisplayName"], "") : Name;
+            if (UMeta.ContainsKey("DisplayName"))
+            {
+                var DisplayName = DisplayReplaceNameRegex.Replace(UMeta["DisplayName"], "");
+
+                if (DisplayValidNameRegex.IsMatch(DisplayName))
+                    return DisplayName;
+            }
+
+            return Name;
         }
 
         public override string ToString()

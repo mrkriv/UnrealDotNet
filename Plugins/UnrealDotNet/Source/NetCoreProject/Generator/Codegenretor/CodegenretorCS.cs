@@ -288,7 +288,8 @@ namespace Generator
 
                 var inputs = method.InputTypes.Select(VarNameForCall).ToList();
 
-                var genDefault = !method.IsVirtual && ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
+                var genDefault = !method.IsVirtual &&
+                                 ValidateDefaultValue(method.InputTypes.LastOrDefault()?.Default) != null;
 
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, genDefault)));
 
@@ -299,56 +300,28 @@ namespace Generator
                 if (method.Name == "ToString" && !method.InputTypes.Any())
                     cw.Write("override ");
 
-                var haveBody = true;
-                if (method.Operator != null)
+                inputs.Insert(0, "this");
+                cw.WriteLine($"{ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param})");
+
+                if (genStringWrap)
                 {
-                    haveBody = GenerateOperatorHead(cw, method, param, inputs);
+                    inputs.Add("out int ResultStringLen");
+                    cw.WriteLine(
+                        $"\t=> Marshal.PtrToStringUTF8({GetCPPMethodName(method)}({string.Join(", ", inputs)}), ResultStringLen);");
                 }
                 else
                 {
-                    inputs.Insert(0, "this");
-                    cw.WriteLine($"{ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param})");
-                }
+                    cw.Write("\t=> ");
 
-                if (haveBody)
-                {
-                    if (genStringWrap)
+                    if (method.ReturnType is EnumVariable)
                     {
-                        inputs.Add("out int ResultStringLen");
-                        cw.WriteLine(
-                            $"\t=> Marshal.PtrToStringUTF8({GetCPPMethodName(method)}({string.Join(", ", inputs)}), ResultStringLen);");
+                        cw.Write($"({method.ReturnType.Type})");
                     }
-                    else
-                    {
-                        cw.Write("\t=> ");
 
-                        if (method.ReturnType is EnumVariable)
-                        {
-                            cw.Write($"({method.ReturnType.Type})");
-                        }
-
-                        cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
-                    }
+                    cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
                 }
 
                 cw.WriteLine();
-            }
-
-            private static bool GenerateOperatorHead(CoreWriter cw, Method method, string param, IList<string> inputs)
-            {
-                if (method.Operator == "[]")
-                {
-                    cw.WriteLine($"{ExportVariable(method.ReturnType)} this[{param}]");
-                    cw.OpenBlock();
-                    cw.WriteLine("get => throw new NotImplementedException();");
-                    cw.WriteLine("set => throw new NotImplementedException();");
-                    cw.CloseBlock();
-                    return false;
-                }
-                inputs.Insert(0, "Self");
-                cw.WriteLine(
-                    $"static {ExportVariable(method.ReturnType)} operator{method.Operator}({method.OwnerClass.Name} Self, {param})");
-                return true;
             }
 
             private static void GenerateEnums(IEnumerable<Enum> Enums, string OutputPath)

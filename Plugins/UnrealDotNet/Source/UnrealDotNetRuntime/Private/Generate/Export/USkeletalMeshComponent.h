@@ -33,67 +33,67 @@ extern "C"
 		return (INT_PTR)NewObject<USkeletalMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_ClearMorphTargets(INT_PTR Self)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_ClearMorphTargets(USkeletalMeshComponent* Self)
 	{
-		((USkeletalMeshComponent*)Self)->ClearMorphTargets();
+		(Self)->ClearMorphTargets();
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_CreateBodySetup(INT_PTR Self)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_CreateBodySetup(USkeletalMeshComponent* Self)
 	{
-		((USkeletalMeshComponent*)Self)->CreateBodySetup();
+		(Self)->CreateBodySetup();
 	}
 
-	DOTNET_EXPORT float E_USkeletalMeshComponent_GetMorphTarget(INT_PTR Self, char* MorphTargetName)
+	DOTNET_EXPORT float E_USkeletalMeshComponent_GetMorphTarget(USkeletalMeshComponent* Self, char* MorphTargetName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(MorphTargetName));
-		return ((USkeletalMeshComponent*)Self)->GetMorphTarget(_p0);
+		return (Self)->GetMorphTarget(_p0);
 	}
 
-	DOTNET_EXPORT float E_USkeletalMeshComponent_GetPlayRate(INT_PTR Self)
+	DOTNET_EXPORT float E_USkeletalMeshComponent_GetPlayRate(USkeletalMeshComponent* Self)
 	{
-		return ((USkeletalMeshComponent*)Self)->GetPlayRate();
+		return (Self)->GetPlayRate();
 	}
 
-	DOTNET_EXPORT float E_USkeletalMeshComponent_GetPosition(INT_PTR Self)
+	DOTNET_EXPORT float E_USkeletalMeshComponent_GetPosition(USkeletalMeshComponent* Self)
 	{
-		return ((USkeletalMeshComponent*)Self)->GetPosition();
+		return (Self)->GetPosition();
 	}
 
-	DOTNET_EXPORT bool E_USkeletalMeshComponent_IsPlaying(INT_PTR Self)
+	DOTNET_EXPORT bool E_USkeletalMeshComponent_IsPlaying(USkeletalMeshComponent* Self)
 	{
-		return ((USkeletalMeshComponent*)Self)->IsPlaying();
+		return (Self)->IsPlaying();
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_Play(INT_PTR Self, bool bLooping)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_Play(USkeletalMeshComponent* Self, bool bLooping)
 	{
 		auto _p0 = bLooping;
-		((USkeletalMeshComponent*)Self)->Play(_p0);
+		(Self)->Play(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_SetMorphTarget(INT_PTR Self, char* MorphTargetName, float Value, bool bRemoveZeroWeight)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_SetMorphTarget(USkeletalMeshComponent* Self, char* MorphTargetName, float Value, bool bRemoveZeroWeight)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(MorphTargetName));
 		auto _p1 = Value;
 		auto _p2 = bRemoveZeroWeight;
-		((USkeletalMeshComponent*)Self)->SetMorphTarget(_p0, _p1, _p2);
+		(Self)->SetMorphTarget(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_SetPlayRate(INT_PTR Self, float Rate)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_SetPlayRate(USkeletalMeshComponent* Self, float Rate)
 	{
 		auto _p0 = Rate;
-		((USkeletalMeshComponent*)Self)->SetPlayRate(_p0);
+		(Self)->SetPlayRate(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_SetPosition(INT_PTR Self, float InPos, bool bFireNotifies)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_SetPosition(USkeletalMeshComponent* Self, float InPos, bool bFireNotifies)
 	{
 		auto _p0 = InPos;
 		auto _p1 = bFireNotifies;
-		((USkeletalMeshComponent*)Self)->SetPosition(_p0, _p1);
+		(Self)->SetPosition(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_USkeletalMeshComponent_Stop(INT_PTR Self)
+	DOTNET_EXPORT void E_USkeletalMeshComponent_Stop(USkeletalMeshComponent* Self)
 	{
-		((USkeletalMeshComponent*)Self)->Stop();
+		(Self)->Stop();
 	}
 
 }

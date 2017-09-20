@@ -625,7 +625,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of HiddenGame. </para>
-		/// <param name="NewHidden">- The value to assign to HiddenGame. </param>
+		/// <param name="NewHidden">The value to assign to HiddenGame. </param>
 		/// </summary>
 		public void SetHiddenInGame(bool NewHidden, bool bPropagateToChildren = false)
 			=> E_USceneComponent_SetHiddenInGame(this, NewHidden, bPropagateToChildren);

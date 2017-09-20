@@ -277,8 +277,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Decompose this Rotator into a Winding part (multiples of 360) and a Remainder part. </para>
 		/// <para>Remainder will always be in [-180, 180] range. </para>
-		/// <para>@param Winding[Out] the Winding part of this Rotator </para>
-		/// <para>@param Remainder[Out] the Remainder </para>
+		/// <param name="Winding">Out] the Winding part of this Rotator </param>
+		/// <param name="Remainder">Out] the Remainder </param>
 		/// </summary>
 		public void GetWindingAndRemainder(FRotator Winding, FRotator Remainder)
 			=> E_FRotator_GetWindingAndRemainder(this, Winding, Remainder);

@@ -236,53 +236,53 @@ extern "C"
 		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UEngine_ParseCommandline(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_ParseCommandline(UEngine* Self)
 	{
-		((UEngine*)Self)->ParseCommandline();
+		(Self)->ParseCommandline();
 	}
 
-	DOTNET_EXPORT void E_UEngine_PreExit(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_PreExit(UEngine* Self)
 	{
-		((UEngine*)Self)->PreExit();
+		(Self)->PreExit();
 	}
 
-	DOTNET_EXPORT void E_UEngine_RestoreSelectedMaterialColor(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_RestoreSelectedMaterialColor(UEngine* Self)
 	{
-		((UEngine*)Self)->RestoreSelectedMaterialColor();
+		(Self)->RestoreSelectedMaterialColor();
 	}
 
-	DOTNET_EXPORT void E_UEngine_ShutdownAudioDeviceManager(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_ShutdownAudioDeviceManager(UEngine* Self)
 	{
-		((UEngine*)Self)->ShutdownAudioDeviceManager();
+		(Self)->ShutdownAudioDeviceManager();
 	}
 
-	DOTNET_EXPORT void E_UEngine_ShutdownHMD(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_ShutdownHMD(UEngine* Self)
 	{
-		((UEngine*)Self)->ShutdownHMD();
+		(Self)->ShutdownHMD();
 	}
 
-	DOTNET_EXPORT void E_UEngine_Start(INT_PTR Self)
+	DOTNET_EXPORT void E_UEngine_Start(UEngine* Self)
 	{
-		((UEngine*)Self)->Start();
+		(Self)->Start();
 	}
 
-	DOTNET_EXPORT void E_UEngine_Tick(INT_PTR Self, float DeltaSeconds, bool bIdleMode)
+	DOTNET_EXPORT void E_UEngine_Tick(UEngine* Self, float DeltaSeconds, bool bIdleMode)
 	{
 		auto _p0 = DeltaSeconds;
 		auto _p1 = bIdleMode;
-		((UEngine*)Self)->Tick(_p0, _p1);
+		(Self)->Tick(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UEngine_WorldAdded(INT_PTR Self, UWorld* World)
+	DOTNET_EXPORT void E_UEngine_WorldAdded(UEngine* Self, UWorld* World)
 	{
 		auto _p0 = World;
-		((UEngine*)Self)->WorldAdded(_p0);
+		(Self)->WorldAdded(_p0);
 	}
 
-	DOTNET_EXPORT void E_UEngine_WorldDestroyed(INT_PTR Self, UWorld* InWorld)
+	DOTNET_EXPORT void E_UEngine_WorldDestroyed(UEngine* Self, UWorld* InWorld)
 	{
 		auto _p0 = InWorld;
-		((UEngine*)Self)->WorldDestroyed(_p0);
+		(Self)->WorldDestroyed(_p0);
 	}
 
 }

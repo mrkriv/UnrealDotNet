@@ -224,6 +224,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_ActorGetDistanceToCollision(IntPtr Self, IntPtr Point, byte TraceChannel, IntPtr ClosestPointOnCollision, IntPtr OutPrimitiveComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_ActorHasTag(IntPtr Self, string Tag);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -1091,6 +1094,20 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>returns Distance to closest Body Instance surface. </para>
+		/// <para>Checks against all components of this Actor having valid collision and blocking TraceChannel. </para>
+		/// <param name="Point">World 3D vector </param>
+		/// <param name="TraceChannel">The 'channel' used to determine which components to consider. </param>
+		/// <param name="ClosestPointOnCollision">Point on the surface of collision closest to Point </param>
+		/// <param name="OutPrimitiveComponent">PrimitiveComponent ClosestPointOnCollision is on. </param>
+		/// <return>Success if returns > 0.f, if returns 0.f, it is either not convex or inside of the point </return>
+		/// <para>If returns < 0.f, this Actor does not have any primitive with collision </para>
+		/// </summary>
+		public float ActorGetDistanceToCollision(FVector Point, ECollisionChannel TraceChannel, FVector ClosestPointOnCollision, UPrimitiveComponent OutPrimitiveComponent = null)
+			=> E_AActor_ActorGetDistanceToCollision(this, Point, (byte)TraceChannel, ClosestPointOnCollision, OutPrimitiveComponent);
+		
+		
+		/// <summary>
 		/// <para>See if this actor contains the supplied tag </para>
 		/// </summary>
 		public bool ActorHasTag(string Tag)
@@ -1218,8 +1235,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Destroy this actor. Returns true the actor is destroyed or already marked for destruction, false if indestructible. </para>
 		/// <para>Destruction is latent. It occurs at the end of the tick. </para>
-		/// <param name="bNetForce">[opt] Ignored unless called during play.  Default is false. </param>
-		/// <param name="bShouldModifyLevel">[opt] If true, Modify() the level before removing the actor.  Default is true. </param>
+		/// <param name="bNetForce">opt] Ignored unless called during play.  Default is false. </param>
+		/// <param name="bShouldModifyLevel">opt] If true, Modify() the level before removing the actor.  Default is true. </param>
 		/// <para>returns	true if destroyed or already marked for destruction, false if indestructible. </para>
 		/// </summary>
 		public bool Destroy(bool bNetForce = false, bool bShouldModifyLevel = true)
@@ -2005,8 +2022,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>When called, will call the virtual call chain to register all of the tick functions for both the actor and optionally all components </para>
 		/// <para>Do not override this function or make it virtual </para>
-		/// <param name="bRegister">- true to register, false, to unregister </param>
-		/// <param name="bDoComponents">- true to also apply the change to all components </param>
+		/// <param name="bRegister">true to register, false, to unregister </param>
+		/// <param name="bDoComponents">true to also apply the change to all components </param>
 		/// </summary>
 		public void RegisterAllActorTickFunctions(bool bRegister, bool bDoComponents)
 			=> E_AActor_RegisterAllActorTickFunctions(this, bRegister, bDoComponents);

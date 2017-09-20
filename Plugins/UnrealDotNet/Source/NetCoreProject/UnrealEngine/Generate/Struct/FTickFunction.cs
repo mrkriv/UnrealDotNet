@@ -171,7 +171,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Sets this function to hipri and all prerequisites recursively </para>
-		/// <param name="bInHighPriority">- priority to set </param>
+		/// <param name="bInHighPriority">priority to set </param>
 		/// </summary>
 		public void SetPriorityIncludingPrerequisites(bool bInHighPriority)
 			=> E_FTickFunction_SetPriorityIncludingPrerequisites(this, bInHighPriority);

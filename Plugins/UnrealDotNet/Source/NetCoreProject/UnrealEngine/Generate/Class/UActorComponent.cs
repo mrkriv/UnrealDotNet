@@ -301,7 +301,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Activates the SceneComponent </para>
-		/// <param name="bReset">- The value to assign to HiddenGame. </param>
+		/// <param name="bReset">The value to assign to HiddenGame. </param>
 		/// </summary>
 		public virtual void Activate(bool bReset)
 			=> E_UActorComponent_Activate(this, bReset);
@@ -638,7 +638,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called when a component is destroyed </para>
-		/// <param name="bDestroyingHierarchy">- True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
+		/// <param name="bDestroyingHierarchy">True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
 		/// </summary>
 		public virtual void OnComponentDestroyed(bool bDestroyingHierarchy)
 			=> E_UActorComponent_OnComponentDestroyed(this, bDestroyingHierarchy);
@@ -708,7 +708,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>When called, will call the virtual call chain to register all of the tick functions </para>
 		/// <para>Do not override this function or make it virtual </para>
-		/// <param name="bRegister">- true to register, false, to unregister </param>
+		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
 		public void RegisterAllComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterAllComponentTickFunctions(this, bRegister);
@@ -723,14 +723,14 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Virtual call chain to register all tick functions </para>
-		/// <param name="bRegister">- true to register, false, to unregister </param>
+		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
 		protected virtual void RegisterComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterComponentTickFunctions(this, bRegister);
 		
 		
 		/// <summary>
-		/// <param name="InWorld">- The world to register the component with. </param>
+		/// <param name="InWorld">The world to register the component with. </param>
 		/// </summary>
 		public void RegisterComponentWithWorld(UWorld InWorld)
 			=> E_UActorComponent_RegisterComponentWithWorld(this, InWorld);
@@ -774,7 +774,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Sets whether the component is active or not </para>
-		/// <param name="bNewActive">- The new active state of the component </param>
+		/// <param name="bNewActive">The new active state of the component </param>
 		/// </summary>
 		public virtual void SetActive(bool bNewActive, bool bReset)
 			=> E_UActorComponent_SetActive(this, bNewActive, bReset);
@@ -782,7 +782,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Sets whether the component should be auto activate or not. Only safe during construction scripts. </para>
-		/// <param name="bNewAutoActivate">- The new auto activate state of the component </param>
+		/// <param name="bNewAutoActivate">The new auto activate state of the component </param>
 		/// </summary>
 		public virtual void SetAutoActivate(bool bNewAutoActivate)
 			=> E_UActorComponent_SetAutoActivate(this, bNewAutoActivate);
@@ -797,7 +797,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Set this component's tick functions to be enabled or disabled. Only has an effect if the function is registered </para>
-		/// <param name="bEnabled">- Whether it should be enabled or not </param>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
 		/// </summary>
 		public virtual void SetComponentTickEnabled(bool bEnabled)
 			=> E_UActorComponent_SetComponentTickEnabled(this, bEnabled);
@@ -805,7 +805,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Spawns a task on GameThread that will call SetComponentTickEnabled </para>
-		/// <param name="bEnabled">- Whether it should be enabled or not </param>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
 		/// </summary>
 		public virtual void SetComponentTickEnabledAsync(bool bEnabled)
 			=> E_UActorComponent_SetComponentTickEnabledAsync(this, bEnabled);

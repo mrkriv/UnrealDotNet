@@ -285,6 +285,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_EditorDestroyActor(IntPtr Self, IntPtr Actor, bool bShouldModifyLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_EncroachingBlockingGeometry(IntPtr Self, IntPtr TestActor, IntPtr TestLocation, IntPtr TestRotation, IntPtr ProposedAdjustment);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_EnsureCollisionTreeIsBuilt(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -418,6 +421,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(IntPtr Self, IntPtr Component, bool bForceGameThread);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PropagateLightingScenarioChange(IntPtr Self, bool bLevelWasMadeVisible);
@@ -973,7 +979,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Clears the need for a component to have a end of frame update </para>
-		/// <param name="Component">- Component to update at the end of the frame </param>
+		/// <param name="Component">Component to update at the end of the frame </param>
 		/// </summary>
 		public void ClearActorComponentEndOfFrameUpdate(UActorComponent Component)
 			=> E_UWorld_ClearActorComponentEndOfFrameUpdate(this, Component);
@@ -1058,8 +1064,8 @@ namespace UnrealEngine
 		/// <para>to this actor from all other actors, and kill the actor's resources.  This function is set up so that </para>
 		/// <para>no problems occur even if the actor is being destroyed inside its recursion stack. </para>
 		/// <param name="ThisActor">Actor to remove. </param>
-		/// <param name="bNetForce">[opt] Ignored unless called during play.  Default is false. </param>
-		/// <param name="bShouldModifyLevel">[opt] If true, Modify() the level before removing the actor.  Default is true. </param>
+		/// <param name="bNetForce">opt] Ignored unless called during play.  Default is false. </param>
+		/// <param name="bShouldModifyLevel">opt] If true, Modify() the level before removing the actor.  Default is true. </param>
 		/// <return>true if destroyed or already marked for destruction, false if actor couldn't be destroyed. </return>
 		/// </summary>
 		public bool DestroyActor(AActor Actor, bool bNetForce = false, bool bShouldModifyLevel = true)
@@ -1095,6 +1101,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool EditorDestroyActor(AActor Actor, bool bShouldModifyLevel)
 			=> E_UWorld_EditorDestroyActor(this, Actor, bShouldModifyLevel);
+		
+		
+		/// <summary>
+		/// <para>@Return true if Actor would encroach at TestLocation on something that blocks it.  Returns a ProposedAdjustment that might result in an unblocked TestLocation. </para>
+		/// </summary>
+		public bool EncroachingBlockingGeometry(AActor TestActor, FVector TestLocation, FRotator TestRotation, FVector ProposedAdjustment = null)
+			=> E_UWorld_EncroachingBlockingGeometry(this, TestActor, TestLocation, TestRotation, ProposedAdjustment);
 		
 		
 		/// <summary>
@@ -1259,7 +1272,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Initializes all actors and prepares them to start gameplay </para>
 		/// <param name="InURL">commandline URL </param>
-		/// <param name="bResetTime">(optional) whether the WorldSettings's TimeSeconds should be reset to zero </param>
+		/// <param name="bResetTime">optional) whether the WorldSettings's TimeSeconds should be reset to zero </param>
 		/// </summary>
 		public void InitializeActorsForPlay(FURL InURL, bool bResetTime = true)
 			=> E_UWorld_InitializeActorsForPlay(this, InURL, bResetTime);
@@ -1414,11 +1427,20 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Mark a component as needing an end of frame update </para>
-		/// <param name="Component">- Component to update at the end of the frame </param>
-		/// <param name="bForceGameThread">- if true, force this to happen on the game thread </param>
+		/// <param name="Component">Component to update at the end of the frame </param>
+		/// <param name="bForceGameThread">if true, force this to happen on the game thread </param>
 		/// </summary>
 		public void MarkActorComponentForNeededEndOfFrameUpdate(UActorComponent Component, bool bForceGameThread)
 			=> E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(this, Component, bForceGameThread);
+		
+		
+		/// <summary>
+		/// <para>Issues level streaming load/unload requests based on whether </para>
+		/// <para>local players are inside/outside level streaming volumes. </para>
+		/// <param name="OverrideViewLocation">Optional position used to override the location used to calculate current streaming volumes </param>
+		/// </summary>
+		public void ProcessLevelStreamingVolumes(FVector OverrideViewLocation = null)
+			=> E_UWorld_ProcessLevelStreamingVolumes(this, OverrideViewLocation);
 		
 		
 		/// <summary>
@@ -1477,8 +1499,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Run a tick group, ticking all actors and components </para>
-		/// <param name="Group">- Ticking group to run </param>
-		/// <param name="bBlockTillComplete">- if true, do not return until all ticks are complete </param>
+		/// <param name="Group">Ticking group to run </param>
+		/// <param name="bBlockTillComplete">if true, do not return until all ticks are complete </param>
 		/// </summary>
 		public void RunTickGroup(ETickingGroup Group, bool bBlockTillComplete)
 			=> E_UWorld_RunTickGroup(this, (byte)Group, bBlockTillComplete);
@@ -1511,7 +1533,7 @@ namespace UnrealEngine
 		/// <para>right before it starts loading the destination (i.e. while in the transition level) </para>
 		/// <para>this gives the opportunity to perform any other loading tasks before the final transition </para>
 		/// <para>this function has no effect if we have already started loading the destination (you will get a log warning if this is the case) </para>
-		/// <param name="bNowPaused">- whether the transition should now be paused </param>
+		/// <param name="bNowPaused">whether the transition should now be paused </param>
 		/// </summary>
 		public void SetSeamlessTravelMidpointPause(bool bNowPaused)
 			=> E_UWorld_SetSeamlessTravelMidpointPause(this, bNowPaused);
@@ -1602,7 +1624,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Updates an ActorComponent's cached state of whether it has been marked for end of frame update based on the current </para>
 		/// <para>state of the World's NeedsEndOfFrameUpdate arrays </para>
-		/// <param name="Component">- Component to update the cached state of </param>
+		/// <param name="Component">Component to update the cached state of </param>
 		/// </summary>
 		public void UpdateActorComponentEndOfFrameUpdateState(UActorComponent Component)
 			=> E_UWorld_UpdateActorComponentEndOfFrameUpdateState(this, Component);

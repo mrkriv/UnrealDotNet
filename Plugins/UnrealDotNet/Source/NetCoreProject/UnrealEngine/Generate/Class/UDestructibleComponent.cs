@@ -32,8 +32,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>This method makes a chunk (fractured piece) visible or invisible. </para>
-		/// <param name="ChunkIndex">- Which chunk to affect.  ChunkIndex must lie in the range: 0 <= ChunkIndex < ((DestructibleMesh*)USkeletalMesh)->ApexDestructibleAsset->chunkCount(). </param>
-		/// <param name="bVisible">- If true, the chunk will be made visible.  Otherwise, the chunk is made invisible. </param>
+		/// <param name="ChunkIndex">Which chunk to affect.  ChunkIndex must lie in the range: 0 <= ChunkIndex < ((DestructibleMesh*)USkeletalMesh)->ApexDestructibleAsset->chunkCount(). </param>
+		/// <param name="bVisible">If true, the chunk will be made visible.  Otherwise, the chunk is made invisible. </param>
 		/// </summary>
 		public void SetChunkVisible(int ChunkIndex, bool bInVisible)
 			=> E_UDestructibleComponent_SetChunkVisible(this, ChunkIndex, bInVisible);
@@ -41,9 +41,9 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>This method sets a chunk's (fractured piece's) world rotation and translation. </para>
-		/// <param name="ChunkIndex">- Which chunk to affect.  ChunkIndex must lie in the range: 0 <= ChunkIndex < ((DestructibleMesh*)USkeletalMesh)->ApexDestructibleAsset->chunkCount(). </param>
-		/// <param name="WorldRotation">- The orientation to give to the chunk in world space, represented as a quaternion. </param>
-		/// <param name="WorldRotation">- The world space position to give to the chunk. </param>
+		/// <param name="ChunkIndex">Which chunk to affect.  ChunkIndex must lie in the range: 0 <= ChunkIndex < ((DestructibleMesh*)USkeletalMesh)->ApexDestructibleAsset->chunkCount(). </param>
+		/// <param name="WorldRotation">The orientation to give to the chunk in world space, represented as a quaternion. </param>
+		/// <param name="WorldRotation">The world space position to give to the chunk. </param>
 		/// </summary>
 		public void SetChunkWorldRT(int ChunkIndex, FQuat WorldRotation, FVector WorldTranslation)
 			=> E_UDestructibleComponent_SetChunkWorldRT(this, ChunkIndex, WorldRotation, WorldTranslation);

@@ -18,24 +18,24 @@ extern "C"
 		return (INT_PTR)NewObject<UPawnNoiseEmitterComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT float E_UPawnNoiseEmitterComponent_GetLastNoiseTime(INT_PTR Self, bool bSourceWithinNoiseEmitter)
+	DOTNET_EXPORT float E_UPawnNoiseEmitterComponent_GetLastNoiseTime(UPawnNoiseEmitterComponent* Self, bool bSourceWithinNoiseEmitter)
 	{
 		auto _p0 = bSourceWithinNoiseEmitter;
-		return ((UPawnNoiseEmitterComponent*)Self)->GetLastNoiseTime(_p0);
+		return (Self)->GetLastNoiseTime(_p0);
 	}
 
-	DOTNET_EXPORT float E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(INT_PTR Self, bool bSourceWithinNoiseEmitter)
+	DOTNET_EXPORT float E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(UPawnNoiseEmitterComponent* Self, bool bSourceWithinNoiseEmitter)
 	{
 		auto _p0 = bSourceWithinNoiseEmitter;
-		return ((UPawnNoiseEmitterComponent*)Self)->GetLastNoiseVolume(_p0);
+		return (Self)->GetLastNoiseVolume(_p0);
 	}
 
-	DOTNET_EXPORT void E_UPawnNoiseEmitterComponent_MakeNoise(INT_PTR Self, AActor* NoiseMaker, float Loudness, INT_PTR NoiseLocation)
+	DOTNET_EXPORT void E_UPawnNoiseEmitterComponent_MakeNoise(UPawnNoiseEmitterComponent* Self, AActor* NoiseMaker, float Loudness, INT_PTR NoiseLocation)
 	{
 		auto _p0 = NoiseMaker;
 		auto _p1 = Loudness;
 		auto _p2 = *(FVector*)NoiseLocation;
-		((UPawnNoiseEmitterComponent*)Self)->MakeNoise(_p0, _p1, _p2);
+		(Self)->MakeNoise(_p0, _p1, _p2);
 	}
 
 }

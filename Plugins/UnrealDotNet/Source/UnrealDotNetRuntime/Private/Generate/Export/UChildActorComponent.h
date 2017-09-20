@@ -12,31 +12,31 @@ extern "C"
 		return (INT_PTR)NewObject<UChildActorComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UChildActorComponent_CreateChildActor(INT_PTR Self)
+	DOTNET_EXPORT void E_UChildActorComponent_CreateChildActor(UChildActorComponent* Self)
 	{
-		((UChildActorComponent*)Self)->CreateChildActor();
+		(Self)->CreateChildActor();
 	}
 
-	DOTNET_EXPORT void E_UChildActorComponent_DestroyChildActor(INT_PTR Self)
+	DOTNET_EXPORT void E_UChildActorComponent_DestroyChildActor(UChildActorComponent* Self)
 	{
-		((UChildActorComponent*)Self)->DestroyChildActor();
+		(Self)->DestroyChildActor();
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActor(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActor(UChildActorComponent* Self)
 	{
-		return MakePrtDesc(((UChildActorComponent*)Self)->GetChildActor());
+		return MakePrtDesc((Self)->GetChildActor());
 	}
 
-	DOTNET_EXPORT char* E_UChildActorComponent_GetChildActorName(INT_PTR Self, int& ResultStringLen)
+	DOTNET_EXPORT char* E_UChildActorComponent_GetChildActorName(UChildActorComponent* Self, int& ResultStringLen)
 	{
-		auto _result = ((UChildActorComponent*)Self)->GetChildActorName().ToString();
+		auto _result = (Self)->GetChildActorName().ToString();
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(UChildActorComponent* Self)
 	{
-		return MakePrtDesc(((UChildActorComponent*)Self)->GetChildActorTemplate());
+		return MakePrtDesc((Self)->GetChildActorTemplate());
 	}
 
 }

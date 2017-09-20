@@ -286,7 +286,7 @@ namespace UnrealEngine
 		/// <param name="PrevP">quaternion at P-1 </param>
 		/// <param name="P">quaternion to return the tangent </param>
 		/// <param name="NextP">quaternion P+1 </param>
-		/// <param name="Tension">@todo document </param>
+		/// <param name="Tension">todo document </param>
 		/// <param name="OutTan">Out control point </param>
 		/// </summary>
 		public void CalcTangents(FQuat PrevP, FQuat P, FQuat NextP, float Tension, FQuat OutTan)
@@ -575,8 +575,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>get the axis and angle of rotation of this quaternion </para>
-		/// <para>@param Axis{out] vector of axis of the quaternion </para>
-		/// <para>@param Angle{out] angle of the quaternion </para>
+		/// <param name="Axis">out] vector of axis of the quaternion </param>
+		/// <param name="Angle">out] angle of the quaternion </param>
 		/// <para>@warning : assumes normalized quaternions. </para>
 		/// </summary>
 		public void ToAxisAndAngle(FVector Axis, float Angle)

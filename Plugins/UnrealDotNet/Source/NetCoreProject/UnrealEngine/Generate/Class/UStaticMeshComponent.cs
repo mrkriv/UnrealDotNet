@@ -110,8 +110,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the lightmap resolution used for this primitive instance in the case of it supporting texture light/ shadow maps. </para>
 		/// <para>This will return the value assuming the primitive will be automatically switched to use texture mapping. </para>
-		/// <param name="Width">[out]	Width of light/shadow map </param>
-		/// <param name="Height">[out]	Height of light/shadow map </param>
+		/// <param name="Width">out]	Width of light/shadow map </param>
+		/// <param name="Height">out]	Height of light/shadow map </param>
 		/// </summary>
 		public virtual void GetEstimatedLightMapResolution(int Width, int Height)
 			=> E_UStaticMeshComponent_GetEstimatedLightMapResolution(this, Width, Height);

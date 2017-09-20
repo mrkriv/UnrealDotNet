@@ -13,9 +13,9 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Cache noises instigated by the owning pawn for AI sensing </para>
-		/// <param name="NoiseMaker">- is the actual actor which made the noise </param>
-		/// <param name="Loudness">- is the relative loudness of the noise (0.0 to 1.0) </param>
-		/// <param name="NoiseLocation">- is the position of the noise </param>
+		/// <param name="NoiseMaker">is the actual actor which made the noise </param>
+		/// <param name="Loudness">is the relative loudness of the noise (0.0 to 1.0) </param>
+		/// <param name="NoiseLocation">is the position of the noise </param>
 		/// </summary>
 		public override void MakeNoise(AActor NoiseMaker, float Loudness, FVector NoiseLocation) { }
 		

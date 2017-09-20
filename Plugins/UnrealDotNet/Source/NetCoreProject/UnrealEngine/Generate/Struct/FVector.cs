@@ -708,7 +708,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Convert a direction vector into a 'heading' angle. </para>
-		/// <return>'Heading' angle between +/-PI. 0 is pointing down +X. </return>
+		/// <return>Heading' angle between +/-PI. 0 is pointing down +X. </return>
 		/// </summary>
 		public float HeadingAngle()
 			=> E_FVector_HeadingAngle(this);

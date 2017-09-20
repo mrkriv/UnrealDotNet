@@ -127,7 +127,7 @@ namespace UnrealEngine
 		/// <para>Set Collision Profile Name </para>
 		/// <para>This function is called by constructors when they set ProfileName </para>
 		/// <para>This will change current CollisionProfileName to be this, and overwrite Collision Setting </para>
-		/// <param name="InCollisionProfileName">: New Profile Name </param>
+		/// <param name="InCollisionProfileName">New Profile Name </param>
 		/// </summary>
 		public override void SetCollisionProfileName(string InCollisionProfileName) { }
 		
@@ -160,7 +160,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of bNotifyRigidBodyCollision </para>
-		/// <param name="bNewNotifyRigidBodyCollision">- The value to assign to bNotifyRigidBodyCollision </param>
+		/// <param name="bNewNotifyRigidBodyCollision">The value to assign to bNotifyRigidBodyCollision </param>
 		/// </summary>
 		public override void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision) { }
 		

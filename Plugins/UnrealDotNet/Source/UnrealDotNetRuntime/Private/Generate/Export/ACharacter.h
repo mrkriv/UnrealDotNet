@@ -80,311 +80,311 @@ extern "C"
 		return (INT_PTR)NewObject<ACharacter>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_ACharacter_BaseChange(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_BaseChange(ACharacter* Self)
 	{
 		((E_PROTECTED_WRAP_ACharacter*)Self)->BaseChange_WRAP();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_CacheInitialMeshOffset(INT_PTR Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
+	DOTNET_EXPORT void E_ACharacter_CacheInitialMeshOffset(ACharacter* Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
 	{
 		auto _p0 = *(FVector*)MeshRelativeLocation;
 		auto _p1 = *(FRotator*)MeshRelativeRotation;
-		((ACharacter*)Self)->CacheInitialMeshOffset(_p0, _p1);
+		(Self)->CacheInitialMeshOffset(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_ACharacter_CanJump(INT_PTR Self)
+	DOTNET_EXPORT bool E_ACharacter_CanJump(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->CanJump();
+		return (Self)->CanJump();
 	}
 
-	DOTNET_EXPORT bool E_ACharacter_CanJumpInternal(INT_PTR Self)
+	DOTNET_EXPORT bool E_ACharacter_CanJumpInternal(ACharacter* Self)
 	{
 		return ((E_PROTECTED_WRAP_ACharacter*)Self)->CanJumpInternal_WRAP();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_CheckJumpInput(INT_PTR Self, float DeltaTime)
+	DOTNET_EXPORT void E_ACharacter_CheckJumpInput(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((ACharacter*)Self)->CheckJumpInput(_p0);
+		(Self)->CheckJumpInput(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_CheckResetJumpCount(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_CheckResetJumpCount(ACharacter* Self)
 	{
 		((E_PROTECTED_WRAP_ACharacter*)Self)->CheckResetJumpCount_WRAP();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClearJumpInput(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClearJumpInput(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClearJumpInput();
+		(Self)->ClearJumpInput();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatFly(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatFly(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatFly();
+		(Self)->ClientCheatFly();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatFly_Implementation(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatFly_Implementation(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatFly_Implementation();
+		(Self)->ClientCheatFly_Implementation();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatGhost(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatGhost(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatGhost();
+		(Self)->ClientCheatGhost();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatGhost_Implementation(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatGhost_Implementation(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatGhost_Implementation();
+		(Self)->ClientCheatGhost_Implementation();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatWalk(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatWalk(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatWalk();
+		(Self)->ClientCheatWalk();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ClientCheatWalk_Implementation(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ClientCheatWalk_Implementation(ACharacter* Self)
 	{
-		((ACharacter*)Self)->ClientCheatWalk_Implementation();
+		(Self)->ClientCheatWalk_Implementation();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_Crouch(INT_PTR Self, bool bClientSimulation)
+	DOTNET_EXPORT void E_ACharacter_Crouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		((ACharacter*)Self)->Crouch(_p0);
+		(Self)->Crouch(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_Falling(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_Falling(ACharacter* Self)
 	{
-		((ACharacter*)Self)->Falling();
+		(Self)->Falling();
 	}
 
-	DOTNET_EXPORT float E_ACharacter_GetAnimRootMotionTranslationScale(INT_PTR Self)
+	DOTNET_EXPORT float E_ACharacter_GetAnimRootMotionTranslationScale(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->GetAnimRootMotionTranslationScale();
+		return (Self)->GetAnimRootMotionTranslationScale();
 	}
 
-	DOTNET_EXPORT INT_PTR E_ACharacter_GetBaseRotationOffsetRotator(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_ACharacter_GetBaseRotationOffsetRotator(ACharacter* Self)
 	{
-		return (INT_PTR) new FRotator(((ACharacter*)Self)->GetBaseRotationOffsetRotator());
+		return (INT_PTR) new FRotator((Self)->GetBaseRotationOffsetRotator());
 	}
 
-	DOTNET_EXPORT INT_PTR E_ACharacter_GetBaseTranslationOffset(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_ACharacter_GetBaseTranslationOffset(ACharacter* Self)
 	{
-		return (INT_PTR) new FVector(((ACharacter*)Self)->GetBaseTranslationOffset());
+		return (INT_PTR) new FVector((Self)->GetBaseTranslationOffset());
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetCapsuleComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetCapsuleComponent(ACharacter* Self)
 	{
-		return MakePrtDesc(((ACharacter*)Self)->GetCapsuleComponent());
+		return MakePrtDesc((Self)->GetCapsuleComponent());
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetMesh(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetMesh(ACharacter* Self)
 	{
-		return MakePrtDesc(((ACharacter*)Self)->GetMesh());
+		return MakePrtDesc((Self)->GetMesh());
 	}
 
-	DOTNET_EXPORT uint8 E_ACharacter_GetReplicatedMovementMode(INT_PTR Self)
+	DOTNET_EXPORT uint8 E_ACharacter_GetReplicatedMovementMode(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->GetReplicatedMovementMode();
+		return (Self)->GetReplicatedMovementMode();
 	}
 
-	DOTNET_EXPORT float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(INT_PTR Self)
+	DOTNET_EXPORT float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->GetReplicatedServerLastTransformUpdateTimeStamp();
+		return (Self)->GetReplicatedServerLastTransformUpdateTimeStamp();
 	}
 
-	DOTNET_EXPORT bool E_ACharacter_IsPlayingNetworkedRootMotionMontage(INT_PTR Self)
+	DOTNET_EXPORT bool E_ACharacter_IsPlayingNetworkedRootMotionMontage(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->IsPlayingNetworkedRootMotionMontage();
+		return (Self)->IsPlayingNetworkedRootMotionMontage();
 	}
 
-	DOTNET_EXPORT bool E_ACharacter_IsPlayingRootMotion(INT_PTR Self)
+	DOTNET_EXPORT bool E_ACharacter_IsPlayingRootMotion(ACharacter* Self)
 	{
-		return ((ACharacter*)Self)->IsPlayingRootMotion();
+		return (Self)->IsPlayingRootMotion();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_Jump(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_Jump(ACharacter* Self)
 	{
-		((ACharacter*)Self)->Jump();
+		(Self)->Jump();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_K2_OnEndCrouch(INT_PTR Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	DOTNET_EXPORT void E_ACharacter_K2_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		((ACharacter*)Self)->K2_OnEndCrouch(_p0, _p1);
+		(Self)->K2_OnEndCrouch(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_K2_OnMovementModeChanged(INT_PTR Self, EMovementMode PrevMovementMode, EMovementMode NewMovementMode, uint8 PrevCustomMode, uint8 NewCustomMode)
+	DOTNET_EXPORT void E_ACharacter_K2_OnMovementModeChanged(ACharacter* Self, EMovementMode PrevMovementMode, EMovementMode NewMovementMode, uint8 PrevCustomMode, uint8 NewCustomMode)
 	{
 		auto _p0 = PrevMovementMode;
 		auto _p1 = NewMovementMode;
 		auto _p2 = PrevCustomMode;
 		auto _p3 = NewCustomMode;
-		((ACharacter*)Self)->K2_OnMovementModeChanged(_p0, _p1, _p2, _p3);
+		(Self)->K2_OnMovementModeChanged(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_K2_OnStartCrouch(INT_PTR Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	DOTNET_EXPORT void E_ACharacter_K2_OnStartCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		((ACharacter*)Self)->K2_OnStartCrouch(_p0, _p1);
+		(Self)->K2_OnStartCrouch(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_K2_UpdateCustomMovement(INT_PTR Self, float DeltaTime)
+	DOTNET_EXPORT void E_ACharacter_K2_UpdateCustomMovement(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((ACharacter*)Self)->K2_UpdateCustomMovement(_p0);
+		(Self)->K2_UpdateCustomMovement(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_LaunchCharacter(INT_PTR Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
+	DOTNET_EXPORT void E_ACharacter_LaunchCharacter(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
 	{
 		auto _p0 = *(FVector*)LaunchVelocity;
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
-		((ACharacter*)Self)->LaunchCharacter(_p0, _p1, _p2);
+		(Self)->LaunchCharacter(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_NotifyJumpApex(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_NotifyJumpApex(ACharacter* Self)
 	{
-		((ACharacter*)Self)->NotifyJumpApex();
+		(Self)->NotifyJumpApex();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnEndCrouch(INT_PTR Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	DOTNET_EXPORT void E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		((ACharacter*)Self)->OnEndCrouch(_p0, _p1);
+		(Self)->OnEndCrouch(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnJumped(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_OnJumped(ACharacter* Self)
 	{
-		((ACharacter*)Self)->OnJumped();
+		(Self)->OnJumped();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnJumped_Implementation(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_OnJumped_Implementation(ACharacter* Self)
 	{
-		((ACharacter*)Self)->OnJumped_Implementation();
+		(Self)->OnJumped_Implementation();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnLaunched(INT_PTR Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
+	DOTNET_EXPORT void E_ACharacter_OnLaunched(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
 	{
 		auto _p0 = *(FVector*)LaunchVelocity;
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
-		((ACharacter*)Self)->OnLaunched(_p0, _p1, _p2);
+		(Self)->OnLaunched(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnMovementModeChanged(INT_PTR Self, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+	DOTNET_EXPORT void E_ACharacter_OnMovementModeChanged(ACharacter* Self, EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
 	{
 		auto _p0 = PrevMovementMode;
 		auto _p1 = PreviousCustomMode;
-		((ACharacter*)Self)->OnMovementModeChanged(_p0, _p1);
+		(Self)->OnMovementModeChanged(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnRep_IsCrouched(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_OnRep_IsCrouched(ACharacter* Self)
 	{
-		((ACharacter*)Self)->OnRep_IsCrouched();
+		(Self)->OnRep_IsCrouched();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnRep_ReplicatedBasedMovement(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_OnRep_ReplicatedBasedMovement(ACharacter* Self)
 	{
-		((ACharacter*)Self)->OnRep_ReplicatedBasedMovement();
+		(Self)->OnRep_ReplicatedBasedMovement();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnRep_RootMotion(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_OnRep_RootMotion(ACharacter* Self)
 	{
-		((ACharacter*)Self)->OnRep_RootMotion();
+		(Self)->OnRep_RootMotion();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnStartCrouch(INT_PTR Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	DOTNET_EXPORT void E_ACharacter_OnStartCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		((ACharacter*)Self)->OnStartCrouch(_p0, _p1);
+		(Self)->OnStartCrouch(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_OnUpdateSimulatedPosition(INT_PTR Self, INT_PTR OldLocation, INT_PTR OldRotation)
+	DOTNET_EXPORT void E_ACharacter_OnUpdateSimulatedPosition(ACharacter* Self, INT_PTR OldLocation, INT_PTR OldRotation)
 	{
 		auto _p0 = *(FVector*)OldLocation;
 		auto _p1 = *(FQuat*)OldRotation;
-		((ACharacter*)Self)->OnUpdateSimulatedPosition(_p0, _p1);
+		(Self)->OnUpdateSimulatedPosition(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_ResetJumpState(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_ResetJumpState(ACharacter* Self)
 	{
 		((E_PROTECTED_WRAP_ACharacter*)Self)->ResetJumpState_WRAP();
 	}
 
-	DOTNET_EXPORT bool E_ACharacter_RestoreReplicatedMove(INT_PTR Self, INT_PTR RootMotionRepMove)
+	DOTNET_EXPORT bool E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
 	{
 		auto _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
-		return ((ACharacter*)Self)->RestoreReplicatedMove(_p0);
+		return (Self)->RestoreReplicatedMove(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_RootMotionDebugClientPrintOnScreen(INT_PTR Self, char* InString)
+	DOTNET_EXPORT void E_ACharacter_RootMotionDebugClientPrintOnScreen(ACharacter* Self, char* InString)
 	{
 		auto _p0 = FString(InString);
-		((ACharacter*)Self)->RootMotionDebugClientPrintOnScreen(_p0);
+		(Self)->RootMotionDebugClientPrintOnScreen(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(INT_PTR Self, char* InString)
+	DOTNET_EXPORT void E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(ACharacter* Self, char* InString)
 	{
 		auto _p0 = FString(InString);
-		((ACharacter*)Self)->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
+		(Self)->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_SaveRelativeBasedMovement(INT_PTR Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
+	DOTNET_EXPORT void E_ACharacter_SaveRelativeBasedMovement(ACharacter* Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
 	{
 		auto _p0 = *(FVector*)NewRelativeLocation;
 		auto _p1 = *(FRotator*)NewRotation;
 		auto _p2 = bRelativeRotation;
-		((ACharacter*)Self)->SaveRelativeBasedMovement(_p0, _p1, _p2);
+		(Self)->SaveRelativeBasedMovement(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_SetAnimRootMotionTranslationScale(INT_PTR Self, float InAnimRootMotionTranslationScale)
+	DOTNET_EXPORT void E_ACharacter_SetAnimRootMotionTranslationScale(ACharacter* Self, float InAnimRootMotionTranslationScale)
 	{
 		auto _p0 = InAnimRootMotionTranslationScale;
-		((ACharacter*)Self)->SetAnimRootMotionTranslationScale(_p0);
+		(Self)->SetAnimRootMotionTranslationScale(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_SetBase(INT_PTR Self, UPrimitiveComponent* NewBase, char* BoneName, bool bNotifyActor)
+	DOTNET_EXPORT void E_ACharacter_SetBase(ACharacter* Self, UPrimitiveComponent* NewBase, char* BoneName, bool bNotifyActor)
 	{
 		auto _p0 = NewBase;
 		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
 		auto _p2 = bNotifyActor;
-		((ACharacter*)Self)->SetBase(_p0, _p1, _p2);
+		(Self)->SetBase(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_SimulatedRootMotionPositionFixup(INT_PTR Self, float DeltaSeconds)
+	DOTNET_EXPORT void E_ACharacter_SimulatedRootMotionPositionFixup(ACharacter* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
-		((ACharacter*)Self)->SimulatedRootMotionPositionFixup(_p0);
+		(Self)->SimulatedRootMotionPositionFixup(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_StopJumping(INT_PTR Self)
+	DOTNET_EXPORT void E_ACharacter_StopJumping(ACharacter* Self)
 	{
-		((ACharacter*)Self)->StopJumping();
+		(Self)->StopJumping();
 	}
 
-	DOTNET_EXPORT void E_ACharacter_UnCrouch(INT_PTR Self, bool bClientSimulation)
+	DOTNET_EXPORT void E_ACharacter_UnCrouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		((ACharacter*)Self)->UnCrouch(_p0);
+		(Self)->UnCrouch(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_UpdateFromCompressedFlags(INT_PTR Self, uint8 Flags)
+	DOTNET_EXPORT void E_ACharacter_UpdateFromCompressedFlags(ACharacter* Self, uint8 Flags)
 	{
 		auto _p0 = Flags;
-		((ACharacter*)Self)->UpdateFromCompressedFlags(_p0);
+		(Self)->UpdateFromCompressedFlags(_p0);
 	}
 
-	DOTNET_EXPORT void E_ACharacter_UpdateSimulatedPosition(INT_PTR Self, INT_PTR Location, INT_PTR NewRotation)
+	DOTNET_EXPORT void E_ACharacter_UpdateSimulatedPosition(ACharacter* Self, INT_PTR Location, INT_PTR NewRotation)
 	{
 		auto _p0 = *(FVector*)Location;
 		auto _p1 = *(FRotator*)NewRotation;
-		((ACharacter*)Self)->UpdateSimulatedPosition(_p0, _p1);
+		(Self)->UpdateSimulatedPosition(_p0, _p1);
 	}
 
 }

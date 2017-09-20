@@ -12,120 +12,120 @@ extern "C"
 		return (INT_PTR)NewObject<UTimelineComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT bool E_UTimelineComponent_GetIgnoreTimeDilation(INT_PTR Self)
+	DOTNET_EXPORT bool E_UTimelineComponent_GetIgnoreTimeDilation(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->GetIgnoreTimeDilation();
+		return (Self)->GetIgnoreTimeDilation();
 	}
 
-	DOTNET_EXPORT float E_UTimelineComponent_GetPlaybackPosition(INT_PTR Self)
+	DOTNET_EXPORT float E_UTimelineComponent_GetPlaybackPosition(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->GetPlaybackPosition();
+		return (Self)->GetPlaybackPosition();
 	}
 
-	DOTNET_EXPORT float E_UTimelineComponent_GetPlayRate(INT_PTR Self)
+	DOTNET_EXPORT float E_UTimelineComponent_GetPlayRate(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->GetPlayRate();
+		return (Self)->GetPlayRate();
 	}
 
-	DOTNET_EXPORT float E_UTimelineComponent_GetTimelineLength(INT_PTR Self)
+	DOTNET_EXPORT float E_UTimelineComponent_GetTimelineLength(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->GetTimelineLength();
+		return (Self)->GetTimelineLength();
 	}
 
-	DOTNET_EXPORT bool E_UTimelineComponent_IsLooping(INT_PTR Self)
+	DOTNET_EXPORT bool E_UTimelineComponent_IsLooping(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->IsLooping();
+		return (Self)->IsLooping();
 	}
 
-	DOTNET_EXPORT bool E_UTimelineComponent_IsPlaying(INT_PTR Self)
+	DOTNET_EXPORT bool E_UTimelineComponent_IsPlaying(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->IsPlaying();
+		return (Self)->IsPlaying();
 	}
 
-	DOTNET_EXPORT bool E_UTimelineComponent_IsReversing(INT_PTR Self)
+	DOTNET_EXPORT bool E_UTimelineComponent_IsReversing(UTimelineComponent* Self)
 	{
-		return ((UTimelineComponent*)Self)->IsReversing();
+		return (Self)->IsReversing();
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_Play(INT_PTR Self)
+	DOTNET_EXPORT void E_UTimelineComponent_Play(UTimelineComponent* Self)
 	{
-		((UTimelineComponent*)Self)->Play();
+		(Self)->Play();
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_PlayFromStart(INT_PTR Self)
+	DOTNET_EXPORT void E_UTimelineComponent_PlayFromStart(UTimelineComponent* Self)
 	{
-		((UTimelineComponent*)Self)->PlayFromStart();
+		(Self)->PlayFromStart();
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_Reverse(INT_PTR Self)
+	DOTNET_EXPORT void E_UTimelineComponent_Reverse(UTimelineComponent* Self)
 	{
-		((UTimelineComponent*)Self)->Reverse();
+		(Self)->Reverse();
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_ReverseFromEnd(INT_PTR Self)
+	DOTNET_EXPORT void E_UTimelineComponent_ReverseFromEnd(UTimelineComponent* Self)
 	{
-		((UTimelineComponent*)Self)->ReverseFromEnd();
+		(Self)->ReverseFromEnd();
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetDirectionPropertyName(INT_PTR Self, char* DirectionPropertyName)
+	DOTNET_EXPORT void E_UTimelineComponent_SetDirectionPropertyName(UTimelineComponent* Self, char* DirectionPropertyName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(DirectionPropertyName));
-		((UTimelineComponent*)Self)->SetDirectionPropertyName(_p0);
+		(Self)->SetDirectionPropertyName(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetIgnoreTimeDilation(INT_PTR Self, bool bNewIgnoreTimeDilation)
+	DOTNET_EXPORT void E_UTimelineComponent_SetIgnoreTimeDilation(UTimelineComponent* Self, bool bNewIgnoreTimeDilation)
 	{
 		auto _p0 = bNewIgnoreTimeDilation;
-		((UTimelineComponent*)Self)->SetIgnoreTimeDilation(_p0);
+		(Self)->SetIgnoreTimeDilation(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetLooping(INT_PTR Self, bool bNewLooping)
+	DOTNET_EXPORT void E_UTimelineComponent_SetLooping(UTimelineComponent* Self, bool bNewLooping)
 	{
 		auto _p0 = bNewLooping;
-		((UTimelineComponent*)Self)->SetLooping(_p0);
+		(Self)->SetLooping(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetNewTime(INT_PTR Self, float NewTime)
+	DOTNET_EXPORT void E_UTimelineComponent_SetNewTime(UTimelineComponent* Self, float NewTime)
 	{
 		auto _p0 = NewTime;
-		((UTimelineComponent*)Self)->SetNewTime(_p0);
+		(Self)->SetNewTime(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetPlaybackPosition(INT_PTR Self, float NewPosition, bool bFireEvents, bool bFireUpdate)
+	DOTNET_EXPORT void E_UTimelineComponent_SetPlaybackPosition(UTimelineComponent* Self, float NewPosition, bool bFireEvents, bool bFireUpdate)
 	{
 		auto _p0 = NewPosition;
 		auto _p1 = bFireEvents;
 		auto _p2 = bFireUpdate;
-		((UTimelineComponent*)Self)->SetPlaybackPosition(_p0, _p1, _p2);
+		(Self)->SetPlaybackPosition(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetPlayRate(INT_PTR Self, float NewRate)
+	DOTNET_EXPORT void E_UTimelineComponent_SetPlayRate(UTimelineComponent* Self, float NewRate)
 	{
 		auto _p0 = NewRate;
-		((UTimelineComponent*)Self)->SetPlayRate(_p0);
+		(Self)->SetPlayRate(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetPropertySetObject(INT_PTR Self, UObject* NewPropertySetObject)
+	DOTNET_EXPORT void E_UTimelineComponent_SetPropertySetObject(UTimelineComponent* Self, UObject* NewPropertySetObject)
 	{
 		auto _p0 = NewPropertySetObject;
-		((UTimelineComponent*)Self)->SetPropertySetObject(_p0);
+		(Self)->SetPropertySetObject(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetTimelineLength(INT_PTR Self, float NewLength)
+	DOTNET_EXPORT void E_UTimelineComponent_SetTimelineLength(UTimelineComponent* Self, float NewLength)
 	{
 		auto _p0 = NewLength;
-		((UTimelineComponent*)Self)->SetTimelineLength(_p0);
+		(Self)->SetTimelineLength(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_SetTimelineLengthMode(INT_PTR Self, ETimelineLengthMode NewLengthMode)
+	DOTNET_EXPORT void E_UTimelineComponent_SetTimelineLengthMode(UTimelineComponent* Self, ETimelineLengthMode NewLengthMode)
 	{
 		auto _p0 = NewLengthMode;
-		((UTimelineComponent*)Self)->SetTimelineLengthMode(_p0);
+		(Self)->SetTimelineLengthMode(_p0);
 	}
 
-	DOTNET_EXPORT void E_UTimelineComponent_Stop(INT_PTR Self)
+	DOTNET_EXPORT void E_UTimelineComponent_Stop(UTimelineComponent* Self)
 	{
-		((UTimelineComponent*)Self)->Stop();
+		(Self)->Stop();
 	}
 
 }

@@ -574,8 +574,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Begin tracking an overlap interaction with the component specified. </para>
-		/// <param name="OtherComp">- The component of the other actor that this component is now overlapping </param>
-		/// <param name="bDoNotifies">- True to dispatch appropriate begin/end overlap notifications when these events occur. </param>
+		/// <param name="OtherComp">The component of the other actor that this component is now overlapping </param>
+		/// <param name="bDoNotifies">True to dispatch appropriate begin/end overlap notifications when these events occur. </param>
 		/// <para>@see [Overlap Events](https://docs.unrealengine.com/latest/INT/Engine/Physics/Collision/index.html#overlapandgenerateoverlapevents) </para>
 		/// </summary>
 		public void BeginComponentOverlap(FOverlapInfo OtherOverlap, bool bDoNotifies)
@@ -677,8 +677,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the light and shadow map memory for this primitive in its out variables. </para>
 		/// <para>Shadow map memory usage is per light whereof lightmap data is independent of number of lights, assuming at least one. </para>
-		/// <para>@param [out] LightMapMemoryUsage		Memory usage in bytes for light map (either texel or vertex) data </para>
-		/// <para>@param [out]	ShadowMapMemoryUsage	Memory usage in bytes for shadow map (either texel or vertex) data </para>
+		/// <param name="out">LightMapMemoryUsage		Memory usage in bytes for light map (either texel or vertex) data </param>
+		/// <param name="out">ShadowMapMemoryUsage	Memory usage in bytes for shadow map (either texel or vertex) data </param>
 		/// </summary>
 		public virtual void GetLightAndShadowMapMemoryUsage(int LightMapMemoryUsage, int ShadowMapMemoryUsage)
 			=> E_UPrimitiveComponent_GetLightAndShadowMapMemoryUsage(this, LightMapMemoryUsage, ShadowMapMemoryUsage);
@@ -804,7 +804,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Pushes new hover state to the render thread primitive proxy </para>
-		/// <param name="bInHovered">- true if the proxy should display as if hovered </param>
+		/// <param name="bInHovered">true if the proxy should display as if hovered </param>
 		/// </summary>
 		public void PushHoveredToProxy(bool bInHovered)
 			=> E_UPrimitiveComponent_PushHoveredToProxy(this, bInHovered);
@@ -924,7 +924,7 @@ namespace UnrealEngine
 		/// <para>Set Collision Profile Name </para>
 		/// <para>This function is called by constructors when they set ProfileName </para>
 		/// <para>This will change current CollisionProfileName to be this, and overwrite Collision Setting </para>
-		/// <param name="InCollisionProfileName">: New Profile Name </param>
+		/// <param name="InCollisionProfileName">New Profile Name </param>
 		/// </summary>
 		public virtual void SetCollisionProfileName(string InCollisionProfileName)
 			=> E_UPrimitiveComponent_SetCollisionProfileName(this, InCollisionProfileName);
@@ -932,7 +932,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of CullDistance. </para>
-		/// <param name="NewCullDistance">- The value to assign to CullDistance. </param>
+		/// <param name="NewCullDistance">The value to assign to CullDistance. </param>
 		/// </summary>
 		public void SetMaxDrawDistance(float NewCullDistance)
 			=> E_UPrimitiveComponent_SetCullDistance(this, NewCullDistance);
@@ -954,7 +954,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of DepthPriorityGroup. </para>
-		/// <param name="NewDepthPriorityGroup">- The value to assign to DepthPriorityGroup. </param>
+		/// <param name="NewDepthPriorityGroup">The value to assign to DepthPriorityGroup. </param>
 		/// </summary>
 		public void SetDepthPriorityGroup(ESceneDepthPriorityGroup NewDepthPriorityGroup)
 			=> E_UPrimitiveComponent_SetDepthPriorityGroup(this, (byte)NewDepthPriorityGroup);
@@ -999,7 +999,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of bNotifyRigidBodyCollision </para>
-		/// <param name="bNewNotifyRigidBodyCollision">- The value to assign to bNotifyRigidBodyCollision </param>
+		/// <param name="bNewNotifyRigidBodyCollision">The value to assign to bNotifyRigidBodyCollision </param>
 		/// </summary>
 		public virtual void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 			=> E_UPrimitiveComponent_SetNotifyRigidBodyCollision(this, bNewNotifyRigidBodyCollision);
@@ -1111,8 +1111,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of bUseViewOwnerDepthPriorityGroup and ViewOwnerDepthPriorityGroup. </para>
-		/// <param name="bNewUseViewOwnerDepthPriorityGroup">- The value to assign to bUseViewOwnerDepthPriorityGroup. </param>
-		/// <param name="NewViewOwnerDepthPriorityGroup">- The value to assign to ViewOwnerDepthPriorityGroup. </param>
+		/// <param name="bNewUseViewOwnerDepthPriorityGroup">The value to assign to bUseViewOwnerDepthPriorityGroup. </param>
+		/// <param name="NewViewOwnerDepthPriorityGroup">The value to assign to ViewOwnerDepthPriorityGroup. </param>
 		/// </summary>
 		public void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, ESceneDepthPriorityGroup NewViewOwnerDepthPriorityGroup)
 			=> E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(this, bNewUseViewOwnerDepthPriorityGroup, (byte)NewViewOwnerDepthPriorityGroup);

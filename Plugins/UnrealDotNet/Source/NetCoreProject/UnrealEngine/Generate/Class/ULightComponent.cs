@@ -69,7 +69,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Test whether this light affects the given primitive.  This checks both the primitive and light settings for light relevance </para>
 		/// <para>and also calls AffectsBounds. </para>
-		/// <param name="PrimitiveSceneInfo">- The primitive to test. </param>
+		/// <param name="PrimitiveSceneInfo">The primitive to test. </param>
 		/// <return>True if the light affects the primitive. </return>
 		/// </summary>
 		public bool AffectsPrimitive(UPrimitiveComponent Primitive)

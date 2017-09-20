@@ -73,7 +73,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Pauses or unpauses the game due to main window's focus being lost. </para>
-		/// <param name="Enable">- tells whether to enable or disable the pause state </param>
+		/// <param name="Enable">tells whether to enable or disable the pause state </param>
 		/// </summary>
 		public override void OnLostFocusPause(bool bEnable) { }
 		

@@ -12,99 +12,99 @@ extern "C"
 		return (INT_PTR)NewObject<UObject>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UObject_BeginDestroy(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_BeginDestroy(UObject* Self)
 	{
-		((UObject*)Self)->BeginDestroy();
+		(Self)->BeginDestroy();
 	}
 
-	DOTNET_EXPORT bool E_UObject_CanCreateInCurrentContext(INT_PTR Self, UObject* Template)
+	DOTNET_EXPORT bool E_UObject_CanCreateInCurrentContext(UObject* Self, UObject* Template)
 	{
 		auto _p0 = Template;
-		return ((UObject*)Self)->CanCreateInCurrentContext(_p0);
+		return (Self)->CanCreateInCurrentContext(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UObject_CanModify(INT_PTR Self)
+	DOTNET_EXPORT bool E_UObject_CanModify(UObject* Self)
 	{
-		return ((UObject*)Self)->CanModify();
+		return (Self)->CanModify();
 	}
 
-	DOTNET_EXPORT void E_UObject_FinishDestroy(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_FinishDestroy(UObject* Self)
 	{
-		((UObject*)Self)->FinishDestroy();
+		(Self)->FinishDestroy();
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_UObject_GetWorldChecked(INT_PTR Self, bool bSupported)
+	DOTNET_EXPORT ObjectPointerDescription E_UObject_GetWorldChecked(UObject* Self, bool bSupported)
 	{
 		auto _p0 = bSupported;
-		return MakePrtDesc(((UObject*)Self)->GetWorldChecked(_p0));
+		return MakePrtDesc((Self)->GetWorldChecked(_p0));
 	}
 
-	DOTNET_EXPORT bool E_UObject_ImplementsGetWorld(INT_PTR Self)
+	DOTNET_EXPORT bool E_UObject_ImplementsGetWorld(UObject* Self)
 	{
-		return ((UObject*)Self)->ImplementsGetWorld();
+		return (Self)->ImplementsGetWorld();
 	}
 
-	DOTNET_EXPORT bool E_UObject_IsSelected(INT_PTR Self)
+	DOTNET_EXPORT bool E_UObject_IsSelected(UObject* Self)
 	{
-		return ((UObject*)Self)->IsSelected();
+		return (Self)->IsSelected();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostCDOContruct(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostCDOContruct(UObject* Self)
 	{
-		((UObject*)Self)->PostCDOContruct();
+		(Self)->PostCDOContruct();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostEditImport(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostEditImport(UObject* Self)
 	{
-		((UObject*)Self)->PostEditImport();
+		(Self)->PostEditImport();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostInitProperties(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostInitProperties(UObject* Self)
 	{
-		((UObject*)Self)->PostInitProperties();
+		(Self)->PostInitProperties();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostLoad(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostLoad(UObject* Self)
 	{
-		((UObject*)Self)->PostLoad();
+		(Self)->PostLoad();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostNetReceive(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostNetReceive(UObject* Self)
 	{
-		((UObject*)Self)->PostNetReceive();
+		(Self)->PostNetReceive();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostRename(INT_PTR Self, UObject* OldOuter, char* OldName)
+	DOTNET_EXPORT void E_UObject_PostRename(UObject* Self, UObject* OldOuter, char* OldName)
 	{
 		auto _p0 = OldOuter;
 		auto _p1 = FName(UTF8_TO_TCHAR(OldName));
-		((UObject*)Self)->PostRename(_p0, _p1);
+		(Self)->PostRename(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UObject_PostRepNotifies(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PostRepNotifies(UObject* Self)
 	{
-		((UObject*)Self)->PostRepNotifies();
+		(Self)->PostRepNotifies();
 	}
 
-	DOTNET_EXPORT void E_UObject_PostSaveRoot(INT_PTR Self, bool bCleanupIsRequired)
+	DOTNET_EXPORT void E_UObject_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
 	{
 		auto _p0 = bCleanupIsRequired;
-		((UObject*)Self)->PostSaveRoot(_p0);
+		(Self)->PostSaveRoot(_p0);
 	}
 
-	DOTNET_EXPORT void E_UObject_PreDestroyFromReplication(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PreDestroyFromReplication(UObject* Self)
 	{
-		((UObject*)Self)->PreDestroyFromReplication();
+		(Self)->PreDestroyFromReplication();
 	}
 
-	DOTNET_EXPORT void E_UObject_PreNetReceive(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_PreNetReceive(UObject* Self)
 	{
-		((UObject*)Self)->PreNetReceive();
+		(Self)->PreNetReceive();
 	}
 
-	DOTNET_EXPORT void E_UObject_ShutdownAfterError(INT_PTR Self)
+	DOTNET_EXPORT void E_UObject_ShutdownAfterError(UObject* Self)
 	{
-		((UObject*)Self)->ShutdownAfterError();
+		(Self)->ShutdownAfterError();
 	}
 
 }

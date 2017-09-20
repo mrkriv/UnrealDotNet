@@ -12,27 +12,27 @@ extern "C"
 		return (INT_PTR)NewObject<UBoxComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_UBoxComponent_GetScaledBoxExtent(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_UBoxComponent_GetScaledBoxExtent(UBoxComponent* Self)
 	{
-		return (INT_PTR) new FVector(((UBoxComponent*)Self)->GetScaledBoxExtent());
+		return (INT_PTR) new FVector((Self)->GetScaledBoxExtent());
 	}
 
-	DOTNET_EXPORT INT_PTR E_UBoxComponent_GetUnscaledBoxExtent(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_UBoxComponent_GetUnscaledBoxExtent(UBoxComponent* Self)
 	{
-		return (INT_PTR) new FVector(((UBoxComponent*)Self)->GetUnscaledBoxExtent());
+		return (INT_PTR) new FVector((Self)->GetUnscaledBoxExtent());
 	}
 
-	DOTNET_EXPORT void E_UBoxComponent_InitBoxExtent(INT_PTR Self, INT_PTR InBoxExtent)
+	DOTNET_EXPORT void E_UBoxComponent_InitBoxExtent(UBoxComponent* Self, INT_PTR InBoxExtent)
 	{
 		auto _p0 = *(FVector*)InBoxExtent;
-		((UBoxComponent*)Self)->InitBoxExtent(_p0);
+		(Self)->InitBoxExtent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UBoxComponent_SetBoxExtent(INT_PTR Self, INT_PTR InBoxExtent, bool bUpdateOverlaps)
+	DOTNET_EXPORT void E_UBoxComponent_SetBoxExtent(UBoxComponent* Self, INT_PTR InBoxExtent, bool bUpdateOverlaps)
 	{
 		auto _p0 = *(FVector*)InBoxExtent;
 		auto _p1 = bUpdateOverlaps;
-		((UBoxComponent*)Self)->SetBoxExtent(_p0, _p1);
+		(Self)->SetBoxExtent(_p0, _p1);
 	}
 
 }

@@ -32,229 +32,229 @@ extern "C"
 		return (INT_PTR)NewObject<APawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_APawn_AddControllerPitchInput(INT_PTR Self, float Val)
+	DOTNET_EXPORT void E_APawn_AddControllerPitchInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		((APawn*)Self)->AddControllerPitchInput(_p0);
+		(Self)->AddControllerPitchInput(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_AddControllerRollInput(INT_PTR Self, float Val)
+	DOTNET_EXPORT void E_APawn_AddControllerRollInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		((APawn*)Self)->AddControllerRollInput(_p0);
+		(Self)->AddControllerRollInput(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_AddControllerYawInput(INT_PTR Self, float Val)
+	DOTNET_EXPORT void E_APawn_AddControllerYawInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		((APawn*)Self)->AddControllerYawInput(_p0);
+		(Self)->AddControllerYawInput(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_AddMovementInput(INT_PTR Self, INT_PTR WorldDirection, float ScaleValue, bool bForce)
+	DOTNET_EXPORT void E_APawn_AddMovementInput(APawn* Self, INT_PTR WorldDirection, float ScaleValue, bool bForce)
 	{
 		auto _p0 = *(FVector*)WorldDirection;
 		auto _p1 = ScaleValue;
 		auto _p2 = bForce;
-		((APawn*)Self)->AddMovementInput(_p0, _p1, _p2);
+		(Self)->AddMovementInput(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_APawn_ClientSetRotation(INT_PTR Self, INT_PTR NewRotation)
+	DOTNET_EXPORT void E_APawn_ClientSetRotation(APawn* Self, INT_PTR NewRotation)
 	{
 		auto _p0 = *(FRotator*)NewRotation;
-		((APawn*)Self)->ClientSetRotation(_p0);
+		(Self)->ClientSetRotation(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_DestroyPlayerInputComponent(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_DestroyPlayerInputComponent(APawn* Self)
 	{
 		((E_PROTECTED_WRAP_APawn*)Self)->DestroyPlayerInputComponent_WRAP();
 	}
 
-	DOTNET_EXPORT void E_APawn_DetachFromControllerPendingDestroy(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_DetachFromControllerPendingDestroy(APawn* Self)
 	{
-		((APawn*)Self)->DetachFromControllerPendingDestroy();
+		(Self)->DetachFromControllerPendingDestroy();
 	}
 
-	DOTNET_EXPORT void E_APawn_FaceRotation(INT_PTR Self, INT_PTR NewControlRotation, float DeltaTime)
+	DOTNET_EXPORT void E_APawn_FaceRotation(APawn* Self, INT_PTR NewControlRotation, float DeltaTime)
 	{
 		auto _p0 = *(FRotator*)NewControlRotation;
 		auto _p1 = DeltaTime;
-		((APawn*)Self)->FaceRotation(_p0, _p1);
+		(Self)->FaceRotation(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_GetControlRotation(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_GetControlRotation(APawn* Self)
 	{
-		return (INT_PTR) new FRotator(((APawn*)Self)->GetControlRotation());
+		return (INT_PTR) new FRotator((Self)->GetControlRotation());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_GetGravityDirection(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_GetGravityDirection(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->GetGravityDirection());
+		return (INT_PTR) new FVector((Self)->GetGravityDirection());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_GetLastMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_GetLastMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->GetLastMovementInputVector());
+		return (INT_PTR) new FVector((Self)->GetLastMovementInputVector());
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_APawn_GetMovementBaseActor(INT_PTR Self, APawn* Pawn)
+	DOTNET_EXPORT ObjectPointerDescription E_APawn_GetMovementBaseActor(APawn* Self, APawn* Pawn)
 	{
 		auto _p0 = Pawn;
-		return MakePrtDesc(((APawn*)Self)->GetMovementBaseActor(_p0));
+		return MakePrtDesc((Self)->GetMovementBaseActor(_p0));
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_GetMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_GetMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->GetMovementInputVector());
+		return (INT_PTR) new FVector((Self)->GetMovementInputVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_GetPendingMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_GetPendingMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->GetPendingMovementInputVector());
+		return (INT_PTR) new FVector((Self)->GetPendingMovementInputVector());
 	}
 
-	DOTNET_EXPORT bool E_APawn_InputEnabled(INT_PTR Self)
+	DOTNET_EXPORT bool E_APawn_InputEnabled(APawn* Self)
 	{
-		return ((APawn*)Self)->InputEnabled();
+		return (Self)->InputEnabled();
 	}
 
-	DOTNET_EXPORT void E_APawn_Internal_AddMovementInput(INT_PTR Self, INT_PTR WorldAccel, bool bForce)
+	DOTNET_EXPORT void E_APawn_Internal_AddMovementInput(APawn* Self, INT_PTR WorldAccel, bool bForce)
 	{
 		auto _p0 = *(FVector*)WorldAccel;
 		auto _p1 = bForce;
-		((APawn*)Self)->Internal_AddMovementInput(_p0, _p1);
+		(Self)->Internal_AddMovementInput(_p0, _p1);
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_Internal_ConsumeMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_Internal_ConsumeMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->Internal_ConsumeMovementInputVector());
+		return (INT_PTR) new FVector((Self)->Internal_ConsumeMovementInputVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetLastMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetLastMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->Internal_GetLastMovementInputVector());
+		return (INT_PTR) new FVector((Self)->Internal_GetLastMovementInputVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->Internal_GetMovementInputVector());
+		return (INT_PTR) new FVector((Self)->Internal_GetMovementInputVector());
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetPendingMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_Internal_GetPendingMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->Internal_GetPendingMovementInputVector());
+		return (INT_PTR) new FVector((Self)->Internal_GetPendingMovementInputVector());
 	}
 
-	DOTNET_EXPORT bool E_APawn_IsControlled(INT_PTR Self)
+	DOTNET_EXPORT bool E_APawn_IsControlled(APawn* Self)
 	{
-		return ((APawn*)Self)->IsControlled();
+		return (Self)->IsControlled();
 	}
 
-	DOTNET_EXPORT INT_PTR E_APawn_K2_GetMovementInputVector(INT_PTR Self)
+	DOTNET_EXPORT INT_PTR E_APawn_K2_GetMovementInputVector(APawn* Self)
 	{
-		return (INT_PTR) new FVector(((APawn*)Self)->K2_GetMovementInputVector());
+		return (INT_PTR) new FVector((Self)->K2_GetMovementInputVector());
 	}
 
-	DOTNET_EXPORT void E_APawn_LaunchPawn(INT_PTR Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
+	DOTNET_EXPORT void E_APawn_LaunchPawn(APawn* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
 	{
 		auto _p0 = *(FVector*)LaunchVelocity;
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
-		((APawn*)Self)->LaunchPawn(_p0, _p1, _p2);
+		(Self)->LaunchPawn(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_APawn_MoveIgnoreActorAdd(INT_PTR Self, AActor* ActorToIgnore)
+	DOTNET_EXPORT void E_APawn_MoveIgnoreActorAdd(APawn* Self, AActor* ActorToIgnore)
 	{
 		auto _p0 = ActorToIgnore;
-		((APawn*)Self)->MoveIgnoreActorAdd(_p0);
+		(Self)->MoveIgnoreActorAdd(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_MoveIgnoreActorRemove(INT_PTR Self, AActor* ActorToIgnore)
+	DOTNET_EXPORT void E_APawn_MoveIgnoreActorRemove(APawn* Self, AActor* ActorToIgnore)
 	{
 		auto _p0 = ActorToIgnore;
-		((APawn*)Self)->MoveIgnoreActorRemove(_p0);
+		(Self)->MoveIgnoreActorRemove(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_OnRep_Controller(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_OnRep_Controller(APawn* Self)
 	{
-		((APawn*)Self)->OnRep_Controller();
+		(Self)->OnRep_Controller();
 	}
 
-	DOTNET_EXPORT void E_APawn_OnRep_PlayerState(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_OnRep_PlayerState(APawn* Self)
 	{
-		((APawn*)Self)->OnRep_PlayerState();
+		(Self)->OnRep_PlayerState();
 	}
 
-	DOTNET_EXPORT void E_APawn_PawnClientRestart(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_PawnClientRestart(APawn* Self)
 	{
-		((APawn*)Self)->PawnClientRestart();
+		(Self)->PawnClientRestart();
 	}
 
-	DOTNET_EXPORT void E_APawn_PawnMakeNoise(INT_PTR Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
+	DOTNET_EXPORT void E_APawn_PawnMakeNoise(APawn* Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
 	{
 		auto _p0 = Loudness;
 		auto _p1 = *(FVector*)NoiseLocation;
 		auto _p2 = bUseNoiseMakerLocation;
 		auto _p3 = NoiseMaker;
-		((APawn*)Self)->PawnMakeNoise(_p0, _p1, _p2, _p3);
+		(Self)->PawnMakeNoise(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT void E_APawn_PawnStartFire(INT_PTR Self, uint8 FireModeNum)
+	DOTNET_EXPORT void E_APawn_PawnStartFire(APawn* Self, uint8 FireModeNum)
 	{
 		auto _p0 = FireModeNum;
-		((APawn*)Self)->PawnStartFire(_p0);
+		(Self)->PawnStartFire(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_RecalculateBaseEyeHeight(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_RecalculateBaseEyeHeight(APawn* Self)
 	{
-		((APawn*)Self)->RecalculateBaseEyeHeight();
+		(Self)->RecalculateBaseEyeHeight();
 	}
 
-	DOTNET_EXPORT void E_APawn_Restart(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_Restart(APawn* Self)
 	{
-		((APawn*)Self)->Restart();
+		(Self)->Restart();
 	}
 
-	DOTNET_EXPORT void E_APawn_SetCanAffectNavigationGeneration(INT_PTR Self, bool bNewValue, bool bForceUpdate)
+	DOTNET_EXPORT void E_APawn_SetCanAffectNavigationGeneration(APawn* Self, bool bNewValue, bool bForceUpdate)
 	{
 		auto _p0 = bNewValue;
 		auto _p1 = bForceUpdate;
-		((APawn*)Self)->SetCanAffectNavigationGeneration(_p0, _p1);
+		(Self)->SetCanAffectNavigationGeneration(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_APawn_SetPlayerDefaults(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_SetPlayerDefaults(APawn* Self)
 	{
-		((APawn*)Self)->SetPlayerDefaults();
+		(Self)->SetPlayerDefaults();
 	}
 
-	DOTNET_EXPORT void E_APawn_SetRemoteViewPitch(INT_PTR Self, float NewRemoteViewPitch)
+	DOTNET_EXPORT void E_APawn_SetRemoteViewPitch(APawn* Self, float NewRemoteViewPitch)
 	{
 		auto _p0 = NewRemoteViewPitch;
-		((APawn*)Self)->SetRemoteViewPitch(_p0);
+		(Self)->SetRemoteViewPitch(_p0);
 	}
 
-	DOTNET_EXPORT void E_APawn_SpawnDefaultController(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_SpawnDefaultController(APawn* Self)
 	{
-		((APawn*)Self)->SpawnDefaultController();
+		(Self)->SpawnDefaultController();
 	}
 
-	DOTNET_EXPORT void E_APawn_TurnOff(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_TurnOff(APawn* Self)
 	{
-		((APawn*)Self)->TurnOff();
+		(Self)->TurnOff();
 	}
 
-	DOTNET_EXPORT void E_APawn_UnPossessed(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_UnPossessed(APawn* Self)
 	{
-		((APawn*)Self)->UnPossessed();
+		(Self)->UnPossessed();
 	}
 
-	DOTNET_EXPORT void E_APawn_UpdateNavAgent(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_UpdateNavAgent(APawn* Self)
 	{
-		((APawn*)Self)->UpdateNavAgent();
+		(Self)->UpdateNavAgent();
 	}
 
-	DOTNET_EXPORT void E_APawn_UpdateNavigationRelevance(INT_PTR Self)
+	DOTNET_EXPORT void E_APawn_UpdateNavigationRelevance(APawn* Self)
 	{
-		((APawn*)Self)->UpdateNavigationRelevance();
+		(Self)->UpdateNavigationRelevance();
 	}
 
 }

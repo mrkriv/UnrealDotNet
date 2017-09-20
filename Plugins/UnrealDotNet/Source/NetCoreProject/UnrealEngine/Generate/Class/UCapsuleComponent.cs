@@ -219,8 +219,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the capsule half-height. This is the unscaled half-height, before component scale is applied. </para>
 		/// <para>If this capsule collides, updates touching array for owner actor. </para>
-		/// <param name="HalfHeight">: half-height, from capsule center to end of top or bottom hemisphere. </param>
-		/// <para>@param	bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor. </para>
+		/// <param name="HalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
 		public void SetCapsuleHalfHeight(float HalfHeight, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleHalfHeight(this, HalfHeight, bUpdateOverlaps);
@@ -229,8 +229,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the capsule radius. This is the unscaled radius, before component scale is applied. </para>
 		/// <para>If this capsule collides, updates touching array for owner actor. </para>
-		/// <param name="Radius">: radius of end-cap hemispheres and center cylinder. </param>
-		/// <para>@param	bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor. </para>
+		/// <param name="Radius">radius of end-cap hemispheres and center cylinder. </param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
 		public void SetCapsuleRadius(float Radius, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleRadius(this, Radius, bUpdateOverlaps);
@@ -238,9 +238,9 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Change the capsule size. This is the unscaled size, before component scale is applied. </para>
-		/// <param name="InRadius">: radius of end-cap hemispheres and center cylinder. </param>
-		/// <param name="InHalfHeight">: half-height, from capsule center to end of top or bottom hemisphere. </param>
-		/// <para>@param	bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor. </para>
+		/// <param name="InRadius">radius of end-cap hemispheres and center cylinder. </param>
+		/// <param name="InHalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
 		public void SetCapsuleSize(float InRadius, float InHalfHeight, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleSize(this, InRadius, InHalfHeight, bUpdateOverlaps);
