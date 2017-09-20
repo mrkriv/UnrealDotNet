@@ -157,9 +157,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManageCharacter(IntPtr Adress)
+		public static implicit operator ManageCharacter(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManageCharacter ?? new ManageCharacter(Adress);
+			return NativeManager.GetWrapper<ManageCharacter>(PtrDesc);
 		}}}

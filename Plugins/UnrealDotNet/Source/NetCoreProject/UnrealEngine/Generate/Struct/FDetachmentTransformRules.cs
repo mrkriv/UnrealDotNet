@@ -133,6 +133,4 @@ namespace UnrealEngine
 		public static implicit operator FDetachmentTransformRules(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FDetachmentTransformRules(Adress, false);
-		}
-}
-}
+		}}}

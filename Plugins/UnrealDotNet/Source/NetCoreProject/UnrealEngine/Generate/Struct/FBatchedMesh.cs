@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FBatchedMesh(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FBatchedMesh(Adress, false);
-		}
-}
-}
+		}}}

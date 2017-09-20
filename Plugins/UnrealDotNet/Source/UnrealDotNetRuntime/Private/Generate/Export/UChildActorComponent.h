@@ -22,9 +22,9 @@ extern "C"
 		((UChildActorComponent*)Self)->DestroyChildActor();
 	}
 
-	DOTNET_EXPORT AActor* E_UChildActorComponent_GetChildActor(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActor(INT_PTR Self)
 	{
-		return ((UChildActorComponent*)Self)->GetChildActor();
+		return MakePrtDesc(((UChildActorComponent*)Self)->GetChildActor());
 	}
 
 	DOTNET_EXPORT char* E_UChildActorComponent_GetChildActorName(INT_PTR Self, int& ResultStringLen)
@@ -34,9 +34,9 @@ extern "C"
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT AActor* E_UChildActorComponent_GetChildActorTemplate(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(INT_PTR Self)
 	{
-		return ((UChildActorComponent*)Self)->GetChildActorTemplate();
+		return MakePrtDesc(((UChildActorComponent*)Self)->GetChildActorTemplate());
 	}
 
 }

@@ -135,9 +135,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManagePawn(IntPtr Adress)
+		public static implicit operator ManagePawn(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManagePawn ?? new ManagePawn(Adress);
+			return NativeManager.GetWrapper<ManagePawn>(PtrDesc);
 		}}}

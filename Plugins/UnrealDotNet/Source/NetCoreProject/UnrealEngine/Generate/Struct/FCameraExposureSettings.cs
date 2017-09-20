@@ -183,6 +183,4 @@ namespace UnrealEngine
 		public static implicit operator FCameraExposureSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FCameraExposureSettings(Adress, false);
-		}
-}
-}
+		}}}

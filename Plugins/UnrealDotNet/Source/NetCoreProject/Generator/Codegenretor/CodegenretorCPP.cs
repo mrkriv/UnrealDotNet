@@ -270,7 +270,7 @@ namespace Generator
 
                 var param = string.Join(", ", inputs);
 
-                cw.WriteLine($"{CPP_API} {ExportVariableCPP(method.ReturnType)} {GetCPPMethodName(method)}({param})");
+                cw.WriteLine($"{CPP_API} {ExportVariableCPPForReturn(method.ReturnType)} {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
                 for (var i = 0; i < method.InputTypes.Count; i++)
@@ -286,10 +286,18 @@ namespace Generator
 
                 var bCloseCount = 0;
                 var retClass = method.ReturnType as ClassVariable;
-                if (retClass != null && retClass.Class.IsStructure)
+                if (retClass != null)
                 {
-                    cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
-                    bCloseCount++;
+                    if (retClass.Class.IsStructure)
+                    {
+                        cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
+                        bCloseCount++;
+                    }
+                    else
+                    {
+                        cw.Write($"MakePrtDesc(");
+                        bCloseCount++;
+                    }
                 }
 
                 var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i =>
@@ -551,6 +559,11 @@ namespace Generator
                     result += " " + variable.Name;
 
                 return result;
+            }
+
+            private static string ExportVariableCPPForReturn(Variable variable)
+            {
+                return variable.GetTypeCPP(true);
             }
         }
     }

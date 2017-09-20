@@ -86,6 +86,4 @@ namespace UnrealEngine
 		public static implicit operator FFilmStockSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FFilmStockSettings(Adress, false);
-		}
-}
-}
+		}}}

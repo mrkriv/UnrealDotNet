@@ -77,7 +77,7 @@ namespace UnrealEngine
 		private static extern void E_FWorldContext_SetCurrentWorld(IntPtr Self, IntPtr World);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FWorldContext_World(IntPtr Self);
+		private static extern ObjectPointerDescription E_FWorldContext_World(IntPtr Self);
 		
 		#endregion
 		
@@ -187,6 +187,4 @@ namespace UnrealEngine
 		public static implicit operator FWorldContext(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FWorldContext(Adress, false);
-		}
-}
-}
+		}}}

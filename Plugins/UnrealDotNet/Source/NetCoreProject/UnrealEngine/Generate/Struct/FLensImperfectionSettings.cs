@@ -46,6 +46,4 @@ namespace UnrealEngine
 		public static implicit operator FLensImperfectionSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLensImperfectionSettings(Adress, false);
-		}
-}
-}
+		}}}

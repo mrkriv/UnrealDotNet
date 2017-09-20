@@ -182,6 +182,7 @@ namespace Generator
                     }
                 }
             }
+
             private static void GenerateClassDLLImport(CoreWriter cw, Class Class)
             {
                 if (Class.IsStructure)
@@ -198,12 +199,17 @@ namespace Generator
                     }
                 }
 
+                GenerateClassPropertyDLLImport(cw, Class);
+            }
+
+            private static void GenerateClassPropertyDLLImport(CoreWriter cw, Class Class)
+            {
                 foreach (var prop in Class.Property.Where(p => !p.IsConst))
                 {
                     var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                     WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern {prop.GetTypeCSForExtend()} {baseName}_GET(IntPtr Ptr);");
+                    cw.WriteLine($"private static extern {prop.GetTypeCSForExtend(true)} {baseName}_GET(IntPtr Ptr);");
 
                     if (!prop.IsReadOnly())
                     {
@@ -267,7 +273,7 @@ namespace Generator
                     inputs.Add("out int ResultStringLen");
 
                 var param = string.Join(", ", inputs);
-                var ret = genStringWrap ? "IntPtr" : ExportVariable(method.ReturnType, false, true);
+                var ret = genStringWrap ? "IntPtr" : ExportVariable(method.ReturnType, false, true, true);
 
                 WriteDLLImport(cw);
                 cw.WriteLine(
@@ -439,11 +445,9 @@ namespace Generator
                 }
                 else
                 {
-                    cw.WriteLine($"public static implicit operator {Class.Name}(IntPtr Adress)");
+                    cw.WriteLine($"public static implicit operator {Class.Name}(ObjectPointerDescription PtrDesc)");
                     cw.OpenBlock();
-                    cw.WriteLine($"if (Adress == IntPtr.Zero)");
-                    cw.WriteLine($"\treturn null;");
-                    cw.WriteLine($"return NativeManager.GetWrapper(Adress) as {Class.Name} ?? new {Class.Name}(Adress);");
+                    cw.WriteLine($"return NativeManager.GetWrapper<{Class.Name}>(PtrDesc);");
                     cw.CloseBlock();
                 }
             }
@@ -451,12 +455,12 @@ namespace Generator
             private static void WriteDLLImport(CoreWriter cw)
             {
                 cw.WriteLine(
-                    "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]");
+                    "[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]");
             }
 
-            private static string ExportVariable(Variable variable, bool IncludeDefault = true, bool ForExtern = false)
+            private static string ExportVariable(Variable variable, bool IncludeDefault = true, bool ForExtern = false, bool ForReturn = false)
             {
-                var result = ForExtern ? variable.GetTypeCSForExtend() : variable.GetTypeCS();
+                var result = ForExtern ? variable.GetTypeCSForExtend(ForReturn) : variable.GetTypeCS();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                 {

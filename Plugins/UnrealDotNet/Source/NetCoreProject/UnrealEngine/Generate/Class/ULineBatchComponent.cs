@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ULineBatchComponent(IntPtr Adress)
+		public static implicit operator ULineBatchComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ULineBatchComponent ?? new ULineBatchComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<ULineBatchComponent>(PtrDesc);
+		}}}

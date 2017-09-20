@@ -720,6 +720,4 @@ namespace UnrealEngine
 		public static implicit operator FTransform(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTransform(Adress, false);
-		}
-}
-}
+		}}}

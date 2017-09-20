@@ -54,6 +54,4 @@ namespace UnrealEngine
 		public static implicit operator FLevelStreamingStatus(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLevelStreamingStatus(Adress, false);
-		}
-}
-}
+		}}}

@@ -174,14 +174,14 @@ extern "C"
 		return (INT_PTR) new FVector(((ACharacter*)Self)->GetBaseTranslationOffset());
 	}
 
-	DOTNET_EXPORT UCapsuleComponent* E_ACharacter_GetCapsuleComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetCapsuleComponent(INT_PTR Self)
 	{
-		return ((ACharacter*)Self)->GetCapsuleComponent();
+		return MakePrtDesc(((ACharacter*)Self)->GetCapsuleComponent());
 	}
 
-	DOTNET_EXPORT USkeletalMeshComponent* E_ACharacter_GetMesh(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ACharacter_GetMesh(INT_PTR Self)
 	{
-		return ((ACharacter*)Self)->GetMesh();
+		return MakePrtDesc(((ACharacter*)Self)->GetMesh());
 	}
 
 	DOTNET_EXPORT uint8 E_ACharacter_GetReplicatedMovementMode(INT_PTR Self)

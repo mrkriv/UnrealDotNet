@@ -8,6 +8,7 @@ using System.Runtime.Loader;
 using Newtonsoft.Json;
 using System.Linq.Expressions;
 using System.ComponentModel;
+using System.Text;
 
 namespace UnrealEngine
 {
@@ -53,10 +54,36 @@ namespace UnrealEngine
             }
         }
 
-        public static object GetWrapper(IntPtr Adress)
+        public static T GetWrapper<T>(ObjectPointerDescription PtrDesc) where T : NativeWrapper
         {
-            Wrappers.TryGetValue(Adress, out var result);
-            return result;
+            if (PtrDesc.Pointer == IntPtr.Zero)
+                return null;
+
+            if (Wrappers.TryGetValue(PtrDesc.Pointer, out var result))
+                return result as T;
+
+            var CppClass = Marshal.PtrToStringUTF8(PtrDesc.TypeName, PtrDesc.TypeNameLen);
+
+            var asm = typeof(NativeWrapper).Assembly;
+            var type = asm.GetType("UnrealEngine." + CppClass);
+
+            if (type == null)
+            {
+                UObjectBaseUtility.ULog_Warning($"Manage type {CppClass} not found, use {typeof(T).FullName}");
+                type = typeof(T);
+            }
+
+            var ctor = type.GetConstructor(new[] {typeof(IntPtr)});
+
+            if (ctor == null)
+            {
+                UObjectBaseUtility.ULog_Error($"Type {type.FullName} not contains constructor {type.Name}(IntPtr)");
+                return null;
+            }
+
+            var obj = ctor.Invoke(new[] {(object) PtrDesc.Pointer}) as T;
+
+            return obj;
         }
 
         public static bool AddWrapper(IntPtr Adress, string DotnetTypeName)

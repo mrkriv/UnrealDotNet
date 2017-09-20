@@ -59,6 +59,4 @@ namespace UnrealEngine
 		public static implicit operator FOverlapInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FOverlapInfo(Adress, false);
-		}
-}
-}
+		}}}

@@ -181,6 +181,4 @@ namespace UnrealEngine
 		public static implicit operator FSplineMeshParams(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSplineMeshParams(Adress, false);
-		}
-}
-}
+		}}}

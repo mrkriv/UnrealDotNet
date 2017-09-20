@@ -86,6 +86,4 @@ namespace UnrealEngine
 		public static implicit operator FBatchedLine(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FBatchedLine(Adress, false);
-		}
-}
-}
+		}}}

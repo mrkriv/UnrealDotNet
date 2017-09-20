@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FPluginRedirect(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FPluginRedirect(Adress, false);
-		}
-}
-}
+		}}}

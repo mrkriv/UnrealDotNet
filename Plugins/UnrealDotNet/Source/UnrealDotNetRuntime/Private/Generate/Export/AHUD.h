@@ -86,9 +86,9 @@ extern "C"
 		((AHUD*)Self)->DrawSafeZoneOverlay();
 	}
 
-	DOTNET_EXPORT APawn* E_AHUD_GetOwningPawn(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AHUD_GetOwningPawn(INT_PTR Self)
 	{
-		return ((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP();
+		return MakePrtDesc(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
 	}
 
 	DOTNET_EXPORT void E_AHUD_HandleBugScreenShot(INT_PTR Self)

@@ -105,9 +105,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManageHUD(IntPtr Adress)
+		public static implicit operator ManageHUD(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManageHUD ?? new ManageHUD(Adress);
+			return NativeManager.GetWrapper<ManageHUD>(PtrDesc);
 		}}}

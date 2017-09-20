@@ -86,6 +86,4 @@ namespace UnrealEngine
 		public static implicit operator FColorGradePerRangeSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FColorGradePerRangeSettings(Adress, false);
-		}
-}
-}
+		}}}

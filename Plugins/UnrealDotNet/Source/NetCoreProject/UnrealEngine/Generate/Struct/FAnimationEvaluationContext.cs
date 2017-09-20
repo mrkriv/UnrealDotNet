@@ -101,6 +101,4 @@ namespace UnrealEngine
 		public static implicit operator FAnimationEvaluationContext(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FAnimationEvaluationContext(Adress, false);
-		}
-}
-}
+		}}}

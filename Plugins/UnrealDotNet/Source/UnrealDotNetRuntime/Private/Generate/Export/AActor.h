@@ -153,13 +153,13 @@ extern "C"
 		return (INT_PTR) new FTransform(((AActor*)Self)->ActorToWorld());
 	}
 
-	DOTNET_EXPORT UActorComponent* E_AActor_AddComponent(INT_PTR Self, char* TemplateName, bool bManualAttachment, INT_PTR RelativeTransform, UObject* ComponentTemplateContext)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_AddComponent(INT_PTR Self, char* TemplateName, bool bManualAttachment, INT_PTR RelativeTransform, UObject* ComponentTemplateContext)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(TemplateName));
 		auto _p1 = bManualAttachment;
 		auto _p2 = *(FTransform*)RelativeTransform;
 		auto _p3 = ComponentTemplateContext;
-		return ((AActor*)Self)->AddComponent(_p0, _p1, _p2, _p3);
+		return MakePrtDesc(((AActor*)Self)->AddComponent(_p0, _p1, _p2, _p3));
 	}
 
 	DOTNET_EXPORT void E_AActor_AddTickPrerequisiteActor(INT_PTR Self, AActor* PrerequisiteActor)
@@ -426,19 +426,19 @@ extern "C"
 		return ((AActor*)Self)->GetNetMode();
 	}
 
-	DOTNET_EXPORT AActor* E_AActor_GetOwner(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_GetOwner(INT_PTR Self)
 	{
-		return ((AActor*)Self)->GetOwner();
+		return MakePrtDesc(((AActor*)Self)->GetOwner());
 	}
 
-	DOTNET_EXPORT AActor* E_AActor_GetParentActor(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_GetParentActor(INT_PTR Self)
 	{
-		return ((AActor*)Self)->GetParentActor();
+		return MakePrtDesc(((AActor*)Self)->GetParentActor());
 	}
 
-	DOTNET_EXPORT UChildActorComponent* E_AActor_GetParentComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_GetParentComponent(INT_PTR Self)
 	{
-		return ((AActor*)Self)->GetParentComponent();
+		return MakePrtDesc(((AActor*)Self)->GetParentComponent());
 	}
 
 	DOTNET_EXPORT INT_PTR E_AActor_GetPlacementExtent(INT_PTR Self)
@@ -446,14 +446,14 @@ extern "C"
 		return (INT_PTR) new FVector(((AActor*)Self)->GetPlacementExtent());
 	}
 
-	DOTNET_EXPORT USceneComponent* E_AActor_GetRootComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_GetRootComponent(INT_PTR Self)
 	{
-		return ((AActor*)Self)->GetRootComponent();
+		return MakePrtDesc(((AActor*)Self)->GetRootComponent());
 	}
 
-	DOTNET_EXPORT UPrimitiveComponent* E_AActor_GetRootPrimitiveComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_GetRootPrimitiveComponent(INT_PTR Self)
 	{
-		return ((AActor*)Self)->GetRootPrimitiveComponent();
+		return MakePrtDesc(((AActor*)Self)->GetRootPrimitiveComponent());
 	}
 
 	DOTNET_EXPORT float E_AActor_GetSquaredDistanceTo(INT_PTR Self, AActor* OtherActor)
@@ -639,9 +639,9 @@ extern "C"
 		return (INT_PTR) new FRotator(((AActor*)Self)->K2_GetActorRotation());
 	}
 
-	DOTNET_EXPORT USceneComponent* E_AActor_K2_GetRootComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_AActor_K2_GetRootComponent(INT_PTR Self)
 	{
-		return ((AActor*)Self)->K2_GetRootComponent();
+		return MakePrtDesc(((AActor*)Self)->K2_GetRootComponent());
 	}
 
 	DOTNET_EXPORT bool E_AActor_K2_SetActorRotation(INT_PTR Self, INT_PTR NewRotation, bool bTeleportPhysics)

@@ -97,6 +97,4 @@ namespace UnrealEngine
 		public static implicit operator FClusterNode(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FClusterNode(Adress, false);
-		}
-}
-}
+		}}}

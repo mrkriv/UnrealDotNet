@@ -235,6 +235,4 @@ namespace UnrealEngine
 		public static implicit operator FTimeline(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTimeline(Adress, false);
-		}
-}
-}
+		}}}

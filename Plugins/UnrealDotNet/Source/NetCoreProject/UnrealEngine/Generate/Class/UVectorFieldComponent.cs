@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UVectorFieldComponent(IntPtr Adress)
+		public static implicit operator UVectorFieldComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UVectorFieldComponent ?? new UVectorFieldComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UVectorFieldComponent>(PtrDesc);
+		}}}

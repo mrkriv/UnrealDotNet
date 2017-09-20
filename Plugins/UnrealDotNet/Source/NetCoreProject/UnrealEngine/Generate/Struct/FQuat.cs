@@ -627,6 +627,4 @@ namespace UnrealEngine
 		public static implicit operator FQuat(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FQuat(Adress, false);
-		}
-}
-}
+		}}}

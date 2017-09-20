@@ -130,11 +130,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USceneCaptureComponent(IntPtr Adress)
+		public static implicit operator USceneCaptureComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USceneCaptureComponent ?? new USceneCaptureComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USceneCaptureComponent>(PtrDesc);
+		}}}

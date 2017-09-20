@@ -82,11 +82,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UMeshComponent(IntPtr Adress)
+		public static implicit operator UMeshComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UMeshComponent ?? new UMeshComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UMeshComponent>(PtrDesc);
+		}}}

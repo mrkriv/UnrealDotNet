@@ -136,11 +136,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USkyLightComponent(IntPtr Adress)
+		public static implicit operator USkyLightComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USkyLightComponent ?? new USkyLightComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USkyLightComponent>(PtrDesc);
+		}}}

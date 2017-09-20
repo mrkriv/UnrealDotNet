@@ -64,6 +64,4 @@ namespace UnrealEngine
 		public static implicit operator FDropNoteInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FDropNoteInfo(Adress, false);
-		}
-}
-}
+		}}}

@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern float E_ALight_GetBrightness(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ALight_GetLightComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ALight_GetLightComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ALight_IsEnabled(IntPtr Self);
@@ -110,11 +110,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ALight(IntPtr Adress)
+		public static implicit operator ALight(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ALight ?? new ALight(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<ALight>(PtrDesc);
+		}}}

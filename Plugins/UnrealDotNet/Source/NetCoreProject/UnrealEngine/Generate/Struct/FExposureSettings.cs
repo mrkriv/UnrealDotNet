@@ -62,6 +62,4 @@ namespace UnrealEngine
 		public static implicit operator FExposureSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FExposureSettings(Adress, false);
-		}
-}
-}
+		}}}

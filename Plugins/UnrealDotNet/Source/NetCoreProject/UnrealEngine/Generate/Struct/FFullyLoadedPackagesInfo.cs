@@ -42,6 +42,4 @@ namespace UnrealEngine
 		public static implicit operator FFullyLoadedPackagesInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FFullyLoadedPackagesInfo(Adress, false);
-		}
-}
-}
+		}}}

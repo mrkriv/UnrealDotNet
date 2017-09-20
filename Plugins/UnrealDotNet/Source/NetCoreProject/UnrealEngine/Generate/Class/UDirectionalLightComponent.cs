@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UDirectionalLightComponent(IntPtr Adress)
+		public static implicit operator UDirectionalLightComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UDirectionalLightComponent ?? new UDirectionalLightComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UDirectionalLightComponent>(PtrDesc);
+		}}}

@@ -12,7 +12,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorldProxy_GetReference(IntPtr Self);
+		private static extern ObjectPointerDescription E_UWorldProxy_GetReference(IntPtr Self);
 		
 		#endregion
 		
@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UWorldProxy(IntPtr Adress)
+		public static implicit operator UWorldProxy(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UWorldProxy ?? new UWorldProxy(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UWorldProxy>(PtrDesc);
+		}}}

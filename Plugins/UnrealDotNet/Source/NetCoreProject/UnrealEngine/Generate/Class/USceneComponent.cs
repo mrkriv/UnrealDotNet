@@ -81,19 +81,19 @@ namespace UnrealEngine
 		private static extern void E_USceneComponent_DetachFromParent(IntPtr Self, bool bMaintainWorldPosition, bool bCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetAttachmentRoot(IntPtr Self);
+		private static extern ObjectPointerDescription E_USceneComponent_GetAttachmentRoot(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetAttachmentRootActor(IntPtr Self);
+		private static extern ObjectPointerDescription E_USceneComponent_GetAttachmentRootActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetAttachParent(IntPtr Self);
+		private static extern ObjectPointerDescription E_USceneComponent_GetAttachParent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetAttachSocketName(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetChildComponent(IntPtr Self, int ChildIndex);
+		private static extern ObjectPointerDescription E_USceneComponent_GetChildComponent(IntPtr Self, int ChildIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetComponentLocation(IntPtr Self);
@@ -729,11 +729,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USceneComponent(IntPtr Adress)
+		public static implicit operator USceneComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USceneComponent ?? new USceneComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USceneComponent>(PtrDesc);
+		}}}

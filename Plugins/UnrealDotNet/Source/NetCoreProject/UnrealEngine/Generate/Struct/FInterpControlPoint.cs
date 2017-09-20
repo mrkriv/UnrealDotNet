@@ -94,6 +94,4 @@ namespace UnrealEngine
 		public static implicit operator FInterpControlPoint(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FInterpControlPoint(Adress, false);
-		}
-}
-}
+		}}}

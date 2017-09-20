@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FGameNameRedirect(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FGameNameRedirect(Adress, false);
-		}
-}
-}
+		}}}

@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FWeightedBlendables(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FWeightedBlendables(Adress, false);
-		}
-}
-}
+		}}}

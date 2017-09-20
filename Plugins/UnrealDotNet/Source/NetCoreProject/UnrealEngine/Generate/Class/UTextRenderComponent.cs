@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UTextRenderComponent(IntPtr Adress)
+		public static implicit operator UTextRenderComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UTextRenderComponent ?? new UTextRenderComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UTextRenderComponent>(PtrDesc);
+		}}}

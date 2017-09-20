@@ -61,6 +61,4 @@ namespace UnrealEngine
 		public static implicit operator FSkelMeshComponentLODInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSkelMeshComponentLODInfo(Adress, false);
-		}
-}
-}
+		}}}

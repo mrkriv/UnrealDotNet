@@ -55,7 +55,7 @@ namespace UnrealEngine
 		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AHUD_GetOwningPawn(IntPtr Self);
+		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_HandleBugScreenShot(IntPtr Self);
@@ -365,11 +365,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator AHUD(IntPtr Adress)
+		public static implicit operator AHUD(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as AHUD ?? new AHUD(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<AHUD>(PtrDesc);
+		}}}

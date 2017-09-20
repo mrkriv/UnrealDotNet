@@ -119,6 +119,4 @@ namespace UnrealEngine
 		public static implicit operator FClassRedirect(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FClassRedirect(Adress, false);
-		}
-}
-}
+		}}}

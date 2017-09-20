@@ -64,6 +64,4 @@ namespace UnrealEngine
 		public static implicit operator FSpriteCategoryInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSpriteCategoryInfo(Adress, false);
-		}
-}
-}
+		}}}

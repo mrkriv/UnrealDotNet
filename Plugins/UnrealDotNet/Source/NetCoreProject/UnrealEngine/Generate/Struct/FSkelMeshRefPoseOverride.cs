@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FSkelMeshRefPoseOverride(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSkelMeshRefPoseOverride(Adress, false);
-		}
-}
-}
+		}}}

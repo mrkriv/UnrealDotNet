@@ -91,6 +91,4 @@ namespace UnrealEngine
 		public static implicit operator FClosestPointOnPhysicsAsset(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FClosestPointOnPhysicsAsset(Adress, false);
-		}
-}
-}
+		}}}

@@ -40,11 +40,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UBrushComponent(IntPtr Adress)
+		public static implicit operator UBrushComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UBrushComponent ?? new UBrushComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UBrushComponent>(PtrDesc);
+		}}}

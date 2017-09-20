@@ -15,9 +15,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UScene(IntPtr Adress)
+		public static implicit operator UScene(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UScene ?? new UScene(Adress);
+			return NativeManager.GetWrapper<UScene>(PtrDesc);
 		}}}

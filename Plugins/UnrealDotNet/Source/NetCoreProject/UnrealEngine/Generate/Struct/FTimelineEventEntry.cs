@@ -42,6 +42,4 @@ namespace UnrealEngine
 		public static implicit operator FTimelineEventEntry(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTimelineEventEntry(Adress, false);
-		}
-}
-}
+		}}}

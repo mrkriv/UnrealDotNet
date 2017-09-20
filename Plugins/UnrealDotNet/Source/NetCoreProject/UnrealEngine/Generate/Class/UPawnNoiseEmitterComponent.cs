@@ -80,11 +80,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UPawnNoiseEmitterComponent(IntPtr Adress)
+		public static implicit operator UPawnNoiseEmitterComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UPawnNoiseEmitterComponent ?? new UPawnNoiseEmitterComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UPawnNoiseEmitterComponent>(PtrDesc);
+		}}}

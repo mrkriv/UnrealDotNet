@@ -33,7 +33,7 @@ namespace UnrealEngine
 		private static extern void E_UObject_FinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
+		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
@@ -213,11 +213,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UObject(IntPtr Adress)
+		public static implicit operator UObject(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UObject ?? new UObject(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UObject>(PtrDesc);
+		}}}

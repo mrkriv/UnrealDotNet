@@ -181,9 +181,9 @@ extern "C"
 		return ((UActorComponent*)Self)->GetNetMode();
 	}
 
-	DOTNET_EXPORT AActor* E_UActorComponent_GetOwner(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UActorComponent_GetOwner(INT_PTR Self)
 	{
-		return ((UActorComponent*)Self)->GetOwner();
+		return MakePrtDesc(((UActorComponent*)Self)->GetOwner());
 	}
 
 	DOTNET_EXPORT void E_UActorComponent_HandleCanEverAffectNavigationChange(INT_PTR Self, bool bForceUpdate)

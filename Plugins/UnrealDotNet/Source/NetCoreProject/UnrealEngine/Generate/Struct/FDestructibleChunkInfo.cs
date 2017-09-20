@@ -46,6 +46,4 @@ namespace UnrealEngine
 		public static implicit operator FDestructibleChunkInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FDestructibleChunkInfo(Adress, false);
-		}
-}
-}
+		}}}

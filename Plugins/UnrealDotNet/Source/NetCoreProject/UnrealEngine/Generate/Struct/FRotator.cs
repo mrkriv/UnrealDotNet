@@ -405,6 +405,4 @@ namespace UnrealEngine
 		public static implicit operator FRotator(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FRotator(Adress, false);
-		}
-}
-}
+		}}}

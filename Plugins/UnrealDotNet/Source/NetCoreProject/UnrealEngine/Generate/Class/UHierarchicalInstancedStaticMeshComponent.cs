@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UHierarchicalInstancedStaticMeshComponent(IntPtr Adress)
+		public static implicit operator UHierarchicalInstancedStaticMeshComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UHierarchicalInstancedStaticMeshComponent ?? new UHierarchicalInstancedStaticMeshComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UHierarchicalInstancedStaticMeshComponent>(PtrDesc);
+		}}}

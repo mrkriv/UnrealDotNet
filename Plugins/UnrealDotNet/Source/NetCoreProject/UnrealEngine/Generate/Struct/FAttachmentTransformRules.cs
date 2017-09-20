@@ -147,6 +147,4 @@ namespace UnrealEngine
 		public static implicit operator FAttachmentTransformRules(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FAttachmentTransformRules(Adress, false);
-		}
-}
-}
+		}}}

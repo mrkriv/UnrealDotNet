@@ -24,9 +24,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManagePawnNoiseEmitterComponent(IntPtr Adress)
+		public static implicit operator ManagePawnNoiseEmitterComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManagePawnNoiseEmitterComponent ?? new ManagePawnNoiseEmitterComponent(Adress);
+			return NativeManager.GetWrapper<ManagePawnNoiseEmitterComponent>(PtrDesc);
 		}}}

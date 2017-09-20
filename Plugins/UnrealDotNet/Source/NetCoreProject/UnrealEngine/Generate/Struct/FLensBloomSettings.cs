@@ -46,6 +46,4 @@ namespace UnrealEngine
 		public static implicit operator FLensBloomSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLensBloomSettings(Adress, false);
-		}
-}
-}
+		}}}

@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UPlaneReflectionCaptureComponent(IntPtr Adress)
+		public static implicit operator UPlaneReflectionCaptureComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UPlaneReflectionCaptureComponent ?? new UPlaneReflectionCaptureComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UPlaneReflectionCaptureComponent>(PtrDesc);
+		}}}

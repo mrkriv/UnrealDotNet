@@ -34,7 +34,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRepRootMotionMontage_MovementBase_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -131,6 +131,4 @@ namespace UnrealEngine
 		public static implicit operator FRepRootMotionMontage(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FRepRootMotionMontage(Adress, false);
-		}
-}
-}
+		}}}

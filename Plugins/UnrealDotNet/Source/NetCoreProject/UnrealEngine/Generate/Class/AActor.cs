@@ -171,7 +171,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_InputPriority_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_AActor_Instigator_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_AActor_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -219,7 +219,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -230,7 +230,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_ActorToWorld(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_AddComponent(IntPtr Self, string TemplateName, bool bManualAttachment, IntPtr RelativeTransform, IntPtr ComponentTemplateContext);
+		private static extern ObjectPointerDescription E_AActor_AddComponent(IntPtr Self, string TemplateName, bool bManualAttachment, IntPtr RelativeTransform, IntPtr ComponentTemplateContext);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_AddTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
@@ -371,22 +371,22 @@ namespace UnrealEngine
 		private static extern byte E_AActor_GetNetMode(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetOwner(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetParentActor(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetParentActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetParentComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetParentComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetPlacementExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetRootComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetRootComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetRootPrimitiveComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetRootPrimitiveComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_AActor_GetSquaredDistanceTo(IntPtr Self, IntPtr OtherActor);
@@ -485,7 +485,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_K2_GetActorRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_K2_GetRootComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_K2_GetRootComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_K2_SetActorRotation(IntPtr Self, IntPtr NewRotation, bool bTeleportPhysics);
@@ -2268,11 +2268,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator AActor(IntPtr Adress)
+		public static implicit operator AActor(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as AActor ?? new AActor(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<AActor>(PtrDesc);
+		}}}

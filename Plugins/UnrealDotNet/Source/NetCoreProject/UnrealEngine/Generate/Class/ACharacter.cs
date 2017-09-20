@@ -160,10 +160,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_ACharacter_GetBaseTranslationOffset(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ACharacter_GetCapsuleComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ACharacter_GetMesh(IntPtr Self);
+		private static extern ObjectPointerDescription E_ACharacter_GetMesh(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_ACharacter_GetReplicatedMovementMode(IntPtr Self);
@@ -779,11 +779,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ACharacter(IntPtr Adress)
+		public static implicit operator ACharacter(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ACharacter ?? new ACharacter(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<ACharacter>(PtrDesc);
+		}}}

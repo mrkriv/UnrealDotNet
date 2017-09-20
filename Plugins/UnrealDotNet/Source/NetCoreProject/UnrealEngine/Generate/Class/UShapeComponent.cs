@@ -58,11 +58,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UShapeComponent(IntPtr Adress)
+		public static implicit operator UShapeComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UShapeComponent ?? new UShapeComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UShapeComponent>(PtrDesc);
+		}}}

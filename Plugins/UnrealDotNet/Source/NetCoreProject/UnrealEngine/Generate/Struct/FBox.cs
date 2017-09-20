@@ -327,6 +327,4 @@ namespace UnrealEngine
 		public static implicit operator FBox(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FBox(Adress, false);
-		}
-}
-}
+		}}}

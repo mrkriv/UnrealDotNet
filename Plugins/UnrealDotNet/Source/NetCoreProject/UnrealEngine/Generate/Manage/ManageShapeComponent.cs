@@ -21,9 +21,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManageShapeComponent(IntPtr Adress)
+		public static implicit operator ManageShapeComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManageShapeComponent ?? new ManageShapeComponent(Adress);
+			return NativeManager.GetWrapper<ManageShapeComponent>(PtrDesc);
 		}}}

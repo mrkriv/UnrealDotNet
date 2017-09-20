@@ -62,11 +62,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UDecalComponent(IntPtr Adress)
+		public static implicit operator UDecalComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UDecalComponent ?? new UDecalComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UDecalComponent>(PtrDesc);
+		}}}

@@ -89,7 +89,7 @@ namespace UnrealEngine
 		private static extern byte E_UActorComponent_GetNetMode(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UActorComponent_GetOwner(IntPtr Self);
+		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_HandleCanEverAffectNavigationChange(IntPtr Self, bool bForceUpdate);
@@ -882,11 +882,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UActorComponent(IntPtr Adress)
+		public static implicit operator UActorComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UActorComponent ?? new UActorComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UActorComponent>(PtrDesc);
+		}}}

@@ -27,7 +27,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FWeightedBlendable_float_UObject(float InWeight, IntPtr InObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FWeightedBlendable_Object_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FWeightedBlendable_Object_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWeightedBlendable_Object_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -69,6 +69,4 @@ namespace UnrealEngine
 		public static implicit operator FWeightedBlendable(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FWeightedBlendable(Adress, false);
-		}
-}
-}
+		}}}

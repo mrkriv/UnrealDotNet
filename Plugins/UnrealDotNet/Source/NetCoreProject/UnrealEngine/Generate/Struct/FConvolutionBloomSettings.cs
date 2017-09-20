@@ -121,6 +121,4 @@ namespace UnrealEngine
 		public static implicit operator FConvolutionBloomSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FConvolutionBloomSettings(Adress, false);
-		}
-}
-}
+		}}}

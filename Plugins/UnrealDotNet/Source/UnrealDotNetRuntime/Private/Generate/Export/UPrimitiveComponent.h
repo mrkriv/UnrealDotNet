@@ -227,9 +227,9 @@ extern "C"
 		((UPrimitiveComponent*)Self)->GetLightAndShadowMapMemoryUsage(_p0, _p1);
 	}
 
-	DOTNET_EXPORT UPrimitiveComponent* E_UPrimitiveComponent_GetLODParentPrimitive(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UPrimitiveComponent_GetLODParentPrimitive(INT_PTR Self)
 	{
-		return ((UPrimitiveComponent*)Self)->GetLODParentPrimitive();
+		return MakePrtDesc(((UPrimitiveComponent*)Self)->GetLODParentPrimitive());
 	}
 
 	DOTNET_EXPORT INT_PTR E_UPrimitiveComponent_GetPhysicsAngularVelocity(INT_PTR Self, char* BoneName)
@@ -407,13 +407,11 @@ extern "C"
 		((UPrimitiveComponent*)Self)->SetCollisionObjectType(_p0);
 	}
 
-#pragma optimize("", off)
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetCollisionProfileName(INT_PTR Self, char* InCollisionProfileName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(InCollisionProfileName));
 		((UPrimitiveComponent*)Self)->SetCollisionProfileName(_p0);
 	}
-#pragma optimize("", on)
 
 	DOTNET_EXPORT void E_UPrimitiveComponent_SetCullDistance(INT_PTR Self, float NewCullDistance)
 	{

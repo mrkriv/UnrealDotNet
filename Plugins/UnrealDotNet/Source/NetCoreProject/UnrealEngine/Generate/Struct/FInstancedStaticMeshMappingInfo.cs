@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FInstancedStaticMeshMappingInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FInstancedStaticMeshMappingInfo(Adress, false);
-		}
-}
-}
+		}}}

@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UMaterialBillboardComponent(IntPtr Adress)
+		public static implicit operator UMaterialBillboardComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UMaterialBillboardComponent ?? new UMaterialBillboardComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UMaterialBillboardComponent>(PtrDesc);
+		}}}

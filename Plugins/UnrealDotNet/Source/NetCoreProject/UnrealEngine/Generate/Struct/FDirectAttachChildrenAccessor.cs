@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FDirectAttachChildrenAccessor(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FDirectAttachChildrenAccessor(Adress, false);
-		}
-}
-}
+		}}}

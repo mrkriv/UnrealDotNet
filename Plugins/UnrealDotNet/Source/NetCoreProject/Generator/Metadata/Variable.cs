@@ -27,12 +27,12 @@ namespace Generator.Metadata
             return false;
         }
 
-        public virtual string GetTypeCSForExtend()
+        public virtual string GetTypeCSForExtend(bool ForReturn = false)
         {
             return Type;
         }
 
-        public virtual string GetTypeCPP()
+        public virtual string GetTypeCPP(bool ForReturn = false)
         {
             return Type;
         }
@@ -158,12 +158,12 @@ namespace Generator.Metadata
             }
         }
 
-        public override string GetTypeCSForExtend()
+        public override string GetTypeCSForExtend(bool ForReturn = false)
         {
             return GetTypeCS();
         }
 
-        public override string GetTypeCPP()
+        public override string GetTypeCPP(bool ForReturn = false)
         {
             switch (Type)
             {
@@ -208,18 +208,23 @@ namespace Generator.Metadata
             this.Type = ClassType.Name;
         }
 
-        public override string GetTypeCPP()
+        public override string GetTypeCPP(bool ForReturn = false)
         {
             if (Class.IsStructure)
                 return "INT_PTR";
+            
+            if (ForReturn)
+                return "ObjectPointerDescription";
+
+            var name = Class.Name;
 
             if (IsReference)
-                return Class.Name + "&";
+                return name + "&";
 
             if (IsPointer)
-                return Class.Name + "*";
+                return name + "*";
 
-            return Class.Name;
+            return name;
         }
 
         public override bool IsReadOnly()
@@ -232,8 +237,11 @@ namespace Generator.Metadata
             return Class.Name;
         }
 
-        public override string GetTypeCSForExtend()
+        public override string GetTypeCSForExtend(bool ForReturn = false)
         {
+            if (!Class.IsStructure && ForReturn)
+                return "ObjectPointerDescription";
+
             return "IntPtr";
         }
 
@@ -259,7 +267,7 @@ namespace Generator.Metadata
             this.Type = Enum.Name;
         }
 
-        public override string GetTypeCPP()
+        public override string GetTypeCPP(bool ForReturn = false)
         {
             return Type;
         }
@@ -269,7 +277,7 @@ namespace Generator.Metadata
             return Type;
         }
 
-        public override string GetTypeCSForExtend()
+        public override string GetTypeCSForExtend(bool ForReturn = false)
         {
             return "byte";
         }

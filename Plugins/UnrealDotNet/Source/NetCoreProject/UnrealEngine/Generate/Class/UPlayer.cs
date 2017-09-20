@@ -42,11 +42,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UPlayer(IntPtr Adress)
+		public static implicit operator UPlayer(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UPlayer ?? new UPlayer(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UPlayer>(PtrDesc);
+		}}}

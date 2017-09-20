@@ -55,6 +55,4 @@ namespace UnrealEngine
 		public static implicit operator FReflectionCaptureFullHDR(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FReflectionCaptureFullHDR(Adress, false);
-		}
-}
-}
+		}}}

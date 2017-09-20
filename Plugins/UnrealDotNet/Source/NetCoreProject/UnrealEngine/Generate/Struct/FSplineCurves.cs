@@ -67,6 +67,4 @@ namespace UnrealEngine
 		public static implicit operator FSplineCurves(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSplineCurves(Adress, false);
-		}
-}
-}
+		}}}

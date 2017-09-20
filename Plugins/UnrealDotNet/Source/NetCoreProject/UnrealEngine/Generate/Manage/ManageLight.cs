@@ -17,9 +17,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManageLight(IntPtr Adress)
+		public static implicit operator ManageLight(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManageLight ?? new ManageLight(Adress);
+			return NativeManager.GetWrapper<ManageLight>(PtrDesc);
 		}}}

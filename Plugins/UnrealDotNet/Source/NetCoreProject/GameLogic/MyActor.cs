@@ -36,9 +36,9 @@ namespace GameLogic
                 var root = GetRootComponent();
                 var root_sm = root as UStaticMeshComponent;
 
-                ScreenDebugMessage(root_sm?.GetFName() ?? "null");  // todo: Создавать обертку с учетом наследования
+                ScreenDebugMessage(root_sm?.GetFName() ?? "null");
                 
-                Box.AttachToComponent(GetRootComponent(), transformRules, "");
+                Box.AttachToComponent(root, transformRules, "");
                 
                 Box.SetCollisionProfileName("BlockAll");
                 Box.SetBoxExtent(new FVector(100, 100, 100), false);

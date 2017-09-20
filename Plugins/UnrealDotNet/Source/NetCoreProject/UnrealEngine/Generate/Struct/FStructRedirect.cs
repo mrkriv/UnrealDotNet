@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FStructRedirect(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FStructRedirect(Adress, false);
-		}
-}
-}
+		}}}

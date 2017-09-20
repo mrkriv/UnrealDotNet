@@ -83,6 +83,4 @@ namespace UnrealEngine
 		public static implicit operator FAudioComponentParam(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FAudioComponentParam(Adress, false);
-		}
-}
-}
+		}}}

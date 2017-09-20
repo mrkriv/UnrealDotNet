@@ -64,6 +64,4 @@ namespace UnrealEngine
 		public static implicit operator FNetDriverDefinition(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FNetDriverDefinition(Adress, false);
-		}
-}
-}
+		}}}

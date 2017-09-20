@@ -61,7 +61,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameCycles_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -663,11 +663,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UEngine(IntPtr Adress)
+		public static implicit operator UEngine(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UEngine ?? new UEngine(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UEngine>(PtrDesc);
+		}}}

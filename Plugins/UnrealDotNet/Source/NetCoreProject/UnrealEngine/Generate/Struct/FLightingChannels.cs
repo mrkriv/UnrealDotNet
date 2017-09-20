@@ -68,6 +68,4 @@ namespace UnrealEngine
 		public static implicit operator FLightingChannels(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLightingChannels(Adress, false);
-		}
-}
-}
+		}}}

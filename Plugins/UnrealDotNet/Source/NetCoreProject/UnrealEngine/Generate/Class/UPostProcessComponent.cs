@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UPostProcessComponent(IntPtr Adress)
+		public static implicit operator UPostProcessComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UPostProcessComponent ?? new UPostProcessComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UPostProcessComponent>(PtrDesc);
+		}}}

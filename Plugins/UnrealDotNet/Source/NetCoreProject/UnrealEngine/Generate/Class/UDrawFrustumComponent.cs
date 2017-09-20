@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UDrawFrustumComponent(IntPtr Adress)
+		public static implicit operator UDrawFrustumComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UDrawFrustumComponent ?? new UDrawFrustumComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UDrawFrustumComponent>(PtrDesc);
+		}}}

@@ -29,9 +29,9 @@ extern "C"
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT UObject* E_UObjectBase_GetOuter(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_UObjectBase_GetOuter(INT_PTR Self)
 	{
-		return ((UObjectBase*)Self)->GetOuter();
+		return MakePrtDesc(((UObjectBase*)Self)->GetOuter());
 	}
 
 	DOTNET_EXPORT bool E_UObjectBase_IsValidLowLevel(INT_PTR Self)

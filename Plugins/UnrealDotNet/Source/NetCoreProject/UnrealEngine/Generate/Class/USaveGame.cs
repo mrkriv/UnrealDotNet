@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USaveGame(IntPtr Adress)
+		public static implicit operator USaveGame(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USaveGame ?? new USaveGame(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USaveGame>(PtrDesc);
+		}}}

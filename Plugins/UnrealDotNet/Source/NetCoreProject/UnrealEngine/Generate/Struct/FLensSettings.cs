@@ -68,6 +68,4 @@ namespace UnrealEngine
 		public static implicit operator FLensSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLensSettings(Adress, false);
-		}
-}
-}
+		}}}

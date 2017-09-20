@@ -19,7 +19,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FActorTickFunction();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FActorTickFunction_Target_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FActorTickFunction_Target_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorTickFunction_Target_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -46,6 +46,4 @@ namespace UnrealEngine
 		public static implicit operator FActorTickFunction(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FActorTickFunction(Adress, false);
-		}
-}
-}
+		}}}

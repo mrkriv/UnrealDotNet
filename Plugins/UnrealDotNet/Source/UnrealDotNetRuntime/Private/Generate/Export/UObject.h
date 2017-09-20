@@ -33,10 +33,10 @@ extern "C"
 		((UObject*)Self)->FinishDestroy();
 	}
 
-	DOTNET_EXPORT UWorld* E_UObject_GetWorldChecked(INT_PTR Self, bool bSupported)
+	DOTNET_EXPORT ObjectPointerDescription E_UObject_GetWorldChecked(INT_PTR Self, bool bSupported)
 	{
 		auto _p0 = bSupported;
-		return ((UObject*)Self)->GetWorldChecked(_p0);
+		return MakePrtDesc(((UObject*)Self)->GetWorldChecked(_p0));
 	}
 
 	DOTNET_EXPORT bool E_UObject_ImplementsGetWorld(INT_PTR Self)

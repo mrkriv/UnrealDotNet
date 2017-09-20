@@ -387,11 +387,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USkinnedMeshComponent(IntPtr Adress)
+		public static implicit operator USkinnedMeshComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USkinnedMeshComponent ?? new USkinnedMeshComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USkinnedMeshComponent>(PtrDesc);
+		}}}

@@ -17,9 +17,9 @@ extern "C"
 		return ((ALight*)Self)->GetBrightness();
 	}
 
-	DOTNET_EXPORT ULightComponent* E_ALight_GetLightComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ALight_GetLightComponent(INT_PTR Self)
 	{
-		return ((ALight*)Self)->GetLightComponent();
+		return MakePrtDesc(((ALight*)Self)->GetLightComponent());
 	}
 
 	DOTNET_EXPORT bool E_ALight_IsEnabled(INT_PTR Self)

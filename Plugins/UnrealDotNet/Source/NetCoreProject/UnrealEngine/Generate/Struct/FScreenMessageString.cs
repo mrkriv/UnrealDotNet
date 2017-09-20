@@ -75,6 +75,4 @@ namespace UnrealEngine
 		public static implicit operator FScreenMessageString(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FScreenMessageString(Adress, false);
-		}
-}
-}
+		}}}

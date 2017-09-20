@@ -152,19 +152,19 @@ extern "C"
 		((USceneComponent*)Self)->DetachFromParent(_p0, _p1);
 	}
 
-	DOTNET_EXPORT USceneComponent* E_USceneComponent_GetAttachmentRoot(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_USceneComponent_GetAttachmentRoot(INT_PTR Self)
 	{
-		return ((USceneComponent*)Self)->GetAttachmentRoot();
+		return MakePrtDesc(((USceneComponent*)Self)->GetAttachmentRoot());
 	}
 
-	DOTNET_EXPORT AActor* E_USceneComponent_GetAttachmentRootActor(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_USceneComponent_GetAttachmentRootActor(INT_PTR Self)
 	{
-		return ((USceneComponent*)Self)->GetAttachmentRootActor();
+		return MakePrtDesc(((USceneComponent*)Self)->GetAttachmentRootActor());
 	}
 
-	DOTNET_EXPORT USceneComponent* E_USceneComponent_GetAttachParent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_USceneComponent_GetAttachParent(INT_PTR Self)
 	{
-		return ((USceneComponent*)Self)->GetAttachParent();
+		return MakePrtDesc(((USceneComponent*)Self)->GetAttachParent());
 	}
 
 	DOTNET_EXPORT char* E_USceneComponent_GetAttachSocketName(INT_PTR Self, int& ResultStringLen)
@@ -174,10 +174,10 @@ extern "C"
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT USceneComponent* E_USceneComponent_GetChildComponent(INT_PTR Self, int32 ChildIndex)
+	DOTNET_EXPORT ObjectPointerDescription E_USceneComponent_GetChildComponent(INT_PTR Self, int32 ChildIndex)
 	{
 		auto _p0 = ChildIndex;
-		return ((USceneComponent*)Self)->GetChildComponent(_p0);
+		return MakePrtDesc(((USceneComponent*)Self)->GetChildComponent(_p0));
 	}
 
 	DOTNET_EXPORT INT_PTR E_USceneComponent_GetComponentLocation(INT_PTR Self)

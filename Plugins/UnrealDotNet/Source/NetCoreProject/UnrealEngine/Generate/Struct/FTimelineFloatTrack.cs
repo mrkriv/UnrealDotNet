@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FTimelineFloatTrack(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTimelineFloatTrack(Adress, false);
-		}
-}
-}
+		}}}

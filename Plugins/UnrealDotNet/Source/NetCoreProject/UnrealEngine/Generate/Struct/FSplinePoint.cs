@@ -113,6 +113,4 @@ namespace UnrealEngine
 		public static implicit operator FSplinePoint(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSplinePoint(Adress, false);
-		}
-}
-}
+		}}}

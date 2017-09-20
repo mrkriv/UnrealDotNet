@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FTimelineLinearColorTrack(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTimelineLinearColorTrack(Adress, false);
-		}
-}
-}
+		}}}

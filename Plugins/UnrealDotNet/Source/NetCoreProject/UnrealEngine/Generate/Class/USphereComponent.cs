@@ -84,11 +84,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator USphereComponent(IntPtr Adress)
+		public static implicit operator USphereComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as USphereComponent ?? new USphereComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<USphereComponent>(PtrDesc);
+		}}}

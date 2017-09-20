@@ -75,11 +75,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UObjectBaseUtility(IntPtr Adress)
+		public static implicit operator UObjectBaseUtility(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UObjectBaseUtility ?? new UObjectBaseUtility(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UObjectBaseUtility>(PtrDesc);
+		}}}

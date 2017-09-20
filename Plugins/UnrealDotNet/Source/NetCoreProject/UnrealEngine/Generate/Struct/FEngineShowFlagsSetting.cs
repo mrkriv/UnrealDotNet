@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FEngineShowFlagsSetting(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FEngineShowFlagsSetting(Adress, false);
-		}
-}
-}
+		}}}

@@ -3564,9 +3564,9 @@ extern "C"
 		((FWorldContext*)Self)->SetCurrentWorld(_p0);
 	}
 
-	DOTNET_EXPORT UWorld* E_FWorldContext_World(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_FWorldContext_World(INT_PTR Self)
 	{
-		return ((FWorldContext*)Self)->World();
+		return MakePrtDesc(((FWorldContext*)Self)->World());
 	}
 
 }

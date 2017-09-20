@@ -42,6 +42,4 @@ namespace UnrealEngine
 		public static implicit operator FSceneCaptureViewInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSceneCaptureViewInfo(Adress, false);
-		}
-}
-}
+		}}}

@@ -1070,6 +1070,4 @@ namespace UnrealEngine
 		public static implicit operator FVector(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FVector(Adress, false);
-		}
-}
-}
+		}}}

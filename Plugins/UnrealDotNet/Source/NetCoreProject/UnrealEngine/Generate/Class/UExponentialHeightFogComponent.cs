@@ -126,11 +126,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UExponentialHeightFogComponent(IntPtr Adress)
+		public static implicit operator UExponentialHeightFogComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UExponentialHeightFogComponent ?? new UExponentialHeightFogComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UExponentialHeightFogComponent>(PtrDesc);
+		}}}

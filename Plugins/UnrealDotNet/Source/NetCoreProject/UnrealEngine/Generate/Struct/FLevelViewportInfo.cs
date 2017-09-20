@@ -88,6 +88,4 @@ namespace UnrealEngine
 		public static implicit operator FLevelViewportInfo(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLevelViewportInfo(Adress, false);
-		}
-}
-}
+		}}}

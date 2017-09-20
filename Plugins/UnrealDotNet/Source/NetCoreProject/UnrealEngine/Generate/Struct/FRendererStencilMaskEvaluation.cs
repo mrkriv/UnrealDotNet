@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FRendererStencilMaskEvaluation(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FRendererStencilMaskEvaluation(Adress, false);
-		}
-}
-}
+		}}}

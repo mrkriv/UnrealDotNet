@@ -61,6 +61,4 @@ namespace UnrealEngine
 		public static implicit operator FMaterialSpriteElement(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FMaterialSpriteElement(Adress, false);
-		}
-}
-}
+		}}}

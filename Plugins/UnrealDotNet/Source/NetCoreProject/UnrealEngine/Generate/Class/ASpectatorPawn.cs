@@ -27,11 +27,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ASpectatorPawn(IntPtr Adress)
+		public static implicit operator ASpectatorPawn(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ASpectatorPawn ?? new ASpectatorPawn(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<ASpectatorPawn>(PtrDesc);
+		}}}

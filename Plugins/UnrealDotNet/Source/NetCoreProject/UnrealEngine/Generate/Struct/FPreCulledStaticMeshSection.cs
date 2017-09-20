@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FPreCulledStaticMeshSection(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FPreCulledStaticMeshSection(Adress, false);
-		}
-}
-}
+		}}}

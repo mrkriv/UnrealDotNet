@@ -21,9 +21,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ManageSpringArmComponent(IntPtr Adress)
+		public static implicit operator ManageSpringArmComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ManageSpringArmComponent ?? new ManageSpringArmComponent(Adress);
+			return NativeManager.GetWrapper<ManageSpringArmComponent>(PtrDesc);
 		}}}

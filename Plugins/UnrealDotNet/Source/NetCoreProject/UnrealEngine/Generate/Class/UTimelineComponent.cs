@@ -247,11 +247,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UTimelineComponent(IntPtr Adress)
+		public static implicit operator UTimelineComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UTimelineComponent ?? new UTimelineComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UTimelineComponent>(PtrDesc);
+		}}}

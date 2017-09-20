@@ -15,7 +15,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_UObjectBase_GetFName(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UObjectBase_GetOuter(IntPtr Self);
+		private static extern ObjectPointerDescription E_UObjectBase_GetOuter(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBase_IsValidLowLevel(IntPtr Self);
@@ -80,11 +80,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UObjectBase(IntPtr Adress)
+		public static implicit operator UObjectBase(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UObjectBase ?? new UObjectBase(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UObjectBase>(PtrDesc);
+		}}}

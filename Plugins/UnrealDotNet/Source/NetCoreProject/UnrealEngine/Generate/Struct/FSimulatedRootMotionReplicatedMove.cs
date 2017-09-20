@@ -53,6 +53,4 @@ namespace UnrealEngine
 		public static implicit operator FSimulatedRootMotionReplicatedMove(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FSimulatedRootMotionReplicatedMove(Adress, false);
-		}
-}
-}
+		}}}

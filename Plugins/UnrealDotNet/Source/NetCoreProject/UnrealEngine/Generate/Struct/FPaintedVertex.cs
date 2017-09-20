@@ -42,6 +42,4 @@ namespace UnrealEngine
 		public static implicit operator FPaintedVertex(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FPaintedVertex(Adress, false);
-		}
-}
-}
+		}}}

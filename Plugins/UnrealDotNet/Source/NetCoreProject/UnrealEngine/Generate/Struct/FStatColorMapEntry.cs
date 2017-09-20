@@ -42,6 +42,4 @@ namespace UnrealEngine
 		public static implicit operator FStatColorMapEntry(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FStatColorMapEntry(Adress, false);
-		}
-}
-}
+		}}}

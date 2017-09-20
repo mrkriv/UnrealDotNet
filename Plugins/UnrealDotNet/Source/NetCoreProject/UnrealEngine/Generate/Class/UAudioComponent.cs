@@ -56,11 +56,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UAudioComponent(IntPtr Adress)
+		public static implicit operator UAudioComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UAudioComponent ?? new UAudioComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UAudioComponent>(PtrDesc);
+		}}}

@@ -36,10 +36,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_ADefaultPawn_MovementComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ADefaultPawn_GetMeshComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr Self);
 		
 		#endregion
 		
@@ -98,11 +98,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator ADefaultPawn(IntPtr Adress)
+		public static implicit operator ADefaultPawn(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as ADefaultPawn ?? new ADefaultPawn(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<ADefaultPawn>(PtrDesc);
+		}}}

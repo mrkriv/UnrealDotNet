@@ -72,6 +72,4 @@ namespace UnrealEngine
 		public static implicit operator FLevelStreamingGCHelper(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FLevelStreamingGCHelper(Adress, false);
-		}
-}
-}
+		}}}

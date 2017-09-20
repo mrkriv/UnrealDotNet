@@ -279,7 +279,7 @@ namespace UnrealEngine
 		private static extern void E_UWorld_DuplicateRequestedLevels(IntPtr Self, string MapName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorld_DuplicateWorldForPIE(IntPtr Self, string PackageName, IntPtr OwningWorld);
+		private static extern ObjectPointerDescription E_UWorld_DuplicateWorldForPIE(IntPtr Self, string PackageName, IntPtr OwningWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_EditorDestroyActor(IntPtr Self, IntPtr Actor, bool bShouldModifyLevel);
@@ -1667,11 +1667,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UWorld(IntPtr Adress)
+		public static implicit operator UWorld(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UWorld ?? new UWorld(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UWorld>(PtrDesc);
+		}}}

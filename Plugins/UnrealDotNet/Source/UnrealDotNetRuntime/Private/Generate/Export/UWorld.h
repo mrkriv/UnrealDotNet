@@ -285,11 +285,11 @@ extern "C"
 		((UWorld*)Self)->DuplicateRequestedLevels(_p0);
 	}
 
-	DOTNET_EXPORT UWorld* E_UWorld_DuplicateWorldForPIE(INT_PTR Self, char* PackageName, UWorld* OwningWorld)
+	DOTNET_EXPORT ObjectPointerDescription E_UWorld_DuplicateWorldForPIE(INT_PTR Self, char* PackageName, UWorld* OwningWorld)
 	{
 		auto _p0 = FString(PackageName);
 		auto _p1 = OwningWorld;
-		return ((UWorld*)Self)->DuplicateWorldForPIE(_p0, _p1);
+		return MakePrtDesc(((UWorld*)Self)->DuplicateWorldForPIE(_p0, _p1));
 	}
 
 	DOTNET_EXPORT bool E_UWorld_EditorDestroyActor(INT_PTR Self, AActor* Actor, bool bShouldModifyLevel)

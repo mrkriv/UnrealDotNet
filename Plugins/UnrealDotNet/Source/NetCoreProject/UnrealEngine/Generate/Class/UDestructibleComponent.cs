@@ -55,11 +55,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UDestructibleComponent(IntPtr Adress)
+		public static implicit operator UDestructibleComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UDestructibleComponent ?? new UDestructibleComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UDestructibleComponent>(PtrDesc);
+		}}}

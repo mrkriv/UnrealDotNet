@@ -19,7 +19,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FActorSpawnParameters();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -29,12 +29,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Name_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FActorSpawnParameters_Owner_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Owner_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Owner_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
+		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, IntPtr Value);
 		
@@ -84,6 +84,4 @@ namespace UnrealEngine
 		public static implicit operator FActorSpawnParameters(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FActorSpawnParameters(Adress, false);
-		}
-}
-}
+		}}}

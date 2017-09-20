@@ -28,6 +28,4 @@ namespace UnrealEngine
 		public static implicit operator FNamedNetDriver(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FNamedNetDriver(Adress, false);
-		}
-}
-}
+		}}}

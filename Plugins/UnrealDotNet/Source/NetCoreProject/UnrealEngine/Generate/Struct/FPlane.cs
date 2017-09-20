@@ -174,6 +174,4 @@ namespace UnrealEngine
 		public static implicit operator FPlane(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FPlane(Adress, false);
-		}
-}
-}
+		}}}

@@ -96,10 +96,10 @@ extern "C"
 		return (INT_PTR) new FVector(((APawn*)Self)->GetLastMovementInputVector());
 	}
 
-	DOTNET_EXPORT AActor* E_APawn_GetMovementBaseActor(INT_PTR Self, APawn* Pawn)
+	DOTNET_EXPORT ObjectPointerDescription E_APawn_GetMovementBaseActor(INT_PTR Self, APawn* Pawn)
 	{
 		auto _p0 = Pawn;
-		return ((APawn*)Self)->GetMovementBaseActor(_p0);
+		return MakePrtDesc(((APawn*)Self)->GetMovementBaseActor(_p0));
 	}
 
 	DOTNET_EXPORT INT_PTR E_APawn_GetMovementInputVector(INT_PTR Self)

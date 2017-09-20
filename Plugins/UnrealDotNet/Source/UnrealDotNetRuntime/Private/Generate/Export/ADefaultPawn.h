@@ -36,14 +36,14 @@ extern "C"
 		return (INT_PTR)NewObject<ADefaultPawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT USphereComponent* E_ADefaultPawn_GetCollisionComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(INT_PTR Self)
 	{
-		return ((ADefaultPawn*)Self)->GetCollisionComponent();
+		return MakePrtDesc(((ADefaultPawn*)Self)->GetCollisionComponent());
 	}
 
-	DOTNET_EXPORT UStaticMeshComponent* E_ADefaultPawn_GetMeshComponent(INT_PTR Self)
+	DOTNET_EXPORT ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(INT_PTR Self)
 	{
-		return ((ADefaultPawn*)Self)->GetMeshComponent();
+		return MakePrtDesc(((ADefaultPawn*)Self)->GetMeshComponent());
 	}
 
 }

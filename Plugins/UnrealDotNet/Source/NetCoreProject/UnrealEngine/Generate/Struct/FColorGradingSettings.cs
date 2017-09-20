@@ -97,6 +97,4 @@ namespace UnrealEngine
 		public static implicit operator FColorGradingSettings(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FColorGradingSettings(Adress, false);
-		}
-}
-}
+		}}}

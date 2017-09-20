@@ -79,7 +79,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
+		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
@@ -514,11 +514,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator APawn(IntPtr Adress)
+		public static implicit operator APawn(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as APawn ?? new APawn(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<APawn>(PtrDesc);
+		}}}

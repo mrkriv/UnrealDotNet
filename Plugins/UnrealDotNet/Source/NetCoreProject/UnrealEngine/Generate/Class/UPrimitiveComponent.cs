@@ -159,7 +159,7 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_GetLightAndShadowMapMemoryUsage(IntPtr Self, int LightMapMemoryUsage, int ShadowMapMemoryUsage);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPrimitiveComponent_GetLODParentPrimitive(IntPtr Self);
+		private static extern ObjectPointerDescription E_UPrimitiveComponent_GetLODParentPrimitive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsAngularVelocity(IntPtr Self, string BoneName);
@@ -1186,9 +1186,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UPrimitiveComponent(IntPtr Adress)
+		public static implicit operator UPrimitiveComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UPrimitiveComponent ?? new UPrimitiveComponent(Adress);
+			return NativeManager.GetWrapper<UPrimitiveComponent>(PtrDesc);
 		}}}

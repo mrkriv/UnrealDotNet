@@ -32,6 +32,4 @@ namespace UnrealEngine
 		public static implicit operator FTickPrerequisite(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTickPrerequisite(Adress, false);
-		}
-}
-}
+		}}}

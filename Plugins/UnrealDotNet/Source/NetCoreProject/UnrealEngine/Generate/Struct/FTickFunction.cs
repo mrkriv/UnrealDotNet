@@ -200,6 +200,4 @@ namespace UnrealEngine
 		public static implicit operator FTickFunction(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FTickFunction(Adress, false);
-		}
-}
-}
+		}}}

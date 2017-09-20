@@ -27,13 +27,13 @@ namespace UnrealEngine
 		private static extern void E_UChildActorComponent_DestroyChildActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UChildActorComponent_GetChildActor(IntPtr Self);
+		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UChildActorComponent_GetChildActorName(IntPtr Self, out int ResultStringLen);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UChildActorComponent_GetChildActorTemplate(IntPtr Self);
+		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(IntPtr Self);
 		
 		#endregion
 		
@@ -68,11 +68,7 @@ namespace UnrealEngine
 			return Self.NativePointer;
 		}
 
-		public static implicit operator UChildActorComponent(IntPtr Adress)
+		public static implicit operator UChildActorComponent(ObjectPointerDescription PtrDesc)
 		{
-			if (Adress == IntPtr.Zero)
-				return null;
-			return NativeManager.GetWrapper(Adress) as UChildActorComponent ?? new UChildActorComponent(Adress);
-		}
-}
-}
+			return NativeManager.GetWrapper<UChildActorComponent>(PtrDesc);
+		}}}

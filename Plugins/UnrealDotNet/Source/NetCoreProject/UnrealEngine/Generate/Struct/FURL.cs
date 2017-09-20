@@ -161,6 +161,4 @@ namespace UnrealEngine
 		public static implicit operator FURL(IntPtr Adress)
 		{
 			return Adress == IntPtr.Zero ? null : new FURL(Adress, false);
-		}
-}
-}
+		}}}
