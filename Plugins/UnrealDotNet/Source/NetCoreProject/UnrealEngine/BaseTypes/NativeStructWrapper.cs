@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-    public class NativeStructWrapper : NativeWrapper
+    public class NativeStructWrapper : NativeWrapper//, IDisposable
     {
         protected readonly bool IsRef;
 
@@ -19,5 +19,18 @@ namespace UnrealEngine
         {
             this.IsRef = IsRef;
         }
+        
+        //public void Dispose()
+        //{
+        //    UObjectBaseUtility.ULog_Debug("Dispose " + GetType().FullName);
+
+        //    if (!IsRef)
+        //        E_DeleteStruct(NativePointer);
+        //}
+
+        //~NativeStructWrapper()
+        //{
+        //    Dispose();
+        //}
     }
 }

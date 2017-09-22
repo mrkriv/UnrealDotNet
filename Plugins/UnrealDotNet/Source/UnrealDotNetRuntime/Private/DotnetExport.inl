@@ -6,6 +6,8 @@
 # endif
 #endif
 
+TQueue<INT_PTR> NeedDeleteQueue;
+
 typedef struct ObjectPointerDescription
 {
 	INT_PTR Pointer;
@@ -27,7 +29,8 @@ ObjectPointerDescription MakePrtDesc(UObject* obj)
 
 	FMemory::Memcpy(string, utf8, name.Len());
 
-	//todo: add string to delete queue
+	// todo: использовать статичный бафер для передачи строк в шарп
+	NeedDeleteQueue.Enqueue((INT_PTR)string);
 
 	return desc;
 }

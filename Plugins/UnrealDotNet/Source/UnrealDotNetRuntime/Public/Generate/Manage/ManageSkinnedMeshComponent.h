@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "Components/SkinnedMeshComponent.h"
 #include "ManageSkinnedMeshComponent.generated.h"
 
 UCLASS()

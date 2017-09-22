@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using Enum = Generator.Metadata.Enum;
+using Delegate = Generator.Metadata.Delegate;
 
 namespace Generator
 {
@@ -21,14 +22,14 @@ namespace Generator
                     var subdir = cl.IsStructure ? "Struct" : "Class";
                     GenerateClass(cl, Path.Combine(OutputDir, subdir, cl.Name));
 
-                    var methods = Filter.GetVirtualMethods(cl);
-                    if (methods.Any())
+                    if (Filter.IsManageClass(cl))
                         GenerateManageClass(cl, Path.Combine(OutputDir, "Manage"));
                 }
 
+                GenerateDelegates(domain.Delegates, Path.Combine(OutputDir, "Delegates"));
                 GenerateEnums(domain.Enums, Path.Combine(OutputDir, "Enums"));
             }
-
+            
             private static void GenerateClass(Class Class, string OutputPath)
             {
                 var cw = new CoreWriter();
@@ -50,9 +51,10 @@ namespace Generator
                 var cw_DllImport = new CoreWriter(cw);
                 var cw_ExternMethods = new CoreWriter(cw);
                 var cw_Property = new CoreWriter(cw);
+                var cw_Event = new CoreWriter(cw);
 
                 GenerateClassDLLImport(cw_DllImport, Class);
-                Class.Property.ForEach(p => GenerateProperty(cw_Property, Class, p));
+                Class.Property.ForEach(p => GenerateProperty(cw_Property, cw_Event, Class, p));
 
                 foreach (var method in Class.Methods)
                 {
@@ -72,6 +74,14 @@ namespace Generator
                 {
                     cw.WriteLine("#region Property");
                     cw.Write(cw_Property);
+                    cw.WriteLine("#endregion");
+                    cw.WriteLine();
+                }
+
+                if (!cw_Event.IsEmpty())
+                {
+                    cw.WriteLine("#region Events");
+                    cw.Write(cw_Event);
                     cw.WriteLine("#endregion");
                     cw.WriteLine();
                 }
@@ -131,17 +141,61 @@ namespace Generator
 
                 cw.Write(method.AccessModifier.ToString().ToLower() + " ");
                 cw.WriteLine($"override {ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param}) {{ }}");
-                // cw.WriteLine($"\t=> base.{name}({string.Join(", ", inputs)});");
+                // cw.WriteLine($"\t=> base.{name}({string.Join(", ", inputs)});"); // todo: доделать виртуальные методы
 
                 cw.WriteLine();
             }
 
-            private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
+            private static void GenerateProperty(CoreWriter cw_standart, CoreWriter cw_event, Class Class, Variable prop)
             {
                 if (Class.IsStructure && prop.AccessModifier != AccessModifier.Public)
                     return;
 
+                if (prop is DelegateVariable)
+                {
+                    GeneratePropertyEvent(cw_event, Class, prop);
+                }
+                else
+                {
+                    GeneratePropertyStandart(cw_standart, Class, prop);
+                }
+            }
+
+            private static void GeneratePropertyEvent(CoreWriter cw, Class Class, Variable prop)
+            {
+                var type = prop.GetTypeCS();
+                var name = prop.GetDisplayName();
+
                 GenerateSummaty(cw, prop);
+
+                cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} event {type} {name}");
+                cw.OpenBlock();
+
+                cw.WriteLine($"add");
+                cw.OpenBlock();
+                cw.WriteLine($"{ExportEventAddPrefix}{Class.Name}_{name}(NativePointer);");
+                cw.WriteLine($"{name} += value;");
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                cw.WriteLine($"remove");
+                cw.OpenBlock();
+                cw.WriteLine($"{ExportEventRemovePrefix}{Class.Name}_{name}(NativePointer);");
+                cw.WriteLine($"{name} -= value;");
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                cw.WriteLine($"internal event {type} _{name};");
+                cw.WriteLine();
+            }
+
+            private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
+            {
+                GenerateSummaty(cw, prop);
+
                 cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {ExportVariable(prop, false)}");
                 cw.OpenBlock();
 
@@ -151,9 +205,11 @@ namespace Generator
                 cw.WriteLine($"get => {convGet}{ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
 
                 if (!prop.IsReadOnly())
-                    cw.WriteLine($"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, {convSet}value);");
+                    cw.WriteLine(
+                        $"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, {convSet}value);");
 
                 cw.CloseBlock();
+
                 cw.WriteLine();
             }
 
@@ -206,20 +262,46 @@ namespace Generator
             {
                 foreach (var prop in Class.Property.Where(p => !p.IsConst))
                 {
-                    var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
-
-                    WriteDLLImport(cw);
-                    cw.WriteLine($"private static extern {prop.GetTypeCSForExtend(true)} {baseName}_GET(IntPtr Ptr);");
-
-                    if (!prop.IsReadOnly())
+                    if (prop is DelegateVariable)
                     {
-                        WriteDLLImport(cw);
-                        cw.WriteLine(
-                            $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
+                        GenerateClassPropertyEventDLLImport(cw, Class, prop);
                     }
-
-                    cw.WriteLine();
+                    else
+                    {
+                        GenerateClassPropertyStandartDLLImport(cw, Class, prop);
+                    }
                 }
+            }
+
+            private static void GenerateClassPropertyEventDLLImport(CoreWriter cw, Class Class, Variable prop)
+            {
+                var name = prop.GetDisplayName();
+
+                WriteDLLImport(cw);
+                cw.WriteLine($"private static extern void {ExportEventAddPrefix}{Class.Name}_{name}(IntPtr Ptr);");
+                cw.WriteLine();
+
+                WriteDLLImport(cw);
+                cw.WriteLine($"private static extern void {ExportEventRemovePrefix}{Class.Name}_{name}(IntPtr Ptr);");
+                cw.WriteLine();
+            }
+
+            private static void GenerateClassPropertyStandartDLLImport(CoreWriter cw, Class Class, Variable prop)
+            {
+                var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
+
+                WriteDLLImport(cw);
+                cw.WriteLine(
+                    $"private static extern {prop.GetTypeCSForExtend(true)} {baseName}_GET(IntPtr Ptr);");
+
+                if (!prop.IsReadOnly())
+                {
+                    WriteDLLImport(cw);
+                    cw.WriteLine(
+                        $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
+                }
+
+                cw.WriteLine();
             }
 
             private static void GenerateStructConstructors(CoreWriter cw, Class Class)
@@ -320,6 +402,29 @@ namespace Generator
 
                     cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
                 }
+
+                cw.WriteLine();
+            }
+
+            private static void GenerateDelegates(IEnumerable<Delegate> Delegates, string OutputPath)
+            {
+                var cw = new CoreWriter();
+                cw.WriteLine("namespace UnrealEngine");
+                cw.OpenBlock();
+
+                Delegates.ForEach(dlg => GenerateDelegate(cw, dlg));
+
+                cw.CloseBlock();
+
+                cw.SaveToFile(OutputPath + ".cs");
+            }
+
+            private static void GenerateDelegate(CoreWriter cw, Delegate dlg)
+            {
+                GenerateSummaty(cw, dlg);
+                
+                var param = string.Join(", ", dlg.Parametrs.Select(m => ExportVariable(m, false)));
+                cw.Write($"public delegate void {dlg.Name}({param});");
 
                 cw.WriteLine();
             }

@@ -20,6 +20,8 @@ namespace Generator
         protected const string ExportPropertyPrefix = ExportPrefix + "PROP_";
         protected const string ExportProtectedPrefix = ExportPrefix + "PROTECTED_WRAP_";
         protected const string ExportProtectedPostfix = "_WRAP";
+        protected const string ExportEventAddPrefix = ExportPrefix + "EV_A_";
+        protected const string ExportEventRemovePrefix = ExportPrefix + "EV_R_";
         protected const string CPP_PCH = "UnrealDotNetRuntime";
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";

@@ -86,6 +86,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_ACharacter_OnReachedJumpApex(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_ACharacter_OnReachedJumpApex(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_ReplicatedBasedMovement_SET(IntPtr Ptr, IntPtr Value);
@@ -419,6 +437,81 @@ namespace UnrealEngine
 			set => E_PROP_ACharacter_RepRootMotion_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region Events
+		
+		/// <summary>
+		/// <para>Multicast delegate for MovementMode changing. </para>
+		/// </summary>
+		public event FMovementModeChangedSignature MovementModeChangedDelegate
+		{
+			add
+			{
+				E_EV_A_ACharacter_MovementModeChangedDelegate(NativePointer);
+				MovementModeChangedDelegate += value;
+			}
+
+			remove
+			{
+				E_EV_R_ACharacter_MovementModeChangedDelegate(NativePointer);
+				MovementModeChangedDelegate -= value;
+			}
+
+		}
+
+		internal event FMovementModeChangedSignature _MovementModeChangedDelegate;
+		
+		
+		/// <summary>
+		/// <para>Event triggered at the end of a CharacterMovementComponent movement update. </para>
+		/// <para>This is the preferred event to use rather than the Tick event when performing custom updates to CharacterMovement properties based on the current state. </para>
+		/// <para>This is mainly due to the nature of network updates, where client corrections in position from the server can cause multiple iterations of a movement update, </para>
+		/// <para>which allows this event to update as well, while a Tick event would not. </para>
+		/// <param name="DeltaSeconds">Delta time in seconds for this update </param>
+		/// <param name="InitialLocation">Location at the start of the update. May be different than the current location if movement occurred. </param>
+		/// <param name="InitialVelocity">Velocity at the start of the update. May be different than the current velocity. </param>
+		/// </summary>
+		public event FCharacterMovementUpdatedSignature OnCharacterMovementUpdated
+		{
+			add
+			{
+				E_EV_A_ACharacter_OnCharacterMovementUpdated(NativePointer);
+				OnCharacterMovementUpdated += value;
+			}
+
+			remove
+			{
+				E_EV_R_ACharacter_OnCharacterMovementUpdated(NativePointer);
+				OnCharacterMovementUpdated -= value;
+			}
+
+		}
+
+		internal event FCharacterMovementUpdatedSignature _OnCharacterMovementUpdated;
+		
+		
+		/// <summary>
+		/// <para>Broadcast when Character's jump reaches its apex. Needs CharacterMovement->bNotifyApex = true </para>
+		/// </summary>
+		public event FCharacterReachedApexSignature OnReachedJumpApex
+		{
+			add
+			{
+				E_EV_A_ACharacter_OnReachedJumpApex(NativePointer);
+				OnReachedJumpApex += value;
+			}
+
+			remove
+			{
+				E_EV_R_ACharacter_OnReachedJumpApex(NativePointer);
+				OnReachedJumpApex -= value;
+			}
+
+		}
+
+		internal event FCharacterReachedApexSignature _OnReachedJumpApex;
+		
 		#endregion
 		
 		#region ExternMethods

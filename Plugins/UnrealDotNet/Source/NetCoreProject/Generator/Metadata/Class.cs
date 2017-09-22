@@ -13,15 +13,6 @@ namespace Generator.Metadata
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
 
-        public IEnumerable<Class> PropertyDependent
-        {
-            get
-            {
-                var list = Property.OfType<ClassVariable>().Select(v => v.Class);
-                return list.Where(cl => cl != this).Distinct().OrderBy(cl => cl.Name);
-            }
-        }
-
         public Class(string Name)
         {
             Methods = new List<Method>();

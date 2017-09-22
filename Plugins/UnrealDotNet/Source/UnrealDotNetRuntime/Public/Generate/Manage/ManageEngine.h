@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "Engine/Engine.h"
 #include "ManageEngine.generated.h"
 
 UCLASS()

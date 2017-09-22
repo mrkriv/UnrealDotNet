@@ -43,11 +43,18 @@ namespace GameLogic
                 Box.SetCollisionProfileName("BlockAll");
                 Box.SetBoxExtent(new FVector(100, 100, 100), false);
                 Box.SetHiddenInGame(false);
+                
+                Box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
             }
             catch (Exception e)
             {
                 ULog_Error(e.ToString());
             }
+        }
+
+        private void Box_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex)
+        {
+            ScreenDebugMessage($"{OtherActor} don't overlap {OverlappedComponent} now");
         }
 
         public override void Tick(float DeltaTime)

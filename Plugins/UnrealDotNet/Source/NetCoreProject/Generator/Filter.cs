@@ -44,6 +44,31 @@ namespace Generator
 
             "FWorldDelegates",
             "FSkelMeshSkinWeightInfo",
+
+            "FRenderStateRecreator",
+        };
+
+        public static string[] ManageClassBlackList =
+        {
+            "UScene",
+            "UWorldProxy",
+            "UObject",
+            "UObjectBase",
+            "UObjectBaseUtility",
+            "UEngineBaseTypes",
+
+            "UPostProcessComponent",    // TODO: понять почему не линкует перегруженные методы в базовых классах
+            "UBrushComponent",
+            "UDrawFrustumComponent",
+            "UDrawSphereComponent",
+            "UVectorFieldComponent",
+            "UReflectionCaptureComponent",
+            "UBoxReflectionCaptureComponent",
+            "UPlaneReflectionCaptureComponent",
+            "USphereReflectionCaptureComponent",
+            "UTimelineComponent",
+            "ULightmassPortalComponent",
+            "UPlanarReflectionComponent",
         };
 
         public static string[] NewObjectBlackList =
@@ -58,6 +83,11 @@ namespace Generator
         public static string[] EnumBlackList =
         {
             "Type",
+        };
+
+
+        public static string[] DelegateBlackList =
+        {
         };
 
         public static Dictionary<string, string[]> MethodBlackList = new Dictionary<string, string[]>
@@ -93,7 +123,7 @@ namespace Generator
         public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
             var classes = Classes.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
-            
+
             foreach (var cl in classes)
             {
                 cl.IsReadOnly = ReadOnlyClass.Any(name => cl.IsChild(name));
@@ -107,6 +137,12 @@ namespace Generator
             }
 
             return classes;
+        }
+
+        public static List<Delegate> FilterDelegates(IEnumerable<Delegate> Delegates)
+        {
+            var delegates = Delegates.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+            return delegates;
         }
 
         public static List<Enum> FilterEnum(IEnumerable<Enum> enums)
@@ -173,6 +209,13 @@ namespace Generator
                     !EnumBlackList.Contains(en.Name);
         }
 
+        public static bool FilterDelegate(Delegate dlg)
+        {
+            return 
+                dlg.Dependent.All(TypeFilter) &&
+                !DelegateBlackList.Contains(dlg.Name);
+        }
+
         public static bool TypeFilter(Type type)
         {
             if (!type.IsImplemented ||
@@ -187,6 +230,10 @@ namespace Generator
             var cl = type as Class;
             if (cl != null)
                 return ClassFilter(cl);
+
+            var dlg = type as Delegate;
+            if (dlg != null)
+                return FilterDelegate(dlg);
 
             return true;
         }
@@ -211,13 +258,16 @@ namespace Generator
             if (m.IsConst)
                 return false;
 
-            if (m is EnumVariable && !TypeFilter(((EnumVariable)m).Enum))
-                return false;
-
             if (m is ClassVariable && !TypeFilter(((ClassVariable)m).Class))
                 return false;
 
             if (m is ClassVariable && m.IsPointer && ((ClassVariable)m).Class.IsStructure)
+                return false;
+
+            if (m is EnumVariable && !TypeFilter(((EnumVariable)m).Enum))
+                return false;
+
+            if (m is DelegateVariable && !TypeFilter(((DelegateVariable)m).Delegate))
                 return false;
 
             return true;
@@ -225,10 +275,29 @@ namespace Generator
 
         public static IEnumerable<Method> GetVirtualMethods(Class Class)
         {
-            if (Class.IsFinal || Class.IsStructure || Class.Name == "UObjectBase" || Class.Name == "UObjectBaseUtility")
+            if (!IsManageClass(Class))
                 return new Method[0];
 
-            return Class.Methods.Where(m => m.IsVirtual && !m.IsConst && m.ReturnType.Type == "void" && m.InputTypes.All(t => !t.IsReadOnly()));
+            return Class.Methods.Where(m => m.IsVirtual && !m.IsOverride && !m.IsConst && m.ReturnType.Type == "void" && m.InputTypes.All(t => !t.IsReadOnly()));
+        }
+
+        public static bool IsManageClass(Class Class)
+        {
+            if (ManageClassBlackList.Contains(Class.Name))
+                return false;
+
+            if (Class.IsFinal || Class.IsStructure)
+                return false;
+
+            while (Class != null)
+            {
+                if (Class.Methods.Any(m => m.IsVirtual))
+                    return true;
+
+                Class = Class.BaseClass;
+            }
+
+            return false;
         }
     }
 }

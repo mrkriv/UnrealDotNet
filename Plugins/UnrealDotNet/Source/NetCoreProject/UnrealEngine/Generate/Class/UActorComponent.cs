@@ -26,6 +26,18 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UActorComponent_OnComponentActivated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UActorComponent_OnComponentActivated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -295,6 +307,45 @@ namespace UnrealEngine
 			get => E_PROP_UActorComponent_PrimaryComponentTick_GET(NativePointer);
 		}
 
+		#endregion
+		
+		#region Events
+		public event FActorComponentActivatedSignature OnComponentActivated
+		{
+			add
+			{
+				E_EV_A_UActorComponent_OnComponentActivated(NativePointer);
+				OnComponentActivated += value;
+			}
+
+			remove
+			{
+				E_EV_R_UActorComponent_OnComponentActivated(NativePointer);
+				OnComponentActivated -= value;
+			}
+
+		}
+
+		internal event FActorComponentActivatedSignature _OnComponentActivated;
+		
+		public event FActorComponentDeactivateSignature OnComponentDeactivated
+		{
+			add
+			{
+				E_EV_A_UActorComponent_OnComponentDeactivated(NativePointer);
+				OnComponentDeactivated += value;
+			}
+
+			remove
+			{
+				E_EV_R_UActorComponent_OnComponentDeactivated(NativePointer);
+				OnComponentDeactivated -= value;
+			}
+
+		}
+
+		internal event FActorComponentDeactivateSignature _OnComponentDeactivated;
+		
 		#endregion
 		
 		#region ExternMethods

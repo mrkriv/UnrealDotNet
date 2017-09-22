@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "GameFramework/Pawn.h"
 #include "ManagePawn.generated.h"
 
 UCLASS()

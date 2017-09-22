@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "ManageSpringArmComponent.generated.h"
 
 UCLASS()

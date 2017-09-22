@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "Components/PrimitiveComponent.h"
 #include "ManagePrimitiveComponent.generated.h"
 
 UCLASS()

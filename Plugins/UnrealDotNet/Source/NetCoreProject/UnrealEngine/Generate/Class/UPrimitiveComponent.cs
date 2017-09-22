@@ -86,6 +86,42 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPrimitiveComponent_TranslucencySortPriority_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_TranslucencySortPriority_SET(IntPtr Ptr, int Value);
@@ -495,6 +531,142 @@ namespace UnrealEngine
 			set => E_PROP_UPrimitiveComponent_VisibilityId_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region Events
+		
+		/// <summary>
+		/// <para>Event called when the mouse cursor is moved over this component and mouse over events are enabled in the player controller </para>
+		/// </summary>
+		public event FComponentBeginCursorOverSignature OnBeginCursorOver
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
+				OnBeginCursorOver += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
+				OnBeginCursorOver -= value;
+			}
+
+		}
+
+		internal event FComponentBeginCursorOverSignature _OnBeginCursorOver;
+		
+		
+		/// <summary>
+		/// <para>Event called when collision settings change for this component. </para>
+		/// </summary>
+		public event FComponentCollisionSettingsChangedSignature OnComponentCollisionSettingsChangedEvent
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
+				OnComponentCollisionSettingsChangedEvent += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
+				OnComponentCollisionSettingsChangedEvent -= value;
+			}
+
+		}
+
+		internal event FComponentCollisionSettingsChangedSignature _OnComponentCollisionSettingsChangedEvent;
+		
+		
+		/// <summary>
+		/// <para>Event called when something stops overlapping this component </para>
+		/// <para>@note Both this component and the other one must have bGenerateOverlapEvents set to true to generate overlap events. </para>
+		/// </summary>
+		public event FComponentEndOverlapSignature OnComponentEndOverlap
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
+				OnComponentEndOverlap += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
+				OnComponentEndOverlap -= value;
+			}
+
+		}
+
+		internal event FComponentEndOverlapSignature _OnComponentEndOverlap;
+		
+		
+		/// <summary>
+		/// <para>Event called when the underlying physics objects is put to sleep </para>
+		/// </summary>
+		public event FComponentSleepSignature OnComponentSleep
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnComponentSleep(NativePointer);
+				OnComponentSleep += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnComponentSleep(NativePointer);
+				OnComponentSleep -= value;
+			}
+
+		}
+
+		internal event FComponentSleepSignature _OnComponentSleep;
+		
+		
+		/// <summary>
+		/// <para>Event called when the underlying physics objects is woken up </para>
+		/// </summary>
+		public event FComponentWakeSignature OnComponentWake
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnComponentWake(NativePointer);
+				OnComponentWake += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnComponentWake(NativePointer);
+				OnComponentWake -= value;
+			}
+
+		}
+
+		internal event FComponentWakeSignature _OnComponentWake;
+		
+		
+		/// <summary>
+		/// <para>Event called when the mouse cursor is moved off this component and mouse over events are enabled in the player controller </para>
+		/// </summary>
+		public event FComponentEndCursorOverSignature OnEndCursorOver
+		{
+			add
+			{
+				E_EV_A_UPrimitiveComponent_OnEndCursorOver(NativePointer);
+				OnEndCursorOver += value;
+			}
+
+			remove
+			{
+				E_EV_R_UPrimitiveComponent_OnEndCursorOver(NativePointer);
+				OnEndCursorOver -= value;
+			}
+
+		}
+
+		internal event FComponentEndCursorOverSignature _OnEndCursorOver;
+		
 		#endregion
 		
 		#region ExternMethods

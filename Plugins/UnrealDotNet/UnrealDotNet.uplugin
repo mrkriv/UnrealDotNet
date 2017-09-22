@@ -13,13 +13,13 @@
     {
       "Name": "UnrealDotNetRuntime",
       "Type": "Runtime",
-      "LoadingPhase": "PreDefault",
+      "LoadingPhase": "PostEngineInit",
       "WhitelistPlatforms": [ "Win64" ]
     },
     {
       "Name": "UnrealDotNetEditor",
       "Type": "Editor",
-      "LoadingPhase": "Default"
+      "LoadingPhase": "PostEngineInit"
     }
   ],
   "PostBuildSteps": {

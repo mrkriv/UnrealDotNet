@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "Components/SceneComponent.h"
 #include "ManageSceneComponent.generated.h"
 
 UCLASS()

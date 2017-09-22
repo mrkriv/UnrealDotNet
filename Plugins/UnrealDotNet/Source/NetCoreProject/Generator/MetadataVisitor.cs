@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.Concurrent;
 using static UHeaderParser;
+using Delegate = Generator.Metadata.Delegate;
 using Enum = Generator.Metadata.Enum;
 using Type = Generator.Metadata.Type;
 
@@ -14,6 +15,8 @@ namespace Generator
         private readonly ConcurrentDictionary<string, Type> Types;
         private Dictionary<string, string> CurrentUMeta;
         private AccessModifier AccessModifier;
+        private Variable CurrentDelegateVariable;
+        private Delegate CurrentDelegate;
         private Class CurrentClass;
         private Enum CurrentEnum;
         private string CurrentFile;
@@ -49,6 +52,11 @@ namespace Generator
         private Enum GetEnum(string name)
         {
             return (Enum)Types.GetOrAdd(name, new Enum(name));
+        }
+
+        private Delegate GetDelegate(string name)
+        {
+            return (Delegate)Types.GetOrAdd(name, new Delegate(name));
         }
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
@@ -209,11 +217,44 @@ namespace Generator
             return null;
         }
 
+        public override object VisitUDefine(UDefineContext context)
+        {
+            var name = context.uDefineName().GetText(); 
+
+            if (name.StartsWith("DECLARE_DYNAMIC_MULTICAST_DELEGATE"))
+            {
+                var ls = context.uMeta().uMetaParametrList();
+                var dlg_name = ls.uMetaParametr().GetText();
+
+                CurrentDelegate = GetDelegate(dlg_name);
+                CurrentDelegate.SourceFile = CurrentFile;
+                CurrentDelegate.IsImplemented = true;
+                CurrentDelegate.IsTemplate = context.FoundChild<TemplateDefineContext>();
+                CurrentDelegate.Description = CurrentComment;
+
+                CurrentDelegateVariable = null;
+                CurrentUMeta = new Dictionary<string, string>();
+
+                if (ls.uMetaParametrList() != null)
+                    VisitChildren(ls.uMetaParametrList());
+
+                CurrentDelegate = null;
+                CurrentUMeta = null;
+                CurrentComment = "";
+            }
+
+            return base.VisitUDefine(context);
+        }
+
         public override object VisitUMeta(UMetaContext context)
         {
-            CurrentUMeta = new Dictionary<string, string>();
+            var ls = context.uMetaParametrList();
 
-            VisitUMetaParametrList(context.uMetaParametrList());
+            if (ls != null)
+            {
+                CurrentUMeta = new Dictionary<string, string>();
+                VisitUMetaParametrList(ls);
+            }
 
             return null;
         }
@@ -224,16 +265,40 @@ namespace Generator
             var value = context.uMetaParamValue()?.GetText();
             var paramList = context.uMetaParametrList();
 
+            if (!CurrentUMeta.ContainsKey(key))
+            {
+                if (CurrentDelegate != null)
+                {
+                    ParceDelegateKey(context);
+                }
+                else
+                    CurrentUMeta.Add(key, value != null ? value.Trim('"') : "");
+            }
             if (paramList != null)
             {
                 VisitUMetaParametrList(paramList);
             }
-            else if (!CurrentUMeta.ContainsKey(key))
-            {
-                CurrentUMeta.Add(key, value != null ? value.Trim('"') : "");
-            }
 
             return null;
+        }
+
+        private void ParceDelegateKey(UMetaParametrContext context)
+        {
+            if(CurrentDelegate ==null)
+                return;
+
+            if (CurrentDelegateVariable == null)
+            {
+                CurrentDelegateVariable = ParceType(context.FindFirst<TypeContext>());
+            }
+            else
+            {
+                var key = context.uMetaParamKey().GetText();
+                CurrentDelegateVariable.Name = key;
+
+                CurrentDelegate.Parametrs.Add(CurrentDelegateVariable);
+                CurrentDelegateVariable = null;
+            }
         }
 
         private Variable ParceParam(MethodParametrContext context)
@@ -260,6 +325,10 @@ namespace Generator
                 if (type is Class)
                 {
                     variable = new ClassVariable((Class)type);
+                }
+                else if(type is Delegate)
+                {
+                    variable = new DelegateVariable((Delegate)type);
                 }
                 else
                 {

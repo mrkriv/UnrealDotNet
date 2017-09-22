@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "GameFramework/Character.h"
 #include "ManageCharacter.generated.h"
 
 UCLASS()

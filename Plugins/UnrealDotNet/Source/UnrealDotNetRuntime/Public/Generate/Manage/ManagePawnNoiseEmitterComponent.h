@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "Components/PawnNoiseEmitterComponent.h"
 #include "ManagePawnNoiseEmitterComponent.generated.h"
 
 UCLASS()

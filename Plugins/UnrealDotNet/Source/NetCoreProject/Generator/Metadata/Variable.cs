@@ -264,4 +264,40 @@ namespace Generator.Metadata
             return string.IsNullOrEmpty(Name) ? b + Enum : $"{b}{Enum} {Name}";
         }
     }
+
+    public class DelegateVariable : Variable
+    {
+        public Delegate Delegate { get; }
+
+        public DelegateVariable(Delegate DelegateType)
+        {
+            this.Delegate = DelegateType;
+        }
+
+        public override string GetTypeCPP(bool ForReturn = false)
+        {
+            return Delegate.Name;
+        }
+
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+
+        public override string GetTypeCS()
+        {
+            return Delegate.Name;
+        }
+
+        public override string GetTypeCSForExtend(bool ForReturn = false)
+        {
+            return Delegate.Name;
+        }
+
+        public override string ToString()
+        {
+            var b = base.ToString();
+            return string.IsNullOrEmpty(Name) ? b + Delegate : $"{b}{Delegate} {Name}";
+        }
+    }
 }

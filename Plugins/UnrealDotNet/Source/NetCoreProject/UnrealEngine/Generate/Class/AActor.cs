@@ -216,15 +216,42 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_NetUpdateTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_AActor_OnActorBeginOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_AActor_OnActorBeginOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_AActor_OnActorEndOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_AActor_OnActorEndOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_AActor_OnBeginCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_AActor_OnBeginCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_AActor_OnDestroyed(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_AActor_OnDestroyed(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_A_AActor_OnEndCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EV_R_AActor_OnEndCursorOver(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_ActorGetDistanceToCollision(IntPtr Self, IntPtr Point, byte TraceChannel, IntPtr ClosestPointOnCollision, IntPtr OutPrimitiveComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_ActorHasTag(IntPtr Self, string Tag);
@@ -1091,21 +1118,123 @@ namespace UnrealEngine
 
 		#endregion
 		
-		#region ExternMethods
+		#region Events
 		
 		/// <summary>
-		/// <para>returns Distance to closest Body Instance surface. </para>
-		/// <para>Checks against all components of this Actor having valid collision and blocking TraceChannel. </para>
-		/// <param name="Point">World 3D vector </param>
-		/// <param name="TraceChannel">The 'channel' used to determine which components to consider. </param>
-		/// <param name="ClosestPointOnCollision">Point on the surface of collision closest to Point </param>
-		/// <param name="OutPrimitiveComponent">PrimitiveComponent ClosestPointOnCollision is on. </param>
-		/// <return>Success if returns > 0.f, if returns 0.f, it is either not convex or inside of the point </return>
-		/// <para>If returns < 0.f, this Actor does not have any primitive with collision </para>
+		/// <para>Called when another actor begins to overlap this actor, for example a player walking into a trigger. </para>
+		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
+		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public float ActorGetDistanceToCollision(FVector Point, ECollisionChannel TraceChannel, FVector ClosestPointOnCollision, UPrimitiveComponent OutPrimitiveComponent = null)
-			=> E_AActor_ActorGetDistanceToCollision(this, Point, (byte)TraceChannel, ClosestPointOnCollision, OutPrimitiveComponent);
+		public event FActorBeginOverlapSignature OnActorBeginOverlap
+		{
+			add
+			{
+				E_EV_A_AActor_OnActorBeginOverlap(NativePointer);
+				OnActorBeginOverlap += value;
+			}
+
+			remove
+			{
+				E_EV_R_AActor_OnActorBeginOverlap(NativePointer);
+				OnActorBeginOverlap -= value;
+			}
+
+		}
+
+		internal event FActorBeginOverlapSignature _OnActorBeginOverlap;
 		
+		
+		/// <summary>
+		/// <para>Called when another actor stops overlapping this actor. </para>
+		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
+		/// </summary>
+		public event FActorEndOverlapSignature OnActorEndOverlap
+		{
+			add
+			{
+				E_EV_A_AActor_OnActorEndOverlap(NativePointer);
+				OnActorEndOverlap += value;
+			}
+
+			remove
+			{
+				E_EV_R_AActor_OnActorEndOverlap(NativePointer);
+				OnActorEndOverlap -= value;
+			}
+
+		}
+
+		internal event FActorEndOverlapSignature _OnActorEndOverlap;
+		
+		
+		/// <summary>
+		/// <para>Called when the mouse cursor is moved over this actor if mouse over events are enabled in the player controller. </para>
+		/// </summary>
+		public event FActorBeginCursorOverSignature OnBeginCursorOver
+		{
+			add
+			{
+				E_EV_A_AActor_OnBeginCursorOver(NativePointer);
+				OnBeginCursorOver += value;
+			}
+
+			remove
+			{
+				E_EV_R_AActor_OnBeginCursorOver(NativePointer);
+				OnBeginCursorOver -= value;
+			}
+
+		}
+
+		internal event FActorBeginCursorOverSignature _OnBeginCursorOver;
+		
+		
+		/// <summary>
+		/// <para>Event triggered when the actor is destroyed. </para>
+		/// </summary>
+		public event FActorDestroyedSignature OnDestroyed
+		{
+			add
+			{
+				E_EV_A_AActor_OnDestroyed(NativePointer);
+				OnDestroyed += value;
+			}
+
+			remove
+			{
+				E_EV_R_AActor_OnDestroyed(NativePointer);
+				OnDestroyed -= value;
+			}
+
+		}
+
+		internal event FActorDestroyedSignature _OnDestroyed;
+		
+		
+		/// <summary>
+		/// <para>Called when the mouse cursor is moved off this actor if mouse over events are enabled in the player controller. </para>
+		/// </summary>
+		public event FActorEndCursorOverSignature OnEndCursorOver
+		{
+			add
+			{
+				E_EV_A_AActor_OnEndCursorOver(NativePointer);
+				OnEndCursorOver += value;
+			}
+
+			remove
+			{
+				E_EV_R_AActor_OnEndCursorOver(NativePointer);
+				OnEndCursorOver -= value;
+			}
+
+		}
+
+		internal event FActorEndCursorOverSignature _OnEndCursorOver;
+		
+		#endregion
+		
+		#region ExternMethods
 		
 		/// <summary>
 		/// <para>See if this actor contains the supplied tag </para>

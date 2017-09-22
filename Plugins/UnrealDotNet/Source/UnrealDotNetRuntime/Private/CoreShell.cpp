@@ -30,11 +30,13 @@ DEFINE_LOG_CATEGORY(DotNetRuntime);
 
 static const FString PluginName = "UnrealDotNet";
 static const FString CoreCLR_Name = "coreclr.dll";
+static const float GC_TickTime = .5f;
 
 #if WITH_EDITOR
 static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
 static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries" / "Win64");
 static const FString HotreloadHook_Filename = "HotReload\\hotreload";
+FSimpleDelegate UCoreShell::OnAssembleLoad;
 #else
 static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
 static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "GameLogic");
@@ -43,9 +45,10 @@ static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::Gam
 FString UCoreShell::AssemblyGuid;
 FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Culture=neutral";
 FString UCoreShell::GameLogic_Assemble = "GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral";
-FSimpleDelegate UCoreShell::OnAssembleLoad;
 
+char UCoreShell::InvokeArgumentBuffer[MAX_INVOKE_ARGUMENT_SIZE] = { 0 };
 ICLRRuntimeHost4* UCoreShell::Host = NULL;
+FTimerHandle UCoreShell::GCTimerHandle;
 DWORD UCoreShell::DomainID = 0;
 
 void UCoreShell::Initialize()
@@ -281,6 +284,27 @@ FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString&
 
 	auto str = manageMethod(TCHAR_TO_UTF8(*Argument));
 	return FString(UTF8_TO_TCHAR(str));
+}
+
+void UCoreShell::GC()
+{
+	INT_PTR ptr;
+
+	while (NeedDeleteQueue.Dequeue(ptr))
+	{
+		delete (void*)ptr;
+	}
+}
+
+void UCoreShell::StartAutoGC(UObject* WorldContextObject)
+{
+	auto dlg = FTimerDelegate::CreateStatic(&UCoreShell::GC);
+	WorldContextObject->GetWorld()->GetTimerManager().SetTimer(GCTimerHandle, dlg, GC_TickTime, true, 0);
+}
+
+void UCoreShell::StopAutoGC(UObject* WorldContextObject)
+{
+	WorldContextObject->GetWorld()->GetTimerManager().ClearTimer(GCTimerHandle);
 }
 
 #pragma warning(pop)

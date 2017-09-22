@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
+#include "GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
 
 UCLASS()

@@ -143,6 +143,44 @@ namespace UnrealEngine
             return true;
         }
 
+        public static void InvokeEvent(IntPtr Adress, string EventFieldName, IntPtr Arguments, int Size)
+        {
+            try
+            {
+                if (!Wrappers.TryGetValue(Adress, out var obj))
+                {
+                    UObjectBaseUtility.ULog_Error($"Failed call event {EventFieldName}, {Adress} not found");
+                    return;
+                }
+
+                var field = obj.GetType().GetField(EventFieldName,
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                var dlg = (MulticastDelegate)field?.GetValue(Adress);
+
+                if (dlg == null)
+                {
+                    UObjectBaseUtility.ULog_Error(
+                        $"Failed call event {EventFieldName} in {Adress}, event not found in {obj.GetType()}");
+                    return;
+                }
+
+                var Params = ParceParams(dlg.Method, Arguments, Size, out var IsSuccess);
+                if (!IsSuccess)
+                {
+                    UObjectBaseUtility.ULog_Error(
+                        $"Failed call method {field.Name}, method have {dlg.Method.GetParameters().Length} arguments, size not match");
+                    return;
+                }
+
+                dlg.DynamicInvoke(Params);
+            }
+            catch (Exception e)
+            {
+                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+            }
+        }
+
         public static void Invoke(IntPtr Adress, string MethodName, IntPtr Arguments, int Size)
         {
             try
@@ -155,6 +193,7 @@ namespace UnrealEngine
 
                 var method = obj.GetType().GetMethod(MethodName,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
                 if (method == null)
                 {
                     UObjectBaseUtility.ULog_Error(
@@ -169,8 +208,7 @@ namespace UnrealEngine
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
-
-                //UObjectBaseUtility.ULog_Debug($"Call method {MethodName} in {Adress}");
+                
                 method.Invoke(obj, Params);
             }
             catch (Exception e)

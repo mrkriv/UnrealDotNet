@@ -30,7 +30,7 @@ namespace Generator
                 GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(OutputPriveteExport, "Structures"));
                 GenerateCPPIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(OutputPriveteExport, "Index"));
 
-                foreach (var cl in domain.Classes.Where(c => !c.IsStructure && !c.IsFinal))
+                foreach (var cl in domain.Classes.Where(Filter.IsManageClass))
                 {
                     GenerateManageClassH(cl, OutputPublicManage);
                     GenerateManageClassCPP(cl, OutputPriveteManage);
@@ -83,9 +83,6 @@ namespace Generator
             {
                 var methods = Filter.GetVirtualMethods(Class);
 
-                if (!methods.Any())
-                    return;
-
                 var liter = Class.Name.First();
                 var baseName = Class.Name.Substring(1);
 
@@ -95,6 +92,7 @@ namespace Generator
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
                 cw.WriteLine("#include \"CoreShell.h\"");
+                cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
                 cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
                 cw.WriteLine();
 
@@ -142,9 +140,6 @@ namespace Generator
             private static void GenerateManageClassCPP(Class Class, string OutputPath)
             {
                 var methods = Filter.GetVirtualMethods(Class);
-
-                if (!methods.Any())
-                    return;
 
                 var baseName = Class.Name.Substring(1);
 
@@ -259,15 +254,7 @@ namespace Generator
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
 
-                var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
-                inputs.Insert(0, $"{method.OwnerClass.Name}* Self");
-
-                if (genStringWrap)
-                {
-                    inputs.Add("int& ResultStringLen");
-                }
-
-                var param = string.Join(", ", inputs);
+                var param = GetMethodSignatuteParam(method, genStringWrap);
 
                 cw.WriteLine($"{CPP_API} {ExportVariableCPPForReturn(method.ReturnType)} {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
@@ -321,6 +308,19 @@ namespace Generator
 
                 cw.CloseBlock();
                 cw.WriteLine();
+            }
+
+            private static string GetMethodSignatuteParam(Method method, bool isGenStringWrap)
+            {
+                var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
+                inputs.Insert(0, $"{method.OwnerClass.Name}* Self");
+
+                if (isGenStringWrap)
+                {
+                    inputs.Add("int& ResultStringLen");
+                }
+                
+                return string.Join(", ", inputs);
             }
 
             private static void GenerateMethodProtctedWrap(CoreWriter cw, Method method)
@@ -457,6 +457,18 @@ namespace Generator
 
             private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
             {
+                if (prop is DelegateVariable)
+                {
+                    GeneratePropertyDelegate(cw, Class, prop);
+                }
+                else
+                {
+                    GeneratePropertyStandart(cw, Class, prop);
+                }
+            }
+
+            private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
+            {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 var propClass = prop as ClassVariable;
@@ -523,6 +535,10 @@ namespace Generator
                 }
 
                 cw.WriteLine();
+            }
+
+            private static void GeneratePropertyDelegate(CoreWriter cw, Class Class, Variable prop)
+            {
             }
 
             #endregion Struct

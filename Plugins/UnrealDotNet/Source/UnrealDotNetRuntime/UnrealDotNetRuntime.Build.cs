@@ -25,6 +25,7 @@ public class UnrealDotNetRuntime : ModuleRules
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
+                "Engine",
                 "Core",
                 "CoreUObject",
                 "SlateCore",
@@ -52,7 +53,6 @@ public class UnrealDotNetRuntime : ModuleRules
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "Engine",
                 "AppFramework",
                 "UMG",
                 "Projects",

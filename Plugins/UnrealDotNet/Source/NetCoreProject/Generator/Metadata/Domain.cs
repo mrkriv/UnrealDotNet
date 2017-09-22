@@ -6,11 +6,13 @@ namespace Generator.Metadata
 {
     public class Domain
     {
+        public List<Delegate> Delegates;
         public List<Class> Classes;
         public List<Enum> Enums;
 
         public Domain(IEnumerable<Type> Types)
         {
+            Delegates = new List<Delegate>();
             Classes = new List<Class>();
             Enums = new List<Enum>();
 
@@ -26,8 +28,13 @@ namespace Generator.Metadata
                 {
                     Enums.Add(type as Enum);
                 }
+                else if (type is Delegate)
+                {
+                    Delegates.Add(type as Delegate);
+                }
             }
-
+            
+            Delegates = Filter.FilterDelegates(Delegates);
             Classes = Filter.FilterClasses(Classes);
             Enums = Filter.FilterEnum(Enums);
         }
