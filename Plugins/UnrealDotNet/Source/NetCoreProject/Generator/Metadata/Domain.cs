@@ -39,6 +39,15 @@ namespace Generator.Metadata
             Enums = Filter.FilterEnum(Enums);
         }
 
+        public void PrintTotal()
+        {
+            Console.WriteLine($"Export:");
+            Console.WriteLine($"Class\t\t{Classes.Count(c => !c.IsStructure)}");
+            Console.WriteLine($"Structures\t{Classes.Count(c => c.IsStructure)}");
+            Console.WriteLine($"Enums\t\t{Enums.Count}");
+            Console.WriteLine($"Delegates\t{Delegates.Count}");
+        }
+
         public void Print(bool Full)
         {
             Console.WriteLine();

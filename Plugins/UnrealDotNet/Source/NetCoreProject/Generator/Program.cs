@@ -29,9 +29,14 @@ namespace Generator
             }
 
             Watch.Start();
+
             var domain = ParceManager.Parce(files);
             Codegenretor.GenarateDomain(domain, output);
 
+            Watch.Stop();
+
+            Console.Clear();
+            domain.PrintTotal();
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
         }
 
