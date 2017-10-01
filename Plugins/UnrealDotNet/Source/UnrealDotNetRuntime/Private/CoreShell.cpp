@@ -2,7 +2,7 @@
 #include "CoreShell.h"
 #include "Misc/Paths.h"
 #include "ManagerObject.h"
-#include "DotnetExport.inl"
+#include "Export.inl"
 
 #if WITH_EDITOR
 #include "IDirectoryWatcher.h"
@@ -16,7 +16,7 @@
 #pragma warning(disable:4005)
 #pragma warning(disable:4668)
 
-#include "inc/MSCOREE.h"
+#include "DotnetHostInclude/MSCOREE.h"
 
 // TODO: Переписать на что то менее платформо-зависимое
 #include "Windows/WindowsSystemIncludes.h"
