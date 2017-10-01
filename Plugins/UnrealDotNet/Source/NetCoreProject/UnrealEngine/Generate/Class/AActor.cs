@@ -14,6 +14,7 @@ namespace UnrealEngine
 			: base(IntPtr.Zero)
 		{
 			NativePointer = E_NewObject_AActor(Parent, Name);
+			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
 		#region DLLInmport
@@ -216,34 +217,34 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_NetUpdateTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_AActor_OnActorBeginOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_AActor_OnActorBeginOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_AActor_OnActorBeginOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_AActor_OnActorBeginOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_AActor_OnActorEndOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_AActor_OnActorEndOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_AActor_OnActorEndOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_AActor_OnActorEndOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_AActor_OnBeginCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_AActor_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_AActor_OnBeginCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_AActor_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_AActor_OnDestroyed(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_AActor_OnDestroyed(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_AActor_OnDestroyed(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_AActor_OnDestroyed(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_AActor_OnEndCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_AActor_OnEndCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_AActor_OnEndCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_AActor_OnEndCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
@@ -1129,20 +1130,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_AActor_OnActorBeginOverlap(NativePointer);
-				OnActorBeginOverlap += value;
+				E_EVENT_ADD_AActor_OnActorBeginOverlap(NativePointer);
+				_Event_OnActorBeginOverlap += value;
 			}
 
 			remove
 			{
-				E_EV_R_AActor_OnActorBeginOverlap(NativePointer);
-				OnActorBeginOverlap -= value;
+				E_EVENT_DEL_AActor_OnActorBeginOverlap(NativePointer);
+				_Event_OnActorBeginOverlap -= value;
 			}
 
 		}
 
-		internal event FActorBeginOverlapSignature _OnActorBeginOverlap;
+		private event FActorBeginOverlapSignature _Event_OnActorBeginOverlap;
 		
+		internal void InvokeEvent_OnActorBeginOverlap(AActor OverlappedActor, AActor OtherActor)
+		{
+			_Event_OnActorBeginOverlap?.Invoke(OverlappedActor, OtherActor);
+		}
+
 		
 		/// <summary>
 		/// <para>Called when another actor stops overlapping this actor. </para>
@@ -1152,20 +1158,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_AActor_OnActorEndOverlap(NativePointer);
-				OnActorEndOverlap += value;
+				E_EVENT_ADD_AActor_OnActorEndOverlap(NativePointer);
+				_Event_OnActorEndOverlap += value;
 			}
 
 			remove
 			{
-				E_EV_R_AActor_OnActorEndOverlap(NativePointer);
-				OnActorEndOverlap -= value;
+				E_EVENT_DEL_AActor_OnActorEndOverlap(NativePointer);
+				_Event_OnActorEndOverlap -= value;
 			}
 
 		}
 
-		internal event FActorEndOverlapSignature _OnActorEndOverlap;
+		private event FActorEndOverlapSignature _Event_OnActorEndOverlap;
 		
+		internal void InvokeEvent_OnActorEndOverlap(AActor OverlappedActor, AActor OtherActor)
+		{
+			_Event_OnActorEndOverlap?.Invoke(OverlappedActor, OtherActor);
+		}
+
 		
 		/// <summary>
 		/// <para>Called when the mouse cursor is moved over this actor if mouse over events are enabled in the player controller. </para>
@@ -1174,20 +1185,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_AActor_OnBeginCursorOver(NativePointer);
-				OnBeginCursorOver += value;
+				E_EVENT_ADD_AActor_OnBeginCursorOver(NativePointer);
+				_Event_OnBeginCursorOver += value;
 			}
 
 			remove
 			{
-				E_EV_R_AActor_OnBeginCursorOver(NativePointer);
-				OnBeginCursorOver -= value;
+				E_EVENT_DEL_AActor_OnBeginCursorOver(NativePointer);
+				_Event_OnBeginCursorOver -= value;
 			}
 
 		}
 
-		internal event FActorBeginCursorOverSignature _OnBeginCursorOver;
+		private event FActorBeginCursorOverSignature _Event_OnBeginCursorOver;
 		
+		internal void InvokeEvent_OnBeginCursorOver(AActor TouchedActor)
+		{
+			_Event_OnBeginCursorOver?.Invoke(TouchedActor);
+		}
+
 		
 		/// <summary>
 		/// <para>Event triggered when the actor is destroyed. </para>
@@ -1196,20 +1212,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_AActor_OnDestroyed(NativePointer);
-				OnDestroyed += value;
+				E_EVENT_ADD_AActor_OnDestroyed(NativePointer);
+				_Event_OnDestroyed += value;
 			}
 
 			remove
 			{
-				E_EV_R_AActor_OnDestroyed(NativePointer);
-				OnDestroyed -= value;
+				E_EVENT_DEL_AActor_OnDestroyed(NativePointer);
+				_Event_OnDestroyed -= value;
 			}
 
 		}
 
-		internal event FActorDestroyedSignature _OnDestroyed;
+		private event FActorDestroyedSignature _Event_OnDestroyed;
 		
+		internal void InvokeEvent_OnDestroyed(AActor DestroyedActor)
+		{
+			_Event_OnDestroyed?.Invoke(DestroyedActor);
+		}
+
 		
 		/// <summary>
 		/// <para>Called when the mouse cursor is moved off this actor if mouse over events are enabled in the player controller. </para>
@@ -1218,20 +1239,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_AActor_OnEndCursorOver(NativePointer);
-				OnEndCursorOver += value;
+				E_EVENT_ADD_AActor_OnEndCursorOver(NativePointer);
+				_Event_OnEndCursorOver += value;
 			}
 
 			remove
 			{
-				E_EV_R_AActor_OnEndCursorOver(NativePointer);
-				OnEndCursorOver -= value;
+				E_EVENT_DEL_AActor_OnEndCursorOver(NativePointer);
+				_Event_OnEndCursorOver -= value;
 			}
 
 		}
 
-		internal event FActorEndCursorOverSignature _OnEndCursorOver;
+		private event FActorEndCursorOverSignature _Event_OnEndCursorOver;
 		
+		internal void InvokeEvent_OnEndCursorOver(AActor TouchedActor)
+		{
+			_Event_OnEndCursorOver?.Invoke(TouchedActor);
+		}
+
 		#endregion
 		
 		#region ExternMethods

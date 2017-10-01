@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
+#include "ManagerObject.h"
 #include "Components/PrimitiveComponent.h"
 
 class E_PROTECTED_WRAP_UPrimitiveComponent : protected UPrimitiveComponent
@@ -68,6 +69,78 @@ extern "C"
 	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_MinDrawDistance_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->MinDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->MinDrawDistance = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnBeginCursorOver";
+		wrapper->SourceObject = Obj;
+		Obj->OnBeginCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentBeginCursorOverSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentCollisionSettingsChangedEvent";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentCollisionSettingsChangedEvent.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentCollisionSettingsChangedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(UPrimitiveComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentEndOverlap(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentEndOverlap";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentEndOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentEndOverlapSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnComponentEndOverlap(UPrimitiveComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentSleep(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentSleep";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentSleep.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentSleepSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnComponentSleep(UPrimitiveComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentWake(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentWake";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentWake.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentWakeSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnComponentWake(UPrimitiveComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnEndCursorOver(UPrimitiveComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnEndCursorOver";
+		wrapper->SourceObject = Obj;
+		Obj->OnEndCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentEndCursorOverSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UPrimitiveComponent_OnEndCursorOver(UPrimitiveComponent* Obj)
+	{
+	}
+
 	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_TranslucencySortPriority_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->TranslucencySortPriority; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_TranslucencySortPriority_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->TranslucencySortPriority = Value; }
 	

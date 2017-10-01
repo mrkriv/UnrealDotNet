@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
+#include "ManagerObject.h"
 #include "Components/MeshComponent.h"
 
 class E_PROTECTED_WRAP_UMeshComponent : protected UMeshComponent

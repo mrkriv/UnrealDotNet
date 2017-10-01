@@ -165,6 +165,7 @@ namespace Generator
             {
                 var type = prop.GetTypeCS();
                 var name = prop.GetDisplayName();
+                var dlg = ((DelegateVariable) prop).Delegate;
 
                 GenerateSummaty(cw, prop);
 
@@ -174,21 +175,30 @@ namespace Generator
                 cw.WriteLine($"add");
                 cw.OpenBlock();
                 cw.WriteLine($"{ExportEventAddPrefix}{Class.Name}_{name}(NativePointer);");
-                cw.WriteLine($"{name} += value;");
+                cw.WriteLine($"{EventPrivatePrefix}{name} += value;");
                 cw.CloseBlock();
                 cw.WriteLine();
 
                 cw.WriteLine($"remove");
                 cw.OpenBlock();
                 cw.WriteLine($"{ExportEventRemovePrefix}{Class.Name}_{name}(NativePointer);");
-                cw.WriteLine($"{name} -= value;");
+                cw.WriteLine($"{EventPrivatePrefix}{name} -= value;");
                 cw.CloseBlock();
                 cw.WriteLine();
 
                 cw.CloseBlock();
                 cw.WriteLine();
 
-                cw.WriteLine($"internal event {type} _{name};");
+                cw.WriteLine($"private event {type} {EventPrivatePrefix}{name};");
+                cw.WriteLine();
+
+                var param = string.Join(", ", dlg.Parametrs.Select(m => ExportVariable(m, false)));
+                var call = string.Join(", ", dlg.Parametrs.Select(m => m.Name));
+
+                cw.WriteLine($"internal void {EventInvokePrefix}{name}({param})");
+                cw.OpenBlock();
+                cw.WriteLine($"{EventPrivatePrefix}{name}?.Invoke({call});");
+                cw.CloseBlock();
                 cw.WriteLine();
             }
 
@@ -233,6 +243,7 @@ namespace Generator
                         cw.WriteLine("\t: base(IntPtr.Zero)");
                         cw.OpenBlock();
                         cw.WriteLine($"NativePointer = {ExportPrefix}NewObject_{Class.Name}(Parent, Name);");
+                        cw.WriteLine($"NativeManager.AddNativeWrapper(NativePointer, this);");
                         cw.CloseBlock();
                         cw.WriteLine();
                     }

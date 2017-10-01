@@ -14,6 +14,7 @@ namespace UnrealEngine
 			: base(IntPtr.Zero)
 		{
 			NativePointer = E_NewObject_ACharacter(Parent, Name);
+			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
 		#region DLLInmport
@@ -86,22 +87,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_ACharacter_OnReachedJumpApex(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_ACharacter_OnReachedJumpApex(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_ACharacter_OnReachedJumpApex(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_ACharacter_OnReachedJumpApex(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
@@ -448,20 +449,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_ACharacter_MovementModeChangedDelegate(NativePointer);
-				MovementModeChangedDelegate += value;
+				E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(NativePointer);
+				_Event_MovementModeChangedDelegate += value;
 			}
 
 			remove
 			{
-				E_EV_R_ACharacter_MovementModeChangedDelegate(NativePointer);
-				MovementModeChangedDelegate -= value;
+				E_EVENT_DEL_ACharacter_MovementModeChangedDelegate(NativePointer);
+				_Event_MovementModeChangedDelegate -= value;
 			}
 
 		}
 
-		internal event FMovementModeChangedSignature _MovementModeChangedDelegate;
+		private event FMovementModeChangedSignature _Event_MovementModeChangedDelegate;
 		
+		internal void InvokeEvent_MovementModeChangedDelegate(ACharacter Character, EMovementMode PrevMovementMode, byte PreviousCustomMode)
+		{
+			_Event_MovementModeChangedDelegate?.Invoke(Character, PrevMovementMode, PreviousCustomMode);
+		}
+
 		
 		/// <summary>
 		/// <para>Event triggered at the end of a CharacterMovementComponent movement update. </para>
@@ -476,20 +482,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_ACharacter_OnCharacterMovementUpdated(NativePointer);
-				OnCharacterMovementUpdated += value;
+				E_EVENT_ADD_ACharacter_OnCharacterMovementUpdated(NativePointer);
+				_Event_OnCharacterMovementUpdated += value;
 			}
 
 			remove
 			{
-				E_EV_R_ACharacter_OnCharacterMovementUpdated(NativePointer);
-				OnCharacterMovementUpdated -= value;
+				E_EVENT_DEL_ACharacter_OnCharacterMovementUpdated(NativePointer);
+				_Event_OnCharacterMovementUpdated -= value;
 			}
 
 		}
 
-		internal event FCharacterMovementUpdatedSignature _OnCharacterMovementUpdated;
+		private event FCharacterMovementUpdatedSignature _Event_OnCharacterMovementUpdated;
 		
+		internal void InvokeEvent_OnCharacterMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity)
+		{
+			_Event_OnCharacterMovementUpdated?.Invoke(DeltaSeconds, OldLocation, OldVelocity);
+		}
+
 		
 		/// <summary>
 		/// <para>Broadcast when Character's jump reaches its apex. Needs CharacterMovement->bNotifyApex = true </para>
@@ -498,20 +509,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_ACharacter_OnReachedJumpApex(NativePointer);
-				OnReachedJumpApex += value;
+				E_EVENT_ADD_ACharacter_OnReachedJumpApex(NativePointer);
+				_Event_OnReachedJumpApex += value;
 			}
 
 			remove
 			{
-				E_EV_R_ACharacter_OnReachedJumpApex(NativePointer);
-				OnReachedJumpApex -= value;
+				E_EVENT_DEL_ACharacter_OnReachedJumpApex(NativePointer);
+				_Event_OnReachedJumpApex -= value;
 			}
 
 		}
 
-		internal event FCharacterReachedApexSignature _OnReachedJumpApex;
+		private event FCharacterReachedApexSignature _Event_OnReachedJumpApex;
 		
+		internal void InvokeEvent_OnReachedJumpApex()
+		{
+			_Event_OnReachedJumpApex?.Invoke();
+		}
+
 		#endregion
 		
 		#region ExternMethods

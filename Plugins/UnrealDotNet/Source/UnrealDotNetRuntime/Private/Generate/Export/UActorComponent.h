@@ -2,6 +2,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
+#include "ManagerObject.h"
 #include "Components/ActorComponent.h"
 
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
@@ -65,6 +66,30 @@ extern "C"
 	DOTNET_EXPORT EComponentCreationMethod E_PROP_UActorComponent_CreationMethod_GET(INT_PTR Ptr) { return ((UActorComponent*)Ptr)->CreationMethod; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(INT_PTR Ptr, EComponentCreationMethod Value) { ((UActorComponent*)Ptr)->CreationMethod = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentActivated";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentActivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentActivatedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentActivated(UActorComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentDeactivated";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentDeactivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentDeactivateSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
+	{
+	}
+
 	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR)&((UActorComponent*)Ptr)->PrimaryComponentTick; }
 	
 	

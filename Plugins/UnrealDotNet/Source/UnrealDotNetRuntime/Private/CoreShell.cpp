@@ -1,6 +1,7 @@
 #include "UnrealDotNetRuntime.h"
 #include "CoreShell.h"
 #include "Misc/Paths.h"
+#include "ManagerObject.h"
 #include "DotnetExport.inl"
 
 #if WITH_EDITOR
@@ -30,7 +31,6 @@ DEFINE_LOG_CATEGORY(DotNetRuntime);
 
 static const FString PluginName = "UnrealDotNet";
 static const FString CoreCLR_Name = "coreclr.dll";
-static const float GC_TickTime = .5f;
 
 #if WITH_EDITOR
 static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
@@ -47,8 +47,8 @@ FString UCoreShell::UnrealEngine_Assemble = "UnrealEngine, Version=1.0.0.0, Cult
 FString UCoreShell::GameLogic_Assemble = "GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral";
 
 char UCoreShell::InvokeArgumentBuffer[MAX_INVOKE_ARGUMENT_SIZE] = { 0 };
+TSharedPtr<UManagerObject> UCoreShell::ManagerInstance;
 ICLRRuntimeHost4* UCoreShell::Host = NULL;
-FTimerHandle UCoreShell::GCTimerHandle;
 DWORD UCoreShell::DomainID = 0;
 
 void UCoreShell::Initialize()
@@ -296,15 +296,19 @@ void UCoreShell::GC()
 	}
 }
 
-void UCoreShell::StartAutoGC(UObject* WorldContextObject)
+void UCoreShell::CreateDotNetManager(UObject* WorldContextObject)
 {
-	auto dlg = FTimerDelegate::CreateStatic(&UCoreShell::GC);
-	WorldContextObject->GetWorld()->GetTimerManager().SetTimer(GCTimerHandle, dlg, GC_TickTime, true, 0);
+	ManagerInstance = MakeShareable(NewObject<UManagerObject>(WorldContextObject));
 }
 
-void UCoreShell::StopAutoGC(UObject* WorldContextObject)
+UManagerObject* UCoreShell::GetDotNetManager()
 {
-	WorldContextObject->GetWorld()->GetTimerManager().ClearTimer(GCTimerHandle);
+	return ManagerInstance.Get();
+}
+
+void UCoreShell::DestroyDotNetManager()
+{
+	ManagerInstance.Reset();
 }
 
 #pragma warning(pop)

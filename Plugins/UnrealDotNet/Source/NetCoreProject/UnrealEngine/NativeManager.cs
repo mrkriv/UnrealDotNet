@@ -83,6 +83,11 @@ namespace UnrealEngine
             return obj;
         }
 
+        public static void AddNativeWrapper(IntPtr Adress, NativeWrapper ManageObject)
+        {
+            Wrappers.Add(Adress, ManageObject);
+        }
+
         public static bool AddWrapper(IntPtr Adress, string DotnetTypeName)
         {
             var TypeName = JsonConvert.DeserializeObject<FDotnetTypeName>(DotnetTypeName);
@@ -153,27 +158,24 @@ namespace UnrealEngine
                     return;
                 }
 
-                var field = obj.GetType().GetField(EventFieldName,
-                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-                var dlg = (MulticastDelegate)field?.GetValue(Adress);
-
-                if (dlg == null)
+                var method = obj.GetType().GetMethod(EventFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+                
+                if (method == null)
                 {
                     UObjectBaseUtility.ULog_Error(
                         $"Failed call event {EventFieldName} in {Adress}, event not found in {obj.GetType()}");
                     return;
                 }
 
-                var Params = ParceParams(dlg.Method, Arguments, Size, out var IsSuccess);
+                var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
                 if (!IsSuccess)
                 {
                     UObjectBaseUtility.ULog_Error(
-                        $"Failed call method {field.Name}, method have {dlg.Method.GetParameters().Length} arguments, size not match");
+                        $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
 
-                dlg.DynamicInvoke(Params);
+                method.Invoke(obj, Params);
             }
             catch (Exception e)
             {

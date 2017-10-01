@@ -14,6 +14,7 @@ namespace UnrealEngine
 			: base(IntPtr.Zero)
 		{
 			NativePointer = E_NewObject_UActorComponent(Parent, Name);
+			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
 		#region DLLInmport
@@ -26,16 +27,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UActorComponent_OnComponentActivated(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UActorComponent_OnComponentActivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UActorComponent_OnComponentActivated(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UActorComponent_OnComponentActivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
@@ -314,38 +315,48 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UActorComponent_OnComponentActivated(NativePointer);
-				OnComponentActivated += value;
+				E_EVENT_ADD_UActorComponent_OnComponentActivated(NativePointer);
+				_Event_OnComponentActivated += value;
 			}
 
 			remove
 			{
-				E_EV_R_UActorComponent_OnComponentActivated(NativePointer);
-				OnComponentActivated -= value;
+				E_EVENT_DEL_UActorComponent_OnComponentActivated(NativePointer);
+				_Event_OnComponentActivated -= value;
 			}
 
 		}
 
-		internal event FActorComponentActivatedSignature _OnComponentActivated;
+		private event FActorComponentActivatedSignature _Event_OnComponentActivated;
 		
+		internal void InvokeEvent_OnComponentActivated(UActorComponent Component, bool bReset)
+		{
+			_Event_OnComponentActivated?.Invoke(Component, bReset);
+		}
+
 		public event FActorComponentDeactivateSignature OnComponentDeactivated
 		{
 			add
 			{
-				E_EV_A_UActorComponent_OnComponentDeactivated(NativePointer);
-				OnComponentDeactivated += value;
+				E_EVENT_ADD_UActorComponent_OnComponentDeactivated(NativePointer);
+				_Event_OnComponentDeactivated += value;
 			}
 
 			remove
 			{
-				E_EV_R_UActorComponent_OnComponentDeactivated(NativePointer);
-				OnComponentDeactivated -= value;
+				E_EVENT_DEL_UActorComponent_OnComponentDeactivated(NativePointer);
+				_Event_OnComponentDeactivated -= value;
 			}
 
 		}
 
-		internal event FActorComponentDeactivateSignature _OnComponentDeactivated;
+		private event FActorComponentDeactivateSignature _Event_OnComponentDeactivated;
 		
+		internal void InvokeEvent_OnComponentDeactivated(UActorComponent Component)
+		{
+			_Event_OnComponentDeactivated?.Invoke(Component);
+		}
+
 		#endregion
 		
 		#region ExternMethods

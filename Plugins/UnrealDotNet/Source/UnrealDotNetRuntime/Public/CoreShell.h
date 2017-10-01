@@ -10,6 +10,8 @@ DECLARE_LOG_CATEGORY_EXTERN(DotNetRuntime, Log, All);
 
 #define MAX_INVOKE_ARGUMENT_SIZE 96
 
+class UManagerObject;
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 {
@@ -18,8 +20,8 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 	static struct ICLRRuntimeHost4* Host;
 	static FString AssemblyGuid;
 	static DWORD DomainID;
-	static FTimerHandle GCTimerHandle;
 	static char InvokeArgumentBuffer[MAX_INVOKE_ARGUMENT_SIZE];
+	static TSharedPtr<UManagerObject> ManagerInstance;
 
 	static struct ICLRRuntimeHost4* CreateHost(const FString& coreCLRPath);
 	static DWORD CreateDomain(struct ICLRRuntimeHost4* Host, const FString& targetAppPath);
@@ -41,18 +43,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = DotNet)
 	static FString RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument);
 
-	static void* GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method);
-
-	static void GC();
+	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
+	static void CreateDotNetManager(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
-	static void StartAutoGC(UObject* WorldContextObject);
-
+	static UManagerObject* GetDotNetManager();
+	
 	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
-	static void StopAutoGC(UObject* WorldContextObject);
+	static void DestroyDotNetManager();
 
 	static void Initialize();
 	static void Uninitialize();
+
+	static void* GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method);
+	static void GC();
 
 	template<typename... ArgumentT>
 	static void InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)

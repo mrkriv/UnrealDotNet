@@ -14,6 +14,7 @@ namespace UnrealEngine
 			: base(IntPtr.Zero)
 		{
 			NativePointer = E_NewObject_UEngine(Parent, Name);
+			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
 		#region DLLInmport

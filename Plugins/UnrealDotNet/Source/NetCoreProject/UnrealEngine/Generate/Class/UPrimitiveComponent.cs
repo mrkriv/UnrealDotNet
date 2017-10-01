@@ -14,6 +14,7 @@ namespace UnrealEngine
 			: base(IntPtr.Zero)
 		{
 			NativePointer = E_NewObject_UPrimitiveComponent(Parent, Name);
+			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
 		#region DLLInmport
@@ -86,40 +87,40 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentWake(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_A_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EV_R_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnEndCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPrimitiveComponent_TranslucencySortPriority_GET(IntPtr Ptr);
@@ -542,20 +543,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
-				OnBeginCursorOver += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
+				_Event_OnBeginCursorOver += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
-				OnBeginCursorOver -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnBeginCursorOver(NativePointer);
+				_Event_OnBeginCursorOver -= value;
 			}
 
 		}
 
-		internal event FComponentBeginCursorOverSignature _OnBeginCursorOver;
+		private event FComponentBeginCursorOverSignature _Event_OnBeginCursorOver;
 		
+		internal void InvokeEvent_OnBeginCursorOver(UPrimitiveComponent TouchedComponent)
+		{
+			_Event_OnBeginCursorOver?.Invoke(TouchedComponent);
+		}
+
 		
 		/// <summary>
 		/// <para>Event called when collision settings change for this component. </para>
@@ -564,20 +570,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
-				OnComponentCollisionSettingsChangedEvent += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
+				_Event_OnComponentCollisionSettingsChangedEvent += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
-				OnComponentCollisionSettingsChangedEvent -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(NativePointer);
+				_Event_OnComponentCollisionSettingsChangedEvent -= value;
 			}
 
 		}
 
-		internal event FComponentCollisionSettingsChangedSignature _OnComponentCollisionSettingsChangedEvent;
+		private event FComponentCollisionSettingsChangedSignature _Event_OnComponentCollisionSettingsChangedEvent;
 		
+		internal void InvokeEvent_OnComponentCollisionSettingsChangedEvent(UPrimitiveComponent ChangedComponent)
+		{
+			_Event_OnComponentCollisionSettingsChangedEvent?.Invoke(ChangedComponent);
+		}
+
 		
 		/// <summary>
 		/// <para>Event called when something stops overlapping this component </para>
@@ -587,20 +598,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
-				OnComponentEndOverlap += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
+				_Event_OnComponentEndOverlap += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
-				OnComponentEndOverlap -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentEndOverlap(NativePointer);
+				_Event_OnComponentEndOverlap -= value;
 			}
 
 		}
 
-		internal event FComponentEndOverlapSignature _OnComponentEndOverlap;
+		private event FComponentEndOverlapSignature _Event_OnComponentEndOverlap;
 		
+		internal void InvokeEvent_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex)
+		{
+			_Event_OnComponentEndOverlap?.Invoke(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
+		}
+
 		
 		/// <summary>
 		/// <para>Event called when the underlying physics objects is put to sleep </para>
@@ -609,20 +625,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnComponentSleep(NativePointer);
-				OnComponentSleep += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentSleep(NativePointer);
+				_Event_OnComponentSleep += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnComponentSleep(NativePointer);
-				OnComponentSleep -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentSleep(NativePointer);
+				_Event_OnComponentSleep -= value;
 			}
 
 		}
 
-		internal event FComponentSleepSignature _OnComponentSleep;
+		private event FComponentSleepSignature _Event_OnComponentSleep;
 		
+		internal void InvokeEvent_OnComponentSleep(UPrimitiveComponent SleepingComponent, string BoneName)
+		{
+			_Event_OnComponentSleep?.Invoke(SleepingComponent, BoneName);
+		}
+
 		
 		/// <summary>
 		/// <para>Event called when the underlying physics objects is woken up </para>
@@ -631,20 +652,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnComponentWake(NativePointer);
-				OnComponentWake += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentWake(NativePointer);
+				_Event_OnComponentWake += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnComponentWake(NativePointer);
-				OnComponentWake -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentWake(NativePointer);
+				_Event_OnComponentWake -= value;
 			}
 
 		}
 
-		internal event FComponentWakeSignature _OnComponentWake;
+		private event FComponentWakeSignature _Event_OnComponentWake;
 		
+		internal void InvokeEvent_OnComponentWake(UPrimitiveComponent WakingComponent, string BoneName)
+		{
+			_Event_OnComponentWake?.Invoke(WakingComponent, BoneName);
+		}
+
 		
 		/// <summary>
 		/// <para>Event called when the mouse cursor is moved off this component and mouse over events are enabled in the player controller </para>
@@ -653,20 +679,25 @@ namespace UnrealEngine
 		{
 			add
 			{
-				E_EV_A_UPrimitiveComponent_OnEndCursorOver(NativePointer);
-				OnEndCursorOver += value;
+				E_EVENT_ADD_UPrimitiveComponent_OnEndCursorOver(NativePointer);
+				_Event_OnEndCursorOver += value;
 			}
 
 			remove
 			{
-				E_EV_R_UPrimitiveComponent_OnEndCursorOver(NativePointer);
-				OnEndCursorOver -= value;
+				E_EVENT_DEL_UPrimitiveComponent_OnEndCursorOver(NativePointer);
+				_Event_OnEndCursorOver -= value;
 			}
 
 		}
 
-		internal event FComponentEndCursorOverSignature _OnEndCursorOver;
+		private event FComponentEndCursorOverSignature _Event_OnEndCursorOver;
 		
+		internal void InvokeEvent_OnEndCursorOver(UPrimitiveComponent TouchedComponent)
+		{
+			_Event_OnEndCursorOver?.Invoke(TouchedComponent);
+		}
+
 		#endregion
 		
 		#region ExternMethods

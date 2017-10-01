@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Delegate = Generator.Metadata.Delegate;
 
 namespace Generator
 {
@@ -13,14 +14,14 @@ namespace Generator
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
                 var OutputPriveteGen = Path.Combine(OutputDir, "Private", "Generate");
-                var OutputPublicGet = Path.Combine(OutputDir, "Public", "Generate");
+                var OutputPublicGen = Path.Combine(OutputDir, "Public", "Generate");
 
                 var OutputPriveteExport = Path.Combine(OutputPriveteGen, "Export");
                 var OutputPriveteManage = Path.Combine(OutputPriveteGen, "Manage");
-                var OutputPublicManage = Path.Combine(OutputPublicGet, "Manage");
+                var OutputPublicManage = Path.Combine(OutputPublicGen, "Manage");
 
                 Directory.GetFiles(OutputPriveteGen, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
-                Directory.GetFiles(OutputPublicGet, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                Directory.GetFiles(OutputPublicGen, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
 
                 foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
@@ -35,6 +36,8 @@ namespace Generator
                     GenerateManageClassH(cl, OutputPublicManage);
                     GenerateManageClassCPP(cl, OutputPriveteManage);
                 }
+
+                GenerateManageEventSender(domain.Delegates, Path.Combine(OutputPublicGen, "ManageEventSender"));
             }
 
             #region Class
@@ -47,6 +50,7 @@ namespace Generator
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
                 cw.WriteLine("#include \"CoreMinimal.h\"");
+                cw.WriteLine("#include \"ManagerObject.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
 
                 if (!Class.IsFinal)
@@ -250,6 +254,8 @@ namespace Generator
             {
                 if (method.OwnerClass.IsFinal && method.AccessModifier != AccessModifier.Public)
                     return;
+
+                // todo: убрать этот ад со строками (делать преобразования всех типов одним шаблонным методом)
 
                 var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
                                     method.ReturnType.Type == "FString";
@@ -539,9 +545,86 @@ namespace Generator
 
             private static void GeneratePropertyDelegate(CoreWriter cw, Class Class, Variable prop)
             {
+                var name = prop.GetDisplayName();
+
+                var dlg = ((DelegateVariable) prop).Delegate;
+
+                cw.WriteLine($"{CPP_API} void {ExportEventAddPrefix}{Class.Name}_{name}({Class.Name}* Obj)");
+                cw.OpenBlock();
+                
+                cw.WriteLine($"auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());");
+                cw.WriteLine($"wrapper->ManageDelegateName = \"{EventInvokePrefix}{prop.Name}\";");
+                cw.WriteLine($"wrapper->SourceObject = Obj;");
+
+                cw.WriteLine($"Obj->{prop.Name}.AddDynamic(wrapper, &UManageEventSender::Wrapper_{dlg.Name});");
+
+                cw.CloseBlock();
+                cw.WriteLine();
+
+                cw.WriteLine($"{CPP_API} void {ExportEventRemovePrefix}{Class.Name}_{name}({Class.Name}* Obj)");
+                cw.OpenBlock();
+
+                // todo: реализовать дизлайк, отписку
+
+                cw.CloseBlock();
+                cw.WriteLine();
             }
 
             #endregion Struct
+
+            private static void GenerateManageEventSender(IEnumerable<Metadata.Delegate> Delegates, string OutputPath)
+            {
+                var cw = new CoreWriter();
+                
+                cw.WriteLine("#pragma once");
+                cw.WriteLine();
+                cw.WriteLine("#include \"CoreShell.h\"");
+                cw.WriteLine("#include \"ManageEventSender.generated.h\"");
+                cw.WriteLine();
+                cw.WriteLine("UCLASS()");
+                cw.WriteLine("class UNREALDOTNETRUNTIME_API UManageEventSender : public UObject");
+                cw.OpenBlock();
+                cw.WriteLine("GENERATED_BODY()");
+                cw.WriteLine();
+                cw.WriteLine("public:");
+                cw.WriteLine();
+                cw.WriteLine("UPROPERTY()");
+                cw.WriteLine("UObject* SourceObject;");
+                cw.WriteLine();
+                cw.WriteLine("UPROPERTY()");
+                cw.WriteLine("FString ManageDelegateName;");
+                cw.WriteLine();
+
+                foreach (var dlg in Delegates)
+                {
+                    GenerateDelegateSender(dlg, cw);
+                }
+
+                cw.CloseBlock();
+                cw.WriteLine(";");
+
+                cw.SaveToFile(OutputPath + ".h");
+            }
+
+            private static void GenerateDelegateSender(Delegate dlg, CoreWriter cw)
+            {
+                var call = string.Join(", ", dlg.Parametrs.Select(x => x.Name));
+                var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal()));
+                var signature = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal(true)));
+                
+                if (call.Any())
+                    call = ", " + call;
+
+                if (signature.Any())
+                    signature = $"<{signature}>";
+
+                cw.WriteLine($"UFUNCTION()");
+                cw.WriteLine($"void Wrapper_{dlg.Name}({param})");
+                cw.OpenBlock();
+                cw.WriteLine($"UCoreShell::InvokeEventInObject{signature}(SourceObject, ManageDelegateName{call});");
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
 
             private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
             {
