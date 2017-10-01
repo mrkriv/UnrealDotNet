@@ -39,7 +39,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector2D*)Position;
 		auto _p1 = *(FVector2D*)Size;
-		auto _p2 = FName(UTF8_TO_TCHAR(InName));
+		auto _p2 = ConvertFromManage_FName(InName);
 		auto _p3 = bConsumesInput;
 		auto _p4 = Priority;
 		Self->AddHitBox(_p0, _p1, _p2, _p3, _p4);
@@ -109,25 +109,25 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxBeginCursorOver(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->NotifyHitBoxBeginCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxClick(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->NotifyHitBoxClick(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxEndCursorOver(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->NotifyHitBoxEndCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxRelease(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->NotifyHitBoxRelease(_p0);
 	}
 
@@ -157,25 +157,25 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_ReceiveHitBoxBeginCursorOver(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->ReceiveHitBoxBeginCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ReceiveHitBoxClick(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->ReceiveHitBoxClick(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ReceiveHitBoxEndCursorOver(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->ReceiveHitBoxEndCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ReceiveHitBoxRelease(AHUD* Self, char* BoxName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoxName));
+		auto _p0 = ConvertFromManage_FName(BoxName);
 		Self->ReceiveHitBoxRelease(_p0);
 	}
 
@@ -199,7 +199,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_ShowDebug(AHUD* Self, char* DebugType)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(DebugType));
+		auto _p0 = ConvertFromManage_FName(DebugType);
 		Self->ShowDebug(_p0);
 	}
 
@@ -212,7 +212,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_ShowDebugToggleSubCategory(AHUD* Self, char* Category)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(Category));
+		auto _p0 = ConvertFromManage_FName(Category);
 		Self->ShowDebugToggleSubCategory(_p0);
 	}
 

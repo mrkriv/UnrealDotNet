@@ -152,7 +152,7 @@ extern "C"
 	
 	/*	FAudioComponentParam	*/
 	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FAudioComponentParam_FName(char* Name) { return (INT_PTR) new FAudioComponentParam(FName(UTF8_TO_TCHAR(Name))); }
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAudioComponentParam_FName(char* Name) { return (INT_PTR) new FAudioComponentParam(ConvertFromManage_FName(Name)); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FAudioComponentParam() { return (INT_PTR) new FAudioComponentParam(); }
 	
@@ -970,7 +970,7 @@ extern "C"
 	
 	/*	FLevelStreamingStatus	*/
 	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(char* InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int32 InLODIndex) { return (INT_PTR) new FLevelStreamingStatus(FName(UTF8_TO_TCHAR(InPackageName)), bInShouldBeLoaded, bInShouldBeVisible, InLODIndex); }
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(char* InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int32 InLODIndex) { return (INT_PTR) new FLevelStreamingStatus(ConvertFromManage_FName(InPackageName), bInShouldBeLoaded, bInShouldBeVisible, InLODIndex); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus() { return (INT_PTR) new FLevelStreamingStatus(); }
 	
@@ -1988,7 +1988,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FRotator_InitFromString(FRotator* Self, char* InSourceString)
 	{
-		auto _p0 = FString(InSourceString);
+		auto _p0 = ConvertFromManage_FString(InSourceString);
 		return ConvertForManage(Self->InitFromString(_p0));
 	}
 
@@ -2413,7 +2413,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FTimeline_SetDirectionPropertyName(FTimeline* Self, char* InDirectionPropertyName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(InDirectionPropertyName));
+		auto _p0 = ConvertFromManage_FName(InDirectionPropertyName);
 		Self->SetDirectionPropertyName(_p0);
 	}
 
@@ -2777,7 +2777,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FTransform_InitFromString(FTransform* Self, char* InSourceString)
 	{
-		auto _p0 = FString(InSourceString);
+		auto _p0 = ConvertFromManage_FString(InSourceString);
 		return ConvertForManage(Self->InitFromString(_p0));
 	}
 
@@ -3032,7 +3032,7 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_FURL_FilterURLString(FURL* Self, char* Str)
 	{
-		auto _p0 = FString(Str);
+		auto _p0 = ConvertFromManage_FString(Str);
 		Self->FilterURLString(_p0);
 	}
 
@@ -3348,7 +3348,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FVector_InitFromString(FVector* Self, char* InSourceString)
 	{
-		auto _p0 = FString(InSourceString);
+		auto _p0 = ConvertFromManage_FString(InSourceString);
 		return ConvertForManage(Self->InitFromString(_p0));
 	}
 
@@ -3698,7 +3698,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FVector2D_InitFromString(FVector2D* Self, char* InSourceString)
 	{
-		auto _p0 = FString(InSourceString);
+		auto _p0 = ConvertFromManage_FString(InSourceString);
 		return ConvertForManage(Self->InitFromString(_p0));
 	}
 
@@ -3830,7 +3830,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FVector4_InitFromString(FVector4* Self, char* InSourceString)
 	{
-		auto _p0 = FString(InSourceString);
+		auto _p0 = ConvertFromManage_FString(InSourceString);
 		return ConvertForManage(Self->InitFromString(_p0));
 	}
 

@@ -15,7 +15,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPlayer_ConsoleCommand(UPlayer* Self, char* Cmd, bool bWriteToLog, int& ResultStringLen)
 	{
-		auto _p0 = FString(Cmd);
+		auto _p0 = ConvertFromManage_FString(Cmd);
 		auto _p1 = bWriteToLog;
 		auto _result = ConvertForManage(Self->ConsoleCommand(_p0, _p1));
 		ResultStringLen = _result.Len();

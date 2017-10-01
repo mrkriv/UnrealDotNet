@@ -48,7 +48,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UObjectBase_LowLevelRename(UObjectBase* Self, char* NewName, UObject* NewOuter)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(NewName));
+		auto _p0 = ConvertFromManage_FName(NewName);
 		auto _p1 = NewOuter;
 		((E_PROTECTED_WRAP_UObjectBase*)Self)->LowLevelRename_WRAP(_p0, _p1);
 	}

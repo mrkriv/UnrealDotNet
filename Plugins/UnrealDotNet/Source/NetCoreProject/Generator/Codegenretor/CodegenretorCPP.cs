@@ -261,7 +261,8 @@ namespace Generator
                                     method.ReturnType.Type == "FString";
 
                 var param = GetMethodSignatuteParam(method, genStringWrap);
-
+                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
+                
                 cw.WriteLine($"{CPP_API} auto {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
@@ -289,9 +290,6 @@ namespace Generator
                     cw.Write($"ConvertForManage(");
                     bCloseCount++;
                 }
-
-                var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
-
                 if (method.AccessModifier == AccessModifier.Public)
                 {
                     cw.Write($"Self->{method.Name}({call})");
@@ -366,35 +364,15 @@ namespace Generator
                 }
 
                 var result = "";
-                var bCloseCount = 1;
-
-                switch (variable.Type)
-                {
-                    case "TCHAR":
-                        result += "UTF8_TO_TCHAR(";
-                        break;
-
-                    case "FString":
-                        result += "FString(";
-                        break;
-
-                    case "FName":
-                        result += "FName(UTF8_TO_TCHAR(";
-                        bCloseCount = 2;
-                        break;
-
-                    case "FText":
-                        result += "FText::FromString(FString(";
-                        bCloseCount = 2;
-                        break;
-
-                    default:
-                        bCloseCount = 0;
-                        break;
-                }
+                var useConvertFromManage = Filter.UseConvertFromManageTypeList.Contains(variable.Type);
+                
+                if(useConvertFromManage)
+                    result += $"ConvertFromManage_{variable.Type}(";
 
                 result += variable.Name;
-                result += new string(')', bCloseCount);
+
+                if (useConvertFromManage)
+                    result += ')';
 
                 return result;
             }

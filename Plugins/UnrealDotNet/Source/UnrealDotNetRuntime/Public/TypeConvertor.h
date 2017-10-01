@@ -9,12 +9,6 @@ TYPE ConvertForManage(TYPE object)	 \
 	return object;					 \
 }									 
 
-//template<typename T>
-//T ConvertForManage(T object)
-//{
-//	return object;
-//}
-
 // todo:: подучить с++ и убрать этот костыль
 
 GENEGATE_SIMPLE(bool)
@@ -47,4 +41,24 @@ ObjectPointerDescription ConvertForManage(UObject* object)
 	NeedDeleteQueue.Enqueue((INT_PTR)string);
 
 	return desc;
+}
+
+TCHAR* ConvertFromManage_TCHAR(char* String)
+{
+	return UTF8_TO_TCHAR(String);
+}
+
+FString ConvertFromManage_FString(char* String)
+{
+	return FString(UTF8_TO_TCHAR(String));
+}
+
+FName ConvertFromManage_FName(char* String)
+{
+	return FName(UTF8_TO_TCHAR(String));
+}
+
+FText ConvertFromManage_FText(char* String)
+{
+	return FText::FromString(FString(UTF8_TO_TCHAR(String)));
 }

@@ -36,7 +36,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMeshComponent_GetScalarParameterDefaultValue(UMeshComponent* Self, char* ParameterName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(ParameterName));
+		auto _p0 = ConvertFromManage_FName(ParameterName);
 		return ConvertForManage(Self->GetScalarParameterDefaultValue(_p0));
 	}
 
@@ -47,14 +47,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMeshComponent_SetScalarParameterValueOnMaterials(UMeshComponent* Self, char* ParameterName, float ParameterValue)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(ParameterName));
+		auto _p0 = ConvertFromManage_FName(ParameterName);
 		auto _p1 = ParameterValue;
 		Self->SetScalarParameterValueOnMaterials(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UMeshComponent_SetVectorParameterValueOnMaterials(UMeshComponent* Self, char* ParameterName, INT_PTR ParameterValue)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(ParameterName));
+		auto _p0 = ConvertFromManage_FName(ParameterName);
 		auto _p1 = *(FVector*)ParameterValue;
 		Self->SetVectorParameterValueOnMaterials(_p0, _p1);
 	}

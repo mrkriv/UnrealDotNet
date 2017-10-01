@@ -97,7 +97,7 @@ extern "C"
 	{
 		auto _p0 = InParent;
 		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
-		auto _p2 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p2 = ConvertFromManage_FName(InSocketName);
 		return ConvertForManage(Self->AttachToComponent(_p0, _p1, _p2));
 	}
 
@@ -112,7 +112,7 @@ extern "C"
 	{
 		auto _p0 = *(FTransform*)NewRelativeTransform;
 		auto _p1 = Parent;
-		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = ConvertFromManage_FName(SocketName);
 		return (INT_PTR) new FTransform(((E_PROTECTED_WRAP_USceneComponent*)Self)->CalcNewComponentToWorld_WRAP(_p0, _p1, _p2));
 	}
 
@@ -120,7 +120,7 @@ extern "C"
 	{
 		auto _p0 = *(FTransform*)NewRelativeTransform;
 		auto _p1 = Parent;
-		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = ConvertFromManage_FName(SocketName);
 		return (INT_PTR) new FTransform(((E_PROTECTED_WRAP_USceneComponent*)Self)->CalcNewComponentToWorld_GeneralCase_WRAP(_p0, _p1, _p2));
 	}
 
@@ -131,7 +131,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_CheckStaticMobilityAndWarn(USceneComponent* Self, char* ActionText)
 	{
-		auto _p0 = FText::FromString(FString(ActionText));
+		auto _p0 = ConvertFromManage_FText(ActionText);
 		return ConvertForManage(((E_PROTECTED_WRAP_USceneComponent*)Self)->CheckStaticMobilityAndWarn_WRAP(_p0));
 	}
 
@@ -262,7 +262,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_K2_AttachToComponent(USceneComponent* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
 	{
 		auto _p0 = Parent;
-		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p1 = ConvertFromManage_FName(SocketName);
 		auto _p2 = LocationRule;
 		auto _p3 = RotationRule;
 		auto _p4 = ScaleRule;
@@ -371,7 +371,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_SetupAttachment(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
 	{
 		auto _p0 = InParent;
-		auto _p1 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p1 = ConvertFromManage_FName(InSocketName);
 		Self->SetupAttachment(_p0, _p1);
 	}
 
@@ -408,7 +408,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_SnapTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
 	{
 		auto _p0 = InParent;
-		auto _p1 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p1 = ConvertFromManage_FName(InSocketName);
 		return ConvertForManage(Self->SnapTo(_p0, _p1));
 	}
 

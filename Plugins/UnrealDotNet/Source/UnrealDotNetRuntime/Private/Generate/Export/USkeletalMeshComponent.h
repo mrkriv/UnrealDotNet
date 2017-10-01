@@ -46,7 +46,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetMorphTarget(USkeletalMeshComponent* Self, char* MorphTargetName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(MorphTargetName));
+		auto _p0 = ConvertFromManage_FName(MorphTargetName);
 		return ConvertForManage(Self->GetMorphTarget(_p0));
 	}
 
@@ -73,7 +73,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetMorphTarget(USkeletalMeshComponent* Self, char* MorphTargetName, float Value, bool bRemoveZeroWeight)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(MorphTargetName));
+		auto _p0 = ConvertFromManage_FName(MorphTargetName);
 		auto _p1 = Value;
 		auto _p2 = bRemoveZeroWeight;
 		Self->SetMorphTarget(_p0, _p1, _p2);

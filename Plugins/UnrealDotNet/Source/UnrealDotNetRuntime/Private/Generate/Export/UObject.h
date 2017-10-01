@@ -78,7 +78,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_PostRename(UObject* Self, UObject* OldOuter, char* OldName)
 	{
 		auto _p0 = OldOuter;
-		auto _p1 = FName(UTF8_TO_TCHAR(OldName));
+		auto _p1 = ConvertFromManage_FName(OldName);
 		Self->PostRename(_p0, _p1);
 	}
 

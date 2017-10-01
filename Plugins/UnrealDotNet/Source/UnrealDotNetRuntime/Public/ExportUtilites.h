@@ -8,4 +8,11 @@ typedef struct ObjectPointerDescription
 }
 ObjectPointerDescription;
 
+typedef struct StringWrapper
+{
+	INT_PTR Pointer;
+	int32 Len;
+}
+StringWrapper;
+
 TQueue<INT_PTR> NeedDeleteQueue;

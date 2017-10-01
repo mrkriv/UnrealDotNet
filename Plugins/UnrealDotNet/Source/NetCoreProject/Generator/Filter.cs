@@ -85,6 +85,14 @@ namespace Generator
             "Type",
         };
 
+        public static string[] UseConvertFromManageTypeList =
+        {
+            "TCHAR",
+            "FText",
+            "FName",
+            "FString",
+        };
+
 
         public static string[] DelegateBlackList =
         {

@@ -362,13 +362,13 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen(ACharacter* Self, char* InString)
 	{
-		auto _p0 = FString(InString);
+		auto _p0 = ConvertFromManage_FString(InString);
 		Self->RootMotionDebugClientPrintOnScreen(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(ACharacter* Self, char* InString)
 	{
-		auto _p0 = FString(InString);
+		auto _p0 = ConvertFromManage_FString(InString);
 		Self->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
 	}
 
@@ -389,7 +389,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_SetBase(ACharacter* Self, UPrimitiveComponent* NewBase, char* BoneName, bool bNotifyActor)
 	{
 		auto _p0 = NewBase;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bNotifyActor;
 		Self->SetBase(_p0, _p1, _p2);
 	}

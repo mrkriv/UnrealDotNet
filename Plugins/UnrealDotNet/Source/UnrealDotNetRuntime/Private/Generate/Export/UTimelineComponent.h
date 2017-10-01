@@ -70,7 +70,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UTimelineComponent_SetDirectionPropertyName(UTimelineComponent* Self, char* DirectionPropertyName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(DirectionPropertyName));
+		auto _p0 = ConvertFromManage_FName(DirectionPropertyName);
 		Self->SetDirectionPropertyName(_p0);
 	}
 

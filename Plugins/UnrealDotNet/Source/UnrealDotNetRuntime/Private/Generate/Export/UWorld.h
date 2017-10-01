@@ -238,7 +238,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_ConvertToPIEPackageName(UWorld* Self, char* PackageName, int32 PIEInstanceID, int& ResultStringLen)
 	{
-		auto _p0 = FString(PackageName);
+		auto _p0 = ConvertFromManage_FString(PackageName);
 		auto _p1 = PIEInstanceID;
 		auto _result = ConvertForManage(Self->ConvertToPIEPackageName(_p0, _p1));
 		ResultStringLen = _result.Len();
@@ -257,7 +257,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_DebugDrawSceneQueries(UWorld* Self, char* UsedTraceTag)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(UsedTraceTag));
+		auto _p0 = ConvertFromManage_FName(UsedTraceTag);
 		return ConvertForManage(Self->DebugDrawSceneQueries(_p0));
 	}
 
@@ -282,13 +282,13 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_DuplicateRequestedLevels(UWorld* Self, char* MapName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(MapName));
+		auto _p0 = ConvertFromManage_FName(MapName);
 		Self->DuplicateRequestedLevels(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_DuplicateWorldForPIE(UWorld* Self, char* PackageName, UWorld* OwningWorld)
 	{
-		auto _p0 = FString(PackageName);
+		auto _p0 = ConvertFromManage_FString(PackageName);
 		auto _p1 = OwningWorld;
 		return ConvertForManage(Self->DuplicateWorldForPIE(_p0, _p1));
 	}
@@ -578,7 +578,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_RemovePIEPrefix(UWorld* Self, char* Source, int& ResultStringLen)
 	{
-		auto _p0 = FString(Source);
+		auto _p0 = ConvertFromManage_FString(Source);
 		auto _result = ConvertForManage(Self->RemovePIEPrefix(_p0));
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
@@ -654,8 +654,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_StripPIEPrefixFromPackageName(UWorld* Self, char* PackageName, char* Prefix, int& ResultStringLen)
 	{
-		auto _p0 = FString(PackageName);
-		auto _p1 = FString(Prefix);
+		auto _p0 = ConvertFromManage_FString(PackageName);
+		auto _p1 = ConvertFromManage_FString(Prefix);
 		auto _result = ConvertForManage(Self->StripPIEPrefixFromPackageName(_p0, _p1));
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);

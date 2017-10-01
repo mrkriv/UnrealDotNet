@@ -205,7 +205,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AActor_ActorHasTag(AActor* Self, char* Tag)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(Tag));
+		auto _p0 = ConvertFromManage_FName(Tag);
 		return ConvertForManage(Self->ActorHasTag(_p0));
 	}
 
@@ -216,7 +216,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AActor_AddComponent(AActor* Self, char* TemplateName, bool bManualAttachment, INT_PTR RelativeTransform, UObject* ComponentTemplateContext)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(TemplateName));
+		auto _p0 = ConvertFromManage_FName(TemplateName);
 		auto _p1 = bManualAttachment;
 		auto _p2 = *(FTransform*)RelativeTransform;
 		auto _p3 = ComponentTemplateContext;
@@ -251,7 +251,7 @@ extern "C"
 	{
 		auto _p0 = ParentActor;
 		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
-		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = ConvertFromManage_FName(SocketName);
 		Self->AttachToActor(_p0, _p1, _p2);
 	}
 
@@ -259,7 +259,7 @@ extern "C"
 	{
 		auto _p0 = Parent;
 		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
-		auto _p2 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p2 = ConvertFromManage_FName(SocketName);
 		Self->AttachToComponent(_p0, _p1, _p2);
 	}
 
@@ -471,7 +471,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AActor_GetInputAxisValue(AActor* Self, char* InputAxisName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(InputAxisName));
+		auto _p0 = ConvertFromManage_FName(InputAxisName);
 		return ConvertForManage(Self->GetInputAxisValue(_p0));
 	}
 
@@ -652,7 +652,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_K2_AttachToActor(AActor* Self, AActor* ParentActor, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
 	{
 		auto _p0 = ParentActor;
-		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p1 = ConvertFromManage_FName(SocketName);
 		auto _p2 = LocationRule;
 		auto _p3 = RotationRule;
 		auto _p4 = ScaleRule;
@@ -663,7 +663,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_K2_AttachToComponent(AActor* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
 	{
 		auto _p0 = Parent;
-		auto _p1 = FName(UTF8_TO_TCHAR(SocketName));
+		auto _p1 = ConvertFromManage_FName(SocketName);
 		auto _p2 = LocationRule;
 		auto _p3 = RotationRule;
 		auto _p4 = ScaleRule;
@@ -730,7 +730,7 @@ extern "C"
 		auto _p1 = NoiseInstigator;
 		auto _p2 = *(FVector*)NoiseLocation;
 		auto _p3 = MaxRange;
-		auto _p4 = FName(UTF8_TO_TCHAR(Tag));
+		auto _p4 = ConvertFromManage_FName(Tag);
 		Self->MakeNoise(_p0, _p1, _p2, _p3, _p4);
 	}
 
@@ -1005,7 +1005,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AActor_SetNetDriverName(AActor* Self, char* NewNetDriverName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(NewNetDriverName));
+		auto _p0 = ConvertFromManage_FName(NewNetDriverName);
 		Self->SetNetDriverName(_p0);
 	}
 
@@ -1048,7 +1048,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_SnapRootComponentTo(AActor* Self, AActor* InParentActor, char* InSocketName)
 	{
 		auto _p0 = InParentActor;
-		auto _p1 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p1 = ConvertFromManage_FName(InSocketName);
 		Self->SnapRootComponentTo(_p0, _p1);
 	}
 

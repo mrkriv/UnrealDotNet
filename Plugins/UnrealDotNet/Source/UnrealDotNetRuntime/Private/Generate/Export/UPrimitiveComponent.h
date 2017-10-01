@@ -156,7 +156,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AddAngularImpulse(UPrimitiveComponent* Self, INT_PTR Impulse, char* BoneName, bool bVelChange)
 	{
 		auto _p0 = *(FVector*)Impulse;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bVelChange;
 		Self->AddAngularImpulse(_p0, _p1, _p2);
 	}
@@ -164,7 +164,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AddForce(UPrimitiveComponent* Self, INT_PTR Force, char* BoneName, bool bAccelChange)
 	{
 		auto _p0 = *(FVector*)Force;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bAccelChange;
 		Self->AddForce(_p0, _p1, _p2);
 	}
@@ -173,7 +173,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Force;
 		auto _p1 = *(FVector*)Location;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->AddForceAtLocation(_p0, _p1, _p2);
 	}
 
@@ -181,14 +181,14 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Force;
 		auto _p1 = *(FVector*)Location;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->AddForceAtLocationLocal(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AddImpulse(UPrimitiveComponent* Self, INT_PTR Impulse, char* BoneName, bool bVelChange)
 	{
 		auto _p0 = *(FVector*)Impulse;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bVelChange;
 		Self->AddImpulse(_p0, _p1, _p2);
 	}
@@ -197,14 +197,14 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Impulse;
 		auto _p1 = *(FVector*)Location;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->AddImpulseAtLocation(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AddTorque(UPrimitiveComponent* Self, INT_PTR Torque, char* BoneName, bool bAccelChange)
 	{
 		auto _p0 = *(FVector*)Torque;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bAccelChange;
 		Self->AddTorque(_p0, _p1, _p2);
 	}
@@ -248,7 +248,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchWakeEvents(UPrimitiveComponent* Self, int32 WakeEvent, char* BoneName)
 	{
 		auto _p0 = WakeEvent;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		Self->DispatchWakeEvents(_p0, _p1);
 	}
 
@@ -267,7 +267,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetCenterOfMass(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		return (INT_PTR) new FVector(Self->GetCenterOfMass(_p0));
 	}
 
@@ -275,7 +275,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Point;
 		auto _p1 = *(FVector*)OutPointOnBody;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		return ConvertForManage(Self->GetClosestPointOnCollision(_p0, _p1, _p2));
 	}
 
@@ -307,20 +307,20 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocity(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		return (INT_PTR) new FVector(Self->GetPhysicsAngularVelocity(_p0));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsLinearVelocity(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		return (INT_PTR) new FVector(Self->GetPhysicsLinearVelocity(_p0));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsLinearVelocityAtPoint(UPrimitiveComponent* Self, INT_PTR Point, char* BoneName)
 	{
 		auto _p0 = *(FVector*)Point;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		return (INT_PTR) new FVector(Self->GetPhysicsLinearVelocityAtPoint(_p0, _p1));
 	}
 
@@ -407,13 +407,13 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_PutRigidBodyToSleep(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		Self->PutRigidBodyToSleep(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_RigidBodyIsAwake(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		return ConvertForManage(Self->RigidBodyIsAwake(_p0));
 	}
 
@@ -470,7 +470,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetCenterOfMass(UPrimitiveComponent* Self, INT_PTR CenterOfMassOffset, char* BoneName)
 	{
 		auto _p0 = *(FVector*)CenterOfMassOffset;
-		auto _p1 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p1 = ConvertFromManage_FName(BoneName);
 		Self->SetCenterOfMass(_p0, _p1);
 	}
 
@@ -482,7 +482,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetCollisionProfileName(UPrimitiveComponent* Self, char* InCollisionProfileName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(InCollisionProfileName));
+		auto _p0 = ConvertFromManage_FName(InCollisionProfileName);
 		Self->SetCollisionProfileName(_p0);
 	}
 
@@ -530,7 +530,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetMassOverrideInKg(UPrimitiveComponent* Self, char* BoneName, float MassInKg, bool bOverrideMass)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		auto _p1 = MassInKg;
 		auto _p2 = bOverrideMass;
 		Self->SetMassOverrideInKg(_p0, _p1, _p2);
@@ -538,7 +538,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetMassScale(UPrimitiveComponent* Self, char* BoneName, float InMassScale)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		auto _p1 = InMassScale;
 		Self->SetMassScale(_p0, _p1);
 	}
@@ -565,7 +565,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)NewAngVel;
 		auto _p1 = bAddToCurrent;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->SetPhysicsAngularVelocity(_p0, _p1, _p2);
 	}
 
@@ -573,7 +573,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)NewVel;
 		auto _p1 = bAddToCurrent;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->SetPhysicsLinearVelocity(_p0, _p1, _p2);
 	}
 
@@ -581,7 +581,7 @@ extern "C"
 	{
 		auto _p0 = NewMaxAngVel;
 		auto _p1 = bAddToCurrent;
-		auto _p2 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->SetPhysicsMaxAngularVelocity(_p0, _p1, _p2);
 	}
 
@@ -672,14 +672,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_WakeRigidBody(UPrimitiveComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		Self->WakeRigidBody(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_WeldTo(UPrimitiveComponent* Self, USceneComponent* InParent, char* InSocketName)
 	{
 		auto _p0 = InParent;
-		auto _p1 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p1 = ConvertFromManage_FName(InSocketName);
 		Self->WeldTo(_p0, _p1);
 	}
 

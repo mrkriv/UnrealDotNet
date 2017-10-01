@@ -140,7 +140,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_ComponentHasTag(UActorComponent* Self, char* Tag)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(Tag));
+		auto _p0 = ConvertFromManage_FName(Tag);
 		return ConvertForManage(Self->ComponentHasTag(_p0));
 	}
 

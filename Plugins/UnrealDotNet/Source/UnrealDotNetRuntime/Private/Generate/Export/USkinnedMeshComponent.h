@@ -56,7 +56,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneIndex(USkinnedMeshComponent* Self, char* BoneName)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		return ConvertForManage(Self->GetBoneIndex(_p0));
 	}
 
@@ -75,7 +75,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName, int& ResultStringLen)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
+		auto _p0 = ConvertFromManage_FName(BoneName);
 		auto _result = ConvertForManage(Self->GetParentBone(_p0).ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
@@ -83,7 +83,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName, int& ResultStringLen)
 	{
-		auto _p0 = FName(UTF8_TO_TCHAR(InSocketName));
+		auto _p0 = ConvertFromManage_FName(InSocketName);
 		auto _result = ConvertForManage(Self->GetSocketBoneName(_p0).ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
