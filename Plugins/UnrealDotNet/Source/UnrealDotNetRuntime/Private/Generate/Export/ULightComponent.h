@@ -13,88 +13,88 @@ extern "C"
 		return (INT_PTR)NewObject<ULightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT bool E_ULightComponent_AffectsPrimitive(ULightComponent* Self, UPrimitiveComponent* Primitive)
+	DOTNET_EXPORT auto E_ULightComponent_AffectsPrimitive(ULightComponent* Self, UPrimitiveComponent* Primitive)
 	{
 		auto _p0 = Primitive;
-		return (Self)->AffectsPrimitive(_p0);
+		return ConvertForManage(Self->AffectsPrimitive(_p0));
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetAffectDynamicIndirectLighting(ULightComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetAffectDynamicIndirectLighting(ULightComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetAffectDynamicIndirectLighting(_p0);
+		Self->SetAffectDynamicIndirectLighting(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetAffectTranslucentLighting(ULightComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetAffectTranslucentLighting(ULightComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetAffectTranslucentLighting(_p0);
+		Self->SetAffectTranslucentLighting(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetBloomScale(ULightComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetBloomScale(ULightComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetBloomScale(_p0);
+		Self->SetBloomScale(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetBloomThreshold(ULightComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetBloomThreshold(ULightComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetBloomThreshold(_p0);
+		Self->SetBloomThreshold(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetEnableLightShaftBloom(ULightComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetEnableLightShaftBloom(ULightComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetEnableLightShaftBloom(_p0);
+		Self->SetEnableLightShaftBloom(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetIndirectLightingIntensity(ULightComponent* Self, float NewIntensity)
+	DOTNET_EXPORT auto E_ULightComponent_SetIndirectLightingIntensity(ULightComponent* Self, float NewIntensity)
 	{
 		auto _p0 = NewIntensity;
-		(Self)->SetIndirectLightingIntensity(_p0);
+		Self->SetIndirectLightingIntensity(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetIntensity(ULightComponent* Self, float NewIntensity)
+	DOTNET_EXPORT auto E_ULightComponent_SetIntensity(ULightComponent* Self, float NewIntensity)
 	{
 		auto _p0 = NewIntensity;
-		(Self)->SetIntensity(_p0);
+		Self->SetIntensity(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetLightFunctionDisabledBrightness(ULightComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetLightFunctionDisabledBrightness(ULightComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetLightFunctionDisabledBrightness(_p0);
+		Self->SetLightFunctionDisabledBrightness(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetLightFunctionFadeDistance(ULightComponent* Self, float NewLightFunctionFadeDistance)
+	DOTNET_EXPORT auto E_ULightComponent_SetLightFunctionFadeDistance(ULightComponent* Self, float NewLightFunctionFadeDistance)
 	{
 		auto _p0 = NewLightFunctionFadeDistance;
-		(Self)->SetLightFunctionFadeDistance(_p0);
+		Self->SetLightFunctionFadeDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetLightFunctionScale(ULightComponent* Self, INT_PTR NewLightFunctionScale)
+	DOTNET_EXPORT auto E_ULightComponent_SetLightFunctionScale(ULightComponent* Self, INT_PTR NewLightFunctionScale)
 	{
 		auto _p0 = *(FVector*)NewLightFunctionScale;
-		(Self)->SetLightFunctionScale(_p0);
+		Self->SetLightFunctionScale(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetShadowBias(ULightComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_ULightComponent_SetShadowBias(ULightComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetShadowBias(_p0);
+		Self->SetShadowBias(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetTemperature(ULightComponent* Self, float NewTemperature)
+	DOTNET_EXPORT auto E_ULightComponent_SetTemperature(ULightComponent* Self, float NewTemperature)
 	{
 		auto _p0 = NewTemperature;
-		(Self)->SetTemperature(_p0);
+		Self->SetTemperature(_p0);
 	}
 
-	DOTNET_EXPORT void E_ULightComponent_SetVolumetricScatteringIntensity(ULightComponent* Self, float NewIntensity)
+	DOTNET_EXPORT auto E_ULightComponent_SetVolumetricScatteringIntensity(ULightComponent* Self, float NewIntensity)
 	{
 		auto _p0 = NewIntensity;
-		(Self)->SetVolumetricScatteringIntensity(_p0);
+		Self->SetVolumetricScatteringIntensity(_p0);
 	}
 
 }

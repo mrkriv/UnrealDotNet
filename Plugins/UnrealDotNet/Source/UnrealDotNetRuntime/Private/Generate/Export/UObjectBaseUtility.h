@@ -7,24 +7,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT int32 E_UObjectBaseUtility_GetLinkerIndex(UObjectBaseUtility* Self)
+	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerIndex(UObjectBaseUtility* Self)
 	{
-		return (Self)->GetLinkerIndex();
+		return ConvertForManage(Self->GetLinkerIndex());
 	}
 
-	DOTNET_EXPORT int32 E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(UObjectBaseUtility* Self)
+	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(UObjectBaseUtility* Self)
 	{
-		return (Self)->GetLinkerLicenseeUE4Version();
+		return ConvertForManage(Self->GetLinkerLicenseeUE4Version());
 	}
 
-	DOTNET_EXPORT int32 E_UObjectBaseUtility_GetLinkerUE4Version(UObjectBaseUtility* Self)
+	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerUE4Version(UObjectBaseUtility* Self)
 	{
-		return (Self)->GetLinkerUE4Version();
+		return ConvertForManage(Self->GetLinkerUE4Version());
 	}
 
-	DOTNET_EXPORT bool E_UObjectBaseUtility_IsDefaultSubobject(UObjectBaseUtility* Self)
+	DOTNET_EXPORT auto E_UObjectBaseUtility_IsDefaultSubobject(UObjectBaseUtility* Self)
 	{
-		return (Self)->IsDefaultSubobject();
+		return ConvertForManage(Self->IsDefaultSubobject());
 	}
 
 }

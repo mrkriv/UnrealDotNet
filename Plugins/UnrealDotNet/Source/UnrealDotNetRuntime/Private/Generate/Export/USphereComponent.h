@@ -13,32 +13,32 @@ extern "C"
 		return (INT_PTR)NewObject<USphereComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT float E_USphereComponent_GetScaledSphereRadius(USphereComponent* Self)
+	DOTNET_EXPORT auto E_USphereComponent_GetScaledSphereRadius(USphereComponent* Self)
 	{
-		return (Self)->GetScaledSphereRadius();
+		return ConvertForManage(Self->GetScaledSphereRadius());
 	}
 
-	DOTNET_EXPORT float E_USphereComponent_GetShapeScale(USphereComponent* Self)
+	DOTNET_EXPORT auto E_USphereComponent_GetShapeScale(USphereComponent* Self)
 	{
-		return (Self)->GetShapeScale();
+		return ConvertForManage(Self->GetShapeScale());
 	}
 
-	DOTNET_EXPORT float E_USphereComponent_GetUnscaledSphereRadius(USphereComponent* Self)
+	DOTNET_EXPORT auto E_USphereComponent_GetUnscaledSphereRadius(USphereComponent* Self)
 	{
-		return (Self)->GetUnscaledSphereRadius();
+		return ConvertForManage(Self->GetUnscaledSphereRadius());
 	}
 
-	DOTNET_EXPORT void E_USphereComponent_InitSphereRadius(USphereComponent* Self, float InSphereRadius)
+	DOTNET_EXPORT auto E_USphereComponent_InitSphereRadius(USphereComponent* Self, float InSphereRadius)
 	{
 		auto _p0 = InSphereRadius;
-		(Self)->InitSphereRadius(_p0);
+		Self->InitSphereRadius(_p0);
 	}
 
-	DOTNET_EXPORT void E_USphereComponent_SetSphereRadius(USphereComponent* Self, float InSphereRadius, bool bUpdateOverlaps)
+	DOTNET_EXPORT auto E_USphereComponent_SetSphereRadius(USphereComponent* Self, float InSphereRadius, bool bUpdateOverlaps)
 	{
 		auto _p0 = InSphereRadius;
 		auto _p1 = bUpdateOverlaps;
-		(Self)->SetSphereRadius(_p0, _p1);
+		Self->SetSphereRadius(_p0, _p1);
 	}
 
 }

@@ -24,14 +24,14 @@ extern "C"
 		return (INT_PTR)NewObject<UAudioComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT char* E_UAudioComponent_GetAudioComponentUserID(UAudioComponent* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_UAudioComponent_GetAudioComponentUserID(UAudioComponent* Self, int& ResultStringLen)
 	{
-		auto _result = (Self)->GetAudioComponentUserID().ToString();
+		auto _result = ConvertForManage(Self->GetAudioComponentUserID().ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_UAudioComponent_PlayInternal(UAudioComponent* Self, float StartTime, float FadeInDuration, float FadeVolumeLevel)
+	DOTNET_EXPORT auto E_UAudioComponent_PlayInternal(UAudioComponent* Self, float StartTime, float FadeInDuration, float FadeVolumeLevel)
 	{
 		auto _p0 = StartTime;
 		auto _p1 = FadeInDuration;
@@ -39,10 +39,10 @@ extern "C"
 		((E_PROTECTED_WRAP_UAudioComponent*)Self)->PlayInternal_WRAP(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT void E_UAudioComponent_SetSoundParameter(UAudioComponent* Self, INT_PTR Param)
+	DOTNET_EXPORT auto E_UAudioComponent_SetSoundParameter(UAudioComponent* Self, INT_PTR Param)
 	{
 		auto _p0 = *(FAudioComponentParam*)Param;
-		(Self)->SetSoundParameter(_p0);
+		Self->SetSoundParameter(_p0);
 	}
 
 }

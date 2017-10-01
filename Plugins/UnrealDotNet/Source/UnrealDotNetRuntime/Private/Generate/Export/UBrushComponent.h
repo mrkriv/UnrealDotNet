@@ -13,9 +13,9 @@ extern "C"
 		return (INT_PTR)NewObject<UBrushComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UBrushComponent_BuildSimpleBrushCollision(UBrushComponent* Self)
+	DOTNET_EXPORT auto E_UBrushComponent_BuildSimpleBrushCollision(UBrushComponent* Self)
 	{
-		(Self)->BuildSimpleBrushCollision();
+		Self->BuildSimpleBrushCollision();
 	}
 
 }

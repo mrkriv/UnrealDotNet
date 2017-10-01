@@ -24,93 +24,93 @@ extern "C"
 		return (INT_PTR)NewObject<UExponentialHeightFogComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_AddFogIfNeeded(UExponentialHeightFogComponent* Self)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_AddFogIfNeeded(UExponentialHeightFogComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UExponentialHeightFogComponent*)Self)->AddFogIfNeeded_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetDirectionalInscatteringExponent(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetDirectionalInscatteringExponent(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetDirectionalInscatteringExponent(_p0);
+		Self->SetDirectionalInscatteringExponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetDirectionalInscatteringStartDistance(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetDirectionalInscatteringStartDistance(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetDirectionalInscatteringStartDistance(_p0);
+		Self->SetDirectionalInscatteringStartDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetFogCutoffDistance(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogCutoffDistance(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetFogCutoffDistance(_p0);
+		Self->SetFogCutoffDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetFogDensity(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogDensity(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetFogDensity(_p0);
+		Self->SetFogDensity(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetFogHeightFalloff(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogHeightFalloff(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetFogHeightFalloff(_p0);
+		Self->SetFogHeightFalloff(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetFogMaxOpacity(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogMaxOpacity(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetFogMaxOpacity(_p0);
+		Self->SetFogMaxOpacity(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetFullyDirectionalInscatteringColorDistance(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFullyDirectionalInscatteringColorDistance(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetFullyDirectionalInscatteringColorDistance(_p0);
+		Self->SetFullyDirectionalInscatteringColorDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetInscatteringColorCubemapAngle(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetInscatteringColorCubemapAngle(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetInscatteringColorCubemapAngle(_p0);
+		Self->SetInscatteringColorCubemapAngle(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetNonDirectionalInscatteringColorDistance(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetNonDirectionalInscatteringColorDistance(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetNonDirectionalInscatteringColorDistance(_p0);
+		Self->SetNonDirectionalInscatteringColorDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetStartDistance(UExponentialHeightFogComponent* Self, float Value)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetStartDistance(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
-		(Self)->SetStartDistance(_p0);
+		Self->SetStartDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetVolumetricFog(UExponentialHeightFogComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFog(UExponentialHeightFogComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetVolumetricFog(_p0);
+		Self->SetVolumetricFog(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetVolumetricFogDistance(UExponentialHeightFogComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFogDistance(UExponentialHeightFogComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetVolumetricFogDistance(_p0);
+		Self->SetVolumetricFogDistance(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetVolumetricFogExtinctionScale(UExponentialHeightFogComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFogExtinctionScale(UExponentialHeightFogComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetVolumetricFogExtinctionScale(_p0);
+		Self->SetVolumetricFogExtinctionScale(_p0);
 	}
 
-	DOTNET_EXPORT void E_UExponentialHeightFogComponent_SetVolumetricFogScatteringDistribution(UExponentialHeightFogComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFogScatteringDistribution(UExponentialHeightFogComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetVolumetricFogScatteringDistribution(_p0);
+		Self->SetVolumetricFogScatteringDistribution(_p0);
 	}
 
 }

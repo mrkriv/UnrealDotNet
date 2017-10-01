@@ -37,14 +37,14 @@ extern "C"
 		return (INT_PTR)NewObject<ADefaultPawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(ADefaultPawn* Self)
+	DOTNET_EXPORT auto E_ADefaultPawn_GetCollisionComponent(ADefaultPawn* Self)
 	{
-		return MakePrtDesc((Self)->GetCollisionComponent());
+		return ConvertForManage(Self->GetCollisionComponent());
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(ADefaultPawn* Self)
+	DOTNET_EXPORT auto E_ADefaultPawn_GetMeshComponent(ADefaultPawn* Self)
 	{
-		return MakePrtDesc((Self)->GetMeshComponent());
+		return ConvertForManage(Self->GetMeshComponent());
 	}
 
 }

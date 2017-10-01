@@ -237,53 +237,53 @@ extern "C"
 		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UEngine_ParseCommandline(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_ParseCommandline(UEngine* Self)
 	{
-		(Self)->ParseCommandline();
+		Self->ParseCommandline();
 	}
 
-	DOTNET_EXPORT void E_UEngine_PreExit(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_PreExit(UEngine* Self)
 	{
-		(Self)->PreExit();
+		Self->PreExit();
 	}
 
-	DOTNET_EXPORT void E_UEngine_RestoreSelectedMaterialColor(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_RestoreSelectedMaterialColor(UEngine* Self)
 	{
-		(Self)->RestoreSelectedMaterialColor();
+		Self->RestoreSelectedMaterialColor();
 	}
 
-	DOTNET_EXPORT void E_UEngine_ShutdownAudioDeviceManager(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_ShutdownAudioDeviceManager(UEngine* Self)
 	{
-		(Self)->ShutdownAudioDeviceManager();
+		Self->ShutdownAudioDeviceManager();
 	}
 
-	DOTNET_EXPORT void E_UEngine_ShutdownHMD(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_ShutdownHMD(UEngine* Self)
 	{
-		(Self)->ShutdownHMD();
+		Self->ShutdownHMD();
 	}
 
-	DOTNET_EXPORT void E_UEngine_Start(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_Start(UEngine* Self)
 	{
-		(Self)->Start();
+		Self->Start();
 	}
 
-	DOTNET_EXPORT void E_UEngine_Tick(UEngine* Self, float DeltaSeconds, bool bIdleMode)
+	DOTNET_EXPORT auto E_UEngine_Tick(UEngine* Self, float DeltaSeconds, bool bIdleMode)
 	{
 		auto _p0 = DeltaSeconds;
 		auto _p1 = bIdleMode;
-		(Self)->Tick(_p0, _p1);
+		Self->Tick(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UEngine_WorldAdded(UEngine* Self, UWorld* World)
+	DOTNET_EXPORT auto E_UEngine_WorldAdded(UEngine* Self, UWorld* World)
 	{
 		auto _p0 = World;
-		(Self)->WorldAdded(_p0);
+		Self->WorldAdded(_p0);
 	}
 
-	DOTNET_EXPORT void E_UEngine_WorldDestroyed(UEngine* Self, UWorld* InWorld)
+	DOTNET_EXPORT auto E_UEngine_WorldDestroyed(UEngine* Self, UWorld* InWorld)
 	{
 		auto _p0 = InWorld;
-		(Self)->WorldDestroyed(_p0);
+		Self->WorldDestroyed(_p0);
 	}
 
 }

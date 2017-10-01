@@ -7,9 +7,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT ObjectPointerDescription E_UWorldProxy_GetReference(UWorldProxy* Self)
+	DOTNET_EXPORT auto E_UWorldProxy_GetReference(UWorldProxy* Self)
 	{
-		return MakePrtDesc((Self)->GetReference());
+		return ConvertForManage(Self->GetReference());
 	}
 
 }

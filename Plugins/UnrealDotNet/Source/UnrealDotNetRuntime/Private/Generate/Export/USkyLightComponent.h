@@ -24,27 +24,27 @@ extern "C"
 		return (INT_PTR)NewObject<USkyLightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_USkyLightComponent_RecaptureSky(USkyLightComponent* Self)
+	DOTNET_EXPORT auto E_USkyLightComponent_RecaptureSky(USkyLightComponent* Self)
 	{
-		(Self)->RecaptureSky();
+		Self->RecaptureSky();
 	}
 
-	DOTNET_EXPORT void E_USkyLightComponent_SanitizeCubemapSize(USkyLightComponent* Self)
+	DOTNET_EXPORT auto E_USkyLightComponent_SanitizeCubemapSize(USkyLightComponent* Self)
 	{
-		(Self)->SanitizeCubemapSize();
+		Self->SanitizeCubemapSize();
 	}
 
-	DOTNET_EXPORT void E_USkyLightComponent_SetBlendDestinationCaptureIsDirty(USkyLightComponent* Self)
+	DOTNET_EXPORT auto E_USkyLightComponent_SetBlendDestinationCaptureIsDirty(USkyLightComponent* Self)
 	{
-		(Self)->SetBlendDestinationCaptureIsDirty();
+		Self->SetBlendDestinationCaptureIsDirty();
 	}
 
-	DOTNET_EXPORT void E_USkyLightComponent_SetCaptureIsDirty(USkyLightComponent* Self)
+	DOTNET_EXPORT auto E_USkyLightComponent_SetCaptureIsDirty(USkyLightComponent* Self)
 	{
-		(Self)->SetCaptureIsDirty();
+		Self->SetCaptureIsDirty();
 	}
 
-	DOTNET_EXPORT void E_USkyLightComponent_UpdateLimitedRenderingStateFast(USkyLightComponent* Self)
+	DOTNET_EXPORT auto E_USkyLightComponent_UpdateLimitedRenderingStateFast(USkyLightComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USkyLightComponent*)Self)->UpdateLimitedRenderingStateFast_WRAP();
 	}

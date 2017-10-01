@@ -13,9 +13,9 @@ extern "C"
 		return (INT_PTR)NewObject<UShapeComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UShapeComponent_UpdateBodySetup(UShapeComponent* Self)
+	DOTNET_EXPORT auto E_UShapeComponent_UpdateBodySetup(UShapeComponent* Self)
 	{
-		(Self)->UpdateBodySetup();
+		Self->UpdateBodySetup();
 	}
 
 }

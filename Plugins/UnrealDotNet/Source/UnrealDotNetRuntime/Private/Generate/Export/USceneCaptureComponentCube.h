@@ -13,19 +13,19 @@ extern "C"
 		return (INT_PTR)NewObject<USceneCaptureComponentCube>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponentCube_CaptureScene(USceneCaptureComponentCube* Self)
+	DOTNET_EXPORT auto E_USceneCaptureComponentCube_CaptureScene(USceneCaptureComponentCube* Self)
 	{
-		(Self)->CaptureScene();
+		Self->CaptureScene();
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponentCube_CaptureSceneDeferred(USceneCaptureComponentCube* Self)
+	DOTNET_EXPORT auto E_USceneCaptureComponentCube_CaptureSceneDeferred(USceneCaptureComponentCube* Self)
 	{
-		(Self)->CaptureSceneDeferred();
+		Self->CaptureSceneDeferred();
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponentCube_UpdateContent(USceneCaptureComponentCube* Self)
+	DOTNET_EXPORT auto E_USceneCaptureComponentCube_UpdateContent(USceneCaptureComponentCube* Self)
 	{
-		(Self)->UpdateContent();
+		Self->UpdateContent();
 	}
 
 }

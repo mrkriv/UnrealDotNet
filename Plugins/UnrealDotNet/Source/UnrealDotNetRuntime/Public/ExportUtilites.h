@@ -9,5 +9,3 @@ typedef struct ObjectPointerDescription
 ObjectPointerDescription;
 
 TQueue<INT_PTR> NeedDeleteQueue;
-
-ObjectPointerDescription MakePrtDesc(UObject* obj);

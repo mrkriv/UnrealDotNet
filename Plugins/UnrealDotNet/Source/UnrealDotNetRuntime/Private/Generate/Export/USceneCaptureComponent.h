@@ -24,60 +24,60 @@ extern "C"
 		return (INT_PTR)NewObject<USceneCaptureComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_ClearHiddenComponents(USceneCaptureComponent* Self)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_ClearHiddenComponents(USceneCaptureComponent* Self)
 	{
-		(Self)->ClearHiddenComponents();
+		Self->ClearHiddenComponents();
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_ClearShowOnlyComponents(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_ClearShowOnlyComponents(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
 	{
 		auto _p0 = InComponent;
-		(Self)->ClearShowOnlyComponents(_p0);
+		Self->ClearShowOnlyComponents(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_HideActorComponents(USceneCaptureComponent* Self, AActor* InActor)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_HideActorComponents(USceneCaptureComponent* Self, AActor* InActor)
 	{
 		auto _p0 = InActor;
-		(Self)->HideActorComponents(_p0);
+		Self->HideActorComponents(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_HideComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_HideComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
 	{
 		auto _p0 = InComponent;
-		(Self)->HideComponent(_p0);
+		Self->HideComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_RemoveShowOnlyActorComponents(USceneCaptureComponent* Self, AActor* InActor)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_RemoveShowOnlyActorComponents(USceneCaptureComponent* Self, AActor* InActor)
 	{
 		auto _p0 = InActor;
-		(Self)->RemoveShowOnlyActorComponents(_p0);
+		Self->RemoveShowOnlyActorComponents(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_RemoveShowOnlyComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_RemoveShowOnlyComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
 	{
 		auto _p0 = InComponent;
-		(Self)->RemoveShowOnlyComponent(_p0);
+		Self->RemoveShowOnlyComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_SetCaptureSortPriority(USceneCaptureComponent* Self, int32 NewCaptureSortPriority)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_SetCaptureSortPriority(USceneCaptureComponent* Self, int32 NewCaptureSortPriority)
 	{
 		auto _p0 = NewCaptureSortPriority;
-		(Self)->SetCaptureSortPriority(_p0);
+		Self->SetCaptureSortPriority(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_ShowOnlyActorComponents(USceneCaptureComponent* Self, AActor* InActor)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_ShowOnlyActorComponents(USceneCaptureComponent* Self, AActor* InActor)
 	{
 		auto _p0 = InActor;
-		(Self)->ShowOnlyActorComponents(_p0);
+		Self->ShowOnlyActorComponents(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_ShowOnlyComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_ShowOnlyComponent(USceneCaptureComponent* Self, UPrimitiveComponent* InComponent)
 	{
 		auto _p0 = InComponent;
-		(Self)->ShowOnlyComponent(_p0);
+		Self->ShowOnlyComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_USceneCaptureComponent_UpdateShowFlags(USceneCaptureComponent* Self)
+	DOTNET_EXPORT auto E_USceneCaptureComponent_UpdateShowFlags(USceneCaptureComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneCaptureComponent*)Self)->UpdateShowFlags_WRAP();
 	}

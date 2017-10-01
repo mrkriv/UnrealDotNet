@@ -37,112 +37,112 @@ extern "C"
 		return (INT_PTR)NewObject<USkinnedMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_ClearRefPoseOverride(USkinnedMeshComponent* Self)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_ClearRefPoseOverride(USkinnedMeshComponent* Self)
 	{
-		(Self)->ClearRefPoseOverride();
+		Self->ClearRefPoseOverride();
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_ClearSkinWeightOverride(USkinnedMeshComponent* Self, int32 LODIndex)
-	{
-		auto _p0 = LODIndex;
-		(Self)->ClearSkinWeightOverride(_p0);
-	}
-
-	DOTNET_EXPORT void E_USkinnedMeshComponent_ClearVertexColorOverride(USkinnedMeshComponent* Self, int32 LODIndex)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_ClearSkinWeightOverride(USkinnedMeshComponent* Self, int32 LODIndex)
 	{
 		auto _p0 = LODIndex;
-		(Self)->ClearVertexColorOverride(_p0);
+		Self->ClearSkinWeightOverride(_p0);
 	}
 
-	DOTNET_EXPORT int32 E_USkinnedMeshComponent_GetBoneIndex(USkinnedMeshComponent* Self, char* BoneName)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_ClearVertexColorOverride(USkinnedMeshComponent* Self, int32 LODIndex)
+	{
+		auto _p0 = LODIndex;
+		Self->ClearVertexColorOverride(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneIndex(USkinnedMeshComponent* Self, char* BoneName)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
-		return (Self)->GetBoneIndex(_p0);
+		return ConvertForManage(Self->GetBoneIndex(_p0));
 	}
 
-	DOTNET_EXPORT char* E_USkinnedMeshComponent_GetBoneName(USkinnedMeshComponent* Self, int32 BoneIndex, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneName(USkinnedMeshComponent* Self, int32 BoneIndex, int& ResultStringLen)
 	{
 		auto _p0 = BoneIndex;
-		auto _result = (Self)->GetBoneName(_p0).ToString();
+		auto _result = ConvertForManage(Self->GetBoneName(_p0).ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT int32 E_USkinnedMeshComponent_GetNumBones(USkinnedMeshComponent* Self)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetNumBones(USkinnedMeshComponent* Self)
 	{
-		return (Self)->GetNumBones();
+		return ConvertForManage(Self->GetNumBones());
 	}
 
-	DOTNET_EXPORT char* E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName, int& ResultStringLen)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(BoneName));
-		auto _result = (Self)->GetParentBone(_p0).ToString();
+		auto _result = ConvertForManage(Self->GetParentBone(_p0).ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT char* E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName, int& ResultStringLen)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(InSocketName));
-		auto _result = (Self)->GetSocketBoneName(_p0).ToString();
+		auto _result = ConvertForManage(Self->GetSocketBoneName(_p0).ToString());
 		ResultStringLen = _result.Len();
 		return TCHAR_TO_UTF8(*_result);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(USkinnedMeshComponent* Self, float NewValue)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(USkinnedMeshComponent* Self, float NewValue)
 	{
 		auto _p0 = NewValue;
-		(Self)->SetCapsuleIndirectShadowMinVisibility(_p0);
+		Self->SetCapsuleIndirectShadowMinVisibility(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetCastCapsuleDirectShadow(USkinnedMeshComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetCastCapsuleDirectShadow(USkinnedMeshComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetCastCapsuleDirectShadow(_p0);
+		Self->SetCastCapsuleDirectShadow(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetCastCapsuleIndirectShadow(USkinnedMeshComponent* Self, bool bNewValue)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetCastCapsuleIndirectShadow(USkinnedMeshComponent* Self, bool bNewValue)
 	{
 		auto _p0 = bNewValue;
-		(Self)->SetCastCapsuleIndirectShadow(_p0);
+		Self->SetCastCapsuleIndirectShadow(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetForcedLOD(USkinnedMeshComponent* Self, int32 InNewForcedLOD)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetForcedLOD(USkinnedMeshComponent* Self, int32 InNewForcedLOD)
 	{
 		auto _p0 = InNewForcedLOD;
-		(Self)->SetForcedLOD(_p0);
+		Self->SetForcedLOD(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetForceWireframe(USkinnedMeshComponent* Self, bool InForceWireframe)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetForceWireframe(USkinnedMeshComponent* Self, bool InForceWireframe)
 	{
 		auto _p0 = InForceWireframe;
-		(Self)->SetForceWireframe(_p0);
+		Self->SetForceWireframe(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetMaterialPreview(USkinnedMeshComponent* Self, int32 InMaterialIndexPreview)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetMaterialPreview(USkinnedMeshComponent* Self, int32 InMaterialIndexPreview)
 	{
 		auto _p0 = InMaterialIndexPreview;
-		(Self)->SetMaterialPreview(_p0);
+		Self->SetMaterialPreview(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetMinLOD(USkinnedMeshComponent* Self, int32 InNewMinLOD)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetMinLOD(USkinnedMeshComponent* Self, int32 InNewMinLOD)
 	{
 		auto _p0 = InNewMinLOD;
-		(Self)->SetMinLOD(_p0);
+		Self->SetMinLOD(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_SetSectionPreview(USkinnedMeshComponent* Self, int32 InSectionIndexPreview)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetSectionPreview(USkinnedMeshComponent* Self, int32 InSectionIndexPreview)
 	{
 		auto _p0 = InSectionIndexPreview;
-		(Self)->SetSectionPreview(_p0);
+		Self->SetSectionPreview(_p0);
 	}
 
-	DOTNET_EXPORT void E_USkinnedMeshComponent_UpdateRecomputeTangent(USkinnedMeshComponent* Self, int32 MaterialIndex, int32 LodIndex, bool bRecomputeTangentValue)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_UpdateRecomputeTangent(USkinnedMeshComponent* Self, int32 MaterialIndex, int32 LodIndex, bool bRecomputeTangentValue)
 	{
 		auto _p0 = MaterialIndex;
 		auto _p1 = LodIndex;
 		auto _p2 = bRecomputeTangentValue;
-		(Self)->UpdateRecomputeTangent(_p0, _p1, _p2);
+		Self->UpdateRecomputeTangent(_p0, _p1, _p2);
 	}
 
 }

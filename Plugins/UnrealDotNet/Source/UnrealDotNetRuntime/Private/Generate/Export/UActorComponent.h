@@ -98,450 +98,450 @@ extern "C"
 		return (INT_PTR)NewObject<UActorComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_Activate(UActorComponent* Self, bool bReset)
+	DOTNET_EXPORT auto E_UActorComponent_Activate(UActorComponent* Self, bool bReset)
 	{
 		auto _p0 = bReset;
-		(Self)->Activate(_p0);
+		Self->Activate(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_AddTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
+	DOTNET_EXPORT auto E_UActorComponent_AddTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
 	{
 		auto _p0 = PrerequisiteActor;
-		(Self)->AddTickPrerequisiteActor(_p0);
+		Self->AddTickPrerequisiteActor(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_AddTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
+	DOTNET_EXPORT auto E_UActorComponent_AddTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
 	{
 		auto _p0 = PrerequisiteComponent;
-		(Self)->AddTickPrerequisiteComponent(_p0);
+		Self->AddTickPrerequisiteComponent(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_AllowReregistration(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_AllowReregistration(UActorComponent* Self)
 	{
-		return (Self)->AllowReregistration();
+		return ConvertForManage(Self->AllowReregistration());
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_ApplyWorldOffset(UActorComponent* Self, INT_PTR InOffset, bool bWorldShift)
+	DOTNET_EXPORT auto E_UActorComponent_ApplyWorldOffset(UActorComponent* Self, INT_PTR InOffset, bool bWorldShift)
 	{
 		auto _p0 = *(FVector*)InOffset;
 		auto _p1 = bWorldShift;
-		(Self)->ApplyWorldOffset(_p0, _p1);
+		Self->ApplyWorldOffset(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_BeginPlay(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_BeginPlay(UActorComponent* Self)
 	{
-		(Self)->BeginPlay();
+		Self->BeginPlay();
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_CanEverAffectNavigation(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_CanEverAffectNavigation(UActorComponent* Self)
 	{
-		return (Self)->CanEverAffectNavigation();
+		return ConvertForManage(Self->CanEverAffectNavigation());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_ComponentHasTag(UActorComponent* Self, char* Tag)
+	DOTNET_EXPORT auto E_UActorComponent_ComponentHasTag(UActorComponent* Self, char* Tag)
 	{
 		auto _p0 = FName(UTF8_TO_TCHAR(Tag));
-		return (Self)->ComponentHasTag(_p0);
+		return ConvertForManage(Self->ComponentHasTag(_p0));
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_ComponentIsInPersistentLevel(UActorComponent* Self, bool bIncludeLevelStreamingPersistent)
+	DOTNET_EXPORT auto E_UActorComponent_ComponentIsInPersistentLevel(UActorComponent* Self, bool bIncludeLevelStreamingPersistent)
 	{
 		auto _p0 = bIncludeLevelStreamingPersistent;
-		return (Self)->ComponentIsInPersistentLevel(_p0);
+		return ConvertForManage(Self->ComponentIsInPersistentLevel(_p0));
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_CreatePhysicsState(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_CreatePhysicsState(UActorComponent* Self)
 	{
-		(Self)->CreatePhysicsState();
+		Self->CreatePhysicsState();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_CreateRenderState_Concurrent(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->CreateRenderState_Concurrent_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_Deactivate(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_Deactivate(UActorComponent* Self)
 	{
-		(Self)->Deactivate();
+		Self->Deactivate();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	DOTNET_EXPORT auto E_UActorComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
 	{
 		auto _p0 = bPromoteChildren;
-		(Self)->DestroyComponent(_p0);
+		Self->DestroyComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_DestroyPhysicsState(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_DestroyPhysicsState(UActorComponent* Self)
 	{
-		(Self)->DestroyPhysicsState();
+		Self->DestroyPhysicsState();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->DestroyRenderState_Concurrent_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_DetermineUCSModifiedProperties(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_DetermineUCSModifiedProperties(UActorComponent* Self)
 	{
-		(Self)->DetermineUCSModifiedProperties();
+		Self->DetermineUCSModifiedProperties();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_DoDeferredRenderUpdates_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_DoDeferredRenderUpdates_Concurrent(UActorComponent* Self)
 	{
-		(Self)->DoDeferredRenderUpdates_Concurrent();
+		Self->DoDeferredRenderUpdates_Concurrent();
 	}
 
-	DOTNET_EXPORT float E_UActorComponent_GetComponentTickInterval(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_GetComponentTickInterval(UActorComponent* Self)
 	{
-		return (Self)->GetComponentTickInterval();
+		return ConvertForManage(Self->GetComponentTickInterval());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_GetIsReplicated(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_GetIsReplicated(UActorComponent* Self)
 	{
-		return (Self)->GetIsReplicated();
+		return ConvertForManage(Self->GetIsReplicated());
 	}
 
-	DOTNET_EXPORT ENetMode E_UActorComponent_GetNetMode(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_GetNetMode(UActorComponent* Self)
 	{
-		return (Self)->GetNetMode();
+		return ConvertForManage(Self->GetNetMode());
 	}
 
-	DOTNET_EXPORT ObjectPointerDescription E_UActorComponent_GetOwner(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_GetOwner(UActorComponent* Self)
 	{
-		return MakePrtDesc((Self)->GetOwner());
+		return ConvertForManage(Self->GetOwner());
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_HandleCanEverAffectNavigationChange(UActorComponent* Self, bool bForceUpdate)
+	DOTNET_EXPORT auto E_UActorComponent_HandleCanEverAffectNavigationChange(UActorComponent* Self, bool bForceUpdate)
 	{
 		auto _p0 = bForceUpdate;
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->HandleCanEverAffectNavigationChange_WRAP(_p0);
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_HasBeenCreated(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_HasBeenCreated(UActorComponent* Self)
 	{
-		return (Self)->HasBeenCreated();
+		return ConvertForManage(Self->HasBeenCreated());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_HasBeenInitialized(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_HasBeenInitialized(UActorComponent* Self)
 	{
-		return (Self)->HasBeenInitialized();
+		return ConvertForManage(Self->HasBeenInitialized());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_HasBegunPlay(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_HasBegunPlay(UActorComponent* Self)
 	{
-		return (Self)->HasBegunPlay();
+		return ConvertForManage(Self->HasBegunPlay());
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_InitializeComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_InitializeComponent(UActorComponent* Self)
 	{
-		(Self)->InitializeComponent();
+		Self->InitializeComponent();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_InvalidateLightingCache(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_InvalidateLightingCache(UActorComponent* Self)
 	{
-		(Self)->InvalidateLightingCache();
+		Self->InvalidateLightingCache();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	DOTNET_EXPORT auto E_UActorComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 	{
 		auto _p0 = bInvalidateBuildEnqueuedLighting;
 		auto _p1 = bTranslationOnly;
-		(Self)->InvalidateLightingCacheDetailed(_p0, _p1);
+		Self->InvalidateLightingCacheDetailed(_p0, _p1);
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsBeingDestroyed(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsBeingDestroyed(UActorComponent* Self)
 	{
-		return (Self)->IsBeingDestroyed();
+		return ConvertForManage(Self->IsBeingDestroyed());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsComponentTickEnabled(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsComponentTickEnabled(UActorComponent* Self)
 	{
-		return (Self)->IsComponentTickEnabled();
+		return ConvertForManage(Self->IsComponentTickEnabled());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsCreatedByConstructionScript(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsCreatedByConstructionScript(UActorComponent* Self)
 	{
-		return (Self)->IsCreatedByConstructionScript();
+		return ConvertForManage(Self->IsCreatedByConstructionScript());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsEditableWhenInherited(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsEditableWhenInherited(UActorComponent* Self)
 	{
-		return (Self)->IsEditableWhenInherited();
+		return ConvertForManage(Self->IsEditableWhenInherited());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsNetMode(UActorComponent* Self, ENetMode Mode)
+	DOTNET_EXPORT auto E_UActorComponent_IsNetMode(UActorComponent* Self, ENetMode Mode)
 	{
 		auto _p0 = Mode;
-		return (Self)->IsNetMode(_p0);
+		return ConvertForManage(Self->IsNetMode(_p0));
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsNetSimulating(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsNetSimulating(UActorComponent* Self)
 	{
-		return (Self)->IsNetSimulating();
+		return ConvertForManage(Self->IsNetSimulating());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsNetStartupComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsNetStartupComponent(UActorComponent* Self)
 	{
-		return (Self)->IsNetStartupComponent();
+		return ConvertForManage(Self->IsNetStartupComponent());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsOwnerRunningUserConstructionScript(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsOwnerRunningUserConstructionScript(UActorComponent* Self)
 	{
-		return (Self)->IsOwnerRunningUserConstructionScript();
+		return ConvertForManage(Self->IsOwnerRunningUserConstructionScript());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsOwnerSelected(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsOwnerSelected(UActorComponent* Self)
 	{
-		return (Self)->IsOwnerSelected();
+		return ConvertForManage(Self->IsOwnerSelected());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsPhysicsStateCreated(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsPhysicsStateCreated(UActorComponent* Self)
 	{
-		return (Self)->IsPhysicsStateCreated();
+		return ConvertForManage(Self->IsPhysicsStateCreated());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsRegistered(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsRegistered(UActorComponent* Self)
 	{
-		return (Self)->IsRegistered();
+		return ConvertForManage(Self->IsRegistered());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsRenderStateCreated(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsRenderStateCreated(UActorComponent* Self)
 	{
-		return (Self)->IsRenderStateCreated();
+		return ConvertForManage(Self->IsRenderStateCreated());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsRenderStateDirty(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsRenderStateDirty(UActorComponent* Self)
 	{
-		return (Self)->IsRenderStateDirty();
+		return ConvertForManage(Self->IsRenderStateDirty());
 	}
 
-	DOTNET_EXPORT bool E_UActorComponent_IsRenderTransformDirty(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_IsRenderTransformDirty(UActorComponent* Self)
 	{
-		return (Self)->IsRenderTransformDirty();
+		return ConvertForManage(Self->IsRenderTransformDirty());
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_K2_DestroyComponent(UActorComponent* Self, UObject* Object)
+	DOTNET_EXPORT auto E_UActorComponent_K2_DestroyComponent(UActorComponent* Self, UObject* Object)
 	{
 		auto _p0 = Object;
-		(Self)->K2_DestroyComponent(_p0);
+		Self->K2_DestroyComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_MarkForNeededEndOfFrameRecreate(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_MarkForNeededEndOfFrameRecreate(UActorComponent* Self)
 	{
-		(Self)->MarkForNeededEndOfFrameRecreate();
+		Self->MarkForNeededEndOfFrameRecreate();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_MarkForNeededEndOfFrameUpdate(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_MarkForNeededEndOfFrameUpdate(UActorComponent* Self)
 	{
-		(Self)->MarkForNeededEndOfFrameUpdate();
+		Self->MarkForNeededEndOfFrameUpdate();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_MarkRenderDynamicDataDirty(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_MarkRenderDynamicDataDirty(UActorComponent* Self)
 	{
-		(Self)->MarkRenderDynamicDataDirty();
+		Self->MarkRenderDynamicDataDirty();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_MarkRenderStateDirty(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_MarkRenderStateDirty(UActorComponent* Self)
 	{
-		(Self)->MarkRenderStateDirty();
+		Self->MarkRenderStateDirty();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_MarkRenderTransformDirty(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_MarkRenderTransformDirty(UActorComponent* Self)
 	{
-		(Self)->MarkRenderTransformDirty();
+		Self->MarkRenderTransformDirty();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
 	{
-		(Self)->OnActorEnableCollisionChanged();
+		Self->OnActorEnableCollisionChanged();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnComponentCreated(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnComponentCreated(UActorComponent* Self)
 	{
-		(Self)->OnComponentCreated();
+		Self->OnComponentCreated();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	DOTNET_EXPORT auto E_UActorComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
 	{
 		auto _p0 = bDestroyingHierarchy;
-		(Self)->OnComponentDestroyed(_p0);
+		Self->OnComponentDestroyed(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnCreatePhysicsState(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnCreatePhysicsState(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnCreatePhysicsState_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnDestroyPhysicsState(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnDestroyPhysicsState_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnRegister(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnRegister(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnRegister_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnRep_IsActive(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnRep_IsActive(UActorComponent* Self)
 	{
-		(Self)->OnRep_IsActive();
+		Self->OnRep_IsActive();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_OnUnregister(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_OnUnregister(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnUnregister_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_ReceiveBeginPlay(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_ReceiveBeginPlay(UActorComponent* Self)
 	{
-		(Self)->ReceiveBeginPlay();
+		Self->ReceiveBeginPlay();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_ReceiveTick(UActorComponent* Self, float DeltaSeconds)
+	DOTNET_EXPORT auto E_UActorComponent_ReceiveTick(UActorComponent* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
-		(Self)->ReceiveTick(_p0);
+		Self->ReceiveTick(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RecreatePhysicsState(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_RecreatePhysicsState(UActorComponent* Self)
 	{
-		(Self)->RecreatePhysicsState();
+		Self->RecreatePhysicsState();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RecreateRenderState_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_RecreateRenderState_Concurrent(UActorComponent* Self)
 	{
-		(Self)->RecreateRenderState_Concurrent();
+		Self->RecreateRenderState_Concurrent();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RegisterAllComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	DOTNET_EXPORT auto E_UActorComponent_RegisterAllComponentTickFunctions(UActorComponent* Self, bool bRegister)
 	{
 		auto _p0 = bRegister;
-		(Self)->RegisterAllComponentTickFunctions(_p0);
+		Self->RegisterAllComponentTickFunctions(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RegisterComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_RegisterComponent(UActorComponent* Self)
 	{
-		(Self)->RegisterComponent();
+		Self->RegisterComponent();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
 	{
 		auto _p0 = bRegister;
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->RegisterComponentTickFunctions_WRAP(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
+	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
 	{
 		auto _p0 = InWorld;
-		(Self)->RegisterComponentWithWorld(_p0);
+		Self->RegisterComponentWithWorld(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RemoveTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
+	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
 	{
 		auto _p0 = PrerequisiteActor;
-		(Self)->RemoveTickPrerequisiteActor(_p0);
+		Self->RemoveTickPrerequisiteActor(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_RemoveTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
+	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
 	{
 		auto _p0 = PrerequisiteComponent;
-		(Self)->RemoveTickPrerequisiteComponent(_p0);
+		Self->RemoveTickPrerequisiteComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_ReregisterComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_ReregisterComponent(UActorComponent* Self)
 	{
-		(Self)->ReregisterComponent();
+		Self->ReregisterComponent();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->SendRenderDynamicData_Concurrent_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->SendRenderTransform_Concurrent_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	DOTNET_EXPORT auto E_UActorComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
 	{
 		auto _p0 = bNewActive;
 		auto _p1 = bReset;
-		(Self)->SetActive(_p0, _p1);
+		Self->SetActive(_p0, _p1);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	DOTNET_EXPORT auto E_UActorComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
 	{
 		auto _p0 = bNewAutoActivate;
-		(Self)->SetAutoActivate(_p0);
+		Self->SetAutoActivate(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetCanEverAffectNavigation(UActorComponent* Self, bool bRelevant)
+	DOTNET_EXPORT auto E_UActorComponent_SetCanEverAffectNavigation(UActorComponent* Self, bool bRelevant)
 	{
 		auto _p0 = bRelevant;
-		(Self)->SetCanEverAffectNavigation(_p0);
+		Self->SetCanEverAffectNavigation(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	DOTNET_EXPORT auto E_UActorComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
 	{
 		auto _p0 = bEnabled;
-		(Self)->SetComponentTickEnabled(_p0);
+		Self->SetComponentTickEnabled(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	DOTNET_EXPORT auto E_UActorComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
 	{
 		auto _p0 = bEnabled;
-		(Self)->SetComponentTickEnabledAsync(_p0);
+		Self->SetComponentTickEnabledAsync(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetComponentTickInterval(UActorComponent* Self, float TickInterval)
+	DOTNET_EXPORT auto E_UActorComponent_SetComponentTickInterval(UActorComponent* Self, float TickInterval)
 	{
 		auto _p0 = TickInterval;
-		(Self)->SetComponentTickInterval(_p0);
+		Self->SetComponentTickInterval(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetIsNetStartupComponent(UActorComponent* Self, bool bInIsNetStartupComponent)
+	DOTNET_EXPORT auto E_UActorComponent_SetIsNetStartupComponent(UActorComponent* Self, bool bInIsNetStartupComponent)
 	{
 		auto _p0 = bInIsNetStartupComponent;
-		(Self)->SetIsNetStartupComponent(_p0);
+		Self->SetIsNetStartupComponent(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetIsReplicated(UActorComponent* Self, bool ShouldReplicate)
+	DOTNET_EXPORT auto E_UActorComponent_SetIsReplicated(UActorComponent* Self, bool ShouldReplicate)
 	{
 		auto _p0 = ShouldReplicate;
-		(Self)->SetIsReplicated(_p0);
+		Self->SetIsReplicated(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetNetAddressable(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_SetNetAddressable(UActorComponent* Self)
 	{
-		(Self)->SetNetAddressable();
+		Self->SetNetAddressable();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetTickableWhenPaused(UActorComponent* Self, bool bTickableWhenPaused)
+	DOTNET_EXPORT auto E_UActorComponent_SetTickableWhenPaused(UActorComponent* Self, bool bTickableWhenPaused)
 	{
 		auto _p0 = bTickableWhenPaused;
-		(Self)->SetTickableWhenPaused(_p0);
+		Self->SetTickableWhenPaused(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_SetTickGroup(UActorComponent* Self, ETickingGroup NewTickGroup)
+	DOTNET_EXPORT auto E_UActorComponent_SetTickGroup(UActorComponent* Self, ETickingGroup NewTickGroup)
 	{
 		auto _p0 = NewTickGroup;
-		(Self)->SetTickGroup(_p0);
+		Self->SetTickGroup(_p0);
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_ToggleActive(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_ToggleActive(UActorComponent* Self)
 	{
-		(Self)->ToggleActive();
+		Self->ToggleActive();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_UninitializeComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_UninitializeComponent(UActorComponent* Self)
 	{
-		(Self)->UninitializeComponent();
+		Self->UninitializeComponent();
 	}
 
-	DOTNET_EXPORT void E_UActorComponent_UnregisterComponent(UActorComponent* Self)
+	DOTNET_EXPORT auto E_UActorComponent_UnregisterComponent(UActorComponent* Self)
 	{
-		(Self)->UnregisterComponent();
+		Self->UnregisterComponent();
 	}
 
 }

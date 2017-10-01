@@ -262,7 +262,7 @@ namespace Generator
 
                 var param = GetMethodSignatuteParam(method, genStringWrap);
 
-                cw.WriteLine($"{CPP_API} {ExportVariableCPPForReturn(method.ReturnType)} {GetCPPMethodName(method)}({param})");
+                cw.WriteLine($"{CPP_API} auto {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
                 for (var i = 0; i < method.InputTypes.Count; i++)
@@ -278,25 +278,28 @@ namespace Generator
 
                 var bCloseCount = 0;
                 var retClass = method.ReturnType as ClassVariable;
-                if (retClass != null)
+
+                if (retClass != null && retClass.Class.IsStructure)
                 {
-                    if (retClass.Class.IsStructure)
-                    {
-                        cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
-                        bCloseCount++;
-                    }
-                    else
-                    {
-                        cw.Write($"MakePrtDesc(");
-                        bCloseCount++;
-                    }
+                    cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
+                    bCloseCount++;
+                }
+                else if(method.ReturnType.Type != "void")
+                {
+                    cw.Write($"ConvertForManage(");
+                    bCloseCount++;
                 }
 
                 var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
 
-                cw.Write(method.AccessModifier == AccessModifier.Public
-                    ? $"(Self)->{method.Name}({call})"
-                    : $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
+                if (method.AccessModifier == AccessModifier.Public)
+                {
+                    cw.Write($"Self->{method.Name}({call})");
+                }
+                else
+                {
+                    cw.Write($"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
+                }
 
                 if (method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName")
                 {

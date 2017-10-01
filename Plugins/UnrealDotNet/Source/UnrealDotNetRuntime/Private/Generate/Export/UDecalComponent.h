@@ -24,25 +24,25 @@ extern "C"
 		return (INT_PTR)NewObject<UDecalComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT INT_PTR E_UDecalComponent_GetTransformIncludingDecalSize(UDecalComponent* Self)
+	DOTNET_EXPORT auto E_UDecalComponent_GetTransformIncludingDecalSize(UDecalComponent* Self)
 	{
-		return (INT_PTR) new FTransform((Self)->GetTransformIncludingDecalSize());
+		return (INT_PTR) new FTransform(Self->GetTransformIncludingDecalSize());
 	}
 
-	DOTNET_EXPORT void E_UDecalComponent_LifeSpanCallback(UDecalComponent* Self)
+	DOTNET_EXPORT auto E_UDecalComponent_LifeSpanCallback(UDecalComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UDecalComponent*)Self)->LifeSpanCallback_WRAP();
 	}
 
-	DOTNET_EXPORT void E_UDecalComponent_PushSelectionToProxy(UDecalComponent* Self)
+	DOTNET_EXPORT auto E_UDecalComponent_PushSelectionToProxy(UDecalComponent* Self)
 	{
-		(Self)->PushSelectionToProxy();
+		Self->PushSelectionToProxy();
 	}
 
-	DOTNET_EXPORT void E_UDecalComponent_SetLifeSpan(UDecalComponent* Self, float LifeSpan)
+	DOTNET_EXPORT auto E_UDecalComponent_SetLifeSpan(UDecalComponent* Self, float LifeSpan)
 	{
 		auto _p0 = LifeSpan;
-		(Self)->SetLifeSpan(_p0);
+		Self->SetLifeSpan(_p0);
 	}
 
 }
