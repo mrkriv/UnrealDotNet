@@ -25,6 +25,12 @@ namespace UnrealEngine
 		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr Self, IntPtr Primitive);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_ULightComponent_GetBoundingBox(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_ULightComponent_GetLightPosition(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetAffectDynamicIndirectLighting(IntPtr Self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -75,6 +81,20 @@ namespace UnrealEngine
 		/// </summary>
 		public bool AffectsPrimitive(UPrimitiveComponent Primitive)
 			=> E_ULightComponent_AffectsPrimitive(this, Primitive);
+		
+		
+		/// <summary>
+		/// <para>Return the world-space bounding box of the light's influence. </para>
+		/// </summary>
+		public virtual FBox GetBoundingBox()
+			=> E_ULightComponent_GetBoundingBox(this);
+		
+		
+		/// <summary>
+		/// <para>Return the homogenous position of the light. </para>
+		/// </summary>
+		public virtual FVector4 GetLightPosition()
+			=> E_ULightComponent_GetLightPosition(this);
 		
 		public void SetAffectDynamicIndirectLighting(bool bNewValue)
 			=> E_ULightComponent_SetAffectDynamicIndirectLighting(this, bNewValue);

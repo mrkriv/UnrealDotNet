@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Delegate = Generator.Metadata.Delegate;
+using Type = Generator.Metadata.Type;
 
 namespace Generator
 {
@@ -196,7 +197,7 @@ namespace Generator
 
                 if (method.Name != "BeginPlay")
                 {
-                    if (method.ReturnType.Type != "void")
+                    if (method.ReturnType.Type.Name != "void")
                         cw.Write("return ");
 
                     cw.WriteLine(
@@ -238,95 +239,38 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine();
             }
-
-            private static string GetSourceFileName(Class Class)
-            {
-                var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
-                var SourceFile = index == -1
-                    ? Class.SourceFile
-                    : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
-
-                SourceFile = SourceFile.Replace("\\", "/");
-                return SourceFile;
-            }
-
             private static void GenerateMethod(CoreWriter cw, Method method)
             {
                 if (method.OwnerClass.IsFinal && method.AccessModifier != AccessModifier.Public)
                     return;
 
-                // todo: убрать этот ад со строками (делать преобразования всех типов одним шаблонным методом)
-
-                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
-                                    method.ReturnType.Type == "FString";
-
-                var param = GetMethodSignatuteParam(method, genStringWrap);
+                var param = GetMethodSignatuteParam(method);
                 var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
-                
+
                 cw.WriteLine($"{CPP_API} auto {GetCPPMethodName(method)}({param})");
                 cw.OpenBlock();
 
                 for (var i = 0; i < method.InputTypes.Count; i++)
                 {
                     var m = method.InputTypes[i];
-                    cw.WriteLine($"auto _p{i} = {VarNameForCall(m)};");
+                    cw.WriteLine($"auto _p{i} = {GenerateGet(m)};");
                 }
 
-                if (method.ReturnType.Type != "void")
-                {
-                    cw.Write(genStringWrap ? "auto _result = " : "return ");
-                }
+                var ret = method.AccessModifier == AccessModifier.Public
+                    ? $"Self->{method.Name}({call})"
+                    : $"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})";
 
-                var bCloseCount = 0;
-                var retClass = method.ReturnType as ClassVariable;
-
-                if (retClass != null && retClass.Class.IsStructure)
-                {
-                    cw.Write($"(INT_PTR) new {retClass.Class.Name}(");
-                    bCloseCount++;
-                }
-                else if(method.ReturnType.Type != "void")
-                {
-                    cw.Write($"ConvertForManage(");
-                    bCloseCount++;
-                }
-                if (method.AccessModifier == AccessModifier.Public)
-                {
-                    cw.Write($"Self->{method.Name}({call})");
-                }
-                else
-                {
-                    cw.Write($"(({ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{ExportProtectedPostfix}({call})");
-                }
-
-                if (method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName")
-                {
-                    cw.Write(".ToString()");
-                }
-
-                cw.Write(new string(')', bCloseCount));
-                cw.WriteLine(";");
-
-                if (genStringWrap)
-                {
-                    cw.WriteLine("ResultStringLen = _result.Len();");
-                    cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
-                }
+                cw.WriteLine(GenerateReturn(method.ReturnType.Type, ret, false));
 
                 cw.CloseBlock();
                 cw.WriteLine();
             }
 
-            private static string GetMethodSignatuteParam(Method method, bool isGenStringWrap)
+            private static string GetMethodSignatuteParam(Method method)
             {
                 var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
                 inputs.Insert(0, $"{method.OwnerClass.Name}* Self");
 
-                if (isGenStringWrap)
-                {
-                    inputs.Add("int& ResultStringLen");
-                }
-                
                 return string.Join(", ", inputs);
             }
 
@@ -338,43 +282,13 @@ namespace Generator
                     $"{method.ReturnType.GetTypeCPPOgiginal()} {method.Name}{ExportProtectedPostfix}({param})");
                 cw.OpenBlock();
 
-                cw.Write(method.ReturnType.Type != "void", "return ");
+                cw.Write(method.ReturnType.Type.Name != "void", "return ");
 
                 cw.Write($"{method.Name}({string.Join(", ", method.InputTypes.Select(p => p.Name))})");
                 cw.WriteLine(";");
 
                 cw.CloseBlock();
                 cw.WriteLine();
-            }
-
-            private static string VarNameForCall(Variable variable)
-            {
-                var varClass = variable as ClassVariable;
-                if (varClass != null)
-                {
-                    if (!varClass.Class.IsStructure)
-                        return varClass.Name;
-
-                    var prefix = "";
-
-                    if (!variable.IsPointer)
-                        prefix += "*";
-
-                    return $"{prefix}({varClass.Class.Name}*){varClass.Name}";
-                }
-
-                var result = "";
-                var useConvertFromManage = Filter.UseConvertFromManageTypeList.Contains(variable.Type);
-                
-                if(useConvertFromManage)
-                    result += $"ConvertFromManage_{variable.Type}(";
-
-                result += variable.Name;
-
-                if (useConvertFromManage)
-                    result += ')';
-
-                return result;
             }
 
             #endregion Class
@@ -432,7 +346,7 @@ namespace Generator
                 foreach (var ctr in Class.Constructors)
                 {
                     var param = string.Join(", ", ctr.InputTypes.Select(ExportVariableCPP));
-                    var call = string.Join(", ", ctr.InputTypes.Select(VarNameForCall));
+                    var call = string.Join(", ", ctr.InputTypes.Select(x => GenerateGet(x)));
 
                     var ctrFullName = GetExportConstructorFullName(ctr);
 
@@ -458,67 +372,13 @@ namespace Generator
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
-                var propClass = prop as ClassVariable;
-                if (propClass?.Class.IsStructure == true)
+                cw.WriteLine(
+                    $"{CPP_API} auto {baseName}_GET({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
+
+                if (!prop.IsReadOnly())
                 {
-                    var clName = propClass.Class.Name;
                     cw.WriteLine(
-                        $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (INT_PTR)&(({Class.Name}*)Ptr)->{prop.Name}; }}");
-
-                    if (!prop.IsReadOnly())
-                    {
-                        cw.WriteLine(
-                            $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = *({clName}*)Value; }}");
-                    }
-                }
-                else
-                {
-                    if (prop.Type == "FText" || prop.Type == "FName" || prop.Type == "FString")
-                    {
-                        cw.WriteLine($"{CPP_API} char* {baseName}_GET(INT_PTR Ptr, int& ResultStringLen)");
-                        cw.OpenBlock();
-
-                        cw.WriteLine(prop.Type == "FString"
-                            ? $"auto _result = (({Class.Name}*)Ptr)->{prop.Name};"
-                            : $"auto _result = (({Class.Name}*)Ptr)->{prop.Name}.ToString();");
-
-                        cw.WriteLine("ResultStringLen = _result.Len();");
-                        cw.WriteLine("return TCHAR_TO_UTF8(*_result);");
-                        cw.CloseBlock();
-
-                        if (!prop.IsReadOnly())
-                        {
-                            cw.Write(
-                                $"\t{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = ");
-                            switch (prop.Type)
-                            {
-                                case "FText":
-                                    cw.Write("FText::FromString(UTF8_TO_TCHAR(Value))");
-                                    break;
-
-                                case "FName":
-                                    cw.Write("FName(UTF8_TO_TCHAR(Value))");
-                                    break;
-
-                                case "FString":
-                                    cw.Write("UTF8_TO_TCHAR(Value)");
-                                    break;
-                            }
-
-                            cw.WriteLine("; }");
-                        }
-                    }
-                    else
-                    {
-                        cw.WriteLine(
-                            $"{CPP_API} {prop.GetTypeCPP()} {baseName}_GET(INT_PTR Ptr) {{ return (({Class.Name}*)Ptr)->{prop.Name}; }}");
-
-                        if (!prop.IsReadOnly())
-                        {
-                            cw.WriteLine(
-                                $"{CPP_API} void {baseName}_SET(INT_PTR Ptr, {prop.GetTypeCPP()} Value) {{ (({Class.Name}*)Ptr)->{prop.Name} = Value; }}");
-                        }
-                    }
+                        $"{CPP_API} void {baseName}_SET({Class.Name}* Ptr, {prop.GetTypeCPP()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
                 }
 
                 cw.WriteLine();
@@ -528,16 +388,14 @@ namespace Generator
             {
                 var name = prop.GetDisplayName();
 
-                var dlg = ((DelegateVariable) prop).Delegate;
-
                 cw.WriteLine($"{CPP_API} void {ExportEventAddPrefix}{Class.Name}_{name}({Class.Name}* Obj)");
                 cw.OpenBlock();
-                
+
                 cw.WriteLine($"auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());");
                 cw.WriteLine($"wrapper->ManageDelegateName = \"{EventInvokePrefix}{prop.Name}\";");
                 cw.WriteLine($"wrapper->SourceObject = Obj;");
 
-                cw.WriteLine($"Obj->{prop.Name}.AddDynamic(wrapper, &UManageEventSender::Wrapper_{dlg.Name});");
+                cw.WriteLine($"Obj->{prop.Name}.AddDynamic(wrapper, &UManageEventSender::Wrapper_{prop.Type.Name});");
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -545,7 +403,7 @@ namespace Generator
                 cw.WriteLine($"{CPP_API} void {ExportEventRemovePrefix}{Class.Name}_{name}({Class.Name}* Obj)");
                 cw.OpenBlock();
 
-                // todo: реализовать дизлайк, отписку
+                // todo: реализовать отписку
 
                 cw.CloseBlock();
                 cw.WriteLine();
@@ -553,10 +411,11 @@ namespace Generator
 
             #endregion Struct
 
+            #region Delegate
             private static void GenerateManageEventSender(IEnumerable<Metadata.Delegate> Delegates, string OutputPath)
             {
                 var cw = new CoreWriter();
-                
+
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
                 cw.WriteLine("#include \"CoreShell.h\"");
@@ -592,7 +451,7 @@ namespace Generator
                 var call = string.Join(", ", dlg.Parametrs.Select(x => x.Name));
                 var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal()));
                 var signature = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal(true)));
-                
+
                 if (call.Any())
                     call = ", " + call;
 
@@ -607,6 +466,80 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            #endregion
+
+            private static string GenerateGet(Variable variable, string ManualName = null)
+            {
+                var result = "";
+                var bCloseCount = 0;
+                var type = variable.Type;
+
+                if (ManualName == null)
+                {
+                    ManualName = variable.Name;
+                }
+
+                if ((type as Class)?.IsStructure == true)
+                {
+                    if (!variable.IsPointer)
+                        result += "*";
+
+                    result += $"({type.Name}*)";
+                }
+                else if (Filter.IsUseConvertFromManageType(type))
+                {
+                    result += $"ConvertFromManage_{type}(";
+                    bCloseCount++;
+                }
+
+                result += ManualName;
+                result += new string(')', bCloseCount);
+
+                return result;
+            }
+
+            private static string GenerateReturn(Type type, string Expression, bool ForProperty)
+            {
+                if (type.IsVoid)
+                {
+                    return Expression + ";";
+                }
+
+                var result = "return ";
+                var bCloseCount = 0;
+
+                if ((type as Class)?.IsStructure == true)
+                {
+                    if (ForProperty)
+                        result += $"(INT_PTR)&(";
+                    else
+                        result += $"(INT_PTR) new {type.Name}(";
+
+                    bCloseCount++;
+                }
+                else if (Filter.GetConvertToManageType(type, out var toType))
+                {
+                    result += $"ConvertToManage_{toType}(";
+                    bCloseCount++;
+                }
+
+                result += Expression;
+                result += new string(')', bCloseCount);
+                result += ";";
+
+                return result;
+            }
+
+            private static string GetSourceFileName(Class Class)
+            {
+                var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
+                var SourceFile = index == -1
+                    ? Class.SourceFile
+                    : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
+
+                SourceFile = SourceFile.Replace("\\", "/");
+                return SourceFile;
+            }
             private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
             {
                 var cw = new CoreWriter();
@@ -633,11 +566,6 @@ namespace Generator
                     result += " " + variable.Name;
 
                 return result;
-            }
-
-            private static string ExportVariableCPPForReturn(Variable variable)
-            {
-                return variable.GetTypeCPP(true);
             }
         }
     }

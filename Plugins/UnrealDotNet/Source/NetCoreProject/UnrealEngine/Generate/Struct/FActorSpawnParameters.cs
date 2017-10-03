@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Instigator_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FActorSpawnParameters_Name_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FActorSpawnParameters_Name_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Name_SET(IntPtr Ptr, string Value);
 		

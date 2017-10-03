@@ -93,6 +93,9 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_DoDeferredRenderUpdates_Concurrent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_GetComponentClassCanReplicate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UActorComponent_GetComponentTickInterval(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -103,6 +106,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UActorComponent_GetReadableName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_HandleCanEverAffectNavigationChange(IntPtr Self, bool bForceUpdate);
@@ -117,6 +123,9 @@ namespace UnrealEngine
 		private static extern bool E_UActorComponent_HasBegunPlay(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_HasValidPhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_InitializeComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -124,6 +133,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_InvalidateLightingCacheDetailed(IntPtr Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_IsActive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_IsBeingDestroyed(IntPtr Self);
@@ -136,6 +148,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_IsEditableWhenInherited(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_IsNavigationRelevant(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_IsNetMode(IntPtr Self, byte Mode);
@@ -154,6 +169,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_IsPhysicsStateCreated(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_IsReadyForOwnerToAutoDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_IsRegistered(IntPtr Self);
@@ -240,6 +258,12 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_RemoveTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_ReregisterComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -280,6 +304,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_SetTickGroup(IntPtr Self, byte NewTickGroup);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_ShouldActivate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_ShouldCreatePhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UActorComponent_ShouldCreateRenderState(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_ToggleActive(IntPtr Self);
@@ -486,6 +519,9 @@ namespace UnrealEngine
 		public void DoDeferredRenderUpdates_Concurrent()
 			=> E_UActorComponent_DoDeferredRenderUpdates_Concurrent(this);
 		
+		public virtual bool GetComponentClassCanReplicate()
+			=> E_UActorComponent_GetComponentClassCanReplicate(this);
+		
 		
 		/// <summary>
 		/// <para>Returns whether this component has tick enabled or not </para>
@@ -517,6 +553,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns a readable name for this component, including the asset name if applicable </para>
+		/// <para>By default this appends a space plus AdditionalStatObject() </para>
+		/// </summary>
+		public virtual string GetReadableName()
+			=> E_UActorComponent_GetReadableName(this);
+		
+		
+		/// <summary>
 		/// <para>Makes sure navigation system has up to date information regarding component's navigation relevancy </para>
 		/// <para>and if it can affect navigation at all </para>
 		/// <param name="bForceUpdate">by default updating navigation system will take place only if the component has </param>
@@ -533,6 +577,13 @@ namespace UnrealEngine
 		
 		public bool HasBegunPlay()
 			=> E_UActorComponent_HasBegunPlay(this);
+		
+		
+		/// <summary>
+		/// <para>Used to check that DestroyPhysicsState() is working correctly </para>
+		/// </summary>
+		protected virtual bool HasValidPhysicsState()
+			=> E_UActorComponent_HasValidPhysicsState(this);
 		
 		
 		/// <summary>
@@ -559,6 +610,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns whether the component is active or not </para>
+		/// <return>The active state of the component. </return>
+		/// </summary>
+		public virtual bool IsActive()
+			=> E_UActorComponent_IsActive(this);
+		
+		
+		/// <summary>
 		/// <para>Returns whether the component is in the process of being destroyed. </para>
 		/// </summary>
 		public bool IsComponentBeingDestroyed()
@@ -576,6 +635,13 @@ namespace UnrealEngine
 		
 		public bool IsEditableWhenInherited()
 			=> E_UActorComponent_IsEditableWhenInherited(this);
+		
+		
+		/// <summary>
+		/// <para>override to supply actual logic </para>
+		/// </summary>
+		public virtual bool IsNavigationRelevant()
+			=> E_UActorComponent_IsNavigationRelevant(this);
 		
 		
 		/// <summary>
@@ -620,6 +686,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsPhysicsStateCreated()
 			=> E_UActorComponent_IsPhysicsStateCreated(this);
+		
+		
+		/// <summary>
+		/// <para>Overridable check for a component to indicate to its Owner that it should prevent the Actor from auto destroying when finished </para>
+		/// </summary>
+		public virtual bool IsReadyForOwnerToAutoDestroy()
+			=> E_UActorComponent_IsReadyForOwnerToAutoDestroy(this);
 		
 		
 		/// <summary>
@@ -813,6 +886,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>return true if this component requires end of frame recreates to happen from the game thread. </para>
+		/// </summary>
+		public virtual bool RequiresGameThreadEndOfFrameRecreate()
+			=> E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(this);
+		
+		
+		/// <summary>
+		/// <para>return true if this component requires end of frame updates to happen from the game thread. </para>
+		/// </summary>
+		public virtual bool RequiresGameThreadEndOfFrameUpdates()
+			=> E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(this);
+		
+		
+		/// <summary>
 		/// <para>Unregisters and immediately re-registers component.  Handles bWillReregister properly. </para>
 		/// </summary>
 		public void ReregisterComponent()
@@ -914,6 +1001,28 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTickGroup(ETickingGroup NewTickGroup)
 			=> E_UActorComponent_SetTickGroup(this, (byte)NewTickGroup);
+		
+		
+		/// <summary>
+		/// <para>"Trigger" related function. Return true if it should activate </para>
+		/// </summary>
+		protected virtual bool ShouldActivate()
+			=> E_UActorComponent_ShouldActivate(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if CreatePhysicsState() should be called. </para>
+		/// <para>Ideally CreatePhysicsState() should always succeed if this returns true, but this isn't currently the case </para>
+		/// </summary>
+		protected virtual bool ShouldCreatePhysicsState()
+			=> E_UActorComponent_ShouldCreatePhysicsState(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if CreateRenderState() should be called </para>
+		/// </summary>
+		protected virtual bool ShouldCreateRenderState()
+			=> E_UActorComponent_ShouldCreateRenderState(this);
 		
 		
 		/// <summary>

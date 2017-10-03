@@ -37,7 +37,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UMeshComponent_GetScalarParameterDefaultValue(UMeshComponent* Self, char* ParameterName)
 	{
 		auto _p0 = ConvertFromManage_FName(ParameterName);
-		return ConvertForManage(Self->GetScalarParameterDefaultValue(_p0));
+		return Self->GetScalarParameterDefaultValue(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(UMeshComponent* Self)

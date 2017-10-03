@@ -29,7 +29,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FExposureSettings_LogOffset_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FExposureSettings_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FExposureSettings_ToString(IntPtr Self);
 		
 		#endregion
 		
@@ -50,7 +50,7 @@ namespace UnrealEngine
 		
 		#region ExternMethods
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FExposureSettings_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FExposureSettings_ToString(this);
 		
 		#endregion
 		

@@ -23,27 +23,25 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_UObjectBase_GetFName(UObjectBase* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_UObjectBase_GetFName(UObjectBase* Self)
 	{
-		auto _result = ConvertForManage(Self->GetFName().ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetFName());
 	}
 
 	DOTNET_EXPORT auto E_UObjectBase_GetOuter(UObjectBase* Self)
 	{
-		return ConvertForManage(Self->GetOuter());
+		return ConvertToManage_ObjectPointerDescription(Self->GetOuter());
 	}
 
 	DOTNET_EXPORT auto E_UObjectBase_IsValidLowLevel(UObjectBase* Self)
 	{
-		return ConvertForManage(Self->IsValidLowLevel());
+		return Self->IsValidLowLevel();
 	}
 
 	DOTNET_EXPORT auto E_UObjectBase_IsValidLowLevelFast(UObjectBase* Self, bool bRecursive)
 	{
 		auto _p0 = bRecursive;
-		return ConvertForManage(Self->IsValidLowLevelFast(_p0));
+		return Self->IsValidLowLevelFast(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UObjectBase_LowLevelRename(UObjectBase* Self, char* NewName, UObject* NewOuter)

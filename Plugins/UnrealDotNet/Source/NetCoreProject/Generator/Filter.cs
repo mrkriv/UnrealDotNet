@@ -46,6 +46,9 @@ namespace Generator
             "FSkelMeshSkinWeightInfo",
 
             "FRenderStateRecreator",
+
+            "FNamedNetDriver",  // todo:: "xxx *" в "const xxx &"
+            "FTickPrerequisite",
         };
 
         public static string[] ManageClassBlackList =
@@ -85,14 +88,21 @@ namespace Generator
             "Type",
         };
 
-        public static string[] UseConvertFromManageTypeList =
+        public static Dictionary<string, string> UseConvertToManageType = new Dictionary<string, string>
         {
-            "TCHAR",
-            "FText",
-            "FName",
-            "FString",
+            { "TCHAR", "StringWrapper"},
+            { "FName", "StringWrapper"},
+            { "FText", "StringWrapper"},
+            { "FString", "StringWrapper"},
         };
 
+        public static Dictionary<string, string> UseConvertFromManageType = new Dictionary<string, string>
+        {
+            { "TCHAR", "char*"},
+            { "FName", "char*"},
+            { "FText", "char*"},
+            { "FString", "char*"},
+        };
 
         public static string[] DelegateBlackList =
         {
@@ -111,6 +121,7 @@ namespace Generator
             { "UAudioComponent", new[] { "UpdateInteriorSettings" }},
             { "UTimelineComponent", new[] { "OnRep_Timeline" }},
             { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
+            { "FNamedNetDriver", new[] { "NetDriverDef" }},
 
             { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
             
@@ -252,8 +263,8 @@ namespace Generator
                     !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
                     !m.IsOverride &&
                     !m.IsFriend &&
-                    !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type == "void" || v.IsReadOnly()) &&
-                    (!m.IsVirtual || m.Operator == null && !m.OwnerClass.IsFinal && m.ReturnType.Type == "void") &&
+                    !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
+                    (!m.IsVirtual || !m.OwnerClass.IsFinal) &&
                     m.Dependent.All(TypeFilter) &&
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
                     m.Operator == null &&
@@ -266,16 +277,7 @@ namespace Generator
             if (m.IsConst)
                 return false;
 
-            if (m is ClassVariable && !TypeFilter(((ClassVariable)m).Class))
-                return false;
-
-            if (m is ClassVariable && m.IsPointer && ((ClassVariable)m).Class.IsStructure)
-                return false;
-
-            if (m is EnumVariable && !TypeFilter(((EnumVariable)m).Enum))
-                return false;
-
-            if (m is DelegateVariable && !TypeFilter(((DelegateVariable)m).Delegate))
+            if (!TypeFilter(m.Type))
                 return false;
 
             return true;
@@ -286,7 +288,11 @@ namespace Generator
             if (!IsManageClass(Class))
                 return new Method[0];
 
-            return Class.Methods.Where(m => m.IsVirtual && !m.IsOverride && !m.IsConst && m.ReturnType.Type == "void" && m.InputTypes.All(t => !t.IsReadOnly()));
+            return Class.Methods.Where(m => m.IsVirtual &&
+                                            !m.IsOverride &&
+                                            !m.IsConst &&
+                                            m.ReturnType.Type.IsVoid &&
+                                            m.InputTypes.All(t => !t.IsReadOnly()));
         }
 
         public static bool IsManageClass(Class Class)
@@ -304,6 +310,28 @@ namespace Generator
 
                 Class = Class.BaseClass;
             }
+
+            return false;
+        }
+
+        public static bool GetConvertToManageType(Type type, out string ToType)
+        {
+            if ((type as Class)?.IsStructure == false)
+            {
+                ToType = "ObjectPointerDescription";
+                return true;
+            }
+
+            if (UseConvertToManageType.TryGetValue(type.Name, out ToType))
+                return true;
+
+            return false;
+        }
+
+        public static bool IsUseConvertFromManageType(Type type)
+        {
+            if (UseConvertFromManageType.ContainsKey(type.Name))
+                return true;
 
             return false;
         }

@@ -12,7 +12,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UObjectBase_GetFName(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_UObjectBase_GetFName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UObjectBase_GetOuter(IntPtr Self);
@@ -33,7 +33,7 @@ namespace UnrealEngine
 		
 		#region ExternMethods
 		public string GetFName()
-			=> Marshal.PtrToStringUTF8(E_UObjectBase_GetFName(this, out int ResultStringLen), ResultStringLen);
+			=> E_UObjectBase_GetFName(this);
 		
 		public UObject GetOuter()
 			=> E_UObjectBase_GetOuter(this);

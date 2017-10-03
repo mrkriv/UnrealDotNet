@@ -18,9 +18,19 @@ public:
 		return CanJumpInternal();
 	}
 
+	bool CanJumpInternal_Implementation_WRAP()
+	{
+		return CanJumpInternal_Implementation();
+	}
+
 	void CheckResetJumpCount_WRAP()
 	{
 		CheckResetJumpCount();
+	}
+
+	bool DoJump_WRAP(bool bReplayingMoves)
+	{
+		return DoJump(bReplayingMoves);
 	}
 
 	void ResetJumpState_WRAP()
@@ -33,44 +43,29 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT char* E_PROP_ACharacter_CapsuleComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
-	{
-		auto _result = ((ACharacter*)Ptr)->CapsuleComponentName.ToString();
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
-	}
-	DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CapsuleComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_CapsuleComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->CapsuleComponentName); }
+	DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->CapsuleComponentName = ConvertFromManage_FName(Value); }
 	
-	DOTNET_EXPORT char* E_PROP_ACharacter_CharacterMovementComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
-	{
-		auto _result = ((ACharacter*)Ptr)->CharacterMovementComponentName.ToString();
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
-	}
-	DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->CharacterMovementComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_CharacterMovementComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->CharacterMovementComponentName); }
+	DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->CharacterMovementComponentName = ConvertFromManage_FName(Value); }
 	
-	DOTNET_EXPORT float E_PROP_ACharacter_CrouchedEyeHeight_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->CrouchedEyeHeight; }
-	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->CrouchedEyeHeight = Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_CrouchedEyeHeight_GET(ACharacter* Ptr) { return Ptr->CrouchedEyeHeight; }
+	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(ACharacter* Ptr, float Value) { Ptr->CrouchedEyeHeight = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_ACharacter_JumpCurrentCount_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpCurrentCount; }
-	DOTNET_EXPORT void E_PROP_ACharacter_JumpCurrentCount_SET(INT_PTR Ptr, int32 Value) { ((ACharacter*)Ptr)->JumpCurrentCount = Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_JumpCurrentCount_GET(ACharacter* Ptr) { return Ptr->JumpCurrentCount; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpCurrentCount_SET(ACharacter* Ptr, int32 Value) { Ptr->JumpCurrentCount = Value; }
 	
-	DOTNET_EXPORT float E_PROP_ACharacter_JumpKeyHoldTime_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpKeyHoldTime; }
-	DOTNET_EXPORT void E_PROP_ACharacter_JumpKeyHoldTime_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->JumpKeyHoldTime = Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_JumpKeyHoldTime_GET(ACharacter* Ptr) { return Ptr->JumpKeyHoldTime; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpKeyHoldTime_SET(ACharacter* Ptr, float Value) { Ptr->JumpKeyHoldTime = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_ACharacter_JumpMaxCount_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpMaxCount; }
-	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxCount_SET(INT_PTR Ptr, int32 Value) { ((ACharacter*)Ptr)->JumpMaxCount = Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_JumpMaxCount_GET(ACharacter* Ptr) { return Ptr->JumpMaxCount; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxCount_SET(ACharacter* Ptr, int32 Value) { Ptr->JumpMaxCount = Value; }
 	
-	DOTNET_EXPORT float E_PROP_ACharacter_JumpMaxHoldTime_GET(INT_PTR Ptr) { return ((ACharacter*)Ptr)->JumpMaxHoldTime; }
-	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxHoldTime_SET(INT_PTR Ptr, float Value) { ((ACharacter*)Ptr)->JumpMaxHoldTime = Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_JumpMaxHoldTime_GET(ACharacter* Ptr) { return Ptr->JumpMaxHoldTime; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxHoldTime_SET(ACharacter* Ptr, float Value) { Ptr->JumpMaxHoldTime = Value; }
 	
-	DOTNET_EXPORT char* E_PROP_ACharacter_MeshComponentName_GET(INT_PTR Ptr, int& ResultStringLen)
-	{
-		auto _result = ((ACharacter*)Ptr)->MeshComponentName.ToString();
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
-	}
-	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(INT_PTR Ptr, char* Value) { ((ACharacter*)Ptr)->MeshComponentName = FName(UTF8_TO_TCHAR(Value)); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_MeshComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->MeshComponentName); }
+	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->MeshComponentName = ConvertFromManage_FName(Value); }
 	
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(ACharacter* Obj)
 	{
@@ -108,8 +103,8 @@ extern "C"
 	{
 	}
 
-	DOTNET_EXPORT INT_PTR E_PROP_ACharacter_RepRootMotion_GET(INT_PTR Ptr) { return (INT_PTR)&((ACharacter*)Ptr)->RepRootMotion; }
-	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(INT_PTR Ptr, INT_PTR Value) { ((ACharacter*)Ptr)->RepRootMotion = *(FRepRootMotionMontage*)Value; }
+	DOTNET_EXPORT auto E_PROP_ACharacter_RepRootMotion_GET(ACharacter* Ptr) { return (INT_PTR)&(Ptr->RepRootMotion); }
+	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RepRootMotion = *(FRepRootMotionMontage*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
@@ -129,14 +124,24 @@ extern "C"
 		Self->CacheInitialMeshOffset(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_CanCrouch(ACharacter* Self)
+	{
+		return Self->CanCrouch();
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_CanJump(ACharacter* Self)
 	{
-		return ConvertForManage(Self->CanJump());
+		return Self->CanJump();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CanJumpInternal(ACharacter* Self)
 	{
-		return ConvertForManage(((E_PROTECTED_WRAP_ACharacter*)Self)->CanJumpInternal_WRAP());
+		return ((E_PROTECTED_WRAP_ACharacter*)Self)->CanJumpInternal_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_CanJumpInternal_Implementation(ACharacter* Self)
+	{
+		return ((E_PROTECTED_WRAP_ACharacter*)Self)->CanJumpInternal_Implementation_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CheckJumpInput(ACharacter* Self, float DeltaTime)
@@ -191,6 +196,12 @@ extern "C"
 		Self->Crouch(_p0);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_DoJump(ACharacter* Self, bool bReplayingMoves)
+	{
+		auto _p0 = bReplayingMoves;
+		return ((E_PROTECTED_WRAP_ACharacter*)Self)->DoJump_WRAP(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_Falling(ACharacter* Self)
 	{
 		Self->Falling();
@@ -198,7 +209,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_GetAnimRootMotionTranslationScale(ACharacter* Self)
 	{
-		return ConvertForManage(Self->GetAnimRootMotionTranslationScale());
+		return Self->GetAnimRootMotionTranslationScale();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_GetBaseRotationOffset(ACharacter* Self)
+	{
+		return (INT_PTR) new FQuat(Self->GetBaseRotationOffset());
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetBaseRotationOffsetRotator(ACharacter* Self)
@@ -213,32 +229,47 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_GetCapsuleComponent(ACharacter* Self)
 	{
-		return ConvertForManage(Self->GetCapsuleComponent());
+		return ConvertToManage_ObjectPointerDescription(Self->GetCapsuleComponent());
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_GetJumpMaxHoldTime(ACharacter* Self)
+	{
+		return Self->GetJumpMaxHoldTime();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetMesh(ACharacter* Self)
 	{
-		return ConvertForManage(Self->GetMesh());
+		return ConvertToManage_ObjectPointerDescription(Self->GetMesh());
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetReplicatedMovementMode(ACharacter* Self)
 	{
-		return ConvertForManage(Self->GetReplicatedMovementMode());
+		return Self->GetReplicatedMovementMode();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(ACharacter* Self)
 	{
-		return ConvertForManage(Self->GetReplicatedServerLastTransformUpdateTimeStamp());
+		return Self->GetReplicatedServerLastTransformUpdateTimeStamp();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_IsJumping(ACharacter* Self)
+	{
+		return Self->IsJumping();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_IsJumpProvidingForce(ACharacter* Self)
+	{
+		return Self->IsJumpProvidingForce();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_IsPlayingNetworkedRootMotionMontage(ACharacter* Self)
 	{
-		return ConvertForManage(Self->IsPlayingNetworkedRootMotionMontage());
+		return Self->IsPlayingNetworkedRootMotionMontage();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_IsPlayingRootMotion(ACharacter* Self)
 	{
-		return ConvertForManage(Self->IsPlayingRootMotion());
+		return Self->IsPlayingRootMotion();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_Jump(ACharacter* Self)
@@ -357,7 +388,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
 	{
 		auto _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
-		return ConvertForManage(Self->RestoreReplicatedMove(_p0));
+		return Self->RestoreReplicatedMove(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen(ACharacter* Self, char* InString)

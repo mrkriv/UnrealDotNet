@@ -16,12 +16,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_bDefaultsInitialized_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FURL_Host_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FURL_Host_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Host_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FURL_Map_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FURL_Map_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Map_SET(IntPtr Ptr, string Value);
 		
@@ -31,17 +31,17 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Port_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FURL_Portal_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FURL_Portal_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Portal_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FURL_Protocol_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FURL_Protocol_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Protocol_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FURL_RedirectURL_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FURL_RedirectURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_RedirectURL_SET(IntPtr Ptr, string Value);
 		

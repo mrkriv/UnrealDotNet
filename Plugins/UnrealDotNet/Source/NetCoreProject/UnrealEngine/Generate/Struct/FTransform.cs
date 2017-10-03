@@ -297,10 +297,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_FTransform_SubtractTranslations(IntPtr Self, IntPtr A, IntPtr B);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_ToHumanReadableString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FTransform_ToHumanReadableString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FTransform_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_TransformFVector4(IntPtr Self, IntPtr V);
@@ -690,10 +690,10 @@ namespace UnrealEngine
 		/// <para>Convert FTransform contents to a string </para>
 		/// </summary>
 		public string ToHumanReadableString()
-			=> Marshal.PtrToStringUTF8(E_FTransform_ToHumanReadableString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FTransform_ToHumanReadableString(this);
 		
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FTransform_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FTransform_ToString(this);
 		
 		public FVector4 TransformFVector4(FVector4 V)
 			=> E_FTransform_TransformFVector4(this, V);

@@ -37,6 +37,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_USpringArmComponent_RelativeSocketRotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr Self, IntPtr DesiredArmLocation, IntPtr TraceHitLocation, bool bHitSomething, float DeltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USpringArmComponent_UpdateDesiredArmLocation(IntPtr Self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime);
 		
 		#endregion
@@ -76,6 +79,14 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>This function allows subclasses to blend the trace hit location with the desired arm location; </para>
+		/// <para>by default it returns bHitSomething ? TraceHitLocation : DesiredArmLocation </para>
+		/// </summary>
+		protected virtual FVector BlendLocations(FVector DesiredArmLocation, FVector TraceHitLocation, bool bHitSomething, float DeltaTime)
+			=> E_USpringArmComponent_BlendLocations(this, DesiredArmLocation, TraceHitLocation, bHitSomething, DeltaTime);
+		
 		
 		/// <summary>
 		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>

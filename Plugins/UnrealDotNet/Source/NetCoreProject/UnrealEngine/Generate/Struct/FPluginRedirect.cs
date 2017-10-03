@@ -19,12 +19,12 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FPluginRedirect();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FPluginRedirect_NewPluginName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FPluginRedirect_NewPluginName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPluginRedirect_NewPluginName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FPluginRedirect_OldPluginName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FPluginRedirect_OldPluginName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPluginRedirect_OldPluginName_SET(IntPtr Ptr, string Value);
 		

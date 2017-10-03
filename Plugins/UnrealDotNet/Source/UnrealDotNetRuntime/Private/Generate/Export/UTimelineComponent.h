@@ -15,37 +15,37 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UTimelineComponent_GetIgnoreTimeDilation(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->GetIgnoreTimeDilation());
+		return Self->GetIgnoreTimeDilation();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_GetPlaybackPosition(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->GetPlaybackPosition());
+		return Self->GetPlaybackPosition();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_GetPlayRate(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->GetPlayRate());
+		return Self->GetPlayRate();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_GetTimelineLength(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->GetTimelineLength());
+		return Self->GetTimelineLength();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_IsLooping(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->IsLooping());
+		return Self->IsLooping();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_IsPlaying(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->IsPlaying());
+		return Self->IsPlaying();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_IsReversing(UTimelineComponent* Self)
 	{
-		return ConvertForManage(Self->IsReversing());
+		return Self->IsReversing();
 	}
 
 	DOTNET_EXPORT auto E_UTimelineComponent_Play(UTimelineComponent* Self)

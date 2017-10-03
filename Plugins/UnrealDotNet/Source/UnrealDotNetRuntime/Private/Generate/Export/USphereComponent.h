@@ -15,17 +15,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USphereComponent_GetScaledSphereRadius(USphereComponent* Self)
 	{
-		return ConvertForManage(Self->GetScaledSphereRadius());
+		return Self->GetScaledSphereRadius();
 	}
 
 	DOTNET_EXPORT auto E_USphereComponent_GetShapeScale(USphereComponent* Self)
 	{
-		return ConvertForManage(Self->GetShapeScale());
+		return Self->GetShapeScale();
 	}
 
 	DOTNET_EXPORT auto E_USphereComponent_GetUnscaledSphereRadius(USphereComponent* Self)
 	{
-		return ConvertForManage(Self->GetUnscaledSphereRadius());
+		return Self->GetUnscaledSphereRadius();
 	}
 
 	DOTNET_EXPORT auto E_USphereComponent_InitSphereRadius(USphereComponent* Self, float InSphereRadius)

@@ -77,17 +77,17 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_IdealLightMapDensity_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_LevelColorationLitMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_LevelColorationLitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LevelColorationLitMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_LightingTexelDensityName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_LightingTexelDensityName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LightingTexelDensityName_SET(IntPtr Ptr, string Value);
 		
@@ -157,12 +157,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_NumPawnsAllowedToBeSpawnedInAFrame_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_ParticleEventManagerClassPath_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_ParticleEventManagerClassPath_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ParticleEventManagerClassPath_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_PlayOnConsoleSaveDir_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_PlayOnConsoleSaveDir_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_PlayOnConsoleSaveDir_SET(IntPtr Ptr, string Value);
 		
@@ -197,12 +197,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_SelectionMeshSectionHighlightIntensity_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_ShadedLevelColorationLitMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_ShadedLevelColorationLitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ShadedLevelColorationLitMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
 		
@@ -217,49 +217,52 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_TickCycles_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_TransitionDescription_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_TransitionDescription_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_TransitionDescription_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_TransitionGameMode_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_TransitionGameMode_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_TransitionGameMode_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorViewModeMaterialName_AlphaAsColor_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorViewModeMaterialName_AlphaAsColor_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorViewModeMaterialName_AlphaAsColor_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorViewModeMaterialName_BlueOnly_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorViewModeMaterialName_BlueOnly_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorViewModeMaterialName_BlueOnly_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorViewModeMaterialName_ColorOnly_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorViewModeMaterialName_ColorOnly_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorViewModeMaterialName_ColorOnly_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorViewModeMaterialName_GreenOnly_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorViewModeMaterialName_GreenOnly_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorViewModeMaterialName_GreenOnly_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_VertexColorViewModeMaterialName_RedOnly_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_VertexColorViewModeMaterialName_RedOnly_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_VertexColorViewModeMaterialName_RedOnly_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UEngine_WireframeMaterialName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UEngine_WireframeMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_WireframeMaterialName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UEngine_IsInitialized(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_ParseCommandline(IntPtr Self);
@@ -602,6 +605,9 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		public virtual bool IsInitialized()
+			=> E_UEngine_IsInitialized(this);
+		
 		
 		/// <summary>
 		/// <para>Called at startup, in the middle of FEngineLoop::Init. </para>

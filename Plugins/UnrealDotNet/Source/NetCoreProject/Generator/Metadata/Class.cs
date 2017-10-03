@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Generator.Metadata
@@ -21,6 +22,17 @@ namespace Generator.Metadata
 
             IsImplemented = false;
             this.Name = Name;
+        }
+
+        public IEnumerable<Type> Dependent
+        {
+            get
+            {
+                return Methods.Select(x => x.Dependent).Flatten()
+                    .Concat(Constructors.Select(x => x.Dependent).Flatten())
+                    .Concat(Property.Select(x => x.Type))
+                    .Distinct();
+            }
         }
 
         public bool IsChild(string ClassName)

@@ -23,6 +23,11 @@ public:
 		HandleCanEverAffectNavigationChange(bForceUpdate);
 	}
 
+	bool HasValidPhysicsState_WRAP()
+	{
+		return HasValidPhysicsState();
+	}
+
 	void OnCreatePhysicsState_WRAP()
 	{
 		OnCreatePhysicsState();
@@ -58,13 +63,28 @@ public:
 		SendRenderTransform_Concurrent();
 	}
 
+	bool ShouldActivate_WRAP()
+	{
+		return ShouldActivate();
+	}
+
+	bool ShouldCreatePhysicsState_WRAP()
+	{
+		return ShouldCreatePhysicsState();
+	}
+
+	bool ShouldCreateRenderState_WRAP()
+	{
+		return ShouldCreateRenderState();
+	}
+
 }
 ;
 
 extern "C"
 {
-	DOTNET_EXPORT EComponentCreationMethod E_PROP_UActorComponent_CreationMethod_GET(INT_PTR Ptr) { return ((UActorComponent*)Ptr)->CreationMethod; }
-	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(INT_PTR Ptr, EComponentCreationMethod Value) { ((UActorComponent*)Ptr)->CreationMethod = Value; }
+	DOTNET_EXPORT auto E_PROP_UActorComponent_CreationMethod_GET(UActorComponent* Ptr) { return Ptr->CreationMethod; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(UActorComponent* Ptr, EComponentCreationMethod Value) { Ptr->CreationMethod = Value; }
 	
 	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
 	{
@@ -90,7 +110,7 @@ extern "C"
 	{
 	}
 
-	DOTNET_EXPORT INT_PTR E_PROP_UActorComponent_PrimaryComponentTick_GET(INT_PTR Ptr) { return (INT_PTR)&((UActorComponent*)Ptr)->PrimaryComponentTick; }
+	DOTNET_EXPORT auto E_PROP_UActorComponent_PrimaryComponentTick_GET(UActorComponent* Ptr) { return (INT_PTR)&(Ptr->PrimaryComponentTick); }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UActorComponent(UObject* Parent, char* Name)
@@ -118,7 +138,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_AllowReregistration(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->AllowReregistration());
+		return Self->AllowReregistration();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ApplyWorldOffset(UActorComponent* Self, INT_PTR InOffset, bool bWorldShift)
@@ -135,19 +155,19 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_CanEverAffectNavigation(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->CanEverAffectNavigation());
+		return Self->CanEverAffectNavigation();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ComponentHasTag(UActorComponent* Self, char* Tag)
 	{
 		auto _p0 = ConvertFromManage_FName(Tag);
-		return ConvertForManage(Self->ComponentHasTag(_p0));
+		return Self->ComponentHasTag(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ComponentIsInPersistentLevel(UActorComponent* Self, bool bIncludeLevelStreamingPersistent)
 	{
 		auto _p0 = bIncludeLevelStreamingPersistent;
-		return ConvertForManage(Self->ComponentIsInPersistentLevel(_p0));
+		return Self->ComponentIsInPersistentLevel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_CreatePhysicsState(UActorComponent* Self)
@@ -191,24 +211,34 @@ extern "C"
 		Self->DoDeferredRenderUpdates_Concurrent();
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_GetComponentClassCanReplicate(UActorComponent* Self)
+	{
+		return Self->GetComponentClassCanReplicate();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_GetComponentTickInterval(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetComponentTickInterval());
+		return Self->GetComponentTickInterval();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_GetIsReplicated(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetIsReplicated());
+		return Self->GetIsReplicated();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_GetNetMode(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetNetMode());
+		return Self->GetNetMode();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_GetOwner(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetOwner());
+		return ConvertToManage_ObjectPointerDescription(Self->GetOwner());
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_GetReadableName(UActorComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetReadableName());
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_HandleCanEverAffectNavigationChange(UActorComponent* Self, bool bForceUpdate)
@@ -219,17 +249,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_HasBeenCreated(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->HasBeenCreated());
+		return Self->HasBeenCreated();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_HasBeenInitialized(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->HasBeenInitialized());
+		return Self->HasBeenInitialized();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_HasBegunPlay(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->HasBegunPlay());
+		return Self->HasBegunPlay();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_HasValidPhysicsState(UActorComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->HasValidPhysicsState_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_InitializeComponent(UActorComponent* Self)
@@ -249,75 +284,90 @@ extern "C"
 		Self->InvalidateLightingCacheDetailed(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_IsActive(UActorComponent* Self)
+	{
+		return Self->IsActive();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_IsBeingDestroyed(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsBeingDestroyed());
+		return Self->IsBeingDestroyed();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsComponentTickEnabled(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsComponentTickEnabled());
+		return Self->IsComponentTickEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsCreatedByConstructionScript(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsCreatedByConstructionScript());
+		return Self->IsCreatedByConstructionScript();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsEditableWhenInherited(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsEditableWhenInherited());
+		return Self->IsEditableWhenInherited();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsNavigationRelevant(UActorComponent* Self)
+	{
+		return Self->IsNavigationRelevant();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsNetMode(UActorComponent* Self, ENetMode Mode)
 	{
 		auto _p0 = Mode;
-		return ConvertForManage(Self->IsNetMode(_p0));
+		return Self->IsNetMode(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsNetSimulating(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsNetSimulating());
+		return Self->IsNetSimulating();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsNetStartupComponent(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsNetStartupComponent());
+		return Self->IsNetStartupComponent();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsOwnerRunningUserConstructionScript(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsOwnerRunningUserConstructionScript());
+		return Self->IsOwnerRunningUserConstructionScript();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsOwnerSelected(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsOwnerSelected());
+		return Self->IsOwnerSelected();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsPhysicsStateCreated(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsPhysicsStateCreated());
+		return Self->IsPhysicsStateCreated();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsReadyForOwnerToAutoDestroy(UActorComponent* Self)
+	{
+		return Self->IsReadyForOwnerToAutoDestroy();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsRegistered(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsRegistered());
+		return Self->IsRegistered();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsRenderStateCreated(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsRenderStateCreated());
+		return Self->IsRenderStateCreated();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsRenderStateDirty(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsRenderStateDirty());
+		return Self->IsRenderStateDirty();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsRenderTransformDirty(UActorComponent* Self)
 	{
-		return ConvertForManage(Self->IsRenderTransformDirty());
+		return Self->IsRenderTransformDirty();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_K2_DestroyComponent(UActorComponent* Self, UObject* Object)
@@ -448,6 +498,16 @@ extern "C"
 		Self->RemoveTickPrerequisiteComponent(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(UActorComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameRecreate();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(UActorComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameUpdates();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_ReregisterComponent(UActorComponent* Self)
 	{
 		Self->ReregisterComponent();
@@ -527,6 +587,21 @@ extern "C"
 	{
 		auto _p0 = NewTickGroup;
 		Self->SetTickGroup(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ShouldActivate(UActorComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->ShouldActivate_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ShouldCreatePhysicsState(UActorComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->ShouldCreatePhysicsState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ShouldCreateRenderState(UActorComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->ShouldCreateRenderState_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ToggleActive(UActorComponent* Self)

@@ -22,7 +22,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UAudioComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UAudioComponent_GetAudioComponentUserID(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_UAudioComponent_GetAudioComponentUserID(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_PlayInternal(IntPtr Self, float StartTime, float FadeInDuration, float FadeVolumeLevel);
@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		#region ExternMethods
 		public string GetAudioComponentUserID()
-			=> Marshal.PtrToStringUTF8(E_UAudioComponent_GetAudioComponentUserID(this, out int ResultStringLen), ResultStringLen);
+			=> E_UAudioComponent_GetAudioComponentUserID(this);
 		
 		
 		/// <summary>

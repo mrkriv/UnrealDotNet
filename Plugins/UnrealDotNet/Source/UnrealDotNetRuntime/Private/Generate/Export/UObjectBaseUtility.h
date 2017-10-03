@@ -9,22 +9,22 @@ extern "C"
 {
 	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerIndex(UObjectBaseUtility* Self)
 	{
-		return ConvertForManage(Self->GetLinkerIndex());
+		return Self->GetLinkerIndex();
 	}
 
 	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(UObjectBaseUtility* Self)
 	{
-		return ConvertForManage(Self->GetLinkerLicenseeUE4Version());
+		return Self->GetLinkerLicenseeUE4Version();
 	}
 
 	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerUE4Version(UObjectBaseUtility* Self)
 	{
-		return ConvertForManage(Self->GetLinkerUE4Version());
+		return Self->GetLinkerUE4Version();
 	}
 
 	DOTNET_EXPORT auto E_UObjectBaseUtility_IsDefaultSubobject(UObjectBaseUtility* Self)
 	{
-		return ConvertForManage(Self->IsDefaultSubobject());
+		return Self->IsDefaultSubobject();
 	}
 
 }

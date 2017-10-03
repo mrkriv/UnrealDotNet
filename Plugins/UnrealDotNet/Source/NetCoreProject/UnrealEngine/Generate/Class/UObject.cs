@@ -22,6 +22,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UObject(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_BeginDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -34,13 +37,61 @@ namespace UnrealEngine
 		private static extern void E_UObject_FinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UObject_GetDesc(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UObject_GetDetailedInfoInternal(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsAsset(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsEditorOnly(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsFullNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsLocalizedResource(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsPostLoadThreadSafe(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsReadyForFinishDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsSafeForRootSet(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_IsSelected(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_IsSupportedForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_Modify(IntPtr Self, bool bAlwaysMarkDirty);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_NeedsLoadForClient(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_NeedsLoadForEditorGame(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_NeedsLoadForServer(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostCDOContruct(IntPtr Self);
@@ -80,6 +131,15 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Returns whether native properties are identical to the one of the passed in component. </para>
+		/// <param name="Other">Other component to compare against </param>
+		/// <return>true if native properties are identical, false otherwise </return>
+		/// </summary>
+		public virtual bool AreNativePropertiesIdenticalTo(UObject Other)
+			=> E_UObject_AreNativePropertiesIdenticalTo(this, Other);
+		
+		
+		/// <summary>
 		/// <para>Called before destroying the object.  This is called immediately upon deciding to destroy the object, to allow the object to begin an </para>
 		/// <para>asynchronous cleanup process. </para>
 		/// </summary>
@@ -110,11 +170,89 @@ namespace UnrealEngine
 		public virtual void FinishDestroy()
 			=> E_UObject_FinishDestroy(this);
 		
+		
+		/// <summary>
+		/// <return>a one line description of an object for viewing in the thumbnail view of the generic browser </return>
+		/// </summary>
+		public virtual string GetDesc()
+			=> E_UObject_GetDesc(this);
+		
+		
+		/// <summary>
+		/// <para>This function actually does the work for the GetDetailInfo and is virtual. </para>
+		/// <para>It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers </para>
+		/// </summary>
+		protected virtual string GetDetailedInfoInternal()
+			=> E_UObject_GetDetailedInfoInternal(this);
+		
+		public virtual UWorld GetWorld()
+			=> E_UObject_GetWorld(this);
+		
 		public UWorld GetWorldChecked(bool bSupported)
 			=> E_UObject_GetWorldChecked(this, bSupported);
 		
 		public bool ImplementsGetWorld()
 			=> E_UObject_ImplementsGetWorld(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered an asset. </para>
+		/// </summary>
+		public virtual bool IsAsset()
+			=> E_UObject_IsAsset(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine if the object is forced to be editor only or not </para>
+		/// <return>true if this object should never be loaded outside the editor </return>
+		/// </summary>
+		public virtual bool IsEditorOnly()
+			=> E_UObject_IsEditorOnly(this);
+		
+		
+		/// <summary>
+		/// <para>IsFullNameStableForNetworking means an object can be referred to its full path name over the network </para>
+		/// </summary>
+		public virtual bool IsFullNameStableForNetworking()
+			=> E_UObject_IsFullNameStableForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered a localized resource. </para>
+		/// </summary>
+		public virtual bool IsLocalizedResource()
+			=> E_UObject_IsLocalizedResource(this);
+		
+		
+		/// <summary>
+		/// <para>IsNameStableForNetworking means an object can be referred to its path name (relative to outer) over the network </para>
+		/// </summary>
+		public virtual bool IsNameStableForNetworking()
+			=> E_UObject_IsNameStableForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>Called during async load to determine if PostLoad can be called on the loading thread. </para>
+		/// <return>true if this object's PostLoad is thread safe </return>
+		/// </summary>
+		public virtual bool IsPostLoadThreadSafe()
+			=> E_UObject_IsPostLoadThreadSafe(this);
+		
+		
+		/// <summary>
+		/// <para>Called to check if the object is ready for FinishDestroy.  This is called after BeginDestroy to check the completion of the </para>
+		/// <para>potentially asynchronous object cleanup. </para>
+		/// <return>True if the object's asynchronous cleanup has completed and it is ready for FinishDestroy to be called. </return>
+		/// </summary>
+		public virtual bool IsReadyForFinishDestroy()
+			=> E_UObject_IsReadyForFinishDestroy(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is safe to add to the root set. </para>
+		/// </summary>
+		public virtual bool IsSafeForRootSet()
+			=> E_UObject_IsSafeForRootSet(this);
 		
 		
 		/// <summary>
@@ -124,6 +262,52 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsSelected()
 			=> E_UObject_IsSelected(this);
+		
+		
+		/// <summary>
+		/// <para>IsSupportedForNetworking means an object can be referenced over the network </para>
+		/// </summary>
+		public virtual bool IsSupportedForNetworking()
+			=> E_UObject_IsSupportedForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>Note that the object will be modified.  If we are currently recording into the </para>
+		/// <para>transaction buffer (undo/redo), save a copy of this object into the buffer and </para>
+		/// <para>marks the package as needing to be saved. </para>
+		/// <param name="bAlwaysMarkDirty">if true, marks the package dirty even if we aren't </param>
+		/// <para>currently recording an active undo/redo transaction </para>
+		/// <return>true if the object was saved to the transaction buffer </return>
+		/// </summary>
+		public virtual bool Modify(bool bAlwaysMarkDirty)
+			=> E_UObject_Modify(this, bAlwaysMarkDirty);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will be discarded on clients </para>
+		/// <return>true if this object should be loaded on clients </return>
+		/// </summary>
+		public virtual bool NeedsLoadForClient()
+			=> E_UObject_NeedsLoadForClient(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will still get loaded if NeedsLoadForServer/Client are true </para>
+		/// <return>true if this object should always be loaded for editor game </return>
+		/// </summary>
+		public virtual bool NeedsLoadForEditorGame()
+			=> E_UObject_NeedsLoadForEditorGame(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will be discarded on servers </para>
+		/// <return>true if this object should be loaded on servers </return>
+		/// </summary>
+		public virtual bool NeedsLoadForServer()
+			=> E_UObject_NeedsLoadForServer(this);
 		
 		
 		/// <summary>

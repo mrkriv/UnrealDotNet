@@ -102,12 +102,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UWorld_CommittedPersistentLevelName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UWorld_CommittedPersistentLevelName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_CommittedPersistentLevelName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UWorld_DebugDrawTraceTag_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UWorld_DebugDrawTraceTag_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_DebugDrawTraceTag_SET(IntPtr Ptr, string Value);
 		
@@ -137,7 +137,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_NextTravelType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_UWorld_NextURL_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_UWorld_NextURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_NextURL_SET(IntPtr Ptr, string Value);
 		
@@ -229,7 +229,7 @@ namespace UnrealEngine
 		private static extern void E_UWorld_BroadcastLevelsChanged(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorld_BuildPIEPackagePrefix(IntPtr Self, int PIEInstanceID, out int ResultStringLen);
+		private static extern StringWrapper E_UWorld_BuildPIEPackagePrefix(IntPtr Self, int PIEInstanceID);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_CancelPendingMapChange(IntPtr Self);
@@ -256,7 +256,7 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_ContainsActor(IntPtr Self, IntPtr Actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorld_ConvertToPIEPackageName(IntPtr Self, string PackageName, int PIEInstanceID, out int ResultStringLen);
+		private static extern StringWrapper E_UWorld_ConvertToPIEPackageName(IntPtr Self, string PackageName, int PIEInstanceID);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_CreateFXSystem(IntPtr Self);
@@ -439,7 +439,7 @@ namespace UnrealEngine
 		private static extern void E_UWorld_RemovePawn(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorld_RemovePIEPrefix(IntPtr Self, string Source, out int ResultStringLen);
+		private static extern StringWrapper E_UWorld_RemovePIEPrefix(IntPtr Self, string Source);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_RenameToPIEWorld(IntPtr Self, int PIEInstanceID);
@@ -478,7 +478,7 @@ namespace UnrealEngine
 		private static extern void E_UWorld_StartPhysicsSim(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UWorld_StripPIEPrefixFromPackageName(IntPtr Self, string PackageName, string Prefix, out int ResultStringLen);
+		private static extern StringWrapper E_UWorld_StripPIEPrefixFromPackageName(IntPtr Self, string PackageName, string Prefix);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_Tick(IntPtr Self, byte TickType, float DeltaSeconds);
@@ -959,7 +959,7 @@ namespace UnrealEngine
 		/// <para>Return the prefix for PIE packages given a PIE Instance ID </para>
 		/// </summary>
 		public string BuildPIEPackagePrefix(int PIEInstanceID)
-			=> Marshal.PtrToStringUTF8(E_UWorld_BuildPIEPackagePrefix(this, PIEInstanceID, out int ResultStringLen), ResultStringLen);
+			=> E_UWorld_BuildPIEPackagePrefix(this, PIEInstanceID);
 		
 		
 		/// <summary>
@@ -1031,7 +1031,7 @@ namespace UnrealEngine
 		/// <para>Given a PackageName and a PIE Instance ID return the name of that Package when being run as a PIE world </para>
 		/// </summary>
 		public string ConvertToPIEPackageName(string PackageName, int PIEInstanceID)
-			=> Marshal.PtrToStringUTF8(E_UWorld_ConvertToPIEPackageName(this, PackageName, PIEInstanceID, out int ResultStringLen), ResultStringLen);
+			=> E_UWorld_ConvertToPIEPackageName(this, PackageName, PIEInstanceID);
 		
 		
 		/// <summary>
@@ -1481,7 +1481,7 @@ namespace UnrealEngine
 		/// <para>Given a string, return that string with any PIE prefix removed </para>
 		/// </summary>
 		public string RemovePIEPrefix(string Source)
-			=> Marshal.PtrToStringUTF8(E_UWorld_RemovePIEPrefix(this, Source, out int ResultStringLen), ResultStringLen);
+			=> E_UWorld_RemovePIEPrefix(this, Source);
 		
 		
 		/// <summary>
@@ -1582,7 +1582,7 @@ namespace UnrealEngine
 		/// <para>Given a PackageName and a prefix type, get back to the original package name (i.e. the saved map name) </para>
 		/// </summary>
 		public string StripPIEPrefixFromPackageName(string PackageName, string Prefix)
-			=> Marshal.PtrToStringUTF8(E_UWorld_StripPIEPrefixFromPackageName(this, PackageName, Prefix, out int ResultStringLen), ResultStringLen);
+			=> E_UWorld_StripPIEPrefixFromPackageName(this, PackageName, Prefix);
 		
 		
 		/// <summary>

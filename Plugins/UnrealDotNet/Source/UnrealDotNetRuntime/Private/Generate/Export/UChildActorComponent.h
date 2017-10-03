@@ -25,19 +25,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActor(UChildActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetChildActor());
+		return ConvertToManage_ObjectPointerDescription(Self->GetChildActor());
 	}
 
-	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActorName(UChildActorComponent* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActorName(UChildActorComponent* Self)
 	{
-		auto _result = ConvertForManage(Self->GetChildActorName().ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetChildActorName());
 	}
 
 	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActorTemplate(UChildActorComponent* Self)
 	{
-		return ConvertForManage(Self->GetChildActorTemplate());
+		return ConvertToManage_ObjectPointerDescription(Self->GetChildActorTemplate());
 	}
 
 }

@@ -139,10 +139,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_FRotator_RotateVector(IntPtr Self, IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_ToCompactString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FRotator_ToCompactString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FRotator_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_UnrotateVector(IntPtr Self, IntPtr V);
@@ -368,7 +368,7 @@ namespace UnrealEngine
 		/// <para>Get a short textural representation of this vector, for compact readable logging. </para>
 		/// </summary>
 		public string ToCompactString()
-			=> Marshal.PtrToStringUTF8(E_FRotator_ToCompactString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FRotator_ToCompactString(this);
 		
 		
 		/// <summary>
@@ -376,7 +376,7 @@ namespace UnrealEngine
 		/// <return>Text describing the vector. </return>
 		/// </summary>
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FRotator_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FRotator_ToString(this);
 		
 		
 		/// <summary>

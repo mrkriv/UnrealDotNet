@@ -9,7 +9,7 @@ extern "C"
 {
 	DOTNET_EXPORT auto E_UWorldProxy_GetReference(UWorldProxy* Self)
 	{
-		return ConvertForManage(Self->GetReference());
+		return ConvertToManage_ObjectPointerDescription(Self->GetReference());
 	}
 
 }

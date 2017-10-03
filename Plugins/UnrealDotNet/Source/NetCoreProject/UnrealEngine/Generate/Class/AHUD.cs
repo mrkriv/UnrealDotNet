@@ -113,6 +113,9 @@ namespace UnrealEngine
 		private static extern void E_AHUD_RemovePostRenderedActor(IntPtr Self, IntPtr A);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AHUD_ShouldDisplayDebug(IntPtr Self, string DebugType);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_ShowDebug(IntPtr Self, string DebugType);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -332,6 +335,15 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void RemovePostRenderedActor(AActor A)
 			=> E_AHUD_RemovePostRenderedActor(this, A);
+		
+		
+		/// <summary>
+		/// <para>check if we should be display debug information for particular types of debug messages. </para>
+		/// <param name="DebugType">type of debug message. </param>
+		/// <return>true if it should be displayed, false otherwise. </return>
+		/// </summary>
+		public virtual bool ShouldDisplayDebug(string DebugType)
+			=> E_AHUD_ShouldDisplayDebug(this, DebugType);
 		
 		public virtual void ShowDebug(string DebugType)
 			=> E_AHUD_ShowDebug(this, DebugType);

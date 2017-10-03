@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Generator.Metadata;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
 using Enum = Generator.Metadata.Enum;
 using Delegate = Generator.Metadata.Delegate;
 
@@ -15,7 +14,14 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
-                Directory.GetFiles(OutputDir, "*.cs", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                try
+                {
+                    Directory.GetFiles(OutputDir, "*.cs", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                }
+                catch
+                {
+                    // ignored
+                }
 
                 foreach (var cl in domain.Classes)
                 {
@@ -165,7 +171,7 @@ namespace Generator
             {
                 var type = prop.GetTypeCS();
                 var name = prop.GetDisplayName();
-                var dlg = ((DelegateVariable) prop).Delegate;
+                var dlg = (Delegate)prop.Type;
 
                 GenerateSummaty(cw, prop);
 
@@ -356,17 +362,11 @@ namespace Generator
 
             private static void GenerateMethodDLLImport(CoreWriter cw, Class Class, Method method)
             {
-                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
-                                    method.ReturnType.Type == "FString";
-
                 var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
                 inputs.Insert(0, "IntPtr Self");
 
-                if (genStringWrap)
-                    inputs.Add("out int ResultStringLen");
-
                 var param = string.Join(", ", inputs);
-                var ret = genStringWrap ? "IntPtr" : ExportVariable(method.ReturnType, false, true, true);
+                var ret = ExportVariable(method.ReturnType, false, true, true);
 
                 WriteDLLImport(cw);
                 cw.WriteLine(
@@ -376,9 +376,6 @@ namespace Generator
 
             private static void GenerateMethodBody(CoreWriter cw, Class Class, Method method)
             {
-                var genStringWrap = method.ReturnType.Type == "FText" || method.ReturnType.Type == "FName" ||
-                                    method.ReturnType.Type == "FString";
-
                 var inputs = method.InputTypes.Select(VarNameForCall).ToList();
 
                 var genDefault = !method.IsVirtual &&
@@ -396,23 +393,14 @@ namespace Generator
                 inputs.Insert(0, "this");
                 cw.WriteLine($"{ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param})");
 
-                if (genStringWrap)
-                {
-                    inputs.Add("out int ResultStringLen");
-                    cw.WriteLine(
-                        $"\t=> Marshal.PtrToStringUTF8({GetCPPMethodName(method)}({string.Join(", ", inputs)}), ResultStringLen);");
-                }
-                else
-                {
-                    cw.Write("\t=> ");
+                cw.Write("\t=> ");
 
-                    if (method.ReturnType is EnumVariable)
-                    {
-                        cw.Write($"({method.ReturnType.Type})");
-                    }
-
-                    cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
+                if (method.ReturnType is EnumVariable)
+                {
+                    cw.Write($"({method.ReturnType.Type})");
                 }
+
+                cw.WriteLine($"{GetCPPMethodName(method)}({string.Join(", ", inputs)});");
 
                 cw.WriteLine();
             }

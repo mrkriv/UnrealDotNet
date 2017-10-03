@@ -31,7 +31,7 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UChildActorComponent_GetChildActorName(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_UChildActorComponent_GetChildActorName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(IntPtr Self);
@@ -57,7 +57,7 @@ namespace UnrealEngine
 			=> E_UChildActorComponent_GetChildActor(this);
 		
 		public string GetChildActorName()
-			=> Marshal.PtrToStringUTF8(E_UChildActorComponent_GetChildActorName(this, out int ResultStringLen), ResultStringLen);
+			=> E_UChildActorComponent_GetChildActorName(this);
 		
 		public AActor GetChildActorTemplate()
 			=> E_UChildActorComponent_GetChildActorTemplate(this);

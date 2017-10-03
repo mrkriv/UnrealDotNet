@@ -22,17 +22,17 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ADefaultPawn(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ADefaultPawn_CollisionComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ADefaultPawn_CollisionComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ADefaultPawn_CollisionComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ADefaultPawn_MeshComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ADefaultPawn_MeshComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ADefaultPawn_MeshComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ADefaultPawn_MovementComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ADefaultPawn_MovementComponentName_SET(IntPtr Ptr, string Value);
 		

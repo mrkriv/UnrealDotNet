@@ -67,6 +67,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_USceneComponent_CalcNewComponentToWorld_GeneralCase(IntPtr Self, IntPtr NewRelativeTransform, IntPtr Parent, string SocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_CanAttachAsChild(IntPtr Self, IntPtr ChildComponent, string SocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_CanEverRender(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -82,6 +85,9 @@ namespace UnrealEngine
 		private static extern void E_USceneComponent_DetachFromParent(IntPtr Self, bool bMaintainWorldPosition, bool bCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_DoesSocketExist(IntPtr Self, string InSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_USceneComponent_GetAttachmentRoot(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -91,10 +97,13 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_USceneComponent_GetAttachParent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetAttachSocketName(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_USceneComponent_GetAttachSocketName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_USceneComponent_GetChildComponent(IntPtr Self, int ChildIndex);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_USceneComponent_GetCollisionObjectType(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetComponentLocation(IntPtr Self);
@@ -109,7 +118,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_USceneComponent_GetComponentScale(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USceneComponent_GetDefaultSceneRootVariableName(IntPtr Self, out int ResultStringLen);
+		private static extern IntPtr E_USceneComponent_GetComponentVelocity(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_USceneComponent_GetDefaultSceneRootVariableName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetForwardVector(IntPtr Self);
@@ -124,7 +136,25 @@ namespace UnrealEngine
 		private static extern IntPtr E_USceneComponent_GetRightVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_GetSocketLocation(IntPtr Self, string InSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_GetSocketQuaternion(IntPtr Self, string InSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_GetSocketRotation(IntPtr Self, string InSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_GetSocketTransform(IntPtr Self, string InSocketName, byte TransformSpace);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetUpVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_HasAnySockets(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsAnySimulatingPhysics(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_IsAttachedTo(IntPtr Self, IntPtr TestComp);
@@ -139,7 +169,22 @@ namespace UnrealEngine
 		private static extern bool E_USceneComponent_IsPhysicsCollisionEnabled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsPrecomputedLightingValid(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_IsQueryCollisionEnabled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsSimulatingPhysics(IntPtr Self, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsVisible(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsVisibleInEditor(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_IsWorldGeometry(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_K2_AttachToComponent(IntPtr Self, IntPtr Parent, string SocketName, byte LocationRule, byte RotationRule, byte ScaleRule, bool bWeldSimulatedBodies);
@@ -206,6 +251,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_SetWorldScale3D(IntPtr Self, IntPtr NewScale);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_ShouldCollideWhenPlacing(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_ShouldComponentAddToScene(IntPtr Self);
@@ -330,6 +378,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called to see if it's possible to attach another scene component as a child. </para>
+		/// <para>Note: This can be called on template component as well! </para>
+		/// </summary>
+		public virtual bool CanAttachAsChild(USceneComponent ChildComponent, string SocketName)
+			=> E_USceneComponent_CanAttachAsChild(this, ChildComponent, SocketName);
+		
+		
+		/// <summary>
 		/// <para>return true if it can ever render </para>
 		/// </summary>
 		public bool CanEverRender()
@@ -364,6 +420,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>return true if socket with the given name exists </para>
+		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// <return>true if the socket with the given name exists. Otherwise, return false </return>
+		/// </summary>
+		public virtual bool DoesSocketExist(string InSocketName)
+			=> E_USceneComponent_DoesSocketExist(this, InSocketName);
+		
+		
+		/// <summary>
 		/// <para>Walks up the attachment chain from this SceneComponent and returns the SceneComponent at the top. If AttachParent is NULL, returns this. </para>
 		/// </summary>
 		public USceneComponent GetAttachmentRoot()
@@ -388,7 +453,7 @@ namespace UnrealEngine
 		/// <para>Get the socket we are attached to. </para>
 		/// </summary>
 		public string GetAttachSocketName()
-			=> Marshal.PtrToStringUTF8(E_USceneComponent_GetAttachSocketName(this, out int ResultStringLen), ResultStringLen);
+			=> E_USceneComponent_GetAttachSocketName(this);
 		
 		
 		/// <summary>
@@ -396,6 +461,13 @@ namespace UnrealEngine
 		/// </summary>
 		public USceneComponent GetChildComponent(int ChildIndex)
 			=> E_USceneComponent_GetChildComponent(this, ChildIndex);
+		
+		
+		/// <summary>
+		/// <para>Returns the channel that this component belongs to when it moves. </para>
+		/// </summary>
+		public virtual ECollisionChannel GetCollisionObjectType()
+			=> (ECollisionChannel)E_USceneComponent_GetCollisionObjectType(this);
 		
 		
 		/// <summary>
@@ -427,10 +499,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get velocity of the component: either ComponentVelocity, or the velocity of the physics body if simulating physics. </para>
+		/// <return>Velocity of the component </return>
+		/// </summary>
+		public virtual FVector GetComponentVelocity()
+			=> E_USceneComponent_GetComponentVelocity(this);
+		
+		
+		/// <summary>
 		/// <para>The name to use for the default scene root variable </para>
 		/// </summary>
 		public string GetDefaultSceneRootVariableName()
-			=> Marshal.PtrToStringUTF8(E_USceneComponent_GetDefaultSceneRootVariableName(this, out int ResultStringLen), ResultStringLen);
+			=> E_USceneComponent_GetDefaultSceneRootVariableName(this);
 		
 		
 		/// <summary>
@@ -462,10 +542,60 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get world-space socket or bone location. </para>
+		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// </summary>
+		public virtual FVector GetSocketLocation(string InSocketName)
+			=> E_USceneComponent_GetSocketLocation(this, InSocketName);
+		
+		
+		/// <summary>
+		/// <para>Get world-space socket or bone FQuat rotation. </para>
+		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// </summary>
+		public virtual FQuat GetSocketQuaternion(string InSocketName)
+			=> E_USceneComponent_GetSocketQuaternion(this, InSocketName);
+		
+		
+		/// <summary>
+		/// <para>Get world-space socket or bone  FRotator rotation. </para>
+		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// </summary>
+		public virtual FRotator GetSocketRotation(string InSocketName)
+			=> E_USceneComponent_GetSocketRotation(this, InSocketName);
+		
+		
+		/// <summary>
+		/// <para>Get world-space socket transform. </para>
+		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// </summary>
+		public virtual FTransform GetSocketTransform(string InSocketName, ERelativeTransformSpace TransformSpace)
+			=> E_USceneComponent_GetSocketTransform(this, InSocketName, (byte)TransformSpace);
+		
+		
+		/// <summary>
 		/// <para>Get the up (Z) unit direction vector from this component, in world space. </para>
 		/// </summary>
 		public FVector GetUpVector()
 			=> E_USceneComponent_GetUpVector(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this component has any sockets </para>
+		/// </summary>
+		public virtual bool HasAnySockets()
+			=> E_USceneComponent_HasAnySockets(this);
+		
+		
+		/// <summary>
+		/// <para>Returns whether the specified body is currently using physics simulation </para>
+		/// </summary>
+		public virtual bool IsAnySimulatingPhysics()
+			=> E_USceneComponent_IsAnySimulatingPhysics(this);
 		
 		
 		/// <summary>
@@ -495,12 +625,44 @@ namespace UnrealEngine
 		public bool IsPhysicsCollisionEnabled()
 			=> E_USceneComponent_IsPhysicsCollisionEnabled(this);
 		
+		public virtual bool IsPrecomputedLightingValid()
+			=> E_USceneComponent_IsPrecomputedLightingValid(this);
+		
 		
 		/// <summary>
 		/// <para>Utility to see if there is any query collision enabled on this component. </para>
 		/// </summary>
 		public bool IsQueryCollisionEnabled()
 			=> E_USceneComponent_IsQueryCollisionEnabled(this);
+		
+		
+		/// <summary>
+		/// <para>Returns whether the specified body is currently using physics simulation </para>
+		/// </summary>
+		public virtual bool IsSimulatingPhysics(string BoneName)
+			=> E_USceneComponent_IsSimulatingPhysics(this, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Is this component visible or not in game </para>
+		/// <return>true if visible </return>
+		/// </summary>
+		public virtual bool IsVisible()
+			=> E_USceneComponent_IsVisible(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if visible in editor </para>
+		/// </summary>
+		public virtual bool IsVisibleInEditor()
+			=> E_USceneComponent_IsVisibleInEditor(this);
+		
+		
+		/// <summary>
+		/// <para>Is this component considered 'world' geometry </para>
+		/// </summary>
+		public virtual bool IsWorldGeometry()
+			=> E_USceneComponent_IsWorldGeometry(this);
 		
 		
 		/// <summary>
@@ -670,6 +832,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetWorldScale3D(FVector NewScale)
 			=> E_USceneComponent_SetWorldScale3D(this, NewScale);
+		
+		
+		/// <summary>
+		/// <para>If true, bounds should be used when placing component/actor in level. Does not affect spawning. </para>
+		/// </summary>
+		public virtual bool ShouldCollideWhenPlacing()
+			=> E_USceneComponent_ShouldCollideWhenPlacing(this);
 		
 		
 		/// <summary>

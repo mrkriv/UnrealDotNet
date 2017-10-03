@@ -15,22 +15,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ALight_GetBrightness(ALight* Self)
 	{
-		return ConvertForManage(Self->GetBrightness());
+		return Self->GetBrightness();
 	}
 
 	DOTNET_EXPORT auto E_ALight_GetLightComponent(ALight* Self)
 	{
-		return ConvertForManage(Self->GetLightComponent());
+		return ConvertToManage_ObjectPointerDescription(Self->GetLightComponent());
 	}
 
 	DOTNET_EXPORT auto E_ALight_IsEnabled(ALight* Self)
 	{
-		return ConvertForManage(Self->IsEnabled());
+		return Self->IsEnabled();
 	}
 
 	DOTNET_EXPORT auto E_ALight_IsToggleable(ALight* Self)
 	{
-		return ConvertForManage(Self->IsToggleable());
+		return Self->IsToggleable();
 	}
 
 	DOTNET_EXPORT auto E_ALight_OnRep_bEnabled(ALight* Self)

@@ -77,6 +77,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USkinnedMeshComponent_RefPoseOverride_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_RefPoseOverride_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
@@ -94,16 +99,19 @@ namespace UnrealEngine
 		private static extern int E_USkinnedMeshComponent_GetBoneIndex(IntPtr Self, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USkinnedMeshComponent_GetBoneName(IntPtr Self, int BoneIndex, out int ResultStringLen);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetBoneName(IntPtr Self, int BoneIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_USkinnedMeshComponent_GetNumBones(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USkinnedMeshComponent_GetParentBone(IntPtr Self, string BoneName, out int ResultStringLen);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetParentBone(IntPtr Self, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USkinnedMeshComponent_GetSocketBoneName(IntPtr Self, string InSocketName, out int ResultStringLen);
+		private static extern IntPtr E_USkinnedMeshComponent_GetSkinnedVertexPosition(IntPtr Self, int VertexIndex);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_USkinnedMeshComponent_GetSocketBoneName(IntPtr Self, string InSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(IntPtr Self, float NewValue);
@@ -128,6 +136,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_SetSectionPreview(IntPtr Self, int InSectionIndexPreview);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkinnedMeshComponent_ShouldCPUSkin(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_UpdateRecomputeTangent(IntPtr Self, int MaterialIndex, int LodIndex, bool bRecomputeTangentValue);
@@ -245,6 +256,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Information for current ref pose override, if present </para>
+		/// </summary>
+		protected FSkelMeshRefPoseOverride RefPoseOverride
+		{
+			get => E_PROP_USkinnedMeshComponent_RefPoseOverride_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_RefPoseOverride_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Allows adjusting the desired streaming distance of streaming textures that uses UV 0. </para>
 		/// <para>1.0 is the default, whereas a higher value makes the textures stream in sooner from far away. </para>
 		/// <para>A lower value (0.0-1.0) makes the textures stream in later (you have to be closer). </para>
@@ -297,7 +318,7 @@ namespace UnrealEngine
 		/// <return>the name of the bone at the specified index </return>
 		/// </summary>
 		public string GetBoneName(int BoneIndex)
-			=> Marshal.PtrToStringUTF8(E_USkinnedMeshComponent_GetBoneName(this, BoneIndex, out int ResultStringLen), ResultStringLen);
+			=> E_USkinnedMeshComponent_GetBoneName(this, BoneIndex);
 		
 		
 		/// <summary>
@@ -313,7 +334,15 @@ namespace UnrealEngine
 		/// <return>the name of the parent bone for the specified bone. Returns 'None' if the bone does not exist or it is the root bone </return>
 		/// </summary>
 		public string GetParentBone(string BoneName)
-			=> Marshal.PtrToStringUTF8(E_USkinnedMeshComponent_GetParentBone(this, BoneName, out int ResultStringLen), ResultStringLen);
+			=> E_USkinnedMeshComponent_GetParentBone(this, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Simple, CPU evaluation of a vertex's skinned position (returned in component space) </para>
+		/// <param name="VertexIndex">Vertex Index. If compressed, this will be slow. </param>
+		/// </summary>
+		public virtual FVector GetSkinnedVertexPosition(int VertexIndex)
+			=> E_USkinnedMeshComponent_GetSkinnedVertexPosition(this, VertexIndex);
 		
 		
 		/// <summary>
@@ -323,7 +352,7 @@ namespace UnrealEngine
 		/// <return>bone name </return>
 		/// </summary>
 		public string GetSocketBoneName(string InSocketName)
-			=> Marshal.PtrToStringUTF8(E_USkinnedMeshComponent_GetSocketBoneName(this, InSocketName, out int ResultStringLen), ResultStringLen);
+			=> E_USkinnedMeshComponent_GetSocketBoneName(this, InSocketName);
 		
 		public void SetCapsuleIndirectShadowMinVisibility(float NewValue)
 			=> E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(this, NewValue);
@@ -373,6 +402,15 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetSectionPreview(int InSectionIndexPreview)
 			=> E_USkinnedMeshComponent_SetSectionPreview(this, InSectionIndexPreview);
+		
+		
+		/// <summary>
+		/// <para>Function returns whether or not CPU skinning should be applied </para>
+		/// <para>Allows the editor to override the skinning state for editor tools </para>
+		/// <return>true if should CPU skin. false otherwise </return>
+		/// </summary>
+		public virtual bool ShouldCPUSkin()
+			=> E_USkinnedMeshComponent_ShouldCPUSkin(this);
 		
 		
 		/// <summary>

@@ -26,6 +26,7 @@ namespace Generator.Metadata
 
         public Method(string Name)
         {
+            ReturnType = new PrimitiveVariable("void");
             InputTypes = new List<Variable>();
             this.Name = Name;
         }
@@ -34,12 +35,7 @@ namespace Generator.Metadata
         {
             get
             {
-                var ll = InputTypes.Concat(new[] { ReturnType });
-
-                return ll.OfType<ClassVariable>().Select(v => (Type)v.Class)
-                    .Concat(ll.OfType<EnumVariable>().Select(v => (Type)v.Enum))
-                    .Concat(ll.OfType<DelegateVariable>().Select(v => (Type)v.Delegate))
-                    .Distinct();
+                return InputTypes.Concat(new[] { ReturnType }).Select(x => x.Type).Distinct();
             }
         }
 

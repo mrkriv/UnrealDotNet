@@ -52,11 +52,12 @@ namespace GameLogic
             }
         }
 
-        private void Box_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex)
+        private void Box_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor,
+            UPrimitiveComponent OtherComp, int OtherBodyIndex)
         {
             ScreenDebugMessage($"{OtherActor} don't overlap {OverlappedComponent} now");
         }
-        
+
         public override void Tick(float DeltaTime)
         {
             Time += DeltaTime;

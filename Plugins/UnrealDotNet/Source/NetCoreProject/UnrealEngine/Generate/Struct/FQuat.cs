@@ -216,7 +216,7 @@ namespace UnrealEngine
 		private static extern void E_FQuat_ToAxisAndAngle(IntPtr Self, IntPtr Axis, float Angle);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FQuat_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FQuat_ToSwingTwist(IntPtr Self, IntPtr InTwistAxis, IntPtr OutSwing, IntPtr OutTwist);
@@ -588,7 +588,7 @@ namespace UnrealEngine
 		/// <return>Text describing the vector. </return>
 		/// </summary>
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FQuat_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FQuat_ToString(this);
 		
 		
 		/// <summary>

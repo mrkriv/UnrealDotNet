@@ -135,7 +135,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_FVector4_ToOrientationRotator(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FVector4_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector4_UnsafeNormal3(IntPtr Self);
@@ -353,7 +353,7 @@ namespace UnrealEngine
 		/// <return>Text describing the vector. </return>
 		/// </summary>
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FVector4_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FVector4_ToString(this);
 		
 		public FVector4 UnsafeNormal3()
 			=> E_FVector4_UnsafeNormal3(this);

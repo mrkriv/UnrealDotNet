@@ -22,7 +22,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UPlayer(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPlayer_ConsoleCommand(IntPtr Self, string Cmd, bool bWriteToLog, out int ResultStringLen);
+		private static extern StringWrapper E_UPlayer_ConsoleCommand(IntPtr Self, string Cmd, bool bWriteToLog);
 		
 		#endregion
 		
@@ -34,7 +34,7 @@ namespace UnrealEngine
 		/// <param name="bWriteToLog">write out to the log </param>
 		/// </summary>
 		public string ConsoleCommand(string Cmd, bool bWriteToLog = true)
-			=> Marshal.PtrToStringUTF8(E_UPlayer_ConsoleCommand(this, Cmd, bWriteToLog, out int ResultStringLen), ResultStringLen);
+			=> E_UPlayer_ConsoleCommand(this, Cmd, bWriteToLog);
 		
 		#endregion
 		

@@ -18,14 +18,14 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT float E_PROP_APawn_AllowedYawError_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->AllowedYawError; }
-	DOTNET_EXPORT void E_PROP_APawn_AllowedYawError_SET(INT_PTR Ptr, float Value) { ((APawn*)Ptr)->AllowedYawError = Value; }
+	DOTNET_EXPORT auto E_PROP_APawn_AllowedYawError_GET(APawn* Ptr) { return Ptr->AllowedYawError; }
+	DOTNET_EXPORT void E_PROP_APawn_AllowedYawError_SET(APawn* Ptr, float Value) { Ptr->AllowedYawError = Value; }
 	
-	DOTNET_EXPORT float E_PROP_APawn_BaseEyeHeight_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->BaseEyeHeight; }
-	DOTNET_EXPORT void E_PROP_APawn_BaseEyeHeight_SET(INT_PTR Ptr, float Value) { ((APawn*)Ptr)->BaseEyeHeight = Value; }
+	DOTNET_EXPORT auto E_PROP_APawn_BaseEyeHeight_GET(APawn* Ptr) { return Ptr->BaseEyeHeight; }
+	DOTNET_EXPORT void E_PROP_APawn_BaseEyeHeight_SET(APawn* Ptr, float Value) { Ptr->BaseEyeHeight = Value; }
 	
-	DOTNET_EXPORT uint8 E_PROP_APawn_RemoteViewPitch_GET(INT_PTR Ptr) { return ((APawn*)Ptr)->RemoteViewPitch; }
-	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(INT_PTR Ptr, uint8 Value) { ((APawn*)Ptr)->RemoteViewPitch = Value; }
+	DOTNET_EXPORT auto E_PROP_APawn_RemoteViewPitch_GET(APawn* Ptr) { return Ptr->RemoteViewPitch; }
+	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(APawn* Ptr, uint8 Value) { Ptr->RemoteViewPitch = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_APawn(UObject* Parent, char* Name)
@@ -65,6 +65,11 @@ extern "C"
 		Self->ClientSetRotation(_p0);
 	}
 
+	DOTNET_EXPORT auto E_APawn_ConsumeMovementInputVector(APawn* Self)
+	{
+		return (INT_PTR) new FVector(Self->ConsumeMovementInputVector());
+	}
+
 	DOTNET_EXPORT auto E_APawn_DestroyPlayerInputComponent(APawn* Self)
 	{
 		((E_PROTECTED_WRAP_APawn*)Self)->DestroyPlayerInputComponent_WRAP();
@@ -82,9 +87,19 @@ extern "C"
 		Self->FaceRotation(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetBaseAimRotation(APawn* Self)
+	{
+		return (INT_PTR) new FRotator(Self->GetBaseAimRotation());
+	}
+
 	DOTNET_EXPORT auto E_APawn_GetControlRotation(APawn* Self)
 	{
 		return (INT_PTR) new FRotator(Self->GetControlRotation());
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetDefaultHalfHeight(APawn* Self)
+	{
+		return Self->GetDefaultHalfHeight();
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetGravityDirection(APawn* Self)
@@ -97,10 +112,15 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetLastMovementInputVector());
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetMovementBase(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetMovementBase());
+	}
+
 	DOTNET_EXPORT auto E_APawn_GetMovementBaseActor(APawn* Self, APawn* Pawn)
 	{
 		auto _p0 = Pawn;
-		return ConvertForManage(Self->GetMovementBaseActor(_p0));
+		return ConvertToManage_ObjectPointerDescription(Self->GetMovementBaseActor(_p0));
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetMovementInputVector(APawn* Self)
@@ -108,14 +128,34 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetMovementInputVector());
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetPawnNoiseEmitterComponent(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPawnNoiseEmitterComponent());
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetPawnViewLocation(APawn* Self)
+	{
+		return (INT_PTR) new FVector(Self->GetPawnViewLocation());
+	}
+
 	DOTNET_EXPORT auto E_APawn_GetPendingMovementInputVector(APawn* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetPendingMovementInputVector());
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetViewRotation(APawn* Self)
+	{
+		return (INT_PTR) new FRotator(Self->GetViewRotation());
+	}
+
+	DOTNET_EXPORT auto E_APawn_InFreeCam(APawn* Self)
+	{
+		return Self->InFreeCam();
+	}
+
 	DOTNET_EXPORT auto E_APawn_InputEnabled(APawn* Self)
 	{
-		return ConvertForManage(Self->InputEnabled());
+		return Self->InputEnabled();
 	}
 
 	DOTNET_EXPORT auto E_APawn_Internal_AddMovementInput(APawn* Self, INT_PTR WorldAccel, bool bForce)
@@ -147,7 +187,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_IsControlled(APawn* Self)
 	{
-		return ConvertForManage(Self->IsControlled());
+		return Self->IsControlled();
+	}
+
+	DOTNET_EXPORT auto E_APawn_IsLocallyControlled(APawn* Self)
+	{
+		return Self->IsLocallyControlled();
+	}
+
+	DOTNET_EXPORT auto E_APawn_IsMoveInputIgnored(APawn* Self)
+	{
+		return Self->IsMoveInputIgnored();
+	}
+
+	DOTNET_EXPORT auto E_APawn_IsPlayerControlled(APawn* Self)
+	{
+		return Self->IsPlayerControlled();
 	}
 
 	DOTNET_EXPORT auto E_APawn_K2_GetMovementInputVector(APawn* Self)
@@ -203,6 +258,11 @@ extern "C"
 	{
 		auto _p0 = FireModeNum;
 		Self->PawnStartFire(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APawn_ReachedDesiredRotation(APawn* Self)
+	{
+		return Self->ReachedDesiredRotation();
 	}
 
 	DOTNET_EXPORT auto E_APawn_RecalculateBaseEyeHeight(APawn* Self)

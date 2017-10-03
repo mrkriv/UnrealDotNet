@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FEngineShowFlagsSetting_Enabled_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FEngineShowFlagsSetting_ShowFlagName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FEngineShowFlagsSetting_ShowFlagName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FEngineShowFlagsSetting_ShowFlagName_SET(IntPtr Ptr, string Value);
 		

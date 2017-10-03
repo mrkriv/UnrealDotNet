@@ -47,12 +47,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_bInBaseReplication_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ACharacter_CapsuleComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ACharacter_CapsuleComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_CapsuleComponentName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ACharacter_CharacterMovementComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ACharacter_CharacterMovementComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_CharacterMovementComponentName_SET(IntPtr Ptr, string Value);
 		
@@ -82,7 +82,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_JumpMaxHoldTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_ACharacter_MeshComponentName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_ACharacter_MeshComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
 		
@@ -131,10 +131,16 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_CacheInitialMeshOffset(IntPtr Self, IntPtr MeshRelativeLocation, IntPtr MeshRelativeRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_CanCrouch(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ACharacter_CanJump(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ACharacter_CanJumpInternal(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_CanJumpInternal_Implementation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_CheckJumpInput(IntPtr Self, float DeltaTime);
@@ -167,10 +173,16 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_Crouch(IntPtr Self, bool bClientSimulation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_DoJump(IntPtr Self, bool bReplayingMoves);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_Falling(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_ACharacter_GetAnimRootMotionTranslationScale(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_ACharacter_GetBaseRotationOffset(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_ACharacter_GetBaseRotationOffsetRotator(IntPtr Self);
@@ -182,6 +194,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_ACharacter_GetJumpMaxHoldTime(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ACharacter_GetMesh(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -189,6 +204,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_IsJumping(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_IsJumpProvidingForce(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ACharacter_IsPlayingNetworkedRootMotionMontage(IntPtr Self);
@@ -549,6 +570,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <return>true if this character is currently able to crouch (and is not currently crouched) </return>
+		/// </summary>
+		public virtual bool CanCrouch()
+			=> E_ACharacter_CanCrouch(this);
+		
+		
+		/// <summary>
 		/// <para>Check if the character can jump in the current state. </para>
 		/// <para>The default implementation may be overridden or extended by implementing the custom CanJump event in Blueprints. </para>
 		/// <para>@Return Whether the character can jump in the current state. </para>
@@ -568,6 +596,9 @@ namespace UnrealEngine
 		/// </summary>
 		protected bool CanJumpInternal()
 			=> E_ACharacter_CanJumpInternal(this);
+		
+		protected virtual bool CanJumpInternal_Implementation()
+			=> E_ACharacter_CanJumpInternal_Implementation(this);
 		
 		
 		/// <summary>
@@ -616,6 +647,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Player Jumped. Called internally when a jump has been detected because bPressedJump was true. </para>
+		/// <param name="bReplayingMoves">true if this is being done as part of replaying moves on a locally controlled client after a server correction. </param>
+		/// <return>True if the jump was allowed by CanJump() and if CharacterMovement->Jump() succeeded. </return>
+		/// </summary>
+		protected virtual bool DoJump(bool bReplayingMoves)
+			=> E_ACharacter_DoJump(this, bReplayingMoves);
+		
+		
+		/// <summary>
 		/// <para>Called when the character's movement enters falling </para>
 		/// </summary>
 		public virtual void Falling()
@@ -632,7 +672,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Get the saved rotation offset of mesh. This is how much extra rotation is applied from the capsule rotation. </para>
 		/// </summary>
-		public FRotator GetBaseRotationOffset()
+		public virtual FQuat GetBaseRotationOffset()
+			=> E_ACharacter_GetBaseRotationOffset(this);
+		
+		
+		/// <summary>
+		/// <para>Get the saved rotation offset of mesh. This is how much extra rotation is applied from the capsule rotation. </para>
+		/// </summary>
+		public FRotator GetBaseRotationOffsetRotator()
 			=> E_ACharacter_GetBaseRotationOffsetRotator(this);
 		
 		
@@ -648,6 +695,17 @@ namespace UnrealEngine
 		/// </summary>
 		public UCapsuleComponent GetCapsuleComponent()
 			=> E_ACharacter_GetCapsuleComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Get the maximum jump time for the character. </para>
+		/// <para>Note that if StopJumping() is not called before the max jump hold time is reached, </para>
+		/// <para>then the character will carry on receiving vertical velocity. Therefore it is usually </para>
+		/// <para>best to call StopJumping() when jump input has ceased (such as a button up event). </para>
+		/// <return>Maximum jump time for the character </return>
+		/// </summary>
+		public virtual float GetJumpMaxHoldTime()
+			=> E_ACharacter_GetJumpMaxHoldTime(this);
 		
 		
 		/// <summary>
@@ -669,6 +727,17 @@ namespace UnrealEngine
 		/// </summary>
 		public float GetReplicatedServerLastTransformUpdateTimeStamp()
 			=> E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(this);
+		
+		public virtual bool IsJumping()
+			=> E_ACharacter_IsJumping(this);
+		
+		
+		/// <summary>
+		/// <para>True if jump is actively providing a force, such as when the jump key is held and the time it has been held is less than JumpMaxHoldTime. </para>
+		/// <para>@see CharacterMovement->IsFalling </para>
+		/// </summary>
+		public virtual bool IsJumpProvidingForce()
+			=> E_ACharacter_IsJumpProvidingForce(this);
 		
 		
 		/// <summary>

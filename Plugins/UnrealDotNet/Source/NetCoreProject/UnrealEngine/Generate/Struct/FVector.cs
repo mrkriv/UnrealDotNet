@@ -303,10 +303,10 @@ namespace UnrealEngine
 		private static extern float E_FVector_SizeSquared2D(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToCompactString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FVector_ToCompactString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToCompactText(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FVector_ToCompactText(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_ToDirectionAndLength(IntPtr Self, IntPtr OutDir, float OutLength);
@@ -318,10 +318,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_FVector_ToOrientationRotator(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FVector_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToText(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FVector_ToText(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FVector_Triple(IntPtr Self, IntPtr X, IntPtr Y, IntPtr Z);
@@ -965,14 +965,14 @@ namespace UnrealEngine
 		/// <para>Get a short textural representation of this vector, for compact readable logging. </para>
 		/// </summary>
 		public string ToCompactString()
-			=> Marshal.PtrToStringUTF8(E_FVector_ToCompactString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FVector_ToCompactString(this);
 		
 		
 		/// <summary>
 		/// <para>Get a short locale aware textural representation of this vector, for compact readable logging. </para>
 		/// </summary>
 		public string ToCompactText()
-			=> Marshal.PtrToStringUTF8(E_FVector_ToCompactText(this, out int ResultStringLen), ResultStringLen);
+			=> E_FVector_ToCompactText(this);
 		
 		
 		/// <summary>
@@ -1011,7 +1011,7 @@ namespace UnrealEngine
 		/// <return>A string describing the vector. </return>
 		/// </summary>
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FVector_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FVector_ToString(this);
 		
 		
 		/// <summary>
@@ -1019,7 +1019,7 @@ namespace UnrealEngine
 		/// <return>A string describing the vector. </return>
 		/// </summary>
 		public string ToText()
-			=> Marshal.PtrToStringUTF8(E_FVector_ToText(this, out int ResultStringLen), ResultStringLen);
+			=> E_FVector_ToText(this);
 		
 		
 		/// <summary>

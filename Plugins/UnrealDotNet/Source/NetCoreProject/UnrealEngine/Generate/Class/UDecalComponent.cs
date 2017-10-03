@@ -22,6 +22,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UDecalComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UDecalComponent_GetNumMaterials(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UDecalComponent_GetTransformIncludingDecalSize(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -36,6 +39,9 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		public virtual int GetNumMaterials()
+			=> E_UDecalComponent_GetNumMaterials(this);
+		
 		public FTransform GetTransformIncludingDecalSize()
 			=> E_UDecalComponent_GetTransformIncludingDecalSize(this);
 		

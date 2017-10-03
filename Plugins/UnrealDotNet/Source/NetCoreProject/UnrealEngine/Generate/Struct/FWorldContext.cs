@@ -24,7 +24,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_bWaitingOnOnlineSubsystem_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FWorldContext_ContextHandle_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FWorldContext_ContextHandle_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_ContextHandle_SET(IntPtr Ptr, string Value);
 		
@@ -39,7 +39,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_LastURL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PendingMapChangeFailureDescription_SET(IntPtr Ptr, string Value);
 		
@@ -49,12 +49,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_PIEInstance_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FWorldContext_PIEPrefix_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FWorldContext_PIEPrefix_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PIEPrefix_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FWorldContext_PIERemapPrefix_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FWorldContext_PIERemapPrefix_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PIERemapPrefix_SET(IntPtr Ptr, string Value);
 		
@@ -69,7 +69,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_TravelType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FWorldContext_TravelURL_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FWorldContext_TravelURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_TravelURL_SET(IntPtr Ptr, string Value);
 		

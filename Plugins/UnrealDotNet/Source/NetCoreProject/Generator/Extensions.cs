@@ -112,4 +112,14 @@ public static class Extensions
             Action(item);
         }
     }
+
+    public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> enumerable)
+    {
+        if (enumerable.Any())
+        {
+            return enumerable.Aggregate((current, t) => current.Concat(t));
+        }
+
+        return Enumerable.Empty<T>();
+    }
 }

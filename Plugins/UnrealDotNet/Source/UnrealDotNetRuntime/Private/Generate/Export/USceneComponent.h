@@ -63,23 +63,23 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentToWorld_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->ComponentToWorld; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->ComponentToWorld = *(FTransform*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentToWorld_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentToWorld); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentToWorld = *(FTransform*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_ComponentVelocity_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->ComponentVelocity; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->ComponentVelocity = *(FVector*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentVelocity_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentVelocity); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentVelocity = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeLocation_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeLocation; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeLocation_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeLocation = *(FVector*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeLocation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeLocation); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeLocation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeLocation = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeRotation_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeRotation; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeRotation_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeRotation = *(FRotator*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeRotation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeRotation); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeRotation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeRotation = *(FRotator*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeScale3D_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeScale3D; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeScale3D = *(FVector*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeScale3D_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeScale3D); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeScale3D = *(FVector*)Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(INT_PTR Ptr) { return (INT_PTR)&((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(INT_PTR Ptr, INT_PTR Value) { ((USceneComponent*)Ptr)->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeTranslation_DEPRECATED); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)
@@ -90,7 +90,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_AreDynamicDataChangesAllowed(USceneComponent* Self, bool bIgnoreStationary)
 	{
 		auto _p0 = bIgnoreStationary;
-		return ConvertForManage(((E_PROTECTED_WRAP_USceneComponent*)Self)->AreDynamicDataChangesAllowed_WRAP(_p0));
+		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->AreDynamicDataChangesAllowed_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_AttachToComponent(USceneComponent* Self, USceneComponent* InParent, INT_PTR AttachmentRules, char* InSocketName)
@@ -98,7 +98,7 @@ extern "C"
 		auto _p0 = InParent;
 		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
 		auto _p2 = ConvertFromManage_FName(InSocketName);
-		return ConvertForManage(Self->AttachToComponent(_p0, _p1, _p2));
+		return Self->AttachToComponent(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_CalcBoundingCylinder(USceneComponent* Self, float CylinderRadius, float CylinderHalfHeight)
@@ -124,15 +124,22 @@ extern "C"
 		return (INT_PTR) new FTransform(((E_PROTECTED_WRAP_USceneComponent*)Self)->CalcNewComponentToWorld_GeneralCase_WRAP(_p0, _p1, _p2));
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_CanAttachAsChild(USceneComponent* Self, USceneComponent* ChildComponent, char* SocketName)
+	{
+		auto _p0 = ChildComponent;
+		auto _p1 = ConvertFromManage_FName(SocketName);
+		return Self->CanAttachAsChild(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_CanEverRender(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->CanEverRender());
+		return Self->CanEverRender();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_CheckStaticMobilityAndWarn(USceneComponent* Self, char* ActionText)
 	{
 		auto _p0 = ConvertFromManage_FText(ActionText);
-		return ConvertForManage(((E_PROTECTED_WRAP_USceneComponent*)Self)->CheckStaticMobilityAndWarn_WRAP(_p0));
+		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->CheckStaticMobilityAndWarn_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ConditionalUpdateComponentToWorld(USceneComponent* Self)
@@ -153,32 +160,41 @@ extern "C"
 		Self->DetachFromParent(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_DoesSocketExist(USceneComponent* Self, char* InSocketName)
+	{
+		auto _p0 = ConvertFromManage_FName(InSocketName);
+		return Self->DoesSocketExist(_p0);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_GetAttachmentRoot(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->GetAttachmentRoot());
+		return ConvertToManage_ObjectPointerDescription(Self->GetAttachmentRoot());
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetAttachmentRootActor(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->GetAttachmentRootActor());
+		return ConvertToManage_ObjectPointerDescription(Self->GetAttachmentRootActor());
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetAttachParent(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->GetAttachParent());
+		return ConvertToManage_ObjectPointerDescription(Self->GetAttachParent());
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_GetAttachSocketName(USceneComponent* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USceneComponent_GetAttachSocketName(USceneComponent* Self)
 	{
-		auto _result = ConvertForManage(Self->GetAttachSocketName().ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetAttachSocketName());
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetChildComponent(USceneComponent* Self, int32 ChildIndex)
 	{
 		auto _p0 = ChildIndex;
-		return ConvertForManage(Self->GetChildComponent(_p0));
+		return ConvertToManage_ObjectPointerDescription(Self->GetChildComponent(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetCollisionObjectType(USceneComponent* Self)
+	{
+		return Self->GetCollisionObjectType();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetComponentLocation(USceneComponent* Self)
@@ -201,11 +217,14 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetComponentScale());
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_GetDefaultSceneRootVariableName(USceneComponent* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USceneComponent_GetComponentVelocity(USceneComponent* Self)
 	{
-		auto _result = ConvertForManage(Self->GetDefaultSceneRootVariableName().ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return (INT_PTR) new FVector(Self->GetComponentVelocity());
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetDefaultSceneRootVariableName(USceneComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDefaultSceneRootVariableName());
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetForwardVector(USceneComponent* Self)
@@ -215,7 +234,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_GetNumChildrenComponents(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->GetNumChildrenComponents());
+		return Self->GetNumChildrenComponents();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetRelativeTransform(USceneComponent* Self)
@@ -228,35 +247,96 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetRightVector());
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_GetSocketLocation(USceneComponent* Self, char* InSocketName)
+	{
+		auto _p0 = ConvertFromManage_FName(InSocketName);
+		return (INT_PTR) new FVector(Self->GetSocketLocation(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetSocketQuaternion(USceneComponent* Self, char* InSocketName)
+	{
+		auto _p0 = ConvertFromManage_FName(InSocketName);
+		return (INT_PTR) new FQuat(Self->GetSocketQuaternion(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetSocketRotation(USceneComponent* Self, char* InSocketName)
+	{
+		auto _p0 = ConvertFromManage_FName(InSocketName);
+		return (INT_PTR) new FRotator(Self->GetSocketRotation(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetSocketTransform(USceneComponent* Self, char* InSocketName, ERelativeTransformSpace TransformSpace)
+	{
+		auto _p0 = ConvertFromManage_FName(InSocketName);
+		auto _p1 = TransformSpace;
+		return (INT_PTR) new FTransform(Self->GetSocketTransform(_p0, _p1));
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_GetUpVector(USceneComponent* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetUpVector());
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_HasAnySockets(USceneComponent* Self)
+	{
+		return Self->HasAnySockets();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsAnySimulatingPhysics(USceneComponent* Self)
+	{
+		return Self->IsAnySimulatingPhysics();
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_IsAttachedTo(USceneComponent* Self, USceneComponent* TestComp)
 	{
 		auto _p0 = TestComp;
-		return ConvertForManage(Self->IsAttachedTo(_p0));
+		return Self->IsAttachedTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_IsCollisionEnabled(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->IsCollisionEnabled());
+		return Self->IsCollisionEnabled();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_IsDeferringMovementUpdates(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->IsDeferringMovementUpdates());
+		return Self->IsDeferringMovementUpdates();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_IsPhysicsCollisionEnabled(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->IsPhysicsCollisionEnabled());
+		return Self->IsPhysicsCollisionEnabled();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsPrecomputedLightingValid(USceneComponent* Self)
+	{
+		return Self->IsPrecomputedLightingValid();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_IsQueryCollisionEnabled(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->IsQueryCollisionEnabled());
+		return Self->IsQueryCollisionEnabled();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsSimulatingPhysics(USceneComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return Self->IsSimulatingPhysics(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsVisible(USceneComponent* Self)
+	{
+		return Self->IsVisible();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsVisibleInEditor(USceneComponent* Self)
+	{
+		return Self->IsVisibleInEditor();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsWorldGeometry(USceneComponent* Self)
+	{
+		return Self->IsWorldGeometry();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_K2_AttachToComponent(USceneComponent* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
@@ -267,7 +347,7 @@ extern "C"
 		auto _p3 = RotationRule;
 		auto _p4 = ScaleRule;
 		auto _p5 = bWeldSimulatedBodies;
-		return ConvertForManage(Self->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5));
+		return Self->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_K2_DetachFromComponent(USceneComponent* Self, EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule, bool bCallModify)
@@ -395,21 +475,26 @@ extern "C"
 		Self->SetWorldScale3D(_p0);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_ShouldCollideWhenPlacing(USceneComponent* Self)
+	{
+		return Self->ShouldCollideWhenPlacing();
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_ShouldComponentAddToScene(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->ShouldComponentAddToScene());
+		return Self->ShouldComponentAddToScene();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ShouldRender(USceneComponent* Self)
 	{
-		return ConvertForManage(Self->ShouldRender());
+		return Self->ShouldRender();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SnapTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
 	{
 		auto _p0 = InParent;
 		auto _p1 = ConvertFromManage_FName(InSocketName);
-		return ConvertForManage(Self->SnapTo(_p0, _p1));
+		return Self->SnapTo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ToggleVisibility(USceneComponent* Self, bool bPropagateToChildren)

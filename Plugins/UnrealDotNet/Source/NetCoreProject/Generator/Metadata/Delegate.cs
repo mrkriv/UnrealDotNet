@@ -19,10 +19,7 @@ namespace Generator.Metadata
         {
             get
             {
-                return Parametrs.OfType<ClassVariable>().Select(v => (Type)v.Class)
-                    .Concat(Parametrs.OfType<EnumVariable>().Select(v => (Type)v.Enum))
-                    .Concat(Parametrs.OfType<DelegateVariable>().Select(v => (Type)v.Delegate))
-                    .Distinct();
+                return Parametrs.Select(x => x.Type).Distinct();
             }
         }
     }

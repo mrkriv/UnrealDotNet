@@ -8,6 +8,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_UPrimitiveComponent : protected UPrimitiveComponent
 {
 public:
+	bool AreAllCollideableDescendantsRelative_WRAP(bool bAllowCachedValue)
+	{
+		return AreAllCollideableDescendantsRelative(bAllowCachedValue);
+	}
+
 	void ClearComponentOverlaps_WRAP(bool bDoNotifies, bool bSkipNotifySelf)
 	{
 		ClearComponentOverlaps(bDoNotifies, bSkipNotifySelf);
@@ -23,6 +28,11 @@ public:
 		OnComponentCollisionSettingsChanged();
 	}
 
+	bool SupportsStaticLighting_WRAP()
+	{
+		return SupportsStaticLighting();
+	}
+
 	void UpdatePhysicsToRBChannels_WRAP()
 	{
 		UpdatePhysicsToRBChannels();
@@ -33,41 +43,41 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_BoundsScale_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->BoundsScale; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_BoundsScale_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->BoundsScale = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_BoundsScale_GET(UPrimitiveComponent* Ptr) { return Ptr->BoundsScale; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_BoundsScale_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->BoundsScale = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CachedMaxDrawDistance; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->CachedMaxDrawDistance = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->CachedMaxDrawDistance; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->CachedMaxDrawDistance = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_CurrentTag_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CurrentTag; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CurrentTag_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->CurrentTag = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CurrentTag_GET(UPrimitiveComponent* Ptr) { return Ptr->CurrentTag; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CurrentTag_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->CurrentTag = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CustomDepthStencilValue; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->CustomDepthStencilValue = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(UPrimitiveComponent* Ptr) { return Ptr->CustomDepthStencilValue; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->CustomDepthStencilValue = Value; }
 	
-	DOTNET_EXPORT ERendererStencilMask E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->CustomDepthStencilWriteMask; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(INT_PTR Ptr, ERendererStencilMask Value) { ((UPrimitiveComponent*)Ptr)->CustomDepthStencilWriteMask = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(UPrimitiveComponent* Ptr) { return Ptr->CustomDepthStencilWriteMask; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(UPrimitiveComponent* Ptr, ERendererStencilMask Value) { Ptr->CustomDepthStencilWriteMask = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LastRenderTime_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LastRenderTime; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastRenderTime_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LastRenderTime = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LastRenderTime_GET(UPrimitiveComponent* Ptr) { return Ptr->LastRenderTime; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastRenderTime_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LastRenderTime = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LastRenderTimeOnScreen_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LastRenderTimeOnScreen; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastRenderTimeOnScreen_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LastRenderTimeOnScreen = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LastRenderTimeOnScreen_GET(UPrimitiveComponent* Ptr) { return Ptr->LastRenderTimeOnScreen; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastRenderTimeOnScreen_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LastRenderTimeOnScreen = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LastSubmitTime_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LastSubmitTime; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastSubmitTime_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LastSubmitTime = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LastSubmitTime_GET(UPrimitiveComponent* Ptr) { return Ptr->LastSubmitTime; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LastSubmitTime_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LastSubmitTime = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LDMaxDrawDistance_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LDMaxDrawDistance; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LDMaxDrawDistance_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LDMaxDrawDistance = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LDMaxDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->LDMaxDrawDistance; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LDMaxDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LDMaxDrawDistance = Value; }
 	
-	DOTNET_EXPORT INT_PTR E_PROP_UPrimitiveComponent_LightingChannels_GET(INT_PTR Ptr) { return (INT_PTR)&((UPrimitiveComponent*)Ptr)->LightingChannels; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LightingChannels_SET(INT_PTR Ptr, INT_PTR Value) { ((UPrimitiveComponent*)Ptr)->LightingChannels = *(FLightingChannels*)Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LightingChannels_GET(UPrimitiveComponent* Ptr) { return (INT_PTR)&(Ptr->LightingChannels); }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LightingChannels_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->LightingChannels = *(FLightingChannels*)Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_LpvBiasMultiplier_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->LpvBiasMultiplier; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LpvBiasMultiplier_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->LpvBiasMultiplier = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LpvBiasMultiplier_GET(UPrimitiveComponent* Ptr) { return Ptr->LpvBiasMultiplier; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LpvBiasMultiplier_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LpvBiasMultiplier = Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPrimitiveComponent_MinDrawDistance_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->MinDrawDistance; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(INT_PTR Ptr, float Value) { ((UPrimitiveComponent*)Ptr)->MinDrawDistance = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MinDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->MinDrawDistance; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->MinDrawDistance = Value; }
 	
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
 	{
@@ -141,11 +151,11 @@ extern "C"
 	{
 	}
 
-	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_TranslucencySortPriority_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->TranslucencySortPriority; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_TranslucencySortPriority_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->TranslucencySortPriority = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_TranslucencySortPriority_GET(UPrimitiveComponent* Ptr) { return Ptr->TranslucencySortPriority; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_TranslucencySortPriority_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->TranslucencySortPriority = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_UPrimitiveComponent_VisibilityId_GET(INT_PTR Ptr) { return ((UPrimitiveComponent*)Ptr)->VisibilityId; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_VisibilityId_SET(INT_PTR Ptr, int32 Value) { ((UPrimitiveComponent*)Ptr)->VisibilityId = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_VisibilityId_GET(UPrimitiveComponent* Ptr) { return Ptr->VisibilityId; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_VisibilityId_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->VisibilityId = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UPrimitiveComponent(UObject* Parent, char* Name)
@@ -209,11 +219,48 @@ extern "C"
 		Self->AddTorque(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AreAllCollideableDescendantsRelative(UPrimitiveComponent* Self, bool bAllowCachedValue)
+	{
+		auto _p0 = bAllowCachedValue;
+		return ((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->AreAllCollideableDescendantsRelative_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AreSymmetricRotations(UPrimitiveComponent* Self, INT_PTR A, INT_PTR B, INT_PTR Scale3D)
+	{
+		auto _p0 = *(FQuat*)A;
+		auto _p1 = *(FQuat*)B;
+		auto _p2 = *(FVector*)Scale3D;
+		return Self->AreSymmetricRotations(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_BeginComponentOverlap(UPrimitiveComponent* Self, INT_PTR OtherOverlap, bool bDoNotifies)
 	{
 		auto _p0 = *(FOverlapInfo*)OtherOverlap;
 		auto _p1 = bDoNotifies;
 		Self->BeginComponentOverlap(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CalculateMass(UPrimitiveComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return Self->CalculateMass(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CanBeBaseForCharacter(UPrimitiveComponent* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		return Self->CanBeBaseForCharacter(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CanCharacterStepUp(UPrimitiveComponent* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		return Self->CanCharacterStepUp(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CanEditSimulatePhysics(UPrimitiveComponent* Self)
+	{
+		return Self->CanEditSimulatePhysics();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_ClearComponentOverlaps(UPrimitiveComponent* Self, bool bDoNotifies, bool bSkipNotifySelf)
@@ -265,6 +312,11 @@ extern "C"
 		((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->EnsurePhysicsStateCreated_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetAngularDamping(UPrimitiveComponent* Self)
+	{
+		return Self->GetAngularDamping();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetCenterOfMass(UPrimitiveComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
@@ -276,21 +328,37 @@ extern "C"
 		auto _p0 = *(FVector*)Point;
 		auto _p1 = *(FVector*)OutPointOnBody;
 		auto _p2 = ConvertFromManage_FName(BoneName);
-		return ConvertForManage(Self->GetClosestPointOnCollision(_p0, _p1, _p2));
+		return Self->GetClosestPointOnCollision(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetCollisionProfileName(UPrimitiveComponent* Self, int& ResultStringLen)
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetCollisionProfileName(UPrimitiveComponent* Self)
 	{
-		auto _result = ConvertForManage(Self->GetCollisionProfileName().ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetCollisionProfileName());
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetDiffuseBoost(UPrimitiveComponent* Self, int32 ElementIndex)
+	{
+		auto _p0 = ElementIndex;
+		return Self->GetDiffuseBoost(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetDistanceToCollision(UPrimitiveComponent* Self, INT_PTR Point, INT_PTR ClosestPointOnCollision)
 	{
 		auto _p0 = *(FVector*)Point;
 		auto _p1 = *(FVector*)ClosestPointOnCollision;
-		return ConvertForManage(Self->GetDistanceToCollision(_p0, _p1));
+		return Self->GetDistanceToCollision(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetEmissiveBoost(UPrimitiveComponent* Self, int32 ElementIndex)
+	{
+		auto _p0 = ElementIndex;
+		return Self->GetEmissiveBoost(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetInertiaTensor(UPrimitiveComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return (INT_PTR) new FVector(Self->GetInertiaTensor(_p0));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLightAndShadowMapMemoryUsage(UPrimitiveComponent* Self, int32 LightMapMemoryUsage, int32 ShadowMapMemoryUsage)
@@ -300,9 +368,37 @@ extern "C"
 		Self->GetLightAndShadowMapMemoryUsage(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLightMapResolution(UPrimitiveComponent* Self, int32 Width, int32 Height)
+	{
+		auto _p0 = Width;
+		auto _p1 = Height;
+		return Self->GetLightMapResolution(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLinearDamping(UPrimitiveComponent* Self)
+	{
+		return Self->GetLinearDamping();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLODParentPrimitive(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->GetLODParentPrimitive());
+		return ConvertToManage_ObjectPointerDescription(Self->GetLODParentPrimitive());
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMass(UPrimitiveComponent* Self)
+	{
+		return Self->GetMass();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMassScale(UPrimitiveComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return Self->GetMassScale(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetNumMaterials(UPrimitiveComponent* Self)
+	{
+		return Self->GetNumMaterials();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocity(UPrimitiveComponent* Self, char* BoneName)
@@ -324,9 +420,38 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetPhysicsLinearVelocityAtPoint(_p0, _p1));
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetShadowIndirectOnly(UPrimitiveComponent* Self)
+	{
+		return Self->GetShadowIndirectOnly();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetSquaredDistanceToCollision(UPrimitiveComponent* Self, INT_PTR Point, float OutSquaredDistance, INT_PTR OutClosestPointOnCollision)
+	{
+		auto _p0 = *(FVector*)Point;
+		auto _p1 = OutSquaredDistance;
+		auto _p2 = *(FVector*)OutClosestPointOnCollision;
+		return Self->GetSquaredDistanceToCollision(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetStaticDepthPriorityGroup(UPrimitiveComponent* Self)
+	{
+		return Self->GetStaticDepthPriorityGroup();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetStaticLightMapResolution(UPrimitiveComponent* Self)
+	{
+		return Self->GetStaticLightMapResolution();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_HasStaticLighting(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->HasStaticLighting());
+		return Self->HasStaticLighting();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_HasValidSettingsForStaticLighting(UPrimitiveComponent* Self, bool bOverlookInvalidComponents)
+	{
+		auto _p0 = bOverlookInvalidComponents;
+		return Self->HasValidSettingsForStaticLighting(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IgnoreActorWhenMoving(UPrimitiveComponent* Self, AActor* Actor, bool bShouldIgnore)
@@ -343,45 +468,60 @@ extern "C"
 		Self->IgnoreComponentWhenMoving(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_IsAnyRigidBodyAwake(UPrimitiveComponent* Self)
+	{
+		return Self->IsAnyRigidBodyAwake();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsAttachedToStreamingManager(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->IsAttachedToStreamingManager());
+		return Self->IsAttachedToStreamingManager();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsComponentIndividuallySelected(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->IsComponentIndividuallySelected());
+		return Self->IsComponentIndividuallySelected();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_IsGravityEnabled(UPrimitiveComponent* Self)
+	{
+		return Self->IsGravityEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsOverlappingActor(UPrimitiveComponent* Self, AActor* Other)
 	{
 		auto _p0 = Other;
-		return ConvertForManage(Self->IsOverlappingActor(_p0));
+		return Self->IsOverlappingActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsPostPhysicsComponentTickEnabled(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->IsPostPhysicsComponentTickEnabled());
+		return Self->IsPostPhysicsComponentTickEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsWelded(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->IsWelded());
+		return Self->IsWelded();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_IsZeroExtent(UPrimitiveComponent* Self)
+	{
+		return Self->IsZeroExtent();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_K2_IsCollisionEnabled(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->K2_IsCollisionEnabled());
+		return Self->K2_IsCollisionEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_K2_IsPhysicsCollisionEnabled(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->K2_IsPhysicsCollisionEnabled());
+		return Self->K2_IsPhysicsCollisionEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_K2_IsQueryCollisionEnabled(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->K2_IsQueryCollisionEnabled());
+		return Self->K2_IsQueryCollisionEnabled();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_OnComponentCollisionSettingsChanged(UPrimitiveComponent* Self)
@@ -414,7 +554,14 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_RigidBodyIsAwake(UPrimitiveComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
-		return ConvertForManage(Self->RigidBodyIsAwake(_p0));
+		return Self->RigidBodyIsAwake(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ScaleByMomentOfInertia(UPrimitiveComponent* Self, INT_PTR InputVector, char* BoneName)
+	{
+		auto _p0 = *(FVector*)InputVector;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		return (INT_PTR) new FVector(Self->ScaleByMomentOfInertia(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllMassScale(UPrimitiveComponent* Self, float InMassScale)
@@ -642,7 +789,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_ShouldComponentAddToScene(UPrimitiveComponent* Self)
 	{
-		return ConvertForManage(Self->ShouldComponentAddToScene());
+		return Self->ShouldComponentAddToScene();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ShouldRecreateProxyOnUpdateTransform(UPrimitiveComponent* Self)
+	{
+		return Self->ShouldRecreateProxyOnUpdateTransform();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ShouldRenderSelected(UPrimitiveComponent* Self)
+	{
+		return Self->ShouldRenderSelected();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SupportsStaticLighting(UPrimitiveComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->SupportsStaticLighting_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SyncComponentToRBPhysics(UPrimitiveComponent* Self)
@@ -665,6 +827,11 @@ extern "C"
 		((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->UpdatePhysicsToRBChannels_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_UsesOnlyUnlitMaterials(UPrimitiveComponent* Self)
+	{
+		return Self->UsesOnlyUnlitMaterials();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_WakeAllRigidBodies(UPrimitiveComponent* Self)
 	{
 		Self->WakeAllRigidBodies();
@@ -681,6 +848,14 @@ extern "C"
 		auto _p0 = InParent;
 		auto _p1 = ConvertFromManage_FName(InSocketName);
 		Self->WeldTo(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_WeldToImplementation(UPrimitiveComponent* Self, USceneComponent* InParent, char* ParentSocketName, bool bWeldSimulatedChild)
+	{
+		auto _p0 = InParent;
+		auto _p1 = ConvertFromManage_FName(ParentSocketName);
+		auto _p2 = bWeldSimulatedChild;
+		return Self->WeldToImplementation(_p0, _p1, _p2);
 	}
 
 }

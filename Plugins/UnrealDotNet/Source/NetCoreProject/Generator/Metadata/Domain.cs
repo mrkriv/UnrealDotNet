@@ -173,8 +173,8 @@ namespace Generator.Metadata
                 Console.Write(string.Join(" ", ext) + " ");
             }
 
-            var clVar = variable as ClassVariable;
-            Console.ForegroundColor = clVar?.Class.IsImplemented == false ? ConsoleColor.Red : ConsoleColor.Cyan;
+            var clVar = variable.Type as Class;
+            Console.ForegroundColor = clVar?.IsImplemented == false ? ConsoleColor.Red : ConsoleColor.Cyan;
 
             Console.Write(variable.Type);
 

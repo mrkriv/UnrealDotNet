@@ -16,7 +16,17 @@ extern "C"
 	DOTNET_EXPORT auto E_ULightComponent_AffectsPrimitive(ULightComponent* Self, UPrimitiveComponent* Primitive)
 	{
 		auto _p0 = Primitive;
-		return ConvertForManage(Self->AffectsPrimitive(_p0));
+		return Self->AffectsPrimitive(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ULightComponent_GetBoundingBox(ULightComponent* Self)
+	{
+		return (INT_PTR) new FBox(Self->GetBoundingBox());
+	}
+
+	DOTNET_EXPORT auto E_ULightComponent_GetLightPosition(ULightComponent* Self)
+	{
+		return (INT_PTR) new FVector4(Self->GetLightPosition());
 	}
 
 	DOTNET_EXPORT auto E_ULightComponent_SetAffectDynamicIndirectLighting(ULightComponent* Self, bool bNewValue)

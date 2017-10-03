@@ -192,7 +192,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_NetCullDistanceSquared_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_AActor_NetDriverName_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_AActor_NetDriverName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_NetDriverName_SET(IntPtr Ptr, string Value);
 		
@@ -288,6 +288,9 @@ namespace UnrealEngine
 		private static extern bool E_AActor_CanEverTick(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_CheckStillInWorld(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_ClearComponentOverlaps(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -304,6 +307,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_DestroyConstructedComponents(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_DestroyNetworkActorHandled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_DetachAllSceneComponents(IntPtr Self, IntPtr InParentComponent, IntPtr DetachmentRules);
@@ -378,6 +384,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_GetActorUpVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_GetDefaultAttachComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_AActor_GetDistanceTo(IntPtr Self, IntPtr OtherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -396,10 +405,16 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetInputAxisValue(IntPtr Self, string InputAxisName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetNetDriverName(IntPtr Self, out int ResultStringLen);
+		private static extern float E_AActor_GetLifeSpan(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_AActor_GetNetDriverName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_AActor_GetNetMode(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_GetNetOwningPlayer(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetOwner(IntPtr Self);
@@ -429,6 +444,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_GetTransform(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_AActor_GetVelocity(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_AActor_GetVerticalDistanceTo(IntPtr Self, IntPtr OtherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -439,6 +457,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasDeferredComponentRegistration(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_HasNetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasValidRootComponent(IntPtr Self);
@@ -468,7 +489,16 @@ namespace UnrealEngine
 		private static extern bool E_AActor_IsActorTickEnabled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsAttachedTo(IntPtr Self, IntPtr Other);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsBasedOnActor(IntPtr Self, IntPtr Other);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsChildActor(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsLevelBoundsRelevant(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsMatineeControlled(IntPtr Self);
@@ -484,6 +514,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsPendingKillPending(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsRelevancyOwnerFor(IntPtr Self, IntPtr ReplicatedActor, IntPtr ActorOwner, IntPtr ConnectionActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsReplayRelevantFor(IntPtr Self, IntPtr RealViewer, IntPtr ViewTarget, IntPtr SrcLocation, float CullDistanceSquared);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsRootComponentMovable(IntPtr Self);
@@ -696,6 +732,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_SetTickPrerequisite(IntPtr Self, IntPtr PrerequisiteActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_ShouldTickIfViewportsOnly(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SnapRootComponentTo(IntPtr Self, IntPtr InParentActor, string InSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -709,6 +748,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_TeleportSucceeded(IntPtr Self, bool bIsATest);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_TeleportTo(IntPtr Self, IntPtr DestLocation, IntPtr DestRotation, bool bIsATest, bool bNoCheck);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_Tick(IntPtr Self, float DeltaSeconds);
@@ -730,6 +772,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_UserConstructionScript(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_UseShortConnectTimeout(IntPtr Self);
 		
 		#endregion
 		
@@ -1358,6 +1403,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>This will check to see if the Actor is still in the world.  It will check things like </para>
+		/// <para>the KillZ, outside world bounds, etc. and handle the situation. </para>
+		/// </summary>
+		public virtual bool CheckStillInWorld()
+			=> E_AActor_CheckStillInWorld(this);
+		
+		
+		/// <summary>
 		/// <para>Dispatch all EndOverlap for all of the Actor's PrimitiveComponents. </para>
 		/// <para>Generally used when removing the Actor from the world. </para>
 		/// </summary>
@@ -1403,6 +1456,15 @@ namespace UnrealEngine
 		/// </summary>
 		public void DestroyConstructedComponents()
 			=> E_AActor_DestroyConstructedComponents(this);
+		
+		
+		/// <summary>
+		/// <para>Called by DestroyActor(), gives actors a chance to op out of actor destruction </para>
+		/// <para>Used by network code to have the net connection timeout/cleanup first </para>
+		/// <return>true if DestroyActor() should not continue with actor destruction, false otherwise </return>
+		/// </summary>
+		public virtual bool DestroyNetworkActorHandled()
+			=> E_AActor_DestroyNetworkActorHandled(this);
 		
 		
 		/// <summary>
@@ -1583,6 +1645,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns this actor's default attachment component for attaching children to </para>
+		/// <return>The scene component to be used as parent </return>
+		/// </summary>
+		public virtual USceneComponent GetDefaultAttachComponent()
+			=> E_AActor_GetDefaultAttachComponent(this);
+		
+		
+		/// <summary>
 		/// <para>Returns the distance from this Actor to OtherActor. </para>
 		/// </summary>
 		public float GetDistanceTo(AActor OtherActor)
@@ -1625,10 +1695,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the remaining lifespan of this actor. If zero is returned the actor lives forever. </para>
+		/// </summary>
+		public virtual float GetLifeSpan()
+			=> E_AActor_GetLifeSpan(this);
+		
+		
+		/// <summary>
 		/// <return>name of the net driver associated with this actor (all RPCs will go out via this connection) </return>
 		/// </summary>
 		public string GetNetDriverName()
-			=> Marshal.PtrToStringUTF8(E_AActor_GetNetDriverName(this, out int ResultStringLen), ResultStringLen);
+			=> E_AActor_GetNetDriverName(this);
 		
 		
 		/// <summary>
@@ -1637,6 +1714,13 @@ namespace UnrealEngine
 		/// </summary>
 		public ENetMode GetNetMode()
 			=> (ENetMode)E_AActor_GetNetMode(this);
+		
+		
+		/// <summary>
+		/// <return>the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or NULL. </return>
+		/// </summary>
+		public virtual UPlayer GetNetOwningPlayer()
+			=> E_AActor_GetNetOwningPlayer(this);
 		
 		
 		/// <summary>
@@ -1705,6 +1789,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns velocity (in cm/s (Unreal Units/second) of the rootcomponent if it is either using physics or has an associated MovementComponent </para>
+		/// </summary>
+		public virtual FVector GetVelocity()
+			=> E_AActor_GetVelocity(this);
+		
+		
+		/// <summary>
 		/// <para>Returns the distance from this Actor to OtherActor, ignoring XY. </para>
 		/// </summary>
 		public float GetVerticalDistanceTo(AActor OtherActor)
@@ -1730,6 +1821,14 @@ namespace UnrealEngine
 		/// </summary>
 		public bool HasDeferredComponentRegistration()
 			=> E_AActor_HasDeferredComponentRegistration(this);
+		
+		
+		/// <summary>
+		/// <para>Does this actor have an owner responsible for replication? (APlayerController typically) </para>
+		/// <return>true if this actor can call RPCs or false if no such owner chain exists </return>
+		/// </summary>
+		protected virtual bool HasNetOwner()
+			=> E_AActor_HasNetOwner(this);
 		
 		
 		/// <summary>
@@ -1794,10 +1893,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>iterates up the Base chain to see whether or not this Actor is attached to the given Actor </para>
+		/// <param name="Other">the Actor to test for </param>
+		/// <return>true if this Actor is attached on Other Actor </return>
+		/// </summary>
+		public virtual bool IsAttachedTo(AActor Other)
+			=> E_AActor_IsAttachedTo(this, Other);
+		
+		
+		/// <summary>
+		/// <para>iterates up the Base chain to see whether or not this Actor is based on the given Actor </para>
+		/// <param name="Other">the Actor to test for </param>
+		/// <return>true if this Actor is based on Other Actor </return>
+		/// </summary>
+		public virtual bool IsBasedOnActor(AActor Other)
+			=> E_AActor_IsBasedOnActor(this, Other);
+		
+		
+		/// <summary>
 		/// <para>Returns whether this Actor was spawned by a child actor component </para>
 		/// </summary>
 		public bool IsChildActor()
 			=> E_AActor_IsChildActor(this);
+		
+		
+		/// <summary>
+		/// <para>Indicates whether this actor should participate in level bounds calculations </para>
+		/// </summary>
+		public virtual bool IsLevelBoundsRelevant()
+			=> E_AActor_IsLevelBoundsRelevant(this);
 		
 		
 		/// <summary>
@@ -1839,6 +1963,27 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsPendingKillPending()
 			=> E_AActor_IsPendingKillPending(this);
+		
+		
+		/// <summary>
+		/// <para>Check if this actor is the owner when doing relevancy checks for actors marked bOnlyRelevantToOwner </para>
+		/// <param name="ReplicatedActor">the actor we're doing a relevancy test on </param>
+		/// <param name="ActorOwner">the owner of ReplicatedActor </param>
+		/// <param name="ConnectionActor">the controller of the connection that we're doing relevancy checks for </param>
+		/// <return>bool - true if this actor should be considered the owner </return>
+		/// </summary>
+		public virtual bool IsRelevancyOwnerFor(AActor ReplicatedActor, AActor ActorOwner, AActor ConnectionActor)
+			=> E_AActor_IsRelevancyOwnerFor(this, ReplicatedActor, ActorOwner, ConnectionActor);
+		
+		
+		/// <summary>
+		/// <param name="RealViewer">is the "controlling net object" associated with the client for which network relevancy is being checked (typically player controller) </param>
+		/// <param name="ViewTarget">is the Actor being used as the point of view for the RealViewer </param>
+		/// <param name="SrcLocation">is the viewing location </param>
+		/// <return>bool - true if this actor is replay relevant to the client associated with RealViewer </return>
+		/// </summary>
+		public virtual bool IsReplayRelevantFor(AActor RealViewer, AActor ViewTarget, FVector SrcLocation, float CullDistanceSquared)
+			=> E_AActor_IsReplayRelevantFor(this, RealViewer, ViewTarget, SrcLocation, CullDistanceSquared);
 		
 		
 		/// <summary>
@@ -2341,6 +2486,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>If true, actor is ticked even if TickType==LEVELTICK_ViewportsOnly </para>
+		/// </summary>
+		public virtual bool ShouldTickIfViewportsOnly()
+			=> E_AActor_ShouldTickIfViewportsOnly(this);
+		
+		
+		/// <summary>
 		/// <para>Snap the RootComponent of this Actor to the supplied Actor's root component, optionally at a named socket. It is not valid to call this on components that are not Registered. </para>
 		/// <para>If InSocketName == NAME_None, it will attach to origin of the InParentActor. </para>
 		/// </summary>
@@ -2374,6 +2526,20 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void TeleportSucceeded(bool bIsATest)
 			=> E_AActor_TeleportSucceeded(this, bIsATest);
+		
+		
+		/// <summary>
+		/// <para>Used for adding actors to levels or teleporting them to a new location. </para>
+		/// <para>The result of this function is independent of the actor's current location and rotation. </para>
+		/// <para>If the actor doesn't fit exactly at the location specified, tries to slightly move it out of walls and such if bNoCheck is false. </para>
+		/// <param name="DestLocation">The target destination point </param>
+		/// <param name="DestRotation">The target rotation at the destination </param>
+		/// <param name="bIsATest">is true if this is a test movement, which shouldn't cause any notifications (used by AI pathfinding, for example) </param>
+		/// <param name="bNoCheck">is true if we should skip checking for encroachment in the world or other actors </param>
+		/// <return>true if the actor has been successfully moved, or false if it couldn't fit. </return>
+		/// </summary>
+		public virtual bool TeleportTo(FVector DestLocation, FRotator DestRotation, bool bIsATest, bool bNoCheck)
+			=> E_AActor_TeleportTo(this, DestLocation, DestRotation, bIsATest, bNoCheck);
 		
 		
 		/// <summary>
@@ -2432,6 +2598,14 @@ namespace UnrealEngine
 		/// </summary>
 		public void ConstructionScript()
 			=> E_AActor_UserConstructionScript(this);
+		
+		
+		/// <summary>
+		/// <para>Used by the net connection to determine if a net owning actor should switch to using the shortened timeout value </para>
+		/// <return>true to switch from InitialConnectTimeout to ConnectionTimeout values on the net driver </return>
+		/// </summary>
+		public virtual bool UseShortConnectTimeout()
+			=> E_AActor_UseShortConnectTimeout(this);
 		
 		#endregion
 		

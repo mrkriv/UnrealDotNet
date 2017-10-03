@@ -62,6 +62,9 @@ namespace UnrealEngine
 		private static extern void E_APawn_ClientSetRotation(IntPtr Self, IntPtr NewRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_APawn_ConsumeMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_DestroyPlayerInputComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -71,7 +74,13 @@ namespace UnrealEngine
 		private static extern void E_APawn_FaceRotation(IntPtr Self, IntPtr NewControlRotation, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_APawn_GetBaseAimRotation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetControlRotation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_APawn_GetDefaultHalfHeight(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetGravityDirection(IntPtr Self);
@@ -80,13 +89,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetMovementBase(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetPawnNoiseEmitterComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_APawn_GetPawnViewLocation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetPendingMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_APawn_GetViewRotation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_InFreeCam(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APawn_InputEnabled(IntPtr Self);
@@ -108,6 +132,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APawn_IsControlled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_IsLocallyControlled(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_IsMoveInputIgnored(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_IsPlayerControlled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_K2_GetMovementInputVector(IntPtr Self);
@@ -135,6 +168,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_PawnStartFire(IntPtr Self, byte FireModeNum);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_ReachedDesiredRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_RecalculateBaseEyeHeight(IntPtr Self);
@@ -261,6 +297,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the pending input vector and resets it to zero. </para>
+		/// <para>This should be used during a movement update (by the Pawn or PawnMovementComponent) to prevent accumulation of control input between frames. </para>
+		/// <para>Copies the pending input vector to the saved input vector (GetLastMovementInputVector()). </para>
+		/// <return>The pending input vector. </return>
+		/// </summary>
+		public virtual FVector ConsumeMovementInputVector()
+			=> E_APawn_ConsumeMovementInputVector(this);
+		
+		
+		/// <summary>
 		/// <para>Destroys the player input component and removes any references to it. </para>
 		/// </summary>
 		protected virtual void DestroyPlayerInputComponent()
@@ -282,10 +328,26 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Return the aim rotation for the Pawn. </para>
+		/// <para>If we have a controller, by default we aim at the player's 'eyes' direction </para>
+		/// <para>that is by default the Pawn rotation for AI, and camera (crosshair) rotation for human players. </para>
+		/// </summary>
+		public virtual FRotator GetBaseAimRotation()
+			=> E_APawn_GetBaseAimRotation(this);
+		
+		
+		/// <summary>
 		/// <para>Get the rotation of the Controller, often the 'view' rotation of this Pawn. </para>
 		/// </summary>
 		public FRotator GetControlRotation()
 			=> E_APawn_GetControlRotation(this);
+		
+		
+		/// <summary>
+		/// <return>The half-height of the default Pawn, scaled by the component scale. By default returns the half-height of the RootComponent, regardless of whether it is registered or collidable. </return>
+		/// </summary>
+		public virtual float GetDefaultHalfHeight()
+			=> E_APawn_GetDefaultHalfHeight(this);
 		
 		
 		/// <summary>
@@ -308,6 +370,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Return PrimitiveComponent we are based on (standing on, attached to, and moving on). </para>
+		/// </summary>
+		public virtual UPrimitiveComponent GetMovementBase()
+			=> E_APawn_GetMovementBase(this);
+		
+		
+		/// <summary>
 		/// <para>Gets the owning actor of the Movement Base Component on which the pawn is standing. </para>
 		/// </summary>
 		public AActor GetMovementBaseActor(APawn Pawn)
@@ -322,6 +391,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Return our PawnNoiseEmitterComponent, if any. Default implementation returns the first PawnNoiseEmitterComponent found in the components array. </para>
+		/// <para>If one isn't found, then it tries to find one on the Pawn's current Controller. </para>
+		/// </summary>
+		public virtual UPawnNoiseEmitterComponent GetPawnNoiseEmitterComponent()
+			=> E_APawn_GetPawnNoiseEmitterComponent(this);
+		
+		
+		/// <summary>
+		/// <return>Pawn's eye location </return>
+		/// </summary>
+		public virtual FVector GetPawnViewLocation()
+			=> E_APawn_GetPawnViewLocation(this);
+		
+		
+		/// <summary>
 		/// <para>Return the pending input vector in world space. This is the most up-to-date value of the input vector, pending ConsumeMovementInputVector() which clears it, </para>
 		/// <para>Usually only a PawnMovementComponent will want to read this value, or the Pawn itself if it is responsible for movement. </para>
 		/// <return>The pending input vector in world space. </return>
@@ -329,6 +413,21 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetPendingMovementInputVector()
 			=> E_APawn_GetPendingMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Get the view rotation of the Pawn (direction they are looking, normally Controller->ControlRotation). </para>
+		/// <return>The view rotation of the Pawn. </return>
+		/// </summary>
+		public virtual FRotator GetViewRotation()
+			=> E_APawn_GetViewRotation(this);
+		
+		
+		/// <summary>
+		/// <para>return true if player is viewing this Pawn in FreeCam </para>
+		/// </summary>
+		public virtual bool InFreeCam()
+			=> E_APawn_InFreeCam(this);
 		
 		public bool InputEnabled()
 			=> E_APawn_InputEnabled(this);
@@ -374,6 +473,27 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsControlled()
 			=> E_APawn_IsControlled(this);
+		
+		
+		/// <summary>
+		/// <return>true if controlled by a local (not network) Controller. </return>
+		/// </summary>
+		public virtual bool IsLocallyControlled()
+			=> E_APawn_IsLocallyControlled(this);
+		
+		
+		/// <summary>
+		/// <para>Helper to see if move input is ignored. If our controller is a PlayerController, checks Controller->IsMoveInputIgnored(). </para>
+		/// </summary>
+		public virtual bool IsMoveInputIgnored()
+			=> E_APawn_IsMoveInputIgnored(this);
+		
+		
+		/// <summary>
+		/// <return>true if controlled by a human player (possessed by a PlayerController). </return>
+		/// </summary>
+		public virtual bool IsPlayerControlled()
+			=> E_APawn_IsPlayerControlled(this);
 		
 		
 		/// <summary>
@@ -434,6 +554,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PawnStartFire(byte FireModeNum)
 			=> E_APawn_PawnStartFire(this, FireModeNum);
+		
+		public virtual bool ReachedDesiredRotation()
+			=> E_APawn_ReachedDesiredRotation(this);
 		
 		
 		/// <summary>

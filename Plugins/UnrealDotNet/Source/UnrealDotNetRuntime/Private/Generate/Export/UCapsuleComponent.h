@@ -15,17 +15,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleHalfHeight(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetScaledCapsuleHalfHeight());
+		return Self->GetScaledCapsuleHalfHeight();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleHalfHeight_WithoutHemisphere(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetScaledCapsuleHalfHeight_WithoutHemisphere());
+		return Self->GetScaledCapsuleHalfHeight_WithoutHemisphere();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleRadius(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetScaledCapsuleRadius());
+		return Self->GetScaledCapsuleRadius();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleSize(UCapsuleComponent* Self, float OutRadius, float OutHalfHeight)
@@ -44,22 +44,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetShapeScale(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetShapeScale());
+		return Self->GetShapeScale();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetUnscaledCapsuleHalfHeight());
+		return Self->GetUnscaledCapsuleHalfHeight();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight_WithoutHemisphere(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetUnscaledCapsuleHalfHeight_WithoutHemisphere());
+		return Self->GetUnscaledCapsuleHalfHeight_WithoutHemisphere();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleRadius(UCapsuleComponent* Self)
 	{
-		return ConvertForManage(Self->GetUnscaledCapsuleRadius());
+		return Self->GetUnscaledCapsuleRadius();
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleSize(UCapsuleComponent* Self, float OutRadius, float OutHalfHeight)

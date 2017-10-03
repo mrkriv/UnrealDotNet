@@ -7,11 +7,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT INT_PTR E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_GET(INT_PTR Ptr) { return (INT_PTR)&((UPawnNoiseEmitterComponent*)Ptr)->LastRemoteNoisePosition; }
-	DOTNET_EXPORT void E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_SET(INT_PTR Ptr, INT_PTR Value) { ((UPawnNoiseEmitterComponent*)Ptr)->LastRemoteNoisePosition = *(FVector*)Value; }
+	DOTNET_EXPORT auto E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_GET(UPawnNoiseEmitterComponent* Ptr) { return (INT_PTR)&(Ptr->LastRemoteNoisePosition); }
+	DOTNET_EXPORT void E_PROP_UPawnNoiseEmitterComponent_LastRemoteNoisePosition_SET(UPawnNoiseEmitterComponent* Ptr, INT_PTR Value) { Ptr->LastRemoteNoisePosition = *(FVector*)Value; }
 	
-	DOTNET_EXPORT float E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_GET(INT_PTR Ptr) { return ((UPawnNoiseEmitterComponent*)Ptr)->NoiseLifetime; }
-	DOTNET_EXPORT void E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_SET(INT_PTR Ptr, float Value) { ((UPawnNoiseEmitterComponent*)Ptr)->NoiseLifetime = Value; }
+	DOTNET_EXPORT auto E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_GET(UPawnNoiseEmitterComponent* Ptr) { return Ptr->NoiseLifetime; }
+	DOTNET_EXPORT void E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_SET(UPawnNoiseEmitterComponent* Ptr, float Value) { Ptr->NoiseLifetime = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UPawnNoiseEmitterComponent(UObject* Parent, char* Name)
@@ -22,13 +22,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UPawnNoiseEmitterComponent_GetLastNoiseTime(UPawnNoiseEmitterComponent* Self, bool bSourceWithinNoiseEmitter)
 	{
 		auto _p0 = bSourceWithinNoiseEmitter;
-		return ConvertForManage(Self->GetLastNoiseTime(_p0));
+		return Self->GetLastNoiseTime(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(UPawnNoiseEmitterComponent* Self, bool bSourceWithinNoiseEmitter)
 	{
 		auto _p0 = bSourceWithinNoiseEmitter;
-		return ConvertForManage(Self->GetLastNoiseVolume(_p0));
+		return Self->GetLastNoiseVolume(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPawnNoiseEmitterComponent_MakeNoise(UPawnNoiseEmitterComponent* Self, AActor* NoiseMaker, float Loudness, INT_PTR NoiseLocation)

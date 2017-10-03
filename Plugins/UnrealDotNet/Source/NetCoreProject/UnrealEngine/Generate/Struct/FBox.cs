@@ -126,7 +126,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_FBox_ShiftBy(IntPtr Self, IntPtr Offset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_ToString(IntPtr Self, out int ResultStringLen);
+		private static extern StringWrapper E_FBox_ToString(IntPtr Self);
 		
 		#endregion
 		
@@ -315,7 +315,7 @@ namespace UnrealEngine
 		/// <return>A string describing the box. </return>
 		/// </summary>
 		public override string ToString()
-			=> Marshal.PtrToStringUTF8(E_FBox_ToString(this, out int ResultStringLen), ResultStringLen);
+			=> E_FBox_ToString(this);
 		
 		#endregion
 		

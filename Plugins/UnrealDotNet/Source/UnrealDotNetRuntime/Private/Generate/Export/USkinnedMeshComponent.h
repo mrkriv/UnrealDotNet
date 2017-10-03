@@ -7,29 +7,29 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT float E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->CapsuleIndirectShadowMinVisibility; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(INT_PTR Ptr, float Value) { ((USkinnedMeshComponent*)Ptr)->CapsuleIndirectShadowMinVisibility = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(USkinnedMeshComponent* Ptr) { return Ptr->CapsuleIndirectShadowMinVisibility; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->CapsuleIndirectShadowMinVisibility = Value; }
 	
-	DOTNET_EXPORT uint8 E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->CustomSortAlternateIndexMode; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(INT_PTR Ptr, uint8 Value) { ((USkinnedMeshComponent*)Ptr)->CustomSortAlternateIndexMode = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(USkinnedMeshComponent* Ptr) { return Ptr->CustomSortAlternateIndexMode; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->CustomSortAlternateIndexMode = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->ForcedLodModel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(INT_PTR Ptr, int32 Value) { ((USkinnedMeshComponent*)Ptr)->ForcedLodModel = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->ForcedLodModel; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->ForcedLodModel = Value; }
 	
-	DOTNET_EXPORT float E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->MaxDistanceFactor; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(INT_PTR Ptr, float Value) { ((USkinnedMeshComponent*)Ptr)->MaxDistanceFactor = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(USkinnedMeshComponent* Ptr) { return Ptr->MaxDistanceFactor; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->MaxDistanceFactor = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_USkinnedMeshComponent_MinLodModel_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->MinLodModel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MinLodModel_SET(INT_PTR Ptr, int32 Value) { ((USkinnedMeshComponent*)Ptr)->MinLodModel = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MinLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->MinLodModel; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MinLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->MinLodModel = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->OldPredictedLODLevel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(INT_PTR Ptr, int32 Value) { ((USkinnedMeshComponent*)Ptr)->OldPredictedLODLevel = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(USkinnedMeshComponent* Ptr) { return Ptr->OldPredictedLODLevel; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->OldPredictedLODLevel = Value; }
 	
-	DOTNET_EXPORT int32 E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->PredictedLODLevel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(INT_PTR Ptr, int32 Value) { ((USkinnedMeshComponent*)Ptr)->PredictedLODLevel = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(USkinnedMeshComponent* Ptr) { return Ptr->PredictedLODLevel; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->PredictedLODLevel = Value; }
 	
-	DOTNET_EXPORT float E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(INT_PTR Ptr) { return ((USkinnedMeshComponent*)Ptr)->StreamingDistanceMultiplier; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(INT_PTR Ptr, float Value) { ((USkinnedMeshComponent*)Ptr)->StreamingDistanceMultiplier = Value; }
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(USkinnedMeshComponent* Ptr) { return Ptr->StreamingDistanceMultiplier; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->StreamingDistanceMultiplier = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USkinnedMeshComponent(UObject* Parent, char* Name)
@@ -57,36 +57,36 @@ extern "C"
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneIndex(USkinnedMeshComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
-		return ConvertForManage(Self->GetBoneIndex(_p0));
+		return Self->GetBoneIndex(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneName(USkinnedMeshComponent* Self, int32 BoneIndex, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetBoneName(USkinnedMeshComponent* Self, int32 BoneIndex)
 	{
 		auto _p0 = BoneIndex;
-		auto _result = ConvertForManage(Self->GetBoneName(_p0).ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetBoneName(_p0));
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetNumBones(USkinnedMeshComponent* Self)
 	{
-		return ConvertForManage(Self->GetNumBones());
+		return Self->GetNumBones();
 	}
 
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
-		auto _result = ConvertForManage(Self->GetParentBone(_p0).ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetParentBone(_p0));
 	}
 
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName, int& ResultStringLen)
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSkinnedVertexPosition(USkinnedMeshComponent* Self, int32 VertexIndex)
+	{
+		auto _p0 = VertexIndex;
+		return (INT_PTR) new FVector(Self->GetSkinnedVertexPosition(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName)
 	{
 		auto _p0 = ConvertFromManage_FName(InSocketName);
-		auto _result = ConvertForManage(Self->GetSocketBoneName(_p0).ToString());
-		ResultStringLen = _result.Len();
-		return TCHAR_TO_UTF8(*_result);
+		return ConvertToManage_StringWrapper(Self->GetSocketBoneName(_p0));
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(USkinnedMeshComponent* Self, float NewValue)
@@ -135,6 +135,11 @@ extern "C"
 	{
 		auto _p0 = InSectionIndexPreview;
 		Self->SetSectionPreview(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_ShouldCPUSkin(USkinnedMeshComponent* Self)
+	{
+		return Self->ShouldCPUSkin();
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_UpdateRecomputeTangent(USkinnedMeshComponent* Self, int32 MaterialIndex, int32 LodIndex, bool bRecomputeTangentValue)

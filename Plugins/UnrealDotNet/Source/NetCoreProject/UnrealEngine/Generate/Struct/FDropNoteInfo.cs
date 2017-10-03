@@ -19,7 +19,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FDropNoteInfo();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern string E_PROP_FDropNoteInfo_Comment_GET(IntPtr Ptr);
+		private static extern StringWrapper E_PROP_FDropNoteInfo_Comment_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FDropNoteInfo_Comment_SET(IntPtr Ptr, string Value);
 		

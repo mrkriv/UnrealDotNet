@@ -9,7 +9,7 @@ namespace Generator.Metadata
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
 
-        public string Type { get; protected set; }
+        public Type Type { get; protected set; }
         public string Default { get; set; }
 
         protected Variable()
@@ -19,7 +19,7 @@ namespace Generator.Metadata
 
         public virtual string GetTypeCS()
         {
-            return Type;
+            return Type.Name;
         }
 
         public virtual bool IsReadOnly()
@@ -29,12 +29,12 @@ namespace Generator.Metadata
 
         public virtual string GetTypeCSForExtend(bool ForReturn = false)
         {
-            return Type;
+            return Type.Name;
         }
 
         public virtual string GetTypeCPP(bool ForReturn = false)
         {
-            return Type;
+            return Type.Name;
         }
 
         public override string ToString()
@@ -88,7 +88,7 @@ namespace Generator.Metadata
         public override int GetHashCode()
         {
             var hashCode = -1979447941;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type.Name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
             return hashCode;
         }
@@ -118,12 +118,12 @@ namespace Generator.Metadata
 
         public PrimitiveVariable(string Type)
         {
-            this.Type = Type;
+            this.Type = new PrimitiveType(Type);
         }
 
         public override string GetTypeCS()
         {
-            switch (Type)
+            switch (Type.Name)
             {
                 case "uint8":
                     return "byte";
@@ -149,18 +149,30 @@ namespace Generator.Metadata
                     return "IntPtr";
 
                 default:
-                    return Type;
+                    return Type.Name;
             }
         }
 
         public override string GetTypeCSForExtend(bool ForReturn = false)
         {
-            return GetTypeCS();
+            if(!ForReturn)
+                return GetTypeCS();
+
+            switch (Type.Name)
+            {
+                case "FString":
+                case "FText":
+                case "FName":
+                    return "StringWrapper";
+
+                default:
+                    return GetTypeCS();
+            }
         }
 
         public override string GetTypeCPP(bool ForReturn = false)
         {
-            switch (Type)
+            switch (Type.Name)
             {
                 case "FString":
                 case "FText":
@@ -168,7 +180,7 @@ namespace Generator.Metadata
                     return "char*";
 
                 default:
-                    return Type;
+                    return Type.Name;
             }
         }
 
@@ -181,23 +193,20 @@ namespace Generator.Metadata
 
     public class ClassVariable : Variable
     {
-        public Class Class { get; }
-
-        public ClassVariable(Class ClassType)
+        public ClassVariable(Class Class)
         {
-            this.Class = ClassType;
-            this.Type = ClassType.Name;
+            Type = Class;
         }
 
         public override string GetTypeCPP(bool ForReturn = false)
         {
-            if (Class.IsStructure)
+            if (((Class)Type).IsStructure)
                 return "INT_PTR";
             
             if (ForReturn)
                 return "ObjectPointerDescription";
 
-            var name = Class.Name;
+            var name = Type.Name;
 
             if (IsReference)
                 return name + "&";
@@ -210,17 +219,17 @@ namespace Generator.Metadata
 
         public override bool IsReadOnly()
         {
-            return Class.IsReadOnly;
+            return ((Class)Type).IsReadOnly;
         }
 
         public override string GetTypeCS()
         {
-            return Class.Name;
+            return ((Class)Type).Name;
         }
 
         public override string GetTypeCSForExtend(bool ForReturn = false)
         {
-            if (!Class.IsStructure && ForReturn)
+            if (!((Class)Type).IsStructure && ForReturn)
                 return "ObjectPointerDescription";
 
             return "IntPtr";
@@ -229,28 +238,25 @@ namespace Generator.Metadata
         public override string ToString()
         {
             var b = base.ToString();
-            return string.IsNullOrEmpty(Name) ? b + Class : $"{b}{Class} {Name}";
+            return string.IsNullOrEmpty(Name) ? b + Type : $"{b}{Type} {Name}";
         }
     }
 
     public class EnumVariable : Variable
     {
-        public Enum Enum { get; }
-
         public EnumVariable(Enum Enum)
         {
-            this.Enum = Enum;
-            this.Type = Enum.Name;
+            this.Type = Enum;
         }
 
         public override string GetTypeCPP(bool ForReturn = false)
         {
-            return Type;
+            return Type.Name;
         }
 
         public override string GetTypeCS()
         {
-            return Type;
+            return Type.Name;
         }
 
         public override string GetTypeCSForExtend(bool ForReturn = false)
@@ -261,22 +267,20 @@ namespace Generator.Metadata
         public override string ToString()
         {
             var b = base.ToString();
-            return string.IsNullOrEmpty(Name) ? b + Enum : $"{b}{Enum} {Name}";
+            return string.IsNullOrEmpty(Name) ? b + Type : $"{b}{Type} {Name}";
         }
     }
 
     public class DelegateVariable : Variable
     {
-        public Delegate Delegate { get; }
-
         public DelegateVariable(Delegate DelegateType)
         {
-            this.Delegate = DelegateType;
+            Type = DelegateType;
         }
 
         public override string GetTypeCPP(bool ForReturn = false)
         {
-            return Delegate.Name;
+            return Type.Name;
         }
 
         public override bool IsReadOnly()
@@ -286,18 +290,18 @@ namespace Generator.Metadata
 
         public override string GetTypeCS()
         {
-            return Delegate.Name;
+            return Type.Name;
         }
 
         public override string GetTypeCSForExtend(bool ForReturn = false)
         {
-            return Delegate.Name;
+            return Type.Name;
         }
 
         public override string ToString()
         {
             var b = base.ToString();
-            return string.IsNullOrEmpty(Name) ? b + Delegate : $"{b}{Delegate} {Name}";
+            return string.IsNullOrEmpty(Name) ? b + Type : $"{b}{Type} {Name}";
         }
     }
 }

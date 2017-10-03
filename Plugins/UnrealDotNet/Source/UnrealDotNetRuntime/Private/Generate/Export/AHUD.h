@@ -23,11 +23,11 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT float E_PROP_AHUD_LastHUDRenderTime_GET(INT_PTR Ptr) { return ((AHUD*)Ptr)->LastHUDRenderTime; }
-	DOTNET_EXPORT void E_PROP_AHUD_LastHUDRenderTime_SET(INT_PTR Ptr, float Value) { ((AHUD*)Ptr)->LastHUDRenderTime = Value; }
+	DOTNET_EXPORT auto E_PROP_AHUD_LastHUDRenderTime_GET(AHUD* Ptr) { return Ptr->LastHUDRenderTime; }
+	DOTNET_EXPORT void E_PROP_AHUD_LastHUDRenderTime_SET(AHUD* Ptr, float Value) { Ptr->LastHUDRenderTime = Value; }
 	
-	DOTNET_EXPORT float E_PROP_AHUD_RenderDelta_GET(INT_PTR Ptr) { return ((AHUD*)Ptr)->RenderDelta; }
-	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(INT_PTR Ptr, float Value) { ((AHUD*)Ptr)->RenderDelta = Value; }
+	DOTNET_EXPORT auto E_PROP_AHUD_RenderDelta_GET(AHUD* Ptr) { return Ptr->RenderDelta; }
+	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(AHUD* Ptr, float Value) { Ptr->RenderDelta = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_AHUD(UObject* Parent, char* Name)
@@ -53,7 +53,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_AnyCurrentHitBoxHits(AHUD* Self)
 	{
-		return ConvertForManage(Self->AnyCurrentHitBoxHits());
+		return Self->AnyCurrentHitBoxHits();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_Deproject(AHUD* Self, float ScreenX, float ScreenY, INT_PTR WorldPosition, INT_PTR WorldDirection)
@@ -89,7 +89,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_GetOwningPawn(AHUD* Self)
 	{
-		return ConvertForManage(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
+		return ConvertToManage_ObjectPointerDescription(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
 	}
 
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)
@@ -99,7 +99,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_IsCanvasValid_WarnIfNot(AHUD* Self)
 	{
-		return ConvertForManage(((E_PROTECTED_WRAP_AHUD*)Self)->IsCanvasValid_WarnIfNot_WRAP());
+		return ((E_PROTECTED_WRAP_AHUD*)Self)->IsCanvasValid_WarnIfNot_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyBindPostProcessEffects(AHUD* Self)
@@ -197,6 +197,12 @@ extern "C"
 		Self->RemovePostRenderedActor(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AHUD_ShouldDisplayDebug(AHUD* Self, char* DebugType)
+	{
+		auto _p0 = ConvertFromManage_FName(DebugType);
+		return Self->ShouldDisplayDebug(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_ShowDebug(AHUD* Self, char* DebugType)
 	{
 		auto _p0 = ConvertFromManage_FName(DebugType);
@@ -225,7 +231,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector2D*)ClickLocation;
 		auto _p1 = InEventType;
-		return ConvertForManage(Self->UpdateAndDispatchHitBoxClickEvents(_p0, _p1));
+		return Self->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
 	}
 
 }
