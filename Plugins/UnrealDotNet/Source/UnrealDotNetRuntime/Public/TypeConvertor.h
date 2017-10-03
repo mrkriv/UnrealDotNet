@@ -2,69 +2,25 @@
 
 #include "ExportUtilites.h"
 #include "CoreShell.h"
+#include <mutex>
 
-auto ConvertToManage_StringWrapper(FString string)
-{
-	auto utf8 = TCHAR_TO_UTF8(*string);
-	auto str = new char[string.Len()];
+#define TRANSFER_BEFFER_SIZE 8*1024
 
-	StringWrapper wraper;
-	wraper.Pointer = (INT_PTR)str;
-	wraper.Len = string.Len();
+uint8 TransferBuffer[TRANSFER_BEFFER_SIZE];
 
-	FMemory::Memcpy(str, utf8, string.Len());
+INT_PTR TransferBuffer_Index = (INT_PTR)&TransferBuffer[0];
+INT_PTR TransferBuffer_End = (INT_PTR)&TransferBuffer[TRANSFER_BEFFER_SIZE - 1];
+std::mutex TransferBufferMutex;
 
-	// todo: использовать статичный буфер для передачи строк в шарп
-	NeedDeleteQueue.Enqueue((INT_PTR)str);
+INT_PTR PushToTransferBeffer(INT_PTR source, size_t len);
 
-	return wraper;
-}
 
-auto ConvertToManage_StringWrapper(FText text)
-{
-	return ConvertToManage_StringWrapper(text.ToString());
-}
+StringWrapper ConvertToManage_StringWrapper(FString string);
+StringWrapper ConvertToManage_StringWrapper(FText text);
+StringWrapper ConvertToManage_StringWrapper(FName name);
+ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* object);
 
-auto ConvertToManage_StringWrapper(FName name)
-{
-	return ConvertToManage_StringWrapper(name.ToString());
-}
-
-auto ConvertToManage_ObjectPointerDescription(UObject* object)
-{
-	auto name = object->GetClass()->GetPrefixCPP() + object->GetClass()->GetName();
-	auto utf8 = TCHAR_TO_UTF8(*name);
-	auto string = new char[name.Len()];
-
-	ObjectPointerDescription desc;
-	desc.Pointer = (INT_PTR)object;
-	desc.TypeNameLen = name.Len();
-	desc.TypeName = (INT_PTR)string;
-
-	FMemory::Memcpy(string, utf8, name.Len());
-
-	// todo: использовать статичный буфер для передачи строк в шарп
-	NeedDeleteQueue.Enqueue((INT_PTR)string);
-
-	return desc;
-}
-
-TCHAR* ConvertFromManage_TCHAR(char* String)
-{
-	return UTF8_TO_TCHAR(String);
-}
-
-FString ConvertFromManage_FString(char* String)
-{
-	return FString(UTF8_TO_TCHAR(String));
-}
-
-FName ConvertFromManage_FName(char* String)
-{
-	return FName(UTF8_TO_TCHAR(String));
-}
-
-FText ConvertFromManage_FText(char* String)
-{
-	return FText::FromString(FString(UTF8_TO_TCHAR(String)));
-}
+TCHAR* ConvertFromManage_TCHAR(char* String);
+FString ConvertFromManage_FString(char* String);
+FName ConvertFromManage_FName(char* String);
+FText ConvertFromManage_FText(char* String);
