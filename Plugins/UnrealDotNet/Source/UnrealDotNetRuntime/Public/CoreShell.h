@@ -8,7 +8,7 @@
 DECLARE_LOG_CATEGORY_EXTERN(DotNetShell, Log, All);
 DECLARE_LOG_CATEGORY_EXTERN(DotNetRuntime, Log, All);
 
-#define MAX_INVOKE_ARGUMENT_SIZE 96
+#define MAX_INVOKE_ARGUMENT_SIZE 1024
 
 class UManagerObject;
 
@@ -22,6 +22,7 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 	static DWORD DomainID;
 	static char InvokeArgumentBuffer[MAX_INVOKE_ARGUMENT_SIZE];
 	static TSharedPtr<UManagerObject> ManagerInstance;
+	//static TQueue<INT_PTR> NeedDeleteQueue;
 
 	static struct ICLRRuntimeHost4* CreateHost(const FString& coreCLRPath);
 	static DWORD CreateDomain(struct ICLRRuntimeHost4* Host, const FString& targetAppPath);

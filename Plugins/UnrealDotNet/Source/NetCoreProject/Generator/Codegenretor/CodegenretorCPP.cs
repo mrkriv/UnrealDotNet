@@ -384,6 +384,10 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            #endregion Struct
+
+            #region Delegate
+
             private static void GeneratePropertyDelegate(CoreWriter cw, Class Class, Variable prop)
             {
                 var name = prop.GetDisplayName();
@@ -409,16 +413,13 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            #endregion Struct
-
-            #region Delegate
             private static void GenerateManageEventSender(IEnumerable<Metadata.Delegate> Delegates, string OutputPath)
             {
                 var cw = new CoreWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
-                cw.WriteLine("#include \"CoreShell.h\"");
+                cw.WriteLine("#include \"TypeConvertor.h\"");
                 cw.WriteLine("#include \"ManageEventSender.generated.h\"");
                 cw.WriteLine();
                 cw.WriteLine("UCLASS()");
@@ -448,25 +449,65 @@ namespace Generator
 
             private static void GenerateDelegateSender(Delegate dlg, CoreWriter cw)
             {
-                var call = string.Join(", ", dlg.Parametrs.Select(x => x.Name));
                 var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal()));
-                var signature = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal(true)));
+                var signature = string.Join(", ", dlg.Parametrs.Select(GetTypeForManageInvoke));
+                
+                if (signature.Any())
+                    signature = $"<{signature}>";
+
+                var call = string.Join(", ", Enumerable.Range(0, dlg.Parametrs.Count).Select(i => "_p" + i));
 
                 if (call.Any())
                     call = ", " + call;
 
-                if (signature.Any())
-                    signature = $"<{signature}>";
-
                 cw.WriteLine($"UFUNCTION()");
                 cw.WriteLine($"void Wrapper_{dlg.Name}({param})");
                 cw.OpenBlock();
+
+                for (var i = 0; i < dlg.Parametrs.Count; i++)
+                {
+                    var m = dlg.Parametrs[i];
+                    cw.WriteLine($"auto _p{i} = {GenerateGetForManageInvoke(m)};");
+                }
+
                 cw.WriteLine($"UCoreShell::InvokeEventInObject{signature}(SourceObject, ManageDelegateName{call});");
                 cw.CloseBlock();
                 cw.WriteLine();
             }
 
             #endregion
+
+            private static string GetTypeForManageInvoke(Variable variable)
+            {
+                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                {
+                    return toType;
+                }
+
+                return variable.GetTypeCPPOgiginal(true);
+            }
+
+            private static string GenerateGetForManageInvoke(Variable variable, string ManualName = null)
+            {
+                var result = "";
+                var bCloseCount = 0;
+
+                if (ManualName == null)
+                {
+                    ManualName = variable.Name;
+                }
+
+                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                {
+                    result += $"ConvertToManage_{toType}(";
+                    bCloseCount++;
+                }
+
+                result += ManualName;
+                result += new string(')', bCloseCount);
+
+                return result;
+            }
 
             private static string GenerateGet(Variable variable, string ManualName = null)
             {

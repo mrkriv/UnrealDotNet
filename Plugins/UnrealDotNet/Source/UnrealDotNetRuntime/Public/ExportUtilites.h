@@ -14,5 +14,3 @@ typedef struct StringWrapper
 	int32 Len;
 }
 StringWrapper;
-
-TQueue<INT_PTR> NeedDeleteQueue;

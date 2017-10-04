@@ -48,6 +48,7 @@ FString UCoreShell::GameLogic_Assemble = "GameLogicXXXXXXXX, Version=1.0.0.0, Cu
 
 char UCoreShell::InvokeArgumentBuffer[MAX_INVOKE_ARGUMENT_SIZE] = { 0 };
 TSharedPtr<UManagerObject> UCoreShell::ManagerInstance;
+//TQueue<INT_PTR> UCoreShell::NeedDeleteQueue;
 ICLRRuntimeHost4* UCoreShell::Host = NULL;
 DWORD UCoreShell::DomainID = 0;
 
@@ -288,12 +289,12 @@ FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString&
 
 void UCoreShell::GC()
 {
-	INT_PTR ptr;
+	//INT_PTR ptr;
 
-	while (NeedDeleteQueue.Dequeue(ptr))
-	{
-		delete (void*)ptr;
-	}
+	//while (NeedDeleteQueue.Dequeue(ptr))
+	//{
+	//	delete (void*)ptr;
+	//}
 }
 
 void UCoreShell::CreateDotNetManager(UObject* WorldContextObject)

@@ -198,7 +198,7 @@ namespace Generator
                 cw.WriteLine($"private event {type} {EventPrivatePrefix}{name};");
                 cw.WriteLine();
 
-                var param = string.Join(", ", dlg.Parametrs.Select(m => ExportVariable(m, false)));
+                var param = string.Join(", ", dlg.Parametrs.Select(ExportVariableForDelegateCall));
                 var call = string.Join(", ", dlg.Parametrs.Select(m => m.Name));
 
                 cw.WriteLine($"internal void {EventInvokePrefix}{name}({param})");
@@ -550,6 +550,24 @@ namespace Generator
                             result += " = " + val;
                     }
                 }
+
+                return result;
+            }
+
+            private static string ExportVariableForDelegateCall(Variable variable)
+            {
+                string result;
+
+                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                {
+                    result = toType;
+                }
+                else
+                {
+                    result = variable.GetTypeCS();
+                }
+
+                result += " " + variable.GetDisplayName();
 
                 return result;
             }

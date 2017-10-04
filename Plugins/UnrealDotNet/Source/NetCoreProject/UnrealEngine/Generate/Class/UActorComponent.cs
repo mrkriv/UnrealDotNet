@@ -362,7 +362,7 @@ namespace UnrealEngine
 
 		private event FActorComponentActivatedSignature _Event_OnComponentActivated;
 		
-		internal void InvokeEvent_OnComponentActivated(UActorComponent Component, bool bReset)
+		internal void InvokeEvent_OnComponentActivated(ObjectPointerDescription Component, bool bReset)
 		{
 			_Event_OnComponentActivated?.Invoke(Component, bReset);
 		}
@@ -385,7 +385,7 @@ namespace UnrealEngine
 
 		private event FActorComponentDeactivateSignature _Event_OnComponentDeactivated;
 		
-		internal void InvokeEvent_OnComponentDeactivated(UActorComponent Component)
+		internal void InvokeEvent_OnComponentDeactivated(ObjectPointerDescription Component)
 		{
 			_Event_OnComponentDeactivated?.Invoke(Component);
 		}

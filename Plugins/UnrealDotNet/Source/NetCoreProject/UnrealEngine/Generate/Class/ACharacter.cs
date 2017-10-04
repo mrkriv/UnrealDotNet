@@ -484,7 +484,7 @@ namespace UnrealEngine
 
 		private event FMovementModeChangedSignature _Event_MovementModeChangedDelegate;
 		
-		internal void InvokeEvent_MovementModeChangedDelegate(ACharacter Character, EMovementMode PrevMovementMode, byte PreviousCustomMode)
+		internal void InvokeEvent_MovementModeChangedDelegate(ObjectPointerDescription Character, EMovementMode PrevMovementMode, byte PreviousCustomMode)
 		{
 			_Event_MovementModeChangedDelegate?.Invoke(Character, PrevMovementMode, PreviousCustomMode);
 		}

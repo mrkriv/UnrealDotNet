@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -235,53 +236,7 @@ namespace UnrealEngine
                     {
                         for (var i = 0; i < spec.Length; i++)
                         {
-                            if (spec[i].ParameterType == typeof(IntPtr))
-                            {
-                                Params[i] = Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>()
-                                    ? (IntPtr)br.ReadInt32()
-                                    : (IntPtr)br.ReadInt64();
-                            }
-                            else
-                            {
-                                switch (Type.GetTypeCode(spec[i].ParameterType))
-                                {
-                                    case TypeCode.String:
-                                        Params[i] = br.ReadString();
-                                        break;
-
-                                    case TypeCode.Boolean:
-                                        Params[i] = br.ReadBoolean();
-                                        break;
-
-                                    case TypeCode.Single:
-                                        Params[i] = br.ReadSingle();
-                                        break;
-
-                                    case TypeCode.Byte:
-                                        Params[i] = br.ReadByte();
-                                        break;
-
-                                    case TypeCode.Char:
-                                        Params[i] = br.ReadChar();
-                                        break;
-
-                                    case TypeCode.Int16:
-                                        Params[i] = br.ReadInt16();
-                                        break;
-
-                                    case TypeCode.Int32:
-                                        Params[i] = br.ReadInt32();
-                                        break;
-
-                                    case TypeCode.Int64:
-                                        Params[i] = br.ReadInt64();
-                                        break;
-
-                                    case TypeCode.Double:
-                                        Params[i] = br.ReadDouble();
-                                        break;
-                                }
-                            }
+                            Params[i] = PropertyConvert.ParceObjectFromByteStream(spec[i].ParameterType, br);
                         }
                     }
                     catch (EndOfStreamException)

@@ -1189,7 +1189,7 @@ namespace UnrealEngine
 
 		private event FActorBeginOverlapSignature _Event_OnActorBeginOverlap;
 		
-		internal void InvokeEvent_OnActorBeginOverlap(AActor OverlappedActor, AActor OtherActor)
+		internal void InvokeEvent_OnActorBeginOverlap(ObjectPointerDescription OverlappedActor, ObjectPointerDescription OtherActor)
 		{
 			_Event_OnActorBeginOverlap?.Invoke(OverlappedActor, OtherActor);
 		}
@@ -1217,7 +1217,7 @@ namespace UnrealEngine
 
 		private event FActorEndOverlapSignature _Event_OnActorEndOverlap;
 		
-		internal void InvokeEvent_OnActorEndOverlap(AActor OverlappedActor, AActor OtherActor)
+		internal void InvokeEvent_OnActorEndOverlap(ObjectPointerDescription OverlappedActor, ObjectPointerDescription OtherActor)
 		{
 			_Event_OnActorEndOverlap?.Invoke(OverlappedActor, OtherActor);
 		}
@@ -1244,7 +1244,7 @@ namespace UnrealEngine
 
 		private event FActorBeginCursorOverSignature _Event_OnBeginCursorOver;
 		
-		internal void InvokeEvent_OnBeginCursorOver(AActor TouchedActor)
+		internal void InvokeEvent_OnBeginCursorOver(ObjectPointerDescription TouchedActor)
 		{
 			_Event_OnBeginCursorOver?.Invoke(TouchedActor);
 		}
@@ -1271,7 +1271,7 @@ namespace UnrealEngine
 
 		private event FActorDestroyedSignature _Event_OnDestroyed;
 		
-		internal void InvokeEvent_OnDestroyed(AActor DestroyedActor)
+		internal void InvokeEvent_OnDestroyed(ObjectPointerDescription DestroyedActor)
 		{
 			_Event_OnDestroyed?.Invoke(DestroyedActor);
 		}
@@ -1298,7 +1298,7 @@ namespace UnrealEngine
 
 		private event FActorEndCursorOverSignature _Event_OnEndCursorOver;
 		
-		internal void InvokeEvent_OnEndCursorOver(AActor TouchedActor)
+		internal void InvokeEvent_OnEndCursorOver(ObjectPointerDescription TouchedActor)
 		{
 			_Event_OnEndCursorOver?.Invoke(TouchedActor);
 		}

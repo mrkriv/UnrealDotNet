@@ -644,7 +644,7 @@ namespace UnrealEngine
 
 		private event FComponentBeginCursorOverSignature _Event_OnBeginCursorOver;
 		
-		internal void InvokeEvent_OnBeginCursorOver(UPrimitiveComponent TouchedComponent)
+		internal void InvokeEvent_OnBeginCursorOver(ObjectPointerDescription TouchedComponent)
 		{
 			_Event_OnBeginCursorOver?.Invoke(TouchedComponent);
 		}
@@ -671,7 +671,7 @@ namespace UnrealEngine
 
 		private event FComponentCollisionSettingsChangedSignature _Event_OnComponentCollisionSettingsChangedEvent;
 		
-		internal void InvokeEvent_OnComponentCollisionSettingsChangedEvent(UPrimitiveComponent ChangedComponent)
+		internal void InvokeEvent_OnComponentCollisionSettingsChangedEvent(ObjectPointerDescription ChangedComponent)
 		{
 			_Event_OnComponentCollisionSettingsChangedEvent?.Invoke(ChangedComponent);
 		}
@@ -699,7 +699,7 @@ namespace UnrealEngine
 
 		private event FComponentEndOverlapSignature _Event_OnComponentEndOverlap;
 		
-		internal void InvokeEvent_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex)
+		internal void InvokeEvent_OnComponentEndOverlap(ObjectPointerDescription OverlappedComponent, ObjectPointerDescription OtherActor, ObjectPointerDescription OtherComp, int OtherBodyIndex)
 		{
 			_Event_OnComponentEndOverlap?.Invoke(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
 		}
@@ -726,7 +726,7 @@ namespace UnrealEngine
 
 		private event FComponentSleepSignature _Event_OnComponentSleep;
 		
-		internal void InvokeEvent_OnComponentSleep(UPrimitiveComponent SleepingComponent, string BoneName)
+		internal void InvokeEvent_OnComponentSleep(ObjectPointerDescription SleepingComponent, StringWrapper BoneName)
 		{
 			_Event_OnComponentSleep?.Invoke(SleepingComponent, BoneName);
 		}
@@ -753,7 +753,7 @@ namespace UnrealEngine
 
 		private event FComponentWakeSignature _Event_OnComponentWake;
 		
-		internal void InvokeEvent_OnComponentWake(UPrimitiveComponent WakingComponent, string BoneName)
+		internal void InvokeEvent_OnComponentWake(ObjectPointerDescription WakingComponent, StringWrapper BoneName)
 		{
 			_Event_OnComponentWake?.Invoke(WakingComponent, BoneName);
 		}
@@ -780,7 +780,7 @@ namespace UnrealEngine
 
 		private event FComponentEndCursorOverSignature _Event_OnEndCursorOver;
 		
-		internal void InvokeEvent_OnEndCursorOver(UPrimitiveComponent TouchedComponent)
+		internal void InvokeEvent_OnEndCursorOver(ObjectPointerDescription TouchedComponent)
 		{
 			_Event_OnEndCursorOver?.Invoke(TouchedComponent);
 		}
