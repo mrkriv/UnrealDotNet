@@ -29,6 +29,7 @@ namespace Generator
         protected const string CPP_PCH = "UnrealDotNetRuntime";
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";
+        protected const bool WriteSourceFileName = true;
 
         protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
         protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");

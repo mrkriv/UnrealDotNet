@@ -22,46 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_MinLodModel_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_MinLodModel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_ClearRefPoseOverride(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -118,90 +78,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_UpdateRecomputeTangent(IntPtr Self, int MaterialIndex, int LodIndex, bool bRecomputeTangentValue);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Controls how dark the capsule indirect shadow can be. </para>
-		/// </summary>
-		public float CapsuleIndirectShadowMinVisibility
-		{
-			get => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(NativePointer, value);
-		}
-
-		public byte CustomSortAlternateIndexMode
-		{
-			get => E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). </para>
-		/// </summary>
-		public int ForcedLodModel
-		{
-			get => E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>High (best) DistanceFactor that was desired for rendering this USkeletalMesh last frame. Represents how big this mesh was in screen space </para>
-		/// </summary>
-		public float MaxDistanceFactor
-		{
-			get => E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>This is the min LOD that this component will use.  (e.g. if set to 2 then only 2+ LOD Models will be used.) This is useful to set on </para>
-		/// <para>meshes which are known to be a certain distance away and still want to have better LODs when zoomed in on them. </para>
-		/// </summary>
-		public int MinLodModel
-		{
-			get => E_PROP_USkinnedMeshComponent_MinLodModel_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_MinLodModel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>LOD level from previous frame, so we can detect changes in LOD to recalc required bones. </para>
-		/// </summary>
-		public int OldPredictedLODLevel
-		{
-			get => E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Best LOD that was 'predicted' by UpdateSkelPose. </para>
-		/// <para>This is what bones were updated based on, so we do not allow rendering at a better LOD than this. </para>
-		/// </summary>
-		public int PredictedLODLevel
-		{
-			get => E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Allows adjusting the desired streaming distance of streaming textures that uses UV 0. </para>
-		/// <para>1.0 is the default, whereas a higher value makes the textures stream in sooner from far away. </para>
-		/// <para>A lower value (0.0-1.0) makes the textures stream in later (you have to be closer). </para>
-		/// <para>Value can be < 0 (from legcay content, or code changes) </para>
-		/// </summary>
-		public float StreamingDistanceMultiplier
-		{
-			get => E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

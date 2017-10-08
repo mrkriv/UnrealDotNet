@@ -78,21 +78,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FVector_FVector4(IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_X_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_Y_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_Y_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_Z_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_Z_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_AddBounded(IntPtr Self, IntPtr V, float Radius);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -338,39 +323,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector_VectorPlaneProject(IntPtr Self, IntPtr V, IntPtr PlaneNormal);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Vector's X component. </para>
-		/// </summary>
-		public float X
-		{
-			get => E_PROP_FVector_X_GET(NativePointer);
-			set => E_PROP_FVector_X_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Vector's Y component. </para>
-		/// </summary>
-		public float Y
-		{
-			get => E_PROP_FVector_Y_GET(NativePointer);
-			set => E_PROP_FVector_Y_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Vector's Z component. </para>
-		/// </summary>
-		public float Z
-		{
-			get => E_PROP_FVector_Z_GET(NativePointer);
-			set => E_PROP_FVector_Z_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

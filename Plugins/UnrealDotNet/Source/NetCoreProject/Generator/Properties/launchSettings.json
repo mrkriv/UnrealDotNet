@@ -2,7 +2,7 @@
   "profiles": {
     "Generator": {
       "commandName": "Project",
-      "commandLineArgs": "$(SolutionDir)..\\..\\ C:\\Users\\vladi\\Desktop\\Engine"
+      "commandLineArgs": "$(SolutionDir)..\\..\\ C:\\Users\\vladi\\Desktop\\Engine\\Source"
     }
   }
 }

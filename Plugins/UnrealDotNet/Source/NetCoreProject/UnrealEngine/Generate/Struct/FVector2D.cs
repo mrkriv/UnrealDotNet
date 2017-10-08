@@ -51,16 +51,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector2D_X_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector2D_Y_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector2D_ClampAxes(IntPtr Self, float MinAxisVal, float MaxAxisVal);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -141,29 +131,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FVector2D_ToString(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Vector's X component. </para>
-		/// </summary>
-		public float X
-		{
-			get => E_PROP_FVector2D_X_GET(NativePointer);
-			set => E_PROP_FVector2D_X_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Vector's Y component. </para>
-		/// </summary>
-		public float Y
-		{
-			get => E_PROP_FVector2D_Y_GET(NativePointer);
-			set => E_PROP_FVector2D_Y_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

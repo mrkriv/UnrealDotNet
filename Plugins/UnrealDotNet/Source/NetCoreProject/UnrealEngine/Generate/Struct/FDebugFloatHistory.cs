@@ -27,26 +27,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FDebugFloatHistory_float_float_float_bool(float InMaxSamples, float InMinValue, float InMaxValue, bool InbAutoAdjustMinMax);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FDebugFloatHistory_bAutoAdjustMinMax_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDebugFloatHistory_bAutoAdjustMinMax_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FDebugFloatHistory_MaxSamples_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDebugFloatHistory_MaxSamples_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FDebugFloatHistory_MaxValue_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDebugFloatHistory_MaxValue_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FDebugFloatHistory_MinValue_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDebugFloatHistory_MinValue_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FDebugFloatHistory_AddSample(IntPtr Self, float FloatValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -61,49 +41,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_FDebugFloatHistory_GetNumSamples(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Auto adjust Min/Max as new values are recorded? </para>
-		/// </summary>
-		public bool bAutoAdjustMinMax
-		{
-			get => E_PROP_FDebugFloatHistory_bAutoAdjustMinMax_GET(NativePointer);
-			set => E_PROP_FDebugFloatHistory_bAutoAdjustMinMax_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Max Samples to record. </para>
-		/// </summary>
-		public float MaxSamples
-		{
-			get => E_PROP_FDebugFloatHistory_MaxSamples_GET(NativePointer);
-			set => E_PROP_FDebugFloatHistory_MaxSamples_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Max value to record. </para>
-		/// </summary>
-		public float MaxValue
-		{
-			get => E_PROP_FDebugFloatHistory_MaxValue_GET(NativePointer);
-			set => E_PROP_FDebugFloatHistory_MaxValue_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Min value to record. </para>
-		/// </summary>
-		public float MinValue
-		{
-			get => E_PROP_FDebugFloatHistory_MinValue_GET(NativePointer);
-			set => E_PROP_FDebugFloatHistory_MinValue_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

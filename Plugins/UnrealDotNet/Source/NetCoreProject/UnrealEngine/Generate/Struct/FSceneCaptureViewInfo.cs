@@ -18,20 +18,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSceneCaptureViewInfo();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FSceneCaptureViewInfo_ViewLocation_SET(IntPtr Ptr, IntPtr Value);
-		
-		#endregion
-		
-		#region Property
-		public FVector ViewLocation
-		{
-			get => E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(NativePointer);
-			set => E_PROP_FSceneCaptureViewInfo_ViewLocation_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FSceneCaptureViewInfo Self)

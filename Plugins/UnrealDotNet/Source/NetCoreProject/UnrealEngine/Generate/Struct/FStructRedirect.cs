@@ -18,31 +18,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FStructRedirect();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FStructRedirect_NewStructName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FStructRedirect_NewStructName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FStructRedirect_OldStructName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FStructRedirect_OldStructName_SET(IntPtr Ptr, string Value);
-		
-		#endregion
-		
-		#region Property
-		public string NewStructName
-		{
-			get => E_PROP_FStructRedirect_NewStructName_GET(NativePointer);
-			set => E_PROP_FStructRedirect_NewStructName_SET(NativePointer, value);
-		}
-
-		public string OldStructName
-		{
-			get => E_PROP_FStructRedirect_OldStructName_GET(NativePointer);
-			set => E_PROP_FStructRedirect_OldStructName_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FStructRedirect Self)

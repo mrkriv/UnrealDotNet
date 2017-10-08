@@ -22,50 +22,11 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ADefaultPawn(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_CollisionComponentName_GET();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_MeshComponentName_GET();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Name of the CollisionComponent. </para>
-		/// </summary>
-		public static string CollisionComponentName
-		{
-			get => E_PROP_ADefaultPawn_CollisionComponentName_GET();
-		}
-
-		
-		/// <summary>
-		/// <para>Name of the MeshComponent. Use this name if you want to prevent creation of the component (with ObjectInitializer.DoNotCreateDefaultSubobject). </para>
-		/// </summary>
-		public static string MeshComponentName
-		{
-			get => E_PROP_ADefaultPawn_MeshComponentName_GET();
-		}
-
-		
-		/// <summary>
-		/// <para>Name of the MovementComponent.  Use this name if you want to use a different class (with ObjectInitializer.SetDefaultSubobjectClass). </para>
-		/// </summary>
-		public static string MovementComponentName
-		{
-			get => E_PROP_ADefaultPawn_MovementComponentName_GET();
-		}
-
 		#endregion
 		
 		#region ExternMethods

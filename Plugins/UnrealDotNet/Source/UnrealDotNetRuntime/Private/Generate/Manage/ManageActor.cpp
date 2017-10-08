@@ -38,6 +38,24 @@ void AManageActor::ClearCrossLevelReferences()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ClearCrossLevelReferences");
 }
 
+void AManageActor::Destroyed()
+{
+	Super::Destroyed();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Destroyed");
+}
+
+void AManageActor::ForceNetRelevant()
+{
+	Super::ForceNetRelevant();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ForceNetRelevant");
+}
+
+void AManageActor::ForceNetUpdate()
+{
+	Super::ForceNetUpdate();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ForceNetUpdate");
+}
+
 void AManageActor::GatherCurrentMovement()
 {
 	Super::GatherCurrentMovement();
@@ -152,6 +170,12 @@ void AManageActor::OnSubobjectDestroyFromReplication(UObject* Subobject)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
 }
 
+void AManageActor::OutsideWorldBounds()
+{
+	Super::OutsideWorldBounds();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OutsideWorldBounds");
+}
+
 void AManageActor::PostActorCreated()
 {
 	Super::PostActorCreated();
@@ -212,6 +236,18 @@ void AManageActor::PreInitializeComponents()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreInitializeComponents");
 }
 
+void AManageActor::PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PrestreamTextures", Seconds, bEnableStreaming, CinematicTextureGroups);
+}
+
+void AManageActor::RegisterActorTickFunctions(bool bRegister)
+{
+	Super::RegisterActorTickFunctions(bRegister);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RegisterActorTickFunctions", bRegister);
+}
+
 void AManageActor::RegisterAllComponents()
 {
 	Super::RegisterAllComponents();
@@ -240,6 +276,12 @@ void AManageActor::RerunConstructionScripts()
 {
 	Super::RerunConstructionScripts();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RerunConstructionScripts");
+}
+
+void AManageActor::Reset()
+{
+	Super::Reset();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Reset");
 }
 
 void AManageActor::SetActorHiddenInGame(bool bNewHidden)
@@ -282,6 +324,12 @@ void AManageActor::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Tick", DeltaSeconds);
+}
+
+void AManageActor::TornOff()
+{
+	Super::TornOff();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "TornOff");
 }
 
 void AManageActor::UnregisterAllComponents(bool bForReregister)

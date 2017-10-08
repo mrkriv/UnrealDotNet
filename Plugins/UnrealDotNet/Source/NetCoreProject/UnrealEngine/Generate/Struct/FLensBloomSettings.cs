@@ -19,26 +19,8 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLensBloomSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FLensBloomSettings_Convolution_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLensBloomSettings_Convolution_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FLensBloomSettings_ExportToPostProcessSettings(IntPtr Self, IntPtr OutPostProcessSettings);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Bloom convolution method specific settings. </para>
-		/// </summary>
-		public FConvolutionBloomSettings Convolution
-		{
-			get => E_PROP_FLensBloomSettings_Convolution_GET(NativePointer);
-			set => E_PROP_FLensBloomSettings_Convolution_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

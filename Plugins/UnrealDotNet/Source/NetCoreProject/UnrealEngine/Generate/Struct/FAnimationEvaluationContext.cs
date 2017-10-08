@@ -19,69 +19,11 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FAnimationEvaluationContext();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FAnimationEvaluationContext_bDoEvaluation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_bDoEvaluation_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FAnimationEvaluationContext_bDoInterpolation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_bDoInterpolation_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FAnimationEvaluationContext_bDuplicateToCacheBones_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_bDuplicateToCacheBones_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FAnimationEvaluationContext_Copy(IntPtr Self, IntPtr Other);
 		
-		#endregion
-		
-		#region Property
-		public bool bDoEvaluation
-		{
-			get => E_PROP_FAnimationEvaluationContext_bDoEvaluation_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_bDoEvaluation_SET(NativePointer, value);
-		}
-
-		public bool bDoInterpolation
-		{
-			get => E_PROP_FAnimationEvaluationContext_bDoInterpolation_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_bDoInterpolation_SET(NativePointer, value);
-		}
-
-		public bool bDuplicateToCacheBones
-		{
-			get => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheBones_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheBones_SET(NativePointer, value);
-		}
-
-		public bool bDuplicateToCacheCurve
-		{
-			get => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(NativePointer, value);
-		}
-
-		public FVector RootBoneTranslation
-		{
-			get => E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

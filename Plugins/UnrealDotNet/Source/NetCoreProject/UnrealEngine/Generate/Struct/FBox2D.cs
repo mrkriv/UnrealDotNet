@@ -64,21 +64,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_int32(IntPtr Points, int Count);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FBox2D_bIsValid_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FBox2D_Max_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FBox2D_Max_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FBox2D_Min_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(IntPtr Self, IntPtr Point);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -114,39 +99,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FBox2D_ToString(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Holds a flag indicating whether this box is valid. </para>
-		/// </summary>
-		public bool bIsValid
-		{
-			get => E_PROP_FBox2D_bIsValid_GET(NativePointer);
-			set => E_PROP_FBox2D_bIsValid_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Holds the box's maximum point. </para>
-		/// </summary>
-		public FVector2D Max
-		{
-			get => E_PROP_FBox2D_Max_GET(NativePointer);
-			set => E_PROP_FBox2D_Max_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Holds the box's minimum point. </para>
-		/// </summary>
-		public FVector2D Min
-		{
-			get => E_PROP_FBox2D_Min_GET(NativePointer);
-			set => E_PROP_FBox2D_Min_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

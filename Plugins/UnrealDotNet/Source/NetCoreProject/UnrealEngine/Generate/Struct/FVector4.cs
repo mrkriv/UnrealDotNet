@@ -55,26 +55,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FVector4_FVector2D_FVector2D(IntPtr InXY, IntPtr InZW);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector4_W_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector4_W_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector4_X_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector4_X_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector4_Y_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector4_Y_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector4_Z_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FVector4_Component(IntPtr Self, int Index);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -140,49 +120,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector4_UnsafeNormal3(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The vector's W-component. </para>
-		/// </summary>
-		public float W
-		{
-			get => E_PROP_FVector4_W_GET(NativePointer);
-			set => E_PROP_FVector4_W_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The vector's X-component. </para>
-		/// </summary>
-		public float X
-		{
-			get => E_PROP_FVector4_X_GET(NativePointer);
-			set => E_PROP_FVector4_X_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The vector's Y-component. </para>
-		/// </summary>
-		public float Y
-		{
-			get => E_PROP_FVector4_Y_GET(NativePointer);
-			set => E_PROP_FVector4_Y_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The vector's Z-component. </para>
-		/// </summary>
-		public float Z
-		{
-			get => E_PROP_FVector4_Z_GET(NativePointer);
-			set => E_PROP_FVector4_Z_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

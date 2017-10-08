@@ -7,30 +7,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(USkinnedMeshComponent* Ptr) { return Ptr->CapsuleIndirectShadowMinVisibility; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->CapsuleIndirectShadowMinVisibility = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(USkinnedMeshComponent* Ptr) { return Ptr->CustomSortAlternateIndexMode; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->CustomSortAlternateIndexMode = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->ForcedLodModel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->ForcedLodModel = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(USkinnedMeshComponent* Ptr) { return Ptr->MaxDistanceFactor; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->MaxDistanceFactor = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MinLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->MinLodModel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MinLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->MinLodModel = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(USkinnedMeshComponent* Ptr) { return Ptr->OldPredictedLODLevel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->OldPredictedLODLevel = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(USkinnedMeshComponent* Ptr) { return Ptr->PredictedLODLevel; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->PredictedLODLevel = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(USkinnedMeshComponent* Ptr) { return Ptr->StreamingDistanceMultiplier; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->StreamingDistanceMultiplier = Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USkinnedMeshComponent(UObject* Parent, char* Name)
 	{

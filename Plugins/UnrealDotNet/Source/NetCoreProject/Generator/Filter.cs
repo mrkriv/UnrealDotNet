@@ -32,16 +32,6 @@ namespace Generator
             "UModelComponent",
             "UWindDirectionalSourceComponent",
 
-            "FPrimitiveComponentPostPhysicsTickFunction", // TODO: не экспортировать структуры без конструктора по умочанию
-            "FStartPhysicsTickFunction",
-            "FEndPhysicsTickFunction",
-            "FStartAsyncSimulationFunction",
-            "FSkeletalMeshComponentEndPhysicsTickFunction",
-            "FSkeletalMeshComponentClothTickFunction",
-            "FAsyncPreRegisterDDCRequest",
-            "FFixedUObjectArray",
-            "FScopedLevelCollectionContextSwitch",
-
             "FWorldDelegates",
             "FSkelMeshSkinWeightInfo",
 
@@ -57,6 +47,34 @@ namespace Generator
             "FSwarmDebugOptions",
             "FAnimUpdateRateParameters",
             "FTimerHandle",
+
+            "FCompareFActorPriority",   // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
+
+            "UActorChannel",    // todo: не генерировать manage оболочку для классов не наследованных от UObject
+
+            "FExampleArray",    // необъявленный идентификатор
+            "FExampleItemEntry",
+            "FExampleStruct",
+
+            "FQueuedDemoPacket",
+            "FNetGUIDCache",
+
+            "UAssetManager",
+
+            "FQueuedReplayTask", // todo: не экспортировать абстрактные структруты
+
+            "APlanarReflection", // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
+            "ULevelActorContainer", // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
+
+            "IBlendableInterface", // todo: различать интерфейсы
+            "IImportantToggleSettingInterface",
+
+            "FPrimitiveComponentPostPhysicsTickFunction",   // ExecuteTick абстрактный
+            "FSkeletalMeshComponentEndPhysicsTickFunction",
+            "FSkeletalMeshComponentClothTickFunction",
+            "FStartPhysicsTickFunction",
+            "FEndPhysicsTickFunction",
+            "FStartAsyncSimulationFunction",
         };
 
         public static string[] ManageClassBlackList =
@@ -80,6 +98,9 @@ namespace Generator
             "UTimelineComponent",
             "ULightmassPortalComponent",
             "UPlanarReflectionComponent",
+
+            "UAssetManager",
+            "UTexture",
         };
 
         public static string[] NewObjectBlackList =
@@ -116,7 +137,7 @@ namespace Generator
         {
         };
 
-        public static Dictionary<string, string[]> MethodBlackList = new Dictionary<string, string[]>
+        public static Dictionary<string, string[]> MethodInClassBlackList = new Dictionary<string, string[]>
         {
             { "UObjectBase", new[] { "Register" }},
             { "UObject", new[] { "PreSaveRoot" }},
@@ -133,9 +154,11 @@ namespace Generator
             { "UPrimitiveComponent", new[] { "DispatchBlockingHit" }},
 
             { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
+            { "UTexture", new[] { "GetRunningPlatformData" }}, // TODO: указатель на указатель **
             
 
             { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
+            { "FPoly", new[] { "CalcNormal" }},    // TODO: конвертировать 0 в false
         };
 
         public static string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
@@ -193,7 +216,7 @@ namespace Generator
             else
             {
                 cl.Constructors = cl.Constructors.Where(MethodFilter)
-                    .Where(m=>m.AccessModifier == AccessModifier.Public).OrderBy(m => m.Name).ToList();
+                    .Where(m => m.AccessModifier == AccessModifier.Public).OrderBy(m => m.Name).ToList();
 
                 foreach (var m in cl.Constructors)
                 {
@@ -269,7 +292,7 @@ namespace Generator
         public static bool MethodFilter(Method m)
         {
             return !m.IsTemplate &&
-                    !m.ReturnType.IsConst && // TODO: возвращать константные ссылки
+                    !m.ReturnType.IsConst &&
                     !m.IsOverride &&
                     !m.IsFriend &&
                     !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
@@ -278,12 +301,15 @@ namespace Generator
                     m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
                     m.Operator == null &&
                     (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
-                    (!MethodBlackList.ContainsKey(m.OwnerClass.Name) || !MethodBlackList[m.OwnerClass.Name].Contains(m.Name));
+                    (!MethodInClassBlackList.ContainsKey(m.OwnerClass.Name) || !MethodInClassBlackList[m.OwnerClass.Name].Contains(m.Name));
         }
 
         public static bool PropertyFilter(Variable m)
         {
-            if(m.AccessModifier != AccessModifier.Public)   // todo: экспортировать protected свойства
+            if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
+                return false;
+
+            if (!m.IsPointer || (m.Type as Class)?.IsStructure == false)
                 return false;
 
             if (m.IsConst)

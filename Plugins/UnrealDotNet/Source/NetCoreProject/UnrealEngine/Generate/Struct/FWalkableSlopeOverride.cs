@@ -27,11 +27,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FWalkableSlopeOverride_EWalkableSlopeBehavior_float(byte NewSlopeBehavior, float NewSlopeAngle);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FWalkableSlopeOverride_GetWalkableSlopeAngle(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -46,20 +41,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FWalkableSlopeOverride_SetWalkableSlopeBehavior(IntPtr Self, byte NewSlopeBehavior);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Override walkable slope angle (in degrees), applying the rules of the Walkable Slope Behavior. </para>
-		/// <para>@see GetWalkableSlopeAngle(), SetWalkableSlopeAngle() </para>
-		/// </summary>
-		public float WalkableSlopeAngle
-		{
-			get => E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_GET(NativePointer);
-			set => E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

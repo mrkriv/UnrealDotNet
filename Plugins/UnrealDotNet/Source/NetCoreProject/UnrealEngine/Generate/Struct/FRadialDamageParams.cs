@@ -43,69 +43,11 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float(float InBaseDamage, float InRadius);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRadialDamageParams_BaseDamage_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRadialDamageParams_BaseDamage_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRadialDamageParams_DamageFalloff_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRadialDamageParams_DamageFalloff_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRadialDamageParams_InnerRadius_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRadialDamageParams_InnerRadius_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRadialDamageParams_MinimumDamage_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRadialDamageParams_MinimumDamage_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRadialDamageParams_OuterRadius_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRadialDamageParams_OuterRadius_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FRadialDamageParams_GetDamageScale(IntPtr Self, float DistanceFromEpicenter);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FRadialDamageParams_GetMaxRadius(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		public float BaseDamage
-		{
-			get => E_PROP_FRadialDamageParams_BaseDamage_GET(NativePointer);
-			set => E_PROP_FRadialDamageParams_BaseDamage_SET(NativePointer, value);
-		}
-
-		public float DamageFalloff
-		{
-			get => E_PROP_FRadialDamageParams_DamageFalloff_GET(NativePointer);
-			set => E_PROP_FRadialDamageParams_DamageFalloff_SET(NativePointer, value);
-		}
-
-		public float InnerRadius
-		{
-			get => E_PROP_FRadialDamageParams_InnerRadius_GET(NativePointer);
-			set => E_PROP_FRadialDamageParams_InnerRadius_SET(NativePointer, value);
-		}
-
-		public float MinimumDamage
-		{
-			get => E_PROP_FRadialDamageParams_MinimumDamage_GET(NativePointer);
-			set => E_PROP_FRadialDamageParams_MinimumDamage_SET(NativePointer, value);
-		}
-
-		public float OuterRadius
-		{
-			get => E_PROP_FRadialDamageParams_OuterRadius_GET(NativePointer);
-			set => E_PROP_FRadialDamageParams_OuterRadius_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

@@ -22,16 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_AHUD(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_AHUD_RenderDelta_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AHUD_RenderDelta_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_AddHitBox(IntPtr Self, IntPtr Position, IntPtr Size, string InName, bool bConsumesInput, int Priority);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -130,29 +120,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(IntPtr Self, IntPtr ClickLocation, byte InEventType);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Used to calculate delta time between HUD rendering. </para>
-		/// </summary>
-		public float LastHUDRenderTime
-		{
-			get => E_PROP_AHUD_LastHUDRenderTime_GET(NativePointer);
-			set => E_PROP_AHUD_LastHUDRenderTime_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time since last HUD render. </para>
-		/// </summary>
-		public float RenderDelta
-		{
-			get => E_PROP_AHUD_RenderDelta_GET(NativePointer);
-			set => E_PROP_AHUD_RenderDelta_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

@@ -108,11 +108,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector_FVector(IntPtr A, IntPtr B, IntPtr C);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FPlane_W_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FPlane_W_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FPlane_Equals(IntPtr Self, IntPtr V, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -121,19 +116,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FPlane_PlaneDot(IntPtr Self, IntPtr P);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The w-component. </para>
-		/// </summary>
-		public float W
-		{
-			get => E_PROP_FPlane_W_GET(NativePointer);
-			set => E_PROP_FPlane_W_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

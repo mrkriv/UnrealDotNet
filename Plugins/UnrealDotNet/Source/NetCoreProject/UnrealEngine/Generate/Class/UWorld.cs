@@ -3,6 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	
+	/// <summary>
+	/// Класс не может быть наследован в Вашем коде, используйте ManageWorld
+	/// <para>The destructor restores the context on the world that was saved in the constructor. </para>
+	/// </summary>
 	public sealed partial class UWorld : UObject
 	{
 		public UWorld(IntPtr Adress)
@@ -20,191 +25,6 @@ namespace UnrealEngine
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UWorld(IntPtr Parent, string Name);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_AudioTimeSeconds_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_AudioTimeSeconds_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bDebugDrawAllTraceTags_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bDebugDrawAllTraceTags_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bInTick_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bInTick_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsBuilt_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsBuilt_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsLevelStreamingFrozen_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsLevelStreamingFrozen_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsRunningConstructionScript_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsRunningConstructionScript_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsWorldInitialized_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsWorldInitialized_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bPostTickComponentUpdate_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldDelayGarbageCollect_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldDelayGarbageCollect_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldForceVisibleStreamingLevels_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldForceVisibleStreamingLevels_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldSimulatePhysics_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldSimulatePhysics_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bTickNewlySpawned_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_UWorld_CommittedPersistentLevelName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_CommittedPersistentLevelName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_UWorld_DebugDrawTraceTag_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_DebugDrawTraceTag_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_DeltaTimeSeconds_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_DeltaTimeSeconds_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UWorld_FlushLevelStreamingType_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_FlushLevelStreamingType_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_FullPurgeTriggered_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_FullPurgeTriggered_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern double E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(IntPtr Ptr, double Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_NextSwitchCountdown_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NextSwitchCountdown_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UWorld_NextTravelType_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NextTravelType_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_UWorld_NextURL_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NextURL_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UWorld_NumTextureStreamingDirtyResources_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UWorld_OriginOffsetThisFrame_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_OriginOffsetThisFrame_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_PauseDelay_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_PauseDelay_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UWorld_PlayerNum_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_PlayerNum_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_RealTimeSeconds_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_RealTimeSeconds_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UWorld_TickGroup_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_TickGroup_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_TimeSeconds_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_UnpausedTimeSeconds_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_UnpausedTimeSeconds_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UWorld_URL_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_URL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_AddNetworkActor(IntPtr Self, IntPtr Actor);
@@ -273,6 +93,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_DebugDrawSceneQueries(IntPtr Self, string UsedTraceTag);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_DelayGarbageCollection(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_DelayStreamingVolumeUpdates(IntPtr Self, int InFrameDelay);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -280,6 +103,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_DestroyDemoNetDriver(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_DestroyWorld(IntPtr Self, bool bInformEngineOfWorld, IntPtr NewWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_DuplicateRequestedLevels(IntPtr Self, string MapName);
@@ -343,6 +169,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetRealTimeSeconds(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UWorld_GetTimeBetweenGarbageCollectionPasses(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetTimeSeconds(IntPtr Self);
@@ -429,6 +258,12 @@ namespace UnrealEngine
 		private static extern void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(IntPtr Self, IntPtr Component, bool bForceGameThread);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_MarkObjectsPendingKill(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_PerformGarbageCollectionAndCleanupActors(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -469,6 +304,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetShouldTick(IntPtr Self, bool bInShouldTick);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_SetTimeUntilNextGarbageCollection(IntPtr Self, float MinTimeUntilNextPass);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetupParameterCollectionInstances(IntPtr Self);
@@ -524,381 +362,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_UsesGameHiddenFlags(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Time in seconds since level began play, but IS paused when the game is paused, and IS NOT dilated/clamped. </para>
-		/// </summary>
-		public float AudioTimeSeconds
-		{
-			get => E_PROP_UWorld_AudioTimeSeconds_GET(NativePointer);
-			set => E_PROP_UWorld_AudioTimeSeconds_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If TRUE, 'hidden' components will still create render proxy, so can draw info (see USceneComponent::ShouldRender) </para>
-		/// </summary>
-		public bool bCreateRenderStateForHiddenComponents
-		{
-			get => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(NativePointer);
-			set => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>When set to true, all scene queries will be drawn </para>
-		/// </summary>
-		public bool bDebugDrawAllTraceTags
-		{
-			get => E_PROP_UWorld_bDebugDrawAllTraceTags_GET(NativePointer);
-			set => E_PROP_UWorld_bDebugDrawAllTraceTags_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>True we want to execute a call to UpdateCulledTriggerVolumes during Tick </para>
-		/// </summary>
-		public bool bDoDelayedUpdateCullDistanceVolumes
-		{
-			get => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(NativePointer);
-			set => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Force UsesGameHiddenFlags to return true. </para>
-		/// </summary>
-		public bool bHack_Force_UsesGameHiddenFlags_True
-		{
-			get => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(NativePointer);
-			set => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether we are in the middle of ticking actors/components or not </para>
-		/// </summary>
-		public bool bInTick
-		{
-			get => E_PROP_UWorld_bInTick_GET(NativePointer);
-			set => E_PROP_UWorld_bInTick_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether we have already built the collision tree or not </para>
-		/// </summary>
-		public bool bIsBuilt
-		{
-			get => E_PROP_UWorld_bIsBuilt_GET(NativePointer);
-			set => E_PROP_UWorld_bIsBuilt_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Is level streaming currently frozen? </para>
-		/// </summary>
-		public bool bIsLevelStreamingFrozen
-		{
-			get => E_PROP_UWorld_bIsLevelStreamingFrozen_GET(NativePointer);
-			set => E_PROP_UWorld_bIsLevelStreamingFrozen_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If true this world is in the process of running the construction script for an actor </para>
-		/// </summary>
-		public bool bIsRunningConstructionScript
-		{
-			get => E_PROP_UWorld_bIsRunningConstructionScript_GET(NativePointer);
-			set => E_PROP_UWorld_bIsRunningConstructionScript_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether world object has been initialized via Init() </para>
-		/// </summary>
-		public bool bIsWorldInitialized
-		{
-			get => E_PROP_UWorld_bIsWorldInitialized_GET(NativePointer);
-			set => E_PROP_UWorld_bIsWorldInitialized_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Indicates that during world ticking we are doing the final component update of dirty components </para>
-		/// <para>(after PostAsyncWork and effect physics scene has run. </para>
-		/// </summary>
-		public bool bPostTickComponentUpdate
-		{
-			get => E_PROP_UWorld_bPostTickComponentUpdate_GET(NativePointer);
-			set => E_PROP_UWorld_bPostTickComponentUpdate_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether we should delay GC for one frame to finish some pending operation </para>
-		/// </summary>
-		public bool bShouldDelayGarbageCollect
-		{
-			get => E_PROP_UWorld_bShouldDelayGarbageCollect_GET(NativePointer);
-			set => E_PROP_UWorld_bShouldDelayGarbageCollect_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Is forcibly unloading streaming levels? </para>
-		/// </summary>
-		public bool bShouldForceUnloadStreamingLevels
-		{
-			get => E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(NativePointer);
-			set => E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Is forcibly making streaming levels visible? </para>
-		/// </summary>
-		public bool bShouldForceVisibleStreamingLevels
-		{
-			get => E_PROP_UWorld_bShouldForceVisibleStreamingLevels_GET(NativePointer);
-			set => E_PROP_UWorld_bShouldForceVisibleStreamingLevels_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If true this world will tick physics to simulate. This isn't same as having Physics Scene. </para>
-		/// <para>You need Physics Scene if you'd like to trace. This flag changed ticking </para>
-		/// </summary>
-		public bool bShouldSimulatePhysics
-		{
-			get => E_PROP_UWorld_bShouldSimulatePhysics_GET(NativePointer);
-			set => E_PROP_UWorld_bShouldSimulatePhysics_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>We are in the middle of actor ticking, so add tasks for newly spawned actors </para>
-		/// </summary>
-		public bool bTickNewlySpawned
-		{
-			get => E_PROP_UWorld_bTickNewlySpawned_GET(NativePointer);
-			set => E_PROP_UWorld_bTickNewlySpawned_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Name of persistent level if we've loaded levels via CommitMapChange() that aren't normally in the StreamingLevels array (to inform newly joining clients) </para>
-		/// </summary>
-		public string CommittedPersistentLevelName
-		{
-			get => E_PROP_UWorld_CommittedPersistentLevelName_GET(NativePointer);
-			set => E_PROP_UWorld_CommittedPersistentLevelName_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>When non-'None', all line traces where the TraceTag match this will be drawn </para>
-		/// </summary>
-		public string DebugDrawTraceTag
-		{
-			get => E_PROP_UWorld_DebugDrawTraceTag_GET(NativePointer);
-			set => E_PROP_UWorld_DebugDrawTraceTag_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Frame delta time in seconds adjusted by e.g. time dilation. </para>
-		/// </summary>
-		public float DeltaTimeSeconds
-		{
-			get => E_PROP_UWorld_DeltaTimeSeconds_GET(NativePointer);
-			set => E_PROP_UWorld_DeltaTimeSeconds_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether we flushing level streaming state </para>
-		/// </summary>
-		public EFlushLevelStreamingType FlushLevelStreamingType
-		{
-			get => (EFlushLevelStreamingType)E_PROP_UWorld_FlushLevelStreamingType_GET(NativePointer);
-			set => E_PROP_UWorld_FlushLevelStreamingType_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether a full purge has been triggered, so that the next GarbageCollect will do a full purge no matter what. </para>
-		/// </summary>
-		public bool FullPurgeTriggered
-		{
-			get => E_PROP_UWorld_FullPurgeTriggered_GET(NativePointer);
-			set => E_PROP_UWorld_FullPurgeTriggered_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time in FPlatformTime::Seconds unbuilt time was last encountered. 0 means not yet. </para>
-		/// </summary>
-		public double LastTimeUnbuiltLightingWasEncountered
-		{
-			get => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(NativePointer);
-			set => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Amount of time to wait before traveling to next map, gives clients time to receive final RPCs @see ServerTravelPause </para>
-		/// </summary>
-		public float NextSwitchCountdown
-		{
-			get => E_PROP_UWorld_NextSwitchCountdown_GET(NativePointer);
-			set => E_PROP_UWorld_NextSwitchCountdown_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The type of travel to perform next when doing a server travel </para>
-		/// </summary>
-		public ETravelType NextTravelType
-		{
-			get => (ETravelType)E_PROP_UWorld_NextTravelType_GET(NativePointer);
-			set => E_PROP_UWorld_NextTravelType_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>The URL to be used for the upcoming server travel </para>
-		/// </summary>
-		public string NextURL
-		{
-			get => E_PROP_UWorld_NextURL_GET(NativePointer);
-			set => E_PROP_UWorld_NextURL_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Num of resources that have changed since the last texture streaming build. Updated in map check. </para>
-		/// </summary>
-		public int NumTextureStreamingDirtyResources
-		{
-			get => E_PROP_UWorld_NumTextureStreamingDirtyResources_GET(NativePointer);
-			set => E_PROP_UWorld_NumTextureStreamingDirtyResources_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Num of components missing valid texture streaming data. Updated in map check. </para>
-		/// </summary>
-		public int NumTextureStreamingUnbuiltComponents
-		{
-			get => E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(NativePointer);
-			set => E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>World origin offset value. Non-zero only for a single frame when origin is rebased </para>
-		/// </summary>
-		public FVector OriginOffsetThisFrame
-		{
-			get => E_PROP_UWorld_OriginOffsetThisFrame_GET(NativePointer);
-			set => E_PROP_UWorld_OriginOffsetThisFrame_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>time at which to start pause </para>
-		/// </summary>
-		public float PauseDelay
-		{
-			get => E_PROP_UWorld_PauseDelay_GET(NativePointer);
-			set => E_PROP_UWorld_PauseDelay_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Counter for allocating game- unique controller player numbers </para>
-		/// </summary>
-		public int PlayerNum
-		{
-			get => E_PROP_UWorld_PlayerNum_GET(NativePointer);
-			set => E_PROP_UWorld_PlayerNum_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time in seconds since level began play, but IS NOT paused when the game is paused, and IS NOT dilated/clamped. </para>
-		/// </summary>
-		public float RealTimeSeconds
-		{
-			get => E_PROP_UWorld_RealTimeSeconds_GET(NativePointer);
-			set => E_PROP_UWorld_RealTimeSeconds_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Number of frames to delay Streaming Volume updating, useful if you preload a bunch of levels but the camera hasn't caught up yet (INDEX_NONE for infinite) </para>
-		/// </summary>
-		public int StreamingVolumeUpdateDelay
-		{
-			get => E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(NativePointer);
-			set => E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The current ticking group </para>
-		/// </summary>
-		public ETickingGroup TickGroup
-		{
-			get => (ETickingGroup)E_PROP_UWorld_TickGroup_GET(NativePointer);
-			set => E_PROP_UWorld_TickGroup_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time in seconds since level began play, but IS paused when the game is paused, and IS dilated/clamped. </para>
-		/// </summary>
-		public float TimeSeconds
-		{
-			get => E_PROP_UWorld_TimeSeconds_GET(NativePointer);
-			set => E_PROP_UWorld_TimeSeconds_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time in seconds (game time so we respect time dilation) since the last time we purged references to pending kill objects </para>
-		/// </summary>
-		public float TimeSinceLastPendingKillPurge
-		{
-			get => E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(NativePointer);
-			set => E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Time in seconds since level began play, but IS NOT paused when the game is paused, and IS dilated/clamped. </para>
-		/// </summary>
-		public float UnpausedTimeSeconds
-		{
-			get => E_PROP_UWorld_UnpausedTimeSeconds_GET(NativePointer);
-			set => E_PROP_UWorld_UnpausedTimeSeconds_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The URL that was used when loading this World. </para>
-		/// </summary>
-		public FURL URL
-		{
-			get => E_PROP_UWorld_URL_GET(NativePointer);
-			set => E_PROP_UWorld_URL_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods
@@ -1067,6 +530,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Requests a one frame delay of Garbage Collection </para>
+		/// </summary>
+		public void DelayGarbageCollection()
+			=> E_UWorld_DelayGarbageCollection(this);
+		
+		
+		/// <summary>
 		/// <para>Sets the number of frames to delay Streaming Volume updating, </para>
 		/// <para>useful if you preload a bunch of levels but the camera hasn't caught up yet </para>
 		/// </summary>
@@ -1093,6 +563,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void DestroyDemoNetDriver()
 			=> E_UWorld_DestroyDemoNetDriver(this);
+		
+		
+		/// <summary>
+		/// <para>Destroy this World instance. If destroying the world to load a different world, supply it here to prevent GC of the new world or it's sublevels. </para>
+		/// </summary>
+		public void DestroyWorld(bool bInformEngineOfWorld, UWorld NewWorld = null)
+			=> E_UWorld_DestroyWorld(this, bInformEngineOfWorld, NewWorld);
 		
 		
 		/// <summary>
@@ -1250,6 +727,13 @@ namespace UnrealEngine
 		/// </summary>
 		public float GetRealTimeSeconds()
 			=> E_UWorld_GetRealTimeSeconds(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the current desired time between garbage collection passes (not the time remaining) </para>
+		/// </summary>
+		public float GetTimeBetweenGarbageCollectionPasses()
+			=> E_UWorld_GetTimeBetweenGarbageCollectionPasses(this);
 		
 		
 		/// <summary>
@@ -1451,6 +935,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Marks all objects that have this World as an Outer as pending kill </para>
+		/// </summary>
+		public void MarkObjectsPendingKill()
+			=> E_UWorld_MarkObjectsPendingKill(this);
+		
+		
+		/// <summary>
+		/// <para>Interface to allow WorldSettings to request immediate garbage collection </para>
+		/// </summary>
+		public void PerformGarbageCollectionAndCleanupActors()
+			=> E_UWorld_PerformGarbageCollectionAndCleanupActors(this);
+		
+		
+		/// <summary>
 		/// <para>Issues level streaming load/unload requests based on whether </para>
 		/// <para>local players are inside/outside level streaming volumes. </para>
 		/// <param name="OverrideViewLocation">Optional position used to override the location used to calculate current streaming volumes </param>
@@ -1563,6 +1061,15 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetShouldTick(bool bInShouldTick)
 			=> E_UWorld_SetShouldTick(this, bInShouldTick);
+		
+		
+		/// <summary>
+		/// <para>Updates the timer (as a one-off) that is used to trigger garbage collection; this should only be used for things </para>
+		/// <para>like performance tests, using it recklessly can dramatically increase memory usage and cost of the eventual GC. </para>
+		/// <para>Note: Things that force a GC will still force a GC after using this method (and they will also reset the timer) </para>
+		/// </summary>
+		public void SetTimeUntilNextGarbageCollection(float MinTimeUntilNextPass)
+			=> E_UWorld_SetTimeUntilNextGarbageCollection(this, MinTimeUntilNextPass);
 		
 		
 		/// <summary>

@@ -18,24 +18,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FActorComponentTickFunction();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_PROP_FActorComponentTickFunction_Target_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FActorComponentTickFunction_Target_SET(IntPtr Ptr, IntPtr Value);
-		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>AActor  component that is the target of this tick </para>
-		/// </summary>
-		public UActorComponent Target
-		{
-			get => E_PROP_FActorComponentTickFunction_Target_GET(NativePointer);
-			set => E_PROP_FActorComponentTickFunction_Target_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FActorComponentTickFunction Self)

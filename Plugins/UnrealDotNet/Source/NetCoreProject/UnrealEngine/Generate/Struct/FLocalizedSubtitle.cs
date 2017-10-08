@@ -18,20 +18,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLocalizedSubtitle();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FLocalizedSubtitle_LanguageExt_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLocalizedSubtitle_LanguageExt_SET(IntPtr Ptr, string Value);
-		
-		#endregion
-		
-		#region Property
-		public string LanguageExt
-		{
-			get => E_PROP_FLocalizedSubtitle_LanguageExt_GET(NativePointer);
-			set => E_PROP_FLocalizedSubtitle_LanguageExt_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FLocalizedSubtitle Self)

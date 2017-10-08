@@ -47,36 +47,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(IntPtr InActor, IntPtr InComponent, IntPtr HitLoc, IntPtr HitNorm);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FHitResult_BoneName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_BoneName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FHitResult_Distance_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_Distance_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_FHitResult_FaceIndex_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_FaceIndex_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_FHitResult_Item_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_Item_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FHitResult_PenetrationDepth_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_PenetrationDepth_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FHitResult_Time_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FHitResult_Time_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_FHitResult_GetActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -94,45 +64,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FHitResult_ToString(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		public string BoneName
-		{
-			get => E_PROP_FHitResult_BoneName_GET(NativePointer);
-			set => E_PROP_FHitResult_BoneName_SET(NativePointer, value);
-		}
-
-		public float Distance
-		{
-			get => E_PROP_FHitResult_Distance_GET(NativePointer);
-			set => E_PROP_FHitResult_Distance_SET(NativePointer, value);
-		}
-
-		public int FaceIndex
-		{
-			get => E_PROP_FHitResult_FaceIndex_GET(NativePointer);
-			set => E_PROP_FHitResult_FaceIndex_SET(NativePointer, value);
-		}
-
-		public int Item
-		{
-			get => E_PROP_FHitResult_Item_GET(NativePointer);
-			set => E_PROP_FHitResult_Item_SET(NativePointer, value);
-		}
-
-		public float PenetrationDepth
-		{
-			get => E_PROP_FHitResult_PenetrationDepth_GET(NativePointer);
-			set => E_PROP_FHitResult_PenetrationDepth_SET(NativePointer, value);
-		}
-
-		public float Time
-		{
-			get => E_PROP_FHitResult_Time_GET(NativePointer);
-			set => E_PROP_FHitResult_Time_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

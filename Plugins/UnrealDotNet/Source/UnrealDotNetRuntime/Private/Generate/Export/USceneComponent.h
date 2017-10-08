@@ -78,24 +78,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentToWorld_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentToWorld); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentToWorld = *(FTransform*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentVelocity_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentVelocity); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentVelocity = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeLocation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeLocation); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeLocation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeLocation = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeRotation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeRotation); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeRotation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeRotation = *(FRotator*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeScale3D_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeScale3D); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeScale3D = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeTranslation_DEPRECATED); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)
 	{

@@ -27,6 +27,12 @@ public:
 	
 	virtual void ClearCrossLevelReferences() override;
 	
+	virtual void Destroyed() override;
+	
+	virtual void ForceNetRelevant() override;
+	
+	virtual void ForceNetUpdate() override;
+	
 	virtual void GatherCurrentMovement() override;
 	
 	virtual void InvalidateLightingCacheDetailed(bool bTranslationOnly) override;
@@ -63,6 +69,8 @@ public:
 	
 	virtual void OnSubobjectDestroyFromReplication(UObject* Subobject) override;
 	
+	virtual void OutsideWorldBounds() override;
+	
 	virtual void PostActorCreated() override;
 	
 	virtual void PostInitializeComponents() override;
@@ -83,6 +91,8 @@ public:
 	
 	virtual void PreInitializeComponents() override;
 	
+	virtual void PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups) override;
+	
 	virtual void RegisterAllComponents() override;
 	
 	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
@@ -92,6 +102,8 @@ public:
 	virtual void ReregisterAllComponents() override;
 	
 	virtual void RerunConstructionScripts() override;
+	
+	virtual void Reset() override;
 	
 	virtual void SetActorHiddenInGame(bool bNewHidden) override;
 	
@@ -107,6 +119,8 @@ public:
 	
 	virtual void Tick(float DeltaSeconds) override;
 	
+	virtual void TornOff() override;
+	
 	virtual void UnregisterAllComponents(bool bForReregister) override;
 	
 protected:
@@ -114,6 +128,8 @@ protected:
 	virtual void BeginPlay() override;
 	
 	virtual void OnRep_Owner() override;
+	
+	virtual void RegisterActorTickFunctions(bool bRegister) override;
 	
 }
 ;

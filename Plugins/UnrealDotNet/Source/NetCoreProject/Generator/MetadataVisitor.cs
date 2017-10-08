@@ -1,8 +1,8 @@
-﻿using System;
-using Generator.Metadata;
+﻿using Generator.Metadata;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Concurrent;
 using static UHeaderParser;
 using Delegate = Generator.Metadata.Delegate;
 using Enum = Generator.Metadata.Enum;
@@ -21,8 +21,11 @@ namespace Generator
         private Enum CurrentEnum;
         private string CurrentFile;
         private string CurrentComment;
-        private bool Ignore;
+        private bool Ignore_OfPragma;
+        private bool Ignore_OfAccessModifier;
         private int PreprocessorIfCount;
+
+        private bool Ignore => Ignore_OfPragma || Ignore_OfAccessModifier;
 
         public MetadataVisitor(ConcurrentDictionary<string, Type> types)
         {
@@ -32,8 +35,15 @@ namespace Generator
         public void Append(TranslationUnitContext Translationunit, string file)
         {
             PreprocessorIfCount = 0;
+            Ignore_OfAccessModifier = false;
+            Ignore_OfPragma = false;
             CurrentComment = "";
             CurrentFile = file;
+
+            CurrentDelegateVariable = null;
+            CurrentDelegate = null;
+            CurrentClass = null;
+            CurrentEnum = null;
 
             Visit(Translationunit);
         }
@@ -67,22 +77,61 @@ namespace Generator
             return (Delegate)Types.GetOrAdd(name, new Delegate(name));
         }
 
+        private T Get<T>(string name) where T : Type
+        {
+            if (Types.TryGetValue(name, out var val))
+            {
+                if (val is T)
+                    return (T)val;
+
+                // todo: заменить все ссылки на удаляемый обьект
+                var def = (T)Activator.CreateInstance(typeof(T), name);
+                Types.Remove(name, out _);
+                Types.TryAdd(name, def);
+                return def;
+            }
+
+            return (T)Activator.CreateInstance(typeof(T), name);
+        }
+
         public override object VisitClassDeclaration(ClassDeclarationContext context)
         {
+            if (Ignore_OfPragma)
+                return null;
+
             var NamespaceBaseClass = CurrentClass;
 
             CurrentClass = GetClass(context.ChildText<ClassNameContext>());
 
+            var isStructReal = context.classOrStruct().GetText() == "struct";
+
             CurrentClass.SourceFile = CurrentFile;
             CurrentClass.IsImplemented = true;
-            CurrentClass.IsStructure = CurrentClass.Name.First() == 'F';
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
             CurrentClass.IsFinal = context.FoundChild<IsFinalContext>();
             CurrentClass.UMeta = CurrentUMeta ?? CurrentClass.UMeta;
             CurrentClass.Description = CurrentComment;
 
-            AccessModifier = CurrentClass.IsStructure ? AccessModifier.Public : AccessModifier.Private;
-            Ignore = AccessModifier == AccessModifier.Private;
+            switch (CurrentClass.Name.First())
+            {
+                case 'U':
+                    CurrentClass.IsStructure = false;
+                    break;
+
+                case 'F':
+                    CurrentClass.IsStructure = true;
+                    break;
+
+                default:
+                    CurrentClass.IsStructure = isStructReal;
+                    break;
+            }
+
+            AccessModifier = isStructReal
+                ? AccessModifier.Public
+                : AccessModifier.Private;
+
+            Ignore_OfAccessModifier = AccessModifier == AccessModifier.Private;
 
             var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
             if (parentClassName != null)
@@ -103,6 +152,9 @@ namespace Generator
 
         public override object VisitEnumDeclaration(EnumDeclarationContext context)
         {
+            if (Ignore_OfPragma)
+                return null;
+
             var name = context.enumName()?.GetText();
 
             if (string.IsNullOrEmpty(name))
@@ -199,6 +251,9 @@ namespace Generator
             if (Ignore || CurrentClass == null)
                 return null;
 
+            if (context.isDestructor() != null)
+                return null;
+
             var name = context.methodName().GetText();
 
             if (name == CurrentClass.Name)
@@ -228,7 +283,10 @@ namespace Generator
 
         public override object VisitUDefine(UDefineContext context)
         {
-            var name = context.uDefineName().GetText(); 
+            if (Ignore_OfPragma)
+                return null;
+
+            var name = context.uDefineName().GetText();
 
             if (name.StartsWith("DECLARE_DYNAMIC_MULTICAST_DELEGATE"))
             {
@@ -293,7 +351,7 @@ namespace Generator
 
         private void ParceDelegateKey(UMetaParametrContext context)
         {
-            if(CurrentDelegate ==null)
+            if (CurrentDelegate == null)
                 return;
 
             if (CurrentDelegateVariable == null)
@@ -335,7 +393,7 @@ namespace Generator
                 {
                     variable = new ClassVariable((Class)type);
                 }
-                else if(type is Delegate)
+                else if (type is Delegate)
                 {
                     variable = new DelegateVariable((Delegate)type);
                 }
@@ -359,18 +417,18 @@ namespace Generator
             {
                 if (text.StartsWith("#if WITH_EDITOR"))
                 {
-                    Ignore = true;
+                    Ignore_OfPragma = true;
                 }
 
-                if (Ignore)
+                if (Ignore_OfPragma)
                     PreprocessorIfCount++;
             }
-            else if (text.StartsWith("#endif") && Ignore)
+            else if (text.StartsWith("#endif") && Ignore_OfPragma)
             {
                 PreprocessorIfCount--;
                 if (PreprocessorIfCount == 0)
                 {
-                    Ignore = AccessModifier == AccessModifier.Private;
+                    Ignore_OfPragma = false;
                 }
             }
 
@@ -382,7 +440,7 @@ namespace Generator
             System.Enum.TryParse(typeof(AccessModifier), context.GetText(), true, out var result);
             AccessModifier = (AccessModifier)result;
 
-            Ignore = AccessModifier == AccessModifier.Private || PreprocessorIfCount != 0;
+            Ignore_OfAccessModifier = AccessModifier == AccessModifier.Private;
 
             return null;
         }

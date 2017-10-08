@@ -83,35 +83,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_UActorComponent_CreationMethod_GET(UActorComponent* Ptr) { return Ptr->CreationMethod; }
-	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(UActorComponent* Ptr, EComponentCreationMethod Value) { Ptr->CreationMethod = Value; }
-	
-	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
-	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
-		wrapper->ManageDelegateName = "InvokeEvent_OnComponentActivated";
-		wrapper->SourceObject = Obj;
-		Obj->OnComponentActivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentActivatedSignature);
-	}
-
-	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentActivated(UActorComponent* Obj)
-	{
-	}
-
-	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
-	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
-		wrapper->ManageDelegateName = "InvokeEvent_OnComponentDeactivated";
-		wrapper->SourceObject = Obj;
-		Obj->OnComponentDeactivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentDeactivateSignature);
-	}
-
-	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
-	{
-	}
-
-	DOTNET_EXPORT auto E_PROP_UActorComponent_PrimaryComponentTick_GET(UActorComponent* Ptr) { return (INT_PTR)&(Ptr->PrimaryComponentTick); }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UActorComponent(UObject* Parent, char* Name)
 	{

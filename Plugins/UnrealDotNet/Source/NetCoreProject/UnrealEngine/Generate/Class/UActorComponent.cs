@@ -22,26 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UActorComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_ADD_UActorComponent_OnComponentActivated(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_DEL_UActorComponent_OnComponentActivated(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_DEL_UActorComponent_OnComponentDeactivated(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_Activate(IntPtr Self, bool bReset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -329,73 +309,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_UpdateComponentToWorld(IntPtr Self, byte UpdateTransformFlags, byte Teleport);
 		
-		#endregion
-		
-		#region Property
-		public EComponentCreationMethod CreationMethod
-		{
-			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
-			set => E_PROP_UActorComponent_CreationMethod_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Main tick function for the Actor </para>
-		/// </summary>
-		public FActorComponentTickFunction PrimaryComponentTick
-		{
-			get => E_PROP_UActorComponent_PrimaryComponentTick_GET(NativePointer);
-		}
-
-		#endregion
-		
-		#region Events
-		public event FActorComponentActivatedSignature OnComponentActivated
-		{
-			add
-			{
-				E_EVENT_ADD_UActorComponent_OnComponentActivated(NativePointer);
-				_Event_OnComponentActivated += value;
-			}
-
-			remove
-			{
-				E_EVENT_DEL_UActorComponent_OnComponentActivated(NativePointer);
-				_Event_OnComponentActivated -= value;
-			}
-
-		}
-
-		private event FActorComponentActivatedSignature _Event_OnComponentActivated;
-		
-		internal void InvokeEvent_OnComponentActivated(ObjectPointerDescription Component, bool bReset)
-		{
-			_Event_OnComponentActivated?.Invoke(Component, bReset);
-		}
-
-		public event FActorComponentDeactivateSignature OnComponentDeactivated
-		{
-			add
-			{
-				E_EVENT_ADD_UActorComponent_OnComponentDeactivated(NativePointer);
-				_Event_OnComponentDeactivated += value;
-			}
-
-			remove
-			{
-				E_EVENT_DEL_UActorComponent_OnComponentDeactivated(NativePointer);
-				_Event_OnComponentDeactivated -= value;
-			}
-
-		}
-
-		private event FActorComponentDeactivateSignature _Event_OnComponentDeactivated;
-		
-		internal void InvokeEvent_OnComponentDeactivated(ObjectPointerDescription Component)
-		{
-			_Event_OnComponentDeactivated?.Invoke(Component);
-		}
-
 		#endregion
 		
 		#region ExternMethods

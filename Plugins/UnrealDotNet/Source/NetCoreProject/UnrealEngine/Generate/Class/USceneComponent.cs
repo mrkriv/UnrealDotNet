@@ -22,36 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USceneComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_ComponentToWorld_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_ComponentToWorld_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_ComponentVelocity_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_ComponentVelocity_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_RelativeLocation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_RelativeLocation_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_RelativeRotation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_RelativeRotation_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_RelativeScale3D_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_RelativeScale3D_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_AddLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -372,62 +342,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_UpdatePhysicsVolume(IntPtr Self, bool bTriggerNotifiers);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Current transform of the component, relative to the world </para>
-		/// </summary>
-		public FTransform ComponentToWorld
-		{
-			get => E_PROP_USceneComponent_ComponentToWorld_GET(NativePointer);
-			set => E_PROP_USceneComponent_ComponentToWorld_SET(NativePointer, value);
-		}
-
-		public FVector ComponentVelocity
-		{
-			get => E_PROP_USceneComponent_ComponentVelocity_GET(NativePointer);
-			set => E_PROP_USceneComponent_ComponentVelocity_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Location of the component relative to its parent </para>
-		/// </summary>
-		public FVector RelativeLocation
-		{
-			get => E_PROP_USceneComponent_RelativeLocation_GET(NativePointer);
-			set => E_PROP_USceneComponent_RelativeLocation_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Rotation of the component relative to its parent </para>
-		/// </summary>
-		public FRotator RelativeRotation
-		{
-			get => E_PROP_USceneComponent_RelativeRotation_GET(NativePointer);
-			set => E_PROP_USceneComponent_RelativeRotation_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Non-uniform scaling of the component relative to its parent. </para>
-		/// <para>Note that scaling is always applied in local space (no shearing etc) </para>
-		/// </summary>
-		public FVector RelativeScale3D
-		{
-			get => E_PROP_USceneComponent_RelativeScale3D_GET(NativePointer);
-			set => E_PROP_USceneComponent_RelativeScale3D_SET(NativePointer, value);
-		}
-
-		public FVector RelativeTranslation_DEPRECATED
-		{
-			get => E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(NativePointer);
-			set => E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

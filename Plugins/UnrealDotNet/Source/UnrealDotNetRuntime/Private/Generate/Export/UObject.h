@@ -8,6 +8,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_UObject : protected UObject
 {
 public:
+	bool CanCheckDefaultSubObjects_WRAP(bool bForceCheck, bool& bResult)
+	{
+		return CanCheckDefaultSubObjects(bForceCheck, bResult);
+	}
+
+	bool CheckDefaultSubobjectsInternal_WRAP()
+	{
+		return CheckDefaultSubobjectsInternal();
+	}
+
 	FString GetDetailedInfoInternal_WRAP()
 	{
 		return GetDetailedInfoInternal();
@@ -35,6 +45,13 @@ extern "C"
 		Self->BeginDestroy();
 	}
 
+	DOTNET_EXPORT auto E_UObject_CanCheckDefaultSubObjects(UObject* Self, bool bForceCheck, bool bResult)
+	{
+		auto _p0 = bForceCheck;
+		auto _p1 = bResult;
+		return ((E_PROTECTED_WRAP_UObject*)Self)->CanCheckDefaultSubObjects_WRAP(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UObject_CanCreateInCurrentContext(UObject* Self, UObject* Template)
 	{
 		auto _p0 = Template;
@@ -46,9 +63,56 @@ extern "C"
 		return Self->CanModify();
 	}
 
+	DOTNET_EXPORT auto E_UObject_CheckDefaultSubobjects(UObject* Self, bool bForceCheck)
+	{
+		auto _p0 = bForceCheck;
+		return Self->CheckDefaultSubobjects(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UObject_CheckDefaultSubobjectsInternal(UObject* Self)
+	{
+		return ((E_PROTECTED_WRAP_UObject*)Self)->CheckDefaultSubobjectsInternal_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UObject_ConditionalBeginDestroy(UObject* Self)
+	{
+		return Self->ConditionalBeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UObject_ConditionalFinishDestroy(UObject* Self)
+	{
+		return Self->ConditionalFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UObject_ConditionalPostLoad(UObject* Self)
+	{
+		Self->ConditionalPostLoad();
+	}
+
+	DOTNET_EXPORT auto E_UObject_DestroyNonNativeProperties(UObject* Self)
+	{
+		Self->DestroyNonNativeProperties();
+	}
+
+	DOTNET_EXPORT auto E_UObject_ExecuteUbergraph(UObject* Self, int32 EntryPoint)
+	{
+		auto _p0 = EntryPoint;
+		Self->ExecuteUbergraph(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_FinishDestroy(UObject* Self)
 	{
 		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetArchetype(UObject* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetArchetype());
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetDefaultConfigFilename(UObject* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDefaultConfigFilename());
 	}
 
 	DOTNET_EXPORT auto E_UObject_GetDesc(UObject* Self)
@@ -56,9 +120,19 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetDesc());
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetDetailedInfo(UObject* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfo());
+	}
+
 	DOTNET_EXPORT auto E_UObject_GetDetailedInfoInternal(UObject* Self)
 	{
 		return ConvertToManage_StringWrapper(((E_PROTECTED_WRAP_UObject*)Self)->GetDetailedInfoInternal_WRAP());
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetGlobalUserConfigFilename(UObject* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetGlobalUserConfigFilename());
 	}
 
 	DOTNET_EXPORT auto E_UObject_GetWorld(UObject* Self)
@@ -82,6 +156,12 @@ extern "C"
 		return Self->IsAsset();
 	}
 
+	DOTNET_EXPORT auto E_UObject_IsBasedOnArchetype(UObject* Self, UObject* SomeObject)
+	{
+		auto _p0 = SomeObject;
+		return Self->IsBasedOnArchetype(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_IsEditorOnly(UObject* Self)
 	{
 		return Self->IsEditorOnly();
@@ -90,6 +170,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_IsFullNameStableForNetworking(UObject* Self)
 	{
 		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UObject_IsInBlueprint(UObject* Self)
+	{
+		return Self->IsInBlueprint();
 	}
 
 	DOTNET_EXPORT auto E_UObject_IsLocalizedResource(UObject* Self)
@@ -125,6 +210,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_IsSupportedForNetworking(UObject* Self)
 	{
 		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UObject_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
 	}
 
 	DOTNET_EXPORT auto E_UObject_Modify(UObject* Self, bool bAlwaysMarkDirty)
@@ -204,6 +294,17 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_ShutdownAfterError(UObject* Self)
 	{
 		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UObject_UpdateDefaultConfigFile(UObject* Self, char* SpecificFileLocation)
+	{
+		auto _p0 = ConvertFromManage_FString(SpecificFileLocation);
+		Self->UpdateDefaultConfigFile(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UObject_UpdateGlobalUserConfigFile(UObject* Self)
+	{
+		Self->UpdateGlobalUserConfigFile();
 	}
 
 }

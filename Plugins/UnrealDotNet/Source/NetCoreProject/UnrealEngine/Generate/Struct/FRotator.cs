@@ -64,21 +64,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRotator_FQuat(IntPtr Quat);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRotator_Pitch_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRotator_Pitch_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRotator_Roll_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRotator_Roll_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FRotator_Yaw_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRotator_Yaw_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_Add(IntPtr Self, float DeltaPitch, float DeltaYaw, float DeltaRoll);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -150,39 +135,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_Vector(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down) </para>
-		/// </summary>
-		public float Pitch
-		{
-			get => E_PROP_FRotator_Pitch_GET(NativePointer);
-			set => E_PROP_FRotator_Pitch_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW. </para>
-		/// </summary>
-		public float Roll
-		{
-			get => E_PROP_FRotator_Roll_GET(NativePointer);
-			set => E_PROP_FRotator_Roll_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South. </para>
-		/// </summary>
-		public float Yaw
-		{
-			get => E_PROP_FRotator_Yaw_GET(NativePointer);
-			set => E_PROP_FRotator_Yaw_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

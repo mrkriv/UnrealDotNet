@@ -79,26 +79,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FQuat_FVector_float(IntPtr Axis, float AngleRad);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FQuat_W_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FQuat_W_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FQuat_X_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FQuat_X_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FQuat_Y_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FQuat_Y_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FQuat_Z_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FQuat_Z_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FQuat_AngularDistance(IntPtr Self, IntPtr Q);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -227,49 +207,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FQuat_Vector(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The quaternion's W-component. </para>
-		/// </summary>
-		public float W
-		{
-			get => E_PROP_FQuat_W_GET(NativePointer);
-			set => E_PROP_FQuat_W_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The quaternion's X-component. </para>
-		/// </summary>
-		public float X
-		{
-			get => E_PROP_FQuat_X_GET(NativePointer);
-			set => E_PROP_FQuat_X_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The quaternion's Y-component. </para>
-		/// </summary>
-		public float Y
-		{
-			get => E_PROP_FQuat_Y_GET(NativePointer);
-			set => E_PROP_FQuat_Y_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The quaternion's Z-component. </para>
-		/// </summary>
-		public float Z
-		{
-			get => E_PROP_FQuat_Z_GET(NativePointer);
-			set => E_PROP_FQuat_Z_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

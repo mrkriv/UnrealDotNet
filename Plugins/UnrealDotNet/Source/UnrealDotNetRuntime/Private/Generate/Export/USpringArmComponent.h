@@ -23,9 +23,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(USpringArmComponent* Ptr) { return Ptr->bUseControllerViewRotation; }
-	DOTNET_EXPORT void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(USpringArmComponent* Ptr, bool Value) { Ptr->bUseControllerViewRotation = Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USpringArmComponent(UObject* Parent, char* Name)
 	{

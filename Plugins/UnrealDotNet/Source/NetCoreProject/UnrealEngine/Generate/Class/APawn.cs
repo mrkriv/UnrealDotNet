@@ -22,26 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_APawn(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_APawn_AllowedYawError_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_AllowedYawError_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_APawn_AutoPossessAI_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_AutoPossessAI_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_APawn_BaseEyeHeight_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_AddControllerPitchInput(IntPtr Self, float Val);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -197,47 +177,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_UpdateNavigationRelevance(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Max difference between pawn's Rotation.Yaw and GetDesiredRotation().Yaw for pawn to be considered as having reached its desired rotation </para>
-		/// </summary>
-		public float AllowedYawError
-		{
-			get => E_PROP_APawn_AllowedYawError_GET(NativePointer);
-			set => E_PROP_APawn_AllowedYawError_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Determines when the Pawn creates and is possessed by an AI Controller (on level start, when spawned, etc). </para>
-		/// <para>Only possible if AIControllerClass is set, and ignored if AutoPossessPlayer is enabled. </para>
-		/// <para>@see AutoPossessPlayer </para>
-		/// </summary>
-		public EAutoPossessAI AutoPossessAI
-		{
-			get => (EAutoPossessAI)E_PROP_APawn_AutoPossessAI_GET(NativePointer);
-			set => E_PROP_APawn_AutoPossessAI_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Base eye height above collision center. </para>
-		/// </summary>
-		public float BaseEyeHeight
-		{
-			get => E_PROP_APawn_BaseEyeHeight_GET(NativePointer);
-			set => E_PROP_APawn_BaseEyeHeight_SET(NativePointer, value);
-		}
-
-		public byte RemoteViewPitch
-		{
-			get => E_PROP_APawn_RemoteViewPitch_GET(NativePointer);
-			set => E_PROP_APawn_RemoteViewPitch_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

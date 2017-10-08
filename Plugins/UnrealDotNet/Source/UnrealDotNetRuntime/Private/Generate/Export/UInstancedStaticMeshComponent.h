@@ -7,9 +7,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_UInstancedStaticMeshComponent_bPerInstanceRenderDataWasPrebuilt_GET(UInstancedStaticMeshComponent* Ptr) { return Ptr->bPerInstanceRenderDataWasPrebuilt; }
-	DOTNET_EXPORT void E_PROP_UInstancedStaticMeshComponent_bPerInstanceRenderDataWasPrebuilt_SET(UInstancedStaticMeshComponent* Ptr, bool Value) { Ptr->bPerInstanceRenderDataWasPrebuilt = Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UInstancedStaticMeshComponent(UObject* Parent, char* Name)
 	{

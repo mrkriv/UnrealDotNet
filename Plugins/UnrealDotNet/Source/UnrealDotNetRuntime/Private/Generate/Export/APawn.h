@@ -18,18 +18,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_APawn_AllowedYawError_GET(APawn* Ptr) { return Ptr->AllowedYawError; }
-	DOTNET_EXPORT void E_PROP_APawn_AllowedYawError_SET(APawn* Ptr, float Value) { Ptr->AllowedYawError = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_APawn_AutoPossessAI_GET(APawn* Ptr) { return Ptr->AutoPossessAI; }
-	DOTNET_EXPORT void E_PROP_APawn_AutoPossessAI_SET(APawn* Ptr, EAutoPossessAI Value) { Ptr->AutoPossessAI = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_APawn_BaseEyeHeight_GET(APawn* Ptr) { return Ptr->BaseEyeHeight; }
-	DOTNET_EXPORT void E_PROP_APawn_BaseEyeHeight_SET(APawn* Ptr, float Value) { Ptr->BaseEyeHeight = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_APawn_RemoteViewPitch_GET(APawn* Ptr) { return Ptr->RemoteViewPitch; }
-	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(APawn* Ptr, uint8 Value) { Ptr->RemoteViewPitch = Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_APawn(UObject* Parent, char* Name)
 	{

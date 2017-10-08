@@ -18,24 +18,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDirectoryPath();
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FDirectoryPath_Path_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDirectoryPath_Path_SET(IntPtr Ptr, string Value);
-		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The path to the directory. </para>
-		/// </summary>
-		public string Path
-		{
-			get => E_PROP_FDirectoryPath_Path_GET(NativePointer);
-			set => E_PROP_FDirectoryPath_Path_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FDirectoryPath Self)

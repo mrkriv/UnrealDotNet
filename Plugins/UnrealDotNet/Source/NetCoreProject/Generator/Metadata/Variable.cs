@@ -132,6 +132,9 @@ namespace Generator.Metadata
                 case "int32":
                     return "int";
 
+                case "int16":
+                    return "short";
+
                 case "uint32":
                     return "uint";
 
