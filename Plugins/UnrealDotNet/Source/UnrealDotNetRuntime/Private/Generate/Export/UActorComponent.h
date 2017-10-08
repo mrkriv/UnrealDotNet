@@ -236,6 +236,11 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetOwner());
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_GetOwnerRole(UActorComponent* Self)
+	{
+		return Self->GetOwnerRole();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_GetReadableName(UActorComponent* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetReadableName());
@@ -617,6 +622,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_UnregisterComponent(UActorComponent* Self)
 	{
 		Self->UnregisterComponent();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_UpdateComponentToWorld(UActorComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+	{
+		auto _p0 = UpdateTransformFlags;
+		auto _p1 = Teleport;
+		Self->UpdateComponentToWorld(_p0, _p1);
 	}
 
 }

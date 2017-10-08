@@ -64,6 +64,18 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ACharacter_JumpMaxHoldTime_GET(ACharacter* Ptr) { return Ptr->JumpMaxHoldTime; }
 	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxHoldTime_SET(ACharacter* Ptr, float Value) { Ptr->JumpMaxHoldTime = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_LandedDelegate(ACharacter* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_LandedDelegate";
+		wrapper->SourceObject = Obj;
+		Obj->LandedDelegate.AddDynamic(wrapper, &UManageEventSender::Wrapper_FLandedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_ACharacter_LandedDelegate(ACharacter* Obj)
+	{
+	}
+
 	DOTNET_EXPORT auto E_PROP_ACharacter_MeshComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->MeshComponentName); }
 	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->MeshComponentName = ConvertFromManage_FName(Value); }
 	
@@ -110,6 +122,15 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<ACharacter>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ApplyDamageMomentum(ACharacter* Self, float DamageTaken, INT_PTR DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = DamageTaken;
+		auto _p1 = *(FDamageEvent*)DamageEvent;
+		auto _p2 = PawnInstigator;
+		auto _p3 = DamageCauser;
+		Self->ApplyDamageMomentum(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_BaseChange(ACharacter* Self)
@@ -306,6 +327,12 @@ extern "C"
 		Self->K2_UpdateCustomMovement(_p0);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_Landed(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		Self->Landed(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_LaunchCharacter(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
 	{
 		auto _p0 = *(FVector*)LaunchVelocity;
@@ -314,9 +341,21 @@ extern "C"
 		Self->LaunchCharacter(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_MoveBlockedBy(ACharacter* Self, INT_PTR Impact)
+	{
+		auto _p0 = *(FHitResult*)Impact;
+		Self->MoveBlockedBy(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_NotifyJumpApex(ACharacter* Self)
 	{
 		Self->NotifyJumpApex();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_NotifyLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		return Self->NotifyLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
@@ -334,6 +373,12 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_OnJumped_Implementation(ACharacter* Self)
 	{
 		Self->OnJumped_Implementation();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_OnLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		Self->OnLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnLaunched(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
@@ -423,6 +468,12 @@ extern "C"
 		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bNotifyActor;
 		Self->SetBase(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ShouldNotifyLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		return Self->ShouldNotifyLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_SimulatedRootMotionPositionFixup(ACharacter* Self, float DeltaSeconds)

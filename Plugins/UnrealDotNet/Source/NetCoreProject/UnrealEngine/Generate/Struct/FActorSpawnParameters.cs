@@ -34,6 +34,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Owner_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, IntPtr Value);
@@ -60,6 +65,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FActorSpawnParameters_Owner_GET(NativePointer);
 			set => E_PROP_FActorSpawnParameters_Owner_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Method for resolving collisions at the spawn point. Undefined means no override, use the actor's setting. </para>
+		/// </summary>
+		public ESpawnActorCollisionHandlingMethod SpawnCollisionHandlingOverride
+		{
+			get => (ESpawnActorCollisionHandlingMethod)E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_GET(NativePointer);
+			set => E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_SET(NativePointer, (byte)value);
 		}
 
 		public AActor Template

@@ -34,7 +34,6 @@ typePreDeclaration
 	| isFriend classOrStructOrEnum? className ';'
 ;
 
-
 /* Class */
 
 classDeclaration
@@ -80,6 +79,7 @@ classBody
 	| classDeclaration
 	| enumDeclaration
 	| typePreDeclaration
+	| unionDeclaration
 	| comment
 	| preprocessDerective)*
 ;
@@ -109,13 +109,17 @@ enumElementList
 	;
 
 enumElement
-	: comment? enumElementName ( ('=' | DotDot) propertyDefaultValue )? uDefine?
+	: comment* enumElementName ( ('=' | DotDot) propertyDefaultValue )? uDefine?
 	;
 
 enumElementName
 	: Identifier
 	;
 
+/* Union */
+unionDeclaration
+	: Union methodBody ';'?	// skip union
+;
 
 /* typeDefine */
 
@@ -403,6 +407,10 @@ Struct
 
 Enum
 	: 'enum'
+;
+
+Union
+	: 'union'
 ;
 
 Const

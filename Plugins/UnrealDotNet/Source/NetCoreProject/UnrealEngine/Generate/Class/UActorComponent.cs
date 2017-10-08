@@ -108,6 +108,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_UActorComponent_GetOwnerRole(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UActorComponent_GetReadableName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -322,6 +325,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_UnregisterComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UActorComponent_UpdateComponentToWorld(IntPtr Self, byte UpdateTransformFlags, byte Teleport);
 		
 		#endregion
 		
@@ -550,6 +556,13 @@ namespace UnrealEngine
 		/// </summary>
 		public AActor GetOwner()
 			=> E_UActorComponent_GetOwner(this);
+		
+		
+		/// <summary>
+		/// <para>Get the network role of the Owner, or ROLE_None if there is no owner. </para>
+		/// </summary>
+		public ENetRole GetOwnerRole()
+			=> (ENetRole)E_UActorComponent_GetOwnerRole(this);
 		
 		
 		/// <summary>
@@ -1045,6 +1058,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void UnregisterComponent()
 			=> E_UActorComponent_UnregisterComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Recalculate the value of our component to world transform </para>
+		/// </summary>
+		public virtual void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+			=> E_UActorComponent_UpdateComponentToWorld(this, (byte)UpdateTransformFlags, (byte)Teleport);
 		
 		#endregion
 		

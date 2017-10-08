@@ -45,6 +45,8 @@ public:
 	
 	virtual void NotifyActorEndOverlap(AActor* OtherActor) override;
 	
+	virtual void NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
+	
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
 	virtual void OnRep_AttachmentReplication() override;

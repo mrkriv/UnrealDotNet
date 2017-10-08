@@ -59,6 +59,8 @@ public:
 	
 	virtual void UninitializeComponent() override;
 	
+	virtual void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) override;
+	
 protected:
 	
 	virtual void CreateRenderState_Concurrent() override;

@@ -31,6 +31,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_GameCycles_GET(UEngine* Ptr) { return Ptr->GameCycles; }
 	DOTNET_EXPORT void E_PROP_UEngine_GameCycles_SET(UEngine* Ptr, int32 Value) { Ptr->GameCycles = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_GameScreenshotSaveDirectory_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->GameScreenshotSaveDirectory); }
+	DOTNET_EXPORT void E_PROP_UEngine_GameScreenshotSaveDirectory_SET(UEngine* Ptr, INT_PTR Value) { Ptr->GameScreenshotSaveDirectory = *(FDirectoryPath*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_GameSingleton_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameSingleton); }
 	DOTNET_EXPORT void E_PROP_UEngine_GameSingleton_SET(UEngine* Ptr, UObject* Value) { Ptr->GameSingleton = Value; }
 	
@@ -90,6 +93,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_ParticleEventManagerClassPath_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->ParticleEventManagerClassPath); }
 	DOTNET_EXPORT void E_PROP_UEngine_ParticleEventManagerClassPath_SET(UEngine* Ptr, char* Value) { Ptr->ParticleEventManagerClassPath = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_PhysicErrorCorrection_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->PhysicErrorCorrection); }
+	DOTNET_EXPORT void E_PROP_UEngine_PhysicErrorCorrection_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PhysicErrorCorrection = *(FRigidBodyErrorCorrection*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_PlayOnConsoleSaveDir_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->PlayOnConsoleSaveDir); }
 	DOTNET_EXPORT void E_PROP_UEngine_PlayOnConsoleSaveDir_SET(UEngine* Ptr, char* Value) { Ptr->PlayOnConsoleSaveDir = ConvertFromManage_FString(Value); }

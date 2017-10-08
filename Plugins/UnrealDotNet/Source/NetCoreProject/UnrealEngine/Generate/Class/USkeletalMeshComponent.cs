@@ -47,6 +47,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_SET(IntPtr Ptr, int Value);
@@ -153,6 +159,32 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkeletalMeshComponent_RootBoneTranslation_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_RootBoneTranslation_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region Events
+		public event FConstraintBrokenSignature OnConstraintBroken
+		{
+			add
+			{
+				E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(NativePointer);
+				_Event_OnConstraintBroken += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(NativePointer);
+				_Event_OnConstraintBroken -= value;
+			}
+
+		}
+
+		private event FConstraintBrokenSignature _Event_OnConstraintBroken;
+		
+		internal void InvokeEvent_OnConstraintBroken(int ConstraintIndex)
+		{
+			_Event_OnConstraintBroken?.Invoke(ConstraintIndex);
 		}
 
 		#endregion

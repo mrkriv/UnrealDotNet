@@ -97,6 +97,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Event when this actor bumps into a blocking object, or blocks another actor that bumps into it. </para>
+		/// <para>This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled. </para>
+		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// </summary>
+		public override void NotifyHit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit) { }
+		
+		
+		/// <summary>
 		/// <para>Called when an instance of this class is placed (in editor) or spawned. </para>
 		/// <param name="Transform">The transform the actor was constructed at. </param>
 		/// </summary>

@@ -3,6 +3,12 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+void AManageCharacter::ApplyDamageMomentum(float DamageTaken, const FDamageEvent& DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
+{
+	Super::ApplyDamageMomentum(DamageTaken, DamageEvent, PawnInstigator, DamageCauser);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyDamageMomentum", DamageTaken, DamageEvent, PawnInstigator, DamageCauser);
+}
+
 void AManageCharacter::BaseChange()
 {
 	Super::BaseChange();
@@ -63,10 +69,22 @@ void AManageCharacter::Jump()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Jump");
 }
 
+void AManageCharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Landed", Hit);
+}
+
 void AManageCharacter::LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
 {
 	Super::LaunchCharacter(LaunchVelocity, bXYOverride, bZOverride);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "LaunchCharacter", LaunchVelocity, bXYOverride, bZOverride);
+}
+
+void AManageCharacter::MoveBlockedBy(const FHitResult& Impact)
+{
+	Super::MoveBlockedBy(Impact);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "MoveBlockedBy", Impact);
 }
 
 void AManageCharacter::NotifyJumpApex()

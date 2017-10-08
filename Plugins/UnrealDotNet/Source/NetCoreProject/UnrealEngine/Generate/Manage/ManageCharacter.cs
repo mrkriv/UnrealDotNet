@@ -12,6 +12,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Apply momentum caused by damage. </para>
+		/// </summary>
+		public override void ApplyDamageMomentum(float DamageTaken, FDamageEvent DamageEvent, APawn PawnInstigator, AActor DamageCauser) { }
+		
+		
+		/// <summary>
 		/// <para>Event called after actor's base changes (if SetBase was requested to notify us with bNotifyPawn). </para>
 		/// </summary>
 		protected override void BaseChange() { }
@@ -70,6 +76,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called upon landing when falling, to perform actions based on the Hit result. Triggers the OnLanded event. </para>
+		/// <para>Note that movement mode is still "Falling" during this event. Current Velocity value is the velocity at the time of landing. </para>
+		/// <para>Consider OnMovementModeChanged() as well, as that can be used once the movement mode changes to the new mode (most likely Walking). </para>
+		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
+		/// <para>@see OnMovementModeChanged() </para>
+		/// </summary>
+		public override void Landed(FHitResult Hit) { }
+		
+		
+		/// <summary>
 		/// <para>Set a pending launch velocity on the Character. This velocity will be processed on the next CharacterMovementComponent tick, </para>
 		/// <para>and will set it to the "falling" state. Triggers the OnLaunched event. </para>
 		/// <para>@PARAM LaunchVelocity is the velocity to impart to the Character </para>
@@ -77,6 +93,13 @@ namespace UnrealEngine
 		/// <para>@PARAM bZOverride if true replace the Z component of the Character's velocity instead of adding to it. </para>
 		/// </summary>
 		public override void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride) { }
+		
+		
+		/// <summary>
+		/// <para>Called when pawn's movement is blocked </para>
+		/// <para>@PARAM Impact describes the blocking hit. </para>
+		/// </summary>
+		public override void MoveBlockedBy(FHitResult Impact) { }
 		
 		
 		/// <summary>

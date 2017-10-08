@@ -229,6 +229,12 @@ namespace UnrealEngine
 		private static extern void E_EVENT_DEL_AActor_OnActorEndOverlap(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_AActor_OnActorHit(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_AActor_OnActorHit(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_AActor_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -250,15 +256,37 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_AActor_ReplicatedMovement_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_ReplicatedMovement_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AActor_SpawnCollisionHandlingMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_SpawnCollisionHandlingMethod_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_ActorHasTag(IntPtr Self, string Tag);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_ActorToWorld(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldTransform(IntPtr Self, IntPtr DeltaTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_AddComponent(IntPtr Self, string TemplateName, bool bManualAttachment, IntPtr RelativeTransform, IntPtr ComponentTemplateContext);
@@ -429,6 +457,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_AActor_GetPlacementExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_AActor_GetRemoteRole(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetRootComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -531,6 +562,24 @@ namespace UnrealEngine
 		private static extern bool E_AActor_IsRootComponentStationary(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorLocalRotation(IntPtr Self, IntPtr DeltaRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorLocalTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorWorldOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorWorldRotation(IntPtr Self, IntPtr DeltaRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AddActorWorldTransform(IntPtr Self, IntPtr DeltaTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_K2_AttachToActor(IntPtr Self, IntPtr ParentActor, string SocketName, byte LocationRule, byte RotationRule, byte ScaleRule, bool bWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -555,7 +604,25 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AActor_K2_GetRootComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_K2_SetActorLocation(IntPtr Self, IntPtr NewLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_K2_SetActorLocationAndRotation(IntPtr Self, IntPtr NewLocation, IntPtr NewRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_SetActorRelativeLocation(IntPtr Self, IntPtr NewRelativeLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_SetActorRelativeRotation(IntPtr Self, IntPtr NewRelativeRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_SetActorRelativeTransform(IntPtr Self, IntPtr NewRelativeTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_K2_SetActorRotation(IntPtr Self, IntPtr NewRotation, bool bTeleportPhysics);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_K2_SetActorTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_K2_TeleportTo(IntPtr Self, IntPtr DestLocation, IntPtr DestRotation);
@@ -583,6 +650,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_NotifyActorEndOverlap(IntPtr Self, IntPtr OtherActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_NotifyHit(IntPtr Self, IntPtr MyComp, IntPtr Other, IntPtr OtherComp, bool bSelfMoved, IntPtr HitLocation, IntPtr HitNormal, IntPtr NormalImpulse, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_OnConstruction(IntPtr Self, IntPtr Transform);
@@ -663,6 +733,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_ReceiveDestroyed(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_ReceiveHit(IntPtr Self, IntPtr MyComp, IntPtr Other, IntPtr OtherComp, bool bSelfMoved, IntPtr HitLocation, IntPtr HitNormal, IntPtr NormalImpulse, IntPtr Hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_ReceiveTick(IntPtr Self, float DeltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -693,7 +766,16 @@ namespace UnrealEngine
 		private static extern void E_AActor_SetActorHiddenInGame(IntPtr Self, bool bNewHidden);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_SetActorLocation(IntPtr Self, IntPtr NewLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_SetActorRelativeLocation(IntPtr Self, IntPtr NewRelativeLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetActorRelativeScale3D(IntPtr Self, IntPtr NewRelativeScale);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_SetActorRelativeTransform(IntPtr Self, IntPtr NewRelativeTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetActorScale3D(IntPtr Self, IntPtr NewScale3D);
@@ -705,16 +787,25 @@ namespace UnrealEngine
 		private static extern void E_AActor_SetActorTickInterval(IntPtr Self, float TickInterval);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_SetActorTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetAutonomousProxy(IntPtr Self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetLifeSpan(IntPtr Self, float InLifespan);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_SetNetDormancy(IntPtr Self, byte NewDormancy);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetNetDriverName(IntPtr Self, string NewNetDriverName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetOwner(IntPtr Self, IntPtr NewOwner);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_SetRemoteRoleForBackwardsCompat(IntPtr Self, byte InRemoteRole);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SetReplicateMovement(IntPtr Self, bool bInReplicateMovement);
@@ -1154,12 +1245,32 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Used for replication of our RootComponent's position and velocity </para>
+		/// </summary>
+		public FRepMovement ReplicatedMovement
+		{
+			get => E_PROP_AActor_ReplicatedMovement_GET(NativePointer);
+			set => E_PROP_AActor_ReplicatedMovement_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Collision primitive that defines the transform (location, rotation, scale) of this Actor. </para>
 		/// </summary>
 		protected USceneComponent RootComponent
 		{
 			get => E_PROP_AActor_RootComponent_GET(NativePointer);
 			set => E_PROP_AActor_RootComponent_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls how to handle spawning this actor in a situation where it's colliding with something else. "Default" means AlwaysSpawn here. </para>
+		/// </summary>
+		public ESpawnActorCollisionHandlingMethod SpawnCollisionHandlingMethod
+		{
+			get => (ESpawnActorCollisionHandlingMethod)E_PROP_AActor_SpawnCollisionHandlingMethod_GET(NativePointer);
+			set => E_PROP_AActor_SpawnCollisionHandlingMethod_SET(NativePointer, (byte)value);
 		}
 
 		#endregion
@@ -1220,6 +1331,35 @@ namespace UnrealEngine
 		internal void InvokeEvent_OnActorEndOverlap(ObjectPointerDescription OverlappedActor, ObjectPointerDescription OtherActor)
 		{
 			_Event_OnActorEndOverlap?.Invoke(OverlappedActor, OtherActor);
+		}
+
+		
+		/// <summary>
+		/// <para>Called when this Actor hits (or is hit by) something solid. This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled. </para>
+		/// </summary>
+		public event FActorHitSignature OnActorHit
+		{
+			add
+			{
+				E_EVENT_ADD_AActor_OnActorHit(NativePointer);
+				_Event_OnActorHit += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_AActor_OnActorHit(NativePointer);
+				_Event_OnActorHit -= value;
+			}
+
+		}
+
+		private event FActorHitSignature _Event_OnActorHit;
+		
+		internal void InvokeEvent_OnActorHit(ObjectPointerDescription SelfActor, ObjectPointerDescription OtherActor, FVector NormalImpulse, FHitResult Hit)
+		{
+			_Event_OnActorHit?.Invoke(SelfActor, OtherActor, NormalImpulse, Hit);
 		}
 
 		
@@ -1319,6 +1459,30 @@ namespace UnrealEngine
 		/// </summary>
 		public FTransform ActorToWorld()
 			=> E_AActor_ActorToWorld(this);
+		
+		public void AddActorLocalOffset(FVector DeltaLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_AddActorLocalOffset(this, DeltaLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		public void AddActorLocalTransform(FTransform NewTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_AddActorLocalTransform(this, NewTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the location of this actor in world space. </para>
+		/// <param name="DeltaLocation">The change in location. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="Teleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
+		/// </summary>
+		public void AddActorWorldOffset(FVector DeltaLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_AddActorWorldOffset(this, DeltaLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		public void AddActorWorldTransform(FTransform DeltaTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_AddActorWorldTransform(this, DeltaTransform, bSweep, OutSweepHitResult, (byte)Teleport);
 		
 		
 		/// <summary>
@@ -1753,6 +1917,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns how much control the remote machine has over this actor. </para>
+		/// </summary>
+		public ENetRole GetRemoteRole()
+			=> (ENetRole)E_AActor_GetRemoteRole(this);
+		
+		
+		/// <summary>
 		/// <para>Returns this actor's root component. </para>
 		/// </summary>
 		public USceneComponent GetRootComponent()
@@ -2008,6 +2179,84 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Adds a delta to the location of this component in its local reference frame. </para>
+		/// <param name="DelatLocation">The change in location in local space. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void K2_AddActorLocalOffset(FVector DeltaLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalOffset(this, DeltaLocation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the rotation of this component in its local reference frame </para>
+		/// <param name="DeltaRotation">The change in rotation in local space. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void AddActorLocalRotation(FRotator DeltaRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalRotation(this, DeltaRotation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the transform of this component in its local reference frame </para>
+		/// <param name="NewTransform">The change in transform in local space. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void K2_AddActorLocalTransform(FTransform NewTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalTransform(this, NewTransform, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the location of this actor in world space. </para>
+		/// <param name="DeltaLocation">The change in location. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
+		/// </summary>
+		public void K2_AddActorWorldOffset(FVector DeltaLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldOffset(this, DeltaLocation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the rotation of this actor in world space. </para>
+		/// <param name="DeltaRotation">The change in rotation. </param>
+		/// <param name="bSweep">Whether to sweep to the target rotation (not currently supported for rotation). </param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
+		/// </summary>
+		public void AddActorWorldRotation(FRotator DeltaRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldRotation(this, DeltaRotation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Adds a delta to the transform of this actor in world space. Scale is unchanged. </para>
+		/// </summary>
+		public void K2_AddActorWorldTransform(FTransform DeltaTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldTransform(this, DeltaTransform, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
 		/// <para>Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered. </para>
 		/// <param name="ParentActor">Actor to attach this actor's RootComponent to </param>
 		/// <param name="SocketName">Socket name to attach to, if any </param>
@@ -2073,6 +2322,81 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Move the Actor to the specified location. </para>
+		/// <param name="NewLocation">The new location to move the Actor to. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
+		/// <return>Whether the location was successfully set (if not swept), or whether movement occurred at all (if swept). </return>
+		/// </summary>
+		public bool K2_SetActorLocation(FVector NewLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorLocation(this, NewLocation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Move the actor instantly to the specified location and rotation. </para>
+		/// <param name="NewLocation">The new location to teleport the Actor to. </param>
+		/// <param name="NewRotation">The new rotation for the Actor. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
+		/// <return>Whether the rotation was successfully set. </return>
+		/// </summary>
+		public bool SetActorLocationAndRotation(FVector NewLocation, FRotator NewRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorLocationAndRotation(this, NewLocation, NewRotation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Set the actor's RootComponent to the specified relative location. </para>
+		/// <param name="NewRelativeLocation">New relative location of the actor's root component </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void K2_SetActorRelativeLocation(FVector NewRelativeLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeLocation(this, NewRelativeLocation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Set the actor's RootComponent to the specified relative rotation </para>
+		/// <param name="NewRelativeRotation">New relative rotation of the actor's root component </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void SetActorRelativeRotation(FRotator NewRelativeRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeRotation(this, NewRelativeRotation, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
+		/// <para>Set the actor's RootComponent to the specified relative transform </para>
+		/// <param name="NewRelativeTransform">New relative transform of the actor's root component </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public void K2_SetActorRelativeTransform(FTransform NewRelativeTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeTransform(this, NewRelativeTransform, bSweep, SweepHitResult, bTeleport);
+		
+		
+		/// <summary>
 		/// <para>Set the Actor's rotation instantly to the specified rotation. </para>
 		/// <param name="NewRotation">The new rotation for the Actor. </param>
 		/// <param name="bTeleportPhysics">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
@@ -2082,6 +2406,20 @@ namespace UnrealEngine
 		/// </summary>
 		public bool SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
 			=> E_AActor_K2_SetActorRotation(this, NewRotation, bTeleportPhysics);
+		
+		
+		/// <summary>
+		/// <para>Set the Actors transform to the specified one. </para>
+		/// <param name="NewTransform">The new transform. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// </summary>
+		public bool K2_SetActorTransform(FTransform NewTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorTransform(this, NewTransform, bSweep, SweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2154,6 +2492,18 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void NotifyActorEndOverlap(AActor OtherActor)
 			=> E_AActor_NotifyActorEndOverlap(this, OtherActor);
+		
+		
+		/// <summary>
+		/// <para>Event when this actor bumps into a blocking object, or blocks another actor that bumps into it. </para>
+		/// <para>This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled. </para>
+		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// </summary>
+		public virtual void NotifyHit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit)
+			=> E_AActor_NotifyHit(this, MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
 		
 		
 		/// <summary>
@@ -2313,6 +2663,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Event when this actor bumps into a blocking object, or blocks another actor that bumps into it. </para>
+		/// <para>This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled. </para>
+		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// <para>@note NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions. </para>
+		/// </summary>
+		public void Hit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit)
+			=> E_AActor_ReceiveHit(this, MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+		
+		
+		/// <summary>
 		/// <para>Event called every frame </para>
 		/// </summary>
 		public void ReceiveTick(float DeltaSeconds)
@@ -2387,11 +2750,33 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Move the actor instantly to the specified location. </para>
+		/// <param name="NewLocation">The new location to teleport the Actor to. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="Teleport">How we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If equal to ETeleportType::TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If equal to ETeleportType::None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="OutSweepHitResult">The hit result from the move if swept. </param>
+		/// <return>Whether the location was successfully set if not swept, or whether movement occurred if swept. </return>
+		/// </summary>
+		public bool SetActorLocation(FVector NewLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_SetActorLocation(this, NewLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		public void SetActorRelativeLocation(FVector NewRelativeLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_SetActorRelativeLocation(this, NewRelativeLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		
+		/// <summary>
 		/// <para>Set the actor's RootComponent to the specified relative scale 3d </para>
 		/// <param name="NewRelativeScale">New scale to set the actor's RootComponent to </param>
 		/// </summary>
 		public void SetActorRelativeScale3D(FVector NewRelativeScale)
 			=> E_AActor_SetActorRelativeScale3D(this, NewRelativeScale);
+		
+		public void SetActorRelativeTransform(FTransform NewRelativeTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_SetActorRelativeTransform(this, NewRelativeTransform, bSweep, OutSweepHitResult, (byte)Teleport);
 		
 		
 		/// <summary>
@@ -2417,6 +2802,9 @@ namespace UnrealEngine
 		public void SetActorTickInterval(float TickInterval)
 			=> E_AActor_SetActorTickInterval(this, TickInterval);
 		
+		public bool SetActorTransform(FTransform NewTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
+			=> E_AActor_SetActorTransform(this, NewTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		
 		
 		/// <summary>
 		/// <para>Sets whether or not this Actor is an autonomous proxy, which is an actor on a network client that is controlled by a user on that client. </para>
@@ -2433,6 +2821,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Puts actor in dormant networking state </para>
+		/// </summary>
+		public void SetNetDormancy(ENetDormancy NewDormancy)
+			=> E_AActor_SetNetDormancy(this, (byte)NewDormancy);
+		
+		
+		/// <summary>
 		/// <para>Set the name of the net driver associated with this actor.  Will move the actor out of the list of network actors from the old net driver and add it to the new list </para>
 		/// <param name="NewNetDriverName">name of the new net driver association </param>
 		/// </summary>
@@ -2446,6 +2841,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetOwner(AActor NewOwner)
 			=> E_AActor_SetOwner(this, NewOwner);
+		
+		
+		/// <summary>
+		/// <para>This function should only be used in the constructor of classes that need to set the RemoteRole for backwards compatibility purposes </para>
+		/// </summary>
+		protected void SetRemoteRoleForBackwardsCompat(ENetRole InRemoteRole)
+			=> E_AActor_SetRemoteRoleForBackwardsCompat(this, (byte)InRemoteRole);
 		
 		
 		/// <summary>

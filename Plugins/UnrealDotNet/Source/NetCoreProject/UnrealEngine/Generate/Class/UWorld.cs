@@ -117,6 +117,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_DeltaTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_FlushLevelStreamingType_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_FlushLevelStreamingType_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_UWorld_FullPurgeTriggered_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_FullPurgeTriggered_SET(IntPtr Ptr, bool Value);
@@ -712,6 +717,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_DeltaTimeSeconds_GET(NativePointer);
 			set => E_PROP_UWorld_DeltaTimeSeconds_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether we flushing level streaming state </para>
+		/// </summary>
+		public EFlushLevelStreamingType FlushLevelStreamingType
+		{
+			get => (EFlushLevelStreamingType)E_PROP_UWorld_FlushLevelStreamingType_GET(NativePointer);
+			set => E_PROP_UWorld_FlushLevelStreamingType_SET(NativePointer, (byte)value);
 		}
 
 		

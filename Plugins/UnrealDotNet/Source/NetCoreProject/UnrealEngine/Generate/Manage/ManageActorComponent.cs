@@ -203,6 +203,12 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UninitializeComponent() { }
 		
+		
+		/// <summary>
+		/// <para>Recalculate the value of our component to world transform </para>
+		/// </summary>
+		public override void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) { }
+		
 		public static implicit operator IntPtr(ManageActorComponent Self)
 		{
 			return Self.NativePointer;

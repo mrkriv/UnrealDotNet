@@ -93,6 +93,12 @@ namespace UnrealEngine
 		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentBeginOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentBeginOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -103,6 +109,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentEndOverlap(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentHit(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_UPrimitiveComponent_OnComponentHit(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnComponentSleep(IntPtr Ptr);
@@ -151,6 +163,12 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_AddImpulseAtLocation(IntPtr Self, IntPtr Impulse, IntPtr Location, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddRadialForce(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff, bool bAccelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddRadialImpulse(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff, bool bVelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_AddTorque(IntPtr Self, IntPtr Torque, string BoneName, bool bAccelChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -182,6 +200,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_ClearMoveIgnoreComponents(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_ConditionalApplyRigidBodyState(IntPtr Self, IntPtr UpdatedState, IntPtr ErrorCorrection, IntPtr OutDeltaPos, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_DisableNavigationRelevance(IntPtr Self);
@@ -253,6 +274,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsLinearVelocityAtPoint(IntPtr Self, IntPtr Point, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_GetRigidBodyState(IntPtr Self, IntPtr OutState, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_GetShadowIndirectOnly(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -310,6 +334,9 @@ namespace UnrealEngine
 		private static extern bool E_UPrimitiveComponent_K2_IsQueryCollisionEnabled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_K2_LineTraceComponent(IntPtr Self, IntPtr TraceStart, IntPtr TraceEnd, bool bTraceComplex, bool bShowTrace, IntPtr HitLocation, IntPtr HitNormal, string BoneName, IntPtr OutHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_OnComponentCollisionSettingsChanged(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -329,6 +356,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPrimitiveComponent_ScaleByMomentOfInertia(IntPtr Self, IntPtr InputVector, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SendPhysicsTransform(IntPtr Self, byte Teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllMassScale(IntPtr Self, float InMassScale);
@@ -362,6 +392,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetCollisionProfileName(IntPtr Self, string InCollisionProfileName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetCollisionResponseToAllChannels(IntPtr Self, byte NewResponse);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetCollisionResponseToChannel(IntPtr Self, byte Channel, byte NewResponse);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetCollisionResponseToChannels(IntPtr Self, IntPtr NewReponses);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetCullDistance(IntPtr Self, float NewCullDistance);
@@ -434,6 +473,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(IntPtr Self, bool bNewUseViewOwnerDepthPriorityGroup, byte NewViewOwnerDepthPriorityGroup);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetWalkableSlopeOverride(IntPtr Self, IntPtr NewOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_ShouldComponentAddToScene(IntPtr Self);
@@ -651,6 +693,37 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Event called when something starts to overlaps this component, for example a player walking into a trigger. </para>
+		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
+		/// <para>@note Both this component and the other one must have bGenerateOverlapEvents set to true to generate overlap events. </para>
+		/// <para>@note When receiving an overlap from another object's movement, the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// </summary>
+		public event FComponentBeginOverlapSignature OnComponentBeginOverlap
+		{
+			add
+			{
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentBeginOverlap(NativePointer);
+				_Event_OnComponentBeginOverlap += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentBeginOverlap(NativePointer);
+				_Event_OnComponentBeginOverlap -= value;
+			}
+
+		}
+
+		private event FComponentBeginOverlapSignature _Event_OnComponentBeginOverlap;
+		
+		internal void InvokeEvent_OnComponentBeginOverlap(ObjectPointerDescription OverlappedComponent, ObjectPointerDescription OtherActor, ObjectPointerDescription OtherComp, int OtherBodyIndex, bool bFromSweep, FHitResult SweepResult)
+		{
+			_Event_OnComponentBeginOverlap?.Invoke(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
+		}
+
+		
+		/// <summary>
 		/// <para>Event called when collision settings change for this component. </para>
 		/// </summary>
 		public event FComponentCollisionSettingsChangedSignature OnComponentCollisionSettingsChangedEvent
@@ -702,6 +775,38 @@ namespace UnrealEngine
 		internal void InvokeEvent_OnComponentEndOverlap(ObjectPointerDescription OverlappedComponent, ObjectPointerDescription OtherActor, ObjectPointerDescription OtherComp, int OtherBodyIndex)
 		{
 			_Event_OnComponentEndOverlap?.Invoke(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
+		}
+
+		
+		/// <summary>
+		/// <para>Event called when a component hits (or is hit by) something solid. This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled for this component. </para>
+		/// <para>@note When receiving a hit from another object's movement, the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// <para>@note NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions. </para>
+		/// </summary>
+		public event FComponentHitSignature OnComponentHit
+		{
+			add
+			{
+				E_EVENT_ADD_UPrimitiveComponent_OnComponentHit(NativePointer);
+				_Event_OnComponentHit += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_UPrimitiveComponent_OnComponentHit(NativePointer);
+				_Event_OnComponentHit -= value;
+			}
+
+		}
+
+		private event FComponentHitSignature _Event_OnComponentHit;
+		
+		internal void InvokeEvent_OnComponentHit(ObjectPointerDescription HitComponent, ObjectPointerDescription OtherActor, ObjectPointerDescription OtherComp, FVector NormalImpulse, FHitResult Hit)
+		{
+			_Event_OnComponentHit?.Invoke(HitComponent, OtherActor, OtherComp, NormalImpulse, Hit);
 		}
 
 		
@@ -853,6 +958,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Add a force to all bodies in this component, originating from the supplied world-space location. </para>
+		/// <param name="Origin">Origin of force in world space. </param>
+		/// <param name="Radius">Radius within which to apply the force. </param>
+		/// <param name="Strength">Strength of force to apply. </param>
+		/// <param name="Falloff">Allows you to control the strength of the force as a function of distance from Origin. </param>
+		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// </summary>
+		public virtual void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
+			=> E_UPrimitiveComponent_AddRadialForce(this, Origin, Radius, Strength, (byte)Falloff, bAccelChange);
+		
+		
+		/// <summary>
+		/// <para>Add an impulse to all rigid bodies in this component, radiating out from the specified position. </para>
+		/// <param name="Origin">Point of origin for the radial impulse blast, in world space </param>
+		/// <param name="Radius">Size of radial impulse. Beyond this distance from Origin, there will be no affect. </param>
+		/// <param name="Strength">Maximum strength of impulse applied to body. </param>
+		/// <param name="Falloff">Allows you to control the strength of the impulse as a function of distance from Origin. </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// </summary>
+		public virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+			=> E_UPrimitiveComponent_AddRadialImpulse(this, Origin, Radius, Strength, (byte)Falloff, bVelChange);
+		
+		
+		/// <summary>
 		/// <para>Add a torque to a single rigid body. </para>
 		/// <param name="Torque">Torque to apply. Direction is axis of rotation and magnitude is strength of torque. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
@@ -939,6 +1068,14 @@ namespace UnrealEngine
 		/// </summary>
 		public void ClearMoveIgnoreComponents()
 			=> E_UPrimitiveComponent_ClearMoveIgnoreComponents(this);
+		
+		
+		/// <summary>
+		/// <para>Applies RigidBodyState only if it needs to be updated </para>
+		/// <para>NeedsUpdate flag will be removed from UpdatedState after all velocity corrections are finished </para>
+		/// </summary>
+		public bool ConditionalApplyRigidBodyState(FRigidBodyState UpdatedState, FRigidBodyErrorCorrection ErrorCorrection, FVector OutDeltaPos, string BoneName)
+			=> E_UPrimitiveComponent_ConditionalApplyRigidBodyState(this, UpdatedState, ErrorCorrection, OutDeltaPos, BoneName);
 		
 		public void DisableNavigationRelevance()
 			=> E_UPrimitiveComponent_DisableNavigationRelevance(this);
@@ -1116,6 +1253,14 @@ namespace UnrealEngine
 		public FVector GetPhysicsLinearVelocityAtPoint(FVector Point, string BoneName)
 			=> E_UPrimitiveComponent_GetPhysicsLinearVelocityAtPoint(this, Point, BoneName);
 		
+		
+		/// <summary>
+		/// <para>Get the state of the rigid body responsible for this Actor's physics, and fill in the supplied FRigidBodyState struct based on it. </para>
+		/// <return>true if we successfully found a physics-engine body and update the state structure from it. </return>
+		/// </summary>
+		public bool GetRigidBodyState(FRigidBodyState OutState, string BoneName)
+			=> E_UPrimitiveComponent_GetRigidBodyState(this, OutState, BoneName);
+		
 		public virtual bool GetShadowIndirectOnly()
 			=> E_UPrimitiveComponent_GetShadowIndirectOnly(this);
 		
@@ -1258,6 +1403,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Perform a line trace against a single component </para>
+		/// </summary>
+		public bool LineTraceComponent(FVector TraceStart, FVector TraceEnd, bool bTraceComplex, bool bShowTrace, FVector HitLocation, FVector HitNormal, string BoneName, FHitResult OutHit)
+			=> E_UPrimitiveComponent_K2_LineTraceComponent(this, TraceStart, TraceEnd, bTraceComplex, bShowTrace, HitLocation, HitNormal, BoneName, OutHit);
+		
+		
+		/// <summary>
 		/// <para>Called when the BodyInstance ResponseToChannels, CollisionEnabled or bNotifyRigidBodyCollision changes, in case subclasses want to use that information. </para>
 		/// </summary>
 		protected virtual void OnComponentCollisionSettingsChanged()
@@ -1307,6 +1459,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual FVector ScaleByMomentOfInertia(FVector InputVector, string BoneName)
 			=> E_UPrimitiveComponent_ScaleByMomentOfInertia(this, InputVector, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Called to send a transform update for this component to the physics engine </para>
+		/// </summary>
+		protected void SendPhysicsTransform(ETeleportType Teleport)
+			=> E_UPrimitiveComponent_SendPhysicsTransform(this, (byte)Teleport);
 		
 		
 		/// <summary>
@@ -1397,6 +1556,31 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetCollisionProfileName(string InCollisionProfileName)
 			=> E_UPrimitiveComponent_SetCollisionProfileName(this, InCollisionProfileName);
+		
+		
+		/// <summary>
+		/// <para>Changes all ResponseToChannels container for this PrimitiveComponent. to be NewResponse </para>
+		/// <param name="NewResponse">What the new response should be to the supplied Channel </param>
+		/// </summary>
+		public virtual void SetCollisionResponseToAllChannels(ECollisionResponse NewResponse)
+			=> E_UPrimitiveComponent_SetCollisionResponseToAllChannels(this, (byte)NewResponse);
+		
+		
+		/// <summary>
+		/// <para>Changes a member of the ResponseToChannels container for this PrimitiveComponent. </para>
+		/// <param name="Channel">The channel to change the response of </param>
+		/// <param name="NewResponse">What the new response should be to the supplied Channel </param>
+		/// </summary>
+		public virtual void SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse)
+			=> E_UPrimitiveComponent_SetCollisionResponseToChannel(this, (byte)Channel, (byte)NewResponse);
+		
+		
+		/// <summary>
+		/// <para>Changes the whole ResponseToChannels container for this PrimitiveComponent. </para>
+		/// <param name="NewResponses">New set of responses for this component </param>
+		/// </summary>
+		public virtual void SetCollisionResponseToChannels(FCollisionResponseContainer NewReponses)
+			=> E_UPrimitiveComponent_SetCollisionResponseToChannels(this, NewReponses);
 		
 		
 		/// <summary>
@@ -1585,6 +1769,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, ESceneDepthPriorityGroup NewViewOwnerDepthPriorityGroup)
 			=> E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(this, bNewUseViewOwnerDepthPriorityGroup, (byte)NewViewOwnerDepthPriorityGroup);
+		
+		
+		/// <summary>
+		/// <para>Sets a new slope override for this component instance. </para>
+		/// </summary>
+		public void SetWalkableSlopeOverride(FWalkableSlopeOverride NewOverride)
+			=> E_UPrimitiveComponent_SetWalkableSlopeOverride(this, NewOverride);
 		
 		
 		/// <summary>

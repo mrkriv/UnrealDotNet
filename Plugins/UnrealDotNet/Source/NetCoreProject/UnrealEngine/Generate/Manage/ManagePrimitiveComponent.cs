@@ -69,6 +69,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Add a force to all bodies in this component, originating from the supplied world-space location. </para>
+		/// <param name="Origin">Origin of force in world space. </param>
+		/// <param name="Radius">Radius within which to apply the force. </param>
+		/// <param name="Strength">Strength of force to apply. </param>
+		/// <param name="Falloff">Allows you to control the strength of the force as a function of distance from Origin. </param>
+		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// </summary>
+		public override void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange) { }
+		
+		
+		/// <summary>
+		/// <para>Add an impulse to all rigid bodies in this component, radiating out from the specified position. </para>
+		/// <param name="Origin">Point of origin for the radial impulse blast, in world space </param>
+		/// <param name="Radius">Size of radial impulse. Beyond this distance from Origin, there will be no affect. </param>
+		/// <param name="Strength">Maximum strength of impulse applied to body. </param>
+		/// <param name="Falloff">Allows you to control the strength of the impulse as a function of distance from Origin. </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// </summary>
+		public override void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) { }
+		
+		
+		/// <summary>
 		/// <para>Called when the BodyInstance ResponseToChannels, CollisionEnabled or bNotifyRigidBodyCollision changes, in case subclasses want to use that information. </para>
 		/// </summary>
 		protected override void OnComponentCollisionSettingsChanged() { }
@@ -130,6 +152,28 @@ namespace UnrealEngine
 		/// <param name="InCollisionProfileName">New Profile Name </param>
 		/// </summary>
 		public override void SetCollisionProfileName(string InCollisionProfileName) { }
+		
+		
+		/// <summary>
+		/// <para>Changes all ResponseToChannels container for this PrimitiveComponent. to be NewResponse </para>
+		/// <param name="NewResponse">What the new response should be to the supplied Channel </param>
+		/// </summary>
+		public override void SetCollisionResponseToAllChannels(ECollisionResponse NewResponse) { }
+		
+		
+		/// <summary>
+		/// <para>Changes a member of the ResponseToChannels container for this PrimitiveComponent. </para>
+		/// <param name="Channel">The channel to change the response of </param>
+		/// <param name="NewResponse">What the new response should be to the supplied Channel </param>
+		/// </summary>
+		public override void SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse) { }
+		
+		
+		/// <summary>
+		/// <para>Changes the whole ResponseToChannels container for this PrimitiveComponent. </para>
+		/// <param name="NewResponses">New set of responses for this component </param>
+		/// </summary>
+		public override void SetCollisionResponseToChannels(FCollisionResponseContainer NewReponses) { }
 		
 		
 		/// <summary>

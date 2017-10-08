@@ -62,6 +62,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameCycles_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UEngine_GameScreenshotSaveDirectory_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_GameScreenshotSaveDirectory_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
@@ -160,6 +165,11 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_UEngine_ParticleEventManagerClassPath_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ParticleEventManagerClassPath_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UEngine_PhysicErrorCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_PhysicErrorCorrection_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UEngine_PlayOnConsoleSaveDir_GET(IntPtr Ptr);
@@ -346,6 +356,16 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_GameCycles_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>The save directory for newly created screenshots </para>
+		/// </summary>
+		public FDirectoryPath GameScreenshotSaveDirectory
+		{
+			get => E_PROP_UEngine_GameScreenshotSaveDirectory_GET(NativePointer);
+			set => E_PROP_UEngine_GameScreenshotSaveDirectory_SET(NativePointer, value);
+		}
+
 		public UObject GameSingleton
 		{
 			get => E_PROP_UEngine_GameSingleton_GET(NativePointer);
@@ -476,6 +496,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_ParticleEventManagerClassPath_GET(NativePointer);
 			set => E_PROP_UEngine_ParticleEventManagerClassPath_SET(NativePointer, value);
+		}
+
+		public FRigidBodyErrorCorrection PhysicErrorCorrection
+		{
+			get => E_PROP_UEngine_PhysicErrorCorrection_GET(NativePointer);
+			set => E_PROP_UEngine_PhysicErrorCorrection_SET(NativePointer, value);
 		}
 
 		public string PlayOnConsoleSaveDir

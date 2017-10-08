@@ -64,6 +64,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_DeltaTimeSeconds_GET(UWorld* Ptr) { return Ptr->DeltaTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_DeltaTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->DeltaTimeSeconds = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UWorld_FlushLevelStreamingType_GET(UWorld* Ptr) { return Ptr->FlushLevelStreamingType; }
+	DOTNET_EXPORT void E_PROP_UWorld_FlushLevelStreamingType_SET(UWorld* Ptr, EFlushLevelStreamingType Value) { Ptr->FlushLevelStreamingType = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UWorld_FullPurgeTriggered_GET(UWorld* Ptr) { return Ptr->FullPurgeTriggered; }
 	DOTNET_EXPORT void E_PROP_UWorld_FullPurgeTriggered_SET(UWorld* Ptr, bool Value) { Ptr->FullPurgeTriggered = Value; }
 	

@@ -27,6 +27,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_AllowedYawError_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_APawn_AutoPossessAI_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APawn_AutoPossessAI_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_APawn_BaseEyeHeight_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
@@ -213,6 +218,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_APawn_AllowedYawError_GET(NativePointer);
 			set => E_PROP_APawn_AllowedYawError_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Determines when the Pawn creates and is possessed by an AI Controller (on level start, when spawned, etc). </para>
+		/// <para>Only possible if AIControllerClass is set, and ignored if AutoPossessPlayer is enabled. </para>
+		/// <para>@see AutoPossessPlayer </para>
+		/// </summary>
+		public EAutoPossessAI AutoPossessAI
+		{
+			get => (EAutoPossessAI)E_PROP_APawn_AutoPossessAI_GET(NativePointer);
+			set => E_PROP_APawn_AutoPossessAI_SET(NativePointer, (byte)value);
 		}
 
 		

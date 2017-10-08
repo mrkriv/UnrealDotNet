@@ -39,6 +39,12 @@ void UManageSceneComponent::OnHiddenInGameChanged()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnHiddenInGameChanged");
 }
 
+void UManageSceneComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+{
+	Super::OnUpdateTransform(UpdateTransformFlags, Teleport);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUpdateTransform", UpdateTransformFlags, Teleport);
+}
+
 void UManageSceneComponent::OnVisibilityChanged()
 {
 	Super::OnVisibilityChanged();

@@ -22,6 +22,18 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_GET(USkeletalMeshComponent* Ptr) { return (INT_PTR)&(Ptr->LineCheckBoundsScale); }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->LineCheckBoundsScale = *(FVector*)Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(USkeletalMeshComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnConstraintBroken";
+		wrapper->SourceObject = Obj;
+		Obj->OnConstraintBroken.AddDynamic(wrapper, &UManageEventSender::Wrapper_FConstraintBrokenSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(USkeletalMeshComponent* Obj)
+	{
+	}
+
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_GET(USkeletalMeshComponent* Ptr) { return Ptr->RagdollAggregateThreshold; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_SET(USkeletalMeshComponent* Ptr, int32 Value) { Ptr->RagdollAggregateThreshold = Value; }
 	

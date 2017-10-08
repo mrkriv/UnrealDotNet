@@ -40,8 +40,16 @@ namespace Generator
 
         private Type GetType(string name)
         {
-            var liter = name.First();
-            return Types.GetOrAdd(name, liter == 'E' ? (Type)new Enum(name) : new Class(name));
+            if (name.StartsWith("E"))
+            {
+                return Types.GetOrAdd(name, new Enum(name));
+            }
+            if (name.EndsWith("Signature"))
+            {
+                return Types.GetOrAdd(name, new Delegate(name));
+            }
+
+            return Types.GetOrAdd(name, new Class(name));
         }
 
         private Class GetClass(string name)

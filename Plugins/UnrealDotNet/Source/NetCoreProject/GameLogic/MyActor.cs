@@ -41,8 +41,7 @@ namespace GameLogic
                 Box.AttachToComponent(root, transformRules, "");
 
                 Box.SetCollisionProfileName("OverlapAll");
-                Box.SetBoxExtent(new FVector(150, 150, 150), false);
-                Box.SetHiddenInGame(false);
+                Box.SetBoxExtent(new FVector(100, 100, 100), false);
 
                 Box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
             }

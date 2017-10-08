@@ -51,6 +51,8 @@ namespace UnrealEngine
 		/// </summary>
 		protected override void OnHiddenInGameChanged() { }
 		
+		protected override void OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) { }
+		
 		
 		/// <summary>
 		/// <para>Overridable internal function to respond to changes in the visibility of the component. </para>

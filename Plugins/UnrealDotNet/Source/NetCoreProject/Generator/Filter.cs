@@ -49,6 +49,14 @@ namespace Generator
 
             "FNamedNetDriver",  // todo:: "xxx *" в "const xxx &"
             "FTickPrerequisite",
+
+            "EOptimizeMode",
+            
+            "FCollisionImpactData",  // todo:: не линкует
+            "FRigidBodyContactInfo",
+            "FSwarmDebugOptions",
+            "FAnimUpdateRateParameters",
+            "FTimerHandle",
         };
 
         public static string[] ManageClassBlackList =
@@ -122,6 +130,7 @@ namespace Generator
             { "UTimelineComponent", new[] { "OnRep_Timeline" }},
             { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
             { "FNamedNetDriver", new[] { "NetDriverDef" }},
+            { "UPrimitiveComponent", new[] { "DispatchBlockingHit" }},
 
             { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
             

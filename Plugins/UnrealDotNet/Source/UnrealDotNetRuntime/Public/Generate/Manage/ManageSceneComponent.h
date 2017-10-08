@@ -39,6 +39,8 @@ protected:
 	
 	virtual void OnHiddenInGameChanged() override;
 	
+	virtual void OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) override;
+	
 	virtual void OnVisibilityChanged() override;
 	
 }

@@ -19,6 +19,8 @@ class UNREALDOTNETRUNTIME_API AManageCharacter : public ACharacter
 	
 public:
 	
+	virtual void ApplyDamageMomentum(float DamageTaken, const FDamageEvent& DamageEvent, APawn* PawnInstigator, AActor* DamageCauser) override;
+	
 	virtual void CacheInitialMeshOffset(FVector MeshRelativeLocation, FRotator MeshRelativeRotation) override;
 	
 	virtual void CheckJumpInput(float DeltaTime) override;
@@ -37,7 +39,11 @@ public:
 	
 	virtual void Jump() override;
 	
+	virtual void Landed(const FHitResult& Hit) override;
+	
 	virtual void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride) override;
+	
+	virtual void MoveBlockedBy(const FHitResult& Impact) override;
 	
 	virtual void NotifyJumpApex() override;
 	

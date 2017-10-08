@@ -182,4 +182,10 @@ void UManageActorComponent::UninitializeComponent()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UninitializeComponent");
 }
 
+void UManageActorComponent::UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+{
+	Super::UpdateComponentToWorld(UpdateTransformFlags, Teleport);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentToWorld", UpdateTransformFlags, Teleport);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

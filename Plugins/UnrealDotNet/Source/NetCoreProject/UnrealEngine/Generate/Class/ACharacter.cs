@@ -82,6 +82,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_JumpMaxHoldTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_ACharacter_LandedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_ACharacter_LandedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_ACharacter_MeshComponentName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
@@ -123,6 +129,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_ACharacter_RepRootMotion_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ApplyDamageMomentum(IntPtr Self, float DamageTaken, IntPtr DamageEvent, IntPtr PawnInstigator, IntPtr DamageCauser);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_BaseChange(IntPtr Self);
@@ -233,10 +242,19 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_K2_UpdateCustomMovement(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_Landed(IntPtr Self, IntPtr Hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_LaunchCharacter(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_MoveBlockedBy(IntPtr Self, IntPtr Impact);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_NotifyJumpApex(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_NotifyLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnEndCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
@@ -246,6 +264,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnJumped_Implementation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnLaunched(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
@@ -288,6 +309,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SetBase(IntPtr Self, IntPtr NewBase, string BoneName, bool bNotifyActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_ShouldNotifyLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SimulatedRootMotionPositionFixup(IntPtr Self, float DeltaSeconds);
@@ -464,6 +488,37 @@ namespace UnrealEngine
 		#region Events
 		
 		/// <summary>
+		/// <para>Called upon landing when falling, to perform actions based on the Hit result. </para>
+		/// <para>Note that movement mode is still "Falling" during this event. Current Velocity value is the velocity at the time of landing. </para>
+		/// <para>Consider OnMovementModeChanged() as well, as that can be used once the movement mode changes to the new mode (most likely Walking). </para>
+		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
+		/// <para>@see OnMovementModeChanged() </para>
+		/// </summary>
+		public event FLandedSignature LandedDelegate
+		{
+			add
+			{
+				E_EVENT_ADD_ACharacter_LandedDelegate(NativePointer);
+				_Event_LandedDelegate += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_ACharacter_LandedDelegate(NativePointer);
+				_Event_LandedDelegate -= value;
+			}
+
+		}
+
+		private event FLandedSignature _Event_LandedDelegate;
+		
+		internal void InvokeEvent_LandedDelegate(FHitResult Hit)
+		{
+			_Event_LandedDelegate?.Invoke(Hit);
+		}
+
+		
+		/// <summary>
 		/// <para>Multicast delegate for MovementMode changing. </para>
 		/// </summary>
 		public event FMovementModeChangedSignature MovementModeChangedDelegate
@@ -552,6 +607,13 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Apply momentum caused by damage. </para>
+		/// </summary>
+		public virtual void ApplyDamageMomentum(float DamageTaken, FDamageEvent DamageEvent, APawn PawnInstigator, AActor DamageCauser)
+			=> E_ACharacter_ApplyDamageMomentum(this, DamageTaken, DamageEvent, PawnInstigator, DamageCauser);
+		
 		
 		/// <summary>
 		/// <para>Event called after actor's base changes (if SetBase was requested to notify us with bNotifyPawn). </para>
@@ -806,6 +868,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called upon landing when falling, to perform actions based on the Hit result. Triggers the OnLanded event. </para>
+		/// <para>Note that movement mode is still "Falling" during this event. Current Velocity value is the velocity at the time of landing. </para>
+		/// <para>Consider OnMovementModeChanged() as well, as that can be used once the movement mode changes to the new mode (most likely Walking). </para>
+		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
+		/// <para>@see OnMovementModeChanged() </para>
+		/// </summary>
+		public virtual void Landed(FHitResult Hit)
+			=> E_ACharacter_Landed(this, Hit);
+		
+		
+		/// <summary>
 		/// <para>Set a pending launch velocity on the Character. This velocity will be processed on the next CharacterMovementComponent tick, </para>
 		/// <para>and will set it to the "falling" state. Triggers the OnLaunched event. </para>
 		/// <para>@PARAM LaunchVelocity is the velocity to impart to the Character </para>
@@ -817,10 +890,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when pawn's movement is blocked </para>
+		/// <para>@PARAM Impact describes the blocking hit. </para>
+		/// </summary>
+		public virtual void MoveBlockedBy(FHitResult Impact)
+			=> E_ACharacter_MoveBlockedBy(this, Impact);
+		
+		
+		/// <summary>
 		/// <para>Called when character's jump reaches Apex. Needs CharacterMovement->bNotifyApex = true </para>
 		/// </summary>
 		public virtual void NotifyJumpApex()
 			=> E_ACharacter_NotifyJumpApex(this);
+		
+		public virtual bool NotifyLanded(FHitResult Hit)
+			=> E_ACharacter_NotifyLanded(this, Hit);
 		
 		
 		/// <summary>
@@ -840,6 +924,9 @@ namespace UnrealEngine
 		
 		public virtual void OnJumped_Implementation()
 			=> E_ACharacter_OnJumped_Implementation(this);
+		
+		public void OnLanded(FHitResult Hit)
+			=> E_ACharacter_OnLanded(this, Hit);
 		
 		public void OnLaunched(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
 			=> E_ACharacter_OnLaunched(this, LaunchVelocity, bXYOverride, bZOverride);
@@ -916,6 +1003,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetBase(UPrimitiveComponent NewBase, string BoneName, bool bNotifyActor)
 			=> E_ACharacter_SetBase(this, NewBase, BoneName, bNotifyActor);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the Landed() event should be called. Used by CharacterMovement to prevent notifications while playing back network moves. </para>
+		/// </summary>
+		public virtual bool ShouldNotifyLanded(FHitResult Hit)
+			=> E_ACharacter_ShouldNotifyLanded(this, Hit);
 		
 		
 		/// <summary>

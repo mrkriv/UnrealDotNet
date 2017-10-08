@@ -24,6 +24,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UDrawSphereComponent.h"
 #include "UEngine.h"
 #include "UEngineBaseTypes.h"
+#include "UEngineTypes.h"
 #include "UExponentialHeightFogComponent.h"
 #include "UHierarchicalInstancedStaticMeshComponent.h"
 #include "UInstancedStaticMeshComponent.h"

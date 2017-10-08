@@ -22,7 +22,7 @@ namespace Generator
 
             var output = Path.Combine(args[0], "Source");
             var files = Directory.GetFiles(args[1], "*.h", SearchOption.AllDirectories);
-
+            
             if (!Directory.Exists(output))
             {
                 PrintError($"Project directory '{output}' is not exists");
@@ -34,8 +34,8 @@ namespace Generator
             Codegenretor.GenarateDomain(domain, output);
 
             Watch.Stop();
-
-            Console.Clear();
+            
+            Console.WriteLine();
             domain.PrintTotal();
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
         }

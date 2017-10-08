@@ -26,6 +26,14 @@ namespace UnrealEngine
 		DisallowDeferral,
 	}
 
+	public enum EAngularConstraintMotion : byte
+	{
+		ACM_Free,
+		ACM_Limited,
+		ACM_Locked,
+		ACM_MAX,
+	}
+
 	public enum EAntiAliasingMethod : byte
 	{
 		AAM_None,
@@ -55,6 +63,14 @@ namespace UnrealEngine
 		AEM_Histogram,
 		AEM_Basic,
 		AEM_MAX,
+	}
+
+	public enum EAutoPossessAI : byte
+	{
+		Disabled,
+		PlacedInWorld,
+		Spawned,
+		PlacedInWorldOrSpawned,
 	}
 
 	public enum EBlendMode : byte
@@ -125,6 +141,16 @@ namespace UnrealEngine
 		ECC_GameTraceChannel16,
 		ECC_GameTraceChannel17,
 		ECC_GameTraceChannel18,
+		ECC_OverlapAll_Deprecated,
+		ECC_MAX,
+	}
+
+	public enum ECollisionResponse : byte
+	{
+		ECR_Ignore,
+		ECR_Overlap,
+		ECR_Block,
+		ECR_MAX,
 	}
 
 	public enum EComponentCreationMethod : byte
@@ -162,6 +188,21 @@ namespace UnrealEngine
 		DM_Medium,
 		DM_High,
 		DM_MAX,
+	}
+
+	public enum EFilterInterpolationType : byte
+	{
+		BSIT_Average,
+		BSIT_Linear,
+		BSIT_Cubic,
+		BSIT_MAX,
+	}
+
+	public enum EFlushLevelStreamingType : byte
+	{
+		None,
+		Full,
+		Visibility,
 	}
 
 	public enum EFullyLoadPackageType : byte
@@ -209,6 +250,14 @@ namespace UnrealEngine
 		ILCQ_Volume,
 	}
 
+	public enum EInputConsumeOptions : byte
+	{
+		ICO_ConsumeAll = 0,
+		ICO_ConsumeBoundKeys,
+		ICO_ConsumeNone,
+		ICO_MAX,
+	}
+
 	public enum EInputEvent : byte
 	{
 		IE_Pressed = 0,
@@ -227,6 +276,13 @@ namespace UnrealEngine
 		PingPong,
 	}
 
+	public enum ELevelCollectionType : byte
+	{
+		DynamicSourceLevels,
+		DynamicDuplicatedLevels,
+		StaticLevels,
+	}
+
 	public enum ELevelTick : byte
 	{
 		LEVELTICK_TimeOnly = 0,
@@ -242,6 +298,13 @@ namespace UnrealEngine
 		Quality_High,
 		Quality_Production,
 		Quality_MAX,
+	}
+
+	public enum ELightMapPaddingType : byte
+	{
+		LMPT_NormalPadding,
+		LMPT_PrePadding,
+		LMPT_NoPadding,
 	}
 
 	public enum EMaterialSamplerType : byte
@@ -278,6 +341,12 @@ namespace UnrealEngine
 		MTM_FlatTessellation,
 		MTM_PNTriangles,
 		MTM_MAX,
+	}
+
+	public enum EMeshBufferAccess : byte
+	{
+		Default,
+		ForceCPUAndGPU,
 	}
 
 	public enum EMouseCaptureMode : byte
@@ -317,6 +386,16 @@ namespace UnrealEngine
 		MOVE_MAX,
 	}
 
+	public enum ENetDormancy : byte
+	{
+		DORM_Never,
+		DORM_Awake,
+		DORM_DormantAll,
+		DORM_DormantPartial,
+		DORM_Initial,
+		DORN_MAX,
+	}
+
 	public enum ENetMode : byte
 	{
 		NM_Standalone,
@@ -324,6 +403,15 @@ namespace UnrealEngine
 		NM_ListenServer,
 		NM_Client,
 		NM_MAX,
+	}
+
+	public enum ENetRole : byte
+	{
+		ROLE_None,
+		ROLE_SimulatedProxy,
+		ROLE_AutonomousProxy,
+		ROLE_Authority,
+		ROLE_MAX,
 	}
 
 	public enum ENetworkSmoothingMode : byte
@@ -334,6 +422,43 @@ namespace UnrealEngine
 		Replay,
 	}
 
+	public enum EObjectTypeQuery : byte
+	{
+		ObjectTypeQuery1,
+		ObjectTypeQuery2,
+		ObjectTypeQuery3,
+		ObjectTypeQuery4,
+		ObjectTypeQuery5,
+		ObjectTypeQuery6,
+		ObjectTypeQuery7,
+		ObjectTypeQuery8,
+		ObjectTypeQuery9,
+		ObjectTypeQuery10,
+		ObjectTypeQuery11,
+		ObjectTypeQuery12,
+		ObjectTypeQuery13,
+		ObjectTypeQuery14,
+		ObjectTypeQuery15,
+		ObjectTypeQuery16,
+		ObjectTypeQuery17,
+		ObjectTypeQuery18,
+		ObjectTypeQuery19,
+		ObjectTypeQuery20,
+		ObjectTypeQuery21,
+		ObjectTypeQuery22,
+		ObjectTypeQuery23,
+		ObjectTypeQuery24,
+		ObjectTypeQuery25,
+		ObjectTypeQuery26,
+		ObjectTypeQuery27,
+		ObjectTypeQuery28,
+		ObjectTypeQuery29,
+		ObjectTypeQuery30,
+		ObjectTypeQuery31,
+		ObjectTypeQuery32,
+		ObjectTypeQuery_MAX,
+	}
+
 	public enum EOcclusionCombineMode : byte
 	{
 		OCM_Minimum,
@@ -341,11 +466,111 @@ namespace UnrealEngine
 		OCM_MAX,
 	}
 
+	public enum EOptimizeMode : byte
+	{
+		TrailMode,
+		LookAheadMode,
+	}
+
+	public enum EOverlapFilterOption : byte
+	{
+		OverlapFilter_All,
+		OverlapFilter_DynamicOnly,
+		OverlapFilter_StaticOnly,
+	}
+
 	public enum EPhysBodyOp : byte
 	{
 		PBO_None,
 		PBO_Term,
 		PBO_MAX,
+	}
+
+	public enum EPhysicalSurface : byte
+	{
+		SurfaceType_Default,
+		SurfaceType1,
+		SurfaceType2,
+		SurfaceType3,
+		SurfaceType4,
+		SurfaceType5,
+		SurfaceType6,
+		SurfaceType7,
+		SurfaceType8,
+		SurfaceType9,
+		SurfaceType10,
+		SurfaceType11,
+		SurfaceType12,
+		SurfaceType13,
+		SurfaceType14,
+		SurfaceType15,
+		SurfaceType16,
+		SurfaceType17,
+		SurfaceType18,
+		SurfaceType19,
+		SurfaceType20,
+		SurfaceType21,
+		SurfaceType22,
+		SurfaceType23,
+		SurfaceType24,
+		SurfaceType25,
+		SurfaceType26,
+		SurfaceType27,
+		SurfaceType28,
+		SurfaceType29,
+		SurfaceType30,
+		SurfaceType31,
+		SurfaceType32,
+		SurfaceType33,
+		SurfaceType34,
+		SurfaceType35,
+		SurfaceType36,
+		SurfaceType37,
+		SurfaceType38,
+		SurfaceType39,
+		SurfaceType40,
+		SurfaceType41,
+		SurfaceType42,
+		SurfaceType43,
+		SurfaceType44,
+		SurfaceType45,
+		SurfaceType46,
+		SurfaceType47,
+		SurfaceType48,
+		SurfaceType49,
+		SurfaceType50,
+		SurfaceType51,
+		SurfaceType52,
+		SurfaceType53,
+		SurfaceType54,
+		SurfaceType55,
+		SurfaceType56,
+		SurfaceType57,
+		SurfaceType58,
+		SurfaceType59,
+		SurfaceType60,
+		SurfaceType61,
+		SurfaceType62,
+		SurfaceType_Max,
+	}
+
+	public enum EPhysicsSceneType : byte
+	{
+		PST_Sync,
+		PST_Cloth,
+		PST_Async,
+		PST_MAX,
+	}
+
+	
+	/// <summary>
+	/// <para>static variable for default data to be used without reconstructing everytime </para>
+	/// </summary>
+	public enum ERadialImpulseFalloff : byte
+	{
+		RIF_Constant,
+		RIF_Linear,
+		RIF_MAX,
 	}
 
 	
@@ -384,6 +609,12 @@ namespace UnrealEngine
 		ERSM_32,
 		ERSM_64,
 		ERSM_128,
+	}
+
+	public enum ERotatorQuantization : byte
+	{
+		ByteComponents,
+		ShortComponents,
 	}
 
 	public enum ESamplerSourceMode : byte
@@ -426,6 +657,12 @@ namespace UnrealEngine
 		SDPG_MAX,
 	}
 
+	public enum EShadowMapFlags : byte
+	{
+		SMF_None = 0,
+		SMF_Streamed = 0x00000001,
+	}
+
 	public enum EShapeBodySetupHelper : byte
 	{
 		InvalidateSharingIfStale,
@@ -437,6 +674,22 @@ namespace UnrealEngine
 		SLS_CapturedScene,
 		SLS_SpecifiedCubemap,
 		SLS_MAX,
+	}
+
+	public enum ESleepFamily : byte
+	{
+		Normal,
+		Sensitive,
+		Custom,
+	}
+
+	public enum ESpawnActorCollisionHandlingMethod : byte
+	{
+		Undefined,
+		AlwaysSpawn,
+		AdjustIfPossibleButAlwaysSpawn,
+		AdjustIfPossibleButDontSpawnIfColliding,
+		DontSpawnIfColliding,
 	}
 
 	public enum EStereoLayerShape : byte
@@ -481,6 +734,12 @@ namespace UnrealEngine
 		TT_Chronological,
 	}
 
+	public enum ETeleportType : byte
+	{
+		None,
+		TeleportPhysics,
+	}
+
 	public enum ETickingGroup : byte
 	{
 		TG_PrePhysics,
@@ -509,6 +768,53 @@ namespace UnrealEngine
 	{
 		TL_TimelineLength,
 		TL_LastKeyFrame,
+	}
+
+	public enum ETimelineSigType : byte
+	{
+		ETS_EventSignature,
+		ETS_FloatSignature,
+		ETS_VectorSignature,
+		ETS_LinearColorSignature,
+		ETS_InvalidSignature,
+		ETS_MAX,
+	}
+
+	public enum ETraceTypeQuery : byte
+	{
+		TraceTypeQuery1,
+		TraceTypeQuery2,
+		TraceTypeQuery3,
+		TraceTypeQuery4,
+		TraceTypeQuery5,
+		TraceTypeQuery6,
+		TraceTypeQuery7,
+		TraceTypeQuery8,
+		TraceTypeQuery9,
+		TraceTypeQuery10,
+		TraceTypeQuery11,
+		TraceTypeQuery12,
+		TraceTypeQuery13,
+		TraceTypeQuery14,
+		TraceTypeQuery15,
+		TraceTypeQuery16,
+		TraceTypeQuery17,
+		TraceTypeQuery18,
+		TraceTypeQuery19,
+		TraceTypeQuery20,
+		TraceTypeQuery21,
+		TraceTypeQuery22,
+		TraceTypeQuery23,
+		TraceTypeQuery24,
+		TraceTypeQuery25,
+		TraceTypeQuery26,
+		TraceTypeQuery27,
+		TraceTypeQuery28,
+		TraceTypeQuery29,
+		TraceTypeQuery30,
+		TraceTypeQuery31,
+		TraceTypeQuery32,
+		TraceTypeQuery_MAX,
 	}
 
 	public enum ETrailWidthMode : byte
@@ -568,11 +874,36 @@ namespace UnrealEngine
 		TRISORT_MAX,
 	}
 
+	public enum EUpdateRateShiftBucket : byte
+	{
+		ShiftBucket0 = 0,
+		ShiftBucket1,
+		ShiftBucket2,
+		ShiftBucket3,
+		ShiftBucket4,
+		ShiftBucket5,
+		ShiftBucketMax,
+	}
+
 	public enum EUpdateTransformFlags : byte
 	{
 		None = 0x0,
 		SkipPhysicsUpdate = 0x1,
 		PropagateFromParent = 0x2,
+	}
+
+	public enum EUserActivityContext : byte
+	{
+		Game,
+		Editor,
+		Other,
+	}
+
+	public enum EVectorQuantization : byte
+	{
+		RoundWholeNumber,
+		RoundOneDecimal,
+		RoundTwoDecimals,
 	}
 
 	public enum EVerticalTextAligment : byte
@@ -622,6 +953,15 @@ namespace UnrealEngine
 		NoPropagation,
 		DirtyOnly,
 		Propagate,
+	}
+
+	public enum EWalkableSlopeBehavior : byte
+	{
+		WalkableSlope_Default,
+		WalkableSlope_Increase,
+		WalkableSlope_Decrease,
+		WalkableSlope_Unwalkable,
+		WalkableSlope_Max,
 	}
 
 	public enum EWindSourceType : byte
