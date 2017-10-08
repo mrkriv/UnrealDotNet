@@ -22,19 +22,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ADefaultPawn(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_CollisionComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ADefaultPawn_CollisionComponentName_SET(IntPtr Ptr, string Value);
+		private static extern StringWrapper E_PROP_ADefaultPawn_CollisionComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_MeshComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ADefaultPawn_MeshComponentName_SET(IntPtr Ptr, string Value);
+		private static extern StringWrapper E_PROP_ADefaultPawn_MeshComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ADefaultPawn_MovementComponentName_SET(IntPtr Ptr, string Value);
+		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
@@ -49,30 +43,27 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Name of the CollisionComponent. </para>
 		/// </summary>
-		public string CollisionComponentName
+		public static string CollisionComponentName
 		{
-			get => E_PROP_ADefaultPawn_CollisionComponentName_GET(NativePointer);
-			set => E_PROP_ADefaultPawn_CollisionComponentName_SET(NativePointer, value);
+			get => E_PROP_ADefaultPawn_CollisionComponentName_GET();
 		}
 
 		
 		/// <summary>
 		/// <para>Name of the MeshComponent. Use this name if you want to prevent creation of the component (with ObjectInitializer.DoNotCreateDefaultSubobject). </para>
 		/// </summary>
-		public string MeshComponentName
+		public static string MeshComponentName
 		{
-			get => E_PROP_ADefaultPawn_MeshComponentName_GET(NativePointer);
-			set => E_PROP_ADefaultPawn_MeshComponentName_SET(NativePointer, value);
+			get => E_PROP_ADefaultPawn_MeshComponentName_GET();
 		}
 
 		
 		/// <summary>
 		/// <para>Name of the MovementComponent.  Use this name if you want to use a different class (with ObjectInitializer.SetDefaultSubobjectClass). </para>
 		/// </summary>
-		public string MovementComponentName
+		public static string MovementComponentName
 		{
-			get => E_PROP_ADefaultPawn_MovementComponentName_GET(NativePointer);
-			set => E_PROP_ADefaultPawn_MovementComponentName_SET(NativePointer, value);
+			get => E_PROP_ADefaultPawn_MovementComponentName_GET();
 		}
 
 		#endregion

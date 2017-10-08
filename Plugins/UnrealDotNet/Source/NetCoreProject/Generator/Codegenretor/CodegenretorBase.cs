@@ -24,6 +24,8 @@ namespace Generator
         protected const string ExportEventRemovePrefix = ExportPrefix + "EVENT_DEL_";
         protected const string EventPrivatePrefix = "_Event_";
         protected const string EventInvokePrefix = "InvokeEvent_";
+        protected const string EventPropertyGetPostfix = "_GET";
+        protected const string EventPropertySetPostfix = "_SET";
         protected const string CPP_PCH = "UnrealDotNetRuntime";
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";

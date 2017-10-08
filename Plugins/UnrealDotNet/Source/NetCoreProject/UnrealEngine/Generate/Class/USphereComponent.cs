@@ -22,11 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USphereComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USphereComponent_SphereRadius_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USphereComponent_SphereRadius_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_USphereComponent_GetScaledSphereRadius(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -41,19 +36,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USphereComponent_SetSphereRadius(IntPtr Self, float InSphereRadius, bool bUpdateOverlaps);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The radius of the sphere </para>
-		/// </summary>
-		protected float SphereRadius
-		{
-			get => E_PROP_USphereComponent_SphereRadius_GET(NativePointer);
-			set => E_PROP_USphereComponent_SphereRadius_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

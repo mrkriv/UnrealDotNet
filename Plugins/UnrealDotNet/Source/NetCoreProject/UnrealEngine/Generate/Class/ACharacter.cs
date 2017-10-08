@@ -22,39 +22,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ACharacter(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_ACharacter_AnimRootMotionTranslationScale_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_AnimRootMotionTranslationScale_SET(IntPtr Ptr, float Value);
+		private static extern StringWrapper E_PROP_ACharacter_CapsuleComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_ACharacter_BasedMovement_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_BasedMovement_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_ACharacter_BaseRotationOffset_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_BaseRotationOffset_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_ACharacter_BaseTranslationOffset_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_BaseTranslationOffset_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_ACharacter_bInBaseReplication_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_bInBaseReplication_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ACharacter_CapsuleComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_CapsuleComponentName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ACharacter_CharacterMovementComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_CharacterMovementComponentName_SET(IntPtr Ptr, string Value);
+		private static extern StringWrapper E_PROP_ACharacter_CharacterMovementComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_ACharacter_CrouchedEyeHeight_GET(IntPtr Ptr);
@@ -88,9 +59,7 @@ namespace UnrealEngine
 		private static extern void E_EVENT_DEL_ACharacter_LandedDelegate(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_ACharacter_MeshComponentName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_MeshComponentName_SET(IntPtr Ptr, string Value);
+		private static extern StringWrapper E_PROP_ACharacter_MeshComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
@@ -109,21 +78,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_DEL_ACharacter_OnReachedJumpApex(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_ACharacter_ReplicatedBasedMovement_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_ReplicatedBasedMovement_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_ACharacter_ReplicatedMovementMode_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_ReplicatedMovementMode_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_ACharacter_RepRootMotion_GET(IntPtr Ptr);
@@ -331,54 +285,22 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		protected float AnimRootMotionTranslationScale
-		{
-			get => E_PROP_ACharacter_AnimRootMotionTranslationScale_GET(NativePointer);
-			set => E_PROP_ACharacter_AnimRootMotionTranslationScale_SET(NativePointer, value);
-		}
-
-		protected FBasedMovementInfo BasedMovement
-		{
-			get => E_PROP_ACharacter_BasedMovement_GET(NativePointer);
-			set => E_PROP_ACharacter_BasedMovement_SET(NativePointer, value);
-		}
-
-		protected FQuat BaseRotationOffset
-		{
-			get => E_PROP_ACharacter_BaseRotationOffset_GET(NativePointer);
-			set => E_PROP_ACharacter_BaseRotationOffset_SET(NativePointer, value);
-		}
-
-		protected FVector BaseTranslationOffset
-		{
-			get => E_PROP_ACharacter_BaseTranslationOffset_GET(NativePointer);
-			set => E_PROP_ACharacter_BaseTranslationOffset_SET(NativePointer, value);
-		}
-
-		protected bool bInBaseReplication
-		{
-			get => E_PROP_ACharacter_bInBaseReplication_GET(NativePointer);
-			set => E_PROP_ACharacter_bInBaseReplication_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>Name of the CapsuleComponent. </para>
 		/// </summary>
-		public string CapsuleComponentName
+		public static string CapsuleComponentName
 		{
-			get => E_PROP_ACharacter_CapsuleComponentName_GET(NativePointer);
-			set => E_PROP_ACharacter_CapsuleComponentName_SET(NativePointer, value);
+			get => E_PROP_ACharacter_CapsuleComponentName_GET();
 		}
 
 		
 		/// <summary>
 		/// <para>Name of the CharacterMovement component. Use this name if you want to use a different class (with ObjectInitializer.SetDefaultSubobjectClass). </para>
 		/// </summary>
-		public string CharacterMovementComponentName
+		public static string CharacterMovementComponentName
 		{
-			get => E_PROP_ACharacter_CharacterMovementComponentName_GET(NativePointer);
-			set => E_PROP_ACharacter_CharacterMovementComponentName_SET(NativePointer, value);
+			get => E_PROP_ACharacter_CharacterMovementComponentName_GET();
 		}
 
 		
@@ -445,32 +367,9 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Name of the MeshComponent. Use this name if you want to prevent creation of the component (with ObjectInitializer.DoNotCreateDefaultSubobject). </para>
 		/// </summary>
-		public string MeshComponentName
+		public static string MeshComponentName
 		{
-			get => E_PROP_ACharacter_MeshComponentName_GET(NativePointer);
-			set => E_PROP_ACharacter_MeshComponentName_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Replicated version of relative movement. Read-only on simulated proxies! </para>
-		/// </summary>
-		protected FBasedMovementInfo ReplicatedBasedMovement
-		{
-			get => E_PROP_ACharacter_ReplicatedBasedMovement_GET(NativePointer);
-			set => E_PROP_ACharacter_ReplicatedBasedMovement_SET(NativePointer, value);
-		}
-
-		protected byte ReplicatedMovementMode
-		{
-			get => E_PROP_ACharacter_ReplicatedMovementMode_GET(NativePointer);
-			set => E_PROP_ACharacter_ReplicatedMovementMode_SET(NativePointer, value);
-		}
-
-		protected float ReplicatedServerLastTransformUpdateTimeStamp
-		{
-			get => E_PROP_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_GET(NativePointer);
-			set => E_PROP_ACharacter_ReplicatedServerLastTransformUpdateTimeStamp_SET(NativePointer, value);
+			get => E_PROP_ACharacter_MeshComponentName_GET();
 		}
 
 		

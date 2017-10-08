@@ -22,31 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkyLightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkyLightComponent_AverageBrightness_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkyLightComponent_AverageBrightness_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkyLightComponent_bHasEverCaptured_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkyLightComponent_bHasEverCaptured_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkyLightComponent_BlendDestinationAverageBrightness_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkyLightComponent_BlendDestinationAverageBrightness_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_USkyLightComponent_BlendFraction_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkyLightComponent_BlendFraction_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkyLightComponent_bSavedConstructionScriptValuesValid_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkyLightComponent_bSavedConstructionScriptValuesValid_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkyLightComponent_RecaptureSky(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -61,47 +36,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkyLightComponent_UpdateLimitedRenderingStateFast(IntPtr Self);
 		
-		#endregion
-		
-		#region Property
-		protected float AverageBrightness
-		{
-			get => E_PROP_USkyLightComponent_AverageBrightness_GET(NativePointer);
-			set => E_PROP_USkyLightComponent_AverageBrightness_SET(NativePointer, value);
-		}
-
-		protected bool bHasEverCaptured
-		{
-			get => E_PROP_USkyLightComponent_bHasEverCaptured_GET(NativePointer);
-			set => E_PROP_USkyLightComponent_bHasEverCaptured_SET(NativePointer, value);
-		}
-
-		protected float BlendDestinationAverageBrightness
-		{
-			get => E_PROP_USkyLightComponent_BlendDestinationAverageBrightness_GET(NativePointer);
-			set => E_PROP_USkyLightComponent_BlendDestinationAverageBrightness_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If 0, no blend is present.  If > 0, BlendDestinationProcessedSkyTexture and BlendDestinationIrradianceEnvironmentMap must be generated and used for rendering. </para>
-		/// </summary>
-		protected float BlendFraction
-		{
-			get => E_PROP_USkyLightComponent_BlendFraction_GET(NativePointer);
-			set => E_PROP_USkyLightComponent_BlendFraction_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Indicates whether the cached data stored in GetComponentInstanceData is valid to be applied in ApplyComponentInstanceData. </para>
-		/// </summary>
-		protected bool bSavedConstructionScriptValuesValid
-		{
-			get => E_PROP_USkyLightComponent_bSavedConstructionScriptValuesValid_GET(NativePointer);
-			set => E_PROP_USkyLightComponent_bSavedConstructionScriptValuesValid_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

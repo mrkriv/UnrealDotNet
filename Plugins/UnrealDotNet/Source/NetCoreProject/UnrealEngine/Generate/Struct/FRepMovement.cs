@@ -34,9 +34,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepMovement_bSimulatedPhysicSleep_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_SET(IntPtr Ptr, int Value);
+		private static extern int E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FRepMovement_LinearVelocity_GET(IntPtr Ptr);
@@ -95,10 +93,9 @@ namespace UnrealEngine
 			set => E_PROP_FRepMovement_bSimulatedPhysicSleep_SET(NativePointer, value);
 		}
 
-		public int EnableMultiplayerWorldOriginRebasing
+		public static int EnableMultiplayerWorldOriginRebasing
 		{
-			get => E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET(NativePointer);
-			set => E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_SET(NativePointer, value);
+			get => E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET();
 		}
 
 		public FVector LinearVelocity

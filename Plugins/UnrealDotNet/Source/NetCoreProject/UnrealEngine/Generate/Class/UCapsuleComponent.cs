@@ -22,21 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UCapsuleComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UCapsuleComponent_CapsuleHalfHeight_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCapsuleComponent_CapsuleHalfHeight_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UCapsuleComponent_CapsuleHeight_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCapsuleComponent_CapsuleHeight_DEPRECATED_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UCapsuleComponent_CapsuleRadius_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCapsuleComponent_CapsuleRadius_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCapsuleComponent_GetScaledCapsuleHalfHeight(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -81,37 +66,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCapsuleComponent_SetCapsuleSize(IntPtr Self, float InRadius, float InHalfHeight, bool bUpdateOverlaps);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Half-height, from center of capsule to the end of top or bottom hemisphere. </para>
-		/// <para>This cannot be less than CapsuleRadius. </para>
-		/// </summary>
-		protected float CapsuleHalfHeight
-		{
-			get => E_PROP_UCapsuleComponent_CapsuleHalfHeight_GET(NativePointer);
-			set => E_PROP_UCapsuleComponent_CapsuleHalfHeight_SET(NativePointer, value);
-		}
-
-		protected float CapsuleHeight_DEPRECATED
-		{
-			get => E_PROP_UCapsuleComponent_CapsuleHeight_DEPRECATED_GET(NativePointer);
-			set => E_PROP_UCapsuleComponent_CapsuleHeight_DEPRECATED_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Radius of cap hemispheres and center cylinder. </para>
-		/// <para>This cannot be more than CapsuleHalfHeight. </para>
-		/// </summary>
-		protected float CapsuleRadius
-		{
-			get => E_PROP_UCapsuleComponent_CapsuleRadius_GET(NativePointer);
-			set => E_PROP_UCapsuleComponent_CapsuleRadius_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

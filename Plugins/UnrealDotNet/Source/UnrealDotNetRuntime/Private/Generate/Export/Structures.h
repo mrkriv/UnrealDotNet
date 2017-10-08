@@ -145,11 +145,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_GET(FAttachmentTransformRules* Ptr) { return Ptr->bWeldSimulatedBodies; }
 	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_SET(FAttachmentTransformRules* Ptr, bool Value) { Ptr->bWeldSimulatedBodies = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET(FAttachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->KeepRelativeTransform); }
-	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_KeepRelativeTransform_SET(FAttachmentTransformRules* Ptr, INT_PTR Value) { Ptr->KeepRelativeTransform = *(FAttachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET() { return (INT_PTR)&(FAttachmentTransformRules::KeepRelativeTransform); }
 	
-	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET(FAttachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->KeepWorldTransform); }
-	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_KeepWorldTransform_SET(FAttachmentTransformRules* Ptr, INT_PTR Value) { Ptr->KeepWorldTransform = *(FAttachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET() { return (INT_PTR)&(FAttachmentTransformRules::KeepWorldTransform); }
 	
 	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_LocationRule_GET(FAttachmentTransformRules* Ptr) { return Ptr->LocationRule; }
 	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_LocationRule_SET(FAttachmentTransformRules* Ptr, EAttachmentRule Value) { Ptr->LocationRule = Value; }
@@ -160,11 +158,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_ScaleRule_GET(FAttachmentTransformRules* Ptr) { return Ptr->ScaleRule; }
 	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_ScaleRule_SET(FAttachmentTransformRules* Ptr, EAttachmentRule Value) { Ptr->ScaleRule = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET(FAttachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->SnapToTargetIncludingScale); }
-	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_SET(FAttachmentTransformRules* Ptr, INT_PTR Value) { Ptr->SnapToTargetIncludingScale = *(FAttachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET() { return (INT_PTR)&(FAttachmentTransformRules::SnapToTargetIncludingScale); }
 	
-	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET(FAttachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->SnapToTargetNotIncludingScale); }
-	DOTNET_EXPORT void E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_SET(FAttachmentTransformRules* Ptr, INT_PTR Value) { Ptr->SnapToTargetNotIncludingScale = *(FAttachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET() { return (INT_PTR)&(FAttachmentTransformRules::SnapToTargetNotIncludingScale); }
 	
 	
 	/*	FAudioComponentParam	*/
@@ -899,11 +895,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_bCallModify_GET(FDetachmentTransformRules* Ptr) { return Ptr->bCallModify; }
 	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_bCallModify_SET(FDetachmentTransformRules* Ptr, bool Value) { Ptr->bCallModify = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET(FDetachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->KeepRelativeTransform); }
-	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_KeepRelativeTransform_SET(FDetachmentTransformRules* Ptr, INT_PTR Value) { Ptr->KeepRelativeTransform = *(FDetachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET() { return (INT_PTR)&(FDetachmentTransformRules::KeepRelativeTransform); }
 	
-	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET(FDetachmentTransformRules* Ptr) { return (INT_PTR)&(Ptr->KeepWorldTransform); }
-	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_KeepWorldTransform_SET(FDetachmentTransformRules* Ptr, INT_PTR Value) { Ptr->KeepWorldTransform = *(FDetachmentTransformRules*)Value; }
+	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET() { return (INT_PTR)&(FDetachmentTransformRules::KeepWorldTransform); }
 	
 	DOTNET_EXPORT auto E_PROP_FDetachmentTransformRules_LocationRule_GET(FDetachmentTransformRules* Ptr) { return Ptr->LocationRule; }
 	DOTNET_EXPORT void E_PROP_FDetachmentTransformRules_LocationRule_SET(FDetachmentTransformRules* Ptr, EDetachmentRule Value) { Ptr->LocationRule = Value; }
@@ -2356,8 +2350,7 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FRepMovement_bSimulatedPhysicSleep_GET(FRepMovement* Ptr) { return Ptr->bSimulatedPhysicSleep; }
 	DOTNET_EXPORT void E_PROP_FRepMovement_bSimulatedPhysicSleep_SET(FRepMovement* Ptr, uint8 Value) { Ptr->bSimulatedPhysicSleep = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET(FRepMovement* Ptr) { return Ptr->EnableMultiplayerWorldOriginRebasing; }
-	DOTNET_EXPORT void E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_SET(FRepMovement* Ptr, int32 Value) { Ptr->EnableMultiplayerWorldOriginRebasing = Value; }
+	DOTNET_EXPORT auto E_PROP_FRepMovement_EnableMultiplayerWorldOriginRebasing_GET() { return FRepMovement::EnableMultiplayerWorldOriginRebasing; }
 	
 	DOTNET_EXPORT auto E_PROP_FRepMovement_LinearVelocity_GET(FRepMovement* Ptr) { return (INT_PTR)&(Ptr->LinearVelocity); }
 	DOTNET_EXPORT void E_PROP_FRepMovement_LinearVelocity_SET(FRepMovement* Ptr, INT_PTR Value) { Ptr->LinearVelocity = *(FVector*)Value; }
@@ -3543,8 +3536,7 @@ extern "C"
 	
 	/*	FURL	*/
 	
-	DOTNET_EXPORT auto E_PROP_FURL_bDefaultsInitialized_GET(FURL* Ptr) { return Ptr->bDefaultsInitialized; }
-	DOTNET_EXPORT void E_PROP_FURL_bDefaultsInitialized_SET(FURL* Ptr, bool Value) { Ptr->bDefaultsInitialized = Value; }
+	DOTNET_EXPORT auto E_PROP_FURL_bDefaultsInitialized_GET() { return FURL::bDefaultsInitialized; }
 	
 	DOTNET_EXPORT auto E_PROP_FURL_Host_GET(FURL* Ptr) { return ConvertToManage_StringWrapper(Ptr->Host); }
 	DOTNET_EXPORT void E_PROP_FURL_Host_SET(FURL* Ptr, char* Value) { Ptr->Host = ConvertFromManage_FString(Value); }

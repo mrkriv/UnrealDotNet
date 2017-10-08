@@ -5,7 +5,6 @@ translationUnit
 	: 
 	(typePreDeclaration
 	| method
-	/*| constructor*/
 	| classDeclaration
 	| enumDeclaration
 	| property

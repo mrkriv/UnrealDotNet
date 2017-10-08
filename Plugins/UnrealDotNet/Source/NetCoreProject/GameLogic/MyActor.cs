@@ -26,20 +26,13 @@ namespace GameLogic
                 Box = new UBoxComponent(this, "Simple Child");
                 Box.RegisterComponent();
 
-                var transformRules = new FAttachmentTransformRules(
-                    EAttachmentRule.SnapToTarget,
-                    EAttachmentRule.SnapToTarget,
-                    EAttachmentRule.SnapToTarget,
-                    false
-                );
-
                 var root = GetRootComponent();
                 var root_sm = root as UStaticMeshComponent;
 
                 ScreenDebugMessage(root_sm?.GetFName() ?? "null");
 
-                Box.AttachToComponent(root, transformRules, "");
-
+                Box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
+                
                 Box.SetCollisionProfileName("OverlapAll");
                 Box.SetBoxExtent(new FVector(100, 100, 100), false);
 

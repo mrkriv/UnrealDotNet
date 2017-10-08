@@ -27,11 +27,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bActorSeamlessTraveled_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bAllowTickBeforeBeginPlay_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bAllowTickBeforeBeginPlay_SET(IntPtr Ptr, byte Value);
@@ -55,11 +50,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_AActor_bCanBeDamaged_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bCanBeDamaged_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_AActor_bCanBeInCluster_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_bCanBeInCluster_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bCollideWhenPlacing_GET(IntPtr Ptr);
@@ -137,11 +127,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bReplicateMovement_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_AActor_bReplicates_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_bReplicates_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bRunningUserConstructionScript_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bRunningUserConstructionScript_SET(IntPtr Ptr, byte Value);
@@ -160,11 +145,6 @@ namespace UnrealEngine
 		private static extern float E_PROP_AActor_CustomTimeDilation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_CustomTimeDilation_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_AActor_InitialLifeSpan_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_InitialLifeSpan_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_AActor_InputPriority_GET(IntPtr Ptr);
@@ -190,11 +170,6 @@ namespace UnrealEngine
 		private static extern float E_PROP_AActor_NetCullDistanceSquared_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_NetCullDistanceSquared_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_AActor_NetDriverName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_NetDriverName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AActor_NetPriority_GET(IntPtr Ptr);
@@ -259,11 +234,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_AActor_ReplicatedMovement_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_ReplicatedMovement_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_PROP_AActor_RootComponent_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_RootComponent_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_SpawnCollisionHandlingMethod_GET(IntPtr Ptr);
@@ -876,12 +846,6 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bActorSeamlessTraveled_SET(NativePointer, value);
 		}
 
-		protected byte bAllowReceiveTickEventOnDedicatedServer
-		{
-			get => E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_GET(NativePointer);
-			set => E_PROP_AActor_bAllowReceiveTickEventOnDedicatedServer_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>Whether we allow this Actor to tick before it receives the BeginPlay event. </para>
@@ -934,16 +898,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_bCanBeDamaged_GET(NativePointer);
 			set => E_PROP_AActor_bCanBeDamaged_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>If true, this actor can be put inside of a GC Cluster to improve Garbage Collection performance </para>
-		/// </summary>
-		protected byte bCanBeInCluster
-		{
-			get => E_PROP_AActor_bCanBeInCluster_GET(NativePointer);
-			set => E_PROP_AActor_bCanBeInCluster_SET(NativePointer, value);
 		}
 
 		public byte bCollideWhenPlacing
@@ -1082,17 +1036,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this actor will replicate to remote machines </para>
-		/// <para>@see SetReplicates() </para>
-		/// </summary>
-		protected byte bReplicates
-		{
-			get => E_PROP_AActor_bReplicates_GET(NativePointer);
-			set => E_PROP_AActor_bReplicates_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
 		/// <para>True if this actor is currently running user construction script (used to defer component registration) </para>
 		/// </summary>
 		public byte bRunningUserConstructionScript
@@ -1126,16 +1069,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_CustomTimeDilation_GET(NativePointer);
 			set => E_PROP_AActor_CustomTimeDilation_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>How long this Actor lives before dying, 0=forever. Note this is the INITIAL value and should not be modified once play has begun. </para>
-		/// </summary>
-		protected float InitialLifeSpan
-		{
-			get => E_PROP_AActor_InitialLifeSpan_GET(NativePointer);
-			set => E_PROP_AActor_InitialLifeSpan_SET(NativePointer, value);
 		}
 
 		
@@ -1187,12 +1120,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_NetCullDistanceSquared_GET(NativePointer);
 			set => E_PROP_AActor_NetCullDistanceSquared_SET(NativePointer, value);
-		}
-
-		protected string NetDriverName
-		{
-			get => E_PROP_AActor_NetDriverName_GET(NativePointer);
-			set => E_PROP_AActor_NetDriverName_SET(NativePointer, value);
 		}
 
 		
@@ -1251,16 +1178,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_ReplicatedMovement_GET(NativePointer);
 			set => E_PROP_AActor_ReplicatedMovement_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Collision primitive that defines the transform (location, rotation, scale) of this Actor. </para>
-		/// </summary>
-		protected USceneComponent RootComponent
-		{
-			get => E_PROP_AActor_RootComponent_GET(NativePointer);
-			set => E_PROP_AActor_RootComponent_SET(NativePointer, value);
 		}
 
 		

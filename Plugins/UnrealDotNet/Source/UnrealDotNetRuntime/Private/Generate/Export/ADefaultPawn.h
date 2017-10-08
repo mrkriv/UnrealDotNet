@@ -7,14 +7,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_ADefaultPawn_CollisionComponentName_GET(ADefaultPawn* Ptr) { return ConvertToManage_StringWrapper(Ptr->CollisionComponentName); }
-	DOTNET_EXPORT void E_PROP_ADefaultPawn_CollisionComponentName_SET(ADefaultPawn* Ptr, char* Value) { Ptr->CollisionComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ADefaultPawn_CollisionComponentName_GET() { return ConvertToManage_StringWrapper(ADefaultPawn::CollisionComponentName); }
 	
-	DOTNET_EXPORT auto E_PROP_ADefaultPawn_MeshComponentName_GET(ADefaultPawn* Ptr) { return ConvertToManage_StringWrapper(Ptr->MeshComponentName); }
-	DOTNET_EXPORT void E_PROP_ADefaultPawn_MeshComponentName_SET(ADefaultPawn* Ptr, char* Value) { Ptr->MeshComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ADefaultPawn_MeshComponentName_GET() { return ConvertToManage_StringWrapper(ADefaultPawn::MeshComponentName); }
 	
-	DOTNET_EXPORT auto E_PROP_ADefaultPawn_MovementComponentName_GET(ADefaultPawn* Ptr) { return ConvertToManage_StringWrapper(Ptr->MovementComponentName); }
-	DOTNET_EXPORT void E_PROP_ADefaultPawn_MovementComponentName_SET(ADefaultPawn* Ptr, char* Value) { Ptr->MovementComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ADefaultPawn_MovementComponentName_GET() { return ConvertToManage_StringWrapper(ADefaultPawn::MovementComponentName); }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ADefaultPawn(UObject* Parent, char* Name)

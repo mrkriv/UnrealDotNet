@@ -283,6 +283,9 @@ namespace Generator
 
         public static bool PropertyFilter(Variable m)
         {
+            if(m.AccessModifier != AccessModifier.Public)   // todo: экспортировать protected свойства
+                return false;
+
             if (m.IsConst)
                 return false;
 

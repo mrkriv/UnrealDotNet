@@ -11,9 +11,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FURL_bDefaultsInitialized_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FURL_bDefaultsInitialized_SET(IntPtr Ptr, bool Value);
+		private static extern bool E_PROP_FURL_bDefaultsInitialized_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FURL_Host_GET(IntPtr Ptr);
@@ -68,10 +66,9 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		public bool bDefaultsInitialized
+		public static bool bDefaultsInitialized
 		{
-			get => E_PROP_FURL_bDefaultsInitialized_GET(NativePointer);
-			set => E_PROP_FURL_bDefaultsInitialized_SET(NativePointer, value);
+			get => E_PROP_FURL_bDefaultsInitialized_GET();
 		}
 
 		public string Host

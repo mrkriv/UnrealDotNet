@@ -6,6 +6,7 @@ namespace Generator.Metadata
     public abstract class Variable : Primitive, IEquatable<Variable>
     {
         public bool IsConst { get; set; }
+        public bool IsStatic { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
 

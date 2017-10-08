@@ -32,9 +32,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UPrimitiveComponent_CurrentTag_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_CurrentTag_SET(IntPtr Ptr, int Value);
+		private static extern int E_PROP_UPrimitiveComponent_CurrentTag_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(IntPtr Ptr);
@@ -45,11 +43,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UPrimitiveComponent_LastCheckedAllCollideableDescendantsTime_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_LastCheckedAllCollideableDescendantsTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPrimitiveComponent_LastRenderTime_GET(IntPtr Ptr);
@@ -543,10 +536,9 @@ namespace UnrealEngine
 			set => E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(NativePointer, value);
 		}
 
-		public int CurrentTag
+		public static int CurrentTag
 		{
-			get => E_PROP_UPrimitiveComponent_CurrentTag_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_CurrentTag_SET(NativePointer, value);
+			get => E_PROP_UPrimitiveComponent_CurrentTag_GET();
 		}
 
 		
@@ -567,16 +559,6 @@ namespace UnrealEngine
 		{
 			get => (ERendererStencilMask)E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_GET(NativePointer);
 			set => E_PROP_UPrimitiveComponent_CustomDepthStencilWriteMask_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Last time we checked AreAllCollideableDescendantsRelative(), so we can throttle those tests since it rarely changes once false. </para>
-		/// </summary>
-		protected float LastCheckedAllCollideableDescendantsTime
-		{
-			get => E_PROP_UPrimitiveComponent_LastCheckedAllCollideableDescendantsTime_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_LastCheckedAllCollideableDescendantsTime_SET(NativePointer, value);
 		}
 
 		public float LastRenderTime

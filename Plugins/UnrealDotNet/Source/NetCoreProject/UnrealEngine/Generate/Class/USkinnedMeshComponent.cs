@@ -22,24 +22,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkinnedMeshComponent_bDoubleBufferedComponentSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_bDoubleBufferedComponentSpaceTransforms_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_CurrentEditableComponentTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_CurrentEditableComponentTransforms_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_CurrentReadComponentTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_CurrentReadComponentTransforms_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(IntPtr Ptr);
@@ -50,11 +35,6 @@ namespace UnrealEngine
 		private static extern int E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_USkinnedMeshComponent_MasterBoneMapCacheCount_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_MasterBoneMapCacheCount_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(IntPtr Ptr);
@@ -75,11 +55,6 @@ namespace UnrealEngine
 		private static extern int E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USkinnedMeshComponent_RefPoseOverride_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_RefPoseOverride_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_GET(IntPtr Ptr);
@@ -148,42 +123,12 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Are we using double buffered ComponentSpaceTransforms </para>
-		/// </summary>
-		protected bool bDoubleBufferedComponentSpaceTransforms
-		{
-			get => E_PROP_USkinnedMeshComponent_bDoubleBufferedComponentSpaceTransforms_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_bDoubleBufferedComponentSpaceTransforms_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
 		/// <para>Controls how dark the capsule indirect shadow can be. </para>
 		/// </summary>
 		public float CapsuleIndirectShadowMinVisibility
 		{
 			get => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The index for the ComponentSpaceTransforms buffer we can currently write to </para>
-		/// </summary>
-		protected int CurrentEditableComponentTransforms
-		{
-			get => E_PROP_USkinnedMeshComponent_CurrentEditableComponentTransforms_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_CurrentEditableComponentTransforms_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The index for the ComponentSpaceTransforms buffer we can currently read from </para>
-		/// </summary>
-		protected int CurrentReadComponentTransforms
-		{
-			get => E_PROP_USkinnedMeshComponent_CurrentReadComponentTransforms_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_CurrentReadComponentTransforms_SET(NativePointer, value);
 		}
 
 		public byte CustomSortAlternateIndexMode
@@ -200,16 +145,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Incremented every time the master bone map changes. Used to keep in sync with any duplicate data needed by other threads </para>
-		/// </summary>
-		protected int MasterBoneMapCacheCount
-		{
-			get => E_PROP_USkinnedMeshComponent_MasterBoneMapCacheCount_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_MasterBoneMapCacheCount_SET(NativePointer, value);
 		}
 
 		
@@ -252,16 +187,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_PredictedLODLevel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Information for current ref pose override, if present </para>
-		/// </summary>
-		protected FSkelMeshRefPoseOverride RefPoseOverride
-		{
-			get => E_PROP_USkinnedMeshComponent_RefPoseOverride_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_RefPoseOverride_SET(NativePointer, value);
 		}
 
 		

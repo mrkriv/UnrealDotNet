@@ -37,16 +37,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_BaseEyeHeight_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_APawn_ControlInputVector_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_ControlInputVector_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_APawn_LastControlInputVector_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APawn_LastControlInputVector_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
@@ -240,18 +230,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_APawn_BaseEyeHeight_GET(NativePointer);
 			set => E_PROP_APawn_BaseEyeHeight_SET(NativePointer, value);
-		}
-
-		protected FVector ControlInputVector
-		{
-			get => E_PROP_APawn_ControlInputVector_GET(NativePointer);
-			set => E_PROP_APawn_ControlInputVector_SET(NativePointer, value);
-		}
-
-		protected FVector LastControlInputVector
-		{
-			get => E_PROP_APawn_LastControlInputVector_GET(NativePointer);
-			set => E_PROP_APawn_LastControlInputVector_SET(NativePointer, value);
 		}
 
 		public byte RemoteViewPitch

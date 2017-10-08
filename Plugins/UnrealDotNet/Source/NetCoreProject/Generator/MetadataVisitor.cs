@@ -147,11 +147,12 @@ namespace Generator
                 return null;
 
             var variable = ParceType(context.type());
-            variable.Name = context.propertyName().GetText();
-            variable.Default = context.propertyDefaultValue()?.GetText();
-            variable.UMeta = CurrentUMeta ?? variable.UMeta;
-            variable.Description = CurrentComment;
             variable.AccessModifier = AccessModifier;
+            variable.Default = context.propertyDefaultValue()?.GetText();
+            variable.Description = CurrentComment;
+            variable.IsStatic = context.FoundChild<IsStaticContext>();
+            variable.Name = context.propertyName().GetText();
+            variable.UMeta = CurrentUMeta ?? variable.UMeta;
 
             CurrentClass.Property.Add(variable);
             CurrentUMeta = null;
@@ -347,7 +348,7 @@ namespace Generator
             variable.IsConst = context.FoundChild<IsConstContext>();
             variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
             variable.IsReference = context.FoundChild<IsRefQuantContext>();
-            
+
             return variable;
         }
 

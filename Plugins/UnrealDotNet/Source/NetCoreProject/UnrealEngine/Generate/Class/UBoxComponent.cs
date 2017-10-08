@@ -22,11 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UBoxComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UBoxComponent_BoxExtent_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UBoxComponent_BoxExtent_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UBoxComponent_GetScaledBoxExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -38,19 +33,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UBoxComponent_SetBoxExtent(IntPtr Self, IntPtr InBoxExtent, bool bUpdateOverlaps);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>The extents (radii dimensions) of the box </para>
-		/// </summary>
-		protected FVector BoxExtent
-		{
-			get => E_PROP_UBoxComponent_BoxExtent_GET(NativePointer);
-			set => E_PROP_UBoxComponent_BoxExtent_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

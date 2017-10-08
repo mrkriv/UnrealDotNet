@@ -154,10 +154,11 @@ namespace Generator
 
             private static void GenerateProperty(CoreWriter cw_standart, CoreWriter cw_event, Class Class, Variable prop)
             {
-                if (Class.IsStructure && prop.AccessModifier != AccessModifier.Public)
-                    return;
-
-                if (prop is DelegateVariable)
+                if (prop.IsStatic)
+                {
+                    GeneratePropertyStatic(cw_standart, Class, prop);
+                }
+                else if (prop is DelegateVariable)
                 {
                     GeneratePropertyEvent(cw_event, Class, prop);
                 }
@@ -208,6 +209,22 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            private static void GeneratePropertyStatic(CoreWriter cw, Class Class, Variable prop)
+            {
+                GenerateSummaty(cw, prop);
+
+                cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} static {ExportVariable(prop, false)}");
+                cw.OpenBlock();
+
+                var convGet = prop is EnumVariable ? $"({prop.Type})" : "";
+
+                cw.WriteLine($"get => {convGet}{ExportPropertyPrefix}{Class.Name}_{prop.Name}{EventPropertyGetPostfix}();");
+                
+                cw.CloseBlock();
+
+                cw.WriteLine();
+            }
+
             private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
             {
                 GenerateSummaty(cw, prop);
@@ -218,11 +235,11 @@ namespace Generator
                 var convGet = prop is EnumVariable ? $"({prop.Type})" : "";
                 var convSet = prop is EnumVariable ? $"(byte)" : "";
 
-                cw.WriteLine($"get => {convGet}{ExportPropertyPrefix}{Class.Name}_{prop.Name}_GET(NativePointer);");
+                cw.WriteLine($"get => {convGet}{ExportPropertyPrefix}{Class.Name}_{prop.Name}{EventPropertyGetPostfix}(NativePointer);");
 
                 if (!prop.IsReadOnly())
                     cw.WriteLine(
-                        $"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}_SET(NativePointer, {convSet}value);");
+                        $"set => {ExportPropertyPrefix}{Class.Name}_{prop.Name}{EventPropertySetPostfix}(NativePointer, {convSet}value);");
 
                 cw.CloseBlock();
 
@@ -277,9 +294,13 @@ namespace Generator
 
             private static void GenerateClassPropertyDLLImport(CoreWriter cw, Class Class)
             {
-                foreach (var prop in Class.Property.Where(p => !p.IsConst))
+                foreach (var prop in Class.Property)
                 {
-                    if (prop is DelegateVariable)
+                    if(prop.IsStatic)
+                    {
+                        GenerateClassPropertyStaticDLLImport(cw, Class, prop);
+                    }
+                    else if (prop is DelegateVariable)
                     {
                         GenerateClassPropertyEventDLLImport(cw, Class, prop);
                     }
@@ -303,19 +324,30 @@ namespace Generator
                 cw.WriteLine();
             }
 
+            private static void GenerateClassPropertyStaticDLLImport(CoreWriter cw, Class Class, Variable prop)
+            {
+                var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
+
+                WriteDLLImport(cw);
+                cw.WriteLine(
+                    $"private static extern {prop.GetTypeCSForExtend(true)} {baseName}{EventPropertyGetPostfix}();");
+
+                cw.WriteLine();
+            }
+
             private static void GenerateClassPropertyStandartDLLImport(CoreWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 WriteDLLImport(cw);
                 cw.WriteLine(
-                    $"private static extern {prop.GetTypeCSForExtend(true)} {baseName}_GET(IntPtr Ptr);");
+                    $"private static extern {prop.GetTypeCSForExtend(true)} {baseName}{EventPropertyGetPostfix}(IntPtr Ptr);");
 
                 if (!prop.IsReadOnly())
                 {
                     WriteDLLImport(cw);
                     cw.WriteLine(
-                        $"private static extern void {baseName}_SET(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
+                        $"private static extern void {baseName}{EventPropertySetPostfix}(IntPtr Ptr, {prop.GetTypeCSForExtend()} Value);");
                 }
 
                 cw.WriteLine();

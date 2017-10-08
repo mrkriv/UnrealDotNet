@@ -43,11 +43,9 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_ACharacter_CapsuleComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->CapsuleComponentName); }
-	DOTNET_EXPORT void E_PROP_ACharacter_CapsuleComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->CapsuleComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_CapsuleComponentName_GET() { return ConvertToManage_StringWrapper(ACharacter::CapsuleComponentName); }
 	
-	DOTNET_EXPORT auto E_PROP_ACharacter_CharacterMovementComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->CharacterMovementComponentName); }
-	DOTNET_EXPORT void E_PROP_ACharacter_CharacterMovementComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->CharacterMovementComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_CharacterMovementComponentName_GET() { return ConvertToManage_StringWrapper(ACharacter::CharacterMovementComponentName); }
 	
 	DOTNET_EXPORT auto E_PROP_ACharacter_CrouchedEyeHeight_GET(ACharacter* Ptr) { return Ptr->CrouchedEyeHeight; }
 	DOTNET_EXPORT void E_PROP_ACharacter_CrouchedEyeHeight_SET(ACharacter* Ptr, float Value) { Ptr->CrouchedEyeHeight = Value; }
@@ -76,8 +74,7 @@ extern "C"
 	{
 	}
 
-	DOTNET_EXPORT auto E_PROP_ACharacter_MeshComponentName_GET(ACharacter* Ptr) { return ConvertToManage_StringWrapper(Ptr->MeshComponentName); }
-	DOTNET_EXPORT void E_PROP_ACharacter_MeshComponentName_SET(ACharacter* Ptr, char* Value) { Ptr->MeshComponentName = ConvertFromManage_FName(Value); }
+	DOTNET_EXPORT auto E_PROP_ACharacter_MeshComponentName_GET() { return ConvertToManage_StringWrapper(ACharacter::MeshComponentName); }
 	
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(ACharacter* Obj)
 	{

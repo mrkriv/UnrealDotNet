@@ -40,14 +40,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FDetachmentTransformRules_bCallModify_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDetachmentTransformRules_KeepRelativeTransform_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FDetachmentTransformRules_KeepWorldTransform_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FDetachmentTransformRules_LocationRule_GET(IntPtr Ptr);
@@ -81,16 +77,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Various preset detachment rules </para>
 		/// </summary>
-		public FDetachmentTransformRules KeepRelativeTransform
+		public static FDetachmentTransformRules KeepRelativeTransform
 		{
-			get => E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET(NativePointer);
-			set => E_PROP_FDetachmentTransformRules_KeepRelativeTransform_SET(NativePointer, value);
+			get => E_PROP_FDetachmentTransformRules_KeepRelativeTransform_GET();
 		}
 
-		public FDetachmentTransformRules KeepWorldTransform
+		public static FDetachmentTransformRules KeepWorldTransform
 		{
-			get => E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET(NativePointer);
-			set => E_PROP_FDetachmentTransformRules_KeepWorldTransform_SET(NativePointer, value);
+			get => E_PROP_FDetachmentTransformRules_KeepWorldTransform_GET();
 		}
 
 		

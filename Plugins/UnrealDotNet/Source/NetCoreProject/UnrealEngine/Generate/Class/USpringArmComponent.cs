@@ -27,16 +27,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USpringArmComponent_RelativeSocketLocation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USpringArmComponent_RelativeSocketLocation_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USpringArmComponent_RelativeSocketRotation_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USpringArmComponent_RelativeSocketRotation_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr Self, IntPtr DesiredArmLocation, IntPtr TraceHitLocation, bool bHitSomething, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -54,26 +44,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(NativePointer);
 			set => E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Cached component-space socket location </para>
-		/// </summary>
-		protected FVector RelativeSocketLocation
-		{
-			get => E_PROP_USpringArmComponent_RelativeSocketLocation_GET(NativePointer);
-			set => E_PROP_USpringArmComponent_RelativeSocketLocation_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Cached component-space socket rotation </para>
-		/// </summary>
-		protected FQuat RelativeSocketRotation
-		{
-			get => E_PROP_USpringArmComponent_RelativeSocketRotation_GET(NativePointer);
-			set => E_PROP_USpringArmComponent_RelativeSocketRotation_SET(NativePointer, value);
 		}
 
 		#endregion

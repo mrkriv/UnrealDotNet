@@ -54,8 +54,7 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->CachedMaxDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->CachedMaxDrawDistance = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CurrentTag_GET(UPrimitiveComponent* Ptr) { return Ptr->CurrentTag; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CurrentTag_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->CurrentTag = Value; }
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CurrentTag_GET() { return UPrimitiveComponent::CurrentTag; }
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(UPrimitiveComponent* Ptr) { return Ptr->CustomDepthStencilValue; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CustomDepthStencilValue_SET(UPrimitiveComponent* Ptr, int32 Value) { Ptr->CustomDepthStencilValue = Value; }

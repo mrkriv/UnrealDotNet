@@ -335,7 +335,7 @@ namespace Generator
             {
                 GenerateStructConstructors(cw, Class);
 
-                foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
+                foreach (var prop in Class.Property)
                 {
                     GenerateProperty(cw, Class, prop);
                 }
@@ -358,7 +358,11 @@ namespace Generator
 
             private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
             {
-                if (prop is DelegateVariable)
+                if (prop.IsStatic)
+                {
+                    GeneratePropertyStatic(cw, Class, prop);
+                }
+                else if (prop is DelegateVariable)
                 {
                     GeneratePropertyDelegate(cw, Class, prop);
                 }
@@ -368,17 +372,27 @@ namespace Generator
                 }
             }
 
+            private static void GeneratePropertyStatic(CoreWriter cw, Class Class, Variable prop)
+            {
+                var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
+
+                cw.WriteLine(
+                    $"{CPP_API} auto {baseName}{EventPropertyGetPostfix}() {{ {GenerateReturn(prop.Type, $"{Class.Name}::{prop.Name}", true)} }}");
+                
+                cw.WriteLine();
+            }
+
             private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 cw.WriteLine(
-                    $"{CPP_API} auto {baseName}_GET({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
+                    $"{CPP_API} auto {baseName}{EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
 
                 if (!prop.IsReadOnly())
                 {
                     cw.WriteLine(
-                        $"{CPP_API} void {baseName}_SET({Class.Name}* Ptr, {prop.GetTypeCPP()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
+                        $"{CPP_API} void {baseName}{EventPropertySetPostfix}({Class.Name}* Ptr, {prop.GetTypeCPP()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
                 }
 
                 cw.WriteLine();

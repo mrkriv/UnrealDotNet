@@ -32,14 +32,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAttachmentTransformRules_KeepRelativeTransform_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAttachmentTransformRules_KeepWorldTransform_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FAttachmentTransformRules_LocationRule_GET(IntPtr Ptr);
@@ -57,14 +53,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAttachmentTransformRules_ScaleRule_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_SET(IntPtr Ptr, IntPtr Value);
+		private static extern IntPtr E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET();
 		
 		#endregion
 		
@@ -83,16 +75,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Various preset attachment rules. Note that these default rules do NOT by default weld simulated bodies </para>
 		/// </summary>
-		public FAttachmentTransformRules KeepRelativeTransform
+		public static FAttachmentTransformRules KeepRelativeTransform
 		{
-			get => E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET(NativePointer);
-			set => E_PROP_FAttachmentTransformRules_KeepRelativeTransform_SET(NativePointer, value);
+			get => E_PROP_FAttachmentTransformRules_KeepRelativeTransform_GET();
 		}
 
-		public FAttachmentTransformRules KeepWorldTransform
+		public static FAttachmentTransformRules KeepWorldTransform
 		{
-			get => E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET(NativePointer);
-			set => E_PROP_FAttachmentTransformRules_KeepWorldTransform_SET(NativePointer, value);
+			get => E_PROP_FAttachmentTransformRules_KeepWorldTransform_GET();
 		}
 
 		
@@ -125,16 +115,14 @@ namespace UnrealEngine
 			set => E_PROP_FAttachmentTransformRules_ScaleRule_SET(NativePointer, (byte)value);
 		}
 
-		public FAttachmentTransformRules SnapToTargetIncludingScale
+		public static FAttachmentTransformRules SnapToTargetIncludingScale
 		{
-			get => E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET(NativePointer);
-			set => E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_SET(NativePointer, value);
+			get => E_PROP_FAttachmentTransformRules_SnapToTargetIncludingScale_GET();
 		}
 
-		public FAttachmentTransformRules SnapToTargetNotIncludingScale
+		public static FAttachmentTransformRules SnapToTargetNotIncludingScale
 		{
-			get => E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET(NativePointer);
-			set => E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_SET(NativePointer, value);
+			get => E_PROP_FAttachmentTransformRules_SnapToTargetNotIncludingScale_GET();
 		}
 
 		#endregion
