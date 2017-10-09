@@ -36,6 +36,12 @@ extern "C"
 		return (INT_PTR)NewObject<UObject>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UObject_AreNativePropertiesIdenticalTo(UObject* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_BeginDestroy(UObject* Self)
 	{
 		Self->BeginDestroy();
@@ -46,6 +52,12 @@ extern "C"
 		auto _p0 = bForceCheck;
 		auto _p1 = bResult;
 		return ((E_PROTECTED_WRAP_UObject*)Self)->CanCheckDefaultSubObjects_WRAP(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UObject_CanCreateInCurrentContext(UObject* Self, UObject* Template)
+	{
+		auto _p0 = Template;
+		return Self->CanCreateInCurrentContext(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UObject_CanModify(UObject* Self)
@@ -95,6 +107,11 @@ extern "C"
 		Self->FinishDestroy();
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetArchetype(UObject* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetArchetype());
+	}
+
 	DOTNET_EXPORT auto E_UObject_GetDefaultConfigFilename(UObject* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetDefaultConfigFilename());
@@ -120,6 +137,22 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetGlobalUserConfigFilename());
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetWorld(UObject* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetWorldChecked(UObject* Self, bool bSupported)
+	{
+		auto _p0 = bSupported;
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorldChecked(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UObject_Implements(UObject* Self)
+	{
+		return Self->Implements();
+	}
+
 	DOTNET_EXPORT auto E_UObject_ImplementsGetWorld(UObject* Self)
 	{
 		return Self->ImplementsGetWorld();
@@ -128,6 +161,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_IsAsset(UObject* Self)
 	{
 		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_UObject_IsBasedOnArchetype(UObject* Self, UObject* SomeObject)
+	{
+		auto _p0 = SomeObject;
+		return Self->IsBasedOnArchetype(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UObject_IsEditorOnly(UObject* Self)
@@ -229,6 +268,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_PostNetReceive(UObject* Self)
 	{
 		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UObject_PostRename(UObject* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UObject_PostRepNotifies(UObject* Self)

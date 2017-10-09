@@ -12,6 +12,18 @@ namespace UnrealEngine
 		{
 		}
 
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorldProxy_GetReference(IntPtr Self);
+		
+		#endregion
+		
+		#region ExternMethods
+		public UWorld GetReference()
+			=> E_UWorldProxy_GetReference(this);
+		
+		#endregion
+		
 		public static implicit operator IntPtr(UWorldProxy Self)
 		{
 			return Self.NativePointer;

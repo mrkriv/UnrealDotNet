@@ -80,6 +80,9 @@ namespace UnrealEngine
 		private static extern void E_UTimelineComponent_SetPlayRate(IntPtr Self, float NewRate);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UTimelineComponent_SetPropertySetObject(IntPtr Self, IntPtr NewPropertySetObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UTimelineComponent_SetTimelineLength(IntPtr Self, float NewLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -211,6 +214,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetPlayRate(float NewRate)
 			=> E_UTimelineComponent_SetPlayRate(this, NewRate);
+		
+		
+		/// <summary>
+		/// <para>Optionally provide an object to automatically update properties on </para>
+		/// </summary>
+		public void SetPropertySetObject(UObject NewPropertySetObject)
+			=> E_UTimelineComponent_SetPropertySetObject(this, NewPropertySetObject);
 		
 		
 		/// <summary>

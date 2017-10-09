@@ -27,6 +27,9 @@ namespace UnrealEngine
 		private static extern float E_ALight_GetBrightness(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ALight_GetLightComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ALight_IsEnabled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -61,6 +64,13 @@ namespace UnrealEngine
 		#region ExternMethods
 		public float GetBrightness()
 			=> E_ALight_GetBrightness(this);
+		
+		
+		/// <summary>
+		/// <para>Returns LightComponent subobject </para>
+		/// </summary>
+		public ULightComponent GetLightComponent()
+			=> E_ALight_GetLightComponent(this);
 		
 		public bool IsEnabled()
 			=> E_ALight_IsEnabled(this);

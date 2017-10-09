@@ -30,6 +30,11 @@ public:
 		OnRep_Owner();
 	}
 
+	void PostCreateBlueprintComponent_WRAP(UActorComponent* NewActorComp)
+	{
+		PostCreateBlueprintComponent(NewActorComp);
+	}
+
 	void ProcessUserConstructionScript_WRAP()
 	{
 		ProcessUserConstructionScript();
@@ -43,6 +48,11 @@ public:
 	void RegisterActorTickFunctions_WRAP(bool bRegister)
 	{
 		RegisterActorTickFunctions(bRegister);
+	}
+
+	void SetRemoteRoleForBackwardsCompat_WRAP(const ENetRole InRemoteRole)
+	{
+		SetRemoteRoleForBackwardsCompat(InRemoteRole);
 	}
 
 	void SyncReplicatedPhysicsSimulation_WRAP()
@@ -133,6 +143,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_InputPriority_GET(AActor* Ptr) { return Ptr->InputPriority; }
 	DOTNET_EXPORT void E_PROP_AActor_InputPriority_SET(AActor* Ptr, int32 Value) { Ptr->InputPriority = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AActor_Instigator_GET(AActor* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Instigator); }
+	DOTNET_EXPORT void E_PROP_AActor_Instigator_SET(AActor* Ptr, APawn* Value) { Ptr->Instigator = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AActor_LastNetUpdateTime_GET(AActor* Ptr) { return Ptr->LastNetUpdateTime; }
 	DOTNET_EXPORT void E_PROP_AActor_LastNetUpdateTime_SET(AActor* Ptr, float Value) { Ptr->LastNetUpdateTime = Value; }
 	
@@ -154,6 +167,83 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_NetUpdateTime_GET(AActor* Ptr) { return Ptr->NetUpdateTime; }
 	DOTNET_EXPORT void E_PROP_AActor_NetUpdateTime_SET(AActor* Ptr, float Value) { Ptr->NetUpdateTime = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorBeginOverlap(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnActorBeginOverlap";
+		wrapper->SourceObject = Obj;
+		Obj->OnActorBeginOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorBeginOverlapSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnActorBeginOverlap(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorEndOverlap(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnActorEndOverlap";
+		wrapper->SourceObject = Obj;
+		Obj->OnActorEndOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorEndOverlapSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnActorEndOverlap(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorHit(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnActorHit";
+		wrapper->SourceObject = Obj;
+		Obj->OnActorHit.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorHitSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnActorHit(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnBeginCursorOver(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnBeginCursorOver";
+		wrapper->SourceObject = Obj;
+		Obj->OnBeginCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorBeginCursorOverSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnBeginCursorOver(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnDestroyed(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnDestroyed";
+		wrapper->SourceObject = Obj;
+		Obj->OnDestroyed.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorDestroyedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnDestroyed(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnEndCursorOver(AActor* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnEndCursorOver";
+		wrapper->SourceObject = Obj;
+		Obj->OnEndCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorEndCursorOverSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_AActor_OnEndCursorOver(AActor* Obj)
+	{
+	}
+
+	DOTNET_EXPORT auto E_PROP_AActor_PrimaryActorTick_GET(AActor* Ptr) { return (INT_PTR)&(Ptr->PrimaryActorTick); }
+	
+	DOTNET_EXPORT auto E_PROP_AActor_ReplicatedMovement_GET(AActor* Ptr) { return (INT_PTR)&(Ptr->ReplicatedMovement); }
+	DOTNET_EXPORT void E_PROP_AActor_ReplicatedMovement_SET(AActor* Ptr, INT_PTR Value) { Ptr->ReplicatedMovement = *(FRepMovement*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AActor_SpawnCollisionHandlingMethod_GET(AActor* Ptr) { return Ptr->SpawnCollisionHandlingMethod; }
 	DOTNET_EXPORT void E_PROP_AActor_SpawnCollisionHandlingMethod_SET(AActor* Ptr, ESpawnActorCollisionHandlingMethod Value) { Ptr->SpawnCollisionHandlingMethod = Value; }
 	
@@ -174,9 +264,101 @@ extern "C"
 		return (INT_PTR) new FTransform(Self->ActorToWorld());
 	}
 
+	DOTNET_EXPORT auto E_AActor_AddActorLocalOffset(AActor* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FVector*)DeltaLocation;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->AddActorLocalOffset(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddActorLocalTransform(AActor* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FTransform*)NewTransform;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->AddActorLocalTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddActorWorldOffset(AActor* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FVector*)DeltaLocation;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->AddActorWorldOffset(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddActorWorldTransform(AActor* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FTransform*)DeltaTransform;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->AddActorWorldTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddComponent(AActor* Self, char* TemplateName, bool bManualAttachment, INT_PTR RelativeTransform, UObject* ComponentTemplateContext)
+	{
+		auto _p0 = ConvertFromManage_FName(TemplateName);
+		auto _p1 = bManualAttachment;
+		auto _p2 = *(FTransform*)RelativeTransform;
+		auto _p3 = ComponentTemplateContext;
+		return ConvertToManage_ObjectPointerDescription(Self->AddComponent(_p0, _p1, _p2, _p3));
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddInstanceComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->AddInstanceComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddOwnedComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->AddOwnedComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddTickPrerequisiteActor(AActor* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->AddTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddTickPrerequisiteComponent(AActor* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->AddTickPrerequisiteComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_AllowReceiveTickEventOnDedicatedServer(AActor* Self)
 	{
 		return Self->AllowReceiveTickEventOnDedicatedServer();
+	}
+
+	DOTNET_EXPORT auto E_AActor_ApplyWorldOffset(AActor* Self, INT_PTR InOffset, bool bWorldShift)
+	{
+		auto _p0 = *(FVector*)InOffset;
+		auto _p1 = bWorldShift;
+		Self->ApplyWorldOffset(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AttachToActor(AActor* Self, AActor* ParentActor, INT_PTR AttachmentRules, char* SocketName)
+	{
+		auto _p0 = ParentActor;
+		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
+		auto _p2 = ConvertFromManage_FName(SocketName);
+		Self->AttachToActor(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AttachToComponent(AActor* Self, USceneComponent* Parent, INT_PTR AttachmentRules, char* SocketName)
+	{
+		auto _p0 = Parent;
+		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
+		auto _p2 = ConvertFromManage_FName(SocketName);
+		Self->AttachToComponent(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AActor_BeginPlay(AActor* Self)
@@ -188,6 +370,12 @@ extern "C"
 	{
 		auto _p0 = bNonColliding;
 		return (INT_PTR) new FBox(Self->CalculateComponentsBoundingBoxInLocalSpace(_p0));
+	}
+
+	DOTNET_EXPORT auto E_AActor_CanBeBaseForCharacter(AActor* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		return Self->CanBeBaseForCharacter(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_CanEverTick(AActor* Self)
@@ -227,6 +415,20 @@ extern "C"
 		Self->ClearInstanceComponents(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_CopyRemoteRoleFrom(AActor* Self, AActor* CopyFromActor)
+	{
+		auto _p0 = CopyFromActor;
+		Self->CopyRemoteRoleFrom(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_DebugShowOneComponentHierarchy(AActor* Self, USceneComponent* SceneComp, int32 NestLevel, bool bShowPosition)
+	{
+		auto _p0 = SceneComp;
+		auto _p1 = NestLevel;
+		auto _p2 = bShowPosition;
+		Self->DebugShowOneComponentHierarchy(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_AActor_Destroy(AActor* Self, bool bNetForce, bool bShouldModifyLevel)
 	{
 		auto _p0 = bNetForce;
@@ -249,10 +451,30 @@ extern "C"
 		return Self->DestroyNetworkActorHandled();
 	}
 
+	DOTNET_EXPORT auto E_AActor_DetachAllSceneComponents(AActor* Self, USceneComponent* InParentComponent, INT_PTR DetachmentRules)
+	{
+		auto _p0 = InParentComponent;
+		auto _p1 = *(FDetachmentTransformRules*)DetachmentRules;
+		Self->DetachAllSceneComponents(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AActor_DetachFromActor(AActor* Self, INT_PTR DetachmentRules)
+	{
+		auto _p0 = *(FDetachmentTransformRules*)DetachmentRules;
+		Self->DetachFromActor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_DetachRootComponentFromParent(AActor* Self, bool bMaintainWorldPosition)
 	{
 		auto _p0 = bMaintainWorldPosition;
 		Self->DetachRootComponentFromParent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_DetachSceneComponentsFromParent(AActor* Self, USceneComponent* InParentComponent, bool bMaintainWorldPosition)
+	{
+		auto _p0 = InParentComponent;
+		auto _p1 = bMaintainWorldPosition;
+		Self->DetachSceneComponentsFromParent(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_DisableComponentsSimulatePhysics(AActor* Self)
@@ -265,10 +487,25 @@ extern "C"
 		Self->DispatchBeginPlay();
 	}
 
+	DOTNET_EXPORT auto E_AActor_DispatchBlockingHit(AActor* Self, UPrimitiveComponent* MyComp, UPrimitiveComponent* OtherComp, bool bSelfMoved, INT_PTR Hit)
+	{
+		auto _p0 = MyComp;
+		auto _p1 = OtherComp;
+		auto _p2 = bSelfMoved;
+		auto _p3 = *(FHitResult*)Hit;
+		Self->DispatchBlockingHit(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_AActor_ExchangeNetRoles(AActor* Self, bool bRemoteOwner)
 	{
 		auto _p0 = bRemoteOwner;
 		Self->ExchangeNetRoles(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_FinishAndRegisterComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->FinishAndRegisterComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_FlushNetDormancy(AActor* Self)
@@ -296,9 +533,24 @@ extern "C"
 		Self->GatherCurrentMovement();
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetActorBounds(AActor* Self, bool bOnlyCollidingComponents, INT_PTR Origin, INT_PTR BoxExtent)
+	{
+		auto _p0 = bOnlyCollidingComponents;
+		auto _p1 = *(FVector*)Origin;
+		auto _p2 = *(FVector*)BoxExtent;
+		Self->GetActorBounds(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetActorEnableCollision(AActor* Self)
 	{
 		return Self->GetActorEnableCollision();
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetActorEyesViewPoint(AActor* Self, INT_PTR OutLocation, INT_PTR OutRotation)
+	{
+		auto _p0 = *(FVector*)OutLocation;
+		auto _p1 = *(FRotator*)OutRotation;
+		Self->GetActorEyesViewPoint(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetActorForwardVector(AActor* Self)
@@ -361,6 +613,11 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetActorUpVector());
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetAttachParentActor(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetAttachParentActor());
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetAttachParentSocketName(AActor* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetAttachParentSocketName());
@@ -386,9 +643,44 @@ extern "C"
 		return Self->GetComponentsCollisionResponseToChannel(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetDebugName(AActor* Self, AActor* Actor)
+	{
+		auto _p0 = Actor;
+		return ConvertToManage_StringWrapper(Self->GetDebugName(_p0));
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetDefaultAttachComponent(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetDefaultAttachComponent());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetDistanceTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetDistanceTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetDotProductTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetDotProductTo(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetGameTimeSinceCreation(AActor* Self)
 	{
 		return Self->GetGameTimeSinceCreation();
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetHorizontalDistanceTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetHorizontalDistanceTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetHorizontalDotProductTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetHorizontalDotProductTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetHumanReadableName(AActor* Self)
@@ -427,6 +719,26 @@ extern "C"
 		return Self->GetNetMode();
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetNetOwningPlayer(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetNetOwningPlayer());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetOwner(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetOwner());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetParentActor(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetParentActor());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetParentComponent(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetParentComponent());
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetPlacementExtent(AActor* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetPlacementExtent());
@@ -435,6 +747,16 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_GetRemoteRole(AActor* Self)
 	{
 		return Self->GetRemoteRole();
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetRootComponent(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetRootComponent());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetRootPrimitiveComponent(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetRootPrimitiveComponent());
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetSimpleCollisionCylinder(AActor* Self, float CollisionRadius, float CollisionHalfHeight)
@@ -459,6 +781,18 @@ extern "C"
 		return Self->GetSimpleCollisionRadius();
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetSquaredDistanceTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetSquaredDistanceTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetTargetLocation(AActor* Self, AActor* RequestedBy)
+	{
+		auto _p0 = RequestedBy;
+		return (INT_PTR) new FVector(Self->GetTargetLocation(_p0));
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetTickableWhenPaused(AActor* Self)
 	{
 		return Self->GetTickableWhenPaused();
@@ -472,6 +806,12 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_GetVelocity(AActor* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetVelocity());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetVerticalDistanceTo(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		return Self->GetVerticalDistanceTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_HasActiveCameraComponent(AActor* Self)
@@ -551,9 +891,27 @@ extern "C"
 		return Self->IsActorTickEnabled();
 	}
 
+	DOTNET_EXPORT auto E_AActor_IsAttachedTo(AActor* Self, AActor* Other)
+	{
+		auto _p0 = Other;
+		return Self->IsAttachedTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsBasedOnActor(AActor* Self, AActor* Other)
+	{
+		auto _p0 = Other;
+		return Self->IsBasedOnActor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_IsChildActor(AActor* Self)
 	{
 		return Self->IsChildActor();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsComponentRelevantForNavigation(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		return Self->IsComponentRelevantForNavigation(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_IsInPersistentLevel(AActor* Self, bool bIncludeLevelStreamingPersistent)
@@ -583,9 +941,38 @@ extern "C"
 		return Self->IsNetStartupActor();
 	}
 
+	DOTNET_EXPORT auto E_AActor_IsOverlappingActor(AActor* Self, AActor* Other)
+	{
+		auto _p0 = Other;
+		return Self->IsOverlappingActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsOwnedBy(AActor* Self, AActor* TestOwner)
+	{
+		auto _p0 = TestOwner;
+		return Self->IsOwnedBy(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_IsPendingKillPending(AActor* Self)
 	{
 		return Self->IsPendingKillPending();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsRelevancyOwnerFor(AActor* Self, AActor* ReplicatedActor, AActor* ActorOwner, AActor* ConnectionActor)
+	{
+		auto _p0 = ReplicatedActor;
+		auto _p1 = ActorOwner;
+		auto _p2 = ConnectionActor;
+		return Self->IsRelevancyOwnerFor(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsReplayRelevantFor(AActor* Self, AActor* RealViewer, AActor* ViewTarget, INT_PTR SrcLocation, float CullDistanceSquared)
+	{
+		auto _p0 = RealViewer;
+		auto _p1 = ViewTarget;
+		auto _p2 = *(FVector*)SrcLocation;
+		auto _p3 = CullDistanceSquared;
+		return Self->IsReplayRelevantFor(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_IsRootComponentCollisionRegistered(AActor* Self)
@@ -608,9 +995,91 @@ extern "C"
 		return Self->IsRootComponentStationary();
 	}
 
+	DOTNET_EXPORT auto E_AActor_K2_AddActorLocalOffset(AActor* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FVector*)DeltaLocation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorLocalOffset(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AddActorLocalRotation(AActor* Self, INT_PTR DeltaRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FRotator*)DeltaRotation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorLocalRotation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AddActorLocalTransform(AActor* Self, INT_PTR NewTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FTransform*)NewTransform;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorLocalTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AddActorWorldOffset(AActor* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FVector*)DeltaLocation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorWorldOffset(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AddActorWorldRotation(AActor* Self, INT_PTR DeltaRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FRotator*)DeltaRotation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorWorldRotation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AddActorWorldTransform(AActor* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FTransform*)DeltaTransform;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_AddActorWorldTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AttachToActor(AActor* Self, AActor* ParentActor, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
+	{
+		auto _p0 = ParentActor;
+		auto _p1 = ConvertFromManage_FName(SocketName);
+		auto _p2 = LocationRule;
+		auto _p3 = RotationRule;
+		auto _p4 = ScaleRule;
+		auto _p5 = bWeldSimulatedBodies;
+		Self->K2_AttachToActor(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AttachToComponent(AActor* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
+	{
+		auto _p0 = Parent;
+		auto _p1 = ConvertFromManage_FName(SocketName);
+		auto _p2 = LocationRule;
+		auto _p3 = RotationRule;
+		auto _p4 = ScaleRule;
+		auto _p5 = bWeldSimulatedBodies;
+		Self->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
 	DOTNET_EXPORT auto E_AActor_K2_DestroyActor(AActor* Self)
 	{
 		Self->K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_DestroyComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->K2_DestroyComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_K2_DetachFromActor(AActor* Self, EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule)
@@ -631,9 +1100,60 @@ extern "C"
 		return (INT_PTR) new FRotator(Self->K2_GetActorRotation());
 	}
 
+	DOTNET_EXPORT auto E_AActor_K2_GetRootComponent(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->K2_GetRootComponent());
+	}
+
 	DOTNET_EXPORT auto E_AActor_K2_OnReset(AActor* Self)
 	{
 		Self->K2_OnReset();
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorLocation(AActor* Self, INT_PTR NewLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FVector*)NewLocation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		return Self->K2_SetActorLocation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorLocationAndRotation(AActor* Self, INT_PTR NewLocation, INT_PTR NewRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FVector*)NewLocation;
+		auto _p1 = *(FRotator*)NewRotation;
+		auto _p2 = bSweep;
+		auto _p3 = *(FHitResult*)SweepHitResult;
+		auto _p4 = bTeleport;
+		return Self->K2_SetActorLocationAndRotation(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorRelativeLocation(AActor* Self, INT_PTR NewRelativeLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FVector*)NewRelativeLocation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_SetActorRelativeLocation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorRelativeRotation(AActor* Self, INT_PTR NewRelativeRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FRotator*)NewRelativeRotation;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_SetActorRelativeRotation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorRelativeTransform(AActor* Self, INT_PTR NewRelativeTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FTransform*)NewRelativeTransform;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		Self->K2_SetActorRelativeTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_K2_SetActorRotation(AActor* Self, INT_PTR NewRotation, bool bTeleportPhysics)
@@ -641,6 +1161,15 @@ extern "C"
 		auto _p0 = *(FRotator*)NewRotation;
 		auto _p1 = bTeleportPhysics;
 		return Self->K2_SetActorRotation(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_SetActorTransform(AActor* Self, INT_PTR NewTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
+	{
+		auto _p0 = *(FTransform*)NewTransform;
+		auto _p1 = bSweep;
+		auto _p2 = *(FHitResult*)SweepHitResult;
+		auto _p3 = bTeleport;
+		return Self->K2_SetActorTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_K2_TeleportTo(AActor* Self, INT_PTR DestLocation, INT_PTR DestRotation)
@@ -653,6 +1182,27 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_LifeSpanExpired(AActor* Self)
 	{
 		Self->LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E_AActor_MakeNoise(AActor* Self, float Loudness, APawn* NoiseInstigator, INT_PTR NoiseLocation, float MaxRange, char* Tag)
+	{
+		auto _p0 = Loudness;
+		auto _p1 = NoiseInstigator;
+		auto _p2 = *(FVector*)NoiseLocation;
+		auto _p3 = MaxRange;
+		auto _p4 = ConvertFromManage_FName(Tag);
+		Self->MakeNoise(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_AActor_MakeNoiseImpl(AActor* Self, AActor* NoiseMaker, float Loudness, APawn* NoiseInstigator, INT_PTR NoiseLocation, float MaxRange, char* Tag)
+	{
+		auto _p0 = NoiseMaker;
+		auto _p1 = Loudness;
+		auto _p2 = NoiseInstigator;
+		auto _p3 = *(FVector*)NoiseLocation;
+		auto _p4 = MaxRange;
+		auto _p5 = ConvertFromManage_FName(Tag);
+		Self->MakeNoiseImpl(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_AActor_MarkComponentsAsPendingKill(AActor* Self)
@@ -670,9 +1220,40 @@ extern "C"
 		Self->NotifyActorBeginCursorOver();
 	}
 
+	DOTNET_EXPORT auto E_AActor_NotifyActorBeginOverlap(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->NotifyActorBeginOverlap(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_NotifyActorEndCursorOver(AActor* Self)
 	{
 		Self->NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NotifyActorEndOverlap(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->NotifyActorEndOverlap(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_NotifyHit(AActor* Self, UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, INT_PTR HitLocation, INT_PTR HitNormal, INT_PTR NormalImpulse, INT_PTR Hit)
+	{
+		auto _p0 = MyComp;
+		auto _p1 = Other;
+		auto _p2 = OtherComp;
+		auto _p3 = bSelfMoved;
+		auto _p4 = *(FVector*)HitLocation;
+		auto _p5 = *(FVector*)HitNormal;
+		auto _p6 = *(FVector*)NormalImpulse;
+		auto _p7 = *(FHitResult*)Hit;
+		Self->NotifyHit(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
+	}
+
+	DOTNET_EXPORT auto E_AActor_OnConstruction(AActor* Self, INT_PTR Transform)
+	{
+		auto _p0 = *(FTransform*)Transform;
+		Self->OnConstruction(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_OnRep_AttachmentReplication(AActor* Self)
@@ -706,14 +1287,38 @@ extern "C"
 		Self->OnReplicationPausedChanged(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_OnSubobjectCreatedFromReplication(AActor* Self, UObject* NewSubobject)
+	{
+		auto _p0 = NewSubobject;
+		Self->OnSubobjectCreatedFromReplication(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_OnSubobjectDestroyFromReplication(AActor* Self, UObject* Subobject)
+	{
+		auto _p0 = Subobject;
+		Self->OnSubobjectDestroyFromReplication(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_OutsideWorldBounds(AActor* Self)
 	{
 		Self->OutsideWorldBounds();
 	}
 
+	DOTNET_EXPORT auto E_AActor_OwnsComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		return Self->OwnsComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_PostActorCreated(AActor* Self)
 	{
 		Self->PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostCreateBlueprintComponent(AActor* Self, UActorComponent* NewActorComp)
+	{
+		auto _p0 = NewActorComp;
+		((E_PROTECTED_WRAP_AActor*)Self)->PostCreateBlueprintComponent_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_PostInitializeComponents(AActor* Self)
@@ -741,9 +1346,26 @@ extern "C"
 		Self->PostNetReceivePhysicState();
 	}
 
+	DOTNET_EXPORT auto E_AActor_PostNetReceiveVelocity(AActor* Self, INT_PTR NewVelocity)
+	{
+		auto _p0 = *(FVector*)NewVelocity;
+		Self->PostNetReceiveVelocity(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_PostRegisterAllComponents(AActor* Self)
 	{
 		Self->PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostSpawnInitialize(AActor* Self, INT_PTR SpawnTransform, AActor* InOwner, APawn* InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)
+	{
+		auto _p0 = *(FTransform*)SpawnTransform;
+		auto _p1 = InOwner;
+		auto _p2 = InInstigator;
+		auto _p3 = bRemoteOwned;
+		auto _p4 = bNoFail;
+		auto _p5 = bDeferConstruction;
+		Self->PostSpawnInitialize(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_AActor_PostUnregisterAllComponents(AActor* Self)
@@ -774,9 +1396,21 @@ extern "C"
 		Self->ReceiveActorBeginCursorOver();
 	}
 
+	DOTNET_EXPORT auto E_AActor_ReceiveActorBeginOverlap(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->ReceiveActorBeginOverlap(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_ReceiveActorEndCursorOver(AActor* Self)
 	{
 		Self->ReceiveActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E_AActor_ReceiveActorEndOverlap(AActor* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->ReceiveActorEndOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_ReceiveBeginPlay(AActor* Self)
@@ -787,6 +1421,19 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_ReceiveDestroyed(AActor* Self)
 	{
 		Self->ReceiveDestroyed();
+	}
+
+	DOTNET_EXPORT auto E_AActor_ReceiveHit(AActor* Self, UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, INT_PTR HitLocation, INT_PTR HitNormal, INT_PTR NormalImpulse, INT_PTR Hit)
+	{
+		auto _p0 = MyComp;
+		auto _p1 = Other;
+		auto _p2 = OtherComp;
+		auto _p3 = bSelfMoved;
+		auto _p4 = *(FVector*)HitLocation;
+		auto _p5 = *(FVector*)HitNormal;
+		auto _p6 = *(FVector*)NormalImpulse;
+		auto _p7 = *(FHitResult*)Hit;
+		Self->ReceiveHit(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
 	}
 
 	DOTNET_EXPORT auto E_AActor_ReceiveTick(AActor* Self, float DeltaSeconds)
@@ -811,6 +1458,30 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_RegisterAllComponents(AActor* Self)
 	{
 		Self->RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E_AActor_RemoveInstanceComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->RemoveInstanceComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_RemoveOwnedComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->RemoveOwnedComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_RemoveTickPrerequisiteActor(AActor* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->RemoveTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_RemoveTickPrerequisiteComponent(AActor* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->RemoveTickPrerequisiteComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_ReregisterAllComponents(AActor* Self)
@@ -858,10 +1529,37 @@ extern "C"
 		Self->SetActorLabelInternal(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_AActor_SetActorLocation(AActor* Self, INT_PTR NewLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FVector*)NewLocation;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		return Self->SetActorLocation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetActorRelativeLocation(AActor* Self, INT_PTR NewRelativeLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FVector*)NewRelativeLocation;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->SetActorRelativeLocation(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_AActor_SetActorRelativeScale3D(AActor* Self, INT_PTR NewRelativeScale)
 	{
 		auto _p0 = *(FVector*)NewRelativeScale;
 		Self->SetActorRelativeScale3D(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetActorRelativeTransform(AActor* Self, INT_PTR NewRelativeTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FTransform*)NewRelativeTransform;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->SetActorRelativeTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_SetActorScale3D(AActor* Self, INT_PTR NewScale3D)
@@ -880,6 +1578,15 @@ extern "C"
 	{
 		auto _p0 = TickInterval;
 		Self->SetActorTickInterval(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetActorTransform(AActor* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FTransform*)NewTransform;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		return Self->SetActorTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_SetAutonomousProxy(AActor* Self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare)
@@ -913,6 +1620,18 @@ extern "C"
 		Self->SetNetUpdateTime(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_SetOwner(AActor* Self, AActor* NewOwner)
+	{
+		auto _p0 = NewOwner;
+		Self->SetOwner(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetRemoteRoleForBackwardsCompat(AActor* Self, ENetRole InRemoteRole)
+	{
+		auto _p0 = InRemoteRole;
+		((E_PROTECTED_WRAP_AActor*)Self)->SetRemoteRoleForBackwardsCompat_WRAP(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
 	{
 		auto _p0 = bInReplicateMovement;
@@ -923,6 +1642,12 @@ extern "C"
 	{
 		auto _p0 = bInReplicates;
 		Self->SetReplicates(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetRootComponent(AActor* Self, USceneComponent* NewRootComponent)
+	{
+		auto _p0 = NewRootComponent;
+		return Self->SetRootComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_SetTickableWhenPaused(AActor* Self, bool bTickableWhenPaused)
@@ -937,9 +1662,22 @@ extern "C"
 		Self->SetTickGroup(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_SetTickPrerequisite(AActor* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->SetTickPrerequisite(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_ShouldTickIfViewportsOnly(AActor* Self)
 	{
 		return Self->ShouldTickIfViewportsOnly();
+	}
+
+	DOTNET_EXPORT auto E_AActor_SnapRootComponentTo(AActor* Self, AActor* InParentActor, char* InSocketName)
+	{
+		auto _p0 = InParentActor;
+		auto _p1 = ConvertFromManage_FName(InSocketName);
+		Self->SnapRootComponentTo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_SwapRolesForReplay(AActor* Self)
@@ -963,10 +1701,27 @@ extern "C"
 		Self->TeleportSucceeded(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_TeleportTo(AActor* Self, INT_PTR DestLocation, INT_PTR DestRotation, bool bIsATest, bool bNoCheck)
+	{
+		auto _p0 = *(FVector*)DestLocation;
+		auto _p1 = *(FRotator*)DestRotation;
+		auto _p2 = bIsATest;
+		auto _p3 = bNoCheck;
+		return Self->TeleportTo(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_AActor_Tick(AActor* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
 		Self->Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_TickActor(AActor* Self, float DeltaTime, ELevelTick TickType, INT_PTR ThisTickFunction)
+	{
+		auto _p0 = DeltaTime;
+		auto _p1 = TickType;
+		auto _p2 = *(FActorTickFunction*)ThisTickFunction;
+		Self->TickActor(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AActor_TornOff(AActor* Self)
@@ -999,6 +1754,12 @@ extern "C"
 	{
 		auto _p0 = bDoNotifies;
 		Self->UpdateOverlaps(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_UpdateReplicatedComponent(AActor* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->UpdateReplicatedComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_UserConstructionScript(AActor* Self)

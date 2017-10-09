@@ -79,7 +79,7 @@ namespace Generator
 
         public static Regex[] ManualImplementedClassMasks =
         {
-            new Regex(@"TArray\<\w+\>"),
+            new Regex(@"TArray__\w+"),
         };
 
         public static string[] ManageClassBlackList =
@@ -159,11 +159,11 @@ namespace Generator
             { "UPrimitiveComponent", new[] { "DispatchBlockingHit" }},
 
             { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
-            { "UTexture", new[] { "GetRunningPlatformData" }}, // TODO: указатель на указатель **
+            { "UTexture", new[] { "GetRunningPlatformData" }},
             
 
             { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
-            { "FPoly", new[] { "CalcNormal" }},    // TODO: конвертировать 0 в false
+            { "FPoly", new[] { "CalcNormal" }},
         };
 
         public static string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
@@ -178,7 +178,7 @@ namespace Generator
 
         public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
-            var classes = Classes.Where(ManualImplementedClass).Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+            var classes = Classes.Where(MathClass).Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
 
             foreach (var cl in classes)
             {
@@ -195,12 +195,17 @@ namespace Generator
             return classes;
         }
 
-        private static bool ManualImplementedClass(Class cl)
+        private static bool MathClass(Class cl)
         {
             if (ManualImplementedClassMasks.Any(filter => filter.IsMatch(cl.Name)))
             {
                 cl.IsManualImplemented = true;
                 cl.IsImplemented = true;
+                return false;
+            }
+
+            if(cl.IsTemplate)
+            {
                 return false;
             }
 
@@ -289,7 +294,14 @@ namespace Generator
             if (!type.IsImplemented ||
                 type.IsTemplate ||
                 type.NamespaceBaseType != null)
+            {
                 return false;
+            }
+
+            if (type.TemplateTypes.Any(x => !TypeFilter(x.Type)))
+            {
+                return false;
+            }
 
             var en = type as Enum;
             if (en != null)
@@ -308,8 +320,7 @@ namespace Generator
 
         public static bool MethodFilter(Method m)
         {
-            return !m.IsTemplate &&
-                    !m.ReturnType.IsConst &&
+            return !m.ReturnType.IsConst &&
                     !m.IsOverride &&
                     !m.IsFriend &&
                     !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&

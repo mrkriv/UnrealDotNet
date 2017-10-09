@@ -14,6 +14,26 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Make this actor tick after PrerequisiteActor. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
+		/// </summary>
+		public override void AddTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		
+		
+		/// <summary>
+		/// <para>Make this actor tick after PrerequisiteComponent. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
+		/// </summary>
+		public override void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		
+		
+		/// <summary>
+		/// <para>Called by owning level to shift an actor location and all relevant data structures by specified delta </para>
+		/// <param name="InWorldOffset">Offset vector to shift actor location </param>
+		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
+		/// </summary>
+		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift) { }
+		
+		
+		/// <summary>
 		/// <para>Overridable native event for when play begins for this actor. </para>
 		/// </summary>
 		protected override void BeginPlay() { }
@@ -76,9 +96,42 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Event when this actor overlaps another actor, for example a player walking into a trigger. </para>
+		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
+		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
+		/// </summary>
+		public override void NotifyActorBeginOverlap(AActor OtherActor) { }
+		
+		
+		/// <summary>
 		/// <para>Event when this actor has the mouse moved off of it with the clickable interface. </para>
 		/// </summary>
 		public override void NotifyActorEndCursorOver() { }
+		
+		
+		/// <summary>
+		/// <para>Event when an actor no longer overlaps another actor, and they have separated. </para>
+		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
+		/// </summary>
+		public override void NotifyActorEndOverlap(AActor OtherActor) { }
+		
+		
+		/// <summary>
+		/// <para>Event when this actor bumps into a blocking object, or blocks another actor that bumps into it. </para>
+		/// <para>This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
+		/// <para>For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event. </para>
+		/// <para>@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled. </para>
+		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
+		/// <para>will be adjusted to indicate force from the other object against this object. </para>
+		/// </summary>
+		public override void NotifyHit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit) { }
+		
+		
+		/// <summary>
+		/// <para>Called when an instance of this class is placed (in editor) or spawned. </para>
+		/// <param name="Transform">The transform the actor was constructed at. </param>
+		/// </summary>
+		public override void OnConstruction(FTransform Transform) { }
 		
 		public override void OnRep_AttachmentReplication() { }
 		
@@ -95,6 +148,18 @@ namespace UnrealEngine
 		/// <para>Called on the client when the replication paused value is changed </para>
 		/// </summary>
 		public override void OnReplicationPausedChanged(bool bIsReplicationPaused) { }
+		
+		
+		/// <summary>
+		/// <para>Called on the actor when a new subobject is dynamically created via replication </para>
+		/// </summary>
+		public override void OnSubobjectCreatedFromReplication(UObject NewSubobject) { }
+		
+		
+		/// <summary>
+		/// <para>Called on the actor when a subobject is dynamically destroyed via replication </para>
+		/// </summary>
+		public override void OnSubobjectDestroyFromReplication(UObject Subobject) { }
 		
 		
 		/// <summary>
@@ -131,6 +196,12 @@ namespace UnrealEngine
 		/// <para>Update and smooth simulated physic state, replaces PostNetReceiveLocation() and PostNetReceiveVelocity() </para>
 		/// </summary>
 		public override void PostNetReceivePhysicState() { }
+		
+		
+		/// <summary>
+		/// <para>Update velocity - typically from ReplicatedMovement, not called for simulated physics! </para>
+		/// </summary>
+		public override void PostNetReceiveVelocity(FVector NewVelocity) { }
 		
 		
 		/// <summary>
@@ -174,6 +245,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteActor. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		
+		
+		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		
+		
+		/// <summary>
 		/// <para>Will reregister all components on this actor. Does a lot of work - should only really be used in editor, generally use UpdateComponentTransforms or MarkComponentsRenderStateDirty. </para>
 		/// </summary>
 		public override void ReregisterAllComponents() { }
@@ -202,6 +285,13 @@ namespace UnrealEngine
 		/// <para>Set the lifespan of this actor. When it expires the object will be destroyed. If requested lifespan is 0, the timer is cleared and the actor will not be destroyed. </para>
 		/// </summary>
 		public override void SetLifeSpan(float InLifespan) { }
+		
+		
+		/// <summary>
+		/// <para>Set the owner of this Actor, used primarily for network replication. </para>
+		/// <param name="NewOwner">The Actor whom takes over ownership of this Actor </param>
+		/// </summary>
+		public override void SetOwner(AActor NewOwner) { }
 		
 		
 		/// <summary>

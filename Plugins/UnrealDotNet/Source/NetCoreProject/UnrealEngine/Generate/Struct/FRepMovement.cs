@@ -68,6 +68,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRepMovement_VelocityQuantizationLevel_SET(IntPtr Ptr, byte Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FRepMovement_CopyTo(IntPtr Self, IntPtr RBState, IntPtr Actor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FRepMovement_FillFrom(IntPtr Self, IntPtr RBState, IntPtr Actor);
+		
 		#endregion
 		
 		#region Property
@@ -142,6 +148,15 @@ namespace UnrealEngine
 			set => E_PROP_FRepMovement_VelocityQuantizationLevel_SET(NativePointer, (byte)value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		public void CopyTo(FRigidBodyState RBState, AActor Actor = null)
+			=> E_FRepMovement_CopyTo(this, RBState, Actor);
+		
+		public void FillFrom(FRigidBodyState RBState, AActor Actor = null)
+			=> E_FRepMovement_FillFrom(this, RBState, Actor);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(FRepMovement Self)

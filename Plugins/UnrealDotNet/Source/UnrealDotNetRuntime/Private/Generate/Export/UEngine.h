@@ -36,6 +36,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_GameScreenshotSaveDirectory_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->GameScreenshotSaveDirectory); }
 	DOTNET_EXPORT void E_PROP_UEngine_GameScreenshotSaveDirectory_SET(UEngine* Ptr, INT_PTR Value) { Ptr->GameScreenshotSaveDirectory = *(FDirectoryPath*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_GameSingleton_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameSingleton); }
+	DOTNET_EXPORT void E_PROP_UEngine_GameSingleton_SET(UEngine* Ptr, UObject* Value) { Ptr->GameSingleton = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_HoverHighlightIntensity_GET(UEngine* Ptr) { return Ptr->HoverHighlightIntensity; }
 	DOTNET_EXPORT void E_PROP_UEngine_HoverHighlightIntensity_SET(UEngine* Ptr, float Value) { Ptr->HoverHighlightIntensity = Value; }
 	
@@ -202,6 +205,18 @@ extern "C"
 		auto _p0 = DeltaSeconds;
 		auto _p1 = bIdleMode;
 		Self->Tick(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_WorldAdded(UEngine* Self, UWorld* World)
+	{
+		auto _p0 = World;
+		Self->WorldAdded(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_WorldDestroyed(UEngine* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		Self->WorldDestroyed(_p0);
 	}
 
 }

@@ -14,6 +14,9 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObjectBaseUtility_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObjectBaseUtility_AddToRoot(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -35,6 +38,9 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UObjectBaseUtility_GetFullGroupName(IntPtr Self, bool bStartWithOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UObjectBaseUtility_GetFullName(IntPtr Self, IntPtr StopOuter);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UObjectBaseUtility_GetLinkerIndex(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -45,6 +51,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBaseUtility_IsDefaultSubobject(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObjectBaseUtility_IsIn(IntPtr Self, IntPtr SomeOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBaseUtility_IsNative(IntPtr Self);
@@ -79,6 +88,15 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
+		/// </summary>
+		public virtual void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_UObjectBaseUtility_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		
 		public void AddToRoot()
 			=> E_UObjectBaseUtility_AddToRoot(this);
 		
@@ -126,6 +144,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the fully qualified pathname for this object as well as the name of the class, in the format: </para>
+		/// <para>'ClassName Outermost[.Outer].Name'. </para>
+		/// <param name="StopOuter">if specified, indicates that the output string should be relative to this object.  if StopOuter </param>
+		/// <para>does not exist in this object's Outer chain, the result would be the same as passing NULL. </para>
+		/// <para>@note	safe to call on NULL object pointers! </para>
+		/// </summary>
+		public string GetFullName(UObject StopOuter = null)
+			=> E_UObjectBaseUtility_GetFullName(this, StopOuter);
+		
+		
+		/// <summary>
 		/// <para>Returns this object's LinkerIndex. </para>
 		/// <return>the index into my linker's ExportMap for the FObjectExport </return>
 		/// <para>corresponding to this object. </para>
@@ -165,6 +194,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsDefaultSubobject()
 			=> E_UObjectBaseUtility_IsDefaultSubobject(this);
+		
+		
+		/// <summary>
+		/// <return>true if the specified object appears somewhere in this object's outer chain. </return>
+		/// </summary>
+		public bool IsIn(UObject SomeOuter)
+			=> E_UObjectBaseUtility_IsIn(this, SomeOuter);
 		
 		
 		/// <summary>

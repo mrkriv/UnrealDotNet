@@ -5,6 +5,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
 
+void AManageHUD::AddPostRenderedActor(AActor* A)
+{
+	Super::AddPostRenderedActor(A);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddPostRenderedActor", A);
+}
+
 void AManageHUD::DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation)
 {
 	Super::DrawActorOverlays(Viewpoint, ViewRotation);
@@ -69,6 +75,12 @@ void AManageHUD::PostRender()
 {
 	Super::PostRender();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRender");
+}
+
+void AManageHUD::RemovePostRenderedActor(AActor* A)
+{
+	Super::RemovePostRenderedActor(A);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemovePostRenderedActor", A);
 }
 
 void AManageHUD::ShowDebug(FName DebugType)

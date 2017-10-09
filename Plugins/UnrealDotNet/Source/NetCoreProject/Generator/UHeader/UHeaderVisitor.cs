@@ -320,12 +320,6 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTypeName([NotNull] UHeaderParser.TypeNameContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="UHeaderParser.typeTemplateName"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTypeTemplateName([NotNull] UHeaderParser.TypeTemplateNameContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isVirtual"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

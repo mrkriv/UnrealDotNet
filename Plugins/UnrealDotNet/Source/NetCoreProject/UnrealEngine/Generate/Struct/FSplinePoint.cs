@@ -20,9 +20,21 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Constructor taking a point position </para>
+		/// </summary>
+		public FSplinePoint(float InInputKey, FVector InPosition) :
+			base(E_CreateStruct_FSplinePoint_float_FVector(InInputKey, InPosition), false)
+		{
+		}
+
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSplinePoint();
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FSplinePoint_float_FVector(float InInputKey, IntPtr InPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FSplinePoint_ArriveTangent_GET(IntPtr Ptr);

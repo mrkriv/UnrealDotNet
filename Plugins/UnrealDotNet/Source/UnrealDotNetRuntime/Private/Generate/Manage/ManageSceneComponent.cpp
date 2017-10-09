@@ -5,6 +5,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
 
+void UManageSceneComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
+{
+	Super::DetachFromComponent(DetachmentRules);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+}
+
 void UManageSceneComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
 	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
@@ -15,6 +21,18 @@ void UManageSceneComponent::OnAttachmentChanged()
 {
 	Super::OnAttachmentChanged();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnAttachmentChanged");
+}
+
+void UManageSceneComponent::OnChildAttached(USceneComponent* ChildComponent)
+{
+	Super::OnChildAttached(ChildComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnChildAttached", ChildComponent);
+}
+
+void UManageSceneComponent::OnChildDetached(USceneComponent* ChildComponent)
+{
+	Super::OnChildDetached(ChildComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnChildDetached", ChildComponent);
 }
 
 void UManageSceneComponent::OnHiddenInGameChanged()

@@ -55,7 +55,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_JumpMaxHoldTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_ACharacter_LandedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_ACharacter_LandedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_ACharacter_MeshComponentName_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_EVENT_DEL_ACharacter_MovementModeChangedDelegate(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_ACharacter_OnCharacterMovementUpdated(IntPtr Ptr);
@@ -68,6 +80,14 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_DEL_ACharacter_OnReachedJumpApex(IntPtr Ptr);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_ACharacter_RepRootMotion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ApplyDamageMomentum(IntPtr Self, float DamageTaken, IntPtr DamageEvent, IntPtr PawnInstigator, IntPtr DamageCauser);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_BaseChange(IntPtr Self);
@@ -136,7 +156,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_ACharacter_GetBaseTranslationOffset(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_ACharacter_GetJumpMaxHoldTime(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ACharacter_GetMesh(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_ACharacter_GetReplicatedMovementMode(IntPtr Self);
@@ -172,10 +198,19 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_K2_UpdateCustomMovement(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_Landed(IntPtr Self, IntPtr Hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_LaunchCharacter(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_MoveBlockedBy(IntPtr Self, IntPtr Impact);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_NotifyJumpApex(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_NotifyLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnEndCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
@@ -185,6 +220,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnJumped_Implementation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnLaunched(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
@@ -205,7 +243,13 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_OnStartCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnUpdateSimulatedPosition(IntPtr Self, IntPtr OldLocation, IntPtr OldRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_ResetJumpState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_RestoreReplicatedMove(IntPtr Self, IntPtr RootMotionRepMove);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen(IntPtr Self, string InString);
@@ -214,7 +258,16 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(IntPtr Self, string InString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_SaveRelativeBasedMovement(IntPtr Self, IntPtr NewRelativeLocation, IntPtr NewRotation, bool bRelativeRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SetAnimRootMotionTranslationScale(IntPtr Self, float InAnimRootMotionTranslationScale);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_SetBase(IntPtr Self, IntPtr NewBase, string BoneName, bool bNotifyActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_ShouldNotifyLanded(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SimulatedRootMotionPositionFixup(IntPtr Self, float DeltaSeconds);
@@ -227,6 +280,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_UpdateFromCompressedFlags(IntPtr Self, byte Flags);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_UpdateSimulatedPosition(IntPtr Self, IntPtr Location, IntPtr NewRotation);
 		
 		#endregion
 		
@@ -318,9 +374,77 @@ namespace UnrealEngine
 			get => E_PROP_ACharacter_MeshComponentName_GET();
 		}
 
+		
+		/// <summary>
+		/// <para>Replicated Root Motion montage </para>
+		/// </summary>
+		public FRepRootMotionMontage RepRootMotion
+		{
+			get => E_PROP_ACharacter_RepRootMotion_GET(NativePointer);
+			set => E_PROP_ACharacter_RepRootMotion_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region Events
+		
+		/// <summary>
+		/// <para>Called upon landing when falling, to perform actions based on the Hit result. </para>
+		/// <para>Note that movement mode is still "Falling" during this event. Current Velocity value is the velocity at the time of landing. </para>
+		/// <para>Consider OnMovementModeChanged() as well, as that can be used once the movement mode changes to the new mode (most likely Walking). </para>
+		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
+		/// <para>@see OnMovementModeChanged() </para>
+		/// </summary>
+		public event FLandedSignature LandedDelegate
+		{
+			add
+			{
+				E_EVENT_ADD_ACharacter_LandedDelegate(NativePointer);
+				_Event_LandedDelegate += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_ACharacter_LandedDelegate(NativePointer);
+				_Event_LandedDelegate -= value;
+			}
+
+		}
+
+		private event FLandedSignature _Event_LandedDelegate;
+		
+		internal void InvokeEvent_LandedDelegate(FHitResult Hit)
+		{
+			_Event_LandedDelegate?.Invoke(Hit);
+		}
+
+		
+		/// <summary>
+		/// <para>Multicast delegate for MovementMode changing. </para>
+		/// </summary>
+		public event FMovementModeChangedSignature MovementModeChangedDelegate
+		{
+			add
+			{
+				E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(NativePointer);
+				_Event_MovementModeChangedDelegate += value;
+			}
+
+			remove
+			{
+				E_EVENT_DEL_ACharacter_MovementModeChangedDelegate(NativePointer);
+				_Event_MovementModeChangedDelegate -= value;
+			}
+
+		}
+
+		private event FMovementModeChangedSignature _Event_MovementModeChangedDelegate;
+		
+		internal void InvokeEvent_MovementModeChangedDelegate(ObjectPointerDescription Character, EMovementMode PrevMovementMode, byte PreviousCustomMode)
+		{
+			_Event_MovementModeChangedDelegate?.Invoke(Character, PrevMovementMode, PreviousCustomMode);
+		}
+
 		
 		/// <summary>
 		/// <para>Event triggered at the end of a CharacterMovementComponent movement update. </para>
@@ -384,6 +508,13 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Apply momentum caused by damage. </para>
+		/// </summary>
+		public virtual void ApplyDamageMomentum(float DamageTaken, FDamageEvent DamageEvent, APawn PawnInstigator, AActor DamageCauser)
+			=> E_ACharacter_ApplyDamageMomentum(this, DamageTaken, DamageEvent, PawnInstigator, DamageCauser);
+		
 		
 		/// <summary>
 		/// <para>Event called after actor's base changes (if SetBase was requested to notify us with bNotifyPawn). </para>
@@ -523,6 +654,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns CapsuleComponent subobject </para>
+		/// </summary>
+		public UCapsuleComponent GetCapsuleComponent()
+			=> E_ACharacter_GetCapsuleComponent(this);
+		
+		
+		/// <summary>
 		/// <para>Get the maximum jump time for the character. </para>
 		/// <para>Note that if StopJumping() is not called before the max jump hold time is reached, </para>
 		/// <para>then the character will carry on receiving vertical velocity. Therefore it is usually </para>
@@ -531,6 +669,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual float GetJumpMaxHoldTime()
 			=> E_ACharacter_GetJumpMaxHoldTime(this);
+		
+		
+		/// <summary>
+		/// <para>Returns Mesh subobject </para>
+		/// </summary>
+		public USkeletalMeshComponent GetMesh()
+			=> E_ACharacter_GetMesh(this);
 		
 		
 		/// <summary>
@@ -624,6 +769,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called upon landing when falling, to perform actions based on the Hit result. Triggers the OnLanded event. </para>
+		/// <para>Note that movement mode is still "Falling" during this event. Current Velocity value is the velocity at the time of landing. </para>
+		/// <para>Consider OnMovementModeChanged() as well, as that can be used once the movement mode changes to the new mode (most likely Walking). </para>
+		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
+		/// <para>@see OnMovementModeChanged() </para>
+		/// </summary>
+		public virtual void Landed(FHitResult Hit)
+			=> E_ACharacter_Landed(this, Hit);
+		
+		
+		/// <summary>
 		/// <para>Set a pending launch velocity on the Character. This velocity will be processed on the next CharacterMovementComponent tick, </para>
 		/// <para>and will set it to the "falling" state. Triggers the OnLaunched event. </para>
 		/// <para>@PARAM LaunchVelocity is the velocity to impart to the Character </para>
@@ -635,10 +791,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when pawn's movement is blocked </para>
+		/// <para>@PARAM Impact describes the blocking hit. </para>
+		/// </summary>
+		public virtual void MoveBlockedBy(FHitResult Impact)
+			=> E_ACharacter_MoveBlockedBy(this, Impact);
+		
+		
+		/// <summary>
 		/// <para>Called when character's jump reaches Apex. Needs CharacterMovement->bNotifyApex = true </para>
 		/// </summary>
 		public virtual void NotifyJumpApex()
 			=> E_ACharacter_NotifyJumpApex(this);
+		
+		public virtual bool NotifyLanded(FHitResult Hit)
+			=> E_ACharacter_NotifyLanded(this, Hit);
 		
 		
 		/// <summary>
@@ -658,6 +825,9 @@ namespace UnrealEngine
 		
 		public virtual void OnJumped_Implementation()
 			=> E_ACharacter_OnJumped_Implementation(this);
+		
+		public void OnLanded(FHitResult Hit)
+			=> E_ACharacter_OnLanded(this, Hit);
 		
 		public void OnLaunched(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
 			=> E_ACharacter_OnLaunched(this, LaunchVelocity, bXYOverride, bZOverride);
@@ -689,8 +859,24 @@ namespace UnrealEngine
 		public virtual void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 			=> E_ACharacter_OnStartCrouch(this, HalfHeightAdjust, ScaledHalfHeightAdjust);
 		
+		
+		/// <summary>
+		/// <para>Called on client after position update is received to respond to the new location and rotation. </para>
+		/// <para>Actual change in location is expected to occur in CharacterMovement->SmoothCorrection(), after which this occurs. </para>
+		/// <para>Default behavior is to check for penetration in a blocking object if bClientCheckEncroachmentOnNetUpdate is enabled, and set bSimGravityDisabled=true if so. </para>
+		/// </summary>
+		public virtual void OnUpdateSimulatedPosition(FVector OldLocation, FQuat OldRotation)
+			=> E_ACharacter_OnUpdateSimulatedPosition(this, OldLocation, OldRotation);
+		
 		protected void ResetJumpState()
 			=> E_ACharacter_ResetJumpState(this);
+		
+		
+		/// <summary>
+		/// <para>Restore actor to an old buffered move. </para>
+		/// </summary>
+		public bool RestoreReplicatedMove(FSimulatedRootMotionReplicatedMove RootMotionRepMove)
+			=> E_ACharacter_RestoreReplicatedMove(this, RootMotionRepMove);
 		
 		public void RootMotionDebugClientPrintOnScreen(string InString)
 			=> E_ACharacter_RootMotionDebugClientPrintOnScreen(this, InString);
@@ -700,10 +886,31 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Save a new relative location in BasedMovement and a new rotation with is either relative or absolute. </para>
+		/// </summary>
+		public void SaveRelativeBasedMovement(FVector NewRelativeLocation, FRotator NewRotation, bool bRelativeRotation)
+			=> E_ACharacter_SaveRelativeBasedMovement(this, NewRelativeLocation, NewRotation, bRelativeRotation);
+		
+		
+		/// <summary>
 		/// <para>Sets scale to apply to root motion translation on this Character </para>
 		/// </summary>
 		public void SetAnimRootMotionTranslationScale(float InAnimRootMotionTranslationScale)
 			=> E_ACharacter_SetAnimRootMotionTranslationScale(this, InAnimRootMotionTranslationScale);
+		
+		
+		/// <summary>
+		/// <para>Sets the component the Character is walking on, used by CharacterMovement walking movement to be able to follow dynamic objects. </para>
+		/// </summary>
+		public virtual void SetBase(UPrimitiveComponent NewBase, string BoneName, bool bNotifyActor)
+			=> E_ACharacter_SetBase(this, NewBase, BoneName, bNotifyActor);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the Landed() event should be called. Used by CharacterMovement to prevent notifications while playing back network moves. </para>
+		/// </summary>
+		public virtual bool ShouldNotifyLanded(FHitResult Hit)
+			=> E_ACharacter_ShouldNotifyLanded(this, Hit);
 		
 		
 		/// <summary>
@@ -734,6 +941,9 @@ namespace UnrealEngine
 		
 		public virtual void UpdateFromCompressedFlags(byte Flags)
 			=> E_ACharacter_UpdateFromCompressedFlags(this, Flags);
+		
+		public virtual void UpdateSimulatedPosition(FVector Location, FRotator NewRotation)
+			=> E_ACharacter_UpdateSimulatedPosition(this, Location, NewRotation);
 		
 		#endregion
 		

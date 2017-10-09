@@ -21,6 +21,8 @@ class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD
 	
 public:
 	
+	virtual void AddPostRenderedActor(AActor* A) override;
+	
 	virtual void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation) override;
 	
 	virtual void DrawHUD() override;
@@ -42,6 +44,8 @@ public:
 	virtual void OnLostFocusPause(bool bEnable) override;
 	
 	virtual void PostRender() override;
+	
+	virtual void RemovePostRenderedActor(AActor* A) override;
 	
 	virtual void ShowDebug(FName DebugType) override;
 	

@@ -69,6 +69,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameScreenshotSaveDirectory_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_HoverHighlightIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_HoverHighlightIntensity_SET(IntPtr Ptr, float Value);
@@ -292,6 +297,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_Tick(IntPtr Self, float DeltaSeconds, bool bIdleMode);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_WorldAdded(IntPtr Self, IntPtr World);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_WorldDestroyed(IntPtr Self, IntPtr InWorld);
+		
 		#endregion
 		
 		#region Property
@@ -355,6 +366,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_GameScreenshotSaveDirectory_GET(NativePointer);
 			set => E_PROP_UEngine_GameScreenshotSaveDirectory_SET(NativePointer, value);
+		}
+
+		public UObject GameSingleton
+		{
+			get => E_PROP_UEngine_GameSingleton_GET(NativePointer);
+			set => E_PROP_UEngine_GameSingleton_SET(NativePointer, value);
 		}
 
 		public float HoverHighlightIntensity
@@ -659,6 +676,20 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Tick(float DeltaSeconds, bool bIdleMode)
 			=> E_UEngine_Tick(this, DeltaSeconds, bIdleMode);
+		
+		
+		/// <summary>
+		/// <para>Needs to be called when a world is added to broadcast messages. </para>
+		/// </summary>
+		public virtual void WorldAdded(UWorld World)
+			=> E_UEngine_WorldAdded(this, World);
+		
+		
+		/// <summary>
+		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
+		/// </summary>
+		public virtual void WorldDestroyed(UWorld InWorld)
+			=> E_UEngine_WorldDestroyed(this, InWorld);
 		
 		#endregion
 		

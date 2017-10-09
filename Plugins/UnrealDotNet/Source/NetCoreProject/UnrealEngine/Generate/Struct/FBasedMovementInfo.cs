@@ -41,6 +41,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBasedMovementInfo_bServerHasVelocity_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_FBasedMovementInfo_MovementBase_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FBasedMovementInfo_MovementBase_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FBasedMovementInfo_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FBasedMovementInfo_Rotation_SET(IntPtr Ptr, IntPtr Value);
@@ -82,6 +87,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FBasedMovementInfo_bServerHasVelocity_GET(NativePointer);
 			set => E_PROP_FBasedMovementInfo_bServerHasVelocity_SET(NativePointer, value);
+		}
+
+		public UPrimitiveComponent MovementBase
+		{
+			get => E_PROP_FBasedMovementInfo_MovementBase_GET(NativePointer);
+			set => E_PROP_FBasedMovementInfo_MovementBase_SET(NativePointer, value);
 		}
 
 		public FRotator Rotation

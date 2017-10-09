@@ -17,10 +17,16 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UObjectBase_GetFName(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UObjectBase_GetOuter(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBase_IsValidLowLevel(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBase_IsValidLowLevelFast(IntPtr Self, bool bRecursive);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObjectBase_LowLevelRename(IntPtr Self, string NewName, IntPtr NewOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObjectBase_RegisterDependencies(IntPtr Self);
@@ -30,6 +36,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		public string GetFName()
 			=> E_UObjectBase_GetFName(this);
+		
+		public UObject GetOuter()
+			=> E_UObjectBase_GetOuter(this);
 		
 		
 		/// <summary>
@@ -49,6 +58,15 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsValidLowLevelFast(bool bRecursive = true)
 			=> E_UObjectBase_IsValidLowLevelFast(this, bRecursive);
+		
+		
+		/// <summary>
+		/// <para>Just change the FName and Outer and rehash into name hash tables. For use by higher level rename functions. </para>
+		/// <param name="NewName">new name for this object </param>
+		/// <param name="NewOuter">new outer for this object, if NULL, outer will be unchanged </param>
+		/// </summary>
+		protected void LowLevelRename(string NewName, UObject NewOuter = null)
+			=> E_UObjectBase_LowLevelRename(this, NewName, NewOuter);
 		
 		
 		/// <summary>

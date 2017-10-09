@@ -21,6 +21,27 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Make this component tick after PrerequisiteActor </para>
+		/// </summary>
+		public override void AddTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		
+		
+		/// <summary>
+		/// <para>Make this component tick after PrerequisiteComponent. </para>
+		/// </summary>
+		public override void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		
+		
+		/// <summary>
+		/// <para>Called by owner actor on position shifting </para>
+		/// <para>Component should update all relevant data structures to reflect new actor location </para>
+		/// <param name="InWorldOffset">Offset vector the actor shifted by </param>
+		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
+		/// </summary>
+		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift) { }
+		
+		
+		/// <summary>
 		/// <para>BeginsPlay for the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
 		/// <para>All Components (that want initialization) in the level will be Initialized on load before any </para>
 		/// <para>Actor/Component gets BeginPlay. </para>
@@ -117,6 +138,18 @@ namespace UnrealEngine
 		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
 		protected override void RegisterComponentTickFunctions(bool bRegister) { }
+		
+		
+		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteActor. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		
+		
+		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
 		
 		
 		/// <summary>

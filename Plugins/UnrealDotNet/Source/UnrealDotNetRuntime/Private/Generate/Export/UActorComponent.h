@@ -88,6 +88,32 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UActorComponent_CreationMethod_GET(UActorComponent* Ptr) { return Ptr->CreationMethod; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(UActorComponent* Ptr, EComponentCreationMethod Value) { Ptr->CreationMethod = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentActivated";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentActivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentActivatedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentActivated(UActorComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnComponentDeactivated";
+		wrapper->SourceObject = Obj;
+		Obj->OnComponentDeactivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentDeactivateSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT auto E_PROP_UActorComponent_PrimaryComponentTick_GET(UActorComponent* Ptr) { return (INT_PTR)&(Ptr->PrimaryComponentTick); }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UActorComponent(UObject* Parent, char* Name)
 	{
@@ -100,9 +126,28 @@ extern "C"
 		Self->Activate(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_AddTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->AddTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_AddTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->AddTickPrerequisiteComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_AllowReregistration(UActorComponent* Self)
 	{
 		return Self->AllowReregistration();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ApplyWorldOffset(UActorComponent* Self, INT_PTR InOffset, bool bWorldShift)
+	{
+		auto _p0 = *(FVector*)InOffset;
+		auto _p1 = bWorldShift;
+		Self->ApplyWorldOffset(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_BeginPlay(UActorComponent* Self)
@@ -186,6 +231,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_GetNetMode(UActorComponent* Self)
 	{
 		return Self->GetNetMode();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_GetOwner(UActorComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetOwner());
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_GetOwnerRole(UActorComponent* Self)
@@ -327,6 +377,12 @@ extern "C"
 		return Self->IsRenderTransformDirty();
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_K2_DestroyComponent(UActorComponent* Self, UObject* Object)
+	{
+		auto _p0 = Object;
+		Self->K2_DestroyComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_MarkForNeededEndOfFrameRecreate(UActorComponent* Self)
 	{
 		Self->MarkForNeededEndOfFrameRecreate();
@@ -429,6 +485,24 @@ extern "C"
 	{
 		auto _p0 = bRegister;
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->RegisterComponentTickFunctions_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		Self->RegisterComponentWithWorld(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->RemoveTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteComponent(UActorComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->RemoveTickPrerequisiteComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(UActorComponent* Self)

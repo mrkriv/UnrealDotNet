@@ -117,9 +117,25 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetLastMovementInputVector());
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetMovementBase(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetMovementBase());
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetMovementBaseActor(APawn* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		return ConvertToManage_ObjectPointerDescription(Self->GetMovementBaseActor(_p0));
+	}
+
 	DOTNET_EXPORT auto E_APawn_GetMovementInputVector(APawn* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetMovementInputVector());
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetPawnNoiseEmitterComponent(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPawnNoiseEmitterComponent());
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetPawnViewLocation(APawn* Self)
@@ -207,6 +223,18 @@ extern "C"
 		Self->LaunchPawn(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_APawn_MoveIgnoreActorAdd(APawn* Self, AActor* ActorToIgnore)
+	{
+		auto _p0 = ActorToIgnore;
+		Self->MoveIgnoreActorAdd(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APawn_MoveIgnoreActorRemove(APawn* Self, AActor* ActorToIgnore)
+	{
+		auto _p0 = ActorToIgnore;
+		Self->MoveIgnoreActorRemove(_p0);
+	}
+
 	DOTNET_EXPORT auto E_APawn_OnRep_Controller(APawn* Self)
 	{
 		Self->OnRep_Controller();
@@ -220,6 +248,15 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_PawnClientRestart(APawn* Self)
 	{
 		Self->PawnClientRestart();
+	}
+
+	DOTNET_EXPORT auto E_APawn_PawnMakeNoise(APawn* Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
+	{
+		auto _p0 = Loudness;
+		auto _p1 = *(FVector*)NoiseLocation;
+		auto _p2 = bUseNoiseMakerLocation;
+		auto _p3 = NoiseMaker;
+		Self->PawnMakeNoise(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_APawn_PawnStartFire(APawn* Self, uint8 FireModeNum)

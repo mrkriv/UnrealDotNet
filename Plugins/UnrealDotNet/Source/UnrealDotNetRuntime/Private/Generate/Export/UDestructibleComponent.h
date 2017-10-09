@@ -22,5 +22,13 @@ extern "C"
 		Self->SetChunkVisible(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UDestructibleComponent_SetChunkWorldRT(UDestructibleComponent* Self, int32 ChunkIndex, INT_PTR WorldRotation, INT_PTR WorldTranslation)
+	{
+		auto _p0 = ChunkIndex;
+		auto _p1 = *(FQuat*)WorldRotation;
+		auto _p2 = *(FVector*)WorldTranslation;
+		Self->SetChunkWorldRT(_p0, _p1, _p2);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

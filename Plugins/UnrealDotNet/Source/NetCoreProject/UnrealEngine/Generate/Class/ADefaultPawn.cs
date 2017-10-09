@@ -32,6 +32,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr Self);
+		
 		#endregion
 		
 		#region Property
@@ -62,6 +68,23 @@ namespace UnrealEngine
 			get => E_PROP_ADefaultPawn_MovementComponentName_GET();
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Returns CollisionComponent subobject </para>
+		/// </summary>
+		public USphereComponent GetCollisionComponent()
+			=> E_ADefaultPawn_GetCollisionComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Returns MeshComponent subobject </para>
+		/// </summary>
+		public UStaticMeshComponent GetMeshComponent()
+			=> E_ADefaultPawn_GetMeshComponent(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(ADefaultPawn Self)

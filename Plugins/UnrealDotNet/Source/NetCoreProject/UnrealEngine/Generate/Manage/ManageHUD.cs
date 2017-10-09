@@ -14,6 +14,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>add an actor to the PostRenderedActors array </para>
+		/// </summary>
+		public override void AddPostRenderedActor(AActor A) { }
+		
+		
+		/// <summary>
 		/// <para>draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array </para>
 		/// </summary>
 		public override void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation) { }
@@ -78,6 +84,12 @@ namespace UnrealEngine
 		/// <para>PostRender is the main draw loop. </para>
 		/// </summary>
 		public override void PostRender() { }
+		
+		
+		/// <summary>
+		/// <para>remove an actor from the PostRenderedActors array </para>
+		/// </summary>
+		public override void RemovePostRenderedActor(AActor A) { }
 		
 		public override void ShowDebug(string DebugType) { }
 		

@@ -35,6 +35,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_SetScalarParameterValueOnMaterials(IntPtr Self, string ParameterName, float ParameterValue);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMeshComponent_SetVectorParameterValueOnMaterials(IntPtr Self, string ParameterName, IntPtr ParameterValue);
+		
 		#endregion
 		
 		#region ExternMethods
@@ -67,6 +70,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetScalarParameterValueOnMaterials(string ParameterName, float ParameterValue)
 			=> E_UMeshComponent_SetScalarParameterValueOnMaterials(this, ParameterName, ParameterValue);
+		
+		
+		/// <summary>
+		/// <para>Set all occurrences of Vector Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
+		/// </summary>
+		public void SetVectorParameterValueOnMaterials(string ParameterName, FVector ParameterValue)
+			=> E_UMeshComponent_SetVectorParameterValueOnMaterials(this, ParameterName, ParameterValue);
 		
 		#endregion
 		

@@ -29,4 +29,16 @@ void UManageEngine::Tick(float DeltaSeconds, bool bIdleMode)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Tick", DeltaSeconds, bIdleMode);
 }
 
+void UManageEngine::WorldAdded(UWorld* World)
+{
+	Super::WorldAdded(World);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WorldAdded", World);
+}
+
+void UManageEngine::WorldDestroyed(UWorld* InWorld)
+{
+	Super::WorldDestroyed(InWorld);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WorldDestroyed", InWorld);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

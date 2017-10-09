@@ -25,6 +25,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FOverlapResult_ItemIndex_SET(IntPtr Ptr, int Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_FOverlapResult_GetActor(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_FOverlapResult_GetComponent(IntPtr Self);
+		
 		#endregion
 		
 		#region Property
@@ -40,6 +46,23 @@ namespace UnrealEngine
 			set => E_PROP_FOverlapResult_ItemIndex_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Utility to return the Actor that owns the Component that was hit </para>
+		/// </summary>
+		public AActor GetActor()
+			=> E_FOverlapResult_GetActor(this);
+		
+		
+		/// <summary>
+		/// <para>Utility to return the Component that was hit </para>
+		/// </summary>
+		public UPrimitiveComponent GetComponent()
+			=> E_FOverlapResult_GetComponent(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(FOverlapResult Self)

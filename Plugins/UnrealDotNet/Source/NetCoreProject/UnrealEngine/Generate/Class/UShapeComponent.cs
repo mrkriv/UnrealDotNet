@@ -24,11 +24,33 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UShapeComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UShapeComponent_AddShapeToGeomArray(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UShapeComponent_CreateShapeBodySetupIfNeeded(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UShapeComponent_PrepareSharedBodySetup(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UShapeComponent_UpdateBodySetup(IntPtr Self);
 		
 		#endregion
 		
 		#region ExternMethods
+		protected void AddShapeToGeomArray()
+			=> E_UShapeComponent_AddShapeToGeomArray(this);
+		
+		protected void CreateShapeBodySetupIfNeeded()
+			=> E_UShapeComponent_CreateShapeBodySetupIfNeeded(this);
+		
+		
+		/// <summary>
+		/// <para>Checks if a shared body setup is available (and if we're eligible for it). If successful you must still check for staleness </para>
+		/// </summary>
+		protected bool PrepareSharedBodySetup()
+			=> E_UShapeComponent_PrepareSharedBodySetup(this);
+		
 		
 		/// <summary>
 		/// <para>Update the body setup parameters based on shape information </para>

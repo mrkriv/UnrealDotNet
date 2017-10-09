@@ -25,6 +25,12 @@ extern "C"
 		Self->CachePaintedDataIfNecessary();
 	}
 
+	DOTNET_EXPORT auto E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent* Self, UStaticMeshComponent* SourceComponent)
+	{
+		auto _p0 = SourceComponent;
+		Self->CopyInstanceVertexColorsIfCompatible(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(UStaticMeshComponent* Self, bool bRebuildingStaticMesh)
 	{
 		auto _p0 = bRebuildingStaticMesh;

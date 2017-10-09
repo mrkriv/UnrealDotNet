@@ -21,6 +21,8 @@ class UNREALDOTNETRUNTIME_API UManageSceneComponent : public USceneComponent
 	
 public:
 	
+	virtual void DetachFromComponent(const FDetachmentTransformRules& DetachmentRules) override;
+	
 	virtual void DetachFromParent(bool bMaintainWorldPosition, bool bCallModify) override;
 	
 	virtual void OnAttachmentChanged() override;
@@ -32,6 +34,10 @@ public:
 	virtual void UpdatePhysicsVolume(bool bTriggerNotifiers) override;
 	
 protected:
+	
+	virtual void OnChildAttached(USceneComponent* ChildComponent) override;
+	
+	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
 	
 	virtual void OnHiddenInGameChanged() override;
 	

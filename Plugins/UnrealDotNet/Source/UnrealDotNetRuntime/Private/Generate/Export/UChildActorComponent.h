@@ -25,9 +25,19 @@ extern "C"
 		Self->DestroyChildActor();
 	}
 
+	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActor(UChildActorComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetChildActor());
+	}
+
 	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActorName(UChildActorComponent* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetChildActorName());
+	}
+
+	DOTNET_EXPORT auto E_UChildActorComponent_GetChildActorTemplate(UChildActorComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetChildActorTemplate());
 	}
 
 }

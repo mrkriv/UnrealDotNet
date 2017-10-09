@@ -18,6 +18,11 @@ class UNREALDOTNETRUNTIME_API UManagePawnNoiseEmitterComponent : public UPawnNoi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	
+public:
+	
+	virtual void MakeNoise(AActor* NoiseMaker, float Loudness, const FVector& NoiseLocation) override;
+	
 }
 ;
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -48,6 +48,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr Self);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FAnimationEvaluationContext_Copy(IntPtr Self, IntPtr Other);
+		
 		#endregion
 		
 		#region Property
@@ -86,6 +89,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		public void Clear()
 			=> E_FAnimationEvaluationContext_Clear(this);
+		
+		public void Copy(FAnimationEvaluationContext Other)
+			=> E_FAnimationEvaluationContext_Copy(this, Other);
 		
 		#endregion
 		

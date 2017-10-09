@@ -64,8 +64,32 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ACharacter_JumpMaxHoldTime_GET(ACharacter* Ptr) { return Ptr->JumpMaxHoldTime; }
 	DOTNET_EXPORT void E_PROP_ACharacter_JumpMaxHoldTime_SET(ACharacter* Ptr, float Value) { Ptr->JumpMaxHoldTime = Value; }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_LandedDelegate(ACharacter* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_LandedDelegate";
+		wrapper->SourceObject = Obj;
+		Obj->LandedDelegate.AddDynamic(wrapper, &UManageEventSender::Wrapper_FLandedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_ACharacter_LandedDelegate(ACharacter* Obj)
+	{
+	}
+
 	DOTNET_EXPORT auto E_PROP_ACharacter_MeshComponentName_GET() { return ConvertToManage_StringWrapper(ACharacter::MeshComponentName); }
 	
+	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(ACharacter* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_MovementModeChangedDelegate";
+		wrapper->SourceObject = Obj;
+		Obj->MovementModeChangedDelegate.AddDynamic(wrapper, &UManageEventSender::Wrapper_FMovementModeChangedSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_ACharacter_MovementModeChangedDelegate(ACharacter* Obj)
+	{
+	}
+
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_OnCharacterMovementUpdated(ACharacter* Obj)
 	{
 		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
@@ -90,10 +114,22 @@ extern "C"
 	{
 	}
 
+	DOTNET_EXPORT auto E_PROP_ACharacter_RepRootMotion_GET(ACharacter* Ptr) { return (INT_PTR)&(Ptr->RepRootMotion); }
+	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RepRootMotion = *(FRepRootMotionMontage*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<ACharacter>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ApplyDamageMomentum(ACharacter* Self, float DamageTaken, INT_PTR DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = DamageTaken;
+		auto _p1 = *(FDamageEvent*)DamageEvent;
+		auto _p2 = PawnInstigator;
+		auto _p3 = DamageCauser;
+		Self->ApplyDamageMomentum(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_BaseChange(ACharacter* Self)
@@ -211,9 +247,19 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetBaseTranslationOffset());
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_GetCapsuleComponent(ACharacter* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCapsuleComponent());
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_GetJumpMaxHoldTime(ACharacter* Self)
 	{
 		return Self->GetJumpMaxHoldTime();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_GetMesh(ACharacter* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetMesh());
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetReplicatedMovementMode(ACharacter* Self)
@@ -280,6 +326,12 @@ extern "C"
 		Self->K2_UpdateCustomMovement(_p0);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_Landed(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		Self->Landed(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_LaunchCharacter(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
 	{
 		auto _p0 = *(FVector*)LaunchVelocity;
@@ -288,9 +340,21 @@ extern "C"
 		Self->LaunchCharacter(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_MoveBlockedBy(ACharacter* Self, INT_PTR Impact)
+	{
+		auto _p0 = *(FHitResult*)Impact;
+		Self->MoveBlockedBy(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_NotifyJumpApex(ACharacter* Self)
 	{
 		Self->NotifyJumpApex();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_NotifyLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		return Self->NotifyLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
@@ -308,6 +372,12 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_OnJumped_Implementation(ACharacter* Self)
 	{
 		Self->OnJumped_Implementation();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_OnLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		Self->OnLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnLaunched(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
@@ -347,9 +417,22 @@ extern "C"
 		Self->OnStartCrouch(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_OnUpdateSimulatedPosition(ACharacter* Self, INT_PTR OldLocation, INT_PTR OldRotation)
+	{
+		auto _p0 = *(FVector*)OldLocation;
+		auto _p1 = *(FQuat*)OldRotation;
+		Self->OnUpdateSimulatedPosition(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_ResetJumpState(ACharacter* Self)
 	{
 		((E_PROTECTED_WRAP_ACharacter*)Self)->ResetJumpState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
+	{
+		auto _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
+		return Self->RestoreReplicatedMove(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen(ACharacter* Self, char* InString)
@@ -364,10 +447,32 @@ extern "C"
 		Self->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_SaveRelativeBasedMovement(ACharacter* Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
+	{
+		auto _p0 = *(FVector*)NewRelativeLocation;
+		auto _p1 = *(FRotator*)NewRotation;
+		auto _p2 = bRelativeRotation;
+		Self->SaveRelativeBasedMovement(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_SetAnimRootMotionTranslationScale(ACharacter* Self, float InAnimRootMotionTranslationScale)
 	{
 		auto _p0 = InAnimRootMotionTranslationScale;
 		Self->SetAnimRootMotionTranslationScale(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_SetBase(ACharacter* Self, UPrimitiveComponent* NewBase, char* BoneName, bool bNotifyActor)
+	{
+		auto _p0 = NewBase;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		auto _p2 = bNotifyActor;
+		Self->SetBase(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ShouldNotifyLanded(ACharacter* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		return Self->ShouldNotifyLanded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_SimulatedRootMotionPositionFixup(ACharacter* Self, float DeltaSeconds)
@@ -391,6 +496,13 @@ extern "C"
 	{
 		auto _p0 = Flags;
 		Self->UpdateFromCompressedFlags(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_UpdateSimulatedPosition(ACharacter* Self, INT_PTR Location, INT_PTR NewRotation)
+	{
+		auto _p0 = *(FVector*)Location;
+		auto _p1 = *(FRotator*)NewRotation;
+		Self->UpdateSimulatedPosition(_p0, _p1);
 	}
 
 }

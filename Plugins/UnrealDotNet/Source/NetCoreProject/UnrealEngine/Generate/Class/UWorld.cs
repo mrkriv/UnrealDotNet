@@ -214,6 +214,12 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_URL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_AddNetworkActor(IntPtr Self, IntPtr Actor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_AddPawn(IntPtr Self, IntPtr Pawn);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_AllowLevelLoadRequests(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -241,6 +247,12 @@ namespace UnrealEngine
 		private static extern void E_UWorld_CancelPendingMapChange(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_CleanupWorld(IntPtr Self, bool bSessionEnded, bool bCleanupResources, IntPtr NewWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_ClearActorComponentEndOfFrameUpdate(IntPtr Self, IntPtr Component);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_ClearWorldComponents(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -251,6 +263,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_ConditionallyBuildStreamingData(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_ContainsActor(IntPtr Self, IntPtr Actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UWorld_ConvertToPIEPackageName(IntPtr Self, string PackageName, int PIEInstanceID);
@@ -271,13 +286,31 @@ namespace UnrealEngine
 		private static extern void E_UWorld_DelayStreamingVolumeUpdates(IntPtr Self, int InFrameDelay);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_DestroyActor(IntPtr Self, IntPtr Actor, bool bNetForce, bool bShouldModifyLevel);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_DestroyDemoNetDriver(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_DestroyWorld(IntPtr Self, bool bInformEngineOfWorld, IntPtr NewWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_DuplicateRequestedLevels(IntPtr Self, string MapName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_DuplicateWorldForPIE(IntPtr Self, string PackageName, IntPtr OwningWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_EditorDestroyActor(IntPtr Self, IntPtr Actor, bool bShouldModifyLevel);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_EncroachingBlockingGeometry(IntPtr Self, IntPtr TestActor, IntPtr TestLocation, IntPtr TestRotation, IntPtr ProposedAdjustment);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_EnsureCollisionTreeIsBuilt(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_FindTeleportSpot(IntPtr Self, IntPtr TestActor, IntPtr PlaceLocation, IntPtr PlaceRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_FinishPhysicsSim(IntPtr Self);
@@ -343,6 +376,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_HasEndOfFrameUpdates(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_InitializeActorsForPlay(IntPtr Self, IntPtr InURL, bool bResetTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_InvalidateModelSurface(IntPtr Self, bool bCurrentLevelOnly);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -403,13 +439,31 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_IsVisibilityRequestPending(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_Listen(IntPtr Self, IntPtr InURL);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(IntPtr Self, IntPtr Component, bool bForceGameThread);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_MarkObjectsPendingKill(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PerformGarbageCollectionAndCleanupActors(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PropagateLightingScenarioChange(IntPtr Self, bool bLevelWasMadeVisible);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RemoveActor(IntPtr Self, IntPtr Actor, bool bShouldModifyLevel);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RemoveNetworkActor(IntPtr Self, IntPtr Actor);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RemovePawn(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UWorld_RemovePIEPrefix(IntPtr Self, string Source);
@@ -425,6 +479,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SendAllEndOfFrameUpdates(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_SetGameMode(IntPtr Self, IntPtr InURL);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetMapNeedsLightingFullyRebuilt(IntPtr Self, int InNumLightingUnbuiltObjects);
@@ -463,13 +520,22 @@ namespace UnrealEngine
 		private static extern float E_UWorld_TimeSince(IntPtr Self, float Time);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_TransferBlueprintDebugReferences(IntPtr Self, IntPtr NewWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_TriggerStreamingDataRebuild(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_UpdateActorComponentEndOfFrameUpdateState(IntPtr Self, IntPtr Component);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateAllReflectionCaptures(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateAllSkyCaptures(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_UpdateCullDistanceVolumes(IntPtr Self, IntPtr ActorToUpdate, IntPtr ComponentToUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateLevelStreaming(IntPtr Self);
@@ -863,6 +929,23 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Adds the passed in actor to the special network actor list </para>
+		/// <para>This list is used to specifically single out actors that are relevant for networking without having to scan the much large list </para>
+		/// <param name="Actor">Actor to add </param>
+		/// </summary>
+		public void AddNetworkActor(AActor Actor)
+			=> E_UWorld_AddNetworkActor(this, Actor);
+		
+		
+		/// <summary>
+		/// <para>Inserts the passed in pawn at the front of the linked list of pawns. </para>
+		/// <param name="Pawn">Pawn to insert, use NULL to clear list </param>
+		/// </summary>
+		public void AddPawn(APawn Pawn)
+			=> E_UWorld_AddPawn(this, Pawn);
+		
+		
+		/// <summary>
 		/// <para>Returns whether the level streaming code is allowed to issue load requests. </para>
 		/// <return>true if level load requests are allowed, false otherwise. </return>
 		/// </summary>
@@ -927,6 +1010,23 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Cleans up components, streaming data and assorted other intermediate data. </para>
+		/// <param name="bSessionEnded">whether to notify the viewport that the game session has ended </param>
+		/// <param name="NewWorld">Optional new world that will be loaded after this world is cleaned up. Specify a new world to prevent it and it's sublevels from being GCed during map transitions. </param>
+		/// </summary>
+		public void CleanupWorld(bool bSessionEnded = true, bool bCleanupResources = true, UWorld NewWorld = null)
+			=> E_UWorld_CleanupWorld(this, bSessionEnded, bCleanupResources, NewWorld);
+		
+		
+		/// <summary>
+		/// <para>Clears the need for a component to have a end of frame update </para>
+		/// <param name="Component">Component to update at the end of the frame </param>
+		/// </summary>
+		public void ClearActorComponentEndOfFrameUpdate(UActorComponent Component)
+			=> E_UWorld_ClearActorComponentEndOfFrameUpdate(this, Component);
+		
+		
+		/// <summary>
 		/// <para>Clears all level components and world components like e.g. line batcher. </para>
 		/// </summary>
 		public void ClearWorldComponents()
@@ -955,6 +1055,16 @@ namespace UnrealEngine
 		/// </summary>
 		public void ConditionallyBuildStreamingData()
 			=> E_UWorld_ConditionallyBuildStreamingData(this);
+		
+		
+		/// <summary>
+		/// <para>Returns whether the passed in actor is part of any of the loaded levels actors array. </para>
+		/// <para>Warning: Will return true for pending kill actors! </para>
+		/// <param name="Actor">Actor to check whether it is contained by any level </param>
+		/// <return>true if actor is contained by any of the loaded levels, false otherwise </return>
+		/// </summary>
+		public bool ContainsActor(AActor Actor)
+			=> E_UWorld_ContainsActor(this, Actor);
 		
 		
 		/// <summary>
@@ -997,10 +1107,31 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Removes the actor from its level's actor list and generally cleans up the engine's internal state. </para>
+		/// <para>What this function does not do, but is handled via garbage collection instead, is remove references </para>
+		/// <para>to this actor from all other actors, and kill the actor's resources.  This function is set up so that </para>
+		/// <para>no problems occur even if the actor is being destroyed inside its recursion stack. </para>
+		/// <param name="ThisActor">Actor to remove. </param>
+		/// <param name="bNetForce">opt] Ignored unless called during play.  Default is false. </param>
+		/// <param name="bShouldModifyLevel">opt] If true, Modify() the level before removing the actor.  Default is true. </param>
+		/// <return>true if destroyed or already marked for destruction, false if actor couldn't be destroyed. </return>
+		/// </summary>
+		public bool DestroyActor(AActor Actor, bool bNetForce = false, bool bShouldModifyLevel = true)
+			=> E_UWorld_DestroyActor(this, Actor, bNetForce, bShouldModifyLevel);
+		
+		
+		/// <summary>
 		/// <para>Utility function to handle Exec/Console Command for setting the speed of a replay </para>
 		/// </summary>
 		public void DestroyDemoNetDriver()
 			=> E_UWorld_DestroyDemoNetDriver(this);
+		
+		
+		/// <summary>
+		/// <para>Destroy this World instance. If destroying the world to load a different world, supply it here to prevent GC of the new world or it's sublevels. </para>
+		/// </summary>
+		public void DestroyWorld(bool bInformEngineOfWorld, UWorld NewWorld = null)
+			=> E_UWorld_DestroyWorld(this, bInformEngineOfWorld, NewWorld);
 		
 		
 		/// <summary>
@@ -1013,11 +1144,40 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Given a loaded editor UWorld, duplicate it for play in editor purposes with OwningWorld as the world with the persistent level. </para>
+		/// </summary>
+		public UWorld DuplicateWorldForPIE(string PackageName, UWorld OwningWorld)
+			=> E_UWorld_DuplicateWorldForPIE(this, PackageName, OwningWorld);
+		
+		
+		/// <summary>
+		/// <para>Wrapper for DestroyActor() that should be called in the editor. </para>
+		/// <param name="bShouldModifyLevel">If true, Modify() the level before removing the actor. </param>
+		/// </summary>
+		public bool EditorDestroyActor(AActor Actor, bool bShouldModifyLevel)
+			=> E_UWorld_EditorDestroyActor(this, Actor, bShouldModifyLevel);
+		
+		
+		/// <summary>
+		/// <para>@Return true if Actor would encroach at TestLocation on something that blocks it.  Returns a ProposedAdjustment that might result in an unblocked TestLocation. </para>
+		/// </summary>
+		public bool EncroachingBlockingGeometry(AActor TestActor, FVector TestLocation, FRotator TestRotation, FVector ProposedAdjustment = null)
+			=> E_UWorld_EncroachingBlockingGeometry(this, TestActor, TestLocation, TestRotation, ProposedAdjustment);
+		
+		
+		/// <summary>
 		/// <para>Ensures that the collision detection tree is fully built. This should be called after the full level reload to make sure </para>
 		/// <para>the first traces are not abysmally slow. </para>
 		/// </summary>
 		public void EnsureCollisionTreeIsBuilt()
 			=> E_UWorld_EnsureCollisionTreeIsBuilt(this);
+		
+		
+		/// <summary>
+		/// <para>Try to find an acceptable position to place TestActor as close to possible to PlaceLocation.  Expects PlaceLocation to be a valid location inside the level. </para>
+		/// </summary>
+		public bool FindTeleportSpot(AActor TestActor, FVector PlaceLocation, FRotator PlaceRotation)
+			=> E_UWorld_FindTeleportSpot(this, TestActor, PlaceLocation, PlaceRotation);
 		
 		
 		/// <summary>
@@ -1172,6 +1332,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Initializes all actors and prepares them to start gameplay </para>
+		/// <param name="InURL">commandline URL </param>
+		/// <param name="bResetTime">optional) whether the WorldSettings's TimeSeconds should be reset to zero </param>
+		/// </summary>
+		public void InitializeActorsForPlay(FURL InURL, bool bResetTime = true)
+			=> E_UWorld_InitializeActorsForPlay(this, InURL, bResetTime);
+		
+		
+		/// <summary>
 		/// <para>Discards the cached data used to render the levels' UModel.  Assumes that the </para>
 		/// <para>faces and vertex positions haven't changed, only the applied materials. </para>
 		/// <param name="bCurrentLevelOnly">If true, affect only the current level. </param>
@@ -1314,6 +1483,18 @@ namespace UnrealEngine
 		public bool IsVisibilityRequestPending()
 			=> E_UWorld_IsVisibilityRequestPending(this);
 		
+		public bool Listen(FURL InURL)
+			=> E_UWorld_Listen(this, InURL);
+		
+		
+		/// <summary>
+		/// <para>Mark a component as needing an end of frame update </para>
+		/// <param name="Component">Component to update at the end of the frame </param>
+		/// <param name="bForceGameThread">if true, force this to happen on the game thread </param>
+		/// </summary>
+		public void MarkActorComponentForNeededEndOfFrameUpdate(UActorComponent Component, bool bForceGameThread)
+			=> E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(this, Component, bForceGameThread);
+		
 		
 		/// <summary>
 		/// <para>Marks all objects that have this World as an Outer as pending kill </para>
@@ -1330,10 +1511,45 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Issues level streaming load/unload requests based on whether </para>
+		/// <para>local players are inside/outside level streaming volumes. </para>
+		/// <param name="OverrideViewLocation">Optional position used to override the location used to calculate current streaming volumes </param>
+		/// </summary>
+		public void ProcessLevelStreamingVolumes(FVector OverrideViewLocation = null)
+			=> E_UWorld_ProcessLevelStreamingVolumes(this, OverrideViewLocation);
+		
+		
+		/// <summary>
 		/// <para>Propagates a change to the active lighting scenario. </para>
 		/// </summary>
 		public void PropagateLightingScenarioChange(bool bLevelWasMadeVisible)
 			=> E_UWorld_PropagateLightingScenarioChange(this, bLevelWasMadeVisible);
+		
+		
+		/// <summary>
+		/// <para>Removes the passed in actor from the actor lists. Please note that the code actually doesn't physically remove the </para>
+		/// <para>index but rather clears it so other indices are still valid and the actors array size doesn't change. </para>
+		/// <param name="Actor">Actor to remove. </param>
+		/// <param name="bShouldModifyLevel">If true, Modify() the level before removing the actor if in the editor. </param>
+		/// </summary>
+		public void RemoveActor(AActor Actor, bool bShouldModifyLevel)
+			=> E_UWorld_RemoveActor(this, Actor, bShouldModifyLevel);
+		
+		
+		/// <summary>
+		/// <para>Removes the passed in actor to from special network actor list </para>
+		/// <param name="Actor">Actor to remove </param>
+		/// </summary>
+		public void RemoveNetworkActor(AActor Actor)
+			=> E_UWorld_RemoveNetworkActor(this, Actor);
+		
+		
+		/// <summary>
+		/// <para>Removes the passed in pawn from the linked list of pawns. </para>
+		/// <param name="Pawn">Pawn to remove </param>
+		/// </summary>
+		public void RemovePawn(APawn Pawn)
+			=> E_UWorld_RemovePawn(this, Pawn);
 		
 		
 		/// <summary>
@@ -1371,6 +1587,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SendAllEndOfFrameUpdates()
 			=> E_UWorld_SendAllEndOfFrameUpdates(this);
+		
+		
+		/// <summary>
+		/// <para>Spawns GameMode for the level. </para>
+		/// </summary>
+		public bool SetGameMode(FURL InURL)
+			=> E_UWorld_SetGameMode(this, InURL);
 		
 		
 		/// <summary>
@@ -1469,10 +1692,27 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Transfers the set of Kismet / Blueprint objects being debugged to the new world that are not already present, and updates blueprints accordingly </para>
+		/// <param name="NewWorld">The new world to find equivalent objects in </param>
+		/// </summary>
+		public void TransferBlueprintDebugReferences(UWorld NewWorld)
+			=> E_UWorld_TransferBlueprintDebugReferences(this, NewWorld);
+		
+		
+		/// <summary>
 		/// <para>Triggers a call to ULevel::BuildStreamingData(this,NULL,NULL) within a few seconds. </para>
 		/// </summary>
 		public void TriggerStreamingDataRebuild()
 			=> E_UWorld_TriggerStreamingDataRebuild(this);
+		
+		
+		/// <summary>
+		/// <para>Updates an ActorComponent's cached state of whether it has been marked for end of frame update based on the current </para>
+		/// <para>state of the World's NeedsEndOfFrameUpdate arrays </para>
+		/// <param name="Component">Component to update the cached state of </param>
+		/// </summary>
+		public void UpdateActorComponentEndOfFrameUpdateState(UActorComponent Component)
+			=> E_UWorld_UpdateActorComponentEndOfFrameUpdateState(this, Component);
 		
 		
 		/// <summary>
@@ -1487,6 +1727,15 @@ namespace UnrealEngine
 		/// </summary>
 		public void UpdateAllSkyCaptures()
 			=> E_UWorld_UpdateAllSkyCaptures(this);
+		
+		
+		/// <summary>
+		/// <para>Updates cull distance volumes for a specified component or a specified actor or all actors </para>
+		/// <param name="ComponentToUpdate">If specified just that Component will be updated </param>
+		/// <param name="ActorToUpdate">If specified (and ComponentToUpdate is not specified), all Components owned by this Actor will be updated </param>
+		/// </summary>
+		public void UpdateCullDistanceVolumes(AActor ActorToUpdate = null, UPrimitiveComponent ComponentToUpdate = null)
+			=> E_UWorld_UpdateCullDistanceVolumes(this, ActorToUpdate, ComponentToUpdate);
 		
 		
 		/// <summary>

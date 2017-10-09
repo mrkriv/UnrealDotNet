@@ -21,12 +21,20 @@ namespace UnrealEngine
 		{
 		}
 
+		public FDetachmentTransformRules(FAttachmentTransformRules AttachmentRules, bool bInCallModify) :
+			base(E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(AttachmentRules, bInCallModify), false)
+		{
+		}
+
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool(byte InRule, bool bInCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool(byte InLocationRule, byte InRotationRule, byte InScaleRule, bool bInCallModify);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(IntPtr AttachmentRules, bool bInCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FDetachmentTransformRules_bCallModify_GET(IntPtr Ptr);

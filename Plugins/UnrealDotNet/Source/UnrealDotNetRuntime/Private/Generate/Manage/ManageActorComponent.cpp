@@ -11,6 +11,24 @@ void UManageActorComponent::Activate(bool bReset)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Activate", bReset);
 }
 
+void UManageActorComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageActorComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManageActorComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
 void UManageActorComponent::BeginPlay()
 {
 	if (!ManageClassName.FullName.IsEmpty())
@@ -104,6 +122,18 @@ void UManageActorComponent::RegisterComponentTickFunctions(bool bRegister)
 {
 	Super::RegisterComponentTickFunctions(bRegister);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+}
+
+void UManageActorComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageActorComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
 }
 
 void UManageActorComponent::SendRenderDynamicData_Concurrent()

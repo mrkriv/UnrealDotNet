@@ -31,12 +31,26 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Constructs a vector from an FVector. </para>
+		/// <para>Copies the X and Y components from the FVector. </para>
+		/// <param name="V">Vector to copy from. </param>
+		/// </summary>
+		public FVector2D(FVector V) :
+			base(E_CreateStruct_FVector2D_FVector(V), false)
+		{
+		}
+
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector2D();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float InX, float InY);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr V);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
@@ -55,7 +69,22 @@ namespace UnrealEngine
 		private static extern bool E_FVector2D_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FVector2D_CrossProduct(IntPtr Self, IntPtr A, IntPtr B);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector2D_DiagnosticCheckNaN(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FVector2D_Distance(IntPtr Self, IntPtr V1, IntPtr V2);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FVector2D_DistSquared(IntPtr Self, IntPtr V1, IntPtr V2);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FVector2D_DotProduct(IntPtr Self, IntPtr A, IntPtr B);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FVector2D_Equals(IntPtr Self, IntPtr V, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector2D_GetAbs(IntPtr Self);
@@ -109,6 +138,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FVector2D_ToDirectionAndLength(IntPtr Self, IntPtr OutDir, float OutLength);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FVector2D_ToString(IntPtr Self);
 		
 		#endregion
@@ -153,8 +185,58 @@ namespace UnrealEngine
 		public bool ContainsNaN()
 			=> E_FVector2D_ContainsNaN(this);
 		
+		
+		/// <summary>
+		/// <para>Calculate the cross product of two vectors. </para>
+		/// <param name="A">The first vector. </param>
+		/// <param name="B">The second vector. </param>
+		/// <return>The cross product. </return>
+		/// </summary>
+		public float CrossProduct(FVector2D A, FVector2D B)
+			=> E_FVector2D_CrossProduct(this, A, B);
+		
 		public void DiagnosticCheckNaN()
 			=> E_FVector2D_DiagnosticCheckNaN(this);
+		
+		
+		/// <summary>
+		/// <para>Distance between two 2D points. </para>
+		/// <param name="V1">The first point. </param>
+		/// <param name="V2">The second point. </param>
+		/// <return>The distance between two 2D points. </return>
+		/// </summary>
+		public float Distance(FVector2D V1, FVector2D V2)
+			=> E_FVector2D_Distance(this, V1, V2);
+		
+		
+		/// <summary>
+		/// <para>Squared distance between two 2D points. </para>
+		/// <param name="V1">The first point. </param>
+		/// <param name="V2">The second point. </param>
+		/// <return>The squared distance between two 2D points. </return>
+		/// </summary>
+		public float DistSquared(FVector2D V1, FVector2D V2)
+			=> E_FVector2D_DistSquared(this, V1, V2);
+		
+		
+		/// <summary>
+		/// <para>Calculates the dot product of two vectors. </para>
+		/// <param name="A">The first vector. </param>
+		/// <param name="B">The second vector. </param>
+		/// <return>The dot product. </return>
+		/// </summary>
+		public float DotProduct(FVector2D A, FVector2D B)
+			=> E_FVector2D_DotProduct(this, A, B);
+		
+		
+		/// <summary>
+		/// <para>Checks for equality with error-tolerant comparison. </para>
+		/// <param name="V">The vector to compare. </param>
+		/// <param name="Tolerance">Error tolerance. </param>
+		/// <return>true if the vectors are equal within specified tolerance, otherwise false. </return>
+		/// </summary>
+		public bool Equals(FVector2D V, float Tolerance)
+			=> E_FVector2D_Equals(this, V, Tolerance);
 		
 		
 		/// <summary>
@@ -294,6 +376,15 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector SphericalToUnitCartesian()
 			=> E_FVector2D_SphericalToUnitCartesian(this);
+		
+		
+		/// <summary>
+		/// <para>Util to convert this vector into a unit direction vector and its original length. </para>
+		/// <param name="OutDir">Reference passed in to store unit direction vector. </param>
+		/// <param name="OutLength">Reference passed in to store length of the vector. </param>
+		/// </summary>
+		public void ToDirectionAndLength(FVector2D OutDir, float OutLength)
+			=> E_FVector2D_ToDirectionAndLength(this, OutDir, OutLength);
 		
 		
 		/// <summary>

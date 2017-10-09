@@ -126,6 +126,18 @@ extern "C"
 		return (INT_PTR)NewObject<UWorld>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UWorld_AddNetworkActor(UWorld* Self, AActor* Actor)
+	{
+		auto _p0 = Actor;
+		Self->AddNetworkActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_AddPawn(UWorld* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		Self->AddPawn(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_AllowLevelLoadRequests(UWorld* Self)
 	{
 		return Self->AllowLevelLoadRequests();
@@ -172,6 +184,20 @@ extern "C"
 		Self->CancelPendingMapChange();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_CleanupWorld(UWorld* Self, bool bSessionEnded, bool bCleanupResources, UWorld* NewWorld)
+	{
+		auto _p0 = bSessionEnded;
+		auto _p1 = bCleanupResources;
+		auto _p2 = NewWorld;
+		Self->CleanupWorld(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_ClearActorComponentEndOfFrameUpdate(UWorld* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->ClearActorComponentEndOfFrameUpdate(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_ClearWorldComponents(UWorld* Self)
 	{
 		Self->ClearWorldComponents();
@@ -190,6 +216,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_ConditionallyBuildStreamingData(UWorld* Self)
 	{
 		Self->ConditionallyBuildStreamingData();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_ContainsActor(UWorld* Self, AActor* Actor)
+	{
+		auto _p0 = Actor;
+		return Self->ContainsActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_ConvertToPIEPackageName(UWorld* Self, char* PackageName, int32 PIEInstanceID)
@@ -226,9 +258,24 @@ extern "C"
 		Self->DelayStreamingVolumeUpdates(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_DestroyActor(UWorld* Self, AActor* Actor, bool bNetForce, bool bShouldModifyLevel)
+	{
+		auto _p0 = Actor;
+		auto _p1 = bNetForce;
+		auto _p2 = bShouldModifyLevel;
+		return Self->DestroyActor(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_DestroyDemoNetDriver(UWorld* Self)
 	{
 		Self->DestroyDemoNetDriver();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_DestroyWorld(UWorld* Self, bool bInformEngineOfWorld, UWorld* NewWorld)
+	{
+		auto _p0 = bInformEngineOfWorld;
+		auto _p1 = NewWorld;
+		Self->DestroyWorld(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_DuplicateRequestedLevels(UWorld* Self, char* MapName)
@@ -237,9 +284,40 @@ extern "C"
 		Self->DuplicateRequestedLevels(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_DuplicateWorldForPIE(UWorld* Self, char* PackageName, UWorld* OwningWorld)
+	{
+		auto _p0 = ConvertFromManage_FString(PackageName);
+		auto _p1 = OwningWorld;
+		return ConvertToManage_ObjectPointerDescription(Self->DuplicateWorldForPIE(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_UWorld_EditorDestroyActor(UWorld* Self, AActor* Actor, bool bShouldModifyLevel)
+	{
+		auto _p0 = Actor;
+		auto _p1 = bShouldModifyLevel;
+		return Self->EditorDestroyActor(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_EncroachingBlockingGeometry(UWorld* Self, AActor* TestActor, INT_PTR TestLocation, INT_PTR TestRotation, INT_PTR ProposedAdjustment)
+	{
+		auto _p0 = TestActor;
+		auto _p1 = *(FVector*)TestLocation;
+		auto _p2 = *(FRotator*)TestRotation;
+		auto _p3 = (FVector*)ProposedAdjustment;
+		return Self->EncroachingBlockingGeometry(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_EnsureCollisionTreeIsBuilt(UWorld* Self)
 	{
 		Self->EnsureCollisionTreeIsBuilt();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_FindTeleportSpot(UWorld* Self, AActor* TestActor, INT_PTR PlaceLocation, INT_PTR PlaceRotation)
+	{
+		auto _p0 = TestActor;
+		auto _p1 = *(FVector*)PlaceLocation;
+		auto _p2 = *(FRotator*)PlaceRotation;
+		return Self->FindTeleportSpot(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_FinishPhysicsSim(UWorld* Self)
@@ -348,6 +426,13 @@ extern "C"
 		return Self->HasEndOfFrameUpdates();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_InitializeActorsForPlay(UWorld* Self, INT_PTR InURL, bool bResetTime)
+	{
+		auto _p0 = *(FURL*)InURL;
+		auto _p1 = bResetTime;
+		Self->InitializeActorsForPlay(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_InvalidateModelSurface(UWorld* Self, bool bCurrentLevelOnly)
 	{
 		auto _p0 = bCurrentLevelOnly;
@@ -450,6 +535,19 @@ extern "C"
 		return Self->IsVisibilityRequestPending();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_Listen(UWorld* Self, INT_PTR InURL)
+	{
+		auto _p0 = *(FURL*)InURL;
+		return Self->Listen(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(UWorld* Self, UActorComponent* Component, bool bForceGameThread)
+	{
+		auto _p0 = Component;
+		auto _p1 = bForceGameThread;
+		Self->MarkActorComponentForNeededEndOfFrameUpdate(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_MarkObjectsPendingKill(UWorld* Self)
 	{
 		Self->MarkObjectsPendingKill();
@@ -460,10 +558,35 @@ extern "C"
 		Self->PerformGarbageCollectionAndCleanupActors();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_ProcessLevelStreamingVolumes(UWorld* Self, INT_PTR OverrideViewLocation)
+	{
+		auto _p0 = (FVector*)OverrideViewLocation;
+		Self->ProcessLevelStreamingVolumes(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_PropagateLightingScenarioChange(UWorld* Self, bool bLevelWasMadeVisible)
 	{
 		auto _p0 = bLevelWasMadeVisible;
 		Self->PropagateLightingScenarioChange(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemoveActor(UWorld* Self, AActor* Actor, bool bShouldModifyLevel)
+	{
+		auto _p0 = Actor;
+		auto _p1 = bShouldModifyLevel;
+		Self->RemoveActor(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemoveNetworkActor(UWorld* Self, AActor* Actor)
+	{
+		auto _p0 = Actor;
+		Self->RemoveNetworkActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemovePawn(UWorld* Self, APawn* Pawn)
+	{
+		auto _p0 = Pawn;
+		Self->RemovePawn(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_RemovePIEPrefix(UWorld* Self, char* Source)
@@ -493,6 +616,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_SendAllEndOfFrameUpdates(UWorld* Self)
 	{
 		Self->SendAllEndOfFrameUpdates();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SetGameMode(UWorld* Self, INT_PTR InURL)
+	{
+		auto _p0 = *(FURL*)InURL;
+		return Self->SetGameMode(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SetMapNeedsLightingFullyRebuilt(UWorld* Self, int32 InNumLightingUnbuiltObjects)
@@ -566,9 +695,21 @@ extern "C"
 		return Self->TimeSince(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_TransferBlueprintDebugReferences(UWorld* Self, UWorld* NewWorld)
+	{
+		auto _p0 = NewWorld;
+		Self->TransferBlueprintDebugReferences(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_TriggerStreamingDataRebuild(UWorld* Self)
 	{
 		Self->TriggerStreamingDataRebuild();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_UpdateActorComponentEndOfFrameUpdateState(UWorld* Self, UActorComponent* Component)
+	{
+		auto _p0 = Component;
+		Self->UpdateActorComponentEndOfFrameUpdateState(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_UpdateAllReflectionCaptures(UWorld* Self)
@@ -579,6 +720,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_UpdateAllSkyCaptures(UWorld* Self)
 	{
 		Self->UpdateAllSkyCaptures();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_UpdateCullDistanceVolumes(UWorld* Self, AActor* ActorToUpdate, UPrimitiveComponent* ComponentToUpdate)
+	{
+		auto _p0 = ActorToUpdate;
+		auto _p1 = ComponentToUpdate;
+		Self->UpdateCullDistanceVolumes(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_UpdateLevelStreaming(UWorld* Self)

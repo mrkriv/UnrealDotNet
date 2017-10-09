@@ -30,6 +30,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UBoxComponent_GetUnscaledBoxExtent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UBoxComponent_InitBoxExtent(IntPtr Self, IntPtr InBoxExtent);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UBoxComponent_SetBoxExtent(IntPtr Self, IntPtr InBoxExtent, bool bUpdateOverlaps);
 		
 		#endregion
@@ -40,6 +43,9 @@ namespace UnrealEngine
 		
 		public FVector GetUnscaledBoxExtent()
 			=> E_UBoxComponent_GetUnscaledBoxExtent(this);
+		
+		public void InitBoxExtent(FVector InBoxExtent)
+			=> E_UBoxComponent_InitBoxExtent(this, InBoxExtent);
 		
 		
 		/// <summary>

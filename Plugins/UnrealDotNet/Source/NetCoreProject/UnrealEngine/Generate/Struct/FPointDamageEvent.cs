@@ -25,6 +25,11 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPointDamageEvent_Damage_SET(IntPtr Ptr, float Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPointDamageEvent_HitInfo_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPointDamageEvent_HitInfo_SET(IntPtr Ptr, IntPtr Value);
+		
 		#endregion
 		
 		#region Property
@@ -32,6 +37,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPointDamageEvent_Damage_GET(NativePointer);
 			set => E_PROP_FPointDamageEvent_Damage_SET(NativePointer, value);
+		}
+
+		public FHitResult HitInfo
+		{
+			get => E_PROP_FPointDamageEvent_HitInfo_GET(NativePointer);
+			set => E_PROP_FPointDamageEvent_HitInfo_SET(NativePointer, value);
 		}
 
 		#endregion

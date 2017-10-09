@@ -21,5 +21,15 @@ extern "C"
 		return (INT_PTR)NewObject<ADefaultPawn>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_ADefaultPawn_GetCollisionComponent(ADefaultPawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCollisionComponent());
+	}
+
+	DOTNET_EXPORT auto E_ADefaultPawn_GetMeshComponent(ADefaultPawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetMeshComponent());
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

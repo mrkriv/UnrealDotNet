@@ -39,6 +39,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(IntPtr Self, bool bSourceWithinNoiseEmitter);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPawnNoiseEmitterComponent_MakeNoise(IntPtr Self, IntPtr NoiseMaker, float Loudness, IntPtr NoiseLocation);
+		
 		#endregion
 		
 		#region Property
@@ -62,6 +65,16 @@ namespace UnrealEngine
 		
 		public float GetLastNoiseVolume(bool bSourceWithinNoiseEmitter)
 			=> E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(this, bSourceWithinNoiseEmitter);
+		
+		
+		/// <summary>
+		/// <para>Cache noises instigated by the owning pawn for AI sensing </para>
+		/// <param name="NoiseMaker">is the actual actor which made the noise </param>
+		/// <param name="Loudness">is the relative loudness of the noise (0.0 to 1.0) </param>
+		/// <param name="NoiseLocation">is the position of the noise </param>
+		/// </summary>
+		public virtual void MakeNoise(AActor NoiseMaker, float Loudness, FVector NoiseLocation)
+			=> E_UPawnNoiseEmitterComponent_MakeNoise(this, NoiseMaker, Loudness, NoiseLocation);
 		
 		#endregion
 		

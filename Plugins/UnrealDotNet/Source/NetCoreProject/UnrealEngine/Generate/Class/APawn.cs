@@ -86,7 +86,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetMovementBase(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetPawnNoiseEmitterComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetPawnViewLocation(IntPtr Self);
@@ -137,6 +146,12 @@ namespace UnrealEngine
 		private static extern void E_APawn_LaunchPawn(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_MoveIgnoreActorAdd(IntPtr Self, IntPtr ActorToIgnore);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_MoveIgnoreActorRemove(IntPtr Self, IntPtr ActorToIgnore);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_OnRep_Controller(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -144,6 +159,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_PawnClientRestart(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_PawnMakeNoise(IntPtr Self, float Loudness, IntPtr NoiseLocation, bool bUseNoiseMakerLocation, IntPtr NoiseMaker);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_PawnStartFire(IntPtr Self, byte FireModeNum);
@@ -349,10 +367,32 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Return PrimitiveComponent we are based on (standing on, attached to, and moving on). </para>
+		/// </summary>
+		public virtual UPrimitiveComponent GetMovementBase()
+			=> E_APawn_GetMovementBase(this);
+		
+		
+		/// <summary>
+		/// <para>Gets the owning actor of the Movement Base Component on which the pawn is standing. </para>
+		/// </summary>
+		public AActor GetMovementBaseActor(APawn Pawn)
+			=> E_APawn_GetMovementBaseActor(this, Pawn);
+		
+		
+		/// <summary>
 		/// <para>(Deprecated) Return the input vector in world space. </para>
 		/// </summary>
 		public FVector GetMovementInputVector()
 			=> E_APawn_GetMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Return our PawnNoiseEmitterComponent, if any. Default implementation returns the first PawnNoiseEmitterComponent found in the components array. </para>
+		/// <para>If one isn't found, then it tries to find one on the Pawn's current Controller. </para>
+		/// </summary>
+		public virtual UPawnNoiseEmitterComponent GetPawnNoiseEmitterComponent()
+			=> E_APawn_GetPawnNoiseEmitterComponent(this);
 		
 		
 		/// <summary>
@@ -466,6 +506,20 @@ namespace UnrealEngine
 		public void LaunchPawn(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
 			=> E_APawn_LaunchPawn(this, LaunchVelocity, bXYOverride, bZOverride);
 		
+		
+		/// <summary>
+		/// <para>Add an Actor to ignore by Pawn's movement collision </para>
+		/// </summary>
+		public void MoveIgnoreActorAdd(AActor ActorToIgnore)
+			=> E_APawn_MoveIgnoreActorAdd(this, ActorToIgnore);
+		
+		
+		/// <summary>
+		/// <para>Remove an Actor to ignore by Pawn's movement collision </para>
+		/// </summary>
+		public void MoveIgnoreActorRemove(AActor ActorToIgnore)
+			=> E_APawn_MoveIgnoreActorRemove(this, ActorToIgnore);
+		
 		public virtual void OnRep_Controller()
 			=> E_APawn_OnRep_Controller(this);
 		
@@ -478,6 +532,18 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PawnClientRestart()
 			=> E_APawn_PawnClientRestart(this);
+		
+		
+		/// <summary>
+		/// <para>Inform AIControllers that you've made a noise they might hear (they are sent a HearNoise message if they have bHearNoises==true) </para>
+		/// <para>The instigator of this sound is the pawn which is used to call MakeNoise. </para>
+		/// <param name="Loudness">is the relative loudness of this noise (range 0.0 to 1.0).  Directly affects the hearing range specified by the AI's HearingThreshold. </param>
+		/// <param name="NoiseLocation">Position of noise source.  If zero vector, use the actor's location. </param>
+		/// <param name="bUseNoiseMakerLocation">If true, use the location of the NoiseMaker rather than NoiseLocation.  If false, use NoiseLocation. </param>
+		/// <param name="NoiseMaker">Which actor is the source of the noise.  Not to be confused with the Noise Instigator, which is responsible for the noise (and is the pawn on which this function is called).  If not specified, the pawn instigating the noise will be used as the NoiseMaker </param>
+		/// </summary>
+		public void PawnMakeNoise(float Loudness, FVector NoiseLocation, bool bUseNoiseMakerLocation = true, AActor NoiseMaker = null)
+			=> E_APawn_PawnMakeNoise(this, Loudness, NoiseLocation, bUseNoiseMakerLocation, NoiseMaker);
 		
 		
 		/// <summary>

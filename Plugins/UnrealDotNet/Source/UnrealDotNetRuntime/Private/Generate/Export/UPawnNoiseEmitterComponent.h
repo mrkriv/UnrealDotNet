@@ -33,5 +33,13 @@ extern "C"
 		return Self->GetLastNoiseVolume(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPawnNoiseEmitterComponent_MakeNoise(UPawnNoiseEmitterComponent* Self, AActor* NoiseMaker, float Loudness, INT_PTR NoiseLocation)
+	{
+		auto _p0 = NoiseMaker;
+		auto _p1 = Loudness;
+		auto _p2 = *(FVector*)NoiseLocation;
+		Self->MakeNoise(_p0, _p1, _p2);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

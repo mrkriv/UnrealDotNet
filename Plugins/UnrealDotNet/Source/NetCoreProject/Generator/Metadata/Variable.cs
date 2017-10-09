@@ -229,11 +229,29 @@ namespace Generator.Metadata
 
         public override string GetTypeCS()
         {
+            if (IsTemplate)
+            {
+                var baseName = Type.Name.Substring(0, Type.Name.IndexOf("__", StringComparison.Ordinal));
+                baseName += "<";
+
+                foreach (var type in Type.TemplateTypes)
+                {
+                    baseName += type.GetTypeCS();
+                }
+
+                baseName += ">";
+
+                return baseName;
+            }
+
             return ((Class)Type).Name;
         }
 
         public override string GetTypeCSForExtend(bool ForReturn = false)
         {
+            if (IsTemplate && ForReturn)
+                return "TemplatePointerDescription";
+
             if (!((Class)Type).IsStructure && ForReturn)
                 return "ObjectPointerDescription";
 

@@ -54,5 +54,12 @@ extern "C"
 		Self->SetScalarParameterValueOnMaterials(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UMeshComponent_SetVectorParameterValueOnMaterials(UMeshComponent* Self, char* ParameterName, INT_PTR ParameterValue)
+	{
+		auto _p0 = ConvertFromManage_FName(ParameterName);
+		auto _p1 = *(FVector*)ParameterValue;
+		Self->SetVectorParameterValueOnMaterials(_p0, _p1);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

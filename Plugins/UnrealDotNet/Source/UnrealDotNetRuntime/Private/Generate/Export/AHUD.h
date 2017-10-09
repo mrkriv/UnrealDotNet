@@ -10,6 +10,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_AHUD : protected AHUD
 {
 public:
+	APawn* GetOwningPawn_WRAP()
+	{
+		return GetOwningPawn();
+	}
+
 	bool IsCanvasValid_WarnIfNot_WRAP()
 	{
 		return IsCanvasValid_WarnIfNot();
@@ -42,9 +47,24 @@ extern "C"
 		Self->AddHitBox(_p0, _p1, _p2, _p3, _p4);
 	}
 
+	DOTNET_EXPORT auto E_AHUD_AddPostRenderedActor(AHUD* Self, AActor* A)
+	{
+		auto _p0 = A;
+		Self->AddPostRenderedActor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_AnyCurrentHitBoxHits(AHUD* Self)
 	{
 		return Self->AnyCurrentHitBoxHits();
+	}
+
+	DOTNET_EXPORT auto E_AHUD_Deproject(AHUD* Self, float ScreenX, float ScreenY, INT_PTR WorldPosition, INT_PTR WorldDirection)
+	{
+		auto _p0 = ScreenX;
+		auto _p1 = ScreenY;
+		auto _p2 = *(FVector*)WorldPosition;
+		auto _p3 = *(FVector*)WorldDirection;
+		Self->Deproject(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_DrawActorOverlays(AHUD* Self, INT_PTR Viewpoint, INT_PTR ViewRotation)
@@ -67,6 +87,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_DrawSafeZoneOverlay(AHUD* Self)
 	{
 		Self->DrawSafeZoneOverlay();
+	}
+
+	DOTNET_EXPORT auto E_AHUD_GetOwningPawn(AHUD* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
 	}
 
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)
@@ -161,6 +186,19 @@ extern "C"
 		Self->RemoveAllDebugStrings();
 	}
 
+	DOTNET_EXPORT auto E_AHUD_RemoveDebugText(AHUD* Self, AActor* SrcActor, bool bLeaveDurationText)
+	{
+		auto _p0 = SrcActor;
+		auto _p1 = bLeaveDurationText;
+		Self->RemoveDebugText(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AHUD_RemovePostRenderedActor(AHUD* Self, AActor* A)
+	{
+		auto _p0 = A;
+		Self->RemovePostRenderedActor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_ShouldDisplayDebug(AHUD* Self, char* DebugType)
 	{
 		auto _p0 = ConvertFromManage_FName(DebugType);
@@ -189,6 +227,13 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_ShowHUD(AHUD* Self)
 	{
 		Self->ShowHUD();
+	}
+
+	DOTNET_EXPORT auto E_AHUD_UpdateAndDispatchHitBoxClickEvents(AHUD* Self, INT_PTR ClickLocation, EInputEvent InEventType)
+	{
+		auto _p0 = *(FVector2D*)ClickLocation;
+		auto _p1 = InEventType;
+		return Self->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
 	}
 
 }

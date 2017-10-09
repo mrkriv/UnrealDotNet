@@ -33,6 +33,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FCollisionResponseContainer_ECollisionResponse(byte DefaultResponse);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FCollisionResponseContainer_CreateMinContainer(IntPtr Self, IntPtr A, IntPtr B);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_FCollisionResponseContainer_GetResponse(IntPtr Self, byte Channel);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -47,6 +50,13 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Take two response containers and create a new container where each element is the 'min' of the two inputs (ie Ignore and Block results in Ignore) </para>
+		/// </summary>
+		public FCollisionResponseContainer CreateMinContainer(FCollisionResponseContainer A, FCollisionResponseContainer B)
+			=> E_FCollisionResponseContainer_CreateMinContainer(this, A, B);
+		
 		
 		/// <summary>
 		/// <para>Returns the response set on the specified channel </para>

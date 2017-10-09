@@ -21,9 +21,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public FLevelViewportInfo(FVector InCamPosition, FRotator InCamRotation, float InCamOrthoZoom) :
+			base(E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(InCamPosition, InCamRotation, InCamOrthoZoom), false)
+		{
+		}
+
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLevelViewportInfo();
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(IntPtr InCamPosition, IntPtr InCamRotation, float InCamOrthoZoom);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);

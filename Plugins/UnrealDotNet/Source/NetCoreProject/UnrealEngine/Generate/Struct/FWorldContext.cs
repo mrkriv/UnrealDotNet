@@ -31,6 +31,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_ContextHandle_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FWorldContext_LastRemoteURL_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FWorldContext_LastRemoteURL_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FWorldContext_LastURL_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FWorldContext_LastURL_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PendingMapChangeFailureDescription_SET(IntPtr Ptr, string Value);
@@ -65,6 +75,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_TravelURL_SET(IntPtr Ptr, string Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FWorldContext_SetCurrentWorld(IntPtr Self, IntPtr World);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_FWorldContext_World(IntPtr Self);
+		
 		#endregion
 		
 		#region Property
@@ -82,6 +98,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FWorldContext_ContextHandle_GET(NativePointer);
 			set => E_PROP_FWorldContext_ContextHandle_SET(NativePointer, value);
+		}
+
+		public FURL LastRemoteURL
+		{
+			get => E_PROP_FWorldContext_LastRemoteURL_GET(NativePointer);
+			set => E_PROP_FWorldContext_LastRemoteURL_SET(NativePointer, value);
+		}
+
+		public FURL LastURL
+		{
+			get => E_PROP_FWorldContext_LastURL_GET(NativePointer);
+			set => E_PROP_FWorldContext_LastURL_SET(NativePointer, value);
 		}
 
 		
@@ -138,6 +166,19 @@ namespace UnrealEngine
 			set => E_PROP_FWorldContext_TravelURL_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Set CurrentWorld and update external reference pointers to reflect this </para>
+		/// </summary>
+		public void SetCurrentWorld(UWorld World)
+			=> E_FWorldContext_SetCurrentWorld(this, World);
+		
+		public UWorld World()
+			=> E_FWorldContext_World(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(FWorldContext Self)

@@ -3,9 +3,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices;
 using static UHeaderParser;
 using Delegate = Generator.Metadata.Delegate;
 using Enum = Generator.Metadata.Enum;
@@ -53,7 +50,7 @@ namespace Generator
 
         private Type GetType(TypeContext context)
         {
-            var name = context.GetText();
+            var name = context.typeName().GetText();
 
             if (Types.TryGetValue(name, out var val))
                 return val;
@@ -72,11 +69,15 @@ namespace Generator
         
         private T Get<T>(TypeContext context) where T : Type
         {
-            var name = context.GetText();
+            var name = context.typeName().GetText();
 
-            if (name == "FOnForceFeedbackFinished")
+            if (name.Contains("<"))
             {
-                int k = 5;
+                name = context.typeName().Identifier().First().GetText();
+                var templateTypes = context.typeName().type();
+
+                name += "__";
+                name += string.Join(", ", templateTypes.Select(x => x.typeName().Identifier().First().GetText()));
             }
 
             if (Types.TryGetValue(name, out var val))
@@ -89,10 +90,10 @@ namespace Generator
 
             var def = (Type)Activator.CreateInstance(typeof(T), name);
             Types.TryAdd(name, def);
-            
+
             foreach (var nameContext in context.typeName().type())
             {
-                def.TemplateTypes.Add(ParceType(nameContext));
+                def.TemplateTypes.Add(ParceType(nameContext)); 
             }
 
             return (T)def;
@@ -124,6 +125,7 @@ namespace Generator
                     break;
 
                 case 'F':
+                case 'T':
                     CurrentClass.IsStructure = true;
                     break;
 

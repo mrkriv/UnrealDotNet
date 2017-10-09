@@ -258,11 +258,7 @@ isRefQuant
 
 typeName
 	: Identifier (DotDot DotDot Identifier)?
-	| typeTemplateName ('<' (type|Literal) (',' (type|Literal))* '>')
-;
-
-typeTemplateName
-	: Identifier
+	| Identifier ('<' (type|Literal) (',' (type|Literal))* '>')
 ;
 
 isVirtual

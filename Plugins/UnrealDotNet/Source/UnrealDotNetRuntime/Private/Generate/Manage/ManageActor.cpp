@@ -5,6 +5,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
 
+void AManageActor::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void AManageActor::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void AManageActor::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
 void AManageActor::BeginPlay()
 {
 	if (!ManageClassName.FullName.IsEmpty())
@@ -76,10 +94,34 @@ void AManageActor::NotifyActorBeginCursorOver()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyActorBeginCursorOver");
 }
 
+void AManageActor::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyActorBeginOverlap", OtherActor);
+}
+
 void AManageActor::NotifyActorEndCursorOver()
 {
 	Super::NotifyActorEndCursorOver();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyActorEndCursorOver");
+}
+
+void AManageActor::NotifyActorEndOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorEndOverlap(OtherActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyActorEndOverlap", OtherActor);
+}
+
+void AManageActor::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+{
+	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyHit", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+}
+
+void AManageActor::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnConstruction", Transform);
 }
 
 void AManageActor::OnRep_AttachmentReplication()
@@ -116,6 +158,18 @@ void AManageActor::OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
 	Super::OnReplicationPausedChanged(bIsReplicationPaused);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnReplicationPausedChanged", bIsReplicationPaused);
+}
+
+void AManageActor::OnSubobjectCreatedFromReplication(UObject* NewSubobject)
+{
+	Super::OnSubobjectCreatedFromReplication(NewSubobject);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnSubobjectCreatedFromReplication", NewSubobject);
+}
+
+void AManageActor::OnSubobjectDestroyFromReplication(UObject* Subobject)
+{
+	Super::OnSubobjectDestroyFromReplication(Subobject);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
 }
 
 void AManageActor::OutsideWorldBounds()
@@ -160,6 +214,12 @@ void AManageActor::PostNetReceivePhysicState()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceivePhysicState");
 }
 
+void AManageActor::PostNetReceiveVelocity(const FVector& NewVelocity)
+{
+	Super::PostNetReceiveVelocity(NewVelocity);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceiveVelocity", NewVelocity);
+}
+
 void AManageActor::PostRegisterAllComponents()
 {
 	Super::PostRegisterAllComponents();
@@ -196,6 +256,18 @@ void AManageActor::RegisterAllComponents()
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RegisterAllComponents");
 }
 
+void AManageActor::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void AManageActor::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
 void AManageActor::ReregisterAllComponents()
 {
 	Super::ReregisterAllComponents();
@@ -224,6 +296,12 @@ void AManageActor::SetLifeSpan(float InLifespan)
 {
 	Super::SetLifeSpan(InLifespan);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetLifeSpan", InLifespan);
+}
+
+void AManageActor::SetOwner(AActor* NewOwner)
+{
+	Super::SetOwner(NewOwner);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetOwner", NewOwner);
 }
 
 void AManageActor::SetReplicateMovement(bool bInReplicateMovement)
