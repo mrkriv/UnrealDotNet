@@ -19,12 +19,6 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor
 	
 public:
 	
-	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	
-	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
-	
-	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
-	
 	virtual void ClearCrossLevelReferences() override;
 	
 	virtual void Destroyed() override;
@@ -45,15 +39,7 @@ public:
 	
 	virtual void NotifyActorBeginCursorOver() override;
 	
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
-	
 	virtual void NotifyActorEndCursorOver() override;
-	
-	virtual void NotifyActorEndOverlap(AActor* OtherActor) override;
-	
-	virtual void NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
-	
-	virtual void OnConstruction(const FTransform& Transform) override;
 	
 	virtual void OnRep_AttachmentReplication() override;
 	
@@ -64,10 +50,6 @@ public:
 	virtual void OnRep_ReplicateMovement() override;
 	
 	virtual void OnReplicationPausedChanged(bool bIsReplicationPaused) override;
-	
-	virtual void OnSubobjectCreatedFromReplication(UObject* NewSubobject) override;
-	
-	virtual void OnSubobjectDestroyFromReplication(UObject* Subobject) override;
 	
 	virtual void OutsideWorldBounds() override;
 	
@@ -83,8 +65,6 @@ public:
 	
 	virtual void PostNetReceivePhysicState() override;
 	
-	virtual void PostNetReceiveVelocity(const FVector& NewVelocity) override;
-	
 	virtual void PostRegisterAllComponents() override;
 	
 	virtual void PostUnregisterAllComponents() override;
@@ -95,10 +75,6 @@ public:
 	
 	virtual void RegisterAllComponents() override;
 	
-	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	
-	virtual void RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
-	
 	virtual void ReregisterAllComponents() override;
 	
 	virtual void RerunConstructionScripts() override;
@@ -108,8 +84,6 @@ public:
 	virtual void SetActorHiddenInGame(bool bNewHidden) override;
 	
 	virtual void SetLifeSpan(float InLifespan) override;
-	
-	virtual void SetOwner(AActor* NewOwner) override;
 	
 	virtual void SetReplicateMovement(bool bInReplicateMovement) override;
 	

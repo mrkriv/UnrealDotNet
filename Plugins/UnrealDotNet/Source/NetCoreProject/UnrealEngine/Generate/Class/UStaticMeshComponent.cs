@@ -28,9 +28,6 @@ namespace UnrealEngine
 		private static extern void E_UStaticMeshComponent_CachePaintedDataIfNecessary(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(IntPtr Self, IntPtr SourceComponent);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(IntPtr Self, bool bRebuildingStaticMesh);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -103,14 +100,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void CachePaintedDataIfNecessary()
 			=> E_UStaticMeshComponent_CachePaintedDataIfNecessary(this);
-		
-		
-		/// <summary>
-		/// <para>Copies instance vertex colors from the SourceComponent into this component </para>
-		/// <param name="SourceComponent">The component to copy vertex colors from </param>
-		/// </summary>
-		public void CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent SourceComponent)
-			=> E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(this, SourceComponent);
 		
 		
 		/// <summary>

@@ -18,20 +18,9 @@ namespace UnrealEngine
 		{
 		}
 
-		public FDamageEvent(FDamageEvent InDamageEvent) :
-			base(E_CreateStruct_FDamageEvent_FDamageEvent(InDamageEvent), false)
-		{
-		}
-
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDamageEvent();
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FDamageEvent_FDamageEvent(IntPtr InDamageEvent);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FDamageEvent_GetBestHitInfo(IntPtr Self, IntPtr HitActor, IntPtr HitInstigator, IntPtr OutHitInfo, IntPtr OutImpulseDir);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_FDamageEvent_GetTypeID(IntPtr Self);
@@ -42,13 +31,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// <para>This is for compatibility with old-style functions which want a unified set of hit data regardless of type of hit.  Ideally this will go away over time. </para>
-		/// </summary>
-		public virtual void GetBestHitInfo(AActor HitActor, AActor HitInstigator, FHitResult OutHitInfo, FVector OutImpulseDir)
-			=> E_FDamageEvent_GetBestHitInfo(this, HitActor, HitInstigator, OutHitInfo, OutImpulseDir);
-		
 		public virtual int GetTypeID()
 			=> E_FDamageEvent_GetTypeID(this);
 		

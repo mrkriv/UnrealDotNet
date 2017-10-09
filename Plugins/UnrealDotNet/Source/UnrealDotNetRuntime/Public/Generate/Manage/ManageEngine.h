@@ -27,10 +27,6 @@ public:
 	
 	virtual void Tick(float DeltaSeconds, bool bIdleMode) override;
 	
-	virtual void WorldAdded(UWorld* World) override;
-	
-	virtual void WorldDestroyed(UWorld* InWorld) override;
-	
 }
 ;
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

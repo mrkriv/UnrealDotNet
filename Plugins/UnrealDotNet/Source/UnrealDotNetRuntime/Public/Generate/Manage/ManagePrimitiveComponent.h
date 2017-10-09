@@ -31,15 +31,9 @@ public:
 	
 	virtual void AddImpulseAtLocation(FVector Impulse, FVector Location, FName BoneName) override;
 	
-	virtual void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange) override;
-	
-	virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) override;
-	
 	virtual void PutAllRigidBodiesToSleep() override;
 	
 	virtual void SetAllMassScale(float InMassScale) override;
-	
-	virtual void SetAllPhysicsAngularVelocity(const FVector& NewAngVel, bool bAddToCurrent) override;
 	
 	virtual void SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent) override;
 	
@@ -54,8 +48,6 @@ public:
 	virtual void SetCollisionResponseToAllChannels(ECollisionResponse NewResponse) override;
 	
 	virtual void SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse) override;
-	
-	virtual void SetCollisionResponseToChannels(const FCollisionResponseContainer& NewReponses) override;
 	
 	virtual void SetEnableGravity(bool bGravityEnabled) override;
 	
@@ -76,8 +68,6 @@ public:
 	virtual void WakeAllRigidBodies() override;
 	
 	virtual void WakeRigidBody(FName BoneName) override;
-	
-	virtual void WeldTo(USceneComponent* InParent, FName InSocketName) override;
 	
 protected:
 	

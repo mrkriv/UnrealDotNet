@@ -18,6 +18,24 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FComponentSocketDescription();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FComponentSocketDescription_Name_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FComponentSocketDescription_Name_SET(IntPtr Ptr, string Value);
+		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Name of the socket </para>
+		/// </summary>
+		public string Name
+		{
+			get => E_PROP_FComponentSocketDescription_Name_GET(NativePointer);
+			set => E_PROP_FComponentSocketDescription_Name_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FComponentSocketDescription Self)

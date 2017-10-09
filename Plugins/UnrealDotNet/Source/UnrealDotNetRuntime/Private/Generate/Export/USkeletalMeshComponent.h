@@ -7,6 +7,39 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bLocalSpaceKinematics_GET(USkeletalMeshComponent* Ptr) { return Ptr->bLocalSpaceKinematics; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bLocalSpaceKinematics_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bLocalSpaceKinematics = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseRefPoseOnInitAnim; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseRefPoseOnInitAnim = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_ClothBlendWeight_GET(USkeletalMeshComponent* Ptr) { return Ptr->ClothBlendWeight; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_ClothBlendWeight_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->ClothBlendWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_GlobalAnimRateScale_GET(USkeletalMeshComponent* Ptr) { return Ptr->GlobalAnimRateScale; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_GlobalAnimRateScale_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->GlobalAnimRateScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_GET(USkeletalMeshComponent* Ptr) { return (INT_PTR)&(Ptr->LineCheckBoundsScale); }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->LineCheckBoundsScale = *(FVector*)Value; }
+	
+	DOTNET_EXPORT void E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(USkeletalMeshComponent* Obj)
+	{
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		wrapper->ManageDelegateName = "InvokeEvent_OnConstraintBroken";
+		wrapper->SourceObject = Obj;
+		Obj->OnConstraintBroken.AddDynamic(wrapper, &UManageEventSender::Wrapper_FConstraintBrokenSignature);
+	}
+
+	DOTNET_EXPORT void E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(USkeletalMeshComponent* Obj)
+	{
+	}
+
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_GET(USkeletalMeshComponent* Ptr) { return Ptr->RagdollAggregateThreshold; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_SET(USkeletalMeshComponent* Ptr, int32 Value) { Ptr->RagdollAggregateThreshold = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_RootBoneTranslation_GET(USkeletalMeshComponent* Ptr) { return (INT_PTR)&(Ptr->RootBoneTranslation); }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_RootBoneTranslation_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->RootBoneTranslation = *(FVector*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USkeletalMeshComponent(UObject* Parent, char* Name)
 	{

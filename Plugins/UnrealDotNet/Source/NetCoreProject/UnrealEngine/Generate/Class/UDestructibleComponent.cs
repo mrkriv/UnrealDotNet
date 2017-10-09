@@ -24,9 +24,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDestructibleComponent_SetChunkVisible(IntPtr Self, int ChunkIndex, bool bInVisible);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDestructibleComponent_SetChunkWorldRT(IntPtr Self, int ChunkIndex, IntPtr WorldRotation, IntPtr WorldTranslation);
-		
 		#endregion
 		
 		#region ExternMethods
@@ -38,16 +35,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetChunkVisible(int ChunkIndex, bool bInVisible)
 			=> E_UDestructibleComponent_SetChunkVisible(this, ChunkIndex, bInVisible);
-		
-		
-		/// <summary>
-		/// <para>This method sets a chunk's (fractured piece's) world rotation and translation. </para>
-		/// <param name="ChunkIndex">Which chunk to affect.  ChunkIndex must lie in the range: 0 <= ChunkIndex < ((DestructibleMesh*)USkeletalMesh)->ApexDestructibleAsset->chunkCount(). </param>
-		/// <param name="WorldRotation">The orientation to give to the chunk in world space, represented as a quaternion. </param>
-		/// <param name="WorldRotation">The world space position to give to the chunk. </param>
-		/// </summary>
-		public void SetChunkWorldRT(int ChunkIndex, FQuat WorldRotation, FVector WorldTranslation)
-			=> E_UDestructibleComponent_SetChunkWorldRT(this, ChunkIndex, WorldRotation, WorldTranslation);
 		
 		#endregion
 		

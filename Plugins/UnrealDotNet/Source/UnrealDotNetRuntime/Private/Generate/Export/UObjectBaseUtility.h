@@ -7,13 +7,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_UObjectBaseUtility_AddToCluster(UObjectBaseUtility* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
-	{
-		auto _p0 = ClusterRootOrObjectFromCluster;
-		auto _p1 = bAddAsMutableObject;
-		Self->AddToCluster(_p0, _p1);
-	}
-
 	DOTNET_EXPORT auto E_UObjectBaseUtility_AddToRoot(UObjectBaseUtility* Self)
 	{
 		Self->AddToRoot();
@@ -51,12 +44,6 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetFullGroupName(_p0));
 	}
 
-	DOTNET_EXPORT auto E_UObjectBaseUtility_GetFullName(UObjectBaseUtility* Self, UObject* StopOuter)
-	{
-		auto _p0 = StopOuter;
-		return ConvertToManage_StringWrapper(Self->GetFullName(_p0));
-	}
-
 	DOTNET_EXPORT auto E_UObjectBaseUtility_GetLinkerIndex(UObjectBaseUtility* Self)
 	{
 		return Self->GetLinkerIndex();
@@ -75,12 +62,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UObjectBaseUtility_IsDefaultSubobject(UObjectBaseUtility* Self)
 	{
 		return Self->IsDefaultSubobject();
-	}
-
-	DOTNET_EXPORT auto E_UObjectBaseUtility_IsIn(UObjectBaseUtility* Self, UObject* SomeOuter)
-	{
-		auto _p0 = SomeOuter;
-		return Self->IsIn(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UObjectBaseUtility_IsNative(UObjectBaseUtility* Self)

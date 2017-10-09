@@ -28,13 +28,7 @@ namespace UnrealEngine
 		private static extern void E_UChildActorComponent_DestroyChildActor(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActor(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UChildActorComponent_GetChildActorName(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(IntPtr Self);
 		
 		#endregion
 		
@@ -53,14 +47,8 @@ namespace UnrealEngine
 		public void DestroyChildActor()
 			=> E_UChildActorComponent_DestroyChildActor(this);
 		
-		public AActor GetChildActor()
-			=> E_UChildActorComponent_GetChildActor(this);
-		
 		public string GetChildActorName()
 			=> E_UChildActorComponent_GetChildActorName(this);
-		
-		public AActor GetChildActorTemplate()
-			=> E_UChildActorComponent_GetChildActorTemplate(this);
 		
 		#endregion
 		

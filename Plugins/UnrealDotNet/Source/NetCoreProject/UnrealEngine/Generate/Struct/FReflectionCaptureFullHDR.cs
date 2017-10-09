@@ -19,8 +19,22 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FReflectionCaptureFullHDR();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FReflectionCaptureFullHDR_CubemapSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FReflectionCaptureFullHDR_HasValidData(IntPtr Self);
 		
+		#endregion
+		
+		#region Property
+		public int CubemapSize
+		{
+			get => E_PROP_FReflectionCaptureFullHDR_CubemapSize_GET(NativePointer);
+			set => E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods

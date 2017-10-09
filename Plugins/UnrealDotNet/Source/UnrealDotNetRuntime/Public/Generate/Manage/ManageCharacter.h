@@ -19,8 +19,6 @@ class UNREALDOTNETRUNTIME_API AManageCharacter : public ACharacter
 	
 public:
 	
-	virtual void ApplyDamageMomentum(float DamageTaken, const FDamageEvent& DamageEvent, APawn* PawnInstigator, AActor* DamageCauser) override;
-	
 	virtual void CacheInitialMeshOffset(FVector MeshRelativeLocation, FRotator MeshRelativeRotation) override;
 	
 	virtual void CheckJumpInput(float DeltaTime) override;
@@ -39,11 +37,7 @@ public:
 	
 	virtual void Jump() override;
 	
-	virtual void Landed(const FHitResult& Hit) override;
-	
 	virtual void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride) override;
-	
-	virtual void MoveBlockedBy(const FHitResult& Impact) override;
 	
 	virtual void NotifyJumpApex() override;
 	
@@ -59,19 +53,13 @@ public:
 	
 	virtual void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 	
-	virtual void OnUpdateSimulatedPosition(const FVector& OldLocation, const FQuat& OldRotation) override;
-	
 	virtual void RootMotionDebugClientPrintOnScreen_Implementation(const FString& InString) override;
-	
-	virtual void SetBase(UPrimitiveComponent* NewBase, const FName BoneName, bool bNotifyActor) override;
 	
 	virtual void StopJumping() override;
 	
 	virtual void UnCrouch(bool bClientSimulation) override;
 	
 	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
-	
-	virtual void UpdateSimulatedPosition(const FVector& Location, const FRotator& NewRotation) override;
 	
 protected:
 	

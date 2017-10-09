@@ -11,6 +11,44 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_FURL_bDefaultsInitialized_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FURL_Host_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Host_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FURL_Map_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Map_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FURL_Port_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Port_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FURL_Portal_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Portal_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FURL_Protocol_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Protocol_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FURL_RedirectURL_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_RedirectURL_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FURL_Valid_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Valid_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FURL_FilterURLString(IntPtr Self, string Str);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -25,6 +63,56 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FURL_StaticInit(IntPtr Self);
 		
+		#endregion
+		
+		#region Property
+		public static bool bDefaultsInitialized
+		{
+			get => E_PROP_FURL_bDefaultsInitialized_GET();
+		}
+
+		public string Host
+		{
+			get => E_PROP_FURL_Host_GET(NativePointer);
+			set => E_PROP_FURL_Host_SET(NativePointer, value);
+		}
+
+		public string Map
+		{
+			get => E_PROP_FURL_Map_GET(NativePointer);
+			set => E_PROP_FURL_Map_SET(NativePointer, value);
+		}
+
+		public int Port
+		{
+			get => E_PROP_FURL_Port_GET(NativePointer);
+			set => E_PROP_FURL_Port_SET(NativePointer, value);
+		}
+
+		public string Portal
+		{
+			get => E_PROP_FURL_Portal_GET(NativePointer);
+			set => E_PROP_FURL_Portal_SET(NativePointer, value);
+		}
+
+		public string Protocol
+		{
+			get => E_PROP_FURL_Protocol_GET(NativePointer);
+			set => E_PROP_FURL_Protocol_SET(NativePointer, value);
+		}
+
+		public string RedirectURL
+		{
+			get => E_PROP_FURL_RedirectURL_GET(NativePointer);
+			set => E_PROP_FURL_RedirectURL_SET(NativePointer, value);
+		}
+
+		public int Valid
+		{
+			get => E_PROP_FURL_Valid_GET(NativePointer);
+			set => E_PROP_FURL_Valid_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods

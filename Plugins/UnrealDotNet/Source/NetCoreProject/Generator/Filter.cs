@@ -77,6 +77,11 @@ namespace Generator
             "FStartAsyncSimulationFunction",
         };
 
+        public static Regex[] ManualImplementedClassMasks =
+        {
+            new Regex(@"TArray\<\w+\>"),
+        };
+
         public static string[] ManageClassBlackList =
         {
             "UScene",
@@ -173,7 +178,7 @@ namespace Generator
 
         public static List<Class> FilterClasses(IEnumerable<Class> Classes)
         {
-            var classes = Classes.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+            var classes = Classes.Where(ManualImplementedClass).Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
 
             foreach (var cl in classes)
             {
@@ -188,6 +193,18 @@ namespace Generator
             }
 
             return classes;
+        }
+
+        private static bool ManualImplementedClass(Class cl)
+        {
+            if (ManualImplementedClassMasks.Any(filter => filter.IsMatch(cl.Name)))
+            {
+                cl.IsManualImplemented = true;
+                cl.IsImplemented = true;
+                return false;
+            }
+
+            return true;
         }
 
         public static List<Delegate> FilterDelegates(IEnumerable<Delegate> Delegates)
@@ -309,7 +326,7 @@ namespace Generator
             if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
                 return false;
 
-            if (!m.IsPointer || (m.Type as Class)?.IsStructure == false)
+            if (m.IsPointer && (m.Type as Class)?.IsStructure != false)
                 return false;
 
             if (m.IsConst)

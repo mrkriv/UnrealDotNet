@@ -35,7 +35,7 @@ namespace Generator
                 GenerateDelegates(domain.Delegates, Path.Combine(OutputDir, "Delegates"));
                 GenerateEnums(domain.Enums, Path.Combine(OutputDir, "Enums"));
             }
-            
+
             private static void GenerateClass(Class Class, string OutputPath)
             {
                 var cw = new CoreWriter();

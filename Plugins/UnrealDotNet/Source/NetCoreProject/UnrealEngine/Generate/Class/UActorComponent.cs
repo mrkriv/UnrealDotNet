@@ -22,19 +22,15 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UActorComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_Activate(IntPtr Self, bool bReset);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_AddTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_AddTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_AllowReregistration(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ApplyWorldOffset(IntPtr Self, IntPtr InOffset, bool bWorldShift);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_BeginPlay(IntPtr Self);
@@ -83,9 +79,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UActorComponent_GetNetMode(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UActorComponent_GetOwnerRole(IntPtr Self);
@@ -169,9 +162,6 @@ namespace UnrealEngine
 		private static extern bool E_UActorComponent_IsRenderTransformDirty(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_K2_DestroyComponent(IntPtr Self, IntPtr Object);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_MarkForNeededEndOfFrameRecreate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -230,15 +220,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_RegisterComponentTickFunctions(IntPtr Self, bool bRegister);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterComponentWithWorld(IntPtr Self, IntPtr InWorld);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RemoveTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RemoveTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(IntPtr Self);
@@ -311,6 +292,15 @@ namespace UnrealEngine
 		
 		#endregion
 		
+		#region Property
+		public EComponentCreationMethod CreationMethod
+		{
+			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
+			set => E_PROP_UActorComponent_CreationMethod_SET(NativePointer, (byte)value);
+		}
+
+		#endregion
+		
 		#region ExternMethods
 		
 		/// <summary>
@@ -322,34 +312,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Make this component tick after PrerequisiteActor </para>
-		/// </summary>
-		public virtual void AddTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_UActorComponent_AddTickPrerequisiteActor(this, PrerequisiteActor);
-		
-		
-		/// <summary>
-		/// <para>Make this component tick after PrerequisiteComponent. </para>
-		/// </summary>
-		public virtual void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_UActorComponent_AddTickPrerequisiteComponent(this, PrerequisiteComponent);
-		
-		
-		/// <summary>
 		/// <para>Checked whether the component class allows reregistration </para>
 		/// </summary>
 		public bool AllowReregistration()
 			=> E_UActorComponent_AllowReregistration(this);
-		
-		
-		/// <summary>
-		/// <para>Called by owner actor on position shifting </para>
-		/// <para>Component should update all relevant data structures to reflect new actor location </para>
-		/// <param name="InWorldOffset">Offset vector the actor shifted by </param>
-		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
-		/// </summary>
-		public virtual void ApplyWorldOffset(FVector InOffset, bool bWorldShift)
-			=> E_UActorComponent_ApplyWorldOffset(this, InOffset, bWorldShift);
 		
 		
 		/// <summary>
@@ -462,13 +428,6 @@ namespace UnrealEngine
 		/// </summary>
 		public ENetMode GetNetMode()
 			=> (ENetMode)E_UActorComponent_GetNetMode(this);
-		
-		
-		/// <summary>
-		/// <para>Follow the Outer chain to get the  AActor  that 'Owns' this component </para>
-		/// </summary>
-		public AActor GetOwner()
-			=> E_UActorComponent_GetOwner(this);
 		
 		
 		/// <summary>
@@ -642,13 +601,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Unregister and mark for pending kill a component.  This may not be used to destroy a component is owned by an actor other than the one calling the function. </para>
-		/// </summary>
-		public void K2_DestroyComponent(UObject Object)
-			=> E_UActorComponent_K2_DestroyComponent(this, Object);
-		
-		
-		/// <summary>
 		/// <para>If we belong to a world, mark this for a deferred update, otherwise do it now. </para>
 		/// </summary>
 		public void MarkForNeededEndOfFrameRecreate()
@@ -788,27 +740,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void RegisterComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterComponentTickFunctions(this, bRegister);
-		
-		
-		/// <summary>
-		/// <param name="InWorld">The world to register the component with. </param>
-		/// </summary>
-		public void RegisterComponentWithWorld(UWorld InWorld)
-			=> E_UActorComponent_RegisterComponentWithWorld(this, InWorld);
-		
-		
-		/// <summary>
-		/// <para>Remove tick dependency on PrerequisiteActor. </para>
-		/// </summary>
-		public virtual void RemoveTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_UActorComponent_RemoveTickPrerequisiteActor(this, PrerequisiteActor);
-		
-		
-		/// <summary>
-		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
-		/// </summary>
-		public virtual void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_UActorComponent_RemoveTickPrerequisiteComponent(this, PrerequisiteComponent);
 		
 		
 		/// <summary>

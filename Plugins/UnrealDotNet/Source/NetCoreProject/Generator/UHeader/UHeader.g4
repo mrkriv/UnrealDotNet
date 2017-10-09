@@ -29,14 +29,14 @@ namespaceName
 
 
 typePreDeclaration
-	: templateDefine? classOrStructOrEnum className ';'
-	| isFriend classOrStructOrEnum? className ';'
+	: templateDefine? classOrStructOrEnum type ';'
+	| isFriend classOrStructOrEnum? type ';'
 ;
 
 /* Class */
 
 classDeclaration
-	: templateDefine? classOrStruct className isFinal? (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
+	: templateDefine? classOrStruct type isFinal? (DotDot classParentList)? '{' classBody '}' classAlignDefine? ';'
 ;
 
 classOrStructOrEnum
@@ -51,13 +51,8 @@ classOrStruct
 ;
 
 classParentList
-	: accessSpecifier? className
-	| accessSpecifier? className ',' classParentList
-;
-
-className
-	: Identifier
-	| Identifier '<' className (',' className)? '>'
+	: accessSpecifier? type
+	| accessSpecifier? type ',' classParentList
 ;
 
 classAlignDefine
@@ -90,17 +85,13 @@ comment
 /* Enum */
 
 enumDeclaration
-	: Enum Class? enumName enumParent? ('{' enumElementList '}')? ';'
+	: Enum Class? type enumParent? ('{' enumElementList '}')? ';'
 	| Enum '{' enumElementList '}' ';'
 ;
 
 enumParent
-	: DotDot className
+	: DotDot type
 ;
-
-enumName
-	: Identifier
-	;
 
 enumElementList
 	: enumElement
@@ -266,7 +257,7 @@ isRefQuant
 ;
 
 typeName
-	: Identifier (DotDot+ Identifier)?
+	: Identifier (DotDot DotDot Identifier)?
 	| typeTemplateName ('<' (type|Literal) (',' (type|Literal))* '>')
 ;
 

@@ -39,18 +39,6 @@ void UManagePrimitiveComponent::AddImpulseAtLocation(FVector Impulse, FVector Lo
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddImpulseAtLocation", Impulse, Location, BoneName);
 }
 
-void UManagePrimitiveComponent::AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
-{
-	Super::AddRadialForce(Origin, Radius, Strength, Falloff, bAccelChange);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff, bAccelChange);
-}
-
-void UManagePrimitiveComponent::AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-{
-	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
-}
-
 void UManagePrimitiveComponent::OnComponentCollisionSettingsChanged()
 {
 	Super::OnComponentCollisionSettingsChanged();
@@ -67,12 +55,6 @@ void UManagePrimitiveComponent::SetAllMassScale(float InMassScale)
 {
 	Super::SetAllMassScale(InMassScale);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllMassScale", InMassScale);
-}
-
-void UManagePrimitiveComponent::SetAllPhysicsAngularVelocity(const FVector& NewAngVel, bool bAddToCurrent)
-{
-	Super::SetAllPhysicsAngularVelocity(NewAngVel, bAddToCurrent);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllPhysicsAngularVelocity", NewAngVel, bAddToCurrent);
 }
 
 void UManagePrimitiveComponent::SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent)
@@ -115,12 +97,6 @@ void UManagePrimitiveComponent::SetCollisionResponseToChannel(ECollisionChannel 
 {
 	Super::SetCollisionResponseToChannel(Channel, NewResponse);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetCollisionResponseToChannel", Channel, NewResponse);
-}
-
-void UManagePrimitiveComponent::SetCollisionResponseToChannels(const FCollisionResponseContainer& NewReponses)
-{
-	Super::SetCollisionResponseToChannels(NewReponses);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetCollisionResponseToChannels", NewReponses);
 }
 
 void UManagePrimitiveComponent::SetEnableGravity(bool bGravityEnabled)
@@ -187,12 +163,6 @@ void UManagePrimitiveComponent::WakeRigidBody(FName BoneName)
 {
 	Super::WakeRigidBody(BoneName);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WakeRigidBody", BoneName);
-}
-
-void UManagePrimitiveComponent::WeldTo(USceneComponent* InParent, FName InSocketName)
-{
-	Super::WeldTo(InParent, InSocketName);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WeldTo", InParent, InSocketName);
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

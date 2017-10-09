@@ -69,28 +69,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Add a force to all bodies in this component, originating from the supplied world-space location. </para>
-		/// <param name="Origin">Origin of force in world space. </param>
-		/// <param name="Radius">Radius within which to apply the force. </param>
-		/// <param name="Strength">Strength of force to apply. </param>
-		/// <param name="Falloff">Allows you to control the strength of the force as a function of distance from Origin. </param>
-		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
-		/// </summary>
-		public override void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange) { }
-		
-		
-		/// <summary>
-		/// <para>Add an impulse to all rigid bodies in this component, radiating out from the specified position. </para>
-		/// <param name="Origin">Point of origin for the radial impulse blast, in world space </param>
-		/// <param name="Radius">Size of radial impulse. Beyond this distance from Origin, there will be no affect. </param>
-		/// <param name="Strength">Maximum strength of impulse applied to body. </param>
-		/// <param name="Falloff">Allows you to control the strength of the impulse as a function of distance from Origin. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
-		/// </summary>
-		public override void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) { }
-		
-		
-		/// <summary>
 		/// <para>Called when the BodyInstance ResponseToChannels, CollisionEnabled or bNotifyRigidBodyCollision changes, in case subclasses want to use that information. </para>
 		/// </summary>
 		protected override void OnComponentCollisionSettingsChanged() { }
@@ -106,14 +84,6 @@ namespace UnrealEngine
 		/// <para>Change the mass scale used fo all bodies in this component </para>
 		/// </summary>
 		public override void SetAllMassScale(float InMassScale) { }
-		
-		
-		/// <summary>
-		/// <para>Set the angular velocity of all bodies in this component. </para>
-		/// <param name="NewAngVel">New angular velocity to apply to physics, in degrees per second. </param>
-		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
-		/// </summary>
-		public override void SetAllPhysicsAngularVelocity(FVector NewAngVel, bool bAddToCurrent) { }
 		
 		
 		/// <summary>
@@ -167,13 +137,6 @@ namespace UnrealEngine
 		/// <param name="NewResponse">What the new response should be to the supplied Channel </param>
 		/// </summary>
 		public override void SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse) { }
-		
-		
-		/// <summary>
-		/// <para>Changes the whole ResponseToChannels container for this PrimitiveComponent. </para>
-		/// <param name="NewResponses">New set of responses for this component </param>
-		/// </summary>
-		public override void SetCollisionResponseToChannels(FCollisionResponseContainer NewReponses) { }
 		
 		
 		/// <summary>
@@ -246,15 +209,6 @@ namespace UnrealEngine
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to wake. 'None' indicates root body. </param>
 		/// </summary>
 		public override void WakeRigidBody(string BoneName) { }
-		
-		
-		/// <summary>
-		/// <para>Welds this component to another scene component, optionally at a named socket. Component is automatically attached if not already </para>
-		/// <para>Welding allows the child physics object to become physically connected to its parent. This is useful for creating compound rigid bodies with correct mass distribution. </para>
-		/// <param name="InParent">the component to be physically attached to </param>
-		/// <param name="InSocketName">optional socket to attach component to </param>
-		/// </summary>
-		public override void WeldTo(USceneComponent InParent, string InSocketName) { }
 		
 		public static implicit operator IntPtr(ManagePrimitiveComponent Self)
 		{

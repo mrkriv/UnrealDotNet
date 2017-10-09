@@ -40,16 +40,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
-		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Quat">Quaternion used to specify rotation. </param>
-		/// </summary>
-		public FRotator(FQuat Quat) :
-			base(E_CreateStruct_FRotator_FQuat(Quat), false)
-		{
-		}
-
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FRotator();
@@ -61,7 +51,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRotator_float_float_float(float InPitch, float InYaw, float InRoll);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRotator_FQuat(IntPtr Quat);
+		private static extern float E_PROP_FRotator_Pitch_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRotator_Pitch_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FRotator_Roll_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRotator_Roll_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FRotator_Yaw_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRotator_Yaw_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_Add(IntPtr Self, float DeltaPitch, float DeltaYaw, float DeltaRoll);
@@ -79,9 +81,6 @@ namespace UnrealEngine
 		private static extern bool E_FRotator_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FRotator_Equals(IntPtr Self, IntPtr R, float Tolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_Euler(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -94,12 +93,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_FRotator_GetNormalized(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FRotator_GetWindingAndRemainder(IntPtr Self, IntPtr Winding, IntPtr Remainder);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_GridSnap(IntPtr Self, IntPtr RotGrid);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FRotator_InitFromString(IntPtr Self, string InSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -107,9 +100,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FRotator_IsZero(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_MakeFromEuler(IntPtr Self, IntPtr Euler);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FRotator_Normalize(IntPtr Self);
@@ -121,20 +111,47 @@ namespace UnrealEngine
 		private static extern IntPtr E_FRotator_Quaternion(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_RotateVector(IntPtr Self, IntPtr V);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FRotator_ToCompactString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FRotator_ToString(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotator_UnrotateVector(IntPtr Self, IntPtr V);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FRotator_Vector(IntPtr Self);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down) </para>
+		/// </summary>
+		public float Pitch
+		{
+			get => E_PROP_FRotator_Pitch_GET(NativePointer);
+			set => E_PROP_FRotator_Pitch_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW. </para>
+		/// </summary>
+		public float Roll
+		{
+			get => E_PROP_FRotator_Roll_GET(NativePointer);
+			set => E_PROP_FRotator_Roll_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South. </para>
+		/// </summary>
+		public float Yaw
+		{
+			get => E_PROP_FRotator_Yaw_GET(NativePointer);
+			set => E_PROP_FRotator_Yaw_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -185,17 +202,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks whether two rotators are equal within specified tolerance, when treated as an orientation. </para>
-		/// <para>This means that FRotator(0, 0, 360).Equals(FRotator(0,0,0)) is true, because they represent the same final orientation. </para>
-		/// <param name="R">The other rotator. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if two rotators are equal, within specified tolerance, otherwise false. </return>
-		/// </summary>
-		public bool Equals(FRotator R, float Tolerance)
-			=> E_FRotator_Equals(this, R, Tolerance);
-		
-		
-		/// <summary>
 		/// <para>Convert a Rotator into floating-point Euler angles (in degrees). Rotator now stored in degrees. </para>
 		/// <return>Rotation as a Euler angle vector. </return>
 		/// </summary>
@@ -224,25 +230,6 @@ namespace UnrealEngine
 		/// </summary>
 		public FRotator GetNormalized()
 			=> E_FRotator_GetNormalized(this);
-		
-		
-		/// <summary>
-		/// <para>Decompose this Rotator into a Winding part (multiples of 360) and a Remainder part. </para>
-		/// <para>Remainder will always be in [-180, 180] range. </para>
-		/// <param name="Winding">Out] the Winding part of this Rotator </param>
-		/// <param name="Remainder">Out] the Remainder </param>
-		/// </summary>
-		public void GetWindingAndRemainder(FRotator Winding, FRotator Remainder)
-			=> E_FRotator_GetWindingAndRemainder(this, Winding, Remainder);
-		
-		
-		/// <summary>
-		/// <para>Get the rotation, snapped to specified degree segments. </para>
-		/// <param name="RotGrid">A Rotator specifying how to snap each component. </param>
-		/// <return>Snapped version of rotation. </return>
-		/// </summary>
-		public FRotator GridSnap(FRotator RotGrid)
-			=> E_FRotator_GridSnap(this, RotGrid);
 		
 		
 		/// <summary>
@@ -275,15 +262,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Convert a vector of floating-point Euler angles (in degrees) into a Rotator. Rotator now stored in degrees </para>
-		/// <param name="Euler">Euler angle vector. </param>
-		/// <return>A rotator from a Euler angle. </return>
-		/// </summary>
-		public FRotator MakeFromEuler(FVector Euler)
-			=> E_FRotator_MakeFromEuler(this, Euler);
-		
-		
-		/// <summary>
 		/// <para>In-place normalize, removes all winding and creates the "shortest route" rotation. </para>
 		/// </summary>
 		public void Normalize()
@@ -308,15 +286,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Rotate a vector rotated by this rotator. </para>
-		/// <param name="V">The vector to rotate. </param>
-		/// <return>The rotated vector. </return>
-		/// </summary>
-		public FVector RotateVector(FVector V)
-			=> E_FRotator_RotateVector(this, V);
-		
-		
-		/// <summary>
 		/// <para>Get a short textural representation of this vector, for compact readable logging. </para>
 		/// </summary>
 		public string ToCompactString()
@@ -329,15 +298,6 @@ namespace UnrealEngine
 		/// </summary>
 		public override string ToString()
 			=> E_FRotator_ToString(this);
-		
-		
-		/// <summary>
-		/// <para>Returns the vector rotated by the inverse of this rotator. </para>
-		/// <param name="V">The vector to rotate. </param>
-		/// <return>The rotated vector. </return>
-		/// </summary>
-		public FVector UnrotateVector(FVector V)
-			=> E_FRotator_UnrotateVector(this, V);
 		
 		
 		/// <summary>

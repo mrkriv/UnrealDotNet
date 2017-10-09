@@ -19,28 +19,25 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FOverlapResult();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FOverlapResult_GetActor(IntPtr Self);
-		
+		private static extern int E_PROP_FOverlapResult_ItemIndex_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FOverlapResult_GetComponent(IntPtr Self);
+		private static extern void E_PROP_FOverlapResult_ItemIndex_SET(IntPtr Ptr, int Value);
 		
 		#endregion
 		
-		#region ExternMethods
+		#region Property
 		
 		/// <summary>
-		/// <para>Utility to return the Actor that owns the Component that was hit </para>
+		/// <para>This is the index of the overlapping item. </para>
+		/// <para>For DestructibleComponents, this is the ChunkInfo index. </para>
+		/// <para>For SkeletalMeshComponents this is the Body index or INDEX_NONE for single body </para>
 		/// </summary>
-		public AActor GetActor()
-			=> E_FOverlapResult_GetActor(this);
-		
-		
-		/// <summary>
-		/// <para>Utility to return the Component that was hit </para>
-		/// </summary>
-		public UPrimitiveComponent GetComponent()
-			=> E_FOverlapResult_GetComponent(this);
-		
+		public int ItemIndex
+		{
+			get => E_PROP_FOverlapResult_ItemIndex_GET(NativePointer);
+			set => E_PROP_FOverlapResult_ItemIndex_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FOverlapResult Self)

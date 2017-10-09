@@ -18,11 +18,6 @@ extern "C"
 		return Self->GetBrightness();
 	}
 
-	DOTNET_EXPORT auto E_ALight_GetLightComponent(ALight* Self)
-	{
-		return ConvertToManage_ObjectPointerDescription(Self->GetLightComponent());
-	}
-
 	DOTNET_EXPORT auto E_ALight_IsEnabled(ALight* Self)
 	{
 		return Self->IsEnabled();

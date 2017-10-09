@@ -19,18 +19,23 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FComponentReference();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FComponentReference_GetComponent(IntPtr Self, IntPtr OwningActor);
+		private static extern StringWrapper E_PROP_FComponentReference_ComponentProperty_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FComponentReference_ComponentProperty_SET(IntPtr Ptr, string Value);
 		
 		#endregion
 		
-		#region ExternMethods
+		#region Property
 		
 		/// <summary>
-		/// <para>Get the actual component pointer from this reference </para>
+		/// <para>Name of component property to use </para>
 		/// </summary>
-		public USceneComponent GetComponent(AActor OwningActor)
-			=> E_FComponentReference_GetComponent(this, OwningActor);
-		
+		public string ComponentProperty
+		{
+			get => E_PROP_FComponentReference_ComponentProperty_GET(NativePointer);
+			set => E_PROP_FComponentReference_ComponentProperty_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FComponentReference Self)

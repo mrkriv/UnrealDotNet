@@ -27,9 +27,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_PlayInternal(IntPtr Self, float StartTime, float FadeInDuration, float FadeVolumeLevel);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetSoundParameter(IntPtr Self, IntPtr Param);
-		
 		#endregion
 		
 		#region ExternMethods
@@ -42,13 +39,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected void PlayInternal(float StartTime, float FadeInDuration, float FadeVolumeLevel)
 			=> E_UAudioComponent_PlayInternal(this, StartTime, FadeInDuration, FadeVolumeLevel);
-		
-		
-		/// <summary>
-		/// <para>Sets the sound instance parameter. </para>
-		/// </summary>
-		public void SetSoundParameter(FAudioComponentParam Param)
-			=> E_UAudioComponent_SetSoundParameter(this, Param);
 		
 		#endregion
 		

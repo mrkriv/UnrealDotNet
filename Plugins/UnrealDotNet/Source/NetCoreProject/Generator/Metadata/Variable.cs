@@ -9,6 +9,7 @@ namespace Generator.Metadata
         public bool IsStatic { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
+        public override bool IsTemplate => Type.IsTemplate;
 
         public Type Type { get; protected set; }
         public string Default { get; set; }

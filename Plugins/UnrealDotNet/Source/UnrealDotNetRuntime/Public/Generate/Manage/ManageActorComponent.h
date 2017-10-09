@@ -21,12 +21,6 @@ public:
 	
 	virtual void Activate(bool bReset) override;
 	
-	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	
-	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
-	
-	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
-	
 	virtual void BeginPlay() override;
 	
 	virtual void Deactivate() override;
@@ -42,10 +36,6 @@ public:
 	virtual void OnComponentCreated() override;
 	
 	virtual void OnComponentDestroyed(bool bDestroyingHierarchy) override;
-	
-	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	
-	virtual void RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	
 	virtual void SetActive(bool bNewActive, bool bReset) override;
 	

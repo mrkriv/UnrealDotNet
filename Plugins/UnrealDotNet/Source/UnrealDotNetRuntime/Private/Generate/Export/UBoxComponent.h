@@ -23,12 +23,6 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetUnscaledBoxExtent());
 	}
 
-	DOTNET_EXPORT auto E_UBoxComponent_InitBoxExtent(UBoxComponent* Self, INT_PTR InBoxExtent)
-	{
-		auto _p0 = *(FVector*)InBoxExtent;
-		Self->InitBoxExtent(_p0);
-	}
-
 	DOTNET_EXPORT auto E_UBoxComponent_SetBoxExtent(UBoxComponent* Self, INT_PTR InBoxExtent, bool bUpdateOverlaps)
 	{
 		auto _p0 = *(FVector*)InBoxExtent;

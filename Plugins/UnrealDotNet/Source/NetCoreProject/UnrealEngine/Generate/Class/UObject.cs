@@ -22,16 +22,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UObject(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_BeginDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_CanCheckDefaultSubObjects(IntPtr Self, bool bForceCheck, bool bResult);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CanCreateInCurrentContext(IntPtr Self, IntPtr Template);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_CanModify(IntPtr Self);
@@ -61,9 +55,6 @@ namespace UnrealEngine
 		private static extern void E_UObject_FinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetArchetype(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UObject_GetDefaultConfigFilename(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -79,19 +70,10 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UObject_GetGlobalUserConfigFilename(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_IsAsset(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsBasedOnArchetype(IntPtr Self, IntPtr SomeObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_IsEditorOnly(IntPtr Self);
@@ -154,9 +136,6 @@ namespace UnrealEngine
 		private static extern void E_UObject_PostNetReceive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostRepNotifies(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -182,15 +161,6 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns whether native properties are identical to the one of the passed in component. </para>
-		/// <param name="Other">Other component to compare against </param>
-		/// <return>true if native properties are identical, false otherwise </return>
-		/// </summary>
-		public virtual bool AreNativePropertiesIdenticalTo(UObject Other)
-			=> E_UObject_AreNativePropertiesIdenticalTo(this, Other);
-		
-		
-		/// <summary>
 		/// <para>Called before destroying the object.  This is called immediately upon deciding to destroy the object, to allow the object to begin an </para>
 		/// <para>asynchronous cleanup process. </para>
 		/// </summary>
@@ -203,14 +173,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected bool CanCheckDefaultSubObjects(bool bForceCheck, bool bResult)
 			=> E_UObject_CanCheckDefaultSubObjects(this, bForceCheck, bResult);
-		
-		
-		/// <summary>
-		/// <para>Determines if you can create an object from the supplied template in the current context (editor, client only, dedicated server, game/listen) </para>
-		/// <para>This calls NeedsLoadForClient & NeedsLoadForServer </para>
-		/// </summary>
-		public bool CanCreateInCurrentContext(UObject Template)
-			=> E_UObject_CanCreateInCurrentContext(this, Template);
 		
 		
 		/// <summary>
@@ -275,14 +237,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return the template this object is based on. </para>
-		/// <return>the archetype for this object </return>
-		/// </summary>
-		public UObject GetArchetype()
-			=> E_UObject_GetArchetype(this);
-		
-		
-		/// <summary>
 		/// <para>Get the default config filename for the specified UObject </para>
 		/// </summary>
 		public string GetDefaultConfigFilename()
@@ -321,12 +275,6 @@ namespace UnrealEngine
 		public string GetGlobalUserConfigFilename()
 			=> E_UObject_GetGlobalUserConfigFilename(this);
 		
-		public virtual UWorld GetWorld()
-			=> E_UObject_GetWorld(this);
-		
-		public UWorld GetWorldChecked(bool bSupported)
-			=> E_UObject_GetWorldChecked(this, bSupported);
-		
 		public bool ImplementsGetWorld()
 			=> E_UObject_ImplementsGetWorld(this);
 		
@@ -336,13 +284,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool IsAsset()
 			=> E_UObject_IsAsset(this);
-		
-		
-		/// <summary>
-		/// <para>Determine if this object has SomeObject in its archetype chain. </para>
-		/// </summary>
-		public bool IsBasedOnArchetype(UObject SomeObject)
-			=> E_UObject_IsBasedOnArchetype(this, SomeObject);
 		
 		
 		/// <summary>
@@ -501,15 +442,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PostNetReceive()
 			=> E_UObject_PostNetReceive(this);
-		
-		
-		/// <summary>
-		/// <para>Test the selection state of a UObject </para>
-		/// <return>true if the object is selected, false otherwise. </return>
-		/// <para>@todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better </para>
-		/// </summary>
-		public virtual void PostRename(UObject OldOuter, string OldName)
-			=> E_UObject_PostRename(this, OldOuter, OldName);
 		
 		
 		/// <summary>

@@ -37,11 +37,5 @@ extern "C"
 		((E_PROTECTED_WRAP_UAudioComponent*)Self)->PlayInternal_WRAP(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT auto E_UAudioComponent_SetSoundParameter(UAudioComponent* Self, INT_PTR Param)
-	{
-		auto _p0 = *(FAudioComponentParam*)Param;
-		Self->SetSoundParameter(_p0);
-	}
-
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

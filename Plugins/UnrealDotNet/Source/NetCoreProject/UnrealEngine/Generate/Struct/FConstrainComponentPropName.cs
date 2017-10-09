@@ -18,6 +18,24 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FConstrainComponentPropName();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FConstrainComponentPropName_ComponentName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FConstrainComponentPropName_ComponentName_SET(IntPtr Ptr, string Value);
+		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Name of property </para>
+		/// </summary>
+		public string ComponentName
+		{
+			get => E_PROP_FConstrainComponentPropName_ComponentName_GET(NativePointer);
+			set => E_PROP_FConstrainComponentPropName_ComponentName_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FConstrainComponentPropName Self)

@@ -14,26 +14,24 @@ namespace UnrealEngine
 		{
 		}
 
-		public FPrimitiveMaterialRef(UPrimitiveComponent InPrimitive, int InElementIndex) :
-			base(E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(InPrimitive, InElementIndex), false)
-		{
-		}
-
-		public FPrimitiveMaterialRef(UDecalComponent InDecal, int InElementIndex) :
-			base(E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(InDecal, InElementIndex), false)
-		{
-		}
-
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(IntPtr InPrimitive, int InElementIndex);
-		
+		private static extern int E_PROP_FPrimitiveMaterialRef_ElementIndex_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(IntPtr InDecal, int InElementIndex);
+		private static extern void E_PROP_FPrimitiveMaterialRef_ElementIndex_SET(IntPtr Ptr, int Value);
 		
+		#endregion
+		
+		#region Property
+		public int ElementIndex
+		{
+			get => E_PROP_FPrimitiveMaterialRef_ElementIndex_GET(NativePointer);
+			set => E_PROP_FPrimitiveMaterialRef_ElementIndex_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FPrimitiveMaterialRef Self)

@@ -18,6 +18,20 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FPointDamageEvent();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPointDamageEvent_Damage_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPointDamageEvent_Damage_SET(IntPtr Ptr, float Value);
+		
+		#endregion
+		
+		#region Property
+		public float Damage
+		{
+			get => E_PROP_FPointDamageEvent_Damage_GET(NativePointer);
+			set => E_PROP_FPointDamageEvent_Damage_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FPointDamageEvent Self)

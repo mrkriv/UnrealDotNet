@@ -13,39 +13,9 @@ public:
 		return AreDynamicDataChangesAllowed(bIgnoreStationary);
 	}
 
-	FTransform CalcNewComponentToWorld_WRAP(const FTransform& NewRelativeTransform, const USceneComponent* Parent, FName SocketName)
-	{
-		return CalcNewComponentToWorld(NewRelativeTransform, Parent, SocketName);
-	}
-
-	FTransform CalcNewComponentToWorld_GeneralCase_WRAP(const FTransform& NewRelativeTransform, const USceneComponent* Parent, FName SocketName)
-	{
-		return CalcNewComponentToWorld_GeneralCase(NewRelativeTransform, Parent, SocketName);
-	}
-
 	bool CheckStaticMobilityAndWarn_WRAP(const FText& ActionText)
 	{
 		return CheckStaticMobilityAndWarn(ActionText);
-	}
-
-	bool InternalSetWorldLocationAndRotation_WRAP(FVector NewLocation, const FQuat& NewQuat, bool bNoPhysics, ETeleportType Teleport)
-	{
-		return InternalSetWorldLocationAndRotation(NewLocation, NewQuat, bNoPhysics, Teleport);
-	}
-
-	bool MoveComponentImpl_WRAP(const FVector& Delta, const FQuat& NewRotation, bool bSweep, FHitResult* Hit, EMoveComponentFlags MoveFlags, ETeleportType Teleport)
-	{
-		return MoveComponentImpl(Delta, NewRotation, bSweep, Hit, MoveFlags, Teleport);
-	}
-
-	void OnChildAttached_WRAP(USceneComponent* ChildComponent)
-	{
-		OnChildAttached(ChildComponent);
-	}
-
-	void OnChildDetached_WRAP(USceneComponent* ChildComponent)
-	{
-		OnChildDetached(ChildComponent);
 	}
 
 	void OnHiddenInGameChanged_WRAP()
@@ -78,55 +48,28 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentToWorld_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentToWorld); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentToWorld = *(FTransform*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentVelocity_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentVelocity); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentVelocity = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeLocation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeLocation); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeLocation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeLocation = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeRotation_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeRotation); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeRotation_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeRotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeScale3D_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeScale3D); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeScale3D = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeTranslation_DEPRECATED); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<USceneComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_AddLocalOffset(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->AddLocalOffset(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_AddLocalTransform(USceneComponent* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FTransform*)DeltaTransform;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->AddLocalTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_AddRelativeLocation(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->AddRelativeLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_AddWorldOffset(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->AddWorldOffset(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_AddWorldTransform(USceneComponent* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FTransform*)DeltaTransform;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->AddWorldTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_AreDynamicDataChangesAllowed(USceneComponent* Self, bool bIgnoreStationary)
@@ -135,42 +78,11 @@ extern "C"
 		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->AreDynamicDataChangesAllowed_WRAP(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_AttachToComponent(USceneComponent* Self, USceneComponent* InParent, INT_PTR AttachmentRules, char* InSocketName)
-	{
-		auto _p0 = InParent;
-		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
-		auto _p2 = ConvertFromManage_FName(InSocketName);
-		return Self->AttachToComponent(_p0, _p1, _p2);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_CalcBoundingCylinder(USceneComponent* Self, float CylinderRadius, float CylinderHalfHeight)
 	{
 		auto _p0 = CylinderRadius;
 		auto _p1 = CylinderHalfHeight;
 		Self->CalcBoundingCylinder(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_CalcNewComponentToWorld(USceneComponent* Self, INT_PTR NewRelativeTransform, USceneComponent* Parent, char* SocketName)
-	{
-		auto _p0 = *(FTransform*)NewRelativeTransform;
-		auto _p1 = Parent;
-		auto _p2 = ConvertFromManage_FName(SocketName);
-		return (INT_PTR) new FTransform(((E_PROTECTED_WRAP_USceneComponent*)Self)->CalcNewComponentToWorld_WRAP(_p0, _p1, _p2));
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_CalcNewComponentToWorld_GeneralCase(USceneComponent* Self, INT_PTR NewRelativeTransform, USceneComponent* Parent, char* SocketName)
-	{
-		auto _p0 = *(FTransform*)NewRelativeTransform;
-		auto _p1 = Parent;
-		auto _p2 = ConvertFromManage_FName(SocketName);
-		return (INT_PTR) new FTransform(((E_PROTECTED_WRAP_USceneComponent*)Self)->CalcNewComponentToWorld_GeneralCase_WRAP(_p0, _p1, _p2));
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_CanAttachAsChild(USceneComponent* Self, USceneComponent* ChildComponent, char* SocketName)
-	{
-		auto _p0 = ChildComponent;
-		auto _p1 = ConvertFromManage_FName(SocketName);
-		return Self->CanAttachAsChild(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_CanEverRender(USceneComponent* Self)
@@ -189,12 +101,6 @@ extern "C"
 		Self->ConditionalUpdateComponentToWorld();
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_DetachFromComponent(USceneComponent* Self, INT_PTR DetachmentRules)
-	{
-		auto _p0 = *(FDetachmentTransformRules*)DetachmentRules;
-		Self->DetachFromComponent(_p0);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
 	{
 		auto _p0 = bMaintainWorldPosition;
@@ -208,30 +114,9 @@ extern "C"
 		return Self->DoesSocketExist(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_GetAttachmentRoot(USceneComponent* Self)
-	{
-		return ConvertToManage_ObjectPointerDescription(Self->GetAttachmentRoot());
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetAttachmentRootActor(USceneComponent* Self)
-	{
-		return ConvertToManage_ObjectPointerDescription(Self->GetAttachmentRootActor());
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetAttachParent(USceneComponent* Self)
-	{
-		return ConvertToManage_ObjectPointerDescription(Self->GetAttachParent());
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_GetAttachSocketName(USceneComponent* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetAttachSocketName());
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetChildComponent(USceneComponent* Self, int32 ChildIndex)
-	{
-		auto _p0 = ChildIndex;
-		return ConvertToManage_ObjectPointerDescription(Self->GetChildComponent(_p0));
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetCollisionObjectType(USceneComponent* Self)
@@ -243,12 +128,6 @@ extern "C"
 	{
 		auto _p0 = Channel;
 		return Self->GetCollisionResponseToChannel(_p0);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetCollisionResponseToComponent(USceneComponent* Self, USceneComponent* OtherComponent)
-	{
-		auto _p0 = OtherComponent;
-		return Self->GetCollisionResponseToComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetComponentLocation(USceneComponent* Self)
@@ -336,24 +215,9 @@ extern "C"
 		return Self->HasAnySockets();
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_InternalSetWorldLocationAndRotation(USceneComponent* Self, INT_PTR NewLocation, INT_PTR NewQuat, bool bNoPhysics, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = *(FQuat*)NewQuat;
-		auto _p2 = bNoPhysics;
-		auto _p3 = Teleport;
-		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->InternalSetWorldLocationAndRotation_WRAP(_p0, _p1, _p2, _p3);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_IsAnySimulatingPhysics(USceneComponent* Self)
 	{
 		return Self->IsAnySimulatingPhysics();
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_IsAttachedTo(USceneComponent* Self, USceneComponent* TestComp)
-	{
-		auto _p0 = TestComp;
-		return Self->IsAttachedTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_IsCollisionEnabled(USceneComponent* Self)
@@ -402,89 +266,6 @@ extern "C"
 		return Self->IsWorldGeometry();
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddLocalOffset(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddLocalOffset(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddLocalRotation(USceneComponent* Self, INT_PTR DeltaRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FRotator*)DeltaRotation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddLocalRotation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddLocalTransform(USceneComponent* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FTransform*)DeltaTransform;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddLocalTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddRelativeLocation(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddRelativeLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddRelativeRotation(USceneComponent* Self, INT_PTR DeltaRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FRotator*)DeltaRotation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddRelativeRotation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddWorldOffset(USceneComponent* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)DeltaLocation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddWorldOffset(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddWorldRotation(USceneComponent* Self, INT_PTR DeltaRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FRotator*)DeltaRotation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddWorldRotation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AddWorldTransform(USceneComponent* Self, INT_PTR DeltaTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FTransform*)DeltaTransform;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_AddWorldTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_AttachToComponent(USceneComponent* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
-	{
-		auto _p0 = Parent;
-		auto _p1 = ConvertFromManage_FName(SocketName);
-		auto _p2 = LocationRule;
-		auto _p3 = RotationRule;
-		auto _p4 = ScaleRule;
-		auto _p5 = bWeldSimulatedBodies;
-		return Self->K2_AttachToComponent(_p0, _p1, _p2, _p3, _p4, _p5);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_K2_DetachFromComponent(USceneComponent* Self, EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule, bool bCallModify)
 	{
 		auto _p0 = LocationRule;
@@ -514,106 +295,9 @@ extern "C"
 		return (INT_PTR) new FTransform(Self->K2_GetComponentToWorld());
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetRelativeLocation(USceneComponent* Self, INT_PTR NewLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetRelativeLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetRelativeLocationAndRotation(USceneComponent* Self, INT_PTR NewLocation, INT_PTR NewRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = *(FRotator*)NewRotation;
-		auto _p2 = bSweep;
-		auto _p3 = *(FHitResult*)SweepHitResult;
-		auto _p4 = bTeleport;
-		Self->K2_SetRelativeLocationAndRotation(_p0, _p1, _p2, _p3, _p4);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetRelativeRotation(USceneComponent* Self, INT_PTR NewRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FRotator*)NewRotation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetRelativeRotation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetRelativeTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FTransform*)NewTransform;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetRelativeTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetWorldLocation(USceneComponent* Self, INT_PTR NewLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetWorldLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetWorldLocationAndRotation(USceneComponent* Self, INT_PTR NewLocation, INT_PTR NewRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = *(FRotator*)NewRotation;
-		auto _p2 = bSweep;
-		auto _p3 = *(FHitResult*)SweepHitResult;
-		auto _p4 = bTeleport;
-		Self->K2_SetWorldLocationAndRotation(_p0, _p1, _p2, _p3, _p4);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetWorldRotation(USceneComponent* Self, INT_PTR NewRotation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FRotator*)NewRotation;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetWorldRotation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_K2_SetWorldTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
-	{
-		auto _p0 = *(FTransform*)NewTransform;
-		auto _p1 = bSweep;
-		auto _p2 = *(FHitResult*)SweepHitResult;
-		auto _p3 = bTeleport;
-		Self->K2_SetWorldTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_MoveComponentImpl(USceneComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR Hit, EMoveComponentFlags MoveFlags, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FQuat*)NewRotation;
-		auto _p2 = bSweep;
-		auto _p3 = (FHitResult*)Hit;
-		auto _p4 = MoveFlags;
-		auto _p5 = Teleport;
-		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->MoveComponentImpl_WRAP(_p0, _p1, _p2, _p3, _p4, _p5);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_OnAttachmentChanged(USceneComponent* Self)
 	{
 		Self->OnAttachmentChanged();
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_OnChildAttached(USceneComponent* Self, USceneComponent* ChildComponent)
-	{
-		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildAttached_WRAP(_p0);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_OnChildDetached(USceneComponent* Self, USceneComponent* ChildComponent)
-	{
-		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildDetached_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnHiddenInGameChanged(USceneComponent* Self)
@@ -656,12 +340,6 @@ extern "C"
 		Self->SetAbsolute(_p0, _p1, _p2);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_SetComponentToWorld(USceneComponent* Self, INT_PTR NewComponentToWorld)
-	{
-		auto _p0 = *(FTransform*)NewComponentToWorld;
-		Self->SetComponentToWorld(_p0);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_SetHiddenInGame(USceneComponent* Self, bool NewHidden, bool bPropagateToChildren)
 	{
 		auto _p0 = NewHidden;
@@ -669,41 +347,10 @@ extern "C"
 		Self->SetHiddenInGame(_p0, _p1);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_SetRelativeLocation(USceneComponent* Self, INT_PTR NewLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->SetRelativeLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SetRelativeRotationCache(USceneComponent* Self, INT_PTR InCache)
-	{
-		auto _p0 = *(FRotationConversionCache*)InCache;
-		Self->SetRelativeRotationCache(_p0);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeScale3D(USceneComponent* Self, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewScale3D;
 		Self->SetRelativeScale3D(_p0);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SetRelativeTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FTransform*)NewTransform;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->SetRelativeTransform(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SetupAttachment(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
-	{
-		auto _p0 = InParent;
-		auto _p1 = ConvertFromManage_FName(InSocketName);
-		Self->SetupAttachment(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SetVisibility(USceneComponent* Self, bool bNewVisibility, bool bPropagateToChildren)
@@ -713,35 +360,10 @@ extern "C"
 		Self->SetVisibility(_p0, _p1);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_SetWorldLocation(USceneComponent* Self, INT_PTR NewLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->SetWorldLocation(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SetWorldLocationAndRotationNoPhysics(USceneComponent* Self, INT_PTR NewLocation, INT_PTR NewRotation)
-	{
-		auto _p0 = *(FVector*)NewLocation;
-		auto _p1 = *(FRotator*)NewRotation;
-		Self->SetWorldLocationAndRotationNoPhysics(_p0, _p1);
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_SetWorldScale3D(USceneComponent* Self, INT_PTR NewScale)
 	{
 		auto _p0 = *(FVector*)NewScale;
 		Self->SetWorldScale3D(_p0);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SetWorldTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
-	{
-		auto _p0 = *(FTransform*)NewTransform;
-		auto _p1 = bSweep;
-		auto _p2 = (FHitResult*)OutSweepHitResult;
-		auto _p3 = Teleport;
-		Self->SetWorldTransform(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ShouldCollideWhenPlacing(USceneComponent* Self)
@@ -757,13 +379,6 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_ShouldRender(USceneComponent* Self)
 	{
 		return Self->ShouldRender();
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_SnapTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
-	{
-		auto _p0 = InParent;
-		auto _p1 = ConvertFromManage_FName(InSocketName);
-		return Self->SnapTo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ToggleVisibility(USceneComponent* Self, bool bPropagateToChildren)

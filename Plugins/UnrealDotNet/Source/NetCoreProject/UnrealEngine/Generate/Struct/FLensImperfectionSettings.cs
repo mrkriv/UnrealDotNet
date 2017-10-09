@@ -19,14 +19,23 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLensImperfectionSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FLensImperfectionSettings_ExportToPostProcessSettings(IntPtr Self, IntPtr OutPostProcessSettings);
+		private static extern float E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(IntPtr Ptr, float Value);
 		
 		#endregion
 		
-		#region ExternMethods
-		public void ExportToPostProcessSettings(FPostProcessSettings OutPostProcessSettings)
-			=> E_FLensImperfectionSettings_ExportToPostProcessSettings(this, OutPostProcessSettings);
+		#region Property
 		
+		/// <summary>
+		/// <para>BloomDirtMask intensity </para>
+		/// </summary>
+		public float DirtMaskIntensity
+		{
+			get => E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(NativePointer);
+			set => E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FLensImperfectionSettings Self)

@@ -13,12 +13,6 @@ extern "C"
 		return (INT_PTR)NewObject<ULightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT auto E_ULightComponent_AffectsPrimitive(ULightComponent* Self, UPrimitiveComponent* Primitive)
-	{
-		auto _p0 = Primitive;
-		return Self->AffectsPrimitive(_p0);
-	}
-
 	DOTNET_EXPORT auto E_ULightComponent_GetBoundingBox(ULightComponent* Self)
 	{
 		return (INT_PTR) new FBox(Self->GetBoundingBox());

@@ -22,9 +22,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ULightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr Self, IntPtr Primitive);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_ULightComponent_GetBoundingBox(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -72,16 +69,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// <para>Test whether this light affects the given primitive.  This checks both the primitive and light settings for light relevance </para>
-		/// <para>and also calls AffectsBounds. </para>
-		/// <param name="PrimitiveSceneInfo">The primitive to test. </param>
-		/// <return>True if the light affects the primitive. </return>
-		/// </summary>
-		public bool AffectsPrimitive(UPrimitiveComponent Primitive)
-			=> E_ULightComponent_AffectsPrimitive(this, Primitive);
-		
 		
 		/// <summary>
 		/// <para>Return the world-space bounding box of the light's influence. </para>

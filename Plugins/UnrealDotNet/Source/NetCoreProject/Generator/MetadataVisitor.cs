@@ -3,6 +3,9 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using static UHeaderParser;
 using Delegate = Generator.Metadata.Delegate;
 using Enum = Generator.Metadata.Enum;
@@ -48,50 +51,51 @@ namespace Generator
             Visit(Translationunit);
         }
 
-        private Type GetType(string name)
+        private Type GetType(TypeContext context)
         {
+            var name = context.GetText();
+
+            if (Types.TryGetValue(name, out var val))
+                return val;
+
             if (name.StartsWith("E"))
             {
-                return Types.GetOrAdd(name, new Enum(name));
+                return Get<Enum>(context);
             }
             if (name.EndsWith("Signature"))
             {
-                return Types.GetOrAdd(name, new Delegate(name));
+                return Get<Delegate>(context);
             }
 
-            return Types.GetOrAdd(name, new Class(name));
+            return Get<Class>(context);
         }
-
-        private Class GetClass(string name)
+        
+        private T Get<T>(TypeContext context) where T : Type
         {
-            return (Class)Types.GetOrAdd(name, new Class(name));
-        }
+            var name = context.GetText();
 
-        private Enum GetEnum(string name)
-        {
-            return (Enum)Types.GetOrAdd(name, new Enum(name));
-        }
+            if (name == "FOnForceFeedbackFinished")
+            {
+                int k = 5;
+            }
 
-        private Delegate GetDelegate(string name)
-        {
-            return (Delegate)Types.GetOrAdd(name, new Delegate(name));
-        }
-
-        private T Get<T>(string name) where T : Type
-        {
             if (Types.TryGetValue(name, out var val))
             {
                 if (val is T)
                     return (T)val;
 
-                // todo: заменить все ссылки на удаляемый обьект
-                var def = (T)Activator.CreateInstance(typeof(T), name);
-                Types.Remove(name, out _);
-                Types.TryAdd(name, def);
-                return def;
+                throw new InvalidOperationException($"Элемент уже использован как {val.GetType()}");
             }
 
-            return (T)Activator.CreateInstance(typeof(T), name);
+            var def = (Type)Activator.CreateInstance(typeof(T), name);
+            Types.TryAdd(name, def);
+            
+            foreach (var nameContext in context.typeName().type())
+            {
+                def.TemplateTypes.Add(ParceType(nameContext));
+            }
+
+            return (T)def;
         }
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
@@ -101,11 +105,12 @@ namespace Generator
 
             var NamespaceBaseClass = CurrentClass;
 
-            CurrentClass = GetClass(context.ChildText<ClassNameContext>());
+            CurrentClass = Get<Class>(context.type());
 
             var isStructReal = context.classOrStruct().GetText() == "struct";
 
             CurrentClass.SourceFile = CurrentFile;
+            CurrentClass.SourceLine = context.Start.Line;
             CurrentClass.IsImplemented = true;
             CurrentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
             CurrentClass.IsFinal = context.FoundChild<IsFinalContext>();
@@ -133,10 +138,10 @@ namespace Generator
 
             Ignore_OfAccessModifier = AccessModifier == AccessModifier.Private;
 
-            var parentClassName = context.Child<ClassParentListContext>()?.FindFirst<ClassNameContext>()?.GetText();
+            var parentClassName = context.Child<ClassParentListContext>()?.type();
             if (parentClassName != null)
             {
-                CurrentClass.BaseClass = GetClass(parentClassName);
+                CurrentClass.BaseClass = Get<Class>(parentClassName);
             }
 
             CurrentUMeta = null;
@@ -155,12 +160,12 @@ namespace Generator
             if (Ignore_OfPragma)
                 return null;
 
-            var name = context.enumName()?.GetText();
+            var name = context.type()?.GetText();
 
             if (string.IsNullOrEmpty(name))
                 return null;
 
-            CurrentEnum = GetEnum(name);
+            CurrentEnum = Get<Enum>(context.type());
             CurrentEnum.UMeta = CurrentUMeta ?? new Dictionary<string, string>();
             CurrentEnum.Description = CurrentComment;
             CurrentEnum.IsImplemented = true;
@@ -291,9 +296,8 @@ namespace Generator
             if (name.StartsWith("DECLARE_DYNAMIC_MULTICAST_DELEGATE"))
             {
                 var ls = context.uMeta().uMetaParametrList();
-                var dlg_name = ls.uMetaParametr().GetText();
 
-                CurrentDelegate = GetDelegate(dlg_name);
+                CurrentDelegate = Get<Delegate>(ls.uMetaParametr().uMetaParamKey().type());
                 CurrentDelegate.SourceFile = CurrentFile;
                 CurrentDelegate.IsImplemented = true;
                 CurrentDelegate.IsTemplate = context.FoundChild<TemplateDefineContext>();
@@ -388,7 +392,7 @@ namespace Generator
             }
             else
             {
-                var type = GetType(typeName);
+                var type = GetType(context);
                 if (type is Class)
                 {
                     variable = new ClassVariable((Class)type);
@@ -397,9 +401,13 @@ namespace Generator
                 {
                     variable = new DelegateVariable((Delegate)type);
                 }
-                else
+                else if(type is Enum)
                 {
                     variable = new EnumVariable((Enum)type);
+                }
+                else
+                {
+                    throw new InvalidOperationException();
                 }
             }
 

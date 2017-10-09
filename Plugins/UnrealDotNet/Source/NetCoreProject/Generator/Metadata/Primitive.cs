@@ -10,7 +10,7 @@ namespace Generator.Metadata
 
         public Dictionary<string, string> UMeta { get; set; }
         public AccessModifier AccessModifier { get; set; }
-        public bool IsTemplate { get; set; }
+        public virtual bool IsTemplate { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
 

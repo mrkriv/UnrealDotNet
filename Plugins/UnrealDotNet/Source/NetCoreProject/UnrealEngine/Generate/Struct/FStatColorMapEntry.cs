@@ -18,6 +18,20 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FStatColorMapEntry();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FStatColorMapEntry_In_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FStatColorMapEntry_In_SET(IntPtr Ptr, float Value);
+		
+		#endregion
+		
+		#region Property
+		public float In
+		{
+			get => E_PROP_FStatColorMapEntry_In_GET(NativePointer);
+			set => E_PROP_FStatColorMapEntry_In_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FStatColorMapEntry Self)

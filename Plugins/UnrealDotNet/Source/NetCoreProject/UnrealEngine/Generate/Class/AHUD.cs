@@ -22,16 +22,20 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_AHUD(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_AHUD_RenderDelta_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_RenderDelta_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_AddHitBox(IntPtr Self, IntPtr Position, IntPtr Size, string InName, bool bConsumesInput, int Priority);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_AddPostRenderedActor(IntPtr Self, IntPtr A);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AHUD_AnyCurrentHitBoxHits(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_Deproject(IntPtr Self, float ScreenX, float ScreenY, IntPtr WorldPosition, IntPtr WorldDirection);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_DrawActorOverlays(IntPtr Self, IntPtr Viewpoint, IntPtr ViewRotation);
@@ -44,9 +48,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_HandleBugScreenShot(IntPtr Self);
@@ -97,12 +98,6 @@ namespace UnrealEngine
 		private static extern void E_AHUD_RemoveAllDebugStrings(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_RemoveDebugText(IntPtr Self, IntPtr SrcActor, bool bLeaveDurationText);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_RemovePostRenderedActor(IntPtr Self, IntPtr A);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AHUD_ShouldDisplayDebug(IntPtr Self, string DebugType);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -117,9 +112,29 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_ShowHUD(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(IntPtr Self, IntPtr ClickLocation, byte InEventType);
+		#endregion
 		
+		#region Property
+		
+		/// <summary>
+		/// <para>Used to calculate delta time between HUD rendering. </para>
+		/// </summary>
+		public float LastHUDRenderTime
+		{
+			get => E_PROP_AHUD_LastHUDRenderTime_GET(NativePointer);
+			set => E_PROP_AHUD_LastHUDRenderTime_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Time since last HUD render. </para>
+		/// </summary>
+		public float RenderDelta
+		{
+			get => E_PROP_AHUD_RenderDelta_GET(NativePointer);
+			set => E_PROP_AHUD_RenderDelta_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -137,24 +152,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>add an actor to the PostRenderedActors array </para>
-		/// </summary>
-		public virtual void AddPostRenderedActor(AActor A)
-			=> E_AHUD_AddPostRenderedActor(this, A);
-		
-		
-		/// <summary>
 		/// <para>Have any hitboxes been hit this frame. </para>
 		/// </summary>
 		public bool AnyCurrentHitBoxHits()
 			=> E_AHUD_AnyCurrentHitBoxHits(this);
-		
-		
-		/// <summary>
-		/// <para>Transforms a 2D screen location into a 3D location and direction </para>
-		/// </summary>
-		public void Deproject(float ScreenX, float ScreenY, FVector WorldPosition, FVector WorldDirection)
-			=> E_AHUD_Deproject(this, ScreenX, ScreenY, WorldPosition, WorldDirection);
 		
 		
 		/// <summary>
@@ -184,13 +185,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void DrawSafeZoneOverlay()
 			=> E_AHUD_DrawSafeZoneOverlay(this);
-		
-		
-		/// <summary>
-		/// <para>Returns the Pawn for this HUD's player. </para>
-		/// </summary>
-		protected APawn GetOwningPawn()
-			=> E_AHUD_GetOwningPawn(this);
 		
 		
 		/// <summary>
@@ -293,16 +287,6 @@ namespace UnrealEngine
 		public void RemoveAllDebugStrings()
 			=> E_AHUD_RemoveAllDebugStrings(this);
 		
-		public void RemoveDebugText(AActor SrcActor, bool bLeaveDurationText = false)
-			=> E_AHUD_RemoveDebugText(this, SrcActor, bLeaveDurationText);
-		
-		
-		/// <summary>
-		/// <para>remove an actor from the PostRenderedActors array </para>
-		/// </summary>
-		public virtual void RemovePostRenderedActor(AActor A)
-			=> E_AHUD_RemovePostRenderedActor(this, A);
-		
 		
 		/// <summary>
 		/// <para>check if we should be display debug information for particular types of debug messages. </para>
@@ -328,15 +312,6 @@ namespace UnrealEngine
 		
 		public virtual void ShowHUD()
 			=> E_AHUD_ShowHUD(this);
-		
-		
-		/// <summary>
-		/// <para>Update the list of hitboxes and dispatch events for any hits. </para>
-		/// <param name="ClickLocation">Location of the click event </param>
-		/// <param name="InEventType">Type of input event that triggered the call. </param>
-		/// </summary>
-		public bool UpdateAndDispatchHitBoxClickEvents(FVector2D ClickLocation, EInputEvent InEventType)
-			=> E_AHUD_UpdateAndDispatchHitBoxClickEvents(this, ClickLocation, (byte)InEventType);
 		
 		#endregion
 		

@@ -11,17 +11,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InVector">3D Vector to set first three components. </param>
-		/// <param name="InW">W Coordinate. </param>
-		/// </summary>
-		public FVector4(FVector InVector, float InW) :
-			base(E_CreateStruct_FVector4_FVector_float(InVector, InW), false)
-		{
-		}
-
-		
-		/// <summary>
 		/// <para>Creates and initializes a new vector from the specified components. </para>
 		/// <param name="InX">X Coordinate. </param>
 		/// <param name="InY">Y Coordinate. </param>
@@ -46,13 +35,30 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector4_FVector_float(IntPtr InVector, float InW);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector4_float_float_float_float(float InX, float InY, float InZ, float InW);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector4_FVector2D_FVector2D(IntPtr InXY, IntPtr InZW);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector4_W_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector4_W_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector4_X_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector4_X_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector4_Y_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector4_Y_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector4_Z_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FVector4_Component(IntPtr Self, int Index);
@@ -62,12 +68,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector4_DiagnosticCheckNaN(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_Equals(IntPtr Self, IntPtr V, float Tolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector4_FindBestAxisVectors3(IntPtr Self, IntPtr Axis1, IntPtr Axis2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector4_GetSafeNormal(IntPtr Self, float Tolerance);
@@ -83,9 +83,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector4_IsUnit3(IntPtr Self, float LengthSquaredTolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_Reflect3(IntPtr Self, IntPtr Normal);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector4_Rotation(IntPtr Self);
@@ -122,6 +119,49 @@ namespace UnrealEngine
 		
 		#endregion
 		
+		#region Property
+		
+		/// <summary>
+		/// <para>The vector's W-component. </para>
+		/// </summary>
+		public float W
+		{
+			get => E_PROP_FVector4_W_GET(NativePointer);
+			set => E_PROP_FVector4_W_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The vector's X-component. </para>
+		/// </summary>
+		public float X
+		{
+			get => E_PROP_FVector4_X_GET(NativePointer);
+			set => E_PROP_FVector4_X_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The vector's Y-component. </para>
+		/// </summary>
+		public float Y
+		{
+			get => E_PROP_FVector4_Y_GET(NativePointer);
+			set => E_PROP_FVector4_Y_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The vector's Z-component. </para>
+		/// </summary>
+		public float Z
+		{
+			get => E_PROP_FVector4_Z_GET(NativePointer);
+			set => E_PROP_FVector4_Z_SET(NativePointer, value);
+		}
+
+		#endregion
+		
 		#region ExternMethods
 		
 		/// <summary>
@@ -141,24 +181,6 @@ namespace UnrealEngine
 		
 		public void DiagnosticCheckNaN()
 			=> E_FVector4_DiagnosticCheckNaN(this);
-		
-		
-		/// <summary>
-		/// <para>Error tolerant comparison. </para>
-		/// <param name="V">Vector to compare against. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if the two vectors are equal within specified tolerance, otherwise false. </return>
-		/// </summary>
-		public bool Equals(FVector4 V, float Tolerance)
-			=> E_FVector4_Equals(this, V, Tolerance);
-		
-		
-		/// <summary>
-		/// <para>Find good arbitrary axis vectors to represent U and V axes of a plane, </para>
-		/// <para>given just the normal. </para>
-		/// </summary>
-		public void FindBestAxisVectors3(FVector4 Axis1, FVector4 Axis2)
-			=> E_FVector4_FindBestAxisVectors3(this, Axis1, Axis2);
 		
 		
 		/// <summary>
@@ -202,13 +224,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsUnit3(float LengthSquaredTolerance)
 			=> E_FVector4_IsUnit3(this, LengthSquaredTolerance);
-		
-		
-		/// <summary>
-		/// <para>Reflect vector. </para>
-		/// </summary>
-		public FVector4 Reflect3(FVector4 Normal)
-			=> E_FVector4_Reflect3(this, Normal);
 		
 		
 		/// <summary>

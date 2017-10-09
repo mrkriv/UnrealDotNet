@@ -80,12 +80,6 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitClassParentList([NotNull] UHeaderParser.ClassParentListContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="UHeaderParser.className"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitClassName([NotNull] UHeaderParser.ClassNameContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classAlignDefine"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -121,12 +115,6 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitEnumParent([NotNull] UHeaderParser.EnumParentContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="UHeaderParser.enumName"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitEnumName([NotNull] UHeaderParser.EnumNameContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElementList"/>.
 	/// </summary>

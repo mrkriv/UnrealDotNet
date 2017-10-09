@@ -106,12 +106,6 @@ extern "C"
 		Self->SetPlayRate(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UTimelineComponent_SetPropertySetObject(UTimelineComponent* Self, UObject* NewPropertySetObject)
-	{
-		auto _p0 = NewPropertySetObject;
-		Self->SetPropertySetObject(_p0);
-	}
-
 	DOTNET_EXPORT auto E_UTimelineComponent_SetTimelineLength(UTimelineComponent* Self, float NewLength)
 	{
 		auto _p0 = NewLength;

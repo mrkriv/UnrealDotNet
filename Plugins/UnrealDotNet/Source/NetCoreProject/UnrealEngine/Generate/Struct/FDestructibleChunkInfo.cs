@@ -18,6 +18,24 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDestructibleChunkInfo();
 		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FDestructibleChunkInfo_ChunkIndex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FDestructibleChunkInfo_ChunkIndex_SET(IntPtr Ptr, int Value);
+		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Index of the chunk this data belongs to </para>
+		/// </summary>
+		public int ChunkIndex
+		{
+			get => E_PROP_FDestructibleChunkInfo_ChunkIndex_GET(NativePointer);
+			set => E_PROP_FDestructibleChunkInfo_ChunkIndex_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FDestructibleChunkInfo Self)

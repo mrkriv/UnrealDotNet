@@ -22,22 +22,30 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USpringArmComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr Self, IntPtr DesiredArmLocation, IntPtr TraceHitLocation, bool bHitSomething, float DeltaTime);
+		private static extern bool E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USpringArmComponent_UpdateDesiredArmLocation(IntPtr Self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime);
 		
 		#endregion
 		
-		#region ExternMethods
+		#region Property
 		
 		/// <summary>
-		/// <para>This function allows subclasses to blend the trace hit location with the desired arm location; </para>
-		/// <para>by default it returns bHitSomething ? TraceHitLocation : DesiredArmLocation </para>
+		/// <para>DEPRECATED variable: use "bUsePawnControlRotation" instead. Existing code using this value may not behave correctly. </para>
+		/// <para>This is not a UPROPERTY, with good reason: we don't want to serialize in old values. </para>
 		/// </summary>
-		protected virtual FVector BlendLocations(FVector DesiredArmLocation, FVector TraceHitLocation, bool bHitSomething, float DeltaTime)
-			=> E_USpringArmComponent_BlendLocations(this, DesiredArmLocation, TraceHitLocation, bHitSomething, DeltaTime);
+		public bool bUseControllerViewRotation
+		{
+			get => E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(NativePointer);
+			set => E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(NativePointer, value);
+		}
+
+		#endregion
 		
+		#region ExternMethods
 		
 		/// <summary>
 		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
