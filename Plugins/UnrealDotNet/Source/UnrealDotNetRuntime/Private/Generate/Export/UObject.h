@@ -148,11 +148,6 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetWorldChecked(_p0));
 	}
 
-	DOTNET_EXPORT auto E_UObject_Implements(UObject* Self)
-	{
-		return Self->Implements();
-	}
-
 	DOTNET_EXPORT auto E_UObject_ImplementsGetWorld(UObject* Self)
 	{
 		return Self->ImplementsGetWorld();

@@ -106,6 +106,8 @@ namespace Generator
 
             "UAssetManager",
             "UTexture",
+
+            "UShapeComponent",  // todo: не найдена соответствующая перегруженная функция
         };
 
         public static string[] NewObjectBlackList =
@@ -145,7 +147,7 @@ namespace Generator
         public static Dictionary<string, string[]> MethodInClassBlackList = new Dictionary<string, string[]>
         {
             { "UObjectBase", new[] { "Register" }},
-            { "UObject", new[] { "PreSaveRoot" }},
+            { "UObject", new[] { "PreSaveRoot", "Implements" }},
 
             { "UObjectBaseUtility", new[] { "CreateClusterFromObject" }},
             { "UModelComponent", new[] { "CommitSurfaces" }},
@@ -157,13 +159,19 @@ namespace Generator
             { "UPlanarReflectionComponent", new[] { "UpdatePreviewShape" }},
             { "FNamedNetDriver", new[] { "NetDriverDef" }},
             { "UPrimitiveComponent", new[] { "DispatchBlockingHit" }},
+            { "FCollisionResponseContainer", new[] { "UpdateResponsesFromArray", "FillArrayFromResponses" }},
 
             { "AActor", new[] { "ActorGetDistanceToCollision" }}, // TODO: указатель на указатель **
             { "UTexture", new[] { "GetRunningPlatformData" }},
-            
+
 
             { "FURL", new[] { "ToString" }},    // TODO: конвертировать 0 в false
             { "FPoly", new[] { "CalcNormal" }},
+        };
+
+        public static Dictionary<string, string[]> PropertyInClassBlackList = new Dictionary<string, string[]>
+        {
+            { "FWorldContext", new[] { "ExternalReferences" }},
         };
 
         public static string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
@@ -343,6 +351,10 @@ namespace Generator
             if (m.IsConst)
                 return false;
 
+            if (PropertyInClassBlackList.ContainsKey(m.OwnerClass.Name) &&
+                PropertyInClassBlackList[m.OwnerClass.Name].Contains(m.Name))
+                return false;
+
             if (!TypeFilter(m.Type))
                 return false;
 
@@ -382,6 +394,12 @@ namespace Generator
 
         public static bool GetConvertToManageType(Type type, out string ToType)
         {
+            if (type.IsTemplate)
+            {
+                ToType = "TemplatePointerDescription";
+                return true;
+            }
+
             if ((type as Class)?.IsStructure == false)
             {
                 ToType = "ObjectPointerDescription";

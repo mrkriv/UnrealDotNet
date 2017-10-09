@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Generator.Metadata
 {
@@ -9,7 +10,8 @@ namespace Generator.Metadata
         public bool IsStatic { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
-        public override bool IsTemplate => Type.IsTemplate;
+        public Class OwnerClass { get; set; }
+        public override bool IsTemplate => base.IsTemplate || Type.IsTemplate;
 
         public Type Type { get; protected set; }
         public string Default { get; set; }
@@ -56,15 +58,23 @@ namespace Generator.Metadata
         public string GetTypeCPPOgiginal(bool NoName = false)
         {
             var result = "";
-
+            
             if (IsConst)
                 result += "const ";
 
-            result += Type;
+            if (IsTemplate)
+            {
+                result += Type.Name.Substring(0, Type.Name.IndexOf("__", StringComparison.Ordinal));
+                result += "<" + string.Join(", ", Type.TemplateTypes.Select(x => x.GetTypeCPPOgiginal(NoName))) + ">";
+            }
+            else
+            {
+                result += Type.Name;
+            }
 
             if (IsPointer)
                 result += "*";
-            if (IsReference)
+            else if (IsReference)
                 result += "&";
 
             if (!string.IsNullOrEmpty(Name) && !NoName)
@@ -72,7 +82,7 @@ namespace Generator.Metadata
 
             return result;
         }
-
+        
         public bool Equals(Variable other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -205,6 +215,11 @@ namespace Generator.Metadata
 
         public override string GetTypeCPP(bool ForReturn = false)
         {
+            if (IsTemplate)
+            {
+                return ForReturn ? "TemplatePointerDescription" : "INT_PTR";
+            }
+
             if (((Class)Type).IsStructure)
                 return "INT_PTR";
             

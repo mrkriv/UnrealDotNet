@@ -547,6 +547,15 @@ namespace Generator
 
                     result += $"({type.Name}*)";
                 }
+                else if (type.IsTemplate)
+                {
+                    if (!variable.IsPointer)
+                        result += "*";
+
+                    var name = variable.GetTypeCPPOgiginal(true).TrimEnd('&');
+
+                    result += $"({name}*)";
+                }
                 else if (Filter.IsUseConvertFromManageType(type))
                 {
                     result += $"ConvertFromManage_{type}(";
@@ -578,6 +587,10 @@ namespace Generator
 
                     bCloseCount++;
                 }
+                //else if (type.IsTemplate)
+                //{
+                //    // todo: 
+                //}
                 else if (Filter.GetConvertToManageType(type, out var toType))
                 {
                     result += $"ConvertToManage_{toType}(";

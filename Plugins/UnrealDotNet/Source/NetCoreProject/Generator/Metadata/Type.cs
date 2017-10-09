@@ -8,7 +8,7 @@ namespace Generator.Metadata
     {
         public bool IsImplemented { get; set; }
         public bool IsManualImplemented { get; set; }
-        public override bool IsTemplate => TemplateTypes.Any();
+        public override bool IsTemplate => base.IsTemplate || TemplateTypes.Any();
 
         public Type NamespaceBaseType { get; set; }
         public Domain Domain { get; set; }

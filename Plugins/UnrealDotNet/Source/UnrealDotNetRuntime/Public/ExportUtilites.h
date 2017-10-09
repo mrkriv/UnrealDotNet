@@ -14,3 +14,11 @@ typedef struct StringWrapper
 	int32 Len;
 }
 StringWrapper;
+
+typedef struct TemplatePointerDescription
+{
+	INT_PTR Pointer;
+	INT_PTR TypeName;
+	int32 TypeNameLen;
+}
+TemplatePointerDescription;

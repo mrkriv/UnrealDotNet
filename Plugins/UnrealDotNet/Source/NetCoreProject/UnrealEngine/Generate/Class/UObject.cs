@@ -87,9 +87,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_Implements(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -331,13 +328,6 @@ namespace UnrealEngine
 		
 		public UWorld GetWorldChecked(bool bSupported)
 			=> E_UObject_GetWorldChecked(this, bSupported);
-		
-		
-		/// <summary>
-		/// <para>Returns true if this object implements the interface T, false otherwise. </para>
-		/// </summary>
-		public bool Implements()
-			=> E_UObject_Implements(this);
 		
 		public bool ImplementsGetWorld()
 			=> E_UObject_ImplementsGetWorld(this);

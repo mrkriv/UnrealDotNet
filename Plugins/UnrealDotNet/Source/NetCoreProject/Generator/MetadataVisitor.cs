@@ -125,7 +125,6 @@ namespace Generator
                     break;
 
                 case 'F':
-                case 'T':
                     CurrentClass.IsStructure = true;
                     break;
 
@@ -214,6 +213,7 @@ namespace Generator
             variable.IsStatic = context.FoundChild<IsStaticContext>();
             variable.Name = context.propertyName().GetText();
             variable.UMeta = CurrentUMeta ?? variable.UMeta;
+            variable.OwnerClass = CurrentClass;
 
             CurrentClass.Property.Add(variable);
             CurrentUMeta = null;

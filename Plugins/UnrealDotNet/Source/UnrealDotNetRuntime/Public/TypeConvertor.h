@@ -11,6 +11,12 @@ StringWrapper ConvertToManage_StringWrapper(FText text);
 StringWrapper ConvertToManage_StringWrapper(FName name);
 ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* object);
 
+template<class T>
+TemplatePointerDescription ConvertToManage_TemplatePointerDescription(T sourceTemplate)
+{
+	return TemplatePointerDescription();
+}
+
 TCHAR* ConvertFromManage_TCHAR(char* String);
 FString ConvertFromManage_FString(char* String);
 FName ConvertFromManage_FName(char* String);

@@ -51,7 +51,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "USceneCaptureComponent2D.h"
 #include "USceneCaptureComponentCube.h"
 #include "USceneComponent.h"
-#include "UShapeComponent.h"
 #include "USkeletalMeshComponent.h"
 #include "USkinnedMeshComponent.h"
 #include "USkyLightComponent.h"

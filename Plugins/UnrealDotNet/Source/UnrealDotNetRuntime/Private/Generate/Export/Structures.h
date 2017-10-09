@@ -34,8 +34,6 @@
 #include "Math/Vector.h"
 #include "Math/Vector2D.h"
 #include "Math/Vector4.h"
-#include "Components/InputComponent.h"
-#include "Math/Range.h"
 
 extern "C"
 {
@@ -4588,76 +4586,6 @@ extern "C"
 	DOTNET_EXPORT auto E_FWorldContext_World(FWorldContext* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->World());
-	}
-
-	
-	/*	TInputUnifiedDelegate	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_TInputUnifiedDelegate() { return (INT_PTR) new TInputUnifiedDelegate(); }
-	
-	DOTNET_EXPORT auto E_TInputUnifiedDelegate_IsBound(TInputUnifiedDelegate* Self)
-	{
-		return Self->IsBound();
-	}
-
-	
-	/*	TRange	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_TRange() { return (INT_PTR) new TRange(); }
-	
-	DOTNET_EXPORT auto E_TRange_Adjoins(TRange* Self, INT_PTR Other)
-	{
-		auto _p0 = *(TRange*)Other;
-		return Self->Adjoins(_p0);
-	}
-
-	DOTNET_EXPORT auto E_TRange_All(TRange* Self)
-	{
-		return (INT_PTR) new TRange(Self->All());
-	}
-
-	DOTNET_EXPORT auto E_TRange_Conjoins(TRange* Self, INT_PTR X, INT_PTR Y)
-	{
-		auto _p0 = *(TRange*)X;
-		auto _p1 = *(TRange*)Y;
-		return Self->Conjoins(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_TRange_Contiguous(TRange* Self, INT_PTR Other)
-	{
-		auto _p0 = *(TRange*)Other;
-		return Self->Contiguous(_p0);
-	}
-
-	DOTNET_EXPORT auto E_TRange_Empty(TRange* Self)
-	{
-		return (INT_PTR) new TRange(Self->Empty());
-	}
-
-	DOTNET_EXPORT auto E_TRange_HasLowerBound(TRange* Self)
-	{
-		return Self->HasLowerBound();
-	}
-
-	DOTNET_EXPORT auto E_TRange_HasUpperBound(TRange* Self)
-	{
-		return Self->HasUpperBound();
-	}
-
-	DOTNET_EXPORT auto E_TRange_IsDegenerate(TRange* Self)
-	{
-		return Self->IsDegenerate();
-	}
-
-	DOTNET_EXPORT auto E_TRange_IsEmpty(TRange* Self)
-	{
-		return Self->IsEmpty();
-	}
-
-	DOTNET_EXPORT auto E_TRange_Overlaps(TRange* Self, INT_PTR Other)
-	{
-		auto _p0 = *(TRange*)Other;
-		return Self->Overlaps(_p0);
 	}
 
 }
