@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/LineBatchComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LineBatchComponent.h:120
+
 extern "C"
 {
 	

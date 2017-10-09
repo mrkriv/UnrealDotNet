@@ -42,6 +42,9 @@ namespace Generator
                 cw.WriteLine("using System;");
                 cw.WriteLine("using System.Runtime.InteropServices;");
                 cw.WriteLine();
+
+                GenerateSourceInfo(cw, Class);
+
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
@@ -114,6 +117,9 @@ namespace Generator
                 cw.WriteLine("using System;");
                 cw.WriteLine("using System.Runtime.InteropServices;");
                 cw.WriteLine();
+
+                GenerateSourceInfo(cw, Class);
+
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
@@ -453,7 +459,9 @@ namespace Generator
             private static void GenerateDelegate(CoreWriter cw, Delegate dlg)
             {
                 GenerateSummaty(cw, dlg);
-                
+
+                GenerateSourceInfo(cw, dlg);
+
                 var param = string.Join(", ", dlg.Parametrs.Select(m => ExportVariable(m, false)));
                 cw.Write($"public delegate void {dlg.Name}({param});");
 
@@ -476,6 +484,8 @@ namespace Generator
             private static void GenerateEnum(CoreWriter cw, Enum Enum)
             {
                 GenerateSummaty(cw, Enum);
+
+                GenerateSourceInfo(cw, Enum);
 
                 cw.WriteLine($"public enum {Enum.Name} : byte");
                 cw.OpenBlock();

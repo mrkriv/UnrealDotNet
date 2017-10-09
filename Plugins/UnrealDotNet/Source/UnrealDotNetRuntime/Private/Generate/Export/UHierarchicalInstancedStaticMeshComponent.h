@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/HierarchicalInstancedStaticMeshComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\HierarchicalInstancedStaticMeshComponent.h:60
+
 extern "C"
 {
 	

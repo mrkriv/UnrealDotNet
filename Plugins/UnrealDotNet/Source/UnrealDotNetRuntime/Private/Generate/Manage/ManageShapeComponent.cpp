@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ShapeComponent.h:24
+
 void UManageShapeComponent::UpdateBodySetup()
 {
 	Super::UpdateBodySetup();

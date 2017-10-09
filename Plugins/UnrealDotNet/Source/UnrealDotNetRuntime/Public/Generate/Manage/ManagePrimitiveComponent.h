@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/PrimitiveComponent.h"
 #include "ManagePrimitiveComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PrimitiveComponent.h:170
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePrimitiveComponent : public UPrimitiveComponent
 {

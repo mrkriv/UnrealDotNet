@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/HUD.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+
 class E_PROTECTED_WRAP_AHUD : protected AHUD
 {
 public:

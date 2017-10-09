@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/SpotLightComponent.h"
 #include "ManageSpotLightComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SpotLightComponent.h:16
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSpotLightComponent : public USpotLightComponent
 {

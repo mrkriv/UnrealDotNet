@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/DrawFrustumComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DrawFrustumComponent.h:18
+
 extern "C"
 {
 	

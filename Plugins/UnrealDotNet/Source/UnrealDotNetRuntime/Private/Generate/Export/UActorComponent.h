@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/ActorComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:94
+
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
 {
 public:

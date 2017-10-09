@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/BoxComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BoxComponent.h:17
+
 extern "C"
 {
 	

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/CapsuleComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\CapsuleComponent.h:16
+
 extern "C"
 {
 	

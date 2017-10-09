@@ -53,13 +53,15 @@ namespace Generator
                 cw.WriteLine("#include \"CoreMinimal.h\"");
                 cw.WriteLine("#include \"ManagerObject.h\"");
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
+                cw.WriteLine();
+
+                GenerateSourceInfo(cw, Class);
 
                 if (!Class.IsFinal)
                 {
                     GenerateProtctedWrap(cw, Class);
                 }
 
-                cw.WriteLine();
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
@@ -100,6 +102,8 @@ namespace Generator
                 cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
                 cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
                 cw.WriteLine();
+
+                GenerateSourceInfo(cw, Class);
 
                 cw.WriteLine("UCLASS()");
                 cw.WriteLine($"class {CPP_API_UE} {liter}Manage{baseName} : public {Class.Name}");
@@ -155,6 +159,8 @@ namespace Generator
                 cw.WriteLine();
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
+
+                GenerateSourceInfo(cw, Class);
 
                 methods.ForEach(m => GenerateManageMethod(cw, m));
 
@@ -215,7 +221,6 @@ namespace Generator
                 if (!methods.Any() || Class.IsFinal)
                     return;
 
-                cw.WriteLine();
                 cw.WriteLine($"class {ExportProtectedPrefix}{Class.Name} : protected {Class.Name}");
                 cw.OpenBlock();
                 cw.WriteLineNoTab("public:");
@@ -227,6 +232,7 @@ namespace Generator
 
                 cw.CloseBlock();
                 cw.Write(";");
+                cw.WriteLine();
                 cw.WriteLine();
             }
 

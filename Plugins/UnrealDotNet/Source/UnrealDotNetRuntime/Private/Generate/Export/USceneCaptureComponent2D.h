@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/SceneCaptureComponent2D.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponent2D.h:19
+
 extern "C"
 {
 	

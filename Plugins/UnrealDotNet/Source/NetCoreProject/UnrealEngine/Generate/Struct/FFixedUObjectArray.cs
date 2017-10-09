@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\UObject\UObjectArray.h:208
+
 namespace UnrealEngine
 {
 	public  partial class FFixedUObjectArray : NativeStructWrapper

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/Pawn.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Pawn.h:37
+
 class E_PROTECTED_WRAP_APawn : protected APawn
 {
 public:

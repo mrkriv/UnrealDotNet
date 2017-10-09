@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Engine/Player.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Player.h:17
+
 extern "C"
 {
 	

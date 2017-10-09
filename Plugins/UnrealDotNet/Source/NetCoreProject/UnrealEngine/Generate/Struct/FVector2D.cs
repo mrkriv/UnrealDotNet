@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Vector2D.h:17
+
 namespace UnrealEngine
 {
 	public  partial class FVector2D : NativeStructWrapper

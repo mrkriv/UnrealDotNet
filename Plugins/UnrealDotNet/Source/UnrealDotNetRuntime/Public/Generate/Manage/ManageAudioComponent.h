@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/AudioComponent.h"
 #include "ManageAudioComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\AudioComponent.h:90
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageAudioComponent : public UAudioComponent
 {

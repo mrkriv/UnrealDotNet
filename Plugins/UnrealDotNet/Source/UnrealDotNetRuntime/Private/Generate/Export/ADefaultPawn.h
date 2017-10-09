@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/DefaultPawn.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\DefaultPawn.h:25
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_ADefaultPawn_CollisionComponentName_GET() { return ConvertToManage_StringWrapper(ADefaultPawn::CollisionComponentName); }

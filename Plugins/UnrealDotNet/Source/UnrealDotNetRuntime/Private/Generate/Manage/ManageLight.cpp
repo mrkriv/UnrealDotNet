@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Light.h:13
+
 void AManageLight::OnRep_bEnabled()
 {
 	Super::OnRep_bEnabled();

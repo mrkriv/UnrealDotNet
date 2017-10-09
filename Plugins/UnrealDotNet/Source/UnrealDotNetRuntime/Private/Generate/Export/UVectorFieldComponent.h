@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/VectorFieldComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\VectorFieldComponent.h:18
+
 extern "C"
 {
 	

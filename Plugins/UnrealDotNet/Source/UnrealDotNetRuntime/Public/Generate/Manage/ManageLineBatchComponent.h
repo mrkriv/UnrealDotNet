@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/LineBatchComponent.h"
 #include "ManageLineBatchComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LineBatchComponent.h:120
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageLineBatchComponent : public ULineBatchComponent
 {

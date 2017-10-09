@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "GameFramework/DefaultPawn.h"
 #include "ManageDefaultPawn.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\DefaultPawn.h:25
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageDefaultPawn : public ADefaultPawn
 {

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/SphereComponent.h"
 #include "ManageSphereComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SphereComponent.h:17
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSphereComponent : public USphereComponent
 {

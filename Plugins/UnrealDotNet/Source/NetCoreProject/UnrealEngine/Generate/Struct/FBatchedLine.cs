@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LineBatchComponent.h:16
+
 namespace UnrealEngine
 {
 	public  partial class FBatchedLine : NativeStructWrapper

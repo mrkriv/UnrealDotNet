@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "GameFramework/SpringArmComponent.h"
 #include "ManageSpringArmComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpringArmComponent.h:19
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSpringArmComponent : public USpringArmComponent
 {

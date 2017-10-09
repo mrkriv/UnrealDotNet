@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Light.h:13
+
 namespace UnrealEngine
 {
 	public  partial class ALight : AActor

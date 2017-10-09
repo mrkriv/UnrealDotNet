@@ -166,6 +166,8 @@ namespace Generator
                 return null;
 
             CurrentEnum = Get<Enum>(context.type());
+            CurrentEnum.SourceFile = CurrentFile;
+            CurrentEnum.SourceLine = context.Start.Line;
             CurrentEnum.UMeta = CurrentUMeta ?? new Dictionary<string, string>();
             CurrentEnum.Description = CurrentComment;
             CurrentEnum.IsImplemented = true;
@@ -299,6 +301,7 @@ namespace Generator
 
                 CurrentDelegate = Get<Delegate>(ls.uMetaParametr().uMetaParamKey().type());
                 CurrentDelegate.SourceFile = CurrentFile;
+                CurrentDelegate.SourceLine = context.Start.Line;
                 CurrentDelegate.IsImplemented = true;
                 CurrentDelegate.IsTemplate = context.FoundChild<TemplateDefineContext>();
                 CurrentDelegate.Description = CurrentComment;

@@ -12,6 +12,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UActorComponent.h"
 #include "UArrowComponent.h"
 #include "UAudioComponent.h"
+#include "UBillboardComponent.h"
 #include "UBoxComponent.h"
 #include "UBoxReflectionCaptureComponent.h"
 #include "UBrushComponent.h"

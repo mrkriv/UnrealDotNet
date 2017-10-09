@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/InstancedStaticMeshComponent.h"
 #include "ManageInstancedStaticMeshComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\InstancedStaticMeshComponent.h:101
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageInstancedStaticMeshComponent : public UInstancedStaticMeshComponent
 {

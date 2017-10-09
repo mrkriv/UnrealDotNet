@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/SceneCaptureComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponent.h:59
+
 class E_PROTECTED_WRAP_USceneCaptureComponent : protected USceneCaptureComponent
 {
 public:

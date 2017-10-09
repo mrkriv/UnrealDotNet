@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD
 {

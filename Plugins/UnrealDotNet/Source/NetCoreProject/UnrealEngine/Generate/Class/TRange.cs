@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Range.h:48
+
 namespace UnrealEngine
 {
 	public  partial class TRange : NativeWrapper

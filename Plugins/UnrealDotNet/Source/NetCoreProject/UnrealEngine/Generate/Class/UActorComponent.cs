@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:94
+
 namespace UnrealEngine
 {
 	public  partial class UActorComponent : UObject

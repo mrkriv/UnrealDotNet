@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/PlanarReflectionComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PlanarReflectionComponent.h:16
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_UPlanarReflectionComponent_AngleFromPlaneFadeEnd_GET(UPlanarReflectionComponent* Ptr) { return Ptr->AngleFromPlaneFadeEnd; }

@@ -5,6 +5,8 @@ namespace UnrealEngine
 	/// <para>Indicates that PreInitializeComponents/PostInitializeComponents have been called on this Actor </para>
 	/// <para>Prevents re-initializing of actors spawned during level startup </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:597
+	
 	public enum EActorBeginPlayState : byte
 	{
 		HasNotBegunPlay,
@@ -12,6 +14,8 @@ namespace UnrealEngine
 		HasBegunPlay,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:42
+	
 	public enum EActorMetricsType : byte
 	{
 		METRICS_VERTS,
@@ -20,12 +24,16 @@ namespace UnrealEngine
 		METRICS_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkeletalMeshComponent.h:153
+	
 	public enum EAllowKinematicDeferral : byte
 	{
 		AllowDeferral,
 		DisallowDeferral,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3486
+	
 	public enum EAngularConstraintMotion : byte
 	{
 		ACM_Free,
@@ -34,6 +42,8 @@ namespace UnrealEngine
 		ACM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Scene.h:32
+	
 	public enum EAntiAliasingMethod : byte
 	{
 		AAM_None,
@@ -43,6 +53,8 @@ namespace UnrealEngine
 		AAM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:31
+	
 	public enum EAspectRatioAxisConstraint : byte
 	{
 		AspectRatio_MaintainYFOV,
@@ -51,6 +63,8 @@ namespace UnrealEngine
 		AspectRatio_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:67
+	
 	public enum EAttachmentRule : byte
 	{
 		KeepRelative,
@@ -58,6 +72,8 @@ namespace UnrealEngine
 		SnapToTarget,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Scene.h:44
+	
 	public enum EAutoExposureMethod : byte
 	{
 		AEM_Histogram,
@@ -65,6 +81,8 @@ namespace UnrealEngine
 		AEM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2762
+	
 	public enum EAutoPossessAI : byte
 	{
 		Disabled,
@@ -73,6 +91,8 @@ namespace UnrealEngine
 		PlacedInWorldOrSpawned,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:230
+	
 	public enum EBlendMode : byte
 	{
 		BLEND_Opaque,
@@ -84,6 +104,8 @@ namespace UnrealEngine
 		BLEND_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Scene.h:54
+	
 	public enum EBloomMethod : byte
 	{
 		BM_SOG,
@@ -91,6 +113,8 @@ namespace UnrealEngine
 		BM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkinnedMeshComponent.h:35
+	
 	public enum EBoneVisibilityStatus : byte
 	{
 		BVS_HiddenByParent,
@@ -99,6 +123,8 @@ namespace UnrealEngine
 		BVS_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PrimitiveComponent.h:35
+	
 	public enum ECanBeCharacterBase : byte
 	{
 		ECB_No,
@@ -107,6 +133,8 @@ namespace UnrealEngine
 		ECB_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:609
+	
 	public enum ECollisionChannel : byte
 	{
 		ECC_WorldStatic,
@@ -145,6 +173,8 @@ namespace UnrealEngine
 		ECC_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:773
+	
 	public enum ECollisionResponse : byte
 	{
 		ECR_Ignore,
@@ -153,6 +183,8 @@ namespace UnrealEngine
 		ECR_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:30
+	
 	public enum EComponentCreationMethod : byte
 	{
 		Native,
@@ -161,6 +193,8 @@ namespace UnrealEngine
 		Instance,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:99
+	
 	public enum EConsoleType : byte
 	{
 		CONSOLE_Any,
@@ -168,6 +202,8 @@ namespace UnrealEngine
 		CONSOLE_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Scene.h:22
+	
 	public enum EDepthOfFieldMethod : byte
 	{
 		DOFM_BokehDOF,
@@ -176,12 +212,16 @@ namespace UnrealEngine
 		DOFM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:117
+	
 	public enum EDetachmentRule : byte
 	{
 		KeepRelative,
 		KeepWorld,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:51
+	
 	public enum EDetailMode : byte
 	{
 		DM_Low,
@@ -190,6 +230,8 @@ namespace UnrealEngine
 		DM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:783
+	
 	public enum EFilterInterpolationType : byte
 	{
 		BSIT_Average,
@@ -198,6 +240,8 @@ namespace UnrealEngine
 		BSIT_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:836
+	
 	public enum EFlushLevelStreamingType : byte
 	{
 		None,
@@ -205,6 +249,8 @@ namespace UnrealEngine
 		Visibility,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:65
+	
 	public enum EFullyLoadPackageType : byte
 	{
 		FULLYLOAD_Map,
@@ -215,6 +261,8 @@ namespace UnrealEngine
 		FULLYLOAD_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:49
+	
 	public enum EGetWorldErrorMode : byte
 	{
 		ReturnNull,
@@ -229,6 +277,8 @@ namespace UnrealEngine
 	/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
 	/// <para>@see MaxSimulationTimeStep, bForceSubStepping </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\ProjectileMovementComponent.h:230
+	
 	public enum EHandleBlockingHitResult : byte
 	{
 		Deflect,
@@ -236,6 +286,8 @@ namespace UnrealEngine
 		Abort,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TextRenderComponent.h:17
+	
 	public enum EHorizTextAligment : byte
 	{
 		EHTA_Left,
@@ -243,6 +295,8 @@ namespace UnrealEngine
 		EHTA_Right,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:203
+	
 	public enum EIndirectLightingCacheQuality : byte
 	{
 		ILCQ_Off,
@@ -250,6 +304,8 @@ namespace UnrealEngine
 		ILCQ_Volume,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:793
+	
 	public enum EInputConsumeOptions : byte
 	{
 		ICO_ConsumeAll = 0,
@@ -258,6 +314,8 @@ namespace UnrealEngine
 		ICO_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:26
+	
 	public enum EInputEvent : byte
 	{
 		IE_Pressed = 0,
@@ -268,6 +326,8 @@ namespace UnrealEngine
 		IE_MAX = 5,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\InterpToMovementComponent.h:14
+	
 	public enum EInterpToBehaviourType : byte
 	{
 		OneShot,
@@ -276,6 +336,8 @@ namespace UnrealEngine
 		PingPong,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3885
+	
 	public enum ELevelCollectionType : byte
 	{
 		DynamicSourceLevels,
@@ -283,6 +345,8 @@ namespace UnrealEngine
 		StaticLevels,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:63
+	
 	public enum ELevelTick : byte
 	{
 		LEVELTICK_TimeOnly = 0,
@@ -291,6 +355,8 @@ namespace UnrealEngine
 		LEVELTICK_PauseTick = 3,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:485
+	
 	public enum ELightingBuildQuality : byte
 	{
 		Quality_Preview,
@@ -300,6 +366,8 @@ namespace UnrealEngine
 		Quality_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1793
+	
 	public enum ELightMapPaddingType : byte
 	{
 		LMPT_NormalPadding,
@@ -307,6 +375,8 @@ namespace UnrealEngine
 		LMPT_NoPadding,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:469
+	
 	public enum EMaterialSamplerType : byte
 	{
 		SAMPLERTYPE_Color,
@@ -320,6 +390,8 @@ namespace UnrealEngine
 		SAMPLERTYPE_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:438
+	
 	public enum EMaterialShadingModel : byte
 	{
 		MSM_Unlit,
@@ -335,6 +407,8 @@ namespace UnrealEngine
 		MSM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:456
+	
 	public enum EMaterialTessellationMode : byte
 	{
 		MTM_NoTessellation,
@@ -343,12 +417,16 @@ namespace UnrealEngine
 		MTM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3875
+	
 	public enum EMeshBufferAccess : byte
 	{
 		Default,
 		ForceCPUAndGPU,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:37
+	
 	public enum EMouseCaptureMode : byte
 	{
 		NoCapture,
@@ -358,6 +436,8 @@ namespace UnrealEngine
 		CaptureDuringRightMouseDown,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:52
+	
 	public enum EMouseLockMode : byte
 	{
 		DoNotLock,
@@ -365,6 +445,8 @@ namespace UnrealEngine
 		LockAlways,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:76
+	
 	public enum EMoveComponentFlags : byte
 	{
 		MOVECOMP_NoFlags = 0x0000,
@@ -374,6 +456,8 @@ namespace UnrealEngine
 		MOVECOMP_DisableBlockingOverlapDispatch = 0x0008,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:521
+	
 	public enum EMovementMode : byte
 	{
 		MOVE_None,
@@ -386,6 +470,8 @@ namespace UnrealEngine
 		MOVE_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2727
+	
 	public enum ENetDormancy : byte
 	{
 		DORM_Never,
@@ -396,6 +482,8 @@ namespace UnrealEngine
 		DORN_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:876
+	
 	public enum ENetMode : byte
 	{
 		NM_Standalone,
@@ -405,6 +493,8 @@ namespace UnrealEngine
 		NM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2712
+	
 	public enum ENetRole : byte
 	{
 		ROLE_None,
@@ -414,6 +504,8 @@ namespace UnrealEngine
 		ROLE_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:554
+	
 	public enum ENetworkSmoothingMode : byte
 	{
 		Disabled,
@@ -422,6 +514,8 @@ namespace UnrealEngine
 		Replay,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:678
+	
 	public enum EObjectTypeQuery : byte
 	{
 		ObjectTypeQuery1,
@@ -459,6 +553,8 @@ namespace UnrealEngine
 		ObjectTypeQuery_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:214
+	
 	public enum EOcclusionCombineMode : byte
 	{
 		OCM_Minimum,
@@ -466,12 +562,16 @@ namespace UnrealEngine
 		OCM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2233
+	
 	public enum EOptimizeMode : byte
 	{
 		TrailMode,
 		LookAheadMode,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:666
+	
 	public enum EOverlapFilterOption : byte
 	{
 		OverlapFilter_All,
@@ -479,6 +579,8 @@ namespace UnrealEngine
 		OverlapFilter_StaticOnly,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkinnedMeshComponent.h:48
+	
 	public enum EPhysBodyOp : byte
 	{
 		PBO_None,
@@ -486,6 +588,8 @@ namespace UnrealEngine
 		PBO_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3319
+	
 	public enum EPhysicalSurface : byte
 	{
 		SurfaceType_Default,
@@ -554,6 +658,8 @@ namespace UnrealEngine
 		SurfaceType_Max,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:759
+	
 	public enum EPhysicsSceneType : byte
 	{
 		PST_Sync,
@@ -566,6 +672,8 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>static variable for default data to be used without reconstructing everytime </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1087
+	
 	public enum ERadialImpulseFalloff : byte
 	{
 		RIF_Constant,
@@ -577,18 +685,24 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Encodes the full HDR data of FullHDRData. </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ReflectionCaptureComponent.h:146
+	
 	public enum EReflectionSourceType : byte
 	{
 		CapturedScene,
 		SpecifiedCubemap,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:300
+	
 	public enum ERefractionMode : byte
 	{
 		RM_IndexOfRefraction,
 		RM_PixelNormalOffset,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:61
+	
 	public enum ERelativeTransformSpace : byte
 	{
 		RTS_World,
@@ -597,6 +711,8 @@ namespace UnrealEngine
 		RTS_ParentBoneSpace,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PrimitiveComponent.h:89
+	
 	public enum ERendererStencilMask : byte
 	{
 		ERSM_Default,
@@ -611,12 +727,16 @@ namespace UnrealEngine
 		ERSM_128,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2854
+	
 	public enum ERotatorQuantization : byte
 	{
 		ByteComponents,
 		ShortComponents,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:243
+	
 	public enum ESamplerSourceMode : byte
 	{
 		SSM_FromTextureAsset,
@@ -624,6 +744,8 @@ namespace UnrealEngine
 		SSM_Clamp_WorldGroupSettings,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:351
+	
 	public enum ESceneCaptureCompositeMode : byte
 	{
 		SCCM_Overwrite,
@@ -631,6 +753,8 @@ namespace UnrealEngine
 		SCCM_Composite,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponent.h:47
+	
 	public enum ESceneCapturePrimitiveRenderMode : byte
 	{
 		PRM_LegacySceneCapture,
@@ -638,6 +762,8 @@ namespace UnrealEngine
 		PRM_UseShowOnlyList,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:338
+	
 	public enum ESceneCaptureSource : byte
 	{
 		SCS_SceneColorHDR,
@@ -650,6 +776,8 @@ namespace UnrealEngine
 		SCS_BaseColor,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:192
+	
 	public enum ESceneDepthPriorityGroup : byte
 	{
 		SDPG_World,
@@ -657,18 +785,24 @@ namespace UnrealEngine
 		SDPG_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1803
+	
 	public enum EShadowMapFlags : byte
 	{
 		SMF_None = 0,
 		SMF_Streamed = 0x00000001,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ShapeComponent.h:105
+	
 	public enum EShapeBodySetupHelper : byte
 	{
 		InvalidateSharingIfStale,
 		UpdateBodySetup,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkyLightComponent.h:89
+	
 	public enum ESkyLightSourceType : byte
 	{
 		SLS_CapturedScene,
@@ -676,6 +810,8 @@ namespace UnrealEngine
 		SLS_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1099
+	
 	public enum ESleepFamily : byte
 	{
 		Normal,
@@ -683,6 +819,8 @@ namespace UnrealEngine
 		Custom,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3818
+	
 	public enum ESpawnActorCollisionHandlingMethod : byte
 	{
 		Undefined,
@@ -692,6 +830,8 @@ namespace UnrealEngine
 		DontSpawnIfColliding,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\StereoLayerComponent.h:30
+	
 	public enum EStereoLayerShape : byte
 	{
 		SLSH_QuadLayer,
@@ -700,6 +840,8 @@ namespace UnrealEngine
 		SLSH_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\StereoLayerComponent.h:14
+	
 	public enum EStereoLayerType : byte
 	{
 		SLT_WorldLocked,
@@ -712,6 +854,8 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Flags controlling how this tag should be shown in the UI </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Object.h:605
+	
 	public enum ETagDisplay : byte
 	{
 		TD_None = 0,
@@ -725,6 +869,8 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Enum specifying the type of this tag </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Object.h:590
+	
 	public enum ETagType : byte
 	{
 		TT_Hidden,
@@ -734,12 +880,16 @@ namespace UnrealEngine
 		TT_Chronological,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2102
+	
 	public enum ETeleportType : byte
 	{
 		None,
 		TeleportPhysics,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:77
+	
 	public enum ETickingGroup : byte
 	{
 		TG_PrePhysics,
@@ -757,6 +907,8 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Cache whether this function was rescheduled as an interval function during StartParallel </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:228
+	
 	public enum ETickState : byte
 	{
 		Disabled,
@@ -764,12 +916,16 @@ namespace UnrealEngine
 		CoolingDown,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TimelineComponent.h:34
+	
 	public enum ETimelineLengthMode : byte
 	{
 		TL_TimelineLength,
 		TL_LastKeyFrame,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1112
+	
 	public enum ETimelineSigType : byte
 	{
 		ETS_EventSignature,
@@ -780,6 +936,8 @@ namespace UnrealEngine
 		ETS_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:718
+	
 	public enum ETraceTypeQuery : byte
 	{
 		TraceTypeQuery1,
@@ -817,6 +975,8 @@ namespace UnrealEngine
 		TraceTypeQuery_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:417
+	
 	public enum ETrailWidthMode : byte
 	{
 		ETrailWidthMode_FromCentre,
@@ -824,6 +984,8 @@ namespace UnrealEngine
 		ETrailWidthMode_FromSecond,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:85
+	
 	public enum ETransitionType : byte
 	{
 		TT_None,
@@ -836,6 +998,8 @@ namespace UnrealEngine
 		TT_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:255
+	
 	public enum ETranslucencyLightingMode : byte
 	{
 		TLM_VolumetricNonDirectional,
@@ -847,6 +1011,8 @@ namespace UnrealEngine
 		TLM_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:693
+	
 	public enum ETravelType : byte
 	{
 		TRAVEL_Absolute,
@@ -855,6 +1021,8 @@ namespace UnrealEngine
 		TRAVEL_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:510
+	
 	public enum ETriangleSortAxis : byte
 	{
 		TSA_X_Axis,
@@ -863,6 +1031,8 @@ namespace UnrealEngine
 		TSA_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:496
+	
 	public enum ETriangleSortOption : byte
 	{
 		TRISORT_None,
@@ -874,6 +1044,8 @@ namespace UnrealEngine
 		TRISORT_MAX,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2214
+	
 	public enum EUpdateRateShiftBucket : byte
 	{
 		ShiftBucket0 = 0,
@@ -885,6 +1057,8 @@ namespace UnrealEngine
 		ShiftBucketMax,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:44
+	
 	public enum EUpdateTransformFlags : byte
 	{
 		None = 0x0,
@@ -892,6 +1066,8 @@ namespace UnrealEngine
 		PropagateFromParent = 0x2,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3833
+	
 	public enum EUserActivityContext : byte
 	{
 		Game,
@@ -899,6 +1075,8 @@ namespace UnrealEngine
 		Other,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:2843
+	
 	public enum EVectorQuantization : byte
 	{
 		RoundWholeNumber,
@@ -906,6 +1084,8 @@ namespace UnrealEngine
 		RoundTwoDecimals,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TextRenderComponent.h:28
+	
 	public enum EVerticalTextAligment : byte
 	{
 		EVRTA_TextTop,
@@ -914,6 +1094,8 @@ namespace UnrealEngine
 		EVRTA_QuadTop,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineBaseTypes.h:901
+	
 	public enum EViewModeIndex : byte
 	{
 		VMI_BrushWireframe = 0,
@@ -948,6 +1130,8 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Enum that dictates what propagation policy to follow when calling SetVisibility or SetHiddenInGame recursively </para>
 	/// </summary>
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:767
+	
 	public enum EVisibilityPropagation : byte
 	{
 		NoPropagation,
@@ -955,6 +1139,8 @@ namespace UnrealEngine
 		Propagate,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3093
+	
 	public enum EWalkableSlopeBehavior : byte
 	{
 		WalkableSlope_Default,
@@ -964,6 +1150,8 @@ namespace UnrealEngine
 		WalkableSlope_Max,
 	}
 
+	// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\WindDirectionalSourceComponent.h:12
+	
 	public enum EWindSourceType : byte
 	{
 		Directional,

@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:164
+
 namespace UnrealEngine
 {
 	public  partial class FBasedMovementInfo : NativeStructWrapper

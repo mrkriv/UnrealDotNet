@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/SceneComponent.h"
 #include "ManageSceneComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneComponent : public USceneComponent
 {

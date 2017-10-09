@@ -11,8 +11,6 @@ namespace Generator.Metadata
         public override bool IsTemplate => TemplateTypes.Any();
 
         public Type NamespaceBaseType { get; set; }
-        public string SourceFile { get; set; }
-        public int SourceLine { get; set; }
         public Domain Domain { get; set; }
 
         public List<Variable> TemplateTypes { get; set; }

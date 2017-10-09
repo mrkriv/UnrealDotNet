@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\MeshComponent.h:20
+
 namespace UnrealEngine
 {
 	public  partial class UMeshComponent : UPrimitiveComponent

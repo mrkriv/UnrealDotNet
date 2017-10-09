@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Math/Range.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Range.h:48
+
 extern "C"
 {
 	

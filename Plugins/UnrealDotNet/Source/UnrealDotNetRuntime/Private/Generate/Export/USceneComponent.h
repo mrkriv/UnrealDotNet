@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/SceneComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
+
 class E_PROTECTED_WRAP_USceneComponent : protected USceneComponent
 {
 public:

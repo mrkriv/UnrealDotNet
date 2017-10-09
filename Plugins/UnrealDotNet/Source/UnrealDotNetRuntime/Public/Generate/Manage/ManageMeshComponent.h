@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/MeshComponent.h"
 #include "ManageMeshComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\MeshComponent.h:20
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageMeshComponent : public UMeshComponent
 {

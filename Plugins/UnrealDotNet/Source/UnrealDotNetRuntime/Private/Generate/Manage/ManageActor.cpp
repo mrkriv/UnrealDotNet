@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
+
 void AManageActor::BeginPlay()
 {
 	if (!ManageClassName.FullName.IsEmpty())

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Engine/Engine.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:585
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_UEngine_bIsInitialized_GET(UEngine* Ptr) { return Ptr->bIsInitialized; }

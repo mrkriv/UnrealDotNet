@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:585
+
 void UManageEngine::PreExit()
 {
 	Super::PreExit();

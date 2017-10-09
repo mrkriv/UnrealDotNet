@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/Character.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+
 class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 {
 public:

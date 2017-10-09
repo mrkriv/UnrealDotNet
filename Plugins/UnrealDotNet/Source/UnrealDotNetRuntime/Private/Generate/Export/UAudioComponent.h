@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/AudioComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\AudioComponent.h:90
+
 class E_PROTECTED_WRAP_UAudioComponent : protected UAudioComponent
 {
 public:

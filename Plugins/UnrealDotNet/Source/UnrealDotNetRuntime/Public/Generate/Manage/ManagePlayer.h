@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Engine/Player.h"
 #include "ManagePlayer.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Player.h:17
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePlayer : public UPlayer
 {

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/LightComponentBase.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LightComponentBase.h:14
+
 extern "C"
 {
 	

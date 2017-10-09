@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PrimitiveComponent.h:170
+
 void UManagePrimitiveComponent::AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange)
 {
 	Super::AddAngularImpulse(Impulse, BoneName, bVelChange);

@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Box2D.h:14
+
 namespace UnrealEngine
 {
 	public  partial class FBox2D : NativeStructWrapper

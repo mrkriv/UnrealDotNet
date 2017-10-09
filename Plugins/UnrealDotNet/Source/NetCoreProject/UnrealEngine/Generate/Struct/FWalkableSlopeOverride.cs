@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3124
+
 namespace UnrealEngine
 {
 	public  partial class FWalkableSlopeOverride : NativeStructWrapper

@@ -29,7 +29,7 @@ namespace Generator
         protected const string CPP_PCH = "UnrealDotNetRuntime";
         protected const string CPP_API = "DOTNET_EXPORT";
         protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";
-        protected const bool WriteSourceFileName = true;
+        protected const bool IsWriteSourceFileName = true;
 
         protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
         protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");
@@ -60,6 +60,15 @@ namespace Generator
                 signature = "_" + signature;
 
             return $"{ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
+        }
+
+        private static void GenerateSourceInfo(CoreWriter cw, Primitive primitive)
+        {
+            if (IsWriteSourceFileName)
+            {
+                cw.WriteLine($"// Source file {primitive.SourceFile}:{primitive.SourceLine}");
+                cw.WriteLine();
+            }
         }
     }
 }

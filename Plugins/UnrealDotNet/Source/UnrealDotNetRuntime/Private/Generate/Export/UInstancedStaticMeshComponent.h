@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/InstancedStaticMeshComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\InstancedStaticMeshComponent.h:101
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_UInstancedStaticMeshComponent_bPerInstanceRenderDataWasPrebuilt_GET(UInstancedStaticMeshComponent* Ptr) { return Ptr->bPerInstanceRenderDataWasPrebuilt; }

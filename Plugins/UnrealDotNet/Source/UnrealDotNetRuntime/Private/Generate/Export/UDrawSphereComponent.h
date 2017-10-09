@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/DrawSphereComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DrawSphereComponent.h:18
+
 extern "C"
 {
 	

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/LightComponent.h"
 #include "ManageLightComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LightComponent.h:40
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageLightComponent : public ULightComponent
 {

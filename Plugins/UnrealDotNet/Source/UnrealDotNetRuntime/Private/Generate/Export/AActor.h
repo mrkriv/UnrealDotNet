@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/Actor.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
+
 class E_PROTECTED_WRAP_AActor : protected AActor
 {
 public:

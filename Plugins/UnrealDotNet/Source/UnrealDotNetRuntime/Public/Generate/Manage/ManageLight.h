@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Engine/Light.h"
 #include "ManageLight.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Light.h:13
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageLight : public ALight
 {

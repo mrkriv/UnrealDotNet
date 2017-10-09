@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "UObject/UObjectBaseUtility.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\UObject\UObjectBaseUtility.h:23
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_UObjectBaseUtility_AddToRoot(UObjectBaseUtility* Self)

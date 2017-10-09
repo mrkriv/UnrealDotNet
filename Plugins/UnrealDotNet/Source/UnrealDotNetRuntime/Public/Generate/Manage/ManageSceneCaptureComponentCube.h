@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/SceneCaptureComponentCube.h"
 #include "ManageSceneCaptureComponentCube.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponentCube.h:17
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneCaptureComponentCube : public USceneCaptureComponentCube
 {

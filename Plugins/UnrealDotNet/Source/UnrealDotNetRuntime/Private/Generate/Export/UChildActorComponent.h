@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/ChildActorComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ChildActorComponent.h:44
+
 extern "C"
 {
 	

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/SkyLightComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkyLightComponent.h:99
+
 class E_PROTECTED_WRAP_USkyLightComponent : protected USkyLightComponent
 {
 public:

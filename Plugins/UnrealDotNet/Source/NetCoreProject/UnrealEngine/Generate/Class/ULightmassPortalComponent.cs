@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LightmassPortalComponent.h:12
+
 namespace UnrealEngine
 {
 	public  partial class ULightmassPortalComponent : USceneComponent

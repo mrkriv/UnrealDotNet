@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/PoseableMeshComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PoseableMeshComponent.h:17
+
 extern "C"
 {
 	

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Engine/Light.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Light.h:13
+
 extern "C"
 {
 	

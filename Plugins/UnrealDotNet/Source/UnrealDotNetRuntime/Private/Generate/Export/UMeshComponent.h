@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/MeshComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\MeshComponent.h:20
+
 class E_PROTECTED_WRAP_UMeshComponent : protected UMeshComponent
 {
 public:

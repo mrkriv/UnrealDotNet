@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/ArrowComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ArrowComponent.h:19
+
 extern "C"
 {
 	

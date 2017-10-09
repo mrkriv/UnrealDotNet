@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkinnedMeshComponent.h:177
+
 namespace UnrealEngine
 {
 	public  partial class USkinnedMeshComponent : UMeshComponent

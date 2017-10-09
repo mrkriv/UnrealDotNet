@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponent2D.h:19
+
 namespace UnrealEngine
 {
 	public  partial class USceneCaptureComponent2D : USceneCaptureComponent

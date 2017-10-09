@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/DecalComponent.h"
 #include "ManageDecalComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DecalComponent.h:22
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageDecalComponent : public UDecalComponent
 {

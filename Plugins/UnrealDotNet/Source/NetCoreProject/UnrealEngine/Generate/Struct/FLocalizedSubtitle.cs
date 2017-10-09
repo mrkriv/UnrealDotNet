@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1486
+
 namespace UnrealEngine
 {
 	public  partial class FLocalizedSubtitle : NativeStructWrapper

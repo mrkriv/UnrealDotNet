@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/ReflectionCaptureComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ReflectionCaptureComponent.h:156
+
 extern "C"
 {
 	

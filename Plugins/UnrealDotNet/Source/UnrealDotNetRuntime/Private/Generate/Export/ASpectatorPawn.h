@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/SpectatorPawn.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpectatorPawn.h:16
+
 extern "C"
 {
 	

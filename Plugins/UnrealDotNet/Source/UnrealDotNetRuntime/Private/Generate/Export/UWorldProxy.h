@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Engine/World.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\World.h:79
+
 extern "C"
 {
 }

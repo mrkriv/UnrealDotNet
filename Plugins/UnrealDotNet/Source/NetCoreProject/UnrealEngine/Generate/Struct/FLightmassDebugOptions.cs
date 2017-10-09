@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:1662
+
 namespace UnrealEngine
 {
 	public  partial class FLightmassDebugOptions : NativeStructWrapper

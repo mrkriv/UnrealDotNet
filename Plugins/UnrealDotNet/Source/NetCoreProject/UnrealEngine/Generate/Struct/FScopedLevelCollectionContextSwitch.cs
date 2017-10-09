@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\World.h:683
+
 namespace UnrealEngine
 {
 	public  partial class FScopedLevelCollectionContextSwitch : NativeStructWrapper

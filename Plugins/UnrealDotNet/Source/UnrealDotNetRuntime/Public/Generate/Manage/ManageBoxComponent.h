@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/BoxComponent.h"
 #include "ManageBoxComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BoxComponent.h:17
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageBoxComponent : public UBoxComponent
 {

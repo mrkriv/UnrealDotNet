@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Quat.h:28
+
 namespace UnrealEngine
 {
 	public  partial class FQuat : NativeStructWrapper

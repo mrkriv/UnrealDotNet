@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/ActorComponent.h"
 #include "ManageActorComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:94
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageActorComponent : public UActorComponent
 {

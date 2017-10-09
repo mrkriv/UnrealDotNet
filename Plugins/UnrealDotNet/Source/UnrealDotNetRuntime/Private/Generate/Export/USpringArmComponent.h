@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "GameFramework/SpringArmComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpringArmComponent.h:19
+
 class E_PROTECTED_WRAP_USpringArmComponent : protected USpringArmComponent
 {
 public:

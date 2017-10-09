@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/MaterialBillboardComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\MaterialBillboardComponent.h:61
+
 extern "C"
 {
 	

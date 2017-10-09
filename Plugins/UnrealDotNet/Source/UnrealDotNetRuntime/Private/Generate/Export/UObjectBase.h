@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "UObject/UObjectBase.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\UObject\UObjectBase.h:16
+
 class E_PROTECTED_WRAP_UObjectBase : protected UObjectBase
 {
 public:

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/PoseableMeshComponent.h"
 #include "ManagePoseableMeshComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PoseableMeshComponent.h:17
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePoseableMeshComponent : public UPoseableMeshComponent
 {

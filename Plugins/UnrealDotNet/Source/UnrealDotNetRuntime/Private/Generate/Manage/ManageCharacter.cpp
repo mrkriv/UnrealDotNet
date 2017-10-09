@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+
 void AManageCharacter::BaseChange()
 {
 	Super::BaseChange();

@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/DestructibleComponent.h"
 #include "ManageDestructibleComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DestructibleComponent.h:57
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageDestructibleComponent : public UDestructibleComponent
 {

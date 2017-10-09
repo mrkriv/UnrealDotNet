@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Pawn.h:37
+
 void AManagePawn::AddControllerPitchInput(float Val)
 {
 	Super::AddControllerPitchInput(Val);

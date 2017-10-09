@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+
 void AManageHUD::DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation)
 {
 	Super::DrawActorOverlays(Viewpoint, ViewRotation);

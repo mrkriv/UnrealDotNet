@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "GameFramework/Character.h"
 #include "ManageCharacter.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageCharacter : public ACharacter
 {

@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkinnedMeshComponent.h:177
+
 void UManageSkinnedMeshComponent::ClearRefPoseOverride()
 {
 	Super::ClearRefPoseOverride();

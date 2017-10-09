@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/BrushComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BrushComponent.h:21
+
 extern "C"
 {
 	

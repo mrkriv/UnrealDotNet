@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/ShapeComponent.h"
 #include "ManageShapeComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ShapeComponent.h:24
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageShapeComponent : public UShapeComponent
 {

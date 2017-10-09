@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Engine/EngineTypes.h"
 #include "ManageEngineTypes.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\EngineTypes.h:3422
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageEngineTypes : public UEngineTypes
 {

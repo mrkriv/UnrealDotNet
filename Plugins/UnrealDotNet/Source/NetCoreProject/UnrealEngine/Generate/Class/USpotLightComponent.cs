@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SpotLightComponent.h:16
+
 namespace UnrealEngine
 {
 	public  partial class USpotLightComponent : UPointLightComponent

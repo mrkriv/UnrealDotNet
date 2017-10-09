@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Engine/World.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\World.h:715
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_UWorld_AudioTimeSeconds_GET(UWorld* Ptr) { return Ptr->AudioTimeSeconds; }

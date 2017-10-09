@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "GameFramework/Actor.h"
 #include "ManageActor.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor
 {

@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:109
+
 namespace UnrealEngine
 {
 	public  partial class FFullyLoadedPackagesInfo : NativeStructWrapper

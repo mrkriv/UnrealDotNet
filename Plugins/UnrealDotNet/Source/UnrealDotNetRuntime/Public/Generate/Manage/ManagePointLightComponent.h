@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Components/PointLightComponent.h"
 #include "ManagePointLightComponent.generated.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PointLightComponent.h:18
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePointLightComponent : public UPointLightComponent
 {

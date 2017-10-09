@@ -5,6 +5,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ManagerObject.h"
 #include "Components/TimelineComponent.h"
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TimelineComponent.h:391
+
 extern "C"
 {
 	

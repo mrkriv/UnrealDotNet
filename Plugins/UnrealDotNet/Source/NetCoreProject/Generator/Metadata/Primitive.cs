@@ -14,6 +14,9 @@ namespace Generator.Metadata
         public string Description { get; set; }
         public string Name { get; set; }
 
+        public string SourceFile { get; set; }
+        public int SourceLine { get; set; }
+
         protected Primitive()
         {
             AccessModifier = AccessModifier.Public;

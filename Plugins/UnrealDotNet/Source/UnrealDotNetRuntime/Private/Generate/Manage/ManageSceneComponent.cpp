@@ -3,6 +3,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
+
 void UManageSceneComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
 	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
