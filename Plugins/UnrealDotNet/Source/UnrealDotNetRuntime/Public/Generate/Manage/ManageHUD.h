@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "GameFramework/HUD.h"
+#include "Engine/Classes/GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD

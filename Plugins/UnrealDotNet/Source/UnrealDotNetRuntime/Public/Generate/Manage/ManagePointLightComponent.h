@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/PointLightComponent.h"
+#include "Engine/Classes/Components/PointLightComponent.h"
 #include "ManagePointLightComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PointLightComponent.h:18
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PointLightComponent.h:18
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePointLightComponent : public UPointLightComponent

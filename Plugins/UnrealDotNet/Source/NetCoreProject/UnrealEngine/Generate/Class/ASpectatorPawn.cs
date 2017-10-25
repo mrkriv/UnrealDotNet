@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpectatorPawn.h:16
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\SpectatorPawn.h:16
 
 namespace UnrealEngine
 {

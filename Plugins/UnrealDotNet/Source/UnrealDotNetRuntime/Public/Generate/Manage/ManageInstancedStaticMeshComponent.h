@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/InstancedStaticMeshComponent.h"
+#include "Engine/Classes/Components/InstancedStaticMeshComponent.h"
 #include "ManageInstancedStaticMeshComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\InstancedStaticMeshComponent.h:101
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\InstancedStaticMeshComponent.h:101
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageInstancedStaticMeshComponent : public UInstancedStaticMeshComponent

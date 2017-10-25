@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/DecalComponent.h"
+#include "Engine/Classes/Components/DecalComponent.h"
 #include "ManageDecalComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DecalComponent.h:22
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageDecalComponent : public UDecalComponent

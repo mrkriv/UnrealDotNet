@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/PlanarReflectionComponent.h"
+#include "Engine/Classes/Components/PlanarReflectionComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PlanarReflectionComponent.h:16
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PlanarReflectionComponent.h:16
 
 extern "C"
 {

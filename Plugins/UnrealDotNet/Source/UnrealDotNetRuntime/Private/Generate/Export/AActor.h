@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "GameFramework/Actor.h"
+#include "Engine/Classes/GameFramework/Actor.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
 
 class E_PROTECTED_WRAP_AActor : protected AActor
 {

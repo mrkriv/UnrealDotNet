@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/SceneCaptureComponentCube.h"
+#include "Engine/Classes/Components/SceneCaptureComponentCube.h"
 #include "ManageSceneCaptureComponentCube.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponentCube.h:17
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponentCube.h:17
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneCaptureComponentCube : public USceneCaptureComponentCube

@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "GameFramework/HUD.h"
+#include "Engine/Classes/GameFramework/HUD.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 class E_PROTECTED_WRAP_AHUD : protected AHUD
 {

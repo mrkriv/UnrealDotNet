@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/BillboardComponent.h"
+#include "Engine/Classes/Components/BillboardComponent.h"
 #include "ManageBillboardComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BillboardComponent.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\BillboardComponent.h:19
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageBillboardComponent : public UBillboardComponent

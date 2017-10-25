@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Pawn.h:37
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 namespace UnrealEngine
 {
@@ -90,6 +90,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetMovementComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
@@ -378,6 +381,13 @@ namespace UnrealEngine
 		/// </summary>
 		public AActor GetMovementBaseActor(APawn Pawn)
 			=> E_APawn_GetMovementBaseActor(this, Pawn);
+		
+		
+		/// <summary>
+		/// <para>Return our PawnMovementComponent, if we have one. By default, returns the first PawnMovementComponent found. Native classes that create their own movement component should override this method for more efficiency. </para>
+		/// </summary>
+		public virtual UPawnMovementComponent GetMovementComponent()
+			=> E_APawn_GetMovementComponent(this);
 		
 		
 		/// <summary>

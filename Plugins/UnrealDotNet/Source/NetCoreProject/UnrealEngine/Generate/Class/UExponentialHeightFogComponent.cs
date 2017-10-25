@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ExponentialHeightFogComponent.h:15
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:15
 
 namespace UnrealEngine
 {

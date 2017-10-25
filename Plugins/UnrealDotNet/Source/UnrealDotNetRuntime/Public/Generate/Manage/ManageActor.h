@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "GameFramework/Actor.h"
+#include "Engine/Classes/GameFramework/Actor.h"
 #include "ManageActor.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Actor.h:80
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor

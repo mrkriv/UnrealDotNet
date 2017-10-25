@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/SkinnedMeshComponent.h"
+#include "Engine/Classes/Components/SkinnedMeshComponent.h"
 #include "ManageSkinnedMeshComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SkinnedMeshComponent.h:177
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:177
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSkinnedMeshComponent : public USkinnedMeshComponent

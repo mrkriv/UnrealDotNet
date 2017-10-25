@@ -14,10 +14,10 @@ namespace Generator
 {
     internal class ParceManager
     {
-        public static Domain Parce(string[] files)
+        public static Domain Parce(IReadOnlyList<string> files)
         {
             var Types = new ConcurrentDictionary<string, Type>();
-            var mult = Environment.ProcessorCount;
+            var mult = 1;
             var tasks = new List<Task>();
 
             var Watch = new Stopwatch();

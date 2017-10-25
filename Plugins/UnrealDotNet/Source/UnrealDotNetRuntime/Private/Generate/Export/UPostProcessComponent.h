@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/PostProcessComponent.h"
+#include "Engine/Classes/Components/PostProcessComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PostProcessComponent.h:21
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PostProcessComponent.h:21
 
 extern "C"
 {

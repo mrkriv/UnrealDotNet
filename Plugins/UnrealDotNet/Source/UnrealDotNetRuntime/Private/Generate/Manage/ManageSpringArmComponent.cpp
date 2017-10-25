@@ -3,7 +3,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpringArmComponent.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
 
 void UManageSpringArmComponent::UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime)
 {

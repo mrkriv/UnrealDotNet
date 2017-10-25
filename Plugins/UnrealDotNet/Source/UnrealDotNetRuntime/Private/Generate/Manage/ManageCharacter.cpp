@@ -3,7 +3,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
 
 void AManageCharacter::ApplyDamageMomentum(float DamageTaken, const FDamageEvent& DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
 {

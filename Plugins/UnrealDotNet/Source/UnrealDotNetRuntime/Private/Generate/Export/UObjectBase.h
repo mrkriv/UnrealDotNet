@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "UObject/UObjectBase.h"
+#include "CoreUObject/Public/UObject/UObjectBase.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\UObject\UObjectBase.h:16
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBase.h:16
 
 class E_PROTECTED_WRAP_UObjectBase : protected UObjectBase
 {

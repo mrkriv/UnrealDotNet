@@ -1,7 +1,9 @@
 ﻿using Antlr4.Runtime;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -10,6 +12,7 @@ namespace Generator
     internal static class Program
     {
         private static readonly Stopwatch Watch = new Stopwatch();
+        private const string HeaderScanListFile = @"..\\..\\..\\Config\\HeaderScanList.txt";
 
         public static void Main(string[] args)
         {
@@ -21,8 +24,8 @@ namespace Generator
             }
 
             var output = Path.Combine(args[0], "Source");
-            var files = Directory.GetFiles(args[1], "*.h", SearchOption.AllDirectories);
-            
+            var files = GetScanFiles(args[1]);
+
             if (!Directory.Exists(output))
             {
                 PrintError($"Project directory '{output}' is not exists");
@@ -38,6 +41,32 @@ namespace Generator
             Console.WriteLine();
             domain.PrintTotal();
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
+        }
+
+        private static List<string> GetScanFiles(string PathToEngine)
+        {
+            var scanMasks = File.ReadAllLines(HeaderScanListFile)
+                .Where(x => !x.StartsWith("//") && x.Any());
+
+            var include = scanMasks.Where(x => !x.StartsWith("~"));
+            var exclude = scanMasks.Where(x => x.StartsWith("~"));
+
+            var files = new List<string>();
+
+            foreach (var path in include)
+            {
+                files.AddRange(Directory.GetFiles(PathToEngine, path, SearchOption.AllDirectories));
+            }
+
+            foreach (var path in exclude)
+            {
+                foreach (var file in Directory.GetFiles(PathToEngine, path, SearchOption.AllDirectories))
+                {
+                    files.Remove(file);
+                }
+            }
+
+            return files.Distinct().ToList();
         }
 
         private static void PrintError(string msg)

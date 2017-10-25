@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/VectorFieldComponent.h"
+#include "Engine/Classes/Components/VectorFieldComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\VectorFieldComponent.h:18
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\VectorFieldComponent.h:18
 
 extern "C"
 {

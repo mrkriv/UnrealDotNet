@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/LightmassPortalComponent.h"
+#include "Engine/Classes/Components/LightmassPortalComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\LightmassPortalComponent.h:12
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\LightmassPortalComponent.h:12
 
 extern "C"
 {

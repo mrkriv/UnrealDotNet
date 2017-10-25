@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/DestructibleComponent.h"
+#include "Engine/Classes/Components/DestructibleComponent.h"
 #include "ManageDestructibleComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DestructibleComponent.h:57
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\DestructibleComponent.h:57
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageDestructibleComponent : public UDestructibleComponent

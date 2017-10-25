@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/SceneCaptureComponent2D.h"
+#include "Engine/Classes/Components/SceneCaptureComponent2D.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneCaptureComponent2D.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent2D.h:19
 
 extern "C"
 {

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/SceneComponent.h"
+#include "Engine/Classes/Components/SceneComponent.h"
 #include "ManageSceneComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneComponent : public USceneComponent

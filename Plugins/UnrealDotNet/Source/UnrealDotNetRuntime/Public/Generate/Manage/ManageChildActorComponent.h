@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/ChildActorComponent.h"
+#include "Engine/Classes/Components/ChildActorComponent.h"
 #include "ManageChildActorComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ChildActorComponent.h:44
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ChildActorComponent.h:44
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageChildActorComponent : public UChildActorComponent

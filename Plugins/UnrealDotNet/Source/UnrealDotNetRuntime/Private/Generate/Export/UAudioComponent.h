@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/AudioComponent.h"
+#include "Engine/Classes/Components/AudioComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\AudioComponent.h:90
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:90
 
 class E_PROTECTED_WRAP_UAudioComponent : protected UAudioComponent
 {

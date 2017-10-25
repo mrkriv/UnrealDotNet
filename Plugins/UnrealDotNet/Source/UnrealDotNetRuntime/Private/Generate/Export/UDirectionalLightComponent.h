@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/DirectionalLightComponent.h"
+#include "Engine/Classes/Components/DirectionalLightComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\DirectionalLightComponent.h:18
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\DirectionalLightComponent.h:18
 
 extern "C"
 {

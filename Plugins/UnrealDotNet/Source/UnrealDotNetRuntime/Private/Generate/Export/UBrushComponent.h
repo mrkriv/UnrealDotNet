@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/BrushComponent.h"
+#include "Engine/Classes/Components/BrushComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BrushComponent.h:21
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\BrushComponent.h:21
 
 extern "C"
 {

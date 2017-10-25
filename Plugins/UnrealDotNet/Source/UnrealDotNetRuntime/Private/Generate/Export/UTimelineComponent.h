@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/TimelineComponent.h"
+#include "Engine/Classes/Components/TimelineComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TimelineComponent.h:391
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TimelineComponent.h:391
 
 extern "C"
 {

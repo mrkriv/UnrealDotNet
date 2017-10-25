@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "GameFramework/SpringArmComponent.h"
+#include "Engine/Classes/GameFramework/SpringArmComponent.h"
 #include "ManageSpringArmComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SpringArmComponent.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSpringArmComponent : public USpringArmComponent

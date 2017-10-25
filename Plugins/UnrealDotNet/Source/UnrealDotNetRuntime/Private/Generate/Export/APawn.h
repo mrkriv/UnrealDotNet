@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "GameFramework/Pawn.h"
+#include "Engine/Classes/GameFramework/Pawn.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Pawn.h:37
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 class E_PROTECTED_WRAP_APawn : protected APawn
 {
@@ -126,6 +126,11 @@ extern "C"
 	{
 		auto _p0 = Pawn;
 		return ConvertToManage_ObjectPointerDescription(Self->GetMovementBaseActor(_p0));
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetMovementComponent(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetMovementComponent());
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetMovementInputVector(APawn* Self)

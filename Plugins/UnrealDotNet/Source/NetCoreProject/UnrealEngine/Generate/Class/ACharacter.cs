@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
 
 namespace UnrealEngine
 {
@@ -157,6 +157,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_ACharacter_GetCharacterMovement(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_ACharacter_GetJumpMaxHoldTime(IntPtr Self);
@@ -658,6 +661,13 @@ namespace UnrealEngine
 		/// </summary>
 		public UCapsuleComponent GetCapsuleComponent()
 			=> E_ACharacter_GetCapsuleComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Returns CharacterMovement subobject </para>
+		/// </summary>
+		public UCharacterMovementComponent GetCharacterMovement()
+			=> E_ACharacter_GetCharacterMovement(this);
 		
 		
 		/// <summary>

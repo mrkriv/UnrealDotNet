@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/TextRenderComponent.h"
+#include "Engine/Classes/Components/TextRenderComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TextRenderComponent.h:44
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:44
 
 extern "C"
 {

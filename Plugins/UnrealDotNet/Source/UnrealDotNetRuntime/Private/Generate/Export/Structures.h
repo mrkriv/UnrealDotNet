@@ -1,39 +1,41 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SkinnedMeshComponent.h"
-#include "Engine/EngineBaseTypes.h"
-#include "Engine/World.h"
-#include "Components/SkeletalMeshComponent.h"
-#include "Engine/EngineTypes.h"
-#include "Components/AudioComponent.h"
-#include "GameFramework/Character.h"
-#include "Components/LineBatchComponent.h"
-#include "Math/Box.h"
-#include "Math/Box2D.h"
-#include "Engine/Scene.h"
-#include "Engine/Engine.h"
-#include "Components/HierarchicalInstancedStaticMeshComponent.h"
-#include "Components/DestructibleComponent.h"
-#include "Components/SceneComponent.h"
-#include "Components/SceneCaptureComponent.h"
-#include "UObject/UObjectArray.h"
-#include "Components/InstancedStaticMeshComponent.h"
-#include "Components/InterpToMovementComponent.h"
-#include "Components/MaterialBillboardComponent.h"
-#include "Components/StaticMeshComponent.h"
-#include "Math/Plane.h"
-#include "Math/Quat.h"
-#include "Components/ReflectionCaptureComponent.h"
-#include "Components/PrimitiveComponent.h"
-#include "Math/Rotator.h"
-#include "Components/SplineComponent.h"
-#include "Components/SplineMeshComponent.h"
-#include "Components/TimelineComponent.h"
-#include "Math/TransformVectorized.h"
-#include "Math/Vector.h"
-#include "Math/Vector2D.h"
-#include "Math/Vector4.h"
+#include "Engine/Classes/Components/SkinnedMeshComponent.h"
+#include "Engine/Classes/Engine/EngineBaseTypes.h"
+#include "Engine/Classes/Engine/World.h"
+#include "Engine/Classes/Components/SkeletalMeshComponent.h"
+#include "Engine/Classes/Engine/EngineTypes.h"
+#include "Engine/Classes/Components/AudioComponent.h"
+#include "Engine/Classes/GameFramework/Character.h"
+#include "Engine/Classes/Components/LineBatchComponent.h"
+#include "Core/Public/Math/Box.h"
+#include "Core/Public/Math/Box2D.h"
+#include "Engine/Classes/Engine/Scene.h"
+#include "Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Engine/Classes/Engine/Engine.h"
+#include "Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Engine/Classes/Components/DestructibleComponent.h"
+#include "Engine/Classes/Components/SceneComponent.h"
+#include "Engine/Classes/Components/SceneCaptureComponent.h"
+#include "CoreUObject/Public/UObject/UObjectArray.h"
+#include "Engine/Classes/GameFramework/GameModeBase.h"
+#include "Engine/Classes/Components/InstancedStaticMeshComponent.h"
+#include "Engine/Classes/Components/InterpToMovementComponent.h"
+#include "Engine/Classes/Components/MaterialBillboardComponent.h"
+#include "Engine/Classes/Components/StaticMeshComponent.h"
+#include "Core/Public/Math/Plane.h"
+#include "Core/Public/Math/Quat.h"
+#include "Engine/Classes/Components/ReflectionCaptureComponent.h"
+#include "Engine/Classes/Components/PrimitiveComponent.h"
+#include "Core/Public/Math/Rotator.h"
+#include "Engine/Classes/Components/SplineComponent.h"
+#include "Engine/Classes/Components/SplineMeshComponent.h"
+#include "Engine/Classes/Components/TimelineComponent.h"
+#include "Core/Public/Math/TransformVectorized.h"
+#include "Core/Public/Math/Vector.h"
+#include "Core/Public/Math/Vector2D.h"
+#include "Core/Public/Math/Vector4.h"
 
 extern "C"
 {
@@ -574,6 +576,14 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FCanvasUVTri_V2_UV_SET(FCanvasUVTri* Ptr, INT_PTR Value) { Ptr->V2_UV = *(FVector2D*)Value; }
 	
 	
+	/*	FCharacterMovementComponentPostPhysicsTickFunction	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCharacterMovementComponentPostPhysicsTickFunction() { return (INT_PTR) new FCharacterMovementComponentPostPhysicsTickFunction(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCharacterMovementComponentPostPhysicsTickFunction_Target_GET(FCharacterMovementComponentPostPhysicsTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
+	DOTNET_EXPORT void E_PROP_FCharacterMovementComponentPostPhysicsTickFunction_Target_SET(FCharacterMovementComponentPostPhysicsTickFunction* Ptr, UCharacterMovementComponent* Value) { Ptr->Target = Value; }
+	
+	
 	/*	FClassRedirect	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FClassRedirect() { return (INT_PTR) new FClassRedirect(); }
@@ -998,6 +1008,52 @@ extern "C"
 	}
 
 	
+	/*	FFindFloorResult	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFindFloorResult() { return (INT_PTR) new FFindFloorResult(); }
+	
+	DOTNET_EXPORT auto E_PROP_FFindFloorResult_FloorDist_GET(FFindFloorResult* Ptr) { return Ptr->FloorDist; }
+	DOTNET_EXPORT void E_PROP_FFindFloorResult_FloorDist_SET(FFindFloorResult* Ptr, float Value) { Ptr->FloorDist = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFindFloorResult_HitResult_GET(FFindFloorResult* Ptr) { return (INT_PTR)&(Ptr->HitResult); }
+	DOTNET_EXPORT void E_PROP_FFindFloorResult_HitResult_SET(FFindFloorResult* Ptr, INT_PTR Value) { Ptr->HitResult = *(FHitResult*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFindFloorResult_LineDist_GET(FFindFloorResult* Ptr) { return Ptr->LineDist; }
+	DOTNET_EXPORT void E_PROP_FFindFloorResult_LineDist_SET(FFindFloorResult* Ptr, float Value) { Ptr->LineDist = Value; }
+	
+	DOTNET_EXPORT auto E_FFindFloorResult_Clear(FFindFloorResult* Self)
+	{
+		Self->Clear();
+	}
+
+	DOTNET_EXPORT auto E_FFindFloorResult_GetDistanceToFloor(FFindFloorResult* Self)
+	{
+		return Self->GetDistanceToFloor();
+	}
+
+	DOTNET_EXPORT auto E_FFindFloorResult_IsWalkableFloor(FFindFloorResult* Self)
+	{
+		return Self->IsWalkableFloor();
+	}
+
+	DOTNET_EXPORT auto E_FFindFloorResult_SetFromLineTrace(FFindFloorResult* Self, INT_PTR InHit, float InSweepFloorDist, float InLineDist, bool bIsWalkableFloor)
+	{
+		auto _p0 = *(FHitResult*)InHit;
+		auto _p1 = InSweepFloorDist;
+		auto _p2 = InLineDist;
+		auto _p3 = bIsWalkableFloor;
+		Self->SetFromLineTrace(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_FFindFloorResult_SetFromSweep(FFindFloorResult* Self, INT_PTR InHit, float InSweepFloorDist, bool bIsWalkableFloor)
+	{
+		auto _p0 = *(FHitResult*)InHit;
+		auto _p1 = InSweepFloorDist;
+		auto _p2 = bIsWalkableFloor;
+		Self->SetFromSweep(_p0, _p1, _p2);
+	}
+
+	
 	/*	FFixedUObjectArray	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FFixedUObjectArray() { return (INT_PTR) new FFixedUObjectArray(); }
@@ -1050,6 +1106,11 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FFullyLoadedPackagesInfo_Tag_GET(FFullyLoadedPackagesInfo* Ptr) { return ConvertToManage_StringWrapper(Ptr->Tag); }
 	DOTNET_EXPORT void E_PROP_FFullyLoadedPackagesInfo_Tag_SET(FFullyLoadedPackagesInfo* Ptr, char* Value) { Ptr->Tag = ConvertFromManage_FString(Value); }
+	
+	
+	/*	FGameModeEvents	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FGameModeEvents() { return (INT_PTR) new FGameModeEvents(); }
 	
 	
 	/*	FGameNameRedirect	*/

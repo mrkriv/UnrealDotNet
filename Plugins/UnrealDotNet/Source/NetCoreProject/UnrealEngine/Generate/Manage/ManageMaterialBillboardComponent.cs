@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\MaterialBillboardComponent.h:61
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\MaterialBillboardComponent.h:61
 
 namespace UnrealEngine
 {

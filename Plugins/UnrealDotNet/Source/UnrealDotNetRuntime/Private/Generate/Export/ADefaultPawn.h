@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "GameFramework/DefaultPawn.h"
+#include "Engine/Classes/GameFramework/DefaultPawn.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\DefaultPawn.h:25
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\DefaultPawn.h:25
 
 extern "C"
 {

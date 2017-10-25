@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "GameFramework/Character.h"
+#include "Engine/Classes/GameFramework/Character.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\Character.h:239
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
 
 class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 {
@@ -250,6 +250,11 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_GetCapsuleComponent(ACharacter* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetCapsuleComponent());
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_GetCharacterMovement(ACharacter* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCharacterMovement());
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetJumpMaxHoldTime(ACharacter* Self)

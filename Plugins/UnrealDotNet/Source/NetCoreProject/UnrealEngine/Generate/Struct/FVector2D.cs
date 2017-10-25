@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Math\Vector2D.h:17
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Vector2D.h:17
 
 namespace UnrealEngine
 {

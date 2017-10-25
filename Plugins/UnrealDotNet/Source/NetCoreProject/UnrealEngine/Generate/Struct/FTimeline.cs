@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\TimelineComponent.h:189
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TimelineComponent.h:189
 
 namespace UnrealEngine
 {

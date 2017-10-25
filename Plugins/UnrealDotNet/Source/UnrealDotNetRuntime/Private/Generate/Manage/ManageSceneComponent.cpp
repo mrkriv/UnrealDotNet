@@ -3,7 +3,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SceneComponent.h:103
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 void UManageSceneComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
 {

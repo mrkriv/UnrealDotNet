@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/PawnNoiseEmitterComponent.h"
+#include "Engine/Classes/Components/PawnNoiseEmitterComponent.h"
 #include "ManagePawnNoiseEmitterComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PawnNoiseEmitterComponent.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PawnNoiseEmitterComponent.h:19
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePawnNoiseEmitterComponent : public UPawnNoiseEmitterComponent

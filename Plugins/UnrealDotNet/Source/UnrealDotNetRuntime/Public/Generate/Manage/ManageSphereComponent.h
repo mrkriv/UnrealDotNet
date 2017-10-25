@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/SphereComponent.h"
+#include "Engine/Classes/Components/SphereComponent.h"
 #include "ManageSphereComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\SphereComponent.h:17
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SphereComponent.h:17
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSphereComponent : public USphereComponent

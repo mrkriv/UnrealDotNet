@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\UObject\UObjectBaseUtility.h:23
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h:23
 
 namespace UnrealEngine
 {

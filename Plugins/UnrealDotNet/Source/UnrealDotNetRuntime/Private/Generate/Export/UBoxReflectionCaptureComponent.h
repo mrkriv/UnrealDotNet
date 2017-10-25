@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/BoxReflectionCaptureComponent.h"
+#include "Engine/Classes/Components/BoxReflectionCaptureComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\BoxReflectionCaptureComponent.h:13
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\BoxReflectionCaptureComponent.h:13
 
 extern "C"
 {

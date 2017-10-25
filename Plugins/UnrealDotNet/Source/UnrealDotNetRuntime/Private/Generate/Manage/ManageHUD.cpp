@@ -3,7 +3,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\HUD.h:35
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 void AManageHUD::AddPostRenderedActor(AActor* A)
 {

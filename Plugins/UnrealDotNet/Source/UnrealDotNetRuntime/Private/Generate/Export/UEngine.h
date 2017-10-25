@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Engine.h"
+#include "Engine/Classes/Engine/Engine.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Engine\Engine.h:585
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:585
 
 extern "C"
 {

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Components/CapsuleComponent.h"
+#include "Engine/Classes/Components/CapsuleComponent.h"
 #include "ManageCapsuleComponent.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\CapsuleComponent.h:16
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\CapsuleComponent.h:16
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageCapsuleComponent : public UCapsuleComponent

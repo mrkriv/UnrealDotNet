@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Components/ActorComponent.h"
+#include "Engine/Classes/Components/ActorComponent.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\ActorComponent.h:94
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:94
 
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
 {

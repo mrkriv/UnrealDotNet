@@ -3,7 +3,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\Components\PawnNoiseEmitterComponent.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PawnNoiseEmitterComponent.h:19
 
 void UManagePawnNoiseEmitterComponent::MakeNoise(AActor* NoiseMaker, float Loudness, const FVector& NoiseLocation)
 {

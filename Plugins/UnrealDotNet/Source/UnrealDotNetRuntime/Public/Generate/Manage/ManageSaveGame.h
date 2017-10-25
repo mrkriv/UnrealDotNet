@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "GameFramework/SaveGame.h"
+#include "Engine/Classes/GameFramework/SaveGame.h"
 #include "ManageSaveGame.generated.h"
 
-// Source file C:\Users\vladi\Desktop\Engine\Source\Runtime\GameFramework\SaveGame.h:19
+// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\SaveGame.h:19
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSaveGame : public USaveGame
