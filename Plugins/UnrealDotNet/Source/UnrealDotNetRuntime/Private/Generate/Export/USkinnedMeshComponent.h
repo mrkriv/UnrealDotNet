@@ -3,17 +3,59 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/SkinnedMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:177
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(USkinnedMeshComponent* Ptr) { return Ptr->bCanHighlightSelectedSections; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bCanHighlightSelectedSections = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_GET(USkinnedMeshComponent* Ptr) { return Ptr->bCastCapsuleDirectShadow; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bCastCapsuleDirectShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_GET(USkinnedMeshComponent* Ptr) { return Ptr->bCastCapsuleIndirectShadow; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bCastCapsuleIndirectShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_GET(USkinnedMeshComponent* Ptr) { return Ptr->bComponentUseFixedSkelBounds; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bComponentUseFixedSkelBounds = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_GET(USkinnedMeshComponent* Ptr) { return Ptr->bConsiderAllBodiesForBounds; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bConsiderAllBodiesForBounds = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bCPUSkinning_GET(USkinnedMeshComponent* Ptr) { return Ptr->bCPUSkinning; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bCPUSkinning_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bCPUSkinning = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bDisableMorphTarget_GET(USkinnedMeshComponent* Ptr) { return Ptr->bDisableMorphTarget; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bDisableMorphTarget_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bDisableMorphTarget = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_GET(USkinnedMeshComponent* Ptr) { return Ptr->bDisplayBones_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bDisplayBones_DEPRECATED = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_GET(USkinnedMeshComponent* Ptr) { return Ptr->bDisplayDebugUpdateRateOptimizations; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bDisplayDebugUpdateRateOptimizations = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_GET(USkinnedMeshComponent* Ptr) { return Ptr->bEnableUpdateRateOptimizations; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bEnableUpdateRateOptimizations = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bForceWireframe_GET(USkinnedMeshComponent* Ptr) { return Ptr->bForceWireframe; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bForceWireframe_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bForceWireframe = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bHideSkin_GET(USkinnedMeshComponent* Ptr) { return Ptr->bHideSkin; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bHideSkin_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bHideSkin = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_GET(USkinnedMeshComponent* Ptr) { return Ptr->bPerBoneMotionBlur; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bPerBoneMotionBlur = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bRecentlyRendered_GET(USkinnedMeshComponent* Ptr) { return Ptr->bRecentlyRendered; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bRecentlyRendered_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bRecentlyRendered = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_GET(USkinnedMeshComponent* Ptr) { return Ptr->bUseBoundsFromMasterPoseComponent; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bUseBoundsFromMasterPoseComponent = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(USkinnedMeshComponent* Ptr) { return Ptr->CapsuleIndirectShadowMinVisibility; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->CapsuleIndirectShadowMinVisibility = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(USkinnedMeshComponent* Ptr) { return Ptr->CustomSortAlternateIndexMode; }
-	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->CustomSortAlternateIndexMode = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->ForcedLodModel; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->ForcedLodModel = Value; }
@@ -73,16 +115,15 @@ extern "C"
 		return Self->GetNumBones();
 	}
 
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetNumLODs(USkinnedMeshComponent* Self)
+	{
+		return Self->GetNumLODs();
+	}
+
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetParentBone(USkinnedMeshComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
 		return ConvertToManage_StringWrapper(Self->GetParentBone(_p0));
-	}
-
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSkinnedVertexPosition(USkinnedMeshComponent* Self, int32 VertexIndex)
-	{
-		auto _p0 = VertexIndex;
-		return (INT_PTR) new FVector(Self->GetSkinnedVertexPosition(_p0));
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName)
@@ -121,35 +162,15 @@ extern "C"
 		Self->SetForceWireframe(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetMaterialPreview(USkinnedMeshComponent* Self, int32 InMaterialIndexPreview)
-	{
-		auto _p0 = InMaterialIndexPreview;
-		Self->SetMaterialPreview(_p0);
-	}
-
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetMinLOD(USkinnedMeshComponent* Self, int32 InNewMinLOD)
 	{
 		auto _p0 = InNewMinLOD;
 		Self->SetMinLOD(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetSectionPreview(USkinnedMeshComponent* Self, int32 InSectionIndexPreview)
-	{
-		auto _p0 = InSectionIndexPreview;
-		Self->SetSectionPreview(_p0);
-	}
-
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_ShouldCPUSkin(USkinnedMeshComponent* Self)
 	{
 		return Self->ShouldCPUSkin();
-	}
-
-	DOTNET_EXPORT auto E_USkinnedMeshComponent_UpdateRecomputeTangent(USkinnedMeshComponent* Self, int32 MaterialIndex, int32 LodIndex, bool bRecomputeTangentValue)
-	{
-		auto _p0 = MaterialIndex;
-		auto _p1 = LodIndex;
-		auto _p2 = bRecomputeTangentValue;
-		Self->UpdateRecomputeTangent(_p0, _p1, _p2);
 	}
 
 }

@@ -19,7 +19,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UCharacterMovementComponent.h"
 #include "UChildActorComponent.h"
 #include "UDecalComponent.h"
-#include "UDestructibleComponent.h"
 #include "UDirectionalLightComponent.h"
 #include "UDrawFrustumComponent.h"
 #include "UDrawSphereComponent.h"

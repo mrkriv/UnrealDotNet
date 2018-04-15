@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
 namespace UnrealEngine
 {
@@ -110,10 +110,18 @@ namespace UnrealEngine
 		/// </summary>
 		public override void ClearAccumulatedForces() { }
 		
+		
+		/// <summary>
+		/// <para>If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves </para>
+		/// </summary>
 		public override void ClientAckGoodMove(float TimeStamp) { }
 		
 		public override void ClientAckGoodMove_Implementation(float TimeStamp) { }
 		
+		
+		/// <summary>
+		/// <para>Replicate position correction to client, associated with a timestamped servermove.  Client will replay subsequent moves after applying adjustment. </para>
+		/// </summary>
 		public override void ClientAdjustPosition(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
 		
 		public override void ClientAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
@@ -244,8 +252,6 @@ namespace UnrealEngine
 		/// <param name="MoveOnBaseHit">Hit result for the object we hit when trying to move with the base. </param>
 		/// </summary>
 		protected override void OnUnableToFollowBaseMove(FVector DeltaPosition, FVector OldLocation, FHitResult MoveOnBaseHit) { }
-		
-		public override void PerformAirControl(FVector Direction, float ZDiff) { }
 		
 		
 		/// <summary>

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/BoxComponent.h"
+#include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "ManageBoxComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\BoxComponent.h:17
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\BoxComponent.h:17
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageBoxComponent : public UBoxComponent

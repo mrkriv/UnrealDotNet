@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
 
 namespace UnrealEngine
 {
@@ -34,9 +34,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UProjectileMovementComponent_ComputeMoveDelta(IntPtr Self, IntPtr InVelocity, float DeltaTime);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UProjectileMovementComponent_GetEffectiveGravityZ(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UProjectileMovementComponent_HandleBlockingHit(IntPtr Self, IntPtr Hit, float TimeTick, IntPtr MoveDelta, float SubTickTimeRemaining);
@@ -77,9 +74,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual FVector ComputeMoveDelta(FVector InVelocity, float DeltaTime)
 			=> E_UProjectileMovementComponent_ComputeMoveDelta(this, InVelocity, DeltaTime);
-		
-		protected float GetEffectiveGravityZ()
-			=> E_UProjectileMovementComponent_GetEffectiveGravityZ(this);
 		
 		
 		/// <summary>

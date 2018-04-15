@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/LightComponent.h"
+#include "Runtime/Engine/Classes/Components/LightComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
 
 extern "C"
 {
@@ -59,6 +59,12 @@ extern "C"
 	{
 		auto _p0 = bNewValue;
 		Self->SetEnableLightShaftBloom(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(ULightComponent* Self, bool bNewValue)
+	{
+		auto _p0 = bNewValue;
+		Self->SetForceCachedShadowsForMovablePrimitives(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ULightComponent_SetIndirectLightingIntensity(ULightComponent* Self, float NewIntensity)

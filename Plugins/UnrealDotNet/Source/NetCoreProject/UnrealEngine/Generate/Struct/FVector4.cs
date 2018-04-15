@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Vector4.h:17
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\Vector4.h:17
 
 namespace UnrealEngine
 {
@@ -77,9 +77,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector4_Component(IntPtr Self, int Index);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector4_ContainsNaN(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -113,9 +110,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_FVector4_Rotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_SafeNormal(IntPtr Self, float Tolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector4_Set(IntPtr Self, float InX, float InY, float InZ, float InW);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -138,9 +132,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FVector4_ToString(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_UnsafeNormal3(IntPtr Self);
 		
 		#endregion
 		
@@ -188,15 +179,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// <para>Gets a specific component of the vector. </para>
-		/// <param name="Index">The index of the component. </param>
-		/// <return>Reference to the component. </return>
-		/// </summary>
-		public float Component(int Index)
-			=> E_FVector4_Component(this, Index);
-		
 		
 		/// <summary>
 		/// <para>Utility to check if there are any non-finite values (NaN or Inf) in this vector. </para>
@@ -286,9 +268,6 @@ namespace UnrealEngine
 		public FRotator Rotation()
 			=> E_FVector4_Rotation(this);
 		
-		public FVector4 SafeNormal(float Tolerance)
-			=> E_FVector4_SafeNormal(this, Tolerance);
-		
 		
 		/// <summary>
 		/// <para>Set all of the vectors coordinates. </para>
@@ -356,9 +335,6 @@ namespace UnrealEngine
 		/// </summary>
 		public override string ToString()
 			=> E_FVector4_ToString(this);
-		
-		public FVector4 UnsafeNormal3()
-			=> E_FVector4_UnsafeNormal3(this);
 		
 		#endregion
 		

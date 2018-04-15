@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 #include "ManageCharacterMovementComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageCharacterMovementComponent : public UCharacterMovementComponent
@@ -68,8 +68,6 @@ public:
 	virtual void MaybeUpdateBasedMovement(float DeltaSeconds) override;
 	
 	virtual void NotifyJumpApex() override;
-	
-	virtual void PerformAirControl(FVector Direction, float ZDiff) override;
 	
 	virtual void PerformAirControlForPathFollowing(FVector Direction, float ZDiff) override;
 	

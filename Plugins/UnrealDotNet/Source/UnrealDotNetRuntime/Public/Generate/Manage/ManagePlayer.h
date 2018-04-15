@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Engine/Player.h"
+#include "Runtime/Engine/Classes/Engine/Player.h"
 #include "ManagePlayer.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Player.h:17
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Player.h:17
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePlayer : public UPlayer

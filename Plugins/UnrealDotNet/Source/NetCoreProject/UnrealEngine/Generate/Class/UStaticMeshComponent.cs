@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:154
 
 namespace UnrealEngine
 {
@@ -24,7 +24,94 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UStaticMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_AddSpeedTreeWind(IntPtr Self);
+		private static extern byte E_PROP_UStaticMeshComponent_bCastDistanceFieldIndirectShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bCastDistanceFieldIndirectShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bDisallowMeshPaintPerInstance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bDisallowMeshPaintPerInstance_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfComplex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfComplex_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfSimple_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfSimple_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bForceNavigationObstacle_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bForceNavigationObstacle_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bIgnoreInstanceForTextureStreaming_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bIgnoreInstanceForTextureStreaming_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bOverrideDistanceFieldSelfShadowBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bOverrideDistanceFieldSelfShadowBias_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bOverrideLightMapRes_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bOverrideLightMapRes_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bOverrideMinLOD_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bOverrideMinLOD_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bOverrideNavigationExport_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bOverrideNavigationExport_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bOverrideWireframeColor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bOverrideWireframeColor_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bUseDefaultCollision_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bUseDefaultCollision_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UStaticMeshComponent_bUseSubDivisions_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_bUseSubDivisions_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UStaticMeshComponent_DistanceFieldIndirectShadowMinVisibility_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_DistanceFieldIndirectShadowMinVisibility_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UStaticMeshComponent_LightmassSettings_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_LightmassSettings_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UStaticMeshComponent_OverriddenLightMapRes_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_OverriddenLightMapRes_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UStaticMeshComponent_CachePaintedDataIfNecessary(IntPtr Self);
@@ -45,6 +132,9 @@ namespace UnrealEngine
 		private static extern void E_UStaticMeshComponent_GetEstimatedLightMapResolution(IntPtr Self, int Width, int Height);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UStaticMeshComponent_GetLocalBounds(IntPtr Self, IntPtr Min, IntPtr Max);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(IntPtr Self, int InWidth, int InHeight, int OutLightMapMemoryUsage, int OutShadowMapMemoryUsage);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -63,10 +153,13 @@ namespace UnrealEngine
 		private static extern void E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(IntPtr Self, int LODToRemoveColorsFrom);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_RemoveSpeedTreeWind(IntPtr Self);
+		private static extern bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(IntPtr Self);
+		private static extern void E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(IntPtr Self, float NewValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UStaticMeshComponent_SetForcedLodModel(IntPtr Self, int NewForcedLodModel);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UStaticMeshComponent_SetMaterialPreview(IntPtr Self, int InMaterialIndexPreview);
@@ -91,14 +184,185 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		#region ExternMethods
+		#region Property
 		
 		/// <summary>
-		/// <para>Register this component's render data with the scene for SpeedTree wind </para>
+		/// <para>Whether to use the mesh distance field representation (when present) for shadowing indirect lighting (from lightmaps or skylight) on Movable components. </para>
+		/// <para>This works like capsule shadows on skeletal meshes, except using the mesh distance field so no physics asset is required. </para>
+		/// <para>The StaticMesh must have 'Generate Mesh Distance Field' enabled, or the project must have 'Generate Mesh Distance Fields' enabled for this feature to work. </para>
 		/// </summary>
-		public void AddSpeedTreeWind()
-			=> E_UStaticMeshComponent_AddSpeedTreeWind(this);
+		public byte DistanceFieldIndirectShadow
+		{
+			get => E_PROP_UStaticMeshComponent_bCastDistanceFieldIndirectShadow_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bCastDistanceFieldIndirectShadow_SET(NativePointer, value);
+		}
+
 		
+		/// <summary>
+		/// <para>If true, mesh painting is disallowed on this instance. Set if vertex colors are overridden in a construction script. </para>
+		/// </summary>
+		public byte bDisallowMeshPaintPerInstance
+		{
+			get => E_PROP_UStaticMeshComponent_bDisallowMeshPaintPerInstance_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bDisallowMeshPaintPerInstance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Draw mesh collision if used for complex collision </para>
+		/// </summary>
+		public byte bDrawMeshCollisionIfComplex
+		{
+			get => E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfComplex_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfComplex_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Draw mesh collision if used for simple collision </para>
+		/// </summary>
+		public byte bDrawMeshCollisionIfSimple
+		{
+			get => E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfSimple_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bDrawMeshCollisionIfSimple_SET(NativePointer, value);
+		}
+
+		public byte bForceNavigationObstacle
+		{
+			get => E_PROP_UStaticMeshComponent_bForceNavigationObstacle_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bForceNavigationObstacle_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Ignore this instance of this static mesh when calculating streaming information. </para>
+		/// <para>This can be useful when doing things like applying character textures to static geometry, </para>
+		/// <para>to avoid them using distance-based streaming. </para>
+		/// </summary>
+		public byte bIgnoreInstanceForTextureStreaming
+		{
+			get => E_PROP_UStaticMeshComponent_bIgnoreInstanceForTextureStreaming_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bIgnoreInstanceForTextureStreaming_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to override the DistanceFieldSelfShadowBias setting of the static mesh asset with the DistanceFieldSelfShadowBias of this component. </para>
+		/// </summary>
+		public byte bOverrideDistanceFieldSelfShadowBias
+		{
+			get => E_PROP_UStaticMeshComponent_bOverrideDistanceFieldSelfShadowBias_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bOverrideDistanceFieldSelfShadowBias_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to override the lightmap resolution defined in the static mesh. </para>
+		/// </summary>
+		public byte bOverrideLightMapRes
+		{
+			get => E_PROP_UStaticMeshComponent_bOverrideLightMapRes_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bOverrideLightMapRes_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to override the MinLOD setting of the static mesh asset with the MinLOD of this component. </para>
+		/// </summary>
+		public byte bOverrideMinLOD
+		{
+			get => E_PROP_UStaticMeshComponent_bOverrideMinLOD_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bOverrideMinLOD_SET(NativePointer, value);
+		}
+
+		public byte bOverrideNavigationExport
+		{
+			get => E_PROP_UStaticMeshComponent_bOverrideNavigationExport_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bOverrideNavigationExport_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings </para>
+		/// </summary>
+		public byte bOverrideWireframeColor
+		{
+			get => E_PROP_UStaticMeshComponent_bOverrideWireframeColor_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bOverrideWireframeColor_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Use the collision profile specified in the StaticMesh asset. </para>
+		/// </summary>
+		public byte bUseDefaultCollision
+		{
+			get => E_PROP_UStaticMeshComponent_bUseDefaultCollision_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bUseDefaultCollision_SET(NativePointer, value);
+		}
+
+		public byte bUseSubDivisions
+		{
+			get => E_PROP_UStaticMeshComponent_bUseSubDivisions_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_bUseSubDivisions_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls how dark the dynamic indirect shadow can be. </para>
+		/// </summary>
+		public float DistanceFieldIndirectShadowMinVisibility
+		{
+			get => E_PROP_UStaticMeshComponent_DistanceFieldIndirectShadowMinVisibility_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_DistanceFieldIndirectShadowMinVisibility_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. </para>
+		/// </summary>
+		public float DistanceFieldSelfShadowBias
+		{
+			get => E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The Lightmass settings for this object. </para>
+		/// </summary>
+		public FLightmassPrimitiveSettings LightmassSettings
+		{
+			get => E_PROP_UStaticMeshComponent_LightmassSettings_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_LightmassSettings_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh. </para>
+		/// </summary>
+		public int OverriddenLightMapRes
+		{
+			get => E_PROP_UStaticMeshComponent_OverriddenLightMapRes_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_OverriddenLightMapRes_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Allows adjusting the desired streaming distance of streaming textures that uses UV 0. </para>
+		/// <para>1.0 is the default, whereas a higher value makes the textures stream in sooner from far away. </para>
+		/// <para>A lower value (0.0-1.0) makes the textures stream in later (you have to be closer). </para>
+		/// <para>Value can be < 0 (from legcay content, or code changes) </para>
+		/// </summary>
+		public float StreamingDistanceMultiplier
+		{
+			get => E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region ExternMethods
 		
 		/// <summary>
 		/// <para>Save off the data painted on to this mesh per LOD if necessary </para>
@@ -158,6 +422,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get Local bounds </para>
+		/// </summary>
+		public void GetLocalBounds(FVector Min, FVector Max)
+			=> E_UStaticMeshComponent_GetLocalBounds(this, Min, Max);
+		
+		
+		/// <summary>
 		/// <para>Get the memory used for texture-based light and shadow maps of the given width and height </para>
 		/// <param name="InWidth">The desired width of the light/shadow map </param>
 		/// <param name="InHeight">The desired height of the light/shadow map </param>
@@ -201,18 +472,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Unregister this component's render data with the scene for SpeedTree wind </para>
-		/// </summary>
-		public void RemoveSpeedTreeWind()
-			=> E_UStaticMeshComponent_RemoveSpeedTreeWind(this);
-		
-		
-		/// <summary>
 		/// <para>Determines whether any of the component's LODs require override vertex color fixups </para>
 		/// <return>true if any LODs require override vertex color fixups </return>
 		/// </summary>
 		public bool RequiresOverrideVertexColorsFixup()
 			=> E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(this);
+		
+		
+		/// <summary>
+		/// <para>Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect. </para>
+		/// </summary>
+		public void SetDistanceFieldSelfShadowBias(float NewValue)
+			=> E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(this, NewValue);
+		
+		public void SetForcedLodModel(int NewForcedLodModel)
+			=> E_UStaticMeshComponent_SetForcedLodModel(this, NewForcedLodModel);
 		
 		
 		/// <summary>

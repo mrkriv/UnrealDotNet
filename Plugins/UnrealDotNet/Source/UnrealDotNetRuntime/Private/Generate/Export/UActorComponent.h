@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/ActorComponent.h"
+#include "Runtime/Engine/Classes/Components/ActorComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:94
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
 {
@@ -85,6 +85,42 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_GET(UActorComponent* Ptr) { return Ptr->bAllowAnyoneToDestroyMe; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bAllowAnyoneToDestroyMe = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bAllowConcurrentTick_GET(UActorComponent* Ptr) { return Ptr->bAllowConcurrentTick; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bAllowConcurrentTick_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bAllowConcurrentTick = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bAutoActivate_GET(UActorComponent* Ptr) { return Ptr->bAutoActivate; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bAutoActivate_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bAutoActivate = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bAutoRegister_GET(UActorComponent* Ptr) { return Ptr->bAutoRegister; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bAutoRegister_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bAutoRegister = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bEditableWhenInherited_GET(UActorComponent* Ptr) { return Ptr->bEditableWhenInherited; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bEditableWhenInherited_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bEditableWhenInherited = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bIsActive_GET(UActorComponent* Ptr) { return Ptr->bIsActive; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bIsActive_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bIsActive = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bIsEditorOnly_GET(UActorComponent* Ptr) { return Ptr->bIsEditorOnly; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bIsEditorOnly_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bIsEditorOnly = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bNavigationRelevant_GET(UActorComponent* Ptr) { return Ptr->bNavigationRelevant; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bNavigationRelevant_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bNavigationRelevant = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bNeverNeedsRenderUpdate_GET(UActorComponent* Ptr) { return Ptr->bNeverNeedsRenderUpdate; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bNeverNeedsRenderUpdate_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bNeverNeedsRenderUpdate = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bTickInEditor_GET(UActorComponent* Ptr) { return Ptr->bTickInEditor; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bTickInEditor_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bTickInEditor = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bWantsBeginPlay_GET(UActorComponent* Ptr) { return Ptr->bWantsBeginPlay; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bWantsBeginPlay_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bWantsBeginPlay = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_bWantsInitializeComponent_GET(UActorComponent* Ptr) { return Ptr->bWantsInitializeComponent; }
+	DOTNET_EXPORT void E_PROP_UActorComponent_bWantsInitializeComponent_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bWantsInitializeComponent = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UActorComponent_CreationMethod_GET(UActorComponent* Ptr) { return Ptr->CreationMethod; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(UActorComponent* Ptr, EComponentCreationMethod Value) { Ptr->CreationMethod = Value; }
 	
@@ -158,6 +194,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_CanEverAffectNavigation(UActorComponent* Self)
 	{
 		return Self->CanEverAffectNavigation();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ClearNeedEndOfFrameUpdate(UActorComponent* Self)
+	{
+		Self->ClearNeedEndOfFrameUpdate();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ComponentHasTag(UActorComponent* Self, char* Tag)

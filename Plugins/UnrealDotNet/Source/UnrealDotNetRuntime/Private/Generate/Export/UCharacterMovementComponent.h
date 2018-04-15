@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
 class E_PROTECTED_WRAP_UCharacterMovementComponent : protected UCharacterMovementComponent
 {
@@ -13,11 +13,6 @@ public:
 	void AdjustProxyCapsuleSize_WRAP()
 	{
 		AdjustProxyCapsuleSize();
-	}
-
-	FVector AdjustUpperHemisphereImpact_WRAP(const FVector& Delta, const FHitResult& Hit)
-	{
-		return AdjustUpperHemisphereImpact(Delta, Hit);
 	}
 
 	void ApplyImpactPhysicsForces_WRAP(const FHitResult& Impact, const FVector& ImpactAcceleration, const FVector& ImpactVelocity)
@@ -63,11 +58,6 @@ public:
 	FVector ConstrainInputAcceleration_WRAP(const FVector& InputAcceleration)
 	{
 		return ConstrainInputAcceleration(InputAcceleration);
-	}
-
-	bool FindAirControlImpact_WRAP(float DeltaTime, float AdditionalTime, const FVector& FallVelocity, const FVector& FallAcceleration, const FVector& Gravity, FHitResult& OutHitResult)
-	{
-		return FindAirControlImpact(DeltaTime, AdditionalTime, FallVelocity, FallAcceleration, Gravity, OutHitResult);
 	}
 
 	void FindBestNavMeshLocation_WRAP(const FVector& TraceStart, const FVector& TraceEnd, const FVector& CurrentFeetLocation, const FVector& TargetNavLocation, FHitResult& OutHitResult)
@@ -438,8 +428,20 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetProxyShrinkRadius_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetProxyShrinkRadius; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetProxyShrinkRadius_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetProxyShrinkRadius = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkLargeClientCorrectionDistance; }
+	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkLargeClientCorrectionDistance = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkMaxSmoothUpdateDistance; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkMaxSmoothUpdateDistance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkMinTimeBetweenClientAckGoodMoves; }
+	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkMinTimeBetweenClientAckGoodMoves = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkMinTimeBetweenClientAdjustments; }
+	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkMinTimeBetweenClientAdjustments = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkMinTimeBetweenClientAdjustmentsLargeCorrection; }
+	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkMinTimeBetweenClientAdjustmentsLargeCorrection = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_NetworkNoSmoothUpdateDistance_GET(UCharacterMovementComponent* Ptr) { return Ptr->NetworkNoSmoothUpdateDistance; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_NetworkNoSmoothUpdateDistance_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->NetworkNoSmoothUpdateDistance = Value; }
@@ -470,8 +472,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_PerchRadiusThreshold_GET(UCharacterMovementComponent* Ptr) { return Ptr->PerchRadiusThreshold; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_PerchRadiusThreshold_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->PerchRadiusThreshold = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_PostPhysicsTickFunction_GET(UCharacterMovementComponent* Ptr) { return (INT_PTR)&(Ptr->PostPhysicsTickFunction); }
 	
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_PushForceFactor_GET(UCharacterMovementComponent* Ptr) { return Ptr->PushForceFactor; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_PushForceFactor_SET(UCharacterMovementComponent* Ptr, float Value) { Ptr->PushForceFactor = Value; }
@@ -524,13 +524,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_AdjustProxyCapsuleSize(UCharacterMovementComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->AdjustProxyCapsuleSize_WRAP();
-	}
-
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_AdjustUpperHemisphereImpact(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR Hit)
-	{
-		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FHitResult*)Hit;
-		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->AdjustUpperHemisphereImpact_WRAP(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ApplyAccumulatedForces(UCharacterMovementComponent* Self, float DeltaSeconds)
@@ -801,17 +794,6 @@ extern "C"
 		return Self->DoJump(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_FindAirControlImpact(UCharacterMovementComponent* Self, float DeltaTime, float AdditionalTime, INT_PTR FallVelocity, INT_PTR FallAcceleration, INT_PTR Gravity, INT_PTR OutHitResult)
-	{
-		auto _p0 = DeltaTime;
-		auto _p1 = AdditionalTime;
-		auto _p2 = *(FVector*)FallVelocity;
-		auto _p3 = *(FVector*)FallAcceleration;
-		auto _p4 = *(FVector*)Gravity;
-		auto _p5 = *(FHitResult*)OutHitResult;
-		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->FindAirControlImpact_WRAP(_p0, _p1, _p2, _p3, _p4, _p5);
-	}
-
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_FindBestNavMeshLocation(UCharacterMovementComponent* Self, INT_PTR TraceStart, INT_PTR TraceEnd, INT_PTR CurrentFeetLocation, INT_PTR TargetNavLocation, INT_PTR OutHitResult)
 	{
 		auto _p0 = *(FVector*)TraceStart;
@@ -836,6 +818,11 @@ extern "C"
 		auto _p0 = *(FVector*)Start;
 		auto _p1 = *(FVector*)End;
 		return (INT_PTR) new FVector(Self->FindWaterLine(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ForceClientAdjustment(UCharacterMovementComponent* Self)
+	{
+		Self->ForceClientAdjustment();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ForceReplicationUpdate(UCharacterMovementComponent* Self)
@@ -946,14 +933,7 @@ extern "C"
 	{
 		return Self->GetNetworkSafeRandomAngleDegrees();
 	}
-
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPawnCapsuleExtent(UCharacterMovementComponent* Self, EShrinkCapsuleExtent ShrinkMode, float CustomShrinkAmount)
-	{
-		auto _p0 = ShrinkMode;
-		auto _p1 = CustomShrinkAmount;
-		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->GetPawnCapsuleExtent_WRAP(_p0, _p1));
-	}
-
+	
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPerchRadiusThreshold(UCharacterMovementComponent* Self)
 	{
 		return Self->GetPerchRadiusThreshold();
@@ -1197,13 +1177,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_PackNetworkMovementMode(UCharacterMovementComponent* Self)
 	{
 		return Self->PackNetworkMovementMode();
-	}
-
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_PerformAirControl(UCharacterMovementComponent* Self, INT_PTR Direction, float ZDiff)
-	{
-		auto _p0 = *(FVector*)Direction;
-		auto _p1 = ZDiff;
-		Self->PerformAirControl(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_PerformAirControlForPathFollowing(UCharacterMovementComponent* Self, INT_PTR Direction, float ZDiff)

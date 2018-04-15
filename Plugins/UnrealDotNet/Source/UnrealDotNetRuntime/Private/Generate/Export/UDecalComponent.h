@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/DecalComponent.h"
+#include "Runtime/Engine/Classes/Components/DecalComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
 
 class E_PROTECTED_WRAP_UDecalComponent : protected UDecalComponent
 {
@@ -20,10 +20,38 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_bDestroyOwnerAfterFade_GET(UDecalComponent* Ptr) { return Ptr->bDestroyOwnerAfterFade; }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_bDestroyOwnerAfterFade_SET(UDecalComponent* Ptr, uint8 Value) { Ptr->bDestroyOwnerAfterFade = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_DecalSize_GET(UDecalComponent* Ptr) { return (INT_PTR)&(Ptr->DecalSize); }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_DecalSize_SET(UDecalComponent* Ptr, INT_PTR Value) { Ptr->DecalSize = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_FadeDuration_GET(UDecalComponent* Ptr) { return Ptr->FadeDuration; }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_FadeDuration_SET(UDecalComponent* Ptr, float Value) { Ptr->FadeDuration = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_FadeScreenSize_GET(UDecalComponent* Ptr) { return Ptr->FadeScreenSize; }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_FadeScreenSize_SET(UDecalComponent* Ptr, float Value) { Ptr->FadeScreenSize = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_FadeStartDelay_GET(UDecalComponent* Ptr) { return Ptr->FadeStartDelay; }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_FadeStartDelay_SET(UDecalComponent* Ptr, float Value) { Ptr->FadeStartDelay = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDecalComponent_SortOrder_GET(UDecalComponent* Ptr) { return Ptr->SortOrder; }
+	DOTNET_EXPORT void E_PROP_UDecalComponent_SortOrder_SET(UDecalComponent* Ptr, int32 Value) { Ptr->SortOrder = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UDecalComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<UDecalComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_UDecalComponent_GetFadeDuration(UDecalComponent* Self)
+	{
+		return Self->GetFadeDuration();
+	}
+
+	DOTNET_EXPORT auto E_UDecalComponent_GetFadeStartDelay(UDecalComponent* Self)
+	{
+		return Self->GetFadeStartDelay();
 	}
 
 	DOTNET_EXPORT auto E_UDecalComponent_GetNumMaterials(UDecalComponent* Self)
@@ -46,10 +74,30 @@ extern "C"
 		Self->PushSelectionToProxy();
 	}
 
+	DOTNET_EXPORT auto E_UDecalComponent_SetFadeOut(UDecalComponent* Self, float StartDelay, float Duration, bool DestroyOwnerAfterFade)
+	{
+		auto _p0 = StartDelay;
+		auto _p1 = Duration;
+		auto _p2 = DestroyOwnerAfterFade;
+		Self->SetFadeOut(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UDecalComponent_SetFadeScreenSize(UDecalComponent* Self, float NewFadeScreenSize)
+	{
+		auto _p0 = NewFadeScreenSize;
+		Self->SetFadeScreenSize(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UDecalComponent_SetLifeSpan(UDecalComponent* Self, float LifeSpan)
 	{
 		auto _p0 = LifeSpan;
 		Self->SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UDecalComponent_SetSortOrder(UDecalComponent* Self, int32 Value)
+	{
+		auto _p0 = Value;
+		Self->SetSortOrder(_p0);
 	}
 
 }

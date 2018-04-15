@@ -33,13 +33,13 @@ static const FString PluginName = "UnrealDotNet";
 static const FString CoreCLR_Name = "coreclr.dll";
 
 #if WITH_EDITOR
-static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
-static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Binaries" / "Win64");
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / PluginName / "Dotnet" / "2.0.5" / "");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / PluginName / "Binaries" / "Win64");
 static const FString HotreloadHook_Filename = "HotReload\\hotreload";
 FSimpleDelegate UCoreShell::OnAssembleLoad;
 #else
-static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "2.0.0\\");
-static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::GamePluginsDir() / PluginName / "Dotnet" / "GameLogic");
+static const FString CoreCLR_Path = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / PluginName / "Dotnet" / "2.0.5" / "");
+static const FString Domain_Path = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / PluginName / "Dotnet" / "GameLogic");
 #endif
 
 FString UCoreShell::AssemblyGuid;
@@ -89,7 +89,7 @@ void UCoreShell::UpdateGameLib()
 	FString NewAssemblyGuid;
 	if (FFileHelper::LoadFileToString(NewAssemblyGuid, *(Domain_Path / HotreloadHook_Filename)))
 	{
-		NewAssemblyGuid = NewAssemblyGuid.TrimTrailing();
+		NewAssemblyGuid.TrimEndInline();
 		if (NewAssemblyGuid == AssemblyGuid)
 			return;
 

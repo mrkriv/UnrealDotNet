@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:420
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:431
 
 namespace UnrealEngine
 {
@@ -24,6 +24,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FCameraExposureSettings_Bias_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FCameraExposureSettings_Bias_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FCameraExposureSettings_CalibrationConstant_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FCameraExposureSettings_CalibrationConstant_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FCameraExposureSettings_HighPercent_GET(IntPtr Ptr);
@@ -80,6 +85,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FCameraExposureSettings_Bias_GET(NativePointer);
 			set => E_PROP_FCameraExposureSettings_Bias_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Calibration constant for 18% albedo. </para>
+		/// </summary>
+		public float CalibrationConstant
+		{
+			get => E_PROP_FCameraExposureSettings_CalibrationConstant_GET(NativePointer);
+			set => E_PROP_FCameraExposureSettings_CalibrationConstant_SET(NativePointer, value);
 		}
 
 		

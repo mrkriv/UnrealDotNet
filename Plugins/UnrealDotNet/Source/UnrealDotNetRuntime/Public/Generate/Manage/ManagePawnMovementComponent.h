@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/PawnMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/PawnMovementComponent.h"
 #include "ManagePawnMovementComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePawnMovementComponent : public UPawnMovementComponent

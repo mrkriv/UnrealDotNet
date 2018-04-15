@@ -41,6 +41,7 @@ namespace Generator
             "FTickPrerequisite",
 
             "EOptimizeMode",
+            "EShrinkCapsuleExtent",
             
             "FCollisionImpactData",  // todo:: не линкует
             "FRigidBodyContactInfo",
@@ -70,6 +71,7 @@ namespace Generator
             "IImportantToggleSettingInterface",
 
             "FPrimitiveComponentPostPhysicsTickFunction",   // ExecuteTick абстрактный
+            "FCharacterMovementComponentPostPhysicsTickFunction",
             "FSkeletalMeshComponentEndPhysicsTickFunction",
             "FSkeletalMeshComponentClothTickFunction",
             "FStartPhysicsTickFunction",

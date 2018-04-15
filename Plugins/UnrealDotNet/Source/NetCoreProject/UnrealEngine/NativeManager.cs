@@ -265,24 +265,32 @@ namespace UnrealEngine
 
         public static string GetMetadata()
         {
-            var classes = GameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
+            try
+            {
+                var classes = GameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
 
-            return JsonConvert.SerializeObject(
-                new
-                {
-                    Types = classes.Select(t => new
+                return JsonConvert.SerializeObject(
+                    new
                     {
-                        Name = t.FullName,
-                        Base = t.BaseType.Name,
-                        Propertys = t.GetProperties().Where(PropertyConvert.FilterPropertyForEditor).Select(p => new
+                        Types = classes.Select(t => new
                         {
-                            Name = p.Name,
-                            Type = p.PropertyType.FullName,
-                            CanEdit = PropertyConvert.CanEditPropertyInEditor(p),
-                            Default = p.GetDefaultValue<object>()?.ToString() ?? ""
+                            Name = t.FullName,
+                            Base = t.BaseType.Name,
+                            Propertys = t.GetProperties().Where(PropertyConvert.FilterPropertyForEditor).Select(p => new
+                            {
+                                Name = p.Name,
+                                Type = p.PropertyType.FullName,
+                                CanEdit = PropertyConvert.CanEditPropertyInEditor(p),
+                                Default = p.GetDefaultValue<object>()?.ToString() ?? ""
+                            })
                         })
-                    })
-                });
+                    });
+            }
+            catch (Exception e)
+            {
+                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+                return "";
+            }
         }
     }
 }

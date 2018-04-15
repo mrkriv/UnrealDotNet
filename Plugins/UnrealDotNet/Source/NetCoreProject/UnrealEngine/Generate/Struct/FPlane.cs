@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Plane.h:17
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\Plane.h:17
 
 namespace UnrealEngine
 {
@@ -121,6 +121,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_FPlane_Flip(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FPlane_Normalize(IntPtr Self, float Tolerance);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FPlane_PlaneDot(IntPtr Self, IntPtr P);
 		
 		#endregion
@@ -156,6 +159,15 @@ namespace UnrealEngine
 		/// </summary>
 		public FPlane Flip()
 			=> E_FPlane_Flip(this);
+		
+		
+		/// <summary>
+		/// <para>Normalize this plane in-place if it is larger than a given tolerance. Leaves it unchanged if not. </para>
+		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
+		/// <return>true if the plane was normalized correctly, false otherwise. </return>
+		/// </summary>
+		public bool Normalize(float Tolerance)
+			=> E_FPlane_Normalize(this, Tolerance);
 		
 		
 		/// <summary>

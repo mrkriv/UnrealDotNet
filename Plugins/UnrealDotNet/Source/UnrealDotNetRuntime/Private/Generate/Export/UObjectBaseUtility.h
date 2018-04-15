@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "CoreUObject/Public/UObject/UObjectBaseUtility.h"
+#include "Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h:23
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h:23
 
 extern "C"
 {

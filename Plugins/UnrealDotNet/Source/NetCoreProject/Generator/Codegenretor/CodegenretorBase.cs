@@ -13,7 +13,7 @@ namespace Generator
     {
         protected const string DllEditorImportName = "UE4Editor-UnrealDotNetRuntime";
         protected const string DllPaksImportName = "DotUnrealExample.exe";
-        protected const string EnginePathSeg = @"Engine\Source\Runtime";
+        protected const string EnginePathSeg = @"Engine\Source";
 
         protected const string ExportPrefix = "E_";
         protected const string ExportOperatorPrefix = ExportPrefix + "OPER_";

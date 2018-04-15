@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageHUD.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 void AManageHUD::AddPostRenderedActor(AActor* A)
 {
@@ -33,6 +34,12 @@ void AManageHUD::HandleBugScreenShot()
 {
 	Super::HandleBugScreenShot();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "HandleBugScreenShot");
+}
+
+void AManageHUD::NextDebugTarget()
+{
+	Super::NextDebugTarget();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NextDebugTarget");
 }
 
 void AManageHUD::NotifyBindPostProcessEffects()
@@ -75,6 +82,12 @@ void AManageHUD::PostRender()
 {
 	Super::PostRender();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRender");
+}
+
+void AManageHUD::PreviousDebugTarget()
+{
+	Super::PreviousDebugTarget();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreviousDebugTarget");
 }
 
 void AManageHUD::RemovePostRenderedActor(AActor* A)

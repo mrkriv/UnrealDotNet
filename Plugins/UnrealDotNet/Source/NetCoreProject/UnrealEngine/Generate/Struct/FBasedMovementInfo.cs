@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:164
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:149
 
 namespace UnrealEngine
 {
@@ -52,9 +52,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FBasedMovementInfo_HasRelativeLocation(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBasedMovementInfo_HasRelativePosition(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FBasedMovementInfo_HasRelativeRotation(IntPtr Self);
@@ -110,9 +107,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool HasRelativeLocation()
 			=> E_FBasedMovementInfo_HasRelativeLocation(this);
-		
-		public bool HasRelativePosition()
-			=> E_FBasedMovementInfo_HasRelativePosition(this);
 		
 		
 		/// <summary>

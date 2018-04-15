@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/RotatingMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/RotatingMovementComponent.h"
 #include "ManageRotatingMovementComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\RotatingMovementComponent.h:16
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\RotatingMovementComponent.h:16
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageRotatingMovementComponent : public URotatingMovementComponent

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 namespace UnrealEngine
 {
@@ -111,10 +111,19 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_CheckJumpInput(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_CheckResetJumpCount(IntPtr Self);
+		private static extern void E_ACharacter_ClearJumpInput(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClearJumpInput(IntPtr Self);
+		private static extern void E_ACharacter_ClientAckGoodMove(IntPtr Self, float TimeStamp);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAckGoodMove_Implementation(IntPtr Self, float TimeStamp);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustPosition(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewVel, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustPosition_Implementation(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewVel, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_ClientCheatFly(IntPtr Self);
@@ -135,10 +144,13 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_ClientCheatWalk_Implementation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_Crouch(IntPtr Self, bool bClientSimulation);
+		private static extern void E_ACharacter_ClientVeryShortAdjustPosition(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_DoJump(IntPtr Self, bool bReplayingMoves);
+		private static extern void E_ACharacter_ClientVeryShortAdjustPosition_Implementation(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_Crouch(IntPtr Self, bool bClientSimulation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_Falling(IntPtr Self);
@@ -172,9 +184,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_IsJumping(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ACharacter_IsJumpProvidingForce(IntPtr Self);
@@ -213,9 +222,6 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_NotifyJumpApex(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_NotifyLanded(IntPtr Self, IntPtr Hit);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnEndCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -249,6 +255,12 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_OnUpdateSimulatedPosition(IntPtr Self, IntPtr OldLocation, IntPtr OldRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnWalkingOffLedge(IntPtr Self, IntPtr PreviousFloorImpactNormal, IntPtr PreviousFloorContactNormal, IntPtr PreviousLocation, float TimeDelta);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnWalkingOffLedge_Implementation(IntPtr Self, IntPtr PreviousFloorImpactNormal, IntPtr PreviousFloorContactNormal, IntPtr PreviousLocation, float TimeDelta);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_ResetJumpState(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -280,12 +292,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_UnCrouch(IntPtr Self, bool bClientSimulation);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_UpdateFromCompressedFlags(IntPtr Self, byte Flags);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_UpdateSimulatedPosition(IntPtr Self, IntPtr Location, IntPtr NewRotation);
 		
 		#endregion
 		
@@ -573,15 +579,24 @@ namespace UnrealEngine
 		public virtual void CheckJumpInput(float DeltaTime)
 			=> E_ACharacter_CheckJumpInput(this, DeltaTime);
 		
-		protected void CheckResetJumpCount()
-			=> E_ACharacter_CheckResetJumpCount(this);
-		
 		
 		/// <summary>
 		/// <para>Reset jump input state after having checked input. </para>
 		/// </summary>
 		public virtual void ClearJumpInput()
 			=> E_ACharacter_ClearJumpInput(this);
+		
+		public void ClientAckGoodMove(float TimeStamp)
+			=> E_ACharacter_ClientAckGoodMove(this, TimeStamp);
+		
+		public void ClientAckGoodMove_Implementation(float TimeStamp)
+			=> E_ACharacter_ClientAckGoodMove_Implementation(this, TimeStamp);
+		
+		public void ClientAdjustPosition(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
+			=> E_ACharacter_ClientAdjustPosition(this, TimeStamp, NewLoc, NewVel, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		
+		public void ClientAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
+			=> E_ACharacter_ClientAdjustPosition_Implementation(this, TimeStamp, NewLoc, NewVel, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
 		
 		public void ClientCheatFly()
 			=> E_ACharacter_ClientCheatFly(this);
@@ -601,6 +616,12 @@ namespace UnrealEngine
 		public virtual void ClientCheatWalk_Implementation()
 			=> E_ACharacter_ClientCheatWalk_Implementation(this);
 		
+		public void ClientVeryShortAdjustPosition(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
+			=> E_ACharacter_ClientVeryShortAdjustPosition(this, TimeStamp, NewLoc, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		
+		public void ClientVeryShortAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
+			=> E_ACharacter_ClientVeryShortAdjustPosition_Implementation(this, TimeStamp, NewLoc, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		
 		
 		/// <summary>
 		/// <para>Request the character to start crouching. The request is processed on the next update of the CharacterMovementComponent. </para>
@@ -610,15 +631,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Crouch(bool bClientSimulation)
 			=> E_ACharacter_Crouch(this, bClientSimulation);
-		
-		
-		/// <summary>
-		/// <para>Player Jumped. Called internally when a jump has been detected because bPressedJump was true. </para>
-		/// <param name="bReplayingMoves">true if this is being done as part of replaying moves on a locally controlled client after a server correction. </param>
-		/// <return>True if the jump was allowed by CanJump() and if CharacterMovement->Jump() succeeded. </return>
-		/// </summary>
-		protected virtual bool DoJump(bool bReplayingMoves)
-			=> E_ACharacter_DoJump(this, bReplayingMoves);
 		
 		
 		/// <summary>
@@ -701,9 +713,6 @@ namespace UnrealEngine
 		public float GetReplicatedServerLastTransformUpdateTimeStamp()
 			=> E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(this);
 		
-		public virtual bool IsJumping()
-			=> E_ACharacter_IsJumping(this);
-		
 		
 		/// <summary>
 		/// <para>True if jump is actively providing a force, such as when the jump key is held and the time it has been held is less than JumpMaxHoldTime. </para>
@@ -714,7 +723,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>true if we are playing Root Motion right now, through a Montage with RootMotionMode == ERootMotionMode::RootMotionFromMontagesOnly. </para>
+		/// <para>True if we are playing Root Motion right now, through a Montage with RootMotionMode == ERootMotionMode::RootMotionFromMontagesOnly. </para>
 		/// <para>This means code path for networked root motion is enabled. </para>
 		/// </summary>
 		public bool IsPlayingNetworkedRootMotionMontage()
@@ -722,7 +731,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>true if we are playing Root Motion right now </para>
+		/// <para>True if we are playing Root Motion right now </para>
 		/// </summary>
 		public bool IsPlayingRootMotion()
 			=> E_ACharacter_IsPlayingRootMotion(this);
@@ -802,7 +811,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called when pawn's movement is blocked </para>
-		/// <para>@PARAM Impact describes the blocking hit. </para>
+		/// <param name="Impact">describes the blocking hit. </param>
 		/// </summary>
 		public virtual void MoveBlockedBy(FHitResult Impact)
 			=> E_ACharacter_MoveBlockedBy(this, Impact);
@@ -813,9 +822,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void NotifyJumpApex()
 			=> E_ACharacter_NotifyJumpApex(this);
-		
-		public virtual bool NotifyLanded(FHitResult Hit)
-			=> E_ACharacter_NotifyLanded(this, Hit);
 		
 		
 		/// <summary>
@@ -878,7 +884,27 @@ namespace UnrealEngine
 		public virtual void OnUpdateSimulatedPosition(FVector OldLocation, FQuat OldRotation)
 			=> E_ACharacter_OnUpdateSimulatedPosition(this, OldLocation, OldRotation);
 		
-		protected void ResetJumpState()
+		
+		/// <summary>
+		/// <para>Event fired when the Character is walking off a surface and is about to fall because CharacterMovement->CurrentFloor became unwalkable. </para>
+		/// <para>If CharacterMovement->MovementMode does not change during this event then the character will automatically start falling afterwards. </para>
+		/// <para>@note Z velocity is zero during walking movement, and will be here as well. Another velocity can be computed here if desired and will be used when starting to fall. </para>
+		/// <param name="PreviousFloorImpactNormal">Normal of the previous walkable floor. </param>
+		/// <param name="PreviousFloorContactNormal">Normal of the contact with the previous walkable floor. </param>
+		/// <param name="PreviousLocation">Previous character location before movement off the ledge. </param>
+		/// <param name="TimeTick">Time delta of movement update resulting in moving off the ledge. </param>
+		/// </summary>
+		public void OnWalkingOffLedge(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta)
+			=> E_ACharacter_OnWalkingOffLedge(this, PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+		
+		public virtual void OnWalkingOffLedge_Implementation(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta)
+			=> E_ACharacter_OnWalkingOffLedge_Implementation(this, PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+		
+		
+		/// <summary>
+		/// <para>Marks character as not trying to jump </para>
+		/// </summary>
+		public void ResetJumpState()
 			=> E_ACharacter_ResetJumpState(this);
 		
 		
@@ -948,12 +974,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void UnCrouch(bool bClientSimulation)
 			=> E_ACharacter_UnCrouch(this, bClientSimulation);
-		
-		public virtual void UpdateFromCompressedFlags(byte Flags)
-			=> E_ACharacter_UpdateFromCompressedFlags(this, Flags);
-		
-		public virtual void UpdateSimulatedPosition(FVector Location, FRotator NewRotation)
-			=> E_ACharacter_UpdateSimulatedPosition(this, Location, NewRotation);
 		
 		#endregion
 		

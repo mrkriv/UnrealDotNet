@@ -137,14 +137,6 @@ class UNREALDOTNETRUNTIME_API UManageEventSender : public UObject
 	}
 
 	UFUNCTION()
-	void Wrapper_FComponentFractureSignature(const FVector& HitPoint, const FVector& HitDirection)
-	{
-		auto _p0 = HitPoint;
-		auto _p1 = HitDirection;
-		UCoreShell::InvokeEventInObject<const FVector&, const FVector&>(SourceObject, ManageDelegateName, _p0, _p1);
-	}
-
-	UFUNCTION()
 	void Wrapper_FComponentHitSignature(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 	{
 		auto _p0 = ConvertToManage_ObjectPointerDescription(HitComponent);
@@ -204,6 +196,15 @@ class UNREALDOTNETRUNTIME_API UManageEventSender : public UObject
 	void Wrapper_FOnAudioFinished()
 	{
 		UCoreShell::InvokeEventInObject(SourceObject, ManageDelegateName);
+	}
+
+	UFUNCTION()
+	void Wrapper_FOnAudioMultiEnvelopeValue(const float AverageEnvelopeValue, const float MaxEnvelope, const int32 NumWaveInstances)
+	{
+		auto _p0 = AverageEnvelopeValue;
+		auto _p1 = MaxEnvelope;
+		auto _p2 = NumWaveInstances;
+		UCoreShell::InvokeEventInObject<const float, const float, const int32>(SourceObject, ManageDelegateName, _p0, _p1, _p2);
 	}
 
 }

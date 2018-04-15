@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/Actor.h"
+#include "Runtime/Engine/Classes/GameFramework/Actor.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
 
 class E_PROTECTED_WRAP_AActor : protected AActor
 {
@@ -23,6 +23,11 @@ public:
 	bool HasNetOwner_WRAP()
 	{
 		return HasNetOwner();
+	}
+
+	bool IsWithinNetRelevancyDistance_WRAP(const FVector& SrcLocation)
+	{
+		return IsWithinNetRelevancyDistance(SrcLocation);
 	}
 
 	void OnRep_Owner_WRAP()
@@ -104,6 +109,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_bIgnoresOriginShifting_GET(AActor* Ptr) { return Ptr->bIgnoresOriginShifting; }
 	DOTNET_EXPORT void E_PROP_AActor_bIgnoresOriginShifting_SET(AActor* Ptr, uint8 Value) { Ptr->bIgnoresOriginShifting = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AActor_bNetCheckedInitialPhysicsState_GET(AActor* Ptr) { return Ptr->bNetCheckedInitialPhysicsState; }
+	DOTNET_EXPORT void E_PROP_AActor_bNetCheckedInitialPhysicsState_SET(AActor* Ptr, uint8 Value) { Ptr->bNetCheckedInitialPhysicsState = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AActor_bNetLoadOnClient_GET(AActor* Ptr) { return Ptr->bNetLoadOnClient; }
 	DOTNET_EXPORT void E_PROP_AActor_bNetLoadOnClient_SET(AActor* Ptr, uint8 Value) { Ptr->bNetLoadOnClient = Value; }
 	
@@ -119,17 +127,11 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_bOnlyRelevantToOwner_GET(AActor* Ptr) { return Ptr->bOnlyRelevantToOwner; }
 	DOTNET_EXPORT void E_PROP_AActor_bOnlyRelevantToOwner_SET(AActor* Ptr, uint8 Value) { Ptr->bOnlyRelevantToOwner = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AActor_bPendingNetUpdate_GET(AActor* Ptr) { return Ptr->bPendingNetUpdate; }
-	DOTNET_EXPORT void E_PROP_AActor_bPendingNetUpdate_SET(AActor* Ptr, uint8 Value) { Ptr->bPendingNetUpdate = Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AActor_bRelevantForNetworkReplays_GET(AActor* Ptr) { return Ptr->bRelevantForNetworkReplays; }
 	DOTNET_EXPORT void E_PROP_AActor_bRelevantForNetworkReplays_SET(AActor* Ptr, uint8 Value) { Ptr->bRelevantForNetworkReplays = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_bReplicateMovement_GET(AActor* Ptr) { return Ptr->bReplicateMovement; }
 	DOTNET_EXPORT void E_PROP_AActor_bReplicateMovement_SET(AActor* Ptr, uint8 Value) { Ptr->bReplicateMovement = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_AActor_bRunningUserConstructionScript_GET(AActor* Ptr) { return Ptr->bRunningUserConstructionScript; }
-	DOTNET_EXPORT void E_PROP_AActor_bRunningUserConstructionScript_SET(AActor* Ptr, uint8 Value) { Ptr->bRunningUserConstructionScript = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_bTearOff_GET(AActor* Ptr) { return Ptr->bTearOff; }
 	DOTNET_EXPORT void E_PROP_AActor_bTearOff_SET(AActor* Ptr, uint8 Value) { Ptr->bTearOff = Value; }
@@ -140,14 +142,14 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_CustomTimeDilation_GET(AActor* Ptr) { return Ptr->CustomTimeDilation; }
 	DOTNET_EXPORT void E_PROP_AActor_CustomTimeDilation_SET(AActor* Ptr, float Value) { Ptr->CustomTimeDilation = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AActor_InitialLifeSpan_GET(AActor* Ptr) { return Ptr->InitialLifeSpan; }
+	DOTNET_EXPORT void E_PROP_AActor_InitialLifeSpan_SET(AActor* Ptr, float Value) { Ptr->InitialLifeSpan = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AActor_InputPriority_GET(AActor* Ptr) { return Ptr->InputPriority; }
 	DOTNET_EXPORT void E_PROP_AActor_InputPriority_SET(AActor* Ptr, int32 Value) { Ptr->InputPriority = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_Instigator_GET(AActor* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Instigator); }
 	DOTNET_EXPORT void E_PROP_AActor_Instigator_SET(AActor* Ptr, APawn* Value) { Ptr->Instigator = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_AActor_LastNetUpdateTime_GET(AActor* Ptr) { return Ptr->LastNetUpdateTime; }
-	DOTNET_EXPORT void E_PROP_AActor_LastNetUpdateTime_SET(AActor* Ptr, float Value) { Ptr->LastNetUpdateTime = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_MinNetUpdateFrequency_GET(AActor* Ptr) { return Ptr->MinNetUpdateFrequency; }
 	DOTNET_EXPORT void E_PROP_AActor_MinNetUpdateFrequency_SET(AActor* Ptr, float Value) { Ptr->MinNetUpdateFrequency = Value; }
@@ -163,9 +165,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_AActor_NetUpdateFrequency_GET(AActor* Ptr) { return Ptr->NetUpdateFrequency; }
 	DOTNET_EXPORT void E_PROP_AActor_NetUpdateFrequency_SET(AActor* Ptr, float Value) { Ptr->NetUpdateFrequency = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_AActor_NetUpdateTime_GET(AActor* Ptr) { return Ptr->NetUpdateTime; }
-	DOTNET_EXPORT void E_PROP_AActor_NetUpdateTime_SET(AActor* Ptr, float Value) { Ptr->NetUpdateTime = Value; }
 	
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorBeginOverlap(AActor* Obj)
 	{
@@ -421,6 +420,13 @@ extern "C"
 		Self->CopyRemoteRoleFrom(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_CreateComponentFromTemplate(AActor* Self, UActorComponent* Template, char* InName)
+	{
+		auto _p0 = Template;
+		auto _p1 = ConvertFromManage_FName(InName);
+		return ConvertToManage_ObjectPointerDescription(Self->CreateComponentFromTemplate(_p0, _p1));
+	}
+
 	DOTNET_EXPORT auto E_AActor_DebugShowOneComponentHierarchy(AActor* Self, USceneComponent* SceneComp, int32 NestLevel, bool bShowPosition)
 	{
 		auto _p0 = SceneComp;
@@ -468,13 +474,6 @@ extern "C"
 	{
 		auto _p0 = bMaintainWorldPosition;
 		Self->DetachRootComponentFromParent(_p0);
-	}
-
-	DOTNET_EXPORT auto E_AActor_DetachSceneComponentsFromParent(AActor* Self, USceneComponent* InParentComponent, bool bMaintainWorldPosition)
-	{
-		auto _p0 = InParentComponent;
-		auto _p1 = bMaintainWorldPosition;
-		Self->DetachSceneComponentsFromParent(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_DisableComponentsSimulatePhysics(AActor* Self)
@@ -754,11 +753,6 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetRootComponent());
 	}
 
-	DOTNET_EXPORT auto E_AActor_GetRootPrimitiveComponent(AActor* Self)
-	{
-		return ConvertToManage_ObjectPointerDescription(Self->GetRootPrimitiveComponent());
-	}
-
 	DOTNET_EXPORT auto E_AActor_GetSimpleCollisionCylinder(AActor* Self, float CollisionRadius, float CollisionHalfHeight)
 	{
 		auto _p0 = CollisionRadius;
@@ -936,6 +930,14 @@ extern "C"
 		return Self->IsNetMode(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_IsNetRelevantFor(AActor* Self, AActor* RealViewer, AActor* ViewTarget, INT_PTR SrcLocation)
+	{
+		auto _p0 = RealViewer;
+		auto _p1 = ViewTarget;
+		auto _p2 = *(FVector*)SrcLocation;
+		return Self->IsNetRelevantFor(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_AActor_IsNetStartupActor(AActor* Self)
 	{
 		return Self->IsNetStartupActor();
@@ -993,6 +995,17 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_IsRootComponentStationary(AActor* Self)
 	{
 		return Self->IsRootComponentStationary();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsRunningUserConstructionScript(AActor* Self)
+	{
+		return Self->IsRunningUserConstructionScript();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsWithinNetRelevancyDistance(AActor* Self, INT_PTR SrcLocation)
+	{
+		auto _p0 = *(FVector*)SrcLocation;
+		return ((E_PROTECTED_WRAP_AActor*)Self)->IsWithinNetRelevancyDistance_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_K2_AddActorLocalOffset(AActor* Self, INT_PTR DeltaLocation, bool bSweep, INT_PTR SweepHitResult, bool bTeleport)
@@ -1310,6 +1323,11 @@ extern "C"
 		return Self->OwnsComponent(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_PostActorConstruction(AActor* Self)
+	{
+		Self->PostActorConstruction();
+	}
+
 	DOTNET_EXPORT auto E_AActor_PostActorCreated(AActor* Self)
 	{
 		Self->PostActorCreated();
@@ -1329,11 +1347,6 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_PostNetInit(AActor* Self)
 	{
 		Self->PostNetInit();
-	}
-
-	DOTNET_EXPORT auto E_AActor_PostNetReceiveLocation(AActor* Self)
-	{
-		Self->PostNetReceiveLocation();
 	}
 
 	DOTNET_EXPORT auto E_AActor_PostNetReceiveLocationAndRotation(AActor* Self)
@@ -1521,14 +1534,6 @@ extern "C"
 		Self->SetActorHiddenInGame(_p0);
 	}
 
-	DOTNET_EXPORT auto E_AActor_SetActorLabelInternal(AActor* Self, char* NewActorLabelDirty, bool bMakeGloballyUniqueFName, bool bMarkDirty)
-	{
-		auto _p0 = ConvertFromManage_FString(NewActorLabelDirty);
-		auto _p1 = bMakeGloballyUniqueFName;
-		auto _p2 = bMarkDirty;
-		Self->SetActorLabelInternal(_p0, _p1, _p2);
-	}
-
 	DOTNET_EXPORT auto E_AActor_SetActorLocation(AActor* Self, INT_PTR NewLocation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
 	{
 		auto _p0 = *(FVector*)NewLocation;
@@ -1660,12 +1665,6 @@ extern "C"
 	{
 		auto _p0 = NewTickGroup;
 		Self->SetTickGroup(_p0);
-	}
-
-	DOTNET_EXPORT auto E_AActor_SetTickPrerequisite(AActor* Self, AActor* PrerequisiteActor)
-	{
-		auto _p0 = PrerequisiteActor;
-		Self->SetTickPrerequisite(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_ShouldTickIfViewportsOnly(AActor* Self)

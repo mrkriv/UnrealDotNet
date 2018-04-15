@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,19 +13,29 @@ namespace Generator
     internal static class Program
     {
         private static readonly Stopwatch Watch = new Stopwatch();
-        private const string HeaderScanListFile = @"..\\..\\..\\Config\\HeaderScanList.txt";
+
+        class Options
+        {
+            [Option('o', "output", Required = true, HelpText = "Output code folder")]
+            public string Output { get; set; }
+
+            [Option("ue", Required = true, HelpText = "Unreal engine 4 root folder")]
+            public string UnrealEngine { get; set; }
+
+            [Option('h', "headers", HelpText = "Path to header filters", Default = @"..\\..\\..\\Config\\HeaderScanList.txt")]
+            public string HeaderScanListFile { get; set; }
+        }
 
         public static void Main(string[] args)
         {
-            if (args.Length != 2)
-            {
-                PrintError("The first command line parameter must be the path to UnrealDotNet plugin.");
-                PrintError("The second parameter must point to the engine folder");
-                return;
-            }
+            CommandLine.Parser.Default.ParseArguments<Options>(args)
+              .WithParsed(Run);
+        }
 
-            var output = Path.Combine(args[0], "Source");
-            var files = GetScanFiles(args[1]);
+        private static void Run(Options options)
+        {
+            var output = Path.Combine(options.Output, "Source");
+            var files = GetScanFiles(options);
 
             if (!Directory.Exists(output))
             {
@@ -37,16 +48,16 @@ namespace Generator
             Codegenretor.GenarateDomain(domain, output);
 
             Watch.Stop();
-            
+
             Console.WriteLine();
             domain.PrintTotal();
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
         }
 
-        private static List<string> GetScanFiles(string PathToEngine)
+        private static List<string> GetScanFiles(Options options)
         {
-            var scanMasks = File.ReadAllLines(HeaderScanListFile)
-                .Where(x => !x.StartsWith("//") && x.Any());
+            var scanMasks = File.ReadAllLines(options.HeaderScanListFile)
+                .Where(x => !x.StartsWith("//") && x.Any()).ToList();
 
             var include = scanMasks.Where(x => !x.StartsWith("~"));
             var exclude = scanMasks.Where(x => x.StartsWith("~"));
@@ -55,12 +66,12 @@ namespace Generator
 
             foreach (var path in include)
             {
-                files.AddRange(Directory.GetFiles(PathToEngine, path, SearchOption.AllDirectories));
+                files.AddRange(Directory.GetFiles(options.UnrealEngine, path, SearchOption.AllDirectories));
             }
 
             foreach (var path in exclude)
             {
-                foreach (var file in Directory.GetFiles(PathToEngine, path, SearchOption.AllDirectories))
+                foreach (var file in Directory.GetFiles(options.UnrealEngine, path, SearchOption.AllDirectories))
                 {
                     files.Remove(file);
                 }

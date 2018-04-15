@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1851
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1842
 
 namespace UnrealEngine
 {
@@ -49,9 +49,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(IntPtr InActor, IntPtr InComponent, IntPtr HitLoc, IntPtr HitNorm);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FHitResult_bBlockingHit_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_bBlockingHit_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FHitResult_BoneName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FHitResult_BoneName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FHitResult_bStartPenetrating_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_bStartPenetrating_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FHitResult_Distance_GET(IntPtr Ptr);
@@ -67,6 +77,11 @@ namespace UnrealEngine
 		private static extern int E_PROP_FHitResult_Item_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FHitResult_Item_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FHitResult_MyBoneName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_MyBoneName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FHitResult_PenetrationDepth_GET(IntPtr Ptr);
@@ -99,10 +114,22 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public byte bBlockingHit
+		{
+			get => E_PROP_FHitResult_bBlockingHit_GET(NativePointer);
+			set => E_PROP_FHitResult_bBlockingHit_SET(NativePointer, value);
+		}
+
 		public string BoneName
 		{
 			get => E_PROP_FHitResult_BoneName_GET(NativePointer);
 			set => E_PROP_FHitResult_BoneName_SET(NativePointer, value);
+		}
+
+		public byte bStartPenetrating
+		{
+			get => E_PROP_FHitResult_bStartPenetrating_GET(NativePointer);
+			set => E_PROP_FHitResult_bStartPenetrating_SET(NativePointer, value);
 		}
 
 		public float Distance
@@ -121,6 +148,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FHitResult_Item_GET(NativePointer);
 			set => E_PROP_FHitResult_Item_SET(NativePointer, value);
+		}
+
+		public string MyBoneName
+		{
+			get => E_PROP_FHitResult_MyBoneName_GET(NativePointer);
+			set => E_PROP_FHitResult_MyBoneName_SET(NativePointer, value);
 		}
 
 		public float PenetrationDepth

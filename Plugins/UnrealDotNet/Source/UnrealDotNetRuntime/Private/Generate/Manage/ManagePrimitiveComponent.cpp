@@ -1,14 +1,21 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManagePrimitiveComponent.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 void UManagePrimitiveComponent::AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange)
 {
 	Super::AddAngularImpulse(Impulse, BoneName, bVelChange);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddAngularImpulse", Impulse, BoneName, bVelChange);
+}
+
+void UManagePrimitiveComponent::AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange)
+{
+	Super::AddAngularImpulseInRadians(Impulse, BoneName, bVelChange);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddAngularImpulseInRadians", Impulse, BoneName, bVelChange);
 }
 
 void UManagePrimitiveComponent::AddForce(FVector Force, FName BoneName, bool bAccelChange)
@@ -77,6 +84,12 @@ void UManagePrimitiveComponent::SetAllPhysicsAngularVelocity(const FVector& NewA
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllPhysicsAngularVelocity", NewAngVel, bAddToCurrent);
 }
 
+void UManagePrimitiveComponent::SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent)
+{
+	Super::SetAllPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent);
+}
+
 void UManagePrimitiveComponent::SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent)
 {
 	Super::SetAllPhysicsLinearVelocity(NewVel, bAddToCurrent);
@@ -87,6 +100,12 @@ void UManagePrimitiveComponent::SetAllPhysicsPosition(FVector NewPos)
 {
 	Super::SetAllPhysicsPosition(NewPos);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllPhysicsPosition", NewPos);
+}
+
+void UManagePrimitiveComponent::SetAllUseCCD(bool InUseCCD)
+{
+	Super::SetAllUseCCD(InUseCCD);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAllUseCCD", InUseCCD);
 }
 
 void UManagePrimitiveComponent::SetAngularDamping(float InDamping)
@@ -159,6 +178,12 @@ void UManagePrimitiveComponent::SetSimulatePhysics(bool bSimulate)
 {
 	Super::SetSimulatePhysics(bSimulate);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetSimulatePhysics", bSimulate);
+}
+
+void UManagePrimitiveComponent::SetUseCCD(bool InUseCCD, FName BoneName)
+{
+	Super::SetUseCCD(InUseCCD, BoneName);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetUseCCD", InUseCCD, BoneName);
 }
 
 void UManagePrimitiveComponent::UnWeldChildren()

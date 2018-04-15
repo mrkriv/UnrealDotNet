@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\RealityShift7\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_NetCoreProject.337190869.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\UnrealDotNet\Plugins\UnrealDotNet\Binaries\Win64\netcoreapp2.0" t="ExcludeRecursive" />
+    <e p="D:\Projects\UnrealDotNet\Plugins\UnrealDotNet\Source\NetCoreProject" t="IncludeFlat">
+      <e p="GameLogic" t="IncludeRecursive">
+        <e p="Elevator.cs" t="Include" />
+        <e p="GameLogic.csproj" t="IncludeRecursive" />
+        <e p="MyActor.cs" t="Include" />
+        <e p="MyBoxComponent.cs" t="Include" />
+        <e p="MyClass2.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="GameLogic.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Generator" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Codegenretor" t="Include">
+          <e p="CodegenretorBase.cs" t="Include" />
+          <e p="CodegenretorCPP.cs" t="Include" />
+          <e p="CodegenretorCS.cs" t="Include" />
+        </e>
+        <e p="CoreWriter.cs" t="Include" />
+        <e p="Extensions.cs" t="Include" />
+        <e p="Filter.cs" t="Include" />
+        <e p="Generator.csproj" t="IncludeRecursive" />
+        <e p="Metadata" t="Include">
+          <e p="Class.cs" t="Include" />
+          <e p="Delegate.cs" t="Include" />
+          <e p="Domain.cs" t="Include" />
+          <e p="Enum.cs" t="Include" />
+          <e p="Method.cs" t="Include" />
+          <e p="Primitive.cs" t="Include" />
+          <e p="PrimitiveType.cs" t="Include" />
+          <e p="Type.cs" t="Include" />
+          <e p="Variable.cs" t="Include" />
+        </e>
+        <e p="MetadataVisitor.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Generator.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ParceManager.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="UHeader" t="Include">
+          <e p="antlr-4.7-complete.jar" t="Include" />
+          <e p="Build.bat" t="Include" />
+          <e p="UHeader.g4" t="Include" />
+          <e p="UHeader.tokens" t="Include" />
+          <e p="UHeaderBaseVisitor.cs" t="Include" />
+          <e p="UHeaderLexer.cs" t="Include" />
+          <e p="UHeaderLexer.tokens" t="Include" />
+          <e p="UHeaderParser.cs" t="Include" />
+          <e p="UHeaderVisitor.cs" t="Include" />
+        </e>
+      </e>
+      <e p="HotReloadUtilit" t="IncludeRecursive">
+        <e p="HotReloadUtilit.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="HotReloadUtilit.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+      </e>
+      <e p="NetCoreProject.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="UnrealEngine" t="IncludeRecursive">
+        <e p="Attributes.cs" t="Include" />
+        <e p="BaseTypes" t="Include">
+          <e p="NativeStructWrapper.cs" t="Include" />
+          <e p="NativeWrapper.cs" t="Include" />
+          <e p="UObjectBaseUtility.cs" t="Include" />
+        </e>
+        <e p="Extensions.cs" t="Include" />
+        <e p="FDotnetTypeName.cs" t="Include" />
+        <e p="Generate" t="Include">
+          <e p="Class" t="Include">
+            <e p="AActor.cs" t="Include" />
+            <e p="ACharacter.cs" t="Include" />
+            <e p="ADefaultPawn.cs" t="Include" />
+            <e p="AHUD.cs" t="Include" />
+            <e p="ALight.cs" t="Include" />
+            <e p="APawn.cs" t="Include" />
+            <e p="ASpectatorPawn.cs" t="Include" />
+            <e p="UActorComponent.cs" t="Include" />
+            <e p="UArrowComponent.cs" t="Include" />
+            <e p="UAudioComponent.cs" t="Include" />
+            <e p="UBillboardComponent.cs" t="Include" />
+            <e p="UBoxComponent.cs" t="Include" />
+            <e p="UBoxReflectionCaptureComponent.cs" t="Include" />
+            <e p="UBrushComponent.cs" t="Include" />
+            <e p="UCapsuleComponent.cs" t="Include" />
+            <e p="UCharacterMovementComponent.cs" t="Include" />
+            <e p="UChildActorComponent.cs" t="Include" />
+            <e p="UDecalComponent.cs" t="Include" />
+            <e p="UDirectionalLightComponent.cs" t="Include" />
+            <e p="UDrawFrustumComponent.cs" t="Include" />
+            <e p="UDrawSphereComponent.cs" t="Include" />
+            <e p="UEngine.cs" t="Include" />
+            <e p="UEngineBaseTypes.cs" t="Include" />
+            <e p="UEngineTypes.cs" t="Include" />
+            <e p="UExponentialHeightFogComponent.cs" t="Include" />
+            <e p="UHierarchicalInstancedStaticMeshComponent.cs" t="Include" />
+            <e p="UInstancedStaticMeshComponent.cs" t="Include" />
+            <e p="UInterpToMovementComponent.cs" t="Include" />
+            <e p="ULightComponent.cs" t="Include" />
+            <e p="ULightComponentBase.cs" t="Include" />
+            <e p="ULightmassPortalComponent.cs" t="Include" />
+            <e p="ULineBatchComponent.cs" t="Include" />
+            <e p="UMaterialBillboardComponent.cs" t="Include" />
+            <e p="UMeshComponent.cs" t="Include" />
+            <e p="UMovementComponent.cs" t="Include" />
+            <e p="UNavMovementComponent.cs" t="Include" />
+            <e p="UObject.cs" t="Include" />
+            <e p="UObjectBase.cs" t="Include" />
+            <e p="UObjectBaseUtility.cs" t="Include" />
+            <e p="UPawnMovementComponent.cs" t="Include" />
+            <e p="UPawnNoiseEmitterComponent.cs" t="Include" />
+            <e p="UPlanarReflectionComponent.cs" t="Include" />
+            <e p="UPlaneReflectionCaptureComponent.cs" t="Include" />
+            <e p="UPlayer.cs" t="Include" />
+            <e p="UPointLightComponent.cs" t="Include" />
+            <e p="UPoseableMeshComponent.cs" t="Include" />
+            <e p="UPostProcessComponent.cs" t="Include" />
+            <e p="UPrimitiveComponent.cs" t="Include" />
+            <e p="UProjectileMovementComponent.cs" t="Include" />
+            <e p="UReflectionCaptureComponent.cs" t="Include" />
+            <e p="URotatingMovementComponent.cs" t="Include" />
+            <e p="USaveGame.cs" t="Include" />
+            <e p="UScene.cs" t="Include" />
+            <e p="USceneCaptureComponent.cs" t="Include" />
+            <e p="USceneCaptureComponent2D.cs" t="Include" />
+            <e p="USceneCaptureComponentCube.cs" t="Include" />
+            <e p="USceneComponent.cs" t="Include" />
+            <e p="UShapeComponent.cs" t="Include" />
+            <e p="USkeletalMeshComponent.cs" t="Include" />
+            <e p="USkinnedMeshComponent.cs" t="Include" />
+            <e p="USkyLightComponent.cs" t="Include" />
+            <e p="USphereComponent.cs" t="Include" />
+            <e p="USphereReflectionCaptureComponent.cs" t="Include" />
+            <e p="USpotLightComponent.cs" t="Include" />
+            <e p="USpringArmComponent.cs" t="Include" />
+            <e p="UStaticMeshComponent.cs" t="Include" />
+            <e p="UTextRenderComponent.cs" t="Include" />
+            <e p="UTimelineComponent.cs" t="Include" />
+            <e p="UVectorFieldComponent.cs" t="Include" />
+            <e p="UWorld.cs" t="Include" />
+            <e p="UWorldProxy.cs" t="Include" />
+          </e>
+          <e p="Delegates.cs" t="Include" />
+          <e p="Enums.cs" t="Include" />
+          <e p="Manage" t="Include">
+            <e p="ManageActor.cs" t="Include" />
+            <e p="ManageActorComponent.cs" t="Include" />
+            <e p="ManageArrowComponent.cs" t="Include" />
+            <e p="ManageAudioComponent.cs" t="Include" />
+            <e p="ManageBillboardComponent.cs" t="Include" />
+            <e p="ManageBoxComponent.cs" t="Include" />
+            <e p="ManageCapsuleComponent.cs" t="Include" />
+            <e p="ManageCharacter.cs" t="Include" />
+            <e p="ManageCharacterMovementComponent.cs" t="Include" />
+            <e p="ManageChildActorComponent.cs" t="Include" />
+            <e p="ManageDecalComponent.cs" t="Include" />
+            <e p="ManageDefaultPawn.cs" t="Include" />
+            <e p="ManageDirectionalLightComponent.cs" t="Include" />
+            <e p="ManageEngine.cs" t="Include" />
+            <e p="ManageEngineTypes.cs" t="Include" />
+            <e p="ManageExponentialHeightFogComponent.cs" t="Include" />
+            <e p="ManageHierarchicalInstancedStaticMeshComponent.cs" t="Include" />
+            <e p="ManageHUD.cs" t="Include" />
+            <e p="ManageInstancedStaticMeshComponent.cs" t="Include" />
+            <e p="ManageInterpToMovementComponent.cs" t="Include" />
+            <e p="ManageLight.cs" t="Include" />
+            <e p="ManageLightComponent.cs" t="Include" />
+            <e p="ManageLightComponentBase.cs" t="Include" />
+            <e p="ManageLineBatchComponent.cs" t="Include" />
+            <e p="ManageMaterialBillboardComponent.cs" t="Include" />
+            <e p="ManageMeshComponent.cs" t="Include" />
+            <e p="ManageMovementComponent.cs" t="Include" />
+            <e p="ManageNavMovementComponent.cs" t="Include" />
+            <e p="ManagePawn.cs" t="Include" />
+            <e p="ManagePawnMovementComponent.cs" t="Include" />
+            <e p="ManagePawnNoiseEmitterComponent.cs" t="Include" />
+            <e p="ManagePlayer.cs" t="Include" />
+            <e p="ManagePointLightComponent.cs" t="Include" />
+            <e p="ManagePoseableMeshComponent.cs" t="Include" />
+            <e p="ManagePrimitiveComponent.cs" t="Include" />
+            <e p="ManageProjectileMovementComponent.cs" t="Include" />
+            <e p="ManageRotatingMovementComponent.cs" t="Include" />
+            <e p="ManageSaveGame.cs" t="Include" />
+            <e p="ManageSceneCaptureComponent.cs" t="Include" />
+            <e p="ManageSceneCaptureComponent2D.cs" t="Include" />
+            <e p="ManageSceneCaptureComponentCube.cs" t="Include" />
+            <e p="ManageSceneComponent.cs" t="Include" />
+            <e p="ManageSkeletalMeshComponent.cs" t="Include" />
+            <e p="ManageSkinnedMeshComponent.cs" t="Include" />
+            <e p="ManageSkyLightComponent.cs" t="Include" />
+            <e p="ManageSpectatorPawn.cs" t="Include" />
+            <e p="ManageSphereComponent.cs" t="Include" />
+            <e p="ManageSpotLightComponent.cs" t="Include" />
+            <e p="ManageSpringArmComponent.cs" t="Include" />
+            <e p="ManageStaticMeshComponent.cs" t="Include" />
+            <e p="ManageTextRenderComponent.cs" t="Include" />
+          </e>
+          <e p="Struct" t="Include">
+            <e p="FActiveMorphTarget.cs" t="Include" />
+            <e p="FActorComponentTickFunction.cs" t="Include" />
+            <e p="FActorSpawnParameters.cs" t="Include" />
+            <e p="FActorTickFunction.cs" t="Include" />
+            <e p="FAnimationEvaluationContext.cs" t="Include" />
+            <e p="FAnimSlotDesc.cs" t="Include" />
+            <e p="FAnimSlotInfo.cs" t="Include" />
+            <e p="FAttachmentTransformRules.cs" t="Include" />
+            <e p="FAudioComponentParam.cs" t="Include" />
+            <e p="FBasedMovementInfo.cs" t="Include" />
+            <e p="FBasedPosition.cs" t="Include" />
+            <e p="FBatchedLine.cs" t="Include" />
+            <e p="FBatchedMesh.cs" t="Include" />
+            <e p="FBatchedPoint.cs" t="Include" />
+            <e p="FBox.cs" t="Include" />
+            <e p="FBox2D.cs" t="Include" />
+            <e p="FCameraExposureSettings.cs" t="Include" />
+            <e p="FCanvasUVTri.cs" t="Include" />
+            <e p="FCharacterMovementComponentPostPhysicsTickFunction.cs" t="Include" />
+            <e p="FClassRedirect.cs" t="Include" />
+            <e p="FClosestPointOnPhysicsAsset.cs" t="Include" />
+            <e p="FClusterNode.cs" t="Include" />
+            <e p="FCollectionReference.cs" t="Include" />
+            <e p="FCollisionResponseContainer.cs" t="Include" />
+            <e p="FColorGradePerRangeSettings.cs" t="Include" />
+            <e p="FColorGradingSettings.cs" t="Include" />
+            <e p="FComponentReference.cs" t="Include" />
+            <e p="FComponentSocketDescription.cs" t="Include" />
+            <e p="FConstrainComponentPropName.cs" t="Include" />
+            <e p="FConvolutionBloomSettings.cs" t="Include" />
+            <e p="FDamageEvent.cs" t="Include" />
+            <e p="FDebugFloatHistory.cs" t="Include" />
+            <e p="FDepthFieldGlowInfo.cs" t="Include" />
+            <e p="FDetachmentTransformRules.cs" t="Include" />
+            <e p="FDirectAttachChildrenAccessor.cs" t="Include" />
+            <e p="FDirectoryPath.cs" t="Include" />
+            <e p="FDropNoteInfo.cs" t="Include" />
+            <e p="FEngineShowFlagsSetting.cs" t="Include" />
+            <e p="FExposureSettings.cs" t="Include" />
+            <e p="FFilePath.cs" t="Include" />
+            <e p="FFilmStockSettings.cs" t="Include" />
+            <e p="FFindFloorResult.cs" t="Include" />
+            <e p="FFixedUObjectArray.cs" t="Include" />
+            <e p="FFontRenderInfo.cs" t="Include" />
+            <e p="FFractureEffect.cs" t="Include" />
+            <e p="FFullyLoadedPackagesInfo.cs" t="Include" />
+            <e p="FGameModeEvents.cs" t="Include" />
+            <e p="FGameNameRedirect.cs" t="Include" />
+            <e p="FHitResult.cs" t="Include" />
+            <e p="FInstancedStaticMeshInstanceData.cs" t="Include" />
+            <e p="FInstancedStaticMeshMappingInfo.cs" t="Include" />
+            <e p="FInterpControlPoint.cs" t="Include" />
+            <e p="FLensBloomSettings.cs" t="Include" />
+            <e p="FLensImperfectionSettings.cs" t="Include" />
+            <e p="FLensSettings.cs" t="Include" />
+            <e p="FLevelStreamingGCHelper.cs" t="Include" />
+            <e p="FLevelStreamingStatus.cs" t="Include" />
+            <e p="FLevelViewportInfo.cs" t="Include" />
+            <e p="FLightingChannels.cs" t="Include" />
+            <e p="FLightmassDebugOptions.cs" t="Include" />
+            <e p="FLightmassDirectionalLightSettings.cs" t="Include" />
+            <e p="FLightmassLightSettings.cs" t="Include" />
+            <e p="FLightmassPointLightSettings.cs" t="Include" />
+            <e p="FLightmassPrimitiveSettings.cs" t="Include" />
+            <e p="FLocalizedSubtitle.cs" t="Include" />
+            <e p="FMaterialSpriteElement.cs" t="Include" />
+            <e p="FMeshBuildSettings.cs" t="Include" />
+            <e p="FMTDResult.cs" t="Include" />
+            <e p="FNetDriverDefinition.cs" t="Include" />
+            <e p="FOverlapInfo.cs" t="Include" />
+            <e p="FOverlapResult.cs" t="Include" />
+            <e p="FPaintedVertex.cs" t="Include" />
+            <e p="FPlane.cs" t="Include" />
+            <e p="FPluginRedirect.cs" t="Include" />
+            <e p="FPointDamageEvent.cs" t="Include" />
+            <e p="FPostProcessSettings.cs" t="Include" />
+            <e p="FPOV.cs" t="Include" />
+            <e p="FPreCulledStaticMeshSection.cs" t="Include" />
+            <e p="FPrimitiveMaterialRef.cs" t="Include" />
+            <e p="FQuat.cs" t="Include" />
+            <e p="FRadialDamageEvent.cs" t="Include" />
+            <e p="FRadialDamageParams.cs" t="Include" />
+            <e p="FRedirector.cs" t="Include" />
+            <e p="FRendererStencilMaskEvaluation.cs" t="Include" />
+            <e p="FRepAttachment.cs" t="Include" />
+            <e p="FReplicationFlags.cs" t="Include" />
+            <e p="FRepMovement.cs" t="Include" />
+            <e p="FRepRootMotionMontage.cs" t="Include" />
+            <e p="FResponseChannel.cs" t="Include" />
+            <e p="FRigidBodyErrorCorrection.cs" t="Include" />
+            <e p="FRigidBodyState.cs" t="Include" />
+            <e p="FRotationConversionCache.cs" t="Include" />
+            <e p="FRotator.cs" t="Include" />
+            <e p="FSceneCaptureViewInfo.cs" t="Include" />
+            <e p="FScopedLevelCollectionContextSwitch.cs" t="Include" />
+            <e p="FScreenMessageString.cs" t="Include" />
+            <e p="FSimulatedRootMotionReplicatedMove.cs" t="Include" />
+            <e p="FSkelMeshComponentLODInfo.cs" t="Include" />
+            <e p="FSkelMeshRefPoseOverride.cs" t="Include" />
+            <e p="FSplineCurves.cs" t="Include" />
+            <e p="FSplineMeshParams.cs" t="Include" />
+            <e p="FSplinePoint.cs" t="Include" />
+            <e p="FSpriteCategoryInfo.cs" t="Include" />
+            <e p="FStatColorMapEntry.cs" t="Include" />
+            <e p="FStatColorMapping.cs" t="Include" />
+            <e p="FStructRedirect.cs" t="Include" />
+            <e p="FSubtitleCue.cs" t="Include" />
+            <e p="FTickFunction.cs" t="Include" />
+            <e p="FTimeline.cs" t="Include" />
+            <e p="FTimelineEventEntry.cs" t="Include" />
+            <e p="FTimelineFloatTrack.cs" t="Include" />
+            <e p="FTimelineLinearColorTrack.cs" t="Include" />
+            <e p="FTimelineVectorTrack.cs" t="Include" />
+            <e p="FTransform.cs" t="Include" />
+            <e p="FURL.cs" t="Include" />
+            <e p="FUserActivity.cs" t="Include" />
+            <e p="FVector.cs" t="Include" />
+            <e p="FVector2D.cs" t="Include" />
+            <e p="FVector4.cs" t="Include" />
+            <e p="FWalkableSlopeOverride.cs" t="Include" />
+            <e p="FWeightedBlendable.cs" t="Include" />
+            <e p="FWeightedBlendables.cs" t="Include" />
+            <e p="FWorldContext.cs" t="Include" />
+          </e>
+        </e>
+        <e p="ManualImplement" t="Include">
+          <e p="TArray.cs" t="Include" />
+        </e>
+        <e p="NativeManager.cs" t="Include" />
+        <e p="NativeStructures.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="UnrealEngine.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PropertyConvert.cs" t="Include" />
+        <e p="UnrealEngine.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

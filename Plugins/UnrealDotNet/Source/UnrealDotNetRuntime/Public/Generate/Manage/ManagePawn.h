@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/Pawn.h"
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 #include "ManagePawn.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManagePawn : public APawn
@@ -28,8 +28,6 @@ public:
 	virtual void AddControllerYawInput(float Val) override;
 	
 	virtual void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce) override;
-	
-	virtual void ClientSetRotation(FRotator NewRotation) override;
 	
 	virtual void DetachFromControllerPendingDestroy() override;
 	

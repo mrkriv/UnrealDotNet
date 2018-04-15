@@ -14,6 +14,8 @@ namespace Generator
         {
             public static void GenarateDomain(Domain domain, string OutputDir)
             {
+                OutputDir = new DirectoryInfo(OutputDir).FullName;
+                
                 var OutputPriveteGen = Path.Combine(OutputDir, "Private", "Generate");
                 var OutputPublicGen = Path.Combine(OutputDir, "Public", "Generate");
 
@@ -21,9 +23,15 @@ namespace Generator
                 var OutputPriveteManage = Path.Combine(OutputPriveteGen, "Manage");
                 var OutputPublicManage = Path.Combine(OutputPublicGen, "Manage");
 
+                CreateDirectoryIfNotExist(OutputPriveteGen);
+                CreateDirectoryIfNotExist(OutputPublicGen);
+                CreateDirectoryIfNotExist(OutputPriveteExport);
+                CreateDirectoryIfNotExist(OutputPriveteManage);
+                CreateDirectoryIfNotExist(OutputPublicManage);
+
                 Directory.GetFiles(OutputPriveteGen, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
                 Directory.GetFiles(OutputPublicGen, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
-
+                
                 foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
                     GenerateClass(cl, Path.Combine(OutputPriveteExport, cl.Name));
@@ -39,6 +47,12 @@ namespace Generator
                 }
 
                 GenerateManageEventSender(domain.Delegates, Path.Combine(OutputPublicGen, "ManageEventSender"));
+            }
+
+            private static void CreateDirectoryIfNotExist(string path)
+            {
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
             }
 
             #region Class
@@ -155,6 +169,7 @@ namespace Generator
                 var cw = new CoreWriter();
 
                 cw.WriteLine($"#include \"{CPP_PCH}.h\"");
+                cw.WriteLine($"#include \"DotnetTypeName.h\"");
                 cw.WriteLine($"#include \"Generate/Manage/Manage{baseName}.h\"");
                 cw.WriteLine();
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
@@ -614,6 +629,7 @@ namespace Generator
                 SourceFile = SourceFile.Replace("\\", "/");
                 return SourceFile;
             }
+            
             private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
             {
                 var cw = new CoreWriter();

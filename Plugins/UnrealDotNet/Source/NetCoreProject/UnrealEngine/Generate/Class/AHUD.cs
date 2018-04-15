@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 namespace UnrealEngine
 {
@@ -58,6 +58,9 @@ namespace UnrealEngine
 		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AHUD_GetCurrentDebugTargetActor(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -65,6 +68,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AHUD_IsCanvasValid_WarnIfNot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_NextDebugTarget(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_NotifyBindPostProcessEffects(IntPtr Self);
@@ -86,6 +92,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_PostRender(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_PreviousDebugTarget(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AHUD_Project(IntPtr Self, IntPtr Location);
@@ -222,9 +231,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get Target to view 'showdebug' on </para>
+		/// </summary>
+		public virtual AActor GetCurrentDebugTargetActor()
+			=> E_AHUD_GetCurrentDebugTargetActor(this);
+		
+		
+		/// <summary>
 		/// <para>Returns the Pawn for this HUD's player. </para>
 		/// </summary>
-		protected APawn GetOwningPawn()
+		public APawn GetOwningPawn()
 			=> E_AHUD_GetOwningPawn(this);
 		
 		
@@ -236,6 +252,9 @@ namespace UnrealEngine
 		
 		protected bool IsCanvasValid_WarnIfNot()
 			=> E_AHUD_IsCanvasValid_WarnIfNot(this);
+		
+		public virtual void NextDebugTarget()
+			=> E_AHUD_NextDebugTarget(this);
 		
 		
 		/// <summary>
@@ -286,6 +305,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PostRender()
 			=> E_AHUD_PostRender(this);
+		
+		public virtual void PreviousDebugTarget()
+			=> E_AHUD_PreviousDebugTarget(this);
 		
 		
 		/// <summary>

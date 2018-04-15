@@ -3,18 +3,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/HUD.h"
+#include "Runtime/Engine/Classes/GameFramework/HUD.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 class E_PROTECTED_WRAP_AHUD : protected AHUD
 {
 public:
-	APawn* GetOwningPawn_WRAP()
-	{
-		return GetOwningPawn();
-	}
-
 	bool IsCanvasValid_WarnIfNot_WRAP()
 	{
 		return IsCanvasValid_WarnIfNot();
@@ -89,9 +84,14 @@ extern "C"
 		Self->DrawSafeZoneOverlay();
 	}
 
+	DOTNET_EXPORT auto E_AHUD_GetCurrentDebugTargetActor(AHUD* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCurrentDebugTargetActor());
+	}
+
 	DOTNET_EXPORT auto E_AHUD_GetOwningPawn(AHUD* Self)
 	{
-		return ConvertToManage_ObjectPointerDescription(((E_PROTECTED_WRAP_AHUD*)Self)->GetOwningPawn_WRAP());
+		return ConvertToManage_ObjectPointerDescription(Self->GetOwningPawn());
 	}
 
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)
@@ -102,6 +102,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_IsCanvasValid_WarnIfNot(AHUD* Self)
 	{
 		return ((E_PROTECTED_WRAP_AHUD*)Self)->IsCanvasValid_WarnIfNot_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_AHUD_NextDebugTarget(AHUD* Self)
+	{
+		Self->NextDebugTarget();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyBindPostProcessEffects(AHUD* Self)
@@ -142,6 +147,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_PostRender(AHUD* Self)
 	{
 		Self->PostRender();
+	}
+
+	DOTNET_EXPORT auto E_AHUD_PreviousDebugTarget(AHUD* Self)
+	{
+		Self->PreviousDebugTarget();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_Project(AHUD* Self, INT_PTR Location)

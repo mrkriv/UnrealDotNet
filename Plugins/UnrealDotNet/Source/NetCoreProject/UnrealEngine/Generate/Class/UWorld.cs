@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\World.h:715
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\World.h:732
 
 namespace UnrealEngine
 {
@@ -84,11 +84,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldDelayGarbageCollect_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldDelayGarbageCollect_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(IntPtr Ptr, bool Value);
@@ -127,11 +122,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_UWorld_FlushLevelStreamingType_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_FlushLevelStreamingType_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_FullPurgeTriggered_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_FullPurgeTriggered_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(IntPtr Ptr);
@@ -199,11 +189,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UWorld_UnpausedTimeSeconds_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_UnpausedTimeSeconds_SET(IntPtr Ptr, float Value);
@@ -245,6 +230,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_CancelPendingMapChange(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_CleanupActors(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_CleanupWorld(IntPtr Self, bool bSessionEnded, bool bCleanupResources, IntPtr NewWorld);
@@ -310,13 +298,25 @@ namespace UnrealEngine
 		private static extern void E_UWorld_EnsureCollisionTreeIsBuilt(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UWorld_FindCollectionIndexByType(IntPtr Self, byte InType);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UWorld_FindOrAddCollectionByType_Index(IntPtr Self, byte InType);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_FindTeleportSpot(IntPtr Self, IntPtr TestActor, IntPtr PlaceLocation, IntPtr PlaceRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_FinishPhysicsSim(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_FlushLevelStreaming(IntPtr Self, byte FlushType);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_ForceGarbageCollection(IntPtr Self, bool bFullPurge);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UWorld_GetActiveLevelCollectionIndex(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UWorld_GetActorCount(IntPtr Self);
@@ -454,7 +454,10 @@ namespace UnrealEngine
 		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr Self, IntPtr OverrideViewLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_PropagateLightingScenarioChange(IntPtr Self, bool bLevelWasMadeVisible);
+		private static extern void E_UWorld_PropagateLightingScenarioChange(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_RemapCompiledScriptActor(IntPtr Self, string Str);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_RemoveActor(IntPtr Self, IntPtr Actor, bool bShouldModifyLevel);
@@ -481,10 +484,13 @@ namespace UnrealEngine
 		private static extern void E_UWorld_SendAllEndOfFrameUpdates(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_SetActiveLevelCollection(IntPtr Self, int LevelCollectionIndex);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_SetGameMode(IntPtr Self, IntPtr InURL);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_SetMapNeedsLightingFullyRebuilt(IntPtr Self, int InNumLightingUnbuiltObjects);
+		private static extern void E_UWorld_SetMapNeedsLightingFullyRebuilt(IntPtr Self, int InNumLightingUnbuiltObjects, int InNumUnbuiltReflectionCaptures);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetSeamlessTravelMidpointPause(IntPtr Self, bool bNowPaused);
@@ -527,9 +533,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateActorComponentEndOfFrameUpdateState(IntPtr Self, IntPtr Component);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_UpdateAllReflectionCaptures(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateAllSkyCaptures(IntPtr Self);
@@ -665,16 +668,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether we should delay GC for one frame to finish some pending operation </para>
-		/// </summary>
-		public bool bShouldDelayGarbageCollect
-		{
-			get => E_PROP_UWorld_bShouldDelayGarbageCollect_GET(NativePointer);
-			set => E_PROP_UWorld_bShouldDelayGarbageCollect_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
 		/// <para>Is forcibly unloading streaming levels? </para>
 		/// </summary>
 		public bool bShouldForceUnloadStreamingLevels
@@ -752,16 +745,6 @@ namespace UnrealEngine
 		{
 			get => (EFlushLevelStreamingType)E_PROP_UWorld_FlushLevelStreamingType_GET(NativePointer);
 			set => E_PROP_UWorld_FlushLevelStreamingType_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
-		/// <para>Whether a full purge has been triggered, so that the next GarbageCollect will do a full purge no matter what. </para>
-		/// </summary>
-		public bool FullPurgeTriggered
-		{
-			get => E_PROP_UWorld_FullPurgeTriggered_GET(NativePointer);
-			set => E_PROP_UWorld_FullPurgeTriggered_SET(NativePointer, value);
 		}
 
 		
@@ -896,16 +879,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Time in seconds (game time so we respect time dilation) since the last time we purged references to pending kill objects </para>
-		/// </summary>
-		public float TimeSinceLastPendingKillPurge
-		{
-			get => E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(NativePointer);
-			set => E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
 		/// <para>Time in seconds since level began play, but IS NOT paused when the game is paused, and IS dilated/clamped. </para>
 		/// </summary>
 		public float UnpausedTimeSeconds
@@ -1007,6 +980,14 @@ namespace UnrealEngine
 		/// </summary>
 		public void CancelPendingMapChange()
 			=> E_UWorld_CancelPendingMapChange(this);
+		
+		
+		/// <summary>
+		/// <para>Remove NULL entries from actor list. Only does so for dynamic actors to avoid resorting. </para>
+		/// <para>In theory static actors shouldn't be deleted during gameplay. </para>
+		/// </summary>
+		public void CleanupActors()
+			=> E_UWorld_CleanupActors(this);
 		
 		
 		/// <summary>
@@ -1174,6 +1155,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the index of the FLevelCollection with the given InType, or INDEX_NONE if a collection of that type hasn't been created yet. </para>
+		/// </summary>
+		public int FindCollectionIndexByType(ELevelCollectionType InType)
+			=> E_UWorld_FindCollectionIndexByType(this, (byte)InType);
+		
+		
+		/// <summary>
+		/// <para>Returns the index of the first FLevelCollection of the given InType. If one does not exist, it is created and its index returned. </para>
+		/// </summary>
+		public int FindOrAddCollectionByType_Index(ELevelCollectionType InType)
+			=> E_UWorld_FindOrAddCollectionByType_Index(this, (byte)InType);
+		
+		
+		/// <summary>
 		/// <para>Try to find an acceptable position to place TestActor as close to possible to PlaceLocation.  Expects PlaceLocation to be a valid location inside the level. </para>
 		/// </summary>
 		public bool FindTeleportSpot(AActor TestActor, FVector PlaceLocation, FRotator PlaceRotation)
@@ -1188,10 +1183,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Flushes level streaming in blocking fashion and returns when all levels are loaded/ visible/ hidden </para>
+		/// <para>so further calls to UpdateLevelStreaming won't do any work unless state changes. Basically blocks </para>
+		/// <para>on all async operation like updating components. </para>
+		/// <param name="FlushType">Whether to only flush level visibility operations (optional) </param>
+		/// </summary>
+		public void FlushLevelStreaming(EFlushLevelStreamingType FlushType)
+			=> E_UWorld_FlushLevelStreaming(this, (byte)FlushType);
+		
+		
+		/// <summary>
 		/// <para>Updates the timer between garbage collection such that at the next opportunity garbage collection will be run. </para>
 		/// </summary>
 		public void ForceGarbageCollection(bool bFullPurge = false)
 			=> E_UWorld_ForceGarbageCollection(this, bFullPurge);
+		
+		
+		/// <summary>
+		/// <para>Returns the index of the level collection which currently has its context set on this world. May be INDEX_NONE. </para>
+		/// <para>If not INDEX_NONE, this implies that execution is currently within the scope of an FScopedLevelCollectionContextSwitch for this world. </para>
+		/// </summary>
+		public int GetActiveLevelCollectionIndex()
+			=> E_UWorld_GetActiveLevelCollectionIndex(this);
 		
 		
 		/// <summary>
@@ -1522,8 +1535,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Propagates a change to the active lighting scenario. </para>
 		/// </summary>
-		public void PropagateLightingScenarioChange(bool bLevelWasMadeVisible)
-			=> E_UWorld_PropagateLightingScenarioChange(this, bLevelWasMadeVisible);
+		public void PropagateLightingScenarioChange()
+			=> E_UWorld_PropagateLightingScenarioChange(this);
+		
+		
+		/// <summary>
+		/// <para>Given a level script actor, modify the string such that it points to the correct instance of the object. For replays. </para>
+		/// </summary>
+		public bool RemapCompiledScriptActor(string Str)
+			=> E_UWorld_RemapCompiledScriptActor(this, Str);
 		
 		
 		/// <summary>
@@ -1590,6 +1610,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Sets the level collection and its context on this world. Should only be called by FScopedLevelCollectionContextSwitch. </para>
+		/// </summary>
+		public void SetActiveLevelCollection(int LevelCollectionIndex)
+			=> E_UWorld_SetActiveLevelCollection(this, LevelCollectionIndex);
+		
+		
+		/// <summary>
 		/// <para>Spawns GameMode for the level. </para>
 		/// </summary>
 		public bool SetGameMode(FURL InURL)
@@ -1600,8 +1627,8 @@ namespace UnrealEngine
 		/// <para>Sets NumLightingUnbuiltObjects to the specified value.  Marks the worldsettings package dirty if the value changed. </para>
 		/// <param name="InNumLightingUnbuiltObjects">The new value. </param>
 		/// </summary>
-		public void SetMapNeedsLightingFullyRebuilt(int InNumLightingUnbuiltObjects)
-			=> E_UWorld_SetMapNeedsLightingFullyRebuilt(this, InNumLightingUnbuiltObjects);
+		public void SetMapNeedsLightingFullyRebuilt(int InNumLightingUnbuiltObjects, int InNumUnbuiltReflectionCaptures)
+			=> E_UWorld_SetMapNeedsLightingFullyRebuilt(this, InNumLightingUnbuiltObjects, InNumUnbuiltReflectionCaptures);
 		
 		
 		/// <summary>
@@ -1713,13 +1740,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void UpdateActorComponentEndOfFrameUpdateState(UActorComponent Component)
 			=> E_UWorld_UpdateActorComponentEndOfFrameUpdateState(this, Component);
-		
-		
-		/// <summary>
-		/// <para>Purges all reflection capture cached derived data and forces a re-render of captured scene data. </para>
-		/// </summary>
-		public void UpdateAllReflectionCaptures()
-			=> E_UWorld_UpdateAllReflectionCaptures(this);
 		
 		
 		/// <summary>

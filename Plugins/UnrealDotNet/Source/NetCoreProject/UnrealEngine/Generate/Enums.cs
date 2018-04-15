@@ -2,10 +2,9 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// <para>Indicates that PreInitializeComponents/PostInitializeComponents have been called on this Actor </para>
-	/// <para>Prevents re-initializing of actors spawned during level startup </para>
+	/// <para>Set when actor is about to be deleted. Needs to be uproperty so included in transactions. </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:597
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:295
 	
 	public enum EActorBeginPlayState : byte
 	{
@@ -14,7 +13,7 @@ namespace UnrealEngine
 		HasBegunPlay,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:42
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:42
 	
 	public enum EActorMetricsType : byte
 	{
@@ -24,7 +23,7 @@ namespace UnrealEngine
 		METRICS_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:153
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:154
 	
 	public enum EAllowKinematicDeferral : byte
 	{
@@ -32,7 +31,7 @@ namespace UnrealEngine
 		DisallowDeferral,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3486
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3494
 	
 	public enum EAngularConstraintMotion : byte
 	{
@@ -42,7 +41,7 @@ namespace UnrealEngine
 		ACM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:32
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:32
 	
 	public enum EAntiAliasingMethod : byte
 	{
@@ -53,7 +52,7 @@ namespace UnrealEngine
 		AAM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:31
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:31
 	
 	public enum EAspectRatioAxisConstraint : byte
 	{
@@ -63,7 +62,7 @@ namespace UnrealEngine
 		AspectRatio_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:67
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:67
 	
 	public enum EAttachmentRule : byte
 	{
@@ -72,16 +71,17 @@ namespace UnrealEngine
 		SnapToTarget,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:44
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:44
 	
 	public enum EAutoExposureMethod : byte
 	{
 		AEM_Histogram,
 		AEM_Basic,
+		AEM_Manual,
 		AEM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2762
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2770
 	
 	public enum EAutoPossessAI : byte
 	{
@@ -91,7 +91,7 @@ namespace UnrealEngine
 		PlacedInWorldOrSpawned,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:230
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:245
 	
 	public enum EBlendMode : byte
 	{
@@ -104,7 +104,7 @@ namespace UnrealEngine
 		BLEND_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:54
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:56
 	
 	public enum EBloomMethod : byte
 	{
@@ -113,7 +113,7 @@ namespace UnrealEngine
 		BM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:35
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:31
 	
 	public enum EBoneVisibilityStatus : byte
 	{
@@ -123,7 +123,7 @@ namespace UnrealEngine
 		BVS_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:35
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:35
 	
 	public enum ECanBeCharacterBase : byte
 	{
@@ -133,7 +133,7 @@ namespace UnrealEngine
 		ECB_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:609
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:600
 	
 	public enum ECollisionChannel : byte
 	{
@@ -173,7 +173,7 @@ namespace UnrealEngine
 		ECC_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:773
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:764
 	
 	public enum ECollisionResponse : byte
 	{
@@ -183,7 +183,7 @@ namespace UnrealEngine
 		ECR_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:30
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:30
 	
 	public enum EComponentCreationMethod : byte
 	{
@@ -193,7 +193,7 @@ namespace UnrealEngine
 		Instance,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:99
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:98
 	
 	public enum EConsoleType : byte
 	{
@@ -202,7 +202,7 @@ namespace UnrealEngine
 		CONSOLE_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:22
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:22
 	
 	public enum EDepthOfFieldMethod : byte
 	{
@@ -212,7 +212,7 @@ namespace UnrealEngine
 		DOFM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:117
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:117
 	
 	public enum EDetachmentRule : byte
 	{
@@ -220,7 +220,7 @@ namespace UnrealEngine
 		KeepWorld,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:51
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:51
 	
 	public enum EDetailMode : byte
 	{
@@ -230,7 +230,16 @@ namespace UnrealEngine
 		DM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:783
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:106
+	
+	public enum EDynamicResolutionStatus : byte
+	{
+		Disabled,
+		Paused,
+		Enabled,
+	}
+
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:774
 	
 	public enum EFilterInterpolationType : byte
 	{
@@ -240,7 +249,7 @@ namespace UnrealEngine
 		BSIT_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:836
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:827
 	
 	public enum EFlushLevelStreamingType : byte
 	{
@@ -249,7 +258,7 @@ namespace UnrealEngine
 		Visibility,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:65
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:64
 	
 	public enum EFullyLoadPackageType : byte
 	{
@@ -261,7 +270,7 @@ namespace UnrealEngine
 		FULLYLOAD_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:49
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:48
 	
 	public enum EGetWorldErrorMode : byte
 	{
@@ -277,7 +286,7 @@ namespace UnrealEngine
 	/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
 	/// <para>@see MaxSimulationTimeStep, bForceSubStepping </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:230
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:226
 	
 	public enum EHandleBlockingHitResult : byte
 	{
@@ -286,7 +295,7 @@ namespace UnrealEngine
 		Abort,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:17
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:17
 	
 	public enum EHorizTextAligment : byte
 	{
@@ -295,7 +304,7 @@ namespace UnrealEngine
 		EHTA_Right,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:203
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:203
 	
 	public enum EIndirectLightingCacheQuality : byte
 	{
@@ -304,7 +313,7 @@ namespace UnrealEngine
 		ILCQ_Volume,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:793
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:784
 	
 	public enum EInputConsumeOptions : byte
 	{
@@ -314,7 +323,7 @@ namespace UnrealEngine
 		ICO_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:26
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:26
 	
 	public enum EInputEvent : byte
 	{
@@ -326,7 +335,7 @@ namespace UnrealEngine
 		IE_MAX = 5,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\InterpToMovementComponent.h:14
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\InterpToMovementComponent.h:14
 	
 	public enum EInterpToBehaviourType : byte
 	{
@@ -336,7 +345,7 @@ namespace UnrealEngine
 		PingPong,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3885
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3908
 	
 	public enum ELevelCollectionType : byte
 	{
@@ -345,7 +354,7 @@ namespace UnrealEngine
 		StaticLevels,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:63
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:63
 	
 	public enum ELevelTick : byte
 	{
@@ -355,7 +364,7 @@ namespace UnrealEngine
 		LEVELTICK_PauseTick = 3,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:485
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:501
 	
 	public enum ELightingBuildQuality : byte
 	{
@@ -366,7 +375,7 @@ namespace UnrealEngine
 		Quality_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1793
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1784
 	
 	public enum ELightMapPaddingType : byte
 	{
@@ -375,7 +384,25 @@ namespace UnrealEngine
 		LMPT_NoPadding,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:469
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:214
+	
+	public enum ELightmapType : byte
+	{
+		Default,
+		ForceSurface,
+		ForceVolumetric,
+	}
+
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:66
+	
+	public enum ELightUnits : byte
+	{
+		Unitless,
+		Candelas,
+		Lumens,
+	}
+
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:484
 	
 	public enum EMaterialSamplerType : byte
 	{
@@ -387,10 +414,11 @@ namespace UnrealEngine
 		SAMPLERTYPE_DistanceFieldFont,
 		SAMPLERTYPE_LinearColor,
 		SAMPLERTYPE_LinearGrayscale,
+		SAMPLERTYPE_External,
 		SAMPLERTYPE_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:438
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:453
 	
 	public enum EMaterialShadingModel : byte
 	{
@@ -407,7 +435,7 @@ namespace UnrealEngine
 		MSM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:456
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:471
 	
 	public enum EMaterialTessellationMode : byte
 	{
@@ -417,7 +445,7 @@ namespace UnrealEngine
 		MTM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3875
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3898
 	
 	public enum EMeshBufferAccess : byte
 	{
@@ -425,7 +453,7 @@ namespace UnrealEngine
 		ForceCPUAndGPU,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:37
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:37
 	
 	public enum EMouseCaptureMode : byte
 	{
@@ -436,7 +464,7 @@ namespace UnrealEngine
 		CaptureDuringRightMouseDown,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:52
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:52
 	
 	public enum EMouseLockMode : byte
 	{
@@ -445,7 +473,7 @@ namespace UnrealEngine
 		LockAlways,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:76
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:76
 	
 	public enum EMoveComponentFlags : byte
 	{
@@ -456,7 +484,7 @@ namespace UnrealEngine
 		MOVECOMP_DisableBlockingOverlapDispatch = 0x0008,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:521
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:512
 	
 	public enum EMovementMode : byte
 	{
@@ -470,7 +498,7 @@ namespace UnrealEngine
 		MOVE_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2727
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2734
 	
 	public enum ENetDormancy : byte
 	{
@@ -479,10 +507,10 @@ namespace UnrealEngine
 		DORM_DormantAll,
 		DORM_DormantPartial,
 		DORM_Initial,
-		DORN_MAX,
+		DORM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:876
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:876
 	
 	public enum ENetMode : byte
 	{
@@ -493,7 +521,7 @@ namespace UnrealEngine
 		NM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2712
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2719
 	
 	public enum ENetRole : byte
 	{
@@ -504,7 +532,7 @@ namespace UnrealEngine
 		ROLE_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:554
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:545
 	
 	public enum ENetworkSmoothingMode : byte
 	{
@@ -514,7 +542,7 @@ namespace UnrealEngine
 		Replay,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:678
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:669
 	
 	public enum EObjectTypeQuery : byte
 	{
@@ -553,7 +581,7 @@ namespace UnrealEngine
 		ObjectTypeQuery_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:214
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:229
 	
 	public enum EOcclusionCombineMode : byte
 	{
@@ -562,7 +590,7 @@ namespace UnrealEngine
 		OCM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2233
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2228
 	
 	public enum EOptimizeMode : byte
 	{
@@ -570,7 +598,7 @@ namespace UnrealEngine
 		LookAheadMode,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:666
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:657
 	
 	public enum EOverlapFilterOption : byte
 	{
@@ -579,7 +607,7 @@ namespace UnrealEngine
 		OverlapFilter_StaticOnly,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:48
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:44
 	
 	public enum EPhysBodyOp : byte
 	{
@@ -588,7 +616,7 @@ namespace UnrealEngine
 		PBO_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3319
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3327
 	
 	public enum EPhysicalSurface : byte
 	{
@@ -658,7 +686,7 @@ namespace UnrealEngine
 		SurfaceType_Max,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:759
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:750
 	
 	public enum EPhysicsSceneType : byte
 	{
@@ -668,7 +696,7 @@ namespace UnrealEngine
 		PST_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:28
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:28
 	
 	public enum EPlaneConstraintAxisSetting : byte
 	{
@@ -683,7 +711,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>static variable for default data to be used without reconstructing everytime </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1087
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1078
 	
 	public enum ERadialImpulseFalloff : byte
 	{
@@ -692,11 +720,7 @@ namespace UnrealEngine
 		RIF_MAX,
 	}
 
-	
-	/// <summary>
-	/// <para>Encodes the full HDR data of FullHDRData. </para>
-	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ReflectionCaptureComponent.h:146
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ReflectionCaptureComponent.h:18
 	
 	public enum EReflectionSourceType : byte
 	{
@@ -704,7 +728,7 @@ namespace UnrealEngine
 		SpecifiedCubemap,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:300
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:315
 	
 	public enum ERefractionMode : byte
 	{
@@ -712,7 +736,7 @@ namespace UnrealEngine
 		RM_PixelNormalOffset,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:61
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:61
 	
 	public enum ERelativeTransformSpace : byte
 	{
@@ -722,7 +746,7 @@ namespace UnrealEngine
 		RTS_ParentBoneSpace,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:89
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:89
 	
 	public enum ERendererStencilMask : byte
 	{
@@ -742,14 +766,14 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Collection of the most recent ID mappings </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:2228
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:2263
 	
 	public enum ERootMotionMapping : byte
 	{
 		MapSize = 16,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2854
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2862
 	
 	public enum ERotatorQuantization : byte
 	{
@@ -757,7 +781,7 @@ namespace UnrealEngine
 		ShortComponents,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:243
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:258
 	
 	public enum ESamplerSourceMode : byte
 	{
@@ -766,7 +790,7 @@ namespace UnrealEngine
 		SSM_Clamp_WorldGroupSettings,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:351
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:366
 	
 	public enum ESceneCaptureCompositeMode : byte
 	{
@@ -775,7 +799,7 @@ namespace UnrealEngine
 		SCCM_Composite,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:47
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:47
 	
 	public enum ESceneCapturePrimitiveRenderMode : byte
 	{
@@ -784,7 +808,7 @@ namespace UnrealEngine
 		PRM_UseShowOnlyList,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:338
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:353
 	
 	public enum ESceneCaptureSource : byte
 	{
@@ -798,7 +822,7 @@ namespace UnrealEngine
 		SCS_BaseColor,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:192
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:192
 	
 	public enum ESceneDepthPriorityGroup : byte
 	{
@@ -807,7 +831,7 @@ namespace UnrealEngine
 		SDPG_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1803
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1794
 	
 	public enum EShadowMapFlags : byte
 	{
@@ -815,7 +839,7 @@ namespace UnrealEngine
 		SMF_Streamed = 0x00000001,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ShapeComponent.h:105
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ShapeComponent.h:105
 	
 	public enum EShapeBodySetupHelper : byte
 	{
@@ -823,7 +847,7 @@ namespace UnrealEngine
 		UpdateBodySetup,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:1871
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:1898
 	
 	public enum EShrinkCapsuleExtent : byte
 	{
@@ -833,7 +857,7 @@ namespace UnrealEngine
 		SHRINK_AllCustom,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:89
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:89
 	
 	public enum ESkyLightSourceType : byte
 	{
@@ -842,7 +866,7 @@ namespace UnrealEngine
 		SLS_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1099
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1090
 	
 	public enum ESleepFamily : byte
 	{
@@ -851,7 +875,7 @@ namespace UnrealEngine
 		Custom,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3818
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3841
 	
 	public enum ESpawnActorCollisionHandlingMethod : byte
 	{
@@ -862,7 +886,7 @@ namespace UnrealEngine
 		DontSpawnIfColliding,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:30
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:30
 	
 	public enum EStereoLayerShape : byte
 	{
@@ -872,7 +896,7 @@ namespace UnrealEngine
 		SLSH_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:14
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:14
 	
 	public enum EStereoLayerType : byte
 	{
@@ -886,7 +910,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Flags controlling how this tag should be shown in the UI </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:605
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:589
 	
 	public enum ETagDisplay : byte
 	{
@@ -901,7 +925,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Enum specifying the type of this tag </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:590
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:574
 	
 	public enum ETagType : byte
 	{
@@ -912,7 +936,7 @@ namespace UnrealEngine
 		TT_Chronological,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2102
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2097
 	
 	public enum ETeleportType : byte
 	{
@@ -920,7 +944,7 @@ namespace UnrealEngine
 		TeleportPhysics,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:77
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:77
 	
 	public enum ETickingGroup : byte
 	{
@@ -939,7 +963,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Cache whether this function was rescheduled as an interval function during StartParallel </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:228
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:228
 	
 	public enum ETickState : byte
 	{
@@ -948,7 +972,7 @@ namespace UnrealEngine
 		CoolingDown,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TimelineComponent.h:34
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\TimelineComponent.h:34
 	
 	public enum ETimelineLengthMode : byte
 	{
@@ -956,7 +980,7 @@ namespace UnrealEngine
 		TL_LastKeyFrame,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1112
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1103
 	
 	public enum ETimelineSigType : byte
 	{
@@ -968,7 +992,7 @@ namespace UnrealEngine
 		ETS_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:718
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:709
 	
 	public enum ETraceTypeQuery : byte
 	{
@@ -1007,7 +1031,7 @@ namespace UnrealEngine
 		TraceTypeQuery_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:417
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:432
 	
 	public enum ETrailWidthMode : byte
 	{
@@ -1016,7 +1040,7 @@ namespace UnrealEngine
 		ETrailWidthMode_FromSecond,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:85
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:84
 	
 	public enum ETransitionType : byte
 	{
@@ -1030,7 +1054,7 @@ namespace UnrealEngine
 		TT_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:255
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:270
 	
 	public enum ETranslucencyLightingMode : byte
 	{
@@ -1043,7 +1067,7 @@ namespace UnrealEngine
 		TLM_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:693
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:693
 	
 	public enum ETravelType : byte
 	{
@@ -1053,30 +1077,15 @@ namespace UnrealEngine
 		TRAVEL_MAX,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:510
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:588
 	
-	public enum ETriangleSortAxis : byte
+	public enum EType : byte
 	{
-		TSA_X_Axis,
-		TSA_Y_Axis,
-		TSA_Z_Axis,
-		TSA_MAX,
+		AddImpulse,
+		AddForce,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:496
-	
-	public enum ETriangleSortOption : byte
-	{
-		TRISORT_None,
-		TRISORT_CenterRadialDistance,
-		TRISORT_Random,
-		TRISORT_MergeContiguous,
-		TRISORT_Custom,
-		TRISORT_CustomLeftRight,
-		TRISORT_MAX,
-	}
-
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2214
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2209
 	
 	public enum EUpdateRateShiftBucket : byte
 	{
@@ -1089,16 +1098,17 @@ namespace UnrealEngine
 		ShiftBucketMax,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:44
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:44
 	
 	public enum EUpdateTransformFlags : byte
 	{
 		None = 0x0,
 		SkipPhysicsUpdate = 0x1,
 		PropagateFromParent = 0x2,
+		OnlyUpdateIfUsingSocket = 0x4,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3833
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3856
 	
 	public enum EUserActivityContext : byte
 	{
@@ -1107,7 +1117,7 @@ namespace UnrealEngine
 		Other,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2843
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2851
 	
 	public enum EVectorQuantization : byte
 	{
@@ -1116,7 +1126,7 @@ namespace UnrealEngine
 		RoundTwoDecimals,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:28
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:28
 	
 	public enum EVerticalTextAligment : byte
 	{
@@ -1126,7 +1136,7 @@ namespace UnrealEngine
 		EVRTA_QuadTop,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:901
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:901
 	
 	public enum EViewModeIndex : byte
 	{
@@ -1162,7 +1172,7 @@ namespace UnrealEngine
 	/// <summary>
 	/// <para>Enum that dictates what propagation policy to follow when calling SetVisibility or SetHiddenInGame recursively </para>
 	/// </summary>
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:767
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:796
 	
 	public enum EVisibilityPropagation : byte
 	{
@@ -1171,7 +1181,7 @@ namespace UnrealEngine
 		Propagate,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3093
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3101
 	
 	public enum EWalkableSlopeBehavior : byte
 	{
@@ -1182,7 +1192,7 @@ namespace UnrealEngine
 		WalkableSlope_Max,
 	}
 
-	// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\WindDirectionalSourceComponent.h:12
+	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\WindDirectionalSourceComponent.h:12
 	
 	public enum EWindSourceType : byte
 	{

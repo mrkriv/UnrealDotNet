@@ -61,7 +61,8 @@ public class UnrealDotNetRuntime : ModuleRules
             }
         );
 
-        if (UEBuildConfiguration.bBuildEditor == true)
+        //if (UEBuildConfiguration.bBuildEditor == true)
+        if (Target.Type == TargetRules.TargetType.Editor)
         {
             PrivateDependencyModuleNames.AddRange(
                 new string[]

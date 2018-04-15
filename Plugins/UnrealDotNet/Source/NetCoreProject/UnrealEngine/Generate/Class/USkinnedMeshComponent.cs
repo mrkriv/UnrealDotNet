@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:177
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
 
 namespace UnrealEngine
 {
@@ -24,14 +24,84 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bCPUSkinning_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bCPUSkinning_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bDisableMorphTarget_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bDisableMorphTarget_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bForceWireframe_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bForceWireframe_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bHideSkin_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bHideSkin_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bRecentlyRendered_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bRecentlyRendered_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(IntPtr Ptr);
@@ -82,10 +152,10 @@ namespace UnrealEngine
 		private static extern int E_USkinnedMeshComponent_GetNumBones(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_USkinnedMeshComponent_GetParentBone(IntPtr Self, string BoneName);
+		private static extern int E_USkinnedMeshComponent_GetNumLODs(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USkinnedMeshComponent_GetSkinnedVertexPosition(IntPtr Self, int VertexIndex);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetParentBone(IntPtr Self, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_USkinnedMeshComponent_GetSocketBoneName(IntPtr Self, string InSocketName);
@@ -106,23 +176,147 @@ namespace UnrealEngine
 		private static extern void E_USkinnedMeshComponent_SetForceWireframe(IntPtr Self, bool InForceWireframe);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetMaterialPreview(IntPtr Self, int InMaterialIndexPreview);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkinnedMeshComponent_SetMinLOD(IntPtr Self, int InNewMinLOD);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetSectionPreview(IntPtr Self, int InSectionIndexPreview);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USkinnedMeshComponent_ShouldCPUSkin(IntPtr Self);
 		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_UpdateRecomputeTangent(IntPtr Self, int MaterialIndex, int LodIndex, bool bRecomputeTangentValue);
-		
 		#endregion
 		
 		#region Property
+		public byte bCanHighlightSelectedSections
+		{
+			get => E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to use the capsule representation (when present) from a skeletal mesh's ShadowPhysicsAsset for direct shadowing from lights. </para>
+		/// <para>This type of shadowing is approximate but handles extremely wide area shadowing well.  The softness of the shadow depends on the light's LightSourceAngle / SourceRadius. </para>
+		/// <para>This flag will force bCastInsetShadow to be enabled. </para>
+		/// </summary>
+		public byte CapsuleDirectShadow
+		{
+			get => E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bCastCapsuleDirectShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to use the capsule representation (when present) from a skeletal mesh's ShadowPhysicsAsset for shadowing indirect lighting (from lightmaps or skylight). </para>
+		/// </summary>
+		public byte CapsuleIndirectShadow
+		{
+			get => E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bCastCapsuleIndirectShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>When true, skip using the physics asset etc. and always use the fixed bounds defined in the SkeletalMesh. </para>
+		/// </summary>
+		public byte bComponentUseFixedSkelBounds
+		{
+			get => E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bComponentUseFixedSkelBounds_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, when updating bounds from a PhysicsAsset, consider _all_ BodySetups, not just those flagged with bConsiderForBounds. </para>
+		/// </summary>
+		public byte bConsiderAllBodiesForBounds
+		{
+			get => E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bConsiderAllBodiesForBounds_SET(NativePointer, value);
+		}
+
+		public byte bCPUSkinning
+		{
+			get => E_PROP_USkinnedMeshComponent_bCPUSkinning_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bCPUSkinning_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Disable Morphtarget for this component. </para>
+		/// </summary>
+		public byte bDisableMorphTarget
+		{
+			get => E_PROP_USkinnedMeshComponent_bDisableMorphTarget_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bDisableMorphTarget_SET(NativePointer, value);
+		}
+
+		public byte bDisplayBones_DEPRECATED
+		{
+			get => E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bDisplayBones_DEPRECATED_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Enable on screen debugging of update rate optimization. </para>
+		/// <para>Red = Skipping 0 frames, Green = skipping 1 frame, Blue = skipping 2 frames, black = skipping more than 2 frames. </para>
+		/// <para>@todo: turn this into a console command. </para>
+		/// </summary>
+		public byte bDisplayDebugUpdateRateOptimizations
+		{
+			get => E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bDisplayDebugUpdateRateOptimizations_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>if TRUE, Owner will determine how often animation will be updated and evaluated. See AnimUpdateRateTick() </para>
+		/// <para>This allows to skip frames for performance. (For example based on visibility and size on screen). </para>
+		/// </summary>
+		public byte bEnableUpdateRateOptimizations
+		{
+			get => E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bEnableUpdateRateOptimizations_SET(NativePointer, value);
+		}
+
+		public byte bForceWireframe
+		{
+			get => E_PROP_USkinnedMeshComponent_bForceWireframe_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bForceWireframe_SET(NativePointer, value);
+		}
+
+		public byte bHideSkin
+		{
+			get => E_PROP_USkinnedMeshComponent_bHideSkin_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bHideSkin_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, use per-bone motion blur on this skeletal mesh (requires additional rendering, can be disabled to save performance). </para>
+		/// </summary>
+		public byte bPerBoneMotionBlur
+		{
+			get => E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_SET(NativePointer, value);
+		}
+
+		public byte bRecentlyRendered
+		{
+			get => E_PROP_USkinnedMeshComponent_bRecentlyRendered_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bRecentlyRendered_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>When true, we will just using the bounds from our MasterPoseComponent.  This is useful for when we have a Mesh Parented </para>
+		/// <para>to the main SkelMesh (e.g. outline mesh or a full body overdraw effect that is toggled) that is always going to be the same </para>
+		/// <para>bounds as parent.  We want to do no calculations in that case. </para>
+		/// </summary>
+		public byte bUseBoundsFromMasterPoseComponent
+		{
+			get => E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Controls how dark the capsule indirect shadow can be. </para>
@@ -131,12 +325,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_CapsuleIndirectShadowMinVisibility_SET(NativePointer, value);
-		}
-
-		public byte CustomSortAlternateIndexMode
-		{
-			get => E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_CustomSortAlternateIndexMode_SET(NativePointer, value);
 		}
 
 		
@@ -256,20 +444,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the number of LODs on this component </para>
+		/// </summary>
+		public int GetNumLODs()
+			=> E_USkinnedMeshComponent_GetNumLODs(this);
+		
+		
+		/// <summary>
 		/// <para>Get Parent Bone of the input bone </para>
 		/// <param name="BoneName">Name of the bone </param>
 		/// <return>the name of the parent bone for the specified bone. Returns 'None' if the bone does not exist or it is the root bone </return>
 		/// </summary>
 		public string GetParentBone(string BoneName)
 			=> E_USkinnedMeshComponent_GetParentBone(this, BoneName);
-		
-		
-		/// <summary>
-		/// <para>Simple, CPU evaluation of a vertex's skinned position (returned in component space) </para>
-		/// <param name="VertexIndex">Vertex Index. If compressed, this will be slow. </param>
-		/// </summary>
-		public virtual FVector GetSkinnedVertexPosition(int VertexIndex)
-			=> E_USkinnedMeshComponent_GetSkinnedVertexPosition(this, VertexIndex);
 		
 		
 		/// <summary>
@@ -311,9 +498,6 @@ namespace UnrealEngine
 		public void SetForceWireframe(bool InForceWireframe)
 			=> E_USkinnedMeshComponent_SetForceWireframe(this, InForceWireframe);
 		
-		public void SetMaterialPreview(int InMaterialIndexPreview)
-			=> E_USkinnedMeshComponent_SetMaterialPreview(this, InMaterialIndexPreview);
-		
 		
 		/// <summary>
 		/// <para>Set MinLodModel of the mesh component </para>
@@ -324,27 +508,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the value of the SectionIndexPreview flag and reattaches the component as necessary. </para>
-		/// <param name="InSectionIndexPreview">New value of SectionIndexPreview. </param>
-		/// </summary>
-		public void SetSectionPreview(int InSectionIndexPreview)
-			=> E_USkinnedMeshComponent_SetSectionPreview(this, InSectionIndexPreview);
-		
-		
-		/// <summary>
 		/// <para>Function returns whether or not CPU skinning should be applied </para>
 		/// <para>Allows the editor to override the skinning state for editor tools </para>
 		/// <return>true if should CPU skin. false otherwise </return>
 		/// </summary>
 		public virtual bool ShouldCPUSkin()
 			=> E_USkinnedMeshComponent_ShouldCPUSkin(this);
-		
-		
-		/// <summary>
-		/// <para>update Recalculate Normal flag in matching section </para>
-		/// </summary>
-		public void UpdateRecomputeTangent(int MaterialIndex, int LodIndex, bool bRecomputeTangentValue)
-			=> E_USkinnedMeshComponent_UpdateRecomputeTangent(this, MaterialIndex, LodIndex, bRecomputeTangentValue);
 		
 		#endregion
 		

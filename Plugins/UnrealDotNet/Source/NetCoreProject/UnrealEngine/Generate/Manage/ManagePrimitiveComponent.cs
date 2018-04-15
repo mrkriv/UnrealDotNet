@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 namespace UnrealEngine
 {
@@ -17,9 +17,18 @@ namespace UnrealEngine
 		/// <para>Add an angular impulse to a single rigid body. Good for one time instant burst. </para>
 		/// <param name="AngularImpulse">Magnitude and direction of impulse to apply. Direction is axis of rotation. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply angular impulse to. 'None' indicates root body. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public override void AddAngularImpulse(FVector Impulse, string BoneName, bool bVelChange) { }
+		
+		
+		/// <summary>
+		/// <para>Add an angular impulse to a single rigid body. Good for one time instant burst. </para>
+		/// <param name="AngularImpulse">Magnitude and direction of impulse to apply. Direction is axis of rotation. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply angular impulse to. 'None' indicates root body. </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect). </param>
+		/// </summary>
+		public override void AddAngularImpulseInRadians(FVector Impulse, string BoneName, bool bVelChange) { }
 		
 		
 		/// <summary>
@@ -27,7 +36,7 @@ namespace UnrealEngine
 		/// <para>This is like a 'thruster'. Good for adding a burst over some (non zero) time. Should be called every frame for the duration of the force. </para>
 		/// <param name="Force">Force vector to apply. Magnitude indicates strength of force. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply force to. 'None' indicates root body. </param>
-		/// <param name="bAccelChange">If true, Force is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// <param name="bAccelChange">If true, Force is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect). </param>
 		/// </summary>
 		public override void AddForce(FVector Force, string BoneName, bool bAccelChange) { }
 		
@@ -56,7 +65,7 @@ namespace UnrealEngine
 		/// <para>Add an impulse to a single rigid body. Good for one time instant burst. </para>
 		/// <param name="Impulse">Magnitude and direction of impulse to apply. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply impulse to. 'None' indicates root body. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public override void AddImpulse(FVector Impulse, string BoneName, bool bVelChange) { }
 		
@@ -76,7 +85,7 @@ namespace UnrealEngine
 		/// <param name="Radius">Radius within which to apply the force. </param>
 		/// <param name="Strength">Strength of force to apply. </param>
 		/// <param name="Falloff">Allows you to control the strength of the force as a function of distance from Origin. </param>
-		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect). </param>
 		/// </summary>
 		public override void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange) { }
 		
@@ -87,7 +96,7 @@ namespace UnrealEngine
 		/// <param name="Radius">Size of radial impulse. Beyond this distance from Origin, there will be no affect. </param>
 		/// <param name="Strength">Maximum strength of impulse applied to body. </param>
 		/// <param name="Falloff">Allows you to control the strength of the impulse as a function of distance from Origin. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public override void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) { }
 		
@@ -119,6 +128,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Set the angular velocity of all bodies in this component. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to physics, in radians per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
+		/// </summary>
+		public override void SetAllPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent) { }
+		
+		
+		/// <summary>
 		/// <para>Set the linear velocity of all bodies in this component. </para>
 		/// <param name="NewVel">New linear velocity to apply to physics. </param>
 		/// <param name="bAddToCurrent">If true, NewVel is added to the existing velocity of the body. </param>
@@ -132,6 +149,12 @@ namespace UnrealEngine
 		/// <param name="NewPos">New position for the body </param>
 		/// </summary>
 		public override void SetAllPhysicsPosition(FVector NewPos) { }
+		
+		
+		/// <summary>
+		/// <para>Set whether all bodies in this component should use Continuous Collision Detection </para>
+		/// </summary>
+		public override void SetAllUseCCD(bool InUseCCD) { }
 		
 		
 		/// <summary>
@@ -217,6 +240,12 @@ namespace UnrealEngine
 		/// <param name="bSimulate">New simulation state for single body </param>
 		/// </summary>
 		public override void SetSimulatePhysics(bool bSimulate) { }
+		
+		
+		/// <summary>
+		/// <para>Set whether this component should use Continuous Collision Detection </para>
+		/// </summary>
+		public override void SetUseCCD(bool InUseCCD, string BoneName) { }
 		
 		
 		/// <summary>

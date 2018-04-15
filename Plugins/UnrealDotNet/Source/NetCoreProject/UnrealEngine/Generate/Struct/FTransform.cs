@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\TransformVectorized.h:36
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\TransformVectorized.h:36
 
 namespace UnrealEngine
 {
@@ -209,22 +209,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_FTransform_GetRotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetRotationV(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(IntPtr Self, IntPtr InScale, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_GetScale3D(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetScale3DV(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_GetTranslation(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetTranslationV(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FTransform_InitFromString(IntPtr Self, string InSourceString);
@@ -237,6 +228,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_InverseTransformPositionNoScale(IntPtr Self, IntPtr V);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_InverseTransformRotation(IntPtr Self, IntPtr Q);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_InverseTransformVector(IntPtr Self, IntPtr V);
@@ -315,6 +309,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_TransformPositionNoScale(IntPtr Self, IntPtr V);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_TransformRotation(IntPtr Self, IntPtr Q);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FTransform_TransformVector(IntPtr Self, IntPtr V);
@@ -489,15 +486,6 @@ namespace UnrealEngine
 		public FQuat GetRotation()
 			=> E_FTransform_GetRotation(this);
 		
-		
-		/// <summary>
-		/// <para>Returns an opaque copy of the rotation component </para>
-		/// <para>This method should be used when passing rotation from one FTransform to another </para>
-		/// <return>The rotation component </return>
-		/// </summary>
-		public FQuat GetRotationV()
-			=> E_FTransform_GetRotationV(this);
-		
 		public FVector GetSafeScaleReciprocal(FVector InScale, float Tolerance)
 			=> E_FTransform_GetSafeScaleReciprocal(this, InScale, Tolerance);
 		
@@ -511,29 +499,11 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns an opaque copy of the Scale3D component </para>
-		/// <para>This method should be used when passing Scale3D from one FTransform to another </para>
-		/// <return>The Scale3D component </return>
-		/// </summary>
-		public FVector GetScale3DV()
-			=> E_FTransform_GetScale3DV(this);
-		
-		
-		/// <summary>
 		/// <para>Returns the translation component </para>
 		/// <return>The translation component </return>
 		/// </summary>
 		public FVector GetTranslation()
 			=> E_FTransform_GetTranslation(this);
-		
-		
-		/// <summary>
-		/// <para>Returns an opaque copy of the translation component </para>
-		/// <para>This method should be used when passing translation from one FTransform to another </para>
-		/// <return>The translation component </return>
-		/// </summary>
-		public FVector GetTranslationV()
-			=> E_FTransform_GetTranslationV(this);
 		
 		
 		/// <summary>
@@ -551,13 +521,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Inverts the matrix and then transforms V - correctly handles scaling in this matrix. </para>
+		/// <para>Inverts the transform and then transforms V - correctly handles scaling in this transform. </para>
 		/// </summary>
 		public FVector InverseTransformPosition(FVector V)
 			=> E_FTransform_InverseTransformPosition(this, V);
 		
 		public FVector InverseTransformPositionNoScale(FVector V)
 			=> E_FTransform_InverseTransformPositionNoScale(this, V);
+		
+		
+		/// <summary>
+		/// <para>Inverse transform a rotation. </para>
+		/// <para>For example if this is a LocalToWorld transform, InverseTransformRotation(Q) would transform Q from world to local space. </para>
+		/// </summary>
+		public FQuat InverseTransformRotation(FQuat Q)
+			=> E_FTransform_InverseTransformRotation(this, Q);
 		
 		
 		/// <summary>
@@ -708,6 +686,14 @@ namespace UnrealEngine
 		
 		public FVector TransformPositionNoScale(FVector V)
 			=> E_FTransform_TransformPositionNoScale(this, V);
+		
+		
+		/// <summary>
+		/// <para>Transform a rotation. </para>
+		/// <para>For example if this is a LocalToWorld transform, TransformRotation(Q) would transform Q from local to world space. </para>
+		/// </summary>
+		public FQuat TransformRotation(FQuat Q)
+			=> E_FTransform_TransformRotation(this, Q);
 		
 		public FVector TransformVector(FVector V)
 			=> E_FTransform_TransformVector(this, V);

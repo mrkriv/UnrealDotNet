@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 namespace UnrealEngine
 {
@@ -99,7 +99,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called when pawn's movement is blocked </para>
-		/// <para>@PARAM Impact describes the blocking hit. </para>
+		/// <param name="Impact">describes the blocking hit. </param>
 		/// </summary>
 		public override void MoveBlockedBy(FHitResult Impact) { }
 		
@@ -147,6 +147,8 @@ namespace UnrealEngine
 		/// </summary>
 		public override void OnUpdateSimulatedPosition(FVector OldLocation, FQuat OldRotation) { }
 		
+		public override void OnWalkingOffLedge_Implementation(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta) { }
+		
 		public override void RootMotionDebugClientPrintOnScreen_Implementation(string InString) { }
 		
 		
@@ -172,10 +174,6 @@ namespace UnrealEngine
 		/// <para>@see CharacterMovement->WantsToCrouch </para>
 		/// </summary>
 		public override void UnCrouch(bool bClientSimulation) { }
-		
-		public override void UpdateFromCompressedFlags(byte Flags) { }
-		
-		public override void UpdateSimulatedPosition(FVector Location, FRotator NewRotation) { }
 		
 		public static implicit operator IntPtr(ManageCharacter Self)
 		{

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:959
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:959
 
 namespace UnrealEngine
 {
@@ -26,9 +26,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FExposureSettings_bFixed_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_FExposureSettings_LogOffset_GET(IntPtr Ptr);
+		private static extern float E_PROP_FExposureSettings_FixedEV100_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FExposureSettings_LogOffset_SET(IntPtr Ptr, int Value);
+		private static extern void E_PROP_FExposureSettings_FixedEV100_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_FExposureSettings_ToString(IntPtr Self);
@@ -42,10 +42,10 @@ namespace UnrealEngine
 			set => E_PROP_FExposureSettings_bFixed_SET(NativePointer, value);
 		}
 
-		public int LogOffset
+		public float FixedEV100
 		{
-			get => E_PROP_FExposureSettings_LogOffset_GET(NativePointer);
-			set => E_PROP_FExposureSettings_LogOffset_SET(NativePointer, value);
+			get => E_PROP_FExposureSettings_FixedEV100_GET(NativePointer);
+			set => E_PROP_FExposureSettings_FixedEV100_SET(NativePointer, value);
 		}
 
 		#endregion

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Engine/EngineTypes.h"
+#include "Runtime/Engine/Classes/Engine/EngineTypes.h"
 #include "ManageEngineTypes.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3422
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3430
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageEngineTypes : public UEngineTypes

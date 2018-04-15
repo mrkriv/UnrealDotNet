@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:35
 
 namespace UnrealEngine
 {
@@ -139,6 +139,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_NeedsLoadForServer(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_NotifyObjectReferenceEliminated(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostCDOContruct(IntPtr Self);
@@ -463,6 +466,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool NeedsLoadForServer()
 			=> E_UObject_NeedsLoadForServer(this);
+		
+		public virtual void NotifyObjectReferenceEliminated()
+			=> E_UObject_NotifyObjectReferenceEliminated(this);
 		
 		
 		/// <summary>

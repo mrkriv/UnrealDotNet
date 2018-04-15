@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:133
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:135
 
 namespace UnrealEngine
 {
@@ -27,9 +27,6 @@ namespace UnrealEngine
 		private static extern void E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FSkelMeshComponentLODInfo_CleanUp(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -43,9 +40,6 @@ namespace UnrealEngine
 		
 		public void BeginReleaseOverrideVertexColors()
 			=> E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(this);
-		
-		public void CleanUp()
-			=> E_FSkelMeshComponentLODInfo_CleanUp(this);
 		
 		public void ReleaseOverrideSkinWeightsAndBlock()
 			=> E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(this);

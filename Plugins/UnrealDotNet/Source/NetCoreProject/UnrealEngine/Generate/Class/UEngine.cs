@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:585
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:603
 
 namespace UnrealEngine
 {
@@ -174,11 +174,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_PhysicErrorCorrection_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_UEngine_PlayOnConsoleSaveDir_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_PlayOnConsoleSaveDir_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(IntPtr Ptr, float Value);
@@ -274,16 +269,31 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_WireframeMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_UEngine_GetDynamicResolutionStatus(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UEngine_GetDynamicResolutionUserSetting(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UEngine_IsInitialized(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_ParseCommandline(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_PauseDynamicResolution(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_PreExit(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_RestoreSelectedMaterialColor(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_ResumeDynamicResolution(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_SetDynamicResolutionUserSetting(IntPtr Self, bool Enable);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_ShutdownAudioDeviceManager(IntPtr Self);
@@ -506,12 +516,6 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_PhysicErrorCorrection_SET(NativePointer, value);
 		}
 
-		public string PlayOnConsoleSaveDir
-		{
-			get => E_PROP_UEngine_PlayOnConsoleSaveDir_GET(NativePointer);
-			set => E_PROP_UEngine_PlayOnConsoleSaveDir_SET(NativePointer, value);
-		}
-
 		public float PrimitiveProbablyVisibleTime
 		{
 			get => E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(NativePointer);
@@ -633,6 +637,20 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Returns the current status of dynamic resolution. </para>
+		/// </summary>
+		public EDynamicResolutionStatus GetDynamicResolutionStatus()
+			=> (EDynamicResolutionStatus)E_UEngine_GetDynamicResolutionStatus(this);
+		
+		
+		/// <summary>
+		/// <para>Get the user setting for dynamic resolution. </para>
+		/// </summary>
+		public bool GetDynamicResolutionUserSetting()
+			=> E_UEngine_GetDynamicResolutionUserSetting(this);
+		
 		public virtual bool IsInitialized()
 			=> E_UEngine_IsInitialized(this);
 		
@@ -642,6 +660,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void ParseCommandline()
 			=> E_UEngine_ParseCommandline(this);
+		
+		
+		/// <summary>
+		/// <para>Pause dynamic resolution for this frame. </para>
+		/// </summary>
+		public void PauseDynamicResolution()
+			=> E_UEngine_PauseDynamicResolution(this);
 		
 		
 		/// <summary>
@@ -656,6 +681,20 @@ namespace UnrealEngine
 		/// </summary>
 		public void RestoreSelectedMaterialColor()
 			=> E_UEngine_RestoreSelectedMaterialColor(this);
+		
+		
+		/// <summary>
+		/// <para>Resume dynamic resolution for this frame. </para>
+		/// </summary>
+		public void ResumeDynamicResolution()
+			=> E_UEngine_ResumeDynamicResolution(this);
+		
+		
+		/// <summary>
+		/// <para>Set the user setting for dynamic resolution. </para>
+		/// </summary>
+		public void SetDynamicResolutionUserSetting(bool Enable)
+			=> E_UEngine_SetDynamicResolutionUserSetting(this, Enable);
 		
 		public virtual void ShutdownAudioDeviceManager()
 			=> E_UEngine_ShutdownAudioDeviceManager(this);

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:361
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:376
 
 namespace UnrealEngine
 {
@@ -21,19 +21,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLightingChannels();
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FLightingChannels_bChannel0_GET(IntPtr Ptr);
+		private static extern byte E_PROP_FLightingChannels_bChannel0_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLightingChannels_bChannel0_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FLightingChannels_bChannel0_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FLightingChannels_bChannel1_GET(IntPtr Ptr);
+		private static extern byte E_PROP_FLightingChannels_bChannel1_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLightingChannels_bChannel1_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FLightingChannels_bChannel1_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_FLightingChannels_bChannel2_GET(IntPtr Ptr);
+		private static extern byte E_PROP_FLightingChannels_bChannel2_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLightingChannels_bChannel2_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_FLightingChannels_bChannel2_SET(IntPtr Ptr, byte Value);
 		
 		#endregion
 		
@@ -42,19 +42,19 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Default channel for all primitives and lights. </para>
 		/// </summary>
-		public bool bChannel0
+		public byte bChannel0
 		{
 			get => E_PROP_FLightingChannels_bChannel0_GET(NativePointer);
 			set => E_PROP_FLightingChannels_bChannel0_SET(NativePointer, value);
 		}
 
-		public bool bChannel1
+		public byte bChannel1
 		{
 			get => E_PROP_FLightingChannels_bChannel1_GET(NativePointer);
 			set => E_PROP_FLightingChannels_bChannel1_SET(NativePointer, value);
 		}
 
-		public bool bChannel2
+		public byte bChannel2
 		{
 			get => E_PROP_FLightingChannels_bChannel2_GET(NativePointer);
 			set => E_PROP_FLightingChannels_bChannel2_SET(NativePointer, value);

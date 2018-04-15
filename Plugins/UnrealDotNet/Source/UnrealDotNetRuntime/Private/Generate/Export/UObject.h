@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "CoreUObject/Public/UObject/Object.h"
+#include "Runtime/CoreUObject/Public/UObject/Object.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:35
 
 class E_PROTECTED_WRAP_UObject : protected UObject
 {
@@ -238,6 +238,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_NeedsLoadForServer(UObject* Self)
 	{
 		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_UObject_NotifyObjectReferenceEliminated(UObject* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
 	}
 
 	DOTNET_EXPORT auto E_UObject_PostCDOContruct(UObject* Self)

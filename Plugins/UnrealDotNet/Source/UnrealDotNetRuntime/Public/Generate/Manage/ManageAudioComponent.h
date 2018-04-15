@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/AudioComponent.h"
+#include "Runtime/Engine/Classes/Components/AudioComponent.h"
 #include "ManageAudioComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:90
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:108
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageAudioComponent : public UAudioComponent

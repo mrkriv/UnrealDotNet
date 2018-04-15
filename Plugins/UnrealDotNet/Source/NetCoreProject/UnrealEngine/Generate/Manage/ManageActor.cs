@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
 
 namespace UnrealEngine
 {
@@ -64,7 +64,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>fills ReplicatedMovement property </para>
+		/// <para>Fills ReplicatedMovement property </para>
 		/// </summary>
 		public override void GatherCurrentMovement() { }
 		
@@ -86,6 +86,10 @@ namespace UnrealEngine
 		/// </summary>
 		public override void LifeSpanExpired() { }
 		
+		
+		/// <summary>
+		/// <para>Called to mark all components as pending kill when the actor is being destroyed </para>
+		/// </summary>
 		public override void MarkComponentsAsPendingKill() { }
 		
 		
@@ -163,7 +167,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>called when the Actor is outside the hard limit on world bounds </para>
+		/// <para>Called when the Actor is outside the hard limit on world bounds </para>
 		/// </summary>
 		public override void OutsideWorldBounds() { }
 		
@@ -175,15 +179,17 @@ namespace UnrealEngine
 		/// </summary>
 		public override void PostActorCreated() { }
 		
-		public override void PostInitializeComponents() { }
 		
-		public override void PostNetInit() { }
+		/// <summary>
+		/// <para>Allow actors to initialize themselves on the C++ side </para>
+		/// </summary>
+		public override void PostInitializeComponents() { }
 		
 		
 		/// <summary>
-		/// <para>Update and smooth location, not called for simulated physics! </para>
+		/// <para>Always called immediately after spawning and reading in replicated properties </para>
 		/// </summary>
-		public override void PostNetReceiveLocation() { }
+		public override void PostNetInit() { }
 		
 		
 		/// <summary>

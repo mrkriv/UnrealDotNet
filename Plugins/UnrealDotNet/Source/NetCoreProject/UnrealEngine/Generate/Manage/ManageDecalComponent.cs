@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
 
 namespace UnrealEngine
 {
@@ -12,6 +12,12 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Called when the life span of the decal has been exceeded </para>
+		/// </summary>
+		protected override void LifeSpanCallback() { }
+		
 		public static implicit operator IntPtr(ManageDecalComponent Self)
 		{
 			return Self.NativePointer;

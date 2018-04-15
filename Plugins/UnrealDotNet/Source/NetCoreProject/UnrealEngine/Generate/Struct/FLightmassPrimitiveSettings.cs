@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1577
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1568
 
 namespace UnrealEngine
 {
@@ -58,6 +58,10 @@ namespace UnrealEngine
 			set => E_PROP_FLightmassPrimitiveSettings_DiffuseBoost_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Scales the emissive contribution of all materials applied to this object. </para>
+		/// </summary>
 		public float EmissiveBoost
 		{
 			get => E_PROP_FLightmassPrimitiveSettings_EmissiveBoost_GET(NativePointer);

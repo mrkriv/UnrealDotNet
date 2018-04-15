@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/ProjectileMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/ProjectileMovementComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
 
 class E_PROTECTED_WRAP_UProjectileMovementComponent : protected UProjectileMovementComponent
 {
@@ -28,11 +28,6 @@ public:
 	FVector ComputeMoveDelta_WRAP(const FVector& InVelocity, float DeltaTime)
 	{
 		return ComputeMoveDelta(InVelocity, DeltaTime);
-	}
-
-	float GetEffectiveGravityZ_WRAP()
-	{
-		return GetEffectiveGravityZ();
 	}
 
 	EHandleBlockingHitResult HandleBlockingHit_WRAP(const FHitResult& Hit, float TimeTick, const FVector& MoveDelta, float& SubTickTimeRemaining)
@@ -88,11 +83,6 @@ extern "C"
 		auto _p0 = *(FVector*)InVelocity;
 		auto _p1 = DeltaTime;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->ComputeMoveDelta_WRAP(_p0, _p1));
-	}
-
-	DOTNET_EXPORT auto E_UProjectileMovementComponent_GetEffectiveGravityZ(UProjectileMovementComponent* Self)
-	{
-		return ((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->GetEffectiveGravityZ_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_HandleBlockingHit(UProjectileMovementComponent* Self, INT_PTR Hit, float TimeTick, INT_PTR MoveDelta, float SubTickTimeRemaining)

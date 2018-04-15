@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
 
 namespace UnrealEngine
 {
@@ -46,6 +46,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetEnableLightShaftBloom(IntPtr Self, bool bNewValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(IntPtr Self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetIndirectLightingIntensity(IntPtr Self, float NewIntensity);
@@ -112,6 +115,9 @@ namespace UnrealEngine
 		
 		public void SetEnableLightShaftBloom(bool bNewValue)
 			=> E_ULightComponent_SetEnableLightShaftBloom(this, bNewValue);
+		
+		public void SetForceCachedShadowsForMovablePrimitives(bool bNewValue)
+			=> E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(this, bNewValue);
 		
 		public void SetIndirectLightingIntensity(float NewIntensity)
 			=> E_ULightComponent_SetIndirectLightingIntensity(this, NewIntensity);

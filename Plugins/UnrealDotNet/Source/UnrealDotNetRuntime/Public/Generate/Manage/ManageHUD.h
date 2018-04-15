@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/HUD.h"
+#include "Runtime/Engine/Classes/GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD
@@ -31,6 +31,8 @@ public:
 	
 	virtual void HandleBugScreenShot() override;
 	
+	virtual void NextDebugTarget() override;
+	
 	virtual void NotifyBindPostProcessEffects() override;
 	
 	virtual void NotifyHitBoxBeginCursorOver(FName BoxName) override;
@@ -44,6 +46,8 @@ public:
 	virtual void OnLostFocusPause(bool bEnable) override;
 	
 	virtual void PostRender() override;
+	
+	virtual void PreviousDebugTarget() override;
 	
 	virtual void RemovePostRenderedActor(AActor* A) override;
 	

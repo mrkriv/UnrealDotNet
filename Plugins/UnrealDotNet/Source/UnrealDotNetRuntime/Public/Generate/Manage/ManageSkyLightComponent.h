@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/SkyLightComponent.h"
+#include "Runtime/Engine/Classes/Components/SkyLightComponent.h"
 #include "ManageSkyLightComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:99
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:99
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSkyLightComponent : public USkyLightComponent

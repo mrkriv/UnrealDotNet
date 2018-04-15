@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
 
 namespace UnrealEngine
 {
@@ -111,9 +111,6 @@ namespace UnrealEngine
 		private static extern bool E_UMovementComponent_ShouldSkipUpdate(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_SkipUpdate(IntPtr Self, float DeltaTime);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UMovementComponent_SlideAlongSurface(IntPtr Self, IntPtr Delta, float Time, IntPtr Normal, IntPtr Hit, bool bHandleImpact);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -154,7 +151,7 @@ namespace UnrealEngine
 		/// <param name="Radius">The radius in which the force will be applied </param>
 		/// <param name="Strength">The strength of the force </param>
 		/// <param name="Falloff">The falloff from the force's origin </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
 			=> E_UMovementComponent_AddRadialImpulse(this, Origin, Radius, Strength, (byte)Falloff, bVelChange);
@@ -363,9 +360,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool ShouldSkipUpdate(float DeltaTime)
 			=> E_UMovementComponent_ShouldSkipUpdate(this, DeltaTime);
-		
-		public virtual bool SkipUpdate(float DeltaTime)
-			=> E_UMovementComponent_SkipUpdate(this, DeltaTime);
 		
 		
 		/// <summary>

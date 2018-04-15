@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageActorComponent.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:94
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
 void UManageActorComponent::Activate(bool bReset)
 {

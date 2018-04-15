@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/LineBatchComponent.h"
+#include "Runtime/Engine/Classes/Components/LineBatchComponent.h"
 #include "ManageLineBatchComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\LineBatchComponent.h:120
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\LineBatchComponent.h:120
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageLineBatchComponent : public ULineBatchComponent

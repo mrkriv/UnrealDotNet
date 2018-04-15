@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Engine/Engine.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:585
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:603
 
 extern "C"
 {
@@ -99,9 +99,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_PhysicErrorCorrection_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->PhysicErrorCorrection); }
 	DOTNET_EXPORT void E_PROP_UEngine_PhysicErrorCorrection_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PhysicErrorCorrection = *(FRigidBodyErrorCorrection*)Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UEngine_PlayOnConsoleSaveDir_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->PlayOnConsoleSaveDir); }
-	DOTNET_EXPORT void E_PROP_UEngine_PlayOnConsoleSaveDir_SET(UEngine* Ptr, char* Value) { Ptr->PlayOnConsoleSaveDir = ConvertFromManage_FString(Value); }
-	
 	DOTNET_EXPORT auto E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(UEngine* Ptr) { return Ptr->PrimitiveProbablyVisibleTime; }
 	DOTNET_EXPORT void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(UEngine* Ptr, float Value) { Ptr->PrimitiveProbablyVisibleTime = Value; }
 	
@@ -165,6 +162,16 @@ extern "C"
 		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionStatus(UEngine* Self)
+	{
+		return Self->GetDynamicResolutionStatus();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionUserSetting(UEngine* Self)
+	{
+		return Self->GetDynamicResolutionUserSetting();
+	}
+
 	DOTNET_EXPORT auto E_UEngine_IsInitialized(UEngine* Self)
 	{
 		return Self->IsInitialized();
@@ -175,6 +182,11 @@ extern "C"
 		Self->ParseCommandline();
 	}
 
+	DOTNET_EXPORT auto E_UEngine_PauseDynamicResolution(UEngine* Self)
+	{
+		Self->PauseDynamicResolution();
+	}
+
 	DOTNET_EXPORT auto E_UEngine_PreExit(UEngine* Self)
 	{
 		Self->PreExit();
@@ -183,6 +195,17 @@ extern "C"
 	DOTNET_EXPORT auto E_UEngine_RestoreSelectedMaterialColor(UEngine* Self)
 	{
 		Self->RestoreSelectedMaterialColor();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_ResumeDynamicResolution(UEngine* Self)
+	{
+		Self->ResumeDynamicResolution();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_SetDynamicResolutionUserSetting(UEngine* Self, bool Enable)
+	{
+		auto _p0 = Enable;
+		Self->SetDynamicResolutionUserSetting(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UEngine_ShutdownAudioDeviceManager(UEngine* Self)

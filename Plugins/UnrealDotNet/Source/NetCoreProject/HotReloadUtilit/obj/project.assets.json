@@ -664,7 +664,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vladi\\.nuget\\packages\\": {},
+    "C:\\Users\\RealityShift7\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -673,25 +674,26 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj",
+      "projectUniqueName": "D:\\Projects\\UnrealDotNet\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj",
       "projectName": "HotReloadUtilit",
-      "projectPath": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj",
-      "packagesPath": "C:\\Users\\vladi\\.nuget\\packages\\",
-      "outputPath": "D:\\ue4\\DotUnrealExample\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\obj\\",
+      "projectPath": "D:\\Projects\\UnrealDotNet\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\HotReloadUtilit.csproj",
+      "packagesPath": "C:\\Users\\RealityShift7\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\UnrealDotNet\\Plugins\\UnrealDotNet\\Source\\NetCoreProject\\HotReloadUtilit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\vladi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\RealityShift7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://realityshiftnugetserver.azurewebsites.net/nuget/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -710,7 +712,7 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

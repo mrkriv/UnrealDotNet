@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
 
 namespace UnrealEngine
 {
@@ -28,9 +28,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPawnMovementComponent_ConsumeInputVector(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPawnMovementComponent_GetInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPawnMovementComponent_GetLastInputVector(IntPtr Self);
@@ -70,13 +67,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>(Deprecated) Return the input vector in world space. </para>
-		/// </summary>
-		public FVector GetInputVector()
-			=> E_UPawnMovementComponent_GetInputVector(this);
-		
-		
-		/// <summary>
 		/// <para>Return the last input vector in world space that was processed by ConsumeInputVector(), which is usually done by the Pawn or PawnMovementComponent. </para>
 		/// <para>Any user that needs to know about the input that last affected movement should use this function. </para>
 		/// <return>The last input vector in world space that was processed by ConsumeInputVector(). </return>
@@ -113,7 +103,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>(Deprecated) Return the input vector in world space. </para>
 		/// </summary>
-		public FVector K2_GetInputVector()
+		public FVector GetInputVector()
 			=> E_UPawnMovementComponent_K2_GetInputVector(this);
 		
 		

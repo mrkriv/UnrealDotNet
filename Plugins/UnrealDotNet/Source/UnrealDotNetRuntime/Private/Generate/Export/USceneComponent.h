@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/SceneComponent.h"
+#include "Runtime/Engine/Classes/Components/SceneComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 class E_PROTECTED_WRAP_USceneComponent : protected USceneComponent
 {
@@ -80,8 +80,29 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentToWorld_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentToWorld); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentToWorld_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentToWorld = *(FTransform*)Value; }
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bAbsoluteLocation_GET(USceneComponent* Ptr) { return Ptr->bAbsoluteLocation; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bAbsoluteLocation_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bAbsoluteLocation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bAbsoluteRotation_GET(USceneComponent* Ptr) { return Ptr->bAbsoluteRotation; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bAbsoluteRotation_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bAbsoluteRotation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bAbsoluteScale_GET(USceneComponent* Ptr) { return Ptr->bAbsoluteScale; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bAbsoluteScale_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bAbsoluteScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_GET(USceneComponent* Ptr) { return Ptr->bBoundsChangeTriggersStreamingDataRebuild; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bBoundsChangeTriggersStreamingDataRebuild = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bHiddenInGame_GET(USceneComponent* Ptr) { return Ptr->bHiddenInGame; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bHiddenInGame_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bHiddenInGame = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_GET(USceneComponent* Ptr) { return Ptr->bShouldUpdatePhysicsVolume; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bShouldUpdatePhysicsVolume = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bUseAttachParentBound_GET(USceneComponent* Ptr) { return Ptr->bUseAttachParentBound; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bUseAttachParentBound_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bUseAttachParentBound = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_bVisible_GET(USceneComponent* Ptr) { return Ptr->bVisible; }
+	DOTNET_EXPORT void E_PROP_USceneComponent_bVisible_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bVisible = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USceneComponent_ComponentVelocity_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->ComponentVelocity); }
 	DOTNET_EXPORT void E_PROP_USceneComponent_ComponentVelocity_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->ComponentVelocity = *(FVector*)Value; }
@@ -94,9 +115,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeScale3D_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeScale3D); }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeScale3D = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeTranslation_DEPRECATED); }
-	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeTranslation_DEPRECATED = *(FVector*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Quat.h:28
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\Quat.h:28
 
 namespace UnrealEngine
 {
@@ -143,6 +143,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_FQuat_FindBetweenVectors(IntPtr Self, IntPtr Vector1, IntPtr Vector2);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FQuat_GetAngle(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FQuat_GetAxisX(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -165,6 +168,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FQuat_GetUpVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FQuat_InitFromString(IntPtr Self, string InSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FQuat_Inverse(IntPtr Self);
@@ -391,6 +397,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the angle of this quaternion </para>
+		/// </summary>
+		public float GetAngle()
+			=> E_FQuat_GetAngle(this);
+		
+		
+		/// <summary>
 		/// <para>Get the forward direction (X axis) after it has been rotated by this Quaternion. </para>
 		/// </summary>
 		public FVector GetAxisX()
@@ -448,6 +461,17 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetUpVector()
 			=> E_FQuat_GetUpVector(this);
+		
+		
+		/// <summary>
+		/// <para>Initialize this FQuat from a FString. </para>
+		/// <para>The string is expected to contain X=, Y=, Z=, W=, otherwise </para>
+		/// <para>this FQuat will have indeterminate (invalid) values. </para>
+		/// <param name="InSourceString">FString containing the quaternion values. </param>
+		/// <return>true if the FQuat was initialized; false otherwise. </return>
+		/// </summary>
+		public bool InitFromString(string InSourceString)
+			=> E_FQuat_InitFromString(this, InSourceString);
 		
 		
 		/// <summary>

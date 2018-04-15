@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Vector.h:29
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\Vector.h:29
 
 namespace UnrealEngine
 {
@@ -105,18 +105,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FVector_BoxPushOut(IntPtr Self, IntPtr Normal, IntPtr Size);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ClampMaxSize(IntPtr Self, float MaxSize);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ClampMaxSize2D(IntPtr Self, float MaxSize);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ClampSize(IntPtr Self, float Min, float Max);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ClampSize2D(IntPtr Self, float Min, float Max);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector_Coincident(IntPtr Self, IntPtr Normal1, IntPtr Normal2, float ParallelCosineThreshold);
@@ -284,12 +272,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_FVector_Rotation(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_SafeNormal(IntPtr Self, float Tolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_SafeNormal2D(IntPtr Self, float Tolerance);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_Set(IntPtr Self, float InX, float InY, float InZ);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -330,9 +312,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector_UnitCartesianToSpherical(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_UnsafeNormal(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_UnwindEuler(IntPtr Self);
@@ -412,18 +391,6 @@ namespace UnrealEngine
 		/// </summary>
 		public float BoxPushOut(FVector Normal, FVector Size)
 			=> E_FVector_BoxPushOut(this, Normal, Size);
-		
-		public FVector ClampMaxSize(float MaxSize)
-			=> E_FVector_ClampMaxSize(this, MaxSize);
-		
-		public FVector ClampMaxSize2D(float MaxSize)
-			=> E_FVector_ClampMaxSize2D(this, MaxSize);
-		
-		public FVector ClampSize(float Min, float Max)
-			=> E_FVector_ClampSize(this, Min, Max);
-		
-		public FVector ClampSize2D(float Min, float Max)
-			=> E_FVector_ClampSize2D(this, Min, Max);
 		
 		
 		/// <summary>
@@ -914,12 +881,6 @@ namespace UnrealEngine
 		public FRotator Rotation()
 			=> E_FVector_Rotation(this);
 		
-		public FVector SafeNormal(float Tolerance)
-			=> E_FVector_SafeNormal(this, Tolerance);
-		
-		public FVector SafeNormal2D(float Tolerance)
-			=> E_FVector_SafeNormal2D(this, Tolerance);
-		
 		
 		/// <summary>
 		/// <para>Set the values of the vector directly. </para>
@@ -1041,9 +1002,6 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector2D UnitCartesianToSpherical()
 			=> E_FVector_UnitCartesianToSpherical(this);
-		
-		public FVector UnsafeNormal()
-			=> E_FVector_UnsafeNormal(this);
 		
 		
 		/// <summary>

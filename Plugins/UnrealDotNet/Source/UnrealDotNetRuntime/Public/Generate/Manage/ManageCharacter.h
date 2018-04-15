@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/Character.h"
+#include "Runtime/Engine/Classes/GameFramework/Character.h"
 #include "ManageCharacter.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageCharacter : public ACharacter
@@ -63,6 +63,8 @@ public:
 	
 	virtual void OnUpdateSimulatedPosition(const FVector& OldLocation, const FQuat& OldRotation) override;
 	
+	virtual void OnWalkingOffLedge_Implementation(const FVector& PreviousFloorImpactNormal, const FVector& PreviousFloorContactNormal, const FVector& PreviousLocation, float TimeDelta) override;
+	
 	virtual void RootMotionDebugClientPrintOnScreen_Implementation(const FString& InString) override;
 	
 	virtual void SetBase(UPrimitiveComponent* NewBase, const FName BoneName, bool bNotifyActor) override;
@@ -70,10 +72,6 @@ public:
 	virtual void StopJumping() override;
 	
 	virtual void UnCrouch(bool bClientSimulation) override;
-	
-	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
-	
-	virtual void UpdateSimulatedPosition(const FVector& Location, const FRotator& NewRotation) override;
 	
 protected:
 	

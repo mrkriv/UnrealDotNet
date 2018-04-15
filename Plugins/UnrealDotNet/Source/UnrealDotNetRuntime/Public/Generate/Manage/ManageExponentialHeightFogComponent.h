@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/ExponentialHeightFogComponent.h"
+#include "Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h"
 #include "ManageExponentialHeightFogComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:15
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:15
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageExponentialHeightFogComponent : public UExponentialHeightFogComponent

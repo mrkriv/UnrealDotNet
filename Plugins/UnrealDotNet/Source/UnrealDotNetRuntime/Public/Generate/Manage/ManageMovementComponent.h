@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/MovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/MovementComponent.h"
 #include "ManageMovementComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageMovementComponent : public UMovementComponent

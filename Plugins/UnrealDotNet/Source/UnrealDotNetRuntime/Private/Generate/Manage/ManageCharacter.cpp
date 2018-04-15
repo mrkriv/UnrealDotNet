@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageCharacter.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 void AManageCharacter::ApplyDamageMomentum(float DamageTaken, const FDamageEvent& DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
 {
@@ -137,6 +138,12 @@ void AManageCharacter::OnUpdateSimulatedPosition(const FVector& OldLocation, con
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUpdateSimulatedPosition", OldLocation, OldRotation);
 }
 
+void AManageCharacter::OnWalkingOffLedge_Implementation(const FVector& PreviousFloorImpactNormal, const FVector& PreviousFloorContactNormal, const FVector& PreviousLocation, float TimeDelta)
+{
+	Super::OnWalkingOffLedge_Implementation(PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnWalkingOffLedge_Implementation", PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+}
+
 void AManageCharacter::RootMotionDebugClientPrintOnScreen_Implementation(const FString& InString)
 {
 	Super::RootMotionDebugClientPrintOnScreen_Implementation(InString);
@@ -159,18 +166,6 @@ void AManageCharacter::UnCrouch(bool bClientSimulation)
 {
 	Super::UnCrouch(bClientSimulation);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UnCrouch", bClientSimulation);
-}
-
-void AManageCharacter::UpdateFromCompressedFlags(uint8 Flags)
-{
-	Super::UpdateFromCompressedFlags(Flags);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateFromCompressedFlags", Flags);
-}
-
-void AManageCharacter::UpdateSimulatedPosition(const FVector& Location, const FRotator& NewRotation)
-{
-	Super::UpdateSimulatedPosition(Location, NewRotation);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateSimulatedPosition", Location, NewRotation);
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

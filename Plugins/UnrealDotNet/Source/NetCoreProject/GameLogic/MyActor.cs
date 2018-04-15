@@ -29,7 +29,7 @@ namespace GameLogic
                 var root = GetRootComponent();
                 var root_sm = root as UStaticMeshComponent;
 
-                ScreenDebugMessage(root_sm?.GetFName() ?? "null");
+                ScreenDebugMessage(root_sm?.GetFullName() ?? "null");
 
                 Box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
                 

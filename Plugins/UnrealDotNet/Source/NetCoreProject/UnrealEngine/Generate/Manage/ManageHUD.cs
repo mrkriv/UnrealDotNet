@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:35
 
 namespace UnrealEngine
 {
@@ -41,6 +41,8 @@ namespace UnrealEngine
 		/// <para>Gives the HUD a chance to display project-specific data when taking a "bug" screen shot. </para>
 		/// </summary>
 		public override void HandleBugScreenShot() { }
+		
+		public override void NextDebugTarget() { }
 		
 		
 		/// <summary>
@@ -84,6 +86,8 @@ namespace UnrealEngine
 		/// <para>PostRender is the main draw loop. </para>
 		/// </summary>
 		public override void PostRender() { }
+		
+		public override void PreviousDebugTarget() { }
 		
 		
 		/// <summary>

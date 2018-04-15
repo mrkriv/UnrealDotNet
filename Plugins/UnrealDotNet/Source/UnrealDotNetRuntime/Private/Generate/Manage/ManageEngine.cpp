@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageEngine.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:585
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:603
 
 void UManageEngine::PreExit()
 {

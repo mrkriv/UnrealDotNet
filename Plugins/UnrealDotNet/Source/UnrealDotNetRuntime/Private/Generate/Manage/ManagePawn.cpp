@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManagePawn.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 void AManagePawn::AddControllerPitchInput(float Val)
 {
@@ -27,12 +28,6 @@ void AManagePawn::AddMovementInput(FVector WorldDirection, float ScaleValue, boo
 {
 	Super::AddMovementInput(WorldDirection, ScaleValue, bForce);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddMovementInput", WorldDirection, ScaleValue, bForce);
-}
-
-void AManagePawn::ClientSetRotation(FRotator NewRotation)
-{
-	Super::ClientSetRotation(NewRotation);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ClientSetRotation", NewRotation);
 }
 
 void AManagePawn::DestroyPlayerInputComponent()

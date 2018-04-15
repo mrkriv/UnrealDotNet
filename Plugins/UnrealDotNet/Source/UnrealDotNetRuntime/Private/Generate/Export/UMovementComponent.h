@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/MovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/MovementComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
 
 class E_PROTECTED_WRAP_UMovementComponent : protected UMovementComponent
 {
@@ -222,12 +222,6 @@ extern "C"
 	{
 		auto _p0 = DeltaTime;
 		return Self->ShouldSkipUpdate(_p0);
-	}
-
-	DOTNET_EXPORT auto E_UMovementComponent_SkipUpdate(UMovementComponent* Self, float DeltaTime)
-	{
-		auto _p0 = DeltaTime;
-		return Self->SkipUpdate(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UMovementComponent_SlideAlongSurface(UMovementComponent* Self, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit, bool bHandleImpact)

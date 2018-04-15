@@ -1,41 +1,39 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/Classes/Components/SkinnedMeshComponent.h"
-#include "Engine/Classes/Engine/EngineBaseTypes.h"
-#include "Engine/Classes/Engine/World.h"
-#include "Engine/Classes/Components/SkeletalMeshComponent.h"
-#include "Engine/Classes/Engine/EngineTypes.h"
-#include "Engine/Classes/Components/AudioComponent.h"
-#include "Engine/Classes/GameFramework/Character.h"
-#include "Engine/Classes/Components/LineBatchComponent.h"
-#include "Core/Public/Math/Box.h"
-#include "Core/Public/Math/Box2D.h"
-#include "Engine/Classes/Engine/Scene.h"
-#include "Engine/Classes/GameFramework/CharacterMovementComponent.h"
-#include "Engine/Classes/Engine/Engine.h"
-#include "Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
-#include "Engine/Classes/Components/DestructibleComponent.h"
-#include "Engine/Classes/Components/SceneComponent.h"
-#include "Engine/Classes/Components/SceneCaptureComponent.h"
-#include "CoreUObject/Public/UObject/UObjectArray.h"
-#include "Engine/Classes/GameFramework/GameModeBase.h"
-#include "Engine/Classes/Components/InstancedStaticMeshComponent.h"
-#include "Engine/Classes/Components/InterpToMovementComponent.h"
-#include "Engine/Classes/Components/MaterialBillboardComponent.h"
-#include "Engine/Classes/Components/StaticMeshComponent.h"
-#include "Core/Public/Math/Plane.h"
-#include "Core/Public/Math/Quat.h"
-#include "Engine/Classes/Components/ReflectionCaptureComponent.h"
-#include "Engine/Classes/Components/PrimitiveComponent.h"
-#include "Core/Public/Math/Rotator.h"
-#include "Engine/Classes/Components/SplineComponent.h"
-#include "Engine/Classes/Components/SplineMeshComponent.h"
-#include "Engine/Classes/Components/TimelineComponent.h"
-#include "Core/Public/Math/TransformVectorized.h"
-#include "Core/Public/Math/Vector.h"
-#include "Core/Public/Math/Vector2D.h"
-#include "Core/Public/Math/Vector4.h"
+#include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
+#include "Runtime/Engine/Classes/Engine/EngineBaseTypes.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
+#include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
+#include "Runtime/Engine/Classes/Engine/EngineTypes.h"
+#include "Runtime/Engine/Classes/Components/AudioComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/Character.h"
+#include "Runtime/Engine/Classes/Components/LineBatchComponent.h"
+#include "Runtime/Core/Public/Math/Box.h"
+#include "Runtime/Core/Public/Math/Box2D.h"
+#include "Runtime/Engine/Classes/Engine/Scene.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "Runtime/Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/SceneComponent.h"
+#include "Runtime/Engine/Classes/Components/SceneCaptureComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Runtime/CoreUObject/Public/UObject/UObjectArray.h"
+#include "Runtime/Engine/Classes/GameFramework/GameModeBase.h"
+#include "Runtime/Engine/Classes/Components/InstancedStaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/InterpToMovementComponent.h"
+#include "Runtime/Engine/Classes/Components/MaterialBillboardComponent.h"
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Core/Public/Math/Plane.h"
+#include "Runtime/Core/Public/Math/Quat.h"
+#include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "Runtime/Core/Public/Math/Rotator.h"
+#include "Runtime/Engine/Classes/Components/SplineComponent.h"
+#include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/TimelineComponent.h"
+#include "Runtime/Core/Public/Math/TransformVectorized.h"
+#include "Runtime/Core/Public/Math/Vector.h"
+#include "Runtime/Core/Public/Math/Vector2D.h"
+#include "Runtime/Core/Public/Math/Vector4.h"
 
 extern "C"
 {
@@ -210,11 +208,6 @@ extern "C"
 	DOTNET_EXPORT auto E_FBasedMovementInfo_HasRelativeLocation(FBasedMovementInfo* Self)
 	{
 		return Self->HasRelativeLocation();
-	}
-
-	DOTNET_EXPORT auto E_FBasedMovementInfo_HasRelativePosition(FBasedMovementInfo* Self)
-	{
-		return Self->HasRelativePosition();
 	}
 
 	DOTNET_EXPORT auto E_FBasedMovementInfo_HasRelativeRotation(FBasedMovementInfo* Self)
@@ -522,6 +515,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FCameraExposureSettings_Bias_GET(FCameraExposureSettings* Ptr) { return Ptr->Bias; }
 	DOTNET_EXPORT void E_PROP_FCameraExposureSettings_Bias_SET(FCameraExposureSettings* Ptr, float Value) { Ptr->Bias = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FCameraExposureSettings_CalibrationConstant_GET(FCameraExposureSettings* Ptr) { return Ptr->CalibrationConstant; }
+	DOTNET_EXPORT void E_PROP_FCameraExposureSettings_CalibrationConstant_SET(FCameraExposureSettings* Ptr, float Value) { Ptr->CalibrationConstant = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FCameraExposureSettings_HighPercent_GET(FCameraExposureSettings* Ptr) { return Ptr->HighPercent; }
 	DOTNET_EXPORT void E_PROP_FCameraExposureSettings_HighPercent_SET(FCameraExposureSettings* Ptr, float Value) { Ptr->HighPercent = Value; }
 	
@@ -574,14 +570,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FCanvasUVTri_V2_UV_GET(FCanvasUVTri* Ptr) { return (INT_PTR)&(Ptr->V2_UV); }
 	DOTNET_EXPORT void E_PROP_FCanvasUVTri_V2_UV_SET(FCanvasUVTri* Ptr, INT_PTR Value) { Ptr->V2_UV = *(FVector2D*)Value; }
-	
-	
-	/*	FCharacterMovementComponentPostPhysicsTickFunction	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FCharacterMovementComponentPostPhysicsTickFunction() { return (INT_PTR) new FCharacterMovementComponentPostPhysicsTickFunction(); }
-	
-	DOTNET_EXPORT auto E_PROP_FCharacterMovementComponentPostPhysicsTickFunction_Target_GET(FCharacterMovementComponentPostPhysicsTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
-	DOTNET_EXPORT void E_PROP_FCharacterMovementComponentPostPhysicsTickFunction_Target_SET(FCharacterMovementComponentPostPhysicsTickFunction* Ptr, UCharacterMovementComponent* Value) { Ptr->Target = Value; }
 	
 	
 	/*	FClassRedirect	*/
@@ -651,6 +639,14 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FClusterNode_LastInstance_GET(FClusterNode* Ptr) { return Ptr->LastInstance; }
 	DOTNET_EXPORT void E_PROP_FClusterNode_LastInstance_SET(FClusterNode* Ptr, int32 Value) { Ptr->LastInstance = Value; }
+	
+	
+	/*	FCollectionReference	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollectionReference() { return (INT_PTR) new FCollectionReference(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollectionReference_CollectionName_GET(FCollectionReference* Ptr) { return ConvertToManage_StringWrapper(Ptr->CollectionName); }
+	DOTNET_EXPORT void E_PROP_FCollectionReference_CollectionName_SET(FCollectionReference* Ptr, char* Value) { Ptr->CollectionName = ConvertFromManage_FName(Value); }
 	
 	
 	/*	FCollisionResponseContainer	*/
@@ -887,14 +883,6 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FDepthFieldGlowInfo_GlowOuterRadius_SET(FDepthFieldGlowInfo* Ptr, INT_PTR Value) { Ptr->GlowOuterRadius = *(FVector2D*)Value; }
 	
 	
-	/*	FDestructibleChunkInfo	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FDestructibleChunkInfo() { return (INT_PTR) new FDestructibleChunkInfo(); }
-	
-	DOTNET_EXPORT auto E_PROP_FDestructibleChunkInfo_ChunkIndex_GET(FDestructibleChunkInfo* Ptr) { return Ptr->ChunkIndex; }
-	DOTNET_EXPORT void E_PROP_FDestructibleChunkInfo_ChunkIndex_SET(FDestructibleChunkInfo* Ptr, int32 Value) { Ptr->ChunkIndex = Value; }
-	
-	
 	/*	FDetachmentTransformRules	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool(EDetachmentRule InRule, bool bInCallModify) { return (INT_PTR) new FDetachmentTransformRules(InRule, bInCallModify); }
@@ -965,8 +953,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FExposureSettings_bFixed_GET(FExposureSettings* Ptr) { return Ptr->bFixed; }
 	DOTNET_EXPORT void E_PROP_FExposureSettings_bFixed_SET(FExposureSettings* Ptr, bool Value) { Ptr->bFixed = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FExposureSettings_LogOffset_GET(FExposureSettings* Ptr) { return Ptr->LogOffset; }
-	DOTNET_EXPORT void E_PROP_FExposureSettings_LogOffset_SET(FExposureSettings* Ptr, int32 Value) { Ptr->LogOffset = Value; }
+	DOTNET_EXPORT auto E_PROP_FExposureSettings_FixedEV100_GET(FExposureSettings* Ptr) { return Ptr->FixedEV100; }
+	DOTNET_EXPORT void E_PROP_FExposureSettings_FixedEV100_SET(FExposureSettings* Ptr, float Value) { Ptr->FixedEV100 = Value; }
 	
 	DOTNET_EXPORT auto E_FExposureSettings_ToString(FExposureSettings* Self)
 	{
@@ -1058,34 +1046,6 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FFixedUObjectArray() { return (INT_PTR) new FFixedUObjectArray(); }
 	
-	DOTNET_EXPORT auto E_FFixedUObjectArray_AddRange(FFixedUObjectArray* Self, int32 Count)
-	{
-		auto _p0 = Count;
-		return Self->AddRange(_p0);
-	}
-
-	DOTNET_EXPORT auto E_FFixedUObjectArray_AddSingle(FFixedUObjectArray* Self)
-	{
-		return Self->AddSingle();
-	}
-
-	DOTNET_EXPORT auto E_FFixedUObjectArray_IsValidIndex(FFixedUObjectArray* Self, int32 Index)
-	{
-		auto _p0 = Index;
-		return Self->IsValidIndex(_p0);
-	}
-
-	DOTNET_EXPORT auto E_FFixedUObjectArray_Num(FFixedUObjectArray* Self)
-	{
-		return Self->Num();
-	}
-
-	DOTNET_EXPORT auto E_FFixedUObjectArray_PreAllocate(FFixedUObjectArray* Self, int32 InMaxElements)
-	{
-		auto _p0 = InMaxElements;
-		Self->PreAllocate(_p0);
-	}
-
 	
 	/*	FFontRenderInfo	*/
 	
@@ -1134,8 +1094,14 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(AActor* InActor, UPrimitiveComponent* InComponent, INT_PTR HitLoc, INT_PTR HitNorm) { return (INT_PTR) new FHitResult(InActor, InComponent, *(FVector*)HitLoc, *(FVector*)HitNorm); }
 	
+	DOTNET_EXPORT auto E_PROP_FHitResult_bBlockingHit_GET(FHitResult* Ptr) { return Ptr->bBlockingHit; }
+	DOTNET_EXPORT void E_PROP_FHitResult_bBlockingHit_SET(FHitResult* Ptr, uint8 Value) { Ptr->bBlockingHit = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FHitResult_BoneName_GET(FHitResult* Ptr) { return ConvertToManage_StringWrapper(Ptr->BoneName); }
 	DOTNET_EXPORT void E_PROP_FHitResult_BoneName_SET(FHitResult* Ptr, char* Value) { Ptr->BoneName = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_bStartPenetrating_GET(FHitResult* Ptr) { return Ptr->bStartPenetrating; }
+	DOTNET_EXPORT void E_PROP_FHitResult_bStartPenetrating_SET(FHitResult* Ptr, uint8 Value) { Ptr->bStartPenetrating = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FHitResult_Distance_GET(FHitResult* Ptr) { return Ptr->Distance; }
 	DOTNET_EXPORT void E_PROP_FHitResult_Distance_SET(FHitResult* Ptr, float Value) { Ptr->Distance = Value; }
@@ -1145,6 +1111,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FHitResult_Item_GET(FHitResult* Ptr) { return Ptr->Item; }
 	DOTNET_EXPORT void E_PROP_FHitResult_Item_SET(FHitResult* Ptr, int32 Value) { Ptr->Item = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_MyBoneName_GET(FHitResult* Ptr) { return ConvertToManage_StringWrapper(Ptr->MyBoneName); }
+	DOTNET_EXPORT void E_PROP_FHitResult_MyBoneName_SET(FHitResult* Ptr, char* Value) { Ptr->MyBoneName = ConvertFromManage_FName(Value); }
 	
 	DOTNET_EXPORT auto E_PROP_FHitResult_PenetrationDepth_GET(FHitResult* Ptr) { return Ptr->PenetrationDepth; }
 	DOTNET_EXPORT void E_PROP_FHitResult_PenetrationDepth_SET(FHitResult* Ptr, float Value) { Ptr->PenetrationDepth = Value; }
@@ -1189,12 +1158,6 @@ extern "C"
 	/*	FInstancedStaticMeshInstanceData	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FInstancedStaticMeshInstanceData() { return (INT_PTR) new FInstancedStaticMeshInstanceData(); }
-	
-	DOTNET_EXPORT auto E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_GET(FInstancedStaticMeshInstanceData* Ptr) { return (INT_PTR)&(Ptr->LightmapUVBias_DEPRECATED); }
-	DOTNET_EXPORT void E_PROP_FInstancedStaticMeshInstanceData_LightmapUVBias_DEPRECATED_SET(FInstancedStaticMeshInstanceData* Ptr, INT_PTR Value) { Ptr->LightmapUVBias_DEPRECATED = *(FVector2D*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FInstancedStaticMeshInstanceData_ShadowmapUVBias_DEPRECATED_GET(FInstancedStaticMeshInstanceData* Ptr) { return (INT_PTR)&(Ptr->ShadowmapUVBias_DEPRECATED); }
-	DOTNET_EXPORT void E_PROP_FInstancedStaticMeshInstanceData_ShadowmapUVBias_DEPRECATED_SET(FInstancedStaticMeshInstanceData* Ptr, INT_PTR Value) { Ptr->ShadowmapUVBias_DEPRECATED = *(FVector2D*)Value; }
 	
 	
 	/*	FInstancedStaticMeshMappingInfo	*/
@@ -1331,13 +1294,13 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLightingChannels() { return (INT_PTR) new FLightingChannels(); }
 	
 	DOTNET_EXPORT auto E_PROP_FLightingChannels_bChannel0_GET(FLightingChannels* Ptr) { return Ptr->bChannel0; }
-	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel0_SET(FLightingChannels* Ptr, bool Value) { Ptr->bChannel0 = Value; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel0_SET(FLightingChannels* Ptr, uint8 Value) { Ptr->bChannel0 = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FLightingChannels_bChannel1_GET(FLightingChannels* Ptr) { return Ptr->bChannel1; }
-	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel1_SET(FLightingChannels* Ptr, bool Value) { Ptr->bChannel1 = Value; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel1_SET(FLightingChannels* Ptr, uint8 Value) { Ptr->bChannel1 = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FLightingChannels_bChannel2_GET(FLightingChannels* Ptr) { return Ptr->bChannel2; }
-	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel2_SET(FLightingChannels* Ptr, bool Value) { Ptr->bChannel2 = Value; }
+	DOTNET_EXPORT void E_PROP_FLightingChannels_bChannel2_SET(FLightingChannels* Ptr, uint8 Value) { Ptr->bChannel2 = Value; }
 	
 	
 	/*	FLightmassDebugOptions	*/
@@ -1422,25 +1385,25 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMeshBuildSettings() { return (INT_PTR) new FMeshBuildSettings(); }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bBuildAdjacencyBuffer_GET(FMeshBuildSettings* Ptr) { return Ptr->bBuildAdjacencyBuffer; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bBuildAdjacencyBuffer_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bBuildAdjacencyBuffer = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bBuildAdjacencyBuffer_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bBuildAdjacencyBuffer = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bBuildReversedIndexBuffer_GET(FMeshBuildSettings* Ptr) { return Ptr->bBuildReversedIndexBuffer; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bBuildReversedIndexBuffer_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bBuildReversedIndexBuffer = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bBuildReversedIndexBuffer_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bBuildReversedIndexBuffer = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bGenerateDistanceFieldAsIfTwoSided_GET(FMeshBuildSettings* Ptr) { return Ptr->bGenerateDistanceFieldAsIfTwoSided; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bGenerateDistanceFieldAsIfTwoSided_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bGenerateDistanceFieldAsIfTwoSided = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bGenerateDistanceFieldAsIfTwoSided_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bGenerateDistanceFieldAsIfTwoSided = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bGenerateLightmapUVs_GET(FMeshBuildSettings* Ptr) { return Ptr->bGenerateLightmapUVs; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bGenerateLightmapUVs_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bGenerateLightmapUVs = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bGenerateLightmapUVs_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bGenerateLightmapUVs = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bRecomputeNormals_GET(FMeshBuildSettings* Ptr) { return Ptr->bRecomputeNormals; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRecomputeNormals_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bRecomputeNormals = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRecomputeNormals_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bRecomputeNormals = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bRecomputeTangents_GET(FMeshBuildSettings* Ptr) { return Ptr->bRecomputeTangents; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRecomputeTangents_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bRecomputeTangents = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRecomputeTangents_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bRecomputeTangents = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bRemoveDegenerates_GET(FMeshBuildSettings* Ptr) { return Ptr->bRemoveDegenerates; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRemoveDegenerates_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bRemoveDegenerates = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bRemoveDegenerates_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bRemoveDegenerates = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_BuildScale_DEPRECATED_GET(FMeshBuildSettings* Ptr) { return Ptr->BuildScale_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_BuildScale_DEPRECATED_SET(FMeshBuildSettings* Ptr, float Value) { Ptr->BuildScale_DEPRECATED = Value; }
@@ -1449,16 +1412,13 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_BuildScale3D_SET(FMeshBuildSettings* Ptr, INT_PTR Value) { Ptr->BuildScale3D = *(FVector*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bUseFullPrecisionUVs_GET(FMeshBuildSettings* Ptr) { return Ptr->bUseFullPrecisionUVs; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseFullPrecisionUVs_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bUseFullPrecisionUVs = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseFullPrecisionUVs_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bUseFullPrecisionUVs = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bUseHighPrecisionTangentBasis_GET(FMeshBuildSettings* Ptr) { return Ptr->bUseHighPrecisionTangentBasis; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseHighPrecisionTangentBasis_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bUseHighPrecisionTangentBasis = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseHighPrecisionTangentBasis_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bUseHighPrecisionTangentBasis = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_bUseMikkTSpace_GET(FMeshBuildSettings* Ptr) { return Ptr->bUseMikkTSpace; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseMikkTSpace_SET(FMeshBuildSettings* Ptr, bool Value) { Ptr->bUseMikkTSpace = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_DistanceFieldBias_DEPRECATED_GET(FMeshBuildSettings* Ptr) { return Ptr->DistanceFieldBias_DEPRECATED; }
-	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_DistanceFieldBias_DEPRECATED_SET(FMeshBuildSettings* Ptr, float Value) { Ptr->DistanceFieldBias_DEPRECATED = Value; }
+	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_bUseMikkTSpace_SET(FMeshBuildSettings* Ptr, uint8 Value) { Ptr->bUseMikkTSpace = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_DistanceFieldResolutionScale_GET(FMeshBuildSettings* Ptr) { return Ptr->DistanceFieldResolutionScale; }
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_DistanceFieldResolutionScale_SET(FMeshBuildSettings* Ptr, float Value) { Ptr->DistanceFieldResolutionScale = Value; }
@@ -1575,6 +1535,12 @@ extern "C"
 		return (INT_PTR) new FPlane(Self->Flip());
 	}
 
+	DOTNET_EXPORT auto E_FPlane_Normalize(FPlane* Self, float Tolerance)
+	{
+		auto _p0 = Tolerance;
+		return Self->Normalize(_p0);
+	}
+
 	DOTNET_EXPORT auto E_FPlane_PlaneDot(FPlane* Self, INT_PTR P)
 	{
 		auto _p0 = *(FVector*)P;
@@ -1650,6 +1616,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AutoExposureBias_GET(FPostProcessSettings* Ptr) { return Ptr->AutoExposureBias; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureBias_SET(FPostProcessSettings* Ptr, float Value) { Ptr->AutoExposureBias = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_GET(FPostProcessSettings* Ptr) { return Ptr->AutoExposureCalibrationConstant; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_SET(FPostProcessSettings* Ptr, float Value) { Ptr->AutoExposureCalibrationConstant = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AutoExposureHighPercent_GET(FPostProcessSettings* Ptr) { return Ptr->AutoExposureHighPercent; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AutoExposureHighPercent_SET(FPostProcessSettings* Ptr, float Value) { Ptr->AutoExposureHighPercent = Value; }
 	
@@ -1718,6 +1687,18 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BloomThreshold_GET(FPostProcessSettings* Ptr) { return Ptr->BloomThreshold; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomThreshold_SET(FPostProcessSettings* Ptr, float Value) { Ptr->BloomThreshold = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BlueCorrection_GET(FPostProcessSettings* Ptr) { return Ptr->BlueCorrection; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BlueCorrection_SET(FPostProcessSettings* Ptr, float Value) { Ptr->BlueCorrection = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_CameraISO_GET(FPostProcessSettings* Ptr) { return Ptr->CameraISO; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_CameraISO_SET(FPostProcessSettings* Ptr, float Value) { Ptr->CameraISO = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_CameraShutterSpeed_GET(FPostProcessSettings* Ptr) { return Ptr->CameraShutterSpeed; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_CameraShutterSpeed_SET(FPostProcessSettings* Ptr, float Value) { Ptr->CameraShutterSpeed = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_GET(FPostProcessSettings* Ptr) { return Ptr->ChromaticAberrationStartOffset; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_SET(FPostProcessSettings* Ptr, float Value) { Ptr->ChromaticAberrationStartOffset = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_ColorContrast_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->ColorContrast); }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorContrast_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->ColorContrast = *(FVector4*)Value; }
@@ -1838,6 +1819,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldVignetteSize; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_SET(FPostProcessSettings* Ptr, float Value) { Ptr->DepthOfFieldVignetteSize = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_ExpandGamut_GET(FPostProcessSettings* Ptr) { return Ptr->ExpandGamut; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ExpandGamut_SET(FPostProcessSettings* Ptr, float Value) { Ptr->ExpandGamut = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmBlackClip_GET(FPostProcessSettings* Ptr) { return Ptr->FilmBlackClip; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmBlackClip_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmBlackClip = Value; }
@@ -2152,6 +2136,11 @@ extern "C"
 		return (INT_PTR) new FQuat(Self->FindBetweenVectors(_p0, _p1));
 	}
 
+	DOTNET_EXPORT auto E_FQuat_GetAngle(FQuat* Self)
+	{
+		return Self->GetAngle();
+	}
+
 	DOTNET_EXPORT auto E_FQuat_GetAxisX(FQuat* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetAxisX());
@@ -2191,6 +2180,12 @@ extern "C"
 	DOTNET_EXPORT auto E_FQuat_GetUpVector(FQuat* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetUpVector());
+	}
+
+	DOTNET_EXPORT auto E_FQuat_InitFromString(FQuat* Self, char* InSourceString)
+	{
+		auto _p0 = ConvertFromManage_FString(InSourceString);
+		return Self->InitFromString(_p0);
 	}
 
 	DOTNET_EXPORT auto E_FQuat_Inverse(FQuat* Self)
@@ -2391,19 +2386,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FRedirector_OldName_GET(FRedirector* Ptr) { return ConvertToManage_StringWrapper(Ptr->OldName); }
 	DOTNET_EXPORT void E_PROP_FRedirector_OldName_SET(FRedirector* Ptr, char* Value) { Ptr->OldName = ConvertFromManage_FName(Value); }
 	
-	
-	/*	FReflectionCaptureFullHDR	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FReflectionCaptureFullHDR() { return (INT_PTR) new FReflectionCaptureFullHDR(); }
-	
-	DOTNET_EXPORT auto E_PROP_FReflectionCaptureFullHDR_CubemapSize_GET(FReflectionCaptureFullHDR* Ptr) { return Ptr->CubemapSize; }
-	DOTNET_EXPORT void E_PROP_FReflectionCaptureFullHDR_CubemapSize_SET(FReflectionCaptureFullHDR* Ptr, int32 Value) { Ptr->CubemapSize = Value; }
-	
-	DOTNET_EXPORT auto E_FReflectionCaptureFullHDR_HasValidData(FReflectionCaptureFullHDR* Self)
-	{
-		return Self->HasValidData();
-	}
-
 	
 	/*	FRendererStencilMaskEvaluation	*/
 	
@@ -2780,6 +2762,8 @@ extern "C"
 	
 	/*	FScopedLevelCollectionContextSwitch	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(int32 InLevelCollectionIndex, UWorld* InWorld) { return (INT_PTR) new FScopedLevelCollectionContextSwitch(InLevelCollectionIndex, InWorld); }
+	
 	
 	/*	FScreenMessageString	*/
 	
@@ -2821,11 +2805,6 @@ extern "C"
 	DOTNET_EXPORT auto E_FSkelMeshComponentLODInfo_BeginReleaseOverrideVertexColors(FSkelMeshComponentLODInfo* Self)
 	{
 		Self->BeginReleaseOverrideVertexColors();
-	}
-
-	DOTNET_EXPORT auto E_FSkelMeshComponentLODInfo_CleanUp(FSkelMeshComponentLODInfo* Self)
-	{
-		Self->CleanUp();
 	}
 
 	DOTNET_EXPORT auto E_FSkelMeshComponentLODInfo_ReleaseOverrideSkinWeightsAndBlock(FSkelMeshComponentLODInfo* Self)
@@ -3400,11 +3379,6 @@ extern "C"
 		return (INT_PTR) new FQuat(Self->GetRotation());
 	}
 
-	DOTNET_EXPORT auto E_FTransform_GetRotationV(FTransform* Self)
-	{
-		return (INT_PTR) new FQuat(Self->GetRotationV());
-	}
-
 	DOTNET_EXPORT auto E_FTransform_GetSafeScaleReciprocal(FTransform* Self, INT_PTR InScale, float Tolerance)
 	{
 		auto _p0 = *(FVector*)InScale;
@@ -3417,19 +3391,9 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetScale3D());
 	}
 
-	DOTNET_EXPORT auto E_FTransform_GetScale3DV(FTransform* Self)
-	{
-		return (INT_PTR) new FVector(Self->GetScale3DV());
-	}
-
 	DOTNET_EXPORT auto E_FTransform_GetTranslation(FTransform* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetTranslation());
-	}
-
-	DOTNET_EXPORT auto E_FTransform_GetTranslationV(FTransform* Self)
-	{
-		return (INT_PTR) new FVector(Self->GetTranslationV());
 	}
 
 	DOTNET_EXPORT auto E_FTransform_InitFromString(FTransform* Self, char* InSourceString)
@@ -3453,6 +3417,12 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)V;
 		return (INT_PTR) new FVector(Self->InverseTransformPositionNoScale(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FTransform_InverseTransformRotation(FTransform* Self, INT_PTR Q)
+	{
+		auto _p0 = *(FQuat*)Q;
+		return (INT_PTR) new FQuat(Self->InverseTransformRotation(_p0));
 	}
 
 	DOTNET_EXPORT auto E_FTransform_InverseTransformVector(FTransform* Self, INT_PTR V)
@@ -3612,6 +3582,12 @@ extern "C"
 		return (INT_PTR) new FVector(Self->TransformPositionNoScale(_p0));
 	}
 
+	DOTNET_EXPORT auto E_FTransform_TransformRotation(FTransform* Self, INT_PTR Q)
+	{
+		auto _p0 = *(FQuat*)Q;
+		return (INT_PTR) new FQuat(Self->TransformRotation(_p0));
+	}
+
 	DOTNET_EXPORT auto E_FTransform_TransformVector(FTransform* Self, INT_PTR V)
 	{
 		auto _p0 = *(FVector*)V;
@@ -3744,32 +3720,6 @@ extern "C"
 		auto _p0 = *(FVector*)Normal;
 		auto _p1 = *(FVector*)Size;
 		return Self->BoxPushOut(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_FVector_ClampMaxSize(FVector* Self, float MaxSize)
-	{
-		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(Self->ClampMaxSize(_p0));
-	}
-
-	DOTNET_EXPORT auto E_FVector_ClampMaxSize2D(FVector* Self, float MaxSize)
-	{
-		auto _p0 = MaxSize;
-		return (INT_PTR) new FVector(Self->ClampMaxSize2D(_p0));
-	}
-
-	DOTNET_EXPORT auto E_FVector_ClampSize(FVector* Self, float Min, float Max)
-	{
-		auto _p0 = Min;
-		auto _p1 = Max;
-		return (INT_PTR) new FVector(Self->ClampSize(_p0, _p1));
-	}
-
-	DOTNET_EXPORT auto E_FVector_ClampSize2D(FVector* Self, float Min, float Max)
-	{
-		auto _p0 = Min;
-		auto _p1 = Max;
-		return (INT_PTR) new FVector(Self->ClampSize2D(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_FVector_Coincident(FVector* Self, INT_PTR Normal1, INT_PTR Normal2, float ParallelCosineThreshold)
@@ -4119,18 +4069,6 @@ extern "C"
 		return (INT_PTR) new FRotator(Self->Rotation());
 	}
 
-	DOTNET_EXPORT auto E_FVector_SafeNormal(FVector* Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(Self->SafeNormal(_p0));
-	}
-
-	DOTNET_EXPORT auto E_FVector_SafeNormal2D(FVector* Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector(Self->SafeNormal2D(_p0));
-	}
-
 	DOTNET_EXPORT auto E_FVector_Set(FVector* Self, float InX, float InY, float InZ)
 	{
 		auto _p0 = InX;
@@ -4207,11 +4145,6 @@ extern "C"
 	DOTNET_EXPORT auto E_FVector_UnitCartesianToSpherical(FVector* Self)
 	{
 		return (INT_PTR) new FVector2D(Self->UnitCartesianToSpherical());
-	}
-
-	DOTNET_EXPORT auto E_FVector_UnsafeNormal(FVector* Self)
-	{
-		return (INT_PTR) new FVector(Self->UnsafeNormal());
 	}
 
 	DOTNET_EXPORT auto E_FVector_UnwindEuler(FVector* Self)
@@ -4358,12 +4291,6 @@ extern "C"
 		return (INT_PTR) new FVector2D(Self->RoundToVector());
 	}
 
-	DOTNET_EXPORT auto E_FVector2D_SafeNormal(FVector2D* Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector2D(Self->SafeNormal(_p0));
-	}
-
 	DOTNET_EXPORT auto E_FVector2D_Set(FVector2D* Self, float InX, float InY)
 	{
 		auto _p0 = InX;
@@ -4419,12 +4346,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FVector4_Z_GET(FVector4* Ptr) { return Ptr->Z; }
 	DOTNET_EXPORT void E_PROP_FVector4_Z_SET(FVector4* Ptr, float Value) { Ptr->Z = Value; }
 	
-	DOTNET_EXPORT auto E_FVector4_Component(FVector4* Self, int32 Index)
-	{
-		auto _p0 = Index;
-		return Self->Component(_p0);
-	}
-
 	DOTNET_EXPORT auto E_FVector4_ContainsNaN(FVector4* Self)
 	{
 		return Self->ContainsNaN();
@@ -4489,12 +4410,6 @@ extern "C"
 		return (INT_PTR) new FRotator(Self->Rotation());
 	}
 
-	DOTNET_EXPORT auto E_FVector4_SafeNormal(FVector4* Self, float Tolerance)
-	{
-		auto _p0 = Tolerance;
-		return (INT_PTR) new FVector4(Self->SafeNormal(_p0));
-	}
-
 	DOTNET_EXPORT auto E_FVector4_Set(FVector4* Self, float InX, float InY, float InZ, float InW)
 	{
 		auto _p0 = InX;
@@ -4537,11 +4452,6 @@ extern "C"
 	DOTNET_EXPORT auto E_FVector4_ToString(FVector4* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->ToString());
-	}
-
-	DOTNET_EXPORT auto E_FVector4_UnsafeNormal3(FVector4* Self)
-	{
-		return (INT_PTR) new FVector4(Self->UnsafeNormal3());
 	}
 
 	
@@ -4625,9 +4535,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FWorldContext_PIEPrefix_GET(FWorldContext* Ptr) { return ConvertToManage_StringWrapper(Ptr->PIEPrefix); }
 	DOTNET_EXPORT void E_PROP_FWorldContext_PIEPrefix_SET(FWorldContext* Ptr, char* Value) { Ptr->PIEPrefix = ConvertFromManage_FString(Value); }
-	
-	DOTNET_EXPORT auto E_PROP_FWorldContext_PIERemapPrefix_GET(FWorldContext* Ptr) { return ConvertToManage_StringWrapper(Ptr->PIERemapPrefix); }
-	DOTNET_EXPORT void E_PROP_FWorldContext_PIERemapPrefix_SET(FWorldContext* Ptr, char* Value) { Ptr->PIERemapPrefix = ConvertFromManage_FString(Value); }
 	
 	DOTNET_EXPORT auto E_PROP_FWorldContext_RunAsDedicated_GET(FWorldContext* Ptr) { return Ptr->RunAsDedicated; }
 	DOTNET_EXPORT void E_PROP_FWorldContext_RunAsDedicated_SET(FWorldContext* Ptr, bool Value) { Ptr->RunAsDedicated = Value; }

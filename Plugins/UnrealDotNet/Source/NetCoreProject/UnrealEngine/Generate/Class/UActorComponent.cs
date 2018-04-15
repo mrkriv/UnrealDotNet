@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:94
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
 namespace UnrealEngine
 {
@@ -22,6 +22,66 @@ namespace UnrealEngine
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UActorComponent(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bAllowConcurrentTick_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bAllowConcurrentTick_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bAutoActivate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bAutoActivate_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bAutoRegister_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bAutoRegister_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bEditableWhenInherited_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bEditableWhenInherited_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bIsActive_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bIsActive_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bIsEditorOnly_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bIsEditorOnly_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bNavigationRelevant_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bNavigationRelevant_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bNeverNeedsRenderUpdate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bNeverNeedsRenderUpdate_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bTickInEditor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bTickInEditor_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bWantsBeginPlay_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bWantsBeginPlay_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UActorComponent_bWantsInitializeComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_bWantsInitializeComponent_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
@@ -63,6 +123,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_CanEverAffectNavigation(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UActorComponent_ClearNeedEndOfFrameUpdate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UActorComponent_ComponentHasTag(IntPtr Self, string Tag);
@@ -334,6 +397,122 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Can this component be destroyed (via K2_DestroyComponent) by any parent </para>
+		/// </summary>
+		public byte bAllowAnyoneToDestroyMe
+		{
+			get => E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_GET(NativePointer);
+			set => E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Can we tick this concurrently on other threads? </para>
+		/// </summary>
+		public byte bAllowConcurrentTick
+		{
+			get => E_PROP_UActorComponent_bAllowConcurrentTick_GET(NativePointer);
+			set => E_PROP_UActorComponent_bAllowConcurrentTick_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the component is activated at creation or must be explicitly activated. </para>
+		/// </summary>
+		public byte bAutoActivate
+		{
+			get => E_PROP_UActorComponent_bAutoActivate_GET(NativePointer);
+			set => E_PROP_UActorComponent_bAutoActivate_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Does this component automatically register with its owner </para>
+		/// </summary>
+		public byte bAutoRegister
+		{
+			get => E_PROP_UActorComponent_bAutoRegister_GET(NativePointer);
+			set => E_PROP_UActorComponent_bAutoRegister_SET(NativePointer, value);
+		}
+
+		public byte bEditableWhenInherited
+		{
+			get => E_PROP_UActorComponent_bEditableWhenInherited_GET(NativePointer);
+			set => E_PROP_UActorComponent_bEditableWhenInherited_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the component is currently active. </para>
+		/// </summary>
+		public byte bIsActive
+		{
+			get => E_PROP_UActorComponent_bIsActive_GET(NativePointer);
+			set => E_PROP_UActorComponent_bIsActive_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, the component will be excluded from non-editor builds </para>
+		/// </summary>
+		public byte bIsEditorOnly
+		{
+			get => E_PROP_UActorComponent_bIsEditorOnly_GET(NativePointer);
+			set => E_PROP_UActorComponent_bIsEditorOnly_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Cached navigation relevancy flag for collision updates </para>
+		/// </summary>
+		public byte bNavigationRelevant
+		{
+			get => E_PROP_UActorComponent_bNavigationRelevant_GET(NativePointer);
+			set => E_PROP_UActorComponent_bNavigationRelevant_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component never needs a render update. </para>
+		/// </summary>
+		public byte bNeverNeedsRenderUpdate
+		{
+			get => E_PROP_UActorComponent_bNeverNeedsRenderUpdate_GET(NativePointer);
+			set => E_PROP_UActorComponent_bNeverNeedsRenderUpdate_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Should this component be ticked in the editor </para>
+		/// </summary>
+		public byte bTickInEditor
+		{
+			get => E_PROP_UActorComponent_bTickInEditor_GET(NativePointer);
+			set => E_PROP_UActorComponent_bTickInEditor_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, we call the virtual BeginPlay </para>
+		/// </summary>
+		public byte bWantsBeginPlay
+		{
+			get => E_PROP_UActorComponent_bWantsBeginPlay_GET(NativePointer);
+			set => E_PROP_UActorComponent_bWantsBeginPlay_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, we call the virtual InitializeComponent </para>
+		/// </summary>
+		public byte bWantsInitializeComponent
+		{
+			get => E_PROP_UActorComponent_bWantsInitializeComponent_GET(NativePointer);
+			set => E_PROP_UActorComponent_bWantsInitializeComponent_SET(NativePointer, value);
+		}
+
 		public EComponentCreationMethod CreationMethod
 		{
 			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
@@ -456,6 +635,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool CanEverAffectNavigation()
 			=> E_UActorComponent_CanEverAffectNavigation(this);
+		
+		
+		/// <summary>
+		/// <para>If we belong to a world, clear the request to do a deferred update. </para>
+		/// </summary>
+		public void ClearNeedEndOfFrameUpdate()
+			=> E_UActorComponent_ClearNeedEndOfFrameUpdate(this);
 		
 		
 		/// <summary>
@@ -731,7 +917,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Unregister and mark for pending kill a component.  This may not be used to destroy a component is owned by an actor other than the one calling the function. </para>
+		/// <para>Unregister and mark for pending kill a component.  This may not be used to destroy a component that is owned by an actor unless the owning actor is calling the function. </para>
 		/// </summary>
 		public void K2_DestroyComponent(UObject Object)
 			=> E_UActorComponent_K2_DestroyComponent(this, Object);

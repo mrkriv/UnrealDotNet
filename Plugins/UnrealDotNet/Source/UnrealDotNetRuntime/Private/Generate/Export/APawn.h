@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/Pawn.h"
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 class E_PROTECTED_WRAP_APawn : protected APawn
 {
@@ -62,12 +62,6 @@ extern "C"
 		auto _p1 = ScaleValue;
 		auto _p2 = bForce;
 		Self->AddMovementInput(_p0, _p1, _p2);
-	}
-
-	DOTNET_EXPORT auto E_APawn_ClientSetRotation(APawn* Self, INT_PTR NewRotation)
-	{
-		auto _p0 = *(FRotator*)NewRotation;
-		Self->ClientSetRotation(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ConsumeMovementInputVector(APawn* Self)
@@ -133,11 +127,6 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetMovementComponent());
 	}
 
-	DOTNET_EXPORT auto E_APawn_GetMovementInputVector(APawn* Self)
-	{
-		return (INT_PTR) new FVector(Self->GetMovementInputVector());
-	}
-
 	DOTNET_EXPORT auto E_APawn_GetPawnNoiseEmitterComponent(APawn* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetPawnNoiseEmitterComponent());
@@ -183,11 +172,6 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_Internal_GetLastMovementInputVector(APawn* Self)
 	{
 		return (INT_PTR) new FVector(Self->Internal_GetLastMovementInputVector());
-	}
-
-	DOTNET_EXPORT auto E_APawn_Internal_GetMovementInputVector(APawn* Self)
-	{
-		return (INT_PTR) new FVector(Self->Internal_GetMovementInputVector());
 	}
 
 	DOTNET_EXPORT auto E_APawn_Internal_GetPendingMovementInputVector(APawn* Self)

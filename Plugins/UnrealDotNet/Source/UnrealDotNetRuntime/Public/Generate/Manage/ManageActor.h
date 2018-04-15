@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/GameFramework/Actor.h"
+#include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "ManageActor.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor
@@ -78,8 +78,6 @@ public:
 	virtual void PostInitializeComponents() override;
 	
 	virtual void PostNetInit() override;
-	
-	virtual void PostNetReceiveLocation() override;
 	
 	virtual void PostNetReceiveLocationAndRotation() override;
 	

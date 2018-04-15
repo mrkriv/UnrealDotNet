@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageActor.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
 
 void AManageActor::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
 {
@@ -194,12 +195,6 @@ void AManageActor::PostNetInit()
 {
 	Super::PostNetInit();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetInit");
-}
-
-void AManageActor::PostNetReceiveLocation()
-{
-	Super::PostNetReceiveLocation();
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceiveLocation");
 }
 
 void AManageActor::PostNetReceiveLocationAndRotation()

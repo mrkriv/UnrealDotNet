@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Engine/World.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\World.h:715
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\World.h:732
 
 extern "C"
 {
@@ -42,9 +42,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_bPostTickComponentUpdate_GET(UWorld* Ptr) { return Ptr->bPostTickComponentUpdate; }
 	DOTNET_EXPORT void E_PROP_UWorld_bPostTickComponentUpdate_SET(UWorld* Ptr, bool Value) { Ptr->bPostTickComponentUpdate = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UWorld_bShouldDelayGarbageCollect_GET(UWorld* Ptr) { return Ptr->bShouldDelayGarbageCollect; }
-	DOTNET_EXPORT void E_PROP_UWorld_bShouldDelayGarbageCollect_SET(UWorld* Ptr, bool Value) { Ptr->bShouldDelayGarbageCollect = Value; }
-	
 	DOTNET_EXPORT auto E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(UWorld* Ptr) { return Ptr->bShouldForceUnloadStreamingLevels; }
 	DOTNET_EXPORT void E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(UWorld* Ptr, bool Value) { Ptr->bShouldForceUnloadStreamingLevels = Value; }
 	
@@ -68,9 +65,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_FlushLevelStreamingType_GET(UWorld* Ptr) { return Ptr->FlushLevelStreamingType; }
 	DOTNET_EXPORT void E_PROP_UWorld_FlushLevelStreamingType_SET(UWorld* Ptr, EFlushLevelStreamingType Value) { Ptr->FlushLevelStreamingType = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_FullPurgeTriggered_GET(UWorld* Ptr) { return Ptr->FullPurgeTriggered; }
-	DOTNET_EXPORT void E_PROP_UWorld_FullPurgeTriggered_SET(UWorld* Ptr, bool Value) { Ptr->FullPurgeTriggered = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(UWorld* Ptr) { return Ptr->LastTimeUnbuiltLightingWasEncountered; }
 	DOTNET_EXPORT void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(UWorld* Ptr, double Value) { Ptr->LastTimeUnbuiltLightingWasEncountered = Value; }
@@ -110,9 +104,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_TimeSeconds_GET(UWorld* Ptr) { return Ptr->TimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_TimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->TimeSeconds = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_TimeSinceLastPendingKillPurge_GET(UWorld* Ptr) { return Ptr->TimeSinceLastPendingKillPurge; }
-	DOTNET_EXPORT void E_PROP_UWorld_TimeSinceLastPendingKillPurge_SET(UWorld* Ptr, float Value) { Ptr->TimeSinceLastPendingKillPurge = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_UnpausedTimeSeconds_GET(UWorld* Ptr) { return Ptr->UnpausedTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_UnpausedTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->UnpausedTimeSeconds = Value; }
@@ -182,6 +173,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_CancelPendingMapChange(UWorld* Self)
 	{
 		Self->CancelPendingMapChange();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CleanupActors(UWorld* Self)
+	{
+		Self->CleanupActors();
 	}
 
 	DOTNET_EXPORT auto E_UWorld_CleanupWorld(UWorld* Self, bool bSessionEnded, bool bCleanupResources, UWorld* NewWorld)
@@ -312,6 +308,18 @@ extern "C"
 		Self->EnsureCollisionTreeIsBuilt();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_FindCollectionIndexByType(UWorld* Self, ELevelCollectionType InType)
+	{
+		auto _p0 = InType;
+		return Self->FindCollectionIndexByType(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_FindOrAddCollectionByType_Index(UWorld* Self, ELevelCollectionType InType)
+	{
+		auto _p0 = InType;
+		return Self->FindOrAddCollectionByType_Index(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_FindTeleportSpot(UWorld* Self, AActor* TestActor, INT_PTR PlaceLocation, INT_PTR PlaceRotation)
 	{
 		auto _p0 = TestActor;
@@ -325,10 +333,21 @@ extern "C"
 		Self->FinishPhysicsSim();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_FlushLevelStreaming(UWorld* Self, EFlushLevelStreamingType FlushType)
+	{
+		auto _p0 = FlushType;
+		Self->FlushLevelStreaming(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_ForceGarbageCollection(UWorld* Self, bool bFullPurge)
 	{
 		auto _p0 = bFullPurge;
 		Self->ForceGarbageCollection(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetActiveLevelCollectionIndex(UWorld* Self)
+	{
+		return Self->GetActiveLevelCollectionIndex();
 	}
 
 	DOTNET_EXPORT auto E_UWorld_GetActorCount(UWorld* Self)
@@ -564,10 +583,15 @@ extern "C"
 		Self->ProcessLevelStreamingVolumes(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UWorld_PropagateLightingScenarioChange(UWorld* Self, bool bLevelWasMadeVisible)
+	DOTNET_EXPORT auto E_UWorld_PropagateLightingScenarioChange(UWorld* Self)
 	{
-		auto _p0 = bLevelWasMadeVisible;
-		Self->PropagateLightingScenarioChange(_p0);
+		Self->PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemapCompiledScriptActor(UWorld* Self, char* Str)
+	{
+		auto _p0 = ConvertFromManage_FString(Str);
+		return Self->RemapCompiledScriptActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_RemoveActor(UWorld* Self, AActor* Actor, bool bShouldModifyLevel)
@@ -618,16 +642,23 @@ extern "C"
 		Self->SendAllEndOfFrameUpdates();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_SetActiveLevelCollection(UWorld* Self, int32 LevelCollectionIndex)
+	{
+		auto _p0 = LevelCollectionIndex;
+		Self->SetActiveLevelCollection(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_SetGameMode(UWorld* Self, INT_PTR InURL)
 	{
 		auto _p0 = *(FURL*)InURL;
 		return Self->SetGameMode(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UWorld_SetMapNeedsLightingFullyRebuilt(UWorld* Self, int32 InNumLightingUnbuiltObjects)
+	DOTNET_EXPORT auto E_UWorld_SetMapNeedsLightingFullyRebuilt(UWorld* Self, int32 InNumLightingUnbuiltObjects, int32 InNumUnbuiltReflectionCaptures)
 	{
 		auto _p0 = InNumLightingUnbuiltObjects;
-		Self->SetMapNeedsLightingFullyRebuilt(_p0);
+		auto _p1 = InNumUnbuiltReflectionCaptures;
+		Self->SetMapNeedsLightingFullyRebuilt(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SetSeamlessTravelMidpointPause(UWorld* Self, bool bNowPaused)
@@ -710,11 +741,6 @@ extern "C"
 	{
 		auto _p0 = Component;
 		Self->UpdateActorComponentEndOfFrameUpdateState(_p0);
-	}
-
-	DOTNET_EXPORT auto E_UWorld_UpdateAllReflectionCaptures(UWorld* Self)
-	{
-		Self->UpdateAllReflectionCaptures();
 	}
 
 	DOTNET_EXPORT auto E_UWorld_UpdateAllSkyCaptures(UWorld* Self)

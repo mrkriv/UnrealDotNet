@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 namespace UnrealEngine
 {
@@ -56,9 +56,6 @@ namespace UnrealEngine
 		private static extern void E_APawn_AddMovementInput(IntPtr Self, IntPtr WorldDirection, float ScaleValue, bool bForce);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_ClientSetRotation(IntPtr Self, IntPtr NewRotation);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_ConsumeMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -95,9 +92,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_APawn_GetMovementComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetMovementInputVector(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_APawn_GetPawnNoiseEmitterComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -123,9 +117,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_Internal_GetLastMovementInputVector(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_Internal_GetMovementInputVector(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_Internal_GetPendingMovementInputVector(IntPtr Self);
@@ -290,13 +281,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Deprecated, misleading name and redundant </para>
-		/// </summary>
-		public virtual void ClientSetRotation(FRotator NewRotation)
-			=> E_APawn_ClientSetRotation(this, NewRotation);
-		
-		
-		/// <summary>
 		/// <para>Returns the pending input vector and resets it to zero. </para>
 		/// <para>This should be used during a movement update (by the Pawn or PawnMovementComponent) to prevent accumulation of control input between frames. </para>
 		/// <para>Copies the pending input vector to the saved input vector (GetLastMovementInputVector()). </para>
@@ -391,13 +375,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>(Deprecated) Return the input vector in world space. </para>
-		/// </summary>
-		public FVector GetMovementInputVector()
-			=> E_APawn_GetMovementInputVector(this);
-		
-		
-		/// <summary>
 		/// <para>Return our PawnNoiseEmitterComponent, if any. Default implementation returns the first PawnNoiseEmitterComponent found in the components array. </para>
 		/// <para>If one isn't found, then it tries to find one on the Pawn's current Controller. </para>
 		/// </summary>
@@ -431,11 +408,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>return true if player is viewing this Pawn in FreeCam </para>
+		/// <return>true if player is viewing this Pawn in FreeCam </return>
 		/// </summary>
 		public virtual bool InFreeCam()
 			=> E_APawn_InFreeCam(this);
 		
+		
+		/// <summary>
+		/// <para>Whether this Pawn's input handling is enabled.  Pawn must still be possessed to get input even if this is true </para>
+		/// </summary>
 		public bool InputEnabled()
 			=> E_APawn_InputEnabled(this);
 		
@@ -459,13 +440,6 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector Internal_GetLastMovementInputVector()
 			=> E_APawn_Internal_GetLastMovementInputVector(this);
-		
-		
-		/// <summary>
-		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. </para>
-		/// </summary>
-		public FVector Internal_GetMovementInputVector()
-			=> E_APawn_Internal_GetMovementInputVector(this);
 		
 		
 		/// <summary>
@@ -506,7 +480,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>(Deprecated) Return the input vector in world space. </para>
 		/// </summary>
-		public FVector K2_GetMovementInputVector()
+		public FVector GetMovementInputVector()
 			=> E_APawn_K2_GetMovementInputVector(this);
 		
 		
@@ -562,6 +536,10 @@ namespace UnrealEngine
 		public virtual void PawnStartFire(byte FireModeNum)
 			=> E_APawn_PawnStartFire(this, FireModeNum);
 		
+		
+		/// <summary>
+		/// <para>Return true if yaw is within AllowedYawError of desired yaw </para>
+		/// </summary>
 		public virtual bool ReachedDesiredRotation()
 			=> E_APawn_ReachedDesiredRotation(this);
 		
@@ -626,14 +604,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>updates MovementComponent's parameters used by navigation system </para>
+		/// <para>Updates MovementComponent's parameters used by navigation system </para>
 		/// </summary>
 		public void UpdateNavAgent()
 			=> E_APawn_UpdateNavAgent(this);
 		
 		
 		/// <summary>
-		/// <para>update all components relevant for navigation generators to match bCanAffectNavigationGeneration flag </para>
+		/// <para>Update all components relevant for navigation generators to match bCanAffectNavigationGeneration flag </para>
 		/// </summary>
 		public virtual void UpdateNavigationRelevance()
 			=> E_APawn_UpdateNavigationRelevance(this);

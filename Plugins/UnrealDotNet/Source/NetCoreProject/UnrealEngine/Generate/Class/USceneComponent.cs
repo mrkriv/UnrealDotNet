@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 namespace UnrealEngine
 {
@@ -24,9 +24,44 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USceneComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_ComponentToWorld_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USceneComponent_bAbsoluteLocation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_ComponentToWorld_SET(IntPtr Ptr, IntPtr Value);
+		private static extern void E_PROP_USceneComponent_bAbsoluteLocation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bAbsoluteRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bAbsoluteRotation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bAbsoluteScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bAbsoluteScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bHiddenInGame_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bHiddenInGame_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bUseAttachParentBound_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bUseAttachParentBound_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneComponent_bVisible_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_bVisible_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_USceneComponent_ComponentVelocity_GET(IntPtr Ptr);
@@ -47,11 +82,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_USceneComponent_RelativeScale3D_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USceneComponent_RelativeScale3D_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_AddLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
@@ -379,12 +409,80 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Current transform of the component, relative to the world </para>
+		/// <para>If RelativeLocation should be considered relative to the world, rather than the parent </para>
 		/// </summary>
-		public FTransform ComponentToWorld
+		public byte bAbsoluteLocation
 		{
-			get => E_PROP_USceneComponent_ComponentToWorld_GET(NativePointer);
-			set => E_PROP_USceneComponent_ComponentToWorld_SET(NativePointer, value);
+			get => E_PROP_USceneComponent_bAbsoluteLocation_GET(NativePointer);
+			set => E_PROP_USceneComponent_bAbsoluteLocation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If RelativeRotation should be considered relative to the world, rather than the parent </para>
+		/// </summary>
+		public byte bAbsoluteRotation
+		{
+			get => E_PROP_USceneComponent_bAbsoluteRotation_GET(NativePointer);
+			set => E_PROP_USceneComponent_bAbsoluteRotation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If RelativeScale3D should be considered relative to the world, rather than the parent </para>
+		/// </summary>
+		public byte bAbsoluteScale
+		{
+			get => E_PROP_USceneComponent_bAbsoluteScale_GET(NativePointer);
+			set => E_PROP_USceneComponent_bAbsoluteScale_SET(NativePointer, value);
+		}
+
+		public byte bBoundsChangeTriggersStreamingDataRebuild
+		{
+			get => E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_GET(NativePointer);
+			set => E_PROP_USceneComponent_bBoundsChangeTriggersStreamingDataRebuild_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to hide the primitive in game, if the primitive is Visible. </para>
+		/// </summary>
+		public byte bHiddenInGame
+		{
+			get => E_PROP_USceneComponent_bHiddenInGame_GET(NativePointer);
+			set => E_PROP_USceneComponent_bHiddenInGame_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not the cached PhysicsVolume this component overlaps should be updated when the component is moved. </para>
+		/// <para>@see GetPhysicsVolume() </para>
+		/// </summary>
+		public byte bShouldUpdatePhysicsVolume
+		{
+			get => E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_GET(NativePointer);
+			set => E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component uses its parents bounds when attached. </para>
+		/// <para>This can be a significant optimization with many components attached together. </para>
+		/// </summary>
+		public byte bUseAttachParentBound
+		{
+			get => E_PROP_USceneComponent_bUseAttachParentBound_GET(NativePointer);
+			set => E_PROP_USceneComponent_bUseAttachParentBound_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to completely draw the primitive; if false, the primitive is not drawn, does not cast a shadow. </para>
+		/// </summary>
+		public byte bVisible
+		{
+			get => E_PROP_USceneComponent_bVisible_GET(NativePointer);
+			set => E_PROP_USceneComponent_bVisible_SET(NativePointer, value);
 		}
 
 		public FVector ComponentVelocity
@@ -422,12 +520,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USceneComponent_RelativeScale3D_GET(NativePointer);
 			set => E_PROP_USceneComponent_RelativeScale3D_SET(NativePointer, value);
-		}
-
-		public FVector RelativeTranslation_DEPRECATED
-		{
-			get => E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_GET(NativePointer);
-			set => E_PROP_USceneComponent_RelativeTranslation_DEPRECATED_SET(NativePointer, value);
 		}
 
 		#endregion

@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/PawnMovementComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/PawnMovementComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
 
 extern "C"
 {
@@ -25,11 +25,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UPawnMovementComponent_ConsumeInputVector(UPawnMovementComponent* Self)
 	{
 		return (INT_PTR) new FVector(Self->ConsumeInputVector());
-	}
-
-	DOTNET_EXPORT auto E_UPawnMovementComponent_GetInputVector(UPawnMovementComponent* Self)
-	{
-		return (INT_PTR) new FVector(Self->GetInputVector());
 	}
 
 	DOTNET_EXPORT auto E_UPawnMovementComponent_GetLastInputVector(UPawnMovementComponent* Self)

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/LightComponent.h"
+#include "Runtime/Engine/Classes/Components/LightComponent.h"
 #include "ManageLightComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageLightComponent : public ULightComponent

@@ -1,9 +1,10 @@
 #include "UnrealDotNetRuntime.h"
+#include "DotnetTypeName.h"
 #include "Generate/Manage/ManageCharacterMovementComponent.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
 void UManageCharacterMovementComponent::AddForce(FVector Force)
 {
@@ -231,12 +232,6 @@ void UManageCharacterMovementComponent::OnUnableToFollowBaseMove(const FVector& 
 {
 	Super::OnUnableToFollowBaseMove(DeltaPosition, OldLocation, MoveOnBaseHit);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUnableToFollowBaseMove", DeltaPosition, OldLocation, MoveOnBaseHit);
-}
-
-void UManageCharacterMovementComponent::PerformAirControl(FVector Direction, float ZDiff)
-{
-	Super::PerformAirControl(Direction, ZDiff);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PerformAirControl", Direction, ZDiff);
 }
 
 void UManageCharacterMovementComponent::PerformAirControlForPathFollowing(FVector Direction, float ZDiff)

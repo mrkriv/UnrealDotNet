@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 namespace UnrealEngine
 {
@@ -24,14 +24,244 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UPrimitiveComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastCinematicShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastCinematicShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastDynamicShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastDynamicShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastFarShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastFarShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastHiddenShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastHiddenShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastInsetShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastInsetShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastStaticShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastStaticShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bForceMipStreaming_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bForceMipStreaming_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bIgnoreRadialForce_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bIgnoreRadialForce_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bMultiBodyOverlap_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bMultiBodyOverlap_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bOnlyOwnerSee_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bOnlyOwnerSee_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPrimitiveComponent_BoundsScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_BoundsScale_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bOwnerNoSee_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bOwnerNoSee_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bReceivesDecals_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bReceivesDecals_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bRenderCustomDepth_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bRenderCustomDepth_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bRenderInMainPass_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bRenderInMainPass_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bRenderInMono_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bRenderInMono_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bSelectable_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bSelectable_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bSelfShadowOnly_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bSelfShadowOnly_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bTraceComplexOnMove_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bTraceComplexOnMove_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bUseAsOccluder_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bUseAsOccluder_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bUseEditorCompositing_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bUseEditorCompositing_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_CastShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_CastShadow_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPrimitiveComponent_CurrentTag_GET();
@@ -70,6 +300,11 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_UPrimitiveComponent_LightingChannels_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_LightingChannels_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_LightmapType_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_LightmapType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPrimitiveComponent_LpvBiasMultiplier_GET(IntPtr Ptr);
@@ -143,6 +378,12 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_AddAngularImpulse(IntPtr Self, IntPtr Impulse, string BoneName, bool bVelChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddAngularImpulseInDegrees(IntPtr Self, IntPtr Impulse, string BoneName, bool bVelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddAngularImpulseInRadians(IntPtr Self, IntPtr Impulse, string BoneName, bool bVelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_AddForce(IntPtr Self, IntPtr Force, string BoneName, bool bAccelChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -167,6 +408,12 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_AddTorque(IntPtr Self, IntPtr Torque, string BoneName, bool bAccelChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddTorqueInDegrees(IntPtr Self, IntPtr Torque, string BoneName, bool bAccelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_AddTorqueInRadians(IntPtr Self, IntPtr Torque, string BoneName, bool bAccelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_AreAllCollideableDescendantsRelative(IntPtr Self, bool bAllowCachedValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -177,9 +424,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UPrimitiveComponent_CalculateMass(IntPtr Self, string BoneName);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UPrimitiveComponent_CanBeBaseForCharacter(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_CanCharacterStepUp(IntPtr Self, IntPtr Pawn);
@@ -198,9 +442,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_ConditionalApplyRigidBodyState(IntPtr Self, IntPtr UpdatedState, IntPtr ErrorCorrection, IntPtr OutDeltaPos, string BoneName);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_DisableNavigationRelevance(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_DispatchMouseOverEvents(IntPtr Self, IntPtr CurrentComponent, IntPtr NewComponent);
@@ -261,6 +502,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsAngularVelocity(IntPtr Self, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsAngularVelocityInDegrees(IntPtr Self, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsAngularVelocityInRadians(IntPtr Self, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsLinearVelocity(IntPtr Self, string BoneName);
@@ -362,10 +609,19 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_SetAllPhysicsAngularVelocity(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInDegrees(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInRadians(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllPhysicsLinearVelocity(IntPtr Self, IntPtr NewVel, bool bAddToCurrent);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllPhysicsPosition(IntPtr Self, IntPtr NewPos);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetAllUseCCD(IntPtr Self, bool InUseCCD);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAngularDamping(IntPtr Self, float InDamping);
@@ -437,10 +693,22 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_SetPhysicsAngularVelocity(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetPhysicsAngularVelocityInDegrees(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetPhysicsAngularVelocityInRadians(IntPtr Self, IntPtr NewAngVel, bool bAddToCurrent, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetPhysicsLinearVelocity(IntPtr Self, IntPtr NewVel, bool bAddToCurrent, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetPhysicsMaxAngularVelocity(IntPtr Self, float NewMaxAngVel, bool bAddToCurrent, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInDegrees(IntPtr Self, float NewMaxAngVel, bool bAddToCurrent, string BoneName);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInRadians(IntPtr Self, float NewMaxAngVel, bool bAddToCurrent, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetPostPhysicsComponentTickEnabled(IntPtr Self, bool bEnable);
@@ -465,6 +733,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetTranslucentSortPriority(IntPtr Self, int NewTranslucentSortPriority);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SetUseCCD(IntPtr Self, bool InUseCCD, string BoneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(IntPtr Self, bool bNewUseViewOwnerDepthPriorityGroup, byte NewViewOwnerDepthPriorityGroup);
@@ -514,6 +785,293 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public byte AlwaysLoadOnClient
+		{
+			get => E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_SET(NativePointer, value);
+		}
+
+		public byte AlwaysLoadOnServer
+		{
+			get => E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls whether the primitive should affect dynamic distance field lighting methods.  This flag is only used if CastShadow is true. </para>
+		/// </summary>
+		public byte bAffectDistanceFieldLighting
+		{
+			get => E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls whether the primitive should inject light into the Light Propagation Volume.  This flag is only used if CastShadow is true. </para>
+		/// </summary>
+		public byte bAffectDynamicIndirectLighting
+		{
+			get => E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to accept cull distance volumes to modify cached cull distance. </para>
+		/// </summary>
+		public byte bAllowCullDistanceVolume
+		{
+			get => E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Indicates if we'd like to create physics state all the time (for collision and simulation). </para>
+		/// <para>If you set this to false, it still will create physics state if collision or simulation activated. </para>
+		/// <para>This can help performance if you'd like to avoid overhead of creating physics state when triggers </para>
+		/// </summary>
+		public byte bAlwaysCreatePhysicsState
+		{
+			get => E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>True for damage to this component to apply physics impulse, false to opt out of these impulses. </para>
+		/// </summary>
+		public byte bApplyImpulseOnDamage
+		{
+			get => E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this primitive is referenced by a FDynamicTextureInstanceManager </para>
+		/// </summary>
+		public byte bAttachedToStreamingManagerAsDynamic
+		{
+			get => E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this primitive is referenced by a FLevelTextureManager </para>
+		/// </summary>
+		public byte bAttachedToStreamingManagerAsStatic
+		{
+			get => E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this component should cast shadows from lights that have bCastShadowsFromCinematicObjectsOnly enabled. </para>
+		/// <para>This is useful for characters in a cinematic with special cinematic lights, where the cost of shadowmap rendering of the environment is undesired. </para>
+		/// </summary>
+		public byte bCastCinematicShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastCinematicShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastCinematicShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls whether the primitive should cast shadows in the case of non precomputed shadowing.  This flag is only used if CastShadow is true. </para>
+		/// </summary>
+		public byte DynamicShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastDynamicShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastDynamicShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>When enabled, the component will be rendering into the far shadow cascades (only for directional lights). </para>
+		/// </summary>
+		public byte FarShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastFarShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastFarShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, the primitive will cast shadows even if bHidden is true. </para>
+		/// <para>Controls whether the primitive should cast shadows when hidden. </para>
+		/// <para>This flag is only used if CastShadow is true. </para>
+		/// </summary>
+		public byte HiddenShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastHiddenShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastHiddenShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this component should create a per-object shadow that gives higher effective shadow resolution. </para>
+		/// <para>Useful for cinematic character shadowing. Assumed to be enabled if bSelfShadowOnly is enabled. </para>
+		/// </summary>
+		public byte DynamicInsetShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastInsetShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastInsetShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this primitive should cast dynamic shadows as if it were a two sided material. </para>
+		/// </summary>
+		public byte ShadowTwoSided
+		{
+			get => E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the object should cast a static shadow from shadow casting lights.  This flag is only used if CastShadow is true. </para>
+		/// </summary>
+		public byte StaticShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastStaticShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastStaticShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the object should cast a volumetric translucent shadow. </para>
+		/// <para>Volumetric translucent shadows are useful for primitives with smoothly changing opacity like particles representing a volume, </para>
+		/// <para>But have artifacts when used on highly opaque surfaces. </para>
+		/// </summary>
+		public byte VolumetricTranslucentShadow
+		{
+			get => E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will look for collisions on both physic scenes during movement. </para>
+		/// <para>Only required if the asynchronous physics scene is enabled and has geometry in it, and you wish to test for collisions with objects in that scene. </para>
+		/// <para>@see MoveComponent() </para>
+		/// </summary>
+		public byte bCheckAsyncSceneOnMove
+		{
+			get => E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, forces mips for textures used by this component to be resident when this component's level is loaded. </para>
+		/// </summary>
+		public byte bForceMipStreaming
+		{
+			get => E_PROP_UPrimitiveComponent_bForceMipStreaming_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bForceMipStreaming_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will generate overlap events when it is overlapping other components (eg Begin Overlap). </para>
+		/// <para>Both components (this and the other) must have this enabled for overlap events to occur. </para>
+		/// <para>@see [Overlap Events](https://docs.unrealengine.com/latest/INT/Engine/Physics/Collision/index.html#overlapandgenerateoverlapevents) </para>
+		/// <para>@see UpdateOverlaps(), BeginComponentOverlap(), EndComponentOverlap() </para>
+		/// </summary>
+		public byte bGenerateOverlapEvents
+		{
+			get => E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this primitive is handled as dynamic, although it could have no references </para>
+		/// </summary>
+		public byte bHandledByStreamingManagerAsDynamic
+		{
+			get => E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_SET(NativePointer, value);
+		}
+
+		public byte bHasMotionBlurVelocityMeshes
+		{
+			get => E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_SET(NativePointer, value);
+		}
+
+		public byte bHasPerInstanceHitProxies
+		{
+			get => E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Will ignore radial forces applied to this component. </para>
+		/// </summary>
+		public byte bIgnoreRadialForce
+		{
+			get => E_PROP_UPrimitiveComponent_bIgnoreRadialForce_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bIgnoreRadialForce_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Will ignore radial impulses applied to this component. </para>
+		/// </summary>
+		public byte bIgnoreRadialImpulse
+		{
+			get => E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_SET(NativePointer, value);
+		}
+
+		public byte bLightAsIfStatic_DEPRECATED
+		{
+			get => E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to light this component and any attachments as a group.  This only has effect on the root component of an attachment tree. </para>
+		/// <para>When enabled, attached component shadowing settings like bCastInsetShadow, bCastVolumetricTranslucentShadow, etc, will be ignored. </para>
+		/// <para>This is useful for improving performance when multiple movable components are attached together. </para>
+		/// </summary>
+		public byte bLightAttachmentsAsGroup
+		{
+			get => E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will generate individual overlaps for each overlapping physics body if it is a multi-body component. When false, this component will </para>
+		/// <para>generate only one overlap, regardless of how many physics bodies it has and how many of them are overlapping another component/body. This flag has no </para>
+		/// <para>influence on single body components. </para>
+		/// </summary>
+		public byte bMultiBodyOverlap
+		{
+			get => E_PROP_UPrimitiveComponent_bMultiBodyOverlap_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bMultiBodyOverlap_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If this is True, this component will only be visible when the view actor is the component's owner, directly or indirectly. </para>
+		/// </summary>
+		public byte bOnlyOwnerSee
+		{
+			get => E_PROP_UPrimitiveComponent_bOnlyOwnerSee_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bOnlyOwnerSee_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Scales the bounds of the object. </para>
@@ -529,6 +1087,163 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>If this is True, this component won't be visible when the view actor is the component's owner, directly or indirectly. </para>
+		/// </summary>
+		public byte bOwnerNoSee
+		{
+			get => E_PROP_UPrimitiveComponent_bOwnerNoSee_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bOwnerNoSee_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Mobile only: </para>
+		/// <para>If disabled this component will not receive CSM shadows. (Components that do not receive CSM may have reduced shading cost) </para>
+		/// </summary>
+		public byte ReceiveCSMShadows
+		{
+			get => E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the primitive receives decals. </para>
+		/// </summary>
+		public byte bReceivesDecals
+		{
+			get => E_PROP_UPrimitiveComponent_bReceivesDecals_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bReceivesDecals_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will be rendered in the CustomDepth pass (usually used for outlines) </para>
+		/// </summary>
+		public byte RenderCustomDepthPass
+		{
+			get => E_PROP_UPrimitiveComponent_bRenderCustomDepth_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bRenderCustomDepth_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will be rendered in the main pass (z prepass, basepass, transparency) </para>
+		/// </summary>
+		public byte bRenderInMainPass
+		{
+			get => E_PROP_UPrimitiveComponent_bRenderInMainPass_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bRenderInMainPass_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will be rendered in mono only if an HMD is connected and monoscopic far field rendering is activated. </para>
+		/// </summary>
+		public byte bRenderInMono
+		{
+			get => E_PROP_UPrimitiveComponent_bRenderInMono_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bRenderInMono_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, component sweeps will return the material in their hit result. </para>
+		/// <para>@see MoveComponent(), FHitResult </para>
+		/// </summary>
+		public byte bReturnMaterialOnMove
+		{
+			get => E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_SET(NativePointer, value);
+		}
+
+		public byte bSelectable
+		{
+			get => E_PROP_UPrimitiveComponent_bSelectable_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bSelectable_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>When enabled, the component will only cast a shadow on itself and not other components in the world. </para>
+		/// <para>This is especially useful for first person weapons, and forces bCastInsetShadow to be enabled. </para>
+		/// </summary>
+		public byte bSelfShadowOnly
+		{
+			get => E_PROP_UPrimitiveComponent_bSelfShadowOnly_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bSelfShadowOnly_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the whole component should be shadowed as one from stationary lights, which makes shadow receiving much cheaper. </para>
+		/// <para>When enabled shadowing data comes from the volume lighting samples precomputed by Lightmass, which are very sparse. </para>
+		/// <para>This is currently only used on stationary directional lights. </para>
+		/// </summary>
+		public byte bSingleSampleShadowFromStationaryLights
+		{
+			get => E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, component sweeps with this component should trace against complex collision during movement (for example, each triangle of a mesh). </para>
+		/// <para>If false, collision will be resolved against simple collision bounds instead. </para>
+		/// <para>@see MoveComponent() </para>
+		/// </summary>
+		public byte bTraceComplexOnMove
+		{
+			get => E_PROP_UPrimitiveComponent_bTraceComplexOnMove_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bTraceComplexOnMove_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Treat this primitive as part of the background for occlusion purposes. This can be used as an optimization to reduce the cost of rendering skyboxes, large ground planes that are part of the vista, etc. </para>
+		/// </summary>
+		public byte bTreatAsBackgroundForOcclusion
+		{
+			get => E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to render the primitive in the depth only pass. </para>
+		/// <para>This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass. </para>
+		/// <para>@todo - if any rendering features rely on a complete depth only pass, this variable needs to go away. </para>
+		/// </summary>
+		public byte bUseAsOccluder
+		{
+			get => E_PROP_UPrimitiveComponent_bUseAsOccluder_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bUseAsOccluder_SET(NativePointer, value);
+		}
+
+		public byte bUseEditorCompositing
+		{
+			get => E_PROP_UPrimitiveComponent_bUseEditorCompositing_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bUseEditorCompositing_SET(NativePointer, value);
+		}
+
+		public byte bUseViewOwnerDepthPriorityGroup
+		{
+			get => E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this component will be visible in reflection captures. </para>
+		/// </summary>
+		public byte bVisibleInReflectionCaptures
+		{
+			get => E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>The distance to cull this primitive at. </para>
 		/// <para>A CachedMaxDrawDistance of 0 indicates that the primitive should not be culled by distance. </para>
 		/// </summary>
@@ -536,6 +1251,17 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(NativePointer);
 			set => E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls whether the primitive component should cast a shadow or not. </para>
+		/// <para>This flag is ignored (no shadows will be generated) if all materials on this component have an Unlit shading model. </para>
+		/// </summary>
+		public byte CastShadow
+		{
+			get => E_PROP_UPrimitiveComponent_CastShadow_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_CastShadow_SET(NativePointer, value);
 		}
 
 		public static int CurrentTag
@@ -600,6 +1326,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPrimitiveComponent_LightingChannels_GET(NativePointer);
 			set => E_PROP_UPrimitiveComponent_LightingChannels_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls the type of lightmap used for this component. </para>
+		/// </summary>
+		public ELightmapType LightmapType
+		{
+			get => (ELightmapType)E_PROP_UPrimitiveComponent_LightmapType_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_LightmapType_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -882,10 +1618,30 @@ namespace UnrealEngine
 		/// <para>Add an angular impulse to a single rigid body. Good for one time instant burst. </para>
 		/// <param name="AngularImpulse">Magnitude and direction of impulse to apply. Direction is axis of rotation. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply angular impulse to. 'None' indicates root body. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddAngularImpulse(FVector Impulse, string BoneName, bool bVelChange)
 			=> E_UPrimitiveComponent_AddAngularImpulse(this, Impulse, BoneName, bVelChange);
+		
+		
+		/// <summary>
+		/// <para>Add an angular impulse to a single rigid body. Good for one time instant burst. </para>
+		/// <param name="AngularImpulse">Magnitude and direction of impulse to apply. Direction is axis of rotation. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply angular impulse to. 'None' indicates root body. </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect). </param>
+		/// </summary>
+		public void AddAngularImpulseInDegrees(FVector Impulse, string BoneName, bool bVelChange = false)
+			=> E_UPrimitiveComponent_AddAngularImpulseInDegrees(this, Impulse, BoneName, bVelChange);
+		
+		
+		/// <summary>
+		/// <para>Add an angular impulse to a single rigid body. Good for one time instant burst. </para>
+		/// <param name="AngularImpulse">Magnitude and direction of impulse to apply. Direction is axis of rotation. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply angular impulse to. 'None' indicates root body. </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect). </param>
+		/// </summary>
+		public virtual void AddAngularImpulseInRadians(FVector Impulse, string BoneName, bool bVelChange)
+			=> E_UPrimitiveComponent_AddAngularImpulseInRadians(this, Impulse, BoneName, bVelChange);
 		
 		
 		/// <summary>
@@ -893,7 +1649,7 @@ namespace UnrealEngine
 		/// <para>This is like a 'thruster'. Good for adding a burst over some (non zero) time. Should be called every frame for the duration of the force. </para>
 		/// <param name="Force">Force vector to apply. Magnitude indicates strength of force. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply force to. 'None' indicates root body. </param>
-		/// <param name="bAccelChange">If true, Force is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// <param name="bAccelChange">If true, Force is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddForce(FVector Force, string BoneName, bool bAccelChange)
 			=> E_UPrimitiveComponent_AddForce(this, Force, BoneName, bAccelChange);
@@ -925,7 +1681,7 @@ namespace UnrealEngine
 		/// <para>Add an impulse to a single rigid body. Good for one time instant burst. </para>
 		/// <param name="Impulse">Magnitude and direction of impulse to apply. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply impulse to. 'None' indicates root body. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddImpulse(FVector Impulse, string BoneName, bool bVelChange)
 			=> E_UPrimitiveComponent_AddImpulse(this, Impulse, BoneName, bVelChange);
@@ -947,7 +1703,7 @@ namespace UnrealEngine
 		/// <param name="Radius">Radius within which to apply the force. </param>
 		/// <param name="Strength">Strength of force to apply. </param>
 		/// <param name="Falloff">Allows you to control the strength of the force as a function of distance from Origin. </param>
-		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no affect). </param>
+		/// <param name="bAccelChange">If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
 			=> E_UPrimitiveComponent_AddRadialForce(this, Origin, Radius, Strength, (byte)Falloff, bAccelChange);
@@ -959,7 +1715,7 @@ namespace UnrealEngine
 		/// <param name="Radius">Size of radial impulse. Beyond this distance from Origin, there will be no affect. </param>
 		/// <param name="Strength">Maximum strength of impulse applied to body. </param>
 		/// <param name="Falloff">Allows you to control the strength of the impulse as a function of distance from Origin. </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no affect). </param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
 		public virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
 			=> E_UPrimitiveComponent_AddRadialImpulse(this, Origin, Radius, Strength, (byte)Falloff, bVelChange);
@@ -969,10 +1725,30 @@ namespace UnrealEngine
 		/// <para>Add a torque to a single rigid body. </para>
 		/// <param name="Torque">Torque to apply. Direction is axis of rotation and magnitude is strength of torque. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
-		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no affect). </param>
+		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect). </param>
 		/// </summary>
 		public void AddTorque(FVector Torque, string BoneName, bool bAccelChange = false)
 			=> E_UPrimitiveComponent_AddTorque(this, Torque, BoneName, bAccelChange);
+		
+		
+		/// <summary>
+		/// <para>Add a torque to a single rigid body. </para>
+		/// <param name="Torque">Torque to apply. Direction is axis of rotation and magnitude is strength of torque. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
+		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect). </param>
+		/// </summary>
+		public void AddTorqueInDegrees(FVector Torque, string BoneName, bool bAccelChange = false)
+			=> E_UPrimitiveComponent_AddTorqueInDegrees(this, Torque, BoneName, bAccelChange);
+		
+		
+		/// <summary>
+		/// <para>Add a torque to a single rigid body. </para>
+		/// <param name="Torque">Torque to apply. Direction is axis of rotation and magnitude is strength of torque. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
+		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect). </param>
+		/// </summary>
+		public void AddTorqueInRadians(FVector Torque, string BoneName, bool bAccelChange = false)
+			=> E_UPrimitiveComponent_AddTorqueInRadians(this, Torque, BoneName, bAccelChange);
 		
 		
 		/// <summary>
@@ -1006,14 +1782,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual float CalculateMass(string BoneName)
 			=> E_UPrimitiveComponent_CalculateMass(this, BoneName);
-		
-		
-		/// <summary>
-		/// <para>Return true if the given Pawn can step up onto this component. </para>
-		/// <param name="APawn">is the pawn that wants to step onto this component. </param>
-		/// </summary>
-		public virtual bool CanBeBaseForCharacter(APawn Pawn)
-			=> E_UPrimitiveComponent_CanBeBaseForCharacter(this, Pawn);
 		
 		
 		/// <summary>
@@ -1060,9 +1828,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool ConditionalApplyRigidBodyState(FRigidBodyState UpdatedState, FRigidBodyErrorCorrection ErrorCorrection, FVector OutDeltaPos, string BoneName)
 			=> E_UPrimitiveComponent_ConditionalApplyRigidBodyState(this, UpdatedState, ErrorCorrection, OutDeltaPos, BoneName);
-		
-		public void DisableNavigationRelevance()
-			=> E_UPrimitiveComponent_DisableNavigationRelevance(this);
 		
 		public void DispatchMouseOverEvents(UPrimitiveComponent CurrentComponent, UPrimitiveComponent NewComponent)
 			=> E_UPrimitiveComponent_DispatchMouseOverEvents(this, CurrentComponent, NewComponent);
@@ -1219,6 +1984,22 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetPhysicsAngularVelocity(string BoneName)
 			=> E_UPrimitiveComponent_GetPhysicsAngularVelocity(this, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Get the angular velocity of a single body, in degrees per second. </para>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to get velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public FVector GetPhysicsAngularVelocityInDegrees(string BoneName)
+			=> E_UPrimitiveComponent_GetPhysicsAngularVelocityInDegrees(this, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Get the angular velocity of a single body, in radians per second. </para>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to get velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public FVector GetPhysicsAngularVelocityInRadians(string BoneName)
+			=> E_UPrimitiveComponent_GetPhysicsAngularVelocityInRadians(this, BoneName);
 		
 		
 		/// <summary>
@@ -1469,6 +2250,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Set the angular velocity of all bodies in this component. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to physics, in degrees per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
+		/// </summary>
+		public void SetAllPhysicsAngularVelocityInDegrees(FVector NewAngVel, bool bAddToCurrent = false)
+			=> E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInDegrees(this, NewAngVel, bAddToCurrent);
+		
+		
+		/// <summary>
+		/// <para>Set the angular velocity of all bodies in this component. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to physics, in radians per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
+		/// </summary>
+		public virtual void SetAllPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent)
+			=> E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInRadians(this, NewAngVel, bAddToCurrent);
+		
+		
+		/// <summary>
 		/// <para>Set the linear velocity of all bodies in this component. </para>
 		/// <param name="NewVel">New linear velocity to apply to physics. </param>
 		/// <param name="bAddToCurrent">If true, NewVel is added to the existing velocity of the body. </param>
@@ -1484,6 +2283,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetAllPhysicsPosition(FVector NewPos)
 			=> E_UPrimitiveComponent_SetAllPhysicsPosition(this, NewPos);
+		
+		
+		/// <summary>
+		/// <para>Set whether all bodies in this component should use Continuous Collision Detection </para>
+		/// </summary>
+		public virtual void SetAllUseCCD(bool InUseCCD)
+			=> E_UPrimitiveComponent_SetAllUseCCD(this, InUseCCD);
 		
 		
 		/// <summary>
@@ -1668,6 +2474,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Set the angular velocity of a single body. </para>
+		/// <para>This should be used cautiously - it may be better to use AddTorque or AddImpulse. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to body, in degrees per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify angular velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public void SetPhysicsAngularVelocityInDegrees(FVector NewAngVel, bool bAddToCurrent, string BoneName)
+			=> E_UPrimitiveComponent_SetPhysicsAngularVelocityInDegrees(this, NewAngVel, bAddToCurrent, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Set the angular velocity of a single body. </para>
+		/// <para>This should be used cautiously - it may be better to use AddTorque or AddImpulse. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to body, in radians per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify angular velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public void SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, string BoneName)
+			=> E_UPrimitiveComponent_SetPhysicsAngularVelocityInRadians(this, NewAngVel, bAddToCurrent, BoneName);
+		
+		
+		/// <summary>
 		/// <para>Set the linear velocity of a single body. </para>
 		/// <para>This should be used cautiously - it may be better to use AddForce or AddImpulse. </para>
 		/// <param name="NewVel">New linear velocity to apply to physics. </param>
@@ -1686,6 +2514,26 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetPhysicsMaxAngularVelocity(float NewMaxAngVel, bool bAddToCurrent, string BoneName)
 			=> E_UPrimitiveComponent_SetPhysicsMaxAngularVelocity(this, NewMaxAngVel, bAddToCurrent, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Set the maximum angular velocity of a single body. </para>
+		/// <param name="NewMaxAngVel">New maximum angular velocity to apply to body, in degrees per second. </param>
+		/// <param name="bAddToCurrent">If true, NewMaxAngVel is added to the existing maximum angular velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify maximum angular velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public void SetPhysicsMaxAngularVelocityInDegrees(float NewMaxAngVel, bool bAddToCurrent, string BoneName)
+			=> E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInDegrees(this, NewMaxAngVel, bAddToCurrent, BoneName);
+		
+		
+		/// <summary>
+		/// <para>Set the maximum angular velocity of a single body. </para>
+		/// <param name="NewMaxAngVel">New maximum angular velocity to apply to body, in radians per second. </param>
+		/// <param name="bAddToCurrent">If true, NewMaxAngVel is added to the existing maximum angular velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify maximum angular velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public void SetPhysicsMaxAngularVelocityInRadians(float NewMaxAngVel, bool bAddToCurrent, string BoneName)
+			=> E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInRadians(this, NewMaxAngVel, bAddToCurrent, BoneName);
 		
 		
 		/// <summary>
@@ -1744,6 +2592,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetTranslucentSortPriority(int NewTranslucentSortPriority)
 			=> E_UPrimitiveComponent_SetTranslucentSortPriority(this, NewTranslucentSortPriority);
+		
+		
+		/// <summary>
+		/// <para>Set whether this component should use Continuous Collision Detection </para>
+		/// </summary>
+		public virtual void SetUseCCD(bool InUseCCD, string BoneName)
+			=> E_UPrimitiveComponent_SetUseCCD(this, InUseCCD, BoneName);
 		
 		
 		/// <summary>

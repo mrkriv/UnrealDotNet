@@ -3,26 +3,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/ShapeComponent.h"
+#include "Runtime/Engine/Classes/Components/ShapeComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\ShapeComponent.h:24
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ShapeComponent.h:24
 
 class E_PROTECTED_WRAP_UShapeComponent : protected UShapeComponent
 {
 public:
 	void AddShapeToGeomArray_WRAP()
 	{
-		AddShapeToGeomArray();
 	}
 
 	void CreateShapeBodySetupIfNeeded_WRAP()
 	{
-		CreateShapeBodySetupIfNeeded();
 	}
 
 	bool PrepareSharedBodySetup_WRAP()
 	{
-		return PrepareSharedBodySetup();
+		return false;
 	}
 
 }

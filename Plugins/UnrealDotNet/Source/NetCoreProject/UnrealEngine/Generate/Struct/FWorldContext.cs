@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:254
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:267
 
 namespace UnrealEngine
 {
@@ -54,11 +54,6 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_FWorldContext_PIEPrefix_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PIEPrefix_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FWorldContext_PIERemapPrefix_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FWorldContext_PIERemapPrefix_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FWorldContext_RunAsDedicated_GET(IntPtr Ptr);
@@ -122,24 +117,30 @@ namespace UnrealEngine
 			set => E_PROP_FWorldContext_PendingMapChangeFailureDescription_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>The PIE instance of this world, -1 is default </para>
+		/// </summary>
 		public int PIEInstance
 		{
 			get => E_PROP_FWorldContext_PIEInstance_GET(NativePointer);
 			set => E_PROP_FWorldContext_PIEInstance_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>The Prefix in front of PIE level names, empty is default </para>
+		/// </summary>
 		public string PIEPrefix
 		{
 			get => E_PROP_FWorldContext_PIEPrefix_GET(NativePointer);
 			set => E_PROP_FWorldContext_PIEPrefix_SET(NativePointer, value);
 		}
 
-		public string PIERemapPrefix
-		{
-			get => E_PROP_FWorldContext_PIERemapPrefix_GET(NativePointer);
-			set => E_PROP_FWorldContext_PIERemapPrefix_SET(NativePointer, value);
-		}
-
+		
+		/// <summary>
+		/// <para>Is this running as a dedicated server </para>
+		/// </summary>
 		public bool RunAsDedicated
 		{
 			get => E_PROP_FWorldContext_RunAsDedicated_GET(NativePointer);

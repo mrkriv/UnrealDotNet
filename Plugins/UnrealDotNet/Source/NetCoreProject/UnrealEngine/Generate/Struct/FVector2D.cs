@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Core\Public\Math\Vector2D.h:17
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Core\Public\Math\Vector2D.h:17
 
 namespace UnrealEngine
 {
@@ -121,9 +121,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector2D_RoundToVector(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_SafeNormal(IntPtr Self, float Tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector2D_Set(IntPtr Self, float InX, float InY);
@@ -341,9 +338,6 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector2D RoundToVector()
 			=> E_FVector2D_RoundToVector(this);
-		
-		public FVector2D SafeNormal(float Tolerance)
-			=> E_FVector2D_SafeNormal(this, Tolerance);
 		
 		
 		/// <summary>

@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/SpringArmComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/SpringArmComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
 
 class E_PROTECTED_WRAP_USpringArmComponent : protected USpringArmComponent
 {
@@ -25,9 +25,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_USpringArmComponent_bUseControllerViewRotation_GET(USpringArmComponent* Ptr) { return Ptr->bUseControllerViewRotation; }
-	DOTNET_EXPORT void E_PROP_USpringArmComponent_bUseControllerViewRotation_SET(USpringArmComponent* Ptr, bool Value) { Ptr->bUseControllerViewRotation = Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USpringArmComponent(UObject* Parent, char* Name)
 	{

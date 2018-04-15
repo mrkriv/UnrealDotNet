@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "Engine/Classes/Components/PrimitiveComponent.h"
+#include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 #include "ManagePrimitiveComponent.generated.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePrimitiveComponent : public UPrimitiveComponent
@@ -22,6 +22,8 @@ class UNREALDOTNETRUNTIME_API UManagePrimitiveComponent : public UPrimitiveCompo
 public:
 	
 	virtual void AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange) override;
+	
+	virtual void AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange) override;
 	
 	virtual void AddForce(FVector Force, FName BoneName, bool bAccelChange) override;
 	
@@ -43,9 +45,13 @@ public:
 	
 	virtual void SetAllPhysicsAngularVelocity(const FVector& NewAngVel, bool bAddToCurrent) override;
 	
+	virtual void SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent) override;
+	
 	virtual void SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent) override;
 	
 	virtual void SetAllPhysicsPosition(FVector NewPos) override;
+	
+	virtual void SetAllUseCCD(bool InUseCCD) override;
 	
 	virtual void SetAngularDamping(float InDamping) override;
 	
@@ -70,6 +76,8 @@ public:
 	virtual void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision) override;
 	
 	virtual void SetSimulatePhysics(bool bSimulate) override;
+	
+	virtual void SetUseCCD(bool InUseCCD, FName BoneName) override;
 	
 	virtual void UnWeldChildren() override;
 	

@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/PrimitiveComponent.h"
+#include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 class E_PROTECTED_WRAP_UPrimitiveComponent : protected UPrimitiveComponent
 {
@@ -50,11 +50,149 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_GET(UPrimitiveComponent* Ptr) { return Ptr->AlwaysLoadOnClient; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->AlwaysLoadOnClient = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_GET(UPrimitiveComponent* Ptr) { return Ptr->AlwaysLoadOnServer; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_AlwaysLoadOnServer_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->AlwaysLoadOnServer = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_GET(UPrimitiveComponent* Ptr) { return Ptr->bAffectDistanceFieldLighting; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAffectDistanceFieldLighting_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAffectDistanceFieldLighting = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_GET(UPrimitiveComponent* Ptr) { return Ptr->bAffectDynamicIndirectLighting; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAffectDynamicIndirectLighting_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAffectDynamicIndirectLighting = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_GET(UPrimitiveComponent* Ptr) { return Ptr->bAllowCullDistanceVolume; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAllowCullDistanceVolume_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAllowCullDistanceVolume = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_GET(UPrimitiveComponent* Ptr) { return Ptr->bAlwaysCreatePhysicsState; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAlwaysCreatePhysicsState_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAlwaysCreatePhysicsState = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_GET(UPrimitiveComponent* Ptr) { return Ptr->bApplyImpulseOnDamage; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bApplyImpulseOnDamage_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bApplyImpulseOnDamage = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_GET(UPrimitiveComponent* Ptr) { return Ptr->bAttachedToStreamingManagerAsDynamic; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsDynamic_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAttachedToStreamingManagerAsDynamic = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_GET(UPrimitiveComponent* Ptr) { return Ptr->bAttachedToStreamingManagerAsStatic; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bAttachedToStreamingManagerAsStatic_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bAttachedToStreamingManagerAsStatic = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastCinematicShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastCinematicShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastCinematicShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastCinematicShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastDynamicShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastDynamicShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastDynamicShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastDynamicShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastFarShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastFarShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastFarShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastFarShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastHiddenShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastHiddenShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastHiddenShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastHiddenShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastInsetShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastInsetShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastInsetShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastInsetShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastShadowAsTwoSided; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastShadowAsTwoSided_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastShadowAsTwoSided = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastStaticShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastStaticShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastStaticShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastStaticShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->bCastVolumetricTranslucentShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCastVolumetricTranslucentShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_GET(UPrimitiveComponent* Ptr) { return Ptr->bCheckAsyncSceneOnMove; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bCheckAsyncSceneOnMove = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bForceMipStreaming_GET(UPrimitiveComponent* Ptr) { return Ptr->bForceMipStreaming; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bForceMipStreaming_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bForceMipStreaming = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_GET(UPrimitiveComponent* Ptr) { return Ptr->bGenerateOverlapEvents; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bGenerateOverlapEvents = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_GET(UPrimitiveComponent* Ptr) { return Ptr->bHandledByStreamingManagerAsDynamic; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bHandledByStreamingManagerAsDynamic = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_GET(UPrimitiveComponent* Ptr) { return Ptr->bHasMotionBlurVelocityMeshes; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bHasMotionBlurVelocityMeshes_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bHasMotionBlurVelocityMeshes = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_GET(UPrimitiveComponent* Ptr) { return Ptr->bHasPerInstanceHitProxies; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bHasPerInstanceHitProxies_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bHasPerInstanceHitProxies = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bIgnoreRadialForce_GET(UPrimitiveComponent* Ptr) { return Ptr->bIgnoreRadialForce; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bIgnoreRadialForce_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bIgnoreRadialForce = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_GET(UPrimitiveComponent* Ptr) { return Ptr->bIgnoreRadialImpulse; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bIgnoreRadialImpulse = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_GET(UPrimitiveComponent* Ptr) { return Ptr->bLightAsIfStatic_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bLightAsIfStatic_DEPRECATED = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_GET(UPrimitiveComponent* Ptr) { return Ptr->bLightAttachmentsAsGroup; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bLightAttachmentsAsGroup_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bLightAttachmentsAsGroup = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bMultiBodyOverlap_GET(UPrimitiveComponent* Ptr) { return Ptr->bMultiBodyOverlap; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bMultiBodyOverlap_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bMultiBodyOverlap = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bOnlyOwnerSee_GET(UPrimitiveComponent* Ptr) { return Ptr->bOnlyOwnerSee; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bOnlyOwnerSee_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bOnlyOwnerSee = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_BoundsScale_GET(UPrimitiveComponent* Ptr) { return Ptr->BoundsScale; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_BoundsScale_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->BoundsScale = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bOwnerNoSee_GET(UPrimitiveComponent* Ptr) { return Ptr->bOwnerNoSee; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bOwnerNoSee_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bOwnerNoSee = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_GET(UPrimitiveComponent* Ptr) { return Ptr->bReceiveMobileCSMShadows; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bReceiveMobileCSMShadows_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bReceiveMobileCSMShadows = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bReceivesDecals_GET(UPrimitiveComponent* Ptr) { return Ptr->bReceivesDecals; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bReceivesDecals_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bReceivesDecals = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bRenderCustomDepth_GET(UPrimitiveComponent* Ptr) { return Ptr->bRenderCustomDepth; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bRenderCustomDepth_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bRenderCustomDepth = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bRenderInMainPass_GET(UPrimitiveComponent* Ptr) { return Ptr->bRenderInMainPass; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bRenderInMainPass_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bRenderInMainPass = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bRenderInMono_GET(UPrimitiveComponent* Ptr) { return Ptr->bRenderInMono; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bRenderInMono_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bRenderInMono = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_GET(UPrimitiveComponent* Ptr) { return Ptr->bReturnMaterialOnMove; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bReturnMaterialOnMove = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bSelectable_GET(UPrimitiveComponent* Ptr) { return Ptr->bSelectable; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bSelectable_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bSelectable = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bSelfShadowOnly_GET(UPrimitiveComponent* Ptr) { return Ptr->bSelfShadowOnly; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bSelfShadowOnly_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bSelfShadowOnly = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_GET(UPrimitiveComponent* Ptr) { return Ptr->bSingleSampleShadowFromStationaryLights; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bSingleSampleShadowFromStationaryLights_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bSingleSampleShadowFromStationaryLights = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bTraceComplexOnMove_GET(UPrimitiveComponent* Ptr) { return Ptr->bTraceComplexOnMove; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bTraceComplexOnMove_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bTraceComplexOnMove = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_GET(UPrimitiveComponent* Ptr) { return Ptr->bTreatAsBackgroundForOcclusion; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bTreatAsBackgroundForOcclusion_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bTreatAsBackgroundForOcclusion = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bUseAsOccluder_GET(UPrimitiveComponent* Ptr) { return Ptr->bUseAsOccluder; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bUseAsOccluder_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bUseAsOccluder = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bUseEditorCompositing_GET(UPrimitiveComponent* Ptr) { return Ptr->bUseEditorCompositing; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bUseEditorCompositing_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bUseEditorCompositing = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_GET(UPrimitiveComponent* Ptr) { return Ptr->bUseViewOwnerDepthPriorityGroup; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bUseViewOwnerDepthPriorityGroup = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_GET(UPrimitiveComponent* Ptr) { return Ptr->bVisibleInReflectionCaptures; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bVisibleInReflectionCaptures = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->CachedMaxDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CachedMaxDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->CachedMaxDrawDistance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CastShadow_GET(UPrimitiveComponent* Ptr) { return Ptr->CastShadow; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_CastShadow_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->CastShadow = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_CurrentTag_GET() { return UPrimitiveComponent::CurrentTag; }
 	
@@ -78,6 +216,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LightingChannels_GET(UPrimitiveComponent* Ptr) { return (INT_PTR)&(Ptr->LightingChannels); }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LightingChannels_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->LightingChannels = *(FLightingChannels*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LightmapType_GET(UPrimitiveComponent* Ptr) { return Ptr->LightmapType; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LightmapType_SET(UPrimitiveComponent* Ptr, ELightmapType Value) { Ptr->LightmapType = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_LpvBiasMultiplier_GET(UPrimitiveComponent* Ptr) { return Ptr->LpvBiasMultiplier; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_LpvBiasMultiplier_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->LpvBiasMultiplier = Value; }
@@ -201,6 +342,22 @@ extern "C"
 		Self->AddAngularImpulse(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AddAngularImpulseInDegrees(UPrimitiveComponent* Self, INT_PTR Impulse, char* BoneName, bool bVelChange)
+	{
+		auto _p0 = *(FVector*)Impulse;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		auto _p2 = bVelChange;
+		Self->AddAngularImpulseInDegrees(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AddAngularImpulseInRadians(UPrimitiveComponent* Self, INT_PTR Impulse, char* BoneName, bool bVelChange)
+	{
+		auto _p0 = *(FVector*)Impulse;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		auto _p2 = bVelChange;
+		Self->AddAngularImpulseInRadians(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AddForce(UPrimitiveComponent* Self, INT_PTR Force, char* BoneName, bool bAccelChange)
 	{
 		auto _p0 = *(FVector*)Force;
@@ -269,6 +426,22 @@ extern "C"
 		Self->AddTorque(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AddTorqueInDegrees(UPrimitiveComponent* Self, INT_PTR Torque, char* BoneName, bool bAccelChange)
+	{
+		auto _p0 = *(FVector*)Torque;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		auto _p2 = bAccelChange;
+		Self->AddTorqueInDegrees(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_AddTorqueInRadians(UPrimitiveComponent* Self, INT_PTR Torque, char* BoneName, bool bAccelChange)
+	{
+		auto _p0 = *(FVector*)Torque;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		auto _p2 = bAccelChange;
+		Self->AddTorqueInRadians(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AreAllCollideableDescendantsRelative(UPrimitiveComponent* Self, bool bAllowCachedValue)
 	{
 		auto _p0 = bAllowCachedValue;
@@ -294,12 +467,6 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
 		return Self->CalculateMass(_p0);
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_CanBeBaseForCharacter(UPrimitiveComponent* Self, APawn* Pawn)
-	{
-		auto _p0 = Pawn;
-		return Self->CanBeBaseForCharacter(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_CanCharacterStepUp(UPrimitiveComponent* Self, APawn* Pawn)
@@ -337,11 +504,6 @@ extern "C"
 		auto _p2 = *(FVector*)OutDeltaPos;
 		auto _p3 = ConvertFromManage_FName(BoneName);
 		return Self->ConditionalApplyRigidBodyState(_p0, _p1, _p2, _p3);
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_DisableNavigationRelevance(UPrimitiveComponent* Self)
-	{
-		Self->DisableNavigationRelevance();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchMouseOverEvents(UPrimitiveComponent* Self, UPrimitiveComponent* CurrentComponent, UPrimitiveComponent* NewComponent)
@@ -464,6 +626,18 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
 		return (INT_PTR) new FVector(Self->GetPhysicsAngularVelocity(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocityInDegrees(UPrimitiveComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return (INT_PTR) new FVector(Self->GetPhysicsAngularVelocityInDegrees(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocityInRadians(UPrimitiveComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		return (INT_PTR) new FVector(Self->GetPhysicsAngularVelocityInRadians(_p0));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsLinearVelocity(UPrimitiveComponent* Self, char* BoneName)
@@ -662,6 +836,20 @@ extern "C"
 		Self->SetAllPhysicsAngularVelocity(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInDegrees(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent)
+	{
+		auto _p0 = *(FVector*)NewAngVel;
+		auto _p1 = bAddToCurrent;
+		Self->SetAllPhysicsAngularVelocityInDegrees(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInRadians(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent)
+	{
+		auto _p0 = *(FVector*)NewAngVel;
+		auto _p1 = bAddToCurrent;
+		Self->SetAllPhysicsAngularVelocityInRadians(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsLinearVelocity(UPrimitiveComponent* Self, INT_PTR NewVel, bool bAddToCurrent)
 	{
 		auto _p0 = *(FVector*)NewVel;
@@ -673,6 +861,12 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)NewPos;
 		Self->SetAllPhysicsPosition(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllUseCCD(UPrimitiveComponent* Self, bool InUseCCD)
+	{
+		auto _p0 = InUseCCD;
+		Self->SetAllUseCCD(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAngularDamping(UPrimitiveComponent* Self, float InDamping)
@@ -820,6 +1014,22 @@ extern "C"
 		Self->SetPhysicsAngularVelocity(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPhysicsAngularVelocityInDegrees(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent, char* BoneName)
+	{
+		auto _p0 = *(FVector*)NewAngVel;
+		auto _p1 = bAddToCurrent;
+		auto _p2 = ConvertFromManage_FName(BoneName);
+		Self->SetPhysicsAngularVelocityInDegrees(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPhysicsAngularVelocityInRadians(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent, char* BoneName)
+	{
+		auto _p0 = *(FVector*)NewAngVel;
+		auto _p1 = bAddToCurrent;
+		auto _p2 = ConvertFromManage_FName(BoneName);
+		Self->SetPhysicsAngularVelocityInRadians(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPhysicsLinearVelocity(UPrimitiveComponent* Self, INT_PTR NewVel, bool bAddToCurrent, char* BoneName)
 	{
 		auto _p0 = *(FVector*)NewVel;
@@ -834,6 +1044,22 @@ extern "C"
 		auto _p1 = bAddToCurrent;
 		auto _p2 = ConvertFromManage_FName(BoneName);
 		Self->SetPhysicsMaxAngularVelocity(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInDegrees(UPrimitiveComponent* Self, float NewMaxAngVel, bool bAddToCurrent, char* BoneName)
+	{
+		auto _p0 = NewMaxAngVel;
+		auto _p1 = bAddToCurrent;
+		auto _p2 = ConvertFromManage_FName(BoneName);
+		Self->SetPhysicsMaxAngularVelocityInDegrees(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPhysicsMaxAngularVelocityInRadians(UPrimitiveComponent* Self, float NewMaxAngVel, bool bAddToCurrent, char* BoneName)
+	{
+		auto _p0 = NewMaxAngVel;
+		auto _p1 = bAddToCurrent;
+		auto _p2 = ConvertFromManage_FName(BoneName);
+		Self->SetPhysicsMaxAngularVelocityInRadians(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetPostPhysicsComponentTickEnabled(UPrimitiveComponent* Self, bool bEnable)
@@ -882,6 +1108,13 @@ extern "C"
 	{
 		auto _p0 = NewTranslucentSortPriority;
 		Self->SetTranslucentSortPriority(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetUseCCD(UPrimitiveComponent* Self, bool InUseCCD, char* BoneName)
+	{
+		auto _p0 = InUseCCD;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		Self->SetUseCCD(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(UPrimitiveComponent* Self, bool bNewUseViewOwnerDepthPriorityGroup, ESceneDepthPriorityGroup NewViewOwnerDepthPriorityGroup)

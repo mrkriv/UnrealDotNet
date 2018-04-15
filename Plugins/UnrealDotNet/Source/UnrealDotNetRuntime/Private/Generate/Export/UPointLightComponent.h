@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/Components/PointLightComponent.h"
+#include "Runtime/Engine/Classes/Components/PointLightComponent.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Components\PointLightComponent.h:18
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PointLightComponent.h:18
 
 extern "C"
 {

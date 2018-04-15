@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:559
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:575
 
 namespace UnrealEngine
 {
@@ -89,6 +89,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_AutoExposureBias_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_AutoExposureBias_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_AutoExposureHighPercent_GET(IntPtr Ptr);
@@ -204,6 +209,26 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_BloomThreshold_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_BloomThreshold_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_BlueCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_BlueCorrection_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_CameraISO_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_CameraISO_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_CameraShutterSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_CameraShutterSpeed_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FPostProcessSettings_ColorContrast_GET(IntPtr Ptr);
@@ -404,6 +429,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_ExpandGamut_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_ExpandGamut_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_FilmBlackClip_GET(IntPtr Ptr);
@@ -781,10 +811,20 @@ namespace UnrealEngine
 		/// <para>Logarithmic adjustment for the exposure. Only used if a tonemapper is specified. </para>
 		/// <para>0: no adjustment, -1:2x darker, -2:4x darker, 1:2x brighter, 2:4x brighter, ... </para>
 		/// </summary>
-		public float ExposureBias
+		public float ExposureCompensation
 		{
 			get => E_PROP_FPostProcessSettings_AutoExposureBias_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_AutoExposureBias_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Calibration constant for 18% albedo. </para>
+		/// </summary>
+		public float CalibrationConstant
+		{
+			get => E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_AutoExposureCalibrationConstant_SET(NativePointer, value);
 		}
 
 		
@@ -1042,6 +1082,46 @@ namespace UnrealEngine
 			set => E_PROP_FPostProcessSettings_BloomThreshold_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Correct for artifacts with "electric" blues due to the ACEScg color space. Bright blue desaturates instead of going to violet. </para>
+		/// </summary>
+		public float BlueCorrection
+		{
+			get => E_PROP_FPostProcessSettings_BlueCorrection_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_BlueCorrection_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The camera sensor sensitivity in ISO. </para>
+		/// </summary>
+		public float ISO
+		{
+			get => E_PROP_FPostProcessSettings_CameraISO_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_CameraISO_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The camera shutter in seconds. </para>
+		/// </summary>
+		public float ShutterSpeed1s
+		{
+			get => E_PROP_FPostProcessSettings_CameraShutterSpeed_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_CameraShutterSpeed_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>A normalized distance to the center of the framebuffer where the effect takes place. </para>
+		/// </summary>
+		public float StartOffset
+		{
+			get => E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_ChromaticAberrationStartOffset_SET(NativePointer, value);
+		}
+
 		public FVector4 ColorContrast
 		{
 			get => E_PROP_FPostProcessSettings_ColorContrast_GET(NativePointer);
@@ -1256,7 +1336,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>CircleDOF only: Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect </para>
+		/// <para>Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect </para>
 		/// </summary>
 		public float ApertureFstop
 		{
@@ -1353,6 +1433,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_DepthOfFieldVignetteSize_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Expand bright saturated colors outside the sRGB gamut to fake wide gamut rendering. </para>
+		/// </summary>
+		public float ExpandGamut
+		{
+			get => E_PROP_FPostProcessSettings_ExpandGamut_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_ExpandGamut_SET(NativePointer, value);
 		}
 
 		public float Blackclip
@@ -1687,7 +1777,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. </para>
 		/// </summary>
-		public float ChromaticAberation
+		public float SceneFringeIntensity
 		{
 			get => E_PROP_FPostProcessSettings_SceneFringeIntensity_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_SceneFringeIntensity_SET(NativePointer, value);

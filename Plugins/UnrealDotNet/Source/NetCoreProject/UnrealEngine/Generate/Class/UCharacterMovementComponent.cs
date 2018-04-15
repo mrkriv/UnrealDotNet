@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:153
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
 namespace UnrealEngine
 {
@@ -329,9 +329,29 @@ namespace UnrealEngine
 		private static extern void E_PROP_UCharacterMovementComponent_NetProxyShrinkRadius_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_NetworkNoSmoothUpdateDistance_GET(IntPtr Ptr);
@@ -384,9 +404,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UCharacterMovementComponent_PerchRadiusThreshold_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UCharacterMovementComponent_PostPhysicsTickFunction_GET(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_PushForceFactor_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_PushForceFactor_SET(IntPtr Ptr, float Value);
@@ -437,9 +454,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_AdjustProxyCapsuleSize(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UCharacterMovementComponent_AdjustUpperHemisphereImpact(IntPtr Self, IntPtr Delta, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ApplyAccumulatedForces(IntPtr Self, float DeltaSeconds);
@@ -544,9 +558,6 @@ namespace UnrealEngine
 		private static extern bool E_UCharacterMovementComponent_DoJump(IntPtr Self, bool bReplayingMoves);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UCharacterMovementComponent_FindAirControlImpact(IntPtr Self, float DeltaTime, float AdditionalTime, IntPtr FallVelocity, IntPtr FallAcceleration, IntPtr Gravity, IntPtr OutHitResult);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_FindBestNavMeshLocation(IntPtr Self, IntPtr TraceStart, IntPtr TraceEnd, IntPtr CurrentFeetLocation, IntPtr TargetNavLocation, IntPtr OutHitResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
@@ -554,6 +565,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_FindWaterLine(IntPtr Self, IntPtr Start, IntPtr End);
+		
+		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ForceClientAdjustment(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ForceReplicationUpdate(IntPtr Self);
@@ -734,9 +748,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UCharacterMovementComponent_PackNetworkMovementMode(IntPtr Self);
-		
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCharacterMovementComponent_PerformAirControl(IntPtr Self, IntPtr Direction, float ZDiff);
 		
 		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_PerformAirControlForPathFollowing(IntPtr Self, IntPtr Direction, float ZDiff);
@@ -1547,12 +1558,58 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>If client error is larger than this, sets bNetworkLargeClientCorrection to reduce delay between client adjustments. </para>
+		/// <para>@see NetworkMinTimeBetweenClientAdjustments, NetworkMinTimeBetweenClientAdjustmentsLargeCorrection </para>
+		/// </summary>
+		public float NetworkLargeClientCorrectionDistance
+		{
+			get => E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_NetworkLargeClientCorrectionDistance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Maximum distance character is allowed to lag behind server location when interpolating between updates. </para>
 		/// </summary>
 		public float NetworkMaxSmoothUpdateDistance
 		{
 			get => E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_NetworkMaxSmoothUpdateDistance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Minimum time on the server between acknowledging good client moves. This can save on bandwidth. Set to 0 to disable throttling. </para>
+		/// </summary>
+		public float NetworkMinTimeBetweenClientAckGoodMoves
+		{
+			get => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAckGoodMoves_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Minimum time on the server between sending client adjustments when client has exceeded allowable position error. </para>
+		/// <para>Should be >= NetworkMinTimeBetweenClientAdjustmentsLargeCorrection (the larger value is used regardless). </para>
+		/// <para>This can save on bandwidth. Set to 0 to disable throttling. </para>
+		/// <para>@see ServerLastClientAdjustmentTime </para>
+		/// </summary>
+		public float NetworkMinTimeBetweenClientAdjustments
+		{
+			get => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustments_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Minimum time on the server between sending client adjustments when client has exceeded allowable position error by a large amount (NetworkLargeClientCorrectionDistance). </para>
+		/// <para>Should be <= NetworkMinTimeBetweenClientAdjustments (the smaller value is used regardless). </para>
+		/// <para>@see NetworkMinTimeBetweenClientAdjustments </para>
+		/// </summary>
+		public float NetworkMinTimeBetweenClientAdjustmentsLargeCorrection
+		{
+			get => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_NetworkMinTimeBetweenClientAdjustmentsLargeCorrection_SET(NativePointer, value);
 		}
 
 		
@@ -1652,11 +1709,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UCharacterMovementComponent_PerchRadiusThreshold_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_PerchRadiusThreshold_SET(NativePointer, value);
-		}
-
-		public FCharacterMovementComponentPostPhysicsTickFunction PostPhysicsTickFunction
-		{
-			get => E_PROP_UCharacterMovementComponent_PostPhysicsTickFunction_GET(NativePointer);
 		}
 
 		
@@ -1774,13 +1826,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void AdjustProxyCapsuleSize()
 			=> E_UCharacterMovementComponent_AdjustProxyCapsuleSize(this);
-		
-		
-		/// <summary>
-		/// <para>(DEPRECATED) Given an upward impact on the top of the capsule, allows calculation of a different movement delta. </para>
-		/// </summary>
-		protected virtual FVector AdjustUpperHemisphereImpact(FVector Delta, FHitResult Hit)
-			=> E_UCharacterMovementComponent_AdjustUpperHemisphereImpact(this, Delta, Hit);
 		
 		
 		/// <summary>
@@ -1925,12 +1970,20 @@ namespace UnrealEngine
 		public virtual void ClearAccumulatedForces()
 			=> E_UCharacterMovementComponent_ClearAccumulatedForces(this);
 		
+		
+		/// <summary>
+		/// <para>If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves </para>
+		/// </summary>
 		public virtual void ClientAckGoodMove(float TimeStamp)
 			=> E_UCharacterMovementComponent_ClientAckGoodMove(this, TimeStamp);
 		
 		public virtual void ClientAckGoodMove_Implementation(float TimeStamp)
 			=> E_UCharacterMovementComponent_ClientAckGoodMove_Implementation(this, TimeStamp);
 		
+		
+		/// <summary>
+		/// <para>Replicate position correction to client, associated with a timestamped servermove.  Client will replay subsequent moves after applying adjustment. </para>
+		/// </summary>
 		public virtual void ClientAdjustPosition(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
 			=> E_UCharacterMovementComponent_ClientAdjustPosition(this, TimeStamp, NewLoc, NewVel, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
 		
@@ -2047,21 +2100,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>(DEPRECATED) Checks if air control will cause the player collision shape to hit something given the current location. </para>
-		/// <param name="DeltaTime">Time step for the current update. </param>
-		/// <param name="AdditionalTime">Time to look ahead further, applying acceleration and gravity. </param>
-		/// <param name="FallVelocity">Velocity to test with. </param>
-		/// <param name="FallAcceleration">Acceleration used during movement. </param>
-		/// <param name="Gravity">Gravity to apply to any additional time. </param>
-		/// <param name="OutHitResult">Result of impact, valid if this function returns true. </param>
-		/// <return>True if there is an impact, in which case OutHitResult contains the result of that impact. </return>
-		/// <para>@see GetAirControl() </para>
-		/// </summary>
-		protected virtual bool FindAirControlImpact(float DeltaTime, float AdditionalTime, FVector FallVelocity, FVector FallAcceleration, FVector Gravity, FHitResult OutHitResult)
-			=> E_UCharacterMovementComponent_FindAirControlImpact(this, DeltaTime, AdditionalTime, FallVelocity, FallAcceleration, Gravity, OutHitResult);
-		
-		
-		/// <summary>
 		/// <para>Performs trace for ProjectLocationFromNavMesh </para>
 		/// </summary>
 		protected virtual void FindBestNavMeshLocation(FVector TraceStart, FVector TraceEnd, FVector CurrentFeetLocation, FVector TargetNavLocation, FHitResult OutHitResult)
@@ -2085,6 +2123,13 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector FindWaterLine(FVector Start, FVector End)
 			=> E_UCharacterMovementComponent_FindWaterLine(this, Start, End);
+		
+		
+		/// <summary>
+		/// <para>Force a client adjustment. Resets ServerLastClientAdjustmentTime. </para>
+		/// </summary>
+		public void ForceClientAdjustment()
+			=> E_UCharacterMovementComponent_ForceClientAdjustment(this);
 		
 		
 		/// <summary>
@@ -2564,9 +2609,6 @@ namespace UnrealEngine
 		
 		public byte PackNetworkMovementMode()
 			=> E_UCharacterMovementComponent_PackNetworkMovementMode(this);
-		
-		public virtual void PerformAirControl(FVector Direction, float ZDiff)
-			=> E_UCharacterMovementComponent_PerformAirControl(this, Direction, ZDiff);
 		
 		
 		/// <summary>

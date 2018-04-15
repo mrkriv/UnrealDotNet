@@ -3,9 +3,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManagerObject.h"
-#include "Engine/Classes/GameFramework/Character.h"
+#include "Runtime/Engine/Classes/GameFramework/Character.h"
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:239
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 {
@@ -23,21 +23,6 @@ public:
 	bool CanJumpInternal_Implementation_WRAP()
 	{
 		return CanJumpInternal_Implementation();
-	}
-
-	void CheckResetJumpCount_WRAP()
-	{
-		CheckResetJumpCount();
-	}
-
-	bool DoJump_WRAP(bool bReplayingMoves)
-	{
-		return DoJump(bReplayingMoves);
-	}
-
-	void ResetJumpState_WRAP()
-	{
-		ResetJumpState();
 	}
 
 }
@@ -170,14 +155,47 @@ extern "C"
 		Self->CheckJumpInput(_p0);
 	}
 
-	DOTNET_EXPORT auto E_ACharacter_CheckResetJumpCount(ACharacter* Self)
-	{
-		((E_PROTECTED_WRAP_ACharacter*)Self)->CheckResetJumpCount_WRAP();
-	}
-
 	DOTNET_EXPORT auto E_ACharacter_ClearJumpInput(ACharacter* Self)
 	{
 		Self->ClearJumpInput();
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ClientAckGoodMove(ACharacter* Self, float TimeStamp)
+	{
+		auto _p0 = TimeStamp;
+		Self->ClientAckGoodMove(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ClientAckGoodMove_Implementation(ACharacter* Self, float TimeStamp)
+	{
+		auto _p0 = TimeStamp;
+		Self->ClientAckGoodMove_Implementation(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ClientAdjustPosition(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, INT_PTR NewVel, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FVector*)NewLoc;
+		auto _p2 = *(FVector*)NewVel;
+		auto _p3 = NewBase;
+		auto _p4 = ConvertFromManage_FName(NewBaseBoneName);
+		auto _p5 = bHasBase;
+		auto _p6 = bBaseRelativePosition;
+		auto _p7 = ServerMovementMode;
+		Self->ClientAdjustPosition(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ClientAdjustPosition_Implementation(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, INT_PTR NewVel, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FVector*)NewLoc;
+		auto _p2 = *(FVector*)NewVel;
+		auto _p3 = NewBase;
+		auto _p4 = ConvertFromManage_FName(NewBaseBoneName);
+		auto _p5 = bHasBase;
+		auto _p6 = bBaseRelativePosition;
+		auto _p7 = ServerMovementMode;
+		Self->ClientAdjustPosition_Implementation(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatFly(ACharacter* Self)
@@ -210,16 +228,34 @@ extern "C"
 		Self->ClientCheatWalk_Implementation();
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_ClientVeryShortAdjustPosition(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FVector*)NewLoc;
+		auto _p2 = NewBase;
+		auto _p3 = ConvertFromManage_FName(NewBaseBoneName);
+		auto _p4 = bHasBase;
+		auto _p5 = bBaseRelativePosition;
+		auto _p6 = ServerMovementMode;
+		Self->ClientVeryShortAdjustPosition(_p0, _p1, _p2, _p3, _p4, _p5, _p6);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_ClientVeryShortAdjustPosition_Implementation(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FVector*)NewLoc;
+		auto _p2 = NewBase;
+		auto _p3 = ConvertFromManage_FName(NewBaseBoneName);
+		auto _p4 = bHasBase;
+		auto _p5 = bBaseRelativePosition;
+		auto _p6 = ServerMovementMode;
+		Self->ClientVeryShortAdjustPosition_Implementation(_p0, _p1, _p2, _p3, _p4, _p5, _p6);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_Crouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
 		Self->Crouch(_p0);
-	}
-
-	DOTNET_EXPORT auto E_ACharacter_DoJump(ACharacter* Self, bool bReplayingMoves)
-	{
-		auto _p0 = bReplayingMoves;
-		return ((E_PROTECTED_WRAP_ACharacter*)Self)->DoJump_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_Falling(ACharacter* Self)
@@ -275,11 +311,6 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(ACharacter* Self)
 	{
 		return Self->GetReplicatedServerLastTransformUpdateTimeStamp();
-	}
-
-	DOTNET_EXPORT auto E_ACharacter_IsJumping(ACharacter* Self)
-	{
-		return Self->IsJumping();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_IsJumpProvidingForce(ACharacter* Self)
@@ -356,12 +387,6 @@ extern "C"
 		Self->NotifyJumpApex();
 	}
 
-	DOTNET_EXPORT auto E_ACharacter_NotifyLanded(ACharacter* Self, INT_PTR Hit)
-	{
-		auto _p0 = *(FHitResult*)Hit;
-		return Self->NotifyLanded(_p0);
-	}
-
 	DOTNET_EXPORT auto E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
@@ -429,9 +454,27 @@ extern "C"
 		Self->OnUpdateSimulatedPosition(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
+	{
+		auto _p0 = *(FVector*)PreviousFloorImpactNormal;
+		auto _p1 = *(FVector*)PreviousFloorContactNormal;
+		auto _p2 = *(FVector*)PreviousLocation;
+		auto _p3 = TimeDelta;
+		Self->OnWalkingOffLedge(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge_Implementation(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
+	{
+		auto _p0 = *(FVector*)PreviousFloorImpactNormal;
+		auto _p1 = *(FVector*)PreviousFloorContactNormal;
+		auto _p2 = *(FVector*)PreviousLocation;
+		auto _p3 = TimeDelta;
+		Self->OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_ResetJumpState(ACharacter* Self)
 	{
-		((E_PROTECTED_WRAP_ACharacter*)Self)->ResetJumpState_WRAP();
+		Self->ResetJumpState();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
@@ -495,19 +538,6 @@ extern "C"
 	{
 		auto _p0 = bClientSimulation;
 		Self->UnCrouch(_p0);
-	}
-
-	DOTNET_EXPORT auto E_ACharacter_UpdateFromCompressedFlags(ACharacter* Self, uint8 Flags)
-	{
-		auto _p0 = Flags;
-		Self->UpdateFromCompressedFlags(_p0);
-	}
-
-	DOTNET_EXPORT auto E_ACharacter_UpdateSimulatedPosition(ACharacter* Self, INT_PTR Location, INT_PTR NewRotation)
-	{
-		auto _p0 = *(FVector*)Location;
-		auto _p1 = *(FRotator*)NewRotation;
-		Self->UpdateSimulatedPosition(_p0, _p1);
 	}
 
 }

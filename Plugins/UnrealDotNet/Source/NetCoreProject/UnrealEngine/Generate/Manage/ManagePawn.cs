@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file D:\ue4\UE_4.17\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 namespace UnrealEngine
 {
@@ -49,12 +49,6 @@ namespace UnrealEngine
 		/// <para>@see GetPendingMovementInputVector(), GetLastMovementInputVector(), ConsumeMovementInputVector() </para>
 		/// </summary>
 		public override void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce) { }
-		
-		
-		/// <summary>
-		/// <para>Deprecated, misleading name and redundant </para>
-		/// </summary>
-		public override void ClientSetRotation(FRotator NewRotation) { }
 		
 		
 		/// <summary>
@@ -128,7 +122,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>update all components relevant for navigation generators to match bCanAffectNavigationGeneration flag </para>
+		/// <para>Update all components relevant for navigation generators to match bCanAffectNavigationGeneration flag </para>
 		/// </summary>
 		public override void UpdateNavigationRelevance() { }
 		
