@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Generator.Codegenretor;
+using Generator.Metadata;
 using Newtonsoft.Json;
 
 namespace Generator
 {
-    internal static class Program
+    public static class Program
     {
         private static readonly Stopwatch Watch = new Stopwatch();
 
@@ -29,7 +31,7 @@ namespace Generator
 
         public static void Main(string[] args)
         {
-            CommandLine.Parser.Default.ParseArguments<Options>(args).WithParsed(Run);
+            Parser.Default.ParseArguments<Options>(args).WithParsed(Run);
         }
 
         private static void Run(Options options)
@@ -39,17 +41,17 @@ namespace Generator
                 PrintError($"File '{options.HeaderScanListFile}' is not exists");
                 return;
             }
-            
+
             if (!File.Exists(options.ConfigPath))
             {
                 PrintError($"Project directory '{options.ConfigPath}' is not exists");
                 return;
             }
-            
+
             var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(options.ConfigPath));
             var output = Path.Combine(options.Output, "Source");
             var files = GetScanFiles(options);
-            
+
             if (!Directory.Exists(output))
             {
                 PrintError($"Project directory '{output}' is not exists");
@@ -59,13 +61,30 @@ namespace Generator
             Watch.Start();
 
             var domain = ParceManager.Parce(files, config);
-            Codegenretor.GenarateDomain(domain, output, config);
+            GenarateDomain(domain, output, config);
 
             Watch.Stop();
 
             Console.WriteLine();
             domain.PrintTotal();
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
+        }
+
+        public static void GenarateDomain(Domain domain, string outputDir, Config config)
+        {
+            var outputCs = Path.Combine(outputDir, "NetCoreProject", "UnrealEngine", "Generate");
+            var outputCpp = Path.Combine(outputDir, "UnrealDotNetRuntime");
+
+            var cpp = new CodegenretorCPP(config);
+            var cs = new CodegenretorCS(config);
+
+            var watch = new Stopwatch();
+            watch.Start();
+
+            cpp.GenarateDomain(domain, outputCpp);
+            cs.GenarateDomain(domain, outputCs);
+
+            Console.WriteLine($"Total generate time {watch.ElapsedMilliseconds / 1000.0}s");
         }
 
         private static List<string> GetScanFiles(Options options)

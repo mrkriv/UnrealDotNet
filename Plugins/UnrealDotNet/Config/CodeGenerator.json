@@ -1,4 +1,23 @@
 {
+    "DllEditorImportName": "UE4Editor-UnrealDotNetRuntime",
+    "DllPaksImportName": "DotUnrealExample.exe",
+    "EnginePathSeg": "Engine\\Source",
+    "ExportPrefix": "E_",
+    "ExportOperatorPrefix": "E_OPER_",
+    "ExportPropertyPrefix": "E_PROP_",
+    "ExportProtectedPrefix": "E_PROTECTED_WRAP_",
+    "ExportProtectedPostfix": "_WRAP",
+    "ExportEventAddPrefix": "E_EVENT_ADD_",
+    "ExportEventRemovePrefix": "E_EVENT_DEL_",
+    "EventPrivatePrefix": "_Event_",
+    "EventInvokePrefix": "InvokeEvent_",
+    "EventPropertyGetPostfix": "_GET",
+    "EventPropertySetPostfix": "_SET",
+    "CppPch": "UnrealDotNetRuntime",
+    "CppApi": "DOTNET_EXPORT",
+    "CppApiUe": "UNREALDOTNETRUNTIME_API",
+    "IsWriteSourceFileName": true,
+    
     "Filter": {
         "ClassBlackList": [
             "FSeamlessTravelHandler",
