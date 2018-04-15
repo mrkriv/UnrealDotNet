@@ -3,98 +3,115 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using CommandLine;
 
 namespace HotReloadUtilit
 {
     public static class Program
     {
-        private const string HotDir = "..\\HotReload\\";
-        private const string Hotreload = HotDir + "hotreload";
-        private const string HotreloadTmp = Hotreload + ".tmp";
-        private const string GameLogic = "GameLogicXXXXXXXX";
-        private const string Wrapper = "UnrealEngine";
+        public enum Mode
+        {
+            PreBuild,
+            PostBuild
+        }
 
-        private static string Mode;
-        private static string OutDir;
-        private static string Configuration;
+        public class Options
+        {
+            [Option('m', "mode", Required = true, HelpText = "Runing mode")]
+            public Mode Mode { get; set; }
+
+            [Option('o', "output", Required = true, HelpText = "Build output folder")]
+            public string OutDir { get; set; }
+
+            [Option('c', "configuration", HelpText = "Build configuration (Debug, Release)", Default = @"Debug")]
+            public string Configuration { get; set; }
+
+            [Option("hotDir", Default = "..\\HotReload\\")]
+            public string HotDir { get; set; }
+
+            [Option("hotreload", Default = "hotreload")]
+            public string Hotreload { get; set; }
+
+            [Option("hotreloadTmp", Default = ".tmp")]
+            public string HotreloadTmp { get; set; }
+
+            [Option("gameLogic", Default = "GameLogicXXXXXXXX")]
+            public string GameLogic { get; set; }
+
+            [Option("wrapper", Default = "UnrealEngine")]
+            public string Wrapper { get; set; }
+        }
 
         public static void Main(string[] args)
         {
-            if (args.Length != 3)
-            {
-                Console.WriteLine("Comand line format:");
-                Console.WriteLine("-pre|-post <OutDir> <Configuration>");
-                return;
-            }
+            Parser.Default.ParseArguments<Options>(args).WithParsed(Run);
+        }
 
-            Mode = args[0];
-            OutDir = args[1];
-            Configuration = args[2];
+        public static void Run(Options options)
+        {
+            var isHotReload = options.Configuration == "Debug" && IsUeEditorRun();
 
-            var isHotReload = Configuration == "Debug" && IsUEEditorRun();
-
-            if (isHotReload)
+            switch (options.Mode)
             {
-                switch (Mode)
-                {
-                    case "-pre": PreHotBuild(); break;
-                    case "-post": PostHotBuild(); break;
-                }
-            }
-            else
-            {
-                switch (Mode)
-                {
-                    case "-pre": PreBuild(); break;
-                    case "-post": PostBuild(); break;
-                }
+                case Mode.PreBuild:
+                    if (isHotReload)
+                        PreHotBuild(options);
+                    else
+                        PreBuild(options);
+                    break;
+                case Mode.PostBuild:
+                    if (isHotReload)
+                        PostHotBuild(options);
+                    else
+                        PostBuild(options);
+                    break;
             }
         }
 
-        private static bool IsUEEditorRun()
+        private static bool IsUeEditorRun()
         {
             return Process.GetProcessesByName("UE4Editor").Any();
         }
 
-        private static void PreBuild()
+        private static void PreBuild(Options opt)
         {
             Console.WriteLine("Preparation of assembly");
         }
 
-        private static void PostBuild()
+        private static void PostBuild(Options opt)
         {
             Console.WriteLine("Completion of assembly");
 
             //SetAssemblyName(OutDir + $"\\{GameLogic}.dll", "");
 
-            if (Configuration == "Debug")
+            if (opt.Configuration == "Debug")
             {
-                File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + $"\\..\\{GameLogic}.dll", true);
-                File.Copy(OutDir + $"\\{GameLogic}.pdb", OutDir + $"\\..\\{GameLogic}.pdb", true);
-                File.Copy(OutDir + $"\\{Wrapper}.dll", OutDir + $"\\..\\{Wrapper}.dll", true);
-                File.Copy(OutDir + $"\\{Wrapper}.pdb", OutDir + $"\\..\\{Wrapper}.pdb", true);
+                File.Copy(opt.OutDir + $"\\{opt.GameLogic}.dll", opt.OutDir + $"\\..\\{opt.GameLogic}.dll", true);
+                File.Copy(opt.OutDir + $"\\{opt.GameLogic}.pdb", opt.OutDir + $"\\..\\{opt.GameLogic}.pdb", true);
+                File.Copy(opt.OutDir + $"\\{opt.Wrapper}.dll", opt.OutDir + $"\\..\\{opt.Wrapper}.dll", true);
+                File.Copy(opt.OutDir + $"\\{opt.Wrapper}.pdb", opt.OutDir + $"\\..\\{opt.Wrapper}.pdb", true);
             }
             else
             {
-                var dir = Path.Combine(OutDir, "..", "..", "..", "Dotnet", "GameLogic");
+                var dir = Path.Combine(opt.OutDir, "..", "..", "..", "Dotnet", "GameLogic");
 
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                File.Copy(OutDir + $"\\{GameLogic}.dll", dir + $"\\{GameLogic}.dll", true);
-                File.Copy(OutDir + $"\\{Wrapper}.dll", dir + $"\\{Wrapper}.dll", true);
+                File.Copy(opt.OutDir + $"\\{opt.GameLogic}.dll", dir + $"\\{opt.GameLogic}.dll", true);
+                File.Copy(opt.OutDir + $"\\{opt.Wrapper}.dll", dir + $"\\{opt.Wrapper}.dll", true);
             }
 
-            if (!IsUEEditorRun() && Directory.Exists(OutDir + HotDir))
-                Directory.Delete(OutDir + HotDir, true);
+            if (!IsUeEditorRun() && Directory.Exists(opt.OutDir + opt.HotDir))
+                Directory.Delete(opt.OutDir + opt.HotDir, true);
         }
 
-        private static void PreHotBuild()
+        private static void PreHotBuild(Options opt)
         {
             var guid = Guid.NewGuid().ToString().Substring(0, 8);
             Console.WriteLine("Preparation of assembly for hot reload GUID:" + guid);
 
-            var hotrelod = Path.Combine(OutDir, HotreloadTmp);
+            var hotrelod = Path.Combine(opt.OutDir, opt.HotDir, opt.Hotreload + opt.HotreloadTmp);
             if (!Directory.Exists(Path.GetDirectoryName(hotrelod)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(hotrelod));
@@ -103,17 +120,17 @@ namespace HotReloadUtilit
             File.WriteAllText(hotrelod, guid);
         }
 
-        private static void PostHotBuild()
+        private static void PostHotBuild(Options opt)
         {
-            var guid = File.ReadAllText(OutDir + "\\" + HotreloadTmp);
+            var guid = File.ReadAllText(Path.Combine(opt.OutDir, opt.HotDir, opt.Hotreload + opt.HotreloadTmp));
 
             Console.WriteLine("Completion of assembly for hot reload GUID:" + guid);
 
-            SetAssemblyName(OutDir + $"\\{GameLogic}.dll", guid);
+            SetAssemblyName(opt.OutDir + $"\\{opt.GameLogic}.dll", guid);
 
-            File.Copy(OutDir + $"\\{GameLogic}.dll", OutDir + HotDir + $"\\GameLogic{guid}.dll", true);
-            File.Copy(OutDir + $"\\{GameLogic}.pdb", OutDir + HotDir + $"\\GameLogic{guid}.pdb", true);
-            File.WriteAllText(OutDir + "\\" + Hotreload, guid);
+            File.Copy(opt.OutDir + $"\\{opt.GameLogic}.dll", opt.OutDir + opt.HotDir + $"\\GameLogic{guid}.dll", true);
+            File.Copy(opt.OutDir + $"\\{opt.GameLogic}.pdb", opt.OutDir + opt.HotDir + $"\\GameLogic{guid}.pdb", true);
+            File.WriteAllText(Path.Combine(opt.OutDir, opt.HotDir, opt.Hotreload), guid);
         }
 
         private static void SetAssemblyName(string path, string guid)
@@ -144,6 +161,7 @@ namespace HotReloadUtilit
                 {
                     asm[i + j] = replace[j];
                 }
+
                 for (; j < find.Length; j++)
                 {
                     asm[i + j] = 0;
