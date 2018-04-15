@@ -65,11 +65,6 @@ public:
 		FindBestNavMeshLocation(TraceStart, TraceEnd, CurrentFeetLocation, TargetNavLocation, OutHitResult);
 	}
 
-	FVector GetPawnCapsuleExtent_WRAP(const EShrinkCapsuleExtent ShrinkMode, const float CustomShrinkAmount)
-	{
-		return GetPawnCapsuleExtent(ShrinkMode, CustomShrinkAmount);
-	}
-
 	FVector HandleSlopeBoosting_WRAP(const FVector& SlideResult, const FVector& Delta, const float Time, const FVector& Normal, const FHitResult& Hit)
 	{
 		return HandleSlopeBoosting(SlideResult, Delta, Time, Normal, Hit);
@@ -933,7 +928,7 @@ extern "C"
 	{
 		return Self->GetNetworkSafeRandomAngleDegrees();
 	}
-	
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPerchRadiusThreshold(UCharacterMovementComponent* Self)
 	{
 		return Self->GetPerchRadiusThreshold();

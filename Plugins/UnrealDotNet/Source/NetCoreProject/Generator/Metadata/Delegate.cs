@@ -9,10 +9,10 @@ namespace Generator.Metadata
     {
         public List<Variable> Parametrs { get; set; }
 
-        public Delegate(string Name)
+        public Delegate(string name)
         {
             Parametrs = new List<Variable>();
-            this.Name = Name;
+            Name = name;
         }
 
         public IEnumerable<Type> Dependent

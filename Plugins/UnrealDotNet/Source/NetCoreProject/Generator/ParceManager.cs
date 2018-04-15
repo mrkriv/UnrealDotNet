@@ -16,16 +16,16 @@ namespace Generator
     {
         public static Domain Parce(IReadOnlyList<string> files)
         {
-            var Types = new ConcurrentDictionary<string, Type>();
+            var types = new ConcurrentDictionary<string, Type>();
             var mult = 1;
             var tasks = new List<Task>();
 
-            var Watch = new Stopwatch();
-            Watch.Start();
+            var watch = new Stopwatch();
+            watch.Start();
 
             for (var i = 0; i < mult; i++)
             {
-                var visitor = new MetadataVisitor(Types);
+                var visitor = new MetadataVisitor(types);
 
                 var i1 = i;
                 tasks.Add(Task.Run(() => { ParceSolo(files, i1, mult, visitor); }));
@@ -33,9 +33,9 @@ namespace Generator
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Total parce time {Watch.ElapsedMilliseconds / 1000.0}s");
+            Console.WriteLine($"Total parce time {watch.ElapsedMilliseconds / 1000.0}s");
 
-            return new Domain(Types.Values);
+            return new Domain(types.Values);
         }
 
         private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor)

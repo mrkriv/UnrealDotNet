@@ -24,7 +24,7 @@ namespace UnrealEngine
 		}
 
 		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDLL, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(int InLevelCollectionIndex, IntPtr InWorld);
 		
 		#endregion

@@ -5,7 +5,7 @@ namespace GameLogic
 {
     public class MyBoxComponent : ManageBoxComponent
     {
-        public MyBoxComponent(IntPtr Adress) : base(Adress)
+        public MyBoxComponent(IntPtr adress) : base(adress)
         {
         }
     }

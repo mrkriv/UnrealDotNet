@@ -847,16 +847,6 @@ namespace UnrealEngine
 		UpdateBodySetup,
 	}
 
-	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:1898
-	
-	public enum EShrinkCapsuleExtent : byte
-	{
-		SHRINK_None,
-		SHRINK_RadiusCustom,
-		SHRINK_HeightCustom,
-		SHRINK_AllCustom,
-	}
-
 	// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:89
 	
 	public enum ESkyLightSourceType : byte

@@ -7,9 +7,9 @@ namespace Generator
 {
     public static class Filter
     {
-        private static readonly Regex replaceRegex = new Regex("(,?[A-Z_]+_API)|(PRAGMA_[A-Z_]+)");
+        private static readonly Regex ReplaceRegex = new Regex("(,?[A-Z_]+_API)|(PRAGMA_[A-Z_]+)");
 
-        public static string[] ClassBlackList =
+        public static readonly string[] ClassBlackList =
         {
             "FSeamlessTravelHandler",
             "FLevelCollection",
@@ -41,7 +41,6 @@ namespace Generator
             "FTickPrerequisite",
 
             "EOptimizeMode",
-            "EShrinkCapsuleExtent",
             
             "FCollisionImpactData",  // todo:: не линкует
             "FRigidBodyContactInfo",
@@ -79,12 +78,12 @@ namespace Generator
             "FStartAsyncSimulationFunction",
         };
 
-        public static Regex[] ManualImplementedClassMasks =
+        public static readonly Regex[] ManualImplementedClassMasks =
         {
             new Regex(@"TArray__\w+"),
         };
 
-        public static string[] ManageClassBlackList =
+        public static readonly string[] ManageClassBlackList =
         {
             "UScene",
             "UWorldProxy",
@@ -112,7 +111,7 @@ namespace Generator
             "UShapeComponent",  // todo: не найдена соответствующая перегруженная функция
         };
 
-        public static string[] NewObjectBlackList =
+        public static readonly string[] NewObjectBlackList =
         {
             "UScene",
             "UWorldProxy",
@@ -121,12 +120,13 @@ namespace Generator
             "UEngineBaseTypes",
         };
 
-        public static string[] EnumBlackList =
+        public static readonly string[] EnumBlackList =
         {
             "Type",
+            "EShrinkCapsuleExtent",
         };
 
-        public static Dictionary<string, string> UseConvertToManageType = new Dictionary<string, string>
+        public static readonly Dictionary<string, string> UseConvertToManageType = new Dictionary<string, string>
         {
             { "TCHAR", "StringWrapper"},
             { "FName", "StringWrapper"},
@@ -134,7 +134,7 @@ namespace Generator
             { "FString", "StringWrapper"},
         };
 
-        public static Dictionary<string, string> UseConvertFromManageType = new Dictionary<string, string>
+        public static readonly Dictionary<string, string> UseConvertFromManageType = new Dictionary<string, string>
         {
             { "TCHAR", "char*"},
             { "FName", "char*"},
@@ -142,11 +142,11 @@ namespace Generator
             { "FString", "char*"},
         };
 
-        public static string[] DelegateBlackList =
+        public static readonly string[] DelegateBlackList =
         {
         };
 
-        public static Dictionary<string, string[]> MethodInClassBlackList = new Dictionary<string, string[]>
+        public static readonly Dictionary<string, string[]> MethodInClassBlackList = new Dictionary<string, string[]>
         {
             { "UObjectBase", new[] { "Register" }},
             { "UObject", new[] { "PreSaveRoot", "Implements" }},
@@ -171,26 +171,26 @@ namespace Generator
             { "FPoly", new[] { "CalcNormal" }},
         };
 
-        public static Dictionary<string, string[]> PropertyInClassBlackList = new Dictionary<string, string[]>
+        public static readonly Dictionary<string, string[]> PropertyInClassBlackList = new Dictionary<string, string[]>
         {
             { "FWorldContext", new[] { "ExternalReferences" }},
         };
 
-        public static string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
+        public static readonly string[] ReadOnlyClass =  // TODO: находить удаленный оператор присваивания
         {
             "FTickFunction",
         };
 
         public static string FilterSourceCode(string code)
         {
-            return replaceRegex.Replace(code, "");
+            return ReplaceRegex.Replace(code, "");
         }
 
-        public static List<Class> FilterClasses(IEnumerable<Class> Classes)
+        public static List<Class> FilterClasses(IEnumerable<Class> classes)
         {
-            var classes = Classes.Where(MathClass).Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+            var result = classes.Where(MathClass).Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
 
-            foreach (var cl in classes)
+            foreach (var cl in result)
             {
                 cl.IsReadOnly = ReadOnlyClass.Any(name => cl.IsChild(name));
 
@@ -202,7 +202,7 @@ namespace Generator
                 RemoveMethodDublicatedName(cl);
             }
 
-            return classes;
+            return result;
         }
 
         private static bool MathClass(Class cl)
@@ -222,10 +222,10 @@ namespace Generator
             return true;
         }
 
-        public static List<Delegate> FilterDelegates(IEnumerable<Delegate> Delegates)
+        public static List<Delegate> FilterDelegates(IEnumerable<Delegate> delegates)
         {
-            var delegates = Delegates.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
-            return delegates;
+            var result = delegates.Where(TypeFilter).OrderBy(cl => cl.Name).ToList();
+            return result;
         }
 
         public static List<Enum> FilterEnum(IEnumerable<Enum> enums)
@@ -263,7 +263,7 @@ namespace Generator
 
         private static void RemoveMethodDublicatedName(Class cl)
         {
-            var primitivs = cl.Methods.Cast<Primitive>().Concat(cl.Property);
+            var primitivs = cl.Methods.Cast<Primitive>().Concat(cl.Property).ToList();
 
             foreach (var prim in primitivs)
             {
@@ -313,17 +313,15 @@ namespace Generator
                 return false;
             }
 
-            var en = type as Enum;
-            if (en != null)
-                return EunmFilter(en);
-
-            var cl = type as Class;
-            if (cl != null)
-                return ClassFilter(cl);
-
-            var dlg = type as Delegate;
-            if (dlg != null)
-                return FilterDelegate(dlg);
+            switch (type)
+            {
+                case Enum en:
+                    return EunmFilter(en);
+                case Class cl:
+                    return ClassFilter(cl);
+                case Delegate dlg:
+                    return FilterDelegate(dlg);
+            }
 
             return true;
         }
@@ -336,7 +334,7 @@ namespace Generator
                     !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
                     (!m.IsVirtual || !m.OwnerClass.IsFinal) &&
                     m.Dependent.All(TypeFilter) &&
-                    m.OwnerClass.Methods.Count(_m => _m.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
+                    m.OwnerClass.Methods.Count(x => x.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
                     m.Operator == null &&
                     (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
                     (!MethodInClassBlackList.ContainsKey(m.OwnerClass.Name) || !MethodInClassBlackList[m.OwnerClass.Name].Contains(m.Name));
@@ -394,21 +392,21 @@ namespace Generator
             return false;
         }
 
-        public static bool GetConvertToManageType(Type type, out string ToType)
+        public static bool GetConvertToManageType(Type type, out string toType)
         {
             if (type.IsTemplate)
             {
-                ToType = "TemplatePointerDescription";
+                toType = "TemplatePointerDescription";
                 return true;
             }
 
             if ((type as Class)?.IsStructure == false)
             {
-                ToType = "ObjectPointerDescription";
+                toType = "ObjectPointerDescription";
                 return true;
             }
 
-            if (UseConvertToManageType.TryGetValue(type.Name, out ToType))
+            if (UseConvertToManageType.TryGetValue(type.Name, out toType))
                 return true;
 
             return false;

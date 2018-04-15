@@ -10,43 +10,43 @@ namespace Generator
 {
     internal partial class Codegenretor
     {
-        private class CPP
+        private class Cpp
         {
-            public static void GenarateDomain(Domain domain, string OutputDir)
+            public static void GenarateDomain(Domain domain, string outputDir)
             {
-                OutputDir = new DirectoryInfo(OutputDir).FullName;
+                outputDir = new DirectoryInfo(outputDir).FullName;
                 
-                var OutputPriveteGen = Path.Combine(OutputDir, "Private", "Generate");
-                var OutputPublicGen = Path.Combine(OutputDir, "Public", "Generate");
+                var outputPriveteGen = Path.Combine(outputDir, "Private", "Generate");
+                var outputPublicGen = Path.Combine(outputDir, "Public", "Generate");
 
-                var OutputPriveteExport = Path.Combine(OutputPriveteGen, "Export");
-                var OutputPriveteManage = Path.Combine(OutputPriveteGen, "Manage");
-                var OutputPublicManage = Path.Combine(OutputPublicGen, "Manage");
+                var outputPriveteExport = Path.Combine(outputPriveteGen, "Export");
+                var outputPriveteManage = Path.Combine(outputPriveteGen, "Manage");
+                var outputPublicManage = Path.Combine(outputPublicGen, "Manage");
 
-                CreateDirectoryIfNotExist(OutputPriveteGen);
-                CreateDirectoryIfNotExist(OutputPublicGen);
-                CreateDirectoryIfNotExist(OutputPriveteExport);
-                CreateDirectoryIfNotExist(OutputPriveteManage);
-                CreateDirectoryIfNotExist(OutputPublicManage);
+                CreateDirectoryIfNotExist(outputPriveteGen);
+                CreateDirectoryIfNotExist(outputPublicGen);
+                CreateDirectoryIfNotExist(outputPriveteExport);
+                CreateDirectoryIfNotExist(outputPriveteManage);
+                CreateDirectoryIfNotExist(outputPublicManage);
 
-                Directory.GetFiles(OutputPriveteGen, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
-                Directory.GetFiles(OutputPublicGen, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                Directory.GetFiles(outputPriveteGen, "*.h", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
+                Directory.GetFiles(outputPublicGen, "*.cpp", SearchOption.AllDirectories).ToList().ForEach(File.Delete);
                 
                 foreach (var cl in domain.Classes.Where(c => !c.IsStructure))
                 {
-                    GenerateClass(cl, Path.Combine(OutputPriveteExport, cl.Name));
+                    GenerateClass(cl, Path.Combine(outputPriveteExport, cl.Name));
                 }
 
-                GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(OutputPriveteExport, "Structures"));
-                GenerateCPPIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(OutputPriveteExport, "Index"));
+                GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(outputPriveteExport, "Structures"));
+                GenerateCppIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(outputPriveteExport, "Index"));
 
                 foreach (var cl in domain.Classes.Where(Filter.IsManageClass))
                 {
-                    GenerateManageClassH(cl, OutputPublicManage);
-                    GenerateManageClassCPP(cl, OutputPriveteManage);
+                    GenerateManageClassH(cl, outputPublicManage);
+                    GenerateManageClassCpp(cl, outputPriveteManage);
                 }
 
-                GenerateManageEventSender(domain.Delegates, Path.Combine(OutputPublicGen, "ManageEventSender"));
+                GenerateManageEventSender(domain.Delegates, Path.Combine(outputPublicGen, "ManageEventSender"));
             }
 
             private static void CreateDirectoryIfNotExist(string path)
@@ -57,7 +57,7 @@ namespace Generator
 
             #region Class
 
-            private static void GenerateClass(Class Class, string OutputPath)
+            private static void GenerateClass(Class Class, string outputPath)
             {
                 var cw = new CoreWriter();
 
@@ -97,12 +97,12 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-                cw.SaveToFile(OutputPath + ".h");
+                cw.SaveToFile(outputPath + ".h");
             }
 
-            private static void GenerateManageClassH(Class Class, string OutputPath)
+            private static void GenerateManageClassH(Class Class, string outputPath)
             {
-                var methods = Filter.GetVirtualMethods(Class);
+                var methods = Filter.GetVirtualMethods(Class).ToList();
 
                 var liter = Class.Name.First();
                 var baseName = Class.Name.Substring(1);
@@ -120,7 +120,7 @@ namespace Generator
                 GenerateSourceInfo(cw, Class);
 
                 cw.WriteLine("UCLASS()");
-                cw.WriteLine($"class {CPP_API_UE} {liter}Manage{baseName} : public {Class.Name}");
+                cw.WriteLine($"class {CppApiUe} {liter}Manage{baseName} : public {Class.Name}");
                 cw.OpenBlock();
 
                 cw.WriteLine("GENERATED_BODY()");
@@ -133,8 +133,8 @@ namespace Generator
                 cw.WriteLine("FDotnetTypeName ManageClassName;");
                 cw.WriteLine();
 
-                var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public);
-                var protectedM = methods.Where(m => m.AccessModifier == AccessModifier.Protected);
+                var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public).ToList();
+                var protectedM = methods.Where(m => m.AccessModifier == AccessModifier.Protected).ToList();
 
                 if (publicM.Any())
                 {
@@ -157,10 +157,10 @@ namespace Generator
 
                 cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-                cw.SaveToFile(Path.Combine(OutputPath, "Manage" + baseName + ".h"));
+                cw.SaveToFile(Path.Combine(outputPath, "Manage" + baseName + ".h"));
             }
 
-            private static void GenerateManageClassCPP(Class Class, string OutputPath)
+            private static void GenerateManageClassCpp(Class Class, string outputPath)
             {
                 var methods = Filter.GetVirtualMethods(Class);
 
@@ -168,7 +168,7 @@ namespace Generator
 
                 var cw = new CoreWriter();
 
-                cw.WriteLine($"#include \"{CPP_PCH}.h\"");
+                cw.WriteLine($"#include \"{CppPch}.h\"");
                 cw.WriteLine($"#include \"DotnetTypeName.h\"");
                 cw.WriteLine($"#include \"Generate/Manage/Manage{baseName}.h\"");
                 cw.WriteLine();
@@ -181,27 +181,27 @@ namespace Generator
 
                 cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-                cw.SaveToFile(Path.Combine(OutputPath, "Manage" + baseName + ".cpp"));
+                cw.SaveToFile(Path.Combine(outputPath, "Manage" + baseName + ".cpp"));
             }
 
             private static void GenerateManageMethodHead(CoreWriter cw, Method method)
             {
-                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
 
-                cw.WriteLine($"virtual {method.ReturnType.GetTypeCPPOgiginal()} {method.Name}({param}) override;");
+                cw.WriteLine($"virtual {method.ReturnType.GetTypeCppOgiginal()} {method.Name}({param}) override;");
                 cw.WriteLine();
             }
 
             private static void GenerateManageMethod(CoreWriter cw, Method method)
             {
-                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
                 var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
                 var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
 
                 var liter = method.OwnerClass.Name.First();
                 var baseName = method.OwnerClass.Name.Substring(1);
 
-                cw.WriteLine($"{method.ReturnType.GetTypeCPPOgiginal()} {liter}Manage{baseName}::{method.Name}({param})");
+                cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {liter}Manage{baseName}::{method.Name}({param})");
                 cw.OpenBlock();
 
                 if (method.Name == "BeginPlay")
@@ -231,7 +231,7 @@ namespace Generator
 
             private static void GenerateProtctedWrap(CoreWriter cw, Class Class)
             {
-                var methods = Class.Methods.Where(m => m.AccessModifier == AccessModifier.Protected);
+                var methods = Class.Methods.Where(m => m.AccessModifier == AccessModifier.Protected).ToList();
 
                 if (!methods.Any() || Class.IsFinal)
                     return;
@@ -254,7 +254,7 @@ namespace Generator
             private static void GenegateNewObjectMethod(CoreWriter cw, Class Class)
             {
                 cw.WriteLine();
-                cw.WriteLine($"{CPP_API} INT_PTR {ExportPrefix}NewObject_{Class.Name}(UObject* Parent, char* Name)");
+                cw.WriteLine($"{CppApi} INT_PTR {ExportPrefix}NewObject_{Class.Name}(UObject* Parent, char* Name)");
                 cw.OpenBlock();
                 cw.WriteLine($"return (INT_PTR)NewObject<{Class.Name}>(Parent, FName(UTF8_TO_TCHAR(Name)));");
                 cw.CloseBlock();
@@ -268,7 +268,7 @@ namespace Generator
                 var param = GetMethodSignatuteParam(method);
                 var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
 
-                cw.WriteLine($"{CPP_API} auto {GetCPPMethodName(method)}({param})");
+                cw.WriteLine($"{CppApi} auto {GetCppMethodName(method)}({param})");
                 cw.OpenBlock();
 
                 for (var i = 0; i < method.InputTypes.Count; i++)
@@ -289,7 +289,7 @@ namespace Generator
 
             private static string GetMethodSignatuteParam(Method method)
             {
-                var inputs = method.InputTypes.Select(ExportVariableCPP).ToList();
+                var inputs = method.InputTypes.Select(ExportVariableCpp).ToList();
                 inputs.Insert(0, $"{method.OwnerClass.Name}* Self");
 
                 return string.Join(", ", inputs);
@@ -297,10 +297,10 @@ namespace Generator
 
             private static void GenerateMethodProtctedWrap(CoreWriter cw, Method method)
             {
-                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCPPOgiginal()));
+                var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
 
                 cw.WriteLine(
-                    $"{method.ReturnType.GetTypeCPPOgiginal()} {method.Name}{ExportProtectedPostfix}({param})");
+                    $"{method.ReturnType.GetTypeCppOgiginal()} {method.Name}{ExportProtectedPostfix}({param})");
                 cw.OpenBlock();
 
                 cw.Write(method.ReturnType.Type.Name != "void", "return ");
@@ -316,15 +316,17 @@ namespace Generator
 
             #region Struct
 
-            private static void GenerateStructs(IEnumerable<Class> Structures, string OutputPath)
+            private static void GenerateStructs(IEnumerable<Class> structures, string outputPath)
             {
+                structures = structures.ToList();
+                
                 var cw = new CoreWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
                 cw.WriteLine("#include \"CoreMinimal.h\"");
 
-                foreach (var header in Structures.Select(GetSourceFileName).Distinct())
+                foreach (var header in structures.Select(GetSourceFileName).Distinct())
                 {
                     cw.WriteLine($"#include \"{header}\"");
                 }
@@ -333,7 +335,7 @@ namespace Generator
                 cw.WriteLine("extern \"C\"");
                 cw.OpenBlock();
 
-                foreach (var Class in Structures)
+                foreach (var Class in structures)
                 {
                     cw.WriteLine();
                     cw.WriteLine($"/*\t{Class.Name}\t*/");
@@ -349,7 +351,7 @@ namespace Generator
 
                 cw.CloseBlock();
 
-                cw.SaveToFile(OutputPath + ".h");
+                cw.SaveToFile(outputPath + ".h");
             }
 
             private static void GenerateStructUtilites(CoreWriter cw, Class Class)
@@ -366,12 +368,12 @@ namespace Generator
             {
                 foreach (var ctr in Class.Constructors)
                 {
-                    var param = string.Join(", ", ctr.InputTypes.Select(ExportVariableCPP));
+                    var param = string.Join(", ", ctr.InputTypes.Select(ExportVariableCpp));
                     var call = string.Join(", ", ctr.InputTypes.Select(x => GenerateGet(x)));
 
                     var ctrFullName = GetExportConstructorFullName(ctr);
 
-                    cw.Write($"{CPP_API} INT_PTR {ctrFullName}({param}) {{ ");
+                    cw.Write($"{CppApi} INT_PTR {ctrFullName}({param}) {{ ");
                     cw.WriteLine($"return (INT_PTR) new {Class.Name}({call}); }}");
                     cw.WriteLine();
                 }
@@ -398,7 +400,7 @@ namespace Generator
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 cw.WriteLine(
-                    $"{CPP_API} auto {baseName}{EventPropertyGetPostfix}() {{ {GenerateReturn(prop.Type, $"{Class.Name}::{prop.Name}", true)} }}");
+                    $"{CppApi} auto {baseName}{EventPropertyGetPostfix}() {{ {GenerateReturn(prop.Type, $"{Class.Name}::{prop.Name}", true)} }}");
                 
                 cw.WriteLine();
             }
@@ -408,12 +410,12 @@ namespace Generator
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
                 cw.WriteLine(
-                    $"{CPP_API} auto {baseName}{EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
+                    $"{CppApi} auto {baseName}{EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
 
                 if (!prop.IsReadOnly())
                 {
                     cw.WriteLine(
-                        $"{CPP_API} void {baseName}{EventPropertySetPostfix}({Class.Name}* Ptr, {prop.GetTypeCPP()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
+                        $"{CppApi} void {baseName}{EventPropertySetPostfix}({Class.Name}* Ptr, {prop.GetTypeCpp()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
                 }
 
                 cw.WriteLine();
@@ -427,7 +429,7 @@ namespace Generator
             {
                 var name = prop.GetDisplayName();
 
-                cw.WriteLine($"{CPP_API} void {ExportEventAddPrefix}{Class.Name}_{name}({Class.Name}* Obj)");
+                cw.WriteLine($"{CppApi} void {ExportEventAddPrefix}{Class.Name}_{name}({Class.Name}* Obj)");
                 cw.OpenBlock();
 
                 cw.WriteLine($"auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());");
@@ -439,7 +441,7 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine();
 
-                cw.WriteLine($"{CPP_API} void {ExportEventRemovePrefix}{Class.Name}_{name}({Class.Name}* Obj)");
+                cw.WriteLine($"{CppApi} void {ExportEventRemovePrefix}{Class.Name}_{name}({Class.Name}* Obj)");
                 cw.OpenBlock();
 
                 // todo: реализовать отписку
@@ -448,7 +450,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateManageEventSender(IEnumerable<Metadata.Delegate> Delegates, string OutputPath)
+            private static void GenerateManageEventSender(IEnumerable<Delegate> delegates, string outputPath)
             {
                 var cw = new CoreWriter();
 
@@ -471,7 +473,7 @@ namespace Generator
                 cw.WriteLine("FString ManageDelegateName;");
                 cw.WriteLine();
 
-                foreach (var dlg in Delegates)
+                foreach (var dlg in delegates)
                 {
                     GenerateDelegateSender(dlg, cw);
                 }
@@ -479,12 +481,12 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine(";");
 
-                cw.SaveToFile(OutputPath + ".h");
+                cw.SaveToFile(outputPath + ".h");
             }
 
             private static void GenerateDelegateSender(Delegate dlg, CoreWriter cw)
             {
-                var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCPPOgiginal()));
+                var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCppOgiginal()));
                 var signature = string.Join(", ", dlg.Parametrs.Select(GetTypeForManageInvoke));
                 
                 if (signature.Any())
@@ -519,17 +521,17 @@ namespace Generator
                     return toType;
                 }
 
-                return variable.GetTypeCPPOgiginal(true);
+                return variable.GetTypeCppOgiginal(true);
             }
 
-            private static string GenerateGetForManageInvoke(Variable variable, string ManualName = null)
+            private static string GenerateGetForManageInvoke(Variable variable, string manualName = null)
             {
                 var result = "";
                 var bCloseCount = 0;
 
-                if (ManualName == null)
+                if (manualName == null)
                 {
-                    ManualName = variable.Name;
+                    manualName = variable.Name;
                 }
 
                 if (Filter.GetConvertToManageType(variable.Type, out var toType))
@@ -538,21 +540,21 @@ namespace Generator
                     bCloseCount++;
                 }
 
-                result += ManualName;
+                result += manualName;
                 result += new string(')', bCloseCount);
 
                 return result;
             }
 
-            private static string GenerateGet(Variable variable, string ManualName = null)
+            private static string GenerateGet(Variable variable, string manualName = null)
             {
                 var result = "";
                 var bCloseCount = 0;
                 var type = variable.Type;
 
-                if (ManualName == null)
+                if (manualName == null)
                 {
-                    ManualName = variable.Name;
+                    manualName = variable.Name;
                 }
 
                 if ((type as Class)?.IsStructure == true)
@@ -567,7 +569,7 @@ namespace Generator
                     if (!variable.IsPointer)
                         result += "*";
 
-                    var name = variable.GetTypeCPPOgiginal(true).TrimEnd('&');
+                    var name = variable.GetTypeCppOgiginal(true).TrimEnd('&');
 
                     result += $"({name}*)";
                 }
@@ -577,17 +579,17 @@ namespace Generator
                     bCloseCount++;
                 }
 
-                result += ManualName;
+                result += manualName;
                 result += new string(')', bCloseCount);
 
                 return result;
             }
 
-            private static string GenerateReturn(Type type, string Expression, bool ForProperty)
+            private static string GenerateReturn(Type type, string expression, bool forProperty)
             {
                 if (type.IsVoid)
                 {
-                    return Expression + ";";
+                    return expression + ";";
                 }
 
                 var result = "return ";
@@ -595,7 +597,7 @@ namespace Generator
 
                 if ((type as Class)?.IsStructure == true)
                 {
-                    if (ForProperty)
+                    if (forProperty)
                         result += $"(INT_PTR)&(";
                     else
                         result += $"(INT_PTR) new {type.Name}(";
@@ -612,7 +614,7 @@ namespace Generator
                     bCloseCount++;
                 }
 
-                result += Expression;
+                result += expression;
                 result += new string(')', bCloseCount);
                 result += ";";
 
@@ -622,22 +624,22 @@ namespace Generator
             private static string GetSourceFileName(Class Class)
             {
                 var index = Class.SourceFile.IndexOf(EnginePathSeg, StringComparison.Ordinal);
-                var SourceFile = index == -1
+                var sourceFile = index == -1
                     ? Class.SourceFile
                     : Class.SourceFile.Substring(index + EnginePathSeg.Length + 1);
 
-                SourceFile = SourceFile.Replace("\\", "/");
-                return SourceFile;
+                sourceFile = sourceFile.Replace("\\", "/");
+                return sourceFile;
             }
             
-            private static void GenerateCPPIndex(IEnumerable<Class> Classes, string OutputPath)
+            private static void GenerateCppIndex(IEnumerable<Class> classes, string outputPath)
             {
                 var cw = new CoreWriter();
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
                 cw.WriteLine("#include \"Structures.h\"");
 
-                foreach (var Class in Classes)
+                foreach (var Class in classes)
                 {
                     cw.WriteLine($"#include \"{Class.Name}.h\"");
                 }
@@ -645,12 +647,12 @@ namespace Generator
                 cw.WriteLine();
                 cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-                cw.SaveToFile(OutputPath + ".h");
+                cw.SaveToFile(outputPath + ".h");
             }
 
-            private static string ExportVariableCPP(Variable variable)
+            private static string ExportVariableCpp(Variable variable)
             {
-                var result = variable.GetTypeCPP();
+                var result = variable.GetTypeCpp();
 
                 if (!string.IsNullOrEmpty(variable.Name))
                     result += " " + variable.Name;

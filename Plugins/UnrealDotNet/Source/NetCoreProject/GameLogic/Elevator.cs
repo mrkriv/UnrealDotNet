@@ -13,12 +13,12 @@ namespace GameLogic
 
     public class Elevator : ManageActor
     {
-        private ElevatorDirection Direction;
-        private UStaticMeshComponent mesh;
-        private UBoxComponent collider;
-        private int bodyCount;
-        private bool isMove;
-        private float time;
+        private ElevatorDirection _direction;
+        private UStaticMeshComponent _mesh;
+        private UBoxComponent _collider;
+        private int _bodyCount;
+        private bool _isMove;
+        private float _time;
 
         [EditAnywhere, DefaultValue(1.0f)]
         public float ActivateTime { get; set; }
@@ -26,7 +26,7 @@ namespace GameLogic
         [EditAnywhere]
         public FVector EndPoint { get; set; }
 
-        public Elevator(IntPtr Adress) : base(Adress)
+        public Elevator(IntPtr adress) : base(adress)
         {
         }
 
@@ -41,57 +41,57 @@ namespace GameLogic
                 false
             );
 
-            mesh = new UStaticMeshComponent(this, "mesh");
-            mesh.RegisterComponent();
+            _mesh = new UStaticMeshComponent(this, "mesh");
+            _mesh.RegisterComponent();
 
-            mesh.AttachToComponent(GetRootComponent(), transformRules, "");
+            _mesh.AttachToComponent(GetRootComponent(), transformRules, "");
 
-            collider = new UBoxComponent(this, "collider");
-            collider.RegisterComponent();
-            collider.SetBoxExtent(new FVector(250, 250, 100), false);
-            collider.SetHiddenInGame(false);
+            _collider = new UBoxComponent(this, "collider");
+            _collider.RegisterComponent();
+            _collider.SetBoxExtent(new FVector(250, 250, 100), false);
+            _collider.SetHiddenInGame(false);
 
-            collider.OnComponentBeginOverlap += Collider_OnComponentBeginOverlap;
-            collider.OnComponentEndOverlap += Collider_OnComponentEndOverlap;
+            _collider.OnComponentBeginOverlap += Collider_OnComponentBeginOverlap;
+            _collider.OnComponentEndOverlap += Collider_OnComponentEndOverlap;
 
-            collider.AttachToComponent(mesh, transformRules, "");
+            _collider.AttachToComponent(_mesh, transformRules, "");
         }
 
-        public override void Tick(float DeltaSeconds)
+        public override void Tick(float deltaSeconds)
         {
-            ScreenDebugMessage(bodyCount.ToString(), 0, Color.DodgerBlue);
-            ScreenDebugMessage(time.ToString(), 0, Color.Green);
+            ScreenDebugMessage(_bodyCount.ToString(), 0, Color.DodgerBlue);
+            ScreenDebugMessage(_time.ToString(), 0, Color.Green);
 
-            if (isMove)
+            if (_isMove)
             {
-                AddActorLocalOffset(new FVector(0, 0, DeltaSeconds*100), true, new FHitResult(), ETeleportType.None);
+                AddActorLocalOffset(new FVector(0, 0, deltaSeconds*100), true, new FHitResult(), ETeleportType.None);
             }
             else
             {
-                if (bodyCount != 0)
+                if (_bodyCount != 0)
                 {
-                    time += DeltaSeconds;
+                    _time += deltaSeconds;
 
-                    if (time >= ActivateTime)
+                    if (_time >= ActivateTime)
                     {
-                        isMove = true;
+                        _isMove = true;
                     }
                 }
             }
         }
 
-        private void Collider_OnComponentBeginOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex, bool bFromSweep, FHitResult SweepResult)
+        private void Collider_OnComponentBeginOverlap(UPrimitiveComponent overlappedComponent, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex, bool bFromSweep, FHitResult sweepResult)
         {
-            bodyCount++;
+            _bodyCount++;
         }
 
-        private void Collider_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex)
+        private void Collider_OnComponentEndOverlap(UPrimitiveComponent overlappedComponent, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex)
         {
-            bodyCount--;
+            _bodyCount--;
 
-            if (bodyCount == 0)
+            if (_bodyCount == 0)
             {
-                time = 0;
+                _time = 0;
             }
         }
     }

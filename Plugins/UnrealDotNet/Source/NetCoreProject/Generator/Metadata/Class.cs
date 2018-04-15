@@ -14,14 +14,14 @@ namespace Generator.Metadata
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
 
-        public Class(string Name)
+        public Class(string name)
         {
             Methods = new List<Method>();
             Property = new List<Variable>();
             Constructors = new List<Method>();
 
             IsImplemented = false;
-            this.Name = Name;
+            Name = name;
         }
 
         public IEnumerable<Type> Dependent
@@ -35,12 +35,12 @@ namespace Generator.Metadata
             }
         }
 
-        public bool IsChild(string ClassName)
+        public bool IsChild(string className)
         {
             var cl = this;
             while (cl != null)
             {
-                if (cl.Name == ClassName)
+                if (cl.Name == className)
                     return true;
 
                 cl = cl.BaseClass;

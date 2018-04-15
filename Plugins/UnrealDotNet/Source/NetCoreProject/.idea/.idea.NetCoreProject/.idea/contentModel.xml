@@ -238,7 +238,6 @@
             <e p="FBox2D.cs" t="Include" />
             <e p="FCameraExposureSettings.cs" t="Include" />
             <e p="FCanvasUVTri.cs" t="Include" />
-            <e p="FCharacterMovementComponentPostPhysicsTickFunction.cs" t="Include" />
             <e p="FClassRedirect.cs" t="Include" />
             <e p="FClosestPointOnPhysicsAsset.cs" t="Include" />
             <e p="FClusterNode.cs" t="Include" />

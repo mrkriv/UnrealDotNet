@@ -4,11 +4,11 @@ namespace Generator.Metadata
 {
     public class PrimitiveType : Type, IEquatable<PrimitiveType>
     {
-        public PrimitiveType(string Name)
+        public PrimitiveType(string name)
         {
             IsImplemented = true;
 
-            this.Name = Name;
+            Name = name;
         }
 
         public bool Equals(PrimitiveType other)
@@ -20,7 +20,7 @@ namespace Generator.Metadata
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((PrimitiveType) obj);
         }
 

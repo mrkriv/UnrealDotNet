@@ -17,12 +17,12 @@ namespace Generator.Metadata
             }
         }
 
-        public Enum(string Name)
+        public Enum(string name)
         {
             Fields = new List<Field>();
 
-            var i = Name.IndexOf(":", StringComparison.Ordinal);
-            this.Name = i != -1 ? Name.Substring(0, i) : Name;
+            var i = name.IndexOf(":", StringComparison.Ordinal);
+            Name = i != -1 ? name.Substring(0, i) : name;
         }
     }
 }

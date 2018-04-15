@@ -10,27 +10,27 @@ namespace Generator.Metadata
         public List<Class> Classes;
         public List<Enum> Enums;
 
-        public Domain(IEnumerable<Type> Types)
+        public Domain(IEnumerable<Type> types)
         {
             Delegates = new List<Delegate>();
             Classes = new List<Class>();
             Enums = new List<Enum>();
 
-            foreach (var type in Types)
+            foreach (var type in types)
             {
                 type.Domain = this;
 
-                if (type is Class)
+                switch (type)
                 {
-                    Classes.Add(type as Class);
-                }
-                else if (type is Enum)
-                {
-                    Enums.Add(type as Enum);
-                }
-                else if (type is Delegate)
-                {
-                    Delegates.Add(type as Delegate);
+                    case Class _:
+                        Classes.Add(type as Class);
+                        break;
+                    case Enum _:
+                        Enums.Add(type as Enum);
+                        break;
+                    case Delegate _:
+                        Delegates.Add(type as Delegate);
+                        break;
                 }
             }
             
@@ -48,7 +48,7 @@ namespace Generator.Metadata
             Console.WriteLine($"Delegates\t{Delegates.Count}");
         }
 
-        public void Print(bool Full)
+        public void Print(bool full)
         {
             Console.WriteLine();
 
@@ -81,7 +81,7 @@ namespace Generator.Metadata
                 }
                 else
                 {
-                    if (!Full)
+                    if (!full)
                     {
                         Console.ResetColor();
                         Console.WriteLine($"\tProperty: ({cl.Property.Count}) Methods: ({cl.Methods.Count})");

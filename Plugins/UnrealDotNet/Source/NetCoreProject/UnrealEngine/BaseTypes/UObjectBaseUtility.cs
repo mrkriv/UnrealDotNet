@@ -8,19 +8,19 @@ namespace UnrealEngine
     {
         #region DllImport
 
-        [DllImport(NativeManager.UnrealDotNetDLL)]
+        [DllImport(NativeManager.UnrealDotNetDll)]
         private static extern void E_ULOG_E(string Message);
 
-        [DllImport(NativeManager.UnrealDotNetDLL)]
+        [DllImport(NativeManager.UnrealDotNetDll)]
         private static extern void E_ULOG_W(string Message);
 
-        [DllImport(NativeManager.UnrealDotNetDLL)]
+        [DllImport(NativeManager.UnrealDotNetDll)]
         private static extern void E_ULOG_L(string Message);
 
-        [DllImport(NativeManager.UnrealDotNetDLL)]
+        [DllImport(NativeManager.UnrealDotNetDll)]
         private static extern void E_ScreenDebugMessage(string Message, float Time, byte R, byte G, byte B);
 
-        [DllImport(NativeManager.UnrealDotNetDLL)]
+        [DllImport(NativeManager.UnrealDotNetDll)]
         private static extern void E_Call_UFunction(IntPtr Object, string NameWithArguments);
 
         #endregion DllImport

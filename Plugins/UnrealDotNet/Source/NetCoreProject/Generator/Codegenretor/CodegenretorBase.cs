@@ -26,29 +26,29 @@ namespace Generator
         protected const string EventInvokePrefix = "InvokeEvent_";
         protected const string EventPropertyGetPostfix = "_GET";
         protected const string EventPropertySetPostfix = "_SET";
-        protected const string CPP_PCH = "UnrealDotNetRuntime";
-        protected const string CPP_API = "DOTNET_EXPORT";
-        protected const string CPP_API_UE = "UNREALDOTNETRUNTIME_API";
+        protected const string CppPch = "UnrealDotNetRuntime";
+        protected const string CppApi = "DOTNET_EXPORT";
+        protected const string CppApiUe = "UNREALDOTNETRUNTIME_API";
         protected const bool IsWriteSourceFileName = true;
 
         protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
         protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");
 
-        public static void GenarateDomain(Domain domain, string OutputDir)
+        public static void GenarateDomain(Domain domain, string outputDir)
         {
-            var outputCS = Path.Combine(OutputDir, "NetCoreProject", "UnrealEngine", "Generate");
-            var outputCPP = Path.Combine(OutputDir, "UnrealDotNetRuntime");
+            var outputCs = Path.Combine(outputDir, "NetCoreProject", "UnrealEngine", "Generate");
+            var outputCpp = Path.Combine(outputDir, "UnrealDotNetRuntime");
 
-            var Watch = new Stopwatch();
-            Watch.Start();
+            var watch = new Stopwatch();
+            watch.Start();
 
-            CS.GenarateDomain(domain, outputCS);
-            CPP.GenarateDomain(domain, outputCPP);
+            Cs.GenarateDomain(domain, outputCs);
+            Cpp.GenarateDomain(domain, outputCpp);
 
-            Console.WriteLine($"Total generate time {Watch.ElapsedMilliseconds / 1000.0}s");
+            Console.WriteLine($"Total generate time {watch.ElapsedMilliseconds / 1000.0}s");
         }
 
-        private static string GetCPPMethodName(Method method)
+        private static string GetCppMethodName(Method method)
         {
             return ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
         }

@@ -6,14 +6,14 @@ namespace GameLogic
 {
     public class MyActor : ManageActor
     {
-        private UBoxComponent Box;
+        private UBoxComponent _box;
 
         [EditAnywhere, DefaultValue(10.0f)]
         public float Speed { get; set; }
 
         public float Time { get; set; }
 
-        public MyActor(IntPtr Adress) : base(Adress)
+        public MyActor(IntPtr adress) : base(adress)
         {
         }
 
@@ -23,20 +23,20 @@ namespace GameLogic
             {
                 PrimaryActorTick.bCanEverTick = 1;
 
-                Box = new UBoxComponent(this, "Simple Child");
-                Box.RegisterComponent();
+                _box = new UBoxComponent(this, "Simple Child");
+                _box.RegisterComponent();
 
                 var root = GetRootComponent();
-                var root_sm = root as UStaticMeshComponent;
+                var rootSm = root as UStaticMeshComponent;
 
-                ScreenDebugMessage(root_sm?.GetFullName() ?? "null");
+                ScreenDebugMessage(rootSm?.GetFullName() ?? "null");
 
-                Box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
+                _box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
                 
-                Box.SetCollisionProfileName("OverlapAll");
-                Box.SetBoxExtent(new FVector(100, 100, 100), false);
+                _box.SetCollisionProfileName("OverlapAll");
+                _box.SetBoxExtent(new FVector(100, 100, 100), false);
 
-                Box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
+                _box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
             }
             catch (Exception e)
             {
@@ -44,15 +44,15 @@ namespace GameLogic
             }
         }
 
-        private void Box_OnComponentEndOverlap(UPrimitiveComponent OverlappedComponent, AActor OtherActor,
-            UPrimitiveComponent OtherComp, int OtherBodyIndex)
+        private void Box_OnComponentEndOverlap(UPrimitiveComponent overlappedComponent, AActor otherActor,
+            UPrimitiveComponent otherComp, int otherBodyIndex)
         {
-            ScreenDebugMessage($"{OtherActor} don't overlap {OverlappedComponent} now");
+            ScreenDebugMessage($"{otherActor} don't overlap {overlappedComponent} now");
         }
 
-        public override void Tick(float DeltaTime)
+        public override void Tick(float deltaTime)
         {
-            Time += DeltaTime;
+            Time += deltaTime;
 
             var rot = new FRotator
             {

@@ -27,10 +27,10 @@ namespace Generator.Metadata
         {
             if (UMeta.ContainsKey("DisplayName"))
             {
-                var DisplayName = DisplayReplaceNameRegex.Replace(UMeta["DisplayName"], "");
+                var displayName = DisplayReplaceNameRegex.Replace(UMeta["DisplayName"], "");
 
-                if (DisplayValidNameRegex.IsMatch(DisplayName))
-                    return DisplayName;
+                if (DisplayValidNameRegex.IsMatch(displayName))
+                    return displayName;
             }
 
             return Name;

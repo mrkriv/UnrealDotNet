@@ -6,65 +6,65 @@ namespace Generator
 {
     public class CoreWriter
     {
-        private StringBuilder sb = new StringBuilder();
-        private int tab;
+        private StringBuilder _sb = new StringBuilder();
+        private int _tab;
 
         public CoreWriter()
         {
         }
 
-        public CoreWriter(CoreWriter CoreWriter)
+        public CoreWriter(CoreWriter coreWriter)
         {
-            tab = CoreWriter.tab;
+            _tab = coreWriter._tab;
         }
 
-        public void Write(bool NeedWrite, string Text)
+        public void Write(bool needWrite, string text)
         {
-            if (NeedWrite)
-                sb.Append(Text);
+            if (needWrite)
+                _sb.Append(text);
         }
 
-        public void Write(CoreWriter CoreWriter)
+        public void Write(CoreWriter coreWriter)
         {
-            sb.Append(CoreWriter.sb);
+            _sb.Append(coreWriter._sb);
         }
 
-        public void Write(string Text)
+        public void Write(string text)
         {
-            sb.Append(Text);
+            _sb.Append(text);
         }
 
-        public void WriteLine(bool NeedWrite, string Line)
+        public void WriteLine(bool needWrite, string line)
         {
-            if (NeedWrite)
+            if (needWrite)
             {
-                sb.AppendLine(Line);
+                _sb.AppendLine(line);
                 WriteTab();
             }
         }
 
-        public void WriteLineNoTab(string Line)
+        public void WriteLineNoTab(string line)
         {
-            sb.Remove(sb.Length - 1, 1);
-            sb.AppendLine(Line);
+            _sb.Remove(_sb.Length - 1, 1);
+            _sb.AppendLine(line);
             WriteTab();
         }
 
-        public void WriteNoTab(string Line)
+        public void WriteNoTab(string line)
         {
-            sb.Remove(sb.Length - 1, 1);
-            sb.Append(Line);
+            _sb.Remove(_sb.Length - 1, 1);
+            _sb.Append(line);
         }
 
-        public void WriteLine(string Line)
+        public void WriteLine(string line)
         {
-            sb.AppendLine(Line);
+            _sb.AppendLine(line);
             WriteTab();
         }
 
         public void WriteLine()
         {
-            sb.AppendLine();
+            _sb.AppendLine();
             WriteTab();
         }
 
@@ -75,41 +75,41 @@ namespace Generator
 
         public void OpenBlock()
         {
-            sb.Append("{");
-            tab++;
+            _sb.Append("{");
+            _tab++;
             WriteLine();
         }
 
         public void CloseBlock()
         {
-            tab--;
-            sb.Remove(sb.Length - 1, 1);
-            sb.AppendLine("}");
+            _tab--;
+            _sb.Remove(_sb.Length - 1, 1);
+            _sb.AppendLine("}");
         }
 
         private void WriteTab()
         {
-            sb.Append(new string('\t', tab));
+            _sb.Append(new string('\t', _tab));
         }
 
         public bool IsEmpty()
         {
-            return sb.Length == 0;
+            return _sb.Length == 0;
         }
 
         public override string ToString()
         {
-            return sb.ToString();
+            return _sb.ToString();
         }
 
-        public void SaveToFile(string FilePath)
+        public void SaveToFile(string filePath)
         {
-            if (!Directory.Exists(Path.GetDirectoryName(FilePath)))
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             }
 
-            File.WriteAllText(FilePath, sb.ToString());
+            File.WriteAllText(filePath, _sb.ToString());
         }
     }
 }

@@ -24,11 +24,11 @@ namespace Generator.Metadata
         public bool IsOverride { get; set; }
         public string Operator { get; set; }
 
-        public Method(string Name)
+        public Method(string name)
         {
             ReturnType = new PrimitiveVariable("void");
             InputTypes = new List<Variable>();
-            this.Name = Name;
+            Name = name;
         }
 
         public IEnumerable<Type> Dependent
@@ -66,7 +66,7 @@ namespace Generator.Metadata
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((Method)obj);
         }
 

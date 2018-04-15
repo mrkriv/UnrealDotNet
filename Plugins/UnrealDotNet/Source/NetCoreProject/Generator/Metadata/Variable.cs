@@ -21,7 +21,7 @@ namespace Generator.Metadata
             UMeta = new Dictionary<string, string>();
         }
 
-        public virtual string GetTypeCS()
+        public virtual string GetTypeCs()
         {
             return Type.Name;
         }
@@ -31,12 +31,12 @@ namespace Generator.Metadata
             return false;
         }
 
-        public virtual string GetTypeCSForExtend(bool ForReturn = false)
+        public virtual string GetTypeCsForExtend(bool forReturn = false)
         {
             return Type.Name;
         }
 
-        public virtual string GetTypeCPP(bool ForReturn = false)
+        public virtual string GetTypeCpp(bool forReturn = false)
         {
             return Type.Name;
         }
@@ -55,7 +55,7 @@ namespace Generator.Metadata
             return result;
         }
 
-        public string GetTypeCPPOgiginal(bool NoName = false)
+        public string GetTypeCppOgiginal(bool noName = false)
         {
             var result = "";
             
@@ -65,7 +65,7 @@ namespace Generator.Metadata
             if (IsTemplate)
             {
                 result += Type.Name.Substring(0, Type.Name.IndexOf("__", StringComparison.Ordinal));
-                result += "<" + string.Join(", ", Type.TemplateTypes.Select(x => x.GetTypeCPPOgiginal(NoName))) + ">";
+                result += "<" + string.Join(", ", Type.TemplateTypes.Select(x => x.GetTypeCppOgiginal(noName))) + ">";
             }
             else
             {
@@ -77,7 +77,7 @@ namespace Generator.Metadata
             else if (IsReference)
                 result += "&";
 
-            if (!string.IsNullOrEmpty(Name) && !NoName)
+            if (!string.IsNullOrEmpty(Name) && !noName)
                 result += " " + Name;
 
             return result;
@@ -87,7 +87,7 @@ namespace Generator.Metadata
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference && string.Equals(Type, other.Type);
+            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference && Equals(Type, other.Type);
         }
 
         public override bool Equals(object obj)
@@ -128,12 +128,12 @@ namespace Generator.Metadata
             "IntPtr"
         };
 
-        public PrimitiveVariable(string Type)
+        public PrimitiveVariable(string type)
         {
-            this.Type = new PrimitiveType(Type);
+            Type = new PrimitiveType(type);
         }
 
-        public override string GetTypeCS()
+        public override string GetTypeCs()
         {
             switch (Type.Name)
             {
@@ -168,10 +168,10 @@ namespace Generator.Metadata
             }
         }
 
-        public override string GetTypeCSForExtend(bool ForReturn = false)
+        public override string GetTypeCsForExtend(bool forReturn = false)
         {
-            if(!ForReturn)
-                return GetTypeCS();
+            if(!forReturn)
+                return GetTypeCs();
 
             switch (Type.Name)
             {
@@ -181,11 +181,11 @@ namespace Generator.Metadata
                     return "StringWrapper";
 
                 default:
-                    return GetTypeCS();
+                    return GetTypeCs();
             }
         }
 
-        public override string GetTypeCPP(bool ForReturn = false)
+        public override string GetTypeCpp(bool forReturn = false)
         {
             switch (Type.Name)
             {
@@ -213,17 +213,17 @@ namespace Generator.Metadata
             Type = Class;
         }
 
-        public override string GetTypeCPP(bool ForReturn = false)
+        public override string GetTypeCpp(bool forReturn = false)
         {
             if (IsTemplate)
             {
-                return ForReturn ? "TemplatePointerDescription" : "INT_PTR";
+                return forReturn ? "TemplatePointerDescription" : "INT_PTR";
             }
 
             if (((Class)Type).IsStructure)
                 return "INT_PTR";
             
-            if (ForReturn)
+            if (forReturn)
                 return "ObjectPointerDescription";
 
             var name = Type.Name;
@@ -242,7 +242,7 @@ namespace Generator.Metadata
             return ((Class)Type).IsReadOnly;
         }
 
-        public override string GetTypeCS()
+        public override string GetTypeCs()
         {
             if (IsTemplate)
             {
@@ -251,7 +251,7 @@ namespace Generator.Metadata
 
                 foreach (var type in Type.TemplateTypes)
                 {
-                    baseName += type.GetTypeCS();
+                    baseName += type.GetTypeCs();
                 }
 
                 baseName += ">";
@@ -262,12 +262,12 @@ namespace Generator.Metadata
             return ((Class)Type).Name;
         }
 
-        public override string GetTypeCSForExtend(bool ForReturn = false)
+        public override string GetTypeCsForExtend(bool forReturn = false)
         {
-            if (IsTemplate && ForReturn)
+            if (IsTemplate && forReturn)
                 return "TemplatePointerDescription";
 
-            if (!((Class)Type).IsStructure && ForReturn)
+            if (!((Class)Type).IsStructure && forReturn)
                 return "ObjectPointerDescription";
 
             return "IntPtr";
@@ -284,20 +284,20 @@ namespace Generator.Metadata
     {
         public EnumVariable(Enum Enum)
         {
-            this.Type = Enum;
+            Type = Enum;
         }
 
-        public override string GetTypeCPP(bool ForReturn = false)
+        public override string GetTypeCpp(bool forReturn = false)
         {
             return Type.Name;
         }
 
-        public override string GetTypeCS()
+        public override string GetTypeCs()
         {
             return Type.Name;
         }
 
-        public override string GetTypeCSForExtend(bool ForReturn = false)
+        public override string GetTypeCsForExtend(bool forReturn = false)
         {
             return "byte";
         }
@@ -311,12 +311,12 @@ namespace Generator.Metadata
 
     public class DelegateVariable : Variable
     {
-        public DelegateVariable(Delegate DelegateType)
+        public DelegateVariable(Delegate delegateType)
         {
-            Type = DelegateType;
+            Type = delegateType;
         }
 
-        public override string GetTypeCPP(bool ForReturn = false)
+        public override string GetTypeCpp(bool forReturn = false)
         {
             return Type.Name;
         }
@@ -326,12 +326,12 @@ namespace Generator.Metadata
             return false;
         }
 
-        public override string GetTypeCS()
+        public override string GetTypeCs()
         {
             return Type.Name;
         }
 
-        public override string GetTypeCSForExtend(bool ForReturn = false)
+        public override string GetTypeCsForExtend(bool forReturn = false)
         {
             return Type.Name;
         }

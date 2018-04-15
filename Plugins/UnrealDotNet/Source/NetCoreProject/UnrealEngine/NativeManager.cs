@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,17 +14,17 @@ namespace UnrealEngine
 #if PACING
         public const string UnrealDotNetDLL = "DotUnrealExample.exe";
 #else
-        public const string UnrealDotNetDLL = "UE4Editor-UnrealDotNetRuntime";
+        public const string UnrealDotNetDll = "UE4Editor-UnrealDotNetRuntime";
 #endif
 
-        private static Assembly GameLogicAssembly;
-        private static Dictionary<IntPtr, object> Wrappers = new Dictionary<IntPtr, object>();
+        private static Assembly _gameLogicAssembly;
+        private static Dictionary<IntPtr, object> _wrappers = new Dictionary<IntPtr, object>();
 
         static NativeManager()
         {
             try
             {
-                GameLogicAssembly =
+                _gameLogicAssembly =
                     Assembly.Load(new AssemblyName("GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral"));
             }
             catch (Exception e)
@@ -34,16 +33,16 @@ namespace UnrealEngine
             }
         }
 
-        public static string UpdateGameLib(string BinariesPath, string guid)
+        public static string UpdateGameLib(string binariesPath, string guid)
         {
             try
             {
-                GameLogicAssembly =
-                    AssemblyLoadContext.Default.LoadFromAssemblyPath(BinariesPath + @"\HotReload\GameLogic" + guid +
+                _gameLogicAssembly =
+                    AssemblyLoadContext.Default.LoadFromAssemblyPath(binariesPath + @"\HotReload\GameLogic" + guid +
                                                                      ".dll");
-                Wrappers = new Dictionary<IntPtr, object>();
+                _wrappers = new Dictionary<IntPtr, object>();
 
-                return GameLogicAssembly?.FullName ?? "";
+                return _gameLogicAssembly?.FullName ?? "";
             }
             catch (Exception e)
             {
@@ -52,22 +51,22 @@ namespace UnrealEngine
             }
         }
 
-        public static T GetWrapper<T>(ObjectPointerDescription PtrDesc) where T : NativeWrapper
+        public static T GetWrapper<T>(ObjectPointerDescription ptrDesc) where T : NativeWrapper
         {
-            if (PtrDesc.Pointer == IntPtr.Zero)
+            if (ptrDesc.Pointer == IntPtr.Zero)
                 return null;
 
-            if (Wrappers.TryGetValue(PtrDesc.Pointer, out var result))
+            if (_wrappers.TryGetValue(ptrDesc.Pointer, out var result))
                 return result as T;
 
-            var CppClass = Marshal.PtrToStringUTF8(PtrDesc.TypeName, PtrDesc.TypeNameLen);
+            var cppClass = Marshal.PtrToStringUTF8(ptrDesc.TypeName, ptrDesc.TypeNameLen);
 
             var asm = typeof(NativeWrapper).Assembly;
-            var type = asm.GetType("UnrealEngine." + CppClass);
+            var type = asm.GetType("UnrealEngine." + cppClass);
 
             if (type == null)
             {
-                UObjectBaseUtility.ULog_Warning($"Manage type {CppClass} not found, use {typeof(T).FullName}");
+                UObjectBaseUtility.ULog_Warning($"Manage type {cppClass} not found, use {typeof(T).FullName}");
                 type = typeof(T);
             }
 
@@ -79,51 +78,51 @@ namespace UnrealEngine
                 return null;
             }
 
-            var obj = ctor.Invoke(new[] { (object)PtrDesc.Pointer }) as T;
+            var obj = ctor.Invoke(new[] { (object)ptrDesc.Pointer }) as T;
 
             return obj;
         }
 
-        public static void AddNativeWrapper(IntPtr Adress, NativeWrapper ManageObject)
+        public static void AddNativeWrapper(IntPtr adress, NativeWrapper manageObject)
         {
-            Wrappers.Add(Adress, ManageObject);
+            _wrappers.Add(adress, manageObject);
         }
 
-        public static bool AddWrapper(IntPtr Adress, string DotnetTypeName)
+        public static bool AddWrapper(IntPtr adress, string dotnetTypeName)
         {
-            var TypeName = JsonConvert.DeserializeObject<FDotnetTypeName>(DotnetTypeName);
-            var ClassName = TypeName.FullName;
+            var typeName = JsonConvert.DeserializeObject<FDotnetTypeName>(dotnetTypeName);
+            var className = typeName.FullName;
 
-            if (Wrappers.ContainsKey(Adress))
+            if (_wrappers.ContainsKey(adress))
             {
-                UObjectBaseUtility.ULog_Warning($"Object is already registered. Type:{ClassName}, Adress:{Adress}");
+                UObjectBaseUtility.ULog_Warning($"Object is already registered. Type:{className}, Adress:{adress}");
                 return false;
             }
 
-            var type = GameLogicAssembly.GetType(ClassName);
+            var type = _gameLogicAssembly.GetType(className);
             if (type == null)
             {
-                UObjectBaseUtility.ULog_Error($"Failed create object, type {ClassName} not found");
+                UObjectBaseUtility.ULog_Error($"Failed create object, type {className} not found");
                 return false;
             }
 
             var constructor = type.GetConstructor(new[] { typeof(IntPtr) });
             if (constructor == null)
             {
-                UObjectBaseUtility.ULog_Error($"Failed create object, type {ClassName} not have IntPtr constructor");
+                UObjectBaseUtility.ULog_Error($"Failed create object, type {className} not have IntPtr constructor");
                 return false;
             }
 
             try
             {
-                var obj = constructor.Invoke(new object[] { Adress });
-                foreach (var prop in TypeName.PropertyValue)
+                var obj = constructor.Invoke(new object[] { adress });
+                foreach (var prop in typeName.PropertyValue)
                 {
                     var pi = obj.GetType().GetProperty(prop.Name);
 
                     if (pi == null)
                     {
-                        UObjectBaseUtility.ULog_Error($"Type {ClassName} have not {prop.Name}");
+                        UObjectBaseUtility.ULog_Error($"Type {className} have not {prop.Name}");
                         continue;
                     }
 
@@ -133,11 +132,11 @@ namespace UnrealEngine
                     }
                     catch
                     {
-                        UObjectBaseUtility.ULog_Error($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {ClassName}.{prop.Name})");
+                        UObjectBaseUtility.ULog_Error($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {className}.{prop.Name})");
                     }
                 }
 
-                Wrappers.Add(Adress, obj);
+                _wrappers.Add(adress, obj);
             }
             catch (Exception e)
             {
@@ -145,31 +144,31 @@ namespace UnrealEngine
                 return false;
             }
 
-            UObjectBaseUtility.ULog_Debug($"Create object, Type:{ClassName}, Adress:{Adress}");
+            UObjectBaseUtility.ULog_Debug($"Create object, Type:{className}, Adress:{adress}");
             return true;
         }
 
-        public static void InvokeEvent(IntPtr Adress, string EventFieldName, IntPtr Arguments, int Size)
+        public static void InvokeEvent(IntPtr adress, string eventFieldName, IntPtr arguments, int size)
         {
             try
             {
-                if (!Wrappers.TryGetValue(Adress, out var obj))
+                if (!_wrappers.TryGetValue(adress, out var obj))
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call event {EventFieldName}, {Adress} not found");
+                    UObjectBaseUtility.ULog_Error($"Failed call event {eventFieldName}, {adress} not found");
                     return;
                 }
 
-                var method = obj.GetType().GetMethod(EventFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+                var method = obj.GetType().GetMethod(eventFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
                 
                 if (method == null)
                 {
                     UObjectBaseUtility.ULog_Error(
-                        $"Failed call event {EventFieldName} in {Adress}, event not found in {obj.GetType()}");
+                        $"Failed call event {eventFieldName} in {adress}, event not found in {obj.GetType()}");
                     return;
                 }
 
-                var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
-                if (!IsSuccess)
+                var Params = ParceParams(method, arguments, size, out var isSuccess);
+                if (!isSuccess)
                 {
                     UObjectBaseUtility.ULog_Error(
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
@@ -184,28 +183,28 @@ namespace UnrealEngine
             }
         }
 
-        public static void Invoke(IntPtr Adress, string MethodName, IntPtr Arguments, int Size)
+        public static void Invoke(IntPtr adress, string methodName, IntPtr arguments, int size)
         {
             try
             {
-                if (!Wrappers.TryGetValue(Adress, out var obj))
+                if (!_wrappers.TryGetValue(adress, out var obj))
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call method {MethodName}, {Adress} not found");
+                    UObjectBaseUtility.ULog_Error($"Failed call method {methodName}, {adress} not found");
                     return;
                 }
 
-                var method = obj.GetType().GetMethod(MethodName,
+                var method = obj.GetType().GetMethod(methodName,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
                 if (method == null)
                 {
                     UObjectBaseUtility.ULog_Error(
-                        $"Failed call method {MethodName} in {Adress}, method not found in {obj.GetType()}");
+                        $"Failed call method {methodName} in {adress}, method not found in {obj.GetType()}");
                     return;
                 }
 
-                var Params = ParceParams(method, Arguments, Size, out var IsSuccess);
-                if (!IsSuccess)
+                var Params = ParceParams(method, arguments, size, out var isSuccess);
+                if (!isSuccess)
                 {
                     UObjectBaseUtility.ULog_Error(
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
@@ -220,15 +219,15 @@ namespace UnrealEngine
             }
         }
 
-        private static object[] ParceParams(MethodBase Method, IntPtr Arguments, int Size, out bool IsSuccess)
+        private static object[] ParceParams(MethodBase method, IntPtr arguments, int size, out bool isSuccess)
         {
-            var spec = Method.GetParameters();
+            var spec = method.GetParameters();
             var Params = spec.Length == 0 ? null : new object[spec.Length];
 
             if (Params != null)
             {
-                var buff = new byte[Size];
-                Marshal.Copy(Arguments, buff, 0, Size);
+                var buff = new byte[size];
+                Marshal.Copy(arguments, buff, 0, size);
 
                 using (var br = new BinaryReader(new MemoryStream(buff)))
                 {
@@ -241,25 +240,25 @@ namespace UnrealEngine
                     }
                     catch (EndOfStreamException)
                     {
-                        IsSuccess = false;
+                        isSuccess = false;
                         return null;
                     }
                 }
             }
 
-            IsSuccess = true;
+            isSuccess = true;
             return Params;
         }
 
-        public static void RemoveWrapper(IntPtr Adress)
+        public static void RemoveWrapper(IntPtr adress)
         {
-            if (Wrappers.Remove(Adress))
+            if (_wrappers.Remove(adress))
             {
-                UObjectBaseUtility.ULog_Debug($"Free object {Adress}");
+                UObjectBaseUtility.ULog_Debug($"Free object {adress}");
             }
             else
             {
-                UObjectBaseUtility.ULog_Warning($"Failed free object, {Adress} not found");
+                UObjectBaseUtility.ULog_Warning($"Failed free object, {adress} not found");
             }
         }
 
@@ -267,7 +266,7 @@ namespace UnrealEngine
         {
             try
             {
-                var classes = GameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
+                var classes = _gameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
 
                 return JsonConvert.SerializeObject(
                     new
