@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Generator
 {
-    public class CoreWriter
+    public class CodeWriter
     {
         private StringBuilder _sb = new StringBuilder();
         private int _tab;
 
-        public CoreWriter()
+        public CodeWriter()
         {
         }
 
-        public CoreWriter(CoreWriter coreWriter)
+        public CodeWriter(CodeWriter codeWriter)
         {
-            _tab = coreWriter._tab;
+            _tab = codeWriter._tab;
         }
 
         public void Write(bool needWrite, string text)
@@ -24,9 +24,9 @@ namespace Generator
                 _sb.Append(text);
         }
 
-        public void Write(CoreWriter coreWriter)
+        public void Write(CodeWriter codeWriter)
         {
-            _sb.Append(coreWriter._sb);
+            _sb.Append(codeWriter._sb);
         }
 
         public void Write(string text)

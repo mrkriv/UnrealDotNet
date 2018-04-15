@@ -59,7 +59,7 @@ namespace Generator
 
             private static void GenerateClass(Class Class, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
@@ -107,7 +107,7 @@ namespace Generator
                 var liter = Class.Name.First();
                 var baseName = Class.Name.Substring(1);
 
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
@@ -166,7 +166,7 @@ namespace Generator
 
                 var baseName = Class.Name.Substring(1);
 
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
 
                 cw.WriteLine($"#include \"{CppPch}.h\"");
                 cw.WriteLine($"#include \"DotnetTypeName.h\"");
@@ -184,7 +184,7 @@ namespace Generator
                 cw.SaveToFile(Path.Combine(outputPath, "Manage" + baseName + ".cpp"));
             }
 
-            private static void GenerateManageMethodHead(CoreWriter cw, Method method)
+            private static void GenerateManageMethodHead(CodeWriter cw, Method method)
             {
                 var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
 
@@ -192,7 +192,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateManageMethod(CoreWriter cw, Method method)
+            private static void GenerateManageMethod(CodeWriter cw, Method method)
             {
                 var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
                 var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
@@ -229,7 +229,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateProtctedWrap(CoreWriter cw, Class Class)
+            private static void GenerateProtctedWrap(CodeWriter cw, Class Class)
             {
                 var methods = Class.Methods.Where(m => m.AccessModifier == AccessModifier.Protected).ToList();
 
@@ -251,7 +251,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenegateNewObjectMethod(CoreWriter cw, Class Class)
+            private static void GenegateNewObjectMethod(CodeWriter cw, Class Class)
             {
                 cw.WriteLine();
                 cw.WriteLine($"{CppApi} INT_PTR {ExportPrefix}NewObject_{Class.Name}(UObject* Parent, char* Name)");
@@ -260,7 +260,7 @@ namespace Generator
                 cw.CloseBlock();
                 cw.WriteLine();
             }
-            private static void GenerateMethod(CoreWriter cw, Method method)
+            private static void GenerateMethod(CodeWriter cw, Method method)
             {
                 if (method.OwnerClass.IsFinal && method.AccessModifier != AccessModifier.Public)
                     return;
@@ -295,7 +295,7 @@ namespace Generator
                 return string.Join(", ", inputs);
             }
 
-            private static void GenerateMethodProtctedWrap(CoreWriter cw, Method method)
+            private static void GenerateMethodProtctedWrap(CodeWriter cw, Method method)
             {
                 var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
 
@@ -320,7 +320,7 @@ namespace Generator
             {
                 structures = structures.ToList();
                 
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
@@ -354,7 +354,7 @@ namespace Generator
                 cw.SaveToFile(outputPath + ".h");
             }
 
-            private static void GenerateStructUtilites(CoreWriter cw, Class Class)
+            private static void GenerateStructUtilites(CodeWriter cw, Class Class)
             {
                 GenerateStructConstructors(cw, Class);
 
@@ -364,7 +364,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateStructConstructors(CoreWriter cw, Class Class)
+            private static void GenerateStructConstructors(CodeWriter cw, Class Class)
             {
                 foreach (var ctr in Class.Constructors)
                 {
@@ -379,7 +379,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateProperty(CoreWriter cw, Class Class, Variable prop)
+            private static void GenerateProperty(CodeWriter cw, Class Class, Variable prop)
             {
                 if (prop.IsStatic)
                 {
@@ -395,7 +395,7 @@ namespace Generator
                 }
             }
 
-            private static void GeneratePropertyStatic(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyStatic(CodeWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
@@ -405,7 +405,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyStandart(CodeWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
@@ -425,7 +425,7 @@ namespace Generator
 
             #region Delegate
 
-            private static void GeneratePropertyDelegate(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyDelegate(CodeWriter cw, Class Class, Variable prop)
             {
                 var name = prop.GetDisplayName();
 
@@ -452,7 +452,7 @@ namespace Generator
 
             private static void GenerateManageEventSender(IEnumerable<Delegate> delegates, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
 
                 cw.WriteLine("#pragma once");
                 cw.WriteLine();
@@ -484,7 +484,7 @@ namespace Generator
                 cw.SaveToFile(outputPath + ".h");
             }
 
-            private static void GenerateDelegateSender(Delegate dlg, CoreWriter cw)
+            private static void GenerateDelegateSender(Delegate dlg, CodeWriter cw)
             {
                 var param = string.Join(", ", dlg.Parametrs.Select(x => x.GetTypeCppOgiginal()));
                 var signature = string.Join(", ", dlg.Parametrs.Select(GetTypeForManageInvoke));
@@ -634,7 +634,7 @@ namespace Generator
             
             private static void GenerateCppIndex(IEnumerable<Class> classes, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
                 cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
                 cw.WriteLine();
                 cw.WriteLine("#include \"Structures.h\"");

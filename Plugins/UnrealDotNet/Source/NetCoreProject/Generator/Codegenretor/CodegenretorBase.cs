@@ -62,7 +62,7 @@ namespace Generator
             return $"{ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
         }
 
-        private static void GenerateSourceInfo(CoreWriter cw, Primitive primitive)
+        private static void GenerateSourceInfo(CodeWriter cw, Primitive primitive)
         {
             if (IsWriteSourceFileName)
             {

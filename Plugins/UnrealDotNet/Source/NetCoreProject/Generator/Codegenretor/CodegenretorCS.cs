@@ -38,7 +38,7 @@ namespace Generator
 
             private static void GenerateClass(Class Class, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
                 cw.WriteLine("using System;");
                 cw.WriteLine("using System.Runtime.InteropServices;");
                 cw.WriteLine();
@@ -57,10 +57,10 @@ namespace Generator
 
                 GenerateClassUtilitesTop(cw, Class, false);
 
-                var cwDllImport = new CoreWriter(cw);
-                var cwExternMethods = new CoreWriter(cw);
-                var cwProperty = new CoreWriter(cw);
-                var cwEvent = new CoreWriter(cw);
+                var cwDllImport = new CodeWriter(cw);
+                var cwExternMethods = new CodeWriter(cw);
+                var cwProperty = new CodeWriter(cw);
+                var cwEvent = new CodeWriter(cw);
 
                 GenerateClassDllImport(cwDllImport, Class);
                 Class.Property.ForEach(p => GenerateProperty(cwProperty, cwEvent, Class, p));
@@ -113,7 +113,7 @@ namespace Generator
 
             private static void GenerateManageClass(Class Class, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
                 cw.WriteLine("using System;");
                 cw.WriteLine("using System.Runtime.InteropServices;");
                 cw.WriteLine();
@@ -145,7 +145,7 @@ namespace Generator
                 cw.SaveToFile(Path.Combine(outputPath, manageClass.Name + ".cs"));
             }
 
-            private static void GenerateManageMethod(CoreWriter cw, Method method)
+            private static void GenerateManageMethod(CodeWriter cw, Method method)
             {
                 var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, false)));
 
@@ -158,7 +158,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateProperty(CoreWriter cwStandart, CoreWriter cwEvent, Class Class, Variable prop)
+            private static void GenerateProperty(CodeWriter cwStandart, CodeWriter cwEvent, Class Class, Variable prop)
             {
                 if (prop.IsStatic)
                 {
@@ -174,7 +174,7 @@ namespace Generator
                 }
             }
 
-            private static void GeneratePropertyEvent(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyEvent(CodeWriter cw, Class Class, Variable prop)
             {
                 var type = prop.GetTypeCs();
                 var name = prop.GetDisplayName();
@@ -215,7 +215,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GeneratePropertyStatic(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyStatic(CodeWriter cw, Class Class, Variable prop)
             {
                 GenerateSummaty(cw, prop);
 
@@ -231,7 +231,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GeneratePropertyStandart(CoreWriter cw, Class Class, Variable prop)
+            private static void GeneratePropertyStandart(CodeWriter cw, Class Class, Variable prop)
             {
                 GenerateSummaty(cw, prop);
 
@@ -252,7 +252,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateClassUtilitesTop(CoreWriter cw, Class Class, bool forManage)
+            private static void GenerateClassUtilitesTop(CodeWriter cw, Class Class, bool forManage)
             {
                 if (Class.IsStructure)
                 {
@@ -279,7 +279,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateClassDllImport(CoreWriter cw, Class Class)
+            private static void GenerateClassDllImport(CodeWriter cw, Class Class)
             {
                 if (Class.IsStructure)
                 {
@@ -298,7 +298,7 @@ namespace Generator
                 GenerateClassPropertyDllImport(cw, Class);
             }
 
-            private static void GenerateClassPropertyDllImport(CoreWriter cw, Class Class)
+            private static void GenerateClassPropertyDllImport(CodeWriter cw, Class Class)
             {
                 foreach (var prop in Class.Property)
                 {
@@ -317,7 +317,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateClassPropertyEventDllImport(CoreWriter cw, Class Class, Variable prop)
+            private static void GenerateClassPropertyEventDllImport(CodeWriter cw, Class Class, Variable prop)
             {
                 var name = prop.GetDisplayName();
 
@@ -330,7 +330,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateClassPropertyStaticDllImport(CoreWriter cw, Class Class, Variable prop)
+            private static void GenerateClassPropertyStaticDllImport(CodeWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
@@ -341,7 +341,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateClassPropertyStandartDllImport(CoreWriter cw, Class Class, Variable prop)
+            private static void GenerateClassPropertyStandartDllImport(CodeWriter cw, Class Class, Variable prop)
             {
                 var baseName = $"{ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
@@ -359,7 +359,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateStructConstructors(CoreWriter cw, Class Class)
+            private static void GenerateStructConstructors(CodeWriter cw, Class Class)
             {
                 cw.WriteLine(
                     $"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
@@ -384,7 +384,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateStructConstructorsDllImport(CoreWriter cw, Class Class)
+            private static void GenerateStructConstructorsDllImport(CodeWriter cw, Class Class)
             {
                 foreach (var ctr in Class.Constructors)
                 {
@@ -398,7 +398,7 @@ namespace Generator
                 }
             }
 
-            private static void GenerateMethodDllImport(CoreWriter cw, Class Class, Method method)
+            private static void GenerateMethodDllImport(CodeWriter cw, Class Class, Method method)
             {
                 var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
                 inputs.Insert(0, "IntPtr Self");
@@ -412,7 +412,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateMethodBody(CoreWriter cw, Class Class, Method method)
+            private static void GenerateMethodBody(CodeWriter cw, Class Class, Method method)
             {
                 var inputs = method.InputTypes.Select(VarNameForCall).ToList();
 
@@ -445,7 +445,7 @@ namespace Generator
 
             private static void GenerateDelegates(IEnumerable<Delegate> delegates, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
@@ -456,7 +456,7 @@ namespace Generator
                 cw.SaveToFile(outputPath + ".cs");
             }
 
-            private static void GenerateDelegate(CoreWriter cw, Delegate dlg)
+            private static void GenerateDelegate(CodeWriter cw, Delegate dlg)
             {
                 GenerateSummaty(cw, dlg);
 
@@ -470,7 +470,7 @@ namespace Generator
 
             private static void GenerateEnums(IEnumerable<Enum> enums, string outputPath)
             {
-                var cw = new CoreWriter();
+                var cw = new CodeWriter();
                 cw.WriteLine("namespace UnrealEngine");
                 cw.OpenBlock();
 
@@ -481,7 +481,7 @@ namespace Generator
                 cw.SaveToFile(outputPath + ".cs");
             }
 
-            private static void GenerateEnum(CoreWriter cw, Enum Enum)
+            private static void GenerateEnum(CodeWriter cw, Enum Enum)
             {
                 GenerateSummaty(cw, Enum);
 
@@ -508,7 +508,7 @@ namespace Generator
                 cw.WriteLine();
             }
 
-            private static void GenerateSummaty(CoreWriter cw, Primitive primitive, string insert = "")
+            private static void GenerateSummaty(CodeWriter cw, Primitive primitive, string insert = "")
             {
                 if (string.IsNullOrEmpty(primitive.Description))
                     return;
@@ -547,7 +547,7 @@ namespace Generator
                 cw.WriteLine("/// </summary>");
             }
 
-            private static void GenerateClassUtilitesButtom(CoreWriter cw, Class Class)
+            private static void GenerateClassUtilitesButtom(CodeWriter cw, Class Class)
             {
                 cw.WriteLine($"public static implicit operator IntPtr({Class.Name} Self)");
                 cw.OpenBlock();
@@ -571,7 +571,7 @@ namespace Generator
                 }
             }
 
-            private static void WriteDllImport(CoreWriter cw)
+            private static void WriteDllImport(CodeWriter cw)
             {
                 cw.WriteLine(
                     "[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]");
