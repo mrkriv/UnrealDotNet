@@ -65,6 +65,8 @@ namespace HotReloadUtilit
                     else
                         PostBuild(options);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

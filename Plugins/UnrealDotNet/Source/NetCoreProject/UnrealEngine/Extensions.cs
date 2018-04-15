@@ -21,9 +21,9 @@ namespace UnrealEngine
             }
         }
 
-        public static T GetDefaultValue<T>(this PropertyInfo Property)
+        public static T GetDefaultValue<T>(this PropertyInfo property)
         {
-            var attribute = Property.GetCustomAttribute(typeof(DefaultValueAttribute)) as DefaultValueAttribute;
+            var attribute = property.GetCustomAttribute(typeof(DefaultValueAttribute)) as DefaultValueAttribute;
             return (T)attribute?.Value;
         }
 
@@ -38,16 +38,15 @@ namespace UnrealEngine
                     break;
 
                 case ExpressionType.Convert:
-                    UnaryExpression unaryExpression = expression.Body as UnaryExpression;
 
-                    if (unaryExpression != null)
+                    if (expression.Body is UnaryExpression unaryExpression)
                     {
                         memberExpression = unaryExpression.Operand as MemberExpression;
                     }
                     break;
             }
 
-            MemberInfo member = memberExpression.Member;
+            var member = memberExpression.Member;
             switch (member.MemberType)
             {
                 case MemberTypes.Property:

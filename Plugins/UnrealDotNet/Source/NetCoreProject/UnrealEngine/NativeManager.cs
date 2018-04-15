@@ -29,7 +29,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error(e.ToString());
+                Ue.LogError(e.ToString());
             }
         }
 
@@ -46,7 +46,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error(e.ToString());
+                Ue.LogError(e.ToString());
                 return "";
             }
         }
@@ -66,7 +66,7 @@ namespace UnrealEngine
 
             if (type == null)
             {
-                UObjectBaseUtility.ULog_Warning($"Manage type {cppClass} not found, use {typeof(T).FullName}");
+                Ue.LogWarning($"Manage type {cppClass} not found, use {typeof(T).FullName}");
                 type = typeof(T);
             }
 
@@ -74,7 +74,7 @@ namespace UnrealEngine
 
             if (ctor == null)
             {
-                UObjectBaseUtility.ULog_Error($"Type {type.FullName} not contains constructor {type.Name}(IntPtr)");
+                Ue.LogError($"Type {type.FullName} not contains constructor {type.Name}(IntPtr)");
                 return null;
             }
 
@@ -95,21 +95,21 @@ namespace UnrealEngine
 
             if (_wrappers.ContainsKey(adress))
             {
-                UObjectBaseUtility.ULog_Warning($"Object is already registered. Type:{className}, Adress:{adress}");
+                Ue.LogWarning($"Object is already registered. Type:{className}, Adress:{adress}");
                 return false;
             }
 
             var type = _gameLogicAssembly.GetType(className);
             if (type == null)
             {
-                UObjectBaseUtility.ULog_Error($"Failed create object, type {className} not found");
+                Ue.LogError($"Failed create object, type {className} not found");
                 return false;
             }
 
             var constructor = type.GetConstructor(new[] { typeof(IntPtr) });
             if (constructor == null)
             {
-                UObjectBaseUtility.ULog_Error($"Failed create object, type {className} not have IntPtr constructor");
+                Ue.LogError($"Failed create object, type {className} not have IntPtr constructor");
                 return false;
             }
 
@@ -122,7 +122,7 @@ namespace UnrealEngine
 
                     if (pi == null)
                     {
-                        UObjectBaseUtility.ULog_Error($"Type {className} have not {prop.Name}");
+                        Ue.LogError($"Type {className} have not {prop.Name}");
                         continue;
                     }
 
@@ -132,7 +132,7 @@ namespace UnrealEngine
                     }
                     catch
                     {
-                        UObjectBaseUtility.ULog_Error($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {className}.{prop.Name})");
+                        Ue.LogError($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {className}.{prop.Name})");
                     }
                 }
 
@@ -140,11 +140,11 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error($"Failed create object, exception:{e}\n{e.StackTrace}");
+                Ue.LogError($"Failed create object, exception:{e}\n{e.StackTrace}");
                 return false;
             }
 
-            UObjectBaseUtility.ULog_Debug($"Create object, Type:{className}, Adress:{adress}");
+            Ue.LogDebug($"Create object, Type:{className}, Adress:{adress}");
             return true;
         }
 
@@ -154,7 +154,7 @@ namespace UnrealEngine
             {
                 if (!_wrappers.TryGetValue(adress, out var obj))
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call event {eventFieldName}, {adress} not found");
+                    Ue.LogError($"Failed call event {eventFieldName}, {adress} not found");
                     return;
                 }
 
@@ -162,7 +162,7 @@ namespace UnrealEngine
                 
                 if (method == null)
                 {
-                    UObjectBaseUtility.ULog_Error(
+                    Ue.LogError(
                         $"Failed call event {eventFieldName} in {adress}, event not found in {obj.GetType()}");
                     return;
                 }
@@ -170,7 +170,7 @@ namespace UnrealEngine
                 var Params = ParceParams(method, arguments, size, out var isSuccess);
                 if (!isSuccess)
                 {
-                    UObjectBaseUtility.ULog_Error(
+                    Ue.LogError(
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
@@ -179,7 +179,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
             }
         }
 
@@ -189,7 +189,7 @@ namespace UnrealEngine
             {
                 if (!_wrappers.TryGetValue(adress, out var obj))
                 {
-                    UObjectBaseUtility.ULog_Error($"Failed call method {methodName}, {adress} not found");
+                    Ue.LogError($"Failed call method {methodName}, {adress} not found");
                     return;
                 }
 
@@ -198,7 +198,7 @@ namespace UnrealEngine
 
                 if (method == null)
                 {
-                    UObjectBaseUtility.ULog_Error(
+                    Ue.LogError(
                         $"Failed call method {methodName} in {adress}, method not found in {obj.GetType()}");
                     return;
                 }
@@ -206,7 +206,7 @@ namespace UnrealEngine
                 var Params = ParceParams(method, arguments, size, out var isSuccess);
                 if (!isSuccess)
                 {
-                    UObjectBaseUtility.ULog_Error(
+                    Ue.LogError(
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
@@ -215,7 +215,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
             }
         }
 
@@ -254,11 +254,11 @@ namespace UnrealEngine
         {
             if (_wrappers.Remove(adress))
             {
-                UObjectBaseUtility.ULog_Debug($"Free object {adress}");
+                Ue.LogDebug($"Free object {adress}");
             }
             else
             {
-                UObjectBaseUtility.ULog_Warning($"Failed free object, {adress} not found");
+                Ue.LogWarning($"Failed free object, {adress} not found");
             }
         }
 
@@ -287,7 +287,7 @@ namespace UnrealEngine
             }
             catch (Exception e)
             {
-                UObjectBaseUtility.ULog_Error($"Exception:{e}\n{e.StackTrace}");
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
                 return "";
             }
         }

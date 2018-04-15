@@ -4,13 +4,13 @@ namespace UnrealEngine
 {
     public class TArray<T> : NativeWrapper
     {
-        public TArray(IntPtr Adress) : base(Adress)
+        public TArray(IntPtr adress) : base(adress)
         {
         }
 
-        public static implicit operator IntPtr(TArray<T> Self)
+        public static implicit operator IntPtr(TArray<T> self)
         {
-            return Self.NativePointer;
+            return self.NativePointer;
         }
 
         public static implicit operator TArray<T>(TemplatePointerDescription desc)

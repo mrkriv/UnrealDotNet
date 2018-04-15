@@ -14,7 +14,7 @@ namespace Generator
     {
         private static readonly Stopwatch Watch = new Stopwatch();
 
-        class Options
+        public class Options
         {
             [Option('o', "output", Required = true, HelpText = "Output code folder")]
             public string Output { get; set; }
@@ -28,8 +28,7 @@ namespace Generator
 
         public static void Main(string[] args)
         {
-            CommandLine.Parser.Default.ParseArguments<Options>(args)
-              .WithParsed(Run);
+            CommandLine.Parser.Default.ParseArguments<Options>(args).WithParsed(Run);
         }
 
         private static void Run(Options options)

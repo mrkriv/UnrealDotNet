@@ -6,9 +6,9 @@ namespace UnrealEngine
     {
         protected IntPtr NativePointer;
 
-        protected NativeWrapper(IntPtr Adress)
+        protected NativeWrapper(IntPtr adress)
         {
-            NativePointer = Adress;
+            NativePointer = adress;
         }
     }
 }

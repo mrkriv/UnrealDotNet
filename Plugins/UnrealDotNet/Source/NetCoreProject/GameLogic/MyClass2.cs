@@ -9,7 +9,7 @@ namespace GameLogic
         {
             try
             {
-                UObjectBaseUtility.ScreenDebugMessage($"epepeep");
+                Ue.ScreenDebugMessage($"epepeep");
                 return $"The string have {arguments.Length} symbols!";
             }
             catch (Exception e)

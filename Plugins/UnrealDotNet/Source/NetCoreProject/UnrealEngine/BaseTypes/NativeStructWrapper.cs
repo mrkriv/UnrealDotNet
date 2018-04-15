@@ -8,21 +8,21 @@ namespace UnrealEngine
         protected readonly bool IsRef;
 
         [DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void E_DeleteStruct(IntPtr Adress);
+        private static extern void E_DeleteStruct(IntPtr adress);
 
-        public NativeStructWrapper(IntPtr NativePointer) : base(NativePointer)
+        public NativeStructWrapper(IntPtr nativePointer) : base(nativePointer)
         {
             IsRef = false;
         }
 
-        internal NativeStructWrapper(IntPtr NativePointer, bool IsRef) : base(NativePointer)
+        internal NativeStructWrapper(IntPtr nativePointer, bool isRef) : base(nativePointer)
         {
-            this.IsRef = IsRef;
+            IsRef = isRef;
         }
         
         //public void Dispose()
         //{
-        //    UObjectBaseUtility.ULog_Debug("Dispose " + GetType().FullName);
+        //    UE.LogDebug("Dispose " + GetType().FullName);
 
         //    if (!IsRef)
         //        E_DeleteStruct(NativePointer);

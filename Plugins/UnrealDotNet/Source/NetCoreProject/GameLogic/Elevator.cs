@@ -59,8 +59,8 @@ namespace GameLogic
 
         public override void Tick(float deltaSeconds)
         {
-            ScreenDebugMessage(_bodyCount.ToString(), 0, Color.DodgerBlue);
-            ScreenDebugMessage(_time.ToString(), 0, Color.Green);
+            Ue.ScreenDebugMessage(_bodyCount.ToString(), 0, Color.DodgerBlue);
+            Ue.ScreenDebugMessage(_time.ToString(), 0, Color.Green);
 
             if (_isMove)
             {

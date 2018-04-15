@@ -29,7 +29,7 @@ namespace GameLogic
                 var root = GetRootComponent();
                 var rootSm = root as UStaticMeshComponent;
 
-                ScreenDebugMessage(rootSm?.GetFullName() ?? "null");
+                Ue.ScreenDebugMessage(rootSm?.GetFullName() ?? "null");
 
                 _box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
                 
@@ -40,14 +40,14 @@ namespace GameLogic
             }
             catch (Exception e)
             {
-                ULog_Error(e.ToString());
+                Ue.LogError(e.ToString());
             }
         }
 
         private void Box_OnComponentEndOverlap(UPrimitiveComponent overlappedComponent, AActor otherActor,
             UPrimitiveComponent otherComp, int otherBodyIndex)
         {
-            ScreenDebugMessage($"{otherActor} don't overlap {overlappedComponent} now");
+            Ue.ScreenDebugMessage($"{otherActor} don't overlap {overlappedComponent} now");
         }
 
         public override void Tick(float deltaTime)
