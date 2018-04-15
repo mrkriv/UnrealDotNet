@@ -83,3 +83,4 @@ Plugins/UnrealDotNet/Source/NetCoreProject/Generator/UHeader/.antlr/
 # Plugins/UnrealDotNet/Source/UnrealDotNetRuntime/Private/Generate/
 # Plugins/UnrealDotNet/Source/NetCoreProject/UnrealEngine/Generate/
 !Plugins/UnrealDotNet/Dotnet/*/*
+.idea/
