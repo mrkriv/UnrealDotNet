@@ -329,15 +329,17 @@ namespace Generator
         public static bool MethodFilter(Method m)
         {
             return !m.ReturnType.IsConst &&
-                    !m.IsOverride &&
-                    !m.IsFriend &&
-                    !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
-                    (!m.IsVirtual || !m.OwnerClass.IsFinal) &&
-                    m.Dependent.All(TypeFilter) &&
-                    m.OwnerClass.Methods.Count(x => x.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
-                    m.Operator == null &&
-                    (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
-                    (!MethodInClassBlackList.ContainsKey(m.OwnerClass.Name) || !MethodInClassBlackList[m.OwnerClass.Name].Contains(m.Name));
+                   !m.IsOverride &&
+                   !m.IsFriend &&
+                   !m.IsTemplate &&
+                   !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
+                   (!m.IsVirtual || !m.OwnerClass.IsFinal) &&
+                   m.Dependent.All(TypeFilter) &&
+                   m.OwnerClass.Methods.Count(x => x.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
+                   m.Operator == null &&
+                   (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
+                   (!MethodInClassBlackList.ContainsKey(m.OwnerClass.Name) ||
+                    !MethodInClassBlackList[m.OwnerClass.Name].Contains(m.Name));
         }
 
         public static bool PropertyFilter(Variable m)
