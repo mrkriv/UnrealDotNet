@@ -34,8 +34,12 @@ namespace Generator
         protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
         protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");
 
-        public static void GenarateDomain(Domain domain, string outputDir)
+        private static Config _config;
+        
+        public static void GenarateDomain(Domain domain, string outputDir, Config config)
         {
+            _config = config;
+            
             var outputCs = Path.Combine(outputDir, "NetCoreProject", "UnrealEngine", "Generate");
             var outputCpp = Path.Combine(outputDir, "UnrealDotNetRuntime");
 

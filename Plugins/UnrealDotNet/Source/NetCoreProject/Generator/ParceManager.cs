@@ -14,7 +14,7 @@ namespace Generator
 {
     internal class ParceManager
     {
-        public static Domain Parce(IReadOnlyList<string> files)
+        public static Domain Parce(IReadOnlyList<string> files, Config config)
         {
             var types = new ConcurrentDictionary<string, Type>();
             var mult = 1;
@@ -28,27 +28,28 @@ namespace Generator
                 var visitor = new MetadataVisitor(types);
 
                 var i1 = i;
-                tasks.Add(Task.Run(() => { ParceSolo(files, i1, mult, visitor); }));
+                tasks.Add(Task.Run(() => { ParceSolo(files, i1, mult, visitor, config); }));
             }
 
             Task.WaitAll(tasks.ToArray());
 
             Console.WriteLine($"Total parce time {watch.ElapsedMilliseconds / 1000.0}s");
 
-            return new Domain(types.Values);
+            return new Domain(types.Values, config);
         }
 
-        private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor)
+        private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor,
+            Config config)
         {
             for (var j = i; j < files.Count; j += mult)
             {
-                AppendFile(files[j], visitor);
+                AppendFile(files[j], visitor, config);
             }
         }
 
-        private static void AppendFile(string file, MetadataVisitor visitor)
+        private static void AppendFile(string file, MetadataVisitor visitor, Config config)
         {
-            var code = Filter.FilterSourceCode(File.ReadAllText(file));
+            var code = config.Filter.FilterSourceCode(File.ReadAllText(file));
 
             using (var ms = new MemoryStream(Encoding.ASCII.GetBytes(code)))
             {

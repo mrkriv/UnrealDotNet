@@ -28,7 +28,7 @@ namespace Generator
                     var subdir = cl.IsStructure ? "Struct" : "Class";
                     GenerateClass(cl, Path.Combine(outputDir, subdir, cl.Name));
 
-                    if (Filter.IsManageClass(cl))
+                    if (_config.Filter.IsManageClass(cl))
                         GenerateManageClass(cl, Path.Combine(outputDir, "Manage"));
                 }
 
@@ -132,7 +132,7 @@ namespace Generator
 
                 GenerateClassUtilitesTop(cw, manageClass, true);
 
-                foreach (var method in Filter.GetVirtualMethods(Class))
+                foreach (var method in _config.Filter.GetVirtualMethods(Class))
                 {
                     GenerateManageMethod(cw, method);
                 }
@@ -266,7 +266,7 @@ namespace Generator
                     cw.CloseBlock();
                     cw.WriteLine();
 
-                    if (!forManage && !Filter.NewObjectBlackList.Contains(Class.Name))
+                    if (!forManage && !_config.Filter.NewObjectBlackList.Contains(Class.Name))
                     {
                         cw.WriteLine($"public {Class.Name}(UObject Parent = null, string Name = \"{Class.Name.Substring(1)}\")");
                         cw.WriteLine("\t: base(IntPtr.Zero)");
@@ -287,7 +287,7 @@ namespace Generator
                 }
                 else
                 {
-                    if (!Filter.NewObjectBlackList.Contains(Class.Name))
+                    if (!_config.Filter.NewObjectBlackList.Contains(Class.Name))
                     {
                         WriteDllImport(cw);
                         cw.WriteLine($"private static extern IntPtr {ExportPrefix}NewObject_{Class.Name}(IntPtr Parent, string Name);");
@@ -600,7 +600,7 @@ namespace Generator
             {
                 string result;
 
-                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                if (_config.Filter.GetConvertToManageType(variable.Type, out var toType))
                 {
                     result = toType;
                 }

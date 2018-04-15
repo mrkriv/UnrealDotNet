@@ -1,0 +1,184 @@
+{
+    "Filter": {
+        "ClassBlackList": [
+            "FSeamlessTravelHandler",
+            "FLevelCollection",
+            "FWorldAsyncTraceState",
+            "FMarkActorIsBeingDestroyed",
+            "FSplinePositionLinearApproximation",
+            "FStaticMeshComponentLODInfo",
+            "FGaussianSumBloomSettings",
+            "FPendingAutoReceiveInputActor",
+            "FPrecomputedVolumeDistanceField",
+            "FPrecomputedVisibilityHandler",
+            "FUObjectItem",
+
+            "UForceFeedbackComponent",
+            "USplineComponent",
+            "USplineMeshComponent",
+            "UApplicationLifecycleComponent",
+            "UPlatformEventsComponent",
+            "UStereoLayerComponent",
+            "UModelComponent",
+            "UWindDirectionalSourceComponent",
+
+            "FWorldDelegates",
+            "FSkelMeshSkinWeightInfo",
+
+            "FRenderStateRecreator",
+
+            "FNamedNetDriver", // todo:: "xxx *" в "const xxx &"
+            "FTickPrerequisite",
+
+            "EOptimizeMode",
+
+            "FCollisionImpactData", // todo:: не линкует
+            "FRigidBodyContactInfo",
+            "FSwarmDebugOptions",
+            "FAnimUpdateRateParameters",
+            "FTimerHandle",
+
+            "FCompareFActorPriority", // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
+
+            "UActorChannel", // todo: не генерировать manage оболочку для классов не наследованных от UObject
+
+            "FExampleArray", // необъявленный идентификатор
+            "FExampleItemEntry",
+            "FExampleStruct",
+
+            "FQueuedDemoPacket",
+            "FNetGUIDCache",
+
+            "UAssetManager",
+
+            "FQueuedReplayTask", // todo: не экспортировать абстрактные структруты
+
+            "APlanarReflection", // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
+            "ULevelActorContainer", // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
+
+            "IBlendableInterface", // todo: различать интерфейсы
+            "IImportantToggleSettingInterface",
+
+            "FPrimitiveComponentPostPhysicsTickFunction", // ExecuteTick абстрактный
+            "FCharacterMovementComponentPostPhysicsTickFunction",
+            "FSkeletalMeshComponentEndPhysicsTickFunction",
+            "FSkeletalMeshComponentClothTickFunction",
+            "FStartPhysicsTickFunction",
+            "FEndPhysicsTickFunction",
+            "FStartAsyncSimulationFunction"
+        ],
+        "ManualImplementedClassMasks": [
+            "TArray__\\w+"
+        ],
+        "NewObjectBlackList": [
+            "UScene",
+            "UWorldProxy",
+            "UObjectBase",
+            "UObjectBaseUtility",
+            "UEngineBaseTypes"
+        ],
+        "EnumBlackList": [
+            "Type",
+            "EShrinkCapsuleExtent"
+        ],
+        "DelegateBlackList": [],
+        "ManageClassBlackList": [
+            "UScene",
+            "UWorldProxy",
+            "UObject",
+            "UObjectBase",
+            "UObjectBaseUtility",
+            "UEngineBaseTypes",
+            "UPostProcessComponent", // TODO: понять почему не линкует перегруженные методы в базовых классах
+            "UBrushComponent",
+            "UDrawFrustumComponent",
+            "UDrawSphereComponent",
+            "UVectorFieldComponent",
+            "UReflectionCaptureComponent",
+            "UBoxReflectionCaptureComponent",
+            "UPlaneReflectionCaptureComponent",
+            "USphereReflectionCaptureComponent",
+            "UTimelineComponent",
+            "ULightmassPortalComponent",
+            "UPlanarReflectionComponent",
+            "UAssetManager",
+            "UTexture",
+            "UShapeComponent" // todo: не найдена соответствующая перегруженная функция
+        ],
+        "ReadOnlyClass": [
+            "FTickFunction" // TODO: находить удаленный оператор присваивания
+        ],
+        "UseConvertToManageType": {
+            "TCHAR": "StringWrapper",
+            "FName": "StringWrapper",
+            "FText": "StringWrapper",
+            "FString": "StringWrapper"
+        },
+        "UseConvertFromManageType": {
+            "TCHAR": "char*",
+            "FName": "char*",
+            "FText": "char*",
+            "FString": "char*"
+        },
+        "MethodInClassBlackList": {
+            "UObjectBase": [
+                "Register"
+            ],
+            "UObject": [
+                "PreSaveRoot",
+                "Implements"
+            ],
+            "UObjectBaseUtility": [
+                "CreateClusterFromObject"
+            ],
+            "UModelComponent": [
+                "CommitSurfaces"
+            ],
+            "ULightmassPortalComponent": [
+                "UpdatePreviewShape"
+            ],
+            "UWindDirectionalSourceComponent": [
+                "SetStrength"
+            ],
+            "USceneCaptureComponent": [
+                "GetSettingForShowFlag"
+            ],
+            "UAudioComponent": [
+                "UpdateInteriorSettings"
+            ],
+            "UTimelineComponent": [
+                "OnRep_Timeline"
+            ],
+            "UPlanarReflectionComponent": [
+                "UpdatePreviewShape"
+            ],
+            "FNamedNetDriver": [
+                "NetDriverDef"
+            ],
+            "UPrimitiveComponent": [
+                "DispatchBlockingHit"
+            ],
+            "FCollisionResponseContainer": [
+                "UpdateResponsesFromArray",
+                "FillArrayFromResponses"
+            ],
+            "AActor": [
+                "ActorGetDistanceToCollision" // TODO: указатель на указатель **
+            ],
+            "UTexture": [
+                "GetRunningPlatformData"
+            ],
+            "FURL": [
+                "ToString" // TODO: конвертировать 0 в false
+            ],
+            "FPoly": [
+                "CalcNormal"
+            ]
+        },
+        "PropertyInClassBlackList": { 
+            "FWorldContext": [
+                "ExternalReferences"
+            ]
+        }
+    }
+}

@@ -6,16 +6,12 @@ namespace Generator.Metadata
 {
     public class Domain
     {
-        public List<Delegate> Delegates;
-        public List<Class> Classes;
-        public List<Enum> Enums;
+        public readonly List<Delegate> Delegates = new List<Delegate>();
+        public readonly List<Class> Classes = new List<Class>();
+        public readonly List<Enum> Enums = new List<Enum>();
 
-        public Domain(IEnumerable<Type> types)
+        public Domain(IEnumerable<Type> types, Config config)
         {
-            Delegates = new List<Delegate>();
-            Classes = new List<Class>();
-            Enums = new List<Enum>();
-
             foreach (var type in types)
             {
                 type.Domain = this;
@@ -33,10 +29,10 @@ namespace Generator.Metadata
                         break;
                 }
             }
-            
-            Delegates = Filter.FilterDelegates(Delegates);
-            Classes = Filter.FilterClasses(Classes);
-            Enums = Filter.FilterEnum(Enums);
+
+            Delegates = config.Filter.FilterDelegates(Delegates);
+            Classes = config.Filter.FilterClasses(Classes);
+            Enums = config.Filter.FilterEnum(Enums);
         }
 
         public void PrintTotal()

@@ -1,12 +1,10 @@
-﻿using Antlr4.Runtime;
-using CommandLine;
+﻿using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace Generator
 {
@@ -24,6 +22,9 @@ namespace Generator
 
             [Option('h', "headers", HelpText = "Path to header filters", Default = @"..\\..\\..\\Config\\HeaderScanList.txt")]
             public string HeaderScanListFile { get; set; }
+
+            [Option('c', "config", HelpText = "Path to config file", Default = @"..\\..\\..\\Config\\CodeGenerator.json")]
+            public string ConfigPath { get; set; }
         }
 
         public static void Main(string[] args)
@@ -33,18 +34,32 @@ namespace Generator
 
         private static void Run(Options options)
         {
+            if (!File.Exists(options.HeaderScanListFile))
+            {
+                PrintError($"File '{options.HeaderScanListFile}' is not exists");
+                return;
+            }
+            
+            if (!File.Exists(options.ConfigPath))
+            {
+                PrintError($"Project directory '{options.ConfigPath}' is not exists");
+                return;
+            }
+            
+            var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(options.ConfigPath));
             var output = Path.Combine(options.Output, "Source");
             var files = GetScanFiles(options);
-
+            
             if (!Directory.Exists(output))
             {
                 PrintError($"Project directory '{output}' is not exists");
+                return;
             }
 
             Watch.Start();
 
-            var domain = ParceManager.Parce(files);
-            Codegenretor.GenarateDomain(domain, output);
+            var domain = ParceManager.Parce(files, config);
+            Codegenretor.GenarateDomain(domain, output, config);
 
             Watch.Stop();
 

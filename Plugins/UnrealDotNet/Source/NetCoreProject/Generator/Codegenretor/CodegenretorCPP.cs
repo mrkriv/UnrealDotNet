@@ -40,7 +40,7 @@ namespace Generator
                 GenerateStructs(domain.Classes.Where(c => c.IsStructure), Path.Combine(outputPriveteExport, "Structures"));
                 GenerateCppIndex(domain.Classes.Where(c => !c.IsStructure), Path.Combine(outputPriveteExport, "Index"));
 
-                foreach (var cl in domain.Classes.Where(Filter.IsManageClass))
+                foreach (var cl in domain.Classes.Where(_config.Filter.IsManageClass))
                 {
                     GenerateManageClassH(cl, outputPublicManage);
                     GenerateManageClassCpp(cl, outputPriveteManage);
@@ -84,7 +84,7 @@ namespace Generator
                     GenerateProperty(cw, Class, prop);
                 }
 
-                if (!Filter.NewObjectBlackList.Contains(Class.Name))
+                if (!_config.Filter.NewObjectBlackList.Contains(Class.Name))
                 {
                     GenegateNewObjectMethod(cw, Class);
                 }
@@ -102,7 +102,7 @@ namespace Generator
 
             private static void GenerateManageClassH(Class Class, string outputPath)
             {
-                var methods = Filter.GetVirtualMethods(Class).ToList();
+                var methods = _config.Filter.GetVirtualMethods(Class).ToList();
 
                 var liter = Class.Name.First();
                 var baseName = Class.Name.Substring(1);
@@ -162,7 +162,7 @@ namespace Generator
 
             private static void GenerateManageClassCpp(Class Class, string outputPath)
             {
-                var methods = Filter.GetVirtualMethods(Class);
+                var methods = _config.Filter.GetVirtualMethods(Class);
 
                 var baseName = Class.Name.Substring(1);
 
@@ -516,7 +516,7 @@ namespace Generator
 
             private static string GetTypeForManageInvoke(Variable variable)
             {
-                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                if (_config.Filter.GetConvertToManageType(variable.Type, out var toType))
                 {
                     return toType;
                 }
@@ -534,7 +534,7 @@ namespace Generator
                     manualName = variable.Name;
                 }
 
-                if (Filter.GetConvertToManageType(variable.Type, out var toType))
+                if (_config.Filter.GetConvertToManageType(variable.Type, out var toType))
                 {
                     result += $"ConvertToManage_{toType}(";
                     bCloseCount++;
@@ -573,7 +573,7 @@ namespace Generator
 
                     result += $"({name}*)";
                 }
-                else if (Filter.IsUseConvertFromManageType(type))
+                else if (_config.Filter.IsUseConvertFromManageType(type))
                 {
                     result += $"ConvertFromManage_{type}(";
                     bCloseCount++;
@@ -608,7 +608,7 @@ namespace Generator
                 //{
                 //    // todo: 
                 //}
-                else if (Filter.GetConvertToManageType(type, out var toType))
+                else if (_config.Filter.GetConvertToManageType(type, out var toType))
                 {
                     result += $"ConvertToManage_{toType}(";
                     bCloseCount++;
