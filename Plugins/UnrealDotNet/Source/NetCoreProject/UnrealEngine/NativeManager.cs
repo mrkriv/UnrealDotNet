@@ -24,8 +24,8 @@ namespace UnrealEngine
         {
             try
             {
-                _gameLogicAssembly =
-                    Assembly.Load(new AssemblyName("GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral"));
+                _gameLogicAssembly = Assembly.Load(
+                    new AssemblyName("GameLogicXXXXXXXX, Version=1.0.0.0, Culture=neutral"));
             }
             catch (Exception e)
             {
@@ -37,10 +37,9 @@ namespace UnrealEngine
         {
             try
             {
-                _gameLogicAssembly =
-                    AssemblyLoadContext.Default.LoadFromAssemblyPath(binariesPath + @"\HotReload\GameLogic" + guid +
-                                                                     ".dll");
                 _wrappers = new Dictionary<IntPtr, object>();
+                _gameLogicAssembly = AssemblyLoadContext.Default
+                    .LoadFromAssemblyPath(binariesPath + @"\HotReload\GameLogic" + guid + ".dll");
 
                 return _gameLogicAssembly?.FullName ?? "";
             }
@@ -70,7 +69,7 @@ namespace UnrealEngine
                 type = typeof(T);
             }
 
-            var ctor = type.GetConstructor(new[] { typeof(IntPtr) });
+            var ctor = type.GetConstructor(new[] {typeof(IntPtr)});
 
             if (ctor == null)
             {
@@ -78,7 +77,7 @@ namespace UnrealEngine
                 return null;
             }
 
-            var obj = ctor.Invoke(new[] { (object)ptrDesc.Pointer }) as T;
+            var obj = ctor.Invoke(new[] {(object) ptrDesc.Pointer}) as T;
 
             return obj;
         }
@@ -106,7 +105,7 @@ namespace UnrealEngine
                 return false;
             }
 
-            var constructor = type.GetConstructor(new[] { typeof(IntPtr) });
+            var constructor = type.GetConstructor(new[] {typeof(IntPtr)});
             if (constructor == null)
             {
                 Ue.LogError($"Failed create object, type {className} not have IntPtr constructor");
@@ -115,7 +114,7 @@ namespace UnrealEngine
 
             try
             {
-                var obj = constructor.Invoke(new object[] { adress });
+                var obj = constructor.Invoke(new object[] {adress});
                 foreach (var prop in typeName.PropertyValue)
                 {
                     var pi = obj.GetType().GetProperty(prop.Name);
@@ -132,7 +131,8 @@ namespace UnrealEngine
                     }
                     catch
                     {
-                        Ue.LogError($"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {className}.{prop.Name})");
+                        Ue.LogError(
+                            $"Failed convert '{prop.Value}' to {pi.PropertyType.FullName} (In {className}.{prop.Name})");
                     }
                 }
 
@@ -159,11 +159,10 @@ namespace UnrealEngine
                 }
 
                 var method = obj.GetType().GetMethod(eventFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
-                
+
                 if (method == null)
                 {
-                    Ue.LogError(
-                        $"Failed call event {eventFieldName} in {adress}, event not found in {obj.GetType()}");
+                    Ue.LogError($"Failed call event {eventFieldName} in {adress}, event not found in {obj.GetType()}");
                     return;
                 }
 
@@ -176,6 +175,81 @@ namespace UnrealEngine
                 }
 
                 method.Invoke(obj, Params);
+            }
+            catch (Exception e)
+            {
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
+            }
+        }
+
+        public static string GetProperty(IntPtr adress, string propertyName)
+        {
+            try
+            {
+                if (!_wrappers.TryGetValue(adress, out var obj))
+                {
+                    Ue.LogError($"Failed get property {propertyName}, {adress} not found");
+                    return "";
+                }
+
+                var property = obj.GetType().GetProperty(propertyName,
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                if (property == null)
+                {
+                    Ue.LogError($"Failed get property {propertyName} in {adress}, method not found in {obj.GetType()}");
+                    return "";
+                }
+
+                var readWriteAttr = property.GetCustomAttribute<BlueprintReadWriteAttribute>();
+                var readAttr = property.GetCustomAttribute<BlueprintReadOnlyAttribute>();
+                var editAnyAttr = property.GetCustomAttribute<EditAnywhereAttribute>();
+
+                if (readWriteAttr == null && editAnyAttr == null && readAttr == null)
+                {
+                    Ue.LogError($"Property {propertyName} in {obj.GetType()} can not be get");
+                    return "";
+                }
+
+                return property.GetValue(obj).ToString();
+            }
+            catch (Exception e)
+            {
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
+                return "";
+            }
+        }
+
+        public static void SetProperty(IntPtr adress, string propertyName, string value)
+        {
+            try
+            {
+                if (!_wrappers.TryGetValue(adress, out var obj))
+                {
+                    Ue.LogError($"Failed get property {propertyName}, {adress} not found");
+                    return;
+                }
+
+                var property = obj.GetType().GetProperty(propertyName,
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                if (property == null)
+                {
+                    Ue.LogError($"Failed get property {propertyName} in {adress}, method not found in {obj.GetType()}");
+                    return;
+                }
+
+                var readWriteAttr = property.GetCustomAttribute<BlueprintReadWriteAttribute>();
+                var editAnyAttr = property.GetCustomAttribute<EditAnywhereAttribute>();
+
+                if (readWriteAttr == null && editAnyAttr == null)
+                {
+                    Ue.LogError($"Property {propertyName} in {obj.GetType()} can not be changed");
+                    return;
+                }
+
+                var val = Convert.ChangeType(value, property.PropertyType);
+                property.SetValue(obj, val);
             }
             catch (Exception e)
             {
@@ -198,8 +272,7 @@ namespace UnrealEngine
 
                 if (method == null)
                 {
-                    Ue.LogError(
-                        $"Failed call method {methodName} in {adress}, method not found in {obj.GetType()}");
+                    Ue.LogError($"Failed call method {methodName} in {adress}, method not found in {obj.GetType()}");
                     return;
                 }
 
@@ -210,7 +283,7 @@ namespace UnrealEngine
                         $"Failed call method {method.Name}, method have {method.GetParameters().Length} arguments, size not match");
                     return;
                 }
-                
+
                 method.Invoke(obj, Params);
             }
             catch (Exception e)

@@ -14,9 +14,15 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor
 	
 	bool bIsManageAttach = false;
 	
-	public:
+public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
+	
+	UFUNCTION(BlueprintCallable, Category = "C#")
+	FString GetProperty(const FString& Property);
+	
+	UFUNCTION(BlueprintCallable, Category = "C#")
+	void SetProperty(const FString& Property, const FString& Value);
 	
 	
 public:
@@ -26,6 +32,10 @@ public:
 	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	
 	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
+	
+	virtual void BeginDestroy() override;
+	
+	virtual void BeginPlay() override;
 	
 	virtual void ClearCrossLevelReferences() override;
 	
@@ -77,7 +87,13 @@ public:
 	
 	virtual void PostInitializeComponents() override;
 	
+	virtual void PostInitProperties() override;
+	
+	virtual void PostLoad() override;
+	
 	virtual void PostNetInit() override;
+	
+	virtual void PostNetReceive() override;
 	
 	virtual void PostNetReceiveLocationAndRotation() override;
 	
@@ -87,9 +103,13 @@ public:
 	
 	virtual void PostRegisterAllComponents() override;
 	
+	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
+	
 	virtual void PostUnregisterAllComponents() override;
 	
 	virtual void PreInitializeComponents() override;
+	
+	virtual void PreNetReceive() override;
 	
 	virtual void PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups) override;
 	
@@ -123,9 +143,29 @@ public:
 	
 	virtual void UnregisterAllComponents(bool bForReregister) override;
 	
-protected:
+	virtual void FinishDestroy() override;
 	
-	virtual void BeginPlay() override;
+	virtual void MarkAsEditorOnlySubobject() override;
+	
+	virtual void PostCDOContruct() override;
+	
+	virtual void PostEditImport() override;
+	
+	virtual void PostRepNotifies() override;
+	
+	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
+	
+	virtual void PreDestroyFromReplication() override;
+	
+	virtual void ShutdownAfterError() override;
+	
+	virtual void AddToCluster(UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject) override;
+	
+	virtual void CreateCluster() override;
+	
+	virtual void OnClusterMarkedAsPendingKill() override;
+	
+protected:
 	
 	virtual void OnRep_Owner() override;
 	

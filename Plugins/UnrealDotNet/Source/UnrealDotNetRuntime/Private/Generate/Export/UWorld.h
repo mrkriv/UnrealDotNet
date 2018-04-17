@@ -778,5 +778,202 @@ extern "C"
 		return Self->UsesGameHiddenFlags();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_AreNativePropertiesIdenticalTo(UWorld* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_BeginDestroy(UWorld* Self)
+	{
+		Self->BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CheckDefaultSubobjectsInternal(UWorld* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_FinishDestroy(UWorld* Self)
+	{
+		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetDesc(UWorld* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetDetailedInfoInternal(UWorld* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetWorld(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsAsset(UWorld* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsEditorOnly(UWorld* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsFullNameStableForNetworking(UWorld* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsLocalizedResource(UWorld* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsNameStableForNetworking(UWorld* Self)
+	{
+		return Self->IsNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsPostLoadThreadSafe(UWorld* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsReadyForFinishDestroy(UWorld* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsSafeForRootSet(UWorld* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_IsSupportedForNetworking(UWorld* Self)
+	{
+		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_MarkAsEditorOnlySubobject(UWorld* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_Modify(UWorld* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_NeedsLoadForClient(UWorld* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_NeedsLoadForEditorGame(UWorld* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_NeedsLoadForServer(UWorld* Self)
+	{
+		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_NotifyObjectReferenceEliminated(UWorld* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostCDOContruct(UWorld* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostEditImport(UWorld* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostInitProperties(UWorld* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostLoad(UWorld* Self)
+	{
+		Self->PostLoad();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostNetReceive(UWorld* Self)
+	{
+		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostRename(UWorld* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostRepNotifies(UWorld* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PostSaveRoot(UWorld* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PreDestroyFromReplication(UWorld* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PreNetReceive(UWorld* Self)
+	{
+		Self->PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_ShutdownAfterError(UWorld* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_AddToCluster(UWorld* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CanBeClusterRoot(UWorld* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CanBeInCluster(UWorld* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CreateCluster(UWorld* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_OnClusterMarkedAsPendingKill(UWorld* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

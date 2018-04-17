@@ -131,9 +131,15 @@ namespace Generator.Codegenretor
             cw.WriteLine("bool bIsManageAttach = false;");
             cw.WriteLine();
 
-            cw.WriteLine("public:");
+            cw.WriteNoTabLine("public:");
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
+            cw.WriteLine();
+            cw.WriteLine("UFUNCTION(BlueprintCallable, Category = \"C#\")");
+            cw.WriteLine("FString GetProperty(const FString& Property);");
+            cw.WriteLine();
+            cw.WriteLine("UFUNCTION(BlueprintCallable, Category = \"C#\")");
+            cw.WriteLine("void SetProperty(const FString& Property, const FString& Value);");
             cw.WriteLine();
 
             var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public).ToList();
@@ -168,6 +174,7 @@ namespace Generator.Codegenretor
             var methods = cfg.Filter.GetVirtualMethods(Class);
 
             var baseName = Class.Name.Substring(1);
+            var liter = Class.Name.First();
 
             var cw = new CodeWriter();
 
@@ -179,6 +186,18 @@ namespace Generator.Codegenretor
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
+            
+            cw.WriteLine($"FString {liter}Manage{baseName}::GetProperty(const FString& Property)");
+            cw.OpenBlock();
+            cw.WriteLine("return bIsManageAttach ? UCoreShell::GetProperty(this, Property) : \"\";");
+            cw.CloseBlock();
+            cw.WriteLine();
+            
+            cw.WriteLine($"void {liter}Manage{baseName}::SetProperty(const FString& Property, const FString& Value)");
+            cw.OpenBlock();
+            cw.WriteLine("if (bIsManageAttach) UCoreShell::SetProperty(this, Property, Value);");
+            cw.CloseBlock();
+            cw.WriteLine();
 
             methods.ForEach(m => GenerateManageMethod(cw, m));
 

@@ -165,6 +165,11 @@ public:
 		ReplicateMoveToServer(DeltaTime, NewAcceleration);
 	}
 
+	bool ResolvePenetrationImpl_WRAP(const FVector& Adjustment, const FHitResult& Hit, const FQuat& NewRotation)
+	{
+		return ResolvePenetrationImpl(Adjustment, Hit, NewRotation);
+	}
+
 	FVector ScaleInputAcceleration_WRAP(const FVector& InputAcceleration)
 	{
 		return ScaleInputAcceleration(InputAcceleration);
@@ -233,6 +238,31 @@ public:
 	void UpdateFromCompressedFlags_WRAP(uint8 Flags)
 	{
 		UpdateFromCompressedFlags(Flags);
+	}
+
+	bool MoveUpdatedComponentImpl_WRAP(const FVector& Delta, const FQuat& NewRotation, bool bSweep, FHitResult* OutHit, ETeleportType Teleport)
+	{
+		return MoveUpdatedComponentImpl(Delta, NewRotation, bSweep, OutHit, Teleport);
+	}
+
+	void OnCreatePhysicsState_WRAP()
+	{
+		OnCreatePhysicsState();
+	}
+
+	void OnDestroyPhysicsState_WRAP()
+	{
+		OnDestroyPhysicsState();
+	}
+
+	void SendRenderDynamicData_Concurrent_WRAP()
+	{
+		SendRenderDynamicData_Concurrent();
+	}
+
+	bool ShouldActivate_WRAP()
+	{
+		return ShouldActivate();
 	}
 
 }
@@ -511,6 +541,25 @@ extern "C"
 		Self->AddImpulse(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddRadialForce(UCharacterMovementComponent* Self, INT_PTR Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+	{
+		auto _p0 = *(FVector*)Origin;
+		auto _p1 = Radius;
+		auto _p2 = Strength;
+		auto _p3 = Falloff;
+		Self->AddRadialForce(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddRadialImpulse(UCharacterMovementComponent* Self, INT_PTR Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+	{
+		auto _p0 = *(FVector*)Origin;
+		auto _p1 = Radius;
+		auto _p2 = Strength;
+		auto _p3 = Falloff;
+		auto _p4 = bVelChange;
+		Self->AddRadialImpulse(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_AdjustFloorHeight(UCharacterMovementComponent* Self)
 	{
 		Self->AdjustFloorHeight();
@@ -573,6 +622,18 @@ extern "C"
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ApplyVelocityBraking_WRAP(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ApplyWorldOffset(UCharacterMovementComponent* Self, INT_PTR InOffset, bool bWorldShift)
+	{
+		auto _p0 = *(FVector*)InOffset;
+		auto _p1 = bWorldShift;
+		Self->ApplyWorldOffset(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_BeginDestroy(UCharacterMovementComponent* Self)
+	{
+		Self->BeginDestroy();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_BoostAirControl(UCharacterMovementComponent* Self, float DeltaTime, float TickAirControl, INT_PTR FallAcceleration)
 	{
 		auto _p0 = DeltaTime;
@@ -603,10 +664,20 @@ extern "C"
 		return Self->CanCrouchInCurrentState();
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanStartPathFollowing(UCharacterMovementComponent* Self)
+	{
+		return Self->CanStartPathFollowing();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanStepUp(UCharacterMovementComponent* Self, INT_PTR Hit)
 	{
 		auto _p0 = *(FHitResult*)Hit;
 		return Self->CanStepUp(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanStopPathFollowing(UCharacterMovementComponent* Self)
+	{
+		return Self->CanStopPathFollowing();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanWalkOffLedges(UCharacterMovementComponent* Self)
@@ -766,6 +837,15 @@ extern "C"
 		return Self->ComputePerchResult(_p0, _p1, _p2, _p3);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ComputeSlideVector(UCharacterMovementComponent* Self, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit)
+	{
+		auto _p0 = *(FVector*)Delta;
+		auto _p1 = Time;
+		auto _p2 = *(FVector*)Normal;
+		auto _p3 = *(FHitResult*)Hit;
+		return (INT_PTR) new FVector(Self->ComputeSlideVector(_p0, _p1, _p2, _p3));
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConstrainInputAcceleration(UCharacterMovementComponent* Self, INT_PTR InputAcceleration)
 	{
 		auto _p0 = *(FVector*)InputAcceleration;
@@ -776,6 +856,11 @@ extern "C"
 	{
 		auto _p0 = bClientSimulation;
 		Self->Crouch(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_Deactivate(UCharacterMovementComponent* Self)
+	{
+		Self->Deactivate();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_DisableMovement(UCharacterMovementComponent* Self)
@@ -818,6 +903,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ForceClientAdjustment(UCharacterMovementComponent* Self)
 	{
 		Self->ForceClientAdjustment();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ForcePositionUpdate(UCharacterMovementComponent* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		Self->ForcePositionUpdate(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ForceReplicationUpdate(UCharacterMovementComponent* Self)
@@ -866,6 +957,11 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetFallingLateralAcceleration(_p0));
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetGravityZ(UCharacterMovementComponent* Self)
+	{
+		return Self->GetGravityZ();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetGroundMovementMode(UCharacterMovementComponent* Self)
 	{
 		return Self->GetGroundMovementMode();
@@ -904,6 +1000,11 @@ extern "C"
 		return Self->GetMaxJumpHeightWithJumpTime();
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetMaxSpeed(UCharacterMovementComponent* Self)
+	{
+		return Self->GetMaxSpeed();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetMinAnalogSpeed(UCharacterMovementComponent* Self)
 	{
 		return Self->GetMinAnalogSpeed();
@@ -927,6 +1028,18 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetNetworkSafeRandomAngleDegrees(UCharacterMovementComponent* Self)
 	{
 		return Self->GetNetworkSafeRandomAngleDegrees();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPathFollowingBrakingDistance(UCharacterMovementComponent* Self, float MaxSpeed)
+	{
+		auto _p0 = MaxSpeed;
+		return Self->GetPathFollowingBrakingDistance(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPenetrationAdjustment(UCharacterMovementComponent* Self, INT_PTR Hit)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		return (INT_PTR) new FVector(Self->GetPenetrationAdjustment(_p0));
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetPerchRadiusThreshold(UCharacterMovementComponent* Self)
@@ -961,6 +1074,14 @@ extern "C"
 		return Self->GetWalkableFloorZ();
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_HandleImpact(UCharacterMovementComponent* Self, INT_PTR Hit, float TimeSlice, INT_PTR MoveDelta)
+	{
+		auto _p0 = *(FHitResult*)Hit;
+		auto _p1 = TimeSlice;
+		auto _p2 = *(FVector*)MoveDelta;
+		Self->HandleImpact(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_HandlePendingLaunch(UCharacterMovementComponent* Self)
 	{
 		return Self->HandlePendingLaunch();
@@ -983,6 +1104,16 @@ extern "C"
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->HandleSwimmingWallHit_WRAP(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_HasPredictionData_Client(UCharacterMovementComponent* Self)
+	{
+		return Self->HasPredictionData_Client();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_HasPredictionData_Server(UCharacterMovementComponent* Self)
+	{
+		return Self->HasPredictionData_Server();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_HasRootMotionSources(UCharacterMovementComponent* Self)
 	{
 		return Self->HasRootMotionSources();
@@ -998,9 +1129,34 @@ extern "C"
 		return Self->ImmersionDepth();
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsCrouching(UCharacterMovementComponent* Self)
+	{
+		return Self->IsCrouching();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsFalling(UCharacterMovementComponent* Self)
+	{
+		return Self->IsFalling();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsFlying(UCharacterMovementComponent* Self)
+	{
+		return Self->IsFlying();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsMovementInProgress(UCharacterMovementComponent* Self)
 	{
 		return Self->IsMovementInProgress();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsMovingOnGround(UCharacterMovementComponent* Self)
+	{
+		return Self->IsMovingOnGround();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsSwimming(UCharacterMovementComponent* Self)
+	{
+		return Self->IsSwimming();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsValidLandingSpot(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, INT_PTR Hit)
@@ -1121,6 +1277,12 @@ extern "C"
 		return (INT_PTR) new FVector(Self->NewFallVelocity(_p0, _p1, _p2));
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_NotifyBumpedPawn(UCharacterMovementComponent* Self, APawn* BumpedPawn)
+	{
+		auto _p0 = BumpedPawn;
+		Self->NotifyBumpedPawn(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_NotifyJumpApex(UCharacterMovementComponent* Self)
 	{
 		Self->NotifyJumpApex();
@@ -1150,6 +1312,16 @@ extern "C"
 		auto _p1 = *(FVector*)OldLocation;
 		auto _p2 = *(FVector*)OldVelocity;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnMovementUpdated_WRAP(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnRegister(UCharacterMovementComponent* Self)
+	{
+		Self->OnRegister();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnTeleported(UCharacterMovementComponent* Self)
+	{
+		Self->OnTeleported();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnTimeDiscrepancyDetected(UCharacterMovementComponent* Self, float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError)
@@ -1235,6 +1407,11 @@ extern "C"
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->PhysWalking_WRAP(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostLoad(UCharacterMovementComponent* Self)
+	{
+		Self->PostLoad();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ProcessLanded(UCharacterMovementComponent* Self, INT_PTR Hit, float remainingTime, int32 Iterations)
 	{
 		auto _p0 = *(FHitResult*)Hit;
@@ -1253,6 +1430,12 @@ extern "C"
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ProjectLocationFromNavMesh_WRAP(_p0, _p1, _p2, _p3, _p4));
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RegisterComponentTickFunctions(UCharacterMovementComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		Self->RegisterComponentTickFunctions(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_RemoveRootMotionSource(UCharacterMovementComponent* Self, char* InstanceName)
 	{
 		auto _p0 = ConvertFromManage_FName(InstanceName);
@@ -1264,6 +1447,37 @@ extern "C"
 		auto _p0 = DeltaTime;
 		auto _p1 = *(FVector*)NewAcceleration;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ReplicateMoveToServer_WRAP(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RequestDirectMove(UCharacterMovementComponent* Self, INT_PTR MoveVelocity, bool bForceMaxSpeed)
+	{
+		auto _p0 = *(FVector*)MoveVelocity;
+		auto _p1 = bForceMaxSpeed;
+		Self->RequestDirectMove(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RequestPathMove(UCharacterMovementComponent* Self, INT_PTR MoveInput)
+	{
+		auto _p0 = *(FVector*)MoveInput;
+		Self->RequestPathMove(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ResetPredictionData_Client(UCharacterMovementComponent* Self)
+	{
+		Self->ResetPredictionData_Client();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ResetPredictionData_Server(UCharacterMovementComponent* Self)
+	{
+		Self->ResetPredictionData_Server();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ResolvePenetrationImpl(UCharacterMovementComponent* Self, INT_PTR Adjustment, INT_PTR Hit, INT_PTR NewRotation)
+	{
+		auto _p0 = *(FVector*)Adjustment;
+		auto _p1 = *(FHitResult*)Hit;
+		auto _p2 = *(FQuat*)NewRotation;
+		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ResolvePenetrationImpl_WRAP(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_RevertMove(UCharacterMovementComponent* Self, INT_PTR OldLocation, UPrimitiveComponent* OldBase, INT_PTR InOldBaseLocation, INT_PTR OldFloor, bool bFailMove)
@@ -1291,6 +1505,11 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)InputAcceleration;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ScaleInputAcceleration_WRAP(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SendClientAdjustment(UCharacterMovementComponent* Self)
+	{
+		Self->SendClientAdjustment();
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ServerCheckClientError(UCharacterMovementComponent* Self, float ClientTimeStamp, float DeltaTime, INT_PTR Accel, INT_PTR ClientWorldLocation, INT_PTR RelativeClientLocation, UPrimitiveComponent* ClientMovementBase, char* ClientBaseBoneName, uint8 ClientMovementMode)
@@ -1386,6 +1605,12 @@ extern "C"
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->SetPostLandedPhysics_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetUpdatedComponent(UCharacterMovementComponent* Self, USceneComponent* NewUpdatedComponent)
+	{
+		auto _p0 = NewUpdatedComponent;
+		Self->SetUpdatedComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetWalkableFloorAngle(UCharacterMovementComponent* Self, float InWalkableFloorAngle)
 	{
 		auto _p0 = InWalkableFloorAngle;
@@ -1448,6 +1673,16 @@ extern "C"
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->SimulateMovement_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SlideAlongSurface(UCharacterMovementComponent* Self, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit, bool bHandleImpact)
+	{
+		auto _p0 = *(FVector*)Delta;
+		auto _p1 = Time;
+		auto _p2 = *(FVector*)Normal;
+		auto _p3 = *(FHitResult*)Hit;
+		auto _p4 = bHandleImpact;
+		return Self->SlideAlongSurface(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SmoothClientPosition(UCharacterMovementComponent* Self, float DeltaSeconds)
 	{
 		auto _p0 = DeltaSeconds;
@@ -1463,6 +1698,15 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SmoothClientPosition_UpdateVisuals(UCharacterMovementComponent* Self)
 	{
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->SmoothClientPosition_UpdateVisuals_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SmoothCorrection(UCharacterMovementComponent* Self, INT_PTR OldLocation, INT_PTR OldRotation, INT_PTR NewLocation, INT_PTR NewRotation)
+	{
+		auto _p0 = *(FVector*)OldLocation;
+		auto _p1 = *(FQuat*)OldRotation;
+		auto _p2 = *(FVector*)NewLocation;
+		auto _p3 = *(FQuat*)NewRotation;
+		Self->SmoothCorrection(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_StartFalling(UCharacterMovementComponent* Self, int32 Iterations, float remainingTime, float timeTick, INT_PTR Delta, INT_PTR subLoc)
@@ -1492,6 +1736,11 @@ extern "C"
 		Self->StartSwimming(_p0, _p1, _p2, _p3, _p4);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_StopActiveMovement(UCharacterMovementComponent* Self)
+	{
+		Self->StopActiveMovement();
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_Swim(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR Hit)
 	{
 		auto _p0 = *(FVector*)Delta;
@@ -1508,6 +1757,14 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_TryToLeaveNavWalking(UCharacterMovementComponent* Self)
 	{
 		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->TryToLeaveNavWalking_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_TwoWallAdjust(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR Hit, INT_PTR OldHitNormal)
+	{
+		auto _p0 = *(FVector*)Delta;
+		auto _p1 = *(FHitResult*)Hit;
+		auto _p2 = *(FVector*)OldHitNormal;
+		Self->TwoWallAdjust(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_UnCrouch(UCharacterMovementComponent* Self, bool bClientSimulation)
@@ -1553,6 +1810,527 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_VisualizeMovement(UCharacterMovementComponent* Self)
 	{
 		Self->VisualizeMovement();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddInputVector(UCharacterMovementComponent* Self, INT_PTR WorldVector, bool bForce)
+	{
+		auto _p0 = *(FVector*)WorldVector;
+		auto _p1 = bForce;
+		Self->AddInputVector(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConsumeInputVector(UCharacterMovementComponent* Self)
+	{
+		return (INT_PTR) new FVector(Self->ConsumeInputVector());
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsMoveInputIgnored(UCharacterMovementComponent* Self)
+	{
+		return Self->IsMoveInputIgnored();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetActorFeetLocationBased(UCharacterMovementComponent* Self)
+	{
+		return (INT_PTR) new FBasedPosition(Self->GetActorFeetLocationBased());
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_StopMovementImmediately(UCharacterMovementComponent* Self)
+	{
+		Self->StopMovementImmediately();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConstrainDirectionToPlane(UCharacterMovementComponent* Self, INT_PTR Direction)
+	{
+		auto _p0 = *(FVector*)Direction;
+		return (INT_PTR) new FVector(Self->ConstrainDirectionToPlane(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConstrainLocationToPlane(UCharacterMovementComponent* Self, INT_PTR Location)
+	{
+		auto _p0 = *(FVector*)Location;
+		return (INT_PTR) new FVector(Self->ConstrainLocationToPlane(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConstrainNormalToPlane(UCharacterMovementComponent* Self, INT_PTR Normal)
+	{
+		auto _p0 = *(FVector*)Normal;
+		return (INT_PTR) new FVector(Self->ConstrainNormalToPlane(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetMaxSpeedModifier(UCharacterMovementComponent* Self)
+	{
+		return Self->GetMaxSpeedModifier();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetModifiedMaxSpeed(UCharacterMovementComponent* Self)
+	{
+		return Self->GetModifiedMaxSpeed();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_InitializeComponent(UCharacterMovementComponent* Self)
+	{
+		Self->InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsExceedingMaxSpeed(UCharacterMovementComponent* Self, float MaxSpeed)
+	{
+		auto _p0 = MaxSpeed;
+		return Self->IsExceedingMaxSpeed(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsInWater(UCharacterMovementComponent* Self)
+	{
+		return Self->IsInWater();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_K2_GetMaxSpeedModifier(UCharacterMovementComponent* Self)
+	{
+		return Self->K2_GetMaxSpeedModifier();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_K2_GetModifiedMaxSpeed(UCharacterMovementComponent* Self)
+	{
+		return Self->K2_GetModifiedMaxSpeed();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_MoveUpdatedComponentImpl(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
+	{
+		auto _p0 = *(FVector*)Delta;
+		auto _p1 = *(FQuat*)NewRotation;
+		auto _p2 = bSweep;
+		auto _p3 = (FHitResult*)OutHit;
+		auto _p4 = Teleport;
+		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->MoveUpdatedComponentImpl_WRAP(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPlaneConstraintAxisSetting(UCharacterMovementComponent* Self, EPlaneConstraintAxisSetting NewAxisSetting)
+	{
+		auto _p0 = NewAxisSetting;
+		Self->SetPlaneConstraintAxisSetting(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPlaneConstraintEnabled(UCharacterMovementComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		Self->SetPlaneConstraintEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPlaneConstraintFromVectors(UCharacterMovementComponent* Self, INT_PTR Forward, INT_PTR Up)
+	{
+		auto _p0 = *(FVector*)Forward;
+		auto _p1 = *(FVector*)Up;
+		Self->SetPlaneConstraintFromVectors(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPlaneConstraintNormal(UCharacterMovementComponent* Self, INT_PTR PlaneNormal)
+	{
+		auto _p0 = *(FVector*)PlaneNormal;
+		Self->SetPlaneConstraintNormal(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPlaneConstraintOrigin(UCharacterMovementComponent* Self, INT_PTR PlaneOrigin)
+	{
+		auto _p0 = *(FVector*)PlaneOrigin;
+		Self->SetPlaneConstraintOrigin(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldSkipUpdate(UCharacterMovementComponent* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		return Self->ShouldSkipUpdate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SnapUpdatedComponentToPlane(UCharacterMovementComponent* Self)
+	{
+		Self->SnapUpdatedComponentToPlane();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateComponentVelocity(UCharacterMovementComponent* Self)
+	{
+		Self->UpdateComponentVelocity();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateTickRegistration(UCharacterMovementComponent* Self)
+	{
+		Self->UpdateTickRegistration();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_Activate(UCharacterMovementComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		Self->Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddTickPrerequisiteActor(UCharacterMovementComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->AddTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddTickPrerequisiteComponent(UCharacterMovementComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->AddTickPrerequisiteComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_BeginPlay(UCharacterMovementComponent* Self)
+	{
+		Self->BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CreateRenderState_Concurrent(UCharacterMovementComponent* Self)
+	{
+		Self->CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_DestroyComponent(UCharacterMovementComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		Self->DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_DestroyRenderState_Concurrent(UCharacterMovementComponent* Self)
+	{
+		Self->DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetComponentClassCanReplicate(UCharacterMovementComponent* Self)
+	{
+		return Self->GetComponentClassCanReplicate();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetReadableName(UCharacterMovementComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetReadableName());
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_HasValidPhysicsState(UCharacterMovementComponent* Self)
+	{
+		return Self->HasValidPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_InvalidateLightingCacheDetailed(UCharacterMovementComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		Self->InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsActive(UCharacterMovementComponent* Self)
+	{
+		return Self->IsActive();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsEditorOnly(UCharacterMovementComponent* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsNameStableForNetworking(UCharacterMovementComponent* Self)
+	{
+		return Self->IsNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsNavigationRelevant(UCharacterMovementComponent* Self)
+	{
+		return Self->IsNavigationRelevant();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsReadyForOwnerToAutoDestroy(UCharacterMovementComponent* Self)
+	{
+		return Self->IsReadyForOwnerToAutoDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsSupportedForNetworking(UCharacterMovementComponent* Self)
+	{
+		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_MarkAsEditorOnlySubobject(UCharacterMovementComponent* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_NeedsLoadForClient(UCharacterMovementComponent* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_NeedsLoadForEditorGame(UCharacterMovementComponent* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_NeedsLoadForServer(UCharacterMovementComponent* Self)
+	{
+		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnActorEnableCollisionChanged(UCharacterMovementComponent* Self)
+	{
+		Self->OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnComponentCreated(UCharacterMovementComponent* Self)
+	{
+		Self->OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnComponentDestroyed(UCharacterMovementComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		Self->OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnCreatePhysicsState(UCharacterMovementComponent* Self)
+	{
+		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnCreatePhysicsState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnDestroyPhysicsState(UCharacterMovementComponent* Self)
+	{
+		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnDestroyPhysicsState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnUnregister(UCharacterMovementComponent* Self)
+	{
+		Self->OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostInitProperties(UCharacterMovementComponent* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostNetReceive(UCharacterMovementComponent* Self)
+	{
+		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostRename(UCharacterMovementComponent* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PreNetReceive(UCharacterMovementComponent* Self)
+	{
+		Self->PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RemoveTickPrerequisiteActor(UCharacterMovementComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->RemoveTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RemoveTickPrerequisiteComponent(UCharacterMovementComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->RemoveTickPrerequisiteComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameRecreate(UCharacterMovementComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameRecreate();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameUpdates(UCharacterMovementComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameUpdates();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SendRenderDynamicData_Concurrent(UCharacterMovementComponent* Self)
+	{
+		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->SendRenderDynamicData_Concurrent_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SendRenderTransform_Concurrent(UCharacterMovementComponent* Self)
+	{
+		Self->SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetActive(UCharacterMovementComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		Self->SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetAutoActivate(UCharacterMovementComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		Self->SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetComponentTickEnabled(UCharacterMovementComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		Self->SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetComponentTickEnabledAsync(UCharacterMovementComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		Self->SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldActivate(UCharacterMovementComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ShouldActivate_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldCreatePhysicsState(UCharacterMovementComponent* Self)
+	{
+		return Self->ShouldCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldCreateRenderState(UCharacterMovementComponent* Self)
+	{
+		return Self->ShouldCreateRenderState();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ToggleActive(UCharacterMovementComponent* Self)
+	{
+		Self->ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UninitializeComponent(UCharacterMovementComponent* Self)
+	{
+		Self->UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateComponentToWorld(UCharacterMovementComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+	{
+		auto _p0 = UpdateTransformFlags;
+		auto _p1 = Teleport;
+		Self->UpdateComponentToWorld(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AreNativePropertiesIdenticalTo(UCharacterMovementComponent* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CheckDefaultSubobjectsInternal(UCharacterMovementComponent* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_FinishDestroy(UCharacterMovementComponent* Self)
+	{
+		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetDesc(UCharacterMovementComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetDetailedInfoInternal(UCharacterMovementComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsAsset(UCharacterMovementComponent* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsFullNameStableForNetworking(UCharacterMovementComponent* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsLocalizedResource(UCharacterMovementComponent* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsPostLoadThreadSafe(UCharacterMovementComponent* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsReadyForFinishDestroy(UCharacterMovementComponent* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsSafeForRootSet(UCharacterMovementComponent* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_Modify(UCharacterMovementComponent* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_NotifyObjectReferenceEliminated(UCharacterMovementComponent* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostCDOContruct(UCharacterMovementComponent* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostEditImport(UCharacterMovementComponent* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostRepNotifies(UCharacterMovementComponent* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PostSaveRoot(UCharacterMovementComponent* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_PreDestroyFromReplication(UCharacterMovementComponent* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShutdownAfterError(UCharacterMovementComponent* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_AddToCluster(UCharacterMovementComponent* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanBeClusterRoot(UCharacterMovementComponent* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanBeInCluster(UCharacterMovementComponent* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_CreateCluster(UCharacterMovementComponent* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnClusterMarkedAsPendingKill(UCharacterMovementComponent* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

@@ -25,6 +25,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorComponentTickFunction_Target_SET(IntPtr Ptr, IntPtr Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FActorComponentTickFunction_DiagnosticMessage(IntPtr Self);
+		
 		#endregion
 		
 		#region Property
@@ -38,6 +41,16 @@ namespace UnrealEngine
 			set => E_PROP_FActorComponentTickFunction_Target_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Abstract function to describe this tick. Used to print messages about illegal cycles in the dependency graph </para>
+		/// </summary>
+		public virtual string DiagnosticMessage()
+			=> E_FActorComponentTickFunction_DiagnosticMessage(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(FActorComponentTickFunction Self)

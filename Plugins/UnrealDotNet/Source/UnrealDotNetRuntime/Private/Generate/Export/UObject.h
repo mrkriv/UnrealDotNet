@@ -15,16 +15,6 @@ public:
 		return CanCheckDefaultSubObjects(bForceCheck, bResult);
 	}
 
-	bool CheckDefaultSubobjectsInternal_WRAP()
-	{
-		return CheckDefaultSubobjectsInternal();
-	}
-
-	FString GetDetailedInfoInternal_WRAP()
-	{
-		return GetDetailedInfoInternal();
-	}
-
 }
 ;
 
@@ -73,7 +63,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UObject_CheckDefaultSubobjectsInternal(UObject* Self)
 	{
-		return ((E_PROTECTED_WRAP_UObject*)Self)->CheckDefaultSubobjectsInternal_WRAP();
+		return Self->CheckDefaultSubobjectsInternal();
 	}
 
 	DOTNET_EXPORT auto E_UObject_ConditionalBeginDestroy(UObject* Self)
@@ -129,7 +119,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UObject_GetDetailedInfoInternal(UObject* Self)
 	{
-		return ConvertToManage_StringWrapper(((E_PROTECTED_WRAP_UObject*)Self)->GetDetailedInfoInternal_WRAP());
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
 	}
 
 	DOTNET_EXPORT auto E_UObject_GetGlobalUserConfigFilename(UObject* Self)
@@ -312,6 +302,33 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_UpdateGlobalUserConfigFile(UObject* Self)
 	{
 		Self->UpdateGlobalUserConfigFile();
+	}
+
+	DOTNET_EXPORT auto E_UObject_AddToCluster(UObject* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UObject_CanBeClusterRoot(UObject* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_UObject_CanBeInCluster(UObject* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_UObject_CreateCluster(UObject* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_UObject_OnClusterMarkedAsPendingKill(UObject* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

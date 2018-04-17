@@ -287,6 +287,31 @@ FString UCoreShell::RunStaticScript(const FString& FullClassName, const FString&
 	return FString(UTF8_TO_TCHAR(str));
 }
 
+FString UCoreShell::GetProperty(UObject* Object, const FString& Property)
+{
+	typedef char*(__stdcall InvokeFp)(UObject*, char*);
+
+	const static auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, "UnrealEngine.NativeManager", "GetProperty");
+
+	if (manageMethod == NULL)
+		return "";
+
+	auto str = manageMethod(Object, TCHAR_TO_UTF8(*Property));
+	return FString(UTF8_TO_TCHAR(str));
+}
+
+void UCoreShell::SetProperty(UObject* Object, const FString& Property, const FString& Value)
+{
+	typedef void(__stdcall InvokeFp)(UObject*, char*, char*);
+
+	const static auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, "UnrealEngine.NativeManager", "SetProperty");
+
+	if (manageMethod != NULL)
+	{
+		manageMethod(Object, TCHAR_TO_UTF8(*Property), TCHAR_TO_UTF8(*Value));
+	}
+}
+
 void UCoreShell::GC()
 {
 	//INT_PTR ptr;

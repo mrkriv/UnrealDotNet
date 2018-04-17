@@ -431,9 +431,9 @@ namespace Generator.Codegenretor
 
             GenerateSummaty(cw, method);
             cw.Write(method.AccessModifier.ToString().ToLower() + " ");
-            cw.Write(method.IsVirtual, "virtual ");
+            cw.Write(method.IsVirtual && !method.IsOverride, "virtual ");
 
-            if (method.Name == "ToString" && !method.InputTypes.Any())
+            if (method.IsOverride || (method.Name == "ToString" && !method.InputTypes.Any()))
                 cw.Write("override ");
 
             inputs.Insert(0, "this");

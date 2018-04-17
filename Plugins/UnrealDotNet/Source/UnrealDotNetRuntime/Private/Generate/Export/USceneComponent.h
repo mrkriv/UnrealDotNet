@@ -55,11 +55,6 @@ public:
 		OnHiddenInGameChanged();
 	}
 
-	void OnUpdateTransform_WRAP(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
-	{
-		OnUpdateTransform(UpdateTransformFlags, Teleport);
-	}
-
 	void OnVisibilityChanged_WRAP()
 	{
 		OnVisibilityChanged();
@@ -73,6 +68,26 @@ public:
 	void UpdateNavigationData_WRAP()
 	{
 		UpdateNavigationData();
+	}
+
+	void OnCreatePhysicsState_WRAP()
+	{
+		OnCreatePhysicsState();
+	}
+
+	void OnDestroyPhysicsState_WRAP()
+	{
+		OnDestroyPhysicsState();
+	}
+
+	void SendRenderDynamicData_Concurrent_WRAP()
+	{
+		SendRenderDynamicData_Concurrent();
+	}
+
+	bool ShouldActivate_WRAP()
+	{
+		return ShouldActivate();
 	}
 
 }
@@ -167,6 +182,13 @@ extern "C"
 		Self->AddWorldTransform(_p0, _p1, _p2, _p3);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_ApplyWorldOffset(USceneComponent* Self, INT_PTR InOffset, bool bWorldShift)
+	{
+		auto _p0 = *(FVector*)InOffset;
+		auto _p1 = bWorldShift;
+		Self->ApplyWorldOffset(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_AreDynamicDataChangesAllowed(USceneComponent* Self, bool bIgnoreStationary)
 	{
 		auto _p0 = bIgnoreStationary;
@@ -179,6 +201,11 @@ extern "C"
 		auto _p1 = *(FAttachmentTransformRules*)AttachmentRules;
 		auto _p2 = ConvertFromManage_FName(InSocketName);
 		return Self->AttachToComponent(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_BeginDestroy(USceneComponent* Self)
+	{
+		Self->BeginDestroy();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_CalcBoundingCylinder(USceneComponent* Self, float CylinderRadius, float CylinderHalfHeight)
@@ -225,6 +252,12 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_ConditionalUpdateComponentToWorld(USceneComponent* Self)
 	{
 		Self->ConditionalUpdateComponentToWorld();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_DestroyComponent(USceneComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		Self->DestroyComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromComponent(USceneComponent* Self, INT_PTR DetachmentRules)
@@ -654,16 +687,32 @@ extern "C"
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildDetached_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_OnComponentDestroyed(USceneComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		Self->OnComponentDestroyed(_p0);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_OnHiddenInGameChanged(USceneComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnHiddenInGameChanged_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnRegister(USceneComponent* Self)
+	{
+		Self->OnRegister();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnUnregister(USceneComponent* Self)
+	{
+		Self->OnUnregister();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnUpdateTransform(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
 	{
 		auto _p0 = UpdateTransformFlags;
 		auto _p1 = Teleport;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnUpdateTransform_WRAP(_p0, _p1);
+		Self->OnUpdateTransform(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnVisibilityChanged(USceneComponent* Self)
@@ -671,9 +720,24 @@ extern "C"
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnVisibilityChanged_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_PostNetReceive(USceneComponent* Self)
+	{
+		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostRepNotifies(USceneComponent* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_PostUpdateNavigationData(USceneComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->PostUpdateNavigationData_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PreNetReceive(USceneComponent* Self)
+	{
+		Self->PreNetReceive();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_PropagateLightingScenarioChange(USceneComponent* Self)
@@ -792,6 +856,11 @@ extern "C"
 		return Self->ShouldComponentAddToScene();
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_ShouldCreateRenderState(USceneComponent* Self)
+	{
+		return Self->ShouldCreateRenderState();
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_ShouldRender(USceneComponent* Self)
 	{
 		return Self->ShouldRender();
@@ -822,6 +891,13 @@ extern "C"
 		Self->UpdateChildTransforms(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_UpdateComponentToWorld(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+	{
+		auto _p0 = UpdateTransformFlags;
+		auto _p1 = Teleport;
+		Self->UpdateComponentToWorld(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_UpdateNavigationData(USceneComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->UpdateNavigationData_WRAP();
@@ -831,6 +907,361 @@ extern "C"
 	{
 		auto _p0 = bTriggerNotifiers;
 		Self->UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_Activate(USceneComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		Self->Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_AddTickPrerequisiteActor(USceneComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->AddTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_AddTickPrerequisiteComponent(USceneComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->AddTickPrerequisiteComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_BeginPlay(USceneComponent* Self)
+	{
+		Self->BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CreateRenderState_Concurrent(USceneComponent* Self)
+	{
+		Self->CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_Deactivate(USceneComponent* Self)
+	{
+		Self->Deactivate();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_DestroyRenderState_Concurrent(USceneComponent* Self)
+	{
+		Self->DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetComponentClassCanReplicate(USceneComponent* Self)
+	{
+		return Self->GetComponentClassCanReplicate();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetReadableName(USceneComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetReadableName());
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_HasValidPhysicsState(USceneComponent* Self)
+	{
+		return Self->HasValidPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_InitializeComponent(USceneComponent* Self)
+	{
+		Self->InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_InvalidateLightingCacheDetailed(USceneComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		Self->InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsActive(USceneComponent* Self)
+	{
+		return Self->IsActive();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsEditorOnly(USceneComponent* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsNameStableForNetworking(USceneComponent* Self)
+	{
+		return Self->IsNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsNavigationRelevant(USceneComponent* Self)
+	{
+		return Self->IsNavigationRelevant();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsReadyForOwnerToAutoDestroy(USceneComponent* Self)
+	{
+		return Self->IsReadyForOwnerToAutoDestroy();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsSupportedForNetworking(USceneComponent* Self)
+	{
+		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_MarkAsEditorOnlySubobject(USceneComponent* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_NeedsLoadForClient(USceneComponent* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_NeedsLoadForEditorGame(USceneComponent* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_NeedsLoadForServer(USceneComponent* Self)
+	{
+		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnActorEnableCollisionChanged(USceneComponent* Self)
+	{
+		Self->OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnComponentCreated(USceneComponent* Self)
+	{
+		Self->OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnCreatePhysicsState(USceneComponent* Self)
+	{
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnCreatePhysicsState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnDestroyPhysicsState(USceneComponent* Self)
+	{
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnDestroyPhysicsState_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostInitProperties(USceneComponent* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostLoad(USceneComponent* Self)
+	{
+		Self->PostLoad();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostRename(USceneComponent* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_RegisterComponentTickFunctions(USceneComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		Self->RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_RemoveTickPrerequisiteActor(USceneComponent* Self, AActor* PrerequisiteActor)
+	{
+		auto _p0 = PrerequisiteActor;
+		Self->RemoveTickPrerequisiteActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_RemoveTickPrerequisiteComponent(USceneComponent* Self, UActorComponent* PrerequisiteComponent)
+	{
+		auto _p0 = PrerequisiteComponent;
+		Self->RemoveTickPrerequisiteComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_RequiresGameThreadEndOfFrameRecreate(USceneComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameRecreate();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_RequiresGameThreadEndOfFrameUpdates(USceneComponent* Self)
+	{
+		return Self->RequiresGameThreadEndOfFrameUpdates();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SendRenderDynamicData_Concurrent(USceneComponent* Self)
+	{
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->SendRenderDynamicData_Concurrent_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SendRenderTransform_Concurrent(USceneComponent* Self)
+	{
+		Self->SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SetActive(USceneComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		Self->SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SetAutoActivate(USceneComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		Self->SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SetComponentTickEnabled(USceneComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		Self->SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SetComponentTickEnabledAsync(USceneComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		Self->SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ShouldActivate(USceneComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->ShouldActivate_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ShouldCreatePhysicsState(USceneComponent* Self)
+	{
+		return Self->ShouldCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ToggleActive(USceneComponent* Self)
+	{
+		Self->ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_UninitializeComponent(USceneComponent* Self)
+	{
+		Self->UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_AreNativePropertiesIdenticalTo(USceneComponent* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CheckDefaultSubobjectsInternal(USceneComponent* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_FinishDestroy(USceneComponent* Self)
+	{
+		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetDesc(USceneComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetDetailedInfoInternal(USceneComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsAsset(USceneComponent* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsFullNameStableForNetworking(USceneComponent* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsLocalizedResource(USceneComponent* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsPostLoadThreadSafe(USceneComponent* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsReadyForFinishDestroy(USceneComponent* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_IsSafeForRootSet(USceneComponent* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_Modify(USceneComponent* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_NotifyObjectReferenceEliminated(USceneComponent* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostCDOContruct(USceneComponent* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostEditImport(USceneComponent* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PostSaveRoot(USceneComponent* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_PreDestroyFromReplication(USceneComponent* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ShutdownAfterError(USceneComponent* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_AddToCluster(USceneComponent* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CanBeClusterRoot(USceneComponent* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CanBeInCluster(USceneComponent* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CreateCluster(USceneComponent* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_OnClusterMarkedAsPendingKill(USceneComponent* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

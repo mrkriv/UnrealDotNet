@@ -14,9 +14,15 @@ class UNREALDOTNETRUNTIME_API UManageCharacterMovementComponent : public UCharac
 	
 	bool bIsManageAttach = false;
 	
-	public:
+public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
+	
+	UFUNCTION(BlueprintCallable, Category = "C#")
+	FString GetProperty(const FString& Property);
+	
+	UFUNCTION(BlueprintCallable, Category = "C#")
+	void SetProperty(const FString& Property, const FString& Value);
 	
 	
 public:
@@ -24,6 +30,10 @@ public:
 	virtual void AddForce(FVector Force) override;
 	
 	virtual void AddImpulse(FVector Impulse, bool bVelocityChange) override;
+	
+	virtual void AddRadialForce(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff) override;
+	
+	virtual void AddRadialImpulse(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) override;
 	
 	virtual void AdjustFloorHeight() override;
 	
@@ -34,6 +44,10 @@ public:
 	virtual void ApplyNetworkMovementMode(const uint8 ReceivedMode) override;
 	
 	virtual void ApplyRepulsionForce(float DeltaSeconds) override;
+	
+	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
+	
+	virtual void BeginDestroy() override;
 	
 	virtual void CalcVelocity(float DeltaTime, float Friction, bool bFluid, float BrakingDeceleration) override;
 	
@@ -53,9 +67,15 @@ public:
 	
 	virtual void Crouch(bool bClientSimulation) override;
 	
+	virtual void Deactivate() override;
+	
 	virtual void DisableMovement() override;
 	
+	virtual void ForcePositionUpdate(float DeltaTime) override;
+	
 	virtual void ForceReplicationUpdate() override;
+	
+	virtual void HandleImpact(const FHitResult& Hit, float TimeSlice, const FVector& MoveDelta) override;
 	
 	virtual void JumpOff(AActor* MovementBaseActor) override;
 	
@@ -67,7 +87,13 @@ public:
 	
 	virtual void MaybeUpdateBasedMovement(float DeltaSeconds) override;
 	
+	virtual void NotifyBumpedPawn(APawn* BumpedPawn) override;
+	
 	virtual void NotifyJumpApex() override;
+	
+	virtual void OnRegister() override;
+	
+	virtual void OnTeleported() override;
 	
 	virtual void PerformAirControlForPathFollowing(FVector Direction, float ZDiff) override;
 	
@@ -75,7 +101,21 @@ public:
 	
 	virtual void PhysicsRotation(float DeltaTime) override;
 	
+	virtual void PostLoad() override;
+	
+	virtual void RegisterComponentTickFunctions(bool bRegister) override;
+	
+	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+	
+	virtual void RequestPathMove(const FVector& MoveInput) override;
+	
+	virtual void ResetPredictionData_Client() override;
+	
+	virtual void ResetPredictionData_Server() override;
+	
 	virtual void SaveBaseLocation() override;
+	
+	virtual void SendClientAdjustment() override;
 	
 	virtual void SetBase(UPrimitiveComponent* NewBase, const FName BoneName, bool bNotifyActor) override;
 	
@@ -83,9 +123,15 @@ public:
 	
 	virtual void SetMovementMode(EMovementMode NewMovementMode, uint8 NewCustomMode) override;
 	
+	virtual void SetUpdatedComponent(USceneComponent* NewUpdatedComponent) override;
+	
+	virtual void SmoothCorrection(const FVector& OldLocation, const FQuat& OldRotation, const FVector& NewLocation, const FQuat& NewRotation) override;
+	
 	virtual void StartFalling(int32 Iterations, float remainingTime, float timeTick, const FVector& Delta, const FVector& subLoc) override;
 	
 	virtual void StartNewPhysics(float deltaTime, int32 Iterations) override;
+	
+	virtual void StopActiveMovement() override;
 	
 	virtual void UnCrouch(bool bClientSimulation) override;
 	
@@ -98,6 +144,102 @@ public:
 	virtual void UpdateCharacterStateBeforeMovement() override;
 	
 	virtual void UpdateFloorFromAdjustment() override;
+	
+	virtual void AddInputVector(FVector WorldVector, bool bForce) override;
+	
+	virtual void StopMovementImmediately() override;
+	
+	virtual void InitializeComponent() override;
+	
+	virtual void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting) override;
+	
+	virtual void SetPlaneConstraintEnabled(bool bEnabled) override;
+	
+	virtual void SetPlaneConstraintFromVectors(FVector Forward, FVector Up) override;
+	
+	virtual void SetPlaneConstraintNormal(FVector PlaneNormal) override;
+	
+	virtual void SetPlaneConstraintOrigin(FVector PlaneOrigin) override;
+	
+	virtual void SnapUpdatedComponentToPlane() override;
+	
+	virtual void UpdateComponentVelocity() override;
+	
+	virtual void UpdateTickRegistration() override;
+	
+	virtual void Activate(bool bReset) override;
+	
+	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
+	
+	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
+	
+	virtual void BeginPlay() override;
+	
+	virtual void CreateRenderState_Concurrent() override;
+	
+	virtual void DestroyComponent(bool bPromoteChildren) override;
+	
+	virtual void DestroyRenderState_Concurrent() override;
+	
+	virtual void InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly) override;
+	
+	virtual void MarkAsEditorOnlySubobject() override;
+	
+	virtual void OnActorEnableCollisionChanged() override;
+	
+	virtual void OnComponentCreated() override;
+	
+	virtual void OnComponentDestroyed(bool bDestroyingHierarchy) override;
+	
+	virtual void OnUnregister() override;
+	
+	virtual void PostInitProperties() override;
+	
+	virtual void PostNetReceive() override;
+	
+	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
+	
+	virtual void PreNetReceive() override;
+	
+	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
+	
+	virtual void RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
+	
+	virtual void SendRenderTransform_Concurrent() override;
+	
+	virtual void SetActive(bool bNewActive, bool bReset) override;
+	
+	virtual void SetAutoActivate(bool bNewAutoActivate) override;
+	
+	virtual void SetComponentTickEnabled(bool bEnabled) override;
+	
+	virtual void SetComponentTickEnabledAsync(bool bEnabled) override;
+	
+	virtual void ToggleActive() override;
+	
+	virtual void UninitializeComponent() override;
+	
+	virtual void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) override;
+	
+	virtual void FinishDestroy() override;
+	
+	virtual void PostCDOContruct() override;
+	
+	virtual void PostEditImport() override;
+	
+	virtual void PostRepNotifies() override;
+	
+	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
+	
+	virtual void PreDestroyFromReplication() override;
+	
+	virtual void ShutdownAfterError() override;
+	
+	virtual void AddToCluster(UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject) override;
+	
+	virtual void CreateCluster() override;
+	
+	virtual void OnClusterMarkedAsPendingKill() override;
 	
 protected:
 	
@@ -156,6 +298,12 @@ protected:
 	virtual void SmoothClientPosition(float DeltaSeconds) override;
 	
 	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
+	
+	virtual void OnCreatePhysicsState() override;
+	
+	virtual void OnDestroyPhysicsState() override;
+	
+	virtual void SendRenderDynamicData_Concurrent() override;
 	
 }
 ;

@@ -182,6 +182,21 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_UpdateGlobalUserConfigFile(IntPtr Self);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_CanBeClusterRoot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_CanBeInCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_CreateCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_OnClusterMarkedAsPendingKill(IntPtr Self);
+		
 		#endregion
 		
 		#region ExternMethods
@@ -238,7 +253,7 @@ namespace UnrealEngine
 		/// <para>Checks default sub-object assumptions. </para>
 		/// <return>true if the assumptions are met, false otherwise. </return>
 		/// </summary>
-		protected virtual bool CheckDefaultSubobjectsInternal()
+		public virtual bool CheckDefaultSubobjectsInternal()
 			=> E_UObject_CheckDefaultSubobjectsInternal(this);
 		
 		
@@ -316,7 +331,7 @@ namespace UnrealEngine
 		/// <para>This function actually does the work for the GetDetailInfo and is virtual. </para>
 		/// <para>It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers </para>
 		/// </summary>
-		protected virtual string GetDetailedInfoInternal()
+		public virtual string GetDetailedInfoInternal()
 			=> E_UObject_GetDetailedInfoInternal(this);
 		
 		
@@ -565,6 +580,45 @@ namespace UnrealEngine
 		/// </summary>
 		public void UpdateGlobalUserConfigFile()
 			=> E_UObject_UpdateGlobalUserConfigFile(this);
+		
+		
+		/// <summary>
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
+		/// </summary>
+		public override void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_UObject_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		
+		
+		/// <summary>
+		/// <para>Called after load to determine if the object can be a cluster root </para>
+		/// <return>true if this object can be a cluster root </return>
+		/// </summary>
+		public override bool CanBeClusterRoot()
+			=> E_UObject_CanBeClusterRoot(this);
+		
+		
+		/// <summary>
+		/// <para>Called during cluster construction if the object can be added to a cluster </para>
+		/// <return>true if this object can be inside of a cluster </return>
+		/// </summary>
+		public override bool CanBeInCluster()
+			=> E_UObject_CanBeInCluster(this);
+		
+		
+		/// <summary>
+		/// <para>Called after PostLoad to create UObject cluster </para>
+		/// </summary>
+		public override void CreateCluster()
+			=> E_UObject_CreateCluster(this);
+		
+		
+		/// <summary>
+		/// <para>Called during Garbage Collection to perform additional cleanup when the cluster is about to be destroyed due to PendingKill flag being set on it. </para>
+		/// </summary>
+		public override void OnClusterMarkedAsPendingKill()
+			=> E_UObject_OnClusterMarkedAsPendingKill(this);
 		
 		#endregion
 		

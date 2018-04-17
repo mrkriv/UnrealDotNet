@@ -40,6 +40,8 @@ namespace UnrealEngine
 		/// </summary>
 		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift) { }
 		
+		public override void BeginDestroy() { }
+		
 		
 		/// <summary>
 		/// <para>BeginsPlay for the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
@@ -54,7 +56,7 @@ namespace UnrealEngine
 		/// <para>Used to create any rendering thread information for this component </para>
 		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
-		protected override void CreateRenderState_Concurrent() { }
+		public override void CreateRenderState_Concurrent() { }
 		
 		
 		/// <summary>
@@ -73,7 +75,7 @@ namespace UnrealEngine
 		/// <para>Used to shut down any rendering thread structure for this component </para>
 		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
-		protected override void DestroyRenderState_Concurrent() { }
+		public override void DestroyRenderState_Concurrent() { }
 		
 		
 		/// <summary>
@@ -88,6 +90,8 @@ namespace UnrealEngine
 		/// <para>Called when this actor component has moved, allowing it to discard statically cached lighting information. </para>
 		/// </summary>
 		public override void InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly) { }
+		
+		public override void MarkAsEditorOnlySubobject() { }
 		
 		
 		/// <summary>
@@ -124,20 +128,30 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called when a component is registered, after Scene is set, but before CreateRenderState_Concurrent or OnCreatePhysicsState are called. </para>
 		/// </summary>
-		protected override void OnRegister() { }
+		public override void OnRegister() { }
 		
 		
 		/// <summary>
 		/// <para>Called when a component is unregistered. Called after DestroyRenderState_Concurrent and OnDestroyPhysicsState are called. </para>
 		/// </summary>
-		protected override void OnUnregister() { }
+		public override void OnUnregister() { }
+		
+		public override void PostInitProperties() { }
+		
+		public override void PostLoad() { }
+		
+		public override void PostNetReceive() { }
+		
+		public override void PostRename(UObject OldOuter, string OldName) { }
+		
+		public override void PreNetReceive() { }
 		
 		
 		/// <summary>
 		/// <para>Virtual call chain to register all tick functions </para>
 		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
-		protected override void RegisterComponentTickFunctions(bool bRegister) { }
+		public override void RegisterComponentTickFunctions(bool bRegister) { }
 		
 		
 		/// <summary>
@@ -162,7 +176,7 @@ namespace UnrealEngine
 		/// <para>Called to send a transform update for this component to the rendering thread </para>
 		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
-		protected override void SendRenderTransform_Concurrent() { }
+		public override void SendRenderTransform_Concurrent() { }
 		
 		
 		/// <summary>
@@ -210,6 +224,71 @@ namespace UnrealEngine
 		/// <para>Recalculate the value of our component to world transform </para>
 		/// </summary>
 		public override void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) { }
+		
+		
+		/// <summary>
+		/// <para>Called to finish destroying the object.  After UObject::FinishDestroy is called, the object's memory should no longer be accessed. </para>
+		/// <para>note: because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's </para>
+		/// <para>FinishDestroy() method, rather than at the beginning. </para>
+		/// </summary>
+		public override void FinishDestroy() { }
+		
+		
+		/// <summary>
+		/// <para>Called after the C++ constructor has run on the CDO for a class. This is an obscure routine used to deal with the recursion </para>
+		/// <para>in the construction of the default materials </para>
+		/// </summary>
+		public override void PostCDOContruct() { }
+		
+		
+		/// <summary>
+		/// <para>Called after importing property values for this object (paste, duplicate or .t3d import) </para>
+		/// <para>Allow the object to perform any cleanup for properties which shouldn't be duplicated or </para>
+		/// <para>are unsupported by the script serialization </para>
+		/// </summary>
+		public override void PostEditImport() { }
+		
+		
+		/// <summary>
+		/// <para>Called right after calling all OnRep notifies (called even when there are no notifies) </para>
+		/// </summary>
+		public override void PostRepNotifies() { }
+		
+		
+		/// <summary>
+		/// <para>Called from within SavePackage on the passed in base/ root. This function is being called after the package </para>
+		/// <para>has been saved and can perform cleanup. </para>
+		/// <param name="bCleanupIsRequired">Whether PreSaveRoot dirtied state that needs to be cleaned up </param>
+		/// </summary>
+		public override void PostSaveRoot(bool bCleanupIsRequired) { }
+		
+		
+		/// <summary>
+		/// <para>Called right before being marked for destruction due to network replication </para>
+		/// </summary>
+		public override void PreDestroyFromReplication() { }
+		
+		public override void ShutdownAfterError() { }
+		
+		
+		/// <summary>
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
+		/// </summary>
+		public override void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject) { }
+		
+		
+		/// <summary>
+		/// <para>Called after PostLoad to create UObject cluster </para>
+		/// </summary>
+		public override void CreateCluster() { }
+		
+		
+		/// <summary>
+		/// <para>Called during Garbage Collection to perform additional cleanup when the cluster is about to be destroyed due to PendingKill flag being set on it. </para>
+		/// </summary>
+		public override void OnClusterMarkedAsPendingKill() { }
 		
 		public static implicit operator IntPtr(ManageActorComponent Self)
 		{

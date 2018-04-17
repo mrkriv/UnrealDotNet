@@ -6,6 +6,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
+FString UManageActorComponent::GetProperty(const FString& Property)
+{
+	return bIsManageAttach ? UCoreShell::GetProperty(this, Property) : "";
+}
+
+void UManageActorComponent::SetProperty(const FString& Property, const FString& Value)
+{
+	if (bIsManageAttach) UCoreShell::SetProperty(this, Property, Value);
+}
+
 void UManageActorComponent::Activate(bool bReset)
 {
 	Super::Activate(bReset);
@@ -28,6 +38,12 @@ void UManageActorComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorl
 {
 	Super::ApplyWorldOffset(InOffset, bWorldShift);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
+void UManageActorComponent::BeginDestroy()
+{
+	Super::BeginDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginDestroy");
 }
 
 void UManageActorComponent::BeginPlay()
@@ -77,6 +93,12 @@ void UManageActorComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuil
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
+void UManageActorComponent::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
 void UManageActorComponent::OnActorEnableCollisionChanged()
 {
 	Super::OnActorEnableCollisionChanged();
@@ -117,6 +139,36 @@ void UManageActorComponent::OnUnregister()
 {
 	Super::OnUnregister();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUnregister");
+}
+
+void UManageActorComponent::PostInitProperties()
+{
+	Super::PostInitProperties();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostInitProperties");
+}
+
+void UManageActorComponent::PostLoad()
+{
+	Super::PostLoad();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostLoad");
+}
+
+void UManageActorComponent::PostNetReceive()
+{
+	Super::PostNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceive");
+}
+
+void UManageActorComponent::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void UManageActorComponent::PreNetReceive()
+{
+	Super::PreNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreNetReceive");
 }
 
 void UManageActorComponent::RegisterComponentTickFunctions(bool bRegister)
@@ -189,6 +241,66 @@ void UManageActorComponent::UpdateComponentToWorld(EUpdateTransformFlags UpdateT
 {
 	Super::UpdateComponentToWorld(UpdateTransformFlags, Teleport);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentToWorld", UpdateTransformFlags, Teleport);
+}
+
+void UManageActorComponent::FinishDestroy()
+{
+	Super::FinishDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "FinishDestroy");
+}
+
+void UManageActorComponent::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostCDOContruct");
+}
+
+void UManageActorComponent::PostEditImport()
+{
+	Super::PostEditImport();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostEditImport");
+}
+
+void UManageActorComponent::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRepNotifies");
+}
+
+void UManageActorComponent::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void UManageActorComponent::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void UManageActorComponent::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ShutdownAfterError");
+}
+
+void UManageActorComponent::AddToCluster(UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+{
+	Super::AddToCluster(ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddToCluster", ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+}
+
+void UManageActorComponent::CreateCluster()
+{
+	Super::CreateCluster();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "CreateCluster");
+}
+
+void UManageActorComponent::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnClusterMarkedAsPendingKill");
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

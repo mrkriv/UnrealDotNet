@@ -12,12 +12,14 @@ namespace Generator.Metadata
         public bool IsStructure { get; set; }
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
+        public List<Class> DerivedClasses { get; set; }
 
         public Class(string name)
         {
             Methods = new List<Method>();
             Property = new List<Variable>();
             Constructors = new List<Method>();
+            DerivedClasses = new List<Class>();
 
             IsImplemented = false;
             Name = name;

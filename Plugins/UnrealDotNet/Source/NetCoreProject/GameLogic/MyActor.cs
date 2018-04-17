@@ -17,7 +17,7 @@ namespace GameLogic
         {
         }
 
-        protected override void BeginPlay()
+        public override void BeginPlay()
         {
             try
             {

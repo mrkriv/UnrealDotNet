@@ -10,24 +10,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
 {
 public:
-	void CreateRenderState_Concurrent_WRAP()
-	{
-		CreateRenderState_Concurrent();
-	}
-
-	void DestroyRenderState_Concurrent_WRAP()
-	{
-		DestroyRenderState_Concurrent();
-	}
-
 	void HandleCanEverAffectNavigationChange_WRAP(bool bForceUpdate)
 	{
 		HandleCanEverAffectNavigationChange(bForceUpdate);
-	}
-
-	bool HasValidPhysicsState_WRAP()
-	{
-		return HasValidPhysicsState();
 	}
 
 	void OnCreatePhysicsState_WRAP()
@@ -40,44 +25,14 @@ public:
 		OnDestroyPhysicsState();
 	}
 
-	void OnRegister_WRAP()
-	{
-		OnRegister();
-	}
-
-	void OnUnregister_WRAP()
-	{
-		OnUnregister();
-	}
-
-	void RegisterComponentTickFunctions_WRAP(bool bRegister)
-	{
-		RegisterComponentTickFunctions(bRegister);
-	}
-
 	void SendRenderDynamicData_Concurrent_WRAP()
 	{
 		SendRenderDynamicData_Concurrent();
 	}
 
-	void SendRenderTransform_Concurrent_WRAP()
-	{
-		SendRenderTransform_Concurrent();
-	}
-
 	bool ShouldActivate_WRAP()
 	{
 		return ShouldActivate();
-	}
-
-	bool ShouldCreatePhysicsState_WRAP()
-	{
-		return ShouldCreatePhysicsState();
-	}
-
-	bool ShouldCreateRenderState_WRAP()
-	{
-		return ShouldCreateRenderState();
 	}
 
 }
@@ -186,6 +141,11 @@ extern "C"
 		Self->ApplyWorldOffset(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_BeginDestroy(UActorComponent* Self)
+	{
+		Self->BeginDestroy();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_BeginPlay(UActorComponent* Self)
 	{
 		Self->BeginPlay();
@@ -220,7 +180,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_CreateRenderState_Concurrent(UActorComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->CreateRenderState_Concurrent_WRAP();
+		Self->CreateRenderState_Concurrent();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_Deactivate(UActorComponent* Self)
@@ -241,7 +201,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->DestroyRenderState_Concurrent_WRAP();
+		Self->DestroyRenderState_Concurrent();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_DetermineUCSModifiedProperties(UActorComponent* Self)
@@ -289,6 +249,11 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetReadableName());
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_GetWorld(UActorComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_HandleCanEverAffectNavigationChange(UActorComponent* Self, bool bForceUpdate)
 	{
 		auto _p0 = bForceUpdate;
@@ -312,7 +277,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_HasValidPhysicsState(UActorComponent* Self)
 	{
-		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->HasValidPhysicsState_WRAP();
+		return Self->HasValidPhysicsState();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_InitializeComponent(UActorComponent* Self)
@@ -355,6 +320,16 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_IsEditableWhenInherited(UActorComponent* Self)
 	{
 		return Self->IsEditableWhenInherited();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsEditorOnly(UActorComponent* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsNameStableForNetworking(UActorComponent* Self)
+	{
+		return Self->IsNameStableForNetworking();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_IsNavigationRelevant(UActorComponent* Self)
@@ -418,10 +393,20 @@ extern "C"
 		return Self->IsRenderTransformDirty();
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_IsSupportedForNetworking(UActorComponent* Self)
+	{
+		return Self->IsSupportedForNetworking();
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_K2_DestroyComponent(UActorComponent* Self, UObject* Object)
 	{
 		auto _p0 = Object;
 		Self->K2_DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_MarkAsEditorOnlySubobject(UActorComponent* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_MarkForNeededEndOfFrameRecreate(UActorComponent* Self)
@@ -447,6 +432,21 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_MarkRenderTransformDirty(UActorComponent* Self)
 	{
 		Self->MarkRenderTransformDirty();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_NeedsLoadForClient(UActorComponent* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_NeedsLoadForEditorGame(UActorComponent* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_NeedsLoadForServer(UActorComponent* Self)
+	{
+		return Self->NeedsLoadForServer();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
@@ -477,7 +477,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_OnRegister(UActorComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnRegister_WRAP();
+		Self->OnRegister();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_OnRep_IsActive(UActorComponent* Self)
@@ -487,7 +487,34 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_OnUnregister(UActorComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->OnUnregister_WRAP();
+		Self->OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostInitProperties(UActorComponent* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostLoad(UActorComponent* Self)
+	{
+		Self->PostLoad();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostNetReceive(UActorComponent* Self)
+	{
+		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostRename(UActorComponent* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PreNetReceive(UActorComponent* Self)
+	{
+		Self->PreNetReceive();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ReceiveBeginPlay(UActorComponent* Self)
@@ -525,7 +552,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
 	{
 		auto _p0 = bRegister;
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->RegisterComponentTickFunctions_WRAP(_p0);
+		Self->RegisterComponentTickFunctions(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
@@ -568,7 +595,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UActorComponent*)Self)->SendRenderTransform_Concurrent_WRAP();
+		Self->SendRenderTransform_Concurrent();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
@@ -644,12 +671,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_ShouldCreatePhysicsState(UActorComponent* Self)
 	{
-		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->ShouldCreatePhysicsState_WRAP();
+		return Self->ShouldCreatePhysicsState();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ShouldCreateRenderState(UActorComponent* Self)
 	{
-		return ((E_PROTECTED_WRAP_UActorComponent*)Self)->ShouldCreateRenderState_WRAP();
+		return Self->ShouldCreateRenderState();
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_ToggleActive(UActorComponent* Self)
@@ -672,6 +699,131 @@ extern "C"
 		auto _p0 = UpdateTransformFlags;
 		auto _p1 = Teleport;
 		Self->UpdateComponentToWorld(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_AreNativePropertiesIdenticalTo(UActorComponent* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_CheckDefaultSubobjectsInternal(UActorComponent* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_FinishDestroy(UActorComponent* Self)
+	{
+		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_GetDesc(UActorComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_GetDetailedInfoInternal(UActorComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsAsset(UActorComponent* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsFullNameStableForNetworking(UActorComponent* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsLocalizedResource(UActorComponent* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsPostLoadThreadSafe(UActorComponent* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsReadyForFinishDestroy(UActorComponent* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_IsSafeForRootSet(UActorComponent* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_Modify(UActorComponent* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_NotifyObjectReferenceEliminated(UActorComponent* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostCDOContruct(UActorComponent* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostEditImport(UActorComponent* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostRepNotifies(UActorComponent* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PostSaveRoot(UActorComponent* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_PreDestroyFromReplication(UActorComponent* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_ShutdownAfterError(UActorComponent* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_AddToCluster(UActorComponent* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_CanBeClusterRoot(UActorComponent* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_CanBeInCluster(UActorComponent* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_CreateCluster(UActorComponent* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_UActorComponent_OnClusterMarkedAsPendingKill(UActorComponent* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

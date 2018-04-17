@@ -6,6 +6,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
 
+FString UManagePawnMovementComponent::GetProperty(const FString& Property)
+{
+	return bIsManageAttach ? UCoreShell::GetProperty(this, Property) : "";
+}
+
+void UManagePawnMovementComponent::SetProperty(const FString& Property, const FString& Value)
+{
+	if (bIsManageAttach) UCoreShell::SetProperty(this, Property, Value);
+}
+
 void UManagePawnMovementComponent::AddInputVector(FVector WorldVector, bool bForce)
 {
 	Super::AddInputVector(WorldVector, bForce);
@@ -16,6 +26,395 @@ void UManagePawnMovementComponent::NotifyBumpedPawn(APawn* BumpedPawn)
 {
 	Super::NotifyBumpedPawn(BumpedPawn);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyBumpedPawn", BumpedPawn);
+}
+
+void UManagePawnMovementComponent::RequestPathMove(const FVector& MoveInput)
+{
+	Super::RequestPathMove(MoveInput);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RequestPathMove", MoveInput);
+}
+
+void UManagePawnMovementComponent::SetUpdatedComponent(USceneComponent* NewUpdatedComponent)
+{
+	Super::SetUpdatedComponent(NewUpdatedComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetUpdatedComponent", NewUpdatedComponent);
+}
+
+void UManagePawnMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	Super::RequestDirectMove(MoveVelocity, bForceMaxSpeed);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RequestDirectMove", MoveVelocity, bForceMaxSpeed);
+}
+
+void UManagePawnMovementComponent::StopActiveMovement()
+{
+	Super::StopActiveMovement();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "StopActiveMovement");
+}
+
+void UManagePawnMovementComponent::StopMovementImmediately()
+{
+	Super::StopMovementImmediately();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "StopMovementImmediately");
+}
+
+void UManagePawnMovementComponent::AddRadialForce(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+{
+	Super::AddRadialForce(Origin, Radius, Strength, Falloff);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff);
+}
+
+void UManagePawnMovementComponent::AddRadialImpulse(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+{
+	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
+}
+
+void UManagePawnMovementComponent::Deactivate()
+{
+	Super::Deactivate();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Deactivate");
+}
+
+void UManagePawnMovementComponent::HandleImpact(const FHitResult& Hit, float TimeSlice, const FVector& MoveDelta)
+{
+	Super::HandleImpact(Hit, TimeSlice, MoveDelta);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "HandleImpact", Hit, TimeSlice, MoveDelta);
+}
+
+void UManagePawnMovementComponent::InitializeComponent()
+{
+	Super::InitializeComponent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "InitializeComponent");
+}
+
+void UManagePawnMovementComponent::OnRegister()
+{
+	Super::OnRegister();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnRegister");
+}
+
+void UManagePawnMovementComponent::OnTeleported()
+{
+	Super::OnTeleported();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnTeleported");
+}
+
+void UManagePawnMovementComponent::PostLoad()
+{
+	Super::PostLoad();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostLoad");
+}
+
+void UManagePawnMovementComponent::RegisterComponentTickFunctions(bool bRegister)
+{
+	Super::RegisterComponentTickFunctions(bRegister);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+}
+
+void UManagePawnMovementComponent::SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
+{
+	Super::SetPlaneConstraintAxisSetting(NewAxisSetting);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintAxisSetting", NewAxisSetting);
+}
+
+void UManagePawnMovementComponent::SetPlaneConstraintEnabled(bool bEnabled)
+{
+	Super::SetPlaneConstraintEnabled(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintEnabled", bEnabled);
+}
+
+void UManagePawnMovementComponent::SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
+{
+	Super::SetPlaneConstraintFromVectors(Forward, Up);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintFromVectors", Forward, Up);
+}
+
+void UManagePawnMovementComponent::SetPlaneConstraintNormal(FVector PlaneNormal)
+{
+	Super::SetPlaneConstraintNormal(PlaneNormal);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintNormal", PlaneNormal);
+}
+
+void UManagePawnMovementComponent::SetPlaneConstraintOrigin(FVector PlaneOrigin)
+{
+	Super::SetPlaneConstraintOrigin(PlaneOrigin);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintOrigin", PlaneOrigin);
+}
+
+void UManagePawnMovementComponent::SnapUpdatedComponentToPlane()
+{
+	Super::SnapUpdatedComponentToPlane();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SnapUpdatedComponentToPlane");
+}
+
+void UManagePawnMovementComponent::UpdateComponentVelocity()
+{
+	Super::UpdateComponentVelocity();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentVelocity");
+}
+
+void UManagePawnMovementComponent::UpdateTickRegistration()
+{
+	Super::UpdateTickRegistration();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateTickRegistration");
+}
+
+void UManagePawnMovementComponent::Activate(bool bReset)
+{
+	Super::Activate(bReset);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Activate", bReset);
+}
+
+void UManagePawnMovementComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManagePawnMovementComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManagePawnMovementComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
+void UManagePawnMovementComponent::BeginDestroy()
+{
+	Super::BeginDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginDestroy");
+}
+
+void UManagePawnMovementComponent::BeginPlay()
+{
+	if (!ManageClassName.FullName.IsEmpty())
+	{
+		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));
+	}
+
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginPlay");
+	Super::BeginPlay();
+}
+
+void UManagePawnMovementComponent::CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "CreateRenderState_Concurrent");
+}
+
+void UManagePawnMovementComponent::DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+}
+
+void UManagePawnMovementComponent::DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DestroyRenderState_Concurrent");
+}
+
+void UManagePawnMovementComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManagePawnMovementComponent::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
+void UManagePawnMovementComponent::OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnActorEnableCollisionChanged");
+}
+
+void UManagePawnMovementComponent::OnComponentCreated()
+{
+	Super::OnComponentCreated();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnComponentCreated");
+}
+
+void UManagePawnMovementComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+}
+
+void UManagePawnMovementComponent::OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnCreatePhysicsState");
+}
+
+void UManagePawnMovementComponent::OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnDestroyPhysicsState");
+}
+
+void UManagePawnMovementComponent::OnUnregister()
+{
+	Super::OnUnregister();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUnregister");
+}
+
+void UManagePawnMovementComponent::PostInitProperties()
+{
+	Super::PostInitProperties();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostInitProperties");
+}
+
+void UManagePawnMovementComponent::PostNetReceive()
+{
+	Super::PostNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceive");
+}
+
+void UManagePawnMovementComponent::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void UManagePawnMovementComponent::PreNetReceive()
+{
+	Super::PreNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreNetReceive");
+}
+
+void UManagePawnMovementComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManagePawnMovementComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManagePawnMovementComponent::SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+}
+
+void UManagePawnMovementComponent::SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SendRenderTransform_Concurrent");
+}
+
+void UManagePawnMovementComponent::SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetActive", bNewActive, bReset);
+}
+
+void UManagePawnMovementComponent::SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+}
+
+void UManagePawnMovementComponent::SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+}
+
+void UManagePawnMovementComponent::SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+}
+
+void UManagePawnMovementComponent::ToggleActive()
+{
+	Super::ToggleActive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ToggleActive");
+}
+
+void UManagePawnMovementComponent::UninitializeComponent()
+{
+	Super::UninitializeComponent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UninitializeComponent");
+}
+
+void UManagePawnMovementComponent::UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+{
+	Super::UpdateComponentToWorld(UpdateTransformFlags, Teleport);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentToWorld", UpdateTransformFlags, Teleport);
+}
+
+void UManagePawnMovementComponent::FinishDestroy()
+{
+	Super::FinishDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "FinishDestroy");
+}
+
+void UManagePawnMovementComponent::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostCDOContruct");
+}
+
+void UManagePawnMovementComponent::PostEditImport()
+{
+	Super::PostEditImport();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostEditImport");
+}
+
+void UManagePawnMovementComponent::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRepNotifies");
+}
+
+void UManagePawnMovementComponent::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void UManagePawnMovementComponent::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void UManagePawnMovementComponent::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ShutdownAfterError");
+}
+
+void UManagePawnMovementComponent::AddToCluster(UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+{
+	Super::AddToCluster(ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddToCluster", ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+}
+
+void UManagePawnMovementComponent::CreateCluster()
+{
+	Super::CreateCluster();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "CreateCluster");
+}
+
+void UManagePawnMovementComponent::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnClusterMarkedAsPendingKill");
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

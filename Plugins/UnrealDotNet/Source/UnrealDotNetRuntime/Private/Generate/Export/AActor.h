@@ -10,11 +10,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_AActor : protected AActor
 {
 public:
-	void BeginPlay_WRAP()
-	{
-		BeginPlay();
-	}
-
 	bool CheckActorComponents_WRAP()
 	{
 		return CheckActorComponents();
@@ -360,9 +355,14 @@ extern "C"
 		Self->AttachToComponent(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_AActor_BeginDestroy(AActor* Self)
+	{
+		Self->BeginDestroy();
+	}
+
 	DOTNET_EXPORT auto E_AActor_BeginPlay(AActor* Self)
 	{
-		((E_PROTECTED_WRAP_AActor*)Self)->BeginPlay_WRAP();
+		Self->BeginPlay();
 	}
 
 	DOTNET_EXPORT auto E_AActor_CalculateComponentsBoundingBoxInLocalSpace(AActor* Self, bool bNonColliding)
@@ -375,6 +375,11 @@ extern "C"
 	{
 		auto _p0 = Pawn;
 		return Self->CanBeBaseForCharacter(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_CanBeInCluster(AActor* Self)
+	{
+		return Self->CanBeInCluster();
 	}
 
 	DOTNET_EXPORT auto E_AActor_CanEverTick(AActor* Self)
@@ -391,6 +396,11 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FName(InName);
 		Self->CheckComponentInstanceName(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_CheckDefaultSubobjectsInternal(AActor* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
 	}
 
 	DOTNET_EXPORT auto E_AActor_CheckStillInWorld(AActor* Self)
@@ -808,6 +818,11 @@ extern "C"
 		return Self->GetVerticalDistanceTo(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetWorld(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
 	DOTNET_EXPORT auto E_AActor_HasActiveCameraComponent(AActor* Self)
 	{
 		return Self->HasActiveCameraComponent();
@@ -924,6 +939,11 @@ extern "C"
 		return Self->IsMatineeControlled();
 	}
 
+	DOTNET_EXPORT auto E_AActor_IsNameStableForNetworking(AActor* Self)
+	{
+		return Self->IsNameStableForNetworking();
+	}
+
 	DOTNET_EXPORT auto E_AActor_IsNetMode(AActor* Self, ENetMode Mode)
 	{
 		auto _p0 = Mode;
@@ -958,6 +978,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_IsPendingKillPending(AActor* Self)
 	{
 		return Self->IsPendingKillPending();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsReadyForFinishDestroy(AActor* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
 	}
 
 	DOTNET_EXPORT auto E_AActor_IsRelevancyOwnerFor(AActor* Self, AActor* ReplicatedActor, AActor* ActorOwner, AActor* ConnectionActor)
@@ -1000,6 +1025,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_IsRunningUserConstructionScript(AActor* Self)
 	{
 		return Self->IsRunningUserConstructionScript();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsSupportedForNetworking(AActor* Self)
+	{
+		return Self->IsSupportedForNetworking();
 	}
 
 	DOTNET_EXPORT auto E_AActor_IsWithinNetRelevancyDistance(AActor* Self, INT_PTR SrcLocation)
@@ -1228,6 +1258,12 @@ extern "C"
 		Self->MarkComponentsRenderStateDirty();
 	}
 
+	DOTNET_EXPORT auto E_AActor_Modify(AActor* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_NotifyActorBeginCursorOver(AActor* Self)
 	{
 		Self->NotifyActorBeginCursorOver();
@@ -1344,9 +1380,24 @@ extern "C"
 		Self->PostInitializeComponents();
 	}
 
+	DOTNET_EXPORT auto E_AActor_PostInitProperties(AActor* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostLoad(AActor* Self)
+	{
+		Self->PostLoad();
+	}
+
 	DOTNET_EXPORT auto E_AActor_PostNetInit(AActor* Self)
 	{
 		Self->PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostNetReceive(AActor* Self)
+	{
+		Self->PostNetReceive();
 	}
 
 	DOTNET_EXPORT auto E_AActor_PostNetReceiveLocationAndRotation(AActor* Self)
@@ -1370,6 +1421,13 @@ extern "C"
 		Self->PostRegisterAllComponents();
 	}
 
+	DOTNET_EXPORT auto E_AActor_PostRename(AActor* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_AActor_PostSpawnInitialize(AActor* Self, INT_PTR SpawnTransform, AActor* InOwner, APawn* InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)
 	{
 		auto _p0 = *(FTransform*)SpawnTransform;
@@ -1389,6 +1447,11 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_PreInitializeComponents(AActor* Self)
 	{
 		Self->PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PreNetReceive(AActor* Self)
+	{
+		Self->PreNetReceive();
 	}
 
 	DOTNET_EXPORT auto E_AActor_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
@@ -1775,6 +1838,135 @@ extern "C"
 	{
 		auto _p0 = Tolerance;
 		return Self->WasRecentlyRendered(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_AreNativePropertiesIdenticalTo(AActor* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_FinishDestroy(AActor* Self)
+	{
+		Self->FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetDesc(AActor* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetDetailedInfoInternal(AActor* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsAsset(AActor* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsEditorOnly(AActor* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsFullNameStableForNetworking(AActor* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsLocalizedResource(AActor* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsPostLoadThreadSafe(AActor* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsSafeForRootSet(AActor* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_AActor_MarkAsEditorOnlySubobject(AActor* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NeedsLoadForClient(AActor* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NeedsLoadForEditorGame(AActor* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NeedsLoadForServer(AActor* Self)
+	{
+		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NotifyObjectReferenceEliminated(AActor* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostCDOContruct(AActor* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostEditImport(AActor* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostRepNotifies(AActor* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostSaveRoot(AActor* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_PreDestroyFromReplication(AActor* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_AActor_ShutdownAfterError(AActor* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_AActor_AddToCluster(AActor* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AActor_CanBeClusterRoot(AActor* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_AActor_CreateCluster(AActor* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_AActor_OnClusterMarkedAsPendingKill(AActor* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

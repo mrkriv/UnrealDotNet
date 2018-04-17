@@ -53,6 +53,11 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FActorComponentTickFunction_Target_GET(FActorComponentTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
 	DOTNET_EXPORT void E_PROP_FActorComponentTickFunction_Target_SET(FActorComponentTickFunction* Ptr, UActorComponent* Value) { Ptr->Target = Value; }
 	
+	DOTNET_EXPORT auto E_FActorComponentTickFunction_DiagnosticMessage(FActorComponentTickFunction* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->DiagnosticMessage());
+	}
+
 	
 	/*	FActorSpawnParameters	*/
 	
@@ -86,6 +91,11 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FActorTickFunction_Target_GET(FActorTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
 	DOTNET_EXPORT void E_PROP_FActorTickFunction_Target_SET(FActorTickFunction* Ptr, AActor* Value) { Ptr->Target = Value; }
 	
+	DOTNET_EXPORT auto E_FActorTickFunction_DiagnosticMessage(FActorTickFunction* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->DiagnosticMessage());
+	}
+
 	
 	/*	FAnimationEvaluationContext	*/
 	
@@ -1569,6 +1579,26 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_HitInfo_GET(FPointDamageEvent* Ptr) { return (INT_PTR)&(Ptr->HitInfo); }
 	DOTNET_EXPORT void E_PROP_FPointDamageEvent_HitInfo_SET(FPointDamageEvent* Ptr, INT_PTR Value) { Ptr->HitInfo = *(FHitResult*)Value; }
 	
+	DOTNET_EXPORT auto E_FPointDamageEvent_GetBestHitInfo(FPointDamageEvent* Self, AActor* HitActor, AActor* HitInstigator, INT_PTR OutHitInfo, INT_PTR OutImpulseDir)
+	{
+		auto _p0 = HitActor;
+		auto _p1 = HitInstigator;
+		auto _p2 = *(FHitResult*)OutHitInfo;
+		auto _p3 = *(FVector*)OutImpulseDir;
+		Self->GetBestHitInfo(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_FPointDamageEvent_GetTypeID(FPointDamageEvent* Self)
+	{
+		return Self->GetTypeID();
+	}
+
+	DOTNET_EXPORT auto E_FPointDamageEvent_IsOfType(FPointDamageEvent* Self, int32 InID)
+	{
+		auto _p0 = InID;
+		return Self->IsOfType(_p0);
+	}
+
 	
 	/*	FPostProcessSettings	*/
 	
@@ -2336,6 +2366,26 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FRadialDamageEvent_Params_GET(FRadialDamageEvent* Ptr) { return (INT_PTR)&(Ptr->Params); }
 	DOTNET_EXPORT void E_PROP_FRadialDamageEvent_Params_SET(FRadialDamageEvent* Ptr, INT_PTR Value) { Ptr->Params = *(FRadialDamageParams*)Value; }
 	
+	DOTNET_EXPORT auto E_FRadialDamageEvent_GetBestHitInfo(FRadialDamageEvent* Self, AActor* HitActor, AActor* HitInstigator, INT_PTR OutHitInfo, INT_PTR OutImpulseDir)
+	{
+		auto _p0 = HitActor;
+		auto _p1 = HitInstigator;
+		auto _p2 = *(FHitResult*)OutHitInfo;
+		auto _p3 = *(FVector*)OutImpulseDir;
+		Self->GetBestHitInfo(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_FRadialDamageEvent_GetTypeID(FRadialDamageEvent* Self)
+	{
+		return Self->GetTypeID();
+	}
+
+	DOTNET_EXPORT auto E_FRadialDamageEvent_IsOfType(FRadialDamageEvent* Self, int32 InID)
+	{
+		auto _p0 = InID;
+		return Self->IsOfType(_p0);
+	}
+
 	
 	/*	FRadialDamageParams	*/
 	

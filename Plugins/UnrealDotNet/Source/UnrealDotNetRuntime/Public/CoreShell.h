@@ -41,16 +41,16 @@ public:
 	static FSimpleDelegate OnAssembleLoad;
 #endif
 
-	UFUNCTION(BlueprintCallable, Category = DotNet)
+	UFUNCTION(BlueprintCallable, Category = "C#")
 	static FString RunStaticScript(const FString& FullClassName, const FString& Method, const FString& Argument);
 
-	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
+	UFUNCTION(BlueprintCallable, Category = "C#", meta = (WorldContext = "WorldContextObject"))
 	static void CreateDotNetManager(UObject* WorldContextObject);
 
-	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
+	UFUNCTION(BlueprintCallable, Category = "C#", meta = (WorldContext = "WorldContextObject"))
 	static UManagerObject* GetDotNetManager();
 	
-	UFUNCTION(BlueprintCallable, Category = DotNet, meta = (WorldContext = "WorldContextObject"))
+	UFUNCTION(BlueprintCallable, Category = "C#", meta = (WorldContext = "WorldContextObject"))
 	static void DestroyDotNetManager();
 
 	static void Initialize();
@@ -58,6 +58,9 @@ public:
 
 	static void* GetMethodPtr(const FString& Assemble, const FString& FullClassName, const FString& Method);
 	static void GC();
+
+	static FString GetProperty(UObject* Object, const FString& Property);
+	static void SetProperty(UObject* Object, const FString& Property, const FString& Value);
 
 	template<typename... ArgumentT>
 	static void InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)

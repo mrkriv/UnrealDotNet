@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace Generator.Metadata
 {
-    public enum AccessModifier
+    public enum AccessModifier : byte
     {
         Private,
         Protected,
         Public
     }
 
-    public class Method : Primitive, IEquatable<Method>
+    public class Method : Primitive, IEquatable<Method>, ICloneable
     {
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
@@ -30,6 +30,32 @@ namespace Generator.Metadata
             InputTypes = new List<Variable>();
             Name = name;
         }
+
+        public Method(Method baseMethod)
+        {
+            Name = baseMethod.Name;
+            Description = baseMethod.Description;
+            
+            UMeta = baseMethod.UMeta;
+            AccessModifier = baseMethod.AccessModifier;
+            IsTemplate = baseMethod.IsTemplate;
+            
+            SourceFile = baseMethod.SourceFile;
+            SourceLine = baseMethod.SourceLine;
+            
+            ReturnType = baseMethod.ReturnType;
+            InputTypes = baseMethod.InputTypes.ToList();
+            OwnerClass = baseMethod.OwnerClass;
+            IsConst = baseMethod.IsConst;
+            IsFinal = baseMethod.IsFinal;
+            IsStatic = baseMethod.IsStatic;
+            IsFriend = baseMethod.IsFriend;
+            IsVirtual = baseMethod.IsVirtual;
+            IsOverride = baseMethod.IsOverride;
+            Operator = baseMethod.Operator;
+        }
+
+        public object Clone() => new Method(this);
 
         public IEnumerable<Type> Dependent
         {

@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Generator.Metadata;
+using Delegate = Generator.Metadata.Delegate;
+using Enum = Generator.Metadata.Enum;
+using Type = Generator.Metadata.Type;
 
 namespace Generator
 {
@@ -47,13 +51,82 @@ namespace Generator
 
                 cl.Methods = cl.Methods.Where(MethodFilter).OrderBy(m => m.Name).ToList();
                 cl.Property = cl.Property.Where(PropertyFilter).OrderBy(p => p.Name).ToList();
+                cl.BaseClass?.DerivedClasses.Add(cl);
 
                 FilterConstructors(cl);
 
                 RemoveMethodDublicatedName(cl);
             }
 
+            foreach (var rootClass in result.Where(x => x.BaseClass == null))
+            {
+                rootClass.DerivedClasses.ForEach(AppendVirtualMethodToClass);
+            }
+
             return result;
+        }
+
+        private void AppendVirtualMethodToClass(Class cl)
+        {
+            if (cl.BaseClass == null)
+                return;
+
+            foreach (var method in cl.Methods.Where(x => x.IsVirtual))
+            {
+                if (method.IsOverride && cl.BaseClass.Methods.All(x => x.Name != method.Name))
+                {
+                    method.IsOverride = false;
+                }
+            }
+
+            foreach (var baseMethod in cl.BaseClass.Methods.Where(x => x.IsVirtual && !x.IsFinal))
+            {
+                var method = cl.Methods.FirstOrDefault(x => x.Name == baseMethod.Name);
+
+                if (method == null)
+                {
+                    method = new Method(baseMethod)
+                    {
+                        OwnerClass = cl,
+                        IsOverride = true
+                    };
+                    cl.Methods.Add(method);
+                }
+
+                if (method.AccessModifier != baseMethod.AccessModifier)
+                {
+                    method.AccessModifier =
+                        (AccessModifier) Math.Max((byte) method.AccessModifier, (byte) baseMethod.AccessModifier);
+
+                    var bm = baseMethod;
+                    while (bm != null)
+                    {
+                        var m = bm.OwnerClass.BaseClass?.Methods.FirstOrDefault(x => x.Name == bm.Name);
+
+                        if (m == null)
+                            UpgradeMethodAccessModifier(bm, method.AccessModifier);
+
+                        bm = m;
+                    }
+                }
+            }
+
+            cl.DerivedClasses.ForEach(AppendVirtualMethodToClass);
+        }
+
+        private void UpgradeMethodAccessModifier(Method method, AccessModifier accessModifier)
+        {
+            if(method.AccessModifier == accessModifier)
+                return;
+            
+            method.AccessModifier = accessModifier;
+
+            foreach (var derivedClass in method.OwnerClass.DerivedClasses)
+            {
+                var dMethod = derivedClass.Methods.FirstOrDefault(x => x.Name == method.Name);
+                if (dMethod != null)
+                    UpgradeMethodAccessModifier(dMethod, accessModifier);
+            }
         }
 
         private bool MathClass(Class cl)
@@ -180,7 +253,6 @@ namespace Generator
         public bool MethodFilter(Method m)
         {
             return !m.ReturnType.IsConst &&
-                   !m.IsOverride &&
                    !m.IsFriend &&
                    !m.IsTemplate &&
                    !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
@@ -219,11 +291,12 @@ namespace Generator
             if (!IsManageClass(Class))
                 return new Method[0];
 
-            return Class.Methods.Where(m => m.IsVirtual &&
-                                            !m.IsOverride &&
-                                            !m.IsConst &&
-                                            m.ReturnType.Type.IsVoid &&
-                                            m.InputTypes.All(t => !t.IsReadOnly()));
+            return Class.Methods
+                .Where(m => m.IsVirtual &&
+                            !m.IsFinal &&
+                            !m.IsConst &&
+                            m.ReturnType.Type.IsVoid &&
+                            m.InputTypes.All(t => !t.IsReadOnly()));
         }
 
         public bool IsManageClass(Class Class)

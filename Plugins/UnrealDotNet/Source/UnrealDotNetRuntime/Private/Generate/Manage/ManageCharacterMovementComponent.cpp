@@ -6,6 +6,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
 
+FString UManageCharacterMovementComponent::GetProperty(const FString& Property)
+{
+	return bIsManageAttach ? UCoreShell::GetProperty(this, Property) : "";
+}
+
+void UManageCharacterMovementComponent::SetProperty(const FString& Property, const FString& Value)
+{
+	if (bIsManageAttach) UCoreShell::SetProperty(this, Property, Value);
+}
+
 void UManageCharacterMovementComponent::AddForce(FVector Force)
 {
 	Super::AddForce(Force);
@@ -16,6 +26,18 @@ void UManageCharacterMovementComponent::AddImpulse(FVector Impulse, bool bVeloci
 {
 	Super::AddImpulse(Impulse, bVelocityChange);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddImpulse", Impulse, bVelocityChange);
+}
+
+void UManageCharacterMovementComponent::AddRadialForce(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+{
+	Super::AddRadialForce(Origin, Radius, Strength, Falloff);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff);
+}
+
+void UManageCharacterMovementComponent::AddRadialImpulse(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+{
+	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
 }
 
 void UManageCharacterMovementComponent::AdjustFloorHeight()
@@ -64,6 +86,18 @@ void UManageCharacterMovementComponent::ApplyVelocityBraking(float DeltaTime, fl
 {
 	Super::ApplyVelocityBraking(DeltaTime, Friction, BrakingDeceleration);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyVelocityBraking", DeltaTime, Friction, BrakingDeceleration);
+}
+
+void UManageCharacterMovementComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
+void UManageCharacterMovementComponent::BeginDestroy()
+{
+	Super::BeginDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginDestroy");
 }
 
 void UManageCharacterMovementComponent::CalcVelocity(float DeltaTime, float Friction, bool bFluid, float BrakingDeceleration)
@@ -132,16 +166,34 @@ void UManageCharacterMovementComponent::Crouch(bool bClientSimulation)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Crouch", bClientSimulation);
 }
 
+void UManageCharacterMovementComponent::Deactivate()
+{
+	Super::Deactivate();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Deactivate");
+}
+
 void UManageCharacterMovementComponent::DisableMovement()
 {
 	Super::DisableMovement();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DisableMovement");
 }
 
+void UManageCharacterMovementComponent::ForcePositionUpdate(float DeltaTime)
+{
+	Super::ForcePositionUpdate(DeltaTime);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ForcePositionUpdate", DeltaTime);
+}
+
 void UManageCharacterMovementComponent::ForceReplicationUpdate()
 {
 	Super::ForceReplicationUpdate();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ForceReplicationUpdate");
+}
+
+void UManageCharacterMovementComponent::HandleImpact(const FHitResult& Hit, float TimeSlice, const FVector& MoveDelta)
+{
+	Super::HandleImpact(Hit, TimeSlice, MoveDelta);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "HandleImpact", Hit, TimeSlice, MoveDelta);
 }
 
 void UManageCharacterMovementComponent::HandleSwimmingWallHit(const FHitResult& Hit, float DeltaTime)
@@ -192,6 +244,12 @@ void UManageCharacterMovementComponent::MoveAutonomous(float ClientTimeStamp, fl
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "MoveAutonomous", ClientTimeStamp, DeltaTime, CompressedFlags, NewAccel);
 }
 
+void UManageCharacterMovementComponent::NotifyBumpedPawn(APawn* BumpedPawn)
+{
+	Super::NotifyBumpedPawn(BumpedPawn);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "NotifyBumpedPawn", BumpedPawn);
+}
+
 void UManageCharacterMovementComponent::NotifyJumpApex()
 {
 	Super::NotifyJumpApex();
@@ -220,6 +278,18 @@ void UManageCharacterMovementComponent::OnMovementUpdated(float DeltaSeconds, co
 {
 	Super::OnMovementUpdated(DeltaSeconds, OldLocation, OldVelocity);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnMovementUpdated", DeltaSeconds, OldLocation, OldVelocity);
+}
+
+void UManageCharacterMovementComponent::OnRegister()
+{
+	Super::OnRegister();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnRegister");
+}
+
+void UManageCharacterMovementComponent::OnTeleported()
+{
+	Super::OnTeleported();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnTeleported");
 }
 
 void UManageCharacterMovementComponent::OnTimeDiscrepancyDetected(float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError)
@@ -288,10 +358,22 @@ void UManageCharacterMovementComponent::PhysWalking(float deltaTime, int32 Itera
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PhysWalking", deltaTime, Iterations);
 }
 
+void UManageCharacterMovementComponent::PostLoad()
+{
+	Super::PostLoad();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostLoad");
+}
+
 void UManageCharacterMovementComponent::ProcessLanded(const FHitResult& Hit, float remainingTime, int32 Iterations)
 {
 	Super::ProcessLanded(Hit, remainingTime, Iterations);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ProcessLanded", Hit, remainingTime, Iterations);
+}
+
+void UManageCharacterMovementComponent::RegisterComponentTickFunctions(bool bRegister)
+{
+	Super::RegisterComponentTickFunctions(bRegister);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
 }
 
 void UManageCharacterMovementComponent::ReplicateMoveToServer(float DeltaTime, const FVector& NewAcceleration)
@@ -300,10 +382,40 @@ void UManageCharacterMovementComponent::ReplicateMoveToServer(float DeltaTime, c
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ReplicateMoveToServer", DeltaTime, NewAcceleration);
 }
 
+void UManageCharacterMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	Super::RequestDirectMove(MoveVelocity, bForceMaxSpeed);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RequestDirectMove", MoveVelocity, bForceMaxSpeed);
+}
+
+void UManageCharacterMovementComponent::RequestPathMove(const FVector& MoveInput)
+{
+	Super::RequestPathMove(MoveInput);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RequestPathMove", MoveInput);
+}
+
+void UManageCharacterMovementComponent::ResetPredictionData_Client()
+{
+	Super::ResetPredictionData_Client();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ResetPredictionData_Client");
+}
+
+void UManageCharacterMovementComponent::ResetPredictionData_Server()
+{
+	Super::ResetPredictionData_Server();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ResetPredictionData_Server");
+}
+
 void UManageCharacterMovementComponent::SaveBaseLocation()
 {
 	Super::SaveBaseLocation();
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SaveBaseLocation");
+}
+
+void UManageCharacterMovementComponent::SendClientAdjustment()
+{
+	Super::SendClientAdjustment();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SendClientAdjustment");
 }
 
 void UManageCharacterMovementComponent::ServerMoveHandleClientError(float ClientTimeStamp, float DeltaTime, const FVector& Accel, const FVector& RelativeClientLocation, UPrimitiveComponent* ClientMovementBase, FName ClientBaseBoneName, uint8 ClientMovementMode)
@@ -342,6 +454,12 @@ void UManageCharacterMovementComponent::SetPostLandedPhysics(const FHitResult& H
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPostLandedPhysics", Hit);
 }
 
+void UManageCharacterMovementComponent::SetUpdatedComponent(USceneComponent* NewUpdatedComponent)
+{
+	Super::SetUpdatedComponent(NewUpdatedComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetUpdatedComponent", NewUpdatedComponent);
+}
+
 void UManageCharacterMovementComponent::SimulateMovement(float DeltaTime)
 {
 	Super::SimulateMovement(DeltaTime);
@@ -354,6 +472,12 @@ void UManageCharacterMovementComponent::SmoothClientPosition(float DeltaSeconds)
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SmoothClientPosition", DeltaSeconds);
 }
 
+void UManageCharacterMovementComponent::SmoothCorrection(const FVector& OldLocation, const FQuat& OldRotation, const FVector& NewLocation, const FQuat& NewRotation)
+{
+	Super::SmoothCorrection(OldLocation, OldRotation, NewLocation, NewRotation);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SmoothCorrection", OldLocation, OldRotation, NewLocation, NewRotation);
+}
+
 void UManageCharacterMovementComponent::StartFalling(int32 Iterations, float remainingTime, float timeTick, const FVector& Delta, const FVector& subLoc)
 {
 	Super::StartFalling(Iterations, remainingTime, timeTick, Delta, subLoc);
@@ -364,6 +488,12 @@ void UManageCharacterMovementComponent::StartNewPhysics(float deltaTime, int32 I
 {
 	Super::StartNewPhysics(deltaTime, Iterations);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "StartNewPhysics", deltaTime, Iterations);
+}
+
+void UManageCharacterMovementComponent::StopActiveMovement()
+{
+	Super::StopActiveMovement();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "StopActiveMovement");
 }
 
 void UManageCharacterMovementComponent::UnCrouch(bool bClientSimulation)
@@ -406,6 +536,317 @@ void UManageCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
 {
 	Super::UpdateFromCompressedFlags(Flags);
 	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateFromCompressedFlags", Flags);
+}
+
+void UManageCharacterMovementComponent::AddInputVector(FVector WorldVector, bool bForce)
+{
+	Super::AddInputVector(WorldVector, bForce);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddInputVector", WorldVector, bForce);
+}
+
+void UManageCharacterMovementComponent::StopMovementImmediately()
+{
+	Super::StopMovementImmediately();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "StopMovementImmediately");
+}
+
+void UManageCharacterMovementComponent::InitializeComponent()
+{
+	Super::InitializeComponent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "InitializeComponent");
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
+{
+	Super::SetPlaneConstraintAxisSetting(NewAxisSetting);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintAxisSetting", NewAxisSetting);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintEnabled(bool bEnabled)
+{
+	Super::SetPlaneConstraintEnabled(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintEnabled", bEnabled);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
+{
+	Super::SetPlaneConstraintFromVectors(Forward, Up);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintFromVectors", Forward, Up);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintNormal(FVector PlaneNormal)
+{
+	Super::SetPlaneConstraintNormal(PlaneNormal);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintNormal", PlaneNormal);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintOrigin(FVector PlaneOrigin)
+{
+	Super::SetPlaneConstraintOrigin(PlaneOrigin);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetPlaneConstraintOrigin", PlaneOrigin);
+}
+
+void UManageCharacterMovementComponent::SnapUpdatedComponentToPlane()
+{
+	Super::SnapUpdatedComponentToPlane();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SnapUpdatedComponentToPlane");
+}
+
+void UManageCharacterMovementComponent::UpdateComponentVelocity()
+{
+	Super::UpdateComponentVelocity();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentVelocity");
+}
+
+void UManageCharacterMovementComponent::UpdateTickRegistration()
+{
+	Super::UpdateTickRegistration();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateTickRegistration");
+}
+
+void UManageCharacterMovementComponent::Activate(bool bReset)
+{
+	Super::Activate(bReset);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Activate", bReset);
+}
+
+void UManageCharacterMovementComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageCharacterMovementComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManageCharacterMovementComponent::BeginPlay()
+{
+	if (!ManageClassName.FullName.IsEmpty())
+	{
+		bIsManageAttach = UCoreShell::InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));
+	}
+
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "BeginPlay");
+	Super::BeginPlay();
+}
+
+void UManageCharacterMovementComponent::CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "CreateRenderState_Concurrent");
+}
+
+void UManageCharacterMovementComponent::DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+}
+
+void UManageCharacterMovementComponent::DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "DestroyRenderState_Concurrent");
+}
+
+void UManageCharacterMovementComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageCharacterMovementComponent::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
+void UManageCharacterMovementComponent::OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnActorEnableCollisionChanged");
+}
+
+void UManageCharacterMovementComponent::OnComponentCreated()
+{
+	Super::OnComponentCreated();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnComponentCreated");
+}
+
+void UManageCharacterMovementComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+}
+
+void UManageCharacterMovementComponent::OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnCreatePhysicsState");
+}
+
+void UManageCharacterMovementComponent::OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnDestroyPhysicsState");
+}
+
+void UManageCharacterMovementComponent::OnUnregister()
+{
+	Super::OnUnregister();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnUnregister");
+}
+
+void UManageCharacterMovementComponent::PostInitProperties()
+{
+	Super::PostInitProperties();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostInitProperties");
+}
+
+void UManageCharacterMovementComponent::PostNetReceive()
+{
+	Super::PostNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostNetReceive");
+}
+
+void UManageCharacterMovementComponent::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void UManageCharacterMovementComponent::PreNetReceive()
+{
+	Super::PreNetReceive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreNetReceive");
+}
+
+void UManageCharacterMovementComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageCharacterMovementComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManageCharacterMovementComponent::SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+}
+
+void UManageCharacterMovementComponent::SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SendRenderTransform_Concurrent");
+}
+
+void UManageCharacterMovementComponent::SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetActive", bNewActive, bReset);
+}
+
+void UManageCharacterMovementComponent::SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+}
+
+void UManageCharacterMovementComponent::SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+}
+
+void UManageCharacterMovementComponent::SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+}
+
+void UManageCharacterMovementComponent::ToggleActive()
+{
+	Super::ToggleActive();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ToggleActive");
+}
+
+void UManageCharacterMovementComponent::UninitializeComponent()
+{
+	Super::UninitializeComponent();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UninitializeComponent");
+}
+
+void UManageCharacterMovementComponent::UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+{
+	Super::UpdateComponentToWorld(UpdateTransformFlags, Teleport);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "UpdateComponentToWorld", UpdateTransformFlags, Teleport);
+}
+
+void UManageCharacterMovementComponent::FinishDestroy()
+{
+	Super::FinishDestroy();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "FinishDestroy");
+}
+
+void UManageCharacterMovementComponent::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostCDOContruct");
+}
+
+void UManageCharacterMovementComponent::PostEditImport()
+{
+	Super::PostEditImport();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostEditImport");
+}
+
+void UManageCharacterMovementComponent::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostRepNotifies");
+}
+
+void UManageCharacterMovementComponent::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void UManageCharacterMovementComponent::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void UManageCharacterMovementComponent::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ShutdownAfterError");
+}
+
+void UManageCharacterMovementComponent::AddToCluster(UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+{
+	Super::AddToCluster(ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "AddToCluster", ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+}
+
+void UManageCharacterMovementComponent::CreateCluster()
+{
+	Super::CreateCluster();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "CreateCluster");
+}
+
+void UManageCharacterMovementComponent::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "OnClusterMarkedAsPendingKill");
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

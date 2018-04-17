@@ -450,6 +450,12 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_AddImpulse(IntPtr Self, IntPtr Impulse, bool bVelocityChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddRadialForce(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddRadialImpulse(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff, bool bVelChange);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_AdjustFloorHeight(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -477,6 +483,12 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_ApplyVelocityBraking(IntPtr Self, float DeltaTime, float Friction, float BrakingDeceleration);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ApplyWorldOffset(IntPtr Self, IntPtr InOffset, bool bWorldShift);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_BeginDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_BoostAirControl(IntPtr Self, float DeltaTime, float TickAirControl, IntPtr FallAcceleration);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -489,7 +501,13 @@ namespace UnrealEngine
 		private static extern bool E_UCharacterMovementComponent_CanCrouchInCurrentState(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_CanStartPathFollowing(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_CanStepUp(IntPtr Self, IntPtr Hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_CanStopPathFollowing(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_CanWalkOffLedges(IntPtr Self);
@@ -546,10 +564,16 @@ namespace UnrealEngine
 		private static extern bool E_UCharacterMovementComponent_ComputePerchResult(IntPtr Self, float TestRadius, IntPtr InHit, float InMaxFloorDist, IntPtr OutPerchFloorResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_ComputeSlideVector(IntPtr Self, IntPtr Delta, float Time, IntPtr Normal, IntPtr Hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_ConstrainInputAcceleration(IntPtr Self, IntPtr InputAcceleration);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_Crouch(IntPtr Self, bool bClientSimulation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_Deactivate(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_DisableMovement(IntPtr Self);
@@ -568,6 +592,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ForceClientAdjustment(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ForcePositionUpdate(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ForceReplicationUpdate(IntPtr Self);
@@ -594,6 +621,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UCharacterMovementComponent_GetFallingLateralAcceleration(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_GetGravityZ(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UCharacterMovementComponent_GetGroundMovementMode(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -615,6 +645,9 @@ namespace UnrealEngine
 		private static extern float E_UCharacterMovementComponent_GetMaxJumpHeightWithJumpTime(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_GetMaxSpeed(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_GetMinAnalogSpeed(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -628,6 +661,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_GetNetworkSafeRandomAngleDegrees(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_GetPathFollowingBrakingDistance(IntPtr Self, float MaxSpeed);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetPenetrationAdjustment(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_GetPerchRadiusThreshold(IntPtr Self);
@@ -648,6 +687,9 @@ namespace UnrealEngine
 		private static extern float E_UCharacterMovementComponent_GetWalkableFloorZ(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_HandleImpact(IntPtr Self, IntPtr Hit, float TimeSlice, IntPtr MoveDelta);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_HandlePendingLaunch(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -655,6 +697,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_HandleSwimmingWallHit(IntPtr Self, IntPtr Hit, float DeltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_HasPredictionData_Client(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_HasPredictionData_Server(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_HasRootMotionSources(IntPtr Self);
@@ -666,7 +714,22 @@ namespace UnrealEngine
 		private static extern float E_UCharacterMovementComponent_ImmersionDepth(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsCrouching(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsFalling(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsFlying(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_IsMovementInProgress(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsMovingOnGround(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsSwimming(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_IsValidLandingSpot(IntPtr Self, IntPtr CapsuleLocation, IntPtr Hit);
@@ -723,6 +786,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UCharacterMovementComponent_NewFallVelocity(IntPtr Self, IntPtr InitialVelocity, IntPtr Gravity, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_NotifyBumpedPawn(IntPtr Self, IntPtr BumpedPawn);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_NotifyJumpApex(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -736,6 +802,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_OnMovementUpdated(IntPtr Self, float DeltaSeconds, IntPtr OldLocation, IntPtr OldVelocity);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnRegister(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnTeleported(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_OnTimeDiscrepancyDetected(IntPtr Self, float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError);
@@ -774,16 +846,37 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_PhysWalking(IntPtr Self, float deltaTime, int Iterations);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostLoad(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ProcessLanded(IntPtr Self, IntPtr Hit, float remainingTime, int Iterations);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_ProjectLocationFromNavMesh(IntPtr Self, float DeltaSeconds, IntPtr CurrentFeetLocation, IntPtr TargetNavLocation, float UpOffset, float DownOffset);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_RegisterComponentTickFunctions(IntPtr Self, bool bRegister);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_RemoveRootMotionSource(IntPtr Self, string InstanceName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ReplicateMoveToServer(IntPtr Self, float DeltaTime, IntPtr NewAcceleration);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_RequestDirectMove(IntPtr Self, IntPtr MoveVelocity, bool bForceMaxSpeed);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_RequestPathMove(IntPtr Self, IntPtr MoveInput);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ResetPredictionData_Client(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ResetPredictionData_Server(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ResolvePenetrationImpl(IntPtr Self, IntPtr Adjustment, IntPtr Hit, IntPtr NewRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_RevertMove(IntPtr Self, IntPtr OldLocation, IntPtr OldBase, IntPtr InOldBaseLocation, IntPtr OldFloor, bool bFailMove);
@@ -796,6 +889,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_ScaleInputAcceleration(IntPtr Self, IntPtr InputAcceleration);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SendClientAdjustment(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_ServerCheckClientError(IntPtr Self, float ClientTimeStamp, float DeltaTime, IntPtr Accel, IntPtr ClientWorldLocation, IntPtr RelativeClientLocation, IntPtr ClientMovementBase, string ClientBaseBoneName, byte ClientMovementMode);
@@ -837,6 +933,9 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_SetPostLandedPhysics(IntPtr Self, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetUpdatedComponent(IntPtr Self, IntPtr NewUpdatedComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_SetWalkableFloorAngle(IntPtr Self, float InWalkableFloorAngle);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -867,6 +966,9 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_SimulateMovement(IntPtr Self, float DeltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_SlideAlongSurface(IntPtr Self, IntPtr Delta, float Time, IntPtr Normal, IntPtr Hit, bool bHandleImpact);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_SmoothClientPosition(IntPtr Self, float DeltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -874,6 +976,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_SmoothClientPosition_UpdateVisuals(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SmoothCorrection(IntPtr Self, IntPtr OldLocation, IntPtr OldRotation, IntPtr NewLocation, IntPtr NewRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_StartFalling(IntPtr Self, int Iterations, float remainingTime, float timeTick, IntPtr Delta, IntPtr subLoc);
@@ -885,6 +990,9 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_StartSwimming(IntPtr Self, IntPtr OldLocation, IntPtr OldVelocity, float timeTick, float remainingTime, int Iterations);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_StopActiveMovement(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_Swim(IntPtr Self, IntPtr Delta, IntPtr Hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -892,6 +1000,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_TryToLeaveNavWalking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_TwoWallAdjust(IntPtr Self, IntPtr Delta, IntPtr Hit, IntPtr OldHitNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_UnCrouch(IntPtr Self, bool bClientSimulation);
@@ -916,6 +1027,294 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_VisualizeMovement(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddInputVector(IntPtr Self, IntPtr WorldVector, bool bForce);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_ConsumeInputVector(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsMoveInputIgnored(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetActorFeetLocationBased(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_StopMovementImmediately(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_ConstrainDirectionToPlane(IntPtr Self, IntPtr Direction);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_ConstrainLocationToPlane(IntPtr Self, IntPtr Location);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_ConstrainNormalToPlane(IntPtr Self, IntPtr Normal);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_GetMaxSpeedModifier(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_GetModifiedMaxSpeed(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_InitializeComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsExceedingMaxSpeed(IntPtr Self, float MaxSpeed);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsInWater(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_K2_GetMaxSpeedModifier(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UCharacterMovementComponent_K2_GetModifiedMaxSpeed(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_MoveUpdatedComponentImpl(IntPtr Self, IntPtr Delta, IntPtr NewRotation, bool bSweep, IntPtr OutHit, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetPlaneConstraintAxisSetting(IntPtr Self, byte NewAxisSetting);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetPlaneConstraintEnabled(IntPtr Self, bool bEnabled);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetPlaneConstraintFromVectors(IntPtr Self, IntPtr Forward, IntPtr Up);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetPlaneConstraintNormal(IntPtr Self, IntPtr PlaneNormal);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetPlaneConstraintOrigin(IntPtr Self, IntPtr PlaneOrigin);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ShouldSkipUpdate(IntPtr Self, float DeltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SnapUpdatedComponentToPlane(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_UpdateComponentVelocity(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_UpdateTickRegistration(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_Activate(IntPtr Self, bool bReset);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_BeginPlay(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_CreateRenderState_Concurrent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_DestroyComponent(IntPtr Self, bool bPromoteChildren);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_DestroyRenderState_Concurrent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_GetComponentClassCanReplicate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UCharacterMovementComponent_GetReadableName(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_HasValidPhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_InvalidateLightingCacheDetailed(IntPtr Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsActive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsEditorOnly(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsNavigationRelevant(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsReadyForOwnerToAutoDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsSupportedForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_MarkAsEditorOnlySubobject(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_NeedsLoadForClient(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_NeedsLoadForEditorGame(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_NeedsLoadForServer(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnActorEnableCollisionChanged(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnComponentCreated(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnComponentDestroyed(IntPtr Self, bool bDestroyingHierarchy);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnCreatePhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnDestroyPhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnUnregister(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostInitProperties(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostNetReceive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PreNetReceive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_RemoveTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_RemoveTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameRecreate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameUpdates(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SendRenderDynamicData_Concurrent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SendRenderTransform_Concurrent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetActive(IntPtr Self, bool bNewActive, bool bReset);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetAutoActivate(IntPtr Self, bool bNewAutoActivate);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetComponentTickEnabled(IntPtr Self, bool bEnabled);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_SetComponentTickEnabledAsync(IntPtr Self, bool bEnabled);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ShouldActivate(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ShouldCreatePhysicsState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ShouldCreateRenderState(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ToggleActive(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_UninitializeComponent(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_UpdateComponentToWorld(IntPtr Self, byte UpdateTransformFlags, byte Teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_CheckDefaultSubobjectsInternal(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_FinishDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UCharacterMovementComponent_GetDesc(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UCharacterMovementComponent_GetDetailedInfoInternal(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsAsset(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsFullNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsLocalizedResource(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsPostLoadThreadSafe(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsReadyForFinishDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_IsSafeForRootSet(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_Modify(IntPtr Self, bool bAlwaysMarkDirty);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_NotifyObjectReferenceEliminated(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostCDOContruct(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostEditImport(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostRepNotifies(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PostSaveRoot(IntPtr Self, bool bCleanupIsRequired);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_PreDestroyFromReplication(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ShutdownAfterError(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_CanBeClusterRoot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_CanBeInCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_CreateCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnClusterMarkedAsPendingKill(IntPtr Self);
 		
 		#endregion
 		
@@ -1809,6 +2208,12 @@ namespace UnrealEngine
 		public virtual void AddImpulse(FVector Impulse, bool bVelocityChange)
 			=> E_UCharacterMovementComponent_AddImpulse(this, Impulse, bVelocityChange);
 		
+		public override void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+			=> E_UCharacterMovementComponent_AddRadialForce(this, Origin, Radius, Strength, (byte)Falloff);
+		
+		public override void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+			=> E_UCharacterMovementComponent_AddRadialImpulse(this, Origin, Radius, Strength, (byte)Falloff, bVelChange);
+		
 		
 		/// <summary>
 		/// <para>Adjust distance from floor, trying to maintain a slight offset from the floor when walking (based on CurrentFloor). </para>
@@ -1883,6 +2288,12 @@ namespace UnrealEngine
 		protected virtual void ApplyVelocityBraking(float DeltaTime, float Friction, float BrakingDeceleration)
 			=> E_UCharacterMovementComponent_ApplyVelocityBraking(this, DeltaTime, Friction, BrakingDeceleration);
 		
+		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift)
+			=> E_UCharacterMovementComponent_ApplyWorldOffset(this, InOffset, bWorldShift);
+		
+		public override void BeginDestroy()
+			=> E_UCharacterMovementComponent_BeginDestroy(this);
+		
 		
 		/// <summary>
 		/// <para>Increase air control if conditions of AirControlBoostMultiplier and AirControlBoostVelocityThreshold are met. </para>
@@ -1922,12 +2333,18 @@ namespace UnrealEngine
 		public virtual bool CanCrouchInCurrentState()
 			=> E_UCharacterMovementComponent_CanCrouchInCurrentState(this);
 		
+		public override bool CanStartPathFollowing()
+			=> E_UCharacterMovementComponent_CanStartPathFollowing(this);
+		
 		
 		/// <summary>
 		/// <return>true if we can step up on the actor in the given FHitResult. </return>
 		/// </summary>
 		public virtual bool CanStepUp(FHitResult Hit)
 			=> E_UCharacterMovementComponent_CanStepUp(this, Hit);
+		
+		public override bool CanStopPathFollowing()
+			=> E_UCharacterMovementComponent_CanStopPathFollowing(this);
 		
 		
 		/// <summary>
@@ -2064,6 +2481,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Calculate slide vector along a surface. </para>
+		/// <para>Has special treatment when falling, to avoid boosting up slopes (calling HandleSlopeBoosting() in this case). </para>
+		/// <param name="Delta">Attempted move. </param>
+		/// <param name="Time">Amount of move to apply (between 0 and 1). </param>
+		/// <param name="Normal">Normal opposed to movement. Not necessarily equal to Hit.Normal (but usually is). </param>
+		/// <param name="Hit">HitResult of the move that resulted in the slide. </param>
+		/// <return>New deflected vector of movement. </return>
+		/// </summary>
+		public override FVector ComputeSlideVector(FVector Delta, float Time, FVector Normal, FHitResult Hit)
+			=> E_UCharacterMovementComponent_ComputeSlideVector(this, Delta, Time, Normal, Hit);
+		
+		
+		/// <summary>
 		/// <para>Enforce constraints on input given current state. For instance, don't move upwards if walking and looking up. </para>
 		/// </summary>
 		protected virtual FVector ConstrainInputAcceleration(FVector InputAcceleration)
@@ -2077,6 +2507,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Crouch(bool bClientSimulation)
 			=> E_UCharacterMovementComponent_Crouch(this, bClientSimulation);
+		
+		public override void Deactivate()
+			=> E_UCharacterMovementComponent_Deactivate(this);
 		
 		
 		/// <summary>
@@ -2127,6 +2560,9 @@ namespace UnrealEngine
 		/// </summary>
 		public void ForceClientAdjustment()
 			=> E_UCharacterMovementComponent_ForceClientAdjustment(this);
+		
+		public virtual void ForcePositionUpdate(float DeltaTime)
+			=> E_UCharacterMovementComponent_ForcePositionUpdate(this, DeltaTime);
 		
 		
 		/// <summary>
@@ -2196,6 +2632,9 @@ namespace UnrealEngine
 		public virtual FVector GetFallingLateralAcceleration(float DeltaTime)
 			=> E_UCharacterMovementComponent_GetFallingLateralAcceleration(this, DeltaTime);
 		
+		public override float GetGravityZ()
+			=> E_UCharacterMovementComponent_GetGravityZ(this);
+		
 		
 		/// <summary>
 		/// <para>Get current GroundMovementMode value. </para>
@@ -2251,6 +2690,9 @@ namespace UnrealEngine
 		public virtual float GetMaxJumpHeightWithJumpTime()
 			=> E_UCharacterMovementComponent_GetMaxJumpHeightWithJumpTime(this);
 		
+		public override float GetMaxSpeed()
+			=> E_UCharacterMovementComponent_GetMaxSpeed(this);
+		
 		
 		/// <summary>
 		/// <return>Maximum acceleration for the current state. </return>
@@ -2287,6 +2729,16 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual float GetNetworkSafeRandomAngleDegrees()
 			=> E_UCharacterMovementComponent_GetNetworkSafeRandomAngleDegrees(this);
+		
+		public override float GetPathFollowingBrakingDistance(float MaxSpeed)
+			=> E_UCharacterMovementComponent_GetPathFollowingBrakingDistance(this, MaxSpeed);
+		
+		
+		/// <summary>
+		/// <para>Overridden to enforce max distances based on hit geometry. </para>
+		/// </summary>
+		public override FVector GetPenetrationAdjustment(FHitResult Hit)
+			=> E_UCharacterMovementComponent_GetPenetrationAdjustment(this, Hit);
 		
 		
 		/// <summary>
@@ -2338,6 +2790,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Handle a blocking impact. Calls ApplyImpactPhysicsForces for the hit, if bEnablePhysicsInteraction is true. </para>
+		/// </summary>
+		public override void HandleImpact(FHitResult Hit, float TimeSlice, FVector MoveDelta)
+			=> E_UCharacterMovementComponent_HandleImpact(this, Hit, TimeSlice, MoveDelta);
+		
+		
+		/// <summary>
 		/// <para>Handle a pending launch during an update. Returns true if the launch was triggered. </para>
 		/// </summary>
 		public virtual bool HandlePendingLaunch()
@@ -2359,6 +2818,12 @@ namespace UnrealEngine
 		protected virtual void HandleSwimmingWallHit(FHitResult Hit, float DeltaTime)
 			=> E_UCharacterMovementComponent_HandleSwimmingWallHit(this, Hit, DeltaTime);
 		
+		public virtual bool HasPredictionData_Client()
+			=> E_UCharacterMovementComponent_HasPredictionData_Client(this);
+		
+		public virtual bool HasPredictionData_Server()
+			=> E_UCharacterMovementComponent_HasPredictionData_Server(this);
+		
 		
 		/// <summary>
 		/// <return>true if we have Root Motion from any source to use in PerformMovement() physics. </return>
@@ -2376,6 +2841,15 @@ namespace UnrealEngine
 		public virtual float ImmersionDepth()
 			=> E_UCharacterMovementComponent_ImmersionDepth(this);
 		
+		public override bool IsCrouching()
+			=> E_UCharacterMovementComponent_IsCrouching(this);
+		
+		public override bool IsFalling()
+			=> E_UCharacterMovementComponent_IsFalling(this);
+		
+		public override bool IsFlying()
+			=> E_UCharacterMovementComponent_IsFlying(this);
+		
 		
 		/// <summary>
 		/// <return>true if currently performing a movement update. </return>
@@ -2383,6 +2857,12 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsMovementInProgress()
 			=> E_UCharacterMovementComponent_IsMovementInProgress(this);
+		
+		public override bool IsMovingOnGround()
+			=> E_UCharacterMovementComponent_IsMovingOnGround(this);
+		
+		public override bool IsSwimming()
+			=> E_UCharacterMovementComponent_IsSwimming(this);
 		
 		
 		/// <summary>
@@ -2525,6 +3005,9 @@ namespace UnrealEngine
 		public virtual FVector NewFallVelocity(FVector InitialVelocity, FVector Gravity, float DeltaTime)
 			=> E_UCharacterMovementComponent_NewFallVelocity(this, InitialVelocity, Gravity, DeltaTime);
 		
+		public override void NotifyBumpedPawn(APawn BumpedPawn)
+			=> E_UCharacterMovementComponent_NotifyBumpedPawn(this, BumpedPawn);
+		
 		
 		/// <summary>
 		/// <para>Called if bNotifyApex is true and character has just passed the apex of its jump. </para>
@@ -2560,6 +3043,16 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void OnMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity)
 			=> E_UCharacterMovementComponent_OnMovementUpdated(this, DeltaSeconds, OldLocation, OldVelocity);
+		
+		public override void OnRegister()
+			=> E_UCharacterMovementComponent_OnRegister(this);
+		
+		
+		/// <summary>
+		/// <para>Called by owning Character upon successful teleport from AActor::TeleportTo(). </para>
+		/// </summary>
+		public override void OnTeleported()
+			=> E_UCharacterMovementComponent_OnTeleported(this);
 		
 		
 		/// <summary>
@@ -2663,6 +3156,9 @@ namespace UnrealEngine
 		protected virtual void PhysWalking(float deltaTime, int Iterations)
 			=> E_UCharacterMovementComponent_PhysWalking(this, deltaTime, Iterations);
 		
+		public override void PostLoad()
+			=> E_UCharacterMovementComponent_PostLoad(this);
+		
 		
 		/// <summary>
 		/// <para>Handle landing against Hit surface over remaingTime and iterations, calling SetPostLandedPhysics() and starting the new movement mode. </para>
@@ -2679,6 +3175,9 @@ namespace UnrealEngine
 		protected virtual FVector ProjectLocationFromNavMesh(float DeltaSeconds, FVector CurrentFeetLocation, FVector TargetNavLocation, float UpOffset, float DownOffset)
 			=> E_UCharacterMovementComponent_ProjectLocationFromNavMesh(this, DeltaSeconds, CurrentFeetLocation, TargetNavLocation, UpOffset, DownOffset);
 		
+		public override void RegisterComponentTickFunctions(bool bRegister)
+			=> E_UCharacterMovementComponent_RegisterComponentTickFunctions(this, bRegister);
+		
 		
 		/// <summary>
 		/// <para>Remove a RootMotionSource from current root motion by name </para>
@@ -2692,6 +3191,25 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void ReplicateMoveToServer(float DeltaTime, FVector NewAcceleration)
 			=> E_UCharacterMovementComponent_ReplicateMoveToServer(this, DeltaTime, NewAcceleration);
+		
+		public override void RequestDirectMove(FVector MoveVelocity, bool bForceMaxSpeed)
+			=> E_UCharacterMovementComponent_RequestDirectMove(this, MoveVelocity, bForceMaxSpeed);
+		
+		public override void RequestPathMove(FVector MoveInput)
+			=> E_UCharacterMovementComponent_RequestPathMove(this, MoveInput);
+		
+		public virtual void ResetPredictionData_Client()
+			=> E_UCharacterMovementComponent_ResetPredictionData_Client(this);
+		
+		public virtual void ResetPredictionData_Server()
+			=> E_UCharacterMovementComponent_ResetPredictionData_Server(this);
+		
+		
+		/// <summary>
+		/// <para>Overridden to set bJustTeleported to true, so we don't make incorrect velocity calculations based on adjusted movement. </para>
+		/// </summary>
+		protected override bool ResolvePenetrationImpl(FVector Adjustment, FHitResult Hit, FQuat NewRotation)
+			=> E_UCharacterMovementComponent_ResolvePenetrationImpl(this, Adjustment, Hit, NewRotation);
 		
 		
 		/// <summary>
@@ -2721,6 +3239,9 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual FVector ScaleInputAcceleration(FVector InputAcceleration)
 			=> E_UCharacterMovementComponent_ScaleInputAcceleration(this, InputAcceleration);
+		
+		public virtual void SendClientAdjustment()
+			=> E_UCharacterMovementComponent_SendClientAdjustment(this);
 		
 		
 		/// <summary>
@@ -2811,6 +3332,9 @@ namespace UnrealEngine
 		protected virtual void SetPostLandedPhysics(FHitResult Hit)
 			=> E_UCharacterMovementComponent_SetPostLandedPhysics(this, Hit);
 		
+		public override void SetUpdatedComponent(USceneComponent NewUpdatedComponent)
+			=> E_UCharacterMovementComponent_SetUpdatedComponent(this, NewUpdatedComponent);
+		
 		
 		/// <summary>
 		/// <para>Set the max angle in degrees of a walkable surface for the character. Also computes WalkableFloorZ. </para>
@@ -2892,6 +3416,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Custom version of SlideAlongSurface that handles different movement modes separately; namely during walking physics we might not want to slide up slopes. </para>
+		/// </summary>
+		public override float SlideAlongSurface(FVector Delta, float Time, FVector Normal, FHitResult Hit, bool bHandleImpact)
+			=> E_UCharacterMovementComponent_SlideAlongSurface(this, Delta, Time, Normal, Hit, bHandleImpact);
+		
+		
+		/// <summary>
 		/// <para>Smooth mesh location for network interpolation, based on values set up by SmoothCorrection. </para>
 		/// <para>Internally this simply calls SmoothClientPosition_Interpolate() then SmoothClientPosition_UpdateVisuals(). </para>
 		/// <para>This function is not called when bNetworkSmoothingComplete is true. </para>
@@ -2914,6 +3445,14 @@ namespace UnrealEngine
 		/// </summary>
 		protected void SmoothClientPosition_UpdateVisuals()
 			=> E_UCharacterMovementComponent_SmoothClientPosition_UpdateVisuals(this);
+		
+		
+		/// <summary>
+		/// <para>React to new transform from network update. Sets bNetworkSmoothingComplete to false to ensure future smoothing updates. </para>
+		/// <para>IMPORTANT: It is expected that this function triggers any movement/transform updates to match the network update if desired. </para>
+		/// </summary>
+		public virtual void SmoothCorrection(FVector OldLocation, FQuat OldRotation, FVector NewLocation, FQuat NewRotation)
+			=> E_UCharacterMovementComponent_SmoothCorrection(this, OldLocation, OldRotation, NewLocation, NewRotation);
 		
 		
 		/// <summary>
@@ -2941,6 +3480,9 @@ namespace UnrealEngine
 		public void StartSwimming(FVector OldLocation, FVector OldVelocity, float timeTick, float remainingTime, int Iterations)
 			=> E_UCharacterMovementComponent_StartSwimming(this, OldLocation, OldVelocity, timeTick, remainingTime, Iterations);
 		
+		public override void StopActiveMovement()
+			=> E_UCharacterMovementComponent_StopActiveMovement(this);
+		
 		public float Swim(FVector Delta, FHitResult Hit)
 			=> E_UCharacterMovementComponent_Swim(this, Delta, Hit);
 		
@@ -2960,6 +3502,13 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual bool TryToLeaveNavWalking()
 			=> E_UCharacterMovementComponent_TryToLeaveNavWalking(this);
+		
+		
+		/// <summary>
+		/// <para>Custom version that allows upwards slides when walking if the surface is walkable. </para>
+		/// </summary>
+		public override void TwoWallAdjust(FVector Delta, FHitResult Hit, FVector OldHitNormal)
+			=> E_UCharacterMovementComponent_TwoWallAdjust(this, Delta, Hit, OldHitNormal);
 		
 		
 		/// <summary>
@@ -3017,6 +3566,680 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void VisualizeMovement()
 			=> E_UCharacterMovementComponent_VisualizeMovement(this);
+		
+		
+		/// <summary>
+		/// <para>Adds the given vector to the accumulated input in world space. Input vectors are usually between 0 and 1 in magnitude. </para>
+		/// <para>They are accumulated during a frame then applied as acceleration during the movement update. </para>
+		/// <param name="WorldDirection">Direction in world space to apply input </param>
+		/// <param name="ScaleValue">Scale to apply to input. This can be used for analog input, ie a value of 0.5 applies half the normal value. </param>
+		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
+		/// <para>@see APawn::AddMovementInput() </para>
+		/// </summary>
+		public override void AddInputVector(FVector WorldVector, bool bForce)
+			=> E_UCharacterMovementComponent_AddInputVector(this, WorldVector, bForce);
+		
+		public override FVector ConsumeInputVector()
+			=> E_UCharacterMovementComponent_ConsumeInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Helper to see if move input is ignored. If there is no Pawn or UpdatedComponent, returns true, otherwise defers to the Pawn's implementation of IsMoveInputIgnored(). </para>
+		/// </summary>
+		public override bool IsMoveInputIgnored()
+			=> E_UCharacterMovementComponent_IsMoveInputIgnored(this);
+		
+		
+		/// <summary>
+		/// <para>@returns based location of controlled actor </para>
+		/// </summary>
+		public override FBasedPosition GetActorFeetLocationBased()
+			=> E_UCharacterMovementComponent_GetActorFeetLocationBased(this);
+		
+		public override void StopMovementImmediately()
+			=> E_UCharacterMovementComponent_StopMovementImmediately(this);
+		
+		
+		/// <summary>
+		/// <para>Constrain a direction vector to the plane constraint, if enabled. </para>
+		/// <para>@see SetPlaneConstraint </para>
+		/// </summary>
+		public override FVector ConstrainDirectionToPlane(FVector Direction)
+			=> E_UCharacterMovementComponent_ConstrainDirectionToPlane(this, Direction);
+		
+		
+		/// <summary>
+		/// <para>Constrain a position vector to the plane constraint, if enabled. </para>
+		/// </summary>
+		public override FVector ConstrainLocationToPlane(FVector Location)
+			=> E_UCharacterMovementComponent_ConstrainLocationToPlane(this, Location);
+		
+		
+		/// <summary>
+		/// <para>Constrain a normal vector (of unit length) to the plane constraint, if enabled. </para>
+		/// </summary>
+		public override FVector ConstrainNormalToPlane(FVector Normal)
+			=> E_UCharacterMovementComponent_ConstrainNormalToPlane(this, Normal);
+		
+		
+		/// <summary>
+		/// <return>a scalar applied to the maximum velocity that the component can currently move. </return>
+		/// </summary>
+		public override float GetMaxSpeedModifier()
+			=> E_UCharacterMovementComponent_GetMaxSpeedModifier(this);
+		
+		
+		/// <summary>
+		/// <return>the result of GetMaxSpeed() * GetMaxSpeedModifier(). </return>
+		/// </summary>
+		public override float GetModifiedMaxSpeed()
+			=> E_UCharacterMovementComponent_GetModifiedMaxSpeed(this);
+		
+		
+		/// <summary>
+		/// <para>Overridden to auto-register the updated component if it starts NULL, and we can find a root component on our owner. </para>
+		/// </summary>
+		public override void InitializeComponent()
+			=> E_UCharacterMovementComponent_InitializeComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the current velocity is exceeding the given max speed (usually the result of GetMaxSpeed()), within a small error tolerance. </para>
+		/// <para>Note that under normal circumstances updates cause by acceleration will not cause this to be true, however external forces or changes in the max speed limit </para>
+		/// <para>can cause the max speed to be violated. </para>
+		/// </summary>
+		public override bool IsExceedingMaxSpeed(float MaxSpeed)
+			=> E_UCharacterMovementComponent_IsExceedingMaxSpeed(this, MaxSpeed);
+		
+		
+		/// <summary>
+		/// <para>return true if it's in PhysicsVolume with water flag </para>
+		/// </summary>
+		public override bool IsInWater()
+			=> E_UCharacterMovementComponent_IsInWater(this);
+		
+		
+		/// <summary>
+		/// <return>a scalar applied to the maximum velocity that the component can currently move. </return>
+		/// </summary>
+		public override float K2_GetMaxSpeedModifier()
+			=> E_UCharacterMovementComponent_K2_GetMaxSpeedModifier(this);
+		
+		
+		/// <summary>
+		/// <return>the result of GetMaxSpeed() * GetMaxSpeedModifier(). </return>
+		/// </summary>
+		public override float K2_GetModifiedMaxSpeed()
+			=> E_UCharacterMovementComponent_K2_GetModifiedMaxSpeed(this);
+		
+		protected override bool MoveUpdatedComponentImpl(FVector Delta, FQuat NewRotation, bool bSweep, FHitResult OutHit, ETeleportType Teleport)
+			=> E_UCharacterMovementComponent_MoveUpdatedComponentImpl(this, Delta, NewRotation, bSweep, OutHit, (byte)Teleport);
+		
+		
+		/// <summary>
+		/// <para>Set the plane constraint axis setting. </para>
+		/// <para>Changing this setting will modify the current value of PlaneConstraintNormal. </para>
+		/// <param name="NewAxisSetting">New plane constraint axis setting. </param>
+		/// </summary>
+		public override void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
+			=> E_UCharacterMovementComponent_SetPlaneConstraintAxisSetting(this, (byte)NewAxisSetting);
+		
+		
+		/// <summary>
+		/// <para>Sets whether or not the plane constraint is enabled. </para>
+		/// </summary>
+		public override void SetPlaneConstraintEnabled(bool bEnabled)
+			=> E_UCharacterMovementComponent_SetPlaneConstraintEnabled(this, bEnabled);
+		
+		
+		/// <summary>
+		/// <para>Uses the Forward and Up vectors to compute the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// </summary>
+		public override void SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
+			=> E_UCharacterMovementComponent_SetPlaneConstraintFromVectors(this, Forward, Up);
+		
+		
+		/// <summary>
+		/// <para>Sets the normal of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// <para>Changing the normal automatically sets PlaneConstraintAxisSetting to "Custom". </para>
+		/// <param name="PlaneNormal">The normal of the plane. If non-zero in length, it will be normalized. </param>
+		/// </summary>
+		public override void SetPlaneConstraintNormal(FVector PlaneNormal)
+			=> E_UCharacterMovementComponent_SetPlaneConstraintNormal(this, PlaneNormal);
+		
+		
+		/// <summary>
+		/// <para>Sets the origin of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// </summary>
+		public override void SetPlaneConstraintOrigin(FVector PlaneOrigin)
+			=> E_UCharacterMovementComponent_SetPlaneConstraintOrigin(this, PlaneOrigin);
+		
+		
+		/// <summary>
+		/// <para>Possibly skip update if moved component is not rendered or can't move. </para>
+		/// <param name="DeltaTime">todo this parameter is not used in the function. </param>
+		/// <return>true if component movement update should be skipped </return>
+		/// </summary>
+		public override bool ShouldSkipUpdate(float DeltaTime)
+			=> E_UCharacterMovementComponent_ShouldSkipUpdate(this, DeltaTime);
+		
+		
+		/// <summary>
+		/// <para>Snap the updated component to the plane constraint, if enabled. </para>
+		/// </summary>
+		public override void SnapUpdatedComponentToPlane()
+			=> E_UCharacterMovementComponent_SnapUpdatedComponentToPlane(this);
+		
+		
+		/// <summary>
+		/// <para>Update ComponentVelocity of UpdatedComponent. This needs to be called by derived classes at the end of an update whenever Velocity has changed. </para>
+		/// </summary>
+		public override void UpdateComponentVelocity()
+			=> E_UCharacterMovementComponent_UpdateComponentVelocity(this);
+		
+		
+		/// <summary>
+		/// <para>Update tick registration state, determined by bAutoUpdateTickRegistration. Called by SetUpdatedComponent. </para>
+		/// </summary>
+		public override void UpdateTickRegistration()
+			=> E_UCharacterMovementComponent_UpdateTickRegistration(this);
+		
+		
+		/// <summary>
+		/// <para>Activates the SceneComponent </para>
+		/// <param name="bReset">The value to assign to HiddenGame. </param>
+		/// </summary>
+		public override void Activate(bool bReset)
+			=> E_UCharacterMovementComponent_Activate(this, bReset);
+		
+		
+		/// <summary>
+		/// <para>Make this component tick after PrerequisiteActor </para>
+		/// </summary>
+		public override void AddTickPrerequisiteActor(AActor PrerequisiteActor)
+			=> E_UCharacterMovementComponent_AddTickPrerequisiteActor(this, PrerequisiteActor);
+		
+		
+		/// <summary>
+		/// <para>Make this component tick after PrerequisiteComponent. </para>
+		/// </summary>
+		public override void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
+			=> E_UCharacterMovementComponent_AddTickPrerequisiteComponent(this, PrerequisiteComponent);
+		
+		
+		/// <summary>
+		/// <para>BeginsPlay for the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
+		/// <para>All Components (that want initialization) in the level will be Initialized on load before any </para>
+		/// <para>Actor/Component gets BeginPlay. </para>
+		/// <para>Requires component to be registered and initialized. </para>
+		/// </summary>
+		public override void BeginPlay()
+			=> E_UCharacterMovementComponent_BeginPlay(this);
+		
+		
+		/// <summary>
+		/// <para>Used to create any rendering thread information for this component </para>
+		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// </summary>
+		public override void CreateRenderState_Concurrent()
+			=> E_UCharacterMovementComponent_CreateRenderState_Concurrent(this);
+		
+		
+		/// <summary>
+		/// <para>Unregister the component, remove it from its outer Actor's Components array and mark for pending kill. </para>
+		/// </summary>
+		public override void DestroyComponent(bool bPromoteChildren)
+			=> E_UCharacterMovementComponent_DestroyComponent(this, bPromoteChildren);
+		
+		
+		/// <summary>
+		/// <para>Used to shut down any rendering thread structure for this component </para>
+		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// </summary>
+		public override void DestroyRenderState_Concurrent()
+			=> E_UCharacterMovementComponent_DestroyRenderState_Concurrent(this);
+		
+		public override bool GetComponentClassCanReplicate()
+			=> E_UCharacterMovementComponent_GetComponentClassCanReplicate(this);
+		
+		
+		/// <summary>
+		/// <para>Returns a readable name for this component, including the asset name if applicable </para>
+		/// <para>By default this appends a space plus AdditionalStatObject() </para>
+		/// </summary>
+		public override string GetReadableName()
+			=> E_UCharacterMovementComponent_GetReadableName(this);
+		
+		
+		/// <summary>
+		/// <para>Used to check that DestroyPhysicsState() is working correctly </para>
+		/// </summary>
+		public override bool HasValidPhysicsState()
+			=> E_UCharacterMovementComponent_HasValidPhysicsState(this);
+		
+		
+		/// <summary>
+		/// <para>Called when this actor component has moved, allowing it to discard statically cached lighting information. </para>
+		/// </summary>
+		public override void InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+			=> E_UCharacterMovementComponent_InvalidateLightingCacheDetailed(this, bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+		
+		
+		/// <summary>
+		/// <para>Returns whether the component is active or not </para>
+		/// <return>The active state of the component. </return>
+		/// </summary>
+		public override bool IsActive()
+			=> E_UCharacterMovementComponent_IsActive(this);
+		
+		
+		/// <summary>
+		/// <para>Returns whether this component is an editor-only object or not </para>
+		/// </summary>
+		public override bool IsEditorOnly()
+			=> E_UCharacterMovementComponent_IsEditorOnly(this);
+		
+		
+		/// <summary>
+		/// <para>IsNameStableForNetworking means an object can be referred to its path name (relative to outer) over the network </para>
+		/// </summary>
+		public override bool IsNameStableForNetworking()
+			=> E_UCharacterMovementComponent_IsNameStableForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>override to supply actual logic </para>
+		/// </summary>
+		public override bool IsNavigationRelevant()
+			=> E_UCharacterMovementComponent_IsNavigationRelevant(this);
+		
+		
+		/// <summary>
+		/// <para>Overridable check for a component to indicate to its Owner that it should prevent the Actor from auto destroying when finished </para>
+		/// </summary>
+		public override bool IsReadyForOwnerToAutoDestroy()
+			=> E_UCharacterMovementComponent_IsReadyForOwnerToAutoDestroy(this);
+		
+		
+		/// <summary>
+		/// <para>IsSupportedForNetworking means an object can be referenced over the network </para>
+		/// </summary>
+		public override bool IsSupportedForNetworking()
+			=> E_UCharacterMovementComponent_IsSupportedForNetworking(this);
+		
+		public override void MarkAsEditorOnlySubobject()
+			=> E_UCharacterMovementComponent_MarkAsEditorOnlySubobject(this);
+		
+		public override bool NeedsLoadForClient()
+			=> E_UCharacterMovementComponent_NeedsLoadForClient(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <return>true if this object should always be loaded for editor game </return>
+		/// </summary>
+		public override bool NeedsLoadForEditorGame()
+			=> E_UCharacterMovementComponent_NeedsLoadForEditorGame(this);
+		
+		public override bool NeedsLoadForServer()
+			=> E_UCharacterMovementComponent_NeedsLoadForServer(this);
+		
+		
+		/// <summary>
+		/// <para>Called on each component when the Actor's bEnableCollisionChanged flag changes </para>
+		/// </summary>
+		public override void OnActorEnableCollisionChanged()
+			=> E_UCharacterMovementComponent_OnActorEnableCollisionChanged(this);
+		
+		
+		/// <summary>
+		/// <para>Called when a component is created (not loaded) </para>
+		/// </summary>
+		public override void OnComponentCreated()
+			=> E_UCharacterMovementComponent_OnComponentCreated(this);
+		
+		
+		/// <summary>
+		/// <para>Called when a component is destroyed </para>
+		/// <param name="bDestroyingHierarchy">True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
+		/// </summary>
+		public override void OnComponentDestroyed(bool bDestroyingHierarchy)
+			=> E_UCharacterMovementComponent_OnComponentDestroyed(this, bDestroyingHierarchy);
+		
+		
+		/// <summary>
+		/// <para>Used to create any physics engine information for this component </para>
+		/// </summary>
+		protected override void OnCreatePhysicsState()
+			=> E_UCharacterMovementComponent_OnCreatePhysicsState(this);
+		
+		
+		/// <summary>
+		/// <para>Used to shut down and physics engine structure for this component </para>
+		/// </summary>
+		protected override void OnDestroyPhysicsState()
+			=> E_UCharacterMovementComponent_OnDestroyPhysicsState(this);
+		
+		
+		/// <summary>
+		/// <para>Called when a component is unregistered. Called after DestroyRenderState_Concurrent and OnDestroyPhysicsState are called. </para>
+		/// </summary>
+		public override void OnUnregister()
+			=> E_UCharacterMovementComponent_OnUnregister(this);
+		
+		public override void PostInitProperties()
+			=> E_UCharacterMovementComponent_PostInitProperties(this);
+		
+		public override void PostNetReceive()
+			=> E_UCharacterMovementComponent_PostNetReceive(this);
+		
+		public override void PostRename(UObject OldOuter, string OldName)
+			=> E_UCharacterMovementComponent_PostRename(this, OldOuter, OldName);
+		
+		public override void PreNetReceive()
+			=> E_UCharacterMovementComponent_PreNetReceive(this);
+		
+		
+		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteActor. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteActor(AActor PrerequisiteActor)
+			=> E_UCharacterMovementComponent_RemoveTickPrerequisiteActor(this, PrerequisiteActor);
+		
+		
+		/// <summary>
+		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
+		/// </summary>
+		public override void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
+			=> E_UCharacterMovementComponent_RemoveTickPrerequisiteComponent(this, PrerequisiteComponent);
+		
+		
+		/// <summary>
+		/// <para>return true if this component requires end of frame recreates to happen from the game thread. </para>
+		/// </summary>
+		public override bool RequiresGameThreadEndOfFrameRecreate()
+			=> E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameRecreate(this);
+		
+		
+		/// <summary>
+		/// <para>return true if this component requires end of frame updates to happen from the game thread. </para>
+		/// </summary>
+		public override bool RequiresGameThreadEndOfFrameUpdates()
+			=> E_UCharacterMovementComponent_RequiresGameThreadEndOfFrameUpdates(this);
+		
+		
+		/// <summary>
+		/// <para>Called to send dynamic data for this component to the rendering thread </para>
+		/// </summary>
+		protected override void SendRenderDynamicData_Concurrent()
+			=> E_UCharacterMovementComponent_SendRenderDynamicData_Concurrent(this);
+		
+		
+		/// <summary>
+		/// <para>Called to send a transform update for this component to the rendering thread </para>
+		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// </summary>
+		public override void SendRenderTransform_Concurrent()
+			=> E_UCharacterMovementComponent_SendRenderTransform_Concurrent(this);
+		
+		
+		/// <summary>
+		/// <para>Sets whether the component is active or not </para>
+		/// <param name="bNewActive">The new active state of the component </param>
+		/// </summary>
+		public override void SetActive(bool bNewActive, bool bReset)
+			=> E_UCharacterMovementComponent_SetActive(this, bNewActive, bReset);
+		
+		
+		/// <summary>
+		/// <para>Sets whether the component should be auto activate or not. Only safe during construction scripts. </para>
+		/// <param name="bNewAutoActivate">The new auto activate state of the component </param>
+		/// </summary>
+		public override void SetAutoActivate(bool bNewAutoActivate)
+			=> E_UCharacterMovementComponent_SetAutoActivate(this, bNewAutoActivate);
+		
+		
+		/// <summary>
+		/// <para>Set this component's tick functions to be enabled or disabled. Only has an effect if the function is registered </para>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
+		/// </summary>
+		public override void SetComponentTickEnabled(bool bEnabled)
+			=> E_UCharacterMovementComponent_SetComponentTickEnabled(this, bEnabled);
+		
+		
+		/// <summary>
+		/// <para>Spawns a task on GameThread that will call SetComponentTickEnabled </para>
+		/// <param name="bEnabled">Whether it should be enabled or not </param>
+		/// </summary>
+		public override void SetComponentTickEnabledAsync(bool bEnabled)
+			=> E_UCharacterMovementComponent_SetComponentTickEnabledAsync(this, bEnabled);
+		
+		
+		/// <summary>
+		/// <para>"Trigger" related function. Return true if it should activate </para>
+		/// </summary>
+		protected override bool ShouldActivate()
+			=> E_UCharacterMovementComponent_ShouldActivate(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if CreatePhysicsState() should be called. </para>
+		/// <para>Ideally CreatePhysicsState() should always succeed if this returns true, but this isn't currently the case </para>
+		/// </summary>
+		public override bool ShouldCreatePhysicsState()
+			=> E_UCharacterMovementComponent_ShouldCreatePhysicsState(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if CreateRenderState() should be called </para>
+		/// </summary>
+		public override bool ShouldCreateRenderState()
+			=> E_UCharacterMovementComponent_ShouldCreateRenderState(this);
+		
+		
+		/// <summary>
+		/// <para>Toggles the active state of the component </para>
+		/// </summary>
+		public override void ToggleActive()
+			=> E_UCharacterMovementComponent_ToggleActive(this);
+		
+		
+		/// <summary>
+		/// <para>Handle this component being Uninitialized. </para>
+		/// <para>Called from AActor::EndPlay only if bHasBeenInitialized is true </para>
+		/// </summary>
+		public override void UninitializeComponent()
+			=> E_UCharacterMovementComponent_UninitializeComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Recalculate the value of our component to world transform </para>
+		/// </summary>
+		public override void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+			=> E_UCharacterMovementComponent_UpdateComponentToWorld(this, (byte)UpdateTransformFlags, (byte)Teleport);
+		
+		
+		/// <summary>
+		/// <para>Returns whether native properties are identical to the one of the passed in component. </para>
+		/// <param name="Other">Other component to compare against </param>
+		/// <return>true if native properties are identical, false otherwise </return>
+		/// </summary>
+		public override bool AreNativePropertiesIdenticalTo(UObject Other)
+			=> E_UCharacterMovementComponent_AreNativePropertiesIdenticalTo(this, Other);
+		
+		
+		/// <summary>
+		/// <para>Checks default sub-object assumptions. </para>
+		/// <return>true if the assumptions are met, false otherwise. </return>
+		/// </summary>
+		public override bool CheckDefaultSubobjectsInternal()
+			=> E_UCharacterMovementComponent_CheckDefaultSubobjectsInternal(this);
+		
+		
+		/// <summary>
+		/// <para>Called to finish destroying the object.  After UObject::FinishDestroy is called, the object's memory should no longer be accessed. </para>
+		/// <para>note: because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's </para>
+		/// <para>FinishDestroy() method, rather than at the beginning. </para>
+		/// </summary>
+		public override void FinishDestroy()
+			=> E_UCharacterMovementComponent_FinishDestroy(this);
+		
+		
+		/// <summary>
+		/// <return>a one line description of an object for viewing in the thumbnail view of the generic browser </return>
+		/// </summary>
+		public override string GetDesc()
+			=> E_UCharacterMovementComponent_GetDesc(this);
+		
+		
+		/// <summary>
+		/// <para>This function actually does the work for the GetDetailInfo and is virtual. </para>
+		/// <para>It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers </para>
+		/// </summary>
+		public override string GetDetailedInfoInternal()
+			=> E_UCharacterMovementComponent_GetDetailedInfoInternal(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered an asset. </para>
+		/// </summary>
+		public override bool IsAsset()
+			=> E_UCharacterMovementComponent_IsAsset(this);
+		
+		
+		/// <summary>
+		/// <para>IsFullNameStableForNetworking means an object can be referred to its full path name over the network </para>
+		/// </summary>
+		public override bool IsFullNameStableForNetworking()
+			=> E_UCharacterMovementComponent_IsFullNameStableForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered a localized resource. </para>
+		/// </summary>
+		public override bool IsLocalizedResource()
+			=> E_UCharacterMovementComponent_IsLocalizedResource(this);
+		
+		
+		/// <summary>
+		/// <para>Called during async load to determine if PostLoad can be called on the loading thread. </para>
+		/// <return>true if this object's PostLoad is thread safe </return>
+		/// </summary>
+		public override bool IsPostLoadThreadSafe()
+			=> E_UCharacterMovementComponent_IsPostLoadThreadSafe(this);
+		
+		
+		/// <summary>
+		/// <para>Called to check if the object is ready for FinishDestroy.  This is called after BeginDestroy to check the completion of the </para>
+		/// <para>potentially asynchronous object cleanup. </para>
+		/// <return>True if the object's asynchronous cleanup has completed and it is ready for FinishDestroy to be called. </return>
+		/// </summary>
+		public override bool IsReadyForFinishDestroy()
+			=> E_UCharacterMovementComponent_IsReadyForFinishDestroy(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is safe to add to the root set. </para>
+		/// </summary>
+		public override bool IsSafeForRootSet()
+			=> E_UCharacterMovementComponent_IsSafeForRootSet(this);
+		
+		
+		/// <summary>
+		/// <para>Note that the object will be modified.  If we are currently recording into the </para>
+		/// <para>transaction buffer (undo/redo), save a copy of this object into the buffer and </para>
+		/// <para>marks the package as needing to be saved. </para>
+		/// <param name="bAlwaysMarkDirty">if true, marks the package dirty even if we aren't </param>
+		/// <para>currently recording an active undo/redo transaction </para>
+		/// <return>true if the object was saved to the transaction buffer </return>
+		/// </summary>
+		public override bool Modify(bool bAlwaysMarkDirty)
+			=> E_UCharacterMovementComponent_Modify(this, bAlwaysMarkDirty);
+		
+		public override void NotifyObjectReferenceEliminated()
+			=> E_UCharacterMovementComponent_NotifyObjectReferenceEliminated(this);
+		
+		
+		/// <summary>
+		/// <para>Called after the C++ constructor has run on the CDO for a class. This is an obscure routine used to deal with the recursion </para>
+		/// <para>in the construction of the default materials </para>
+		/// </summary>
+		public override void PostCDOContruct()
+			=> E_UCharacterMovementComponent_PostCDOContruct(this);
+		
+		
+		/// <summary>
+		/// <para>Called after importing property values for this object (paste, duplicate or .t3d import) </para>
+		/// <para>Allow the object to perform any cleanup for properties which shouldn't be duplicated or </para>
+		/// <para>are unsupported by the script serialization </para>
+		/// </summary>
+		public override void PostEditImport()
+			=> E_UCharacterMovementComponent_PostEditImport(this);
+		
+		
+		/// <summary>
+		/// <para>Called right after calling all OnRep notifies (called even when there are no notifies) </para>
+		/// </summary>
+		public override void PostRepNotifies()
+			=> E_UCharacterMovementComponent_PostRepNotifies(this);
+		
+		
+		/// <summary>
+		/// <para>Called from within SavePackage on the passed in base/ root. This function is being called after the package </para>
+		/// <para>has been saved and can perform cleanup. </para>
+		/// <param name="bCleanupIsRequired">Whether PreSaveRoot dirtied state that needs to be cleaned up </param>
+		/// </summary>
+		public override void PostSaveRoot(bool bCleanupIsRequired)
+			=> E_UCharacterMovementComponent_PostSaveRoot(this, bCleanupIsRequired);
+		
+		
+		/// <summary>
+		/// <para>Called right before being marked for destruction due to network replication </para>
+		/// </summary>
+		public override void PreDestroyFromReplication()
+			=> E_UCharacterMovementComponent_PreDestroyFromReplication(this);
+		
+		public override void ShutdownAfterError()
+			=> E_UCharacterMovementComponent_ShutdownAfterError(this);
+		
+		
+		/// <summary>
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
+		/// </summary>
+		public override void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_UCharacterMovementComponent_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		
+		
+		/// <summary>
+		/// <para>Called after load to determine if the object can be a cluster root </para>
+		/// <return>true if this object can be a cluster root </return>
+		/// </summary>
+		public override bool CanBeClusterRoot()
+			=> E_UCharacterMovementComponent_CanBeClusterRoot(this);
+		
+		
+		/// <summary>
+		/// <para>Called during cluster construction if the object can be added to a cluster </para>
+		/// <return>true if this object can be inside of a cluster </return>
+		/// </summary>
+		public override bool CanBeInCluster()
+			=> E_UCharacterMovementComponent_CanBeInCluster(this);
+		
+		
+		/// <summary>
+		/// <para>Called after PostLoad to create UObject cluster </para>
+		/// </summary>
+		public override void CreateCluster()
+			=> E_UCharacterMovementComponent_CreateCluster(this);
+		
+		
+		/// <summary>
+		/// <para>Called during Garbage Collection to perform additional cleanup when the cluster is about to be destroyed due to PendingKill flag being set on it. </para>
+		/// </summary>
+		public override void OnClusterMarkedAsPendingKill()
+			=> E_UCharacterMovementComponent_OnClusterMarkedAsPendingKill(this);
 		
 		#endregion
 		

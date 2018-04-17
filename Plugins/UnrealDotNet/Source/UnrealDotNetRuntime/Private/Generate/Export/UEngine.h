@@ -162,6 +162,11 @@ extern "C"
 		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UEngine_FinishDestroy(UEngine* Self)
+	{
+		Self->FinishDestroy();
+	}
+
 	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionStatus(UEngine* Self)
 	{
 		return Self->GetDynamicResolutionStatus();
@@ -240,6 +245,198 @@ extern "C"
 	{
 		auto _p0 = InWorld;
 		Self->WorldDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_AreNativePropertiesIdenticalTo(UEngine* Self, UObject* Other)
+	{
+		auto _p0 = Other;
+		return Self->AreNativePropertiesIdenticalTo(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_BeginDestroy(UEngine* Self)
+	{
+		Self->BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_CheckDefaultSubobjectsInternal(UEngine* Self)
+	{
+		return Self->CheckDefaultSubobjectsInternal();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetDesc(UEngine* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDesc());
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetDetailedInfoInternal(UEngine* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDetailedInfoInternal());
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetWorld(UEngine* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsAsset(UEngine* Self)
+	{
+		return Self->IsAsset();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsEditorOnly(UEngine* Self)
+	{
+		return Self->IsEditorOnly();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsFullNameStableForNetworking(UEngine* Self)
+	{
+		return Self->IsFullNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsLocalizedResource(UEngine* Self)
+	{
+		return Self->IsLocalizedResource();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsNameStableForNetworking(UEngine* Self)
+	{
+		return Self->IsNameStableForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsPostLoadThreadSafe(UEngine* Self)
+	{
+		return Self->IsPostLoadThreadSafe();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsReadyForFinishDestroy(UEngine* Self)
+	{
+		return Self->IsReadyForFinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsSafeForRootSet(UEngine* Self)
+	{
+		return Self->IsSafeForRootSet();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_IsSupportedForNetworking(UEngine* Self)
+	{
+		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_MarkAsEditorOnlySubobject(UEngine* Self)
+	{
+		Self->MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_Modify(UEngine* Self, bool bAlwaysMarkDirty)
+	{
+		auto _p0 = bAlwaysMarkDirty;
+		return Self->Modify(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_NeedsLoadForClient(UEngine* Self)
+	{
+		return Self->NeedsLoadForClient();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_NeedsLoadForEditorGame(UEngine* Self)
+	{
+		return Self->NeedsLoadForEditorGame();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_NeedsLoadForServer(UEngine* Self)
+	{
+		return Self->NeedsLoadForServer();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_NotifyObjectReferenceEliminated(UEngine* Self)
+	{
+		Self->NotifyObjectReferenceEliminated();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostCDOContruct(UEngine* Self)
+	{
+		Self->PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostEditImport(UEngine* Self)
+	{
+		Self->PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostInitProperties(UEngine* Self)
+	{
+		Self->PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostLoad(UEngine* Self)
+	{
+		Self->PostLoad();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostNetReceive(UEngine* Self)
+	{
+		Self->PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostRename(UEngine* Self, UObject* OldOuter, char* OldName)
+	{
+		auto _p0 = OldOuter;
+		auto _p1 = ConvertFromManage_FName(OldName);
+		Self->PostRename(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostRepNotifies(UEngine* Self)
+	{
+		Self->PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PostSaveRoot(UEngine* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		Self->PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PreDestroyFromReplication(UEngine* Self)
+	{
+		Self->PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_PreNetReceive(UEngine* Self)
+	{
+		Self->PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_ShutdownAfterError(UEngine* Self)
+	{
+		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_AddToCluster(UEngine* Self, UObjectBaseUtility* ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+	{
+		auto _p0 = ClusterRootOrObjectFromCluster;
+		auto _p1 = bAddAsMutableObject;
+		Self->AddToCluster(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_CanBeClusterRoot(UEngine* Self)
+	{
+		return Self->CanBeClusterRoot();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_CanBeInCluster(UEngine* Self)
+	{
+		return Self->CanBeInCluster();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_CreateCluster(UEngine* Self)
+	{
+		Self->CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_OnClusterMarkedAsPendingKill(UEngine* Self)
+	{
+		Self->OnClusterMarkedAsPendingKill();
 	}
 
 }

@@ -278,6 +278,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_AttachToComponent(IntPtr Self, IntPtr Parent, IntPtr AttachmentRules, string SocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_BeginDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_BeginPlay(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -287,6 +290,9 @@ namespace UnrealEngine
 		private static extern bool E_AActor_CanBeBaseForCharacter(IntPtr Self, IntPtr Pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_CanBeInCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_CanEverTick(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -294,6 +300,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_CheckComponentInstanceName(IntPtr Self, string InName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_CheckDefaultSubobjectsInternal(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_CheckStillInWorld(IntPtr Self);
@@ -521,6 +530,9 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetVerticalDistanceTo(IntPtr Self, IntPtr OtherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_GetWorld(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasActiveCameraComponent(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -587,6 +599,9 @@ namespace UnrealEngine
 		private static extern bool E_AActor_IsMatineeControlled(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsNetMode(IntPtr Self, byte Mode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -603,6 +618,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsPendingKillPending(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsReadyForFinishDestroy(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsRelevancyOwnerFor(IntPtr Self, IntPtr ReplicatedActor, IntPtr ActorOwner, IntPtr ConnectionActor);
@@ -624,6 +642,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsRunningUserConstructionScript(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsSupportedForNetworking(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsWithinNetRelevancyDistance(IntPtr Self, IntPtr SrcLocation);
@@ -713,6 +734,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_MarkComponentsRenderStateDirty(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_Modify(IntPtr Self, bool bAlwaysMarkDirty);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_NotifyActorBeginCursorOver(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -773,7 +797,16 @@ namespace UnrealEngine
 		private static extern void E_AActor_PostInitializeComponents(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostInitProperties(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostLoad(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostNetInit(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostNetReceive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostNetReceiveLocationAndRotation(IntPtr Self);
@@ -788,6 +821,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_PostRegisterAllComponents(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostSpawnInitialize(IntPtr Self, IntPtr SpawnTransform, IntPtr InOwner, IntPtr InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -795,6 +831,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PreInitializeComponents(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PreNetReceive(IntPtr Self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PrestreamTextures(IntPtr Self, float Seconds, bool bEnableStreaming, int CinematicTextureGroups);
@@ -984,6 +1023,81 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_WasRecentlyRendered(IntPtr Self, float Tolerance);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_FinishDestroy(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_AActor_GetDesc(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_AActor_GetDetailedInfoInternal(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsAsset(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsEditorOnly(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsFullNameStableForNetworking(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsLocalizedResource(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsPostLoadThreadSafe(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsSafeForRootSet(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_MarkAsEditorOnlySubobject(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_NeedsLoadForClient(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_NeedsLoadForEditorGame(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_NeedsLoadForServer(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_NotifyObjectReferenceEliminated(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostCDOContruct(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostEditImport(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostRepNotifies(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostSaveRoot(IntPtr Self, bool bCleanupIsRequired);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PreDestroyFromReplication(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_ShutdownAfterError(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_CanBeClusterRoot(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_CreateCluster(IntPtr Self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_OnClusterMarkedAsPendingKill(IntPtr Self);
 		
 		#endregion
 		
@@ -1611,11 +1725,14 @@ namespace UnrealEngine
 		public void AttachToComponent(USceneComponent Parent, FAttachmentTransformRules AttachmentRules, string SocketName)
 			=> E_AActor_AttachToComponent(this, Parent, AttachmentRules, SocketName);
 		
+		public override void BeginDestroy()
+			=> E_AActor_BeginDestroy(this);
+		
 		
 		/// <summary>
 		/// <para>Overridable native event for when play begins for this actor. </para>
 		/// </summary>
-		protected virtual void BeginPlay()
+		public virtual void BeginPlay()
 			=> E_AActor_BeginPlay(this);
 		
 		
@@ -1633,6 +1750,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool CanBeBaseForCharacter(APawn Pawn)
 			=> E_AActor_CanBeBaseForCharacter(this, Pawn);
+		
+		public override bool CanBeInCluster()
+			=> E_AActor_CanBeInCluster(this);
 		
 		
 		/// <summary>
@@ -1654,6 +1774,9 @@ namespace UnrealEngine
 		/// </summary>
 		public void CheckComponentInstanceName(string InName)
 			=> E_AActor_CheckComponentInstanceName(this, InName);
+		
+		public override bool CheckDefaultSubobjectsInternal()
+			=> E_AActor_CheckDefaultSubobjectsInternal(this);
 		
 		
 		/// <summary>
@@ -2214,6 +2337,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Getter for the cached world pointer </para>
+		/// </summary>
+		public override UWorld GetWorld()
+			=> E_AActor_GetWorld(this);
+		
+		
+		/// <summary>
 		/// <para>Returns true if the actor contains an active camera component </para>
 		/// </summary>
 		public virtual bool HasActiveCameraComponent()
@@ -2372,6 +2502,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>IsNameStableForNetworking means an object can be referred to its path name (relative to outer) over the network </para>
+		/// </summary>
+		public override bool IsNameStableForNetworking()
+			=> E_AActor_IsNameStableForNetworking(this);
+		
+		
+		/// <summary>
 		/// <para>Test whether net mode is the given mode. </para>
 		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
 		/// <para>because it can check the static build flags without considering PIE. </para>
@@ -2420,6 +2557,9 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsPendingKillPending()
 			=> E_AActor_IsPendingKillPending(this);
+		
+		public override bool IsReadyForFinishDestroy()
+			=> E_AActor_IsReadyForFinishDestroy(this);
 		
 		
 		/// <summary>
@@ -2476,6 +2616,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsRunningUserConstructionScript()
 			=> E_AActor_IsRunningUserConstructionScript(this);
+		
+		
+		/// <summary>
+		/// <para>IsSupportedForNetworking means an object can be referenced over the network </para>
+		/// </summary>
+		public override bool IsSupportedForNetworking()
+			=> E_AActor_IsSupportedForNetworking(this);
 		
 		
 		/// <summary>
@@ -2790,6 +2937,9 @@ namespace UnrealEngine
 		public void MarkComponentsRenderStateDirty()
 			=> E_AActor_MarkComponentsRenderStateDirty(this);
 		
+		public override bool Modify(bool bAlwaysMarkDirty)
+			=> E_AActor_Modify(this, bAlwaysMarkDirty);
+		
 		
 		/// <summary>
 		/// <para>Event when this actor has the mouse moved over it with the clickable interface. </para>
@@ -2921,12 +3071,25 @@ namespace UnrealEngine
 		public virtual void PostInitializeComponents()
 			=> E_AActor_PostInitializeComponents(this);
 		
+		public override void PostInitProperties()
+			=> E_AActor_PostInitProperties(this);
+		
+		public override void PostLoad()
+			=> E_AActor_PostLoad(this);
+		
 		
 		/// <summary>
 		/// <para>Always called immediately after spawning and reading in replicated properties </para>
 		/// </summary>
 		public virtual void PostNetInit()
 			=> E_AActor_PostNetInit(this);
+		
+		
+		/// <summary>
+		/// <para>Always called immediately after properties are received from the remote. </para>
+		/// </summary>
+		public override void PostNetReceive()
+			=> E_AActor_PostNetReceive(this);
 		
 		
 		/// <summary>
@@ -2956,6 +3119,9 @@ namespace UnrealEngine
 		public virtual void PostRegisterAllComponents()
 			=> E_AActor_PostRegisterAllComponents(this);
 		
+		public override void PostRename(UObject OldOuter, string OldName)
+			=> E_AActor_PostRename(this, OldOuter, OldName);
+		
 		
 		/// <summary>
 		/// <para>Called after the actor is spawned in the world.  Responsible for setting up actor for play. </para>
@@ -2976,6 +3142,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PreInitializeComponents()
 			=> E_AActor_PreInitializeComponents(this);
+		
+		
+		/// <summary>
+		/// <para>Always called immediately before properties are received from the remote. </para>
+		/// </summary>
+		public override void PreNetReceive()
+			=> E_AActor_PreNetReceive(this);
 		
 		
 		/// <summary>
@@ -3464,6 +3637,190 @@ namespace UnrealEngine
 		/// </summary>
 		public bool WasRecentlyRendered(float Tolerance)
 			=> E_AActor_WasRecentlyRendered(this, Tolerance);
+		
+		
+		/// <summary>
+		/// <para>Returns whether native properties are identical to the one of the passed in component. </para>
+		/// <param name="Other">Other component to compare against </param>
+		/// <return>true if native properties are identical, false otherwise </return>
+		/// </summary>
+		public override bool AreNativePropertiesIdenticalTo(UObject Other)
+			=> E_AActor_AreNativePropertiesIdenticalTo(this, Other);
+		
+		
+		/// <summary>
+		/// <para>Called to finish destroying the object.  After UObject::FinishDestroy is called, the object's memory should no longer be accessed. </para>
+		/// <para>note: because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's </para>
+		/// <para>FinishDestroy() method, rather than at the beginning. </para>
+		/// </summary>
+		public override void FinishDestroy()
+			=> E_AActor_FinishDestroy(this);
+		
+		
+		/// <summary>
+		/// <return>a one line description of an object for viewing in the thumbnail view of the generic browser </return>
+		/// </summary>
+		public override string GetDesc()
+			=> E_AActor_GetDesc(this);
+		
+		
+		/// <summary>
+		/// <para>This function actually does the work for the GetDetailInfo and is virtual. </para>
+		/// <para>It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers </para>
+		/// </summary>
+		public override string GetDetailedInfoInternal()
+			=> E_AActor_GetDetailedInfoInternal(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered an asset. </para>
+		/// </summary>
+		public override bool IsAsset()
+			=> E_AActor_IsAsset(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine if the object is forced to be editor only or not </para>
+		/// <return>true if this object should never be loaded outside the editor </return>
+		/// </summary>
+		public override bool IsEditorOnly()
+			=> E_AActor_IsEditorOnly(this);
+		
+		
+		/// <summary>
+		/// <para>IsFullNameStableForNetworking means an object can be referred to its full path name over the network </para>
+		/// </summary>
+		public override bool IsFullNameStableForNetworking()
+			=> E_AActor_IsFullNameStableForNetworking(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is considered a localized resource. </para>
+		/// </summary>
+		public override bool IsLocalizedResource()
+			=> E_AActor_IsLocalizedResource(this);
+		
+		
+		/// <summary>
+		/// <para>Called during async load to determine if PostLoad can be called on the loading thread. </para>
+		/// <return>true if this object's PostLoad is thread safe </return>
+		/// </summary>
+		public override bool IsPostLoadThreadSafe()
+			=> E_AActor_IsPostLoadThreadSafe(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this object is safe to add to the root set. </para>
+		/// </summary>
+		public override bool IsSafeForRootSet()
+			=> E_AActor_IsSafeForRootSet(this);
+		
+		public override void MarkAsEditorOnlySubobject()
+			=> E_AActor_MarkAsEditorOnlySubobject(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will be discarded on clients </para>
+		/// <return>true if this object should be loaded on clients </return>
+		/// </summary>
+		public override bool NeedsLoadForClient()
+			=> E_AActor_NeedsLoadForClient(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will still get loaded if NeedsLoadForServer/Client are true </para>
+		/// <return>true if this object should always be loaded for editor game </return>
+		/// </summary>
+		public override bool NeedsLoadForEditorGame()
+			=> E_AActor_NeedsLoadForEditorGame(this);
+		
+		
+		/// <summary>
+		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>If false, this object will be discarded on servers </para>
+		/// <return>true if this object should be loaded on servers </return>
+		/// </summary>
+		public override bool NeedsLoadForServer()
+			=> E_AActor_NeedsLoadForServer(this);
+		
+		public override void NotifyObjectReferenceEliminated()
+			=> E_AActor_NotifyObjectReferenceEliminated(this);
+		
+		
+		/// <summary>
+		/// <para>Called after the C++ constructor has run on the CDO for a class. This is an obscure routine used to deal with the recursion </para>
+		/// <para>in the construction of the default materials </para>
+		/// </summary>
+		public override void PostCDOContruct()
+			=> E_AActor_PostCDOContruct(this);
+		
+		
+		/// <summary>
+		/// <para>Called after importing property values for this object (paste, duplicate or .t3d import) </para>
+		/// <para>Allow the object to perform any cleanup for properties which shouldn't be duplicated or </para>
+		/// <para>are unsupported by the script serialization </para>
+		/// </summary>
+		public override void PostEditImport()
+			=> E_AActor_PostEditImport(this);
+		
+		
+		/// <summary>
+		/// <para>Called right after calling all OnRep notifies (called even when there are no notifies) </para>
+		/// </summary>
+		public override void PostRepNotifies()
+			=> E_AActor_PostRepNotifies(this);
+		
+		
+		/// <summary>
+		/// <para>Called from within SavePackage on the passed in base/ root. This function is being called after the package </para>
+		/// <para>has been saved and can perform cleanup. </para>
+		/// <param name="bCleanupIsRequired">Whether PreSaveRoot dirtied state that needs to be cleaned up </param>
+		/// </summary>
+		public override void PostSaveRoot(bool bCleanupIsRequired)
+			=> E_AActor_PostSaveRoot(this, bCleanupIsRequired);
+		
+		
+		/// <summary>
+		/// <para>Called right before being marked for destruction due to network replication </para>
+		/// </summary>
+		public override void PreDestroyFromReplication()
+			=> E_AActor_PreDestroyFromReplication(this);
+		
+		public override void ShutdownAfterError()
+			=> E_AActor_ShutdownAfterError(this);
+		
+		
+		/// <summary>
+		/// <para>Adds this objects to a GC cluster that already exists </para>
+		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
+		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
+		/// </summary>
+		public override void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_AActor_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		
+		
+		/// <summary>
+		/// <para>Called after load to determine if the object can be a cluster root </para>
+		/// <return>true if this object can be a cluster root </return>
+		/// </summary>
+		public override bool CanBeClusterRoot()
+			=> E_AActor_CanBeClusterRoot(this);
+		
+		
+		/// <summary>
+		/// <para>Called after PostLoad to create UObject cluster </para>
+		/// </summary>
+		public override void CreateCluster()
+			=> E_AActor_CreateCluster(this);
+		
+		
+		/// <summary>
+		/// <para>Called during Garbage Collection to perform additional cleanup when the cluster is about to be destroyed due to PendingKill flag being set on it. </para>
+		/// </summary>
+		public override void OnClusterMarkedAsPendingKill()
+			=> E_AActor_OnClusterMarkedAsPendingKill(this);
 		
 		#endregion
 		
