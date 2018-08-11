@@ -112,15 +112,15 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 
 	DotnetTypeName->RemoveOtherProperys(propertys);
 
-	UCoreShell::OnAssembleLoad.BindLambda([&StructBuilder]()
-	{
-		StructBuilder.GetParentCategory().GetParentLayout().ForceRefreshDetails(); 
-	});
+	//UCoreShell::GetInstance()->OnAssembleLoad.BindLambda([&StructBuilder]()
+	//{
+	//	StructBuilder.GetParentCategory().GetParentLayout().ForceRefreshDetails();
+	//});
 }
 
 TSharedPtr<FJsonObject> FDotnetTypeNameCustomization::GetMetadata()
 {
-	auto json_source = UCoreShell::InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
+	auto json_source = UCoreShell::GetInstance()->InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
 	auto json = FString(UTF8_TO_TCHAR(json_source));
 
 	TSharedPtr<FJsonObject> Data;

@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/ActorComponent.h"
 #include "ManageActorComponent.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageActorComponent : public UActorComponent
@@ -44,6 +44,8 @@ public:
 	virtual void OnComponentCreated() override;
 	
 	virtual void OnComponentDestroyed(bool bDestroyingHierarchy) override;
+	
+	virtual void OnRep_IsActive() override;
 	
 	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
 	

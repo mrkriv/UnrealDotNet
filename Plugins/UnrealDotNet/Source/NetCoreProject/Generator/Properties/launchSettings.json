@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Generator": {
-      "commandName": "Project",
-      "commandLineArgs": "--ue D:\\UE4\\UE_4.19 --o \"$(SolutionDir)..\\..\""
-    }
-  }
-}

@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/SkyLightComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:99
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:92
 
 class E_PROTECTED_WRAP_USkyLightComponent : protected USkyLightComponent
 {
@@ -13,6 +13,11 @@ public:
 	void UpdateLimitedRenderingStateFast_WRAP()
 	{
 		UpdateLimitedRenderingStateFast();
+	}
+
+	void UpdateOcclusionRenderingStateFast_WRAP()
+	{
+		UpdateOcclusionRenderingStateFast();
 	}
 
 }
@@ -24,6 +29,11 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_NewObject_USkyLightComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<USkyLightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_USkyLightComponent_IsOcclusionSupported(USkyLightComponent* Self)
+	{
+		return Self->IsOcclusionSupported();
 	}
 
 	DOTNET_EXPORT auto E_USkyLightComponent_RecaptureSky(USkyLightComponent* Self)
@@ -49,6 +59,11 @@ extern "C"
 	DOTNET_EXPORT auto E_USkyLightComponent_UpdateLimitedRenderingStateFast(USkyLightComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USkyLightComponent*)Self)->UpdateLimitedRenderingStateFast_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USkyLightComponent_UpdateOcclusionRenderingStateFast(USkyLightComponent* Self)
+	{
+		((E_PROTECTED_WRAP_USkyLightComponent*)Self)->UpdateOcclusionRenderingStateFast_WRAP();
 	}
 
 }

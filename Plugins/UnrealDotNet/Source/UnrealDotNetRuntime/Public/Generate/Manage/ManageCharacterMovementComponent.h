@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 #include "ManageCharacterMovementComponent.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageCharacterMovementComponent : public UCharacterMovementComponent
@@ -93,9 +93,9 @@ public:
 	
 	virtual void UpdateBasedRotation(FRotator& FinalRotation, const FRotator& ReducedRotation) override;
 	
-	virtual void UpdateCharacterStateAfterMovement() override;
+	virtual void UpdateCharacterStateAfterMovement(float DeltaSeconds) override;
 	
-	virtual void UpdateCharacterStateBeforeMovement() override;
+	virtual void UpdateCharacterStateBeforeMovement(float DeltaSeconds) override;
 	
 	virtual void UpdateFloorFromAdjustment() override;
 	

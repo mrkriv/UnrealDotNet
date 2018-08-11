@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/SceneCaptureComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:59
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:60
 
 class E_PROTECTED_WRAP_USceneCaptureComponent : protected USceneCaptureComponent
 {
@@ -20,6 +20,9 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_ProfilingEventName_GET(USceneCaptureComponent* Ptr) { return ConvertToManage_StringWrapper(Ptr->ProfilingEventName); }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_ProfilingEventName_SET(USceneCaptureComponent* Ptr, char* Value) { Ptr->ProfilingEventName = ConvertFromManage_FString(Value); }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneCaptureComponent(UObject* Parent, char* Name)
 	{

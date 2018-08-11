@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/Character.h"
 #include "ManageCharacter.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageCharacter : public ACharacter
@@ -27,7 +27,7 @@ public:
 	
 	virtual void CheckJumpInput(float DeltaTime) override;
 	
-	virtual void ClearJumpInput() override;
+	virtual void ClearJumpInput(float DeltaTime) override;
 	
 	virtual void ClientCheatFly_Implementation() override;
 	
@@ -46,6 +46,10 @@ public:
 	virtual void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride) override;
 	
 	virtual void MoveBlockedBy(const FHitResult& Impact) override;
+	
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
+	
+	virtual void NotifyActorEndOverlap(AActor* OtherActor) override;
 	
 	virtual void NotifyJumpApex() override;
 	

@@ -40,6 +40,7 @@
             "UStereoLayerComponent",
             "UModelComponent",
             "UWindDirectionalSourceComponent",
+			"UHierarchicalInstancedStaticMeshComponent",
 
             "FWorldDelegates",
             "FSkelMeshSkinWeightInfo",
@@ -56,6 +57,7 @@
             "FSwarmDebugOptions",
             "FAnimUpdateRateParameters",
             "FTimerHandle",
+			"FInstanceUpdateCmdBuffer",
 
             "FCompareFActorPriority", // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
 
@@ -84,7 +86,9 @@
             "FSkeletalMeshComponentClothTickFunction",
             "FStartPhysicsTickFunction",
             "FEndPhysicsTickFunction",
-            "FStartAsyncSimulationFunction"
+            "FStartAsyncSimulationFunction",
+			
+			"FSetActorWantsDestroyDuringBeginPlay"
         ],
         "ManualImplementedClassMasks": [
             "TArray__\\w+"

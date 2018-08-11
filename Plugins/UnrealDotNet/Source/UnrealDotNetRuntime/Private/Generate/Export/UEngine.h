@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:603
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:630
 
 extern "C"
 {
@@ -57,6 +57,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_GET(UEngine* Ptr) { return Ptr->MaxES2PixelShaderAdditiveComplexityCount; }
 	DOTNET_EXPORT void E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_SET(UEngine* Ptr, float Value) { Ptr->MaxES2PixelShaderAdditiveComplexityCount = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_MaxES3PixelShaderAdditiveComplexityCount_GET(UEngine* Ptr) { return Ptr->MaxES3PixelShaderAdditiveComplexityCount; }
+	DOTNET_EXPORT void E_PROP_UEngine_MaxES3PixelShaderAdditiveComplexityCount_SET(UEngine* Ptr, float Value) { Ptr->MaxES3PixelShaderAdditiveComplexityCount = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_MaximumLoopIterationCount_GET(UEngine* Ptr) { return Ptr->MaximumLoopIterationCount; }
 	DOTNET_EXPORT void E_PROP_UEngine_MaximumLoopIterationCount_SET(UEngine* Ptr, int32 Value) { Ptr->MaximumLoopIterationCount = Value; }
 	
@@ -95,9 +98,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_ParticleEventManagerClassPath_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->ParticleEventManagerClassPath); }
 	DOTNET_EXPORT void E_PROP_UEngine_ParticleEventManagerClassPath_SET(UEngine* Ptr, char* Value) { Ptr->ParticleEventManagerClassPath = ConvertFromManage_FString(Value); }
-	
-	DOTNET_EXPORT auto E_PROP_UEngine_PhysicErrorCorrection_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->PhysicErrorCorrection); }
-	DOTNET_EXPORT void E_PROP_UEngine_PhysicErrorCorrection_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PhysicErrorCorrection = *(FRigidBodyErrorCorrection*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(UEngine* Ptr) { return Ptr->PrimitiveProbablyVisibleTime; }
 	DOTNET_EXPORT void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(UEngine* Ptr, float Value) { Ptr->PrimitiveProbablyVisibleTime = Value; }
@@ -162,9 +162,10 @@ extern "C"
 		return (INT_PTR)NewObject<UEngine>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionStatus(UEngine* Self)
+	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionCurrentStateInfos(UEngine* Self, INT_PTR OutInfos)
 	{
-		return Self->GetDynamicResolutionStatus();
+		auto _p0 = *(FDynamicResolutionStateInfos*)OutInfos;
+		Self->GetDynamicResolutionCurrentStateInfos(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionUserSetting(UEngine* Self)

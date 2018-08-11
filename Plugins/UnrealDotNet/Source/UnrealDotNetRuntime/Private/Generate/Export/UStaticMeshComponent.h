@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:154
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:171
 
 extern "C"
 {
@@ -41,6 +41,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_bOverrideWireframeColor_GET(UStaticMeshComponent* Ptr) { return Ptr->bOverrideWireframeColor; }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_bOverrideWireframeColor_SET(UStaticMeshComponent* Ptr, uint8 Value) { Ptr->bOverrideWireframeColor = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_bReverseCulling_GET(UStaticMeshComponent* Ptr) { return Ptr->bReverseCulling; }
+	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_bReverseCulling_SET(UStaticMeshComponent* Ptr, uint8 Value) { Ptr->bReverseCulling = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_bUseDefaultCollision_GET(UStaticMeshComponent* Ptr) { return Ptr->bUseDefaultCollision; }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_bUseDefaultCollision_SET(UStaticMeshComponent* Ptr, uint8 Value) { Ptr->bUseDefaultCollision = Value; }
@@ -173,6 +176,12 @@ extern "C"
 	{
 		auto _p0 = InMaterialIndexPreview;
 		Self->SetMaterialPreview(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UStaticMeshComponent_SetReverseCulling(UStaticMeshComponent* Self, bool ReverseCulling)
+	{
+		auto _p0 = ReverseCulling;
+		Self->SetReverseCulling(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UStaticMeshComponent_SetSectionPreview(UStaticMeshComponent* Self, int32 InSectionIndexPreview)

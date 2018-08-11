@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\World.h:732
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\World.h:733
 
 extern "C"
 {
@@ -41,12 +41,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_bPostTickComponentUpdate_GET(UWorld* Ptr) { return Ptr->bPostTickComponentUpdate; }
 	DOTNET_EXPORT void E_PROP_UWorld_bPostTickComponentUpdate_SET(UWorld* Ptr, bool Value) { Ptr->bPostTickComponentUpdate = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_bShouldForceUnloadStreamingLevels_GET(UWorld* Ptr) { return Ptr->bShouldForceUnloadStreamingLevels; }
-	DOTNET_EXPORT void E_PROP_UWorld_bShouldForceUnloadStreamingLevels_SET(UWorld* Ptr, bool Value) { Ptr->bShouldForceUnloadStreamingLevels = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_bShouldForceVisibleStreamingLevels_GET(UWorld* Ptr) { return Ptr->bShouldForceVisibleStreamingLevels; }
-	DOTNET_EXPORT void E_PROP_UWorld_bShouldForceVisibleStreamingLevels_SET(UWorld* Ptr, bool Value) { Ptr->bShouldForceVisibleStreamingLevels = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_bShouldSimulatePhysics_GET(UWorld* Ptr) { return Ptr->bShouldSimulatePhysics; }
 	DOTNET_EXPORT void E_PROP_UWorld_bShouldSimulatePhysics_SET(UWorld* Ptr, bool Value) { Ptr->bShouldSimulatePhysics = Value; }
@@ -95,6 +89,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_RealTimeSeconds_GET(UWorld* Ptr) { return Ptr->RealTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_RealTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->RealTimeSeconds = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UWorld_StreamingLevelsPrefix_GET(UWorld* Ptr) { return ConvertToManage_StringWrapper(Ptr->StreamingLevelsPrefix); }
+	DOTNET_EXPORT void E_PROP_UWorld_StreamingLevelsPrefix_SET(UWorld* Ptr, char* Value) { Ptr->StreamingLevelsPrefix = ConvertFromManage_FString(Value); }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_StreamingVolumeUpdateDelay_GET(UWorld* Ptr) { return Ptr->StreamingVolumeUpdateDelay; }
 	DOTNET_EXPORT void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(UWorld* Ptr, int32 Value) { Ptr->StreamingVolumeUpdateDelay = Value; }
@@ -194,6 +191,11 @@ extern "C"
 		Self->ClearActorComponentEndOfFrameUpdate(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_ClearStreamingLevels(UWorld* Self)
+	{
+		Self->ClearStreamingLevels();
+	}
+
 	DOTNET_EXPORT auto E_UWorld_ClearWorldComponents(UWorld* Self)
 	{
 		Self->ClearWorldComponents();
@@ -230,11 +232,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_CreateFXSystem(UWorld* Self)
 	{
 		Self->CreateFXSystem();
-	}
-
-	DOTNET_EXPORT auto E_UWorld_CreatePhysicsScene(UWorld* Self)
-	{
-		Self->CreatePhysicsScene();
 	}
 
 	DOTNET_EXPORT auto E_UWorld_DebugDrawSceneQueries(UWorld* Self, char* UsedTraceTag)
@@ -415,6 +412,16 @@ extern "C"
 		return Self->GetRealTimeSeconds();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_GetShouldForceUnloadStreamingLevels(UWorld* Self)
+	{
+		return Self->GetShouldForceUnloadStreamingLevels();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetShouldForceVisibleStreamingLevels(UWorld* Self)
+	{
+		return Self->GetShouldForceVisibleStreamingLevels();
+	}
+
 	DOTNET_EXPORT auto E_UWorld_GetTimeBetweenGarbageCollectionPasses(UWorld* Self)
 	{
 		return Self->GetTimeBetweenGarbageCollectionPasses();
@@ -428,6 +435,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_GetUnpausedTimeSeconds(UWorld* Self)
 	{
 		return Self->GetUnpausedTimeSeconds();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_HandleTimelineScrubbed(UWorld* Self)
+	{
+		Self->HandleTimelineScrubbed();
 	}
 
 	DOTNET_EXPORT auto E_UWorld_HasBegunPlay(UWorld* Self)
@@ -577,6 +589,11 @@ extern "C"
 		Self->PerformGarbageCollectionAndCleanupActors();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_PopulateStreamingLevelsToConsider(UWorld* Self)
+	{
+		Self->PopulateStreamingLevelsToConsider();
+	}
+
 	DOTNET_EXPORT auto E_UWorld_ProcessLevelStreamingVolumes(UWorld* Self, INT_PTR OverrideViewLocation)
 	{
 		auto _p0 = (FVector*)OverrideViewLocation;
@@ -617,6 +634,12 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FString(Source);
 		return ConvertToManage_StringWrapper(Self->RemovePIEPrefix(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemoveStreamingLevelAt(UWorld* Self, int32 IndexToRemove)
+	{
+		auto _p0 = IndexToRemove;
+		return Self->RemoveStreamingLevelAt(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_RenameToPIEWorld(UWorld* Self, int32 PIEInstanceID)
@@ -661,10 +684,27 @@ extern "C"
 		Self->SetMapNeedsLightingFullyRebuilt(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_SetMaterialParameterCollectionInstanceNeedsUpdate(UWorld* Self)
+	{
+		Self->SetMaterialParameterCollectionInstanceNeedsUpdate();
+	}
+
 	DOTNET_EXPORT auto E_UWorld_SetSeamlessTravelMidpointPause(UWorld* Self, bool bNowPaused)
 	{
 		auto _p0 = bNowPaused;
 		Self->SetSeamlessTravelMidpointPause(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SetShouldForceUnloadStreamingLevels(UWorld* Self, bool bInShouldForceUnloadStreamingLevels)
+	{
+		auto _p0 = bInShouldForceUnloadStreamingLevels;
+		Self->SetShouldForceUnloadStreamingLevels(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SetShouldForceVisibleStreamingLevels(UWorld* Self, bool bInShouldForceVisibleStreamingLevels)
+	{
+		auto _p0 = bInShouldForceVisibleStreamingLevels;
+		Self->SetShouldForceVisibleStreamingLevels(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SetShouldTick(UWorld* Self, bool bInShouldTick)

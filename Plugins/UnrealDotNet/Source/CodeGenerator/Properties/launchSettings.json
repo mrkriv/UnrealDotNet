@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "--ue \"C:\\Program Files\\Epic Games\\UE_4.20\" --o $(SolutionDir)"
+    }
+  }
+}

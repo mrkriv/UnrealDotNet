@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:156
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
 
 class E_PROTECTED_WRAP_UCharacterMovementComponent : protected UCharacterMovementComponent
 {
@@ -1529,14 +1529,16 @@ extern "C"
 		Self->UpdateBasedRotation(_p0, _p1);
 	}
 
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateCharacterStateAfterMovement(UCharacterMovementComponent* Self)
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateCharacterStateAfterMovement(UCharacterMovementComponent* Self, float DeltaSeconds)
 	{
-		Self->UpdateCharacterStateAfterMovement();
+		auto _p0 = DeltaSeconds;
+		Self->UpdateCharacterStateAfterMovement(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateCharacterStateBeforeMovement(UCharacterMovementComponent* Self)
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateCharacterStateBeforeMovement(UCharacterMovementComponent* Self, float DeltaSeconds)
 	{
-		Self->UpdateCharacterStateBeforeMovement();
+		auto _p0 = DeltaSeconds;
+		Self->UpdateCharacterStateBeforeMovement(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateFloorFromAdjustment(UCharacterMovementComponent* Self)

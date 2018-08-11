@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 class E_PROTECTED_WRAP_USceneComponent : protected USceneComponent
 {
@@ -95,9 +95,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USceneComponent_bHiddenInGame_GET(USceneComponent* Ptr) { return Ptr->bHiddenInGame; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_bHiddenInGame_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bHiddenInGame = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_GET(USceneComponent* Ptr) { return Ptr->bShouldUpdatePhysicsVolume; }
-	DOTNET_EXPORT void E_PROP_USceneComponent_bShouldUpdatePhysicsVolume_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bShouldUpdatePhysicsVolume = Value; }
-	
 	DOTNET_EXPORT auto E_PROP_USceneComponent_bUseAttachParentBound_GET(USceneComponent* Ptr) { return Ptr->bUseAttachParentBound; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_bUseAttachParentBound_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bUseAttachParentBound = Value; }
 	
@@ -115,6 +112,8 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_USceneComponent_RelativeScale3D_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->RelativeScale3D); }
 	DOTNET_EXPORT void E_PROP_USceneComponent_RelativeScale3D_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->RelativeScale3D = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_SkipUpdateOverlapsOptimEnabled_GET() { return USceneComponent::SkipUpdateOverlapsOptimEnabled; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneComponent(UObject* Parent, char* Name)
@@ -220,6 +219,11 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FText(ActionText);
 		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->CheckStaticMobilityAndWarn_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ClearSkipUpdateOverlaps(USceneComponent* Self)
+	{
+		Self->ClearSkipUpdateOverlaps();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ConditionalUpdateComponentToWorld(USceneComponent* Self)
@@ -329,6 +333,12 @@ extern "C"
 		return Self->GetNumChildrenComponents();
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_GetRelativeRotationFromWorld(USceneComponent* Self, INT_PTR WorldRotation)
+	{
+		auto _p0 = *(FQuat*)WorldRotation;
+		return (INT_PTR) new FQuat(Self->GetRelativeRotationFromWorld(_p0));
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_GetRelativeTransform(USceneComponent* Self)
 	{
 		return (INT_PTR) new FTransform(Self->GetRelativeTransform());
@@ -337,6 +347,11 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_GetRightVector(USceneComponent* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetRightVector());
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetShouldUpdatePhysicsVolume(USceneComponent* Self)
+	{
+		return Self->GetShouldUpdatePhysicsVolume();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetSocketLocation(USceneComponent* Self, char* InSocketName)
@@ -722,6 +737,15 @@ extern "C"
 		Self->SetRelativeRotationCache(_p0);
 	}
 
+	DOTNET_EXPORT auto E_USceneComponent_SetRelativeRotationExact(USceneComponent* Self, INT_PTR NewRotation, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
+	{
+		auto _p0 = *(FRotator*)NewRotation;
+		auto _p1 = bSweep;
+		auto _p2 = (FHitResult*)OutSweepHitResult;
+		auto _p3 = Teleport;
+		Self->SetRelativeRotationExact(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeScale3D(USceneComponent* Self, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewScale3D;
@@ -735,6 +759,12 @@ extern "C"
 		auto _p2 = (FHitResult*)OutSweepHitResult;
 		auto _p3 = Teleport;
 		Self->SetRelativeTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_SetShouldUpdatePhysicsVolume(USceneComponent* Self, bool bInShouldUpdatePhysicsVolume)
+	{
+		auto _p0 = bInShouldUpdatePhysicsVolume;
+		Self->SetShouldUpdatePhysicsVolume(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SetupAttachment(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
@@ -795,6 +825,11 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_ShouldRender(USceneComponent* Self)
 	{
 		return Self->ShouldRender();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_ShouldSkipUpdateOverlaps(USceneComponent* Self)
+	{
+		return Self->ShouldSkipUpdateOverlaps();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SnapTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)

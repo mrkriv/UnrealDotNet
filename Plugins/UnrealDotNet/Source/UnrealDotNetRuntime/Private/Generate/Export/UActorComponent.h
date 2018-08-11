@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/ActorComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
 
 class E_PROTECTED_WRAP_UActorComponent : protected UActorComponent
 {
@@ -126,7 +126,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentActivated";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentActivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentActivatedSignature);
@@ -138,7 +138,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentDeactivated(UActorComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentDeactivated";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentDeactivated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorComponentDeactivateSignature);

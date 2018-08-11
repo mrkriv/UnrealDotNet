@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/GameFramework/Character.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 class E_PROTECTED_WRAP_ACharacter : protected ACharacter
 {
@@ -40,6 +40,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ACharacter_JumpCurrentCount_GET(ACharacter* Ptr) { return Ptr->JumpCurrentCount; }
 	DOTNET_EXPORT void E_PROP_ACharacter_JumpCurrentCount_SET(ACharacter* Ptr, int32 Value) { Ptr->JumpCurrentCount = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_ACharacter_JumpForceTimeRemaining_GET(ACharacter* Ptr) { return Ptr->JumpForceTimeRemaining; }
+	DOTNET_EXPORT void E_PROP_ACharacter_JumpForceTimeRemaining_SET(ACharacter* Ptr, float Value) { Ptr->JumpForceTimeRemaining = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_ACharacter_JumpKeyHoldTime_GET(ACharacter* Ptr) { return Ptr->JumpKeyHoldTime; }
 	DOTNET_EXPORT void E_PROP_ACharacter_JumpKeyHoldTime_SET(ACharacter* Ptr, float Value) { Ptr->JumpKeyHoldTime = Value; }
 	
@@ -51,7 +54,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_LandedDelegate(ACharacter* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_LandedDelegate";
 		wrapper->SourceObject = Obj;
 		Obj->LandedDelegate.AddDynamic(wrapper, &UManageEventSender::Wrapper_FLandedSignature);
@@ -65,7 +68,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_MovementModeChangedDelegate(ACharacter* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_MovementModeChangedDelegate";
 		wrapper->SourceObject = Obj;
 		Obj->MovementModeChangedDelegate.AddDynamic(wrapper, &UManageEventSender::Wrapper_FMovementModeChangedSignature);
@@ -77,7 +80,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_OnCharacterMovementUpdated(ACharacter* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnCharacterMovementUpdated";
 		wrapper->SourceObject = Obj;
 		Obj->OnCharacterMovementUpdated.AddDynamic(wrapper, &UManageEventSender::Wrapper_FCharacterMovementUpdatedSignature);
@@ -89,7 +92,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_ACharacter_OnReachedJumpApex(ACharacter* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnReachedJumpApex";
 		wrapper->SourceObject = Obj;
 		Obj->OnReachedJumpApex.AddDynamic(wrapper, &UManageEventSender::Wrapper_FCharacterReachedApexSignature);
@@ -99,6 +102,9 @@ extern "C"
 	{
 	}
 
+	DOTNET_EXPORT auto E_PROP_ACharacter_ProxyJumpForceStartedTime_GET(ACharacter* Ptr) { return Ptr->ProxyJumpForceStartedTime; }
+	DOTNET_EXPORT void E_PROP_ACharacter_ProxyJumpForceStartedTime_SET(ACharacter* Ptr, float Value) { Ptr->ProxyJumpForceStartedTime = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_ACharacter_RepRootMotion_GET(ACharacter* Ptr) { return (INT_PTR)&(Ptr->RepRootMotion); }
 	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RepRootMotion = *(FRepRootMotionMontage*)Value; }
 	
@@ -155,9 +161,10 @@ extern "C"
 		Self->CheckJumpInput(_p0);
 	}
 
-	DOTNET_EXPORT auto E_ACharacter_ClearJumpInput(ACharacter* Self)
+	DOTNET_EXPORT auto E_ACharacter_ClearJumpInput(ACharacter* Self, float DeltaTime)
 	{
-		Self->ClearJumpInput();
+		auto _p0 = DeltaTime;
+		Self->ClearJumpInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientAckGoodMove(ACharacter* Self, float TimeStamp)
@@ -380,6 +387,18 @@ extern "C"
 	{
 		auto _p0 = *(FHitResult*)Impact;
 		Self->MoveBlockedBy(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_NotifyActorBeginOverlap(ACharacter* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->NotifyActorBeginOverlap(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_NotifyActorEndOverlap(ACharacter* Self, AActor* OtherActor)
+	{
+		auto _p0 = OtherActor;
+		Self->NotifyActorEndOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyJumpApex(ACharacter* Self)

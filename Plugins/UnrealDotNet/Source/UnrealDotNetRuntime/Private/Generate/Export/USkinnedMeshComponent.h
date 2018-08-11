@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
 
 extern "C"
 {
@@ -45,11 +45,17 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bHideSkin_GET(USkinnedMeshComponent* Ptr) { return Ptr->bHideSkin; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bHideSkin_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bHideSkin = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bOverrideMinLod_GET(USkinnedMeshComponent* Ptr) { return Ptr->bOverrideMinLod; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bOverrideMinLod_SET(USkinnedMeshComponent* Ptr, bool Value) { Ptr->bOverrideMinLod = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_GET(USkinnedMeshComponent* Ptr) { return Ptr->bPerBoneMotionBlur; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bPerBoneMotionBlur_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bPerBoneMotionBlur = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bRecentlyRendered_GET(USkinnedMeshComponent* Ptr) { return Ptr->bRecentlyRendered; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bRecentlyRendered_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bRecentlyRendered = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bRenderStatic_GET(USkinnedMeshComponent* Ptr) { return Ptr->bRenderStatic; }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bRenderStatic_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bRenderStatic = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_GET(USkinnedMeshComponent* Ptr) { return Ptr->bUseBoundsFromMasterPoseComponent; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bUseBoundsFromMasterPoseComponent_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bUseBoundsFromMasterPoseComponent = Value; }

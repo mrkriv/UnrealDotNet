@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Engine/EngineTypes.h"
 #include "ManageEngineTypes.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3430
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3473
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageEngineTypes : public UEngineTypes

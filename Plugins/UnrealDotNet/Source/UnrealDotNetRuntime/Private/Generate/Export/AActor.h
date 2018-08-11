@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
 
 class E_PROTECTED_WRAP_AActor : protected AActor
 {
@@ -109,8 +109,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_bIgnoresOriginShifting_GET(AActor* Ptr) { return Ptr->bIgnoresOriginShifting; }
 	DOTNET_EXPORT void E_PROP_AActor_bIgnoresOriginShifting_SET(AActor* Ptr, uint8 Value) { Ptr->bIgnoresOriginShifting = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AActor_bNetCheckedInitialPhysicsState_GET(AActor* Ptr) { return Ptr->bNetCheckedInitialPhysicsState; }
-	DOTNET_EXPORT void E_PROP_AActor_bNetCheckedInitialPhysicsState_SET(AActor* Ptr, uint8 Value) { Ptr->bNetCheckedInitialPhysicsState = Value; }
+	DOTNET_EXPORT auto E_PROP_AActor_bIsEditorOnlyActor_GET(AActor* Ptr) { return Ptr->bIsEditorOnlyActor; }
+	DOTNET_EXPORT void E_PROP_AActor_bIsEditorOnlyActor_SET(AActor* Ptr, uint8 Value) { Ptr->bIsEditorOnlyActor = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_bNetLoadOnClient_GET(AActor* Ptr) { return Ptr->bNetLoadOnClient; }
 	DOTNET_EXPORT void E_PROP_AActor_bNetLoadOnClient_SET(AActor* Ptr, uint8 Value) { Ptr->bNetLoadOnClient = Value; }
@@ -129,6 +129,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_AActor_bRelevantForNetworkReplays_GET(AActor* Ptr) { return Ptr->bRelevantForNetworkReplays; }
 	DOTNET_EXPORT void E_PROP_AActor_bRelevantForNetworkReplays_SET(AActor* Ptr, uint8 Value) { Ptr->bRelevantForNetworkReplays = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AActor_bReplayRewindable_GET(AActor* Ptr) { return Ptr->bReplayRewindable; }
+	DOTNET_EXPORT void E_PROP_AActor_bReplayRewindable_SET(AActor* Ptr, uint8 Value) { Ptr->bReplayRewindable = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_bReplicateMovement_GET(AActor* Ptr) { return Ptr->bReplicateMovement; }
 	DOTNET_EXPORT void E_PROP_AActor_bReplicateMovement_SET(AActor* Ptr, uint8 Value) { Ptr->bReplicateMovement = Value; }
@@ -168,7 +171,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorBeginOverlap(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnActorBeginOverlap";
 		wrapper->SourceObject = Obj;
 		Obj->OnActorBeginOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorBeginOverlapSignature);
@@ -180,7 +183,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorEndOverlap(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnActorEndOverlap";
 		wrapper->SourceObject = Obj;
 		Obj->OnActorEndOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorEndOverlapSignature);
@@ -192,7 +195,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnActorHit(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnActorHit";
 		wrapper->SourceObject = Obj;
 		Obj->OnActorHit.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorHitSignature);
@@ -204,7 +207,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnBeginCursorOver(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnBeginCursorOver";
 		wrapper->SourceObject = Obj;
 		Obj->OnBeginCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorBeginCursorOverSignature);
@@ -216,7 +219,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnDestroyed(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnDestroyed";
 		wrapper->SourceObject = Obj;
 		Obj->OnDestroyed.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorDestroyedSignature);
@@ -228,7 +231,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_AActor_OnEndCursorOver(AActor* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnEndCursorOver";
 		wrapper->SourceObject = Obj;
 		Obj->OnEndCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FActorEndCursorOverSignature);
@@ -708,6 +711,11 @@ extern "C"
 		return Self->GetLifeSpan();
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetLocalRole(AActor* Self)
+	{
+		return Self->GetLocalRole();
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetNetDriverName(AActor* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetNetDriverName());
@@ -785,6 +793,11 @@ extern "C"
 	{
 		auto _p0 = RequestedBy;
 		return (INT_PTR) new FVector(Self->GetTargetLocation(_p0));
+	}
+
+	DOTNET_EXPORT auto E_AActor_GetTearOff(AActor* Self)
+	{
+		return Self->GetTearOff();
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetTickableWhenPaused(AActor* Self)
@@ -1391,6 +1404,11 @@ extern "C"
 		Self->PreInitializeComponents();
 	}
 
+	DOTNET_EXPORT auto E_AActor_PreRegisterAllComponents(AActor* Self)
+	{
+		Self->PreRegisterAllComponents();
+	}
+
 	DOTNET_EXPORT auto E_AActor_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
 	{
 		auto _p0 = Seconds;
@@ -1522,6 +1540,11 @@ extern "C"
 		Self->ResetPropertiesForConstruction();
 	}
 
+	DOTNET_EXPORT auto E_AActor_RewindForReplay(AActor* Self)
+	{
+		Self->RewindForReplay();
+	}
+
 	DOTNET_EXPORT auto E_AActor_SetActorEnableCollision(AActor* Self, bool bNewActorEnableCollision)
 	{
 		auto _p0 = bNewActorEnableCollision;
@@ -1605,6 +1628,13 @@ extern "C"
 	{
 		auto _p0 = InLifespan;
 		Self->SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_SetLODParent(AActor* Self, UPrimitiveComponent* InLODParent, float InParentDrawDistance)
+	{
+		auto _p0 = InLODParent;
+		auto _p1 = InParentDrawDistance;
+		Self->SetLODParent(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_SetNetDormancy(AActor* Self, ENetDormancy NewDormancy)

@@ -52,7 +52,16 @@ StringWrapper ConvertToManage_StringWrapper(FName name)
 
 ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* object)
 {
-	auto name = object->GetClass()->GetPrefixCPP() + object->GetClass()->GetName();
+	FString name;
+	if (object != NULL)
+	{
+		name = object->GetClass()->GetPrefixCPP() + object->GetClass()->GetName();
+	}
+	else
+	{
+		name = "UObject";
+	}
+
 	auto utf8 = TCHAR_TO_UTF8(*name);
 
 	ObjectPointerDescription desc;

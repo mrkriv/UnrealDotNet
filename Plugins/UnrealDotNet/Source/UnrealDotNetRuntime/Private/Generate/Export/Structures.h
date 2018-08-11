@@ -622,6 +622,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FClusterNode() { return (INT_PTR) new FClusterNode(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FClusterNode_FClusterNode_DEPRECATED(INT_PTR OldNode) { return (INT_PTR) new FClusterNode(*(FClusterNode_DEPRECATED*)OldNode); }
+	
 	DOTNET_EXPORT auto E_PROP_FClusterNode_BoundMax_GET(FClusterNode* Ptr) { return (INT_PTR)&(Ptr->BoundMax); }
 	DOTNET_EXPORT void E_PROP_FClusterNode_BoundMax_SET(FClusterNode* Ptr, INT_PTR Value) { Ptr->BoundMax = *(FVector*)Value; }
 	
@@ -639,6 +641,35 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FClusterNode_LastInstance_GET(FClusterNode* Ptr) { return Ptr->LastInstance; }
 	DOTNET_EXPORT void E_PROP_FClusterNode_LastInstance_SET(FClusterNode* Ptr, int32 Value) { Ptr->LastInstance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_MaxInstanceScale_GET(FClusterNode* Ptr) { return (INT_PTR)&(Ptr->MaxInstanceScale); }
+	DOTNET_EXPORT void E_PROP_FClusterNode_MaxInstanceScale_SET(FClusterNode* Ptr, INT_PTR Value) { Ptr->MaxInstanceScale = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_MinInstanceScale_GET(FClusterNode* Ptr) { return (INT_PTR)&(Ptr->MinInstanceScale); }
+	DOTNET_EXPORT void E_PROP_FClusterNode_MinInstanceScale_SET(FClusterNode* Ptr, INT_PTR Value) { Ptr->MinInstanceScale = *(FVector*)Value; }
+	
+	
+	/*	FClusterNode_DEPRECATED	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FClusterNode_DEPRECATED() { return (INT_PTR) new FClusterNode_DEPRECATED(); }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_BoundMax_GET(FClusterNode_DEPRECATED* Ptr) { return (INT_PTR)&(Ptr->BoundMax); }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_BoundMax_SET(FClusterNode_DEPRECATED* Ptr, INT_PTR Value) { Ptr->BoundMax = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_BoundMin_GET(FClusterNode_DEPRECATED* Ptr) { return (INT_PTR)&(Ptr->BoundMin); }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_BoundMin_SET(FClusterNode_DEPRECATED* Ptr, INT_PTR Value) { Ptr->BoundMin = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_FirstChild_GET(FClusterNode_DEPRECATED* Ptr) { return Ptr->FirstChild; }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_FirstChild_SET(FClusterNode_DEPRECATED* Ptr, int32 Value) { Ptr->FirstChild = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_FirstInstance_GET(FClusterNode_DEPRECATED* Ptr) { return Ptr->FirstInstance; }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_FirstInstance_SET(FClusterNode_DEPRECATED* Ptr, int32 Value) { Ptr->FirstInstance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_LastChild_GET(FClusterNode_DEPRECATED* Ptr) { return Ptr->LastChild; }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_LastChild_SET(FClusterNode_DEPRECATED* Ptr, int32 Value) { Ptr->LastChild = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FClusterNode_DEPRECATED_LastInstance_GET(FClusterNode_DEPRECATED* Ptr) { return Ptr->LastInstance; }
+	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_LastInstance_SET(FClusterNode_DEPRECATED* Ptr, int32 Value) { Ptr->LastInstance = Value; }
 	
 	
 	/*	FCollectionReference	*/
@@ -933,6 +964,20 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FDropNoteInfo_Rotation_GET(FDropNoteInfo* Ptr) { return (INT_PTR)&(Ptr->Rotation); }
 	DOTNET_EXPORT void E_PROP_FDropNoteInfo_Rotation_SET(FDropNoteInfo* Ptr, INT_PTR Value) { Ptr->Rotation = *(FRotator*)Value; }
+	
+	
+	/*	FDynamicResolutionStateInfos	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDynamicResolutionStateInfos() { return (INT_PTR) new FDynamicResolutionStateInfos(); }
+	
+	DOTNET_EXPORT auto E_PROP_FDynamicResolutionStateInfos_ResolutionFractionApproximation_GET(FDynamicResolutionStateInfos* Ptr) { return Ptr->ResolutionFractionApproximation; }
+	DOTNET_EXPORT void E_PROP_FDynamicResolutionStateInfos_ResolutionFractionApproximation_SET(FDynamicResolutionStateInfos* Ptr, float Value) { Ptr->ResolutionFractionApproximation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FDynamicResolutionStateInfos_ResolutionFractionUpperBound_GET(FDynamicResolutionStateInfos* Ptr) { return Ptr->ResolutionFractionUpperBound; }
+	DOTNET_EXPORT void E_PROP_FDynamicResolutionStateInfos_ResolutionFractionUpperBound_SET(FDynamicResolutionStateInfos* Ptr, float Value) { Ptr->ResolutionFractionUpperBound = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FDynamicResolutionStateInfos_Status_GET(FDynamicResolutionStateInfos* Ptr) { return Ptr->Status; }
+	DOTNET_EXPORT void E_PROP_FDynamicResolutionStateInfos_Status_SET(FDynamicResolutionStateInfos* Ptr, EDynamicResolutionStatus Value) { Ptr->Status = Value; }
 	
 	
 	/*	FEngineShowFlagsSetting	*/
@@ -1500,6 +1545,9 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FPaintedVertex() { return (INT_PTR) new FPaintedVertex(); }
 	
+	DOTNET_EXPORT auto E_PROP_FPaintedVertex_Normal_GET(FPaintedVertex* Ptr) { return (INT_PTR)&(Ptr->Normal); }
+	DOTNET_EXPORT void E_PROP_FPaintedVertex_Normal_SET(FPaintedVertex* Ptr, INT_PTR Value) { Ptr->Normal = *(FVector4*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPaintedVertex_Position_GET(FPaintedVertex* Ptr) { return (INT_PTR)&(Ptr->Position); }
 	DOTNET_EXPORT void E_PROP_FPaintedVertex_Position_SET(FPaintedVertex* Ptr, INT_PTR Value) { Ptr->Position = *(FVector*)Value; }
 	
@@ -1769,6 +1817,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_ColorSaturationShadows_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->ColorSaturationShadows); }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ColorSaturationShadows_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->ColorSaturationShadows = *(FVector4*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldBladeCount_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldBladeCount; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldBladeCount_SET(FPostProcessSettings* Ptr, int32 Value) { Ptr->DepthOfFieldBladeCount = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldColorThreshold_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldColorThreshold; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldColorThreshold_SET(FPostProcessSettings* Ptr, float Value) { Ptr->DepthOfFieldColorThreshold = Value; }
 	
@@ -1795,6 +1846,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldMaxBokehSize_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldMaxBokehSize; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldMaxBokehSize_SET(FPostProcessSettings* Ptr, float Value) { Ptr->DepthOfFieldMaxBokehSize = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldMinFstop_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldMinFstop; }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldMinFstop_SET(FPostProcessSettings* Ptr, float Value) { Ptr->DepthOfFieldMinFstop = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_DepthOfFieldNearBlurSize_GET(FPostProcessSettings* Ptr) { return Ptr->DepthOfFieldNearBlurSize; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_DepthOfFieldNearBlurSize_SET(FPostProcessSettings* Ptr, float Value) { Ptr->DepthOfFieldNearBlurSize = Value; }
@@ -2512,26 +2566,38 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRigidBodyErrorCorrection() { return (INT_PTR) new FRigidBodyErrorCorrection(); }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_AngularDeltaThreshold_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->AngularDeltaThreshold; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_AngularDeltaThreshold_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->AngularDeltaThreshold = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_AngleLerp_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->AngleLerp; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_AngleLerp_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->AngleLerp = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_AngularInterpAlpha_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->AngularInterpAlpha; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_AngularInterpAlpha_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->AngularInterpAlpha = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_AngularVelocityCoefficient_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->AngularVelocityCoefficient; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_AngularVelocityCoefficient_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->AngularVelocityCoefficient = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_AngularRecipFixTime_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->AngularRecipFixTime; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_AngularRecipFixTime_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->AngularRecipFixTime = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationDistanceSq_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->ErrorAccumulationDistanceSq; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationDistanceSq_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->ErrorAccumulationDistanceSq = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_BodySpeedThresholdSq_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->BodySpeedThresholdSq; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_BodySpeedThresholdSq_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->BodySpeedThresholdSq = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationSeconds_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->ErrorAccumulationSeconds; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationSeconds_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->ErrorAccumulationSeconds = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_LinearDeltaThresholdSq_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->LinearDeltaThresholdSq; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_LinearDeltaThresholdSq_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->LinearDeltaThresholdSq = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationSimilarity_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->ErrorAccumulationSimilarity; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_ErrorAccumulationSimilarity_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->ErrorAccumulationSimilarity = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_LinearInterpAlpha_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->LinearInterpAlpha; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_LinearInterpAlpha_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->LinearInterpAlpha = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_ErrorPerAngularDifference_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->ErrorPerAngularDifference; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_ErrorPerAngularDifference_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->ErrorPerAngularDifference = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_LinearRecipFixTime_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->LinearRecipFixTime; }
-	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_LinearRecipFixTime_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->LinearRecipFixTime = Value; }
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_ErrorPerLinearDifference_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->ErrorPerLinearDifference; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_ErrorPerLinearDifference_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->ErrorPerLinearDifference = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_LinearVelocityCoefficient_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->LinearVelocityCoefficient; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_LinearVelocityCoefficient_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->LinearVelocityCoefficient = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_MaxRestoredStateError_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->MaxRestoredStateError; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_MaxRestoredStateError_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->MaxRestoredStateError = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_PingExtrapolation_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->PingExtrapolation; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_PingExtrapolation_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->PingExtrapolation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyErrorCorrection_PositionLerp_GET(FRigidBodyErrorCorrection* Ptr) { return Ptr->PositionLerp; }
+	DOTNET_EXPORT void E_PROP_FRigidBodyErrorCorrection_PositionLerp_SET(FRigidBodyErrorCorrection* Ptr, float Value) { Ptr->PositionLerp = Value; }
 	
 	
 	/*	FRigidBodyState	*/
@@ -2645,6 +2711,12 @@ extern "C"
 		return Self->ContainsNaN();
 	}
 
+	DOTNET_EXPORT auto E_FRotator_DecompressAxisFromByte(FRotator* Self, uint8 Angle)
+	{
+		auto _p0 = Angle;
+		return Self->DecompressAxisFromByte(_p0);
+	}
+
 	DOTNET_EXPORT auto E_FRotator_Equals(FRotator* Self, INT_PTR R, float Tolerance)
 	{
 		auto _p0 = *(FRotator*)R;
@@ -2662,9 +2734,20 @@ extern "C"
 		return (INT_PTR) new FRotator(Self->GetDenormalized());
 	}
 
+	DOTNET_EXPORT auto E_FRotator_GetEquivalentRotator(FRotator* Self)
+	{
+		return (INT_PTR) new FRotator(Self->GetEquivalentRotator());
+	}
+
 	DOTNET_EXPORT auto E_FRotator_GetInverse(FRotator* Self)
 	{
 		return (INT_PTR) new FRotator(Self->GetInverse());
+	}
+
+	DOTNET_EXPORT auto E_FRotator_GetManhattanDistance(FRotator* Self, INT_PTR Rotator)
+	{
+		auto _p0 = *(FRotator*)Rotator;
+		return Self->GetManhattanDistance(_p0);
 	}
 
 	DOTNET_EXPORT auto E_FRotator_GetNormalized(FRotator* Self)
@@ -2730,6 +2813,12 @@ extern "C"
 		return (INT_PTR) new FVector(Self->RotateVector(_p0));
 	}
 
+	DOTNET_EXPORT auto E_FRotator_SetClosestToMe(FRotator* Self, INT_PTR MakeClosest)
+	{
+		auto _p0 = *(FRotator*)MakeClosest;
+		Self->SetClosestToMe(_p0);
+	}
+
 	DOTNET_EXPORT auto E_FRotator_ToCompactString(FRotator* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->ToCompactString());
@@ -2755,6 +2844,9 @@ extern "C"
 	/*	FSceneCaptureViewInfo	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSceneCaptureViewInfo() { return (INT_PTR) new FSceneCaptureViewInfo(); }
+	
+	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_StereoIPD_GET(FSceneCaptureViewInfo* Ptr) { return Ptr->StereoIPD; }
+	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_StereoIPD_SET(FSceneCaptureViewInfo* Ptr, float Value) { Ptr->StereoIPD = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(FSceneCaptureViewInfo* Ptr) { return (INT_PTR)&(Ptr->ViewLocation); }
 	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewLocation_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ViewLocation = *(FVector*)Value; }
@@ -3707,6 +3799,13 @@ extern "C"
 	{
 		auto _p0 = Tolerance;
 		return Self->AllComponentsEqual(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FVector_BoundToBox(FVector* Self, INT_PTR Min, INT_PTR Max)
+	{
+		auto _p0 = *(FVector*)Min;
+		auto _p1 = *(FVector*)Max;
+		return (INT_PTR) new FVector(Self->BoundToBox(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_FVector_BoundToCube(FVector* Self, float Radius)

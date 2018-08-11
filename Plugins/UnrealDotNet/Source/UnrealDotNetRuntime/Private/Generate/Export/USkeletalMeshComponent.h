@@ -2,13 +2,16 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:254
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:254
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_AreaStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->AreaStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_AreaStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->AreaStiffness = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bAnimTreeInitialised_GET(USkeletalMeshComponent* Ptr) { return Ptr->bAnimTreeInitialised; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bAnimTreeInitialised_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bAnimTreeInitialised = Value; }
 	
@@ -38,6 +41,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bEnablePhysicsOnDedicatedServer_GET(USkeletalMeshComponent* Ptr) { return Ptr->bEnablePhysicsOnDedicatedServer; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bEnablePhysicsOnDedicatedServer_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bEnablePhysicsOnDedicatedServer = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_BendingStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->BendingStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_BendingStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->BendingStiffness = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bForceRefpose_GET(USkeletalMeshComponent* Ptr) { return Ptr->bForceRefpose; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bForceRefpose_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bForceRefpose = Value; }
@@ -84,14 +90,32 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUpdateJointsFromAnimation_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUpdateJointsFromAnimation; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUpdateJointsFromAnimation_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bUpdateJointsFromAnimation = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseBendingElements_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseBendingElements; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseBendingElements_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseBendingElements = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseContinuousCollisionDetection; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseContinuousCollisionDetection = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseRefPoseOnInitAnim; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bUseRefPoseOnInitAnim = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseSelfCollisions_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseSelfCollisions; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseSelfCollisions_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseSelfCollisions = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseTetrahedralConstraints; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseTetrahedralConstraints = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseThinShellVolumeConstraints; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseThinShellVolumeConstraints = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_ClothBlendWeight_GET(USkeletalMeshComponent* Ptr) { return Ptr->ClothBlendWeight; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_ClothBlendWeight_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->ClothBlendWeight = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_ClothMaxDistanceScale_GET(USkeletalMeshComponent* Ptr) { return Ptr->ClothMaxDistanceScale; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_ClothMaxDistanceScale_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->ClothMaxDistanceScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_EdgeStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->EdgeStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_EdgeStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->EdgeStiffness = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_GlobalAnimRateScale_GET(USkeletalMeshComponent* Ptr) { return Ptr->GlobalAnimRateScale; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_GlobalAnimRateScale_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->GlobalAnimRateScale = Value; }
@@ -101,7 +125,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(USkeletalMeshComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnConstraintBroken";
 		wrapper->SourceObject = Obj;
 		Obj->OnConstraintBroken.AddDynamic(wrapper, &UManageEventSender::Wrapper_FConstraintBrokenSignature);
@@ -116,6 +140,15 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_RootBoneTranslation_GET(USkeletalMeshComponent* Ptr) { return (INT_PTR)&(Ptr->RootBoneTranslation); }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_RootBoneTranslation_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->RootBoneTranslation = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_ShapeTargetStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->ShapeTargetStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_ShapeTargetStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->ShapeTargetStiffness = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_StrainLimitingStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->StrainLimitingStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_StrainLimitingStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->StrainLimitingStiffness = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_VolumeStiffness_GET(USkeletalMeshComponent* Ptr) { return Ptr->VolumeStiffness; }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_VolumeStiffness_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->VolumeStiffness = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USkeletalMeshComponent(UObject* Parent, char* Name)
@@ -154,6 +187,11 @@ extern "C"
 		return Self->GetPosition();
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_HasValidAnimationInstance(USkeletalMeshComponent* Self)
+	{
+		return Self->HasValidAnimationInstance();
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_IsPlaying(USkeletalMeshComponent* Self)
 	{
 		return Self->IsPlaying();
@@ -163,6 +201,12 @@ extern "C"
 	{
 		auto _p0 = bLooping;
 		Self->Play(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ResetAnimInstanceDynamics(USkeletalMeshComponent* Self, ETeleportType InTeleportType)
+	{
+		auto _p0 = InTeleportType;
+		Self->ResetAnimInstanceDynamics(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(USkeletalMeshComponent* Self, bool bInDisablePostProcess)

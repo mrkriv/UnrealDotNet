@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 class E_PROTECTED_WRAP_APawn : protected APawn
 {
@@ -28,6 +28,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_APawn_BaseEyeHeight_GET(APawn* Ptr) { return Ptr->BaseEyeHeight; }
 	DOTNET_EXPORT void E_PROP_APawn_BaseEyeHeight_SET(APawn* Ptr, float Value) { Ptr->BaseEyeHeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_APawn_BlendedReplayViewPitch_GET(APawn* Ptr) { return Ptr->BlendedReplayViewPitch; }
+	DOTNET_EXPORT void E_PROP_APawn_BlendedReplayViewPitch_SET(APawn* Ptr, float Value) { Ptr->BlendedReplayViewPitch = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_APawn_RemoteViewPitch_GET(APawn* Ptr) { return Ptr->RemoteViewPitch; }
 	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(APawn* Ptr, uint8 Value) { Ptr->RemoteViewPitch = Value; }

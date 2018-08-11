@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "Source\GameLogic\GameLogic.csproj", "{964ED151-6A7E-401E-9B1C-0DC8BE20FD5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnrealEngine", "Plugins\UnrealDotNet\Source\UnrealEngineSharp\UnrealEngine.csproj", "{C80262C8-1E63-4415-9387-6014E9501BB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{964ED151-6A7E-401E-9B1C-0DC8BE20FD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964ED151-6A7E-401E-9B1C-0DC8BE20FD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964ED151-6A7E-401E-9B1C-0DC8BE20FD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964ED151-6A7E-401E-9B1C-0DC8BE20FD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80262C8-1E63-4415-9387-6014E9501BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80262C8-1E63-4415-9387-6014E9501BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80262C8-1E63-4415-9387-6014E9501BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80262C8-1E63-4415-9387-6014E9501BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE1EA6E8-790D-4561-9960-4BEB46EA67BA}
+	EndGlobalSection
+EndGlobal

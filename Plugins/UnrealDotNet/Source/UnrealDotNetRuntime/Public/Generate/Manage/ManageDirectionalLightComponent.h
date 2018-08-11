@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/DirectionalLightComponent.h"
 #include "ManageDirectionalLightComponent.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\DirectionalLightComponent.h:18
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\DirectionalLightComponent.h:18
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageDirectionalLightComponent : public UDirectionalLightComponent

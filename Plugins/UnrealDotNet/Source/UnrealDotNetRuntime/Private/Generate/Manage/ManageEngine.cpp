@@ -4,42 +4,42 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:603
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:630
 
 void UManageEngine::PreExit()
 {
 	Super::PreExit();
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "PreExit");
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "PreExit");
 }
 
 void UManageEngine::ShutdownAudioDeviceManager()
 {
 	Super::ShutdownAudioDeviceManager();
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "ShutdownAudioDeviceManager");
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAudioDeviceManager");
 }
 
 void UManageEngine::Start()
 {
 	Super::Start();
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Start");
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "Start");
 }
 
 void UManageEngine::Tick(float DeltaSeconds, bool bIdleMode)
 {
 	Super::Tick(DeltaSeconds, bIdleMode);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "Tick", DeltaSeconds, bIdleMode);
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "Tick", DeltaSeconds, bIdleMode);
 }
 
 void UManageEngine::WorldAdded(UWorld* World)
 {
 	Super::WorldAdded(World);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WorldAdded", World);
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "WorldAdded", World);
 }
 
 void UManageEngine::WorldDestroyed(UWorld* InWorld)
 {
 	Super::WorldDestroyed(InWorld);
-	if(bIsManageAttach) UCoreShell::InvokeInObject(this, "WorldDestroyed", InWorld);
+	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "WorldDestroyed", InWorld);
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

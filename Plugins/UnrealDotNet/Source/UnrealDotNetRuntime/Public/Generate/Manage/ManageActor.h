@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "ManageActor.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:79
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor
@@ -91,6 +91,8 @@ public:
 	
 	virtual void PreInitializeComponents() override;
 	
+	virtual void PreRegisterAllComponents() override;
+	
 	virtual void PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups) override;
 	
 	virtual void RegisterAllComponents() override;
@@ -104,6 +106,8 @@ public:
 	virtual void RerunConstructionScripts() override;
 	
 	virtual void Reset() override;
+	
+	virtual void RewindForReplay() override;
 	
 	virtual void SetActorHiddenInGame(bool bNewHidden) override;
 	

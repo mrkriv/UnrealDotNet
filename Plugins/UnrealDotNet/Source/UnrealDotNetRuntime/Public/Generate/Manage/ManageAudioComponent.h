@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/AudioComponent.h"
 #include "ManageAudioComponent.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:108
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:108
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageAudioComponent : public UAudioComponent
@@ -17,6 +17,17 @@ class UNREALDOTNETRUNTIME_API UManageAudioComponent : public UAudioComponent
 	public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
+	
+	
+public:
+	
+	virtual void FadeIn(float FadeInDuration, float FadeVolumeLevel, float StartTime) override;
+	
+	virtual void FadeOut(float FadeOutDuration, float FadeVolumeLevel) override;
+	
+	virtual void Play(float StartTime) override;
+	
+	virtual void Stop() override;
 	
 }
 ;

@@ -5,7 +5,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 #include "ManageSceneComponent.generated.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneComponent : public USceneComponent
@@ -30,6 +30,8 @@ public:
 	virtual void PropagateLightingScenarioChange() override;
 	
 	virtual void SetRelativeScale3D(FVector NewScale3D) override;
+	
+	virtual void UpdateBounds() override;
 	
 	virtual void UpdatePhysicsVolume(bool bTriggerNotifiers) override;
 	

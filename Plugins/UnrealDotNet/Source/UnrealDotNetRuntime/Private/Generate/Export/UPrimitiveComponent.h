@@ -2,10 +2,10 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
-#include "ManagerObject.h"
+#include "ManageEventSender.h"
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 
-// Source file D:\UE4\UE_4.19\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
 
 class E_PROTECTED_WRAP_UPrimitiveComponent : protected UPrimitiveComponent
 {
@@ -107,9 +107,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bForceMipStreaming_GET(UPrimitiveComponent* Ptr) { return Ptr->bForceMipStreaming; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bForceMipStreaming_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bForceMipStreaming = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_GET(UPrimitiveComponent* Ptr) { return Ptr->bGenerateOverlapEvents; }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bGenerateOverlapEvents_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bGenerateOverlapEvents = Value; }
-	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_GET(UPrimitiveComponent* Ptr) { return Ptr->bHandledByStreamingManagerAsDynamic; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bHandledByStreamingManagerAsDynamic_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bHandledByStreamingManagerAsDynamic = Value; }
 	
@@ -125,6 +122,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_GET(UPrimitiveComponent* Ptr) { return Ptr->bIgnoreRadialImpulse; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bIgnoreRadialImpulse_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bIgnoreRadialImpulse = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bIgnoreStreamingManagerUpdate_GET(UPrimitiveComponent* Ptr) { return Ptr->bIgnoreStreamingManagerUpdate; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bIgnoreStreamingManagerUpdate_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bIgnoreStreamingManagerUpdate = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_GET(UPrimitiveComponent* Ptr) { return Ptr->bLightAsIfStatic_DEPRECATED; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bLightAsIfStatic_DEPRECATED_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bLightAsIfStatic_DEPRECATED = Value; }
 	
@@ -133,6 +133,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bMultiBodyOverlap_GET(UPrimitiveComponent* Ptr) { return Ptr->bMultiBodyOverlap; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bMultiBodyOverlap_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bMultiBodyOverlap = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bNeverDistanceCull_GET(UPrimitiveComponent* Ptr) { return Ptr->bNeverDistanceCull; }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bNeverDistanceCull_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bNeverDistanceCull = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_bOnlyOwnerSee_GET(UPrimitiveComponent* Ptr) { return Ptr->bOnlyOwnerSee; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_bOnlyOwnerSee_SET(UPrimitiveComponent* Ptr, uint8 Value) { Ptr->bOnlyOwnerSee = Value; }
@@ -228,7 +231,7 @@ extern "C"
 	
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnBeginCursorOver";
 		wrapper->SourceObject = Obj;
 		Obj->OnBeginCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentBeginCursorOverSignature);
@@ -240,7 +243,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentBeginOverlap(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentBeginOverlap";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentBeginOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentBeginOverlapSignature);
@@ -252,7 +255,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentCollisionSettingsChangedEvent(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentCollisionSettingsChangedEvent";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentCollisionSettingsChangedEvent.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentCollisionSettingsChangedSignature);
@@ -264,7 +267,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentEndOverlap(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentEndOverlap";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentEndOverlap.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentEndOverlapSignature);
@@ -276,7 +279,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentHit(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentHit";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentHit.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentHitSignature);
@@ -288,7 +291,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentSleep(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentSleep";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentSleep.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentSleepSignature);
@@ -300,7 +303,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnComponentWake(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnComponentWake";
 		wrapper->SourceObject = Obj;
 		Obj->OnComponentWake.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentWakeSignature);
@@ -312,7 +315,7 @@ extern "C"
 
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnEndCursorOver(UPrimitiveComponent* Obj)
 	{
-		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetDotNetManager());
+		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
 		wrapper->ManageDelegateName = "InvokeEvent_OnEndCursorOver";
 		wrapper->SourceObject = Obj;
 		Obj->OnEndCursorOver.AddDynamic(wrapper, &UManageEventSender::Wrapper_FComponentEndCursorOverSignature);
@@ -497,15 +500,6 @@ extern "C"
 		Self->ClearMoveIgnoreComponents();
 	}
 
-	DOTNET_EXPORT auto E_UPrimitiveComponent_ConditionalApplyRigidBodyState(UPrimitiveComponent* Self, INT_PTR UpdatedState, INT_PTR ErrorCorrection, INT_PTR OutDeltaPos, char* BoneName)
-	{
-		auto _p0 = *(FRigidBodyState*)UpdatedState;
-		auto _p1 = *(FRigidBodyErrorCorrection*)ErrorCorrection;
-		auto _p2 = *(FVector*)OutDeltaPos;
-		auto _p3 = ConvertFromManage_FName(BoneName);
-		return Self->ConditionalApplyRigidBodyState(_p0, _p1, _p2, _p3);
-	}
-
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchMouseOverEvents(UPrimitiveComponent* Self, UPrimitiveComponent* CurrentComponent, UPrimitiveComponent* NewComponent)
 	{
 		auto _p0 = CurrentComponent;
@@ -574,6 +568,11 @@ extern "C"
 	{
 		auto _p0 = ElementIndex;
 		return Self->GetEmissiveBoost(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetGenerateOverlapEvents(UPrimitiveComponent* Self)
+	{
+		return Self->GetGenerateOverlapEvents();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetInertiaTensor(UPrimitiveComponent* Self, char* BoneName)
@@ -961,6 +960,12 @@ extern "C"
 		Self->SetEnableGravity(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetGenerateOverlapEvents(UPrimitiveComponent* Self, bool bInGenerateOverlapEvents)
+	{
+		auto _p0 = bInGenerateOverlapEvents;
+		Self->SetGenerateOverlapEvents(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetLinearDamping(UPrimitiveComponent* Self, float InDamping)
 	{
 		auto _p0 = InDamping;
@@ -1090,6 +1095,13 @@ extern "C"
 	{
 		auto _p0 = bValue;
 		Self->SetRenderInMono(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetRigidBodyReplicatedTarget(UPrimitiveComponent* Self, INT_PTR UpdatedState, char* BoneName)
+	{
+		auto _p0 = *(FRigidBodyState*)UpdatedState;
+		auto _p1 = ConvertFromManage_FName(BoneName);
+		Self->SetRigidBodyReplicatedTarget(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetSimulatePhysics(UPrimitiveComponent* Self, bool bSimulate)
