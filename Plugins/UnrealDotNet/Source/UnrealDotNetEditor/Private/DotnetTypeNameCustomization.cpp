@@ -40,6 +40,7 @@ void FDotnetTypeNameCustomization::CustomizeHeader(TSharedRef<IPropertyHandle> S
 	FullNamePropertyHandle = StructPropertyHandle->GetChildHandle(PropertyName_FullName);
 
 	auto onGenerateStrings = FOnGetPropertyComboBoxStrings::CreateStatic(&FDotnetTypeNameCustomization::GenerateStrings);
+	auto onChangeFullName = FOnPropertyComboBoxValueSelected::CreateRaw(this, &FDotnetTypeNameCustomization::OnChangeFullName);
 
 	HeaderRow.NameContent()
 		[
@@ -48,7 +49,7 @@ void FDotnetTypeNameCustomization::CustomizeHeader(TSharedRef<IPropertyHandle> S
 		.ValueContent()
 		.MinDesiredWidth(250)
 		[
-			PropertyCustomizationHelpers::MakePropertyComboBox(FullNamePropertyHandle, onGenerateStrings, nullptr, nullptr)
+			PropertyCustomizationHelpers::MakePropertyComboBox(FullNamePropertyHandle, onGenerateStrings, nullptr, onChangeFullName)
 		];
 }
 
@@ -58,55 +59,46 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 	StructPropertyHandle->AccessRawData(RowData);
 	auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
 
-	auto Data = GetMetadata();
+	MainLayoutBuilder = &StructBuilder.GetParentCategory().GetParentLayout();
 
 	TArray<FString> propertys;
+	auto types = GetMetadata()->GetArrayField("Types");
 
-	const TArray<TSharedPtr<FJsonValue>> *arrayPtr;
-	if (Data->TryGetArrayField("Types", arrayPtr))
+	for (auto type : types)
 	{
-		for (int32 i = 0; i < arrayPtr->Num(); i++)
+		if (type->AsObject()->GetStringField("Name") != DotnetTypeName->FullName)
+			continue;
+
+		auto props = type->AsObject()->GetArrayField("Propertys");
+		for (auto prop : props)
 		{
-			const TSharedPtr<FJsonObject>* ptr;
-			(*arrayPtr)[i]->TryGetObject(ptr);
+			auto name = prop->AsObject()->GetStringField("Name");
+			auto type = prop->AsObject()->GetStringField("Type");
+			auto def = prop->AsObject()->GetStringField("Default");
+			auto canEdit = prop->AsObject()->GetBoolField("CanEdit");
 
-			const TArray<TSharedPtr<FJsonValue>> *PropertysPtr;
-
-			if (ptr->Get()->TryGetArrayField("Propertys", PropertysPtr))
+			auto onChange = [StructPropertyHandle, name](const FText& NewText)
 			{
-				for (int32 j = 0; j < PropertysPtr->Num(); j++)
-				{
-					(*PropertysPtr)[j]->TryGetObject(ptr);
+				TArray<void*> RowData;
+				StructPropertyHandle->AccessRawData(RowData);
+				auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
 
-					auto name = ptr->Get()->GetStringField("Name");
-					auto type = ptr->Get()->GetStringField("Type");
-					auto def = ptr->Get()->GetStringField("Default");
-					auto canEdit = ptr->Get()->GetBoolField("CanEdit");
+				DotnetTypeName->SetPropertyValue(name, NewText.ToString());
+			};
 
-					auto onChange = [StructPropertyHandle, name](const FText& NewText)
-					{
-						TArray<void*> RowData;
-						StructPropertyHandle->AccessRawData(RowData);
-						auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
+			StructBuilder.AddCustomRow(FText::FromString(name)).NameContent()
+				[
+					StructPropertyHandle->CreatePropertyNameWidget(FText::FromString(name))
+				]
+			.ValueContent()
+				[
+					SNew(SEditableTextBox)
+					.Text(FText::FromString(DotnetTypeName->GetPropertyValueOrDefault(name, def)))
+					.OnTextChanged_Lambda(onChange)
+					.IsEnabled(canEdit)
+				];
 
-						DotnetTypeName->SetPropertyValue(name, NewText.ToString());
-					};
-
-					StructBuilder.AddCustomRow(FText::FromString(name)).NameContent()
-						[
-							StructPropertyHandle->CreatePropertyNameWidget(FText::FromString(name))
-						]
-					.ValueContent()
-						[
-							SNew(SEditableTextBox)
-							.Text(FText::FromString(DotnetTypeName->GetPropertyValueOrDefault(name, def)))
-							.OnTextChanged_Lambda(onChange)
-							.IsEnabled(canEdit)	
-						];
-
-					propertys.Add(name);
-				}
-			}
+			propertys.Add(name);
 		}
 	}
 
@@ -118,17 +110,16 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 	//});
 }
 
-TSharedPtr<FJsonObject> FDotnetTypeNameCustomization::GetMetadata()
+void FDotnetTypeNameCustomization::OnChangeFullName(const FString& value)
 {
-	auto json_source = UCoreShell::GetInstance()->InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
-	auto json = FString(UTF8_TO_TCHAR(json_source));
+	FString currentValue;
+	FullNamePropertyHandle->GetValue(currentValue);
 
-	TSharedPtr<FJsonObject> Data;
-	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(json);
-
-	FJsonSerializer::Deserialize(JsonReader, Data);
-
-	return Data;
+	if (value != currentValue && MainLayoutBuilder != NULL)
+	{
+		FullNamePropertyHandle->SetValue(value);
+		MainLayoutBuilder->ForceRefreshDetails();
+	}
 }
 
 void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& OutComboBoxStrings, TArray<TSharedPtr<class SToolTip>>& OutToolTips, TArray<bool>& OutRestrictedItems)
@@ -150,4 +141,17 @@ void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& 
 			OutRestrictedItems.Add(false);
 		}
 	}
+}
+
+TSharedPtr<FJsonObject> FDotnetTypeNameCustomization::GetMetadata()
+{
+	auto json_source = UCoreShell::GetInstance()->InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
+	auto json = FString(UTF8_TO_TCHAR(json_source));
+
+	TSharedPtr<FJsonObject> Data;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(json);
+
+	FJsonSerializer::Deserialize(JsonReader, Data);
+
+	return Data;
 }
