@@ -21,7 +21,8 @@ UnrealDotNet - это плагин для Unreal Engine 4 позволяющий
 # Краткое описание работы
 
 <p align="center">
-![Схема взаимодействия ](https://raw.githubusercontent.com/mrkriv/UnrealDotNet/master/docs/img/InteractionScheme.png "Схема взаимодействия ")
+ <img src="https://raw.githubusercontent.com/mrkriv/UnrealDotNet/master/docs/img/InteractionScheme.png">
+ <h4 align="center">Схема взаимодействия</h4>
 </p>
 
 Взаимодействие с с++ происходит при помощи P/Invoke, для этого на основе заголовочных файлов движка генерится куча export методов в с++ и c# библиотека  UnrealEngine.dll для вызова этих методов. Для большинства наследников UObject создаются manage классы. Они необходимы для корректного наследования от этих классов в c#.  Так же создаются копии перечислений и структур для работы с движком. Кроме того плагин поддерживает работу с событиями. Генерацией этих оберток занимается [CodeGeneretor](/ "Подробнее тут").
@@ -35,7 +36,8 @@ UnrealDotNet - это плагин для Unreal Engine 4 позволяющий
 # Структура проекта
 
 <p align="center">
-![Структура проекта](https://raw.githubusercontent.com/mrkriv/UnrealDotNet/master/docs/img/ProjectScheme.png "Структура проекта")
+ <img src="https://raw.githubusercontent.com/mrkriv/UnrealDotNet/master/docs/img/ProjectScheme.png">
+ <h4 align="center">Структура проекта</h4>
 </p>
 
 # Roadmap
