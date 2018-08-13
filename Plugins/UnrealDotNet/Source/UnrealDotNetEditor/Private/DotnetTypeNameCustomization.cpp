@@ -62,43 +62,38 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 	MainLayoutBuilder = &StructBuilder.GetParentCategory().GetParentLayout();
 
 	TArray<FString> propertys;
-	auto types = GetMetadata()->GetArrayField("Types");
 
-	for (auto type : types)
+	auto metadata = UCoreShell::GetInstance()->Metadata;
+
+	for (auto type : metadata.Types)
 	{
-		if (type->AsObject()->GetStringField("Name") != DotnetTypeName->FullName)
+		if (type.Name != DotnetTypeName->FullName)
 			continue;
 
-		auto props = type->AsObject()->GetArrayField("Propertys");
-		for (auto prop : props)
+		for (auto prop : type.Propertys)
 		{
-			auto name = prop->AsObject()->GetStringField("Name");
-			auto type = prop->AsObject()->GetStringField("Type");
-			auto def = prop->AsObject()->GetStringField("Default");
-			auto canEdit = prop->AsObject()->GetBoolField("CanEdit");
-
-			auto onChange = [StructPropertyHandle, name](const FText& NewText)
+			auto onChange = [StructPropertyHandle, prop](const FText& NewText)
 			{
 				TArray<void*> RowData;
 				StructPropertyHandle->AccessRawData(RowData);
 				auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
 
-				DotnetTypeName->SetPropertyValue(name, NewText.ToString());
+				DotnetTypeName->SetPropertyValue(prop.Name, NewText.ToString());
 			};
 
-			StructBuilder.AddCustomRow(FText::FromString(name)).NameContent()
-				[
-					StructPropertyHandle->CreatePropertyNameWidget(FText::FromString(name))
-				]
+			StructBuilder.AddCustomRow(FText::FromString(prop.Name)).NameContent()
+			[
+				StructPropertyHandle->CreatePropertyNameWidget(FText::FromString(prop.Name))
+			]
 			.ValueContent()
-				[
-					SNew(SEditableTextBox)
-					.Text(FText::FromString(DotnetTypeName->GetPropertyValueOrDefault(name, def)))
-					.OnTextChanged_Lambda(onChange)
-					.IsEnabled(canEdit)
-				];
+			[
+				SNew(SEditableTextBox)
+				.Text(FText::FromString(DotnetTypeName->GetPropertyValueOrDefault(prop.Name, prop.Default)))
+				.OnTextChanged_Lambda(onChange)
+				.IsEnabled(prop.bCanEdit)
+			];
 
-			propertys.Add(name);
+			propertys.Add(prop.Name);
 		}
 	}
 
@@ -124,34 +119,12 @@ void FDotnetTypeNameCustomization::OnChangeFullName(const FString& value)
 
 void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& OutComboBoxStrings, TArray<TSharedPtr<class SToolTip>>& OutToolTips, TArray<bool>& OutRestrictedItems)
 {
-	auto Data = GetMetadata();
+	auto metadata = UCoreShell::GetInstance()->Metadata;
 
-	const TArray<TSharedPtr<FJsonValue>> *arrayPtr;
-	if (Data->TryGetArrayField("Types", arrayPtr))
+	for (auto type : metadata.Types)
 	{
-		for (int32 i = 0; i < arrayPtr->Num(); i++)
-		{
-			const TSharedPtr<FJsonObject>* ptr;
-			(*arrayPtr)[i]->TryGetObject(ptr);
-
-			auto item = ptr->Get()->GetStringField("Name");
-
-			OutComboBoxStrings.Add(MakeShared<FString>(item));
-			OutToolTips.Add(SNew(SToolTip).Text(FText::FromString(item)));
-			OutRestrictedItems.Add(false);
-		}
+		OutComboBoxStrings.Add(MakeShared<FString>(type.Name));
+		OutToolTips.Add(SNew(SToolTip).Text(FText::FromString(type.Name)));
+		OutRestrictedItems.Add(false);
 	}
-}
-
-TSharedPtr<FJsonObject> FDotnetTypeNameCustomization::GetMetadata()
-{
-	auto json_source = UCoreShell::GetInstance()->InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
-	auto json = FString(UTF8_TO_TCHAR(json_source));
-
-	TSharedPtr<FJsonObject> Data;
-	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(json);
-
-	FJsonSerializer::Deserialize(JsonReader, Data);
-
-	return Data;
 }

@@ -21,5 +21,4 @@ private:
 	class IDetailLayoutBuilder* MainLayoutBuilder;
 
 	static void GenerateStrings(TArray<TSharedPtr<FString>>& OutComboBoxStrings, TArray<TSharedPtr<class SToolTip>>& OutToolTips, TArray<bool>& OutRestrictedItems);
-	static TSharedPtr<FJsonObject> GetMetadata();
 };

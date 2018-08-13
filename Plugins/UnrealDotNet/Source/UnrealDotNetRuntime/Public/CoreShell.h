@@ -2,6 +2,7 @@
 
 #include "Windows/MinimalWindowsApi.h"
 #include "TimerManager.h"
+#include "DotnetMetadata.h"
 
 #include "CoreShell.generated.h"
 
@@ -41,27 +42,28 @@ class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 	void AppendAssembliesInDirectory(FString& assemblies, const FString& dir);
 	void LoadConfig();
 	void LoadCLR();
-
-#if WITH_EDITOR
-	void UpdateGameLib();
-#endif
+	void LoadMetadata();
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FDotnetMetadata Metadata;
 
 #if WITH_EDITOR
 	FSimpleDelegate OnAssembleLoad;
+	void UpdateGameLib();
 #endif
+
+	UCoreShell();
 
 	static void Initialize();
 	static void Uninitialize();
-
-	UCoreShell();
 
 	UFUNCTION(BlueprintPure, Category = DotNet, meta = (DisplayName = "dotNet"))
 	static UCoreShell* GetInstance() { return Instance; }
 
 	UFUNCTION(BlueprintCallable, Category = DotNet)
 	FString RunStatic(const FString& FullClassName, const FString& Method, const FString& Argument);
+
 
 	template<typename... ArgumentT>
 	void InvokeInWrapper(const FString& FullClassName, const FString& Method, const ArgumentT&... Aruments)

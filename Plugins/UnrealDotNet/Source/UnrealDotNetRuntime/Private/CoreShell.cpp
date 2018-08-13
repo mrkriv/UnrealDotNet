@@ -39,6 +39,7 @@ UCoreShell::UCoreShell()
 {
 	LoadConfig();
 	LoadCLR();
+	LoadMetadata();
 
 #if WITH_EDITOR
 	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
@@ -122,6 +123,7 @@ void UCoreShell::UpdateGameLib()
 	{
 		AssemblyGuid = NewAssemblyGuid;
 		GameLogic_Assemble = FString(UTF8_TO_TCHAR(name));
+		LoadMetadata();
 
 		UE_LOG(DotNetShell, Log, TEXT("Hot reload done, current game logic assembly: %s"), *GameLogic_Assemble);
 
@@ -318,6 +320,19 @@ FString UCoreShell::RunStatic(const FString& FullClassName, const FString& Metho
 
 	auto str = manageMethod(TCHAR_TO_UTF8(*FullClassName), TCHAR_TO_UTF8(*Method), TCHAR_TO_UTF8(*Argument));
 	return str ? FString(UTF8_TO_TCHAR(str)) : FString("");
+}
+
+void UCoreShell::LoadMetadata()
+{
+	auto json_source = InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
+	auto json_string = FString(UTF8_TO_TCHAR(json_source));
+
+	TSharedPtr<FJsonObject> json;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(json_string);
+
+	FJsonSerializer::Deserialize(JsonReader, json);
+
+	Metadata = FDotnetMetadata(json);
 }
 
 #pragma warning(pop)

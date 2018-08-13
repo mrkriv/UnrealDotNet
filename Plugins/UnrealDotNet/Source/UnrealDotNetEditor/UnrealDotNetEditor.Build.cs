@@ -43,6 +43,7 @@ public class UnrealDotNetEditor : ModuleRules
                 "SlateCore",
                 "Slate",
                 "PropertyEditor",
+                "PlacementMode",
                 "UnrealDotNetRuntime",
                 "Json",
                 "JsonUtilities",

@@ -32,7 +32,7 @@ namespace GameLogic
 
                 _box.SetCollisionProfileName("OverlapAll");
                 _box.SetBoxExtent(new FVector(100, 100, 100), false);
-
+                
                 _box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
             }
             catch (Exception e)
