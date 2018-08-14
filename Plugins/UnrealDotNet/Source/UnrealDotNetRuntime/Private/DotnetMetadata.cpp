@@ -13,6 +13,8 @@ FDotnetMetadata_Type::FDotnetMetadata_Type(TSharedPtr<FJsonObject> json)
 {
 	Name = json->GetStringField("Name");
 	Base = json->GetStringField("Base");
+	bIsManage = json->GetBoolField("IsManage");
+	ManageClassName = json->GetStringField("ManageClassName");
 
 	for (auto type : json->GetArrayField("Propertys"))
 	{
@@ -26,4 +28,17 @@ FDotnetMetadata_Property::FDotnetMetadata_Property(TSharedPtr<FJsonObject> json)
 	Type = json->GetStringField("Type");
 	bCanEdit = json->GetBoolField("CanEdit");
 	Default = json->GetStringField("Default");
+}
+
+UClass* FDotnetMetadata_Type::GetCppClass() const
+{
+	for (TObjectIterator<UClass> itr; itr; ++itr)
+	{
+		if (itr->GetName() == Base)
+		{
+			return *itr;
+		}
+	}
+
+	return NULL;
 }

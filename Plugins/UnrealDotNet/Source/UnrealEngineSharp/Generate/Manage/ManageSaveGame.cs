@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSaveGame")]
 	public partial class ManageSaveGame : USaveGame
 	{
 		public ManageSaveGame(IntPtr Adress)

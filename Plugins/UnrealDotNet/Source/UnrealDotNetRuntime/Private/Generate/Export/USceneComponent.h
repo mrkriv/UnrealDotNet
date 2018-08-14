@@ -75,8 +75,8 @@ public:
 		UpdateNavigationData();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

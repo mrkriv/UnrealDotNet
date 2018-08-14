@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageCharacter")]
 	public partial class ManageCharacter : ACharacter
 	{
 		public ManageCharacter(IntPtr Adress)

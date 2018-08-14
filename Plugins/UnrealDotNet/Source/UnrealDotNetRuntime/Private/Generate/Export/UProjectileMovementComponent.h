@@ -45,8 +45,8 @@ public:
 		return LimitVelocity(NewVelocity);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

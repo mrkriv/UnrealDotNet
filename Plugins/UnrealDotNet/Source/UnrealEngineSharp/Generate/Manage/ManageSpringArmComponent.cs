@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSpringArmComponent")]
 	public partial class ManageSpringArmComponent : USpringArmComponent
 	{
 		public ManageSpringArmComponent(IntPtr Adress)

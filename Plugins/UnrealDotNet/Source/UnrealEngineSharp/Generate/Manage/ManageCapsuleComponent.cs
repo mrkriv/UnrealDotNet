@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageCapsuleComponent")]
 	public partial class ManageCapsuleComponent : UCapsuleComponent
 	{
 		public ManageCapsuleComponent(IntPtr Adress)

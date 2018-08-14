@@ -3,6 +3,7 @@
 #include "Windows/MinimalWindowsApi.h"
 #include "TimerManager.h"
 #include "DotnetMetadata.h"
+#include "DotnetTypeName.h"
 
 #include "CoreShell.generated.h"
 

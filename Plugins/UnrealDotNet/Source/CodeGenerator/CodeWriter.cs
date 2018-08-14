@@ -86,6 +86,13 @@ namespace Generator
             _sb.AppendLine("}");
         }
 
+        public void CloseBlock(string postfix)
+        {
+            _tab--;
+            _sb.Remove(_sb.Length - 1, 1);
+            _sb.AppendLine("}" + postfix);
+        }
+
         private void WriteTab()
         {
             _sb.Append(new string('\t', _tab));

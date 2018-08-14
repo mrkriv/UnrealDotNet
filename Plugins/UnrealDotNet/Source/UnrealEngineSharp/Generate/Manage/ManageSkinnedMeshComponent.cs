@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSkinnedMeshComponent")]
 	public partial class ManageSkinnedMeshComponent : USkinnedMeshComponent
 	{
 		public ManageSkinnedMeshComponent(IntPtr Adress)

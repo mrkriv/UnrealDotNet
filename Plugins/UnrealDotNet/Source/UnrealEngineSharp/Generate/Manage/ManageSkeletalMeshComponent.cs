@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSkeletalMeshComponent")]
 	public partial class ManageSkeletalMeshComponent : USkeletalMeshComponent
 	{
 		public ManageSkeletalMeshComponent(IntPtr Adress)

@@ -116,6 +116,7 @@ namespace Generator.Codegenretor
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreShell.h\"");
+            cw.WriteLine("#include \"IManageObject.h\"");
             cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
             cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
             cw.WriteLine();
@@ -123,7 +124,7 @@ namespace Generator.Codegenretor
             GenerateSourceInfo(cw, Class);
 
             cw.WriteLine("UCLASS()");
-            cw.WriteLine($"class {cfg.CppApiUe} {liter}Manage{baseName} : public {Class.Name}");
+            cw.WriteLine($"class {cfg.CppApiUe} {liter}Manage{baseName} : public {Class.Name}, public IManageObject");
             cw.OpenBlock();
 
             cw.WriteLine("GENERATED_BODY()");
@@ -131,31 +132,29 @@ namespace Generator.Codegenretor
             cw.WriteLine("bool bIsManageAttach = false;");
             cw.WriteLine();
 
-            cw.WriteLine("public:");
+            cw.WriteLineNoTab("public:");
+            cw.WriteLine();
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
             cw.WriteLine();
+            cw.WriteLine("virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }");
+            cw.WriteLine("virtual FString GetManageClassName() override { return ManageClassName.FullName; }");
+            cw.WriteLine();
 
-            var publicM = methods.Where(m => m.AccessModifier == AccessModifier.Public).ToList();
-            var protectedM = methods.Where(m => m.AccessModifier == AccessModifier.Protected).ToList();
-
-            if (publicM.Any())
+            foreach(var method in methods.Where(m => m.AccessModifier == AccessModifier.Public))
             {
-                cw.WriteLine();
-                cw.WriteLineNoTab("public:");
-                cw.WriteLine();
-                publicM.ForEach(m => GenerateManageMethodHead(cw, m));
+                GenerateManageMethodHead(cw, method);
             }
 
-            if (protectedM.Any())
+            cw.WriteLine();
+            cw.WriteLineNoTab("protected:");
+
+            foreach (var method in methods.Where(m => m.AccessModifier == AccessModifier.Protected))
             {
-                cw.WriteLineNoTab("protected:");
-                cw.WriteLine();
-                protectedM.ForEach(m => GenerateManageMethodHead(cw, m));
+                GenerateManageMethodHead(cw, method);
             }
 
-            cw.CloseBlock();
-            cw.Write(";");
+            cw.CloseBlock(";");
             cw.WriteLine();
 
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
@@ -192,7 +191,6 @@ namespace Generator.Codegenretor
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
 
             cw.WriteLine($"virtual {method.ReturnType.GetTypeCppOgiginal()} {method.Name}({param}) override;");
-            cw.WriteLine();
         }
 
         private void GenerateManageMethod(CodeWriter cw, Method method)
@@ -249,8 +247,7 @@ namespace Generator.Codegenretor
                 GenerateMethodProtctedWrap(cw, mt);
             }
 
-            cw.CloseBlock();
-            cw.Write(";");
+            cw.CloseBlock(";");
             cw.WriteLine();
             cw.WriteLine();
         }

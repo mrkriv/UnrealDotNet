@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageRotatingMovementComponent")]
 	public partial class ManageRotatingMovementComponent : URotatingMovementComponent
 	{
 		public ManageRotatingMovementComponent(IntPtr Adress)

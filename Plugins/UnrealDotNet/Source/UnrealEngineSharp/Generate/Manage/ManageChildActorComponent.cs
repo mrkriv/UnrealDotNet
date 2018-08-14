@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageChildActorComponent")]
 	public partial class ManageChildActorComponent : UChildActorComponent
 	{
 		public ManageChildActorComponent(IntPtr Adress)

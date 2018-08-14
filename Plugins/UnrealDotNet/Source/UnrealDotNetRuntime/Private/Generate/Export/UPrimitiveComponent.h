@@ -45,8 +45,8 @@ public:
 		UpdatePhysicsToRBChannels();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

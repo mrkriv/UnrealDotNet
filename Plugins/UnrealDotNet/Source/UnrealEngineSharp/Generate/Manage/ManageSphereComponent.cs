@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSphereComponent")]
 	public partial class ManageSphereComponent : USphereComponent
 	{
 		public ManageSphereComponent(IntPtr Adress)

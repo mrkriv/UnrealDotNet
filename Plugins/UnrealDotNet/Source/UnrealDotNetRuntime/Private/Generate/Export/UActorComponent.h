@@ -80,8 +80,8 @@ public:
 		return ShouldCreateRenderState();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

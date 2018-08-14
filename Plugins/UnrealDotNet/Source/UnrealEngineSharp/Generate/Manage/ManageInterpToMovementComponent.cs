@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageInterpToMovementComponent")]
 	public partial class ManageInterpToMovementComponent : UInterpToMovementComponent
 	{
 		public ManageInterpToMovementComponent(IntPtr Adress)

@@ -9,7 +9,7 @@ UnrealDotNet - это плагин для Unreal Engine 4 позволяющий
 # Как это запустить?
 1. Скачиваем этот проект
 2. Скачиваем и устанавливаем [net core runtime](https://www.microsoft.com/net/download "net core runtime")
-3. Копируем папку с coreclr.dll (примерно в C:\Program Files\dotnet\shared\Microsoft.NETCore.App\\..\\ в Plugins\UnrealDotNet\Binaries\Win64\dotenet_2.1.2
+3. Копируем папку с coreclr.dll (примерно в C:\Program Files\dotnet\shared\Microsoft.NETCore.App\\..\\ в Plugins\UnrealDotNet\Binaries\Win64\dotenet_clr
 4. Каким либо образом находим Newtonsoft.Json.dll и кидаем в Plugins\UnrealDotNet\Binaries\Win64\dotenet_libs
 5. Открываем проект Source\GameLogic\GameLogic.sln и компилируем
 6. Запускаем DotUnrealExample.uproject (первый запуск будет долгим из-за компиляции)

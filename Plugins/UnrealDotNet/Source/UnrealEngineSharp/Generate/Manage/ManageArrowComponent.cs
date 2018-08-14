@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageArrowComponent")]
 	public partial class ManageArrowComponent : UArrowComponent
 	{
 		public ManageArrowComponent(IntPtr Adress)

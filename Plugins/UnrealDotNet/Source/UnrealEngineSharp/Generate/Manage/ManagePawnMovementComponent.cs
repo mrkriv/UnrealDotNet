@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePawnMovementComponent")]
 	public partial class ManagePawnMovementComponent : UPawnMovementComponent
 	{
 		public ManagePawnMovementComponent(IntPtr Adress)

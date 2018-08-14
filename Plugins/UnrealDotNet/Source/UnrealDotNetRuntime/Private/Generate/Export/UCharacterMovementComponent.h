@@ -235,8 +235,8 @@ public:
 		UpdateFromCompressedFlags(Flags);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

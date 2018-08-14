@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageEngine")]
 	public partial class ManageEngine : UEngine
 	{
 		public ManageEngine(IntPtr Adress)

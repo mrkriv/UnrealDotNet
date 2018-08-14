@@ -15,8 +15,8 @@ public:
 		UpdateShowFlags();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

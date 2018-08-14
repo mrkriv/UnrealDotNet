@@ -25,8 +25,8 @@ public:
 		return ResolvePenetrationImpl(Adjustment, Hit, NewRotation);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

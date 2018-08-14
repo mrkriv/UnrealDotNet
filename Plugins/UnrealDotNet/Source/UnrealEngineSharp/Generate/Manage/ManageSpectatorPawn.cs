@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSpectatorPawn")]
 	public partial class ManageSpectatorPawn : ASpectatorPawn
 	{
 		public ManageSpectatorPawn(IntPtr Adress)

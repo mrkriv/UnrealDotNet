@@ -64,7 +64,7 @@ UCoreShell::UCoreShell()
 
 void UCoreShell::LoadConfig()
 {
-	CoreCLR_Path		= FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / "UnrealDotNet" / "Binaries" / "Win64" / "dotenet_2.1.2" / "");
+	CoreCLR_Path		= FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / "UnrealDotNet" / "Binaries" / "Win64" / "dotenet_clr" / "");
 	Dependencies_Path	= FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / "UnrealDotNet" / "Binaries" / "Win64" / "dotenet_libs" / "");
 	Domain_Path			= FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / "UnrealDotNet" / "Binaries" / "Win64" / "");
 

@@ -341,7 +341,7 @@ namespace UnrealEngine
         {
             try
             {
-                var classes = _gameLogicAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UObject)));
+                var classes = _gameLogicAssembly.GetTypes();
                 var asmName = _gameLogicAssembly.GetName().Name;
 
                 return JsonConvert.SerializeObject(
@@ -351,6 +351,8 @@ namespace UnrealEngine
                         {
                             Name = t.FullName.Substring(asmName.Length + 1),
                             Base = t.BaseType.Name,
+                            IsManage = t.GetCustomAttribute<ManageTypeAttribute>() != null,
+                            ManageClassName = t.GetCustomAttribute<ManageTypeAttribute>()?.CppTypeName ?? "",
                             Propertys = t.GetProperties().Where(PropertyConvert.FilterPropertyForEditor).Select(p => new
                             {
                                 Name = p.Name,

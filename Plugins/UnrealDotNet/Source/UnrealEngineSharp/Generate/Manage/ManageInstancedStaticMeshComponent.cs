@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageInstancedStaticMeshComponent")]
 	public partial class ManageInstancedStaticMeshComponent : UInstancedStaticMeshComponent
 	{
 		public ManageInstancedStaticMeshComponent(IntPtr Adress)

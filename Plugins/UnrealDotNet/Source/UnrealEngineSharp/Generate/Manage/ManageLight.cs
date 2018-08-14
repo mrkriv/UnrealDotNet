@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageLight")]
 	public partial class ManageLight : ALight
 	{
 		public ManageLight(IntPtr Adress)

@@ -20,8 +20,8 @@ public:
 		UpdateOcclusionRenderingStateFast();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

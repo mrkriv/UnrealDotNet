@@ -123,6 +123,9 @@ void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& 
 
 	for (auto type : metadata.Types)
 	{
+		if (!type.bIsManage)
+			continue;
+
 		OutComboBoxStrings.Add(MakeShared<FString>(type.Name));
 		OutToolTips.Add(SNew(SToolTip).Text(FText::FromString(type.Name)));
 		OutRestrictedItems.Add(false);

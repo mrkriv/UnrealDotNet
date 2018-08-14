@@ -25,8 +25,8 @@ public:
 		return GetDetailedInfoInternal();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

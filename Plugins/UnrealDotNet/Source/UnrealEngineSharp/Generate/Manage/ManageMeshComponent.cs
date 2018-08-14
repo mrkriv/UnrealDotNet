@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageMeshComponent")]
 	public partial class ManageMeshComponent : UMeshComponent
 	{
 		public ManageMeshComponent(IntPtr Adress)

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageProjectileMovementComponent")]
 	public partial class ManageProjectileMovementComponent : UProjectileMovementComponent
 	{
 		public ManageProjectileMovementComponent(IntPtr Adress)

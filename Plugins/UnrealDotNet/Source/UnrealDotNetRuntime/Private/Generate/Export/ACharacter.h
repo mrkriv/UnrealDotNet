@@ -25,8 +25,8 @@ public:
 		return CanJumpInternal_Implementation();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

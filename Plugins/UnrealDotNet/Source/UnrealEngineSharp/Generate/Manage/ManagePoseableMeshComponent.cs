@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePoseableMeshComponent")]
 	public partial class ManagePoseableMeshComponent : UPoseableMeshComponent
 	{
 		public ManagePoseableMeshComponent(IntPtr Adress)

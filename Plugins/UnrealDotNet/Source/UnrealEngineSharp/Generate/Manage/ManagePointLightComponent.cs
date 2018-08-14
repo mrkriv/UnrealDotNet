@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePointLightComponent")]
 	public partial class ManagePointLightComponent : UPointLightComponent
 	{
 		public ManagePointLightComponent(IntPtr Adress)

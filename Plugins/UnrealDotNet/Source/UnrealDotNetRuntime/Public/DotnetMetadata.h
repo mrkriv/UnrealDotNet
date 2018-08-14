@@ -26,10 +26,14 @@ struct UNREALDOTNETRUNTIME_API FDotnetMetadata_Type
 
 	FString Name;
 	FString Base;
+	bool bIsManage;
+	FString ManageClassName;
 	TArray<FDotnetMetadata_Property> Propertys;
 
 	FDotnetMetadata_Type() {}
 	FDotnetMetadata_Type(TSharedPtr<FJsonObject> json);
+
+	class UClass* GetCppClass() const;
 };
 
 USTRUCT(BlueprintType)

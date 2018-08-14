@@ -35,8 +35,8 @@ public:
 		UpdateControlPoints(InForceUpdate);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

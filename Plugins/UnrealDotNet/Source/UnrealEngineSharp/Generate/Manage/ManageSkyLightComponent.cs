@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSkyLightComponent")]
 	public partial class ManageSkyLightComponent : USkyLightComponent
 	{
 		public ManageSkyLightComponent(IntPtr Adress)

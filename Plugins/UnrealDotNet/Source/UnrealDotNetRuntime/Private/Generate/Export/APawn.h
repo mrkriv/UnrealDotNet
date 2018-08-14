@@ -15,8 +15,8 @@ public:
 		DestroyPlayerInputComponent();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

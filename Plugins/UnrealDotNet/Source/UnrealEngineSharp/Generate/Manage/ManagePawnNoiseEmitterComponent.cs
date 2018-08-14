@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePawnNoiseEmitterComponent")]
 	public partial class ManagePawnNoiseEmitterComponent : UPawnNoiseEmitterComponent
 	{
 		public ManagePawnNoiseEmitterComponent(IntPtr Adress)

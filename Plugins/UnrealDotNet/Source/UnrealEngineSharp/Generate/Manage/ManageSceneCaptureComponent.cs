@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageSceneCaptureComponent")]
 	public partial class ManageSceneCaptureComponent : USceneCaptureComponent
 	{
 		public ManageSceneCaptureComponent(IntPtr Adress)

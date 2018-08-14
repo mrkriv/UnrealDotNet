@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePrimitiveComponent")]
 	public partial class ManagePrimitiveComponent : UPrimitiveComponent
 	{
 		public ManagePrimitiveComponent(IntPtr Adress)

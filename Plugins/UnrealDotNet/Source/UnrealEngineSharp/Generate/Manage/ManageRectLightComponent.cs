@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageRectLightComponent")]
 	public partial class ManageRectLightComponent : URectLightComponent
 	{
 		public ManageRectLightComponent(IntPtr Adress)

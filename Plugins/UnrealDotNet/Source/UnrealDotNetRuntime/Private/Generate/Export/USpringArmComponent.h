@@ -20,8 +20,8 @@ public:
 		UpdateDesiredArmLocation(bDoTrace, bDoLocationLag, bDoRotationLag, DeltaTime);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

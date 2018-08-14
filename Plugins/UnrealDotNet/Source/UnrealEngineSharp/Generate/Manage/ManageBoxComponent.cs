@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageBoxComponent")]
 	public partial class ManageBoxComponent : UBoxComponent
 	{
 		public ManageBoxComponent(IntPtr Adress)

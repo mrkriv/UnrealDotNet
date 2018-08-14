@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManagePlayer")]
 	public partial class ManagePlayer : UPlayer
 	{
 		public ManagePlayer(IntPtr Adress)

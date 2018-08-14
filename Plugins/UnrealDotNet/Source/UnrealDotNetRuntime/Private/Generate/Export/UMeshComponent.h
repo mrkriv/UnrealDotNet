@@ -20,8 +20,8 @@ public:
 		MarkCachedMaterialParameterNameIndicesDirty();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

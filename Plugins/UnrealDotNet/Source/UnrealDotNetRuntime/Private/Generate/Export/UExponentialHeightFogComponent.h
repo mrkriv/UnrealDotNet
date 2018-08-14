@@ -15,8 +15,8 @@ public:
 		AddFogIfNeeded();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

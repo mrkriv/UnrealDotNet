@@ -15,8 +15,8 @@ public:
 		LifeSpanCallback();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

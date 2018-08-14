@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageDirectionalLightComponent")]
 	public partial class ManageDirectionalLightComponent : UDirectionalLightComponent
 	{
 		public ManageDirectionalLightComponent(IntPtr Adress)

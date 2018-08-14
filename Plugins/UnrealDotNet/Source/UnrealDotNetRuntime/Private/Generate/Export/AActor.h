@@ -65,8 +65,8 @@ public:
 		SyncReplicatedPhysicsSimulation();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

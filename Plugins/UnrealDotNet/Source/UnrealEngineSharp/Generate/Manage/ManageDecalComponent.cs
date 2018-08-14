@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageDecalComponent")]
 	public partial class ManageDecalComponent : UDecalComponent
 	{
 		public ManageDecalComponent(IntPtr Adress)

@@ -132,8 +132,7 @@ namespace Generator.Codegenretor
 
             var manageClass = new Class("Manage" + Class.Name.Substring(1));
 
-            GenerateSummaty(cw, Class, "Этот класс может быть наследованн");
-
+            cw.WriteLine($"[ManageType(\"{manageClass.Name}\")]");
             cw.WriteLine($"public partial class {manageClass.Name} : {Class.Name}");
             cw.OpenBlock();
 

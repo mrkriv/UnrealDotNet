@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageLineBatchComponent")]
 	public partial class ManageLineBatchComponent : ULineBatchComponent
 	{
 		public ManageLineBatchComponent(IntPtr Adress)

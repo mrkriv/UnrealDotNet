@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageLightComponentBase")]
 	public partial class ManageLightComponentBase : ULightComponentBase
 	{
 		public ManageLightComponentBase(IntPtr Adress)

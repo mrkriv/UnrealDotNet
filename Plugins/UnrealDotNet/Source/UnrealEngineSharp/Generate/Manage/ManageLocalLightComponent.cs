@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageLocalLightComponent")]
 	public partial class ManageLocalLightComponent : ULocalLightComponent
 	{
 		public ManageLocalLightComponent(IntPtr Adress)

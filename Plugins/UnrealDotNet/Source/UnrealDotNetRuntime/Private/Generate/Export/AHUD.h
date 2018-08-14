@@ -15,8 +15,8 @@ public:
 		return IsCanvasValid_WarnIfNot();
 	}
 
-}
-;
+};
+
 
 extern "C"
 {

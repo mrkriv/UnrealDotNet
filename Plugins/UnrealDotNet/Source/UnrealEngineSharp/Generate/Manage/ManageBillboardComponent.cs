@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
+	[ManageType("ManageBillboardComponent")]
 	public partial class ManageBillboardComponent : UBillboardComponent
 	{
 		public ManageBillboardComponent(IntPtr Adress)

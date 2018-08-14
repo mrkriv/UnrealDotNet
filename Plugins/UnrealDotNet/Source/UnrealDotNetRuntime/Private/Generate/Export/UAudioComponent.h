@@ -15,8 +15,8 @@ public:
 		PlayInternal(StartTime, FadeInDuration, FadeVolumeLevel);
 	}
 
-}
-;
+};
+
 
 extern "C"
 {
