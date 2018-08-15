@@ -6,12 +6,13 @@
 #if WITH_EDITOR
 #include "IDirectoryWatcher.h"
 #include "DirectoryWatcherModule.h"
+
+#include "Framework/Notifications/NotificationManager.h"
+#include "Widgets/Notifications/SNotificationList.h"
 #endif
 
 #pragma warning(push)
 #pragma warning(disable:4458)
-
-#pragma warning(push)
 #pragma warning(disable:4005)
 #pragma warning(disable:4668)
 
@@ -98,6 +99,9 @@ void UCoreShell::LoadCLR()
 	else
 	{
 		UE_LOG(DotNetShell, Error, TEXT("Failed load game logic assemble"));
+#if WITH_EDITOR
+		FSlateNotificationManager::Get().AddNotification(FNotificationInfo(FText::FromString("Failed load game logic assemble")));
+#endif
 	}
 }
 
@@ -125,6 +129,7 @@ void UCoreShell::UpdateGameLib()
 		GameLogic_Assemble = FString(UTF8_TO_TCHAR(name));
 		LoadMetadata();
 
+		FSlateNotificationManager::Get().AddNotification(FNotificationInfo(FText::FromString("Game logic assemble reloaded")));
 		UE_LOG(DotNetShell, Log, TEXT("Hot reload done, current game logic assembly: %s"), *GameLogic_Assemble);
 
 		if (OnAssembleLoad.IsBound())
@@ -132,6 +137,7 @@ void UCoreShell::UpdateGameLib()
 	}
 	else
 	{
+		FSlateNotificationManager::Get().AddNotification(FNotificationInfo(FText::FromString("Failed reloaded game logic assemble")));
 		UE_LOG(DotNetShell, Error, TEXT("Hot reload for net core failed :("));
 	}
 }
@@ -334,5 +340,3 @@ void UCoreShell::LoadMetadata()
 
 	Metadata = FDotnetMetadata(json);
 }
-
-#pragma warning(pop)
