@@ -1,9 +1,19 @@
 #include "UnrealDotNetEditor.h"
 #include "UnrealDotNetEditorPCH.h"
 #include "PropertyEditorModule.h"
+#include "UDNCommands.h"
+#include "UDNStyle.h"
 #include "DotnetTypeNameCustomization.h"
 #include "ActorFactoryManageActor.h"
 #include "CoreShell.h"
+#include "Misc/MessageDialog.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
+
+#include "Framework/Notifications/NotificationManager.h"
+#include "Widgets/Notifications/SNotificationList.h"
+
+#include "LevelEditor.h"
+
 
 DEFINE_LOG_CATEGORY(DotNetEditor);
 
@@ -15,6 +25,7 @@ void FUnrealDotNetEditorModule::StartupModule()
 {
 	auto& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 	auto& PlacementModule = FModuleManager::LoadModuleChecked<IPlacementModeModule>("PlacementMode");
+	auto& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
 
 	PropertyModule.RegisterCustomPropertyTypeLayout(TEXT("DotnetTypeName"), FOnGetPropertyTypeCustomizationInstance::CreateStatic(&FDotnetTypeNameCustomization::MakeInstance));
 
@@ -22,15 +33,37 @@ void FUnrealDotNetEditorModule::StartupModule()
 
 	UCoreShell::GetInstance()->OnAssembleLoad.BindRaw(this, &FUnrealDotNetEditorModule::OnHostReload);
 	OnHostReload();
+
+	FUDNStyle::Initialize();
+	FUDNStyle::ReloadTextures();
+
+	FUDNCommands::Register();
+
+	PluginCommands = MakeShareable(new FUICommandList);
+
+	PluginCommands->MapAction(
+		FUDNCommands::Get().PluginAction,
+		FExecuteAction::CreateRaw(this, &FUnrealDotNetEditorModule::CompileButtonClicked),
+		FCanExecuteAction());
+
+	ToolbarCompileButton = MakeShareable(new FExtender);
+	ToolbarCompileButton->AddToolBarExtension("Settings", EExtensionHook::After, PluginCommands, FToolBarExtensionDelegate::CreateRaw(this, &FUnrealDotNetEditorModule::AddToolbarExtension));
+
+	LevelEditorModule.GetToolBarExtensibilityManager()->AddExtender(ToolbarCompileButton);
 }
 
 void FUnrealDotNetEditorModule::ShutdownModule()
 {
 	auto& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 	auto& PlacementModule = FModuleManager::LoadModuleChecked<IPlacementModeModule>("PlacementMode");
+	auto& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
 
 	PropertyModule.UnregisterCustomPropertyTypeLayout("DotnetTypeName");
-	PlacementModule.UnregisterPlacementCategory(FName("dotnet"));
+	PlacementModule.UnregisterPlacementCategory(PlacementCategory);
+	LevelEditorModule.GetToolBarExtensibilityManager()->RemoveExtender(ToolbarCompileButton);
+	
+	FUDNStyle::Shutdown();
+	FUDNCommands::Unregister();
 }
 
 void FUnrealDotNetEditorModule::OnHostReload()
@@ -70,6 +103,26 @@ void FUnrealDotNetEditorModule::OnHostReload()
 	}
 
 	PlacementModule.RegenerateItemsForCategory(PlacementCategory);
+}
+
+void FUnrealDotNetEditorModule::CompileButtonClicked()
+{
+	FSlateNotificationManager::Get().AddNotification(FNotificationInfo(LOCTEXT("CompileStartMsg", "Compile .net project...")));
+
+	auto projectFile = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir() / "Source" / "GameLogic" / "GameLogic.csproj");
+	auto commandLine = FString::Printf(TEXT("build %s"), *projectFile);
+
+	auto dotnet = FPlatformProcess::CreateProc(TEXT("dotnet"), *commandLine, false, true, true, nullptr, 0, nullptr, nullptr);
+}
+
+void FUnrealDotNetEditorModule::AddMenuExtension(FMenuBuilder& Builder)
+{
+	Builder.AddMenuEntry(FUDNCommands::Get().PluginAction);
+}
+
+void FUnrealDotNetEditorModule::AddToolbarExtension(FToolBarBuilder& Builder)
+{
+	Builder.AddToolBarButton(FUDNCommands::Get().PluginAction);
 }
 
 #undef LOCTEXT_NAMESPACE
