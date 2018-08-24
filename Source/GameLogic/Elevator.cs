@@ -30,7 +30,7 @@ namespace GameLogic
         {
         }
 
-        protected override void BeginPlay()
+        public override void OnConstruction(FTransform Transform)
         {
             PrimaryActorTick.bCanEverTick = 1;
 
@@ -55,6 +55,10 @@ namespace GameLogic
             _collider.OnComponentEndOverlap += Collider_OnComponentEndOverlap;
 
             _collider.AttachToComponent(_mesh, transformRules, "");
+        }
+
+        protected override void BeginPlay()
+        {
         }
 
         public override void Tick(float deltaSeconds)

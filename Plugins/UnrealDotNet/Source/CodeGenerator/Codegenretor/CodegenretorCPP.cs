@@ -131,14 +131,14 @@ namespace Generator.Codegenretor
             cw.WriteLine();
             cw.WriteLine("bool bIsManageAttach = false;");
             cw.WriteLine();
+            cw.WriteLine("bool AddWrapperIfNotAttach();");
+            cw.WriteLine();
 
             cw.WriteLineNoTab("public:");
             cw.WriteLine();
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
             cw.WriteLine();
-            cw.WriteLine("virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }");
-            cw.WriteLine("virtual FString GetManageClassName() override { return ManageClassName.FullName; }");
             cw.WriteLine();
 
             foreach(var method in methods.Where(m => m.AccessModifier == AccessModifier.Public))
@@ -167,6 +167,7 @@ namespace Generator.Codegenretor
             var methods = cfg.Filter.GetVirtualMethods(Class);
 
             var baseName = Class.Name.Substring(1);
+            var liter = Class.Name.First();
 
             var cw = new CodeWriter();
 
@@ -178,6 +179,20 @@ namespace Generator.Codegenretor
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
+
+            cw.WriteLine($"bool {liter}Manage{baseName}::AddWrapperIfNotAttach()");
+            cw.OpenBlock();
+            cw.WriteLine("if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())");
+            cw.OpenBlock();
+            cw.WriteLine("auto dotnetTypeName = GetManageClassName().PackJSON();");
+            cw.WriteLine("auto core = UCoreShell::GetInstance();");
+            cw.WriteLine();
+            cw.WriteLine("bIsManageAttach = core->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*className));");
+            cw.CloseBlock();
+            cw.WriteLine();
+            cw.WriteLine("return bIsManageAttach;");
+            cw.CloseBlock();
+            cw.WriteLine();
 
             methods.ForEach(m => GenerateManageMethod(cw, m));
 
@@ -205,27 +220,24 @@ namespace Generator.Codegenretor
             cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {liter}Manage{baseName}::{method.Name}({param})");
             cw.OpenBlock();
 
-            if (method.Name == "BeginPlay")
-            {
-                cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
-                cw.OpenBlock();
-                cw.WriteLine(
-                    "bIsManageAttach = UCoreShell::GetInstance()->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));");
-                cw.CloseBlock();
-                cw.WriteLine();
-                cw.WriteLine($"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
-            }
+           // if (method.Name == "BeginPlay")
+           // {
+           //     cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
+           //     cw.OpenBlock();
+           //     cw.WriteLine(
+           //         "bIsManageAttach = UCoreShell::GetInstance()->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));");
+           //     cw.CloseBlock();
+           //     cw.WriteLine();
+           //     cw.WriteLine($"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
+           // }
 
             cw.WriteLine($"Super::{method.Name}({call});"); // todo: убрать это отсюда и вызывать из управляемого кода
+            
+            if (method.ReturnType.Type.Name != "void")
+                cw.Write("return ");
 
-            if (method.Name != "BeginPlay")
-            {
-                if (method.ReturnType.Type.Name != "void")
-                    cw.Write("return ");
-
-                cw.WriteLine(
-                    $"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
-            }
+            cw.WriteLine(
+                $"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
 
             cw.CloseBlock();
             cw.WriteLine();
@@ -336,7 +348,7 @@ namespace Generator.Codegenretor
             cw.WriteLine();
             cw.WriteLine("extern \"C\"");
             cw.OpenBlock();
-
+            
             foreach (var Class in structures)
             {
                 cw.WriteLine();

@@ -6,6 +6,19 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
 
+bool AManageActor::AddWrapperIfNotAttach()
+{
+	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())
+	{
+		auto dotnetTypeName = GetManageClassName().PackJSON();
+		auto core = UCoreShell::GetInstance();
+
+		bIsManageAttach = core->InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*className));
+	}
+
+	return bIsManageAttach;
+}
+
 void AManageActor::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
 {
 	Super::AddTickPrerequisiteActor(PrerequisiteActor);
@@ -26,7 +39,7 @@ void AManageActor::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
 
 void AManageActor::BeginPlay()
 {
-	if (!ManageClassName.FullName.IsEmpty())
+	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())
 	{
 		bIsManageAttach = UCoreShell::GetInstance()->InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));
 	}
@@ -121,7 +134,13 @@ void AManageActor::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimit
 
 void AManageActor::OnConstruction(const FTransform& Transform)
 {
+	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())
+	{
+		bIsManageAttach = UCoreShell::GetInstance()->InvokeInWrapper<bool, 0>("UnrealEngine.NativeManager", "AddWrapper", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));
+	}
+
 	Super::OnConstruction(Transform);
+
 	if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, "OnConstruction", Transform);
 }
 

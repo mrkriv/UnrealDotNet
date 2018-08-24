@@ -14,15 +14,14 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
 	GENERATED_BODY()
 	
 	bool bIsManageAttach = false;
+
+	bool AddWrapperIfNotAttach();
 	
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
-	
-	virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }
-	virtual FString GetManageClassName() override { return ManageClassName.FullName; }
-	
+
 	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
 	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;

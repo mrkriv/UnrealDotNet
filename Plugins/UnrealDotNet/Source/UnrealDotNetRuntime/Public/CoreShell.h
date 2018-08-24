@@ -75,8 +75,15 @@ public:
 
 		if (manageMethod == NULL)
 			return;
-		
-		manageMethod(Aruments...);
+
+		try
+		{
+			manageMethod(Aruments...);
+		}
+		catch (...)
+		{
+			UE_LOG(DotNetShell, Error, TEXT("Unhandled exception in %s.%s"), *FullClassName, *Method);
+		}
 	}
 
 	template<typename ReturtType, int Stop, typename... ArgumentT>
@@ -89,7 +96,15 @@ public:
 		if (manageMethod == NULL)
 			return ReturtType();
 
-		return manageMethod(Aruments...);
+		try
+		{
+			return manageMethod(Aruments...);
+		}
+		catch (...)
+		{
+			UE_LOG(DotNetShell, Error, TEXT("Unhandled exception in %s.%s"), *FullClassName, *Method);
+			return ReturtType();
+		}
 	}
 
 	template<typename... ArgumentT>
@@ -103,7 +118,15 @@ public:
 			return;
 
 		auto len = CopyParamsToArray(InvokeArgumentBuffer, Aruments...);
-		manageMethod(Object, TCHAR_TO_UTF8(*Method), InvokeArgumentBuffer, len);
+
+		try 
+		{
+			manageMethod(Object, TCHAR_TO_UTF8(*Method), InvokeArgumentBuffer, len);
+		}
+		catch  (...)
+		{
+			UE_LOG(DotNetShell, Error, TEXT("Unhandled exception in %s of object %s"), *Method, *Object->GetName());
+		}
 	}
 
 	template<typename... ArgumentT>
@@ -117,7 +140,15 @@ public:
 			return;
 
 		auto len = CopyParamsToArray(InvokeArgumentBuffer, Aruments...);
-		manageMethod(Object, TCHAR_TO_UTF8(*Method), InvokeArgumentBuffer, len);
+
+		try
+		{
+			manageMethod(Object, TCHAR_TO_UTF8(*Method), InvokeArgumentBuffer, len);
+		}
+		catch (...)
+		{
+			UE_LOG(DotNetShell, Error, TEXT("Unhandled exception in %s of object %s"), *Method, *Object->GetName());
+		}
 	}
 
 private:

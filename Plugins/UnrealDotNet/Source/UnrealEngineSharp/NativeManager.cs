@@ -14,7 +14,7 @@ namespace UnrealEngine
 #if PACING
         public const string UnrealDotNetDLL = "DotUnrealExample.exe";
 #else
-        public const string UnrealDotNetDll = "UE4Editor-UnrealDotNetRuntime";
+        public const string UnrealDotNetDll = "UE4Editor-UnrealDotNetRuntime-Win64-DebugGame";
 #endif
 
         private static Assembly _gameLogicAssembly;
@@ -89,6 +89,12 @@ namespace UnrealEngine
 
         public static void AddNativeWrapper(IntPtr adress, NativeWrapper manageObject)
         {
+            if(_wrappers.ContainsKey(adress))
+            {
+                Ue.LogWarning($"Object wrapper {adress} has ben owerrided");
+                _wrappers.Remove(adress);
+            }
+
             _wrappers.Add(adress, manageObject);
         }
 
@@ -233,8 +239,6 @@ namespace UnrealEngine
 
         public static void Invoke(IntPtr adress, string methodName, IntPtr arguments, int size)
         {
-            try
-            {
                 if (!_wrappers.TryGetValue(adress, out var obj))
                 {
                     Ue.LogError($"Failed call method {methodName}, {adress} not found");
@@ -259,10 +263,14 @@ namespace UnrealEngine
                     return;
                 }
 
+            try
+            {
                 method.Invoke(obj, Params);
             }
             catch (Exception e)
             {
+                e = e?.InnerException ?? e;
+
                 Ue.LogError($"Exception:{e}\n{e.StackTrace}");
             }
         }

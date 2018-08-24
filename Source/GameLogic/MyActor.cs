@@ -17,41 +17,30 @@ namespace GameLogic
         {
         }
 
-        protected override void BeginPlay()
+        public override void OnConstruction(FTransform Transform)
         {
-            try
-            {
-                PrimaryActorTick.bCanEverTick = 1;
+            PrimaryActorTick.bCanEverTick = 1;
 
-                _box = new UBoxComponent(this, "Simple Child");
-                _box.RegisterComponent();
+            _box = new UBoxComponent(this, "Simple Child");
+            _box.RegisterComponent();
 
-                var root = GetRootComponent();
+            AddInstanceComponent(_box);
+            SetRootComponent(_box);
 
-                _box.AttachToComponent(root, FAttachmentTransformRules.SnapToTargetIncludingScale, "");
+            _box.SetCollisionProfileName("OverlapAll");
+            _box.SetBoxExtent(new FVector(100, 100, 100), false);
+            _box.SetHiddenInGame(false);
 
-                _box.SetCollisionProfileName("OverlapAll");
-                _box.SetBoxExtent(new FVector(100, 100, 100), false);
-                
-                _box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
-            }
-            catch (Exception e)
-            {
-                Ue.LogError(e.ToString());
-            }
+            _box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
         }
 
-        private void Box_OnComponentEndOverlap(UPrimitiveComponent overlappedComponent, AActor otherActor,
-            UPrimitiveComponent otherComp, int otherBodyIndex)
+        protected override void BeginPlay()
         {
-            try
-            {
-                Ue.ScreenDebugMessage($"{otherActor} don't overlap {overlappedComponent} now");
-            }
-            catch (Exception e)
-            {
-                Ue.LogError(e.ToString());
-            }
+        }
+
+        private void Box_OnComponentEndOverlap(UPrimitiveComponent overComp, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex)
+        {
+            Ue.ScreenDebugMessage($"{otherActor} don't overlap {overComp} now");
         }
 
         public override void Tick(float deltaTime)

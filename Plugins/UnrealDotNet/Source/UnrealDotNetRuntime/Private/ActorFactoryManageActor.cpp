@@ -34,15 +34,14 @@ AActor* UActorFactoryManageActor::SpawnActor(UObject* Asset, ULevel* InLevel, co
 	SpawnInfo.OverrideLevel = InLevel;
 	SpawnInfo.ObjectFlags = InObjectFlags;
 	SpawnInfo.Name = Name;
-
 #if WITH_EDITOR
 	SpawnInfo.bTemporaryEditorActor = GEditor->bIsSimulatingInEditor ? FLevelEditorViewportClient::IsDroppingPreviewActor() : true;
 #endif
 
 	auto actorClass = Metadata.GetCppClass();
 	auto actor = InLevel->OwningWorld->SpawnActor(actorClass, &Transform, SpawnInfo);
-	auto prop = actorClass->FindPropertyByName(FName("ManageClassName"));
 
+	auto prop = actorClass->FindPropertyByName(FName("ManageClassName"));
 	auto valuePtr = prop->ContainerPtrToValuePtr<FDotnetTypeName>(actor);
 	valuePtr->FullName = Metadata.Name;
 
