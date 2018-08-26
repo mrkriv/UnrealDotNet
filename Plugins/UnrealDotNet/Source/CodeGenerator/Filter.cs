@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Generator.Metadata;
+using CodeGenerator.Metadata;
 
-namespace Generator
+namespace CodeGenerator
 {
     public class Filter
     {
@@ -66,10 +66,7 @@ namespace Generator
                 return false;
             }
 
-            if (cl.IsTemplate)
-            {
-                return false;
-            }
+            if (cl.IsTemplate) return false;
 
             return true;
         }
@@ -92,7 +89,7 @@ namespace Generator
                 var ctr = new Method(cl.Name)
                 {
                     ReturnType = new ClassVariable(cl),
-                    OwnerClass = cl,
+                    OwnerClass = cl
                 };
 
                 cl.Constructors.Add(ctr);
@@ -105,10 +102,7 @@ namespace Generator
                 foreach (var m in cl.Constructors)
                 {
                     var counter = 0;
-                    foreach (var t in m.InputTypes)
-                    {
-                        t.Name = t.Name ?? "_p" + counter++;
-                    }
+                    foreach (var t in m.InputTypes) t.Name = t.Name ?? "_p" + counter++;
                 }
             }
         }
@@ -125,10 +119,7 @@ namespace Generator
                 var name = prim.GetDisplayName();
                 var dublicated = primitivs.Where(m => name == m.GetDisplayName()).ToList();
 
-                if (dublicated.Count > 1)
-                {
-                    dublicated.ForEach(m => m.UMeta.Remove("DisplayName"));
-                }
+                if (dublicated.Count > 1) dublicated.ForEach(m => m.UMeta.Remove("DisplayName"));
             }
         }
 
@@ -161,20 +152,11 @@ namespace Generator
 
         public bool TypeFilterNoCahed(Type type)
         {
-            if (!type.IsImplemented || type.NamespaceBaseType != null)
-            {
-                return false;
-            }
+            if (!type.IsImplemented || type.NamespaceBaseType != null) return false;
 
-            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName))
-            {
-                return false;
-            }
+            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName)) return false;
 
-            if (!type.TemplateTypes.All(x => TypeFilter(x.Type)))
-            {
-                return false;
-            }
+            if (!type.TemplateTypes.All(x => TypeFilter(x.Type))) return false;
 
             switch (type)
             {
@@ -207,7 +189,7 @@ namespace Generator
             if (m.AccessModifier != AccessModifier.Public && (Class.IsStructure || Class.IsFinal))
                 return false;
 
-            if (m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()))
+            if (m.InputTypes.Any(v => v.IsPointer && v.IsReference || v.Type.IsVoid || v.IsReadOnly()))
                 return false;
 
             if (m.IsVirtual && Class.IsFinal)
@@ -225,10 +207,7 @@ namespace Generator
             var overloads = Class.Methods.Where(x => x.Name == m.Name && x.ValidForExport == true).ToList();
             m.OverloadIndex = overloads.Count;
 
-            if (overloads.Any(x => x != m && x.EqualsInputTypes(m)))
-            {
-                return false;
-            }
+            if (overloads.Any(x => x != m && x.EqualsInputTypes(m))) return false;
 
             return true;
         }
@@ -252,44 +231,14 @@ namespace Generator
             if (m.IsConst)
                 return false;
 
-            if (PropertyInClassBlackList.ContainsKey(m.OwnerClass.Name) && PropertyInClassBlackList[m.OwnerClass.Name].Contains(m.Name))
+            if (PropertyInClassBlackList.ContainsKey(m.OwnerClass.Name) &&
+                PropertyInClassBlackList[m.OwnerClass.Name].Contains(m.Name))
                 return false;
 
             if (!TypeFilter(m.Type))
                 return false;
 
             return true;
-        }
-
-        public IEnumerable<Method> GetVirtualMethods(Class Class)
-        {
-            if (!IsManageClass(Class))
-                return new Method[0];
-
-            return Class.Methods.Where(m => m.IsVirtual &&
-                                            !m.IsOverride &&
-                                            !m.IsConst &&
-                                            m.ReturnType.Type.IsVoid &&
-                                            m.InputTypes.All(t => !t.IsReadOnly()));
-        }
-
-        public bool IsManageClass(Class Class)
-        {
-            if (ManageClassBlackList.Contains(Class.Name))
-                return false;
-
-            if (Class.IsFinal || Class.IsStructure)
-                return false;
-
-            while (Class != null)
-            {
-                if (Class.Methods.Any(m => m.IsVirtual))
-                    return true;
-
-                Class = Class.BaseClass;
-            }
-
-            return false;
         }
 
         public bool GetConvertToManageType(Type type, out string toType)

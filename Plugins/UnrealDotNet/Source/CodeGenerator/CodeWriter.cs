@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace Generator
+namespace CodeGenerator
 {
     public class CodeWriter
     {
-        private StringBuilder _sb = new StringBuilder();
+        private readonly StringBuilder _sb = new StringBuilder();
         private int _tab;
 
         public CodeWriter()
@@ -111,9 +111,7 @@ namespace Generator
         public void SaveToFile(string filePath)
         {
             if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-            {
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-            }
 
             File.WriteAllText(filePath, _sb.ToString());
         }

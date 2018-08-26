@@ -1,39 +1,38 @@
-﻿using Generator.Metadata;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using static UHeaderParser;
-using Delegate = Generator.Metadata.Delegate;
-using Enum = Generator.Metadata.Enum;
-using Type = Generator.Metadata.Type;
+using CodeGenerator.Metadata;
+using CodeGenerator.UHeader;
+using Delegate = CodeGenerator.Metadata.Delegate;
+using Enum = CodeGenerator.Metadata.Enum;
+using Type = CodeGenerator.Metadata.Type;
 
-namespace Generator
+namespace CodeGenerator
 {
     public class MetadataVisitor : UHeaderBaseVisitor<object>
     {
         private readonly ConcurrentDictionary<string, Type> _types;
-        private Dictionary<string, string> _currentUMeta;
         private AccessModifier _accessModifier;
-        private Variable _currentDelegateVariable;
-        private Delegate _currentDelegate;
         private Class _currentClass;
+        private string _currentComment;
+        private Delegate _currentDelegate;
+        private Variable _currentDelegateVariable;
         private Enum _currentEnum;
         private string _currentFile;
-        private string _currentComment;
-        private bool _ignoreOfPragma;
+        private Dictionary<string, string> _currentUMeta;
         private bool _ignoreOfAccessModifier;
+        private bool _ignoreOfPragma;
         private int _preprocessorIfCount;
-
-        private bool Ignore => _ignoreOfPragma || _ignoreOfAccessModifier;
 
         public MetadataVisitor(ConcurrentDictionary<string, Type> types)
         {
             _types = types;
         }
 
-        public void Append(TranslationUnitContext translationunit, string file)
+        private bool Ignore => _ignoreOfPragma || _ignoreOfAccessModifier;
+
+        public void Append(UHeaderParser.TranslationUnitContext translationunit, string file)
         {
             _preprocessorIfCount = 0;
             _ignoreOfAccessModifier = false;
@@ -49,26 +48,20 @@ namespace Generator
             Visit(translationunit);
         }
 
-        private Type GetType(TypeContext context)
+        private Type GetType(UHeaderParser.TypeContext context)
         {
             var name = context.typeName().GetText();
 
             if (_types.TryGetValue(name, out var val))
                 return val;
 
-            if (name.StartsWith("E"))
-            {
-                return Get(context, n => new Enum(n));
-            }
-            if (name.EndsWith("Signature"))
-            {
-                return Get(context, n => new Delegate(n));
-            }
+            if (name.StartsWith("E")) return Get(context, n => new Enum(n));
+            if (name.EndsWith("Signature")) return Get(context, n => new Delegate(n));
 
             return Get(context, n => new Class(n));
         }
-        
-        private T Get<T>(TypeContext context, Func<string, T> activator) where T : Type
+
+        private T Get<T>(UHeaderParser.TypeContext context, Func<string, T> activator) where T : Type
         {
             var name = context.typeName().GetText();
             string templateBaseName = null;
@@ -86,7 +79,7 @@ namespace Generator
             if (_types.TryGetValue(name, out var val))
             {
                 if (val is T)
-                    return (T)val;
+                    return (T) val;
 
                 throw new InvalidOperationException($"Элемент уже использован как {val.GetType()}");
             }
@@ -95,15 +88,12 @@ namespace Generator
             def.TemplateBaseName = templateBaseName;
             _types.TryAdd(name, def);
 
-            foreach (var nameContext in context.typeName().type())
-            {
-                def.TemplateTypes.Add(ParceType(nameContext)); 
-            }
+            foreach (var nameContext in context.typeName().type()) def.TemplateTypes.Add(ParceType(nameContext));
 
             return def;
         }
 
-        public override object VisitClassDeclaration(ClassDeclarationContext context)
+        public override object VisitClassDeclaration(UHeaderParser.ClassDeclarationContext context)
         {
             if (_ignoreOfPragma)
                 return null;
@@ -117,8 +107,8 @@ namespace Generator
             _currentClass.SourceFile = _currentFile;
             _currentClass.SourceLine = context.Start.Line;
             _currentClass.IsImplemented = true;
-            _currentClass.IsTemplate = context.FoundChild<TemplateDefineContext>();
-            _currentClass.IsFinal = context.FoundChild<IsFinalContext>();
+            _currentClass.IsTemplate = context.FoundChild<UHeaderParser.TemplateDefineContext>();
+            _currentClass.IsFinal = context.FoundChild<UHeaderParser.IsFinalContext>();
             _currentClass.UMeta = _currentUMeta ?? _currentClass.UMeta;
             _currentClass.Description = _currentComment;
 
@@ -143,16 +133,13 @@ namespace Generator
 
             _ignoreOfAccessModifier = _accessModifier == AccessModifier.Private;
 
-            var parentClassName = context.Child<ClassParentListContext>()?.type();
-            if (parentClassName != null)
-            {
-                _currentClass.BaseClass = Get(parentClassName, n => new Class(n));
-            }
+            var parentClassName = context.Child<UHeaderParser.ClassParentListContext>()?.type();
+            if (parentClassName != null) _currentClass.BaseClass = Get(parentClassName, n => new Class(n));
 
             _currentUMeta = null;
             _currentComment = "";
 
-            VisitClassBody(context.Child<ClassBodyContext>());
+            VisitClassBody(context.Child<UHeaderParser.ClassBodyContext>());
 
             _currentClass.NamespaceBaseType = namespaceBaseClass;
             _currentClass = namespaceBaseClass;
@@ -160,7 +147,7 @@ namespace Generator
             return null;
         }
 
-        public override object VisitEnumDeclaration(EnumDeclarationContext context)
+        public override object VisitEnumDeclaration(UHeaderParser.EnumDeclarationContext context)
         {
             if (_ignoreOfPragma)
                 return null;
@@ -189,14 +176,14 @@ namespace Generator
             return null;
         }
 
-        public override object VisitEnumElement(EnumElementContext context)
+        public override object VisitEnumElement(UHeaderParser.EnumElementContext context)
         {
             _currentEnum?.Fields.Add(new Enum.Field
             {
                 Name = context.enumElementName().GetText(),
                 Value = context.propertyDefaultValue()?.GetText(),
                 UMeta = _currentUMeta ?? new Dictionary<string, string>(),
-                Description = _currentComment,
+                Description = _currentComment
             });
 
             _currentUMeta = null;
@@ -205,7 +192,7 @@ namespace Generator
             return null;
         }
 
-        public override object VisitProperty(PropertyContext context)
+        public override object VisitProperty(UHeaderParser.PropertyContext context)
         {
             if (Ignore || _currentClass == null)
                 return null;
@@ -214,7 +201,7 @@ namespace Generator
             variable.AccessModifier = _accessModifier;
             variable.Default = context.propertyDefaultValue()?.GetText();
             variable.Description = _currentComment;
-            variable.IsStatic = context.FoundChild<IsStaticContext>();
+            variable.IsStatic = context.FoundChild<UHeaderParser.IsStaticContext>();
             variable.Name = context.propertyName().GetText();
             variable.UMeta = _currentUMeta ?? variable.UMeta;
             variable.OwnerClass = _currentClass;
@@ -226,20 +213,20 @@ namespace Generator
             return null;
         }
 
-        public override object VisitMethod(MethodContext context)
+        public override object VisitMethod(UHeaderParser.MethodContext context)
         {
             if (Ignore || _currentClass == null)
                 return null;
-            
+
             var method = new Method(context.methodName().GetText())
             {
-                IsConst = context.FoundChild<IsConstContext>(),
-                IsFinal = context.FoundChild<IsFinalContext>(),
-                IsStatic = context.FoundChild<IsStaticContext>(),
-                IsFriend = context.FoundChild<IsFriendContext>(),
-                IsVirtual = context.FoundChild<IsVirtualContext>(),
-                IsOverride = context.FoundChild<IsOverrideContext>(),
-                IsTemplate = context.FoundChild<TemplateDefineContext>(),
+                IsConst = context.FoundChild<UHeaderParser.IsConstContext>(),
+                IsFinal = context.FoundChild<UHeaderParser.IsFinalContext>(),
+                IsStatic = context.FoundChild<UHeaderParser.IsStaticContext>(),
+                IsFriend = context.FoundChild<UHeaderParser.IsFriendContext>(),
+                IsVirtual = context.FoundChild<UHeaderParser.IsVirtualContext>(),
+                IsOverride = context.FoundChild<UHeaderParser.IsOverrideContext>(),
+                IsTemplate = context.FoundChild<UHeaderParser.TemplateDefineContext>(),
                 UMeta = _currentUMeta ?? new Dictionary<string, string>(),
                 AccessModifier = _accessModifier,
                 Description = _currentComment,
@@ -247,7 +234,7 @@ namespace Generator
                 Operator = context.methodName().methodOperator()?.GetText(),
 
                 ReturnType = ParceType(context.type()),
-                InputTypes = context.FindAll<MethodParametrContext>().Reverse()
+                InputTypes = context.FindAll<UHeaderParser.MethodParametrContext>().Reverse()
                     .Select(ParceParam).ToList()
             };
 
@@ -259,7 +246,7 @@ namespace Generator
             return null;
         }
 
-        public override object VisitConstructor(ConstructorContext context)
+        public override object VisitConstructor(UHeaderParser.ConstructorContext context)
         {
             if (Ignore || _currentClass == null)
                 return null;
@@ -273,7 +260,7 @@ namespace Generator
             {
                 var method = new Method(context.methodName().GetText())
                 {
-                    IsConst = context.FoundChild<IsConstContext>(),
+                    IsConst = context.FoundChild<UHeaderParser.IsConstContext>(),
                     UMeta = _currentUMeta ?? new Dictionary<string, string>(),
                     Description = _currentComment,
                     OwnerClass = _currentClass,
@@ -281,7 +268,7 @@ namespace Generator
                     AccessModifier = _accessModifier,
                     ReturnType = new ClassVariable(_currentClass),
 
-                    InputTypes = context.FindAll<MethodParametrContext>().Reverse()
+                    InputTypes = context.FindAll<UHeaderParser.MethodParametrContext>().Reverse()
                         .Select(ParceParam).ToList()
                 };
 
@@ -294,7 +281,7 @@ namespace Generator
             return null;
         }
 
-        public override object VisitUDefine(UDefineContext context)
+        public override object VisitUDefine(UHeaderParser.UDefineContext context)
         {
             if (_ignoreOfPragma)
                 return null;
@@ -309,7 +296,7 @@ namespace Generator
                 _currentDelegate.SourceFile = _currentFile;
                 _currentDelegate.SourceLine = context.Start.Line;
                 _currentDelegate.IsImplemented = true;
-                _currentDelegate.IsTemplate = context.FoundChild<TemplateDefineContext>();
+                _currentDelegate.IsTemplate = context.FoundChild<UHeaderParser.TemplateDefineContext>();
                 _currentDelegate.Description = _currentComment;
 
                 _currentDelegateVariable = null;
@@ -326,7 +313,7 @@ namespace Generator
             return base.VisitUDefine(context);
         }
 
-        public override object VisitUMeta(UMetaContext context)
+        public override object VisitUMeta(UHeaderParser.UMetaContext context)
         {
             var ls = context.uMetaParametrList();
 
@@ -339,7 +326,7 @@ namespace Generator
             return null;
         }
 
-        public override object VisitUMetaParametr(UMetaParametrContext context)
+        public override object VisitUMetaParametr(UHeaderParser.UMetaParametrContext context)
         {
             var key = context.uMetaParamKey().GetText();
             var value = context.uMetaParamValue()?.GetText();
@@ -348,28 +335,24 @@ namespace Generator
             if (!_currentUMeta.ContainsKey(key))
             {
                 if (_currentDelegate != null)
-                {
                     ParceDelegateKey(context);
-                }
                 else
                     _currentUMeta.Add(key, value != null ? value.Trim('"') : "");
             }
-            if (paramList != null)
-            {
-                VisitUMetaParametrList(paramList);
-            }
+
+            if (paramList != null) VisitUMetaParametrList(paramList);
 
             return null;
         }
 
-        private void ParceDelegateKey(UMetaParametrContext context)
+        private void ParceDelegateKey(UHeaderParser.UMetaParametrContext context)
         {
             if (_currentDelegate == null)
                 return;
 
             if (_currentDelegateVariable == null)
             {
-                _currentDelegateVariable = ParceType(context.FindFirst<TypeContext>());
+                _currentDelegateVariable = ParceType(context.FindFirst<UHeaderParser.TypeContext>());
             }
             else
             {
@@ -381,7 +364,7 @@ namespace Generator
             }
         }
 
-        private Variable ParceParam(MethodParametrContext context)
+        private Variable ParceParam(UHeaderParser.MethodParametrContext context)
         {
             var variable = ParceType(context.type());
             variable.Name = context.methodParametrName()?.GetText();
@@ -390,7 +373,7 @@ namespace Generator
             return variable;
         }
 
-        private Variable ParceType(TypeContext context)
+        private Variable ParceType(UHeaderParser.TypeContext context)
         {
             var typeName = context.typeName().GetText();
             Variable variable;
@@ -403,39 +386,28 @@ namespace Generator
             {
                 var type = GetType(context);
                 if (type is Class)
-                {
-                    variable = new ClassVariable((Class)type);
-                }
+                    variable = new ClassVariable((Class) type);
                 else if (type is Delegate)
-                {
-                    variable = new DelegateVariable((Delegate)type);
-                }
-                else if(type is Enum)
-                {
-                    variable = new EnumVariable((Enum)type);
-                }
+                    variable = new DelegateVariable((Delegate) type);
+                else if (type is Enum)
+                    variable = new EnumVariable((Enum) type);
                 else
-                {
                     throw new InvalidOperationException();
-                }
             }
 
-            variable.IsConst = context.FoundChild<IsConstContext>();
-            variable.IsPointer = context.FoundChild<IsPtrQuantContext>();
-            variable.IsReference = context.FoundChild<IsRefQuantContext>();
+            variable.IsConst = context.FoundChild<UHeaderParser.IsConstContext>();
+            variable.IsPointer = context.FoundChild<UHeaderParser.IsPtrQuantContext>();
+            variable.IsReference = context.FoundChild<UHeaderParser.IsRefQuantContext>();
 
             return variable;
         }
 
-        public override object VisitPreprocessDerective(PreprocessDerectiveContext context)
+        public override object VisitPreprocessDerective(UHeaderParser.PreprocessDerectiveContext context)
         {
             var text = context.GetText();
             if (text.StartsWith("#if "))
             {
-                if (text.StartsWith("#if WITH_EDITOR"))
-                {
-                    _ignoreOfPragma = true;
-                }
+                if (text.StartsWith("#if WITH_EDITOR")) _ignoreOfPragma = true;
 
                 if (_ignoreOfPragma)
                     _preprocessorIfCount++;
@@ -443,26 +415,23 @@ namespace Generator
             else if (text.StartsWith("#endif") && _ignoreOfPragma)
             {
                 _preprocessorIfCount--;
-                if (_preprocessorIfCount == 0)
-                {
-                    _ignoreOfPragma = false;
-                }
+                if (_preprocessorIfCount == 0) _ignoreOfPragma = false;
             }
 
             return base.VisitPreprocessDerective(context);
         }
 
-        public override object VisitAccessSpecifier(AccessSpecifierContext context)
+        public override object VisitAccessSpecifier(UHeaderParser.AccessSpecifierContext context)
         {
             System.Enum.TryParse(typeof(AccessModifier), context.GetText(), true, out var result);
-            _accessModifier = (AccessModifier)result;
+            _accessModifier = (AccessModifier) result;
 
             _ignoreOfAccessModifier = _accessModifier == AccessModifier.Private;
 
             return null;
         }
 
-        public override object VisitComment(CommentContext context)
+        public override object VisitComment(UHeaderParser.CommentContext context)
         {
             if (_currentClass != null || _currentEnum != null)
                 _currentComment = context.GetText();

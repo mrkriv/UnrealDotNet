@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public class Enum : Type
     {
+        public Enum(string name)
+        {
+            Fields = new List<Field>();
+
+            var i = name.IndexOf(":", StringComparison.Ordinal);
+            Name = i != -1 ? name.Substring(0, i) : name;
+        }
+
         public List<Field> Fields { get; set; }
 
         public class Field : Primitive
@@ -15,14 +23,6 @@ namespace Generator.Metadata
             {
                 return string.IsNullOrEmpty(Value) ? Name : $"{Name} ({Value})";
             }
-        }
-
-        public Enum(string name)
-        {
-            Fields = new List<Field>();
-
-            var i = name.IndexOf(":", StringComparison.Ordinal);
-            Name = i != -1 ? name.Substring(0, i) : name;
         }
     }
 }

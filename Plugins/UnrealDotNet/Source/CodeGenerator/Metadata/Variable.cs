@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public abstract class Variable : Primitive, IEquatable<Variable>
     {
+        protected Variable()
+        {
+            UMeta = new Dictionary<string, string>();
+        }
+
         public bool IsConst { get; set; }
         public bool IsStatic { get; set; }
         public bool IsPointer { get; set; }
@@ -16,9 +21,12 @@ namespace Generator.Metadata
         public Type Type { get; protected set; }
         public string Default { get; set; }
 
-        protected Variable()
+        public bool Equals(Variable other)
         {
-            UMeta = new Dictionary<string, string>();
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference &&
+                   Equals(Type, other.Type);
         }
 
         public virtual string GetTypeCs()
@@ -58,7 +66,7 @@ namespace Generator.Metadata
         public string GetTypeCppOgiginal(bool noName = false)
         {
             var result = "";
-            
+
             if (IsConst)
                 result += "const ";
 
@@ -82,19 +90,12 @@ namespace Generator.Metadata
 
             return result;
         }
-        
-        public bool Equals(Variable other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference && Equals(Type, other.Type);
-        }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Variable)obj);
+            return obj.GetType() == GetType() && Equals((Variable) obj);
         }
 
         public override int GetHashCode()
@@ -170,7 +171,7 @@ namespace Generator.Metadata
 
         public override string GetTypeCsForExtend(bool forReturn = false)
         {
-            if(!forReturn)
+            if (!forReturn)
                 return GetTypeCs();
 
             switch (Type.Name)
@@ -215,14 +216,11 @@ namespace Generator.Metadata
 
         public override string GetTypeCpp(bool forReturn = false)
         {
-            if (IsTemplate)
-            {
-                return forReturn ? "TemplatePointerDescription" : "INT_PTR";
-            }
+            if (IsTemplate) return forReturn ? "TemplatePointerDescription" : "INT_PTR";
 
-            if (((Class)Type).IsStructure)
+            if (((Class) Type).IsStructure)
                 return "INT_PTR";
-            
+
             if (forReturn)
                 return "ObjectPointerDescription";
 
@@ -239,7 +237,7 @@ namespace Generator.Metadata
 
         public override bool IsReadOnly()
         {
-            return ((Class)Type).IsReadOnly;
+            return ((Class) Type).IsReadOnly;
         }
 
         public override string GetTypeCs()
@@ -249,17 +247,14 @@ namespace Generator.Metadata
                 var baseName = Type.Name.Substring(0, Type.Name.IndexOf("__", StringComparison.Ordinal));
                 baseName += "<";
 
-                foreach (var type in Type.TemplateTypes)
-                {
-                    baseName += type.GetTypeCs();
-                }
+                foreach (var type in Type.TemplateTypes) baseName += type.GetTypeCs();
 
                 baseName += ">";
 
                 return baseName;
             }
 
-            return ((Class)Type).Name;
+            return ((Class) Type).Name;
         }
 
         public override string GetTypeCsForExtend(bool forReturn = false)
@@ -267,7 +262,7 @@ namespace Generator.Metadata
             if (IsTemplate && forReturn)
                 return "TemplatePointerDescription";
 
-            if (!((Class)Type).IsStructure && forReturn)
+            if (!((Class) Type).IsStructure && forReturn)
                 return "ObjectPointerDescription";
 
             return "IntPtr";

@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
-using Generator.Metadata;
-using Type = Generator.Metadata.Type;
+using CodeGenerator.Metadata;
+using CodeGenerator.UHeader;
+using Type = CodeGenerator.Metadata.Type;
 
-namespace Generator
+namespace CodeGenerator
 {
     internal class ParceManager
     {
@@ -40,10 +41,7 @@ namespace Generator
         private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor,
             Config config)
         {
-            for (var j = i; j < files.Count; j += mult)
-            {
-                AppendFile(files[j], visitor, config);
-            }
+            for (var j = i; j < files.Count; j += mult) AppendFile(files[j], visitor, config);
         }
 
         private static void AppendFile(string file, MetadataVisitor visitor, Config config)

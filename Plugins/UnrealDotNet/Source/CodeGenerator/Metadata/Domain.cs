@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public class Domain
     {
-        public readonly List<Delegate> Delegates = new List<Delegate>();
         public readonly List<Class> Classes = new List<Class>();
+        public readonly List<Delegate> Delegates = new List<Delegate>();
         public readonly List<Enum> Enums = new List<Enum>();
 
         public Domain(IEnumerable<Type> types, Config config)
@@ -108,10 +108,7 @@ namespace Generator.Metadata
                         Console.ResetColor();
                         Console.WriteLine($"Methods: ({cl.Methods.Count})");
 
-                        foreach (var method in cl.Methods)
-                        {
-                            PrintMehod(method);
-                        }
+                        foreach (var method in cl.Methods) PrintMehod(method);
                     }
                 }
 

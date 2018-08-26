@@ -1,10 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public class Class : Type
     {
+        public Class(string name)
+        {
+            Methods = new List<Method>();
+            Property = new List<Variable>();
+            Constructors = new List<Method>();
+
+            IsImplemented = false;
+            Name = name;
+        }
+
         public Class BaseClass { get; set; }
         public List<Method> Methods { get; set; }
         public List<Method> Constructors { get; set; }
@@ -15,16 +25,6 @@ namespace Generator.Metadata
 
         public char Litera => Name.First();
         public string BaseName => Name.Substring(1);
-
-        public Class(string name)
-        {
-            Methods = new List<Method>();
-            Property = new List<Variable>();
-            Constructors = new List<Method>();
-
-            IsImplemented = false;
-            Name = name;
-        }
 
         public IEnumerable<Type> Dependent
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public class PrimitiveType : Type, IEquatable<PrimitiveType>
     {

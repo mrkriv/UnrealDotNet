@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public enum AccessModifier
     {
@@ -13,6 +13,13 @@ namespace Generator.Metadata
 
     public class Method : Primitive, IEquatable<Method>
     {
+        public Method(string name)
+        {
+            ReturnType = new PrimitiveVariable("void");
+            InputTypes = new List<Variable>();
+            Name = name;
+        }
+
         public Variable ReturnType { get; set; }
         public List<Variable> InputTypes { get; set; }
         public Class OwnerClass { get; set; }
@@ -25,24 +32,9 @@ namespace Generator.Metadata
         public string Operator { get; set; }
         public int OverloadIndex { get; set; }
 
-        public Method(string name)
-        {
-            ReturnType = new PrimitiveVariable("void");
-            InputTypes = new List<Variable>();
-            Name = name;
-        }
-
         public IEnumerable<Type> Dependent
         {
-            get
-            {
-                return InputTypes.Concat(new[] { ReturnType }).Select(x => x.Type).Distinct();
-            }
-        }
-
-        public override string ToString()
-        {
-            return $"{ReturnType} {Name} ({string.Join(',', InputTypes)})";
+            get { return InputTypes.Concat(new[] {ReturnType}).Select(x => x.Type).Distinct(); }
         }
 
         public bool Equals(Method other)
@@ -56,11 +48,14 @@ namespace Generator.Metadata
                 !Equals(OwnerClass, other.OwnerClass) ||
                 IsConst != other.IsConst ||
                 IsTemplate != other.IsTemplate)
-            {
                 return false;
-            }
 
             return true;
+        }
+
+        public override string ToString()
+        {
+            return $"{ReturnType} {Name} ({string.Join(',', InputTypes)})";
         }
 
         public bool EqualsInputTypes(Method other)
@@ -68,16 +63,10 @@ namespace Generator.Metadata
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            if (InputTypes.Count != other.InputTypes.Count)
-            {
-                return false;
-            }
+            if (InputTypes.Count != other.InputTypes.Count) return false;
 
-            if (InputTypes.Where((t, i) => !t.Equals(other.InputTypes[i])).Any())
-            {
-                return false;
-            }
-            
+            if (InputTypes.Where((t, i) => !t.Equals(other.InputTypes[i])).Any()) return false;
+
             return true;
         }
 
@@ -86,7 +75,7 @@ namespace Generator.Metadata
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Method)obj);
+            return Equals((Method) obj);
         }
 
         public override int GetHashCode()

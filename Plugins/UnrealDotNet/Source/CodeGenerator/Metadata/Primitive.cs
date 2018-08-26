@@ -1,12 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public abstract class Primitive
     {
         protected static readonly Regex DisplayReplaceNameRegex = new Regex(@"[^\w_]");
         protected static readonly Regex DisplayValidNameRegex = new Regex(@"^[A-Za-z]\w+");
+
+        protected Primitive()
+        {
+            AccessModifier = AccessModifier.Public;
+            UMeta = new Dictionary<string, string>();
+        }
 
         public Dictionary<string, string> UMeta { get; set; }
         public AccessModifier AccessModifier { get; set; }
@@ -17,12 +23,6 @@ namespace Generator.Metadata
         public bool? ValidForExport { get; set; }
         public string SourceFile { get; set; }
         public int SourceLine { get; set; }
-
-        protected Primitive()
-        {
-            AccessModifier = AccessModifier.Public;
-            UMeta = new Dictionary<string, string>();
-        }
 
         public string GetDisplayName()
         {

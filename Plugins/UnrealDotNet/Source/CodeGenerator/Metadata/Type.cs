@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator.Metadata
+namespace CodeGenerator.Metadata
 {
     public abstract class Type : Primitive
     {
+        protected Type()
+        {
+            TemplateTypes = new List<Variable>();
+        }
+
         public bool IsImplemented { get; set; }
         public bool IsManualImplemented { get; set; }
         public override bool IsTemplate => base.IsTemplate || TemplateTypes.Any();
@@ -18,10 +23,5 @@ namespace Generator.Metadata
         public bool IsVoid => Name == "void";
 
         public string FullName => NamespaceBaseType != null ? NamespaceBaseType.FullName + "." + Name : Name;
-
-        protected Type()
-        {
-            TemplateTypes = new List<Variable>();
-        }
     }
 }

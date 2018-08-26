@@ -1,4 +1,4 @@
-﻿namespace Generator
+﻿namespace CodeGenerator
 {
     public class Config
     {

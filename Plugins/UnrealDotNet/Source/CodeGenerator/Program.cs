@@ -1,66 +1,52 @@
-﻿using CommandLine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Generator.Codegenretor;
-using Generator.Metadata;
+using CodeGenerator.CodeGen;
+using CodeGenerator.CodeGen.Modules;
+using CodeGenerator.Metadata;
+using CommandLine;
 using Newtonsoft.Json;
 
-namespace Generator
+namespace CodeGenerator
 {
     public static class Program
     {
         private static readonly Stopwatch Watch = new Stopwatch();
 
-        public class Options
-        {
-            [Option('o', "output", Required = true, HelpText = "Output code folder")]
-            public string Output { get; set; }
-
-            [Option("ue", Required = true, HelpText = "Unreal engine 4 root folder")]
-            public string UnrealEngine { get; set; }
-
-            [Option('h', "headers", HelpText = "Path to header filters", Default = @"..\\..\\Config\\HeaderScanList.txt")]
-            public string HeaderScanListFile { get; set; }
-
-            [Option('c', "config", HelpText = "Path to config file", Default = @"..\\..\\Config\\CodeGenerator.json")]
-            public string ConfigPath { get; set; }
-        }
-
         public static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<Options>(args).WithParsed(Run);
+            Parser.Default.ParseArguments<CommandLineArguments>(args).WithParsed(Run);
         }
 
-        private static void Run(Options options)
+        private static void Run(CommandLineArguments args)
         {
-            if (!File.Exists(options.HeaderScanListFile))
+            if (!File.Exists(args.HeaderScanListFile))
             {
-                PrintError($"File '{options.HeaderScanListFile}' is not exists");
+                PrintError($"File '{args.HeaderScanListFile}' is not exists");
                 return;
             }
 
-            if (!File.Exists(options.ConfigPath))
+            if (!File.Exists(args.ConfigPath))
             {
-                PrintError($"Project directory '{options.ConfigPath}' is not exists");
+                PrintError($"Project directory '{args.ConfigPath}' is not exists");
                 return;
             }
 
-            var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(options.ConfigPath));
-            var files = GetScanFiles(options);
+            var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(args.ConfigPath));
+            var files = GetScanFiles(args);
 
-            if (!Directory.Exists(options.Output))
+            if (!Directory.Exists(args.Output))
             {
-                PrintError($"Project directory '{options.Output}' is not exists");
+                PrintError($"Project directory '{args.Output}' is not exists");
                 return;
             }
 
             Watch.Start();
 
             var domain = ParceManager.Parce(files, config);
-            GenarateDomain(domain, options.Output, config);
+            GenarateDomain(domain, args.Output, config);
 
             Watch.Stop();
 
@@ -74,21 +60,30 @@ namespace Generator
             var outputCs = Path.Combine(outputDir, "UnrealEngineSharp");
             var outputCpp = Path.Combine(outputDir, "UnrealDotNetRuntime");
 
-            var cpp = new CodegenretorCPP(config);
-            var cs = new CodegenretorCS(config);
+            var generatorStack = new List<ICodeGenretorModule>
+            {
+                new ClassGenretorModule(config),
+                new CppIndexGenretorModule(config),
+                new DelegateGenretorModule(config),
+                new EnumGenretorModule(config),
+                new ManageClassGenretorModule(config),
+                new StructGenretorModule(config),
+            };
 
             var watch = new Stopwatch();
             watch.Start();
 
-            cpp.GenarateDomain(domain, outputCpp);
-            cs.GenarateDomain(domain, outputCs);
+            foreach (var genretor in generatorStack)
+            {
+                genretor.Generate(domain, outputCpp, outputCs);
+            }
 
             Console.WriteLine($"Total generate time {watch.ElapsedMilliseconds / 1000.0}s");
         }
 
-        private static List<string> GetScanFiles(Options options)
+        private static List<string> GetScanFiles(CommandLineArguments commandLineArguments)
         {
-            var scanMasks = File.ReadAllLines(options.HeaderScanListFile)
+            var scanMasks = File.ReadAllLines(commandLineArguments.HeaderScanListFile)
                 .Where(x => !x.StartsWith("//") && x.Any()).ToList();
 
             var include = scanMasks.Where(x => !x.StartsWith("~"));
@@ -97,17 +92,11 @@ namespace Generator
             var files = new List<string>();
 
             foreach (var path in include)
-            {
-                files.AddRange(Directory.GetFiles(options.UnrealEngine, path, SearchOption.AllDirectories));
-            }
+                files.AddRange(Directory.GetFiles(commandLineArguments.UnrealEngine, path, SearchOption.AllDirectories));
 
             foreach (var path in exclude)
-            {
-                foreach (var file in Directory.GetFiles(options.UnrealEngine, path, SearchOption.AllDirectories))
-                {
-                    files.Remove(file);
-                }
-            }
+            foreach (var file in Directory.GetFiles(commandLineArguments.UnrealEngine, path, SearchOption.AllDirectories))
+                files.Remove(file);
 
             return files.Distinct().ToList();
         }
