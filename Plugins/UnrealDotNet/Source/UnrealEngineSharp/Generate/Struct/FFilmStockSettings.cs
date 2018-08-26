@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -46,7 +48,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FFilmStockSettings_WhiteClip_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FFilmStockSettings_ExportToPostProcessSettings(IntPtr Self, IntPtr OutPostProcessSettings);
+		private static extern void E_FFilmStockSettings_ExportToPostProcessSettings(IntPtr self, IntPtr outPostProcessSettings);
 		
 		#endregion
 		
@@ -84,14 +86,14 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public void ExportToPostProcessSettings(FPostProcessSettings OutPostProcessSettings)
-			=> E_FFilmStockSettings_ExportToPostProcessSettings(this, OutPostProcessSettings);
+		public void ExportToPostProcessSettings(FPostProcessSettings outPostProcessSettings)
+			=> E_FFilmStockSettings_ExportToPostProcessSettings(this, outPostProcessSettings);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FFilmStockSettings Self)
+		public static implicit operator IntPtr(FFilmStockSettings self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FFilmStockSettings(IntPtr Adress)

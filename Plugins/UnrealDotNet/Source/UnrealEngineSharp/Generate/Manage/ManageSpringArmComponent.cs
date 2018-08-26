@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,11 +19,11 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
 		/// </summary>
-		protected override void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime) { }
+		protected override void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float deltaTime) { }
 		
-		public static implicit operator IntPtr(ManageSpringArmComponent Self)
+		public static implicit operator IntPtr(ManageSpringArmComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageSpringArmComponent(ObjectPointerDescription PtrDesc)

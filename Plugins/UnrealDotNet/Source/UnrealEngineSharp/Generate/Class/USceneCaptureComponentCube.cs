@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,13 +26,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USceneCaptureComponentCube(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponentCube_CaptureScene(IntPtr Self);
+		private static extern void E_USceneCaptureComponentCube_CaptureScene(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponentCube_CaptureSceneDeferred(IntPtr Self);
+		private static extern void E_USceneCaptureComponentCube_CaptureSceneDeferred(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponentCube_UpdateContent(IntPtr Self);
+		private static extern void E_USceneCaptureComponentCube_UpdateContent(IntPtr self);
 		
 		#endregion
 		
@@ -55,9 +57,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USceneCaptureComponentCube Self)
+		public static implicit operator IntPtr(USceneCaptureComponentCube self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USceneCaptureComponentCube(ObjectPointerDescription PtrDesc)

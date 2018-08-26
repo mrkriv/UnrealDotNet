@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -18,20 +20,20 @@ namespace UnrealEngine
 		/// <param name="InLevelCollectionIndex">The index of the collection to use </param>
 		/// <param name="InWorld">The world on which to set the context. </param>
 		/// </summary>
-		public FScopedLevelCollectionContextSwitch(int InLevelCollectionIndex, UWorld InWorld) :
-			base(E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(InLevelCollectionIndex, InWorld), false)
+		public FScopedLevelCollectionContextSwitch(int inLevelCollectionIndex, UWorld inWorld) :
+			base(E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(inLevelCollectionIndex, inWorld), false)
 		{
 		}
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(int InLevelCollectionIndex, IntPtr InWorld);
+		private static extern IntPtr E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(int inLevelCollectionIndex, IntPtr inWorld);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FScopedLevelCollectionContextSwitch Self)
+		public static implicit operator IntPtr(FScopedLevelCollectionContextSwitch self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FScopedLevelCollectionContextSwitch(IntPtr Adress)

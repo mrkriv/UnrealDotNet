@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -11,30 +13,30 @@ namespace UnrealEngine
 		{
 		}
 
-		public FDetachmentTransformRules(EDetachmentRule InRule, bool bInCallModify) :
-			base(E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool((byte)InRule, bInCallModify), false)
+		public FDetachmentTransformRules(EDetachmentRule inRule, bool bInCallModify) :
+			base(E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool((byte)inRule, bInCallModify), false)
 		{
 		}
 
-		public FDetachmentTransformRules(EDetachmentRule InLocationRule, EDetachmentRule InRotationRule, EDetachmentRule InScaleRule, bool bInCallModify) :
-			base(E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool((byte)InLocationRule, (byte)InRotationRule, (byte)InScaleRule, bInCallModify), false)
+		public FDetachmentTransformRules(EDetachmentRule inLocationRule, EDetachmentRule inRotationRule, EDetachmentRule inScaleRule, bool bInCallModify) :
+			base(E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool((byte)inLocationRule, (byte)inRotationRule, (byte)inScaleRule, bInCallModify), false)
 		{
 		}
 
-		public FDetachmentTransformRules(FAttachmentTransformRules AttachmentRules, bool bInCallModify) :
-			base(E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(AttachmentRules, bInCallModify), false)
+		public FDetachmentTransformRules(FAttachmentTransformRules attachmentRules, bool bInCallModify) :
+			base(E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(attachmentRules, bInCallModify), false)
 		{
 		}
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool(byte InRule, bool bInCallModify);
+		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_bool(byte inRule, bool bInCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool(byte InLocationRule, byte InRotationRule, byte InScaleRule, bool bInCallModify);
+		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_EDetachmentRule_EDetachmentRule_EDetachmentRule_bool(byte inLocationRule, byte inRotationRule, byte inScaleRule, bool bInCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(IntPtr AttachmentRules, bool bInCallModify);
+		private static extern IntPtr E_CreateStruct_FDetachmentTransformRules_FAttachmentTransformRules_bool(IntPtr attachmentRules, bool bInCallModify);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FDetachmentTransformRules_bCallModify_GET(IntPtr Ptr);
@@ -121,9 +123,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FDetachmentTransformRules Self)
+		public static implicit operator IntPtr(FDetachmentTransformRules self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FDetachmentTransformRules(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -20,11 +22,29 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSkelMeshRefPoseOverride();
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_SET(IntPtr Ptr, IntPtr Value);
+		
 		#endregion
 		
-		public static implicit operator IntPtr(FSkelMeshRefPoseOverride Self)
+		#region Property
+		
+		/// <summary>
+		/// <para>Per bone transforms (local space) for new ref pose </para>
+		/// </summary>
+		public TArray<FTransform> RefBonePoses
 		{
-			return Self.NativePointer;
+			get => E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_GET(NativePointer);
+			set => E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		public static implicit operator IntPtr(FSkelMeshRefPoseOverride self)
+		{
+			return self.NativePointer;
 		}
 
 		public static implicit operator FSkelMeshRefPoseOverride(IntPtr Adress)

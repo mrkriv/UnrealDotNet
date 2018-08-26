@@ -1,4 +1,7 @@
 #pragma once
+
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
@@ -15,13 +18,12 @@ class UNREALDOTNETRUNTIME_API UManagePrimitiveComponent : public UPrimitiveCompo
 	
 	bool bIsManageAttach = false;
 	
+	bool AddWrapperIfNotAttach();
+	
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
-	
-	virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }
-	virtual FString GetManageClassName() override { return ManageClassName.FullName; }
 	
 	virtual void AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange) override;
 	virtual void AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange) override;
@@ -38,6 +40,8 @@ public:
 	virtual void SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent) override;
 	virtual void SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent) override;
 	virtual void SetAllPhysicsPosition(FVector NewPos) override;
+	virtual void SetAllPhysicsRotation(FRotator NewRot) override;
+	virtual void SetAllPhysicsRotation(const FQuat& NewRot) override;
 	virtual void SetAllUseCCD(bool InUseCCD) override;
 	virtual void SetAngularDamping(float InDamping) override;
 	virtual void SetCollisionObjectType(ECollisionChannel Channel) override;

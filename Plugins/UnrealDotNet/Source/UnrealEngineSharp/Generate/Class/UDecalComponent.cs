@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -54,34 +56,34 @@ namespace UnrealEngine
 		private static extern void E_PROP_UDecalComponent_SortOrder_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UDecalComponent_GetFadeDuration(IntPtr Self);
+		private static extern float E_UDecalComponent_GetFadeDuration(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UDecalComponent_GetFadeStartDelay(IntPtr Self);
+		private static extern float E_UDecalComponent_GetFadeStartDelay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UDecalComponent_GetNumMaterials(IntPtr Self);
+		private static extern int E_UDecalComponent_GetNumMaterials(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UDecalComponent_GetTransformIncludingDecalSize(IntPtr Self);
+		private static extern IntPtr E_UDecalComponent_GetTransformIncludingDecalSize(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_LifeSpanCallback(IntPtr Self);
+		private static extern void E_UDecalComponent_LifeSpanCallback(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_PushSelectionToProxy(IntPtr Self);
+		private static extern void E_UDecalComponent_PushSelectionToProxy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_SetFadeOut(IntPtr Self, float StartDelay, float Duration, bool DestroyOwnerAfterFade);
+		private static extern void E_UDecalComponent_SetFadeOut(IntPtr self, float startDelay, float duration, bool destroyOwnerAfterFade);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_SetFadeScreenSize(IntPtr Self, float NewFadeScreenSize);
+		private static extern void E_UDecalComponent_SetFadeScreenSize(IntPtr self, float newFadeScreenSize);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_SetLifeSpan(IntPtr Self, float LifeSpan);
+		private static extern void E_UDecalComponent_SetLifeSpan(IntPtr self, float lifeSpan);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UDecalComponent_SetSortOrder(IntPtr Self, int Value);
+		private static extern void E_UDecalComponent_SetSortOrder(IntPtr self, int value);
 		
 		#endregion
 		
@@ -181,31 +183,31 @@ namespace UnrealEngine
 		/// <param name="Duration">Time in second for the decal to fade out. </param>
 		/// <param name="DestroyOwnerAfterFade">Should the owning actor automatically be destroyed after it is completely faded out. </param>
 		/// </summary>
-		public void SetFadeOut(float StartDelay, float Duration, bool DestroyOwnerAfterFade = true)
-			=> E_UDecalComponent_SetFadeOut(this, StartDelay, Duration, DestroyOwnerAfterFade);
+		public void SetFadeOut(float startDelay, float duration, bool destroyOwnerAfterFade = true)
+			=> E_UDecalComponent_SetFadeOut(this, startDelay, duration, destroyOwnerAfterFade);
 		
 		
 		/// <summary>
 		/// <para>Set the FadeScreenSize for this decal component </para>
 		/// </summary>
-		public void SetFadeScreenSize(float NewFadeScreenSize)
-			=> E_UDecalComponent_SetFadeScreenSize(this, NewFadeScreenSize);
+		public void SetFadeScreenSize(float newFadeScreenSize)
+			=> E_UDecalComponent_SetFadeScreenSize(this, newFadeScreenSize);
 		
-		public void SetLifeSpan(float LifeSpan)
-			=> E_UDecalComponent_SetLifeSpan(this, LifeSpan);
+		public void SetLifeSpan(float lifeSpan)
+			=> E_UDecalComponent_SetLifeSpan(this, lifeSpan);
 		
 		
 		/// <summary>
 		/// <para>Sets the sort order for the decal component. Higher values draw later (on top). This will force the decal to reattach </para>
 		/// </summary>
-		public void SetSortOrder(int Value)
-			=> E_UDecalComponent_SetSortOrder(this, Value);
+		public void SetSortOrder(int value)
+			=> E_UDecalComponent_SetSortOrder(this, value);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UDecalComponent Self)
+		public static implicit operator IntPtr(UDecalComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UDecalComponent(ObjectPointerDescription PtrDesc)

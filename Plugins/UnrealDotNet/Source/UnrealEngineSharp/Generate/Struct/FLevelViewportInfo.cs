@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,8 +23,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FLevelViewportInfo(FVector InCamPosition, FRotator InCamRotation, float InCamOrthoZoom) :
-			base(E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(InCamPosition, InCamRotation, InCamOrthoZoom), false)
+		public FLevelViewportInfo(FVector inCamPosition, FRotator inCamRotation, float inCamOrthoZoom) :
+			base(E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(inCamPosition, inCamRotation, inCamOrthoZoom), false)
 		{
 		}
 
@@ -31,7 +33,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLevelViewportInfo();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(IntPtr InCamPosition, IntPtr InCamRotation, float InCamOrthoZoom);
+		private static extern IntPtr E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(IntPtr inCamPosition, IntPtr inCamRotation, float inCamOrthoZoom);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(IntPtr Ptr);
@@ -82,9 +84,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FLevelViewportInfo Self)
+		public static implicit operator IntPtr(FLevelViewportInfo self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FLevelViewportInfo(IntPtr Adress)

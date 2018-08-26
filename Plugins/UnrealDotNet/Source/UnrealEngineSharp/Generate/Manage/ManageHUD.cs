@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,13 +19,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>add an actor to the PostRenderedActors array </para>
 		/// </summary>
-		public override void AddPostRenderedActor(AActor A) { }
+		public override void AddPostRenderedActor(AActor a) { }
 		
 		
 		/// <summary>
 		/// <para>draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array </para>
 		/// </summary>
-		public override void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation) { }
+		public override void DrawActorOverlays(FVector viewpoint, FRotator viewRotation) { }
 		
 		
 		/// <summary>
@@ -36,6 +38,13 @@ namespace UnrealEngine
 		/// <para>Draw the safe zone debugging overlay when enabled </para>
 		/// </summary>
 		public override void DrawSafeZoneOverlay() { }
+		
+		
+		/// <summary>
+		/// <para>Get list of considered targets for 'showdebug' </para>
+		/// <para>This list is built contextually based on which 'showdebug' flags have been enabled. </para>
+		/// </summary>
+		public override void GetDebugActorList(TArray<AActor> inOutList) { }
 		
 		
 		/// <summary>
@@ -55,25 +64,25 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Native handler, called when a hit box is moused over. </para>
 		/// </summary>
-		public override void NotifyHitBoxBeginCursorOver(string BoxName) { }
+		public override void NotifyHitBoxBeginCursorOver(string boxName) { }
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box is clicked on. Provides the name associated with that box. </para>
 		/// </summary>
-		public override void NotifyHitBoxClick(string BoxName) { }
+		public override void NotifyHitBoxClick(string boxName) { }
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box no longer has the mouse over it. </para>
 		/// </summary>
-		public override void NotifyHitBoxEndCursorOver(string BoxName) { }
+		public override void NotifyHitBoxEndCursorOver(string boxName) { }
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box is unclicked. Provides the name associated with that box. </para>
 		/// </summary>
-		public override void NotifyHitBoxRelease(string BoxName) { }
+		public override void NotifyHitBoxRelease(string boxName) { }
 		
 		
 		/// <summary>
@@ -94,22 +103,22 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>remove an actor from the PostRenderedActors array </para>
 		/// </summary>
-		public override void RemovePostRenderedActor(AActor A) { }
+		public override void RemovePostRenderedActor(AActor a) { }
 		
-		public override void ShowDebug(string DebugType) { }
+		public override void ShowDebug(string debugType) { }
 		
 		
 		/// <summary>
 		/// <para>Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command. </para>
 		/// <para>Can be overridden to display custom debug per-game. </para>
 		/// </summary>
-		public override void ShowDebugInfo(float YL, float YPos) { }
+		public override void ShowDebugInfo(float yL, float yPos) { }
 		
 		public override void ShowHUD() { }
 		
-		public static implicit operator IntPtr(ManageHUD Self)
+		public static implicit operator IntPtr(ManageHUD self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageHUD(ObjectPointerDescription PtrDesc)

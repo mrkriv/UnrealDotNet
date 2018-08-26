@@ -17,6 +17,7 @@ namespace Generator
         public IEnumerable<string> DelegateBlackList { get; set; }
         public IEnumerable<string> ManageClassBlackList { get; set; }
         public IEnumerable<string> ReadOnlyClass { get; set; }
+        public IEnumerable<string> TemplateWhiteList { get; set; }
         public Dictionary<string, string> UseConvertToManageType { get; set; }
         public Dictionary<string, string> UseConvertFromManageType { get; set; }
         public Dictionary<string, IEnumerable<string>> MethodInClassBlackList { get; set; }
@@ -152,14 +153,25 @@ namespace Generator
 
         public bool TypeFilter(Type type)
         {
-            if (!type.IsImplemented ||
-                type.IsTemplate ||
-                type.NamespaceBaseType != null)
+            if (!type.ValidForExport.HasValue)
+                type.ValidForExport = TypeFilterNoCahed(type);
+
+            return type.ValidForExport.Value;
+        }
+
+        public bool TypeFilterNoCahed(Type type)
+        {
+            if (!type.IsImplemented || type.NamespaceBaseType != null)
             {
                 return false;
             }
 
-            if (type.TemplateTypes.Any(x => !TypeFilter(x.Type)))
+            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName))
+            {
+                return false;
+            }
+
+            if (!type.TemplateTypes.All(x => TypeFilter(x.Type)))
             {
                 return false;
             }
@@ -179,21 +191,57 @@ namespace Generator
 
         public bool MethodFilter(Method m)
         {
-            return !m.ReturnType.IsConst &&
-                   !m.IsOverride &&
-                   !m.IsFriend &&
-                   !m.IsTemplate &&
-                   !m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()) &&
-                   (!m.IsVirtual || !m.OwnerClass.IsFinal) &&
-                   m.Dependent.All(TypeFilter) &&
-                   m.OwnerClass.Methods.Count(x => x.Name == m.Name) <= 1 && // TODO: поддержка перегрузок
-                   m.Operator == null &&
-                   (m.AccessModifier == AccessModifier.Public || !m.OwnerClass.IsStructure && !m.OwnerClass.IsFinal) &&
-                   (!MethodInClassBlackList.ContainsKey(m.OwnerClass.Name) ||
-                    !MethodInClassBlackList[m.OwnerClass.Name].Contains(m.Name));
+            if (!m.ValidForExport.HasValue)
+                m.ValidForExport = MethodFilterNoCahed(m);
+
+            return m.ValidForExport.Value;
+        }
+
+        public bool MethodFilterNoCahed(Method m)
+        {
+            var Class = m.OwnerClass;
+
+            if (m.IsOverride || m.IsFriend || m.IsTemplate)
+                return false;
+
+            if (m.AccessModifier != AccessModifier.Public && (Class.IsStructure || Class.IsFinal))
+                return false;
+
+            if (m.InputTypes.Any(v => (v.IsPointer && v.IsReference) || v.Type.IsVoid || v.IsReadOnly()))
+                return false;
+
+            if (m.IsVirtual && Class.IsFinal)
+                return false;
+
+            if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))
+                return false;
+
+            if (!m.Dependent.All(TypeFilter))
+                return false;
+
+            if (m.Operator != null)
+                return false;
+
+            var overloads = Class.Methods.Where(x => x.Name == m.Name && x.ValidForExport == true).ToList();
+            m.OverloadIndex = overloads.Count;
+
+            if (overloads.Any(x => x != m && x.EqualsInputTypes(m)))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool PropertyFilter(Variable m)
+        {
+            if (!m.ValidForExport.HasValue)
+                m.ValidForExport = PropertyFilterNoCahed(m);
+
+            return m.ValidForExport.Value;
+        }
+
+        public bool PropertyFilterNoCahed(Variable m)
         {
             if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
                 return false;
@@ -204,8 +252,7 @@ namespace Generator
             if (m.IsConst)
                 return false;
 
-            if (PropertyInClassBlackList.ContainsKey(m.OwnerClass.Name) &&
-                PropertyInClassBlackList[m.OwnerClass.Name].Contains(m.Name))
+            if (PropertyInClassBlackList.ContainsKey(m.OwnerClass.Name) && PropertyInClassBlackList[m.OwnerClass.Name].Contains(m.Name))
                 return false;
 
             if (!TypeFilter(m.Type))

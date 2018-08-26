@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,9 +26,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_AHUD(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_AHUD_DebugDisplay_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_DebugDisplay_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_AHUD_PostRenderedActors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_PostRenderedActors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AHUD_RenderDelta_GET(IntPtr Ptr);
@@ -34,116 +46,139 @@ namespace UnrealEngine
 		private static extern void E_PROP_AHUD_RenderDelta_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_AddHitBox(IntPtr Self, IntPtr Position, IntPtr Size, string InName, bool bConsumesInput, int Priority);
+		private static extern TemplatePointerDescription E_PROP_AHUD_ToggledDebugCategories_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_ToggledDebugCategories_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_AddPostRenderedActor(IntPtr Self, IntPtr A);
+		private static extern void E_AHUD_AddActorToDebugList(IntPtr self, IntPtr inActor, IntPtr inOutList, IntPtr inWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AHUD_AnyCurrentHitBoxHits(IntPtr Self);
+		private static extern void E_AHUD_AddComponentOwnerToDebugList(IntPtr self, IntPtr inComponent, IntPtr inOutList, IntPtr inWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_Deproject(IntPtr Self, float ScreenX, float ScreenY, IntPtr WorldPosition, IntPtr WorldDirection);
+		private static extern void E_AHUD_AddHitBox(IntPtr self, IntPtr position, IntPtr size, string inName, bool bConsumesInput, int priority);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_DrawActorOverlays(IntPtr Self, IntPtr Viewpoint, IntPtr ViewRotation);
+		private static extern void E_AHUD_AddPostRenderedActor(IntPtr self, IntPtr a);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_DrawDebugTextList(IntPtr Self);
+		private static extern bool E_AHUD_AnyCurrentHitBoxHits(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_DrawHUD(IntPtr Self);
+		private static extern void E_AHUD_Deproject(IntPtr self, float screenX, float screenY, IntPtr worldPosition, IntPtr worldDirection);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr Self);
+		private static extern void E_AHUD_DrawActorOverlays(IntPtr self, IntPtr viewpoint, IntPtr viewRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AHUD_GetCurrentDebugTargetActor(IntPtr Self);
+		private static extern void E_AHUD_DrawDebugTextList(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr Self);
+		private static extern void E_AHUD_DrawHUD(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_HandleBugScreenShot(IntPtr Self);
+		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AHUD_IsCanvasValid_WarnIfNot(IntPtr Self);
+		private static extern ObjectPointerDescription E_AHUD_GetCurrentDebugTargetActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NextDebugTarget(IntPtr Self);
+		private static extern void E_AHUD_GetDebugActorList(IntPtr self, IntPtr inOutList);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NotifyBindPostProcessEffects(IntPtr Self);
+		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NotifyHitBoxBeginCursorOver(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_HandleBugScreenShot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NotifyHitBoxClick(IntPtr Self, string BoxName);
+		private static extern bool E_AHUD_IsCanvasValid_WarnIfNot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NotifyHitBoxEndCursorOver(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_NextDebugTarget(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_NotifyHitBoxRelease(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_NotifyBindPostProcessEffects(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_OnLostFocusPause(IntPtr Self, bool bEnable);
+		private static extern void E_AHUD_NotifyHitBoxBeginCursorOver(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_PostRender(IntPtr Self);
+		private static extern void E_AHUD_NotifyHitBoxClick(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_PreviousDebugTarget(IntPtr Self);
+		private static extern void E_AHUD_NotifyHitBoxEndCursorOver(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AHUD_Project(IntPtr Self, IntPtr Location);
+		private static extern void E_AHUD_NotifyHitBoxRelease(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ReceiveDrawHUD(IntPtr Self, int SizeX, int SizeY);
+		private static extern void E_AHUD_OnLostFocusPause(IntPtr self, bool bEnable);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ReceiveHitBoxBeginCursorOver(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_PostRender(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ReceiveHitBoxClick(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_PreviousDebugTarget(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ReceiveHitBoxEndCursorOver(IntPtr Self, string BoxName);
+		private static extern IntPtr E_AHUD_Project(IntPtr self, IntPtr location);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ReceiveHitBoxRelease(IntPtr Self, string BoxName);
+		private static extern void E_AHUD_ReceiveDrawHUD(IntPtr self, int sizeX, int sizeY);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_RemoveAllDebugStrings(IntPtr Self);
+		private static extern void E_AHUD_ReceiveHitBoxBeginCursorOver(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_RemoveDebugText(IntPtr Self, IntPtr SrcActor, bool bLeaveDurationText);
+		private static extern void E_AHUD_ReceiveHitBoxClick(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_RemovePostRenderedActor(IntPtr Self, IntPtr A);
+		private static extern void E_AHUD_ReceiveHitBoxEndCursorOver(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AHUD_ShouldDisplayDebug(IntPtr Self, string DebugType);
+		private static extern void E_AHUD_ReceiveHitBoxRelease(IntPtr self, string boxName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ShowDebug(IntPtr Self, string DebugType);
+		private static extern void E_AHUD_RemoveAllDebugStrings(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ShowDebugInfo(IntPtr Self, float YL, float YPos);
+		private static extern void E_AHUD_RemoveDebugText(IntPtr self, IntPtr srcActor, bool bLeaveDurationText);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ShowDebugToggleSubCategory(IntPtr Self, string Category);
+		private static extern void E_AHUD_RemovePostRenderedActor(IntPtr self, IntPtr a);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AHUD_ShowHUD(IntPtr Self);
+		private static extern bool E_AHUD_ShouldDisplayDebug(IntPtr self, string debugType);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(IntPtr Self, IntPtr ClickLocation, byte InEventType);
+		private static extern void E_AHUD_ShowDebug(IntPtr self, string debugType);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_ShowDebugInfo(IntPtr self, float yL, float yPos);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_ShowDebugToggleSubCategory(IntPtr self, string category);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_ShowHUD(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AHUD_UpdateAndDispatchHitBoxClickEvents(IntPtr self, IntPtr clickLocation, byte inEventType);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_UpdateHitBoxCandidates(IntPtr self, IntPtr inContactPoints);
 		
 		#endregion
 		
 		#region Property
+		public TArray<string> DebugDisplay
+		{
+			get => E_PROP_AHUD_DebugDisplay_GET(NativePointer);
+			set => E_PROP_AHUD_DebugDisplay_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Used to calculate delta time between HUD rendering. </para>
@@ -152,6 +187,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AHUD_LastHUDRenderTime_GET(NativePointer);
 			set => E_PROP_AHUD_LastHUDRenderTime_SET(NativePointer, value);
+		}
+
+		public TArray<AActor> PostRenderedActors
+		{
+			get => E_PROP_AHUD_PostRenderedActors_GET(NativePointer);
+			set => E_PROP_AHUD_PostRenderedActors_SET(NativePointer, value);
 		}
 
 		
@@ -164,9 +205,30 @@ namespace UnrealEngine
 			set => E_PROP_AHUD_RenderDelta_SET(NativePointer, value);
 		}
 
+		public TArray<string> ToggledDebugCategories
+		{
+			get => E_PROP_AHUD_ToggledDebugCategories_GET(NativePointer);
+			set => E_PROP_AHUD_ToggledDebugCategories_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Utility function to add an actor to our consideration list for 'showdebug' </para>
+		/// <para>Only consider visible, non destroyed Actors in the same world the player is in. </para>
+		/// </summary>
+		public void AddActorToDebugList(AActor inActor, TArray<AActor> inOutList, UWorld inWorld)
+			=> E_AHUD_AddActorToDebugList(this, inActor, inOutList, inWorld);
+		
+		
+		/// <summary>
+		/// <para>Utility function to add a component's owner to our consideration list for 'showdebug' </para>
+		/// </summary>
+		public void AddComponentOwnerToDebugList(UActorComponent inComponent, TArray<AActor> inOutList, UWorld inWorld)
+			=> E_AHUD_AddComponentOwnerToDebugList(this, inComponent, inOutList, inWorld);
+		
 		
 		/// <summary>
 		/// <para>Add a hitbox to the hud </para>
@@ -176,15 +238,15 @@ namespace UnrealEngine
 		/// <param name="bConsumesInput">Whether click processing should continue if this hit box is clicked. </param>
 		/// <param name="Priority">The priority of the box used for layering. Larger values are considered first.  Equal values are considered in the order they were added. </param>
 		/// </summary>
-		public void AddHitBox(FVector2D Position, FVector2D Size, string InName, bool bConsumesInput, int Priority = 0)
-			=> E_AHUD_AddHitBox(this, Position, Size, InName, bConsumesInput, Priority);
+		public void AddHitBox(FVector2D position, FVector2D size, string inName, bool bConsumesInput, int priority = 0)
+			=> E_AHUD_AddHitBox(this, position, size, inName, bConsumesInput, priority);
 		
 		
 		/// <summary>
 		/// <para>add an actor to the PostRenderedActors array </para>
 		/// </summary>
-		public virtual void AddPostRenderedActor(AActor A)
-			=> E_AHUD_AddPostRenderedActor(this, A);
+		public virtual void AddPostRenderedActor(AActor a)
+			=> E_AHUD_AddPostRenderedActor(this, a);
 		
 		
 		/// <summary>
@@ -197,15 +259,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Transforms a 2D screen location into a 3D location and direction </para>
 		/// </summary>
-		public void Deproject(float ScreenX, float ScreenY, FVector WorldPosition, FVector WorldDirection)
-			=> E_AHUD_Deproject(this, ScreenX, ScreenY, WorldPosition, WorldDirection);
+		public void Deproject(float screenX, float screenY, FVector worldPosition, FVector worldDirection)
+			=> E_AHUD_Deproject(this, screenX, screenY, worldPosition, worldDirection);
 		
 		
 		/// <summary>
 		/// <para>draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array </para>
 		/// </summary>
-		public virtual void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation)
-			=> E_AHUD_DrawActorOverlays(this, Viewpoint, ViewRotation);
+		public virtual void DrawActorOverlays(FVector viewpoint, FRotator viewRotation)
+			=> E_AHUD_DrawActorOverlays(this, viewpoint, viewRotation);
 		
 		
 		/// <summary>
@@ -238,6 +300,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get list of considered targets for 'showdebug' </para>
+		/// <para>This list is built contextually based on which 'showdebug' flags have been enabled. </para>
+		/// </summary>
+		public virtual void GetDebugActorList(TArray<AActor> inOutList)
+			=> E_AHUD_GetDebugActorList(this, inOutList);
+		
+		
+		/// <summary>
 		/// <para>Returns the Pawn for this HUD's player. </para>
 		/// </summary>
 		public APawn GetOwningPawn()
@@ -267,29 +337,29 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Native handler, called when a hit box is moused over. </para>
 		/// </summary>
-		public virtual void NotifyHitBoxBeginCursorOver(string BoxName)
-			=> E_AHUD_NotifyHitBoxBeginCursorOver(this, BoxName);
+		public virtual void NotifyHitBoxBeginCursorOver(string boxName)
+			=> E_AHUD_NotifyHitBoxBeginCursorOver(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box is clicked on. Provides the name associated with that box. </para>
 		/// </summary>
-		public virtual void NotifyHitBoxClick(string BoxName)
-			=> E_AHUD_NotifyHitBoxClick(this, BoxName);
+		public virtual void NotifyHitBoxClick(string boxName)
+			=> E_AHUD_NotifyHitBoxClick(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box no longer has the mouse over it. </para>
 		/// </summary>
-		public virtual void NotifyHitBoxEndCursorOver(string BoxName)
-			=> E_AHUD_NotifyHitBoxEndCursorOver(this, BoxName);
+		public virtual void NotifyHitBoxEndCursorOver(string boxName)
+			=> E_AHUD_NotifyHitBoxEndCursorOver(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Native handler, called when a hit box is unclicked. Provides the name associated with that box. </para>
 		/// </summary>
-		public virtual void NotifyHitBoxRelease(string BoxName)
-			=> E_AHUD_NotifyHitBoxRelease(this, BoxName);
+		public virtual void NotifyHitBoxRelease(string boxName)
+			=> E_AHUD_NotifyHitBoxRelease(this, boxName);
 		
 		
 		/// <summary>
@@ -313,52 +383,52 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Transforms a 3D world-space vector into 2D screen coordinates </para>
 		/// </summary>
-		public FVector Project(FVector Location)
-			=> E_AHUD_Project(this, Location);
+		public FVector Project(FVector location)
+			=> E_AHUD_Project(this, location);
 		
-		public void ReceiveDrawHUD(int SizeX, int SizeY)
-			=> E_AHUD_ReceiveDrawHUD(this, SizeX, SizeY);
+		public void ReceiveDrawHUD(int sizeX, int sizeY)
+			=> E_AHUD_ReceiveDrawHUD(this, sizeX, sizeY);
 		
 		
 		/// <summary>
 		/// <para>Called when a hit box is moused over. </para>
 		/// </summary>
-		public void HitBoxBeginCursorOver(string BoxName)
-			=> E_AHUD_ReceiveHitBoxBeginCursorOver(this, BoxName);
+		public void HitBoxBeginCursorOver(string boxName)
+			=> E_AHUD_ReceiveHitBoxBeginCursorOver(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Called when a hit box is clicked on. Provides the name associated with that box. </para>
 		/// </summary>
-		public void HitBoxClicked(string BoxName)
-			=> E_AHUD_ReceiveHitBoxClick(this, BoxName);
+		public void HitBoxClicked(string boxName)
+			=> E_AHUD_ReceiveHitBoxClick(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Called when a hit box no longer has the mouse over it. </para>
 		/// </summary>
-		public void HitBoxEndCursorOver(string BoxName)
-			=> E_AHUD_ReceiveHitBoxEndCursorOver(this, BoxName);
+		public void HitBoxEndCursorOver(string boxName)
+			=> E_AHUD_ReceiveHitBoxEndCursorOver(this, boxName);
 		
 		
 		/// <summary>
 		/// <para>Called when a hit box is unclicked. Provides the name associated with that box. </para>
 		/// </summary>
-		public void HitBoxReleased(string BoxName)
-			=> E_AHUD_ReceiveHitBoxRelease(this, BoxName);
+		public void HitBoxReleased(string boxName)
+			=> E_AHUD_ReceiveHitBoxRelease(this, boxName);
 		
 		public void RemoveAllDebugStrings()
 			=> E_AHUD_RemoveAllDebugStrings(this);
 		
-		public void RemoveDebugText(AActor SrcActor, bool bLeaveDurationText = false)
-			=> E_AHUD_RemoveDebugText(this, SrcActor, bLeaveDurationText);
+		public void RemoveDebugText(AActor srcActor, bool bLeaveDurationText = false)
+			=> E_AHUD_RemoveDebugText(this, srcActor, bLeaveDurationText);
 		
 		
 		/// <summary>
 		/// <para>remove an actor from the PostRenderedActors array </para>
 		/// </summary>
-		public virtual void RemovePostRenderedActor(AActor A)
-			=> E_AHUD_RemovePostRenderedActor(this, A);
+		public virtual void RemovePostRenderedActor(AActor a)
+			=> E_AHUD_RemovePostRenderedActor(this, a);
 		
 		
 		/// <summary>
@@ -366,22 +436,22 @@ namespace UnrealEngine
 		/// <param name="DebugType">type of debug message. </param>
 		/// <return>true if it should be displayed, false otherwise. </return>
 		/// </summary>
-		public virtual bool ShouldDisplayDebug(string DebugType)
-			=> E_AHUD_ShouldDisplayDebug(this, DebugType);
+		public virtual bool ShouldDisplayDebug(string debugType)
+			=> E_AHUD_ShouldDisplayDebug(this, debugType);
 		
-		public virtual void ShowDebug(string DebugType)
-			=> E_AHUD_ShowDebug(this, DebugType);
+		public virtual void ShowDebug(string debugType)
+			=> E_AHUD_ShowDebug(this, debugType);
 		
 		
 		/// <summary>
 		/// <para>Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command. </para>
 		/// <para>Can be overridden to display custom debug per-game. </para>
 		/// </summary>
-		public virtual void ShowDebugInfo(float YL, float YPos)
-			=> E_AHUD_ShowDebugInfo(this, YL, YPos);
+		public virtual void ShowDebugInfo(float yL, float yPos)
+			=> E_AHUD_ShowDebugInfo(this, yL, yPos);
 		
-		public void ShowDebugToggleSubCategory(string Category)
-			=> E_AHUD_ShowDebugToggleSubCategory(this, Category);
+		public void ShowDebugToggleSubCategory(string category)
+			=> E_AHUD_ShowDebugToggleSubCategory(this, category);
 		
 		public virtual void ShowHUD()
 			=> E_AHUD_ShowHUD(this);
@@ -392,14 +462,22 @@ namespace UnrealEngine
 		/// <param name="ClickLocation">Location of the click event </param>
 		/// <param name="InEventType">Type of input event that triggered the call. </param>
 		/// </summary>
-		public bool UpdateAndDispatchHitBoxClickEvents(FVector2D ClickLocation, EInputEvent InEventType)
-			=> E_AHUD_UpdateAndDispatchHitBoxClickEvents(this, ClickLocation, (byte)InEventType);
+		public bool UpdateAndDispatchHitBoxClickEvents(FVector2D clickLocation, EInputEvent inEventType)
+			=> E_AHUD_UpdateAndDispatchHitBoxClickEvents(this, clickLocation, (byte)inEventType);
+		
+		
+		/// <summary>
+		/// <para>Update a the list of hitboxes that have been hit this frame. </para>
+		/// <param name="Canvas">Canvas on which to render debug boxes. </param>
+		/// </summary>
+		public void UpdateHitBoxCandidates(TArray<FVector2D> inContactPoints)
+			=> E_AHUD_UpdateHitBoxCandidates(this, inContactPoints);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(AHUD Self)
+		public static implicit operator IntPtr(AHUD self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator AHUD(ObjectPointerDescription PtrDesc)

@@ -89,9 +89,8 @@ namespace UnrealEngine
 
         public static void AddNativeWrapper(IntPtr adress, NativeWrapper manageObject)
         {
-            if(_wrappers.ContainsKey(adress))
+            if (_wrappers.ContainsKey(adress))
             {
-                Ue.LogWarning($"Object wrapper {adress} has ben owerrided");
                 _wrappers.Remove(adress);
             }
 

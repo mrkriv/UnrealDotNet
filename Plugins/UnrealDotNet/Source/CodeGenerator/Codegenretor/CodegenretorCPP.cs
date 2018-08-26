@@ -65,6 +65,7 @@ namespace Generator.Codegenretor
             var cw = new CodeWriter();
 
             cw.WriteLine("#pragma once");
+            GenerateFileHeader(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreMinimal.h\"");
@@ -107,24 +108,23 @@ namespace Generator.Codegenretor
         {
             var methods = cfg.Filter.GetVirtualMethods(Class).ToList();
 
-            var liter = Class.Name.First();
-            var baseName = Class.Name.Substring(1);
-
             var cw = new CodeWriter();
 
             cw.WriteLine("#pragma once");
+            cw.WriteLine();
+            GenerateFileHeader(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreShell.h\"");
             cw.WriteLine("#include \"IManageObject.h\"");
             cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
-            cw.WriteLine($"#include \"Manage{baseName}.generated.h\"");
+            cw.WriteLine($"#include \"Manage{Class.BaseName}.generated.h\"");
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
 
             cw.WriteLine("UCLASS()");
-            cw.WriteLine($"class {cfg.CppApiUe} {liter}Manage{baseName} : public {Class.Name}, public IManageObject");
+            cw.WriteLine($"class {cfg.CppApiUe} {Class.Litera}Manage{Class.BaseName} : public {Class.Name}, public IManageObject");
             cw.OpenBlock();
 
             cw.WriteLine("GENERATED_BODY()");
@@ -138,7 +138,6 @@ namespace Generator.Codegenretor
             cw.WriteLine();
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
-            cw.WriteLine();
             cw.WriteLine();
 
             foreach(var method in methods.Where(m => m.AccessModifier == AccessModifier.Public))
@@ -159,35 +158,33 @@ namespace Generator.Codegenretor
 
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-            cw.SaveToFile(Path.Combine(outputPath, "Manage" + baseName + ".h"));
+            cw.SaveToFile(Path.Combine(outputPath, "Manage" + Class.BaseName + ".h"));
         }
 
         private void GenerateManageClassCpp(Class Class, string outputPath)
         {
             var methods = cfg.Filter.GetVirtualMethods(Class);
 
-            var baseName = Class.Name.Substring(1);
-            var liter = Class.Name.First();
-
             var cw = new CodeWriter();
 
+            GenerateFileHeader(cw);
             cw.WriteLine($"#include \"{cfg.CppPch}.h\"");
             cw.WriteLine($"#include \"DotnetTypeName.h\"");
-            cw.WriteLine($"#include \"Generate/Manage/Manage{baseName}.h\"");
+            cw.WriteLine($"#include \"Generate/Manage/Manage{Class.BaseName}.h\"");
             cw.WriteLine();
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
 
-            cw.WriteLine($"bool {liter}Manage{baseName}::AddWrapperIfNotAttach()");
+            cw.WriteLine($"bool {Class.Litera}Manage{Class.BaseName}::AddWrapperIfNotAttach()");
             cw.OpenBlock();
             cw.WriteLine("if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())");
             cw.OpenBlock();
-            cw.WriteLine("auto dotnetTypeName = GetManageClassName().PackJSON();");
+            cw.WriteLine("auto dotnetTypeName = ManageClassName.PackJSON();");
             cw.WriteLine("auto core = UCoreShell::GetInstance();");
             cw.WriteLine();
-            cw.WriteLine("bIsManageAttach = core->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*className));");
+            cw.WriteLine("bIsManageAttach = core->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*dotnetTypeName));");
             cw.CloseBlock();
             cw.WriteLine();
             cw.WriteLine("return bIsManageAttach;");
@@ -198,7 +195,7 @@ namespace Generator.Codegenretor
 
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-            cw.SaveToFile(Path.Combine(outputPath, "Manage" + baseName + ".cpp"));
+            cw.SaveToFile(Path.Combine(outputPath, "Manage" + Class.BaseName + ".cpp"));
         }
 
         private void GenerateManageMethodHead(CodeWriter cw, Method method)
@@ -213,31 +210,33 @@ namespace Generator.Codegenretor
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
             var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
             var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
+            var Class = method.OwnerClass;
 
-            var liter = method.OwnerClass.Name.First();
-            var baseName = method.OwnerClass.Name.Substring(1);
-
-            cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {liter}Manage{baseName}::{method.Name}({param})");
+            cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {Class.Litera}Manage{Class.BaseName}::{method.Name}({param})");
             cw.OpenBlock();
 
-           // if (method.Name == "BeginPlay")
-           // {
-           //     cw.WriteLine("if (!ManageClassName.FullName.IsEmpty())");
-           //     cw.OpenBlock();
-           //     cw.WriteLine(
-           //         "bIsManageAttach = UCoreShell::GetInstance()->InvokeInWrapper<bool, 0>(\"UnrealEngine.NativeManager\", \"AddWrapper\", this, TCHAR_TO_UTF8(*ManageClassName.PackJSON()));");
-           //     cw.CloseBlock();
-           //     cw.WriteLine();
-           //     cw.WriteLine($"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
-           // }
+            if (method.Name == "OnConstruction")
+            {
+                cw.WriteLine("auto rootComponent = NewObject<USceneComponent>(this, USceneComponent::GetDefaultSceneRootVariableName(), RF_Transactional);");
+                cw.WriteLine("rootComponent->Mobility = EComponentMobility::Movable;");
+                cw.WriteLine("rootComponent->bVisualizeComponent = true;");
+                cw.WriteLine("rootComponent->SetWorldTransform(Transform);");
+                cw.WriteLine("");
+                cw.WriteLine("SetRootComponent(rootComponent);");
+                cw.WriteLine("AddInstanceComponent(rootComponent);");
+                cw.WriteLine("");
+                cw.WriteLine("rootComponent->RegisterComponent();");
+                cw.WriteLine("");
+            }
 
             cw.WriteLine($"Super::{method.Name}({call});"); // todo: убрать это отсюда и вызывать из управляемого кода
-            
+
             if (method.ReturnType.Type.Name != "void")
                 cw.Write("return ");
 
-            cw.WriteLine(
-                $"if(bIsManageAttach) UCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
+            cw.WriteLine("");
+            cw.WriteLine("if(AddWrapperIfNotAttach())");
+            cw.WriteLine($"\tUCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
 
             cw.CloseBlock();
             cw.WriteLine();
@@ -288,14 +287,16 @@ namespace Generator.Codegenretor
             for (var i = 0; i < method.InputTypes.Count; i++)
             {
                 var m = method.InputTypes[i];
-                cw.WriteLine($"auto _p{i} = {GenerateGet(m)};");
+                var reference = m.IsReference && !cfg.Filter.IsUseConvertFromManageType(m.Type) ? "&" : "";
+
+                cw.WriteLine($"auto{reference} _p{i} = {GenerateGet(m)};");
             }
 
             var ret = method.AccessModifier == AccessModifier.Public
                 ? $"Self->{method.Name}({call})"
                 : $"(({cfg.ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{cfg.ExportProtectedPostfix}({call})";
 
-            cw.WriteLine(GenerateReturn(method.ReturnType.Type, ret, false));
+            cw.WriteLine(GenerateReturn(method.ReturnType, ret, false));
 
             cw.CloseBlock();
             cw.WriteLine();
@@ -338,6 +339,7 @@ namespace Generator.Codegenretor
 
             cw.WriteLine("#pragma once");
             cw.WriteLine();
+            GenerateFileHeader(cw);
             cw.WriteLine("#include \"CoreMinimal.h\"");
 
             foreach (var header in structures.Select(GetSourceFileName).Distinct())
@@ -414,7 +416,7 @@ namespace Generator.Codegenretor
             var baseName = $"{cfg.ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
             cw.WriteLine(
-                $"{cfg.CppApi} auto {baseName}{cfg.EventPropertyGetPostfix}() {{ {GenerateReturn(prop.Type, $"{Class.Name}::{prop.Name}", true)} }}");
+                $"{cfg.CppApi} auto {baseName}{cfg.EventPropertyGetPostfix}() {{ {GenerateReturn(prop, $"{Class.Name}::{prop.Name}", true)} }}");
 
             cw.WriteLine();
         }
@@ -424,7 +426,7 @@ namespace Generator.Codegenretor
             var baseName = $"{cfg.ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
             cw.WriteLine(
-                $"{cfg.CppApi} auto {baseName}{cfg.EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop.Type, $"Ptr->{prop.Name}", true)} }}");
+                $"{cfg.CppApi} auto {baseName}{cfg.EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop, $"Ptr->{prop.Name}", true)} }}");
 
             if (!prop.IsReadOnly())
             {
@@ -470,6 +472,7 @@ namespace Generator.Codegenretor
 
             cw.WriteLine("#pragma once");
             cw.WriteLine();
+            GenerateFileHeader(cw);
             cw.WriteLine("#include \"TypeConvertor.h\"");
             cw.WriteLine("#include \"ManageEventSender.generated.h\"");
             cw.WriteLine();
@@ -565,13 +568,9 @@ namespace Generator.Codegenretor
             var result = "";
             var bCloseCount = 0;
             var type = variable.Type;
+            var isStruct = (variable.Type as Class)?.IsStructure == true;
 
-            if (manualName == null)
-            {
-                manualName = variable.Name;
-            }
-
-            if ((type as Class)?.IsStructure == true)
+            if (isStruct)
             {
                 if (!variable.IsPointer)
                     result += "*";
@@ -580,12 +579,8 @@ namespace Generator.Codegenretor
             }
             else if (type.IsTemplate)
             {
-                if (!variable.IsPointer)
-                    result += "*";
-
                 var name = variable.GetTypeCppOgiginal(true).TrimEnd('&');
-
-                result += $"({name}*)";
+                result += $"*({name}*)";
             }
             else if (cfg.Filter.IsUseConvertFromManageType(type))
             {
@@ -593,28 +588,46 @@ namespace Generator.Codegenretor
                 bCloseCount++;
             }
 
-            result += manualName;
+            result += manualName ?? variable.Name;
             result += new string(')', bCloseCount);
 
             return result;
         }
 
-        private static string GenerateReturn(Type type, string expression, bool forProperty)
+        private static string GenerateReturn(Variable variable, string expression, bool forProperty)
         {
-            if (type.IsVoid)
+            if (variable.Type.IsVoid)
             {
                 return expression + ";";
             }
 
             var result = "return ";
             var bCloseCount = 0;
+            var isStruct = (variable.Type as Class)?.IsStructure == true;
 
-            if ((type as Class)?.IsStructure == true)
+            if (isStruct)
             {
                 if (forProperty)
+                {
                     result += $"(INT_PTR)&(";
+                }
+                else if (variable.IsConst && variable.IsPointer)
+                {
+                    result += $"(INT_PTR) const_cast<{variable.Type.Name}*>(";
+                }
+                else if (variable.IsConst && !variable.IsPointer)
+                {
+                    result += $"(INT_PTR) const_cast<{variable.Type.Name}*>(&(";
+                    bCloseCount++;
+                }
+                else if(variable.IsPointer)
+                {
+                    result += $"(INT_PTR) (";
+                }
                 else
-                    result += $"(INT_PTR) new {type.Name}(";
+                {
+                    result += $"(INT_PTR) new {variable.Type.Name}(";
+                }
 
                 bCloseCount++;
             }
@@ -622,7 +635,7 @@ namespace Generator.Codegenretor
             //{
             //    // todo: 
             //}
-            else if (cfg.Filter.GetConvertToManageType(type, out var toType))
+            else if (cfg.Filter.GetConvertToManageType(variable.Type, out var toType))
             {
                 result += $"ConvertToManage_{toType}(";
                 bCloseCount++;
@@ -649,6 +662,8 @@ namespace Generator.Codegenretor
         private void GenerateCppIndex(IEnumerable<Class> classes, string outputPath)
         {
             var cw = new CodeWriter();
+
+            GenerateFileHeader(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"Structures.h\"");

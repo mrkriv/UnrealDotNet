@@ -17,8 +17,13 @@
     "CppApi": "DOTNET_EXPORT",
     "CppApiUe": "UNREALDOTNETRUNTIME_API",
     "IsWriteSourceFileName": true,
+    "IsGenerateFileHeader": true,
     
     "Filter": {
+        "TemplateWhiteList": [ 
+			"TArray",
+			"TSet"
+		],
         "ClassBlackList": [
             "FSeamlessTravelHandler",
             "FLevelCollection",

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -34,13 +36,13 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPawnNoiseEmitterComponent_NoiseLifetime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UPawnNoiseEmitterComponent_GetLastNoiseTime(IntPtr Self, bool bSourceWithinNoiseEmitter);
+		private static extern float E_UPawnNoiseEmitterComponent_GetLastNoiseTime(IntPtr self, bool bSourceWithinNoiseEmitter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(IntPtr Self, bool bSourceWithinNoiseEmitter);
+		private static extern float E_UPawnNoiseEmitterComponent_GetLastNoiseVolume(IntPtr self, bool bSourceWithinNoiseEmitter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPawnNoiseEmitterComponent_MakeNoise(IntPtr Self, IntPtr NoiseMaker, float Loudness, IntPtr NoiseLocation);
+		private static extern void E_UPawnNoiseEmitterComponent_MakeNoise(IntPtr self, IntPtr noiseMaker, float loudness, IntPtr noiseLocation);
 		
 		#endregion
 		
@@ -73,14 +75,14 @@ namespace UnrealEngine
 		/// <param name="Loudness">is the relative loudness of the noise (0.0 to 1.0) </param>
 		/// <param name="NoiseLocation">is the position of the noise </param>
 		/// </summary>
-		public virtual void MakeNoise(AActor NoiseMaker, float Loudness, FVector NoiseLocation)
-			=> E_UPawnNoiseEmitterComponent_MakeNoise(this, NoiseMaker, Loudness, NoiseLocation);
+		public virtual void MakeNoise(AActor noiseMaker, float loudness, FVector noiseLocation)
+			=> E_UPawnNoiseEmitterComponent_MakeNoise(this, noiseMaker, loudness, noiseLocation);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UPawnNoiseEmitterComponent Self)
+		public static implicit operator IntPtr(UPawnNoiseEmitterComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UPawnNoiseEmitterComponent(ObjectPointerDescription PtrDesc)

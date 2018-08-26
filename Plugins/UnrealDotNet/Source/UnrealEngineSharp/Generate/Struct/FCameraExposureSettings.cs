@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -71,7 +73,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FCameraExposureSettings_SpeedUp_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FCameraExposureSettings_ExportToPostProcessSettings(IntPtr Self, IntPtr OutPostProcessSettings);
+		private static extern void E_FCameraExposureSettings_ExportToPostProcessSettings(IntPtr self, IntPtr outPostProcessSettings);
 		
 		#endregion
 		
@@ -196,14 +198,14 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public void ExportToPostProcessSettings(FPostProcessSettings OutPostProcessSettings)
-			=> E_FCameraExposureSettings_ExportToPostProcessSettings(this, OutPostProcessSettings);
+		public void ExportToPostProcessSettings(FPostProcessSettings outPostProcessSettings)
+			=> E_FCameraExposureSettings_ExportToPostProcessSettings(this, outPostProcessSettings);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FCameraExposureSettings Self)
+		public static implicit operator IntPtr(FCameraExposureSettings self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FCameraExposureSettings(IntPtr Adress)

@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -38,6 +40,11 @@ extern "C"
 	{
 		auto _p0 = InComponent;
 		Self->ClearShowOnlyComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneCaptureComponent_GetViewOwner(USceneCaptureComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetViewOwner());
 	}
 
 	DOTNET_EXPORT auto E_USceneCaptureComponent_HideActorComponents(USceneCaptureComponent* Self, AActor* InActor)

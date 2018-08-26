@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -62,9 +64,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FLightingChannels Self)
+		public static implicit operator IntPtr(FLightingChannels self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FLightingChannels(IntPtr Adress)

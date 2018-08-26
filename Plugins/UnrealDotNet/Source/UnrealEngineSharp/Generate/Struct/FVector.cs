@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -25,8 +27,8 @@ namespace UnrealEngine
 		/// <para>Constructor initializing all components to a single float value. </para>
 		/// <param name="InF">Value to set all components to. </param>
 		/// </summary>
-		public FVector(float InF) :
-			base(E_CreateStruct_FVector_float(InF), false)
+		public FVector(float inF) :
+			base(E_CreateStruct_FVector_float(inF), false)
 		{
 		}
 
@@ -37,8 +39,8 @@ namespace UnrealEngine
 		/// <param name="InY">Y Coordinate. </param>
 		/// <param name="InZ">Z Coordinate. </param>
 		/// </summary>
-		public FVector(float InX, float InY, float InZ) :
-			base(E_CreateStruct_FVector_float_float_float(InX, InY, InZ), false)
+		public FVector(float inX, float inY, float inZ) :
+			base(E_CreateStruct_FVector_float_float_float(inX, inY, inZ), false)
 		{
 		}
 
@@ -48,8 +50,8 @@ namespace UnrealEngine
 		/// <param name="V">Vector to copy from. </param>
 		/// <param name="InZ">Z Coordinate. </param>
 		/// </summary>
-		public FVector(FVector2D V, float InZ) :
-			base(E_CreateStruct_FVector_FVector2D_float(V, InZ), false)
+		public FVector(FVector2D v, float inZ) :
+			base(E_CreateStruct_FVector_FVector2D_float(v, inZ), false)
 		{
 		}
 
@@ -58,8 +60,8 @@ namespace UnrealEngine
 		/// <para>Constructor using the XYZ components from a 4D vector. </para>
 		/// <param name="V">4D Vector to copy from. </param>
 		/// </summary>
-		public FVector(FVector4 V) :
-			base(E_CreateStruct_FVector_FVector4(V), false)
+		public FVector(FVector4 v) :
+			base(E_CreateStruct_FVector_FVector4(v), false)
 		{
 		}
 
@@ -68,16 +70,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FVector();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector_float(float InF);
+		private static extern IntPtr E_CreateStruct_FVector_float(float inF);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector_float_float_float(float InX, float InY, float InZ);
+		private static extern IntPtr E_CreateStruct_FVector_float_float_float(float inX, float inY, float inZ);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector_FVector2D_float(IntPtr V, float InZ);
+		private static extern IntPtr E_CreateStruct_FVector_FVector2D_float(IntPtr v, float inZ);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector_FVector4(IntPtr V);
+		private static extern IntPtr E_CreateStruct_FVector_FVector4(IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
@@ -95,232 +97,253 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_AddBounded(IntPtr Self, IntPtr V, float Radius);
+		private static extern void E_FVector_AddBounded(IntPtr self, IntPtr v, float radius);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_AllComponentsEqual(IntPtr Self, float Tolerance);
+		private static extern bool E_FVector_AllComponentsEqual(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_BoundToBox(IntPtr Self, IntPtr Min, IntPtr Max);
+		private static extern IntPtr E_FVector_BoundToBox(IntPtr self, IntPtr min, IntPtr max);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_BoundToCube(IntPtr Self, float Radius);
+		private static extern IntPtr E_FVector_BoundToCube(IntPtr self, float radius);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_BoxPushOut(IntPtr Self, IntPtr Normal, IntPtr Size);
+		private static extern float E_FVector_BoxPushOut(IntPtr self, IntPtr normal, IntPtr size);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Coincident(IntPtr Self, IntPtr Normal1, IntPtr Normal2, float ParallelCosineThreshold);
+		private static extern bool E_FVector_Coincident(IntPtr self, IntPtr normal1, IntPtr normal2, float parallelCosineThreshold);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ComponentMax(IntPtr Self, IntPtr Other);
+		private static extern float E_FVector_Component(IntPtr self, int index);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ComponentMin(IntPtr Self, IntPtr Other);
+		private static extern IntPtr E_FVector_ComponentMax(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_ContainsNaN(IntPtr Self);
+		private static extern IntPtr E_FVector_ComponentMin(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Coplanar(IntPtr Self, IntPtr Base1, IntPtr Normal1, IntPtr Base2, IntPtr Normal2, float ParallelCosineThreshold);
+		private static extern bool E_FVector_ContainsNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_CosineAngle2D(IntPtr Self, IntPtr B);
+		private static extern bool E_FVector_Coplanar(IntPtr self, IntPtr base1, IntPtr normal1, IntPtr base2, IntPtr normal2, float parallelCosineThreshold);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_CreateOrthonormalBasis(IntPtr Self, IntPtr XAxis, IntPtr YAxis, IntPtr ZAxis);
+		private static extern float E_FVector_CosineAngle2D(IntPtr self, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_CrossProduct(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern void E_FVector_CreateOrthonormalBasis(IntPtr self, IntPtr xAxis, IntPtr yAxis, IntPtr zAxis);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_DegreesToRadians(IntPtr Self, IntPtr DegVector);
+		private static extern IntPtr E_FVector_CrossProduct(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Dist(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern IntPtr E_FVector_DegreesToRadians(IntPtr self, IntPtr degVector);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Dist2D(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern void E_FVector_DiagnosticCheckNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Distance(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector_Dist(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_DistSquared(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector_Dist2D(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_DistSquared2D(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector_Distance(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_DistSquaredXY(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector_DistSquared(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_DistXY(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector_DistSquared2D(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_DotProduct(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern float E_FVector_DistSquaredXY(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Equals(IntPtr Self, IntPtr V, float Tolerance);
+		private static extern float E_FVector_DistXY(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_FindBestAxisVectors(IntPtr Self, IntPtr Axis1, IntPtr Axis2);
+		private static extern float E_FVector_DotProduct(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetAbs(IntPtr Self);
+		private static extern bool E_FVector_Equals(IntPtr self, IntPtr v, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_GetAbsMax(IntPtr Self);
+		private static extern float E_FVector_EvaluateBezier(IntPtr self, IntPtr controlPoints, int numPoints, IntPtr outPoints);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_GetAbsMin(IntPtr Self);
+		private static extern void E_FVector_FindBestAxisVectors(IntPtr self, IntPtr axis1, IntPtr axis2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetClampedToMaxSize(IntPtr Self, float MaxSize);
+		private static extern void E_FVector_GenerateClusterCenters(IntPtr self, IntPtr clusters, IntPtr points, int numIterations, int numConnectionsToBeValid);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetClampedToMaxSize2D(IntPtr Self, float MaxSize);
+		private static extern IntPtr E_FVector_GetAbs(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetClampedToSize(IntPtr Self, float Min, float Max);
+		private static extern float E_FVector_GetAbsMax(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetClampedToSize2D(IntPtr Self, float Min, float Max);
+		private static extern float E_FVector_GetAbsMin(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_GetMax(IntPtr Self);
+		private static extern IntPtr E_FVector_GetClampedToMaxSize(IntPtr self, float maxSize);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_GetMin(IntPtr Self);
+		private static extern IntPtr E_FVector_GetClampedToMaxSize2D(IntPtr self, float maxSize);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetSafeNormal(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FVector_GetClampedToSize(IntPtr self, float min, float max);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetSafeNormal2D(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FVector_GetClampedToSize2D(IntPtr self, float min, float max);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetSignVector(IntPtr Self);
+		private static extern float E_FVector_GetMax(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GetUnsafeNormal(IntPtr Self);
+		private static extern float E_FVector_GetMin(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_GridSnap(IntPtr Self, float GridSz);
+		private static extern IntPtr E_FVector_GetSafeNormal(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_HeadingAngle(IntPtr Self);
+		private static extern IntPtr E_FVector_GetSafeNormal2D(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_InitFromString(IntPtr Self, string InSourceString);
+		private static extern IntPtr E_FVector_GetSignVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_IsNearlyZero(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FVector_GetUnsafeNormal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_IsNormalized(IntPtr Self);
+		private static extern IntPtr E_FVector_GridSnap(IntPtr self, float gridSz);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_IsUniform(IntPtr Self, float Tolerance);
+		private static extern float E_FVector_HeadingAngle(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_IsUnit(IntPtr Self, float LengthSquaredTolerance);
+		private static extern bool E_FVector_InitFromString(IntPtr self, string inSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_IsZero(IntPtr Self);
+		private static extern bool E_FVector_IsNearlyZero(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_MirrorByPlane(IntPtr Self, IntPtr Plane);
+		private static extern bool E_FVector_IsNormalized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_MirrorByVector(IntPtr Self, IntPtr MirrorNormal);
+		private static extern bool E_FVector_IsUniform(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Normalize(IntPtr Self, float Tolerance);
+		private static extern bool E_FVector_IsUnit(IntPtr self, float lengthSquaredTolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Orthogonal(IntPtr Self, IntPtr Normal1, IntPtr Normal2, float OrthogonalCosineThreshold);
+		private static extern bool E_FVector_IsZero(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_Parallel(IntPtr Self, IntPtr Normal1, IntPtr Normal2, float ParallelCosineThreshold);
+		private static extern IntPtr E_FVector_MirrorByPlane(IntPtr self, IntPtr plane);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_PointPlaneDist(IntPtr Self, IntPtr Point, IntPtr PlaneBase, IntPtr PlaneNormal);
+		private static extern IntPtr E_FVector_MirrorByVector(IntPtr self, IntPtr mirrorNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_PointsAreNear(IntPtr Self, IntPtr Point1, IntPtr Point2, float Dist);
+		private static extern bool E_FVector_Normalize(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector_PointsAreSame(IntPtr Self, IntPtr P, IntPtr Q);
+		private static extern bool E_FVector_Orthogonal(IntPtr self, IntPtr normal1, IntPtr normal2, float orthogonalCosineThreshold);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_Projection(IntPtr Self);
+		private static extern bool E_FVector_Parallel(IntPtr self, IntPtr normal1, IntPtr normal2, float parallelCosineThreshold);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ProjectOnTo(IntPtr Self, IntPtr A);
+		private static extern float E_FVector_PointPlaneDist(IntPtr self, IntPtr point, IntPtr planeBase, IntPtr planeNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ProjectOnToNormal(IntPtr Self, IntPtr Normal);
+		private static extern IntPtr E_FVector_PointPlaneProject(IntPtr self, IntPtr point, IntPtr plane);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_RadiansToDegrees(IntPtr Self, IntPtr RadVector);
+		private static extern IntPtr E_FVector_PointPlaneProject_o1(IntPtr self, IntPtr point, IntPtr a, IntPtr b, IntPtr c);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_Reciprocal(IntPtr Self);
+		private static extern IntPtr E_FVector_PointPlaneProject_o2(IntPtr self, IntPtr point, IntPtr planeBase, IntPtr planeNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_RotateAngleAxis(IntPtr Self, float AngleDeg, IntPtr Axis);
+		private static extern bool E_FVector_PointsAreNear(IntPtr self, IntPtr point1, IntPtr point2, float dist);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_Rotation(IntPtr Self);
+		private static extern bool E_FVector_PointsAreSame(IntPtr self, IntPtr p, IntPtr q);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_Set(IntPtr Self, float InX, float InY, float InZ);
+		private static extern IntPtr E_FVector_Projection(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Size(IntPtr Self);
+		private static extern IntPtr E_FVector_ProjectOnTo(IntPtr self, IntPtr a);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Size2D(IntPtr Self);
+		private static extern IntPtr E_FVector_ProjectOnToNormal(IntPtr self, IntPtr normal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_SizeSquared(IntPtr Self);
+		private static extern IntPtr E_FVector_RadiansToDegrees(IntPtr self, IntPtr radVector);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_SizeSquared2D(IntPtr Self);
+		private static extern IntPtr E_FVector_Reciprocal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector_ToCompactString(IntPtr Self);
+		private static extern IntPtr E_FVector_RotateAngleAxis(IntPtr self, float angleDeg, IntPtr axis);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector_ToCompactText(IntPtr Self);
+		private static extern IntPtr E_FVector_Rotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_ToDirectionAndLength(IntPtr Self, IntPtr OutDir, float OutLength);
+		private static extern void E_FVector_Set(IntPtr self, float inX, float inY, float inZ);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToOrientationQuat(IntPtr Self);
+		private static extern float E_FVector_Size(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_ToOrientationRotator(IntPtr Self);
+		private static extern float E_FVector_Size2D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector_ToString(IntPtr Self);
+		private static extern float E_FVector_SizeSquared(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector_ToText(IntPtr Self);
+		private static extern float E_FVector_SizeSquared2D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_Triple(IntPtr Self, IntPtr X, IntPtr Y, IntPtr Z);
+		private static extern StringWrapper E_FVector_ToCompactString(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_UnitCartesianToSpherical(IntPtr Self);
+		private static extern StringWrapper E_FVector_ToCompactText(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_UnwindEuler(IntPtr Self);
+		private static extern void E_FVector_ToDirectionAndLength(IntPtr self, IntPtr outDir, float outLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector_VectorPlaneProject(IntPtr Self, IntPtr V, IntPtr PlaneNormal);
+		private static extern IntPtr E_FVector_ToOrientationQuat(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector_ToOrientationRotator(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FVector_ToString(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FVector_ToText(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_FVector_Triple(IntPtr self, IntPtr x, IntPtr y, IntPtr z);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector_UnitCartesianToSpherical(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FVector_UnwindEuler(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector_VectorPlaneProject(IntPtr self, IntPtr v, IntPtr planeNormal);
 		
 		#endregion
 		
@@ -364,8 +387,8 @@ namespace UnrealEngine
 		/// <param name="V">Vector to add. </param>
 		/// <param name="Radius">Half size of the cube. </param>
 		/// </summary>
-		public void AddBounded(FVector V, float Radius)
-			=> E_FVector_AddBounded(this, V, Radius);
+		public void AddBounded(FVector v, float radius)
+			=> E_FVector_AddBounded(this, v, radius);
 		
 		
 		/// <summary>
@@ -373,15 +396,15 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance. </param>
 		/// <return>true if the vectors are equal within tolerance limits, false otherwise. </return>
 		/// </summary>
-		public bool AllComponentsEqual(float Tolerance)
-			=> E_FVector_AllComponentsEqual(this, Tolerance);
+		public bool AllComponentsEqual(float tolerance)
+			=> E_FVector_AllComponentsEqual(this, tolerance);
 		
 		
 		/// <summary>
 		/// <para>Get a copy of this vector, clamped inside of a cube. </para>
 		/// </summary>
-		public FVector BoundToBox(FVector Min, FVector Max)
-			=> E_FVector_BoundToBox(this, Min, Max);
+		public FVector BoundToBox(FVector min, FVector max)
+			=> E_FVector_BoundToBox(this, min, max);
 		
 		
 		/// <summary>
@@ -389,8 +412,8 @@ namespace UnrealEngine
 		/// <param name="Radius">Half size of the cube. </param>
 		/// <return>A copy of this vector, bound by cube. </return>
 		/// </summary>
-		public FVector BoundToCube(float Radius)
-			=> E_FVector_BoundToCube(this, Radius);
+		public FVector BoundToCube(float radius)
+			=> E_FVector_BoundToCube(this, radius);
 		
 		
 		/// <summary>
@@ -399,8 +422,8 @@ namespace UnrealEngine
 		/// <param name="Size">The size of the box. </param>
 		/// <return>Pushout required. </return>
 		/// </summary>
-		public float BoxPushOut(FVector Normal, FVector Size)
-			=> E_FVector_BoxPushOut(this, Normal, Size);
+		public float BoxPushOut(FVector normal, FVector size)
+			=> E_FVector_BoxPushOut(this, normal, size);
 		
 		
 		/// <summary>
@@ -410,22 +433,31 @@ namespace UnrealEngine
 		/// <param name="ParallelCosineThreshold">Normals are coincident if dot product (cosine of angle between them) is greater than or equal to this. For example: cos(1.0 degrees). </param>
 		/// <return>true if vectors are coincident (nearly parallel and point in the same direction), false otherwise. </return>
 		/// </summary>
-		public bool Coincident(FVector Normal1, FVector Normal2, float ParallelCosineThreshold)
-			=> E_FVector_Coincident(this, Normal1, Normal2, ParallelCosineThreshold);
+		public bool Coincident(FVector normal1, FVector normal2, float parallelCosineThreshold)
+			=> E_FVector_Coincident(this, normal1, normal2, parallelCosineThreshold);
+		
+		
+		/// <summary>
+		/// <para>Gets a specific component of the vector. </para>
+		/// <param name="Index">The index of the component required. </param>
+		/// <return>Reference to the specified component. </return>
+		/// </summary>
+		public float Component(int index)
+			=> E_FVector_Component(this, index);
 		
 		
 		/// <summary>
 		/// <para>Gets the component-wise max of two vectors. </para>
 		/// </summary>
-		public FVector ComponentMax(FVector Other)
-			=> E_FVector_ComponentMax(this, Other);
+		public FVector ComponentMax(FVector other)
+			=> E_FVector_ComponentMax(this, other);
 		
 		
 		/// <summary>
 		/// <para>Gets the component-wise min of two vectors. </para>
 		/// </summary>
-		public FVector ComponentMin(FVector Other)
-			=> E_FVector_ComponentMin(this, Other);
+		public FVector ComponentMin(FVector other)
+			=> E_FVector_ComponentMin(this, other);
 		
 		
 		/// <summary>
@@ -445,8 +477,8 @@ namespace UnrealEngine
 		/// <param name="ParallelCosineThreshold">Normals are parallel if absolute value of dot product is greater than or equal to this. </param>
 		/// <return>true if the planes are coplanar, false otherwise. </return>
 		/// </summary>
-		public bool Coplanar(FVector Base1, FVector Normal1, FVector Base2, FVector Normal2, float ParallelCosineThreshold)
-			=> E_FVector_Coplanar(this, Base1, Normal1, Base2, Normal2, ParallelCosineThreshold);
+		public bool Coplanar(FVector base1, FVector normal1, FVector base2, FVector normal2, float parallelCosineThreshold)
+			=> E_FVector_Coplanar(this, base1, normal1, base2, normal2, parallelCosineThreshold);
 		
 		
 		/// <summary>
@@ -454,8 +486,8 @@ namespace UnrealEngine
 		/// <param name="B">the other vector to find the 2D cosine of the angle with. </param>
 		/// <return>The cosine. </return>
 		/// </summary>
-		public float CosineAngle2D(FVector B)
-			=> E_FVector_CosineAngle2D(this, B);
+		public float CosineAngle2D(FVector b)
+			=> E_FVector_CosineAngle2D(this, b);
 		
 		
 		/// <summary>
@@ -467,8 +499,8 @@ namespace UnrealEngine
 		/// <param name="YAxis">The input basis' YAxis, and upon return the orthonormal basis' YAxis. </param>
 		/// <param name="ZAxis">The input basis' ZAxis, and upon return the orthonormal basis' ZAxis. </param>
 		/// </summary>
-		public void CreateOrthonormalBasis(FVector XAxis, FVector YAxis, FVector ZAxis)
-			=> E_FVector_CreateOrthonormalBasis(this, XAxis, YAxis, ZAxis);
+		public void CreateOrthonormalBasis(FVector xAxis, FVector yAxis, FVector zAxis)
+			=> E_FVector_CreateOrthonormalBasis(this, xAxis, yAxis, zAxis);
 		
 		
 		/// <summary>
@@ -477,8 +509,8 @@ namespace UnrealEngine
 		/// <param name="B">The second vector. </param>
 		/// <return>The cross product. </return>
 		/// </summary>
-		public FVector CrossProduct(FVector A, FVector B)
-			=> E_FVector_CrossProduct(this, A, B);
+		public FVector CrossProduct(FVector a, FVector b)
+			=> E_FVector_CrossProduct(this, a, b);
 		
 		
 		/// <summary>
@@ -486,8 +518,11 @@ namespace UnrealEngine
 		/// <param name="DegVector">Vector containing degree values </param>
 		/// <return>Vector containing radian values </return>
 		/// </summary>
-		public FVector DegreesToRadians(FVector DegVector)
-			=> E_FVector_DegreesToRadians(this, DegVector);
+		public FVector DegreesToRadians(FVector degVector)
+			=> E_FVector_DegreesToRadians(this, degVector);
+		
+		public void DiagnosticCheckNaN()
+			=> E_FVector_DiagnosticCheckNaN(this);
 		
 		
 		/// <summary>
@@ -496,14 +531,14 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The distance between two points. </return>
 		/// </summary>
-		public float Dist(FVector V1, FVector V2)
-			=> E_FVector_Dist(this, V1, V2);
+		public float Dist(FVector v1, FVector v2)
+			=> E_FVector_Dist(this, v1, v2);
 		
-		public float Dist2D(FVector V1, FVector V2)
-			=> E_FVector_Dist2D(this, V1, V2);
+		public float Dist2D(FVector v1, FVector v2)
+			=> E_FVector_Dist2D(this, v1, v2);
 		
-		public float Distance(FVector V1, FVector V2)
-			=> E_FVector_Distance(this, V1, V2);
+		public float Distance(FVector v1, FVector v2)
+			=> E_FVector_Distance(this, v1, v2);
 		
 		
 		/// <summary>
@@ -512,11 +547,11 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The squared distance between two points. </return>
 		/// </summary>
-		public float DistSquared(FVector V1, FVector V2)
-			=> E_FVector_DistSquared(this, V1, V2);
+		public float DistSquared(FVector v1, FVector v2)
+			=> E_FVector_DistSquared(this, v1, v2);
 		
-		public float DistSquared2D(FVector V1, FVector V2)
-			=> E_FVector_DistSquared2D(this, V1, V2);
+		public float DistSquared2D(FVector v1, FVector v2)
+			=> E_FVector_DistSquared2D(this, v1, v2);
 		
 		
 		/// <summary>
@@ -525,8 +560,8 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The squared distance between two points in the XY plane </return>
 		/// </summary>
-		public float DistSquaredXY(FVector V1, FVector V2)
-			=> E_FVector_DistSquaredXY(this, V1, V2);
+		public float DistSquaredXY(FVector v1, FVector v2)
+			=> E_FVector_DistSquaredXY(this, v1, v2);
 		
 		
 		/// <summary>
@@ -535,8 +570,8 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The distance between two points in the XY plane. </return>
 		/// </summary>
-		public float DistXY(FVector V1, FVector V2)
-			=> E_FVector_DistXY(this, V1, V2);
+		public float DistXY(FVector v1, FVector v2)
+			=> E_FVector_DistXY(this, v1, v2);
 		
 		
 		/// <summary>
@@ -545,8 +580,8 @@ namespace UnrealEngine
 		/// <param name="B">The second vector. </param>
 		/// <return>The dot product. </return>
 		/// </summary>
-		public float DotProduct(FVector A, FVector B)
-			=> E_FVector_DotProduct(this, A, B);
+		public float DotProduct(FVector a, FVector b)
+			=> E_FVector_DotProduct(this, a, b);
 		
 		
 		/// <summary>
@@ -555,8 +590,19 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance. </param>
 		/// <return>true if the vectors are equal within tolerance limits, false otherwise. </return>
 		/// </summary>
-		public bool Equals(FVector V, float Tolerance)
-			=> E_FVector_Equals(this, V, Tolerance);
+		public bool Equals(FVector v, float tolerance)
+			=> E_FVector_Equals(this, v, tolerance);
+		
+		
+		/// <summary>
+		/// <para>Generates a list of sample points on a Bezier curve defined by 2 points. </para>
+		/// <param name="ControlPoints">Array of 4 FVectors (vert1, controlpoint1, controlpoint2, vert2). </param>
+		/// <param name="NumPoints">Number of samples. </param>
+		/// <param name="OutPoints">Receives the output samples. </param>
+		/// <return>The path length. </return>
+		/// </summary>
+		public float EvaluateBezier(FVector controlPoints, int numPoints, TArray<FVector> outPoints)
+			=> E_FVector_EvaluateBezier(this, controlPoints, numPoints, outPoints);
 		
 		
 		/// <summary>
@@ -565,8 +611,20 @@ namespace UnrealEngine
 		/// <param name="Axis1">Reference to first axis. </param>
 		/// <param name="Axis2">Reference to second axis. </param>
 		/// </summary>
-		public void FindBestAxisVectors(FVector Axis1, FVector Axis2)
-			=> E_FVector_FindBestAxisVectors(this, Axis1, Axis2);
+		public void FindBestAxisVectors(FVector axis1, FVector axis2)
+			=> E_FVector_FindBestAxisVectors(this, axis1, axis2);
+		
+		
+		/// <summary>
+		/// <para>Given a current set of cluster centers, a set of points, iterate N times to move clusters to be central. </para>
+		/// <param name="Clusters">Reference to array of Clusters. </param>
+		/// <param name="Points">Set of points. </param>
+		/// <param name="NumIterations">Number of iterations. </param>
+		/// <param name="NumConnectionsToBeValid">Sometimes you will have long strings that come off the mass of points </param>
+		/// <para>which happen to have been chosen as Cluster starting points.  You want to be able to disregard those. </para>
+		/// </summary>
+		public void GenerateClusterCenters(TArray<FVector> clusters, TArray<FVector> points, int numIterations, int numConnectionsToBeValid)
+			=> E_FVector_GenerateClusterCenters(this, clusters, points, numIterations, numConnectionsToBeValid);
 		
 		
 		/// <summary>
@@ -596,29 +654,29 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Create a copy of this vector, with its maximum magnitude clamped to MaxSize. </para>
 		/// </summary>
-		public FVector GetClampedToMaxSize(float MaxSize)
-			=> E_FVector_GetClampedToMaxSize(this, MaxSize);
+		public FVector GetClampedToMaxSize(float maxSize)
+			=> E_FVector_GetClampedToMaxSize(this, maxSize);
 		
 		
 		/// <summary>
 		/// <para>Create a copy of this vector, with the maximum 2D magnitude clamped to MaxSize. Z is unchanged. </para>
 		/// </summary>
-		public FVector GetClampedToMaxSize2D(float MaxSize)
-			=> E_FVector_GetClampedToMaxSize2D(this, MaxSize);
+		public FVector GetClampedToMaxSize2D(float maxSize)
+			=> E_FVector_GetClampedToMaxSize2D(this, maxSize);
 		
 		
 		/// <summary>
 		/// <para>Create a copy of this vector, with its magnitude clamped between Min and Max. </para>
 		/// </summary>
-		public FVector GetClampedToSize(float Min, float Max)
-			=> E_FVector_GetClampedToSize(this, Min, Max);
+		public FVector GetClampedToSize(float min, float max)
+			=> E_FVector_GetClampedToSize(this, min, max);
 		
 		
 		/// <summary>
 		/// <para>Create a copy of this vector, with the 2D magnitude clamped between Min and Max. Z is unchanged. </para>
 		/// </summary>
-		public FVector GetClampedToSize2D(float Min, float Max)
-			=> E_FVector_GetClampedToSize2D(this, Min, Max);
+		public FVector GetClampedToSize2D(float min, float max)
+			=> E_FVector_GetClampedToSize2D(this, min, max);
 		
 		
 		/// <summary>
@@ -643,8 +701,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared vector length. </param>
 		/// <return>A normalized copy if safe, (0,0,0) otherwise. </return>
 		/// </summary>
-		public FVector GetSafeNormal(float Tolerance)
-			=> E_FVector_GetSafeNormal(this, Tolerance);
+		public FVector GetSafeNormal(float tolerance)
+			=> E_FVector_GetSafeNormal(this, tolerance);
 		
 		
 		/// <summary>
@@ -653,8 +711,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared vector length. </param>
 		/// <return>Normalized copy if safe, otherwise returns zero vector. </return>
 		/// </summary>
-		public FVector GetSafeNormal2D(float Tolerance)
-			=> E_FVector_GetSafeNormal2D(this, Tolerance);
+		public FVector GetSafeNormal2D(float tolerance)
+			=> E_FVector_GetSafeNormal2D(this, tolerance);
 		
 		
 		/// <summary>
@@ -681,8 +739,8 @@ namespace UnrealEngine
 		/// <return>A copy of this vector snapped to a grid. </return>
 		/// <para>@see FMath::GridSnap() </para>
 		/// </summary>
-		public FVector GridSnap(float GridSz)
-			=> E_FVector_GridSnap(this, GridSz);
+		public FVector GridSnap(float gridSz)
+			=> E_FVector_GridSnap(this, gridSz);
 		
 		
 		/// <summary>
@@ -699,8 +757,8 @@ namespace UnrealEngine
 		/// <param name="InSourceString">FString containing the vector values. </param>
 		/// <return>true if the X,Y,Z values were read successfully; false otherwise. </return>
 		/// </summary>
-		public bool InitFromString(string InSourceString)
-			=> E_FVector_InitFromString(this, InSourceString);
+		public bool InitFromString(string inSourceString)
+			=> E_FVector_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
@@ -708,8 +766,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance. </param>
 		/// <return>true if the vector is near to zero, false otherwise. </return>
 		/// </summary>
-		public bool IsNearlyZero(float Tolerance)
-			=> E_FVector_IsNearlyZero(this, Tolerance);
+		public bool IsNearlyZero(float tolerance)
+			=> E_FVector_IsNearlyZero(this, tolerance);
 		
 		
 		/// <summary>
@@ -725,8 +783,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Specified Tolerance. </param>
 		/// <return>true if X == Y == Z within the specified tolerance. </return>
 		/// </summary>
-		public bool IsUniform(float Tolerance)
-			=> E_FVector_IsUniform(this, Tolerance);
+		public bool IsUniform(float tolerance)
+			=> E_FVector_IsUniform(this, tolerance);
 		
 		
 		/// <summary>
@@ -734,8 +792,8 @@ namespace UnrealEngine
 		/// <param name="LengthSquaredTolerance">Tolerance against squared length. </param>
 		/// <return>true if the vector is a unit vector within the specified tolerance. </return>
 		/// </summary>
-		public bool IsUnit(float LengthSquaredTolerance)
-			=> E_FVector_IsUnit(this, LengthSquaredTolerance);
+		public bool IsUnit(float lengthSquaredTolerance)
+			=> E_FVector_IsUnit(this, lengthSquaredTolerance);
 		
 		
 		/// <summary>
@@ -751,8 +809,8 @@ namespace UnrealEngine
 		/// <param name="Plane">Plane to mirror about. </param>
 		/// <return>Mirrored vector. </return>
 		/// </summary>
-		public FVector MirrorByPlane(FPlane Plane)
-			=> E_FVector_MirrorByPlane(this, Plane);
+		public FVector MirrorByPlane(FPlane plane)
+			=> E_FVector_MirrorByPlane(this, plane);
 		
 		
 		/// <summary>
@@ -760,8 +818,8 @@ namespace UnrealEngine
 		/// <param name="MirrorNormal">Normal vector to mirror about. </param>
 		/// <return>Mirrored vector. </return>
 		/// </summary>
-		public FVector MirrorByVector(FVector MirrorNormal)
-			=> E_FVector_MirrorByVector(this, MirrorNormal);
+		public FVector MirrorByVector(FVector mirrorNormal)
+			=> E_FVector_MirrorByVector(this, mirrorNormal);
 		
 		
 		/// <summary>
@@ -769,8 +827,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
 		/// <return>true if the vector was normalized correctly, false otherwise. </return>
 		/// </summary>
-		public bool Normalize(float Tolerance)
-			=> E_FVector_Normalize(this, Tolerance);
+		public bool Normalize(float tolerance)
+			=> E_FVector_Normalize(this, tolerance);
 		
 		
 		/// <summary>
@@ -780,8 +838,8 @@ namespace UnrealEngine
 		/// <param name="OrthogonalCosineThreshold">Normals are orthogonal if absolute value of dot product (cosine of angle between them) is less than or equal to this. For example: cos(89.0 degrees). </param>
 		/// <return>true if vectors are orthogonal (perpendicular), false otherwise. </return>
 		/// </summary>
-		public bool Orthogonal(FVector Normal1, FVector Normal2, float OrthogonalCosineThreshold)
-			=> E_FVector_Orthogonal(this, Normal1, Normal2, OrthogonalCosineThreshold);
+		public bool Orthogonal(FVector normal1, FVector normal2, float orthogonalCosineThreshold)
+			=> E_FVector_Orthogonal(this, normal1, normal2, orthogonalCosineThreshold);
 		
 		
 		/// <summary>
@@ -791,8 +849,8 @@ namespace UnrealEngine
 		/// <param name="ParallelCosineThreshold">Normals are parallel if absolute value of dot product (cosine of angle between them) is greater than or equal to this. For example: cos(1.0 degrees). </param>
 		/// <return>true if vectors are nearly parallel, false otherwise. </return>
 		/// </summary>
-		public bool Parallel(FVector Normal1, FVector Normal2, float ParallelCosineThreshold)
-			=> E_FVector_Parallel(this, Normal1, Normal2, ParallelCosineThreshold);
+		public bool Parallel(FVector normal1, FVector normal2, float parallelCosineThreshold)
+			=> E_FVector_Parallel(this, normal1, normal2, parallelCosineThreshold);
 		
 		
 		/// <summary>
@@ -802,8 +860,41 @@ namespace UnrealEngine
 		/// <param name="PlaneNormal">The Normal of the plane (assumed to be unit length). </param>
 		/// <return>Signed distance between point and plane. </return>
 		/// </summary>
-		public float PointPlaneDist(FVector Point, FVector PlaneBase, FVector PlaneNormal)
-			=> E_FVector_PointPlaneDist(this, Point, PlaneBase, PlaneNormal);
+		public float PointPlaneDist(FVector point, FVector planeBase, FVector planeNormal)
+			=> E_FVector_PointPlaneDist(this, point, planeBase, planeNormal);
+		
+		
+		/// <summary>
+		/// <para>Calculate the projection of a point on the given plane. </para>
+		/// <param name="Point">The point to project onto the plane </param>
+		/// <param name="Plane">The plane </param>
+		/// <return>Projection of Point onto Plane </return>
+		/// </summary>
+		public FVector PointPlaneProject(FVector point, FPlane plane)
+			=> E_FVector_PointPlaneProject(this, point, plane);
+		
+		
+		/// <summary>
+		/// <para>Calculate the projection of a point on the plane defined by counter-clockwise (CCW) points A,B,C. </para>
+		/// <param name="Point">The point to project onto the plane </param>
+		/// <param name="A">1st of three points in CCW order defining the plane </param>
+		/// <param name="B">2nd of three points in CCW order defining the plane </param>
+		/// <param name="C">3rd of three points in CCW order defining the plane </param>
+		/// <return>Projection of Point onto plane ABC </return>
+		/// </summary>
+		public FVector PointPlaneProject(FVector point, FVector a, FVector b, FVector c)
+			=> E_FVector_PointPlaneProject_o1(this, point, a, b, c);
+		
+		
+		/// <summary>
+		/// <para>Calculate the projection of a point on the plane defined by PlaneBase and PlaneNormal. </para>
+		/// <param name="Point">The point to project onto the plane </param>
+		/// <param name="PlaneBase">Point on the plane </param>
+		/// <param name="PlaneNorm">Normal of the plane (assumed to be unit length). </param>
+		/// <return>Projection of Point onto plane </return>
+		/// </summary>
+		public FVector PointPlaneProject(FVector point, FVector planeBase, FVector planeNormal)
+			=> E_FVector_PointPlaneProject_o2(this, point, planeBase, planeNormal);
 		
 		
 		/// <summary>
@@ -813,8 +904,8 @@ namespace UnrealEngine
 		/// <param name="Dist">Specified distance. </param>
 		/// <return>Whether two points are within the specified distance. Uses fast distance approximation (linear per-component distance). </return>
 		/// </summary>
-		public bool PointsAreNear(FVector Point1, FVector Point2, float Dist)
-			=> E_FVector_PointsAreNear(this, Point1, Point2, Dist);
+		public bool PointsAreNear(FVector point1, FVector point2, float dist)
+			=> E_FVector_PointsAreNear(this, point1, point2, dist);
 		
 		
 		/// <summary>
@@ -823,8 +914,8 @@ namespace UnrealEngine
 		/// <param name="Q">Second vector. </param>
 		/// <return>Whether points are the same within a threshold. Uses fast distance approximation (linear per-component distance). </return>
 		/// </summary>
-		public bool PointsAreSame(FVector P, FVector Q)
-			=> E_FVector_PointsAreSame(this, P, Q);
+		public bool PointsAreSame(FVector p, FVector q)
+			=> E_FVector_PointsAreSame(this, p, q);
 		
 		
 		/// <summary>
@@ -840,8 +931,8 @@ namespace UnrealEngine
 		/// <param name="A">Vector to project onto, does not assume it is normalized. </param>
 		/// <return>Projected vector. </return>
 		/// </summary>
-		public FVector ProjectOnTo(FVector A)
-			=> E_FVector_ProjectOnTo(this, A);
+		public FVector ProjectOnTo(FVector a)
+			=> E_FVector_ProjectOnTo(this, a);
 		
 		
 		/// <summary>
@@ -849,8 +940,8 @@ namespace UnrealEngine
 		/// <param name="Normal">Vector to project onto (assumed to be unit length). </param>
 		/// <return>Projected vector. </return>
 		/// </summary>
-		public FVector ProjectOnToNormal(FVector Normal)
-			=> E_FVector_ProjectOnToNormal(this, Normal);
+		public FVector ProjectOnToNormal(FVector normal)
+			=> E_FVector_ProjectOnToNormal(this, normal);
 		
 		
 		/// <summary>
@@ -858,8 +949,8 @@ namespace UnrealEngine
 		/// <param name="RadVector">Vector containing radian values </param>
 		/// <return>Vector  containing degree values </return>
 		/// </summary>
-		public FVector RadiansToDegrees(FVector RadVector)
-			=> E_FVector_RadiansToDegrees(this, RadVector);
+		public FVector RadiansToDegrees(FVector radVector)
+			=> E_FVector_RadiansToDegrees(this, radVector);
 		
 		
 		/// <summary>
@@ -877,8 +968,8 @@ namespace UnrealEngine
 		/// <param name="Axis">Axis to rotate around. </param>
 		/// <return>Rotated Vector. </return>
 		/// </summary>
-		public FVector RotateAngleAxis(float AngleDeg, FVector Axis)
-			=> E_FVector_RotateAngleAxis(this, AngleDeg, Axis);
+		public FVector RotateAngleAxis(float angleDeg, FVector axis)
+			=> E_FVector_RotateAngleAxis(this, angleDeg, axis);
 		
 		
 		/// <summary>
@@ -898,8 +989,8 @@ namespace UnrealEngine
 		/// <param name="InY">New Y coordinate. </param>
 		/// <param name="InZ">New Z coordinate. </param>
 		/// </summary>
-		public void Set(float InX, float InY, float InZ)
-			=> E_FVector_Set(this, InX, InY, InZ);
+		public void Set(float inX, float inY, float inZ)
+			=> E_FVector_Set(this, inX, inY, inZ);
 		
 		
 		/// <summary>
@@ -953,8 +1044,8 @@ namespace UnrealEngine
 		/// <param name="OutDir">Reference passed in to store unit direction vector. </param>
 		/// <param name="OutLength">Reference passed in to store length of the vector. </param>
 		/// </summary>
-		public void ToDirectionAndLength(FVector OutDir, float OutLength)
-			=> E_FVector_ToDirectionAndLength(this, OutDir, OutLength);
+		public void ToDirectionAndLength(FVector outDir, float outLength)
+			=> E_FVector_ToDirectionAndLength(this, outDir, outLength);
 		
 		
 		/// <summary>
@@ -1002,8 +1093,8 @@ namespace UnrealEngine
 		/// <param name="Z">The third vector. </param>
 		/// <return>The triple product: X dot (Y cross Z). </return>
 		/// </summary>
-		public float Triple(FVector X, FVector Y, FVector Z)
-			=> E_FVector_Triple(this, X, Y, Z);
+		public float Triple(FVector x, FVector y, FVector z)
+			=> E_FVector_Triple(this, x, y, z);
 		
 		
 		/// <summary>
@@ -1027,14 +1118,14 @@ namespace UnrealEngine
 		/// <param name="PlaneNormal">Normal of the plane (assumed to be unit length). </param>
 		/// <return>Projection of V onto plane. </return>
 		/// </summary>
-		public FVector VectorPlaneProject(FVector V, FVector PlaneNormal)
-			=> E_FVector_VectorPlaneProject(this, V, PlaneNormal);
+		public FVector VectorPlaneProject(FVector v, FVector planeNormal)
+			=> E_FVector_VectorPlaneProject(this, v, planeNormal);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FVector Self)
+		public static implicit operator IntPtr(FVector self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FVector(IntPtr Adress)

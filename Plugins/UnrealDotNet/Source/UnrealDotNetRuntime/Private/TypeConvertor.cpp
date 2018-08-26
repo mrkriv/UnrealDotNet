@@ -72,6 +72,28 @@ ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* objec
 	return desc;
 }
 
+ObjectPointerDescription ConvertToManage_ObjectPointerDescription(const UObject* object)
+{
+	FString name;
+	if (object != NULL)
+	{
+		name = object->GetClass()->GetPrefixCPP() + object->GetClass()->GetName();
+	}
+	else
+	{
+		name = "UObject";
+	}
+
+	auto utf8 = TCHAR_TO_UTF8(*name);
+
+	ObjectPointerDescription desc;
+	desc.Pointer = (INT_PTR)object;
+	desc.TypeNameLen = name.Len();
+	desc.TypeName = PushToTransferBeffer((INT_PTR)utf8, name.Len());
+
+	return desc;
+}
+
 TCHAR* ConvertFromManage_TCHAR(char* String)
 {
 	return UTF8_TO_TCHAR(String);

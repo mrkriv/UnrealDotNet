@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -50,7 +52,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_CanCheckDefaultSubObjects(UObject* Self, bool bForceCheck, bool bResult)
 	{
 		auto _p0 = bForceCheck;
-		auto _p1 = bResult;
+		auto& _p1 = bResult;
 		return ((E_PROTECTED_WRAP_UObject*)Self)->CanCheckDefaultSubObjects_WRAP(_p0, _p1);
 	}
 
@@ -74,6 +76,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_CheckDefaultSubobjectsInternal(UObject* Self)
 	{
 		return ((E_PROTECTED_WRAP_UObject*)Self)->CheckDefaultSubobjectsInternal_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_UObject_CollectDefaultSubobjects(UObject* Self, INT_PTR OutDefaultSubobjects, bool bIncludeNestedSubobjects)
+	{
+		auto& _p0 = *(TArray<UObject*>*)OutDefaultSubobjects;
+		auto _p1 = bIncludeNestedSubobjects;
+		Self->CollectDefaultSubobjects(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UObject_ConditionalBeginDestroy(UObject* Self)
@@ -112,6 +121,12 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetArchetype());
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetArchetypeInstances(UObject* Self, INT_PTR Instances)
+	{
+		auto& _p0 = *(TArray<UObject*>*)Instances;
+		Self->GetArchetypeInstances(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_GetDefaultConfigFilename(UObject* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetDefaultConfigFilename());
@@ -137,6 +152,24 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetGlobalUserConfigFilename());
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetPreloadDependencies(UObject* Self, INT_PTR OutDeps)
+	{
+		auto& _p0 = *(TArray<UObject*>*)OutDeps;
+		Self->GetPreloadDependencies(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetPrestreamPackages(UObject* Self, INT_PTR OutPrestream)
+	{
+		auto& _p0 = *(TArray<UObject*>*)OutPrestream;
+		Self->GetPrestreamPackages(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetSubobjectsWithStableNamesForNetworking(UObject* Self, INT_PTR ObjList)
+	{
+		auto& _p0 = *(TArray<UObject*>*)ObjList;
+		Self->GetSubobjectsWithStableNamesForNetworking(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_GetWorld(UObject* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
@@ -144,7 +177,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UObject_GetWorldChecked(UObject* Self, bool bSupported)
 	{
-		auto _p0 = bSupported;
+		auto& _p0 = bSupported;
 		return ConvertToManage_ObjectPointerDescription(Self->GetWorldChecked(_p0));
 	}
 
@@ -250,6 +283,12 @@ extern "C"
 		Self->PostCDOContruct();
 	}
 
+	DOTNET_EXPORT auto E_UObject_PostDuplicate(UObject* Self, bool bDuplicateForPIE)
+	{
+		auto _p0 = bDuplicateForPIE;
+		Self->PostDuplicate(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UObject_PostEditImport(UObject* Self)
 	{
 		Self->PostEditImport();
@@ -301,6 +340,25 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_ShutdownAfterError(UObject* Self)
 	{
 		Self->ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E_UObject_SourceFileTagName(UObject* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->SourceFileTagName());
+	}
+
+	DOTNET_EXPORT auto E_UObject_UpdateClassesExcludedFromDedicatedClient(UObject* Self, INT_PTR InClassNames, INT_PTR InModulesNames)
+	{
+		auto& _p0 = *(const TArray<FString>*)InClassNames;
+		auto& _p1 = *(const TArray<FString>*)InModulesNames;
+		Self->UpdateClassesExcludedFromDedicatedClient(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UObject_UpdateClassesExcludedFromDedicatedServer(UObject* Self, INT_PTR InClassNames, INT_PTR InModulesNames)
+	{
+		auto& _p0 = *(const TArray<FString>*)InClassNames;
+		auto& _p1 = *(const TArray<FString>*)InModulesNames;
+		Self->UpdateClassesExcludedFromDedicatedServer(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UObject_UpdateDefaultConfigFile(UObject* Self, char* SpecificFileLocation)

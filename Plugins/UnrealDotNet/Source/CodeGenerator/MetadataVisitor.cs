@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using static UHeaderParser;
 using Delegate = Generator.Metadata.Delegate;
 using Enum = Generator.Metadata.Enum;
@@ -57,25 +58,27 @@ namespace Generator
 
             if (name.StartsWith("E"))
             {
-                return Get<Enum>(context);
+                return Get(context, n => new Enum(n));
             }
             if (name.EndsWith("Signature"))
             {
-                return Get<Delegate>(context);
+                return Get(context, n => new Delegate(n));
             }
 
-            return Get<Class>(context);
+            return Get(context, n => new Class(n));
         }
         
-        private T Get<T>(TypeContext context) where T : Type
+        private T Get<T>(TypeContext context, Func<string, T> activator) where T : Type
         {
             var name = context.typeName().GetText();
+            string templateBaseName = null;
 
             if (name.Contains("<"))
             {
-                name = context.typeName().Identifier().First().GetText();
+                templateBaseName = context.typeName().Identifier().First().GetText();
                 var templateTypes = context.typeName().type();
 
+                name = templateBaseName;
                 name += "__";
                 name += string.Join(", ", templateTypes.Select(x => x.typeName().Identifier().First().GetText()));
             }
@@ -88,7 +91,8 @@ namespace Generator
                 throw new InvalidOperationException($"Элемент уже использован как {val.GetType()}");
             }
 
-            var def = (Type)Activator.CreateInstance(typeof(T), name);
+            var def = activator(name);
+            def.TemplateBaseName = templateBaseName;
             _types.TryAdd(name, def);
 
             foreach (var nameContext in context.typeName().type())
@@ -96,7 +100,7 @@ namespace Generator
                 def.TemplateTypes.Add(ParceType(nameContext)); 
             }
 
-            return (T)def;
+            return def;
         }
 
         public override object VisitClassDeclaration(ClassDeclarationContext context)
@@ -106,7 +110,7 @@ namespace Generator
 
             var namespaceBaseClass = _currentClass;
 
-            _currentClass = Get<Class>(context.type());
+            _currentClass = Get(context.type(), n => new Class(n));
 
             var isStructReal = context.classOrStruct().GetText() == "struct";
 
@@ -142,7 +146,7 @@ namespace Generator
             var parentClassName = context.Child<ClassParentListContext>()?.type();
             if (parentClassName != null)
             {
-                _currentClass.BaseClass = Get<Class>(parentClassName);
+                _currentClass.BaseClass = Get(parentClassName, n => new Class(n));
             }
 
             _currentUMeta = null;
@@ -166,7 +170,7 @@ namespace Generator
             if (string.IsNullOrEmpty(name))
                 return null;
 
-            _currentEnum = Get<Enum>(context.type());
+            _currentEnum = Get(context.type(), n => new Enum(n));
             _currentEnum.SourceFile = _currentFile;
             _currentEnum.SourceLine = context.Start.Line;
             _currentEnum.UMeta = _currentUMeta ?? new Dictionary<string, string>();
@@ -226,7 +230,7 @@ namespace Generator
         {
             if (Ignore || _currentClass == null)
                 return null;
-
+            
             var method = new Method(context.methodName().GetText())
             {
                 IsConst = context.FoundChild<IsConstContext>(),
@@ -301,7 +305,7 @@ namespace Generator
             {
                 var ls = context.uMeta().uMetaParametrList();
 
-                _currentDelegate = Get<Delegate>(ls.uMetaParametr().uMetaParamKey().type());
+                _currentDelegate = Get(ls.uMetaParametr().uMetaParamKey().type(), n => new Delegate(n));
                 _currentDelegate.SourceFile = _currentFile;
                 _currentDelegate.SourceLine = context.Start.Line;
                 _currentDelegate.IsImplemented = true;

@@ -14,6 +14,7 @@ namespace Generator.Metadata
         public string Description { get; set; }
         public string Name { get; set; }
 
+        public bool? ValidForExport { get; set; }
         public string SourceFile { get; set; }
         public int SourceLine { get; set; }
 

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -84,7 +86,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPlanarReflectionComponent_ScreenPercentage_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UPlanarReflectionComponent_GetPlanarReflectionId(IntPtr Self);
+		private static extern int E_UPlanarReflectionComponent_GetPlanarReflectionId(IntPtr self);
 		
 		#endregion
 		
@@ -213,9 +215,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UPlanarReflectionComponent Self)
+		public static implicit operator IntPtr(UPlanarReflectionComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UPlanarReflectionComponent(ObjectPointerDescription PtrDesc)

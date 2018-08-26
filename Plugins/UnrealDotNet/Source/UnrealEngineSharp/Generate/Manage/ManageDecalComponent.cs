@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -19,9 +21,9 @@ namespace UnrealEngine
 		/// </summary>
 		protected override void LifeSpanCallback() { }
 		
-		public static implicit operator IntPtr(ManageDecalComponent Self)
+		public static implicit operator IntPtr(ManageDecalComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageDecalComponent(ObjectPointerDescription PtrDesc)

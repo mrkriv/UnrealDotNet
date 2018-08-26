@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -11,22 +13,22 @@ namespace UnrealEngine
 		{
 		}
 
-		public FAttachmentTransformRules(EAttachmentRule InRule, bool bInWeldSimulatedBodies) :
-			base(E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_bool((byte)InRule, bInWeldSimulatedBodies), false)
+		public FAttachmentTransformRules(EAttachmentRule inRule, bool bInWeldSimulatedBodies) :
+			base(E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_bool((byte)inRule, bInWeldSimulatedBodies), false)
 		{
 		}
 
-		public FAttachmentTransformRules(EAttachmentRule InLocationRule, EAttachmentRule InRotationRule, EAttachmentRule InScaleRule, bool bInWeldSimulatedBodies) :
-			base(E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_EAttachmentRule_EAttachmentRule_bool((byte)InLocationRule, (byte)InRotationRule, (byte)InScaleRule, bInWeldSimulatedBodies), false)
+		public FAttachmentTransformRules(EAttachmentRule inLocationRule, EAttachmentRule inRotationRule, EAttachmentRule inScaleRule, bool bInWeldSimulatedBodies) :
+			base(E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_EAttachmentRule_EAttachmentRule_bool((byte)inLocationRule, (byte)inRotationRule, (byte)inScaleRule, bInWeldSimulatedBodies), false)
 		{
 		}
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_bool(byte InRule, bool bInWeldSimulatedBodies);
+		private static extern IntPtr E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_bool(byte inRule, bool bInWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_EAttachmentRule_EAttachmentRule_bool(byte InLocationRule, byte InRotationRule, byte InScaleRule, bool bInWeldSimulatedBodies);
+		private static extern IntPtr E_CreateStruct_FAttachmentTransformRules_EAttachmentRule_EAttachmentRule_EAttachmentRule_bool(byte inLocationRule, byte inRotationRule, byte inScaleRule, bool bInWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FAttachmentTransformRules_bWeldSimulatedBodies_GET(IntPtr Ptr);
@@ -129,9 +131,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FAttachmentTransformRules Self)
+		public static implicit operator IntPtr(FAttachmentTransformRules self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FAttachmentTransformRules(IntPtr Adress)

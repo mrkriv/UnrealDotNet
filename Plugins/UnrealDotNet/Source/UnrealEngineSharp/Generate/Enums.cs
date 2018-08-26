@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 namespace UnrealEngine
 {
 	

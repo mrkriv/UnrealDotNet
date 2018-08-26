@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -23,7 +25,7 @@ namespace UnrealEngine
 		/// <para>Note that changing the momentum of characters like this can change the movement mode. </para>
 		/// <param name="Force">Force to apply. </param>
 		/// </summary>
-		public override void AddForce(FVector Force) { }
+		public override void AddForce(FVector force) { }
 		
 		
 		/// <summary>
@@ -35,7 +37,7 @@ namespace UnrealEngine
 		/// <param name="Impulse">Impulse to apply. </param>
 		/// <param name="bVelocityChange">Whether or not the impulse is relative to mass. </param>
 		/// </summary>
-		public override void AddImpulse(FVector Impulse, bool bVelocityChange) { }
+		public override void AddImpulse(FVector impulse, bool bVelocityChange) { }
 		
 		
 		/// <summary>
@@ -54,14 +56,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Applies momentum accumulated through AddImpulse() and AddForce(), then clears those forces. Does *not* use ClearAccumulatedForces() since that would clear pending launch velocity as well. </para>
 		/// </summary>
-		public override void ApplyAccumulatedForces(float DeltaSeconds) { }
+		public override void ApplyAccumulatedForces(float deltaSeconds) { }
 		
 		
 		/// <summary>
 		/// <para>Applies downward force when walking on top of physics objects. </para>
 		/// <param name="DeltaSeconds">Time elapsed since last frame. </param>
 		/// </summary>
-		public override void ApplyDownwardForce(float DeltaSeconds) { }
+		public override void ApplyDownwardForce(float deltaSeconds) { }
 		
 		
 		/// <summary>
@@ -70,21 +72,21 @@ namespace UnrealEngine
 		/// <param name="ImpactAcceleration">Acceleration of the character at the time of impact </param>
 		/// <param name="ImpactVelocity">Velocity of the character at the time of impact </param>
 		/// </summary>
-		protected override void ApplyImpactPhysicsForces(FHitResult Impact, FVector ImpactAcceleration, FVector ImpactVelocity) { }
+		protected override void ApplyImpactPhysicsForces(FHitResult impact, FVector impactAcceleration, FVector impactVelocity) { }
 		
-		public override void ApplyNetworkMovementMode(byte ReceivedMode) { }
+		public override void ApplyNetworkMovementMode(byte receivedMode) { }
 		
 		
 		/// <summary>
 		/// <para>Applies repulsion force to all touched components. </para>
 		/// </summary>
-		public override void ApplyRepulsionForce(float DeltaSeconds) { }
+		public override void ApplyRepulsionForce(float deltaSeconds) { }
 		
 		
 		/// <summary>
 		/// <para>Slows towards stop. </para>
 		/// </summary>
-		protected override void ApplyVelocityBraking(float DeltaTime, float Friction, float BrakingDeceleration) { }
+		protected override void ApplyVelocityBraking(float deltaTime, float friction, float brakingDeceleration) { }
 		
 		
 		/// <summary>
@@ -95,15 +97,15 @@ namespace UnrealEngine
 		/// <param name="bFluid">true if moving through a fluid, causing Friction to always be applied regardless of acceleration. </param>
 		/// <param name="BrakingDeceleration">deceleration applied when not accelerating, or when exceeding max velocity. </param>
 		/// </summary>
-		public override void CalcVelocity(float DeltaTime, float Friction, bool bFluid, float BrakingDeceleration) { }
+		public override void CalcVelocity(float deltaTime, float friction, bool bFluid, float brakingDeceleration) { }
 		
 		
 		/// <summary>
 		/// <para>Internal function to call OnMovementUpdated delegate on CharacterOwner. </para>
 		/// </summary>
-		protected override void CallMovementUpdateDelegate(float DeltaSeconds, FVector OldLocation, FVector OldVelocity) { }
+		protected override void CallMovementUpdateDelegate(float deltaSeconds, FVector oldLocation, FVector oldVelocity) { }
 		
-		protected override void CapsuleTouched(UPrimitiveComponent OverlappedComp, AActor Other, UPrimitiveComponent OtherComp, int OtherBodyIndex, bool bFromSweep, FHitResult SweepResult) { }
+		protected override void CapsuleTouched(UPrimitiveComponent overlappedComp, AActor other, UPrimitiveComponent otherComp, int otherBodyIndex, bool bFromSweep, FHitResult sweepResult) { }
 		
 		
 		/// <summary>
@@ -115,21 +117,21 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves </para>
 		/// </summary>
-		public override void ClientAckGoodMove(float TimeStamp) { }
+		public override void ClientAckGoodMove(float timeStamp) { }
 		
-		public override void ClientAckGoodMove_Implementation(float TimeStamp) { }
+		public override void ClientAckGoodMove_Implementation(float timeStamp) { }
 		
 		
 		/// <summary>
 		/// <para>Replicate position correction to client, associated with a timestamped servermove.  Client will replay subsequent moves after applying adjustment. </para>
 		/// </summary>
-		public override void ClientAdjustPosition(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
+		public override void ClientAdjustPosition(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode) { }
 		
-		public override void ClientAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
+		public override void ClientAdjustPosition_Implementation(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode) { }
 		
-		public override void ClientVeryShortAdjustPosition(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
+		public override void ClientVeryShortAdjustPosition(float timeStamp, FVector newLoc, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode) { }
 		
-		public override void ClientVeryShortAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode) { }
+		public override void ClientVeryShortAdjustPosition_Implementation(float timeStamp, FVector newLoc, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode) { }
 		
 		
 		/// <summary>
@@ -151,25 +153,25 @@ namespace UnrealEngine
 		/// </summary>
 		public override void ForceReplicationUpdate() { }
 		
-		protected override void HandleSwimmingWallHit(FHitResult Hit, float DeltaTime) { }
+		protected override void HandleSwimmingWallHit(FHitResult hit, float deltaTime) { }
 		
 		
 		/// <summary>
 		/// <para>Force this pawn to bounce off its current base, which isn't an acceptable base for it. </para>
 		/// </summary>
-		public override void JumpOff(AActor MovementBaseActor) { }
+		public override void JumpOff(AActor movementBaseActor) { }
 		
 		
 		/// <summary>
 		/// <para>Jump onto shore from water </para>
 		/// </summary>
-		public override void JumpOutOfWater(FVector WallNormal) { }
+		public override void JumpOutOfWater(FVector wallNormal) { }
 		
 		
 		/// <summary>
 		/// <para>Queue a pending launch with velocity LaunchVel. </para>
 		/// </summary>
-		public override void Launch(FVector LaunchVel) { }
+		public override void Launch(FVector launchVel) { }
 		
 		
 		/// <summary>
@@ -188,9 +190,9 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update or defer updating of position based on Base movement </para>
 		/// </summary>
-		public override void MaybeUpdateBasedMovement(float DeltaSeconds) { }
+		public override void MaybeUpdateBasedMovement(float deltaSeconds) { }
 		
-		protected override void MoveAutonomous(float ClientTimeStamp, float DeltaTime, byte CompressedFlags, FVector NewAccel) { }
+		protected override void MoveAutonomous(float clientTimeStamp, float deltaTime, byte compressedFlags, FVector newAccel) { }
 		
 		
 		/// <summary>
@@ -202,7 +204,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Notification that the character is stuck in geometry.  Only called during walking movement. </para>
 		/// </summary>
-		protected override void OnCharacterStuckInGeometry(FHitResult Hit) { }
+		protected override void OnCharacterStuckInGeometry(FHitResult hit) { }
 		
 		
 		/// <summary>
@@ -214,14 +216,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called after MovementMode has changed. Base implementation does special handling for starting certain modes, then notifies the CharacterOwner. </para>
 		/// </summary>
-		protected override void OnMovementModeChanged(EMovementMode PreviousMovementMode, byte PreviousCustomMode) { }
+		protected override void OnMovementModeChanged(EMovementMode previousMovementMode, byte previousCustomMode) { }
 		
 		
 		/// <summary>
 		/// <para>Event triggered at the end of a movement update. If scoped movement updates are enabled (bEnableScopedMovementUpdates), this is within such a scope. </para>
 		/// <para>If that is not desired, bind to the CharacterOwner's OnMovementUpdated event instead, as that is triggered after the scoped movement update. </para>
 		/// </summary>
-		protected override void OnMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity) { }
+		protected override void OnMovementUpdated(float deltaSeconds, FVector oldLocation, FVector oldVelocity) { }
 		
 		
 		/// <summary>
@@ -242,7 +244,7 @@ namespace UnrealEngine
 		/// <param name="CurrentMoveError">Time difference between client ServerMove and how much time has passed on the server for the </param>
 		/// <para>current move that has caused TimeDiscrepancy to accumulate enough to trigger detection. </para>
 		/// </summary>
-		protected override void OnTimeDiscrepancyDetected(float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError) { }
+		protected override void OnTimeDiscrepancyDetected(float currentTimeDiscrepancy, float lifetimeRawTimeDiscrepancy, float lifetime, float currentMoveError) { }
 		
 		
 		/// <summary>
@@ -252,7 +254,7 @@ namespace UnrealEngine
 		/// <param name="OldLocation">Location before we tried to move with the base. </param>
 		/// <param name="MoveOnBaseHit">Hit result for the object we hit when trying to move with the base. </param>
 		/// </summary>
-		protected override void OnUnableToFollowBaseMove(FVector DeltaPosition, FVector OldLocation, FHitResult MoveOnBaseHit) { }
+		protected override void OnUnableToFollowBaseMove(FVector deltaPosition, FVector oldLocation, FHitResult moveOnBaseHit) { }
 		
 		
 		/// <summary>
@@ -261,67 +263,67 @@ namespace UnrealEngine
 		/// <param name="ZDiff">is the height difference between the destination and the Pawn's current position </param>
 		/// <para>@see RequestDirectMove() </para>
 		/// </summary>
-		public override void PerformAirControlForPathFollowing(FVector Direction, float ZDiff) { }
+		public override void PerformAirControlForPathFollowing(FVector direction, float zDiff) { }
 		
 		
 		/// <summary>
 		/// <para>Perform movement on an autonomous client </para>
 		/// </summary>
-		protected override void PerformMovement(float DeltaTime) { }
+		protected override void PerformMovement(float deltaTime) { }
 		
 		
 		/// <summary>
 		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
 		/// </summary>
-		protected override void PhysCustom(float deltaTime, int Iterations) { }
+		protected override void PhysCustom(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>Handle falling movement. </para>
 		/// </summary>
-		public override void PhysFalling(float deltaTime, int Iterations) { }
+		public override void PhysFalling(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
 		/// </summary>
-		protected override void PhysFlying(float deltaTime, int Iterations) { }
+		protected override void PhysFlying(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>Perform rotation over deltaTime </para>
 		/// </summary>
-		public override void PhysicsRotation(float DeltaTime) { }
+		public override void PhysicsRotation(float deltaTime) { }
 		
 		
 		/// <summary>
 		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
 		/// </summary>
-		protected override void PhysNavWalking(float deltaTime, int Iterations) { }
+		protected override void PhysNavWalking(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
 		/// </summary>
-		protected override void PhysSwimming(float deltaTime, int Iterations) { }
+		protected override void PhysSwimming(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
 		/// </summary>
-		protected override void PhysWalking(float deltaTime, int Iterations) { }
+		protected override void PhysWalking(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>Handle landing against Hit surface over remaingTime and iterations, calling SetPostLandedPhysics() and starting the new movement mode. </para>
 		/// </summary>
-		protected override void ProcessLanded(FHitResult Hit, float remainingTime, int Iterations) { }
+		protected override void ProcessLanded(FHitResult hit, float remainingTime, int iterations) { }
 		
 		
 		/// <summary>
 		/// <para>Perform local movement and send the move to the server. </para>
 		/// </summary>
-		protected override void ReplicateMoveToServer(float DeltaTime, FVector NewAcceleration) { }
+		protected override void ReplicateMoveToServer(float deltaTime, FVector newAcceleration) { }
 		
 		
 		/// <summary>
@@ -336,13 +338,13 @@ namespace UnrealEngine
 		/// <para>RelativeClientLocation will be a relative location if MovementBaseUtility::UseRelativePosition(ClientMovementBase) is true, or a world location if false. </para>
 		/// <para>@see ServerCheckClientError() </para>
 		/// </summary>
-		protected override void ServerMoveHandleClientError(float ClientTimeStamp, float DeltaTime, FVector Accel, FVector RelativeClientLocation, UPrimitiveComponent ClientMovementBase, string ClientBaseBoneName, byte ClientMovementMode) { }
+		protected override void ServerMoveHandleClientError(float clientTimeStamp, float deltaTime, FVector accel, FVector relativeClientLocation, UPrimitiveComponent clientMovementBase, string clientBaseBoneName, byte clientMovementMode) { }
 		
 		
 		/// <summary>
 		/// <para>Update the base of the character, which is the PrimitiveComponent we are standing on. </para>
 		/// </summary>
-		public override void SetBase(UPrimitiveComponent NewBase, string BoneName, bool bNotifyActor) { }
+		public override void SetBase(UPrimitiveComponent newBase, string boneName, bool bNotifyActor) { }
 		
 		
 		/// <summary>
@@ -356,7 +358,7 @@ namespace UnrealEngine
 		/// <param name="NewMovementMode">The new movement mode </param>
 		/// <param name="NewCustomMode">The new custom sub-mode, only applicable if NewMovementMode is Custom. </param>
 		/// </summary>
-		public override void SetMovementMode(EMovementMode NewMovementMode, byte NewCustomMode) { }
+		public override void SetMovementMode(EMovementMode newMovementMode, byte newCustomMode) { }
 		
 		
 		/// <summary>
@@ -368,13 +370,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Use new physics after landing. Defaults to swimming if in water, walking otherwise. </para>
 		/// </summary>
-		protected override void SetPostLandedPhysics(FHitResult Hit) { }
+		protected override void SetPostLandedPhysics(FHitResult hit) { }
 		
 		
 		/// <summary>
 		/// <para>Simulate movement on a non-owning client. Called by SimulatedTick(). </para>
 		/// </summary>
-		protected override void SimulateMovement(float DeltaTime) { }
+		protected override void SimulateMovement(float deltaTime) { }
 		
 		
 		/// <summary>
@@ -383,19 +385,19 @@ namespace UnrealEngine
 		/// <para>This function is not called when bNetworkSmoothingComplete is true. </para>
 		/// <param name="DeltaSeconds">Time since last update. </param>
 		/// </summary>
-		protected override void SmoothClientPosition(float DeltaSeconds) { }
+		protected override void SmoothClientPosition(float deltaSeconds) { }
 		
 		
 		/// <summary>
 		/// <para>Transition from walking to falling </para>
 		/// </summary>
-		public override void StartFalling(int Iterations, float remainingTime, float timeTick, FVector Delta, FVector subLoc) { }
+		public override void StartFalling(int iterations, float remainingTime, float timeTick, FVector delta, FVector subLoc) { }
 		
 		
 		/// <summary>
 		/// <para>changes physics based on MovementMode </para>
 		/// </summary>
-		public override void StartNewPhysics(float deltaTime, int Iterations) { }
+		public override void StartNewPhysics(float deltaTime, int iterations) { }
 		
 		
 		/// <summary>
@@ -408,25 +410,25 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update position based on Base movement </para>
 		/// </summary>
-		public override void UpdateBasedMovement(float DeltaSeconds) { }
+		public override void UpdateBasedMovement(float deltaSeconds) { }
 		
 		
 		/// <summary>
 		/// <para>Update controller's view rotation as pawn's base rotates </para>
 		/// </summary>
-		public override void UpdateBasedRotation(FRotator FinalRotation, FRotator ReducedRotation) { }
+		public override void UpdateBasedRotation(FRotator finalRotation, FRotator reducedRotation) { }
 		
 		
 		/// <summary>
 		/// <para>Update the character state in PerformMovement after the position change. Some rotation updates happen after this. </para>
 		/// </summary>
-		public override void UpdateCharacterStateAfterMovement(float DeltaSeconds) { }
+		public override void UpdateCharacterStateAfterMovement(float deltaSeconds) { }
 		
 		
 		/// <summary>
 		/// <para>Update the character state in PerformMovement right before doing the actual position change </para>
 		/// </summary>
-		public override void UpdateCharacterStateBeforeMovement(float DeltaSeconds) { }
+		public override void UpdateCharacterStateBeforeMovement(float deltaSeconds) { }
 		
 		
 		/// <summary>
@@ -438,11 +440,11 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Unpack compressed flags from a saved move and set state accordingly. See FSavedMove_Character. </para>
 		/// </summary>
-		protected override void UpdateFromCompressedFlags(byte Flags) { }
+		protected override void UpdateFromCompressedFlags(byte flags) { }
 		
-		public static implicit operator IntPtr(ManageCharacterMovementComponent Self)
+		public static implicit operator IntPtr(ManageCharacterMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageCharacterMovementComponent(ObjectPointerDescription PtrDesc)

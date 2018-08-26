@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -19,9 +21,15 @@ namespace UnrealEngine
 		/// </summary>
 		public override void ClearRefPoseOverride() { }
 		
-		public static implicit operator IntPtr(ManageSkinnedMeshComponent Self)
+		
+		/// <summary>
+		/// <para>Apply an override for the current mesh ref pose </para>
+		/// </summary>
+		public override void SetRefPoseOverride(TArray<FTransform> newRefPoseTransforms) { }
+		
+		public static implicit operator IntPtr(ManageSkinnedMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageSkinnedMeshComponent(ObjectPointerDescription PtrDesc)

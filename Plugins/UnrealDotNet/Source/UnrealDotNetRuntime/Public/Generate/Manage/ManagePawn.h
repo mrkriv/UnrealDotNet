@@ -1,4 +1,7 @@
 #pragma once
+
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
@@ -15,13 +18,12 @@ class UNREALDOTNETRUNTIME_API AManagePawn : public APawn, public IManageObject
 	
 	bool bIsManageAttach = false;
 	
+	bool AddWrapperIfNotAttach();
+	
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
-	
-	virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }
-	virtual FString GetManageClassName() override { return ManageClassName.FullName; }
 	
 	virtual void AddControllerPitchInput(float Val) override;
 	virtual void AddControllerRollInput(float Val) override;

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FWalkableSlopeOverride(EWalkableSlopeBehavior NewSlopeBehavior, float NewSlopeAngle) :
-			base(E_CreateStruct_FWalkableSlopeOverride_EWalkableSlopeBehavior_float((byte)NewSlopeBehavior, NewSlopeAngle), false)
+		public FWalkableSlopeOverride(EWalkableSlopeBehavior newSlopeBehavior, float newSlopeAngle) :
+			base(E_CreateStruct_FWalkableSlopeOverride_EWalkableSlopeBehavior_float((byte)newSlopeBehavior, newSlopeAngle), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FWalkableSlopeOverride();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FWalkableSlopeOverride_EWalkableSlopeBehavior_float(byte NewSlopeBehavior, float NewSlopeAngle);
+		private static extern IntPtr E_CreateStruct_FWalkableSlopeOverride_EWalkableSlopeBehavior_float(byte newSlopeBehavior, float newSlopeAngle);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_GET(IntPtr Ptr);
@@ -34,19 +36,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWalkableSlopeOverride_WalkableSlopeAngle_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FWalkableSlopeOverride_GetWalkableSlopeAngle(IntPtr Self);
+		private static extern float E_FWalkableSlopeOverride_GetWalkableSlopeAngle(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_FWalkableSlopeOverride_GetWalkableSlopeBehavior(IntPtr Self);
+		private static extern byte E_FWalkableSlopeOverride_GetWalkableSlopeBehavior(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FWalkableSlopeOverride_ModifyWalkableFloorZ(IntPtr Self, float InWalkableFloorZ);
+		private static extern float E_FWalkableSlopeOverride_ModifyWalkableFloorZ(IntPtr self, float inWalkableFloorZ);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FWalkableSlopeOverride_SetWalkableSlopeAngle(IntPtr Self, float NewSlopeAngle);
+		private static extern void E_FWalkableSlopeOverride_SetWalkableSlopeAngle(IntPtr self, float newSlopeAngle);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FWalkableSlopeOverride_SetWalkableSlopeBehavior(IntPtr Self, byte NewSlopeBehavior);
+		private static extern void E_FWalkableSlopeOverride_SetWalkableSlopeBehavior(IntPtr self, byte newSlopeBehavior);
 		
 		#endregion
 		
@@ -71,20 +73,20 @@ namespace UnrealEngine
 		public EWalkableSlopeBehavior GetWalkableSlopeBehavior()
 			=> (EWalkableSlopeBehavior)E_FWalkableSlopeOverride_GetWalkableSlopeBehavior(this);
 		
-		public float ModifyWalkableFloorZ(float InWalkableFloorZ)
-			=> E_FWalkableSlopeOverride_ModifyWalkableFloorZ(this, InWalkableFloorZ);
+		public float ModifyWalkableFloorZ(float inWalkableFloorZ)
+			=> E_FWalkableSlopeOverride_ModifyWalkableFloorZ(this, inWalkableFloorZ);
 		
-		public void SetWalkableSlopeAngle(float NewSlopeAngle)
-			=> E_FWalkableSlopeOverride_SetWalkableSlopeAngle(this, NewSlopeAngle);
+		public void SetWalkableSlopeAngle(float newSlopeAngle)
+			=> E_FWalkableSlopeOverride_SetWalkableSlopeAngle(this, newSlopeAngle);
 		
-		public void SetWalkableSlopeBehavior(EWalkableSlopeBehavior NewSlopeBehavior)
-			=> E_FWalkableSlopeOverride_SetWalkableSlopeBehavior(this, (byte)NewSlopeBehavior);
+		public void SetWalkableSlopeBehavior(EWalkableSlopeBehavior newSlopeBehavior)
+			=> E_FWalkableSlopeOverride_SetWalkableSlopeBehavior(this, (byte)newSlopeBehavior);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FWalkableSlopeOverride Self)
+		public static implicit operator IntPtr(FWalkableSlopeOverride self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FWalkableSlopeOverride(IntPtr Adress)

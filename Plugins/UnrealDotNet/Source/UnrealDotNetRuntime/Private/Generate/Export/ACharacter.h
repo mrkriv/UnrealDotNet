@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -108,6 +110,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ACharacter_RepRootMotion_GET(ACharacter* Ptr) { return (INT_PTR)&(Ptr->RepRootMotion); }
 	DOTNET_EXPORT void E_PROP_ACharacter_RepRootMotion_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RepRootMotion = *(FRepRootMotionMontage*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_ACharacter_RootMotionRepMoves_GET(ACharacter* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->RootMotionRepMoves); }
+	DOTNET_EXPORT void E_PROP_ACharacter_RootMotionRepMoves_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RootMotionRepMoves = *(TArray<FSimulatedRootMotionReplicatedMove>*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
 	{
@@ -117,7 +122,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_ApplyDamageMomentum(ACharacter* Self, float DamageTaken, INT_PTR DamageEvent, APawn* PawnInstigator, AActor* DamageCauser)
 	{
 		auto _p0 = DamageTaken;
-		auto _p1 = *(FDamageEvent*)DamageEvent;
+		auto& _p1 = *(FDamageEvent*)DamageEvent;
 		auto _p2 = PawnInstigator;
 		auto _p3 = DamageCauser;
 		Self->ApplyDamageMomentum(_p0, _p1, _p2, _p3);
@@ -275,6 +280,11 @@ extern "C"
 		return Self->GetAnimRootMotionTranslationScale();
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_GetBasedMovement(ACharacter* Self)
+	{
+		return (INT_PTR) const_cast<FBasedMovementInfo*>(&(Self->GetBasedMovement()));
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_GetBaseRotationOffset(ACharacter* Self)
 	{
 		return (INT_PTR) new FQuat(Self->GetBaseRotationOffset());
@@ -308,6 +318,11 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_GetMesh(ACharacter* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetMesh());
+	}
+
+	DOTNET_EXPORT auto E_ACharacter_GetReplicatedBasedMovement(ACharacter* Self)
+	{
+		return (INT_PTR) const_cast<FBasedMovementInfo*>(&(Self->GetReplicatedBasedMovement()));
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetReplicatedMovementMode(ACharacter* Self)
@@ -371,7 +386,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_Landed(ACharacter* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		Self->Landed(_p0);
 	}
 
@@ -385,7 +400,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_MoveBlockedBy(ACharacter* Self, INT_PTR Impact)
 	{
-		auto _p0 = *(FHitResult*)Impact;
+		auto& _p0 = *(FHitResult*)Impact;
 		Self->MoveBlockedBy(_p0);
 	}
 
@@ -425,7 +440,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnLanded(ACharacter* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		Self->OnLanded(_p0);
 	}
 
@@ -468,25 +483,25 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnUpdateSimulatedPosition(ACharacter* Self, INT_PTR OldLocation, INT_PTR OldRotation)
 	{
-		auto _p0 = *(FVector*)OldLocation;
-		auto _p1 = *(FQuat*)OldRotation;
+		auto& _p0 = *(FVector*)OldLocation;
+		auto& _p1 = *(FQuat*)OldRotation;
 		Self->OnUpdateSimulatedPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
 	{
-		auto _p0 = *(FVector*)PreviousFloorImpactNormal;
-		auto _p1 = *(FVector*)PreviousFloorContactNormal;
-		auto _p2 = *(FVector*)PreviousLocation;
+		auto& _p0 = *(FVector*)PreviousFloorImpactNormal;
+		auto& _p1 = *(FVector*)PreviousFloorContactNormal;
+		auto& _p2 = *(FVector*)PreviousLocation;
 		auto _p3 = TimeDelta;
 		Self->OnWalkingOffLedge(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge_Implementation(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
 	{
-		auto _p0 = *(FVector*)PreviousFloorImpactNormal;
-		auto _p1 = *(FVector*)PreviousFloorContactNormal;
-		auto _p2 = *(FVector*)PreviousLocation;
+		auto& _p0 = *(FVector*)PreviousFloorImpactNormal;
+		auto& _p1 = *(FVector*)PreviousFloorContactNormal;
+		auto& _p2 = *(FVector*)PreviousLocation;
 		auto _p3 = TimeDelta;
 		Self->OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
 	}
@@ -498,7 +513,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
 	{
-		auto _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
+		auto& _p0 = *(FSimulatedRootMotionReplicatedMove*)RootMotionRepMove;
 		return Self->RestoreReplicatedMove(_p0);
 	}
 
@@ -516,8 +531,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_SaveRelativeBasedMovement(ACharacter* Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
 	{
-		auto _p0 = *(FVector*)NewRelativeLocation;
-		auto _p1 = *(FRotator*)NewRotation;
+		auto& _p0 = *(FVector*)NewRelativeLocation;
+		auto& _p1 = *(FRotator*)NewRotation;
 		auto _p2 = bRelativeRotation;
 		Self->SaveRelativeBasedMovement(_p0, _p1, _p2);
 	}
@@ -538,7 +553,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ShouldNotifyLanded(ACharacter* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		return Self->ShouldNotifyLanded(_p0);
 	}
 

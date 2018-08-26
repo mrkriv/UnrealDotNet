@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FDebugFloatHistory(float InMaxSamples, float InMinValue, float InMaxValue, bool InbAutoAdjustMinMax) :
-			base(E_CreateStruct_FDebugFloatHistory_float_float_float_bool(InMaxSamples, InMinValue, InMaxValue, InbAutoAdjustMinMax), false)
+		public FDebugFloatHistory(float inMaxSamples, float inMinValue, float inMaxValue, bool inbAutoAdjustMinMax) :
+			base(E_CreateStruct_FDebugFloatHistory_float_float_float_bool(inMaxSamples, inMinValue, inMaxValue, inbAutoAdjustMinMax), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FDebugFloatHistory();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FDebugFloatHistory_float_float_float_bool(float InMaxSamples, float InMinValue, float InMaxValue, bool InbAutoAdjustMinMax);
+		private static extern IntPtr E_CreateStruct_FDebugFloatHistory_float_float_float_bool(float inMaxSamples, float inMinValue, float inMaxValue, bool inbAutoAdjustMinMax);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FDebugFloatHistory_bAutoAdjustMinMax_GET(IntPtr Ptr);
@@ -49,19 +51,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FDebugFloatHistory_MinValue_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FDebugFloatHistory_AddSample(IntPtr Self, float FloatValue);
+		private static extern void E_FDebugFloatHistory_AddSample(IntPtr self, float floatValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FDebugFloatHistory_GetMaxValue(IntPtr Self);
+		private static extern float E_FDebugFloatHistory_GetMaxValue(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FDebugFloatHistory_GetMinMaxRange(IntPtr Self);
+		private static extern float E_FDebugFloatHistory_GetMinMaxRange(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FDebugFloatHistory_GetMinValue(IntPtr Self);
+		private static extern float E_FDebugFloatHistory_GetMinValue(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_FDebugFloatHistory_GetNumSamples(IntPtr Self);
+		private static extern int E_FDebugFloatHistory_GetNumSamples(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_FDebugFloatHistory_GetSamples(IntPtr self);
 		
 		#endregion
 		
@@ -117,8 +122,8 @@ namespace UnrealEngine
 		/// <para>If MaxSamples is exceeded, old values will be deleted. </para>
 		/// <param name="FloatValue">new sample to record. </param>
 		/// </summary>
-		public void AddSample(float FloatValue)
-			=> E_FDebugFloatHistory_AddSample(this, FloatValue);
+		public void AddSample(float floatValue)
+			=> E_FDebugFloatHistory_AddSample(this, floatValue);
 		
 		
 		/// <summary>
@@ -148,11 +153,18 @@ namespace UnrealEngine
 		public int GetNumSamples()
 			=> E_FDebugFloatHistory_GetNumSamples(this);
 		
+		
+		/// <summary>
+		/// <para>Read access to Samples array </para>
+		/// </summary>
+		public TArray<float> GetSamples()
+			=> E_FDebugFloatHistory_GetSamples(this);
+		
 		#endregion
 		
-		public static implicit operator IntPtr(FDebugFloatHistory Self)
+		public static implicit operator IntPtr(FDebugFloatHistory self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FDebugFloatHistory(IntPtr Adress)

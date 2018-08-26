@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,109 +26,133 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UMovementComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_AddRadialForce(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff);
+		private static extern void E_UMovementComponent_AddRadialForce(IntPtr self, IntPtr origin, float radius, float strength, byte falloff);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_AddRadialImpulse(IntPtr Self, IntPtr Origin, float Radius, float Strength, byte Falloff, bool bVelChange);
+		private static extern void E_UMovementComponent_AddRadialImpulse(IntPtr self, IntPtr origin, float radius, float strength, byte falloff, bool bVelChange);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_ComputeSlideVector(IntPtr Self, IntPtr Delta, float Time, IntPtr Normal, IntPtr Hit);
+		private static extern IntPtr E_UMovementComponent_ComputeSlideVector(IntPtr self, IntPtr delta, float time, IntPtr normal, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_ConstrainDirectionToPlane(IntPtr Self, IntPtr Direction);
+		private static extern IntPtr E_UMovementComponent_ConstrainDirectionToPlane(IntPtr self, IntPtr direction);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_ConstrainLocationToPlane(IntPtr Self, IntPtr Location);
+		private static extern IntPtr E_UMovementComponent_ConstrainLocationToPlane(IntPtr self, IntPtr location);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_ConstrainNormalToPlane(IntPtr Self, IntPtr Normal);
+		private static extern IntPtr E_UMovementComponent_ConstrainNormalToPlane(IntPtr self, IntPtr normal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_GetGravityZ(IntPtr Self);
+		private static extern float E_UMovementComponent_GetGravityZ(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_GetMaxSpeed(IntPtr Self);
+		private static extern float E_UMovementComponent_GetMaxSpeed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_GetMaxSpeedModifier(IntPtr Self);
+		private static extern float E_UMovementComponent_GetMaxSpeedModifier(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_GetModifiedMaxSpeed(IntPtr Self);
+		private static extern float E_UMovementComponent_GetModifiedMaxSpeed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_GetPenetrationAdjustment(IntPtr Self, IntPtr Hit);
+		private static extern IntPtr E_UMovementComponent_GetPenetrationAdjustment(IntPtr self, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UMovementComponent_GetPlaneConstraintAxisSetting(IntPtr Self);
+		private static extern byte E_UMovementComponent_GetPlaneConstraintAxisSetting(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(IntPtr Self, byte AxisSetting);
+		private static extern IntPtr E_UMovementComponent_GetPlaneConstraintNormal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_HandleImpact(IntPtr Self, IntPtr Hit, float TimeSlice, IntPtr MoveDelta);
+		private static extern IntPtr E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(IntPtr self, byte axisSetting);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_IsExceedingMaxSpeed(IntPtr Self, float MaxSpeed);
+		private static extern IntPtr E_UMovementComponent_GetPlaneConstraintOrigin(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_IsInWater(IntPtr Self);
+		private static extern void E_UMovementComponent_HandleImpact(IntPtr self, IntPtr hit, float timeSlice, IntPtr moveDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_K2_GetMaxSpeedModifier(IntPtr Self);
+		private static extern bool E_UMovementComponent_IsExceedingMaxSpeed(IntPtr self, float maxSpeed);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_K2_GetModifiedMaxSpeed(IntPtr Self);
+		private static extern bool E_UMovementComponent_IsInWater(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_K2_MoveUpdatedComponent(IntPtr Self, IntPtr Delta, IntPtr NewRotation, IntPtr OutHit, bool bSweep, bool bTeleport);
+		private static extern float E_UMovementComponent_K2_GetMaxSpeedModifier(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_MoveUpdatedComponentImpl(IntPtr Self, IntPtr Delta, IntPtr NewRotation, bool bSweep, IntPtr OutHit, byte Teleport);
+		private static extern float E_UMovementComponent_K2_GetModifiedMaxSpeed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_OnTeleported(IntPtr Self);
+		private static extern bool E_UMovementComponent_K2_MoveUpdatedComponent(IntPtr self, IntPtr delta, IntPtr newRotation, IntPtr outHit, bool bSweep, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_ResolvePenetrationImpl(IntPtr Self, IntPtr Adjustment, IntPtr Hit, IntPtr NewRotation);
+		private static extern bool E_UMovementComponent_MoveUpdatedComponent(IntPtr self, IntPtr delta, IntPtr newRotation, bool bSweep, IntPtr outHit, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetPlaneConstraintAxisSetting(IntPtr Self, byte NewAxisSetting);
+		private static extern bool E_UMovementComponent_MoveUpdatedComponent_o1(IntPtr self, IntPtr delta, IntPtr newRotation, bool bSweep, IntPtr outHit, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetPlaneConstraintEnabled(IntPtr Self, bool bEnabled);
+		private static extern bool E_UMovementComponent_MoveUpdatedComponentImpl(IntPtr self, IntPtr delta, IntPtr newRotation, bool bSweep, IntPtr outHit, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetPlaneConstraintFromVectors(IntPtr Self, IntPtr Forward, IntPtr Up);
+		private static extern void E_UMovementComponent_OnTeleported(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetPlaneConstraintNormal(IntPtr Self, IntPtr PlaneNormal);
+		private static extern bool E_UMovementComponent_ResolvePenetration(IntPtr self, IntPtr adjustment, IntPtr hit, IntPtr newRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetPlaneConstraintOrigin(IntPtr Self, IntPtr PlaneOrigin);
+		private static extern bool E_UMovementComponent_ResolvePenetration_o1(IntPtr self, IntPtr adjustment, IntPtr hit, IntPtr newRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SetUpdatedComponent(IntPtr Self, IntPtr NewUpdatedComponent);
+		private static extern bool E_UMovementComponent_ResolvePenetrationImpl(IntPtr self, IntPtr adjustment, IntPtr hit, IntPtr newRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UMovementComponent_ShouldSkipUpdate(IntPtr Self, float DeltaTime);
+		private static extern bool E_UMovementComponent_SafeMoveUpdatedComponent(IntPtr self, IntPtr delta, IntPtr newRotation, bool bSweep, IntPtr outHit, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMovementComponent_SlideAlongSurface(IntPtr Self, IntPtr Delta, float Time, IntPtr Normal, IntPtr Hit, bool bHandleImpact);
+		private static extern bool E_UMovementComponent_SafeMoveUpdatedComponent_o1(IntPtr self, IntPtr delta, IntPtr newRotation, bool bSweep, IntPtr outHit, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_SnapUpdatedComponentToPlane(IntPtr Self);
+		private static extern void E_UMovementComponent_SetPlaneConstraintAxisSetting(IntPtr self, byte newAxisSetting);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_StopMovementImmediately(IntPtr Self);
+		private static extern void E_UMovementComponent_SetPlaneConstraintEnabled(IntPtr self, bool bEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_TwoWallAdjust(IntPtr Self, IntPtr Delta, IntPtr Hit, IntPtr OldHitNormal);
+		private static extern void E_UMovementComponent_SetPlaneConstraintFromVectors(IntPtr self, IntPtr forward, IntPtr up);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_UpdateComponentVelocity(IntPtr Self);
+		private static extern void E_UMovementComponent_SetPlaneConstraintNormal(IntPtr self, IntPtr planeNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMovementComponent_UpdateTickRegistration(IntPtr Self);
+		private static extern void E_UMovementComponent_SetPlaneConstraintOrigin(IntPtr self, IntPtr planeOrigin);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_SetUpdatedComponent(IntPtr self, IntPtr newUpdatedComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UMovementComponent_ShouldSkipUpdate(IntPtr self, float deltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UMovementComponent_SlideAlongSurface(IntPtr self, IntPtr delta, float time, IntPtr normal, IntPtr hit, bool bHandleImpact);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_SnapUpdatedComponentToPlane(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_StopMovementImmediately(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_TwoWallAdjust(IntPtr self, IntPtr delta, IntPtr hit, IntPtr oldHitNormal);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_UpdateComponentVelocity(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_UpdateTickRegistration(IntPtr self);
 		
 		#endregion
 		
@@ -140,8 +166,8 @@ namespace UnrealEngine
 		/// <param name="Strength">The strength of the force </param>
 		/// <param name="Falloff">The falloff from the force's origin </param>
 		/// </summary>
-		public virtual void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
-			=> E_UMovementComponent_AddRadialForce(this, Origin, Radius, Strength, (byte)Falloff);
+		public virtual void AddRadialForce(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff)
+			=> E_UMovementComponent_AddRadialForce(this, origin, radius, strength, (byte)falloff);
 		
 		
 		/// <summary>
@@ -153,8 +179,8 @@ namespace UnrealEngine
 		/// <param name="Falloff">The falloff from the force's origin </param>
 		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
-		public virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-			=> E_UMovementComponent_AddRadialImpulse(this, Origin, Radius, Strength, (byte)Falloff, bVelChange);
+		public virtual void AddRadialImpulse(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff, bool bVelChange)
+			=> E_UMovementComponent_AddRadialImpulse(this, origin, radius, strength, (byte)falloff, bVelChange);
 		
 		
 		/// <summary>
@@ -164,30 +190,30 @@ namespace UnrealEngine
 		/// <param name="Normal">Normal opposed to movement. Not necessarily equal to Hit.Normal. </param>
 		/// <param name="Hit">HitResult of the move that resulted in the slide. </param>
 		/// </summary>
-		public virtual FVector ComputeSlideVector(FVector Delta, float Time, FVector Normal, FHitResult Hit)
-			=> E_UMovementComponent_ComputeSlideVector(this, Delta, Time, Normal, Hit);
+		public virtual FVector ComputeSlideVector(FVector delta, float time, FVector normal, FHitResult hit)
+			=> E_UMovementComponent_ComputeSlideVector(this, delta, time, normal, hit);
 		
 		
 		/// <summary>
 		/// <para>Constrain a direction vector to the plane constraint, if enabled. </para>
 		/// <para>@see SetPlaneConstraint </para>
 		/// </summary>
-		public virtual FVector ConstrainDirectionToPlane(FVector Direction)
-			=> E_UMovementComponent_ConstrainDirectionToPlane(this, Direction);
+		public virtual FVector ConstrainDirectionToPlane(FVector direction)
+			=> E_UMovementComponent_ConstrainDirectionToPlane(this, direction);
 		
 		
 		/// <summary>
 		/// <para>Constrain a position vector to the plane constraint, if enabled. </para>
 		/// </summary>
-		public virtual FVector ConstrainLocationToPlane(FVector Location)
-			=> E_UMovementComponent_ConstrainLocationToPlane(this, Location);
+		public virtual FVector ConstrainLocationToPlane(FVector location)
+			=> E_UMovementComponent_ConstrainLocationToPlane(this, location);
 		
 		
 		/// <summary>
 		/// <para>Constrain a normal vector (of unit length) to the plane constraint, if enabled. </para>
 		/// </summary>
-		public virtual FVector ConstrainNormalToPlane(FVector Normal)
-			=> E_UMovementComponent_ConstrainNormalToPlane(this, Normal);
+		public virtual FVector ConstrainNormalToPlane(FVector normal)
+			=> E_UMovementComponent_ConstrainNormalToPlane(this, normal);
 		
 		
 		/// <summary>
@@ -223,8 +249,8 @@ namespace UnrealEngine
 		/// <param name="Hit">the result of the failed move </param>
 		/// <return>The adjustment to use after a failed move, or a zero vector if no attempt should be made. </return>
 		/// </summary>
-		public virtual FVector GetPenetrationAdjustment(FHitResult Hit)
-			=> E_UMovementComponent_GetPenetrationAdjustment(this, Hit);
+		public virtual FVector GetPenetrationAdjustment(FHitResult hit)
+			=> E_UMovementComponent_GetPenetrationAdjustment(this, hit);
 		
 		
 		/// <summary>
@@ -235,12 +261,27 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <return>The normal of the plane that constrains movement, enforced if the plane constraint is enabled. </return>
+		/// </summary>
+		public FVector GetPlaneConstraintNormal()
+			=> E_UMovementComponent_GetPlaneConstraintNormal(this);
+		
+		
+		/// <summary>
 		/// <para>Helper to compute the plane constraint axis from the current setting. </para>
 		/// <param name="AxisSetting">Setting to use when computing the axis. </param>
 		/// <return>Plane constraint axis/normal. </return>
 		/// </summary>
-		protected FVector GetPlaneConstraintNormalFromAxisSetting(EPlaneConstraintAxisSetting AxisSetting)
-			=> E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(this, (byte)AxisSetting);
+		protected FVector GetPlaneConstraintNormalFromAxisSetting(EPlaneConstraintAxisSetting axisSetting)
+			=> E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(this, (byte)axisSetting);
+		
+		
+		/// <summary>
+		/// <para>Get the plane constraint origin. This defines the behavior of snapping a position to the plane, such as by SnapUpdatedComponentToPlane(). </para>
+		/// <return>The origin of the plane that constrains movement, if the plane constraint is enabled. </return>
+		/// </summary>
+		public FVector GetPlaneConstraintOrigin()
+			=> E_UMovementComponent_GetPlaneConstraintOrigin(this);
 		
 		
 		/// <summary>
@@ -251,8 +292,8 @@ namespace UnrealEngine
 		/// <para>be sure to handle that. </para>
 		/// <param name="MoveDelta">Attempted move that resulted in the hit. </param>
 		/// </summary>
-		public virtual void HandleImpact(FHitResult Hit, float TimeSlice, FVector MoveDelta)
-			=> E_UMovementComponent_HandleImpact(this, Hit, TimeSlice, MoveDelta);
+		public virtual void HandleImpact(FHitResult hit, float timeSlice, FVector moveDelta)
+			=> E_UMovementComponent_HandleImpact(this, hit, timeSlice, moveDelta);
 		
 		
 		/// <summary>
@@ -260,8 +301,8 @@ namespace UnrealEngine
 		/// <para>Note that under normal circumstances updates cause by acceleration will not cause this to be true, however external forces or changes in the max speed limit </para>
 		/// <para>can cause the max speed to be violated. </para>
 		/// </summary>
-		public virtual bool IsExceedingMaxSpeed(float MaxSpeed)
-			=> E_UMovementComponent_IsExceedingMaxSpeed(this, MaxSpeed);
+		public virtual bool IsExceedingMaxSpeed(float maxSpeed)
+			=> E_UMovementComponent_IsExceedingMaxSpeed(this, maxSpeed);
 		
 		
 		/// <summary>
@@ -290,11 +331,25 @@ namespace UnrealEngine
 		/// <para>Respects the plane constraint, if enabled. </para>
 		/// <return>True if some movement occurred, false if no movement occurred. Result of any impact will be stored in OutHit. </return>
 		/// </summary>
-		public bool MoveUpdatedComponent(FVector Delta, FRotator NewRotation, FHitResult OutHit, bool bSweep = true, bool bTeleport = false)
-			=> E_UMovementComponent_K2_MoveUpdatedComponent(this, Delta, NewRotation, OutHit, bSweep, bTeleport);
+		public bool K2_MoveUpdatedComponent(FVector delta, FRotator newRotation, FHitResult outHit, bool bSweep = true, bool bTeleport = false)
+			=> E_UMovementComponent_K2_MoveUpdatedComponent(this, delta, newRotation, outHit, bSweep, bTeleport);
 		
-		protected virtual bool MoveUpdatedComponentImpl(FVector Delta, FQuat NewRotation, bool bSweep, FHitResult OutHit, ETeleportType Teleport)
-			=> E_UMovementComponent_MoveUpdatedComponentImpl(this, Delta, NewRotation, bSweep, OutHit, (byte)Teleport);
+		
+		/// <summary>
+		/// <para>Moves our UpdatedComponent by the given Delta, and sets rotation to NewRotation. Respects the plane constraint, if enabled. </para>
+		/// <para>@note This simply calls the virtual MoveUpdatedComponentImpl() which can be overridden to implement custom behavior. </para>
+		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat). </para>
+		/// <para>@note The 'Teleport' flag is currently always treated as 'None' (not teleporting) when used in an active FScopedMovementUpdate. </para>
+		/// <return>True if some movement occurred, false if no movement occurred. Result of any impact will be stored in OutHit. </return>
+		/// </summary>
+		public bool MoveUpdatedComponent(FVector delta, FQuat newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
+			=> E_UMovementComponent_MoveUpdatedComponent(this, delta, newRotation, bSweep, outHit, (byte)teleport);
+		
+		public bool MoveUpdatedComponent(FVector delta, FRotator newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
+			=> E_UMovementComponent_MoveUpdatedComponent_o1(this, delta, newRotation, bSweep, outHit, (byte)teleport);
+		
+		protected virtual bool MoveUpdatedComponentImpl(FVector delta, FQuat newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
+			=> E_UMovementComponent_MoveUpdatedComponentImpl(this, delta, newRotation, bSweep, outHit, (byte)teleport);
 		
 		
 		/// <summary>
@@ -303,8 +358,37 @@ namespace UnrealEngine
 		public virtual void OnTeleported()
 			=> E_UMovementComponent_OnTeleported(this);
 		
-		protected virtual bool ResolvePenetrationImpl(FVector Adjustment, FHitResult Hit, FQuat NewRotation)
-			=> E_UMovementComponent_ResolvePenetrationImpl(this, Adjustment, Hit, NewRotation);
+		
+		/// <summary>
+		/// <para>Try to move out of penetration in an object after a failed move. This function should respect the plane constraint if applicable. </para>
+		/// <para>@note This simply calls the virtual ResolvePenetrationImpl() which can be overridden to implement custom behavior. </para>
+		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat).. </para>
+		/// <param name="Adjustment">The requested adjustment, usually from GetPenetrationAdjustment() </param>
+		/// <param name="Hit">The result of the failed move </param>
+		/// <return>True if the adjustment was successful and the original move should be retried, or false if no repeated attempt should be made. </return>
+		/// </summary>
+		public bool ResolvePenetration(FVector adjustment, FHitResult hit, FQuat newRotation)
+			=> E_UMovementComponent_ResolvePenetration(this, adjustment, hit, newRotation);
+		
+		public bool ResolvePenetration(FVector adjustment, FHitResult hit, FRotator newRotation)
+			=> E_UMovementComponent_ResolvePenetration_o1(this, adjustment, hit, newRotation);
+		
+		protected virtual bool ResolvePenetrationImpl(FVector adjustment, FHitResult hit, FQuat newRotation)
+			=> E_UMovementComponent_ResolvePenetrationImpl(this, adjustment, hit, newRotation);
+		
+		
+		/// <summary>
+		/// <para>Calls MoveUpdatedComponent(), handling initial penetrations by calling ResolvePenetration(). </para>
+		/// <para>If this adjustment succeeds, the original movement will be attempted again. </para>
+		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat). </para>
+		/// <para>@note The 'Teleport' flag is currently always treated as 'None' (not teleporting) when used in an active FScopedMovementUpdate. </para>
+		/// <return>result of the final MoveUpdatedComponent() call. </return>
+		/// </summary>
+		public bool SafeMoveUpdatedComponent(FVector delta, FQuat newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
+			=> E_UMovementComponent_SafeMoveUpdatedComponent(this, delta, newRotation, bSweep, outHit, (byte)teleport);
+		
+		public bool SafeMoveUpdatedComponent(FVector delta, FRotator newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
+			=> E_UMovementComponent_SafeMoveUpdatedComponent_o1(this, delta, newRotation, bSweep, outHit, (byte)teleport);
 		
 		
 		/// <summary>
@@ -312,8 +396,8 @@ namespace UnrealEngine
 		/// <para>Changing this setting will modify the current value of PlaneConstraintNormal. </para>
 		/// <param name="NewAxisSetting">New plane constraint axis setting. </param>
 		/// </summary>
-		public virtual void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
-			=> E_UMovementComponent_SetPlaneConstraintAxisSetting(this, (byte)NewAxisSetting);
+		public virtual void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting newAxisSetting)
+			=> E_UMovementComponent_SetPlaneConstraintAxisSetting(this, (byte)newAxisSetting);
 		
 		
 		/// <summary>
@@ -326,8 +410,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Uses the Forward and Up vectors to compute the plane that constrains movement, enforced if the plane constraint is enabled. </para>
 		/// </summary>
-		public virtual void SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
-			=> E_UMovementComponent_SetPlaneConstraintFromVectors(this, Forward, Up);
+		public virtual void SetPlaneConstraintFromVectors(FVector forward, FVector up)
+			=> E_UMovementComponent_SetPlaneConstraintFromVectors(this, forward, up);
 		
 		
 		/// <summary>
@@ -335,22 +419,22 @@ namespace UnrealEngine
 		/// <para>Changing the normal automatically sets PlaneConstraintAxisSetting to "Custom". </para>
 		/// <param name="PlaneNormal">The normal of the plane. If non-zero in length, it will be normalized. </param>
 		/// </summary>
-		public virtual void SetPlaneConstraintNormal(FVector PlaneNormal)
-			=> E_UMovementComponent_SetPlaneConstraintNormal(this, PlaneNormal);
+		public virtual void SetPlaneConstraintNormal(FVector planeNormal)
+			=> E_UMovementComponent_SetPlaneConstraintNormal(this, planeNormal);
 		
 		
 		/// <summary>
 		/// <para>Sets the origin of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
 		/// </summary>
-		public virtual void SetPlaneConstraintOrigin(FVector PlaneOrigin)
-			=> E_UMovementComponent_SetPlaneConstraintOrigin(this, PlaneOrigin);
+		public virtual void SetPlaneConstraintOrigin(FVector planeOrigin)
+			=> E_UMovementComponent_SetPlaneConstraintOrigin(this, planeOrigin);
 		
 		
 		/// <summary>
 		/// <para>Assign the component we move and update. </para>
 		/// </summary>
-		public virtual void SetUpdatedComponent(USceneComponent NewUpdatedComponent)
-			=> E_UMovementComponent_SetUpdatedComponent(this, NewUpdatedComponent);
+		public virtual void SetUpdatedComponent(USceneComponent newUpdatedComponent)
+			=> E_UMovementComponent_SetUpdatedComponent(this, newUpdatedComponent);
 		
 		
 		/// <summary>
@@ -358,8 +442,8 @@ namespace UnrealEngine
 		/// <param name="DeltaTime">todo this parameter is not used in the function. </param>
 		/// <return>true if component movement update should be skipped </return>
 		/// </summary>
-		public virtual bool ShouldSkipUpdate(float DeltaTime)
-			=> E_UMovementComponent_ShouldSkipUpdate(this, DeltaTime);
+		public virtual bool ShouldSkipUpdate(float deltaTime)
+			=> E_UMovementComponent_ShouldSkipUpdate(this, deltaTime);
 		
 		
 		/// <summary>
@@ -372,8 +456,8 @@ namespace UnrealEngine
 		/// <param name="bHandleImpact">Whether to call HandleImpact on each hit. </param>
 		/// <return>The percentage of requested distance (Delta * Percent) actually applied (between 0 and 1). 0 if no movement occurred, non-zero if movement occurred. </return>
 		/// </summary>
-		public virtual float SlideAlongSurface(FVector Delta, float Time, FVector Normal, FHitResult Hit, bool bHandleImpact)
-			=> E_UMovementComponent_SlideAlongSurface(this, Delta, Time, Normal, Hit, bHandleImpact);
+		public virtual float SlideAlongSurface(FVector delta, float time, FVector normal, FHitResult hit, bool bHandleImpact)
+			=> E_UMovementComponent_SlideAlongSurface(this, delta, time, normal, hit, bHandleImpact);
 		
 		
 		/// <summary>
@@ -397,8 +481,8 @@ namespace UnrealEngine
 		/// <param name="OldHitNormal">Normal of impact before last attempted move </param>
 		/// <return>Result in Delta that is the direction to move when contacting two surfaces. </return>
 		/// </summary>
-		public virtual void TwoWallAdjust(FVector Delta, FHitResult Hit, FVector OldHitNormal)
-			=> E_UMovementComponent_TwoWallAdjust(this, Delta, Hit, OldHitNormal);
+		public virtual void TwoWallAdjust(FVector delta, FHitResult hit, FVector oldHitNormal)
+			=> E_UMovementComponent_TwoWallAdjust(this, delta, hit, oldHitNormal);
 		
 		
 		/// <summary>
@@ -416,9 +500,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UMovementComponent Self)
+		public static implicit operator IntPtr(UMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UMovementComponent(ObjectPointerDescription PtrDesc)

@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -9,6 +11,21 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UEngine_ActiveClassRedirects_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActiveClassRedirects); }
+	DOTNET_EXPORT void E_PROP_UEngine_ActiveClassRedirects_SET(UEngine* Ptr, INT_PTR Value) { Ptr->ActiveClassRedirects = *(TArray<FClassRedirect>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_ActiveGameNameRedirects_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActiveGameNameRedirects); }
+	DOTNET_EXPORT void E_PROP_UEngine_ActiveGameNameRedirects_SET(UEngine* Ptr, INT_PTR Value) { Ptr->ActiveGameNameRedirects = *(TArray<FGameNameRedirect>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_ActivePluginRedirects_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActivePluginRedirects); }
+	DOTNET_EXPORT void E_PROP_UEngine_ActivePluginRedirects_SET(UEngine* Ptr, INT_PTR Value) { Ptr->ActivePluginRedirects = *(TArray<FPluginRedirect>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_ActiveStructRedirects_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActiveStructRedirects); }
+	DOTNET_EXPORT void E_PROP_UEngine_ActiveStructRedirects_SET(UEngine* Ptr, INT_PTR Value) { Ptr->ActiveStructRedirects = *(TArray<FStructRedirect>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_AdditionalFontNames_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->AdditionalFontNames); }
+	DOTNET_EXPORT void E_PROP_UEngine_AdditionalFontNames_SET(UEngine* Ptr, INT_PTR Value) { Ptr->AdditionalFontNames = *(TArray<FString>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_bIsInitialized_GET(UEngine* Ptr) { return Ptr->bIsInitialized; }
 	DOTNET_EXPORT void E_PROP_UEngine_bIsInitialized_SET(UEngine* Ptr, bool Value) { Ptr->bIsInitialized = Value; }
 	
@@ -23,6 +40,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_ClientCycles_GET(UEngine* Ptr) { return Ptr->ClientCycles; }
 	DOTNET_EXPORT void E_PROP_UEngine_ClientCycles_SET(UEngine* Ptr, int32 Value) { Ptr->ClientCycles = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_DeferredCommands_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->DeferredCommands); }
+	DOTNET_EXPORT void E_PROP_UEngine_DeferredCommands_SET(UEngine* Ptr, INT_PTR Value) { Ptr->DeferredCommands = *(TArray<FString>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_DisplayGamma_GET(UEngine* Ptr) { return Ptr->DisplayGamma; }
 	DOTNET_EXPORT void E_PROP_UEngine_DisplayGamma_SET(UEngine* Ptr, float Value) { Ptr->DisplayGamma = Value; }
@@ -99,8 +119,14 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_ParticleEventManagerClassPath_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->ParticleEventManagerClassPath); }
 	DOTNET_EXPORT void E_PROP_UEngine_ParticleEventManagerClassPath_SET(UEngine* Ptr, char* Value) { Ptr->ParticleEventManagerClassPath = ConvertFromManage_FString(Value); }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_PendingDroppedNotes_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PendingDroppedNotes); }
+	DOTNET_EXPORT void E_PROP_UEngine_PendingDroppedNotes_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PendingDroppedNotes = *(TArray<FDropNoteInfo>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(UEngine* Ptr) { return Ptr->PrimitiveProbablyVisibleTime; }
 	DOTNET_EXPORT void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(UEngine* Ptr, float Value) { Ptr->PrimitiveProbablyVisibleTime = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_PriorityScreenMessages_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PriorityScreenMessages); }
+	DOTNET_EXPORT void E_PROP_UEngine_PriorityScreenMessages_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PriorityScreenMessages = *(TArray<FScreenMessageString>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_RenderLightMapDensityColorScale_GET(UEngine* Ptr) { return Ptr->RenderLightMapDensityColorScale; }
 	DOTNET_EXPORT void E_PROP_UEngine_RenderLightMapDensityColorScale_SET(UEngine* Ptr, float Value) { Ptr->RenderLightMapDensityColorScale = Value; }
@@ -122,6 +148,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->ShadedLevelColorationUnlitMaterialName); }
 	DOTNET_EXPORT void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(UEngine* Ptr, char* Value) { Ptr->ShadedLevelColorationUnlitMaterialName = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_StatColorMappings_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->StatColorMappings); }
+	DOTNET_EXPORT void E_PROP_UEngine_StatColorMappings_SET(UEngine* Ptr, INT_PTR Value) { Ptr->StatColorMappings = *(TArray<FStatColorMapping>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_StreamingDistanceFactor_GET(UEngine* Ptr) { return Ptr->StreamingDistanceFactor; }
 	DOTNET_EXPORT void E_PROP_UEngine_StreamingDistanceFactor_SET(UEngine* Ptr, float Value) { Ptr->StreamingDistanceFactor = Value; }
@@ -164,7 +193,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UEngine_GetDynamicResolutionCurrentStateInfos(UEngine* Self, INT_PTR OutInfos)
 	{
-		auto _p0 = *(FDynamicResolutionStateInfos*)OutInfos;
+		auto& _p0 = *(FDynamicResolutionStateInfos*)OutInfos;
 		Self->GetDynamicResolutionCurrentStateInfos(_p0);
 	}
 

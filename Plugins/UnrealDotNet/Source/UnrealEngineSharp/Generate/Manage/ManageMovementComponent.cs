@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -22,7 +24,7 @@ namespace UnrealEngine
 		/// <param name="Strength">The strength of the force </param>
 		/// <param name="Falloff">The falloff from the force's origin </param>
 		/// </summary>
-		public override void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff) { }
+		public override void AddRadialForce(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff) { }
 		
 		
 		/// <summary>
@@ -34,7 +36,7 @@ namespace UnrealEngine
 		/// <param name="Falloff">The falloff from the force's origin </param>
 		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
-		public override void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) { }
+		public override void AddRadialImpulse(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff, bool bVelChange) { }
 		
 		
 		/// <summary>
@@ -45,7 +47,7 @@ namespace UnrealEngine
 		/// <para>be sure to handle that. </para>
 		/// <param name="MoveDelta">Attempted move that resulted in the hit. </param>
 		/// </summary>
-		public override void HandleImpact(FHitResult Hit, float TimeSlice, FVector MoveDelta) { }
+		public override void HandleImpact(FHitResult hit, float timeSlice, FVector moveDelta) { }
 		
 		
 		/// <summary>
@@ -59,7 +61,7 @@ namespace UnrealEngine
 		/// <para>Changing this setting will modify the current value of PlaneConstraintNormal. </para>
 		/// <param name="NewAxisSetting">New plane constraint axis setting. </param>
 		/// </summary>
-		public override void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting) { }
+		public override void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting newAxisSetting) { }
 		
 		
 		/// <summary>
@@ -71,7 +73,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Uses the Forward and Up vectors to compute the plane that constrains movement, enforced if the plane constraint is enabled. </para>
 		/// </summary>
-		public override void SetPlaneConstraintFromVectors(FVector Forward, FVector Up) { }
+		public override void SetPlaneConstraintFromVectors(FVector forward, FVector up) { }
 		
 		
 		/// <summary>
@@ -79,19 +81,19 @@ namespace UnrealEngine
 		/// <para>Changing the normal automatically sets PlaneConstraintAxisSetting to "Custom". </para>
 		/// <param name="PlaneNormal">The normal of the plane. If non-zero in length, it will be normalized. </param>
 		/// </summary>
-		public override void SetPlaneConstraintNormal(FVector PlaneNormal) { }
+		public override void SetPlaneConstraintNormal(FVector planeNormal) { }
 		
 		
 		/// <summary>
 		/// <para>Sets the origin of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
 		/// </summary>
-		public override void SetPlaneConstraintOrigin(FVector PlaneOrigin) { }
+		public override void SetPlaneConstraintOrigin(FVector planeOrigin) { }
 		
 		
 		/// <summary>
 		/// <para>Assign the component we move and update. </para>
 		/// </summary>
-		public override void SetUpdatedComponent(USceneComponent NewUpdatedComponent) { }
+		public override void SetUpdatedComponent(USceneComponent newUpdatedComponent) { }
 		
 		
 		/// <summary>
@@ -117,9 +119,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UpdateTickRegistration() { }
 		
-		public static implicit operator IntPtr(ManageMovementComponent Self)
+		public static implicit operator IntPtr(ManageMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageMovementComponent(ObjectPointerDescription PtrDesc)

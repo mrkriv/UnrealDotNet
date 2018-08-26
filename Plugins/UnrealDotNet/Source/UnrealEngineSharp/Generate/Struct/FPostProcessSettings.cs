@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -124,6 +126,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_AutoExposureSpeedUp_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_AutoExposureSpeedUp_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FPostProcessSettings_Blendables_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Blendables_DEPRECATED_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom1Size_GET(IntPtr Ptr);
@@ -681,10 +688,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_WhiteTint_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FPostProcessSettings_OnAfterLoad(IntPtr Self);
+		private static extern void E_FPostProcessSettings_OnAfterLoad(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FPostProcessSettings_SetBaseValues(IntPtr Self);
+		private static extern void E_FPostProcessSettings_SetBaseValues(IntPtr self);
 		
 		#endregion
 		
@@ -911,6 +918,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_AutoExposureSpeedUp_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_AutoExposureSpeedUp_SET(NativePointer, value);
+		}
+
+		public TArray<UObject> Blendables_DEPRECATED
+		{
+			get => E_PROP_FPostProcessSettings_Blendables_DEPRECATED_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Blendables_DEPRECATED_SET(NativePointer, value);
 		}
 
 		
@@ -1906,9 +1919,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FPostProcessSettings Self)
+		public static implicit operator IntPtr(FPostProcessSettings self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FPostProcessSettings(IntPtr Adress)

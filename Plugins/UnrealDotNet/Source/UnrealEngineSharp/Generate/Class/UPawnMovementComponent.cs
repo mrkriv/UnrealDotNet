@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,28 +26,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UPawnMovementComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPawnMovementComponent_AddInputVector(IntPtr Self, IntPtr WorldVector, bool bForce);
+		private static extern void E_UPawnMovementComponent_AddInputVector(IntPtr self, IntPtr worldVector, bool bForce);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPawnMovementComponent_ConsumeInputVector(IntPtr Self);
+		private static extern IntPtr E_UPawnMovementComponent_ConsumeInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPawnMovementComponent_GetLastInputVector(IntPtr Self);
+		private static extern IntPtr E_UPawnMovementComponent_GetLastInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UPawnMovementComponent_GetPawnOwner(IntPtr Self);
+		private static extern ObjectPointerDescription E_UPawnMovementComponent_GetPawnOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPawnMovementComponent_GetPendingInputVector(IntPtr Self);
+		private static extern IntPtr E_UPawnMovementComponent_GetPendingInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UPawnMovementComponent_IsMoveInputIgnored(IntPtr Self);
+		private static extern bool E_UPawnMovementComponent_IsMoveInputIgnored(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPawnMovementComponent_K2_GetInputVector(IntPtr Self);
+		private static extern IntPtr E_UPawnMovementComponent_K2_GetInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPawnMovementComponent_NotifyBumpedPawn(IntPtr Self, IntPtr BumpedPawn);
+		private static extern void E_UPawnMovementComponent_NotifyBumpedPawn(IntPtr self, IntPtr bumpedPawn);
 		
 		#endregion
 		
@@ -59,8 +61,8 @@ namespace UnrealEngine
 		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
 		/// <para>@see APawn::AddMovementInput() </para>
 		/// </summary>
-		public virtual void AddInputVector(FVector WorldVector, bool bForce)
-			=> E_UPawnMovementComponent_AddInputVector(this, WorldVector, bForce);
+		public virtual void AddInputVector(FVector worldVector, bool bForce)
+			=> E_UPawnMovementComponent_AddInputVector(this, worldVector, bForce);
 		
 		public virtual FVector ConsumeInputVector()
 			=> E_UPawnMovementComponent_ConsumeInputVector(this);
@@ -110,14 +112,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Notify of collision in case we want to react, such as waking up avoidance or pathing code. </para>
 		/// </summary>
-		public virtual void NotifyBumpedPawn(APawn BumpedPawn)
-			=> E_UPawnMovementComponent_NotifyBumpedPawn(this, BumpedPawn);
+		public virtual void NotifyBumpedPawn(APawn bumpedPawn)
+			=> E_UPawnMovementComponent_NotifyBumpedPawn(this, bumpedPawn);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UPawnMovementComponent Self)
+		public static implicit operator IntPtr(UPawnMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UPawnMovementComponent(ObjectPointerDescription PtrDesc)

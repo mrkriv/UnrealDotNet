@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -22,17 +24,17 @@ namespace UnrealEngine
 		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
 		/// <para>@see APawn::AddMovementInput() </para>
 		/// </summary>
-		public override void AddInputVector(FVector WorldVector, bool bForce) { }
+		public override void AddInputVector(FVector worldVector, bool bForce) { }
 		
 		
 		/// <summary>
 		/// <para>Notify of collision in case we want to react, such as waking up avoidance or pathing code. </para>
 		/// </summary>
-		public override void NotifyBumpedPawn(APawn BumpedPawn) { }
+		public override void NotifyBumpedPawn(APawn bumpedPawn) { }
 		
-		public static implicit operator IntPtr(ManagePawnMovementComponent Self)
+		public static implicit operator IntPtr(ManagePawnMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManagePawnMovementComponent(ObjectPointerDescription PtrDesc)

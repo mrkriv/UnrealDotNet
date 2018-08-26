@@ -1,4 +1,7 @@
 #pragma once
+
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
@@ -14,14 +17,14 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
 	GENERATED_BODY()
 	
 	bool bIsManageAttach = false;
-
+	
 	bool AddWrapperIfNotAttach();
 	
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
-
+	
 	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
 	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;

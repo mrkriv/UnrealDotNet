@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -36,19 +38,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FFindFloorResult_LineDist_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FFindFloorResult_Clear(IntPtr Self);
+		private static extern void E_FFindFloorResult_Clear(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FFindFloorResult_GetDistanceToFloor(IntPtr Self);
+		private static extern float E_FFindFloorResult_GetDistanceToFloor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FFindFloorResult_IsWalkableFloor(IntPtr Self);
+		private static extern bool E_FFindFloorResult_IsWalkableFloor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FFindFloorResult_SetFromLineTrace(IntPtr Self, IntPtr InHit, float InSweepFloorDist, float InLineDist, bool bIsWalkableFloor);
+		private static extern void E_FFindFloorResult_SetFromLineTrace(IntPtr self, IntPtr inHit, float inSweepFloorDist, float inLineDist, bool bIsWalkableFloor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FFindFloorResult_SetFromSweep(IntPtr Self, IntPtr InHit, float InSweepFloorDist, bool bIsWalkableFloor);
+		private static extern void E_FFindFloorResult_SetFromSweep(IntPtr self, IntPtr inHit, float inSweepFloorDist, bool bIsWalkableFloor);
 		
 		#endregion
 		
@@ -103,17 +105,17 @@ namespace UnrealEngine
 		public bool IsWalkableFloor()
 			=> E_FFindFloorResult_IsWalkableFloor(this);
 		
-		public void SetFromLineTrace(FHitResult InHit, float InSweepFloorDist, float InLineDist, bool bIsWalkableFloor)
-			=> E_FFindFloorResult_SetFromLineTrace(this, InHit, InSweepFloorDist, InLineDist, bIsWalkableFloor);
+		public void SetFromLineTrace(FHitResult inHit, float inSweepFloorDist, float inLineDist, bool bIsWalkableFloor)
+			=> E_FFindFloorResult_SetFromLineTrace(this, inHit, inSweepFloorDist, inLineDist, bIsWalkableFloor);
 		
-		public void SetFromSweep(FHitResult InHit, float InSweepFloorDist, bool bIsWalkableFloor)
-			=> E_FFindFloorResult_SetFromSweep(this, InHit, InSweepFloorDist, bIsWalkableFloor);
+		public void SetFromSweep(FHitResult inHit, float inSweepFloorDist, bool bIsWalkableFloor)
+			=> E_FFindFloorResult_SetFromSweep(this, inHit, inSweepFloorDist, bIsWalkableFloor);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FFindFloorResult Self)
+		public static implicit operator IntPtr(FFindFloorResult self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FFindFloorResult(IntPtr Adress)

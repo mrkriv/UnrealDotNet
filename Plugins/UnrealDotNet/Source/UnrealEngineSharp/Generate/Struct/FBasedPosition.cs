@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FBasedPosition(AActor InBase, FVector InPosition) :
-			base(E_CreateStruct_FBasedPosition_AActor_FVector(InBase, InPosition), false)
+		public FBasedPosition(AActor inBase, FVector inPosition) :
+			base(E_CreateStruct_FBasedPosition_AActor_FVector(inBase, inPosition), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBasedPosition();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBasedPosition_AActor_FVector(IntPtr InBase, IntPtr InPosition);
+		private static extern IntPtr E_CreateStruct_FBasedPosition_AActor_FVector(IntPtr inBase, IntPtr inPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FBasedPosition_Base_GET(IntPtr Ptr);
@@ -54,10 +56,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBasedPosition_Position_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBasedPosition_Clear(IntPtr Self);
+		private static extern void E_FBasedPosition_Clear(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBasedPosition_Set(IntPtr Self, IntPtr InBase, IntPtr InPosition);
+		private static extern void E_FBasedPosition_Set(IntPtr self, IntPtr inBase, IntPtr inPosition);
 		
 		#endregion
 		
@@ -98,14 +100,14 @@ namespace UnrealEngine
 		public void Clear()
 			=> E_FBasedPosition_Clear(this);
 		
-		public void Set(AActor InBase, FVector InPosition)
-			=> E_FBasedPosition_Set(this, InBase, InPosition);
+		public void Set(AActor inBase, FVector inPosition)
+			=> E_FBasedPosition_Set(this, inBase, inPosition);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FBasedPosition Self)
+		public static implicit operator IntPtr(FBasedPosition self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FBasedPosition(IntPtr Adress)

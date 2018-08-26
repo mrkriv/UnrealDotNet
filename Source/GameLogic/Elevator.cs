@@ -30,7 +30,7 @@ namespace GameLogic
         {
         }
 
-        public override void OnConstruction(FTransform Transform)
+        public override void OnConstruction(FTransform transform)
         {
             PrimaryActorTick.bCanEverTick = 1;
 

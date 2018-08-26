@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -119,76 +121,79 @@ namespace UnrealEngine
 		private static extern void E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_CachePaintedDataIfNecessary(IntPtr Self);
+		private static extern void E_UStaticMeshComponent_CachePaintedDataIfNecessary(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(IntPtr Self, IntPtr SourceComponent);
+		private static extern void E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(IntPtr self, IntPtr sourceComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(IntPtr Self, bool bRebuildingStaticMesh);
+		private static extern bool E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(IntPtr self, bool bRebuildingStaticMesh);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UStaticMeshComponent_GetBlueprintCreatedComponentIndex(IntPtr Self);
+		private static extern int E_UStaticMeshComponent_GetBlueprintCreatedComponentIndex(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(IntPtr Self, int TextureLightMapMemoryUsage, int TextureShadowMapMemoryUsage, int VertexLightMapMemoryUsage, int VertexShadowMapMemoryUsage, int StaticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords);
+		private static extern bool E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(IntPtr self, int textureLightMapMemoryUsage, int textureShadowMapMemoryUsage, int vertexLightMapMemoryUsage, int vertexShadowMapMemoryUsage, int staticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_GetEstimatedLightMapResolution(IntPtr Self, int Width, int Height);
+		private static extern void E_UStaticMeshComponent_GetEstimatedLightMapResolution(IntPtr self, int width, int height);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_GetLocalBounds(IntPtr Self, IntPtr Min, IntPtr Max);
+		private static extern void E_UStaticMeshComponent_GetLocalBounds(IntPtr self, IntPtr min, IntPtr max);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(IntPtr Self, int InWidth, int InHeight, int OutLightMapMemoryUsage, int OutShadowMapMemoryUsage);
+		private static extern StringWrapper E_UStaticMeshComponent_GetMemberNameChecked_StaticMesh(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UStaticMeshComponent_GetTextureStreamingTransformScale(IntPtr Self);
+		private static extern void E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(IntPtr self, int inWidth, int inHeight, int outLightMapMemoryUsage, int outShadowMapMemoryUsage);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_HasLightmapTextureCoordinates(IntPtr Self);
+		private static extern float E_UStaticMeshComponent_GetTextureStreamingTransformScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_ReleaseResources(IntPtr Self);
+		private static extern bool E_UStaticMeshComponent_HasLightmapTextureCoordinates(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_RemoveInstanceVertexColors(IntPtr Self);
+		private static extern void E_UStaticMeshComponent_ReleaseResources(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(IntPtr Self, int LODToRemoveColorsFrom);
+		private static extern void E_UStaticMeshComponent_RemoveInstanceVertexColors(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(IntPtr Self);
+		private static extern void E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(IntPtr self, int lODToRemoveColorsFrom);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(IntPtr Self, float NewValue);
+		private static extern bool E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_SetForcedLodModel(IntPtr Self, int NewForcedLodModel);
+		private static extern void E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_SetMaterialPreview(IntPtr Self, int InMaterialIndexPreview);
+		private static extern void E_UStaticMeshComponent_SetForcedLodModel(IntPtr self, int newForcedLodModel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_SetReverseCulling(IntPtr Self, bool ReverseCulling);
+		private static extern void E_UStaticMeshComponent_SetMaterialPreview(IntPtr self, int inMaterialIndexPreview);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_SetSectionPreview(IntPtr Self, int InSectionIndexPreview);
+		private static extern void E_UStaticMeshComponent_SetReverseCulling(IntPtr self, bool reverseCulling);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_SetStaticLightingMapping(IntPtr Self, bool bTextureMapping, int ResolutionToUse);
+		private static extern void E_UStaticMeshComponent_SetSectionPreview(IntPtr self, int inSectionIndexPreview);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_SupportsDefaultCollision(IntPtr Self);
+		private static extern bool E_UStaticMeshComponent_SetStaticLightingMapping(IntPtr self, bool bTextureMapping, int resolutionToUse);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_SupportsDitheredLODTransitions(IntPtr Self);
+		private static extern bool E_UStaticMeshComponent_SupportsDefaultCollision(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(IntPtr Self);
+		private static extern bool E_UStaticMeshComponent_SupportsDitheredLODTransitions(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_UsesTextureLightmaps(IntPtr Self, int InWidth, int InHeight);
+		private static extern void E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UStaticMeshComponent_UsesTextureLightmaps(IntPtr self, int inWidth, int inHeight);
 		
 		#endregion
 		
@@ -393,8 +398,8 @@ namespace UnrealEngine
 		/// <para>Copies instance vertex colors from the SourceComponent into this component </para>
 		/// <param name="SourceComponent">The component to copy vertex colors from </param>
 		/// </summary>
-		public void CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent SourceComponent)
-			=> E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(this, SourceComponent);
+		public void CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent sourceComponent)
+			=> E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(this, sourceComponent);
 		
 		
 		/// <summary>
@@ -425,8 +430,8 @@ namespace UnrealEngine
 		/// <param name="out">bHasLightmapTexCoords			Set to true if the mesh has the proper UV channels </param>
 		/// <return>bool							true if the mesh has static lighting; false if not </return>
 		/// </summary>
-		public virtual bool GetEstimatedLightAndShadowMapMemoryUsage(int TextureLightMapMemoryUsage, int TextureShadowMapMemoryUsage, int VertexLightMapMemoryUsage, int VertexShadowMapMemoryUsage, int StaticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords)
-			=> E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(this, TextureLightMapMemoryUsage, TextureShadowMapMemoryUsage, VertexLightMapMemoryUsage, VertexShadowMapMemoryUsage, StaticLightingResolution, bIsUsingTextureMapping, bHasLightmapTexCoords);
+		public virtual bool GetEstimatedLightAndShadowMapMemoryUsage(int textureLightMapMemoryUsage, int textureShadowMapMemoryUsage, int vertexLightMapMemoryUsage, int vertexShadowMapMemoryUsage, int staticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords)
+			=> E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(this, textureLightMapMemoryUsage, textureShadowMapMemoryUsage, vertexLightMapMemoryUsage, vertexShadowMapMemoryUsage, staticLightingResolution, bIsUsingTextureMapping, bHasLightmapTexCoords);
 		
 		
 		/// <summary>
@@ -435,15 +440,22 @@ namespace UnrealEngine
 		/// <param name="Width">out]	Width of light/shadow map </param>
 		/// <param name="Height">out]	Height of light/shadow map </param>
 		/// </summary>
-		public virtual void GetEstimatedLightMapResolution(int Width, int Height)
-			=> E_UStaticMeshComponent_GetEstimatedLightMapResolution(this, Width, Height);
+		public virtual void GetEstimatedLightMapResolution(int width, int height)
+			=> E_UStaticMeshComponent_GetEstimatedLightMapResolution(this, width, height);
 		
 		
 		/// <summary>
 		/// <para>Get Local bounds </para>
 		/// </summary>
-		public void GetLocalBounds(FVector Min, FVector Max)
-			=> E_UStaticMeshComponent_GetLocalBounds(this, Min, Max);
+		public void GetLocalBounds(FVector min, FVector max)
+			=> E_UStaticMeshComponent_GetLocalBounds(this, min, max);
+		
+		
+		/// <summary>
+		/// <para>Helper function to get the FName of the private static mesh member </para>
+		/// </summary>
+		public string GetMemberNameChecked_StaticMesh()
+			=> E_UStaticMeshComponent_GetMemberNameChecked_StaticMesh(this);
 		
 		
 		/// <summary>
@@ -453,8 +465,8 @@ namespace UnrealEngine
 		/// <param name="OutLightMapMemoryUsage">The resulting lightmap memory used </param>
 		/// <param name="OutShadowMapMemoryUsage">The resulting shadowmap memory used </param>
 		/// </summary>
-		public virtual void GetTextureLightAndShadowMapMemoryUsage(int InWidth, int InHeight, int OutLightMapMemoryUsage, int OutShadowMapMemoryUsage)
-			=> E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(this, InWidth, InHeight, OutLightMapMemoryUsage, OutShadowMapMemoryUsage);
+		public virtual void GetTextureLightAndShadowMapMemoryUsage(int inWidth, int inHeight, int outLightMapMemoryUsage, int outShadowMapMemoryUsage)
+			=> E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(this, inWidth, inHeight, outLightMapMemoryUsage, outShadowMapMemoryUsage);
 		
 		
 		/// <summary>
@@ -485,8 +497,8 @@ namespace UnrealEngine
 		/// <para>Removes instance vertex colors from the specified LOD </para>
 		/// <param name="LODToRemoveColorsFrom">Index of the LOD to remove instance colors from </param>
 		/// </summary>
-		public void RemoveInstanceVertexColorsFromLOD(int LODToRemoveColorsFrom)
-			=> E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(this, LODToRemoveColorsFrom);
+		public void RemoveInstanceVertexColorsFromLOD(int lODToRemoveColorsFrom)
+			=> E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(this, lODToRemoveColorsFrom);
 		
 		
 		/// <summary>
@@ -500,34 +512,34 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect. </para>
 		/// </summary>
-		public void SetDistanceFieldSelfShadowBias(float NewValue)
-			=> E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(this, NewValue);
+		public void SetDistanceFieldSelfShadowBias(float newValue)
+			=> E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(this, newValue);
 		
-		public void SetForcedLodModel(int NewForcedLodModel)
-			=> E_UStaticMeshComponent_SetForcedLodModel(this, NewForcedLodModel);
+		public void SetForcedLodModel(int newForcedLodModel)
+			=> E_UStaticMeshComponent_SetForcedLodModel(this, newForcedLodModel);
 		
 		
 		/// <summary>
 		/// <para>Sets the value of the MaterialIndexPreview flag and reattaches the component as necessary. </para>
 		/// <param name="InMaterialIndexPreview">New value of MaterialIndexPreview. </param>
 		/// </summary>
-		public void SetMaterialPreview(int InMaterialIndexPreview)
-			=> E_UStaticMeshComponent_SetMaterialPreview(this, InMaterialIndexPreview);
+		public void SetMaterialPreview(int inMaterialIndexPreview)
+			=> E_UStaticMeshComponent_SetMaterialPreview(this, inMaterialIndexPreview);
 		
 		
 		/// <summary>
 		/// <para>Set forced reverse culling </para>
 		/// </summary>
-		public void SetReverseCulling(bool ReverseCulling)
-			=> E_UStaticMeshComponent_SetReverseCulling(this, ReverseCulling);
+		public void SetReverseCulling(bool reverseCulling)
+			=> E_UStaticMeshComponent_SetReverseCulling(this, reverseCulling);
 		
 		
 		/// <summary>
 		/// <para>Sets the value of the SectionIndexPreview flag and reattaches the component as necessary. </para>
 		/// <param name="InSectionIndexPreview">New value of SectionIndexPreview. </param>
 		/// </summary>
-		public void SetSectionPreview(int InSectionIndexPreview)
-			=> E_UStaticMeshComponent_SetSectionPreview(this, InSectionIndexPreview);
+		public void SetSectionPreview(int inSectionIndexPreview)
+			=> E_UStaticMeshComponent_SetSectionPreview(this, inSectionIndexPreview);
 		
 		
 		/// <summary>
@@ -538,8 +550,8 @@ namespace UnrealEngine
 		/// <return>bool				true if successfully set; false if not </return>
 		/// <para>If false, set it to use vertex light mapping. </para>
 		/// </summary>
-		public virtual bool SetStaticLightingMapping(bool bTextureMapping, int ResolutionToUse)
-			=> E_UStaticMeshComponent_SetStaticLightingMapping(this, bTextureMapping, ResolutionToUse);
+		public virtual bool SetStaticLightingMapping(bool bTextureMapping, int resolutionToUse)
+			=> E_UStaticMeshComponent_SetStaticLightingMapping(this, bTextureMapping, resolutionToUse);
 		
 		
 		/// <summary>
@@ -569,14 +581,14 @@ namespace UnrealEngine
 		/// <param name="InHeight">in]	The width of the light/shadow map </param>
 		/// <return>bool				true if texture lightmaps are used, false if not </return>
 		/// </summary>
-		public virtual bool UsesTextureLightmaps(int InWidth, int InHeight)
-			=> E_UStaticMeshComponent_UsesTextureLightmaps(this, InWidth, InHeight);
+		public virtual bool UsesTextureLightmaps(int inWidth, int inHeight)
+			=> E_UStaticMeshComponent_UsesTextureLightmaps(this, inWidth, inHeight);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UStaticMeshComponent Self)
+		public static implicit operator IntPtr(UStaticMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UStaticMeshComponent(ObjectPointerDescription PtrDesc)

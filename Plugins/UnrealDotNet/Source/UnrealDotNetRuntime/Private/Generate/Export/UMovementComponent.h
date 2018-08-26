@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -38,7 +40,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_AddRadialForce(UMovementComponent* Self, INT_PTR Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
 	{
-		auto _p0 = *(FVector*)Origin;
+		auto& _p0 = *(FVector*)Origin;
 		auto _p1 = Radius;
 		auto _p2 = Strength;
 		auto _p3 = Falloff;
@@ -47,7 +49,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_AddRadialImpulse(UMovementComponent* Self, INT_PTR Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
 	{
-		auto _p0 = *(FVector*)Origin;
+		auto& _p0 = *(FVector*)Origin;
 		auto _p1 = Radius;
 		auto _p2 = Strength;
 		auto _p3 = Falloff;
@@ -57,10 +59,10 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_ComputeSlideVector(UMovementComponent* Self, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit)
 	{
-		auto _p0 = *(FVector*)Delta;
+		auto& _p0 = *(FVector*)Delta;
 		auto _p1 = Time;
-		auto _p2 = *(FVector*)Normal;
-		auto _p3 = *(FHitResult*)Hit;
+		auto& _p2 = *(FVector*)Normal;
+		auto& _p3 = *(FHitResult*)Hit;
 		return (INT_PTR) new FVector(Self->ComputeSlideVector(_p0, _p1, _p2, _p3));
 	}
 
@@ -104,7 +106,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_GetPenetrationAdjustment(UMovementComponent* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		return (INT_PTR) new FVector(Self->GetPenetrationAdjustment(_p0));
 	}
 
@@ -113,17 +115,27 @@ extern "C"
 		return Self->GetPlaneConstraintAxisSetting();
 	}
 
+	DOTNET_EXPORT auto E_UMovementComponent_GetPlaneConstraintNormal(UMovementComponent* Self)
+	{
+		return (INT_PTR) const_cast<FVector*>(&(Self->GetPlaneConstraintNormal()));
+	}
+
 	DOTNET_EXPORT auto E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(UMovementComponent* Self, EPlaneConstraintAxisSetting AxisSetting)
 	{
 		auto _p0 = AxisSetting;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UMovementComponent*)Self)->GetPlaneConstraintNormalFromAxisSetting_WRAP(_p0));
 	}
 
+	DOTNET_EXPORT auto E_UMovementComponent_GetPlaneConstraintOrigin(UMovementComponent* Self)
+	{
+		return (INT_PTR) const_cast<FVector*>(&(Self->GetPlaneConstraintOrigin()));
+	}
+
 	DOTNET_EXPORT auto E_UMovementComponent_HandleImpact(UMovementComponent* Self, INT_PTR Hit, float TimeSlice, INT_PTR MoveDelta)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = TimeSlice;
-		auto _p2 = *(FVector*)MoveDelta;
+		auto& _p2 = *(FVector*)MoveDelta;
 		Self->HandleImpact(_p0, _p1, _p2);
 	}
 
@@ -152,16 +164,36 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Delta;
 		auto _p1 = *(FRotator*)NewRotation;
-		auto _p2 = *(FHitResult*)OutHit;
+		auto& _p2 = *(FHitResult*)OutHit;
 		auto _p3 = bSweep;
 		auto _p4 = bTeleport;
 		return Self->K2_MoveUpdatedComponent(_p0, _p1, _p2, _p3, _p4);
 	}
 
+	DOTNET_EXPORT auto E_UMovementComponent_MoveUpdatedComponent(UMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
+	{
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FQuat*)NewRotation;
+		auto _p2 = bSweep;
+		auto _p3 = (FHitResult*)OutHit;
+		auto _p4 = Teleport;
+		return Self->MoveUpdatedComponent(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UMovementComponent_MoveUpdatedComponent_o1(UMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
+	{
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FRotator*)NewRotation;
+		auto _p2 = bSweep;
+		auto _p3 = (FHitResult*)OutHit;
+		auto _p4 = Teleport;
+		return Self->MoveUpdatedComponent(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_UMovementComponent_MoveUpdatedComponentImpl(UMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
 	{
-		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FQuat*)NewRotation;
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FQuat*)NewRotation;
 		auto _p2 = bSweep;
 		auto _p3 = (FHitResult*)OutHit;
 		auto _p4 = Teleport;
@@ -173,12 +205,48 @@ extern "C"
 		Self->OnTeleported();
 	}
 
+	DOTNET_EXPORT auto E_UMovementComponent_ResolvePenetration(UMovementComponent* Self, INT_PTR Adjustment, INT_PTR Hit, INT_PTR NewRotation)
+	{
+		auto& _p0 = *(FVector*)Adjustment;
+		auto& _p1 = *(FHitResult*)Hit;
+		auto& _p2 = *(FQuat*)NewRotation;
+		return Self->ResolvePenetration(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UMovementComponent_ResolvePenetration_o1(UMovementComponent* Self, INT_PTR Adjustment, INT_PTR Hit, INT_PTR NewRotation)
+	{
+		auto& _p0 = *(FVector*)Adjustment;
+		auto& _p1 = *(FHitResult*)Hit;
+		auto& _p2 = *(FRotator*)NewRotation;
+		return Self->ResolvePenetration(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UMovementComponent_ResolvePenetrationImpl(UMovementComponent* Self, INT_PTR Adjustment, INT_PTR Hit, INT_PTR NewRotation)
 	{
-		auto _p0 = *(FVector*)Adjustment;
-		auto _p1 = *(FHitResult*)Hit;
-		auto _p2 = *(FQuat*)NewRotation;
+		auto& _p0 = *(FVector*)Adjustment;
+		auto& _p1 = *(FHitResult*)Hit;
+		auto& _p2 = *(FQuat*)NewRotation;
 		return ((E_PROTECTED_WRAP_UMovementComponent*)Self)->ResolvePenetrationImpl_WRAP(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UMovementComponent_SafeMoveUpdatedComponent(UMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
+	{
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FQuat*)NewRotation;
+		auto _p2 = bSweep;
+		auto& _p3 = *(FHitResult*)OutHit;
+		auto _p4 = Teleport;
+		return Self->SafeMoveUpdatedComponent(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UMovementComponent_SafeMoveUpdatedComponent_o1(UMovementComponent* Self, INT_PTR Delta, INT_PTR NewRotation, bool bSweep, INT_PTR OutHit, ETeleportType Teleport)
+	{
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FRotator*)NewRotation;
+		auto _p2 = bSweep;
+		auto& _p3 = *(FHitResult*)OutHit;
+		auto _p4 = Teleport;
+		return Self->SafeMoveUpdatedComponent(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT auto E_UMovementComponent_SetPlaneConstraintAxisSetting(UMovementComponent* Self, EPlaneConstraintAxisSetting NewAxisSetting)
@@ -226,10 +294,10 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_SlideAlongSurface(UMovementComponent* Self, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit, bool bHandleImpact)
 	{
-		auto _p0 = *(FVector*)Delta;
+		auto& _p0 = *(FVector*)Delta;
 		auto _p1 = Time;
-		auto _p2 = *(FVector*)Normal;
-		auto _p3 = *(FHitResult*)Hit;
+		auto& _p2 = *(FVector*)Normal;
+		auto& _p3 = *(FHitResult*)Hit;
 		auto _p4 = bHandleImpact;
 		return Self->SlideAlongSurface(_p0, _p1, _p2, _p3, _p4);
 	}
@@ -246,9 +314,9 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UMovementComponent_TwoWallAdjust(UMovementComponent* Self, INT_PTR Delta, INT_PTR Hit, INT_PTR OldHitNormal)
 	{
-		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FHitResult*)Hit;
-		auto _p2 = *(FVector*)OldHitNormal;
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FHitResult*)Hit;
+		auto& _p2 = *(FVector*)OldHitNormal;
 		Self->TwoWallAdjust(_p0, _p1, _p2);
 	}
 

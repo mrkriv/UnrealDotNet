@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -535,9 +537,9 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ApplyImpactPhysicsForces(UCharacterMovementComponent* Self, INT_PTR Impact, INT_PTR ImpactAcceleration, INT_PTR ImpactVelocity)
 	{
-		auto _p0 = *(FHitResult*)Impact;
-		auto _p1 = *(FVector*)ImpactAcceleration;
-		auto _p2 = *(FVector*)ImpactVelocity;
+		auto& _p0 = *(FHitResult*)Impact;
+		auto& _p1 = *(FVector*)ImpactAcceleration;
+		auto& _p2 = *(FVector*)ImpactVelocity;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ApplyImpactPhysicsForces_WRAP(_p0, _p1, _p2);
 	}
 
@@ -560,8 +562,8 @@ extern "C"
 		auto _p2 = MaxSpeed;
 		auto _p3 = Friction;
 		auto _p4 = BrakingDeceleration;
-		auto _p5 = *(FVector*)OutAcceleration;
-		auto _p6 = OutRequestedSpeed;
+		auto& _p5 = *(FVector*)OutAcceleration;
+		auto& _p6 = OutRequestedSpeed;
 		return Self->ApplyRequestedMove(_p0, _p1, _p2, _p3, _p4, _p5, _p6);
 	}
 
@@ -577,7 +579,7 @@ extern "C"
 	{
 		auto _p0 = DeltaTime;
 		auto _p1 = TickAirControl;
-		auto _p2 = *(FVector*)FallAcceleration;
+		auto& _p2 = *(FVector*)FallAcceleration;
 		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->BoostAirControl_WRAP(_p0, _p1, _p2);
 	}
 
@@ -593,8 +595,8 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CallMovementUpdateDelegate(UCharacterMovementComponent* Self, float DeltaSeconds, INT_PTR OldLocation, INT_PTR OldVelocity)
 	{
 		auto _p0 = DeltaSeconds;
-		auto _p1 = *(FVector*)OldLocation;
-		auto _p2 = *(FVector*)OldVelocity;
+		auto& _p1 = *(FVector*)OldLocation;
+		auto& _p2 = *(FVector*)OldVelocity;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->CallMovementUpdateDelegate_WRAP(_p0, _p1, _p2);
 	}
 
@@ -605,7 +607,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CanStepUp(UCharacterMovementComponent* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		return Self->CanStepUp(_p0);
 	}
 
@@ -621,16 +623,16 @@ extern "C"
 		auto _p2 = OtherComp;
 		auto _p3 = OtherBodyIndex;
 		auto _p4 = bFromSweep;
-		auto _p5 = *(FHitResult*)SweepResult;
+		auto& _p5 = *(FHitResult*)SweepResult;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->CapsuleTouched_WRAP(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CheckFall(UCharacterMovementComponent* Self, INT_PTR OldFloor, INT_PTR Hit, INT_PTR Delta, INT_PTR OldLocation, float remainingTime, float timeTick, int32 Iterations, bool bMustJump)
 	{
-		auto _p0 = *(FFindFloorResult*)OldFloor;
-		auto _p1 = *(FHitResult*)Hit;
-		auto _p2 = *(FVector*)Delta;
-		auto _p3 = *(FVector*)OldLocation;
+		auto& _p0 = *(FFindFloorResult*)OldFloor;
+		auto& _p1 = *(FHitResult*)Hit;
+		auto& _p2 = *(FVector*)Delta;
+		auto& _p3 = *(FVector*)OldLocation;
 		auto _p4 = remainingTime;
 		auto _p5 = timeTick;
 		auto _p6 = Iterations;
@@ -640,16 +642,16 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CheckLedgeDirection(UCharacterMovementComponent* Self, INT_PTR OldLocation, INT_PTR SideStep, INT_PTR GravDir)
 	{
-		auto _p0 = *(FVector*)OldLocation;
-		auto _p1 = *(FVector*)SideStep;
-		auto _p2 = *(FVector*)GravDir;
+		auto& _p0 = *(FVector*)OldLocation;
+		auto& _p1 = *(FVector*)SideStep;
+		auto& _p2 = *(FVector*)GravDir;
 		return Self->CheckLedgeDirection(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_CheckWaterJump(UCharacterMovementComponent* Self, INT_PTR CheckPoint, INT_PTR WallNormal)
 	{
 		auto _p0 = *(FVector*)CheckPoint;
-		auto _p1 = *(FVector*)WallNormal;
+		auto& _p1 = *(FVector*)WallNormal;
 		return Self->CheckWaterJump(_p0, _p1);
 	}
 
@@ -732,10 +734,10 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ComputeFloorDist(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, float LineDistance, float SweepDistance, INT_PTR OutFloorResult, float SweepRadius, INT_PTR DownwardSweepResult)
 	{
-		auto _p0 = *(FVector*)CapsuleLocation;
+		auto& _p0 = *(FVector*)CapsuleLocation;
 		auto _p1 = LineDistance;
 		auto _p2 = SweepDistance;
-		auto _p3 = *(FFindFloorResult*)OutFloorResult;
+		auto& _p3 = *(FFindFloorResult*)OutFloorResult;
 		auto _p4 = SweepRadius;
 		auto _p5 = (FHitResult*)DownwardSweepResult;
 		Self->ComputeFloorDist(_p0, _p1, _p2, _p3, _p4, _p5);
@@ -743,32 +745,32 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ComputeGroundMovementDelta(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR RampHit, bool bHitFromLineTrace)
 	{
-		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FHitResult*)RampHit;
+		auto& _p0 = *(FVector*)Delta;
+		auto& _p1 = *(FHitResult*)RampHit;
 		auto _p2 = bHitFromLineTrace;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ComputeGroundMovementDelta_WRAP(_p0, _p1, _p2));
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ComputeOrientToMovementRotation(UCharacterMovementComponent* Self, INT_PTR CurrentRotation, float DeltaTime, INT_PTR DeltaRotation)
 	{
-		auto _p0 = *(FRotator*)CurrentRotation;
+		auto& _p0 = *(FRotator*)CurrentRotation;
 		auto _p1 = DeltaTime;
-		auto _p2 = *(FRotator*)DeltaRotation;
+		auto& _p2 = *(FRotator*)DeltaRotation;
 		return (INT_PTR) new FRotator(Self->ComputeOrientToMovementRotation(_p0, _p1, _p2));
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ComputePerchResult(UCharacterMovementComponent* Self, float TestRadius, INT_PTR InHit, float InMaxFloorDist, INT_PTR OutPerchFloorResult)
 	{
 		auto _p0 = TestRadius;
-		auto _p1 = *(FHitResult*)InHit;
+		auto& _p1 = *(FHitResult*)InHit;
 		auto _p2 = InMaxFloorDist;
-		auto _p3 = *(FFindFloorResult*)OutPerchFloorResult;
+		auto& _p3 = *(FFindFloorResult*)OutPerchFloorResult;
 		return Self->ComputePerchResult(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConstrainInputAcceleration(UCharacterMovementComponent* Self, INT_PTR InputAcceleration)
 	{
-		auto _p0 = *(FVector*)InputAcceleration;
+		auto& _p0 = *(FVector*)InputAcceleration;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ConstrainInputAcceleration_WRAP(_p0));
 	}
 
@@ -791,18 +793,18 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_FindBestNavMeshLocation(UCharacterMovementComponent* Self, INT_PTR TraceStart, INT_PTR TraceEnd, INT_PTR CurrentFeetLocation, INT_PTR TargetNavLocation, INT_PTR OutHitResult)
 	{
-		auto _p0 = *(FVector*)TraceStart;
-		auto _p1 = *(FVector*)TraceEnd;
-		auto _p2 = *(FVector*)CurrentFeetLocation;
-		auto _p3 = *(FVector*)TargetNavLocation;
-		auto _p4 = *(FHitResult*)OutHitResult;
+		auto& _p0 = *(FVector*)TraceStart;
+		auto& _p1 = *(FVector*)TraceEnd;
+		auto& _p2 = *(FVector*)CurrentFeetLocation;
+		auto& _p3 = *(FVector*)TargetNavLocation;
+		auto& _p4 = *(FHitResult*)OutHitResult;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->FindBestNavMeshLocation_WRAP(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_FindFloor(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, INT_PTR OutFloorResult, bool bZeroDelta, INT_PTR DownwardSweepResult)
 	{
-		auto _p0 = *(FVector*)CapsuleLocation;
-		auto _p1 = *(FFindFloorResult*)OutFloorResult;
+		auto& _p0 = *(FVector*)CapsuleLocation;
+		auto& _p1 = *(FFindFloorResult*)OutFloorResult;
 		auto _p2 = bZeroDelta;
 		auto _p3 = (FHitResult*)DownwardSweepResult;
 		Self->FindFloor(_p0, _p1, _p2, _p3);
@@ -829,7 +831,7 @@ extern "C"
 	{
 		auto _p0 = DeltaTime;
 		auto _p1 = TickAirControl;
-		auto _p2 = *(FVector*)FallAcceleration;
+		auto& _p2 = *(FVector*)FallAcceleration;
 		return (INT_PTR) new FVector(Self->GetAirControl(_p0, _p1, _p2));
 	}
 
@@ -878,9 +880,9 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_GetLedgeMove(UCharacterMovementComponent* Self, INT_PTR OldLocation, INT_PTR Delta, INT_PTR GravDir)
 	{
-		auto _p0 = *(FVector*)OldLocation;
-		auto _p1 = *(FVector*)Delta;
-		auto _p2 = *(FVector*)GravDir;
+		auto& _p0 = *(FVector*)OldLocation;
+		auto& _p1 = *(FVector*)Delta;
+		auto& _p2 = *(FVector*)GravDir;
 		return (INT_PTR) new FVector(Self->GetLedgeMove(_p0, _p1, _p2));
 	}
 
@@ -968,17 +970,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_HandleSlopeBoosting(UCharacterMovementComponent* Self, INT_PTR SlideResult, INT_PTR Delta, float Time, INT_PTR Normal, INT_PTR Hit)
 	{
-		auto _p0 = *(FVector*)SlideResult;
-		auto _p1 = *(FVector*)Delta;
+		auto& _p0 = *(FVector*)SlideResult;
+		auto& _p1 = *(FVector*)Delta;
 		auto _p2 = Time;
-		auto _p3 = *(FVector*)Normal;
-		auto _p4 = *(FHitResult*)Hit;
+		auto& _p3 = *(FVector*)Normal;
+		auto& _p4 = *(FHitResult*)Hit;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->HandleSlopeBoosting_WRAP(_p0, _p1, _p2, _p3, _p4));
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_HandleSwimmingWallHit(UCharacterMovementComponent* Self, INT_PTR Hit, float DeltaTime)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = DeltaTime;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->HandleSwimmingWallHit_WRAP(_p0, _p1);
 	}
@@ -1005,14 +1007,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsValidLandingSpot(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, INT_PTR Hit)
 	{
-		auto _p0 = *(FVector*)CapsuleLocation;
-		auto _p1 = *(FHitResult*)Hit;
+		auto& _p0 = *(FVector*)CapsuleLocation;
+		auto& _p1 = *(FHitResult*)Hit;
 		return Self->IsValidLandingSpot(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsWalkable(UCharacterMovementComponent* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		return Self->IsWalkable(_p0);
 	}
 
@@ -1023,8 +1025,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_IsWithinEdgeTolerance(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, INT_PTR TestImpactPoint, float CapsuleRadius)
 	{
-		auto _p0 = *(FVector*)CapsuleLocation;
-		auto _p1 = *(FVector*)TestImpactPoint;
+		auto& _p0 = *(FVector*)CapsuleLocation;
+		auto& _p1 = *(FVector*)TestImpactPoint;
 		auto _p2 = CapsuleRadius;
 		return Self->IsWithinEdgeTolerance(_p0, _p1, _p2);
 	}
@@ -1047,14 +1049,14 @@ extern "C"
 		auto _p1 = LineDistance;
 		auto _p2 = SweepDistance;
 		auto _p3 = SweepRadius;
-		auto _p4 = *(FFindFloorResult*)FloorResult;
+		auto& _p4 = *(FFindFloorResult*)FloorResult;
 		Self->K2_ComputeFloorDist(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_K2_FindFloor(UCharacterMovementComponent* Self, INT_PTR CapsuleLocation, INT_PTR FloorResult)
 	{
 		auto _p0 = *(FVector*)CapsuleLocation;
-		auto _p1 = *(FFindFloorResult*)FloorResult;
+		auto& _p1 = *(FFindFloorResult*)FloorResult;
 		Self->K2_FindFloor(_p0, _p1);
 	}
 
@@ -1075,15 +1077,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_Launch(UCharacterMovementComponent* Self, INT_PTR LaunchVel)
 	{
-		auto _p0 = *(FVector*)LaunchVel;
+		auto& _p0 = *(FVector*)LaunchVel;
 		Self->Launch(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_LimitAirControl(UCharacterMovementComponent* Self, float DeltaTime, INT_PTR FallAcceleration, INT_PTR HitResult, bool bCheckForValidLandingSpot)
 	{
 		auto _p0 = DeltaTime;
-		auto _p1 = *(FVector*)FallAcceleration;
-		auto _p2 = *(FHitResult*)HitResult;
+		auto& _p1 = *(FVector*)FallAcceleration;
+		auto& _p2 = *(FHitResult*)HitResult;
 		auto _p3 = bCheckForValidLandingSpot;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->LimitAirControl_WRAP(_p0, _p1, _p2, _p3));
 	}
@@ -1109,14 +1111,14 @@ extern "C"
 		auto _p0 = ClientTimeStamp;
 		auto _p1 = DeltaTime;
 		auto _p2 = CompressedFlags;
-		auto _p3 = *(FVector*)NewAccel;
+		auto& _p3 = *(FVector*)NewAccel;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->MoveAutonomous_WRAP(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_NewFallVelocity(UCharacterMovementComponent* Self, INT_PTR InitialVelocity, INT_PTR Gravity, float DeltaTime)
 	{
-		auto _p0 = *(FVector*)InitialVelocity;
-		auto _p1 = *(FVector*)Gravity;
+		auto& _p0 = *(FVector*)InitialVelocity;
+		auto& _p1 = *(FVector*)Gravity;
 		auto _p2 = DeltaTime;
 		return (INT_PTR) new FVector(Self->NewFallVelocity(_p0, _p1, _p2));
 	}
@@ -1147,8 +1149,8 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnMovementUpdated(UCharacterMovementComponent* Self, float DeltaSeconds, INT_PTR OldLocation, INT_PTR OldVelocity)
 	{
 		auto _p0 = DeltaSeconds;
-		auto _p1 = *(FVector*)OldLocation;
-		auto _p2 = *(FVector*)OldVelocity;
+		auto& _p1 = *(FVector*)OldLocation;
+		auto& _p2 = *(FVector*)OldVelocity;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnMovementUpdated_WRAP(_p0, _p1, _p2);
 	}
 
@@ -1163,9 +1165,9 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnUnableToFollowBaseMove(UCharacterMovementComponent* Self, INT_PTR DeltaPosition, INT_PTR OldLocation, INT_PTR MoveOnBaseHit)
 	{
-		auto _p0 = *(FVector*)DeltaPosition;
-		auto _p1 = *(FVector*)OldLocation;
-		auto _p2 = *(FHitResult*)MoveOnBaseHit;
+		auto& _p0 = *(FVector*)DeltaPosition;
+		auto& _p1 = *(FVector*)OldLocation;
+		auto& _p2 = *(FHitResult*)MoveOnBaseHit;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnUnableToFollowBaseMove_WRAP(_p0, _p1, _p2);
 	}
 
@@ -1237,7 +1239,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ProcessLanded(UCharacterMovementComponent* Self, INT_PTR Hit, float remainingTime, int32 Iterations)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = remainingTime;
 		auto _p2 = Iterations;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ProcessLanded_WRAP(_p0, _p1, _p2);
@@ -1246,8 +1248,8 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ProjectLocationFromNavMesh(UCharacterMovementComponent* Self, float DeltaSeconds, INT_PTR CurrentFeetLocation, INT_PTR TargetNavLocation, float UpOffset, float DownOffset)
 	{
 		auto _p0 = DeltaSeconds;
-		auto _p1 = *(FVector*)CurrentFeetLocation;
-		auto _p2 = *(FVector*)TargetNavLocation;
+		auto& _p1 = *(FVector*)CurrentFeetLocation;
+		auto& _p2 = *(FVector*)TargetNavLocation;
 		auto _p3 = UpOffset;
 		auto _p4 = DownOffset;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ProjectLocationFromNavMesh_WRAP(_p0, _p1, _p2, _p3, _p4));
@@ -1262,16 +1264,16 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ReplicateMoveToServer(UCharacterMovementComponent* Self, float DeltaTime, INT_PTR NewAcceleration)
 	{
 		auto _p0 = DeltaTime;
-		auto _p1 = *(FVector*)NewAcceleration;
+		auto& _p1 = *(FVector*)NewAcceleration;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ReplicateMoveToServer_WRAP(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_RevertMove(UCharacterMovementComponent* Self, INT_PTR OldLocation, UPrimitiveComponent* OldBase, INT_PTR InOldBaseLocation, INT_PTR OldFloor, bool bFailMove)
 	{
-		auto _p0 = *(FVector*)OldLocation;
+		auto& _p0 = *(FVector*)OldLocation;
 		auto _p1 = OldBase;
-		auto _p2 = *(FVector*)InOldBaseLocation;
-		auto _p3 = *(FFindFloorResult*)OldFloor;
+		auto& _p2 = *(FVector*)InOldBaseLocation;
+		auto& _p3 = *(FFindFloorResult*)OldFloor;
 		auto _p4 = bFailMove;
 		Self->RevertMove(_p0, _p1, _p2, _p3, _p4);
 	}
@@ -1289,7 +1291,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ScaleInputAcceleration(UCharacterMovementComponent* Self, INT_PTR InputAcceleration)
 	{
-		auto _p0 = *(FVector*)InputAcceleration;
+		auto& _p0 = *(FVector*)InputAcceleration;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ScaleInputAcceleration_WRAP(_p0));
 	}
 
@@ -1297,9 +1299,9 @@ extern "C"
 	{
 		auto _p0 = ClientTimeStamp;
 		auto _p1 = DeltaTime;
-		auto _p2 = *(FVector*)Accel;
-		auto _p3 = *(FVector*)ClientWorldLocation;
-		auto _p4 = *(FVector*)RelativeClientLocation;
+		auto& _p2 = *(FVector*)Accel;
+		auto& _p3 = *(FVector*)ClientWorldLocation;
+		auto& _p4 = *(FVector*)RelativeClientLocation;
 		auto _p5 = ClientMovementBase;
 		auto _p6 = ConvertFromManage_FName(ClientBaseBoneName);
 		auto _p7 = ClientMovementMode;
@@ -1310,8 +1312,8 @@ extern "C"
 	{
 		auto _p0 = ClientTimeStamp;
 		auto _p1 = DeltaTime;
-		auto _p2 = *(FVector*)Accel;
-		auto _p3 = *(FVector*)RelativeClientLocation;
+		auto& _p2 = *(FVector*)Accel;
+		auto& _p3 = *(FVector*)RelativeClientLocation;
 		auto _p4 = ClientMovementBase;
 		auto _p5 = ConvertFromManage_FName(ClientBaseBoneName);
 		auto _p6 = ClientMovementMode;
@@ -1340,7 +1342,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetBaseFromFloor(UCharacterMovementComponent* Self, INT_PTR FloorResult)
 	{
-		auto _p0 = *(FFindFloorResult*)FloorResult;
+		auto& _p0 = *(FFindFloorResult*)FloorResult;
 		Self->SetBaseFromFloor(_p0);
 	}
 
@@ -1382,7 +1384,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetPostLandedPhysics(UCharacterMovementComponent* Self, INT_PTR Hit)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->SetPostLandedPhysics_WRAP(_p0);
 	}
 
@@ -1405,29 +1407,29 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldCatchAir(UCharacterMovementComponent* Self, INT_PTR OldFloor, INT_PTR NewFloor)
 	{
-		auto _p0 = *(FFindFloorResult*)OldFloor;
-		auto _p1 = *(FFindFloorResult*)NewFloor;
+		auto& _p0 = *(FFindFloorResult*)OldFloor;
+		auto& _p1 = *(FFindFloorResult*)NewFloor;
 		return Self->ShouldCatchAir(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldCheckForValidLandingSpot(UCharacterMovementComponent* Self, float DeltaTime, INT_PTR Delta, INT_PTR Hit)
 	{
 		auto _p0 = DeltaTime;
-		auto _p1 = *(FVector*)Delta;
-		auto _p2 = *(FHitResult*)Hit;
+		auto& _p1 = *(FVector*)Delta;
+		auto& _p2 = *(FHitResult*)Hit;
 		return Self->ShouldCheckForValidLandingSpot(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldComputePerchResult(UCharacterMovementComponent* Self, INT_PTR InHit, bool bCheckRadius)
 	{
-		auto _p0 = *(FHitResult*)InHit;
+		auto& _p0 = *(FHitResult*)InHit;
 		auto _p1 = bCheckRadius;
 		return Self->ShouldComputePerchResult(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ShouldJumpOutOfWater(UCharacterMovementComponent* Self, INT_PTR JumpDir)
 	{
-		auto _p0 = *(FVector*)JumpDir;
+		auto& _p0 = *(FVector*)JumpDir;
 		return Self->ShouldJumpOutOfWater(_p0);
 	}
 
@@ -1470,8 +1472,8 @@ extern "C"
 		auto _p0 = Iterations;
 		auto _p1 = remainingTime;
 		auto _p2 = timeTick;
-		auto _p3 = *(FVector*)Delta;
-		auto _p4 = *(FVector*)subLoc;
+		auto& _p3 = *(FVector*)Delta;
+		auto& _p4 = *(FVector*)subLoc;
 		Self->StartFalling(_p0, _p1, _p2, _p3, _p4);
 	}
 
@@ -1495,7 +1497,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_Swim(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR Hit)
 	{
 		auto _p0 = *(FVector*)Delta;
-		auto _p1 = *(FHitResult*)Hit;
+		auto& _p1 = *(FHitResult*)Hit;
 		return Self->Swim(_p0, _p1);
 	}
 
@@ -1524,8 +1526,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_UpdateBasedRotation(UCharacterMovementComponent* Self, INT_PTR FinalRotation, INT_PTR ReducedRotation)
 	{
-		auto _p0 = *(FRotator*)FinalRotation;
-		auto _p1 = *(FRotator*)ReducedRotation;
+		auto& _p0 = *(FRotator*)FinalRotation;
+		auto& _p1 = *(FRotator*)ReducedRotation;
 		Self->UpdateBasedRotation(_p0, _p1);
 	}
 

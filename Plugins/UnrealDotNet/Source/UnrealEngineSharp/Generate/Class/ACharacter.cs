@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -97,217 +99,228 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ApplyDamageMomentum(IntPtr Self, float DamageTaken, IntPtr DamageEvent, IntPtr PawnInstigator, IntPtr DamageCauser);
+		private static extern TemplatePointerDescription E_PROP_ACharacter_RootMotionRepMoves_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ACharacter_RootMotionRepMoves_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ApplyDamageMomentum(IntPtr self, float damageTaken, IntPtr damageEvent, IntPtr pawnInstigator, IntPtr damageCauser);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_BaseChange(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_CacheInitialMeshOffset(IntPtr self, IntPtr meshRelativeLocation, IntPtr meshRelativeRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_BaseChange(IntPtr Self);
+		private static extern bool E_ACharacter_CanCrouch(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_CacheInitialMeshOffset(IntPtr Self, IntPtr MeshRelativeLocation, IntPtr MeshRelativeRotation);
+		private static extern bool E_ACharacter_CanJump(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_CanCrouch(IntPtr Self);
+		private static extern bool E_ACharacter_CanJumpInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_CanJump(IntPtr Self);
+		private static extern bool E_ACharacter_CanJumpInternal_Implementation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_CanJumpInternal(IntPtr Self);
+		private static extern void E_ACharacter_CheckJumpInput(IntPtr self, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_CanJumpInternal_Implementation(IntPtr Self);
+		private static extern void E_ACharacter_ClearJumpInput(IntPtr self, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_CheckJumpInput(IntPtr Self, float DeltaTime);
+		private static extern void E_ACharacter_ClientAckGoodMove(IntPtr self, float timeStamp);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClearJumpInput(IntPtr Self, float DeltaTime);
+		private static extern void E_ACharacter_ClientAckGoodMove_Implementation(IntPtr self, float timeStamp);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientAckGoodMove(IntPtr Self, float TimeStamp);
+		private static extern void E_ACharacter_ClientAdjustPosition(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newVel, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientAckGoodMove_Implementation(IntPtr Self, float TimeStamp);
+		private static extern void E_ACharacter_ClientAdjustPosition_Implementation(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newVel, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientAdjustPosition(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewVel, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		private static extern void E_ACharacter_ClientCheatFly(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientAdjustPosition_Implementation(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewVel, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		private static extern void E_ACharacter_ClientCheatFly_Implementation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatFly(IntPtr Self);
+		private static extern void E_ACharacter_ClientCheatGhost(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatFly_Implementation(IntPtr Self);
+		private static extern void E_ACharacter_ClientCheatGhost_Implementation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatGhost(IntPtr Self);
+		private static extern void E_ACharacter_ClientCheatWalk(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatGhost_Implementation(IntPtr Self);
+		private static extern void E_ACharacter_ClientCheatWalk_Implementation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatWalk(IntPtr Self);
+		private static extern void E_ACharacter_ClientVeryShortAdjustPosition(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientCheatWalk_Implementation(IntPtr Self);
+		private static extern void E_ACharacter_ClientVeryShortAdjustPosition_Implementation(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientVeryShortAdjustPosition(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		private static extern void E_ACharacter_Crouch(IntPtr self, bool bClientSimulation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ClientVeryShortAdjustPosition_Implementation(IntPtr Self, float TimeStamp, IntPtr NewLoc, IntPtr NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode);
+		private static extern void E_ACharacter_Falling(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_Crouch(IntPtr Self, bool bClientSimulation);
+		private static extern float E_ACharacter_GetAnimRootMotionTranslationScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_Falling(IntPtr Self);
+		private static extern IntPtr E_ACharacter_GetBasedMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_ACharacter_GetAnimRootMotionTranslationScale(IntPtr Self);
+		private static extern IntPtr E_ACharacter_GetBaseRotationOffset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ACharacter_GetBaseRotationOffset(IntPtr Self);
+		private static extern IntPtr E_ACharacter_GetBaseRotationOffsetRotator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ACharacter_GetBaseRotationOffsetRotator(IntPtr Self);
+		private static extern IntPtr E_ACharacter_GetBaseTranslationOffset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ACharacter_GetBaseTranslationOffset(IntPtr Self);
+		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ACharacter_GetCapsuleComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ACharacter_GetCharacterMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ACharacter_GetCharacterMovement(IntPtr Self);
+		private static extern float E_ACharacter_GetJumpMaxHoldTime(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_ACharacter_GetJumpMaxHoldTime(IntPtr Self);
+		private static extern ObjectPointerDescription E_ACharacter_GetMesh(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ACharacter_GetMesh(IntPtr Self);
+		private static extern IntPtr E_ACharacter_GetReplicatedBasedMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_ACharacter_GetReplicatedMovementMode(IntPtr Self);
+		private static extern byte E_ACharacter_GetReplicatedMovementMode(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(IntPtr Self);
+		private static extern float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_IsJumpProvidingForce(IntPtr Self);
+		private static extern bool E_ACharacter_IsJumpProvidingForce(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_IsPlayingNetworkedRootMotionMontage(IntPtr Self);
+		private static extern bool E_ACharacter_IsPlayingNetworkedRootMotionMontage(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_IsPlayingRootMotion(IntPtr Self);
+		private static extern bool E_ACharacter_IsPlayingRootMotion(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_Jump(IntPtr Self);
+		private static extern void E_ACharacter_Jump(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_K2_OnEndCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
+		private static extern void E_ACharacter_K2_OnEndCrouch(IntPtr self, float halfHeightAdjust, float scaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_K2_OnMovementModeChanged(IntPtr Self, byte PrevMovementMode, byte NewMovementMode, byte PrevCustomMode, byte NewCustomMode);
+		private static extern void E_ACharacter_K2_OnMovementModeChanged(IntPtr self, byte prevMovementMode, byte newMovementMode, byte prevCustomMode, byte newCustomMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_K2_OnStartCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
+		private static extern void E_ACharacter_K2_OnStartCrouch(IntPtr self, float halfHeightAdjust, float scaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_K2_UpdateCustomMovement(IntPtr Self, float DeltaTime);
+		private static extern void E_ACharacter_K2_UpdateCustomMovement(IntPtr self, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_Landed(IntPtr Self, IntPtr Hit);
+		private static extern void E_ACharacter_Landed(IntPtr self, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_LaunchCharacter(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
+		private static extern void E_ACharacter_LaunchCharacter(IntPtr self, IntPtr launchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_MoveBlockedBy(IntPtr Self, IntPtr Impact);
+		private static extern void E_ACharacter_MoveBlockedBy(IntPtr self, IntPtr impact);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_NotifyActorBeginOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_ACharacter_NotifyActorBeginOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_NotifyActorEndOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_ACharacter_NotifyActorEndOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_NotifyJumpApex(IntPtr Self);
+		private static extern void E_ACharacter_NotifyJumpApex(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnEndCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
+		private static extern void E_ACharacter_OnEndCrouch(IntPtr self, float halfHeightAdjust, float scaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnJumped(IntPtr Self);
+		private static extern void E_ACharacter_OnJumped(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnJumped_Implementation(IntPtr Self);
+		private static extern void E_ACharacter_OnJumped_Implementation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnLanded(IntPtr Self, IntPtr Hit);
+		private static extern void E_ACharacter_OnLanded(IntPtr self, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnLaunched(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
+		private static extern void E_ACharacter_OnLaunched(IntPtr self, IntPtr launchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnMovementModeChanged(IntPtr Self, byte PrevMovementMode, byte PreviousCustomMode);
+		private static extern void E_ACharacter_OnMovementModeChanged(IntPtr self, byte prevMovementMode, byte previousCustomMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnRep_IsCrouched(IntPtr Self);
+		private static extern void E_ACharacter_OnRep_IsCrouched(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnRep_ReplicatedBasedMovement(IntPtr Self);
+		private static extern void E_ACharacter_OnRep_ReplicatedBasedMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnRep_RootMotion(IntPtr Self);
+		private static extern void E_ACharacter_OnRep_RootMotion(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnStartCrouch(IntPtr Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust);
+		private static extern void E_ACharacter_OnStartCrouch(IntPtr self, float halfHeightAdjust, float scaledHalfHeightAdjust);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnUpdateSimulatedPosition(IntPtr Self, IntPtr OldLocation, IntPtr OldRotation);
+		private static extern void E_ACharacter_OnUpdateSimulatedPosition(IntPtr self, IntPtr oldLocation, IntPtr oldRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnWalkingOffLedge(IntPtr Self, IntPtr PreviousFloorImpactNormal, IntPtr PreviousFloorContactNormal, IntPtr PreviousLocation, float TimeDelta);
+		private static extern void E_ACharacter_OnWalkingOffLedge(IntPtr self, IntPtr previousFloorImpactNormal, IntPtr previousFloorContactNormal, IntPtr previousLocation, float timeDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_OnWalkingOffLedge_Implementation(IntPtr Self, IntPtr PreviousFloorImpactNormal, IntPtr PreviousFloorContactNormal, IntPtr PreviousLocation, float TimeDelta);
+		private static extern void E_ACharacter_OnWalkingOffLedge_Implementation(IntPtr self, IntPtr previousFloorImpactNormal, IntPtr previousFloorContactNormal, IntPtr previousLocation, float timeDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_ResetJumpState(IntPtr Self);
+		private static extern void E_ACharacter_ResetJumpState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_RestoreReplicatedMove(IntPtr Self, IntPtr RootMotionRepMove);
+		private static extern bool E_ACharacter_RestoreReplicatedMove(IntPtr self, IntPtr rootMotionRepMove);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen(IntPtr Self, string InString);
+		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen(IntPtr self, string inString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(IntPtr Self, string InString);
+		private static extern void E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(IntPtr self, string inString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_SaveRelativeBasedMovement(IntPtr Self, IntPtr NewRelativeLocation, IntPtr NewRotation, bool bRelativeRotation);
+		private static extern void E_ACharacter_SaveRelativeBasedMovement(IntPtr self, IntPtr newRelativeLocation, IntPtr newRotation, bool bRelativeRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_SetAnimRootMotionTranslationScale(IntPtr Self, float InAnimRootMotionTranslationScale);
+		private static extern void E_ACharacter_SetAnimRootMotionTranslationScale(IntPtr self, float inAnimRootMotionTranslationScale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_SetBase(IntPtr Self, IntPtr NewBase, string BoneName, bool bNotifyActor);
+		private static extern void E_ACharacter_SetBase(IntPtr self, IntPtr newBase, string boneName, bool bNotifyActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ACharacter_ShouldNotifyLanded(IntPtr Self, IntPtr Hit);
+		private static extern bool E_ACharacter_ShouldNotifyLanded(IntPtr self, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_SimulatedRootMotionPositionFixup(IntPtr Self, float DeltaSeconds);
+		private static extern void E_ACharacter_SimulatedRootMotionPositionFixup(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_StopJumping(IntPtr Self);
+		private static extern void E_ACharacter_StopJumping(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ACharacter_UnCrouch(IntPtr Self, bool bClientSimulation);
+		private static extern void E_ACharacter_UnCrouch(IntPtr self, bool bClientSimulation);
 		
 		#endregion
 		
@@ -429,6 +442,12 @@ namespace UnrealEngine
 			set => E_PROP_ACharacter_RepRootMotion_SET(NativePointer, value);
 		}
 
+		public TArray<FSimulatedRootMotionReplicatedMove> RootMotionRepMoves
+		{
+			get => E_PROP_ACharacter_RootMotionRepMoves_GET(NativePointer);
+			set => E_PROP_ACharacter_RootMotionRepMoves_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region Events
@@ -458,9 +477,9 @@ namespace UnrealEngine
 
 		private event FLandedSignature _Event_LandedDelegate;
 		
-		internal void InvokeEvent_LandedDelegate(FHitResult Hit)
+		internal void InvokeEvent_LandedDelegate(FHitResult hit)
 		{
-			_Event_LandedDelegate?.Invoke(Hit);
+			_Event_LandedDelegate?.Invoke(hit);
 		}
 
 		
@@ -485,9 +504,9 @@ namespace UnrealEngine
 
 		private event FMovementModeChangedSignature _Event_MovementModeChangedDelegate;
 		
-		internal void InvokeEvent_MovementModeChangedDelegate(ObjectPointerDescription Character, EMovementMode PrevMovementMode, byte PreviousCustomMode)
+		internal void InvokeEvent_MovementModeChangedDelegate(ObjectPointerDescription character, EMovementMode prevMovementMode, byte previousCustomMode)
 		{
-			_Event_MovementModeChangedDelegate?.Invoke(Character, PrevMovementMode, PreviousCustomMode);
+			_Event_MovementModeChangedDelegate?.Invoke(character, prevMovementMode, previousCustomMode);
 		}
 
 		
@@ -518,9 +537,9 @@ namespace UnrealEngine
 
 		private event FCharacterMovementUpdatedSignature _Event_OnCharacterMovementUpdated;
 		
-		internal void InvokeEvent_OnCharacterMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity)
+		internal void InvokeEvent_OnCharacterMovementUpdated(float deltaSeconds, FVector oldLocation, FVector oldVelocity)
 		{
-			_Event_OnCharacterMovementUpdated?.Invoke(DeltaSeconds, OldLocation, OldVelocity);
+			_Event_OnCharacterMovementUpdated?.Invoke(deltaSeconds, oldLocation, oldVelocity);
 		}
 
 		
@@ -557,8 +576,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Apply momentum caused by damage. </para>
 		/// </summary>
-		public virtual void ApplyDamageMomentum(float DamageTaken, FDamageEvent DamageEvent, APawn PawnInstigator, AActor DamageCauser)
-			=> E_ACharacter_ApplyDamageMomentum(this, DamageTaken, DamageEvent, PawnInstigator, DamageCauser);
+		public virtual void ApplyDamageMomentum(float damageTaken, FDamageEvent damageEvent, APawn pawnInstigator, AActor damageCauser)
+			=> E_ACharacter_ApplyDamageMomentum(this, damageTaken, damageEvent, pawnInstigator, damageCauser);
 		
 		
 		/// <summary>
@@ -573,8 +592,8 @@ namespace UnrealEngine
 		/// <para>This is automatically called during initialization; call this at runtime if you intend to change the default mesh offset from the capsule. </para>
 		/// <para>@see GetBaseTranslationOffset(), GetBaseRotationOffset() </para>
 		/// </summary>
-		public virtual void CacheInitialMeshOffset(FVector MeshRelativeLocation, FRotator MeshRelativeRotation)
-			=> E_ACharacter_CacheInitialMeshOffset(this, MeshRelativeLocation, MeshRelativeRotation);
+		public virtual void CacheInitialMeshOffset(FVector meshRelativeLocation, FRotator meshRelativeRotation)
+			=> E_ACharacter_CacheInitialMeshOffset(this, meshRelativeLocation, meshRelativeRotation);
 		
 		
 		/// <summary>
@@ -612,27 +631,27 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Trigger jump if jump button has been pressed. </para>
 		/// </summary>
-		public virtual void CheckJumpInput(float DeltaTime)
-			=> E_ACharacter_CheckJumpInput(this, DeltaTime);
+		public virtual void CheckJumpInput(float deltaTime)
+			=> E_ACharacter_CheckJumpInput(this, deltaTime);
 		
 		
 		/// <summary>
 		/// <para>Update jump input state after having checked input. </para>
 		/// </summary>
-		public virtual void ClearJumpInput(float DeltaTime)
-			=> E_ACharacter_ClearJumpInput(this, DeltaTime);
+		public virtual void ClearJumpInput(float deltaTime)
+			=> E_ACharacter_ClearJumpInput(this, deltaTime);
 		
-		public void ClientAckGoodMove(float TimeStamp)
-			=> E_ACharacter_ClientAckGoodMove(this, TimeStamp);
+		public void ClientAckGoodMove(float timeStamp)
+			=> E_ACharacter_ClientAckGoodMove(this, timeStamp);
 		
-		public void ClientAckGoodMove_Implementation(float TimeStamp)
-			=> E_ACharacter_ClientAckGoodMove_Implementation(this, TimeStamp);
+		public void ClientAckGoodMove_Implementation(float timeStamp)
+			=> E_ACharacter_ClientAckGoodMove_Implementation(this, timeStamp);
 		
-		public void ClientAdjustPosition(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
-			=> E_ACharacter_ClientAdjustPosition(this, TimeStamp, NewLoc, NewVel, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		public void ClientAdjustPosition(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustPosition(this, timeStamp, newLoc, newVel, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
 		
-		public void ClientAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, FVector NewVel, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
-			=> E_ACharacter_ClientAdjustPosition_Implementation(this, TimeStamp, NewLoc, NewVel, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		public void ClientAdjustPosition_Implementation(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustPosition_Implementation(this, timeStamp, newLoc, newVel, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
 		
 		public void ClientCheatFly()
 			=> E_ACharacter_ClientCheatFly(this);
@@ -652,11 +671,11 @@ namespace UnrealEngine
 		public virtual void ClientCheatWalk_Implementation()
 			=> E_ACharacter_ClientCheatWalk_Implementation(this);
 		
-		public void ClientVeryShortAdjustPosition(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
-			=> E_ACharacter_ClientVeryShortAdjustPosition(this, TimeStamp, NewLoc, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		public void ClientVeryShortAdjustPosition(float timeStamp, FVector newLoc, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientVeryShortAdjustPosition(this, timeStamp, newLoc, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
 		
-		public void ClientVeryShortAdjustPosition_Implementation(float TimeStamp, FVector NewLoc, UPrimitiveComponent NewBase, string NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte ServerMovementMode)
-			=> E_ACharacter_ClientVeryShortAdjustPosition_Implementation(this, TimeStamp, NewLoc, NewBase, NewBaseBoneName, bHasBase, bBaseRelativePosition, ServerMovementMode);
+		public void ClientVeryShortAdjustPosition_Implementation(float timeStamp, FVector newLoc, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientVeryShortAdjustPosition_Implementation(this, timeStamp, newLoc, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
 		
 		
 		/// <summary>
@@ -681,6 +700,13 @@ namespace UnrealEngine
 		/// </summary>
 		public float GetAnimRootMotionTranslationScale()
 			=> E_ACharacter_GetAnimRootMotionTranslationScale(this);
+		
+		
+		/// <summary>
+		/// <para>Accessor for BasedMovement </para>
+		/// </summary>
+		public FBasedMovementInfo GetBasedMovement()
+			=> E_ACharacter_GetBasedMovement(this);
 		
 		
 		/// <summary>
@@ -737,6 +763,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Accessor for ReplicatedBasedMovement </para>
+		/// </summary>
+		public FBasedMovementInfo GetReplicatedBasedMovement()
+			=> E_ACharacter_GetReplicatedBasedMovement(this);
+		
+		
+		/// <summary>
 		/// <para>Returns ReplicatedMovementMode </para>
 		/// </summary>
 		public byte GetReplicatedMovementMode()
@@ -790,8 +823,8 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public void K2_OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
-			=> E_ACharacter_K2_OnEndCrouch(this, HalfHeightAdjust, ScaledHalfHeightAdjust);
+		public void K2_OnEndCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust)
+			=> E_ACharacter_K2_OnEndCrouch(this, halfHeightAdjust, scaledHalfHeightAdjust);
 		
 		
 		/// <summary>
@@ -801,8 +834,8 @@ namespace UnrealEngine
 		/// <param name="PrevCustomMode">Custom mode before the change (applicable if PrevMovementMode is Custom) </param>
 		/// <param name="NewCustomMode">New custom mode (applicable if NewMovementMode is Custom) </param>
 		/// </summary>
-		public void K2_OnMovementModeChanged(EMovementMode PrevMovementMode, EMovementMode NewMovementMode, byte PrevCustomMode, byte NewCustomMode)
-			=> E_ACharacter_K2_OnMovementModeChanged(this, (byte)PrevMovementMode, (byte)NewMovementMode, PrevCustomMode, NewCustomMode);
+		public void K2_OnMovementModeChanged(EMovementMode prevMovementMode, EMovementMode newMovementMode, byte prevCustomMode, byte newCustomMode)
+			=> E_ACharacter_K2_OnMovementModeChanged(this, (byte)prevMovementMode, (byte)newMovementMode, prevCustomMode, newCustomMode);
 		
 		
 		/// <summary>
@@ -810,8 +843,8 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public void K2_OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
-			=> E_ACharacter_K2_OnStartCrouch(this, HalfHeightAdjust, ScaledHalfHeightAdjust);
+		public void K2_OnStartCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust)
+			=> E_ACharacter_K2_OnStartCrouch(this, halfHeightAdjust, scaledHalfHeightAdjust);
 		
 		
 		/// <summary>
@@ -819,8 +852,8 @@ namespace UnrealEngine
 		/// <para>@note C++ code should override UCharacterMovementComponent::PhysCustom() instead. </para>
 		/// <para>@see UCharacterMovementComponent::PhysCustom() </para>
 		/// </summary>
-		public void UpdateCustomMovement(float DeltaTime)
-			=> E_ACharacter_K2_UpdateCustomMovement(this, DeltaTime);
+		public void UpdateCustomMovement(float deltaTime)
+			=> E_ACharacter_K2_UpdateCustomMovement(this, deltaTime);
 		
 		
 		/// <summary>
@@ -830,8 +863,8 @@ namespace UnrealEngine
 		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
 		/// <para>@see OnMovementModeChanged() </para>
 		/// </summary>
-		public virtual void Landed(FHitResult Hit)
-			=> E_ACharacter_Landed(this, Hit);
+		public virtual void Landed(FHitResult hit)
+			=> E_ACharacter_Landed(this, hit);
 		
 		
 		/// <summary>
@@ -841,22 +874,22 @@ namespace UnrealEngine
 		/// <para>@PARAM bXYOverride if true replace the XY part of the Character's velocity instead of adding to it. </para>
 		/// <para>@PARAM bZOverride if true replace the Z component of the Character's velocity instead of adding to it. </para>
 		/// </summary>
-		public virtual void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
-			=> E_ACharacter_LaunchCharacter(this, LaunchVelocity, bXYOverride, bZOverride);
+		public virtual void LaunchCharacter(FVector launchVelocity, bool bXYOverride, bool bZOverride)
+			=> E_ACharacter_LaunchCharacter(this, launchVelocity, bXYOverride, bZOverride);
 		
 		
 		/// <summary>
 		/// <para>Called when pawn's movement is blocked </para>
 		/// <param name="Impact">describes the blocking hit. </param>
 		/// </summary>
-		public virtual void MoveBlockedBy(FHitResult Impact)
-			=> E_ACharacter_MoveBlockedBy(this, Impact);
+		public virtual void MoveBlockedBy(FHitResult impact)
+			=> E_ACharacter_MoveBlockedBy(this, impact);
 		
-		public virtual void NotifyActorBeginOverlap(AActor OtherActor)
-			=> E_ACharacter_NotifyActorBeginOverlap(this, OtherActor);
+		public virtual void NotifyActorBeginOverlap(AActor otherActor)
+			=> E_ACharacter_NotifyActorBeginOverlap(this, otherActor);
 		
-		public virtual void NotifyActorEndOverlap(AActor OtherActor)
-			=> E_ACharacter_NotifyActorEndOverlap(this, OtherActor);
+		public virtual void NotifyActorEndOverlap(AActor otherActor)
+			=> E_ACharacter_NotifyActorEndOverlap(this, otherActor);
 		
 		
 		/// <summary>
@@ -871,8 +904,8 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public virtual void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
-			=> E_ACharacter_OnEndCrouch(this, HalfHeightAdjust, ScaledHalfHeightAdjust);
+		public virtual void OnEndCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust)
+			=> E_ACharacter_OnEndCrouch(this, halfHeightAdjust, scaledHalfHeightAdjust);
 		
 		
 		/// <summary>
@@ -884,11 +917,11 @@ namespace UnrealEngine
 		public virtual void OnJumped_Implementation()
 			=> E_ACharacter_OnJumped_Implementation(this);
 		
-		public void OnLanded(FHitResult Hit)
-			=> E_ACharacter_OnLanded(this, Hit);
+		public void OnLanded(FHitResult hit)
+			=> E_ACharacter_OnLanded(this, hit);
 		
-		public void OnLaunched(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
-			=> E_ACharacter_OnLaunched(this, LaunchVelocity, bXYOverride, bZOverride);
+		public void OnLaunched(FVector launchVelocity, bool bXYOverride, bool bZOverride)
+			=> E_ACharacter_OnLaunched(this, launchVelocity, bXYOverride, bZOverride);
 		
 		
 		/// <summary>
@@ -896,8 +929,8 @@ namespace UnrealEngine
 		/// <param name="PrevMovementMode">Movement mode before the change </param>
 		/// <param name="PrevCustomMode">Custom mode before the change (applicable if PrevMovementMode is Custom) </param>
 		/// </summary>
-		public virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, byte PreviousCustomMode)
-			=> E_ACharacter_OnMovementModeChanged(this, (byte)PrevMovementMode, PreviousCustomMode);
+		public virtual void OnMovementModeChanged(EMovementMode prevMovementMode, byte previousCustomMode)
+			=> E_ACharacter_OnMovementModeChanged(this, (byte)prevMovementMode, previousCustomMode);
 		
 		public virtual void OnRep_IsCrouched()
 			=> E_ACharacter_OnRep_IsCrouched(this);
@@ -914,8 +947,8 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public virtual void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
-			=> E_ACharacter_OnStartCrouch(this, HalfHeightAdjust, ScaledHalfHeightAdjust);
+		public virtual void OnStartCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust)
+			=> E_ACharacter_OnStartCrouch(this, halfHeightAdjust, scaledHalfHeightAdjust);
 		
 		
 		/// <summary>
@@ -923,8 +956,8 @@ namespace UnrealEngine
 		/// <para>Actual change in location is expected to occur in CharacterMovement->SmoothCorrection(), after which this occurs. </para>
 		/// <para>Default behavior is to check for penetration in a blocking object if bClientCheckEncroachmentOnNetUpdate is enabled, and set bSimGravityDisabled=true if so. </para>
 		/// </summary>
-		public virtual void OnUpdateSimulatedPosition(FVector OldLocation, FQuat OldRotation)
-			=> E_ACharacter_OnUpdateSimulatedPosition(this, OldLocation, OldRotation);
+		public virtual void OnUpdateSimulatedPosition(FVector oldLocation, FQuat oldRotation)
+			=> E_ACharacter_OnUpdateSimulatedPosition(this, oldLocation, oldRotation);
 		
 		
 		/// <summary>
@@ -936,11 +969,11 @@ namespace UnrealEngine
 		/// <param name="PreviousLocation">Previous character location before movement off the ledge. </param>
 		/// <param name="TimeTick">Time delta of movement update resulting in moving off the ledge. </param>
 		/// </summary>
-		public void OnWalkingOffLedge(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta)
-			=> E_ACharacter_OnWalkingOffLedge(this, PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+		public void OnWalkingOffLedge(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta)
+			=> E_ACharacter_OnWalkingOffLedge(this, previousFloorImpactNormal, previousFloorContactNormal, previousLocation, timeDelta);
 		
-		public virtual void OnWalkingOffLedge_Implementation(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta)
-			=> E_ACharacter_OnWalkingOffLedge_Implementation(this, PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+		public virtual void OnWalkingOffLedge_Implementation(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta)
+			=> E_ACharacter_OnWalkingOffLedge_Implementation(this, previousFloorImpactNormal, previousFloorContactNormal, previousLocation, timeDelta);
 		
 		
 		/// <summary>
@@ -953,49 +986,49 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Restore actor to an old buffered move. </para>
 		/// </summary>
-		public bool RestoreReplicatedMove(FSimulatedRootMotionReplicatedMove RootMotionRepMove)
-			=> E_ACharacter_RestoreReplicatedMove(this, RootMotionRepMove);
+		public bool RestoreReplicatedMove(FSimulatedRootMotionReplicatedMove rootMotionRepMove)
+			=> E_ACharacter_RestoreReplicatedMove(this, rootMotionRepMove);
 		
-		public void RootMotionDebugClientPrintOnScreen(string InString)
-			=> E_ACharacter_RootMotionDebugClientPrintOnScreen(this, InString);
+		public void RootMotionDebugClientPrintOnScreen(string inString)
+			=> E_ACharacter_RootMotionDebugClientPrintOnScreen(this, inString);
 		
-		public virtual void RootMotionDebugClientPrintOnScreen_Implementation(string InString)
-			=> E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(this, InString);
+		public virtual void RootMotionDebugClientPrintOnScreen_Implementation(string inString)
+			=> E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(this, inString);
 		
 		
 		/// <summary>
 		/// <para>Save a new relative location in BasedMovement and a new rotation with is either relative or absolute. </para>
 		/// </summary>
-		public void SaveRelativeBasedMovement(FVector NewRelativeLocation, FRotator NewRotation, bool bRelativeRotation)
-			=> E_ACharacter_SaveRelativeBasedMovement(this, NewRelativeLocation, NewRotation, bRelativeRotation);
+		public void SaveRelativeBasedMovement(FVector newRelativeLocation, FRotator newRotation, bool bRelativeRotation)
+			=> E_ACharacter_SaveRelativeBasedMovement(this, newRelativeLocation, newRotation, bRelativeRotation);
 		
 		
 		/// <summary>
 		/// <para>Sets scale to apply to root motion translation on this Character </para>
 		/// </summary>
-		public void SetAnimRootMotionTranslationScale(float InAnimRootMotionTranslationScale)
-			=> E_ACharacter_SetAnimRootMotionTranslationScale(this, InAnimRootMotionTranslationScale);
+		public void SetAnimRootMotionTranslationScale(float inAnimRootMotionTranslationScale)
+			=> E_ACharacter_SetAnimRootMotionTranslationScale(this, inAnimRootMotionTranslationScale);
 		
 		
 		/// <summary>
 		/// <para>Sets the component the Character is walking on, used by CharacterMovement walking movement to be able to follow dynamic objects. </para>
 		/// </summary>
-		public virtual void SetBase(UPrimitiveComponent NewBase, string BoneName, bool bNotifyActor)
-			=> E_ACharacter_SetBase(this, NewBase, BoneName, bNotifyActor);
+		public virtual void SetBase(UPrimitiveComponent newBase, string boneName, bool bNotifyActor)
+			=> E_ACharacter_SetBase(this, newBase, boneName, bNotifyActor);
 		
 		
 		/// <summary>
 		/// <para>Returns true if the Landed() event should be called. Used by CharacterMovement to prevent notifications while playing back network moves. </para>
 		/// </summary>
-		public virtual bool ShouldNotifyLanded(FHitResult Hit)
-			=> E_ACharacter_ShouldNotifyLanded(this, Hit);
+		public virtual bool ShouldNotifyLanded(FHitResult hit)
+			=> E_ACharacter_ShouldNotifyLanded(this, hit);
 		
 		
 		/// <summary>
 		/// <para>Position fix up for Simulated Proxies playing Root Motion </para>
 		/// </summary>
-		public void SimulatedRootMotionPositionFixup(float DeltaSeconds)
-			=> E_ACharacter_SimulatedRootMotionPositionFixup(this, DeltaSeconds);
+		public void SimulatedRootMotionPositionFixup(float deltaSeconds)
+			=> E_ACharacter_SimulatedRootMotionPositionFixup(this, deltaSeconds);
 		
 		
 		/// <summary>
@@ -1019,9 +1052,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(ACharacter Self)
+		public static implicit operator IntPtr(ACharacter self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ACharacter(ObjectPointerDescription PtrDesc)

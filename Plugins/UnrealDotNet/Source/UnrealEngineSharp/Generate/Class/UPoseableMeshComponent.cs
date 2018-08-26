@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -25,9 +27,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UPoseableMeshComponent Self)
+		public static implicit operator IntPtr(UPoseableMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UPoseableMeshComponent(ObjectPointerDescription PtrDesc)

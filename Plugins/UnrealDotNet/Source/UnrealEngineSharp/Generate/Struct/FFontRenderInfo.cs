@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -40,9 +42,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FFontRenderInfo Self)
+		public static implicit operator IntPtr(FFontRenderInfo self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FFontRenderInfo(IntPtr Adress)

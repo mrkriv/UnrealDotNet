@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,8 +26,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Constructor taking a point position </para>
 		/// </summary>
-		public FSplinePoint(float InInputKey, FVector InPosition) :
-			base(E_CreateStruct_FSplinePoint_float_FVector(InInputKey, InPosition), false)
+		public FSplinePoint(float inInputKey, FVector inPosition) :
+			base(E_CreateStruct_FSplinePoint_float_FVector(inInputKey, inPosition), false)
 		{
 		}
 
@@ -34,7 +36,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplinePoint();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FSplinePoint_float_FVector(float InInputKey, IntPtr InPosition);
+		private static extern IntPtr E_CreateStruct_FSplinePoint_float_FVector(float inInputKey, IntPtr inPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FSplinePoint_ArriveTangent_GET(IntPtr Ptr);
@@ -107,9 +109,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FSplinePoint Self)
+		public static implicit operator IntPtr(FSplinePoint self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FSplinePoint(IntPtr Adress)

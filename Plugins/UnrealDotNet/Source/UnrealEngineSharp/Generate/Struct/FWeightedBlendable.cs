@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FWeightedBlendable(float InWeight, UObject InObject) :
-			base(E_CreateStruct_FWeightedBlendable_float_UObject(InWeight, InObject), false)
+		public FWeightedBlendable(float inWeight, UObject inObject) :
+			base(E_CreateStruct_FWeightedBlendable_float_UObject(inWeight, inObject), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FWeightedBlendable();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FWeightedBlendable_float_UObject(float InWeight, IntPtr InObject);
+		private static extern IntPtr E_CreateStruct_FWeightedBlendable_float_UObject(float inWeight, IntPtr inObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FWeightedBlendable_Object_GET(IntPtr Ptr);
@@ -63,9 +65,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FWeightedBlendable Self)
+		public static implicit operator IntPtr(FWeightedBlendable self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FWeightedBlendable(IntPtr Adress)

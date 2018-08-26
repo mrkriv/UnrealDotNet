@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,8 +19,8 @@ namespace UnrealEngine
 		/// <param name="InVector">3D Vector to set first three components. </param>
 		/// <param name="InW">W Coordinate. </param>
 		/// </summary>
-		public FVector4(FVector InVector, float InW) :
-			base(E_CreateStruct_FVector4_FVector_float(InVector, InW), false)
+		public FVector4(FVector inVector, float inW) :
+			base(E_CreateStruct_FVector4_FVector_float(inVector, inW), false)
 		{
 		}
 
@@ -30,8 +32,8 @@ namespace UnrealEngine
 		/// <param name="InZ">Z Coordinate. </param>
 		/// <param name="InW">W Coordinate. </param>
 		/// </summary>
-		public FVector4(float InX, float InY, float InZ, float InW) :
-			base(E_CreateStruct_FVector4_float_float_float_float(InX, InY, InZ, InW), false)
+		public FVector4(float inX, float inY, float inZ, float inW) :
+			base(E_CreateStruct_FVector4_float_float_float_float(inX, inY, inZ, inW), false)
 		{
 		}
 
@@ -41,20 +43,20 @@ namespace UnrealEngine
 		/// <param name="InXY">A 2D vector holding the X- and Y-components. </param>
 		/// <param name="InZW">A 2D vector holding the Z- and W-components. </param>
 		/// </summary>
-		public FVector4(FVector2D InXY, FVector2D InZW) :
-			base(E_CreateStruct_FVector4_FVector2D_FVector2D(InXY, InZW), false)
+		public FVector4(FVector2D inXY, FVector2D inZW) :
+			base(E_CreateStruct_FVector4_FVector2D_FVector2D(inXY, inZW), false)
 		{
 		}
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector4_FVector_float(IntPtr InVector, float InW);
+		private static extern IntPtr E_CreateStruct_FVector4_FVector_float(IntPtr inVector, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector4_float_float_float_float(float InX, float InY, float InZ, float InW);
+		private static extern IntPtr E_CreateStruct_FVector4_float_float_float_float(float inX, float inY, float inZ, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector4_FVector2D_FVector2D(IntPtr InXY, IntPtr InZW);
+		private static extern IntPtr E_CreateStruct_FVector4_FVector2D_FVector2D(IntPtr inXY, IntPtr inZW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector4_W_GET(IntPtr Ptr);
@@ -77,61 +79,64 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector4_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_ContainsNaN(IntPtr Self);
+		private static extern float E_FVector4_Component(IntPtr self, int index);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector4_DiagnosticCheckNaN(IntPtr Self);
+		private static extern bool E_FVector4_ContainsNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_Equals(IntPtr Self, IntPtr V, float Tolerance);
+		private static extern void E_FVector4_DiagnosticCheckNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector4_FindBestAxisVectors3(IntPtr Self, IntPtr Axis1, IntPtr Axis2);
+		private static extern bool E_FVector4_Equals(IntPtr self, IntPtr v, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_GetSafeNormal(IntPtr Self, float Tolerance);
+		private static extern void E_FVector4_FindBestAxisVectors3(IntPtr self, IntPtr axis1, IntPtr axis2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_GetUnsafeNormal3(IntPtr Self);
+		private static extern IntPtr E_FVector4_GetSafeNormal(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_InitFromString(IntPtr Self, string InSourceString);
+		private static extern IntPtr E_FVector4_GetUnsafeNormal3(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_IsNearlyZero3(IntPtr Self, float Tolerance);
+		private static extern bool E_FVector4_InitFromString(IntPtr self, string inSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector4_IsUnit3(IntPtr Self, float LengthSquaredTolerance);
+		private static extern bool E_FVector4_IsNearlyZero3(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_Reflect3(IntPtr Self, IntPtr Normal);
+		private static extern bool E_FVector4_IsUnit3(IntPtr self, float lengthSquaredTolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_Rotation(IntPtr Self);
+		private static extern IntPtr E_FVector4_Reflect3(IntPtr self, IntPtr normal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector4_Set(IntPtr Self, float InX, float InY, float InZ, float InW);
+		private static extern IntPtr E_FVector4_Rotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector4_Size(IntPtr Self);
+		private static extern void E_FVector4_Set(IntPtr self, float inX, float inY, float inZ, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector4_Size3(IntPtr Self);
+		private static extern float E_FVector4_Size(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector4_SizeSquared(IntPtr Self);
+		private static extern float E_FVector4_Size3(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector4_SizeSquared3(IntPtr Self);
+		private static extern float E_FVector4_SizeSquared(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_ToOrientationQuat(IntPtr Self);
+		private static extern float E_FVector4_SizeSquared3(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector4_ToOrientationRotator(IntPtr Self);
+		private static extern IntPtr E_FVector4_ToOrientationQuat(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector4_ToString(IntPtr Self);
+		private static extern IntPtr E_FVector4_ToOrientationRotator(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FVector4_ToString(IntPtr self);
 		
 		#endregion
 		
@@ -181,6 +186,15 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Gets a specific component of the vector. </para>
+		/// <param name="Index">The index of the component. </param>
+		/// <return>Reference to the component. </return>
+		/// </summary>
+		public float Component(int index)
+			=> E_FVector4_Component(this, index);
+		
+		
+		/// <summary>
 		/// <para>Utility to check if there are any non-finite values (NaN or Inf) in this vector. </para>
 		/// </summary>
 		public bool ContainsNaN()
@@ -196,16 +210,16 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error Tolerance. </param>
 		/// <return>true if the two vectors are equal within specified tolerance, otherwise false. </return>
 		/// </summary>
-		public bool Equals(FVector4 V, float Tolerance)
-			=> E_FVector4_Equals(this, V, Tolerance);
+		public bool Equals(FVector4 v, float tolerance)
+			=> E_FVector4_Equals(this, v, tolerance);
 		
 		
 		/// <summary>
 		/// <para>Find good arbitrary axis vectors to represent U and V axes of a plane, </para>
 		/// <para>given just the normal. </para>
 		/// </summary>
-		public void FindBestAxisVectors3(FVector4 Axis1, FVector4 Axis2)
-			=> E_FVector4_FindBestAxisVectors3(this, Axis1, Axis2);
+		public void FindBestAxisVectors3(FVector4 axis1, FVector4 axis2)
+			=> E_FVector4_FindBestAxisVectors3(this, axis1, axis2);
 		
 		
 		/// <summary>
@@ -213,8 +227,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
 		/// <return>A normalized copy of the vector or a zero vector. </return>
 		/// </summary>
-		public FVector4 GetSafeNormal(float Tolerance)
-			=> E_FVector4_GetSafeNormal(this, Tolerance);
+		public FVector4 GetSafeNormal(float tolerance)
+			=> E_FVector4_GetSafeNormal(this, tolerance);
 		
 		
 		/// <summary>
@@ -231,15 +245,15 @@ namespace UnrealEngine
 		/// <param name="InSourceString">FString containing the vector values. </param>
 		/// <return>true if the X,Y,Z values were read successfully; false otherwise. </return>
 		/// </summary>
-		public bool InitFromString(string InSourceString)
-			=> E_FVector4_InitFromString(this, InSourceString);
+		public bool InitFromString(string inSourceString)
+			=> E_FVector4_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
 		/// <para>Utility to check if all of the components of this vector are nearly zero given the tolerance. </para>
 		/// </summary>
-		public bool IsNearlyZero3(float Tolerance)
-			=> E_FVector4_IsNearlyZero3(this, Tolerance);
+		public bool IsNearlyZero3(float tolerance)
+			=> E_FVector4_IsNearlyZero3(this, tolerance);
 		
 		
 		/// <summary>
@@ -247,15 +261,15 @@ namespace UnrealEngine
 		/// <param name="LengthSquaredTolerance">Tolerance against squared length. </param>
 		/// <return>true if the vector is a unit vector within the specified tolerance. </return>
 		/// </summary>
-		public bool IsUnit3(float LengthSquaredTolerance)
-			=> E_FVector4_IsUnit3(this, LengthSquaredTolerance);
+		public bool IsUnit3(float lengthSquaredTolerance)
+			=> E_FVector4_IsUnit3(this, lengthSquaredTolerance);
 		
 		
 		/// <summary>
 		/// <para>Reflect vector. </para>
 		/// </summary>
-		public FVector4 Reflect3(FVector4 Normal)
-			=> E_FVector4_Reflect3(this, Normal);
+		public FVector4 Reflect3(FVector4 normal)
+			=> E_FVector4_Reflect3(this, normal);
 		
 		
 		/// <summary>
@@ -276,8 +290,8 @@ namespace UnrealEngine
 		/// <param name="InZ">New Z Coordinate. </param>
 		/// <param name="InW">New W Coordinate. </param>
 		/// </summary>
-		public void Set(float InX, float InY, float InZ, float InW)
-			=> E_FVector4_Set(this, InX, InY, InZ, InW);
+		public void Set(float inX, float inY, float inZ, float inW)
+			=> E_FVector4_Set(this, inX, inY, inZ, inW);
 		
 		
 		/// <summary>
@@ -338,9 +352,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FVector4 Self)
+		public static implicit operator IntPtr(FVector4 self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FVector4(IntPtr Adress)

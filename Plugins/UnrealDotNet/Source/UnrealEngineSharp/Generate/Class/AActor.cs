@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -94,6 +96,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bIsEditorOnlyActor_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_AActor_BlueprintCreatedComponents_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_BlueprintCreatedComponents_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bNetLoadOnClient_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bNetLoadOnClient_SET(IntPtr Ptr, byte Value);
@@ -139,6 +146,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bTearOff_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_AActor_Children_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_Children_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AActor_CreationTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_CreationTime_SET(IntPtr Ptr, float Value);
@@ -162,6 +174,11 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_PROP_AActor_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_AActor_Layers_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_Layers_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AActor_MinNetUpdateFrequency_GET(IntPtr Ptr);
@@ -238,772 +255,831 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_SpawnCollisionHandlingMethod_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_ActorHasTag(IntPtr Self, string Tag);
+		private static extern TemplatePointerDescription E_PROP_AActor_Tags_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_Tags_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_ActorHasTag(IntPtr self, string tag);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_AActor_ActorToWorld(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalOffset(IntPtr self, IntPtr deltaLocation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalRotation(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalRotation_o1(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorLocalTransform(IntPtr self, IntPtr newTransform, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldOffset(IntPtr self, IntPtr deltaLocation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldRotation(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldRotation_o1(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddActorWorldTransform(IntPtr self, IntPtr deltaTransform, bool bSweep, IntPtr outSweepHitResult, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_AddComponent(IntPtr self, string templateName, bool bManualAttachment, IntPtr relativeTransform, IntPtr componentTemplateContext);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddInstanceComponent(IntPtr self, IntPtr component);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddOwnedComponent(IntPtr self, IntPtr component);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddTickPrerequisiteActor(IntPtr self, IntPtr prerequisiteActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AddTickPrerequisiteComponent(IntPtr self, IntPtr prerequisiteComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_AllowReceiveTickEventOnDedicatedServer(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_ApplyWorldOffset(IntPtr self, IntPtr inOffset, bool bWorldShift);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AttachToActor(IntPtr self, IntPtr parentActor, IntPtr attachmentRules, string socketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_AttachToComponent(IntPtr self, IntPtr parent, IntPtr attachmentRules, string socketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_ActorToWorld(IntPtr Self);
+		private static extern void E_AActor_BeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddActorLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern IntPtr E_AActor_CalculateComponentsBoundingBoxInLocalSpace(IntPtr self, bool bNonColliding);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddActorLocalTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern bool E_AActor_CanBeBaseForCharacter(IntPtr self, IntPtr pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddActorWorldOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern bool E_AActor_CanEverTick(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddActorWorldTransform(IntPtr Self, IntPtr DeltaTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern bool E_AActor_CheckActorComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_AddComponent(IntPtr Self, string TemplateName, bool bManualAttachment, IntPtr RelativeTransform, IntPtr ComponentTemplateContext);
+		private static extern void E_AActor_CheckComponentInstanceName(IntPtr self, string inName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddInstanceComponent(IntPtr Self, IntPtr Component);
+		private static extern bool E_AActor_CheckStillInWorld(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddOwnedComponent(IntPtr Self, IntPtr Component);
+		private static extern void E_AActor_ClearComponentOverlaps(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		private static extern void E_AActor_ClearCrossLevelReferences(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AddTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		private static extern void E_AActor_ClearInstanceComponents(IntPtr self, bool bDestroyComponents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_AllowReceiveTickEventOnDedicatedServer(IntPtr Self);
+		private static extern void E_AActor_CopyRemoteRoleFrom(IntPtr self, IntPtr copyFromActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ApplyWorldOffset(IntPtr Self, IntPtr InOffset, bool bWorldShift);
+		private static extern ObjectPointerDescription E_AActor_CreateComponentFromTemplate(IntPtr self, IntPtr template, string inName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AttachToActor(IntPtr Self, IntPtr ParentActor, IntPtr AttachmentRules, string SocketName);
+		private static extern void E_AActor_DebugShowOneComponentHierarchy(IntPtr self, IntPtr sceneComp, int nestLevel, bool bShowPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_AttachToComponent(IntPtr Self, IntPtr Parent, IntPtr AttachmentRules, string SocketName);
+		private static extern bool E_AActor_Destroy(IntPtr self, bool bNetForce, bool bShouldModifyLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_BeginPlay(IntPtr Self);
+		private static extern void E_AActor_DestroyConstructedComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_CalculateComponentsBoundingBoxInLocalSpace(IntPtr Self, bool bNonColliding);
+		private static extern void E_AActor_Destroyed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_CanBeBaseForCharacter(IntPtr Self, IntPtr Pawn);
+		private static extern bool E_AActor_DestroyNetworkActorHandled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_CanEverTick(IntPtr Self);
+		private static extern void E_AActor_DetachAllSceneComponents(IntPtr self, IntPtr inParentComponent, IntPtr detachmentRules);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_CheckActorComponents(IntPtr Self);
+		private static extern void E_AActor_DetachFromActor(IntPtr self, IntPtr detachmentRules);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_CheckComponentInstanceName(IntPtr Self, string InName);
+		private static extern void E_AActor_DetachRootComponentFromParent(IntPtr self, bool bMaintainWorldPosition);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_CheckStillInWorld(IntPtr Self);
+		private static extern void E_AActor_DisableComponentsSimulatePhysics(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ClearComponentOverlaps(IntPtr Self);
+		private static extern void E_AActor_DispatchBeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ClearCrossLevelReferences(IntPtr Self);
+		private static extern void E_AActor_DispatchBlockingHit(IntPtr self, IntPtr myComp, IntPtr otherComp, bool bSelfMoved, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ClearInstanceComponents(IntPtr Self, bool bDestroyComponents);
+		private static extern void E_AActor_ExchangeNetRoles(IntPtr self, bool bRemoteOwner);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_CopyRemoteRoleFrom(IntPtr Self, IntPtr CopyFromActor);
+		private static extern void E_AActor_FinishAndRegisterComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_CreateComponentFromTemplate(IntPtr Self, IntPtr Template, string InName);
+		private static extern void E_AActor_FlushNetDormancy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DebugShowOneComponentHierarchy(IntPtr Self, IntPtr SceneComp, int NestLevel, bool bShowPosition);
+		private static extern void E_AActor_ForceNetRelevant(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_Destroy(IntPtr Self, bool bNetForce, bool bShouldModifyLevel);
+		private static extern void E_AActor_ForceNetUpdate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DestroyConstructedComponents(IntPtr Self);
+		private static extern void E_AActor_ForcePropertyCompare(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_Destroyed(IntPtr Self);
+		private static extern void E_AActor_GatherCurrentMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_DestroyNetworkActorHandled(IntPtr Self);
+		private static extern void E_AActor_GetActorBounds(IntPtr self, bool bOnlyCollidingComponents, IntPtr origin, IntPtr boxExtent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DetachAllSceneComponents(IntPtr Self, IntPtr InParentComponent, IntPtr DetachmentRules);
+		private static extern bool E_AActor_GetActorEnableCollision(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DetachFromActor(IntPtr Self, IntPtr DetachmentRules);
+		private static extern void E_AActor_GetActorEyesViewPoint(IntPtr self, IntPtr outLocation, IntPtr outRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DetachRootComponentFromParent(IntPtr Self, bool bMaintainWorldPosition);
+		private static extern IntPtr E_AActor_GetActorForwardVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DisableComponentsSimulatePhysics(IntPtr Self);
+		private static extern IntPtr E_AActor_GetActorLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DispatchBeginPlay(IntPtr Self);
+		private static extern IntPtr E_AActor_GetActorQuat(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_DispatchBlockingHit(IntPtr Self, IntPtr MyComp, IntPtr OtherComp, bool bSelfMoved, IntPtr Hit);
+		private static extern IntPtr E_AActor_GetActorRelativeScale3D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ExchangeNetRoles(IntPtr Self, bool bRemoteOwner);
+		private static extern IntPtr E_AActor_GetActorRightVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_FinishAndRegisterComponent(IntPtr Self, IntPtr Component);
+		private static extern IntPtr E_AActor_GetActorRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_FlushNetDormancy(IntPtr Self);
+		private static extern IntPtr E_AActor_GetActorScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ForceNetRelevant(IntPtr Self);
+		private static extern IntPtr E_AActor_GetActorScale3D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ForceNetUpdate(IntPtr Self);
+		private static extern float E_AActor_GetActorTickInterval(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ForcePropertyCompare(IntPtr Self);
+		private static extern float E_AActor_GetActorTimeDilation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GatherCurrentMovement(IntPtr Self);
+		private static extern IntPtr E_AActor_GetActorTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetActorBounds(IntPtr Self, bool bOnlyCollidingComponents, IntPtr Origin, IntPtr BoxExtent);
+		private static extern IntPtr E_AActor_GetActorUpVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_GetActorEnableCollision(IntPtr Self);
+		private static extern void E_AActor_GetAllChildActors(IntPtr self, IntPtr childActors, bool bIncludeDescendants);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetActorEyesViewPoint(IntPtr Self, IntPtr OutLocation, IntPtr OutRotation);
+		private static extern void E_AActor_GetAttachedActors(IntPtr self, IntPtr outActors);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorForwardVector(IntPtr Self);
+		private static extern IntPtr E_AActor_GetAttachmentReplication(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorLocation(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetAttachParentActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorQuat(IntPtr Self);
+		private static extern StringWrapper E_AActor_GetAttachParentSocketName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorRelativeScale3D(IntPtr Self);
+		private static extern IntPtr E_AActor_GetComponentsBoundingBox(IntPtr self, bool bNonColliding);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorRightVector(IntPtr Self);
+		private static extern void E_AActor_GetComponentsBoundingCylinder(IntPtr self, float collisionRadius, float collisionHalfHeight, bool bNonColliding);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorRotation(IntPtr Self);
+		private static extern byte E_AActor_GetComponentsCollisionResponseToChannel(IntPtr self, byte channel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorScale(IntPtr Self);
+		private static extern StringWrapper E_AActor_GetDebugName(IntPtr self, IntPtr actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorScale3D(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetDefaultAttachComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetActorTickInterval(IntPtr Self);
+		private static extern float E_AActor_GetDistanceTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetActorTimeDilation(IntPtr Self);
+		private static extern float E_AActor_GetDotProductTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorTransform(IntPtr Self);
+		private static extern float E_AActor_GetGameTimeSinceCreation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetActorUpVector(IntPtr Self);
+		private static extern float E_AActor_GetHorizontalDistanceTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetAttachParentActor(IntPtr Self);
+		private static extern float E_AActor_GetHorizontalDotProductTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_AActor_GetAttachParentSocketName(IntPtr Self);
+		private static extern StringWrapper E_AActor_GetHumanReadableName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetComponentsBoundingBox(IntPtr Self, bool bNonColliding);
+		private static extern float E_AActor_GetInputAxisValue(IntPtr self, string inputAxisName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetComponentsBoundingCylinder(IntPtr Self, float CollisionRadius, float CollisionHalfHeight, bool bNonColliding);
+		private static extern TemplatePointerDescription E_AActor_GetInstanceComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_AActor_GetComponentsCollisionResponseToChannel(IntPtr Self, byte Channel);
+		private static extern ObjectPointerDescription E_AActor_GetInstigator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_AActor_GetDebugName(IntPtr Self, IntPtr Actor);
+		private static extern bool E_AActor_GetIsReplicated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetDefaultAttachComponent(IntPtr Self);
+		private static extern float E_AActor_GetLastRenderTime(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetDistanceTo(IntPtr Self, IntPtr OtherActor);
+		private static extern float E_AActor_GetLifeSpan(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetDotProductTo(IntPtr Self, IntPtr OtherActor);
+		private static extern byte E_AActor_GetLocalRole(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetGameTimeSinceCreation(IntPtr Self);
+		private static extern StringWrapper E_AActor_GetNetDriverName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetHorizontalDistanceTo(IntPtr Self, IntPtr OtherActor);
+		private static extern byte E_AActor_GetNetMode(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetHorizontalDotProductTo(IntPtr Self, IntPtr OtherActor);
+		private static extern ObjectPointerDescription E_AActor_GetNetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_AActor_GetHumanReadableName(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetNetOwningPlayer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetInputAxisValue(IntPtr Self, string InputAxisName);
+		private static extern void E_AActor_GetOverlappingComponents(IntPtr self, IntPtr overlappingComponents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_GetIsReplicated(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetLastRenderTime(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetParentActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetLifeSpan(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetParentComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_AActor_GetLocalRole(IntPtr Self);
+		private static extern IntPtr E_AActor_GetPlacementExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_AActor_GetNetDriverName(IntPtr Self);
+		private static extern byte E_AActor_GetRemoteRole(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_AActor_GetNetMode(IntPtr Self);
+		private static extern TemplatePointerDescription E_AActor_GetReplicatedComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetNetOwningPlayer(IntPtr Self);
+		private static extern ObjectPointerDescription E_AActor_GetRootComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetOwner(IntPtr Self);
+		private static extern void E_AActor_GetSimpleCollisionCylinder(IntPtr self, float collisionRadius, float collisionHalfHeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetParentActor(IntPtr Self);
+		private static extern IntPtr E_AActor_GetSimpleCollisionCylinderExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetParentComponent(IntPtr Self);
+		private static extern float E_AActor_GetSimpleCollisionHalfHeight(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetPlacementExtent(IntPtr Self);
+		private static extern float E_AActor_GetSimpleCollisionRadius(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_AActor_GetRemoteRole(IntPtr Self);
+		private static extern float E_AActor_GetSquaredDistanceTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetRootComponent(IntPtr Self);
+		private static extern IntPtr E_AActor_GetTargetLocation(IntPtr self, IntPtr requestedBy);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetSimpleCollisionCylinder(IntPtr Self, float CollisionRadius, float CollisionHalfHeight);
+		private static extern bool E_AActor_GetTearOff(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetSimpleCollisionCylinderExtent(IntPtr Self);
+		private static extern bool E_AActor_GetTickableWhenPaused(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetSimpleCollisionHalfHeight(IntPtr Self);
+		private static extern IntPtr E_AActor_GetTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetSimpleCollisionRadius(IntPtr Self);
+		private static extern IntPtr E_AActor_GetVelocity(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetSquaredDistanceTo(IntPtr Self, IntPtr OtherActor);
+		private static extern float E_AActor_GetVerticalDistanceTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetTargetLocation(IntPtr Self, IntPtr RequestedBy);
+		private static extern bool E_AActor_HasActiveCameraComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_GetTearOff(IntPtr Self);
+		private static extern bool E_AActor_HasActivePawnControlCameraComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_GetTickableWhenPaused(IntPtr Self);
+		private static extern bool E_AActor_HasActorBegunPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetTransform(IntPtr Self);
+		private static extern bool E_AActor_HasAuthority(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetVelocity(IntPtr Self);
+		private static extern bool E_AActor_HasDeferredComponentRegistration(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetVerticalDistanceTo(IntPtr Self, IntPtr OtherActor);
+		private static extern bool E_AActor_HasNetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasActiveCameraComponent(IntPtr Self);
+		private static extern bool E_AActor_HasValidRootComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasActivePawnControlCameraComponent(IntPtr Self);
+		private static extern bool E_AActor_IncrementalRegisterComponents(IntPtr self, int numComponentsToRegister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasActorBegunPlay(IntPtr Self);
+		private static extern void E_AActor_InitializeComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasAuthority(IntPtr Self);
+		private static extern void E_AActor_InvalidateLightingCache(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasDeferredComponentRegistration(IntPtr Self);
+		private static extern void E_AActor_InvalidateLightingCacheDetailed(IntPtr self, bool bTranslationOnly);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasNetOwner(IntPtr Self);
+		private static extern bool E_AActor_IsActorBeginningPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_HasValidRootComponent(IntPtr Self);
+		private static extern bool E_AActor_IsActorBeingDestroyed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IncrementalRegisterComponents(IntPtr Self, int NumComponentsToRegister);
+		private static extern bool E_AActor_IsActorInitialized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_InitializeComponents(IntPtr Self);
+		private static extern bool E_AActor_IsActorTickEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_InvalidateLightingCache(IntPtr Self);
+		private static extern bool E_AActor_IsAttachedTo(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_InvalidateLightingCacheDetailed(IntPtr Self, bool bTranslationOnly);
+		private static extern bool E_AActor_IsBasedOnActor(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsActorBeginningPlay(IntPtr Self);
+		private static extern bool E_AActor_IsChildActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsActorBeingDestroyed(IntPtr Self);
+		private static extern bool E_AActor_IsComponentRelevantForNavigation(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsActorInitialized(IntPtr Self);
+		private static extern bool E_AActor_IsInPersistentLevel(IntPtr self, bool bIncludeLevelStreamingPersistent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsActorTickEnabled(IntPtr Self);
+		private static extern bool E_AActor_IsLevelBoundsRelevant(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsAttachedTo(IntPtr Self, IntPtr Other);
+		private static extern bool E_AActor_IsMatineeControlled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsBasedOnActor(IntPtr Self, IntPtr Other);
+		private static extern bool E_AActor_IsNetMode(IntPtr self, byte mode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsChildActor(IntPtr Self);
+		private static extern bool E_AActor_IsNetRelevantFor(IntPtr self, IntPtr realViewer, IntPtr viewTarget, IntPtr srcLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsComponentRelevantForNavigation(IntPtr Self, IntPtr Component);
+		private static extern bool E_AActor_IsNetStartupActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsInPersistentLevel(IntPtr Self, bool bIncludeLevelStreamingPersistent);
+		private static extern bool E_AActor_IsOverlappingActor(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsLevelBoundsRelevant(IntPtr Self);
+		private static extern bool E_AActor_IsOwnedBy(IntPtr self, IntPtr testOwner);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsMatineeControlled(IntPtr Self);
+		private static extern bool E_AActor_IsPendingKillPending(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsNetMode(IntPtr Self, byte Mode);
+		private static extern bool E_AActor_IsRelevancyOwnerFor(IntPtr self, IntPtr replicatedActor, IntPtr actorOwner, IntPtr connectionActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsNetRelevantFor(IntPtr Self, IntPtr RealViewer, IntPtr ViewTarget, IntPtr SrcLocation);
+		private static extern bool E_AActor_IsReplayRelevantFor(IntPtr self, IntPtr realViewer, IntPtr viewTarget, IntPtr srcLocation, float cullDistanceSquared);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsNetStartupActor(IntPtr Self);
+		private static extern bool E_AActor_IsRootComponentCollisionRegistered(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsOverlappingActor(IntPtr Self, IntPtr Other);
+		private static extern bool E_AActor_IsRootComponentMovable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsOwnedBy(IntPtr Self, IntPtr TestOwner);
+		private static extern bool E_AActor_IsRootComponentStatic(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsPendingKillPending(IntPtr Self);
+		private static extern bool E_AActor_IsRootComponentStationary(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRelevancyOwnerFor(IntPtr Self, IntPtr ReplicatedActor, IntPtr ActorOwner, IntPtr ConnectionActor);
+		private static extern bool E_AActor_IsRunningUserConstructionScript(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsReplayRelevantFor(IntPtr Self, IntPtr RealViewer, IntPtr ViewTarget, IntPtr SrcLocation, float CullDistanceSquared);
+		private static extern bool E_AActor_IsWithinNetRelevancyDistance(IntPtr self, IntPtr srcLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRootComponentCollisionRegistered(IntPtr Self);
+		private static extern void E_AActor_K2_AddActorLocalOffset(IntPtr self, IntPtr deltaLocation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRootComponentMovable(IntPtr Self);
+		private static extern void E_AActor_K2_AddActorLocalRotation(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRootComponentStatic(IntPtr Self);
+		private static extern void E_AActor_K2_AddActorLocalTransform(IntPtr self, IntPtr newTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRootComponentStationary(IntPtr Self);
+		private static extern void E_AActor_K2_AddActorWorldOffset(IntPtr self, IntPtr deltaLocation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsRunningUserConstructionScript(IntPtr Self);
+		private static extern void E_AActor_K2_AddActorWorldRotation(IntPtr self, IntPtr deltaRotation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_IsWithinNetRelevancyDistance(IntPtr Self, IntPtr SrcLocation);
+		private static extern void E_AActor_K2_AddActorWorldTransform(IntPtr self, IntPtr deltaTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorLocalOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_K2_AttachToActor(IntPtr self, IntPtr parentActor, string socketName, byte locationRule, byte rotationRule, byte scaleRule, bool bWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorLocalRotation(IntPtr Self, IntPtr DeltaRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_K2_AttachToComponent(IntPtr self, IntPtr parent, string socketName, byte locationRule, byte rotationRule, byte scaleRule, bool bWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorLocalTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_K2_DestroyActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorWorldOffset(IntPtr Self, IntPtr DeltaLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_K2_DestroyComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorWorldRotation(IntPtr Self, IntPtr DeltaRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_K2_DetachFromActor(IntPtr self, byte locationRule, byte rotationRule, byte scaleRule);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AddActorWorldTransform(IntPtr Self, IntPtr DeltaTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern IntPtr E_AActor_K2_GetActorLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AttachToActor(IntPtr Self, IntPtr ParentActor, string SocketName, byte LocationRule, byte RotationRule, byte ScaleRule, bool bWeldSimulatedBodies);
+		private static extern IntPtr E_AActor_K2_GetActorRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_AttachToComponent(IntPtr Self, IntPtr Parent, string SocketName, byte LocationRule, byte RotationRule, byte ScaleRule, bool bWeldSimulatedBodies);
+		private static extern ObjectPointerDescription E_AActor_K2_GetRootComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_DestroyActor(IntPtr Self);
+		private static extern void E_AActor_K2_OnReset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_DestroyComponent(IntPtr Self, IntPtr Component);
+		private static extern bool E_AActor_K2_SetActorLocation(IntPtr self, IntPtr newLocation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_DetachFromActor(IntPtr Self, byte LocationRule, byte RotationRule, byte ScaleRule);
+		private static extern bool E_AActor_K2_SetActorLocationAndRotation(IntPtr self, IntPtr newLocation, IntPtr newRotation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_K2_GetActorLocation(IntPtr Self);
+		private static extern void E_AActor_K2_SetActorRelativeLocation(IntPtr self, IntPtr newRelativeLocation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_K2_GetActorRotation(IntPtr Self);
+		private static extern void E_AActor_K2_SetActorRelativeRotation(IntPtr self, IntPtr newRelativeRotation, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_K2_GetRootComponent(IntPtr Self);
+		private static extern void E_AActor_K2_SetActorRelativeTransform(IntPtr self, IntPtr newRelativeTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_OnReset(IntPtr Self);
+		private static extern bool E_AActor_K2_SetActorRotation(IntPtr self, IntPtr newRotation, bool bTeleportPhysics);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_K2_SetActorLocation(IntPtr Self, IntPtr NewLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern bool E_AActor_K2_SetActorTransform(IntPtr self, IntPtr newTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_K2_SetActorLocationAndRotation(IntPtr Self, IntPtr NewLocation, IntPtr NewRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern bool E_AActor_K2_TeleportTo(IntPtr self, IntPtr destLocation, IntPtr destRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_SetActorRelativeLocation(IntPtr Self, IntPtr NewRelativeLocation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_LifeSpanExpired(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_SetActorRelativeRotation(IntPtr Self, IntPtr NewRelativeRotation, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_MakeNoise(IntPtr self, float loudness, IntPtr noiseInstigator, IntPtr noiseLocation, float maxRange, string tag);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_K2_SetActorRelativeTransform(IntPtr Self, IntPtr NewRelativeTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_MakeNoiseImpl(IntPtr self, IntPtr noiseMaker, float loudness, IntPtr noiseInstigator, IntPtr noiseLocation, float maxRange, string tag);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_K2_SetActorRotation(IntPtr Self, IntPtr NewRotation, bool bTeleportPhysics);
+		private static extern void E_AActor_MarkComponentsAsPendingKill(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_K2_SetActorTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr SweepHitResult, bool bTeleport);
+		private static extern void E_AActor_MarkComponentsRenderStateDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_K2_TeleportTo(IntPtr Self, IntPtr DestLocation, IntPtr DestRotation);
+		private static extern void E_AActor_NotifyActorBeginCursorOver(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_LifeSpanExpired(IntPtr Self);
+		private static extern void E_AActor_NotifyActorBeginOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_MakeNoise(IntPtr Self, float Loudness, IntPtr NoiseInstigator, IntPtr NoiseLocation, float MaxRange, string Tag);
+		private static extern void E_AActor_NotifyActorEndCursorOver(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_MakeNoiseImpl(IntPtr Self, IntPtr NoiseMaker, float Loudness, IntPtr NoiseInstigator, IntPtr NoiseLocation, float MaxRange, string Tag);
+		private static extern void E_AActor_NotifyActorEndOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_MarkComponentsAsPendingKill(IntPtr Self);
+		private static extern void E_AActor_NotifyHit(IntPtr self, IntPtr myComp, IntPtr other, IntPtr otherComp, bool bSelfMoved, IntPtr hitLocation, IntPtr hitNormal, IntPtr normalImpulse, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_MarkComponentsRenderStateDirty(IntPtr Self);
+		private static extern void E_AActor_OnConstruction(IntPtr self, IntPtr transform);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_NotifyActorBeginCursorOver(IntPtr Self);
+		private static extern void E_AActor_OnRep_AttachmentReplication(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_NotifyActorBeginOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_AActor_OnRep_Instigator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_NotifyActorEndCursorOver(IntPtr Self);
+		private static extern void E_AActor_OnRep_Owner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_NotifyActorEndOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_AActor_OnRep_ReplicatedMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_NotifyHit(IntPtr Self, IntPtr MyComp, IntPtr Other, IntPtr OtherComp, bool bSelfMoved, IntPtr HitLocation, IntPtr HitNormal, IntPtr NormalImpulse, IntPtr Hit);
+		private static extern void E_AActor_OnRep_ReplicateMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnConstruction(IntPtr Self, IntPtr Transform);
+		private static extern void E_AActor_OnReplicationPausedChanged(IntPtr self, bool bIsReplicationPaused);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnRep_AttachmentReplication(IntPtr Self);
+		private static extern void E_AActor_OnSubobjectCreatedFromReplication(IntPtr self, IntPtr newSubobject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnRep_Instigator(IntPtr Self);
+		private static extern void E_AActor_OnSubobjectDestroyFromReplication(IntPtr self, IntPtr subobject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnRep_Owner(IntPtr Self);
+		private static extern void E_AActor_OutsideWorldBounds(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnRep_ReplicatedMovement(IntPtr Self);
+		private static extern bool E_AActor_OwnsComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnRep_ReplicateMovement(IntPtr Self);
+		private static extern void E_AActor_PostActorConstruction(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnReplicationPausedChanged(IntPtr Self, bool bIsReplicationPaused);
+		private static extern void E_AActor_PostActorCreated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnSubobjectCreatedFromReplication(IntPtr Self, IntPtr NewSubobject);
+		private static extern void E_AActor_PostCreateBlueprintComponent(IntPtr self, IntPtr newActorComp);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OnSubobjectDestroyFromReplication(IntPtr Self, IntPtr Subobject);
+		private static extern void E_AActor_PostInitializeComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_OutsideWorldBounds(IntPtr Self);
+		private static extern void E_AActor_PostNetInit(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_OwnsComponent(IntPtr Self, IntPtr Component);
+		private static extern void E_AActor_PostNetReceiveLocationAndRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostActorConstruction(IntPtr Self);
+		private static extern void E_AActor_PostNetReceivePhysicState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostActorCreated(IntPtr Self);
+		private static extern void E_AActor_PostNetReceiveVelocity(IntPtr self, IntPtr newVelocity);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostCreateBlueprintComponent(IntPtr Self, IntPtr NewActorComp);
+		private static extern void E_AActor_PostRegisterAllComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostInitializeComponents(IntPtr Self);
+		private static extern void E_AActor_PostSpawnInitialize(IntPtr self, IntPtr spawnTransform, IntPtr inOwner, IntPtr inInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostNetInit(IntPtr Self);
+		private static extern void E_AActor_PostUnregisterAllComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostNetReceiveLocationAndRotation(IntPtr Self);
+		private static extern void E_AActor_PreInitializeComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostNetReceivePhysicState(IntPtr Self);
+		private static extern void E_AActor_PreRegisterAllComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostNetReceiveVelocity(IntPtr Self, IntPtr NewVelocity);
+		private static extern void E_AActor_PrestreamTextures(IntPtr self, float seconds, bool bEnableStreaming, int cinematicTextureGroups);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostRegisterAllComponents(IntPtr Self);
+		private static extern void E_AActor_ProcessUserConstructionScript(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostSpawnInitialize(IntPtr Self, IntPtr SpawnTransform, IntPtr InOwner, IntPtr InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction);
+		private static extern void E_AActor_ReceiveActorBeginCursorOver(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PostUnregisterAllComponents(IntPtr Self);
+		private static extern void E_AActor_ReceiveActorBeginOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PreInitializeComponents(IntPtr Self);
+		private static extern void E_AActor_ReceiveActorEndCursorOver(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PreRegisterAllComponents(IntPtr Self);
+		private static extern void E_AActor_ReceiveActorEndOverlap(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_PrestreamTextures(IntPtr Self, float Seconds, bool bEnableStreaming, int CinematicTextureGroups);
+		private static extern void E_AActor_ReceiveBeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ProcessUserConstructionScript(IntPtr Self);
+		private static extern void E_AActor_ReceiveDestroyed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveActorBeginCursorOver(IntPtr Self);
+		private static extern void E_AActor_ReceiveHit(IntPtr self, IntPtr myComp, IntPtr other, IntPtr otherComp, bool bSelfMoved, IntPtr hitLocation, IntPtr hitNormal, IntPtr normalImpulse, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveActorBeginOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_AActor_ReceiveTick(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveActorEndCursorOver(IntPtr Self);
+		private static extern void E_AActor_RegisterActorTickFunctions(IntPtr self, bool bRegister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveActorEndOverlap(IntPtr Self, IntPtr OtherActor);
+		private static extern void E_AActor_RegisterAllActorTickFunctions(IntPtr self, bool bRegister, bool bDoComponents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveBeginPlay(IntPtr Self);
+		private static extern void E_AActor_RegisterAllComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveDestroyed(IntPtr Self);
+		private static extern void E_AActor_RemoveInstanceComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveHit(IntPtr Self, IntPtr MyComp, IntPtr Other, IntPtr OtherComp, bool bSelfMoved, IntPtr HitLocation, IntPtr HitNormal, IntPtr NormalImpulse, IntPtr Hit);
+		private static extern void E_AActor_RemoveOwnedComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReceiveTick(IntPtr Self, float DeltaSeconds);
+		private static extern void E_AActor_RemoveTickPrerequisiteActor(IntPtr self, IntPtr prerequisiteActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RegisterActorTickFunctions(IntPtr Self, bool bRegister);
+		private static extern void E_AActor_RemoveTickPrerequisiteComponent(IntPtr self, IntPtr prerequisiteComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RegisterAllActorTickFunctions(IntPtr Self, bool bRegister, bool bDoComponents);
+		private static extern void E_AActor_ReregisterAllComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RegisterAllComponents(IntPtr Self);
+		private static extern void E_AActor_RerunConstructionScripts(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RemoveInstanceComponent(IntPtr Self, IntPtr Component);
+		private static extern void E_AActor_Reset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RemoveOwnedComponent(IntPtr Self, IntPtr Component);
+		private static extern void E_AActor_ResetOwnedComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RemoveTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		private static extern void E_AActor_ResetPropertiesForConstruction(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RemoveTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		private static extern void E_AActor_RewindForReplay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ReregisterAllComponents(IntPtr Self);
+		private static extern void E_AActor_SetActorEnableCollision(IntPtr self, bool bNewActorEnableCollision);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RerunConstructionScripts(IntPtr Self);
+		private static extern void E_AActor_SetActorHiddenInGame(IntPtr self, bool bNewHidden);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_Reset(IntPtr Self);
+		private static extern bool E_AActor_SetActorLocation(IntPtr self, IntPtr newLocation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ResetOwnedComponents(IntPtr Self);
+		private static extern bool E_AActor_SetActorLocationAndRotation(IntPtr self, IntPtr newLocation, IntPtr newRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_ResetPropertiesForConstruction(IntPtr Self);
+		private static extern bool E_AActor_SetActorLocationAndRotation_o1(IntPtr self, IntPtr newLocation, IntPtr newRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_RewindForReplay(IntPtr Self);
+		private static extern void E_AActor_SetActorRelativeLocation(IntPtr self, IntPtr newRelativeLocation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorEnableCollision(IntPtr Self, bool bNewActorEnableCollision);
+		private static extern void E_AActor_SetActorRelativeRotation(IntPtr self, IntPtr newRelativeRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorHiddenInGame(IntPtr Self, bool bNewHidden);
+		private static extern void E_AActor_SetActorRelativeRotation_o1(IntPtr self, IntPtr newRelativeRotation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_SetActorLocation(IntPtr Self, IntPtr NewLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern void E_AActor_SetActorRelativeScale3D(IntPtr self, IntPtr newRelativeScale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorRelativeLocation(IntPtr Self, IntPtr NewRelativeLocation, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern void E_AActor_SetActorRelativeTransform(IntPtr self, IntPtr newRelativeTransform, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorRelativeScale3D(IntPtr Self, IntPtr NewRelativeScale);
+		private static extern bool E_AActor_SetActorRotation(IntPtr self, IntPtr newRotation, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorRelativeTransform(IntPtr Self, IntPtr NewRelativeTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern bool E_AActor_SetActorRotation_o1(IntPtr self, IntPtr newRotation, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorScale3D(IntPtr Self, IntPtr NewScale3D);
+		private static extern void E_AActor_SetActorScale3D(IntPtr self, IntPtr newScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorTickEnabled(IntPtr Self, bool bEnabled);
+		private static extern void E_AActor_SetActorTickEnabled(IntPtr self, bool bEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetActorTickInterval(IntPtr Self, float TickInterval);
+		private static extern void E_AActor_SetActorTickInterval(IntPtr self, float tickInterval);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_SetActorTransform(IntPtr Self, IntPtr NewTransform, bool bSweep, IntPtr OutSweepHitResult, byte Teleport);
+		private static extern bool E_AActor_SetActorTransform(IntPtr self, IntPtr newTransform, bool bSweep, IntPtr outSweepHitResult, byte teleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetAutonomousProxy(IntPtr Self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare);
+		private static extern void E_AActor_SetAutonomousProxy(IntPtr self, bool bInAutonomousProxy, bool bAllowForcePropertyCompare);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetLifeSpan(IntPtr Self, float InLifespan);
+		private static extern void E_AActor_SetLifeSpan(IntPtr self, float inLifespan);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetLODParent(IntPtr Self, IntPtr InLODParent, float InParentDrawDistance);
+		private static extern void E_AActor_SetLODParent(IntPtr self, IntPtr inLODParent, float inParentDrawDistance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetNetDormancy(IntPtr Self, byte NewDormancy);
+		private static extern void E_AActor_SetNetDormancy(IntPtr self, byte newDormancy);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetNetDriverName(IntPtr Self, string NewNetDriverName);
+		private static extern void E_AActor_SetNetDriverName(IntPtr self, string newNetDriverName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetNetUpdateTime(IntPtr Self, float NewUpdateTime);
+		private static extern void E_AActor_SetNetUpdateTime(IntPtr self, float newUpdateTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetOwner(IntPtr Self, IntPtr NewOwner);
+		private static extern void E_AActor_SetOwner(IntPtr self, IntPtr newOwner);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetRemoteRoleForBackwardsCompat(IntPtr Self, byte InRemoteRole);
+		private static extern void E_AActor_SetRemoteRoleForBackwardsCompat(IntPtr self, byte inRemoteRole);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetReplicateMovement(IntPtr Self, bool bInReplicateMovement);
+		private static extern void E_AActor_SetReplicateMovement(IntPtr self, bool bInReplicateMovement);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetReplicates(IntPtr Self, bool bInReplicates);
+		private static extern void E_AActor_SetReplicates(IntPtr self, bool bInReplicates);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_SetRootComponent(IntPtr Self, IntPtr NewRootComponent);
+		private static extern bool E_AActor_SetRootComponent(IntPtr self, IntPtr newRootComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetTickableWhenPaused(IntPtr Self, bool bTickableWhenPaused);
+		private static extern void E_AActor_SetTickableWhenPaused(IntPtr self, bool bTickableWhenPaused);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SetTickGroup(IntPtr Self, byte NewTickGroup);
+		private static extern void E_AActor_SetTickGroup(IntPtr self, byte newTickGroup);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_ShouldTickIfViewportsOnly(IntPtr Self);
+		private static extern bool E_AActor_ShouldTickIfViewportsOnly(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SnapRootComponentTo(IntPtr Self, IntPtr InParentActor, string InSocketName);
+		private static extern void E_AActor_SnapRootComponentTo(IntPtr self, IntPtr inParentActor, string inSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SwapRolesForReplay(IntPtr Self);
+		private static extern void E_AActor_SwapRolesForReplay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_SyncReplicatedPhysicsSimulation(IntPtr Self);
+		private static extern void E_AActor_SyncReplicatedPhysicsSimulation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_TearOff(IntPtr Self);
+		private static extern void E_AActor_TearOff(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_TeleportSucceeded(IntPtr Self, bool bIsATest);
+		private static extern void E_AActor_TeleportSucceeded(IntPtr self, bool bIsATest);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_TeleportTo(IntPtr Self, IntPtr DestLocation, IntPtr DestRotation, bool bIsATest, bool bNoCheck);
+		private static extern bool E_AActor_TeleportTo(IntPtr self, IntPtr destLocation, IntPtr destRotation, bool bIsATest, bool bNoCheck);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_Tick(IntPtr Self, float DeltaSeconds);
+		private static extern void E_AActor_Tick(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_TickActor(IntPtr Self, float DeltaTime, byte TickType, IntPtr ThisTickFunction);
+		private static extern void E_AActor_TickActor(IntPtr self, float deltaTime, byte tickType, IntPtr thisTickFunction);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_TornOff(IntPtr Self);
+		private static extern void E_AActor_TornOff(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UninitializeComponents(IntPtr Self);
+		private static extern void E_AActor_UninitializeComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UnregisterAllComponents(IntPtr Self, bool bForReregister);
+		private static extern void E_AActor_UnregisterAllComponents(IntPtr self, bool bForReregister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UpdateAllReplicatedComponents(IntPtr Self);
+		private static extern void E_AActor_UpdateAllReplicatedComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UpdateComponentTransforms(IntPtr Self);
+		private static extern void E_AActor_UpdateComponentTransforms(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UpdateOverlaps(IntPtr Self, bool bDoNotifies);
+		private static extern void E_AActor_UpdateOverlaps(IntPtr self, bool bDoNotifies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UpdateReplicatedComponent(IntPtr Self, IntPtr Component);
+		private static extern void E_AActor_UpdateReplicatedComponent(IntPtr self, IntPtr component);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_UserConstructionScript(IntPtr Self);
+		private static extern void E_AActor_UserConstructionScript(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_UseShortConnectTimeout(IntPtr Self);
+		private static extern bool E_AActor_UseShortConnectTimeout(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_AActor_WasRecentlyRendered(IntPtr Self, float Tolerance);
+		private static extern bool E_AActor_WasRecentlyRendered(IntPtr self, float tolerance);
 		
 		#endregion
 		
@@ -1141,6 +1217,12 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bIsEditorOnlyActor_SET(NativePointer, value);
 		}
 
+		public TArray<UActorComponent> BlueprintCreatedComponents
+		{
+			get => E_PROP_AActor_BlueprintCreatedComponents_GET(NativePointer);
+			set => E_PROP_AActor_BlueprintCreatedComponents_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>This actor will be loaded on network clients during map load </para>
@@ -1214,6 +1296,12 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bTearOff_SET(NativePointer, value);
 		}
 
+		public TArray<AActor> Children
+		{
+			get => E_PROP_AActor_Children_GET(NativePointer);
+			set => E_PROP_AActor_Children_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>The time this actor was created, relative to World->GetTimeSeconds(). </para>
@@ -1263,6 +1351,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_Instigator_GET(NativePointer);
 			set => E_PROP_AActor_Instigator_SET(NativePointer, value);
+		}
+
+		public TArray<string> Layers
+		{
+			get => E_PROP_AActor_Layers_GET(NativePointer);
+			set => E_PROP_AActor_Layers_SET(NativePointer, value);
 		}
 
 		
@@ -1343,6 +1437,16 @@ namespace UnrealEngine
 			set => E_PROP_AActor_SpawnCollisionHandlingMethod_SET(NativePointer, (byte)value);
 		}
 
+		
+		/// <summary>
+		/// <para>Array of tags that can be used for grouping and categorizing. </para>
+		/// </summary>
+		public TArray<string> Tags
+		{
+			get => E_PROP_AActor_Tags_GET(NativePointer);
+			set => E_PROP_AActor_Tags_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region Events
@@ -1370,9 +1474,9 @@ namespace UnrealEngine
 
 		private event FActorBeginOverlapSignature _Event_OnActorBeginOverlap;
 		
-		internal void InvokeEvent_OnActorBeginOverlap(ObjectPointerDescription OverlappedActor, ObjectPointerDescription OtherActor)
+		internal void InvokeEvent_OnActorBeginOverlap(ObjectPointerDescription overlappedActor, ObjectPointerDescription otherActor)
 		{
-			_Event_OnActorBeginOverlap?.Invoke(OverlappedActor, OtherActor);
+			_Event_OnActorBeginOverlap?.Invoke(overlappedActor, otherActor);
 		}
 
 		
@@ -1398,9 +1502,9 @@ namespace UnrealEngine
 
 		private event FActorEndOverlapSignature _Event_OnActorEndOverlap;
 		
-		internal void InvokeEvent_OnActorEndOverlap(ObjectPointerDescription OverlappedActor, ObjectPointerDescription OtherActor)
+		internal void InvokeEvent_OnActorEndOverlap(ObjectPointerDescription overlappedActor, ObjectPointerDescription otherActor)
 		{
-			_Event_OnActorEndOverlap?.Invoke(OverlappedActor, OtherActor);
+			_Event_OnActorEndOverlap?.Invoke(overlappedActor, otherActor);
 		}
 
 		
@@ -1427,9 +1531,9 @@ namespace UnrealEngine
 
 		private event FActorHitSignature _Event_OnActorHit;
 		
-		internal void InvokeEvent_OnActorHit(ObjectPointerDescription SelfActor, ObjectPointerDescription OtherActor, FVector NormalImpulse, FHitResult Hit)
+		internal void InvokeEvent_OnActorHit(ObjectPointerDescription selfActor, ObjectPointerDescription otherActor, FVector normalImpulse, FHitResult hit)
 		{
-			_Event_OnActorHit?.Invoke(SelfActor, OtherActor, NormalImpulse, Hit);
+			_Event_OnActorHit?.Invoke(selfActor, otherActor, normalImpulse, hit);
 		}
 
 		
@@ -1454,9 +1558,9 @@ namespace UnrealEngine
 
 		private event FActorBeginCursorOverSignature _Event_OnBeginCursorOver;
 		
-		internal void InvokeEvent_OnBeginCursorOver(ObjectPointerDescription TouchedActor)
+		internal void InvokeEvent_OnBeginCursorOver(ObjectPointerDescription touchedActor)
 		{
-			_Event_OnBeginCursorOver?.Invoke(TouchedActor);
+			_Event_OnBeginCursorOver?.Invoke(touchedActor);
 		}
 
 		
@@ -1481,9 +1585,9 @@ namespace UnrealEngine
 
 		private event FActorDestroyedSignature _Event_OnDestroyed;
 		
-		internal void InvokeEvent_OnDestroyed(ObjectPointerDescription DestroyedActor)
+		internal void InvokeEvent_OnDestroyed(ObjectPointerDescription destroyedActor)
 		{
-			_Event_OnDestroyed?.Invoke(DestroyedActor);
+			_Event_OnDestroyed?.Invoke(destroyedActor);
 		}
 
 		
@@ -1508,9 +1612,9 @@ namespace UnrealEngine
 
 		private event FActorEndCursorOverSignature _Event_OnEndCursorOver;
 		
-		internal void InvokeEvent_OnEndCursorOver(ObjectPointerDescription TouchedActor)
+		internal void InvokeEvent_OnEndCursorOver(ObjectPointerDescription touchedActor)
 		{
-			_Event_OnEndCursorOver?.Invoke(TouchedActor);
+			_Event_OnEndCursorOver?.Invoke(touchedActor);
 		}
 
 		#endregion
@@ -1520,8 +1624,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>See if this actor contains the supplied tag </para>
 		/// </summary>
-		public bool ActorHasTag(string Tag)
-			=> E_AActor_ActorHasTag(this, Tag);
+		public bool ActorHasTag(string tag)
+			=> E_AActor_ActorHasTag(this, tag);
 		
 		
 		/// <summary>
@@ -1530,11 +1634,17 @@ namespace UnrealEngine
 		public FTransform ActorToWorld()
 			=> E_AActor_ActorToWorld(this);
 		
-		public void AddActorLocalOffset(FVector DeltaLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_AddActorLocalOffset(this, DeltaLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		public void AddActorLocalOffset(FVector deltaLocation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorLocalOffset(this, deltaLocation, bSweep, outSweepHitResult, (byte)teleport);
 		
-		public void AddActorLocalTransform(FTransform NewTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_AddActorLocalTransform(this, NewTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		public void AddActorLocalRotation(FRotator deltaRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorLocalRotation(this, deltaRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void AddActorLocalRotation(FQuat deltaRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorLocalRotation_o1(this, deltaRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void AddActorLocalTransform(FTransform newTransform, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorLocalTransform(this, newTransform, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
@@ -1548,11 +1658,17 @@ namespace UnrealEngine
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
 		/// </summary>
-		public void AddActorWorldOffset(FVector DeltaLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_AddActorWorldOffset(this, DeltaLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		public void AddActorWorldOffset(FVector deltaLocation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorWorldOffset(this, deltaLocation, bSweep, outSweepHitResult, (byte)teleport);
 		
-		public void AddActorWorldTransform(FTransform DeltaTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_AddActorWorldTransform(this, DeltaTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		public void AddActorWorldRotation(FRotator deltaRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorWorldRotation(this, deltaRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void AddActorWorldRotation(FQuat deltaRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorWorldRotation_o1(this, deltaRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void AddActorWorldTransform(FTransform deltaTransform, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_AddActorWorldTransform(this, deltaTransform, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
@@ -1568,15 +1684,15 @@ namespace UnrealEngine
 		/// <param name="RelativeTransform">The relative transform between the new component and its attach parent (automatic only) </param>
 		/// <param name="ComponentTemplateContext">Optional UBlueprintGeneratedClass reference to use to find the template in. If null (or not a BPGC), component is sought in this Actor's class </param>
 		/// </summary>
-		public UActorComponent AddComponent(string TemplateName, bool bManualAttachment, FTransform RelativeTransform, UObject ComponentTemplateContext)
-			=> E_AActor_AddComponent(this, TemplateName, bManualAttachment, RelativeTransform, ComponentTemplateContext);
+		public UActorComponent AddComponent(string templateName, bool bManualAttachment, FTransform relativeTransform, UObject componentTemplateContext)
+			=> E_AActor_AddComponent(this, templateName, bManualAttachment, relativeTransform, componentTemplateContext);
 		
 		
 		/// <summary>
 		/// <para>Adds a component to the instance components array </para>
 		/// </summary>
-		public void AddInstanceComponent(UActorComponent Component)
-			=> E_AActor_AddInstanceComponent(this, Component);
+		public void AddInstanceComponent(UActorComponent component)
+			=> E_AActor_AddInstanceComponent(this, component);
 		
 		
 		/// <summary>
@@ -1584,22 +1700,22 @@ namespace UnrealEngine
 		/// <para>The Component must be owned by the Actor or else it will assert </para>
 		/// <para>In general this should not need to be called directly by anything other than UActorComponent functions </para>
 		/// </summary>
-		public void AddOwnedComponent(UActorComponent Component)
-			=> E_AActor_AddOwnedComponent(this, Component);
+		public void AddOwnedComponent(UActorComponent component)
+			=> E_AActor_AddOwnedComponent(this, component);
 		
 		
 		/// <summary>
 		/// <para>Make this actor tick after PrerequisiteActor. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
 		/// </summary>
-		public virtual void AddTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_AActor_AddTickPrerequisiteActor(this, PrerequisiteActor);
+		public virtual void AddTickPrerequisiteActor(AActor prerequisiteActor)
+			=> E_AActor_AddTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
 		/// <para>Make this actor tick after PrerequisiteComponent. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
 		/// </summary>
-		public virtual void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_AActor_AddTickPrerequisiteComponent(this, PrerequisiteComponent);
+		public virtual void AddTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
+			=> E_AActor_AddTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
@@ -1614,8 +1730,8 @@ namespace UnrealEngine
 		/// <param name="InWorldOffset">Offset vector to shift actor location </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
-		public virtual void ApplyWorldOffset(FVector InOffset, bool bWorldShift)
-			=> E_AActor_ApplyWorldOffset(this, InOffset, bWorldShift);
+		public virtual void ApplyWorldOffset(FVector inOffset, bool bWorldShift)
+			=> E_AActor_ApplyWorldOffset(this, inOffset, bWorldShift);
 		
 		
 		/// <summary>
@@ -1624,8 +1740,8 @@ namespace UnrealEngine
 		/// <param name="AttachmentRules">How to handle transforms and modification when attaching. </param>
 		/// <param name="SocketName">Socket name to attach to, if any </param>
 		/// </summary>
-		public void AttachToActor(AActor ParentActor, FAttachmentTransformRules AttachmentRules, string SocketName)
-			=> E_AActor_AttachToActor(this, ParentActor, AttachmentRules, SocketName);
+		public void AttachToActor(AActor parentActor, FAttachmentTransformRules attachmentRules, string socketName)
+			=> E_AActor_AttachToActor(this, parentActor, attachmentRules, socketName);
 		
 		
 		/// <summary>
@@ -1634,8 +1750,8 @@ namespace UnrealEngine
 		/// <param name="AttachmentRules">How to handle transforms and welding when attaching. </param>
 		/// <param name="SocketName">Optional socket to attach to on the parent. </param>
 		/// </summary>
-		public void AttachToComponent(USceneComponent Parent, FAttachmentTransformRules AttachmentRules, string SocketName)
-			=> E_AActor_AttachToComponent(this, Parent, AttachmentRules, SocketName);
+		public void AttachToComponent(USceneComponent parent, FAttachmentTransformRules attachmentRules, string socketName)
+			=> E_AActor_AttachToComponent(this, parent, attachmentRules, socketName);
 		
 		
 		/// <summary>
@@ -1657,8 +1773,8 @@ namespace UnrealEngine
 		/// <para>Return true if the given Pawn can be "based" on this actor (ie walk on it). </para>
 		/// <param name="Pawn">The pawn that wants to be based on this actor </param>
 		/// </summary>
-		public virtual bool CanBeBaseForCharacter(APawn Pawn)
-			=> E_AActor_CanBeBaseForCharacter(this, Pawn);
+		public virtual bool CanBeBaseForCharacter(APawn pawn)
+			=> E_AActor_CanBeBaseForCharacter(this, pawn);
 		
 		
 		/// <summary>
@@ -1678,8 +1794,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Checks for and resolve any name conflicts prior to instancing a new Blueprint Component. </para>
 		/// </summary>
-		public void CheckComponentInstanceName(string InName)
-			=> E_AActor_CheckComponentInstanceName(this, InName);
+		public void CheckComponentInstanceName(string inName)
+			=> E_AActor_CheckComponentInstanceName(this, inName);
 		
 		
 		/// <summary>
@@ -1715,23 +1831,23 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Copies RemoteRole from another Actor and adds this actor to the list of network actors if necessary. </para>
 		/// </summary>
-		public void CopyRemoteRoleFrom(AActor CopyFromActor)
-			=> E_AActor_CopyRemoteRoleFrom(this, CopyFromActor);
+		public void CopyRemoteRoleFrom(AActor copyFromActor)
+			=> E_AActor_CopyRemoteRoleFrom(this, copyFromActor);
 		
 		
 		/// <summary>
 		/// <para>Util to create a component based on a template </para>
 		/// </summary>
-		public UActorComponent CreateComponentFromTemplate(UActorComponent Template, string InName)
-			=> E_AActor_CreateComponentFromTemplate(this, Template, InName);
+		public UActorComponent CreateComponentFromTemplate(UActorComponent template, string inName)
+			=> E_AActor_CreateComponentFromTemplate(this, template, inName);
 		
 		
 		/// <summary>
 		/// <para>Debug helper for showing the component hierarchy of one component </para>
 		/// <param name="Info">Optional String to display at top of info </param>
 		/// </summary>
-		public void DebugShowOneComponentHierarchy(USceneComponent SceneComp, int NestLevel, bool bShowPosition)
-			=> E_AActor_DebugShowOneComponentHierarchy(this, SceneComp, NestLevel, bShowPosition);
+		public void DebugShowOneComponentHierarchy(USceneComponent sceneComp, int nestLevel, bool bShowPosition)
+			=> E_AActor_DebugShowOneComponentHierarchy(this, sceneComp, nestLevel, bShowPosition);
 		
 		
 		/// <summary>
@@ -1773,16 +1889,16 @@ namespace UnrealEngine
 		/// <param name="InParentComponent">SceneComponent to detach this actor's components from </param>
 		/// <param name="DetachmentRules">Rules to apply when detaching components </param>
 		/// </summary>
-		public void DetachAllSceneComponents(USceneComponent InParentComponent, FDetachmentTransformRules DetachmentRules)
-			=> E_AActor_DetachAllSceneComponents(this, InParentComponent, DetachmentRules);
+		public void DetachAllSceneComponents(USceneComponent inParentComponent, FDetachmentTransformRules detachmentRules)
+			=> E_AActor_DetachAllSceneComponents(this, inParentComponent, detachmentRules);
 		
 		
 		/// <summary>
 		/// <para>Detaches the RootComponent of this Actor from any SceneComponent it is currently attached to. </para>
 		/// <param name="DetachmentRules">How to handle transforms when detaching. </param>
 		/// </summary>
-		public void DetachFromActor(FDetachmentTransformRules DetachmentRules)
-			=> E_AActor_DetachFromActor(this, DetachmentRules);
+		public void DetachFromActor(FDetachmentTransformRules detachmentRules)
+			=> E_AActor_DetachFromActor(this, detachmentRules);
 		
 		
 		/// <summary>
@@ -1810,8 +1926,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Call ReceiveHit, as well as delegates on Actor and Component </para>
 		/// </summary>
-		public void DispatchBlockingHit(UPrimitiveComponent MyComp, UPrimitiveComponent OtherComp, bool bSelfMoved, FHitResult Hit)
-			=> E_AActor_DispatchBlockingHit(this, MyComp, OtherComp, bSelfMoved, Hit);
+		public void DispatchBlockingHit(UPrimitiveComponent myComp, UPrimitiveComponent otherComp, bool bSelfMoved, FHitResult hit)
+			=> E_AActor_DispatchBlockingHit(this, myComp, otherComp, bSelfMoved, hit);
 		
 		
 		/// <summary>
@@ -1825,8 +1941,8 @@ namespace UnrealEngine
 		/// <para>Helper function to register the specified component, and add it to the serialized components array </para>
 		/// <param name="Component">Component to be finalized </param>
 		/// </summary>
-		public void FinishAndRegisterComponent(UActorComponent Component)
-			=> E_AActor_FinishAndRegisterComponent(this, Component);
+		public void FinishAndRegisterComponent(UActorComponent component)
+			=> E_AActor_FinishAndRegisterComponent(this, component);
 		
 		
 		/// <summary>
@@ -1868,8 +1984,8 @@ namespace UnrealEngine
 		/// <para>Returns the bounding box of all components that make up this Actor (excluding ChildActorComponents). </para>
 		/// <param name="bOnlyCollidingComponents">If true, will only return the bounding box for components with collision enabled. </param>
 		/// </summary>
-		public void GetActorBounds(bool bOnlyCollidingComponents, FVector Origin, FVector BoxExtent)
-			=> E_AActor_GetActorBounds(this, bOnlyCollidingComponents, Origin, BoxExtent);
+		public void GetActorBounds(bool bOnlyCollidingComponents, FVector origin, FVector boxExtent)
+			=> E_AActor_GetActorBounds(this, bOnlyCollidingComponents, origin, boxExtent);
 		
 		
 		/// <summary>
@@ -1888,8 +2004,8 @@ namespace UnrealEngine
 		/// <param name="OutLocation">location of view point </param>
 		/// <param name="OutRotation">view rotation of actor. </param>
 		/// </summary>
-		public virtual void GetActorEyesViewPoint(FVector OutLocation, FRotator OutRotation)
-			=> E_AActor_GetActorEyesViewPoint(this, OutLocation, OutRotation);
+		public virtual void GetActorEyesViewPoint(FVector outLocation, FRotator outRotation)
+			=> E_AActor_GetActorEyesViewPoint(this, outLocation, outRotation);
 		
 		
 		/// <summary>
@@ -1978,6 +2094,27 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns a list of all child actors, including children of children </para>
+		/// </summary>
+		public void GetAllChildActors(TArray<AActor> childActors, bool bIncludeDescendants = true)
+			=> E_AActor_GetAllChildActors(this, childActors, bIncludeDescendants);
+		
+		
+		/// <summary>
+		/// <para>Find all Actors which are attached directly to a component in this actor </para>
+		/// </summary>
+		public void GetAttachedActors(TArray<AActor> outActors)
+			=> E_AActor_GetAttachedActors(this, outActors);
+		
+		
+		/// <summary>
+		/// <para>Get read-only access to current AttachmentReplication. </para>
+		/// </summary>
+		public FRepAttachment GetAttachmentReplication()
+			=> E_AActor_GetAttachmentReplication(this);
+		
+		
+		/// <summary>
 		/// <para>Walk up the attachment chain from RootComponent until we encounter a different actor, and return it. If we are not attached to a component in a different actor, returns nullptr </para>
 		/// </summary>
 		public AActor GetAttachParentActor()
@@ -2002,8 +2139,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Get half-height/radius of a big axis-aligned cylinder around this actors registered colliding components, or all registered components if bNonColliding is false. </para>
 		/// </summary>
-		public virtual void GetComponentsBoundingCylinder(float CollisionRadius, float CollisionHalfHeight, bool bNonColliding)
-			=> E_AActor_GetComponentsBoundingCylinder(this, CollisionRadius, CollisionHalfHeight, bNonColliding);
+		public virtual void GetComponentsBoundingCylinder(float collisionRadius, float collisionHalfHeight, bool bNonColliding)
+			=> E_AActor_GetComponentsBoundingCylinder(this, collisionRadius, collisionHalfHeight, bNonColliding);
 		
 		
 		/// <summary>
@@ -2012,15 +2149,15 @@ namespace UnrealEngine
 		/// <para>if Component A ignores, but if Component B overlaps, it will return overlap </para>
 		/// <param name="Channel">The channel to change the response of </param>
 		/// </summary>
-		public virtual ECollisionResponse GetComponentsCollisionResponseToChannel(ECollisionChannel Channel)
-			=> (ECollisionResponse)E_AActor_GetComponentsCollisionResponseToChannel(this, (byte)Channel);
+		public virtual ECollisionResponse GetComponentsCollisionResponseToChannel(ECollisionChannel channel)
+			=> (ECollisionResponse)E_AActor_GetComponentsCollisionResponseToChannel(this, (byte)channel);
 		
 		
 		/// <summary>
 		/// <para>Retrieves actor's name used for logging, or string "NULL" if Actor is null </para>
 		/// </summary>
-		public string GetDebugName(AActor Actor)
-			=> E_AActor_GetDebugName(this, Actor);
+		public string GetDebugName(AActor actor)
+			=> E_AActor_GetDebugName(this, actor);
 		
 		
 		/// <summary>
@@ -2034,15 +2171,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the distance from this Actor to OtherActor. </para>
 		/// </summary>
-		public float GetDistanceTo(AActor OtherActor)
-			=> E_AActor_GetDistanceTo(this, OtherActor);
+		public float GetDistanceTo(AActor otherActor)
+			=> E_AActor_GetDistanceTo(this, otherActor);
 		
 		
 		/// <summary>
 		/// <para>Returns the dot product from this Actor to OtherActor. Returns -2.0 on failure. Returns 0.0 for coincidental actors. </para>
 		/// </summary>
-		public float GetDotProductTo(AActor OtherActor)
-			=> E_AActor_GetDotProductTo(this, OtherActor);
+		public float GetDotProductTo(AActor otherActor)
+			=> E_AActor_GetDotProductTo(this, otherActor);
 		
 		
 		/// <summary>
@@ -2055,15 +2192,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the distance from this Actor to OtherActor, ignoring Z. </para>
 		/// </summary>
-		public float GetHorizontalDistanceTo(AActor OtherActor)
-			=> E_AActor_GetHorizontalDistanceTo(this, OtherActor);
+		public float GetHorizontalDistanceTo(AActor otherActor)
+			=> E_AActor_GetHorizontalDistanceTo(this, otherActor);
 		
 		
 		/// <summary>
 		/// <para>Returns the dot product from this Actor to OtherActor, ignoring Z. Returns -2.0 on failure. Returns 0.0 for coincidental actors. </para>
 		/// </summary>
-		public float GetHorizontalDotProductTo(AActor OtherActor)
-			=> E_AActor_GetHorizontalDotProductTo(this, OtherActor);
+		public float GetHorizontalDotProductTo(AActor otherActor)
+			=> E_AActor_GetHorizontalDotProductTo(this, otherActor);
 		
 		
 		/// <summary>
@@ -2076,8 +2213,22 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Gets the value of the input axis if input is enabled for this actor. </para>
 		/// </summary>
-		public float GetInputAxisValue(string InputAxisName)
-			=> E_AActor_GetInputAxisValue(this, InputAxisName);
+		public float GetInputAxisValue(string inputAxisName)
+			=> E_AActor_GetInputAxisValue(this, inputAxisName);
+		
+		
+		/// <summary>
+		/// <para>Returns the instance components array </para>
+		/// </summary>
+		public TArray<UActorComponent> GetInstanceComponents()
+			=> E_AActor_GetInstanceComponents(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the instigator for this actor, or nullptr if there is none. </para>
+		/// </summary>
+		public APawn GetInstigator()
+			=> E_AActor_GetInstigator(this);
 		
 		
 		/// <summary>
@@ -2124,10 +2275,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <return>the actor responsible for replication, if any. Typically the player controller </return>
+		/// </summary>
+		public virtual AActor GetNetOwner()
+			=> E_AActor_GetNetOwner(this);
+		
+		
+		/// <summary>
 		/// <return>the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or nullptr. </return>
 		/// </summary>
 		public virtual UPlayer GetNetOwningPlayer()
 			=> E_AActor_GetNetOwningPlayer(this);
+		
+		
+		/// <summary>
+		/// <para>Returns list of components this actor is overlapping. </para>
+		/// </summary>
+		public void GetOverlappingComponents(TArray<UPrimitiveComponent> overlappingComponents)
+			=> E_AActor_GetOverlappingComponents(this, overlappingComponents);
 		
 		
 		/// <summary>
@@ -2167,6 +2332,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns a constant reference to the replicated components set </para>
+		/// </summary>
+		public TArray<UActorComponent> GetReplicatedComponents()
+			=> E_AActor_GetReplicatedComponents(this);
+		
+		
+		/// <summary>
 		/// <para>Returns this actor's root component. </para>
 		/// </summary>
 		public USceneComponent GetRootComponent()
@@ -2177,8 +2349,8 @@ namespace UnrealEngine
 		/// <para>Get axis-aligned cylinder around this actor, used for simple collision checks (ie Pawns reaching a destination). </para>
 		/// <para>If IsRootComponentCollisionRegistered() returns true, just returns its bounding cylinder, otherwise falls back to GetComponentsBoundingCylinder. </para>
 		/// </summary>
-		public virtual void GetSimpleCollisionCylinder(float CollisionRadius, float CollisionHalfHeight)
-			=> E_AActor_GetSimpleCollisionCylinder(this, CollisionRadius, CollisionHalfHeight);
+		public virtual void GetSimpleCollisionCylinder(float collisionRadius, float collisionHalfHeight)
+			=> E_AActor_GetSimpleCollisionCylinder(this, collisionRadius, collisionHalfHeight);
 		
 		
 		/// <summary>
@@ -2205,16 +2377,16 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the squared distance from this Actor to OtherActor. </para>
 		/// </summary>
-		public float GetSquaredDistanceTo(AActor OtherActor)
-			=> E_AActor_GetSquaredDistanceTo(this, OtherActor);
+		public float GetSquaredDistanceTo(AActor otherActor)
+			=> E_AActor_GetSquaredDistanceTo(this, otherActor);
 		
 		
 		/// <summary>
 		/// <para>Returns the optimal location to fire weapons at this actor </para>
 		/// <param name="RequestedBy">the Actor requesting the target location </param>
 		/// </summary>
-		public virtual FVector GetTargetLocation(AActor RequestedBy)
-			=> E_AActor_GetTargetLocation(this, RequestedBy);
+		public virtual FVector GetTargetLocation(AActor requestedBy)
+			=> E_AActor_GetTargetLocation(this, requestedBy);
 		
 		
 		/// <summary>
@@ -2249,8 +2421,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the distance from this Actor to OtherActor, ignoring XY. </para>
 		/// </summary>
-		public float GetVerticalDistanceTo(AActor OtherActor)
-			=> E_AActor_GetVerticalDistanceTo(this, OtherActor);
+		public float GetVerticalDistanceTo(AActor otherActor)
+			=> E_AActor_GetVerticalDistanceTo(this, otherActor);
 		
 		
 		/// <summary>
@@ -2308,8 +2480,8 @@ namespace UnrealEngine
 		/// <param name="NumComponentsToRegister">Number of components to register in this run, 0 for all </param>
 		/// <return>true when all components were registered for this actor </return>
 		/// </summary>
-		public bool IncrementalRegisterComponents(int NumComponentsToRegister)
-			=> E_AActor_IncrementalRegisterComponents(this, NumComponentsToRegister);
+		public bool IncrementalRegisterComponents(int numComponentsToRegister)
+			=> E_AActor_IncrementalRegisterComponents(this, numComponentsToRegister);
 		
 		
 		/// <summary>
@@ -2362,8 +2534,8 @@ namespace UnrealEngine
 		/// <param name="Other">the Actor to test for </param>
 		/// <return>true if this Actor is attached on Other Actor </return>
 		/// </summary>
-		public virtual bool IsAttachedTo(AActor Other)
-			=> E_AActor_IsAttachedTo(this, Other);
+		public virtual bool IsAttachedTo(AActor other)
+			=> E_AActor_IsAttachedTo(this, other);
 		
 		
 		/// <summary>
@@ -2371,8 +2543,8 @@ namespace UnrealEngine
 		/// <param name="Other">the Actor to test for </param>
 		/// <return>true if this Actor is based on Other Actor </return>
 		/// </summary>
-		public virtual bool IsBasedOnActor(AActor Other)
-			=> E_AActor_IsBasedOnActor(this, Other);
+		public virtual bool IsBasedOnActor(AActor other)
+			=> E_AActor_IsBasedOnActor(this, other);
 		
 		
 		/// <summary>
@@ -2386,8 +2558,8 @@ namespace UnrealEngine
 		/// <para>Check if owned component should be relevant for navigation </para>
 		/// <para>Allows implementing master switch to disable e.g. collision export in projectiles </para>
 		/// </summary>
-		public virtual bool IsComponentRelevantForNavigation(UActorComponent Component)
-			=> E_AActor_IsComponentRelevantForNavigation(this, Component);
+		public virtual bool IsComponentRelevantForNavigation(UActorComponent component)
+			=> E_AActor_IsComponentRelevantForNavigation(this, component);
 		
 		
 		/// <summary>
@@ -2416,8 +2588,8 @@ namespace UnrealEngine
 		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
 		/// <para>because it can check the static build flags without considering PIE. </para>
 		/// </summary>
-		public bool IsNetMode(ENetMode Mode)
-			=> E_AActor_IsNetMode(this, (byte)Mode);
+		public bool IsNetMode(ENetMode mode)
+			=> E_AActor_IsNetMode(this, (byte)mode);
 		
 		
 		/// <summary>
@@ -2426,8 +2598,8 @@ namespace UnrealEngine
 		/// <param name="SrcLocation">is the viewing location </param>
 		/// <return>bool - true if this actor is network relevant to the client associated with RealViewer </return>
 		/// </summary>
-		public virtual bool IsNetRelevantFor(AActor RealViewer, AActor ViewTarget, FVector SrcLocation)
-			=> E_AActor_IsNetRelevantFor(this, RealViewer, ViewTarget, SrcLocation);
+		public virtual bool IsNetRelevantFor(AActor realViewer, AActor viewTarget, FVector srcLocation)
+			=> E_AActor_IsNetRelevantFor(this, realViewer, viewTarget, srcLocation);
 		
 		
 		/// <summary>
@@ -2442,15 +2614,15 @@ namespace UnrealEngine
 		/// <param name="Other">The other Actor to test against </param>
 		/// <return>Whether any component of this Actor is overlapping any component of another Actor. </return>
 		/// </summary>
-		public bool IsOverlappingActor(AActor Other)
-			=> E_AActor_IsOverlappingActor(this, Other);
+		public bool IsOverlappingActor(AActor other)
+			=> E_AActor_IsOverlappingActor(this, other);
 		
 		
 		/// <summary>
 		/// <para>See if this actor is owned by TestOwner. </para>
 		/// </summary>
-		public bool IsOwnedBy(AActor TestOwner)
-			=> E_AActor_IsOwnedBy(this, TestOwner);
+		public bool IsOwnedBy(AActor testOwner)
+			=> E_AActor_IsOwnedBy(this, testOwner);
 		
 		
 		/// <summary>
@@ -2469,8 +2641,8 @@ namespace UnrealEngine
 		/// <param name="ConnectionActor">the controller of the connection that we're doing relevancy checks for </param>
 		/// <return>bool - true if this actor should be considered the owner </return>
 		/// </summary>
-		public virtual bool IsRelevancyOwnerFor(AActor ReplicatedActor, AActor ActorOwner, AActor ConnectionActor)
-			=> E_AActor_IsRelevancyOwnerFor(this, ReplicatedActor, ActorOwner, ConnectionActor);
+		public virtual bool IsRelevancyOwnerFor(AActor replicatedActor, AActor actorOwner, AActor connectionActor)
+			=> E_AActor_IsRelevancyOwnerFor(this, replicatedActor, actorOwner, connectionActor);
 		
 		
 		/// <summary>
@@ -2479,8 +2651,8 @@ namespace UnrealEngine
 		/// <param name="SrcLocation">is the viewing location </param>
 		/// <return>bool - true if this actor is replay relevant to the client associated with RealViewer </return>
 		/// </summary>
-		public virtual bool IsReplayRelevantFor(AActor RealViewer, AActor ViewTarget, FVector SrcLocation, float CullDistanceSquared)
-			=> E_AActor_IsReplayRelevantFor(this, RealViewer, ViewTarget, SrcLocation, CullDistanceSquared);
+		public virtual bool IsReplayRelevantFor(AActor realViewer, AActor viewTarget, FVector srcLocation, float cullDistanceSquared)
+			=> E_AActor_IsReplayRelevantFor(this, realViewer, viewTarget, srcLocation, cullDistanceSquared);
 		
 		
 		/// <summary>
@@ -2524,8 +2696,8 @@ namespace UnrealEngine
 		/// <param name="SrcLocation">Location to test against. </param>
 		/// <return>True if the actor is within net relevancy distance, false otherwise. </return>
 		/// </summary>
-		protected bool IsWithinNetRelevancyDistance(FVector SrcLocation)
-			=> E_AActor_IsWithinNetRelevancyDistance(this, SrcLocation);
+		protected bool IsWithinNetRelevancyDistance(FVector srcLocation)
+			=> E_AActor_IsWithinNetRelevancyDistance(this, srcLocation);
 		
 		
 		/// <summary>
@@ -2538,8 +2710,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void K2_AddActorLocalOffset(FVector DeltaLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorLocalOffset(this, DeltaLocation, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorLocalOffset(FVector deltaLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalOffset(this, deltaLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2552,8 +2724,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void AddActorLocalRotation(FRotator DeltaRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorLocalRotation(this, DeltaRotation, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorLocalRotation(FRotator deltaRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalRotation(this, deltaRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2566,8 +2738,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void K2_AddActorLocalTransform(FTransform NewTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorLocalTransform(this, NewTransform, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorLocalTransform(FTransform newTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorLocalTransform(this, newTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2581,8 +2753,8 @@ namespace UnrealEngine
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
 		/// </summary>
-		public void K2_AddActorWorldOffset(FVector DeltaLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorWorldOffset(this, DeltaLocation, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorWorldOffset(FVector deltaLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldOffset(this, deltaLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2595,15 +2767,15 @@ namespace UnrealEngine
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
 		/// </summary>
-		public void AddActorWorldRotation(FRotator DeltaRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorWorldRotation(this, DeltaRotation, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorWorldRotation(FRotator deltaRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldRotation(this, deltaRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
 		/// <para>Adds a delta to the transform of this actor in world space. Scale is unchanged. </para>
 		/// </summary>
-		public void K2_AddActorWorldTransform(FTransform DeltaTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_AddActorWorldTransform(this, DeltaTransform, bSweep, SweepHitResult, bTeleport);
+		public void K2_AddActorWorldTransform(FTransform deltaTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_AddActorWorldTransform(this, deltaTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2615,8 +2787,8 @@ namespace UnrealEngine
 		/// <param name="ScaleRule">How to handle scale when attaching. </param>
 		/// <param name="bWeldSimulatedBodies">Whether to weld together simulated physics bodies. </param>
 		/// </summary>
-		public void K2_AttachToActor(AActor ParentActor, string SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
-			=> E_AActor_K2_AttachToActor(this, ParentActor, SocketName, (byte)LocationRule, (byte)RotationRule, (byte)ScaleRule, bWeldSimulatedBodies);
+		public void K2_AttachToActor(AActor parentActor, string socketName, EAttachmentRule locationRule, EAttachmentRule rotationRule, EAttachmentRule scaleRule, bool bWeldSimulatedBodies)
+			=> E_AActor_K2_AttachToActor(this, parentActor, socketName, (byte)locationRule, (byte)rotationRule, (byte)scaleRule, bWeldSimulatedBodies);
 		
 		
 		/// <summary>
@@ -2626,8 +2798,8 @@ namespace UnrealEngine
 		/// <param name="AttachmentRules">How to handle transforms when attaching. </param>
 		/// <param name="bWeldSimulatedBodies">Whether to weld together simulated physics bodies. </param>
 		/// </summary>
-		public void K2_AttachToComponent(USceneComponent Parent, string SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
-			=> E_AActor_K2_AttachToComponent(this, Parent, SocketName, (byte)LocationRule, (byte)RotationRule, (byte)ScaleRule, bWeldSimulatedBodies);
+		public void K2_AttachToComponent(USceneComponent parent, string socketName, EAttachmentRule locationRule, EAttachmentRule rotationRule, EAttachmentRule scaleRule, bool bWeldSimulatedBodies)
+			=> E_AActor_K2_AttachToComponent(this, parent, socketName, (byte)locationRule, (byte)rotationRule, (byte)scaleRule, bWeldSimulatedBodies);
 		
 		
 		/// <summary>
@@ -2640,8 +2812,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>DEPRECATED - Use Component::DestroyComponent </para>
 		/// </summary>
-		public void DestroyComponent(UActorComponent Component)
-			=> E_AActor_K2_DestroyComponent(this, Component);
+		public void DestroyComponent(UActorComponent component)
+			=> E_AActor_K2_DestroyComponent(this, component);
 		
 		
 		/// <summary>
@@ -2650,8 +2822,8 @@ namespace UnrealEngine
 		/// <param name="RotationRule">How to handle rotation when detaching. </param>
 		/// <param name="ScaleRule">How to handle scale when detaching. </param>
 		/// </summary>
-		public void K2_DetachFromActor(EDetachmentRule LocationRule, EDetachmentRule RotationRule, EDetachmentRule ScaleRule)
-			=> E_AActor_K2_DetachFromActor(this, (byte)LocationRule, (byte)RotationRule, (byte)ScaleRule);
+		public void K2_DetachFromActor(EDetachmentRule locationRule, EDetachmentRule rotationRule, EDetachmentRule scaleRule)
+			=> E_AActor_K2_DetachFromActor(this, (byte)locationRule, (byte)rotationRule, (byte)scaleRule);
 		
 		
 		/// <summary>
@@ -2690,8 +2862,8 @@ namespace UnrealEngine
 		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
 		/// <return>Whether the location was successfully set (if not swept), or whether movement occurred at all (if swept). </return>
 		/// </summary>
-		public bool K2_SetActorLocation(FVector NewLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorLocation(this, NewLocation, bSweep, SweepHitResult, bTeleport);
+		public bool K2_SetActorLocation(FVector newLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorLocation(this, newLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2707,8 +2879,8 @@ namespace UnrealEngine
 		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
 		/// <return>Whether the rotation was successfully set. </return>
 		/// </summary>
-		public bool SetActorLocationAndRotation(FVector NewLocation, FRotator NewRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorLocationAndRotation(this, NewLocation, NewRotation, bSweep, SweepHitResult, bTeleport);
+		public bool K2_SetActorLocationAndRotation(FVector newLocation, FRotator newRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorLocationAndRotation(this, newLocation, newRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2721,8 +2893,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void K2_SetActorRelativeLocation(FVector NewRelativeLocation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorRelativeLocation(this, NewRelativeLocation, bSweep, SweepHitResult, bTeleport);
+		public void K2_SetActorRelativeLocation(FVector newRelativeLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeLocation(this, newRelativeLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2735,8 +2907,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void SetActorRelativeRotation(FRotator NewRelativeRotation, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorRelativeRotation(this, NewRelativeRotation, bSweep, SweepHitResult, bTeleport);
+		public void K2_SetActorRelativeRotation(FRotator newRelativeRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeRotation(this, newRelativeRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2749,8 +2921,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public void K2_SetActorRelativeTransform(FTransform NewRelativeTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorRelativeTransform(this, NewRelativeTransform, bSweep, SweepHitResult, bTeleport);
+		public void K2_SetActorRelativeTransform(FTransform newRelativeTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorRelativeTransform(this, newRelativeTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2761,8 +2933,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <return>Whether the rotation was successfully set. </return>
 		/// </summary>
-		public bool SetActorRotation(FRotator NewRotation, bool bTeleportPhysics)
-			=> E_AActor_K2_SetActorRotation(this, NewRotation, bTeleportPhysics);
+		public bool K2_SetActorRotation(FRotator newRotation, bool bTeleportPhysics)
+			=> E_AActor_K2_SetActorRotation(this, newRotation, bTeleportPhysics);
 		
 		
 		/// <summary>
@@ -2775,8 +2947,8 @@ namespace UnrealEngine
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
 		/// </summary>
-		public bool K2_SetActorTransform(FTransform NewTransform, bool bSweep, FHitResult SweepHitResult, bool bTeleport)
-			=> E_AActor_K2_SetActorTransform(this, NewTransform, bSweep, SweepHitResult, bTeleport);
+		public bool K2_SetActorTransform(FTransform newTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
+			=> E_AActor_K2_SetActorTransform(this, newTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
@@ -2785,8 +2957,8 @@ namespace UnrealEngine
 		/// <param name="DestRotation">The target rotation at the destination </param>
 		/// <return>true if the actor has been successfully moved, or false if it couldn't fit. </return>
 		/// </summary>
-		public bool Teleport(FVector DestLocation, FRotator DestRotation)
-			=> E_AActor_K2_TeleportTo(this, DestLocation, DestRotation);
+		public bool Teleport(FVector destLocation, FRotator destRotation)
+			=> E_AActor_K2_TeleportTo(this, destLocation, destRotation);
 		
 		
 		/// <summary>
@@ -2806,15 +2978,15 @@ namespace UnrealEngine
 		/// <param name="MaxRange">Max range at which the sound may be heard. A value of 0 indicates no max range (though perception may have its own range). Loudness scales the range. (Note: not supported for legacy PawnSensingComponent, only for AIPerception) </param>
 		/// <param name="Tag">Identifier for the noise. </param>
 		/// </summary>
-		public void MakeNoise(float Loudness, APawn NoiseInstigator, FVector NoiseLocation, float MaxRange, string Tag)
-			=> E_AActor_MakeNoise(this, Loudness, NoiseInstigator, NoiseLocation, MaxRange, Tag);
+		public void MakeNoise(float loudness, APawn noiseInstigator, FVector noiseLocation, float maxRange, string tag)
+			=> E_AActor_MakeNoise(this, loudness, noiseInstigator, noiseLocation, maxRange, tag);
 		
 		
 		/// <summary>
 		/// <para>Default Implementation of MakeNoise </para>
 		/// </summary>
-		public void MakeNoiseImpl(AActor NoiseMaker, float Loudness, APawn NoiseInstigator, FVector NoiseLocation, float MaxRange, string Tag)
-			=> E_AActor_MakeNoiseImpl(this, NoiseMaker, Loudness, NoiseInstigator, NoiseLocation, MaxRange, Tag);
+		public void MakeNoiseImpl(AActor noiseMaker, float loudness, APawn noiseInstigator, FVector noiseLocation, float maxRange, string tag)
+			=> E_AActor_MakeNoiseImpl(this, noiseMaker, loudness, noiseInstigator, noiseLocation, maxRange, tag);
 		
 		
 		/// <summary>
@@ -2843,8 +3015,8 @@ namespace UnrealEngine
 		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public virtual void NotifyActorBeginOverlap(AActor OtherActor)
-			=> E_AActor_NotifyActorBeginOverlap(this, OtherActor);
+		public virtual void NotifyActorBeginOverlap(AActor otherActor)
+			=> E_AActor_NotifyActorBeginOverlap(this, otherActor);
 		
 		
 		/// <summary>
@@ -2858,8 +3030,8 @@ namespace UnrealEngine
 		/// <para>Event when an actor no longer overlaps another actor, and they have separated. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public virtual void NotifyActorEndOverlap(AActor OtherActor)
-			=> E_AActor_NotifyActorEndOverlap(this, OtherActor);
+		public virtual void NotifyActorEndOverlap(AActor otherActor)
+			=> E_AActor_NotifyActorEndOverlap(this, otherActor);
 		
 		
 		/// <summary>
@@ -2870,16 +3042,16 @@ namespace UnrealEngine
 		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
 		/// <para>will be adjusted to indicate force from the other object against this object. </para>
 		/// </summary>
-		public virtual void NotifyHit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit)
-			=> E_AActor_NotifyHit(this, MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+		public virtual void NotifyHit(UPrimitiveComponent myComp, AActor other, UPrimitiveComponent otherComp, bool bSelfMoved, FVector hitLocation, FVector hitNormal, FVector normalImpulse, FHitResult hit)
+			=> E_AActor_NotifyHit(this, myComp, other, otherComp, bSelfMoved, hitLocation, hitNormal, normalImpulse, hit);
 		
 		
 		/// <summary>
 		/// <para>Called when an instance of this class is placed (in editor) or spawned. </para>
 		/// <param name="Transform">The transform the actor was constructed at. </param>
 		/// </summary>
-		public virtual void OnConstruction(FTransform Transform)
-			=> E_AActor_OnConstruction(this, Transform);
+		public virtual void OnConstruction(FTransform transform)
+			=> E_AActor_OnConstruction(this, transform);
 		
 		public virtual void OnRep_AttachmentReplication()
 			=> E_AActor_OnRep_AttachmentReplication(this);
@@ -2907,15 +3079,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called on the actor when a new subobject is dynamically created via replication </para>
 		/// </summary>
-		public virtual void OnSubobjectCreatedFromReplication(UObject NewSubobject)
-			=> E_AActor_OnSubobjectCreatedFromReplication(this, NewSubobject);
+		public virtual void OnSubobjectCreatedFromReplication(UObject newSubobject)
+			=> E_AActor_OnSubobjectCreatedFromReplication(this, newSubobject);
 		
 		
 		/// <summary>
 		/// <para>Called on the actor when a subobject is dynamically destroyed via replication </para>
 		/// </summary>
-		public virtual void OnSubobjectDestroyFromReplication(UObject Subobject)
-			=> E_AActor_OnSubobjectDestroyFromReplication(this, Subobject);
+		public virtual void OnSubobjectDestroyFromReplication(UObject subobject)
+			=> E_AActor_OnSubobjectDestroyFromReplication(this, subobject);
 		
 		
 		/// <summary>
@@ -2928,8 +3100,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Utility function for validating that a component is correctly in its Owner's OwnedComponents array </para>
 		/// </summary>
-		public bool OwnsComponent(UActorComponent Component)
-			=> E_AActor_OwnsComponent(this, Component);
+		public bool OwnsComponent(UActorComponent component)
+			=> E_AActor_OwnsComponent(this, component);
 		
 		
 		/// <summary>
@@ -2951,8 +3123,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called after instancing a new Blueprint Component from either a template or cooked data. </para>
 		/// </summary>
-		protected void PostCreateBlueprintComponent(UActorComponent NewActorComp)
-			=> E_AActor_PostCreateBlueprintComponent(this, NewActorComp);
+		protected void PostCreateBlueprintComponent(UActorComponent newActorComp)
+			=> E_AActor_PostCreateBlueprintComponent(this, newActorComp);
 		
 		
 		/// <summary>
@@ -2986,8 +3158,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update velocity - typically from ReplicatedMovement, not called for simulated physics! </para>
 		/// </summary>
-		public virtual void PostNetReceiveVelocity(FVector NewVelocity)
-			=> E_AActor_PostNetReceiveVelocity(this, NewVelocity);
+		public virtual void PostNetReceiveVelocity(FVector newVelocity)
+			=> E_AActor_PostNetReceiveVelocity(this, newVelocity);
 		
 		
 		/// <summary>
@@ -3000,8 +3172,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called after the actor is spawned in the world.  Responsible for setting up actor for play. </para>
 		/// </summary>
-		public void PostSpawnInitialize(FTransform SpawnTransform, AActor InOwner, APawn InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)
-			=> E_AActor_PostSpawnInitialize(this, SpawnTransform, InOwner, InInstigator, bRemoteOwned, bNoFail, bDeferConstruction);
+		public void PostSpawnInitialize(FTransform spawnTransform, AActor inOwner, APawn inInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)
+			=> E_AActor_PostSpawnInitialize(this, spawnTransform, inOwner, inInstigator, bRemoteOwned, bNoFail, bDeferConstruction);
 		
 		
 		/// <summary>
@@ -3031,8 +3203,8 @@ namespace UnrealEngine
 		/// <param name="bEnableStreaming">Whether to start (true) or stop (false) streaming </param>
 		/// <param name="CinematicTextureGroups">Bitfield indicating which texture groups that use extra high-resolution mips </param>
 		/// </summary>
-		public virtual void PrestreamTextures(float Seconds, bool bEnableStreaming, int CinematicTextureGroups)
-			=> E_AActor_PrestreamTextures(this, Seconds, bEnableStreaming, CinematicTextureGroups);
+		public virtual void PrestreamTextures(float seconds, bool bEnableStreaming, int cinematicTextureGroups)
+			=> E_AActor_PrestreamTextures(this, seconds, bEnableStreaming, cinematicTextureGroups);
 		
 		
 		/// <summary>
@@ -3054,8 +3226,8 @@ namespace UnrealEngine
 		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public void ActorBeginOverlap(AActor OtherActor)
-			=> E_AActor_ReceiveActorBeginOverlap(this, OtherActor);
+		public void ActorBeginOverlap(AActor otherActor)
+			=> E_AActor_ReceiveActorBeginOverlap(this, otherActor);
 		
 		
 		/// <summary>
@@ -3069,8 +3241,8 @@ namespace UnrealEngine
 		/// <para>Event when an actor no longer overlaps another actor, and they have separated. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public void ActorEndOverlap(AActor OtherActor)
-			=> E_AActor_ReceiveActorEndOverlap(this, OtherActor);
+		public void ActorEndOverlap(AActor otherActor)
+			=> E_AActor_ReceiveActorEndOverlap(this, otherActor);
 		
 		
 		/// <summary>
@@ -3092,15 +3264,15 @@ namespace UnrealEngine
 		/// <para>will be adjusted to indicate force from the other object against this object. </para>
 		/// <para>@note NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions. </para>
 		/// </summary>
-		public void Hit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit)
-			=> E_AActor_ReceiveHit(this, MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+		public void Hit(UPrimitiveComponent myComp, AActor other, UPrimitiveComponent otherComp, bool bSelfMoved, FVector hitLocation, FVector hitNormal, FVector normalImpulse, FHitResult hit)
+			=> E_AActor_ReceiveHit(this, myComp, other, otherComp, bSelfMoved, hitLocation, hitNormal, normalImpulse, hit);
 		
 		
 		/// <summary>
 		/// <para>Event called every frame </para>
 		/// </summary>
-		public void ReceiveTick(float DeltaSeconds)
-			=> E_AActor_ReceiveTick(this, DeltaSeconds);
+		public void ReceiveTick(float deltaSeconds)
+			=> E_AActor_ReceiveTick(this, deltaSeconds);
 		
 		
 		/// <summary>
@@ -3131,30 +3303,30 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Removes a component from the instance components array </para>
 		/// </summary>
-		public void RemoveInstanceComponent(UActorComponent Component)
-			=> E_AActor_RemoveInstanceComponent(this, Component);
+		public void RemoveInstanceComponent(UActorComponent component)
+			=> E_AActor_RemoveInstanceComponent(this, component);
 		
 		
 		/// <summary>
 		/// <para>Removes a component from the OwnedComponents array of the Actor. </para>
 		/// <para>In general this should not need to be called directly by anything other than UActorComponent functions </para>
 		/// </summary>
-		public void RemoveOwnedComponent(UActorComponent Component)
-			=> E_AActor_RemoveOwnedComponent(this, Component);
+		public void RemoveOwnedComponent(UActorComponent component)
+			=> E_AActor_RemoveOwnedComponent(this, component);
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteActor. </para>
 		/// </summary>
-		public virtual void RemoveTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_AActor_RemoveTickPrerequisiteActor(this, PrerequisiteActor);
+		public virtual void RemoveTickPrerequisiteActor(AActor prerequisiteActor)
+			=> E_AActor_RemoveTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
 		/// </summary>
-		public virtual void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_AActor_RemoveTickPrerequisiteComponent(this, PrerequisiteComponent);
+		public virtual void RemoveTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
+			=> E_AActor_RemoveTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
@@ -3228,29 +3400,70 @@ namespace UnrealEngine
 		/// <param name="OutSweepHitResult">The hit result from the move if swept. </param>
 		/// <return>Whether the location was successfully set if not swept, or whether movement occurred if swept. </return>
 		/// </summary>
-		public bool SetActorLocation(FVector NewLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_SetActorLocation(this, NewLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		public bool SetActorLocation(FVector newLocation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorLocation(this, newLocation, bSweep, outSweepHitResult, (byte)teleport);
 		
-		public void SetActorRelativeLocation(FVector NewRelativeLocation, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_SetActorRelativeLocation(this, NewRelativeLocation, bSweep, OutSweepHitResult, (byte)Teleport);
+		
+		/// <summary>
+		/// <para>Move the actor instantly to the specified location and rotation. </para>
+		/// <param name="NewLocation">The new location to teleport the Actor to. </param>
+		/// <param name="NewRotation">The new rotation for the Actor. </param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
+		/// <param name="Teleport">How we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If equal to ETeleportType::TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If equal to ETeleportType::None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
+		/// <param name="OutSweepHitResult">The hit result from the move if swept. </param>
+		/// <return>Whether the rotation was successfully set. </return>
+		/// </summary>
+		public bool SetActorLocationAndRotation(FVector newLocation, FRotator newRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorLocationAndRotation(this, newLocation, newRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public bool SetActorLocationAndRotation(FVector newLocation, FQuat newRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorLocationAndRotation_o1(this, newLocation, newRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void SetActorRelativeLocation(FVector newRelativeLocation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorRelativeLocation(this, newRelativeLocation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void SetActorRelativeRotation(FRotator newRelativeRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorRelativeRotation(this, newRelativeRotation, bSweep, outSweepHitResult, (byte)teleport);
+		
+		public void SetActorRelativeRotation(FQuat newRelativeRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorRelativeRotation_o1(this, newRelativeRotation, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
 		/// <para>Set the actor's RootComponent to the specified relative scale 3d </para>
 		/// <param name="NewRelativeScale">New scale to set the actor's RootComponent to </param>
 		/// </summary>
-		public void SetActorRelativeScale3D(FVector NewRelativeScale)
-			=> E_AActor_SetActorRelativeScale3D(this, NewRelativeScale);
+		public void SetActorRelativeScale3D(FVector newRelativeScale)
+			=> E_AActor_SetActorRelativeScale3D(this, newRelativeScale);
 		
-		public void SetActorRelativeTransform(FTransform NewRelativeTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_SetActorRelativeTransform(this, NewRelativeTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		public void SetActorRelativeTransform(FTransform newRelativeTransform, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorRelativeTransform(this, newRelativeTransform, bSweep, outSweepHitResult, (byte)teleport);
+		
+		
+		/// <summary>
+		/// <para>Set the Actor's rotation instantly to the specified rotation. </para>
+		/// <param name="NewRotation">The new rotation for the Actor. </param>
+		/// <param name="Teleport">How we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// <para>If equal to ETeleportType::TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// <para>If equal to ETeleportType::None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// <return>Whether the rotation was successfully set. </return>
+		/// </summary>
+		public bool SetActorRotation(FRotator newRotation, ETeleportType teleport)
+			=> E_AActor_SetActorRotation(this, newRotation, (byte)teleport);
+		
+		public bool SetActorRotation(FQuat newRotation, ETeleportType teleport)
+			=> E_AActor_SetActorRotation_o1(this, newRotation, (byte)teleport);
 		
 		
 		/// <summary>
 		/// <para>Set the Actor's world-space scale. </para>
 		/// </summary>
-		public void SetActorScale3D(FVector NewScale3D)
-			=> E_AActor_SetActorScale3D(this, NewScale3D);
+		public void SetActorScale3D(FVector newScale3D)
+			=> E_AActor_SetActorScale3D(this, newScale3D);
 		
 		
 		/// <summary>
@@ -3266,11 +3479,11 @@ namespace UnrealEngine
 		/// <para>Sets the tick interval of this actor's primary tick function. Will not enable a disabled tick function. Takes effect on next tick. </para>
 		/// <param name="TickInterval">The rate at which this actor should be ticking </param>
 		/// </summary>
-		public void SetActorTickInterval(float TickInterval)
-			=> E_AActor_SetActorTickInterval(this, TickInterval);
+		public void SetActorTickInterval(float tickInterval)
+			=> E_AActor_SetActorTickInterval(this, tickInterval);
 		
-		public bool SetActorTransform(FTransform NewTransform, bool bSweep, FHitResult OutSweepHitResult, ETeleportType Teleport)
-			=> E_AActor_SetActorTransform(this, NewTransform, bSweep, OutSweepHitResult, (byte)Teleport);
+		public bool SetActorTransform(FTransform newTransform, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
+			=> E_AActor_SetActorTransform(this, newTransform, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
@@ -3283,52 +3496,52 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the lifespan of this actor. When it expires the object will be destroyed. If requested lifespan is 0, the timer is cleared and the actor will not be destroyed. </para>
 		/// </summary>
-		public virtual void SetLifeSpan(float InLifespan)
-			=> E_AActor_SetLifeSpan(this, InLifespan);
+		public virtual void SetLifeSpan(float inLifespan)
+			=> E_AActor_SetLifeSpan(this, inLifespan);
 		
 		
 		/// <summary>
 		/// <para>Set LOD Parent Primitive </para>
 		/// </summary>
-		public void SetLODParent(UPrimitiveComponent InLODParent, float InParentDrawDistance)
-			=> E_AActor_SetLODParent(this, InLODParent, InParentDrawDistance);
+		public void SetLODParent(UPrimitiveComponent inLODParent, float inParentDrawDistance)
+			=> E_AActor_SetLODParent(this, inLODParent, inParentDrawDistance);
 		
 		
 		/// <summary>
 		/// <para>Puts actor in dormant networking state </para>
 		/// </summary>
-		public void SetNetDormancy(ENetDormancy NewDormancy)
-			=> E_AActor_SetNetDormancy(this, (byte)NewDormancy);
+		public void SetNetDormancy(ENetDormancy newDormancy)
+			=> E_AActor_SetNetDormancy(this, (byte)newDormancy);
 		
 		
 		/// <summary>
 		/// <para>Set the name of the net driver associated with this actor.  Will move the actor out of the list of network actors from the old net driver and add it to the new list </para>
 		/// <param name="NewNetDriverName">name of the new net driver association </param>
 		/// </summary>
-		public void SetNetDriverName(string NewNetDriverName)
-			=> E_AActor_SetNetDriverName(this, NewNetDriverName);
+		public void SetNetDriverName(string newNetDriverName)
+			=> E_AActor_SetNetDriverName(this, newNetDriverName);
 		
 		
 		/// <summary>
 		/// <para>Updates NetUpdateTime to the new value for future net relevancy checks </para>
 		/// </summary>
-		public void SetNetUpdateTime(float NewUpdateTime)
-			=> E_AActor_SetNetUpdateTime(this, NewUpdateTime);
+		public void SetNetUpdateTime(float newUpdateTime)
+			=> E_AActor_SetNetUpdateTime(this, newUpdateTime);
 		
 		
 		/// <summary>
 		/// <para>Set the owner of this Actor, used primarily for network replication. </para>
 		/// <param name="NewOwner">The Actor whom takes over ownership of this Actor </param>
 		/// </summary>
-		public virtual void SetOwner(AActor NewOwner)
-			=> E_AActor_SetOwner(this, NewOwner);
+		public virtual void SetOwner(AActor newOwner)
+			=> E_AActor_SetOwner(this, newOwner);
 		
 		
 		/// <summary>
 		/// <para>This function should only be used in the constructor of classes that need to set the RemoteRole for backwards compatibility purposes </para>
 		/// </summary>
-		protected void SetRemoteRoleForBackwardsCompat(ENetRole InRemoteRole)
-			=> E_AActor_SetRemoteRoleForBackwardsCompat(this, (byte)InRemoteRole);
+		protected void SetRemoteRoleForBackwardsCompat(ENetRole inRemoteRole)
+			=> E_AActor_SetRemoteRoleForBackwardsCompat(this, (byte)inRemoteRole);
 		
 		
 		/// <summary>
@@ -3354,8 +3567,8 @@ namespace UnrealEngine
 		/// <para>Sets root component to be the specified component.  NewRootComponent's owner should be this actor. </para>
 		/// <return>true if successful </return>
 		/// </summary>
-		public bool SetRootComponent(USceneComponent NewRootComponent)
-			=> E_AActor_SetRootComponent(this, NewRootComponent);
+		public bool SetRootComponent(USceneComponent newRootComponent)
+			=> E_AActor_SetRootComponent(this, newRootComponent);
 		
 		
 		/// <summary>
@@ -3369,8 +3582,8 @@ namespace UnrealEngine
 		/// <para>Sets the ticking group for this actor. </para>
 		/// <param name="NewTickGroup">the new value to assign </param>
 		/// </summary>
-		public void SetTickGroup(ETickingGroup NewTickGroup)
-			=> E_AActor_SetTickGroup(this, (byte)NewTickGroup);
+		public void SetTickGroup(ETickingGroup newTickGroup)
+			=> E_AActor_SetTickGroup(this, (byte)newTickGroup);
 		
 		
 		/// <summary>
@@ -3384,8 +3597,8 @@ namespace UnrealEngine
 		/// <para>Snap the RootComponent of this Actor to the supplied Actor's root component, optionally at a named socket. It is not valid to call this on components that are not Registered. </para>
 		/// <para>If InSocketName == NAME_None, it will attach to origin of the InParentActor. </para>
 		/// </summary>
-		public void SnapActorTo(AActor InParentActor, string InSocketName)
-			=> E_AActor_SnapRootComponentTo(this, InParentActor, InSocketName);
+		public void SnapActorTo(AActor inParentActor, string inSocketName)
+			=> E_AActor_SnapRootComponentTo(this, inParentActor, inSocketName);
 		
 		
 		/// <summary>
@@ -3426,8 +3639,8 @@ namespace UnrealEngine
 		/// <param name="bNoCheck">is true if we should skip checking for encroachment in the world or other actors </param>
 		/// <return>true if the actor has been successfully moved, or false if it couldn't fit. </return>
 		/// </summary>
-		public virtual bool TeleportTo(FVector DestLocation, FRotator DestRotation, bool bIsATest, bool bNoCheck)
-			=> E_AActor_TeleportTo(this, DestLocation, DestRotation, bIsATest, bNoCheck);
+		public virtual bool TeleportTo(FVector destLocation, FRotator destRotation, bool bIsATest, bool bNoCheck)
+			=> E_AActor_TeleportTo(this, destLocation, destRotation, bIsATest, bNoCheck);
 		
 		
 		/// <summary>
@@ -3435,8 +3648,8 @@ namespace UnrealEngine
 		/// <para>Note that Tick is disabled by default, and you will need to check PrimaryActorTick.bCanEverTick is set to true to enable it. </para>
 		/// <param name="DeltaSeconds">Game time elapsed during last frame modified by the time dilation </param>
 		/// </summary>
-		public virtual void Tick(float DeltaSeconds)
-			=> E_AActor_Tick(this, DeltaSeconds);
+		public virtual void Tick(float deltaSeconds)
+			=> E_AActor_Tick(this, deltaSeconds);
 		
 		
 		/// <summary>
@@ -3445,8 +3658,8 @@ namespace UnrealEngine
 		/// <param name="TickType">The type of tick that is happening </param>
 		/// <param name="ThisTickFunction">The tick function that is firing, useful for getting the completion handle </param>
 		/// </summary>
-		public virtual void TickActor(float DeltaTime, ELevelTick TickType, FActorTickFunction ThisTickFunction)
-			=> E_AActor_TickActor(this, DeltaTime, (byte)TickType, ThisTickFunction);
+		public virtual void TickActor(float deltaTime, ELevelTick tickType, FActorTickFunction thisTickFunction)
+			=> E_AActor_TickActor(this, deltaTime, (byte)tickType, thisTickFunction);
 		
 		
 		/// <summary>
@@ -3496,8 +3709,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called when the replicated state of a component changes to update the Actor's cached ReplicatedComponents array </para>
 		/// </summary>
-		public void UpdateReplicatedComponent(UActorComponent Component)
-			=> E_AActor_UpdateReplicatedComponent(this, Component);
+		public void UpdateReplicatedComponent(UActorComponent component)
+			=> E_AActor_UpdateReplicatedComponent(this, component);
 		
 		
 		/// <summary>
@@ -3524,14 +3737,14 @@ namespace UnrealEngine
 		/// <param name="Tolerance">How many seconds ago the actor last render time can be and still count as having been "recently" rendered. </param>
 		/// <return>Whether this actor was recently rendered. </return>
 		/// </summary>
-		public bool WasRecentlyRendered(float Tolerance)
-			=> E_AActor_WasRecentlyRendered(this, Tolerance);
+		public bool WasRecentlyRendered(float tolerance)
+			=> E_AActor_WasRecentlyRendered(this, tolerance);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(AActor Self)
+		public static implicit operator IntPtr(AActor self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator AActor(ObjectPointerDescription PtrDesc)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,40 +26,40 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ALight(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_ALight_GetBrightness(IntPtr Self);
+		private static extern float E_ALight_GetBrightness(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ALight_GetLightComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ALight_GetLightComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ALight_IsEnabled(IntPtr Self);
+		private static extern bool E_ALight_IsEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ALight_IsToggleable(IntPtr Self);
+		private static extern bool E_ALight_IsToggleable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_OnRep_bEnabled(IntPtr Self);
+		private static extern void E_ALight_OnRep_bEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetAffectTranslucentLighting(IntPtr Self, bool bNewValue);
+		private static extern void E_ALight_SetAffectTranslucentLighting(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetBrightness(IntPtr Self, float NewBrightness);
+		private static extern void E_ALight_SetBrightness(IntPtr self, float newBrightness);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetCastShadows(IntPtr Self, bool bNewValue);
+		private static extern void E_ALight_SetCastShadows(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetEnabled(IntPtr Self, bool bSetEnabled);
+		private static extern void E_ALight_SetEnabled(IntPtr self, bool bSetEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetLightFunctionFadeDistance(IntPtr Self, float NewLightFunctionFadeDistance);
+		private static extern void E_ALight_SetLightFunctionFadeDistance(IntPtr self, float newLightFunctionFadeDistance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_SetLightFunctionScale(IntPtr Self, IntPtr NewLightFunctionScale);
+		private static extern void E_ALight_SetLightFunctionScale(IntPtr self, IntPtr newLightFunctionScale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ALight_ToggleEnabled(IntPtr Self);
+		private static extern void E_ALight_ToggleEnabled(IntPtr self);
 		
 		#endregion
 		
@@ -88,8 +90,8 @@ namespace UnrealEngine
 		public void SetAffectTranslucentLighting(bool bNewValue)
 			=> E_ALight_SetAffectTranslucentLighting(this, bNewValue);
 		
-		public void SetBrightness(float NewBrightness)
-			=> E_ALight_SetBrightness(this, NewBrightness);
+		public void SetBrightness(float newBrightness)
+			=> E_ALight_SetBrightness(this, newBrightness);
 		
 		public void SetCastShadows(bool bNewValue)
 			=> E_ALight_SetCastShadows(this, bNewValue);
@@ -97,20 +99,20 @@ namespace UnrealEngine
 		public void SetEnabled(bool bSetEnabled)
 			=> E_ALight_SetEnabled(this, bSetEnabled);
 		
-		public void SetLightFunctionFadeDistance(float NewLightFunctionFadeDistance)
-			=> E_ALight_SetLightFunctionFadeDistance(this, NewLightFunctionFadeDistance);
+		public void SetLightFunctionFadeDistance(float newLightFunctionFadeDistance)
+			=> E_ALight_SetLightFunctionFadeDistance(this, newLightFunctionFadeDistance);
 		
-		public void SetLightFunctionScale(FVector NewLightFunctionScale)
-			=> E_ALight_SetLightFunctionScale(this, NewLightFunctionScale);
+		public void SetLightFunctionScale(FVector newLightFunctionScale)
+			=> E_ALight_SetLightFunctionScale(this, newLightFunctionScale);
 		
 		public void ToggleEnabled()
 			=> E_ALight_ToggleEnabled(this);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(ALight Self)
+		public static implicit operator IntPtr(ALight self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ALight(ObjectPointerDescription PtrDesc)

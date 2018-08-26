@@ -9,12 +9,7 @@ namespace UnrealEngine
 
         [DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
         private static extern void E_DeleteStruct(IntPtr adress);
-
-        public NativeStructWrapper(IntPtr nativePointer) : base(nativePointer)
-        {
-            IsRef = false;
-        }
-
+        
         internal NativeStructWrapper(IntPtr nativePointer, bool isRef) : base(nativePointer)
         {
             IsRef = isRef;

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,13 +19,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>path following: request new velocity </para>
 		/// </summary>
-		public override void RequestDirectMove(FVector MoveVelocity, bool bForceMaxSpeed) { }
+		public override void RequestDirectMove(FVector moveVelocity, bool bForceMaxSpeed) { }
 		
 		
 		/// <summary>
 		/// <para>path following: request new move input (normal vector = full strength) </para>
 		/// </summary>
-		public override void RequestPathMove(FVector MoveInput) { }
+		public override void RequestPathMove(FVector moveInput) { }
 		
 		
 		/// <summary>
@@ -31,9 +33,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void StopActiveMovement() { }
 		
-		public static implicit operator IntPtr(ManageNavMovementComponent Self)
+		public static implicit operator IntPtr(ManageNavMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageNavMovementComponent(ObjectPointerDescription PtrDesc)

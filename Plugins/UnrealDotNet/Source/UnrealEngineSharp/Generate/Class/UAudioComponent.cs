@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -126,58 +128,58 @@ namespace UnrealEngine
 		private static extern void E_PROP_UAudioComponent_VolumeMultiplier_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_AdjustVolume(IntPtr Self, float AdjustVolumeDuration, float AdjustVolumeLevel);
+		private static extern void E_UAudioComponent_AdjustVolume(IntPtr self, float adjustVolumeDuration, float adjustVolumeLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_FadeIn(IntPtr Self, float FadeInDuration, float FadeVolumeLevel, float StartTime);
+		private static extern void E_UAudioComponent_FadeIn(IntPtr self, float fadeInDuration, float fadeVolumeLevel, float startTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_FadeOut(IntPtr Self, float FadeOutDuration, float FadeVolumeLevel);
+		private static extern void E_UAudioComponent_FadeOut(IntPtr self, float fadeOutDuration, float fadeVolumeLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UAudioComponent_GetAudioComponentUserID(IntPtr Self);
+		private static extern StringWrapper E_UAudioComponent_GetAudioComponentUserID(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UAudioComponent_IsPlaying(IntPtr Self);
+		private static extern bool E_UAudioComponent_IsPlaying(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_Play(IntPtr Self, float StartTime);
+		private static extern void E_UAudioComponent_Play(IntPtr self, float startTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_PlayInternal(IntPtr Self, float StartTime, float FadeInDuration, float FadeVolumeLevel);
+		private static extern void E_UAudioComponent_PlayInternal(IntPtr self, float startTime, float fadeInDuration, float fadeVolumeLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetBoolParameter(IntPtr Self, string InName, bool InBool);
+		private static extern void E_UAudioComponent_SetBoolParameter(IntPtr self, string inName, bool inBool);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetFloatParameter(IntPtr Self, string InName, float InFloat);
+		private static extern void E_UAudioComponent_SetFloatParameter(IntPtr self, string inName, float inFloat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetIntParameter(IntPtr Self, string InName, int InInt);
+		private static extern void E_UAudioComponent_SetIntParameter(IntPtr self, string inName, int inInt);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetLowPassFilterEnabled(IntPtr Self, bool InLowPassFilterEnabled);
+		private static extern void E_UAudioComponent_SetLowPassFilterEnabled(IntPtr self, bool inLowPassFilterEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetLowPassFilterFrequency(IntPtr Self, float InLowPassFilterFrequency);
+		private static extern void E_UAudioComponent_SetLowPassFilterFrequency(IntPtr self, float inLowPassFilterFrequency);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetPaused(IntPtr Self, bool bPause);
+		private static extern void E_UAudioComponent_SetPaused(IntPtr self, bool bPause);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetPitchMultiplier(IntPtr Self, float NewPitchMultiplier);
+		private static extern void E_UAudioComponent_SetPitchMultiplier(IntPtr self, float newPitchMultiplier);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetSoundParameter(IntPtr Self, IntPtr Param);
+		private static extern void E_UAudioComponent_SetSoundParameter(IntPtr self, IntPtr param);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetUISound(IntPtr Self, bool bInUISound);
+		private static extern void E_UAudioComponent_SetUISound(IntPtr self, bool bInUISound);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_SetVolumeMultiplier(IntPtr Self, float NewVolumeMultiplier);
+		private static extern void E_UAudioComponent_SetVolumeMultiplier(IntPtr self, float newVolumeMultiplier);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UAudioComponent_Stop(IntPtr Self);
+		private static extern void E_UAudioComponent_Stop(IntPtr self);
 		
 		#endregion
 		
@@ -406,9 +408,9 @@ namespace UnrealEngine
 
 		private event FOnAudioMultiEnvelopeValue _Event_OnAudioMultiEnvelopeValue;
 		
-		internal void InvokeEvent_OnAudioMultiEnvelopeValue(float AverageEnvelopeValue, float MaxEnvelope, int NumWaveInstances)
+		internal void InvokeEvent_OnAudioMultiEnvelopeValue(float averageEnvelopeValue, float maxEnvelope, int numWaveInstances)
 		{
-			_Event_OnAudioMultiEnvelopeValue?.Invoke(AverageEnvelopeValue, MaxEnvelope, NumWaveInstances);
+			_Event_OnAudioMultiEnvelopeValue?.Invoke(averageEnvelopeValue, maxEnvelope, numWaveInstances);
 		}
 
 		#endregion
@@ -418,8 +420,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>This will allow one to adjust the volume of an AudioComponent on the fly </para>
 		/// </summary>
-		public void AdjustVolume(float AdjustVolumeDuration, float AdjustVolumeLevel)
-			=> E_UAudioComponent_AdjustVolume(this, AdjustVolumeDuration, AdjustVolumeLevel);
+		public void AdjustVolume(float adjustVolumeDuration, float adjustVolumeLevel)
+			=> E_UAudioComponent_AdjustVolume(this, adjustVolumeDuration, adjustVolumeLevel);
 		
 		
 		/// <summary>
@@ -429,8 +431,8 @@ namespace UnrealEngine
 		/// <param name="FadeInDuration">how long it should take to reach the FadeVolumeLevel </param>
 		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume to fade to </param>
 		/// </summary>
-		public virtual void FadeIn(float FadeInDuration, float FadeVolumeLevel, float StartTime)
-			=> E_UAudioComponent_FadeIn(this, FadeInDuration, FadeVolumeLevel, StartTime);
+		public virtual void FadeIn(float fadeInDuration, float fadeVolumeLevel, float startTime)
+			=> E_UAudioComponent_FadeIn(this, fadeInDuration, fadeVolumeLevel, startTime);
 		
 		
 		/// <summary>
@@ -441,8 +443,8 @@ namespace UnrealEngine
 		/// <param name="FadeOutDuration">how long it should take to reach the FadeVolumeLevel </param>
 		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume in which to fade to </param>
 		/// </summary>
-		public virtual void FadeOut(float FadeOutDuration, float FadeVolumeLevel)
-			=> E_UAudioComponent_FadeOut(this, FadeOutDuration, FadeVolumeLevel);
+		public virtual void FadeOut(float fadeOutDuration, float fadeVolumeLevel)
+			=> E_UAudioComponent_FadeOut(this, fadeOutDuration, fadeVolumeLevel);
 		
 		public string GetAudioComponentUserID()
 			=> E_UAudioComponent_GetAudioComponentUserID(this);
@@ -458,50 +460,50 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Start a sound playing on an audio component </para>
 		/// </summary>
-		public virtual void Play(float StartTime)
-			=> E_UAudioComponent_Play(this, StartTime);
+		public virtual void Play(float startTime)
+			=> E_UAudioComponent_Play(this, startTime);
 		
 		
 		/// <summary>
 		/// <para>Utility function called by Play and FadeIn to start a sound playing. </para>
 		/// </summary>
-		protected void PlayInternal(float StartTime, float FadeInDuration, float FadeVolumeLevel)
-			=> E_UAudioComponent_PlayInternal(this, StartTime, FadeInDuration, FadeVolumeLevel);
+		protected void PlayInternal(float startTime, float fadeInDuration, float fadeVolumeLevel)
+			=> E_UAudioComponent_PlayInternal(this, startTime, fadeInDuration, fadeVolumeLevel);
 		
 		
 		/// <summary>
 		/// <para>Set a boolean instance parameter for use in sound cues played by this audio component </para>
 		/// </summary>
-		public void SetBooleanParameter(string InName, bool InBool)
-			=> E_UAudioComponent_SetBoolParameter(this, InName, InBool);
+		public void SetBooleanParameter(string inName, bool inBool)
+			=> E_UAudioComponent_SetBoolParameter(this, inName, inBool);
 		
 		
 		/// <summary>
 		/// <para>Set a float instance parameter for use in sound cues played by this audio component </para>
 		/// </summary>
-		public void SetFloatParameter(string InName, float InFloat)
-			=> E_UAudioComponent_SetFloatParameter(this, InName, InFloat);
+		public void SetFloatParameter(string inName, float inFloat)
+			=> E_UAudioComponent_SetFloatParameter(this, inName, inFloat);
 		
 		
 		/// <summary>
 		/// <para>Set an integer instance parameter for use in sound cues played by this audio component </para>
 		/// </summary>
-		public void SetIntegerParameter(string InName, int InInt)
-			=> E_UAudioComponent_SetIntParameter(this, InName, InInt);
+		public void SetIntegerParameter(string inName, int inInt)
+			=> E_UAudioComponent_SetIntParameter(this, inName, inInt);
 		
 		
 		/// <summary>
 		/// <para>Sets whether or not the low pass filter is enabled on the audio component. </para>
 		/// </summary>
-		public void SetLowPassFilterEnabled(bool InLowPassFilterEnabled)
-			=> E_UAudioComponent_SetLowPassFilterEnabled(this, InLowPassFilterEnabled);
+		public void SetLowPassFilterEnabled(bool inLowPassFilterEnabled)
+			=> E_UAudioComponent_SetLowPassFilterEnabled(this, inLowPassFilterEnabled);
 		
 		
 		/// <summary>
 		/// <para>Sets lowpass filter frequency of the audio component. </para>
 		/// </summary>
-		public void SetLowPassFilterFrequency(float InLowPassFilterFrequency)
-			=> E_UAudioComponent_SetLowPassFilterFrequency(this, InLowPassFilterFrequency);
+		public void SetLowPassFilterFrequency(float inLowPassFilterFrequency)
+			=> E_UAudioComponent_SetLowPassFilterFrequency(this, inLowPassFilterFrequency);
 		
 		
 		/// <summary>
@@ -514,15 +516,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set a new pitch multiplier </para>
 		/// </summary>
-		public void SetPitchMultiplier(float NewPitchMultiplier)
-			=> E_UAudioComponent_SetPitchMultiplier(this, NewPitchMultiplier);
+		public void SetPitchMultiplier(float newPitchMultiplier)
+			=> E_UAudioComponent_SetPitchMultiplier(this, newPitchMultiplier);
 		
 		
 		/// <summary>
 		/// <para>Sets the sound instance parameter. </para>
 		/// </summary>
-		public void SetSoundParameter(FAudioComponentParam Param)
-			=> E_UAudioComponent_SetSoundParameter(this, Param);
+		public void SetSoundParameter(FAudioComponentParam param)
+			=> E_UAudioComponent_SetSoundParameter(this, param);
 		
 		
 		/// <summary>
@@ -535,8 +537,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set a new volume multiplier </para>
 		/// </summary>
-		public void SetVolumeMultiplier(float NewVolumeMultiplier)
-			=> E_UAudioComponent_SetVolumeMultiplier(this, NewVolumeMultiplier);
+		public void SetVolumeMultiplier(float newVolumeMultiplier)
+			=> E_UAudioComponent_SetVolumeMultiplier(this, newVolumeMultiplier);
 		
 		
 		/// <summary>
@@ -547,9 +549,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UAudioComponent Self)
+		public static implicit operator IntPtr(UAudioComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UAudioComponent(ObjectPointerDescription PtrDesc)

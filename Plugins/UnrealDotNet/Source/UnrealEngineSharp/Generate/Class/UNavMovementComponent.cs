@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,91 +26,97 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UNavMovementComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanEverCrouch(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanEverCrouch(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanEverFly(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanEverFly(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanEverJump(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanEverJump(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanEverMoveOnGround(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanEverMoveOnGround(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanEverSwim(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanEverSwim(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanStartPathFollowing(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanStartPathFollowing(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_CanStopPathFollowing(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_CanStopPathFollowing(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_ClearFixedBrakingDistance(IntPtr Self);
+		private static extern void E_UNavMovementComponent_ClearFixedBrakingDistance(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UNavMovementComponent_GetActorFeetLocation(IntPtr Self);
+		private static extern IntPtr E_UNavMovementComponent_GetActorFeetLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UNavMovementComponent_GetActorFeetLocationBased(IntPtr Self);
+		private static extern IntPtr E_UNavMovementComponent_GetActorFeetLocationBased(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UNavMovementComponent_GetActorLocation(IntPtr Self);
+		private static extern IntPtr E_UNavMovementComponent_GetActorLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UNavMovementComponent_GetActorNavLocation(IntPtr Self);
+		private static extern IntPtr E_UNavMovementComponent_GetActorNavLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UNavMovementComponent_GetPathFollowingBrakingDistance(IntPtr Self, float MaxSpeed);
+		private static extern float E_UNavMovementComponent_GetPathFollowingBrakingDistance(IntPtr self, float maxSpeed);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsCrouching(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsCrouching(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsFalling(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsFalling(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsFlying(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsFlying(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsJumpAllowed(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsJumpAllowed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsMovingOnGround(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsMovingOnGround(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_IsSwimming(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_IsSwimming(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_RequestDirectMove(IntPtr Self, IntPtr MoveVelocity, bool bForceMaxSpeed);
+		private static extern void E_UNavMovementComponent_RequestDirectMove(IntPtr self, IntPtr moveVelocity, bool bForceMaxSpeed);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_RequestPathMove(IntPtr Self, IntPtr MoveInput);
+		private static extern void E_UNavMovementComponent_RequestPathMove(IntPtr self, IntPtr moveInput);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_ResetMoveState(IntPtr Self);
+		private static extern void E_UNavMovementComponent_ResetMoveState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_SetFixedBrakingDistance(IntPtr Self, float DistanceToEndOfPath);
+		private static extern void E_UNavMovementComponent_SetFixedBrakingDistance(IntPtr self, float distanceToEndOfPath);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_SetJumpAllowed(IntPtr Self, bool bAllowed);
+		private static extern void E_UNavMovementComponent_SetJumpAllowed(IntPtr self, bool bAllowed);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_SetUpdateNavAgentWithOwnersCollisions(IntPtr Self, bool bUpdateWithOwner);
+		private static extern void E_UNavMovementComponent_SetUpdateNavAgentWithOwnersCollisions(IntPtr self, bool bUpdateWithOwner);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_ShouldUpdateNavAgentWithOwnersCollision(IntPtr Self);
+		private static extern bool E_UNavMovementComponent_ShouldUpdateNavAgentWithOwnersCollision(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_StopActiveMovement(IntPtr Self);
+		private static extern void E_UNavMovementComponent_StopActiveMovement(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UNavMovementComponent_StopMovementKeepPathing(IntPtr Self);
+		private static extern void E_UNavMovementComponent_StopMovementKeepPathing(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UNavMovementComponent_UseAccelerationForPathFollowing(IntPtr Self);
+		private static extern void E_UNavMovementComponent_UpdateNavAgent(IntPtr self, IntPtr inOwner);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UNavMovementComponent_UpdateNavAgent_o1(IntPtr self, IntPtr capsuleComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UNavMovementComponent_UseAccelerationForPathFollowing(IntPtr self);
 		
 		#endregion
 		
@@ -202,8 +210,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>@returns braking distance for acceleration driven path following </para>
 		/// </summary>
-		public virtual float GetPathFollowingBrakingDistance(float MaxSpeed)
-			=> E_UNavMovementComponent_GetPathFollowingBrakingDistance(this, MaxSpeed);
+		public virtual float GetPathFollowingBrakingDistance(float maxSpeed)
+			=> E_UNavMovementComponent_GetPathFollowingBrakingDistance(this, maxSpeed);
 		
 		
 		/// <summary>
@@ -251,15 +259,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>path following: request new velocity </para>
 		/// </summary>
-		public virtual void RequestDirectMove(FVector MoveVelocity, bool bForceMaxSpeed)
-			=> E_UNavMovementComponent_RequestDirectMove(this, MoveVelocity, bForceMaxSpeed);
+		public virtual void RequestDirectMove(FVector moveVelocity, bool bForceMaxSpeed)
+			=> E_UNavMovementComponent_RequestDirectMove(this, moveVelocity, bForceMaxSpeed);
 		
 		
 		/// <summary>
 		/// <para>path following: request new move input (normal vector = full strength) </para>
 		/// </summary>
-		public virtual void RequestPathMove(FVector MoveInput)
-			=> E_UNavMovementComponent_RequestPathMove(this, MoveInput);
+		public virtual void RequestPathMove(FVector moveInput)
+			=> E_UNavMovementComponent_RequestPathMove(this, moveInput);
 		
 		
 		/// <summary>
@@ -272,8 +280,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>set fixed braking distance </para>
 		/// </summary>
-		public void SetFixedBrakingDistance(float DistanceToEndOfPath)
-			=> E_UNavMovementComponent_SetFixedBrakingDistance(this, DistanceToEndOfPath);
+		public void SetFixedBrakingDistance(float distanceToEndOfPath)
+			=> E_UNavMovementComponent_SetFixedBrakingDistance(this, distanceToEndOfPath);
 		
 		
 		/// <summary>
@@ -302,14 +310,20 @@ namespace UnrealEngine
 		public void StopMovementKeepPathing()
 			=> E_UNavMovementComponent_StopMovementKeepPathing(this);
 		
+		public void UpdateNavAgent(AActor inOwner)
+			=> E_UNavMovementComponent_UpdateNavAgent(this, inOwner);
+		
+		public void UpdateNavAgent(UCapsuleComponent capsuleComponent)
+			=> E_UNavMovementComponent_UpdateNavAgent_o1(this, capsuleComponent);
+		
 		public bool UseAccelerationForPathFollowing()
 			=> E_UNavMovementComponent_UseAccelerationForPathFollowing(this);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UNavMovementComponent Self)
+		public static implicit operator IntPtr(UNavMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UNavMovementComponent(ObjectPointerDescription PtrDesc)

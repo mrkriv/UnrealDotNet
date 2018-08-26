@@ -1,4 +1,7 @@
 #pragma once
+
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
@@ -15,18 +18,18 @@ class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD, public IManageObject
 	
 	bool bIsManageAttach = false;
 	
+	bool AddWrapperIfNotAttach();
+	
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
-	virtual void SetManageClassName(FString name) override { ManageClassName.FullName = name; }
-	virtual FString GetManageClassName() override { return ManageClassName.FullName; }
-	
 	virtual void AddPostRenderedActor(AActor* A) override;
 	virtual void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation) override;
 	virtual void DrawHUD() override;
 	virtual void DrawSafeZoneOverlay() override;
+	virtual void GetDebugActorList(TArray<AActor*>& InOutList) override;
 	virtual void HandleBugScreenShot() override;
 	virtual void NextDebugTarget() override;
 	virtual void NotifyBindPostProcessEffects() override;

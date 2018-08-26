@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -31,7 +33,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FComponentReference_OtherActor_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FComponentReference_GetComponent(IntPtr Self, IntPtr OwningActor);
+		private static extern ObjectPointerDescription E_FComponentReference_GetComponent(IntPtr self, IntPtr owningActor);
 		
 		#endregion
 		
@@ -63,14 +65,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Get the actual component pointer from this reference </para>
 		/// </summary>
-		public USceneComponent GetComponent(AActor OwningActor)
-			=> E_FComponentReference_GetComponent(this, OwningActor);
+		public USceneComponent GetComponent(AActor owningActor)
+			=> E_FComponentReference_GetComponent(this, owningActor);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FComponentReference Self)
+		public static implicit operator IntPtr(FComponentReference self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FComponentReference(IntPtr Adress)

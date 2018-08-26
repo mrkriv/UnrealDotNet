@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,8 +26,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Creates and initializes a new instance. </para>
 		/// </summary>
-		public FUserActivity(string InActionName) :
-			base(E_CreateStruct_FUserActivity_FString(InActionName), false)
+		public FUserActivity(string inActionName) :
+			base(E_CreateStruct_FUserActivity_FString(inActionName), false)
 		{
 		}
 
@@ -33,8 +35,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Creates and initializes a new instance with a context other than the default "Game". </para>
 		/// </summary>
-		public FUserActivity(string InActionName, EUserActivityContext InContext) :
-			base(E_CreateStruct_FUserActivity_FString_EUserActivityContext(InActionName, (byte)InContext), false)
+		public FUserActivity(string inActionName, EUserActivityContext inContext) :
+			base(E_CreateStruct_FUserActivity_FString_EUserActivityContext(inActionName, (byte)inContext), false)
 		{
 		}
 
@@ -43,10 +45,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FUserActivity();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FUserActivity_FString(string InActionName);
+		private static extern IntPtr E_CreateStruct_FUserActivity_FString(string inActionName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FUserActivity_FString_EUserActivityContext(string InActionName, byte InContext);
+		private static extern IntPtr E_CreateStruct_FUserActivity_FString_EUserActivityContext(string inActionName, byte inContext);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FUserActivity_ActionName_GET(IntPtr Ptr);
@@ -83,9 +85,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FUserActivity Self)
+		public static implicit operator IntPtr(FUserActivity self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FUserActivity(IntPtr Adress)

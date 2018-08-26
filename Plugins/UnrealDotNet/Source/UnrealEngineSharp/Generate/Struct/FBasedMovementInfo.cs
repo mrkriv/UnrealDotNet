@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -51,13 +53,13 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBasedMovementInfo_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBasedMovementInfo_HasRelativeLocation(IntPtr Self);
+		private static extern bool E_FBasedMovementInfo_HasRelativeLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBasedMovementInfo_HasRelativeRotation(IntPtr Self);
+		private static extern bool E_FBasedMovementInfo_HasRelativeRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBasedMovementInfo_IsBaseUnresolved(IntPtr Self);
+		private static extern bool E_FBasedMovementInfo_IsBaseUnresolved(IntPtr self);
 		
 		#endregion
 		
@@ -124,9 +126,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FBasedMovementInfo Self)
+		public static implicit operator IntPtr(FBasedMovementInfo self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FBasedMovementInfo(IntPtr Adress)

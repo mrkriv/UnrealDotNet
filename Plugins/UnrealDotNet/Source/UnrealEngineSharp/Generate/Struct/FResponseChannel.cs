@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FResponseChannel(string InChannel, ECollisionResponse InResponse) :
-			base(E_CreateStruct_FResponseChannel_FName_ECollisionResponse(InChannel, (byte)InResponse), false)
+		public FResponseChannel(string inChannel, ECollisionResponse inResponse) :
+			base(E_CreateStruct_FResponseChannel_FName_ECollisionResponse(inChannel, (byte)inResponse), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FResponseChannel();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FResponseChannel_FName_ECollisionResponse(string InChannel, byte InResponse);
+		private static extern IntPtr E_CreateStruct_FResponseChannel_FName_ECollisionResponse(string inChannel, byte inResponse);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FResponseChannel_Channel_GET(IntPtr Ptr);
@@ -49,9 +51,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FResponseChannel Self)
+		public static implicit operator IntPtr(FResponseChannel self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FResponseChannel(IntPtr Adress)

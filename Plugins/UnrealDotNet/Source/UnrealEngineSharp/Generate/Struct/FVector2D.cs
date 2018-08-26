@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -26,8 +28,8 @@ namespace UnrealEngine
 		/// <param name="InX">X coordinate. </param>
 		/// <param name="InY">Y coordinate. </param>
 		/// </summary>
-		public FVector2D(float InX, float InY) :
-			base(E_CreateStruct_FVector2D_float_float(InX, InY), false)
+		public FVector2D(float inX, float inY) :
+			base(E_CreateStruct_FVector2D_float_float(inX, inY), false)
 		{
 		}
 
@@ -37,8 +39,8 @@ namespace UnrealEngine
 		/// <para>Copies the X and Y components from the FVector. </para>
 		/// <param name="V">Vector to copy from. </param>
 		/// </summary>
-		public FVector2D(FVector V) :
-			base(E_CreateStruct_FVector2D_FVector(V), false)
+		public FVector2D(FVector v) :
+			base(E_CreateStruct_FVector2D_FVector(v), false)
 		{
 		}
 
@@ -47,10 +49,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FVector2D();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float InX, float InY);
+		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float inX, float inY);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr V);
+		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
@@ -63,82 +65,85 @@ namespace UnrealEngine
 		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_ClampAxes(IntPtr Self, float MinAxisVal, float MaxAxisVal);
+		private static extern IntPtr E_FVector2D_ClampAxes(IntPtr self, float minAxisVal, float maxAxisVal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector2D_ContainsNaN(IntPtr Self);
+		private static extern float E_FVector2D_Component(IntPtr self, int index);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_CrossProduct(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern bool E_FVector2D_ContainsNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector2D_DiagnosticCheckNaN(IntPtr Self);
+		private static extern float E_FVector2D_CrossProduct(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_Distance(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern void E_FVector2D_DiagnosticCheckNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_DistSquared(IntPtr Self, IntPtr V1, IntPtr V2);
+		private static extern float E_FVector2D_Distance(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_DotProduct(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern float E_FVector2D_DistSquared(IntPtr self, IntPtr v1, IntPtr v2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector2D_Equals(IntPtr Self, IntPtr V, float Tolerance);
+		private static extern float E_FVector2D_DotProduct(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_GetAbs(IntPtr Self);
+		private static extern bool E_FVector2D_Equals(IntPtr self, IntPtr v, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_GetAbsMax(IntPtr Self);
+		private static extern IntPtr E_FVector2D_GetAbs(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_GetMax(IntPtr Self);
+		private static extern float E_FVector2D_GetAbsMax(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_GetMin(IntPtr Self);
+		private static extern float E_FVector2D_GetMax(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_GetRotated(IntPtr Self, float AngleDeg);
+		private static extern float E_FVector2D_GetMin(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_GetSafeNormal(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FVector2D_GetRotated(IntPtr self, float angleDeg);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_GetSignVector(IntPtr Self);
+		private static extern IntPtr E_FVector2D_GetSafeNormal(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector2D_InitFromString(IntPtr Self, string InSourceString);
+		private static extern IntPtr E_FVector2D_GetSignVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector2D_IsNearlyZero(IntPtr Self, float Tolerance);
+		private static extern bool E_FVector2D_InitFromString(IntPtr self, string inSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FVector2D_IsZero(IntPtr Self);
+		private static extern bool E_FVector2D_IsNearlyZero(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector2D_Normalize(IntPtr Self, float Tolerance);
+		private static extern bool E_FVector2D_IsZero(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_RoundToVector(IntPtr Self);
+		private static extern void E_FVector2D_Normalize(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector2D_Set(IntPtr Self, float InX, float InY);
+		private static extern IntPtr E_FVector2D_RoundToVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_Size(IntPtr Self);
+		private static extern void E_FVector2D_Set(IntPtr self, float inX, float inY);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector2D_SizeSquared(IntPtr Self);
+		private static extern float E_FVector2D_Size(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(IntPtr Self);
+		private static extern float E_FVector2D_SizeSquared(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector2D_ToDirectionAndLength(IntPtr Self, IntPtr OutDir, float OutLength);
+		private static extern IntPtr E_FVector2D_SphericalToUnitCartesian(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FVector2D_ToString(IntPtr Self);
+		private static extern void E_FVector2D_ToDirectionAndLength(IntPtr self, IntPtr outDir, float outLength);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FVector2D_ToString(IntPtr self);
 		
 		#endregion
 		
@@ -171,8 +176,17 @@ namespace UnrealEngine
 		/// <para>Creates a copy of this vector with both axes clamped to the given range. </para>
 		/// <return>New vector with clamped axes. </return>
 		/// </summary>
-		public FVector2D ClampAxes(float MinAxisVal, float MaxAxisVal)
-			=> E_FVector2D_ClampAxes(this, MinAxisVal, MaxAxisVal);
+		public FVector2D ClampAxes(float minAxisVal, float maxAxisVal)
+			=> E_FVector2D_ClampAxes(this, minAxisVal, maxAxisVal);
+		
+		
+		/// <summary>
+		/// <para>Gets a specific component of the vector. </para>
+		/// <param name="Index">The index of the component required. </param>
+		/// <return>Reference to the specified component. </return>
+		/// </summary>
+		public float Component(int index)
+			=> E_FVector2D_Component(this, index);
 		
 		
 		/// <summary>
@@ -189,8 +203,8 @@ namespace UnrealEngine
 		/// <param name="B">The second vector. </param>
 		/// <return>The cross product. </return>
 		/// </summary>
-		public float CrossProduct(FVector2D A, FVector2D B)
-			=> E_FVector2D_CrossProduct(this, A, B);
+		public float CrossProduct(FVector2D a, FVector2D b)
+			=> E_FVector2D_CrossProduct(this, a, b);
 		
 		public void DiagnosticCheckNaN()
 			=> E_FVector2D_DiagnosticCheckNaN(this);
@@ -202,8 +216,8 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The distance between two 2D points. </return>
 		/// </summary>
-		public float Distance(FVector2D V1, FVector2D V2)
-			=> E_FVector2D_Distance(this, V1, V2);
+		public float Distance(FVector2D v1, FVector2D v2)
+			=> E_FVector2D_Distance(this, v1, v2);
 		
 		
 		/// <summary>
@@ -212,8 +226,8 @@ namespace UnrealEngine
 		/// <param name="V2">The second point. </param>
 		/// <return>The squared distance between two 2D points. </return>
 		/// </summary>
-		public float DistSquared(FVector2D V1, FVector2D V2)
-			=> E_FVector2D_DistSquared(this, V1, V2);
+		public float DistSquared(FVector2D v1, FVector2D v2)
+			=> E_FVector2D_DistSquared(this, v1, v2);
 		
 		
 		/// <summary>
@@ -222,8 +236,8 @@ namespace UnrealEngine
 		/// <param name="B">The second vector. </param>
 		/// <return>The dot product. </return>
 		/// </summary>
-		public float DotProduct(FVector2D A, FVector2D B)
-			=> E_FVector2D_DotProduct(this, A, B);
+		public float DotProduct(FVector2D a, FVector2D b)
+			=> E_FVector2D_DotProduct(this, a, b);
 		
 		
 		/// <summary>
@@ -232,8 +246,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance. </param>
 		/// <return>true if the vectors are equal within specified tolerance, otherwise false. </return>
 		/// </summary>
-		public bool Equals(FVector2D V, float Tolerance)
-			=> E_FVector2D_Equals(this, V, Tolerance);
+		public bool Equals(FVector2D v, float tolerance)
+			=> E_FVector2D_Equals(this, v, tolerance);
 		
 		
 		/// <summary>
@@ -273,8 +287,8 @@ namespace UnrealEngine
 		/// <param name="AngleDeg">Angle to rotate (in degrees) </param>
 		/// <return>Rotated Vector </return>
 		/// </summary>
-		public FVector2D GetRotated(float AngleDeg)
-			=> E_FVector2D_GetRotated(this, AngleDeg);
+		public FVector2D GetRotated(float angleDeg)
+			=> E_FVector2D_GetRotated(this, angleDeg);
 		
 		
 		/// <summary>
@@ -283,8 +297,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
 		/// <return>A normalized copy of the vector if safe, (0,0) otherwise. </return>
 		/// </summary>
-		public FVector2D GetSafeNormal(float Tolerance)
-			=> E_FVector2D_GetSafeNormal(this, Tolerance);
+		public FVector2D GetSafeNormal(float tolerance)
+			=> E_FVector2D_GetSafeNormal(this, tolerance);
 		
 		
 		/// <summary>
@@ -302,8 +316,8 @@ namespace UnrealEngine
 		/// <param name="InSourceString">FString containing the vector values. </param>
 		/// <return>true if the X,Y values were read successfully; false otherwise. </return>
 		/// </summary>
-		public bool InitFromString(string InSourceString)
-			=> E_FVector2D_InitFromString(this, InSourceString);
+		public bool InitFromString(string inSourceString)
+			=> E_FVector2D_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
@@ -311,8 +325,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance. </param>
 		/// <return>true if vector is in tolerance to zero, otherwise false. </return>
 		/// </summary>
-		public bool IsNearlyZero(float Tolerance)
-			=> E_FVector2D_IsNearlyZero(this, Tolerance);
+		public bool IsNearlyZero(float tolerance)
+			=> E_FVector2D_IsNearlyZero(this, tolerance);
 		
 		
 		/// <summary>
@@ -328,8 +342,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
 		/// <para>@see GetSafeNormal() </para>
 		/// </summary>
-		public void Normalize(float Tolerance)
-			=> E_FVector2D_Normalize(this, Tolerance);
+		public void Normalize(float tolerance)
+			=> E_FVector2D_Normalize(this, tolerance);
 		
 		
 		/// <summary>
@@ -345,8 +359,8 @@ namespace UnrealEngine
 		/// <param name="InX">New X coordinate. </param>
 		/// <param name="InY">New Y coordinate. </param>
 		/// </summary>
-		public void Set(float InX, float InY)
-			=> E_FVector2D_Set(this, InX, InY);
+		public void Set(float inX, float inY)
+			=> E_FVector2D_Set(this, inX, inY);
 		
 		
 		/// <summary>
@@ -377,8 +391,8 @@ namespace UnrealEngine
 		/// <param name="OutDir">Reference passed in to store unit direction vector. </param>
 		/// <param name="OutLength">Reference passed in to store length of the vector. </param>
 		/// </summary>
-		public void ToDirectionAndLength(FVector2D OutDir, float OutLength)
-			=> E_FVector2D_ToDirectionAndLength(this, OutDir, OutLength);
+		public void ToDirectionAndLength(FVector2D outDir, float outLength)
+			=> E_FVector2D_ToDirectionAndLength(this, outDir, outLength);
 		
 		
 		/// <summary>
@@ -390,9 +404,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FVector2D Self)
+		public static implicit operator IntPtr(FVector2D self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FVector2D(IntPtr Adress)

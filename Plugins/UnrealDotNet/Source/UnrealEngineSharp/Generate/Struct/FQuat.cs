@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -28,8 +30,8 @@ namespace UnrealEngine
 		/// <param name="InZ">Z component of the quaternion </param>
 		/// <param name="InW">W component of the quaternion </param>
 		/// </summary>
-		public FQuat(float InX, float InY, float InZ, float InW) :
-			base(E_CreateStruct_FQuat_float_float_float_float(InX, InY, InZ, InW), false)
+		public FQuat(float inX, float inY, float inZ, float inW) :
+			base(E_CreateStruct_FQuat_float_float_float_float(inX, inY, inZ, inW), false)
 		{
 		}
 
@@ -38,8 +40,8 @@ namespace UnrealEngine
 		/// <para>Copy constructor. </para>
 		/// <param name="Q">A FQuat object to use to create new quaternion from. </param>
 		/// </summary>
-		public FQuat(FQuat Q) :
-			base(E_CreateStruct_FQuat_FQuat(Q), false)
+		public FQuat(FQuat q) :
+			base(E_CreateStruct_FQuat_FQuat(q), false)
 		{
 		}
 
@@ -48,8 +50,8 @@ namespace UnrealEngine
 		/// <para>Creates and initializes a new quaternion from the given rotator. </para>
 		/// <param name="R">The rotator to initialize from. </param>
 		/// </summary>
-		public FQuat(FRotator R) :
-			base(E_CreateStruct_FQuat_FRotator(R), false)
+		public FQuat(FRotator r) :
+			base(E_CreateStruct_FQuat_FRotator(r), false)
 		{
 		}
 
@@ -59,8 +61,8 @@ namespace UnrealEngine
 		/// <param name="Axis">assumed to be a normalized vector </param>
 		/// <param name="Angle">angle to rotate above the given axis (in radians) </param>
 		/// </summary>
-		public FQuat(FVector Axis, float AngleRad) :
-			base(E_CreateStruct_FQuat_FVector_float(Axis, AngleRad), false)
+		public FQuat(FVector axis, float angleRad) :
+			base(E_CreateStruct_FQuat_FVector_float(axis, angleRad), false)
 		{
 		}
 
@@ -69,16 +71,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FQuat();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FQuat_float_float_float_float(float InX, float InY, float InZ, float InW);
+		private static extern IntPtr E_CreateStruct_FQuat_float_float_float_float(float inX, float inY, float inZ, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FQuat_FQuat(IntPtr Q);
+		private static extern IntPtr E_CreateStruct_FQuat_FQuat(IntPtr q);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FQuat_FRotator(IntPtr R);
+		private static extern IntPtr E_CreateStruct_FQuat_FRotator(IntPtr r);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FQuat_FVector_float(IntPtr Axis, float AngleRad);
+		private static extern IntPtr E_CreateStruct_FQuat_FVector_float(IntPtr axis, float angleRad);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FQuat_W_GET(IntPtr Ptr);
@@ -101,139 +103,142 @@ namespace UnrealEngine
 		private static extern void E_PROP_FQuat_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_AngularDistance(IntPtr Self, IntPtr Q);
+		private static extern float E_FQuat_AngularDistance(IntPtr self, IntPtr q);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FQuat_CalcTangents(IntPtr Self, IntPtr PrevP, IntPtr P, IntPtr NextP, float Tension, IntPtr OutTan);
+		private static extern void E_FQuat_CalcTangents(IntPtr self, IntPtr prevP, IntPtr p, IntPtr nextP, float tension, IntPtr outTan);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FQuat_ContainsNaN(IntPtr Self);
+		private static extern bool E_FQuat_ContainsNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FQuat_EnforceShortestArcWith(IntPtr Self, IntPtr OtherQuat);
+		private static extern void E_FQuat_DiagnosticCheckNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FQuat_Equals(IntPtr Self, IntPtr Q, float Tolerance);
+		private static extern void E_FQuat_EnforceShortestArcWith(IntPtr self, IntPtr otherQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_Error(IntPtr Self, IntPtr Q1, IntPtr Q2);
+		private static extern bool E_FQuat_Equals(IntPtr self, IntPtr q, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_ErrorAutoNormalize(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern float E_FQuat_Error(IntPtr self, IntPtr q1, IntPtr q2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Euler(IntPtr Self);
+		private static extern float E_FQuat_ErrorAutoNormalize(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Exp(IntPtr Self);
+		private static extern IntPtr E_FQuat_Euler(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_FastBilerp(IntPtr Self, IntPtr P00, IntPtr P10, IntPtr P01, IntPtr P11, float FracX, float FracY);
+		private static extern IntPtr E_FQuat_Exp(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_FastLerp(IntPtr Self, IntPtr A, IntPtr B, float Alpha);
+		private static extern IntPtr E_FQuat_FastBilerp(IntPtr self, IntPtr p00, IntPtr p10, IntPtr p01, IntPtr p11, float fracX, float fracY);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_FindBetween(IntPtr Self, IntPtr Vector1, IntPtr Vector2);
+		private static extern IntPtr E_FQuat_FastLerp(IntPtr self, IntPtr a, IntPtr b, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_FindBetweenNormals(IntPtr Self, IntPtr Normal1, IntPtr Normal2);
+		private static extern IntPtr E_FQuat_FindBetween(IntPtr self, IntPtr vector1, IntPtr vector2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_FindBetweenVectors(IntPtr Self, IntPtr Vector1, IntPtr Vector2);
+		private static extern IntPtr E_FQuat_FindBetweenNormals(IntPtr self, IntPtr normal1, IntPtr normal2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_GetAngle(IntPtr Self);
+		private static extern IntPtr E_FQuat_FindBetweenVectors(IntPtr self, IntPtr vector1, IntPtr vector2);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetAxisX(IntPtr Self);
+		private static extern float E_FQuat_GetAngle(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetAxisY(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetAxisX(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetAxisZ(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetAxisY(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetForwardVector(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetAxisZ(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetNormalized(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FQuat_GetForwardVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetRightVector(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetNormalized(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetRotationAxis(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetRightVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_GetUpVector(IntPtr Self);
+		private static extern IntPtr E_FQuat_GetRotationAxis(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FQuat_InitFromString(IntPtr Self, string InSourceString);
+		private static extern IntPtr E_FQuat_GetUpVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Inverse(IntPtr Self);
+		private static extern bool E_FQuat_InitFromString(IntPtr self, string inSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FQuat_IsIdentity(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FQuat_Inverse(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FQuat_IsNormalized(IntPtr Self);
+		private static extern bool E_FQuat_IsIdentity(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Log(IntPtr Self);
+		private static extern bool E_FQuat_IsNormalized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_MakeFromEuler(IntPtr Self, IntPtr Euler);
+		private static extern IntPtr E_FQuat_Log(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FQuat_Normalize(IntPtr Self, float Tolerance);
+		private static extern IntPtr E_FQuat_MakeFromEuler(IntPtr self, IntPtr euler);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_RotateVector(IntPtr Self, IntPtr V);
+		private static extern void E_FQuat_Normalize(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Rotator(IntPtr Self);
+		private static extern IntPtr E_FQuat_RotateVector(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_Size(IntPtr Self);
+		private static extern IntPtr E_FQuat_Rotator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FQuat_SizeSquared(IntPtr Self);
+		private static extern float E_FQuat_Size(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Slerp(IntPtr Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
+		private static extern float E_FQuat_SizeSquared(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Slerp_NotNormalized(IntPtr Self, IntPtr Quat1, IntPtr Quat2, float Slerp);
+		private static extern IntPtr E_FQuat_Slerp(IntPtr self, IntPtr quat1, IntPtr quat2, float slerp);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_SlerpFullPath(IntPtr Self, IntPtr quat1, IntPtr quat2, float Alpha);
+		private static extern IntPtr E_FQuat_Slerp_NotNormalized(IntPtr self, IntPtr quat1, IntPtr quat2, float slerp);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_SlerpFullPath_NotNormalized(IntPtr Self, IntPtr quat1, IntPtr quat2, float Alpha);
+		private static extern IntPtr E_FQuat_SlerpFullPath(IntPtr self, IntPtr quat1, IntPtr quat2, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Squad(IntPtr Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
+		private static extern IntPtr E_FQuat_SlerpFullPath_NotNormalized(IntPtr self, IntPtr quat1, IntPtr quat2, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_SquadFullPath(IntPtr Self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float Alpha);
+		private static extern IntPtr E_FQuat_Squad(IntPtr self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FQuat_ToAxisAndAngle(IntPtr Self, IntPtr Axis, float Angle);
+		private static extern IntPtr E_FQuat_SquadFullPath(IntPtr self, IntPtr quat1, IntPtr tang1, IntPtr quat2, IntPtr tang2, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FQuat_ToString(IntPtr Self);
+		private static extern void E_FQuat_ToAxisAndAngle(IntPtr self, IntPtr axis, float angle);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FQuat_ToSwingTwist(IntPtr Self, IntPtr InTwistAxis, IntPtr OutSwing, IntPtr OutTwist);
+		private static extern StringWrapper E_FQuat_ToString(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_UnrotateVector(IntPtr Self, IntPtr V);
+		private static extern void E_FQuat_ToSwingTwist(IntPtr self, IntPtr inTwistAxis, IntPtr outSwing, IntPtr outTwist);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FQuat_Vector(IntPtr Self);
+		private static extern IntPtr E_FQuat_UnrotateVector(IntPtr self, IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FQuat_Vector(IntPtr self);
 		
 		#endregion
 		
@@ -285,8 +290,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Find the angular distance between two rotation quaternions (in radians) </para>
 		/// </summary>
-		public float AngularDistance(FQuat Q)
-			=> E_FQuat_AngularDistance(this, Q);
+		public float AngularDistance(FQuat q)
+			=> E_FQuat_AngularDistance(this, q);
 		
 		
 		/// <summary>
@@ -297,8 +302,8 @@ namespace UnrealEngine
 		/// <param name="Tension">todo document </param>
 		/// <param name="OutTan">Out control point </param>
 		/// </summary>
-		public void CalcTangents(FQuat PrevP, FQuat P, FQuat NextP, float Tension, FQuat OutTan)
-			=> E_FQuat_CalcTangents(this, PrevP, P, NextP, Tension, OutTan);
+		public void CalcTangents(FQuat prevP, FQuat p, FQuat nextP, float tension, FQuat outTan)
+			=> E_FQuat_CalcTangents(this, prevP, p, nextP, tension, outTan);
 		
 		
 		/// <summary>
@@ -308,13 +313,16 @@ namespace UnrealEngine
 		public bool ContainsNaN()
 			=> E_FQuat_ContainsNaN(this);
 		
+		public void DiagnosticCheckNaN()
+			=> E_FQuat_DiagnosticCheckNaN(this);
+		
 		
 		/// <summary>
 		/// <para>Enforce that the delta between this Quaternion and another one represents </para>
 		/// <para>the shortest possible rotation angle </para>
 		/// </summary>
-		public void EnforceShortestArcWith(FQuat OtherQuat)
-			=> E_FQuat_EnforceShortestArcWith(this, OtherQuat);
+		public void EnforceShortestArcWith(FQuat otherQuat)
+			=> E_FQuat_EnforceShortestArcWith(this, otherQuat);
 		
 		
 		/// <summary>
@@ -323,8 +331,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance for comparison with other Quaternion. </param>
 		/// <return>true if two Quaternions are equal, within specified tolerance, otherwise false. </return>
 		/// </summary>
-		public bool Equals(FQuat Q, float Tolerance)
-			=> E_FQuat_Equals(this, Q, Tolerance);
+		public bool Equals(FQuat q, float tolerance)
+			=> E_FQuat_Equals(this, q, tolerance);
 		
 		
 		/// <summary>
@@ -332,15 +340,15 @@ namespace UnrealEngine
 		/// <para>Returns the hypersphere-angle between two quaternions; alignment shouldn't matter, though </para>
 		/// <para>@note normalized input is expected. </para>
 		/// </summary>
-		public float Error(FQuat Q1, FQuat Q2)
-			=> E_FQuat_Error(this, Q1, Q2);
+		public float Error(FQuat q1, FQuat q2)
+			=> E_FQuat_Error(this, q1, q2);
 		
 		
 		/// <summary>
 		/// <para>FQuat::Error with auto-normalization. </para>
 		/// </summary>
-		public float ErrorAutoNormalize(FQuat A, FQuat B)
-			=> E_FQuat_ErrorAutoNormalize(this, A, B);
+		public float ErrorAutoNormalize(FQuat a, FQuat b)
+			=> E_FQuat_ErrorAutoNormalize(this, a, b);
 		
 		
 		/// <summary>
@@ -363,37 +371,37 @@ namespace UnrealEngine
 		/// <para>Bi-Linear Quaternion interpolation. </para>
 		/// <para>Result is NOT normalized. </para>
 		/// </summary>
-		public FQuat FastBilerp(FQuat P00, FQuat P10, FQuat P01, FQuat P11, float FracX, float FracY)
-			=> E_FQuat_FastBilerp(this, P00, P10, P01, P11, FracX, FracY);
+		public FQuat FastBilerp(FQuat p00, FQuat p10, FQuat p01, FQuat p11, float fracX, float fracY)
+			=> E_FQuat_FastBilerp(this, p00, p10, p01, p11, fracX, fracY);
 		
 		
 		/// <summary>
 		/// <para>Fast Linear Quaternion Interpolation. </para>
 		/// <para>Result is NOT normalized. </para>
 		/// </summary>
-		public FQuat FastLerp(FQuat A, FQuat B, float Alpha)
-			=> E_FQuat_FastLerp(this, A, B, Alpha);
+		public FQuat FastLerp(FQuat a, FQuat b, float alpha)
+			=> E_FQuat_FastLerp(this, a, b, alpha);
 		
 		
 		/// <summary>
 		/// <para>Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length. </para>
 		/// </summary>
-		public FQuat FindBetween(FVector Vector1, FVector Vector2)
-			=> E_FQuat_FindBetween(this, Vector1, Vector2);
+		public FQuat FindBetween(FVector vector1, FVector vector2)
+			=> E_FQuat_FindBetween(this, vector1, vector2);
 		
 		
 		/// <summary>
 		/// <para>Generates the 'smallest' (geodesic) rotation between two normals (assumed to be unit length). </para>
 		/// </summary>
-		public FQuat FindBetweenNormals(FVector Normal1, FVector Normal2)
-			=> E_FQuat_FindBetweenNormals(this, Normal1, Normal2);
+		public FQuat FindBetweenNormals(FVector normal1, FVector normal2)
+			=> E_FQuat_FindBetweenNormals(this, normal1, normal2);
 		
 		
 		/// <summary>
 		/// <para>Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length. </para>
 		/// </summary>
-		public FQuat FindBetweenVectors(FVector Vector1, FVector Vector2)
-			=> E_FQuat_FindBetweenVectors(this, Vector1, Vector2);
+		public FQuat FindBetweenVectors(FVector vector1, FVector vector2)
+			=> E_FQuat_FindBetweenVectors(this, vector1, vector2);
 		
 		
 		/// <summary>
@@ -436,8 +444,8 @@ namespace UnrealEngine
 		/// <para>If it is too small, returns an identity quaternion. </para>
 		/// <param name="Tolerance">Minimum squared length of quaternion for normalization. </param>
 		/// </summary>
-		public FQuat GetNormalized(float Tolerance)
-			=> E_FQuat_GetNormalized(this, Tolerance);
+		public FQuat GetNormalized(float tolerance)
+			=> E_FQuat_GetNormalized(this, tolerance);
 		
 		
 		/// <summary>
@@ -470,8 +478,8 @@ namespace UnrealEngine
 		/// <param name="InSourceString">FString containing the quaternion values. </param>
 		/// <return>true if the FQuat was initialized; false otherwise. </return>
 		/// </summary>
-		public bool InitFromString(string InSourceString)
-			=> E_FQuat_InitFromString(this, InSourceString);
+		public bool InitFromString(string inSourceString)
+			=> E_FQuat_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
@@ -487,8 +495,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error tolerance for comparison with Identity Quaternion. </param>
 		/// <return>true if Quaternion is a normalized Identity Quaternion. </return>
 		/// </summary>
-		public bool IsIdentity(float Tolerance)
-			=> E_FQuat_IsIdentity(this, Tolerance);
+		public bool IsIdentity(float tolerance)
+			=> E_FQuat_IsIdentity(this, tolerance);
 		
 		public bool IsNormalized()
 			=> E_FQuat_IsNormalized(this);
@@ -506,8 +514,8 @@ namespace UnrealEngine
 		/// <param name="Euler">the Euler angles </param>
 		/// <return>constructed FQuat </return>
 		/// </summary>
-		public FQuat MakeFromEuler(FVector Euler)
-			=> E_FQuat_MakeFromEuler(this, Euler);
+		public FQuat MakeFromEuler(FVector euler)
+			=> E_FQuat_MakeFromEuler(this, euler);
 		
 		
 		/// <summary>
@@ -515,8 +523,8 @@ namespace UnrealEngine
 		/// <para>If it is too small, returns an identity quaternion. </para>
 		/// <param name="Tolerance">Minimum squared length of quaternion for normalization. </param>
 		/// </summary>
-		public void Normalize(float Tolerance)
-			=> E_FQuat_Normalize(this, Tolerance);
+		public void Normalize(float tolerance)
+			=> E_FQuat_Normalize(this, tolerance);
 		
 		
 		/// <summary>
@@ -524,8 +532,8 @@ namespace UnrealEngine
 		/// <param name="V">the vector to be rotated </param>
 		/// <return>vector after rotation </return>
 		/// </summary>
-		public FVector RotateVector(FVector V)
-			=> E_FQuat_RotateVector(this, V);
+		public FVector RotateVector(FVector v)
+			=> E_FQuat_RotateVector(this, v);
 		
 		
 		/// <summary>
@@ -554,15 +562,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Spherical interpolation. Will correct alignment. Result is normalized. </para>
 		/// </summary>
-		public FQuat Slerp(FQuat Quat1, FQuat Quat2, float Slerp)
-			=> E_FQuat_Slerp(this, Quat1, Quat2, Slerp);
+		public FQuat Slerp(FQuat quat1, FQuat quat2, float slerp)
+			=> E_FQuat_Slerp(this, quat1, quat2, slerp);
 		
 		
 		/// <summary>
 		/// <para>Spherical interpolation. Will correct alignment. Result is NOT normalized. </para>
 		/// </summary>
-		public FQuat Slerp_NotNormalized(FQuat Quat1, FQuat Quat2, float Slerp)
-			=> E_FQuat_Slerp_NotNormalized(this, Quat1, Quat2, Slerp);
+		public FQuat Slerp_NotNormalized(FQuat quat1, FQuat quat2, float slerp)
+			=> E_FQuat_Slerp_NotNormalized(this, quat1, quat2, slerp);
 		
 		
 		/// <summary>
@@ -570,8 +578,8 @@ namespace UnrealEngine
 		/// <para>We need this for the cubic interpolation stuff so that the multiple Slerps dont go in different directions. </para>
 		/// <para>Result is normalized. </para>
 		/// </summary>
-		public FQuat SlerpFullPath(FQuat quat1, FQuat quat2, float Alpha)
-			=> E_FQuat_SlerpFullPath(this, quat1, quat2, Alpha);
+		public FQuat SlerpFullPath(FQuat quat1, FQuat quat2, float alpha)
+			=> E_FQuat_SlerpFullPath(this, quat1, quat2, alpha);
 		
 		
 		/// <summary>
@@ -579,24 +587,24 @@ namespace UnrealEngine
 		/// <para>We need this for the cubic interpolation stuff so that the multiple Slerps dont go in different directions. </para>
 		/// <para>Result is NOT normalized. </para>
 		/// </summary>
-		public FQuat SlerpFullPath_NotNormalized(FQuat quat1, FQuat quat2, float Alpha)
-			=> E_FQuat_SlerpFullPath_NotNormalized(this, quat1, quat2, Alpha);
+		public FQuat SlerpFullPath_NotNormalized(FQuat quat1, FQuat quat2, float alpha)
+			=> E_FQuat_SlerpFullPath_NotNormalized(this, quat1, quat2, alpha);
 		
 		
 		/// <summary>
 		/// <para>Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized. </para>
 		/// <para>This will correct alignment by ensuring that the shortest path is taken. </para>
 		/// </summary>
-		public FQuat Squad(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float Alpha)
-			=> E_FQuat_Squad(this, quat1, tang1, quat2, tang2, Alpha);
+		public FQuat Squad(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float alpha)
+			=> E_FQuat_Squad(this, quat1, tang1, quat2, tang2, alpha);
 		
 		
 		/// <summary>
 		/// <para>Simpler Squad that doesn't do any checks for 'shortest distance' etc. </para>
 		/// <para>Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized. </para>
 		/// </summary>
-		public FQuat SquadFullPath(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float Alpha)
-			=> E_FQuat_SquadFullPath(this, quat1, tang1, quat2, tang2, Alpha);
+		public FQuat SquadFullPath(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float alpha)
+			=> E_FQuat_SquadFullPath(this, quat1, tang1, quat2, tang2, alpha);
 		
 		
 		/// <summary>
@@ -605,8 +613,8 @@ namespace UnrealEngine
 		/// <param name="Angle">out] angle of the quaternion </param>
 		/// <para>@warning : assumes normalized quaternions. </para>
 		/// </summary>
-		public void ToAxisAndAngle(FVector Axis, float Angle)
-			=> E_FQuat_ToAxisAndAngle(this, Axis, Angle);
+		public void ToAxisAndAngle(FVector axis, float angle)
+			=> E_FQuat_ToAxisAndAngle(this, axis, angle);
 		
 		
 		/// <summary>
@@ -624,8 +632,8 @@ namespace UnrealEngine
 		/// <param name="OutTwist">Twist component quaternion </param>
 		/// <para>@warning assumes normalised quaternion and twist axis </para>
 		/// </summary>
-		public void ToSwingTwist(FVector InTwistAxis, FQuat OutSwing, FQuat OutTwist)
-			=> E_FQuat_ToSwingTwist(this, InTwistAxis, OutSwing, OutTwist);
+		public void ToSwingTwist(FVector inTwistAxis, FQuat outSwing, FQuat outTwist)
+			=> E_FQuat_ToSwingTwist(this, inTwistAxis, outSwing, outTwist);
 		
 		
 		/// <summary>
@@ -633,8 +641,8 @@ namespace UnrealEngine
 		/// <param name="V">the vector to be rotated </param>
 		/// <return>vector after rotation by the inverse of this quaternion. </return>
 		/// </summary>
-		public FVector UnrotateVector(FVector V)
-			=> E_FQuat_UnrotateVector(this, V);
+		public FVector UnrotateVector(FVector v)
+			=> E_FQuat_UnrotateVector(this, v);
 		
 		
 		/// <summary>
@@ -645,9 +653,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FQuat Self)
+		public static implicit operator IntPtr(FQuat self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FQuat(IntPtr Adress)

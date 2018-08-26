@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -96,36 +98,41 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(UStaticMeshComponent* Self, int32 TextureLightMapMemoryUsage, int32 TextureShadowMapMemoryUsage, int32 VertexLightMapMemoryUsage, int32 VertexShadowMapMemoryUsage, int32 StaticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords)
 	{
-		auto _p0 = TextureLightMapMemoryUsage;
-		auto _p1 = TextureShadowMapMemoryUsage;
-		auto _p2 = VertexLightMapMemoryUsage;
-		auto _p3 = VertexShadowMapMemoryUsage;
-		auto _p4 = StaticLightingResolution;
-		auto _p5 = bIsUsingTextureMapping;
-		auto _p6 = bHasLightmapTexCoords;
+		auto& _p0 = TextureLightMapMemoryUsage;
+		auto& _p1 = TextureShadowMapMemoryUsage;
+		auto& _p2 = VertexLightMapMemoryUsage;
+		auto& _p3 = VertexShadowMapMemoryUsage;
+		auto& _p4 = StaticLightingResolution;
+		auto& _p5 = bIsUsingTextureMapping;
+		auto& _p6 = bHasLightmapTexCoords;
 		return Self->GetEstimatedLightAndShadowMapMemoryUsage(_p0, _p1, _p2, _p3, _p4, _p5, _p6);
 	}
 
 	DOTNET_EXPORT auto E_UStaticMeshComponent_GetEstimatedLightMapResolution(UStaticMeshComponent* Self, int32 Width, int32 Height)
 	{
-		auto _p0 = Width;
-		auto _p1 = Height;
+		auto& _p0 = Width;
+		auto& _p1 = Height;
 		Self->GetEstimatedLightMapResolution(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UStaticMeshComponent_GetLocalBounds(UStaticMeshComponent* Self, INT_PTR Min, INT_PTR Max)
 	{
-		auto _p0 = *(FVector*)Min;
-		auto _p1 = *(FVector*)Max;
+		auto& _p0 = *(FVector*)Min;
+		auto& _p1 = *(FVector*)Max;
 		Self->GetLocalBounds(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UStaticMeshComponent_GetMemberNameChecked_StaticMesh(UStaticMeshComponent* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetMemberNameChecked_StaticMesh());
 	}
 
 	DOTNET_EXPORT auto E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(UStaticMeshComponent* Self, int32 InWidth, int32 InHeight, int32 OutLightMapMemoryUsage, int32 OutShadowMapMemoryUsage)
 	{
 		auto _p0 = InWidth;
 		auto _p1 = InHeight;
-		auto _p2 = OutLightMapMemoryUsage;
-		auto _p3 = OutShadowMapMemoryUsage;
+		auto& _p2 = OutLightMapMemoryUsage;
+		auto& _p3 = OutShadowMapMemoryUsage;
 		Self->GetTextureLightAndShadowMapMemoryUsage(_p0, _p1, _p2, _p3);
 	}
 

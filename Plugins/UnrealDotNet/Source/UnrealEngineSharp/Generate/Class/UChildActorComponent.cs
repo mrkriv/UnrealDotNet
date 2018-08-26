@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,19 +26,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UChildActorComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UChildActorComponent_CreateChildActor(IntPtr Self);
+		private static extern void E_UChildActorComponent_CreateChildActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UChildActorComponent_DestroyChildActor(IntPtr Self);
+		private static extern void E_UChildActorComponent_DestroyChildActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActor(IntPtr Self);
+		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UChildActorComponent_GetChildActorName(IntPtr Self);
+		private static extern StringWrapper E_UChildActorComponent_GetChildActorName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(IntPtr Self);
+		private static extern ObjectPointerDescription E_UChildActorComponent_GetChildActorTemplate(IntPtr self);
 		
 		#endregion
 		
@@ -66,9 +68,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UChildActorComponent Self)
+		public static implicit operator IntPtr(UChildActorComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UChildActorComponent(ObjectPointerDescription PtrDesc)

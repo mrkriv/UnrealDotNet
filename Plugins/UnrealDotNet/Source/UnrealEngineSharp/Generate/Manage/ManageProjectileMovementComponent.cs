@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -13,9 +15,9 @@ namespace UnrealEngine
 		{
 		}
 
-		public static implicit operator IntPtr(ManageProjectileMovementComponent Self)
+		public static implicit operator IntPtr(ManageProjectileMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageProjectileMovementComponent(ObjectPointerDescription PtrDesc)

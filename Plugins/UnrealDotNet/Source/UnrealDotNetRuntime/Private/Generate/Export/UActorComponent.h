@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -121,6 +123,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UActorComponent_bWantsInitializeComponent_GET(UActorComponent* Ptr) { return Ptr->bWantsInitializeComponent; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_bWantsInitializeComponent_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bWantsInitializeComponent = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_ComponentTags_GET(UActorComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ComponentTags); }
+	DOTNET_EXPORT void E_PROP_UActorComponent_ComponentTags_SET(UActorComponent* Ptr, INT_PTR Value) { Ptr->ComponentTags = *(TArray<FName>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UActorComponent_CreationMethod_GET(UActorComponent* Ptr) { return Ptr->CreationMethod; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_CreationMethod_SET(UActorComponent* Ptr, EComponentCreationMethod Value) { Ptr->CreationMethod = Value; }
 	
@@ -162,6 +167,11 @@ extern "C"
 		Self->Activate(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_AdditionalStatObject(UActorComponent* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->AdditionalStatObject());
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_AddTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
 	{
 		auto _p0 = PrerequisiteActor;
@@ -181,7 +191,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UActorComponent_ApplyWorldOffset(UActorComponent* Self, INT_PTR InOffset, bool bWorldShift)
 	{
-		auto _p0 = *(FVector*)InOffset;
+		auto& _p0 = *(FVector*)InOffset;
 		auto _p1 = bWorldShift;
 		Self->ApplyWorldOffset(_p0, _p1);
 	}

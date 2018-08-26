@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,13 +18,13 @@ namespace UnrealEngine
 		{
 		}
 
-		public FPrimitiveMaterialRef(UPrimitiveComponent InPrimitive, int InElementIndex) :
-			base(E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(InPrimitive, InElementIndex), false)
+		public FPrimitiveMaterialRef(UPrimitiveComponent inPrimitive, int inElementIndex) :
+			base(E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(inPrimitive, inElementIndex), false)
 		{
 		}
 
-		public FPrimitiveMaterialRef(UDecalComponent InDecal, int InElementIndex) :
-			base(E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(InDecal, InElementIndex), false)
+		public FPrimitiveMaterialRef(UDecalComponent inDecal, int inElementIndex) :
+			base(E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(inDecal, inElementIndex), false)
 		{
 		}
 
@@ -31,10 +33,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(IntPtr InPrimitive, int InElementIndex);
+		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UPrimitiveComponent_int32(IntPtr inPrimitive, int inElementIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(IntPtr InDecal, int InElementIndex);
+		private static extern IntPtr E_CreateStruct_FPrimitiveMaterialRef_UDecalComponent_int32(IntPtr inDecal, int inElementIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FPrimitiveMaterialRef_Decal_GET(IntPtr Ptr);
@@ -74,9 +76,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FPrimitiveMaterialRef Self)
+		public static implicit operator IntPtr(FPrimitiveMaterialRef self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FPrimitiveMaterialRef(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,33 +26,53 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UEngineTypes(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UEngineTypes_ConvertToObjectType(IntPtr Self, byte CollisionChannel);
+		private static extern byte E_UEngineTypes_ConvertToCollisionChannel(IntPtr self, byte traceType);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UEngineTypes_ConvertToTraceType(IntPtr Self, byte CollisionChannel);
+		private static extern byte E_UEngineTypes_ConvertToCollisionChannel_o1(IntPtr self, byte objectType);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_UEngineTypes_ConvertToObjectType(IntPtr self, byte collisionChannel);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_UEngineTypes_ConvertToTraceType(IntPtr self, byte collisionChannel);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Convert a trace type to a collision channel. </para>
+		/// </summary>
+		public ECollisionChannel ConvertToCollisionChannel(ETraceTypeQuery traceType)
+			=> (ECollisionChannel)E_UEngineTypes_ConvertToCollisionChannel(this, (byte)traceType);
+		
+		
+		/// <summary>
+		/// <para>Convert an object type to a collision channel. </para>
+		/// </summary>
+		public ECollisionChannel ConvertToCollisionChannel(EObjectTypeQuery objectType)
+			=> (ECollisionChannel)E_UEngineTypes_ConvertToCollisionChannel_o1(this, (byte)objectType);
+		
+		
+		/// <summary>
 		/// <para>Convert a collision channel to an object type. Note: performs a search of object types. </para>
 		/// </summary>
-		public EObjectTypeQuery ConvertToObjectType(ECollisionChannel CollisionChannel)
-			=> (EObjectTypeQuery)E_UEngineTypes_ConvertToObjectType(this, (byte)CollisionChannel);
+		public EObjectTypeQuery ConvertToObjectType(ECollisionChannel collisionChannel)
+			=> (EObjectTypeQuery)E_UEngineTypes_ConvertToObjectType(this, (byte)collisionChannel);
 		
 		
 		/// <summary>
 		/// <para>Convert a collision channel to a trace type. Note: performs a search of trace types. </para>
 		/// </summary>
-		public ETraceTypeQuery ConvertToTraceType(ECollisionChannel CollisionChannel)
-			=> (ETraceTypeQuery)E_UEngineTypes_ConvertToTraceType(this, (byte)CollisionChannel);
+		public ETraceTypeQuery ConvertToTraceType(ECollisionChannel collisionChannel)
+			=> (ETraceTypeQuery)E_UEngineTypes_ConvertToTraceType(this, (byte)collisionChannel);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UEngineTypes Self)
+		public static implicit operator IntPtr(UEngineTypes self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UEngineTypes(ObjectPointerDescription PtrDesc)

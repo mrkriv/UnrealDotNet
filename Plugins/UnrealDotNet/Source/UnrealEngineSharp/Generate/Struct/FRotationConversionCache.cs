@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,28 +23,28 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRotationConversionCache();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_GetCachedQuat(IntPtr Self);
+		private static extern IntPtr E_FRotationConversionCache_GetCachedQuat(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_GetCachedRotator(IntPtr Self);
+		private static extern IntPtr E_FRotationConversionCache_GetCachedRotator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_NormalizedQuatToRotator(IntPtr Self, IntPtr InNormalizedQuat);
+		private static extern IntPtr E_FRotationConversionCache_NormalizedQuatToRotator(IntPtr self, IntPtr inNormalizedQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_NormalizedQuatToRotator_ReadOnly(IntPtr Self, IntPtr InNormalizedQuat);
+		private static extern IntPtr E_FRotationConversionCache_NormalizedQuatToRotator_ReadOnly(IntPtr self, IntPtr inNormalizedQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_QuatToRotator(IntPtr Self, IntPtr InQuat);
+		private static extern IntPtr E_FRotationConversionCache_QuatToRotator(IntPtr self, IntPtr inQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_QuatToRotator_ReadOnly(IntPtr Self, IntPtr InQuat);
+		private static extern IntPtr E_FRotationConversionCache_QuatToRotator_ReadOnly(IntPtr self, IntPtr inQuat);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_RotatorToQuat(IntPtr Self, IntPtr InRotator);
+		private static extern IntPtr E_FRotationConversionCache_RotatorToQuat(IntPtr self, IntPtr inRotator);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FRotationConversionCache_RotatorToQuat_ReadOnly(IntPtr Self, IntPtr InRotator);
+		private static extern IntPtr E_FRotationConversionCache_RotatorToQuat_ReadOnly(IntPtr self, IntPtr inRotator);
 		
 		#endregion
 		
@@ -65,49 +67,49 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Version of QuatToRotator when the Quat is known to already be normalized. </para>
 		/// </summary>
-		public FRotator NormalizedQuatToRotator(FQuat InNormalizedQuat)
-			=> E_FRotationConversionCache_NormalizedQuatToRotator(this, InNormalizedQuat);
+		public FRotator NormalizedQuatToRotator(FQuat inNormalizedQuat)
+			=> E_FRotationConversionCache_NormalizedQuatToRotator(this, inNormalizedQuat);
 		
 		
 		/// <summary>
 		/// <para>Version of QuatToRotator when the Quat is known to already be normalized. Does *NOT* update the cache if there was no match. </para>
 		/// </summary>
-		public FRotator NormalizedQuatToRotator_ReadOnly(FQuat InNormalizedQuat)
-			=> E_FRotationConversionCache_NormalizedQuatToRotator_ReadOnly(this, InNormalizedQuat);
+		public FRotator NormalizedQuatToRotator_ReadOnly(FQuat inNormalizedQuat)
+			=> E_FRotationConversionCache_NormalizedQuatToRotator_ReadOnly(this, inNormalizedQuat);
 		
 		
 		/// <summary>
 		/// <para>Convert a FQuat to FRotator. Uses the cached conversion if possible, and updates it if there was no match. </para>
 		/// </summary>
-		public FRotator QuatToRotator(FQuat InQuat)
-			=> E_FRotationConversionCache_QuatToRotator(this, InQuat);
+		public FRotator QuatToRotator(FQuat inQuat)
+			=> E_FRotationConversionCache_QuatToRotator(this, inQuat);
 		
 		
 		/// <summary>
 		/// <para>Convert a FQuat to FRotator. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match. </para>
 		/// </summary>
-		public FRotator QuatToRotator_ReadOnly(FQuat InQuat)
-			=> E_FRotationConversionCache_QuatToRotator_ReadOnly(this, InQuat);
+		public FRotator QuatToRotator_ReadOnly(FQuat inQuat)
+			=> E_FRotationConversionCache_QuatToRotator_ReadOnly(this, inQuat);
 		
 		
 		/// <summary>
 		/// <para>Convert a FRotator to FQuat. Uses the cached conversion if possible, and updates it if there was no match. </para>
 		/// </summary>
-		public FQuat RotatorToQuat(FRotator InRotator)
-			=> E_FRotationConversionCache_RotatorToQuat(this, InRotator);
+		public FQuat RotatorToQuat(FRotator inRotator)
+			=> E_FRotationConversionCache_RotatorToQuat(this, inRotator);
 		
 		
 		/// <summary>
 		/// <para>Convert a FRotator to FQuat. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match. </para>
 		/// </summary>
-		public FQuat RotatorToQuat_ReadOnly(FRotator InRotator)
-			=> E_FRotationConversionCache_RotatorToQuat_ReadOnly(this, InRotator);
+		public FQuat RotatorToQuat_ReadOnly(FRotator inRotator)
+			=> E_FRotationConversionCache_RotatorToQuat_ReadOnly(this, inRotator);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FRotationConversionCache Self)
+		public static implicit operator IntPtr(FRotationConversionCache self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRotationConversionCache(IntPtr Adress)

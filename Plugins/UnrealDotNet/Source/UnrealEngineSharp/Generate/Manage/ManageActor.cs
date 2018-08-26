@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,13 +19,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Make this actor tick after PrerequisiteActor. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
 		/// </summary>
-		public override void AddTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		public override void AddTickPrerequisiteActor(AActor prerequisiteActor) { }
 		
 		
 		/// <summary>
 		/// <para>Make this actor tick after PrerequisiteComponent. This only applies to this actor's tick function; dependencies for owned components must be set up separately if desired. </para>
 		/// </summary>
-		public override void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		public override void AddTickPrerequisiteComponent(UActorComponent prerequisiteComponent) { }
 		
 		
 		/// <summary>
@@ -31,7 +33,7 @@ namespace UnrealEngine
 		/// <param name="InWorldOffset">Offset vector to shift actor location </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
-		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift) { }
+		public override void ApplyWorldOffset(FVector inOffset, bool bWorldShift) { }
 		
 		
 		/// <summary>
@@ -105,7 +107,7 @@ namespace UnrealEngine
 		/// <para>For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public override void NotifyActorBeginOverlap(AActor OtherActor) { }
+		public override void NotifyActorBeginOverlap(AActor otherActor) { }
 		
 		
 		/// <summary>
@@ -118,7 +120,7 @@ namespace UnrealEngine
 		/// <para>Event when an actor no longer overlaps another actor, and they have separated. </para>
 		/// <para>@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events. </para>
 		/// </summary>
-		public override void NotifyActorEndOverlap(AActor OtherActor) { }
+		public override void NotifyActorEndOverlap(AActor otherActor) { }
 		
 		
 		/// <summary>
@@ -129,14 +131,14 @@ namespace UnrealEngine
 		/// <para>@note When receiving a hit from another object's movement (bSelfMoved is false), the directions of 'Hit.Normal' and 'Hit.ImpactNormal' </para>
 		/// <para>will be adjusted to indicate force from the other object against this object. </para>
 		/// </summary>
-		public override void NotifyHit(UPrimitiveComponent MyComp, AActor Other, UPrimitiveComponent OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, FHitResult Hit) { }
+		public override void NotifyHit(UPrimitiveComponent myComp, AActor other, UPrimitiveComponent otherComp, bool bSelfMoved, FVector hitLocation, FVector hitNormal, FVector normalImpulse, FHitResult hit) { }
 		
 		
 		/// <summary>
 		/// <para>Called when an instance of this class is placed (in editor) or spawned. </para>
 		/// <param name="Transform">The transform the actor was constructed at. </param>
 		/// </summary>
-		public override void OnConstruction(FTransform Transform) { }
+		public override void OnConstruction(FTransform transform) { }
 		
 		public override void OnRep_AttachmentReplication() { }
 		
@@ -158,13 +160,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Called on the actor when a new subobject is dynamically created via replication </para>
 		/// </summary>
-		public override void OnSubobjectCreatedFromReplication(UObject NewSubobject) { }
+		public override void OnSubobjectCreatedFromReplication(UObject newSubobject) { }
 		
 		
 		/// <summary>
 		/// <para>Called on the actor when a subobject is dynamically destroyed via replication </para>
 		/// </summary>
-		public override void OnSubobjectDestroyFromReplication(UObject Subobject) { }
+		public override void OnSubobjectDestroyFromReplication(UObject subobject) { }
 		
 		
 		/// <summary>
@@ -208,7 +210,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update velocity - typically from ReplicatedMovement, not called for simulated physics! </para>
 		/// </summary>
-		public override void PostNetReceiveVelocity(FVector NewVelocity) { }
+		public override void PostNetReceiveVelocity(FVector newVelocity) { }
 		
 		
 		/// <summary>
@@ -241,7 +243,7 @@ namespace UnrealEngine
 		/// <param name="bEnableStreaming">Whether to start (true) or stop (false) streaming </param>
 		/// <param name="CinematicTextureGroups">Bitfield indicating which texture groups that use extra high-resolution mips </param>
 		/// </summary>
-		public override void PrestreamTextures(float Seconds, bool bEnableStreaming, int CinematicTextureGroups) { }
+		public override void PrestreamTextures(float seconds, bool bEnableStreaming, int cinematicTextureGroups) { }
 		
 		
 		/// <summary>
@@ -260,13 +262,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteActor. </para>
 		/// </summary>
-		public override void RemoveTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		public override void RemoveTickPrerequisiteActor(AActor prerequisiteActor) { }
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
 		/// </summary>
-		public override void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		public override void RemoveTickPrerequisiteComponent(UActorComponent prerequisiteComponent) { }
 		
 		
 		/// <summary>
@@ -304,14 +306,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the lifespan of this actor. When it expires the object will be destroyed. If requested lifespan is 0, the timer is cleared and the actor will not be destroyed. </para>
 		/// </summary>
-		public override void SetLifeSpan(float InLifespan) { }
+		public override void SetLifeSpan(float inLifespan) { }
 		
 		
 		/// <summary>
 		/// <para>Set the owner of this Actor, used primarily for network replication. </para>
 		/// <param name="NewOwner">The Actor whom takes over ownership of this Actor </param>
 		/// </summary>
-		public override void SetOwner(AActor NewOwner) { }
+		public override void SetOwner(AActor newOwner) { }
 		
 		
 		/// <summary>
@@ -338,7 +340,7 @@ namespace UnrealEngine
 		/// <para>Note that Tick is disabled by default, and you will need to check PrimaryActorTick.bCanEverTick is set to true to enable it. </para>
 		/// <param name="DeltaSeconds">Game time elapsed during last frame modified by the time dilation </param>
 		/// </summary>
-		public override void Tick(float DeltaSeconds) { }
+		public override void Tick(float deltaSeconds) { }
 		
 		
 		/// <summary>
@@ -353,9 +355,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UnregisterAllComponents(bool bForReregister) { }
 		
-		public static implicit operator IntPtr(ManageActor Self)
+		public static implicit operator IntPtr(ManageActor self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageActor(ObjectPointerDescription PtrDesc)

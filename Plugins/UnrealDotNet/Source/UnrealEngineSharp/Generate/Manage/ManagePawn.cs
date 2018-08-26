@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -20,7 +22,7 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Pitch. This value is multiplied by the PlayerController's InputPitchScale value. </param>
 		/// <para>@see PlayerController::InputPitchScale </para>
 		/// </summary>
-		public override void AddControllerPitchInput(float Val) { }
+		public override void AddControllerPitchInput(float val) { }
 		
 		
 		/// <summary>
@@ -29,7 +31,7 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Roll. This value is multiplied by the PlayerController's InputRollScale value. </param>
 		/// <para>@see PlayerController::InputRollScale </para>
 		/// </summary>
-		public override void AddControllerRollInput(float Val) { }
+		public override void AddControllerRollInput(float val) { }
 		
 		
 		/// <summary>
@@ -38,7 +40,7 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Yaw. This value is multiplied by the PlayerController's InputYawScale value. </param>
 		/// <para>@see PlayerController::InputYawScale </para>
 		/// </summary>
-		public override void AddControllerYawInput(float Val) { }
+		public override void AddControllerYawInput(float val) { }
 		
 		
 		/// <summary>
@@ -49,7 +51,7 @@ namespace UnrealEngine
 		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
 		/// <para>@see GetPendingMovementInputVector(), GetLastMovementInputVector(), ConsumeMovementInputVector() </para>
 		/// </summary>
-		public override void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce) { }
+		public override void AddMovementInput(FVector worldDirection, float scaleValue, bool bForce) { }
 		
 		
 		/// <summary>
@@ -67,7 +69,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Updates Pawn's rotation to the given rotation, assumed to be the Controller's ControlRotation. Respects the bUseControllerRotation* settings. </para>
 		/// </summary>
-		public override void FaceRotation(FRotator NewControlRotation, float DeltaTime) { }
+		public override void FaceRotation(FRotator newControlRotation, float deltaTime) { }
 		
 		public override void OnRep_Controller() { }
 		
@@ -83,7 +85,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Handle StartFire() passed from PlayerController </para>
 		/// </summary>
-		public override void PawnStartFire(byte FireModeNum) { }
+		public override void PawnStartFire(byte fireModeNum) { }
 		
 		
 		/// <summary>
@@ -127,9 +129,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UpdateNavigationRelevance() { }
 		
-		public static implicit operator IntPtr(ManagePawn Self)
+		public static implicit operator IntPtr(ManagePawn self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManagePawn(ObjectPointerDescription PtrDesc)

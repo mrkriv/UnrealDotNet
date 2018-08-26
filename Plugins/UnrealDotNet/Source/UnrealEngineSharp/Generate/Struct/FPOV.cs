@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FPOV(FVector InLocation, FRotator InRotation, float InFOV) :
-			base(E_CreateStruct_FPOV_FVector_FRotator_float(InLocation, InRotation, InFOV), false)
+		public FPOV(FVector inLocation, FRotator inRotation, float inFOV) :
+			base(E_CreateStruct_FPOV_FVector_FRotator_float(inLocation, inRotation, inFOV), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FPOV();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPOV_FVector_FRotator_float(IntPtr InLocation, IntPtr InRotation, float InFOV);
+		private static extern IntPtr E_CreateStruct_FPOV_FVector_FRotator_float(IntPtr inLocation, IntPtr inRotation, float inFOV);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPOV_FOV_GET(IntPtr Ptr);
@@ -78,9 +80,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FPOV Self)
+		public static implicit operator IntPtr(FPOV self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FPOV(IntPtr Adress)

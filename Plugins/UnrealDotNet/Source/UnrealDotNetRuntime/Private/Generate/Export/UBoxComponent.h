@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -27,7 +29,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UBoxComponent_InitBoxExtent(UBoxComponent* Self, INT_PTR InBoxExtent)
 	{
-		auto _p0 = *(FVector*)InBoxExtent;
+		auto& _p0 = *(FVector*)InBoxExtent;
 		Self->InitBoxExtent(_p0);
 	}
 

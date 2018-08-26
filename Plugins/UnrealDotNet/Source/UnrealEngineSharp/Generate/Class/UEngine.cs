@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,6 +26,31 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UEngine(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveClassRedirects_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_ActiveClassRedirects_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveGameNameRedirects_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_ActiveGameNameRedirects_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_ActivePluginRedirects_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_ActivePluginRedirects_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveStructRedirects_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_ActiveStructRedirects_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_AdditionalFontNames_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_AdditionalFontNames_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_UEngine_bIsInitialized_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_bIsInitialized_SET(IntPtr Ptr, bool Value);
@@ -47,6 +74,11 @@ namespace UnrealEngine
 		private static extern int E_PROP_UEngine_ClientCycles_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ClientCycles_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_DeferredCommands_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_DeferredCommands_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_DisplayGamma_GET(IntPtr Ptr);
@@ -174,9 +206,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_ParticleEventManagerClassPath_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_PendingDroppedNotes_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_PendingDroppedNotes_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_PriorityScreenMessages_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_PriorityScreenMessages_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_RenderLightMapDensityColorScale_GET(IntPtr Ptr);
@@ -212,6 +254,11 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_StatColorMappings_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_StatColorMappings_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_StreamingDistanceFactor_GET(IntPtr Ptr);
@@ -269,53 +316,87 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_WireframeMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_GetDynamicResolutionCurrentStateInfos(IntPtr Self, IntPtr OutInfos);
+		private static extern void E_UEngine_GetDynamicResolutionCurrentStateInfos(IntPtr self, IntPtr outInfos);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UEngine_GetDynamicResolutionUserSetting(IntPtr Self);
+		private static extern bool E_UEngine_GetDynamicResolutionUserSetting(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UEngine_IsInitialized(IntPtr Self);
+		private static extern bool E_UEngine_IsInitialized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_ParseCommandline(IntPtr Self);
+		private static extern void E_UEngine_ParseCommandline(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_PauseDynamicResolution(IntPtr Self);
+		private static extern void E_UEngine_PauseDynamicResolution(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_PreExit(IntPtr Self);
+		private static extern void E_UEngine_PreExit(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_RestoreSelectedMaterialColor(IntPtr Self);
+		private static extern void E_UEngine_RestoreSelectedMaterialColor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_ResumeDynamicResolution(IntPtr Self);
+		private static extern void E_UEngine_ResumeDynamicResolution(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_SetDynamicResolutionUserSetting(IntPtr Self, bool Enable);
+		private static extern void E_UEngine_SetDynamicResolutionUserSetting(IntPtr self, bool enable);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_ShutdownAudioDeviceManager(IntPtr Self);
+		private static extern void E_UEngine_ShutdownAudioDeviceManager(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_ShutdownHMD(IntPtr Self);
+		private static extern void E_UEngine_ShutdownHMD(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_Start(IntPtr Self);
+		private static extern void E_UEngine_Start(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_Tick(IntPtr Self, float DeltaSeconds, bool bIdleMode);
+		private static extern void E_UEngine_Tick(IntPtr self, float deltaSeconds, bool bIdleMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_WorldAdded(IntPtr Self, IntPtr World);
+		private static extern void E_UEngine_WorldAdded(IntPtr self, IntPtr world);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_WorldDestroyed(IntPtr Self, IntPtr InWorld);
+		private static extern void E_UEngine_WorldDestroyed(IntPtr self, IntPtr inWorld);
 		
 		#endregion
 		
 		#region Property
+		public TArray<FClassRedirect> ActiveClassRedirects
+		{
+			get => E_PROP_UEngine_ActiveClassRedirects_GET(NativePointer);
+			set => E_PROP_UEngine_ActiveClassRedirects_SET(NativePointer, value);
+		}
+
+		public TArray<FGameNameRedirect> ActiveGameNameRedirects
+		{
+			get => E_PROP_UEngine_ActiveGameNameRedirects_GET(NativePointer);
+			set => E_PROP_UEngine_ActiveGameNameRedirects_SET(NativePointer, value);
+		}
+
+		public TArray<FPluginRedirect> ActivePluginRedirects
+		{
+			get => E_PROP_UEngine_ActivePluginRedirects_GET(NativePointer);
+			set => E_PROP_UEngine_ActivePluginRedirects_SET(NativePointer, value);
+		}
+
+		public TArray<FStructRedirect> ActiveStructRedirects
+		{
+			get => E_PROP_UEngine_ActiveStructRedirects_GET(NativePointer);
+			set => E_PROP_UEngine_ActiveStructRedirects_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>@todo document </para>
+		/// </summary>
+		public TArray<string> AdditionalFontNames
+		{
+			get => E_PROP_UEngine_AdditionalFontNames_GET(NativePointer);
+			set => E_PROP_UEngine_AdditionalFontNames_SET(NativePointer, value);
+		}
+
 		public bool bIsInitialized
 		{
 			get => E_PROP_UEngine_bIsInitialized_GET(NativePointer);
@@ -344,6 +425,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_ClientCycles_GET(NativePointer);
 			set => E_PROP_UEngine_ClientCycles_SET(NativePointer, value);
+		}
+
+		public TArray<string> DeferredCommands
+		{
+			get => E_PROP_UEngine_DeferredCommands_GET(NativePointer);
+			set => E_PROP_UEngine_DeferredCommands_SET(NativePointer, value);
 		}
 
 		public float DisplayGamma
@@ -516,10 +603,26 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_ParticleEventManagerClassPath_SET(NativePointer, value);
 		}
 
+		public TArray<FDropNoteInfo> PendingDroppedNotes
+		{
+			get => E_PROP_UEngine_PendingDroppedNotes_GET(NativePointer);
+			set => E_PROP_UEngine_PendingDroppedNotes_SET(NativePointer, value);
+		}
+
 		public float PrimitiveProbablyVisibleTime
 		{
 			get => E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(NativePointer);
 			set => E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>A collection of messages to display on-screen. </para>
+		/// </summary>
+		public TArray<FScreenMessageString> PriorityScreenMessages
+		{
+			get => E_PROP_UEngine_PriorityScreenMessages_GET(NativePointer);
+			set => E_PROP_UEngine_PriorityScreenMessages_SET(NativePointer, value);
 		}
 
 		public float RenderLightMapDensityColorScale
@@ -562,6 +665,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(NativePointer);
 			set => E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(NativePointer, value);
+		}
+
+		public TArray<FStatColorMapping> StatColorMappings
+		{
+			get => E_PROP_UEngine_StatColorMappings_GET(NativePointer);
+			set => E_PROP_UEngine_StatColorMappings_SET(NativePointer, value);
 		}
 
 		
@@ -641,8 +750,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Queries informations about the current state dynamic resolution. </para>
 		/// </summary>
-		public void GetDynamicResolutionCurrentStateInfos(FDynamicResolutionStateInfos OutInfos)
-			=> E_UEngine_GetDynamicResolutionCurrentStateInfos(this, OutInfos);
+		public void GetDynamicResolutionCurrentStateInfos(FDynamicResolutionStateInfos outInfos)
+			=> E_UEngine_GetDynamicResolutionCurrentStateInfos(this, outInfos);
 		
 		
 		/// <summary>
@@ -693,8 +802,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the user setting for dynamic resolution. </para>
 		/// </summary>
-		public void SetDynamicResolutionUserSetting(bool Enable)
-			=> E_UEngine_SetDynamicResolutionUserSetting(this, Enable);
+		public void SetDynamicResolutionUserSetting(bool enable)
+			=> E_UEngine_SetDynamicResolutionUserSetting(this, enable);
 		
 		public virtual void ShutdownAudioDeviceManager()
 			=> E_UEngine_ShutdownAudioDeviceManager(this);
@@ -713,28 +822,28 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update everything. </para>
 		/// </summary>
-		public virtual void Tick(float DeltaSeconds, bool bIdleMode)
-			=> E_UEngine_Tick(this, DeltaSeconds, bIdleMode);
+		public virtual void Tick(float deltaSeconds, bool bIdleMode)
+			=> E_UEngine_Tick(this, deltaSeconds, bIdleMode);
 		
 		
 		/// <summary>
 		/// <para>Needs to be called when a world is added to broadcast messages. </para>
 		/// </summary>
-		public virtual void WorldAdded(UWorld World)
-			=> E_UEngine_WorldAdded(this, World);
+		public virtual void WorldAdded(UWorld world)
+			=> E_UEngine_WorldAdded(this, world);
 		
 		
 		/// <summary>
 		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
 		/// </summary>
-		public virtual void WorldDestroyed(UWorld InWorld)
-			=> E_UEngine_WorldDestroyed(this, InWorld);
+		public virtual void WorldDestroyed(UWorld inWorld)
+			=> E_UEngine_WorldDestroyed(this, inWorld);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UEngine Self)
+		public static implicit operator IntPtr(UEngine self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UEngine(ObjectPointerDescription PtrDesc)

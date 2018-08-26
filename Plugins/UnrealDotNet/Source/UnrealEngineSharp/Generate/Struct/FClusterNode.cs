@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FClusterNode(FClusterNode_DEPRECATED OldNode) :
-			base(E_CreateStruct_FClusterNode_FClusterNode_DEPRECATED(OldNode), false)
+		public FClusterNode(FClusterNode_DEPRECATED oldNode) :
+			base(E_CreateStruct_FClusterNode_FClusterNode_DEPRECATED(oldNode), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FClusterNode();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FClusterNode_FClusterNode_DEPRECATED(IntPtr OldNode);
+		private static extern IntPtr E_CreateStruct_FClusterNode_FClusterNode_DEPRECATED(IntPtr oldNode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FClusterNode_BoundMax_GET(IntPtr Ptr);
@@ -121,9 +123,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FClusterNode Self)
+		public static implicit operator IntPtr(FClusterNode self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FClusterNode(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,13 +26,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Make this component tick after PrerequisiteActor </para>
 		/// </summary>
-		public override void AddTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		public override void AddTickPrerequisiteActor(AActor prerequisiteActor) { }
 		
 		
 		/// <summary>
 		/// <para>Make this component tick after PrerequisiteComponent. </para>
 		/// </summary>
-		public override void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		public override void AddTickPrerequisiteComponent(UActorComponent prerequisiteComponent) { }
 		
 		
 		/// <summary>
@@ -39,7 +41,7 @@ namespace UnrealEngine
 		/// <param name="InWorldOffset">Offset vector the actor shifted by </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
-		public override void ApplyWorldOffset(FVector InOffset, bool bWorldShift) { }
+		public override void ApplyWorldOffset(FVector inOffset, bool bWorldShift) { }
 		
 		
 		/// <summary>
@@ -146,13 +148,13 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteActor. </para>
 		/// </summary>
-		public override void RemoveTickPrerequisiteActor(AActor PrerequisiteActor) { }
+		public override void RemoveTickPrerequisiteActor(AActor prerequisiteActor) { }
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
 		/// </summary>
-		public override void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent) { }
+		public override void RemoveTickPrerequisiteComponent(UActorComponent prerequisiteComponent) { }
 		
 		
 		/// <summary>
@@ -213,11 +215,11 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Recalculate the value of our component to world transform </para>
 		/// </summary>
-		public override void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) { }
+		public override void UpdateComponentToWorld(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport) { }
 		
-		public static implicit operator IntPtr(ManageActorComponent Self)
+		public static implicit operator IntPtr(ManageActorComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageActorComponent(ObjectPointerDescription PtrDesc)

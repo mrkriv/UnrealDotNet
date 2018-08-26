@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -56,10 +58,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepRootMotionMontage_Rotation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FRepRootMotionMontage_Clear(IntPtr Self);
+		private static extern void E_FRepRootMotionMontage_Clear(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FRepRootMotionMontage_HasRootMotion(IntPtr Self);
+		private static extern bool E_FRepRootMotionMontage_HasRootMotion(IntPtr self);
 		
 		#endregion
 		
@@ -125,9 +127,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FRepRootMotionMontage Self)
+		public static implicit operator IntPtr(FRepRootMotionMontage self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRepRootMotionMontage(IntPtr Adress)

@@ -6,8 +6,6 @@ namespace GameLogic
 {
     public class MyActor : ManageActor
     {
-        private UBoxComponent _box;
-
         [EditAnywhere, DefaultValue(10.0f)]
         public float Speed { get; set; }
 
@@ -17,25 +15,24 @@ namespace GameLogic
         {
         }
 
-        public override void OnConstruction(FTransform Transform)
+        public override void OnConstruction(FTransform transform)
         {
             PrimaryActorTick.bCanEverTick = 1;
 
-            _box = new UBoxComponent(this, "Simple Child");
+            var _box = new UBoxComponent(this, "Simple Child");
             _box.RegisterComponent();
 
-            AddInstanceComponent(_box);
-            SetRootComponent(_box);
+            _box.AttachToComponent(GetRootComponent(), FAttachmentTransformRules.SnapToTargetIncludingScale, "");
 
             _box.SetCollisionProfileName("OverlapAll");
             _box.SetBoxExtent(new FVector(100, 100, 100), false);
             _box.SetHiddenInGame(false);
-
-            _box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
         }
 
         protected override void BeginPlay()
         {
+            //var box = (UBoxComponent)GetComponents().First(x => x.GetName() == "Simple Child");
+            //box.OnComponentEndOverlap += Box_OnComponentEndOverlap;
         }
 
         private void Box_OnComponentEndOverlap(UPrimitiveComponent overComp, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex)
@@ -54,7 +51,7 @@ namespace GameLogic
                 Roll = 0
             };
 
-            SetActorRotation(rot, false);
+            SetActorRotation(rot, ETeleportType.None);
         }
     }
 }

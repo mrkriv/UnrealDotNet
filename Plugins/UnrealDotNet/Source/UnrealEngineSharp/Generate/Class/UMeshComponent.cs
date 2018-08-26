@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,19 +26,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMeshComponent_CacheMaterialParameterNameIndices(IntPtr Self);
+		private static extern void E_UMeshComponent_CacheMaterialParameterNameIndices(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UMeshComponent_GetScalarParameterDefaultValue(IntPtr Self, string ParameterName);
+		private static extern float E_UMeshComponent_GetScalarParameterDefaultValue(IntPtr self, string parameterName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(IntPtr Self);
+		private static extern void E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMeshComponent_SetScalarParameterValueOnMaterials(IntPtr Self, string ParameterName, float ParameterValue);
+		private static extern void E_UMeshComponent_SetScalarParameterValueOnMaterials(IntPtr self, string parameterName, float parameterValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UMeshComponent_SetVectorParameterValueOnMaterials(IntPtr Self, string ParameterName, IntPtr ParameterValue);
+		private static extern void E_UMeshComponent_SetVectorParameterValueOnMaterials(IntPtr self, string parameterName, IntPtr parameterValue);
 		
 		#endregion
 		
@@ -54,8 +56,8 @@ namespace UnrealEngine
 		/// <para>NOTE: This is not reliable when cooking, as initializing the default value </para>
 		/// <para>requires a render resource that only exists if the owning world is rendering. </para>
 		/// </summary>
-		public float GetScalarParameterDefaultValue(string ParameterName)
-			=> E_UMeshComponent_GetScalarParameterDefaultValue(this, ParameterName);
+		public float GetScalarParameterDefaultValue(string parameterName)
+			=> E_UMeshComponent_GetScalarParameterDefaultValue(this, parameterName);
 		
 		
 		/// <summary>
@@ -68,21 +70,21 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set all occurrences of Scalar Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
 		/// </summary>
-		public void SetScalarParameterValueOnMaterials(string ParameterName, float ParameterValue)
-			=> E_UMeshComponent_SetScalarParameterValueOnMaterials(this, ParameterName, ParameterValue);
+		public void SetScalarParameterValueOnMaterials(string parameterName, float parameterValue)
+			=> E_UMeshComponent_SetScalarParameterValueOnMaterials(this, parameterName, parameterValue);
 		
 		
 		/// <summary>
 		/// <para>Set all occurrences of Vector Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
 		/// </summary>
-		public void SetVectorParameterValueOnMaterials(string ParameterName, FVector ParameterValue)
-			=> E_UMeshComponent_SetVectorParameterValueOnMaterials(this, ParameterName, ParameterValue);
+		public void SetVectorParameterValueOnMaterials(string parameterName, FVector parameterValue)
+			=> E_UMeshComponent_SetVectorParameterValueOnMaterials(this, parameterName, parameterValue);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UMeshComponent Self)
+		public static implicit operator IntPtr(UMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UMeshComponent(ObjectPointerDescription PtrDesc)

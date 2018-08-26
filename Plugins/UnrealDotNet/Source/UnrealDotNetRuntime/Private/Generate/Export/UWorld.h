@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -87,6 +89,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_PlayerNum_GET(UWorld* Ptr) { return Ptr->PlayerNum; }
 	DOTNET_EXPORT void E_PROP_UWorld_PlayerNum_SET(UWorld* Ptr, int32 Value) { Ptr->PlayerNum = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UWorld_PreparingLevelNames_GET(UWorld* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PreparingLevelNames); }
+	DOTNET_EXPORT void E_PROP_UWorld_PreparingLevelNames_SET(UWorld* Ptr, INT_PTR Value) { Ptr->PreparingLevelNames = *(TArray<FName>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UWorld_RealTimeSeconds_GET(UWorld* Ptr) { return Ptr->RealTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_RealTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->RealTimeSeconds = Value; }
 	
@@ -107,6 +112,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_URL_GET(UWorld* Ptr) { return (INT_PTR)&(Ptr->URL); }
 	DOTNET_EXPORT void E_PROP_UWorld_URL_SET(UWorld* Ptr, INT_PTR Value) { Ptr->URL = *(FURL*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UWorld_ViewLocationsRenderedLastFrame_GET(UWorld* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ViewLocationsRenderedLastFrame); }
+	DOTNET_EXPORT void E_PROP_UWorld_ViewLocationsRenderedLastFrame_SET(UWorld* Ptr, INT_PTR Value) { Ptr->ViewLocationsRenderedLastFrame = *(TArray<FVector>*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UWorld(UObject* Parent, char* Name)
@@ -320,7 +328,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_FindTeleportSpot(UWorld* Self, AActor* TestActor, INT_PTR PlaceLocation, INT_PTR PlaceRotation)
 	{
 		auto _p0 = TestActor;
-		auto _p1 = *(FVector*)PlaceLocation;
+		auto& _p1 = *(FVector*)PlaceLocation;
 		auto _p2 = *(FRotator*)PlaceRotation;
 		return Self->FindTeleportSpot(_p0, _p1, _p2);
 	}
@@ -375,6 +383,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_GetGravityZ(UWorld* Self)
 	{
 		return Self->GetGravityZ();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetMapName(UWorld* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetMapName());
 	}
 
 	DOTNET_EXPORT auto E_UWorld_GetMonoFarFieldCullingDistance(UWorld* Self)
@@ -459,7 +472,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_InitializeActorsForPlay(UWorld* Self, INT_PTR InURL, bool bResetTime)
 	{
-		auto _p0 = *(FURL*)InURL;
+		auto& _p0 = *(FURL*)InURL;
 		auto _p1 = bResetTime;
 		Self->InitializeActorsForPlay(_p0, _p1);
 	}
@@ -568,7 +581,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_Listen(UWorld* Self, INT_PTR InURL)
 	{
-		auto _p0 = *(FURL*)InURL;
+		auto& _p0 = *(FURL*)InURL;
 		return Self->Listen(_p0);
 	}
 
@@ -592,6 +605,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_PopulateStreamingLevelsToConsider(UWorld* Self)
 	{
 		Self->PopulateStreamingLevelsToConsider();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_PrepareMapChange(UWorld* Self, INT_PTR LevelNames)
+	{
+		auto& _p0 = *(const TArray<FName>*)LevelNames;
+		Self->PrepareMapChange(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_ProcessLevelStreamingVolumes(UWorld* Self, INT_PTR OverrideViewLocation)
@@ -673,7 +692,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UWorld_SetGameMode(UWorld* Self, INT_PTR InURL)
 	{
-		auto _p0 = *(FURL*)InURL;
+		auto& _p0 = *(FURL*)InURL;
 		return Self->SetGameMode(_p0);
 	}
 

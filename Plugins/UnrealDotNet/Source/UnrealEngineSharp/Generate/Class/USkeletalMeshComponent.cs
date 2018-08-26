@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -124,6 +126,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_SET(IntPtr Ptr, byte Value);
@@ -189,6 +196,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkeletalMeshComponent_ClothBlendWeight_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_ClothBlendWeight_SET(IntPtr Ptr, float Value);
@@ -245,52 +262,52 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_VolumeStiffness_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_ClearMorphTargets(IntPtr Self);
+		private static extern void E_USkeletalMeshComponent_ClearMorphTargets(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_CreateBodySetup(IntPtr Self);
+		private static extern void E_USkeletalMeshComponent_CreateBodySetup(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(IntPtr Self);
+		private static extern bool E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USkeletalMeshComponent_GetMorphTarget(IntPtr Self, string MorphTargetName);
+		private static extern float E_USkeletalMeshComponent_GetMorphTarget(IntPtr self, string morphTargetName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USkeletalMeshComponent_GetPlayRate(IntPtr Self);
+		private static extern float E_USkeletalMeshComponent_GetPlayRate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USkeletalMeshComponent_GetPosition(IntPtr Self);
+		private static extern float E_USkeletalMeshComponent_GetPosition(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USkeletalMeshComponent_HasValidAnimationInstance(IntPtr Self);
+		private static extern bool E_USkeletalMeshComponent_HasValidAnimationInstance(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USkeletalMeshComponent_IsPlaying(IntPtr Self);
+		private static extern bool E_USkeletalMeshComponent_IsPlaying(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_Play(IntPtr Self, bool bLooping);
+		private static extern void E_USkeletalMeshComponent_Play(IntPtr self, bool bLooping);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_ResetAnimInstanceDynamics(IntPtr Self, byte InTeleportType);
+		private static extern void E_USkeletalMeshComponent_ResetAnimInstanceDynamics(IntPtr self, byte inTeleportType);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(IntPtr Self, bool bInDisablePostProcess);
+		private static extern void E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(IntPtr self, bool bInDisablePostProcess);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_SetMorphTarget(IntPtr Self, string MorphTargetName, float Value, bool bRemoveZeroWeight);
+		private static extern void E_USkeletalMeshComponent_SetMorphTarget(IntPtr self, string morphTargetName, float value, bool bRemoveZeroWeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_SetPlayRate(IntPtr Self, float Rate);
+		private static extern void E_USkeletalMeshComponent_SetPlayRate(IntPtr self, float rate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_SetPosition(IntPtr Self, float InPos, bool bFireNotifies);
+		private static extern void E_USkeletalMeshComponent_SetPosition(IntPtr self, float inPos, bool bFireNotifies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_Stop(IntPtr Self);
+		private static extern void E_USkeletalMeshComponent_Stop(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(IntPtr Self);
+		private static extern void E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(IntPtr self);
 		
 		#endregion
 		
@@ -466,6 +483,16 @@ namespace UnrealEngine
 			set => E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Temporary array of local-space (relative to parent bone) rotation/translation for each bone. </para>
+		/// </summary>
+		public TArray<FTransform> BoneSpaceTransforms
+		{
+			get => E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(NativePointer, value);
+		}
+
 		public byte bOnlyAllowAutonomousTickPose
 		{
 			get => E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_GET(NativePointer);
@@ -565,6 +592,18 @@ namespace UnrealEngine
 			set => E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(NativePointer, value);
 		}
 
+		public TArray<FTransform> CachedBoneSpaceTransforms
+		{
+			get => E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_SET(NativePointer, value);
+		}
+
+		public TArray<FTransform> CachedComponentSpaceTransforms
+		{
+			get => E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>weight to blend between simulated results and key-framed positions </para>
@@ -659,9 +698,9 @@ namespace UnrealEngine
 
 		private event FConstraintBrokenSignature _Event_OnConstraintBroken;
 		
-		internal void InvokeEvent_OnConstraintBroken(int ConstraintIndex)
+		internal void InvokeEvent_OnConstraintBroken(int constraintIndex)
 		{
-			_Event_OnConstraintBroken?.Invoke(ConstraintIndex);
+			_Event_OnConstraintBroken?.Invoke(constraintIndex);
 		}
 
 		#endregion
@@ -684,8 +723,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Get Morph target with given name </para>
 		/// </summary>
-		public float GetMorphTarget(string MorphTargetName)
-			=> E_USkeletalMeshComponent_GetMorphTarget(this, MorphTargetName);
+		public float GetMorphTarget(string morphTargetName)
+			=> E_USkeletalMeshComponent_GetMorphTarget(this, morphTargetName);
 		
 		public float GetPlayRate()
 			=> E_USkeletalMeshComponent_GetPlayRate(this);
@@ -712,8 +751,8 @@ namespace UnrealEngine
 		/// <para>Informs any active anim instances (main instance, sub instances, post instance) that a dynamics reset is required </para>
 		/// <para>for example if a teleport occurs. </para>
 		/// </summary>
-		public void ResetAnimInstanceDynamics(ETeleportType InTeleportType)
-			=> E_USkeletalMeshComponent_ResetAnimInstanceDynamics(this, (byte)InTeleportType);
+		public void ResetAnimInstanceDynamics(ETeleportType inTeleportType)
+			=> E_USkeletalMeshComponent_ResetAnimInstanceDynamics(this, (byte)inTeleportType);
 		
 		public void SetDisablePostProcessBlueprint(bool bInDisablePostProcess)
 			=> E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(this, bInDisablePostProcess);
@@ -723,14 +762,14 @@ namespace UnrealEngine
 		/// <para>Set Morph Target with Name and Value(0-1) </para>
 		/// <param name="bRemoveZeroWeight">Used by editor code when it should stay in the active list with zero weight </param>
 		/// </summary>
-		public void SetMorphTarget(string MorphTargetName, float Value, bool bRemoveZeroWeight = true)
-			=> E_USkeletalMeshComponent_SetMorphTarget(this, MorphTargetName, Value, bRemoveZeroWeight);
+		public void SetMorphTarget(string morphTargetName, float value, bool bRemoveZeroWeight = true)
+			=> E_USkeletalMeshComponent_SetMorphTarget(this, morphTargetName, value, bRemoveZeroWeight);
 		
-		public void SetPlayRate(float Rate)
-			=> E_USkeletalMeshComponent_SetPlayRate(this, Rate);
+		public void SetPlayRate(float rate)
+			=> E_USkeletalMeshComponent_SetPlayRate(this, rate);
 		
-		public void SetPosition(float InPos, bool bFireNotifies = true)
-			=> E_USkeletalMeshComponent_SetPosition(this, InPos, bFireNotifies);
+		public void SetPosition(float inPos, bool bFireNotifies = true)
+			=> E_USkeletalMeshComponent_SetPosition(this, inPos, bFireNotifies);
 		
 		public void Stop()
 			=> E_USkeletalMeshComponent_Stop(this);
@@ -744,9 +783,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USkeletalMeshComponent Self)
+		public static implicit operator IntPtr(USkeletalMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USkeletalMeshComponent(ObjectPointerDescription PtrDesc)

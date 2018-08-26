@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -29,67 +31,67 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UTimelineComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UTimelineComponent_GetIgnoreTimeDilation(IntPtr Self);
+		private static extern bool E_UTimelineComponent_GetIgnoreTimeDilation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UTimelineComponent_GetPlaybackPosition(IntPtr Self);
+		private static extern float E_UTimelineComponent_GetPlaybackPosition(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UTimelineComponent_GetPlayRate(IntPtr Self);
+		private static extern float E_UTimelineComponent_GetPlayRate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UTimelineComponent_GetTimelineLength(IntPtr Self);
+		private static extern float E_UTimelineComponent_GetTimelineLength(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UTimelineComponent_IsLooping(IntPtr Self);
+		private static extern bool E_UTimelineComponent_IsLooping(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UTimelineComponent_IsPlaying(IntPtr Self);
+		private static extern bool E_UTimelineComponent_IsPlaying(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UTimelineComponent_IsReversing(IntPtr Self);
+		private static extern bool E_UTimelineComponent_IsReversing(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_Play(IntPtr Self);
+		private static extern void E_UTimelineComponent_Play(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_PlayFromStart(IntPtr Self);
+		private static extern void E_UTimelineComponent_PlayFromStart(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_Reverse(IntPtr Self);
+		private static extern void E_UTimelineComponent_Reverse(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_ReverseFromEnd(IntPtr Self);
+		private static extern void E_UTimelineComponent_ReverseFromEnd(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetDirectionPropertyName(IntPtr Self, string DirectionPropertyName);
+		private static extern void E_UTimelineComponent_SetDirectionPropertyName(IntPtr self, string directionPropertyName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetIgnoreTimeDilation(IntPtr Self, bool bNewIgnoreTimeDilation);
+		private static extern void E_UTimelineComponent_SetIgnoreTimeDilation(IntPtr self, bool bNewIgnoreTimeDilation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetLooping(IntPtr Self, bool bNewLooping);
+		private static extern void E_UTimelineComponent_SetLooping(IntPtr self, bool bNewLooping);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetNewTime(IntPtr Self, float NewTime);
+		private static extern void E_UTimelineComponent_SetNewTime(IntPtr self, float newTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetPlaybackPosition(IntPtr Self, float NewPosition, bool bFireEvents, bool bFireUpdate);
+		private static extern void E_UTimelineComponent_SetPlaybackPosition(IntPtr self, float newPosition, bool bFireEvents, bool bFireUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetPlayRate(IntPtr Self, float NewRate);
+		private static extern void E_UTimelineComponent_SetPlayRate(IntPtr self, float newRate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetPropertySetObject(IntPtr Self, IntPtr NewPropertySetObject);
+		private static extern void E_UTimelineComponent_SetPropertySetObject(IntPtr self, IntPtr newPropertySetObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetTimelineLength(IntPtr Self, float NewLength);
+		private static extern void E_UTimelineComponent_SetTimelineLength(IntPtr self, float newLength);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_SetTimelineLengthMode(IntPtr Self, byte NewLengthMode);
+		private static extern void E_UTimelineComponent_SetTimelineLengthMode(IntPtr self, byte newLengthMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UTimelineComponent_Stop(IntPtr Self);
+		private static extern void E_UTimelineComponent_Stop(IntPtr self);
 		
 		#endregion
 		
@@ -175,8 +177,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the delegate to call when timeline is finished </para>
 		/// </summary>
-		public void SetDirectionPropertyName(string DirectionPropertyName)
-			=> E_UTimelineComponent_SetDirectionPropertyName(this, DirectionPropertyName);
+		public void SetDirectionPropertyName(string directionPropertyName)
+			=> E_UTimelineComponent_SetDirectionPropertyName(this, directionPropertyName);
 		
 		
 		/// <summary>
@@ -196,8 +198,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the new playback position time to use </para>
 		/// </summary>
-		public void SetNewTime(float NewTime)
-			=> E_UTimelineComponent_SetNewTime(this, NewTime);
+		public void SetNewTime(float newTime)
+			=> E_UTimelineComponent_SetNewTime(this, newTime);
 		
 		
 		/// <summary>
@@ -205,36 +207,36 @@ namespace UnrealEngine
 		/// <param name="bFireEvents">If true, event functions that are between current position and new playback position will fire. </param>
 		/// <param name="bFireUpdate">If true, the update output exec will fire after setting the new playback position. </param>
 		/// </summary>
-		public void SetPlaybackPosition(float NewPosition, bool bFireEvents, bool bFireUpdate = true)
-			=> E_UTimelineComponent_SetPlaybackPosition(this, NewPosition, bFireEvents, bFireUpdate);
+		public void SetPlaybackPosition(float newPosition, bool bFireEvents, bool bFireUpdate = true)
+			=> E_UTimelineComponent_SetPlaybackPosition(this, newPosition, bFireEvents, bFireUpdate);
 		
 		
 		/// <summary>
 		/// <para>Sets the new play rate for this timeline </para>
 		/// </summary>
-		public void SetPlayRate(float NewRate)
-			=> E_UTimelineComponent_SetPlayRate(this, NewRate);
+		public void SetPlayRate(float newRate)
+			=> E_UTimelineComponent_SetPlayRate(this, newRate);
 		
 		
 		/// <summary>
 		/// <para>Optionally provide an object to automatically update properties on </para>
 		/// </summary>
-		public void SetPropertySetObject(UObject NewPropertySetObject)
-			=> E_UTimelineComponent_SetPropertySetObject(this, NewPropertySetObject);
+		public void SetPropertySetObject(UObject newPropertySetObject)
+			=> E_UTimelineComponent_SetPropertySetObject(this, newPropertySetObject);
 		
 		
 		/// <summary>
 		/// <para>Set length of the timeline </para>
 		/// </summary>
-		public void SetTimelineLength(float NewLength)
-			=> E_UTimelineComponent_SetTimelineLength(this, NewLength);
+		public void SetTimelineLength(float newLength)
+			=> E_UTimelineComponent_SetTimelineLength(this, newLength);
 		
 		
 		/// <summary>
 		/// <para>Sets the length mode of the timeline </para>
 		/// </summary>
-		public void SetTimelineLengthMode(ETimelineLengthMode NewLengthMode)
-			=> E_UTimelineComponent_SetTimelineLengthMode(this, (byte)NewLengthMode);
+		public void SetTimelineLengthMode(ETimelineLengthMode newLengthMode)
+			=> E_UTimelineComponent_SetTimelineLengthMode(this, (byte)newLengthMode);
 		
 		
 		/// <summary>
@@ -245,9 +247,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UTimelineComponent Self)
+		public static implicit operator IntPtr(UTimelineComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UTimelineComponent(ObjectPointerDescription PtrDesc)

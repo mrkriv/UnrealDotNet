@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -229,6 +231,12 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MinDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->MinDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->MinDrawDistance = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MoveIgnoreActors_GET(UPrimitiveComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->MoveIgnoreActors); }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MoveIgnoreActors_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->MoveIgnoreActors = *(TArray<AActor*>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MoveIgnoreComponents_GET(UPrimitiveComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->MoveIgnoreComponents); }
+	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MoveIgnoreComponents_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->MoveIgnoreComponents = *(TArray<UPrimitiveComponent*>*)Value; }
+	
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
 	{
 		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
@@ -453,15 +461,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_AreSymmetricRotations(UPrimitiveComponent* Self, INT_PTR A, INT_PTR B, INT_PTR Scale3D)
 	{
-		auto _p0 = *(FQuat*)A;
-		auto _p1 = *(FQuat*)B;
-		auto _p2 = *(FVector*)Scale3D;
+		auto& _p0 = *(FQuat*)A;
+		auto& _p1 = *(FQuat*)B;
+		auto& _p2 = *(FVector*)Scale3D;
 		return Self->AreSymmetricRotations(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_BeginComponentOverlap(UPrimitiveComponent* Self, INT_PTR OtherOverlap, bool bDoNotifies)
 	{
-		auto _p0 = *(FOverlapInfo*)OtherOverlap;
+		auto& _p0 = *(FOverlapInfo*)OtherOverlap;
 		auto _p1 = bDoNotifies;
 		Self->BeginComponentOverlap(_p0, _p1);
 	}
@@ -500,6 +508,16 @@ extern "C"
 		Self->ClearMoveIgnoreComponents();
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CopyArrayOfMoveIgnoreActors(UPrimitiveComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->CopyArrayOfMoveIgnoreActors());
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_CopyArrayOfMoveIgnoreComponents(UPrimitiveComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->CopyArrayOfMoveIgnoreComponents());
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchMouseOverEvents(UPrimitiveComponent* Self, UPrimitiveComponent* CurrentComponent, UPrimitiveComponent* NewComponent)
 	{
 		auto _p0 = CurrentComponent;
@@ -516,7 +534,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_EndComponentOverlap(UPrimitiveComponent* Self, INT_PTR OtherOverlap, bool bDoNotifies, bool bSkipNotifySelf)
 	{
-		auto _p0 = *(FOverlapInfo*)OtherOverlap;
+		auto& _p0 = *(FOverlapInfo*)OtherOverlap;
 		auto _p1 = bDoNotifies;
 		auto _p2 = bSkipNotifySelf;
 		Self->EndComponentOverlap(_p0, _p1, _p2);
@@ -540,8 +558,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetClosestPointOnCollision(UPrimitiveComponent* Self, INT_PTR Point, INT_PTR OutPointOnBody, char* BoneName)
 	{
-		auto _p0 = *(FVector*)Point;
-		auto _p1 = *(FVector*)OutPointOnBody;
+		auto& _p0 = *(FVector*)Point;
+		auto& _p1 = *(FVector*)OutPointOnBody;
 		auto _p2 = ConvertFromManage_FName(BoneName);
 		return Self->GetClosestPointOnCollision(_p0, _p1, _p2);
 	}
@@ -559,8 +577,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetDistanceToCollision(UPrimitiveComponent* Self, INT_PTR Point, INT_PTR ClosestPointOnCollision)
 	{
-		auto _p0 = *(FVector*)Point;
-		auto _p1 = *(FVector*)ClosestPointOnCollision;
+		auto& _p0 = *(FVector*)Point;
+		auto& _p1 = *(FVector*)ClosestPointOnCollision;
 		return Self->GetDistanceToCollision(_p0, _p1);
 	}
 
@@ -583,15 +601,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLightAndShadowMapMemoryUsage(UPrimitiveComponent* Self, int32 LightMapMemoryUsage, int32 ShadowMapMemoryUsage)
 	{
-		auto _p0 = LightMapMemoryUsage;
-		auto _p1 = ShadowMapMemoryUsage;
+		auto& _p0 = LightMapMemoryUsage;
+		auto& _p1 = ShadowMapMemoryUsage;
 		Self->GetLightAndShadowMapMemoryUsage(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetLightMapResolution(UPrimitiveComponent* Self, int32 Width, int32 Height)
 	{
-		auto _p0 = Width;
-		auto _p1 = Height;
+		auto& _p0 = Width;
+		auto& _p1 = Height;
 		return Self->GetLightMapResolution(_p0, _p1);
 	}
 
@@ -616,9 +634,37 @@ extern "C"
 		return Self->GetMassScale(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMoveIgnoreActors(UPrimitiveComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->GetMoveIgnoreActors());
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMoveIgnoreComponents(UPrimitiveComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->GetMoveIgnoreComponents());
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetNumMaterials(UPrimitiveComponent* Self)
 	{
 		return Self->GetNumMaterials();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlapInfos(UPrimitiveComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->GetOverlapInfos());
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlappingComponents(UPrimitiveComponent* Self, INT_PTR OutOverlappingComponents)
+	{
+		auto& _p0 = *(TArray<UPrimitiveComponent*>*)OutOverlappingComponents;
+		Self->GetOverlappingComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlapsWithActor(UPrimitiveComponent* Self, AActor* Actor, INT_PTR OutOverlaps)
+	{
+		auto _p0 = Actor;
+		auto& _p1 = *(TArray<FOverlapInfo>*)OutOverlaps;
+		return Self->GetOverlapsWithActor(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocity(UPrimitiveComponent* Self, char* BoneName)
@@ -654,7 +700,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetRigidBodyState(UPrimitiveComponent* Self, INT_PTR OutState, char* BoneName)
 	{
-		auto _p0 = *(FRigidBodyState*)OutState;
+		auto& _p0 = *(FRigidBodyState*)OutState;
 		auto _p1 = ConvertFromManage_FName(BoneName);
 		return Self->GetRigidBodyState(_p0, _p1);
 	}
@@ -666,9 +712,9 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetSquaredDistanceToCollision(UPrimitiveComponent* Self, INT_PTR Point, float OutSquaredDistance, INT_PTR OutClosestPointOnCollision)
 	{
-		auto _p0 = *(FVector*)Point;
-		auto _p1 = OutSquaredDistance;
-		auto _p2 = *(FVector*)OutClosestPointOnCollision;
+		auto& _p0 = *(FVector*)Point;
+		auto& _p1 = OutSquaredDistance;
+		auto& _p2 = *(FVector*)OutClosestPointOnCollision;
 		return Self->GetSquaredDistanceToCollision(_p0, _p1, _p2);
 	}
 
@@ -680,6 +726,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetStaticLightMapResolution(UPrimitiveComponent* Self)
 	{
 		return Self->GetStaticLightMapResolution();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetWalkableSlopeOverride(UPrimitiveComponent* Self)
+	{
+		return (INT_PTR) const_cast<FWalkableSlopeOverride*>(&(Self->GetWalkableSlopeOverride()));
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_HasStaticLighting(UPrimitiveComponent* Self)
@@ -733,6 +784,18 @@ extern "C"
 		return Self->IsOverlappingActor(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_IsOverlappingComponent(UPrimitiveComponent* Self, UPrimitiveComponent* OtherComp)
+	{
+		auto _p0 = OtherComp;
+		return Self->IsOverlappingComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_IsOverlappingComponent_o1(UPrimitiveComponent* Self, INT_PTR Overlap)
+	{
+		auto& _p0 = *(FOverlapInfo*)Overlap;
+		return Self->IsOverlappingComponent(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsPostPhysicsComponentTickEnabled(UPrimitiveComponent* Self)
 	{
 		return Self->IsPostPhysicsComponentTickEnabled();
@@ -769,10 +832,10 @@ extern "C"
 		auto _p1 = *(FVector*)TraceEnd;
 		auto _p2 = bTraceComplex;
 		auto _p3 = bShowTrace;
-		auto _p4 = *(FVector*)HitLocation;
-		auto _p5 = *(FVector*)HitNormal;
+		auto& _p4 = *(FVector*)HitLocation;
+		auto& _p5 = *(FVector*)HitNormal;
 		auto _p6 = ConvertFromManage_FName(BoneName);
-		auto _p7 = *(FHitResult*)OutHit;
+		auto& _p7 = *(FHitResult*)OutHit;
 		return Self->K2_LineTraceComponent(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
 	}
 
@@ -830,21 +893,21 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsAngularVelocity(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent)
 	{
-		auto _p0 = *(FVector*)NewAngVel;
+		auto& _p0 = *(FVector*)NewAngVel;
 		auto _p1 = bAddToCurrent;
 		Self->SetAllPhysicsAngularVelocity(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInDegrees(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent)
 	{
-		auto _p0 = *(FVector*)NewAngVel;
+		auto& _p0 = *(FVector*)NewAngVel;
 		auto _p1 = bAddToCurrent;
 		Self->SetAllPhysicsAngularVelocityInDegrees(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInRadians(UPrimitiveComponent* Self, INT_PTR NewAngVel, bool bAddToCurrent)
 	{
-		auto _p0 = *(FVector*)NewAngVel;
+		auto& _p0 = *(FVector*)NewAngVel;
 		auto _p1 = bAddToCurrent;
 		Self->SetAllPhysicsAngularVelocityInRadians(_p0, _p1);
 	}
@@ -860,6 +923,18 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)NewPos;
 		Self->SetAllPhysicsPosition(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsRotation(UPrimitiveComponent* Self, INT_PTR NewRot)
+	{
+		auto _p0 = *(FRotator*)NewRot;
+		Self->SetAllPhysicsRotation(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllPhysicsRotation_o1(UPrimitiveComponent* Self, INT_PTR NewRot)
+	{
+		auto& _p0 = *(FQuat*)NewRot;
+		Self->SetAllPhysicsRotation(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllUseCCD(UPrimitiveComponent* Self, bool InUseCCD)
@@ -926,7 +1001,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetCollisionResponseToChannels(UPrimitiveComponent* Self, INT_PTR NewReponses)
 	{
-		auto _p0 = *(FCollisionResponseContainer*)NewReponses;
+		auto& _p0 = *(FCollisionResponseContainer*)NewReponses;
 		Self->SetCollisionResponseToChannels(_p0);
 	}
 
@@ -1099,7 +1174,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetRigidBodyReplicatedTarget(UPrimitiveComponent* Self, INT_PTR UpdatedState, char* BoneName)
 	{
-		auto _p0 = *(FRigidBodyState*)UpdatedState;
+		auto& _p0 = *(FRigidBodyState*)UpdatedState;
 		auto _p1 = ConvertFromManage_FName(BoneName);
 		Self->SetRigidBodyReplicatedTarget(_p0, _p1);
 	}
@@ -1138,7 +1213,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetWalkableSlopeOverride(UPrimitiveComponent* Self, INT_PTR NewOverride)
 	{
-		auto _p0 = *(FWalkableSlopeOverride*)NewOverride;
+		auto& _p0 = *(FWalkableSlopeOverride*)NewOverride;
 		Self->SetWalkableSlopeOverride(_p0);
 	}
 

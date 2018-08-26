@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,163 +26,190 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UObject(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr Self, IntPtr Other);
+		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_BeginDestroy(IntPtr Self);
+		private static extern void E_UObject_BeginDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CanCheckDefaultSubObjects(IntPtr Self, bool bForceCheck, bool bResult);
+		private static extern bool E_UObject_CanCheckDefaultSubObjects(IntPtr self, bool bForceCheck, bool bResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CanCreateInCurrentContext(IntPtr Self, IntPtr Template);
+		private static extern bool E_UObject_CanCreateInCurrentContext(IntPtr self, IntPtr template);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CanModify(IntPtr Self);
+		private static extern bool E_UObject_CanModify(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CheckDefaultSubobjects(IntPtr Self, bool bForceCheck);
+		private static extern bool E_UObject_CheckDefaultSubobjects(IntPtr self, bool bForceCheck);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_CheckDefaultSubobjectsInternal(IntPtr Self);
+		private static extern bool E_UObject_CheckDefaultSubobjectsInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_ConditionalBeginDestroy(IntPtr Self);
+		private static extern void E_UObject_CollectDefaultSubobjects(IntPtr self, IntPtr outDefaultSubobjects, bool bIncludeNestedSubobjects);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_ConditionalFinishDestroy(IntPtr Self);
+		private static extern bool E_UObject_ConditionalBeginDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_ConditionalPostLoad(IntPtr Self);
+		private static extern bool E_UObject_ConditionalFinishDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_DestroyNonNativeProperties(IntPtr Self);
+		private static extern void E_UObject_ConditionalPostLoad(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_ExecuteUbergraph(IntPtr Self, int EntryPoint);
+		private static extern void E_UObject_DestroyNonNativeProperties(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_FinishDestroy(IntPtr Self);
+		private static extern void E_UObject_ExecuteUbergraph(IntPtr self, int entryPoint);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetArchetype(IntPtr Self);
+		private static extern void E_UObject_FinishDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObject_GetDefaultConfigFilename(IntPtr Self);
+		private static extern ObjectPointerDescription E_UObject_GetArchetype(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObject_GetDesc(IntPtr Self);
+		private static extern void E_UObject_GetArchetypeInstances(IntPtr self, IntPtr instances);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObject_GetDetailedInfo(IntPtr Self);
+		private static extern StringWrapper E_UObject_GetDefaultConfigFilename(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObject_GetDetailedInfoInternal(IntPtr Self);
+		private static extern StringWrapper E_UObject_GetDesc(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObject_GetGlobalUserConfigFilename(IntPtr Self);
+		private static extern StringWrapper E_UObject_GetDetailedInfo(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr Self);
+		private static extern StringWrapper E_UObject_GetDetailedInfoInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr Self, bool bSupported);
+		private static extern StringWrapper E_UObject_GetGlobalUserConfigFilename(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_ImplementsGetWorld(IntPtr Self);
+		private static extern void E_UObject_GetPreloadDependencies(IntPtr self, IntPtr outDeps);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsAsset(IntPtr Self);
+		private static extern void E_UObject_GetPrestreamPackages(IntPtr self, IntPtr outPrestream);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsBasedOnArchetype(IntPtr Self, IntPtr SomeObject);
+		private static extern void E_UObject_GetSubobjectsWithStableNamesForNetworking(IntPtr self, IntPtr objList);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsEditorOnly(IntPtr Self);
+		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsFullNameStableForNetworking(IntPtr Self);
+		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsInBlueprint(IntPtr Self);
+		private static extern bool E_UObject_ImplementsGetWorld(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsLocalizedResource(IntPtr Self);
+		private static extern bool E_UObject_IsAsset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsNameStableForNetworking(IntPtr Self);
+		private static extern bool E_UObject_IsBasedOnArchetype(IntPtr self, IntPtr someObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsPostLoadThreadSafe(IntPtr Self);
+		private static extern bool E_UObject_IsEditorOnly(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsReadyForFinishDestroy(IntPtr Self);
+		private static extern bool E_UObject_IsFullNameStableForNetworking(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsSafeForRootSet(IntPtr Self);
+		private static extern bool E_UObject_IsInBlueprint(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsSelected(IntPtr Self);
+		private static extern bool E_UObject_IsLocalizedResource(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_IsSupportedForNetworking(IntPtr Self);
+		private static extern bool E_UObject_IsNameStableForNetworking(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_MarkAsEditorOnlySubobject(IntPtr Self);
+		private static extern bool E_UObject_IsPostLoadThreadSafe(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_Modify(IntPtr Self, bool bAlwaysMarkDirty);
+		private static extern bool E_UObject_IsReadyForFinishDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_NeedsLoadForClient(IntPtr Self);
+		private static extern bool E_UObject_IsSafeForRootSet(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_NeedsLoadForEditorGame(IntPtr Self);
+		private static extern bool E_UObject_IsSelected(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObject_NeedsLoadForServer(IntPtr Self);
+		private static extern bool E_UObject_IsSupportedForNetworking(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_NotifyObjectReferenceEliminated(IntPtr Self);
+		private static extern void E_UObject_MarkAsEditorOnlySubobject(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostCDOContruct(IntPtr Self);
+		private static extern bool E_UObject_Modify(IntPtr self, bool bAlwaysMarkDirty);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostEditImport(IntPtr Self);
+		private static extern bool E_UObject_NeedsLoadForClient(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostInitProperties(IntPtr Self);
+		private static extern bool E_UObject_NeedsLoadForEditorGame(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostLoad(IntPtr Self);
+		private static extern bool E_UObject_NeedsLoadForServer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostNetReceive(IntPtr Self);
+		private static extern void E_UObject_NotifyObjectReferenceEliminated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostRename(IntPtr Self, IntPtr OldOuter, string OldName);
+		private static extern void E_UObject_PostCDOContruct(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostRepNotifies(IntPtr Self);
+		private static extern void E_UObject_PostDuplicate(IntPtr self, bool bDuplicateForPIE);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostSaveRoot(IntPtr Self, bool bCleanupIsRequired);
+		private static extern void E_UObject_PostEditImport(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PreDestroyFromReplication(IntPtr Self);
+		private static extern void E_UObject_PostInitProperties(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PreNetReceive(IntPtr Self);
+		private static extern void E_UObject_PostLoad(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_ShutdownAfterError(IntPtr Self);
+		private static extern void E_UObject_PostNetReceive(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_UpdateDefaultConfigFile(IntPtr Self, string SpecificFileLocation);
+		private static extern void E_UObject_PostRename(IntPtr self, IntPtr oldOuter, string oldName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_UpdateGlobalUserConfigFile(IntPtr Self);
+		private static extern void E_UObject_PostRepNotifies(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_PostSaveRoot(IntPtr self, bool bCleanupIsRequired);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_PreDestroyFromReplication(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_PreNetReceive(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_ShutdownAfterError(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_UObject_SourceFileTagName(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_UpdateClassesExcludedFromDedicatedClient(IntPtr self, IntPtr inClassNames, IntPtr inModulesNames);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_UpdateClassesExcludedFromDedicatedServer(IntPtr self, IntPtr inClassNames, IntPtr inModulesNames);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_UpdateDefaultConfigFile(IntPtr self, string specificFileLocation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_UpdateGlobalUserConfigFile(IntPtr self);
 		
 		#endregion
 		
@@ -191,8 +220,8 @@ namespace UnrealEngine
 		/// <param name="Other">Other component to compare against </param>
 		/// <return>true if native properties are identical, false otherwise </return>
 		/// </summary>
-		public virtual bool AreNativePropertiesIdenticalTo(UObject Other)
-			=> E_UObject_AreNativePropertiesIdenticalTo(this, Other);
+		public virtual bool AreNativePropertiesIdenticalTo(UObject other)
+			=> E_UObject_AreNativePropertiesIdenticalTo(this, other);
 		
 		
 		/// <summary>
@@ -214,8 +243,8 @@ namespace UnrealEngine
 		/// <para>Determines if you can create an object from the supplied template in the current context (editor, client only, dedicated server, game/listen) </para>
 		/// <para>This calls NeedsLoadForClient & NeedsLoadForServer </para>
 		/// </summary>
-		public bool CanCreateInCurrentContext(UObject Template)
-			=> E_UObject_CanCreateInCurrentContext(this, Template);
+		public bool CanCreateInCurrentContext(UObject template)
+			=> E_UObject_CanCreateInCurrentContext(this, template);
 		
 		
 		/// <summary>
@@ -243,6 +272,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Uses the TArchiveObjectReferenceCollector to build a list of all components referenced by this object which have this object as the outer </para>
+		/// <param name="OutDefaultSubobjects">the array that should be populated with the default subobjects "owned" by this object </param>
+		/// <param name="bIncludeNestedSubobjects">controls whether subobjects which are contained by this object, but do not have this object </param>
+		/// <para>as its direct Outer should be included </para>
+		/// </summary>
+		public void CollectDefaultSubobjects(TArray<UObject> outDefaultSubobjects, bool bIncludeNestedSubobjects = false)
+			=> E_UObject_CollectDefaultSubobjects(this, outDefaultSubobjects, bIncludeNestedSubobjects);
+		
+		
+		/// <summary>
 		/// <para>Called before destroying the object.  This is called immediately upon deciding to destroy the object, to allow the object to begin an </para>
 		/// <para>asynchronous cleanup process. </para>
 		/// </summary>
@@ -266,8 +305,8 @@ namespace UnrealEngine
 		public void DestroyNonNativeProperties()
 			=> E_UObject_DestroyNonNativeProperties(this);
 		
-		public void ExecuteUbergraph(int EntryPoint)
-			=> E_UObject_ExecuteUbergraph(this, EntryPoint);
+		public void ExecuteUbergraph(int entryPoint)
+			=> E_UObject_ExecuteUbergraph(this, entryPoint);
 		
 		
 		/// <summary>
@@ -285,6 +324,14 @@ namespace UnrealEngine
 		/// </summary>
 		public UObject GetArchetype()
 			=> E_UObject_GetArchetype(this);
+		
+		
+		/// <summary>
+		/// <para>Builds a list of objects which have this object in their archetype chain. </para>
+		/// <param name="Instances">receives the list of objects which have this one in their archetype chain </param>
+		/// </summary>
+		public void GetArchetypeInstances(TArray<UObject> instances)
+			=> E_UObject_GetArchetypeInstances(this, instances);
 		
 		
 		/// <summary>
@@ -326,6 +373,29 @@ namespace UnrealEngine
 		public string GetGlobalUserConfigFilename()
 			=> E_UObject_GetGlobalUserConfigFilename(this);
 		
+		
+		/// <summary>
+		/// <para>Called during cooking. Must return all objects that will be Preload()ed when this is serialized at load time. Only used by the EDL. </para>
+		/// <param name="OutDeps">all objects that will be preloaded when this is serialized at load time </param>
+		/// </summary>
+		public virtual void GetPreloadDependencies(TArray<UObject> outDeps)
+			=> E_UObject_GetPreloadDependencies(this, outDeps);
+		
+		
+		/// <summary>
+		/// <para>Called during cooking. Returns a list of objects. The packages containing those objects will be prestreamed, when the package containing this is loaded. Only used by the EDL. </para>
+		/// <param name="OutPrestream">all objects that will be prestreamed when this packages is streamed </param>
+		/// </summary>
+		public virtual void GetPrestreamPackages(TArray<UObject> outPrestream)
+			=> E_UObject_GetPrestreamPackages(this, outPrestream);
+		
+		
+		/// <summary>
+		/// <para>Returns a list of sub-objects that have stable names for networking </para>
+		/// </summary>
+		public virtual void GetSubobjectsWithStableNamesForNetworking(TArray<UObject> objList)
+			=> E_UObject_GetSubobjectsWithStableNamesForNetworking(this, objList);
+		
 		public virtual UWorld GetWorld()
 			=> E_UObject_GetWorld(this);
 		
@@ -346,8 +416,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Determine if this object has SomeObject in its archetype chain. </para>
 		/// </summary>
-		public bool IsBasedOnArchetype(UObject SomeObject)
-			=> E_UObject_IsBasedOnArchetype(this, SomeObject);
+		public bool IsBasedOnArchetype(UObject someObject)
+			=> E_UObject_IsBasedOnArchetype(this, someObject);
 		
 		
 		/// <summary>
@@ -480,6 +550,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called after duplication & serialization and before PostLoad. Used to e.g. make sure UStaticMesh's UModel gets copied as well. </para>
+		/// <para>Note: NOT called on components on actor duplication (alt-drag or copy-paste).  Use PostEditImport as well to cover that case. </para>
+		/// </summary>
+		public virtual void PostDuplicate(bool bDuplicateForPIE)
+			=> E_UObject_PostDuplicate(this, bDuplicateForPIE);
+		
+		
+		/// <summary>
 		/// <para>Called after importing property values for this object (paste, duplicate or .t3d import) </para>
 		/// <para>Allow the object to perform any cleanup for properties which shouldn't be duplicated or </para>
 		/// <para>are unsupported by the script serialization </para>
@@ -516,8 +594,8 @@ namespace UnrealEngine
 		/// <return>true if the object is selected, false otherwise. </return>
 		/// <para>@todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better </para>
 		/// </summary>
-		public virtual void PostRename(UObject OldOuter, string OldName)
-			=> E_UObject_PostRename(this, OldOuter, OldName);
+		public virtual void PostRename(UObject oldOuter, string oldName)
+			=> E_UObject_PostRename(this, oldOuter, oldName);
 		
 		
 		/// <summary>
@@ -554,10 +632,31 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Get the common tag name used for all asset source file import paths </para>
+		/// </summary>
+		public string SourceFileTagName()
+			=> E_UObject_SourceFileTagName(this);
+		
+		
+		/// <summary>
+		/// <para>Update the list of classes that we should exclude from dedicated client builds </para>
+		/// </summary>
+		public void UpdateClassesExcludedFromDedicatedClient(TArray<string> inClassNames, TArray<string> inModulesNames)
+			=> E_UObject_UpdateClassesExcludedFromDedicatedClient(this, inClassNames, inModulesNames);
+		
+		
+		/// <summary>
+		/// <para>Update the list of classes that we should exclude from dedicated server builds </para>
+		/// </summary>
+		public void UpdateClassesExcludedFromDedicatedServer(TArray<string> inClassNames, TArray<string> inModulesNames)
+			=> E_UObject_UpdateClassesExcludedFromDedicatedServer(this, inClassNames, inModulesNames);
+		
+		
+		/// <summary>
 		/// <para>Saves just the section(s) for this class into the default ini file for the class (with just the changes from base) </para>
 		/// </summary>
-		public void UpdateDefaultConfigFile(string SpecificFileLocation)
-			=> E_UObject_UpdateDefaultConfigFile(this, SpecificFileLocation);
+		public void UpdateDefaultConfigFile(string specificFileLocation)
+			=> E_UObject_UpdateDefaultConfigFile(this, specificFileLocation);
 		
 		
 		/// <summary>
@@ -568,9 +667,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UObject Self)
+		public static implicit operator IntPtr(UObject self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UObject(ObjectPointerDescription PtrDesc)

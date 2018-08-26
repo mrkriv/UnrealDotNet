@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,10 +26,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USpringArmComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr Self, IntPtr DesiredArmLocation, IntPtr TraceHitLocation, bool bHitSomething, float DeltaTime);
+		private static extern IntPtr E_USpringArmComponent_BlendLocations(IntPtr self, IntPtr desiredArmLocation, IntPtr traceHitLocation, bool bHitSomething, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USpringArmComponent_UpdateDesiredArmLocation(IntPtr Self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime);
+		private static extern void E_USpringArmComponent_UpdateDesiredArmLocation(IntPtr self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float deltaTime);
 		
 		#endregion
 		
@@ -37,21 +39,21 @@ namespace UnrealEngine
 		/// <para>This function allows subclasses to blend the trace hit location with the desired arm location; </para>
 		/// <para>by default it returns bHitSomething ? TraceHitLocation : DesiredArmLocation </para>
 		/// </summary>
-		protected virtual FVector BlendLocations(FVector DesiredArmLocation, FVector TraceHitLocation, bool bHitSomething, float DeltaTime)
-			=> E_USpringArmComponent_BlendLocations(this, DesiredArmLocation, TraceHitLocation, bHitSomething, DeltaTime);
+		protected virtual FVector BlendLocations(FVector desiredArmLocation, FVector traceHitLocation, bool bHitSomething, float deltaTime)
+			=> E_USpringArmComponent_BlendLocations(this, desiredArmLocation, traceHitLocation, bHitSomething, deltaTime);
 		
 		
 		/// <summary>
 		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
 		/// </summary>
-		protected virtual void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime)
-			=> E_USpringArmComponent_UpdateDesiredArmLocation(this, bDoTrace, bDoLocationLag, bDoRotationLag, DeltaTime);
+		protected virtual void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float deltaTime)
+			=> E_USpringArmComponent_UpdateDesiredArmLocation(this, bDoTrace, bDoLocationLag, bDoRotationLag, deltaTime);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USpringArmComponent Self)
+		public static implicit operator IntPtr(USpringArmComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USpringArmComponent(ObjectPointerDescription PtrDesc)

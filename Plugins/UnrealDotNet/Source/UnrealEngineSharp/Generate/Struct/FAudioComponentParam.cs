@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -11,8 +13,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FAudioComponentParam(string Name) :
-			base(E_CreateStruct_FAudioComponentParam_FName(Name), false)
+		public FAudioComponentParam(string name) :
+			base(E_CreateStruct_FAudioComponentParam_FName(name), false)
 		{
 		}
 
@@ -23,7 +25,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FAudioComponentParam_FName(string Name);
+		private static extern IntPtr E_CreateStruct_FAudioComponentParam_FName(string name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FAudioComponentParam();
@@ -77,9 +79,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FAudioComponentParam Self)
+		public static implicit operator IntPtr(FAudioComponentParam self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FAudioComponentParam(IntPtr Adress)

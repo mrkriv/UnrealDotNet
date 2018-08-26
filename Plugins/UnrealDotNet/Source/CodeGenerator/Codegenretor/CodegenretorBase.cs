@@ -19,7 +19,9 @@ namespace Generator.Codegenretor
 
         protected static string GetCppMethodName(Method method)
         {
-            return cfg.ExportPrefix + method.OwnerClass.Name + "_" + method.Name;
+            var overloadPostfix = method.OverloadIndex > 0 ? $"_o{method.OverloadIndex}" : "";
+
+            return cfg.ExportPrefix + method.OwnerClass.Name + "_" + method.Name + overloadPostfix;
         }
 
         protected static string GetExportConstructorFullName(Method ctr)
@@ -36,6 +38,15 @@ namespace Generator.Codegenretor
             if (cfg.IsWriteSourceFileName)
             {
                 cw.WriteLine($"// Source file {primitive.SourceFile}:{primitive.SourceLine}");
+                cw.WriteLine();
+            }
+        }
+
+        protected static void GenerateFileHeader(CodeWriter cw)
+        {
+            if (cfg.IsGenerateFileHeader)
+            {
+                cw.WriteLine($"// This file was created automatically, do not modify the contents of this file.");
                 cw.WriteLine();
             }
         }

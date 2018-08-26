@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -15,8 +17,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Constructors </para>
 		/// </summary>
-		public FLevelStreamingStatus(string InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int InLODIndex) :
-			base(E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(InPackageName, bInShouldBeLoaded, bInShouldBeVisible, InLODIndex), false)
+		public FLevelStreamingStatus(string inPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int inLODIndex) :
+			base(E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(inPackageName, bInShouldBeLoaded, bInShouldBeVisible, inLODIndex), false)
 		{
 		}
 
@@ -27,7 +29,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(string InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int InLODIndex);
+		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(string inPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int inLODIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus();
@@ -48,9 +50,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FLevelStreamingStatus Self)
+		public static implicit operator IntPtr(FLevelStreamingStatus self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FLevelStreamingStatus(IntPtr Adress)

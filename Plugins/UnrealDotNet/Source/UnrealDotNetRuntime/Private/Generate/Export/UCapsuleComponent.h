@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -32,15 +34,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleSize(UCapsuleComponent* Self, float OutRadius, float OutHalfHeight)
 	{
-		auto _p0 = OutRadius;
-		auto _p1 = OutHalfHeight;
+		auto& _p0 = OutRadius;
+		auto& _p1 = OutHalfHeight;
 		Self->GetScaledCapsuleSize(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(UCapsuleComponent* Self, float OutRadius, float OutHalfHeightWithoutHemisphere)
 	{
-		auto _p0 = OutRadius;
-		auto _p1 = OutHalfHeightWithoutHemisphere;
+		auto& _p0 = OutRadius;
+		auto& _p1 = OutHalfHeightWithoutHemisphere;
 		Self->GetScaledCapsuleSize_WithoutHemisphere(_p0, _p1);
 	}
 
@@ -66,15 +68,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleSize(UCapsuleComponent* Self, float OutRadius, float OutHalfHeight)
 	{
-		auto _p0 = OutRadius;
-		auto _p1 = OutHalfHeight;
+		auto& _p0 = OutRadius;
+		auto& _p1 = OutHalfHeight;
 		Self->GetUnscaledCapsuleSize(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(UCapsuleComponent* Self, float OutRadius, float OutHalfHeightWithoutHemisphere)
 	{
-		auto _p0 = OutRadius;
-		auto _p1 = OutHalfHeightWithoutHemisphere;
+		auto& _p0 = OutRadius;
+		auto& _p1 = OutHalfHeightWithoutHemisphere;
 		Self->GetUnscaledCapsuleSize_WithoutHemisphere(_p0, _p1);
 	}
 

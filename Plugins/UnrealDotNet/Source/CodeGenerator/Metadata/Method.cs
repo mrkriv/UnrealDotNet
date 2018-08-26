@@ -23,6 +23,7 @@ namespace Generator.Metadata
         public bool IsVirtual { get; set; }
         public bool IsOverride { get; set; }
         public string Operator { get; set; }
+        public int OverloadIndex { get; set; }
 
         public Method(string name)
         {
@@ -50,7 +51,7 @@ namespace Generator.Metadata
             if (ReferenceEquals(this, other)) return true;
 
             if (Name != other.Name ||
-                InputTypes.Count != other.InputTypes.Count ||
+                !EqualsInputTypes(other) ||
                 !Equals(ReturnType, other.ReturnType) ||
                 !Equals(OwnerClass, other.OwnerClass) ||
                 IsConst != other.IsConst ||
@@ -59,7 +60,25 @@ namespace Generator.Metadata
                 return false;
             }
 
-            return !InputTypes.Where((t, i) => !t.Equals(other.InputTypes[i])).Any();
+            return true;
+        }
+
+        public bool EqualsInputTypes(Method other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            if (InputTypes.Count != other.InputTypes.Count)
+            {
+                return false;
+            }
+
+            if (InputTypes.Where((t, i) => !t.Equals(other.InputTypes[i])).Any())
+            {
+                return false;
+            }
+            
+            return true;
         }
 
         public override bool Equals(object obj)

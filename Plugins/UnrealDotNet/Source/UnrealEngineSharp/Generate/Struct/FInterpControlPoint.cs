@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FInterpControlPoint(FVector InPosition, bool bIsRelative) :
-			base(E_CreateStruct_FInterpControlPoint_FVector_bool(InPosition, bIsRelative), false)
+		public FInterpControlPoint(FVector inPosition, bool bIsRelative) :
+			base(E_CreateStruct_FInterpControlPoint_FVector_bool(inPosition, bIsRelative), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FInterpControlPoint();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FInterpControlPoint_FVector_bool(IntPtr InPosition, bool bIsRelative);
+		private static extern IntPtr E_CreateStruct_FInterpControlPoint_FVector_bool(IntPtr inPosition, bool bIsRelative);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FInterpControlPoint_bPositionIsRelative_GET(IntPtr Ptr);
@@ -88,9 +90,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FInterpControlPoint Self)
+		public static implicit operator IntPtr(FInterpControlPoint self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FInterpControlPoint(IntPtr Adress)

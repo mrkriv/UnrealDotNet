@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,58 +26,58 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ULightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr Self, IntPtr Primitive);
+		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr self, IntPtr primitive);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ULightComponent_GetBoundingBox(IntPtr Self);
+		private static extern IntPtr E_ULightComponent_GetBoundingBox(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_ULightComponent_GetLightPosition(IntPtr Self);
+		private static extern IntPtr E_ULightComponent_GetLightPosition(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetAffectDynamicIndirectLighting(IntPtr Self, bool bNewValue);
+		private static extern void E_ULightComponent_SetAffectDynamicIndirectLighting(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetAffectTranslucentLighting(IntPtr Self, bool bNewValue);
+		private static extern void E_ULightComponent_SetAffectTranslucentLighting(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetBloomScale(IntPtr Self, float NewValue);
+		private static extern void E_ULightComponent_SetBloomScale(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetBloomThreshold(IntPtr Self, float NewValue);
+		private static extern void E_ULightComponent_SetBloomThreshold(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetEnableLightShaftBloom(IntPtr Self, bool bNewValue);
+		private static extern void E_ULightComponent_SetEnableLightShaftBloom(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(IntPtr Self, bool bNewValue);
+		private static extern void E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetIndirectLightingIntensity(IntPtr Self, float NewIntensity);
+		private static extern void E_ULightComponent_SetIndirectLightingIntensity(IntPtr self, float newIntensity);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetIntensity(IntPtr Self, float NewIntensity);
+		private static extern void E_ULightComponent_SetIntensity(IntPtr self, float newIntensity);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetLightFunctionDisabledBrightness(IntPtr Self, float NewValue);
+		private static extern void E_ULightComponent_SetLightFunctionDisabledBrightness(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetLightFunctionFadeDistance(IntPtr Self, float NewLightFunctionFadeDistance);
+		private static extern void E_ULightComponent_SetLightFunctionFadeDistance(IntPtr self, float newLightFunctionFadeDistance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetLightFunctionScale(IntPtr Self, IntPtr NewLightFunctionScale);
+		private static extern void E_ULightComponent_SetLightFunctionScale(IntPtr self, IntPtr newLightFunctionScale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetShadowBias(IntPtr Self, float NewValue);
+		private static extern void E_ULightComponent_SetShadowBias(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetTemperature(IntPtr Self, float NewTemperature);
+		private static extern void E_ULightComponent_SetTemperature(IntPtr self, float newTemperature);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetTransmission(IntPtr Self, bool bNewValue);
+		private static extern void E_ULightComponent_SetTransmission(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_ULightComponent_SetVolumetricScatteringIntensity(IntPtr Self, float NewIntensity);
+		private static extern void E_ULightComponent_SetVolumetricScatteringIntensity(IntPtr self, float newIntensity);
 		
 		#endregion
 		
@@ -87,8 +89,8 @@ namespace UnrealEngine
 		/// <param name="PrimitiveSceneInfo">The primitive to test. </param>
 		/// <return>True if the light affects the primitive. </return>
 		/// </summary>
-		public bool AffectsPrimitive(UPrimitiveComponent Primitive)
-			=> E_ULightComponent_AffectsPrimitive(this, Primitive);
+		public bool AffectsPrimitive(UPrimitiveComponent primitive)
+			=> E_ULightComponent_AffectsPrimitive(this, primitive);
 		
 		
 		/// <summary>
@@ -110,11 +112,11 @@ namespace UnrealEngine
 		public void SetAffectTranslucentLighting(bool bNewValue)
 			=> E_ULightComponent_SetAffectTranslucentLighting(this, bNewValue);
 		
-		public void SetBloomScale(float NewValue)
-			=> E_ULightComponent_SetBloomScale(this, NewValue);
+		public void SetBloomScale(float newValue)
+			=> E_ULightComponent_SetBloomScale(this, newValue);
 		
-		public void SetBloomThreshold(float NewValue)
-			=> E_ULightComponent_SetBloomThreshold(this, NewValue);
+		public void SetBloomThreshold(float newValue)
+			=> E_ULightComponent_SetBloomThreshold(this, newValue);
 		
 		public void SetEnableLightShaftBloom(bool bNewValue)
 			=> E_ULightComponent_SetEnableLightShaftBloom(this, bNewValue);
@@ -122,42 +124,42 @@ namespace UnrealEngine
 		public void SetForceCachedShadowsForMovablePrimitives(bool bNewValue)
 			=> E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(this, bNewValue);
 		
-		public void SetIndirectLightingIntensity(float NewIntensity)
-			=> E_ULightComponent_SetIndirectLightingIntensity(this, NewIntensity);
+		public void SetIndirectLightingIntensity(float newIntensity)
+			=> E_ULightComponent_SetIndirectLightingIntensity(this, newIntensity);
 		
 		
 		/// <summary>
 		/// <para>Set intensity of the light </para>
 		/// </summary>
-		public void SetIntensity(float NewIntensity)
-			=> E_ULightComponent_SetIntensity(this, NewIntensity);
+		public void SetIntensity(float newIntensity)
+			=> E_ULightComponent_SetIntensity(this, newIntensity);
 		
-		public void SetLightFunctionDisabledBrightness(float NewValue)
-			=> E_ULightComponent_SetLightFunctionDisabledBrightness(this, NewValue);
+		public void SetLightFunctionDisabledBrightness(float newValue)
+			=> E_ULightComponent_SetLightFunctionDisabledBrightness(this, newValue);
 		
-		public void SetLightFunctionFadeDistance(float NewLightFunctionFadeDistance)
-			=> E_ULightComponent_SetLightFunctionFadeDistance(this, NewLightFunctionFadeDistance);
+		public void SetLightFunctionFadeDistance(float newLightFunctionFadeDistance)
+			=> E_ULightComponent_SetLightFunctionFadeDistance(this, newLightFunctionFadeDistance);
 		
-		public void SetLightFunctionScale(FVector NewLightFunctionScale)
-			=> E_ULightComponent_SetLightFunctionScale(this, NewLightFunctionScale);
+		public void SetLightFunctionScale(FVector newLightFunctionScale)
+			=> E_ULightComponent_SetLightFunctionScale(this, newLightFunctionScale);
 		
-		public void SetShadowBias(float NewValue)
-			=> E_ULightComponent_SetShadowBias(this, NewValue);
+		public void SetShadowBias(float newValue)
+			=> E_ULightComponent_SetShadowBias(this, newValue);
 		
-		public void SetTemperature(float NewTemperature)
-			=> E_ULightComponent_SetTemperature(this, NewTemperature);
+		public void SetTemperature(float newTemperature)
+			=> E_ULightComponent_SetTemperature(this, newTemperature);
 		
 		public void SetTransmission(bool bNewValue)
 			=> E_ULightComponent_SetTransmission(this, bNewValue);
 		
-		public void SetVolumetricScatteringIntensity(float NewIntensity)
-			=> E_ULightComponent_SetVolumetricScatteringIntensity(this, NewIntensity);
+		public void SetVolumetricScatteringIntensity(float newIntensity)
+			=> E_ULightComponent_SetVolumetricScatteringIntensity(this, newIntensity);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(ULightComponent Self)
+		public static implicit operator IntPtr(ULightComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ULightComponent(ObjectPointerDescription PtrDesc)

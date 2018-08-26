@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -46,7 +48,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(IntPtr Self);
+		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(IntPtr self);
 		
 		#endregion
 		
@@ -93,9 +95,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FActorSpawnParameters Self)
+		public static implicit operator IntPtr(FActorSpawnParameters self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FActorSpawnParameters(IntPtr Adress)

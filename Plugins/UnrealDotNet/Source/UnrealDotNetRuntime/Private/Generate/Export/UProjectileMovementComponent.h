@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -58,46 +60,46 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ComputeAcceleration(UProjectileMovementComponent* Self, INT_PTR InVelocity, float DeltaTime)
 	{
-		auto _p0 = *(FVector*)InVelocity;
+		auto& _p0 = *(FVector*)InVelocity;
 		auto _p1 = DeltaTime;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->ComputeAcceleration_WRAP(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ComputeBounceResult(UProjectileMovementComponent* Self, INT_PTR Hit, float TimeSlice, INT_PTR MoveDelta)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = TimeSlice;
-		auto _p2 = *(FVector*)MoveDelta;
+		auto& _p2 = *(FVector*)MoveDelta;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->ComputeBounceResult_WRAP(_p0, _p1, _p2));
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ComputeHomingAcceleration(UProjectileMovementComponent* Self, INT_PTR InVelocity, float DeltaTime)
 	{
-		auto _p0 = *(FVector*)InVelocity;
+		auto& _p0 = *(FVector*)InVelocity;
 		auto _p1 = DeltaTime;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->ComputeHomingAcceleration_WRAP(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ComputeMoveDelta(UProjectileMovementComponent* Self, INT_PTR InVelocity, float DeltaTime)
 	{
-		auto _p0 = *(FVector*)InVelocity;
+		auto& _p0 = *(FVector*)InVelocity;
 		auto _p1 = DeltaTime;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->ComputeMoveDelta_WRAP(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_HandleBlockingHit(UProjectileMovementComponent* Self, INT_PTR Hit, float TimeTick, INT_PTR MoveDelta, float SubTickTimeRemaining)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = TimeTick;
-		auto _p2 = *(FVector*)MoveDelta;
-		auto _p3 = SubTickTimeRemaining;
+		auto& _p2 = *(FVector*)MoveDelta;
+		auto& _p3 = SubTickTimeRemaining;
 		return ((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->HandleBlockingHit_WRAP(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_HandleSliding(UProjectileMovementComponent* Self, INT_PTR Hit, float SubTickTimeRemaining)
 	{
-		auto _p0 = *(FHitResult*)Hit;
-		auto _p1 = SubTickTimeRemaining;
+		auto& _p0 = *(FHitResult*)Hit;
+		auto& _p1 = SubTickTimeRemaining;
 		return ((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->HandleSliding_WRAP(_p0, _p1);
 	}
 

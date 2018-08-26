@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -69,6 +71,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bOldForceRefPose_GET(USkeletalMeshComponent* Ptr) { return Ptr->bOldForceRefPose; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bOldForceRefPose = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(USkeletalMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->BoneSpaceTransforms); }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->BoneSpaceTransforms = *(TArray<FTransform>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_GET(USkeletalMeshComponent* Ptr) { return Ptr->bOnlyAllowAutonomousTickPose; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bOnlyAllowAutonomousTickPose = Value; }
 	
@@ -107,6 +112,12 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_GET(USkeletalMeshComponent* Ptr) { return Ptr->bUseThinShellVolumeConstraints; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(USkeletalMeshComponent* Ptr, bool Value) { Ptr->bUseThinShellVolumeConstraints = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_GET(USkeletalMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->CachedBoneSpaceTransforms); }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->CachedBoneSpaceTransforms = *(TArray<FTransform>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_GET(USkeletalMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->CachedComponentSpaceTransforms); }
+	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->CachedComponentSpaceTransforms = *(TArray<FTransform>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_ClothBlendWeight_GET(USkeletalMeshComponent* Ptr) { return Ptr->ClothBlendWeight; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_ClothBlendWeight_SET(USkeletalMeshComponent* Ptr, float Value) { Ptr->ClothBlendWeight = Value; }

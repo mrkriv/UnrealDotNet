@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -31,23 +33,23 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Update everything. </para>
 		/// </summary>
-		public override void Tick(float DeltaSeconds, bool bIdleMode) { }
+		public override void Tick(float deltaSeconds, bool bIdleMode) { }
 		
 		
 		/// <summary>
 		/// <para>Needs to be called when a world is added to broadcast messages. </para>
 		/// </summary>
-		public override void WorldAdded(UWorld World) { }
+		public override void WorldAdded(UWorld world) { }
 		
 		
 		/// <summary>
 		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
 		/// </summary>
-		public override void WorldDestroyed(UWorld InWorld) { }
+		public override void WorldDestroyed(UWorld inWorld) { }
 		
-		public static implicit operator IntPtr(ManageEngine Self)
+		public static implicit operator IntPtr(ManageEngine self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageEngine(ObjectPointerDescription PtrDesc)

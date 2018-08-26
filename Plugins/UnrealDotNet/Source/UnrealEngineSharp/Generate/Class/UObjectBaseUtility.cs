@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -14,76 +16,88 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_AddToCluster(IntPtr Self, IntPtr ClusterRootOrObjectFromCluster, bool bAddAsMutableObject);
+		private static extern void E_UObjectBaseUtility_AddToCluster(IntPtr self, IntPtr clusterRootOrObjectFromCluster, bool bAddAsMutableObject);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_AddToRoot(IntPtr Self);
+		private static extern void E_UObjectBaseUtility_AddToRoot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_AppendName(IntPtr Self, string ResultString);
+		private static extern void E_UObjectBaseUtility_AppendName(IntPtr self, string resultString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_CanBeClusterRoot(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_CanBeClusterRoot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_CanBeInCluster(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_CanBeInCluster(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_ClearPendingKill(IntPtr Self);
+		private static extern void E_UObjectBaseUtility_ClearPendingKill(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_CreateCluster(IntPtr Self);
+		private static extern void E_UObjectBaseUtility_CreateCluster(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObjectBaseUtility_GetFullGroupName(IntPtr Self, bool bStartWithOuter);
+		private static extern StringWrapper E_UObjectBaseUtility_GetFullGroupName(IntPtr self, bool bStartWithOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UObjectBaseUtility_GetFullName(IntPtr Self, IntPtr StopOuter);
+		private static extern StringWrapper E_UObjectBaseUtility_GetFullName(IntPtr self, IntPtr stopOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UObjectBaseUtility_GetLinkerIndex(IntPtr Self);
+		private static extern int E_UObjectBaseUtility_GetLinkerIndex(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(IntPtr Self);
+		private static extern int E_UObjectBaseUtility_GetLinkerLicenseeUE4Version(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UObjectBaseUtility_GetLinkerUE4Version(IntPtr Self);
+		private static extern int E_UObjectBaseUtility_GetLinkerUE4Version(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsDefaultSubobject(IntPtr Self);
+		private static extern StringWrapper E_UObjectBaseUtility_GetName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsIn(IntPtr Self, IntPtr SomeOuter);
+		private static extern void E_UObjectBaseUtility_GetName_o1(IntPtr self, string resultString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsNative(IntPtr Self);
+		private static extern StringWrapper E_UObjectBaseUtility_GetPathName(IntPtr self, IntPtr stopOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsPendingKill(IntPtr Self);
+		private static extern void E_UObjectBaseUtility_GetPathName_o1(IntPtr self, IntPtr stopOuter, string resultString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsPendingKillOrUnreachable(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsDefaultSubobject(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsRooted(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsIn(IntPtr self, IntPtr someOuter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_IsUnreachable(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsNative(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_MarkPackageDirty(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsPendingKill(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_MarkPendingKill(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsPendingKillOrUnreachable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_OnClusterMarkedAsPendingKill(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsRooted(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObjectBaseUtility_RemoveFromRoot(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_IsUnreachable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UObjectBaseUtility_ThisThreadAtomicallyClearedRFUnreachable(IntPtr Self);
+		private static extern bool E_UObjectBaseUtility_MarkPackageDirty(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObjectBaseUtility_MarkPendingKill(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObjectBaseUtility_OnClusterMarkedAsPendingKill(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObjectBaseUtility_RemoveFromRoot(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObjectBaseUtility_ThisThreadAtomicallyClearedRFUnreachable(IntPtr self);
 		
 		#endregion
 		
@@ -94,14 +108,14 @@ namespace UnrealEngine
 		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
 		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
 		/// </summary>
-		public virtual void AddToCluster(UObjectBaseUtility ClusterRootOrObjectFromCluster, bool bAddAsMutableObject)
-			=> E_UObjectBaseUtility_AddToCluster(this, ClusterRootOrObjectFromCluster, bAddAsMutableObject);
+		public virtual void AddToCluster(UObjectBaseUtility clusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+			=> E_UObjectBaseUtility_AddToCluster(this, clusterRootOrObjectFromCluster, bAddAsMutableObject);
 		
 		public void AddToRoot()
 			=> E_UObjectBaseUtility_AddToRoot(this);
 		
-		public void AppendName(string ResultString)
-			=> E_UObjectBaseUtility_AppendName(this, ResultString);
+		public void AppendName(string resultString)
+			=> E_UObjectBaseUtility_AppendName(this, resultString);
 		
 		
 		/// <summary>
@@ -150,8 +164,8 @@ namespace UnrealEngine
 		/// <para>does not exist in this object's Outer chain, the result would be the same as passing NULL. </para>
 		/// <para>@note	safe to call on NULL object pointers! </para>
 		/// </summary>
-		public string GetFullName(UObject StopOuter = null)
-			=> E_UObjectBaseUtility_GetFullName(this, StopOuter);
+		public string GetFullName(UObject stopOuter = null)
+			=> E_UObjectBaseUtility_GetFullName(this, stopOuter);
 		
 		
 		/// <summary>
@@ -188,6 +202,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the name of this object (with no path information) </para>
+		/// <return>Name of the object. </return>
+		/// </summary>
+		public string GetName()
+			=> E_UObjectBaseUtility_GetName(this);
+		
+		public void GetName(string resultString)
+			=> E_UObjectBaseUtility_GetName_o1(this, resultString);
+		
+		
+		/// <summary>
+		/// <para>Returns the fully qualified pathname for this object, in the format: </para>
+		/// <para>'Outermost[.Outer].Name' </para>
+		/// <param name="StopOuter">if specified, indicates that the output string should be relative to this object.  if StopOuter </param>
+		/// <para>does not exist in this object's Outer chain, the result would be the same as passing NULL. </para>
+		/// <para>@note	safe to call on NULL object pointers! </para>
+		/// </summary>
+		public string GetPathName(UObject stopOuter = null)
+			=> E_UObjectBaseUtility_GetPathName(this, stopOuter);
+		
+		
+		/// <summary>
+		/// <para>Internal version of GetPathName() that eliminates lots of copies. </para>
+		/// </summary>
+		protected void GetPathName(UObject stopOuter, string resultString)
+			=> E_UObjectBaseUtility_GetPathName_o1(this, stopOuter, resultString);
+		
+		
+		/// <summary>
 		/// <para>Returns whether this component was instanced from a component/subobject template, or if it is a component/subobject template. </para>
 		/// <para>This is based on a name comparison with the outer class instance lookup table </para>
 		/// <return>true if this component was instanced from a template.  false if this component was created manually at runtime. </return>
@@ -199,8 +242,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <return>true if the specified object appears somewhere in this object's outer chain. </return>
 		/// </summary>
-		public bool IsIn(UObject SomeOuter)
-			=> E_UObjectBaseUtility_IsIn(this, SomeOuter);
+		public bool IsIn(UObject someOuter)
+			=> E_UObjectBaseUtility_IsIn(this, someOuter);
 		
 		
 		/// <summary>
@@ -274,9 +317,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UObjectBaseUtility Self)
+		public static implicit operator IntPtr(UObjectBaseUtility self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UObjectBaseUtility(ObjectPointerDescription PtrDesc)

@@ -43,6 +43,8 @@ namespace Generator.Codegenretor
         private void GenerateClass(Class Class, string outputPath)
         {
             var cw = new CodeWriter();
+
+            GenerateFileHeader(cw);
             cw.WriteLine("using System;");
             cw.WriteLine("using System.Runtime.InteropServices;");
             cw.WriteLine();
@@ -53,7 +55,7 @@ namespace Generator.Codegenretor
             cw.OpenBlock();
 
             GenerateSummaty(cw, Class,
-                "Класс не может быть наследован в Вашем коде, используйте Manage" + Class.Name.Substring(1));
+                "Класс не может быть наследован в Вашем коде, используйте Manage" + Class.BaseName);
 
             var baseClass = Class.BaseClass != null
                 ? Class.BaseClass.Name
@@ -121,6 +123,8 @@ namespace Generator.Codegenretor
         private void GenerateManageClass(Class Class, string outputPath)
         {
             var cw = new CodeWriter();
+
+            GenerateFileHeader(cw);
             cw.WriteLine("using System;");
             cw.WriteLine("using System.Runtime.InteropServices;");
             cw.WriteLine();
@@ -130,7 +134,7 @@ namespace Generator.Codegenretor
             cw.WriteLine("namespace UnrealEngine");
             cw.OpenBlock();
 
-            var manageClass = new Class("Manage" + Class.Name.Substring(1));
+            var manageClass = new Class("Manage" + Class.BaseName);
 
             cw.WriteLine($"[ManageType(\"{manageClass.Name}\")]");
             cw.WriteLine($"public partial class {manageClass.Name} : {Class.Name}");
@@ -212,7 +216,7 @@ namespace Generator.Codegenretor
             cw.WriteLine();
 
             var param = string.Join(", ", dlg.Parametrs.Select(ExportVariableForDelegateCall));
-            var call = string.Join(", ", dlg.Parametrs.Select(m => m.Name));
+            var call = string.Join(", ", dlg.Parametrs.Select(m => ToLowerCamelCase(m.GetDisplayName())));
 
             cw.WriteLine($"internal void {cfg.EventInvokePrefix}{name}({param})");
             cw.OpenBlock();
@@ -225,7 +229,7 @@ namespace Generator.Codegenretor
         {
             GenerateSummaty(cw, prop);
             
-            cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} static {ExportVariable(prop, false)}");
+            cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} static {prop.GetTypeCs()} {prop.GetDisplayName()}");
             cw.OpenBlock();
 
             var convGet = prop is EnumVariable ? $"({prop.Type})" : "";
@@ -242,11 +246,11 @@ namespace Generator.Codegenretor
         {
             GenerateSummaty(cw, prop);
 
-            cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {ExportVariable(prop, false)}");
-            cw.OpenBlock();
-
             var convGet = prop is EnumVariable ? $"({prop.Type})" : "";
             var convSet = prop is EnumVariable ? $"(byte)" : "";
+
+            cw.WriteLine($"{prop.AccessModifier.ToString().ToLower()} {prop.GetTypeCs()} {prop.GetDisplayName()}");
+            cw.OpenBlock();
 
             cw.WriteLine(
                 $"get => {convGet}{cfg.ExportPropertyPrefix}{Class.Name}_{prop.Name}{cfg.EventPropertyGetPostfix}(NativePointer);");
@@ -276,8 +280,7 @@ namespace Generator.Codegenretor
 
                 if (!forManage && !cfg.Filter.NewObjectBlackList.Contains(Class.Name))
                 {
-                    cw.WriteLine(
-                        $"public {Class.Name}(UObject Parent = null, string Name = \"{Class.Name.Substring(1)}\")");
+                    cw.WriteLine($"public {Class.Name}(UObject Parent = null, string Name = \"{Class.BaseName}\")");
                     cw.WriteLine("\t: base(IntPtr.Zero)");
                     cw.OpenBlock();
                     cw.WriteLine($"NativePointer = {cfg.ExportPrefix}NewObject_{Class.Name}(Parent, Name);");
@@ -294,14 +297,11 @@ namespace Generator.Codegenretor
             {
                 GenerateStructConstructorsDllImport(cw, Class);
             }
-            else
+            else if (!cfg.Filter.NewObjectBlackList.Contains(Class.Name))
             {
-                if (!cfg.Filter.NewObjectBlackList.Contains(Class.Name))
-                {
-                    WriteDllImport(cw);
-                    cw.WriteLine($"private static extern IntPtr {cfg.ExportPrefix}NewObject_{Class.Name}(IntPtr Parent, string Name);");
-                    cw.WriteLine();
-                }
+                WriteDllImport(cw);
+                cw.WriteLine($"private static extern IntPtr {cfg.ExportPrefix}NewObject_{Class.Name}(IntPtr Parent, string Name);");
+                cw.WriteLine();
             }
 
             GenerateClassPropertyDllImport(cw, Class);
@@ -330,22 +330,21 @@ namespace Generator.Codegenretor
         {
             var name = prop.GetDisplayName();
 
-                WriteDllImport(cw);
-                cw.WriteLine($"private static extern void {cfg.ExportEventAddPrefix}{Class.Name}_{name}(IntPtr Ptr);");
-                cw.WriteLine();
+            WriteDllImport(cw);
+            cw.WriteLine($"private static extern void {cfg.ExportEventAddPrefix}{Class.Name}_{name}(IntPtr Ptr);");
+            cw.WriteLine();
 
-                WriteDllImport(cw);
-                cw.WriteLine($"private static extern void {cfg.ExportEventRemovePrefix}{Class.Name}_{name}(IntPtr Ptr);");
-                cw.WriteLine();
-            }
+            WriteDllImport(cw);
+            cw.WriteLine($"private static extern void {cfg.ExportEventRemovePrefix}{Class.Name}_{name}(IntPtr Ptr);");
+            cw.WriteLine();
+        }
 
         private void GenerateClassPropertyStaticDllImport(CodeWriter cw, Class Class, Variable prop)
         {
             var baseName = $"{cfg.ExportPropertyPrefix}{Class.Name}_{prop.Name}";
 
             WriteDllImport(cw);
-            cw.WriteLine(
-                $"private static extern {prop.GetTypeCsForExtend(true)} {baseName}{cfg.EventPropertyGetPostfix}();");
+            cw.WriteLine($"private static extern {prop.GetTypeCsForExtend(true)} {baseName}{cfg.EventPropertyGetPostfix}();");
 
             cw.WriteLine();
         }
@@ -370,8 +369,7 @@ namespace Generator.Codegenretor
 
         private void GenerateStructConstructors(CodeWriter cw, Class Class)
         {
-            cw.WriteLine(
-                $"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
+            cw.WriteLine($"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
             cw.OpenBlock();
             cw.CloseBlock();
             cw.WriteLine();
@@ -410,14 +408,13 @@ namespace Generator.Codegenretor
         private void GenerateMethodDllImport(CodeWriter cw, Class Class, Method method)
         {
             var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
-            inputs.Insert(0, "IntPtr Self");
+            inputs.Insert(0, "IntPtr self");
 
             var param = string.Join(", ", inputs);
             var ret = ExportVariable(method.ReturnType, false, true, true);
 
             WriteDllImport(cw);
-            cw.WriteLine(
-                $"private static extern {ret} {GetCppMethodName(method)}({param});");
+            cw.WriteLine($"private static extern {ret} {GetCppMethodName(method)}({param});");
             cw.WriteLine();
         }
 
@@ -455,6 +452,8 @@ namespace Generator.Codegenretor
         private void GenerateDelegates(IEnumerable<Delegate> delegates, string outputPath)
         {
             var cw = new CodeWriter();
+
+            GenerateFileHeader(cw);
             cw.WriteLine("namespace UnrealEngine");
             cw.OpenBlock();
 
@@ -480,6 +479,8 @@ namespace Generator.Codegenretor
         private void GenerateEnums(IEnumerable<Enum> enums, string outputPath)
         {
             var cw = new CodeWriter();
+
+            GenerateFileHeader(cw);
             cw.WriteLine("namespace UnrealEngine");
             cw.OpenBlock();
 
@@ -558,9 +559,9 @@ namespace Generator.Codegenretor
 
         private void GenerateClassUtilitesButtom(CodeWriter cw, Class Class)
         {
-            cw.WriteLine($"public static implicit operator IntPtr({Class.Name} Self)");
+            cw.WriteLine($"public static implicit operator IntPtr({Class.Name} self)");
             cw.OpenBlock();
-            cw.WriteLine("return Self.NativePointer;");
+            cw.WriteLine("return self.NativePointer;");
             cw.CloseBlock();
             cw.WriteLine();
 
@@ -582,8 +583,7 @@ namespace Generator.Codegenretor
 
         private void WriteDllImport(CodeWriter cw)
         {
-            cw.WriteLine(
-                "[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]");
+            cw.WriteLine("[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]");
         }
 
         private string ExportVariable(Variable variable, bool includeDefault = true, bool forExtern = false,
@@ -593,7 +593,7 @@ namespace Generator.Codegenretor
 
             if (!string.IsNullOrEmpty(variable.Name))
             {
-                result += " " + variable.GetDisplayName();
+                result += " " + ToLowerCamelCase(variable.GetDisplayName());
 
                 if (includeDefault)
                 {
@@ -604,6 +604,18 @@ namespace Generator.Codegenretor
             }
 
             return result;
+        }
+
+        private static string ToLowerCamelCase(string str)
+        {
+            str = char.ToLower(str[0]) + str.Substring(1);
+
+            if (str == "in" || str == "object" || str == "out" || str == "class" || str == "event" || str == "delegate")
+            {
+                str = "@" + str;
+            }
+
+            return str;
         }
 
         private string ExportVariableForDelegateCall(Variable variable)
@@ -619,17 +631,19 @@ namespace Generator.Codegenretor
                 result = variable.GetTypeCs();
             }
 
-            result += " " + variable.GetDisplayName();
+            result += " " + ToLowerCamelCase(variable.GetDisplayName());
 
             return result;
         }
 
         private string VarNameForCall(Variable variable)
         {
-            if (variable is EnumVariable)
-                return $"(byte){variable.Name}";
+            var name = ToLowerCamelCase(variable.Name);
 
-            return variable.Name;
+            if (variable is EnumVariable)
+                return $"(byte){name}";
+
+            return name;
         }
 
         private string ValidateDefaultValue(string value)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,25 +26,25 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkyLightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USkyLightComponent_IsOcclusionSupported(IntPtr Self);
+		private static extern bool E_USkyLightComponent_IsOcclusionSupported(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_RecaptureSky(IntPtr Self);
+		private static extern void E_USkyLightComponent_RecaptureSky(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_SanitizeCubemapSize(IntPtr Self);
+		private static extern void E_USkyLightComponent_SanitizeCubemapSize(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_SetBlendDestinationCaptureIsDirty(IntPtr Self);
+		private static extern void E_USkyLightComponent_SetBlendDestinationCaptureIsDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_SetCaptureIsDirty(IntPtr Self);
+		private static extern void E_USkyLightComponent_SetCaptureIsDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_UpdateLimitedRenderingStateFast(IntPtr Self);
+		private static extern void E_USkyLightComponent_UpdateLimitedRenderingStateFast(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkyLightComponent_UpdateOcclusionRenderingStateFast(IntPtr Self);
+		private static extern void E_USkyLightComponent_UpdateOcclusionRenderingStateFast(IntPtr self);
 		
 		#endregion
 		
@@ -84,9 +86,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USkyLightComponent Self)
+		public static implicit operator IntPtr(USkyLightComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USkyLightComponent(ObjectPointerDescription PtrDesc)

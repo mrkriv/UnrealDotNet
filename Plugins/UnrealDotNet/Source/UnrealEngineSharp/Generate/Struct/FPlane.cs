@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -25,8 +27,8 @@ namespace UnrealEngine
 		/// <para>Copy Constructor. </para>
 		/// <param name="P">Plane to copy from. </param>
 		/// </summary>
-		public FPlane(FPlane P) :
-			base(E_CreateStruct_FPlane_FPlane(P), false)
+		public FPlane(FPlane p) :
+			base(E_CreateStruct_FPlane_FPlane(p), false)
 		{
 		}
 
@@ -35,8 +37,8 @@ namespace UnrealEngine
 		/// <para>Constructor. </para>
 		/// <param name="V">4D vector to set up plane. </param>
 		/// </summary>
-		public FPlane(FVector4 V) :
-			base(E_CreateStruct_FPlane_FVector4(V), false)
+		public FPlane(FVector4 v) :
+			base(E_CreateStruct_FPlane_FVector4(v), false)
 		{
 		}
 
@@ -48,8 +50,8 @@ namespace UnrealEngine
 		/// <param name="InZ">Z-coefficient. </param>
 		/// <param name="InW">W-coefficient. </param>
 		/// </summary>
-		public FPlane(float InX, float InY, float InZ, float InW) :
-			base(E_CreateStruct_FPlane_float_float_float_float(InX, InY, InZ, InW), false)
+		public FPlane(float inX, float inY, float inZ, float inW) :
+			base(E_CreateStruct_FPlane_float_float_float_float(inX, inY, inZ, inW), false)
 		{
 		}
 
@@ -59,8 +61,8 @@ namespace UnrealEngine
 		/// <param name="InNormal">Plane Normal Vector. </param>
 		/// <param name="InW">Plane W-coefficient. </param>
 		/// </summary>
-		public FPlane(FVector InNormal, float InW) :
-			base(E_CreateStruct_FPlane_FVector_float(InNormal, InW), false)
+		public FPlane(FVector inNormal, float inW) :
+			base(E_CreateStruct_FPlane_FVector_float(inNormal, inW), false)
 		{
 		}
 
@@ -70,8 +72,8 @@ namespace UnrealEngine
 		/// <param name="InBase">Base point in plane. </param>
 		/// <param name="InNormal">Plane Normal Vector. </param>
 		/// </summary>
-		public FPlane(FVector InBase, FVector InNormal) :
-			base(E_CreateStruct_FPlane_FVector_FVector(InBase, InNormal), false)
+		public FPlane(FVector inBase, FVector inNormal) :
+			base(E_CreateStruct_FPlane_FVector_FVector(inBase, inNormal), false)
 		{
 		}
 
@@ -82,8 +84,8 @@ namespace UnrealEngine
 		/// <param name="B">Second point in the plane. </param>
 		/// <param name="C">Third point in the plane. </param>
 		/// </summary>
-		public FPlane(FVector A, FVector B, FVector C) :
-			base(E_CreateStruct_FPlane_FVector_FVector_FVector(A, B, C), false)
+		public FPlane(FVector a, FVector b, FVector c) :
+			base(E_CreateStruct_FPlane_FVector_FVector_FVector(a, b, c), false)
 		{
 		}
 
@@ -92,22 +94,22 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FPlane();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_FPlane(IntPtr P);
+		private static extern IntPtr E_CreateStruct_FPlane_FPlane(IntPtr p);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_FVector4(IntPtr V);
+		private static extern IntPtr E_CreateStruct_FPlane_FVector4(IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_float_float_float_float(float InX, float InY, float InZ, float InW);
+		private static extern IntPtr E_CreateStruct_FPlane_float_float_float_float(float inX, float inY, float inZ, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_FVector_float(IntPtr InNormal, float InW);
+		private static extern IntPtr E_CreateStruct_FPlane_FVector_float(IntPtr inNormal, float inW);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector(IntPtr InBase, IntPtr InNormal);
+		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector(IntPtr inBase, IntPtr inNormal);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector_FVector(IntPtr A, IntPtr B, IntPtr C);
+		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector_FVector(IntPtr a, IntPtr b, IntPtr c);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPlane_W_GET(IntPtr Ptr);
@@ -115,16 +117,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPlane_W_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FPlane_Equals(IntPtr Self, IntPtr V, float Tolerance);
+		private static extern bool E_FPlane_Equals(IntPtr self, IntPtr v, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FPlane_Flip(IntPtr Self);
+		private static extern IntPtr E_FPlane_Flip(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FPlane_Normalize(IntPtr Self, float Tolerance);
+		private static extern bool E_FPlane_Normalize(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FPlane_PlaneDot(IntPtr Self, IntPtr P);
+		private static extern float E_FPlane_PlaneDot(IntPtr self, IntPtr p);
 		
 		#endregion
 		
@@ -149,8 +151,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Error Tolerance. </param>
 		/// <return>true if the two planes are equal within specified tolerance, otherwise false. </return>
 		/// </summary>
-		public bool Equals(FPlane V, float Tolerance)
-			=> E_FPlane_Equals(this, V, Tolerance);
+		public bool Equals(FPlane v, float tolerance)
+			=> E_FPlane_Equals(this, v, tolerance);
 		
 		
 		/// <summary>
@@ -166,8 +168,8 @@ namespace UnrealEngine
 		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
 		/// <return>true if the plane was normalized correctly, false otherwise. </return>
 		/// </summary>
-		public bool Normalize(float Tolerance)
-			=> E_FPlane_Normalize(this, Tolerance);
+		public bool Normalize(float tolerance)
+			=> E_FPlane_Normalize(this, tolerance);
 		
 		
 		/// <summary>
@@ -175,14 +177,14 @@ namespace UnrealEngine
 		/// <param name="P">The other point. </param>
 		/// <return>0: point is in front of the plane, <0: behind, =0: on the plane. </return>
 		/// </summary>
-		public float PlaneDot(FVector P)
-			=> E_FPlane_PlaneDot(this, P);
+		public float PlaneDot(FVector p)
+			=> E_FPlane_PlaneDot(this, p);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FPlane Self)
+		public static implicit operator IntPtr(FPlane self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FPlane(IntPtr Adress)

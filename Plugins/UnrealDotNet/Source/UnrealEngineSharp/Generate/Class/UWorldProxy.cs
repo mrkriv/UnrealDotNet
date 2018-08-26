@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -14,7 +16,7 @@ namespace UnrealEngine
 
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UWorldProxy_GetReference(IntPtr Self);
+		private static extern ObjectPointerDescription E_UWorldProxy_GetReference(IntPtr self);
 		
 		#endregion
 		
@@ -24,9 +26,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UWorldProxy Self)
+		public static implicit operator IntPtr(UWorldProxy self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UWorldProxy(ObjectPointerDescription PtrDesc)

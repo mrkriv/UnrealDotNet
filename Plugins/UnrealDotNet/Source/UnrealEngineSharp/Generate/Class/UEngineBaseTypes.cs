@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -12,9 +14,9 @@ namespace UnrealEngine
 		{
 		}
 
-		public static implicit operator IntPtr(UEngineBaseTypes Self)
+		public static implicit operator IntPtr(UEngineBaseTypes self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UEngineBaseTypes(ObjectPointerDescription PtrDesc)

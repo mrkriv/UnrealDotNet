@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -18,7 +20,7 @@ namespace UnrealEngine
 		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
 		/// <param name="DetachmentRules">How to handle transforms & modification when detaching. </param>
 		/// </summary>
-		public override void DetachFromComponent(FDetachmentTransformRules DetachmentRules) { }
+		public override void DetachFromComponent(FDetachmentTransformRules detachmentRules) { }
 		
 		
 		/// <summary>
@@ -39,14 +41,14 @@ namespace UnrealEngine
 		/// <para>Called after a child scene component is attached to this component. </para>
 		/// <para>Note: Do not change the attachment state of the child during this call. </para>
 		/// </summary>
-		protected override void OnChildAttached(USceneComponent ChildComponent) { }
+		protected override void OnChildAttached(USceneComponent childComponent) { }
 		
 		
 		/// <summary>
 		/// <para>Called after a child scene component is detached from this component. </para>
 		/// <para>Note: Do not change the attachment state of the child during this call. </para>
 		/// </summary>
-		protected override void OnChildDetached(USceneComponent ChildComponent) { }
+		protected override void OnChildDetached(USceneComponent childComponent) { }
 		
 		
 		/// <summary>
@@ -54,7 +56,7 @@ namespace UnrealEngine
 		/// </summary>
 		protected override void OnHiddenInGameChanged() { }
 		
-		protected override void OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport) { }
+		protected override void OnUpdateTransform(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport) { }
 		
 		
 		/// <summary>
@@ -68,7 +70,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the non-uniform scale of the component relative to its parent </para>
 		/// </summary>
-		public override void SetRelativeScale3D(FVector NewScale3D) { }
+		public override void SetRelativeScale3D(FVector newScale3D) { }
 		
 		
 		/// <summary>
@@ -83,9 +85,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UpdatePhysicsVolume(bool bTriggerNotifiers) { }
 		
-		public static implicit operator IntPtr(ManageSceneComponent Self)
+		public static implicit operator IntPtr(ManageSceneComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageSceneComponent(ObjectPointerDescription PtrDesc)

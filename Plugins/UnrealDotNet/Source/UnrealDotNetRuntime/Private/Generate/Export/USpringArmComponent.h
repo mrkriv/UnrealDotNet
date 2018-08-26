@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -33,8 +35,8 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USpringArmComponent_BlendLocations(USpringArmComponent* Self, INT_PTR DesiredArmLocation, INT_PTR TraceHitLocation, bool bHitSomething, float DeltaTime)
 	{
-		auto _p0 = *(FVector*)DesiredArmLocation;
-		auto _p1 = *(FVector*)TraceHitLocation;
+		auto& _p0 = *(FVector*)DesiredArmLocation;
+		auto& _p1 = *(FVector*)TraceHitLocation;
 		auto _p2 = bHitSomething;
 		auto _p3 = DeltaTime;
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_USpringArmComponent*)Self)->BlendLocations_WRAP(_p0, _p1, _p2, _p3));

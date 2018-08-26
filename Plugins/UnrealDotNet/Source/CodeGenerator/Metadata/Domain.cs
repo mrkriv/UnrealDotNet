@@ -38,10 +38,12 @@ namespace Generator.Metadata
         public void PrintTotal()
         {
             Console.WriteLine($"Export:");
-            Console.WriteLine($"Class\t\t{Classes.Count(c => !c.IsStructure)}");
-            Console.WriteLine($"Structures\t{Classes.Count(c => c.IsStructure)}");
-            Console.WriteLine($"Enums\t\t{Enums.Count}");
-            Console.WriteLine($"Delegates\t{Delegates.Count}");
+            Console.WriteLine($"Class       {Classes.Count(c => !c.IsStructure)}");
+            Console.WriteLine($"Structures  {Classes.Count(c => c.IsStructure)}");
+            Console.WriteLine($"Enums       {Enums.Count}");
+            Console.WriteLine($"Delegates   {Delegates.Count}");
+            Console.WriteLine($"Methods     {Classes.Sum(c => c.Methods.Count(x => x.ValidForExport == true))}");
+            Console.WriteLine($"Properys    {Classes.Sum(c => c.Property.Count(x => x.ValidForExport == true))}");
         }
 
         public void Print(bool full)

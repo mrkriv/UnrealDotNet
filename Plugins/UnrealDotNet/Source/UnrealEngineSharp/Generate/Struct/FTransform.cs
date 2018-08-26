@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -25,8 +27,8 @@ namespace UnrealEngine
 		/// <para>Constructor with an initial translation </para>
 		/// <param name="InTranslation">The value to use for the translation component </param>
 		/// </summary>
-		public FTransform(FVector InTranslation) :
-			base(E_CreateStruct_FTransform_FVector(InTranslation), false)
+		public FTransform(FVector inTranslation) :
+			base(E_CreateStruct_FTransform_FVector(inTranslation), false)
 		{
 		}
 
@@ -35,8 +37,8 @@ namespace UnrealEngine
 		/// <para>Constructor with an initial rotation </para>
 		/// <param name="InRotation">The value to use for rotation component </param>
 		/// </summary>
-		public FTransform(FQuat InRotation) :
-			base(E_CreateStruct_FTransform_FQuat(InRotation), false)
+		public FTransform(FQuat inRotation) :
+			base(E_CreateStruct_FTransform_FQuat(inRotation), false)
 		{
 		}
 
@@ -45,8 +47,8 @@ namespace UnrealEngine
 		/// <para>Constructor with an initial rotation </para>
 		/// <param name="InRotation">The value to use for rotation component  (after being converted to a quaternion) </param>
 		/// </summary>
-		public FTransform(FRotator InRotation) :
-			base(E_CreateStruct_FTransform_FRotator(InRotation), false)
+		public FTransform(FRotator inRotation) :
+			base(E_CreateStruct_FTransform_FRotator(inRotation), false)
 		{
 		}
 
@@ -57,8 +59,8 @@ namespace UnrealEngine
 		/// <param name="InTranslation">The value to use for the translation component </param>
 		/// <param name="InScale3D">The value to use for the scale component </param>
 		/// </summary>
-		public FTransform(FQuat InRotation, FVector InTranslation, FVector InScale3D) :
-			base(E_CreateStruct_FTransform_FQuat_FVector_FVector(InRotation, InTranslation, InScale3D), false)
+		public FTransform(FQuat inRotation, FVector inTranslation, FVector inScale3D) :
+			base(E_CreateStruct_FTransform_FQuat_FVector_FVector(inRotation, inTranslation, inScale3D), false)
 		{
 		}
 
@@ -69,8 +71,8 @@ namespace UnrealEngine
 		/// <param name="InTranslation">The value to use for the translation component </param>
 		/// <param name="InScale3D">The value to use for the scale component </param>
 		/// </summary>
-		public FTransform(FRotator InRotation, FVector InTranslation, FVector InScale3D) :
-			base(E_CreateStruct_FTransform_FRotator_FVector_FVector(InRotation, InTranslation, InScale3D), false)
+		public FTransform(FRotator inRotation, FVector inTranslation, FVector inScale3D) :
+			base(E_CreateStruct_FTransform_FRotator_FVector_FVector(inRotation, inTranslation, inScale3D), false)
 		{
 		}
 
@@ -79,8 +81,8 @@ namespace UnrealEngine
 		/// <para>Copy-constructor </para>
 		/// <param name="InTransform">The source transform from which all components will be copied </param>
 		/// </summary>
-		public FTransform(FTransform InTransform) :
-			base(E_CreateStruct_FTransform_FTransform(InTransform), false)
+		public FTransform(FTransform inTransform) :
+			base(E_CreateStruct_FTransform_FTransform(inTransform), false)
 		{
 		}
 
@@ -88,8 +90,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Constructor that takes basis axes and translation </para>
 		/// </summary>
-		public FTransform(FVector InX, FVector InY, FVector InZ, FVector InTranslation) :
-			base(E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(InX, InY, InZ, InTranslation), false)
+		public FTransform(FVector inX, FVector inY, FVector inZ, FVector inTranslation) :
+			base(E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(inX, inY, inZ, inTranslation), false)
 		{
 		}
 
@@ -98,282 +100,308 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FTransform();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FVector(IntPtr InTranslation);
+		private static extern IntPtr E_CreateStruct_FTransform_FVector(IntPtr inTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FQuat(IntPtr InRotation);
+		private static extern IntPtr E_CreateStruct_FTransform_FQuat(IntPtr inRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FRotator(IntPtr InRotation);
+		private static extern IntPtr E_CreateStruct_FTransform_FRotator(IntPtr inRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FQuat_FVector_FVector(IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
+		private static extern IntPtr E_CreateStruct_FTransform_FQuat_FVector_FVector(IntPtr inRotation, IntPtr inTranslation, IntPtr inScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FRotator_FVector_FVector(IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
+		private static extern IntPtr E_CreateStruct_FTransform_FRotator_FVector_FVector(IntPtr inRotation, IntPtr inTranslation, IntPtr inScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FTransform(IntPtr InTransform);
+		private static extern IntPtr E_CreateStruct_FTransform_FTransform(IntPtr inTransform);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(IntPtr InX, IntPtr InY, IntPtr InZ, IntPtr InTranslation);
+		private static extern IntPtr E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(IntPtr inX, IntPtr inY, IntPtr inZ, IntPtr inTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_AddToTranslation(IntPtr Self, IntPtr DeltaTranslation);
+		private static extern void E_FTransform_Accumulate(IntPtr self, IntPtr sourceAtom);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_AddTranslations(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern void E_FTransform_AddToTranslation(IntPtr self, IntPtr deltaTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_AnyHasNegativeScale(IntPtr Self, IntPtr InScale3D, IntPtr InOtherScale3D);
+		private static extern IntPtr E_FTransform_AddTranslations(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_AreRotationsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AnyHasNegativeScale(IntPtr self, IntPtr inScale3D, IntPtr inOtherScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_AreScale3DsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AreRotationsEqual(IntPtr self, IntPtr a, IntPtr b, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_AreTranslationsEqual(IntPtr Self, IntPtr A, IntPtr B, float Tolerance);
+		private static extern bool E_FTransform_AreScale3DsEqual(IntPtr self, IntPtr a, IntPtr b, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_Blend(IntPtr Self, IntPtr Atom1, IntPtr Atom2, float Alpha);
+		private static extern bool E_FTransform_AreTranslationsEqual(IntPtr self, IntPtr a, IntPtr b, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_BlendWith(IntPtr Self, IntPtr OtherAtom, float Alpha);
+		private static extern void E_FTransform_Blend(IntPtr self, IntPtr atom1, IntPtr atom2, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_ConcatenateRotation(IntPtr Self, IntPtr DeltaRotation);
+		private static extern void E_FTransform_BlendWith(IntPtr self, IntPtr otherAtom, float alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_ContainsNaN(IntPtr Self);
+		private static extern void E_FTransform_ConcatenateRotation(IntPtr self, IntPtr deltaRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_CopyRotation(IntPtr Self, IntPtr Other);
+		private static extern bool E_FTransform_ContainsNaN(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_CopyRotationPart(IntPtr Self, IntPtr SrcBA);
+		private static extern void E_FTransform_CopyRotation(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_CopyScale3D(IntPtr Self, IntPtr Other);
+		private static extern void E_FTransform_CopyRotationPart(IntPtr self, IntPtr srcBA);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_CopyTranslation(IntPtr Self, IntPtr Other);
+		private static extern void E_FTransform_CopyScale3D(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_CopyTranslationAndScale3D(IntPtr Self, IntPtr SrcBA);
+		private static extern void E_FTransform_CopyTranslation(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DebugPrint(IntPtr Self);
+		private static extern void E_FTransform_CopyTranslationAndScale3D(IntPtr self, IntPtr srcBA);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DiagnosticCheck_IsValid(IntPtr Self);
+		private static extern void E_FTransform_DebugPrint(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_All(IntPtr Self);
+		private static extern void E_FTransform_DiagnosticCheck_IsValid(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Rotate(IntPtr Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_All(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Scale3D(IntPtr Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Rotate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_DiagnosticCheckNaN_Translate(IntPtr Self);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Scale3D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_Equals(IntPtr Self, IntPtr Other, float Tolerance);
+		private static extern void E_FTransform_DiagnosticCheckNaN_Translate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_EqualsNoScale(IntPtr Self, IntPtr Other, float Tolerance);
+		private static extern bool E_FTransform_Equals(IntPtr self, IntPtr other, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FTransform_GetDeterminant(IntPtr Self);
+		private static extern bool E_FTransform_EqualsNoScale(IntPtr self, IntPtr other, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetLocation(IntPtr Self);
+		private static extern float E_FTransform_GetDeterminant(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FTransform_GetMaximumAxisScale(IntPtr Self);
+		private static extern IntPtr E_FTransform_GetLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FTransform_GetMinimumAxisScale(IntPtr Self);
+		private static extern float E_FTransform_GetMaximumAxisScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetRelativeTransform(IntPtr Self, IntPtr Other);
+		private static extern float E_FTransform_GetMinimumAxisScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetRelativeTransformReverse(IntPtr Self, IntPtr Other);
+		private static extern IntPtr E_FTransform_GetRelativeTransform(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetRotation(IntPtr Self);
+		private static extern IntPtr E_FTransform_GetRelativeTransformReverse(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(IntPtr Self, IntPtr InScale, float Tolerance);
+		private static extern IntPtr E_FTransform_GetRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetScale3D(IntPtr Self);
+		private static extern IntPtr E_FTransform_GetSafeScaleReciprocal(IntPtr self, IntPtr inScale, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_GetTranslation(IntPtr Self);
+		private static extern IntPtr E_FTransform_GetScale3D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_InitFromString(IntPtr Self, string InSourceString);
+		private static extern IntPtr E_FTransform_GetScaled(IntPtr self, float scale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_Inverse(IntPtr Self);
+		private static extern IntPtr E_FTransform_GetScaled_o1(IntPtr self, IntPtr scale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_InverseTransformPosition(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_GetTranslation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_InverseTransformPositionNoScale(IntPtr Self, IntPtr V);
+		private static extern bool E_FTransform_InitFromString(IntPtr self, string inSourceString);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_InverseTransformRotation(IntPtr Self, IntPtr Q);
+		private static extern IntPtr E_FTransform_Inverse(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_InverseTransformVector(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformPosition(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_InverseTransformVectorNoScale(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_InverseTransformPositionNoScale(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_IsRotationNormalized(IntPtr Self);
+		private static extern IntPtr E_FTransform_InverseTransformRotation(IntPtr self, IntPtr q);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_IsValid(IntPtr Self);
+		private static extern IntPtr E_FTransform_InverseTransformVector(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_Multiply(IntPtr Self, IntPtr OutTransform, IntPtr A, IntPtr B);
+		private static extern IntPtr E_FTransform_InverseTransformVectorNoScale(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_MultiplyScale3D(IntPtr Self, IntPtr Scale3DMultiplier);
+		private static extern bool E_FTransform_IsRotationNormalized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_NormalizeRotation(IntPtr Self);
+		private static extern bool E_FTransform_IsValid(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_RemoveScaling(IntPtr Self, float Tolerance);
+		private static extern void E_FTransform_Multiply(IntPtr self, IntPtr outTransform, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_RotationEquals(IntPtr Self, IntPtr Other, float Tolerance);
+		private static extern void E_FTransform_MultiplyScale3D(IntPtr self, IntPtr scale3DMultiplier);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_Rotator(IntPtr Self);
+		private static extern void E_FTransform_NormalizeRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_Scale3DEquals(IntPtr Self, IntPtr Other, float Tolerance);
+		private static extern void E_FTransform_RemoveScaling(IntPtr self, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetComponents(IntPtr Self, IntPtr InRotation, IntPtr InTranslation, IntPtr InScale3D);
+		private static extern bool E_FTransform_RotationEquals(IntPtr self, IntPtr other, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetIdentity(IntPtr Self);
+		private static extern IntPtr E_FTransform_Rotator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetLocation(IntPtr Self, IntPtr Origin);
+		private static extern bool E_FTransform_Scale3DEquals(IntPtr self, IntPtr other, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetRotation(IntPtr Self, IntPtr NewRotation);
+		private static extern void E_FTransform_ScaleTranslation(IntPtr self, IntPtr inScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetScale3D(IntPtr Self, IntPtr NewScale3D);
+		private static extern void E_FTransform_ScaleTranslation_o1(IntPtr self, float scale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetToRelativeTransform(IntPtr Self, IntPtr ParentTransform);
+		private static extern void E_FTransform_SetComponents(IntPtr self, IntPtr inRotation, IntPtr inTranslation, IntPtr inScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetTranslation(IntPtr Self, IntPtr NewTranslation);
+		private static extern void E_FTransform_SetIdentity(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_SetTranslationAndScale3D(IntPtr Self, IntPtr NewTranslation, IntPtr NewScale3D);
+		private static extern void E_FTransform_SetLocation(IntPtr self, IntPtr origin);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_SubtractTranslations(IntPtr Self, IntPtr A, IntPtr B);
+		private static extern void E_FTransform_SetRotation(IntPtr self, IntPtr newRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FTransform_ToHumanReadableString(IntPtr Self);
+		private static extern void E_FTransform_SetScale3D(IntPtr self, IntPtr newScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FTransform_ToString(IntPtr Self);
+		private static extern void E_FTransform_SetToRelativeTransform(IntPtr self, IntPtr parentTransform);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformFVector4(IntPtr Self, IntPtr V);
+		private static extern void E_FTransform_SetTranslation(IntPtr self, IntPtr newTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformFVector4NoScale(IntPtr Self, IntPtr V);
+		private static extern void E_FTransform_SetTranslationAndScale3D(IntPtr self, IntPtr newTranslation, IntPtr newScale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformPosition(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_SubtractTranslations(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformPositionNoScale(IntPtr Self, IntPtr V);
+		private static extern StringWrapper E_FTransform_ToHumanReadableString(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformRotation(IntPtr Self, IntPtr Q);
+		private static extern StringWrapper E_FTransform_ToString(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformVector(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformFVector4(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FTransform_TransformVectorNoScale(IntPtr Self, IntPtr V);
+		private static extern IntPtr E_FTransform_TransformFVector4NoScale(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_TranslationEquals(IntPtr Self, IntPtr Other, float Tolerance);
+		private static extern IntPtr E_FTransform_TransformPosition(IntPtr self, IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_TransformPositionNoScale(IntPtr self, IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_TransformRotation(IntPtr self, IntPtr q);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_TransformVector(IntPtr self, IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FTransform_TransformVectorNoScale(IntPtr self, IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FTransform_TranslationEquals(IntPtr self, IntPtr other, float tolerance);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Accumulates another transform with this one </para>
+		/// <para>Rotation is accumulated multiplicatively (Rotation = SourceAtom.Rotation * Rotation) </para>
+		/// <para>Translation is accumulated additively (Translation += SourceAtom.Translation) </para>
+		/// <para>Scale3D is accumulated multiplicatively (Scale3D *= SourceAtom.Scale3D) </para>
+		/// <param name="SourceAtom">The other transform to accumulate into this one </param>
+		/// </summary>
+		public void Accumulate(FTransform sourceAtom)
+			=> E_FTransform_Accumulate(this, sourceAtom);
+		
+		
+		/// <summary>
 		/// <para>Adjusts the translation component of this transformation </para>
 		/// <param name="DeltaTranslation">The translation to add in the following fashion: Translation += DeltaTranslation </param>
 		/// </summary>
-		public void AddToTranslation(FVector DeltaTranslation)
-			=> E_FTransform_AddToTranslation(this, DeltaTranslation);
+		public void AddToTranslation(FVector deltaTranslation)
+			=> E_FTransform_AddToTranslation(this, deltaTranslation);
 		
 		
 		/// <summary>
 		/// <para>Add the translations from two FTransforms and return the result. </para>
 		/// <return>A.Translation + B.Translation </return>
 		/// </summary>
-		public FVector AddTranslations(FTransform A, FTransform B)
-			=> E_FTransform_AddTranslations(this, A, B);
+		public FVector AddTranslations(FTransform a, FTransform b)
+			=> E_FTransform_AddTranslations(this, a, b);
 		
-		public bool AnyHasNegativeScale(FVector InScale3D, FVector InOtherScale3D)
-			=> E_FTransform_AnyHasNegativeScale(this, InScale3D, InOtherScale3D);
+		public bool AnyHasNegativeScale(FVector inScale3D, FVector inOtherScale3D)
+			=> E_FTransform_AnyHasNegativeScale(this, inScale3D, inOtherScale3D);
 		
-		public bool AreRotationsEqual(FTransform A, FTransform B, float Tolerance)
-			=> E_FTransform_AreRotationsEqual(this, A, B, Tolerance);
+		public bool AreRotationsEqual(FTransform a, FTransform b, float tolerance)
+			=> E_FTransform_AreRotationsEqual(this, a, b, tolerance);
 		
-		public bool AreScale3DsEqual(FTransform A, FTransform B, float Tolerance)
-			=> E_FTransform_AreScale3DsEqual(this, A, B, Tolerance);
+		public bool AreScale3DsEqual(FTransform a, FTransform b, float tolerance)
+			=> E_FTransform_AreScale3DsEqual(this, a, b, tolerance);
 		
-		public bool AreTranslationsEqual(FTransform A, FTransform B, float Tolerance)
-			=> E_FTransform_AreTranslationsEqual(this, A, B, Tolerance);
+		public bool AreTranslationsEqual(FTransform a, FTransform b, float tolerance)
+			=> E_FTransform_AreTranslationsEqual(this, a, b, tolerance);
 		
 		
 		/// <summary>
 		/// <para>Set this transform to the weighted blend of the supplied two transforms. </para>
 		/// </summary>
-		public void Blend(FTransform Atom1, FTransform Atom2, float Alpha)
-			=> E_FTransform_Blend(this, Atom1, Atom2, Alpha);
+		public void Blend(FTransform atom1, FTransform atom2, float alpha)
+			=> E_FTransform_Blend(this, atom1, atom2, alpha);
 		
 		
 		/// <summary>
 		/// <para>Set this Transform to the weighted blend of it and the supplied Transform. </para>
 		/// </summary>
-		public void BlendWith(FTransform OtherAtom, float Alpha)
-			=> E_FTransform_BlendWith(this, OtherAtom, Alpha);
+		public void BlendWith(FTransform otherAtom, float alpha)
+			=> E_FTransform_BlendWith(this, otherAtom, alpha);
 		
 		
 		/// <summary>
 		/// <para>Concatenates another rotation to this transformation </para>
 		/// <param name="DeltaRotation">The rotation to concatenate in the following fashion: Rotation = Rotation * DeltaRotation </param>
 		/// </summary>
-		public void ConcatenateRotation(FQuat DeltaRotation)
-			=> E_FTransform_ConcatenateRotation(this, DeltaRotation);
+		public void ConcatenateRotation(FQuat deltaRotation)
+			=> E_FTransform_ConcatenateRotation(this, deltaRotation);
 		
 		
 		/// <summary>
@@ -387,38 +415,38 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Copy rotation from another FTransform. </para>
 		/// </summary>
-		public void CopyRotation(FTransform Other)
-			=> E_FTransform_CopyRotation(this, Other);
+		public void CopyRotation(FTransform other)
+			=> E_FTransform_CopyRotation(this, other);
 		
 		
 		/// <summary>
 		/// <para>Sets the Rotation and Scale3D of this transformation from another transform </para>
 		/// <param name="SrcBA">The transform to copy rotation and Scale3D from </param>
 		/// </summary>
-		public void CopyRotationPart(FTransform SrcBA)
-			=> E_FTransform_CopyRotationPart(this, SrcBA);
+		public void CopyRotationPart(FTransform srcBA)
+			=> E_FTransform_CopyRotationPart(this, srcBA);
 		
 		
 		/// <summary>
 		/// <para>Copy scale from another FTransform. </para>
 		/// </summary>
-		public void CopyScale3D(FTransform Other)
-			=> E_FTransform_CopyScale3D(this, Other);
+		public void CopyScale3D(FTransform other)
+			=> E_FTransform_CopyScale3D(this, other);
 		
 		
 		/// <summary>
 		/// <para>Copy translation from another FTransform. </para>
 		/// </summary>
-		public void CopyTranslation(FTransform Other)
-			=> E_FTransform_CopyTranslation(this, Other);
+		public void CopyTranslation(FTransform other)
+			=> E_FTransform_CopyTranslation(this, other);
 		
 		
 		/// <summary>
 		/// <para>Sets the Translation and Scale3D of this transformation from another transform </para>
 		/// <param name="SrcBA">The transform to copy translation and Scale3D from </param>
 		/// </summary>
-		public void CopyTranslationAndScale3D(FTransform SrcBA)
-			=> E_FTransform_CopyTranslationAndScale3D(this, SrcBA);
+		public void CopyTranslationAndScale3D(FTransform srcBA)
+			=> E_FTransform_CopyTranslationAndScale3D(this, srcBA);
 		
 		
 		/// <summary>
@@ -442,11 +470,11 @@ namespace UnrealEngine
 		public void DiagnosticCheckNaN_Translate()
 			=> E_FTransform_DiagnosticCheckNaN_Translate(this);
 		
-		public bool Equals(FTransform Other, float Tolerance)
-			=> E_FTransform_Equals(this, Other, Tolerance);
+		public bool Equals(FTransform other, float tolerance)
+			=> E_FTransform_Equals(this, other, tolerance);
 		
-		public bool EqualsNoScale(FTransform Other, float Tolerance)
-			=> E_FTransform_EqualsNoScale(this, Other, Tolerance);
+		public bool EqualsNoScale(FTransform other, float tolerance)
+			=> E_FTransform_EqualsNoScale(this, other, tolerance);
 		
 		
 		/// <summary>
@@ -472,11 +500,11 @@ namespace UnrealEngine
 		/// <para>GetRelativeTransform returns this*Other(-1) and parameter is Other(not Other(-1)) </para>
 		/// <para>GetRelativeTransformReverse returns this(-1)*Other, and parameter is Other. </para>
 		/// </summary>
-		public FTransform GetRelativeTransform(FTransform Other)
-			=> E_FTransform_GetRelativeTransform(this, Other);
+		public FTransform GetRelativeTransform(FTransform other)
+			=> E_FTransform_GetRelativeTransform(this, other);
 		
-		public FTransform GetRelativeTransformReverse(FTransform Other)
-			=> E_FTransform_GetRelativeTransformReverse(this, Other);
+		public FTransform GetRelativeTransformReverse(FTransform other)
+			=> E_FTransform_GetRelativeTransformReverse(this, other);
 		
 		
 		/// <summary>
@@ -486,8 +514,8 @@ namespace UnrealEngine
 		public FQuat GetRotation()
 			=> E_FTransform_GetRotation(this);
 		
-		public FVector GetSafeScaleReciprocal(FVector InScale, float Tolerance)
-			=> E_FTransform_GetSafeScaleReciprocal(this, InScale, Tolerance);
+		public FVector GetSafeScaleReciprocal(FVector inScale, float tolerance)
+			=> E_FTransform_GetSafeScaleReciprocal(this, inScale, tolerance);
 		
 		
 		/// <summary>
@@ -496,6 +524,12 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetScale3D()
 			=> E_FTransform_GetScale3D(this);
+		
+		public FTransform GetScaled(float scale)
+			=> E_FTransform_GetScaled(this, scale);
+		
+		public FTransform GetScaled(FVector scale)
+			=> E_FTransform_GetScaled_o1(this, scale);
 		
 		
 		/// <summary>
@@ -509,8 +543,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Acceptable form: "%f,%f,%f|%f,%f,%f|%f,%f,%f" </para>
 		/// </summary>
-		public bool InitFromString(string InSourceString)
-			=> E_FTransform_InitFromString(this, InSourceString);
+		public bool InitFromString(string inSourceString)
+			=> E_FTransform_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
@@ -523,30 +557,30 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Inverts the transform and then transforms V - correctly handles scaling in this transform. </para>
 		/// </summary>
-		public FVector InverseTransformPosition(FVector V)
-			=> E_FTransform_InverseTransformPosition(this, V);
+		public FVector InverseTransformPosition(FVector v)
+			=> E_FTransform_InverseTransformPosition(this, v);
 		
-		public FVector InverseTransformPositionNoScale(FVector V)
-			=> E_FTransform_InverseTransformPositionNoScale(this, V);
+		public FVector InverseTransformPositionNoScale(FVector v)
+			=> E_FTransform_InverseTransformPositionNoScale(this, v);
 		
 		
 		/// <summary>
 		/// <para>Inverse transform a rotation. </para>
 		/// <para>For example if this is a LocalToWorld transform, InverseTransformRotation(Q) would transform Q from world to local space. </para>
 		/// </summary>
-		public FQuat InverseTransformRotation(FQuat Q)
-			=> E_FTransform_InverseTransformRotation(this, Q);
+		public FQuat InverseTransformRotation(FQuat q)
+			=> E_FTransform_InverseTransformRotation(this, q);
 		
 		
 		/// <summary>
 		/// <para>Transform a direction vector by the inverse of this matrix - will not take into account translation part. </para>
 		/// <para>If you want to transform a surface normal (or plane) and correctly account for non-uniform scaling you should use TransformByUsingAdjointT with adjoint of matrix inverse. </para>
 		/// </summary>
-		public FVector InverseTransformVector(FVector V)
-			=> E_FTransform_InverseTransformVector(this, V);
+		public FVector InverseTransformVector(FVector v)
+			=> E_FTransform_InverseTransformVector(this, v);
 		
-		public FVector InverseTransformVectorNoScale(FVector V)
-			=> E_FTransform_InverseTransformVectorNoScale(this, V);
+		public FVector InverseTransformVectorNoScale(FVector v)
+			=> E_FTransform_InverseTransformVectorNoScale(this, v);
 		
 		
 		/// <summary>
@@ -559,16 +593,16 @@ namespace UnrealEngine
 		public bool IsValid()
 			=> E_FTransform_IsValid(this);
 		
-		public void Multiply(FTransform OutTransform, FTransform A, FTransform B)
-			=> E_FTransform_Multiply(this, OutTransform, A, B);
+		public void Multiply(FTransform outTransform, FTransform a, FTransform b)
+			=> E_FTransform_Multiply(this, outTransform, a, b);
 		
 		
 		/// <summary>
 		/// <para>Scales the Scale3D component by a new factor </para>
 		/// <param name="Scale3DMultiplier">The value to multiply Scale3D with </param>
 		/// </summary>
-		public void MultiplyScale3D(FVector Scale3DMultiplier)
-			=> E_FTransform_MultiplyScale3D(this, Scale3DMultiplier);
+		public void MultiplyScale3D(FVector scale3DMultiplier)
+			=> E_FTransform_MultiplyScale3D(this, scale3DMultiplier);
 		
 		
 		/// <summary>
@@ -577,17 +611,23 @@ namespace UnrealEngine
 		public void NormalizeRotation()
 			=> E_FTransform_NormalizeRotation(this);
 		
-		public void RemoveScaling(float Tolerance)
-			=> E_FTransform_RemoveScaling(this, Tolerance);
+		public void RemoveScaling(float tolerance)
+			=> E_FTransform_RemoveScaling(this, tolerance);
 		
-		public bool RotationEquals(FTransform Other, float Tolerance)
-			=> E_FTransform_RotationEquals(this, Other, Tolerance);
+		public bool RotationEquals(FTransform other, float tolerance)
+			=> E_FTransform_RotationEquals(this, other, tolerance);
 		
 		public FRotator Rotator()
 			=> E_FTransform_Rotator(this);
 		
-		public bool Scale3DEquals(FTransform Other, float Tolerance)
-			=> E_FTransform_Scale3DEquals(this, Other, Tolerance);
+		public bool Scale3DEquals(FTransform other, float tolerance)
+			=> E_FTransform_Scale3DEquals(this, other, tolerance);
+		
+		public void ScaleTranslation(FVector inScale3D)
+			=> E_FTransform_ScaleTranslation(this, inScale3D);
+		
+		public void ScaleTranslation(float scale)
+			=> E_FTransform_ScaleTranslation_o1(this, scale);
 		
 		
 		/// <summary>
@@ -596,8 +636,8 @@ namespace UnrealEngine
 		/// <param name="InTranslation">The new value for the Translation component </param>
 		/// <param name="InScale3D">The new value for the Scale3D component </param>
 		/// </summary>
-		public void SetComponents(FQuat InRotation, FVector InTranslation, FVector InScale3D)
-			=> E_FTransform_SetComponents(this, InRotation, InTranslation, InScale3D);
+		public void SetComponents(FQuat inRotation, FVector inTranslation, FVector inScale3D)
+			=> E_FTransform_SetComponents(this, inRotation, inTranslation, inScale3D);
 		
 		
 		/// <summary>
@@ -613,40 +653,40 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Set the translation of this transformation </para>
 		/// </summary>
-		public void SetLocation(FVector Origin)
-			=> E_FTransform_SetLocation(this, Origin);
+		public void SetLocation(FVector origin)
+			=> E_FTransform_SetLocation(this, origin);
 		
 		
 		/// <summary>
 		/// <para>Sets the rotation component </para>
 		/// <param name="NewRotation">The new value for the rotation component </param>
 		/// </summary>
-		public void SetRotation(FQuat NewRotation)
-			=> E_FTransform_SetRotation(this, NewRotation);
+		public void SetRotation(FQuat newRotation)
+			=> E_FTransform_SetRotation(this, newRotation);
 		
 		
 		/// <summary>
 		/// <para>Sets the Scale3D component </para>
 		/// <param name="NewScale3D">The new value for the Scale3D component </param>
 		/// </summary>
-		public void SetScale3D(FVector NewScale3D)
-			=> E_FTransform_SetScale3D(this, NewScale3D);
+		public void SetScale3D(FVector newScale3D)
+			=> E_FTransform_SetScale3D(this, newScale3D);
 		
 		
 		/// <summary>
 		/// <para>Set current transform and the relative to ParentTransform. </para>
 		/// <para>Equates to This = This->GetRelativeTransform(Parent), but saves the intermediate FTransform storage and copy. </para>
 		/// </summary>
-		public void SetToRelativeTransform(FTransform ParentTransform)
-			=> E_FTransform_SetToRelativeTransform(this, ParentTransform);
+		public void SetToRelativeTransform(FTransform parentTransform)
+			=> E_FTransform_SetToRelativeTransform(this, parentTransform);
 		
 		
 		/// <summary>
 		/// <para>Sets the translation component </para>
 		/// <param name="NewTranslation">The new value for the translation component </param>
 		/// </summary>
-		public void SetTranslation(FVector NewTranslation)
-			=> E_FTransform_SetTranslation(this, NewTranslation);
+		public void SetTranslation(FVector newTranslation)
+			=> E_FTransform_SetTranslation(this, newTranslation);
 		
 		
 		/// <summary>
@@ -654,16 +694,16 @@ namespace UnrealEngine
 		/// <param name="NewTranslation">The new value for the translation component </param>
 		/// <param name="NewScale3D">The new value for the Scale3D component </param>
 		/// </summary>
-		public void SetTranslationAndScale3D(FVector NewTranslation, FVector NewScale3D)
-			=> E_FTransform_SetTranslationAndScale3D(this, NewTranslation, NewScale3D);
+		public void SetTranslationAndScale3D(FVector newTranslation, FVector newScale3D)
+			=> E_FTransform_SetTranslationAndScale3D(this, newTranslation, newScale3D);
 		
 		
 		/// <summary>
 		/// <para>Subtract translations from two FTransforms and return the difference. </para>
 		/// <return>A.Translation - B.Translation. </return>
 		/// </summary>
-		public FVector SubtractTranslations(FTransform A, FTransform B)
-			=> E_FTransform_SubtractTranslations(this, A, B);
+		public FVector SubtractTranslations(FTransform a, FTransform b)
+			=> E_FTransform_SubtractTranslations(this, a, b);
 		
 		
 		/// <summary>
@@ -675,40 +715,40 @@ namespace UnrealEngine
 		public override string ToString()
 			=> E_FTransform_ToString(this);
 		
-		public FVector4 TransformFVector4(FVector4 V)
-			=> E_FTransform_TransformFVector4(this, V);
+		public FVector4 TransformFVector4(FVector4 v)
+			=> E_FTransform_TransformFVector4(this, v);
 		
-		public FVector4 TransformFVector4NoScale(FVector4 V)
-			=> E_FTransform_TransformFVector4NoScale(this, V);
+		public FVector4 TransformFVector4NoScale(FVector4 v)
+			=> E_FTransform_TransformFVector4NoScale(this, v);
 		
-		public FVector TransformPosition(FVector V)
-			=> E_FTransform_TransformPosition(this, V);
+		public FVector TransformPosition(FVector v)
+			=> E_FTransform_TransformPosition(this, v);
 		
-		public FVector TransformPositionNoScale(FVector V)
-			=> E_FTransform_TransformPositionNoScale(this, V);
+		public FVector TransformPositionNoScale(FVector v)
+			=> E_FTransform_TransformPositionNoScale(this, v);
 		
 		
 		/// <summary>
 		/// <para>Transform a rotation. </para>
 		/// <para>For example if this is a LocalToWorld transform, TransformRotation(Q) would transform Q from local to world space. </para>
 		/// </summary>
-		public FQuat TransformRotation(FQuat Q)
-			=> E_FTransform_TransformRotation(this, Q);
+		public FQuat TransformRotation(FQuat q)
+			=> E_FTransform_TransformRotation(this, q);
 		
-		public FVector TransformVector(FVector V)
-			=> E_FTransform_TransformVector(this, V);
+		public FVector TransformVector(FVector v)
+			=> E_FTransform_TransformVector(this, v);
 		
-		public FVector TransformVectorNoScale(FVector V)
-			=> E_FTransform_TransformVectorNoScale(this, V);
+		public FVector TransformVectorNoScale(FVector v)
+			=> E_FTransform_TransformVectorNoScale(this, v);
 		
-		public bool TranslationEquals(FTransform Other, float Tolerance)
-			=> E_FTransform_TranslationEquals(this, Other, Tolerance);
+		public bool TranslationEquals(FTransform other, float tolerance)
+			=> E_FTransform_TranslationEquals(this, other, tolerance);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FTransform Self)
+		public static implicit operator IntPtr(FTransform self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FTransform(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -49,154 +51,154 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_AddControllerPitchInput(IntPtr Self, float Val);
+		private static extern void E_APawn_AddControllerPitchInput(IntPtr self, float val);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_AddControllerRollInput(IntPtr Self, float Val);
+		private static extern void E_APawn_AddControllerRollInput(IntPtr self, float val);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_AddControllerYawInput(IntPtr Self, float Val);
+		private static extern void E_APawn_AddControllerYawInput(IntPtr self, float val);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_AddMovementInput(IntPtr Self, IntPtr WorldDirection, float ScaleValue, bool bForce);
+		private static extern void E_APawn_AddMovementInput(IntPtr self, IntPtr worldDirection, float scaleValue, bool bForce);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_ConsumeMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_ConsumeMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_DestroyPlayerInputComponent(IntPtr Self);
+		private static extern void E_APawn_DestroyPlayerInputComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_DetachFromControllerPendingDestroy(IntPtr Self);
+		private static extern void E_APawn_DetachFromControllerPendingDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_FaceRotation(IntPtr Self, IntPtr NewControlRotation, float DeltaTime);
+		private static extern void E_APawn_FaceRotation(IntPtr self, IntPtr newControlRotation, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetBaseAimRotation(IntPtr Self);
+		private static extern IntPtr E_APawn_GetBaseAimRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetControlRotation(IntPtr Self);
+		private static extern IntPtr E_APawn_GetControlRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_APawn_GetDefaultHalfHeight(IntPtr Self);
+		private static extern float E_APawn_GetDefaultHalfHeight(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetGravityDirection(IntPtr Self);
+		private static extern IntPtr E_APawn_GetGravityDirection(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_GetLastMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_APawn_GetMovementBase(IntPtr Self);
+		private static extern ObjectPointerDescription E_APawn_GetMovementBase(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr Self, IntPtr Pawn);
+		private static extern ObjectPointerDescription E_APawn_GetMovementBaseActor(IntPtr self, IntPtr pawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_APawn_GetMovementComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_APawn_GetMovementComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_APawn_GetPawnNoiseEmitterComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_APawn_GetPawnNoiseEmitterComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetPawnViewLocation(IntPtr Self);
+		private static extern IntPtr E_APawn_GetPawnViewLocation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetPendingMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_GetPendingMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_GetViewRotation(IntPtr Self);
+		private static extern IntPtr E_APawn_GetViewRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_InFreeCam(IntPtr Self);
+		private static extern bool E_APawn_InFreeCam(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_InputEnabled(IntPtr Self);
+		private static extern bool E_APawn_InputEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_Internal_AddMovementInput(IntPtr Self, IntPtr WorldAccel, bool bForce);
+		private static extern void E_APawn_Internal_AddMovementInput(IntPtr self, IntPtr worldAccel, bool bForce);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_Internal_ConsumeMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_Internal_ConsumeMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_Internal_GetLastMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_Internal_GetLastMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_Internal_GetPendingMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_Internal_GetPendingMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_IsControlled(IntPtr Self);
+		private static extern bool E_APawn_IsControlled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_IsLocallyControlled(IntPtr Self);
+		private static extern bool E_APawn_IsLocallyControlled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_IsMoveInputIgnored(IntPtr Self);
+		private static extern bool E_APawn_IsMoveInputIgnored(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_IsPlayerControlled(IntPtr Self);
+		private static extern bool E_APawn_IsPlayerControlled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_APawn_K2_GetMovementInputVector(IntPtr Self);
+		private static extern IntPtr E_APawn_K2_GetMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_LaunchPawn(IntPtr Self, IntPtr LaunchVelocity, bool bXYOverride, bool bZOverride);
+		private static extern void E_APawn_LaunchPawn(IntPtr self, IntPtr launchVelocity, bool bXYOverride, bool bZOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_MoveIgnoreActorAdd(IntPtr Self, IntPtr ActorToIgnore);
+		private static extern void E_APawn_MoveIgnoreActorAdd(IntPtr self, IntPtr actorToIgnore);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_MoveIgnoreActorRemove(IntPtr Self, IntPtr ActorToIgnore);
+		private static extern void E_APawn_MoveIgnoreActorRemove(IntPtr self, IntPtr actorToIgnore);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_OnRep_Controller(IntPtr Self);
+		private static extern void E_APawn_OnRep_Controller(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_OnRep_PlayerState(IntPtr Self);
+		private static extern void E_APawn_OnRep_PlayerState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_PawnClientRestart(IntPtr Self);
+		private static extern void E_APawn_PawnClientRestart(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_PawnMakeNoise(IntPtr Self, float Loudness, IntPtr NoiseLocation, bool bUseNoiseMakerLocation, IntPtr NoiseMaker);
+		private static extern void E_APawn_PawnMakeNoise(IntPtr self, float loudness, IntPtr noiseLocation, bool bUseNoiseMakerLocation, IntPtr noiseMaker);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_PawnStartFire(IntPtr Self, byte FireModeNum);
+		private static extern void E_APawn_PawnStartFire(IntPtr self, byte fireModeNum);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APawn_ReachedDesiredRotation(IntPtr Self);
+		private static extern bool E_APawn_ReachedDesiredRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_RecalculateBaseEyeHeight(IntPtr Self);
+		private static extern void E_APawn_RecalculateBaseEyeHeight(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_Restart(IntPtr Self);
+		private static extern void E_APawn_Restart(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_SetCanAffectNavigationGeneration(IntPtr Self, bool bNewValue, bool bForceUpdate);
+		private static extern void E_APawn_SetCanAffectNavigationGeneration(IntPtr self, bool bNewValue, bool bForceUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_SetPlayerDefaults(IntPtr Self);
+		private static extern void E_APawn_SetPlayerDefaults(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_SetRemoteViewPitch(IntPtr Self, float NewRemoteViewPitch);
+		private static extern void E_APawn_SetRemoteViewPitch(IntPtr self, float newRemoteViewPitch);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_SpawnDefaultController(IntPtr Self);
+		private static extern void E_APawn_SpawnDefaultController(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_TurnOff(IntPtr Self);
+		private static extern void E_APawn_TurnOff(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_UnPossessed(IntPtr Self);
+		private static extern void E_APawn_UnPossessed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_UpdateNavAgent(IntPtr Self);
+		private static extern void E_APawn_UpdateNavAgent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APawn_UpdateNavigationRelevance(IntPtr Self);
+		private static extern void E_APawn_UpdateNavigationRelevance(IntPtr self);
 		
 		#endregion
 		
@@ -259,8 +261,8 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Pitch. This value is multiplied by the PlayerController's InputPitchScale value. </param>
 		/// <para>@see PlayerController::InputPitchScale </para>
 		/// </summary>
-		public virtual void AddControllerPitchInput(float Val)
-			=> E_APawn_AddControllerPitchInput(this, Val);
+		public virtual void AddControllerPitchInput(float val)
+			=> E_APawn_AddControllerPitchInput(this, val);
 		
 		
 		/// <summary>
@@ -269,8 +271,8 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Roll. This value is multiplied by the PlayerController's InputRollScale value. </param>
 		/// <para>@see PlayerController::InputRollScale </para>
 		/// </summary>
-		public virtual void AddControllerRollInput(float Val)
-			=> E_APawn_AddControllerRollInput(this, Val);
+		public virtual void AddControllerRollInput(float val)
+			=> E_APawn_AddControllerRollInput(this, val);
 		
 		
 		/// <summary>
@@ -279,8 +281,8 @@ namespace UnrealEngine
 		/// <param name="Val">Amount to add to Yaw. This value is multiplied by the PlayerController's InputYawScale value. </param>
 		/// <para>@see PlayerController::InputYawScale </para>
 		/// </summary>
-		public virtual void AddControllerYawInput(float Val)
-			=> E_APawn_AddControllerYawInput(this, Val);
+		public virtual void AddControllerYawInput(float val)
+			=> E_APawn_AddControllerYawInput(this, val);
 		
 		
 		/// <summary>
@@ -291,8 +293,8 @@ namespace UnrealEngine
 		/// <param name="bForce">If true always add the input, ignoring the result of IsMoveInputIgnored(). </param>
 		/// <para>@see GetPendingMovementInputVector(), GetLastMovementInputVector(), ConsumeMovementInputVector() </para>
 		/// </summary>
-		public virtual void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
-			=> E_APawn_AddMovementInput(this, WorldDirection, ScaleValue, bForce);
+		public virtual void AddMovementInput(FVector worldDirection, float scaleValue, bool bForce)
+			=> E_APawn_AddMovementInput(this, worldDirection, scaleValue, bForce);
 		
 		
 		/// <summary>
@@ -322,8 +324,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Updates Pawn's rotation to the given rotation, assumed to be the Controller's ControlRotation. Respects the bUseControllerRotation* settings. </para>
 		/// </summary>
-		public virtual void FaceRotation(FRotator NewControlRotation, float DeltaTime)
-			=> E_APawn_FaceRotation(this, NewControlRotation, DeltaTime);
+		public virtual void FaceRotation(FRotator newControlRotation, float deltaTime)
+			=> E_APawn_FaceRotation(this, newControlRotation, deltaTime);
 		
 		
 		/// <summary>
@@ -378,8 +380,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Gets the owning actor of the Movement Base Component on which the pawn is standing. </para>
 		/// </summary>
-		public AActor GetMovementBaseActor(APawn Pawn)
-			=> E_APawn_GetMovementBaseActor(this, Pawn);
+		public AActor GetMovementBaseActor(APawn pawn)
+			=> E_APawn_GetMovementBaseActor(this, pawn);
 		
 		
 		/// <summary>
@@ -439,8 +441,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Internal function meant for use only within Pawn or by a PawnMovementComponent. Adds movement input if not ignored, or if forced. </para>
 		/// </summary>
-		public void Internal_AddMovementInput(FVector WorldAccel, bool bForce = false)
-			=> E_APawn_Internal_AddMovementInput(this, WorldAccel, bForce);
+		public void Internal_AddMovementInput(FVector worldAccel, bool bForce = false)
+			=> E_APawn_Internal_AddMovementInput(this, worldAccel, bForce);
 		
 		
 		/// <summary>
@@ -502,22 +504,22 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>(Deprecated) Launch Character with LaunchVelocity </para>
 		/// </summary>
-		public void LaunchPawn(FVector LaunchVelocity, bool bXYOverride, bool bZOverride)
-			=> E_APawn_LaunchPawn(this, LaunchVelocity, bXYOverride, bZOverride);
+		public void LaunchPawn(FVector launchVelocity, bool bXYOverride, bool bZOverride)
+			=> E_APawn_LaunchPawn(this, launchVelocity, bXYOverride, bZOverride);
 		
 		
 		/// <summary>
 		/// <para>Add an Actor to ignore by Pawn's movement collision </para>
 		/// </summary>
-		public void MoveIgnoreActorAdd(AActor ActorToIgnore)
-			=> E_APawn_MoveIgnoreActorAdd(this, ActorToIgnore);
+		public void MoveIgnoreActorAdd(AActor actorToIgnore)
+			=> E_APawn_MoveIgnoreActorAdd(this, actorToIgnore);
 		
 		
 		/// <summary>
 		/// <para>Remove an Actor to ignore by Pawn's movement collision </para>
 		/// </summary>
-		public void MoveIgnoreActorRemove(AActor ActorToIgnore)
-			=> E_APawn_MoveIgnoreActorRemove(this, ActorToIgnore);
+		public void MoveIgnoreActorRemove(AActor actorToIgnore)
+			=> E_APawn_MoveIgnoreActorRemove(this, actorToIgnore);
 		
 		public virtual void OnRep_Controller()
 			=> E_APawn_OnRep_Controller(this);
@@ -541,15 +543,15 @@ namespace UnrealEngine
 		/// <param name="bUseNoiseMakerLocation">If true, use the location of the NoiseMaker rather than NoiseLocation.  If false, use NoiseLocation. </param>
 		/// <param name="NoiseMaker">Which actor is the source of the noise.  Not to be confused with the Noise Instigator, which is responsible for the noise (and is the pawn on which this function is called).  If not specified, the pawn instigating the noise will be used as the NoiseMaker </param>
 		/// </summary>
-		public void PawnMakeNoise(float Loudness, FVector NoiseLocation, bool bUseNoiseMakerLocation = true, AActor NoiseMaker = null)
-			=> E_APawn_PawnMakeNoise(this, Loudness, NoiseLocation, bUseNoiseMakerLocation, NoiseMaker);
+		public void PawnMakeNoise(float loudness, FVector noiseLocation, bool bUseNoiseMakerLocation = true, AActor noiseMaker = null)
+			=> E_APawn_PawnMakeNoise(this, loudness, noiseLocation, bUseNoiseMakerLocation, noiseMaker);
 		
 		
 		/// <summary>
 		/// <para>Handle StartFire() passed from PlayerController </para>
 		/// </summary>
-		public virtual void PawnStartFire(byte FireModeNum)
-			=> E_APawn_PawnStartFire(this, FireModeNum);
+		public virtual void PawnStartFire(byte fireModeNum)
+			=> E_APawn_PawnStartFire(this, fireModeNum);
 		
 		
 		/// <summary>
@@ -593,8 +595,8 @@ namespace UnrealEngine
 		/// <para>Maps 360.0 degrees into a byte </para>
 		/// <param name="NewRemoteViewPitch">Pitch component to replicate to remote (non owned) clients. </param>
 		/// </summary>
-		public void SetRemoteViewPitch(float NewRemoteViewPitch)
-			=> E_APawn_SetRemoteViewPitch(this, NewRemoteViewPitch);
+		public void SetRemoteViewPitch(float newRemoteViewPitch)
+			=> E_APawn_SetRemoteViewPitch(this, newRemoteViewPitch);
 		
 		
 		/// <summary>
@@ -633,9 +635,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(APawn Self)
+		public static implicit operator IntPtr(APawn self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator APawn(ObjectPointerDescription PtrDesc)

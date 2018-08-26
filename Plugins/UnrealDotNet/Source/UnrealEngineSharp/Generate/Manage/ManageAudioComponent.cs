@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,7 +23,7 @@ namespace UnrealEngine
 		/// <param name="FadeInDuration">how long it should take to reach the FadeVolumeLevel </param>
 		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume to fade to </param>
 		/// </summary>
-		public override void FadeIn(float FadeInDuration, float FadeVolumeLevel, float StartTime) { }
+		public override void FadeIn(float fadeInDuration, float fadeVolumeLevel, float startTime) { }
 		
 		
 		/// <summary>
@@ -32,13 +34,13 @@ namespace UnrealEngine
 		/// <param name="FadeOutDuration">how long it should take to reach the FadeVolumeLevel </param>
 		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume in which to fade to </param>
 		/// </summary>
-		public override void FadeOut(float FadeOutDuration, float FadeVolumeLevel) { }
+		public override void FadeOut(float fadeOutDuration, float fadeVolumeLevel) { }
 		
 		
 		/// <summary>
 		/// <para>Start a sound playing on an audio component </para>
 		/// </summary>
-		public override void Play(float StartTime) { }
+		public override void Play(float startTime) { }
 		
 		
 		/// <summary>
@@ -46,9 +48,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void Stop() { }
 		
-		public static implicit operator IntPtr(ManageAudioComponent Self)
+		public static implicit operator IntPtr(ManageAudioComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageAudioComponent(ObjectPointerDescription PtrDesc)

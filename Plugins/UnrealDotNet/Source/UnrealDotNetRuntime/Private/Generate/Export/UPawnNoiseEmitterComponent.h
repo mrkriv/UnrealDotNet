@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -37,7 +39,7 @@ extern "C"
 	{
 		auto _p0 = NoiseMaker;
 		auto _p1 = Loudness;
-		auto _p2 = *(FVector*)NoiseLocation;
+		auto& _p2 = *(FVector*)NoiseLocation;
 		Self->MakeNoise(_p0, _p1, _p2);
 	}
 

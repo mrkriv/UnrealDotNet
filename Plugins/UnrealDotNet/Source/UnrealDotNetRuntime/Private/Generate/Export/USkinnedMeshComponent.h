@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -9,6 +11,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_ActiveMorphTargets_GET(USkinnedMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActiveMorphTargets); }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ActiveMorphTargets_SET(USkinnedMeshComponent* Ptr, INT_PTR Value) { Ptr->ActiveMorphTargets = *(TArray<FActiveMorphTarget>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(USkinnedMeshComponent* Ptr) { return Ptr->bCanHighlightSelectedSections; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bCanHighlightSelectedSections = Value; }
 	
@@ -45,6 +50,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bHideSkin_GET(USkinnedMeshComponent* Ptr) { return Ptr->bHideSkin; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bHideSkin_SET(USkinnedMeshComponent* Ptr, uint8 Value) { Ptr->bHideSkin = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_BoneVisibilityStates_GET(USkinnedMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->BoneVisibilityStates); }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_BoneVisibilityStates_SET(USkinnedMeshComponent* Ptr, INT_PTR Value) { Ptr->BoneVisibilityStates = *(TArray<uint8>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_bOverrideMinLod_GET(USkinnedMeshComponent* Ptr) { return Ptr->bOverrideMinLod; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_bOverrideMinLod_SET(USkinnedMeshComponent* Ptr, bool Value) { Ptr->bOverrideMinLod = Value; }
 	
@@ -66,11 +74,17 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->ForcedLodModel; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->ForcedLodModel = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_LODInfo_GET(USkinnedMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->LODInfo); }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_LODInfo_SET(USkinnedMeshComponent* Ptr, INT_PTR Value) { Ptr->LODInfo = *(TArray<FSkelMeshComponentLODInfo>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(USkinnedMeshComponent* Ptr) { return Ptr->MaxDistanceFactor; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(USkinnedMeshComponent* Ptr, float Value) { Ptr->MaxDistanceFactor = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MinLodModel_GET(USkinnedMeshComponent* Ptr) { return Ptr->MinLodModel; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MinLodModel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->MinLodModel = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_MorphTargetWeights_GET(USkinnedMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->MorphTargetWeights); }
+	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_MorphTargetWeights_SET(USkinnedMeshComponent* Ptr, INT_PTR Value) { Ptr->MorphTargetWeights = *(TArray<float>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(USkinnedMeshComponent* Ptr) { return Ptr->OldPredictedLODLevel; }
 	DOTNET_EXPORT void E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_SET(USkinnedMeshComponent* Ptr, int32 Value) { Ptr->OldPredictedLODLevel = Value; }
@@ -116,6 +130,11 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetBoneName(_p0));
 	}
 
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetMasterBoneMap(USkinnedMeshComponent* Self)
+	{
+		return ConvertToManage_TemplatePointerDescription(Self->GetMasterBoneMap());
+	}
+
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetNumBones(USkinnedMeshComponent* Self)
 	{
 		return Self->GetNumBones();
@@ -130,6 +149,11 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);
 		return ConvertToManage_StringWrapper(Self->GetParentBone(_p0));
+	}
+
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetRefPoseOverride(USkinnedMeshComponent* Self)
+	{
+		return (INT_PTR) const_cast<FSkelMeshRefPoseOverride*>(Self->GetRefPoseOverride());
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_GetSocketBoneName(USkinnedMeshComponent* Self, char* InSocketName)
@@ -172,6 +196,12 @@ extern "C"
 	{
 		auto _p0 = InNewMinLOD;
 		Self->SetMinLOD(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_SetRefPoseOverride(USkinnedMeshComponent* Self, INT_PTR NewRefPoseTransforms)
+	{
+		auto& _p0 = *(const TArray<FTransform>*)NewRefPoseTransforms;
+		Self->SetRefPoseOverride(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USkinnedMeshComponent_ShouldCPUSkin(USkinnedMeshComponent* Self)

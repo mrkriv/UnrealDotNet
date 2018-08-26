@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,49 +26,49 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UCapsuleComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetScaledCapsuleHalfHeight(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetScaledCapsuleHalfHeight(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetScaledCapsuleHalfHeight_WithoutHemisphere(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetScaledCapsuleHalfHeight_WithoutHemisphere(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetScaledCapsuleRadius(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetScaledCapsuleRadius(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_GetScaledCapsuleSize(IntPtr Self, float OutRadius, float OutHalfHeight);
+		private static extern void E_UCapsuleComponent_GetScaledCapsuleSize(IntPtr self, float outRadius, float outHalfHeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(IntPtr Self, float OutRadius, float OutHalfHeightWithoutHemisphere);
+		private static extern void E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(IntPtr self, float outRadius, float outHalfHeightWithoutHemisphere);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetShapeScale(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetShapeScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight_WithoutHemisphere(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight_WithoutHemisphere(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleRadius(IntPtr Self);
+		private static extern float E_UCapsuleComponent_GetUnscaledCapsuleRadius(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_GetUnscaledCapsuleSize(IntPtr Self, float OutRadius, float OutHalfHeight);
+		private static extern void E_UCapsuleComponent_GetUnscaledCapsuleSize(IntPtr self, float outRadius, float outHalfHeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(IntPtr Self, float OutRadius, float OutHalfHeightWithoutHemisphere);
+		private static extern void E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(IntPtr self, float outRadius, float outHalfHeightWithoutHemisphere);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_InitCapsuleSize(IntPtr Self, float InRadius, float InHalfHeight);
+		private static extern void E_UCapsuleComponent_InitCapsuleSize(IntPtr self, float inRadius, float inHalfHeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_SetCapsuleHalfHeight(IntPtr Self, float HalfHeight, bool bUpdateOverlaps);
+		private static extern void E_UCapsuleComponent_SetCapsuleHalfHeight(IntPtr self, float halfHeight, bool bUpdateOverlaps);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_SetCapsuleRadius(IntPtr Self, float Radius, bool bUpdateOverlaps);
+		private static extern void E_UCapsuleComponent_SetCapsuleRadius(IntPtr self, float radius, bool bUpdateOverlaps);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCapsuleComponent_SetCapsuleSize(IntPtr Self, float InRadius, float InHalfHeight, bool bUpdateOverlaps);
+		private static extern void E_UCapsuleComponent_SetCapsuleSize(IntPtr self, float inRadius, float inHalfHeight, bool bUpdateOverlaps);
 		
 		#endregion
 		
@@ -103,8 +105,8 @@ namespace UnrealEngine
 		/// <param name="OutHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap. </param>
 		/// <return>The capsule radius and half-height scaled by the component scale. </return>
 		/// </summary>
-		public void GetScaledCapsuleSize(float OutRadius, float OutHalfHeight)
-			=> E_UCapsuleComponent_GetScaledCapsuleSize(this, OutRadius, OutHalfHeight);
+		public void GetScaledCapsuleSize(float outRadius, float outHalfHeight)
+			=> E_UCapsuleComponent_GetScaledCapsuleSize(this, outRadius, outHalfHeight);
 		
 		
 		/// <summary>
@@ -113,8 +115,8 @@ namespace UnrealEngine
 		/// <param name="OutHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap. </param>
 		/// <return>The capsule radius and half-height scaled by the component scale. </return>
 		/// </summary>
-		public void GetScaledCapsuleSize_WithoutHemisphere(float OutRadius, float OutHalfHeightWithoutHemisphere)
-			=> E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(this, OutRadius, OutHalfHeightWithoutHemisphere);
+		public void GetScaledCapsuleSize_WithoutHemisphere(float outRadius, float outHalfHeightWithoutHemisphere)
+			=> E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(this, outRadius, outHalfHeightWithoutHemisphere);
 		
 		
 		/// <summary>
@@ -156,8 +158,8 @@ namespace UnrealEngine
 		/// <param name="OutHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap. </param>
 		/// <return>The capsule radius and half-height scaled by the component scale. </return>
 		/// </summary>
-		public void GetUnscaledCapsuleSize(float OutRadius, float OutHalfHeight)
-			=> E_UCapsuleComponent_GetUnscaledCapsuleSize(this, OutRadius, OutHalfHeight);
+		public void GetUnscaledCapsuleSize(float outRadius, float outHalfHeight)
+			=> E_UCapsuleComponent_GetUnscaledCapsuleSize(this, outRadius, outHalfHeight);
 		
 		
 		/// <summary>
@@ -166,11 +168,11 @@ namespace UnrealEngine
 		/// <param name="OutHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap. </param>
 		/// <return>The capsule radius and half-height (excluding hemisphere end cap), ignoring component scaling. </return>
 		/// </summary>
-		public void GetUnscaledCapsuleSize_WithoutHemisphere(float OutRadius, float OutHalfHeightWithoutHemisphere)
-			=> E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(this, OutRadius, OutHalfHeightWithoutHemisphere);
+		public void GetUnscaledCapsuleSize_WithoutHemisphere(float outRadius, float outHalfHeightWithoutHemisphere)
+			=> E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(this, outRadius, outHalfHeightWithoutHemisphere);
 		
-		public void InitCapsuleSize(float InRadius, float InHalfHeight)
-			=> E_UCapsuleComponent_InitCapsuleSize(this, InRadius, InHalfHeight);
+		public void InitCapsuleSize(float inRadius, float inHalfHeight)
+			=> E_UCapsuleComponent_InitCapsuleSize(this, inRadius, inHalfHeight);
 		
 		
 		/// <summary>
@@ -179,8 +181,8 @@ namespace UnrealEngine
 		/// <param name="HalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
 		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
-		public void SetCapsuleHalfHeight(float HalfHeight, bool bUpdateOverlaps = true)
-			=> E_UCapsuleComponent_SetCapsuleHalfHeight(this, HalfHeight, bUpdateOverlaps);
+		public void SetCapsuleHalfHeight(float halfHeight, bool bUpdateOverlaps = true)
+			=> E_UCapsuleComponent_SetCapsuleHalfHeight(this, halfHeight, bUpdateOverlaps);
 		
 		
 		/// <summary>
@@ -189,8 +191,8 @@ namespace UnrealEngine
 		/// <param name="Radius">radius of end-cap hemispheres and center cylinder. </param>
 		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
-		public void SetCapsuleRadius(float Radius, bool bUpdateOverlaps = true)
-			=> E_UCapsuleComponent_SetCapsuleRadius(this, Radius, bUpdateOverlaps);
+		public void SetCapsuleRadius(float radius, bool bUpdateOverlaps = true)
+			=> E_UCapsuleComponent_SetCapsuleRadius(this, radius, bUpdateOverlaps);
 		
 		
 		/// <summary>
@@ -199,14 +201,14 @@ namespace UnrealEngine
 		/// <param name="InHalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
 		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
-		public void SetCapsuleSize(float InRadius, float InHalfHeight, bool bUpdateOverlaps = true)
-			=> E_UCapsuleComponent_SetCapsuleSize(this, InRadius, InHalfHeight, bUpdateOverlaps);
+		public void SetCapsuleSize(float inRadius, float inHalfHeight, bool bUpdateOverlaps = true)
+			=> E_UCapsuleComponent_SetCapsuleSize(this, inRadius, inHalfHeight, bUpdateOverlaps);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UCapsuleComponent Self)
+		public static implicit operator IntPtr(UCapsuleComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UCapsuleComponent(ObjectPointerDescription PtrDesc)

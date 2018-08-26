@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -50,10 +52,10 @@ extern "C"
 	{
 		auto _p0 = TimeNow;
 		auto _p1 = Delta;
-		auto _p2 = *(FHitResult*)HitResult;
+		auto& _p2 = *(FHitResult*)HitResult;
 		auto _p3 = InBroadcastEvent;
-		auto _p4 = OutStopped;
-		auto _p5 = OutTimeRemainder;
+		auto& _p4 = OutStopped;
+		auto& _p5 = OutTimeRemainder;
 		return ((E_PROTECTED_WRAP_UInterpToMovementComponent*)Self)->CalculateNewTime_WRAP(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
@@ -65,15 +67,15 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UInterpToMovementComponent_HandleHitWall(UInterpToMovementComponent* Self, INT_PTR Hit, float TimeTick, INT_PTR MoveDelta)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = TimeTick;
-		auto _p2 = *(FVector*)MoveDelta;
+		auto& _p2 = *(FVector*)MoveDelta;
 		return ((E_PROTECTED_WRAP_UInterpToMovementComponent*)Self)->HandleHitWall_WRAP(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UInterpToMovementComponent_ReverseDirection(UInterpToMovementComponent* Self, INT_PTR Hit, float Time, bool InBroadcastEvent)
 	{
-		auto _p0 = *(FHitResult*)Hit;
+		auto& _p0 = *(FHitResult*)Hit;
 		auto _p1 = Time;
 		auto _p2 = InBroadcastEvent;
 		((E_PROTECTED_WRAP_UInterpToMovementComponent*)Self)->ReverseDirection_WRAP(_p0, _p1, _p2);

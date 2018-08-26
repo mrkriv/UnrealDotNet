@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,13 +23,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSplineCurves();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FSplineCurves_GetSegmentLength(IntPtr Self, int Index, float Param, bool bClosedLoop, IntPtr Scale3D);
+		private static extern float E_FSplineCurves_GetSegmentLength(IntPtr self, int index, float param, bool bClosedLoop, IntPtr scale3D);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FSplineCurves_GetSplineLength(IntPtr Self);
+		private static extern float E_FSplineCurves_GetSplineLength(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FSplineCurves_UpdateSpline(IntPtr Self, bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, IntPtr Scale3D);
+		private static extern void E_FSplineCurves_UpdateSpline(IntPtr self, bool bClosedLoop, bool bStationaryEndpoints, int reparamStepsPerSegment, bool bLoopPositionOverride, float loopPosition, IntPtr scale3D);
 		
 		#endregion
 		
@@ -36,8 +38,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the length of the specified spline segment up to the parametric value given </para>
 		/// </summary>
-		public float GetSegmentLength(int Index, float Param, bool bClosedLoop, FVector Scale3D)
-			=> E_FSplineCurves_GetSegmentLength(this, Index, Param, bClosedLoop, Scale3D);
+		public float GetSegmentLength(int index, float param, bool bClosedLoop, FVector scale3D)
+			=> E_FSplineCurves_GetSegmentLength(this, index, param, bClosedLoop, scale3D);
 		
 		
 		/// <summary>
@@ -56,14 +58,14 @@ namespace UnrealEngine
 		/// <param name="LoopPosition">The loop position to use instead of the last key </param>
 		/// <param name="Scale3D">The world scale to override </param>
 		/// </summary>
-		public void UpdateSpline(bool bClosedLoop, bool bStationaryEndpoints, int ReparamStepsPerSegment, bool bLoopPositionOverride, float LoopPosition, FVector Scale3D)
-			=> E_FSplineCurves_UpdateSpline(this, bClosedLoop, bStationaryEndpoints, ReparamStepsPerSegment, bLoopPositionOverride, LoopPosition, Scale3D);
+		public void UpdateSpline(bool bClosedLoop, bool bStationaryEndpoints, int reparamStepsPerSegment, bool bLoopPositionOverride, float loopPosition, FVector scale3D)
+			=> E_FSplineCurves_UpdateSpline(this, bClosedLoop, bStationaryEndpoints, reparamStepsPerSegment, bLoopPositionOverride, loopPosition, scale3D);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FSplineCurves Self)
+		public static implicit operator IntPtr(FSplineCurves self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FSplineCurves(IntPtr Adress)

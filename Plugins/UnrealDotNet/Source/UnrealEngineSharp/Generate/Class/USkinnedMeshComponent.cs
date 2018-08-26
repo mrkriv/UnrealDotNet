@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -22,6 +24,11 @@ namespace UnrealEngine
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_ActiveMorphTargets_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_ActiveMorphTargets_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(IntPtr Ptr);
@@ -84,6 +91,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkinnedMeshComponent_bHideSkin_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_BoneVisibilityStates_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_BoneVisibilityStates_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_USkinnedMeshComponent_bOverrideMinLod_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_bOverrideMinLod_SET(IntPtr Ptr, bool Value);
@@ -119,6 +131,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_LODInfo_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_LODInfo_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_MaxDistanceFactor_SET(IntPtr Ptr, float Value);
@@ -127,6 +144,11 @@ namespace UnrealEngine
 		private static extern int E_PROP_USkinnedMeshComponent_MinLodModel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_MinLodModel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_MorphTargetWeights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkinnedMeshComponent_MorphTargetWeights_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkinnedMeshComponent_OldPredictedLODLevel_GET(IntPtr Ptr);
@@ -144,56 +166,75 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkinnedMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_ClearRefPoseOverride(IntPtr Self);
+		private static extern void E_USkinnedMeshComponent_ClearRefPoseOverride(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_ClearSkinWeightOverride(IntPtr Self, int LODIndex);
+		private static extern void E_USkinnedMeshComponent_ClearSkinWeightOverride(IntPtr self, int lODIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_ClearVertexColorOverride(IntPtr Self, int LODIndex);
+		private static extern void E_USkinnedMeshComponent_ClearVertexColorOverride(IntPtr self, int lODIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_USkinnedMeshComponent_GetBoneIndex(IntPtr Self, string BoneName);
+		private static extern int E_USkinnedMeshComponent_GetBoneIndex(IntPtr self, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_USkinnedMeshComponent_GetBoneName(IntPtr Self, int BoneIndex);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetBoneName(IntPtr self, int boneIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_USkinnedMeshComponent_GetNumBones(IntPtr Self);
+		private static extern TemplatePointerDescription E_USkinnedMeshComponent_GetMasterBoneMap(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_USkinnedMeshComponent_GetNumLODs(IntPtr Self);
+		private static extern int E_USkinnedMeshComponent_GetNumBones(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_USkinnedMeshComponent_GetParentBone(IntPtr Self, string BoneName);
+		private static extern int E_USkinnedMeshComponent_GetNumLODs(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_USkinnedMeshComponent_GetSocketBoneName(IntPtr Self, string InSocketName);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetParentBone(IntPtr self, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(IntPtr Self, float NewValue);
+		private static extern IntPtr E_USkinnedMeshComponent_GetRefPoseOverride(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetCastCapsuleDirectShadow(IntPtr Self, bool bNewValue);
+		private static extern StringWrapper E_USkinnedMeshComponent_GetSocketBoneName(IntPtr self, string inSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetCastCapsuleIndirectShadow(IntPtr Self, bool bNewValue);
+		private static extern void E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetForcedLOD(IntPtr Self, int InNewForcedLOD);
+		private static extern void E_USkinnedMeshComponent_SetCastCapsuleDirectShadow(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetForceWireframe(IntPtr Self, bool InForceWireframe);
+		private static extern void E_USkinnedMeshComponent_SetCastCapsuleIndirectShadow(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USkinnedMeshComponent_SetMinLOD(IntPtr Self, int InNewMinLOD);
+		private static extern void E_USkinnedMeshComponent_SetForcedLOD(IntPtr self, int inNewForcedLOD);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USkinnedMeshComponent_ShouldCPUSkin(IntPtr Self);
+		private static extern void E_USkinnedMeshComponent_SetForceWireframe(IntPtr self, bool inForceWireframe);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkinnedMeshComponent_SetMinLOD(IntPtr self, int inNewMinLOD);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkinnedMeshComponent_SetRefPoseOverride(IntPtr self, IntPtr newRefPoseTransforms);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkinnedMeshComponent_ShouldCPUSkin(IntPtr self);
 		
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Array indicating all active morph targets. This array is updated inside RefreshBoneTransforms based on the Anim Blueprint. </para>
+		/// </summary>
+		public TArray<FActiveMorphTarget> ActiveMorphTargets
+		{
+			get => E_PROP_USkinnedMeshComponent_ActiveMorphTargets_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_ActiveMorphTargets_SET(NativePointer, value);
+		}
+
 		public byte bCanHighlightSelectedSections
 		{
 			get => E_PROP_USkinnedMeshComponent_bCanHighlightSelectedSections_GET(NativePointer);
@@ -301,6 +342,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Array of bone visibilities (containing one of the values in EBoneVisibilityStatus for each bone).  A bone is only visible if it is *exactly* 1 (BVS_Visible) </para>
+		/// </summary>
+		public TArray<byte> BoneVisibilityStates
+		{
+			get => E_PROP_USkinnedMeshComponent_BoneVisibilityStates_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_BoneVisibilityStates_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Whether we should use the min lod specified in MinLodModel for this component instead of the min lod in the mesh </para>
 		/// </summary>
 		public bool bOverrideMinLod
@@ -367,6 +418,12 @@ namespace UnrealEngine
 			set => E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(NativePointer, value);
 		}
 
+		public TArray<FSkelMeshComponentLODInfo> LODInfo
+		{
+			get => E_PROP_USkinnedMeshComponent_LODInfo_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_LODInfo_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>High (best) DistanceFactor that was desired for rendering this USkeletalMesh last frame. Represents how big this mesh was in screen space </para>
@@ -386,6 +443,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_MinLodModel_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_MinLodModel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Array of weights for all morph targets. This array is updated inside RefreshBoneTransforms based on the Anim Blueprint. </para>
+		/// </summary>
+		public TArray<float> MorphTargetWeights
+		{
+			get => E_PROP_USkinnedMeshComponent_MorphTargetWeights_GET(NativePointer);
+			set => E_PROP_USkinnedMeshComponent_MorphTargetWeights_SET(NativePointer, value);
 		}
 
 		
@@ -436,15 +503,15 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Clear any applied skin weight override </para>
 		/// </summary>
-		public void ClearSkinWeightOverride(int LODIndex)
-			=> E_USkinnedMeshComponent_ClearSkinWeightOverride(this, LODIndex);
+		public void ClearSkinWeightOverride(int lODIndex)
+			=> E_USkinnedMeshComponent_ClearSkinWeightOverride(this, lODIndex);
 		
 		
 		/// <summary>
 		/// <para>Clear any applied vertex color override </para>
 		/// </summary>
-		public void ClearVertexColorOverride(int LODIndex)
-			=> E_USkinnedMeshComponent_ClearVertexColorOverride(this, LODIndex);
+		public void ClearVertexColorOverride(int lODIndex)
+			=> E_USkinnedMeshComponent_ClearVertexColorOverride(this, lODIndex);
 		
 		
 		/// <summary>
@@ -453,8 +520,8 @@ namespace UnrealEngine
 		/// <return>Index of the named bone in the current SkeletalMesh. Will return INDEX_NONE if bone not found. </return>
 		/// <para>@see USkeletalMesh::GetBoneIndex. </para>
 		/// </summary>
-		public int GetBoneIndex(string BoneName)
-			=> E_USkinnedMeshComponent_GetBoneIndex(this, BoneName);
+		public int GetBoneIndex(string boneName)
+			=> E_USkinnedMeshComponent_GetBoneIndex(this, boneName);
 		
 		
 		/// <summary>
@@ -462,8 +529,11 @@ namespace UnrealEngine
 		/// <param name="BoneIndex">Index of the bone </param>
 		/// <return>the name of the bone at the specified index </return>
 		/// </summary>
-		public string GetBoneName(int BoneIndex)
-			=> E_USkinnedMeshComponent_GetBoneName(this, BoneIndex);
+		public string GetBoneName(int boneIndex)
+			=> E_USkinnedMeshComponent_GetBoneName(this, boneIndex);
+		
+		public TArray<int> GetMasterBoneMap()
+			=> E_USkinnedMeshComponent_GetMasterBoneMap(this);
 		
 		
 		/// <summary>
@@ -485,8 +555,15 @@ namespace UnrealEngine
 		/// <param name="BoneName">Name of the bone </param>
 		/// <return>the name of the parent bone for the specified bone. Returns 'None' if the bone does not exist or it is the root bone </return>
 		/// </summary>
-		public string GetParentBone(string BoneName)
-			=> E_USkinnedMeshComponent_GetParentBone(this, BoneName);
+		public string GetParentBone(string boneName)
+			=> E_USkinnedMeshComponent_GetParentBone(this, boneName);
+		
+		
+		/// <summary>
+		/// <para>Accessor for RefPoseOverride </para>
+		/// </summary>
+		public virtual FSkelMeshRefPoseOverride GetRefPoseOverride()
+			=> E_USkinnedMeshComponent_GetRefPoseOverride(this);
 		
 		
 		/// <summary>
@@ -495,11 +572,11 @@ namespace UnrealEngine
 		/// <param name="bone">name or socket name </param>
 		/// <return>bone name </return>
 		/// </summary>
-		public string GetSocketBoneName(string InSocketName)
-			=> E_USkinnedMeshComponent_GetSocketBoneName(this, InSocketName);
+		public string GetSocketBoneName(string inSocketName)
+			=> E_USkinnedMeshComponent_GetSocketBoneName(this, inSocketName);
 		
-		public void SetCapsuleIndirectShadowMinVisibility(float NewValue)
-			=> E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(this, NewValue);
+		public void SetCapsuleIndirectShadowMinVisibility(float newValue)
+			=> E_USkinnedMeshComponent_SetCapsuleIndirectShadowMinVisibility(this, newValue);
 		
 		
 		/// <summary>
@@ -517,24 +594,31 @@ namespace UnrealEngine
 		/// <para>Set MinLodModel of the mesh component </para>
 		/// <param name="InNewForcedLOD">Set new ForcedLODModel that forces to set the incoming LOD. Range from [1, Max Number of LOD]. This will affect in the next tick update. </param>
 		/// </summary>
-		public void SetForcedLOD(int InNewForcedLOD)
-			=> E_USkinnedMeshComponent_SetForcedLOD(this, InNewForcedLOD);
+		public void SetForcedLOD(int inNewForcedLOD)
+			=> E_USkinnedMeshComponent_SetForcedLOD(this, inNewForcedLOD);
 		
 		
 		/// <summary>
 		/// <para>Sets the value of the bForceWireframe flag and reattaches the component as necessary. </para>
 		/// <param name="InForceWireframe">New value of bForceWireframe. </param>
 		/// </summary>
-		public void SetForceWireframe(bool InForceWireframe)
-			=> E_USkinnedMeshComponent_SetForceWireframe(this, InForceWireframe);
+		public void SetForceWireframe(bool inForceWireframe)
+			=> E_USkinnedMeshComponent_SetForceWireframe(this, inForceWireframe);
 		
 		
 		/// <summary>
 		/// <para>Set MinLodModel of the mesh component </para>
 		/// <param name="InNewMinLOD">Set new MinLodModel that make sure the LOD does not go below of this value. Range from [0, Max Number of LOD - 1]. This will affect in the next tick update. </param>
 		/// </summary>
-		public void SetMinLOD(int InNewMinLOD)
-			=> E_USkinnedMeshComponent_SetMinLOD(this, InNewMinLOD);
+		public void SetMinLOD(int inNewMinLOD)
+			=> E_USkinnedMeshComponent_SetMinLOD(this, inNewMinLOD);
+		
+		
+		/// <summary>
+		/// <para>Apply an override for the current mesh ref pose </para>
+		/// </summary>
+		public virtual void SetRefPoseOverride(TArray<FTransform> newRefPoseTransforms)
+			=> E_USkinnedMeshComponent_SetRefPoseOverride(this, newRefPoseTransforms);
 		
 		
 		/// <summary>
@@ -547,9 +631,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USkinnedMeshComponent Self)
+		public static implicit operator IntPtr(USkinnedMeshComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USkinnedMeshComponent(ObjectPointerDescription PtrDesc)

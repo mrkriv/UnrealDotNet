@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,16 +23,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FLevelStreamingGCHelper();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(IntPtr Self);
+		private static extern void E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(IntPtr Self);
+		private static extern int E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(IntPtr Self);
+		private static extern void E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(IntPtr Self);
+		private static extern void E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(IntPtr self);
 		
 		#endregion
 		
@@ -66,9 +68,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FLevelStreamingGCHelper Self)
+		public static implicit operator IntPtr(FLevelStreamingGCHelper self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FLevelStreamingGCHelper(IntPtr Adress)

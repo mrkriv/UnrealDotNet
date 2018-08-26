@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -41,15 +43,25 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr Self);
+		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FAnimationEvaluationContext_Copy(IntPtr Self, IntPtr Other);
+		private static extern void E_FAnimationEvaluationContext_Copy(IntPtr self, IntPtr other);
 		
 		#endregion
 		
@@ -78,6 +90,18 @@ namespace UnrealEngine
 			set => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(NativePointer, value);
 		}
 
+		public TArray<FTransform> BoneSpaceTransforms
+		{
+			get => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_GET(NativePointer);
+			set => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(NativePointer, value);
+		}
+
+		public TArray<FTransform> ComponentSpaceTransforms
+		{
+			get => E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_GET(NativePointer);
+			set => E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_SET(NativePointer, value);
+		}
+
 		public FVector RootBoneTranslation
 		{
 			get => E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(NativePointer);
@@ -90,14 +114,14 @@ namespace UnrealEngine
 		public void Clear()
 			=> E_FAnimationEvaluationContext_Clear(this);
 		
-		public void Copy(FAnimationEvaluationContext Other)
-			=> E_FAnimationEvaluationContext_Copy(this, Other);
+		public void Copy(FAnimationEvaluationContext other)
+			=> E_FAnimationEvaluationContext_Copy(this, other);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FAnimationEvaluationContext Self)
+		public static implicit operator IntPtr(FAnimationEvaluationContext self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FAnimationEvaluationContext(IntPtr Adress)

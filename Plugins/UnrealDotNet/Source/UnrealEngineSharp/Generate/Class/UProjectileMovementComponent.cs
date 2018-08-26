@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,25 +26,25 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UProjectileMovementComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UProjectileMovementComponent_ComputeAcceleration(IntPtr Self, IntPtr InVelocity, float DeltaTime);
+		private static extern IntPtr E_UProjectileMovementComponent_ComputeAcceleration(IntPtr self, IntPtr inVelocity, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UProjectileMovementComponent_ComputeBounceResult(IntPtr Self, IntPtr Hit, float TimeSlice, IntPtr MoveDelta);
+		private static extern IntPtr E_UProjectileMovementComponent_ComputeBounceResult(IntPtr self, IntPtr hit, float timeSlice, IntPtr moveDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UProjectileMovementComponent_ComputeHomingAcceleration(IntPtr Self, IntPtr InVelocity, float DeltaTime);
+		private static extern IntPtr E_UProjectileMovementComponent_ComputeHomingAcceleration(IntPtr self, IntPtr inVelocity, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UProjectileMovementComponent_ComputeMoveDelta(IntPtr Self, IntPtr InVelocity, float DeltaTime);
+		private static extern IntPtr E_UProjectileMovementComponent_ComputeMoveDelta(IntPtr self, IntPtr inVelocity, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UProjectileMovementComponent_HandleBlockingHit(IntPtr Self, IntPtr Hit, float TimeTick, IntPtr MoveDelta, float SubTickTimeRemaining);
+		private static extern byte E_UProjectileMovementComponent_HandleBlockingHit(IntPtr self, IntPtr hit, float timeTick, IntPtr moveDelta, float subTickTimeRemaining);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UProjectileMovementComponent_HandleSliding(IntPtr Self, IntPtr Hit, float SubTickTimeRemaining);
+		private static extern bool E_UProjectileMovementComponent_HandleSliding(IntPtr self, IntPtr hit, float subTickTimeRemaining);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UProjectileMovementComponent_LimitVelocity(IntPtr Self, IntPtr NewVelocity);
+		private static extern IntPtr E_UProjectileMovementComponent_LimitVelocity(IntPtr self, IntPtr newVelocity);
 		
 		#endregion
 		
@@ -51,29 +53,29 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Compute the acceleration that will be applied </para>
 		/// </summary>
-		protected virtual FVector ComputeAcceleration(FVector InVelocity, float DeltaTime)
-			=> E_UProjectileMovementComponent_ComputeAcceleration(this, InVelocity, DeltaTime);
+		protected virtual FVector ComputeAcceleration(FVector inVelocity, float deltaTime)
+			=> E_UProjectileMovementComponent_ComputeAcceleration(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
 		/// <para>Computes result of a bounce and returns the new velocity. </para>
 		/// </summary>
-		protected virtual FVector ComputeBounceResult(FHitResult Hit, float TimeSlice, FVector MoveDelta)
-			=> E_UProjectileMovementComponent_ComputeBounceResult(this, Hit, TimeSlice, MoveDelta);
+		protected virtual FVector ComputeBounceResult(FHitResult hit, float timeSlice, FVector moveDelta)
+			=> E_UProjectileMovementComponent_ComputeBounceResult(this, hit, timeSlice, moveDelta);
 		
 		
 		/// <summary>
 		/// <para>Allow the projectile to track towards its homing target. </para>
 		/// </summary>
-		protected virtual FVector ComputeHomingAcceleration(FVector InVelocity, float DeltaTime)
-			=> E_UProjectileMovementComponent_ComputeHomingAcceleration(this, InVelocity, DeltaTime);
+		protected virtual FVector ComputeHomingAcceleration(FVector inVelocity, float deltaTime)
+			=> E_UProjectileMovementComponent_ComputeHomingAcceleration(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
 		/// <para>Compute the distance we should move in the given time, at a given a velocity. </para>
 		/// </summary>
-		protected virtual FVector ComputeMoveDelta(FVector InVelocity, float DeltaTime)
-			=> E_UProjectileMovementComponent_ComputeMoveDelta(this, InVelocity, DeltaTime);
+		protected virtual FVector ComputeMoveDelta(FVector inVelocity, float deltaTime)
+			=> E_UProjectileMovementComponent_ComputeMoveDelta(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
@@ -88,8 +90,8 @@ namespace UnrealEngine
 		/// <return>Result indicating how simulation should proceed. </return>
 		/// <para>@see EHandleHitWallResult, HandleImpact() </para>
 		/// </summary>
-		protected virtual EHandleBlockingHitResult HandleBlockingHit(FHitResult Hit, float TimeTick, FVector MoveDelta, float SubTickTimeRemaining)
-			=> (EHandleBlockingHitResult)E_UProjectileMovementComponent_HandleBlockingHit(this, Hit, TimeTick, MoveDelta, SubTickTimeRemaining);
+		protected virtual EHandleBlockingHitResult HandleBlockingHit(FHitResult hit, float timeTick, FVector moveDelta, float subTickTimeRemaining)
+			=> (EHandleBlockingHitResult)E_UProjectileMovementComponent_HandleBlockingHit(this, hit, timeTick, moveDelta, subTickTimeRemaining);
 		
 		
 		/// <summary>
@@ -99,21 +101,21 @@ namespace UnrealEngine
 		/// <param name="SubTickTimeRemaining">Time remaining in the tick. This function may update this time with any reduction to the simulation time requested. </param>
 		/// <return>True if simulation of the projectile should continue, false otherwise. </return>
 		/// </summary>
-		protected virtual bool HandleSliding(FHitResult Hit, float SubTickTimeRemaining)
-			=> E_UProjectileMovementComponent_HandleSliding(this, Hit, SubTickTimeRemaining);
+		protected virtual bool HandleSliding(FHitResult hit, float subTickTimeRemaining)
+			=> E_UProjectileMovementComponent_HandleSliding(this, hit, subTickTimeRemaining);
 		
 		
 		/// <summary>
 		/// <para>Don't allow velocity magnitude to exceed MaxSpeed, if MaxSpeed is non-zero. </para>
 		/// </summary>
-		protected FVector LimitVelocity(FVector NewVelocity)
-			=> E_UProjectileMovementComponent_LimitVelocity(this, NewVelocity);
+		protected FVector LimitVelocity(FVector newVelocity)
+			=> E_UProjectileMovementComponent_LimitVelocity(this, newVelocity);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UProjectileMovementComponent Self)
+		public static implicit operator IntPtr(UProjectileMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UProjectileMovementComponent(ObjectPointerDescription PtrDesc)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -26,6 +28,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Map_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FURL_Op_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FURL_Op_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_FURL_Port_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Port_SET(IntPtr Ptr, int Value);
@@ -51,19 +58,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Valid_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FURL_FilterURLString(IntPtr Self, string Str);
+		private static extern void E_FURL_FilterURLString(IntPtr self, string str);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FURL_IsInternal(IntPtr Self);
+		private static extern bool E_FURL_IsInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FURL_IsLocalInternal(IntPtr Self);
+		private static extern bool E_FURL_IsLocalInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FURL_StaticExit(IntPtr Self);
+		private static extern void E_FURL_StaticExit(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FURL_StaticInit(IntPtr Self);
+		private static extern void E_FURL_StaticInit(IntPtr self);
 		
 		#endregion
 		
@@ -83,6 +90,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FURL_Map_GET(NativePointer);
 			set => E_PROP_FURL_Map_SET(NativePointer, value);
+		}
+
+		public TArray<string> Op
+		{
+			get => E_PROP_FURL_Op_GET(NativePointer);
+			set => E_PROP_FURL_Op_SET(NativePointer, value);
 		}
 
 		public int Port
@@ -123,8 +136,8 @@ namespace UnrealEngine
 		/// <para>Static: Removes any special URL characters from the specified string </para>
 		/// <param name="Str">String to be filtered </param>
 		/// </summary>
-		public void FilterURLString(string Str)
-			=> E_FURL_FilterURLString(this, Str);
+		public void FilterURLString(string str)
+			=> E_FURL_FilterURLString(this, str);
 		
 		
 		/// <summary>
@@ -152,9 +165,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FURL Self)
+		public static implicit operator IntPtr(FURL self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FURL(IntPtr Adress)

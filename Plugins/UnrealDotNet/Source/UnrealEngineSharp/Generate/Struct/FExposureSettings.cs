@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -31,7 +33,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FExposureSettings_FixedEV100_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FExposureSettings_ToString(IntPtr Self);
+		private static extern StringWrapper E_FExposureSettings_ToString(IntPtr self);
 		
 		#endregion
 		
@@ -56,9 +58,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FExposureSettings Self)
+		public static implicit operator IntPtr(FExposureSettings self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FExposureSettings(IntPtr Adress)

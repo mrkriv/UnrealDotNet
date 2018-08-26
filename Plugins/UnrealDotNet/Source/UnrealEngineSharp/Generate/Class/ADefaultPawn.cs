@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -33,10 +35,10 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_ADefaultPawn_MovementComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetCollisionComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr self);
 		
 		#endregion
 		
@@ -87,9 +89,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(ADefaultPawn Self)
+		public static implicit operator IntPtr(ADefaultPawn self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ADefaultPawn(ObjectPointerDescription PtrDesc)

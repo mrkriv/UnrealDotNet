@@ -1,5 +1,7 @@
 #pragma once
 
+// This file was created automatically, do not modify the contents of this file.
+
 #include "TypeConvertor.h"
 #include "ManageEventSender.generated.h"
 

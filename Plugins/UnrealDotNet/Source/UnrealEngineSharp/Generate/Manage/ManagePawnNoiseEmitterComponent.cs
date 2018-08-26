@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -20,11 +22,11 @@ namespace UnrealEngine
 		/// <param name="Loudness">is the relative loudness of the noise (0.0 to 1.0) </param>
 		/// <param name="NoiseLocation">is the position of the noise </param>
 		/// </summary>
-		public override void MakeNoise(AActor NoiseMaker, float Loudness, FVector NoiseLocation) { }
+		public override void MakeNoise(AActor noiseMaker, float loudness, FVector noiseLocation) { }
 		
-		public static implicit operator IntPtr(ManagePawnNoiseEmitterComponent Self)
+		public static implicit operator IntPtr(ManagePawnNoiseEmitterComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManagePawnNoiseEmitterComponent(ObjectPointerDescription PtrDesc)

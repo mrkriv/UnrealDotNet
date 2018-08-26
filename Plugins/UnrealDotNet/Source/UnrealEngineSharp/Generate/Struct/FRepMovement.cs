@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -69,10 +71,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRepMovement_VelocityQuantizationLevel_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FRepMovement_CopyTo(IntPtr Self, IntPtr RBState, IntPtr Actor);
+		private static extern void E_FRepMovement_CopyTo(IntPtr self, IntPtr rBState, IntPtr actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FRepMovement_FillFrom(IntPtr Self, IntPtr RBState, IntPtr Actor);
+		private static extern void E_FRepMovement_FillFrom(IntPtr self, IntPtr rBState, IntPtr actor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FRepMovement_RebaseOntoLocalOrigin(IntPtr self, IntPtr location, IntPtr worldContextActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FRepMovement_RebaseOntoLocalOrigin_o1(IntPtr self, IntPtr location, IntPtr worldContextActorComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FRepMovement_RebaseOntoZeroOrigin(IntPtr self, IntPtr location, IntPtr worldContextActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FRepMovement_RebaseOntoZeroOrigin_o1(IntPtr self, IntPtr location, IntPtr worldContextActorComponent);
 		
 		#endregion
 		
@@ -151,17 +165,45 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public void CopyTo(FRigidBodyState RBState, AActor Actor = null)
-			=> E_FRepMovement_CopyTo(this, RBState, Actor);
+		public void CopyTo(FRigidBodyState rBState, AActor actor = null)
+			=> E_FRepMovement_CopyTo(this, rBState, actor);
 		
-		public void FillFrom(FRigidBodyState RBState, AActor Actor = null)
-			=> E_FRepMovement_FillFrom(this, RBState, Actor);
+		public void FillFrom(FRigidBodyState rBState, AActor actor = null)
+			=> E_FRepMovement_FillFrom(this, rBState, actor);
+		
+		
+		/// <summary>
+		/// <para>Rebase zero-origin position onto an Actor's local world origin. </para>
+		/// </summary>
+		public FVector RebaseOntoLocalOrigin(FVector location, AActor worldContextActor)
+			=> E_FRepMovement_RebaseOntoLocalOrigin(this, location, worldContextActor);
+		
+		
+		/// <summary>
+		/// <para>Rebase zero-origin position onto local world origin value based on an actor component's world. </para>
+		/// </summary>
+		public FVector RebaseOntoLocalOrigin(FVector location, UActorComponent worldContextActorComponent)
+			=> E_FRepMovement_RebaseOntoLocalOrigin_o1(this, location, worldContextActorComponent);
+		
+		
+		/// <summary>
+		/// <para>Rebase an Actor's local-origin position onto zero world origin value. </para>
+		/// </summary>
+		public FVector RebaseOntoZeroOrigin(FVector location, AActor worldContextActor)
+			=> E_FRepMovement_RebaseOntoZeroOrigin(this, location, worldContextActor);
+		
+		
+		/// <summary>
+		/// <para>Rebase local-origin position onto zero world origin value based on an actor component's world. </para>
+		/// </summary>
+		public FVector RebaseOntoZeroOrigin(FVector location, UActorComponent worldContextActorComponent)
+			=> E_FRepMovement_RebaseOntoZeroOrigin_o1(this, location, worldContextActorComponent);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FRepMovement Self)
+		public static implicit operator IntPtr(FRepMovement self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRepMovement(IntPtr Adress)

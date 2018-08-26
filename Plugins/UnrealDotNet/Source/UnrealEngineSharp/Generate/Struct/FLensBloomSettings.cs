@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FLensBloomSettings_Convolution_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FLensBloomSettings_ExportToPostProcessSettings(IntPtr Self, IntPtr OutPostProcessSettings);
+		private static extern void E_FLensBloomSettings_ExportToPostProcessSettings(IntPtr self, IntPtr outPostProcessSettings);
 		
 		#endregion
 		
@@ -44,14 +46,14 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public void ExportToPostProcessSettings(FPostProcessSettings OutPostProcessSettings)
-			=> E_FLensBloomSettings_ExportToPostProcessSettings(this, OutPostProcessSettings);
+		public void ExportToPostProcessSettings(FPostProcessSettings outPostProcessSettings)
+			=> E_FLensBloomSettings_ExportToPostProcessSettings(this, outPostProcessSettings);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FLensBloomSettings Self)
+		public static implicit operator IntPtr(FLensBloomSettings self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FLensBloomSettings(IntPtr Adress)

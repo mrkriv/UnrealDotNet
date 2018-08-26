@@ -1,4 +1,6 @@
 #pragma once
+// This file was created automatically, do not modify the contents of this file.
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -113,14 +115,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UNavMovementComponent_RequestDirectMove(UNavMovementComponent* Self, INT_PTR MoveVelocity, bool bForceMaxSpeed)
 	{
-		auto _p0 = *(FVector*)MoveVelocity;
+		auto& _p0 = *(FVector*)MoveVelocity;
 		auto _p1 = bForceMaxSpeed;
 		Self->RequestDirectMove(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UNavMovementComponent_RequestPathMove(UNavMovementComponent* Self, INT_PTR MoveInput)
 	{
-		auto _p0 = *(FVector*)MoveInput;
+		auto& _p0 = *(FVector*)MoveInput;
 		Self->RequestPathMove(_p0);
 	}
 
@@ -160,6 +162,18 @@ extern "C"
 	DOTNET_EXPORT auto E_UNavMovementComponent_StopMovementKeepPathing(UNavMovementComponent* Self)
 	{
 		Self->StopMovementKeepPathing();
+	}
+
+	DOTNET_EXPORT auto E_UNavMovementComponent_UpdateNavAgent(UNavMovementComponent* Self, AActor& InOwner)
+	{
+		auto& _p0 = InOwner;
+		Self->UpdateNavAgent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UNavMovementComponent_UpdateNavAgent_o1(UNavMovementComponent* Self, UCapsuleComponent& CapsuleComponent)
+	{
+		auto& _p0 = CapsuleComponent;
+		Self->UpdateNavAgent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UNavMovementComponent_UseAccelerationForPathFollowing(UNavMovementComponent* Self)

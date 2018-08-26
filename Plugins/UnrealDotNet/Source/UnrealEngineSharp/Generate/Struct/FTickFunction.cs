@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -60,22 +62,22 @@ namespace UnrealEngine
 		private static extern void E_PROP_FTickFunction_TickInterval_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTickFunction_IsCompletionHandleValid(IntPtr Self);
+		private static extern bool E_FTickFunction_IsCompletionHandleValid(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTickFunction_IsTickFunctionEnabled(IntPtr Self);
+		private static extern bool E_FTickFunction_IsTickFunctionEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTickFunction_IsTickFunctionRegistered(IntPtr Self);
+		private static extern bool E_FTickFunction_IsTickFunctionRegistered(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTickFunction_SetPriorityIncludingPrerequisites(IntPtr Self, bool bInHighPriority);
+		private static extern void E_FTickFunction_SetPriorityIncludingPrerequisites(IntPtr self, bool bInHighPriority);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTickFunction_SetTickFunctionEnable(IntPtr Self, bool bInEnabled);
+		private static extern void E_FTickFunction_SetTickFunctionEnable(IntPtr self, bool bInEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTickFunction_UnRegisterTickFunction(IntPtr Self);
+		private static extern void E_FTickFunction_UnRegisterTickFunction(IntPtr self);
 		
 		#endregion
 		
@@ -194,9 +196,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FTickFunction Self)
+		public static implicit operator IntPtr(FTickFunction self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FTickFunction(IntPtr Adress)

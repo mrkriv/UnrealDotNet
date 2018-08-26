@@ -10,6 +10,7 @@ StringWrapper ConvertToManage_StringWrapper(FString string);
 StringWrapper ConvertToManage_StringWrapper(FText text);
 StringWrapper ConvertToManage_StringWrapper(FName name);
 ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* object);
+ObjectPointerDescription ConvertToManage_ObjectPointerDescription(const UObject* object);
 
 template<class T>
 TemplatePointerDescription ConvertToManage_TemplatePointerDescription(T sourceTemplate)

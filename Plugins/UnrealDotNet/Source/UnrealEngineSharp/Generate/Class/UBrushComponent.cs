@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,7 +26,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UBrushComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UBrushComponent_BuildSimpleBrushCollision(IntPtr Self);
+		private static extern void E_UBrushComponent_BuildSimpleBrushCollision(IntPtr self);
 		
 		#endregion
 		
@@ -38,9 +40,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UBrushComponent Self)
+		public static implicit operator IntPtr(UBrushComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UBrushComponent(ObjectPointerDescription PtrDesc)

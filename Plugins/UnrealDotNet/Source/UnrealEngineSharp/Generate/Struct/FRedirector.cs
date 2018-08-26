@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,8 +18,8 @@ namespace UnrealEngine
 		{
 		}
 
-		public FRedirector(string InOldName, string InNewName) :
-			base(E_CreateStruct_FRedirector_FName_FName(InOldName, InNewName), false)
+		public FRedirector(string inOldName, string inNewName) :
+			base(E_CreateStruct_FRedirector_FName_FName(inOldName, inNewName), false)
 		{
 		}
 
@@ -26,7 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRedirector();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRedirector_FName_FName(string InOldName, string InNewName);
+		private static extern IntPtr E_CreateStruct_FRedirector_FName_FName(string inOldName, string inNewName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FRedirector_NewName_GET(IntPtr Ptr);
@@ -55,9 +57,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FRedirector Self)
+		public static implicit operator IntPtr(FRedirector self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRedirector(IntPtr Adress)

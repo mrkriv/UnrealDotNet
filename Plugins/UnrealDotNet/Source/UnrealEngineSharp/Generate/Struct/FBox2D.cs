@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -36,8 +38,8 @@ namespace UnrealEngine
 		/// <param name="InMin">The box's minimum point. </param>
 		/// <param name="InMax">The box's maximum point. </param>
 		/// </summary>
-		public FBox2D(FVector2D InMin, FVector2D InMax) :
-			base(E_CreateStruct_FBox2D_FVector2D_FVector2D(InMin, InMax), false)
+		public FBox2D(FVector2D inMin, FVector2D inMax) :
+			base(E_CreateStruct_FBox2D_FVector2D_FVector2D(inMin, inMax), false)
 		{
 		}
 
@@ -47,8 +49,18 @@ namespace UnrealEngine
 		/// <param name="Points">Array of Points to create for the bounding volume. </param>
 		/// <param name="Count">The number of points. </param>
 		/// </summary>
-		public FBox2D(FVector2D Points, int Count) :
-			base(E_CreateStruct_FBox2D_FVector2D_int32(Points, Count), false)
+		public FBox2D(FVector2D points, int count) :
+			base(E_CreateStruct_FBox2D_FVector2D_int32(points, count), false)
+		{
+		}
+
+		
+		/// <summary>
+		/// <para>Creates and initializes a new box from an array of points. </para>
+		/// <param name="Points">Array of Points to create for the bounding volume. </param>
+		/// </summary>
+		public FBox2D(TArray<FVector2D> points) :
+			base(E_CreateStruct_FBox2D_TArray__FVector2D(points), false)
 		{
 		}
 
@@ -60,10 +72,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBox2D_int32(int _p0);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_FVector2D(IntPtr InMin, IntPtr InMax);
+		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_FVector2D(IntPtr inMin, IntPtr inMax);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_int32(IntPtr Points, int Count);
+		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_int32(IntPtr points, int count);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBox2D_TArray__FVector2D(IntPtr points);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
@@ -81,40 +96,46 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox2D_Min_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(IntPtr Self, IntPtr Point);
+		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(IntPtr self, IntPtr point);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_ExpandBy(IntPtr Self, float W);
+		private static extern IntPtr E_FBox2D_ExpandBy(IntPtr self, float w);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FBox2D_GetArea(IntPtr Self);
+		private static extern float E_FBox2D_GetArea(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_GetCenter(IntPtr Self);
+		private static extern IntPtr E_FBox2D_GetCenter(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBox2D_GetCenterAndExtents(IntPtr Self, IntPtr center, IntPtr Extents);
+		private static extern void E_FBox2D_GetCenterAndExtents(IntPtr self, IntPtr center, IntPtr extents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_GetClosestPointTo(IntPtr Self, IntPtr Point);
+		private static extern IntPtr E_FBox2D_GetClosestPointTo(IntPtr self, IntPtr point);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_GetExtent(IntPtr Self);
+		private static extern IntPtr E_FBox2D_GetExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_GetSize(IntPtr Self);
+		private static extern IntPtr E_FBox2D_GetSize(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBox2D_Init(IntPtr Self);
+		private static extern void E_FBox2D_Init(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBox2D_Intersect(IntPtr Self, IntPtr other);
+		private static extern bool E_FBox2D_Intersect(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox2D_ShiftBy(IntPtr Self, IntPtr Offset);
+		private static extern bool E_FBox2D_IsInside(IntPtr self, IntPtr testPoint);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FBox2D_ToString(IntPtr Self);
+		private static extern bool E_FBox2D_IsInside_o1(IntPtr self, IntPtr other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox2D_ShiftBy(IntPtr self, IntPtr offset);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FBox2D_ToString(IntPtr self);
 		
 		#endregion
 		
@@ -158,8 +179,8 @@ namespace UnrealEngine
 		/// <param name="Point">The point. </param>
 		/// <return>The distance. </return>
 		/// </summary>
-		public float ComputeSquaredDistanceToPoint(FVector2D Point)
-			=> E_FBox2D_ComputeSquaredDistanceToPoint(this, Point);
+		public float ComputeSquaredDistanceToPoint(FVector2D point)
+			=> E_FBox2D_ComputeSquaredDistanceToPoint(this, point);
 		
 		
 		/// <summary>
@@ -167,8 +188,8 @@ namespace UnrealEngine
 		/// <param name="W">The size to increase volume by. </param>
 		/// <return>A new bounding box increased in size. </return>
 		/// </summary>
-		public FBox2D ExpandBy(float W)
-			=> E_FBox2D_ExpandBy(this, W);
+		public FBox2D ExpandBy(float w)
+			=> E_FBox2D_ExpandBy(this, w);
 		
 		
 		/// <summary>
@@ -195,8 +216,8 @@ namespace UnrealEngine
 		/// <param name="Extents">out] reference to the extent around the center </param>
 		/// <para>@see GetArea, GetCenter, GetExtent, GetSize </para>
 		/// </summary>
-		public void GetCenterAndExtents(FVector2D center, FVector2D Extents)
-			=> E_FBox2D_GetCenterAndExtents(this, center, Extents);
+		public void GetCenterAndExtents(FVector2D center, FVector2D extents)
+			=> E_FBox2D_GetCenterAndExtents(this, center, extents);
 		
 		
 		/// <summary>
@@ -204,8 +225,8 @@ namespace UnrealEngine
 		/// <param name="Point">The point in space. </param>
 		/// <return>The closest point on or inside the box. </return>
 		/// </summary>
-		public FVector2D GetClosestPointTo(FVector2D Point)
-			=> E_FBox2D_GetClosestPointTo(this, Point);
+		public FVector2D GetClosestPointTo(FVector2D point)
+			=> E_FBox2D_GetClosestPointTo(this, point);
 		
 		
 		/// <summary>
@@ -243,12 +264,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Checks whether the given point is inside this box. </para>
+		/// <param name="Point">The point to test. </param>
+		/// <return>true if the point is inside this box, otherwise false. </return>
+		/// </summary>
+		public bool IsInside(FVector2D testPoint)
+			=> E_FBox2D_IsInside(this, testPoint);
+		
+		
+		/// <summary>
+		/// <para>Checks whether the given box is fully encapsulated by this box. </para>
+		/// <param name="Other">The box to test for encapsulation within the bounding volume. </param>
+		/// <return>true if box is inside this volume, false otherwise. </return>
+		/// </summary>
+		public bool IsInside(FBox2D other)
+			=> E_FBox2D_IsInside_o1(this, other);
+		
+		
+		/// <summary>
 		/// <para>Shift bounding box position. </para>
 		/// <param name="The">offset vector to shift by. </param>
 		/// <return>A new shifted bounding box. </return>
 		/// </summary>
-		public FBox2D ShiftBy(FVector2D Offset)
-			=> E_FBox2D_ShiftBy(this, Offset);
+		public FBox2D ShiftBy(FVector2D offset)
+			=> E_FBox2D_ShiftBy(this, offset);
 		
 		
 		/// <summary>
@@ -260,9 +299,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FBox2D Self)
+		public static implicit operator IntPtr(FBox2D self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FBox2D(IntPtr Adress)

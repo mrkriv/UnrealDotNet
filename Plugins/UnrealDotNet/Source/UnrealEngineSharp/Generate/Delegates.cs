@@ -1,68 +1,70 @@
+// This file was created automatically, do not modify the contents of this file.
+
 namespace UnrealEngine
 {
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:46
 	
-	public delegate void FActorBeginCursorOverSignature(AActor TouchedActor);
+	public delegate void FActorBeginCursorOverSignature(AActor touchedActor);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:42
 	
-	public delegate void FActorBeginOverlapSignature(AActor OverlappedActor, AActor OtherActor);
+	public delegate void FActorBeginOverlapSignature(AActor overlappedActor, AActor otherActor);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:76
 	
-	public delegate void FActorComponentActivatedSignature(UActorComponent Component, bool bReset);
+	public delegate void FActorComponentActivatedSignature(UActorComponent component, bool bReset);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:77
 	
-	public delegate void FActorComponentDeactivateSignature(UActorComponent Component);
+	public delegate void FActorComponentDeactivateSignature(UActorComponent component);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:55
 	
-	public delegate void FActorDestroyedSignature(AActor DestroyedActor);
+	public delegate void FActorDestroyedSignature(AActor destroyedActor);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:47
 	
-	public delegate void FActorEndCursorOverSignature(AActor TouchedActor);
+	public delegate void FActorEndCursorOverSignature(AActor touchedActor);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:43
 	
-	public delegate void FActorEndOverlapSignature(AActor OverlappedActor, AActor OtherActor);
+	public delegate void FActorEndOverlapSignature(AActor overlappedActor, AActor otherActor);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:44
 	
-	public delegate void FActorHitSignature(AActor SelfActor, AActor OtherActor, FVector NormalImpulse, FHitResult Hit);
+	public delegate void FActorHitSignature(AActor selfActor, AActor otherActor, FVector normalImpulse, FHitResult hit);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:31
 	
-	public delegate void FCharacterMovementUpdatedSignature(float DeltaSeconds, FVector OldLocation, FVector OldVelocity);
+	public delegate void FCharacterMovementUpdatedSignature(float deltaSeconds, FVector oldLocation, FVector oldVelocity);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:32
 	
 	public delegate void FCharacterReachedApexSignature();
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:155
 	
-	public delegate void FComponentBeginCursorOverSignature(UPrimitiveComponent TouchedComponent);
+	public delegate void FComponentBeginCursorOverSignature(UPrimitiveComponent touchedComponent);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:145
 	
-	public delegate void FComponentBeginOverlapSignature(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex, bool bFromSweep, FHitResult SweepResult);
+	public delegate void FComponentBeginOverlapSignature(UPrimitiveComponent overlappedComponent, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex, bool bFromSweep, FHitResult sweepResult);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:153
 	
-	public delegate void FComponentCollisionSettingsChangedSignature(UPrimitiveComponent ChangedComponent);
+	public delegate void FComponentCollisionSettingsChangedSignature(UPrimitiveComponent changedComponent);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:156
 	
-	public delegate void FComponentEndCursorOverSignature(UPrimitiveComponent TouchedComponent);
+	public delegate void FComponentEndCursorOverSignature(UPrimitiveComponent touchedComponent);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:147
 	
-	public delegate void FComponentEndOverlapSignature(UPrimitiveComponent OverlappedComponent, AActor OtherActor, UPrimitiveComponent OtherComp, int OtherBodyIndex);
+	public delegate void FComponentEndOverlapSignature(UPrimitiveComponent overlappedComponent, AActor otherActor, UPrimitiveComponent otherComp, int otherBodyIndex);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:143
 	
-	public delegate void FComponentHitSignature(UPrimitiveComponent HitComponent, AActor OtherActor, UPrimitiveComponent OtherComp, FVector NormalImpulse, FHitResult Hit);
+	public delegate void FComponentHitSignature(UPrimitiveComponent hitComponent, AActor otherActor, UPrimitiveComponent otherComp, FVector normalImpulse, FHitResult hit);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:151
 	
-	public delegate void FComponentSleepSignature(UPrimitiveComponent SleepingComponent, string BoneName);
+	public delegate void FComponentSleepSignature(UPrimitiveComponent sleepingComponent, string boneName);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:149
 	
-	public delegate void FComponentWakeSignature(UPrimitiveComponent WakingComponent, string BoneName);
+	public delegate void FComponentWakeSignature(UPrimitiveComponent wakingComponent, string boneName);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:3533
 	
-	public delegate void FConstraintBrokenSignature(int ConstraintIndex);
+	public delegate void FConstraintBrokenSignature(int constraintIndex);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:33
 	
-	public delegate void FLandedSignature(FHitResult Hit);
+	public delegate void FLandedSignature(FHitResult hit);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:30
 	
-	public delegate void FMovementModeChangedSignature(ACharacter Character, EMovementMode PrevMovementMode, byte PreviousCustomMode);
+	public delegate void FMovementModeChangedSignature(ACharacter character, EMovementMode prevMovementMode, byte previousCustomMode);
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:46
 	
 	public delegate void FOnAnimInitialized();
@@ -71,5 +73,5 @@ namespace UnrealEngine
 	public delegate void FOnAudioFinished();
 	// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:49
 	
-	public delegate void FOnAudioMultiEnvelopeValue(float AverageEnvelopeValue, float MaxEnvelope, int NumWaveInstances);
+	public delegate void FOnAudioMultiEnvelopeValue(float averageEnvelopeValue, float maxEnvelope, int numWaveInstances);
 }

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -84,6 +86,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_bWantsInitializeComponent_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UActorComponent_ComponentTags_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UActorComponent_ComponentTags_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
@@ -104,295 +111,298 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_Activate(IntPtr Self, bool bReset);
+		private static extern void E_UActorComponent_Activate(IntPtr self, bool bReset);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_AddTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		private static extern ObjectPointerDescription E_UActorComponent_AdditionalStatObject(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_AddTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		private static extern void E_UActorComponent_AddTickPrerequisiteActor(IntPtr self, IntPtr prerequisiteActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_AllowReregistration(IntPtr Self);
+		private static extern void E_UActorComponent_AddTickPrerequisiteComponent(IntPtr self, IntPtr prerequisiteComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ApplyWorldOffset(IntPtr Self, IntPtr InOffset, bool bWorldShift);
+		private static extern bool E_UActorComponent_AllowReregistration(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_BeginPlay(IntPtr Self);
+		private static extern void E_UActorComponent_ApplyWorldOffset(IntPtr self, IntPtr inOffset, bool bWorldShift);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_CanEverAffectNavigation(IntPtr Self);
+		private static extern void E_UActorComponent_BeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ClearNeedEndOfFrameUpdate(IntPtr Self);
+		private static extern bool E_UActorComponent_CanEverAffectNavigation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_ComponentHasTag(IntPtr Self, string Tag);
+		private static extern void E_UActorComponent_ClearNeedEndOfFrameUpdate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_ComponentIsInPersistentLevel(IntPtr Self, bool bIncludeLevelStreamingPersistent);
+		private static extern bool E_UActorComponent_ComponentHasTag(IntPtr self, string tag);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_CreatePhysicsState(IntPtr Self);
+		private static extern bool E_UActorComponent_ComponentIsInPersistentLevel(IntPtr self, bool bIncludeLevelStreamingPersistent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_CreateRenderState_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_CreatePhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_Deactivate(IntPtr Self);
+		private static extern void E_UActorComponent_CreateRenderState_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_DestroyComponent(IntPtr Self, bool bPromoteChildren);
+		private static extern void E_UActorComponent_Deactivate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_DestroyPhysicsState(IntPtr Self);
+		private static extern void E_UActorComponent_DestroyComponent(IntPtr self, bool bPromoteChildren);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_DestroyRenderState_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_DestroyPhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_DetermineUCSModifiedProperties(IntPtr Self);
+		private static extern void E_UActorComponent_DestroyRenderState_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_DoDeferredRenderUpdates_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_DetermineUCSModifiedProperties(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_GetComponentClassCanReplicate(IntPtr Self);
+		private static extern void E_UActorComponent_DoDeferredRenderUpdates_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UActorComponent_GetComponentTickInterval(IntPtr Self);
+		private static extern bool E_UActorComponent_GetComponentClassCanReplicate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_GetIsReplicated(IntPtr Self);
+		private static extern float E_UActorComponent_GetComponentTickInterval(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UActorComponent_GetNetMode(IntPtr Self);
+		private static extern bool E_UActorComponent_GetIsReplicated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr Self);
+		private static extern byte E_UActorComponent_GetNetMode(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UActorComponent_GetOwnerRole(IntPtr Self);
+		private static extern ObjectPointerDescription E_UActorComponent_GetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_UActorComponent_GetReadableName(IntPtr Self);
+		private static extern byte E_UActorComponent_GetOwnerRole(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_HandleCanEverAffectNavigationChange(IntPtr Self, bool bForceUpdate);
+		private static extern StringWrapper E_UActorComponent_GetReadableName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_HasBeenCreated(IntPtr Self);
+		private static extern void E_UActorComponent_HandleCanEverAffectNavigationChange(IntPtr self, bool bForceUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_HasBeenInitialized(IntPtr Self);
+		private static extern bool E_UActorComponent_HasBeenCreated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_HasBegunPlay(IntPtr Self);
+		private static extern bool E_UActorComponent_HasBeenInitialized(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_HasValidPhysicsState(IntPtr Self);
+		private static extern bool E_UActorComponent_HasBegunPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_InitializeComponent(IntPtr Self);
+		private static extern bool E_UActorComponent_HasValidPhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_InvalidateLightingCache(IntPtr Self);
+		private static extern void E_UActorComponent_InitializeComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_InvalidateLightingCacheDetailed(IntPtr Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly);
+		private static extern void E_UActorComponent_InvalidateLightingCache(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsActive(IntPtr Self);
+		private static extern void E_UActorComponent_InvalidateLightingCacheDetailed(IntPtr self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsBeingDestroyed(IntPtr Self);
+		private static extern bool E_UActorComponent_IsActive(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsComponentTickEnabled(IntPtr Self);
+		private static extern bool E_UActorComponent_IsBeingDestroyed(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsCreatedByConstructionScript(IntPtr Self);
+		private static extern bool E_UActorComponent_IsComponentTickEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsEditableWhenInherited(IntPtr Self);
+		private static extern bool E_UActorComponent_IsCreatedByConstructionScript(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsNavigationRelevant(IntPtr Self);
+		private static extern bool E_UActorComponent_IsEditableWhenInherited(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsNetMode(IntPtr Self, byte Mode);
+		private static extern bool E_UActorComponent_IsNavigationRelevant(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsNetSimulating(IntPtr Self);
+		private static extern bool E_UActorComponent_IsNetMode(IntPtr self, byte mode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsNetStartupComponent(IntPtr Self);
+		private static extern bool E_UActorComponent_IsNetSimulating(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsOwnerRunningUserConstructionScript(IntPtr Self);
+		private static extern bool E_UActorComponent_IsNetStartupComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsOwnerSelected(IntPtr Self);
+		private static extern bool E_UActorComponent_IsOwnerRunningUserConstructionScript(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsPhysicsStateCreated(IntPtr Self);
+		private static extern bool E_UActorComponent_IsOwnerSelected(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsReadyForOwnerToAutoDestroy(IntPtr Self);
+		private static extern bool E_UActorComponent_IsPhysicsStateCreated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsRegistered(IntPtr Self);
+		private static extern bool E_UActorComponent_IsReadyForOwnerToAutoDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsRenderStateCreated(IntPtr Self);
+		private static extern bool E_UActorComponent_IsRegistered(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsRenderStateDirty(IntPtr Self);
+		private static extern bool E_UActorComponent_IsRenderStateCreated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_IsRenderTransformDirty(IntPtr Self);
+		private static extern bool E_UActorComponent_IsRenderStateDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_K2_DestroyComponent(IntPtr Self, IntPtr Object);
+		private static extern bool E_UActorComponent_IsRenderTransformDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_MarkForNeededEndOfFrameRecreate(IntPtr Self);
+		private static extern void E_UActorComponent_K2_DestroyComponent(IntPtr self, IntPtr @object);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_MarkForNeededEndOfFrameUpdate(IntPtr Self);
+		private static extern void E_UActorComponent_MarkForNeededEndOfFrameRecreate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_MarkRenderDynamicDataDirty(IntPtr Self);
+		private static extern void E_UActorComponent_MarkForNeededEndOfFrameUpdate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_MarkRenderStateDirty(IntPtr Self);
+		private static extern void E_UActorComponent_MarkRenderDynamicDataDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_MarkRenderTransformDirty(IntPtr Self);
+		private static extern void E_UActorComponent_MarkRenderStateDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnActorEnableCollisionChanged(IntPtr Self);
+		private static extern void E_UActorComponent_MarkRenderTransformDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnComponentCreated(IntPtr Self);
+		private static extern void E_UActorComponent_OnActorEnableCollisionChanged(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnComponentDestroyed(IntPtr Self, bool bDestroyingHierarchy);
+		private static extern void E_UActorComponent_OnComponentCreated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnCreatePhysicsState(IntPtr Self);
+		private static extern void E_UActorComponent_OnComponentDestroyed(IntPtr self, bool bDestroyingHierarchy);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnDestroyPhysicsState(IntPtr Self);
+		private static extern void E_UActorComponent_OnCreatePhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnRegister(IntPtr Self);
+		private static extern void E_UActorComponent_OnDestroyPhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnRep_IsActive(IntPtr Self);
+		private static extern void E_UActorComponent_OnRegister(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_OnUnregister(IntPtr Self);
+		private static extern void E_UActorComponent_OnRep_IsActive(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ReceiveBeginPlay(IntPtr Self);
+		private static extern void E_UActorComponent_OnUnregister(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ReceiveTick(IntPtr Self, float DeltaSeconds);
+		private static extern void E_UActorComponent_ReceiveBeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RecreatePhysicsState(IntPtr Self);
+		private static extern void E_UActorComponent_ReceiveTick(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RecreateRenderState_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_RecreatePhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterAllComponentTickFunctions(IntPtr Self, bool bRegister);
+		private static extern void E_UActorComponent_RecreateRenderState_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterComponent(IntPtr Self);
+		private static extern void E_UActorComponent_RegisterAllComponentTickFunctions(IntPtr self, bool bRegister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterComponentTickFunctions(IntPtr Self, bool bRegister);
+		private static extern void E_UActorComponent_RegisterComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterComponentWithWorld(IntPtr Self, IntPtr InWorld);
+		private static extern void E_UActorComponent_RegisterComponentTickFunctions(IntPtr self, bool bRegister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RemoveTickPrerequisiteActor(IntPtr Self, IntPtr PrerequisiteActor);
+		private static extern void E_UActorComponent_RegisterComponentWithWorld(IntPtr self, IntPtr inWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RemoveTickPrerequisiteComponent(IntPtr Self, IntPtr PrerequisiteComponent);
+		private static extern void E_UActorComponent_RemoveTickPrerequisiteActor(IntPtr self, IntPtr prerequisiteActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(IntPtr Self);
+		private static extern void E_UActorComponent_RemoveTickPrerequisiteComponent(IntPtr self, IntPtr prerequisiteComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(IntPtr Self);
+		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ReregisterComponent(IntPtr Self);
+		private static extern bool E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SendRenderDynamicData_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_ReregisterComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SendRenderTransform_Concurrent(IntPtr Self);
+		private static extern void E_UActorComponent_SendRenderDynamicData_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetActive(IntPtr Self, bool bNewActive, bool bReset);
+		private static extern void E_UActorComponent_SendRenderTransform_Concurrent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetAutoActivate(IntPtr Self, bool bNewAutoActivate);
+		private static extern void E_UActorComponent_SetActive(IntPtr self, bool bNewActive, bool bReset);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetCanEverAffectNavigation(IntPtr Self, bool bRelevant);
+		private static extern void E_UActorComponent_SetAutoActivate(IntPtr self, bool bNewAutoActivate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetComponentTickEnabled(IntPtr Self, bool bEnabled);
+		private static extern void E_UActorComponent_SetCanEverAffectNavigation(IntPtr self, bool bRelevant);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetComponentTickEnabledAsync(IntPtr Self, bool bEnabled);
+		private static extern void E_UActorComponent_SetComponentTickEnabled(IntPtr self, bool bEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetComponentTickInterval(IntPtr Self, float TickInterval);
+		private static extern void E_UActorComponent_SetComponentTickEnabledAsync(IntPtr self, bool bEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetIsNetStartupComponent(IntPtr Self, bool bInIsNetStartupComponent);
+		private static extern void E_UActorComponent_SetComponentTickInterval(IntPtr self, float tickInterval);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetIsReplicated(IntPtr Self, bool ShouldReplicate);
+		private static extern void E_UActorComponent_SetIsNetStartupComponent(IntPtr self, bool bInIsNetStartupComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetNetAddressable(IntPtr Self);
+		private static extern void E_UActorComponent_SetIsReplicated(IntPtr self, bool shouldReplicate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetTickableWhenPaused(IntPtr Self, bool bTickableWhenPaused);
+		private static extern void E_UActorComponent_SetNetAddressable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_SetTickGroup(IntPtr Self, byte NewTickGroup);
+		private static extern void E_UActorComponent_SetTickableWhenPaused(IntPtr self, bool bTickableWhenPaused);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_ShouldActivate(IntPtr Self);
+		private static extern void E_UActorComponent_SetTickGroup(IntPtr self, byte newTickGroup);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_ShouldCreatePhysicsState(IntPtr Self);
+		private static extern bool E_UActorComponent_ShouldActivate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UActorComponent_ShouldCreateRenderState(IntPtr Self);
+		private static extern bool E_UActorComponent_ShouldCreatePhysicsState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_ToggleActive(IntPtr Self);
+		private static extern bool E_UActorComponent_ShouldCreateRenderState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_UninitializeComponent(IntPtr Self);
+		private static extern void E_UActorComponent_ToggleActive(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_UnregisterComponent(IntPtr Self);
+		private static extern void E_UActorComponent_UninitializeComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_UpdateComponentToWorld(IntPtr Self, byte UpdateTransformFlags, byte Teleport);
+		private static extern void E_UActorComponent_UnregisterComponent(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UActorComponent_UpdateComponentToWorld(IntPtr self, byte updateTransformFlags, byte teleport);
 		
 		#endregion
 		
@@ -513,6 +523,16 @@ namespace UnrealEngine
 			set => E_PROP_UActorComponent_bWantsInitializeComponent_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Array of tags that can be used for grouping and categorizing. Can also be accessed from scripting. </para>
+		/// </summary>
+		public TArray<string> ComponentTags
+		{
+			get => E_PROP_UActorComponent_ComponentTags_GET(NativePointer);
+			set => E_PROP_UActorComponent_ComponentTags_SET(NativePointer, value);
+		}
+
 		public EComponentCreationMethod CreationMethod
 		{
 			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
@@ -549,9 +569,9 @@ namespace UnrealEngine
 
 		private event FActorComponentActivatedSignature _Event_OnComponentActivated;
 		
-		internal void InvokeEvent_OnComponentActivated(ObjectPointerDescription Component, bool bReset)
+		internal void InvokeEvent_OnComponentActivated(ObjectPointerDescription component, bool bReset)
 		{
-			_Event_OnComponentActivated?.Invoke(Component, bReset);
+			_Event_OnComponentActivated?.Invoke(component, bReset);
 		}
 
 		public event FActorComponentDeactivateSignature OnComponentDeactivated
@@ -572,9 +592,9 @@ namespace UnrealEngine
 
 		private event FActorComponentDeactivateSignature _Event_OnComponentDeactivated;
 		
-		internal void InvokeEvent_OnComponentDeactivated(ObjectPointerDescription Component)
+		internal void InvokeEvent_OnComponentDeactivated(ObjectPointerDescription component)
 		{
-			_Event_OnComponentDeactivated?.Invoke(Component);
+			_Event_OnComponentDeactivated?.Invoke(component);
 		}
 
 		#endregion
@@ -590,17 +610,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Give a readable name for this component, including asset name if applicable </para>
+		/// </summary>
+		public virtual UObject AdditionalStatObject()
+			=> E_UActorComponent_AdditionalStatObject(this);
+		
+		
+		/// <summary>
 		/// <para>Make this component tick after PrerequisiteActor </para>
 		/// </summary>
-		public virtual void AddTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_UActorComponent_AddTickPrerequisiteActor(this, PrerequisiteActor);
+		public virtual void AddTickPrerequisiteActor(AActor prerequisiteActor)
+			=> E_UActorComponent_AddTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
 		/// <para>Make this component tick after PrerequisiteComponent. </para>
 		/// </summary>
-		public virtual void AddTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_UActorComponent_AddTickPrerequisiteComponent(this, PrerequisiteComponent);
+		public virtual void AddTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
+			=> E_UActorComponent_AddTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
@@ -616,8 +643,8 @@ namespace UnrealEngine
 		/// <param name="InWorldOffset">Offset vector the actor shifted by </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
-		public virtual void ApplyWorldOffset(FVector InOffset, bool bWorldShift)
-			=> E_UActorComponent_ApplyWorldOffset(this, InOffset, bWorldShift);
+		public virtual void ApplyWorldOffset(FVector inOffset, bool bWorldShift)
+			=> E_UActorComponent_ApplyWorldOffset(this, inOffset, bWorldShift);
 		
 		
 		/// <summary>
@@ -647,8 +674,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>See if this component contains the supplied tag </para>
 		/// </summary>
-		public bool ComponentHasTag(string Tag)
-			=> E_UActorComponent_ComponentHasTag(this, Tag);
+		public bool ComponentHasTag(string tag)
+			=> E_UActorComponent_ComponentHasTag(this, tag);
 		
 		
 		/// <summary>
@@ -850,8 +877,8 @@ namespace UnrealEngine
 		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
 		/// <para>because it can check the static build flags without considering PIE. </para>
 		/// </summary>
-		public bool IsNetMode(ENetMode Mode)
-			=> E_UActorComponent_IsNetMode(this, (byte)Mode);
+		public bool IsNetMode(ENetMode mode)
+			=> E_UActorComponent_IsNetMode(this, (byte)mode);
 		
 		
 		/// <summary>
@@ -919,8 +946,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Unregister and mark for pending kill a component.  This may not be used to destroy a component that is owned by an actor unless the owning actor is calling the function. </para>
 		/// </summary>
-		public void K2_DestroyComponent(UObject Object)
-			=> E_UActorComponent_K2_DestroyComponent(this, Object);
+		public void K2_DestroyComponent(UObject @object)
+			=> E_UActorComponent_K2_DestroyComponent(this, @object);
 		
 		
 		/// <summary>
@@ -1022,8 +1049,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Event called every frame </para>
 		/// </summary>
-		public void Tick(float DeltaSeconds)
-			=> E_UActorComponent_ReceiveTick(this, DeltaSeconds);
+		public void Tick(float deltaSeconds)
+			=> E_UActorComponent_ReceiveTick(this, deltaSeconds);
 		
 		
 		/// <summary>
@@ -1068,22 +1095,22 @@ namespace UnrealEngine
 		/// <summary>
 		/// <param name="InWorld">The world to register the component with. </param>
 		/// </summary>
-		public void RegisterComponentWithWorld(UWorld InWorld)
-			=> E_UActorComponent_RegisterComponentWithWorld(this, InWorld);
+		public void RegisterComponentWithWorld(UWorld inWorld)
+			=> E_UActorComponent_RegisterComponentWithWorld(this, inWorld);
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteActor. </para>
 		/// </summary>
-		public virtual void RemoveTickPrerequisiteActor(AActor PrerequisiteActor)
-			=> E_UActorComponent_RemoveTickPrerequisiteActor(this, PrerequisiteActor);
+		public virtual void RemoveTickPrerequisiteActor(AActor prerequisiteActor)
+			=> E_UActorComponent_RemoveTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
 		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
 		/// </summary>
-		public virtual void RemoveTickPrerequisiteComponent(UActorComponent PrerequisiteComponent)
-			=> E_UActorComponent_RemoveTickPrerequisiteComponent(this, PrerequisiteComponent);
+		public virtual void RemoveTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
+			=> E_UActorComponent_RemoveTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
@@ -1166,8 +1193,8 @@ namespace UnrealEngine
 		/// <para>Sets the tick interval for this component's primary tick function. Does not enable the tick interval. Takes effect on next tick. </para>
 		/// <param name="TickInterval">The duration between ticks for this component's primary tick function </param>
 		/// </summary>
-		public void SetComponentTickInterval(float TickInterval)
-			=> E_UActorComponent_SetComponentTickInterval(this, TickInterval);
+		public void SetComponentTickInterval(float tickInterval)
+			=> E_UActorComponent_SetComponentTickInterval(this, tickInterval);
 		
 		
 		/// <summary>
@@ -1180,8 +1207,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Enable or disable replication. This is the equivalent of RemoteRole for actors (only a bool is required for components) </para>
 		/// </summary>
-		public void SetIsReplicated(bool ShouldReplicate)
-			=> E_UActorComponent_SetIsReplicated(this, ShouldReplicate);
+		public void SetIsReplicated(bool shouldReplicate)
+			=> E_UActorComponent_SetIsReplicated(this, shouldReplicate);
 		
 		
 		/// <summary>
@@ -1201,8 +1228,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Changes the ticking group for this component </para>
 		/// </summary>
-		public void SetTickGroup(ETickingGroup NewTickGroup)
-			=> E_UActorComponent_SetTickGroup(this, (byte)NewTickGroup);
+		public void SetTickGroup(ETickingGroup newTickGroup)
+			=> E_UActorComponent_SetTickGroup(this, (byte)newTickGroup);
 		
 		
 		/// <summary>
@@ -1252,14 +1279,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Recalculate the value of our component to world transform </para>
 		/// </summary>
-		public virtual void UpdateComponentToWorld(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
-			=> E_UActorComponent_UpdateComponentToWorld(this, (byte)UpdateTransformFlags, (byte)Teleport);
+		public virtual void UpdateComponentToWorld(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
+			=> E_UActorComponent_UpdateComponentToWorld(this, (byte)updateTransformFlags, (byte)teleport);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UActorComponent Self)
+		public static implicit operator IntPtr(UActorComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UActorComponent(ObjectPointerDescription PtrDesc)

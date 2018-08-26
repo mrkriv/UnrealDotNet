@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,13 +18,13 @@ namespace UnrealEngine
 		{
 		}
 
-		public FHitResult(float InTime) :
-			base(E_CreateStruct_FHitResult_float(InTime), false)
+		public FHitResult(float inTime) :
+			base(E_CreateStruct_FHitResult_float(inTime), false)
 		{
 		}
 
-		public FHitResult(FVector Start, FVector End) :
-			base(E_CreateStruct_FHitResult_FVector_FVector(Start, End), false)
+		public FHitResult(FVector start, FVector end) :
+			base(E_CreateStruct_FHitResult_FVector_FVector(start, end), false)
 		{
 		}
 
@@ -30,8 +32,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Ctor for easily creating "fake" hits from limited data. </para>
 		/// </summary>
-		public FHitResult(AActor InActor, UPrimitiveComponent InComponent, FVector HitLoc, FVector HitNorm) :
-			base(E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(InActor, InComponent, HitLoc, HitNorm), false)
+		public FHitResult(AActor inActor, UPrimitiveComponent inComponent, FVector hitLoc, FVector hitNorm) :
+			base(E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(inActor, inComponent, hitLoc, hitNorm), false)
 		{
 		}
 
@@ -40,13 +42,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FHitResult();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FHitResult_float(float InTime);
+		private static extern IntPtr E_CreateStruct_FHitResult_float(float inTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FHitResult_FVector_FVector(IntPtr Start, IntPtr End);
+		private static extern IntPtr E_CreateStruct_FHitResult_FVector_FVector(IntPtr start, IntPtr end);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(IntPtr InActor, IntPtr InComponent, IntPtr HitLoc, IntPtr HitNorm);
+		private static extern IntPtr E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(IntPtr inActor, IntPtr inComponent, IntPtr hitLoc, IntPtr hitNorm);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FHitResult_bBlockingHit_GET(IntPtr Ptr);
@@ -94,22 +96,37 @@ namespace UnrealEngine
 		private static extern void E_PROP_FHitResult_Time_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FHitResult_GetActor(IntPtr Self);
+		private static extern ObjectPointerDescription E_FHitResult_GetActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FHitResult_GetComponent(IntPtr Self);
+		private static extern ObjectPointerDescription E_FHitResult_GetComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FHitResult_GetReversedHit(IntPtr Self, IntPtr Hit);
+		private static extern IntPtr E_FHitResult_GetFirstBlockingHit(IntPtr self, IntPtr inHits);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FHitResult_IsValidBlockingHit(IntPtr Self);
+		private static extern int E_FHitResult_GetNumBlockingHits(IntPtr self, IntPtr inHits);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FHitResult_Reset(IntPtr Self, float InTime, bool bPreserveTraceData);
+		private static extern int E_FHitResult_GetNumOverlapHits(IntPtr self, IntPtr inHits);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FHitResult_ToString(IntPtr Self);
+		private static extern IntPtr E_FHitResult_GetReversedHit(IntPtr self, IntPtr hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FHitResult_Init(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FHitResult_Init_o1(IntPtr self, IntPtr start, IntPtr end);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FHitResult_IsValidBlockingHit(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FHitResult_Reset(IntPtr self, float inTime, bool bPreserveTraceData);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FHitResult_ToString(IntPtr self);
 		
 		#endregion
 		
@@ -187,11 +204,46 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Static utility function that returns the first 'blocking' hit in an array of results. </para>
+		/// </summary>
+		public FHitResult GetFirstBlockingHit(TArray<FHitResult> inHits)
+			=> E_FHitResult_GetFirstBlockingHit(this, inHits);
+		
+		
+		/// <summary>
+		/// <para>Static utility function that returns the number of blocking hits in array. </para>
+		/// </summary>
+		public int GetNumBlockingHits(TArray<FHitResult> inHits)
+			=> E_FHitResult_GetNumBlockingHits(this, inHits);
+		
+		
+		/// <summary>
+		/// <para>Static utility function that returns the number of overlapping hits in array. </para>
+		/// </summary>
+		public int GetNumOverlapHits(TArray<FHitResult> inHits)
+			=> E_FHitResult_GetNumOverlapHits(this, inHits);
+		
+		
+		/// <summary>
 		/// <para>Get a copy of the HitResult with relevant information reversed. </para>
 		/// <para>For example when receiving a hit from another object, we reverse the normals. </para>
 		/// </summary>
-		public FHitResult GetReversedHit(FHitResult Hit)
-			=> E_FHitResult_GetReversedHit(this, Hit);
+		public FHitResult GetReversedHit(FHitResult hit)
+			=> E_FHitResult_GetReversedHit(this, hit);
+		
+		
+		/// <summary>
+		/// <para>Initialize empty hit result with given time. </para>
+		/// </summary>
+		public void Init()
+			=> E_FHitResult_Init(this);
+		
+		
+		/// <summary>
+		/// <para>Initialize empty hit result with given time, TraceStart, and TraceEnd </para>
+		/// </summary>
+		public void Init(FVector start, FVector end)
+			=> E_FHitResult_Init_o1(this, start, end);
 		
 		
 		/// <summary>
@@ -204,17 +256,17 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Reset hit result while optionally saving TraceStart and TraceEnd. </para>
 		/// </summary>
-		public void Reset(float InTime, bool bPreserveTraceData = true)
-			=> E_FHitResult_Reset(this, InTime, bPreserveTraceData);
+		public void Reset(float inTime, bool bPreserveTraceData = true)
+			=> E_FHitResult_Reset(this, inTime, bPreserveTraceData);
 		
 		public override string ToString()
 			=> E_FHitResult_ToString(this);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FHitResult Self)
+		public static implicit operator IntPtr(FHitResult self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FHitResult(IntPtr Adress)

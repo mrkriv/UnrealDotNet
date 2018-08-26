@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -29,34 +31,37 @@ namespace UnrealEngine
 		private static extern void E_PROP_USceneCaptureComponent_ProfilingEventName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_ClearHiddenComponents(IntPtr Self);
+		private static extern void E_USceneCaptureComponent_ClearHiddenComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_ClearShowOnlyComponents(IntPtr Self, IntPtr InComponent);
+		private static extern void E_USceneCaptureComponent_ClearShowOnlyComponents(IntPtr self, IntPtr inComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_HideActorComponents(IntPtr Self, IntPtr InActor);
+		private static extern ObjectPointerDescription E_USceneCaptureComponent_GetViewOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_HideComponent(IntPtr Self, IntPtr InComponent);
+		private static extern void E_USceneCaptureComponent_HideActorComponents(IntPtr self, IntPtr inActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_RemoveShowOnlyActorComponents(IntPtr Self, IntPtr InActor);
+		private static extern void E_USceneCaptureComponent_HideComponent(IntPtr self, IntPtr inComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_RemoveShowOnlyComponent(IntPtr Self, IntPtr InComponent);
+		private static extern void E_USceneCaptureComponent_RemoveShowOnlyActorComponents(IntPtr self, IntPtr inActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_SetCaptureSortPriority(IntPtr Self, int NewCaptureSortPriority);
+		private static extern void E_USceneCaptureComponent_RemoveShowOnlyComponent(IntPtr self, IntPtr inComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_ShowOnlyActorComponents(IntPtr Self, IntPtr InActor);
+		private static extern void E_USceneCaptureComponent_SetCaptureSortPriority(IntPtr self, int newCaptureSortPriority);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_ShowOnlyComponent(IntPtr Self, IntPtr InComponent);
+		private static extern void E_USceneCaptureComponent_ShowOnlyActorComponents(IntPtr self, IntPtr inActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_UpdateShowFlags(IntPtr Self);
+		private static extern void E_USceneCaptureComponent_ShowOnlyComponent(IntPtr self, IntPtr inComponent);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USceneCaptureComponent_UpdateShowFlags(IntPtr self);
 		
 		#endregion
 		
@@ -85,57 +90,64 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Clears the Show Only list. </para>
 		/// </summary>
-		public void ClearShowOnlyComponents(UPrimitiveComponent InComponent)
-			=> E_USceneCaptureComponent_ClearShowOnlyComponents(this, InComponent);
+		public void ClearShowOnlyComponents(UPrimitiveComponent inComponent)
+			=> E_USceneCaptureComponent_ClearShowOnlyComponents(this, inComponent);
+		
+		
+		/// <summary>
+		/// <para>To leverage a component's bOwnerNoSee/bOnlyOwnerSee properties, the capture view requires an "owner". Override this to set a "ViewActor" for the scene. </para>
+		/// </summary>
+		public virtual AActor GetViewOwner()
+			=> E_USceneCaptureComponent_GetViewOwner(this);
 		
 		
 		/// <summary>
 		/// <para>Adds all primitive components in the actor to our list of hidden components. </para>
 		/// </summary>
-		public void HideActorComponents(AActor InActor)
-			=> E_USceneCaptureComponent_HideActorComponents(this, InActor);
+		public void HideActorComponents(AActor inActor)
+			=> E_USceneCaptureComponent_HideActorComponents(this, inActor);
 		
 		
 		/// <summary>
 		/// <para>Adds the component to our list of hidden components. </para>
 		/// </summary>
-		public void HideComponent(UPrimitiveComponent InComponent)
-			=> E_USceneCaptureComponent_HideComponent(this, InComponent);
+		public void HideComponent(UPrimitiveComponent inComponent)
+			=> E_USceneCaptureComponent_HideComponent(this, inComponent);
 		
 		
 		/// <summary>
 		/// <para>Removes a actor's components from the Show Only list. </para>
 		/// </summary>
-		public void RemoveShowOnlyActorComponents(AActor InActor)
-			=> E_USceneCaptureComponent_RemoveShowOnlyActorComponents(this, InActor);
+		public void RemoveShowOnlyActorComponents(AActor inActor)
+			=> E_USceneCaptureComponent_RemoveShowOnlyActorComponents(this, inActor);
 		
 		
 		/// <summary>
 		/// <para>Removes a component from the Show Only list. </para>
 		/// </summary>
-		public void RemoveShowOnlyComponent(UPrimitiveComponent InComponent)
-			=> E_USceneCaptureComponent_RemoveShowOnlyComponent(this, InComponent);
+		public void RemoveShowOnlyComponent(UPrimitiveComponent inComponent)
+			=> E_USceneCaptureComponent_RemoveShowOnlyComponent(this, inComponent);
 		
 		
 		/// <summary>
 		/// <para>Changes the value of TranslucentSortPriority. </para>
 		/// </summary>
-		public void SetCaptureSortPriority(int NewCaptureSortPriority)
-			=> E_USceneCaptureComponent_SetCaptureSortPriority(this, NewCaptureSortPriority);
+		public void SetCaptureSortPriority(int newCaptureSortPriority)
+			=> E_USceneCaptureComponent_SetCaptureSortPriority(this, newCaptureSortPriority);
 		
 		
 		/// <summary>
 		/// <para>Adds all primitive components in the actor to our list of show-only components. </para>
 		/// </summary>
-		public void ShowOnlyActorComponents(AActor InActor)
-			=> E_USceneCaptureComponent_ShowOnlyActorComponents(this, InActor);
+		public void ShowOnlyActorComponents(AActor inActor)
+			=> E_USceneCaptureComponent_ShowOnlyActorComponents(this, inActor);
 		
 		
 		/// <summary>
 		/// <para>Adds the component to our list of show-only components. </para>
 		/// </summary>
-		public void ShowOnlyComponent(UPrimitiveComponent InComponent)
-			=> E_USceneCaptureComponent_ShowOnlyComponent(this, InComponent);
+		public void ShowOnlyComponent(UPrimitiveComponent inComponent)
+			=> E_USceneCaptureComponent_ShowOnlyComponent(this, inComponent);
 		
 		
 		/// <summary>
@@ -146,9 +158,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USceneCaptureComponent Self)
+		public static implicit operator IntPtr(USceneCaptureComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USceneCaptureComponent(ObjectPointerDescription PtrDesc)

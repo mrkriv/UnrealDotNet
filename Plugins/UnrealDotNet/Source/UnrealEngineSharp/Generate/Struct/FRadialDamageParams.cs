@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,18 +18,18 @@ namespace UnrealEngine
 		{
 		}
 
-		public FRadialDamageParams(float InBaseDamage, float InInnerRadius, float InOuterRadius, float InDamageFalloff) :
-			base(E_CreateStruct_FRadialDamageParams_float_float_float_float(InBaseDamage, InInnerRadius, InOuterRadius, InDamageFalloff), false)
+		public FRadialDamageParams(float inBaseDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff) :
+			base(E_CreateStruct_FRadialDamageParams_float_float_float_float(inBaseDamage, inInnerRadius, inOuterRadius, inDamageFalloff), false)
 		{
 		}
 
-		public FRadialDamageParams(float InBaseDamage, float InMinimumDamage, float InInnerRadius, float InOuterRadius, float InDamageFalloff) :
-			base(E_CreateStruct_FRadialDamageParams_float_float_float_float_float(InBaseDamage, InMinimumDamage, InInnerRadius, InOuterRadius, InDamageFalloff), false)
+		public FRadialDamageParams(float inBaseDamage, float inMinimumDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff) :
+			base(E_CreateStruct_FRadialDamageParams_float_float_float_float_float(inBaseDamage, inMinimumDamage, inInnerRadius, inOuterRadius, inDamageFalloff), false)
 		{
 		}
 
-		public FRadialDamageParams(float InBaseDamage, float InRadius) :
-			base(E_CreateStruct_FRadialDamageParams_float_float(InBaseDamage, InRadius), false)
+		public FRadialDamageParams(float inBaseDamage, float inRadius) :
+			base(E_CreateStruct_FRadialDamageParams_float_float(inBaseDamage, inRadius), false)
 		{
 		}
 
@@ -36,13 +38,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRadialDamageParams();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float(float InBaseDamage, float InInnerRadius, float InOuterRadius, float InDamageFalloff);
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float(float inBaseDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float_float(float InBaseDamage, float InMinimumDamage, float InInnerRadius, float InOuterRadius, float InDamageFalloff);
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float_float(float inBaseDamage, float inMinimumDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float(float InBaseDamage, float InRadius);
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float(float inBaseDamage, float inRadius);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FRadialDamageParams_BaseDamage_GET(IntPtr Ptr);
@@ -70,10 +72,10 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRadialDamageParams_OuterRadius_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FRadialDamageParams_GetDamageScale(IntPtr Self, float DistanceFromEpicenter);
+		private static extern float E_FRadialDamageParams_GetDamageScale(IntPtr self, float distanceFromEpicenter);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FRadialDamageParams_GetMaxRadius(IntPtr Self);
+		private static extern float E_FRadialDamageParams_GetMaxRadius(IntPtr self);
 		
 		#endregion
 		
@@ -111,8 +113,8 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public float GetDamageScale(float DistanceFromEpicenter)
-			=> E_FRadialDamageParams_GetDamageScale(this, DistanceFromEpicenter);
+		public float GetDamageScale(float distanceFromEpicenter)
+			=> E_FRadialDamageParams_GetDamageScale(this, distanceFromEpicenter);
 		
 		
 		/// <summary>
@@ -123,9 +125,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FRadialDamageParams Self)
+		public static implicit operator IntPtr(FRadialDamageParams self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRadialDamageParams(IntPtr Adress)

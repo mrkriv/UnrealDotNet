@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,13 +18,13 @@ namespace UnrealEngine
 		{
 		}
 
-		public FOverlapInfo(FHitResult InSweepResult) :
-			base(E_CreateStruct_FOverlapInfo_FHitResult(InSweepResult), false)
+		public FOverlapInfo(FHitResult inSweepResult) :
+			base(E_CreateStruct_FOverlapInfo_FHitResult(inSweepResult), false)
 		{
 		}
 
-		public FOverlapInfo(UPrimitiveComponent InComponent, int InBodyIndex) :
-			base(E_CreateStruct_FOverlapInfo_UPrimitiveComponent_int32(InComponent, InBodyIndex), false)
+		public FOverlapInfo(UPrimitiveComponent inComponent, int inBodyIndex) :
+			base(E_CreateStruct_FOverlapInfo_UPrimitiveComponent_int32(inComponent, inBodyIndex), false)
 		{
 		}
 
@@ -31,10 +33,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FOverlapInfo();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FOverlapInfo_FHitResult(IntPtr InSweepResult);
+		private static extern IntPtr E_CreateStruct_FOverlapInfo_FHitResult(IntPtr inSweepResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FOverlapInfo_UPrimitiveComponent_int32(IntPtr InComponent, int InBodyIndex);
+		private static extern IntPtr E_CreateStruct_FOverlapInfo_UPrimitiveComponent_int32(IntPtr inComponent, int inBodyIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FOverlapInfo_bFromSweep_GET(IntPtr Ptr);
@@ -47,7 +49,7 @@ namespace UnrealEngine
 		private static extern void E_PROP_FOverlapInfo_OverlapInfo_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_FOverlapInfo_GetBodyIndex(IntPtr Self);
+		private static extern int E_FOverlapInfo_GetBodyIndex(IntPtr self);
 		
 		#endregion
 		
@@ -78,9 +80,9 @@ namespace UnrealEngine
 		
 		#endregion
 		
-		public static implicit operator IntPtr(FOverlapInfo Self)
+		public static implicit operator IntPtr(FOverlapInfo self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FOverlapInfo(IntPtr Adress)

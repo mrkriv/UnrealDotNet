@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -17,7 +19,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Apply momentum caused by damage. </para>
 		/// </summary>
-		public override void ApplyDamageMomentum(float DamageTaken, FDamageEvent DamageEvent, APawn PawnInstigator, AActor DamageCauser) { }
+		public override void ApplyDamageMomentum(float damageTaken, FDamageEvent damageEvent, APawn pawnInstigator, AActor damageCauser) { }
 		
 		
 		/// <summary>
@@ -31,19 +33,19 @@ namespace UnrealEngine
 		/// <para>This is automatically called during initialization; call this at runtime if you intend to change the default mesh offset from the capsule. </para>
 		/// <para>@see GetBaseTranslationOffset(), GetBaseRotationOffset() </para>
 		/// </summary>
-		public override void CacheInitialMeshOffset(FVector MeshRelativeLocation, FRotator MeshRelativeRotation) { }
+		public override void CacheInitialMeshOffset(FVector meshRelativeLocation, FRotator meshRelativeRotation) { }
 		
 		
 		/// <summary>
 		/// <para>Trigger jump if jump button has been pressed. </para>
 		/// </summary>
-		public override void CheckJumpInput(float DeltaTime) { }
+		public override void CheckJumpInput(float deltaTime) { }
 		
 		
 		/// <summary>
 		/// <para>Update jump input state after having checked input. </para>
 		/// </summary>
-		public override void ClearJumpInput(float DeltaTime) { }
+		public override void ClearJumpInput(float deltaTime) { }
 		
 		public override void ClientCheatFly_Implementation() { }
 		
@@ -85,7 +87,7 @@ namespace UnrealEngine
 		/// <param name="Hit">Result describing the landing that resulted in a valid landing spot. </param>
 		/// <para>@see OnMovementModeChanged() </para>
 		/// </summary>
-		public override void Landed(FHitResult Hit) { }
+		public override void Landed(FHitResult hit) { }
 		
 		
 		/// <summary>
@@ -95,18 +97,18 @@ namespace UnrealEngine
 		/// <para>@PARAM bXYOverride if true replace the XY part of the Character's velocity instead of adding to it. </para>
 		/// <para>@PARAM bZOverride if true replace the Z component of the Character's velocity instead of adding to it. </para>
 		/// </summary>
-		public override void LaunchCharacter(FVector LaunchVelocity, bool bXYOverride, bool bZOverride) { }
+		public override void LaunchCharacter(FVector launchVelocity, bool bXYOverride, bool bZOverride) { }
 		
 		
 		/// <summary>
 		/// <para>Called when pawn's movement is blocked </para>
 		/// <param name="Impact">describes the blocking hit. </param>
 		/// </summary>
-		public override void MoveBlockedBy(FHitResult Impact) { }
+		public override void MoveBlockedBy(FHitResult impact) { }
 		
-		public override void NotifyActorBeginOverlap(AActor OtherActor) { }
+		public override void NotifyActorBeginOverlap(AActor otherActor) { }
 		
-		public override void NotifyActorEndOverlap(AActor OtherActor) { }
+		public override void NotifyActorEndOverlap(AActor otherActor) { }
 		
 		
 		/// <summary>
@@ -120,7 +122,7 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public override void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) { }
+		public override void OnEndCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust) { }
 		
 		public override void OnJumped_Implementation() { }
 		
@@ -130,7 +132,7 @@ namespace UnrealEngine
 		/// <param name="PrevMovementMode">Movement mode before the change </param>
 		/// <param name="PrevCustomMode">Custom mode before the change (applicable if PrevMovementMode is Custom) </param>
 		/// </summary>
-		public override void OnMovementModeChanged(EMovementMode PrevMovementMode, byte PreviousCustomMode) { }
+		public override void OnMovementModeChanged(EMovementMode prevMovementMode, byte previousCustomMode) { }
 		
 		public override void OnRep_IsCrouched() { }
 		
@@ -142,7 +144,7 @@ namespace UnrealEngine
 		/// <param name="HalfHeightAdjust">difference between default collision half-height, and actual crouched capsule half-height. </param>
 		/// <param name="ScaledHalfHeightAdjust">difference after component scale is taken in to account. </param>
 		/// </summary>
-		public override void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) { }
+		public override void OnStartCrouch(float halfHeightAdjust, float scaledHalfHeightAdjust) { }
 		
 		
 		/// <summary>
@@ -150,17 +152,17 @@ namespace UnrealEngine
 		/// <para>Actual change in location is expected to occur in CharacterMovement->SmoothCorrection(), after which this occurs. </para>
 		/// <para>Default behavior is to check for penetration in a blocking object if bClientCheckEncroachmentOnNetUpdate is enabled, and set bSimGravityDisabled=true if so. </para>
 		/// </summary>
-		public override void OnUpdateSimulatedPosition(FVector OldLocation, FQuat OldRotation) { }
+		public override void OnUpdateSimulatedPosition(FVector oldLocation, FQuat oldRotation) { }
 		
-		public override void OnWalkingOffLedge_Implementation(FVector PreviousFloorImpactNormal, FVector PreviousFloorContactNormal, FVector PreviousLocation, float TimeDelta) { }
+		public override void OnWalkingOffLedge_Implementation(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta) { }
 		
-		public override void RootMotionDebugClientPrintOnScreen_Implementation(string InString) { }
+		public override void RootMotionDebugClientPrintOnScreen_Implementation(string inString) { }
 		
 		
 		/// <summary>
 		/// <para>Sets the component the Character is walking on, used by CharacterMovement walking movement to be able to follow dynamic objects. </para>
 		/// </summary>
-		public override void SetBase(UPrimitiveComponent NewBase, string BoneName, bool bNotifyActor) { }
+		public override void SetBase(UPrimitiveComponent newBase, string boneName, bool bNotifyActor) { }
 		
 		
 		/// <summary>
@@ -180,9 +182,9 @@ namespace UnrealEngine
 		/// </summary>
 		public override void UnCrouch(bool bClientSimulation) { }
 		
-		public static implicit operator IntPtr(ManageCharacter Self)
+		public static implicit operator IntPtr(ManageCharacter self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageCharacter(ObjectPointerDescription PtrDesc)

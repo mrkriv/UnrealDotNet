@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -21,6 +23,11 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FRadialDamageEvent();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FRadialDamageEvent_ComponentHits_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRadialDamageEvent_ComponentHits_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FRadialDamageEvent_Origin_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRadialDamageEvent_Origin_SET(IntPtr Ptr, IntPtr Value);
@@ -33,6 +40,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public TArray<FHitResult> ComponentHits
+		{
+			get => E_PROP_FRadialDamageEvent_ComponentHits_GET(NativePointer);
+			set => E_PROP_FRadialDamageEvent_ComponentHits_SET(NativePointer, value);
+		}
+
 		public FVector Origin
 		{
 			get => E_PROP_FRadialDamageEvent_Origin_GET(NativePointer);
@@ -47,9 +60,9 @@ namespace UnrealEngine
 
 		#endregion
 		
-		public static implicit operator IntPtr(FRadialDamageEvent Self)
+		public static implicit operator IntPtr(FRadialDamageEvent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FRadialDamageEvent(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -35,8 +37,8 @@ namespace UnrealEngine
 		/// <param name="InMin">The box's minimum point. </param>
 		/// <param name="InMax">The box's maximum point. </param>
 		/// </summary>
-		public FBox(FVector InMin, FVector InMax) :
-			base(E_CreateStruct_FBox_FVector_FVector(InMin, InMax), false)
+		public FBox(FVector inMin, FVector inMax) :
+			base(E_CreateStruct_FBox_FVector_FVector(inMin, inMax), false)
 		{
 		}
 
@@ -46,8 +48,18 @@ namespace UnrealEngine
 		/// <param name="Points">Array of Points to create for the bounding volume. </param>
 		/// <param name="Count">The number of points. </param>
 		/// </summary>
-		public FBox(FVector Points, int Count) :
-			base(E_CreateStruct_FBox_FVector_int32(Points, Count), false)
+		public FBox(FVector points, int count) :
+			base(E_CreateStruct_FBox_FVector_int32(points, count), false)
+		{
+		}
+
+		
+		/// <summary>
+		/// <para>Creates and initializes a new box from an array of points. </para>
+		/// <param name="Points">Array of Points to create for the bounding volume. </param>
+		/// </summary>
+		public FBox(TArray<FVector> points) :
+			base(E_CreateStruct_FBox_TArray__FVector(points), false)
 		{
 		}
 
@@ -59,10 +71,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FBox_int32(int _p0);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox_FVector_FVector(IntPtr InMin, IntPtr InMax);
+		private static extern IntPtr E_CreateStruct_FBox_FVector_FVector(IntPtr inMin, IntPtr inMax);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox_FVector_int32(IntPtr Points, int Count);
+		private static extern IntPtr E_CreateStruct_FBox_FVector_int32(IntPtr points, int count);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBox_TArray__FVector(IntPtr points);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FBox_IsValid_GET(IntPtr Ptr);
@@ -80,55 +95,82 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBox_Min_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_BuildAABB(IntPtr Self, IntPtr Origin, IntPtr Extent);
+		private static extern IntPtr E_FBox_BuildAABB(IntPtr self, IntPtr origin, IntPtr extent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FBox_ComputeSquaredDistanceToPoint(IntPtr Self, IntPtr Point);
+		private static extern float E_FBox_ComputeSquaredDistanceToPoint(IntPtr self, IntPtr point);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_GetCenter(IntPtr Self);
+		private static extern IntPtr E_FBox_ExpandBy(IntPtr self, float w);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBox_GetCenterAndExtents(IntPtr Self, IntPtr center, IntPtr Extents);
+		private static extern IntPtr E_FBox_ExpandBy_o1(IntPtr self, IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_GetClosestPointTo(IntPtr Self, IntPtr Point);
+		private static extern IntPtr E_FBox_ExpandBy_o2(IntPtr self, IntPtr neg, IntPtr pos);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_GetExtent(IntPtr Self);
+		private static extern IntPtr E_FBox_GetCenter(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_GetSize(IntPtr Self);
+		private static extern void E_FBox_GetCenterAndExtents(IntPtr self, IntPtr center, IntPtr extents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FBox_GetVolume(IntPtr Self);
+		private static extern IntPtr E_FBox_GetClosestPointTo(IntPtr self, IntPtr point);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FBox_Init(IntPtr Self);
+		private static extern IntPtr E_FBox_GetExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBox_Intersect(IntPtr Self, IntPtr other);
+		private static extern IntPtr E_FBox_GetExtrema(IntPtr self, int pointIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBox_IntersectXY(IntPtr Self, IntPtr Other);
+		private static extern IntPtr E_FBox_GetSize(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_InverseTransformBy(IntPtr Self, IntPtr M);
+		private static extern float E_FBox_GetVolume(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FBox_IsInsideOrOn(IntPtr Self, IntPtr In);
+		private static extern void E_FBox_Init(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_MoveTo(IntPtr Self, IntPtr Destination);
+		private static extern bool E_FBox_Intersect(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_Overlap(IntPtr Self, IntPtr Other);
+		private static extern bool E_FBox_IntersectXY(IntPtr self, IntPtr other);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FBox_ShiftBy(IntPtr Self, IntPtr Offset);
+		private static extern IntPtr E_FBox_InverseTransformBy(IntPtr self, IntPtr m);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_FBox_ToString(IntPtr Self);
+		private static extern bool E_FBox_IsInside(IntPtr self, IntPtr @in);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FBox_IsInside_o1(IntPtr self, IntPtr other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FBox_IsInsideOrOn(IntPtr self, IntPtr @in);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FBox_IsInsideXY(IntPtr self, IntPtr @in);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_FBox_IsInsideXY_o1(IntPtr self, IntPtr other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_MoveTo(IntPtr self, IntPtr destination);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_Overlap(IntPtr self, IntPtr other);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_ShiftBy(IntPtr self, IntPtr offset);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_FBox_ToString(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_TransformBy(IntPtr self, IntPtr m);
 		
 		#endregion
 		
@@ -173,8 +215,8 @@ namespace UnrealEngine
 		/// <param name="Extent">Half size of the bounding box. </param>
 		/// <return>A new axis-aligned bounding box. </return>
 		/// </summary>
-		public FBox BuildAABB(FVector Origin, FVector Extent)
-			=> E_FBox_BuildAABB(this, Origin, Extent);
+		public FBox BuildAABB(FVector origin, FVector extent)
+			=> E_FBox_BuildAABB(this, origin, extent);
 		
 		
 		/// <summary>
@@ -182,8 +224,36 @@ namespace UnrealEngine
 		/// <param name="Point">The point. </param>
 		/// <return>The distance. </return>
 		/// </summary>
-		public float ComputeSquaredDistanceToPoint(FVector Point)
-			=> E_FBox_ComputeSquaredDistanceToPoint(this, Point);
+		public float ComputeSquaredDistanceToPoint(FVector point)
+			=> E_FBox_ComputeSquaredDistanceToPoint(this, point);
+		
+		
+		/// <summary>
+		/// <para>Increases the box size. </para>
+		/// <param name="W">The size to increase the volume by. </param>
+		/// <return>A new bounding box. </return>
+		/// </summary>
+		public FBox ExpandBy(float w)
+			=> E_FBox_ExpandBy(this, w);
+		
+		
+		/// <summary>
+		/// <para>Increases the box size. </para>
+		/// <param name="V">The size to increase the volume by. </param>
+		/// <return>A new bounding box. </return>
+		/// </summary>
+		public FBox ExpandBy(FVector v)
+			=> E_FBox_ExpandBy_o1(this, v);
+		
+		
+		/// <summary>
+		/// <para>Increases the box size. </para>
+		/// <param name="Neg">The size to increase the volume by in the negative direction (positive values move the bounds outwards) </param>
+		/// <param name="Pos">The size to increase the volume by in the positive direction (positive values move the bounds outwards) </param>
+		/// <return>A new bounding box. </return>
+		/// </summary>
+		public FBox ExpandBy(FVector neg, FVector pos)
+			=> E_FBox_ExpandBy_o2(this, neg, pos);
 		
 		
 		/// <summary>
@@ -201,8 +271,8 @@ namespace UnrealEngine
 		/// <param name="Extents">out] Will contain the extent around the center. </param>
 		/// <para>@see GetCenter, GetExtent, GetSize, GetVolume </para>
 		/// </summary>
-		public void GetCenterAndExtents(FVector center, FVector Extents)
-			=> E_FBox_GetCenterAndExtents(this, center, Extents);
+		public void GetCenterAndExtents(FVector center, FVector extents)
+			=> E_FBox_GetCenterAndExtents(this, center, extents);
 		
 		
 		/// <summary>
@@ -210,8 +280,8 @@ namespace UnrealEngine
 		/// <param name="Point">The point in space. </param>
 		/// <return>The closest point on or inside the box. </return>
 		/// </summary>
-		public FVector GetClosestPointTo(FVector Point)
-			=> E_FBox_GetClosestPointTo(this, Point);
+		public FVector GetClosestPointTo(FVector point)
+			=> E_FBox_GetClosestPointTo(this, point);
 		
 		
 		/// <summary>
@@ -221,6 +291,15 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetExtent()
 			=> E_FBox_GetExtent(this);
+		
+		
+		/// <summary>
+		/// <para>Gets a reference to the specified point of the bounding box. </para>
+		/// <param name="PointIndex">The index of the extrema point to return. </param>
+		/// <return>A reference to the point. </return>
+		/// </summary>
+		public FVector GetExtrema(int pointIndex)
+			=> E_FBox_GetExtrema(this, pointIndex);
 		
 		
 		/// <summary>
@@ -262,8 +341,8 @@ namespace UnrealEngine
 		/// <param name="Other">The bounding box to test intersection. </param>
 		/// <return>true if the boxes intersect in the XY Plane, false otherwise. </return>
 		/// </summary>
-		public bool IntersectXY(FBox Other)
-			=> E_FBox_IntersectXY(this, Other);
+		public bool IntersectXY(FBox other)
+			=> E_FBox_IntersectXY(this, other);
 		
 		
 		/// <summary>
@@ -271,8 +350,27 @@ namespace UnrealEngine
 		/// <param name="M">The transformation object to perform the inversely transform this box with. </param>
 		/// <return>The transformed box. </return>
 		/// </summary>
-		public FBox InverseTransformBy(FTransform M)
-			=> E_FBox_InverseTransformBy(this, M);
+		public FBox InverseTransformBy(FTransform m)
+			=> E_FBox_InverseTransformBy(this, m);
+		
+		
+		/// <summary>
+		/// <para>Checks whether the given location is inside this box. </para>
+		/// <param name="In">The location to test for inside the bounding volume. </param>
+		/// <return>true if location is inside this volume. </return>
+		/// <para>@see IsInsideXY </para>
+		/// </summary>
+		public bool IsInside(FVector @in)
+			=> E_FBox_IsInside(this, @in);
+		
+		
+		/// <summary>
+		/// <para>Checks whether a given box is fully encapsulated by this box. </para>
+		/// <param name="Other">The box to test for encapsulation within the bounding volume. </param>
+		/// <return>true if box is inside this volume. </return>
+		/// </summary>
+		public bool IsInside(FBox other)
+			=> E_FBox_IsInside_o1(this, other);
 		
 		
 		/// <summary>
@@ -281,8 +379,27 @@ namespace UnrealEngine
 		/// <return>true if location is inside this volume. </return>
 		/// <para>@see IsInsideXY </para>
 		/// </summary>
-		public bool IsInsideOrOn(FVector In)
-			=> E_FBox_IsInsideOrOn(this, In);
+		public bool IsInsideOrOn(FVector @in)
+			=> E_FBox_IsInsideOrOn(this, @in);
+		
+		
+		/// <summary>
+		/// <para>Checks whether the given location is inside this box in the XY plane. </para>
+		/// <param name="In">The location to test for inside the bounding box. </param>
+		/// <return>true if location is inside this box in the XY plane. </return>
+		/// <para>@see IsInside </para>
+		/// </summary>
+		public bool IsInsideXY(FVector @in)
+			=> E_FBox_IsInsideXY(this, @in);
+		
+		
+		/// <summary>
+		/// <para>Checks whether the given box is fully encapsulated by this box in the XY plane. </para>
+		/// <param name="Other">The box to test for encapsulation within the bounding box. </param>
+		/// <return>true if box is inside this box in the XY plane. </return>
+		/// </summary>
+		public bool IsInsideXY(FBox other)
+			=> E_FBox_IsInsideXY_o1(this, other);
 		
 		
 		/// <summary>
@@ -290,8 +407,8 @@ namespace UnrealEngine
 		/// <param name="The">destination point to move center of box to. </param>
 		/// <return>A new bounding box. </return>
 		/// </summary>
-		public FBox MoveTo(FVector Destination)
-			=> E_FBox_MoveTo(this, Destination);
+		public FBox MoveTo(FVector destination)
+			=> E_FBox_MoveTo(this, destination);
 		
 		
 		/// <summary>
@@ -299,8 +416,8 @@ namespace UnrealEngine
 		/// <param name="Other">The bounding box to test overlap </param>
 		/// <return>the overlap box. It can be 0 if they don't overlap </return>
 		/// </summary>
-		public FBox Overlap(FBox Other)
-			=> E_FBox_Overlap(this, Other);
+		public FBox Overlap(FBox other)
+			=> E_FBox_Overlap(this, other);
 		
 		
 		/// <summary>
@@ -308,8 +425,8 @@ namespace UnrealEngine
 		/// <param name="Offset">The vector to shift the box by. </param>
 		/// <return>A new bounding box. </return>
 		/// </summary>
-		public FBox ShiftBy(FVector Offset)
-			=> E_FBox_ShiftBy(this, Offset);
+		public FBox ShiftBy(FVector offset)
+			=> E_FBox_ShiftBy(this, offset);
 		
 		
 		/// <summary>
@@ -319,11 +436,21 @@ namespace UnrealEngine
 		public override string ToString()
 			=> E_FBox_ToString(this);
 		
+		
+		/// <summary>
+		/// <para>Gets a bounding volume transformed by a FTransform object. </para>
+		/// <param name="M">The transformation object. </param>
+		/// <return>The transformed box. </return>
+		/// <para>@see TransformProjectBy </para>
+		/// </summary>
+		public FBox TransformBy(FTransform m)
+			=> E_FBox_TransformBy(this, m);
+		
 		#endregion
 		
-		public static implicit operator IntPtr(FBox Self)
+		public static implicit operator IntPtr(FBox self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator FBox(IntPtr Adress)

@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,16 +26,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UBoxComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UBoxComponent_GetScaledBoxExtent(IntPtr Self);
+		private static extern IntPtr E_UBoxComponent_GetScaledBoxExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UBoxComponent_GetUnscaledBoxExtent(IntPtr Self);
+		private static extern IntPtr E_UBoxComponent_GetUnscaledBoxExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UBoxComponent_InitBoxExtent(IntPtr Self, IntPtr InBoxExtent);
+		private static extern void E_UBoxComponent_InitBoxExtent(IntPtr self, IntPtr inBoxExtent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UBoxComponent_SetBoxExtent(IntPtr Self, IntPtr InBoxExtent, bool bUpdateOverlaps);
+		private static extern void E_UBoxComponent_SetBoxExtent(IntPtr self, IntPtr inBoxExtent, bool bUpdateOverlaps);
 		
 		#endregion
 		
@@ -44,8 +46,8 @@ namespace UnrealEngine
 		public FVector GetUnscaledBoxExtent()
 			=> E_UBoxComponent_GetUnscaledBoxExtent(this);
 		
-		public void InitBoxExtent(FVector InBoxExtent)
-			=> E_UBoxComponent_InitBoxExtent(this, InBoxExtent);
+		public void InitBoxExtent(FVector inBoxExtent)
+			=> E_UBoxComponent_InitBoxExtent(this, inBoxExtent);
 		
 		
 		/// <summary>
@@ -53,14 +55,14 @@ namespace UnrealEngine
 		/// <param name="InBoxExtent">new extent (radius) for the box. </param>
 		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
-		public void SetBoxExtent(FVector InBoxExtent, bool bUpdateOverlaps = true)
-			=> E_UBoxComponent_SetBoxExtent(this, InBoxExtent, bUpdateOverlaps);
+		public void SetBoxExtent(FVector inBoxExtent, bool bUpdateOverlaps = true)
+			=> E_UBoxComponent_SetBoxExtent(this, inBoxExtent, bUpdateOverlaps);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(UBoxComponent Self)
+		public static implicit operator IntPtr(UBoxComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator UBoxComponent(ObjectPointerDescription PtrDesc)

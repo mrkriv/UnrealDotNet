@@ -13,6 +13,9 @@ namespace Generator.Metadata
         public bool IsReadOnly { get; set; }
         public bool IsFinal { get; set; }
 
+        public char Litera => Name.First();
+        public string BaseName => Name.Substring(1);
+
         public Class(string name)
         {
             Methods = new List<Method>();

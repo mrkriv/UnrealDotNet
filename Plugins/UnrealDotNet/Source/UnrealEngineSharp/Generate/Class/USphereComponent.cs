@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -24,19 +26,19 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USphereComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USphereComponent_GetScaledSphereRadius(IntPtr Self);
+		private static extern float E_USphereComponent_GetScaledSphereRadius(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USphereComponent_GetShapeScale(IntPtr Self);
+		private static extern float E_USphereComponent_GetShapeScale(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_USphereComponent_GetUnscaledSphereRadius(IntPtr Self);
+		private static extern float E_USphereComponent_GetUnscaledSphereRadius(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USphereComponent_InitSphereRadius(IntPtr Self, float InSphereRadius);
+		private static extern void E_USphereComponent_InitSphereRadius(IntPtr self, float inSphereRadius);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USphereComponent_SetSphereRadius(IntPtr Self, float InSphereRadius, bool bUpdateOverlaps);
+		private static extern void E_USphereComponent_SetSphereRadius(IntPtr self, float inSphereRadius, bool bUpdateOverlaps);
 		
 		#endregion
 		
@@ -50,8 +52,8 @@ namespace UnrealEngine
 		public float GetUnscaledSphereRadius()
 			=> E_USphereComponent_GetUnscaledSphereRadius(this);
 		
-		public void InitSphereRadius(float InSphereRadius)
-			=> E_USphereComponent_InitSphereRadius(this, InSphereRadius);
+		public void InitSphereRadius(float inSphereRadius)
+			=> E_USphereComponent_InitSphereRadius(this, inSphereRadius);
 		
 		
 		/// <summary>
@@ -59,14 +61,14 @@ namespace UnrealEngine
 		/// <param name="InSphereRadius">the new sphere radius </param>
 		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
-		public void SetSphereRadius(float InSphereRadius, bool bUpdateOverlaps = true)
-			=> E_USphereComponent_SetSphereRadius(this, InSphereRadius, bUpdateOverlaps);
+		public void SetSphereRadius(float inSphereRadius, bool bUpdateOverlaps = true)
+			=> E_USphereComponent_SetSphereRadius(this, inSphereRadius, bUpdateOverlaps);
 		
 		#endregion
 		
-		public static implicit operator IntPtr(USphereComponent Self)
+		public static implicit operator IntPtr(USphereComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator USphereComponent(ObjectPointerDescription PtrDesc)

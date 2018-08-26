@@ -1,3 +1,5 @@
+// This file was created automatically, do not modify the contents of this file.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -13,11 +15,11 @@ namespace UnrealEngine
 		{
 		}
 
-		protected override void UpdateControlPoints(bool InForceUpdate) { }
+		protected override void UpdateControlPoints(bool inForceUpdate) { }
 		
-		public static implicit operator IntPtr(ManageInterpToMovementComponent Self)
+		public static implicit operator IntPtr(ManageInterpToMovementComponent self)
 		{
-			return Self.NativePointer;
+			return self.NativePointer;
 		}
 
 		public static implicit operator ManageInterpToMovementComponent(ObjectPointerDescription PtrDesc)
