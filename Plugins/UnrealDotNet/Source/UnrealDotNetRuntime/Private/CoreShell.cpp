@@ -18,7 +18,7 @@
 
 #include "MSCOREE.h"
 
-// TODO: Переписать на что то менее платформо-зависимое
+// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 #include "Windows/WindowsSystemIncludes.h"
 #include "Windows/WIndowsPlatform.h"
 #include "Windows/WindowsPlatformProcess.h"
@@ -331,10 +331,12 @@ FString UCoreShell::RunStatic(const FString& FullClassName, const FString& Metho
 void UCoreShell::LoadMetadata()
 {
 	auto json_source = InvokeInWrapper<char*, 0>("UnrealEngine.NativeManager", "GetMetadata");
-	auto json_string = FString(UTF8_TO_TCHAR(json_source));
+	auto metadata = FString(UTF8_TO_TCHAR(json_source));
+
+	checkf(metadata.Len() > 0, TEXT("Failed load metadata from manage lib. Please check 'dotenet_clr' and 'dotenet_libs' folder."));
 
 	TSharedPtr<FJsonObject> json;
-	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(json_string);
+	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(metadata);
 
 	FJsonSerializer::Deserialize(JsonReader, json);
 
