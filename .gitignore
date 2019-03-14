@@ -74,11 +74,14 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-Plugins/*/Intermediate/
-Plugins/*/Binaries/
 *.pdb
+
 .vscode/
 .idea/
+
+Plugins/*/Intermediate/
+Plugins/*/Binaries/
 /Plugins/UnrealDotNet/Source/*/obj
 /Source/GameLogic/obj
 /SharpUtilites.lnk
+DotUnrealExample.sln
