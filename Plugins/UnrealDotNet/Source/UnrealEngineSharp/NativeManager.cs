@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -14,7 +15,7 @@ namespace UnrealEngine
 #if PACING
         public const string UnrealDotNetDLL = "DotUnrealExample.exe";
 #else
-        public const string UnrealDotNetDll = "UE4Editor-UnrealDotNetRuntime-Win64-DebugGame";
+        public const string UnrealDotNetDll = "UE4Editor-UnrealDotNetRuntime";
 #endif
 
         private static Assembly _gameLogicAssembly;
@@ -125,6 +126,15 @@ namespace UnrealEngine
             try
             {
                 var obj = constructor.Invoke(new object[] { adress });
+
+                foreach (var prop in type.GetProperties())
+                {
+                    var attr = prop.GetCustomAttribute(typeof(DefaultValueAttribute)) as DefaultValueAttribute;
+
+                    if (attr != null)
+                        prop.SetValue(obj, attr.Value, null);
+                }
+
                 foreach (var prop in typeName.PropertyValue)
                 {
                     var pi = obj.GetType().GetProperty(prop.Name);
