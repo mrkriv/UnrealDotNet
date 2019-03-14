@@ -6,17 +6,24 @@ UnrealDotNet - это плагин для Unreal Engine 4 позволяющий
 Демонстрация работы (видео довольно старое):
 - https://www.youtube.com/watch?v=CZ-X7V6VvJE
 
-# Как это запустить?
-1. Скачиваем этот проект
-2. Скачиваем и устанавливаем [net core runtime](https://www.microsoft.com/net/download "net core runtime")
-3. Копируем папку с coreclr.dll (примерно в C:\Program Files\dotnet\shared\Microsoft.NETCore.App\\..\\ в Plugins\UnrealDotNet\Binaries\Win64\dotenet_clr
-4. Каким либо образом находим Newtonsoft.Json.dll и кидаем в Plugins\UnrealDotNet\Binaries\Win64\dotenet_libs
-5. Открываем проект Source\GameLogic\GameLogic.sln и компилируем
-6. Запускаем DotUnrealExample.uproject (первый запуск будет долгим из-за компиляции)
+### Не используйте это в продакшене!!!
 
-!!! На данный момент компиляция проекта вне редактора сломана, и придётся в ручную копировать папки и использовать бубен.
+# Настроенный проект
+[Скачать](https://yadi.sk/d/JZxZwDNMdVK9BA) настроенный проект Win64 UE 4.20 + dotnet 2.1.8 
+
+# Настроить самому
+1. Скачиваем этот проект
+1. Скачиваем и устанавливаем [net core runtime](https://www.microsoft.com/net/download)
+1. Копируем папку с coreclr.dll (примерно в C:\Program Files\dotnet\shared\Microsoft.NETCore.App\\..\\ в Plugins\UnrealDotNet\Binaries\Win64\dotenet_clr)
+1. Каким либо образом находим Newtonsoft.Json.dll и кидаем в Plugins\UnrealDotNet\Binaries\Win64\dotenet_libs
+1. Собираем HotReloadUtilit из проекта Plugins\UnrealDotNet\Source\SharpUtilites.sln
+1. Проверяем что Plugins\UnrealDotNet\Source\UnrealEngineSharp\NativeManager.cs:17 правильное имя С++ сборки
+1. Компилируем GameLogic.sln
+1. Запускаем DotUnrealExample.uproject
 
 Поддерживается версия движка 4.20. Однако плагин легко переносится на другие версии движка. Для перехода на другую версию необходимо заново [сгенерировать обертки при помощи CodeGeneretor](/ "Подробнее тут"). После этого возможно придётся отредактировать CodeGenerator.json и HeaderScanList.txt для отключения компонентов вызывающих проблемы.
+
+!!! На данный момент компиляция проекта вне редактора сломана, и придётся в ручную копировать папки и использовать бубен.
 
 # Roadmap
 Реализовано:
@@ -34,3 +41,13 @@ UnrealDotNet - это плагин для Unreal Engine 4 позволяющий
  - Взаимодействие с перечислениями UE4
  - Взаимодействие со свойствами объектов UE4
  - Редактирование публичных свойств из редактора UE4
+
+# Описание работы
+
+Взаимодействие с с++ происходит при помощи P/Invoke, для этого на основе заголовочных файлов движка генерится куча export методов в с++ и c# библиотека  UnrealEngine.dll для вызова этих методов. Для большинства наследников UObject создаются manage классы. Они необходимы для корректного наследования от этих классов в c#.  Так же создаются копии перечислений и структур для работы с движком. Кроме того плагин поддерживает работу с событиями. Генерацией этих оберток занимается [CodeGeneretor](https://github.com/mrkriv/UnrealDotNet/wiki/CodeGeneretor "Подробнее тут").
+
+![Схема взаимодействия](https://raw.githubusercontent.com/mrkriv/UnrealDotNet/master/docs/img/InteractionScheme.png)
+
+Плагин использует среду выполнения net core clr, на данный момент поддерживается только Win64. При запуске движка выполняется загрузка CLR в приложение, далее в него загружаются управляемые сборки.
+
+Для каждого объекта в c# создается обертка, содержащая только адрес реального объекта и его тип. Все обращения к свойствам или методам являются P/Invoke вызовами. При создании экземпляра manage класса происходит создание объекта в ue4 и его обертки в c#.
