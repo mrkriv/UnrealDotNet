@@ -16,6 +16,7 @@
     "CppPch": "UnrealDotNetRuntime",
     "CppApi": "DOTNET_EXPORT",
     "CppApiUe": "UNREALDOTNETRUNTIME_API",
+    "GenerateStatFile": "..\\UnrealEngineSharp\\Generate\\summary.txt",
     "IsDisableReSharperWarnings": true,
     "IsWriteSourceFileName": true,
     "IsGenerateFileHeader": true,

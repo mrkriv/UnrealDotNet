@@ -126,9 +126,9 @@ namespace CodeGenerator
                     if (md5.ComputeHash(ms).SequenceEqual(md5.ComputeHash(fs)))
                         return;
                 }
-
-                File.WriteAllBytes(filePath, content);
             }
+            
+            File.WriteAllBytes(filePath, content);
         }
     }
 }

@@ -51,7 +51,14 @@ namespace CodeGenerator
             Watch.Stop();
 
             Console.WriteLine();
-            domain.PrintTotal();
+            Console.WriteLine("Export:");
+            Console.WriteLine(domain.PrintTotal());
+
+            if (!string.IsNullOrEmpty(config.GenerateStatFile))
+            {
+                File.WriteAllText(config.GenerateStatFile, domain.PrintTotal());
+            }
+
             Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
         }
 
@@ -86,8 +93,8 @@ namespace CodeGenerator
             var scanMasks = File.ReadAllLines(commandLineArguments.HeaderScanListFile)
                 .Where(x => !x.StartsWith("//") && x.Any()).ToList();
 
-            var include = scanMasks.Where(x => !x.StartsWith("~"));
-            var exclude = scanMasks.Where(x => x.StartsWith("~"));
+            var include = scanMasks.Where(x => x.StartsWith("+")).Select(x => x.Substring(1));
+            var exclude = scanMasks.Where(x => x.StartsWith("-")).Select(x => x.Substring(1));
 
             var files = new List<string>();
 
