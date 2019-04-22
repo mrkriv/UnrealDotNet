@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
 using CodeGenerator.Metadata;
-using CodeGenerator.UHeader;
 using Type = CodeGenerator.Metadata.Type;
 
 namespace CodeGenerator

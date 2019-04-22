@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using CodeGenerator.Metadata;
-using CodeGenerator.UHeader;
 using Delegate = CodeGenerator.Metadata.Delegate;
 using Enum = CodeGenerator.Metadata.Enum;
 using Type = CodeGenerator.Metadata.Type;
