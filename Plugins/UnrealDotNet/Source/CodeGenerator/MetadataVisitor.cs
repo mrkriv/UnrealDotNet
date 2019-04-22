@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -199,11 +199,15 @@ namespace CodeGenerator
             if (Ignore || _currentClass == null)
                 return null;
 
+            var arrayContext = context.Child<UHeaderParser.IsArrayContext>();
+
             var variable = ParceType(context.type());
             variable.AccessModifier = _accessModifier;
             variable.Default = context.propertyDefaultValue()?.GetText();
             variable.Description = _currentComment;
             variable.IsStatic = context.FoundChild<UHeaderParser.IsStaticContext>();
+            variable.IsArray = arrayContext != null;
+            variable.ArrayLenght = variable.IsArray ? int.Parse(arrayContext.arrayLen().GetText()) : 0;
             variable.Name = context.propertyName().GetText();
             variable.UMeta = _currentUMeta ?? variable.UMeta;
             variable.OwnerClass = _currentClass;

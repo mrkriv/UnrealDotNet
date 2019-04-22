@@ -52,6 +52,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USceneComponent_bHiddenInGame_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USceneComponent_Bounds_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneComponent_Bounds_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USceneComponent_bUseAttachParentBound_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USceneComponent_bUseAttachParentBound_SET(IntPtr Ptr, byte Value);
@@ -129,6 +134,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_CalcBoundingCylinder(IntPtr self, float cylinderRadius, float cylinderHalfHeight);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_CalcBounds(IntPtr self, IntPtr localToWorld);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_CalcNewComponentToWorld(IntPtr self, IntPtr newRelativeTransform, IntPtr parent, string socketName);
@@ -231,6 +239,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_GetParentComponents(IntPtr self, IntPtr parents);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_USceneComponent_GetPlacementExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetRelativeRotationCache(IntPtr self);
@@ -565,6 +576,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Current bounds of the component </para>
+		/// </summary>
+		public FBoxSphereBounds Bounds
+		{
+			get => E_PROP_USceneComponent_Bounds_GET(NativePointer);
+			set => E_PROP_USceneComponent_Bounds_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If true, this component uses its parents bounds when attached. </para>
 		/// <para>This can be a significant optimization with many components attached together. </para>
 		/// </summary>
@@ -694,6 +715,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void CalcBoundingCylinder(float cylinderRadius, float cylinderHalfHeight)
 			=> E_USceneComponent_CalcBoundingCylinder(this, cylinderRadius, cylinderHalfHeight);
+		
+		
+		/// <summary>
+		/// <para>Calculate the bounds of the component. Default behavior is a bounding box/sphere of zero size. </para>
+		/// </summary>
+		public virtual FBoxSphereBounds CalcBounds(FTransform localToWorld)
+			=> E_USceneComponent_CalcBounds(this, localToWorld);
 		
 		
 		/// <summary>
@@ -942,6 +970,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void GetParentComponents(TArray<USceneComponent> parents)
 			=> E_USceneComponent_GetParentComponents(this, parents);
+		
+		
+		/// <summary>
+		/// <para>Get the extent used when placing this component in the editor, used for 'pulling back' hit. </para>
+		/// </summary>
+		public virtual FBoxSphereBounds GetPlacementExtent()
+			=> E_USceneComponent_GetPlacementExtent(this);
 		
 		
 		/// <summary>

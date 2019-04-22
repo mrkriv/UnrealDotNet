@@ -22,6 +22,12 @@ extern "C"
 		return (INT_PTR)NewObject<ULightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_ULightComponent_AffectsBounds(ULightComponent* Self, INT_PTR InBounds)
+	{
+		auto& _p0 = *(FBoxSphereBounds*)InBounds;
+		return Self->AffectsBounds(_p0);
+	}
+
 	DOTNET_EXPORT auto E_ULightComponent_AffectsPrimitive(ULightComponent* Self, UPrimitiveComponent* Primitive)
 	{
 		auto _p0 = Primitive;
@@ -31,6 +37,11 @@ extern "C"
 	DOTNET_EXPORT auto E_ULightComponent_GetBoundingBox(ULightComponent* Self)
 	{
 		return (INT_PTR) new FBox(Self->GetBoundingBox());
+	}
+
+	DOTNET_EXPORT auto E_ULightComponent_GetBoundingSphere(ULightComponent* Self)
+	{
+		return (INT_PTR) new FSphere(Self->GetBoundingSphere());
 	}
 
 	DOTNET_EXPORT auto E_ULightComponent_GetLightPosition(ULightComponent* Self)
@@ -90,6 +101,13 @@ extern "C"
 	{
 		auto _p0 = NewIntensity;
 		Self->SetIntensity(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ULightComponent_SetLightColor(ULightComponent* Self, INT_PTR NewLightColor, bool bSRGB)
+	{
+		auto _p0 = *(FLinearColor*)NewLightColor;
+		auto _p1 = bSRGB;
+		Self->SetLightColor(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ULightComponent_SetLightFunctionDisabledBrightness(ULightComponent* Self, float NewValue)

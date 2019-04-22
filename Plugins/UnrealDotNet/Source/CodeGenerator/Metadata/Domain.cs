@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CodeGenerator.Metadata
 {
@@ -35,15 +36,18 @@ namespace CodeGenerator.Metadata
             Enums = config.Filter.FilterEnum(Enums);
         }
 
-        public void PrintTotal()
+        public string PrintTotal()
         {
-            Console.WriteLine($"Export:");
-            Console.WriteLine($"Class       {Classes.Count(c => !c.IsStructure)}");
-            Console.WriteLine($"Structures  {Classes.Count(c => c.IsStructure)}");
-            Console.WriteLine($"Enums       {Enums.Count}");
-            Console.WriteLine($"Delegates   {Delegates.Count}");
-            Console.WriteLine($"Methods     {Classes.Sum(c => c.Methods.Count(x => x.ValidForExport == true))}");
-            Console.WriteLine($"Properys    {Classes.Sum(c => c.Property.Count(x => x.ValidForExport == true))}");
+            var sb = new StringBuilder();
+            
+            sb.AppendLine($"Class       {Classes.Count(c => !c.IsStructure)}");
+            sb.AppendLine($"Structures  {Classes.Count(c => c.IsStructure)}");
+            sb.AppendLine($"Enums       {Enums.Count}");
+            sb.AppendLine($"Delegates   {Delegates.Count}");
+            sb.AppendLine($"Methods     {Classes.Sum(c => c.Methods.Count(x => x.ValidForExport == true))}");
+            sb.Append($"Properys    {Classes.Sum(c => c.Property.Count(x => x.ValidForExport == true))}");
+
+            return sb.ToString();
         }
 
         public void Print(bool full)

@@ -61,6 +61,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_GameSingleton_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameSingleton); }
 	DOTNET_EXPORT void E_PROP_UEngine_GameSingleton_SET(UEngine* Ptr, UObject* Value) { Ptr->GameSingleton = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_HLODColorationColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->HLODColorationColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_HLODColorationColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->HLODColorationColors = *(TArray<FLinearColor>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_IdealLightMapDensity_GET(UEngine* Ptr) { return Ptr->IdealLightMapDensity; }
 	DOTNET_EXPORT void E_PROP_UEngine_IdealLightMapDensity_SET(UEngine* Ptr, float Value) { Ptr->IdealLightMapDensity = Value; }
 	
@@ -70,8 +73,23 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->LevelColorationUnlitMaterialName); }
 	DOTNET_EXPORT void E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(UEngine* Ptr, char* Value) { Ptr->LevelColorationUnlitMaterialName = ConvertFromManage_FString(Value); }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_LightComplexityColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->LightComplexityColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_LightComplexityColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->LightComplexityColors = *(TArray<FLinearColor>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_LightingOnlyBrightness_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->LightingOnlyBrightness); }
+	DOTNET_EXPORT void E_PROP_UEngine_LightingOnlyBrightness_SET(UEngine* Ptr, INT_PTR Value) { Ptr->LightingOnlyBrightness = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_LightingTexelDensityName_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->LightingTexelDensityName); }
 	DOTNET_EXPORT void E_PROP_UEngine_LightingTexelDensityName_SET(UEngine* Ptr, char* Value) { Ptr->LightingTexelDensityName = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_LightMapDensitySelectedColor_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->LightMapDensitySelectedColor); }
+	DOTNET_EXPORT void E_PROP_UEngine_LightMapDensitySelectedColor_SET(UEngine* Ptr, INT_PTR Value) { Ptr->LightMapDensitySelectedColor = *(FLinearColor*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_LightMapDensityVertexMappedColor_GET(UEngine* Ptr) { return (INT_PTR)&(Ptr->LightMapDensityVertexMappedColor); }
+	DOTNET_EXPORT void E_PROP_UEngine_LightMapDensityVertexMappedColor_SET(UEngine* Ptr, INT_PTR Value) { Ptr->LightMapDensityVertexMappedColor = *(FLinearColor*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_LODColorationColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->LODColorationColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_LODColorationColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->LODColorationColors = *(TArray<FLinearColor>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_GET(UEngine* Ptr) { return Ptr->MaxES2PixelShaderAdditiveComplexityCount; }
 	DOTNET_EXPORT void E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_SET(UEngine* Ptr, float Value) { Ptr->MaxES2PixelShaderAdditiveComplexityCount = Value; }
@@ -127,6 +145,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_PriorityScreenMessages_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PriorityScreenMessages); }
 	DOTNET_EXPORT void E_PROP_UEngine_PriorityScreenMessages_SET(UEngine* Ptr, INT_PTR Value) { Ptr->PriorityScreenMessages = *(TArray<FScreenMessageString>*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_QuadComplexityColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->QuadComplexityColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_QuadComplexityColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->QuadComplexityColors = *(TArray<FLinearColor>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_RenderLightMapDensityColorScale_GET(UEngine* Ptr) { return Ptr->RenderLightMapDensityColorScale; }
 	DOTNET_EXPORT void E_PROP_UEngine_RenderLightMapDensityColorScale_SET(UEngine* Ptr, float Value) { Ptr->RenderLightMapDensityColorScale = Value; }
 	
@@ -145,8 +166,17 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(UEngine* Ptr) { return ConvertToManage_StringWrapper(Ptr->ShadedLevelColorationUnlitMaterialName); }
 	DOTNET_EXPORT void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(UEngine* Ptr, char* Value) { Ptr->ShadedLevelColorationUnlitMaterialName = ConvertFromManage_FString(Value); }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_ShaderComplexityColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ShaderComplexityColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_ShaderComplexityColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->ShaderComplexityColors = *(TArray<FLinearColor>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_StatColorMappings_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->StatColorMappings); }
 	DOTNET_EXPORT void E_PROP_UEngine_StatColorMappings_SET(UEngine* Ptr, INT_PTR Value) { Ptr->StatColorMappings = *(TArray<FStatColorMapping>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_StationaryLightOverlapColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->StationaryLightOverlapColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_StationaryLightOverlapColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->StationaryLightOverlapColors = *(TArray<FLinearColor>*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UEngine_StreamingAccuracyColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->StreamingAccuracyColors); }
+	DOTNET_EXPORT void E_PROP_UEngine_StreamingAccuracyColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->StreamingAccuracyColors = *(TArray<FLinearColor>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UEngine_StreamingDistanceFactor_GET(UEngine* Ptr) { return Ptr->StreamingDistanceFactor; }
 	DOTNET_EXPORT void E_PROP_UEngine_StreamingDistanceFactor_SET(UEngine* Ptr, float Value) { Ptr->StreamingDistanceFactor = Value; }
@@ -198,9 +228,35 @@ extern "C"
 		return Self->GetDynamicResolutionUserSetting();
 	}
 
+	DOTNET_EXPORT auto E_UEngine_GetHoveredMaterialColor(UEngine* Self)
+	{
+		return (INT_PTR) const_cast<FLinearColor*>(&(Self->GetHoveredMaterialColor()));
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetSelectedMaterialColor(UEngine* Self)
+	{
+		return (INT_PTR) const_cast<FLinearColor*>(&(Self->GetSelectedMaterialColor()));
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetSelectionOutlineColor(UEngine* Self)
+	{
+		return (INT_PTR) const_cast<FLinearColor*>(&(Self->GetSelectionOutlineColor()));
+	}
+
+	DOTNET_EXPORT auto E_UEngine_GetSubduedSelectionOutlineColor(UEngine* Self)
+	{
+		return (INT_PTR) const_cast<FLinearColor*>(&(Self->GetSubduedSelectionOutlineColor()));
+	}
+
 	DOTNET_EXPORT auto E_UEngine_IsInitialized(UEngine* Self)
 	{
 		return Self->IsInitialized();
+	}
+
+	DOTNET_EXPORT auto E_UEngine_OverrideSelectedMaterialColor(UEngine* Self, INT_PTR OverrideColor)
+	{
+		auto& _p0 = *(FLinearColor*)OverrideColor;
+		Self->OverrideSelectedMaterialColor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UEngine_ParseCommandline(UEngine* Self)
@@ -232,6 +288,24 @@ extern "C"
 	{
 		auto _p0 = Enable;
 		Self->SetDynamicResolutionUserSetting(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_SetSelectedMaterialColor(UEngine* Self, INT_PTR InSelectedMaterialColor)
+	{
+		auto& _p0 = *(FLinearColor*)InSelectedMaterialColor;
+		Self->SetSelectedMaterialColor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_SetSelectionOutlineColor(UEngine* Self, INT_PTR InSelectionOutlineColor)
+	{
+		auto& _p0 = *(FLinearColor*)InSelectionOutlineColor;
+		Self->SetSelectionOutlineColor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_SetSubduedSelectionOutlineColor(UEngine* Self, INT_PTR InSubduedSelectionOutlineColor)
+	{
+		auto& _p0 = *(FLinearColor*)InSubduedSelectionOutlineColor;
+		Self->SetSubduedSelectionOutlineColor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UEngine_ShutdownAudioDeviceManager(UEngine* Self)

@@ -28,6 +28,11 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(IntPtr Ptr, float Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FLensImperfectionSettings_DirtMaskTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FLensImperfectionSettings_DirtMaskTint_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLensImperfectionSettings();
@@ -46,6 +51,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(NativePointer);
 			set => E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>BloomDirtMask tint color </para>
+		/// </summary>
+		public FLinearColor DirtMaskTint
+		{
+			get => E_PROP_FLensImperfectionSettings_DirtMaskTint_GET(NativePointer);
+			set => E_PROP_FLensImperfectionSettings_DirtMaskTint_SET(NativePointer, value);
 		}
 
 		#endregion

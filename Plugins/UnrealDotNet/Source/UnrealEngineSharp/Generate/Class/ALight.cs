@@ -34,6 +34,9 @@ namespace UnrealEngine
 		private static extern float E_ALight_GetBrightness(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_ALight_GetLightColor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ALight_GetLightComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -58,6 +61,9 @@ namespace UnrealEngine
 		private static extern void E_ALight_SetEnabled(IntPtr self, bool bSetEnabled);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ALight_SetLightColor(IntPtr self, IntPtr newLightColor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ALight_SetLightFunctionFadeDistance(IntPtr self, float newLightFunctionFadeDistance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -71,6 +77,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		public float GetBrightness()
 			=> E_ALight_GetBrightness(this);
+		
+		public FLinearColor GetLightColor()
+			=> E_ALight_GetLightColor(this);
 		
 		
 		/// <summary>
@@ -103,6 +112,9 @@ namespace UnrealEngine
 		
 		public void SetEnabled(bool bSetEnabled)
 			=> E_ALight_SetEnabled(this, bSetEnabled);
+		
+		public void SetLightColor(FLinearColor newLightColor)
+			=> E_ALight_SetLightColor(this, newLightColor);
 		
 		public void SetLightFunctionFadeDistance(float newLightFunctionFadeDistance)
 			=> E_ALight_SetLightFunctionFadeDistance(this, newLightFunctionFadeDistance);

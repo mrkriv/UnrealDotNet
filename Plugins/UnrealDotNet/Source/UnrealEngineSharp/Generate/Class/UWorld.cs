@@ -222,6 +222,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UWorld_OriginLocation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_OriginLocation_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UWorld_OriginOffsetThisFrame_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_OriginOffsetThisFrame_SET(IntPtr Ptr, IntPtr Value);
@@ -245,6 +250,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_UWorld_RealTimeSeconds_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_RealTimeSeconds_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UWorld_RequestedOriginLocation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_RequestedOriginLocation_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UWorld_StreamingLevelsPrefix_GET(IntPtr Ptr);
@@ -539,6 +549,9 @@ namespace UnrealEngine
 		private static extern void E_UWorld_MarkObjectsPendingKill(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_NavigateTo(IntPtr self, IntPtr inLocation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PerformGarbageCollectionAndCleanupActors(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -575,6 +588,9 @@ namespace UnrealEngine
 		private static extern void E_UWorld_RenameToPIEWorld(IntPtr self, int pIEInstanceID);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RequestNewWorldOrigin(IntPtr self, IntPtr inNewOriginLocation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_RequiresHitProxies(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -594,6 +610,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetMaterialParameterCollectionInstanceNeedsUpdate(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_SetNewWorldOrigin(IntPtr self, IntPtr inNewOriginLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetSeamlessTravelMidpointPause(IntPtr self, bool bNowPaused);
@@ -1049,6 +1068,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Current location of this world origin </para>
+		/// </summary>
+		public FIntVector OriginLocation
+		{
+			get => E_PROP_UWorld_OriginLocation_GET(NativePointer);
+			set => E_PROP_UWorld_OriginLocation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>World origin offset value. Non-zero only for a single frame when origin is rebased </para>
 		/// </summary>
 		public FVector OriginOffsetThisFrame
@@ -1095,6 +1124,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_RealTimeSeconds_GET(NativePointer);
 			set => E_PROP_UWorld_RealTimeSeconds_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Requested new world origin location </para>
+		/// </summary>
+		public FIntVector RequestedOriginLocation
+		{
+			get => E_PROP_UWorld_RequestedOriginLocation_GET(NativePointer);
+			set => E_PROP_UWorld_RequestedOriginLocation_SET(NativePointer, value);
 		}
 
 		public string StreamingLevelsPrefix
@@ -1790,6 +1829,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Sets world origin at specified position and stream-in all relevant levels </para>
+		/// </summary>
+		public void NavigateTo(FIntVector inLocation)
+			=> E_UWorld_NavigateTo(this, inLocation);
+		
+		
+		/// <summary>
 		/// <para>Interface to allow WorldSettings to request immediate garbage collection </para>
 		/// </summary>
 		public void PerformGarbageCollectionAndCleanupActors()
@@ -1885,6 +1931,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Request to translate world origin to specified position on next tick </para>
+		/// </summary>
+		public void RequestNewWorldOrigin(FIntVector inNewOriginLocation)
+			=> E_UWorld_RequestNewWorldOrigin(this, inNewOriginLocation);
+		
+		
+		/// <summary>
 		/// <para>Accessor for bRequiresHitProxies. </para>
 		/// </summary>
 		public bool RequiresHitProxies()
@@ -1934,6 +1987,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetMaterialParameterCollectionInstanceNeedsUpdate()
 			=> E_UWorld_SetMaterialParameterCollectionInstanceNeedsUpdate(this);
+		
+		
+		/// <summary>
+		/// <para>Translate world origin to specified position </para>
+		/// </summary>
+		public bool SetNewWorldOrigin(FIntVector inNewOriginLocation)
+			=> E_UWorld_SetNewWorldOrigin(this, inNewOriginLocation);
 		
 		
 		/// <summary>

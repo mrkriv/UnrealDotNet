@@ -23,6 +23,16 @@ namespace UnrealEngine
 		{
 		}
 
+		public FBatchedPoint(FVector inPosition, FLinearColor inColor, float inPointSize, float inLifeTime, byte inDepthPriority) :
+			base(E_CreateStruct_FBatchedPoint_FVector_FLinearColor_float_float_uint8(inPosition, inColor, inPointSize, inLifeTime, inDepthPriority), false)
+		{
+		}
+
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FBatchedPoint_Color_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FBatchedPoint_Color_SET(IntPtr Ptr, IntPtr Value);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FBatchedPoint_DepthPriority_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -47,9 +57,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FBatchedPoint();
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBatchedPoint_FVector_FLinearColor_float_float_uint8(IntPtr inPosition, IntPtr inColor, float inPointSize, float inLifeTime, byte inDepthPriority);
+		
 		#endregion
 		
 		#region Property
+		public FLinearColor Color
+		{
+			get => E_PROP_FBatchedPoint_Color_GET(NativePointer);
+			set => E_PROP_FBatchedPoint_Color_SET(NativePointer, value);
+		}
+
 		public byte DepthPriority
 		{
 			get => E_PROP_FBatchedPoint_DepthPriority_GET(NativePointer);

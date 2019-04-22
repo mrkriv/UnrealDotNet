@@ -111,6 +111,27 @@ extern "C"
 		Self->DrawHUD();
 	}
 
+	DOTNET_EXPORT auto E_AHUD_DrawLine(AHUD* Self, float StartScreenX, float StartScreenY, float EndScreenX, float EndScreenY, INT_PTR LineColor, float LineThickness)
+	{
+		auto _p0 = StartScreenX;
+		auto _p1 = StartScreenY;
+		auto _p2 = EndScreenX;
+		auto _p3 = EndScreenY;
+		auto _p4 = *(FLinearColor*)LineColor;
+		auto _p5 = LineThickness;
+		Self->DrawLine(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
+	DOTNET_EXPORT auto E_AHUD_DrawRect(AHUD* Self, INT_PTR RectColor, float ScreenX, float ScreenY, float ScreenW, float ScreenH)
+	{
+		auto _p0 = *(FLinearColor*)RectColor;
+		auto _p1 = ScreenX;
+		auto _p2 = ScreenY;
+		auto _p3 = ScreenW;
+		auto _p4 = ScreenH;
+		Self->DrawRect(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_DrawSafeZoneOverlay(AHUD* Self)
 	{
 		Self->DrawSafeZoneOverlay();

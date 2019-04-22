@@ -177,6 +177,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FBox_TransformBy(IntPtr self, IntPtr m);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_TransformBy_o1(IntPtr self, IntPtr m);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FBox_TransformProjectBy(IntPtr self, IntPtr projM);
+		
 		#endregion
 		
 		#region Property
@@ -443,13 +449,33 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Gets a bounding volume transformed by a matrix. </para>
+		/// <param name="M">The matrix to transform by. </param>
+		/// <return>The transformed box. </return>
+		/// <para>@see TransformProjectBy </para>
+		/// </summary>
+		public FBox TransformBy(FMatrix m)
+			=> E_FBox_TransformBy(this, m);
+		
+		
+		/// <summary>
 		/// <para>Gets a bounding volume transformed by a FTransform object. </para>
 		/// <param name="M">The transformation object. </param>
 		/// <return>The transformed box. </return>
 		/// <para>@see TransformProjectBy </para>
 		/// </summary>
 		public FBox TransformBy(FTransform m)
-			=> E_FBox_TransformBy(this, m);
+			=> E_FBox_TransformBy_o1(this, m);
+		
+		
+		/// <summary>
+		/// <para>Transforms and projects a world bounding box to screen space </para>
+		/// <param name="ProjM">The projection matrix. </param>
+		/// <return>The transformed box. </return>
+		/// <para>@see TransformBy </para>
+		/// </summary>
+		public FBox TransformProjectBy(FMatrix projM)
+			=> E_FBox_TransformProjectBy(this, projM);
 		
 		#endregion
 		

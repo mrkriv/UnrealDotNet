@@ -23,10 +23,32 @@ namespace UnrealEngine
 		{
 		}
 
+		public FInstancedStaticMeshInstanceData(FMatrix inTransform) :
+			base(E_CreateStruct_FInstancedStaticMeshInstanceData_FMatrix(inTransform), false)
+		{
+		}
+
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FInstancedStaticMeshInstanceData_Transform_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FInstancedStaticMeshInstanceData_Transform_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FInstancedStaticMeshInstanceData();
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FInstancedStaticMeshInstanceData_FMatrix(IntPtr inTransform);
+		
+		#endregion
+		
+		#region Property
+		public FMatrix Transform
+		{
+			get => E_PROP_FInstancedStaticMeshInstanceData_Transform_GET(NativePointer);
+			set => E_PROP_FInstancedStaticMeshInstanceData_Transform_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FInstancedStaticMeshInstanceData self)

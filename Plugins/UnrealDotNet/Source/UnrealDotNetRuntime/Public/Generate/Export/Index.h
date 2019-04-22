@@ -15,6 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "ALight.h"
 #include "APawn.h"
 #include "ASpectatorPawn.h"
+#include "ScalarRegister.h"
 #include "UActorComponent.h"
 #include "UArrowComponent.h"
 #include "UAudioComponent.h"

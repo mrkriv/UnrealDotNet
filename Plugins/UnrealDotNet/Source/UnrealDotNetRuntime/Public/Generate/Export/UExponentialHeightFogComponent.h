@@ -38,6 +38,12 @@ extern "C"
 		((E_PROTECTED_WRAP_UExponentialHeightFogComponent*)Self)->AddFogIfNeeded_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetDirectionalInscatteringColor(UExponentialHeightFogComponent* Self, INT_PTR Value)
+	{
+		auto _p0 = *(FLinearColor*)Value;
+		Self->SetDirectionalInscatteringColor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetDirectionalInscatteringExponent(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
@@ -68,6 +74,12 @@ extern "C"
 		Self->SetFogHeightFalloff(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogInscatteringColor(UExponentialHeightFogComponent* Self, INT_PTR Value)
+	{
+		auto _p0 = *(FLinearColor*)Value;
+		Self->SetFogInscatteringColor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetFogMaxOpacity(UExponentialHeightFogComponent* Self, float Value)
 	{
 		auto _p0 = Value;
@@ -84,6 +96,12 @@ extern "C"
 	{
 		auto _p0 = Value;
 		Self->SetInscatteringColorCubemapAngle(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetInscatteringTextureTint(UExponentialHeightFogComponent* Self, INT_PTR Value)
+	{
+		auto _p0 = *(FLinearColor*)Value;
+		Self->SetInscatteringTextureTint(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetNonDirectionalInscatteringColorDistance(UExponentialHeightFogComponent* Self, float Value)
@@ -108,6 +126,12 @@ extern "C"
 	{
 		auto _p0 = NewValue;
 		Self->SetVolumetricFogDistance(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFogEmissive(UExponentialHeightFogComponent* Self, INT_PTR NewValue)
+	{
+		auto _p0 = *(FLinearColor*)NewValue;
+		Self->SetVolumetricFogEmissive(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UExponentialHeightFogComponent_SetVolumetricFogExtinctionScale(UExponentialHeightFogComponent* Self, float NewValue)

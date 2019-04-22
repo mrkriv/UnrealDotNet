@@ -70,6 +70,36 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Constructs a vector from an FLinearColor. </para>
+		/// <param name="InColor">Color to copy from. </param>
+		/// </summary>
+		public FVector(FLinearColor inColor) :
+			base(E_CreateStruct_FVector_FLinearColor(inColor), false)
+		{
+		}
+
+		
+		/// <summary>
+		/// <para>Constructs a vector from an FIntVector. </para>
+		/// <param name="InVector">FIntVector to copy from. </param>
+		/// </summary>
+		public FVector(FIntVector inVector) :
+			base(E_CreateStruct_FVector_FIntVector(inVector), false)
+		{
+		}
+
+		
+		/// <summary>
+		/// <para>Constructs a vector from an FIntPoint. </para>
+		/// <param name="A">Int Point used to set X and Y coordinates, Z is set to zero. </param>
+		/// </summary>
+		public FVector(FIntPoint a) :
+			base(E_CreateStruct_FVector_FIntPoint(a), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -100,6 +130,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector_FVector4(IntPtr v);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector_FLinearColor(IntPtr inColor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector_FIntVector(IntPtr inVector);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector_FIntPoint(IntPtr a);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_AddBounded(IntPtr self, IntPtr v, float radius);

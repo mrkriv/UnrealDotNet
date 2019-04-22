@@ -34,6 +34,9 @@ namespace UnrealEngine
 		private static extern void E_UExponentialHeightFogComponent_AddFogIfNeeded(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UExponentialHeightFogComponent_SetDirectionalInscatteringColor(IntPtr self, IntPtr value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UExponentialHeightFogComponent_SetDirectionalInscatteringExponent(IntPtr self, float value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -49,6 +52,9 @@ namespace UnrealEngine
 		private static extern void E_UExponentialHeightFogComponent_SetFogHeightFalloff(IntPtr self, float value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UExponentialHeightFogComponent_SetFogInscatteringColor(IntPtr self, IntPtr value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UExponentialHeightFogComponent_SetFogMaxOpacity(IntPtr self, float value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -56,6 +62,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UExponentialHeightFogComponent_SetInscatteringColorCubemapAngle(IntPtr self, float value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UExponentialHeightFogComponent_SetInscatteringTextureTint(IntPtr self, IntPtr value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UExponentialHeightFogComponent_SetNonDirectionalInscatteringColorDistance(IntPtr self, float value);
@@ -70,6 +79,9 @@ namespace UnrealEngine
 		private static extern void E_UExponentialHeightFogComponent_SetVolumetricFogDistance(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UExponentialHeightFogComponent_SetVolumetricFogEmissive(IntPtr self, IntPtr newValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UExponentialHeightFogComponent_SetVolumetricFogExtinctionScale(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -80,6 +92,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		protected void AddFogIfNeeded()
 			=> E_UExponentialHeightFogComponent_AddFogIfNeeded(this);
+		
+		public void SetDirectionalInscatteringColor(FLinearColor value)
+			=> E_UExponentialHeightFogComponent_SetDirectionalInscatteringColor(this, value);
 		
 		public void SetDirectionalInscatteringExponent(float value)
 			=> E_UExponentialHeightFogComponent_SetDirectionalInscatteringExponent(this, value);
@@ -102,6 +117,9 @@ namespace UnrealEngine
 		public void SetFogHeightFalloff(float value)
 			=> E_UExponentialHeightFogComponent_SetFogHeightFalloff(this, value);
 		
+		public void SetFogInscatteringColor(FLinearColor value)
+			=> E_UExponentialHeightFogComponent_SetFogInscatteringColor(this, value);
+		
 		public void SetFogMaxOpacity(float value)
 			=> E_UExponentialHeightFogComponent_SetFogMaxOpacity(this, value);
 		
@@ -110,6 +128,9 @@ namespace UnrealEngine
 		
 		public void SetInscatteringColorCubemapAngle(float value)
 			=> E_UExponentialHeightFogComponent_SetInscatteringColorCubemapAngle(this, value);
+		
+		public void SetInscatteringTextureTint(FLinearColor value)
+			=> E_UExponentialHeightFogComponent_SetInscatteringTextureTint(this, value);
 		
 		public void SetNonDirectionalInscatteringColorDistance(float value)
 			=> E_UExponentialHeightFogComponent_SetNonDirectionalInscatteringColorDistance(this, value);
@@ -122,6 +143,9 @@ namespace UnrealEngine
 		
 		public void SetVolumetricFogDistance(float newValue)
 			=> E_UExponentialHeightFogComponent_SetVolumetricFogDistance(this, newValue);
+		
+		public void SetVolumetricFogEmissive(FLinearColor newValue)
+			=> E_UExponentialHeightFogComponent_SetVolumetricFogEmissive(this, newValue);
 		
 		public void SetVolumetricFogExtinctionScale(float newValue)
 			=> E_UExponentialHeightFogComponent_SetVolumetricFogExtinctionScale(this, newValue);

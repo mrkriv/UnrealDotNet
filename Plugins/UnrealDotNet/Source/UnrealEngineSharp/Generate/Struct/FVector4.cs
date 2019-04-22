@@ -31,6 +31,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Creates and initializes a new vector from a color value. </para>
+		/// <param name="InColour">Color used to set vector. </param>
+		/// </summary>
+		public FVector4(FLinearColor inColor) :
+			base(E_CreateStruct_FVector4_FLinearColor(inColor), false)
+		{
+		}
+
+		
+		/// <summary>
 		/// <para>Creates and initializes a new vector from the specified components. </para>
 		/// <param name="InX">X Coordinate. </param>
 		/// <param name="InY">Y Coordinate. </param>
@@ -76,6 +86,9 @@ namespace UnrealEngine
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector4_FVector_float(IntPtr inVector, float inW);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector4_FLinearColor(IntPtr inColor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector4_float_float_float_float(float inX, float inY, float inZ, float inW);

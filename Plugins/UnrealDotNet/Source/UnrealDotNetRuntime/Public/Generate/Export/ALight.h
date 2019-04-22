@@ -27,6 +27,11 @@ extern "C"
 		return Self->GetBrightness();
 	}
 
+	DOTNET_EXPORT auto E_ALight_GetLightColor(ALight* Self)
+	{
+		return (INT_PTR) new FLinearColor(Self->GetLightColor());
+	}
+
 	DOTNET_EXPORT auto E_ALight_GetLightComponent(ALight* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetLightComponent());
@@ -69,6 +74,12 @@ extern "C"
 	{
 		auto _p0 = bSetEnabled;
 		Self->SetEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E_ALight_SetLightColor(ALight* Self, INT_PTR NewLightColor)
+	{
+		auto _p0 = *(FLinearColor*)NewLightColor;
+		Self->SetLightColor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ALight_SetLightFunctionFadeDistance(ALight* Self, float NewLightFunctionFadeDistance)

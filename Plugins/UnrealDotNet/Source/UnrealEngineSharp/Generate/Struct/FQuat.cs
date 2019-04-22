@@ -52,6 +52,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Creates and initializes a new quaternion from the given matrix. </para>
+		/// <param name="M">The rotation matrix to initialize from. </param>
+		/// </summary>
+		public FQuat(FMatrix m) :
+			base(E_CreateStruct_FQuat_FMatrix(m), false)
+		{
+		}
+
+		
+		/// <summary>
 		/// <para>Creates and initializes a new quaternion from the given rotator. </para>
 		/// <param name="R">The rotator to initialize from. </param>
 		/// </summary>
@@ -100,6 +110,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FQuat_FQuat(IntPtr q);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FQuat_FMatrix(IntPtr m);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FQuat_FRotator(IntPtr r);

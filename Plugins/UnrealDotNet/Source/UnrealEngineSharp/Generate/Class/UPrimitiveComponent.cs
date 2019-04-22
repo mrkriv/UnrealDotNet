@@ -556,6 +556,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsLinearVelocityAtPoint(IntPtr self, IntPtr point, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UPrimitiveComponent_GetRenderMatrix(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_GetRigidBodyState(IntPtr self, IntPtr outState, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -2136,6 +2139,14 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetPhysicsLinearVelocityAtPoint(FVector point, string boneName)
 			=> E_UPrimitiveComponent_GetPhysicsLinearVelocityAtPoint(this, point, boneName);
+		
+		
+		/// <summary>
+		/// <para>Returns the matrix that should be used to render this component. </para>
+		/// <para>Allows component class to perform graphical distortion to the component not supported by an FTransform </para>
+		/// </summary>
+		public virtual FMatrix GetRenderMatrix()
+			=> E_UPrimitiveComponent_GetRenderMatrix(this);
 		
 		
 		/// <summary>

@@ -83,6 +83,12 @@ namespace UnrealEngine
 		private static extern void E_AHUD_DrawHUD(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_DrawLine(IntPtr self, float startScreenX, float startScreenY, float endScreenX, float endScreenY, IntPtr lineColor, float lineThickness);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_DrawRect(IntPtr self, IntPtr rectColor, float screenX, float screenY, float screenW, float screenH);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -288,6 +294,31 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void DrawHUD()
 			=> E_AHUD_DrawHUD(this);
+		
+		
+		/// <summary>
+		/// <para>Draws a 2D line on the HUD. </para>
+		/// <param name="StartScreenX">Screen-space X coordinate of start of the line. </param>
+		/// <param name="StartScreenY">Screen-space Y coordinate of start of the line. </param>
+		/// <param name="EndScreenX">Screen-space X coordinate of end of the line. </param>
+		/// <param name="EndScreenY">Screen-space Y coordinate of end of the line. </param>
+		/// <param name="LineColor">Color to draw line </param>
+		/// <param name="LineThickness">Thickness of the line to draw </param>
+		/// </summary>
+		public void DrawLine(float startScreenX, float startScreenY, float endScreenX, float endScreenY, FLinearColor lineColor, float lineThickness)
+			=> E_AHUD_DrawLine(this, startScreenX, startScreenY, endScreenX, endScreenY, lineColor, lineThickness);
+		
+		
+		/// <summary>
+		/// <para>Draws a colored untextured quad on the HUD. </para>
+		/// <param name="RectColor">Color of the rect. Can be translucent. </param>
+		/// <param name="ScreenX">Screen-space X coordinate of upper left corner of the quad. </param>
+		/// <param name="ScreenY">Screen-space Y coordinate of upper left corner of the quad. </param>
+		/// <param name="ScreenW">Screen-space width of the quad (in pixels). </param>
+		/// <param name="ScreenH">Screen-space height of the quad (in pixels). </param>
+		/// </summary>
+		public void DrawRect(FLinearColor rectColor, float screenX, float screenY, float screenW, float screenH)
+			=> E_AHUD_DrawRect(this, rectColor, screenX, screenY, screenW, screenH);
 		
 		
 		/// <summary>

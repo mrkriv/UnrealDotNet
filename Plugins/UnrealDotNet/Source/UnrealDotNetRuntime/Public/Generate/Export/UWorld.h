@@ -133,6 +133,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_GET(UWorld* Ptr) { return Ptr->NumTextureStreamingUnbuiltComponents; }
 	DOTNET_EXPORT void E_PROP_UWorld_NumTextureStreamingUnbuiltComponents_SET(UWorld* Ptr, int32 Value) { Ptr->NumTextureStreamingUnbuiltComponents = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UWorld_OriginLocation_GET(UWorld* Ptr) { return (INT_PTR)&(Ptr->OriginLocation); }
+	DOTNET_EXPORT void E_PROP_UWorld_OriginLocation_SET(UWorld* Ptr, INT_PTR Value) { Ptr->OriginLocation = *(FIntVector*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UWorld_OriginOffsetThisFrame_GET(UWorld* Ptr) { return (INT_PTR)&(Ptr->OriginOffsetThisFrame); }
 	DOTNET_EXPORT void E_PROP_UWorld_OriginOffsetThisFrame_SET(UWorld* Ptr, INT_PTR Value) { Ptr->OriginOffsetThisFrame = *(FVector*)Value; }
 	
@@ -147,6 +150,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_RealTimeSeconds_GET(UWorld* Ptr) { return Ptr->RealTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_RealTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->RealTimeSeconds = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UWorld_RequestedOriginLocation_GET(UWorld* Ptr) { return (INT_PTR)&(Ptr->RequestedOriginLocation); }
+	DOTNET_EXPORT void E_PROP_UWorld_RequestedOriginLocation_SET(UWorld* Ptr, INT_PTR Value) { Ptr->RequestedOriginLocation = *(FIntVector*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_StreamingLevelsPrefix_GET(UWorld* Ptr) { return ConvertToManage_StringWrapper(Ptr->StreamingLevelsPrefix); }
 	DOTNET_EXPORT void E_PROP_UWorld_StreamingLevelsPrefix_SET(UWorld* Ptr, char* Value) { Ptr->StreamingLevelsPrefix = ConvertFromManage_FString(Value); }
@@ -640,6 +646,12 @@ extern "C"
 		Self->MarkObjectsPendingKill();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_NavigateTo(UWorld* Self, INT_PTR InLocation)
+	{
+		auto _p0 = *(FIntVector*)InLocation;
+		Self->NavigateTo(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_PerformGarbageCollectionAndCleanupActors(UWorld* Self)
 	{
 		Self->PerformGarbageCollectionAndCleanupActors();
@@ -710,6 +722,12 @@ extern "C"
 		Self->RenameToPIEWorld(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_RequestNewWorldOrigin(UWorld* Self, INT_PTR InNewOriginLocation)
+	{
+		auto _p0 = *(FIntVector*)InNewOriginLocation;
+		Self->RequestNewWorldOrigin(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_RequiresHitProxies(UWorld* Self)
 	{
 		return Self->RequiresHitProxies();
@@ -749,6 +767,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_SetMaterialParameterCollectionInstanceNeedsUpdate(UWorld* Self)
 	{
 		Self->SetMaterialParameterCollectionInstanceNeedsUpdate();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SetNewWorldOrigin(UWorld* Self, INT_PTR InNewOriginLocation)
+	{
+		auto _p0 = *(FIntVector*)InNewOriginLocation;
+		return Self->SetNewWorldOrigin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SetSeamlessTravelMidpointPause(UWorld* Self, bool bNowPaused)

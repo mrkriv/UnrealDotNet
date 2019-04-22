@@ -107,6 +107,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USceneComponent_bHiddenInGame_GET(USceneComponent* Ptr) { return Ptr->bHiddenInGame; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_bHiddenInGame_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bHiddenInGame = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USceneComponent_Bounds_GET(USceneComponent* Ptr) { return (INT_PTR)&(Ptr->Bounds); }
+	DOTNET_EXPORT void E_PROP_USceneComponent_Bounds_SET(USceneComponent* Ptr, INT_PTR Value) { Ptr->Bounds = *(FBoxSphereBounds*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USceneComponent_bUseAttachParentBound_GET(USceneComponent* Ptr) { return Ptr->bUseAttachParentBound; }
 	DOTNET_EXPORT void E_PROP_USceneComponent_bUseAttachParentBound_SET(USceneComponent* Ptr, uint8 Value) { Ptr->bUseAttachParentBound = Value; }
 	
@@ -251,6 +254,12 @@ extern "C"
 		auto& _p0 = CylinderRadius;
 		auto& _p1 = CylinderHalfHeight;
 		Self->CalcBoundingCylinder(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_CalcBounds(USceneComponent* Self, INT_PTR LocalToWorld)
+	{
+		auto& _p0 = *(FTransform*)LocalToWorld;
+		return (INT_PTR) new FBoxSphereBounds(Self->CalcBounds(_p0));
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_CalcNewComponentToWorld(USceneComponent* Self, INT_PTR NewRelativeTransform, USceneComponent* Parent, char* SocketName)
@@ -440,6 +449,11 @@ extern "C"
 	{
 		auto& _p0 = *(TArray<USceneComponent*>*)Parents;
 		Self->GetParentComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_GetPlacementExtent(USceneComponent* Self)
+	{
+		return (INT_PTR) new FBoxSphereBounds(Self->GetPlacementExtent());
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetRelativeRotationCache(USceneComponent* Self)

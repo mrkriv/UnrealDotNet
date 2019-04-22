@@ -102,6 +102,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_HLODColorationColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_HLODColorationColors_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_IdealLightMapDensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_IdealLightMapDensity_SET(IntPtr Ptr, float Value);
@@ -117,9 +122,34 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_LightComplexityColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_LightComplexityColors_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UEngine_LightingOnlyBrightness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_LightingOnlyBrightness_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UEngine_LightingTexelDensityName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LightingTexelDensityName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UEngine_LightMapDensitySelectedColor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_LightMapDensitySelectedColor_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UEngine_LightMapDensityVertexMappedColor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_LightMapDensityVertexMappedColor_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_LODColorationColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_LODColorationColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_GET(IntPtr Ptr);
@@ -212,6 +242,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_PriorityScreenMessages_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_QuadComplexityColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_QuadComplexityColors_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_RenderLightMapDensityColorScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_RenderLightMapDensityColorScale_SET(IntPtr Ptr, float Value);
@@ -242,9 +277,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_ShaderComplexityColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_ShaderComplexityColors_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern TemplatePointerDescription E_PROP_UEngine_StatColorMappings_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_StatColorMappings_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_StationaryLightOverlapColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_StationaryLightOverlapColors_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_UEngine_StreamingAccuracyColors_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_StreamingAccuracyColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_StreamingDistanceFactor_GET(IntPtr Ptr);
@@ -312,7 +362,22 @@ namespace UnrealEngine
 		private static extern bool E_UEngine_GetDynamicResolutionUserSetting(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UEngine_GetHoveredMaterialColor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UEngine_GetSelectedMaterialColor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UEngine_GetSelectionOutlineColor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UEngine_GetSubduedSelectionOutlineColor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UEngine_IsInitialized(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_OverrideSelectedMaterialColor(IntPtr self, IntPtr overrideColor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_ParseCommandline(IntPtr self);
@@ -331,6 +396,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_SetDynamicResolutionUserSetting(IntPtr self, bool enable);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_SetSelectedMaterialColor(IntPtr self, IntPtr inSelectedMaterialColor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_SetSelectionOutlineColor(IntPtr self, IntPtr inSelectionOutlineColor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_SetSubduedSelectionOutlineColor(IntPtr self, IntPtr inSubduedSelectionOutlineColor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_ShutdownAudioDeviceManager(IntPtr self);
@@ -451,6 +525,12 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_GameSingleton_SET(NativePointer, value);
 		}
 
+		public TArray<FLinearColor> HLODColorationColors
+		{
+			get => E_PROP_UEngine_HLODColorationColors_GET(NativePointer);
+			set => E_PROP_UEngine_HLODColorationColors_SET(NativePointer, value);
+		}
+
 		public float IdealLightMapDensity
 		{
 			get => E_PROP_UEngine_IdealLightMapDensity_GET(NativePointer);
@@ -469,10 +549,40 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(NativePointer, value);
 		}
 
+		public TArray<FLinearColor> LightComplexityColors
+		{
+			get => E_PROP_UEngine_LightComplexityColors_GET(NativePointer);
+			set => E_PROP_UEngine_LightComplexityColors_SET(NativePointer, value);
+		}
+
+		public FLinearColor LightingOnlyBrightness
+		{
+			get => E_PROP_UEngine_LightingOnlyBrightness_GET(NativePointer);
+			set => E_PROP_UEngine_LightingOnlyBrightness_SET(NativePointer, value);
+		}
+
 		public string LightingTexelDensityName
 		{
 			get => E_PROP_UEngine_LightingTexelDensityName_GET(NativePointer);
 			set => E_PROP_UEngine_LightingTexelDensityName_SET(NativePointer, value);
+		}
+
+		public FLinearColor LightMapDensitySelectedColor
+		{
+			get => E_PROP_UEngine_LightMapDensitySelectedColor_GET(NativePointer);
+			set => E_PROP_UEngine_LightMapDensitySelectedColor_SET(NativePointer, value);
+		}
+
+		public FLinearColor LightMapDensityVertexMappedColor
+		{
+			get => E_PROP_UEngine_LightMapDensityVertexMappedColor_GET(NativePointer);
+			set => E_PROP_UEngine_LightMapDensityVertexMappedColor_SET(NativePointer, value);
+		}
+
+		public TArray<FLinearColor> LODColorationColors
+		{
+			get => E_PROP_UEngine_LODColorationColors_GET(NativePointer);
+			set => E_PROP_UEngine_LODColorationColors_SET(NativePointer, value);
 		}
 
 		public float MaxES2PixelShaderAdditiveComplexityCount
@@ -599,6 +709,12 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_PriorityScreenMessages_SET(NativePointer, value);
 		}
 
+		public TArray<FLinearColor> QuadComplexityColors
+		{
+			get => E_PROP_UEngine_QuadComplexityColors_GET(NativePointer);
+			set => E_PROP_UEngine_QuadComplexityColors_SET(NativePointer, value);
+		}
+
 		public float RenderLightMapDensityColorScale
 		{
 			get => E_PROP_UEngine_RenderLightMapDensityColorScale_GET(NativePointer);
@@ -635,10 +751,28 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(NativePointer, value);
 		}
 
+		public TArray<FLinearColor> ShaderComplexityColors
+		{
+			get => E_PROP_UEngine_ShaderComplexityColors_GET(NativePointer);
+			set => E_PROP_UEngine_ShaderComplexityColors_SET(NativePointer, value);
+		}
+
 		public TArray<FStatColorMapping> StatColorMappings
 		{
 			get => E_PROP_UEngine_StatColorMappings_GET(NativePointer);
 			set => E_PROP_UEngine_StatColorMappings_SET(NativePointer, value);
+		}
+
+		public TArray<FLinearColor> StationaryLightOverlapColors
+		{
+			get => E_PROP_UEngine_StationaryLightOverlapColors_GET(NativePointer);
+			set => E_PROP_UEngine_StationaryLightOverlapColors_SET(NativePointer, value);
+		}
+
+		public TArray<FLinearColor> StreamingAccuracyColors
+		{
+			get => E_PROP_UEngine_StreamingAccuracyColors_GET(NativePointer);
+			set => E_PROP_UEngine_StreamingAccuracyColors_SET(NativePointer, value);
 		}
 
 		
@@ -728,8 +862,32 @@ namespace UnrealEngine
 		public bool GetDynamicResolutionUserSetting()
 			=> E_UEngine_GetDynamicResolutionUserSetting(this);
 		
+		public FLinearColor GetHoveredMaterialColor()
+			=> E_UEngine_GetHoveredMaterialColor(this);
+		
+		
+		/// <summary>
+		/// <para>Get the color to use for object selection </para>
+		/// </summary>
+		public FLinearColor GetSelectedMaterialColor()
+			=> E_UEngine_GetSelectedMaterialColor(this);
+		
+		public FLinearColor GetSelectionOutlineColor()
+			=> E_UEngine_GetSelectionOutlineColor(this);
+		
+		public FLinearColor GetSubduedSelectionOutlineColor()
+			=> E_UEngine_GetSubduedSelectionOutlineColor(this);
+		
 		public virtual bool IsInitialized()
 			=> E_UEngine_IsInitialized(this);
+		
+		
+		/// <summary>
+		/// <para>Sets an override color to use instead of the user setting </para>
+		/// <param name="OverrideColor">The override color to use </param>
+		/// </summary>
+		public void OverrideSelectedMaterialColor(FLinearColor overrideColor)
+			=> E_UEngine_OverrideSelectedMaterialColor(this, overrideColor);
 		
 		
 		/// <summary>
@@ -772,6 +930,22 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetDynamicResolutionUserSetting(bool enable)
 			=> E_UEngine_SetDynamicResolutionUserSetting(this, enable);
+		
+		
+		/// <summary>
+		/// <para>Sets the selected material color. </para>
+		/// <para>Do not use this if you plan to override the selected material color.  Use OverrideSelectedMaterialColor instead </para>
+		/// <para>This is set by the editor preferences </para>
+		/// <param name="SelectedMaterialColor">The new selection color </param>
+		/// </summary>
+		public void SetSelectedMaterialColor(FLinearColor inSelectedMaterialColor)
+			=> E_UEngine_SetSelectedMaterialColor(this, inSelectedMaterialColor);
+		
+		public void SetSelectionOutlineColor(FLinearColor inSelectionOutlineColor)
+			=> E_UEngine_SetSelectionOutlineColor(this, inSelectionOutlineColor);
+		
+		public void SetSubduedSelectionOutlineColor(FLinearColor inSubduedSelectionOutlineColor)
+			=> E_UEngine_SetSubduedSelectionOutlineColor(this, inSubduedSelectionOutlineColor);
 		
 		public virtual void ShutdownAudioDeviceManager()
 			=> E_UEngine_ShutdownAudioDeviceManager(this);

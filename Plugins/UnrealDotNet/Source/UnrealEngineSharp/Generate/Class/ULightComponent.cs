@@ -31,10 +31,16 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ULightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ULightComponent_AffectsBounds(IntPtr self, IntPtr inBounds);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ULightComponent_AffectsPrimitive(IntPtr self, IntPtr primitive);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_ULightComponent_GetBoundingBox(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_ULightComponent_GetBoundingSphere(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_ULightComponent_GetLightPosition(IntPtr self);
@@ -65,6 +71,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetIntensity(IntPtr self, float newIntensity);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULightComponent_SetLightColor(IntPtr self, IntPtr newLightColor, bool bSRGB);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetLightFunctionDisabledBrightness(IntPtr self, float newValue);
@@ -98,6 +107,15 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Test whether the light affects the given bounding volume. </para>
+		/// <param name="Bounds">The bounding volume to test. </param>
+		/// <return>True if the light affects the bounding volume </return>
+		/// </summary>
+		public virtual bool AffectsBounds(FBoxSphereBounds inBounds)
+			=> E_ULightComponent_AffectsBounds(this, inBounds);
+		
+		
+		/// <summary>
 		/// <para>Test whether this light affects the given primitive.  This checks both the primitive and light settings for light relevance </para>
 		/// <para>and also calls AffectsBounds. </para>
 		/// <param name="PrimitiveSceneInfo">The primitive to test. </param>
@@ -112,6 +130,9 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual FBox GetBoundingBox()
 			=> E_ULightComponent_GetBoundingBox(this);
+		
+		public virtual FSphere GetBoundingSphere()
+			=> E_ULightComponent_GetBoundingSphere(this);
 		
 		
 		/// <summary>
@@ -150,6 +171,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetIntensity(float newIntensity)
 			=> E_ULightComponent_SetIntensity(this, newIntensity);
+		
+		
+		/// <summary>
+		/// <para>Set color of the light </para>
+		/// </summary>
+		public void SetLightColor(FLinearColor newLightColor, bool bSRGB = true)
+			=> E_ULightComponent_SetLightColor(this, newLightColor, bSRGB);
 		
 		public void SetLightFunctionDisabledBrightness(float newValue)
 			=> E_ULightComponent_SetLightFunctionDisabledBrightness(this, newValue);

@@ -32,8 +32,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.7")]
 [System.CLSCompliant(false)]
-public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IUHeaderVisitor<Result>
-{
+public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IUHeaderVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.translationUnit"/>.
 	/// <para>
@@ -43,11 +42,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTranslationUnit([NotNull] UHeaderParser.TranslationUnitContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTranslationUnit([NotNull] UHeaderParser.TranslationUnitContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.namespaceUnit"/>.
 	/// <para>
@@ -57,11 +52,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitNamespaceUnit([NotNull] UHeaderParser.NamespaceUnitContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitNamespaceUnit([NotNull] UHeaderParser.NamespaceUnitContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.namespaceName"/>.
 	/// <para>
@@ -71,11 +62,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitNamespaceName([NotNull] UHeaderParser.NamespaceNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitNamespaceName([NotNull] UHeaderParser.NamespaceNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.typePreDeclaration"/>.
 	/// <para>
@@ -85,11 +72,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTypePreDeclaration([NotNull] UHeaderParser.TypePreDeclarationContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTypePreDeclaration([NotNull] UHeaderParser.TypePreDeclarationContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classDeclaration"/>.
 	/// <para>
@@ -99,11 +82,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassDeclaration([NotNull] UHeaderParser.ClassDeclarationContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassDeclaration([NotNull] UHeaderParser.ClassDeclarationContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classOrStructOrEnum"/>.
 	/// <para>
@@ -113,11 +92,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassOrStructOrEnum([NotNull] UHeaderParser.ClassOrStructOrEnumContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassOrStructOrEnum([NotNull] UHeaderParser.ClassOrStructOrEnumContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classOrStruct"/>.
 	/// <para>
@@ -127,11 +102,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassOrStruct([NotNull] UHeaderParser.ClassOrStructContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassOrStruct([NotNull] UHeaderParser.ClassOrStructContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classParentList"/>.
 	/// <para>
@@ -141,11 +112,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassParentList([NotNull] UHeaderParser.ClassParentListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassParentList([NotNull] UHeaderParser.ClassParentListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classAlignDefine"/>.
 	/// <para>
@@ -155,11 +122,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassAlignDefine([NotNull] UHeaderParser.ClassAlignDefineContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassAlignDefine([NotNull] UHeaderParser.ClassAlignDefineContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classAlignValue"/>.
 	/// <para>
@@ -169,11 +132,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassAlignValue([NotNull] UHeaderParser.ClassAlignValueContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassAlignValue([NotNull] UHeaderParser.ClassAlignValueContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.classBody"/>.
 	/// <para>
@@ -183,11 +142,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitClassBody([NotNull] UHeaderParser.ClassBodyContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitClassBody([NotNull] UHeaderParser.ClassBodyContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.comment"/>.
 	/// <para>
@@ -197,11 +152,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitComment([NotNull] UHeaderParser.CommentContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitComment([NotNull] UHeaderParser.CommentContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumDeclaration"/>.
 	/// <para>
@@ -211,11 +162,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitEnumDeclaration([NotNull] UHeaderParser.EnumDeclarationContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitEnumDeclaration([NotNull] UHeaderParser.EnumDeclarationContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumParent"/>.
 	/// <para>
@@ -225,11 +172,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitEnumParent([NotNull] UHeaderParser.EnumParentContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitEnumParent([NotNull] UHeaderParser.EnumParentContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElementList"/>.
 	/// <para>
@@ -239,11 +182,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitEnumElementList([NotNull] UHeaderParser.EnumElementListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitEnumElementList([NotNull] UHeaderParser.EnumElementListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElement"/>.
 	/// <para>
@@ -253,11 +192,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitEnumElement([NotNull] UHeaderParser.EnumElementContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitEnumElement([NotNull] UHeaderParser.EnumElementContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.enumElementName"/>.
 	/// <para>
@@ -267,11 +202,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitEnumElementName([NotNull] UHeaderParser.EnumElementNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitEnumElementName([NotNull] UHeaderParser.EnumElementNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.unionDeclaration"/>.
 	/// <para>
@@ -281,11 +212,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUnionDeclaration([NotNull] UHeaderParser.UnionDeclarationContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUnionDeclaration([NotNull] UHeaderParser.UnionDeclarationContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.typeDefine"/>.
 	/// <para>
@@ -295,11 +222,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTypeDefine([NotNull] UHeaderParser.TypeDefineContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTypeDefine([NotNull] UHeaderParser.TypeDefineContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uDefine"/>.
 	/// <para>
@@ -309,11 +232,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUDefine([NotNull] UHeaderParser.UDefineContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUDefine([NotNull] UHeaderParser.UDefineContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uDefineName"/>.
 	/// <para>
@@ -323,11 +242,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUDefineName([NotNull] UHeaderParser.UDefineNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUDefineName([NotNull] UHeaderParser.UDefineNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uMeta"/>.
 	/// <para>
@@ -337,11 +252,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUMeta([NotNull] UHeaderParser.UMetaContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUMeta([NotNull] UHeaderParser.UMetaContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uMetaParametrList"/>.
 	/// <para>
@@ -351,11 +262,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUMetaParametrList([NotNull] UHeaderParser.UMetaParametrListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUMetaParametrList([NotNull] UHeaderParser.UMetaParametrListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uMetaParametr"/>.
 	/// <para>
@@ -365,11 +272,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUMetaParametr([NotNull] UHeaderParser.UMetaParametrContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUMetaParametr([NotNull] UHeaderParser.UMetaParametrContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uMetaParamKey"/>.
 	/// <para>
@@ -379,11 +282,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUMetaParamKey([NotNull] UHeaderParser.UMetaParamKeyContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUMetaParamKey([NotNull] UHeaderParser.UMetaParamKeyContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.uMetaParamValue"/>.
 	/// <para>
@@ -393,11 +292,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUMetaParamValue([NotNull] UHeaderParser.UMetaParamValueContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUMetaParamValue([NotNull] UHeaderParser.UMetaParamValueContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.undefineBlock"/>.
 	/// <para>
@@ -407,11 +302,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUndefineBlock([NotNull] UHeaderParser.UndefineBlockContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUndefineBlock([NotNull] UHeaderParser.UndefineBlockContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.undefineContent"/>.
 	/// <para>
@@ -421,11 +312,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitUndefineContent([NotNull] UHeaderParser.UndefineContentContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitUndefineContent([NotNull] UHeaderParser.UndefineContentContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.constructor"/>.
 	/// <para>
@@ -435,11 +322,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitConstructor([NotNull] UHeaderParser.ConstructorContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitConstructor([NotNull] UHeaderParser.ConstructorContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.constructorInitializerList"/>.
 	/// <para>
@@ -449,12 +332,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitConstructorInitializerList(
-		[NotNull] UHeaderParser.ConstructorInitializerListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitConstructorInitializerList([NotNull] UHeaderParser.ConstructorInitializerListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.constructorInitializer"/>.
 	/// <para>
@@ -464,11 +342,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitConstructorInitializer([NotNull] UHeaderParser.ConstructorInitializerContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitConstructorInitializer([NotNull] UHeaderParser.ConstructorInitializerContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.method"/>.
 	/// <para>
@@ -478,11 +352,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethod([NotNull] UHeaderParser.MethodContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethod([NotNull] UHeaderParser.MethodContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParamsList"/>.
 	/// <para>
@@ -492,11 +362,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodParamsList([NotNull] UHeaderParser.MethodParamsListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodParamsList([NotNull] UHeaderParser.MethodParamsListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParametr"/>.
 	/// <para>
@@ -506,11 +372,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodParametr([NotNull] UHeaderParser.MethodParametrContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodParametr([NotNull] UHeaderParser.MethodParametrContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParametrName"/>.
 	/// <para>
@@ -520,11 +382,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodParametrName([NotNull] UHeaderParser.MethodParametrNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodParametrName([NotNull] UHeaderParser.MethodParametrNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParametrDefaultValue"/>.
 	/// <para>
@@ -534,12 +392,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodParametrDefaultValue(
-		[NotNull] UHeaderParser.MethodParametrDefaultValueContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodParametrDefaultValue([NotNull] UHeaderParser.MethodParametrDefaultValueContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.value"/>.
 	/// <para>
@@ -549,11 +402,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitValue([NotNull] UHeaderParser.ValueContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitValue([NotNull] UHeaderParser.ValueContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodBody"/>.
 	/// <para>
@@ -563,11 +412,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodBody([NotNull] UHeaderParser.MethodBodyContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodBody([NotNull] UHeaderParser.MethodBodyContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodBodyContent"/>.
 	/// <para>
@@ -577,11 +422,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodBodyContent([NotNull] UHeaderParser.MethodBodyContentContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodBodyContent([NotNull] UHeaderParser.MethodBodyContentContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodName"/>.
 	/// <para>
@@ -591,11 +432,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodName([NotNull] UHeaderParser.MethodNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodName([NotNull] UHeaderParser.MethodNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodOperator"/>.
 	/// <para>
@@ -605,11 +442,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitMethodOperator([NotNull] UHeaderParser.MethodOperatorContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitMethodOperator([NotNull] UHeaderParser.MethodOperatorContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.property"/>.
 	/// <para>
@@ -619,11 +452,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitProperty([NotNull] UHeaderParser.PropertyContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitProperty([NotNull] UHeaderParser.PropertyContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.propertyName"/>.
 	/// <para>
@@ -633,11 +462,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitPropertyName([NotNull] UHeaderParser.PropertyNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitPropertyName([NotNull] UHeaderParser.PropertyNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.propertyDefaultValue"/>.
 	/// <para>
@@ -647,11 +472,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitPropertyDefaultValue([NotNull] UHeaderParser.PropertyDefaultValueContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitPropertyDefaultValue([NotNull] UHeaderParser.PropertyDefaultValueContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.type"/>.
 	/// <para>
@@ -661,11 +482,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitType([NotNull] UHeaderParser.TypeContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitType([NotNull] UHeaderParser.TypeContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isPtrQuant"/>.
 	/// <para>
@@ -675,11 +492,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsPtrQuant([NotNull] UHeaderParser.IsPtrQuantContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsPtrQuant([NotNull] UHeaderParser.IsPtrQuantContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isRefQuant"/>.
 	/// <para>
@@ -689,11 +502,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsRefQuant([NotNull] UHeaderParser.IsRefQuantContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsRefQuant([NotNull] UHeaderParser.IsRefQuantContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.typeName"/>.
 	/// <para>
@@ -703,11 +512,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTypeName([NotNull] UHeaderParser.TypeNameContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTypeName([NotNull] UHeaderParser.TypeNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isVirtual"/>.
 	/// <para>
@@ -717,11 +522,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsVirtual([NotNull] UHeaderParser.IsVirtualContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsVirtual([NotNull] UHeaderParser.IsVirtualContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isOverride"/>.
 	/// <para>
@@ -731,11 +532,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsOverride([NotNull] UHeaderParser.IsOverrideContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsOverride([NotNull] UHeaderParser.IsOverrideContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isConst"/>.
 	/// <para>
@@ -745,11 +542,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsConst([NotNull] UHeaderParser.IsConstContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsConst([NotNull] UHeaderParser.IsConstContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isStatic"/>.
 	/// <para>
@@ -759,11 +552,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsStatic([NotNull] UHeaderParser.IsStaticContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsStatic([NotNull] UHeaderParser.IsStaticContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isFriend"/>.
 	/// <para>
@@ -773,11 +562,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsFriend([NotNull] UHeaderParser.IsFriendContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsFriend([NotNull] UHeaderParser.IsFriendContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isFinal"/>.
 	/// <para>
@@ -787,11 +572,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsFinal([NotNull] UHeaderParser.IsFinalContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsFinal([NotNull] UHeaderParser.IsFinalContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isDestructor"/>.
 	/// <para>
@@ -801,11 +582,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsDestructor([NotNull] UHeaderParser.IsDestructorContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsDestructor([NotNull] UHeaderParser.IsDestructorContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isDelete"/>.
 	/// <para>
@@ -815,11 +592,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsDelete([NotNull] UHeaderParser.IsDeleteContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsDelete([NotNull] UHeaderParser.IsDeleteContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.isArray"/>.
 	/// <para>
@@ -829,11 +602,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitIsArray([NotNull] UHeaderParser.IsArrayContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitIsArray([NotNull] UHeaderParser.IsArrayContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.arrayLen"/>.
 	/// <para>
@@ -843,11 +612,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitArrayLen([NotNull] UHeaderParser.ArrayLenContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitArrayLen([NotNull] UHeaderParser.ArrayLenContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateDefine"/>.
 	/// <para>
@@ -857,11 +622,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTemplateDefine([NotNull] UHeaderParser.TemplateDefineContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTemplateDefine([NotNull] UHeaderParser.TemplateDefineContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamList"/>.
 	/// <para>
@@ -871,11 +632,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTemplateParamList([NotNull] UHeaderParser.TemplateParamListContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTemplateParamList([NotNull] UHeaderParser.TemplateParamListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParam"/>.
 	/// <para>
@@ -885,11 +642,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTemplateParam([NotNull] UHeaderParser.TemplateParamContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTemplateParam([NotNull] UHeaderParser.TemplateParamContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamType"/>.
 	/// <para>
@@ -899,11 +652,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTemplateParamType([NotNull] UHeaderParser.TemplateParamTypeContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTemplateParamType([NotNull] UHeaderParser.TemplateParamTypeContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.templateParamLiter"/>.
 	/// <para>
@@ -913,11 +662,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTemplateParamLiter([NotNull] UHeaderParser.TemplateParamLiterContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitTemplateParamLiter([NotNull] UHeaderParser.TemplateParamLiterContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.accessSpecifierContainer"/>.
 	/// <para>
@@ -927,11 +672,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitAccessSpecifierContainer([NotNull] UHeaderParser.AccessSpecifierContainerContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitAccessSpecifierContainer([NotNull] UHeaderParser.AccessSpecifierContainerContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.accessSpecifier"/>.
 	/// <para>
@@ -941,11 +682,7 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitAccessSpecifier([NotNull] UHeaderParser.AccessSpecifierContext context)
-	{
-		return VisitChildren(context);
-	}
-
+	public virtual Result VisitAccessSpecifier([NotNull] UHeaderParser.AccessSpecifierContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.preprocessDerective"/>.
 	/// <para>
@@ -955,8 +692,5 @@ public partial class UHeaderBaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitPreprocessDerective([NotNull] UHeaderParser.PreprocessDerectiveContext context)
-	{
-		return VisitChildren(context);
-	}
+	public virtual Result VisitPreprocessDerective([NotNull] UHeaderParser.PreprocessDerectiveContext context) { return VisitChildren(context); }
 }

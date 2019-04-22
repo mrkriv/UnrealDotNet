@@ -34,6 +34,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_AmbientCubemapIntensity_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_AmbientCubemapTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_AmbientCubemapTint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_AmbientOcclusionBias_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_AmbientOcclusionBias_SET(IntPtr Ptr, float Value);
@@ -139,9 +144,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_Bloom1Size_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom1Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom1Tint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom2Size_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_Bloom2Size_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom2Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom2Tint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom3Size_GET(IntPtr Ptr);
@@ -149,9 +164,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_Bloom3Size_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom3Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom3Tint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom4Size_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_Bloom4Size_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom4Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom4Tint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom5Size_GET(IntPtr Ptr);
@@ -159,9 +184,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_Bloom5Size_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom5Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom5Tint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom6Size_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_Bloom6Size_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_Bloom6Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_Bloom6Tint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_BloomConvolutionBufferScale_GET(IntPtr Ptr);
@@ -197,6 +232,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_BloomDirtMaskTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_BloomDirtMaskTint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_BloomIntensity_GET(IntPtr Ptr);
@@ -1259,6 +1299,21 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_FilmBlackClip_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_FilmChannelMixerBlue_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_FilmChannelMixerBlue_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_FilmChannelMixerGreen_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_FilmChannelMixerGreen_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_FilmChannelMixerRed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_FilmChannelMixerRed_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_FilmContrast_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_FilmContrast_SET(IntPtr Ptr, float Value);
@@ -1277,6 +1332,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_FilmSaturation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_FilmSaturation_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_FilmShadowTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_FilmShadowTint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_FilmShadowTintAmount_GET(IntPtr Ptr);
@@ -1314,6 +1374,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_FilmWhiteClip_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_FilmWhitePoint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_FilmWhitePoint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_GrainIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_GrainIntensity_SET(IntPtr Ptr, float Value);
@@ -1334,6 +1399,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_HistogramLogMin_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_IndirectLightingColor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_IndirectLightingColor_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_IndirectLightingIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_IndirectLightingIntensity_SET(IntPtr Ptr, float Value);
@@ -1352,6 +1422,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_LensFlareThreshold_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_LensFlareThreshold_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_LensFlareTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_LensFlareTint_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_LPVDiffuseOcclusionExponent_GET(IntPtr Ptr);
@@ -1519,6 +1594,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_ReflectionsType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FPostProcessSettings_SceneColorTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_SceneColorTint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_SceneFringeIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_SceneFringeIntensity_SET(IntPtr Ptr, float Value);
@@ -1590,6 +1670,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_AmbientCubemapIntensity_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_AmbientCubemapIntensity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>AmbientCubemap tint color </para>
+		/// </summary>
+		public FLinearColor AmbientCubemapTint
+		{
+			get => E_PROP_FPostProcessSettings_AmbientCubemapTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_AmbientCubemapTint_SET(NativePointer, value);
 		}
 
 		
@@ -1815,6 +1905,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Bloom1 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom1Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom1Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom1Tint_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Diameter size for Bloom2 in percent of the screen width </para>
 		/// <para>(is done in 1/4 resolution, larger values cost more performance) </para>
 		/// <para>>=0: can be clamped because of shader limitations </para>
@@ -1823,6 +1923,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_Bloom2Size_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_Bloom2Size_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Bloom2 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom2Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom2Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom2Tint_SET(NativePointer, value);
 		}
 
 		
@@ -1839,6 +1949,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Bloom3 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom3Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom3Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom3Tint_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Diameter size for Bloom4 in percent of the screen width </para>
 		/// <para>(is done in 1/16 resolution, larger values cost more performance, best for wide contributions) </para>
 		/// <para>>=0: can be clamped because of shader limitations </para>
@@ -1847,6 +1967,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_Bloom4Size_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_Bloom4Size_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Bloom4 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom4Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom4Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom4Tint_SET(NativePointer, value);
 		}
 
 		
@@ -1863,6 +1993,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Bloom5 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom5Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom5Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom5Tint_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Diameter size for Bloom6 in percent of the screen width </para>
 		/// <para>(is done in 1/64 resolution, larger values cost more performance, best for wide contributions) </para>
 		/// <para>>=0: can be clamped because of shader limitations </para>
@@ -1871,6 +2011,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_Bloom6Size_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_Bloom6Size_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Bloom6 tint color </para>
+		/// </summary>
+		public FLinearColor Bloom6Tint
+		{
+			get => E_PROP_FPostProcessSettings_Bloom6Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_Bloom6Tint_SET(NativePointer, value);
 		}
 
 		
@@ -1941,6 +2091,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>BloomDirtMask tint color </para>
+		/// </summary>
+		public FLinearColor DirtMaskTint
+		{
+			get => E_PROP_FPostProcessSettings_BloomDirtMaskTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_BloomDirtMaskTint_SET(NativePointer, value);
 		}
 
 		
@@ -3333,6 +3493,24 @@ namespace UnrealEngine
 			set => E_PROP_FPostProcessSettings_FilmBlackClip_SET(NativePointer, value);
 		}
 
+		public FLinearColor ChannelMixerBlue
+		{
+			get => E_PROP_FPostProcessSettings_FilmChannelMixerBlue_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_FilmChannelMixerBlue_SET(NativePointer, value);
+		}
+
+		public FLinearColor ChannelMixerGreen
+		{
+			get => E_PROP_FPostProcessSettings_FilmChannelMixerGreen_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_FilmChannelMixerGreen_SET(NativePointer, value);
+		}
+
+		public FLinearColor ChannelMixerRed
+		{
+			get => E_PROP_FPostProcessSettings_FilmChannelMixerRed_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_FilmChannelMixerRed_SET(NativePointer, value);
+		}
+
 		public float FilmContrast
 		{
 			get => E_PROP_FPostProcessSettings_FilmContrast_GET(NativePointer);
@@ -3355,6 +3533,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_FilmSaturation_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_FilmSaturation_SET(NativePointer, value);
+		}
+
+		public FLinearColor TintShadow
+		{
+			get => E_PROP_FPostProcessSettings_FilmShadowTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_FilmShadowTint_SET(NativePointer, value);
 		}
 
 		public float TintShadowAmount
@@ -3399,6 +3583,12 @@ namespace UnrealEngine
 			set => E_PROP_FPostProcessSettings_FilmWhiteClip_SET(NativePointer, value);
 		}
 
+		public FLinearColor FilmWhitePoint
+		{
+			get => E_PROP_FPostProcessSettings_FilmWhitePoint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_FilmWhitePoint_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>0..1 grain intensity </para>
@@ -3441,6 +3631,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Adjusts indirect lighting color. (1,1,1) is default. (0,0,0) to disable GI. The show flag 'Global Illumination' must be enabled to use this property. </para>
+		/// </summary>
+		public FLinearColor IndirectLightingColor
+		{
+			get => E_PROP_FPostProcessSettings_IndirectLightingColor_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_IndirectLightingColor_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Scales the indirect lighting contribution. A value of 0 disables GI. Default is 1. The show flag 'Global Illumination' must be enabled to use this property. </para>
 		/// </summary>
 		public float IndirectLightingIntensity
@@ -3477,6 +3677,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_LensFlareThreshold_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_LensFlareThreshold_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Tint color for the image based lens flares. </para>
+		/// </summary>
+		public FLinearColor LensFlareTint
+		{
+			get => E_PROP_FPostProcessSettings_LensFlareTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_LensFlareTint_SET(NativePointer, value);
 		}
 
 		
@@ -3807,6 +4017,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Scene tint color </para>
+		/// </summary>
+		public FLinearColor SceneColorTint
+		{
+			get => E_PROP_FPostProcessSettings_SceneColorTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_SceneColorTint_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. </para>
 		/// </summary>
 		public float SceneFringeIntensity
@@ -3896,7 +4116,7 @@ namespace UnrealEngine
 			set => E_PROP_FPostProcessSettings_WhiteTemp_SET(NativePointer, value);
 		}
 
-		public float Tint
+		public float WhiteTint
 		{
 			get => E_PROP_FPostProcessSettings_WhiteTint_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_WhiteTint_SET(NativePointer, value);

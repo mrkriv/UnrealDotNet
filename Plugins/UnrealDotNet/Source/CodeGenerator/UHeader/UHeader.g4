@@ -219,11 +219,11 @@ methodBodyContent
 
 methodName
 	: Identifier (DotDot DotDot methodName)?
-	| Operator methodOperator?
+	| Operator methodOperator
 ;
 
 methodOperator
-	: ( PtrQuant | PtrQuant | SpecalSymbol | '|' | '=' | '<' | '>' | '[' | ']' | '&' | Identifier)+
+	: ( PtrQuant | SpecalSymbol | '&' | Identifier)+
 ;
 
 /* Property */

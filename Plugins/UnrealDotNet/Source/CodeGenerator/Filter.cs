@@ -200,7 +200,7 @@ namespace CodeGenerator
 
             if (!m.Dependent.All(TypeFilter))
                 return false;
-
+            
             if (m.Operator != null)
                 return false;
 
@@ -223,6 +223,9 @@ namespace CodeGenerator
         public bool PropertyFilterNoCahed(Variable m)
         {
             if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
+                return false;
+
+            if (m.IsArray)
                 return false;
 
             if (m.IsPointer && (m.Type as Class)?.IsStructure != false)

@@ -133,6 +133,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FPlane_PlaneDot(IntPtr self, IntPtr p);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FPlane_TransformBy(IntPtr self, IntPtr m);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FPlane_TransformByUsingAdjointT(IntPtr self, IntPtr m, float detM, IntPtr tA);
+		
 		#endregion
 		
 		#region Property
@@ -184,6 +190,28 @@ namespace UnrealEngine
 		/// </summary>
 		public float PlaneDot(FVector p)
 			=> E_FPlane_PlaneDot(this, p);
+		
+		
+		/// <summary>
+		/// <para>Get the result of transforming the plane by a Matrix. </para>
+		/// <param name="M">The matrix to transform plane with. </param>
+		/// <return>The result of transform. </return>
+		/// </summary>
+		public FPlane TransformBy(FMatrix m)
+			=> E_FPlane_TransformBy(this, m);
+		
+		
+		/// <summary>
+		/// <para>You can optionally pass in the matrices transpose-adjoint, which save it recalculating it. </para>
+		/// <para>MSM: If we are going to save the transpose-adjoint we should also save the more expensive </para>
+		/// <para>determinant. </para>
+		/// <param name="M">The Matrix to transform plane with. </param>
+		/// <param name="DetM">Determinant of Matrix. </param>
+		/// <param name="TA">Transpose-adjoint of Matrix. </param>
+		/// <return>The result of transform. </return>
+		/// </summary>
+		public FPlane TransformByUsingAdjointT(FMatrix m, float detM, FMatrix tA)
+			=> E_FPlane_TransformByUsingAdjointT(this, m, detM, tA);
 		
 		#endregion
 		

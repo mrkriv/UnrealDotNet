@@ -40,6 +40,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Constructs a vector from an FIntPoint. </para>
+		/// <param name="InPos">Integer point used to set this vector. </param>
+		/// </summary>
+		public FVector2D(FIntPoint inPos) :
+			base(E_CreateStruct_FVector2D_FIntPoint(inPos), false)
+		{
+		}
+
+		
+		/// <summary>
 		/// <para>Constructs a vector from an FVector. </para>
 		/// <para>Copies the X and Y components from the FVector. </para>
 		/// <param name="V">Vector to copy from. </param>
@@ -65,6 +75,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float inX, float inY);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector2D_FIntPoint(IntPtr inPos);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr v);
@@ -119,6 +132,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector2D_InitFromString(IntPtr self, string inSourceString);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector2D_IntPoint(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector2D_IsNearlyZero(IntPtr self, float tolerance);
@@ -329,6 +345,14 @@ namespace UnrealEngine
 		/// </summary>
 		public bool InitFromString(string inSourceString)
 			=> E_FVector2D_InitFromString(this, inSourceString);
+		
+		
+		/// <summary>
+		/// <para>Get this vector as an Int Point. </para>
+		/// <return>New Int Point from this vector. </return>
+		/// </summary>
+		public FIntPoint IntPoint()
+			=> E_FVector2D_IntPoint(this);
 		
 		
 		/// <summary>

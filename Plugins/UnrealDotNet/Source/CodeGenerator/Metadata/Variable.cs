@@ -15,6 +15,8 @@ namespace CodeGenerator.Metadata
         public bool IsStatic { get; set; }
         public bool IsPointer { get; set; }
         public bool IsReference { get; set; }
+        public bool IsArray { get; set; }
+        public int ArrayLenght { get; set; }
         public Class OwnerClass { get; set; }
         public override bool IsTemplate => base.IsTemplate || Type.IsTemplate;
 

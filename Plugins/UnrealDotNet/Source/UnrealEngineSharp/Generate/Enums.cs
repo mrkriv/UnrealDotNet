@@ -259,6 +259,15 @@ namespace UnrealEngine
 		FULLYLOAD_MAX,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\Color.h:17
+	
+	public enum EGammaSpace : byte
+	{
+		Linear,
+		Pow22,
+		sRGB,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:56
 	
 	public enum EGetWorldErrorMode : byte
@@ -305,6 +314,19 @@ namespace UnrealEngine
 		IE_DoubleClick = 3,
 		IE_Axis = 4,
 		IE_MAX = 5,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\InterpCurvePoint.h:15
+	
+	public enum EInterpCurveMode : byte
+	{
+		CIM_Linear,
+		CIM_CurveAuto,
+		CIM_Constant,
+		CIM_CurveUser,
+		CIM_CurveBreak,
+		CIM_CurveAutoClamped,
+		CIM_Unknown,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InterpToMovementComponent.h:14
@@ -984,6 +1006,89 @@ namespace UnrealEngine
 	{
 		AddImpulse,
 		AddForce,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.inl:11
+	
+	public enum EUnit : byte
+	{
+		Micrometers,
+		Millimeters,
+		Centimeters,
+		Meters,
+		Kilometers,
+		Inches,
+		Feet,
+		Yards,
+		Miles,
+		Lightyears,
+		Degrees,
+		Radians,
+		MetersPerSecond,
+		KilometersPerHour,
+		MilesPerHour,
+		Celsius,
+		Farenheit,
+		Kelvin,
+		Micrograms,
+		Milligrams,
+		Grams,
+		Kilograms,
+		MetricTons,
+		Ounces,
+		Pounds,
+		Stones,
+		Newtons,
+		PoundsForce,
+		KilogramsForce,
+		Hertz,
+		Kilohertz,
+		Megahertz,
+		Gigahertz,
+		RevolutionsPerMinute,
+		Bytes,
+		Kilobytes,
+		Megabytes,
+		Gigabytes,
+		Terabytes,
+		Lumens,
+		Candela,
+		Lux,
+		CandelaPerMeter2,
+		Milliseconds,
+		Seconds,
+		Minutes,
+		Hours,
+		Days,
+		Months,
+		Years,
+		PixelsPerInch,
+		Percentage,
+		Multiplier,
+		Unspecified,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.h:63
+	
+	public enum EUnitType : byte
+	{
+		Distance,
+		Angle,
+		Speed,
+		Temperature,
+		Mass,
+		Force,
+		Frequency,
+		DataSize,
+		LuminousFlux,
+		LuminousIntensity,
+		Illuminance,
+		Luminance,
+		Time,
+		PixelDensity,
+		Multipliers,
+		Arbitrary,
+		NumberOf,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InstancedStaticMeshComponent.h:34

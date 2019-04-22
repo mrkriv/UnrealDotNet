@@ -18,31 +18,69 @@
 #include "Runtime/Engine/Classes/Components/LineBatchComponent.h"
 #include "Runtime/Core/Public/Math/Box.h"
 #include "Runtime/Core/Public/Math/Box2D.h"
+#include "Runtime/Core/Public/Math/BoxSphereBounds.h"
 #include "Runtime/Engine/Classes/Engine/Scene.h"
+#include "Runtime/Core/Public/Math/CapsuleShape.h"
 #include "Runtime/Engine/Classes/Components/ChildActorComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "Runtime/Core/Public/Math/ClipProjectionMatrix.h"
 #include "Runtime/Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Runtime/Core/Public/Math/CurveEdInterface.h"
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
+#include "Runtime/Core/Public/Math/DualQuat.h"
+#include "Runtime/Core/Public/Math/Edge.h"
 #include "Runtime/Engine/Classes/Components/SceneCaptureComponent.h"
 #include "Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h"
 #include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Core/Public/Math/PackedVector.h"
 #include "Runtime/CoreUObject/Public/UObject/UObjectArray.h"
+#include "Runtime/Core/Public/Math/Float16.h"
+#include "Runtime/Core/Public/Math/Float16Color.h"
+#include "Runtime/Core/Public/Math/Float32.h"
+#include "Runtime/Core/Public/Math/FloatPacker.h"
 #include "Runtime/Engine/Classes/GameFramework/GameModeBase.h"
 #include "Runtime/Engine/Classes/Components/InstancedStaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/InterpToMovementComponent.h"
+#include "Runtime/Core/Public/Math/IntPoint.h"
+#include "Runtime/Core/Public/Math/IntRect.h"
+#include "Runtime/Core/Public/Math/IntVector.h"
+#include "Runtime/Core/Public/Math/InverseRotationMatrix.h"
+#include "Runtime/Core/Public/Math/Color.h"
 #include "Runtime/Engine/Classes/Components/MaterialBillboardComponent.h"
+#include "Runtime/Core/Public/Math/Matrix.h"
+#include "Runtime/Core/Public/Math/TransformCalculus2D.h"
+#include "Runtime/Core/Public/Math/MirrorMatrix.h"
+#include "Runtime/Core/Public/Math/OrientedBox.h"
+#include "Runtime/Core/Public/Math/OrthoMatrix.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Core/Public/Math/PerspectiveMatrix.h"
 #include "Runtime/Core/Public/Math/Plane.h"
+#include "Runtime/Core/Public/Math/UnitConversion.inl"
 #include "Runtime/Core/Public/Math/Quat.h"
+#include "Runtime/Core/Public/Math/QuatRotationTranslationMatrix.h"
+#include "Runtime/Core/Public/Math/RandomStream.h"
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+#include "Runtime/Core/Public/Math/RotationAboutPointMatrix.h"
+#include "Runtime/Core/Public/Math/RotationMatrix.h"
+#include "Runtime/Core/Public/Math/RotationTranslationMatrix.h"
 #include "Runtime/Core/Public/Math/Rotator.h"
+#include "Runtime/Core/Public/Math/TransformCalculus3D.h"
+#include "Runtime/Core/Public/Math/ScaleMatrix.h"
+#include "Runtime/Core/Public/Math/ScaleRotationTranslationMatrix.h"
+#include "Runtime/Core/Public/Math/Sobol.h"
+#include "Runtime/Core/Public/Math/Sphere.h"
 #include "Runtime/Engine/Classes/Components/SplineComponent.h"
 #include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/TimelineComponent.h"
-#include "Runtime/Core/Public/Math/TransformVectorized.h"
+#include "Runtime/Core/Public/Math/TransformNonVectorized.h"
+#include "Runtime/Core/Public/Math/TranslationMatrix.h"
+#include "Runtime/Core/Public/Math/TwoVectors.h"
+#include "Runtime/Core/Public/Math/UnitConversion.h"
 #include "Runtime/Core/Public/Math/Vector.h"
 #include "Runtime/Core/Public/Math/Vector2D.h"
+#include "Runtime/Core/Public/Math/Vector2DHalf.h"
 #include "Runtime/Core/Public/Math/Vector4.h"
+#include "Runtime/Core/Public/Math/UnrealMathFPU.h"
 
 extern "C"
 {
@@ -280,6 +318,11 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FBatchedLine() { return (INT_PTR) new FBatchedLine(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBatchedLine_FVector_FVector_FLinearColor_float_float_uint8(INT_PTR InStart, INT_PTR InEnd, INT_PTR InColor, float InLifeTime, float InThickness, uint8 InDepthPriority) { return (INT_PTR) new FBatchedLine(*(FVector*)InStart, *(FVector*)InEnd, *(FLinearColor*)InColor, InLifeTime, InThickness, InDepthPriority); }
+	
+	DOTNET_EXPORT auto E_PROP_FBatchedLine_Color_GET(FBatchedLine* Ptr) { return (INT_PTR)&(Ptr->Color); }
+	DOTNET_EXPORT void E_PROP_FBatchedLine_Color_SET(FBatchedLine* Ptr, INT_PTR Value) { Ptr->Color = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FBatchedLine_DepthPriority_GET(FBatchedLine* Ptr) { return Ptr->DepthPriority; }
 	DOTNET_EXPORT void E_PROP_FBatchedLine_DepthPriority_SET(FBatchedLine* Ptr, uint8 Value) { Ptr->DepthPriority = Value; }
 	
@@ -316,6 +359,11 @@ extern "C"
 	/*	FBatchedPoint	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FBatchedPoint() { return (INT_PTR) new FBatchedPoint(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBatchedPoint_FVector_FLinearColor_float_float_uint8(INT_PTR InPosition, INT_PTR InColor, float InPointSize, float InLifeTime, uint8 InDepthPriority) { return (INT_PTR) new FBatchedPoint(*(FVector*)InPosition, *(FLinearColor*)InColor, InPointSize, InLifeTime, InDepthPriority); }
+	
+	DOTNET_EXPORT auto E_PROP_FBatchedPoint_Color_GET(FBatchedPoint* Ptr) { return (INT_PTR)&(Ptr->Color); }
+	DOTNET_EXPORT void E_PROP_FBatchedPoint_Color_SET(FBatchedPoint* Ptr, INT_PTR Value) { Ptr->Color = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FBatchedPoint_DepthPriority_GET(FBatchedPoint* Ptr) { return Ptr->DepthPriority; }
 	DOTNET_EXPORT void E_PROP_FBatchedPoint_DepthPriority_SET(FBatchedPoint* Ptr, uint8 Value) { Ptr->DepthPriority = Value; }
@@ -500,8 +548,20 @@ extern "C"
 
 	DOTNET_EXPORT auto E_FBox_TransformBy(FBox* Self, INT_PTR M)
 	{
+		auto& _p0 = *(FMatrix*)M;
+		return (INT_PTR) new FBox(Self->TransformBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FBox_TransformBy_o1(FBox* Self, INT_PTR M)
+	{
 		auto& _p0 = *(FTransform*)M;
 		return (INT_PTR) new FBox(Self->TransformBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FBox_TransformProjectBy(FBox* Self, INT_PTR ProjM)
+	{
+		auto& _p0 = *(FMatrix*)ProjM;
+		return (INT_PTR) new FBox(Self->TransformProjectBy(_p0));
 	}
 
 	
@@ -606,6 +666,92 @@ extern "C"
 	}
 
 	
+	/*	FBoxSphereBounds	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBoxSphereBounds() { return (INT_PTR) new FBoxSphereBounds(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBoxSphereBounds_FVector_FVector_float(INT_PTR InOrigin, INT_PTR InBoxExtent, float InSphereRadius) { return (INT_PTR) new FBoxSphereBounds(*(FVector*)InOrigin, *(FVector*)InBoxExtent, InSphereRadius); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBoxSphereBounds_FBox_FSphere(INT_PTR Box, INT_PTR Sphere) { return (INT_PTR) new FBoxSphereBounds(*(FBox*)Box, *(FSphere*)Sphere); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBoxSphereBounds_FBox(INT_PTR Box) { return (INT_PTR) new FBoxSphereBounds(*(FBox*)Box); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FBoxSphereBounds_FSphere(INT_PTR Sphere) { return (INT_PTR) new FBoxSphereBounds(*(FSphere*)Sphere); }
+	
+	DOTNET_EXPORT auto E_PROP_FBoxSphereBounds_BoxExtent_GET(FBoxSphereBounds* Ptr) { return (INT_PTR)&(Ptr->BoxExtent); }
+	DOTNET_EXPORT void E_PROP_FBoxSphereBounds_BoxExtent_SET(FBoxSphereBounds* Ptr, INT_PTR Value) { Ptr->BoxExtent = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FBoxSphereBounds_Origin_GET(FBoxSphereBounds* Ptr) { return (INT_PTR)&(Ptr->Origin); }
+	DOTNET_EXPORT void E_PROP_FBoxSphereBounds_Origin_SET(FBoxSphereBounds* Ptr, INT_PTR Value) { Ptr->Origin = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FBoxSphereBounds_SphereRadius_GET(FBoxSphereBounds* Ptr) { return Ptr->SphereRadius; }
+	DOTNET_EXPORT void E_PROP_FBoxSphereBounds_SphereRadius_SET(FBoxSphereBounds* Ptr, float Value) { Ptr->SphereRadius = Value; }
+	
+	DOTNET_EXPORT auto E_FBoxSphereBounds_BoxesIntersect(FBoxSphereBounds* Self, INT_PTR A, INT_PTR B)
+	{
+		auto& _p0 = *(FBoxSphereBounds*)A;
+		auto& _p1 = *(FBoxSphereBounds*)B;
+		return Self->BoxesIntersect(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_ComputeSquaredDistanceFromBoxToPoint(FBoxSphereBounds* Self, INT_PTR Point)
+	{
+		auto& _p0 = *(FVector*)Point;
+		return Self->ComputeSquaredDistanceFromBoxToPoint(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_ContainsNaN(FBoxSphereBounds* Self)
+	{
+		return Self->ContainsNaN();
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_DiagnosticCheckNaN(FBoxSphereBounds* Self)
+	{
+		Self->DiagnosticCheckNaN();
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_ExpandBy(FBoxSphereBounds* Self, float ExpandAmount)
+	{
+		auto _p0 = ExpandAmount;
+		return (INT_PTR) new FBoxSphereBounds(Self->ExpandBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_GetBox(FBoxSphereBounds* Self)
+	{
+		return (INT_PTR) new FBox(Self->GetBox());
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_GetSphere(FBoxSphereBounds* Self)
+	{
+		return (INT_PTR) new FSphere(Self->GetSphere());
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_SpheresIntersect(FBoxSphereBounds* Self, INT_PTR A, INT_PTR B, float Tolerance)
+	{
+		auto& _p0 = *(FBoxSphereBounds*)A;
+		auto& _p1 = *(FBoxSphereBounds*)B;
+		auto _p2 = Tolerance;
+		return Self->SpheresIntersect(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_ToString(FBoxSphereBounds* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_TransformBy(FBoxSphereBounds* Self, INT_PTR M)
+	{
+		auto& _p0 = *(FMatrix*)M;
+		return (INT_PTR) new FBoxSphereBounds(Self->TransformBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FBoxSphereBounds_TransformBy_o1(FBoxSphereBounds* Self, INT_PTR M)
+	{
+		auto& _p0 = *(FTransform*)M;
+		return (INT_PTR) new FBoxSphereBounds(Self->TransformBy(_p0));
+	}
+
+	
 	/*	FCameraExposureSettings	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FCameraExposureSettings() { return (INT_PTR) new FCameraExposureSettings(); }
@@ -647,6 +793,25 @@ extern "C"
 	}
 
 	
+	/*	FCapsuleShape	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCapsuleShape() { return (INT_PTR) new FCapsuleShape(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCapsuleShape_FVector_float_FVector_float(INT_PTR InCenter, float InRadius, INT_PTR InOrientation, float InLength) { return (INT_PTR) new FCapsuleShape(*(FVector*)InCenter, InRadius, *(FVector*)InOrientation, InLength); }
+	
+	DOTNET_EXPORT auto E_PROP_FCapsuleShape_Center_GET(FCapsuleShape* Ptr) { return (INT_PTR)&(Ptr->Center); }
+	DOTNET_EXPORT void E_PROP_FCapsuleShape_Center_SET(FCapsuleShape* Ptr, INT_PTR Value) { Ptr->Center = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCapsuleShape_Length_GET(FCapsuleShape* Ptr) { return Ptr->Length; }
+	DOTNET_EXPORT void E_PROP_FCapsuleShape_Length_SET(FCapsuleShape* Ptr, float Value) { Ptr->Length = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCapsuleShape_Orientation_GET(FCapsuleShape* Ptr) { return (INT_PTR)&(Ptr->Orientation); }
+	DOTNET_EXPORT void E_PROP_FCapsuleShape_Orientation_SET(FCapsuleShape* Ptr, INT_PTR Value) { Ptr->Orientation = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCapsuleShape_Radius_GET(FCapsuleShape* Ptr) { return Ptr->Radius; }
+	DOTNET_EXPORT void E_PROP_FCapsuleShape_Radius_SET(FCapsuleShape* Ptr, float Value) { Ptr->Radius = Value; }
+	
+	
 	/*	FChildActorAttachedActorInfo	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FChildActorAttachedActorInfo() { return (INT_PTR) new FChildActorAttachedActorInfo(); }
@@ -685,6 +850,11 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FClassRedirect_OldSubobjName_GET(FClassRedirect* Ptr) { return ConvertToManage_StringWrapper(Ptr->OldSubobjName); }
 	DOTNET_EXPORT void E_PROP_FClassRedirect_OldSubobjName_SET(FClassRedirect* Ptr, char* Value) { Ptr->OldSubobjName = ConvertFromManage_FName(Value); }
+	
+	
+	/*	FClipProjectionMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FClipProjectionMatrix_FMatrix_FPlane(INT_PTR SrcProjMat, INT_PTR Plane) { return (INT_PTR) new FClipProjectionMatrix(*(FMatrix*)SrcProjMat, *(FPlane*)Plane); }
 	
 	
 	/*	FClosestPointOnPhysicsAsset	*/
@@ -881,6 +1051,113 @@ extern "C"
 	}
 
 	
+	/*	FCurveEdInterface	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCurveEdInterface() { return (INT_PTR) new FCurveEdInterface(); }
+	
+	DOTNET_EXPORT auto E_FCurveEdInterface_CreateNewKey(FCurveEdInterface* Self, float KeyIn)
+	{
+		auto _p0 = KeyIn;
+		return Self->CreateNewKey(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_DeleteKey(FCurveEdInterface* Self, int32 KeyIndex)
+	{
+		auto _p0 = KeyIndex;
+		Self->DeleteKey(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_EvalSub(FCurveEdInterface* Self, int32 SubIndex, float InVal)
+	{
+		auto _p0 = SubIndex;
+		auto _p1 = InVal;
+		return Self->EvalSub(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetInRange(FCurveEdInterface* Self, float MinIn, float MaxIn)
+	{
+		auto& _p0 = MinIn;
+		auto& _p1 = MaxIn;
+		Self->GetInRange(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetKeyIn(FCurveEdInterface* Self, int32 KeyIndex)
+	{
+		auto _p0 = KeyIndex;
+		return Self->GetKeyIn(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetKeyInterpMode(FCurveEdInterface* Self, int32 KeyIndex)
+	{
+		auto _p0 = KeyIndex;
+		return Self->GetKeyInterpMode(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetKeyOut(FCurveEdInterface* Self, int32 SubIndex, int32 KeyIndex)
+	{
+		auto _p0 = SubIndex;
+		auto _p1 = KeyIndex;
+		return Self->GetKeyOut(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetNumKeys(FCurveEdInterface* Self)
+	{
+		return Self->GetNumKeys();
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetNumSubCurves(FCurveEdInterface* Self)
+	{
+		return Self->GetNumSubCurves();
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetOutRange(FCurveEdInterface* Self, float MinOut, float MaxOut)
+	{
+		auto& _p0 = MinOut;
+		auto& _p1 = MaxOut;
+		Self->GetOutRange(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_GetTangents(FCurveEdInterface* Self, int32 SubIndex, int32 KeyIndex, float ArriveTangent, float LeaveTangent)
+	{
+		auto _p0 = SubIndex;
+		auto _p1 = KeyIndex;
+		auto& _p2 = ArriveTangent;
+		auto& _p3 = LeaveTangent;
+		Self->GetTangents(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_SetKeyIn(FCurveEdInterface* Self, int32 KeyIndex, float NewInVal)
+	{
+		auto _p0 = KeyIndex;
+		auto _p1 = NewInVal;
+		return Self->SetKeyIn(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_SetKeyInterpMode(FCurveEdInterface* Self, int32 KeyIndex, EInterpCurveMode NewMode)
+	{
+		auto _p0 = KeyIndex;
+		auto _p1 = NewMode;
+		Self->SetKeyInterpMode(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_SetKeyOut(FCurveEdInterface* Self, int32 SubIndex, int32 KeyIndex, float NewOutVal)
+	{
+		auto _p0 = SubIndex;
+		auto _p1 = KeyIndex;
+		auto _p2 = NewOutVal;
+		Self->SetKeyOut(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_FCurveEdInterface_SetTangents(FCurveEdInterface* Self, int32 SubIndex, int32 KeyIndex, float ArriveTangent, float LeaveTangent)
+	{
+		auto _p0 = SubIndex;
+		auto _p1 = KeyIndex;
+		auto _p2 = ArriveTangent;
+		auto _p3 = LeaveTangent;
+		Self->SetTangents(_p0, _p1, _p2, _p3);
+	}
+
+	
 	/*	FDamageEvent	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDamageEvent() { return (INT_PTR) new FDamageEvent(); }
@@ -952,6 +1229,30 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FDropNoteInfo_Rotation_SET(FDropNoteInfo* Ptr, INT_PTR Value) { Ptr->Rotation = *(FRotator*)Value; }
 	
 	
+	/*	FDualQuat	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDualQuat_FQuat_FQuat(INT_PTR InR, INT_PTR InD) { return (INT_PTR) new FDualQuat(*(FQuat*)InR, *(FQuat*)InD); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDualQuat_FTransform(INT_PTR T) { return (INT_PTR) new FDualQuat(*(FTransform*)T); }
+	
+	DOTNET_EXPORT auto E_PROP_FDualQuat_D_GET(FDualQuat* Ptr) { return (INT_PTR)&(Ptr->D); }
+	DOTNET_EXPORT void E_PROP_FDualQuat_D_SET(FDualQuat* Ptr, INT_PTR Value) { Ptr->D = *(FQuat*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FDualQuat_R_GET(FDualQuat* Ptr) { return (INT_PTR)&(Ptr->R); }
+	DOTNET_EXPORT void E_PROP_FDualQuat_R_SET(FDualQuat* Ptr, INT_PTR Value) { Ptr->R = *(FQuat*)Value; }
+	
+	DOTNET_EXPORT auto E_FDualQuat_AsFTransform(FDualQuat* Self, INT_PTR Scale)
+	{
+		auto _p0 = *(FVector*)Scale;
+		return (INT_PTR) new FTransform(Self->AsFTransform(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FDualQuat_Normalized(FDualQuat* Self)
+	{
+		return (INT_PTR) new FDualQuat(Self->Normalized());
+	}
+
+	
 	/*	FDynamicResolutionStateInfos	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDynamicResolutionStateInfos() { return (INT_PTR) new FDynamicResolutionStateInfos(); }
@@ -964,6 +1265,16 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FDynamicResolutionStateInfos_Status_GET(FDynamicResolutionStateInfos* Ptr) { return Ptr->Status; }
 	DOTNET_EXPORT void E_PROP_FDynamicResolutionStateInfos_Status_SET(FDynamicResolutionStateInfos* Ptr, EDynamicResolutionStatus Value) { Ptr->Status = Value; }
+	
+	
+	/*	FEdge	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FEdge() { return (INT_PTR) new FEdge(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FEdge_FVector_FVector(INT_PTR V1, INT_PTR V2) { return (INT_PTR) new FEdge(*(FVector*)V1, *(FVector*)V2); }
+	
+	DOTNET_EXPORT auto E_PROP_FEdge_Count_GET(FEdge* Ptr) { return Ptr->Count; }
+	DOTNET_EXPORT void E_PROP_FEdge_Count_SET(FEdge* Ptr, int32 Value) { Ptr->Count = Value; }
 	
 	
 	/*	FEngineShowFlagsSetting	*/
@@ -1084,9 +1395,90 @@ extern "C"
 	}
 
 	
+	/*	FFixedRGBASigned8	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFixedRGBASigned8() { return (INT_PTR) new FFixedRGBASigned8(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFixedRGBASigned8_FLinearColor(INT_PTR Src) { return (INT_PTR) new FFixedRGBASigned8(*(FLinearColor*)Src); }
+	
+	DOTNET_EXPORT auto E_FFixedRGBASigned8_ToLinearColor(FFixedRGBASigned8* Self)
+	{
+		return (INT_PTR) new FLinearColor(Self->ToLinearColor());
+	}
+
+	
 	/*	FFixedUObjectArray	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FFixedUObjectArray() { return (INT_PTR) new FFixedUObjectArray(); }
+	
+	
+	/*	FFloat16	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16() { return (INT_PTR) new FFloat16(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16_FFloat16(INT_PTR FP16Value) { return (INT_PTR) new FFloat16(*(FFloat16*)FP16Value); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16_float(float FP32Value) { return (INT_PTR) new FFloat16(FP32Value); }
+	
+	DOTNET_EXPORT auto E_FFloat16_GetFloat(FFloat16* Self)
+	{
+		return Self->GetFloat();
+	}
+
+	DOTNET_EXPORT auto E_FFloat16_Set(FFloat16* Self, float FP32Value)
+	{
+		auto _p0 = FP32Value;
+		Self->Set(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FFloat16_SetWithoutBoundsChecks(FFloat16* Self, float FP32Value)
+	{
+		auto _p0 = FP32Value;
+		Self->SetWithoutBoundsChecks(_p0);
+	}
+
+	
+	/*	FFloat16Color	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16Color() { return (INT_PTR) new FFloat16Color(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16Color_FFloat16Color(INT_PTR Src) { return (INT_PTR) new FFloat16Color(*(FFloat16Color*)Src); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat16Color_FLinearColor(INT_PTR Src) { return (INT_PTR) new FFloat16Color(*(FLinearColor*)Src); }
+	
+	DOTNET_EXPORT auto E_PROP_FFloat16Color_A_GET(FFloat16Color* Ptr) { return (INT_PTR)&(Ptr->A); }
+	DOTNET_EXPORT void E_PROP_FFloat16Color_A_SET(FFloat16Color* Ptr, INT_PTR Value) { Ptr->A = *(FFloat16*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFloat16Color_B_GET(FFloat16Color* Ptr) { return (INT_PTR)&(Ptr->B); }
+	DOTNET_EXPORT void E_PROP_FFloat16Color_B_SET(FFloat16Color* Ptr, INT_PTR Value) { Ptr->B = *(FFloat16*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFloat16Color_G_GET(FFloat16Color* Ptr) { return (INT_PTR)&(Ptr->G); }
+	DOTNET_EXPORT void E_PROP_FFloat16Color_G_SET(FFloat16Color* Ptr, INT_PTR Value) { Ptr->G = *(FFloat16*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFloat16Color_R_GET(FFloat16Color* Ptr) { return (INT_PTR)&(Ptr->R); }
+	DOTNET_EXPORT void E_PROP_FFloat16Color_R_SET(FFloat16Color* Ptr, INT_PTR Value) { Ptr->R = *(FFloat16*)Value; }
+	
+	
+	/*	FFloat32	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat32_float(float InValue) { return (INT_PTR) new FFloat32(InValue); }
+	
+	
+	/*	FFloat3Packed	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat3Packed() { return (INT_PTR) new FFloat3Packed(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloat3Packed_FLinearColor(INT_PTR Src) { return (INT_PTR) new FFloat3Packed(*(FLinearColor*)Src); }
+	
+	DOTNET_EXPORT auto E_FFloat3Packed_ToLinearColor(FFloat3Packed* Self)
+	{
+		return (INT_PTR) new FLinearColor(Self->ToLinearColor());
+	}
+
+	
+	/*	FFloatInfo_IEEE32	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloatInfo_IEEE32() { return (INT_PTR) new FFloatInfo_IEEE32(); }
 	
 	
 	/*	FFractureEffect	*/
@@ -1229,6 +1621,11 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FInstancedStaticMeshInstanceData() { return (INT_PTR) new FInstancedStaticMeshInstanceData(); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FInstancedStaticMeshInstanceData_FMatrix(INT_PTR InTransform) { return (INT_PTR) new FInstancedStaticMeshInstanceData(*(FMatrix*)InTransform); }
+	
+	DOTNET_EXPORT auto E_PROP_FInstancedStaticMeshInstanceData_Transform_GET(FInstancedStaticMeshInstanceData* Ptr) { return (INT_PTR)&(Ptr->Transform); }
+	DOTNET_EXPORT void E_PROP_FInstancedStaticMeshInstanceData_Transform_SET(FInstancedStaticMeshInstanceData* Ptr, INT_PTR Value) { Ptr->Transform = *(FMatrix*)Value; }
+	
 	
 	/*	FInstancedStaticMeshMappingInfo	*/
 	
@@ -1257,6 +1654,59 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FInterpControlPoint_StartTime_SET(FInterpControlPoint* Ptr, float Value) { Ptr->StartTime = Value; }
 	
 	
+	/*	FIntPoint	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntPoint() { return (INT_PTR) new FIntPoint(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntPoint_int32_int32(int32 InX, int32 InY) { return (INT_PTR) new FIntPoint(InX, InY); }
+	
+	DOTNET_EXPORT auto E_PROP_FIntPoint_X_GET(FIntPoint* Ptr) { return Ptr->X; }
+	DOTNET_EXPORT void E_PROP_FIntPoint_X_SET(FIntPoint* Ptr, int32 Value) { Ptr->X = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntPoint_Y_GET(FIntPoint* Ptr) { return Ptr->Y; }
+	DOTNET_EXPORT void E_PROP_FIntPoint_Y_SET(FIntPoint* Ptr, int32 Value) { Ptr->Y = Value; }
+	
+	
+	/*	FIntRect	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntRect() { return (INT_PTR) new FIntRect(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntRect_int32_int32_int32_int32(int32 X0, int32 Y0, int32 X1, int32 Y1) { return (INT_PTR) new FIntRect(X0, Y0, X1, Y1); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntRect_FIntPoint_FIntPoint(INT_PTR InMin, INT_PTR InMax) { return (INT_PTR) new FIntRect(*(FIntPoint*)InMin, *(FIntPoint*)InMax); }
+	
+	DOTNET_EXPORT auto E_PROP_FIntRect_Max_GET(FIntRect* Ptr) { return (INT_PTR)&(Ptr->Max); }
+	DOTNET_EXPORT void E_PROP_FIntRect_Max_SET(FIntRect* Ptr, INT_PTR Value) { Ptr->Max = *(FIntPoint*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntRect_Min_GET(FIntRect* Ptr) { return (INT_PTR)&(Ptr->Min); }
+	DOTNET_EXPORT void E_PROP_FIntRect_Min_SET(FIntRect* Ptr, INT_PTR Value) { Ptr->Min = *(FIntPoint*)Value; }
+	
+	
+	/*	FIntVector	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntVector() { return (INT_PTR) new FIntVector(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntVector_int32_int32_int32(int32 InX, int32 InY, int32 InZ) { return (INT_PTR) new FIntVector(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntVector_int32(int32 InValue) { return (INT_PTR) new FIntVector(InValue); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntVector_FVector(INT_PTR InVector) { return (INT_PTR) new FIntVector(*(FVector*)InVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FIntVector_X_GET(FIntVector* Ptr) { return Ptr->X; }
+	DOTNET_EXPORT void E_PROP_FIntVector_X_SET(FIntVector* Ptr, int32 Value) { Ptr->X = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntVector_Y_GET(FIntVector* Ptr) { return Ptr->Y; }
+	DOTNET_EXPORT void E_PROP_FIntVector_Y_SET(FIntVector* Ptr, int32 Value) { Ptr->Y = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntVector_Z_GET(FIntVector* Ptr) { return Ptr->Z; }
+	DOTNET_EXPORT void E_PROP_FIntVector_Z_SET(FIntVector* Ptr, int32 Value) { Ptr->Z = Value; }
+	
+	
+	/*	FInverseRotationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FInverseRotationMatrix_FRotator(INT_PTR Rot) { return (INT_PTR) new FInverseRotationMatrix(*(FRotator*)Rot); }
+	
+	
 	/*	FLensBloomSettings	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLensBloomSettings() { return (INT_PTR) new FLensBloomSettings(); }
@@ -1277,6 +1727,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FLensImperfectionSettings_DirtMaskIntensity_GET(FLensImperfectionSettings* Ptr) { return Ptr->DirtMaskIntensity; }
 	DOTNET_EXPORT void E_PROP_FLensImperfectionSettings_DirtMaskIntensity_SET(FLensImperfectionSettings* Ptr, float Value) { Ptr->DirtMaskIntensity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FLensImperfectionSettings_DirtMaskTint_GET(FLensImperfectionSettings* Ptr) { return (INT_PTR)&(Ptr->DirtMaskTint); }
+	DOTNET_EXPORT void E_PROP_FLensImperfectionSettings_DirtMaskTint_SET(FLensImperfectionSettings* Ptr, INT_PTR Value) { Ptr->DirtMaskTint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_FLensImperfectionSettings_ExportToPostProcessSettings(FLensImperfectionSettings* Self, INT_PTR OutPostProcessSettings)
 	{
@@ -1436,6 +1889,11 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FLightmassPrimitiveSettings_FullyOccludedSamplesFraction_SET(FLightmassPrimitiveSettings* Ptr, float Value) { Ptr->FullyOccludedSamplesFraction = Value; }
 	
 	
+	/*	FLinearColor	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLinearColor() { return (INT_PTR) new FLinearColor(); }
+	
+	
 	/*	FMaterialSpriteElement	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMaterialSpriteElement() { return (INT_PTR) new FMaterialSpriteElement(); }
@@ -1446,6 +1904,94 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FMaterialSpriteElement_BaseSizeY_GET(FMaterialSpriteElement* Ptr) { return Ptr->BaseSizeY; }
 	DOTNET_EXPORT void E_PROP_FMaterialSpriteElement_BaseSizeY_SET(FMaterialSpriteElement* Ptr, float Value) { Ptr->BaseSizeY = Value; }
 	
+	
+	/*	FMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix() { return (INT_PTR) new FMatrix(); }
+	
+	
+	/*	FMatrix2x2	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2() { return (INT_PTR) new FMatrix2x2(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2_float_float_float_float(float m00, float m01, float m10, float m11) { return (INT_PTR) new FMatrix2x2(m00, m01, m10, m11); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2_float(float UniformScale) { return (INT_PTR) new FMatrix2x2(UniformScale); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2_FScale2D(INT_PTR Scale) { return (INT_PTR) new FMatrix2x2(*(FScale2D*)Scale); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2_FShear2D(INT_PTR Shear) { return (INT_PTR) new FMatrix2x2(*(FShear2D*)Shear); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMatrix2x2_FQuat2D(INT_PTR Rotation) { return (INT_PTR) new FMatrix2x2(*(FQuat2D*)Rotation); }
+	
+	DOTNET_EXPORT auto E_FMatrix2x2_Concatenate(FMatrix2x2* Self, INT_PTR RHS)
+	{
+		auto& _p0 = *(FMatrix2x2*)RHS;
+		return (INT_PTR) new FMatrix2x2(Self->Concatenate(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_Determinant(FMatrix2x2* Self)
+	{
+		return Self->Determinant();
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_GetMatrix(FMatrix2x2* Self, float A, float B, float C, float D)
+	{
+		auto& _p0 = A;
+		auto& _p1 = B;
+		auto& _p2 = C;
+		auto& _p3 = D;
+		Self->GetMatrix(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_GetRotationAngle(FMatrix2x2* Self)
+	{
+		return Self->GetRotationAngle();
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_GetScale(FMatrix2x2* Self)
+	{
+		return (INT_PTR) new FScale2D(Self->GetScale());
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_GetScaleSquared(FMatrix2x2* Self)
+	{
+		return (INT_PTR) new FScale2D(Self->GetScaleSquared());
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_Inverse(FMatrix2x2* Self)
+	{
+		return (INT_PTR) new FMatrix2x2(Self->Inverse());
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_InverseDeterminant(FMatrix2x2* Self)
+	{
+		return Self->InverseDeterminant();
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_IsIdentity(FMatrix2x2* Self)
+	{
+		return Self->IsIdentity();
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_IsNearlyIdentity(FMatrix2x2* Self, float ErrorTolerance)
+	{
+		auto _p0 = ErrorTolerance;
+		return Self->IsNearlyIdentity(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_TransformPoint(FMatrix2x2* Self, INT_PTR Point)
+	{
+		auto& _p0 = *(FVector2D*)Point;
+		return (INT_PTR) new FVector2D(Self->TransformPoint(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FMatrix2x2_TransformVector(FMatrix2x2* Self, INT_PTR Vector)
+	{
+		auto& _p0 = *(FVector2D*)Vector;
+		return (INT_PTR) new FVector2D(Self->TransformVector(_p0));
+	}
+
 	
 	/*	FMeshBuildSettings	*/
 	
@@ -1500,6 +2046,11 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_SrcLightmapIndex_SET(FMeshBuildSettings* Ptr, int32 Value) { Ptr->SrcLightmapIndex = Value; }
 	
 	
+	/*	FMirrorMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMirrorMatrix_FPlane(INT_PTR Plane) { return (INT_PTR) new FMirrorMatrix(*(FPlane*)Plane); }
+	
+	
 	/*	FMTDResult	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMTDResult() { return (INT_PTR) new FMTDResult(); }
@@ -1523,6 +2074,43 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FNetDriverDefinition_DriverClassNameFallback_GET(FNetDriverDefinition* Ptr) { return ConvertToManage_StringWrapper(Ptr->DriverClassNameFallback); }
 	DOTNET_EXPORT void E_PROP_FNetDriverDefinition_DriverClassNameFallback_SET(FNetDriverDefinition* Ptr, char* Value) { Ptr->DriverClassNameFallback = ConvertFromManage_FName(Value); }
+	
+	
+	/*	FOrientedBox	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FOrientedBox() { return (INT_PTR) new FOrientedBox(); }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_AxisX_GET(FOrientedBox* Ptr) { return (INT_PTR)&(Ptr->AxisX); }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_AxisX_SET(FOrientedBox* Ptr, INT_PTR Value) { Ptr->AxisX = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_AxisY_GET(FOrientedBox* Ptr) { return (INT_PTR)&(Ptr->AxisY); }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_AxisY_SET(FOrientedBox* Ptr, INT_PTR Value) { Ptr->AxisY = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_AxisZ_GET(FOrientedBox* Ptr) { return (INT_PTR)&(Ptr->AxisZ); }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_AxisZ_SET(FOrientedBox* Ptr, INT_PTR Value) { Ptr->AxisZ = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_Center_GET(FOrientedBox* Ptr) { return (INT_PTR)&(Ptr->Center); }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_Center_SET(FOrientedBox* Ptr, INT_PTR Value) { Ptr->Center = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_ExtentX_GET(FOrientedBox* Ptr) { return Ptr->ExtentX; }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_ExtentX_SET(FOrientedBox* Ptr, float Value) { Ptr->ExtentX = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_ExtentY_GET(FOrientedBox* Ptr) { return Ptr->ExtentY; }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_ExtentY_SET(FOrientedBox* Ptr, float Value) { Ptr->ExtentY = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FOrientedBox_ExtentZ_GET(FOrientedBox* Ptr) { return Ptr->ExtentZ; }
+	DOTNET_EXPORT void E_PROP_FOrientedBox_ExtentZ_SET(FOrientedBox* Ptr, float Value) { Ptr->ExtentZ = Value; }
+	
+	DOTNET_EXPORT auto E_FOrientedBox_CalcVertices(FOrientedBox* Self, INT_PTR Verts)
+	{
+		auto _p0 = (FVector*)Verts;
+		Self->CalcVertices(_p0);
+	}
+
+	
+	/*	FOrthoMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FOrthoMatrix_float_float_float_float(float Width, float Height, float ZScale, float ZOffset) { return (INT_PTR) new FOrthoMatrix(Width, Height, ZScale, ZOffset); }
 	
 	
 	/*	FOverlapInfo	*/
@@ -1574,6 +2162,15 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FPaintedVertex_Position_SET(FPaintedVertex* Ptr, INT_PTR Value) { Ptr->Position = *(FVector*)Value; }
 	
 	
+	/*	FPerspectiveMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPerspectiveMatrix_float_float_float_float_float_float(float HalfFOVX, float HalfFOVY, float MultFOVX, float MultFOVY, float MinZ, float MaxZ) { return (INT_PTR) new FPerspectiveMatrix(HalfFOVX, HalfFOVY, MultFOVX, MultFOVY, MinZ, MaxZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPerspectiveMatrix_float_float_float_float_float(float HalfFOV, float Width, float Height, float MinZ, float MaxZ) { return (INT_PTR) new FPerspectiveMatrix(HalfFOV, Width, Height, MinZ, MaxZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPerspectiveMatrix_float_float_float_float(float HalfFOV, float Width, float Height, float MinZ) { return (INT_PTR) new FPerspectiveMatrix(HalfFOV, Width, Height, MinZ); }
+	
+	
 	/*	FPlane	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FPlane() { return (INT_PTR) new FPlane(); }
@@ -1617,6 +2214,20 @@ extern "C"
 		return Self->PlaneDot(_p0);
 	}
 
+	DOTNET_EXPORT auto E_FPlane_TransformBy(FPlane* Self, INT_PTR M)
+	{
+		auto& _p0 = *(FMatrix*)M;
+		return (INT_PTR) new FPlane(Self->TransformBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FPlane_TransformByUsingAdjointT(FPlane* Self, INT_PTR M, float DetM, INT_PTR TA)
+	{
+		auto& _p0 = *(FMatrix*)M;
+		auto _p1 = DetM;
+		auto& _p2 = *(FMatrix*)TA;
+		return (INT_PTR) new FPlane(Self->TransformByUsingAdjointT(_p0, _p1, _p2));
+	}
+
 	
 	/*	FPluginRedirect	*/
 	
@@ -1648,6 +2259,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AmbientCubemapIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->AmbientCubemapIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientCubemapIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->AmbientCubemapIntensity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AmbientCubemapTint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->AmbientCubemapTint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientCubemapTint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->AmbientCubemapTint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_AmbientOcclusionBias_GET(FPostProcessSettings* Ptr) { return Ptr->AmbientOcclusionBias; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_AmbientOcclusionBias_SET(FPostProcessSettings* Ptr, float Value) { Ptr->AmbientOcclusionBias = Value; }
@@ -1712,20 +2326,38 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom1Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom1Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom1Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom1Size = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom1Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom1Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom1Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom1Tint = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom2Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom2Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom2Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom2Size = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom2Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom2Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom2Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom2Tint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom3Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom3Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom3Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom3Size = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom3Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom3Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom3Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom3Tint = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom4Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom4Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom4Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom4Size = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom4Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom4Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom4Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom4Tint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom5Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom5Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom5Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom5Size = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom5Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom5Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom5Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom5Tint = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom6Size_GET(FPostProcessSettings* Ptr) { return Ptr->Bloom6Size; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom6Size_SET(FPostProcessSettings* Ptr, float Value) { Ptr->Bloom6Size = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_Bloom6Tint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->Bloom6Tint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_Bloom6Tint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->Bloom6Tint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BloomConvolutionBufferScale_GET(FPostProcessSettings* Ptr) { return Ptr->BloomConvolutionBufferScale; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomConvolutionBufferScale_SET(FPostProcessSettings* Ptr, float Value) { Ptr->BloomConvolutionBufferScale = Value; }
@@ -1747,6 +2379,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->BloomDirtMaskIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomDirtMaskIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->BloomDirtMaskIntensity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BloomDirtMaskTint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->BloomDirtMaskTint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomDirtMaskTint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->BloomDirtMaskTint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_BloomIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->BloomIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_BloomIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->BloomIntensity = Value; }
@@ -2384,6 +3019,15 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmBlackClip_GET(FPostProcessSettings* Ptr) { return Ptr->FilmBlackClip; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmBlackClip_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmBlackClip = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmChannelMixerBlue_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->FilmChannelMixerBlue); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmChannelMixerBlue_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->FilmChannelMixerBlue = *(FLinearColor*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmChannelMixerGreen_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->FilmChannelMixerGreen); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmChannelMixerGreen_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->FilmChannelMixerGreen = *(FLinearColor*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmChannelMixerRed_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->FilmChannelMixerRed); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmChannelMixerRed_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->FilmChannelMixerRed = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmContrast_GET(FPostProcessSettings* Ptr) { return Ptr->FilmContrast; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmContrast_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmContrast = Value; }
 	
@@ -2395,6 +3039,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmSaturation_GET(FPostProcessSettings* Ptr) { return Ptr->FilmSaturation; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmSaturation_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmSaturation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmShadowTint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->FilmShadowTint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmShadowTint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->FilmShadowTint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmShadowTintAmount_GET(FPostProcessSettings* Ptr) { return Ptr->FilmShadowTintAmount; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmShadowTintAmount_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmShadowTintAmount = Value; }
@@ -2417,6 +3064,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmWhiteClip_GET(FPostProcessSettings* Ptr) { return Ptr->FilmWhiteClip; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmWhiteClip_SET(FPostProcessSettings* Ptr, float Value) { Ptr->FilmWhiteClip = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_FilmWhitePoint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->FilmWhitePoint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_FilmWhitePoint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->FilmWhitePoint = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_GrainIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->GrainIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_GrainIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->GrainIntensity = Value; }
 	
@@ -2429,6 +3079,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_HistogramLogMin_GET(FPostProcessSettings* Ptr) { return Ptr->HistogramLogMin; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_HistogramLogMin_SET(FPostProcessSettings* Ptr, float Value) { Ptr->HistogramLogMin = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_IndirectLightingColor_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->IndirectLightingColor); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_IndirectLightingColor_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->IndirectLightingColor = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_IndirectLightingIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->IndirectLightingIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_IndirectLightingIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->IndirectLightingIntensity = Value; }
 	
@@ -2440,6 +3093,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_LensFlareThreshold_GET(FPostProcessSettings* Ptr) { return Ptr->LensFlareThreshold; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LensFlareThreshold_SET(FPostProcessSettings* Ptr, float Value) { Ptr->LensFlareThreshold = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_LensFlareTint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->LensFlareTint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LensFlareTint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->LensFlareTint = *(FLinearColor*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_LPVDiffuseOcclusionExponent_GET(FPostProcessSettings* Ptr) { return Ptr->LPVDiffuseOcclusionExponent; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_LPVDiffuseOcclusionExponent_SET(FPostProcessSettings* Ptr, float Value) { Ptr->LPVDiffuseOcclusionExponent = Value; }
@@ -2540,6 +3196,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_ReflectionsType_GET(FPostProcessSettings* Ptr) { return Ptr->ReflectionsType; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_ReflectionsType_SET(FPostProcessSettings* Ptr, EReflectionsType Value) { Ptr->ReflectionsType = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_SceneColorTint_GET(FPostProcessSettings* Ptr) { return (INT_PTR)&(Ptr->SceneColorTint); }
+	DOTNET_EXPORT void E_PROP_FPostProcessSettings_SceneColorTint_SET(FPostProcessSettings* Ptr, INT_PTR Value) { Ptr->SceneColorTint = *(FLinearColor*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FPostProcessSettings_SceneFringeIntensity_GET(FPostProcessSettings* Ptr) { return Ptr->SceneFringeIntensity; }
 	DOTNET_EXPORT void E_PROP_FPostProcessSettings_SceneFringeIntensity_SET(FPostProcessSettings* Ptr, float Value) { Ptr->SceneFringeIntensity = Value; }
 	
@@ -2615,6 +3274,17 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FPrimitiveMaterialRef_Primitive_SET(FPrimitiveMaterialRef* Ptr, UPrimitiveComponent* Value) { Ptr->Primitive = Value; }
 	
 	
+	/*	FQuantizationInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuantizationInfo_EUnit_float(EUnit InUnit, float InFactor) { return (INT_PTR) new FQuantizationInfo(InUnit, InFactor); }
+	
+	DOTNET_EXPORT auto E_PROP_FQuantizationInfo_Factor_GET(FQuantizationInfo* Ptr) { return Ptr->Factor; }
+	DOTNET_EXPORT void E_PROP_FQuantizationInfo_Factor_SET(FQuantizationInfo* Ptr, float Value) { Ptr->Factor = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FQuantizationInfo_Units_GET(FQuantizationInfo* Ptr) { return Ptr->Units; }
+	DOTNET_EXPORT void E_PROP_FQuantizationInfo_Units_SET(FQuantizationInfo* Ptr, EUnit Value) { Ptr->Units = Value; }
+	
+	
 	/*	FQuat	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat() { return (INT_PTR) new FQuat(); }
@@ -2622,6 +3292,8 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_float_float_float_float(float InX, float InY, float InZ, float InW) { return (INT_PTR) new FQuat(InX, InY, InZ, InW); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FQuat(INT_PTR Q) { return (INT_PTR) new FQuat(*(FQuat*)Q); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FMatrix(INT_PTR M) { return (INT_PTR) new FQuat(*(FMatrix*)M); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FRotator(INT_PTR R) { return (INT_PTR) new FQuat(*(FRotator*)R); }
 	
@@ -2932,6 +3604,66 @@ extern "C"
 	}
 
 	
+	/*	FQuat2D	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat2D() { return (INT_PTR) new FQuat2D(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat2D_float(float RotRadians) { return (INT_PTR) new FQuat2D(RotRadians); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat2D_FVector2D(INT_PTR InRot) { return (INT_PTR) new FQuat2D(*(FVector2D*)InRot); }
+	
+	DOTNET_EXPORT auto E_FQuat2D_Concatenate(FQuat2D* Self, INT_PTR RHS)
+	{
+		auto& _p0 = *(FQuat2D*)RHS;
+		return (INT_PTR) new FQuat2D(Self->Concatenate(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FQuat2D_GetVector(FQuat2D* Self)
+	{
+		return (INT_PTR) const_cast<FVector2D*>(&(Self->GetVector()));
+	}
+
+	DOTNET_EXPORT auto E_FQuat2D_Inverse(FQuat2D* Self)
+	{
+		return (INT_PTR) new FQuat2D(Self->Inverse());
+	}
+
+	DOTNET_EXPORT auto E_FQuat2D_TransformPoint(FQuat2D* Self, INT_PTR Point)
+	{
+		auto& _p0 = *(FVector2D*)Point;
+		return (INT_PTR) new FVector2D(Self->TransformPoint(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FQuat2D_TransformVector(FQuat2D* Self, INT_PTR Vector)
+	{
+		auto& _p0 = *(FVector2D*)Vector;
+		return (INT_PTR) new FVector2D(Self->TransformVector(_p0));
+	}
+
+	
+	/*	FQuatRotationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuatRotationMatrix_FQuat(INT_PTR Q) { return (INT_PTR) new FQuatRotationMatrix(*(FQuat*)Q); }
+	
+	DOTNET_EXPORT auto E_FQuatRotationMatrix_Make(FQuatRotationMatrix* Self, INT_PTR Q)
+	{
+		auto& _p0 = *(FQuat*)Q;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	
+	/*	FQuatRotationTranslationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuatRotationTranslationMatrix_FQuat_FVector(INT_PTR Q, INT_PTR Origin) { return (INT_PTR) new FQuatRotationTranslationMatrix(*(FQuat*)Q, *(FVector*)Origin); }
+	
+	DOTNET_EXPORT auto E_FQuatRotationTranslationMatrix_Make(FQuatRotationTranslationMatrix* Self, INT_PTR Q, INT_PTR Origin)
+	{
+		auto& _p0 = *(FQuat*)Q;
+		auto& _p1 = *(FVector*)Origin;
+		return (INT_PTR) new FMatrix(Self->Make(_p0, _p1));
+	}
+
+	
 	/*	FRadialDamageEvent	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRadialDamageEvent() { return (INT_PTR) new FRadialDamageEvent(); }
@@ -2980,6 +3712,104 @@ extern "C"
 	DOTNET_EXPORT auto E_FRadialDamageParams_GetMaxRadius(FRadialDamageParams* Self)
 	{
 		return Self->GetMaxRadius();
+	}
+
+	
+	/*	FRandomStream	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRandomStream() { return (INT_PTR) new FRandomStream(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRandomStream_int32(int32 InSeed) { return (INT_PTR) new FRandomStream(InSeed); }
+	
+	DOTNET_EXPORT auto E_FRandomStream_ExportTextItem(FRandomStream* Self, char* ValueStr, INT_PTR DefaultValue, UObject* Parent, int32 PortFlags, UObject* ExportRootScope)
+	{
+		auto _p0 = ConvertFromManage_FString(ValueStr);
+		auto& _p1 = *(FRandomStream*)DefaultValue;
+		auto _p2 = Parent;
+		auto _p3 = PortFlags;
+		auto _p4 = ExportRootScope;
+		return Self->ExportTextItem(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_FRand(FRandomStream* Self)
+	{
+		return Self->FRand();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_FRandRange(FRandomStream* Self, float InMin, float InMax)
+	{
+		auto _p0 = InMin;
+		auto _p1 = InMax;
+		return Self->FRandRange(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_GenerateNewSeed(FRandomStream* Self)
+	{
+		Self->GenerateNewSeed();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_GetCurrentSeed(FRandomStream* Self)
+	{
+		return Self->GetCurrentSeed();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_GetFraction(FRandomStream* Self)
+	{
+		return Self->GetFraction();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_GetInitialSeed(FRandomStream* Self)
+	{
+		return Self->GetInitialSeed();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_GetUnitVector(FRandomStream* Self)
+	{
+		return (INT_PTR) new FVector(Self->GetUnitVector());
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_Initialize(FRandomStream* Self, int32 InSeed)
+	{
+		auto _p0 = InSeed;
+		Self->Initialize(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_RandHelper(FRandomStream* Self, int32 A)
+	{
+		auto _p0 = A;
+		return Self->RandHelper(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_RandRange(FRandomStream* Self, int32 Min, int32 Max)
+	{
+		auto _p0 = Min;
+		auto _p1 = Max;
+		return Self->RandRange(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_Reset(FRandomStream* Self)
+	{
+		Self->Reset();
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_VRand(FRandomStream* Self)
+	{
+		return (INT_PTR) new FVector(Self->VRand());
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_VRandCone(FRandomStream* Self, INT_PTR Dir, float ConeHalfAngleRad)
+	{
+		auto& _p0 = *(FVector*)Dir;
+		auto _p1 = ConeHalfAngleRad;
+		return (INT_PTR) new FVector(Self->VRandCone(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRandomStream_VRandCone_o1(FRandomStream* Self, INT_PTR Dir, float HorizontalConeHalfAngleRad, float VerticalConeHalfAngleRad)
+	{
+		auto& _p0 = *(FVector*)Dir;
+		auto _p1 = HorizontalConeHalfAngleRad;
+		auto _p2 = VerticalConeHalfAngleRad;
+		return (INT_PTR) new FVector(Self->VRandCone(_p0, _p1, _p2));
 	}
 
 	
@@ -3032,6 +3862,20 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FResponseChannel_Channel_GET(FResponseChannel* Ptr) { return ConvertToManage_StringWrapper(Ptr->Channel); }
 	DOTNET_EXPORT void E_PROP_FResponseChannel_Channel_SET(FResponseChannel* Ptr, char* Value) { Ptr->Channel = ConvertFromManage_FName(Value); }
+	
+	
+	/*	FReversedZOrthoMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FReversedZOrthoMatrix_float_float_float_float(float Width, float Height, float ZScale, float ZOffset) { return (INT_PTR) new FReversedZOrthoMatrix(Width, Height, ZScale, ZOffset); }
+	
+	
+	/*	FReversedZPerspectiveMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FReversedZPerspectiveMatrix_float_float_float_float_float_float(float HalfFOVX, float HalfFOVY, float MultFOVX, float MultFOVY, float MinZ, float MaxZ) { return (INT_PTR) new FReversedZPerspectiveMatrix(HalfFOVX, HalfFOVY, MultFOVX, MultFOVY, MinZ, MaxZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FReversedZPerspectiveMatrix_float_float_float_float_float(float HalfFOV, float Width, float Height, float MinZ, float MaxZ) { return (INT_PTR) new FReversedZPerspectiveMatrix(HalfFOV, Width, Height, MinZ, MaxZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FReversedZPerspectiveMatrix_float_float_float_float(float HalfFOV, float Width, float Height, float MinZ) { return (INT_PTR) new FReversedZPerspectiveMatrix(HalfFOV, Width, Height, MinZ); }
 	
 	
 	/*	FRigidBodyErrorCorrection	*/
@@ -3089,6 +3933,25 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FRigidBodyState_Quaternion_SET(FRigidBodyState* Ptr, INT_PTR Value) { Ptr->Quaternion = *(FQuat*)Value; }
 	
 	
+	/*	FRotationAboutPointMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotationAboutPointMatrix_FRotator_FVector(INT_PTR Rot, INT_PTR Origin) { return (INT_PTR) new FRotationAboutPointMatrix(*(FRotator*)Rot, *(FVector*)Origin); }
+	
+	DOTNET_EXPORT auto E_FRotationAboutPointMatrix_Make(FRotationAboutPointMatrix* Self, INT_PTR Rot, INT_PTR Origin)
+	{
+		auto& _p0 = *(FRotator*)Rot;
+		auto& _p1 = *(FVector*)Origin;
+		return (INT_PTR) new FMatrix(Self->Make(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationAboutPointMatrix_Make_o1(FRotationAboutPointMatrix* Self, INT_PTR Rot, INT_PTR Origin)
+	{
+		auto& _p0 = *(FQuat*)Rot;
+		auto& _p1 = *(FVector*)Origin;
+		return (INT_PTR) new FMatrix(Self->Make(_p0, _p1));
+	}
+
+	
 	/*	FRotationConversionCache	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotationConversionCache() { return (INT_PTR) new FRotationConversionCache(); }
@@ -3137,6 +4000,95 @@ extern "C"
 	{
 		auto& _p0 = *(FRotator*)InRotator;
 		return (INT_PTR) new FQuat(Self->RotatorToQuat_ReadOnly(_p0));
+	}
+
+	
+	/*	FRotationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotationMatrix_FRotator(INT_PTR Rot) { return (INT_PTR) new FRotationMatrix(*(FRotator*)Rot); }
+	
+	DOTNET_EXPORT auto E_FRotationMatrix_Make(FRotationMatrix* Self, INT_PTR Rot)
+	{
+		auto& _p0 = *(FRotator*)Rot;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_Make_o1(FRotationMatrix* Self, INT_PTR Rot)
+	{
+		auto& _p0 = *(FQuat*)Rot;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromX(FRotationMatrix* Self, INT_PTR XAxis)
+	{
+		auto& _p0 = *(FVector*)XAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromX(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromXY(FRotationMatrix* Self, INT_PTR XAxis, INT_PTR YAxis)
+	{
+		auto& _p0 = *(FVector*)XAxis;
+		auto& _p1 = *(FVector*)YAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromXY(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromXZ(FRotationMatrix* Self, INT_PTR XAxis, INT_PTR ZAxis)
+	{
+		auto& _p0 = *(FVector*)XAxis;
+		auto& _p1 = *(FVector*)ZAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromXZ(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromY(FRotationMatrix* Self, INT_PTR YAxis)
+	{
+		auto& _p0 = *(FVector*)YAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromY(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromYX(FRotationMatrix* Self, INT_PTR YAxis, INT_PTR XAxis)
+	{
+		auto& _p0 = *(FVector*)YAxis;
+		auto& _p1 = *(FVector*)XAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromYX(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromYZ(FRotationMatrix* Self, INT_PTR YAxis, INT_PTR ZAxis)
+	{
+		auto& _p0 = *(FVector*)YAxis;
+		auto& _p1 = *(FVector*)ZAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromYZ(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromZ(FRotationMatrix* Self, INT_PTR ZAxis)
+	{
+		auto& _p0 = *(FVector*)ZAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromZ(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromZX(FRotationMatrix* Self, INT_PTR ZAxis, INT_PTR XAxis)
+	{
+		auto& _p0 = *(FVector*)ZAxis;
+		auto& _p1 = *(FVector*)XAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromZX(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FRotationMatrix_MakeFromZY(FRotationMatrix* Self, INT_PTR ZAxis, INT_PTR YAxis)
+	{
+		auto& _p0 = *(FVector*)ZAxis;
+		auto& _p1 = *(FVector*)YAxis;
+		return (INT_PTR) new FMatrix(Self->MakeFromZY(_p0, _p1));
+	}
+
+	
+	/*	FRotationTranslationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotationTranslationMatrix_FRotator_FVector(INT_PTR Rot, INT_PTR Origin) { return (INT_PTR) new FRotationTranslationMatrix(*(FRotator*)Rot, *(FVector*)Origin); }
+	
+	DOTNET_EXPORT auto E_FRotationTranslationMatrix_Make(FRotationTranslationMatrix* Self, INT_PTR Rot, INT_PTR Origin)
+	{
+		auto& _p0 = *(FRotator*)Rot;
+		auto& _p1 = *(FVector*)Origin;
+		return (INT_PTR) new FMatrix(Self->Make(_p0, _p1));
 	}
 
 	
@@ -3324,15 +4276,112 @@ extern "C"
 	}
 
 	
+	/*	FScale	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale() { return (INT_PTR) new FScale(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale_float(float InScale) { return (INT_PTR) new FScale(InScale); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale_FVector(INT_PTR InScale) { return (INT_PTR) new FScale(*(FVector*)InScale); }
+	
+	DOTNET_EXPORT auto E_FScale_Concatenate(FScale* Self, INT_PTR RHS)
+	{
+		auto& _p0 = *(FScale*)RHS;
+		return (INT_PTR) const_cast<FScale*>(&(Self->Concatenate(_p0)));
+	}
+
+	DOTNET_EXPORT auto E_FScale_GetVector(FScale* Self)
+	{
+		return (INT_PTR) const_cast<FVector*>(&(Self->GetVector()));
+	}
+
+	DOTNET_EXPORT auto E_FScale_Inverse(FScale* Self)
+	{
+		return (INT_PTR) const_cast<FScale*>(&(Self->Inverse()));
+	}
+
+	
+	/*	FScale2D	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale2D() { return (INT_PTR) new FScale2D(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale2D_float(float InScale) { return (INT_PTR) new FScale2D(InScale); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale2D_float_float(float InScaleX, float InScaleY) { return (INT_PTR) new FScale2D(InScaleX, InScaleY); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScale2D_FVector2D(INT_PTR InScale) { return (INT_PTR) new FScale2D(*(FVector2D*)InScale); }
+	
+	DOTNET_EXPORT auto E_FScale2D_Concatenate(FScale2D* Self, INT_PTR RHS)
+	{
+		auto& _p0 = *(FScale2D*)RHS;
+		return (INT_PTR) new FScale2D(Self->Concatenate(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FScale2D_GetVector(FScale2D* Self)
+	{
+		return (INT_PTR) const_cast<FVector2D*>(&(Self->GetVector()));
+	}
+
+	DOTNET_EXPORT auto E_FScale2D_Inverse(FScale2D* Self)
+	{
+		return (INT_PTR) new FScale2D(Self->Inverse());
+	}
+
+	DOTNET_EXPORT auto E_FScale2D_TransformPoint(FScale2D* Self, INT_PTR Point)
+	{
+		auto& _p0 = *(FVector2D*)Point;
+		return (INT_PTR) new FVector2D(Self->TransformPoint(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FScale2D_TransformVector(FScale2D* Self, INT_PTR Vector)
+	{
+		auto& _p0 = *(FVector2D*)Vector;
+		return (INT_PTR) new FVector2D(Self->TransformVector(_p0));
+	}
+
+	
+	/*	FScaleMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScaleMatrix_float(float Scale) { return (INT_PTR) new FScaleMatrix(Scale); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScaleMatrix_FVector(INT_PTR Scale) { return (INT_PTR) new FScaleMatrix(*(FVector*)Scale); }
+	
+	DOTNET_EXPORT auto E_FScaleMatrix_Make(FScaleMatrix* Self, float Scale)
+	{
+		auto _p0 = Scale;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FScaleMatrix_Make_o1(FScaleMatrix* Self, INT_PTR Scale)
+	{
+		auto& _p0 = *(FVector*)Scale;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	
+	/*	FScaleRotationTranslationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScaleRotationTranslationMatrix_FVector_FRotator_FVector(INT_PTR Scale, INT_PTR Rot, INT_PTR Origin) { return (INT_PTR) new FScaleRotationTranslationMatrix(*(FVector*)Scale, *(FRotator*)Rot, *(FVector*)Origin); }
+	
+	
 	/*	FSceneCaptureViewInfo	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSceneCaptureViewInfo() { return (INT_PTR) new FSceneCaptureViewInfo(); }
+	
+	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_ProjectionMatrix_GET(FSceneCaptureViewInfo* Ptr) { return (INT_PTR)&(Ptr->ProjectionMatrix); }
+	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ProjectionMatrix_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ProjectionMatrix = *(FMatrix*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_StereoIPD_GET(FSceneCaptureViewInfo* Ptr) { return Ptr->StereoIPD; }
 	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_StereoIPD_SET(FSceneCaptureViewInfo* Ptr, float Value) { Ptr->StereoIPD = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_ViewLocation_GET(FSceneCaptureViewInfo* Ptr) { return (INT_PTR)&(Ptr->ViewLocation); }
 	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewLocation_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ViewLocation = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_ViewRect_GET(FSceneCaptureViewInfo* Ptr) { return (INT_PTR)&(Ptr->ViewRect); }
+	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewRect_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ViewRect = *(FIntRect*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FSceneCaptureViewInfo_ViewRotationMatrix_GET(FSceneCaptureViewInfo* Ptr) { return (INT_PTR)&(Ptr->ViewRotationMatrix); }
+	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewRotationMatrix_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ViewRotationMatrix = *(FMatrix*)Value; }
 	
 	
 	/*	FScopedLevelCollectionContextSwitch	*/
@@ -3356,6 +4405,49 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FScreenMessageString_TimeToDisplay_GET(FScreenMessageString* Ptr) { return Ptr->TimeToDisplay; }
 	DOTNET_EXPORT void E_PROP_FScreenMessageString_TimeToDisplay_SET(FScreenMessageString* Ptr, float Value) { Ptr->TimeToDisplay = Value; }
 	
+	
+	/*	FShear2D	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FShear2D() { return (INT_PTR) new FShear2D(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FShear2D_float_float(float ShearX, float ShearY) { return (INT_PTR) new FShear2D(ShearX, ShearY); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FShear2D_FVector2D(INT_PTR InShear) { return (INT_PTR) new FShear2D(*(FVector2D*)InShear); }
+	
+	DOTNET_EXPORT auto E_FShear2D_Concatenate(FShear2D* Self, INT_PTR RHS)
+	{
+		auto& _p0 = *(FShear2D*)RHS;
+		return (INT_PTR) new FMatrix2x2(Self->Concatenate(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FShear2D_FromShearAngles(FShear2D* Self, INT_PTR InShearAngles)
+	{
+		auto& _p0 = *(FVector2D*)InShearAngles;
+		return (INT_PTR) new FShear2D(Self->FromShearAngles(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FShear2D_GetVector(FShear2D* Self)
+	{
+		return (INT_PTR) const_cast<FVector2D*>(&(Self->GetVector()));
+	}
+
+	DOTNET_EXPORT auto E_FShear2D_Inverse(FShear2D* Self)
+	{
+		return (INT_PTR) new FMatrix2x2(Self->Inverse());
+	}
+
+	DOTNET_EXPORT auto E_FShear2D_TransformPoint(FShear2D* Self, INT_PTR Point)
+	{
+		auto& _p0 = *(FVector2D*)Point;
+		return (INT_PTR) new FVector2D(Self->TransformPoint(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FShear2D_TransformVector(FShear2D* Self, INT_PTR Vector)
+	{
+		auto& _p0 = *(FVector2D*)Vector;
+		return (INT_PTR) new FVector2D(Self->TransformVector(_p0));
+	}
+
 	
 	/*	FSimulatedRootMotionReplicatedMove	*/
 	
@@ -3400,9 +4492,79 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSkelMeshRefPoseOverride() { return (INT_PTR) new FSkelMeshRefPoseOverride(); }
 	
+	DOTNET_EXPORT auto E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_GET(FSkelMeshRefPoseOverride* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->RefBasesInvMatrix); }
+	DOTNET_EXPORT void E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_SET(FSkelMeshRefPoseOverride* Ptr, INT_PTR Value) { Ptr->RefBasesInvMatrix = *(TArray<FMatrix>*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_GET(FSkelMeshRefPoseOverride* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->RefBonePoses); }
 	DOTNET_EXPORT void E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_SET(FSkelMeshRefPoseOverride* Ptr, INT_PTR Value) { Ptr->RefBonePoses = *(TArray<FTransform>*)Value; }
 	
+	
+	/*	FSobol	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSobol() { return (INT_PTR) new FSobol(); }
+	
+	
+	/*	FSphere	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSphere() { return (INT_PTR) new FSphere(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSphere_int32(int32 _p0) { return (INT_PTR) new FSphere(_p0); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSphere_FVector_float(INT_PTR InV, float InW) { return (INT_PTR) new FSphere(*(FVector*)InV, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSphere_FVector_int32(INT_PTR Pts, int32 Count) { return (INT_PTR) new FSphere((FVector*)Pts, Count); }
+	
+	DOTNET_EXPORT auto E_PROP_FSphere_Center_GET(FSphere* Ptr) { return (INT_PTR)&(Ptr->Center); }
+	DOTNET_EXPORT void E_PROP_FSphere_Center_SET(FSphere* Ptr, INT_PTR Value) { Ptr->Center = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FSphere_W_GET(FSphere* Ptr) { return Ptr->W; }
+	DOTNET_EXPORT void E_PROP_FSphere_W_SET(FSphere* Ptr, float Value) { Ptr->W = Value; }
+	
+	DOTNET_EXPORT auto E_FSphere_Equals(FSphere* Self, INT_PTR Sphere, float Tolerance)
+	{
+		auto& _p0 = *(FSphere*)Sphere;
+		auto _p1 = Tolerance;
+		return Self->Equals(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FSphere_GetVolume(FSphere* Self)
+	{
+		return Self->GetVolume();
+	}
+
+	DOTNET_EXPORT auto E_FSphere_Intersects(FSphere* Self, INT_PTR Other, float Tolerance)
+	{
+		auto& _p0 = *(FSphere*)Other;
+		auto _p1 = Tolerance;
+		return Self->Intersects(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FSphere_IsInside(FSphere* Self, INT_PTR Other, float Tolerance)
+	{
+		auto& _p0 = *(FSphere*)Other;
+		auto _p1 = Tolerance;
+		return Self->IsInside(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FSphere_IsInside_o1(FSphere* Self, INT_PTR In, float Tolerance)
+	{
+		auto& _p0 = *(FVector*)In;
+		auto _p1 = Tolerance;
+		return Self->IsInside(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FSphere_TransformBy(FSphere* Self, INT_PTR M)
+	{
+		auto& _p0 = *(FMatrix*)M;
+		return (INT_PTR) new FSphere(Self->TransformBy(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FSphere_TransformBy_o1(FSphere* Self, INT_PTR M)
+	{
+		auto& _p0 = *(FTransform*)M;
+		return (INT_PTR) new FSphere(Self->TransformBy(_p0));
+	}
+
 	
 	/*	FSplineCurves	*/
 	
@@ -3793,12 +4955,35 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FTransform(INT_PTR InTransform) { return (INT_PTR) new FTransform(*(FTransform*)InTransform); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FMatrix(INT_PTR InMatrix) { return (INT_PTR) new FTransform(*(FMatrix*)InMatrix); }
+	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(INT_PTR InX, INT_PTR InY, INT_PTR InZ, INT_PTR InTranslation) { return (INT_PTR) new FTransform(*(FVector*)InX, *(FVector*)InY, *(FVector*)InZ, *(FVector*)InTranslation); }
 	
 	DOTNET_EXPORT auto E_FTransform_Accumulate(FTransform* Self, INT_PTR SourceAtom)
 	{
 		auto& _p0 = *(FTransform*)SourceAtom;
 		Self->Accumulate(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FTransform_Accumulate_o1(FTransform* Self, INT_PTR Atom, float BlendWeight)
+	{
+		auto& _p0 = *(FTransform*)Atom;
+		auto _p1 = BlendWeight;
+		Self->Accumulate(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FTransform_AccumulateWithAdditiveScale(FTransform* Self, INT_PTR Atom, float BlendWeight)
+	{
+		auto& _p0 = *(FTransform*)Atom;
+		auto _p1 = BlendWeight;
+		Self->AccumulateWithAdditiveScale(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FTransform_AccumulateWithShortestRotation(FTransform* Self, INT_PTR DeltaAtom, float BlendWeight)
+	{
+		auto& _p0 = *(FTransform*)DeltaAtom;
+		auto _p1 = BlendWeight;
+		Self->AccumulateWithShortestRotation(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_FTransform_AddToTranslation(FTransform* Self, INT_PTR DeltaTranslation)
@@ -3853,6 +5038,14 @@ extern "C"
 		Self->Blend(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_FTransform_BlendFromIdentityAndAccumulate(FTransform* Self, INT_PTR FinalAtom, INT_PTR SourceAtom, float BlendWeight)
+	{
+		auto& _p0 = *(FTransform*)FinalAtom;
+		auto& _p1 = *(FTransform*)SourceAtom;
+		auto _p2 = BlendWeight;
+		Self->BlendFromIdentityAndAccumulate(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_FTransform_BlendWith(FTransform* Self, INT_PTR OtherAtom, float Alpha)
 	{
 		auto& _p0 = *(FTransform*)OtherAtom;
@@ -3899,6 +5092,12 @@ extern "C"
 	{
 		auto& _p0 = *(FTransform*)SrcBA;
 		Self->CopyTranslationAndScale3D(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FTransform_DebugEqualMatrix(FTransform* Self, INT_PTR Matrix)
+	{
+		auto& _p0 = *(FMatrix*)Matrix;
+		return Self->DebugEqualMatrix(_p0);
 	}
 
 	DOTNET_EXPORT auto E_FTransform_DebugPrint(FTransform* Self)
@@ -4062,6 +5261,14 @@ extern "C"
 		return Self->IsValid();
 	}
 
+	DOTNET_EXPORT auto E_FTransform_LerpTranslationScale3D(FTransform* Self, INT_PTR SourceAtom1, INT_PTR SourceAtom2, ScalarRegister Alpha)
+	{
+		auto& _p0 = *(FTransform*)SourceAtom1;
+		auto& _p1 = *(FTransform*)SourceAtom2;
+		auto _p2 = Alpha;
+		Self->LerpTranslationScale3D(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_FTransform_Multiply(FTransform* Self, INT_PTR OutTransform, INT_PTR A, INT_PTR B)
 	{
 		auto _p0 = (FTransform*)OutTransform;
@@ -4126,6 +5333,12 @@ extern "C"
 		Self->SetComponents(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_FTransform_SetFromMatrix(FTransform* Self, INT_PTR InMatrix)
+	{
+		auto& _p0 = *(FMatrix*)InMatrix;
+		Self->SetFromMatrix(_p0);
+	}
+
 	DOTNET_EXPORT auto E_FTransform_SetIdentity(FTransform* Self)
 	{
 		Self->SetIdentity();
@@ -4180,6 +5393,21 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->ToHumanReadableString());
 	}
 
+	DOTNET_EXPORT auto E_FTransform_ToInverseMatrixWithScale(FTransform* Self)
+	{
+		return (INT_PTR) new FMatrix(Self->ToInverseMatrixWithScale());
+	}
+
+	DOTNET_EXPORT auto E_FTransform_ToMatrixNoScale(FTransform* Self)
+	{
+		return (INT_PTR) new FMatrix(Self->ToMatrixNoScale());
+	}
+
+	DOTNET_EXPORT auto E_FTransform_ToMatrixWithScale(FTransform* Self)
+	{
+		return (INT_PTR) new FMatrix(Self->ToMatrixWithScale());
+	}
+
 	DOTNET_EXPORT auto E_FTransform_ToString(FTransform* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->ToString());
@@ -4232,6 +5460,88 @@ extern "C"
 		auto& _p0 = *(FTransform*)Other;
 		auto _p1 = Tolerance;
 		return Self->TranslationEquals(_p0, _p1);
+	}
+
+	
+	/*	FTranslationMatrix	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTranslationMatrix_FVector(INT_PTR Delta) { return (INT_PTR) new FTranslationMatrix(*(FVector*)Delta); }
+	
+	DOTNET_EXPORT auto E_FTranslationMatrix_Make(FTranslationMatrix* Self, INT_PTR Delta)
+	{
+		auto& _p0 = *(FVector*)Delta;
+		return (INT_PTR) new FMatrix(Self->Make(_p0));
+	}
+
+	
+	/*	FTwoVectors	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTwoVectors() { return (INT_PTR) new FTwoVectors(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTwoVectors_FVector_FVector(INT_PTR In1, INT_PTR In2) { return (INT_PTR) new FTwoVectors(*(FVector*)In1, *(FVector*)In2); }
+	
+	DOTNET_EXPORT auto E_PROP_FTwoVectors_v1_GET(FTwoVectors* Ptr) { return (INT_PTR)&(Ptr->v1); }
+	DOTNET_EXPORT void E_PROP_FTwoVectors_v1_SET(FTwoVectors* Ptr, INT_PTR Value) { Ptr->v1 = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FTwoVectors_v2_GET(FTwoVectors* Ptr) { return (INT_PTR)&(Ptr->v2); }
+	DOTNET_EXPORT void E_PROP_FTwoVectors_v2_SET(FTwoVectors* Ptr, INT_PTR Value) { Ptr->v2 = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_FTwoVectors_Equals(FTwoVectors* Self, INT_PTR V, float Tolerance)
+	{
+		auto& _p0 = *(FTwoVectors*)V;
+		auto _p1 = Tolerance;
+		return Self->Equals(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FTwoVectors_GetMax(FTwoVectors* Self)
+	{
+		return Self->GetMax();
+	}
+
+	DOTNET_EXPORT auto E_FTwoVectors_GetMin(FTwoVectors* Self)
+	{
+		return Self->GetMin();
+	}
+
+	DOTNET_EXPORT auto E_FTwoVectors_ToString(FTwoVectors* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	
+	/*	FUnitSettings	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FUnitSettings() { return (INT_PTR) new FUnitSettings(); }
+	
+	DOTNET_EXPORT auto E_FUnitSettings_GetDisplayUnits(FUnitSettings* Self, EUnitType InType)
+	{
+		auto _p0 = InType;
+		return ConvertToManage_TemplatePointerDescription(Self->GetDisplayUnits(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FUnitSettings_SetDisplayUnits(FUnitSettings* Self, EUnitType InType, INT_PTR Units)
+	{
+		auto _p0 = InType;
+		auto& _p1 = *(const TArray<EUnit>*)Units;
+		Self->SetDisplayUnits(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FUnitSettings_SetDisplayUnits_o1(FUnitSettings* Self, EUnitType InType, EUnit Units)
+	{
+		auto _p0 = InType;
+		auto _p1 = Units;
+		Self->SetDisplayUnits(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FUnitSettings_SetShouldDisplayUnits(FUnitSettings* Self, bool bInGlobalUnitDisplay)
+	{
+		auto _p0 = bInGlobalUnitDisplay;
+		Self->SetShouldDisplayUnits(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FUnitSettings_ShouldDisplayUnits(FUnitSettings* Self)
+	{
+		return Self->ShouldDisplayUnits();
 	}
 
 	
@@ -4301,6 +5611,12 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FVector2D_float(INT_PTR V, float InZ) { return (INT_PTR) new FVector(*(FVector2D*)V, InZ); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FVector4(INT_PTR V) { return (INT_PTR) new FVector(*(FVector4*)V); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FLinearColor(INT_PTR InColor) { return (INT_PTR) new FVector(*(FLinearColor*)InColor); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FIntVector(INT_PTR InVector) { return (INT_PTR) new FVector(*(FIntVector*)InVector); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FIntPoint(INT_PTR A) { return (INT_PTR) new FVector(*(FIntPoint*)A); }
 	
 	DOTNET_EXPORT auto E_PROP_FVector_X_GET(FVector* Ptr) { return Ptr->X; }
 	DOTNET_EXPORT void E_PROP_FVector_X_SET(FVector* Ptr, float Value) { Ptr->X = Value; }
@@ -4845,6 +6161,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_float_float(float InX, float InY) { return (INT_PTR) new FVector2D(InX, InY); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_FIntPoint(INT_PTR InPos) { return (INT_PTR) new FVector2D(*(FIntPoint*)InPos); }
+	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_FVector(INT_PTR V) { return (INT_PTR) new FVector2D(*(FVector*)V); }
 	
 	DOTNET_EXPORT auto E_PROP_FVector2D_X_GET(FVector2D* Ptr) { return Ptr->X; }
@@ -4954,6 +6272,11 @@ extern "C"
 		return Self->InitFromString(_p0);
 	}
 
+	DOTNET_EXPORT auto E_FVector2D_IntPoint(FVector2D* Self)
+	{
+		return (INT_PTR) new FIntPoint(Self->IntPoint());
+	}
+
 	DOTNET_EXPORT auto E_FVector2D_IsNearlyZero(FVector2D* Self, float Tolerance)
 	{
 		auto _p0 = Tolerance;
@@ -5025,9 +6348,33 @@ extern "C"
 	}
 
 	
+	/*	FVector2DHalf	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2DHalf() { return (INT_PTR) new FVector2DHalf(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2DHalf_FFloat16_FFloat16(INT_PTR InX, INT_PTR InY) { return (INT_PTR) new FVector2DHalf(*(FFloat16*)InX, *(FFloat16*)InY); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2DHalf_float_float(float InX, float InY) { return (INT_PTR) new FVector2DHalf(InX, InY); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2DHalf_FVector2D(INT_PTR Vector2D) { return (INT_PTR) new FVector2DHalf(*(FVector2D*)Vector2D); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector2DHalf_X_GET(FVector2DHalf* Ptr) { return (INT_PTR)&(Ptr->X); }
+	DOTNET_EXPORT void E_PROP_FVector2DHalf_X_SET(FVector2DHalf* Ptr, INT_PTR Value) { Ptr->X = *(FFloat16*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FVector2DHalf_Y_GET(FVector2DHalf* Ptr) { return (INT_PTR)&(Ptr->Y); }
+	DOTNET_EXPORT void E_PROP_FVector2DHalf_Y_SET(FVector2DHalf* Ptr, INT_PTR Value) { Ptr->Y = *(FFloat16*)Value; }
+	
+	DOTNET_EXPORT auto E_FVector2DHalf_ToString(FVector2DHalf* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	
 	/*	FVector4	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_FVector_float(INT_PTR InVector, float InW) { return (INT_PTR) new FVector4(*(FVector*)InVector, InW); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_FLinearColor(INT_PTR InColor) { return (INT_PTR) new FVector4(*(FLinearColor*)InColor); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector4_float_float_float_float(float InX, float InY, float InZ, float InW) { return (INT_PTR) new FVector4(InX, InY, InZ, InW); }
 	
@@ -5235,4 +6582,19 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->World());
 	}
 
+	
+	/*	VectorRegister	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_VectorRegister() { return (INT_PTR) new VectorRegister(); }
+	
+	
+	/*	VectorRegisterDouble	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_VectorRegisterDouble() { return (INT_PTR) new VectorRegisterDouble(); }
+	
+	
+	/*	VectorRegisterInt	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_VectorRegisterInt() { return (INT_PTR) new VectorRegisterInt(); }
+	
 }

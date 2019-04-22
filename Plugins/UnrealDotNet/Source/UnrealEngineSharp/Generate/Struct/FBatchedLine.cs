@@ -23,6 +23,16 @@ namespace UnrealEngine
 		{
 		}
 
+		public FBatchedLine(FVector inStart, FVector inEnd, FLinearColor inColor, float inLifeTime, float inThickness, byte inDepthPriority) :
+			base(E_CreateStruct_FBatchedLine_FVector_FVector_FLinearColor_float_float_uint8(inStart, inEnd, inColor, inLifeTime, inThickness, inDepthPriority), false)
+		{
+		}
+
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FBatchedLine_Color_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FBatchedLine_Color_SET(IntPtr Ptr, IntPtr Value);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FBatchedLine_DepthPriority_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -52,9 +62,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FBatchedLine();
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBatchedLine_FVector_FVector_FLinearColor_float_float_uint8(IntPtr inStart, IntPtr inEnd, IntPtr inColor, float inLifeTime, float inThickness, byte inDepthPriority);
+		
 		#endregion
 		
 		#region Property
+		public FLinearColor Color
+		{
+			get => E_PROP_FBatchedLine_Color_GET(NativePointer);
+			set => E_PROP_FBatchedLine_Color_SET(NativePointer, value);
+		}
+
 		public byte DepthPriority
 		{
 			get => E_PROP_FBatchedLine_DepthPriority_GET(NativePointer);

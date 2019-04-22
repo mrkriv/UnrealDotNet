@@ -701,6 +701,11 @@ extern "C"
 		return (INT_PTR) new FVector(Self->GetPhysicsLinearVelocityAtPoint(_p0, _p1));
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_GetRenderMatrix(UPrimitiveComponent* Self)
+	{
+		return (INT_PTR) new FMatrix(Self->GetRenderMatrix());
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetRigidBodyState(UPrimitiveComponent* Self, INT_PTR OutState, char* BoneName)
 	{
 		auto& _p0 = *(FRigidBodyState*)OutState;
