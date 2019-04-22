@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace CodeGenerator
@@ -113,7 +115,20 @@ namespace CodeGenerator
             if (!Directory.Exists(Path.GetDirectoryName(filePath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-            File.WriteAllText(filePath, _sb.ToString());
+            var content = Encoding.Default.GetBytes(_sb.ToString());
+
+            if (File.Exists(filePath))
+            {
+                using (var md5 = MD5.Create())
+                using (var ms = new MemoryStream(content))
+                using (var fs = File.OpenRead(filePath))
+                {
+                    if (md5.ComputeHash(ms).SequenceEqual(md5.ComputeHash(fs)))
+                        return;
+                }
+
+                File.WriteAllBytes(filePath, content);
+            }
         }
     }
 }
