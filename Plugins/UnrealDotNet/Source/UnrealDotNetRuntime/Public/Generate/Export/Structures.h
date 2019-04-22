@@ -2,6 +2,11 @@
 
 // This file was created automatically, do not modify the contents of this file.
 
+// ReSharper disable InvalidXmlDocComment
+// ReSharper disable InconsistentNaming
+// ReSharper disable CheckNamespace
+// ReSharper disable MemberCanBePrivate.Global
+
 #include "CoreMinimal.h"
 #include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineBaseTypes.h"

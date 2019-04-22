@@ -2,6 +2,11 @@
 
 // This file was created automatically, do not modify the contents of this file.
 
+// ReSharper disable InvalidXmlDocComment
+// ReSharper disable InconsistentNaming
+// ReSharper disable CheckNamespace
+// ReSharper disable MemberCanBePrivate.Global
+
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"

@@ -117,6 +117,18 @@ namespace CodeGenerator.CodeGen
             return $"{Cfg.ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
         }
 
+        protected static void GenerateReSharperDisables(CodeWriter cw)
+        {
+            if (Cfg.IsDisableReSharperWarnings)
+            {
+                cw.WriteLine("// ReSharper disable InvalidXmlDocComment");
+                cw.WriteLine("// ReSharper disable InconsistentNaming");
+                cw.WriteLine("// ReSharper disable CheckNamespace");
+                cw.WriteLine("// ReSharper disable MemberCanBePrivate.Global");
+                cw.WriteLine();
+            }
+        }
+
         protected static void GenerateSourceInfo(CodeWriter cw, Primitive primitive)
         {
             if (Cfg.IsWriteSourceFileName)
@@ -133,6 +145,8 @@ namespace CodeGenerator.CodeGen
                 cw.WriteLine($"// This file was created automatically, do not modify the contents of this file.");
                 cw.WriteLine();
             }
+
+            GenerateReSharperDisables(cw);
         }
 
         protected void CreateDirectoryIfNotExist(string path)

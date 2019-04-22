@@ -22,6 +22,7 @@
         public string CppApi { get; set; }
         public string CppApiUe { get; set; }
         public bool IsWriteSourceFileName { get; set; }
+        public bool IsDisableReSharperWarnings { get; set; }
         public bool IsGenerateFileHeader { get; set; }
     }
 }
