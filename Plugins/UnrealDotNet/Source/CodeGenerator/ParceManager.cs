@@ -17,18 +17,14 @@ namespace CodeGenerator
         public static Domain Parce(IReadOnlyList<string> files, Config config)
         {
             var types = new ConcurrentDictionary<string, Type>();
-            var mult = 1;
             var tasks = new List<Task>();
 
             var watch = new Stopwatch();
             watch.Start();
 
-            for (var i = 0; i < mult; i++)
+            foreach (var file in files)
             {
-                var visitor = new MetadataVisitor(types);
-                var offest = i;
-                
-                tasks.Add(Task.Run(() => { ParceSolo(files, offest, mult, visitor, config); }));
+                tasks.Add(Task.Run(() => { AppendFile(file, types, config); }));
             }
 
             Task.WaitAll(tasks.ToArray());
@@ -38,18 +34,10 @@ namespace CodeGenerator
             return new Domain(types.Values, config);
         }
 
-        private static void ParceSolo(IReadOnlyList<string> files, int offest, int step, MetadataVisitor visitor,
-            Config config)
-        {
-            for (var j = offest; j < files.Count; j += step)
-            {
-                AppendFile(files[j], visitor, config);
-            }
-        }
-
-        private static void AppendFile(string file, MetadataVisitor visitor, Config config)
+        private static void AppendFile(string file, ConcurrentDictionary<string, Type> types, Config config)
         {
             var code = config.Filter.FilterSourceCode(File.ReadAllText(file));
+            var visitor = new MetadataVisitor(types);
 
             using (var ms = new MemoryStream(Encoding.ASCII.GetBytes(code)))
             {
