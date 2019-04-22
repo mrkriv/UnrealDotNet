@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/SpringArmComponent.h"
 #include "ManageSpringArmComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSpringArmComponent : public USpringArmComponent, public IManageObject

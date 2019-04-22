@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/LightComponent.h"
 #include "ManageLightComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageLightComponent : public ULightComponent, public IManageObject

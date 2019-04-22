@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\World.h:455
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\World.h:424
 
 namespace UnrealEngine
 {
@@ -18,10 +18,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FActorSpawnParameters();
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -38,14 +34,13 @@ namespace UnrealEngine
 		private static extern void E_PROP_FActorSpawnParameters_Owner_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FActorSpawnParameters_Template_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FActorSpawnParameters_Template_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FActorSpawnParameters();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FActorSpawnParameters_IsRemoteOwned(IntPtr self);
@@ -69,16 +64,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FActorSpawnParameters_Owner_GET(NativePointer);
 			set => E_PROP_FActorSpawnParameters_Owner_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Method for resolving collisions at the spawn point. Undefined means no override, use the actor's setting. </para>
-		/// </summary>
-		public ESpawnActorCollisionHandlingMethod SpawnCollisionHandlingOverride
-		{
-			get => (ESpawnActorCollisionHandlingMethod)E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_GET(NativePointer);
-			set => E_PROP_FActorSpawnParameters_SpawnCollisionHandlingOverride_SET(NativePointer, (byte)value);
 		}
 
 		public AActor Template

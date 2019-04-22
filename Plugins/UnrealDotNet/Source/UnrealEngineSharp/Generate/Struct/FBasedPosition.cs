@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1368
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1363
 
 namespace UnrealEngine
 {
@@ -23,13 +23,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBasedPosition();
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBasedPosition_AActor_FVector(IntPtr inBase, IntPtr inPosition);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FBasedPosition_Base_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -55,6 +48,13 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FBasedPosition_Position_SET(IntPtr Ptr, IntPtr Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBasedPosition();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FBasedPosition_AActor_FVector(IntPtr inBase, IntPtr inPosition);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FBasedPosition_Clear(IntPtr self);
 		
@@ -64,6 +64,10 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Actor that is the base </para>
+		/// </summary>
 		public AActor Base
 		{
 			get => E_PROP_FBasedPosition_Base_GET(NativePointer);
@@ -88,6 +92,10 @@ namespace UnrealEngine
 			set => E_PROP_FBasedPosition_CachedTransPosition_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Position relative to the base actor </para>
+		/// </summary>
 		public FVector Position
 		{
 			get => E_PROP_FBasedPosition_Position_GET(NativePointer);
@@ -97,9 +105,17 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Clear base/position </para>
+		/// </summary>
 		public void Clear()
 			=> E_FBasedPosition_Clear(this);
 		
+		
+		/// <summary>
+		/// <para>Updates base/position </para>
+		/// </summary>
 		public void Set(AActor inBase, FVector inPosition)
 			=> E_FBasedPosition_Set(this, inBase, inPosition);
 		

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SplineMeshComponent.h:33
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SplineMeshComponent.h:33
 
 namespace UnrealEngine
 {
@@ -18,10 +18,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FSplineMeshParams();
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FSplineMeshParams_EndOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -71,6 +67,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_FSplineMeshParams_StartTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FSplineMeshParams_StartTangent_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FSplineMeshParams();
 		
 		#endregion
 		

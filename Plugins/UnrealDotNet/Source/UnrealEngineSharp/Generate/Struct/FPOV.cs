@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2454
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2415
 
 namespace UnrealEngine
 {
@@ -23,13 +23,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPOV();
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPOV_FVector_FRotator_float(IntPtr inLocation, IntPtr inRotation, float inFOV);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPOV_FOV_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -44,6 +37,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_FPOV_Rotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPOV_Rotation_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FPOV();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FPOV_FVector_FRotator_float(IntPtr inLocation, IntPtr inRotation, float inFOV);
 		
 		#endregion
 		

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\LineBatchComponent.h:120
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\LineBatchComponent.h:120
 
 namespace UnrealEngine
 {

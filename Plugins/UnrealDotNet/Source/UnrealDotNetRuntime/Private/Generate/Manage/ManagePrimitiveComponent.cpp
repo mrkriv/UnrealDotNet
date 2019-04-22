@@ -6,7 +6,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:172
 
 bool UManagePrimitiveComponent::AddWrapperIfNotAttach()
 {
@@ -93,6 +93,14 @@ void UManagePrimitiveComponent::AddRadialImpulse(FVector Origin, float Radius, f
 		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
 }
 
+void UManagePrimitiveComponent::AddTorqueInRadians(FVector Torque, FName BoneName, bool bAccelChange)
+{
+	Super::AddTorqueInRadians(Torque, BoneName, bAccelChange);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddTorqueInRadians", Torque, BoneName, bAccelChange);
+}
+
 void UManagePrimitiveComponent::OnComponentCollisionSettingsChanged()
 {
 	Super::OnComponentCollisionSettingsChanged();
@@ -115,14 +123,6 @@ void UManagePrimitiveComponent::SetAllMassScale(float InMassScale)
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllMassScale", InMassScale);
-}
-
-void UManagePrimitiveComponent::SetAllPhysicsAngularVelocity(const FVector& NewAngVel, bool bAddToCurrent)
-{
-	Super::SetAllPhysicsAngularVelocity(NewAngVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsAngularVelocity", NewAngVel, bAddToCurrent);
 }
 
 void UManagePrimitiveComponent::SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent)
@@ -259,6 +259,22 @@ void UManagePrimitiveComponent::SetNotifyRigidBodyCollision(bool bNewNotifyRigid
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetNotifyRigidBodyCollision", bNewNotifyRigidBodyCollision);
+}
+
+void UManagePrimitiveComponent::SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, FName BoneName)
+{
+	Super::SetPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent, BoneName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent, BoneName);
+}
+
+void UManagePrimitiveComponent::SetPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent, FName BoneName)
+{
+	Super::SetPhysicsLinearVelocity(NewVel, bAddToCurrent, BoneName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsLinearVelocity", NewVel, bAddToCurrent, BoneName);
 }
 
 void UManagePrimitiveComponent::SetSimulatePhysics(bool bSimulate)

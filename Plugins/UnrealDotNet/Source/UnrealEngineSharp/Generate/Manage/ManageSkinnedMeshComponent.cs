@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:195
 
 namespace UnrealEngine
 {
@@ -15,18 +15,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
-		/// <summary>
-		/// <para>Clear any applied ref pose override </para>
-		/// </summary>
-		public override void ClearRefPoseOverride() { }
-		
-		
-		/// <summary>
-		/// <para>Apply an override for the current mesh ref pose </para>
-		/// </summary>
-		public override void SetRefPoseOverride(TArray<FTransform> newRefPoseTransforms) { }
-		
 		public static implicit operator IntPtr(ManageSkinnedMeshComponent self)
 		{
 			return self.NativePointer;

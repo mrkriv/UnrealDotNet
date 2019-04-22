@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\NavMovementComponent.h:25
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\NavMovementComponent.h:25
 
 namespace UnrealEngine
 {
@@ -123,42 +123,42 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <return>true if component can crouch </return>
+		/// <para>Returns true if component can crouch </para>
 		/// </summary>
 		public bool CanEverCrouch()
 			=> E_UNavMovementComponent_CanEverCrouch(this);
 		
 		
 		/// <summary>
-		/// <return>true if component can fly </return>
+		/// <para>Returns true if component can fly </para>
 		/// </summary>
 		public bool CanEverFly()
 			=> E_UNavMovementComponent_CanEverFly(this);
 		
 		
 		/// <summary>
-		/// <return>true if component can jump </return>
+		/// <para>Returns true if component can jump </para>
 		/// </summary>
 		public bool CanEverJump()
 			=> E_UNavMovementComponent_CanEverJump(this);
 		
 		
 		/// <summary>
-		/// <return>true if component can move along the ground (walk, drive, etc) </return>
+		/// <para>Returns true if component can move along the ground (walk, drive, etc) </para>
 		/// </summary>
 		public bool CanEverMoveOnGround()
 			=> E_UNavMovementComponent_CanEverMoveOnGround(this);
 		
 		
 		/// <summary>
-		/// <return>true if component can swim </return>
+		/// <para>Returns true if component can swim </para>
 		/// </summary>
 		public bool CanEverSwim()
 			=> E_UNavMovementComponent_CanEverSwim(this);
 		
 		
 		/// <summary>
-		/// <return>true if path following can start </return>
+		/// <para>Returns true if path following can start </para>
 		/// </summary>
 		public virtual bool CanStartPathFollowing()
 			=> E_UNavMovementComponent_CanStartPathFollowing(this);
@@ -180,77 +180,77 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>@returns location of controlled actor's "feet" meaning center of bottom of collision bounding box </para>
+		/// <para>Returns location of controlled actor's "feet" meaning center of bottom of collision bounding box </para>
 		/// </summary>
 		public FVector GetActorFeetLocation()
 			=> E_UNavMovementComponent_GetActorFeetLocation(this);
 		
 		
 		/// <summary>
-		/// <para>@returns based location of controlled actor </para>
+		/// <para>Returns based location of controlled actor </para>
 		/// </summary>
 		public virtual FBasedPosition GetActorFeetLocationBased()
 			=> E_UNavMovementComponent_GetActorFeetLocationBased(this);
 		
 		
 		/// <summary>
-		/// <para>@returns location of controlled actor - meaning center of collision bounding box </para>
+		/// <para>Returns location of controlled actor - meaning center of collision bounding box </para>
 		/// </summary>
 		public FVector GetActorLocation()
 			=> E_UNavMovementComponent_GetActorLocation(this);
 		
 		
 		/// <summary>
-		/// <para>@returns navigation location of controlled actor </para>
+		/// <para>Returns navigation location of controlled actor </para>
 		/// </summary>
 		public FVector GetActorNavLocation()
 			=> E_UNavMovementComponent_GetActorNavLocation(this);
 		
 		
 		/// <summary>
-		/// <para>@returns braking distance for acceleration driven path following </para>
+		/// <para>Returns braking distance for acceleration driven path following </para>
 		/// </summary>
 		public virtual float GetPathFollowingBrakingDistance(float maxSpeed)
 			=> E_UNavMovementComponent_GetPathFollowingBrakingDistance(this, maxSpeed);
 		
 		
 		/// <summary>
-		/// <return>true if currently crouching </return>
+		/// <para>Returns true if currently crouching </para>
 		/// </summary>
 		public virtual bool IsCrouching()
 			=> E_UNavMovementComponent_IsCrouching(this);
 		
 		
 		/// <summary>
-		/// <return>true if currently falling (not flying, in a non-fluid volume, and not on the ground) </return>
+		/// <para>Returns true if currently falling (not flying, in a non-fluid volume, and not on the ground) </para>
 		/// </summary>
 		public virtual bool IsFalling()
 			=> E_UNavMovementComponent_IsFalling(this);
 		
 		
 		/// <summary>
-		/// <return>true if currently flying (moving through a non-fluid volume without resting on the ground) </return>
+		/// <para>Returns true if currently flying (moving through a non-fluid volume without resting on the ground) </para>
 		/// </summary>
 		public virtual bool IsFlying()
 			=> E_UNavMovementComponent_IsFlying(this);
 		
 		
 		/// <summary>
-		/// <return>true if component is allowed to jump </return>
+		/// <para>Returns true if component is allowed to jump </para>
 		/// </summary>
 		public bool IsJumpAllowed()
 			=> E_UNavMovementComponent_IsJumpAllowed(this);
 		
 		
 		/// <summary>
-		/// <return>true if currently moving on the ground (e.g. walking or driving) </return>
+		/// <para>Returns true if currently moving on the ground (e.g. walking or driving) </para>
 		/// </summary>
 		public virtual bool IsMovingOnGround()
 			=> E_UNavMovementComponent_IsMovingOnGround(this);
 		
 		
 		/// <summary>
-		/// <return>true if currently swimming (moving through a fluid volume) </return>
+		/// <para>Returns true if currently swimming (moving through a fluid volume) </para>
 		/// </summary>
 		public virtual bool IsSwimming()
 			=> E_UNavMovementComponent_IsSwimming(this);
@@ -285,7 +285,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <param name="bAllowed">true if component is allowed to jump </param>
+		/// <para>Sets whether this component is allowed to jump </para>
 		/// </summary>
 		public void SetJumpAllowed(bool bAllowed)
 			=> E_UNavMovementComponent_SetJumpAllowed(this, bAllowed);

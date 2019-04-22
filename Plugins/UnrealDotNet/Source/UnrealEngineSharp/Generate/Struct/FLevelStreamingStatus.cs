@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:178
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:181
 
 namespace UnrealEngine
 {
@@ -27,17 +27,17 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_FLevelStreamingStatus_PackageName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FLevelStreamingStatus_PackageName_SET(IntPtr Ptr, string Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(string inPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int inLODIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FLevelStreamingStatus();
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern StringWrapper E_PROP_FLevelStreamingStatus_PackageName_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FLevelStreamingStatus_PackageName_SET(IntPtr Ptr, string Value);
 		
 		#endregion
 		

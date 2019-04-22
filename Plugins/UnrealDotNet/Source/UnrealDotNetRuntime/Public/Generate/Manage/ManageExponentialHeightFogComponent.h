@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h"
 #include "ManageExponentialHeightFogComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:15
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:47
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageExponentialHeightFogComponent : public UExponentialHeightFogComponent, public IManageObject

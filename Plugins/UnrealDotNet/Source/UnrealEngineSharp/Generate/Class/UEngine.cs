@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:630
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:637
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UEngine(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveClassRedirects_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -96,19 +92,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameCycles_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_UEngine_GameScreenshotSaveDirectory_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_GameScreenshotSaveDirectory_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_UEngine_GameSingleton_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_GameSingleton_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UEngine_HoverHighlightIntensity_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_HoverHighlightIntensity_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_IdealLightMapDensity_GET(IntPtr Ptr);
@@ -241,11 +227,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_SelectionHighlightIntensityBillboards_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UEngine_SelectionMeshSectionHighlightIntensity_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_SelectionMeshSectionHighlightIntensity_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UEngine_ShadedLevelColorationLitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ShadedLevelColorationLitMaterialName_SET(IntPtr Ptr, string Value);
@@ -314,6 +295,10 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_UEngine_WireframeMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_WireframeMaterialName_SET(IntPtr Ptr, string Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UEngine(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_GetDynamicResolutionCurrentStateInfos(IntPtr self, IntPtr outInfos);
@@ -455,26 +440,10 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_GameCycles_SET(NativePointer, value);
 		}
 
-		
-		/// <summary>
-		/// <para>The save directory for newly created screenshots </para>
-		/// </summary>
-		public FDirectoryPath GameScreenshotSaveDirectory
-		{
-			get => E_PROP_UEngine_GameScreenshotSaveDirectory_GET(NativePointer);
-			set => E_PROP_UEngine_GameScreenshotSaveDirectory_SET(NativePointer, value);
-		}
-
 		public UObject GameSingleton
 		{
 			get => E_PROP_UEngine_GameSingleton_GET(NativePointer);
 			set => E_PROP_UEngine_GameSingleton_SET(NativePointer, value);
-		}
-
-		public float HoverHighlightIntensity
-		{
-			get => E_PROP_UEngine_HoverHighlightIntensity_GET(NativePointer);
-			set => E_PROP_UEngine_HoverHighlightIntensity_SET(NativePointer, value);
 		}
 
 		public float IdealLightMapDensity
@@ -647,12 +616,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_SelectionHighlightIntensityBillboards_GET(NativePointer);
 			set => E_PROP_UEngine_SelectionHighlightIntensityBillboards_SET(NativePointer, value);
-		}
-
-		public float SelectionMeshSectionHighlightIntensity
-		{
-			get => E_PROP_UEngine_SelectionMeshSectionHighlightIntensity_GET(NativePointer);
-			set => E_PROP_UEngine_SelectionMeshSectionHighlightIntensity_SET(NativePointer, value);
 		}
 
 		public string ShadedLevelColorationLitMaterialName

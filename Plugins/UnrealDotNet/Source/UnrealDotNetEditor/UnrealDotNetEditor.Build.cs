@@ -7,13 +7,6 @@ public class UnrealDotNetEditor : ModuleRules
         //bEnforceIWYU = false;
         PrivatePCHHeaderFile = "Private/UnrealDotNetEditorPCH.h";
 
-        PublicIncludePaths.AddRange(
-            new string[]
-            {
-                "UnrealDotNetEditor/Public"
-            }
-        );
-
         PrivateIncludePaths.AddRange(
             new string[]
             {

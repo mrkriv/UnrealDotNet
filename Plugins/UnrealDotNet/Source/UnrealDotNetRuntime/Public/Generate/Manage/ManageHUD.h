@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:36
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\HUD.h:36
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD, public IManageObject

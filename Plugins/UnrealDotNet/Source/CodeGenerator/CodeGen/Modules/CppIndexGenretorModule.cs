@@ -25,7 +25,7 @@ namespace CodeGenerator.CodeGen.Modules
 
         protected override bool CanGenerate(Class Class)
         {
-            if (!Class.IsStructure)
+            if (Class.IsStructure)
                 return false;
 
             return true;
@@ -47,7 +47,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-            cw.SaveToFile(Path.Combine(PathOutputH, "Index.h"));
+            cw.SaveToFile(Path.Combine(PathOutputH, "Export", "Index.h"));
         }
 
         #endregion

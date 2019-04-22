@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:159
 
 namespace UnrealEngine
 {
@@ -154,6 +154,12 @@ namespace UnrealEngine
 		public override void ForceReplicationUpdate() { }
 		
 		protected override void HandleSwimmingWallHit(FHitResult hit, float deltaTime) { }
+		
+		
+		/// <summary>
+		/// <para>Trigger OnWalkingOffLedge event on CharacterOwner. </para>
+		/// </summary>
+		public override void HandleWalkingOffLedge(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta) { }
 		
 		
 		/// <summary>
@@ -441,6 +447,14 @@ namespace UnrealEngine
 		/// <para>Unpack compressed flags from a saved move and set state accordingly. See FSavedMove_Character. </para>
 		/// </summary>
 		protected override void UpdateFromCompressedFlags(byte flags) { }
+		
+		
+		/// <summary>
+		/// <para>Used during SimulateMovement for proxies, this computes a new value for Acceleration before running proxy simulation. </para>
+		/// <para>The base implementation simply derives a value from the normalized Velocity value, which may help animations that want some indication of the direction of movement. </para>
+		/// <para>Proxies don't implement predictive acceleration by default so this value is not used for the actual simulation. </para>
+		/// </summary>
+		public override void UpdateProxyAcceleration() { }
 		
 		public static implicit operator IntPtr(ManageCharacterMovementComponent self)
 		{

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:171
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:171
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UStaticMeshComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UStaticMeshComponent_bCastDistanceFieldIndirectShadow_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -120,6 +116,10 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UStaticMeshComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UStaticMeshComponent_CachePaintedDataIfNecessary(IntPtr self);
 		
@@ -185,9 +185,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UStaticMeshComponent_SupportsDefaultCollision(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UStaticMeshComponent_SupportsDitheredLODTransitions(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(IntPtr self);
@@ -559,13 +556,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool SupportsDefaultCollision()
 			=> E_UStaticMeshComponent_SupportsDefaultCollision(this);
-		
-		
-		/// <summary>
-		/// <para>Whether we can support dithered LOD transitions (default behavior checks all materials). Used for HISMC LOD. </para>
-		/// </summary>
-		public virtual bool SupportsDitheredLODTransitions()
-			=> E_UStaticMeshComponent_SupportsDitheredLODTransitions(this);
 		
 		
 		/// <summary>

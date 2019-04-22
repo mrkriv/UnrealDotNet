@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/PoseableMeshComponent.h"
 #include "ManagePoseableMeshComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PoseableMeshComponent.h:17
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PoseableMeshComponent.h:17
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePoseableMeshComponent : public UPoseableMeshComponent, public IManageObject

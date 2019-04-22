@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:109
 
 namespace UnrealEngine
 {
@@ -30,7 +30,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called by owning level to shift an actor location and all relevant data structures by specified delta </para>
-		/// <param name="InWorldOffset">Offset vector to shift actor location </param>
+		/// <param name="InOffset">Offset vector to shift actor location </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
 		public override void ApplyWorldOffset(FVector inOffset, bool bWorldShift) { }
@@ -49,7 +49,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called once this actor has been deleted </para>
+		/// <para>Called when this actor is explicitly being destroyed during gameplay or in the editor, not called during level streaming or gameplay ending </para>
 		/// </summary>
 		public override void Destroyed() { }
 		
@@ -61,7 +61,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Force actor to be updated to clients </para>
+		/// <para>Force actor to be updated to clients/demo net drivers </para>
 		/// </summary>
 		public override void ForceNetUpdate() { }
 		
@@ -176,15 +176,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when an actor is done spawning into the world (from UWorld::SpawnActor). </para>
+		/// <para>Called when an actor is done spawning into the world (from UWorld::SpawnActor), both in the editor and during gameplay </para>
 		/// <para>For actors with a root component, the location and rotation will have already been set. </para>
-		/// <para>Takes place after any construction scripts have been called </para>
+		/// <para>This is called before calling construction scripts, but after native components have been created </para>
 		/// </summary>
 		public override void PostActorCreated() { }
 		
 		
 		/// <summary>
-		/// <para>Allow actors to initialize themselves on the C++ side </para>
+		/// <para>Allow actors to initialize themselves on the C++ side after all of their components have been initialized, only called during gameplay </para>
 		/// </summary>
 		public override void PostInitializeComponents() { }
 		
@@ -208,13 +208,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Always called immediately after a new Role is received from the remote. </para>
+		/// </summary>
+		public override void PostNetReceiveRole() { }
+		
+		
+		/// <summary>
 		/// <para>Update velocity - typically from ReplicatedMovement, not called for simulated physics! </para>
 		/// </summary>
 		public override void PostNetReceiveVelocity(FVector newVelocity) { }
 		
 		
 		/// <summary>
-		/// <para>Called after all the components in the Components array are registered </para>
+		/// <para>Called after all the components in the Components array are registered, called both in editor and during gameplay </para>
 		/// </summary>
 		public override void PostRegisterAllComponents() { }
 		
@@ -226,13 +232,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called immediately before gameplay begins. </para>
+		/// <para>Called right before components are initialized, only called during gameplay </para>
 		/// </summary>
 		public override void PreInitializeComponents() { }
 		
 		
 		/// <summary>
-		/// <para>Called before all the components in the Components array are registered </para>
+		/// <para>Called before all the components in the Components array are registered, called both in editor and during gameplay </para>
 		/// </summary>
 		public override void PreRegisterAllComponents() { }
 		
@@ -352,6 +358,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Unregister all currently registered components </para>
+		/// <param name="bForReregister">If true, RegisterAllComponents will be called immediately after this so some slow operations can be avoided </param>
 		/// </summary>
 		public override void UnregisterAllComponents(bool bForReregister) { }
 		

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\DecalComponent.h:22
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UDecalComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UDecalComponent_bDestroyOwnerAfterFade_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -41,6 +37,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_UDecalComponent_FadeDuration_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDecalComponent_FadeInDuration_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDecalComponent_FadeInDuration_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDecalComponent_FadeInStartDelay_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDecalComponent_FadeInStartDelay_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UDecalComponent_FadeScreenSize_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UDecalComponent_FadeScreenSize_SET(IntPtr Ptr, float Value);
@@ -55,8 +61,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UDecalComponent_SortOrder_SET(IntPtr Ptr, int Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UDecalComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UDecalComponent_GetFadeDuration(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UDecalComponent_GetFadeInDuration(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_UDecalComponent_GetFadeInStartDelay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UDecalComponent_GetFadeStartDelay(IntPtr self);
@@ -72,6 +88,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDecalComponent_PushSelectionToProxy(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UDecalComponent_SetFadeIn(IntPtr self, float startDelay, float duaration);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UDecalComponent_SetFadeOut(IntPtr self, float startDelay, float duration, bool destroyOwnerAfterFade);
@@ -118,6 +137,18 @@ namespace UnrealEngine
 			set => E_PROP_UDecalComponent_FadeDuration_SET(NativePointer, value);
 		}
 
+		public float FadeInDuration
+		{
+			get => E_PROP_UDecalComponent_FadeInDuration_GET(NativePointer);
+			set => E_PROP_UDecalComponent_FadeInDuration_SET(NativePointer, value);
+		}
+
+		public float FadeInStartDelay
+		{
+			get => E_PROP_UDecalComponent_FadeInStartDelay_GET(NativePointer);
+			set => E_PROP_UDecalComponent_FadeInStartDelay_SET(NativePointer, value);
+		}
+
 		public float FadeScreenSize
 		{
 			get => E_PROP_UDecalComponent_FadeScreenSize_GET(NativePointer);
@@ -151,6 +182,12 @@ namespace UnrealEngine
 		public float GetFadeDuration()
 			=> E_UDecalComponent_GetFadeDuration(this);
 		
+		public float GetFadeInDuration()
+			=> E_UDecalComponent_GetFadeInDuration(this);
+		
+		public float GetFadeInStartDelay()
+			=> E_UDecalComponent_GetFadeInStartDelay(this);
+		
 		public float GetFadeStartDelay()
 			=> E_UDecalComponent_GetFadeStartDelay(this);
 		
@@ -173,6 +210,9 @@ namespace UnrealEngine
 		/// </summary>
 		public void PushSelectionToProxy()
 			=> E_UDecalComponent_PushSelectionToProxy(this);
+		
+		public void SetFadeIn(float startDelay, float duaration)
+			=> E_UDecalComponent_SetFadeIn(this, startDelay, duaration);
 		
 		
 		/// <summary>

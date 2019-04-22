@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:108
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:110
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UAudioComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UAudioComponent_ActiveCount_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -127,8 +123,15 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UAudioComponent_VolumeMultiplier_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UAudioComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_AdjustVolume(IntPtr self, float adjustVolumeDuration, float adjustVolumeLevel);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UAudioComponent_CancelAutoAttachment(IntPtr self, bool bDetachFromParent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UAudioComponent_FadeIn(IntPtr self, float fadeInDuration, float fadeVolumeLevel, float startTime);
@@ -138,6 +141,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UAudioComponent_GetAudioComponentUserID(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UAudioComponent_GetCookedEnvelopeData(IntPtr self, float outEnvelopeData);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UAudioComponent_HasCookedAmplitudeEnvelopeData(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UAudioComponent_HasCookedFFTData(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UAudioComponent_IsPlaying(IntPtr self);
@@ -425,6 +437,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Restore relative transform from auto attachment and optionally detach from parent (regardless of whether it was an auto attachment). </para>
+		/// </summary>
+		private void CancelAutoAttachment(bool bDetachFromParent)
+			=> E_UAudioComponent_CancelAutoAttachment(this, bDetachFromParent);
+		
+		
+		/// <summary>
 		/// <para>This can be used in place of "play" when it is desired to fade in the sound over time. </para>
 		/// <para>If FadeTime is 0.0, the change in volume is instant. </para>
 		/// <para>If FadeTime is > 0.0, the multiplier will be increased from 0 to FadeVolumeLevel over FadeIn seconds. </para>
@@ -451,7 +470,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if this component is currently playing a SoundCue. </return>
+		/// <para>Returns the current cooked envelope data of the playing audio component. Returns true if there is data and the audio component is playing. </para>
+		/// </summary>
+		public bool GetCookedEnvelopeData(float outEnvelopeData)
+			=> E_UAudioComponent_GetCookedEnvelopeData(this, outEnvelopeData);
+		
+		
+		/// <summary>
+		/// <para>Queries if the sound wave playing in this audio component has cooked amplitude analyses. </para>
+		/// </summary>
+		public bool HasCookedAmplitudeEnvelopeData()
+			=> E_UAudioComponent_HasCookedAmplitudeEnvelopeData(this);
+		
+		
+		/// <summary>
+		/// <para>Queries if the sound wave playing in this audio component has cooked FFT data. </para>
+		/// </summary>
+		public bool HasCookedFFTData()
+			=> E_UAudioComponent_HasCookedFFTData(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if this component is currently playing a SoundCue. </para>
 		/// </summary>
 		public virtual bool IsPlaying()
 			=> E_UAudioComponent_IsPlaying(this);

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_APawn(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_APawn_AllowedYawError_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -49,6 +45,10 @@ namespace UnrealEngine
 		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_APawn(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_AddControllerPitchInput(IntPtr self, float val);
@@ -127,6 +127,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_Internal_GetPendingMovementInputVector(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_IsBotControlled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APawn_IsControlled(IntPtr self);
@@ -345,14 +348,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>The half-height of the default Pawn, scaled by the component scale. By default returns the half-height of the RootComponent, regardless of whether it is registered or collidable. </return>
+		/// <para>Returns The half-height of the default Pawn, scaled by the component scale. By default returns the half-height of the RootComponent, regardless of whether it is registered or collidable. </para>
 		/// </summary>
 		public virtual float GetDefaultHalfHeight()
 			=> E_APawn_GetDefaultHalfHeight(this);
 		
 		
 		/// <summary>
-		/// <return>vector direction of gravity </return>
+		/// <para>Returns vector direction of gravity </para>
 		/// </summary>
 		public FVector GetGravityDirection()
 			=> E_APawn_GetGravityDirection(this);
@@ -400,7 +403,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Pawn's eye location </return>
+		/// <para>Returns	Pawn's eye location </para>
 		/// </summary>
 		public virtual FVector GetPawnViewLocation()
 			=> E_APawn_GetPawnViewLocation(this);
@@ -425,7 +428,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if player is viewing this Pawn in FreeCam </return>
+		/// <para>Returns true if player is viewing this Pawn in FreeCam </para>
 		/// </summary>
 		public virtual bool InFreeCam()
 			=> E_APawn_InFreeCam(this);
@@ -467,6 +470,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns true if controlled by a bot. </para>
+		/// </summary>
+		public virtual bool IsBotControlled()
+			=> E_APawn_IsBotControlled(this);
+		
+		
+		/// <summary>
 		/// <para>See if this actor is currently being controlled </para>
 		/// </summary>
 		public bool IsControlled()
@@ -474,7 +484,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if controlled by a local (not network) Controller. </return>
+		/// <para>Returns true if controlled by a local (not network) Controller. </para>
 		/// </summary>
 		public virtual bool IsLocallyControlled()
 			=> E_APawn_IsLocallyControlled(this);
@@ -488,7 +498,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if controlled by a human player (possessed by a PlayerController). </return>
+		/// <para>Returns true if controlled by a human player (possessed by a PlayerController). </para>
 		/// </summary>
 		public virtual bool IsPlayerControlled()
 			=> E_APawn_IsPlayerControlled(this);

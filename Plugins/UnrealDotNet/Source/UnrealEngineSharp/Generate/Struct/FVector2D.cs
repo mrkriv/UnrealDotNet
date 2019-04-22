@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Core\Public\Math\Vector2D.h:17
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\Vector2D.h:17
 
 namespace UnrealEngine
 {
@@ -44,16 +44,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector2D();
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float inX, float inY);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr v);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -63,6 +53,16 @@ namespace UnrealEngine
 		private static extern float E_PROP_FVector2D_Y_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector2D();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector2D_float_float(float inX, float inY);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FVector2D_FVector(IntPtr v);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector2D_ClampAxes(IntPtr self, float minAxisVal, float maxAxisVal);
@@ -120,6 +120,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FVector2D_IsZero(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector2D_Max(IntPtr self, IntPtr a, IntPtr b);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector2D_Min(IntPtr self, IntPtr a, IntPtr b);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector2D_Normalize(IntPtr self, float tolerance);
@@ -335,6 +341,26 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsZero()
 			=> E_FVector2D_IsZero(this);
+		
+		
+		/// <summary>
+		/// <para>Returns a vector with the maximum component for each dimension from the pair of vectors. </para>
+		/// <param name="A">The first vector. </param>
+		/// <param name="B">The second vector. </param>
+		/// <return>The max vector. </return>
+		/// </summary>
+		public FVector2D Max(FVector2D a, FVector2D b)
+			=> E_FVector2D_Max(this, a, b);
+		
+		
+		/// <summary>
+		/// <para>Returns a vector with the minimum component for each dimension from the pair of vectors. </para>
+		/// <param name="A">The first vector. </param>
+		/// <param name="B">The second vector. </param>
+		/// <return>The min vector. </return>
+		/// </summary>
+		public FVector2D Min(FVector2D a, FVector2D b)
+			=> E_FVector2D_Min(this, a, b);
 		
 		
 		/// <summary>

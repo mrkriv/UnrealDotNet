@@ -6,7 +6,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 bool AManageCharacter::AddWrapperIfNotAttach()
 {
@@ -219,6 +219,14 @@ void AManageCharacter::OnWalkingOffLedge_Implementation(const FVector& PreviousF
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnWalkingOffLedge_Implementation", PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+}
+
+void AManageCharacter::ResetJumpState()
+{
+	Super::ResetJumpState();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ResetJumpState");
 }
 
 void AManageCharacter::RootMotionDebugClientPrintOnScreen_Implementation(const FString& InString)

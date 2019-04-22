@@ -3,15 +3,10 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\World.h:733
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\World.h:783
 
 namespace UnrealEngine
 {
-	
-	/// <summary>
-	/// Класс не может быть наследован в Вашем коде, используйте ManageWorld
-	/// <para>The destructor restores the context on the world that was saved in the constructor. </para>
-	/// </summary>
 	public sealed partial class UWorld : UObject
 	{
 		public UWorld(IntPtr Adress)
@@ -26,19 +21,40 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UWorld(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UWorld_AudioTimeSeconds_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_AudioTimeSeconds_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bActorsInitialized_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bActorsInitialized_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bAggressiveLOD_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bAggressiveLOD_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bAllowAudioPlayback_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bAllowAudioPlayback_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bAreConstraintsDirty_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bAreConstraintsDirty_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bBegunPlay_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bBegunPlay_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_UWorld_bDebugDrawAllTraceTags_GET(IntPtr Ptr);
@@ -46,54 +62,114 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_bDebugDrawAllTraceTags_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bDebugPauseExecution_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bDebugPauseExecution_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bInTick_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bDropDetail_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bInTick_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bDropDetail_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsBuilt_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bInTick_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsBuilt_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bInTick_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsLevelStreamingFrozen_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsBuilt_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsLevelStreamingFrozen_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsBuilt_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsRunningConstructionScript_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsCameraMoveableWhenPaused_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsRunningConstructionScript_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsCameraMoveableWhenPaused_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bIsWorldInitialized_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsDefaultLevel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bIsWorldInitialized_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsDefaultLevel_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bPostTickComponentUpdate_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsLevelStreamingFrozen_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsLevelStreamingFrozen_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bShouldSimulatePhysics_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsRunningConstructionScript_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bShouldSimulatePhysics_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsRunningConstructionScript_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UWorld_bTickNewlySpawned_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UWorld_bIsTearingDown_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UWorld_bIsTearingDown_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bIsWorldInitialized_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bIsWorldInitialized_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bKismetScriptError_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bKismetScriptError_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bMatchStarted_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bMatchStarted_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bPlayersOnly_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bPlayersOnly_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bPlayersOnlyPending_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bPlayersOnlyPending_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bPostTickComponentUpdate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bPostTickComponentUpdate_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bRequestedBlockOnAsyncLoading_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bRequestedBlockOnAsyncLoading_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bShouldSimulatePhysics_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bShouldSimulatePhysics_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bStartup_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bStartup_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bTickNewlySpawned_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bTickNewlySpawned_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bTriggerPostLoadMap_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bTriggerPostLoadMap_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UWorld_bWorldWasLoadedThisTick_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_bWorldWasLoadedThisTick_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UWorld_CommittedPersistentLevelName_GET(IntPtr Ptr);
@@ -124,11 +200,6 @@ namespace UnrealEngine
 		private static extern float E_PROP_UWorld_NextSwitchCountdown_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_NextSwitchCountdown_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UWorld_NextTravelType_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_NextTravelType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_UWorld_NextURL_GET(IntPtr Ptr);
@@ -181,11 +252,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_StreamingVolumeUpdateDelay_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UWorld_TickGroup_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_TickGroup_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UWorld_TimeSeconds_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_TimeSeconds_SET(IntPtr Ptr, float Value);
@@ -205,6 +271,10 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_ViewLocationsRenderedLastFrame_SET(IntPtr Ptr, IntPtr Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UWorld(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_AddNetworkActor(IntPtr self, IntPtr actor);
 		
@@ -222,9 +292,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_UWorld_AttemptDeriveFromURL(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_BeginPlay(IntPtr self);
@@ -305,12 +372,6 @@ namespace UnrealEngine
 		private static extern void E_UWorld_EnsureCollisionTreeIsBuilt(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UWorld_FindCollectionIndexByType(IntPtr self, byte inType);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_UWorld_FindOrAddCollectionByType_Index(IntPtr self, byte inType);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_FindTeleportSpot(IntPtr self, IntPtr testActor, IntPtr placeLocation, IntPtr placeRotation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -347,9 +408,6 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UWorld_GetMapName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_UWorld_GetMonoFarFieldCullingDistance(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_UWorld_GetNetMode(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -360,6 +418,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UWorld_GetNumPawns(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UWorld_GetNumPlayerControllers(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UWorld_GetProgressDenominator(IntPtr self);
@@ -393,6 +454,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_HasEndOfFrameUpdates(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_HasMarkedObjectsPendingKill(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_InitializeActorsForPlay(IntPtr self, IntPtr inURL, bool bResetTime);
@@ -429,6 +493,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_IsPlayInEditor(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_IsPlayingClientReplay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_IsPlayingReplay(IntPtr self);
@@ -569,19 +636,16 @@ namespace UnrealEngine
 		private static extern void E_UWorld_TriggerStreamingDataRebuild(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_UpdateActorComponentEndOfFrameUpdateState(IntPtr self, IntPtr component);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateAllSkyCaptures(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_UpdateCullDistanceVolumes(IntPtr self, IntPtr actorToUpdate, IntPtr componentToUpdate);
+		private static extern bool E_UWorld_UpdateCullDistanceVolumes(IntPtr self, IntPtr actorToUpdate, IntPtr componentToUpdate);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateLevelStreaming(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_UpdateParameterCollectionInstances(IntPtr self, bool bUpdateInstanceUniformBuffers);
+		private static extern void E_UWorld_UpdateParameterCollectionInstances(IntPtr self, bool bUpdateInstanceUniformBuffers, bool bRecreateUniformBuffer);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_UpdateWorldComponents(IntPtr self, bool bRerunConstructionScripts, bool bCurrentLevelOnly);
@@ -604,9 +668,55 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Whether actors have been initialized for play </para>
+		/// </summary>
+		public byte bActorsInitialized
+		{
+			get => E_PROP_UWorld_bActorsInitialized_GET(NativePointer);
+			set => E_PROP_UWorld_bActorsInitialized_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>frame rate is well below DesiredFrameRate, so make LOD more aggressive </para>
+		/// </summary>
+		public byte bAggressiveLOD
+		{
+			get => E_PROP_UWorld_bAggressiveLOD_GET(NativePointer);
+			set => E_PROP_UWorld_bAggressiveLOD_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Indicates this scene always allows audio playback. </para>
+		/// </summary>
+		public byte bAllowAudioPlayback
+		{
+			get => E_PROP_UWorld_bAllowAudioPlayback_GET(NativePointer);
+			set => E_PROP_UWorld_bAllowAudioPlayback_SET(NativePointer, value);
+		}
+
+		public byte bAreConstraintsDirty
+		{
+			get => E_PROP_UWorld_bAreConstraintsDirty_GET(NativePointer);
+			set => E_PROP_UWorld_bAreConstraintsDirty_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether BeginPlay has been called on actors </para>
+		/// </summary>
+		public byte bBegunPlay
+		{
+			get => E_PROP_UWorld_bBegunPlay_GET(NativePointer);
+			set => E_PROP_UWorld_bBegunPlay_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If TRUE, 'hidden' components will still create render proxy, so can draw info (see USceneComponent::ShouldRender) </para>
 		/// </summary>
-		public bool bCreateRenderStateForHiddenComponents
+		public byte bCreateRenderStateForHiddenComponents
 		{
 			get => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_GET(NativePointer);
 			set => E_PROP_UWorld_bCreateRenderStateForHiddenComponents_SET(NativePointer, value);
@@ -622,11 +732,17 @@ namespace UnrealEngine
 			set => E_PROP_UWorld_bDebugDrawAllTraceTags_SET(NativePointer, value);
 		}
 
+		public byte bDebugPauseExecution
+		{
+			get => E_PROP_UWorld_bDebugPauseExecution_GET(NativePointer);
+			set => E_PROP_UWorld_bDebugPauseExecution_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>True we want to execute a call to UpdateCulledTriggerVolumes during Tick </para>
 		/// </summary>
-		public bool bDoDelayedUpdateCullDistanceVolumes
+		public byte bDoDelayedUpdateCullDistanceVolumes
 		{
 			get => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_GET(NativePointer);
 			set => E_PROP_UWorld_bDoDelayedUpdateCullDistanceVolumes_SET(NativePointer, value);
@@ -634,19 +750,19 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force UsesGameHiddenFlags to return true. </para>
+		/// <para>frame rate is below DesiredFrameRate, so drop high detail actors </para>
 		/// </summary>
-		public bool bHack_Force_UsesGameHiddenFlags_True
+		public byte bDropDetail
 		{
-			get => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_GET(NativePointer);
-			set => E_PROP_UWorld_bHack_Force_UsesGameHiddenFlags_True_SET(NativePointer, value);
+			get => E_PROP_UWorld_bDropDetail_GET(NativePointer);
+			set => E_PROP_UWorld_bDropDetail_SET(NativePointer, value);
 		}
 
 		
 		/// <summary>
 		/// <para>Whether we are in the middle of ticking actors/components or not </para>
 		/// </summary>
-		public bool bInTick
+		public byte bInTick
 		{
 			get => E_PROP_UWorld_bInTick_GET(NativePointer);
 			set => E_PROP_UWorld_bInTick_SET(NativePointer, value);
@@ -656,7 +772,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Whether we have already built the collision tree or not </para>
 		/// </summary>
-		public bool bIsBuilt
+		public byte bIsBuilt
 		{
 			get => E_PROP_UWorld_bIsBuilt_GET(NativePointer);
 			set => E_PROP_UWorld_bIsBuilt_SET(NativePointer, value);
@@ -664,9 +780,29 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>When set, camera is potentially moveable even when paused </para>
+		/// </summary>
+		public byte bIsCameraMoveableWhenPaused
+		{
+			get => E_PROP_UWorld_bIsCameraMoveableWhenPaused_GET(NativePointer);
+			set => E_PROP_UWorld_bIsCameraMoveableWhenPaused_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>That map is default map or not </para>
+		/// </summary>
+		public byte bIsDefaultLevel
+		{
+			get => E_PROP_UWorld_bIsDefaultLevel_GET(NativePointer);
+			set => E_PROP_UWorld_bIsDefaultLevel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Is level streaming currently frozen? </para>
 		/// </summary>
-		public bool bIsLevelStreamingFrozen
+		public byte bIsLevelStreamingFrozen
 		{
 			get => E_PROP_UWorld_bIsLevelStreamingFrozen_GET(NativePointer);
 			set => E_PROP_UWorld_bIsLevelStreamingFrozen_SET(NativePointer, value);
@@ -676,7 +812,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>If true this world is in the process of running the construction script for an actor </para>
 		/// </summary>
-		public bool bIsRunningConstructionScript
+		public byte bIsRunningConstructionScript
 		{
 			get => E_PROP_UWorld_bIsRunningConstructionScript_GET(NativePointer);
 			set => E_PROP_UWorld_bIsRunningConstructionScript_SET(NativePointer, value);
@@ -684,9 +820,19 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Is the world being torn down </para>
+		/// </summary>
+		public byte bIsTearingDown
+		{
+			get => E_PROP_UWorld_bIsTearingDown_GET(NativePointer);
+			set => E_PROP_UWorld_bIsTearingDown_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Whether world object has been initialized via Init() </para>
 		/// </summary>
-		public bool bIsWorldInitialized
+		public byte bIsWorldInitialized
 		{
 			get => E_PROP_UWorld_bIsWorldInitialized_GET(NativePointer);
 			set => E_PROP_UWorld_bIsWorldInitialized_SET(NativePointer, value);
@@ -694,10 +840,51 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>This is a bool that indicates that one or more blueprints in the level (blueprint instances, level script, etc) </para>
+		/// <para>have compile errors that could not be automatically resolved. </para>
+		/// </summary>
+		public byte bKismetScriptError
+		{
+			get => E_PROP_UWorld_bKismetScriptError_GET(NativePointer);
+			set => E_PROP_UWorld_bKismetScriptError_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the match has been started </para>
+		/// </summary>
+		public byte bMatchStarted
+		{
+			get => E_PROP_UWorld_bMatchStarted_GET(NativePointer);
+			set => E_PROP_UWorld_bMatchStarted_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>When ticking the world, only update players. </para>
+		/// </summary>
+		public byte bPlayersOnly
+		{
+			get => E_PROP_UWorld_bPlayersOnly_GET(NativePointer);
+			set => E_PROP_UWorld_bPlayersOnly_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Indicates that at the end the frame bPlayersOnly will be set to true. </para>
+		/// </summary>
+		public byte bPlayersOnlyPending
+		{
+			get => E_PROP_UWorld_bPlayersOnlyPending_GET(NativePointer);
+			set => E_PROP_UWorld_bPlayersOnlyPending_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Indicates that during world ticking we are doing the final component update of dirty components </para>
 		/// <para>(after PostAsyncWork and effect physics scene has run. </para>
 		/// </summary>
-		public bool bPostTickComponentUpdate
+		public byte bPostTickComponentUpdate
 		{
 			get => E_PROP_UWorld_bPostTickComponentUpdate_GET(NativePointer);
 			set => E_PROP_UWorld_bPostTickComponentUpdate_SET(NativePointer, value);
@@ -705,10 +892,20 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Whether it was requested that the engine bring up a loading screen and block on async loading. </para>
+		/// </summary>
+		public byte bRequestedBlockOnAsyncLoading
+		{
+			get => E_PROP_UWorld_bRequestedBlockOnAsyncLoading_GET(NativePointer);
+			set => E_PROP_UWorld_bRequestedBlockOnAsyncLoading_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If true this world will tick physics to simulate. This isn't same as having Physics Scene. </para>
 		/// <para>You need Physics Scene if you'd like to trace. This flag changed ticking </para>
 		/// </summary>
-		public bool bShouldSimulatePhysics
+		public byte bShouldSimulatePhysics
 		{
 			get => E_PROP_UWorld_bShouldSimulatePhysics_GET(NativePointer);
 			set => E_PROP_UWorld_bShouldSimulatePhysics_SET(NativePointer, value);
@@ -716,12 +913,43 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Is the world in its actor initialization phase. </para>
+		/// </summary>
+		public byte bStartup
+		{
+			get => E_PROP_UWorld_bStartup_GET(NativePointer);
+			set => E_PROP_UWorld_bStartup_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>We are in the middle of actor ticking, so add tasks for newly spawned actors </para>
 		/// </summary>
-		public bool bTickNewlySpawned
+		public byte bTickNewlySpawned
 		{
 			get => E_PROP_UWorld_bTickNewlySpawned_GET(NativePointer);
 			set => E_PROP_UWorld_bTickNewlySpawned_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Triggers a call to PostLoadMap() the next Tick, turns off loading movie if LoadMap() has been called. </para>
+		/// </summary>
+		public byte bTriggerPostLoadMap
+		{
+			get => E_PROP_UWorld_bTriggerPostLoadMap_GET(NativePointer);
+			set => E_PROP_UWorld_bTriggerPostLoadMap_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>set for one tick after completely loading and initializing a new world </para>
+		/// <para>(regardless of whether it's LoadMap() or seamless travel) </para>
+		/// </summary>
+		public byte bWorldWasLoadedThisTick
+		{
+			get => E_PROP_UWorld_bWorldWasLoadedThisTick_GET(NativePointer);
+			set => E_PROP_UWorld_bWorldWasLoadedThisTick_SET(NativePointer, value);
 		}
 
 		
@@ -782,16 +1010,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_NextSwitchCountdown_GET(NativePointer);
 			set => E_PROP_UWorld_NextSwitchCountdown_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>The type of travel to perform next when doing a server travel </para>
-		/// </summary>
-		public ETravelType NextTravelType
-		{
-			get => (ETravelType)E_PROP_UWorld_NextTravelType_GET(NativePointer);
-			set => E_PROP_UWorld_NextTravelType_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -892,16 +1110,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The current ticking group </para>
-		/// </summary>
-		public ETickingGroup TickGroup
-		{
-			get => (ETickingGroup)E_PROP_UWorld_TickGroup_GET(NativePointer);
-			set => E_PROP_UWorld_TickGroup_SET(NativePointer, (byte)value);
-		}
-
-		
-		/// <summary>
 		/// <para>Time in seconds since level began play, but IS paused when the game is paused, and IS dilated/clamped. </para>
 		/// </summary>
 		public float TimeSeconds
@@ -988,13 +1196,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void AsyncLoadAlwaysLoadedLevelsForSeamlessTravel()
 			=> E_UWorld_AsyncLoadAlwaysLoadedLevelsForSeamlessTravel(this);
-		
-		
-		/// <summary>
-		/// <para>Attempts to derive the net mode from URL </para>
-		/// </summary>
-		public ENetMode AttemptDeriveFromURL()
-			=> (ENetMode)E_UWorld_AttemptDeriveFromURL(this);
 		
 		
 		/// <summary>
@@ -1198,21 +1399,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the index of the FLevelCollection with the given InType, or INDEX_NONE if a collection of that type hasn't been created yet. </para>
-		/// </summary>
-		public int FindCollectionIndexByType(ELevelCollectionType inType)
-			=> E_UWorld_FindCollectionIndexByType(this, (byte)inType);
-		
-		
-		/// <summary>
-		/// <para>Returns the index of the first FLevelCollection of the given InType. If one does not exist, it is created and its index returned. </para>
-		/// </summary>
-		public int FindOrAddCollectionByType_Index(ELevelCollectionType inType)
-			=> E_UWorld_FindOrAddCollectionByType_Index(this, (byte)inType);
-		
-		
-		/// <summary>
-		/// <para>Try to find an acceptable position to place TestActor as close to possible to PlaceLocation.  Expects PlaceLocation to be a valid location inside the level. </para>
+		/// <para>Try to find an acceptable non-colliding location to place TestActor as close to possible to PlaceLocation. Expects PlaceLocation to be a valid location inside the level. </para>
+		/// <para>Returns true if a location without blocking collision is found, in which case PlaceLocation is overwritten with the new clear location. </para>
+		/// <para>Returns false if no suitable location could be found, in which case PlaceLocation is unmodified. </para>
 		/// </summary>
 		public bool FindTeleportSpot(AActor testActor, FVector placeLocation, FRotator placeRotation)
 			=> E_UWorld_FindTeleportSpot(this, testActor, placeLocation, placeRotation);
@@ -1306,13 +1495,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Helper for getting the mono far field culling distance. </para>
-		/// </summary>
-		public float GetMonoFarFieldCullingDistance()
-			=> E_UWorld_GetMonoFarFieldCullingDistance(this);
-		
-		
-		/// <summary>
 		/// <para>Returns the net mode this world is running under. </para>
 		/// <para>@see IsNetMode() </para>
 		/// </summary>
@@ -1342,6 +1524,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <return>Returns the number of Player Controllers. </return>
+		/// </summary>
+		public int GetNumPlayerControllers()
+			=> E_UWorld_GetNumPlayerControllers(this);
+		
+		
+		/// <summary>
 		/// <para>Returns the actor count. </para>
 		/// </summary>
 		public int GetProgressDenominator()
@@ -1355,10 +1544,6 @@ namespace UnrealEngine
 		public float GetRealTimeSeconds()
 			=> E_UWorld_GetRealTimeSeconds(this);
 		
-		
-		/// <summary>
-		/// <para>Is there at least one material parameter collection instance waiting for a deferred update? </para>
-		/// </summary>
 		public bool GetShouldForceUnloadStreamingLevels()
 			=> E_UWorld_GetShouldForceUnloadStreamingLevels(this);
 		
@@ -1411,6 +1596,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool HasEndOfFrameUpdates()
 			=> E_UWorld_HasEndOfFrameUpdates(this);
+		
+		
+		/// <summary>
+		/// <para>Indicates that the world has marked contained objects as pending kill </para>
+		/// </summary>
+		public bool HasMarkedObjectsPendingKill()
+			=> E_UWorld_HasMarkedObjectsPendingKill(this);
 		
 		
 		/// <summary>
@@ -1501,6 +1693,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool IsPlayInEditor()
 			=> E_UWorld_IsPlayInEditor(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the demo net driver exists and is playing a client recorded replay. </para>
+		/// </summary>
+		public bool IsPlayingClientReplay()
+			=> E_UWorld_IsPlayingClientReplay(this);
 		
 		
 		/// <summary>
@@ -1841,15 +2040,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Updates an ActorComponent's cached state of whether it has been marked for end of frame update based on the current </para>
-		/// <para>state of the World's NeedsEndOfFrameUpdate arrays </para>
-		/// <param name="Component">Component to update the cached state of </param>
-		/// </summary>
-		public void UpdateActorComponentEndOfFrameUpdateState(UActorComponent component)
-			=> E_UWorld_UpdateActorComponentEndOfFrameUpdateState(this, component);
-		
-		
-		/// <summary>
 		/// <para>Purges all sky capture cached derived data and forces a re-render of captured scene data. </para>
 		/// </summary>
 		public void UpdateAllSkyCaptures()
@@ -1860,8 +2050,9 @@ namespace UnrealEngine
 		/// <para>Updates cull distance volumes for a specified component or a specified actor or all actors </para>
 		/// <param name="ComponentToUpdate">If specified just that Component will be updated </param>
 		/// <param name="ActorToUpdate">If specified (and ComponentToUpdate is not specified), all Components owned by this Actor will be updated </param>
+		/// <return>True if the passed in actors or components were within a volume </return>
 		/// </summary>
-		public void UpdateCullDistanceVolumes(AActor actorToUpdate = null, UPrimitiveComponent componentToUpdate = null)
+		public bool UpdateCullDistanceVolumes(AActor actorToUpdate = null, UPrimitiveComponent componentToUpdate = null)
 			=> E_UWorld_UpdateCullDistanceVolumes(this, actorToUpdate, componentToUpdate);
 		
 		
@@ -1875,8 +2066,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Updates this world's scene with the list of instances, and optionally updates each instance's uniform buffer. </para>
 		/// </summary>
-		public void UpdateParameterCollectionInstances(bool bUpdateInstanceUniformBuffers)
-			=> E_UWorld_UpdateParameterCollectionInstances(this, bUpdateInstanceUniformBuffers);
+		public void UpdateParameterCollectionInstances(bool bUpdateInstanceUniformBuffers, bool bRecreateUniformBuffer)
+			=> E_UWorld_UpdateParameterCollectionInstances(this, bUpdateInstanceUniformBuffers, bRecreateUniformBuffer);
 		
 		
 		/// <summary>

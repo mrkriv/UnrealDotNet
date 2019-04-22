@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "ManageActor.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:109
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
@@ -56,6 +56,7 @@ public:
 	virtual void PostNetInit() override;
 	virtual void PostNetReceiveLocationAndRotation() override;
 	virtual void PostNetReceivePhysicState() override;
+	virtual void PostNetReceiveRole() override;
 	virtual void PostNetReceiveVelocity(const FVector& NewVelocity) override;
 	virtual void PostRegisterAllComponents() override;
 	virtual void PostUnregisterAllComponents() override;

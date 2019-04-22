@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 #include "ManagePrimitiveComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:172
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePrimitiveComponent : public UPrimitiveComponent, public IManageObject
@@ -34,9 +34,9 @@ public:
 	virtual void AddImpulseAtLocation(FVector Impulse, FVector Location, FName BoneName) override;
 	virtual void AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange) override;
 	virtual void AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange) override;
+	virtual void AddTorqueInRadians(FVector Torque, FName BoneName, bool bAccelChange) override;
 	virtual void PutAllRigidBodiesToSleep() override;
 	virtual void SetAllMassScale(float InMassScale) override;
-	virtual void SetAllPhysicsAngularVelocity(const FVector& NewAngVel, bool bAddToCurrent) override;
 	virtual void SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent) override;
 	virtual void SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent) override;
 	virtual void SetAllPhysicsPosition(FVector NewPos) override;
@@ -54,6 +54,8 @@ public:
 	virtual void SetMassOverrideInKg(FName BoneName, float MassInKg, bool bOverrideMass) override;
 	virtual void SetMassScale(FName BoneName, float InMassScale) override;
 	virtual void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision) override;
+	virtual void SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, FName BoneName) override;
+	virtual void SetPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent, FName BoneName) override;
 	virtual void SetSimulatePhysics(bool bSimulate) override;
 	virtual void SetUseCCD(bool InUseCCD, FName BoneName) override;
 	virtual void UnWeldChildren() override;

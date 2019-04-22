@@ -26,9 +26,9 @@ namespace CodeGenerator
             for (var i = 0; i < mult; i++)
             {
                 var visitor = new MetadataVisitor(types);
-
-                var i1 = i;
-                tasks.Add(Task.Run(() => { ParceSolo(files, i1, mult, visitor, config); }));
+                var offest = i;
+                
+                tasks.Add(Task.Run(() => { ParceSolo(files, offest, mult, visitor, config); }));
             }
 
             Task.WaitAll(tasks.ToArray());
@@ -38,10 +38,13 @@ namespace CodeGenerator
             return new Domain(types.Values, config);
         }
 
-        private static void ParceSolo(IReadOnlyList<string> files, int i, int mult, MetadataVisitor visitor,
+        private static void ParceSolo(IReadOnlyList<string> files, int offest, int step, MetadataVisitor visitor,
             Config config)
         {
-            for (var j = i; j < files.Count; j += mult) AppendFile(files[j], visitor, config);
+            for (var j = offest; j < files.Count; j += step)
+            {
+                AppendFile(files[j], visitor, config);
+            }
         }
 
         private static void AppendFile(string file, MetadataVisitor visitor, Config config)

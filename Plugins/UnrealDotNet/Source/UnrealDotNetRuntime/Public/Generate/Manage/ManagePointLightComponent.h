@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/PointLightComponent.h"
 #include "ManagePointLightComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PointLightComponent.h:18
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PointLightComponent.h:18
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManagePointLightComponent : public UPointLightComponent, public IManageObject

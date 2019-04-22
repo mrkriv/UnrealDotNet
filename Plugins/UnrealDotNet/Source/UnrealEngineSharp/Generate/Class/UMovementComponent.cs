@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:54
 
 namespace UnrealEngine
 {
@@ -21,6 +21,46 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bAutoRegisterPhysicsVolumeUpdates_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bAutoRegisterPhysicsVolumeUpdates_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bAutoRegisterUpdatedComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bAutoRegisterUpdatedComponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bAutoUpdateTickRegistration_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bAutoUpdateTickRegistration_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bComponentShouldUpdatePhysicsVolume_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bComponentShouldUpdatePhysicsVolume_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bConstrainToPlane_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bConstrainToPlane_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bSnapToPlaneAtStart_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bSnapToPlaneAtStart_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bTickBeforeOwner_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bTickBeforeOwner_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_bUpdateOnlyIfRendered_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_bUpdateOnlyIfRendered_SET(IntPtr Ptr, byte Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UMovementComponent(IntPtr Parent, string Name);
@@ -156,6 +196,96 @@ namespace UnrealEngine
 		
 		#endregion
 		
+		#region Property
+		
+		/// <summary>
+		/// <para>If true, then applies the value of bComponentShouldUpdatePhysicsVolume to the UpdatedComponent. If false, will not change bShouldUpdatePhysicsVolume on the UpdatedComponent at all. </para>
+		/// <para>@see bComponentShouldUpdatePhysicsVolume </para>
+		/// </summary>
+		public byte bAutoRegisterPhysicsVolumeUpdates
+		{
+			get => E_PROP_UMovementComponent_bAutoRegisterPhysicsVolumeUpdates_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bAutoRegisterPhysicsVolumeUpdates_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, registers the owner's Root component as the UpdatedComponent if there is not one currently assigned. </para>
+		/// </summary>
+		public byte bAutoRegisterUpdatedComponent
+		{
+			get => E_PROP_UMovementComponent_bAutoRegisterUpdatedComponent_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bAutoRegisterUpdatedComponent_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, whenever the updated component is changed, this component will enable or disable its tick dependent on whether it has something to update. </para>
+		/// <para>This will NOT enable tick at startup if bAutoActivate is false, because presumably you have a good reason for not wanting it to start ticking initially. </para>
+		/// </summary>
+		public byte bAutoUpdateTickRegistration
+		{
+			get => E_PROP_UMovementComponent_bAutoUpdateTickRegistration_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bAutoUpdateTickRegistration_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, enables bShouldUpdatePhysicsVolume on the UpdatedComponent during initialization from SetUpdatedComponent(), otherwise disables such updates. </para>
+		/// <para>Only enabled if bAutoRegisterPhysicsVolumeUpdates is true. </para>
+		/// <para>WARNING: UpdatePhysicsVolume is potentially expensive if overlap events are also *disabled* because it requires a separate query against all physics volumes in the world. </para>
+		/// </summary>
+		public byte bComponentShouldUpdatePhysicsVolume
+		{
+			get => E_PROP_UMovementComponent_bComponentShouldUpdatePhysicsVolume_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bComponentShouldUpdatePhysicsVolume_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, movement will be constrained to a plane. </para>
+		/// <para>@see PlaneConstraintNormal, PlaneConstraintOrigin, PlaneConstraintAxisSetting </para>
+		/// </summary>
+		public byte bConstrainToPlane
+		{
+			get => E_PROP_UMovementComponent_bConstrainToPlane_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bConstrainToPlane_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true and plane constraints are enabled, then the updated component will be snapped to the plane when first attached. </para>
+		/// </summary>
+		public byte bSnapToPlaneAtStart
+		{
+			get => E_PROP_UMovementComponent_bSnapToPlaneAtStart_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bSnapToPlaneAtStart_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, after registration we will add a tick dependency to tick before our owner (if we can both tick). </para>
+		/// <para>This is important when our tick causes an update in the owner's position, so that when the owner ticks it uses the most recent position without lag. </para>
+		/// <para>Disabling this can improve performance if both objects tick but the order of ticks doesn't matter. </para>
+		/// </summary>
+		public byte bTickBeforeOwner
+		{
+			get => E_PROP_UMovementComponent_bTickBeforeOwner_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bTickBeforeOwner_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, skips TickComponent() if UpdatedComponent was not recently rendered. </para>
+		/// </summary>
+		public byte bUpdateOnlyIfRendered
+		{
+			get => E_PROP_UMovementComponent_bUpdateOnlyIfRendered_GET(NativePointer);
+			set => E_PROP_UMovementComponent_bUpdateOnlyIfRendered_SET(NativePointer, value);
+		}
+
+		#endregion
+		
 		#region ExternMethods
 		
 		/// <summary>
@@ -217,29 +347,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>gravity that affects this component </return>
+		/// <para>Returns gravity that affects this component </para>
 		/// </summary>
 		public virtual float GetGravityZ()
 			=> E_UMovementComponent_GetGravityZ(this);
 		
 		
 		/// <summary>
-		/// <return>Maximum speed of component in current movement mode. </return>
+		/// <para>Returns maximum speed of component in current movement mode. </para>
 		/// </summary>
 		public virtual float GetMaxSpeed()
 			=> E_UMovementComponent_GetMaxSpeed(this);
 		
-		
-		/// <summary>
-		/// <return>a scalar applied to the maximum velocity that the component can currently move. </return>
-		/// </summary>
 		public virtual float GetMaxSpeedModifier()
 			=> E_UMovementComponent_GetMaxSpeedModifier(this);
 		
-		
-		/// <summary>
-		/// <return>the result of GetMaxSpeed() * GetMaxSpeedModifier(). </return>
-		/// </summary>
 		public virtual float GetModifiedMaxSpeed()
 			=> E_UMovementComponent_GetModifiedMaxSpeed(this);
 		
@@ -261,7 +383,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>The normal of the plane that constrains movement, enforced if the plane constraint is enabled. </return>
+		/// <para>Returns the normal of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
 		/// </summary>
 		public FVector GetPlaneConstraintNormal()
 			=> E_UMovementComponent_GetPlaneConstraintNormal(this);
@@ -306,21 +428,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>return true if it's in PhysicsVolume with water flag </para>
+		/// <para>Returns true if it's in PhysicsVolume with water flag </para>
 		/// </summary>
 		public virtual bool IsInWater()
 			=> E_UMovementComponent_IsInWater(this);
 		
 		
 		/// <summary>
-		/// <return>a scalar applied to the maximum velocity that the component can currently move. </return>
+		/// <para>Returns a scalar applied to the maximum velocity that the component can currently move. </para>
 		/// </summary>
 		public virtual float K2_GetMaxSpeedModifier()
 			=> E_UMovementComponent_K2_GetMaxSpeedModifier(this);
 		
 		
 		/// <summary>
-		/// <return>the result of GetMaxSpeed() * GetMaxSpeedModifier(). </return>
+		/// <para>Returns the result of GetMaxSpeed() * GetMaxSpeedModifier(). </para>
 		/// </summary>
 		public virtual float K2_GetModifiedMaxSpeed()
 			=> E_UMovementComponent_K2_GetModifiedMaxSpeed(this);

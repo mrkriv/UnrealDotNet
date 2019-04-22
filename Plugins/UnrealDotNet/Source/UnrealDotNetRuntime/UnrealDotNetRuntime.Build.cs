@@ -5,13 +5,13 @@ public class UnrealDotNetRuntime : ModuleRules
 {
     public UnrealDotNetRuntime(ReadOnlyTargetRules Target) : base(Target)
     {
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bEnforceIWYU = false;
 
         PublicIncludePaths.AddRange(
             new string[]
             {
-                "Runtime/UMG/Public",
-                "UnrealDotNetRuntime/Public"
+                "Runtime/UMG/Public"
             }
         );
 
@@ -34,7 +34,6 @@ public class UnrealDotNetRuntime : ModuleRules
                 "Messaging",
                 "RenderCore",
                 "RHI",
-                "ShaderCore",
                 "UtilityShaders",
                 "AssetRegistry",
                 "EngineMessages",

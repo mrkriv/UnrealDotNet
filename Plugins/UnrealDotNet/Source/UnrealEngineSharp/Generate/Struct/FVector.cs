@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Core\Public\Math\Vector.h:29
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\Vector.h:29
 
 namespace UnrealEngine
 {
@@ -65,6 +65,21 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector_X_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector_Y_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector_Y_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FVector_Z_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FVector_Z_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector();
@@ -80,21 +95,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FVector_FVector4(IntPtr v);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_X_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_Y_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_Y_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FVector_Z_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FVector_Z_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_AddBounded(IntPtr self, IntPtr v, float radius);
@@ -218,6 +218,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector_GetUnsafeNormal(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_FVector_GetUnsafeNormal2D(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector_GridSnap(IntPtr self, float gridSz);
@@ -734,6 +737,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Calculates normalized 2D version of vector without checking for zero length. </para>
+		/// <return>Normalized version of vector. </return>
+		/// <para>@see GetSafeNormal2D() </para>
+		/// </summary>
+		public FVector GetUnsafeNormal2D()
+			=> E_FVector_GetUnsafeNormal2D(this);
+		
+		
+		/// <summary>
 		/// <para>Gets a copy of this vector snapped to a grid. </para>
 		/// <param name="GridSz">Grid dimension. </param>
 		/// <return>A copy of this vector snapped to a grid. </return>
@@ -772,7 +784,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Checks whether vector is normalized. </para>
-		/// <return>true if Normalized, false otherwise. </return>
+		/// <return>true if normalized, false otherwise. </return>
 		/// </summary>
 		public bool IsNormalized()
 			=> E_FVector_IsNormalized(this);

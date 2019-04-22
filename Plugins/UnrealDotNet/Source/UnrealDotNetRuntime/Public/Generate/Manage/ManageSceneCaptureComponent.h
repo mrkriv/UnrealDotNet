@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/SceneCaptureComponent.h"
 #include "ManageSceneCaptureComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:60
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:60
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSceneCaptureComponent : public USceneCaptureComponent, public IManageObject

@@ -127,6 +127,7 @@ namespace CodeGenerator
                     break;
             }
 
+            var storeAccessModifier = _accessModifier;
             _accessModifier = isStructReal
                 ? AccessModifier.Public
                 : AccessModifier.Private;
@@ -143,6 +144,8 @@ namespace CodeGenerator
 
             _currentClass.NamespaceBaseType = namespaceBaseClass;
             _currentClass = namespaceBaseClass;
+
+            _accessModifier = storeAccessModifier;
 
             return null;
         }

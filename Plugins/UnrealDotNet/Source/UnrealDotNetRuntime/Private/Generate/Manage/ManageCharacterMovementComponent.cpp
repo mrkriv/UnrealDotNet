@@ -6,7 +6,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:159
 
 bool UManageCharacterMovementComponent::AddWrapperIfNotAttach()
 {
@@ -211,6 +211,14 @@ void UManageCharacterMovementComponent::HandleSwimmingWallHit(const FHitResult& 
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "HandleSwimmingWallHit", Hit, DeltaTime);
+}
+
+void UManageCharacterMovementComponent::HandleWalkingOffLedge(const FVector& PreviousFloorImpactNormal, const FVector& PreviousFloorContactNormal, const FVector& PreviousLocation, float TimeDelta)
+{
+	Super::HandleWalkingOffLedge(PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "HandleWalkingOffLedge", PreviousFloorImpactNormal, PreviousFloorContactNormal, PreviousLocation, TimeDelta);
 }
 
 void UManageCharacterMovementComponent::JumpOff(AActor* MovementBaseActor)
@@ -555,6 +563,14 @@ void UManageCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateFromCompressedFlags", Flags);
+}
+
+void UManageCharacterMovementComponent::UpdateProxyAcceleration()
+{
+	Super::UpdateProxyAcceleration();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateProxyAcceleration");
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

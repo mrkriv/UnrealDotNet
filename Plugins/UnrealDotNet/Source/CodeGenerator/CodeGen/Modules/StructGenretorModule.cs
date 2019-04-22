@@ -66,7 +66,7 @@ namespace CodeGenerator.CodeGen.Modules
 
             cw.CloseBlock();
 
-            cw.SaveToFile(Path.Combine(PathOutputH, "Structures.h"));
+            cw.SaveToFile(Path.Combine(PathOutputH, "Export", "Structures.h"));
         }
 
         private void GenerateStructHConstructors(CodeWriter cw, Class Class)

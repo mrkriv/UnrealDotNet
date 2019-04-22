@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:58
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:67
 
 namespace UnrealEngine
 {
@@ -18,10 +18,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FAnimationEvaluationContext();
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FAnimationEvaluationContext_bDoEvaluation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -48,6 +44,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
@@ -56,6 +62,10 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FAnimationEvaluationContext();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FAnimationEvaluationContext_Clear(IntPtr self);
@@ -94,6 +104,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_GET(NativePointer);
 			set => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(NativePointer, value);
+		}
+
+		public TArray<FTransform> CachedBoneSpaceTransforms
+		{
+			get => E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_GET(NativePointer);
+			set => E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_SET(NativePointer, value);
+		}
+
+		public TArray<FTransform> CachedComponentSpaceTransforms
+		{
+			get => E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_GET(NativePointer);
+			set => E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_SET(NativePointer, value);
 		}
 
 		public TArray<FTransform> ComponentSpaceTransforms

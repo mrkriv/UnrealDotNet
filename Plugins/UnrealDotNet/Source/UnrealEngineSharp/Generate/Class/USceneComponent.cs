@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:106
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_USceneComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USceneComponent_bAbsoluteLocation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -82,6 +78,10 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USceneComponent_SkipUpdateOverlapsOptimEnabled_GET();
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_USceneComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_AddLocalOffset(IntPtr self, IntPtr deltaLocation, bool bSweep, IntPtr outSweepHitResult, byte teleport);
@@ -402,9 +402,6 @@ namespace UnrealEngine
 		private static extern void E_USceneComponent_PropagateLightingScenarioChange(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneComponent_QuerySupportedSockets(IntPtr self, IntPtr outSockets);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_ResetRelativeTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -619,6 +616,10 @@ namespace UnrealEngine
 			set => E_PROP_USceneComponent_RelativeScale3D_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Global flag to enable/disable overlap optimizations, settable with p.SkipUpdateOverlapsOptimEnabled cvar </para>
+		/// </summary>
 		public static int SkipUpdateOverlapsOptimEnabled
 		{
 			get => E_PROP_USceneComponent_SkipUpdateOverlapsOptimEnabled_GET();
@@ -698,6 +699,10 @@ namespace UnrealEngine
 		protected FTransform CalcNewComponentToWorld(FTransform newRelativeTransform, USceneComponent parent, string socketName)
 			=> E_USceneComponent_CalcNewComponentToWorld(this, newRelativeTransform, parent, socketName);
 		
+		
+		/// <summary>
+		/// <para>Utility function to handle calculating transform with a parent </para>
+		/// </summary>
 		protected FTransform CalcNewComponentToWorld_GeneralCase(FTransform newRelativeTransform, USceneComponent parent, string socketName)
 			=> E_USceneComponent_CalcNewComponentToWorld_GeneralCase(this, newRelativeTransform, parent, socketName);
 		
@@ -737,6 +742,10 @@ namespace UnrealEngine
 		public void ClearSkipUpdateOverlaps()
 			=> E_USceneComponent_ClearSkipUpdateOverlaps(this);
 		
+		
+		/// <summary>
+		/// <para>Call UpdateComponentToWorld if bComponentToWorldUpdated is false. </para>
+		/// </summary>
 		public void ConditionalUpdateComponentToWorld()
 			=> E_USceneComponent_ConditionalUpdateComponentToWorld(this);
 		
@@ -750,18 +759,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
-		/// <param name="bMaintainWorldPosition">If true, update the relative location of the component to keep its world position the same </param>
-		/// <param name="bCallModify">If true, call Modify() on the component and the current attach parent component </param>
+		/// <para>DEPRECATED - Use DetachFromComponent() instead </para>
 		/// </summary>
 		public virtual void DetachFromParentDeprecated(bool bMaintainWorldPosition, bool bCallModify)
 			=> E_USceneComponent_DetachFromParent(this, bMaintainWorldPosition, bCallModify);
 		
 		
 		/// <summary>
-		/// <para>return true if socket with the given name exists </para>
+		/// <para>Return true if socket with the given name exists </para>
 		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
-		/// <return>true if the socket with the given name exists. Otherwise, return false </return>
 		/// </summary>
 		public virtual bool DoesSocketExist(string inSocketName)
 			=> E_USceneComponent_DoesSocketExist(this, inSocketName);
@@ -818,7 +824,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets all the attached child components </para>
+		/// <para>Gets all components that are attached to this component, possibly recursively </para>
 		/// <param name="bIncludeAllDescendants">Whether to include all descendants in the list of children (i.e. grandchildren, great grandchildren, etc.) </param>
 		/// <param name="Children">The list of attached child components </param>
 		/// </summary>
@@ -927,7 +933,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets all parent components up to and including the root component </para>
+		/// <para>Gets all attachment parent components up to and including the root component </para>
 		/// </summary>
 		public void GetParentComponents(TArray<USceneComponent> parents)
 			=> E_USceneComponent_GetParentComponents(this, parents);
@@ -942,6 +948,8 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Convenience function to get the relative rotation from the passed in world rotation </para>
+		/// <param name="WorldRotation">World rotation that we want to convert to relative to the components parent </param>
+		/// <return>Returns the relative rotation </return>
 		/// </summary>
 		public FQuat GetRelativeRotationFromWorld(FQuat worldRotation)
 			=> E_USceneComponent_GetRelativeRotationFromWorld(this, worldRotation);
@@ -1071,6 +1079,10 @@ namespace UnrealEngine
 		public bool IsPhysicsCollisionEnabled()
 			=> E_USceneComponent_IsPhysicsCollisionEnabled(this);
 		
+		
+		/// <summary>
+		/// <para>True if our precomputed lighting is up to date </para>
+		/// </summary>
 		public virtual bool IsPrecomputedLightingValid()
 			=> E_USceneComponent_IsPrecomputedLightingValid(this);
 		
@@ -1090,8 +1102,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Is this component visible or not in game </para>
-		/// <return>true if visible </return>
+		/// <para>Returns true if this component is visible in the current context </para>
 		/// </summary>
 		public virtual bool IsVisible()
 			=> E_USceneComponent_IsVisible(this);
@@ -1105,7 +1116,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Is this component considered 'world' geometry </para>
+		/// <para>Is this component considered 'world' geometry, by default checks if this uses the WorldStatic collision channel </para>
 		/// </summary>
 		public virtual bool IsWorldGeometry()
 			=> E_USceneComponent_IsWorldGeometry(this);
@@ -1410,6 +1421,10 @@ namespace UnrealEngine
 		public bool MoveComponent(FVector delta, FRotator newRotation, bool bSweep, FHitResult hit, EMoveComponentFlags moveFlags, ETeleportType teleport)
 			=> E_USceneComponent_MoveComponent_o1(this, delta, newRotation, bSweep, hit, (byte)moveFlags, (byte)teleport);
 		
+		
+		/// <summary>
+		/// <para>Override this method for custom behavior for MoveComponent </para>
+		/// </summary>
 		protected virtual bool MoveComponentImpl(FVector delta, FQuat newRotation, bool bSweep, FHitResult hit, EMoveComponentFlags moveFlags, ETeleportType teleport)
 			=> E_USceneComponent_MoveComponentImpl(this, delta, newRotation, bSweep, hit, (byte)moveFlags, (byte)teleport);
 		
@@ -1443,6 +1458,10 @@ namespace UnrealEngine
 		protected virtual void OnHiddenInGameChanged()
 			=> E_USceneComponent_OnHiddenInGameChanged(this);
 		
+		
+		/// <summary>
+		/// <para>Native callback when this component is moved </para>
+		/// </summary>
 		protected virtual void OnUpdateTransform(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
 			=> E_USceneComponent_OnUpdateTransform(this, (byte)updateTransformFlags, (byte)teleport);
 		
@@ -1460,15 +1479,12 @@ namespace UnrealEngine
 		protected void PostUpdateNavigationData()
 			=> E_USceneComponent_PostUpdateNavigationData(this);
 		
-		public virtual void PropagateLightingScenarioChange()
-			=> E_USceneComponent_PropagateLightingScenarioChange(this);
-		
 		
 		/// <summary>
-		/// <para>Get a list of sockets this component contains </para>
+		/// <para>Updates any visuals after the lighting has changed </para>
 		/// </summary>
-		public virtual void QuerySupportedSockets(TArray<FComponentSocketDescription> outSockets)
-			=> E_USceneComponent_QuerySupportedSockets(this, outSockets);
+		public virtual void PropagateLightingScenarioChange()
+			=> E_USceneComponent_PropagateLightingScenarioChange(this);
 		
 		
 		/// <summary>
@@ -1493,8 +1509,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Changes the value of HiddenGame. </para>
-		/// <param name="NewHidden">The value to assign to HiddenGame. </param>
+		/// <para>Changes the value of bHiddenInGame, if false this will disable Visibility during gameplay </para>
 		/// </summary>
 		public void SetHiddenInGame(bool newHidden, bool bPropagateToChildren = false)
 			=> E_USceneComponent_SetHiddenInGame(this, newHidden, bPropagateToChildren);
@@ -1627,12 +1642,16 @@ namespace UnrealEngine
 		public bool ShouldRender()
 			=> E_USceneComponent_ShouldRender(this);
 		
+		
+		/// <summary>
+		/// <para>If true, we can use the old computed overlaps </para>
+		/// </summary>
 		public bool ShouldSkipUpdateOverlaps()
 			=> E_USceneComponent_ShouldSkipUpdateOverlaps(this);
 		
 		
 		/// <summary>
-		/// <para>Zeroes out the relative transform of the component, and calls AttachTo(). Useful for attaching directly to a scene component or socket location </para>
+		/// <para>DEPRECATED - Use AttachToComponent() instead </para>
 		/// </summary>
 		public bool SnapTo(USceneComponent inParent, string inSocketName)
 			=> E_USceneComponent_SnapTo(this, inParent, inSocketName);
@@ -1672,6 +1691,10 @@ namespace UnrealEngine
 		public bool UpdateOverlaps(TArray<FOverlapInfo> pendingOverlaps = null, bool bDoNotifies = true, TArray<FOverlapInfo> overlapsAtEndLocation = null)
 			=> E_USceneComponent_UpdateOverlaps(this, pendingOverlaps, bDoNotifies, overlapsAtEndLocation);
 		
+		
+		/// <summary>
+		/// <para>Internal helper for UpdateOverlaps </para>
+		/// </summary>
 		protected virtual bool UpdateOverlapsImpl(TArray<FOverlapInfo> pendingOverlaps, bool bDoNotifies, TArray<FOverlapInfo> overlapsAtEndLocation)
 			=> E_USceneComponent_UpdateOverlapsImpl(this, pendingOverlaps, bDoNotifies, overlapsAtEndLocation);
 		

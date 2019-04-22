@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:86
 
 namespace UnrealEngine
 {
@@ -17,8 +17,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Activates the SceneComponent </para>
-		/// <param name="bReset">Whether the activation should be forced even if ShouldActivate returns false. </param>
+		/// <para>Activates the SceneComponent, should be overridden by native child classes. </para>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
 		/// </summary>
 		public override void Activate(bool bReset) { }
 		
@@ -45,7 +45,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>BeginsPlay for the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
+		/// <para>BeginsPlay for the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
 		/// <para>All Components (that want initialization) in the level will be Initialized on load before any </para>
 		/// <para>Actor/Component gets BeginPlay. </para>
 		/// <para>Requires component to be registered and initialized. </para>
@@ -55,7 +55,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Used to create any rendering thread information for this component </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected override void CreateRenderState_Concurrent() { }
 		
@@ -74,13 +74,13 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Used to shut down any rendering thread structure for this component </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected override void DestroyRenderState_Concurrent() { }
 		
 		
 		/// <summary>
-		/// <para>Initializes the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
+		/// <para>Initializes the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
 		/// <para>All Components in the level will be Initialized on load before any Actor/Component gets BeginPlay </para>
 		/// <para>Requires component to be registered, and bWantsInitializeComponent to be true. </para>
 		/// </summary>
@@ -100,7 +100,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when a component is created (not loaded) </para>
+		/// <para>Called when a component is created (not loaded). This can happen in the editor or during gameplay </para>
 		/// </summary>
 		public override void OnComponentCreated() { }
 		
@@ -165,7 +165,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called to send a transform update for this component to the rendering thread </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected override void SendRenderTransform_Concurrent() { }
 		
@@ -173,7 +173,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Sets whether the component is active or not </para>
 		/// <param name="bNewActive">The new active state of the component </param>
-		/// <param name="bReset">Whether the activation should be forced even if ShouldActivate returns false. </param>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
 		/// </summary>
 		public override void SetActive(bool bNewActive, bool bReset) { }
 		

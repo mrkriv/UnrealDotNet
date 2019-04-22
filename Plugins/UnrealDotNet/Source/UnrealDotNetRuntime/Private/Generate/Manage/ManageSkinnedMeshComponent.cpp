@@ -6,7 +6,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:195
 
 bool UManageSkinnedMeshComponent::AddWrapperIfNotAttach()
 {
@@ -19,22 +19,6 @@ bool UManageSkinnedMeshComponent::AddWrapperIfNotAttach()
 	}
 
 	return bIsManageAttach;
-}
-
-void UManageSkinnedMeshComponent::ClearRefPoseOverride()
-{
-	Super::ClearRefPoseOverride();
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ClearRefPoseOverride");
-}
-
-void UManageSkinnedMeshComponent::SetRefPoseOverride(const TArray<FTransform>& NewRefPoseTransforms)
-{
-	Super::SetRefPoseOverride(NewRefPoseTransforms);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetRefPoseOverride", NewRefPoseTransforms);
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

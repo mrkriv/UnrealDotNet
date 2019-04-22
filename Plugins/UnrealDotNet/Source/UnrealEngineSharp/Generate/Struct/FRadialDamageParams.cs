@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2690
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2648
 
 namespace UnrealEngine
 {
@@ -33,19 +33,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams();
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float(float inBaseDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float_float(float inBaseDamage, float inMinimumDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float(float inBaseDamage, float inRadius);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FRadialDamageParams_BaseDamage_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -71,6 +58,19 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRadialDamageParams_OuterRadius_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float(float inBaseDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float_float_float_float(float inBaseDamage, float inMinimumDamage, float inInnerRadius, float inOuterRadius, float inDamageFalloff);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FRadialDamageParams_float_float(float inBaseDamage, float inRadius);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FRadialDamageParams_GetDamageScale(IntPtr self, float distanceFromEpicenter);
 		
@@ -80,30 +80,50 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Max damage done </para>
+		/// </summary>
 		public float BaseDamage
 		{
 			get => E_PROP_FRadialDamageParams_BaseDamage_GET(NativePointer);
 			set => E_PROP_FRadialDamageParams_BaseDamage_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Describes amount of exponential damage falloff </para>
+		/// </summary>
 		public float DamageFalloff
 		{
 			get => E_PROP_FRadialDamageParams_DamageFalloff_GET(NativePointer);
 			set => E_PROP_FRadialDamageParams_DamageFalloff_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Within InnerRadius, do max damage </para>
+		/// </summary>
 		public float InnerRadius
 		{
 			get => E_PROP_FRadialDamageParams_InnerRadius_GET(NativePointer);
 			set => E_PROP_FRadialDamageParams_InnerRadius_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Damage will not fall below this if within range </para>
+		/// </summary>
 		public float MinimumDamage
 		{
 			get => E_PROP_FRadialDamageParams_MinimumDamage_GET(NativePointer);
 			set => E_PROP_FRadialDamageParams_MinimumDamage_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Outside OuterRadius, do no damage </para>
+		/// </summary>
 		public float OuterRadius
 		{
 			get => E_PROP_FRadialDamageParams_OuterRadius_GET(NativePointer);
@@ -113,6 +133,10 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Returns damage done at a certain distance </para>
+		/// </summary>
 		public float GetDamageScale(float distanceFromEpicenter)
 			=> E_FRadialDamageParams_GetDamageScale(this, distanceFromEpicenter);
 		

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:575
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:588
 
 namespace UnrealEngine
 {
@@ -18,10 +18,11 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FPostProcessSettings();
-		
+		public FPostProcessSettings(FPostProcessSettings _p0) :
+			base(E_CreateStruct_FPostProcessSettings_FPostProcessSettings(_p0), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_AmbientCubemapIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -128,11 +129,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_AutoExposureSpeedUp_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FPostProcessSettings_Blendables_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FPostProcessSettings_Blendables_DEPRECATED_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_Bloom1Size_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_Bloom1Size_SET(IntPtr Ptr, float Value);
@@ -171,11 +167,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_FPostProcessSettings_BloomConvolutionCenterUV_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_BloomConvolutionCenterUV_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_BloomConvolutionPreFilterMax_GET(IntPtr Ptr);
@@ -221,6 +212,811 @@ namespace UnrealEngine
 		private static extern float E_PROP_FPostProcessSettings_BlueCorrection_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_BlueCorrection_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bMobileHQGaussian_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bMobileHQGaussian_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientCubemapIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientCubemapIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientCubemapTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientCubemapTint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionBias_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionDistance_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionDistance_DEPRECATED_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeDistance_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeRadius_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipBlend_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipBlend_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipThreshold_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionPower_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionPower_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionQuality_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionQuality_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadius_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadiusInWS_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadiusInWS_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionStaticFraction_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionStaticFraction_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureBias_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureBiasCurve_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureBiasCurve_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureCalibrationConstant_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureCalibrationConstant_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureHighPercent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureHighPercent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureLowPercent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureLowPercent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureMaxBrightness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureMaxBrightness_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureMethod_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureMinBrightness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureMinBrightness_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedDown_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedDown_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedUp_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedUp_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom1Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom1Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom1Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom1Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom2Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom2Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom2Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom2Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom3Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom3Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom3Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom3Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom4Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom4Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom4Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom4Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom5Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom5Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom5Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom5Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom6Size_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom6Size_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_Bloom6Tint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_Bloom6Tint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionBufferScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionBufferScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionCenterUV_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionCenterUV_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilter_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilter_DEPRECATED_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMax_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMin_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMin_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMult_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMult_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomConvolutionTexture_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomConvolutionTexture_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomDirtMask_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomDirtMask_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskTint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomMethod_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomSizeScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomSizeScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BloomThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BloomThreshold_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_BlueCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_BlueCorrection_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_CameraISO_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_CameraISO_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_CameraShutterSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_CameraShutterSpeed_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ChromaticAberrationStartOffset_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ChromaticAberrationStartOffset_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorContrast_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorContrast_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorContrastHighlights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorContrastHighlights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorContrastMidtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorContrastMidtones_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorContrastShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorContrastShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorCorrectionHighlightsMin_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorCorrectionHighlightsMin_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorCorrectionShadowsMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorCorrectionShadowsMax_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGain_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGain_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGainHighlights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGainHighlights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGainMidtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGainMidtones_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGainShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGainShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGamma_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGamma_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGammaHighlights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGammaHighlights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGammaMidtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGammaMidtones_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGammaShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGammaShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGradingIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGradingIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorGradingLUT_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorGradingLUT_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorOffset_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorOffset_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorOffsetHighlights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorOffsetHighlights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorOffsetMidtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorOffsetMidtones_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorOffsetShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorOffsetShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorSaturation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorSaturation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorSaturationHighlights_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorSaturationHighlights_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorSaturationMidtones_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorSaturationMidtones_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ColorSaturationShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ColorSaturationShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBladeCount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBladeCount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBokehShape_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBokehShape_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldColorThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldColorThreshold_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurAmount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurAmount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurRadius_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarBlurSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarBlurSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarTransitionRegion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarTransitionRegion_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalDistance_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalRegion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalRegion_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFstop_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFstop_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMaxBokehSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMaxBokehSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMethod_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMethod_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMinFstop_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMinFstop_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearBlurSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearBlurSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearTransitionRegion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearTransitionRegion_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldOcclusion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldOcclusion_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSensorWidth_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSensorWidth_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSizeThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSizeThreshold_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSkyFocusDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSkyFocusDistance_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_DepthOfFieldVignetteSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_DepthOfFieldVignetteSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ExpandGamut_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ExpandGamut_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmBlackClip_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmBlackClip_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerBlue_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerBlue_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerGreen_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerGreen_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerRed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerRed_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmContrast_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmContrast_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmDynamicRange_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmDynamicRange_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmHealAmount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmHealAmount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmSaturation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmSaturation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmShadowTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmShadowTint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmShadowTintAmount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmShadowTintAmount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmShadowTintBlend_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmShadowTintBlend_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmShoulder_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmShoulder_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmSlope_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmSlope_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmToe_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmToe_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmToeAmount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmToeAmount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmWhiteClip_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmWhiteClip_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_FilmWhitePoint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_FilmWhitePoint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_GrainIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_GrainIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_GrainJitter_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_GrainJitter_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_HistogramLogMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_HistogramLogMax_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_HistogramLogMin_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_HistogramLogMin_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_IndirectLightingColor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_IndirectLightingColor_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_IndirectLightingIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_IndirectLightingIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareBokehShape_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareBokehShape_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareBokehSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareBokehSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareThreshold_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareTint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LensFlareTints_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LensFlareTints_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionExponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionExponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionFadeRange_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionFadeRange_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionRadius_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVEmissiveInjectionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVEmissiveInjectionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVFadeRange_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVFadeRange_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVGeometryVolumeBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVGeometryVolumeBias_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVSecondaryBounceIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVSecondaryBounceIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVSecondaryOcclusionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVSecondaryOcclusionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionExponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionExponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_LPVVplInjectionBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_LPVVplInjectionBias_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_MobileHQGaussian_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_MobileHQGaussian_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_MotionBlurAmount_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_MotionBlurAmount_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_MotionBlurMax_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_MotionBlurMax_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_MotionBlurPerObjectSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_MotionBlurPerObjectSize_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_SceneColorTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_SceneColorTint_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_SceneFringeIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_SceneFringeIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ScreenPercentage_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ScreenPercentage_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionMaxRoughness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionMaxRoughness_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionQuality_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionQuality_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionRoughnessScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionRoughnessScale_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_VignetteIntensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_VignetteIntensity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_WhiteTemp_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_WhiteTemp_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_bOverride_WhiteTint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_bOverride_WhiteTint_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_CameraISO_GET(IntPtr Ptr);
@@ -643,6 +1439,81 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_MotionBlurPerObjectSize_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_PathTracingMaxBounces_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_PathTracingMaxBounces_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_PathTracingSamplesPerPixel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_PathTracingSamplesPerPixel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingAOSamplesPerPixel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingAOSamplesPerPixel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingGIMaxBounces_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingGIMaxBounces_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingGISamplesPerPixel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingGISamplesPerPixel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingReflectionsMaxBounces_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingReflectionsMaxBounces_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_RayTracingReflectionsMaxRoughness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingReflectionsMaxRoughness_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingReflectionsSamplesPerPixel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingReflectionsSamplesPerPixel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_RayTracingReflectionsShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingReflectionsShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPostProcessSettings_RayTracingTranslucencyMaxRoughness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingTranslucencyMaxRoughness_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_RayTracingTranslucencyRefraction_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingTranslucencyRefraction_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingTranslucencyRefractionRays_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingTranslucencyRefractionRays_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPostProcessSettings_RayTracingTranslucencySamplesPerPixel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingTranslucencySamplesPerPixel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_RayTracingTranslucencyShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_RayTracingTranslucencyShadows_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_ReflectionsType_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_ReflectionsType_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_SceneFringeIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_SceneFringeIntensity_SET(IntPtr Ptr, float Value);
@@ -668,6 +1539,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FPostProcessSettings_ScreenSpaceReflectionQuality_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_FPostProcessSettings_TranslucencyType_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPostProcessSettings_TranslucencyType_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPostProcessSettings_VignetteIntensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_VignetteIntensity_SET(IntPtr Ptr, float Value);
@@ -687,8 +1563,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPostProcessSettings_WhiteTint_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FPostProcessSettings_OnAfterLoad(IntPtr self);
+		private static extern IntPtr E_CreateStruct_FPostProcessSettings();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FPostProcessSettings_FPostProcessSettings(IntPtr _p0);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FPostProcessSettings_SetBaseValues(IntPtr self);
@@ -874,11 +1754,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A good value should be positive (2 is a good value). This is the maximum brightness the auto exposure can adapt to. </para>
-		/// <para>It should be tweaked in a bright lighting situation (too small: image appears too bright, too large: image appears too dark). </para>
-		/// <para>Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global </para>
-		/// <para>effect and defined the HDR range - you don't want to change that late in the project development. </para>
-		/// <para>Eye Adaptation is disabled if MinBrightness = MaxBrightness </para>
+		/// <para>Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. </para>
+		/// <para>Auto-exposure is implemented by choosing an exposure value for which the average luminance generates a pixel brightness equal to the Constant Calibration value. </para>
+		/// <para>The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings). </para>
 		/// </summary>
 		public float MaxBrightness
 		{
@@ -888,11 +1766,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A good value should be positive near 0. This is the minimum brightness the auto exposure can adapt to. </para>
-		/// <para>It should be tweaked in a dark lighting situation (too small: image appears too bright, too large: image appears too dark). </para>
-		/// <para>Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global </para>
-		/// <para>effect and defined the HDR range - you don't want to change that late in the project development. </para>
-		/// <para>Eye Adaptation is disabled if MinBrightness = MaxBrightness </para>
+		/// <para>Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. </para>
+		/// <para>Auto-exposure is implemented by choosing an exposure value for which the average luminance generates a pixel brightness equal to the Constant Calibration value. </para>
+		/// <para>The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings). </para>
 		/// </summary>
 		public float MinBrightness
 		{
@@ -918,12 +1794,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_AutoExposureSpeedUp_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_AutoExposureSpeedUp_SET(NativePointer, value);
-		}
-
-		public TArray<UObject> Blendables_DEPRECATED
-		{
-			get => E_PROP_FPostProcessSettings_Blendables_DEPRECATED_GET(NativePointer);
-			set => E_PROP_FPostProcessSettings_Blendables_DEPRECATED_SET(NativePointer, value);
 		}
 
 		
@@ -1018,12 +1888,6 @@ namespace UnrealEngine
 			set => E_PROP_FPostProcessSettings_BloomConvolutionCenterUV_SET(NativePointer, value);
 		}
 
-		public FVector BloomConvolutionPreFilter_DEPRECATED
-		{
-			get => E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_GET(NativePointer);
-			set => E_PROP_FPostProcessSettings_BloomConvolutionPreFilter_DEPRECATED_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
@@ -1113,6 +1977,976 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_BlueCorrection_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_BlueCorrection_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Enable HQ Gaussian on high end mobile platforms. (ES3_1) </para>
+		/// </summary>
+		public byte HighQualityGaussianDoFonMobile
+		{
+			get => E_PROP_FPostProcessSettings_bMobileHQGaussian_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bMobileHQGaussian_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientCubemapIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientCubemapIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientCubemapIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientCubemapTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientCubemapTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientCubemapTint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionBias
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionBias_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionBias_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionDistance_DEPRECATED
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionDistance_DEPRECATED_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionDistance_DEPRECATED_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionFadeDistance
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeDistance_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeDistance_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionFadeRadius
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeRadius_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionFadeRadius_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionMipBlend
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipBlend_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipBlend_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionMipScale
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipScale_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipScale_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionMipThreshold
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipThreshold_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionMipThreshold_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionPower
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionPower_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionPower_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionQuality
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionQuality_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionQuality_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionRadius
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadius_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadius_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionRadiusInWS
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadiusInWS_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionRadiusInWS_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AmbientOcclusionStaticFraction
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionStaticFraction_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AmbientOcclusionStaticFraction_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureBias
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureBias_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureBias_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureBiasCurve
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureBiasCurve_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureBiasCurve_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureCalibrationConstant
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureCalibrationConstant_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureCalibrationConstant_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureHighPercent
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureHighPercent_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureHighPercent_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureLowPercent
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureLowPercent_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureLowPercent_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureMaxBrightness
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureMaxBrightness_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureMaxBrightness_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureMethod
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureMethod_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureMethod_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureMinBrightness
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureMinBrightness_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureMinBrightness_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureSpeedDown
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedDown_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedDown_SET(NativePointer, value);
+		}
+
+		public byte bOverride_AutoExposureSpeedUp
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedUp_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_AutoExposureSpeedUp_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom1Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom1Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom1Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom1Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom1Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom1Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom2Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom2Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom2Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom2Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom2Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom2Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom3Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom3Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom3Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom3Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom3Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom3Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom4Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom4Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom4Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom4Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom4Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom4Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom5Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom5Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom5Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom5Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom5Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom5Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom6Size
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom6Size_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom6Size_SET(NativePointer, value);
+		}
+
+		public byte bOverride_Bloom6Tint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_Bloom6Tint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_Bloom6Tint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionBufferScale
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionBufferScale_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionBufferScale_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionCenterUV
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionCenterUV_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionCenterUV_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionPreFilter_DEPRECATED
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilter_DEPRECATED_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilter_DEPRECATED_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionPreFilterMax
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMax_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMax_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionPreFilterMin
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMin_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMin_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionPreFilterMult
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMult_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionPreFilterMult_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomConvolutionTexture
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionTexture_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomConvolutionTexture_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomDirtMask
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomDirtMask_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomDirtMask_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomDirtMaskIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomDirtMaskTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomDirtMaskTint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomMethod
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomMethod_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomMethod_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomSizeScale
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomSizeScale_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomSizeScale_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BloomThreshold
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BloomThreshold_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BloomThreshold_SET(NativePointer, value);
+		}
+
+		public byte bOverride_BlueCorrection
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_BlueCorrection_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_BlueCorrection_SET(NativePointer, value);
+		}
+
+		public byte bOverride_CameraISO
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_CameraISO_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_CameraISO_SET(NativePointer, value);
+		}
+
+		public byte bOverride_CameraShutterSpeed
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_CameraShutterSpeed_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_CameraShutterSpeed_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ChromaticAberrationStartOffset
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ChromaticAberrationStartOffset_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ChromaticAberrationStartOffset_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorContrast
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorContrast_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorContrast_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorContrastHighlights
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorContrastHighlights_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorContrastHighlights_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorContrastMidtones
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorContrastMidtones_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorContrastMidtones_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorContrastShadows
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorContrastShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorContrastShadows_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorCorrectionHighlightsMin
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorCorrectionHighlightsMin_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorCorrectionHighlightsMin_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorCorrectionShadowsMax
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorCorrectionShadowsMax_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorCorrectionShadowsMax_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGain
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGain_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGain_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGainHighlights
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGainHighlights_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGainHighlights_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGainMidtones
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGainMidtones_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGainMidtones_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGainShadows
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGainShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGainShadows_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGamma
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGamma_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGamma_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGammaHighlights
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGammaHighlights_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGammaHighlights_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGammaMidtones
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGammaMidtones_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGammaMidtones_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGammaShadows
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGammaShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGammaShadows_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGradingIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGradingIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGradingIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorGradingLUT
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorGradingLUT_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorGradingLUT_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorOffset
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorOffset_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorOffset_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorOffsetHighlights
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorOffsetHighlights_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorOffsetHighlights_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorOffsetMidtones
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorOffsetMidtones_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorOffsetMidtones_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorOffsetShadows
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorOffsetShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorOffsetShadows_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorSaturation
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorSaturation_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorSaturation_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorSaturationHighlights
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorSaturationHighlights_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorSaturationHighlights_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorSaturationMidtones
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorSaturationMidtones_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorSaturationMidtones_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ColorSaturationShadows
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ColorSaturationShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ColorSaturationShadows_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldBladeCount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBladeCount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBladeCount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldBokehShape
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBokehShape_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldBokehShape_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldColorThreshold
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldColorThreshold_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldColorThreshold_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldDepthBlurAmount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurAmount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurAmount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldDepthBlurRadius
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurRadius_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldDepthBlurRadius_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldFarBlurSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarBlurSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarBlurSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldFarTransitionRegion
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarTransitionRegion_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFarTransitionRegion_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldFocalDistance
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalDistance_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalDistance_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldFocalRegion
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalRegion_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFocalRegion_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldFstop
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFstop_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldFstop_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldMaxBokehSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMaxBokehSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMaxBokehSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldMethod
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMethod_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMethod_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldMinFstop
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMinFstop_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldMinFstop_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldNearBlurSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearBlurSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearBlurSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldNearTransitionRegion
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearTransitionRegion_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldNearTransitionRegion_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldOcclusion
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldOcclusion_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldOcclusion_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldScale
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldScale_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldScale_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldSensorWidth
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSensorWidth_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSensorWidth_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldSizeThreshold
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSizeThreshold_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSizeThreshold_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldSkyFocusDistance
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSkyFocusDistance_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldSkyFocusDistance_SET(NativePointer, value);
+		}
+
+		public byte bOverride_DepthOfFieldVignetteSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldVignetteSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_DepthOfFieldVignetteSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ExpandGamut
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ExpandGamut_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ExpandGamut_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmBlackClip
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmBlackClip_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmBlackClip_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmChannelMixerBlue
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerBlue_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerBlue_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmChannelMixerGreen
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerGreen_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerGreen_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmChannelMixerRed
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerRed_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmChannelMixerRed_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmContrast
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmContrast_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmContrast_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmDynamicRange
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmDynamicRange_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmDynamicRange_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmHealAmount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmHealAmount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmHealAmount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmSaturation
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmSaturation_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmSaturation_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmShadowTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmShadowTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmShadowTint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmShadowTintAmount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmShadowTintAmount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmShadowTintAmount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmShadowTintBlend
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmShadowTintBlend_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmShadowTintBlend_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmShoulder
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmShoulder_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmShoulder_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmSlope
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmSlope_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmSlope_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmToe
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmToe_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmToe_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmToeAmount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmToeAmount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmToeAmount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmWhiteClip
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmWhiteClip_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmWhiteClip_SET(NativePointer, value);
+		}
+
+		public byte bOverride_FilmWhitePoint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_FilmWhitePoint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_FilmWhitePoint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_GrainIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_GrainIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_GrainIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_GrainJitter
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_GrainJitter_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_GrainJitter_SET(NativePointer, value);
+		}
+
+		public byte bOverride_HistogramLogMax
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_HistogramLogMax_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_HistogramLogMax_SET(NativePointer, value);
+		}
+
+		public byte bOverride_HistogramLogMin
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_HistogramLogMin_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_HistogramLogMin_SET(NativePointer, value);
+		}
+
+		public byte bOverride_IndirectLightingColor
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_IndirectLightingColor_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_IndirectLightingColor_SET(NativePointer, value);
+		}
+
+		public byte bOverride_IndirectLightingIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_IndirectLightingIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_IndirectLightingIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareBokehShape
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareBokehShape_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareBokehShape_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareBokehSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareBokehSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareBokehSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareThreshold
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareThreshold_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareThreshold_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareTint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LensFlareTints
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LensFlareTints_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LensFlareTints_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVDiffuseOcclusionExponent
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionExponent_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionExponent_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVDiffuseOcclusionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVDiffuseOcclusionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVDirectionalOcclusionFadeRange
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionFadeRange_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionFadeRange_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVDirectionalOcclusionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVDirectionalOcclusionRadius
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionRadius_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVDirectionalOcclusionRadius_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVEmissiveInjectionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVEmissiveInjectionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVEmissiveInjectionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVFadeRange
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVFadeRange_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVFadeRange_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVGeometryVolumeBias
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVGeometryVolumeBias_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVGeometryVolumeBias_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVSecondaryBounceIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVSecondaryBounceIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVSecondaryBounceIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVSecondaryOcclusionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVSecondaryOcclusionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVSecondaryOcclusionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVSpecularOcclusionExponent
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionExponent_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionExponent_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVSpecularOcclusionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVSpecularOcclusionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_LPVVplInjectionBias
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_LPVVplInjectionBias_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_LPVVplInjectionBias_SET(NativePointer, value);
+		}
+
+		public byte bOverride_MobileHQGaussian
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_MobileHQGaussian_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_MobileHQGaussian_SET(NativePointer, value);
+		}
+
+		public byte bOverride_MotionBlurAmount
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_MotionBlurAmount_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_MotionBlurAmount_SET(NativePointer, value);
+		}
+
+		public byte bOverride_MotionBlurMax
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_MotionBlurMax_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_MotionBlurMax_SET(NativePointer, value);
+		}
+
+		public byte bOverride_MotionBlurPerObjectSize
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_MotionBlurPerObjectSize_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_MotionBlurPerObjectSize_SET(NativePointer, value);
+		}
+
+		public byte bOverride_SceneColorTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_SceneColorTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_SceneColorTint_SET(NativePointer, value);
+		}
+
+		public byte bOverride_SceneFringeIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_SceneFringeIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_SceneFringeIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ScreenPercentage
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ScreenPercentage_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ScreenPercentage_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ScreenSpaceReflectionIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ScreenSpaceReflectionMaxRoughness
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionMaxRoughness_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionMaxRoughness_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ScreenSpaceReflectionQuality
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionQuality_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionQuality_SET(NativePointer, value);
+		}
+
+		public byte bOverride_ScreenSpaceReflectionRoughnessScale
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionRoughnessScale_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_ScreenSpaceReflectionRoughnessScale_SET(NativePointer, value);
+		}
+
+		public byte bOverride_VignetteIntensity
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_VignetteIntensity_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_VignetteIntensity_SET(NativePointer, value);
+		}
+
+		public byte bOverride_WhiteTemp
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_WhiteTemp_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_WhiteTemp_SET(NativePointer, value);
+		}
+
+		public byte bOverride_WhiteTint
+		{
+			get => E_PROP_FPostProcessSettings_bOverride_WhiteTint_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_bOverride_WhiteTint_SET(NativePointer, value);
 		}
 
 		
@@ -1299,7 +3133,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Color threshold to do full quality DOF (BokehDOF only) </para>
+		/// <para>DEPRECATED: Color threshold to do full quality DOF (BokehDOF only) </para>
 		/// </summary>
 		public float ColorThreshold
 		{
@@ -1379,7 +3213,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>BokehDOF only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size*size) </para>
+		/// <para>DEPRECATED: BokehDOF only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size*size) </para>
 		/// </summary>
 		public float MaxBokehSize
 		{
@@ -1450,7 +3284,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Size threshold to do full quality DOF (BokehDOF only) </para>
+		/// <para>DEPRECATED: Size threshold to do full quality DOF (BokehDOF only) </para>
 		/// </summary>
 		public float SizeThreshold
 		{
@@ -1582,7 +3416,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>temporary exposed until we found good values 4: 16, 8: 256 </para>
+		/// <para>Histogram Max value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings) </para>
 		/// </summary>
 		public float HistogramLogMax
 		{
@@ -1592,7 +3426,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>temporary exposed until we found good values, -8: 1/256, -10: 1/1024 </para>
+		/// <para>Histogram Min value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings) </para>
 		/// </summary>
 		public float HistogramLogMin
 		{
@@ -1818,6 +3652,156 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Sets the path tracing maximum bounces </para>
+		/// </summary>
+		public int PathTracingMaxBounces
+		{
+			get => E_PROP_FPostProcessSettings_PathTracingMaxBounces_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_PathTracingMaxBounces_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the samples per pixel for the path tracer. </para>
+		/// </summary>
+		public int PathTracingSamplesPerPixel
+		{
+			get => E_PROP_FPostProcessSettings_PathTracingSamplesPerPixel_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_PathTracingSamplesPerPixel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the samples per pixel for ray tracing global illumination. </para>
+		/// </summary>
+		public int RayTracingAOSamplesPerPixel
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingAOSamplesPerPixel_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingAOSamplesPerPixel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the ray tracing global illumination maximum bounces. </para>
+		/// </summary>
+		public int RayTracingGIMaxBounces
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingGIMaxBounces_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingGIMaxBounces_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the samples per pixel for ray tracing global illumination. </para>
+		/// </summary>
+		public int RayTracingGISamplesPerPixel
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingGISamplesPerPixel_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingGISamplesPerPixel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the maximum number of ray tracing reflection bounces. </para>
+		/// </summary>
+		public int RayTracingReflectionsMaxBounces
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingReflectionsMaxBounces_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingReflectionsMaxBounces_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the maximum roughness until which ray tracing reflections will be visible (lower value is faster). Reflection contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness. </para>
+		/// </summary>
+		public float RayTracingReflectionsMaxRoughness
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingReflectionsMaxRoughness_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingReflectionsMaxRoughness_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the samples per pixel for ray traced reflections. </para>
+		/// </summary>
+		public int RayTracingReflectionsSamplesPerPixel
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingReflectionsSamplesPerPixel_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingReflectionsSamplesPerPixel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the reflected shadows type. </para>
+		/// </summary>
+		public EReflectedAndRefractedRayTracedShadows RayTracingReflectionsShadows
+		{
+			get => (EReflectedAndRefractedRayTracedShadows)E_PROP_FPostProcessSettings_RayTracingReflectionsShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingReflectionsShadows_SET(NativePointer, (byte)value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the maximum roughness until which ray tracing translucency will be visible (lower value is faster). Translucency contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness. </para>
+		/// </summary>
+		public float RayTracingTranslucencyMaxRoughness
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingTranslucencyMaxRoughness_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingTranslucencyMaxRoughness_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets whether refraction should be enabled or not (if not rays will not scatter and only travel in the same direction as before the intersection event). </para>
+		/// </summary>
+		public byte Refraction
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingTranslucencyRefraction_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingTranslucencyRefraction_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the maximum number of ray tracing refraction rays. </para>
+		/// </summary>
+		public int MaxRefractionRays
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingTranslucencyRefractionRays_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingTranslucencyRefractionRays_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the samples per pixel for ray traced translucency. </para>
+		/// </summary>
+		public int RayTracingTranslucencySamplesPerPixel
+		{
+			get => E_PROP_FPostProcessSettings_RayTracingTranslucencySamplesPerPixel_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingTranslucencySamplesPerPixel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the translucency shadows type. </para>
+		/// </summary>
+		public EReflectedAndRefractedRayTracedShadows RayTracingTranslucencyShadows
+		{
+			get => (EReflectedAndRefractedRayTracedShadows)E_PROP_FPostProcessSettings_RayTracingTranslucencyShadows_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_RayTracingTranslucencyShadows_SET(NativePointer, (byte)value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the reflections type </para>
+		/// </summary>
+		public EReflectionsType ReflectionsType
+		{
+			get => (EReflectionsType)E_PROP_FPostProcessSettings_ReflectionsType_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_ReflectionsType_SET(NativePointer, (byte)value);
+		}
+
+		
+		/// <summary>
 		/// <para>in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. </para>
 		/// </summary>
 		public float SceneFringeIntensity
@@ -1854,7 +3838,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Until what roughness we fade the screen space reflections, 0.8 works well, smaller can run faster </para>
 		/// </summary>
-		public float MaxRoughness
+		public float ScreenSpaceReflectionMaxRoughness
 		{
 			get => E_PROP_FPostProcessSettings_ScreenSpaceReflectionMaxRoughness_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_ScreenSpaceReflectionMaxRoughness_SET(NativePointer, value);
@@ -1868,6 +3852,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPostProcessSettings_ScreenSpaceReflectionQuality_GET(NativePointer);
 			set => E_PROP_FPostProcessSettings_ScreenSpaceReflectionQuality_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Sets the translucency type </para>
+		/// </summary>
+		public ETranslucencyType TranslucencyType
+		{
+			get => (ETranslucencyType)E_PROP_FPostProcessSettings_TranslucencyType_GET(NativePointer);
+			set => E_PROP_FPostProcessSettings_TranslucencyType_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -1906,9 +3900,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public void OnAfterLoad()
-			=> E_FPostProcessSettings_OnAfterLoad(this);
-		
 		
 		/// <summary>
 		/// <para>Used to define the values before any override happens. </para>

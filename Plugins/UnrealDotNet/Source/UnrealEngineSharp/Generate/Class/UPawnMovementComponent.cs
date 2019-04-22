@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\PawnMovementComponent.h:22
 
 namespace UnrealEngine
 {
@@ -45,6 +45,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPawnMovementComponent_K2_GetInputVector(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPawnMovementComponent_MarkForClientCameraUpdate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPawnMovementComponent_NotifyBumpedPawn(IntPtr self, IntPtr bumpedPawn);
@@ -107,6 +110,14 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetInputVector()
 			=> E_UPawnMovementComponent_K2_GetInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Attempts to mark the PlayerCameraManager as dirty. </para>
+		/// <para>This will have no effect if called from the server. </para>
+		/// </summary>
+		protected void MarkForClientCameraUpdate()
+			=> E_UPawnMovementComponent_MarkForClientCameraUpdate(this);
 		
 		
 		/// <summary>

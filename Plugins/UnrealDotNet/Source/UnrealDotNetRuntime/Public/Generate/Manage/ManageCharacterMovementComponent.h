@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 #include "ManageCharacterMovementComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:159
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageCharacterMovementComponent : public UCharacterMovementComponent, public IManageObject
@@ -43,6 +43,7 @@ public:
 	virtual void Crouch(bool bClientSimulation) override;
 	virtual void DisableMovement() override;
 	virtual void ForceReplicationUpdate() override;
+	virtual void HandleWalkingOffLedge(const FVector& PreviousFloorImpactNormal, const FVector& PreviousFloorContactNormal, const FVector& PreviousLocation, float TimeDelta) override;
 	virtual void JumpOff(AActor* MovementBaseActor) override;
 	virtual void JumpOutOfWater(FVector WallNormal) override;
 	virtual void Launch(const FVector& LaunchVel) override;
@@ -64,6 +65,7 @@ public:
 	virtual void UpdateCharacterStateAfterMovement(float DeltaSeconds) override;
 	virtual void UpdateCharacterStateBeforeMovement(float DeltaSeconds) override;
 	virtual void UpdateFloorFromAdjustment() override;
+	virtual void UpdateProxyAcceleration() override;
 	
 protected:
 	virtual void AdjustProxyCapsuleSize() override;

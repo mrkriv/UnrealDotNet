@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:172
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UPrimitiveComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UPrimitiveComponent_AlwaysLoadOnClient_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -109,11 +105,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_bCastVolumetricTranslucentShadow_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UPrimitiveComponent_bForceMipStreaming_GET(IntPtr Ptr);
@@ -206,9 +197,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_bRenderInMainPass_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UPrimitiveComponent_bRenderInMono_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UPrimitiveComponent_bReplicatePhysicsToAutonomousProxy_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_bRenderInMono_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_UPrimitiveComponent_bReplicatePhysicsToAutonomousProxy_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UPrimitiveComponent_bReturnMaterialOnMove_GET(IntPtr Ptr);
@@ -256,6 +247,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_bUseViewOwnerDepthPriorityGroup_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UPrimitiveComponent_bVisibleInRayTracing_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPrimitiveComponent_bVisibleInRayTracing_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_bVisibleInReflectionCaptures_SET(IntPtr Ptr, byte Value);
@@ -269,9 +265,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_UPrimitiveComponent_CastShadow_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_CastShadow_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_PROP_UPrimitiveComponent_CurrentTag_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPrimitiveComponent_CustomDepthStencilValue_GET(IntPtr Ptr);
@@ -391,6 +384,10 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPrimitiveComponent_VisibilityId_SET(IntPtr Ptr, int Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UPrimitiveComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_AddAngularImpulse(IntPtr self, IntPtr impulse, string boneName, bool bVelChange);
 		
@@ -467,7 +464,7 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_DispatchMouseOverEvents(IntPtr self, IntPtr currentComponent, IntPtr newComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_DispatchWakeEvents(IntPtr self, int wakeEvent, string boneName);
+		private static extern void E_UPrimitiveComponent_DispatchWakeEvents(IntPtr self, byte wakeEvent, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_EndComponentOverlap(IntPtr self, IntPtr otherOverlap, bool bDoNotifies, bool bSkipNotifySelf);
@@ -569,9 +566,6 @@ namespace UnrealEngine
 		private static extern int E_UPrimitiveComponent_GetStaticLightMapResolution(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_UPrimitiveComponent_GetWalkableSlopeOverride(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_HasStaticLighting(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -614,6 +608,9 @@ namespace UnrealEngine
 		private static extern bool E_UPrimitiveComponent_IsZeroExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_K2_BoxOverlapComponent(IntPtr self, IntPtr inBoxCentre, IntPtr inBox, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_K2_IsCollisionEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -623,7 +620,13 @@ namespace UnrealEngine
 		private static extern bool E_UPrimitiveComponent_K2_IsQueryCollisionEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UPrimitiveComponent_K2_LineTraceComponent(IntPtr self, IntPtr traceStart, IntPtr traceEnd, bool bTraceComplex, bool bShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
+		private static extern bool E_UPrimitiveComponent_K2_LineTraceComponent(IntPtr self, IntPtr traceStart, IntPtr traceEnd, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_K2_SphereOverlapComponent(IntPtr self, IntPtr inSphereCentre, float inSphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_K2_SphereTraceComponent(IntPtr self, IntPtr traceStart, IntPtr traceEnd, float sphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_OnComponentCollisionSettingsChanged(IntPtr self);
@@ -651,9 +654,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllMassScale(IntPtr self, float inMassScale);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_SetAllPhysicsAngularVelocity(IntPtr self, IntPtr newAngVel, bool bAddToCurrent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllPhysicsAngularVelocityInDegrees(IntPtr self, IntPtr newAngVel, bool bAddToCurrent);
@@ -779,9 +779,6 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_SetRenderInMainPass(IntPtr self, bool bValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_SetRenderInMono(IntPtr self, bool bValue);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetRigidBodyReplicatedTarget(IntPtr self, IntPtr updatedState, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -798,9 +795,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetViewOwnerDepthPriorityGroup(IntPtr self, bool bNewUseViewOwnerDepthPriorityGroup, byte newViewOwnerDepthPriorityGroup);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_SetWalkableSlopeOverride(IntPtr self, IntPtr newOverride);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_ShouldComponentAddToScene(IntPtr self);
@@ -1016,18 +1010,6 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this component will look for collisions on both physic scenes during movement. </para>
-		/// <para>Only required if the asynchronous physics scene is enabled and has geometry in it, and you wish to test for collisions with objects in that scene. </para>
-		/// <para>@see MoveComponent() </para>
-		/// </summary>
-		public byte bCheckAsyncSceneOnMove
-		{
-			get => E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_bCheckAsyncSceneOnMove_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
 		/// <para>If true, forces mips for textures used by this component to be resident when this component's level is loaded. </para>
 		/// </summary>
 		public byte bForceMipStreaming
@@ -1204,12 +1186,13 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this component will be rendered in mono only if an HMD is connected and monoscopic far field rendering is activated. </para>
+		/// <para>True if physics should be replicated to autonomous proxies. This should be true for </para>
+		/// <para>server-authoritative simulations, and false for client authoritative simulations. </para>
 		/// </summary>
-		public byte bRenderInMono
+		public byte bReplicatePhysicsToAutonomousProxy
 		{
-			get => E_PROP_UPrimitiveComponent_bRenderInMono_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_bRenderInMono_SET(NativePointer, value);
+			get => E_PROP_UPrimitiveComponent_bReplicatePhysicsToAutonomousProxy_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bReplicatePhysicsToAutonomousProxy_SET(NativePointer, value);
 		}
 
 		
@@ -1300,6 +1283,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>If true, this component will be visible in ray tracing effects. Turning this off will remove it from ray traced reflections, shadows, etc. </para>
+		/// </summary>
+		public byte bVisibleInRayTracing
+		{
+			get => E_PROP_UPrimitiveComponent_bVisibleInRayTracing_GET(NativePointer);
+			set => E_PROP_UPrimitiveComponent_bVisibleInRayTracing_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If true, this component will be visible in reflection captures. </para>
 		/// </summary>
 		public byte bVisibleInReflectionCaptures
@@ -1328,11 +1321,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPrimitiveComponent_CastShadow_GET(NativePointer);
 			set => E_PROP_UPrimitiveComponent_CastShadow_SET(NativePointer, value);
-		}
-
-		public static int CurrentTag
-		{
-			get => E_PROP_UPrimitiveComponent_CurrentTag_GET();
 		}
 
 		
@@ -1825,7 +1813,7 @@ namespace UnrealEngine
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
 		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect). </param>
 		/// </summary>
-		public void AddTorqueInRadians(FVector torque, string boneName, bool bAccelChange = false)
+		public virtual void AddTorqueInRadians(FVector torque, string boneName, bool bAccelChange)
 			=> E_UPrimitiveComponent_AddTorqueInRadians(this, torque, boneName, bAccelChange);
 		
 		
@@ -1920,8 +1908,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Dispatch notification for wake events and propagate to any welded bodies </para>
 		/// </summary>
-		public void DispatchWakeEvents(int wakeEvent, string boneName)
-			=> E_UPrimitiveComponent_DispatchWakeEvents(this, wakeEvent, boneName);
+		public void DispatchWakeEvents(ESleepEvent wakeEvent, string boneName)
+			=> E_UPrimitiveComponent_DispatchWakeEvents(this, (byte)wakeEvent, boneName);
 		
 		
 		/// <summary>
@@ -1986,7 +1974,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>returns Distance to closest Body Instance surface. </para>
+		/// <para>Returns Distance to closest Body Instance surface. </para>
 		/// <param name="Point">World 3D vector </param>
 		/// <param name="OutPointOnBody">Point on the surface of collision closest to Point </param>
 		/// <return>Success if returns > 0.f, if returns 0.f, point is inside the geometry </return>
@@ -2040,6 +2028,10 @@ namespace UnrealEngine
 		public virtual float GetLinearDamping()
 			=> E_UPrimitiveComponent_GetLinearDamping(this);
 		
+		
+		/// <summary>
+		/// <para>Gets the LOD Parent, which is used to compute visibility when hierarchical LOD is enabled </para>
+		/// </summary>
 		public UPrimitiveComponent GetLODParentPrimitive()
 			=> E_UPrimitiveComponent_GetLODParentPrimitive(this);
 		
@@ -2073,7 +2065,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>number of material elements in this primitive </return>
+		/// <para>Return number of material elements in this primitive </para>
 		/// </summary>
 		public virtual int GetNumMaterials()
 			=> E_UPrimitiveComponent_GetNumMaterials(this);
@@ -2148,12 +2140,16 @@ namespace UnrealEngine
 		public bool GetRigidBodyState(FRigidBodyState outState, string boneName)
 			=> E_UPrimitiveComponent_GetRigidBodyState(this, outState, boneName);
 		
+		
+		/// <summary>
+		/// <para>Disable dynamic shadow casting if the primitive only casts indirect shadows, since dynamic shadows are always shadowing direct lighting </para>
+		/// </summary>
 		public virtual bool GetShadowIndirectOnly()
 			=> E_UPrimitiveComponent_GetShadowIndirectOnly(this);
 		
 		
 		/// <summary>
-		/// <para>returns The square of the distance to closest Body Instance surface. </para>
+		/// <para>Returns The square of the distance to closest Body Instance surface. </para>
 		/// <param name="Point">World 3D vector </param>
 		/// <param name="OutSquaredDistance">The squared distance to closest Body Instance surface. 0 if inside of the body </param>
 		/// <param name="OutPointOnBody">Point on the surface of collision closest to Point </param>
@@ -2182,18 +2178,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the slope override struct for this component. </para>
-		/// </summary>
-		public FWalkableSlopeOverride GetWalkableSlopeOverride()
-			=> E_UPrimitiveComponent_GetWalkableSlopeOverride(this);
-		
-		
-		/// <summary>
-		/// <return>True if a primitive's parameters as well as its position is static during gameplay, and can thus use static lighting. </return>
+		/// <para>Return True if a primitive's parameters as well as its position is static during gameplay, and can thus use static lighting. </para>
 		/// </summary>
 		public bool HasStaticLighting()
 			=> E_UPrimitiveComponent_HasStaticLighting(this);
 		
+		
+		/// <summary>
+		/// <para>Returns true if the component is static and has the right static mesh setup to support lightmaps. </para>
+		/// </summary>
 		public virtual bool HasValidSettingsForStaticLighting(bool bOverlookInvalidComponents)
 			=> E_UPrimitiveComponent_HasValidSettingsForStaticLighting(this, bOverlookInvalidComponents);
 		
@@ -2292,6 +2285,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Perform a box overlap against a single component as an AABB (No rotation) </para>
+		/// <param name="InBoxCentre">The centre of the box to overlap with the component </param>
+		/// <param name="InBox">Description of the box to use in the overlap </param>
+		/// <param name="bTraceComplex">Whether or not to trace the complex physics representation or just the simple representation </param>
+		/// <param name="bShowTrace">Whether or not to draw the trace in the world (for debugging) </param>
+		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently </param>
+		/// </summary>
+		public bool BoxOverlapComponent(FVector inBoxCentre, FBox inBox, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
+			=> E_UPrimitiveComponent_K2_BoxOverlapComponent(this, inBoxCentre, inBox, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
+		
+		
+		/// <summary>
 		/// <para>Utility to see if there is any form of collision (query or physics) enabled on this component. </para>
 		/// </summary>
 		public bool IsCollisionEnabled()
@@ -2314,9 +2319,39 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Perform a line trace against a single component </para>
+		/// <param name="TraceStart">The start of the trace in world-space </param>
+		/// <param name="TraceEnd">The end of the trace in world-space </param>
+		/// <param name="bTraceComplex">Whether or not to trace the complex physics representation or just the simple representation </param>
+		/// <param name="bShowTrace">Whether or not to draw the trace in the world (for debugging) </param>
+		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently </param>
 		/// </summary>
-		public bool LineTraceComponent(FVector traceStart, FVector traceEnd, bool bTraceComplex, bool bShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
-			=> E_UPrimitiveComponent_K2_LineTraceComponent(this, traceStart, traceEnd, bTraceComplex, bShowTrace, hitLocation, hitNormal, boneName, outHit);
+		public bool LineTraceComponent(FVector traceStart, FVector traceEnd, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
+			=> E_UPrimitiveComponent_K2_LineTraceComponent(this, traceStart, traceEnd, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
+		
+		
+		/// <summary>
+		/// <para>Perform a sphere overlap against a single component </para>
+		/// <param name="InSphereCentre">The centre of the sphere to overlap with the component </param>
+		/// <param name="InSphereRadius">The Radius of the sphere to overlap with the component </param>
+		/// <param name="bTraceComplex">Whether or not to trace the complex physics representation or just the simple representation </param>
+		/// <param name="bShowTrace">Whether or not to draw the trace in the world (for debugging) </param>
+		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently </param>
+		/// </summary>
+		public bool SphereOverlapComponent(FVector inSphereCentre, float inSphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
+			=> E_UPrimitiveComponent_K2_SphereOverlapComponent(this, inSphereCentre, inSphereRadius, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
+		
+		
+		/// <summary>
+		/// <para>Perform a sphere trace against a single component </para>
+		/// <param name="TraceStart">The start of the trace in world-space </param>
+		/// <param name="TraceEnd">The end of the trace in world-space </param>
+		/// <param name="SphereRadius">Radius of the sphere to trace against the component </param>
+		/// <param name="bTraceComplex">Whether or not to trace the complex physics representation or just the simple representation </param>
+		/// <param name="bShowTrace">Whether or not to draw the trace in the world (for debugging) </param>
+		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently </param>
+		/// </summary>
+		public bool SphereTraceComponent(FVector traceStart, FVector traceEnd, float sphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
+			=> E_UPrimitiveComponent_K2_SphereTraceComponent(this, traceStart, traceEnd, sphereRadius, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
 		
 		
 		/// <summary>
@@ -2383,15 +2418,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetAllMassScale(float inMassScale)
 			=> E_UPrimitiveComponent_SetAllMassScale(this, inMassScale);
-		
-		
-		/// <summary>
-		/// <para>Set the angular velocity of all bodies in this component. </para>
-		/// <param name="NewAngVel">New angular velocity to apply to physics, in degrees per second. </param>
-		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
-		/// </summary>
-		public virtual void SetAllPhysicsAngularVelocity(FVector newAngVel, bool bAddToCurrent)
-			=> E_UPrimitiveComponent_SetAllPhysicsAngularVelocity(this, newAngVel, bAddToCurrent);
 		
 		
 		/// <summary>
@@ -2584,7 +2610,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>LOD parent primitive to draw instead of this one (multiple UPrim's will point to the same LODParent ) </para>
+		/// <para>Set LOD Parent component, normally associated with an ALODActor </para>
 		/// </summary>
 		public void SetLODParentPrimitive(UPrimitiveComponent inLODParentPrimitive)
 			=> E_UPrimitiveComponent_SetLODParentPrimitive(this, inLODParentPrimitive);
@@ -2608,7 +2634,6 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of bNotifyRigidBodyCollision </para>
-		/// <param name="bNewNotifyRigidBodyCollision">The value to assign to bNotifyRigidBodyCollision </param>
 		/// </summary>
 		public virtual void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 			=> E_UPrimitiveComponent_SetNotifyRigidBodyCollision(this, bNewNotifyRigidBodyCollision);
@@ -2657,7 +2682,7 @@ namespace UnrealEngine
 		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of the body. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify angular velocity of. 'None' indicates root body. </param>
 		/// </summary>
-		public void SetPhysicsAngularVelocityInRadians(FVector newAngVel, bool bAddToCurrent, string boneName)
+		public virtual void SetPhysicsAngularVelocityInRadians(FVector newAngVel, bool bAddToCurrent, string boneName)
 			=> E_UPrimitiveComponent_SetPhysicsAngularVelocityInRadians(this, newAngVel, bAddToCurrent, boneName);
 		
 		
@@ -2668,7 +2693,7 @@ namespace UnrealEngine
 		/// <param name="bAddToCurrent">If true, NewVel is added to the existing velocity of the body. </param>
 		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify velocity of. 'None' indicates root body. </param>
 		/// </summary>
-		public void SetPhysicsLinearVelocity(FVector newVel, bool bAddToCurrent, string boneName)
+		public virtual void SetPhysicsLinearVelocity(FVector newVel, bool bAddToCurrent, string boneName)
 			=> E_UPrimitiveComponent_SetPhysicsLinearVelocity(this, newVel, bAddToCurrent, boneName);
 		
 		
@@ -2731,13 +2756,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets bRenderInMono property and marks the render state dirty. </para>
-		/// </summary>
-		public void SetRenderInMono(bool bValue)
-			=> E_UPrimitiveComponent_SetRenderInMono(this, bValue);
-		
-		
-		/// <summary>
 		/// <para>Applies RigidBodyState only if it needs to be updated </para>
 		/// <para>NeedsUpdate flag will be removed from UpdatedState after all velocity corrections are finished </para>
 		/// </summary>
@@ -2785,13 +2803,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets a new slope override for this component instance. </para>
-		/// </summary>
-		public void SetWalkableSlopeOverride(FWalkableSlopeOverride newOverride)
-			=> E_UPrimitiveComponent_SetWalkableSlopeOverride(this, newOverride);
-		
-		
-		/// <summary>
 		/// <para>Looking at various values of the component, determines if this </para>
 		/// <para>component should be added to the scene </para>
 		/// <return>true if the component is visible and should be added to the scene, false otherwise </return>
@@ -2809,7 +2820,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if the owner is selected and this component is selectable </return>
+		/// <para>Return true if the owner is selected and this component is selectable </para>
 		/// </summary>
 		public virtual bool ShouldRenderSelected()
 			=> E_UPrimitiveComponent_ShouldRenderSelected(this);
@@ -2851,7 +2862,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if only unlit materials are used for rendering, false otherwise. </return>
+		/// <para>Returns true if only unlit materials are used for rendering, false otherwise. </para>
 		/// </summary>
 		public virtual bool UsesOnlyUnlitMaterials()
 			=> E_UPrimitiveComponent_UsesOnlyUnlitMaterials(this);

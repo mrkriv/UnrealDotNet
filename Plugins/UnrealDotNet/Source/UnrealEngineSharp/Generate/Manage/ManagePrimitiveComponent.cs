@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:170
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:172
 
 namespace UnrealEngine
 {
@@ -105,6 +105,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Add a torque to a single rigid body. </para>
+		/// <param name="Torque">Torque to apply. Direction is axis of rotation and magnitude is strength of torque. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to apply torque to. 'None' indicates root body. </param>
+		/// <param name="bAccelChange">If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect). </param>
+		/// </summary>
+		public override void AddTorqueInRadians(FVector torque, string boneName, bool bAccelChange) { }
+		
+		
+		/// <summary>
 		/// <para>Called when the BodyInstance ResponseToChannels, CollisionEnabled or bNotifyRigidBodyCollision changes, in case subclasses want to use that information. </para>
 		/// </summary>
 		protected override void OnComponentCollisionSettingsChanged() { }
@@ -120,14 +129,6 @@ namespace UnrealEngine
 		/// <para>Change the mass scale used fo all bodies in this component </para>
 		/// </summary>
 		public override void SetAllMassScale(float inMassScale) { }
-		
-		
-		/// <summary>
-		/// <para>Set the angular velocity of all bodies in this component. </para>
-		/// <param name="NewAngVel">New angular velocity to apply to physics, in degrees per second. </param>
-		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of all bodies. </param>
-		/// </summary>
-		public override void SetAllPhysicsAngularVelocity(FVector newAngVel, bool bAddToCurrent) { }
 		
 		
 		/// <summary>
@@ -248,9 +249,28 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Changes the value of bNotifyRigidBodyCollision </para>
-		/// <param name="bNewNotifyRigidBodyCollision">The value to assign to bNotifyRigidBodyCollision </param>
 		/// </summary>
 		public override void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision) { }
+		
+		
+		/// <summary>
+		/// <para>Set the angular velocity of a single body. </para>
+		/// <para>This should be used cautiously - it may be better to use AddTorque or AddImpulse. </para>
+		/// <param name="NewAngVel">New angular velocity to apply to body, in radians per second. </param>
+		/// <param name="bAddToCurrent">If true, NewAngVel is added to the existing angular velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify angular velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public override void SetPhysicsAngularVelocityInRadians(FVector newAngVel, bool bAddToCurrent, string boneName) { }
+		
+		
+		/// <summary>
+		/// <para>Set the linear velocity of a single body. </para>
+		/// <para>This should be used cautiously - it may be better to use AddForce or AddImpulse. </para>
+		/// <param name="NewVel">New linear velocity to apply to physics. </param>
+		/// <param name="bAddToCurrent">If true, NewVel is added to the existing velocity of the body. </param>
+		/// <param name="BoneName">If a SkeletalMeshComponent, name of body to modify velocity of. 'None' indicates root body. </param>
+		/// </summary>
+		public override void SetPhysicsLinearVelocity(FVector newVel, bool bAddToCurrent, string boneName) { }
 		
 		
 		/// <summary>

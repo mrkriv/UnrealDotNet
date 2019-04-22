@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:36
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:45
 
 namespace UnrealEngine
 {
@@ -24,6 +24,9 @@ namespace UnrealEngine
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UObject(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_AbortInsideMemberFunction(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_AreNativePropertiesIdenticalTo(IntPtr self, IntPtr other);
@@ -158,7 +161,7 @@ namespace UnrealEngine
 		private static extern bool E_UObject_NeedsLoadForServer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_NotifyObjectReferenceEliminated(IntPtr self);
+		private static extern void E_UObject_OverridePerObjectConfigSection(IntPtr self, string sectionName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostCDOContruct(IntPtr self);
@@ -216,6 +219,13 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Abort with a member function call at the top of the callstack, helping to ensure that most platforms will stuff this object's memory into the resulting minidump. </para>
+		/// </summary>
+		public void AbortInsideMemberFunction()
+			=> E_UObject_AbortInsideMemberFunction(this);
+		
+		
+		/// <summary>
 		/// <para>Returns whether native properties are identical to the one of the passed in component. </para>
 		/// <param name="Other">Other component to compare against </param>
 		/// <return>true if native properties are identical, false otherwise </return>
@@ -248,7 +258,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Utility to allow overrides of Modify to avoid doing work if the base class is not going modify anyways. </para>
+		/// <para>Utility to allow overrides of Modify to avoid doing work if this object cannot be safely modified </para>
 		/// </summary>
 		public bool CanModify()
 			=> E_UObject_CanModify(this);
@@ -288,6 +298,10 @@ namespace UnrealEngine
 		public bool ConditionalBeginDestroy()
 			=> E_UObject_ConditionalBeginDestroy(this);
 		
+		
+		/// <summary>
+		/// <para>Called when an object is actually destroyed, memory should never be accessed again </para>
+		/// </summary>
 		public bool ConditionalFinishDestroy()
 			=> E_UObject_ConditionalFinishDestroy(this);
 		
@@ -305,14 +319,17 @@ namespace UnrealEngine
 		public void DestroyNonNativeProperties()
 			=> E_UObject_DestroyNonNativeProperties(this);
 		
+		
+		/// <summary>
+		/// <para>Execute the ubergraph from a specific entry point </para>
+		/// </summary>
 		public void ExecuteUbergraph(int entryPoint)
 			=> E_UObject_ExecuteUbergraph(this, entryPoint);
 		
 		
 		/// <summary>
 		/// <para>Called to finish destroying the object.  After UObject::FinishDestroy is called, the object's memory should no longer be accessed. </para>
-		/// <para>note: because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's </para>
-		/// <para>FinishDestroy() method, rather than at the beginning. </para>
+		/// <para>@warning Because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's FinishDestroy() method, rather than at the beginning. </para>
 		/// </summary>
 		public virtual void FinishDestroy()
 			=> E_UObject_FinishDestroy(this);
@@ -342,7 +359,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>a one line description of an object for viewing in the thumbnail view of the generic browser </return>
+		/// <para>Return a one line description of an object for viewing in the thumbnail view of the generic browser </para>
 		/// </summary>
 		public virtual string GetDesc()
 			=> E_UObject_GetDesc(this);
@@ -360,7 +377,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>This function actually does the work for the GetDetailInfo and is virtual. </para>
+		/// <para>This function actually does the work for the GetDetailedInfo() and is virtual. </para>
 		/// <para>It should only be called from GetDetailedInfo as GetDetailedInfo is safe to call on NULL object pointers </para>
 		/// </summary>
 		protected virtual string GetDetailedInfoInternal()
@@ -396,12 +413,25 @@ namespace UnrealEngine
 		public virtual void GetSubobjectsWithStableNamesForNetworking(TArray<UObject> objList)
 			=> E_UObject_GetSubobjectsWithStableNamesForNetworking(this, objList);
 		
+		
+		/// <summary>
+		/// <para>Returns what UWorld this object is contained within. </para>
+		/// <para>By default this will follow its Outer chain, but it should be overridden if that will not work. </para>
+		/// </summary>
 		public virtual UWorld GetWorld()
 			=> E_UObject_GetWorld(this);
 		
+		
+		/// <summary>
+		/// <para>Internal function used by UEngine::GetWorldFromContextObject() </para>
+		/// </summary>
 		public UWorld GetWorldChecked(bool bSupported)
 			=> E_UObject_GetWorldChecked(this, bSupported);
 		
+		
+		/// <summary>
+		/// <para>Checks to see if GetWorld() is implemented on a specific class </para>
+		/// </summary>
 		public bool ImplementsGetWorld()
 			=> E_UObject_ImplementsGetWorld(this);
 		
@@ -495,6 +525,10 @@ namespace UnrealEngine
 		public virtual bool IsSupportedForNetworking()
 			=> E_UObject_IsSupportedForNetworking(this);
 		
+		
+		/// <summary>
+		/// <para>Called during subobject creation to mark this component as editor only, which causes it to get stripped in packaged builds </para>
+		/// </summary>
 		public virtual void MarkAsEditorOnlySubobject()
 			=> E_UObject_MarkAsEditorOnlySubobject(this);
 		
@@ -521,9 +555,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called during saving to determine the load flags to save with the object. </para>
+		/// <para>Called during saving to include this object in client/servers running in editor builds, even if they wouldn't normally be. </para>
 		/// <para>If false, this object will still get loaded if NeedsLoadForServer/Client are true </para>
-		/// <return>true if this object should always be loaded for editor game </return>
+		/// <return>true if this object should always be loaded for games running in editor builds </return>
 		/// </summary>
 		public virtual bool NeedsLoadForEditorGame()
 			=> E_UObject_NeedsLoadForEditorGame(this);
@@ -537,8 +571,13 @@ namespace UnrealEngine
 		public virtual bool NeedsLoadForServer()
 			=> E_UObject_NeedsLoadForServer(this);
 		
-		public virtual void NotifyObjectReferenceEliminated()
-			=> E_UObject_NotifyObjectReferenceEliminated(this);
+		
+		/// <summary>
+		/// <para>Allows PerObjectConfig classes, to override the ini section name used for the PerObjectConfig object. </para>
+		/// <param name="SectionName">Reference to the unmodified config section name, that can be altered/modified </param>
+		/// </summary>
+		public virtual void OverridePerObjectConfigSection(string sectionName)
+			=> E_UObject_OverridePerObjectConfigSection(this, sectionName);
 		
 		
 		/// <summary>
@@ -568,15 +607,15 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called after the C++ constructor and after the properties have been initialized, including those loaded from config. </para>
-		/// <para>mainly this is to emulate some behavior of when the constructor was called after the properties were initialized. </para>
+		/// <para>This is called before any serialization or other setup has happened. </para>
 		/// </summary>
 		public virtual void PostInitProperties()
 			=> E_UObject_PostInitProperties(this);
 		
 		
 		/// <summary>
-		/// <para>Do any object-specific cleanup required immediately after loading an object, </para>
-		/// <para>and immediately after any undo/redo. </para>
+		/// <para>Do any object-specific cleanup required immediately after loading an object. </para>
+		/// <para>This is not called for newly-created objects, and by default will always execute on the game thread. </para>
 		/// </summary>
 		public virtual void PostLoad()
 			=> E_UObject_PostLoad(this);
@@ -590,9 +629,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Test the selection state of a UObject </para>
-		/// <return>true if the object is selected, false otherwise. </return>
-		/// <para>@todo UE4 this doesn't belong here, but it doesn't belong anywhere else any better </para>
+		/// <para>Called at the end of Rename(), but only if the rename was actually carried out </para>
 		/// </summary>
 		public virtual void PostRename(UObject oldOuter, string oldName)
 			=> E_UObject_PostRename(this, oldOuter, oldName);
@@ -606,8 +643,8 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called from within SavePackage on the passed in base/ root. This function is being called after the package </para>
-		/// <para>has been saved and can perform cleanup. </para>
+		/// <para>Called from within SavePackage on the passed in base/root object. </para>
+		/// <para>This function is called after the package has been saved and can perform cleanup. </para>
 		/// <param name="bCleanupIsRequired">Whether PreSaveRoot dirtied state that needs to be cleaned up </param>
 		/// </summary>
 		public virtual void PostSaveRoot(bool bCleanupIsRequired)
@@ -627,6 +664,10 @@ namespace UnrealEngine
 		public virtual void PreNetReceive()
 			=> E_UObject_PreNetReceive(this);
 		
+		
+		/// <summary>
+		/// <para>After a critical error, perform any mission-critical cleanup, such as restoring the video mode orreleasing hardware resources. </para>
+		/// </summary>
 		public virtual void ShutdownAfterError()
 			=> E_UObject_ShutdownAfterError(this);
 		

@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:109
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_AActor(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bActorSeamlessTraveled_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -124,6 +120,11 @@ namespace UnrealEngine
 		private static extern byte E_PROP_AActor_bOnlyRelevantToOwner_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bOnlyRelevantToOwner_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AActor_bRelevantForLevelBounds_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_bRelevantForLevelBounds_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bRelevantForNetworkReplays_GET(IntPtr Ptr);
@@ -245,19 +246,13 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_PROP_AActor_ReplicatedMovement_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_ReplicatedMovement_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_AActor_SpawnCollisionHandlingMethod_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_SpawnCollisionHandlingMethod_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern TemplatePointerDescription E_PROP_AActor_Tags_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_Tags_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_AActor(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_ActorHasTag(IntPtr self, string tag);
@@ -446,6 +441,9 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetActorTimeDilation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_GetActorTimeDilation_o1(IntPtr self, IntPtr actorWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetActorTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -456,9 +454,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_GetAttachedActors(IntPtr self, IntPtr outActors);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_AActor_GetAttachmentReplication(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetAttachParentActor(IntPtr self);
@@ -542,9 +537,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AActor_GetParentActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_AActor_GetParentComponent(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetPlacementExtent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -603,6 +595,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasDeferredComponentRegistration(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_HasLocalNetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasNetOwner(IntPtr self);
@@ -851,6 +846,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_PostNetReceivePhysicState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostNetReceiveRole(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostNetReceiveVelocity(IntPtr self, IntPtr newVelocity);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1029,6 +1027,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SnapRootComponentTo(IntPtr self, IntPtr inParentActor, string inSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_SwapRoles(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SwapRolesForReplay(IntPtr self);
@@ -1265,12 +1266,29 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bOnlyRelevantToOwner_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>If true, this actor's component's bounds will be included in the level's </para>
+		/// <para>bounding box unless the Actor's class has overridden IsLevelBoundsRelevant </para>
+		/// </summary>
+		public byte bRelevantForLevelBounds
+		{
+			get => E_PROP_AActor_bRelevantForLevelBounds_GET(NativePointer);
+			set => E_PROP_AActor_bRelevantForLevelBounds_SET(NativePointer, value);
+		}
+
 		public byte bRelevantForNetworkReplays
 		{
 			get => E_PROP_AActor_bRelevantForNetworkReplays_GET(NativePointer);
 			set => E_PROP_AActor_bRelevantForNetworkReplays_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>If true, this actor will only be destroyed during scrubbing if the replay is set to a time before the actor existed. </para>
+		/// <para>Otherwise, RewindForReplay will be called if we detect the actor needs to be reset. </para>
+		/// <para>Note, this Actor must not be destroyed by gamecode, and RollbackViaDeletion may not be used. </para>
+		/// </summary>
 		public byte bReplayRewindable
 		{
 			get => E_PROP_AActor_bReplayRewindable_GET(NativePointer);
@@ -1345,7 +1363,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Pawn responsible for damage caused by this actor. </para>
+		/// <para>Pawn responsible for damage and other gameplay events caused by this actor. </para>
 		/// </summary>
 		public APawn Instigator
 		{
@@ -1415,26 +1433,6 @@ namespace UnrealEngine
 		public FActorTickFunction PrimaryActorTick
 		{
 			get => E_PROP_AActor_PrimaryActorTick_GET(NativePointer);
-		}
-
-		
-		/// <summary>
-		/// <para>Used for replication of our RootComponent's position and velocity </para>
-		/// </summary>
-		public FRepMovement ReplicatedMovement
-		{
-			get => E_PROP_AActor_ReplicatedMovement_GET(NativePointer);
-			set => E_PROP_AActor_ReplicatedMovement_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Controls how to handle spawning this actor in a situation where it's colliding with something else. "Default" means AlwaysSpawn here. </para>
-		/// </summary>
-		public ESpawnActorCollisionHandlingMethod SpawnCollisionHandlingMethod
-		{
-			get => (ESpawnActorCollisionHandlingMethod)E_PROP_AActor_SpawnCollisionHandlingMethod_GET(NativePointer);
-			set => E_PROP_AActor_SpawnCollisionHandlingMethod_SET(NativePointer, (byte)value);
 		}
 
 		
@@ -1565,7 +1563,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Event triggered when the actor is destroyed. </para>
+		/// <para>Event triggered when the actor has been explicitly destroyed. </para>
 		/// </summary>
 		public event FActorDestroyedSignature OnDestroyed
 		{
@@ -1622,7 +1620,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>See if this actor contains the supplied tag </para>
+		/// <para>See if this actor's Tags array contains the supplied name tag </para>
 		/// </summary>
 		public bool ActorHasTag(string tag)
 			=> E_AActor_ActorHasTag(this, tag);
@@ -1646,18 +1644,6 @@ namespace UnrealEngine
 		public void AddActorLocalTransform(FTransform newTransform, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
 			=> E_AActor_AddActorLocalTransform(this, newTransform, bSweep, outSweepHitResult, (byte)teleport);
 		
-		
-		/// <summary>
-		/// <para>Adds a delta to the location of this actor in world space. </para>
-		/// <param name="DeltaLocation">The change in location. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
-		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="Teleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
-		/// <param name="SweepHitResult">The hit result from the move if swept. </param>
-		/// </summary>
 		public void AddActorWorldOffset(FVector deltaLocation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
 			=> E_AActor_AddActorWorldOffset(this, deltaLocation, bSweep, outSweepHitResult, (byte)teleport);
 		
@@ -1727,7 +1713,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called by owning level to shift an actor location and all relevant data structures by specified delta </para>
-		/// <param name="InWorldOffset">Offset vector to shift actor location </param>
+		/// <param name="InOffset">Offset vector to shift actor location </param>
 		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
 		public virtual void ApplyWorldOffset(FVector inOffset, bool bWorldShift)
@@ -1844,7 +1830,6 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Debug helper for showing the component hierarchy of one component </para>
-		/// <param name="Info">Optional String to display at top of info </param>
 		/// </summary>
 		public void DebugShowOneComponentHierarchy(USceneComponent sceneComp, int nestLevel, bool bShowPosition)
 			=> E_AActor_DebugShowOneComponentHierarchy(this, sceneComp, nestLevel, bShowPosition);
@@ -1855,7 +1840,7 @@ namespace UnrealEngine
 		/// <para>Destruction is latent. It occurs at the end of the tick. </para>
 		/// <param name="bNetForce">opt] Ignored unless called during play.  Default is false. </param>
 		/// <param name="bShouldModifyLevel">opt] If true, Modify() the level before removing the actor.  Default is true. </param>
-		/// <para>returns	true if destroyed or already marked for destruction, false if indestructible. </para>
+		/// <para>@returns	true if destroyed or already marked for destruction, false if indestructible. </para>
 		/// </summary>
 		public bool Destroy(bool bNetForce = false, bool bShouldModifyLevel = true)
 			=> E_AActor_Destroy(this, bNetForce, bShouldModifyLevel);
@@ -1869,7 +1854,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called once this actor has been deleted </para>
+		/// <para>Called when this actor is explicitly being destroyed during gameplay or in the editor, not called during level streaming or gameplay ending </para>
 		/// </summary>
 		public virtual void Destroyed()
 			=> E_AActor_Destroyed(this);
@@ -1902,8 +1887,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Detaches the RootComponent of this Actor from any SceneComponent it is currently attached to. </para>
-		/// <param name="bMaintainWorldTransform">If true, update the relative location/rotation of this component to keep its world position the same </param>
+		/// <para>DEPRECATED - Use DetachFromActor() instead </para>
 		/// </summary>
 		public void DetachActorFromActorDeprecated(bool bMaintainWorldPosition = true)
 			=> E_AActor_DetachRootComponentFromParent(this, bMaintainWorldPosition);
@@ -1960,7 +1944,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Force actor to be updated to clients </para>
+		/// <para>Force actor to be updated to clients/demo net drivers </para>
 		/// </summary>
 		public virtual void ForceNetUpdate()
 			=> E_AActor_ForceNetUpdate(this);
@@ -1983,6 +1967,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns the bounding box of all components that make up this Actor (excluding ChildActorComponents). </para>
 		/// <param name="bOnlyCollidingComponents">If true, will only return the bounding box for components with collision enabled. </param>
+		/// <param name="Origin">Set to the center of the actor in world space </param>
+		/// <param name="BoxExtent">Set to half the actor's size in 3d space </param>
 		/// </summary>
 		public void GetActorBounds(bool bOnlyCollidingComponents, FVector origin, FVector boxExtent)
 			=> E_AActor_GetActorBounds(this, bOnlyCollidingComponents, origin, boxExtent);
@@ -2072,11 +2058,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get CustomTimeDilation - this can be used for input control or speed control for slomo. </para>
+		/// <para>Get ActorTimeDilation - this can be used for input control or speed control for slomo. </para>
 		/// <para>We don't want to scale input globally because input can be used for UI, which do not care for TimeDilation. </para>
 		/// </summary>
 		public float GetActorTimeDilation()
 			=> E_AActor_GetActorTimeDilation(this);
+		
+		
+		/// <summary>
+		/// <para>More efficient version that takes the Actor's current world. </para>
+		/// </summary>
+		public float GetActorTimeDilation(UWorld actorWorld)
+			=> E_AActor_GetActorTimeDilation_o1(this, actorWorld);
 		
 		
 		/// <summary>
@@ -2094,7 +2087,8 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns a list of all child actors, including children of children </para>
+		/// <para>Returns a list of all actors spawned by our Child Actor Components, including children of children. </para>
+		/// <para>This does not return the contents of the Children array </para>
 		/// </summary>
 		public void GetAllChildActors(TArray<AActor> childActors, bool bIncludeDescendants = true)
 			=> E_AActor_GetAllChildActors(this, childActors, bIncludeDescendants);
@@ -2105,13 +2099,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void GetAttachedActors(TArray<AActor> outActors)
 			=> E_AActor_GetAttachedActors(this, outActors);
-		
-		
-		/// <summary>
-		/// <para>Get read-only access to current AttachmentReplication. </para>
-		/// </summary>
-		public FRepAttachment GetAttachmentReplication()
-			=> E_AActor_GetAttachmentReplication(this);
 		
 		
 		/// <summary>
@@ -2144,10 +2131,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get Collision Response to the Channel that entered for all components </para>
+		/// <para>Get Collision Response to the passed in Channel for all components </para>
 		/// <para>It returns Max of state - i.e. if Component A overlaps, but if Component B blocks, it will return block as response </para>
 		/// <para>if Component A ignores, but if Component B overlaps, it will return overlap </para>
-		/// <param name="Channel">The channel to change the response of </param>
 		/// </summary>
 		public virtual ECollisionResponse GetComponentsCollisionResponseToChannel(ECollisionChannel channel)
 			=> (ECollisionResponse)E_AActor_GetComponentsCollisionResponseToChannel(this, (byte)channel);
@@ -2260,7 +2246,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>name of the net driver associated with this actor (all RPCs will go out via this connection) </return>
+		/// <para>Returns name of the net driver associated with this actor (all RPCs will go out via this connection) </para>
 		/// </summary>
 		public string GetNetDriverName()
 			=> E_AActor_GetNetDriverName(this);
@@ -2275,14 +2261,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>the actor responsible for replication, if any. Typically the player controller </return>
+		/// <para>Return the actor responsible for replication, if any. Typically the player controller </para>
 		/// </summary>
 		public virtual AActor GetNetOwner()
 			=> E_AActor_GetNetOwner(this);
 		
 		
 		/// <summary>
-		/// <return>the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or nullptr. </return>
+		/// <para>Return the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or nullptr. </para>
 		/// </summary>
 		public virtual UPlayer GetNetOwningPlayer()
 			=> E_AActor_GetNetOwningPlayer(this);
@@ -2297,7 +2283,6 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Get the owner of this Actor, used primarily for network replication. </para>
-		/// <return>Actor that owns this Actor </return>
 		/// </summary>
 		public AActor GetOwner()
 			=> E_AActor_GetOwner(this);
@@ -2308,13 +2293,6 @@ namespace UnrealEngine
 		/// </summary>
 		public AActor GetParentActor()
 			=> E_AActor_GetParentActor(this);
-		
-		
-		/// <summary>
-		/// <para>If this Actor was created by a Child Actor Component returns that Child Actor Component </para>
-		/// </summary>
-		public UChildActorComponent GetParentComponent()
-			=> E_AActor_GetParentComponent(this);
 		
 		
 		/// <summary>
@@ -2354,21 +2332,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>@returns collision extents vector for this Actor, based on GetSimpleCollisionCylinder(). </para>
+		/// <para>Returns collision extents vector for this Actor, based on GetSimpleCollisionCylinder(). </para>
 		/// </summary>
 		public FVector GetSimpleCollisionCylinderExtent()
 			=> E_AActor_GetSimpleCollisionCylinderExtent(this);
 		
 		
 		/// <summary>
-		/// <para>@returns the half height of the collision cylinder from GetSimpleCollisionCylinder(). </para>
+		/// <para>Returns the half height of the collision cylinder from GetSimpleCollisionCylinder(). </para>
 		/// </summary>
 		public float GetSimpleCollisionHalfHeight()
 			=> E_AActor_GetSimpleCollisionHalfHeight(this);
 		
 		
 		/// <summary>
-		/// <para>@returns the radius of the collision cylinder from GetSimpleCollisionCylinder(). </para>
+		/// <para>Returns the radius of the collision cylinder from GetSimpleCollisionCylinder(). </para>
 		/// </summary>
 		public float GetSimpleCollisionRadius()
 			=> E_AActor_GetSimpleCollisionRadius(this);
@@ -2390,7 +2368,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>returns TearOff status </para>
+		/// <para>If true, this actor is no longer replicated to new clients, and is "torn off" (becomes a ROLE_Authority) on clients to which it was being replicated. </para>
 		/// </summary>
 		public bool GetTearOff()
 			=> E_AActor_GetTearOff(this);
@@ -2461,10 +2439,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Does this actor have a locally controlled owner responsible for replication? (APlayerController typically) </para>
+		/// <return>true if this actor can call RPCs or false if no such owner chain exists </return>
+		/// </summary>
+		public virtual bool HasLocalNetOwner()
+			=> E_AActor_HasLocalNetOwner(this);
+		
+		
+		/// <summary>
 		/// <para>Does this actor have an owner responsible for replication? (APlayerController typically) </para>
 		/// <return>true if this actor can call RPCs or false if no such owner chain exists </return>
 		/// </summary>
-		protected virtual bool HasNetOwner()
+		public virtual bool HasNetOwner()
 			=> E_AActor_HasNetOwner(this);
 		
 		
@@ -2476,7 +2462,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Incrementally registers components associated with this actor </para>
+		/// <para>Incrementally registers components associated with this actor, used during level streaming </para>
 		/// <param name="NumComponentsToRegister">Number of components to register in this run, 0 for all </param>
 		/// <return>true when all components were registered for this actor </return>
 		/// </summary>
@@ -2485,7 +2471,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Iterate over components array and call InitializeComponent </para>
+		/// <para>Iterate over components array and call InitializeComponent, which happens once per actor </para>
 		/// </summary>
 		public void InitializeComponents()
 			=> E_AActor_InitializeComponents(this);
@@ -2511,12 +2497,16 @@ namespace UnrealEngine
 		public bool IsActorBeginningPlay()
 			=> E_AActor_IsActorBeginningPlay(this);
 		
+		
+		/// <summary>
+		/// <para>Returns true if this actor is currently being destroyed, some gameplay events may be unsafe </para>
+		/// </summary>
 		public bool IsActorBeingDestroyed()
 			=> E_AActor_IsActorBeingDestroyed(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether an actor has been initialized </para>
+		/// <para>Returns whether an actor has been initialized for gameplay </para>
 		/// </summary>
 		public bool IsActorInitialized()
 			=> E_AActor_IsActorInitialized(this);
@@ -2530,7 +2520,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Iterates up the Base chain to see whether or not this Actor is attached to the given Actor </para>
+		/// <para>Iterates up the attachment chain to see whether or not this Actor is attached to the given Actor </para>
 		/// <param name="Other">the Actor to test for </param>
 		/// <return>true if this Actor is attached on Other Actor </return>
 		/// </summary>
@@ -2539,7 +2529,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Iterates up the Base chain to see whether or not this Actor is based on the given Actor </para>
+		/// <para>Iterates up the movement base chain to see whether or not this Actor is based on the given Actor, defaults to checking attachment </para>
 		/// <param name="Other">the Actor to test for </param>
 		/// <return>true if this Actor is based on Other Actor </return>
 		/// </summary>
@@ -2563,7 +2553,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>whether this Actor is in the persistent level, i.e. not a sublevel </para>
+		/// <para>Returns whether this Actor is in the persistent level, i.e. not a sublevel </para>
 		/// </summary>
 		public bool IsInPersistentLevel(bool bIncludeLevelStreamingPersistent = false)
 			=> E_AActor_IsInPersistentLevel(this, bIncludeLevelStreamingPersistent);
@@ -2593,6 +2583,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Checks to see if this actor is relevant for a specific network connection </para>
 		/// <param name="RealViewer">is the "controlling net object" associated with the client for which network relevancy is being checked (typically player controller) </param>
 		/// <param name="ViewTarget">is the Actor being used as the point of view for the RealViewer </param>
 		/// <param name="SrcLocation">is the viewing location </param>
@@ -2646,6 +2637,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Checks to see if this actor is relevant for a recorded replay </para>
 		/// <param name="RealViewer">is the "controlling net object" associated with the client for which network relevancy is being checked (typically player controller) </param>
 		/// <param name="ViewTarget">is the Actor being used as the point of view for the RealViewer </param>
 		/// <param name="SrcLocation">is the viewing location </param>
@@ -2656,7 +2648,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>@returns true if the root component is registered and has collision enabled. </para>
+		/// <para>Returns true if the root component is registered and has collision enabled. </para>
 		/// </summary>
 		public virtual bool IsRootComponentCollisionRegistered()
 			=> E_AActor_IsRootComponentCollisionRegistered(this);
@@ -2795,7 +2787,9 @@ namespace UnrealEngine
 		/// <para>Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered. </para>
 		/// <param name="Parent">Parent to attach to. </param>
 		/// <param name="SocketName">Optional socket to attach to on the parent. </param>
-		/// <param name="AttachmentRules">How to handle transforms when attaching. </param>
+		/// <param name="LocationRule">How to handle translation when attaching. </param>
+		/// <param name="RotationRule">How to handle rotation when attaching. </param>
+		/// <param name="ScaleRule">How to handle scale when attaching. </param>
 		/// <param name="bWeldSimulatedBodies">Whether to weld together simulated physics bodies. </param>
 		/// </summary>
 		public void K2_AttachToComponent(USceneComponent parent, string socketName, EAttachmentRule locationRule, EAttachmentRule rotationRule, EAttachmentRule scaleRule, bool bWeldSimulatedBodies)
@@ -2808,10 +2802,6 @@ namespace UnrealEngine
 		public virtual void DestroyActor()
 			=> E_AActor_K2_DestroyActor(this);
 		
-		
-		/// <summary>
-		/// <para>DEPRECATED - Use Component::DestroyComponent </para>
-		/// </summary>
 		public void DestroyComponent(UActorComponent component)
 			=> E_AActor_K2_DestroyComponent(this, component);
 		
@@ -3112,9 +3102,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when an actor is done spawning into the world (from UWorld::SpawnActor). </para>
+		/// <para>Called when an actor is done spawning into the world (from UWorld::SpawnActor), both in the editor and during gameplay </para>
 		/// <para>For actors with a root component, the location and rotation will have already been set. </para>
-		/// <para>Takes place after any construction scripts have been called </para>
+		/// <para>This is called before calling construction scripts, but after native components have been created </para>
 		/// </summary>
 		public virtual void PostActorCreated()
 			=> E_AActor_PostActorCreated(this);
@@ -3128,7 +3118,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Allow actors to initialize themselves on the C++ side </para>
+		/// <para>Allow actors to initialize themselves on the C++ side after all of their components have been initialized, only called during gameplay </para>
 		/// </summary>
 		public virtual void PostInitializeComponents()
 			=> E_AActor_PostInitializeComponents(this);
@@ -3156,6 +3146,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Always called immediately after a new Role is received from the remote. </para>
+		/// </summary>
+		public virtual void PostNetReceiveRole()
+			=> E_AActor_PostNetReceiveRole(this);
+		
+		
+		/// <summary>
 		/// <para>Update velocity - typically from ReplicatedMovement, not called for simulated physics! </para>
 		/// </summary>
 		public virtual void PostNetReceiveVelocity(FVector newVelocity)
@@ -3163,7 +3160,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called after all the components in the Components array are registered </para>
+		/// <para>Called after all the components in the Components array are registered, called both in editor and during gameplay </para>
 		/// </summary>
 		public virtual void PostRegisterAllComponents()
 			=> E_AActor_PostRegisterAllComponents(this);
@@ -3184,14 +3181,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called immediately before gameplay begins. </para>
+		/// <para>Called right before components are initialized, only called during gameplay </para>
 		/// </summary>
 		public virtual void PreInitializeComponents()
 			=> E_AActor_PreInitializeComponents(this);
 		
 		
 		/// <summary>
-		/// <para>Called before all the components in the Components array are registered </para>
+		/// <para>Called before all the components in the Components array are registered, called both in editor and during gameplay </para>
 		/// </summary>
 		public virtual void PreRegisterAllComponents()
 			=> E_AActor_PreRegisterAllComponents(this);
@@ -3251,6 +3248,10 @@ namespace UnrealEngine
 		protected void ReceiveBeginPlay()
 			=> E_AActor_ReceiveBeginPlay(this);
 		
+		
+		/// <summary>
+		/// <para>Called when the actor has been explicitly destroyed. </para>
+		/// </summary>
 		public void ReceiveDestroyed()
 			=> E_AActor_ReceiveDestroyed(this);
 		
@@ -3269,7 +3270,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Event called every frame </para>
+		/// <para>Event called every frame, if ticking is enabled </para>
 		/// </summary>
 		public void ReceiveTick(float deltaSeconds)
 			=> E_AActor_ReceiveTick(this, deltaSeconds);
@@ -3501,7 +3502,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set LOD Parent Primitive </para>
+		/// <para>Set LOD Parent component for all of our components, normally associated with an ALODActor. </para>
+		/// <param name="InLODParent">This component used to compute visibility when hierarchical LOD is enabled. </param>
+		/// <param name="InParentDrawDistance">Updates the MinDrawDistances of the LODParent </param>
 		/// </summary>
 		public void SetLODParent(UPrimitiveComponent inLODParent, float inParentDrawDistance)
 			=> E_AActor_SetLODParent(this, inLODParent, inParentDrawDistance);
@@ -3592,18 +3595,16 @@ namespace UnrealEngine
 		public virtual bool ShouldTickIfViewportsOnly()
 			=> E_AActor_ShouldTickIfViewportsOnly(this);
 		
-		
-		/// <summary>
-		/// <para>Snap the RootComponent of this Actor to the supplied Actor's root component, optionally at a named socket. It is not valid to call this on components that are not Registered. </para>
-		/// <para>If InSocketName == NAME_None, it will attach to origin of the InParentActor. </para>
-		/// </summary>
 		public void SnapActorTo(AActor inParentActor, string inSocketName)
 			=> E_AActor_SnapRootComponentTo(this, inParentActor, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>The replay system calls this to hack the Role and RemoteRole while recording replays on a client. Only call this if you know what you're doing! </para>
+		/// <para>Calls this to swap the Role and RemoteRole.  Only call this if you know what you're doing! </para>
 		/// </summary>
+		public void SwapRoles()
+			=> E_AActor_SwapRoles(this);
+		
 		public void SwapRolesForReplay()
 			=> E_AActor_SwapRolesForReplay(this);
 		
@@ -3653,7 +3654,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>ticks the actor </para>
+		/// <para>Dispatches the once-per frame Tick() function for this actor </para>
 		/// <param name="DeltaTime">The time slice of this tick </param>
 		/// <param name="TickType">The type of tick that is happening </param>
 		/// <param name="ThisTickFunction">The tick function that is firing, useful for getting the completion handle </param>
@@ -3671,7 +3672,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Iterate over components array and call UninitializeComponent </para>
+		/// <para>Iterate over components array and call UninitializeComponent, called when the actor is ending play </para>
 		/// </summary>
 		public void UninitializeComponents()
 			=> E_AActor_UninitializeComponents(this);
@@ -3679,6 +3680,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Unregister all currently registered components </para>
+		/// <param name="bForReregister">If true, RegisterAllComponents will be called immediately after this so some slow operations can be avoided </param>
 		/// </summary>
 		public virtual void UnregisterAllComponents(bool bForReregister)
 			=> E_AActor_UnregisterAllComponents(this, bForReregister);
@@ -3716,8 +3718,6 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Construction script, the place to spawn components and do other setup. </para>
 		/// <para>@note Name used in CreateBlueprint function </para>
-		/// <param name="Location">The location. </param>
-		/// <param name="Rotation">The rotation. </param>
 		/// </summary>
 		public void ConstructionScript()
 			=> E_AActor_UserConstructionScript(this);

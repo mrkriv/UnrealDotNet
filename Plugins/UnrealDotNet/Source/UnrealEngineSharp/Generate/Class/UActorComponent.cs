@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:91
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:86
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UActorComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UActorComponent_bAllowAnyoneToDestroyMe_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -91,11 +87,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_ComponentTags_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_UActorComponent_CreationMethod_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UActorComponent_CreationMethod_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UActorComponent_OnComponentActivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -109,6 +100,10 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UActorComponent_PrimaryComponentTick_GET(IntPtr Ptr);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UActorComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_Activate(IntPtr self, bool bReset);
@@ -447,6 +442,10 @@ namespace UnrealEngine
 			set => E_PROP_UActorComponent_bAutoRegister_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>True if this component can be modified when it was inherited from a parent actor class </para>
+		/// </summary>
 		public byte bEditableWhenInherited
 		{
 			get => E_PROP_UActorComponent_bEditableWhenInherited_GET(NativePointer);
@@ -533,15 +532,9 @@ namespace UnrealEngine
 			set => E_PROP_UActorComponent_ComponentTags_SET(NativePointer, value);
 		}
 
-		public EComponentCreationMethod CreationMethod
-		{
-			get => (EComponentCreationMethod)E_PROP_UActorComponent_CreationMethod_GET(NativePointer);
-			set => E_PROP_UActorComponent_CreationMethod_SET(NativePointer, (byte)value);
-		}
-
 		
 		/// <summary>
-		/// <para>Main tick function for the Actor </para>
+		/// <para>Main tick function for the Component </para>
 		/// </summary>
 		public FActorComponentTickFunction PrimaryComponentTick
 		{
@@ -551,6 +544,10 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Events
+		
+		/// <summary>
+		/// <para>Called when the component has been activated, with parameter indicating if it was from a reset </para>
+		/// </summary>
 		public event FActorComponentActivatedSignature OnComponentActivated
 		{
 			add
@@ -574,6 +571,10 @@ namespace UnrealEngine
 			_Event_OnComponentActivated?.Invoke(component, bReset);
 		}
 
+		
+		/// <summary>
+		/// <para>Called when the component has been deactivated </para>
+		/// </summary>
 		public event FActorComponentDeactivateSignature OnComponentDeactivated
 		{
 			add
@@ -602,8 +603,8 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Activates the SceneComponent </para>
-		/// <param name="bReset">Whether the activation should be forced even if ShouldActivate returns false. </param>
+		/// <para>Activates the SceneComponent, should be overridden by native child classes. </para>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
 		/// </summary>
 		public virtual void Activate(bool bReset)
 			=> E_UActorComponent_Activate(this, bReset);
@@ -631,7 +632,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checked whether the component class allows reregistration </para>
+		/// <para>Check whether the component class allows reregistration during ReregisterAllComponents </para>
 		/// </summary>
 		public bool AllowReregistration()
 			=> E_UActorComponent_AllowReregistration(this);
@@ -648,7 +649,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>BeginsPlay for the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
+		/// <para>BeginsPlay for the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
 		/// <para>All Components (that want initialization) in the level will be Initialized on load before any </para>
 		/// <para>Actor/Component gets BeginPlay. </para>
 		/// <para>Requires component to be registered and initialized. </para>
@@ -694,7 +695,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Used to create any rendering thread information for this component </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void CreateRenderState_Concurrent()
 			=> E_UActorComponent_CreateRenderState_Concurrent(this);
@@ -723,11 +724,15 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Used to shut down any rendering thread structure for this component </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void DestroyRenderState_Concurrent()
 			=> E_UActorComponent_DestroyRenderState_Concurrent(this);
 		
+		
+		/// <summary>
+		/// <para>Initializes the list of properties that are modified by the UserConstructionScript </para>
+		/// </summary>
 		public void DetermineUCSModifiedProperties()
 			=> E_UActorComponent_DetermineUCSModifiedProperties(this);
 		
@@ -735,17 +740,21 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Uses the bRenderStateDirty/bRenderTransformDirty to perform any necessary work on this component. </para>
 		/// <para>Do not call this directly, call MarkRenderStateDirty, MarkRenderDynamicDataDirty, </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		public void DoDeferredRenderUpdates_Concurrent()
 			=> E_UActorComponent_DoDeferredRenderUpdates_Concurrent(this);
 		
+		
+		/// <summary>
+		/// <para>Returns true if this type of component can ever replicate, override to disable the default behavior </para>
+		/// </summary>
 		public virtual bool GetComponentClassCanReplicate()
 			=> E_UActorComponent_GetComponentClassCanReplicate(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this component has tick enabled or not </para>
+		/// <para>Returns the tick interval for this component's primary tick function, which is the frequency in seconds at which it will be executed </para>
 		/// </summary>
 		public float GetComponentTickInterval()
 			=> E_UActorComponent_GetComponentTickInterval(this);
@@ -797,12 +806,24 @@ namespace UnrealEngine
 		protected void HandleCanEverAffectNavigationChange(bool bForceUpdate = false)
 			=> E_UActorComponent_HandleCanEverAffectNavigationChange(this, bForceUpdate);
 		
+		
+		/// <summary>
+		/// <para>Indicates that OnCreatedComponent has been called, but OnDestroyedComponent has not yet </para>
+		/// </summary>
 		public bool HasBeenCreated()
 			=> E_UActorComponent_HasBeenCreated(this);
 		
+		
+		/// <summary>
+		/// <para>Indicates that InitializeComponent has been called, but UninitializeComponent has not yet </para>
+		/// </summary>
 		public bool HasBeenInitialized()
 			=> E_UActorComponent_HasBeenInitialized(this);
 		
+		
+		/// <summary>
+		/// <para>Indicates that BeginPlay has been called, but EndPlay has not yet </para>
+		/// </summary>
 		public bool HasBegunPlay()
 			=> E_UActorComponent_HasBegunPlay(this);
 		
@@ -815,7 +836,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Initializes the component.  Occurs at level startup. This is before BeginPlay (Actor or Component). </para>
+		/// <para>Initializes the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
 		/// <para>All Components in the level will be Initialized on load before any Actor/Component gets BeginPlay </para>
 		/// <para>Requires component to be registered, and bWantsInitializeComponent to be true. </para>
 		/// </summary>
@@ -855,18 +876,26 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Returns whether this component has tick enabled or not </para>
 		/// </summary>
-		public bool IsComponentTickEnabled()
+		public virtual bool IsComponentTickEnabled()
 			=> E_UActorComponent_IsComponentTickEnabled(this);
 		
+		
+		/// <summary>
+		/// <para>Returns true if instances of this component are created by either the user or simple construction script </para>
+		/// </summary>
 		public bool IsCreatedByConstructionScript()
 			=> E_UActorComponent_IsCreatedByConstructionScript(this);
 		
+		
+		/// <summary>
+		/// <para>True if this component can be modified when it was inherited from a parent actor class </para>
+		/// </summary>
 		public bool IsEditableWhenInherited()
 			=> E_UActorComponent_IsEditableWhenInherited(this);
 		
 		
 		/// <summary>
-		/// <para>override to supply actual logic </para>
+		/// <para>Override to specify that a component is relevant to the navigation system </para>
 		/// </summary>
 		public virtual bool IsNavigationRelevant()
 			=> E_UActorComponent_IsNavigationRelevant(this);
@@ -882,7 +911,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns true if we are replicating and not authorative </para>
+		/// <para>Returns true if we are replicating and this client is not authoritative </para>
 		/// </summary>
 		public bool IsNetSimulating()
 			=> E_UActorComponent_IsNetSimulating(this);
@@ -903,14 +932,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns whether the component's owner is selected. </para>
+		/// <para>Returns whether the component's owner is selected in the editor </para>
 		/// </summary>
 		public bool IsOwnerSelected()
 			=> E_UActorComponent_IsOwnerSelected(this);
 		
 		
 		/// <summary>
-		/// <return>true if the physics 'state' (e.g. physx bodies) are created for this component </return>
+		/// <para>Returns true if the physics 'state' (e.g. physx bodies) are created for this component </para>
 		/// </summary>
 		public bool IsPhysicsStateCreated()
 			=> E_UActorComponent_IsPhysicsStateCreated(this);
@@ -931,14 +960,22 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if the render 'state' (e.g. scene proxy) is created for this component </return>
+		/// <para>Returns true if the render 'state' (e.g. scene proxy) is created for this component </para>
 		/// </summary>
 		public bool IsRenderStateCreated()
 			=> E_UActorComponent_IsRenderStateCreated(this);
 		
+		
+		/// <summary>
+		/// <para>Is this component in need of its whole state being sent to the renderer? </para>
+		/// </summary>
 		public bool IsRenderStateDirty()
 			=> E_UActorComponent_IsRenderStateDirty(this);
 		
+		
+		/// <summary>
+		/// <para>Is this component's transform in need of sending to the renderer? </para>
+		/// </summary>
 		public bool IsRenderTransformDirty()
 			=> E_UActorComponent_IsRenderTransformDirty(this);
 		
@@ -993,7 +1030,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when a component is created (not loaded) </para>
+		/// <para>Called when a component is created (not loaded). This can happen in the editor or during gameplay </para>
 		/// </summary>
 		public virtual void OnComponentCreated()
 			=> E_UActorComponent_OnComponentCreated(this);
@@ -1039,7 +1076,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Blueprint implementable event for when the component is beginning play, called before its Owner's BeginPlay on Actor BeginPlay </para>
+		/// <para>Blueprint implementable event for when the component is beginning play, called before its owning actor's BeginPlay </para>
 		/// <para>or when the component is dynamically created if the Actor has already BegunPlay. </para>
 		/// </summary>
 		public void ReceiveBeginPlay()
@@ -1047,7 +1084,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Event called every frame </para>
+		/// <para>Event called every frame if tick is enabled </para>
 		/// </summary>
 		public void Tick(float deltaSeconds)
 			=> E_UActorComponent_ReceiveTick(this, deltaSeconds);
@@ -1062,7 +1099,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Recreate the render state right away. Generally you always want to call MarkRenderStateDirty instead. </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		public void RecreateRenderState_Concurrent()
 			=> E_UActorComponent_RecreateRenderState_Concurrent(this);
@@ -1078,7 +1115,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Register this component, creating any rendering/physics state. Will also adds to outer Actor's Components array, if not already present. </para>
+		/// <para>Register this component, creating any rendering/physics state. Will also add itself to the outer Actor's Components array, if not already present. </para>
 		/// </summary>
 		public void RegisterComponent()
 			=> E_UActorComponent_RegisterComponent(this);
@@ -1093,6 +1130,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Registers a component with a specific world, which creates any visual/physical state </para>
 		/// <param name="InWorld">The world to register the component with. </param>
 		/// </summary>
 		public void RegisterComponentWithWorld(UWorld inWorld)
@@ -1143,7 +1181,7 @@ namespace UnrealEngine
 		
 		/// <summary>
 		/// <para>Called to send a transform update for this component to the rendering thread </para>
-		/// <para>Caution**, this is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void SendRenderTransform_Concurrent()
 			=> E_UActorComponent_SendRenderTransform_Concurrent(this);
@@ -1152,7 +1190,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Sets whether the component is active or not </para>
 		/// <param name="bNewActive">The new active state of the component </param>
-		/// <param name="bReset">Whether the activation should be forced even if ShouldActivate returns false. </param>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
 		/// </summary>
 		public virtual void SetActive(bool bNewActive, bool bReset)
 			=> E_UActorComponent_SetActive(this, bNewActive, bReset);
@@ -1233,7 +1271,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>"Trigger" related function. Return true if it should activate </para>
+		/// <para>Return true if this component is in a state where it can be activated normally. </para>
 		/// </summary>
 		protected virtual bool ShouldActivate()
 			=> E_UActorComponent_ShouldActivate(this);

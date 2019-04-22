@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\LightComponent.h:40
 
 namespace UnrealEngine
 {
@@ -53,6 +53,9 @@ namespace UnrealEngine
 		private static extern void E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULightComponent_SetIESBrightnessScale(IntPtr self, float newValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetIndirectLightingIntensity(IntPtr self, float newIntensity);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -71,10 +74,16 @@ namespace UnrealEngine
 		private static extern void E_ULightComponent_SetShadowBias(IntPtr self, float newValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULightComponent_SetSpecularScale(IntPtr self, float newValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetTemperature(IntPtr self, float newTemperature);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetTransmission(IntPtr self, bool bNewValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULightComponent_SetUseIESBrightness(IntPtr self, bool bNewValue);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetVolumetricScatteringIntensity(IntPtr self, float newIntensity);
@@ -124,6 +133,9 @@ namespace UnrealEngine
 		public void SetForceCachedShadowsForMovablePrimitives(bool bNewValue)
 			=> E_ULightComponent_SetForceCachedShadowsForMovablePrimitives(this, bNewValue);
 		
+		public void SetIESIntensityScale(float newValue)
+			=> E_ULightComponent_SetIESBrightnessScale(this, newValue);
+		
 		public void SetIndirectLightingIntensity(float newIntensity)
 			=> E_ULightComponent_SetIndirectLightingIntensity(this, newIntensity);
 		
@@ -146,11 +158,17 @@ namespace UnrealEngine
 		public void SetShadowBias(float newValue)
 			=> E_ULightComponent_SetShadowBias(this, newValue);
 		
+		public void SetSpecularScale(float newValue)
+			=> E_ULightComponent_SetSpecularScale(this, newValue);
+		
 		public void SetTemperature(float newTemperature)
 			=> E_ULightComponent_SetTemperature(this, newTemperature);
 		
 		public void SetTransmission(bool bNewValue)
 			=> E_ULightComponent_SetTransmission(this, bNewValue);
+		
+		public void SetUseIESIntensity(bool bNewValue)
+			=> E_ULightComponent_SetUseIESBrightness(this, bNewValue);
 		
 		public void SetVolumetricScatteringIntensity(float newIntensity)
 			=> E_ULightComponent_SetVolumetricScatteringIntensity(this, newIntensity);

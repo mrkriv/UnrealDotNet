@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:254
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:279
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_USkeletalMeshComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkeletalMeshComponent_AreaStiffness_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -51,9 +47,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bCollideWithEnvironment_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern byte E_PROP_USkeletalMeshComponent_bDeferMovementFromSceneQueries_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bDeferKinematicBoneUpdate_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bDeferMovementFromSceneQueries_SET(IntPtr Ptr, byte Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bDeferKinematicBoneUpdate_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bDeferredKinematicUpdate_GET(IntPtr Ptr);
@@ -146,6 +142,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bPrevDisableClothSimulation_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkeletalMeshComponent_bPropagateCurvesToSlaves_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_bPropagateCurvesToSlaves_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bRequiredBonesUpToDate_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_bRequiredBonesUpToDate_SET(IntPtr Ptr, byte Value);
@@ -161,19 +162,39 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bShowPrePhysBones_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkeletalMeshComponent_bSimulationUpdatesChildTransforms_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_bSimulationUpdatesChildTransforms_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkeletalMeshComponent_bSkipBoundsUpdateWhenInterpolating_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_bSkipBoundsUpdateWhenInterpolating_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkeletalMeshComponent_bSkipKinematicUpdateWhenInterpolating_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_bSkipKinematicUpdateWhenInterpolating_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bUpdateJointsFromAnimation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_bUpdateJointsFromAnimation_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkeletalMeshComponent_bUseBendingElements_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bUpdateOverlapsOnAnimationFinalize_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bUseBendingElements_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bUpdateOverlapsOnAnimationFinalize_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bUseBendingElements_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bUseBendingElements_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_GET(IntPtr Ptr);
@@ -181,29 +202,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkeletalMeshComponent_bUseSelfCollisions_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bUseSelfCollisions_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bUseSelfCollisions_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bUseSelfCollisions_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_GET(IntPtr Ptr);
+		private static extern byte E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(IntPtr Ptr, bool Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
+		private static extern void E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkeletalMeshComponent_ClothBlendWeight_GET(IntPtr Ptr);
@@ -231,12 +242,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_LineCheckBoundsScale_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_RagdollAggregateThreshold_SET(IntPtr Ptr, int Value);
@@ -261,11 +266,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_VolumeStiffness_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_USkeletalMeshComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_ClearMorphTargets(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_CreateBodySetup(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern TemplatePointerDescription E_USkeletalMeshComponent_GetCachedComponentSpaceTransforms(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(IntPtr self);
@@ -354,10 +366,10 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Whether animation and world transform updates are deferred. If this is on, the kinematic bodies (scene query data) will not update until the next time the physics simulation is run </para>
 		/// </summary>
-		public byte bDeferMovementFromSceneQueries
+		public byte bDeferKinematicBoneUpdate
 		{
-			get => E_PROP_USkeletalMeshComponent_bDeferMovementFromSceneQueries_GET(NativePointer);
-			set => E_PROP_USkeletalMeshComponent_bDeferMovementFromSceneQueries_SET(NativePointer, value);
+			get => E_PROP_USkeletalMeshComponent_bDeferKinematicBoneUpdate_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bDeferKinematicBoneUpdate_SET(NativePointer, value);
 		}
 
 		
@@ -519,6 +531,16 @@ namespace UnrealEngine
 			set => E_PROP_USkeletalMeshComponent_bPrevDisableClothSimulation_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>If true, propagates calls to ApplyAnimationCurvesToComponent for slave components, only needed if slave components do not tick themselves </para>
+		/// </summary>
+		public byte bPropagateCurvesToSlaves
+		{
+			get => E_PROP_USkeletalMeshComponent_bPropagateCurvesToSlaves_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bPropagateCurvesToSlaves_SET(NativePointer, value);
+		}
+
 		public byte bRequiredBonesUpToDate
 		{
 			get => E_PROP_USkeletalMeshComponent_bRequiredBonesUpToDate_GET(NativePointer);
@@ -543,6 +565,36 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Indicates that simulation (if it's enabled) is entirely responsible for children transforms. This is only ok if you are not animating attachment points relative to the simulation </para>
+		/// </summary>
+		public byte bSimulationUpdatesChildTransforms
+		{
+			get => E_PROP_USkeletalMeshComponent_bSimulationUpdatesChildTransforms_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bSimulationUpdatesChildTransforms_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to skip bounds update when interpolating. Bounds are updated to the target interpolation pose only on ticks when they are evaluated. </para>
+		/// </summary>
+		public byte bSkipBoundsUpdateWhenInterpolating
+		{
+			get => E_PROP_USkeletalMeshComponent_bSkipBoundsUpdateWhenInterpolating_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bSkipBoundsUpdateWhenInterpolating_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to skip UpdateKinematicBonesToAnim() when interpolating. Kinematic bones are updated to the target interpolation pose only on ticks when they are evaluated. </para>
+		/// </summary>
+		public byte bSkipKinematicUpdateWhenInterpolating
+		{
+			get => E_PROP_USkeletalMeshComponent_bSkipKinematicUpdateWhenInterpolating_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bSkipKinematicUpdateWhenInterpolating_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If we should pass joint position to joints each frame, so that they can be used by motorized joints to drive the </para>
 		/// <para>ragdoll based on the animation. </para>
 		/// </summary>
@@ -552,13 +604,23 @@ namespace UnrealEngine
 			set => E_PROP_USkeletalMeshComponent_bUpdateJointsFromAnimation_SET(NativePointer, value);
 		}
 
-		public bool bUseBendingElements
+		
+		/// <summary>
+		/// <para>Controls whether blending in physics bones will refresh overlaps on this component, defaults to true but can be disabled in cases where we know anim->physics blending doesn't meaningfully change overlaps </para>
+		/// </summary>
+		public byte bUpdateOverlapsOnAnimationFinalize
+		{
+			get => E_PROP_USkeletalMeshComponent_bUpdateOverlapsOnAnimationFinalize_GET(NativePointer);
+			set => E_PROP_USkeletalMeshComponent_bUpdateOverlapsOnAnimationFinalize_SET(NativePointer, value);
+		}
+
+		public byte bUseBendingElements
 		{
 			get => E_PROP_USkeletalMeshComponent_bUseBendingElements_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bUseBendingElements_SET(NativePointer, value);
 		}
 
-		public bool bUseContinuousCollisionDetection
+		public byte bUseContinuousCollisionDetection
 		{
 			get => E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bUseContinuousCollisionDetection_SET(NativePointer, value);
@@ -574,34 +636,22 @@ namespace UnrealEngine
 			set => E_PROP_USkeletalMeshComponent_bUseRefPoseOnInitAnim_SET(NativePointer, value);
 		}
 
-		public bool bUseSelfCollisions
+		public byte bUseSelfCollisions
 		{
 			get => E_PROP_USkeletalMeshComponent_bUseSelfCollisions_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bUseSelfCollisions_SET(NativePointer, value);
 		}
 
-		public bool bUseTetrahedralConstraints
+		public byte bUseTetrahedralConstraints
 		{
 			get => E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bUseTetrahedralConstraints_SET(NativePointer, value);
 		}
 
-		public bool bUseThinShellVolumeConstraints
+		public byte bUseThinShellVolumeConstraints
 		{
 			get => E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bUseThinShellVolumeConstraints_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> CachedBoneSpaceTransforms
-		{
-			get => E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_GET(NativePointer);
-			set => E_PROP_USkeletalMeshComponent_CachedBoneSpaceTransforms_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> CachedComponentSpaceTransforms
-		{
-			get => E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_GET(NativePointer);
-			set => E_PROP_USkeletalMeshComponent_CachedComponentSpaceTransforms_SET(NativePointer, value);
 		}
 
 		
@@ -679,32 +729,6 @@ namespace UnrealEngine
 
 		#endregion
 		
-		#region Events
-		public event FConstraintBrokenSignature OnConstraintBroken
-		{
-			add
-			{
-				E_EVENT_ADD_USkeletalMeshComponent_OnConstraintBroken(NativePointer);
-				_Event_OnConstraintBroken += value;
-			}
-
-			remove
-			{
-				E_EVENT_DEL_USkeletalMeshComponent_OnConstraintBroken(NativePointer);
-				_Event_OnConstraintBroken -= value;
-			}
-
-		}
-
-		private event FConstraintBrokenSignature _Event_OnConstraintBroken;
-		
-		internal void InvokeEvent_OnConstraintBroken(int constraintIndex)
-		{
-			_Event_OnConstraintBroken?.Invoke(constraintIndex);
-		}
-
-		#endregion
-		
 		#region ExternMethods
 		
 		/// <summary>
@@ -715,6 +739,13 @@ namespace UnrealEngine
 		
 		public void CreateBodySetup()
 			=> E_USkeletalMeshComponent_CreateBodySetup(this);
+		
+		
+		/// <summary>
+		/// <para>Access cached component space transforms </para>
+		/// </summary>
+		public TArray<FTransform> GetCachedComponentSpaceTransforms()
+			=> E_USkeletalMeshComponent_GetCachedComponentSpaceTransforms(this);
 		
 		public bool GetDisablePostProcessBlueprint()
 			=> E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(this);

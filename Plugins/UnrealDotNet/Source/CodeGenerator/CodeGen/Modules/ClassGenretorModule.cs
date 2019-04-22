@@ -159,7 +159,10 @@ namespace CodeGenerator.CodeGen.Modules
 
         private void GenerateMethod(CodeWriter cw, Method method)
         {
-            if (method.OwnerClass.IsFinal && method.AccessModifier != AccessModifier.Public)
+            if (method.AccessModifier == AccessModifier.Private)
+                return;
+            
+            if (method.OwnerClass.IsFinal && method.AccessModifier == AccessModifier.Protected)
                 return;
 
             var param = GetMethodSignatuteParam(method);

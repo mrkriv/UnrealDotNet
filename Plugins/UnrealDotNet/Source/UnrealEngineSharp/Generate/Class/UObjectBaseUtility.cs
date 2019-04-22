@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h:23
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h:25
 
 namespace UnrealEngine
 {
@@ -108,12 +108,21 @@ namespace UnrealEngine
 		/// <param name="ClusterRootOrObjectFromCluster">Object that belongs to the cluster we want to add this object to. </param>
 		/// <param name="Add">this object to the target cluster as a mutable object without adding this object's references. </param>
 		/// </summary>
-		public virtual void AddToCluster(UObjectBaseUtility clusterRootOrObjectFromCluster, bool bAddAsMutableObject)
+		public void AddToCluster(UObjectBaseUtility clusterRootOrObjectFromCluster, bool bAddAsMutableObject = false)
 			=> E_UObjectBaseUtility_AddToCluster(this, clusterRootOrObjectFromCluster, bAddAsMutableObject);
 		
+		
+		/// <summary>
+		/// <para>Add an object to the root set. This prevents the object and all </para>
+		/// <para>its descendants from being deleted during garbage collection. </para>
+		/// </summary>
 		public void AddToRoot()
 			=> E_UObjectBaseUtility_AddToRoot(this);
 		
+		
+		/// <summary>
+		/// <para>Optimized version of GetName that appends to an existing string </para>
+		/// </summary>
 		public void AppendName(string resultString)
 			=> E_UObjectBaseUtility_AppendName(this, resultString);
 		
@@ -208,6 +217,10 @@ namespace UnrealEngine
 		public string GetName()
 			=> E_UObjectBaseUtility_GetName(this);
 		
+		
+		/// <summary>
+		/// <para>Optimized version of GetName that overwries an existing string </para>
+		/// </summary>
 		public void GetName(string resultString)
 			=> E_UObjectBaseUtility_GetName_o1(this, resultString);
 		
@@ -240,7 +253,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if the specified object appears somewhere in this object's outer chain. </return>
+		/// <para>Returns true if the specified object appears somewhere in this object's outer chain. </para>
 		/// </summary>
 		public bool IsIn(UObject someOuter)
 			=> E_UObjectBaseUtility_IsIn(this, someOuter);
@@ -304,6 +317,10 @@ namespace UnrealEngine
 		public virtual void OnClusterMarkedAsPendingKill()
 			=> E_UObjectBaseUtility_OnClusterMarkedAsPendingKill(this);
 		
+		
+		/// <summary>
+		/// <para>Remove an object from the root set. </para>
+		/// </summary>
 		public void RemoveFromRoot()
 			=> E_UObjectBaseUtility_RemoveFromRoot(this);
 		

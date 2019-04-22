@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:103
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:106
 
 namespace UnrealEngine
 {
@@ -24,9 +24,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
-		/// <param name="bMaintainWorldPosition">If true, update the relative location of the component to keep its world position the same </param>
-		/// <param name="bCallModify">If true, call Modify() on the component and the current attach parent component </param>
+		/// <para>DEPRECATED - Use DetachFromComponent() instead </para>
 		/// </summary>
 		public override void DetachFromParentDeprecated(bool bMaintainWorldPosition, bool bCallModify) { }
 		
@@ -56,6 +54,10 @@ namespace UnrealEngine
 		/// </summary>
 		protected override void OnHiddenInGameChanged() { }
 		
+		
+		/// <summary>
+		/// <para>Native callback when this component is moved </para>
+		/// </summary>
 		protected override void OnUpdateTransform(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport) { }
 		
 		
@@ -64,6 +66,10 @@ namespace UnrealEngine
 		/// </summary>
 		protected override void OnVisibilityChanged() { }
 		
+		
+		/// <summary>
+		/// <para>Updates any visuals after the lighting has changed </para>
+		/// </summary>
 		public override void PropagateLightingScenarioChange() { }
 		
 		

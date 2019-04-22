@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:870
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:852
 
 namespace UnrealEngine
 {
@@ -62,6 +62,10 @@ namespace UnrealEngine
 		public FCollisionResponseContainer CreateMinContainer(FCollisionResponseContainer a, FCollisionResponseContainer b)
 			=> E_FCollisionResponseContainer_CreateMinContainer(this, a, b);
 		
+		
+		/// <summary>
+		/// <para>Returns the game-wide default collision response </para>
+		/// </summary>
 		public FCollisionResponseContainer GetDefaultResponseContainer()
 			=> E_FCollisionResponseContainer_GetDefaultResponseContainer(this);
 		

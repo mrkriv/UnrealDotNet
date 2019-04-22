@@ -6,7 +6,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:80
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:109
 
 bool AManageActor::AddWrapperIfNotAttach()
 {
@@ -293,6 +293,14 @@ void AManageActor::PostNetReceivePhysicState()
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceivePhysicState");
+}
+
+void AManageActor::PostNetReceiveRole()
+{
+	Super::PostNetReceiveRole();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveRole");
 }
 
 void AManageActor::PostNetReceiveVelocity(const FVector& NewVelocity)

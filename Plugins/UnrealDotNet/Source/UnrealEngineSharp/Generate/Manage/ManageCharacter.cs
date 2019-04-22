@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 namespace UnrealEngine
 {
@@ -155,6 +155,12 @@ namespace UnrealEngine
 		public override void OnUpdateSimulatedPosition(FVector oldLocation, FQuat oldRotation) { }
 		
 		public override void OnWalkingOffLedge_Implementation(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta) { }
+		
+		
+		/// <summary>
+		/// <para>Marks character as not trying to jump </para>
+		/// </summary>
+		public override void ResetJumpState() { }
 		
 		public override void RootMotionDebugClientPrintOnScreen_Implementation(string inString) { }
 		

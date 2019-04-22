@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_ACharacter(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_ACharacter_CapsuleComponentName_GET();
 		
@@ -102,6 +98,10 @@ namespace UnrealEngine
 		private static extern TemplatePointerDescription E_PROP_ACharacter_RootMotionRepMoves_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_RootMotionRepMoves_SET(IntPtr Ptr, IntPtr Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_ACharacter(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_ApplyDamageMomentum(IntPtr self, float damageTaken, IntPtr damageEvent, IntPtr pawnInstigator, IntPtr damageCauser);
@@ -209,6 +209,9 @@ namespace UnrealEngine
 		private static extern float E_ACharacter_GetReplicatedServerLastTransformUpdateTimeStamp(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_HasAnyRootMotion(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ACharacter_IsJumpProvidingForce(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -270,6 +273,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnRep_IsCrouched(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_OnRep_ReplayLastTransformUpdateTimeStamp(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_OnRep_ReplicatedBasedMovement(IntPtr self);
@@ -784,6 +790,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>True if we are playing root motion from any source right now (anim root motion, root motion source) </para>
+		/// </summary>
+		public bool HasAnyRootMotion()
+			=> E_ACharacter_HasAnyRootMotion(this);
+		
+		
+		/// <summary>
 		/// <para>True if jump is actively providing a force, such as when the jump key is held and the time it has been held is less than JumpMaxHoldTime. </para>
 		/// <para>@see CharacterMovement->IsFalling </para>
 		/// </summary>
@@ -800,9 +813,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>True if we are playing Root Motion right now </para>
+		/// <para>True if we are playing Anim root motion right now </para>
 		/// </summary>
-		public bool IsPlayingRootMotion()
+		public bool IsPlayingAnimRootMotion()
 			=> E_ACharacter_IsPlayingRootMotion(this);
 		
 		
@@ -935,6 +948,9 @@ namespace UnrealEngine
 		public virtual void OnRep_IsCrouched()
 			=> E_ACharacter_OnRep_IsCrouched(this);
 		
+		public void OnRep_ReplayLastTransformUpdateTimeStamp()
+			=> E_ACharacter_OnRep_ReplayLastTransformUpdateTimeStamp(this);
+		
 		public virtual void OnRep_ReplicatedBasedMovement()
 			=> E_ACharacter_OnRep_ReplicatedBasedMovement(this);
 		
@@ -979,7 +995,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Marks character as not trying to jump </para>
 		/// </summary>
-		public void ResetJumpState()
+		public virtual void ResetJumpState()
 			=> E_ACharacter_ResetJumpState(this);
 		
 		

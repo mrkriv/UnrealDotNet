@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:157
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:159
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UCharacterMovementComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_AirControl_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -56,19 +52,174 @@ namespace UnrealEngine
 		private static extern void E_PROP_UCharacterMovementComponent_AvoidanceWeight_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UCharacterMovementComponent_bAllowPhysicsRotationDuringAnimRootMotion_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UCharacterMovementComponent_bAllowPhysicsRotationDuringAnimRootMotion_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UCharacterMovementComponent_bAlwaysCheckFloor_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UCharacterMovementComponent_bAlwaysCheckFloor_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UCharacterMovementComponent_bApplyGravityWhileJumping_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UCharacterMovementComponent_bApplyGravityWhileJumping_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bCanWalkOffLedges_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bCanWalkOffLedges_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bCanWalkOffLedgesWhenCrouching_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bCanWalkOffLedgesWhenCrouching_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bCheatFlying_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bCheatFlying_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bCrouchMaintainsBaseLocation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bCrouchMaintainsBaseLocation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bDeferUpdateMoveComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bDeferUpdateMoveComponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bEnableScopedMovementUpdates_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bEnableScopedMovementUpdates_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bEnableServerDualMoveScopedMovementUpdates_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bEnableServerDualMoveScopedMovementUpdates_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bFastAttachedMove_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bFastAttachedMove_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bForceMaxAccel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bForceMaxAccel_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bForceNextFloorCheck_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bForceNextFloorCheck_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bIgnoreBaseRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bIgnoreBaseRotation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bIgnoreClientMovementErrorChecksAndCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bIgnoreClientMovementErrorChecksAndCorrection_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bImpartBaseAngularVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bImpartBaseAngularVelocity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bImpartBaseVelocityX_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bImpartBaseVelocityX_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bImpartBaseVelocityY_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bImpartBaseVelocityY_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bImpartBaseVelocityZ_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bImpartBaseVelocityZ_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bIsNavWalkingOnServer_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bIsNavWalkingOnServer_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bJustTeleported_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bJustTeleported_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bMaintainHorizontalGroundVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bMaintainHorizontalGroundVelocity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkAlwaysReplicateTransformUpdateTimestamp_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkAlwaysReplicateTransformUpdateTimestamp_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkLargeClientCorrection_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkLargeClientCorrection_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkMovementModeChanged_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkMovementModeChanged_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkSkipProxyPredictionOnNetUpdate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkSkipProxyPredictionOnNetUpdate_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkSmoothingComplete_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkSmoothingComplete_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNetworkUpdateReceived_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNetworkUpdateReceived_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bNotifyApex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bNotifyApex_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bOrientRotationToMovement_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bOrientRotationToMovement_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bPerformingJumpOff_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bPerformingJumpOff_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_BrakingDecelerationFalling_GET(IntPtr Ptr);
@@ -101,19 +252,79 @@ namespace UnrealEngine
 		private static extern void E_PROP_UCharacterMovementComponent_BrakingFrictionFactor_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_GET(IntPtr Ptr);
+		private static extern float E_PROP_UCharacterMovementComponent_BrakingSubStepTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UCharacterMovementComponent_BrakingSubStepTime_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_GET(IntPtr Ptr);
+		private static extern byte E_PROP_UCharacterMovementComponent_bRequestedMoveUseAcceleration_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_SET(IntPtr Ptr, bool Value);
+		private static extern void E_PROP_UCharacterMovementComponent_bRequestedMoveUseAcceleration_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bRunPhysicsWithNoController_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bRunPhysicsWithNoController_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bShrinkProxyCapsule_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bShrinkProxyCapsule_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bSweepWhileNavWalking_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bSweepWhileNavWalking_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UCharacterMovementComponent_Buoyancy_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_Buoyancy_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bUseControllerDesiredRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bUseControllerDesiredRotation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bUseFlatBaseForFloorChecks_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bUseFlatBaseForFloorChecks_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bUseRVOAvoidance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bUseRVOAvoidance_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bUseSeparateBrakingFriction_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bUseSeparateBrakingFriction_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bWantsToCrouch_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bWantsToCrouch_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bWantsToLeaveNavWalking_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bWantsToLeaveNavWalking_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UCharacterMovementComponent_bWasSimulatingRootMotion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_bWasSimulatingRootMotion_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UCharacterMovementComponent_CachedProjectedNavMeshHitResult_GET(IntPtr Ptr);
@@ -124,11 +335,6 @@ namespace UnrealEngine
 		private static extern float E_PROP_UCharacterMovementComponent_CrouchedHalfHeight_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_CrouchedHalfHeight_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UCharacterMovementComponent_CrouchedSpeedMultiplier_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_CrouchedSpeedMultiplier_DEPRECATED_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UCharacterMovementComponent_CurrentFloor_GET(IntPtr Ptr);
@@ -440,10 +646,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_TouchForceFactor_SET(IntPtr Ptr, float Value);
 		
+		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_UCharacterMovementComponent_UpperImpactNormalScale_DEPRECATED_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UCharacterMovementComponent_UpperImpactNormalScale_DEPRECATED_SET(IntPtr Ptr, float Value);
+		private static extern IntPtr E_NewObject_UCharacterMovementComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_AddForce(IntPtr self, IntPtr force);
@@ -563,7 +768,7 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_FindBestNavMeshLocation(IntPtr self, IntPtr traceStart, IntPtr traceEnd, IntPtr currentFeetLocation, IntPtr targetNavLocation, IntPtr outHitResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UCharacterMovementComponent_FindFloor(IntPtr self, IntPtr capsuleLocation, IntPtr outFloorResult, bool bZeroDelta, IntPtr downwardSweepResult);
+		private static extern void E_UCharacterMovementComponent_FindFloor(IntPtr self, IntPtr capsuleLocation, IntPtr outFloorResult, bool bCanUseCachedLocation, IntPtr downwardSweepResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_FindWaterLine(IntPtr self, IntPtr start, IntPtr end);
@@ -600,6 +805,18 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_GetImpartedMovementBaseVelocity(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetLastUpdateLocation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetLastUpdateQuat(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetLastUpdateRotation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_UCharacterMovementComponent_GetLastUpdateVelocity(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_GetLedgeMove(IntPtr self, IntPtr oldLocation, IntPtr delta, IntPtr gravDir);
@@ -657,6 +874,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_HandleSwimmingWallHit(IntPtr self, IntPtr hit, float deltaTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_HandleWalkingOffLedge(IntPtr self, IntPtr previousFloorImpactNormal, IntPtr previousFloorContactNormal, IntPtr previousLocation, float timeDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_HasRootMotionSources(IntPtr self);
@@ -917,6 +1137,9 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_UpdateFromCompressedFlags(IntPtr self, byte flags);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_UpdateProxyAcceleration(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_VisualizeMovement(IntPtr self);
 		
 		#endregion
@@ -981,11 +1204,84 @@ namespace UnrealEngine
 			set => E_PROP_UCharacterMovementComponent_AvoidanceWeight_SET(NativePointer, value);
 		}
 
+		public byte bAllowPhysicsRotationDuringAnimRootMotion
+		{
+			get => E_PROP_UCharacterMovementComponent_bAllowPhysicsRotationDuringAnimRootMotion_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bAllowPhysicsRotationDuringAnimRootMotion_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether we always force floor checks for stationary Characters while walking. </para>
+		/// <para>Normally floor checks are avoided if possible when not moving, but this can be used to force them if there are use-cases where they are being skipped erroneously </para>
+		/// <para>(such as objects moving up into the character from below). </para>
+		/// </summary>
+		public byte bAlwaysCheckFloor
+		{
+			get => E_PROP_UCharacterMovementComponent_bAlwaysCheckFloor_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bAlwaysCheckFloor_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Apply gravity while the character is actively jumping (e.g. holding the jump key). </para>
+		/// <para>Helps remove frame-rate dependent jump height, but may alter base jump height. </para>
+		/// </summary>
+		public byte bApplyGravityWhileJumping
+		{
+			get => E_PROP_UCharacterMovementComponent_bApplyGravityWhileJumping_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bApplyGravityWhileJumping_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, Character can walk off a ledge. </para>
+		/// </summary>
+		public byte bCanWalkOffLedges
+		{
+			get => E_PROP_UCharacterMovementComponent_bCanWalkOffLedges_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bCanWalkOffLedges_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, Character can walk off a ledge when crouching. </para>
+		/// </summary>
+		public byte bCanWalkOffLedgesWhenCrouching
+		{
+			get => E_PROP_UCharacterMovementComponent_bCanWalkOffLedgesWhenCrouching_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bCanWalkOffLedgesWhenCrouching_SET(NativePointer, value);
+		}
+
+		public byte bCheatFlying
+		{
+			get => E_PROP_UCharacterMovementComponent_bCheatFlying_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bCheatFlying_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, crouching should keep the base of the capsule in place by lowering the center of the shrunken capsule. If false, the base of the capsule moves up and the center stays in place. </para>
+		/// <para>The same behavior applies when the character uncrouches: if true, the base is kept in the same location and the center moves up. If false, the capsule grows and only moves up if the base impacts something. </para>
+		/// <para>By default this variable is set when the movement mode changes: set to true when walking and false otherwise. Feel free to override the behavior when the movement mode changes. </para>
+		/// </summary>
+		public byte bCrouchMaintainsBaseLocation
+		{
+			get => E_PROP_UCharacterMovementComponent_bCrouchMaintainsBaseLocation_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bCrouchMaintainsBaseLocation_SET(NativePointer, value);
+		}
+
+		public byte bDeferUpdateMoveComponent
+		{
+			get => E_PROP_UCharacterMovementComponent_bDeferUpdateMoveComponent_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bDeferUpdateMoveComponent_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>If enabled, the player will interact with physics objects when walking into them. </para>
 		/// </summary>
-		public bool bEnablePhysicsInteraction
+		public byte bEnablePhysicsInteraction
 		{
 			get => E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_bEnablePhysicsInteraction_SET(NativePointer, value);
@@ -993,9 +1289,241 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>If true, high-level movement updates will be wrapped in a movement scope that accumulates updates and defers a bulk of the work until the end. </para>
+		/// <para>When enabled, touch and hit events will not be triggered until the end of multiple moves within an update, which can improve performance. </para>
+		/// <para>@see FScopedMovementUpdate </para>
+		/// </summary>
+		public byte bEnableScopedMovementUpdates
+		{
+			get => E_PROP_UCharacterMovementComponent_bEnableScopedMovementUpdates_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bEnableScopedMovementUpdates_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Optional scoped movement update to combine moves for cheaper performance on the server when the client sends two moves in one packet. </para>
+		/// <para>Be warned that since this wraps a larger scope than is normally done with bEnableScopedMovementUpdates, this can result in subtle changes in behavior </para>
+		/// <para>in regards to when overlap events are handled, when attached components are moved, etc. </para>
+		/// <para>@see bEnableScopedMovementUpdates </para>
+		/// </summary>
+		public byte bEnableServerDualMoveScopedMovementUpdates
+		{
+			get => E_PROP_UCharacterMovementComponent_bEnableServerDualMoveScopedMovementUpdates_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bEnableServerDualMoveScopedMovementUpdates_SET(NativePointer, value);
+		}
+
+		public byte bFastAttachedMove
+		{
+			get => E_PROP_UCharacterMovementComponent_bFastAttachedMove_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bFastAttachedMove_SET(NativePointer, value);
+		}
+
+		public byte bForceMaxAccel
+		{
+			get => E_PROP_UCharacterMovementComponent_bForceMaxAccel_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bForceMaxAccel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Force the Character in MOVE_Walking to do a check for a valid floor even if he hasn't moved. Cleared after next floor check. </para>
+		/// <para>Normally if bAlwaysCheckFloor is false we try to avoid the floor check unless some conditions are met, but this can be used to force the next check to always run. </para>
+		/// </summary>
+		public byte bForceNextFloorCheck
+		{
+			get => E_PROP_UCharacterMovementComponent_bForceNextFloorCheck_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bForceNextFloorCheck_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether the character ignores changes in rotation of the base it is standing on. </para>
+		/// <para>If true, the character maintains current world rotation. </para>
+		/// <para>If false, the character rotates with the moving base. </para>
+		/// </summary>
+		public byte bIgnoreBaseRotation
+		{
+			get => E_PROP_UCharacterMovementComponent_bIgnoreBaseRotation_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bIgnoreBaseRotation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>True when we should ignore server location difference checks for client error on this movement component </para>
+		/// <para>This can be useful when character is moving at extreme speeds for a duration and you need it to look </para>
+		/// <para>smooth on clients. Make sure to disable when done, as this would break this character's server-client </para>
+		/// <para>movement correction. </para>
+		/// </summary>
+		public byte bIgnoreClientMovementErrorChecksAndCorrection
+		{
+			get => E_PROP_UCharacterMovementComponent_bIgnoreClientMovementErrorChecksAndCorrection_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bIgnoreClientMovementErrorChecksAndCorrection_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, impart the base component's tangential components of angular velocity when jumping or falling off it. </para>
+		/// <para>Only those components of the velocity allowed by the separate component settings (bImpartBaseVelocityX etc) will be applied. </para>
+		/// <para>@see bImpartBaseVelocityX, bImpartBaseVelocityY, bImpartBaseVelocityZ </para>
+		/// </summary>
+		public byte bImpartBaseAngularVelocity
+		{
+			get => E_PROP_UCharacterMovementComponent_bImpartBaseAngularVelocity_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bImpartBaseAngularVelocity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, impart the base actor's X velocity when falling off it (which includes jumping) </para>
+		/// </summary>
+		public byte bImpartBaseVelocityX
+		{
+			get => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityX_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityX_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, impart the base actor's Y velocity when falling off it (which includes jumping) </para>
+		/// </summary>
+		public byte bImpartBaseVelocityY
+		{
+			get => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityY_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityY_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, impart the base actor's Z velocity when falling off it (which includes jumping) </para>
+		/// </summary>
+		public byte bImpartBaseVelocityZ
+		{
+			get => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityZ_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bImpartBaseVelocityZ_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Set on clients when server's movement mode is NavWalking </para>
+		/// </summary>
+		public byte bIsNavWalkingOnServer
+		{
+			get => E_PROP_UCharacterMovementComponent_bIsNavWalkingOnServer_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bIsNavWalkingOnServer_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Used by movement code to determine if a change in position is based on normal movement or a teleport. If not a teleport, velocity can be recomputed based on the change in position. </para>
+		/// </summary>
+		public byte bJustTeleported
+		{
+			get => E_PROP_UCharacterMovementComponent_bJustTeleported_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bJustTeleported_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, walking movement always maintains horizontal velocity when moving up ramps, which causes movement up ramps to be faster parallel to the ramp surface. </para>
+		/// <para>If false, then walking movement maintains velocity magnitude parallel to the ramp surface. </para>
+		/// </summary>
+		public byte bMaintainHorizontalGroundVelocity
+		{
+			get => E_PROP_UCharacterMovementComponent_bMaintainHorizontalGroundVelocity_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bMaintainHorizontalGroundVelocity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Flag used on the server to determine whether to always replicate ReplicatedServerLastTransformUpdateTimeStamp to clients. </para>
+		/// <para>Normally this is only sent when the network smoothing mode on character movement is set to Linear smoothing (on the server), to save bandwidth. </para>
+		/// <para>Setting this to true will force the timestamp to replicate regardless, in case the server doesn't know about the smoothing mode, or if the timestamp is used for another purpose. </para>
+		/// </summary>
+		public byte bNetworkAlwaysReplicateTransformUpdateTimestamp
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkAlwaysReplicateTransformUpdateTimestamp_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkAlwaysReplicateTransformUpdateTimestamp_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Flag indicating the client correction was larger than NetworkLargeClientCorrectionThreshold. </para>
+		/// </summary>
+		public byte bNetworkLargeClientCorrection
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkLargeClientCorrection_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkLargeClientCorrection_SET(NativePointer, value);
+		}
+
+		public byte bNetworkMovementModeChanged
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkMovementModeChanged_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkMovementModeChanged_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether we skip prediction on frames where a proxy receives a network update. This can avoid expensive prediction on those frames, </para>
+		/// <para>with the side-effect of predicting with a frame of additional latency. </para>
+		/// </summary>
+		public byte bNetworkSkipProxyPredictionOnNetUpdate
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkSkipProxyPredictionOnNetUpdate_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkSkipProxyPredictionOnNetUpdate_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Signals that smoothed position/rotation has reached target, and no more smoothing is necessary until a future update. </para>
+		/// <para>This is used as an optimization to skip calls to SmoothClientPosition() when true. SmoothCorrection() sets it false when a new network update is received. </para>
+		/// <para>SmoothClientPosition_Interpolate() sets this to true when the interpolation reaches the target, before one last call to SmoothClientPosition_UpdateVisuals(). </para>
+		/// <para>If this is not desired, override SmoothClientPosition() to always set this to false to avoid this feature. </para>
+		/// </summary>
+		public byte bNetworkSmoothingComplete
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkSmoothingComplete_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkSmoothingComplete_SET(NativePointer, value);
+		}
+
+		public byte bNetworkUpdateReceived
+		{
+			get => E_PROP_UCharacterMovementComponent_bNetworkUpdateReceived_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNetworkUpdateReceived_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, event NotifyJumpApex() to CharacterOwner's controller when at apex of jump. Is cleared when event is triggered. </para>
+		/// <para>By default this is off, and if you want the event to fire you typically set it to true when movement mode changes to "Falling" from another mode (see OnMovementModeChanged). </para>
+		/// </summary>
+		public byte bNotifyApex
+		{
+			get => E_PROP_UCharacterMovementComponent_bNotifyApex_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bNotifyApex_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, rotate the Character toward the direction of acceleration, using RotationRate as the rate of rotation change. Overrides UseControllerDesiredRotation. </para>
+		/// <para>Normally you will want to make sure that other settings are cleared, such as bUseControllerRotationYaw on the Character. </para>
+		/// </summary>
+		public byte bOrientRotationToMovement
+		{
+			get => E_PROP_UCharacterMovementComponent_bOrientRotationToMovement_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bOrientRotationToMovement_SET(NativePointer, value);
+		}
+
+		public byte bPerformingJumpOff
+		{
+			get => E_PROP_UCharacterMovementComponent_bPerformingJumpOff_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bPerformingJumpOff_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If enabled, the PushForceFactor is applied per kg mass of the affected object. </para>
 		/// </summary>
-		public bool bPushForceScaledToMass
+		public byte bPushForceScaledToMass
 		{
 			get => E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_bPushForceScaledToMass_SET(NativePointer, value);
@@ -1005,7 +1533,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>If enabled, the PushForce location is moved using PushForcePointZOffsetFactor. Otherwise simply use the impact point. </para>
 		/// </summary>
-		public bool bPushForceUsingZOffset
+		public byte bPushForceUsingZOffset
 		{
 			get => E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_bPushForceUsingZOffset_SET(NativePointer, value);
@@ -1085,20 +1613,72 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Time substepping when applying braking friction. Smaller time steps increase accuracy at the slight cost of performance, especially if there are large frame times. </para>
+		/// </summary>
+		public float BrakingSubStepTime
+		{
+			get => E_PROP_UCharacterMovementComponent_BrakingSubStepTime_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_BrakingSubStepTime_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Should use acceleration for path following? </para>
+		/// <para>If true, acceleration is applied when path following to reach the target velocity. </para>
+		/// <para>If false, path following velocity is set directly, disregarding acceleration. </para>
+		/// </summary>
+		public byte bRequestedMoveUseAcceleration
+		{
+			get => E_PROP_UCharacterMovementComponent_bRequestedMoveUseAcceleration_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bRequestedMoveUseAcceleration_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, movement will be performed even if there is no Controller for the Character owner. </para>
+		/// <para>Normally without a Controller, movement will be aborted and velocity and acceleration are zeroed if the character is walking. </para>
+		/// <para>Characters that are spawned without a Controller but with this flag enabled will initialize the movement mode to DefaultLandMovementMode or DefaultWaterMovementMode appropriately. </para>
+		/// <para>@see DefaultLandMovementMode, DefaultWaterMovementMode </para>
+		/// </summary>
+		public byte bRunPhysicsWithNoController
+		{
+			get => E_PROP_UCharacterMovementComponent_bRunPhysicsWithNoController_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bRunPhysicsWithNoController_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>If enabled, the applied push force will try to get the physics object to the same velocity than the player, not faster. This will only </para>
 		/// <para>scale the force down, it will never apply more force than defined by PushForceFactor. </para>
 		/// </summary>
-		public bool bScalePushForceToVelocity
+		public byte bScalePushForceToVelocity
 		{
 			get => E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_bScalePushForceToVelocity_SET(NativePointer, value);
+		}
+
+		public byte bShrinkProxyCapsule
+		{
+			get => E_PROP_UCharacterMovementComponent_bShrinkProxyCapsule_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bShrinkProxyCapsule_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not the character should sweep for collision geometry while walking. </para>
+		/// <para>@see USceneComponent::MoveComponent. </para>
+		/// </summary>
+		public byte bSweepWhileNavWalking
+		{
+			get => E_PROP_UCharacterMovementComponent_bSweepWhileNavWalking_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bSweepWhileNavWalking_SET(NativePointer, value);
 		}
 
 		
 		/// <summary>
 		/// <para>If enabled, the TouchForceFactor is applied per kg mass of the affected object. </para>
 		/// </summary>
-		public bool bTouchForceScaledToMass
+		public byte bTouchForceScaledToMass
 		{
 			get => E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_bTouchForceScaledToMass_SET(NativePointer, value);
@@ -1112,6 +1692,73 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UCharacterMovementComponent_Buoyancy_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_Buoyancy_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, smoothly rotate the Character toward the Controller's desired rotation (typically Controller->ControlRotation), using RotationRate as the rate of rotation change. Overridden by OrientRotationToMovement. </para>
+		/// <para>Normally you will want to make sure that other settings are cleared, such as bUseControllerRotationYaw on the Character. </para>
+		/// </summary>
+		public byte bUseControllerDesiredRotation
+		{
+			get => E_PROP_UCharacterMovementComponent_bUseControllerDesiredRotation_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bUseControllerDesiredRotation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Performs floor checks as if the character is using a shape with a flat base. </para>
+		/// <para>This avoids the situation where characters slowly lower off the side of a ledge (as their capsule 'balances' on the edge). </para>
+		/// </summary>
+		public byte bUseFlatBaseForFloorChecks
+		{
+			get => E_PROP_UCharacterMovementComponent_bUseFlatBaseForFloorChecks_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bUseFlatBaseForFloorChecks_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If set, component will use RVO avoidance. This only runs on the server. </para>
+		/// </summary>
+		public byte bUseRVOAvoidance
+		{
+			get => E_PROP_UCharacterMovementComponent_bUseRVOAvoidance_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bUseRVOAvoidance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, BrakingFriction will be used to slow the character to a stop (when there is no Acceleration). </para>
+		/// <para>If false, braking uses the same friction passed to CalcVelocity() (ie GroundFriction when walking), multiplied by BrakingFrictionFactor. </para>
+		/// <para>This setting applies to all movement modes; if only desired in certain modes, consider toggling it when movement modes change. </para>
+		/// <para>@see BrakingFriction </para>
+		/// </summary>
+		public byte bUseSeparateBrakingFriction
+		{
+			get => E_PROP_UCharacterMovementComponent_bUseSeparateBrakingFriction_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bUseSeparateBrakingFriction_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, try to crouch (or keep crouching) on next update. If false, try to stop crouching on next update. </para>
+		/// </summary>
+		public byte bWantsToCrouch
+		{
+			get => E_PROP_UCharacterMovementComponent_bWantsToCrouch_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bWantsToCrouch_SET(NativePointer, value);
+		}
+
+		public byte bWantsToLeaveNavWalking
+		{
+			get => E_PROP_UCharacterMovementComponent_bWantsToLeaveNavWalking_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bWantsToLeaveNavWalking_SET(NativePointer, value);
+		}
+
+		public byte bWasSimulatingRootMotion
+		{
+			get => E_PROP_UCharacterMovementComponent_bWasSimulatingRootMotion_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_bWasSimulatingRootMotion_SET(NativePointer, value);
 		}
 
 		
@@ -1132,12 +1779,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UCharacterMovementComponent_CrouchedHalfHeight_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_CrouchedHalfHeight_SET(NativePointer, value);
-		}
-
-		public float CrouchedSpeedMultiplier_DEPRECATED
-		{
-			get => E_PROP_UCharacterMovementComponent_CrouchedSpeedMultiplier_DEPRECATED_GET(NativePointer);
-			set => E_PROP_UCharacterMovementComponent_CrouchedSpeedMultiplier_DEPRECATED_SET(NativePointer, value);
 		}
 
 		
@@ -1776,12 +2417,6 @@ namespace UnrealEngine
 			set => E_PROP_UCharacterMovementComponent_TouchForceFactor_SET(NativePointer, value);
 		}
 
-		public float UpperImpactNormalScale_DEPRECATED
-		{
-			get => E_PROP_UCharacterMovementComponent_UpperImpactNormalScale_DEPRECATED_GET(NativePointer);
-			set => E_PROP_UCharacterMovementComponent_UpperImpactNormalScale_DEPRECATED_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods
@@ -1919,21 +2554,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if the character is allowed to crouch in the current state. By default it is allowed when walking or falling, if CanEverCrouch() is true. </return>
+		/// <para>Returns true if the character is allowed to crouch in the current state. By default it is allowed when walking or falling, if CanEverCrouch() is true. </para>
 		/// </summary>
 		public virtual bool CanCrouchInCurrentState()
 			=> E_UCharacterMovementComponent_CanCrouchInCurrentState(this);
 		
 		
 		/// <summary>
-		/// <return>true if we can step up on the actor in the given FHitResult. </return>
+		/// <para>Returns true if we can step up on the actor in the given FHitResult. </para>
 		/// </summary>
 		public virtual bool CanStepUp(FHitResult hit)
 			=> E_UCharacterMovementComponent_CanStepUp(this, hit);
 		
 		
 		/// <summary>
-		/// <return>whether this pawn is currently allowed to walk off ledges </return>
+		/// <para>Returns whether this pawn is currently allowed to walk off ledges </para>
 		/// </summary>
 		public virtual bool CanWalkOffLedges()
 			=> E_UCharacterMovementComponent_CanWalkOffLedges(this);
@@ -1950,7 +2585,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if there is a suitable floor SideStep from current position. </return>
+		/// <para>Returns true if there is a suitable floor SideStep from current position. </para>
 		/// </summary>
 		public virtual bool CheckLedgeDirection(FVector oldLocation, FVector sideStep, FVector gravDir)
 			=> E_UCharacterMovementComponent_CheckLedgeDirection(this, oldLocation, sideStep, gravDir);
@@ -2110,11 +2745,11 @@ namespace UnrealEngine
 		/// <para>No floor will be found if collision is disabled on the capsule! </para>
 		/// <param name="CapsuleLocation">Location where the capsule sweep should originate </param>
 		/// <param name="OutFloorResult">Out] Contains the result of the floor check. The HitResult will contain the valid sweep or line test upon success, or the result of the sweep upon failure. </param>
-		/// <param name="bZeroDelta">If true, the capsule was not actively moving in this update (can be used to avoid unnecessary floor tests). </param>
+		/// <param name="bCanUseCachedLocation">If true, may use a cached value (can be used to avoid unnecessary floor tests, if for example the capsule was not moving since the last test). </param>
 		/// <param name="DownwardSweepResult">If non-null and it contains valid blocking hit info, this will be used as the result of a downward sweep test instead of doing it as part of the update. </param>
 		/// </summary>
-		public virtual void FindFloor(FVector capsuleLocation, FFindFloorResult outFloorResult, bool bZeroDelta, FHitResult downwardSweepResult)
-			=> E_UCharacterMovementComponent_FindFloor(this, capsuleLocation, outFloorResult, bZeroDelta, downwardSweepResult);
+		public virtual void FindFloor(FVector capsuleLocation, FFindFloorResult outFloorResult, bool bCanUseCachedLocation, FHitResult downwardSweepResult)
+			=> E_UCharacterMovementComponent_FindFloor(this, capsuleLocation, outFloorResult, bCanUseCachedLocation, downwardSweepResult);
 		
 		
 		/// <summary>
@@ -2153,7 +2788,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Modifier [0..1] based on the magnitude of the last input vector, which is used to modify the acceleration and max speed during movement. </return>
+		/// <para>Returns modifier [0..1] based on the magnitude of the last input vector, which is used to modify the acceleration and max speed during movement. </para>
 		/// </summary>
 		public float GetAnalogInputModifier()
 			=> E_UCharacterMovementComponent_GetAnalogInputModifier(this);
@@ -2174,14 +2809,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Current acceleration, computed from input vector each update. </return>
+		/// <para>Returns current acceleration, computed from input vector each update. </para>
 		/// </summary>
 		public FVector GetCurrentAcceleration()
 			=> E_UCharacterMovementComponent_GetCurrentAcceleration(this);
 		
 		
 		/// <summary>
-		/// <return>how far to rotate character during the time interval DeltaTime. </return>
+		/// <para>Returns how far to rotate character during the time interval DeltaTime. </para>
 		/// </summary>
 		public virtual FRotator GetDeltaRotation(float deltaTime)
 			=> E_UCharacterMovementComponent_GetDeltaRotation(this, deltaTime);
@@ -2217,6 +2852,34 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the location at the end of the last tick. </para>
+		/// </summary>
+		public FVector GetLastUpdateLocation()
+			=> E_UCharacterMovementComponent_GetLastUpdateLocation(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the rotation Quat at the end of the last tick. </para>
+		/// </summary>
+		public FQuat GetLastUpdateQuat()
+			=> E_UCharacterMovementComponent_GetLastUpdateQuat(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the rotation at the end of the last tick. </para>
+		/// </summary>
+		public FRotator GetLastUpdateRotation()
+			=> E_UCharacterMovementComponent_GetLastUpdateRotation(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the velocity at the end of the last tick. </para>
+		/// </summary>
+		public FVector GetLastUpdateVelocity()
+			=> E_UCharacterMovementComponent_GetLastUpdateVelocity(this);
+		
+		
+		/// <summary>
 		/// <param name="Delta">is the current move delta (which ended up going over a ledge). </param>
 		/// <return>new delta which moves along the ledge </return>
 		/// </summary>
@@ -2225,14 +2888,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Maximum acceleration for the current state. </return>
+		/// <para>Returns maximum acceleration for the current state. </para>
 		/// </summary>
 		public virtual float GetMaxAcceleration()
 			=> E_UCharacterMovementComponent_GetMaxAcceleration(this);
 		
 		
 		/// <summary>
-		/// <return>Maximum deceleration for the current state when braking (ie when there is no acceleration). </return>
+		/// <para>Returns maximum deceleration for the current state when braking (ie when there is no acceleration). </para>
 		/// </summary>
 		public virtual float GetMaxBrakingDeceleration()
 			=> E_UCharacterMovementComponent_GetMaxBrakingDeceleration(this);
@@ -2255,15 +2918,11 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Maximum acceleration for the current state. </return>
+		/// <para>Returns maximum acceleration for the current state. </para>
 		/// </summary>
 		public virtual float GetMinAnalogSpeed()
 			=> E_UCharacterMovementComponent_GetMinAnalogSpeed(this);
 		
-		
-		/// <summary>
-		/// <return>Maximum acceleration for the current state, based on MaxAcceleration and any additional modifiers. </return>
-		/// </summary>
 		public virtual float GetModifiedMaxAcceleration()
 			=> E_UCharacterMovementComponent_GetModifiedMaxAcceleration(this);
 		
@@ -2276,7 +2935,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>@Return MovementMode string </para>
+		/// <para>Returns MovementMode string </para>
 		/// </summary>
 		public virtual string GetMovementName()
 			=> E_UCharacterMovementComponent_GetMovementName(this);
@@ -2292,7 +2951,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>The distance from the edge of the capsule within which we don't allow the character to perch on the edge of a surface. </return>
+		/// <para>Returns The distance from the edge of the capsule within which we don't allow the character to perch on the edge of a surface. </para>
 		/// </summary>
 		public float GetPerchRadiusThreshold()
 			=> E_UCharacterMovementComponent_GetPerchRadiusThreshold(this);
@@ -2363,7 +3022,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if we have Root Motion from any source to use in PerformMovement() physics. </return>
+		/// <para>Trigger OnWalkingOffLedge event on CharacterOwner. </para>
+		/// </summary>
+		public virtual void HandleWalkingOffLedge(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta)
+			=> E_UCharacterMovementComponent_HandleWalkingOffLedge(this, previousFloorImpactNormal, previousFloorContactNormal, previousLocation, timeDelta);
+		
+		
+		/// <summary>
+		/// <para>Returns true if we have Root Motion from any source to use in PerformMovement() physics. </para>
 		/// </summary>
 		public bool HasRootMotionSources()
 			=> E_UCharacterMovementComponent_HasRootMotionSources(this);
@@ -2380,7 +3046,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if currently performing a movement update. </return>
+		/// <para>Returns true if currently performing a movement update. </para>
 		/// <para>@see bMovementInProgress </para>
 		/// </summary>
 		public bool IsMovementInProgress()
@@ -2402,7 +3068,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if the character is in the 'Walking' movement mode. </return>
+		/// <para>Returns true if the character is in the 'Walking' movement mode. </para>
 		/// </summary>
 		public bool IsWalking()
 			=> E_UCharacterMovementComponent_IsWalking(this);
@@ -2455,7 +3121,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>Maximum acceleration for the current state, based on MaxAcceleration and any additional modifiers. </return>
+		/// <para>Returns maximum acceleration for the current state, based on MaxAcceleration and any additional modifiers. </para>
 		/// </summary>
 		public virtual float K2_GetModifiedMaxAcceleration()
 			=> E_UCharacterMovementComponent_K2_GetModifiedMaxAcceleration(this);
@@ -2596,7 +3262,7 @@ namespace UnrealEngine
 		protected virtual void OnUnableToFollowBaseMove(FVector deltaPosition, FVector oldLocation, FHitResult moveOnBaseHit)
 			=> E_UCharacterMovementComponent_OnUnableToFollowBaseMove(this, deltaPosition, oldLocation, moveOnBaseHit);
 		
-		public byte PackNetworkMovementMode()
+		public virtual byte PackNetworkMovementMode()
 			=> E_UCharacterMovementComponent_PackNetworkMovementMode(this);
 		
 		
@@ -3012,6 +3678,15 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void UpdateFromCompressedFlags(byte flags)
 			=> E_UCharacterMovementComponent_UpdateFromCompressedFlags(this, flags);
+		
+		
+		/// <summary>
+		/// <para>Used during SimulateMovement for proxies, this computes a new value for Acceleration before running proxy simulation. </para>
+		/// <para>The base implementation simply derives a value from the normalized Velocity value, which may help animations that want some indication of the direction of movement. </para>
+		/// <para>Proxies don't implement predictive acceleration by default so this value is not used for the actual simulation. </para>
+		/// </summary>
+		public virtual void UpdateProxyAcceleration()
+			=> E_UCharacterMovementComponent_UpdateProxyAcceleration(this);
 		
 		
 		/// <summary>

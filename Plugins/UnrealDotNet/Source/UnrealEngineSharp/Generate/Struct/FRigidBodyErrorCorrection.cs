@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1190
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1175
 
 namespace UnrealEngine
 {
@@ -18,10 +18,6 @@ namespace UnrealEngine
 		{
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FRigidBodyErrorCorrection();
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FRigidBodyErrorCorrection_AngleLerp_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -63,6 +59,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRigidBodyErrorCorrection_LinearVelocityCoefficient_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FRigidBodyErrorCorrection_MaxLinearHardSnapDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRigidBodyErrorCorrection_MaxLinearHardSnapDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FRigidBodyErrorCorrection_MaxRestoredStateError_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRigidBodyErrorCorrection_MaxRestoredStateError_SET(IntPtr Ptr, float Value);
@@ -73,9 +74,18 @@ namespace UnrealEngine
 		private static extern void E_PROP_FRigidBodyErrorCorrection_PingExtrapolation_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FRigidBodyErrorCorrection_PingLimit_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRigidBodyErrorCorrection_PingLimit_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FRigidBodyErrorCorrection_PositionLerp_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRigidBodyErrorCorrection_PositionLerp_SET(IntPtr Ptr, float Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FRigidBodyErrorCorrection();
 		
 		#endregion
 		
@@ -168,6 +178,12 @@ namespace UnrealEngine
 			set => E_PROP_FRigidBodyErrorCorrection_LinearVelocityCoefficient_SET(NativePointer, value);
 		}
 
+		public float MaxLinearHardSnapDistance
+		{
+			get => E_PROP_FRigidBodyErrorCorrection_MaxLinearHardSnapDistance_GET(NativePointer);
+			set => E_PROP_FRigidBodyErrorCorrection_MaxLinearHardSnapDistance_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Maximum allowable error for a state to be considered "resolved" </para>
@@ -187,6 +203,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FRigidBodyErrorCorrection_PingExtrapolation_GET(NativePointer);
 			set => E_PROP_FRigidBodyErrorCorrection_PingExtrapolation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>For the purpose of extrapolation, ping will be clamped to this value </para>
+		/// </summary>
+		public float PingLimit
+		{
+			get => E_PROP_FRigidBodyErrorCorrection_PingLimit_GET(NativePointer);
+			set => E_PROP_FRigidBodyErrorCorrection_PingLimit_SET(NativePointer, value);
 		}
 
 		

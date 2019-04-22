@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/GameFramework/SpectatorPawn.h"
 #include "ManageSpectatorPawn.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\GameFramework\SpectatorPawn.h:16
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\SpectatorPawn.h:16
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageSpectatorPawn : public ASpectatorPawn, public IManageObject

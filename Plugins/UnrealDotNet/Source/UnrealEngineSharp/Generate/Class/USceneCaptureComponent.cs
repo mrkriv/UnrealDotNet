@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:60
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:60
 
 namespace UnrealEngine
 {
@@ -21,20 +21,20 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_USceneCaptureComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_USceneCaptureComponent_ProfilingEventName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USceneCaptureComponent_ProfilingEventName_SET(IntPtr Ptr, string Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_USceneCaptureComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneCaptureComponent_ClearHiddenComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneCaptureComponent_ClearShowOnlyComponents(IntPtr self, IntPtr inComponent);
+		private static extern void E_USceneCaptureComponent_ClearShowOnlyComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_USceneCaptureComponent_GetViewOwner(IntPtr self);
@@ -90,8 +90,8 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Clears the Show Only list. </para>
 		/// </summary>
-		public void ClearShowOnlyComponents(UPrimitiveComponent inComponent)
-			=> E_USceneCaptureComponent_ClearShowOnlyComponents(this, inComponent);
+		public void ClearShowOnlyComponents()
+			=> E_USceneCaptureComponent_ClearShowOnlyComponents(this);
 		
 		
 		/// <summary>

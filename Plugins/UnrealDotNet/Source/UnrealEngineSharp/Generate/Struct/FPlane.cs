@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Core\Public\Math\Plane.h:17
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\Plane.h:17
 
 namespace UnrealEngine
 {
@@ -89,6 +89,11 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_FPlane_W_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FPlane_W_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FPlane();
@@ -110,11 +115,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FPlane_FVector_FVector_FVector(IntPtr a, IntPtr b, IntPtr c);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_PROP_FPlane_W_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FPlane_W_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FPlane_Equals(IntPtr self, IntPtr v, float tolerance);
@@ -175,7 +175,7 @@ namespace UnrealEngine
 		/// <summary>
 		/// <para>Calculates distance between plane and a point. </para>
 		/// <param name="P">The other point. </param>
-		/// <return>0: point is in front of the plane, <0: behind, =0: on the plane. </return>
+		/// <return>The distance from the plane to the point. 0: Point is on the plane. >0: Point is in front of the plane. <0: Point is behind the plane. </return>
 		/// </summary>
 		public float PlaneDot(FVector p)
 			=> E_FPlane_PlaneDot(this, p);

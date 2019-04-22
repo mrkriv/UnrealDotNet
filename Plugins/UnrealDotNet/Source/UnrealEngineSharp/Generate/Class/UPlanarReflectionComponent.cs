@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\PlanarReflectionComponent.h:16
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PlanarReflectionComponent.h:16
 
 namespace UnrealEngine
 {
@@ -21,10 +21,6 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UPlanarReflectionComponent(IntPtr Parent, string Name);
-		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPlanarReflectionComponent_AngleFromPlaneFadeEnd_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -39,6 +35,11 @@ namespace UnrealEngine
 		private static extern bool E_PROP_UPlanarReflectionComponent_bRenderSceneTwoSided_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPlanarReflectionComponent_bRenderSceneTwoSided_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_UPlanarReflectionComponent_bShowPreviewPlane_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlanarReflectionComponent_bShowPreviewPlane_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UPlanarReflectionComponent_DistanceFromPlaneFadeEnd_DEPRECATED_GET(IntPtr Ptr);
@@ -85,6 +86,10 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPlanarReflectionComponent_ScreenPercentage_SET(IntPtr Ptr, int Value);
 		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_NewObject_UPlanarReflectionComponent(IntPtr Parent, string Name);
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UPlanarReflectionComponent_GetPlanarReflectionId(IntPtr self);
 		
@@ -121,6 +126,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPlanarReflectionComponent_bRenderSceneTwoSided_GET(NativePointer);
 			set => E_PROP_UPlanarReflectionComponent_bRenderSceneTwoSided_SET(NativePointer, value);
+		}
+
+		public bool bShowPreviewPlane
+		{
+			get => E_PROP_UPlanarReflectionComponent_bShowPreviewPlane_GET(NativePointer);
+			set => E_PROP_UPlanarReflectionComponent_bShowPreviewPlane_SET(NativePointer, value);
 		}
 
 		public float DistanceFromPlaneFadeEnd_DEPRECATED

@@ -9,7 +9,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 #include "ManageSkinnedMeshComponent.generated.h"
 
-// Source file C:\Program Files\Epic Games\UE_4.20\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:182
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:195
 
 UCLASS()
 class UNREALDOTNETRUNTIME_API UManageSkinnedMeshComponent : public USkinnedMeshComponent, public IManageObject
@@ -25,8 +25,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
-	virtual void ClearRefPoseOverride() override;
-	virtual void SetRefPoseOverride(const TArray<FTransform>& NewRefPoseTransforms) override;
 	
 protected:
 };
