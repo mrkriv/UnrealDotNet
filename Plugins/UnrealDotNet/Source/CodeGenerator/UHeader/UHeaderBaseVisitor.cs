@@ -21,6 +21,8 @@
 
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
+using IToken = Antlr4.Runtime.IToken;
+using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
 /// This class provides an empty implementation of <see cref="IUHeaderVisitor{Result}"/>,
