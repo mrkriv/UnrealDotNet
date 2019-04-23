@@ -94,6 +94,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when this Pawn is possessed. Only called on the server (or in standalone). </para>
+		/// <param name="NewController">The controller possessing this pawn </param>
+		/// </summary>
+		public override void PossessedBy(AController newController) { }
+		
+		
+		/// <summary>
 		/// <para>Set BaseEyeHeight based on current state. </para>
 		/// </summary>
 		public override void RecalculateBaseEyeHeight() { }

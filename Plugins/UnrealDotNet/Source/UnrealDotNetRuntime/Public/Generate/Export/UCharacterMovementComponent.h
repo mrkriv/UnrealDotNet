@@ -439,6 +439,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_CurrentFloor_GET(UCharacterMovementComponent* Ptr) { return (INT_PTR)&(Ptr->CurrentFloor); }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_CurrentFloor_SET(UCharacterMovementComponent* Ptr, INT_PTR Value) { Ptr->CurrentFloor = *(FFindFloorResult*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_CurrentRootMotion_GET(UCharacterMovementComponent* Ptr) { return (INT_PTR)&(Ptr->CurrentRootMotion); }
+	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_CurrentRootMotion_SET(UCharacterMovementComponent* Ptr, INT_PTR Value) { Ptr->CurrentRootMotion = *(FRootMotionSourceGroup*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UCharacterMovementComponent_CustomMovementMode_GET(UCharacterMovementComponent* Ptr) { return Ptr->CustomMovementMode; }
 	DOTNET_EXPORT void E_PROP_UCharacterMovementComponent_CustomMovementMode_SET(UCharacterMovementComponent* Ptr, uint8 Value) { Ptr->CustomMovementMode = Value; }
 	
@@ -902,6 +905,14 @@ extern "C"
 		return (INT_PTR) new FVector(((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ConstrainInputAcceleration_WRAP(_p0));
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ConvertRootMotionServerIDsToLocalIDs(UCharacterMovementComponent* Self, INT_PTR LocalRootMotionToMatchWith, INT_PTR InOutServerRootMotion, float TimeStamp)
+	{
+		auto& _p0 = *(FRootMotionSourceGroup*)LocalRootMotionToMatchWith;
+		auto& _p1 = *(FRootMotionSourceGroup*)InOutServerRootMotion;
+		auto _p2 = TimeStamp;
+		Self->ConvertRootMotionServerIDsToLocalIDs(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_Crouch(UCharacterMovementComponent* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
@@ -1309,6 +1320,12 @@ extern "C"
 		auto& _p1 = *(FVector*)OldLocation;
 		auto& _p2 = *(FVector*)OldVelocity;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->OnMovementUpdated_WRAP(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnRootMotionSourceBeingApplied(UCharacterMovementComponent* Self, INT_PTR Source)
+	{
+		auto _p0 = (FRootMotionSource*)Source;
+		Self->OnRootMotionSourceBeingApplied(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_OnTimeDiscrepancyDetected(UCharacterMovementComponent* Self, float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError)

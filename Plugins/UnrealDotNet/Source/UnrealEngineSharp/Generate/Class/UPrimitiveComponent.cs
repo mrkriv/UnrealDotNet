@@ -652,6 +652,9 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_PutRigidBodyToSleep(IntPtr self, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_ReceiveComponentDamage(IntPtr self, float damageAmount, IntPtr damageEvent, IntPtr eventInstigator, IntPtr damageCauser);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_RigidBodyIsAwake(IntPtr self, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -2405,6 +2408,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void PutRigidBodyToSleep(string boneName)
 			=> E_UPrimitiveComponent_PutRigidBodyToSleep(this, boneName);
+		
+		
+		/// <summary>
+		/// <para>Event called when a component is 'damaged', allowing for component class specific behaviour </para>
+		/// </summary>
+		public virtual void ReceiveComponentDamage(float damageAmount, FDamageEvent damageEvent, AController eventInstigator, AActor damageCauser)
+			=> E_UPrimitiveComponent_ReceiveComponentDamage(this, damageAmount, damageEvent, eventInstigator, damageCauser);
 		
 		
 		/// <summary>

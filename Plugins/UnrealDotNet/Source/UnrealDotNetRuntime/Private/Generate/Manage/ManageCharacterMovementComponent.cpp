@@ -322,6 +322,14 @@ void UManageCharacterMovementComponent::OnMovementUpdated(float DeltaSeconds, co
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnMovementUpdated", DeltaSeconds, OldLocation, OldVelocity);
 }
 
+void UManageCharacterMovementComponent::OnRootMotionSourceBeingApplied(const FRootMotionSource* Source)
+{
+	Super::OnRootMotionSourceBeingApplied(Source);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRootMotionSourceBeingApplied", Source);
+}
+
 void UManageCharacterMovementComponent::OnTimeDiscrepancyDetected(float CurrentTimeDiscrepancy, float LifetimeRawTimeDiscrepancy, float Lifetime, float CurrentMoveError)
 {
 	Super::OnTimeDiscrepancyDetected(CurrentTimeDiscrepancy, LifetimeRawTimeDiscrepancy, Lifetime, CurrentMoveError);

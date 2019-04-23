@@ -23,14 +23,6 @@ namespace CodeGenerator.Metadata
         public Type Type { get; protected set; }
         public string Default { get; set; }
 
-        public bool Equals(Variable other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference &&
-                   Equals(Type, other.Type);
-        }
-
         public virtual string GetTypeCs()
         {
             return Type.Name;
@@ -91,6 +83,14 @@ namespace CodeGenerator.Metadata
                 result += " " + Name;
 
             return result;
+        }
+
+        public bool Equals(Variable other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return IsConst == other.IsConst && IsPointer == other.IsPointer && IsReference == other.IsReference &&
+                   Equals(Type, other.Type);
         }
 
         public override bool Equals(object obj)

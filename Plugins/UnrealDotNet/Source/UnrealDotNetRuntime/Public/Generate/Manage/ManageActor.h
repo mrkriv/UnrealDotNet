@@ -33,8 +33,12 @@ public:
 	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
 	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
+	virtual void BecomeViewTarget(APlayerController* PC) override;
 	virtual void ClearCrossLevelReferences() override;
 	virtual void Destroyed() override;
+	virtual void DisableInput(APlayerController* PlayerController) override;
+	virtual void EnableInput(APlayerController* PlayerController) override;
+	virtual void EndViewTarget(APlayerController* PC) override;
 	virtual void ForceNetRelevant() override;
 	virtual void ForceNetUpdate() override;
 	virtual void GatherCurrentMovement() override;

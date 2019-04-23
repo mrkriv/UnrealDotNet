@@ -29,5 +29,17 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->ConsoleCommand(_p0, _p1));
 	}
 
+	DOTNET_EXPORT auto E_UPlayer_GetPlayerController(UPlayer* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		return ConvertToManage_ObjectPointerDescription(Self->GetPlayerController(_p0));
+	}
+
+	DOTNET_EXPORT auto E_UPlayer_SwitchController(UPlayer* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		Self->SwitchController(_p0);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

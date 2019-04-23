@@ -153,7 +153,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 		return NULL;
 	}
 
-	ICLRRuntimeHost4* Host;
+	ICLRRuntimeHost4* host;
 	auto pfnGetCLRRuntimeHost = reinterpret_cast<FnGetCLRRuntimeHost>((INT_PTR)::GetProcAddress(coreCLR, "GetCLRRuntimeHost"));
 
 	if (!pfnGetCLRRuntimeHost)
@@ -162,9 +162,9 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 		return NULL;
 	}
 
-	HRESULT hr = pfnGetCLRRuntimeHost(IID_ICLRRuntimeHost4, (IUnknown**)&Host);
+	HRESULT hr = pfnGetCLRRuntimeHost(IID_ICLRRuntimeHost4, (IUnknown**)& host);
 
-	hr = Host->SetStartupFlags
+	hr = host->SetStartupFlags
 	(
 		static_cast<STARTUP_FLAGS>
 		(
@@ -175,7 +175,7 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 		)
 	);
 
-	hr = Host->Start();
+	hr = host->Start();
 
 	if (FAILED(hr))
 	{
@@ -187,12 +187,12 @@ ICLRRuntimeHost4* UCoreShell::CreateHost(const FString& coreCLRPath)
 		UE_LOG(DotNetShell, Log, TEXT("Dotnet host started"));
 	}
 
-	return Host;
+	return host;
 }
 
-DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppPath)
+DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* host, const FString& targetAppPath)
 {
-	if (Host == NULL)
+	if (host == NULL)
 	{
 		UE_LOG(DotNetShell, Error, TEXT("CoreCLR is not load"));
 		return -1;
@@ -236,7 +236,7 @@ DWORD UCoreShell::CreateDomain(ICLRRuntimeHost4* Host, const FString& targetAppP
 		*appDomainCompatSwitch
 	};
 
-	HRESULT hr = Host->CreateAppDomainWithManager
+	HRESULT hr = host->CreateAppDomainWithManager
 	(
 		std::wstring(*FString("UnrealDotNet")).c_str(),
 		appDomainFlags,

@@ -79,4 +79,7 @@ namespace UnrealEngine
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:50
 	
 	public delegate void FOnBoneTransformsFinalized();
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameUserSettings.h:32
+	
+	public delegate void FOnGameUserSettingsUINeedsUpdate();
 }

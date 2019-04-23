@@ -913,6 +913,15 @@ extern "C"
 		Self->PutRigidBodyToSleep(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ReceiveComponentDamage(UPrimitiveComponent* Self, float DamageAmount, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = DamageAmount;
+		auto& _p1 = *(FDamageEvent*)DamageEvent;
+		auto _p2 = EventInstigator;
+		auto _p3 = DamageCauser;
+		Self->ReceiveComponentDamage(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_RigidBodyIsAwake(UPrimitiveComponent* Self, char* BoneName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoneName);

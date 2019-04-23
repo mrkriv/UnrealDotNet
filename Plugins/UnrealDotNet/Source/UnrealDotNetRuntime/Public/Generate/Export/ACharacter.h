@@ -118,6 +118,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ACharacter_RootMotionRepMoves_GET(ACharacter* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->RootMotionRepMoves); }
 	DOTNET_EXPORT void E_PROP_ACharacter_RootMotionRepMoves_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->RootMotionRepMoves = *(TArray<FSimulatedRootMotionReplicatedMove>*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_ACharacter_SavedRootMotion_GET(ACharacter* Ptr) { return (INT_PTR)&(Ptr->SavedRootMotion); }
+	DOTNET_EXPORT void E_PROP_ACharacter_SavedRootMotion_SET(ACharacter* Ptr, INT_PTR Value) { Ptr->SavedRootMotion = *(FRootMotionSourceGroup*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ACharacter(UObject* Parent, char* Name)
 	{

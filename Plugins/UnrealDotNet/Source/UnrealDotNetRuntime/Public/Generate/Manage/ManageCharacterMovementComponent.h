@@ -55,6 +55,7 @@ public:
 	virtual void MaybeSaveBaseLocation() override;
 	virtual void MaybeUpdateBasedMovement(float DeltaSeconds) override;
 	virtual void NotifyJumpApex() override;
+	virtual void OnRootMotionSourceBeingApplied(const FRootMotionSource* Source) override;
 	virtual void PerformAirControlForPathFollowing(FVector Direction, float ZDiff) override;
 	virtual void PhysFalling(float deltaTime, int32 Iterations) override;
 	virtual void PhysicsRotation(float DeltaTime) override;

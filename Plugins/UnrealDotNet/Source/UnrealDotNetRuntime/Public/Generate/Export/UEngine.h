@@ -61,6 +61,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_GameSingleton_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameSingleton); }
 	DOTNET_EXPORT void E_PROP_UEngine_GameSingleton_SET(UEngine* Ptr, UObject* Value) { Ptr->GameSingleton = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_GameUserSettings_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameUserSettings); }
+	DOTNET_EXPORT void E_PROP_UEngine_GameUserSettings_SET(UEngine* Ptr, UGameUserSettings* Value) { Ptr->GameUserSettings = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_HLODColorationColors_GET(UEngine* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->HLODColorationColors); }
 	DOTNET_EXPORT void E_PROP_UEngine_HLODColorationColors_SET(UEngine* Ptr, INT_PTR Value) { Ptr->HLODColorationColors = *(TArray<FLinearColor>*)Value; }
 	

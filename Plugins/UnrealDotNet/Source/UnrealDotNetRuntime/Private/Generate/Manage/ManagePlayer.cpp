@@ -26,4 +26,12 @@ bool UManagePlayer::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManagePlayer::SwitchController(APlayerController* PC)
+{
+	Super::SwitchController(PC);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SwitchController", PC);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

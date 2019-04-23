@@ -50,6 +50,14 @@ void AManageActor::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
 		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
 }
 
+void AManageActor::BecomeViewTarget(APlayerController* PC)
+{
+	Super::BecomeViewTarget(PC);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BecomeViewTarget", PC);
+}
+
 void AManageActor::BeginPlay()
 {
 	Super::BeginPlay();
@@ -72,6 +80,30 @@ void AManageActor::Destroyed()
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Destroyed");
+}
+
+void AManageActor::DisableInput(APlayerController* PlayerController)
+{
+	Super::DisableInput(PlayerController);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DisableInput", PlayerController);
+}
+
+void AManageActor::EnableInput(APlayerController* PlayerController)
+{
+	Super::EnableInput(PlayerController);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EnableInput", PlayerController);
+}
+
+void AManageActor::EndViewTarget(APlayerController* PC)
+{
+	Super::EndViewTarget(PC);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EndViewTarget", PC);
 }
 
 void AManageActor::ForceNetRelevant()

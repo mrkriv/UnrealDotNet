@@ -24,6 +24,11 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FRepRootMotionMontage_bIsActive_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRepRootMotionMontage_bIsActive_SET(IntPtr Ptr, bool Value);
@@ -71,6 +76,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public FRootMotionSourceGroup AuthoritativeRootMotion
+		{
+			get => E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_SET(NativePointer, value);
+		}
+
 		public bool bIsActive
 		{
 			get => E_PROP_FRepRootMotionMontage_bIsActive_GET(NativePointer);

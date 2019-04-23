@@ -347,6 +347,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UCharacterMovementComponent_CurrentFloor_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UCharacterMovementComponent_CurrentRootMotion_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCharacterMovementComponent_CurrentRootMotion_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_UCharacterMovementComponent_CustomMovementMode_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UCharacterMovementComponent_CustomMovementMode_SET(IntPtr Ptr, byte Value);
@@ -761,6 +766,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_UCharacterMovementComponent_ConstrainInputAcceleration(IntPtr self, IntPtr inputAcceleration);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ConvertRootMotionServerIDsToLocalIDs(IntPtr self, IntPtr localRootMotionToMatchWith, IntPtr inOutServerRootMotion, float timeStamp);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_Crouch(IntPtr self, bool bClientSimulation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -963,6 +971,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_OnMovementUpdated(IntPtr self, float deltaSeconds, IntPtr oldLocation, IntPtr oldVelocity);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_OnRootMotionSourceBeingApplied(IntPtr self, IntPtr source);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_OnTimeDiscrepancyDetected(IntPtr self, float currentTimeDiscrepancy, float lifetimeRawTimeDiscrepancy, float lifetime, float currentMoveError);
@@ -1794,6 +1805,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UCharacterMovementComponent_CurrentFloor_GET(NativePointer);
 			set => E_PROP_UCharacterMovementComponent_CurrentFloor_SET(NativePointer, value);
+		}
+
+		public FRootMotionSourceGroup CurrentRootMotion
+		{
+			get => E_PROP_UCharacterMovementComponent_CurrentRootMotion_GET(NativePointer);
+			set => E_PROP_UCharacterMovementComponent_CurrentRootMotion_SET(NativePointer, value);
 		}
 
 		
@@ -2713,6 +2730,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Converts received server IDs in a root motion group to local IDs </para>
+		/// </summary>
+		public void ConvertRootMotionServerIDsToLocalIDs(FRootMotionSourceGroup localRootMotionToMatchWith, FRootMotionSourceGroup inOutServerRootMotion, float timeStamp)
+			=> E_UCharacterMovementComponent_ConvertRootMotionServerIDsToLocalIDs(this, localRootMotionToMatchWith, inOutServerRootMotion, timeStamp);
+		
+		
+		/// <summary>
 		/// <para>Checks if new capsule size fits (no encroachment), and call CharacterOwner->OnStartCrouch() if successful. </para>
 		/// <para>In general you should set bWantsToCrouch instead to have the crouch persist during movement, or just use the crouch functions on the owning Character. </para>
 		/// <param name="bClientSimulation">true when called when bIsCrouched is replicated to non owned clients, to update collision cylinder and offset. </param>
@@ -3233,6 +3257,13 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void OnMovementUpdated(float deltaSeconds, FVector oldLocation, FVector oldVelocity)
 			=> E_UCharacterMovementComponent_OnMovementUpdated(this, deltaSeconds, oldLocation, oldVelocity);
+		
+		
+		/// <summary>
+		/// <para>Called during ApplyRootMotionSource call, useful for project-specific alerts for "something is about to be altering our movement" </para>
+		/// </summary>
+		public virtual void OnRootMotionSourceBeingApplied(FRootMotionSource source)
+			=> E_UCharacterMovementComponent_OnRootMotionSourceBeingApplied(this, source);
 		
 		
 		/// <summary>

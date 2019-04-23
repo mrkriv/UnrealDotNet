@@ -40,6 +40,7 @@ public:
 	virtual void OnRep_PlayerState() override;
 	virtual void PawnClientRestart() override;
 	virtual void PawnStartFire(uint8 FireModeNum) override;
+	virtual void PossessedBy(AController* NewController) override;
 	virtual void RecalculateBaseEyeHeight() override;
 	virtual void Restart() override;
 	virtual void SetPlayerDefaults() override;

@@ -56,37 +56,17 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FScale_FVector(IntPtr inScale);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FScale_Concatenate(IntPtr self, IntPtr rHS);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FScale_GetVector(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FScale_Inverse(IntPtr self);
 		
 		#endregion
 		
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Concatenate two scales. </para>
-		/// </summary>
-		public FScale Concatenate(FScale rHS)
-			=> E_FScale_Concatenate(this, rHS);
-		
-		
-		/// <summary>
 		/// <para>Access to the underlying FVector that stores the scale. </para>
 		/// </summary>
 		public FVector GetVector()
 			=> E_FScale_GetVector(this);
-		
-		
-		/// <summary>
-		/// <para>Invert the scale. </para>
-		/// </summary>
-		public FScale Inverse()
-			=> E_FScale_Inverse(this);
 		
 		#endregion
 		

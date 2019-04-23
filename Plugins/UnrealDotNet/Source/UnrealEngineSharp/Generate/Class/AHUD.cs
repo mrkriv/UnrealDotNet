@@ -101,6 +101,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AHUD_GetOwningPawn(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AHUD_GetOwningPlayerController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_HandleBugScreenShot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -348,6 +351,13 @@ namespace UnrealEngine
 		/// </summary>
 		public APawn GetOwningPawn()
 			=> E_AHUD_GetOwningPawn(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the PlayerController for this HUD's player. </para>
+		/// </summary>
+		public APlayerController GetOwningPlayerController()
+			=> E_AHUD_GetOwningPlayerController(this);
 		
 		
 		/// <summary>

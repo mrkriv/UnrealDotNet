@@ -685,6 +685,23 @@ namespace UnrealEngine
 		ERSM_128,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:32
+	
+	public enum ERootMotionAccumulateMode : byte
+	{
+		Override = 0,
+		Additive = 1,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:134
+	
+	public enum ERootMotionFinishVelocityMode : byte
+	{
+		MaintainLastRootMotionVelocity = 0,
+		SetVelocity,
+		ClampVelocity,
+	}
+
 	
 	/// <summary>
 	/// <para>Collection of the most recent ID mappings </para>
@@ -694,6 +711,30 @@ namespace UnrealEngine
 	public enum ERootMotionMapping : byte
 	{
 		MapSize = 16,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:71
+	
+	public enum ERootMotionSourceID : byte
+	{
+		Invalid = 0,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:58
+	
+	public enum ERootMotionSourceSettingsFlags : byte
+	{
+		UseSensitiveLiftoffCheck = 0x01,
+		DisablePartialEndTick = 0x02,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:44
+	
+	public enum ERootMotionSourceStatusFlags : byte
+	{
+		Prepared = 0x01,
+		Finished = 0x02,
+		MarkedForRemoval = 0x04,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:252
@@ -786,6 +827,16 @@ namespace UnrealEngine
 		Normal,
 		Sensitive,
 		Custom,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameNetworkManager.h:13
+	
+	public enum EStandbyType : byte
+	{
+		STDBY_Rx,
+		STDBY_Tx,
+		STDBY_BadPing,
+		STDBY_MAX,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:30
@@ -1008,7 +1059,7 @@ namespace UnrealEngine
 		AddForce,
 	}
 
-	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.inl:11
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.h:17
 	
 	public enum EUnit : byte
 	{
@@ -1169,6 +1220,16 @@ namespace UnrealEngine
 		VMI_Unknown = 255,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:22
+	
+	public enum EVisibilityAggressiveness : byte
+	{
+		VIS_LeastAggressive,
+		VIS_ModeratelyAggressive,
+		VIS_MostAggressive,
+		VIS_Max,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:56
 	
 	public enum EVisibilityBasedAnimTickOption : byte
@@ -1190,6 +1251,14 @@ namespace UnrealEngine
 		NoPropagation,
 		DirtyOnly,
 		Propagate,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:31
+	
+	public enum EVolumeLightingMethod : byte
+	{
+		VLM_VolumetricLightmap,
+		VLM_SparseVolumeLightingSamples,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\WindDirectionalSourceComponent.h:12

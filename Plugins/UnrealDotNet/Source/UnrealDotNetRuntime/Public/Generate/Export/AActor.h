@@ -27,6 +27,16 @@ public:
 		return CheckActorComponents();
 	}
 
+	float InternalTakePointDamage_WRAP(float Damage, const FPointDamageEvent& PointDamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		return InternalTakePointDamage(Damage, PointDamageEvent, EventInstigator, DamageCauser);
+	}
+
+	float InternalTakeRadialDamage_WRAP(float Damage, const FRadialDamageEvent& RadialDamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		return InternalTakeRadialDamage(Damage, RadialDamageEvent, EventInstigator, DamageCauser);
+	}
+
 	bool IsWithinNetRelevancyDistance_WRAP(const FVector& SrcLocation)
 	{
 		return IsWithinNetRelevancyDistance(SrcLocation);
@@ -410,6 +420,12 @@ extern "C"
 		Self->AttachToComponent(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_AActor_BecomeViewTarget(AActor* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		Self->BecomeViewTarget(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_BeginPlay(AActor* Self)
 	{
 		((E_PROTECTED_WRAP_AActor*)Self)->BeginPlay_WRAP();
@@ -531,6 +547,12 @@ extern "C"
 		Self->DisableComponentsSimulatePhysics();
 	}
 
+	DOTNET_EXPORT auto E_AActor_DisableInput(AActor* Self, APlayerController* PlayerController)
+	{
+		auto _p0 = PlayerController;
+		Self->DisableInput(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_DispatchBeginPlay(AActor* Self)
 	{
 		Self->DispatchBeginPlay();
@@ -543,6 +565,18 @@ extern "C"
 		auto _p2 = bSelfMoved;
 		auto& _p3 = *(FHitResult*)Hit;
 		Self->DispatchBlockingHit(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_EnableInput(AActor* Self, APlayerController* PlayerController)
+	{
+		auto _p0 = PlayerController;
+		Self->EnableInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_EndViewTarget(AActor* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		Self->EndViewTarget(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_ExchangeNetRoles(AActor* Self, bool bRemoteOwner)
@@ -772,6 +806,11 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetInstigator());
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetInstigatorController(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetInstigatorController());
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetIsReplicated(AActor* Self)
 	{
 		return Self->GetIsReplicated();
@@ -908,6 +947,11 @@ extern "C"
 		return Self->GetVerticalDistanceTo(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetWorldSettings(AActor* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorldSettings());
+	}
+
 	DOTNET_EXPORT auto E_AActor_HasActiveCameraComponent(AActor* Self)
 	{
 		return Self->HasActiveCameraComponent();
@@ -957,6 +1001,24 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_InitializeComponents(AActor* Self)
 	{
 		Self->InitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E_AActor_InternalTakePointDamage(AActor* Self, float Damage, INT_PTR PointDamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = Damage;
+		auto& _p1 = *(FPointDamageEvent*)PointDamageEvent;
+		auto _p2 = EventInstigator;
+		auto _p3 = DamageCauser;
+		return ((E_PROTECTED_WRAP_AActor*)Self)->InternalTakePointDamage_WRAP(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_InternalTakeRadialDamage(AActor* Self, float Damage, INT_PTR RadialDamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = Damage;
+		auto& _p1 = *(FRadialDamageEvent*)RadialDamageEvent;
+		auto _p2 = EventInstigator;
+		auto _p3 = DamageCauser;
+		return ((E_PROTECTED_WRAP_AActor*)Self)->InternalTakeRadialDamage_WRAP(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_InvalidateLightingCache(AActor* Self)
@@ -1080,6 +1142,12 @@ extern "C"
 		auto& _p2 = *(FVector*)SrcLocation;
 		auto _p3 = CullDistanceSquared;
 		return Self->IsReplayRelevantFor(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_AActor_IsReplicationPausedForConnection(AActor* Self, INT_PTR ConnectionOwnerNetViewer)
+	{
+		auto& _p0 = *(FNetViewer*)ConnectionOwnerNetViewer;
+		return Self->IsReplicationPausedForConnection(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_IsRootComponentCollisionRegistered(AActor* Self)
@@ -1221,6 +1289,18 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_K2_GetRootComponent(AActor* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->K2_GetRootComponent());
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_OnBecomeViewTarget(AActor* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		Self->K2_OnBecomeViewTarget(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_OnEndViewTarget(AActor* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		Self->K2_OnEndViewTarget(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_K2_OnReset(AActor* Self)
@@ -1871,6 +1951,15 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_SyncReplicatedPhysicsSimulation(AActor* Self)
 	{
 		((E_PROTECTED_WRAP_AActor*)Self)->SyncReplicatedPhysicsSimulation_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_AActor_TakeDamage(AActor* Self, float DamageAmount, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = DamageAmount;
+		auto& _p1 = *(FDamageEvent*)DamageEvent;
+		auto _p2 = EventInstigator;
+		auto _p3 = DamageCauser;
+		return Self->TakeDamage(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_TearOff(AActor* Self)

@@ -16,9 +16,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_ScalarRegister_Value_GET(ScalarRegister* Ptr) { return (INT_PTR)&(Ptr->Value); }
-	DOTNET_EXPORT void E_PROP_ScalarRegister_Value_SET(ScalarRegister* Ptr, INT_PTR Value) { Ptr->Value = *(VectorRegister*)Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ScalarRegister(UObject* Parent, char* Name)
 	{

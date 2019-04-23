@@ -317,6 +317,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_AttachToComponent(IntPtr self, IntPtr parent, IntPtr attachmentRules, string socketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_BecomeViewTarget(IntPtr self, IntPtr pC);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_BeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -380,10 +383,19 @@ namespace UnrealEngine
 		private static extern void E_AActor_DisableComponentsSimulatePhysics(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_DisableInput(IntPtr self, IntPtr playerController);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_DispatchBeginPlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_DispatchBlockingHit(IntPtr self, IntPtr myComp, IntPtr otherComp, bool bSelfMoved, IntPtr hit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_EnableInput(IntPtr self, IntPtr playerController);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_EndViewTarget(IntPtr self, IntPtr pC);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_ExchangeNetRoles(IntPtr self, bool bRemoteOwner);
@@ -509,6 +521,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AActor_GetInstigator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_GetInstigatorController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_GetIsReplicated(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -587,6 +602,9 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetVerticalDistanceTo(IntPtr self, IntPtr otherActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_AActor_GetWorldSettings(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_HasActiveCameraComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -615,6 +633,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_InitializeComponents(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_InternalTakePointDamage(IntPtr self, float damage, IntPtr pointDamageEvent, IntPtr eventInstigator, IntPtr damageCauser);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_InternalTakeRadialDamage(IntPtr self, float damage, IntPtr radialDamageEvent, IntPtr eventInstigator, IntPtr damageCauser);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_InvalidateLightingCache(IntPtr self);
@@ -680,6 +704,9 @@ namespace UnrealEngine
 		private static extern bool E_AActor_IsReplayRelevantFor(IntPtr self, IntPtr realViewer, IntPtr viewTarget, IntPtr srcLocation, float cullDistanceSquared);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AActor_IsReplicationPausedForConnection(IntPtr self, IntPtr connectionOwnerNetViewer);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AActor_IsRootComponentCollisionRegistered(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -738,6 +765,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_K2_GetRootComponent(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_OnBecomeViewTarget(IntPtr self, IntPtr pC);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_OnEndViewTarget(IntPtr self, IntPtr pC);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_K2_OnReset(IntPtr self);
@@ -1041,6 +1074,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_SyncReplicatedPhysicsSimulation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_TakeDamage(IntPtr self, float damageAmount, IntPtr damageEvent, IntPtr eventInstigator, IntPtr damageCauser);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_TearOff(IntPtr self);
@@ -1746,6 +1782,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when this actor becomes the given PlayerController's ViewTarget. Triggers the Blueprint event K2_OnBecomeViewTarget. </para>
+		/// </summary>
+		public virtual void BecomeViewTarget(APlayerController pC)
+			=> E_AActor_BecomeViewTarget(this, pC);
+		
+		
+		/// <summary>
 		/// <para>Overridable native event for when play begins for this actor. </para>
 		/// </summary>
 		protected virtual void BeginPlay()
@@ -1906,6 +1949,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Removes this actor from the stack of input being handled by a PlayerController. </para>
+		/// <param name="PlayerController">The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. </param>
+		/// </summary>
+		public virtual void DisableInput(APlayerController playerController)
+			=> E_AActor_DisableInput(this, playerController);
+		
+		
+		/// <summary>
 		/// <para>Initiate a begin play call on this Actor, will handle calling in the correct order. </para>
 		/// </summary>
 		public void DispatchBeginPlay()
@@ -1917,6 +1968,21 @@ namespace UnrealEngine
 		/// </summary>
 		public void DispatchBlockingHit(UPrimitiveComponent myComp, UPrimitiveComponent otherComp, bool bSelfMoved, FHitResult hit)
 			=> E_AActor_DispatchBlockingHit(this, myComp, otherComp, bSelfMoved, hit);
+		
+		
+		/// <summary>
+		/// <para>Pushes this actor on to the stack of input being handled by a PlayerController. </para>
+		/// <param name="PlayerController">The PlayerController whose input events we want to receive. </param>
+		/// </summary>
+		public virtual void EnableInput(APlayerController playerController)
+			=> E_AActor_EnableInput(this, playerController);
+		
+		
+		/// <summary>
+		/// <para>Called when this actor is no longer the given PlayerController's ViewTarget. Also triggers the Blueprint event K2_OnEndViewTarget. </para>
+		/// </summary>
+		public virtual void EndViewTarget(APlayerController pC)
+			=> E_AActor_EndViewTarget(this, pC);
 		
 		
 		/// <summary>
@@ -2223,6 +2289,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the instigator's controller for this actor, or nullptr if there is none. </para>
+		/// </summary>
+		public AController GetInstigatorController()
+			=> E_AActor_GetInstigatorController(this);
+		
+		
+		/// <summary>
 		/// <para>Returns whether replication is enabled or not. </para>
 		/// </summary>
 		public bool GetIsReplicated()
@@ -2409,6 +2482,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the WorldSettings for the World the actor is in </para>
+		/// <para>If you'd like to know what UWorld this placed actor (not dynamic spawned actor) belong to, use GetTypedOuter<UWorld>() </para>
+		/// </summary>
+		public AWorldSettings GetWorldSettings()
+			=> E_AActor_GetWorldSettings(this);
+		
+		
+		/// <summary>
 		/// <para>Returns true if the actor contains an active camera component </para>
 		/// </summary>
 		public virtual bool HasActiveCameraComponent()
@@ -2480,6 +2561,12 @@ namespace UnrealEngine
 		/// </summary>
 		public void InitializeComponents()
 			=> E_AActor_InitializeComponents(this);
+		
+		protected virtual float InternalTakePointDamage(float damage, FPointDamageEvent pointDamageEvent, AController eventInstigator, AActor damageCauser)
+			=> E_AActor_InternalTakePointDamage(this, damage, pointDamageEvent, eventInstigator, damageCauser);
+		
+		protected virtual float InternalTakeRadialDamage(float damage, FRadialDamageEvent radialDamageEvent, AController eventInstigator, AActor damageCauser)
+			=> E_AActor_InternalTakeRadialDamage(this, damage, radialDamageEvent, eventInstigator, damageCauser);
 		
 		
 		/// <summary>
@@ -2650,6 +2737,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool IsReplayRelevantFor(AActor realViewer, AActor viewTarget, FVector srcLocation, float cullDistanceSquared)
 			=> E_AActor_IsReplayRelevantFor(this, realViewer, viewTarget, srcLocation, cullDistanceSquared);
+		
+		
+		/// <summary>
+		/// <para>Gives the actor a chance to pause replication to a player represented by the passed in actor - only called on server </para>
+		/// </summary>
+		public virtual bool IsReplicationPausedForConnection(FNetViewer connectionOwnerNetViewer)
+			=> E_AActor_IsReplicationPausedForConnection(this, connectionOwnerNetViewer);
 		
 		
 		/// <summary>
@@ -2836,6 +2930,20 @@ namespace UnrealEngine
 		
 		public USceneComponent K2_GetRootComponent()
 			=> E_AActor_K2_GetRootComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Event called when this Actor becomes the view target for the given PlayerController. </para>
+		/// </summary>
+		public void OnBecomeViewTarget(APlayerController pC)
+			=> E_AActor_K2_OnBecomeViewTarget(this, pC);
+		
+		
+		/// <summary>
+		/// <para>Event called when this Actor is no longer the view target for the given PlayerController. </para>
+		/// </summary>
+		public void OnEndViewTarget(APlayerController pC)
+			=> E_AActor_K2_OnEndViewTarget(this, pC);
 		
 		
 		/// <summary>
@@ -3619,6 +3727,19 @@ namespace UnrealEngine
 		/// </summary>
 		protected void SyncReplicatedPhysicsSimulation()
 			=> E_AActor_SyncReplicatedPhysicsSimulation(this);
+		
+		
+		/// <summary>
+		/// <para>Apply damage to this actor. </para>
+		/// <para>@see https://www.unrealengine.com/blog/damage-in-ue4 </para>
+		/// <param name="DamageAmount">How much damage to apply </param>
+		/// <param name="DamageEvent">Data package that fully describes the damage received. </param>
+		/// <param name="EventInstigator">The Controller responsible for the damage. </param>
+		/// <param name="DamageCauser">The Actor that directly caused the damage (e.g. the projectile that exploded, the rock that landed on you) </param>
+		/// <return>The amount of damage actually applied. </return>
+		/// </summary>
+		public virtual float TakeDamage(float damageAmount, FDamageEvent damageEvent, AController eventInstigator, AActor damageCauser)
+			=> E_AActor_TakeDamage(this, damageAmount, damageEvent, eventInstigator, damageCauser);
 		
 		
 		/// <summary>

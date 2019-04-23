@@ -20,6 +20,13 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Dynamically assign Controller to Player and set viewport. </para>
+		/// <param name="PC">new player controller to assign to player </param>
+		/// </summary>
+		public override void SwitchController(APlayerController pC) { }
+		
 		public static implicit operator IntPtr(ManagePlayer self)
 		{
 			return self.NativePointer;

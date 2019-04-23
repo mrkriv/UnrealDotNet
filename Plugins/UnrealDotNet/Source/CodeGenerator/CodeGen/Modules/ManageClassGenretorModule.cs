@@ -39,6 +39,9 @@ namespace CodeGenerator.CodeGen.Modules
             if (Class.IsFinal || Class.IsStructure)
                 return false;
 
+            if (Class.UMeta.ContainsKey("abstract"))
+                return false;
+
             while (Class != null)
             {
                 if (Class.Methods.Any(m => m.IsVirtual))

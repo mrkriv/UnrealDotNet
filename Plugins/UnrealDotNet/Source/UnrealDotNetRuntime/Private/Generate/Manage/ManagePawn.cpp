@@ -114,6 +114,14 @@ void AManagePawn::PawnStartFire(uint8 FireModeNum)
 		UCoreShell::GetInstance()->InvokeInObject(this, "PawnStartFire", FireModeNum);
 }
 
+void AManagePawn::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PossessedBy", NewController);
+}
+
 void AManagePawn::RecalculateBaseEyeHeight()
 {
 	Super::RecalculateBaseEyeHeight();

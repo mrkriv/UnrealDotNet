@@ -33,6 +33,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UPlayer_ConsoleCommand(IntPtr self, string cmd, bool bWriteToLog);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UPlayer_GetPlayerController(IntPtr self, IntPtr inWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPlayer_SwitchController(IntPtr self, IntPtr pC);
+		
 		#endregion
 		
 		#region ExternMethods
@@ -44,6 +50,23 @@ namespace UnrealEngine
 		/// </summary>
 		public string ConsoleCommand(string cmd, bool bWriteToLog = true)
 			=> E_UPlayer_ConsoleCommand(this, cmd, bWriteToLog);
+		
+		
+		/// <summary>
+		/// <para>Gets the player controller in the given world for this player. </para>
+		/// <param name="InWorld">The world in which to search for player controllers. </param>
+		/// <return>The controller associated with this player in InWorld, if one exists. </return>
+		/// </summary>
+		public APlayerController GetPlayerController(UWorld inWorld)
+			=> E_UPlayer_GetPlayerController(this, inWorld);
+		
+		
+		/// <summary>
+		/// <para>Dynamically assign Controller to Player and set viewport. </para>
+		/// <param name="PC">new player controller to assign to player </param>
+		/// </summary>
+		public virtual void SwitchController(APlayerController pC)
+			=> E_UPlayer_SwitchController(this, pC);
 		
 		#endregion
 		

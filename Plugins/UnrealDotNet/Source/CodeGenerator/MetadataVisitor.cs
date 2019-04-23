@@ -207,10 +207,14 @@ namespace CodeGenerator
             variable.Description = _currentComment;
             variable.IsStatic = context.FoundChild<UHeaderParser.IsStaticContext>();
             variable.IsArray = arrayContext != null;
-            variable.ArrayLenght = variable.IsArray ? int.Parse(arrayContext.arrayLen().GetText()) : 0;
             variable.Name = context.propertyName().GetText();
             variable.UMeta = _currentUMeta ?? variable.UMeta;
             variable.OwnerClass = _currentClass;
+
+            if (arrayContext != null && int.TryParse(arrayContext.arrayLen().GetText(), out var arrayLenght))
+            {
+                variable.ArrayLenght = arrayLenght;
+            }
 
             _currentClass.Property.Add(variable);
             _currentUMeta = null;

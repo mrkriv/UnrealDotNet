@@ -42,6 +42,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when this actor becomes the given PlayerController's ViewTarget. Triggers the Blueprint event K2_OnBecomeViewTarget. </para>
+		/// </summary>
+		public override void BecomeViewTarget(APlayerController pC) { }
+		
+		
+		/// <summary>
 		/// <para>Overridable native event for when play begins for this actor. </para>
 		/// </summary>
 		protected override void BeginPlay() { }
@@ -57,6 +63,26 @@ namespace UnrealEngine
 		/// <para>Called when this actor is explicitly being destroyed during gameplay or in the editor, not called during level streaming or gameplay ending </para>
 		/// </summary>
 		public override void Destroyed() { }
+		
+		
+		/// <summary>
+		/// <para>Removes this actor from the stack of input being handled by a PlayerController. </para>
+		/// <param name="PlayerController">The PlayerController whose input events we no longer want to receive. If null, this actor will stop receiving input from all PlayerControllers. </param>
+		/// </summary>
+		public override void DisableInput(APlayerController playerController) { }
+		
+		
+		/// <summary>
+		/// <para>Pushes this actor on to the stack of input being handled by a PlayerController. </para>
+		/// <param name="PlayerController">The PlayerController whose input events we want to receive. </param>
+		/// </summary>
+		public override void EnableInput(APlayerController playerController) { }
+		
+		
+		/// <summary>
+		/// <para>Called when this actor is no longer the given PlayerController's ViewTarget. Also triggers the Blueprint event K2_OnEndViewTarget. </para>
+		/// </summary>
+		public override void EndViewTarget(APlayerController pC) { }
 		
 		
 		/// <summary>

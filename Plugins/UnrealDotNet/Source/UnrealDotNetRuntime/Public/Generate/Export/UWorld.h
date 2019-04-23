@@ -178,6 +178,12 @@ extern "C"
 		return (INT_PTR)NewObject<UWorld>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UWorld_AddController(UWorld* Self, AController* Controller)
+	{
+		auto _p0 = Controller;
+		Self->AddController(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_AddNetworkActor(UWorld* Self, AActor* Actor)
 	{
 		auto _p0 = Actor;
@@ -288,9 +294,22 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->ConvertToPIEPackageName(_p0, _p1));
 	}
 
+	DOTNET_EXPORT auto E_UWorld_CopyGameState(UWorld* Self, AGameModeBase* FromGameMode, AGameStateBase* FromGameState)
+	{
+		auto _p0 = FromGameMode;
+		auto _p1 = FromGameState;
+		Self->CopyGameState(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_CreateFXSystem(UWorld* Self)
 	{
 		Self->CreateFXSystem();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_CreatePhysicsScene(UWorld* Self, AWorldSettings* Settings)
+	{
+		auto _p0 = Settings;
+		Self->CreatePhysicsScene(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_DebugDrawSceneQueries(UWorld* Self, char* UsedTraceTag)
@@ -404,6 +423,11 @@ extern "C"
 		return Self->GetAudioTimeSeconds();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_GetAuthGameMode(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetAuthGameMode());
+	}
+
 	DOTNET_EXPORT auto E_UWorld_GetDefaultGravityZ(UWorld* Self)
 	{
 		return Self->GetDefaultGravityZ();
@@ -417,6 +441,16 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_GetDetailMode(UWorld* Self)
 	{
 		return Self->GetDetailMode();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetFirstPlayerController(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetFirstPlayerController());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetGameState(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetGameState());
 	}
 
 	DOTNET_EXPORT auto E_UWorld_GetGravityZ(UWorld* Self)
@@ -487,6 +521,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_GetUnpausedTimeSeconds(UWorld* Self)
 	{
 		return Self->GetUnpausedTimeSeconds();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetWorldSettings(UWorld* Self, bool bCheckStreamingPersistent, bool bChecked)
+	{
+		auto _p0 = bCheckStreamingPersistent;
+		auto _p1 = bChecked;
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorldSettings(_p0, _p1));
 	}
 
 	DOTNET_EXPORT auto E_UWorld_HandleTimelineScrubbed(UWorld* Self)
@@ -628,6 +669,11 @@ extern "C"
 		return Self->IsVisibilityRequestPending();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_K2_GetWorldSettings(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->K2_GetWorldSettings());
+	}
+
 	DOTNET_EXPORT auto E_UWorld_Listen(UWorld* Self, INT_PTR InURL)
 	{
 		auto& _p0 = *(FURL*)InURL;
@@ -690,6 +736,12 @@ extern "C"
 		auto _p0 = Actor;
 		auto _p1 = bShouldModifyLevel;
 		Self->RemoveActor(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RemoveController(UWorld* Self, AController* Controller)
+	{
+		auto _p0 = Controller;
+		Self->RemoveController(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_RemoveNetworkActor(UWorld* Self, AActor* Actor)
@@ -755,6 +807,12 @@ extern "C"
 	{
 		auto& _p0 = *(FURL*)InURL;
 		return Self->SetGameMode(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SetGameState(UWorld* Self, AGameStateBase* NewGameState)
+	{
+		auto _p0 = NewGameState;
+		Self->SetGameState(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SetMapNeedsLightingFullyRebuilt(UWorld* Self, int32 InNumLightingUnbuiltObjects, int32 InNumUnbuiltReflectionCaptures)

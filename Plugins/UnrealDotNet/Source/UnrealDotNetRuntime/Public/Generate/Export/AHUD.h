@@ -153,6 +153,11 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetOwningPawn());
 	}
 
+	DOTNET_EXPORT auto E_AHUD_GetOwningPlayerController(AHUD* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetOwningPlayerController());
+	}
+
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)
 	{
 		Self->HandleBugScreenShot();

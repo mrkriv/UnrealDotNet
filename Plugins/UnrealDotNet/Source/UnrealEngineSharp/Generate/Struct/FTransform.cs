@@ -8,7 +8,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\TransformNonVectorized.h:28
+// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\TransformVectorized.h:36
 
 namespace UnrealEngine
 {
@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor. </para>
+		/// <para>Constructor with initialization to the identity transform. </para>
 		/// </summary>
 		public FTransform() :
 			base(E_CreateStruct_FTransform(), false)
@@ -141,15 +141,6 @@ namespace UnrealEngine
 		private static extern void E_FTransform_Accumulate(IntPtr self, IntPtr sourceAtom);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_Accumulate_o1(IntPtr self, IntPtr atom, float blendWeight);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_AccumulateWithAdditiveScale(IntPtr self, IntPtr atom, float blendWeight);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_AccumulateWithShortestRotation(IntPtr self, IntPtr deltaAtom, float blendWeight);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_AddToTranslation(IntPtr self, IntPtr deltaTranslation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -169,9 +160,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_Blend(IntPtr self, IntPtr atom1, IntPtr atom2, float alpha);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_BlendFromIdentityAndAccumulate(IntPtr self, IntPtr finalAtom, IntPtr sourceAtom, float blendWeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_BlendWith(IntPtr self, IntPtr otherAtom, float alpha);
@@ -196,9 +184,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_CopyTranslationAndScale3D(IntPtr self, IntPtr srcBA);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_FTransform_DebugEqualMatrix(IntPtr self, IntPtr matrix);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_DebugPrint(IntPtr self);
@@ -286,9 +271,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FTransform_IsValid(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FTransform_LerpTranslationScale3D(IntPtr self, IntPtr sourceAtom1, IntPtr sourceAtom2, IntPtr alpha);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FTransform_Multiply(IntPtr self, IntPtr outTransform, IntPtr a, IntPtr b);
@@ -402,51 +384,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Accumulates another transform with this one, with a blending weight </para>
-		/// <para>Let SourceAtom = Atom * BlendWeight </para>
-		/// <para>Rotation is accumulated multiplicatively (Rotation = SourceAtom.Rotation * Rotation). </para>
-		/// <para>Translation is accumulated additively (Translation += SourceAtom.Translation) </para>
-		/// <para>Scale3D is accumulated multiplicatively (Scale3D *= SourceAtom.Scale3D) </para>
-		/// <para>Note: Rotation will not be normalized! Will have to be done manually. </para>
-		/// <param name="Atom">The other transform to accumulate into this one </param>
-		/// <param name="BlendWeight">The weight to multiply Atom by before it is accumulated. </param>
-		/// </summary>
-		public void Accumulate(FTransform atom, float blendWeight)
-			=> E_FTransform_Accumulate_o1(this, atom, blendWeight);
-		
-		
-		/// <summary>
-		/// <para>Accumulates another transform with this one, with a blending weight </para>
-		/// <para>Let SourceAtom = Atom * BlendWeight </para>
-		/// <para>Rotation is accumulated multiplicatively (Rotation = SourceAtom.Rotation * Rotation). </para>
-		/// <para>Translation is accumulated additively (Translation += SourceAtom.Translation) </para>
-		/// <para>Scale3D is accumulated assuming incoming scale is additive scale (Scale3D *= (1 + SourceAtom.Scale3D)) </para>
-		/// <para>When we create additive, we create additive scale based on [TargetScale/SourceScale -1] </para>
-		/// <para>because that way when you apply weight of 0.3, you don't shrink. We only saves the % of grow/shrink </para>
-		/// <para>when we apply that back to it, we add back the 1, so that it goes back to it. </para>
-		/// <para>This solves issue where you blend two additives with 0.3, you don't come back to 0.6 scale, but 1 scale at the end </para>
-		/// <para>because [1 + [1-1]*0.3 + [1-1]*0.3] becomes 1, so you don't shrink by applying additive scale </para>
-		/// <para>Note: Rotation will not be normalized! Will have to be done manually. </para>
-		/// <param name="Atom">The other transform to accumulate into this one </param>
-		/// <param name="BlendWeight">The weight to multiply Atom by before it is accumulated. </param>
-		/// </summary>
-		public void AccumulateWithAdditiveScale(FTransform atom, float blendWeight)
-			=> E_FTransform_AccumulateWithAdditiveScale(this, atom, blendWeight);
-		
-		
-		/// <summary>
-		/// <para>Accumulates another transform with this one, with an optional blending weight </para>
-		/// <para>Rotation is accumulated additively, in the shortest direction (Rotation = Rotation +/- DeltaAtom.Rotation * Weight) </para>
-		/// <para>Translation is accumulated additively (Translation += DeltaAtom.Translation * Weight) </para>
-		/// <para>Scale3D is accumulated additively (Scale3D += DeltaAtom.Scale3D * Weight) </para>
-		/// <param name="DeltaAtom">The other transform to accumulate into this one </param>
-		/// <param name="Weight">The weight to multiply DeltaAtom by before it is accumulated. </param>
-		/// </summary>
-		public void AccumulateWithShortestRotation(FTransform deltaAtom, float blendWeight)
-			=> E_FTransform_AccumulateWithShortestRotation(this, deltaAtom, blendWeight);
-		
-		
-		/// <summary>
 		/// <para>Adjusts the translation component of this transformation </para>
 		/// <param name="DeltaTranslation">The translation to add in the following fashion: Translation += DeltaTranslation </param>
 		/// </summary>
@@ -482,20 +419,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Blends the Identity transform with a weighted source transform and accumulates that into a destination transform </para>
-		/// <para>SourceAtom = Blend(Identity, SourceAtom, BlendWeight) </para>
-		/// <para>FinalAtom.Rotation = SourceAtom.Rotation * FinalAtom.Rotation </para>
-		/// <para>FinalAtom.Translation += SourceAtom.Translation </para>
-		/// <para>FinalAtom.Scale3D *= SourceAtom.Scale3D </para>
-		/// <param name="FinalAtom">in/out] The atom to accumulate the blended source atom into </param>
-		/// <param name="SourceAtom">The target transformation (used when BlendWeight = 1); this is modified during the process </param>
-		/// <param name="BlendWeight">The blend weight between Identity and SourceAtom </param>
-		/// </summary>
-		public void BlendFromIdentityAndAccumulate(FTransform finalAtom, FTransform sourceAtom, float blendWeight)
-			=> E_FTransform_BlendFromIdentityAndAccumulate(this, finalAtom, sourceAtom, blendWeight);
-		
-		
-		/// <summary>
 		/// <para>Set this Transform to the weighted blend of it and the supplied Transform. </para>
 		/// </summary>
 		public void BlendWith(FTransform otherAtom, float alpha)
@@ -511,8 +434,8 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks the components for non-finite values (NaN or Inf). </para>
-		/// <return>Returns true if any component (rotation, translation, or scale) is not finite. </return>
+		/// <para>Checks the components for NaN's </para>
+		/// <return>Returns true if any component (rotation, translation, or scale) is a NAN </return>
 		/// </summary>
 		public bool ContainsNaN()
 			=> E_FTransform_ContainsNaN(this);
@@ -556,13 +479,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Debug purpose only </para>
-		/// </summary>
-		public bool DebugEqualMatrix(FMatrix matrix)
-			=> E_FTransform_DebugEqualMatrix(this, matrix);
-		
-		
-		/// <summary>
 		/// <para>Does a debugf of the contents of this Transform. </para>
 		/// </summary>
 		public void DebugPrint()
@@ -591,7 +507,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Calculate the determinant of this transformation </para>
+		/// <para>Calculate the </para>
 		/// </summary>
 		public float GetDeterminant()
 			=> E_FTransform_GetDeterminant(this);
@@ -686,7 +602,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Transform a direction vector by the inverse of this transform - will not take into account translation part. </para>
+		/// <para>Transform a direction vector by the inverse of this matrix - will not take into account translation part. </para>
 		/// <para>If you want to transform a surface normal (or plane) and correctly account for non-uniform scaling you should use TransformByUsingAdjointT with adjoint of matrix inverse. </para>
 		/// </summary>
 		public FVector InverseTransformVector(FVector v)
@@ -706,26 +622,6 @@ namespace UnrealEngine
 		public bool IsValid()
 			=> E_FTransform_IsValid(this);
 		
-		
-		/// <summary>
-		/// <para>Set the translation and Scale3D components of this transform to a linearly interpolated combination of two other transforms </para>
-		/// <para>Translation = FMath::Lerp(SourceAtom1.Translation, SourceAtom2.Translation, Alpha) </para>
-		/// <para>Scale3D = FMath::Lerp(SourceAtom1.Scale3D, SourceAtom2.Scale3D, Alpha) </para>
-		/// <param name="SourceAtom1">The starting point source atom (used 100% if Alpha is 0) </param>
-		/// <param name="SourceAtom2">The ending point source atom (used 100% if Alpha is 1) </param>
-		/// <param name="Alpha">The blending weight between SourceAtom1 and SourceAtom2 </param>
-		/// </summary>
-		public void LerpTranslationScale3D(FTransform sourceAtom1, FTransform sourceAtom2, ScalarRegister alpha)
-			=> E_FTransform_LerpTranslationScale3D(this, sourceAtom1, sourceAtom2, alpha);
-		
-		
-		/// <summary>
-		/// <para>Create a new transform: OutTransform = A * B. </para>
-		/// <para>Order matters when composing transforms : A * B will yield a transform that logically first applies A then B to any subsequent transformation. </para>
-		/// <param name="OutTransform">pointer to transform that will store the result of A * B. </param>
-		/// <param name="A">Transform A. </param>
-		/// <param name="B">Transform B. </param>
-		/// </summary>
 		public void Multiply(FTransform outTransform, FTransform a, FTransform b)
 			=> E_FTransform_Multiply(this, outTransform, a, b);
 		
@@ -862,10 +758,6 @@ namespace UnrealEngine
 		public FMatrix ToMatrixNoScale()
 			=> E_FTransform_ToMatrixNoScale(this);
 		
-		
-		/// <summary>
-		/// <para>Convert this Transform to a transformation matrix with scaling. </para>
-		/// </summary>
 		public FMatrix ToMatrixWithScale()
 			=> E_FTransform_ToMatrixWithScale(this);
 		

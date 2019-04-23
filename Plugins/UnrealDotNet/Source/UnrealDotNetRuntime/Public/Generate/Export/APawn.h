@@ -39,6 +39,12 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_APawn_BlendedReplayViewPitch_GET(APawn* Ptr) { return Ptr->BlendedReplayViewPitch; }
 	DOTNET_EXPORT void E_PROP_APawn_BlendedReplayViewPitch_SET(APawn* Ptr, float Value) { Ptr->BlendedReplayViewPitch = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_APawn_Controller_GET(APawn* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Controller); }
+	DOTNET_EXPORT void E_PROP_APawn_Controller_SET(APawn* Ptr, AController* Value) { Ptr->Controller = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_APawn_LastHitBy_GET(APawn* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->LastHitBy); }
+	DOTNET_EXPORT void E_PROP_APawn_LastHitBy_SET(APawn* Ptr, AController* Value) { Ptr->LastHitBy = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_APawn_RemoteViewPitch_GET(APawn* Ptr) { return Ptr->RemoteViewPitch; }
 	DOTNET_EXPORT void E_PROP_APawn_RemoteViewPitch_SET(APawn* Ptr, uint8 Value) { Ptr->RemoteViewPitch = Value; }
 	
@@ -101,6 +107,11 @@ extern "C"
 		return (INT_PTR) new FRotator(Self->GetBaseAimRotation());
 	}
 
+	DOTNET_EXPORT auto E_APawn_GetController(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetController());
+	}
+
 	DOTNET_EXPORT auto E_APawn_GetControlRotation(APawn* Self)
 	{
 		return (INT_PTR) new FRotator(Self->GetControlRotation());
@@ -150,6 +161,11 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_GetPendingMovementInputVector(APawn* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetPendingMovementInputVector());
+	}
+
+	DOTNET_EXPORT auto E_APawn_GetPlayerState(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPlayerState());
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetViewRotation(APawn* Self)
@@ -269,6 +285,12 @@ extern "C"
 		Self->PawnStartFire(_p0);
 	}
 
+	DOTNET_EXPORT auto E_APawn_PossessedBy(APawn* Self, AController* NewController)
+	{
+		auto _p0 = NewController;
+		Self->PossessedBy(_p0);
+	}
+
 	DOTNET_EXPORT auto E_APawn_ReachedDesiredRotation(APawn* Self)
 	{
 		return Self->ReachedDesiredRotation();
@@ -277,6 +299,18 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_RecalculateBaseEyeHeight(APawn* Self)
 	{
 		Self->RecalculateBaseEyeHeight();
+	}
+
+	DOTNET_EXPORT auto E_APawn_ReceivePossessed(APawn* Self, AController* NewController)
+	{
+		auto _p0 = NewController;
+		Self->ReceivePossessed(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APawn_ReceiveUnpossessed(APawn* Self, AController* OldController)
+	{
+		auto _p0 = OldController;
+		Self->ReceiveUnpossessed(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_Restart(APawn* Self)
@@ -296,10 +330,25 @@ extern "C"
 		Self->SetPlayerDefaults();
 	}
 
+	DOTNET_EXPORT auto E_APawn_SetPlayerState(APawn* Self, APlayerState* NewPlayerState)
+	{
+		auto _p0 = NewPlayerState;
+		Self->SetPlayerState(_p0);
+	}
+
 	DOTNET_EXPORT auto E_APawn_SetRemoteViewPitch(APawn* Self, float NewRemoteViewPitch)
 	{
 		auto _p0 = NewRemoteViewPitch;
 		Self->SetRemoteViewPitch(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APawn_ShouldTakeDamage(APawn* Self, float Damage, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+	{
+		auto _p0 = Damage;
+		auto& _p1 = *(FDamageEvent*)DamageEvent;
+		auto _p2 = EventInstigator;
+		auto _p3 = DamageCauser;
+		return Self->ShouldTakeDamage(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_APawn_SpawnDefaultController(APawn* Self)

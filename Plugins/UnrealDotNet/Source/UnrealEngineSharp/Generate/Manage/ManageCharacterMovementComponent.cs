@@ -238,6 +238,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called during ApplyRootMotionSource call, useful for project-specific alerts for "something is about to be altering our movement" </para>
+		/// </summary>
+		public override void OnRootMotionSourceBeingApplied(FRootMotionSource source) { }
+		
+		
+		/// <summary>
 		/// <para>Called by UCharacterMovementComponent::ProcessClientTimeStampForTimeDiscrepancy() (on server) when the time from client moves </para>
 		/// <para>significantly differs from the server time, indicating potential time manipulation by clients (speed hacks, significant network </para>
 		/// <para>issues, client performance problems) </para>

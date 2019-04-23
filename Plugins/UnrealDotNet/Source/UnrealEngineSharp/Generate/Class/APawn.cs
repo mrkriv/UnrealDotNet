@@ -47,6 +47,16 @@ namespace UnrealEngine
 		private static extern void E_PROP_APawn_BlendedReplayViewPitch_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_APawn_Controller_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APawn_Controller_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_APawn_LastHitBy_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APawn_LastHitBy_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_APawn_RemoteViewPitch_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APawn_RemoteViewPitch_SET(IntPtr Ptr, byte Value);
@@ -83,6 +93,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_APawn_GetBaseAimRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetControlRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -111,6 +124,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetPendingMovementInputVector(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_GetPlayerState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_APawn_GetViewRotation(IntPtr self);
@@ -176,10 +192,19 @@ namespace UnrealEngine
 		private static extern void E_APawn_PawnStartFire(IntPtr self, byte fireModeNum);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_PossessedBy(IntPtr self, IntPtr newController);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APawn_ReachedDesiredRotation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_RecalculateBaseEyeHeight(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_ReceivePossessed(IntPtr self, IntPtr newController);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_ReceiveUnpossessed(IntPtr self, IntPtr oldController);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_Restart(IntPtr self);
@@ -191,7 +216,13 @@ namespace UnrealEngine
 		private static extern void E_APawn_SetPlayerDefaults(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_SetPlayerState(IntPtr self, IntPtr newPlayerState);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_SetRemoteViewPitch(IntPtr self, float newRemoteViewPitch);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APawn_ShouldTakeDamage(IntPtr self, float damage, IntPtr damageEvent, IntPtr eventInstigator, IntPtr damageCauser);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_SpawnDefaultController(IntPtr self);
@@ -251,6 +282,26 @@ namespace UnrealEngine
 		{
 			get => E_PROP_APawn_BlendedReplayViewPitch_GET(NativePointer);
 			set => E_PROP_APawn_BlendedReplayViewPitch_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controller currently possessing this Actor </para>
+		/// </summary>
+		public AController Controller
+		{
+			get => E_PROP_APawn_Controller_GET(NativePointer);
+			set => E_PROP_APawn_Controller_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controller of the last Actor that caused us damage. </para>
+		/// </summary>
+		public AController LastHitBy
+		{
+			get => E_PROP_APawn_LastHitBy_GET(NativePointer);
+			set => E_PROP_APawn_LastHitBy_SET(NativePointer, value);
 		}
 
 		public byte RemoteViewPitch
@@ -346,6 +397,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns controller for this actor. </para>
+		/// </summary>
+		public AController GetController()
+			=> E_APawn_GetController(this);
+		
+		
+		/// <summary>
 		/// <para>Get the rotation of the Controller, often the 'view' rotation of this Pawn. </para>
 		/// </summary>
 		public FRotator GetControlRotation()
@@ -422,6 +480,13 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetPendingMovementInputVector()
 			=> E_APawn_GetPendingMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>If Pawn is possessed by a player, returns its Player State.  Needed for network play as controllers are not replicated to clients. </para>
+		/// </summary>
+		public APlayerState GetPlayerState()
+			=> E_APawn_GetPlayerState(this);
 		
 		
 		/// <summary>
@@ -570,6 +635,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Called when this Pawn is possessed. Only called on the server (or in standalone). </para>
+		/// <param name="NewController">The controller possessing this pawn </param>
+		/// </summary>
+		public virtual void PossessedBy(AController newController)
+			=> E_APawn_PossessedBy(this, newController);
+		
+		
+		/// <summary>
 		/// <para>Return true if yaw is within AllowedYawError of desired yaw </para>
 		/// </summary>
 		public virtual bool ReachedDesiredRotation()
@@ -581,6 +654,20 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void RecalculateBaseEyeHeight()
 			=> E_APawn_RecalculateBaseEyeHeight(this);
+		
+		
+		/// <summary>
+		/// <para>Event called when the Pawn is possessed by a Controller (normally only occurs on the server/standalone). </para>
+		/// </summary>
+		public void Possessed(AController newController)
+			=> E_APawn_ReceivePossessed(this, newController);
+		
+		
+		/// <summary>
+		/// <para>Event called when the Pawn is no longer possessed by a Controller. </para>
+		/// </summary>
+		public void Unpossessed(AController oldController)
+			=> E_APawn_ReceiveUnpossessed(this, oldController);
 		
 		
 		/// <summary>
@@ -606,12 +693,27 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Set the Pawn's Player State. Keeps bi-directional reference of Pawn to Player State and back in sync. </para>
+		/// </summary>
+		public void SetPlayerState(APlayerState newPlayerState)
+			=> E_APawn_SetPlayerState(this, newPlayerState);
+		
+		
+		/// <summary>
 		/// <para>Set Pawn ViewPitch, so we can see where remote clients are looking. </para>
 		/// <para>Maps 360.0 degrees into a byte </para>
 		/// <param name="NewRemoteViewPitch">Pitch component to replicate to remote (non owned) clients. </param>
 		/// </summary>
 		public void SetRemoteViewPitch(float newRemoteViewPitch)
 			=> E_APawn_SetRemoteViewPitch(this, newRemoteViewPitch);
+		
+		
+		/// <summary>
+		/// <para>Return true if we are in a state to take damage (checked at the start of TakeDamage. </para>
+		/// <para>Subclasses may check this as well if they override TakeDamage and don't want to potentially trigger TakeDamage actions by checking if it returns zero in the super class. </para>
+		/// </summary>
+		public virtual bool ShouldTakeDamage(float damage, FDamageEvent damageEvent, AController eventInstigator, AActor damageCauser)
+			=> E_APawn_ShouldTakeDamage(this, damage, damageEvent, eventInstigator, damageCauser);
 		
 		
 		/// <summary>

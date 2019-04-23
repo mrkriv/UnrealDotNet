@@ -291,6 +291,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UWorld(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_AddController(IntPtr self, IntPtr controller);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_AddNetworkActor(IntPtr self, IntPtr actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -351,7 +354,13 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UWorld_ConvertToPIEPackageName(IntPtr self, string packageName, int pIEInstanceID);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_CopyGameState(IntPtr self, IntPtr fromGameMode, IntPtr fromGameState);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_CreateFXSystem(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_CreatePhysicsScene(IntPtr self, IntPtr settings);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_DebugDrawSceneQueries(IntPtr self, string usedTraceTag);
@@ -408,6 +417,9 @@ namespace UnrealEngine
 		private static extern float E_UWorld_GetAudioTimeSeconds(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetAuthGameMode(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetDefaultGravityZ(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -415,6 +427,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UWorld_GetDetailMode(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetFirstPlayerController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetGameState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetGravityZ(IntPtr self);
@@ -457,6 +475,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetUnpausedTimeSeconds(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetWorldSettings(IntPtr self, bool bCheckStreamingPersistent, bool bChecked);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_HandleTimelineScrubbed(IntPtr self);
@@ -540,6 +561,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_IsVisibilityRequestPending(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_K2_GetWorldSettings(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_Listen(IntPtr self, IntPtr inURL);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -573,6 +597,9 @@ namespace UnrealEngine
 		private static extern void E_UWorld_RemoveActor(IntPtr self, IntPtr actor, bool bShouldModifyLevel);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RemoveController(IntPtr self, IntPtr controller);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_RemoveNetworkActor(IntPtr self, IntPtr actor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -604,6 +631,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_SetGameMode(IntPtr self, IntPtr inURL);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_SetGameState(IntPtr self, IntPtr newGameState);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SetMapNeedsLightingFullyRebuilt(IntPtr self, int inNumLightingUnbuiltObjects, int inNumUnbuiltReflectionCaptures);
@@ -1197,6 +1227,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Inserts the passed in controller at the front of the linked list of controllers. </para>
+		/// <param name="Controller">Controller to insert, use NULL to clear list </param>
+		/// </summary>
+		public void AddController(AController controller)
+			=> E_UWorld_AddController(this, controller);
+		
+		
+		/// <summary>
 		/// <para>Adds the passed in actor to the special network actor list </para>
 		/// <para>This list is used to specifically single out actors that are relevant for networking without having to scan the much large list </para>
 		/// <param name="Actor">Actor to add </param>
@@ -1351,10 +1389,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Copies GameState properties from the GameMode. </para>
+		/// </summary>
+		public void CopyGameState(AGameModeBase fromGameMode, AGameStateBase fromGameState)
+			=> E_UWorld_CopyGameState(this, fromGameMode, fromGameState);
+		
+		
+		/// <summary>
 		/// <para>Creates a new FX system for this world </para>
 		/// </summary>
 		public void CreateFXSystem()
 			=> E_UWorld_CreateFXSystem(this);
+		
+		
+		/// <summary>
+		/// <para>Creates a new physics scene for this world. </para>
+		/// </summary>
+		public void CreatePhysicsScene(AWorldSettings settings = null)
+			=> E_UWorld_CreatePhysicsScene(this, settings);
 		
 		public bool DebugDrawSceneQueries(string usedTraceTag)
 			=> E_UWorld_DebugDrawSceneQueries(this, usedTraceTag);
@@ -1499,6 +1551,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the current Game Mode instance, which is always valid during gameplay on the server. </para>
+		/// <para>This will only return a valid pointer on the server. Will always return null on a client. </para>
+		/// </summary>
+		public AGameModeBase GetAuthGameMode()
+			=> E_UWorld_GetAuthGameMode(this);
+		
+		
+		/// <summary>
 		/// <para>Returns the Z component of the default world gravity. </para>
 		/// <return>Z component of the default world gravity. </return>
 		/// </summary>
@@ -1519,6 +1579,20 @@ namespace UnrealEngine
 		/// </summary>
 		public int GetDetailMode()
 			=> E_UWorld_GetDetailMode(this);
+		
+		
+		/// <summary>
+		/// <return>Returns the first player controller, or NULL if there is not one. </return>
+		/// </summary>
+		public APlayerController GetFirstPlayerController()
+			=> E_UWorld_GetFirstPlayerController(this);
+		
+		
+		/// <summary>
+		/// <para>Returns the current GameState instance. </para>
+		/// </summary>
+		public AGameStateBase GetGameState()
+			=> E_UWorld_GetGameState(this);
 		
 		
 		/// <summary>
@@ -1616,6 +1690,9 @@ namespace UnrealEngine
 		/// </summary>
 		public float GetUnpausedTimeSeconds()
 			=> E_UWorld_GetUnpausedTimeSeconds(this);
+		
+		public AWorldSettings GetWorldSettings(bool bCheckStreamingPersistent = false, bool bChecked = true)
+			=> E_UWorld_GetWorldSettings(this, bCheckStreamingPersistent, bChecked);
 		
 		public void HandleTimelineScrubbed()
 			=> E_UWorld_HandleTimelineScrubbed(this);
@@ -1808,6 +1885,14 @@ namespace UnrealEngine
 		public bool IsVisibilityRequestPending()
 			=> E_UWorld_IsVisibilityRequestPending(this);
 		
+		
+		/// <summary>
+		/// <para>Returns the AWorldSettings actor associated with this world. </para>
+		/// <return>AWorldSettings actor associated with this world </return>
+		/// </summary>
+		public AWorldSettings K2_GetWorldSettings()
+			=> E_UWorld_K2_GetWorldSettings(this);
+		
 		public bool Listen(FURL inURL)
 			=> E_UWorld_Listen(this, inURL);
 		
@@ -1893,6 +1978,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Removes the passed in controller from the linked list of controllers. </para>
+		/// <param name="Controller">Controller to remove </param>
+		/// </summary>
+		public void RemoveController(AController controller)
+			=> E_UWorld_RemoveController(this, controller);
+		
+		
+		/// <summary>
 		/// <para>Removes the passed in actor to from special network actor list </para>
 		/// <param name="Actor">Actor to remove </param>
 		/// </summary>
@@ -1972,6 +2065,13 @@ namespace UnrealEngine
 		/// </summary>
 		public bool SetGameMode(FURL inURL)
 			=> E_UWorld_SetGameMode(this, inURL);
+		
+		
+		/// <summary>
+		/// <para>Sets the current GameState instance on this world and the game state's level collection. </para>
+		/// </summary>
+		public void SetGameState(AGameStateBase newGameState)
+			=> E_UWorld_SetGameState(this, newGameState);
 		
 		
 		/// <summary>

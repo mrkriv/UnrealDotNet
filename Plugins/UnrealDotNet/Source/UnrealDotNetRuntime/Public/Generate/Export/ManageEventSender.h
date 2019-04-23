@@ -213,5 +213,11 @@ class UNREALDOTNETRUNTIME_API UManageEventSender : public UObject
 		UCoreShell::GetInstance()->InvokeEventInObject(SourceObject, ManageDelegateName);
 	}
 
+	UFUNCTION()
+	void Wrapper_FOnGameUserSettingsUINeedsUpdate()
+	{
+		UCoreShell::GetInstance()->InvokeEventInObject(SourceObject, ManageDelegateName);
+	}
+
 }
 ;

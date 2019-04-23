@@ -186,22 +186,25 @@ namespace CodeGenerator
             if (m.IsOverride || m.IsFriend || m.IsTemplate)
                 return false;
 
+            if (m.IsVirtual && Class.IsFinal)
+                return false;
+
             if (m.AccessModifier != AccessModifier.Public && (Class.IsStructure || Class.IsFinal))
+                return false;
+
+            if (m.Operator != null)
                 return false;
 
             if (m.InputTypes.Any(v => v.IsPointer && v.IsReference || v.Type.IsVoid || v.IsReadOnly()))
                 return false;
 
-            if (m.IsVirtual && Class.IsFinal)
+            if (m.InputTypes.Any(x => x.Name == "Params")) //todo:: добавлять @ перед именем свойства в c#
                 return false;
 
             if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))
                 return false;
 
             if (!m.Dependent.All(TypeFilter))
-                return false;
-            
-            if (m.Operator != null)
                 return false;
 
             var overloads = Class.Methods.Where(x => x.Name == m.Name && x.ValidForExport == true).ToList();
@@ -224,7 +227,7 @@ namespace CodeGenerator
         {
             if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
                 return false;
-
+            
             if (m.IsArray)
                 return false;
 
