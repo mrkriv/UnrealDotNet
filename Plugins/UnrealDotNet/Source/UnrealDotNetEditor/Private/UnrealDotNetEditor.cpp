@@ -13,6 +13,7 @@
 #include "Widgets/Notifications/SNotificationList.h"
 
 #include "LevelEditor.h"
+#include "CoreShell.h"
 
 
 DEFINE_LOG_CATEGORY(DotNetEditor);
@@ -110,9 +111,13 @@ void FUnrealDotNetEditorModule::CompileButtonClicked()
 	FSlateNotificationManager::Get().AddNotification(FNotificationInfo(LOCTEXT("CompileStartMsg", "Compile .net project...")));
 
 	auto projectFile = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir() / "Source" / "GameLogic" / "GameLogic.csproj");
-	auto commandLine = FString::Printf(TEXT("build %s"), *projectFile);
+	auto commandLine = FString::Printf(TEXT("build \"%s\""), *projectFile);
+
+	UE_LOG(DotNetEditor, Log, TEXT("dotnet %s"), *commandLine);
 
 	auto dotnet = FPlatformProcess::CreateProc(TEXT("dotnet"), *commandLine, false, true, true, nullptr, 0, nullptr, nullptr);
+
+	//todo:: watch to process
 }
 
 void FUnrealDotNetEditorModule::AddMenuExtension(FMenuBuilder& Builder)

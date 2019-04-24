@@ -13,6 +13,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
 
+AManageCharacter::AManageCharacter(const FObjectInitializer& ObjectInitializer)
+ : Super(ObjectInitializer)
+{
+	RootComponent = CreateDefaultSubobject<USceneComponent>(USceneComponent::GetDefaultSceneRootVariableName());
+	RootComponent->Mobility = EComponentMobility::Movable;
+	RootComponent->bVisualizeComponent = true;
+	
+	AddWrapperIfNotAttach();
+}
+
 bool AManageCharacter::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

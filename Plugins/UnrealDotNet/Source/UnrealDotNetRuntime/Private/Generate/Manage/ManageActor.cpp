@@ -13,6 +13,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:109
 
+AManageActor::AManageActor(const FObjectInitializer& ObjectInitializer)
+ : Super(ObjectInitializer)
+{
+	RootComponent = CreateDefaultSubobject<USceneComponent>(USceneComponent::GetDefaultSceneRootVariableName());
+	RootComponent->Mobility = EComponentMobility::Movable;
+	RootComponent->bVisualizeComponent = true;
+	
+	AddWrapperIfNotAttach();
+}
+
 bool AManageActor::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())
@@ -204,16 +214,6 @@ void AManageActor::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimit
 
 void AManageActor::OnConstruction(const FTransform& Transform)
 {
-	auto rootComponent = NewObject<USceneComponent>(this, USceneComponent::GetDefaultSceneRootVariableName(), RF_Transactional);
-	rootComponent->Mobility = EComponentMobility::Movable;
-	rootComponent->bVisualizeComponent = true;
-	rootComponent->SetWorldTransform(Transform);
-	
-	SetRootComponent(rootComponent);
-	AddInstanceComponent(rootComponent);
-	
-	rootComponent->RegisterComponent();
-	
 	Super::OnConstruction(Transform);
 	
 	if(AddWrapperIfNotAttach())

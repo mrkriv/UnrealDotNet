@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 UCLASS()
 class UNREALDOTNETRUNTIME_API AManageSpectatorPawn : public ASpectatorPawn, public IManageObject
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 	
 	bool bIsManageAttach = false;
 	

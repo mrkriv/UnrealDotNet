@@ -28,12 +28,11 @@ namespace GameLogic
 
         public Elevator(IntPtr adress) : base(adress)
         {
+            PrimaryActorTick.bCanEverTick = 1;
         }
 
-        public override void OnConstruction(FTransform transform)
+        protected override void BeginPlay()
         {
-            PrimaryActorTick.bCanEverTick = 1;
-
             var transformRules = new FAttachmentTransformRules(
                 EAttachmentRule.SnapToTarget,
                 EAttachmentRule.SnapToTarget,
@@ -55,10 +54,6 @@ namespace GameLogic
             _collider.OnComponentEndOverlap += Collider_OnComponentEndOverlap;
 
             _collider.AttachToComponent(_mesh, transformRules, "");
-        }
-
-        protected override void BeginPlay()
-        {
         }
 
         public override void Tick(float deltaSeconds)

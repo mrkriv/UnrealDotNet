@@ -13,6 +13,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\DefaultPawn.h:25
 
+AManageDefaultPawn::AManageDefaultPawn(const FObjectInitializer& ObjectInitializer)
+ : Super(ObjectInitializer)
+{
+	RootComponent = CreateDefaultSubobject<USceneComponent>(USceneComponent::GetDefaultSceneRootVariableName());
+	RootComponent->Mobility = EComponentMobility::Movable;
+	RootComponent->bVisualizeComponent = true;
+	
+	AddWrapperIfNotAttach();
+}
+
 bool AManageDefaultPawn::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

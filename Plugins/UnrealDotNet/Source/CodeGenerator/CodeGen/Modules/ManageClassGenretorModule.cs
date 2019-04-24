@@ -83,12 +83,14 @@ namespace CodeGenerator.CodeGen.Modules
 
             GenerateSourceInfo(cw, Class);
 
+            var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
+
             cw.WriteLine("UCLASS()");
             cw.WriteLine(
-                $"class {Cfg.CppApiUe} {Class.Litera}Manage{Class.BaseName} : public {Class.Name}, public IManageObject");
+                $"class {Cfg.CppApiUe} {cppClassName} : public {Class.Name}, public IManageObject");
             cw.OpenBlock();
 
-            cw.WriteLine("GENERATED_BODY()");
+            cw.WriteLine(Class.IsChild("AActor") ? "GENERATED_UCLASS_BODY()" : "GENERATED_BODY()");
             cw.WriteLine();
             cw.WriteLine("bool bIsManageAttach = false;");
             cw.WriteLine();
@@ -246,8 +248,25 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
+            
+            var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
 
-            cw.WriteLine($"bool {Class.Litera}Manage{Class.BaseName}::AddWrapperIfNotAttach()");
+            if (Class.IsChild("AActor"))
+            {
+                cw.WriteLine($"{cppClassName}::{cppClassName}(const FObjectInitializer& ObjectInitializer)");
+                cw.WriteLine($" : Super(ObjectInitializer)");
+                cw.OpenBlock();
+                cw.WriteLine(
+                    "RootComponent = CreateDefaultSubobject<USceneComponent>(USceneComponent::GetDefaultSceneRootVariableName());");
+                cw.WriteLine("RootComponent->Mobility = EComponentMobility::Movable;");
+                cw.WriteLine("RootComponent->bVisualizeComponent = true;");
+                cw.WriteLine();
+                cw.WriteLine("AddWrapperIfNotAttach();");
+                cw.CloseBlock();
+                cw.WriteLine();
+            }
+
+            cw.WriteLine($"bool {cppClassName}::AddWrapperIfNotAttach()");
             cw.OpenBlock();
             cw.WriteLine("if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())");
             cw.OpenBlock();
@@ -281,26 +300,11 @@ namespace CodeGenerator.CodeGen.Modules
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
             var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
             var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
-            var Class = method.OwnerClass;
+            var cppClassName = $"{method.OwnerClass.Litera}Manage{method.OwnerClass.BaseName}";
 
             cw.WriteLine(
-                $"{method.ReturnType.GetTypeCppOgiginal()} {Class.Litera}Manage{Class.BaseName}::{method.Name}({param})");
+                $"{method.ReturnType.GetTypeCppOgiginal()} {cppClassName}::{method.Name}({param})");
             cw.OpenBlock();
-
-            if (method.Name == "OnConstruction")
-            {
-                cw.WriteLine(
-                    "auto rootComponent = NewObject<USceneComponent>(this, USceneComponent::GetDefaultSceneRootVariableName(), RF_Transactional);");
-                cw.WriteLine("rootComponent->Mobility = EComponentMobility::Movable;");
-                cw.WriteLine("rootComponent->bVisualizeComponent = true;");
-                cw.WriteLine("rootComponent->SetWorldTransform(Transform);");
-                cw.WriteLine("");
-                cw.WriteLine("SetRootComponent(rootComponent);");
-                cw.WriteLine("AddInstanceComponent(rootComponent);");
-                cw.WriteLine("");
-                cw.WriteLine("rootComponent->RegisterComponent();");
-                cw.WriteLine("");
-            }
 
             cw.WriteLine($"Super::{method.Name}({call});"); // todo: убрать это отсюда и вызывать из управляемого кода
 
