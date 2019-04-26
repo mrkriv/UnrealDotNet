@@ -120,6 +120,20 @@ namespace UnrealEngine
 		BVS_MAX,
 	}
 
+	
+	/// <summary>
+	/// <para>Holds the dynamic delegate to call. </para>
+	/// </summary>
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InputComponent.h:279
+	
+	public enum EBoundDelegate : byte
+	{
+		Unbound,
+		Delegate,
+		DelegateWithKey,
+		DynamicDelegate,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:36
 	
 	public enum ECanBeCharacterBase : byte
@@ -603,14 +617,6 @@ namespace UnrealEngine
 		Y,
 		Z,
 		UseGlobalPhysicsSetting,
-	}
-
-	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\World.h:730
-	
-	public enum EProcessReason : byte
-	{
-		Add,
-		Reevaluate,
 	}
 
 	

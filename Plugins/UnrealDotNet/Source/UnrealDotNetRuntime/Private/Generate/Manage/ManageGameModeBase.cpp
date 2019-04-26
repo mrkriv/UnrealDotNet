@@ -60,14 +60,6 @@ void AManageGameModeBase::GenericPlayerInitialization(AController* C)
 		UCoreShell::GetInstance()->InvokeInObject(this, "GenericPlayerInitialization", C);
 }
 
-void AManageGameModeBase::GetSeamlessTravelActorList(bool bToTransition, TArray<AActor*>& ActorList)
-{
-	Super::GetSeamlessTravelActorList(bToTransition, ActorList);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "GetSeamlessTravelActorList", bToTransition, ActorList);
-}
-
 void AManageGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);

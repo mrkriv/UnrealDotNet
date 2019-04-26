@@ -27,31 +27,6 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveClassRedirects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_ActiveClassRedirects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveGameNameRedirects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_ActiveGameNameRedirects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_ActivePluginRedirects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_ActivePluginRedirects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_ActiveStructRedirects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_ActiveStructRedirects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_AdditionalFontNames_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_AdditionalFontNames_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_UEngine_bIsInitialized_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_bIsInitialized_SET(IntPtr Ptr, bool Value);
@@ -75,11 +50,6 @@ namespace UnrealEngine
 		private static extern int E_PROP_UEngine_ClientCycles_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ClientCycles_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_DeferredCommands_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_DeferredCommands_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_DisplayGamma_GET(IntPtr Ptr);
@@ -107,11 +77,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameUserSettings_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_HLODColorationColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_HLODColorationColors_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_IdealLightMapDensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_IdealLightMapDensity_SET(IntPtr Ptr, float Value);
@@ -125,11 +90,6 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_LightComplexityColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_LightComplexityColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UEngine_LightingOnlyBrightness_GET(IntPtr Ptr);
@@ -150,11 +110,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_UEngine_LightMapDensityVertexMappedColor_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_LightMapDensityVertexMappedColor_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_LODColorationColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_LODColorationColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_MaxES2PixelShaderAdditiveComplexityCount_GET(IntPtr Ptr);
@@ -232,24 +187,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_ParticleEventManagerClassPath_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_PendingDroppedNotes_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_PendingDroppedNotes_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_PriorityScreenMessages_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_PriorityScreenMessages_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_QuadComplexityColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_QuadComplexityColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_RenderLightMapDensityColorScale_GET(IntPtr Ptr);
@@ -280,26 +220,6 @@ namespace UnrealEngine
 		private static extern StringWrapper E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(IntPtr Ptr, string Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_ShaderComplexityColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_ShaderComplexityColors_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_StatColorMappings_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_StatColorMappings_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_StationaryLightOverlapColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_StationaryLightOverlapColors_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UEngine_StreamingAccuracyColors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UEngine_StreamingAccuracyColors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_StreamingDistanceFactor_GET(IntPtr Ptr);
@@ -423,49 +343,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_Tick(IntPtr self, float deltaSeconds, bool bIdleMode);
 		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_WorldAdded(IntPtr self, IntPtr world);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UEngine_WorldDestroyed(IntPtr self, IntPtr inWorld);
-		
 		#endregion
 		
 		#region Property
-		public TArray<FClassRedirect> ActiveClassRedirects
-		{
-			get => E_PROP_UEngine_ActiveClassRedirects_GET(NativePointer);
-			set => E_PROP_UEngine_ActiveClassRedirects_SET(NativePointer, value);
-		}
-
-		public TArray<FGameNameRedirect> ActiveGameNameRedirects
-		{
-			get => E_PROP_UEngine_ActiveGameNameRedirects_GET(NativePointer);
-			set => E_PROP_UEngine_ActiveGameNameRedirects_SET(NativePointer, value);
-		}
-
-		public TArray<FPluginRedirect> ActivePluginRedirects
-		{
-			get => E_PROP_UEngine_ActivePluginRedirects_GET(NativePointer);
-			set => E_PROP_UEngine_ActivePluginRedirects_SET(NativePointer, value);
-		}
-
-		public TArray<FStructRedirect> ActiveStructRedirects
-		{
-			get => E_PROP_UEngine_ActiveStructRedirects_GET(NativePointer);
-			set => E_PROP_UEngine_ActiveStructRedirects_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>@todo document </para>
-		/// </summary>
-		public TArray<string> AdditionalFontNames
-		{
-			get => E_PROP_UEngine_AdditionalFontNames_GET(NativePointer);
-			set => E_PROP_UEngine_AdditionalFontNames_SET(NativePointer, value);
-		}
-
 		public bool bIsInitialized
 		{
 			get => E_PROP_UEngine_bIsInitialized_GET(NativePointer);
@@ -494,12 +374,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_ClientCycles_GET(NativePointer);
 			set => E_PROP_UEngine_ClientCycles_SET(NativePointer, value);
-		}
-
-		public TArray<string> DeferredCommands
-		{
-			get => E_PROP_UEngine_DeferredCommands_GET(NativePointer);
-			set => E_PROP_UEngine_DeferredCommands_SET(NativePointer, value);
 		}
 
 		public float DisplayGamma
@@ -536,12 +410,6 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_GameUserSettings_SET(NativePointer, value);
 		}
 
-		public TArray<FLinearColor> HLODColorationColors
-		{
-			get => E_PROP_UEngine_HLODColorationColors_GET(NativePointer);
-			set => E_PROP_UEngine_HLODColorationColors_SET(NativePointer, value);
-		}
-
 		public float IdealLightMapDensity
 		{
 			get => E_PROP_UEngine_IdealLightMapDensity_GET(NativePointer);
@@ -558,12 +426,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_LevelColorationUnlitMaterialName_GET(NativePointer);
 			set => E_PROP_UEngine_LevelColorationUnlitMaterialName_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> LightComplexityColors
-		{
-			get => E_PROP_UEngine_LightComplexityColors_GET(NativePointer);
-			set => E_PROP_UEngine_LightComplexityColors_SET(NativePointer, value);
 		}
 
 		public FLinearColor LightingOnlyBrightness
@@ -588,12 +450,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_LightMapDensityVertexMappedColor_GET(NativePointer);
 			set => E_PROP_UEngine_LightMapDensityVertexMappedColor_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> LODColorationColors
-		{
-			get => E_PROP_UEngine_LODColorationColors_GET(NativePointer);
-			set => E_PROP_UEngine_LODColorationColors_SET(NativePointer, value);
 		}
 
 		public float MaxES2PixelShaderAdditiveComplexityCount
@@ -698,32 +554,10 @@ namespace UnrealEngine
 			set => E_PROP_UEngine_ParticleEventManagerClassPath_SET(NativePointer, value);
 		}
 
-		public TArray<FDropNoteInfo> PendingDroppedNotes
-		{
-			get => E_PROP_UEngine_PendingDroppedNotes_GET(NativePointer);
-			set => E_PROP_UEngine_PendingDroppedNotes_SET(NativePointer, value);
-		}
-
 		public float PrimitiveProbablyVisibleTime
 		{
 			get => E_PROP_UEngine_PrimitiveProbablyVisibleTime_GET(NativePointer);
 			set => E_PROP_UEngine_PrimitiveProbablyVisibleTime_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>A collection of messages to display on-screen. </para>
-		/// </summary>
-		public TArray<FScreenMessageString> PriorityScreenMessages
-		{
-			get => E_PROP_UEngine_PriorityScreenMessages_GET(NativePointer);
-			set => E_PROP_UEngine_PriorityScreenMessages_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> QuadComplexityColors
-		{
-			get => E_PROP_UEngine_QuadComplexityColors_GET(NativePointer);
-			set => E_PROP_UEngine_QuadComplexityColors_SET(NativePointer, value);
 		}
 
 		public float RenderLightMapDensityColorScale
@@ -760,30 +594,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_GET(NativePointer);
 			set => E_PROP_UEngine_ShadedLevelColorationUnlitMaterialName_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> ShaderComplexityColors
-		{
-			get => E_PROP_UEngine_ShaderComplexityColors_GET(NativePointer);
-			set => E_PROP_UEngine_ShaderComplexityColors_SET(NativePointer, value);
-		}
-
-		public TArray<FStatColorMapping> StatColorMappings
-		{
-			get => E_PROP_UEngine_StatColorMappings_GET(NativePointer);
-			set => E_PROP_UEngine_StatColorMappings_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> StationaryLightOverlapColors
-		{
-			get => E_PROP_UEngine_StationaryLightOverlapColors_GET(NativePointer);
-			set => E_PROP_UEngine_StationaryLightOverlapColors_SET(NativePointer, value);
-		}
-
-		public TArray<FLinearColor> StreamingAccuracyColors
-		{
-			get => E_PROP_UEngine_StreamingAccuracyColors_GET(NativePointer);
-			set => E_PROP_UEngine_StreamingAccuracyColors_SET(NativePointer, value);
 		}
 
 		
@@ -977,20 +787,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Tick(float deltaSeconds, bool bIdleMode)
 			=> E_UEngine_Tick(this, deltaSeconds, bIdleMode);
-		
-		
-		/// <summary>
-		/// <para>Needs to be called when a world is added to broadcast messages. </para>
-		/// </summary>
-		public virtual void WorldAdded(UWorld world)
-			=> E_UEngine_WorldAdded(this, world);
-		
-		
-		/// <summary>
-		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
-		/// </summary>
-		public virtual void WorldDestroyed(UWorld inWorld)
-			=> E_UEngine_WorldDestroyed(this, inWorld);
 		
 		#endregion
 		

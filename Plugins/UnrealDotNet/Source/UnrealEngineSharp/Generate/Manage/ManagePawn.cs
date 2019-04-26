@@ -119,6 +119,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Allows a Pawn to set up custom input bindings. Called upon possession by a PlayerController, using the InputComponent created by CreatePlayerInputComponent(). </para>
+		/// </summary>
+		protected override void SetupPlayerInputComponent(UInputComponent playerInputComponent) { }
+		
+		
+		/// <summary>
 		/// <para>Spawn default controller for this Pawn, and get possessed by it. </para>
 		/// </summary>
 		public override void SpawnDefaultController() { }

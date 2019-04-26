@@ -23,11 +23,6 @@ namespace UnrealEngine
 		{
 		}
 
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FStaticMeshVertexColorLODData_PaintedVertices_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FStaticMeshVertexColorLODData_PaintedVertices_SET(IntPtr Ptr, IntPtr Value);
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FStaticMeshVertexColorLODData();
@@ -35,15 +30,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FStaticMeshVertexColorLODData_IsValid(IntPtr self);
 		
-		#endregion
-		
-		#region Property
-		public TArray<FPaintedVertex> PaintedVertices
-		{
-			get => E_PROP_FStaticMeshVertexColorLODData_PaintedVertices_GET(NativePointer);
-			set => E_PROP_FStaticMeshVertexColorLODData_PaintedVertices_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

@@ -236,6 +236,12 @@ public interface IUHeaderVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitMethodParametr([NotNull] UHeaderParser.MethodParametrContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParametrTemplate"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMethodParametrTemplate([NotNull] UHeaderParser.MethodParametrTemplateContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="UHeaderParser.methodParametrName"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

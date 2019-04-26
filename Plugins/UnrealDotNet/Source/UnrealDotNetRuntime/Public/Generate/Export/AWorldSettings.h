@@ -97,9 +97,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_Pauser_GET(AWorldSettings* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Pauser); }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_Pauser_SET(AWorldSettings* Ptr, APlayerState* Value) { Ptr->Pauser = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AWorldSettings_ReplicationViewers_GET(AWorldSettings* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ReplicationViewers); }
-	DOTNET_EXPORT void E_PROP_AWorldSettings_ReplicationViewers_SET(AWorldSettings* Ptr, INT_PTR Value) { Ptr->ReplicationViewers = *(TArray<FNetViewer>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_TimeDilation_GET(AWorldSettings* Ptr) { return Ptr->TimeDilation; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_TimeDilation_SET(AWorldSettings* Ptr, float Value) { Ptr->TimeDilation = Value; }
 	

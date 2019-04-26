@@ -23,11 +23,6 @@ namespace UnrealEngine
 		{
 		}
 
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FSkelMeshComponentLODInfo_HiddenMaterials_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FSkelMeshComponentLODInfo_HiddenMaterials_SET(IntPtr Ptr, IntPtr Value);
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSkelMeshComponentLODInfo();
@@ -44,15 +39,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSkelMeshComponentLODInfo_ReleaseOverrideVertexColorsAndBlock(IntPtr self);
 		
-		#endregion
-		
-		#region Property
-		public TArray<bool> HiddenMaterials
-		{
-			get => E_PROP_FSkelMeshComponentLODInfo_HiddenMaterials_GET(NativePointer);
-			set => E_PROP_FSkelMeshComponentLODInfo_HiddenMaterials_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		#region ExternMethods

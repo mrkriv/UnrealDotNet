@@ -81,6 +81,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_APawn_ConsumeMovementInputVector(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_APawn_CreatePlayerInputComponent(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_DestroyPlayerInputComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -220,6 +223,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APawn_SetRemoteViewPitch(IntPtr self, float newRemoteViewPitch);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APawn_SetupPlayerInputComponent(IntPtr self, IntPtr playerInputComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APawn_ShouldTakeDamage(IntPtr self, float damage, IntPtr damageEvent, IntPtr eventInstigator, IntPtr damageCauser);
@@ -364,6 +370,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual FVector ConsumeMovementInputVector()
 			=> E_APawn_ConsumeMovementInputVector(this);
+		
+		
+		/// <summary>
+		/// <para>Creates an InputComponent that can be used for custom input bindings. Called upon possession by a PlayerController. Return null if you don't want one. </para>
+		/// </summary>
+		protected virtual UInputComponent CreatePlayerInputComponent()
+			=> E_APawn_CreatePlayerInputComponent(this);
 		
 		
 		/// <summary>
@@ -706,6 +719,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetRemoteViewPitch(float newRemoteViewPitch)
 			=> E_APawn_SetRemoteViewPitch(this, newRemoteViewPitch);
+		
+		
+		/// <summary>
+		/// <para>Allows a Pawn to set up custom input bindings. Called upon possession by a PlayerController, using the InputComponent created by CreatePlayerInputComponent(). </para>
+		/// </summary>
+		protected virtual void SetupPlayerInputComponent(UInputComponent playerInputComponent)
+			=> E_APawn_SetupPlayerInputComponent(this, playerInputComponent);
 		
 		
 		/// <summary>

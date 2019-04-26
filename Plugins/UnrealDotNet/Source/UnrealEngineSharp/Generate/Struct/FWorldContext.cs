@@ -44,21 +44,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_LastURL_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FWorldContext_LevelsToLoadForPendingMapChange_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FWorldContext_LevelsToLoadForPendingMapChange_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FWorldContext_PackagesToFullyLoad_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FWorldContext_PackagesToFullyLoad_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FWorldContext_PendingLevelStreamingStatusUpdates_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FWorldContext_PendingLevelStreamingStatusUpdates_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FWorldContext_PendingMapChangeFailureDescription_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_PendingMapChangeFailureDescription_SET(IntPtr Ptr, string Value);
@@ -92,12 +77,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FWorldContext();
 		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FWorldContext_SetCurrentWorld(IntPtr self, IntPtr world);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_FWorldContext_World(IntPtr self);
-		
 		#endregion
 		
 		#region Property
@@ -127,29 +106,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FWorldContext_LastURL_GET(NativePointer);
 			set => E_PROP_FWorldContext_LastURL_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Array of package/ level names that need to be loaded for the pending map change. First level in that array is </para>
-		/// <para>going to be made a fake persistent one by using ULevelStreamingPersistent. </para>
-		/// </summary>
-		public TArray<string> LevelsToLoadForPendingMapChange
-		{
-			get => E_PROP_FWorldContext_LevelsToLoadForPendingMapChange_GET(NativePointer);
-			set => E_PROP_FWorldContext_LevelsToLoadForPendingMapChange_SET(NativePointer, value);
-		}
-
-		public TArray<FFullyLoadedPackagesInfo> PackagesToFullyLoad
-		{
-			get => E_PROP_FWorldContext_PackagesToFullyLoad_GET(NativePointer);
-			set => E_PROP_FWorldContext_PackagesToFullyLoad_SET(NativePointer, value);
-		}
-
-		public TArray<FLevelStreamingStatus> PendingLevelStreamingStatusUpdates
-		{
-			get => E_PROP_FWorldContext_PendingLevelStreamingStatusUpdates_GET(NativePointer);
-			set => E_PROP_FWorldContext_PendingLevelStreamingStatusUpdates_SET(NativePointer, value);
 		}
 
 		
@@ -212,19 +168,6 @@ namespace UnrealEngine
 			set => E_PROP_FWorldContext_TravelURL_SET(NativePointer, value);
 		}
 
-		#endregion
-		
-		#region ExternMethods
-		
-		/// <summary>
-		/// <para>Set CurrentWorld and update external reference pointers to reflect this </para>
-		/// </summary>
-		public void SetCurrentWorld(UWorld world)
-			=> E_FWorldContext_SetCurrentWorld(this, world);
-		
-		public UWorld World()
-			=> E_FWorldContext_World(this);
-		
 		#endregion
 		
 		public static implicit operator IntPtr(FWorldContext self)

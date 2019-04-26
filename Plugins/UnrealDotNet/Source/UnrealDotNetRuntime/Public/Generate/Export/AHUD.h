@@ -27,41 +27,16 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_AHUD_DebugDisplay_GET(AHUD* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->DebugDisplay); }
-	DOTNET_EXPORT void E_PROP_AHUD_DebugDisplay_SET(AHUD* Ptr, INT_PTR Value) { Ptr->DebugDisplay = *(TArray<FName>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AHUD_LastHUDRenderTime_GET(AHUD* Ptr) { return Ptr->LastHUDRenderTime; }
 	DOTNET_EXPORT void E_PROP_AHUD_LastHUDRenderTime_SET(AHUD* Ptr, float Value) { Ptr->LastHUDRenderTime = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AHUD_PostRenderedActors_GET(AHUD* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PostRenderedActors); }
-	DOTNET_EXPORT void E_PROP_AHUD_PostRenderedActors_SET(AHUD* Ptr, INT_PTR Value) { Ptr->PostRenderedActors = *(TArray<AActor*>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AHUD_RenderDelta_GET(AHUD* Ptr) { return Ptr->RenderDelta; }
 	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(AHUD* Ptr, float Value) { Ptr->RenderDelta = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_AHUD_ToggledDebugCategories_GET(AHUD* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ToggledDebugCategories); }
-	DOTNET_EXPORT void E_PROP_AHUD_ToggledDebugCategories_SET(AHUD* Ptr, INT_PTR Value) { Ptr->ToggledDebugCategories = *(TArray<FName>*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_AHUD(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<AHUD>(Parent, FName(UTF8_TO_TCHAR(Name)));
-	}
-
-	DOTNET_EXPORT auto E_AHUD_AddActorToDebugList(AHUD* Self, AActor* InActor, INT_PTR InOutList, UWorld* InWorld)
-	{
-		auto _p0 = InActor;
-		auto& _p1 = *(TArray<AActor*>*)InOutList;
-		auto _p2 = InWorld;
-		Self->AddActorToDebugList(_p0, _p1, _p2);
-	}
-
-	DOTNET_EXPORT auto E_AHUD_AddComponentOwnerToDebugList(AHUD* Self, UActorComponent* InComponent, INT_PTR InOutList, UWorld* InWorld)
-	{
-		auto _p0 = InComponent;
-		auto& _p1 = *(TArray<AActor*>*)InOutList;
-		auto _p2 = InWorld;
-		Self->AddComponentOwnerToDebugList(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_AddHitBox(AHUD* Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
@@ -140,12 +115,6 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_GetCurrentDebugTargetActor(AHUD* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetCurrentDebugTargetActor());
-	}
-
-	DOTNET_EXPORT auto E_AHUD_GetDebugActorList(AHUD* Self, INT_PTR InOutList)
-	{
-		auto& _p0 = *(TArray<AActor*>*)InOutList;
-		Self->GetDebugActorList(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_GetOwningPawn(AHUD* Self)
@@ -308,12 +277,6 @@ extern "C"
 		auto _p0 = *(FVector2D*)ClickLocation;
 		auto _p1 = InEventType;
 		return Self->UpdateAndDispatchHitBoxClickEvents(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_AHUD_UpdateHitBoxCandidates(AHUD* Self, INT_PTR InContactPoints)
-	{
-		auto _p0 = *(TArray<FVector2D>*)InContactPoints;
-		Self->UpdateHitBoxCandidates(_p0);
 	}
 
 }

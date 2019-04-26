@@ -156,6 +156,14 @@ void AManagePawn::SetPlayerDefaults()
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlayerDefaults");
 }
 
+void AManagePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetupPlayerInputComponent", PlayerInputComponent);
+}
+
 void AManagePawn::SpawnDefaultController()
 {
 	Super::SpawnDefaultController();

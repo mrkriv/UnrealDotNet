@@ -31,7 +31,6 @@ public:
 	FDotnetTypeName ManageClassName;
 	
 	virtual void ChangeName(AController* Controller, const FString& NewName, bool bNameChange) override;
-	virtual void GetSeamlessTravelActorList(bool bToTransition, TArray<AActor*>& ActorList) override;
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	virtual void InitGameState() override;
 	virtual void Logout(AController* Exiting) override;

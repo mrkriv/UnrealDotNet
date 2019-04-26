@@ -32,11 +32,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_APlayerController_AcknowledgedPawn_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_APlayerController_ActiveForceFeedbackEffects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APlayerController_ActiveForceFeedbackEffects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_APlayerController_bAutoManageActiveCameraTarget_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APlayerController_bAutoManageActiveCameraTarget_SET(IntPtr Ptr, bool Value);
@@ -62,19 +57,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_APlayerController_ClientCap_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_APlayerController_ForceFeedbackScale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APlayerController_ForceFeedbackScale_SET(IntPtr Ptr, float Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_APlayerController_HiddenActors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APlayerController_HiddenActors_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_APlayerController_HitResultTraceDistance_GET(IntPtr Ptr);
@@ -130,11 +115,6 @@ namespace UnrealEngine
 		private static extern byte E_PROP_APlayerController_NetPlayerIndex_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APlayerController_NetPlayerIndex_SET(IntPtr Ptr, byte Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_APlayerController_PendingMapChangeLevelNames_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_APlayerController_PendingMapChangeLevelNames_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_APlayerController_Player_GET(IntPtr Ptr);
@@ -271,9 +251,6 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_ClientUpdateLevelStreamingStatus(IntPtr self, string packageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad, int lODIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APlayerController_ClientUpdateMultipleLevelsStreamingStatus(IntPtr self, IntPtr levelStatuses);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientVoiceHandshakeComplete(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -323,9 +300,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APlayerController_GetMousePosition(IntPtr self, float locationX, float locationY);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APlayerController_GetSeamlessTravelActorList(IntPtr self, bool bToEntry, IntPtr actorList);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_GetViewportSize(IntPtr self, int sizeX, int sizeY);
@@ -424,9 +398,6 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_ServerUpdateLevelVisibility(IntPtr self, string packageName, bool bIsVisible);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_APlayerController_ServerUpdateMultipleLevelsVisibility(IntPtr self, IntPtr levelVisibilities);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ServerVerifyViewTarget(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -480,12 +451,6 @@ namespace UnrealEngine
 			set => E_PROP_APlayerController_AcknowledgedPawn_SET(NativePointer, value);
 		}
 
-		public TArray<FActiveForceFeedbackEffect> ActiveForceFeedbackEffects
-		{
-			get => E_PROP_APlayerController_ActiveForceFeedbackEffects_GET(NativePointer);
-			set => E_PROP_APlayerController_ActiveForceFeedbackEffects_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>True to allow this player controller to manage the camera target for you, </para>
@@ -534,26 +499,10 @@ namespace UnrealEngine
 			set => E_PROP_APlayerController_ClientCap_SET(NativePointer, value);
 		}
 
-		
-		/// <summary>
-		/// <para>For debugging, shows the last force feeback effects that played </para>
-		/// </summary>
-		public TArray<FForceFeedbackEffectHistoryEntry> ForceFeedbackEffectHistoryEntries
-		{
-			get => E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_GET(NativePointer);
-			set => E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_SET(NativePointer, value);
-		}
-
 		public float ForceFeedbackScale
 		{
 			get => E_PROP_APlayerController_ForceFeedbackScale_GET(NativePointer);
 			set => E_PROP_APlayerController_ForceFeedbackScale_SET(NativePointer, value);
-		}
-
-		public TArray<AActor> HiddenActors
-		{
-			get => E_PROP_APlayerController_HiddenActors_GET(NativePointer);
-			set => E_PROP_APlayerController_HiddenActors_SET(NativePointer, value);
 		}
 
 		
@@ -645,16 +594,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_APlayerController_NetPlayerIndex_GET(NativePointer);
 			set => E_PROP_APlayerController_NetPlayerIndex_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>List of names of levels the server is in the middle of sending us for a PrepareMapChange() call </para>
-		/// </summary>
-		public TArray<string> PendingMapChangeLevelNames
-		{
-			get => E_PROP_APlayerController_PendingMapChangeLevelNames_GET(NativePointer);
-			set => E_PROP_APlayerController_PendingMapChangeLevelNames_SET(NativePointer, value);
 		}
 
 		public UPlayer Player
@@ -834,9 +773,6 @@ namespace UnrealEngine
 		public void ClientUpdateLevelStreamingStatus(string packageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad, int lODIndex)
 			=> E_APlayerController_ClientUpdateLevelStreamingStatus(this, packageName, bNewShouldBeLoaded, bNewShouldBeVisible, bNewShouldBlockOnLoad, lODIndex);
 		
-		public void ClientUpdateMultipleLevelsStreamingStatus(TArray<FUpdateLevelStreamingLevelStatus> levelStatuses)
-			=> E_APlayerController_ClientUpdateMultipleLevelsStreamingStatus(this, levelStatuses);
-		
 		public virtual void ClientVoiceHandshakeComplete()
 			=> E_APlayerController_ClientVoiceHandshakeComplete(this);
 		
@@ -927,21 +863,6 @@ namespace UnrealEngine
 		/// </summary>
 		public bool GetMousePosition(float locationX, float locationY)
 			=> E_APlayerController_GetMousePosition(this, locationX, locationY);
-		
-		
-		/// <summary>
-		/// <para>Called on client during seamless level transitions to get the list of Actors that should be moved into the new level </para>
-		/// <para>PlayerControllers, Role < ROLE_Authority Actors, and any non-Actors that are inside an Actor that is in the list </para>
-		/// <para>(i.e. Object.Outer == Actor in the list) </para>
-		/// <para>are all automatically moved regardless of whether they're included here </para>
-		/// <para>only dynamic actors in the PersistentLevel may be moved (this includes all actors spawned during gameplay) </para>
-		/// <para>this is called for both parts of the transition because actors might change while in the middle (e.g. players might join or leave the game) </para>
-		/// <para>@see also GameModeBase::GetSeamlessTravelActorList() (the function that's called on servers) </para>
-		/// <param name="bToEntry">true if we are going from old level -> entry, false if we are going from entry -> new level </param>
-		/// <param name="ActorList">out) list of actors to maintain </param>
-		/// </summary>
-		public virtual void GetSeamlessTravelActorList(bool bToEntry, TArray<AActor> actorList)
-			=> E_APlayerController_GetSeamlessTravelActorList(this, bToEntry, actorList);
 		
 		
 		/// <summary>
@@ -1113,9 +1034,6 @@ namespace UnrealEngine
 		
 		public void ServerUpdateLevelVisibility(string packageName, bool bIsVisible)
 			=> E_APlayerController_ServerUpdateLevelVisibility(this, packageName, bIsVisible);
-		
-		public void ServerUpdateMultipleLevelsVisibility(TArray<FUpdateLevelVisibilityLevelInfo> levelVisibilities)
-			=> E_APlayerController_ServerUpdateMultipleLevelsVisibility(this, levelVisibilities);
 		
 		public void ServerVerifyViewTarget()
 			=> E_APlayerController_ServerVerifyViewTarget(this);

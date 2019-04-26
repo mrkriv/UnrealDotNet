@@ -23,43 +23,10 @@ namespace UnrealEngine
 		{
 		}
 
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_SET(IntPtr Ptr, IntPtr Value);
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSkelMeshRefPoseOverride();
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Inverse of (component space) ref pose matrices </para>
-		/// </summary>
-		public TArray<FMatrix> RefBasesInvMatrix
-		{
-			get => E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_GET(NativePointer);
-			set => E_PROP_FSkelMeshRefPoseOverride_RefBasesInvMatrix_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Per bone transforms (local space) for new ref pose </para>
-		/// </summary>
-		public TArray<FTransform> RefBonePoses
-		{
-			get => E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_GET(NativePointer);
-			set => E_PROP_FSkelMeshRefPoseOverride_RefBonePoses_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(FSkelMeshRefPoseOverride self)

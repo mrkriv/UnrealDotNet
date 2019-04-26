@@ -82,11 +82,6 @@ public:
 		UpdateNavigationData();
 	}
 
-	bool UpdateOverlapsImpl_WRAP(const TArray<FOverlapInfo>* PendingOverlaps, bool bDoNotifies, const TArray<FOverlapInfo>* OverlapsAtEndLocation)
-	{
-		return UpdateOverlapsImpl(PendingOverlaps, bDoNotifies, OverlapsAtEndLocation);
-	}
-
 };
 
 
@@ -330,16 +325,6 @@ extern "C"
 		return Self->DoesSocketExist(_p0);
 	}
 
-	DOTNET_EXPORT auto E_USceneComponent_GetAllSocketNames(USceneComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetAllSocketNames());
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetAttachChildren(USceneComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetAttachChildren());
-	}
-
 	DOTNET_EXPORT auto E_USceneComponent_GetAttachmentRoot(USceneComponent* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetAttachmentRoot());
@@ -364,13 +349,6 @@ extern "C"
 	{
 		auto _p0 = ChildIndex;
 		return ConvertToManage_ObjectPointerDescription(Self->GetChildComponent(_p0));
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetChildrenComponents(USceneComponent* Self, bool bIncludeAllDescendants, INT_PTR Children)
-	{
-		auto _p0 = bIncludeAllDescendants;
-		auto& _p1 = *(TArray<USceneComponent*>*)Children;
-		Self->GetChildrenComponents(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetCollisionObjectType(USceneComponent* Self)
@@ -443,12 +421,6 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_GetNumChildrenComponents(USceneComponent* Self)
 	{
 		return Self->GetNumChildrenComponents();
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_GetParentComponents(USceneComponent* Self, INT_PTR Parents)
-	{
-		auto& _p0 = *(TArray<USceneComponent*>*)Parents;
-		Self->GetParentComponents(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_GetPlacementExtent(USceneComponent* Self)
@@ -1102,22 +1074,6 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_UpdateNavigationData(USceneComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->UpdateNavigationData_WRAP();
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_UpdateOverlaps(USceneComponent* Self, INT_PTR PendingOverlaps, bool bDoNotifies, INT_PTR OverlapsAtEndLocation)
-	{
-		auto _p0 = *(const TArray<FOverlapInfo>**)PendingOverlaps;
-		auto _p1 = bDoNotifies;
-		auto _p2 = *(const TArray<FOverlapInfo>**)OverlapsAtEndLocation;
-		return Self->UpdateOverlaps(_p0, _p1, _p2);
-	}
-
-	DOTNET_EXPORT auto E_USceneComponent_UpdateOverlapsImpl(USceneComponent* Self, INT_PTR PendingOverlaps, bool bDoNotifies, INT_PTR OverlapsAtEndLocation)
-	{
-		auto _p0 = *(const TArray<FOverlapInfo>**)PendingOverlaps;
-		auto _p1 = bDoNotifies;
-		auto _p2 = *(const TArray<FOverlapInfo>**)OverlapsAtEndLocation;
-		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->UpdateOverlapsImpl_WRAP(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)

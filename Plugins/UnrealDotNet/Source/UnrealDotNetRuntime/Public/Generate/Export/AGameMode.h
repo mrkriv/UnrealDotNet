@@ -72,9 +72,6 @@ public:
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_AGameMode_InactivePlayerArray_GET(AGameMode* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->InactivePlayerArray); }
-	DOTNET_EXPORT void E_PROP_AGameMode_InactivePlayerArray_SET(AGameMode* Ptr, INT_PTR Value) { Ptr->InactivePlayerArray = *(TArray<APlayerState*>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AGameMode_MinRespawnDelay_GET(AGameMode* Ptr) { return Ptr->MinRespawnDelay; }
 	DOTNET_EXPORT void E_PROP_AGameMode_MinRespawnDelay_SET(AGameMode* Ptr, float Value) { Ptr->MinRespawnDelay = Value; }
 	

@@ -202,7 +202,11 @@ methodParamsList
 ;
 
 methodParametr
-	: type (methodParametrName ('=' methodParametrDefaultValue)?)?
+	: methodParametrTemplate? type (methodParametrName ('=' methodParametrDefaultValue)?)?
+;
+
+methodParametrTemplate
+	: Typename (type DotDot DotDot Template)?
 ;
 
 methodParametrName
@@ -240,11 +244,11 @@ methodOperator
 /* Property */
 
 property
-	: (Mutable|Extern|isStatic)* type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
+	: templateDefine? (Mutable|Extern|isStatic)* type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
 ;
 
 propertyName
-	: Identifier
+    : Identifier ('<' templateParamList '>')? (DotDot DotDot propertyName)?
 ;
 
 propertyDefaultValue
@@ -268,8 +272,7 @@ isRefQuant
 ;
 
 typeName
-	: Identifier (DotDot DotDot Identifier)?
-	| Identifier ('<' (type|Literal) (',' (type|Literal))* '>')
+    : Identifier ('<' (type|Literal) (',' (type|Literal))* '>')? (DotDot DotDot typeName)?
 ;
 
 isVirtual
@@ -320,8 +323,7 @@ templateDefine
 	;
 
 templateParamList
-	: templateParam
-	| templateParam ',' templateParamList
+	: Typename? templateParam (',' templateParamList)?
 	;
 
 templateParam
@@ -476,6 +478,10 @@ GCC_ALIGN
 
 Namespace
 	: 'namespace'
+;
+
+Typename
+	: 'typename'
 ;
 
 DotDot

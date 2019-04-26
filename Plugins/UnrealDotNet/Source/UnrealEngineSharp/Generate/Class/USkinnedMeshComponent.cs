@@ -27,19 +27,9 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_ActiveMorphTargets_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_ActiveMorphTargets_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_LODInfo_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_LODInfo_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_USkinnedMeshComponent_MaxDistanceFactor_GET(IntPtr Ptr);
@@ -50,11 +40,6 @@ namespace UnrealEngine
 		private static extern int E_PROP_USkinnedMeshComponent_MinLodModel_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkinnedMeshComponent_MinLodModel_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkinnedMeshComponent_MorphTargetWeights_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkinnedMeshComponent_MorphTargetWeights_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_USkinnedMeshComponent_PredictedLODLevel_GET(IntPtr Ptr);
@@ -75,22 +60,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
 		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_USkinnedMeshComponent_GetMasterBoneMap(IntPtr self);
-		
 		#endregion
 		
 		#region Property
-		
-		/// <summary>
-		/// <para>Array indicating all active morph targets. This array is updated inside RefreshBoneTransforms based on the Anim Blueprint. </para>
-		/// </summary>
-		public TArray<FActiveMorphTarget> ActiveMorphTargets
-		{
-			get => E_PROP_USkinnedMeshComponent_ActiveMorphTargets_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_ActiveMorphTargets_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). </para>
@@ -99,12 +71,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_ForcedLodModel_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_ForcedLodModel_SET(NativePointer, value);
-		}
-
-		public TArray<FSkelMeshComponentLODInfo> LODInfo
-		{
-			get => E_PROP_USkinnedMeshComponent_LODInfo_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_LODInfo_SET(NativePointer, value);
 		}
 
 		
@@ -126,16 +92,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkinnedMeshComponent_MinLodModel_GET(NativePointer);
 			set => E_PROP_USkinnedMeshComponent_MinLodModel_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Array of weights for all morph targets. This array is updated inside RefreshBoneTransforms based on the Anim Blueprint. </para>
-		/// </summary>
-		public TArray<float> MorphTargetWeights
-		{
-			get => E_PROP_USkinnedMeshComponent_MorphTargetWeights_GET(NativePointer);
-			set => E_PROP_USkinnedMeshComponent_MorphTargetWeights_SET(NativePointer, value);
 		}
 
 		
@@ -168,12 +124,6 @@ namespace UnrealEngine
 			set => E_PROP_USkinnedMeshComponent_VisibilityBasedAnimTickOption_SET(NativePointer, (byte)value);
 		}
 
-		#endregion
-		
-		#region ExternMethods
-		public TArray<int> GetMasterBoneMap()
-			=> E_USkinnedMeshComponent_GetMasterBoneMap(this);
-		
 		#endregion
 		
 		public static implicit operator IntPtr(USkinnedMeshComponent self)

@@ -43,7 +43,7 @@ namespace CodeGenerator
             _currentDelegate = null;
             _currentClass = null;
             _currentEnum = null;
-
+            
             Visit(translationunit);
         }
 
@@ -67,12 +67,12 @@ namespace CodeGenerator
 
             if (name.Contains("<"))
             {
-                templateBaseName = context.typeName().Identifier().First().GetText();
+                templateBaseName = context.typeName().GetText();
                 var templateTypes = context.typeName().type();
 
                 name = templateBaseName;
                 name += "__";
-                name += string.Join(", ", templateTypes.Select(x => x.typeName().Identifier().First().GetText()));
+                name += string.Join(", ", templateTypes.Select(x => x.typeName().GetText()));
             }
 
             if (_types.TryGetValue(name, out var val))
@@ -155,7 +155,7 @@ namespace CodeGenerator
                 return null;
 
             var name = context.type()?.GetText();
-
+            
             if (string.IsNullOrEmpty(name))
                 return null;
 

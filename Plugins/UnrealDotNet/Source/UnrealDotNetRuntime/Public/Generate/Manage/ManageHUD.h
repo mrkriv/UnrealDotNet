@@ -34,7 +34,6 @@ public:
 	virtual void DrawActorOverlays(FVector Viewpoint, FRotator ViewRotation) override;
 	virtual void DrawHUD() override;
 	virtual void DrawSafeZoneOverlay() override;
-	virtual void GetDebugActorList(TArray<AActor*>& InOutList) override;
 	virtual void HandleBugScreenShot() override;
 	virtual void NextDebugTarget() override;
 	virtual void NotifyBindPostProcessEffects() override;

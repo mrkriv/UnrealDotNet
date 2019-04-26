@@ -166,13 +166,6 @@ extern "C"
 		return Self->GetNumSpectators();
 	}
 
-	DOTNET_EXPORT auto E_AGameModeBase_GetSeamlessTravelActorList(AGameModeBase* Self, bool bToTransition, INT_PTR ActorList)
-	{
-		auto _p0 = bToTransition;
-		auto& _p1 = *(TArray<AActor*>*)ActorList;
-		Self->GetSeamlessTravelActorList(_p0, _p1);
-	}
-
 	DOTNET_EXPORT auto E_AGameModeBase_HandleStartingNewPlayer(AGameModeBase* Self, APlayerController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;

@@ -27,11 +27,6 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AGameMode_InactivePlayerArray_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AGameMode_InactivePlayerArray_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AGameMode_MinRespawnDelay_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AGameMode_MinRespawnDelay_SET(IntPtr Ptr, float Value);
@@ -147,12 +142,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		public TArray<APlayerState> InactivePlayerArray
-		{
-			get => E_PROP_AGameMode_InactivePlayerArray_GET(NativePointer);
-			set => E_PROP_AGameMode_InactivePlayerArray_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>Minimum time before player can respawn after dying. </para>

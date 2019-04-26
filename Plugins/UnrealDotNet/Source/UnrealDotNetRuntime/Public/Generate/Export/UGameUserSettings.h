@@ -180,19 +180,9 @@ extern "C"
 		return Self->GetLastCPUBenchmarkResult();
 	}
 
-	DOTNET_EXPORT auto E_UGameUserSettings_GetLastCPUBenchmarkSteps(UGameUserSettings* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetLastCPUBenchmarkSteps());
-	}
-
 	DOTNET_EXPORT auto E_UGameUserSettings_GetLastGPUBenchmarkResult(UGameUserSettings* Self)
 	{
 		return Self->GetLastGPUBenchmarkResult();
-	}
-
-	DOTNET_EXPORT auto E_UGameUserSettings_GetLastGPUBenchmarkSteps(UGameUserSettings* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetLastGPUBenchmarkSteps());
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_GetOverallScalabilityLevel(UGameUserSettings* Self)

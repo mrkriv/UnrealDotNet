@@ -44,7 +44,6 @@ public:
 	virtual void DelayedPrepareMapChange() override;
 	virtual void EnableCheats() override;
 	virtual void FOV(float NewFOV) override;
-	virtual void GetSeamlessTravelActorList(bool bToEntry, TArray<AActor*>& ActorList) override;
 	virtual void LocalTravel(const FString& URL) override;
 	virtual void NotifyLoadedWorld(FName WorldPackageName, bool bFinalDest) override;
 	virtual void Pause() override;

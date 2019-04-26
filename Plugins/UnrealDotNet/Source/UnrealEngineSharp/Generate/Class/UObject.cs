@@ -55,9 +55,6 @@ namespace UnrealEngine
 		private static extern bool E_UObject_CheckDefaultSubobjectsInternal(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_CollectDefaultSubobjects(IntPtr self, IntPtr outDefaultSubobjects, bool bIncludeNestedSubobjects);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ConditionalBeginDestroy(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -79,9 +76,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UObject_GetArchetype(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_GetArchetypeInstances(IntPtr self, IntPtr instances);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UObject_GetDefaultConfigFilename(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -95,21 +89,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_UObject_GetGlobalUserConfigFilename(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_GetPreloadDependencies(IntPtr self, IntPtr outDeps);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_GetPrestreamPackages(IntPtr self, IntPtr outPrestream);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_GetSubobjectsWithStableNamesForNetworking(IntPtr self, IntPtr objList);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr self, bool bSupported);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr self);
@@ -208,12 +187,6 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UObject_SourceFileTagName(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_UpdateClassesExcludedFromDedicatedClient(IntPtr self, IntPtr inClassNames, IntPtr inModulesNames);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_UpdateClassesExcludedFromDedicatedServer(IntPtr self, IntPtr inClassNames, IntPtr inModulesNames);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_UpdateDefaultConfigFile(IntPtr self, string specificFileLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -287,16 +260,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Uses the TArchiveObjectReferenceCollector to build a list of all components referenced by this object which have this object as the outer </para>
-		/// <param name="OutDefaultSubobjects">the array that should be populated with the default subobjects "owned" by this object </param>
-		/// <param name="bIncludeNestedSubobjects">controls whether subobjects which are contained by this object, but do not have this object </param>
-		/// <para>as its direct Outer should be included </para>
-		/// </summary>
-		public void CollectDefaultSubobjects(TArray<UObject> outDefaultSubobjects, bool bIncludeNestedSubobjects = false)
-			=> E_UObject_CollectDefaultSubobjects(this, outDefaultSubobjects, bIncludeNestedSubobjects);
-		
-		
-		/// <summary>
 		/// <para>Called before destroying the object.  This is called immediately upon deciding to destroy the object, to allow the object to begin an </para>
 		/// <para>asynchronous cleanup process. </para>
 		/// </summary>
@@ -349,14 +312,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Builds a list of objects which have this object in their archetype chain. </para>
-		/// <param name="Instances">receives the list of objects which have this one in their archetype chain </param>
-		/// </summary>
-		public void GetArchetypeInstances(TArray<UObject> instances)
-			=> E_UObject_GetArchetypeInstances(this, instances);
-		
-		
-		/// <summary>
 		/// <para>Get the default config filename for the specified UObject </para>
 		/// </summary>
 		public string GetDefaultConfigFilename()
@@ -394,44 +349,6 @@ namespace UnrealEngine
 		/// </summary>
 		public string GetGlobalUserConfigFilename()
 			=> E_UObject_GetGlobalUserConfigFilename(this);
-		
-		
-		/// <summary>
-		/// <para>Called during cooking. Must return all objects that will be Preload()ed when this is serialized at load time. Only used by the EDL. </para>
-		/// <param name="OutDeps">all objects that will be preloaded when this is serialized at load time </param>
-		/// </summary>
-		public virtual void GetPreloadDependencies(TArray<UObject> outDeps)
-			=> E_UObject_GetPreloadDependencies(this, outDeps);
-		
-		
-		/// <summary>
-		/// <para>Called during cooking. Returns a list of objects. The packages containing those objects will be prestreamed, when the package containing this is loaded. Only used by the EDL. </para>
-		/// <param name="OutPrestream">all objects that will be prestreamed when this packages is streamed </param>
-		/// </summary>
-		public virtual void GetPrestreamPackages(TArray<UObject> outPrestream)
-			=> E_UObject_GetPrestreamPackages(this, outPrestream);
-		
-		
-		/// <summary>
-		/// <para>Returns a list of sub-objects that have stable names for networking </para>
-		/// </summary>
-		public virtual void GetSubobjectsWithStableNamesForNetworking(TArray<UObject> objList)
-			=> E_UObject_GetSubobjectsWithStableNamesForNetworking(this, objList);
-		
-		
-		/// <summary>
-		/// <para>Returns what UWorld this object is contained within. </para>
-		/// <para>By default this will follow its Outer chain, but it should be overridden if that will not work. </para>
-		/// </summary>
-		public virtual UWorld GetWorld()
-			=> E_UObject_GetWorld(this);
-		
-		
-		/// <summary>
-		/// <para>Internal function used by UEngine::GetWorldFromContextObject() </para>
-		/// </summary>
-		public UWorld GetWorldChecked(bool bSupported)
-			=> E_UObject_GetWorldChecked(this, bSupported);
 		
 		
 		/// <summary>
@@ -682,20 +599,6 @@ namespace UnrealEngine
 		/// </summary>
 		public string SourceFileTagName()
 			=> E_UObject_SourceFileTagName(this);
-		
-		
-		/// <summary>
-		/// <para>Update the list of classes that we should exclude from dedicated client builds </para>
-		/// </summary>
-		public void UpdateClassesExcludedFromDedicatedClient(TArray<string> inClassNames, TArray<string> inModulesNames)
-			=> E_UObject_UpdateClassesExcludedFromDedicatedClient(this, inClassNames, inModulesNames);
-		
-		
-		/// <summary>
-		/// <para>Update the list of classes that we should exclude from dedicated server builds </para>
-		/// </summary>
-		public void UpdateClassesExcludedFromDedicatedServer(TArray<string> inClassNames, TArray<string> inModulesNames)
-			=> E_UObject_UpdateClassesExcludedFromDedicatedServer(this, inClassNames, inModulesNames);
 		
 		
 		/// <summary>

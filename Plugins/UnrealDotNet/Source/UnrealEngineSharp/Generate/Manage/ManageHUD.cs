@@ -46,13 +46,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get list of considered targets for 'showdebug' </para>
-		/// <para>This list is built contextually based on which 'showdebug' flags have been enabled. </para>
-		/// </summary>
-		public override void GetDebugActorList(TArray<AActor> inOutList) { }
-		
-		
-		/// <summary>
 		/// <para>Gives the HUD a chance to display project-specific data when taking a "bug" screen shot. </para>
 		/// </summary>
 		public override void HandleBugScreenShot() { }

@@ -58,16 +58,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
-		/// <summary>
-		/// <para>Creates and initializes a new box from an array of points. </para>
-		/// <param name="Points">Array of Points to create for the bounding volume. </param>
-		/// </summary>
-		public FBox(TArray<FVector> points) :
-			base(E_CreateStruct_FBox_TArray__FVector(points), false)
-		{
-		}
-
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FBox_IsValid_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -95,9 +85,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FBox_FVector_int32(IntPtr points, int count);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox_TArray__FVector(IntPtr points);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FBox_BuildAABB(IntPtr self, IntPtr origin, IntPtr extent);

@@ -87,11 +87,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_bWantsInitializeComponent_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UActorComponent_ComponentTags_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UActorComponent_ComponentTags_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UActorComponent_OnComponentActivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -327,9 +322,6 @@ namespace UnrealEngine
 		private static extern void E_UActorComponent_RegisterComponentTickFunctions(IntPtr self, bool bRegister);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_RegisterComponentWithWorld(IntPtr self, IntPtr inWorld);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_RemoveTickPrerequisiteActor(IntPtr self, IntPtr prerequisiteActor);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -525,16 +517,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UActorComponent_bWantsInitializeComponent_GET(NativePointer);
 			set => E_PROP_UActorComponent_bWantsInitializeComponent_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Array of tags that can be used for grouping and categorizing. Can also be accessed from scripting. </para>
-		/// </summary>
-		public TArray<string> ComponentTags
-		{
-			get => E_PROP_UActorComponent_ComponentTags_GET(NativePointer);
-			set => E_PROP_UActorComponent_ComponentTags_SET(NativePointer, value);
 		}
 
 		
@@ -1132,14 +1114,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void RegisterComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterComponentTickFunctions(this, bRegister);
-		
-		
-		/// <summary>
-		/// <para>Registers a component with a specific world, which creates any visual/physical state </para>
-		/// <param name="InWorld">The world to register the component with. </param>
-		/// </summary>
-		public void RegisterComponentWithWorld(UWorld inWorld)
-			=> E_UActorComponent_RegisterComponentWithWorld(this, inWorld);
 		
 		
 		/// <summary>

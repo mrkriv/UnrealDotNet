@@ -44,20 +44,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>called on server during seamless level transitions to get the list of Actors that should be moved into the new level </para>
-		/// <para>PlayerControllers, Role < ROLE_Authority Actors, and any non-Actors that are inside an Actor that is in the list </para>
-		/// <para>(i.e. Object.Outer == Actor in the list) </para>
-		/// <para>are all automatically moved regardless of whether they're included here </para>
-		/// <para>only dynamic actors in the PersistentLevel may be moved (this includes all actors spawned during gameplay) </para>
-		/// <para>this is called for both parts of the transition because actors might change while in the middle (e.g. players might join or leave the game) </para>
-		/// <para>@see also PlayerController::GetSeamlessTravelActorList() (the function that's called on clients) </para>
-		/// <param name="bToTransition">true if we are going from old level to transition map, false if we are going from transition map to new level </param>
-		/// <param name="ActorList">out) list of actors to maintain </param>
-		/// </summary>
-		public override void GetSeamlessTravelActorList(bool bToTransition, TArray<AActor> actorList) { }
-		
-		
-		/// <summary>
 		/// <para>Initialize the game. </para>
 		/// <para>The GameMode's InitGame() event is called before any other functions (including PreInitializeComponents() ) </para>
 		/// <para>and is used by the GameMode to initialize parameters and spawn its helper classes. </para>

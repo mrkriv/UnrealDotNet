@@ -51,6 +51,7 @@ public:
 	
 protected:
 	virtual void DestroyPlayerInputComponent() override;
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

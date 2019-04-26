@@ -234,12 +234,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MinDrawDistance_GET(UPrimitiveComponent* Ptr) { return Ptr->MinDrawDistance; }
 	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(UPrimitiveComponent* Ptr, float Value) { Ptr->MinDrawDistance = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MoveIgnoreActors_GET(UPrimitiveComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->MoveIgnoreActors); }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MoveIgnoreActors_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->MoveIgnoreActors = *(TArray<AActor*>*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UPrimitiveComponent_MoveIgnoreComponents_GET(UPrimitiveComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->MoveIgnoreComponents); }
-	DOTNET_EXPORT void E_PROP_UPrimitiveComponent_MoveIgnoreComponents_SET(UPrimitiveComponent* Ptr, INT_PTR Value) { Ptr->MoveIgnoreComponents = *(TArray<UPrimitiveComponent*>*)Value; }
-	
 	DOTNET_EXPORT void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(UPrimitiveComponent* Obj)
 	{
 		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
@@ -511,16 +505,6 @@ extern "C"
 		Self->ClearMoveIgnoreComponents();
 	}
 
-	DOTNET_EXPORT auto E_UPrimitiveComponent_CopyArrayOfMoveIgnoreActors(UPrimitiveComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->CopyArrayOfMoveIgnoreActors());
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_CopyArrayOfMoveIgnoreComponents(UPrimitiveComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->CopyArrayOfMoveIgnoreComponents());
-	}
-
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchMouseOverEvents(UPrimitiveComponent* Self, UPrimitiveComponent* CurrentComponent, UPrimitiveComponent* NewComponent)
 	{
 		auto _p0 = CurrentComponent;
@@ -637,37 +621,9 @@ extern "C"
 		return Self->GetMassScale(_p0);
 	}
 
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMoveIgnoreActors(UPrimitiveComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetMoveIgnoreActors());
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetMoveIgnoreComponents(UPrimitiveComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetMoveIgnoreComponents());
-	}
-
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetNumMaterials(UPrimitiveComponent* Self)
 	{
 		return Self->GetNumMaterials();
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlapInfos(UPrimitiveComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetOverlapInfos());
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlappingComponents(UPrimitiveComponent* Self, INT_PTR OutOverlappingComponents)
-	{
-		auto& _p0 = *(TArray<UPrimitiveComponent*>*)OutOverlappingComponents;
-		Self->GetOverlappingComponents(_p0);
-	}
-
-	DOTNET_EXPORT auto E_UPrimitiveComponent_GetOverlapsWithActor(UPrimitiveComponent* Self, AActor* Actor, INT_PTR OutOverlaps)
-	{
-		auto _p0 = Actor;
-		auto& _p1 = *(TArray<FOverlapInfo>*)OutOverlaps;
-		return Self->GetOverlapsWithActor(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_GetPhysicsAngularVelocity(UPrimitiveComponent* Self, char* BoneName)

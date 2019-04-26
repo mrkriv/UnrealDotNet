@@ -26,28 +26,10 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_SET(IntPtr Ptr, IntPtr Value);
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UHierarchicalLODSetup(IntPtr Parent, string Name);
 		
-		#endregion
-		
-		#region Property
-		
-		/// <summary>
-		/// <para>Hierarchical LOD Setup </para>
-		/// </summary>
-		public TArray<FHierarchicalSimplification> HierarchicalLODSetup
-		{
-			get => E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_GET(NativePointer);
-			set => E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_SET(NativePointer, value);
-		}
-
 		#endregion
 		
 		public static implicit operator IntPtr(UHierarchicalLODSetup self)

@@ -24,16 +24,6 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FFullyLoadedPackagesInfo_LoadedObjects_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FFullyLoadedPackagesInfo_LoadedObjects_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FFullyLoadedPackagesInfo_PackagesToLoad_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FFullyLoadedPackagesInfo_PackagesToLoad_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FFullyLoadedPackagesInfo_Tag_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FFullyLoadedPackagesInfo_Tag_SET(IntPtr Ptr, string Value);
@@ -45,18 +35,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		public TArray<UObject> LoadedObjects
-		{
-			get => E_PROP_FFullyLoadedPackagesInfo_LoadedObjects_GET(NativePointer);
-			set => E_PROP_FFullyLoadedPackagesInfo_LoadedObjects_SET(NativePointer, value);
-		}
-
-		public TArray<string> PackagesToLoad
-		{
-			get => E_PROP_FFullyLoadedPackagesInfo_PackagesToLoad_GET(NativePointer);
-			set => E_PROP_FFullyLoadedPackagesInfo_PackagesToLoad_SET(NativePointer, value);
-		}
-
 		public string Tag
 		{
 			get => E_PROP_FFullyLoadedPackagesInfo_Tag_GET(NativePointer);

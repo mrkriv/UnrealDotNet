@@ -48,6 +48,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UForceFeedbackAttenuation.h"
 #include "UGameUserSettings.h"
 #include "UHierarchicalLODSetup.h"
+#include "UInputComponent.h"
 #include "UInputSettings.h"
 #include "UInstancedStaticMeshComponent.h"
 #include "UInterpToMovementComponent.h"
@@ -98,7 +99,5 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UTimelineComponent.h"
 #include "UTouchInterface.h"
 #include "UVectorFieldComponent.h"
-#include "UWorld.h"
-#include "UWorldProxy.h"
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

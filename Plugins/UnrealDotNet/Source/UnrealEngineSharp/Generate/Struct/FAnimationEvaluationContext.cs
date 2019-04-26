@@ -44,26 +44,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FAnimationEvaluationContext_RootBoneTranslation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FAnimationEvaluationContext_RootBoneTranslation_SET(IntPtr Ptr, IntPtr Value);
@@ -103,30 +83,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_GET(NativePointer);
 			set => E_PROP_FAnimationEvaluationContext_bDuplicateToCacheCurve_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> BoneSpaceTransforms
-		{
-			get => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_BoneSpaceTransforms_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> CachedBoneSpaceTransforms
-		{
-			get => E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_CachedBoneSpaceTransforms_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> CachedComponentSpaceTransforms
-		{
-			get => E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_CachedComponentSpaceTransforms_SET(NativePointer, value);
-		}
-
-		public TArray<FTransform> ComponentSpaceTransforms
-		{
-			get => E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_GET(NativePointer);
-			set => E_PROP_FAnimationEvaluationContext_ComponentSpaceTransforms_SET(NativePointer, value);
 		}
 
 		public FVector RootBoneTranslation

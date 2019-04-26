@@ -216,13 +216,7 @@ namespace UnrealEngine
 		private static extern bool E_FVector_Equals(IntPtr self, IntPtr v, float tolerance);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_FVector_EvaluateBezier(IntPtr self, IntPtr controlPoints, int numPoints, IntPtr outPoints);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FVector_FindBestAxisVectors(IntPtr self, IntPtr axis1, IntPtr axis2);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FVector_GenerateClusterCenters(IntPtr self, IntPtr clusters, IntPtr points, int numIterations, int numConnectionsToBeValid);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FVector_GetAbs(IntPtr self);
@@ -642,17 +636,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Generates a list of sample points on a Bezier curve defined by 2 points. </para>
-		/// <param name="ControlPoints">Array of 4 FVectors (vert1, controlpoint1, controlpoint2, vert2). </param>
-		/// <param name="NumPoints">Number of samples. </param>
-		/// <param name="OutPoints">Receives the output samples. </param>
-		/// <return>The path length. </return>
-		/// </summary>
-		public float EvaluateBezier(FVector controlPoints, int numPoints, TArray<FVector> outPoints)
-			=> E_FVector_EvaluateBezier(this, controlPoints, numPoints, outPoints);
-		
-		
-		/// <summary>
 		/// <para>Find good arbitrary axis vectors to represent U and V axes of a plane, </para>
 		/// <para>using this vector as the normal of the plane. </para>
 		/// <param name="Axis1">Reference to first axis. </param>
@@ -660,18 +643,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void FindBestAxisVectors(FVector axis1, FVector axis2)
 			=> E_FVector_FindBestAxisVectors(this, axis1, axis2);
-		
-		
-		/// <summary>
-		/// <para>Given a current set of cluster centers, a set of points, iterate N times to move clusters to be central. </para>
-		/// <param name="Clusters">Reference to array of Clusters. </param>
-		/// <param name="Points">Set of points. </param>
-		/// <param name="NumIterations">Number of iterations. </param>
-		/// <param name="NumConnectionsToBeValid">Sometimes you will have long strings that come off the mass of points </param>
-		/// <para>which happen to have been chosen as Cluster starting points.  You want to be able to disregard those. </para>
-		/// </summary>
-		public void GenerateClusterCenters(TArray<FVector> clusters, TArray<FVector> points, int numIterations, int numConnectionsToBeValid)
-			=> E_FVector_GenerateClusterCenters(this, clusters, points, numIterations, numConnectionsToBeValid);
 		
 		
 		/// <summary>

@@ -17,9 +17,19 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class E_PROTECTED_WRAP_APawn : protected APawn
 {
 public:
+	UInputComponent* CreatePlayerInputComponent_WRAP()
+	{
+		return CreatePlayerInputComponent();
+	}
+
 	void DestroyPlayerInputComponent_WRAP()
 	{
 		DestroyPlayerInputComponent();
+	}
+
+	void SetupPlayerInputComponent_WRAP(UInputComponent* PlayerInputComponent)
+	{
+		SetupPlayerInputComponent(PlayerInputComponent);
 	}
 
 };
@@ -83,6 +93,11 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_ConsumeMovementInputVector(APawn* Self)
 	{
 		return (INT_PTR) new FVector(Self->ConsumeMovementInputVector());
+	}
+
+	DOTNET_EXPORT auto E_APawn_CreatePlayerInputComponent(APawn* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(((E_PROTECTED_WRAP_APawn*)Self)->CreatePlayerInputComponent_WRAP());
 	}
 
 	DOTNET_EXPORT auto E_APawn_DestroyPlayerInputComponent(APawn* Self)
@@ -340,6 +355,12 @@ extern "C"
 	{
 		auto _p0 = NewRemoteViewPitch;
 		Self->SetRemoteViewPitch(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APawn_SetupPlayerInputComponent(APawn* Self, UInputComponent* PlayerInputComponent)
+	{
+		auto _p0 = PlayerInputComponent;
+		((E_PROTECTED_WRAP_APawn*)Self)->SetupPlayerInputComponent_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ShouldTakeDamage(APawn* Self, float Damage, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)

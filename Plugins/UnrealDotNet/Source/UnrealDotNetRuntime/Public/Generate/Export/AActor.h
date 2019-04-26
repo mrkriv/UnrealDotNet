@@ -124,9 +124,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_bIsEditorOnlyActor_GET(AActor* Ptr) { return Ptr->bIsEditorOnlyActor; }
 	DOTNET_EXPORT void E_PROP_AActor_bIsEditorOnlyActor_SET(AActor* Ptr, uint8 Value) { Ptr->bIsEditorOnlyActor = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AActor_BlueprintCreatedComponents_GET(AActor* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->BlueprintCreatedComponents); }
-	DOTNET_EXPORT void E_PROP_AActor_BlueprintCreatedComponents_SET(AActor* Ptr, INT_PTR Value) { Ptr->BlueprintCreatedComponents = *(TArray<UActorComponent*>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AActor_bNetLoadOnClient_GET(AActor* Ptr) { return Ptr->bNetLoadOnClient; }
 	DOTNET_EXPORT void E_PROP_AActor_bNetLoadOnClient_SET(AActor* Ptr, uint8 Value) { Ptr->bNetLoadOnClient = Value; }
 	
@@ -157,9 +154,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_bTearOff_GET(AActor* Ptr) { return Ptr->bTearOff; }
 	DOTNET_EXPORT void E_PROP_AActor_bTearOff_SET(AActor* Ptr, uint8 Value) { Ptr->bTearOff = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AActor_Children_GET(AActor* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->Children); }
-	DOTNET_EXPORT void E_PROP_AActor_Children_SET(AActor* Ptr, INT_PTR Value) { Ptr->Children = *(TArray<AActor*>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_AActor_CreationTime_GET(AActor* Ptr) { return Ptr->CreationTime; }
 	DOTNET_EXPORT void E_PROP_AActor_CreationTime_SET(AActor* Ptr, float Value) { Ptr->CreationTime = Value; }
 	
@@ -169,14 +163,14 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AActor_InitialLifeSpan_GET(AActor* Ptr) { return Ptr->InitialLifeSpan; }
 	DOTNET_EXPORT void E_PROP_AActor_InitialLifeSpan_SET(AActor* Ptr, float Value) { Ptr->InitialLifeSpan = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AActor_InputComponent_GET(AActor* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->InputComponent); }
+	DOTNET_EXPORT void E_PROP_AActor_InputComponent_SET(AActor* Ptr, UInputComponent* Value) { Ptr->InputComponent = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AActor_InputPriority_GET(AActor* Ptr) { return Ptr->InputPriority; }
 	DOTNET_EXPORT void E_PROP_AActor_InputPriority_SET(AActor* Ptr, int32 Value) { Ptr->InputPriority = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_Instigator_GET(AActor* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Instigator); }
 	DOTNET_EXPORT void E_PROP_AActor_Instigator_SET(AActor* Ptr, APawn* Value) { Ptr->Instigator = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_AActor_Layers_GET(AActor* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->Layers); }
-	DOTNET_EXPORT void E_PROP_AActor_Layers_SET(AActor* Ptr, INT_PTR Value) { Ptr->Layers = *(TArray<FName>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AActor_MinNetUpdateFrequency_GET(AActor* Ptr) { return Ptr->MinNetUpdateFrequency; }
 	DOTNET_EXPORT void E_PROP_AActor_MinNetUpdateFrequency_SET(AActor* Ptr, float Value) { Ptr->MinNetUpdateFrequency = Value; }
@@ -266,9 +260,6 @@ extern "C"
 	}
 
 	DOTNET_EXPORT auto E_PROP_AActor_PrimaryActorTick_GET(AActor* Ptr) { return (INT_PTR)&(Ptr->PrimaryActorTick); }
-	
-	DOTNET_EXPORT auto E_PROP_AActor_Tags_GET(AActor* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->Tags); }
-	DOTNET_EXPORT void E_PROP_AActor_Tags_SET(AActor* Ptr, INT_PTR Value) { Ptr->Tags = *(TArray<FName>*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_AActor(UObject* Parent, char* Name)
@@ -686,12 +677,6 @@ extern "C"
 		return Self->GetActorTimeDilation();
 	}
 
-	DOTNET_EXPORT auto E_AActor_GetActorTimeDilation_o1(AActor* Self, UWorld& ActorWorld)
-	{
-		auto& _p0 = ActorWorld;
-		return Self->GetActorTimeDilation(_p0);
-	}
-
 	DOTNET_EXPORT auto E_AActor_GetActorTransform(AActor* Self)
 	{
 		return (INT_PTR) new FTransform(Self->GetActorTransform());
@@ -700,19 +685,6 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_GetActorUpVector(AActor* Self)
 	{
 		return (INT_PTR) new FVector(Self->GetActorUpVector());
-	}
-
-	DOTNET_EXPORT auto E_AActor_GetAllChildActors(AActor* Self, INT_PTR ChildActors, bool bIncludeDescendants)
-	{
-		auto& _p0 = *(TArray<AActor*>*)ChildActors;
-		auto _p1 = bIncludeDescendants;
-		Self->GetAllChildActors(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_AActor_GetAttachedActors(AActor* Self, INT_PTR OutActors)
-	{
-		auto& _p0 = *(TArray<AActor*>*)OutActors;
-		Self->GetAttachedActors(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetAttachParentActor(AActor* Self)
@@ -796,11 +768,6 @@ extern "C"
 		return Self->GetInputAxisValue(_p0);
 	}
 
-	DOTNET_EXPORT auto E_AActor_GetInstanceComponents(AActor* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetInstanceComponents());
-	}
-
 	DOTNET_EXPORT auto E_AActor_GetInstigator(AActor* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetInstigator());
@@ -851,12 +818,6 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetNetOwningPlayer());
 	}
 
-	DOTNET_EXPORT auto E_AActor_GetOverlappingComponents(AActor* Self, INT_PTR OverlappingComponents)
-	{
-		auto& _p0 = *(TArray<UPrimitiveComponent*>*)OverlappingComponents;
-		Self->GetOverlappingComponents(_p0);
-	}
-
 	DOTNET_EXPORT auto E_AActor_GetOwner(AActor* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetOwner());
@@ -875,11 +836,6 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_GetRemoteRole(AActor* Self)
 	{
 		return Self->GetRemoteRole();
-	}
-
-	DOTNET_EXPORT auto E_AActor_GetReplicatedComponents(AActor* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetReplicatedComponents());
 	}
 
 	DOTNET_EXPORT auto E_AActor_GetRootComponent(AActor* Self)

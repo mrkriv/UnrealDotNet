@@ -7,22 +7,19 @@ namespace GameLogic
 {
     class PlayerCharacter : ManageCharacter
     {
-        [BlueprintReadOnly] public float Health { get; set; }
         [EditAnywhere] public float HealthMax { get; set; } = 100;
         [EditAnywhere] public float HealthPerSecond { get; set; }
-
-        [BlueprintReadOnly] public float Energy { get; set; }
         [EditAnywhere] public float EnergyMax { get; set; } = 100;
         [EditAnywhere] public float EnergyPerSecond { get; set; }
-
-        [BlueprintReadOnly] public float SatietyFood { get; set; }
         [EditAnywhere] public float SatietyFoodPerSecond { get; set; }
-
-        [BlueprintReadOnly] public float SatietyWater { get; set; }
         [EditAnywhere] public float SatietyWaterPerSecond { get; set; }
-
-        [BlueprintReadOnly] public float Fatigue { get; set; }
         [EditAnywhere] public float FatiguePerSecond { get; set; }
+        
+        [BlueprintReadOnly] public float Health { get; set; }
+        [BlueprintReadOnly] public float Energy { get; set; }
+        [BlueprintReadOnly] public float SatietyFood { get; set; }
+        [BlueprintReadOnly] public float SatietyWater { get; set; }
+        [BlueprintReadOnly] public float Fatigue { get; set; }
         [BlueprintReadOnly] public bool IsDeath { get; set; }
 
         public PlayerCharacter(IntPtr adress) : base(adress)
@@ -32,7 +29,7 @@ namespace GameLogic
         protected override void BeginPlay()
         {
             base.BeginPlay();
-
+            
             Health = HealthMax;
             Energy = EnergyMax;
             SatietyFood = 1;

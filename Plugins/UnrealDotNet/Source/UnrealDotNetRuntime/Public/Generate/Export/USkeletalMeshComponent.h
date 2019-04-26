@@ -76,9 +76,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bOldForceRefPose_GET(USkeletalMeshComponent* Ptr) { return Ptr->bOldForceRefPose; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bOldForceRefPose = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(USkeletalMeshComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->BoneSpaceTransforms); }
-	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(USkeletalMeshComponent* Ptr, INT_PTR Value) { Ptr->BoneSpaceTransforms = *(TArray<FTransform>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_GET(USkeletalMeshComponent* Ptr) { return Ptr->bOnlyAllowAutonomousTickPose; }
 	DOTNET_EXPORT void E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_SET(USkeletalMeshComponent* Ptr, uint8 Value) { Ptr->bOnlyAllowAutonomousTickPose = Value; }
 	
@@ -177,11 +174,6 @@ extern "C"
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_CreateBodySetup(USkeletalMeshComponent* Self)
 	{
 		Self->CreateBodySetup();
-	}
-
-	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetCachedComponentSpaceTransforms(USkeletalMeshComponent* Self)
-	{
-		return ConvertToManage_TemplatePointerDescription(Self->GetCachedComponentSpaceTransforms());
 	}
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(USkeletalMeshComponent* Self)

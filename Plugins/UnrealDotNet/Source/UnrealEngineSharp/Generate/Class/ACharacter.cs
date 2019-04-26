@@ -100,11 +100,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_ACharacter_RepRootMotion_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_ACharacter_RootMotionRepMoves_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_ACharacter_RootMotionRepMoves_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_ACharacter_SavedRootMotion_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ACharacter_SavedRootMotion_SET(IntPtr Ptr, IntPtr Value);
@@ -456,12 +451,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_ACharacter_RepRootMotion_GET(NativePointer);
 			set => E_PROP_ACharacter_RepRootMotion_SET(NativePointer, value);
-		}
-
-		public TArray<FSimulatedRootMotionReplicatedMove> RootMotionRepMoves
-		{
-			get => E_PROP_ACharacter_RootMotionRepMoves_GET(NativePointer);
-			set => E_PROP_ACharacter_RootMotionRepMoves_SET(NativePointer, value);
 		}
 
 		public FRootMotionSourceGroup SavedRootMotion

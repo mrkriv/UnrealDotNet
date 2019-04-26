@@ -59,16 +59,6 @@ namespace UnrealEngine
 		{
 		}
 
-		
-		/// <summary>
-		/// <para>Creates and initializes a new box from an array of points. </para>
-		/// <param name="Points">Array of Points to create for the bounding volume. </param>
-		/// </summary>
-		public FBox2D(TArray<FVector2D> points) :
-			base(E_CreateStruct_FBox2D_TArray__FVector2D(points), false)
-		{
-		}
-
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FBox2D_bIsValid_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -96,9 +86,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FBox2D_FVector2D_int32(IntPtr points, int count);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_CreateStruct_FBox2D_TArray__FVector2D(IntPtr points);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_FBox2D_ComputeSquaredDistanceToPoint(IntPtr self, IntPtr point);

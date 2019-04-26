@@ -164,14 +164,6 @@ void AManagePlayerController::FOV(float NewFOV)
 		UCoreShell::GetInstance()->InvokeInObject(this, "FOV", NewFOV);
 }
 
-void AManagePlayerController::GetSeamlessTravelActorList(bool bToEntry, TArray<AActor*>& ActorList)
-{
-	Super::GetSeamlessTravelActorList(bToEntry, ActorList);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "GetSeamlessTravelActorList", bToEntry, ActorList);
-}
-
 void AManagePlayerController::LocalTravel(const FString& URL)
 {
 	Super::LocalTravel(URL);

@@ -28,13 +28,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FUnitSettings();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_FUnitSettings_GetDisplayUnits(IntPtr self, byte inType);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FUnitSettings_SetDisplayUnits(IntPtr self, byte inType, IntPtr units);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_FUnitSettings_SetDisplayUnits_o1(IntPtr self, byte inType, byte units);
+		private static extern void E_FUnitSettings_SetDisplayUnits(IntPtr self, byte inType, byte units);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FUnitSettings_SetShouldDisplayUnits(IntPtr self, bool bInGlobalUnitDisplay);
@@ -45,18 +39,8 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		
-		/// <summary>
-		/// <para>Get/Set the specific valid units to display the specified type of unit in </para>
-		/// </summary>
-		public TArray<EUnit> GetDisplayUnits(EUnitType inType)
-			=> E_FUnitSettings_GetDisplayUnits(this, (byte)inType);
-		
-		public void SetDisplayUnits(EUnitType inType, TArray<EUnit> units)
-			=> E_FUnitSettings_SetDisplayUnits(this, (byte)inType, units);
-		
 		public void SetDisplayUnits(EUnitType inType, EUnit units)
-			=> E_FUnitSettings_SetDisplayUnits_o1(this, (byte)inType, (byte)units);
+			=> E_FUnitSettings_SetDisplayUnits(this, (byte)inType, (byte)units);
 		
 		public void SetShouldDisplayUnits(bool bInGlobalUnitDisplay)
 			=> E_FUnitSettings_SetShouldDisplayUnits(this, bInGlobalUnitDisplay);

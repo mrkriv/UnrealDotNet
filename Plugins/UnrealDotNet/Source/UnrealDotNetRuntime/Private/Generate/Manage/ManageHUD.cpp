@@ -68,14 +68,6 @@ void AManageHUD::DrawSafeZoneOverlay()
 		UCoreShell::GetInstance()->InvokeInObject(this, "DrawSafeZoneOverlay");
 }
 
-void AManageHUD::GetDebugActorList(TArray<AActor*>& InOutList)
-{
-	Super::GetDebugActorList(InOutList);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "GetDebugActorList", InOutList);
-}
-
 void AManageHUD::HandleBugScreenShot()
 {
 	Super::HandleBugScreenShot();

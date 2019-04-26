@@ -35,9 +35,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_APlayerController_AcknowledgedPawn_GET(APlayerController* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->AcknowledgedPawn); }
 	DOTNET_EXPORT void E_PROP_APlayerController_AcknowledgedPawn_SET(APlayerController* Ptr, APawn* Value) { Ptr->AcknowledgedPawn = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_APlayerController_ActiveForceFeedbackEffects_GET(APlayerController* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ActiveForceFeedbackEffects); }
-	DOTNET_EXPORT void E_PROP_APlayerController_ActiveForceFeedbackEffects_SET(APlayerController* Ptr, INT_PTR Value) { Ptr->ActiveForceFeedbackEffects = *(TArray<FActiveForceFeedbackEffect>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_APlayerController_bAutoManageActiveCameraTarget_GET(APlayerController* Ptr) { return Ptr->bAutoManageActiveCameraTarget; }
 	DOTNET_EXPORT void E_PROP_APlayerController_bAutoManageActiveCameraTarget_SET(APlayerController* Ptr, bool Value) { Ptr->bAutoManageActiveCameraTarget = Value; }
 	
@@ -53,14 +50,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_APlayerController_ClientCap_GET(APlayerController* Ptr) { return Ptr->ClientCap; }
 	DOTNET_EXPORT void E_PROP_APlayerController_ClientCap_SET(APlayerController* Ptr, int32 Value) { Ptr->ClientCap = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_GET(APlayerController* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ForceFeedbackEffectHistoryEntries); }
-	DOTNET_EXPORT void E_PROP_APlayerController_ForceFeedbackEffectHistoryEntries_SET(APlayerController* Ptr, INT_PTR Value) { Ptr->ForceFeedbackEffectHistoryEntries = *(TArray<FForceFeedbackEffectHistoryEntry>*)Value; }
-	
 	DOTNET_EXPORT auto E_PROP_APlayerController_ForceFeedbackScale_GET(APlayerController* Ptr) { return Ptr->ForceFeedbackScale; }
 	DOTNET_EXPORT void E_PROP_APlayerController_ForceFeedbackScale_SET(APlayerController* Ptr, float Value) { Ptr->ForceFeedbackScale = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_APlayerController_HiddenActors_GET(APlayerController* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->HiddenActors); }
-	DOTNET_EXPORT void E_PROP_APlayerController_HiddenActors_SET(APlayerController* Ptr, INT_PTR Value) { Ptr->HiddenActors = *(TArray<AActor*>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_APlayerController_HitResultTraceDistance_GET(APlayerController* Ptr) { return Ptr->HitResultTraceDistance; }
 	DOTNET_EXPORT void E_PROP_APlayerController_HitResultTraceDistance_SET(APlayerController* Ptr, float Value) { Ptr->HitResultTraceDistance = Value; }
@@ -94,9 +85,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_APlayerController_NetPlayerIndex_GET(APlayerController* Ptr) { return Ptr->NetPlayerIndex; }
 	DOTNET_EXPORT void E_PROP_APlayerController_NetPlayerIndex_SET(APlayerController* Ptr, uint8 Value) { Ptr->NetPlayerIndex = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_APlayerController_PendingMapChangeLevelNames_GET(APlayerController* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PendingMapChangeLevelNames); }
-	DOTNET_EXPORT void E_PROP_APlayerController_PendingMapChangeLevelNames_SET(APlayerController* Ptr, INT_PTR Value) { Ptr->PendingMapChangeLevelNames = *(TArray<FName>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_APlayerController_Player_GET(APlayerController* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Player); }
 	DOTNET_EXPORT void E_PROP_APlayerController_Player_SET(APlayerController* Ptr, UPlayer* Value) { Ptr->Player = Value; }
@@ -339,12 +327,6 @@ extern "C"
 		Self->ClientUpdateLevelStreamingStatus(_p0, _p1, _p2, _p3, _p4);
 	}
 
-	DOTNET_EXPORT auto E_APlayerController_ClientUpdateMultipleLevelsStreamingStatus(APlayerController* Self, INT_PTR LevelStatuses)
-	{
-		auto& _p0 = *(const TArray<FUpdateLevelStreamingLevelStatus>*)LevelStatuses;
-		Self->ClientUpdateMultipleLevelsStreamingStatus(_p0);
-	}
-
 	DOTNET_EXPORT auto E_APlayerController_ClientVoiceHandshakeComplete(APlayerController* Self)
 	{
 		Self->ClientVoiceHandshakeComplete();
@@ -458,13 +440,6 @@ extern "C"
 		auto& _p0 = LocationX;
 		auto& _p1 = LocationY;
 		return Self->GetMousePosition(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_APlayerController_GetSeamlessTravelActorList(APlayerController* Self, bool bToEntry, INT_PTR ActorList)
-	{
-		auto _p0 = bToEntry;
-		auto& _p1 = *(TArray<AActor*>*)ActorList;
-		Self->GetSeamlessTravelActorList(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_GetViewportSize(APlayerController* Self, int32 SizeX, int32 SizeY)
@@ -656,12 +631,6 @@ extern "C"
 		auto _p0 = ConvertFromManage_FName(PackageName);
 		auto _p1 = bIsVisible;
 		Self->ServerUpdateLevelVisibility(_p0, _p1);
-	}
-
-	DOTNET_EXPORT auto E_APlayerController_ServerUpdateMultipleLevelsVisibility(APlayerController* Self, INT_PTR LevelVisibilities)
-	{
-		auto& _p0 = *(const TArray<FUpdateLevelVisibilityLevelInfo>*)LevelVisibilities;
-		Self->ServerUpdateMultipleLevelsVisibility(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ServerVerifyViewTarget(APlayerController* Self)

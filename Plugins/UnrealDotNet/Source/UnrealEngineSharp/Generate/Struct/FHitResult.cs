@@ -107,15 +107,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_FHitResult_GetComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_FHitResult_GetFirstBlockingHit(IntPtr self, IntPtr inHits);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_FHitResult_GetNumBlockingHits(IntPtr self, IntPtr inHits);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int E_FHitResult_GetNumOverlapHits(IntPtr self, IntPtr inHits);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FHitResult_GetReversedHit(IntPtr self, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -206,27 +197,6 @@ namespace UnrealEngine
 		/// </summary>
 		public UPrimitiveComponent GetComponent()
 			=> E_FHitResult_GetComponent(this);
-		
-		
-		/// <summary>
-		/// <para>Static utility function that returns the first 'blocking' hit in an array of results. </para>
-		/// </summary>
-		public FHitResult GetFirstBlockingHit(TArray<FHitResult> inHits)
-			=> E_FHitResult_GetFirstBlockingHit(this, inHits);
-		
-		
-		/// <summary>
-		/// <para>Static utility function that returns the number of blocking hits in array. </para>
-		/// </summary>
-		public int GetNumBlockingHits(TArray<FHitResult> inHits)
-			=> E_FHitResult_GetNumBlockingHits(this, inHits);
-		
-		
-		/// <summary>
-		/// <para>Static utility function that returns the number of overlapping hits in array. </para>
-		/// </summary>
-		public int GetNumOverlapHits(TArray<FHitResult> inHits)
-			=> E_FHitResult_GetNumOverlapHits(this, inHits);
 		
 		
 		/// <summary>

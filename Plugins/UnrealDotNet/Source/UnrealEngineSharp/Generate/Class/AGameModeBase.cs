@@ -90,9 +90,6 @@ namespace UnrealEngine
 		private static extern int E_AGameModeBase_GetNumSpectators(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AGameModeBase_GetSeamlessTravelActorList(IntPtr self, bool bToTransition, IntPtr actorList);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameModeBase_HandleStartingNewPlayer(IntPtr self, IntPtr newPlayer);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -360,21 +357,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual int GetNumSpectators()
 			=> E_AGameModeBase_GetNumSpectators(this);
-		
-		
-		/// <summary>
-		/// <para>called on server during seamless level transitions to get the list of Actors that should be moved into the new level </para>
-		/// <para>PlayerControllers, Role < ROLE_Authority Actors, and any non-Actors that are inside an Actor that is in the list </para>
-		/// <para>(i.e. Object.Outer == Actor in the list) </para>
-		/// <para>are all automatically moved regardless of whether they're included here </para>
-		/// <para>only dynamic actors in the PersistentLevel may be moved (this includes all actors spawned during gameplay) </para>
-		/// <para>this is called for both parts of the transition because actors might change while in the middle (e.g. players might join or leave the game) </para>
-		/// <para>@see also PlayerController::GetSeamlessTravelActorList() (the function that's called on clients) </para>
-		/// <param name="bToTransition">true if we are going from old level to transition map, false if we are going from transition map to new level </param>
-		/// <param name="ActorList">out) list of actors to maintain </param>
-		/// </summary>
-		public virtual void GetSeamlessTravelActorList(bool bToTransition, TArray<AActor> actorList)
-			=> E_AGameModeBase_GetSeamlessTravelActorList(this, bToTransition, actorList);
 		
 		
 		/// <summary>

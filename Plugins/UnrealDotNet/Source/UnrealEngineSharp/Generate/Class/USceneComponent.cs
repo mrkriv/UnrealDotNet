@@ -172,12 +172,6 @@ namespace UnrealEngine
 		private static extern bool E_USceneComponent_DoesSocketExist(IntPtr self, string inSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_USceneComponent_GetAllSocketNames(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_USceneComponent_GetAttachChildren(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_USceneComponent_GetAttachmentRoot(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -191,9 +185,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_USceneComponent_GetChildComponent(IntPtr self, int childIndex);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneComponent_GetChildrenComponents(IntPtr self, bool bIncludeAllDescendants, IntPtr children);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_USceneComponent_GetCollisionObjectType(IntPtr self);
@@ -236,9 +227,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_USceneComponent_GetNumChildrenComponents(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_USceneComponent_GetParentComponents(IntPtr self, IntPtr parents);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_USceneComponent_GetPlacementExtent(IntPtr self);
@@ -515,12 +503,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_UpdateNavigationData(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USceneComponent_UpdateOverlaps(IntPtr self, IntPtr pendingOverlaps, bool bDoNotifies, IntPtr overlapsAtEndLocation);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_USceneComponent_UpdateOverlapsImpl(IntPtr self, IntPtr pendingOverlaps, bool bDoNotifies, IntPtr overlapsAtEndLocation);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_UpdatePhysicsVolume(IntPtr self, bool bTriggerNotifiers);
@@ -807,21 +789,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the names of all the sockets on the component. </para>
-		/// <return>Get the names of all the sockets on the component. </return>
-		/// </summary>
-		public TArray<string> GetAllSocketNames()
-			=> E_USceneComponent_GetAllSocketNames(this);
-		
-		
-		/// <summary>
-		/// <para>Get the SceneComponents that are attached to this component. </para>
-		/// </summary>
-		public TArray<USceneComponent> GetAttachChildren()
-			=> E_USceneComponent_GetAttachChildren(this);
-		
-		
-		/// <summary>
 		/// <para>Walks up the attachment chain from this SceneComponent and returns the SceneComponent at the top. If AttachParent is NULL, returns this. </para>
 		/// </summary>
 		public USceneComponent GetAttachmentRoot()
@@ -854,15 +821,6 @@ namespace UnrealEngine
 		/// </summary>
 		public USceneComponent GetChildComponent(int childIndex)
 			=> E_USceneComponent_GetChildComponent(this, childIndex);
-		
-		
-		/// <summary>
-		/// <para>Gets all components that are attached to this component, possibly recursively </para>
-		/// <param name="bIncludeAllDescendants">Whether to include all descendants in the list of children (i.e. grandchildren, great grandchildren, etc.) </param>
-		/// <param name="Children">The list of attached child components </param>
-		/// </summary>
-		public void GetChildrenComponents(bool bIncludeAllDescendants, TArray<USceneComponent> children)
-			=> E_USceneComponent_GetChildrenComponents(this, bIncludeAllDescendants, children);
 		
 		
 		/// <summary>
@@ -963,13 +921,6 @@ namespace UnrealEngine
 		/// </summary>
 		public int GetNumChildrenComponents()
 			=> E_USceneComponent_GetNumChildrenComponents(this);
-		
-		
-		/// <summary>
-		/// <para>Gets all attachment parent components up to and including the root component </para>
-		/// </summary>
-		public void GetParentComponents(TArray<USceneComponent> parents)
-			=> E_USceneComponent_GetParentComponents(this, parents);
 		
 		
 		/// <summary>
@@ -1723,20 +1674,6 @@ namespace UnrealEngine
 		/// </summary>
 		protected void UpdateNavigationData()
 			=> E_USceneComponent_UpdateNavigationData(this);
-		
-		
-		/// <summary>
-		/// <para>Queries world and updates overlap tracking state for this component </para>
-		/// </summary>
-		public bool UpdateOverlaps(TArray<FOverlapInfo> pendingOverlaps = null, bool bDoNotifies = true, TArray<FOverlapInfo> overlapsAtEndLocation = null)
-			=> E_USceneComponent_UpdateOverlaps(this, pendingOverlaps, bDoNotifies, overlapsAtEndLocation);
-		
-		
-		/// <summary>
-		/// <para>Internal helper for UpdateOverlaps </para>
-		/// </summary>
-		protected virtual bool UpdateOverlapsImpl(TArray<FOverlapInfo> pendingOverlaps, bool bDoNotifies, TArray<FOverlapInfo> overlapsAtEndLocation)
-			=> E_USceneComponent_UpdateOverlapsImpl(this, pendingOverlaps, bDoNotifies, overlapsAtEndLocation);
 		
 		
 		/// <summary>

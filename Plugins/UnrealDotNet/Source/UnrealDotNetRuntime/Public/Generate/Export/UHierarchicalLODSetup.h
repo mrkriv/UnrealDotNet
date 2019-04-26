@@ -16,9 +16,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
-	DOTNET_EXPORT auto E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_GET(UHierarchicalLODSetup* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->HierarchicalLODSetup); }
-	DOTNET_EXPORT void E_PROP_UHierarchicalLODSetup_HierarchicalLODSetup_SET(UHierarchicalLODSetup* Ptr, INT_PTR Value) { Ptr->HierarchicalLODSetup = *(TArray<FHierarchicalSimplification>*)Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UHierarchicalLODSetup(UObject* Parent, char* Name)
 	{

@@ -128,9 +128,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UActorComponent_bWantsInitializeComponent_GET(UActorComponent* Ptr) { return Ptr->bWantsInitializeComponent; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_bWantsInitializeComponent_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bWantsInitializeComponent = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_UActorComponent_ComponentTags_GET(UActorComponent* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ComponentTags); }
-	DOTNET_EXPORT void E_PROP_UActorComponent_ComponentTags_SET(UActorComponent* Ptr, INT_PTR Value) { Ptr->ComponentTags = *(TArray<FName>*)Value; }
-	
 	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
 	{
 		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());
@@ -538,12 +535,6 @@ extern "C"
 	{
 		auto _p0 = bRegister;
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->RegisterComponentTickFunctions_WRAP(_p0);
-	}
-
-	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
-	{
-		auto _p0 = InWorld;
-		Self->RegisterComponentWithWorld(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)

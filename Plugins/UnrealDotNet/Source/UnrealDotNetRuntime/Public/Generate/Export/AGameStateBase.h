@@ -50,9 +50,6 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AGameStateBase_AuthorityGameMode_GET(AGameStateBase* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->AuthorityGameMode); }
 	DOTNET_EXPORT void E_PROP_AGameStateBase_AuthorityGameMode_SET(AGameStateBase* Ptr, AGameModeBase* Value) { Ptr->AuthorityGameMode = Value; }
 	
-	DOTNET_EXPORT auto E_PROP_AGameStateBase_PlayerArray_GET(AGameStateBase* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PlayerArray); }
-	DOTNET_EXPORT void E_PROP_AGameStateBase_PlayerArray_SET(AGameStateBase* Ptr, INT_PTR Value) { Ptr->PlayerArray = *(TArray<APlayerState*>*)Value; }
-	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_AGameStateBase(UObject* Parent, char* Name)
 	{

@@ -31,11 +31,6 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AGameStateBase_AuthorityGameMode_SET(IntPtr Ptr, IntPtr Value);
 		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AGameStateBase_PlayerArray_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AGameStateBase_PlayerArray_SET(IntPtr Ptr, IntPtr Value);
-		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_AGameStateBase(IntPtr Parent, string Name);
@@ -105,16 +100,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AGameStateBase_AuthorityGameMode_GET(NativePointer);
 			set => E_PROP_AGameStateBase_AuthorityGameMode_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Array of all PlayerStates, maintained on both server and clients (PlayerStates are always relevant) </para>
-		/// </summary>
-		public TArray<APlayerState> PlayerArray
-		{
-			get => E_PROP_AGameStateBase_PlayerArray_GET(NativePointer);
-			set => E_PROP_AGameStateBase_PlayerArray_SET(NativePointer, value);
 		}
 
 		#endregion

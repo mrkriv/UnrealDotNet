@@ -322,16 +322,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPrimitiveComponent_MinDrawDistance_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UPrimitiveComponent_MoveIgnoreActors_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_MoveIgnoreActors_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UPrimitiveComponent_MoveIgnoreComponents_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UPrimitiveComponent_MoveIgnoreComponents_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UPrimitiveComponent_OnBeginCursorOver(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -460,12 +450,6 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_ClearMoveIgnoreComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UPrimitiveComponent_CopyArrayOfMoveIgnoreActors(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UPrimitiveComponent_CopyArrayOfMoveIgnoreComponents(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_DispatchMouseOverEvents(IntPtr self, IntPtr currentComponent, IntPtr newComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -523,22 +507,7 @@ namespace UnrealEngine
 		private static extern float E_UPrimitiveComponent_GetMassScale(IntPtr self, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UPrimitiveComponent_GetMoveIgnoreActors(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UPrimitiveComponent_GetMoveIgnoreComponents(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UPrimitiveComponent_GetNumMaterials(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UPrimitiveComponent_GetOverlapInfos(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UPrimitiveComponent_GetOverlappingComponents(IntPtr self, IntPtr outOverlappingComponents);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_UPrimitiveComponent_GetOverlapsWithActor(IntPtr self, IntPtr actor, IntPtr outOverlaps);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UPrimitiveComponent_GetPhysicsAngularVelocity(IntPtr self, string boneName);
@@ -1426,18 +1395,6 @@ namespace UnrealEngine
 			set => E_PROP_UPrimitiveComponent_MinDrawDistance_SET(NativePointer, value);
 		}
 
-		public TArray<AActor> MoveIgnoreActors
-		{
-			get => E_PROP_UPrimitiveComponent_MoveIgnoreActors_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_MoveIgnoreActors_SET(NativePointer, value);
-		}
-
-		public TArray<UPrimitiveComponent> MoveIgnoreComponents
-		{
-			get => E_PROP_UPrimitiveComponent_MoveIgnoreComponents_GET(NativePointer);
-			set => E_PROP_UPrimitiveComponent_MoveIgnoreComponents_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>Translucent objects with a lower sort priority draw behind objects with a higher priority. </para>
@@ -1898,20 +1855,6 @@ namespace UnrealEngine
 		public void ClearMoveIgnoreComponents()
 			=> E_UPrimitiveComponent_ClearMoveIgnoreComponents(this);
 		
-		
-		/// <summary>
-		/// <para>Returns the list of actors we currently ignore when moving. </para>
-		/// </summary>
-		public TArray<AActor> CopyArrayOfMoveIgnoreActors()
-			=> E_UPrimitiveComponent_CopyArrayOfMoveIgnoreActors(this);
-		
-		
-		/// <summary>
-		/// <para>Returns the list of actors we currently ignore when moving. </para>
-		/// </summary>
-		public TArray<UPrimitiveComponent> CopyArrayOfMoveIgnoreComponents()
-			=> E_UPrimitiveComponent_CopyArrayOfMoveIgnoreComponents(this);
-		
 		public void DispatchMouseOverEvents(UPrimitiveComponent currentComponent, UPrimitiveComponent newComponent)
 			=> E_UPrimitiveComponent_DispatchMouseOverEvents(this, currentComponent, newComponent);
 		
@@ -2062,45 +2005,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the list of actors (as WeakObjectPtr) we currently ignore when moving. </para>
-		/// </summary>
-		public TArray<AActor> GetMoveIgnoreActors()
-			=> E_UPrimitiveComponent_GetMoveIgnoreActors(this);
-		
-		
-		/// <summary>
-		/// <para>Returns the list of components we currently ignore when moving. </para>
-		/// </summary>
-		public TArray<UPrimitiveComponent> GetMoveIgnoreComponents()
-			=> E_UPrimitiveComponent_GetMoveIgnoreComponents(this);
-		
-		
-		/// <summary>
 		/// <para>Return number of material elements in this primitive </para>
 		/// </summary>
 		public virtual int GetNumMaterials()
 			=> E_UPrimitiveComponent_GetNumMaterials(this);
-		
-		
-		/// <summary>
-		/// <para>Returns list of components this component is overlapping. </para>
-		/// </summary>
-		public TArray<FOverlapInfo> GetOverlapInfos()
-			=> E_UPrimitiveComponent_GetOverlapInfos(this);
-		
-		
-		/// <summary>
-		/// <para>Returns unique list of components this component is overlapping. </para>
-		/// </summary>
-		public void GetOverlappingComponents(TArray<UPrimitiveComponent> outOverlappingComponents)
-			=> E_UPrimitiveComponent_GetOverlappingComponents(this, outOverlappingComponents);
-		
-		
-		/// <summary>
-		/// <para>Appends list of overlaps with components owned by the given actor to the 'OutOverlaps' array. Returns true if any overlaps were added. </para>
-		/// </summary>
-		public bool GetOverlapsWithActor(AActor actor, TArray<FOverlapInfo> outOverlaps)
-			=> E_UPrimitiveComponent_GetOverlapsWithActor(this, actor, outOverlaps);
 		
 		
 		/// <summary>

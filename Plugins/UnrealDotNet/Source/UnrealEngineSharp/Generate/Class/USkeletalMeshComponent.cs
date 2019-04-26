@@ -127,11 +127,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USkeletalMeshComponent_bOnlyAllowAutonomousTickPose_SET(IntPtr Ptr, byte Value);
@@ -280,9 +275,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_CreateBodySetup(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_USkeletalMeshComponent_GetCachedComponentSpaceTransforms(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(IntPtr self);
@@ -498,16 +490,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USkeletalMeshComponent_bOldForceRefPose_GET(NativePointer);
 			set => E_PROP_USkeletalMeshComponent_bOldForceRefPose_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>Temporary array of local-space (relative to parent bone) rotation/translation for each bone. </para>
-		/// </summary>
-		public TArray<FTransform> BoneSpaceTransforms
-		{
-			get => E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_GET(NativePointer);
-			set => E_PROP_USkeletalMeshComponent_BoneSpaceTransforms_SET(NativePointer, value);
 		}
 
 		public byte bOnlyAllowAutonomousTickPose
@@ -744,13 +726,6 @@ namespace UnrealEngine
 		
 		public void CreateBodySetup()
 			=> E_USkeletalMeshComponent_CreateBodySetup(this);
-		
-		
-		/// <summary>
-		/// <para>Access cached component space transforms </para>
-		/// </summary>
-		public TArray<FTransform> GetCachedComponentSpaceTransforms()
-			=> E_USkeletalMeshComponent_GetCachedComponentSpaceTransforms(this);
 		
 		public bool GetDisablePostProcessBlueprint()
 			=> E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(this);

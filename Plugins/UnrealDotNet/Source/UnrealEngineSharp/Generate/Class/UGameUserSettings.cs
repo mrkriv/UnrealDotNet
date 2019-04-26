@@ -101,13 +101,7 @@ namespace UnrealEngine
 		private static extern float E_UGameUserSettings_GetLastCPUBenchmarkResult(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UGameUserSettings_GetLastCPUBenchmarkSteps(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UGameUserSettings_GetLastGPUBenchmarkResult(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_UGameUserSettings_GetLastGPUBenchmarkSteps(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_UGameUserSettings_GetOverallScalabilityLevel(IntPtr self);
@@ -418,24 +412,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns each individual step of the last CPU benchmark result (set by RunHardwareBenchmark) </para>
-		/// </summary>
-		public TArray<float> GetLastCPUBenchmarkSteps()
-			=> E_UGameUserSettings_GetLastCPUBenchmarkSteps(this);
-		
-		
-		/// <summary>
 		/// <para>Returns the last GPU benchmark result (set by RunHardwareBenchmark) </para>
 		/// </summary>
 		public float GetLastGPUBenchmarkResult()
 			=> E_UGameUserSettings_GetLastGPUBenchmarkResult(this);
-		
-		
-		/// <summary>
-		/// <para>Returns each individual step of the last GPU benchmark result (set by RunHardwareBenchmark) </para>
-		/// </summary>
-		public TArray<float> GetLastGPUBenchmarkSteps()
-			=> E_UGameUserSettings_GetLastGPUBenchmarkSteps(this);
 		
 		public virtual int GetOverallScalabilityLevel()
 			=> E_UGameUserSettings_GetOverallScalabilityLevel(this);

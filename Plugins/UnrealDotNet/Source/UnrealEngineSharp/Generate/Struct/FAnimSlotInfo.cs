@@ -24,11 +24,6 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FAnimSlotInfo_ChannelWeights_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FAnimSlotInfo_ChannelWeights_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FAnimSlotInfo_SlotName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FAnimSlotInfo_SlotName_SET(IntPtr Ptr, string Value);
@@ -40,12 +35,6 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
-		public TArray<float> ChannelWeights
-		{
-			get => E_PROP_FAnimSlotInfo_ChannelWeights_GET(NativePointer);
-			set => E_PROP_FAnimSlotInfo_ChannelWeights_SET(NativePointer, value);
-		}
-
 		public string SlotName
 		{
 			get => E_PROP_FAnimSlotInfo_SlotName_GET(NativePointer);

@@ -32,11 +32,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Map_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_FURL_Op_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_FURL_Op_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_FURL_Port_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FURL_Port_SET(IntPtr Ptr, int Value);
@@ -95,12 +90,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FURL_Map_GET(NativePointer);
 			set => E_PROP_FURL_Map_SET(NativePointer, value);
-		}
-
-		public TArray<string> Op
-		{
-			get => E_PROP_FURL_Op_GET(NativePointer);
-			set => E_PROP_FURL_Op_SET(NativePointer, value);
 		}
 
 		public int Port

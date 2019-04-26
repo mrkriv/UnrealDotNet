@@ -97,11 +97,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bIsEditorOnlyActor_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AActor_BlueprintCreatedComponents_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_BlueprintCreatedComponents_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AActor_bNetLoadOnClient_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_bNetLoadOnClient_SET(IntPtr Ptr, byte Value);
@@ -152,11 +147,6 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_bTearOff_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AActor_Children_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_Children_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AActor_CreationTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_CreationTime_SET(IntPtr Ptr, float Value);
@@ -172,6 +162,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_AActor_InitialLifeSpan_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_AActor_InputComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AActor_InputComponent_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_AActor_InputPriority_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_InputPriority_SET(IntPtr Ptr, int Value);
@@ -180,11 +175,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_PROP_AActor_Instigator_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AActor_Instigator_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AActor_Layers_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_Layers_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AActor_MinNetUpdateFrequency_GET(IntPtr Ptr);
@@ -249,11 +239,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_AActor_PrimaryActorTick_GET(IntPtr Ptr);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_AActor_Tags_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_AActor_Tags_SET(IntPtr Ptr, IntPtr Value);
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -458,19 +443,10 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetActorTimeDilation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_AActor_GetActorTimeDilation_o1(IntPtr self, IntPtr actorWorld);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetActorTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetActorUpVector(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetAllChildActors(IntPtr self, IntPtr childActors, bool bIncludeDescendants);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetAttachedActors(IntPtr self, IntPtr outActors);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetAttachParentActor(IntPtr self);
@@ -515,9 +491,6 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetInputAxisValue(IntPtr self, string inputAxisName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_AActor_GetInstanceComponents(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetInstigator(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -548,9 +521,6 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AActor_GetNetOwningPlayer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_AActor_GetOverlappingComponents(IntPtr self, IntPtr overlappingComponents);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetOwner(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -561,9 +531,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_AActor_GetRemoteRole(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_AActor_GetReplicatedComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AActor_GetRootComponent(IntPtr self);
@@ -1259,12 +1226,6 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bIsEditorOnlyActor_SET(NativePointer, value);
 		}
 
-		public TArray<UActorComponent> BlueprintCreatedComponents
-		{
-			get => E_PROP_AActor_BlueprintCreatedComponents_GET(NativePointer);
-			set => E_PROP_AActor_BlueprintCreatedComponents_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>This actor will be loaded on network clients during map load </para>
@@ -1355,12 +1316,6 @@ namespace UnrealEngine
 			set => E_PROP_AActor_bTearOff_SET(NativePointer, value);
 		}
 
-		public TArray<AActor> Children
-		{
-			get => E_PROP_AActor_Children_GET(NativePointer);
-			set => E_PROP_AActor_Children_SET(NativePointer, value);
-		}
-
 		
 		/// <summary>
 		/// <para>The time this actor was created, relative to World->GetTimeSeconds(). </para>
@@ -1392,6 +1347,12 @@ namespace UnrealEngine
 			set => E_PROP_AActor_InitialLifeSpan_SET(NativePointer, value);
 		}
 
+		public UInputComponent InputComponent
+		{
+			get => E_PROP_AActor_InputComponent_GET(NativePointer);
+			set => E_PROP_AActor_InputComponent_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>The priority of this input component when pushed in to the stack. </para>
@@ -1410,12 +1371,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AActor_Instigator_GET(NativePointer);
 			set => E_PROP_AActor_Instigator_SET(NativePointer, value);
-		}
-
-		public TArray<string> Layers
-		{
-			get => E_PROP_AActor_Layers_GET(NativePointer);
-			set => E_PROP_AActor_Layers_SET(NativePointer, value);
 		}
 
 		
@@ -1474,16 +1429,6 @@ namespace UnrealEngine
 		public FActorTickFunction PrimaryActorTick
 		{
 			get => E_PROP_AActor_PrimaryActorTick_GET(NativePointer);
-		}
-
-		
-		/// <summary>
-		/// <para>Array of tags that can be used for grouping and categorizing. </para>
-		/// </summary>
-		public TArray<string> Tags
-		{
-			get => E_PROP_AActor_Tags_GET(NativePointer);
-			set => E_PROP_AActor_Tags_SET(NativePointer, value);
 		}
 
 		#endregion
@@ -2137,13 +2082,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>More efficient version that takes the Actor's current world. </para>
-		/// </summary>
-		public float GetActorTimeDilation(UWorld actorWorld)
-			=> E_AActor_GetActorTimeDilation_o1(this, actorWorld);
-		
-		
-		/// <summary>
 		/// <para>Returns the transform of the RootComponent of this Actor </para>
 		/// </summary>
 		public FTransform GetActorTransform()
@@ -2155,21 +2093,6 @@ namespace UnrealEngine
 		/// </summary>
 		public FVector GetActorUpVector()
 			=> E_AActor_GetActorUpVector(this);
-		
-		
-		/// <summary>
-		/// <para>Returns a list of all actors spawned by our Child Actor Components, including children of children. </para>
-		/// <para>This does not return the contents of the Children array </para>
-		/// </summary>
-		public void GetAllChildActors(TArray<AActor> childActors, bool bIncludeDescendants = true)
-			=> E_AActor_GetAllChildActors(this, childActors, bIncludeDescendants);
-		
-		
-		/// <summary>
-		/// <para>Find all Actors which are attached directly to a component in this actor </para>
-		/// </summary>
-		public void GetAttachedActors(TArray<AActor> outActors)
-			=> E_AActor_GetAttachedActors(this, outActors);
 		
 		
 		/// <summary>
@@ -2275,13 +2198,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the instance components array </para>
-		/// </summary>
-		public TArray<UActorComponent> GetInstanceComponents()
-			=> E_AActor_GetInstanceComponents(this);
-		
-		
-		/// <summary>
 		/// <para>Returns the instigator for this actor, or nullptr if there is none. </para>
 		/// </summary>
 		public APawn GetInstigator()
@@ -2353,13 +2269,6 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns list of components this actor is overlapping. </para>
-		/// </summary>
-		public void GetOverlappingComponents(TArray<UPrimitiveComponent> overlappingComponents)
-			=> E_AActor_GetOverlappingComponents(this, overlappingComponents);
-		
-		
-		/// <summary>
 		/// <para>Get the owner of this Actor, used primarily for network replication. </para>
 		/// </summary>
 		public AActor GetOwner()
@@ -2385,13 +2294,6 @@ namespace UnrealEngine
 		/// </summary>
 		public ENetRole GetRemoteRole()
 			=> (ENetRole)E_AActor_GetRemoteRole(this);
-		
-		
-		/// <summary>
-		/// <para>Returns a constant reference to the replicated components set </para>
-		/// </summary>
-		public TArray<UActorComponent> GetReplicatedComponents()
-			=> E_AActor_GetReplicatedComponents(this);
 		
 		
 		/// <summary>
