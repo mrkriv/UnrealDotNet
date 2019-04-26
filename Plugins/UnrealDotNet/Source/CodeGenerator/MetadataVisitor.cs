@@ -77,8 +77,8 @@ namespace CodeGenerator
 
             if (_types.TryGetValue(name, out var val))
             {
-                if (val is T)
-                    return (T) val;
+                if (val is T valT)
+                    return valT;
 
                 throw new InvalidOperationException($"Элемент уже использован как {val.GetType()}");
             }

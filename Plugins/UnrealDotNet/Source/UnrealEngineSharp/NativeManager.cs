@@ -105,7 +105,7 @@ namespace UnrealEngine
 
             if (_wrappers.ContainsKey(adress))
             {
-                Ue.LogWarning($"Object is already registered. Type:{className}, Adress:{adress}");
+                Ue.LogWarning($"Object is already registered. Type:{className}, Adress: 0x{(long)adress:X}");
                 return false;
             }
 
@@ -163,7 +163,7 @@ namespace UnrealEngine
                 return false;
             }
 
-            Ue.LogDebug($"Create object, Type:{className}, Adress:{adress}");
+            Ue.LogDebug($"Create object, Type:{className}, Adress: 0x{(long)adress:X}");
             return true;
         }
 

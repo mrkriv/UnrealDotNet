@@ -10,6 +10,7 @@
 #include "TypeConvertor.h"
 
 #include "Generate/Export/Index.h"
+#include "ManualImplement/Index.h"
 
 extern "C" DOTNET_EXPORT void E_ULOG_E(char* Message) { UE_LOG(DotNetRuntime, Error, TEXT("%s"), UTF8_TO_TCHAR(Message)); }
 extern "C" DOTNET_EXPORT void E_ULOG_W(char* Message) { UE_LOG(DotNetRuntime, Warning, TEXT("%s"), UTF8_TO_TCHAR(Message)); }

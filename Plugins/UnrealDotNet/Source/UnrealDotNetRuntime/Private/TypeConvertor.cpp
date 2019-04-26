@@ -1,4 +1,5 @@
 #include "UnrealDotNetRuntime.h"
+#include "EngineMinimal.h"
 #include "TypeConvertor.h"
 #include <mutex>
 
@@ -48,6 +49,18 @@ StringWrapper ConvertToManage_StringWrapper(FText text)
 StringWrapper ConvertToManage_StringWrapper(FName name)
 {
 	return ConvertToManage_StringWrapper(name.ToString());
+}
+
+UClassWrapper ConvertToManage_UClassWrapper(UClass* Class)
+{
+	auto name = Class->GetFName().ToString();
+	auto utf8 = TCHAR_TO_UTF8(*name);
+
+	UClassWrapper wraper;
+	wraper.Pointer = PushToTransferBeffer((INT_PTR)utf8, name.Len());
+	wraper.Len = name.Len();
+	
+	return wraper;
 }
 
 ObjectPointerDescription ConvertToManage_ObjectPointerDescription(UObject* object)
@@ -112,4 +125,11 @@ FName ConvertFromManage_FName(char* String)
 FText ConvertFromManage_FText(char* String)
 {
 	return FText::FromString(FString(UTF8_TO_TCHAR(String)));
+}
+
+UClass* ConvertFromManage_UClass(char* ClassName)
+{
+	//return FindObject<UClass>(ANY_PACKAGE, ClassName);
+	//UClass* Result = StaticLoadClass(UObject::StaticClass(), nullptr, ClassName, nullptr, LOAD_None, nullptr);
+	return NULL;
 }

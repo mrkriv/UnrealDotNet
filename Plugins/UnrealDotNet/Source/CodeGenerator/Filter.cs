@@ -11,13 +11,14 @@ namespace CodeGenerator
         private IEnumerable<string> _manualImplementedClassMasks;
         private Regex[] _manualImplementedClassMasksRegexes;
 
-        public IEnumerable<string> ClassBlackList { get; set; }
-        public IEnumerable<string> NewObjectBlackList { get; set; }
-        public IEnumerable<string> EnumBlackList { get; set; }
-        public IEnumerable<string> DelegateBlackList { get; set; }
-        public IEnumerable<string> ManageClassBlackList { get; set; }
-        public IEnumerable<string> ReadOnlyClass { get; set; }
-        public IEnumerable<string> TemplateWhiteList { get; set; }
+        public IList<string> ClassBlackList { get; set; }
+        public IList<string> NewObjectBlackList { get; set; }
+        public IList<string> EnumBlackList { get; set; }
+        public IList<string> DelegateBlackList { get; set; }
+        public IList<string> ManageClassBlackList { get; set; }
+        public IList<string> ReadOnlyClass { get; set; }
+        public IList<string> TemplateWhiteList { get; set; }
+        public IList<string> SystemLiteralList { get; set; }
         public Dictionary<string, string> UseConvertToManageType { get; set; }
         public Dictionary<string, string> UseConvertFromManageType { get; set; }
         public Dictionary<string, IEnumerable<string>> MethodInClassBlackList { get; set; }
@@ -152,11 +153,17 @@ namespace CodeGenerator
 
         public bool TypeFilterNoCahed(Type type)
         {
-            if (!type.IsImplemented || type.NamespaceBaseType != null) return false;
+            if (!type.IsImplemented) 
+                return false;
 
-            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName)) return false;
+            if (type.NamespaceBaseType != null) 
+                return false;
 
-            if (!type.TemplateTypes.All(x => TypeFilter(x.Type))) return false;
+            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName)) 
+                return false;
+
+            if (!type.TemplateTypes.All(x => TypeFilter(x.Type))) 
+                return false;
 
             switch (type)
             {
@@ -198,7 +205,7 @@ namespace CodeGenerator
             if (m.InputTypes.Any(v => v.IsPointer && v.IsReference || v.Type.IsVoid || v.IsReadOnly()))
                 return false;
 
-            if (m.InputTypes.Any(x => x.Name == "Params")) //todo:: добавлять @ перед именем свойства в c#
+            if (m.InputTypes.Where(x => x.Name != null).Any(x => SystemLiteralList.Contains(x.Name.ToLower()))) //todo:: добавлять @ перед именем свойства в c#
                 return false;
 
             if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))

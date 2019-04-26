@@ -22,3 +22,9 @@ typedef struct TemplatePointerDescription
 	int32 TypeNameLen;
 }
 TemplatePointerDescription;
+
+typedef struct UClassWrapper
+{
+	INT_PTR Pointer;
+	int32 Len;
+} UClassWrapper;

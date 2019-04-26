@@ -17,10 +17,13 @@ namespace GameLogic
             PrimaryActorTick.bCanEverTick = 1;
         }
 
-        protected override void BeginPlay()
+        public override void OnConstruction(FTransform transform)
         {
-            _box = new UBoxComponent(this, "Simple Child");
-            _box.RegisterComponent();
+            if (_box == null)
+            {
+                _box = new UBoxComponent(this, "Simple Child");
+                _box.RegisterComponent();
+            }
 
             _box.AttachToComponent(GetRootComponent(), FAttachmentTransformRules.SnapToTargetIncludingScale, "");
 
@@ -28,10 +31,11 @@ namespace GameLogic
             _box.SetBoxExtent(new FVector(100, 100, 100), false);
             _box.SetHiddenInGame(false);
             
-            Ue.Log(NativePointer + "::OnConstruction()");
-            Ue.Log(_box?.ToString() ?? "null");
-            
-            //var box = (UBoxComponent)GetComponents().First(x => x.GetName() == "Simple Child");
+            base.OnConstruction(transform);
+        }
+
+        protected override void BeginPlay()
+        {            
             _box.OnComponentBeginOverlap += BoxOnOnComponentBeginOverlap;
             _box.OnComponentEndOverlap += BoxOnComponentEndOverlap;
         }
