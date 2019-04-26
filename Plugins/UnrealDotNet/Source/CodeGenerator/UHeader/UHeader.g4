@@ -20,12 +20,23 @@ translationUnit
 /* Namespace */
 
 namespaceUnit
-	: Namespace namespaceName '{' translationUnit '}' ';'?
-	;
+	: Namespace namespaceName '{' 
+	 (typePreDeclaration
+     	| method
+     	| classDeclaration
+     	| enumDeclaration
+     	| property
+     	| typeDefine
+     	| uDefine
+     	| namespaceUnit
+     	| comment
+     	| preprocessDerective)*
+	 '}' ';'?
+;
 
 namespaceName
 	: Identifier 
-	;
+;
 
 
 typePreDeclaration
