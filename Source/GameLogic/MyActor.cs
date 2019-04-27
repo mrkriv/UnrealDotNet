@@ -35,9 +35,12 @@ namespace GameLogic
         }
 
         protected override void BeginPlay()
-        {            
-            _box.OnComponentBeginOverlap += BoxOnOnComponentBeginOverlap;
-            _box.OnComponentEndOverlap += BoxOnComponentEndOverlap;
+        {
+            if (_box != null)
+            {
+                _box.OnComponentBeginOverlap += BoxOnOnComponentBeginOverlap;
+                _box.OnComponentEndOverlap += BoxOnComponentEndOverlap;
+            }
         }
 
         private void BoxOnOnComponentBeginOverlap(UPrimitiveComponent overComp, AActor otherActor, UPrimitiveComponent otherComp, int otherbodyindex, bool bfromsweep, FHitResult sweepresult)

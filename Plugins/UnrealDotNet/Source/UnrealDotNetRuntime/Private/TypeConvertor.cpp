@@ -17,7 +17,7 @@ INT_PTR PushToTransferBeffer(INT_PTR source, size_t len)
 
 	if (TransferBuffer_Index + (INT_PTR)len > TransferBuffer_End)
 	{
-		TransferBuffer_Index = 0;
+		TransferBuffer_Index = (INT_PTR)& TransferBuffer[0];
 	}
 
 	FMemory::Memcpy((void*)TransferBuffer_Index, (void*)source, len);

@@ -151,6 +151,28 @@ public:
 		}
 	}
 
+	template<typename... ArgumentT>
+	void InvokeEventById(unsigned int EventId, const ArgumentT&... Aruments)
+	{
+		typedef void(__stdcall InvokeFp)(unsigned int, void*, int);
+
+		const static auto manageMethod = (InvokeFp*)GetMethodPtr(UnrealEngine_Assemble, "UnrealEngine.NativeManager", "InvokeEventById");
+
+		if (manageMethod == NULL)
+			return;
+
+		auto len = CopyParamsToArray(InvokeArgumentBuffer, Aruments...);
+
+		try
+		{
+			manageMethod(EventId, InvokeArgumentBuffer, len);
+		}
+		catch (...)
+		{
+			UE_LOG(DotNetShell, Error, TEXT("Unhandled exception in call event by id %d"), EventId);
+		}
+	}
+
 private:
 	template<typename T, typename... Args>
 	static size_t CopyParamsToArray(char* dist, const T& arg, Args&... args)

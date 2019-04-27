@@ -20,6 +20,8 @@ namespace UnrealEngine
 
         private static Assembly _gameLogicAssembly;
         private static Dictionary<IntPtr, object> _wrappers = new Dictionary<IntPtr, object>();
+        private static Dictionary<uint, Delegate> _events = new Dictionary<uint, Delegate>();
+        private static uint _eventSequence = 0;
 
         static NativeManager()
         {
@@ -195,6 +197,45 @@ namespace UnrealEngine
                 }
 
                 method.Invoke(obj, Params);
+            }
+            catch (Exception e)
+            {
+                Ue.LogError($"Exception:{e}\n{e.StackTrace}");
+            }
+        }
+
+        public static uint AddEvent(Delegate callback)
+        {
+            var id = _eventSequence++;
+            _events.Add(id, callback);
+
+            return id;
+        }
+
+        public static void RemoveEvent(uint id)
+        {
+            _events.Remove(id);
+        }
+
+        public static void InvokeEventById(uint eventId, IntPtr arguments, int size)
+        {
+            try
+            {
+                if (!_events.TryGetValue(eventId, out var callback))
+                {
+                    Ue.LogError($"Event {eventId} not found");
+                    return;
+                }
+                
+                var Params = ParceParams(callback.Method, arguments, size, out var isSuccess);
+                if (!isSuccess)
+                {
+                    Ue.LogError(
+                        $"Failed call event id:{eventId} sign:{callback.Method}, event have {callback.Method.GetParameters().Length} arguments, size not match");
+                    return;
+                }
+
+                callback.DynamicInvoke(Params);
             }
             catch (Exception e)
             {

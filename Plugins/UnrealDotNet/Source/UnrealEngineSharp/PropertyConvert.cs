@@ -26,6 +26,11 @@ namespace UnrealEngine
 
         public static object ParceObjectFromByteStream(Type type, BinaryReader br)
         {
+            if (type.IsEnum)
+            {
+                type = type.GetEnumUnderlyingType();
+            }
+
             if (type == typeof(IntPtr))
             {
                 return Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>()
