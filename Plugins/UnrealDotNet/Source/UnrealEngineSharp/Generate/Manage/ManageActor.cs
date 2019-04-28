@@ -257,6 +257,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Hook to allow actors to render HUD overlays for themselves.  Called from AHUD::DrawActorOverlays(). </para>
+		/// <param name="PC">is the PlayerController on whose view this overlay is rendered </param>
+		/// <param name="Canvas">is the Canvas on which to draw the overlay </param>
+		/// <param name="CameraPosition">Position of Camera </param>
+		/// <param name="CameraDir">direction camera is pointing in. </param>
+		/// </summary>
+		public override void PostRenderFor(APlayerController pC, UCanvas canvas, FVector cameraPosition, FVector cameraDir) { }
+		
+		
+		/// <summary>
 		/// <para>Called after all currently registered components are cleared </para>
 		/// </summary>
 		public override void PostUnregisterAllComponents() { }

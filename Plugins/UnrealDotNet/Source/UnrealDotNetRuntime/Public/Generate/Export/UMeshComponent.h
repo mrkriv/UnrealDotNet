@@ -43,10 +43,32 @@ extern "C"
 		((E_PROTECTED_WRAP_UMeshComponent*)Self)->CacheMaterialParameterNameIndices_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_UMeshComponent_EmptyOverrideMaterials(UMeshComponent* Self)
+	{
+		Self->EmptyOverrideMaterials();
+	}
+
+	DOTNET_EXPORT auto E_UMeshComponent_GetMaterialIndex(UMeshComponent* Self, char* MaterialSlotName)
+	{
+		auto _p0 = ConvertFromManage_FName(MaterialSlotName);
+		return Self->GetMaterialIndex(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UMeshComponent_GetNumOverrideMaterials(UMeshComponent* Self)
+	{
+		return Self->GetNumOverrideMaterials();
+	}
+
 	DOTNET_EXPORT auto E_UMeshComponent_GetScalarParameterDefaultValue(UMeshComponent* Self, char* ParameterName)
 	{
 		auto _p0 = ConvertFromManage_FName(ParameterName);
 		return Self->GetScalarParameterDefaultValue(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UMeshComponent_IsMaterialSlotNameValid(UMeshComponent* Self, char* MaterialSlotName)
+	{
+		auto _p0 = ConvertFromManage_FName(MaterialSlotName);
+		return Self->IsMaterialSlotNameValid(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(UMeshComponent* Self)
@@ -54,11 +76,25 @@ extern "C"
 		((E_PROTECTED_WRAP_UMeshComponent*)Self)->MarkCachedMaterialParameterNameIndicesDirty_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_UMeshComponent_PrestreamTextures(UMeshComponent* Self, float Seconds, bool bPrioritizeCharacterTextures, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bPrioritizeCharacterTextures;
+		auto _p2 = CinematicTextureGroups;
+		Self->PrestreamTextures(_p0, _p1, _p2);
+	}
+
 	DOTNET_EXPORT auto E_UMeshComponent_SetScalarParameterValueOnMaterials(UMeshComponent* Self, char* ParameterName, float ParameterValue)
 	{
 		auto _p0 = ConvertFromManage_FName(ParameterName);
 		auto _p1 = ParameterValue;
 		Self->SetScalarParameterValueOnMaterials(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UMeshComponent_SetTextureForceResidentFlag(UMeshComponent* Self, bool bForceMiplevelsToBeResident)
+	{
+		auto _p0 = bForceMiplevelsToBeResident;
+		Self->SetTextureForceResidentFlag(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UMeshComponent_SetVectorParameterValueOnMaterials(UMeshComponent* Self, char* ParameterName, INT_PTR ParameterValue)

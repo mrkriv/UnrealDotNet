@@ -52,6 +52,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UPlanarReflectionComponent_PrefilterRoughnessDistance_GET(UPlanarReflectionComponent* Ptr) { return Ptr->PrefilterRoughnessDistance; }
 	DOTNET_EXPORT void E_PROP_UPlanarReflectionComponent_PrefilterRoughnessDistance_SET(UPlanarReflectionComponent* Ptr, float Value) { Ptr->PrefilterRoughnessDistance = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UPlanarReflectionComponent_PreviewBox_GET(UPlanarReflectionComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewBox); }
+	DOTNET_EXPORT void E_PROP_UPlanarReflectionComponent_PreviewBox_SET(UPlanarReflectionComponent* Ptr, UBoxComponent* Value) { Ptr->PreviewBox = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UPlanarReflectionComponent_ScreenPercentage_GET(UPlanarReflectionComponent* Ptr) { return Ptr->ScreenPercentage; }
 	DOTNET_EXPORT void E_PROP_UPlanarReflectionComponent_ScreenPercentage_SET(UPlanarReflectionComponent* Ptr, int32 Value) { Ptr->ScreenPercentage = Value; }
 	

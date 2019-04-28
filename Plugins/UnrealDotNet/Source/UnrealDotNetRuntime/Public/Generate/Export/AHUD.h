@@ -27,8 +27,32 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_AHUD_bEnableDebugTextShadow_GET(AHUD* Ptr) { return Ptr->bEnableDebugTextShadow; }
+	DOTNET_EXPORT void E_PROP_AHUD_bEnableDebugTextShadow_SET(AHUD* Ptr, uint8 Value) { Ptr->bEnableDebugTextShadow = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_bLostFocusPaused_GET(AHUD* Ptr) { return Ptr->bLostFocusPaused; }
+	DOTNET_EXPORT void E_PROP_AHUD_bLostFocusPaused_SET(AHUD* Ptr, uint8 Value) { Ptr->bLostFocusPaused = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_bShowDebugInfo_GET(AHUD* Ptr) { return Ptr->bShowDebugInfo; }
+	DOTNET_EXPORT void E_PROP_AHUD_bShowDebugInfo_SET(AHUD* Ptr, uint8 Value) { Ptr->bShowDebugInfo = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_bShowHitBoxDebugInfo_GET(AHUD* Ptr) { return Ptr->bShowHitBoxDebugInfo; }
+	DOTNET_EXPORT void E_PROP_AHUD_bShowHitBoxDebugInfo_SET(AHUD* Ptr, uint8 Value) { Ptr->bShowHitBoxDebugInfo = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_bShowHUD_GET(AHUD* Ptr) { return Ptr->bShowHUD; }
+	DOTNET_EXPORT void E_PROP_AHUD_bShowHUD_SET(AHUD* Ptr, uint8 Value) { Ptr->bShowHUD = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_bShowOverlays_GET(AHUD* Ptr) { return Ptr->bShowOverlays; }
+	DOTNET_EXPORT void E_PROP_AHUD_bShowOverlays_SET(AHUD* Ptr, uint8 Value) { Ptr->bShowOverlays = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_CurrentTargetIndex_GET(AHUD* Ptr) { return Ptr->CurrentTargetIndex; }
+	DOTNET_EXPORT void E_PROP_AHUD_CurrentTargetIndex_SET(AHUD* Ptr, int32 Value) { Ptr->CurrentTargetIndex = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AHUD_LastHUDRenderTime_GET(AHUD* Ptr) { return Ptr->LastHUDRenderTime; }
 	DOTNET_EXPORT void E_PROP_AHUD_LastHUDRenderTime_SET(AHUD* Ptr, float Value) { Ptr->LastHUDRenderTime = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AHUD_PlayerOwner_GET(AHUD* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PlayerOwner); }
+	DOTNET_EXPORT void E_PROP_AHUD_PlayerOwner_SET(AHUD* Ptr, APlayerController* Value) { Ptr->PlayerOwner = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AHUD_RenderDelta_GET(AHUD* Ptr) { return Ptr->RenderDelta; }
 	DOTNET_EXPORT void E_PROP_AHUD_RenderDelta_SET(AHUD* Ptr, float Value) { Ptr->RenderDelta = Value; }
@@ -240,6 +264,13 @@ extern "C"
 	{
 		auto _p0 = A;
 		Self->RemovePostRenderedActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AHUD_SetCanvas(AHUD* Self, UCanvas* InCanvas, UCanvas* InDebugCanvas)
+	{
+		auto _p0 = InCanvas;
+		auto _p1 = InDebugCanvas;
+		Self->SetCanvas(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ShouldDisplayDebug(AHUD* Self, char* DebugType)

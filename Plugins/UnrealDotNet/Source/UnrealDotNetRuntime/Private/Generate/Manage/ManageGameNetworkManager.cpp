@@ -36,4 +36,36 @@ bool AManageGameNetworkManager::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void AManageGameNetworkManager::EnableStandbyCheatDetection(bool bIsEnabled)
+{
+	Super::EnableStandbyCheatDetection(bIsEnabled);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EnableStandbyCheatDetection", bIsEnabled);
+}
+
+void AManageGameNetworkManager::StandbyCheatDetected(EStandbyType StandbyType)
+{
+	Super::StandbyCheatDetected(StandbyType);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "StandbyCheatDetected", StandbyType);
+}
+
+void AManageGameNetworkManager::UpdateNetSpeeds(bool bIsLanMatch)
+{
+	Super::UpdateNetSpeeds(bIsLanMatch);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateNetSpeeds", bIsLanMatch);
+}
+
+void AManageGameNetworkManager::UpdateNetSpeedsTimer()
+{
+	Super::UpdateNetSpeedsTimer();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateNetSpeedsTimer");
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

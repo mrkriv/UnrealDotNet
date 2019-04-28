@@ -202,7 +202,11 @@ methodParamsList
 ;
 
 methodParametr
-	: methodParametrTemplate? type (methodParametrName ('=' methodParametrDefaultValue)?)?
+	: methodParametrMetadata? methodParametrTemplate? type (methodParametrName ('=' methodParametrDefaultValue)?)?
+;
+
+methodParametrMetadata
+	: UPARAM '(' uMetaParametrList? ')'
 ;
 
 methodParametrTemplate
@@ -324,6 +328,7 @@ templateDefine
 
 templateParamList
 	: Typename? templateParam (',' templateParamList)?
+	| Typename (',' templateParamList)?
 	;
 
 templateParam
@@ -476,6 +481,10 @@ GCC_ALIGN
 	: 'GCC_ALIGN'
 ;
 
+UPARAM
+	: 'UPARAM'
+;
+
 Namespace
 	: 'namespace'
 ;
@@ -519,7 +528,7 @@ Literal
 
 fragment
 RealDIGIT
-	: DIGIT* '.'? DIGIT+ 'f'?
+	: DIGIT* '.'? 'e-'? DIGIT+ 'f'?
 	| DIGIT+ '.' 'f'?
 ;
 

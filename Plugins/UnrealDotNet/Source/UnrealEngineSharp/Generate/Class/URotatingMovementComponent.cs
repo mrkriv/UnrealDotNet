@@ -26,10 +26,46 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_URotatingMovementComponent_PivotTranslation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_URotatingMovementComponent_PivotTranslation_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_URotatingMovementComponent_RotationRate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_URotatingMovementComponent_RotationRate_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_URotatingMovementComponent(IntPtr Parent, string Name);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Translation of pivot point around which we rotate, relative to current rotation. </para>
+		/// <para>For instance, with PivotTranslation set to (X=+100, Y=0, Z=0), rotation will occur </para>
+		/// <para>around the point +100 units along the local X axis from the center of the object, </para>
+		/// <para>rather than around the object's origin (the default). </para>
+		/// </summary>
+		public FVector PivotTranslation
+		{
+			get => E_PROP_URotatingMovementComponent_PivotTranslation_GET(NativePointer);
+			set => E_PROP_URotatingMovementComponent_PivotTranslation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>How fast to update roll/pitch/yaw of the component we update. </para>
+		/// </summary>
+		public FRotator RotationRate
+		{
+			get => E_PROP_URotatingMovementComponent_RotationRate_GET(NativePointer);
+			set => E_PROP_URotatingMovementComponent_RotationRate_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(URotatingMovementComponent self)

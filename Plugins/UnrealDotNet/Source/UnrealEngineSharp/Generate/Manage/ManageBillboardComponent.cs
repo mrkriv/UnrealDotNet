@@ -20,6 +20,12 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Change the sprite's UVs </para>
+		/// </summary>
+		public override void SetUV(int newU, int newUL, int newV, int newVL) { }
+		
 		public static implicit operator IntPtr(ManageBillboardComponent self)
 		{
 			return self.NativePointer;

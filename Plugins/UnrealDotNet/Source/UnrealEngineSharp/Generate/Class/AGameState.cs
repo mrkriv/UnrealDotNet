@@ -39,6 +39,9 @@ namespace UnrealEngine
 		private static extern void E_AGameState_DefaultTimer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_AGameState_GetMatchState(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameState_HandleLeavingMap(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -51,10 +54,19 @@ namespace UnrealEngine
 		private static extern void E_AGameState_HandleMatchIsWaitingToStart(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AGameState_HasMatchEnded(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AGameState_IsMatchInProgress(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameState_OnRep_ElapsedTime(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameState_OnRep_MatchState(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AGameState_SetMatchState(IntPtr self, string newState);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AGameState_ShouldShowGore(IntPtr self);
@@ -84,6 +96,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Returns the current match state, this is an accessor to protect the state machine flow </para>
+		/// </summary>
+		public string GetMatchState()
+			=> E_AGameState_GetMatchState(this);
+		
+		
+		/// <summary>
 		/// <para>Called when the match transitions to LeavingMap </para>
 		/// </summary>
 		protected virtual void HandleLeavingMap()
@@ -110,11 +129,32 @@ namespace UnrealEngine
 		protected virtual void HandleMatchIsWaitingToStart()
 			=> E_AGameState_HandleMatchIsWaitingToStart(this);
 		
+		
+		/// <summary>
+		/// <para>Returns true if match is WaitingPostMatch or later </para>
+		/// </summary>
+		public virtual bool HasMatchEnded()
+			=> E_AGameState_HasMatchEnded(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if we're in progress </para>
+		/// </summary>
+		public virtual bool IsMatchInProgress()
+			=> E_AGameState_IsMatchInProgress(this);
+		
 		public virtual void OnRep_ElapsedTime()
 			=> E_AGameState_OnRep_ElapsedTime(this);
 		
 		public virtual void OnRep_MatchState()
 			=> E_AGameState_OnRep_MatchState(this);
+		
+		
+		/// <summary>
+		/// <para>Updates the match state and calls the appropriate transition functions, only valid on server </para>
+		/// </summary>
+		public void SetMatchState(string newState)
+			=> E_AGameState_SetMatchState(this, newState);
 		
 		public virtual bool ShouldShowGore()
 			=> E_AGameState_ShouldShowGore(this);

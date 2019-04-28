@@ -26,4 +26,20 @@ bool UManageInstancedStaticMeshComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManageInstancedStaticMeshComponent::ClearInstances()
+{
+	Super::ClearInstances();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ClearInstances");
+}
+
+void UManageInstancedStaticMeshComponent::PreAllocateInstancesMemory(int32 AddedInstanceCount)
+{
+	Super::PreAllocateInstancesMemory(AddedInstanceCount);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreAllocateInstancesMemory", AddedInstanceCount);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

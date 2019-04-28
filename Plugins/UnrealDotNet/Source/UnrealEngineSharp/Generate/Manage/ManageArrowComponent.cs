@@ -20,6 +20,12 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Updates the arrow's colour, and tells it to refresh </para>
+		/// </summary>
+		public override void SetArrowColor(FLinearColor newColor) { }
+		
 		public static implicit operator IntPtr(ManageArrowComponent self)
 		{
 			return self.NativePointer;

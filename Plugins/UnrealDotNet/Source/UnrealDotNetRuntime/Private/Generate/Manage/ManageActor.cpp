@@ -356,6 +356,14 @@ void AManageActor::PostRegisterAllComponents()
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRegisterAllComponents");
 }
 
+void AManageActor::PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir)
+{
+	Super::PostRenderFor(PC, Canvas, CameraPosition, CameraDir);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRenderFor", PC, Canvas, CameraPosition, CameraDir);
+}
+
 void AManageActor::PostUnregisterAllComponents()
 {
 	Super::PostUnregisterAllComponents();

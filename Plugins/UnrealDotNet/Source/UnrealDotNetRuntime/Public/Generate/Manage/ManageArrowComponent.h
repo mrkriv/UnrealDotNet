@@ -30,6 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void SetArrowColor(FLinearColor NewColor) override;
 	
 protected:
 };

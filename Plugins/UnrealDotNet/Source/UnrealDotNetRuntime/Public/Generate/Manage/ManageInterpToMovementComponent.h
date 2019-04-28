@@ -30,6 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void AddControlPointPosition(FVector Pos, bool bPositionIsRelative) override;
 	
 protected:
 	virtual void UpdateControlPoints(bool InForceUpdate) override;

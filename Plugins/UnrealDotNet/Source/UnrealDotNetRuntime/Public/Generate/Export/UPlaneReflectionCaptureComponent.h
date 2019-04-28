@@ -16,6 +16,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_GET(UPlaneReflectionCaptureComponent* Ptr) { return Ptr->InfluenceRadiusScale; }
+	DOTNET_EXPORT void E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_SET(UPlaneReflectionCaptureComponent* Ptr, float Value) { Ptr->InfluenceRadiusScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_GET(UPlaneReflectionCaptureComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewCaptureBox); }
+	DOTNET_EXPORT void E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_SET(UPlaneReflectionCaptureComponent* Ptr, UBoxComponent* Value) { Ptr->PreviewCaptureBox = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_GET(UPlaneReflectionCaptureComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewInfluenceRadius); }
+	DOTNET_EXPORT void E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_SET(UPlaneReflectionCaptureComponent* Ptr, UDrawSphereComponent* Value) { Ptr->PreviewInfluenceRadius = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UPlaneReflectionCaptureComponent(UObject* Parent, char* Name)
 	{

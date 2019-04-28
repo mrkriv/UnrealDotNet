@@ -77,6 +77,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FWorldContext();
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FWorldContext_SetCurrentWorld(IntPtr self, IntPtr world);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_FWorldContext_World(IntPtr self);
+		
 		#endregion
 		
 		#region Property
@@ -168,6 +174,19 @@ namespace UnrealEngine
 			set => E_PROP_FWorldContext_TravelURL_SET(NativePointer, value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Set CurrentWorld and update external reference pointers to reflect this </para>
+		/// </summary>
+		public void SetCurrentWorld(UWorld world)
+			=> E_FWorldContext_SetCurrentWorld(this, world);
+		
+		public UWorld World()
+			=> E_FWorldContext_World(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(FWorldContext self)

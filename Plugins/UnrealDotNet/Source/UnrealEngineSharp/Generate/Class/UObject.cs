@@ -91,6 +91,12 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UObject_GetGlobalUserConfigFilename(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UObject_GetWorld(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UObject_GetWorldChecked(IntPtr self, bool bSupported);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -349,6 +355,21 @@ namespace UnrealEngine
 		/// </summary>
 		public string GetGlobalUserConfigFilename()
 			=> E_UObject_GetGlobalUserConfigFilename(this);
+		
+		
+		/// <summary>
+		/// <para>Returns what UWorld this object is contained within. </para>
+		/// <para>By default this will follow its Outer chain, but it should be overridden if that will not work. </para>
+		/// </summary>
+		public virtual UWorld GetWorld()
+			=> E_UObject_GetWorld(this);
+		
+		
+		/// <summary>
+		/// <para>Internal function used by UEngine::GetWorldFromContextObject() </para>
+		/// </summary>
+		public UWorld GetWorldChecked(bool bSupported)
+			=> E_UObject_GetWorldChecked(this, bSupported);
 		
 		
 		/// <summary>

@@ -28,11 +28,17 @@ namespace UnrealEngine
 		private static extern IntPtr E_CreateStruct_FSimpleReticle();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_FSimpleReticle_Draw(IntPtr self, IntPtr inCanvas, IntPtr inColor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FSimpleReticle_SetupReticle(IntPtr self, float length, float innerSize);
 		
 		#endregion
 		
 		#region ExternMethods
+		public void Draw(UCanvas inCanvas, FLinearColor inColor)
+			=> E_FSimpleReticle_Draw(this, inCanvas, inColor);
+		
 		public void SetupReticle(float length, float innerSize)
 			=> E_FSimpleReticle_SetupReticle(this, length, innerSize);
 		

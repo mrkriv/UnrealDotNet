@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using CodeGenerator.Metadata;
@@ -153,16 +154,16 @@ namespace CodeGenerator
 
         public bool TypeFilterNoCahed(Type type)
         {
-            if (!type.IsImplemented) 
+            if (!type.IsImplemented)
                 return false;
 
-            if (type.NamespaceBaseType != null) 
+            if (type.NamespaceBaseType != null)
                 return false;
 
-            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName)) 
+            if (type.IsTemplate && !TemplateWhiteList.Contains(type.TemplateBaseName))
                 return false;
 
-            if (!type.TemplateTypes.All(x => TypeFilter(x.Type))) 
+            if (!type.TemplateTypes.All(x => TypeFilter(x.Type)))
                 return false;
 
             switch (type)
@@ -205,7 +206,8 @@ namespace CodeGenerator
             if (m.InputTypes.Any(v => v.IsPointer && v.IsReference || v.Type.IsVoid || v.IsReadOnly()))
                 return false;
 
-            if (m.InputTypes.Where(x => x.Name != null).Any(x => SystemLiteralList.Contains(x.Name.ToLower()))) //todo:: добавлять @ перед именем свойства в c#
+            if (m.InputTypes.Where(x => x.Name != null).Any(x => SystemLiteralList.Contains(x.Name.ToLower())))
+                //todo:: добавлять @ перед именем свойства в c#
                 return false;
 
             if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))
@@ -234,7 +236,7 @@ namespace CodeGenerator
         {
             if (m.AccessModifier != AccessModifier.Public) // todo: экспортировать protected свойства
                 return false;
-            
+
             if (m.IsArray)
                 return false;
 

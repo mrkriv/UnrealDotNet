@@ -16,6 +16,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponentCube_IPD_GET(USceneCaptureComponentCube* Ptr) { return Ptr->IPD; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponentCube_IPD_SET(USceneCaptureComponentCube* Ptr, float Value) { Ptr->IPD = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_USceneCaptureComponentCube(UObject* Parent, char* Name)
 	{

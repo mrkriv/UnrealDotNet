@@ -16,6 +16,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UShapeComponent_bDrawOnlyIfSelected_GET(UShapeComponent* Ptr) { return Ptr->bDrawOnlyIfSelected; }
+	DOTNET_EXPORT void E_PROP_UShapeComponent_bDrawOnlyIfSelected_SET(UShapeComponent* Ptr, uint8 Value) { Ptr->bDrawOnlyIfSelected = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UShapeComponent_bDynamicObstacle_GET(UShapeComponent* Ptr) { return Ptr->bDynamicObstacle; }
+	DOTNET_EXPORT void E_PROP_UShapeComponent_bDynamicObstacle_SET(UShapeComponent* Ptr, uint8 Value) { Ptr->bDynamicObstacle = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UShapeComponent_bShouldCollideWhenPlacing_GET(UShapeComponent* Ptr) { return Ptr->bShouldCollideWhenPlacing; }
+	DOTNET_EXPORT void E_PROP_UShapeComponent_bShouldCollideWhenPlacing_SET(UShapeComponent* Ptr, uint8 Value) { Ptr->bShouldCollideWhenPlacing = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UShapeComponent(UObject* Parent, char* Name)
 	{

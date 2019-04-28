@@ -197,9 +197,24 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_FlushLevelStreamingType_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UWorld_ForegroundLineBatcher_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_ForegroundLineBatcher_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(IntPtr Ptr, double Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UWorld_LineBatcher_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_LineBatcher_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UWorld_NetworkManager_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_NetworkManager_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UWorld_NextSwitchCountdown_GET(IntPtr Ptr);
@@ -237,14 +252,14 @@ namespace UnrealEngine
 		private static extern void E_PROP_UWorld_PauseDelay_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UWorld_PersistentLineBatcher_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UWorld_PersistentLineBatcher_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UWorld_PlayerNum_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_PlayerNum_SET(IntPtr Ptr, int Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UWorld_PreparingLevelNames_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_PreparingLevelNames_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UWorld_RealTimeSeconds_GET(IntPtr Ptr);
@@ -280,11 +295,6 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_UWorld_URL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UWorld_URL_SET(IntPtr Ptr, IntPtr Value);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern TemplatePointerDescription E_PROP_UWorld_ViewLocationsRenderedLastFrame_GET(IntPtr Ptr);
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_PROP_UWorld_ViewLocationsRenderedLastFrame_SET(IntPtr Ptr, IntPtr Value);
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -418,6 +428,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UWorld_GetAuthGameMode(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetCanvasForDrawMaterialToRenderTarget(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetCanvasForRenderingToTarget(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetDefaultGravityZ(IntPtr self);
@@ -580,9 +596,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PopulateStreamingLevelsToConsider(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UWorld_PrepareMapChange(IntPtr self, IntPtr levelNames);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_ProcessLevelStreamingVolumes(IntPtr self, IntPtr overrideViewLocation);
@@ -1046,6 +1059,12 @@ namespace UnrealEngine
 			set => E_PROP_UWorld_FlushLevelStreamingType_SET(NativePointer, (byte)value);
 		}
 
+		public ULineBatchComponent ForegroundLineBatcher
+		{
+			get => E_PROP_UWorld_ForegroundLineBatcher_GET(NativePointer);
+			set => E_PROP_UWorld_ForegroundLineBatcher_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Time in FPlatformTime::Seconds unbuilt time was last encountered. 0 means not yet. </para>
@@ -1054,6 +1073,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(NativePointer);
 			set => E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(NativePointer, value);
+		}
+
+		public ULineBatchComponent LineBatcher
+		{
+			get => E_PROP_UWorld_LineBatcher_GET(NativePointer);
+			set => E_PROP_UWorld_LineBatcher_SET(NativePointer, value);
+		}
+
+		public AGameNetworkManager NetworkManager
+		{
+			get => E_PROP_UWorld_NetworkManager_GET(NativePointer);
+			set => E_PROP_UWorld_NetworkManager_SET(NativePointer, value);
 		}
 
 		
@@ -1126,6 +1157,12 @@ namespace UnrealEngine
 			set => E_PROP_UWorld_PauseDelay_SET(NativePointer, value);
 		}
 
+		public ULineBatchComponent PersistentLineBatcher
+		{
+			get => E_PROP_UWorld_PersistentLineBatcher_GET(NativePointer);
+			set => E_PROP_UWorld_PersistentLineBatcher_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Counter for allocating game- unique controller player numbers </para>
@@ -1134,16 +1171,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_PlayerNum_GET(NativePointer);
 			set => E_PROP_UWorld_PlayerNum_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>array of levels that were loaded into this map via PrepareMapChange() / CommitMapChange() (to inform newly joining clients) </para>
-		/// </summary>
-		public TArray<string> PreparingLevelNames
-		{
-			get => E_PROP_UWorld_PreparingLevelNames_GET(NativePointer);
-			set => E_PROP_UWorld_PreparingLevelNames_SET(NativePointer, value);
 		}
 
 		
@@ -1210,16 +1237,6 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UWorld_URL_GET(NativePointer);
 			set => E_PROP_UWorld_URL_SET(NativePointer, value);
-		}
-
-		
-		/// <summary>
-		/// <para>View locations rendered in the previous frame, if any. </para>
-		/// </summary>
-		public TArray<FVector> ViewLocationsRenderedLastFrame
-		{
-			get => E_PROP_UWorld_ViewLocationsRenderedLastFrame_GET(NativePointer);
-			set => E_PROP_UWorld_ViewLocationsRenderedLastFrame_SET(NativePointer, value);
 		}
 
 		#endregion
@@ -1556,6 +1573,16 @@ namespace UnrealEngine
 		/// </summary>
 		public AGameModeBase GetAuthGameMode()
 			=> E_UWorld_GetAuthGameMode(this);
+		
+		public UCanvas GetCanvasForDrawMaterialToRenderTarget()
+			=> E_UWorld_GetCanvasForDrawMaterialToRenderTarget(this);
+		
+		
+		/// <summary>
+		/// <para>Gets the canvas object for rendering to a render target.  Will allocate one if needed. </para>
+		/// </summary>
+		public UCanvas GetCanvasForRenderingToTarget()
+			=> E_UWorld_GetCanvasForRenderingToTarget(this);
 		
 		
 		/// <summary>
@@ -1932,16 +1959,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void PopulateStreamingLevelsToConsider()
 			=> E_UWorld_PopulateStreamingLevelsToConsider(this);
-		
-		
-		/// <summary>
-		/// <para>asynchronously loads the given levels in preparation for a streaming map transition. </para>
-		/// <para>This codepath is designed for worlds that heavily use level streaming and GameModes where the game state should </para>
-		/// <para>be preserved through a transition. </para>
-		/// <param name="LevelNames">the names of the level packages to load. LevelNames[0] will be the new persistent (primary) level </param>
-		/// </summary>
-		public void PrepareMapChange(TArray<string> levelNames)
-			=> E_UWorld_PrepareMapChange(this, levelNames);
 		
 		
 		/// <summary>

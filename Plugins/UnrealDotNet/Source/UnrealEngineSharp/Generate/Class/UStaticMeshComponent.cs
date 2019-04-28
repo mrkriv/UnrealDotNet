@@ -107,9 +107,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UStaticMeshComponent_ForcedLodModel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_ForcedLodModel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_UStaticMeshComponent_LightmassSettings_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UStaticMeshComponent_LightmassSettings_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UStaticMeshComponent_MinLOD_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_MinLOD_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UStaticMeshComponent_OverriddenLightMapRes_GET(IntPtr Ptr);
@@ -117,9 +127,19 @@ namespace UnrealEngine
 		private static extern void E_PROP_UStaticMeshComponent_OverriddenLightMapRes_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UStaticMeshComponent_PreviousLODLevel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_PreviousLODLevel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UStaticMeshComponent_SubDivisionStepSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UStaticMeshComponent_SubDivisionStepSize_SET(IntPtr Ptr, int Value);
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -354,6 +374,16 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). </para>
+		/// </summary>
+		public int ForcedLodModel
+		{
+			get => E_PROP_UStaticMeshComponent_ForcedLodModel_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_ForcedLodModel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>The Lightmass settings for this object. </para>
 		/// </summary>
 		public FLightmassPrimitiveSettings LightmassSettings
@@ -364,12 +394,29 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Specifies the smallest LOD that will be used for this component. </para>
+		/// <para>This is ignored if ForcedLodModel is enabled. </para>
+		/// </summary>
+		public int MinLOD
+		{
+			get => E_PROP_UStaticMeshComponent_MinLOD_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_MinLOD_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh. </para>
 		/// </summary>
 		public int OverriddenLightMapRes
 		{
 			get => E_PROP_UStaticMeshComponent_OverriddenLightMapRes_GET(NativePointer);
 			set => E_PROP_UStaticMeshComponent_OverriddenLightMapRes_SET(NativePointer, value);
+		}
+
+		public int PreviousLODLevel
+		{
+			get => E_PROP_UStaticMeshComponent_PreviousLODLevel_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_PreviousLODLevel_SET(NativePointer, value);
 		}
 
 		
@@ -383,6 +430,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_GET(NativePointer);
 			set => E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(NativePointer, value);
+		}
+
+		public int SubDivisionStepSize
+		{
+			get => E_PROP_UStaticMeshComponent_SubDivisionStepSize_GET(NativePointer);
+			set => E_PROP_UStaticMeshComponent_SubDivisionStepSize_SET(NativePointer, value);
 		}
 
 		#endregion

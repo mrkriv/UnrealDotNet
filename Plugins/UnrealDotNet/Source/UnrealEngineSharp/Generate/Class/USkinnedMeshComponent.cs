@@ -60,6 +60,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USkinnedMeshComponent(IntPtr Parent, string Name);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkinnedMeshComponent_ClearMotionVector(IntPtr self);
+		
 		#endregion
 		
 		#region Property
@@ -124,6 +127,12 @@ namespace UnrealEngine
 			set => E_PROP_USkinnedMeshComponent_VisibilityBasedAnimTickOption_SET(NativePointer, (byte)value);
 		}
 
+		#endregion
+		
+		#region ExternMethods
+		public void ClearMotionVector()
+			=> E_USkinnedMeshComponent_ClearMotionVector(this);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(USkinnedMeshComponent self)

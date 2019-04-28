@@ -72,9 +72,34 @@ namespace UnrealEngine
 		private static extern void E_PROP_APlayerState_ExactPingV2_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_APlayerState_OldName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerState_OldName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_APlayerState_Ping_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerState_Ping_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_APlayerState_PlayerId_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerState_PlayerId_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_APlayerState_PlayerName_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerState_PlayerName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_APlayerState_SavedNetworkAddress_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APlayerState_SavedNetworkAddress_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_APlayerState_Score_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerState_Score_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_APlayerState_SessionName_GET(IntPtr Ptr);
@@ -264,10 +289,60 @@ namespace UnrealEngine
 			set => E_PROP_APlayerState_ExactPingV2_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>Previous player name.  Saved on client-side to detect player name changes. </para>
+		/// </summary>
+		public string OldName
+		{
+			get => E_PROP_APlayerState_OldName_GET(NativePointer);
+			set => E_PROP_APlayerState_OldName_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Replicated compressed ping for this player (holds ping in msec divided by 4) </para>
+		/// </summary>
+		public byte Ping
+		{
+			get => E_PROP_APlayerState_Ping_GET(NativePointer);
+			set => E_PROP_APlayerState_Ping_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Unique net id number. Actual value varies based on current online subsystem, use it only as a guaranteed unique number per player. </para>
+		/// </summary>
+		public int PlayerId
+		{
+			get => E_PROP_APlayerState_PlayerId_GET(NativePointer);
+			set => E_PROP_APlayerState_PlayerId_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Player name, or blank if none. </para>
+		/// </summary>
+		public string PlayerName
+		{
+			get => E_PROP_APlayerState_PlayerName_GET(NativePointer);
+			set => E_PROP_APlayerState_PlayerName_SET(NativePointer, value);
+		}
+
 		public string SavedNetworkAddress
 		{
 			get => E_PROP_APlayerState_SavedNetworkAddress_GET(NativePointer);
 			set => E_PROP_APlayerState_SavedNetworkAddress_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Player's current score. </para>
+		/// </summary>
+		public float Score
+		{
+			get => E_PROP_APlayerState_Score_GET(NativePointer);
+			set => E_PROP_APlayerState_Score_SET(NativePointer, value);
 		}
 
 		

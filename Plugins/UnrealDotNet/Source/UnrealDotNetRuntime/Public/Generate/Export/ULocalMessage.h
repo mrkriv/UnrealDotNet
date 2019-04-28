@@ -22,5 +22,11 @@ extern "C"
 		return (INT_PTR)NewObject<ULocalMessage>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_ULocalMessage_ClientReceive(ULocalMessage* Self, INT_PTR ClientData)
+	{
+		auto& _p0 = *(FClientReceiveData*)ClientData;
+		Self->ClientReceive(_p0);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

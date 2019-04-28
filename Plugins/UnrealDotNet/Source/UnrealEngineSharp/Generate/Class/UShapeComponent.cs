@@ -26,6 +26,21 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UShapeComponent_bDrawOnlyIfSelected_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UShapeComponent_bDrawOnlyIfSelected_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UShapeComponent_bDynamicObstacle_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UShapeComponent_bDynamicObstacle_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UShapeComponent_bShouldCollideWhenPlacing_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UShapeComponent_bShouldCollideWhenPlacing_SET(IntPtr Ptr, byte Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UShapeComponent(IntPtr Parent, string Name);
@@ -33,6 +48,31 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UShapeComponent_UpdateBodySetup(IntPtr self);
 		
+		#endregion
+		
+		#region Property
+		public byte bDrawOnlyIfSelected
+		{
+			get => E_PROP_UShapeComponent_bDrawOnlyIfSelected_GET(NativePointer);
+			set => E_PROP_UShapeComponent_bDrawOnlyIfSelected_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If set, shape will be exported for navigation as dynamic modifier instead of using regular collision data </para>
+		/// </summary>
+		public byte bDynamicObstacle
+		{
+			get => E_PROP_UShapeComponent_bDynamicObstacle_GET(NativePointer);
+			set => E_PROP_UShapeComponent_bDynamicObstacle_SET(NativePointer, value);
+		}
+
+		public byte bShouldCollideWhenPlacing
+		{
+			get => E_PROP_UShapeComponent_bShouldCollideWhenPlacing_GET(NativePointer);
+			set => E_PROP_UShapeComponent_bShouldCollideWhenPlacing_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods

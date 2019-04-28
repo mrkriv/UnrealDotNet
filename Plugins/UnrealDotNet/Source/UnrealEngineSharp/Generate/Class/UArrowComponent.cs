@@ -26,9 +26,66 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UArrowComponent_ArrowSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UArrowComponent_ArrowSize_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_UArrowComponent_bIsScreenSizeScaled_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UArrowComponent_bIsScreenSizeScaled_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UArrowComponent_ScreenSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UArrowComponent_ScreenSize_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UArrowComponent(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UArrowComponent_SetArrowColor(IntPtr self, IntPtr newColor);
+		
+		#endregion
+		
+		#region Property
+		public float ArrowSize
+		{
+			get => E_PROP_UArrowComponent_ArrowSize_GET(NativePointer);
+			set => E_PROP_UArrowComponent_ArrowSize_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Set to limit the screen size of this arrow </para>
+		/// </summary>
+		public bool bIsScreenSizeScaled
+		{
+			get => E_PROP_UArrowComponent_bIsScreenSizeScaled_GET(NativePointer);
+			set => E_PROP_UArrowComponent_bIsScreenSizeScaled_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The size on screen to limit this arrow to (in screen space) </para>
+		/// </summary>
+		public float ScreenSize
+		{
+			get => E_PROP_UArrowComponent_ScreenSize_GET(NativePointer);
+			set => E_PROP_UArrowComponent_ScreenSize_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Updates the arrow's colour, and tells it to refresh </para>
+		/// </summary>
+		public virtual void SetArrowColor(FLinearColor newColor)
+			=> E_UArrowComponent_SetArrowColor(this, newColor);
 		
 		#endregion
 		

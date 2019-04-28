@@ -33,6 +33,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UBoxComponent.h"
 #include "UBoxReflectionCaptureComponent.h"
 #include "UBrushComponent.h"
+#include "UCanvas.h"
 #include "UCapsuleComponent.h"
 #include "UCharacterMovementComponent.h"
 #include "UCheatManager.h"
@@ -99,5 +100,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UTimelineComponent.h"
 #include "UTouchInterface.h"
 #include "UVectorFieldComponent.h"
+#include "UWorld.h"
+#include "UWorldProxy.h"
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

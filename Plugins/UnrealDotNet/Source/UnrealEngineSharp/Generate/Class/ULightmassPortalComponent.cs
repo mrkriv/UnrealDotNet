@@ -26,10 +26,24 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_ULightmassPortalComponent_PreviewBox_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightmassPortalComponent_PreviewBox_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_ULightmassPortalComponent(IntPtr Parent, string Name);
 		
+		#endregion
+		
+		#region Property
+		public UBoxComponent PreviewBox
+		{
+			get => E_PROP_ULightmassPortalComponent_PreviewBox_GET(NativePointer);
+			set => E_PROP_ULightmassPortalComponent_PreviewBox_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(ULightmassPortalComponent self)

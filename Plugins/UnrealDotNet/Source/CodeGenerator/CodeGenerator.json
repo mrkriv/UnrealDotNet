@@ -27,7 +27,10 @@
       "this",
       "default",
       "dynamic",
-      "params"
+      "params",
+      "float",
+      "int",
+      "string"
     ],
     "TemplateWhiteList": [
       "TArray",
@@ -73,6 +76,7 @@
       "FTimerHandle",
       "FInstanceUpdateCmdBuffer",
       "FStreamingLevelsToConsider",
+      "FDisplayDebugManager",
 
       "FCompareFActorPriority", // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
 
@@ -116,7 +120,8 @@
       "FHUDHitBox" // невозможно преобразовать аргумент 2 из "TArray<FHUDHitBox,FDefaultAllocator>" в "TArray<const FHUDHitBox *,FDefaultAllocator> &"
     ],
     "ManualImplementedClassMasks": [
-      "TArray__\\w+"
+      "TArray__\\w+",
+      "UBlueprintFunctionLibrary"
     ],
     "NewObjectBlackList": [
       "UScene",
@@ -219,6 +224,10 @@
       "FURL": [
         "ToString" // TODO: конвертировать 0 в false
       ],
+      "FDisplayDebugManager": [
+        "AddColumnIfNeeded", // TODO: не линкует, не обрабатывать методы без апи или не имеющих реализации в заголовочном файле
+        "GetTextScale"
+      ],
       "FPoly": [
         "CalcNormal"
       ],
@@ -236,6 +245,9 @@
     "PropertyInClassBlackList": {
       "FWorldContext": [
         "ExternalReferences"
+      ],
+      "ULocalLightComponent": [
+        "CosHalfConeAngle" //todo:: понять откуда парсер его взял
       ]
     }
   }

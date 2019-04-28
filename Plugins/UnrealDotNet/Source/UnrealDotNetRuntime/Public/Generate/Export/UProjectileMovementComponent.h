@@ -62,6 +62,27 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_GET(UProjectileMovementComponent* Ptr) { return Ptr->bBounceAngleAffectsFriction; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bBounceAngleAffectsFriction = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bForceSubStepping_GET(UProjectileMovementComponent* Ptr) { return Ptr->bForceSubStepping; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bForceSubStepping_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bForceSubStepping = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_GET(UProjectileMovementComponent* Ptr) { return Ptr->bInitialVelocityInLocalSpace; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bInitialVelocityInLocalSpace = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bInterpMovement_GET(UProjectileMovementComponent* Ptr) { return Ptr->bInterpMovement; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bInterpMovement_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bInterpMovement = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bInterpRotation_GET(UProjectileMovementComponent* Ptr) { return Ptr->bInterpRotation; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bInterpRotation_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bInterpRotation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bIsHomingProjectile_GET(UProjectileMovementComponent* Ptr) { return Ptr->bIsHomingProjectile; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bIsHomingProjectile_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bIsHomingProjectile = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bIsSliding_GET(UProjectileMovementComponent* Ptr) { return Ptr->bIsSliding; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bIsSliding_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bIsSliding = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_BounceAdditionalIterations_GET(UProjectileMovementComponent* Ptr) { return Ptr->BounceAdditionalIterations; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_BounceAdditionalIterations_SET(UProjectileMovementComponent* Ptr, int32 Value) { Ptr->BounceAdditionalIterations = Value; }
 	
@@ -71,6 +92,18 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_Bounciness_GET(UProjectileMovementComponent* Ptr) { return Ptr->Bounciness; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_Bounciness_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->Bounciness = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_GET(UProjectileMovementComponent* Ptr) { return Ptr->bRotationFollowsVelocity; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bRotationFollowsVelocity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bShouldBounce_GET(UProjectileMovementComponent* Ptr) { return Ptr->bShouldBounce; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bShouldBounce_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bShouldBounce = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bSimulationEnabled_GET(UProjectileMovementComponent* Ptr) { return Ptr->bSimulationEnabled; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bSimulationEnabled_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bSimulationEnabled = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_bSweepCollision_GET(UProjectileMovementComponent* Ptr) { return Ptr->bSweepCollision; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_bSweepCollision_SET(UProjectileMovementComponent* Ptr, uint8 Value) { Ptr->bSweepCollision = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_Buoyancy_GET(UProjectileMovementComponent* Ptr) { return Ptr->Buoyancy; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_Buoyancy_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->Buoyancy = Value; }
 	
@@ -79,6 +112,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_GET(UProjectileMovementComponent* Ptr) { return Ptr->HomingAccelerationMagnitude; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->HomingAccelerationMagnitude = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_InitialSpeed_GET(UProjectileMovementComponent* Ptr) { return Ptr->InitialSpeed; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_InitialSpeed_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->InitialSpeed = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_InterpLocationMaxLagDistance_GET(UProjectileMovementComponent* Ptr) { return Ptr->InterpLocationMaxLagDistance; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_InterpLocationMaxLagDistance_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->InterpLocationMaxLagDistance = Value; }
@@ -97,6 +133,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_GET(UProjectileMovementComponent* Ptr) { return Ptr->MaxSimulationTimeStep; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->MaxSimulationTimeStep = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_MaxSpeed_GET(UProjectileMovementComponent* Ptr) { return Ptr->MaxSpeed; }
+	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_MaxSpeed_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->MaxSpeed = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UProjectileMovementComponent_MinFrictionFraction_GET(UProjectileMovementComponent* Ptr) { return Ptr->MinFrictionFraction; }
 	DOTNET_EXPORT void E_PROP_UProjectileMovementComponent_MinFrictionFraction_SET(UProjectileMovementComponent* Ptr, float Value) { Ptr->MinFrictionFraction = Value; }

@@ -40,5 +40,10 @@ extern "C"
 		return (INT_PTR)NewObject<USkinnedMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_USkinnedMeshComponent_ClearMotionVector(USkinnedMeshComponent* Self)
+	{
+		Self->ClearMotionVector();
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

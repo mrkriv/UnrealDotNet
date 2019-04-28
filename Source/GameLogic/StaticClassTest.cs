@@ -3,7 +3,7 @@ using UnrealEngine;
 
 namespace GameLogic
 {
-    public class MyClass2
+    public class StaticClassTest
     {
         public static string MyTestMethod(string arguments)
         {

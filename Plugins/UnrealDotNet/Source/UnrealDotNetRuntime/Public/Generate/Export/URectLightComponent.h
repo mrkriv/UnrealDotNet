@@ -16,10 +16,46 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_URectLightComponent_BarnDoorAngle_GET(URectLightComponent* Ptr) { return Ptr->BarnDoorAngle; }
+	DOTNET_EXPORT void E_PROP_URectLightComponent_BarnDoorAngle_SET(URectLightComponent* Ptr, float Value) { Ptr->BarnDoorAngle = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_URectLightComponent_BarnDoorLength_GET(URectLightComponent* Ptr) { return Ptr->BarnDoorLength; }
+	DOTNET_EXPORT void E_PROP_URectLightComponent_BarnDoorLength_SET(URectLightComponent* Ptr, float Value) { Ptr->BarnDoorLength = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_URectLightComponent_SourceHeight_GET(URectLightComponent* Ptr) { return Ptr->SourceHeight; }
+	DOTNET_EXPORT void E_PROP_URectLightComponent_SourceHeight_SET(URectLightComponent* Ptr, float Value) { Ptr->SourceHeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_URectLightComponent_SourceWidth_GET(URectLightComponent* Ptr) { return Ptr->SourceWidth; }
+	DOTNET_EXPORT void E_PROP_URectLightComponent_SourceWidth_SET(URectLightComponent* Ptr, float Value) { Ptr->SourceWidth = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_URectLightComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<URectLightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_URectLightComponent_SetBarnDoorAngle(URectLightComponent* Self, float NewValue)
+	{
+		auto _p0 = NewValue;
+		Self->SetBarnDoorAngle(_p0);
+	}
+
+	DOTNET_EXPORT auto E_URectLightComponent_SetBarnDoorLength(URectLightComponent* Self, float NewValue)
+	{
+		auto _p0 = NewValue;
+		Self->SetBarnDoorLength(_p0);
+	}
+
+	DOTNET_EXPORT auto E_URectLightComponent_SetSourceHeight(URectLightComponent* Self, float NewValue)
+	{
+		auto _p0 = NewValue;
+		Self->SetSourceHeight(_p0);
+	}
+
+	DOTNET_EXPORT auto E_URectLightComponent_SetSourceWidth(URectLightComponent* Self, float bNewValue)
+	{
+		auto _p0 = bNewValue;
+		Self->SetSourceWidth(_p0);
 	}
 
 }

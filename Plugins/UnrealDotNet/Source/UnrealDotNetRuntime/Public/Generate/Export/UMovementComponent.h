@@ -61,6 +61,18 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UMovementComponent_bUpdateOnlyIfRendered_GET(UMovementComponent* Ptr) { return Ptr->bUpdateOnlyIfRendered; }
 	DOTNET_EXPORT void E_PROP_UMovementComponent_bUpdateOnlyIfRendered_SET(UMovementComponent* Ptr, uint8 Value) { Ptr->bUpdateOnlyIfRendered = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UMovementComponent_MoveComponentFlags_GET(UMovementComponent* Ptr) { return Ptr->MoveComponentFlags; }
+	DOTNET_EXPORT void E_PROP_UMovementComponent_MoveComponentFlags_SET(UMovementComponent* Ptr, EMoveComponentFlags Value) { Ptr->MoveComponentFlags = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UMovementComponent_UpdatedComponent_GET(UMovementComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->UpdatedComponent); }
+	DOTNET_EXPORT void E_PROP_UMovementComponent_UpdatedComponent_SET(UMovementComponent* Ptr, USceneComponent* Value) { Ptr->UpdatedComponent = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UMovementComponent_UpdatedPrimitive_GET(UMovementComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->UpdatedPrimitive); }
+	DOTNET_EXPORT void E_PROP_UMovementComponent_UpdatedPrimitive_SET(UMovementComponent* Ptr, UPrimitiveComponent* Value) { Ptr->UpdatedPrimitive = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UMovementComponent_Velocity_GET(UMovementComponent* Ptr) { return (INT_PTR)&(Ptr->Velocity); }
+	DOTNET_EXPORT void E_PROP_UMovementComponent_Velocity_SET(UMovementComponent* Ptr, INT_PTR Value) { Ptr->Velocity = *(FVector*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UMovementComponent(UObject* Parent, char* Name)
 	{

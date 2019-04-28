@@ -79,8 +79,23 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_APlayerState_ExactPingV2_GET(APlayerState* Ptr) { return Ptr->ExactPingV2; }
 	DOTNET_EXPORT void E_PROP_APlayerState_ExactPingV2_SET(APlayerState* Ptr, float Value) { Ptr->ExactPingV2 = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_APlayerState_OldName_GET(APlayerState* Ptr) { return ConvertToManage_StringWrapper(Ptr->OldName); }
+	DOTNET_EXPORT void E_PROP_APlayerState_OldName_SET(APlayerState* Ptr, char* Value) { Ptr->OldName = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_APlayerState_Ping_GET(APlayerState* Ptr) { return Ptr->Ping; }
+	DOTNET_EXPORT void E_PROP_APlayerState_Ping_SET(APlayerState* Ptr, uint8 Value) { Ptr->Ping = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_APlayerState_PlayerId_GET(APlayerState* Ptr) { return Ptr->PlayerId; }
+	DOTNET_EXPORT void E_PROP_APlayerState_PlayerId_SET(APlayerState* Ptr, int32 Value) { Ptr->PlayerId = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_APlayerState_PlayerName_GET(APlayerState* Ptr) { return ConvertToManage_StringWrapper(Ptr->PlayerName); }
+	DOTNET_EXPORT void E_PROP_APlayerState_PlayerName_SET(APlayerState* Ptr, char* Value) { Ptr->PlayerName = ConvertFromManage_FString(Value); }
+	
 	DOTNET_EXPORT auto E_PROP_APlayerState_SavedNetworkAddress_GET(APlayerState* Ptr) { return ConvertToManage_StringWrapper(Ptr->SavedNetworkAddress); }
 	DOTNET_EXPORT void E_PROP_APlayerState_SavedNetworkAddress_SET(APlayerState* Ptr, char* Value) { Ptr->SavedNetworkAddress = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_APlayerState_Score_GET(APlayerState* Ptr) { return Ptr->Score; }
+	DOTNET_EXPORT void E_PROP_APlayerState_Score_SET(APlayerState* Ptr, float Value) { Ptr->Score = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_APlayerState_SessionName_GET(APlayerState* Ptr) { return ConvertToManage_StringWrapper(Ptr->SessionName); }
 	DOTNET_EXPORT void E_PROP_APlayerState_SessionName_SET(APlayerState* Ptr, char* Value) { Ptr->SessionName = ConvertFromManage_FName(Value); }

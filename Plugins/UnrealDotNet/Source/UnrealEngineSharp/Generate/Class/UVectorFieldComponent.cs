@@ -26,9 +26,56 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UVectorFieldComponent_Intensity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UVectorFieldComponent_Intensity_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UVectorFieldComponent_Tightness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UVectorFieldComponent_Tightness_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UVectorFieldComponent(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UVectorFieldComponent_SetIntensity(IntPtr self, float newIntensity);
+		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>The intensity at which the vector field is applied. </para>
+		/// </summary>
+		public float Intensity
+		{
+			get => E_PROP_UVectorFieldComponent_Intensity_GET(NativePointer);
+			set => E_PROP_UVectorFieldComponent_Intensity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>How tightly particles follow the vector field. </para>
+		/// </summary>
+		public float Tightness
+		{
+			get => E_PROP_UVectorFieldComponent_Tightness_GET(NativePointer);
+			set => E_PROP_UVectorFieldComponent_Tightness_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Set the intensity of the vector field. </para>
+		/// <param name="NewIntensity">The new intensity of the vector field. </param>
+		/// </summary>
+		public virtual void SetIntensity(float newIntensity)
+			=> E_UVectorFieldComponent_SetIntensity(this, newIntensity);
 		
 		#endregion
 		

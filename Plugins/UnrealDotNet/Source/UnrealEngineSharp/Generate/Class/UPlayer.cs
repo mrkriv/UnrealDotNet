@@ -26,6 +26,26 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UPlayer_ConfiguredInternetSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlayer_ConfiguredInternetSpeed_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UPlayer_ConfiguredLanSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlayer_ConfiguredLanSpeed_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UPlayer_CurrentNetSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlayer_CurrentNetSpeed_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UPlayer_PlayerController_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlayer_PlayerController_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UPlayer(IntPtr Parent, string Name);
@@ -34,8 +54,38 @@ namespace UnrealEngine
 		private static extern StringWrapper E_UPlayer_ConsoleCommand(IntPtr self, string cmd, bool bWriteToLog);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UPlayer_GetPlayerController(IntPtr self, IntPtr inWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPlayer_SwitchController(IntPtr self, IntPtr pC);
 		
+		#endregion
+		
+		#region Property
+		public int ConfiguredInternetSpeed
+		{
+			get => E_PROP_UPlayer_ConfiguredInternetSpeed_GET(NativePointer);
+			set => E_PROP_UPlayer_ConfiguredInternetSpeed_SET(NativePointer, value);
+		}
+
+		public int ConfiguredLanSpeed
+		{
+			get => E_PROP_UPlayer_ConfiguredLanSpeed_GET(NativePointer);
+			set => E_PROP_UPlayer_ConfiguredLanSpeed_SET(NativePointer, value);
+		}
+
+		public int CurrentNetSpeed
+		{
+			get => E_PROP_UPlayer_CurrentNetSpeed_GET(NativePointer);
+			set => E_PROP_UPlayer_CurrentNetSpeed_SET(NativePointer, value);
+		}
+
+		public APlayerController PlayerController
+		{
+			get => E_PROP_UPlayer_PlayerController_GET(NativePointer);
+			set => E_PROP_UPlayer_PlayerController_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods
@@ -47,6 +97,15 @@ namespace UnrealEngine
 		/// </summary>
 		public string ConsoleCommand(string cmd, bool bWriteToLog = true)
 			=> E_UPlayer_ConsoleCommand(this, cmd, bWriteToLog);
+		
+		
+		/// <summary>
+		/// <para>Gets the player controller in the given world for this player. </para>
+		/// <param name="InWorld">The world in which to search for player controllers. </param>
+		/// <return>The controller associated with this player in InWorld, if one exists. </return>
+		/// </summary>
+		public APlayerController GetPlayerController(UWorld inWorld)
+			=> E_UPlayer_GetPlayerController(this, inWorld);
 		
 		
 		/// <summary>

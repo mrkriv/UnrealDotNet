@@ -26,10 +26,50 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UBoxReflectionCaptureComponent(IntPtr Parent, string Name);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Adjust capture transition distance </para>
+		/// </summary>
+		public float BoxTransitionDistance
+		{
+			get => E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_GET(NativePointer);
+			set => E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_SET(NativePointer, value);
+		}
+
+		public UBoxComponent PreviewCaptureBox
+		{
+			get => E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_GET(NativePointer);
+			set => E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_SET(NativePointer, value);
+		}
+
+		public UBoxComponent PreviewInfluenceBox
+		{
+			get => E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_GET(NativePointer);
+			set => E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(UBoxReflectionCaptureComponent self)

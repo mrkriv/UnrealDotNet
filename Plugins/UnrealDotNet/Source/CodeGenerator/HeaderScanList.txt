@@ -5,6 +5,7 @@
 +Engine\Source\Runtime\Engine\Classes\Engine\Player.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Scene.h
 +Engine\Source\Runtime\Engine\Classes\Engine\World.h
++Engine\Source\Runtime\Engine\Classes\Engine\Canvas.h
 
 +Engine\Source\Runtime\Engine\Classes\GameFramework\*.h
 

@@ -36,4 +36,44 @@ bool AManageDefaultPawn::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void AManageDefaultPawn::LookUpAtRate(float Rate)
+{
+	Super::LookUpAtRate(Rate);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "LookUpAtRate", Rate);
+}
+
+void AManageDefaultPawn::MoveForward(float Val)
+{
+	Super::MoveForward(Val);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MoveForward", Val);
+}
+
+void AManageDefaultPawn::MoveRight(float Val)
+{
+	Super::MoveRight(Val);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MoveRight", Val);
+}
+
+void AManageDefaultPawn::MoveUp_World(float Val)
+{
+	Super::MoveUp_World(Val);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MoveUp_World", Val);
+}
+
+void AManageDefaultPawn::TurnAtRate(float Rate)
+{
+	Super::TurnAtRate(Rate);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "TurnAtRate", Rate);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

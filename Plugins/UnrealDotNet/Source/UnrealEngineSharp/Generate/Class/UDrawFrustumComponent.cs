@@ -26,10 +26,74 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDrawFrustumComponent_FrustumAngle_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDrawFrustumComponent_FrustumAngle_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDrawFrustumComponent_FrustumAspectRatio_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDrawFrustumComponent_FrustumAspectRatio_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDrawFrustumComponent_FrustumEndDist_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDrawFrustumComponent_FrustumEndDist_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UDrawFrustumComponent_FrustumStartDist_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UDrawFrustumComponent_FrustumStartDist_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UDrawFrustumComponent(IntPtr Parent, string Name);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Angle of longest dimension of view shape. </para>
+		/// <para>If the angle is 0 then an orthographic projection is used </para>
+		/// </summary>
+		public float FrustumAngle
+		{
+			get => E_PROP_UDrawFrustumComponent_FrustumAngle_GET(NativePointer);
+			set => E_PROP_UDrawFrustumComponent_FrustumAngle_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Ratio of horizontal size over vertical size. </para>
+		/// </summary>
+		public float FrustumAspectRatio
+		{
+			get => E_PROP_UDrawFrustumComponent_FrustumAspectRatio_GET(NativePointer);
+			set => E_PROP_UDrawFrustumComponent_FrustumAspectRatio_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Distance from origin to stop drawing the frustum. </para>
+		/// </summary>
+		public float FrustumEndDist
+		{
+			get => E_PROP_UDrawFrustumComponent_FrustumEndDist_GET(NativePointer);
+			set => E_PROP_UDrawFrustumComponent_FrustumEndDist_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Distance from origin to start drawing the frustum. </para>
+		/// </summary>
+		public float FrustumStartDist
+		{
+			get => E_PROP_UDrawFrustumComponent_FrustumStartDist_GET(NativePointer);
+			set => E_PROP_UDrawFrustumComponent_FrustumStartDist_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(UDrawFrustumComponent self)

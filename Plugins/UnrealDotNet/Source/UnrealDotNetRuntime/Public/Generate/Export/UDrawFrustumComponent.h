@@ -16,6 +16,18 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UDrawFrustumComponent_FrustumAngle_GET(UDrawFrustumComponent* Ptr) { return Ptr->FrustumAngle; }
+	DOTNET_EXPORT void E_PROP_UDrawFrustumComponent_FrustumAngle_SET(UDrawFrustumComponent* Ptr, float Value) { Ptr->FrustumAngle = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDrawFrustumComponent_FrustumAspectRatio_GET(UDrawFrustumComponent* Ptr) { return Ptr->FrustumAspectRatio; }
+	DOTNET_EXPORT void E_PROP_UDrawFrustumComponent_FrustumAspectRatio_SET(UDrawFrustumComponent* Ptr, float Value) { Ptr->FrustumAspectRatio = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDrawFrustumComponent_FrustumEndDist_GET(UDrawFrustumComponent* Ptr) { return Ptr->FrustumEndDist; }
+	DOTNET_EXPORT void E_PROP_UDrawFrustumComponent_FrustumEndDist_SET(UDrawFrustumComponent* Ptr, float Value) { Ptr->FrustumEndDist = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UDrawFrustumComponent_FrustumStartDist_GET(UDrawFrustumComponent* Ptr) { return Ptr->FrustumStartDist; }
+	DOTNET_EXPORT void E_PROP_UDrawFrustumComponent_FrustumStartDist_SET(UDrawFrustumComponent* Ptr, float Value) { Ptr->FrustumStartDist = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UDrawFrustumComponent(UObject* Parent, char* Name)
 	{

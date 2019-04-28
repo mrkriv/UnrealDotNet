@@ -443,6 +443,9 @@ namespace UnrealEngine
 		private static extern float E_AActor_GetActorTimeDilation(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_AActor_GetActorTimeDilation_o1(IntPtr self, IntPtr actorWorld);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_GetActorTransform(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -858,6 +861,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostRegisterAllComponents(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_PostRenderFor(IntPtr self, IntPtr pC, IntPtr canvas, IntPtr cameraPosition, IntPtr cameraDir);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_PostSpawnInitialize(IntPtr self, IntPtr spawnTransform, IntPtr inOwner, IntPtr inInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction);
@@ -2082,6 +2088,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>More efficient version that takes the Actor's current world. </para>
+		/// </summary>
+		public float GetActorTimeDilation(UWorld actorWorld)
+			=> E_AActor_GetActorTimeDilation_o1(this, actorWorld);
+		
+		
+		/// <summary>
 		/// <para>Returns the transform of the RootComponent of this Actor </para>
 		/// </summary>
 		public FTransform GetActorTransform()
@@ -3179,6 +3192,17 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PostRegisterAllComponents()
 			=> E_AActor_PostRegisterAllComponents(this);
+		
+		
+		/// <summary>
+		/// <para>Hook to allow actors to render HUD overlays for themselves.  Called from AHUD::DrawActorOverlays(). </para>
+		/// <param name="PC">is the PlayerController on whose view this overlay is rendered </param>
+		/// <param name="Canvas">is the Canvas on which to draw the overlay </param>
+		/// <param name="CameraPosition">Position of Camera </param>
+		/// <param name="CameraDir">direction camera is pointing in. </param>
+		/// </summary>
+		public virtual void PostRenderFor(APlayerController pC, UCanvas canvas, FVector cameraPosition, FVector cameraDir)
+			=> E_AActor_PostRenderFor(this, pC, canvas, cameraPosition, cameraDir);
 		
 		
 		/// <summary>

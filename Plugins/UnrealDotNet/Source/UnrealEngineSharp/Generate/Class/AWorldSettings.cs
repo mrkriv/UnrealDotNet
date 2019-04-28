@@ -32,6 +32,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_AWorldSettings_bEnableAISystem_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AWorldSettings_bEnableWorldBoundsChecks_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AWorldSettings_bEnableWorldBoundsChecks_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_AWorldSettings_bEnableWorldComposition_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AWorldSettings_bEnableWorldComposition_SET(IntPtr Ptr, byte Value);
@@ -70,6 +75,16 @@ namespace UnrealEngine
 		private static extern byte E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AWorldSettings_bPrecomputeVisibility_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AWorldSettings_bPrecomputeVisibility_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_AWorldSettings_BroadphaseSettings_GET(IntPtr Ptr);
@@ -167,6 +182,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_AWorldSettings_TimeDilation_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_AWorldSettings_VisibilityCellSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AWorldSettings_VisibilityCellSize_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AWorldSettings_WorldGravityZ_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AWorldSettings_WorldGravityZ_SET(IntPtr Ptr, float Value);
@@ -224,6 +244,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AWorldSettings_bEnableAISystem_GET(NativePointer);
 			set => E_PROP_AWorldSettings_bEnableAISystem_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, enables CheckStillInWorld checks </para>
+		/// </summary>
+		public byte bEnableWorldBoundsChecks
+		{
+			get => E_PROP_AWorldSettings_bEnableWorldBoundsChecks_GET(NativePointer);
+			set => E_PROP_AWorldSettings_bEnableWorldBoundsChecks_SET(NativePointer, value);
 		}
 
 		
@@ -297,6 +327,27 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_GET(NativePointer);
 			set => E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to place visibility cells only along camera tracks or only above shadow casting surfaces. </para>
+		/// </summary>
+		public byte bPlaceCellsOnlyAlongCameraTracks
+		{
+			get => E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_GET(NativePointer);
+			set => E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to place visibility cells inside Precomputed Visibility Volumes and along camera tracks in this level. </para>
+		/// <para>Precomputing visibility reduces rendering thread time at the cost of some runtime memory and somewhat increased lighting build times. </para>
+		/// </summary>
+		public byte bPrecomputeVisibility
+		{
+			get => E_PROP_AWorldSettings_bPrecomputeVisibility_GET(NativePointer);
+			set => E_PROP_AWorldSettings_bPrecomputeVisibility_SET(NativePointer, value);
 		}
 
 		public FBroadphaseSettings BroadphaseSettings
@@ -457,6 +508,17 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AWorldSettings_TimeDilation_GET(NativePointer);
 			set => E_PROP_AWorldSettings_TimeDilation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>World space size of precomputed visibility cells in x and y. </para>
+		/// <para>Smaller sizes produce more effective occlusion culling at the cost of increased runtime memory usage and lighting build times. </para>
+		/// </summary>
+		public int VisibilityCellSize
+		{
+			get => E_PROP_AWorldSettings_VisibilityCellSize_GET(NativePointer);
+			set => E_PROP_AWorldSettings_VisibilityCellSize_SET(NativePointer, value);
 		}
 
 		public float WorldGravityZ

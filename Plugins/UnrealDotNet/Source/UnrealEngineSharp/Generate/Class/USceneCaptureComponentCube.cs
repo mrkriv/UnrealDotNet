@@ -26,6 +26,11 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponentCube_IPD_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponentCube_IPD_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USceneCaptureComponentCube(IntPtr Parent, string Name);
@@ -39,6 +44,15 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneCaptureComponentCube_UpdateContent(IntPtr self);
 		
+		#endregion
+		
+		#region Property
+		public float InterpupillaryDistancecm
+		{
+			get => E_PROP_USceneCaptureComponentCube_IPD_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponentCube_IPD_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods

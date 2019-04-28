@@ -43,7 +43,7 @@ namespace CodeGenerator
             _currentDelegate = null;
             _currentClass = null;
             _currentEnum = null;
-            
+
             Visit(translationunit);
         }
 
@@ -110,7 +110,9 @@ namespace CodeGenerator
             _currentClass.IsFinal = context.FoundChild<UHeaderParser.IsFinalContext>();
             _currentClass.UMeta = _currentUMeta ?? _currentClass.UMeta;
             _currentClass.Description = _currentComment;
-
+            
+            var firstConstructor = context.FindFirst<UHeaderParser.ConstructorContext>()?.methodName().GetText() ?? "";
+            
             switch (_currentClass.Name.First())
             {
                 case 'U':
@@ -127,10 +129,16 @@ namespace CodeGenerator
             }
 
             var storeAccessModifier = _accessModifier;
-            _accessModifier = isStructReal
-                ? AccessModifier.Public
-                : AccessModifier.Private;
 
+            if (isStructReal || firstConstructor == "GENERATED_UCLASS_BODY")
+            {
+                _accessModifier = AccessModifier.Public;
+            }
+            else
+            {
+                _accessModifier = AccessModifier.Private;
+            }
+                
             _ignoreOfAccessModifier = _accessModifier == AccessModifier.Private;
 
             var parentClassName = context.Child<UHeaderParser.ClassParentListContext>()?.type();
@@ -155,7 +163,7 @@ namespace CodeGenerator
                 return null;
 
             var name = context.type()?.GetText();
-            
+
             if (string.IsNullOrEmpty(name))
                 return null;
 

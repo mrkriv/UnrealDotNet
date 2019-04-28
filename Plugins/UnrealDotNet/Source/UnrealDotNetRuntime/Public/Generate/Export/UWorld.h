@@ -118,8 +118,17 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_FlushLevelStreamingType_GET(UWorld* Ptr) { return Ptr->FlushLevelStreamingType; }
 	DOTNET_EXPORT void E_PROP_UWorld_FlushLevelStreamingType_SET(UWorld* Ptr, EFlushLevelStreamingType Value) { Ptr->FlushLevelStreamingType = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UWorld_ForegroundLineBatcher_GET(UWorld* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->ForegroundLineBatcher); }
+	DOTNET_EXPORT void E_PROP_UWorld_ForegroundLineBatcher_SET(UWorld* Ptr, ULineBatchComponent* Value) { Ptr->ForegroundLineBatcher = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_GET(UWorld* Ptr) { return Ptr->LastTimeUnbuiltLightingWasEncountered; }
 	DOTNET_EXPORT void E_PROP_UWorld_LastTimeUnbuiltLightingWasEncountered_SET(UWorld* Ptr, double Value) { Ptr->LastTimeUnbuiltLightingWasEncountered = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UWorld_LineBatcher_GET(UWorld* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->LineBatcher); }
+	DOTNET_EXPORT void E_PROP_UWorld_LineBatcher_SET(UWorld* Ptr, ULineBatchComponent* Value) { Ptr->LineBatcher = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UWorld_NetworkManager_GET(UWorld* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->NetworkManager); }
+	DOTNET_EXPORT void E_PROP_UWorld_NetworkManager_SET(UWorld* Ptr, AGameNetworkManager* Value) { Ptr->NetworkManager = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_NextSwitchCountdown_GET(UWorld* Ptr) { return Ptr->NextSwitchCountdown; }
 	DOTNET_EXPORT void E_PROP_UWorld_NextSwitchCountdown_SET(UWorld* Ptr, float Value) { Ptr->NextSwitchCountdown = Value; }
@@ -142,11 +151,11 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UWorld_PauseDelay_GET(UWorld* Ptr) { return Ptr->PauseDelay; }
 	DOTNET_EXPORT void E_PROP_UWorld_PauseDelay_SET(UWorld* Ptr, float Value) { Ptr->PauseDelay = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UWorld_PersistentLineBatcher_GET(UWorld* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PersistentLineBatcher); }
+	DOTNET_EXPORT void E_PROP_UWorld_PersistentLineBatcher_SET(UWorld* Ptr, ULineBatchComponent* Value) { Ptr->PersistentLineBatcher = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UWorld_PlayerNum_GET(UWorld* Ptr) { return Ptr->PlayerNum; }
 	DOTNET_EXPORT void E_PROP_UWorld_PlayerNum_SET(UWorld* Ptr, int32 Value) { Ptr->PlayerNum = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_PreparingLevelNames_GET(UWorld* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->PreparingLevelNames); }
-	DOTNET_EXPORT void E_PROP_UWorld_PreparingLevelNames_SET(UWorld* Ptr, INT_PTR Value) { Ptr->PreparingLevelNames = *(TArray<FName>*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_RealTimeSeconds_GET(UWorld* Ptr) { return Ptr->RealTimeSeconds; }
 	DOTNET_EXPORT void E_PROP_UWorld_RealTimeSeconds_SET(UWorld* Ptr, float Value) { Ptr->RealTimeSeconds = Value; }
@@ -168,9 +177,6 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_UWorld_URL_GET(UWorld* Ptr) { return (INT_PTR)&(Ptr->URL); }
 	DOTNET_EXPORT void E_PROP_UWorld_URL_SET(UWorld* Ptr, INT_PTR Value) { Ptr->URL = *(FURL*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_UWorld_ViewLocationsRenderedLastFrame_GET(UWorld* Ptr) { return ConvertToManage_TemplatePointerDescription(Ptr->ViewLocationsRenderedLastFrame); }
-	DOTNET_EXPORT void E_PROP_UWorld_ViewLocationsRenderedLastFrame_SET(UWorld* Ptr, INT_PTR Value) { Ptr->ViewLocationsRenderedLastFrame = *(TArray<FVector>*)Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UWorld(UObject* Parent, char* Name)
@@ -426,6 +432,16 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_GetAuthGameMode(UWorld* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetAuthGameMode());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetCanvasForDrawMaterialToRenderTarget(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCanvasForDrawMaterialToRenderTarget());
+	}
+
+	DOTNET_EXPORT auto E_UWorld_GetCanvasForRenderingToTarget(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCanvasForRenderingToTarget());
 	}
 
 	DOTNET_EXPORT auto E_UWorld_GetDefaultGravityZ(UWorld* Self)
@@ -706,12 +722,6 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_PopulateStreamingLevelsToConsider(UWorld* Self)
 	{
 		Self->PopulateStreamingLevelsToConsider();
-	}
-
-	DOTNET_EXPORT auto E_UWorld_PrepareMapChange(UWorld* Self, INT_PTR LevelNames)
-	{
-		auto& _p0 = *(const TArray<FName>*)LevelNames;
-		Self->PrepareMapChange(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_ProcessLevelStreamingVolumes(UWorld* Self, INT_PTR OverrideViewLocation)

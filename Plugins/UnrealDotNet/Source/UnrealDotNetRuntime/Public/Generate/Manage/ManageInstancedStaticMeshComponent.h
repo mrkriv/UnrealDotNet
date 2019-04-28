@@ -30,6 +30,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void ClearInstances() override;
+	virtual void PreAllocateInstancesMemory(int32 AddedInstanceCount) override;
 	
 protected:
 };

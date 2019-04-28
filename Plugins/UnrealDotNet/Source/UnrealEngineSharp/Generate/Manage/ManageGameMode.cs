@@ -22,6 +22,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
+		/// <para>Report that a match has failed due to unrecoverable error </para>
+		/// </summary>
+		public override void AbortMatch() { }
+		
+		
+		/// <summary>
 		/// <para>Add PlayerState to the inactive list, remove from the active list </para>
 		/// </summary>
 		public override void AddInactivePlayer(APlayerState playerState, APlayerController pC) { }
@@ -31,6 +37,12 @@ namespace UnrealEngine
 		/// <para>Broadcast a string to all players. </para>
 		/// </summary>
 		public override void Broadcast(AActor sender, string msg, string type) { }
+		
+		
+		/// <summary>
+		/// <para>Transition from InProgress to WaitingPostMatch. You can call this manually, will also get called if ReadyToEndMatch returns true </para>
+		/// </summary>
+		public override void EndMatch() { }
 		
 		
 		/// <summary>
@@ -96,6 +108,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Restart the game, by default travel to the current map </para>
+		/// </summary>
+		public override void RestartGame() { }
+		
+		
+		/// <summary>
 		/// <para>Exec command to broadcast a string to all players </para>
 		/// </summary>
 		public override void Say(string msg) { }
@@ -115,6 +133,12 @@ namespace UnrealEngine
 		/// <para>SetViewTarget of player control on server change </para>
 		/// </summary>
 		public override void SetSeamlessTravelViewTarget(APlayerController pC) { }
+		
+		
+		/// <summary>
+		/// <para>Transition from WaitingToStart to InProgress. You can call this manually, will also get called if ReadyToStartMatch returns true </para>
+		/// </summary>
+		public override void StartMatch() { }
 		
 		public override void StartNewPlayer(APlayerController newPlayer) { }
 		

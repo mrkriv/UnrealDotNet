@@ -93,6 +93,11 @@ extern "C"
 		return (INT_PTR)NewObject<AGameMode>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_AGameMode_AbortMatch(AGameMode* Self)
+	{
+		Self->AbortMatch();
+	}
+
 	DOTNET_EXPORT auto E_AGameMode_AddInactivePlayer(AGameMode* Self, APlayerState* PlayerState, APlayerController* PC)
 	{
 		auto _p0 = PlayerState;
@@ -108,6 +113,11 @@ extern "C"
 		Self->Broadcast(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_AGameMode_EndMatch(AGameMode* Self)
+	{
+		Self->EndMatch();
+	}
+
 	DOTNET_EXPORT auto E_AGameMode_FindInactivePlayer(AGameMode* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
@@ -120,6 +130,11 @@ extern "C"
 		auto _p1 = ConvertFromManage_FString(Options);
 		auto _p2 = ConvertFromManage_FString(Portal);
 		return ConvertToManage_StringWrapper(Self->GetDefaultGameClassPath(_p0, _p1, _p2));
+	}
+
+	DOTNET_EXPORT auto E_AGameMode_GetMatchState(AGameMode* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetMatchState());
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_GetNetworkNumber(AGameMode* Self)
@@ -155,6 +170,16 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameMode_HandleMatchIsWaitingToStart(AGameMode* Self)
 	{
 		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleMatchIsWaitingToStart_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_AGameMode_HasMatchEnded(AGameMode* Self)
+	{
+		return Self->HasMatchEnded();
+	}
+
+	DOTNET_EXPORT auto E_AGameMode_IsMatchInProgress(AGameMode* Self)
+	{
+		return Self->IsMatchInProgress();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_K2_OnSetMatchState(AGameMode* Self, char* NewState)
@@ -214,6 +239,11 @@ extern "C"
 		Self->RemovePlayerControllerFromPlayerCount(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AGameMode_RestartGame(AGameMode* Self)
+	{
+		Self->RestartGame();
+	}
+
 	DOTNET_EXPORT auto E_AGameMode_Say(AGameMode* Self, char* Msg)
 	{
 		auto _p0 = ConvertFromManage_FString(Msg);
@@ -243,6 +273,11 @@ extern "C"
 	{
 		auto _p0 = PC;
 		Self->SetSeamlessTravelViewTarget(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AGameMode_StartMatch(AGameMode* Self)
+	{
+		Self->StartMatch();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_StartNewPlayer(AGameMode* Self, APlayerController* NewPlayer)

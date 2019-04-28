@@ -87,6 +87,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UPlanarReflectionComponent_PrefilterRoughnessDistance_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UPlanarReflectionComponent_PreviewBox_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlanarReflectionComponent_PreviewBox_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UPlanarReflectionComponent_ScreenPercentage_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UPlanarReflectionComponent_ScreenPercentage_SET(IntPtr Ptr, int Value);
@@ -211,6 +216,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UPlanarReflectionComponent_PrefilterRoughnessDistance_GET(NativePointer);
 			set => E_PROP_UPlanarReflectionComponent_PrefilterRoughnessDistance_SET(NativePointer, value);
+		}
+
+		public UBoxComponent PreviewBox
+		{
+			get => E_PROP_UPlanarReflectionComponent_PreviewBox_GET(NativePointer);
+			set => E_PROP_UPlanarReflectionComponent_PreviewBox_SET(NativePointer, value);
 		}
 
 		

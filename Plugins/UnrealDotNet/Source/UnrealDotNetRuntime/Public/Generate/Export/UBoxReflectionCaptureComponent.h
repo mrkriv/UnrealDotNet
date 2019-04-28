@@ -16,6 +16,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_GET(UBoxReflectionCaptureComponent* Ptr) { return Ptr->BoxTransitionDistance; }
+	DOTNET_EXPORT void E_PROP_UBoxReflectionCaptureComponent_BoxTransitionDistance_SET(UBoxReflectionCaptureComponent* Ptr, float Value) { Ptr->BoxTransitionDistance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_GET(UBoxReflectionCaptureComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewCaptureBox); }
+	DOTNET_EXPORT void E_PROP_UBoxReflectionCaptureComponent_PreviewCaptureBox_SET(UBoxReflectionCaptureComponent* Ptr, UBoxComponent* Value) { Ptr->PreviewCaptureBox = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_GET(UBoxReflectionCaptureComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewInfluenceBox); }
+	DOTNET_EXPORT void E_PROP_UBoxReflectionCaptureComponent_PreviewInfluenceBox_SET(UBoxReflectionCaptureComponent* Ptr, UBoxComponent* Value) { Ptr->PreviewInfluenceBox = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UBoxReflectionCaptureComponent(UObject* Parent, char* Name)
 	{

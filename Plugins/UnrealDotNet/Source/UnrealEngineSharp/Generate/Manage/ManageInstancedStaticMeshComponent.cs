@@ -20,6 +20,18 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// <para>Clear all instances being rendered by this component. </para>
+		/// </summary>
+		public override void ClearInstances() { }
+		
+		
+		/// <summary>
+		/// <para>Preallocated memory to include the new added instances count, to prevent reallloc during the add operation. </para>
+		/// </summary>
+		public override void PreAllocateInstancesMemory(int addedInstanceCount) { }
+		
 		public static implicit operator IntPtr(ManageInstancedStaticMeshComponent self)
 		{
 			return self.NativePointer;

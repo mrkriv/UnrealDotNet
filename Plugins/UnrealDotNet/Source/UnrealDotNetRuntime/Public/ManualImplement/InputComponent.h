@@ -25,7 +25,7 @@ extern "C"
 		auto axisName = UTF8_TO_TCHAR(AxisName);
 
 		FInputAxisBinding binding(axisName);
-
+		
 		binding.AxisDelegate.GetDelegateForManualSet().BindLambda([EventId](float value) {
 			UCoreShell::GetInstance()->InvokeEventById(EventId, value);
 		});

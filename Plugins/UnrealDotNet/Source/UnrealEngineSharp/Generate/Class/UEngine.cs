@@ -343,6 +343,12 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UEngine_Tick(IntPtr self, float deltaSeconds, bool bIdleMode);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_WorldAdded(IntPtr self, IntPtr world);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UEngine_WorldDestroyed(IntPtr self, IntPtr inWorld);
+		
 		#endregion
 		
 		#region Property
@@ -787,6 +793,20 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void Tick(float deltaSeconds, bool bIdleMode)
 			=> E_UEngine_Tick(this, deltaSeconds, bIdleMode);
+		
+		
+		/// <summary>
+		/// <para>Needs to be called when a world is added to broadcast messages. </para>
+		/// </summary>
+		public virtual void WorldAdded(UWorld world)
+			=> E_UEngine_WorldAdded(this, world);
+		
+		
+		/// <summary>
+		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
+		/// </summary>
+		public virtual void WorldDestroyed(UWorld inWorld)
+			=> E_UEngine_WorldDestroyed(this, inWorld);
 		
 		#endregion
 		

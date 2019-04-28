@@ -36,6 +36,14 @@ bool AManageGameMode::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void AManageGameMode::AbortMatch()
+{
+	Super::AbortMatch();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AbortMatch");
+}
+
 void AManageGameMode::AddInactivePlayer(APlayerState* PlayerState, APlayerController* PC)
 {
 	Super::AddInactivePlayer(PlayerState, PC);
@@ -50,6 +58,14 @@ void AManageGameMode::Broadcast(AActor* Sender, const FString& Msg, FName Type)
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Broadcast", Sender, Msg, Type);
+}
+
+void AManageGameMode::EndMatch()
+{
+	Super::EndMatch();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EndMatch");
 }
 
 void AManageGameMode::HandleLeavingMap()
@@ -132,6 +148,14 @@ void AManageGameMode::PreCommitMapChange(const FString& PreviousMapName, const F
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreCommitMapChange", PreviousMapName, NextMapName);
 }
 
+void AManageGameMode::RestartGame()
+{
+	Super::RestartGame();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RestartGame");
+}
+
 void AManageGameMode::Say(const FString& Msg)
 {
 	Super::Say(Msg);
@@ -170,6 +194,14 @@ void AManageGameMode::SetSeamlessTravelViewTarget(APlayerController* PC)
 	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetSeamlessTravelViewTarget", PC);
+}
+
+void AManageGameMode::StartMatch()
+{
+	Super::StartMatch();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "StartMatch");
 }
 
 void AManageGameMode::StartNewPlayer(APlayerController* NewPlayer)

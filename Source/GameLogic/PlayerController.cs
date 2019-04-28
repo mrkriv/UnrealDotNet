@@ -14,7 +14,7 @@ namespace GameLogic
         protected override void BeginPlayingState()
         {
             base.BeginPlayingState();
-            InputComponent.BindAction("Fire", EInputEvent.IE_Pressed, () => Ue.ScreenDebugMessage("it work!"));
+            InputComponent.BindAction("Fire", EInputEvent.IE_Pressed, () => Ue.ScreenDebugMessage(GetWorld().GetMapName()));
 
             InputComponent.BindAction("Jump", EInputEvent.IE_Pressed, () => GetCharacter()?.Jump());
             InputComponent.BindAction("Jump", EInputEvent.IE_Released, () => GetCharacter()?.StopJumping());

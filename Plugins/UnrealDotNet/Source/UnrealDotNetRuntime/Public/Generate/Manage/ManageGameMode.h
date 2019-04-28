@@ -30,16 +30,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void AbortMatch() override;
 	virtual void AddInactivePlayer(APlayerState* PlayerState, APlayerController* PC) override;
 	virtual void Broadcast(AActor* Sender, const FString& Msg, FName Type) override;
+	virtual void EndMatch() override;
 	virtual void MatineeCancelled() override;
 	virtual void OverridePlayerState(APlayerController* PC, APlayerState* OldPlayerState) override;
 	virtual void PostCommitMapChange() override;
 	virtual void PreCommitMapChange(const FString& PreviousMapName, const FString& NextMapName) override;
+	virtual void RestartGame() override;
 	virtual void Say(const FString& Msg) override;
 	virtual void SendPlayer(APlayerController* aPlayer, const FString& URL) override;
 	virtual void SetBandwidthLimit(float AsyncIOBandwidthLimit) override;
 	virtual void SetSeamlessTravelViewTarget(APlayerController* PC) override;
+	virtual void StartMatch() override;
 	virtual void StartNewPlayer(APlayerController* NewPlayer) override;
 	
 protected:

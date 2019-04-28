@@ -30,6 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void SetUV(int32 NewU, int32 NewUL, int32 NewV, int32 NewVL) override;
 	
 protected:
 };

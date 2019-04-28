@@ -68,6 +68,7 @@ public:
 	virtual void PostNetReceiveRole() override;
 	virtual void PostNetReceiveVelocity(const FVector& NewVelocity) override;
 	virtual void PostRegisterAllComponents() override;
+	virtual void PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir) override;
 	virtual void PostUnregisterAllComponents() override;
 	virtual void PreInitializeComponents() override;
 	virtual void PreRegisterAllComponents() override;

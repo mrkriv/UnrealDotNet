@@ -16,6 +16,30 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_EnteredMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->EnteredMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_EnteredMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->EnteredMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_FailedPlaceMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->FailedPlaceMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_FailedPlaceMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->FailedPlaceMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_GlobalNameChange_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->GlobalNameChange); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_GlobalNameChange_SET(UEngineMessage* Ptr, char* Value) { Ptr->GlobalNameChange = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_LeftMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->LeftMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_LeftMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->LeftMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_MaxedOutMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->MaxedOutMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_MaxedOutMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->MaxedOutMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_NewPlayerMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->NewPlayerMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_NewPlayerMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->NewPlayerMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_NewSpecMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->NewSpecMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_NewSpecMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->NewSpecMessage = ConvertFromManage_FString(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_UEngineMessage_SpecEnteredMessage_GET(UEngineMessage* Ptr) { return ConvertToManage_StringWrapper(Ptr->SpecEnteredMessage); }
+	DOTNET_EXPORT void E_PROP_UEngineMessage_SpecEnteredMessage_SET(UEngineMessage* Ptr, char* Value) { Ptr->SpecEnteredMessage = ConvertFromManage_FString(Value); }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UEngineMessage(UObject* Parent, char* Name)
 	{

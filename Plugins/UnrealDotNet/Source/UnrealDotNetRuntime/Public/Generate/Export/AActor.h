@@ -677,6 +677,12 @@ extern "C"
 		return Self->GetActorTimeDilation();
 	}
 
+	DOTNET_EXPORT auto E_AActor_GetActorTimeDilation_o1(AActor* Self, UWorld& ActorWorld)
+	{
+		auto& _p0 = ActorWorld;
+		return Self->GetActorTimeDilation(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AActor_GetActorTransform(AActor* Self)
 	{
 		return (INT_PTR) new FTransform(Self->GetActorTransform());
@@ -1514,6 +1520,15 @@ extern "C"
 	DOTNET_EXPORT auto E_AActor_PostRegisterAllComponents(AActor* Self)
 	{
 		Self->PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E_AActor_PostRenderFor(AActor* Self, APlayerController* PC, UCanvas* Canvas, INT_PTR CameraPosition, INT_PTR CameraDir)
+	{
+		auto _p0 = PC;
+		auto _p1 = Canvas;
+		auto _p2 = *(FVector*)CameraPosition;
+		auto _p3 = *(FVector*)CameraDir;
+		Self->PostRenderFor(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_AActor_PostSpawnInitialize(AActor* Self, INT_PTR SpawnTransform, AActor* InOwner, APawn* InInstigator, bool bRemoteOwned, bool bNoFail, bool bDeferConstruction)

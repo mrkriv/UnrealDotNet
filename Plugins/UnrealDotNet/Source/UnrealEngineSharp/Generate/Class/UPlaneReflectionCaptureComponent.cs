@@ -26,10 +26,50 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UPlaneReflectionCaptureComponent(IntPtr Parent, string Name);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Radius of the area that can receive reflections from this capture. </para>
+		/// </summary>
+		public float InfluenceRadiusScale
+		{
+			get => E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_GET(NativePointer);
+			set => E_PROP_UPlaneReflectionCaptureComponent_InfluenceRadiusScale_SET(NativePointer, value);
+		}
+
+		public UBoxComponent PreviewCaptureBox
+		{
+			get => E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_GET(NativePointer);
+			set => E_PROP_UPlaneReflectionCaptureComponent_PreviewCaptureBox_SET(NativePointer, value);
+		}
+
+		public UDrawSphereComponent PreviewInfluenceRadius
+		{
+			get => E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_GET(NativePointer);
+			set => E_PROP_UPlaneReflectionCaptureComponent_PreviewInfluenceRadius_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(UPlaneReflectionCaptureComponent self)

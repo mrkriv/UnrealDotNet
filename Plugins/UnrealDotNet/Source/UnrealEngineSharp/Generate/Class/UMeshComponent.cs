@@ -34,13 +34,31 @@ namespace UnrealEngine
 		private static extern void E_UMeshComponent_CacheMaterialParameterNameIndices(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMeshComponent_EmptyOverrideMaterials(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UMeshComponent_GetMaterialIndex(IntPtr self, string materialSlotName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_UMeshComponent_GetNumOverrideMaterials(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UMeshComponent_GetScalarParameterDefaultValue(IntPtr self, string parameterName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UMeshComponent_IsMaterialSlotNameValid(IntPtr self, string materialSlotName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMeshComponent_PrestreamTextures(IntPtr self, float seconds, bool bPrioritizeCharacterTextures, int cinematicTextureGroups);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_SetScalarParameterValueOnMaterials(IntPtr self, string parameterName, float parameterValue);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMeshComponent_SetTextureForceResidentFlag(IntPtr self, bool bForceMiplevelsToBeResident);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UMeshComponent_SetVectorParameterValueOnMaterials(IntPtr self, string parameterName, IntPtr parameterValue);
@@ -57,12 +75,32 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>This empties all override materials and used by editor when replacing preview mesh </para>
+		/// </summary>
+		public void EmptyOverrideMaterials()
+			=> E_UMeshComponent_EmptyOverrideMaterials(this);
+		
+		public virtual int GetMaterialIndex(string materialSlotName)
+			=> E_UMeshComponent_GetMaterialIndex(this, materialSlotName);
+		
+		
+		/// <summary>
+		/// <para>Returns override Materials count </para>
+		/// </summary>
+		public virtual int GetNumOverrideMaterials()
+			=> E_UMeshComponent_GetNumOverrideMaterials(this);
+		
+		
+		/// <summary>
 		/// <para>Returns default value for the parameter input. </para>
 		/// <para>NOTE: This is not reliable when cooking, as initializing the default value </para>
 		/// <para>requires a render resource that only exists if the owning world is rendering. </para>
 		/// </summary>
 		public float GetScalarParameterDefaultValue(string parameterName)
 			=> E_UMeshComponent_GetScalarParameterDefaultValue(this, parameterName);
+		
+		public virtual bool IsMaterialSlotNameValid(string materialSlotName)
+			=> E_UMeshComponent_IsMaterialSlotNameValid(this, materialSlotName);
 		
 		
 		/// <summary>
@@ -73,10 +111,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Tell the streaming system to start loading all textures with all mip-levels. </para>
+		/// <param name="Seconds">Number of seconds to force all mip-levels to be resident </param>
+		/// <param name="bPrioritizeCharacterTextures">Whether character textures should be prioritized for a while by the streaming system </param>
+		/// <param name="CinematicTextureGroups">Bitfield indicating which texture groups that use extra high-resolution mips </param>
+		/// </summary>
+		public virtual void PrestreamTextures(float seconds, bool bPrioritizeCharacterTextures, int cinematicTextureGroups)
+			=> E_UMeshComponent_PrestreamTextures(this, seconds, bPrioritizeCharacterTextures, cinematicTextureGroups);
+		
+		
+		/// <summary>
 		/// <para>Set all occurrences of Scalar Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
 		/// </summary>
 		public void SetScalarParameterValueOnMaterials(string parameterName, float parameterValue)
 			=> E_UMeshComponent_SetScalarParameterValueOnMaterials(this, parameterName, parameterValue);
+		
+		
+		/// <summary>
+		/// <para>Tell the streaming system whether or not all mip levels of all textures used by this component should be loaded and remain loaded. </para>
+		/// <param name="bForceMiplevelsToBeResident">Whether textures should be forced to be resident or not. </param>
+		/// </summary>
+		public virtual void SetTextureForceResidentFlag(bool bForceMiplevelsToBeResident)
+			=> E_UMeshComponent_SetTextureForceResidentFlag(this, bForceMiplevelsToBeResident);
 		
 		
 		/// <summary>

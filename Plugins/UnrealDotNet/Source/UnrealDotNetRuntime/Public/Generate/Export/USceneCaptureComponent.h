@@ -27,6 +27,27 @@ public:
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_GET(USceneCaptureComponent* Ptr) { return Ptr->bAlwaysPersistRenderingState; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_SET(USceneCaptureComponent* Ptr, bool Value) { Ptr->bAlwaysPersistRenderingState = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_bCaptureEveryFrame_GET(USceneCaptureComponent* Ptr) { return Ptr->bCaptureEveryFrame; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_bCaptureEveryFrame_SET(USceneCaptureComponent* Ptr, bool Value) { Ptr->bCaptureEveryFrame = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_bCaptureOnMovement_GET(USceneCaptureComponent* Ptr) { return Ptr->bCaptureOnMovement; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_bCaptureOnMovement_SET(USceneCaptureComponent* Ptr, bool Value) { Ptr->bCaptureOnMovement = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_CaptureSortPriority_GET(USceneCaptureComponent* Ptr) { return Ptr->CaptureSortPriority; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_CaptureSortPriority_SET(USceneCaptureComponent* Ptr, int32 Value) { Ptr->CaptureSortPriority = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_LODDistanceFactor_GET(USceneCaptureComponent* Ptr) { return Ptr->LODDistanceFactor; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_LODDistanceFactor_SET(USceneCaptureComponent* Ptr, float Value) { Ptr->LODDistanceFactor = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_GET(USceneCaptureComponent* Ptr) { return Ptr->MaxViewDistanceOverride; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_SET(USceneCaptureComponent* Ptr, float Value) { Ptr->MaxViewDistanceOverride = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_PrimitiveRenderMode_GET(USceneCaptureComponent* Ptr) { return Ptr->PrimitiveRenderMode; }
+	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_PrimitiveRenderMode_SET(USceneCaptureComponent* Ptr, ESceneCapturePrimitiveRenderMode Value) { Ptr->PrimitiveRenderMode = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_USceneCaptureComponent_ProfilingEventName_GET(USceneCaptureComponent* Ptr) { return ConvertToManage_StringWrapper(Ptr->ProfilingEventName); }
 	DOTNET_EXPORT void E_PROP_USceneCaptureComponent_ProfilingEventName_SET(USceneCaptureComponent* Ptr, char* Value) { Ptr->ProfilingEventName = ConvertFromManage_FString(Value); }
 	

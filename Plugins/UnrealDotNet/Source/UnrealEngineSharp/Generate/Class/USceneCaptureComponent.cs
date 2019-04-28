@@ -27,6 +27,41 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_USceneCaptureComponent_bCaptureEveryFrame_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_bCaptureEveryFrame_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_USceneCaptureComponent_bCaptureOnMovement_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_bCaptureOnMovement_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_USceneCaptureComponent_CaptureSortPriority_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_CaptureSortPriority_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponent_LODDistanceFactor_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_LODDistanceFactor_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_USceneCaptureComponent_PrimitiveRenderMode_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent_PrimitiveRenderMode_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_USceneCaptureComponent_ProfilingEventName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USceneCaptureComponent_ProfilingEventName_SET(IntPtr Ptr, string Value);
@@ -71,6 +106,76 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Whether to persist the rendering state even if bCaptureEveryFrame==false.  This allows velocities for Motion Blur and Temporal AA to be computed. </para>
+		/// </summary>
+		public bool bAlwaysPersistRenderingState
+		{
+			get => E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_bAlwaysPersistRenderingState_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to update the capture's contents every frame.  If disabled, the component will render once on load and then only when moved. </para>
+		/// </summary>
+		public bool bCaptureEveryFrame
+		{
+			get => E_PROP_USceneCaptureComponent_bCaptureEveryFrame_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_bCaptureEveryFrame_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to update the capture's contents on movement.  Disable if you are going to capture manually from blueprint. </para>
+		/// </summary>
+		public bool bCaptureOnMovement
+		{
+			get => E_PROP_USceneCaptureComponent_bCaptureOnMovement_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_bCaptureOnMovement_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Capture priority within the frame to sort scene capture on GPU to resolve interdependencies between multiple capture components. Highest come first. </para>
+		/// </summary>
+		public int CaptureSortPriority
+		{
+			get => E_PROP_USceneCaptureComponent_CaptureSortPriority_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_CaptureSortPriority_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Scales the distance used by LOD. Set to values greater than 1 to cause the scene capture to use lower LODs than the main view to speed up the scene capture pass. </para>
+		/// </summary>
+		public float LODDistanceFactor
+		{
+			get => E_PROP_USceneCaptureComponent_LODDistanceFactor_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_LODDistanceFactor_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>if > 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room </para>
+		/// </summary>
+		public float MaxViewDistanceOverride
+		{
+			get => E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_MaxViewDistanceOverride_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls what primitives get rendered into the scene capture. </para>
+		/// </summary>
+		public ESceneCapturePrimitiveRenderMode PrimitiveRenderMode
+		{
+			get => (ESceneCapturePrimitiveRenderMode)E_PROP_USceneCaptureComponent_PrimitiveRenderMode_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent_PrimitiveRenderMode_SET(NativePointer, (byte)value);
+		}
+
 		
 		/// <summary>
 		/// <para>Name of the profiling event. </para>

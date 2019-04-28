@@ -16,10 +16,22 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UVectorFieldComponent_Intensity_GET(UVectorFieldComponent* Ptr) { return Ptr->Intensity; }
+	DOTNET_EXPORT void E_PROP_UVectorFieldComponent_Intensity_SET(UVectorFieldComponent* Ptr, float Value) { Ptr->Intensity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UVectorFieldComponent_Tightness_GET(UVectorFieldComponent* Ptr) { return Ptr->Tightness; }
+	DOTNET_EXPORT void E_PROP_UVectorFieldComponent_Tightness_SET(UVectorFieldComponent* Ptr, float Value) { Ptr->Tightness = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UVectorFieldComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<UVectorFieldComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_UVectorFieldComponent_SetIntensity(UVectorFieldComponent* Self, float NewIntensity)
+	{
+		auto _p0 = NewIntensity;
+		Self->SetIntensity(_p0);
 	}
 
 }

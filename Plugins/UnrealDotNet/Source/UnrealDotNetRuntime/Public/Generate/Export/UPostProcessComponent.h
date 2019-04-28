@@ -16,6 +16,18 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UPostProcessComponent_BlendRadius_GET(UPostProcessComponent* Ptr) { return Ptr->BlendRadius; }
+	DOTNET_EXPORT void E_PROP_UPostProcessComponent_BlendRadius_SET(UPostProcessComponent* Ptr, float Value) { Ptr->BlendRadius = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPostProcessComponent_BlendWeight_GET(UPostProcessComponent* Ptr) { return Ptr->BlendWeight; }
+	DOTNET_EXPORT void E_PROP_UPostProcessComponent_BlendWeight_SET(UPostProcessComponent* Ptr, float Value) { Ptr->BlendWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPostProcessComponent_Priority_GET(UPostProcessComponent* Ptr) { return Ptr->Priority; }
+	DOTNET_EXPORT void E_PROP_UPostProcessComponent_Priority_SET(UPostProcessComponent* Ptr, float Value) { Ptr->Priority = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UPostProcessComponent_Settings_GET(UPostProcessComponent* Ptr) { return (INT_PTR)&(Ptr->Settings); }
+	DOTNET_EXPORT void E_PROP_UPostProcessComponent_Settings_SET(UPostProcessComponent* Ptr, INT_PTR Value) { Ptr->Settings = *(FPostProcessSettings*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UPostProcessComponent(UObject* Parent, char* Name)
 	{

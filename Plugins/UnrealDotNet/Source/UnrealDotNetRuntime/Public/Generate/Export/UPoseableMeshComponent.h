@@ -22,5 +22,32 @@ extern "C"
 		return (INT_PTR)NewObject<UPoseableMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UPoseableMeshComponent_CopyPoseFromSkeletalComponent(UPoseableMeshComponent* Self, USkeletalMeshComponent* InComponentToCopy)
+	{
+		auto _p0 = InComponentToCopy;
+		Self->CopyPoseFromSkeletalComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPoseableMeshComponent_FillComponentSpaceTransforms(UPoseableMeshComponent* Self)
+	{
+		Self->FillComponentSpaceTransforms();
+	}
+
+	DOTNET_EXPORT auto E_UPoseableMeshComponent_IsRunningParallelEvaluation(UPoseableMeshComponent* Self)
+	{
+		return Self->IsRunningParallelEvaluation();
+	}
+
+	DOTNET_EXPORT auto E_UPoseableMeshComponent_MarkRefreshTransformDirty(UPoseableMeshComponent* Self)
+	{
+		Self->MarkRefreshTransformDirty();
+	}
+
+	DOTNET_EXPORT auto E_UPoseableMeshComponent_ResetBoneTransformByName(UPoseableMeshComponent* Self, char* BoneName)
+	{
+		auto _p0 = ConvertFromManage_FName(BoneName);
+		Self->ResetBoneTransformByName(_p0);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -57,6 +57,106 @@ namespace UnrealEngine
 		private static extern void E_PROP_UAudioComponent_AutoAttachSocketName_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bAllowSpatialization_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bAllowSpatialization_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bAlwaysPlay_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bAlwaysPlay_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bAutoDestroy_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bAutoDestroy_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bAutoManageAttachment_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bAutoManageAttachment_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bCenterChannelOnly_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bCenterChannelOnly_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bEnableLowPassFilter_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bEnableLowPassFilter_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bEQFilterApplied_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bEQFilterApplied_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bIgnoreForFlushing_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bIgnoreForFlushing_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bIsMusic_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bIsMusic_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bIsPaused_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bIsPaused_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bIsPreviewSound_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bIsPreviewSound_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bIsUISound_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bIsUISound_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bOverrideAttenuation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bOverrideAttenuation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bOverridePriority_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bOverridePriority_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bOverrideSubtitlePriority_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bOverrideSubtitlePriority_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bPreviewComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bPreviewComponent_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bReverb_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bReverb_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UAudioComponent_bSuppressSubtitles_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UAudioComponent_bSuppressSubtitles_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UAudioComponent_EnvelopeFollowerAttackTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UAudioComponent_EnvelopeFollowerAttackTime_SET(IntPtr Ptr, int Value);
@@ -259,6 +359,195 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UAudioComponent_AutoAttachSocketName_GET(NativePointer);
 			set => E_PROP_UAudioComponent_AutoAttachSocketName_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Overrides spatialization enablement in either the attenuation asset or on this audio component's attenuation settings override. </para>
+		/// </summary>
+		public byte bAllowSpatialization
+		{
+			get => E_PROP_UAudioComponent_bAllowSpatialization_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bAllowSpatialization_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to artificially prioritize the component to play </para>
+		/// </summary>
+		public byte bAlwaysPlay
+		{
+			get => E_PROP_UAudioComponent_bAlwaysPlay_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bAlwaysPlay_SET(NativePointer, value);
+		}
+
+		public byte bAutoDestroy
+		{
+			get => E_PROP_UAudioComponent_bAutoDestroy_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bAutoDestroy_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>True if we should automatically attach to AutoAttachParent when Played, and detach from our parent when playback is completed. </para>
+		/// <para>This overrides any current attachment that may be present at the time of activation (deferring initial attachment until activation, if AutoAttachParent is null). </para>
+		/// <para>If enabled, this AudioComponent's WorldLocation will no longer be reliable when not currently playing audio, and any attach children will also be detached/attached along with it. </para>
+		/// <para>When enabled, detachment occurs regardless of whether AutoAttachParent is assigned, and the relative transform from the time of activation is restored. </para>
+		/// <para>This also disables attachment on dedicated servers, where we don't actually activate even if bAutoActivate is true. </para>
+		/// <para>@see AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType </para>
+		/// </summary>
+		public byte bAutoManageAttachment
+		{
+			get => E_PROP_UAudioComponent_bAutoManageAttachment_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bAutoManageAttachment_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not this sound class forces sounds to the center channel </para>
+		/// </summary>
+		public byte bCenterChannelOnly
+		{
+			get => E_PROP_UAudioComponent_bCenterChannelOnly_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bCenterChannelOnly_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not to apply a low-pass filter to the sound that plays in this audio component. </para>
+		/// </summary>
+		public byte bEnableLowPassFilter
+		{
+			get => E_PROP_UAudioComponent_bEnableLowPassFilter_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bEnableLowPassFilter_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether audio effects are applied </para>
+		/// </summary>
+		public byte bEQFilterApplied
+		{
+			get => E_PROP_UAudioComponent_bEQFilterApplied_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bEQFilterApplied_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, this sound will not be stopped when flushing the audio device. </para>
+		/// </summary>
+		public byte bIgnoreForFlushing
+		{
+			get => E_PROP_UAudioComponent_bIgnoreForFlushing_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bIgnoreForFlushing_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not this audio component is a music clip </para>
+		/// </summary>
+		public byte bIsMusic
+		{
+			get => E_PROP_UAudioComponent_bIsMusic_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bIsMusic_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not this audio component has been paused </para>
+		/// </summary>
+		public byte bIsPaused
+		{
+			get => E_PROP_UAudioComponent_bIsPaused_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bIsPaused_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not this sound is a preview sound </para>
+		/// </summary>
+		public byte bIsPreviewSound
+		{
+			get => E_PROP_UAudioComponent_bIsPreviewSound_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bIsPreviewSound_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not this sound plays when the game is paused in the UI </para>
+		/// </summary>
+		public byte bIsUISound
+		{
+			get => E_PROP_UAudioComponent_bIsUISound_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bIsUISound_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Allows defining attenuation settings directly on this audio component without using an attenuation settings asset. </para>
+		/// </summary>
+		public byte bOverrideAttenuation
+		{
+			get => E_PROP_UAudioComponent_bOverrideAttenuation_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bOverrideAttenuation_SET(NativePointer, value);
+		}
+
+		public byte bOverridePriority
+		{
+			get => E_PROP_UAudioComponent_bOverridePriority_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bOverridePriority_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not to override the sound's subtitle priority. </para>
+		/// </summary>
+		public byte bOverrideSubtitlePriority
+		{
+			get => E_PROP_UAudioComponent_bOverrideSubtitlePriority_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bOverrideSubtitlePriority_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether this audio component is previewing a sound </para>
+		/// </summary>
+		public byte bPreviewComponent
+		{
+			get => E_PROP_UAudioComponent_bPreviewComponent_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bPreviewComponent_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not the audio component should be excluded from reverb EQ processing </para>
+		/// </summary>
+		public byte bReverb
+		{
+			get => E_PROP_UAudioComponent_bReverb_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bReverb_SET(NativePointer, value);
+		}
+
+		public byte bShouldRemainActiveIfDropped
+		{
+			get => E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_SET(NativePointer, value);
+		}
+
+		public byte bStopWhenOwnerDestroyed
+		{
+			get => E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, subtitles in the sound data will be ignored. </para>
+		/// </summary>
+		public byte bSuppressSubtitles
+		{
+			get => E_PROP_UAudioComponent_bSuppressSubtitles_GET(NativePointer);
+			set => E_PROP_UAudioComponent_bSuppressSubtitles_SET(NativePointer, value);
 		}
 
 		

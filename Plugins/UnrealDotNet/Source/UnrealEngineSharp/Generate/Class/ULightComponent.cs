@@ -26,6 +26,106 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_BloomScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_BloomScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_BloomThreshold_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_BloomThreshold_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_ContactShadowLength_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_ContactShadowLength_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_DisabledBrightness_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_DisabledBrightness_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_IESBrightnessScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_IESBrightnessScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_LightFunctionFadeDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_LightFunctionFadeDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_ULightComponent_LightFunctionScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_LightFunctionScale_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_ULightComponent_LightingChannels_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_LightingChannels_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_MaxDistanceFadeRange_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_MaxDistanceFadeRange_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_MaxDrawDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_MaxDrawDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_MinRoughness_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_MinRoughness_DEPRECATED_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_ULightComponent_PreviewShadowMapChannel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_PreviewShadowMapChannel_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_RayStartOffsetDepthScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_RayStartOffsetDepthScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_ShadowBias_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_ShadowBias_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_ShadowResolutionScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_ShadowResolutionScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_ShadowSharpen_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_ShadowSharpen_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_SpecularScale_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_SpecularScale_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ULightComponent_Temperature_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULightComponent_Temperature_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_ULightComponent(IntPtr Parent, string Name);
@@ -102,6 +202,206 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULightComponent_SetVolumetricScatteringIntensity(IntPtr self, float newIntensity);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Scales the additive color. </para>
+		/// </summary>
+		public float BloomScale
+		{
+			get => E_PROP_ULightComponent_BloomScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_BloomScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Scene color must be larger than this to create bloom in the light shafts. </para>
+		/// </summary>
+		public float BloomThreshold
+		{
+			get => E_PROP_ULightComponent_BloomThreshold_GET(NativePointer);
+			set => E_PROP_ULightComponent_BloomThreshold_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether to use ray traced distance field area shadows.  The project setting bGenerateMeshDistanceFields must be enabled for this to have effect. </para>
+		/// <para>Distance field shadows support area lights so they create soft shadows with sharp contacts. </para>
+		/// <para>They have less aliasing artifacts than standard shadowmaps, but inherit all the limitations of distance field representations (only uniform scale, no deformation). </para>
+		/// <para>These shadows have a low per-object cost (and don't depend on triangle count) so they are effective for distant shadows from a dynamic sun. </para>
+		/// </summary>
+		public bool RayTracedDistanceFieldShadows
+		{
+			get => E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_GET(NativePointer);
+			set => E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Length of screen space ray trace for sharp contact shadows. Zero is disabled. </para>
+		/// </summary>
+		public float ContactShadowLength
+		{
+			get => E_PROP_ULightComponent_ContactShadowLength_GET(NativePointer);
+			set => E_PROP_ULightComponent_ContactShadowLength_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Brightness factor applied to the light when the light function is specified but disabled, for example in scene captures that use SceneCapView_LitNoShadows. </para>
+		/// <para>This should be set to the average brightness of the light function material's emissive input, which should be between 0 and 1. </para>
+		/// </summary>
+		public float DisabledBrightness
+		{
+			get => E_PROP_ULightComponent_DisabledBrightness_GET(NativePointer);
+			set => E_PROP_ULightComponent_DisabledBrightness_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Global scale for IES brightness contribution. Only available when "Use IES Brightness" is selected, and a valid IES profile texture is set </para>
+		/// </summary>
+		public float IESIntensityScale
+		{
+			get => E_PROP_ULightComponent_IESBrightnessScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_IESBrightnessScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Distance at which the light function should be completely faded to DisabledBrightness. </para>
+		/// <para>This is useful for hiding aliasing from light functions applied in the distance. </para>
+		/// </summary>
+		public float FadeDistance
+		{
+			get => E_PROP_ULightComponent_LightFunctionFadeDistance_GET(NativePointer);
+			set => E_PROP_ULightComponent_LightFunctionFadeDistance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Scales the light function projection.  X and Y scale in the directions perpendicular to the light's direction, Z scales along the light direction. </para>
+		/// </summary>
+		public FVector LightFunctionScale
+		{
+			get => E_PROP_ULightComponent_LightFunctionScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_LightFunctionScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Channels that this light should affect. </para>
+		/// <para>These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing. </para>
+		/// </summary>
+		public FLightingChannels LightingChannels
+		{
+			get => E_PROP_ULightComponent_LightingChannels_GET(NativePointer);
+			set => E_PROP_ULightComponent_LightingChannels_SET(NativePointer, value);
+		}
+
+		public float MaxDistanceFadeRange
+		{
+			get => E_PROP_ULightComponent_MaxDistanceFadeRange_GET(NativePointer);
+			set => E_PROP_ULightComponent_MaxDistanceFadeRange_SET(NativePointer, value);
+		}
+
+		public float MaxDrawDistance
+		{
+			get => E_PROP_ULightComponent_MaxDrawDistance_GET(NativePointer);
+			set => E_PROP_ULightComponent_MaxDrawDistance_SET(NativePointer, value);
+		}
+
+		public float MinRoughness_DEPRECATED
+		{
+			get => E_PROP_ULightComponent_MinRoughness_DEPRECATED_GET(NativePointer);
+			set => E_PROP_ULightComponent_MinRoughness_DEPRECATED_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Transient shadowmap channel used to preview the results of stationary light shadowmap packing. </para>
+		/// </summary>
+		public int PreviewShadowMapChannel
+		{
+			get => E_PROP_ULightComponent_PreviewShadowMapChannel_GET(NativePointer);
+			set => E_PROP_ULightComponent_PreviewShadowMapChannel_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls how large of an offset ray traced shadows have from the receiving surface as the camera gets further away. </para>
+		/// <para>This can be useful to hide self-shadowing artifacts from low resolution distance fields on huge static meshes. </para>
+		/// </summary>
+		public float RayStartOffsetDepthScale
+		{
+			get => E_PROP_ULightComponent_RayStartOffsetDepthScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_RayStartOffsetDepthScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Controls how accurate self shadowing of whole scene shadows from this light are. </para>
+		/// <para>At 0, shadows will start at the their caster surface, but there will be many self shadowing artifacts. </para>
+		/// <para>larger values, shadows will start further from their caster, and there won't be self shadowing artifacts but object might appear to fly. </para>
+		/// <para>around 0.5 seems to be a good tradeoff. This also affects the soft transition of shadows </para>
+		/// </summary>
+		public float ShadowBias
+		{
+			get => E_PROP_ULightComponent_ShadowBias_GET(NativePointer);
+			set => E_PROP_ULightComponent_ShadowBias_SET(NativePointer, value);
+		}
+
+		public int ShadowMapChannel_DEPRECATED
+		{
+			get => E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_GET(NativePointer);
+			set => E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Scales the resolution of shadowmaps used to shadow this light.  By default shadowmap resolution is chosen based on screen size of the caster. </para>
+		/// <para>Note: shadowmap resolution is still clamped by 'r.Shadow.MaxResolution' </para>
+		/// </summary>
+		public float ShadowResolutionScale
+		{
+			get => E_PROP_ULightComponent_ShadowResolutionScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_ShadowResolutionScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Amount to sharpen shadow filtering </para>
+		/// </summary>
+		public float ShadowFilterSharpen
+		{
+			get => E_PROP_ULightComponent_ShadowSharpen_GET(NativePointer);
+			set => E_PROP_ULightComponent_ShadowSharpen_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Multiplier on specular highlights. Use only with great care! Any value besides 1 is not physical! </para>
+		/// <para>Can be used to artistically remove highlights mimicking polarizing filters or photo touch up. </para>
+		/// </summary>
+		public float SpecularScale
+		{
+			get => E_PROP_ULightComponent_SpecularScale_GET(NativePointer);
+			set => E_PROP_ULightComponent_SpecularScale_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Color temperature in Kelvin of the blackbody illuminant. </para>
+		/// <para>White (D65) is 6500K. </para>
+		/// </summary>
+		public float Temperature
+		{
+			get => E_PROP_ULightComponent_Temperature_GET(NativePointer);
+			set => E_PROP_ULightComponent_Temperature_SET(NativePointer, value);
+		}
+
 		#endregion
 		
 		#region ExternMethods

@@ -26,6 +26,14 @@ bool UManageInterpToMovementComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManageInterpToMovementComponent::AddControlPointPosition(FVector Pos, bool bPositionIsRelative)
+{
+	Super::AddControlPointPosition(Pos, bPositionIsRelative);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddControlPointPosition", Pos, bPositionIsRelative);
+}
+
 void UManageInterpToMovementComponent::UpdateControlPoints(bool InForceUpdate)
 {
 	Super::UpdateControlPoints(InForceUpdate);

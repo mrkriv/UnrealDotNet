@@ -24,6 +24,7 @@ namespace GameLogic
 
         public PlayerCharacter(IntPtr adress) : base(adress)
         {
+            PrimaryActorTick.bCanEverTick = 1;
         }
 
         protected override void BeginPlay()
@@ -40,6 +41,17 @@ namespace GameLogic
         public override void Tick(float dt)
         {
             base.Tick(dt);
+            
+            var ctrl = (PlayerController) GetController();
+            Ue.Log(GetController()?.GetType()?.FullName);
+            if (ctrl != null)
+            {
+                Ue.Log(ctrl.MoveForwardValue.ToString());
+            }
+            else
+            {
+                Ue.Log("palyer ctrl not found");
+            }
 
             if (IsDeath)
                 return;

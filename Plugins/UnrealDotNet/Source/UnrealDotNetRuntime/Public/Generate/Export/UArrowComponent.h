@@ -16,10 +16,25 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UArrowComponent_ArrowSize_GET(UArrowComponent* Ptr) { return Ptr->ArrowSize; }
+	DOTNET_EXPORT void E_PROP_UArrowComponent_ArrowSize_SET(UArrowComponent* Ptr, float Value) { Ptr->ArrowSize = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UArrowComponent_bIsScreenSizeScaled_GET(UArrowComponent* Ptr) { return Ptr->bIsScreenSizeScaled; }
+	DOTNET_EXPORT void E_PROP_UArrowComponent_bIsScreenSizeScaled_SET(UArrowComponent* Ptr, bool Value) { Ptr->bIsScreenSizeScaled = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UArrowComponent_ScreenSize_GET(UArrowComponent* Ptr) { return Ptr->ScreenSize; }
+	DOTNET_EXPORT void E_PROP_UArrowComponent_ScreenSize_SET(UArrowComponent* Ptr, float Value) { Ptr->ScreenSize = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UArrowComponent(UObject* Parent, char* Name)
 	{
 		return (INT_PTR)NewObject<UArrowComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
+	}
+
+	DOTNET_EXPORT auto E_UArrowComponent_SetArrowColor(UArrowComponent* Self, INT_PTR NewColor)
+	{
+		auto _p0 = *(FLinearColor*)NewColor;
+		Self->SetArrowColor(_p0);
 	}
 
 }

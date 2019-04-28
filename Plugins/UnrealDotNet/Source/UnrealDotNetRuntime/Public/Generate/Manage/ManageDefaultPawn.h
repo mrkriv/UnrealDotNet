@@ -30,6 +30,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void LookUpAtRate(float Rate) override;
+	virtual void MoveForward(float Val) override;
+	virtual void MoveRight(float Val) override;
+	virtual void MoveUp_World(float Val) override;
+	virtual void TurnAtRate(float Rate) override;
 	
 protected:
 };

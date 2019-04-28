@@ -26,28 +26,399 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_UCheatManager_bDebugCapsuleSweepPawn_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UCheatManager_CurrentTraceIndex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_CurrentTraceIndex_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_UCheatManager_CurrentTracePawnIndex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_CurrentTracePawnIndex_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCheatManager_DebugCapsuleHalfHeight_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_DebugCapsuleHalfHeight_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCheatManager_DebugCapsuleRadius_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_DebugCapsuleRadius_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCheatManager_DebugTraceDistance_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_DebugTraceDistance_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UCheatManager_DebugTraceDrawNormalLength_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UCheatManager_DebugTraceDrawNormalLength_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UCheatManager(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_AddCapsuleSweepDebugInfo(IntPtr self, IntPtr lineTraceStart, IntPtr lineTraceEnd, IntPtr hitImpactLocation, IntPtr hitNormal, IntPtr hitImpactNormal, IntPtr hitLocation, float capsuleHalfheight, float capsuleRadius, bool bTracePawn, bool bInsideOfObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_BugIt(IntPtr self, string screenShotDescription);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_BugItGo(IntPtr self, float x, float y, float z, float pitch, float yaw, float roll);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_BugItGoString(IntPtr self, string theLocation, string theRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_BugItStringCreator(IntPtr self, IntPtr viewLocation, IntPtr viewRotation, string goString, string locString);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_BugItWorker(IntPtr self, IntPtr theLocation, IntPtr theRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ChangeSize(IntPtr self, float f);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_CheatScript(IntPtr self, string scriptName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DamageTarget(IntPtr self, float damageAmount);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweep(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepCapture(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepChannel(IntPtr self, byte channel);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepClear(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepComplex(IntPtr self, bool bTraceComplex);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepPawn(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DebugCapsuleSweepSize(IntPtr self, float halfHeight, float radius);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DestroyAllPawnsExceptTarget(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DestroyServerStatReplicator(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DestroyTarget(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCheatManager_DisableDebugCamera(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DumpChatState(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DumpOnlineSessionState(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DumpPartyState(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_DumpVoiceMutingState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCheatManager_EnableDebugCamera(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_FlushLog(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Fly(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_FreezeFrame(IntPtr self, float delay);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UCheatManager_GetTarget(IntPtr self, IntPtr playerController, IntPtr outHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Ghost(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_God(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_InitCheatManager(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_InvertMouse(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCheatManager_IsDebugCapsuleSweepPawnEnabled(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_LogLoc(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_LogOutBugItGoToLogFile(IntPtr self, string inScreenShotDesc, string inScreenShotPath, string inGoString, string inLocString);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_OnlyLoadLevel(IntPtr self, string packageName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_PlayersOnly(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ReceiveEndPlay(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ReceiveInitCheatManager(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ServerToggleAILogging(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_SetLevelStreamingStatus(IntPtr self, string packageName, bool bShouldBeLoaded, bool bShouldBeVisible);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_SetMouseSensitivityToDefault(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_SetWorldOrigin(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Slomo(IntPtr self, float newTimeDilation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_SpawnServerStatReplicator(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_StreamLevelIn(IntPtr self, string packageName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_StreamLevelOut(IntPtr self, string packageName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Summon(IntPtr self, string className);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Teleport(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_TestCollisionDistance(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_TickCollisionDebug(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ToggleAILogging(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ToggleDebugCamera(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ToggleServerStatReplicatorClientOverwrite(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ToggleServerStatReplicatorUpdateStatNet(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_UpdateSafeArea(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ViewActor(IntPtr self, string actorName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ViewPlayer(IntPtr self, string s);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_ViewSelf(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCheatManager_Walk(IntPtr self);
 		
 		#endregion
 		
+		#region Property
+		
+		/// <summary>
+		/// <para>If we should should perform a debug capsule trace for pawns and draw results. Toggled with DebugCapsuleSweepPawn() </para>
+		/// </summary>
+		public static bool bDebugCapsuleSweepPawn
+		{
+			get => E_PROP_UCheatManager_bDebugCapsuleSweepPawn_GET();
+		}
+
+		
+		/// <summary>
+		/// <para>Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased </para>
+		/// </summary>
+		public int CurrentTraceIndex
+		{
+			get => E_PROP_UCheatManager_CurrentTraceIndex_GET(NativePointer);
+			set => E_PROP_UCheatManager_CurrentTraceIndex_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased </para>
+		/// </summary>
+		public int CurrentTracePawnIndex
+		{
+			get => E_PROP_UCheatManager_CurrentTracePawnIndex_GET(NativePointer);
+			set => E_PROP_UCheatManager_CurrentTracePawnIndex_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Half distance between debug capsule sphere ends. Total heigh of capsule is 2*(this + DebugCapsuleRadius). </para>
+		/// </summary>
+		public float DebugCapsuleHalfHeight
+		{
+			get => E_PROP_UCheatManager_DebugCapsuleHalfHeight_GET(NativePointer);
+			set => E_PROP_UCheatManager_DebugCapsuleHalfHeight_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Radius of debug capsule </para>
+		/// </summary>
+		public float DebugCapsuleRadius
+		{
+			get => E_PROP_UCheatManager_DebugCapsuleRadius_GET(NativePointer);
+			set => E_PROP_UCheatManager_DebugCapsuleRadius_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>How far debug trace should go out from player viewpoint </para>
+		/// </summary>
+		public float DebugTraceDistance
+		{
+			get => E_PROP_UCheatManager_DebugTraceDistance_GET(NativePointer);
+			set => E_PROP_UCheatManager_DebugTraceDistance_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>How long to draw the normal result </para>
+		/// </summary>
+		public float DebugTraceDrawNormalLength
+		{
+			get => E_PROP_UCheatManager_DebugTraceDrawNormalLength_GET(NativePointer);
+			set => E_PROP_UCheatManager_DebugTraceDrawNormalLength_SET(NativePointer, value);
+		}
+
+		#endregion
+		
 		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Add Debug Trace info into current index - used when DebugCapsuleSweepPawn is on </para>
+		/// </summary>
+		public void AddCapsuleSweepDebugInfo(FVector lineTraceStart, FVector lineTraceEnd, FVector hitImpactLocation, FVector hitNormal, FVector hitImpactNormal, FVector hitLocation, float capsuleHalfheight, float capsuleRadius, bool bTracePawn, bool bInsideOfObject)
+			=> E_UCheatManager_AddCapsuleSweepDebugInfo(this, lineTraceStart, lineTraceEnd, hitImpactLocation, hitNormal, hitImpactNormal, hitLocation, capsuleHalfheight, capsuleRadius, bTracePawn, bInsideOfObject);
+		
+		public virtual void BugIt(string screenShotDescription)
+			=> E_UCheatManager_BugIt(this, screenShotDescription);
+		
+		public virtual void BugItGo(float x, float y, float z, float pitch, float yaw, float roll)
+			=> E_UCheatManager_BugItGo(this, x, y, z, pitch, yaw, roll);
+		
+		
+		/// <summary>
+		/// <para>This will move the player and set their rotation to the passed in values. </para>
+		/// <para>We have this version of the BugIt family strings can be passed in from the game ?options easily </para>
+		/// </summary>
+		public virtual void BugItGoString(string theLocation, string theRotation)
+			=> E_UCheatManager_BugItGoString(this, theLocation, theRotation);
+		
+		public virtual void BugItStringCreator(FVector viewLocation, FRotator viewRotation, string goString, string locString)
+			=> E_UCheatManager_BugItStringCreator(this, viewLocation, viewRotation, goString, locString);
+		
+		
+		/// <summary>
+		/// <para>This will move the player and set their rotation to the passed in values. </para>
+		/// <para>This actually does the location / rotation setting.  Additionally it will set you as ghost as the level may have </para>
+		/// <para>changed since the last time you were here.  And the bug may actually be inside of something. </para>
+		/// </summary>
+		public virtual void BugItWorker(FVector theLocation, FRotator theRotation)
+			=> E_UCheatManager_BugItWorker(this, theLocation, theRotation);
+		
+		public virtual void ChangeSize(float f)
+			=> E_UCheatManager_ChangeSize(this, f);
+		
+		public void CheatScript(string scriptName)
+			=> E_UCheatManager_CheatScript(this, scriptName);
+		
+		
+		/// <summary>
+		/// <para>Damage the actor you're looking at (sourced from the player). </para>
+		/// </summary>
+		public virtual void DamageTarget(float damageAmount)
+			=> E_UCheatManager_DamageTarget(this, damageAmount);
+		
+		public virtual void DebugCapsuleSweep()
+			=> E_UCheatManager_DebugCapsuleSweep(this);
+		
+		public virtual void DebugCapsuleSweepCapture()
+			=> E_UCheatManager_DebugCapsuleSweepCapture(this);
+		
+		public virtual void DebugCapsuleSweepChannel(ECollisionChannel channel)
+			=> E_UCheatManager_DebugCapsuleSweepChannel(this, (byte)channel);
+		
+		public virtual void DebugCapsuleSweepClear()
+			=> E_UCheatManager_DebugCapsuleSweepClear(this);
+		
+		public virtual void DebugCapsuleSweepComplex(bool bTraceComplex)
+			=> E_UCheatManager_DebugCapsuleSweepComplex(this, bTraceComplex);
+		
+		public virtual void DebugCapsuleSweepPawn()
+			=> E_UCheatManager_DebugCapsuleSweepPawn(this);
+		
+		public virtual void DebugCapsuleSweepSize(float halfHeight, float radius)
+			=> E_UCheatManager_DebugCapsuleSweepSize(this, halfHeight, radius);
+		
+		public virtual void DestroyAllPawnsExceptTarget()
+			=> E_UCheatManager_DestroyAllPawnsExceptTarget(this);
+		
+		public void DestroyServerStatReplicator()
+			=> E_UCheatManager_DestroyServerStatReplicator(this);
+		
+		
+		/// <summary>
+		/// <para>Destroy the actor you're looking at. </para>
+		/// </summary>
+		public virtual void DestroyTarget()
+			=> E_UCheatManager_DestroyTarget(this);
+		
 		
 		/// <summary>
 		/// <para>Switch controller from debug camera back to normal controller </para>
 		/// </summary>
 		protected virtual void DisableDebugCamera()
 			=> E_UCheatManager_DisableDebugCamera(this);
+		
+		public virtual void DumpChatState()
+			=> E_UCheatManager_DumpChatState(this);
+		
+		public virtual void DumpOnlineSessionState()
+			=> E_UCheatManager_DumpOnlineSessionState(this);
+		
+		public virtual void DumpPartyState()
+			=> E_UCheatManager_DumpPartyState(this);
+		
+		public virtual void DumpVoiceMutingState()
+			=> E_UCheatManager_DumpVoiceMutingState(this);
 		
 		
 		/// <summary>
@@ -56,12 +427,173 @@ namespace UnrealEngine
 		protected virtual void EnableDebugCamera()
 			=> E_UCheatManager_EnableDebugCamera(this);
 		
+		public virtual void FlushLog()
+			=> E_UCheatManager_FlushLog(this);
+		
+		
+		/// <summary>
+		/// <para>Pawn can fly. </para>
+		/// </summary>
+		public virtual void Fly()
+			=> E_UCheatManager_Fly(this);
+		
+		
+		/// <summary>
+		/// <para>Pause the game for Delay seconds. </para>
+		/// </summary>
+		public virtual void FreezeFrame(float delay)
+			=> E_UCheatManager_FreezeFrame(this, delay);
+		
 		
 		/// <summary>
 		/// <para>Retrieve the given PlayerContoller's current "target" AActor. </para>
 		/// </summary>
 		protected virtual AActor GetTarget(APlayerController playerController, FHitResult outHit)
 			=> E_UCheatManager_GetTarget(this, playerController, outHit);
+		
+		
+		/// <summary>
+		/// <para>Pawn no longer collides with the world, and can fly </para>
+		/// </summary>
+		public virtual void Ghost()
+			=> E_UCheatManager_Ghost(this);
+		
+		
+		/// <summary>
+		/// <para>Invulnerability cheat. </para>
+		/// </summary>
+		public virtual void God()
+			=> E_UCheatManager_God(this);
+		
+		
+		/// <summary>
+		/// <para>Called when CheatManager is created to allow any needed initialization. </para>
+		/// </summary>
+		public virtual void InitCheatManager()
+			=> E_UCheatManager_InitCheatManager(this);
+		
+		public virtual void InvertMouse()
+			=> E_UCheatManager_InvertMouse(this);
+		
+		
+		/// <summary>
+		/// <para>Return true if debug sweeps are enabled for pawns. </para>
+		/// </summary>
+		public bool IsDebugCapsuleSweepPawnEnabled()
+			=> E_UCheatManager_IsDebugCapsuleSweepPawnEnabled(this);
+		
+		public virtual void LogLoc()
+			=> E_UCheatManager_LogLoc(this);
+		
+		
+		/// <summary>
+		/// <para>Bug it log to file </para>
+		/// </summary>
+		public virtual void LogOutBugItGoToLogFile(string inScreenShotDesc, string inScreenShotPath, string inGoString, string inLocString)
+			=> E_UCheatManager_LogOutBugItGoToLogFile(this, inScreenShotDesc, inScreenShotPath, inGoString, inLocString);
+		
+		public virtual void OnlyLoadLevel(string packageName)
+			=> E_UCheatManager_OnlyLoadLevel(this, packageName);
+		
+		
+		/// <summary>
+		/// <para>Freeze everything in the level except for players. </para>
+		/// </summary>
+		public virtual void PlayersOnly()
+			=> E_UCheatManager_PlayersOnly(this);
+		
+		
+		/// <summary>
+		/// <para>This is the End Play event for the CheatManager </para>
+		/// </summary>
+		public void Shutdown()
+			=> E_UCheatManager_ReceiveEndPlay(this);
+		
+		
+		/// <summary>
+		/// <para>BP implementable event for when CheatManager is created to allow any needed initialization. </para>
+		/// </summary>
+		public void ReceiveInitCheatManager()
+			=> E_UCheatManager_ReceiveInitCheatManager(this);
+		
+		public virtual void ServerToggleAILogging()
+			=> E_UCheatManager_ServerToggleAILogging(this);
+		
+		
+		/// <summary>
+		/// <para>streaming level debugging </para>
+		/// </summary>
+		public virtual void SetLevelStreamingStatus(string packageName, bool bShouldBeLoaded, bool bShouldBeVisible)
+			=> E_UCheatManager_SetLevelStreamingStatus(this, packageName, bShouldBeLoaded, bShouldBeVisible);
+		
+		public virtual void SetMouseSensitivityToDefault()
+			=> E_UCheatManager_SetMouseSensitivityToDefault(this);
+		
+		public void SetWorldOrigin()
+			=> E_UCheatManager_SetWorldOrigin(this);
+		
+		
+		/// <summary>
+		/// <para>Modify time dilation to change apparent speed of passage of time. e.g. "Slomo 0.1" makes everything move very slowly, while "Slomo 10" makes everything move very fast. </para>
+		/// </summary>
+		public virtual void Slomo(float newTimeDilation)
+			=> E_UCheatManager_Slomo(this, newTimeDilation);
+		
+		public void SpawnServerStatReplicator()
+			=> E_UCheatManager_SpawnServerStatReplicator(this);
+		
+		public virtual void StreamLevelIn(string packageName)
+			=> E_UCheatManager_StreamLevelIn(this, packageName);
+		
+		public virtual void StreamLevelOut(string packageName)
+			=> E_UCheatManager_StreamLevelOut(this, packageName);
+		
+		public virtual void Summon(string className)
+			=> E_UCheatManager_Summon(this, className);
+		
+		public virtual void Teleport()
+			=> E_UCheatManager_Teleport(this);
+		
+		public virtual void TestCollisionDistance()
+			=> E_UCheatManager_TestCollisionDistance(this);
+		
+		
+		/// <summary>
+		/// <para>Do any trace debugging that is currently enabled </para>
+		/// </summary>
+		public void TickCollisionDebug()
+			=> E_UCheatManager_TickCollisionDebug(this);
+		
+		public virtual void ToggleAILogging()
+			=> E_UCheatManager_ToggleAILogging(this);
+		
+		public virtual void ToggleDebugCamera()
+			=> E_UCheatManager_ToggleDebugCamera(this);
+		
+		public void ToggleServerStatReplicatorClientOverwrite()
+			=> E_UCheatManager_ToggleServerStatReplicatorClientOverwrite(this);
+		
+		public void ToggleServerStatReplicatorUpdateStatNet()
+			=> E_UCheatManager_ToggleServerStatReplicatorUpdateStatNet(this);
+		
+		public void UpdateSafeArea()
+			=> E_UCheatManager_UpdateSafeArea(this);
+		
+		public virtual void ViewActor(string actorName)
+			=> E_UCheatManager_ViewActor(this, actorName);
+		
+		public virtual void ViewPlayer(string s)
+			=> E_UCheatManager_ViewPlayer(this, s);
+		
+		public virtual void ViewSelf()
+			=> E_UCheatManager_ViewSelf(this);
+		
+		
+		/// <summary>
+		/// <para>Return to walking movement mode from Fly or Ghost cheat. </para>
+		/// </summary>
+		public virtual void Walk()
+			=> E_UCheatManager_Walk(this);
 		
 		#endregion
 		

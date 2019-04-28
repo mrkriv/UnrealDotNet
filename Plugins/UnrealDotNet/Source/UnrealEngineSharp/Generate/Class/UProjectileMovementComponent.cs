@@ -27,6 +27,41 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bForceSubStepping_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bForceSubStepping_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bInterpMovement_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bInterpMovement_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bInterpRotation_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bInterpRotation_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bIsHomingProjectile_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bIsHomingProjectile_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bIsSliding_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bIsSliding_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_UProjectileMovementComponent_BounceAdditionalIterations_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UProjectileMovementComponent_BounceAdditionalIterations_SET(IntPtr Ptr, int Value);
@@ -42,6 +77,26 @@ namespace UnrealEngine
 		private static extern void E_PROP_UProjectileMovementComponent_Bounciness_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bShouldBounce_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bShouldBounce_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bSimulationEnabled_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bSimulationEnabled_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UProjectileMovementComponent_bSweepCollision_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_bSweepCollision_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UProjectileMovementComponent_Buoyancy_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UProjectileMovementComponent_Buoyancy_SET(IntPtr Ptr, float Value);
@@ -55,6 +110,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UProjectileMovementComponent_InitialSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_InitialSpeed_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UProjectileMovementComponent_InterpLocationMaxLagDistance_GET(IntPtr Ptr);
@@ -85,6 +145,11 @@ namespace UnrealEngine
 		private static extern float E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UProjectileMovementComponent_MaxSpeed_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UProjectileMovementComponent_MaxSpeed_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UProjectileMovementComponent_MinFrictionFraction_GET(IntPtr Ptr);
@@ -184,6 +249,88 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
+		/// <para>Controls the effects of friction on velocity parallel to the impact surface when bouncing. </para>
+		/// <para>If true, friction will be modified based on the angle of impact, making friction higher for perpendicular impacts and lower for glancing impacts. </para>
+		/// <para>If false, a bounce will retain a proportion of tangential velocity equal to (1.0 - Friction), acting as a "horizontal restitution". </para>
+		/// </summary>
+		public byte bBounceAngleAffectsFriction
+		{
+			get => E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bBounceAngleAffectsFriction_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, forces sub-stepping to break up movement into discrete smaller steps to improve accuracy of the trajectory. </para>
+		/// <para>Objects that move in a straight line typically do *not* need to set this, as movement always uses continuous collision detection (sweeps) so collision is not missed. </para>
+		/// <para>Sub-stepping is automatically enabled when under the effects of gravity or when homing towards a target. </para>
+		/// <para>@see MaxSimulationTimeStep, MaxSimulationIterations </para>
+		/// </summary>
+		public byte bForceSubStepping
+		{
+			get => E_PROP_UProjectileMovementComponent_bForceSubStepping_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bForceSubStepping_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, the initial Velocity is interpreted as being in local space upon startup. </para>
+		/// <para>@see SetVelocityInLocalSpace() </para>
+		/// </summary>
+		public byte bInitialVelocityInLocalSpace
+		{
+			get => E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bInitialVelocityInLocalSpace_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true and there is an interpolated component set, location (and optionally rotation) interpolation is enabled which allows the interpolated object to smooth uneven updates </para>
+		/// <para>of the UpdatedComponent's location (usually to smooth network updates). </para>
+		/// <para>@see SetInterpolatedComponent(), MoveInterpolationTarget() </para>
+		/// </summary>
+		public byte bInterpMovement
+		{
+			get => E_PROP_UProjectileMovementComponent_bInterpMovement_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bInterpMovement_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true and there is an interpolated component set, rotation interpolation is enabled which allows the interpolated object to smooth uneven updates </para>
+		/// <para>of the UpdatedComponent's rotation (usually to smooth network updates). </para>
+		/// <para>Rotation interpolation is *only* applied if bInterpMovement is also enabled. </para>
+		/// <para>@see SetInterpolatedComponent(), MoveInterpolationTarget() </para>
+		/// </summary>
+		public byte bInterpRotation
+		{
+			get => E_PROP_UProjectileMovementComponent_bInterpRotation_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bInterpRotation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, we will accelerate toward our homing target. HomingTargetComponent must be set after the projectile is spawned. </para>
+		/// <para>@see HomingTargetComponent, HomingAccelerationMagnitude </para>
+		/// </summary>
+		public byte bIsHomingProjectile
+		{
+			get => E_PROP_UProjectileMovementComponent_bIsHomingProjectile_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bIsHomingProjectile_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, projectile is sliding / rolling along a surface. </para>
+		/// </summary>
+		public byte bIsSliding
+		{
+			get => E_PROP_UProjectileMovementComponent_bIsSliding_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bIsSliding_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>On the first few bounces (up to this amount), allow extra iterations over MaxSimulationIterations if necessary. </para>
 		/// </summary>
 		public int BounceAdditionalIterations
@@ -215,6 +362,47 @@ namespace UnrealEngine
 			set => E_PROP_UProjectileMovementComponent_Bounciness_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// <para>If true, this projectile will have its rotation updated each frame to match the direction of its velocity. </para>
+		/// </summary>
+		public byte bRotationFollowsVelocity
+		{
+			get => E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bRotationFollowsVelocity_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, simple bounces will be simulated. Set this to false to stop simulating on contact. </para>
+		/// </summary>
+		public byte bShouldBounce
+		{
+			get => E_PROP_UProjectileMovementComponent_bShouldBounce_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bShouldBounce_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, does normal simulation ticking and update. If false, simulation is halted, but component will still tick (allowing interpolation to run). </para>
+		/// </summary>
+		public byte bSimulationEnabled
+		{
+			get => E_PROP_UProjectileMovementComponent_bSimulationEnabled_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bSimulationEnabled_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, movement uses swept collision checks. </para>
+		/// <para>If false, collision effectively teleports to the destination. Note that when this is disabled, movement will never generate blocking collision hits (though overlaps will be updated). </para>
+		/// </summary>
+		public byte bSweepCollision
+		{
+			get => E_PROP_UProjectileMovementComponent_bSweepCollision_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_bSweepCollision_SET(NativePointer, value);
+		}
+
 		public float Buoyancy
 		{
 			get => E_PROP_UProjectileMovementComponent_Buoyancy_GET(NativePointer);
@@ -243,6 +431,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_GET(NativePointer);
 			set => E_PROP_UProjectileMovementComponent_HomingAccelerationMagnitude_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Initial speed of projectile. If greater than zero, this will override the initial Velocity value and instead treat Velocity as a direction. </para>
+		/// </summary>
+		public float InitialSpeed
+		{
+			get => E_PROP_UProjectileMovementComponent_InitialSpeed_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_InitialSpeed_SET(NativePointer, value);
 		}
 
 		
@@ -314,6 +512,16 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_GET(NativePointer);
 			set => E_PROP_UProjectileMovementComponent_MaxSimulationTimeStep_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Limit on speed of projectile (0 means no limit). </para>
+		/// </summary>
+		public float MaxSpeed
+		{
+			get => E_PROP_UProjectileMovementComponent_MaxSpeed_GET(NativePointer);
+			set => E_PROP_UProjectileMovementComponent_MaxSpeed_SET(NativePointer, value);
 		}
 
 		

@@ -166,6 +166,18 @@ extern "C"
 		return (INT_PTR)NewObject<USkeletalMeshComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_AllowAnimCurveEvaluation(USkeletalMeshComponent* Self, char* NameOfCurve, bool bAllow)
+	{
+		auto _p0 = ConvertFromManage_FName(NameOfCurve);
+		auto _p1 = bAllow;
+		Self->AllowAnimCurveEvaluation(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_BindClothToMasterPoseComponent(USkeletalMeshComponent* Self)
+	{
+		Self->BindClothToMasterPoseComponent();
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_ClearMorphTargets(USkeletalMeshComponent* Self)
 	{
 		Self->ClearMorphTargets();
@@ -174,6 +186,31 @@ extern "C"
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_CreateBodySetup(USkeletalMeshComponent* Self)
 	{
 		Self->CreateBodySetup();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ForceClothNextUpdateTeleport(USkeletalMeshComponent* Self)
+	{
+		Self->ForceClothNextUpdateTeleport();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ForceClothNextUpdateTeleportAndReset(USkeletalMeshComponent* Self)
+	{
+		Self->ForceClothNextUpdateTeleportAndReset();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetAllowedAnimCurveEvaluate(USkeletalMeshComponent* Self)
+	{
+		return Self->GetAllowedAnimCurveEvaluate();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetClothMaxDistanceScale(USkeletalMeshComponent* Self)
+	{
+		return Self->GetClothMaxDistanceScale();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetDisableAnimCurves(USkeletalMeshComponent* Self)
+	{
+		return Self->GetDisableAnimCurves();
 	}
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(USkeletalMeshComponent* Self)
@@ -202,9 +239,25 @@ extern "C"
 		return Self->HasValidAnimationInstance();
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_InitializeAnimScriptInstance(USkeletalMeshComponent* Self, bool bForceReinit)
+	{
+		auto _p0 = bForceReinit;
+		return Self->InitializeAnimScriptInstance(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_IsClothingSimulationSuspended(USkeletalMeshComponent* Self)
+	{
+		return Self->IsClothingSimulationSuspended();
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_IsPlaying(USkeletalMeshComponent* Self)
 	{
 		return Self->IsPlaying();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_IsWindEnabled(USkeletalMeshComponent* Self)
+	{
+		return Self->IsWindEnabled();
 	}
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_Play(USkeletalMeshComponent* Self, bool bLooping)
@@ -213,10 +266,43 @@ extern "C"
 		Self->Play(_p0);
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ResetAllowedAnimCurveEvaluation(USkeletalMeshComponent* Self)
+	{
+		Self->ResetAllowedAnimCurveEvaluation();
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_ResetAnimInstanceDynamics(USkeletalMeshComponent* Self, ETeleportType InTeleportType)
 	{
 		auto _p0 = InTeleportType;
 		Self->ResetAnimInstanceDynamics(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ResetClothTeleportMode(USkeletalMeshComponent* Self)
+	{
+		Self->ResetClothTeleportMode();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_ResumeClothingSimulation(USkeletalMeshComponent* Self)
+	{
+		Self->ResumeClothingSimulation();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetAllowAnimCurveEvaluation(USkeletalMeshComponent* Self, bool bInAllow)
+	{
+		auto _p0 = bInAllow;
+		Self->SetAllowAnimCurveEvaluation(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetClothMaxDistanceScale(USkeletalMeshComponent* Self, float Scale)
+	{
+		auto _p0 = Scale;
+		Self->SetClothMaxDistanceScale(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetDisableAnimCurves(USkeletalMeshComponent* Self, bool bInDisableAnimCurves)
+	{
+		auto _p0 = bInDisableAnimCurves;
+		Self->SetDisableAnimCurves(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(USkeletalMeshComponent* Self, bool bInDisablePostProcess)
@@ -246,14 +332,31 @@ extern "C"
 		Self->SetPosition(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_SetUpdateAnimationInEditor(USkeletalMeshComponent* Self, bool NewUpdateState)
+	{
+		auto _p0 = NewUpdateState;
+		Self->SetUpdateAnimationInEditor(_p0);
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_Stop(USkeletalMeshComponent* Self)
 	{
 		Self->Stop();
 	}
 
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_SuspendClothingSimulation(USkeletalMeshComponent* Self)
+	{
+		Self->SuspendClothingSimulation();
+	}
+
 	DOTNET_EXPORT auto E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(USkeletalMeshComponent* Self)
 	{
 		Self->ToggleDisablePostProcessBlueprint();
+	}
+
+	DOTNET_EXPORT auto E_USkeletalMeshComponent_UnbindClothFromMasterPoseComponent(USkeletalMeshComponent* Self, bool bRestoreSimulationSpace)
+	{
+		auto _p0 = bRestoreSimulationSpace;
+		Self->UnbindClothFromMasterPoseComponent(_p0);
 	}
 
 }

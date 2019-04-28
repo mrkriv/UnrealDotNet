@@ -64,14 +64,26 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_GET(UStaticMeshComponent* Ptr) { return Ptr->DistanceFieldSelfShadowBias; }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_DistanceFieldSelfShadowBias_SET(UStaticMeshComponent* Ptr, float Value) { Ptr->DistanceFieldSelfShadowBias = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_ForcedLodModel_GET(UStaticMeshComponent* Ptr) { return Ptr->ForcedLodModel; }
+	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_ForcedLodModel_SET(UStaticMeshComponent* Ptr, int32 Value) { Ptr->ForcedLodModel = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_LightmassSettings_GET(UStaticMeshComponent* Ptr) { return (INT_PTR)&(Ptr->LightmassSettings); }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_LightmassSettings_SET(UStaticMeshComponent* Ptr, INT_PTR Value) { Ptr->LightmassSettings = *(FLightmassPrimitiveSettings*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_MinLOD_GET(UStaticMeshComponent* Ptr) { return Ptr->MinLOD; }
+	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_MinLOD_SET(UStaticMeshComponent* Ptr, int32 Value) { Ptr->MinLOD = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_OverriddenLightMapRes_GET(UStaticMeshComponent* Ptr) { return Ptr->OverriddenLightMapRes; }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_OverriddenLightMapRes_SET(UStaticMeshComponent* Ptr, int32 Value) { Ptr->OverriddenLightMapRes = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_PreviousLODLevel_GET(UStaticMeshComponent* Ptr) { return Ptr->PreviousLODLevel; }
+	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_PreviousLODLevel_SET(UStaticMeshComponent* Ptr, int32 Value) { Ptr->PreviousLODLevel = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_GET(UStaticMeshComponent* Ptr) { return Ptr->StreamingDistanceMultiplier; }
 	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_StreamingDistanceMultiplier_SET(UStaticMeshComponent* Ptr, float Value) { Ptr->StreamingDistanceMultiplier = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UStaticMeshComponent_SubDivisionStepSize_GET(UStaticMeshComponent* Ptr) { return Ptr->SubDivisionStepSize; }
+	DOTNET_EXPORT void E_PROP_UStaticMeshComponent_SubDivisionStepSize_SET(UStaticMeshComponent* Ptr, int32 Value) { Ptr->SubDivisionStepSize = Value; }
 	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UStaticMeshComponent(UObject* Parent, char* Name)

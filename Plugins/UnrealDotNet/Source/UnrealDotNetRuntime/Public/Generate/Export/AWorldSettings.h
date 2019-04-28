@@ -19,6 +19,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_bEnableAISystem_GET(AWorldSettings* Ptr) { return Ptr->bEnableAISystem; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_bEnableAISystem_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bEnableAISystem = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AWorldSettings_bEnableWorldBoundsChecks_GET(AWorldSettings* Ptr) { return Ptr->bEnableWorldBoundsChecks; }
+	DOTNET_EXPORT void E_PROP_AWorldSettings_bEnableWorldBoundsChecks_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bEnableWorldBoundsChecks = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_bEnableWorldComposition_GET(AWorldSettings* Ptr) { return Ptr->bEnableWorldComposition; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_bEnableWorldComposition_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bEnableWorldComposition = Value; }
 	
@@ -42,6 +45,12 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_GET(AWorldSettings* Ptr) { return Ptr->bOverrideDefaultBroadphaseSettings; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_bOverrideDefaultBroadphaseSettings_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bOverrideDefaultBroadphaseSettings = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_GET(AWorldSettings* Ptr) { return Ptr->bPlaceCellsOnlyAlongCameraTracks; }
+	DOTNET_EXPORT void E_PROP_AWorldSettings_bPlaceCellsOnlyAlongCameraTracks_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bPlaceCellsOnlyAlongCameraTracks = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AWorldSettings_bPrecomputeVisibility_GET(AWorldSettings* Ptr) { return Ptr->bPrecomputeVisibility; }
+	DOTNET_EXPORT void E_PROP_AWorldSettings_bPrecomputeVisibility_SET(AWorldSettings* Ptr, uint8 Value) { Ptr->bPrecomputeVisibility = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_BroadphaseSettings_GET(AWorldSettings* Ptr) { return (INT_PTR)&(Ptr->BroadphaseSettings); }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_BroadphaseSettings_SET(AWorldSettings* Ptr, INT_PTR Value) { Ptr->BroadphaseSettings = *(FBroadphaseSettings*)Value; }
@@ -99,6 +108,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_TimeDilation_GET(AWorldSettings* Ptr) { return Ptr->TimeDilation; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_TimeDilation_SET(AWorldSettings* Ptr, float Value) { Ptr->TimeDilation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_AWorldSettings_VisibilityCellSize_GET(AWorldSettings* Ptr) { return Ptr->VisibilityCellSize; }
+	DOTNET_EXPORT void E_PROP_AWorldSettings_VisibilityCellSize_SET(AWorldSettings* Ptr, int32 Value) { Ptr->VisibilityCellSize = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_WorldGravityZ_GET(AWorldSettings* Ptr) { return Ptr->WorldGravityZ; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_WorldGravityZ_SET(AWorldSettings* Ptr, float Value) { Ptr->WorldGravityZ = Value; }

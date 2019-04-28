@@ -11,6 +11,7 @@
 #include "Runtime/Engine/Classes/GameFramework/ForceFeedbackEffect.h"
 #include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineBaseTypes.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 #include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineTypes.h"
 #include "Runtime/Engine/Classes/Components/AudioComponent.h"
@@ -22,6 +23,7 @@
 #include "Runtime/Engine/Classes/GameFramework/WorldSettings.h"
 #include "Runtime/Engine/Classes/Components/InputComponent.h"
 #include "Runtime/Engine/Classes/Engine/Scene.h"
+#include "Runtime/Engine/Classes/Engine/Canvas.h"
 #include "Runtime/Core/Public/Math/CapsuleShape.h"
 #include "Runtime/Engine/Classes/Components/ChildActorComponent.h"
 #include "Runtime/Engine/Classes/Engine/Engine.h"
@@ -121,6 +123,28 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FActorComponentTickFunction_Target_GET(FActorComponentTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
 	DOTNET_EXPORT void E_PROP_FActorComponentTickFunction_Target_SET(FActorComponentTickFunction* Ptr, UActorComponent* Value) { Ptr->Target = Value; }
 	
+	
+	/*	FActorSpawnParameters	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FActorSpawnParameters() { return (INT_PTR) new FActorSpawnParameters(); }
+	
+	DOTNET_EXPORT auto E_PROP_FActorSpawnParameters_Instigator_GET(FActorSpawnParameters* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Instigator); }
+	DOTNET_EXPORT void E_PROP_FActorSpawnParameters_Instigator_SET(FActorSpawnParameters* Ptr, APawn* Value) { Ptr->Instigator = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FActorSpawnParameters_Name_GET(FActorSpawnParameters* Ptr) { return ConvertToManage_StringWrapper(Ptr->Name); }
+	DOTNET_EXPORT void E_PROP_FActorSpawnParameters_Name_SET(FActorSpawnParameters* Ptr, char* Value) { Ptr->Name = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_FActorSpawnParameters_Owner_GET(FActorSpawnParameters* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Owner); }
+	DOTNET_EXPORT void E_PROP_FActorSpawnParameters_Owner_SET(FActorSpawnParameters* Ptr, AActor* Value) { Ptr->Owner = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FActorSpawnParameters_Template_GET(FActorSpawnParameters* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Template); }
+	DOTNET_EXPORT void E_PROP_FActorSpawnParameters_Template_SET(FActorSpawnParameters* Ptr, AActor* Value) { Ptr->Template = Value; }
+	
+	DOTNET_EXPORT auto E_FActorSpawnParameters_IsRemoteOwned(FActorSpawnParameters* Self)
+	{
+		return Self->IsRemoteOwned();
+	}
+
 	
 	/*	FActorTickFunction	*/
 	
@@ -788,6 +812,23 @@ extern "C"
 		Self->ExportToPostProcessSettings(_p0);
 	}
 
+	
+	/*	FCanvasIcon	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCanvasIcon() { return (INT_PTR) new FCanvasIcon(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCanvasIcon_U_GET(FCanvasIcon* Ptr) { return Ptr->U; }
+	DOTNET_EXPORT void E_PROP_FCanvasIcon_U_SET(FCanvasIcon* Ptr, float Value) { Ptr->U = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCanvasIcon_UL_GET(FCanvasIcon* Ptr) { return Ptr->UL; }
+	DOTNET_EXPORT void E_PROP_FCanvasIcon_UL_SET(FCanvasIcon* Ptr, float Value) { Ptr->UL = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCanvasIcon_V_GET(FCanvasIcon* Ptr) { return Ptr->V; }
+	DOTNET_EXPORT void E_PROP_FCanvasIcon_V_SET(FCanvasIcon* Ptr, float Value) { Ptr->V = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCanvasIcon_VL_GET(FCanvasIcon* Ptr) { return Ptr->VL; }
+	DOTNET_EXPORT void E_PROP_FCanvasIcon_VL_SET(FCanvasIcon* Ptr, float Value) { Ptr->VL = Value; }
+	
 	
 	/*	FCapsuleShape	*/
 	
@@ -2090,6 +2131,31 @@ extern "C"
 	}
 
 	
+	/*	FLevelStreamingGCHelper	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingGCHelper() { return (INT_PTR) new FLevelStreamingGCHelper(); }
+	
+	DOTNET_EXPORT auto E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(FLevelStreamingGCHelper* Self)
+	{
+		Self->AddGarbageCollectorCallback();
+	}
+
+	DOTNET_EXPORT auto E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(FLevelStreamingGCHelper* Self)
+	{
+		return Self->GetNumLevelsPendingPurge();
+	}
+
+	DOTNET_EXPORT auto E_FLevelStreamingGCHelper_PrepareStreamedOutLevelsForGC(FLevelStreamingGCHelper* Self)
+	{
+		Self->PrepareStreamedOutLevelsForGC();
+	}
+
+	DOTNET_EXPORT auto E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(FLevelStreamingGCHelper* Self)
+	{
+		Self->VerifyLevelsGotRemovedByGC();
+	}
+
+	
 	/*	FLevelStreamingStatus	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(char* InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int32 InLODIndex) { return (INT_PTR) new FLevelStreamingStatus(ConvertFromManage_FName(InPackageName), bInShouldBeLoaded, bInShouldBeVisible, InLODIndex); }
@@ -2098,6 +2164,30 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FLevelStreamingStatus_PackageName_GET(FLevelStreamingStatus* Ptr) { return ConvertToManage_StringWrapper(Ptr->PackageName); }
 	DOTNET_EXPORT void E_PROP_FLevelStreamingStatus_PackageName_SET(FLevelStreamingStatus* Ptr, char* Value) { Ptr->PackageName = ConvertFromManage_FName(Value); }
+	
+	
+	/*	FLevelStreamingWrapper	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelStreamingWrapper() { return (INT_PTR) new FLevelStreamingWrapper(); }
+	
+	
+	/*	FLevelViewportInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelViewportInfo() { return (INT_PTR) new FLevelViewportInfo(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLevelViewportInfo_FVector_FRotator_float(INT_PTR InCamPosition, INT_PTR InCamRotation, float InCamOrthoZoom) { return (INT_PTR) new FLevelViewportInfo(*(FVector*)InCamPosition, *(FRotator*)InCamRotation, InCamOrthoZoom); }
+	
+	DOTNET_EXPORT auto E_PROP_FLevelViewportInfo_CamOrthoZoom_GET(FLevelViewportInfo* Ptr) { return Ptr->CamOrthoZoom; }
+	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamOrthoZoom_SET(FLevelViewportInfo* Ptr, float Value) { Ptr->CamOrthoZoom = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FLevelViewportInfo_CamPosition_GET(FLevelViewportInfo* Ptr) { return (INT_PTR)&(Ptr->CamPosition); }
+	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamPosition_SET(FLevelViewportInfo* Ptr, INT_PTR Value) { Ptr->CamPosition = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FLevelViewportInfo_CamRotation_GET(FLevelViewportInfo* Ptr) { return (INT_PTR)&(Ptr->CamRotation); }
+	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamRotation_SET(FLevelViewportInfo* Ptr, INT_PTR Value) { Ptr->CamRotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FLevelViewportInfo_CamUpdated_GET(FLevelViewportInfo* Ptr) { return Ptr->CamUpdated; }
+	DOTNET_EXPORT void E_PROP_FLevelViewportInfo_CamUpdated_SET(FLevelViewportInfo* Ptr, bool Value) { Ptr->CamUpdated = Value; }
 	
 	
 	/*	FLightingChannels	*/
@@ -5181,6 +5271,11 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FSceneCaptureViewInfo_ViewRotationMatrix_SET(FSceneCaptureViewInfo* Ptr, INT_PTR Value) { Ptr->ViewRotationMatrix = *(FMatrix*)Value; }
 	
 	
+	/*	FScopedLevelCollectionContextSwitch	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(int32 InLevelCollectionIndex, UWorld* InWorld) { return (INT_PTR) new FScopedLevelCollectionContextSwitch(InLevelCollectionIndex, InWorld); }
+	
+	
 	/*	FScreenMessageString	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FScreenMessageString() { return (INT_PTR) new FScreenMessageString(); }
@@ -5245,6 +5340,13 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSimpleReticle() { return (INT_PTR) new FSimpleReticle(); }
 	
+	DOTNET_EXPORT auto E_FSimpleReticle_Draw(FSimpleReticle* Self, UCanvas* InCanvas, INT_PTR InColor)
+	{
+		auto _p0 = InCanvas;
+		auto _p1 = *(FLinearColor*)InColor;
+		Self->Draw(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_FSimpleReticle_SetupReticle(FSimpleReticle* Self, float Length, float InnerSize)
 	{
 		auto _p0 = Length;
@@ -7311,6 +7413,17 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FWorldContext_TravelURL_GET(FWorldContext* Ptr) { return ConvertToManage_StringWrapper(Ptr->TravelURL); }
 	DOTNET_EXPORT void E_PROP_FWorldContext_TravelURL_SET(FWorldContext* Ptr, char* Value) { Ptr->TravelURL = ConvertFromManage_FString(Value); }
 	
+	DOTNET_EXPORT auto E_FWorldContext_SetCurrentWorld(FWorldContext* Self, UWorld* World)
+	{
+		auto _p0 = World;
+		Self->SetCurrentWorld(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FWorldContext_World(FWorldContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->World());
+	}
+
 	
 	/*	PingAvgData	*/
 	

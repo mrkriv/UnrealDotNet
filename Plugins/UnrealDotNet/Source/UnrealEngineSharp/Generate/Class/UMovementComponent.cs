@@ -66,6 +66,26 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UMovementComponent_bUpdateOnlyIfRendered_SET(IntPtr Ptr, byte Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_UMovementComponent_MoveComponentFlags_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_MoveComponentFlags_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UMovementComponent_UpdatedComponent_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_UpdatedComponent_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UMovementComponent_UpdatedPrimitive_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_UpdatedPrimitive_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_UMovementComponent_Velocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UMovementComponent_Velocity_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UMovementComponent(IntPtr Parent, string Name);
@@ -287,6 +307,49 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UMovementComponent_bUpdateOnlyIfRendered_GET(NativePointer);
 			set => E_PROP_UMovementComponent_bUpdateOnlyIfRendered_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Flags that control the behavior of calls to MoveComponent() on our UpdatedComponent. </para>
+		/// <para>@see EMoveComponentFlags </para>
+		/// </summary>
+		public EMoveComponentFlags MoveComponentFlags
+		{
+			get => (EMoveComponentFlags)E_PROP_UMovementComponent_MoveComponentFlags_GET(NativePointer);
+			set => E_PROP_UMovementComponent_MoveComponentFlags_SET(NativePointer, (byte)value);
+		}
+
+		
+		/// <summary>
+		/// <para>The component we move and update. </para>
+		/// <para>If this is null at startup and bAutoRegisterUpdatedComponent is true, the owning Actor's root component will automatically be set as our UpdatedComponent at startup. </para>
+		/// <para>@see bAutoRegisterUpdatedComponent, SetUpdatedComponent(), UpdatedPrimitive </para>
+		/// </summary>
+		public USceneComponent UpdatedComponent
+		{
+			get => E_PROP_UMovementComponent_UpdatedComponent_GET(NativePointer);
+			set => E_PROP_UMovementComponent_UpdatedComponent_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>UpdatedComponent, cast as a UPrimitiveComponent. May be invalid if UpdatedComponent was null or not a UPrimitiveComponent. </para>
+		/// </summary>
+		public UPrimitiveComponent UpdatedPrimitive
+		{
+			get => E_PROP_UMovementComponent_UpdatedPrimitive_GET(NativePointer);
+			set => E_PROP_UMovementComponent_UpdatedPrimitive_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Current velocity of updated component. </para>
+		/// </summary>
+		public FVector Velocity
+		{
+			get => E_PROP_UMovementComponent_Velocity_GET(NativePointer);
+			set => E_PROP_UMovementComponent_Velocity_SET(NativePointer, value);
 		}
 
 		#endregion

@@ -16,6 +16,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_ULightmassPortalComponent_PreviewBox_GET(ULightmassPortalComponent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PreviewBox); }
+	DOTNET_EXPORT void E_PROP_ULightmassPortalComponent_PreviewBox_SET(ULightmassPortalComponent* Ptr, UBoxComponent* Value) { Ptr->PreviewBox = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ULightmassPortalComponent(UObject* Parent, char* Name)
 	{

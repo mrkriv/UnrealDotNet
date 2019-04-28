@@ -149,6 +149,17 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->GetGlobalUserConfigFilename());
 	}
 
+	DOTNET_EXPORT auto E_UObject_GetWorld(UObject* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
+	DOTNET_EXPORT auto E_UObject_GetWorldChecked(UObject* Self, bool bSupported)
+	{
+		auto& _p0 = bSupported;
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorldChecked(_p0));
+	}
+
 	DOTNET_EXPORT auto E_UObject_ImplementsGetWorld(UObject* Self)
 	{
 		return Self->ImplementsGetWorld();

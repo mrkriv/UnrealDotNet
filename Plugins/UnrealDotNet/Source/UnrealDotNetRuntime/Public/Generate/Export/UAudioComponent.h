@@ -45,6 +45,66 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UAudioComponent_AutoAttachSocketName_GET(UAudioComponent* Ptr) { return ConvertToManage_StringWrapper(Ptr->AutoAttachSocketName); }
 	DOTNET_EXPORT void E_PROP_UAudioComponent_AutoAttachSocketName_SET(UAudioComponent* Ptr, char* Value) { Ptr->AutoAttachSocketName = ConvertFromManage_FName(Value); }
 	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bAllowSpatialization_GET(UAudioComponent* Ptr) { return Ptr->bAllowSpatialization; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bAllowSpatialization_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bAllowSpatialization = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bAlwaysPlay_GET(UAudioComponent* Ptr) { return Ptr->bAlwaysPlay; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bAlwaysPlay_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bAlwaysPlay = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bAutoDestroy_GET(UAudioComponent* Ptr) { return Ptr->bAutoDestroy; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bAutoDestroy_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bAutoDestroy = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bAutoManageAttachment_GET(UAudioComponent* Ptr) { return Ptr->bAutoManageAttachment; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bAutoManageAttachment_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bAutoManageAttachment = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bCenterChannelOnly_GET(UAudioComponent* Ptr) { return Ptr->bCenterChannelOnly; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bCenterChannelOnly_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bCenterChannelOnly = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bEnableLowPassFilter_GET(UAudioComponent* Ptr) { return Ptr->bEnableLowPassFilter; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bEnableLowPassFilter_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bEnableLowPassFilter = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bEQFilterApplied_GET(UAudioComponent* Ptr) { return Ptr->bEQFilterApplied; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bEQFilterApplied_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bEQFilterApplied = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bIgnoreForFlushing_GET(UAudioComponent* Ptr) { return Ptr->bIgnoreForFlushing; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bIgnoreForFlushing_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bIgnoreForFlushing = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bIsMusic_GET(UAudioComponent* Ptr) { return Ptr->bIsMusic; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bIsMusic_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bIsMusic = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bIsPaused_GET(UAudioComponent* Ptr) { return Ptr->bIsPaused; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bIsPaused_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bIsPaused = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bIsPreviewSound_GET(UAudioComponent* Ptr) { return Ptr->bIsPreviewSound; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bIsPreviewSound_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bIsPreviewSound = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bIsUISound_GET(UAudioComponent* Ptr) { return Ptr->bIsUISound; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bIsUISound_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bIsUISound = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bOverrideAttenuation_GET(UAudioComponent* Ptr) { return Ptr->bOverrideAttenuation; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bOverrideAttenuation_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bOverrideAttenuation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bOverridePriority_GET(UAudioComponent* Ptr) { return Ptr->bOverridePriority; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bOverridePriority_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bOverridePriority = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bOverrideSubtitlePriority_GET(UAudioComponent* Ptr) { return Ptr->bOverrideSubtitlePriority; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bOverrideSubtitlePriority_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bOverrideSubtitlePriority = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bPreviewComponent_GET(UAudioComponent* Ptr) { return Ptr->bPreviewComponent; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bPreviewComponent_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bPreviewComponent = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bReverb_GET(UAudioComponent* Ptr) { return Ptr->bReverb; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bReverb_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bReverb = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_GET(UAudioComponent* Ptr) { return Ptr->bShouldRemainActiveIfDropped; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bShouldRemainActiveIfDropped_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bShouldRemainActiveIfDropped = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_GET(UAudioComponent* Ptr) { return Ptr->bStopWhenOwnerDestroyed; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bStopWhenOwnerDestroyed_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bStopWhenOwnerDestroyed = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_UAudioComponent_bSuppressSubtitles_GET(UAudioComponent* Ptr) { return Ptr->bSuppressSubtitles; }
+	DOTNET_EXPORT void E_PROP_UAudioComponent_bSuppressSubtitles_SET(UAudioComponent* Ptr, uint8 Value) { Ptr->bSuppressSubtitles = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UAudioComponent_EnvelopeFollowerAttackTime_GET(UAudioComponent* Ptr) { return Ptr->EnvelopeFollowerAttackTime; }
 	DOTNET_EXPORT void E_PROP_UAudioComponent_EnvelopeFollowerAttackTime_SET(UAudioComponent* Ptr, int32 Value) { Ptr->EnvelopeFollowerAttackTime = Value; }
 	

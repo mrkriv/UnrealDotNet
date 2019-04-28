@@ -30,6 +30,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void AddAdmin(APlayerController* AdminPlayer) override;
+	virtual void DumpSessionState() override;
+	virtual void HandleMatchHasEnded() override;
+	virtual void HandleMatchHasStarted() override;
+	virtual void HandleMatchIsWaitingToStart() override;
+	virtual void InitOptions(const FString& Options) override;
+	virtual void NotifyLogout(const APlayerController* PC) override;
+	virtual void OnAutoLoginComplete(int32 LocalUserNum, bool bWasSuccessful, const FString& Error) override;
+	virtual void PostLogin(APlayerController* NewPlayer) override;
+	virtual void PostSeamlessTravel() override;
+	virtual void RegisterServer() override;
+	virtual void RegisterServerFailed() override;
+	virtual void RemoveAdmin(APlayerController* AdminPlayer) override;
+	virtual void Restart() override;
+	virtual void ReturnToMainMenuHost() override;
+	virtual void UnregisterPlayer(const APlayerController* ExitingPlayer) override;
+	virtual void UpdateSessionJoinability(FName InSessionName, bool bPublicSearchable, bool bAllowInvites, bool bJoinViaPresence, bool bJoinViaPresenceFriendsOnly) override;
 	
 protected:
 };

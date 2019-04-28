@@ -30,6 +30,45 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UPoseableMeshComponent(IntPtr Parent, string Name);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPoseableMeshComponent_CopyPoseFromSkeletalComponent(IntPtr self, IntPtr inComponentToCopy);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPoseableMeshComponent_FillComponentSpaceTransforms(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPoseableMeshComponent_IsRunningParallelEvaluation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPoseableMeshComponent_MarkRefreshTransformDirty(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPoseableMeshComponent_ResetBoneTransformByName(IntPtr self, string boneName);
+		
+		#endregion
+		
+		#region ExternMethods
+		public void CopyPoseFromSkeletalComponent(USkeletalMeshComponent inComponentToCopy)
+			=> E_UPoseableMeshComponent_CopyPoseFromSkeletalComponent(this, inComponentToCopy);
+		
+		
+		/// <summary>
+		/// <para>Take the BoneSpaceTransforms array (translation vector, rotation quaternion and scale vector) and update the array of component-space bone transformation matrices (SpaceBases). </para>
+		/// <para>It will work down hierarchy multiplying the component-space transform of the parent by the relative transform of the child. </para>
+		/// <para>This code also applies any per-bone rotators etc. as part of the composition process </para>
+		/// </summary>
+		public void FillComponentSpaceTransforms()
+			=> E_UPoseableMeshComponent_FillComponentSpaceTransforms(this);
+		
+		public bool IsRunningParallelEvaluation()
+			=> E_UPoseableMeshComponent_IsRunningParallelEvaluation(this);
+		
+		public void MarkRefreshTransformDirty()
+			=> E_UPoseableMeshComponent_MarkRefreshTransformDirty(this);
+		
+		public void ResetBoneTransformByName(string boneName)
+			=> E_UPoseableMeshComponent_ResetBoneTransformByName(this, boneName);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(UPoseableMeshComponent self)

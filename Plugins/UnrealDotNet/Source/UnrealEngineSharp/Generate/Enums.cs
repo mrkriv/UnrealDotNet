@@ -619,6 +619,14 @@ namespace UnrealEngine
 		UseGlobalPhysicsSetting,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\World.h:730
+	
+	public enum EProcessReason : byte
+	{
+		Add,
+		Reevaluate,
+	}
+
 	
 	/// <summary>
 	/// <para>static variable for default data to be used without reconstructing everytime </para>

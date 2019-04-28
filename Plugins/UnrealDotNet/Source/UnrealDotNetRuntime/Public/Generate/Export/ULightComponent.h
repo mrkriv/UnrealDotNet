@@ -16,6 +16,66 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_ULightComponent_BloomScale_GET(ULightComponent* Ptr) { return Ptr->BloomScale; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_BloomScale_SET(ULightComponent* Ptr, float Value) { Ptr->BloomScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_BloomThreshold_GET(ULightComponent* Ptr) { return Ptr->BloomThreshold; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_BloomThreshold_SET(ULightComponent* Ptr, float Value) { Ptr->BloomThreshold = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_GET(ULightComponent* Ptr) { return Ptr->bUseRayTracedDistanceFieldShadows; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_bUseRayTracedDistanceFieldShadows_SET(ULightComponent* Ptr, bool Value) { Ptr->bUseRayTracedDistanceFieldShadows = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_ContactShadowLength_GET(ULightComponent* Ptr) { return Ptr->ContactShadowLength; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_ContactShadowLength_SET(ULightComponent* Ptr, float Value) { Ptr->ContactShadowLength = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_DisabledBrightness_GET(ULightComponent* Ptr) { return Ptr->DisabledBrightness; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_DisabledBrightness_SET(ULightComponent* Ptr, float Value) { Ptr->DisabledBrightness = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_IESBrightnessScale_GET(ULightComponent* Ptr) { return Ptr->IESBrightnessScale; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_IESBrightnessScale_SET(ULightComponent* Ptr, float Value) { Ptr->IESBrightnessScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_LightFunctionFadeDistance_GET(ULightComponent* Ptr) { return Ptr->LightFunctionFadeDistance; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_LightFunctionFadeDistance_SET(ULightComponent* Ptr, float Value) { Ptr->LightFunctionFadeDistance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_LightFunctionScale_GET(ULightComponent* Ptr) { return (INT_PTR)&(Ptr->LightFunctionScale); }
+	DOTNET_EXPORT void E_PROP_ULightComponent_LightFunctionScale_SET(ULightComponent* Ptr, INT_PTR Value) { Ptr->LightFunctionScale = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_LightingChannels_GET(ULightComponent* Ptr) { return (INT_PTR)&(Ptr->LightingChannels); }
+	DOTNET_EXPORT void E_PROP_ULightComponent_LightingChannels_SET(ULightComponent* Ptr, INT_PTR Value) { Ptr->LightingChannels = *(FLightingChannels*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_MaxDistanceFadeRange_GET(ULightComponent* Ptr) { return Ptr->MaxDistanceFadeRange; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_MaxDistanceFadeRange_SET(ULightComponent* Ptr, float Value) { Ptr->MaxDistanceFadeRange = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_MaxDrawDistance_GET(ULightComponent* Ptr) { return Ptr->MaxDrawDistance; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_MaxDrawDistance_SET(ULightComponent* Ptr, float Value) { Ptr->MaxDrawDistance = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_MinRoughness_DEPRECATED_GET(ULightComponent* Ptr) { return Ptr->MinRoughness_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_MinRoughness_DEPRECATED_SET(ULightComponent* Ptr, float Value) { Ptr->MinRoughness_DEPRECATED = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_PreviewShadowMapChannel_GET(ULightComponent* Ptr) { return Ptr->PreviewShadowMapChannel; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_PreviewShadowMapChannel_SET(ULightComponent* Ptr, int32 Value) { Ptr->PreviewShadowMapChannel = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_RayStartOffsetDepthScale_GET(ULightComponent* Ptr) { return Ptr->RayStartOffsetDepthScale; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_RayStartOffsetDepthScale_SET(ULightComponent* Ptr, float Value) { Ptr->RayStartOffsetDepthScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_ShadowBias_GET(ULightComponent* Ptr) { return Ptr->ShadowBias; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_ShadowBias_SET(ULightComponent* Ptr, float Value) { Ptr->ShadowBias = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_GET(ULightComponent* Ptr) { return Ptr->ShadowMapChannel_DEPRECATED; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_ShadowMapChannel_DEPRECATED_SET(ULightComponent* Ptr, int32 Value) { Ptr->ShadowMapChannel_DEPRECATED = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_ShadowResolutionScale_GET(ULightComponent* Ptr) { return Ptr->ShadowResolutionScale; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_ShadowResolutionScale_SET(ULightComponent* Ptr, float Value) { Ptr->ShadowResolutionScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_ShadowSharpen_GET(ULightComponent* Ptr) { return Ptr->ShadowSharpen; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_ShadowSharpen_SET(ULightComponent* Ptr, float Value) { Ptr->ShadowSharpen = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_SpecularScale_GET(ULightComponent* Ptr) { return Ptr->SpecularScale; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_SpecularScale_SET(ULightComponent* Ptr, float Value) { Ptr->SpecularScale = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_ULightComponent_Temperature_GET(ULightComponent* Ptr) { return Ptr->Temperature; }
+	DOTNET_EXPORT void E_PROP_ULightComponent_Temperature_SET(ULightComponent* Ptr, float Value) { Ptr->Temperature = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ULightComponent(UObject* Parent, char* Name)
 	{

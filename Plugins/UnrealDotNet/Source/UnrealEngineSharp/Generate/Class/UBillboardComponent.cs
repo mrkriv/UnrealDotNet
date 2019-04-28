@@ -26,9 +26,80 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBillboardComponent_ScreenSize_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBillboardComponent_ScreenSize_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBillboardComponent_U_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBillboardComponent_U_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBillboardComponent_UL_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBillboardComponent_UL_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBillboardComponent_V_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBillboardComponent_V_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_UBillboardComponent_VL_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UBillboardComponent_VL_SET(IntPtr Ptr, float Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UBillboardComponent(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UBillboardComponent_SetUV(IntPtr self, int newU, int newUL, int newV, int newVL);
+		
+		#endregion
+		
+		#region Property
+		public float ScreenSize
+		{
+			get => E_PROP_UBillboardComponent_ScreenSize_GET(NativePointer);
+			set => E_PROP_UBillboardComponent_ScreenSize_SET(NativePointer, value);
+		}
+
+		public float U
+		{
+			get => E_PROP_UBillboardComponent_U_GET(NativePointer);
+			set => E_PROP_UBillboardComponent_U_SET(NativePointer, value);
+		}
+
+		public float UL
+		{
+			get => E_PROP_UBillboardComponent_UL_GET(NativePointer);
+			set => E_PROP_UBillboardComponent_UL_SET(NativePointer, value);
+		}
+
+		public float V
+		{
+			get => E_PROP_UBillboardComponent_V_GET(NativePointer);
+			set => E_PROP_UBillboardComponent_V_SET(NativePointer, value);
+		}
+
+		public float VL
+		{
+			get => E_PROP_UBillboardComponent_VL_GET(NativePointer);
+			set => E_PROP_UBillboardComponent_VL_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Change the sprite's UVs </para>
+		/// </summary>
+		public virtual void SetUV(int newU, int newUL, int newV, int newVL)
+			=> E_UBillboardComponent_SetUV(this, newU, newUL, newV, newVL);
 		
 		#endregion
 		

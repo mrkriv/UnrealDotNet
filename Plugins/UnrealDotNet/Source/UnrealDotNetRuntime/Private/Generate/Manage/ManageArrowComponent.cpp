@@ -26,4 +26,12 @@ bool UManageArrowComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManageArrowComponent::SetArrowColor(FLinearColor NewColor)
+{
+	Super::SetArrowColor(NewColor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetArrowColor", NewColor);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

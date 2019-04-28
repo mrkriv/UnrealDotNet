@@ -26,4 +26,20 @@ bool UManageLineBatchComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManageLineBatchComponent::DrawLine(const FVector& Start, const FVector& End, const FLinearColor& Color, uint8 DepthPriority, float Thickness, float LifeTime)
+{
+	Super::DrawLine(Start, End, Color, DepthPriority, Thickness, LifeTime);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DrawLine", Start, End, Color, DepthPriority, Thickness, LifeTime);
+}
+
+void UManageLineBatchComponent::DrawPoint(const FVector& Position, const FLinearColor& Color, float PointSize, uint8 DepthPriority, float LifeTime)
+{
+	Super::DrawPoint(Position, Color, PointSize, DepthPriority, LifeTime);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DrawPoint", Position, Color, PointSize, DepthPriority, LifeTime);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

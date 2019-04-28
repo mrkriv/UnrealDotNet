@@ -20,6 +20,8 @@ namespace UnrealEngine
 		{
 		}
 
+		public override void AddControlPointPosition(FVector pos, bool bPositionIsRelative) { }
+		
 		protected override void UpdateControlPoints(bool inForceUpdate) { }
 		
 		public static implicit operator IntPtr(ManageInterpToMovementComponent self)

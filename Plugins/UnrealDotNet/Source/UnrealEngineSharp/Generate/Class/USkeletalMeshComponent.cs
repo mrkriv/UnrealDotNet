@@ -271,10 +271,31 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_USkeletalMeshComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_AllowAnimCurveEvaluation(IntPtr self, string nameOfCurve, bool bAllow);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_BindClothToMasterPoseComponent(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_ClearMorphTargets(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_CreateBodySetup(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_ForceClothNextUpdateTeleport(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_ForceClothNextUpdateTeleportAndReset(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkeletalMeshComponent_GetAllowedAnimCurveEvaluate(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_USkeletalMeshComponent_GetClothMaxDistanceScale(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkeletalMeshComponent_GetDisableAnimCurves(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(IntPtr self);
@@ -292,13 +313,40 @@ namespace UnrealEngine
 		private static extern bool E_USkeletalMeshComponent_HasValidAnimationInstance(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkeletalMeshComponent_InitializeAnimScriptInstance(IntPtr self, bool bForceReinit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkeletalMeshComponent_IsClothingSimulationSuspended(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USkeletalMeshComponent_IsPlaying(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USkeletalMeshComponent_IsWindEnabled(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_Play(IntPtr self, bool bLooping);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_ResetAllowedAnimCurveEvaluation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_ResetAnimInstanceDynamics(IntPtr self, byte inTeleportType);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_ResetClothTeleportMode(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_ResumeClothingSimulation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_SetAllowAnimCurveEvaluation(IntPtr self, bool bInAllow);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_SetClothMaxDistanceScale(IntPtr self, float scale);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_SetDisableAnimCurves(IntPtr self, bool bInDisableAnimCurves);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(IntPtr self, bool bInDisablePostProcess);
@@ -313,10 +361,19 @@ namespace UnrealEngine
 		private static extern void E_USkeletalMeshComponent_SetPosition(IntPtr self, float inPos, bool bFireNotifies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_SetUpdateAnimationInEditor(IntPtr self, bool newUpdateState);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_Stop(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_SuspendClothingSimulation(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USkeletalMeshComponent_UnbindClothFromMasterPoseComponent(IntPtr self, bool bRestoreSimulationSpace);
 		
 		#endregion
 		
@@ -717,6 +774,19 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		public void AllowAnimCurveEvaluation(string nameOfCurve, bool bAllow)
+			=> E_USkeletalMeshComponent_AllowAnimCurveEvaluation(this, nameOfCurve, bAllow);
+		
+		
+		/// <summary>
+		/// <para>If this component has a valid MasterPoseComponent then this function makes cloth items on the slave component </para>
+		/// <para>take the transforms of the cloth items on the master component instead of simulating separately. </para>
+		/// <para>@Note This will FORCE any cloth actor on the master component to simulate in local space. Also </para>
+		/// <para>The meshes used in the components must be identical for the cloth to bind correctly </para>
+		/// </summary>
+		public void BindClothToMasterPoseComponent()
+			=> E_USkeletalMeshComponent_BindClothToMasterPoseComponent(this);
+		
 		
 		/// <summary>
 		/// <para>Clear all Morph Target that are set to this mesh </para>
@@ -726,6 +796,35 @@ namespace UnrealEngine
 		
 		public void CreateBodySetup()
 			=> E_USkeletalMeshComponent_CreateBodySetup(this);
+		
+		
+		/// <summary>
+		/// <para>Used to indicate we should force 'teleport' during the next call to UpdateClothState, </para>
+		/// <para>This will transform positions and velocities and thus keep the simulation state, just translate it to a new pose. </para>
+		/// </summary>
+		public void ForceClothNextUpdateTeleport()
+			=> E_USkeletalMeshComponent_ForceClothNextUpdateTeleport(this);
+		
+		
+		/// <summary>
+		/// <para>Used to indicate we should force 'teleport and reset' during the next call to UpdateClothState. </para>
+		/// <para>This can be used to reset it from a bad state or by a teleport where the old state is not important anymore. </para>
+		/// </summary>
+		public void ForceClothNextUpdateTeleportAndReset()
+			=> E_USkeletalMeshComponent_ForceClothNextUpdateTeleportAndReset(this);
+		
+		public bool GetAllowedAnimCurveEvaluate()
+			=> E_USkeletalMeshComponent_GetAllowedAnimCurveEvaluate(this);
+		
+		
+		/// <summary>
+		/// <para>Get/Set the max distance scale of clothing mesh vertices </para>
+		/// </summary>
+		public float GetClothMaxDistanceScale()
+			=> E_USkeletalMeshComponent_GetClothMaxDistanceScale(this);
+		
+		public bool GetDisableAnimCurves()
+			=> E_USkeletalMeshComponent_GetDisableAnimCurves(this);
 		
 		public bool GetDisablePostProcessBlueprint()
 			=> E_USkeletalMeshComponent_GetDisablePostProcessBlueprint(this);
@@ -751,11 +850,35 @@ namespace UnrealEngine
 		public bool HasValidAnimationInstance()
 			=> E_USkeletalMeshComponent_HasValidAnimationInstance(this);
 		
+		public bool InitializeAnimScriptInstance(bool bForceReinit = true)
+			=> E_USkeletalMeshComponent_InitializeAnimScriptInstance(this, bForceReinit);
+		
+		
+		/// <summary>
+		/// <para>Gets whether or not the clothing simulation is currently suspended </para>
+		/// </summary>
+		public bool IsClothingSimulationSuspended()
+			=> E_USkeletalMeshComponent_IsClothingSimulationSuspended(this);
+		
 		public bool IsPlaying()
 			=> E_USkeletalMeshComponent_IsPlaying(this);
 		
+		
+		/// <summary>
+		/// <return>true if wind is enabled </return>
+		/// </summary>
+		public virtual bool IsWindEnabled()
+			=> E_USkeletalMeshComponent_IsWindEnabled(this);
+		
 		public void Play(bool bLooping)
 			=> E_USkeletalMeshComponent_Play(this, bLooping);
+		
+		
+		/// <summary>
+		/// <para>By reset, it will allow all the curves to be evaluated </para>
+		/// </summary>
+		public void ResetAllowedAnimCurveEvaluation()
+			=> E_USkeletalMeshComponent_ResetAllowedAnimCurveEvaluation(this);
 		
 		
 		/// <summary>
@@ -764,6 +887,34 @@ namespace UnrealEngine
 		/// </summary>
 		public void ResetAnimInstanceDynamics(ETeleportType inTeleportType)
 			=> E_USkeletalMeshComponent_ResetAnimInstanceDynamics(this, (byte)inTeleportType);
+		
+		
+		/// <summary>
+		/// <para>Reset the teleport mode of a next update to 'Continuous' </para>
+		/// </summary>
+		public void ResetClothTeleportMode()
+			=> E_USkeletalMeshComponent_ResetClothTeleportMode(this);
+		
+		
+		/// <summary>
+		/// <para>Resumes a previously suspended clothing simulation, teleporting the clothing on the next tick </para>
+		/// </summary>
+		public void ResumeClothingSimulation()
+			=> E_USkeletalMeshComponent_ResumeClothingSimulation(this);
+		
+		public void SetAllowAnimCurveEvaluation(bool bInAllow)
+			=> E_USkeletalMeshComponent_SetAllowAnimCurveEvaluation(this, bInAllow);
+		
+		public void SetClothMaxDistanceScale(float scale)
+			=> E_USkeletalMeshComponent_SetClothMaxDistanceScale(this, scale);
+		
+		
+		/// <summary>
+		/// <para>return true if currently updating in editor is true </para>
+		/// <para>this is non BP because this is only used for slave component to detect master component ticking state </para>
+		/// </summary>
+		public void SetDisableAnimCurves(bool bInDisableAnimCurves)
+			=> E_USkeletalMeshComponent_SetDisableAnimCurves(this, bInDisableAnimCurves);
 		
 		public void SetDisablePostProcessBlueprint(bool bInDisablePostProcess)
 			=> E_USkeletalMeshComponent_SetDisablePostProcessBlueprint(this, bInDisablePostProcess);
@@ -782,8 +933,23 @@ namespace UnrealEngine
 		public void SetPosition(float inPos, bool bFireNotifies = true)
 			=> E_USkeletalMeshComponent_SetPosition(this, inPos, bFireNotifies);
 		
+		
+		/// <summary>
+		/// <para>Sets whether or not to force tick component in order to update animation and refresh transform for this component </para>
+		/// <para>This is supported only in the editor </para>
+		/// </summary>
+		public void SetUpdateAnimationInEditor(bool newUpdateState)
+			=> E_USkeletalMeshComponent_SetUpdateAnimationInEditor(this, newUpdateState);
+		
 		public void Stop()
 			=> E_USkeletalMeshComponent_Stop(this);
+		
+		
+		/// <summary>
+		/// <para>Stops simulating clothing, but does not show clothing ref pose. Keeps the last known simulation state </para>
+		/// </summary>
+		public void SuspendClothingSimulation()
+			=> E_USkeletalMeshComponent_SuspendClothingSimulation(this);
 		
 		
 		/// <summary>
@@ -791,6 +957,17 @@ namespace UnrealEngine
 		/// </summary>
 		public void ToggleDisablePostProcessBlueprint()
 			=> E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(this);
+		
+		
+		/// <summary>
+		/// <para>If this component has a valid MasterPoseComponent and has previously had its cloth bound to the </para>
+		/// <para>MCP, this function will unbind the cloth and resume simulation. </para>
+		/// <param name="bRestoreSimulationSpace">if true and the master pose cloth was originally simulating in world </param>
+		/// <para>space, we will restore this setting. This will cause the master component to reset which may be </para>
+		/// <para>undesirable. </para>
+		/// </summary>
+		public void UnbindClothFromMasterPoseComponent(bool bRestoreSimulationSpace = true)
+			=> E_USkeletalMeshComponent_UnbindClothFromMasterPoseComponent(this, bRestoreSimulationSpace);
 		
 		#endregion
 		

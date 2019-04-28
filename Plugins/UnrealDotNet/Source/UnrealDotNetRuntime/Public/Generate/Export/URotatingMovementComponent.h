@@ -16,6 +16,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_URotatingMovementComponent_PivotTranslation_GET(URotatingMovementComponent* Ptr) { return (INT_PTR)&(Ptr->PivotTranslation); }
+	DOTNET_EXPORT void E_PROP_URotatingMovementComponent_PivotTranslation_SET(URotatingMovementComponent* Ptr, INT_PTR Value) { Ptr->PivotTranslation = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_URotatingMovementComponent_RotationRate_GET(URotatingMovementComponent* Ptr) { return (INT_PTR)&(Ptr->RotationRate); }
+	DOTNET_EXPORT void E_PROP_URotatingMovementComponent_RotationRate_SET(URotatingMovementComponent* Ptr, INT_PTR Value) { Ptr->RotationRate = *(FRotator*)Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_URotatingMovementComponent(UObject* Parent, char* Name)
 	{

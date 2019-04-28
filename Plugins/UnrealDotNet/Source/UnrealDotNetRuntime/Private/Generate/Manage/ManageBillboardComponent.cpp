@@ -26,4 +26,12 @@ bool UManageBillboardComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
+void UManageBillboardComponent::SetUV(int32 NewU, int32 NewUL, int32 NewV, int32 NewVL)
+{
+	Super::SetUV(NewU, NewUL, NewV, NewVL);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetUV", NewU, NewUL, NewV, NewVL);
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

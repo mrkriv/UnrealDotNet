@@ -56,6 +56,11 @@ extern "C"
 		Self->DefaultTimer();
 	}
 
+	DOTNET_EXPORT auto E_AGameState_GetMatchState(AGameState* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetMatchState());
+	}
+
 	DOTNET_EXPORT auto E_AGameState_HandleLeavingMap(AGameState* Self)
 	{
 		((E_PROTECTED_WRAP_AGameState*)Self)->HandleLeavingMap_WRAP();
@@ -76,6 +81,16 @@ extern "C"
 		((E_PROTECTED_WRAP_AGameState*)Self)->HandleMatchIsWaitingToStart_WRAP();
 	}
 
+	DOTNET_EXPORT auto E_AGameState_HasMatchEnded(AGameState* Self)
+	{
+		return Self->HasMatchEnded();
+	}
+
+	DOTNET_EXPORT auto E_AGameState_IsMatchInProgress(AGameState* Self)
+	{
+		return Self->IsMatchInProgress();
+	}
+
 	DOTNET_EXPORT auto E_AGameState_OnRep_ElapsedTime(AGameState* Self)
 	{
 		Self->OnRep_ElapsedTime();
@@ -84,6 +99,12 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameState_OnRep_MatchState(AGameState* Self)
 	{
 		Self->OnRep_MatchState();
+	}
+
+	DOTNET_EXPORT auto E_AGameState_SetMatchState(AGameState* Self, char* NewState)
+	{
+		auto _p0 = ConvertFromManage_FName(NewState);
+		Self->SetMatchState(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameState_ShouldShowGore(AGameState* Self)

@@ -27,9 +27,49 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bEnableDebugTextShadow_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bEnableDebugTextShadow_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bLostFocusPaused_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bLostFocusPaused_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bShowDebugInfo_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bShowDebugInfo_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bShowHitBoxDebugInfo_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bShowHitBoxDebugInfo_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bShowHUD_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bShowHUD_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_AHUD_bShowOverlays_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_bShowOverlays_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_AHUD_CurrentTargetIndex_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_CurrentTargetIndex_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AHUD_LastHUDRenderTime_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AHUD_LastHUDRenderTime_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_AHUD_PlayerOwner_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_AHUD_PlayerOwner_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AHUD_RenderDelta_GET(IntPtr Ptr);
@@ -140,6 +180,9 @@ namespace UnrealEngine
 		private static extern void E_AHUD_RemovePostRenderedActor(IntPtr self, IntPtr a);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_SetCanvas(IntPtr self, IntPtr inCanvas, IntPtr inDebugCanvas);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AHUD_ShouldDisplayDebug(IntPtr self, string debugType);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -162,12 +205,88 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
+		/// <para>Put shadow on debug strings </para>
+		/// </summary>
+		public byte bEnableDebugTextShadow
+		{
+			get => E_PROP_AHUD_bEnableDebugTextShadow_GET(NativePointer);
+			set => E_PROP_AHUD_bEnableDebugTextShadow_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Tells whether the game was paused due to lost focus </para>
+		/// </summary>
+		public byte bLostFocusPaused
+		{
+			get => E_PROP_AHUD_bLostFocusPaused_GET(NativePointer);
+			set => E_PROP_AHUD_bLostFocusPaused_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, current ViewTarget shows debug information using its DisplayDebug(). </para>
+		/// </summary>
+		public byte bShowDebugInfo
+		{
+			get => E_PROP_AHUD_bShowDebugInfo_GET(NativePointer);
+			set => E_PROP_AHUD_bShowDebugInfo_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, show hitbox debugging info. </para>
+		/// </summary>
+		public byte bShowHitBoxDebugInfo
+		{
+			get => E_PROP_AHUD_bShowHitBoxDebugInfo_GET(NativePointer);
+			set => E_PROP_AHUD_bShowHitBoxDebugInfo_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether or not the HUD should be drawn. </para>
+		/// </summary>
+		public byte bShowHUD
+		{
+			get => E_PROP_AHUD_bShowHUD_GET(NativePointer);
+			set => E_PROP_AHUD_bShowHUD_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>If true, render actor overlays. </para>
+		/// </summary>
+		public byte bShowOverlays
+		{
+			get => E_PROP_AHUD_bShowOverlays_GET(NativePointer);
+			set => E_PROP_AHUD_bShowOverlays_SET(NativePointer, value);
+		}
+
+		public int CurrentTargetIndex
+		{
+			get => E_PROP_AHUD_CurrentTargetIndex_GET(NativePointer);
+			set => E_PROP_AHUD_CurrentTargetIndex_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
 		/// <para>Used to calculate delta time between HUD rendering. </para>
 		/// </summary>
 		public float LastHUDRenderTime
 		{
 			get => E_PROP_AHUD_LastHUDRenderTime_GET(NativePointer);
 			set => E_PROP_AHUD_LastHUDRenderTime_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>PlayerController which owns this HUD. </para>
+		/// </summary>
+		public APlayerController PlayerOwner
+		{
+			get => E_PROP_AHUD_PlayerOwner_GET(NativePointer);
+			set => E_PROP_AHUD_PlayerOwner_SET(NativePointer, value);
 		}
 
 		
@@ -407,6 +526,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void RemovePostRenderedActor(AActor a)
 			=> E_AHUD_RemovePostRenderedActor(this, a);
+		
+		
+		/// <summary>
+		/// <para>Set the canvas and debug canvas to use during drawing </para>
+		/// </summary>
+		public void SetCanvas(UCanvas inCanvas, UCanvas inDebugCanvas)
+			=> E_AHUD_SetCanvas(this, inCanvas, inDebugCanvas);
 		
 		
 		/// <summary>

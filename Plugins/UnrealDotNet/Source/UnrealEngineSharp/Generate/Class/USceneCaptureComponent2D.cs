@@ -26,9 +26,174 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_USceneCaptureComponent2D_bEnableClipPlane_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_bEnableClipPlane_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_PROP_USceneCaptureComponent2D_bUseCustomProjectionMatrix_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_bUseCustomProjectionMatrix_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USceneCaptureComponent2D_ClipPlaneBase_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_ClipPlaneBase_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USceneCaptureComponent2D_ClipPlaneNormal_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_ClipPlaneNormal_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USceneCaptureComponent2D_CustomProjectionMatrix_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_CustomProjectionMatrix_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponent2D_FOVAngle_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_FOVAngle_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponent2D_OrthoWidth_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_OrthoWidth_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_USceneCaptureComponent2D_PostProcessBlendWeight_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_PostProcessBlendWeight_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_USceneCaptureComponent2D_PostProcessSettings_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_USceneCaptureComponent2D_PostProcessSettings_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_USceneCaptureComponent2D(IntPtr Parent, string Name);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USceneCaptureComponent2D_CaptureScene(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USceneCaptureComponent2D_CaptureSceneDeferred(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_USceneCaptureComponent2D_UpdateContent(IntPtr self);
+		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// <para>Enables a clip plane while rendering the scene capture which is useful for portals. </para>
+		/// <para>The global clip plane must be enabled in the renderer project settings for this to work. </para>
+		/// </summary>
+		public bool bEnableClipPlane
+		{
+			get => E_PROP_USceneCaptureComponent2D_bEnableClipPlane_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_bEnableClipPlane_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Whether a custom projection matrix will be used during rendering. Use with caution. Does not currently affect culling </para>
+		/// </summary>
+		public bool bUseCustomProjectionMatrix
+		{
+			get => E_PROP_USceneCaptureComponent2D_bUseCustomProjectionMatrix_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_bUseCustomProjectionMatrix_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Base position for the clip plane, can be any position on the plane. </para>
+		/// </summary>
+		public FVector ClipPlaneBase
+		{
+			get => E_PROP_USceneCaptureComponent2D_ClipPlaneBase_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_ClipPlaneBase_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Normal for the plane. </para>
+		/// </summary>
+		public FVector ClipPlaneNormal
+		{
+			get => E_PROP_USceneCaptureComponent2D_ClipPlaneNormal_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_ClipPlaneNormal_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The custom projection matrix to use </para>
+		/// </summary>
+		public FMatrix CustomProjectionMatrix
+		{
+			get => E_PROP_USceneCaptureComponent2D_CustomProjectionMatrix_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_CustomProjectionMatrix_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Camera field of view (in degrees). </para>
+		/// </summary>
+		public float FieldofView
+		{
+			get => E_PROP_USceneCaptureComponent2D_FOVAngle_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_FOVAngle_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>The desired width (in world units) of the orthographic view (ignored in Perspective mode) </para>
+		/// </summary>
+		public float OrthoWidth
+		{
+			get => E_PROP_USceneCaptureComponent2D_OrthoWidth_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_OrthoWidth_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Range (0.0, 1.0) where 0 indicates no effect, 1 indicates full effect. </para>
+		/// </summary>
+		public float PostProcessBlendWeight
+		{
+			get => E_PROP_USceneCaptureComponent2D_PostProcessBlendWeight_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_PostProcessBlendWeight_SET(NativePointer, value);
+		}
+
+		public FPostProcessSettings PostProcessSettings
+		{
+			get => E_PROP_USceneCaptureComponent2D_PostProcessSettings_GET(NativePointer);
+			set => E_PROP_USceneCaptureComponent2D_PostProcessSettings_SET(NativePointer, value);
+		}
+
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>Render the scene to the texture target immediately. </para>
+		/// <para>This should not be used if bCaptureEveryFrame is enabled, or the scene capture will render redundantly. </para>
+		/// </summary>
+		public void CaptureScene()
+			=> E_USceneCaptureComponent2D_CaptureScene(this);
+		
+		
+		/// <summary>
+		/// <para>Render the scene to the texture the next time the main view is rendered. </para>
+		/// </summary>
+		public void CaptureSceneDeferred()
+			=> E_USceneCaptureComponent2D_CaptureSceneDeferred(this);
+		
+		public void UpdateContent()
+			=> E_USceneCaptureComponent2D_UpdateContent(this);
 		
 		#endregion
 		

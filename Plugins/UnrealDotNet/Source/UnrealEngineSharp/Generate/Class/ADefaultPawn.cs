@@ -27,6 +27,16 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ADefaultPawn_BaseLookUpRate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ADefaultPawn_BaseLookUpRate_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern float E_PROP_ADefaultPawn_BaseTurnRate_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ADefaultPawn_BaseTurnRate_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_ADefaultPawn_CollisionComponentName_GET();
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -45,9 +55,44 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_ADefaultPawn_GetMeshComponent(IntPtr self);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ADefaultPawn_LookUpAtRate(IntPtr self, float rate);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ADefaultPawn_MoveForward(IntPtr self, float val);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ADefaultPawn_MoveRight(IntPtr self, float val);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ADefaultPawn_MoveUp_World(IntPtr self, float val);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ADefaultPawn_TurnAtRate(IntPtr self, float rate);
+		
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// <para>Base lookup rate, in deg/sec. Other scaling may affect final lookup rate. </para>
+		/// </summary>
+		public float BaseLookUpRate
+		{
+			get => E_PROP_ADefaultPawn_BaseLookUpRate_GET(NativePointer);
+			set => E_PROP_ADefaultPawn_BaseLookUpRate_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// <para>Base turn rate, in deg/sec. Other scaling may affect final turn rate. </para>
+		/// </summary>
+		public float BaseTurnRate
+		{
+			get => E_PROP_ADefaultPawn_BaseTurnRate_GET(NativePointer);
+			set => E_PROP_ADefaultPawn_BaseTurnRate_SET(NativePointer, value);
+		}
+
 		
 		/// <summary>
 		/// <para>Name of the CollisionComponent. </para>
@@ -91,6 +136,49 @@ namespace UnrealEngine
 		/// </summary>
 		public UStaticMeshComponent GetMeshComponent()
 			=> E_ADefaultPawn_GetMeshComponent(this);
+		
+		
+		/// <summary>
+		/// <para>Called via input to look up at a given rate (or down if Rate is negative). </para>
+		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// </summary>
+		public virtual void LookUpAtRate(float rate)
+			=> E_ADefaultPawn_LookUpAtRate(this, rate);
+		
+		
+		/// <summary>
+		/// <para>Input callback to move forward in local space (or backward if Val is negative). </para>
+		/// <param name="Val">Amount of movement in the forward direction (or backward if negative). </param>
+		/// <para>@see APawn::AddMovementInput() </para>
+		/// </summary>
+		public virtual void MoveForward(float val)
+			=> E_ADefaultPawn_MoveForward(this, val);
+		
+		
+		/// <summary>
+		/// <para>Input callback to strafe right in local space (or left if Val is negative). </para>
+		/// <param name="Val">Amount of movement in the right direction (or left if negative). </param>
+		/// <para>@see APawn::AddMovementInput() </para>
+		/// </summary>
+		public virtual void MoveRight(float val)
+			=> E_ADefaultPawn_MoveRight(this, val);
+		
+		
+		/// <summary>
+		/// <para>Input callback to move up in world space (or down if Val is negative). </para>
+		/// <param name="Val">Amount of movement in the world up direction (or down if negative). </param>
+		/// <para>@see APawn::AddMovementInput() </para>
+		/// </summary>
+		public virtual void MoveUp_World(float val)
+			=> E_ADefaultPawn_MoveUp_World(this, val);
+		
+		
+		/// <summary>
+		/// <para>Called via input to turn at a given rate. </para>
+		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// </summary>
+		public virtual void TurnAtRate(float rate)
+			=> E_ADefaultPawn_TurnAtRate(this, rate);
 		
 		#endregion
 		

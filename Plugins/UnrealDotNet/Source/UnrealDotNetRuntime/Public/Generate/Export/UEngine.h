@@ -285,5 +285,17 @@ extern "C"
 		Self->Tick(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UEngine_WorldAdded(UEngine* Self, UWorld* World)
+	{
+		auto _p0 = World;
+		Self->WorldAdded(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UEngine_WorldDestroyed(UEngine* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		Self->WorldDestroyed(_p0);
+	}
+
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

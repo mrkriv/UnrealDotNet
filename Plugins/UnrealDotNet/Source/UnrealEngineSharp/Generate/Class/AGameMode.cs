@@ -56,16 +56,25 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_AGameMode(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AGameMode_AbortMatch(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_AddInactivePlayer(IntPtr self, IntPtr playerState, IntPtr pC);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_Broadcast(IntPtr self, IntPtr sender, string msg, string type);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AGameMode_EndMatch(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_AGameMode_FindInactivePlayer(IntPtr self, IntPtr pC);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_AGameMode_GetDefaultGameClassPath(IntPtr self, string mapName, string options, string portal);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_AGameMode_GetMatchState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_AGameMode_GetNetworkNumber(IntPtr self);
@@ -87,6 +96,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_HandleMatchIsWaitingToStart(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AGameMode_HasMatchEnded(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AGameMode_IsMatchInProgress(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_K2_OnSetMatchState(IntPtr self, string newState);
@@ -119,6 +134,9 @@ namespace UnrealEngine
 		private static extern void E_AGameMode_RemovePlayerControllerFromPlayerCount(IntPtr self, IntPtr pC);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AGameMode_RestartGame(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_Say(IntPtr self, string msg);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -132,6 +150,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_SetSeamlessTravelViewTarget(IntPtr self, IntPtr pC);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AGameMode_StartMatch(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameMode_StartNewPlayer(IntPtr self, IntPtr newPlayer);
@@ -197,6 +218,13 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
+		/// <para>Report that a match has failed due to unrecoverable error </para>
+		/// </summary>
+		public virtual void AbortMatch()
+			=> E_AGameMode_AbortMatch(this);
+		
+		
+		/// <summary>
 		/// <para>Add PlayerState to the inactive list, remove from the active list </para>
 		/// </summary>
 		public virtual void AddInactivePlayer(APlayerState playerState, APlayerController pC)
@@ -211,6 +239,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Transition from InProgress to WaitingPostMatch. You can call this manually, will also get called if ReadyToEndMatch returns true </para>
+		/// </summary>
+		public virtual void EndMatch()
+			=> E_AGameMode_EndMatch(this);
+		
+		
+		/// <summary>
 		/// <para>Attempt to find and associate an inactive PlayerState with entering PC. </para>
 		/// <para>@Returns true if a PlayerState was found and associated with PC. </para>
 		/// </summary>
@@ -219,6 +254,13 @@ namespace UnrealEngine
 		
 		public virtual string GetDefaultGameClassPath(string mapName, string options, string portal)
 			=> E_AGameMode_GetDefaultGameClassPath(this, mapName, options, portal);
+		
+		
+		/// <summary>
+		/// <para>Returns the current match state, this is an accessor to protect the state machine flow </para>
+		/// </summary>
+		public string GetMatchState()
+			=> E_AGameMode_GetMatchState(this);
 		
 		
 		/// <summary>
@@ -268,6 +310,20 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void HandleMatchIsWaitingToStart()
 			=> E_AGameMode_HandleMatchIsWaitingToStart(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the match state is WaitingPostMatch or later </para>
+		/// </summary>
+		public virtual bool HasMatchEnded()
+			=> E_AGameMode_HasMatchEnded(this);
+		
+		
+		/// <summary>
+		/// <para>Returns true if the match state is InProgress or other gameplay state </para>
+		/// </summary>
+		public virtual bool IsMatchInProgress()
+			=> E_AGameMode_IsMatchInProgress(this);
 		
 		
 		/// <summary>
@@ -343,6 +399,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// <para>Restart the game, by default travel to the current map </para>
+		/// </summary>
+		public virtual void RestartGame()
+			=> E_AGameMode_RestartGame(this);
+		
+		
+		/// <summary>
 		/// <para>Exec command to broadcast a string to all players </para>
 		/// </summary>
 		public virtual void Say(string msg)
@@ -367,6 +430,13 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void SetSeamlessTravelViewTarget(APlayerController pC)
 			=> E_AGameMode_SetSeamlessTravelViewTarget(this, pC);
+		
+		
+		/// <summary>
+		/// <para>Transition from WaitingToStart to InProgress. You can call this manually, will also get called if ReadyToStartMatch returns true </para>
+		/// </summary>
+		public virtual void StartMatch()
+			=> E_AGameMode_StartMatch(this);
 		
 		public virtual void StartNewPlayer(APlayerController newPlayer)
 			=> E_AGameMode_StartNewPlayer(this, newPlayer);

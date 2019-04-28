@@ -30,6 +30,19 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_ULocalMessage(IntPtr Parent, string Name);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULocalMessage_ClientReceive(IntPtr self, IntPtr clientData);
+		
+		#endregion
+		
+		#region ExternMethods
+		
+		/// <summary>
+		/// <para>send message to client </para>
+		/// </summary>
+		public virtual void ClientReceive(FClientReceiveData clientData)
+			=> E_ULocalMessage_ClientReceive(this, clientData);
+		
 		#endregion
 		
 		public static implicit operator IntPtr(ULocalMessage self)

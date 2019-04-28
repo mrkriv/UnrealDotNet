@@ -537,6 +537,12 @@ extern "C"
 		((E_PROTECTED_WRAP_UActorComponent*)Self)->RegisterComponentTickFunctions_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UActorComponent_RegisterComponentWithWorld(UActorComponent* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		Self->RegisterComponentWithWorld(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UActorComponent_RemoveTickPrerequisiteActor(UActorComponent* Self, AActor* PrerequisiteActor)
 	{
 		auto _p0 = PrerequisiteActor;

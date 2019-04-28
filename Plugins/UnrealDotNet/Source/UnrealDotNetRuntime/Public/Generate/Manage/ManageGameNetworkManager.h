@@ -30,6 +30,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
+	virtual void EnableStandbyCheatDetection(bool bIsEnabled) override;
+	virtual void StandbyCheatDetected(EStandbyType StandbyType) override;
+	virtual void UpdateNetSpeeds(bool bIsLanMatch) override;
+	virtual void UpdateNetSpeedsTimer() override;
 	
 protected:
 };
