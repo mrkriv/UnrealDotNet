@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Index into the array of weights for the Morph target, between 0.0 and 1.0. </para>
+		/// Index into the array of weights for the Morph target, between 0.0 and 1.0.
 		/// </summary>
 		public int WeightIndex
 		{

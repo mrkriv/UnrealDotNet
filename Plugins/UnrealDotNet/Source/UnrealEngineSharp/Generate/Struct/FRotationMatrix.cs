@@ -20,9 +20,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Rot">rotation </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="rot">rotation</param>
 		public FRotationMatrix(FRotator rot) :
 			base(E_CreateStruct_FRotationMatrix_FRotator(rot), false)
 		{
@@ -70,77 +70,77 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FRotator rot)
 			=> E_FRotationMatrix_Make(this, rot);
 		
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FQuat rot)
 			=> E_FRotationMatrix_Make_o1(this, rot);
 		
 		
 		/// <summary>
-		/// <para>Builds a rotation matrix given only a XAxis. Y and Z are unspecified but will be orthonormal. XAxis need not be normalized. </para>
+		/// Builds a rotation matrix given only a XAxis. Y and Z are unspecified but will be orthonormal. XAxis need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromX(FVector xAxis)
 			=> E_FRotationMatrix_MakeFromX(this, xAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given X and Y axes. X will remain fixed, Y may be changed minimally to enforce orthogonality. Z will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given X and Y axes. X will remain fixed, Y may be changed minimally to enforce orthogonality. Z will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromXY(FVector xAxis, FVector yAxis)
 			=> E_FRotationMatrix_MakeFromXY(this, xAxis, yAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given X and Z axes. X will remain fixed, Z may be changed minimally to enforce orthogonality. Y will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given X and Z axes. X will remain fixed, Z may be changed minimally to enforce orthogonality. Y will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromXZ(FVector xAxis, FVector zAxis)
 			=> E_FRotationMatrix_MakeFromXZ(this, xAxis, zAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a rotation matrix given only a YAxis. X and Z are unspecified but will be orthonormal. YAxis need not be normalized. </para>
+		/// Builds a rotation matrix given only a YAxis. X and Z are unspecified but will be orthonormal. YAxis need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromY(FVector yAxis)
 			=> E_FRotationMatrix_MakeFromY(this, yAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given Y and X axes. Y will remain fixed, X may be changed minimally to enforce orthogonality. Z will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given Y and X axes. Y will remain fixed, X may be changed minimally to enforce orthogonality. Z will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromYX(FVector yAxis, FVector xAxis)
 			=> E_FRotationMatrix_MakeFromYX(this, yAxis, xAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given Y and Z axes. Y will remain fixed, Z may be changed minimally to enforce orthogonality. X will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given Y and Z axes. Y will remain fixed, Z may be changed minimally to enforce orthogonality. X will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromYZ(FVector yAxis, FVector zAxis)
 			=> E_FRotationMatrix_MakeFromYZ(this, yAxis, zAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a rotation matrix given only a ZAxis. X and Y are unspecified but will be orthonormal. ZAxis need not be normalized. </para>
+		/// Builds a rotation matrix given only a ZAxis. X and Y are unspecified but will be orthonormal. ZAxis need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromZ(FVector zAxis)
 			=> E_FRotationMatrix_MakeFromZ(this, zAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given Z and X axes. Z will remain fixed, X may be changed minimally to enforce orthogonality. Y will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given Z and X axes. Z will remain fixed, X may be changed minimally to enforce orthogonality. Y will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromZX(FVector zAxis, FVector xAxis)
 			=> E_FRotationMatrix_MakeFromZX(this, zAxis, xAxis);
 		
 		
 		/// <summary>
-		/// <para>Builds a matrix with given Z and Y axes. Z will remain fixed, Y may be changed minimally to enforce orthogonality. X will be computed. Inputs need not be normalized. </para>
+		/// Builds a matrix with given Z and Y axes. Z will remain fixed, Y may be changed minimally to enforce orthogonality. X will be computed. Inputs need not be normalized.
 		/// </summary>
 		public FMatrix MakeFromZY(FVector zAxis, FVector yAxis)
 			=> E_FRotationMatrix_MakeFromZY(this, zAxis, yAxis);

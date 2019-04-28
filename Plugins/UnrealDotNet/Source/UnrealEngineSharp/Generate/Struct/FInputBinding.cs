@@ -42,7 +42,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether the binding should consume the input or allow it to pass to another component </para>
+		/// Whether the binding should consume the input or allow it to pass to another component
 		/// </summary>
 		public byte bConsumeInput
 		{
@@ -52,7 +52,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether the binding should execute while paused </para>
+		/// Whether the binding should execute while paused
 		/// </summary>
 		public byte bExecuteWhenPaused
 		{

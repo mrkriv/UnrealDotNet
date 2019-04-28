@@ -219,7 +219,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>client side flag - whether this player has been welcomed or not (player entered message) </para>
+		/// client side flag - whether this player has been welcomed or not (player entered message)
 		/// </summary>
 		public byte bHasBeenWelcomed
 		{
@@ -229,7 +229,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True if this PlayerState is associated with an AIController </para>
+		/// True if this PlayerState is associated with an AIController
 		/// </summary>
 		public byte bIsABot
 		{
@@ -239,7 +239,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Means this PlayerState came from the GameMode's InactivePlayerArray </para>
+		/// Means this PlayerState came from the GameMode's InactivePlayerArray
 		/// </summary>
 		public byte bIsInactive
 		{
@@ -249,7 +249,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether this player is currently a spectator </para>
+		/// Whether this player is currently a spectator
 		/// </summary>
 		public byte bIsSpectator
 		{
@@ -265,7 +265,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>if set, GetPlayerName() will call virtual GetPlayerNameCustom() to allow custom access </para>
+		/// if set, GetPlayerName() will call virtual GetPlayerNameCustom() to allow custom access
 		/// </summary>
 		public byte bUseCustomPlayerNames
 		{
@@ -275,7 +275,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Exact ping as float (rounded and compressed in replicated Ping) </para>
+		/// Exact ping as float (rounded and compressed in replicated Ping)
 		/// </summary>
 		public float ExactPing
 		{
@@ -291,7 +291,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Previous player name.  Saved on client-side to detect player name changes. </para>
+		/// Previous player name.  Saved on client-side to detect player name changes.
 		/// </summary>
 		public string OldName
 		{
@@ -301,7 +301,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Replicated compressed ping for this player (holds ping in msec divided by 4) </para>
+		/// Replicated compressed ping for this player (holds ping in msec divided by 4)
 		/// </summary>
 		public byte Ping
 		{
@@ -311,7 +311,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Unique net id number. Actual value varies based on current online subsystem, use it only as a guaranteed unique number per player. </para>
+		/// Unique net id number. Actual value varies based on current online subsystem, use it only as a guaranteed unique number per player.
 		/// </summary>
 		public int PlayerId
 		{
@@ -321,7 +321,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Player name, or blank if none. </para>
+		/// Player name, or blank if none.
 		/// </summary>
 		public string PlayerName
 		{
@@ -337,7 +337,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Player's current score. </para>
+		/// Player's current score.
 		/// </summary>
 		public float Score
 		{
@@ -347,7 +347,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The session that the player needs to join/remove from as it is created/leaves </para>
+		/// The session that the player needs to join/remove from as it is created/leaves
 		/// </summary>
 		public string SessionName
 		{
@@ -366,14 +366,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Called by Controller when its PlayerState is initially replicated. </para>
+		/// Called by Controller when its PlayerState is initially replicated.
 		/// </summary>
 		public virtual void ClientInitialize(AController c)
 			=> E_APlayerState_ClientInitialize(this, c);
 		
 		
 		/// <summary>
-		/// <para>Copy properties which need to be saved in inactive PlayerState </para>
+		/// Copy properties which need to be saved in inactive PlayerState
 		/// </summary>
 		protected virtual void CopyProperties(APlayerState playerState)
 			=> E_APlayerState_CopyProperties(this, playerState);
@@ -383,70 +383,70 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>calls OverrideWith and triggers OnOverrideWith for BP extension </para>
+		/// calls OverrideWith and triggers OnOverrideWith for BP extension
 		/// </summary>
 		public void DispatchOverrideWith(APlayerState playerState)
 			=> E_APlayerState_DispatchOverrideWith(this, playerState);
 		
 		
 		/// <summary>
-		/// <para>Create duplicate PlayerState (for saving Inactive PlayerState) </para>
+		/// Create duplicate PlayerState (for saving Inactive PlayerState)
 		/// </summary>
 		public virtual APlayerState Duplicate()
 			=> E_APlayerState_Duplicate(this);
 		
 		
 		/// <summary>
-		/// <para>returns previous player name </para>
+		/// returns previous player name
 		/// </summary>
 		public virtual string GetOldPlayerName()
 			=> E_APlayerState_GetOldPlayerName(this);
 		
 		
 		/// <summary>
-		/// <para>Return the pawn controlled by this Player State. </para>
+		/// Return the pawn controlled by this Player State.
 		/// </summary>
 		public APawn GetPawn()
 			=> E_APlayerState_GetPawn(this);
 		
 		
 		/// <summary>
-		/// <para>returns current player name </para>
+		/// returns current player name
 		/// </summary>
 		public string GetPlayerName()
 			=> E_APlayerState_GetPlayerName(this);
 		
 		
 		/// <summary>
-		/// <para>custom access to player name, called only when bUseCustomPlayerNames is set </para>
+		/// custom access to player name, called only when bUseCustomPlayerNames is set
 		/// </summary>
 		public virtual string GetPlayerNameCustom()
 			=> E_APlayerState_GetPlayerNameCustom(this);
 		
 		
 		/// <summary>
-		/// <para>called after receiving player name </para>
+		/// called after receiving player name
 		/// </summary>
 		protected virtual void HandleWelcomeMessage()
 			=> E_APlayerState_HandleWelcomeMessage(this);
 		
 		
 		/// <summary>
-		/// <para>return true if PlayerState is primary (ie. non-splitscreen) player </para>
+		/// return true if PlayerState is primary (ie. non-splitscreen) player
 		/// </summary>
 		public virtual bool IsPrimaryPlayer()
 			=> E_APlayerState_IsPrimaryPlayer(this);
 		
 		
 		/// <summary>
-		/// <para>Called on the server when the owning player has disconnected, by default this method destroys this player state </para>
+		/// Called on the server when the owning player has disconnected, by default this method destroys this player state
 		/// </summary>
 		public virtual void OnDeactivated()
 			=> E_APlayerState_OnDeactivated(this);
 		
 		
 		/// <summary>
-		/// <para>Called on the server when the owning player has reconnected and this player state is added to the active players array </para>
+		/// Called on the server when the owning player has reconnected and this player state is added to the active players array
 		/// </summary>
 		public virtual void OnReactivated()
 			=> E_APlayerState_OnReactivated(this);
@@ -471,7 +471,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Recalculates the replicated Ping value once per second (both clientside and serverside), based upon collected ping data </para>
+		/// Recalculates the replicated Ping value once per second (both clientside and serverside), based upon collected ping data
 		/// </summary>
 		public virtual void RecalculateAvgPing()
 			=> E_APlayerState_RecalculateAvgPing(this);
@@ -484,50 +484,50 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Register a player with the online subsystem </para>
-		/// <param name="bWasFromInvite">was this player invited directly </param>
+		/// Register a player with the online subsystem
 		/// </summary>
+		/// <param name="bWasFromInvite">was this player invited directly</param>
 		public virtual void RegisterPlayerWithSession(bool bWasFromInvite)
 			=> E_APlayerState_RegisterPlayerWithSession(this, bWasFromInvite);
 		
 		
 		/// <summary>
-		/// <para>called by seamless travel when initializing a player on the other side - copy properties to the new PlayerState that should persist </para>
+		/// called by seamless travel when initializing a player on the other side - copy properties to the new PlayerState that should persist
 		/// </summary>
 		public virtual void SeamlessTravelTo(APlayerState newPlayerState)
 			=> E_APlayerState_SeamlessTravelTo(this, newPlayerState);
 		
 		
 		/// <summary>
-		/// <para>set the player name to S </para>
+		/// set the player name to S
 		/// </summary>
 		public virtual void SetOldPlayerName(string s)
 			=> E_APlayerState_SetOldPlayerName(this, s);
 		
 		
 		/// <summary>
-		/// <para>set the player name to S </para>
+		/// set the player name to S
 		/// </summary>
 		public virtual void SetPlayerName(string s)
 			=> E_APlayerState_SetPlayerName(this, s);
 		
 		
 		/// <summary>
-		/// <para>set the player name to S locally, does not trigger net updates </para>
+		/// set the player name to S locally, does not trigger net updates
 		/// </summary>
 		public virtual void SetPlayerNameInternal(string s)
 			=> E_APlayerState_SetPlayerNameInternal(this, s);
 		
 		
 		/// <summary>
-		/// <para>Sets whether or not the replicated ping value is updated automatically. </para>
+		/// Sets whether or not the replicated ping value is updated automatically.
 		/// </summary>
 		protected void SetShouldUpdateReplicatedPing(bool bInShouldUpdateReplicatedPing)
 			=> E_APlayerState_SetShouldUpdateReplicatedPing(this, bInShouldUpdateReplicatedPing);
 		
 		
 		/// <summary>
-		/// <para>Returns true if should broadcast player welcome/left messages. </para>
+		/// Returns true if should broadcast player welcome/left messages.
 		/// <para>Current conditions: must be a human player a network game </para>
 		/// </summary>
 		public virtual bool ShouldBroadCastWelcomeMessage(bool bExiting)
@@ -535,14 +535,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Unregister a player with the online subsystem </para>
+		/// Unregister a player with the online subsystem
 		/// </summary>
 		public virtual void UnregisterPlayerWithSession()
 			=> E_APlayerState_UnregisterPlayerWithSession(this);
 		
 		
 		/// <summary>
-		/// <para>Receives ping updates for the client (both clientside and serverside), from the net driver </para>
+		/// Receives ping updates for the client (both clientside and serverside), from the net driver
 		/// <para>NOTE: This updates much more frequently clientside, thus the clientside ping will often be different to what the server displays </para>
 		/// </summary>
 		public virtual void UpdatePing(float inPing)

@@ -249,9 +249,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Controls the effects of friction on velocity parallel to the impact surface when bouncing. </para>
+		/// Controls the effects of friction on velocity parallel to the impact surface when bouncing.
 		/// <para>If true, friction will be modified based on the angle of impact, making friction higher for perpendicular impacts and lower for glancing impacts. </para>
-		/// <para>If false, a bounce will retain a proportion of tangential velocity equal to (1.0 - Friction), acting as a "horizontal restitution". </para>
+		/// If false, a bounce will retain a proportion of tangential velocity equal to (1.0 - Friction), acting as a "horizontal restitution".
 		/// </summary>
 		public byte bBounceAngleAffectsFriction
 		{
@@ -261,10 +261,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, forces sub-stepping to break up movement into discrete smaller steps to improve accuracy of the trajectory. </para>
+		/// If true, forces sub-stepping to break up movement into discrete smaller steps to improve accuracy of the trajectory.
 		/// <para>Objects that move in a straight line typically do *not* need to set this, as movement always uses continuous collision detection (sweeps) so collision is not missed. </para>
-		/// <para>Sub-stepping is automatically enabled when under the effects of gravity or when homing towards a target. </para>
-		/// <para>@see MaxSimulationTimeStep, MaxSimulationIterations </para>
+		/// Sub-stepping is automatically enabled when under the effects of gravity or when homing towards a target.
+		/// <see cref="MaxSimulationTimeStep"/>
 		/// </summary>
 		public byte bForceSubStepping
 		{
@@ -274,8 +274,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, the initial Velocity is interpreted as being in local space upon startup. </para>
-		/// <para>@see SetVelocityInLocalSpace() </para>
+		/// If true, the initial Velocity is interpreted as being in local space upon startup.
+		/// <see cref="SetVelocityInLocalSpace"/>
 		/// </summary>
 		public byte bInitialVelocityInLocalSpace
 		{
@@ -285,9 +285,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true and there is an interpolated component set, location (and optionally rotation) interpolation is enabled which allows the interpolated object to smooth uneven updates </para>
+		/// If true and there is an interpolated component set, location (and optionally rotation) interpolation is enabled which allows the interpolated object to smooth uneven updates
 		/// <para>of the UpdatedComponent's location (usually to smooth network updates). </para>
-		/// <para>@see SetInterpolatedComponent(), MoveInterpolationTarget() </para>
+		/// <see cref="SetInterpolatedComponent"/>
 		/// </summary>
 		public byte bInterpMovement
 		{
@@ -297,10 +297,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true and there is an interpolated component set, rotation interpolation is enabled which allows the interpolated object to smooth uneven updates </para>
+		/// If true and there is an interpolated component set, rotation interpolation is enabled which allows the interpolated object to smooth uneven updates
 		/// <para>of the UpdatedComponent's rotation (usually to smooth network updates). </para>
-		/// <para>Rotation interpolation is *only* applied if bInterpMovement is also enabled. </para>
-		/// <para>@see SetInterpolatedComponent(), MoveInterpolationTarget() </para>
+		/// Rotation interpolation is *only* applied if bInterpMovement is also enabled.
+		/// <see cref="SetInterpolatedComponent"/>
 		/// </summary>
 		public byte bInterpRotation
 		{
@@ -310,8 +310,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, we will accelerate toward our homing target. HomingTargetComponent must be set after the projectile is spawned. </para>
-		/// <para>@see HomingTargetComponent, HomingAccelerationMagnitude </para>
+		/// If true, we will accelerate toward our homing target. HomingTargetComponent must be set after the projectile is spawned.
+		/// <see cref="HomingTargetComponent"/>
 		/// </summary>
 		public byte bIsHomingProjectile
 		{
@@ -321,7 +321,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, projectile is sliding / rolling along a surface. </para>
+		/// If true, projectile is sliding / rolling along a surface.
 		/// </summary>
 		public byte bIsSliding
 		{
@@ -331,7 +331,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>On the first few bounces (up to this amount), allow extra iterations over MaxSimulationIterations if necessary. </para>
+		/// On the first few bounces (up to this amount), allow extra iterations over MaxSimulationIterations if necessary.
 		/// </summary>
 		public int BounceAdditionalIterations
 		{
@@ -341,9 +341,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If velocity is below this threshold after a bounce, stops simulating and triggers the OnProjectileStop event. </para>
+		/// If velocity is below this threshold after a bounce, stops simulating and triggers the OnProjectileStop event.
 		/// <para>Ignored if bShouldBounce is false, in which case the projectile stops simulating on the first impact. </para>
-		/// <para>@see StopSimulating(), OnProjectileStop </para>
+		/// <see cref="StopSimulating"/>
 		/// </summary>
 		public float BounceVelocityStopSimulatingThreshold
 		{
@@ -353,7 +353,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Percentage of velocity maintained after the bounce in the direction of the normal of impact (coefficient of restitution). </para>
+		/// Percentage of velocity maintained after the bounce in the direction of the normal of impact (coefficient of restitution).
 		/// <para>1.0 = no velocity lost, 0.0 = no bounce. Ignored if bShouldBounce is false. </para>
 		/// </summary>
 		public float Bounciness
@@ -364,7 +364,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this projectile will have its rotation updated each frame to match the direction of its velocity. </para>
+		/// If true, this projectile will have its rotation updated each frame to match the direction of its velocity.
 		/// </summary>
 		public byte bRotationFollowsVelocity
 		{
@@ -374,7 +374,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, simple bounces will be simulated. Set this to false to stop simulating on contact. </para>
+		/// If true, simple bounces will be simulated. Set this to false to stop simulating on contact.
 		/// </summary>
 		public byte bShouldBounce
 		{
@@ -384,7 +384,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, does normal simulation ticking and update. If false, simulation is halted, but component will still tick (allowing interpolation to run). </para>
+		/// If true, does normal simulation ticking and update. If false, simulation is halted, but component will still tick (allowing interpolation to run).
 		/// </summary>
 		public byte bSimulationEnabled
 		{
@@ -394,7 +394,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, movement uses swept collision checks. </para>
+		/// If true, movement uses swept collision checks.
 		/// <para>If false, collision effectively teleports to the destination. Note that when this is disabled, movement will never generate blocking collision hits (though overlaps will be updated). </para>
 		/// </summary>
 		public byte bSweepCollision
@@ -411,11 +411,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Coefficient of friction, affecting the resistance to sliding along a surface. </para>
+		/// Coefficient of friction, affecting the resistance to sliding along a surface.
 		/// <para>Normal range is [0,1] : 0.0 = no friction, 1.0+ = very high friction. </para>
-		/// <para>Also affects the percentage of velocity maintained after the bounce in the direction tangent to the normal of impact. </para>
+		/// Also affects the percentage of velocity maintained after the bounce in the direction tangent to the normal of impact.
 		/// <para>Ignored if bShouldBounce is false. </para>
-		/// <para>@see bBounceAngleAffectsFriction </para>
+		/// @see bBounceAngleAffectsFriction
 		/// </summary>
 		public float Friction
 		{
@@ -425,7 +425,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The magnitude of our acceleration towards the homing target. Overall velocity magnitude will still be limited by MaxSpeed. </para>
+		/// The magnitude of our acceleration towards the homing target. Overall velocity magnitude will still be limited by MaxSpeed.
 		/// </summary>
 		public float HomingAccelerationMagnitude
 		{
@@ -435,7 +435,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Initial speed of projectile. If greater than zero, this will override the initial Velocity value and instead treat Velocity as a direction. </para>
+		/// Initial speed of projectile. If greater than zero, this will override the initial Velocity value and instead treat Velocity as a direction.
 		/// </summary>
 		public float InitialSpeed
 		{
@@ -445,7 +445,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance behind UpdatedComponent which the interpolated component is allowed to lag. </para>
+		/// Max distance behind UpdatedComponent which the interpolated component is allowed to lag.
 		/// </summary>
 		public float InterpLocationMaxLagDistance
 		{
@@ -455,7 +455,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance behind UpdatedComponent beyond which the interpolated component is snapped to the target location instead. </para>
+		/// Max distance behind UpdatedComponent beyond which the interpolated component is snapped to the target location instead.
 		/// <para>For instance if the target teleports this far beyond the interpolated component, the interpolation is snapped to match the target. </para>
 		/// </summary>
 		public float InterpLocationSnapToTargetDistance
@@ -466,9 +466,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>"Time" over which most of the location interpolation occurs, when the UpdatedComponent (target) moves ahead of the interpolated component. </para>
+		/// "Time" over which most of the location interpolation occurs, when the UpdatedComponent (target) moves ahead of the interpolated component.
 		/// <para>Since the implementation uses exponential lagged smoothing, this is a rough time value and experimentation should inform a final result. </para>
-		/// <para>A value of zero is effectively instantaneous interpolation. </para>
+		/// A value of zero is effectively instantaneous interpolation.
 		/// </summary>
 		public float InterpLocationTime
 		{
@@ -478,9 +478,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>"Time" over which most of the rotation interpolation occurs, when the UpdatedComponent (target) moves ahead of the interpolated component. </para>
+		/// "Time" over which most of the rotation interpolation occurs, when the UpdatedComponent (target) moves ahead of the interpolated component.
 		/// <para>Since the implementation uses exponential lagged smoothing, this is a rough time value and experimentation should inform a final result. </para>
-		/// <para>A value of zero is effectively instantaneous interpolation. </para>
+		/// A value of zero is effectively instantaneous interpolation.
 		/// </summary>
 		public float InterpRotationTime
 		{
@@ -490,10 +490,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max number of iterations used for each discrete simulation step. </para>
+		/// Max number of iterations used for each discrete simulation step.
 		/// <para>Increasing this value can address precision issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
-		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationTimeStep, bForceSubStepping </para>
+		/// WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.
+		/// <see cref="MaxSimulationTimeStep"/>
 		/// </summary>
 		public int MaxSimulationIterations
 		{
@@ -503,10 +503,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max time delta for each discrete simulation step. </para>
+		/// Max time delta for each discrete simulation step.
 		/// <para>Lowering this value can address precision issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
-		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationIterations, bForceSubStepping </para>
+		/// WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.
+		/// <see cref="MaxSimulationIterations"/>
 		/// </summary>
 		public float MaxSimulationTimeStep
 		{
@@ -516,7 +516,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Limit on speed of projectile (0 means no limit). </para>
+		/// Limit on speed of projectile (0 means no limit).
 		/// </summary>
 		public float MaxSpeed
 		{
@@ -526,7 +526,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>When bounce angle affects friction, apply at least this fraction of normal friction. </para>
+		/// When bounce angle affects friction, apply at least this fraction of normal friction.
 		/// <para>Helps consistently slow objects sliding or rolling along surfaces or in valleys when the usual friction amount would take a very long time to settle. </para>
 		/// </summary>
 		public float MinFrictionFraction
@@ -537,7 +537,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Saved HitResult Normal from previous simulation step that resulted in an impact. If PreviousHitTime is 1.0, then the hit was not in the last step. </para>
+		/// Saved HitResult Normal from previous simulation step that resulted in an impact. If PreviousHitTime is 1.0, then the hit was not in the last step.
 		/// </summary>
 		public FVector PreviousHitNormal
 		{
@@ -547,7 +547,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Saved HitResult Time (0 to 1) from previous simulation step. Equal to 1.0 when there was no impact. </para>
+		/// Saved HitResult Time (0 to 1) from previous simulation step. Equal to 1.0 when there was no impact.
 		/// </summary>
 		public float PreviousHitTime
 		{
@@ -557,7 +557,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Custom gravity scale for this projectile. Set to 0 for no gravity. </para>
+		/// Custom gravity scale for this projectile. Set to 0 for no gravity.
 		/// </summary>
 		public float ProjectileGravityScale
 		{
@@ -570,7 +570,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>This will check to see if the projectile is still in the world.  It will check things like </para>
+		/// This will check to see if the projectile is still in the world.  It will check things like
 		/// <para>the KillZ, outside world bounds, etc. and handle the situation. </para>
 		/// </summary>
 		public virtual bool CheckStillInWorld()
@@ -578,94 +578,94 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Compute the acceleration that will be applied </para>
+		/// Compute the acceleration that will be applied
 		/// </summary>
 		protected virtual FVector ComputeAcceleration(FVector inVelocity, float deltaTime)
 			=> E_UProjectileMovementComponent_ComputeAcceleration(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Computes result of a bounce and returns the new velocity. </para>
+		/// Computes result of a bounce and returns the new velocity.
 		/// </summary>
 		protected virtual FVector ComputeBounceResult(FHitResult hit, float timeSlice, FVector moveDelta)
 			=> E_UProjectileMovementComponent_ComputeBounceResult(this, hit, timeSlice, moveDelta);
 		
 		
 		/// <summary>
-		/// <para>Allow the projectile to track towards its homing target. </para>
+		/// Allow the projectile to track towards its homing target.
 		/// </summary>
 		protected virtual FVector ComputeHomingAcceleration(FVector inVelocity, float deltaTime)
 			=> E_UProjectileMovementComponent_ComputeHomingAcceleration(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Compute the distance we should move in the given time, at a given a velocity. </para>
+		/// Compute the distance we should move in the given time, at a given a velocity.
 		/// </summary>
 		protected virtual FVector ComputeMoveDelta(FVector inVelocity, float deltaTime)
 			=> E_UProjectileMovementComponent_ComputeMoveDelta(this, inVelocity, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Given an initial velocity and a time step, compute a new velocity. </para>
+		/// Given an initial velocity and a time step, compute a new velocity.
 		/// <para>Default implementation applies the result of ComputeAcceleration() to velocity. </para>
-		/// <param name="InitialVelocity">Initial velocity. </param>
-		/// <param name="DeltaTime">Time step of the update. </param>
-		/// <return>Velocity after DeltaTime time step. </return>
 		/// </summary>
+		/// <param name="initialVelocity">Initial velocity.</param>
+		/// <param name="deltaTime">Time step of the update.</param>
+		/// <return>Velocity</return>
 		public virtual FVector ComputeVelocity(FVector initialVelocity, float deltaTime)
 			=> E_UProjectileMovementComponent_ComputeVelocity(this, initialVelocity, deltaTime);
 		
 		
 		/// <summary>
-		/// <return>Buoyancy of UpdatedComponent in fluid.  0.0=sinks as fast as in air, 1.0=neutral buoyancy </return>
 		/// </summary>
+		/// <return>Buoyancy</return>
 		public float GetBuoyancy()
 			=> E_UProjectileMovementComponent_GetBuoyancy(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the component used for network interpolation. </para>
+		/// Returns the component used for network interpolation.
 		/// </summary>
 		public USceneComponent GetInterpolatedComponent()
 			=> E_UProjectileMovementComponent_GetInterpolatedComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Compute remaining time step given remaining time and current iterations. </para>
+		/// Compute remaining time step given remaining time and current iterations.
 		/// <para>The last iteration (limited by MaxSimulationIterations) always returns the remaining time, which may violate MaxSimulationTimeStep. </para>
-		/// <param name="RemainingTime">Remaining time in the tick. </param>
-		/// <param name="Iterations">Current iteration of the tick (starting at 1). </param>
-		/// <return>The remaining time step to use for the next sub-step of iteration. </return>
-		/// <para>@see MaxSimulationTimeStep, MaxSimulationIterations </para>
-		/// <para>@see ShouldUseSubStepping() </para>
+		/// <see cref="MaxSimulationTimeStep"/>
+		/// <see cref="ShouldUseSubStepping"/>
 		/// </summary>
+		/// <param name="remainingTime">Remaining time in the tick.</param>
+		/// <param name="iterations">Current iteration of the tick (starting at 1).</param>
+		/// <return>The</return>
 		public float GetSimulationTimeStep(float remainingTime, int iterations)
 			=> E_UProjectileMovementComponent_GetSimulationTimeStep(this, remainingTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Handle blocking hit during simulation update. Checks that simulation remains valid after collision. </para>
+		/// Handle blocking hit during simulation update. Checks that simulation remains valid after collision.
 		/// <para>If simulating then calls HandleImpact(), and returns EHandleHitWallResult::Deflect by default to enable multi-bounce and sliding support through HandleDeflection(). </para>
-		/// <para>If no longer simulating then returns EHandleHitWallResult::Abort, which aborts attempts at further simulation. </para>
-		/// <param name="Hit">Blocking hit that occurred. </param>
-		/// <param name="TimeTick">Time delta of last move that resulted in the blocking hit. </param>
-		/// <param name="MoveDelta">Movement delta for the current sub-step. </param>
-		/// <param name="SubTickTimeRemaining">How much time to continue simulating in the current sub-step, which may change as a result of this function. </param>
+		/// If no longer simulating then returns EHandleHitWallResult::Abort, which aborts attempts at further simulation.
 		/// <para>Initial default value is: TimeTick * (1.f - Hit.Time) </para>
-		/// <return>Result indicating how simulation should proceed. </return>
-		/// <para>@see EHandleHitWallResult, HandleImpact() </para>
+		/// <see cref="EHandleHitWallResult"/>
 		/// </summary>
+		/// <param name="hit">Blocking hit that occurred.</param>
+		/// <param name="timeTick">Time delta of last move that resulted in the blocking hit.</param>
+		/// <param name="moveDelta">Movement delta for the current sub-step.</param>
+		/// <param name="subTickTimeRemaining">How much time to continue simulating in the current sub-step, which may change as a result of this function.</param>
+		/// <return>Result</return>
 		protected virtual EHandleBlockingHitResult HandleBlockingHit(FHitResult hit, float timeTick, FVector moveDelta, float subTickTimeRemaining)
 			=> (EHandleBlockingHitResult)E_UProjectileMovementComponent_HandleBlockingHit(this, hit, timeTick, moveDelta, subTickTimeRemaining);
 		
 		
 		/// <summary>
-		/// <para>Handle case where projectile is sliding along a surface. </para>
+		/// Handle case where projectile is sliding along a surface.
 		/// <para>Velocity will be parallel to the impact surface upon entry to this method. </para>
-		/// <param name="InitialHit">Hit result of impact causing slide. May be modified by this function to reflect any subsequent movement. </param>
-		/// <param name="SubTickTimeRemaining">Time remaining in the tick. This function may update this time with any reduction to the simulation time requested. </param>
-		/// <return>True if simulation of the projectile should continue, false otherwise. </return>
 		/// </summary>
+		/// <param name="initialHit">Hit result of impact causing slide. May be modified by this function to reflect any subsequent movement.</param>
+		/// <param name="subTickTimeRemaining">Time remaining in the tick. This function may update this time with any reduction to the simulation time requested.</param>
+		/// <return>True</return>
 		protected virtual bool HandleSliding(FHitResult hit, float subTickTimeRemaining)
 			=> E_UProjectileMovementComponent_HandleSliding(this, hit, subTickTimeRemaining);
 		
@@ -674,28 +674,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns whether interpolation is complete because the target has been reached. True when interpolation is disabled. </para>
+		/// Returns whether interpolation is complete because the target has been reached. True when interpolation is disabled.
 		/// </summary>
 		public bool IsInterpolationComplete()
 			=> E_UProjectileMovementComponent_IsInterpolationComplete(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if velocity magnitude is less than BounceVelocityStopSimulatingThreshold. </para>
+		/// Returns true if velocity magnitude is less than BounceVelocityStopSimulatingThreshold.
 		/// </summary>
 		public bool IsVelocityUnderSimulationThreshold()
 			=> E_UProjectileMovementComponent_IsVelocityUnderSimulationThreshold(this);
 		
 		
 		/// <summary>
-		/// <para>Don't allow velocity magnitude to exceed MaxSpeed, if MaxSpeed is non-zero. </para>
+		/// Don't allow velocity magnitude to exceed MaxSpeed, if MaxSpeed is non-zero.
 		/// </summary>
 		protected FVector LimitVelocity(FVector newVelocity)
 			=> E_UProjectileMovementComponent_LimitVelocity(this, newVelocity);
 		
 		
 		/// <summary>
-		/// <para>Moves the UpdatedComponent, which is also the interpolation target for the interpolated component. If there is not interpolated component, this simply moves UpdatedComponent. </para>
+		/// Moves the UpdatedComponent, which is also the interpolation target for the interpolated component. If there is not interpolated component, this simply moves UpdatedComponent.
 		/// <para>Use this typically from PostNetReceiveLocationAndRotation() or similar from an Actor. </para>
 		/// </summary>
 		public virtual void MoveInterpolationTarget(FVector newLocation, FRotator newRotation)
@@ -703,24 +703,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Resets interpolation so that interpolated component snaps back to the initial location/rotation without any additional offsets. </para>
+		/// Resets interpolation so that interpolated component snaps back to the initial location/rotation without any additional offsets.
 		/// </summary>
 		public virtual void ResetInterpolation()
 			=> E_UProjectileMovementComponent_ResetInterpolation(this);
 		
 		
 		/// <summary>
-		/// <para>Assigns the component that will be used for network interpolation/smoothing. It is expected that this is a component attached somewhere below the UpdatedComponent. </para>
+		/// Assigns the component that will be used for network interpolation/smoothing. It is expected that this is a component attached somewhere below the UpdatedComponent.
 		/// <para>When network updates use MoveInterpolationTarget() to move the UpdatedComponent, the interpolated component's relative offset will be maintained and smoothed over </para>
-		/// <para>the course of future component ticks. The current relative location and rotation of the component is saved as the target offset for future interpolation. </para>
-		/// <para>@see MoveInterpolationTarget(), bInterpMovement, bInterpRotation </para>
+		/// the course of future component ticks. The current relative location and rotation of the component is saved as the target offset for future interpolation.
+		/// <see cref="MoveInterpolationTarget"/>
 		/// </summary>
 		public virtual void SetInterpolatedComponent(USceneComponent component)
 			=> E_UProjectileMovementComponent_SetInterpolatedComponent(this, component);
 		
 		
 		/// <summary>
-		/// <para>Sets the velocity to the new value, rotated into Actor space. </para>
+		/// Sets the velocity to the new value, rotated into Actor space.
 		/// </summary>
 		public virtual void SetVelocityInLocalSpace(FVector newVelocity)
 			=> E_UProjectileMovementComponent_SetVelocityInLocalSpace(this, newVelocity);
@@ -730,17 +730,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Determine whether or not to use substepping in the projectile motion update. </para>
+		/// Determine whether or not to use substepping in the projectile motion update.
 		/// <para>If true, GetSimulationTimeStep() will be used to time-slice the update. If false, all remaining time will be used during the tick. </para>
-		/// <return>Whether or not to use substepping in the projectile motion update. </return>
-		/// <para>@see GetSimulationTimeStep() </para>
+		/// <see cref="GetSimulationTimeStep"/>
 		/// </summary>
+		/// <return>Whether</return>
 		public virtual bool ShouldUseSubStepping()
 			=> E_UProjectileMovementComponent_ShouldUseSubStepping(this);
 		
 		
 		/// <summary>
-		/// <para>Clears the reference to UpdatedComponent, fires stop event (OnProjectileStop), and stops ticking (if bAutoUpdateTickRegistration is true). </para>
+		/// Clears the reference to UpdatedComponent, fires stop event (OnProjectileStop), and stops ticking (if bAutoUpdateTickRegistration is true).
 		/// </summary>
 		public virtual void StopSimulating(FHitResult hitResult)
 			=> E_UProjectileMovementComponent_StopSimulating(this, hitResult);

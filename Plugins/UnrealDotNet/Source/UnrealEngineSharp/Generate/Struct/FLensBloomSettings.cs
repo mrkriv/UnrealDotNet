@@ -40,7 +40,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Bloom convolution method specific settings. </para>
+		/// Bloom convolution method specific settings.
 		/// </summary>
 		public FConvolutionBloomSettings Convolution
 		{

@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>AActor  component that is the target of this tick </para>
+		/// AActor  component that is the target of this tick
 		/// </summary>
 		public UActorComponent Target
 		{

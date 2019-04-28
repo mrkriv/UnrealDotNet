@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor. </para>
+		/// Default constructor.
 		/// </summary>
 		public FCapsuleShape() :
 			base(E_CreateStruct_FCapsuleShape(), false)
@@ -29,12 +29,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Create and inintialize a new instance. </para>
-		/// <param name="InCenter">The capsule's center point. </param>
-		/// <param name="InRadius">The capsule's radius. </param>
-		/// <param name="InOrientation">The capsule's orientation in space. </param>
-		/// <param name="InLength">The capsule's length. </param>
+		/// Create and inintialize a new instance.
 		/// </summary>
+		/// <param name="inCenter">The capsule's center point.</param>
+		/// <param name="inRadius">The capsule's radius.</param>
+		/// <param name="inOrientation">The capsule's orientation in space.</param>
+		/// <param name="inLength">The capsule's length.</param>
 		public FCapsuleShape(FVector inCenter, float inRadius, FVector inOrientation, float inLength) :
 			base(E_CreateStruct_FCapsuleShape_FVector_float_FVector_float(inCenter, inRadius, inOrientation, inLength), false)
 		{
@@ -72,7 +72,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The capsule's center point. </para>
+		/// The capsule's center point.
 		/// </summary>
 		public FVector Center
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The capsule's length. </para>
+		/// The capsule's length.
 		/// </summary>
 		public float Length
 		{
@@ -92,7 +92,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The capsule's orientation in space. </para>
+		/// The capsule's orientation in space.
 		/// </summary>
 		public FVector Orientation
 		{
@@ -102,7 +102,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The capsule's radius. </para>
+		/// The capsule's radius.
 		/// </summary>
 		public float Radius
 		{

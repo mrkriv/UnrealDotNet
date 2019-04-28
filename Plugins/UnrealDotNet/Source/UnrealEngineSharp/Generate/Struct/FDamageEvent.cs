@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FDamageEvent() :
 			base(E_CreateStruct_FDamageEvent(), false)
@@ -53,7 +53,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>This is for compatibility with old-style functions which want a unified set of hit data regardless of type of hit.  Ideally this will go away over time. </para>
+		/// This is for compatibility with old-style functions which want a unified set of hit data regardless of type of hit.  Ideally this will go away over time.
 		/// </summary>
 		public virtual void GetBestHitInfo(AActor hitActor, AActor hitInstigator, FHitResult outHitInfo, FVector outImpulseDir)
 			=> E_FDamageEvent_GetBestHitInfo(this, hitActor, hitInstigator, outHitInfo, outImpulseDir);

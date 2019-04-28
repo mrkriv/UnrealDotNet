@@ -22,31 +22,31 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Called periodically, overridden by subclasses </para>
+		/// Called periodically, overridden by subclasses
 		/// </summary>
 		public override void DefaultTimer() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the match transitions to LeavingMap </para>
+		/// Called when the match transitions to LeavingMap
 		/// </summary>
 		protected override void HandleLeavingMap() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the map transitions to WaitingPostMatch </para>
+		/// Called when the map transitions to WaitingPostMatch
 		/// </summary>
 		protected override void HandleMatchHasEnded() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to InProgress </para>
+		/// Called when the state transitions to InProgress
 		/// </summary>
 		protected override void HandleMatchHasStarted() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to WaitingToStart </para>
+		/// Called when the state transitions to WaitingToStart
 		/// </summary>
 		protected override void HandleMatchIsWaitingToStart() { }
 		

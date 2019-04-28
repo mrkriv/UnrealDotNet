@@ -38,7 +38,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>send message to client </para>
+		/// send message to client
 		/// </summary>
 		public virtual void ClientReceive(FClientReceiveData clientData)
 			=> E_ULocalMessage_ClientReceive(this, clientData);

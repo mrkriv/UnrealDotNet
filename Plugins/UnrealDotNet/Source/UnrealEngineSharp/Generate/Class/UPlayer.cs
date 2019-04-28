@@ -91,27 +91,27 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Executes the Exec() command </para>
-		/// <param name="Command">command to execute (string of commands optionally separated by a | (pipe)) </param>
-		/// <param name="bWriteToLog">write out to the log </param>
+		/// Executes the Exec() command
 		/// </summary>
+		/// <param name="command">command to execute (string of commands optionally separated by a | (pipe))</param>
+		/// <param name="bWriteToLog">write out to the log</param>
 		public string ConsoleCommand(string cmd, bool bWriteToLog = true)
 			=> E_UPlayer_ConsoleCommand(this, cmd, bWriteToLog);
 		
 		
 		/// <summary>
-		/// <para>Gets the player controller in the given world for this player. </para>
-		/// <param name="InWorld">The world in which to search for player controllers. </param>
-		/// <return>The controller associated with this player in InWorld, if one exists. </return>
+		/// Gets the player controller in the given world for this player.
 		/// </summary>
+		/// <param name="inWorld">The world in which to search for player controllers.</param>
+		/// <return>The</return>
 		public APlayerController GetPlayerController(UWorld inWorld)
 			=> E_UPlayer_GetPlayerController(this, inWorld);
 		
 		
 		/// <summary>
-		/// <para>Dynamically assign Controller to Player and set viewport. </para>
-		/// <param name="PC">new player controller to assign to player </param>
+		/// Dynamically assign Controller to Player and set viewport.
 		/// </summary>
+		/// <param name="pC">new player controller to assign to player</param>
 		public virtual void SwitchController(APlayerController pC)
 			=> E_UPlayer_SwitchController(this, pC);
 		

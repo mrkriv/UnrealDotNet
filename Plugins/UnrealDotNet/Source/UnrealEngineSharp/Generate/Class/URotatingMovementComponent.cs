@@ -45,9 +45,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Translation of pivot point around which we rotate, relative to current rotation. </para>
+		/// Translation of pivot point around which we rotate, relative to current rotation.
 		/// <para>For instance, with PivotTranslation set to (X=+100, Y=0, Z=0), rotation will occur </para>
-		/// <para>around the point +100 units along the local X axis from the center of the object, </para>
+		/// around the point +100 units along the local X axis from the center of the object,
 		/// <para>rather than around the object's origin (the default). </para>
 		/// </summary>
 		public FVector PivotTranslation
@@ -58,7 +58,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How fast to update roll/pitch/yaw of the component we update. </para>
+		/// How fast to update roll/pitch/yaw of the component we update.
 		/// </summary>
 		public FRotator RotationRate
 		{

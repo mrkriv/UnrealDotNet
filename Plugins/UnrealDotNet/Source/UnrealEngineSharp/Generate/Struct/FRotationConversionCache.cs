@@ -56,56 +56,56 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Return the cached Quat. </para>
+		/// Return the cached Quat.
 		/// </summary>
 		public FQuat GetCachedQuat()
 			=> E_FRotationConversionCache_GetCachedQuat(this);
 		
 		
 		/// <summary>
-		/// <para>Return the cached Rotator. </para>
+		/// Return the cached Rotator.
 		/// </summary>
 		public FRotator GetCachedRotator()
 			=> E_FRotationConversionCache_GetCachedRotator(this);
 		
 		
 		/// <summary>
-		/// <para>Version of QuatToRotator when the Quat is known to already be normalized. </para>
+		/// Version of QuatToRotator when the Quat is known to already be normalized.
 		/// </summary>
 		public FRotator NormalizedQuatToRotator(FQuat inNormalizedQuat)
 			=> E_FRotationConversionCache_NormalizedQuatToRotator(this, inNormalizedQuat);
 		
 		
 		/// <summary>
-		/// <para>Version of QuatToRotator when the Quat is known to already be normalized. Does *NOT* update the cache if there was no match. </para>
+		/// Version of QuatToRotator when the Quat is known to already be normalized. Does *NOT* update the cache if there was no match.
 		/// </summary>
 		public FRotator NormalizedQuatToRotator_ReadOnly(FQuat inNormalizedQuat)
 			=> E_FRotationConversionCache_NormalizedQuatToRotator_ReadOnly(this, inNormalizedQuat);
 		
 		
 		/// <summary>
-		/// <para>Convert a FQuat to FRotator. Uses the cached conversion if possible, and updates it if there was no match. </para>
+		/// Convert a FQuat to FRotator. Uses the cached conversion if possible, and updates it if there was no match.
 		/// </summary>
 		public FRotator QuatToRotator(FQuat inQuat)
 			=> E_FRotationConversionCache_QuatToRotator(this, inQuat);
 		
 		
 		/// <summary>
-		/// <para>Convert a FQuat to FRotator. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match. </para>
+		/// Convert a FQuat to FRotator. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match.
 		/// </summary>
 		public FRotator QuatToRotator_ReadOnly(FQuat inQuat)
 			=> E_FRotationConversionCache_QuatToRotator_ReadOnly(this, inQuat);
 		
 		
 		/// <summary>
-		/// <para>Convert a FRotator to FQuat. Uses the cached conversion if possible, and updates it if there was no match. </para>
+		/// Convert a FRotator to FQuat. Uses the cached conversion if possible, and updates it if there was no match.
 		/// </summary>
 		public FQuat RotatorToQuat(FRotator inRotator)
 			=> E_FRotationConversionCache_RotatorToQuat(this, inRotator);
 		
 		
 		/// <summary>
-		/// <para>Convert a FRotator to FQuat. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match. </para>
+		/// Convert a FRotator to FQuat. Uses the cached conversion if possible, but does *NOT* update the cache if there was no match.
 		/// </summary>
 		public FQuat RotatorToQuat_ReadOnly(FRotator inRotator)
 			=> E_FRotationConversionCache_RotatorToQuat_ReadOnly(this, inRotator);

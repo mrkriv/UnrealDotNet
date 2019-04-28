@@ -55,7 +55,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>FOV angle </para>
+		/// FOV angle
 		/// </summary>
 		public float FOV
 		{
@@ -65,7 +65,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Location </para>
+		/// Location
 		/// </summary>
 		public FVector Location
 		{
@@ -75,7 +75,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Rotation </para>
+		/// Rotation
 		/// </summary>
 		public FRotator Rotation
 		{

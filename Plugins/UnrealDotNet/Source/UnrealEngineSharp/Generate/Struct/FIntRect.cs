@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
+		/// Constructor
 		/// </summary>
 		public FIntRect() :
 			base(E_CreateStruct_FIntRect(), false)
@@ -29,12 +29,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="X0">Minimum X coordinate. </param>
-		/// <param name="Y0">Minimum Y coordinate. </param>
-		/// <param name="X1">Maximum X coordinate. </param>
-		/// <param name="Y1">Maximum Y coordinate. </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="x0">Minimum X coordinate.</param>
+		/// <param name="y0">Minimum Y coordinate.</param>
+		/// <param name="x1">Maximum X coordinate.</param>
+		/// <param name="y1">Maximum Y coordinate.</param>
 		public FIntRect(int x0, int y0, int x1, int y1) :
 			base(E_CreateStruct_FIntRect_int32_int32_int32_int32(x0, y0, x1, y1), false)
 		{
@@ -42,10 +42,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="InMin">Minimum Point </param>
-		/// <param name="InMax">Maximum Point </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="inMin">Minimum Point</param>
+		/// <param name="inMax">Maximum Point</param>
 		public FIntRect(FIntPoint inMin, FIntPoint inMax) :
 			base(E_CreateStruct_FIntRect_FIntPoint_FIntPoint(inMin, inMax), false)
 		{
@@ -76,7 +76,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the last pixel line/row (like in Win32 RECT). </para>
+		/// Holds the last pixel line/row (like in Win32 RECT).
 		/// </summary>
 		public FIntPoint Max
 		{
@@ -86,7 +86,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the first pixel line/row (like in Win32 RECT). </para>
+		/// Holds the first pixel line/row (like in Win32 RECT).
 		/// </summary>
 		public FIntPoint Min
 		{

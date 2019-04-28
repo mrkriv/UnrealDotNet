@@ -22,13 +22,13 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Clear all instances being rendered by this component. </para>
+		/// Clear all instances being rendered by this component.
 		/// </summary>
 		public override void ClearInstances() { }
 		
 		
 		/// <summary>
-		/// <para>Preallocated memory to include the new added instances count, to prevent reallloc during the add operation. </para>
+		/// Preallocated memory to include the new added instances count, to prevent reallloc during the add operation.
 		/// </summary>
 		public override void PreAllocateInstancesMemory(int addedInstanceCount) { }
 		

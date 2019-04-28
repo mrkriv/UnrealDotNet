@@ -47,7 +47,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to use MBP (Multi Broadphase Pruning </para>
+		/// Whether to use MBP (Multi Broadphase Pruning
 		/// </summary>
 		public bool bUseMBPOnClient
 		{
@@ -63,7 +63,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Total bounds for MBP, must cover the game world or collisions are disabled for out of bounds actors </para>
+		/// Total bounds for MBP, must cover the game world or collisions are disabled for out of bounds actors
 		/// </summary>
 		public FBox MBPBounds
 		{

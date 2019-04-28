@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FSphere() :
 			base(E_CreateStruct_FSphere(), false)
@@ -29,9 +29,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new sphere. </para>
-		/// <param name="int32">Passing int32 sets up zeroed sphere. </param>
+		/// Creates and initializes a new sphere.
 		/// </summary>
+		/// <param name="int32">Passing int32 sets up zeroed sphere.</param>
 		public FSphere(int _p0) :
 			base(E_CreateStruct_FSphere_int32(_p0), false)
 		{
@@ -39,10 +39,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new sphere with the specified parameters. </para>
-		/// <param name="InV">Center of sphere. </param>
-		/// <param name="InW">Radius of sphere. </param>
+		/// Creates and initializes a new sphere with the specified parameters.
 		/// </summary>
+		/// <param name="inV">Center of sphere.</param>
+		/// <param name="inW">Radius of sphere.</param>
 		public FSphere(FVector inV, float inW) :
 			base(E_CreateStruct_FSphere_FVector_float(inV, inW), false)
 		{
@@ -50,10 +50,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Pts">Pointer to list of points this sphere must contain. </param>
-		/// <param name="Count">How many points are in the list. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="pts">Pointer to list of points this sphere must contain.</param>
+		/// <param name="count">How many points are in the list.</param>
 		public FSphere(FVector pts, int count) :
 			base(E_CreateStruct_FSphere_FVector_int32(pts, count), false)
 		{
@@ -108,7 +108,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The sphere's center point. </para>
+		/// The sphere's center point.
 		/// </summary>
 		public FVector Center
 		{
@@ -118,7 +118,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The sphere's radius. </para>
+		/// The sphere's radius.
 		/// </summary>
 		public float W
 		{
@@ -131,66 +131,66 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Check whether two spheres are the same within specified tolerance. </para>
-		/// <param name="Sphere">The other sphere. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if spheres are equal within specified tolerance, otherwise false. </return>
+		/// Check whether two spheres are the same within specified tolerance.
 		/// </summary>
+		/// <param name="sphere">The other sphere.</param>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool Equals(FSphere sphere, float tolerance)
 			=> E_FSphere_Equals(this, sphere, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Get volume of the current sphere </para>
-		/// <return>Volume (in Unreal units). </return>
+		/// Get volume of the current sphere
 		/// </summary>
+		/// <return>Volume</return>
 		public float GetVolume()
 			=> E_FSphere_GetVolume(this);
 		
 		
 		/// <summary>
-		/// <para>Test whether this sphere intersects another. </para>
-		/// <param name="Other">The other sphere. </param>
-		/// <param name="Tolerance">Error tolerance. </param>
-		/// <return>true if spheres intersect, false otherwise. </return>
+		/// Test whether this sphere intersects another.
 		/// </summary>
+		/// <param name="other">The other sphere.</param>
+		/// <param name="tolerance">Error tolerance.</param>
+		/// <return>true</return>
 		public bool Intersects(FSphere other, float tolerance)
 			=> E_FSphere_Intersects(this, other, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Check whether sphere is inside of another. </para>
-		/// <param name="Other">The other sphere. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if sphere is inside another, otherwise false. </return>
+		/// Check whether sphere is inside of another.
 		/// </summary>
+		/// <param name="other">The other sphere.</param>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool IsInside(FSphere other, float tolerance)
 			=> E_FSphere_IsInside(this, other, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Checks whether the given location is inside this sphere. </para>
-		/// <param name="In">The location to test for inside the bounding volume. </param>
-		/// <return>true if location is inside this volume. </return>
+		/// Checks whether the given location is inside this sphere.
 		/// </summary>
+		/// <param name="@in">The location to test for inside the bounding volume.</param>
+		/// <return>true</return>
 		public bool IsInside(FVector @in, float tolerance)
 			=> E_FSphere_IsInside_o1(this, @in, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Get result of Transforming sphere by Matrix. </para>
-		/// <param name="M">Matrix to transform by. </param>
-		/// <return>Result of transformation. </return>
+		/// Get result of Transforming sphere by Matrix.
 		/// </summary>
+		/// <param name="m">Matrix to transform by.</param>
+		/// <return>Result</return>
 		public FSphere TransformBy(FMatrix m)
 			=> E_FSphere_TransformBy(this, m);
 		
 		
 		/// <summary>
-		/// <para>Get result of Transforming sphere with Transform. </para>
-		/// <param name="M">Transform information. </param>
-		/// <return>Result of transformation. </return>
+		/// Get result of Transforming sphere with Transform.
 		/// </summary>
+		/// <param name="m">Transform information.</param>
+		/// <return>Result</return>
 		public FSphere TransformBy(FTransform m)
 			=> E_FSphere_TransformBy_o1(this, m);
 		

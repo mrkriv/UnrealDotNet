@@ -75,7 +75,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>A brightness control to scale the captured scene's reflection intensity. </para>
+		/// A brightness control to scale the captured scene's reflection intensity.
 		/// </summary>
 		public float Brightness
 		{
@@ -85,7 +85,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>World space offset to apply before capturing. </para>
+		/// World space offset to apply before capturing.
 		/// </summary>
 		public FVector CaptureOffset
 		{
@@ -101,7 +101,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Indicates where to get the reflection source from. </para>
+		/// Indicates where to get the reflection source from.
 		/// </summary>
 		public EReflectionSourceType ReflectionSourceType
 		{
@@ -111,7 +111,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Angle to rotate the source cubemap when SourceType is set to SLS_SpecifiedCubemap. </para>
+		/// Angle to rotate the source cubemap when SourceType is set to SLS_SpecifiedCubemap.
 		/// </summary>
 		public float SourceCubemapAngle
 		{
@@ -124,35 +124,35 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Gets the radius that bounds the shape's influence, used for culling. </para>
+		/// Gets the radius that bounds the shape's influence, used for culling.
 		/// </summary>
 		public virtual float GetInfluenceBoundingRadius()
 			=> E_UReflectionCaptureComponent_GetInfluenceBoundingRadius(this);
 		
 		
 		/// <summary>
-		/// <para>Generates a new MapBuildDataId and adds the capture to the capture queue processed by UpdateReflectionCaptureContents. </para>
+		/// Generates a new MapBuildDataId and adds the capture to the capture queue processed by UpdateReflectionCaptureContents.
 		/// </summary>
 		public void MarkDirtyForRecapture()
 			=> E_UReflectionCaptureComponent_MarkDirtyForRecapture(this);
 		
 		
 		/// <summary>
-		/// <para>Adds the capture to the capture queue processed by UpdateReflectionCaptureContents. </para>
+		/// Adds the capture to the capture queue processed by UpdateReflectionCaptureContents.
 		/// </summary>
 		public void MarkDirtyForRecaptureOrUpload()
 			=> E_UReflectionCaptureComponent_MarkDirtyForRecaptureOrUpload(this);
 		
 		
 		/// <summary>
-		/// <para>Marks this component has having been recaptured. </para>
+		/// Marks this component has having been recaptured.
 		/// </summary>
 		public void SetCaptureCompleted()
 			=> E_UReflectionCaptureComponent_SetCaptureCompleted(this);
 		
 		
 		/// <summary>
-		/// <para>Called to update the preview shapes when something they are dependent on has changed. </para>
+		/// Called to update the preview shapes when something they are dependent on has changed.
 		/// </summary>
 		public virtual void UpdatePreviewShape()
 			=> E_UReflectionCaptureComponent_UpdatePreviewShape(this);

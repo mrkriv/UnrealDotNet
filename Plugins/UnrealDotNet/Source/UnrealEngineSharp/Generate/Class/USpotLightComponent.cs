@@ -62,7 +62,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Degrees. </para>
+		/// Degrees.
 		/// </summary>
 		public float InnerConeAngle
 		{
@@ -78,7 +78,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Degrees. </para>
+		/// Degrees.
 		/// </summary>
 		public float OuterConeAngle
 		{

@@ -450,66 +450,66 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>@RETURN new per/client bandwidth given number of players in the game </para>
+		/// @RETURN new per/client bandwidth given number of players in the game
 		/// </summary>
 		public virtual int CalculatedNetSpeed()
 			=> E_AGameNetworkManager_CalculatedNetSpeed(this);
 		
 		
 		/// <summary>
-		/// <para>Turns standby detection on/off </para>
-		/// <param name="bIsEnabled">true to turn it on, false to disable it </param>
+		/// Turns standby detection on/off
 		/// </summary>
+		/// <param name="bIsEnabled">true to turn it on, false to disable it</param>
 		public virtual void EnableStandbyCheatDetection(bool bIsEnabled)
 			=> E_AGameNetworkManager_EnableStandbyCheatDetection(this, bIsEnabled);
 		
 		
 		/// <summary>
-		/// <return>true if position error exceeds max allowable amount </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool ExceedsAllowablePositionError(FVector locDiff)
 			=> E_AGameNetworkManager_ExceedsAllowablePositionError(this, locDiff);
 		
 		
 		/// <summary>
-		/// <para>Returns true if we should be in low bandwidth mode </para>
+		/// Returns true if we should be in low bandwidth mode
 		/// </summary>
 		public virtual bool IsInLowBandwidthMode()
 			=> E_AGameNetworkManager_IsInLowBandwidthMode(this);
 		
 		
 		/// <summary>
-		/// <return>true if velocity vector passed in is considered near zero for networking purposes </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool NetworkVelocityNearZero(FVector inVelocity)
 			=> E_AGameNetworkManager_NetworkVelocityNearZero(this, inVelocity);
 		
 		
 		/// <summary>
-		/// <para>Notifies the game code that a standby cheat was detected </para>
-		/// <param name="StandbyType">the type of cheat detected </param>
+		/// Notifies the game code that a standby cheat was detected
 		/// </summary>
+		/// <param name="standbyType">the type of cheat detected</param>
 		public virtual void StandbyCheatDetected(EStandbyType standbyType)
 			=> E_AGameNetworkManager_StandbyCheatDetected(this, (byte)standbyType);
 		
 		
 		/// <summary>
-		/// <para>Update network speeds for listen servers based on number of connected players. </para>
+		/// Update network speeds for listen servers based on number of connected players.
 		/// </summary>
 		public virtual void UpdateNetSpeeds(bool bIsLanMatch)
 			=> E_AGameNetworkManager_UpdateNetSpeeds(this, bIsLanMatch);
 		
 		
 		/// <summary>
-		/// <para>Timer which calls UpdateNetSpeeds() once a second. </para>
+		/// Timer which calls UpdateNetSpeeds() once a second.
 		/// </summary>
 		public virtual void UpdateNetSpeedsTimer()
 			=> E_AGameNetworkManager_UpdateNetSpeedsTimer(this);
 		
 		
 		/// <summary>
-		/// <return>true if last player client to server update was sufficiently recent.  Used to limit frequency of corrections if connection speed is limited. </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool WithinUpdateDelayBounds(APlayerController pC, float lastUpdateTime)
 			=> E_AGameNetworkManager_WithinUpdateDelayBounds(this, pC, lastUpdateTime);
 		

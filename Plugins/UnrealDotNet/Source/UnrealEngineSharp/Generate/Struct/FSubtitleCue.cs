@@ -42,7 +42,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The text to appear in the subtitle. </para>
+		/// The text to appear in the subtitle.
 		/// </summary>
 		public string Text
 		{
@@ -52,7 +52,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The time at which the subtitle is to be displayed, in seconds relative to the beginning of the line. </para>
+		/// The time at which the subtitle is to be displayed, in seconds relative to the beginning of the line.
 		/// </summary>
 		public float Time
 		{

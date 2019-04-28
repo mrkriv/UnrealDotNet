@@ -224,7 +224,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>If true, then applies the value of bComponentShouldUpdatePhysicsVolume to the UpdatedComponent. If false, will not change bShouldUpdatePhysicsVolume on the UpdatedComponent at all. </para>
+		/// If true, then applies the value of bComponentShouldUpdatePhysicsVolume to the UpdatedComponent. If false, will not change bShouldUpdatePhysicsVolume on the UpdatedComponent at all.
 		/// <para>@see bComponentShouldUpdatePhysicsVolume </para>
 		/// </summary>
 		public byte bAutoRegisterPhysicsVolumeUpdates
@@ -235,7 +235,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, registers the owner's Root component as the UpdatedComponent if there is not one currently assigned. </para>
+		/// If true, registers the owner's Root component as the UpdatedComponent if there is not one currently assigned.
 		/// </summary>
 		public byte bAutoRegisterUpdatedComponent
 		{
@@ -245,7 +245,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, whenever the updated component is changed, this component will enable or disable its tick dependent on whether it has something to update. </para>
+		/// If true, whenever the updated component is changed, this component will enable or disable its tick dependent on whether it has something to update.
 		/// <para>This will NOT enable tick at startup if bAutoActivate is false, because presumably you have a good reason for not wanting it to start ticking initially. </para>
 		/// </summary>
 		public byte bAutoUpdateTickRegistration
@@ -256,9 +256,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, enables bShouldUpdatePhysicsVolume on the UpdatedComponent during initialization from SetUpdatedComponent(), otherwise disables such updates. </para>
+		/// If true, enables bShouldUpdatePhysicsVolume on the UpdatedComponent during initialization from SetUpdatedComponent(), otherwise disables such updates.
 		/// <para>Only enabled if bAutoRegisterPhysicsVolumeUpdates is true. </para>
-		/// <para>WARNING: UpdatePhysicsVolume is potentially expensive if overlap events are also *disabled* because it requires a separate query against all physics volumes in the world. </para>
+		/// WARNING: UpdatePhysicsVolume is potentially expensive if overlap events are also *disabled* because it requires a separate query against all physics volumes in the world.
 		/// </summary>
 		public byte bComponentShouldUpdatePhysicsVolume
 		{
@@ -268,8 +268,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, movement will be constrained to a plane. </para>
-		/// <para>@see PlaneConstraintNormal, PlaneConstraintOrigin, PlaneConstraintAxisSetting </para>
+		/// If true, movement will be constrained to a plane.
+		/// <see cref="PlaneConstraintNormal"/>
 		/// </summary>
 		public byte bConstrainToPlane
 		{
@@ -279,7 +279,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true and plane constraints are enabled, then the updated component will be snapped to the plane when first attached. </para>
+		/// If true and plane constraints are enabled, then the updated component will be snapped to the plane when first attached.
 		/// </summary>
 		public byte bSnapToPlaneAtStart
 		{
@@ -289,9 +289,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, after registration we will add a tick dependency to tick before our owner (if we can both tick). </para>
+		/// If true, after registration we will add a tick dependency to tick before our owner (if we can both tick).
 		/// <para>This is important when our tick causes an update in the owner's position, so that when the owner ticks it uses the most recent position without lag. </para>
-		/// <para>Disabling this can improve performance if both objects tick but the order of ticks doesn't matter. </para>
+		/// Disabling this can improve performance if both objects tick but the order of ticks doesn't matter.
 		/// </summary>
 		public byte bTickBeforeOwner
 		{
@@ -301,7 +301,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, skips TickComponent() if UpdatedComponent was not recently rendered. </para>
+		/// If true, skips TickComponent() if UpdatedComponent was not recently rendered.
 		/// </summary>
 		public byte bUpdateOnlyIfRendered
 		{
@@ -311,7 +311,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Flags that control the behavior of calls to MoveComponent() on our UpdatedComponent. </para>
+		/// Flags that control the behavior of calls to MoveComponent() on our UpdatedComponent.
 		/// <para>@see EMoveComponentFlags </para>
 		/// </summary>
 		public EMoveComponentFlags MoveComponentFlags
@@ -322,9 +322,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The component we move and update. </para>
+		/// The component we move and update.
 		/// <para>If this is null at startup and bAutoRegisterUpdatedComponent is true, the owning Actor's root component will automatically be set as our UpdatedComponent at startup. </para>
-		/// <para>@see bAutoRegisterUpdatedComponent, SetUpdatedComponent(), UpdatedPrimitive </para>
+		/// <see cref="bAutoRegisterUpdatedComponent"/>
 		/// </summary>
 		public USceneComponent UpdatedComponent
 		{
@@ -334,7 +334,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>UpdatedComponent, cast as a UPrimitiveComponent. May be invalid if UpdatedComponent was null or not a UPrimitiveComponent. </para>
+		/// UpdatedComponent, cast as a UPrimitiveComponent. May be invalid if UpdatedComponent was null or not a UPrimitiveComponent.
 		/// </summary>
 		public UPrimitiveComponent UpdatedPrimitive
 		{
@@ -344,7 +344,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Current velocity of updated component. </para>
+		/// Current velocity of updated component.
 		/// </summary>
 		public FVector Velocity
 		{
@@ -357,43 +357,43 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Adds force from radial force components. </para>
+		/// Adds force from radial force components.
 		/// <para>Intended to be overridden by subclasses; default implementation does nothing. </para>
-		/// <param name="Origin">The origin of the force </param>
-		/// <param name="Radius">The radius in which the force will be applied </param>
-		/// <param name="Strength">The strength of the force </param>
-		/// <param name="Falloff">The falloff from the force's origin </param>
 		/// </summary>
+		/// <param name="origin">The origin of the force</param>
+		/// <param name="radius">The radius in which the force will be applied</param>
+		/// <param name="strength">The strength of the force</param>
+		/// <param name="falloff">The falloff from the force's origin</param>
 		public virtual void AddRadialForce(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff)
 			=> E_UMovementComponent_AddRadialForce(this, origin, radius, strength, (byte)falloff);
 		
 		
 		/// <summary>
-		/// <para>Adds impulse from radial force components. </para>
+		/// Adds impulse from radial force components.
 		/// <para>Intended to be overridden by subclasses; default implementation does nothing. </para>
-		/// <param name="Origin">The origin of the force </param>
-		/// <param name="Radius">The radius in which the force will be applied </param>
-		/// <param name="Strength">The strength of the force </param>
-		/// <param name="Falloff">The falloff from the force's origin </param>
-		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect). </param>
 		/// </summary>
+		/// <param name="origin">The origin of the force</param>
+		/// <param name="radius">The radius in which the force will be applied</param>
+		/// <param name="strength">The strength of the force</param>
+		/// <param name="falloff">The falloff from the force's origin</param>
+		/// <param name="bVelChange">If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect).</param>
 		public virtual void AddRadialImpulse(FVector origin, float radius, float strength, ERadialImpulseFalloff falloff, bool bVelChange)
 			=> E_UMovementComponent_AddRadialImpulse(this, origin, radius, strength, (byte)falloff, bVelChange);
 		
 		
 		/// <summary>
-		/// <para>Compute a vector to slide along a surface, given an attempted move, time, and normal. </para>
-		/// <param name="Delta">Attempted move. </param>
-		/// <param name="Time">Amount of move to apply (between 0 and 1). </param>
-		/// <param name="Normal">Normal opposed to movement. Not necessarily equal to Hit.Normal. </param>
-		/// <param name="Hit">HitResult of the move that resulted in the slide. </param>
+		/// Compute a vector to slide along a surface, given an attempted move, time, and normal.
 		/// </summary>
+		/// <param name="delta">Attempted move.</param>
+		/// <param name="time">Amount of move to apply (between 0 and 1).</param>
+		/// <param name="normal">Normal opposed to movement. Not necessarily equal to Hit.Normal.</param>
+		/// <param name="hit">HitResult of the move that resulted in the slide.</param>
 		public virtual FVector ComputeSlideVector(FVector delta, float time, FVector normal, FHitResult hit)
 			=> E_UMovementComponent_ComputeSlideVector(this, delta, time, normal, hit);
 		
 		
 		/// <summary>
-		/// <para>Constrain a direction vector to the plane constraint, if enabled. </para>
+		/// Constrain a direction vector to the plane constraint, if enabled.
 		/// <para>@see SetPlaneConstraint </para>
 		/// </summary>
 		public virtual FVector ConstrainDirectionToPlane(FVector direction)
@@ -401,28 +401,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Constrain a position vector to the plane constraint, if enabled. </para>
+		/// Constrain a position vector to the plane constraint, if enabled.
 		/// </summary>
 		public virtual FVector ConstrainLocationToPlane(FVector location)
 			=> E_UMovementComponent_ConstrainLocationToPlane(this, location);
 		
 		
 		/// <summary>
-		/// <para>Constrain a normal vector (of unit length) to the plane constraint, if enabled. </para>
+		/// Constrain a normal vector (of unit length) to the plane constraint, if enabled.
 		/// </summary>
 		public virtual FVector ConstrainNormalToPlane(FVector normal)
 			=> E_UMovementComponent_ConstrainNormalToPlane(this, normal);
 		
 		
 		/// <summary>
-		/// <para>Returns gravity that affects this component </para>
+		/// Returns gravity that affects this component
 		/// </summary>
 		public virtual float GetGravityZ()
 			=> E_UMovementComponent_GetGravityZ(this);
 		
 		
 		/// <summary>
-		/// <para>Returns maximum speed of component in current movement mode. </para>
+		/// Returns maximum speed of component in current movement mode.
 		/// </summary>
 		public virtual float GetMaxSpeed()
 			=> E_UMovementComponent_GetMaxSpeed(this);
@@ -435,103 +435,103 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Calculate a movement adjustment to try to move out of a penetration from a failed move. </para>
-		/// <param name="Hit">the result of the failed move </param>
-		/// <return>The adjustment to use after a failed move, or a zero vector if no attempt should be made. </return>
+		/// Calculate a movement adjustment to try to move out of a penetration from a failed move.
 		/// </summary>
+		/// <param name="hit">the result of the failed move</param>
+		/// <return>The</return>
 		public virtual FVector GetPenetrationAdjustment(FHitResult hit)
 			=> E_UMovementComponent_GetPenetrationAdjustment(this, hit);
 		
 		
 		/// <summary>
-		/// <para>Get the plane constraint axis setting. </para>
+		/// Get the plane constraint axis setting.
 		/// </summary>
 		public EPlaneConstraintAxisSetting GetPlaneConstraintAxisSetting()
 			=> (EPlaneConstraintAxisSetting)E_UMovementComponent_GetPlaneConstraintAxisSetting(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the normal of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// Returns the normal of the plane that constrains movement, enforced if the plane constraint is enabled.
 		/// </summary>
 		public FVector GetPlaneConstraintNormal()
 			=> E_UMovementComponent_GetPlaneConstraintNormal(this);
 		
 		
 		/// <summary>
-		/// <para>Helper to compute the plane constraint axis from the current setting. </para>
-		/// <param name="AxisSetting">Setting to use when computing the axis. </param>
-		/// <return>Plane constraint axis/normal. </return>
+		/// Helper to compute the plane constraint axis from the current setting.
 		/// </summary>
+		/// <param name="axisSetting">Setting to use when computing the axis.</param>
+		/// <return>Plane</return>
 		protected FVector GetPlaneConstraintNormalFromAxisSetting(EPlaneConstraintAxisSetting axisSetting)
 			=> E_UMovementComponent_GetPlaneConstraintNormalFromAxisSetting(this, (byte)axisSetting);
 		
 		
 		/// <summary>
-		/// <para>Get the plane constraint origin. This defines the behavior of snapping a position to the plane, such as by SnapUpdatedComponentToPlane(). </para>
-		/// <return>The origin of the plane that constrains movement, if the plane constraint is enabled. </return>
+		/// Get the plane constraint origin. This defines the behavior of snapping a position to the plane, such as by SnapUpdatedComponentToPlane().
 		/// </summary>
+		/// <return>The</return>
 		public FVector GetPlaneConstraintOrigin()
 			=> E_UMovementComponent_GetPlaneConstraintOrigin(this);
 		
 		
 		/// <summary>
-		/// <para>Called for Blocking impact </para>
-		/// <param name="Hit">Describes the collision. </param>
-		/// <param name="TimeSlice">Time period for the simulation that produced this hit.  Useful for </param>
+		/// Called for Blocking impact
 		/// <para>putting Hit.Time in context.  Can be zero in certain situations where it's not appropriate, </para>
-		/// <para>be sure to handle that. </para>
-		/// <param name="MoveDelta">Attempted move that resulted in the hit. </param>
+		/// be sure to handle that.
 		/// </summary>
+		/// <param name="hit">Describes the collision.</param>
+		/// <param name="timeSlice">Time period for the simulation that produced this hit.  Useful for</param>
+		/// <param name="moveDelta">Attempted move that resulted in the hit.</param>
 		public virtual void HandleImpact(FHitResult hit, float timeSlice, FVector moveDelta)
 			=> E_UMovementComponent_HandleImpact(this, hit, timeSlice, moveDelta);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the current velocity is exceeding the given max speed (usually the result of GetMaxSpeed()), within a small error tolerance. </para>
+		/// Returns true if the current velocity is exceeding the given max speed (usually the result of GetMaxSpeed()), within a small error tolerance.
 		/// <para>Note that under normal circumstances updates cause by acceleration will not cause this to be true, however external forces or changes in the max speed limit </para>
-		/// <para>can cause the max speed to be violated. </para>
+		/// can cause the max speed to be violated.
 		/// </summary>
 		public virtual bool IsExceedingMaxSpeed(float maxSpeed)
 			=> E_UMovementComponent_IsExceedingMaxSpeed(this, maxSpeed);
 		
 		
 		/// <summary>
-		/// <para>Returns true if it's in PhysicsVolume with water flag </para>
+		/// Returns true if it's in PhysicsVolume with water flag
 		/// </summary>
 		public virtual bool IsInWater()
 			=> E_UMovementComponent_IsInWater(this);
 		
 		
 		/// <summary>
-		/// <para>Returns a scalar applied to the maximum velocity that the component can currently move. </para>
+		/// Returns a scalar applied to the maximum velocity that the component can currently move.
 		/// </summary>
 		public virtual float K2_GetMaxSpeedModifier()
 			=> E_UMovementComponent_K2_GetMaxSpeedModifier(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the result of GetMaxSpeed() * GetMaxSpeedModifier(). </para>
+		/// Returns the result of GetMaxSpeed() * GetMaxSpeedModifier().
 		/// </summary>
 		public virtual float K2_GetModifiedMaxSpeed()
 			=> E_UMovementComponent_K2_GetModifiedMaxSpeed(this);
 		
 		
 		/// <summary>
-		/// <para>Moves our UpdatedComponent by the given Delta, and sets rotation to NewRotation. </para>
+		/// Moves our UpdatedComponent by the given Delta, and sets rotation to NewRotation.
 		/// <para>Respects the plane constraint, if enabled. </para>
-		/// <return>True if some movement occurred, false if no movement occurred. Result of any impact will be stored in OutHit. </return>
 		/// </summary>
+		/// <return>True</return>
 		public bool K2_MoveUpdatedComponent(FVector delta, FRotator newRotation, FHitResult outHit, bool bSweep = true, bool bTeleport = false)
 			=> E_UMovementComponent_K2_MoveUpdatedComponent(this, delta, newRotation, outHit, bSweep, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Moves our UpdatedComponent by the given Delta, and sets rotation to NewRotation. Respects the plane constraint, if enabled. </para>
+		/// Moves our UpdatedComponent by the given Delta, and sets rotation to NewRotation. Respects the plane constraint, if enabled.
 		/// <para>@note This simply calls the virtual MoveUpdatedComponentImpl() which can be overridden to implement custom behavior. </para>
-		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat). </para>
+		/// @note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat).
 		/// <para>@note The 'Teleport' flag is currently always treated as 'None' (not teleporting) when used in an active FScopedMovementUpdate. </para>
-		/// <return>True if some movement occurred, false if no movement occurred. Result of any impact will be stored in OutHit. </return>
 		/// </summary>
+		/// <return>True</return>
 		public bool MoveUpdatedComponent(FVector delta, FQuat newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
 			=> E_UMovementComponent_MoveUpdatedComponent(this, delta, newRotation, bSweep, outHit, (byte)teleport);
 		
@@ -543,20 +543,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called by owning Actor upon successful teleport from AActor::TeleportTo(). </para>
+		/// Called by owning Actor upon successful teleport from AActor::TeleportTo().
 		/// </summary>
 		public virtual void OnTeleported()
 			=> E_UMovementComponent_OnTeleported(this);
 		
 		
 		/// <summary>
-		/// <para>Try to move out of penetration in an object after a failed move. This function should respect the plane constraint if applicable. </para>
+		/// Try to move out of penetration in an object after a failed move. This function should respect the plane constraint if applicable.
 		/// <para>@note This simply calls the virtual ResolvePenetrationImpl() which can be overridden to implement custom behavior. </para>
-		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat).. </para>
-		/// <param name="Adjustment">The requested adjustment, usually from GetPenetrationAdjustment() </param>
-		/// <param name="Hit">The result of the failed move </param>
-		/// <return>True if the adjustment was successful and the original move should be retried, or false if no repeated attempt should be made. </return>
+		/// @note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat)..
 		/// </summary>
+		/// <param name="adjustment">The requested adjustment, usually from GetPenetrationAdjustment()</param>
+		/// <param name="hit">The result of the failed move</param>
+		/// <return>True</return>
 		public bool ResolvePenetration(FVector adjustment, FHitResult hit, FQuat newRotation)
 			=> E_UMovementComponent_ResolvePenetration(this, adjustment, hit, newRotation);
 		
@@ -568,12 +568,12 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Calls MoveUpdatedComponent(), handling initial penetrations by calling ResolvePenetration(). </para>
+		/// Calls MoveUpdatedComponent(), handling initial penetrations by calling ResolvePenetration().
 		/// <para>If this adjustment succeeds, the original movement will be attempted again. </para>
-		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat). </para>
+		/// @note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat).
 		/// <para>@note The 'Teleport' flag is currently always treated as 'None' (not teleporting) when used in an active FScopedMovementUpdate. </para>
-		/// <return>result of the final MoveUpdatedComponent() call. </return>
 		/// </summary>
+		/// <return>result</return>
 		public bool SafeMoveUpdatedComponent(FVector delta, FQuat newRotation, bool bSweep, FHitResult outHit, ETeleportType teleport)
 			=> E_UMovementComponent_SafeMoveUpdatedComponent(this, delta, newRotation, bSweep, outHit, (byte)teleport);
 		
@@ -582,108 +582,108 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the plane constraint axis setting. </para>
+		/// Set the plane constraint axis setting.
 		/// <para>Changing this setting will modify the current value of PlaneConstraintNormal. </para>
-		/// <param name="NewAxisSetting">New plane constraint axis setting. </param>
 		/// </summary>
+		/// <param name="newAxisSetting">New plane constraint axis setting.</param>
 		public virtual void SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting newAxisSetting)
 			=> E_UMovementComponent_SetPlaneConstraintAxisSetting(this, (byte)newAxisSetting);
 		
 		
 		/// <summary>
-		/// <para>Sets whether or not the plane constraint is enabled. </para>
+		/// Sets whether or not the plane constraint is enabled.
 		/// </summary>
 		public virtual void SetPlaneConstraintEnabled(bool bEnabled)
 			=> E_UMovementComponent_SetPlaneConstraintEnabled(this, bEnabled);
 		
 		
 		/// <summary>
-		/// <para>Uses the Forward and Up vectors to compute the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// Uses the Forward and Up vectors to compute the plane that constrains movement, enforced if the plane constraint is enabled.
 		/// </summary>
 		public virtual void SetPlaneConstraintFromVectors(FVector forward, FVector up)
 			=> E_UMovementComponent_SetPlaneConstraintFromVectors(this, forward, up);
 		
 		
 		/// <summary>
-		/// <para>Sets the normal of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// Sets the normal of the plane that constrains movement, enforced if the plane constraint is enabled.
 		/// <para>Changing the normal automatically sets PlaneConstraintAxisSetting to "Custom". </para>
-		/// <param name="PlaneNormal">The normal of the plane. If non-zero in length, it will be normalized. </param>
 		/// </summary>
+		/// <param name="planeNormal">The normal of the plane. If non-zero in length, it will be normalized.</param>
 		public virtual void SetPlaneConstraintNormal(FVector planeNormal)
 			=> E_UMovementComponent_SetPlaneConstraintNormal(this, planeNormal);
 		
 		
 		/// <summary>
-		/// <para>Sets the origin of the plane that constrains movement, enforced if the plane constraint is enabled. </para>
+		/// Sets the origin of the plane that constrains movement, enforced if the plane constraint is enabled.
 		/// </summary>
 		public virtual void SetPlaneConstraintOrigin(FVector planeOrigin)
 			=> E_UMovementComponent_SetPlaneConstraintOrigin(this, planeOrigin);
 		
 		
 		/// <summary>
-		/// <para>Assign the component we move and update. </para>
+		/// Assign the component we move and update.
 		/// </summary>
 		public virtual void SetUpdatedComponent(USceneComponent newUpdatedComponent)
 			=> E_UMovementComponent_SetUpdatedComponent(this, newUpdatedComponent);
 		
 		
 		/// <summary>
-		/// <para>Possibly skip update if moved component is not rendered or can't move. </para>
-		/// <param name="DeltaTime">todo this parameter is not used in the function. </param>
-		/// <return>true if component movement update should be skipped </return>
+		/// Possibly skip update if moved component is not rendered or can't move.
 		/// </summary>
+		/// <param name="deltaTime">todo this parameter is not used in the function.</param>
+		/// <return>true</return>
 		public virtual bool ShouldSkipUpdate(float deltaTime)
 			=> E_UMovementComponent_ShouldSkipUpdate(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Slide smoothly along a surface, and slide away from multiple impacts using TwoWallAdjust if necessary. Calls HandleImpact for each surface hit, if requested. </para>
+		/// Slide smoothly along a surface, and slide away from multiple impacts using TwoWallAdjust if necessary. Calls HandleImpact for each surface hit, if requested.
 		/// <para>Uses SafeMoveUpdatedComponent() for movement, and ComputeSlideVector() to determine the slide direction. </para>
-		/// <param name="Delta">Attempted movement vector. </param>
-		/// <param name="Time">Percent of Delta to apply (between 0 and 1). Usually equal to the remaining time after a collision: (1.0 - Hit.Time). </param>
-		/// <param name="Normal">Normal opposing movement, along which we will slide. </param>
-		/// <param name="Hit">In] HitResult of the attempted move that resulted in the impact triggering the slide. [Out] HitResult of last attempted move. </param>
-		/// <param name="bHandleImpact">Whether to call HandleImpact on each hit. </param>
-		/// <return>The percentage of requested distance (Delta * Percent) actually applied (between 0 and 1). 0 if no movement occurred, non-zero if movement occurred. </return>
 		/// </summary>
+		/// <param name="delta">Attempted movement vector.</param>
+		/// <param name="time">Percent of Delta to apply (between 0 and 1). Usually equal to the remaining time after a collision: (1.0 - Hit.Time).</param>
+		/// <param name="normal">Normal opposing movement, along which we will slide.</param>
+		/// <param name="hit">In] HitResult of the attempted move that resulted in the impact triggering the slide. [Out] HitResult of last attempted move.</param>
+		/// <param name="bHandleImpact">Whether to call HandleImpact on each hit.</param>
+		/// <return>The</return>
 		public virtual float SlideAlongSurface(FVector delta, float time, FVector normal, FHitResult hit, bool bHandleImpact)
 			=> E_UMovementComponent_SlideAlongSurface(this, delta, time, normal, hit, bHandleImpact);
 		
 		
 		/// <summary>
-		/// <para>Snap the updated component to the plane constraint, if enabled. </para>
+		/// Snap the updated component to the plane constraint, if enabled.
 		/// </summary>
 		public virtual void SnapUpdatedComponentToPlane()
 			=> E_UMovementComponent_SnapUpdatedComponentToPlane(this);
 		
 		
 		/// <summary>
-		/// <para>Stops movement immediately (zeroes velocity, usually zeros acceleration for components with acceleration). </para>
+		/// Stops movement immediately (zeroes velocity, usually zeros acceleration for components with acceleration).
 		/// </summary>
 		public virtual void StopMovementImmediately()
 			=> E_UMovementComponent_StopMovementImmediately(this);
 		
 		
 		/// <summary>
-		/// <para>Compute a movement direction when contacting two surfaces. </para>
-		/// <param name="Delta">In] Amount of move attempted before impact. [Out] Computed adjustment based on impacts. </param>
-		/// <param name="Hit">Impact from last attempted move </param>
-		/// <param name="OldHitNormal">Normal of impact before last attempted move </param>
-		/// <return>Result in Delta that is the direction to move when contacting two surfaces. </return>
+		/// Compute a movement direction when contacting two surfaces.
 		/// </summary>
+		/// <param name="delta">In] Amount of move attempted before impact. [Out] Computed adjustment based on impacts.</param>
+		/// <param name="hit">Impact from last attempted move</param>
+		/// <param name="oldHitNormal">Normal of impact before last attempted move</param>
+		/// <return>Result</return>
 		public virtual void TwoWallAdjust(FVector delta, FHitResult hit, FVector oldHitNormal)
 			=> E_UMovementComponent_TwoWallAdjust(this, delta, hit, oldHitNormal);
 		
 		
 		/// <summary>
-		/// <para>Update ComponentVelocity of UpdatedComponent. This needs to be called by derived classes at the end of an update whenever Velocity has changed. </para>
+		/// Update ComponentVelocity of UpdatedComponent. This needs to be called by derived classes at the end of an update whenever Velocity has changed.
 		/// </summary>
 		public virtual void UpdateComponentVelocity()
 			=> E_UMovementComponent_UpdateComponentVelocity(this);
 		
 		
 		/// <summary>
-		/// <para>Update tick registration state, determined by bAutoUpdateTickRegistration. Called by SetUpdatedComponent. </para>
+		/// Update tick registration state, determined by bAutoUpdateTickRegistration. Called by SetUpdatedComponent.
 		/// </summary>
 		public virtual void UpdateTickRegistration()
 			=> E_UMovementComponent_UpdateTickRegistration(this);

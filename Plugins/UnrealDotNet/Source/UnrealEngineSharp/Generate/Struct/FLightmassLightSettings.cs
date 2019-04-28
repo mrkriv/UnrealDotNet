@@ -47,7 +47,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to use area shadows for stationary light precomputed shadowmaps. </para>
+		/// Whether to use area shadows for stationary light precomputed shadowmaps.
 		/// <para>Area shadows get softer the further they are from shadow casters, but require higher lightmap resolution to get the same quality where the shadow is sharp. </para>
 		/// </summary>
 		public bool bUseAreaShadowsForStationaryLight
@@ -58,7 +58,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0 will be completely desaturated, 1 will be unchanged </para>
+		/// 0 will be completely desaturated, 1 will be unchanged
 		/// </summary>
 		public float IndirectLightingSaturation
 		{
@@ -68,7 +68,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the falloff of shadow penumbras </para>
+		/// Controls the falloff of shadow penumbras
 		/// </summary>
 		public float ShadowExponent
 		{

@@ -85,7 +85,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Logarithmic adjustment for the exposure. Only used if a tonemapper is specified. </para>
+		/// Logarithmic adjustment for the exposure. Only used if a tonemapper is specified.
 		/// <para>0: no adjustment, -1:2x darker, -2:4x darker, 1:2x brighter, 2:4x brighter, ... </para>
 		/// </summary>
 		public float ExposureBias
@@ -96,7 +96,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Calibration constant for 18% albedo. </para>
+		/// Calibration constant for 18% albedo.
 		/// </summary>
 		public float CalibrationConstant
 		{
@@ -106,11 +106,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color. </para>
+		/// The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color.
 		/// <para>The value is defined as having x percent below this brightness. Higher values give bright spots on the screen more priority </para>
-		/// <para>but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of </para>
+		/// but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of
 		/// <para>bright spots. </para>
-		/// <para>>0, <100, good values are in the range 80 .. 95 </para>
+		/// >0, <100, good values are in the range 80 .. 95
 		/// </summary>
 		public float HighPercent
 		{
@@ -120,7 +120,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>temporary exposed until we found good values 4: 16, 8: 256 </para>
+		/// temporary exposed until we found good values 4: 16, 8: 256
 		/// </summary>
 		public float HistogramLogMax
 		{
@@ -130,7 +130,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>temporary exposed until we found good values, -8: 1/256, -10: 1/1024 </para>
+		/// temporary exposed until we found good values, -8: 1/256, -10: 1/1024
 		/// </summary>
 		public float HistogramLogMin
 		{
@@ -140,11 +140,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color. </para>
+		/// The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color.
 		/// <para>The value is defined as having x percent below this brightness. Higher values give bright spots on the screen more priority </para>
-		/// <para>but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of </para>
+		/// but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of
 		/// <para>bright spots. </para>
-		/// <para>>0, <100, good values are in the range 70 .. 80 </para>
+		/// >0, <100, good values are in the range 70 .. 80
 		/// </summary>
 		public float LowPercent
 		{
@@ -154,11 +154,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A good value should be positive (2 is a good value). This is the maximum brightness the auto exposure can adapt to. </para>
+		/// A good value should be positive (2 is a good value). This is the maximum brightness the auto exposure can adapt to.
 		/// <para>It should be tweaked in a bright lighting situation (too small: image appears too bright, too large: image appears too dark). </para>
-		/// <para>Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global </para>
+		/// Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global
 		/// <para>effect and defined the HDR range - you don't want to change that late in the project development. </para>
-		/// <para>Eye Adaptation is disabled if MinBrightness = MaxBrightness </para>
+		/// Eye Adaptation is disabled if MinBrightness = MaxBrightness
 		/// </summary>
 		public float MaxBrightness
 		{
@@ -168,11 +168,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A good value should be positive near 0. This is the minimum brightness the auto exposure can adapt to. </para>
+		/// A good value should be positive near 0. This is the minimum brightness the auto exposure can adapt to.
 		/// <para>It should be tweaked in a dark lighting situation (too small: image appears too bright, too large: image appears too dark). </para>
-		/// <para>Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global </para>
+		/// Note: Tweaking emissive materials and lights or tweaking auto exposure can look the same. Tweaking auto exposure has global
 		/// <para>effect and defined the HDR range - you don't want to change that late in the project development. </para>
-		/// <para>Eye Adaptation is disabled if MinBrightness = MaxBrightness </para>
+		/// Eye Adaptation is disabled if MinBrightness = MaxBrightness
 		/// </summary>
 		public float MinBrightness
 		{
@@ -182,7 +182,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0 </para>
+		/// >0
 		/// </summary>
 		public float SpeedDown
 		{
@@ -192,7 +192,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0 </para>
+		/// >0
 		/// </summary>
 		public float SpeedUp
 		{

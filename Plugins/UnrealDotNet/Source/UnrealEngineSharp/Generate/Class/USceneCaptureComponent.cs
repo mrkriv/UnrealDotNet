@@ -108,7 +108,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to persist the rendering state even if bCaptureEveryFrame==false.  This allows velocities for Motion Blur and Temporal AA to be computed. </para>
+		/// Whether to persist the rendering state even if bCaptureEveryFrame==false.  This allows velocities for Motion Blur and Temporal AA to be computed.
 		/// </summary>
 		public bool bAlwaysPersistRenderingState
 		{
@@ -118,7 +118,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to update the capture's contents every frame.  If disabled, the component will render once on load and then only when moved. </para>
+		/// Whether to update the capture's contents every frame.  If disabled, the component will render once on load and then only when moved.
 		/// </summary>
 		public bool bCaptureEveryFrame
 		{
@@ -128,7 +128,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to update the capture's contents on movement.  Disable if you are going to capture manually from blueprint. </para>
+		/// Whether to update the capture's contents on movement.  Disable if you are going to capture manually from blueprint.
 		/// </summary>
 		public bool bCaptureOnMovement
 		{
@@ -138,7 +138,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Capture priority within the frame to sort scene capture on GPU to resolve interdependencies between multiple capture components. Highest come first. </para>
+		/// Capture priority within the frame to sort scene capture on GPU to resolve interdependencies between multiple capture components. Highest come first.
 		/// </summary>
 		public int CaptureSortPriority
 		{
@@ -148,7 +148,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the distance used by LOD. Set to values greater than 1 to cause the scene capture to use lower LODs than the main view to speed up the scene capture pass. </para>
+		/// Scales the distance used by LOD. Set to values greater than 1 to cause the scene capture to use lower LODs than the main view to speed up the scene capture pass.
 		/// </summary>
 		public float LODDistanceFactor
 		{
@@ -158,7 +158,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>if > 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room </para>
+		/// if > 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room
 		/// </summary>
 		public float MaxViewDistanceOverride
 		{
@@ -168,7 +168,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls what primitives get rendered into the scene capture. </para>
+		/// Controls what primitives get rendered into the scene capture.
 		/// </summary>
 		public ESceneCapturePrimitiveRenderMode PrimitiveRenderMode
 		{
@@ -178,7 +178,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Name of the profiling event. </para>
+		/// Name of the profiling event.
 		/// </summary>
 		public string ProfilingEventName
 		{
@@ -191,77 +191,77 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Clears the hidden list. </para>
+		/// Clears the hidden list.
 		/// </summary>
 		public void ClearHiddenComponents()
 			=> E_USceneCaptureComponent_ClearHiddenComponents(this);
 		
 		
 		/// <summary>
-		/// <para>Clears the Show Only list. </para>
+		/// Clears the Show Only list.
 		/// </summary>
 		public void ClearShowOnlyComponents()
 			=> E_USceneCaptureComponent_ClearShowOnlyComponents(this);
 		
 		
 		/// <summary>
-		/// <para>To leverage a component's bOwnerNoSee/bOnlyOwnerSee properties, the capture view requires an "owner". Override this to set a "ViewActor" for the scene. </para>
+		/// To leverage a component's bOwnerNoSee/bOnlyOwnerSee properties, the capture view requires an "owner". Override this to set a "ViewActor" for the scene.
 		/// </summary>
 		public virtual AActor GetViewOwner()
 			=> E_USceneCaptureComponent_GetViewOwner(this);
 		
 		
 		/// <summary>
-		/// <para>Adds all primitive components in the actor to our list of hidden components. </para>
+		/// Adds all primitive components in the actor to our list of hidden components.
 		/// </summary>
 		public void HideActorComponents(AActor inActor)
 			=> E_USceneCaptureComponent_HideActorComponents(this, inActor);
 		
 		
 		/// <summary>
-		/// <para>Adds the component to our list of hidden components. </para>
+		/// Adds the component to our list of hidden components.
 		/// </summary>
 		public void HideComponent(UPrimitiveComponent inComponent)
 			=> E_USceneCaptureComponent_HideComponent(this, inComponent);
 		
 		
 		/// <summary>
-		/// <para>Removes a actor's components from the Show Only list. </para>
+		/// Removes a actor's components from the Show Only list.
 		/// </summary>
 		public void RemoveShowOnlyActorComponents(AActor inActor)
 			=> E_USceneCaptureComponent_RemoveShowOnlyActorComponents(this, inActor);
 		
 		
 		/// <summary>
-		/// <para>Removes a component from the Show Only list. </para>
+		/// Removes a component from the Show Only list.
 		/// </summary>
 		public void RemoveShowOnlyComponent(UPrimitiveComponent inComponent)
 			=> E_USceneCaptureComponent_RemoveShowOnlyComponent(this, inComponent);
 		
 		
 		/// <summary>
-		/// <para>Changes the value of TranslucentSortPriority. </para>
+		/// Changes the value of TranslucentSortPriority.
 		/// </summary>
 		public void SetCaptureSortPriority(int newCaptureSortPriority)
 			=> E_USceneCaptureComponent_SetCaptureSortPriority(this, newCaptureSortPriority);
 		
 		
 		/// <summary>
-		/// <para>Adds all primitive components in the actor to our list of show-only components. </para>
+		/// Adds all primitive components in the actor to our list of show-only components.
 		/// </summary>
 		public void ShowOnlyActorComponents(AActor inActor)
 			=> E_USceneCaptureComponent_ShowOnlyActorComponents(this, inActor);
 		
 		
 		/// <summary>
-		/// <para>Adds the component to our list of show-only components. </para>
+		/// Adds the component to our list of show-only components.
 		/// </summary>
 		public void ShowOnlyComponent(UPrimitiveComponent inComponent)
 			=> E_USceneCaptureComponent_ShowOnlyComponent(this, inComponent);
 		
 		
 		/// <summary>
-		/// <para>Update the show flags from our show flags settings (ideally, you'd be able to set this more directly, but currently unable to make FEngineShowFlags a UStruct to use it as a UProperty...) </para>
+		/// Update the show flags from our show flags settings (ideally, you'd be able to set this more directly, but currently unable to make FEngineShowFlags a UStruct to use it as a UProperty...)
 		/// </summary>
 		protected void UpdateShowFlags()
 			=> E_USceneCaptureComponent_UpdateShowFlags(this);

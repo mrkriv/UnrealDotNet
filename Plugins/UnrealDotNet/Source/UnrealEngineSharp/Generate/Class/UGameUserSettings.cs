@@ -288,7 +288,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Applies the settings stored in ScalabilityQuality and saves settings </para>
+		/// Applies the settings stored in ScalabilityQuality and saves settings
 		/// </summary>
 		public virtual void ApplyHardwareBenchmarkResults()
 			=> E_UGameUserSettings_ApplyHardwareBenchmarkResults(this);
@@ -301,28 +301,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Applies all current user settings to the game and saves to permanent storage (e.g. file), optionally checking for command line overrides. </para>
+		/// Applies all current user settings to the game and saves to permanent storage (e.g. file), optionally checking for command line overrides.
 		/// </summary>
 		public virtual void ApplySettings(bool bCheckForCommandLineOverrides)
 			=> E_UGameUserSettings_ApplySettings(this, bCheckForCommandLineOverrides);
 		
 		
 		/// <summary>
-		/// <para>Mark current video mode settings (fullscreenmode/resolution) as being confirmed by the user </para>
+		/// Mark current video mode settings (fullscreenmode/resolution) as being confirmed by the user
 		/// </summary>
 		public virtual void ConfirmVideoMode()
 			=> E_UGameUserSettings_ConfirmVideoMode(this);
 		
 		
 		/// <summary>
-		/// <para>Enables or disables HDR display output. Can be called again to change the desired nit level </para>
+		/// Enables or disables HDR display output. Can be called again to change the desired nit level
 		/// </summary>
 		public void EnableHDRDisplayOutput(bool bEnable, int displayNits = 1000)
 			=> E_UGameUserSettings_EnableHDRDisplayOutput(this, bEnable, displayNits);
 		
 		
 		/// <summary>
-		/// <para>Picks the best resolution quality for a given screen size </para>
+		/// Picks the best resolution quality for a given screen size
 		/// </summary>
 		protected float FindResolutionQualityForScreenSize(float width, float height)
 			=> E_UGameUserSettings_FindResolutionQualityForScreenSize(this, width, height);
@@ -332,49 +332,49 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the user's audio quality level setting </para>
+		/// Returns the user's audio quality level setting
 		/// </summary>
 		public int GetAudioQualityLevel()
 			=> E_UGameUserSettings_GetAudioQualityLevel(this);
 		
 		
 		/// <summary>
-		/// <para>Returns 0 if HDR isn't supported or is turned off </para>
+		/// Returns 0 if HDR isn't supported or is turned off
 		/// </summary>
 		public int GetCurrentHDRDisplayNits()
 			=> E_UGameUserSettings_GetCurrentHDRDisplayNits(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the default resolution when no resolution is set </para>
+		/// Returns the default resolution when no resolution is set
 		/// </summary>
 		public FIntPoint GetDefaultResolution()
 			=> E_UGameUserSettings_GetDefaultResolution(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the desired resolution quality based on DesiredScreenWidth/Height and the current screen resolution </para>
+		/// Gets the desired resolution quality based on DesiredScreenWidth/Height and the current screen resolution
 		/// </summary>
 		public virtual float GetDefaultResolutionScale()
 			=> E_UGameUserSettings_GetDefaultResolutionScale(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the default window position when no position is set </para>
+		/// Returns the default window position when no position is set
 		/// </summary>
 		public FIntPoint GetDefaultWindowPosition()
 			=> E_UGameUserSettings_GetDefaultWindowPosition(this);
 		
 		
 		/// <summary>
-		/// <para>Returns user's desktop resolution, in pixels. </para>
+		/// Returns user's desktop resolution, in pixels.
 		/// </summary>
 		public FIntPoint GetDesktopResolution()
 			=> E_UGameUserSettings_GetDesktopResolution(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the effective frame rate limit (by default it returns the FrameRateLimit member) </para>
+		/// Returns the effective frame rate limit (by default it returns the FrameRateLimit member)
 		/// </summary>
 		protected virtual float GetEffectiveFrameRateLimit()
 			=> E_UGameUserSettings_GetEffectiveFrameRateLimit(this);
@@ -384,35 +384,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the user's frame rate limit (0 indiciates the frame rate limit is disabled) </para>
+		/// Gets the user's frame rate limit (0 indiciates the frame rate limit is disabled)
 		/// </summary>
 		public float GetFrameRateLimit()
 			=> E_UGameUserSettings_GetFrameRateLimit(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the game local machine settings (resolution, windowing mode, scalability settings, etc...) </para>
+		/// Returns the game local machine settings (resolution, windowing mode, scalability settings, etc...)
 		/// </summary>
 		public UGameUserSettings GetGameUserSettings()
 			=> E_UGameUserSettings_GetGameUserSettings(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the last confirmed user setting for game screen resolution, in pixels. </para>
+		/// Returns the last confirmed user setting for game screen resolution, in pixels.
 		/// </summary>
 		public FIntPoint GetLastConfirmedScreenResolution()
 			=> E_UGameUserSettings_GetLastConfirmedScreenResolution(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the last CPU benchmark result (set by RunHardwareBenchmark) </para>
+		/// Returns the last CPU benchmark result (set by RunHardwareBenchmark)
 		/// </summary>
 		public float GetLastCPUBenchmarkResult()
 			=> E_UGameUserSettings_GetLastCPUBenchmarkResult(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the last GPU benchmark result (set by RunHardwareBenchmark) </para>
+		/// Returns the last GPU benchmark result (set by RunHardwareBenchmark)
 		/// </summary>
 		public float GetLastGPUBenchmarkResult()
 			=> E_UGameUserSettings_GetLastGPUBenchmarkResult(this);
@@ -425,7 +425,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the recommended resolution quality based on LastRecommendedScreenWidth/Height and the current screen resolution </para>
+		/// Gets the recommended resolution quality based on LastRecommendedScreenWidth/Height and the current screen resolution
 		/// </summary>
 		public virtual float GetRecommendedResolutionScale()
 			=> E_UGameUserSettings_GetRecommendedResolutionScale(this);
@@ -438,7 +438,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the user setting for game screen resolution, in pixels. </para>
+		/// Returns the user setting for game screen resolution, in pixels.
 		/// </summary>
 		public FIntPoint GetScreenResolution()
 			=> E_UGameUserSettings_GetScreenResolution(this);
@@ -448,7 +448,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the current vsync interval setting </para>
+		/// Gets the current vsync interval setting
 		/// </summary>
 		public int GetSyncInterval()
 			=> E_UGameUserSettings_GetSyncInterval(this);
@@ -467,28 +467,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks if any user settings is different from current </para>
+		/// Checks if any user settings is different from current
 		/// </summary>
 		public virtual bool IsDirty()
 			=> E_UGameUserSettings_IsDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Checks if the dynamic resolution user setting is different from current system setting </para>
+		/// Checks if the dynamic resolution user setting is different from current system setting
 		/// </summary>
 		public bool IsDynamicResolutionDirty()
 			=> E_UGameUserSettings_IsDynamicResolutionDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the user setting for dynamic resolution. </para>
+		/// Returns the user setting for dynamic resolution.
 		/// </summary>
 		public bool IsDynamicResolutionEnabled()
 			=> E_UGameUserSettings_IsDynamicResolutionEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>Checks if the FullscreenMode user setting is different from current </para>
+		/// Checks if the FullscreenMode user setting is different from current
 		/// </summary>
 		public bool IsFullscreenModeDirty()
 			=> E_UGameUserSettings_IsFullscreenModeDirty(this);
@@ -498,50 +498,50 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks if the Screen Resolution user setting is different from current </para>
+		/// Checks if the Screen Resolution user setting is different from current
 		/// </summary>
 		public bool IsScreenResolutionDirty()
 			=> E_UGameUserSettings_IsScreenResolutionDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Check if the current version of the game user settings is valid. Sub-classes can override this to provide game-specific versioning as necessary. </para>
-		/// <return>True if the current version is valid, false if it is not </return>
+		/// Check if the current version of the game user settings is valid. Sub-classes can override this to provide game-specific versioning as necessary.
 		/// </summary>
+		/// <return>True</return>
 		protected virtual bool IsVersionValid()
 			=> E_UGameUserSettings_IsVersionValid(this);
 		
 		
 		/// <summary>
-		/// <para>Checks if the vsync user setting is different from current system setting </para>
+		/// Checks if the vsync user setting is different from current system setting
 		/// </summary>
 		public bool IsVSyncDirty()
 			=> E_UGameUserSettings_IsVSyncDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the user setting for vsync. </para>
+		/// Returns the user setting for vsync.
 		/// </summary>
 		public bool IsVSyncEnabled()
 			=> E_UGameUserSettings_IsVSyncEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>Loads the user .ini settings into GConfig </para>
+		/// Loads the user .ini settings into GConfig
 		/// </summary>
 		public void LoadConfigIni(bool bForceReload = false)
 			=> E_UGameUserSettings_LoadConfigIni(this, bForceReload);
 		
 		
 		/// <summary>
-		/// <para>Loads the user settings from persistent storage </para>
+		/// Loads the user settings from persistent storage
 		/// </summary>
 		public virtual void LoadSettings(bool bForceReload)
 			=> E_UGameUserSettings_LoadSettings(this, bForceReload);
 		
 		
 		/// <summary>
-		/// <para>Loads the resolution settings before is object is available </para>
+		/// Loads the resolution settings before is object is available
 		/// </summary>
 		public void PreloadResolutionSettings()
 			=> E_UGameUserSettings_PreloadResolutionSettings(this);
@@ -551,28 +551,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>This function resets all settings to the current system settings </para>
+		/// This function resets all settings to the current system settings
 		/// </summary>
 		public virtual void ResetToCurrentSettings()
 			=> E_UGameUserSettings_ResetToCurrentSettings(this);
 		
 		
 		/// <summary>
-		/// <para>Revert video mode (fullscreenmode/resolution) back to the last user confirmed values </para>
+		/// Revert video mode (fullscreenmode/resolution) back to the last user confirmed values
 		/// </summary>
 		public void RevertVideoMode()
 			=> E_UGameUserSettings_RevertVideoMode(this);
 		
 		
 		/// <summary>
-		/// <para>Runs the hardware benchmark and populates ScalabilityQuality as well as the last benchmark results config members, but does not apply the settings it determines. Designed to be called in conjunction with ApplyHardwareBenchmarkResults </para>
+		/// Runs the hardware benchmark and populates ScalabilityQuality as well as the last benchmark results config members, but does not apply the settings it determines. Designed to be called in conjunction with ApplyHardwareBenchmarkResults
 		/// </summary>
 		public virtual void RunHardwareBenchmark(int workScale, float cPUMultiplier, float gPUMultiplier)
 			=> E_UGameUserSettings_RunHardwareBenchmark(this, workScale, cPUMultiplier, gPUMultiplier);
 		
 		
 		/// <summary>
-		/// <para>Save the user settings to persistent storage (automatically happens as part of ApplySettings) </para>
+		/// Save the user settings to persistent storage (automatically happens as part of ApplySettings)
 		/// </summary>
 		public virtual void SaveSettings()
 			=> E_UGameUserSettings_SaveSettings(this);
@@ -582,21 +582,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the user's audio quality level setting </para>
+		/// Sets the user's audio quality level setting
 		/// </summary>
 		public void SetAudioQualityLevel(int qualityLevel)
 			=> E_UGameUserSettings_SetAudioQualityLevel(this, qualityLevel);
 		
 		
 		/// <summary>
-		/// <para>Set scalability settings to sensible fallback values, for use when the benchmark fails or potentially causes a crash </para>
+		/// Set scalability settings to sensible fallback values, for use when the benchmark fails or potentially causes a crash
 		/// </summary>
 		public void SetBenchmarkFallbackValues()
 			=> E_UGameUserSettings_SetBenchmarkFallbackValues(this);
 		
 		
 		/// <summary>
-		/// <para>Sets the user setting for dynamic resolution. See UGameUserSettings::bUseDynamicResolution. </para>
+		/// Sets the user setting for dynamic resolution. See UGameUserSettings::bUseDynamicResolution.
 		/// </summary>
 		public void SetDynamicResolutionEnabled(bool bEnable)
 			=> E_UGameUserSettings_SetDynamicResolutionEnabled(this, bEnable);
@@ -606,14 +606,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the user's frame rate limit (0 will disable frame rate limiting) </para>
+		/// Sets the user's frame rate limit (0 will disable frame rate limiting)
 		/// </summary>
 		public void SetFrameRateLimit(float newLimit)
 			=> E_UGameUserSettings_SetFrameRateLimit(this, newLimit);
 		
 		
 		/// <summary>
-		/// <para>Sets the frame rate limit CVar to the passed in value, 0.0 indicates no limit </para>
+		/// Sets the frame rate limit CVar to the passed in value, 0.0 indicates no limit
 		/// </summary>
 		protected void SetFrameRateLimitCVar(float inLimit)
 			=> E_UGameUserSettings_SetFrameRateLimitCVar(this, inLimit);
@@ -635,7 +635,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the user setting for game screen resolution, in pixels. </para>
+		/// Sets the user setting for game screen resolution, in pixels.
 		/// </summary>
 		public void SetScreenResolution(FIntPoint resolution)
 			=> E_UGameUserSettings_SetScreenResolution(this, resolution);
@@ -645,14 +645,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the sync interval limit CVar forc consoles 0-3 </para>
+		/// Sets the sync interval limit CVar forc consoles 0-3
 		/// </summary>
 		protected void SetSyncIntervalCVar(int inInterval)
 			=> E_UGameUserSettings_SetSyncIntervalCVar(this, inInterval);
 		
 		
 		/// <summary>
-		/// <para>Sets the input latency mode 0 and 2 </para>
+		/// Sets the input latency mode 0 and 2
 		/// </summary>
 		protected void SetSyncTypeCVar(int inInterval)
 			=> E_UGameUserSettings_SetSyncTypeCVar(this, inInterval);
@@ -671,7 +671,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the user setting for vsync. See UGameUserSettings::bUseVSync. </para>
+		/// Sets the user setting for vsync. See UGameUserSettings::bUseVSync.
 		/// </summary>
 		public void SetVSyncEnabled(bool bEnable)
 			=> E_UGameUserSettings_SetVSyncEnabled(this, bEnable);
@@ -681,7 +681,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Whether the curently running system supports HDR display output </para>
+		/// Whether the curently running system supports HDR display output
 		/// </summary>
 		public virtual bool SupportsHDRDisplayOutput()
 			=> E_UGameUserSettings_SupportsHDRDisplayOutput(this);
@@ -691,14 +691,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update the version of the game user settings to the current version </para>
+		/// Update the version of the game user settings to the current version
 		/// </summary>
 		protected virtual void UpdateVersion()
 			=> E_UGameUserSettings_UpdateVersion(this);
 		
 		
 		/// <summary>
-		/// <para>Validates and resets bad user settings to default. Deletes stale user settings file if necessary. </para>
+		/// Validates and resets bad user settings to default. Deletes stale user settings file if necessary.
 		/// </summary>
 		public virtual void ValidateSettings()
 			=> E_UGameUserSettings_ValidateSettings(this);

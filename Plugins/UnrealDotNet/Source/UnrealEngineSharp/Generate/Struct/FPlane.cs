@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FPlane() :
 			base(E_CreateStruct_FPlane(), false)
@@ -29,9 +29,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Copy Constructor. </para>
-		/// <param name="P">Plane to copy from. </param>
+		/// Copy Constructor.
 		/// </summary>
+		/// <param name="p">Plane to copy from.</param>
 		public FPlane(FPlane p) :
 			base(E_CreateStruct_FPlane_FPlane(p), false)
 		{
@@ -39,9 +39,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="V">4D vector to set up plane. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="v">4D vector to set up plane.</param>
 		public FPlane(FVector4 v) :
 			base(E_CreateStruct_FPlane_FVector4(v), false)
 		{
@@ -49,12 +49,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InX">X-coefficient. </param>
-		/// <param name="InY">Y-coefficient. </param>
-		/// <param name="InZ">Z-coefficient. </param>
-		/// <param name="InW">W-coefficient. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inX">X-coefficient.</param>
+		/// <param name="inY">Y-coefficient.</param>
+		/// <param name="inZ">Z-coefficient.</param>
+		/// <param name="inW">W-coefficient.</param>
 		public FPlane(float inX, float inY, float inZ, float inW) :
 			base(E_CreateStruct_FPlane_float_float_float_float(inX, inY, inZ, inW), false)
 		{
@@ -62,10 +62,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InNormal">Plane Normal Vector. </param>
-		/// <param name="InW">Plane W-coefficient. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inNormal">Plane Normal Vector.</param>
+		/// <param name="inW">Plane W-coefficient.</param>
 		public FPlane(FVector inNormal, float inW) :
 			base(E_CreateStruct_FPlane_FVector_float(inNormal, inW), false)
 		{
@@ -73,10 +73,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InBase">Base point in plane. </param>
-		/// <param name="InNormal">Plane Normal Vector. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inBase">Base point in plane.</param>
+		/// <param name="inNormal">Plane Normal Vector.</param>
 		public FPlane(FVector inBase, FVector inNormal) :
 			base(E_CreateStruct_FPlane_FVector_FVector(inBase, inNormal), false)
 		{
@@ -84,11 +84,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="A">First point in the plane. </param>
-		/// <param name="B">Second point in the plane. </param>
-		/// <param name="C">Third point in the plane. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="a">First point in the plane.</param>
+		/// <param name="b">Second point in the plane.</param>
+		/// <param name="c">Third point in the plane.</param>
 		public FPlane(FVector a, FVector b, FVector c) :
 			base(E_CreateStruct_FPlane_FVector_FVector_FVector(a, b, c), false)
 		{
@@ -144,7 +144,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The w-component. </para>
+		/// The w-component.
 		/// </summary>
 		public float W
 		{
@@ -157,59 +157,59 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Checks whether two planes are equal within specified tolerance. </para>
-		/// <param name="V">The other plane. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if the two planes are equal within specified tolerance, otherwise false. </return>
+		/// Checks whether two planes are equal within specified tolerance.
 		/// </summary>
+		/// <param name="v">The other plane.</param>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool Equals(FPlane v, float tolerance)
 			=> E_FPlane_Equals(this, v, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Get a flipped version of the plane. </para>
-		/// <return>A flipped version of the plane. </return>
+		/// Get a flipped version of the plane.
 		/// </summary>
+		/// <return>A</return>
 		public FPlane Flip()
 			=> E_FPlane_Flip(this);
 		
 		
 		/// <summary>
-		/// <para>Normalize this plane in-place if it is larger than a given tolerance. Leaves it unchanged if not. </para>
-		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
-		/// <return>true if the plane was normalized correctly, false otherwise. </return>
+		/// Normalize this plane in-place if it is larger than a given tolerance. Leaves it unchanged if not.
 		/// </summary>
+		/// <param name="tolerance">Minimum squared length of vector for normalization.</param>
+		/// <return>true</return>
 		public bool Normalize(float tolerance)
 			=> E_FPlane_Normalize(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Calculates distance between plane and a point. </para>
-		/// <param name="P">The other point. </param>
-		/// <return>The distance from the plane to the point. 0: Point is on the plane. >0: Point is in front of the plane. <0: Point is behind the plane. </return>
+		/// Calculates distance between plane and a point.
 		/// </summary>
+		/// <param name="p">The other point.</param>
+		/// <return>The</return>
 		public float PlaneDot(FVector p)
 			=> E_FPlane_PlaneDot(this, p);
 		
 		
 		/// <summary>
-		/// <para>Get the result of transforming the plane by a Matrix. </para>
-		/// <param name="M">The matrix to transform plane with. </param>
-		/// <return>The result of transform. </return>
+		/// Get the result of transforming the plane by a Matrix.
 		/// </summary>
+		/// <param name="m">The matrix to transform plane with.</param>
+		/// <return>The</return>
 		public FPlane TransformBy(FMatrix m)
 			=> E_FPlane_TransformBy(this, m);
 		
 		
 		/// <summary>
-		/// <para>You can optionally pass in the matrices transpose-adjoint, which save it recalculating it. </para>
+		/// You can optionally pass in the matrices transpose-adjoint, which save it recalculating it.
 		/// <para>MSM: If we are going to save the transpose-adjoint we should also save the more expensive </para>
-		/// <para>determinant. </para>
-		/// <param name="M">The Matrix to transform plane with. </param>
-		/// <param name="DetM">Determinant of Matrix. </param>
-		/// <param name="TA">Transpose-adjoint of Matrix. </param>
-		/// <return>The result of transform. </return>
+		/// determinant.
 		/// </summary>
+		/// <param name="m">The Matrix to transform plane with.</param>
+		/// <param name="detM">Determinant of Matrix.</param>
+		/// <param name="tA">Transpose-adjoint of Matrix.</param>
+		/// <return>The</return>
 		public FPlane TransformByUsingAdjointT(FMatrix m, float detM, FMatrix tA)
 			=> E_FPlane_TransformByUsingAdjointT(this, m, detM, tA);
 		

@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Update Velocity based on input. Also applies gravity. </para>
+		/// Update Velocity based on input. Also applies gravity.
 		/// </summary>
 		protected override void ApplyControlInputToVelocity(float deltaTime) { }
 		

@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default settings. </para>
+		/// Default settings.
 		/// </summary>
 		public FMeshBuildSettings() :
 			base(E_CreateStruct_FMeshBuildSettings(), false)
@@ -116,7 +116,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Required for PNT tessellation but can be slow. Recommend disabling for larger meshes. </para>
+		/// Required for PNT tessellation but can be slow. Recommend disabling for larger meshes.
 		/// </summary>
 		public byte bBuildAdjacencyBuffer
 		{
@@ -126,7 +126,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Required to optimize mesh in mirrored transform. Double index buffer size. </para>
+		/// Required to optimize mesh in mirrored transform. Double index buffer size.
 		/// </summary>
 		public byte bBuildReversedIndexBuffer
 		{
@@ -136,7 +136,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to generate the distance field treating every triangle hit as a front face. </para>
+		/// Whether to generate the distance field treating every triangle hit as a front face.
 		/// <para>When enabled prevents the distance field from being discarded due to the mesh being open, but also lowers Distance Field AO quality. </para>
 		/// </summary>
 		public byte TwoSidedDistanceFieldGeneration
@@ -153,7 +153,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, normals in the raw mesh are ignored and recomputed. </para>
+		/// If true, normals in the raw mesh are ignored and recomputed.
 		/// </summary>
 		public byte bRecomputeNormals
 		{
@@ -163,7 +163,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, tangents in the raw mesh are ignored and recomputed. </para>
+		/// If true, tangents in the raw mesh are ignored and recomputed.
 		/// </summary>
 		public byte bRecomputeTangents
 		{
@@ -173,7 +173,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, degenerate triangles will be removed. </para>
+		/// If true, degenerate triangles will be removed.
 		/// </summary>
 		public byte bRemoveDegenerates
 		{
@@ -189,7 +189,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The local scale applied when building the mesh </para>
+		/// The local scale applied when building the mesh
 		/// </summary>
 		public FVector BuildScale
 		{
@@ -199,7 +199,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, UVs will be stored at full floating point precision. </para>
+		/// If true, UVs will be stored at full floating point precision.
 		/// </summary>
 		public byte bUseFullPrecisionUVs
 		{
@@ -209,7 +209,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, Tangents will be stored at 16 bit vs 8 bit precision. </para>
+		/// If true, Tangents will be stored at 16 bit vs 8 bit precision.
 		/// </summary>
 		public byte bUseHighPrecisionTangentBasis
 		{
@@ -219,7 +219,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, degenerate triangles will be removed. </para>
+		/// If true, degenerate triangles will be removed.
 		/// </summary>
 		public byte bUseMikkTSpace
 		{
@@ -229,7 +229,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scale to apply to the mesh when allocating the distance field volume texture. </para>
+		/// Scale to apply to the mesh when allocating the distance field volume texture.
 		/// <para>The default scale is 1, which is assuming that the mesh will be placed unscaled in the world. </para>
 		/// </summary>
 		public float DistanceFieldResolutionScale

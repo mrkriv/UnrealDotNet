@@ -9,8 +9,7 @@ namespace CodeGenerator.CodeGen
 {
     public abstract class CodeGenretorModule<T> : ICodeGenretorModule where T : Primitive
     {
-        protected static readonly Regex SummaryParamRegex = new Regex(@"@param\W+(\w+)\W+(.*)");
-        protected static readonly Regex SummaryReturnRegex = new Regex(@"@return\W+(.*)");
+        protected static readonly Regex SummaryRegex = new Regex(@"@(\w+)\W+(\w+)\W+(.*)");
 
         protected static Config Cfg;
 
@@ -166,11 +165,14 @@ namespace CodeGenerator.CodeGen
                 return;
 
             var rows = primitive.Description.Split('\n');
+            var paraFlipFlop = false;
 
             cw.WriteLine();
             cw.WriteLine("/// <summary>");
 
             cw.WriteLine(!string.IsNullOrEmpty(insert), "/// " + insert);
+
+            var paramCw = new CodeWriter(cw);
 
             foreach (var row in rows)
             {
@@ -179,22 +181,33 @@ namespace CodeGenerator.CodeGen
                 if (format == "")
                     continue;
 
-                var match = SummaryParamRegex.Match(format);
-                if (match.Success)
+                var match = SummaryRegex.Match(format);
+                var statment = match.Success ? match.Groups[1].Value : null;
+
+                switch (statment)
                 {
-                    cw.WriteLine($"/// <param name=\"{match.Groups[1]}\">{match.Groups[2]} </param>");
-                }
-                else
-                {
-                    match = SummaryReturnRegex.Match(format);
-                    if (match.Success)
-                        cw.WriteLine($"/// <return>{match.Groups[1]} </return>");
-                    else
-                        cw.WriteLine($"/// <para>{format} </para>");
+                    case "param":
+                        var name = ToLowerCamelCase(match.Groups[2].Value);
+                        paramCw.WriteLine($"/// <param name=\"{name}\">{match.Groups[3]}</param>");
+                        break;
+                    case "see":
+                        cw.WriteLine($"/// <see cref=\"{match.Groups[2]}\"/>");
+                        break;
+                    case "return":
+                        paramCw.WriteLine($"/// <return>{match.Groups[2]}</return>");
+                        break;
+                    default:
+                        cw.WriteLine(paraFlipFlop, $"/// <para>{format} </para>");
+                        cw.WriteLine(!paraFlipFlop, $"/// {format}");
+                        paraFlipFlop = !paraFlipFlop;
+                        break;
                 }
             }
 
             cw.WriteLine("/// </summary>");
+
+            if (!paramCw.IsEmpty())
+                cw.Write(paramCw);
         }
 
         protected string GetSourceFileName(Class Class)

@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The value of the axis as calculated during the most recent UPlayerInput::ProcessInputStack </para>
+		/// The value of the axis as calculated during the most recent UPlayerInput::ProcessInputStack
 		/// <para>if the InputComponent containing the binding was in the stack, otherwise the value will be 0. </para>
 		/// </summary>
 		public float AxisValue

@@ -68,7 +68,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). </para>
+		/// If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1).
 		/// </summary>
 		public int ForcedLodModel
 		{
@@ -78,7 +78,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>High (best) DistanceFactor that was desired for rendering this USkeletalMesh last frame. Represents how big this mesh was in screen space </para>
+		/// High (best) DistanceFactor that was desired for rendering this USkeletalMesh last frame. Represents how big this mesh was in screen space
 		/// </summary>
 		public float MaxDistanceFactor
 		{
@@ -88,7 +88,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>This is the min LOD that this component will use.  (e.g. if set to 2 then only 2+ LOD Models will be used.) This is useful to set on </para>
+		/// This is the min LOD that this component will use.  (e.g. if set to 2 then only 2+ LOD Models will be used.) This is useful to set on
 		/// <para>meshes which are known to be a certain distance away and still want to have better LODs when zoomed in on them. </para>
 		/// </summary>
 		public int MinLodModel
@@ -99,7 +99,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Best LOD that was 'predicted' by UpdateSkelPose. </para>
+		/// Best LOD that was 'predicted' by UpdateSkelPose.
 		/// <para>This is what bones were updated based on, so we do not allow rendering at a better LOD than this. </para>
 		/// </summary>
 		public int PredictedLODLevel
@@ -110,9 +110,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Allows adjusting the desired streaming distance of streaming textures that uses UV 0. </para>
+		/// Allows adjusting the desired streaming distance of streaming textures that uses UV 0.
 		/// <para>1.0 is the default, whereas a higher value makes the textures stream in sooner from far away. </para>
-		/// <para>A lower value (0.0-1.0) makes the textures stream in later (you have to be closer). </para>
+		/// A lower value (0.0-1.0) makes the textures stream in later (you have to be closer).
 		/// <para>Value can be < 0 (from legcay content, or code changes) </para>
 		/// </summary>
 		public float StreamingDistanceMultiplier

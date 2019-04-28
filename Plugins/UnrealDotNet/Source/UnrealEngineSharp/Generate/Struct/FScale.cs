@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize to an identity scale, 1.0. </para>
+		/// Ctor. initialize to an identity scale, 1.0.
 		/// </summary>
 		public FScale() :
 			base(E_CreateStruct_FScale(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a uniform scale. </para>
+		/// Ctor. initialize from a uniform scale.
 		/// </summary>
 		public FScale(float inScale) :
 			base(E_CreateStruct_FScale_float(inScale), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from an FVector defining the 3D scale. </para>
+		/// Ctor. initialize from an FVector defining the 3D scale.
 		/// </summary>
 		public FScale(FVector inScale) :
 			base(E_CreateStruct_FScale_FVector(inScale), false)
@@ -63,7 +63,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Access to the underlying FVector that stores the scale. </para>
+		/// Access to the underlying FVector that stores the scale.
 		/// </summary>
 		public FVector GetVector()
 			=> E_FScale_GetVector(this);

@@ -89,7 +89,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Enables a clip plane while rendering the scene capture which is useful for portals. </para>
+		/// Enables a clip plane while rendering the scene capture which is useful for portals.
 		/// <para>The global clip plane must be enabled in the renderer project settings for this to work. </para>
 		/// </summary>
 		public bool bEnableClipPlane
@@ -100,7 +100,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether a custom projection matrix will be used during rendering. Use with caution. Does not currently affect culling </para>
+		/// Whether a custom projection matrix will be used during rendering. Use with caution. Does not currently affect culling
 		/// </summary>
 		public bool bUseCustomProjectionMatrix
 		{
@@ -110,7 +110,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Base position for the clip plane, can be any position on the plane. </para>
+		/// Base position for the clip plane, can be any position on the plane.
 		/// </summary>
 		public FVector ClipPlaneBase
 		{
@@ -120,7 +120,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Normal for the plane. </para>
+		/// Normal for the plane.
 		/// </summary>
 		public FVector ClipPlaneNormal
 		{
@@ -130,7 +130,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The custom projection matrix to use </para>
+		/// The custom projection matrix to use
 		/// </summary>
 		public FMatrix CustomProjectionMatrix
 		{
@@ -140,7 +140,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Camera field of view (in degrees). </para>
+		/// Camera field of view (in degrees).
 		/// </summary>
 		public float FieldofView
 		{
@@ -150,7 +150,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The desired width (in world units) of the orthographic view (ignored in Perspective mode) </para>
+		/// The desired width (in world units) of the orthographic view (ignored in Perspective mode)
 		/// </summary>
 		public float OrthoWidth
 		{
@@ -160,7 +160,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Range (0.0, 1.0) where 0 indicates no effect, 1 indicates full effect. </para>
+		/// Range (0.0, 1.0) where 0 indicates no effect, 1 indicates full effect.
 		/// </summary>
 		public float PostProcessBlendWeight
 		{
@@ -179,7 +179,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Render the scene to the texture target immediately. </para>
+		/// Render the scene to the texture target immediately.
 		/// <para>This should not be used if bCaptureEveryFrame is enabled, or the scene capture will render redundantly. </para>
 		/// </summary>
 		public void CaptureScene()
@@ -187,7 +187,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Render the scene to the texture the next time the main view is rendered. </para>
+		/// Render the scene to the texture the next time the main view is rendered.
 		/// </summary>
 		public void CaptureSceneDeferred()
 			=> E_USceneCaptureComponent2D_CaptureSceneDeferred(this);

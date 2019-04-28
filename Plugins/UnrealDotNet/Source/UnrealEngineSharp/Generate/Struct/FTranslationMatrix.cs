@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor translation matrix based on given vector </para>
+		/// Constructor translation matrix based on given vector
 		/// </summary>
 		public FTranslationMatrix(FVector delta) :
 			base(E_CreateStruct_FTranslationMatrix_FVector(delta), false)
@@ -39,7 +39,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FVector delta)
 			=> E_FTranslationMatrix_Make(this, delta);

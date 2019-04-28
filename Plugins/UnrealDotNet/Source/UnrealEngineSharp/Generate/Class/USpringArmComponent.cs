@@ -115,7 +115,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Temporary variables when applying Collision Test displacement to notify if its being applied and by how much </para>
+		/// Temporary variables when applying Collision Test displacement to notify if its being applied and by how much
 		/// </summary>
 		public bool bIsCameraFixed
 		{
@@ -125,7 +125,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance the camera target may lag behind the current location. If set to zero, no max distance is enforced. </para>
+		/// Max distance the camera target may lag behind the current location. If set to zero, no max distance is enforced.
 		/// </summary>
 		public float CameraLagMaxDistance
 		{
@@ -135,7 +135,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max time step used when sub-stepping camera lag. </para>
+		/// Max time step used when sub-stepping camera lag.
 		/// </summary>
 		public float CameraLagMaxTimeStep
 		{
@@ -145,7 +145,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If bEnableCameraLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). </para>
+		/// If bEnableCameraLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag).
 		/// </summary>
 		public float CameraLagSpeed
 		{
@@ -155,7 +155,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If bEnableCameraRotationLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag). </para>
+		/// If bEnableCameraRotationLag is true, controls how quickly camera reaches target position. Low values are slower (more lag), high values are faster (less lag), while zero is instant (no lag).
 		/// </summary>
 		public float CameraRotationLagSpeed
 		{
@@ -171,7 +171,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Temporary variables when using camera lag, to record previous camera position </para>
+		/// Temporary variables when using camera lag, to record previous camera position
 		/// </summary>
 		public FVector PreviousDesiredLoc
 		{
@@ -181,7 +181,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Temporary variable for lagging camera rotation, for previous rotation </para>
+		/// Temporary variable for lagging camera rotation, for previous rotation
 		/// </summary>
 		public FRotator PreviousDesiredRot
 		{
@@ -191,7 +191,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How big should the query probe sphere be (in unreal units) </para>
+		/// How big should the query probe sphere be (in unreal units)
 		/// </summary>
 		public float ProbeSize
 		{
@@ -201,7 +201,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>offset at end of spring arm; use this instead of the relative offset of the attached component to ensure the line trace works as desired </para>
+		/// offset at end of spring arm; use this instead of the relative offset of the attached component to ensure the line trace works as desired
 		/// </summary>
 		public FVector SocketOffset
 		{
@@ -211,7 +211,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Natural length of the spring arm when there are no collisions </para>
+		/// Natural length of the spring arm when there are no collisions
 		/// </summary>
 		public float TargetArmLength
 		{
@@ -221,7 +221,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Offset at start of spring, applied in world space. Use this if you want a world-space offset from the parent component instead of the usual relative-space offset. </para>
+		/// Offset at start of spring, applied in world space. Use this if you want a world-space offset from the parent component instead of the usual relative-space offset.
 		/// </summary>
 		public FVector TargetOffset
 		{
@@ -240,7 +240,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>This function allows subclasses to blend the trace hit location with the desired arm location; </para>
+		/// This function allows subclasses to blend the trace hit location with the desired arm location;
 		/// <para>by default it returns bHitSomething ? TraceHitLocation : DesiredArmLocation </para>
 		/// </summary>
 		protected virtual FVector BlendLocations(FVector desiredArmLocation, FVector traceHitLocation, bool bHitSomething, float deltaTime)
@@ -248,7 +248,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the target rotation we inherit, used as the base target for the boom rotation. </para>
+		/// Get the target rotation we inherit, used as the base target for the boom rotation.
 		/// <para>This is derived from attachment to our parent and considering the UsePawnControlRotation and absolute rotation flags. </para>
 		/// </summary>
 		public FRotator GetTargetRotation()
@@ -256,21 +256,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the position where the camera should be without applying the Collision Test displacement </para>
+		/// Get the position where the camera should be without applying the Collision Test displacement
 		/// </summary>
 		public FVector GetUnfixedCameraPosition()
 			=> E_USpringArmComponent_GetUnfixedCameraPosition(this);
 		
 		
 		/// <summary>
-		/// <para>Is the Collision Test displacement being applied? </para>
+		/// Is the Collision Test displacement being applied?
 		/// </summary>
 		public bool IsCollisionFixApplied()
 			=> E_USpringArmComponent_IsCollisionFixApplied(this);
 		
 		
 		/// <summary>
-		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
+		/// Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done
 		/// </summary>
 		protected virtual void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float deltaTime)
 			=> E_USpringArmComponent_UpdateDesiredArmLocation(this, bDoTrace, bDoLocationLag, bDoRotationLag, deltaTime);

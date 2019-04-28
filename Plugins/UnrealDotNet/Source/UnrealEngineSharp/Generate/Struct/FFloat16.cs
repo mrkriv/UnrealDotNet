@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor </para>
+		/// Default constructor
 		/// </summary>
 		public FFloat16() :
 			base(E_CreateStruct_FFloat16(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Copy constructor. </para>
+		/// Copy constructor.
 		/// </summary>
 		public FFloat16(FFloat16 fP16Value) :
 			base(E_CreateStruct_FFloat16_FFloat16(fP16Value), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Conversion constructor. Convert from Fp32 to Fp16. </para>
+		/// Conversion constructor. Convert from Fp32 to Fp16.
 		/// </summary>
 		public FFloat16(float fP32Value) :
 			base(E_CreateStruct_FFloat16_float(fP32Value), false)
@@ -69,26 +69,26 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Convert from Fp16 to Fp32. </para>
+		/// Convert from Fp16 to Fp32.
 		/// </summary>
 		public float GetFloat()
 			=> E_FFloat16_GetFloat(this);
 		
 		
 		/// <summary>
-		/// <para>Convert from Fp32 to Fp16. </para>
+		/// Convert from Fp32 to Fp16.
 		/// </summary>
 		public void Set(float fP32Value)
 			=> E_FFloat16_Set(this, fP32Value);
 		
 		
 		/// <summary>
-		/// <para>Convert from Fp32 to Fp16 without doing any checks if </para>
+		/// Convert from Fp32 to Fp16 without doing any checks if
 		/// <para>the Fp32 exponent is too large or too small. This is a </para>
-		/// <para>faster alternative to Set() when you know the values </para>
+		/// faster alternative to Set() when you know the values
 		/// <para>within the single precision float don't need the checks. </para>
-		/// <param name="FP32Value">Single precision float to be set as half precision. </param>
 		/// </summary>
+		/// <param name="fP32Value">Single precision float to be set as half precision.</param>
 		public void SetWithoutBoundsChecks(float fP32Value)
 			=> E_FFloat16_SetWithoutBoundsChecks(this, fP32Value);
 		

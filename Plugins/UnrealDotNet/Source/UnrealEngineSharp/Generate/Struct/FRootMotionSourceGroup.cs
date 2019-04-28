@@ -124,21 +124,21 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Helper function for accumulating additive velocity into InOutVelocity </para>
+		/// Helper function for accumulating additive velocity into InOutVelocity
 		/// </summary>
 		public void AccumulateAdditiveRootMotionVelocity(float deltaTime, ACharacter character, UCharacterMovementComponent moveComponent, FVector inOutVelocity)
 			=> E_FRootMotionSourceGroup_AccumulateAdditiveRootMotionVelocity(this, deltaTime, character, moveComponent, inOutVelocity);
 		
 		
 		/// <summary>
-		/// <para>Helper function for accumulating override velocity into InOutVelocity </para>
+		/// Helper function for accumulating override velocity into InOutVelocity
 		/// </summary>
 		public void AccumulateOverrideRootMotionVelocity(float deltaTime, ACharacter character, UCharacterMovementComponent moveComponent, FVector inOutVelocity)
 			=> E_FRootMotionSourceGroup_AccumulateOverrideRootMotionVelocity(this, deltaTime, character, moveComponent, inOutVelocity);
 		
 		
 		/// <summary>
-		/// <para>Applies a reset to the start time for each root motion when the time stamp is reset </para>
+		/// Applies a reset to the start time for each root motion when the time stamp is reset
 		/// </summary>
 		public void ApplyTimeStampReset(float deltaTime)
 			=> E_FRootMotionSourceGroup_ApplyTimeStampReset(this, deltaTime);
@@ -148,86 +148,86 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Clear the contents to return it to "empty" </para>
+		/// Clear the contents to return it to "empty"
 		/// </summary>
 		public void Clear()
 			=> E_FRootMotionSourceGroup_Clear(this);
 		
 		
 		/// <summary>
-		/// <para>Removes any Sources without a valid ID </para>
+		/// Removes any Sources without a valid ID
 		/// </summary>
 		public void CullInvalidSources()
 			=> E_FRootMotionSourceGroup_CullInvalidSources(this);
 		
 		
 		/// <summary>
-		/// <return>true if we have Root Motion from any source to use in PerformMovement() physics. </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool HasActiveRootMotionSources()
 			=> E_FRootMotionSourceGroup_HasActiveRootMotionSources(this);
 		
 		
 		/// <summary>
-		/// <return>true if any axis of velocity has additive velocity applied by root motion sources </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool HasAdditiveVelocity()
 			=> E_FRootMotionSourceGroup_HasAdditiveVelocity(this);
 		
 		
 		/// <summary>
-		/// <return>true if Velocity will be overridden by root motion sources, meaning we can skip all normal movement-based velocity calculations </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool HasOverrideVelocity()
 			=> E_FRootMotionSourceGroup_HasOverrideVelocity(this);
 		
 		
 		/// <summary>
-		/// <return>true if we have Root Motion accumulated from sources to use in PerformMovement() physics. </return>
-		/// <para>Not valid outside of the scope of that function. Since RootMotion is extracted and used in it. </para>
+		/// Not valid outside of the scope of that function. Since RootMotion is extracted and used in it.
 		/// </summary>
+		/// <return>true</return>
 		public bool HasRootMotionToApply()
 			=> E_FRootMotionSourceGroup_HasRootMotionToApply(this);
 		
 		
 		/// <summary>
-		/// <return>true if any axis of velocity is modified by root motion sources </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool HasVelocity()
 			=> E_FRootMotionSourceGroup_HasVelocity(this);
 		
 		
 		/// <summary>
-		/// <para>Generates root motion by accumulating transforms through current root motion sources. </para>
-		/// <param name="bForcePrepareAll">Used during "live" PerformMovements() to ensure all sources get prepared </param>
+		/// Generates root motion by accumulating transforms through current root motion sources.
 		/// <para>Needed due to SavedMove playback/server correction only applying corrections to </para>
-		/// <para>Sources that need updating, so in that case we only Prepare those that need it. </para>
+		/// Sources that need updating, so in that case we only Prepare those that need it.
 		/// </summary>
+		/// <param name="bForcePrepareAll">Used during "live" PerformMovements() to ensure all sources get prepared</param>
 		public void PrepareRootMotion(float deltaTime, ACharacter character, UCharacterMovementComponent inMoveComponent, bool bForcePrepareAll = false)
 			=> E_FRootMotionSourceGroup_PrepareRootMotion(this, deltaTime, character, inMoveComponent, bForcePrepareAll);
 		
 		
 		/// <summary>
-		/// <para>Remove a RootMotionSource from this Group by name </para>
+		/// Remove a RootMotionSource from this Group by name
 		/// </summary>
 		public void RemoveRootMotionSource(string instanceName)
 			=> E_FRootMotionSourceGroup_RemoveRootMotionSource(this, instanceName);
 		
 		
 		/// <summary>
-		/// <para>Sets the StartTime of all pending root motion sources to be at least this time, can be used on servers to match client-side start times </para>
+		/// Sets the StartTime of all pending root motion sources to be at least this time, can be used on servers to match client-side start times
 		/// </summary>
 		public void SetPendingRootMotionSourceMinStartTimes(float newStartTime)
 			=> E_FRootMotionSourceGroup_SetPendingRootMotionSourceMinStartTimes(this, newStartTime);
 		
 		
 		/// <summary>
-		/// <para>Update contained Sources to state in matching sources from other group. </para>
+		/// Update contained Sources to state in matching sources from other group.
 		/// <para>Used for correcting root motion state when receiving authoritative state from server. </para>
-		/// <param name="GroupToTakeStateFrom">the Authoritative Group to take state from </param>
-		/// <param name="bMarkForSimulatedCatchup">marks Sources as needing to return to their current Time on next Prepare </param>
-		/// <return>whether it successfully updated state </return>
 		/// </summary>
+		/// <param name="groupToTakeStateFrom">the Authoritative Group to take state from</param>
+		/// <param name="bMarkForSimulatedCatchup">marks Sources as needing to return to their current Time on next Prepare</param>
+		/// <return>whether</return>
 		public void UpdateStateFrom(FRootMotionSourceGroup groupToTakeStateFrom, bool bMarkForSimulatedCatchup = false)
 			=> E_FRootMotionSourceGroup_UpdateStateFrom(this, groupToTakeStateFrom, bMarkForSimulatedCatchup);
 		

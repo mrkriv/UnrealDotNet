@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FIntVector() :
 			base(E_CreateStruct_FIntVector(), false)
@@ -29,11 +29,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new instance with the specified coordinates. </para>
-		/// <param name="InX">The x-coordinate. </param>
-		/// <param name="InY">The y-coordinate. </param>
-		/// <param name="InZ">The z-coordinate. </param>
+		/// Creates and initializes a new instance with the specified coordinates.
 		/// </summary>
+		/// <param name="inX">The x-coordinate.</param>
+		/// <param name="inY">The y-coordinate.</param>
+		/// <param name="inZ">The z-coordinate.</param>
 		public FIntVector(int inX, int inY, int inZ) :
 			base(E_CreateStruct_FIntVector_int32_int32_int32(inX, inY, inZ), false)
 		{
@@ -41,9 +41,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="InValue">replicated to all components </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="inValue">replicated to all components</param>
 		public FIntVector(int inValue) :
 			base(E_CreateStruct_FIntVector_int32(inValue), false)
 		{
@@ -51,9 +51,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="InVector">float vector converted to int </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="inVector">float vector converted to int</param>
 		public FIntVector(FVector inVector) :
 			base(E_CreateStruct_FIntVector_FVector(inVector), false)
 		{
@@ -92,7 +92,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the point's x-coordinate. </para>
+		/// Holds the point's x-coordinate.
 		/// </summary>
 		public int X
 		{
@@ -102,7 +102,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the point's y-coordinate. </para>
+		/// Holds the point's y-coordinate.
 		/// </summary>
 		public int Y
 		{
@@ -112,7 +112,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the point's z-coordinate. </para>
+		/// Holds the point's z-coordinate.
 		/// </summary>
 		public int Z
 		{

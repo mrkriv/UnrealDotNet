@@ -57,7 +57,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Scales the diffuse contribution of all materials applied to this object. </para>
+		/// Scales the diffuse contribution of all materials applied to this object.
 		/// </summary>
 		public float DiffuseBoost
 		{
@@ -67,7 +67,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the emissive contribution of all materials applied to this object. </para>
+		/// Scales the emissive contribution of all materials applied to this object.
 		/// </summary>
 		public float EmissiveBoost
 		{
@@ -89,7 +89,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Fraction of samples taken that must be occluded in order to reach full occlusion. </para>
+		/// Fraction of samples taken that must be occluded in order to reach full occlusion.
 		/// </summary>
 		public float FullyOccludedSamplesFraction
 		{

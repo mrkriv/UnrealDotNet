@@ -205,7 +205,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Put shadow on debug strings </para>
+		/// Put shadow on debug strings
 		/// </summary>
 		public byte bEnableDebugTextShadow
 		{
@@ -215,7 +215,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Tells whether the game was paused due to lost focus </para>
+		/// Tells whether the game was paused due to lost focus
 		/// </summary>
 		public byte bLostFocusPaused
 		{
@@ -225,7 +225,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, current ViewTarget shows debug information using its DisplayDebug(). </para>
+		/// If true, current ViewTarget shows debug information using its DisplayDebug().
 		/// </summary>
 		public byte bShowDebugInfo
 		{
@@ -235,7 +235,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, show hitbox debugging info. </para>
+		/// If true, show hitbox debugging info.
 		/// </summary>
 		public byte bShowHitBoxDebugInfo
 		{
@@ -245,7 +245,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not the HUD should be drawn. </para>
+		/// Whether or not the HUD should be drawn.
 		/// </summary>
 		public byte bShowHUD
 		{
@@ -255,7 +255,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, render actor overlays. </para>
+		/// If true, render actor overlays.
 		/// </summary>
 		public byte bShowOverlays
 		{
@@ -271,7 +271,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Used to calculate delta time between HUD rendering. </para>
+		/// Used to calculate delta time between HUD rendering.
 		/// </summary>
 		public float LastHUDRenderTime
 		{
@@ -281,7 +281,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>PlayerController which owns this HUD. </para>
+		/// PlayerController which owns this HUD.
 		/// </summary>
 		public APlayerController PlayerOwner
 		{
@@ -291,7 +291,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Time since last HUD render. </para>
+		/// Time since last HUD render.
 		/// </summary>
 		public float RenderDelta
 		{
@@ -304,47 +304,47 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add a hitbox to the hud </para>
-		/// <param name="Position">Coordinates of the top left of the hit box. </param>
-		/// <param name="Size">Size of the hit box. </param>
-		/// <param name="Name">Name of the hit box. </param>
-		/// <param name="bConsumesInput">Whether click processing should continue if this hit box is clicked. </param>
-		/// <param name="Priority">The priority of the box used for layering. Larger values are considered first.  Equal values are considered in the order they were added. </param>
+		/// Add a hitbox to the hud
 		/// </summary>
+		/// <param name="position">Coordinates of the top left of the hit box.</param>
+		/// <param name="size">Size of the hit box.</param>
+		/// <param name="name">Name of the hit box.</param>
+		/// <param name="bConsumesInput">Whether click processing should continue if this hit box is clicked.</param>
+		/// <param name="priority">The priority of the box used for layering. Larger values are considered first.  Equal values are considered in the order they were added.</param>
 		public void AddHitBox(FVector2D position, FVector2D size, string inName, bool bConsumesInput, int priority = 0)
 			=> E_AHUD_AddHitBox(this, position, size, inName, bConsumesInput, priority);
 		
 		
 		/// <summary>
-		/// <para>add an actor to the PostRenderedActors array </para>
+		/// add an actor to the PostRenderedActors array
 		/// </summary>
 		public virtual void AddPostRenderedActor(AActor a)
 			=> E_AHUD_AddPostRenderedActor(this, a);
 		
 		
 		/// <summary>
-		/// <para>Have any hitboxes been hit this frame. </para>
+		/// Have any hitboxes been hit this frame.
 		/// </summary>
 		public bool AnyCurrentHitBoxHits()
 			=> E_AHUD_AnyCurrentHitBoxHits(this);
 		
 		
 		/// <summary>
-		/// <para>Transforms a 2D screen location into a 3D location and direction </para>
+		/// Transforms a 2D screen location into a 3D location and direction
 		/// </summary>
 		public void Deproject(float screenX, float screenY, FVector worldPosition, FVector worldDirection)
 			=> E_AHUD_Deproject(this, screenX, screenY, worldPosition, worldDirection);
 		
 		
 		/// <summary>
-		/// <para>draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array </para>
+		/// draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array
 		/// </summary>
 		public virtual void DrawActorOverlays(FVector viewpoint, FRotator viewRotation)
 			=> E_AHUD_DrawActorOverlays(this, viewpoint, viewRotation);
 		
 		
 		/// <summary>
-		/// <para>Iterate through list of debug text and draw it over the associated actors in world space. </para>
+		/// Iterate through list of debug text and draw it over the associated actors in world space.
 		/// <para>Also handles culling null entries, and reducing the duration for timed debug text. </para>
 		/// </summary>
 		public void DrawDebugTextList()
@@ -352,67 +352,67 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>The Main Draw loop for the hud.  Gets called before any messaging.  Should be subclassed </para>
+		/// The Main Draw loop for the hud.  Gets called before any messaging.  Should be subclassed
 		/// </summary>
 		public virtual void DrawHUD()
 			=> E_AHUD_DrawHUD(this);
 		
 		
 		/// <summary>
-		/// <para>Draws a 2D line on the HUD. </para>
-		/// <param name="StartScreenX">Screen-space X coordinate of start of the line. </param>
-		/// <param name="StartScreenY">Screen-space Y coordinate of start of the line. </param>
-		/// <param name="EndScreenX">Screen-space X coordinate of end of the line. </param>
-		/// <param name="EndScreenY">Screen-space Y coordinate of end of the line. </param>
-		/// <param name="LineColor">Color to draw line </param>
-		/// <param name="LineThickness">Thickness of the line to draw </param>
+		/// Draws a 2D line on the HUD.
 		/// </summary>
+		/// <param name="startScreenX">Screen-space X coordinate of start of the line.</param>
+		/// <param name="startScreenY">Screen-space Y coordinate of start of the line.</param>
+		/// <param name="endScreenX">Screen-space X coordinate of end of the line.</param>
+		/// <param name="endScreenY">Screen-space Y coordinate of end of the line.</param>
+		/// <param name="lineColor">Color to draw line</param>
+		/// <param name="lineThickness">Thickness of the line to draw</param>
 		public void DrawLine(float startScreenX, float startScreenY, float endScreenX, float endScreenY, FLinearColor lineColor, float lineThickness)
 			=> E_AHUD_DrawLine(this, startScreenX, startScreenY, endScreenX, endScreenY, lineColor, lineThickness);
 		
 		
 		/// <summary>
-		/// <para>Draws a colored untextured quad on the HUD. </para>
-		/// <param name="RectColor">Color of the rect. Can be translucent. </param>
-		/// <param name="ScreenX">Screen-space X coordinate of upper left corner of the quad. </param>
-		/// <param name="ScreenY">Screen-space Y coordinate of upper left corner of the quad. </param>
-		/// <param name="ScreenW">Screen-space width of the quad (in pixels). </param>
-		/// <param name="ScreenH">Screen-space height of the quad (in pixels). </param>
+		/// Draws a colored untextured quad on the HUD.
 		/// </summary>
+		/// <param name="rectColor">Color of the rect. Can be translucent.</param>
+		/// <param name="screenX">Screen-space X coordinate of upper left corner of the quad.</param>
+		/// <param name="screenY">Screen-space Y coordinate of upper left corner of the quad.</param>
+		/// <param name="screenW">Screen-space width of the quad (in pixels).</param>
+		/// <param name="screenH">Screen-space height of the quad (in pixels).</param>
 		public void DrawRect(FLinearColor rectColor, float screenX, float screenY, float screenW, float screenH)
 			=> E_AHUD_DrawRect(this, rectColor, screenX, screenY, screenW, screenH);
 		
 		
 		/// <summary>
-		/// <para>Draw the safe zone debugging overlay when enabled </para>
+		/// Draw the safe zone debugging overlay when enabled
 		/// </summary>
 		public virtual void DrawSafeZoneOverlay()
 			=> E_AHUD_DrawSafeZoneOverlay(this);
 		
 		
 		/// <summary>
-		/// <para>Get Target to view 'showdebug' on </para>
+		/// Get Target to view 'showdebug' on
 		/// </summary>
 		public virtual AActor GetCurrentDebugTargetActor()
 			=> E_AHUD_GetCurrentDebugTargetActor(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the Pawn for this HUD's player. </para>
+		/// Returns the Pawn for this HUD's player.
 		/// </summary>
 		public APawn GetOwningPawn()
 			=> E_AHUD_GetOwningPawn(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the PlayerController for this HUD's player. </para>
+		/// Returns the PlayerController for this HUD's player.
 		/// </summary>
 		public APlayerController GetOwningPlayerController()
 			=> E_AHUD_GetOwningPlayerController(this);
 		
 		
 		/// <summary>
-		/// <para>Gives the HUD a chance to display project-specific data when taking a "bug" screen shot. </para>
+		/// Gives the HUD a chance to display project-specific data when taking a "bug" screen shot.
 		/// </summary>
 		public virtual void HandleBugScreenShot()
 			=> E_AHUD_HandleBugScreenShot(this);
@@ -425,50 +425,50 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called in PostInitializeComponents or postprocessing chain has changed (happens because of the worldproperties can define it's own chain and this one is set late). </para>
+		/// Called in PostInitializeComponents or postprocessing chain has changed (happens because of the worldproperties can define it's own chain and this one is set late).
 		/// </summary>
 		public virtual void NotifyBindPostProcessEffects()
 			=> E_AHUD_NotifyBindPostProcessEffects(this);
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is moused over. </para>
+		/// Native handler, called when a hit box is moused over.
 		/// </summary>
 		public virtual void NotifyHitBoxBeginCursorOver(string boxName)
 			=> E_AHUD_NotifyHitBoxBeginCursorOver(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is clicked on. Provides the name associated with that box. </para>
+		/// Native handler, called when a hit box is clicked on. Provides the name associated with that box.
 		/// </summary>
 		public virtual void NotifyHitBoxClick(string boxName)
 			=> E_AHUD_NotifyHitBoxClick(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box no longer has the mouse over it. </para>
+		/// Native handler, called when a hit box no longer has the mouse over it.
 		/// </summary>
 		public virtual void NotifyHitBoxEndCursorOver(string boxName)
 			=> E_AHUD_NotifyHitBoxEndCursorOver(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is unclicked. Provides the name associated with that box. </para>
+		/// Native handler, called when a hit box is unclicked. Provides the name associated with that box.
 		/// </summary>
 		public virtual void NotifyHitBoxRelease(string boxName)
 			=> E_AHUD_NotifyHitBoxRelease(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Pauses or unpauses the game due to main window's focus being lost. </para>
-		/// <param name="Enable">tells whether to enable or disable the pause state </param>
+		/// Pauses or unpauses the game due to main window's focus being lost.
 		/// </summary>
+		/// <param name="enable">tells whether to enable or disable the pause state</param>
 		public virtual void OnLostFocusPause(bool bEnable)
 			=> E_AHUD_OnLostFocusPause(this, bEnable);
 		
 		
 		/// <summary>
-		/// <para>PostRender is the main draw loop. </para>
+		/// PostRender is the main draw loop.
 		/// </summary>
 		public virtual void PostRender()
 			=> E_AHUD_PostRender(this);
@@ -478,7 +478,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Transforms a 3D world-space vector into 2D screen coordinates </para>
+		/// Transforms a 3D world-space vector into 2D screen coordinates
 		/// </summary>
 		public FVector Project(FVector location)
 			=> E_AHUD_Project(this, location);
@@ -488,28 +488,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when a hit box is moused over. </para>
+		/// Called when a hit box is moused over.
 		/// </summary>
 		public void HitBoxBeginCursorOver(string boxName)
 			=> E_AHUD_ReceiveHitBoxBeginCursorOver(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Called when a hit box is clicked on. Provides the name associated with that box. </para>
+		/// Called when a hit box is clicked on. Provides the name associated with that box.
 		/// </summary>
 		public void HitBoxClicked(string boxName)
 			=> E_AHUD_ReceiveHitBoxClick(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Called when a hit box no longer has the mouse over it. </para>
+		/// Called when a hit box no longer has the mouse over it.
 		/// </summary>
 		public void HitBoxEndCursorOver(string boxName)
 			=> E_AHUD_ReceiveHitBoxEndCursorOver(this, boxName);
 		
 		
 		/// <summary>
-		/// <para>Called when a hit box is unclicked. Provides the name associated with that box. </para>
+		/// Called when a hit box is unclicked. Provides the name associated with that box.
 		/// </summary>
 		public void HitBoxReleased(string boxName)
 			=> E_AHUD_ReceiveHitBoxRelease(this, boxName);
@@ -522,24 +522,24 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>remove an actor from the PostRenderedActors array </para>
+		/// remove an actor from the PostRenderedActors array
 		/// </summary>
 		public virtual void RemovePostRenderedActor(AActor a)
 			=> E_AHUD_RemovePostRenderedActor(this, a);
 		
 		
 		/// <summary>
-		/// <para>Set the canvas and debug canvas to use during drawing </para>
+		/// Set the canvas and debug canvas to use during drawing
 		/// </summary>
 		public void SetCanvas(UCanvas inCanvas, UCanvas inDebugCanvas)
 			=> E_AHUD_SetCanvas(this, inCanvas, inDebugCanvas);
 		
 		
 		/// <summary>
-		/// <para>check if we should be display debug information for particular types of debug messages. </para>
-		/// <param name="DebugType">type of debug message. </param>
-		/// <return>true if it should be displayed, false otherwise. </return>
+		/// check if we should be display debug information for particular types of debug messages.
 		/// </summary>
+		/// <param name="debugType">type of debug message.</param>
+		/// <return>true</return>
 		public virtual bool ShouldDisplayDebug(string debugType)
 			=> E_AHUD_ShouldDisplayDebug(this, debugType);
 		
@@ -548,7 +548,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command. </para>
+		/// Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command.
 		/// <para>Can be overridden to display custom debug per-game. </para>
 		/// </summary>
 		public virtual void ShowDebugInfo(float yL, float yPos)
@@ -562,10 +562,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update the list of hitboxes and dispatch events for any hits. </para>
-		/// <param name="ClickLocation">Location of the click event </param>
-		/// <param name="InEventType">Type of input event that triggered the call. </param>
+		/// Update the list of hitboxes and dispatch events for any hits.
 		/// </summary>
+		/// <param name="clickLocation">Location of the click event</param>
+		/// <param name="inEventType">Type of input event that triggered the call.</param>
 		public bool UpdateAndDispatchHitBoxClickEvents(FVector2D clickLocation, EInputEvent inEventType)
 			=> E_AHUD_UpdateAndDispatchHitBoxClickEvents(this, clickLocation, (byte)inEventType);
 		

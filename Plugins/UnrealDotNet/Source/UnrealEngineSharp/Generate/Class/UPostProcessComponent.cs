@@ -55,7 +55,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>World space radius around the volume that is used for blending (only if not unbound). </para>
+		/// World space radius around the volume that is used for blending (only if not unbound).
 		/// </summary>
 		public float BlendRadius
 		{
@@ -65,7 +65,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0:no effect, 1:full effect </para>
+		/// 0:no effect, 1:full effect
 		/// </summary>
 		public float BlendWeight
 		{
@@ -75,7 +75,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Priority of this volume. In the case of overlapping volumes the one with the highest priority </para>
+		/// Priority of this volume. In the case of overlapping volumes the one with the highest priority
 		/// <para>overrides the lower priority ones. The order is undefined if two or more overlapping volumes have the same priority. </para>
 		/// </summary>
 		public float Priority
@@ -86,7 +86,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Post process settings to use for this volume. </para>
+		/// Post process settings to use for this volume.
 		/// </summary>
 		public FPostProcessSettings Settings
 		{

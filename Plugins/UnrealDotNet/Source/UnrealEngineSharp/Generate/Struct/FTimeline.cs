@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Cached property pointer for setting timeline direction </para>
+		/// Cached property pointer for setting timeline direction
 		/// </summary>
 		public FTimeline() :
 			base(E_CreateStruct_FTimeline(), false)
@@ -96,140 +96,140 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Get the current playback position of the Timeline </para>
+		/// Get the current playback position of the Timeline
 		/// </summary>
 		public float GetPlaybackPosition()
 			=> E_FTimeline_GetPlaybackPosition(this);
 		
 		
 		/// <summary>
-		/// <para>Get the current play rate for this timeline </para>
+		/// Get the current play rate for this timeline
 		/// </summary>
 		public float GetPlayRate()
 			=> E_FTimeline_GetPlayRate(this);
 		
 		
 		/// <summary>
-		/// <para>Get length of the timeline </para>
+		/// Get length of the timeline
 		/// </summary>
 		public float GetTimelineLength()
 			=> E_FTimeline_GetTimelineLength(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether we are looping or not </para>
+		/// Get whether we are looping or not
 		/// </summary>
 		public bool IsLooping()
 			=> E_FTimeline_IsLooping(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether this timeline is playing or not. </para>
+		/// Get whether this timeline is playing or not.
 		/// </summary>
 		public bool IsPlaying()
 			=> E_FTimeline_IsPlaying(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether we are reversing or not </para>
+		/// Get whether we are reversing or not
 		/// </summary>
 		public bool IsReversing()
 			=> E_FTimeline_IsReversing(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline </para>
+		/// Start playback of timeline
 		/// </summary>
 		public void Play()
 			=> E_FTimeline_Play(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline from the start </para>
+		/// Start playback of timeline from the start
 		/// </summary>
 		public void PlayFromStart()
 			=> E_FTimeline_PlayFromStart(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline in reverse </para>
+		/// Start playback of timeline in reverse
 		/// </summary>
 		public void Reverse()
 			=> E_FTimeline_Reverse(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline in reverse from the end </para>
+		/// Start playback of timeline in reverse from the end
 		/// </summary>
 		public void ReverseFromEnd()
 			=> E_FTimeline_ReverseFromEnd(this);
 		
 		
 		/// <summary>
-		/// <para>Set the delegate to call when timeline is finished </para>
+		/// Set the delegate to call when timeline is finished
 		/// </summary>
 		public void SetDirectionPropertyName(string inDirectionPropertyName)
 			=> E_FTimeline_SetDirectionPropertyName(this, inDirectionPropertyName);
 		
 		
 		/// <summary>
-		/// <para>true means we whould loop, false means we should not. </para>
+		/// true means we whould loop, false means we should not.
 		/// </summary>
 		public void SetLooping(bool bNewLooping)
 			=> E_FTimeline_SetLooping(this, bNewLooping);
 		
 		
 		/// <summary>
-		/// <para>Set the new playback position time to use </para>
+		/// Set the new playback position time to use
 		/// </summary>
 		public void SetNewTime(float newTime)
 			=> E_FTimeline_SetNewTime(this, newTime);
 		
 		
 		/// <summary>
-		/// <para>Jump to a position in the timeline. If bFireEvents is true, event functions will fire, otherwise will not. </para>
+		/// Jump to a position in the timeline. If bFireEvents is true, event functions will fire, otherwise will not.
 		/// </summary>
 		public void SetPlaybackPosition(float newPosition, bool bFireEvents, bool bFireUpdate = true)
 			=> E_FTimeline_SetPlaybackPosition(this, newPosition, bFireEvents, bFireUpdate);
 		
 		
 		/// <summary>
-		/// <para>Sets the new play rate for this timeline </para>
+		/// Sets the new play rate for this timeline
 		/// </summary>
 		public void SetPlayRate(float newRate)
 			=> E_FTimeline_SetPlayRate(this, newRate);
 		
 		
 		/// <summary>
-		/// <para>Optionally provide an object to automatically update properties on </para>
+		/// Optionally provide an object to automatically update properties on
 		/// </summary>
 		public void SetPropertySetObject(UObject newPropertySetObject)
 			=> E_FTimeline_SetPropertySetObject(this, newPropertySetObject);
 		
 		
 		/// <summary>
-		/// <para>Set the length of the timeline </para>
+		/// Set the length of the timeline
 		/// </summary>
 		public void SetTimelineLength(float newLength)
 			=> E_FTimeline_SetTimelineLength(this, newLength);
 		
 		
 		/// <summary>
-		/// <para>Sets the timeline length mode </para>
+		/// Sets the timeline length mode
 		/// </summary>
 		public void SetTimelineLengthMode(ETimelineLengthMode newMode)
 			=> E_FTimeline_SetTimelineLengthMode(this, (byte)newMode);
 		
 		
 		/// <summary>
-		/// <para>Stop playback of timeline </para>
+		/// Stop playback of timeline
 		/// </summary>
 		public void Stop()
 			=> E_FTimeline_Stop(this);
 		
 		
 		/// <summary>
-		/// <para>Advance the timeline, if playing, firing delegates </para>
+		/// Advance the timeline, if playing, firing delegates
 		/// </summary>
 		public void TickTimeline(float deltaTime)
 			=> E_FTimeline_TickTimeline(this, deltaTime);

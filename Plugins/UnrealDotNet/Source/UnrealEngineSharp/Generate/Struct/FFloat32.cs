@@ -20,9 +20,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="InValue">value of the float. </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="inValue">value of the float.</param>
 		public FFloat32(float inValue) :
 			base(E_CreateStruct_FFloat32_float(inValue), false)
 		{

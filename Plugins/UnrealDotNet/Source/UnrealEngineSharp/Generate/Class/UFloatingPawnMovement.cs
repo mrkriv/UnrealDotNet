@@ -61,7 +61,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Acceleration applied by input (rate of change of velocity) </para>
+		/// Acceleration applied by input (rate of change of velocity)
 		/// </summary>
 		public float Acceleration
 		{
@@ -71,7 +71,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Deceleration applied when there is no input (rate of change of velocity) </para>
+		/// Deceleration applied when there is no input (rate of change of velocity)
 		/// </summary>
 		public float Deceleration
 		{
@@ -81,7 +81,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum velocity magnitude allowed for the controlled Pawn. </para>
+		/// Maximum velocity magnitude allowed for the controlled Pawn.
 		/// </summary>
 		public float MaxSpeed
 		{
@@ -91,9 +91,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Setting affecting extra force applied when changing direction, making turns have less drift and become more responsive. </para>
+		/// Setting affecting extra force applied when changing direction, making turns have less drift and become more responsive.
 		/// <para>Velocity magnitude is not allowed to increase, that only happens due to normal acceleration. It may decrease with large direction changes. </para>
-		/// <para>Larger values apply extra force to reach the target direction more quickly, while a zero value disables any extra turn force. </para>
+		/// Larger values apply extra force to reach the target direction more quickly, while a zero value disables any extra turn force.
 		/// </summary>
 		public float TurningBoost
 		{
@@ -106,14 +106,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Update Velocity based on input. Also applies gravity. </para>
+		/// Update Velocity based on input. Also applies gravity.
 		/// </summary>
 		protected virtual void ApplyControlInputToVelocity(float deltaTime)
 			=> E_UFloatingPawnMovement_ApplyControlInputToVelocity(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Prevent Pawn from leaving the world bounds (if that restriction is enabled in WorldSettings) </para>
+		/// Prevent Pawn from leaving the world bounds (if that restriction is enabled in WorldSettings)
 		/// </summary>
 		protected virtual bool LimitWorldBounds()
 			=> E_UFloatingPawnMovement_LimitWorldBounds(this);

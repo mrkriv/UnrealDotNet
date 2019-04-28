@@ -22,27 +22,27 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Turns standby detection on/off </para>
-		/// <param name="bIsEnabled">true to turn it on, false to disable it </param>
+		/// Turns standby detection on/off
 		/// </summary>
+		/// <param name="bIsEnabled">true to turn it on, false to disable it</param>
 		public override void EnableStandbyCheatDetection(bool bIsEnabled) { }
 		
 		
 		/// <summary>
-		/// <para>Notifies the game code that a standby cheat was detected </para>
-		/// <param name="StandbyType">the type of cheat detected </param>
+		/// Notifies the game code that a standby cheat was detected
 		/// </summary>
+		/// <param name="standbyType">the type of cheat detected</param>
 		public override void StandbyCheatDetected(EStandbyType standbyType) { }
 		
 		
 		/// <summary>
-		/// <para>Update network speeds for listen servers based on number of connected players. </para>
+		/// Update network speeds for listen servers based on number of connected players.
 		/// </summary>
 		public override void UpdateNetSpeeds(bool bIsLanMatch) { }
 		
 		
 		/// <summary>
-		/// <para>Timer which calls UpdateNetSpeeds() once a second. </para>
+		/// Timer which calls UpdateNetSpeeds() once a second.
 		/// </summary>
 		public override void UpdateNetSpeedsTimer() { }
 		

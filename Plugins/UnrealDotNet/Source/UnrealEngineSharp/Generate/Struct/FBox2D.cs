@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FBox2D() :
 			base(E_CreateStruct_FBox2D(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new box. </para>
+		/// Creates and initializes a new box.
 		/// <para>The box extents are initialized to zero and the box is marked as invalid. </para>
 		/// </summary>
 		public FBox2D(int _p0) :
@@ -39,10 +39,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new box from the specified parameters. </para>
-		/// <param name="InMin">The box's minimum point. </param>
-		/// <param name="InMax">The box's maximum point. </param>
+		/// Creates and initializes a new box from the specified parameters.
 		/// </summary>
+		/// <param name="inMin">The box's minimum point.</param>
+		/// <param name="inMax">The box's maximum point.</param>
 		public FBox2D(FVector2D inMin, FVector2D inMax) :
 			base(E_CreateStruct_FBox2D_FVector2D_FVector2D(inMin, inMax), false)
 		{
@@ -50,10 +50,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new box from the given set of points. </para>
-		/// <param name="Points">Array of Points to create for the bounding volume. </param>
-		/// <param name="Count">The number of points. </param>
+		/// Creates and initializes a new box from the given set of points.
 		/// </summary>
+		/// <param name="points">Array of Points to create for the bounding volume.</param>
+		/// <param name="count">The number of points.</param>
 		public FBox2D(FVector2D points, int count) :
 			base(E_CreateStruct_FBox2D_FVector2D_int32(points, count), false)
 		{
@@ -134,7 +134,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds a flag indicating whether this box is valid. </para>
+		/// Holds a flag indicating whether this box is valid.
 		/// </summary>
 		public bool bIsValid
 		{
@@ -144,7 +144,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the box's maximum point. </para>
+		/// Holds the box's maximum point.
 		/// </summary>
 		public FVector2D Max
 		{
@@ -154,7 +154,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the box's minimum point. </para>
+		/// Holds the box's minimum point.
 		/// </summary>
 		public FVector2D Min
 		{
@@ -167,125 +167,125 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Calculates the distance of a point to this box. </para>
-		/// <param name="Point">The point. </param>
-		/// <return>The distance. </return>
+		/// Calculates the distance of a point to this box.
 		/// </summary>
+		/// <param name="point">The point.</param>
+		/// <return>The</return>
 		public float ComputeSquaredDistanceToPoint(FVector2D point)
 			=> E_FBox2D_ComputeSquaredDistanceToPoint(this, point);
 		
 		
 		/// <summary>
-		/// <para>Increase the bounding box volume. </para>
-		/// <param name="W">The size to increase volume by. </param>
-		/// <return>A new bounding box increased in size. </return>
+		/// Increase the bounding box volume.
 		/// </summary>
+		/// <param name="w">The size to increase volume by.</param>
+		/// <return>A</return>
 		public FBox2D ExpandBy(float w)
 			=> E_FBox2D_ExpandBy(this, w);
 		
 		
 		/// <summary>
-		/// <para>Gets the box area. </para>
-		/// <return>Box area. </return>
-		/// <para>@see GetCenter, GetCenterAndExtents, GetExtent, GetSize </para>
+		/// Gets the box area.
+		/// <see cref="GetCenter"/>
 		/// </summary>
+		/// <return>Box</return>
 		public float GetArea()
 			=> E_FBox2D_GetArea(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the box's center point. </para>
-		/// <return>Th center point. </return>
-		/// <para>@see GetArea, GetCenterAndExtents, GetExtent, GetSize </para>
+		/// Gets the box's center point.
+		/// <see cref="GetArea"/>
 		/// </summary>
+		/// <return>Th</return>
 		public FVector2D GetCenter()
 			=> E_FBox2D_GetCenter(this);
 		
 		
 		/// <summary>
-		/// <para>Get the center and extents </para>
-		/// <param name="center">out] reference to center point </param>
-		/// <param name="Extents">out] reference to the extent around the center </param>
-		/// <para>@see GetArea, GetCenter, GetExtent, GetSize </para>
+		/// Get the center and extents
+		/// <see cref="GetArea"/>
 		/// </summary>
+		/// <param name="center">out] reference to center point</param>
+		/// <param name="extents">out] reference to the extent around the center</param>
 		public void GetCenterAndExtents(FVector2D center, FVector2D extents)
 			=> E_FBox2D_GetCenterAndExtents(this, center, extents);
 		
 		
 		/// <summary>
-		/// <para>Calculates the closest point on or inside the box to a given point in space. </para>
-		/// <param name="Point">The point in space. </param>
-		/// <return>The closest point on or inside the box. </return>
+		/// Calculates the closest point on or inside the box to a given point in space.
 		/// </summary>
+		/// <param name="point">The point in space.</param>
+		/// <return>The</return>
 		public FVector2D GetClosestPointTo(FVector2D point)
 			=> E_FBox2D_GetClosestPointTo(this, point);
 		
 		
 		/// <summary>
-		/// <para>Gets the box extents around the center. </para>
-		/// <return>Box extents. </return>
-		/// <para>@see GetArea, GetCenter, GetCenterAndExtents, GetSize </para>
+		/// Gets the box extents around the center.
+		/// <see cref="GetArea"/>
 		/// </summary>
+		/// <return>Box</return>
 		public FVector2D GetExtent()
 			=> E_FBox2D_GetExtent(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the box size. </para>
-		/// <return>Box size. </return>
-		/// <para>@see GetArea, GetCenter, GetCenterAndExtents, GetExtent </para>
+		/// Gets the box size.
+		/// <see cref="GetArea"/>
 		/// </summary>
+		/// <return>Box</return>
 		public FVector2D GetSize()
 			=> E_FBox2D_GetSize(this);
 		
 		
 		/// <summary>
-		/// <para>Set the initial values of the bounding box to Zero. </para>
+		/// Set the initial values of the bounding box to Zero.
 		/// </summary>
 		public void Init()
 			=> E_FBox2D_Init(this);
 		
 		
 		/// <summary>
-		/// <para>Checks whether the given box intersects this box. </para>
-		/// <param name="other">bounding box to test intersection </param>
-		/// <return>true if boxes intersect, false otherwise. </return>
+		/// Checks whether the given box intersects this box.
 		/// </summary>
+		/// <param name="other">bounding box to test intersection</param>
+		/// <return>true</return>
 		public bool Intersect(FBox2D other)
 			=> E_FBox2D_Intersect(this, other);
 		
 		
 		/// <summary>
-		/// <para>Checks whether the given point is inside this box. </para>
-		/// <param name="Point">The point to test. </param>
-		/// <return>true if the point is inside this box, otherwise false. </return>
+		/// Checks whether the given point is inside this box.
 		/// </summary>
+		/// <param name="point">The point to test.</param>
+		/// <return>true</return>
 		public bool IsInside(FVector2D testPoint)
 			=> E_FBox2D_IsInside(this, testPoint);
 		
 		
 		/// <summary>
-		/// <para>Checks whether the given box is fully encapsulated by this box. </para>
-		/// <param name="Other">The box to test for encapsulation within the bounding volume. </param>
-		/// <return>true if box is inside this volume, false otherwise. </return>
+		/// Checks whether the given box is fully encapsulated by this box.
 		/// </summary>
+		/// <param name="other">The box to test for encapsulation within the bounding volume.</param>
+		/// <return>true</return>
 		public bool IsInside(FBox2D other)
 			=> E_FBox2D_IsInside_o1(this, other);
 		
 		
 		/// <summary>
-		/// <para>Shift bounding box position. </para>
-		/// <param name="The">offset vector to shift by. </param>
-		/// <return>A new shifted bounding box. </return>
+		/// Shift bounding box position.
 		/// </summary>
+		/// <param name="the">offset vector to shift by.</param>
+		/// <return>A</return>
 		public FBox2D ShiftBy(FVector2D offset)
 			=> E_FBox2D_ShiftBy(this, offset);
 		
 		
 		/// <summary>
-		/// <para>Get a textual representation of this box. </para>
-		/// <return>A string describing the box. </return>
+		/// Get a textual representation of this box.
 		/// </summary>
+		/// <return>A</return>
 		public override string ToString()
 			=> E_FBox2D_ToString(this);
 		

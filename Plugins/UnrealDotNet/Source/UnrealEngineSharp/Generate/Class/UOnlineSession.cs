@@ -47,28 +47,28 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Tear down all delegates used to manage online sessions. </para>
+		/// Tear down all delegates used to manage online sessions.
 		/// </summary>
 		public virtual void ClearOnlineDelegates()
 			=> E_UOnlineSession_ClearOnlineDelegates(this);
 		
 		
 		/// <summary>
-		/// <para>End the online session specified </para>
+		/// End the online session specified
 		/// </summary>
 		public virtual void EndOnlineSession(string sessionName)
 			=> E_UOnlineSession_EndOnlineSession(this, sessionName);
 		
 		
 		/// <summary>
-		/// <para>Register all delegates needed to manage online sessions. </para>
+		/// Register all delegates needed to manage online sessions.
 		/// </summary>
 		public virtual void RegisterOnlineDelegates()
 			=> E_UOnlineSession_RegisterOnlineDelegates(this);
 		
 		
 		/// <summary>
-		/// <para>Start the online session specified </para>
+		/// Start the online session specified
 		/// </summary>
 		public virtual void StartOnlineSession(string sessionName)
 			=> E_UOnlineSession_StartOnlineSession(this, sessionName);

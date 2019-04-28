@@ -42,7 +42,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The base width of the sprite, multiplied with the DistanceToSizeCurve. </para>
+		/// The base width of the sprite, multiplied with the DistanceToSizeCurve.
 		/// </summary>
 		public float BaseSizeX
 		{
@@ -52,7 +52,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The base height of the sprite, multiplied with the DistanceToSizeCurve. </para>
+		/// The base height of the sprite, multiplied with the DistanceToSizeCurve.
 		/// </summary>
 		public float BaseSizeY
 		{

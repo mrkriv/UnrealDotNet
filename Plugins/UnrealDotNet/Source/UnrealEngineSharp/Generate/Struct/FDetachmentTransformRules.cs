@@ -74,7 +74,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to call Modify() on the components concerned when detaching </para>
+		/// Whether to call Modify() on the components concerned when detaching
 		/// </summary>
 		public bool bCallModify
 		{
@@ -84,7 +84,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Various preset detachment rules </para>
+		/// Various preset detachment rules
 		/// </summary>
 		public static FDetachmentTransformRules KeepRelativeTransform
 		{
@@ -98,7 +98,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to location when detaching </para>
+		/// The rule to apply to location when detaching
 		/// </summary>
 		public EDetachmentRule LocationRule
 		{
@@ -108,7 +108,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to rotation when detaching </para>
+		/// The rule to apply to rotation when detaching
 		/// </summary>
 		public EDetachmentRule RotationRule
 		{
@@ -118,7 +118,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to scale when detaching </para>
+		/// The rule to apply to scale when detaching
 		/// </summary>
 		public EDetachmentRule ScaleRule
 		{

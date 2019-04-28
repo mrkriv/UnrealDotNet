@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize to an identity rotation. </para>
+		/// Ctor. initialize to an identity rotation.
 		/// </summary>
 		public FQuat2D() :
 			base(E_CreateStruct_FQuat2D(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a rotation in radians. </para>
+		/// Ctor. initialize from a rotation in radians.
 		/// </summary>
 		public FQuat2D(float rotRadians) :
 			base(E_CreateStruct_FQuat2D_float(rotRadians), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from an FVector2D, representing a complex number. </para>
+		/// Ctor. initialize from an FVector2D, representing a complex number.
 		/// </summary>
 		public FQuat2D(FVector2D inRot) :
 			base(E_CreateStruct_FQuat2D_FVector2D(inRot), false)
@@ -75,42 +75,42 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Transform 2 rotations defined by complex numbers: </para>
+		/// Transform 2 rotations defined by complex numbers:
 		/// <para>In imaginary land: (A + Bi) * (C + Di) == (AC - BD) + (AD + BC)i </para>
-		/// <para>Looking at this as a matrix, A == cos(theta), B == sin(theta), C == cos(sigma), D == sin(sigma): </para>
+		/// Looking at this as a matrix, A == cos(theta), B == sin(theta), C == cos(sigma), D == sin(sigma):
 		/// <para>[ A B] * [ C D] == [  AC-BD  AD+BC] </para>
-		/// <para>[-B A]   [-D C]    [-(AD+BC) AC-BD] </para>
+		/// [-B A]   [-D C]    [-(AD+BC) AC-BD]
 		/// <para>If you look at how the vector multiply works out: [X(AC-BD)+Y(-BC-AD)  X(AD+BC)+Y(-BD+AC)] </para>
-		/// <para>you can see it follows the same form of the imaginary form. Indeed, check out how the matrix nicely works </para>
+		/// you can see it follows the same form of the imaginary form. Indeed, check out how the matrix nicely works
 		/// <para>out to [ A B] for a visual proof of the results. </para>
-		/// <para>[-B A] </para>
+		/// [-B A]
 		/// </summary>
 		public FQuat2D Concatenate(FQuat2D rHS)
 			=> E_FQuat2D_Concatenate(this, rHS);
 		
 		
 		/// <summary>
-		/// <para>Access to the underlying FVector2D that stores the complex number. </para>
+		/// Access to the underlying FVector2D that stores the complex number.
 		/// </summary>
 		public FVector2D GetVector()
 			=> E_FQuat2D_GetVector(this);
 		
 		
 		/// <summary>
-		/// <para>Invert the rotation  defined by complex numbers: </para>
+		/// Invert the rotation  defined by complex numbers:
 		/// <para>In imaginary land, an inverse is a complex conjugate, which is equivalent to reflecting about the X axis: </para>
-		/// <para>Conj(A + Bi) == A - Bi </para>
+		/// Conj(A + Bi) == A - Bi
 		/// </summary>
 		public FQuat2D Inverse()
 			=> E_FQuat2D_Inverse(this);
 		
 		
 		/// <summary>
-		/// <para>Transform a 2D point by the 2D complex number representing the rotation: </para>
+		/// Transform a 2D point by the 2D complex number representing the rotation:
 		/// <para>In imaginary land: (x + yi) * (u + vi) == (xu - yv) + (xv + yu)i </para>
-		/// <para>Looking at this as a matrix, x == cos(A), y == sin(A) </para>
+		/// Looking at this as a matrix, x == cos(A), y == sin(A)
 		/// <para>[x y] * [ cosA  sinA] == [x y] * [ u v] == [xu-yv xv+yu] </para>
-		/// <para>[-sinA  cosA]            [-v u] </para>
+		/// [-sinA  cosA]            [-v u]
 		/// <para>Looking at the above results, we see the equivalence with matrix multiplication. </para>
 		/// </summary>
 		public FVector2D TransformPoint(FVector2D point)
@@ -118,7 +118,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Vector rotation is equivalent to rotating a point. </para>
+		/// Vector rotation is equivalent to rotating a point.
 		/// </summary>
 		public FVector2D TransformVector(FVector2D vector)
 			=> E_FQuat2D_TransformVector(this, vector);

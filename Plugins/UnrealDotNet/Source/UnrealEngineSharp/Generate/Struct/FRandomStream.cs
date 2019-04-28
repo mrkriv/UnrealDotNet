@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor. </para>
+		/// Default constructor.
 		/// <para>The seed should be set prior to use. </para>
 		/// </summary>
 		public FRandomStream() :
@@ -30,9 +30,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new random stream from the specified seed value. </para>
-		/// <param name="InSeed">The seed value. </param>
+		/// Creates and initializes a new random stream from the specified seed value.
 		/// </summary>
+		/// <param name="inSeed">The seed value.</param>
 		public FRandomStream(int inSeed) :
 			base(E_CreateStruct_FRandomStream_int32(inSeed), false)
 		{
@@ -95,54 +95,54 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Exports the RandomStreams value to a string. </para>
-		/// <param name="ValueStr">Will hold the string value. </param>
-		/// <param name="DefaultValue">The default value. </param>
-		/// <param name="Parent">Not used. </param>
-		/// <param name="PortFlags">Not used. </param>
-		/// <param name="ExportRootScope">Not used. </param>
-		/// <return>true on success, false otherwise. </return>
+		/// Exports the RandomStreams value to a string.
 		/// <para>@see ImportTextItem </para>
 		/// </summary>
+		/// <param name="valueStr">Will hold the string value.</param>
+		/// <param name="defaultValue">The default value.</param>
+		/// <param name="parent">Not used.</param>
+		/// <param name="portFlags">Not used.</param>
+		/// <param name="exportRootScope">Not used.</param>
+		/// <return>true</return>
 		public bool ExportTextItem(string valueStr, FRandomStream defaultValue, UObject parent, int portFlags, UObject exportRootScope)
 			=> E_FRandomStream_ExportTextItem(this, valueStr, defaultValue, parent, portFlags, exportRootScope);
 		
 		
 		/// <summary>
-		/// <para>Mirrors the random number API in FMath </para>
-		/// <return>Random number. </return>
+		/// Mirrors the random number API in FMath
 		/// </summary>
+		/// <return>Random</return>
 		public float FRand()
 			=> E_FRandomStream_FRand(this);
 		
 		
 		/// <summary>
-		/// <para>Helper function for rand implementations. </para>
-		/// <return>A random number >= Min and <= Max </return>
+		/// Helper function for rand implementations.
 		/// </summary>
+		/// <return>A</return>
 		public float FRandRange(float inMin, float inMax)
 			=> E_FRandomStream_FRandRange(this, inMin, inMax);
 		
 		
 		/// <summary>
-		/// <para>Generates a new random seed. </para>
+		/// Generates a new random seed.
 		/// </summary>
 		public void GenerateNewSeed()
 			=> E_FRandomStream_GenerateNewSeed(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the current seed. </para>
-		/// <return>Current seed. </return>
+		/// Gets the current seed.
 		/// </summary>
+		/// <return>Current</return>
 		public int GetCurrentSeed()
 			=> E_FRandomStream_GetCurrentSeed(this);
 		
 		
 		/// <summary>
-		/// <para>Returns a random number between 0 and 1. </para>
-		/// <return>Random number. </return>
+		/// Returns a random number between 0 and 1.
 		/// </summary>
+		/// <return>Random</return>
 		public float GetFraction()
 			=> E_FRandomStream_GetFraction(this);
 		
@@ -151,69 +151,69 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns a random vector of unit size. </para>
-		/// <return>Random unit vector. </return>
+		/// Returns a random vector of unit size.
 		/// </summary>
+		/// <return>Random</return>
 		public FVector GetUnitVector()
 			=> E_FRandomStream_GetUnitVector(this);
 		
 		
 		/// <summary>
-		/// <para>Initializes this random stream with the specified seed value. </para>
-		/// <param name="InSeed">The seed value. </param>
+		/// Initializes this random stream with the specified seed value.
 		/// </summary>
+		/// <param name="inSeed">The seed value.</param>
 		public void Initialize(int inSeed)
 			=> E_FRandomStream_Initialize(this, inSeed);
 		
 		
 		/// <summary>
-		/// <para>Helper function for rand implementations. </para>
-		/// <return>A random number in [0..A) </return>
+		/// Helper function for rand implementations.
 		/// </summary>
+		/// <return>A</return>
 		public int RandHelper(int a)
 			=> E_FRandomStream_RandHelper(this, a);
 		
 		
 		/// <summary>
-		/// <para>Helper function for rand implementations. </para>
-		/// <return>A random number >= Min and <= Max </return>
+		/// Helper function for rand implementations.
 		/// </summary>
+		/// <return>A</return>
 		public int RandRange(int min, int max)
 			=> E_FRandomStream_RandRange(this, min, max);
 		
 		
 		/// <summary>
-		/// <para>Resets this random stream to the initial seed value. </para>
+		/// Resets this random stream to the initial seed value.
 		/// </summary>
 		public void Reset()
 			=> E_FRandomStream_Reset(this);
 		
 		
 		/// <summary>
-		/// <para>Returns a random vector of unit size. </para>
-		/// <return>Random unit vector. </return>
+		/// Returns a random vector of unit size.
 		/// </summary>
+		/// <return>Random</return>
 		public FVector VRand()
 			=> E_FRandomStream_VRand(this);
 		
 		
 		/// <summary>
-		/// <para>Returns a random unit vector, uniformly distributed, within the specified cone. </para>
-		/// <param name="Dir">The center direction of the cone </param>
-		/// <param name="ConeHalfAngleRad">Half-angle of cone, in radians. </param>
-		/// <return>Normalized vector within the specified cone. </return>
+		/// Returns a random unit vector, uniformly distributed, within the specified cone.
 		/// </summary>
+		/// <param name="dir">The center direction of the cone</param>
+		/// <param name="coneHalfAngleRad">Half-angle of cone, in radians.</param>
+		/// <return>Normalized</return>
 		public FVector VRandCone(FVector dir, float coneHalfAngleRad)
 			=> E_FRandomStream_VRandCone(this, dir, coneHalfAngleRad);
 		
 		
 		/// <summary>
-		/// <para>Returns a random unit vector, uniformly distributed, within the specified cone. </para>
-		/// <param name="Dir">The center direction of the cone </param>
-		/// <param name="HorizontalConeHalfAngleRad">Horizontal half-angle of cone, in radians. </param>
-		/// <param name="VerticalConeHalfAngleRad">Vertical half-angle of cone, in radians. </param>
-		/// <return>Normalized vector within the specified cone. </return>
+		/// Returns a random unit vector, uniformly distributed, within the specified cone.
 		/// </summary>
+		/// <param name="dir">The center direction of the cone</param>
+		/// <param name="horizontalConeHalfAngleRad">Horizontal half-angle of cone, in radians.</param>
+		/// <param name="verticalConeHalfAngleRad">Vertical half-angle of cone, in radians.</param>
+		/// <return>Normalized</return>
 		public FVector VRandCone(FVector dir, float horizontalConeHalfAngleRad, float verticalConeHalfAngleRad)
 			=> E_FRandomStream_VRandCone_o1(this, dir, horizontalConeHalfAngleRad, verticalConeHalfAngleRad);
 		

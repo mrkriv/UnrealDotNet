@@ -53,9 +53,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Take the BoneSpaceTransforms array (translation vector, rotation quaternion and scale vector) and update the array of component-space bone transformation matrices (SpaceBases). </para>
+		/// Take the BoneSpaceTransforms array (translation vector, rotation quaternion and scale vector) and update the array of component-space bone transformation matrices (SpaceBases).
 		/// <para>It will work down hierarchy multiplying the component-space transform of the parent by the relative transform of the child. </para>
-		/// <para>This code also applies any per-bone rotators etc. as part of the composition process </para>
+		/// This code also applies any per-bone rotators etc. as part of the composition process
 		/// </summary>
 		public void FillComponentSpaceTransforms()
 			=> E_UPoseableMeshComponent_FillComponentSpaceTransforms(this);

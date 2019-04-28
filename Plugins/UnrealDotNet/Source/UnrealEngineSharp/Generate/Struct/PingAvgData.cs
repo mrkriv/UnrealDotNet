@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor </para>
+		/// Default constructor
 		/// </summary>
 		public PingAvgData() :
 			base(E_CreateStruct_PingAvgData(), false)
@@ -41,7 +41,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The number of accumulated pings </para>
+		/// The number of accumulated pings
 		/// </summary>
 		public byte PingCount
 		{

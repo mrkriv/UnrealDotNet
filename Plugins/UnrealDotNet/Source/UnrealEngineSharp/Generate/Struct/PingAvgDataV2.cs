@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor </para>
+		/// Default constructor
 		/// </summary>
 		public PingAvgDataV2() :
 			base(E_CreateStruct_PingAvgDataV2(), false)
@@ -41,7 +41,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The average of the values in PingValues, calculated after 1s. </para>
+		/// The average of the values in PingValues, calculated after 1s.
 		/// </summary>
 		public float AvgPingV2
 		{

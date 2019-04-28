@@ -20,10 +20,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Rot">rotation </param>
-		/// <param name="Origin">about which to rotate. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="rot">rotation</param>
+		/// <param name="origin">about which to rotate.</param>
 		public FRotationAboutPointMatrix(FRotator rot, FVector origin) :
 			base(E_CreateStruct_FRotationAboutPointMatrix_FRotator_FVector(rot, origin), false)
 		{
@@ -44,14 +44,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FRotator rot, FVector origin)
 			=> E_FRotationAboutPointMatrix_Make(this, rot, origin);
 		
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FQuat rot, FVector origin)
 			=> E_FRotationAboutPointMatrix_Make_o1(this, rot, origin);

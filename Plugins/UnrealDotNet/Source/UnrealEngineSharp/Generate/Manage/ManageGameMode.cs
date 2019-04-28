@@ -22,99 +22,99 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Report that a match has failed due to unrecoverable error </para>
+		/// Report that a match has failed due to unrecoverable error
 		/// </summary>
 		public override void AbortMatch() { }
 		
 		
 		/// <summary>
-		/// <para>Add PlayerState to the inactive list, remove from the active list </para>
+		/// Add PlayerState to the inactive list, remove from the active list
 		/// </summary>
 		public override void AddInactivePlayer(APlayerState playerState, APlayerController pC) { }
 		
 		
 		/// <summary>
-		/// <para>Broadcast a string to all players. </para>
+		/// Broadcast a string to all players.
 		/// </summary>
 		public override void Broadcast(AActor sender, string msg, string type) { }
 		
 		
 		/// <summary>
-		/// <para>Transition from InProgress to WaitingPostMatch. You can call this manually, will also get called if ReadyToEndMatch returns true </para>
+		/// Transition from InProgress to WaitingPostMatch. You can call this manually, will also get called if ReadyToEndMatch returns true
 		/// </summary>
 		public override void EndMatch() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the match transitions to LeavingMap </para>
+		/// Called when the match transitions to LeavingMap
 		/// </summary>
 		protected override void HandleLeavingMap() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the match transitions to Aborted </para>
+		/// Called when the match transitions to Aborted
 		/// </summary>
 		protected override void HandleMatchAborted() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the map transitions to WaitingPostMatch </para>
+		/// Called when the map transitions to WaitingPostMatch
 		/// </summary>
 		protected override void HandleMatchHasEnded() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to InProgress </para>
+		/// Called when the state transitions to InProgress
 		/// </summary>
 		protected override void HandleMatchHasStarted() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to WaitingToStart </para>
+		/// Called when the state transitions to WaitingToStart
 		/// </summary>
 		protected override void HandleMatchIsWaitingToStart() { }
 		
 		
 		/// <summary>
-		/// <para>Called when this PC is in cinematic mode, and its matinee is canceled by the user. </para>
+		/// Called when this PC is in cinematic mode, and its matinee is canceled by the user.
 		/// </summary>
 		public override void MatineeCancelled() { }
 		
 		
 		/// <summary>
-		/// <para>Overridable virtual function to dispatch the appropriate transition functions before GameState and Blueprints get SetMatchState calls. </para>
+		/// Overridable virtual function to dispatch the appropriate transition functions before GameState and Blueprints get SetMatchState calls.
 		/// </summary>
 		protected override void OnMatchStateSet() { }
 		
 		
 		/// <summary>
-		/// <para>Override PC's PlayerState with the values in OldPlayerState as part of the inactive player handling </para>
+		/// Override PC's PlayerState with the values in OldPlayerState as part of the inactive player handling
 		/// </summary>
 		public override void OverridePlayerState(APlayerController pC, APlayerState oldPlayerState) { }
 		
 		
 		/// <summary>
-		/// <para>Called from CommitMapChange after unloading previous level and loading new level+sublevels. Used for asynchronous level streaming </para>
+		/// Called from CommitMapChange after unloading previous level and loading new level+sublevels. Used for asynchronous level streaming
 		/// </summary>
 		public override void PostCommitMapChange() { }
 		
 		
 		/// <summary>
-		/// <para>Called from CommitMapChange before unloading previous level. Used for asynchronous level streaming </para>
-		/// <param name="PreviousMapName">Name of the previous persistent level </param>
-		/// <param name="NextMapName">Name of the persistent level being streamed to </param>
+		/// Called from CommitMapChange before unloading previous level. Used for asynchronous level streaming
 		/// </summary>
+		/// <param name="previousMapName">Name of the previous persistent level</param>
+		/// <param name="nextMapName">Name of the persistent level being streamed to</param>
 		public override void PreCommitMapChange(string previousMapName, string nextMapName) { }
 		
 		
 		/// <summary>
-		/// <para>Restart the game, by default travel to the current map </para>
+		/// Restart the game, by default travel to the current map
 		/// </summary>
 		public override void RestartGame() { }
 		
 		
 		/// <summary>
-		/// <para>Exec command to broadcast a string to all players </para>
+		/// Exec command to broadcast a string to all players
 		/// </summary>
 		public override void Say(string msg) { }
 		
@@ -124,19 +124,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Updates the match state and calls the appropriate transition functions </para>
+		/// Updates the match state and calls the appropriate transition functions
 		/// </summary>
 		protected override void SetMatchState(string newState) { }
 		
 		
 		/// <summary>
-		/// <para>SetViewTarget of player control on server change </para>
+		/// SetViewTarget of player control on server change
 		/// </summary>
 		public override void SetSeamlessTravelViewTarget(APlayerController pC) { }
 		
 		
 		/// <summary>
-		/// <para>Transition from WaitingToStart to InProgress. You can call this manually, will also get called if ReadyToStartMatch returns true </para>
+		/// Transition from WaitingToStart to InProgress. You can call this manually, will also get called if ReadyToStartMatch returns true
 		/// </summary>
 		public override void StartMatch() { }
 		

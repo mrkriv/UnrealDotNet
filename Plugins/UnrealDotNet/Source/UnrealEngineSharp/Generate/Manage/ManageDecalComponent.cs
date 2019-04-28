@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Called when the life span of the decal has been exceeded </para>
+		/// Called when the life span of the decal has been exceeded
 		/// </summary>
 		protected override void LifeSpanCallback() { }
 		

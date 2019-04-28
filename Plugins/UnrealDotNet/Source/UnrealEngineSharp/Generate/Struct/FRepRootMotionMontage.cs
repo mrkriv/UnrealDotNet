@@ -129,14 +129,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Clear root motion sources and root motion montage </para>
+		/// Clear root motion sources and root motion montage
 		/// </summary>
 		public void Clear()
 			=> E_FRepRootMotionMontage_Clear(this);
 		
 		
 		/// <summary>
-		/// <para>Is Valid - animation root motion only </para>
+		/// Is Valid - animation root motion only
 		/// </summary>
 		public bool HasRootMotion()
 			=> E_FRepRootMotionMontage_HasRootMotion(this);

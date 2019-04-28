@@ -20,11 +20,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Scale">scale to apply to matrix </param>
-		/// <param name="Rot">rotation </param>
-		/// <param name="Origin">translation to apply </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="scale">scale to apply to matrix</param>
+		/// <param name="rot">rotation</param>
+		/// <param name="origin">translation to apply</param>
 		public FScaleRotationTranslationMatrix(FVector scale, FRotator rot, FVector origin) :
 			base(E_CreateStruct_FScaleRotationTranslationMatrix_FVector_FRotator_FVector(scale, rot, origin), false)
 		{

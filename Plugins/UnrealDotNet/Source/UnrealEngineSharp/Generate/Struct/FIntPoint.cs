@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FIntPoint() :
 			base(E_CreateStruct_FIntPoint(), false)
@@ -29,10 +29,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Create and initialize a new instance with the specified coordinates. </para>
-		/// <param name="InX">The x-coordinate. </param>
-		/// <param name="InY">The y-coordinate. </param>
+		/// Create and initialize a new instance with the specified coordinates.
 		/// </summary>
+		/// <param name="inX">The x-coordinate.</param>
+		/// <param name="inY">The y-coordinate.</param>
 		public FIntPoint(int inX, int inY) :
 			base(E_CreateStruct_FIntPoint_int32_int32(inX, inY), false)
 		{
@@ -60,7 +60,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the point's x-coordinate. </para>
+		/// Holds the point's x-coordinate.
 		/// </summary>
 		public int X
 		{
@@ -70,7 +70,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the point's y-coordinate. </para>
+		/// Holds the point's y-coordinate.
 		/// </summary>
 		public int Y
 		{

@@ -22,25 +22,25 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Tear down all delegates used to manage online sessions. </para>
+		/// Tear down all delegates used to manage online sessions.
 		/// </summary>
 		public override void ClearOnlineDelegates() { }
 		
 		
 		/// <summary>
-		/// <para>End the online session specified </para>
+		/// End the online session specified
 		/// </summary>
 		public override void EndOnlineSession(string sessionName) { }
 		
 		
 		/// <summary>
-		/// <para>Register all delegates needed to manage online sessions. </para>
+		/// Register all delegates needed to manage online sessions.
 		/// </summary>
 		public override void RegisterOnlineDelegates() { }
 		
 		
 		/// <summary>
-		/// <para>Start the online session specified </para>
+		/// Start the online session specified
 		/// </summary>
 		public override void StartOnlineSession(string sessionName) { }
 		

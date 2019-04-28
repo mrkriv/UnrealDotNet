@@ -58,7 +58,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Render the scene to the texture target immediately. </para>
+		/// Render the scene to the texture target immediately.
 		/// <para>This should not be used if bCaptureEveryFrame is enabled, or the scene capture will render redundantly. </para>
 		/// </summary>
 		public void CaptureScene()
@@ -66,7 +66,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Render the scene to the texture the next time the main view is rendered. </para>
+		/// Render the scene to the texture the next time the main view is rendered.
 		/// </summary>
 		public void CaptureSceneDeferred()
 			=> E_USceneCaptureComponentCube_CaptureSceneDeferred(this);

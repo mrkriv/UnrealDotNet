@@ -9,10 +9,10 @@ namespace UnrealEngine
     public partial class UInputComponent
     {
         [DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void E_UInputComponent_BindAction(IntPtr Ptr, uint eventId, string actionName, EInputEvent keyEvent);
+        private static extern void E_UInputComponent_BindAction(IntPtr ptr, uint eventId, string actionName, EInputEvent keyEvent);
         
         [DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void E_UInputComponent_BindAxis_Event(IntPtr Ptr, uint eventId, string axisName);
+        private static extern void E_UInputComponent_BindAxis_Event(IntPtr ptr, uint eventId, string axisName);
 
         public void BindAction(string actionName, EInputEvent keyEvent, Action callback)
         {

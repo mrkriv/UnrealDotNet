@@ -50,7 +50,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Adjust capture transition distance </para>
+		/// Adjust capture transition distance
 		/// </summary>
 		public float BoxTransitionDistance
 		{

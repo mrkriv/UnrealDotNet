@@ -22,40 +22,40 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Called via input to look up at a given rate (or down if Rate is negative). </para>
-		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// Called via input to look up at a given rate (or down if Rate is negative).
 		/// </summary>
+		/// <param name="rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate</param>
 		public override void LookUpAtRate(float rate) { }
 		
 		
 		/// <summary>
-		/// <para>Input callback to move forward in local space (or backward if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the forward direction (or backward if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to move forward in local space (or backward if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the forward direction (or backward if negative).</param>
 		public override void MoveForward(float val) { }
 		
 		
 		/// <summary>
-		/// <para>Input callback to strafe right in local space (or left if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the right direction (or left if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to strafe right in local space (or left if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the right direction (or left if negative).</param>
 		public override void MoveRight(float val) { }
 		
 		
 		/// <summary>
-		/// <para>Input callback to move up in world space (or down if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the world up direction (or down if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to move up in world space (or down if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the world up direction (or down if negative).</param>
 		public override void MoveUp_World(float val) { }
 		
 		
 		/// <summary>
-		/// <para>Called via input to turn at a given rate. </para>
-		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// Called via input to turn at a given rate.
 		/// </summary>
+		/// <param name="rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate</param>
 		public override void TurnAtRate(float rate) { }
 		
 		public static implicit operator IntPtr(ManageDefaultPawn self)

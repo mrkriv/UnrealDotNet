@@ -97,7 +97,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>How much to directly lerp to the correct angle. </para>
+		/// How much to directly lerp to the correct angle.
 		/// </summary>
 		public float AngleLerp
 		{
@@ -107,7 +107,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>This is the angular analog to LinearVelocityCoefficient. </para>
+		/// This is the angular analog to LinearVelocityCoefficient.
 		/// </summary>
 		public float AngularVelocityCoefficient
 		{
@@ -117,9 +117,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If the body has moved less than the square root of </para>
+		/// If the body has moved less than the square root of
 		/// <para>this amount towards a resolved state in the previous </para>
-		/// <para>frame, then error may accumulate towards a hard snap. </para>
+		/// frame, then error may accumulate towards a hard snap.
 		/// </summary>
 		public float ErrorAccumulationDistanceSq
 		{
@@ -129,7 +129,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Number of seconds to remain in a heuristically </para>
+		/// Number of seconds to remain in a heuristically
 		/// <para>unresolveable state before hard snapping. </para>
 		/// </summary>
 		public float ErrorAccumulationSeconds
@@ -140,9 +140,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If the previous error projected onto the current error </para>
+		/// If the previous error projected onto the current error
 		/// <para>is greater than this value (indicating "similarity" </para>
-		/// <para>between states), then error may accumulate towards a </para>
+		/// between states), then error may accumulate towards a
 		/// <para>hard snap. </para>
 		/// </summary>
 		public float ErrorAccumulationSimilarity
@@ -153,7 +153,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Error per degree </para>
+		/// Error per degree
 		/// </summary>
 		public float ErrorPerAngularDifference
 		{
@@ -163,7 +163,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Error per centimeter </para>
+		/// Error per centimeter
 		/// </summary>
 		public float ErrorPerLinearDifference
 		{
@@ -173,9 +173,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>This is the coefficient `k` in the differential equation: </para>
+		/// This is the coefficient `k` in the differential equation:
 		/// <para>dx/dt = k ( x_target(t) - x(t) ), which is used to update </para>
-		/// <para>the velocity in a replication step. </para>
+		/// the velocity in a replication step.
 		/// </summary>
 		public float LinearVelocityCoefficient
 		{
@@ -191,7 +191,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum allowable error for a state to be considered "resolved" </para>
+		/// Maximum allowable error for a state to be considered "resolved"
 		/// </summary>
 		public float MaxRestoredStateError
 		{
@@ -201,7 +201,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Value between 0 and 1 which indicates how much velocity </para>
+		/// Value between 0 and 1 which indicates how much velocity
 		/// <para>and ping based correction to use </para>
 		/// </summary>
 		public float PingExtrapolation
@@ -212,7 +212,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>For the purpose of extrapolation, ping will be clamped to this value </para>
+		/// For the purpose of extrapolation, ping will be clamped to this value
 		/// </summary>
 		public float PingLimit
 		{
@@ -222,9 +222,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How much to directly lerp to the correct position. Generally </para>
+		/// How much to directly lerp to the correct position. Generally
 		/// <para>this should be very low, if not zero. A higher value will </para>
-		/// <para>increase precision along with jerkiness. </para>
+		/// increase precision along with jerkiness.
 		/// </summary>
 		public float PositionLerp
 		{

@@ -127,17 +127,17 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Static: Removes any special URL characters from the specified string </para>
-		/// <param name="Str">String to be filtered </param>
+		/// Static: Removes any special URL characters from the specified string
 		/// </summary>
+		/// <param name="str">String to be filtered</param>
 		public void FilterURLString(string str)
 			=> E_FURL_FilterURLString(this, str);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this URL corresponds to an internal object, i.e. an Unreal </para>
+		/// Returns whether this URL corresponds to an internal object, i.e. an Unreal
 		/// <para>level which this app can try to connect to locally or on the net. If this </para>
-		/// <para>is false, the URL refers to an object that a remote application like Internet </para>
+		/// is false, the URL refers to an object that a remote application like Internet
 		/// <para>Explorer can execute. </para>
 		/// </summary>
 		public bool IsInternal()
@@ -145,7 +145,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns whether this URL corresponds to an internal object on this local </para>
+		/// Returns whether this URL corresponds to an internal object on this local
 		/// <para>process. In this case, no Internet use is necessary. </para>
 		/// </summary>
 		public bool IsLocalInternal()

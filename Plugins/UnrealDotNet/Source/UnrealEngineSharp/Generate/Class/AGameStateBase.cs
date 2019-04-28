@@ -94,7 +94,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Instance of the current game mode, exists only on the server. For non-authority clients, this will be NULL. </para>
+		/// Instance of the current game mode, exists only on the server. For non-authority clients, this will be NULL.
 		/// </summary>
 		public AGameModeBase AuthorityGameMode
 		{
@@ -107,63 +107,63 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add PlayerState to the PlayerArray </para>
+		/// Add PlayerState to the PlayerArray
 		/// </summary>
 		public virtual void AddPlayerState(APlayerState playerState)
 			=> E_AGameStateBase_AddPlayerState(this, playerState);
 		
 		
 		/// <summary>
-		/// <para>Allow game states to react to asset packages being loaded asynchronously </para>
+		/// Allow game states to react to asset packages being loaded asynchronously
 		/// </summary>
 		public virtual void AsyncPackageLoaded(UObject package)
 			=> E_AGameStateBase_AsyncPackageLoaded(this, package);
 		
 		
 		/// <summary>
-		/// <para>Helper to return the default object of the GameModeBase class corresponding to this GameState. This object is not safe to modify. </para>
+		/// Helper to return the default object of the GameModeBase class corresponding to this GameState. This object is not safe to modify.
 		/// </summary>
 		public AGameModeBase GetDefaultGameMode()
 			=> E_AGameStateBase_GetDefaultGameMode(this);
 		
 		
 		/// <summary>
-		/// <para>Returns how much time needs to be spent before a player can respawn </para>
+		/// Returns how much time needs to be spent before a player can respawn
 		/// </summary>
 		public virtual float GetPlayerRespawnDelay(AController controller)
 			=> E_AGameStateBase_GetPlayerRespawnDelay(this, controller);
 		
 		
 		/// <summary>
-		/// <para>Returns the time that should be used as when a player started </para>
+		/// Returns the time that should be used as when a player started
 		/// </summary>
 		public virtual float GetPlayerStartTime(AController controller)
 			=> E_AGameStateBase_GetPlayerStartTime(this, controller);
 		
 		
 		/// <summary>
-		/// <para>Returns the simulated TimeSeconds on the server, will be synchronized on client and server </para>
+		/// Returns the simulated TimeSeconds on the server, will be synchronized on client and server
 		/// </summary>
 		public virtual float GetServerWorldTimeSeconds()
 			=> E_AGameStateBase_GetServerWorldTimeSeconds(this);
 		
 		
 		/// <summary>
-		/// <para>Called by game mode to set the started play bool </para>
+		/// Called by game mode to set the started play bool
 		/// </summary>
 		public virtual void HandleBeginPlay()
 			=> E_AGameStateBase_HandleBeginPlay(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the world has started play (called BeginPlay on actors) </para>
+		/// Returns true if the world has started play (called BeginPlay on actors)
 		/// </summary>
 		public virtual bool HasBegunPlay()
 			=> E_AGameStateBase_HasBegunPlay(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the world has started match (called MatchStarted callbacks) </para>
+		/// Returns true if the world has started match (called MatchStarted callbacks)
 		/// </summary>
 		public virtual bool HasMatchStarted()
 			=> E_AGameStateBase_HasMatchStarted(this);
@@ -182,35 +182,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when the GameClass property is set (at startup for the server, after the variable has been replicated on clients) </para>
+		/// Called when the GameClass property is set (at startup for the server, after the variable has been replicated on clients)
 		/// </summary>
 		public virtual void ReceivedGameModeClass()
 			=> E_AGameStateBase_ReceivedGameModeClass(this);
 		
 		
 		/// <summary>
-		/// <para>Called when the SpectatorClass property is set (at startup for the server, after the variable has been replicated on clients) </para>
+		/// Called when the SpectatorClass property is set (at startup for the server, after the variable has been replicated on clients)
 		/// </summary>
 		public virtual void ReceivedSpectatorClass()
 			=> E_AGameStateBase_ReceivedSpectatorClass(this);
 		
 		
 		/// <summary>
-		/// <para>Remove PlayerState from the PlayerArray. </para>
+		/// Remove PlayerState from the PlayerArray.
 		/// </summary>
 		public virtual void RemovePlayerState(APlayerState playerState)
 			=> E_AGameStateBase_RemovePlayerState(this, playerState);
 		
 		
 		/// <summary>
-		/// <para>Called during seamless travel transition twice (once when the transition map is loaded, once when destination map is loaded) </para>
+		/// Called during seamless travel transition twice (once when the transition map is loaded, once when destination map is loaded)
 		/// </summary>
 		public virtual void SeamlessTravelTransitionCheckpoint(bool bToTransitionMap)
 			=> E_AGameStateBase_SeamlessTravelTransitionCheckpoint(this, bToTransitionMap);
 		
 		
 		/// <summary>
-		/// <para>Called periodically to update ReplicatedWorldTimeSeconds </para>
+		/// Called periodically to update ReplicatedWorldTimeSeconds
 		/// </summary>
 		protected virtual void UpdateServerTimeSeconds()
 			=> E_AGameStateBase_UpdateServerTimeSeconds(this);

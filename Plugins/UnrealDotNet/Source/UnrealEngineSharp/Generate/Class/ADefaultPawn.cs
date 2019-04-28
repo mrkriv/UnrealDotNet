@@ -75,7 +75,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Base lookup rate, in deg/sec. Other scaling may affect final lookup rate. </para>
+		/// Base lookup rate, in deg/sec. Other scaling may affect final lookup rate.
 		/// </summary>
 		public float BaseLookUpRate
 		{
@@ -85,7 +85,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Base turn rate, in deg/sec. Other scaling may affect final turn rate. </para>
+		/// Base turn rate, in deg/sec. Other scaling may affect final turn rate.
 		/// </summary>
 		public float BaseTurnRate
 		{
@@ -95,7 +95,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Name of the CollisionComponent. </para>
+		/// Name of the CollisionComponent.
 		/// </summary>
 		public static string CollisionComponentName
 		{
@@ -104,7 +104,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Name of the MeshComponent. Use this name if you want to prevent creation of the component (with ObjectInitializer.DoNotCreateDefaultSubobject). </para>
+		/// Name of the MeshComponent. Use this name if you want to prevent creation of the component (with ObjectInitializer.DoNotCreateDefaultSubobject).
 		/// </summary>
 		public static string MeshComponentName
 		{
@@ -113,7 +113,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Name of the MovementComponent.  Use this name if you want to use a different class (with ObjectInitializer.SetDefaultSubobjectClass). </para>
+		/// Name of the MovementComponent.  Use this name if you want to use a different class (with ObjectInitializer.SetDefaultSubobjectClass).
 		/// </summary>
 		public static string MovementComponentName
 		{
@@ -125,58 +125,58 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns CollisionComponent subobject </para>
+		/// Returns CollisionComponent subobject
 		/// </summary>
 		public USphereComponent GetCollisionComponent()
 			=> E_ADefaultPawn_GetCollisionComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Returns MeshComponent subobject </para>
+		/// Returns MeshComponent subobject
 		/// </summary>
 		public UStaticMeshComponent GetMeshComponent()
 			=> E_ADefaultPawn_GetMeshComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Called via input to look up at a given rate (or down if Rate is negative). </para>
-		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// Called via input to look up at a given rate (or down if Rate is negative).
 		/// </summary>
+		/// <param name="rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate</param>
 		public virtual void LookUpAtRate(float rate)
 			=> E_ADefaultPawn_LookUpAtRate(this, rate);
 		
 		
 		/// <summary>
-		/// <para>Input callback to move forward in local space (or backward if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the forward direction (or backward if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to move forward in local space (or backward if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the forward direction (or backward if negative).</param>
 		public virtual void MoveForward(float val)
 			=> E_ADefaultPawn_MoveForward(this, val);
 		
 		
 		/// <summary>
-		/// <para>Input callback to strafe right in local space (or left if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the right direction (or left if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to strafe right in local space (or left if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the right direction (or left if negative).</param>
 		public virtual void MoveRight(float val)
 			=> E_ADefaultPawn_MoveRight(this, val);
 		
 		
 		/// <summary>
-		/// <para>Input callback to move up in world space (or down if Val is negative). </para>
-		/// <param name="Val">Amount of movement in the world up direction (or down if negative). </param>
-		/// <para>@see APawn::AddMovementInput() </para>
+		/// Input callback to move up in world space (or down if Val is negative).
+		/// <see cref="APawn"/>
 		/// </summary>
+		/// <param name="val">Amount of movement in the world up direction (or down if negative).</param>
 		public virtual void MoveUp_World(float val)
 			=> E_ADefaultPawn_MoveUp_World(this, val);
 		
 		
 		/// <summary>
-		/// <para>Called via input to turn at a given rate. </para>
-		/// <param name="Rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate </param>
+		/// Called via input to turn at a given rate.
 		/// </summary>
+		/// <param name="rate">This is a normalized rate, i.e. 1.0 means 100% of desired turn rate</param>
 		public virtual void TurnAtRate(float rate)
 			=> E_ADefaultPawn_TurnAtRate(this, rate);
 		

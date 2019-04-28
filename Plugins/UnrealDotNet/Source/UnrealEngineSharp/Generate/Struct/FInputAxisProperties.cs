@@ -52,7 +52,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Inverts reported values for this axis </para>
+		/// Inverts reported values for this axis
 		/// </summary>
 		public byte bInvert
 		{
@@ -62,7 +62,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>What the dead zone of the axis is.  For control axes such as analog sticks. </para>
+		/// What the dead zone of the axis is.  For control axes such as analog sticks.
 		/// </summary>
 		public float DeadZone
 		{
@@ -72,7 +72,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>For applying curves to [0..1] axes, e.g. analog sticks </para>
+		/// For applying curves to [0..1] axes, e.g. analog sticks
 		/// </summary>
 		public float Exponent
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scaling factor to multiply raw value by. </para>
+		/// Scaling factor to multiply raw value by.
 		/// </summary>
 		public float Sensitivity
 		{

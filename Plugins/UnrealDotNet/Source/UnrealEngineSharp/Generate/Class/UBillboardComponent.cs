@@ -96,7 +96,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Change the sprite's UVs </para>
+		/// Change the sprite's UVs
 		/// </summary>
 		public virtual void SetUV(int newU, int newUL, int newV, int newVL)
 			=> E_UBillboardComponent_SetUV(this, newU, newUL, newV, newVL);

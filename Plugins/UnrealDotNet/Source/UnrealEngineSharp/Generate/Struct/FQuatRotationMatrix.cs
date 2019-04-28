@@ -20,9 +20,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="Q">rotation </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="q">rotation</param>
 		public FQuatRotationMatrix(FQuat q) :
 			base(E_CreateStruct_FQuatRotationMatrix_FQuat(q), false)
 		{
@@ -40,7 +40,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FQuat q)
 			=> E_FQuatRotationMatrix_Make(this, q);

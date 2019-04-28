@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Current number of UObject slots </para>
+		/// Current number of UObject slots
 		/// </summary>
 		public FFixedUObjectArray() :
 			base(E_CreateStruct_FFixedUObjectArray(), false)

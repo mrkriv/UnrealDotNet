@@ -52,7 +52,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The name of the bone associated with the closest body </para>
+		/// The name of the bone associated with the closest body
 		/// </summary>
 		public string BoneName
 		{
@@ -62,7 +62,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The closest point in world space </para>
+		/// The closest point in world space
 		/// </summary>
 		public FVector ClosestWorldPosition
 		{
@@ -72,7 +72,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The distance of the closest point and the original world position. 0 Indicates world position is inside the closest body. </para>
+		/// The distance of the closest point and the original world position. 0 Indicates world position is inside the closest body.
 		/// </summary>
 		public float Distance
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The normal associated with the surface of the closest body </para>
+		/// The normal associated with the surface of the closest body
 		/// </summary>
 		public FVector Normal
 		{

@@ -49,7 +49,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Default time that lines/points will draw for </para>
+		/// Default time that lines/points will draw for
 		/// </summary>
 		public float DefaultLifeTime
 		{
@@ -68,7 +68,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Clear all batched lines, points and meshes </para>
+		/// Clear all batched lines, points and meshes
 		/// </summary>
 		public void Flush()
 			=> E_ULineBatchComponent_Flush(this);

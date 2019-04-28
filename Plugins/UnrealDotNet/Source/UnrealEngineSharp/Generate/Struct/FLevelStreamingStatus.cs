@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructors </para>
+		/// Constructors
 		/// </summary>
 		public FLevelStreamingStatus(string inPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int inLODIndex) :
 			base(E_CreateStruct_FLevelStreamingStatus_FName_bool_bool_int32(inPackageName, bInShouldBeLoaded, bInShouldBeVisible, inLODIndex), false)

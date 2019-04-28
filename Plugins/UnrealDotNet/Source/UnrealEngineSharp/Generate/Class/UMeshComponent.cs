@@ -68,14 +68,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Retrieves all the (scalar/vector-)parameters from within the used materials on the SkeletalMesh, and stores material index vs parameter names </para>
+		/// Retrieves all the (scalar/vector-)parameters from within the used materials on the SkeletalMesh, and stores material index vs parameter names
 		/// </summary>
 		protected void CacheMaterialParameterNameIndices()
 			=> E_UMeshComponent_CacheMaterialParameterNameIndices(this);
 		
 		
 		/// <summary>
-		/// <para>This empties all override materials and used by editor when replacing preview mesh </para>
+		/// This empties all override materials and used by editor when replacing preview mesh
 		/// </summary>
 		public void EmptyOverrideMaterials()
 			=> E_UMeshComponent_EmptyOverrideMaterials(this);
@@ -85,16 +85,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns override Materials count </para>
+		/// Returns override Materials count
 		/// </summary>
 		public virtual int GetNumOverrideMaterials()
 			=> E_UMeshComponent_GetNumOverrideMaterials(this);
 		
 		
 		/// <summary>
-		/// <para>Returns default value for the parameter input. </para>
+		/// Returns default value for the parameter input.
 		/// <para>NOTE: This is not reliable when cooking, as initializing the default value </para>
-		/// <para>requires a render resource that only exists if the owning world is rendering. </para>
+		/// requires a render resource that only exists if the owning world is rendering.
 		/// </summary>
 		public float GetScalarParameterDefaultValue(string parameterName)
 			=> E_UMeshComponent_GetScalarParameterDefaultValue(this, parameterName);
@@ -104,39 +104,39 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Mark cache parameters map as dirty, cache will be rebuild once SetScalar/SetVector functions are called </para>
+		/// Mark cache parameters map as dirty, cache will be rebuild once SetScalar/SetVector functions are called
 		/// </summary>
 		protected void MarkCachedMaterialParameterNameIndicesDirty()
 			=> E_UMeshComponent_MarkCachedMaterialParameterNameIndicesDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Tell the streaming system to start loading all textures with all mip-levels. </para>
-		/// <param name="Seconds">Number of seconds to force all mip-levels to be resident </param>
-		/// <param name="bPrioritizeCharacterTextures">Whether character textures should be prioritized for a while by the streaming system </param>
-		/// <param name="CinematicTextureGroups">Bitfield indicating which texture groups that use extra high-resolution mips </param>
+		/// Tell the streaming system to start loading all textures with all mip-levels.
 		/// </summary>
+		/// <param name="seconds">Number of seconds to force all mip-levels to be resident</param>
+		/// <param name="bPrioritizeCharacterTextures">Whether character textures should be prioritized for a while by the streaming system</param>
+		/// <param name="cinematicTextureGroups">Bitfield indicating which texture groups that use extra high-resolution mips</param>
 		public virtual void PrestreamTextures(float seconds, bool bPrioritizeCharacterTextures, int cinematicTextureGroups)
 			=> E_UMeshComponent_PrestreamTextures(this, seconds, bPrioritizeCharacterTextures, cinematicTextureGroups);
 		
 		
 		/// <summary>
-		/// <para>Set all occurrences of Scalar Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
+		/// Set all occurrences of Scalar Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue
 		/// </summary>
 		public void SetScalarParameterValueOnMaterials(string parameterName, float parameterValue)
 			=> E_UMeshComponent_SetScalarParameterValueOnMaterials(this, parameterName, parameterValue);
 		
 		
 		/// <summary>
-		/// <para>Tell the streaming system whether or not all mip levels of all textures used by this component should be loaded and remain loaded. </para>
-		/// <param name="bForceMiplevelsToBeResident">Whether textures should be forced to be resident or not. </param>
+		/// Tell the streaming system whether or not all mip levels of all textures used by this component should be loaded and remain loaded.
 		/// </summary>
+		/// <param name="bForceMiplevelsToBeResident">Whether textures should be forced to be resident or not.</param>
 		public virtual void SetTextureForceResidentFlag(bool bForceMiplevelsToBeResident)
 			=> E_UMeshComponent_SetTextureForceResidentFlag(this, bForceMiplevelsToBeResident);
 		
 		
 		/// <summary>
-		/// <para>Set all occurrences of Vector Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue </para>
+		/// Set all occurrences of Vector Material Parameters with ParameterName in the set of materials of the SkeletalMesh to ParameterValue
 		/// </summary>
 		public void SetVectorParameterValueOnMaterials(string parameterName, FVector parameterValue)
 			=> E_UMeshComponent_SetVectorParameterValueOnMaterials(this, parameterName, parameterValue);

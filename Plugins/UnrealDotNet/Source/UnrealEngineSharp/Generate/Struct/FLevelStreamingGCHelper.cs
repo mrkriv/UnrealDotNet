@@ -44,21 +44,21 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Register with the garbage collector to receive callbacks pre and post garbage collection </para>
+		/// Register with the garbage collector to receive callbacks pre and post garbage collection
 		/// </summary>
 		public void AddGarbageCollectorCallback()
 			=> E_FLevelStreamingGCHelper_AddGarbageCollectorCallback(this);
 		
 		
 		/// <summary>
-		/// <return>The number of levels pending a purge by the garbage collector </return>
 		/// </summary>
+		/// <return>The</return>
 		public int GetNumLevelsPendingPurge()
 			=> E_FLevelStreamingGCHelper_GetNumLevelsPendingPurge(this);
 		
 		
 		/// <summary>
-		/// <para>Prepares levels that are marked for unload for the GC call by marking their actors and components as </para>
+		/// Prepares levels that are marked for unload for the GC call by marking their actors and components as
 		/// <para>pending kill. </para>
 		/// </summary>
 		public void PrepareStreamedOutLevelsForGC()
@@ -66,7 +66,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Verify that the level packages are no longer around. </para>
+		/// Verify that the level packages are no longer around.
 		/// </summary>
 		public void VerifyLevelsGotRemovedByGC()
 			=> E_FLevelStreamingGCHelper_VerifyLevelsGotRemovedByGC(this);

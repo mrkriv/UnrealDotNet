@@ -197,9 +197,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to enable Volumetric fog.  Scalability settings control the resolution of the fog simulation. </para>
+		/// Whether to enable Volumetric fog.  Scalability settings control the resolution of the fog simulation.
 		/// <para>Note that Volumetric fog currently does not support StartDistance, FogMaxOpacity and FogCutoffDistance. </para>
-		/// <para>Volumetric fog also can't match exponential height fog in general as exponential height fog has non-physical behavior. </para>
+		/// Volumetric fog also can't match exponential height fog in general as exponential height fog has non-physical behavior.
 		/// </summary>
 		public bool VolumetricFog
 		{
@@ -209,9 +209,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to use FogInscatteringColor for the Sky Light volumetric scattering color and DirectionalInscatteringColor for the Directional Light scattering color. </para>
+		/// Whether to use FogInscatteringColor for the Sky Light volumetric scattering color and DirectionalInscatteringColor for the Directional Light scattering color.
 		/// <para>Make sure your directional light has 'Atmosphere Sun Light' enabled! </para>
-		/// <para>Enabling this allows Volumetric fog to better match Height fog in the distance, but produces non-physical volumetric lighting that may not match surface lighting. </para>
+		/// Enabling this allows Volumetric fog to better match Height fog in the distance, but produces non-physical volumetric lighting that may not match surface lighting.
 		/// </summary>
 		public bool bOverrideLightColorsWithFogInscatteringColors
 		{
@@ -221,7 +221,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the color of the directional inscattering, which is used to approximate inscattering from a directional light. </para>
+		/// Controls the color of the directional inscattering, which is used to approximate inscattering from a directional light.
 		/// <para>Note: there must be a directional light with bUsedAsAtmosphereSunLight enabled for DirectionalInscattering to be used. </para>
 		/// </summary>
 		public FLinearColor DirectionalInscatteringColor
@@ -232,7 +232,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the size of the directional inscattering cone, which is used to approximate inscattering from a directional light. </para>
+		/// Controls the size of the directional inscattering cone, which is used to approximate inscattering from a directional light.
 		/// <para>Note: there must be a directional light with bUsedAsAtmosphereSunLight enabled for DirectionalInscattering to be used. </para>
 		/// </summary>
 		public float DirectionalInscatteringExponent
@@ -243,7 +243,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the start distance from the viewer of the directional inscattering, which is used to approximate inscattering from a directional light. </para>
+		/// Controls the start distance from the viewer of the directional inscattering, which is used to approximate inscattering from a directional light.
 		/// <para>Note: there must be a directional light with bUsedAsAtmosphereSunLight enabled for DirectionalInscattering to be used. </para>
 		/// </summary>
 		public float DirectionalInscatteringStartDistance
@@ -254,7 +254,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scene elements past this distance will not have fog applied.  This is useful for excluding skyboxes which already have fog baked in. </para>
+		/// Scene elements past this distance will not have fog applied.  This is useful for excluding skyboxes which already have fog baked in.
 		/// </summary>
 		public float FogCutoffDistance
 		{
@@ -264,7 +264,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Global density factor. </para>
+		/// Global density factor.
 		/// </summary>
 		public float FogDensity
 		{
@@ -274,7 +274,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Height density factor, controls how the density increases as height decreases. </para>
+		/// Height density factor, controls how the density increases as height decreases.
 		/// <para>Smaller values make the visible transition larger. </para>
 		/// </summary>
 		public float FogHeightFalloff
@@ -291,9 +291,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum opacity of the fog. </para>
+		/// Maximum opacity of the fog.
 		/// <para>A value of 1 means the fog can become fully opaque at a distance and replace scene color completely, </para>
-		/// <para>A value of 0 means the fog color will not be factored in at all. </para>
+		/// A value of 0 means the fog color will not be factored in at all.
 		/// </summary>
 		public float FogMaxOpacity
 		{
@@ -303,7 +303,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance at which InscatteringColorCubemap should be used directly for the Inscattering Color. </para>
+		/// Distance at which InscatteringColorCubemap should be used directly for the Inscattering Color.
 		/// </summary>
 		public float FullyDirectionalInscatteringColorDistance
 		{
@@ -313,7 +313,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Angle to rotate the InscatteringColorCubemap around the Z axis. </para>
+		/// Angle to rotate the InscatteringColorCubemap around the Z axis.
 		/// </summary>
 		public float InscatteringColorCubemapAngle
 		{
@@ -323,7 +323,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Tint color used when InscatteringColorCubemap is specified, for quick edits without having to reimport InscatteringColorCubemap. </para>
+		/// Tint color used when InscatteringColorCubemap is specified, for quick edits without having to reimport InscatteringColorCubemap.
 		/// </summary>
 		public FLinearColor InscatteringTextureTint
 		{
@@ -333,7 +333,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance at which only the average color of InscatteringColorCubemap should be used as Inscattering Color. </para>
+		/// Distance at which only the average color of InscatteringColorCubemap should be used as Inscattering Color.
 		/// </summary>
 		public float NonDirectionalInscatteringColorDistance
 		{
@@ -343,7 +343,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Settings for the second fog. Setting the density of this to 0 means it doesn't have any influence. </para>
+		/// Settings for the second fog. Setting the density of this to 0 means it doesn't have any influence.
 		/// </summary>
 		public FExponentialHeightFogData SecondFogData
 		{
@@ -353,7 +353,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance from the camera that the fog will start, in world units. </para>
+		/// Distance from the camera that the fog will start, in world units.
 		/// </summary>
 		public float StartDistance
 		{
@@ -363,7 +363,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance over which volumetric fog should be computed.  Larger values extend the effect into the distance but expose under-sampling artifacts in details. </para>
+		/// Distance over which volumetric fog should be computed.  Larger values extend the effect into the distance but expose under-sampling artifacts in details.
 		/// </summary>
 		public float ViewDistance
 		{
@@ -373,9 +373,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Light emitted by height fog.  This is a density so more light is emitted the further you are looking through the fog. </para>
+		/// Light emitted by height fog.  This is a density so more light is emitted the further you are looking through the fog.
 		/// <para>In most cases skylight is a better choice, however right now volumetric fog does not support precomputed lighting, </para>
-		/// <para>So stationary skylights are unshadowed and static skylights don't affect volumetric fog at all. </para>
+		/// So stationary skylights are unshadowed and static skylights don't affect volumetric fog at all.
 		/// </summary>
 		public FLinearColor Emissive
 		{
@@ -385,7 +385,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the height fog particle extinction amount used by volumetric fog.  Values larger than 1 cause fog particles everywhere absorb more light. </para>
+		/// Scales the height fog particle extinction amount used by volumetric fog.  Values larger than 1 cause fog particles everywhere absorb more light.
 		/// </summary>
 		public float ExtinctionScale
 		{
@@ -395,9 +395,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the scattering phase function - how much incoming light scatters in various directions. </para>
+		/// Controls the scattering phase function - how much incoming light scatters in various directions.
 		/// <para>A distribution value of 0 scatters equally in all directions, while .9 scatters predominantly in the light direction. </para>
-		/// <para>In order to have visible volumetric fog light shafts from the side, the distribution will need to be closer to 0. </para>
+		/// In order to have visible volumetric fog light shafts from the side, the distribution will need to be closer to 0.
 		/// </summary>
 		public float ScatteringDistribution
 		{

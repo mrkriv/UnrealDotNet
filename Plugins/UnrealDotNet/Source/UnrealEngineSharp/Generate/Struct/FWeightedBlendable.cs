@@ -50,7 +50,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>should be of the IBlendableInterface* type but UProperties cannot express that </para>
+		/// should be of the IBlendableInterface* type but UProperties cannot express that
 		/// </summary>
 		public UObject Object
 		{
@@ -60,7 +60,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0:no effect .. 1:full effect </para>
+		/// 0:no effect .. 1:full effect
 		/// </summary>
 		public float Weight
 		{

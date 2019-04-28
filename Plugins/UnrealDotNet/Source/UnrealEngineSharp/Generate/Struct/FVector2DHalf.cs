@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default Constructor (no initialization). </para>
+		/// Default Constructor (no initialization).
 		/// </summary>
 		public FVector2DHalf() :
 			base(E_CreateStruct_FVector2DHalf(), false)
@@ -29,9 +29,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
+		/// Constructor.
 		/// <para>InX half float X value </para>
-		/// <para>Iny half float Y value </para>
+		/// Iny half float Y value
 		/// </summary>
 		public FVector2DHalf(FFloat16 inX, FFloat16 inY) :
 			base(E_CreateStruct_FVector2DHalf_FFloat16_FFloat16(inX, inY), false)
@@ -40,9 +40,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
+		/// Constructor
 		/// <para>InX float X value </para>
-		/// <para>Iny float Y value </para>
+		/// Iny float Y value
 		/// </summary>
 		public FVector2DHalf(float inX, float inY) :
 			base(E_CreateStruct_FVector2DHalf_float_float(inX, inY), false)
@@ -51,7 +51,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
+		/// Constructor
 		/// <para>Vector2D float vector </para>
 		/// </summary>
 		public FVector2DHalf(FVector2D vector2D) :
@@ -90,7 +90,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the vector's X-component. </para>
+		/// Holds the vector's X-component.
 		/// </summary>
 		public FFloat16 X
 		{
@@ -100,7 +100,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the vector's Y-component. </para>
+		/// Holds the vector's Y-component.
 		/// </summary>
 		public FFloat16 Y
 		{
@@ -113,9 +113,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Get a textual representation of the vector. </para>
-		/// <return>Text describing the vector. </return>
+		/// Get a textual representation of the vector.
 		/// </summary>
+		/// <return>Text</return>
 		public override string ToString()
 			=> E_FVector2DHalf_ToString(this);
 		

@@ -246,7 +246,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Updates the canvas. </para>
+		/// Updates the canvas.
 		/// </summary>
 		public void Update()
 			=> E_UCanvas_Update(this);

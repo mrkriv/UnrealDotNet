@@ -20,10 +20,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InVector">3D Vector to set first three components. </param>
-		/// <param name="InW">W Coordinate. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inVector">3D Vector to set first three components.</param>
+		/// <param name="inW">W Coordinate.</param>
 		public FVector4(FVector inVector, float inW) :
 			base(E_CreateStruct_FVector4_FVector_float(inVector, inW), false)
 		{
@@ -31,9 +31,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new vector from a color value. </para>
-		/// <param name="InColour">Color used to set vector. </param>
+		/// Creates and initializes a new vector from a color value.
 		/// </summary>
+		/// <param name="inColour">Color used to set vector.</param>
 		public FVector4(FLinearColor inColor) :
 			base(E_CreateStruct_FVector4_FLinearColor(inColor), false)
 		{
@@ -41,12 +41,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new vector from the specified components. </para>
-		/// <param name="InX">X Coordinate. </param>
-		/// <param name="InY">Y Coordinate. </param>
-		/// <param name="InZ">Z Coordinate. </param>
-		/// <param name="InW">W Coordinate. </param>
+		/// Creates and initializes a new vector from the specified components.
 		/// </summary>
+		/// <param name="inX">X Coordinate.</param>
+		/// <param name="inY">Y Coordinate.</param>
+		/// <param name="inZ">Z Coordinate.</param>
+		/// <param name="inW">W Coordinate.</param>
 		public FVector4(float inX, float inY, float inZ, float inW) :
 			base(E_CreateStruct_FVector4_float_float_float_float(inX, inY, inZ, inW), false)
 		{
@@ -54,10 +54,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new vector from the specified 2D vectors. </para>
-		/// <param name="InXY">A 2D vector holding the X- and Y-components. </param>
-		/// <param name="InZW">A 2D vector holding the Z- and W-components. </param>
+		/// Creates and initializes a new vector from the specified 2D vectors.
 		/// </summary>
+		/// <param name="inXY">A 2D vector holding the X- and Y-components.</param>
+		/// <param name="inZW">A 2D vector holding the Z- and W-components.</param>
 		public FVector4(FVector2D inXY, FVector2D inZW) :
 			base(E_CreateStruct_FVector4_FVector2D_FVector2D(inXY, inZW), false)
 		{
@@ -161,7 +161,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The vector's W-component. </para>
+		/// The vector's W-component.
 		/// </summary>
 		public float W
 		{
@@ -171,7 +171,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The vector's X-component. </para>
+		/// The vector's X-component.
 		/// </summary>
 		public float X
 		{
@@ -181,7 +181,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The vector's Y-component. </para>
+		/// The vector's Y-component.
 		/// </summary>
 		public float Y
 		{
@@ -191,7 +191,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The vector's Z-component. </para>
+		/// The vector's Z-component.
 		/// </summary>
 		public float Z
 		{
@@ -204,16 +204,16 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Gets a specific component of the vector. </para>
-		/// <param name="Index">The index of the component. </param>
-		/// <return>Reference to the component. </return>
+		/// Gets a specific component of the vector.
 		/// </summary>
+		/// <param name="index">The index of the component.</param>
+		/// <return>Reference</return>
 		public float Component(int index)
 			=> E_FVector4_Component(this, index);
 		
 		
 		/// <summary>
-		/// <para>Utility to check if there are any non-finite values (NaN or Inf) in this vector. </para>
+		/// Utility to check if there are any non-finite values (NaN or Inf) in this vector.
 		/// </summary>
 		public bool ContainsNaN()
 			=> E_FVector4_ContainsNaN(this);
@@ -223,17 +223,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Error tolerant comparison. </para>
-		/// <param name="V">Vector to compare against. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if the two vectors are equal within specified tolerance, otherwise false. </return>
+		/// Error tolerant comparison.
 		/// </summary>
+		/// <param name="v">Vector to compare against.</param>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool Equals(FVector4 v, float tolerance)
 			=> E_FVector4_Equals(this, v, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Find good arbitrary axis vectors to represent U and V axes of a plane, </para>
+		/// Find good arbitrary axis vectors to represent U and V axes of a plane,
 		/// <para>given just the normal. </para>
 		/// </summary>
 		public void FindBestAxisVectors3(FVector4 axis1, FVector4 axis2)
@@ -241,130 +241,130 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns a normalized copy of the vector if safe to normalize. </para>
-		/// <param name="Tolerance">Minimum squared length of vector for normalization. </param>
-		/// <return>A normalized copy of the vector or a zero vector. </return>
+		/// Returns a normalized copy of the vector if safe to normalize.
 		/// </summary>
+		/// <param name="tolerance">Minimum squared length of vector for normalization.</param>
+		/// <return>A</return>
 		public FVector4 GetSafeNormal(float tolerance)
 			=> E_FVector4_GetSafeNormal(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Calculates normalized version of vector without checking if it is non-zero. </para>
-		/// <return>Normalized version of vector. </return>
+		/// Calculates normalized version of vector without checking if it is non-zero.
 		/// </summary>
+		/// <return>Normalized</return>
 		public FVector4 GetUnsafeNormal3()
 			=> E_FVector4_GetUnsafeNormal3(this);
 		
 		
 		/// <summary>
-		/// <para>Initialize this Vector based on an FString. The String is expected to contain X=, Y=, Z=, W=. </para>
+		/// Initialize this Vector based on an FString. The String is expected to contain X=, Y=, Z=, W=.
 		/// <para>The FVector4 will be bogus when InitFromString returns false. </para>
-		/// <param name="InSourceString">FString containing the vector values. </param>
-		/// <return>true if the X,Y,Z values were read successfully; false otherwise. </return>
 		/// </summary>
+		/// <param name="inSourceString">FString containing the vector values.</param>
+		/// <return>true</return>
 		public bool InitFromString(string inSourceString)
 			=> E_FVector4_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
-		/// <para>Utility to check if all of the components of this vector are nearly zero given the tolerance. </para>
+		/// Utility to check if all of the components of this vector are nearly zero given the tolerance.
 		/// </summary>
 		public bool IsNearlyZero3(float tolerance)
 			=> E_FVector4_IsNearlyZero3(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Check if the vector is of unit length, with specified tolerance. </para>
-		/// <param name="LengthSquaredTolerance">Tolerance against squared length. </param>
-		/// <return>true if the vector is a unit vector within the specified tolerance. </return>
+		/// Check if the vector is of unit length, with specified tolerance.
 		/// </summary>
+		/// <param name="lengthSquaredTolerance">Tolerance against squared length.</param>
+		/// <return>true</return>
 		public bool IsUnit3(float lengthSquaredTolerance)
 			=> E_FVector4_IsUnit3(this, lengthSquaredTolerance);
 		
 		
 		/// <summary>
-		/// <para>Reflect vector. </para>
+		/// Reflect vector.
 		/// </summary>
 		public FVector4 Reflect3(FVector4 normal)
 			=> E_FVector4_Reflect3(this, normal);
 		
 		
 		/// <summary>
-		/// <para>Return the FRotator orientation corresponding to the direction in which the vector points. </para>
+		/// Return the FRotator orientation corresponding to the direction in which the vector points.
 		/// <para>Sets Yaw and Pitch to the proper numbers, and sets roll to zero because the roll can't be determined from a vector. </para>
-		/// <para>Identical to 'ToOrientationRotator()'. </para>
-		/// <return>FRotator from the Vector's direction. </return>
-		/// <para>@see ToOrientationRotator() </para>
+		/// Identical to 'ToOrientationRotator()'.
+		/// <see cref="ToOrientationRotator"/>
 		/// </summary>
+		/// <return>FRotator</return>
 		public FRotator Rotation()
 			=> E_FVector4_Rotation(this);
 		
 		
 		/// <summary>
-		/// <para>Set all of the vectors coordinates. </para>
-		/// <param name="InX">New X Coordinate. </param>
-		/// <param name="InY">New Y Coordinate. </param>
-		/// <param name="InZ">New Z Coordinate. </param>
-		/// <param name="InW">New W Coordinate. </param>
+		/// Set all of the vectors coordinates.
 		/// </summary>
+		/// <param name="inX">New X Coordinate.</param>
+		/// <param name="inY">New Y Coordinate.</param>
+		/// <param name="inZ">New Z Coordinate.</param>
+		/// <param name="inW">New W Coordinate.</param>
 		public void Set(float inX, float inY, float inZ, float inW)
 			=> E_FVector4_Set(this, inX, inY, inZ, inW);
 		
 		
 		/// <summary>
-		/// <para>Get the length (magnitude) of this vector, taking the W component into account </para>
-		/// <return>The length of this vector </return>
+		/// Get the length (magnitude) of this vector, taking the W component into account
 		/// </summary>
+		/// <return>The</return>
 		public float Size()
 			=> E_FVector4_Size(this);
 		
 		
 		/// <summary>
-		/// <para>Get the length of this vector not taking W component into account. </para>
-		/// <return>The length of this vector. </return>
+		/// Get the length of this vector not taking W component into account.
 		/// </summary>
+		/// <return>The</return>
 		public float Size3()
 			=> E_FVector4_Size3(this);
 		
 		
 		/// <summary>
-		/// <para>Get the squared length of this vector, taking the W component into account </para>
-		/// <return>The squared length of this vector </return>
+		/// Get the squared length of this vector, taking the W component into account
 		/// </summary>
+		/// <return>The</return>
 		public float SizeSquared()
 			=> E_FVector4_SizeSquared(this);
 		
 		
 		/// <summary>
-		/// <para>Get the squared length of this vector not taking W component into account. </para>
-		/// <return>The squared length of this vector. </return>
+		/// Get the squared length of this vector not taking W component into account.
 		/// </summary>
+		/// <return>The</return>
 		public float SizeSquared3()
 			=> E_FVector4_SizeSquared3(this);
 		
 		
 		/// <summary>
-		/// <para>Return the Quaternion orientation corresponding to the direction in which the vector points. </para>
-		/// <return>Quaternion from the Vector's direction. </return>
+		/// Return the Quaternion orientation corresponding to the direction in which the vector points.
 		/// </summary>
+		/// <return>Quaternion</return>
 		public FQuat ToOrientationQuat()
 			=> E_FVector4_ToOrientationQuat(this);
 		
 		
 		/// <summary>
-		/// <para>Return the FRotator orientation corresponding to the direction in which the vector points. </para>
+		/// Return the FRotator orientation corresponding to the direction in which the vector points.
 		/// <para>Sets Yaw and Pitch to the proper numbers, and sets roll to zero because the roll can't be determined from a vector. </para>
-		/// <return>FRotator from the Vector's direction. </return>
 		/// </summary>
+		/// <return>FRotator</return>
 		public FRotator ToOrientationRotator()
 			=> E_FVector4_ToOrientationRotator(this);
 		
 		
 		/// <summary>
-		/// <para>Get a textual representation of the vector. </para>
-		/// <return>Text describing the vector. </return>
+		/// Get a textual representation of the vector.
 		/// </summary>
+		/// <return>Text</return>
 		public override string ToString()
 			=> E_FVector4_ToString(this);
 		

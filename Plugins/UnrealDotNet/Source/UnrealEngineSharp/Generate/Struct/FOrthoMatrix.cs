@@ -20,12 +20,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="Width">view space width </param>
-		/// <param name="Height">view space height </param>
-		/// <param name="ZScale">scale in the Z axis </param>
-		/// <param name="ZOffset">offset in the Z axis </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="width">view space width</param>
+		/// <param name="height">view space height</param>
+		/// <param name="zScale">scale in the Z axis</param>
+		/// <param name="zOffset">offset in the Z axis</param>
 		public FOrthoMatrix(float width, float height, float zScale, float zOffset) :
 			base(E_CreateStruct_FOrthoMatrix_float_float_float_float(width, height, zScale, zOffset), false)
 		{

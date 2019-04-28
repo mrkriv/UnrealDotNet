@@ -52,7 +52,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>UV coords </para>
+		/// UV coords
 		/// </summary>
 		public float U
 		{

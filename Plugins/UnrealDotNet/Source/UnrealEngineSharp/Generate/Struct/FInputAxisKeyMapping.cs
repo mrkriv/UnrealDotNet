@@ -31,7 +31,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Friendly name of axis, e.g "MoveForward" </para>
+		/// Friendly name of axis, e.g "MoveForward"
 		/// </summary>
 		public string AxisName
 		{
@@ -41,7 +41,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Multiplier to use for the mapping when accumulating the axis value </para>
+		/// Multiplier to use for the mapping when accumulating the axis value
 		/// </summary>
 		public float Scale
 		{

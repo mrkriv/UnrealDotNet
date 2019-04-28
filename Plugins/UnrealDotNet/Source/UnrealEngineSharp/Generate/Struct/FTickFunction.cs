@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor, intitalizes to reasonable defaults </para>
+		/// Default constructor, intitalizes to reasonable defaults
 		/// </summary>
 		public FTickFunction() :
 			base(E_CreateStruct_FTickFunction(), false)
@@ -89,7 +89,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>If we allow this tick to run on a dedicated server </para>
+		/// If we allow this tick to run on a dedicated server
 		/// </summary>
 		public byte bAllowTickOnDedicatedServer
 		{
@@ -105,7 +105,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Run this tick first within the tick group, presumably to start async tasks that must be completed with this tick group, hiding the latency. </para>
+		/// Run this tick first within the tick group, presumably to start async tasks that must be completed with this tick group, hiding the latency.
 		/// </summary>
 		public byte bHighPriority
 		{
@@ -115,7 +115,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If false, this tick will run on the game thread, otherwise it will run on any thread in parallel with the game thread and in parallel with other "async ticks" </para>
+		/// If false, this tick will run on the game thread, otherwise it will run on any thread in parallel with the game thread and in parallel with other "async ticks"
 		/// </summary>
 		public byte bRunOnAnyThread
 		{
@@ -125,7 +125,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this tick function will start enabled, but can be disabled later on. </para>
+		/// If true, this tick function will start enabled, but can be disabled later on.
 		/// </summary>
 		public byte bStartWithTickEnabled
 		{
@@ -135,7 +135,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bool indicating that this function should execute even if the game is paused. Pause ticks are very limited in capabilities. </para>
+		/// Bool indicating that this function should execute even if the game is paused. Pause ticks are very limited in capabilities.
 		/// </summary>
 		public byte bTickEvenWhenPaused
 		{
@@ -145,7 +145,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The frequency in seconds at which this tick function will be executed.  If less than or equal to 0 then it will tick every frame </para>
+		/// The frequency in seconds at which this tick function will be executed.  If less than or equal to 0 then it will tick every frame
 		/// </summary>
 		public float TickIntervalsecs
 		{
@@ -158,43 +158,43 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns whether it is valid to access this tick function's completion handle </para>
+		/// Returns whether it is valid to access this tick function's completion handle
 		/// </summary>
 		public bool IsCompletionHandleValid()
 			=> E_FTickFunction_IsCompletionHandleValid(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the tick function is currently enabled </para>
+		/// Returns whether the tick function is currently enabled
 		/// </summary>
 		public bool IsTickFunctionEnabled()
 			=> E_FTickFunction_IsTickFunctionEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>See if the tick function is currently registered </para>
+		/// See if the tick function is currently registered
 		/// </summary>
 		public bool IsTickFunctionRegistered()
 			=> E_FTickFunction_IsTickFunctionRegistered(this);
 		
 		
 		/// <summary>
-		/// <para>Sets this function to hipri and all prerequisites recursively </para>
-		/// <param name="bInHighPriority">priority to set </param>
+		/// Sets this function to hipri and all prerequisites recursively
 		/// </summary>
+		/// <param name="bInHighPriority">priority to set</param>
 		public void SetPriorityIncludingPrerequisites(bool bInHighPriority)
 			=> E_FTickFunction_SetPriorityIncludingPrerequisites(this, bInHighPriority);
 		
 		
 		/// <summary>
-		/// <para>Enables or disables this tick function. </para>
+		/// Enables or disables this tick function.
 		/// </summary>
 		public void SetTickFunctionEnable(bool bInEnabled)
 			=> E_FTickFunction_SetTickFunctionEnable(this, bInEnabled);
 		
 		
 		/// <summary>
-		/// <para>Removes the tick function from the master list of tick functions. </para>
+		/// Removes the tick function from the master list of tick functions.
 		/// </summary>
 		public void UnRegisterTickFunction()
 			=> E_FTickFunction_UnRegisterTickFunction(this);

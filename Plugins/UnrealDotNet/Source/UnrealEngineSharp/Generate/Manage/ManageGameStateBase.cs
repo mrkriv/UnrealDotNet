@@ -22,19 +22,19 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Add PlayerState to the PlayerArray </para>
+		/// Add PlayerState to the PlayerArray
 		/// </summary>
 		public override void AddPlayerState(APlayerState playerState) { }
 		
 		
 		/// <summary>
-		/// <para>Allow game states to react to asset packages being loaded asynchronously </para>
+		/// Allow game states to react to asset packages being loaded asynchronously
 		/// </summary>
 		public override void AsyncPackageLoaded(UObject package) { }
 		
 		
 		/// <summary>
-		/// <para>Called by game mode to set the started play bool </para>
+		/// Called by game mode to set the started play bool
 		/// </summary>
 		public override void HandleBeginPlay() { }
 		
@@ -48,31 +48,31 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when the GameClass property is set (at startup for the server, after the variable has been replicated on clients) </para>
+		/// Called when the GameClass property is set (at startup for the server, after the variable has been replicated on clients)
 		/// </summary>
 		public override void ReceivedGameModeClass() { }
 		
 		
 		/// <summary>
-		/// <para>Called when the SpectatorClass property is set (at startup for the server, after the variable has been replicated on clients) </para>
+		/// Called when the SpectatorClass property is set (at startup for the server, after the variable has been replicated on clients)
 		/// </summary>
 		public override void ReceivedSpectatorClass() { }
 		
 		
 		/// <summary>
-		/// <para>Remove PlayerState from the PlayerArray. </para>
+		/// Remove PlayerState from the PlayerArray.
 		/// </summary>
 		public override void RemovePlayerState(APlayerState playerState) { }
 		
 		
 		/// <summary>
-		/// <para>Called during seamless travel transition twice (once when the transition map is loaded, once when destination map is loaded) </para>
+		/// Called during seamless travel transition twice (once when the transition map is loaded, once when destination map is loaded)
 		/// </summary>
 		public override void SeamlessTravelTransitionCheckpoint(bool bToTransitionMap) { }
 		
 		
 		/// <summary>
-		/// <para>Called periodically to update ReplicatedWorldTimeSeconds </para>
+		/// Called periodically to update ReplicatedWorldTimeSeconds
 		/// </summary>
 		protected override void UpdateServerTimeSeconds() { }
 		

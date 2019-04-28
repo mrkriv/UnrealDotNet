@@ -50,7 +50,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The axis mapping being bound to. </para>
+		/// The axis mapping being bound to.
 		/// </summary>
 		public string AxisName
 		{
@@ -60,7 +60,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The value of the axis as calculated during the most recent UPlayerInput::ProcessInputStack </para>
+		/// The value of the axis as calculated during the most recent UPlayerInput::ProcessInputStack
 		/// <para>if the InputComponent was in the stack, otherwise all values should be 0. </para>
 		/// </summary>
 		public float AxisValue

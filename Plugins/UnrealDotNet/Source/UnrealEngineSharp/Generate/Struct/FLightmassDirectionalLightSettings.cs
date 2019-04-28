@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Angle that the directional light's emissive surface extends relative to a receiver, affects penumbra sizes. </para>
+		/// Angle that the directional light's emissive surface extends relative to a receiver, affects penumbra sizes.
 		/// </summary>
 		public float LightSourceAngle
 		{

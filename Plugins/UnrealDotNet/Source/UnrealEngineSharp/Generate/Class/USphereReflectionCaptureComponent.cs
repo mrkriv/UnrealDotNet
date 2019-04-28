@@ -56,7 +56,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Radius of the area that can receive reflections from this capture. </para>
+		/// Radius of the area that can receive reflections from this capture.
 		/// </summary>
 		public float InfluenceRadius
 		{

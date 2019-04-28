@@ -42,16 +42,7 @@ namespace GameLogic
         {
             base.Tick(dt);
             
-            var ctrl = (PlayerController) GetController();
             Ue.Log(GetController()?.GetType()?.FullName);
-            if (ctrl != null)
-            {
-                Ue.Log(ctrl.MoveForwardValue.ToString());
-            }
-            else
-            {
-                Ue.Log("palyer ctrl not found");
-            }
 
             if (IsDeath)
                 return;

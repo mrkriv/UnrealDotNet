@@ -20,9 +20,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. Updated for the fact that our FPlane uses Ax+By+Cz=D. </para>
-		/// <param name="Plane">source plane for mirroring (assumed normalized) </param>
+		/// Constructor. Updated for the fact that our FPlane uses Ax+By+Cz=D.
 		/// </summary>
+		/// <param name="plane">source plane for mirroring (assumed normalized)</param>
 		public FMirrorMatrix(FPlane plane) :
 			base(E_CreateStruct_FMirrorMatrix_FPlane(plane), false)
 		{

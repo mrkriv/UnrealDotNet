@@ -35,7 +35,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor for easily creating "fake" hits from limited data. </para>
+		/// Ctor for easily creating "fake" hits from limited data.
 		/// </summary>
 		public FHitResult(AActor inActor, UPrimitiveComponent inComponent, FVector hitLoc, FVector hitNorm) :
 			base(E_CreateStruct_FHitResult_AActor_UPrimitiveComponent_FVector_FVector(inActor, inComponent, hitLoc, hitNorm), false)
@@ -186,21 +186,21 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Utility to return the Actor that owns the Component that was hit. </para>
+		/// Utility to return the Actor that owns the Component that was hit.
 		/// </summary>
 		public AActor GetActor()
 			=> E_FHitResult_GetActor(this);
 		
 		
 		/// <summary>
-		/// <para>Utility to return the Component that was hit. </para>
+		/// Utility to return the Component that was hit.
 		/// </summary>
 		public UPrimitiveComponent GetComponent()
 			=> E_FHitResult_GetComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Get a copy of the HitResult with relevant information reversed. </para>
+		/// Get a copy of the HitResult with relevant information reversed.
 		/// <para>For example when receiving a hit from another object, we reverse the normals. </para>
 		/// </summary>
 		public FHitResult GetReversedHit(FHitResult hit)
@@ -208,28 +208,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Initialize empty hit result with given time. </para>
+		/// Initialize empty hit result with given time.
 		/// </summary>
 		public void Init()
 			=> E_FHitResult_Init(this);
 		
 		
 		/// <summary>
-		/// <para>Initialize empty hit result with given time, TraceStart, and TraceEnd </para>
+		/// Initialize empty hit result with given time, TraceStart, and TraceEnd
 		/// </summary>
 		public void Init(FVector start, FVector end)
 			=> E_FHitResult_Init_o1(this, start, end);
 		
 		
 		/// <summary>
-		/// <para>Return true if there was a blocking hit that was not caused by starting in penetration. </para>
+		/// Return true if there was a blocking hit that was not caused by starting in penetration.
 		/// </summary>
 		public bool IsValidBlockingHit()
 			=> E_FHitResult_IsValidBlockingHit(this);
 		
 		
 		/// <summary>
-		/// <para>Reset hit result while optionally saving TraceStart and TraceEnd. </para>
+		/// Reset hit result while optionally saving TraceStart and TraceEnd.
 		/// </summary>
 		public void Reset(float inTime, bool bPreserveTraceData = true)
 			=> E_FHitResult_Reset(this, inTime, bPreserveTraceData);

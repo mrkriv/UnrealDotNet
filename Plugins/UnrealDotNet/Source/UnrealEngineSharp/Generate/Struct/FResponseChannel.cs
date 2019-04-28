@@ -45,7 +45,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>This should match DisplayName of ECollisionChannel </para>
+		/// This should match DisplayName of ECollisionChannel
 		/// <para>Meta data of custom channels can be used as well </para>
 		/// </summary>
 		public string Channel

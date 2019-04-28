@@ -48,7 +48,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The intensity at which the vector field is applied. </para>
+		/// The intensity at which the vector field is applied.
 		/// </summary>
 		public float Intensity
 		{
@@ -58,7 +58,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How tightly particles follow the vector field. </para>
+		/// How tightly particles follow the vector field.
 		/// </summary>
 		public float Tightness
 		{
@@ -71,9 +71,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Set the intensity of the vector field. </para>
-		/// <param name="NewIntensity">The new intensity of the vector field. </param>
+		/// Set the intensity of the vector field.
 		/// </summary>
+		/// <param name="newIntensity">The new intensity of the vector field.</param>
 		public virtual void SetIntensity(float newIntensity)
 			=> E_UVectorFieldComponent_SetIntensity(this, newIntensity);
 		

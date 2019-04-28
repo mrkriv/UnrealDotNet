@@ -67,7 +67,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Angle of barn door attached to the light source rect. </para>
+		/// Angle of barn door attached to the light source rect.
 		/// </summary>
 		public float BarnDoorAngle
 		{
@@ -77,7 +77,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Length of barn door attached to the light source rect. </para>
+		/// Length of barn door attached to the light source rect.
 		/// </summary>
 		public float BarnDoorLength
 		{
@@ -87,7 +87,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Height of light source rect. </para>
+		/// Height of light source rect.
 		/// <para>Note that light sources shapes which intersect shadow casting geometry can cause shadowing artifacts. </para>
 		/// </summary>
 		public float SourceHeight
@@ -98,7 +98,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Width of light source rect. </para>
+		/// Width of light source rect.
 		/// <para>Note that light sources shapes which intersect shadow casting geometry can cause shadowing artifacts. </para>
 		/// </summary>
 		public float SourceWidth

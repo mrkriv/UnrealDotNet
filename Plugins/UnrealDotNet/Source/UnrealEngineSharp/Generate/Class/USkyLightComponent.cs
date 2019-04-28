@@ -133,7 +133,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Only capture emissive materials. Skips all lighting making the capture cheaper. Recomended when using CaptureEveryFrame </para>
+		/// Only capture emissive materials. Skips all lighting making the capture cheaper. Recomended when using CaptureEveryFrame
 		/// </summary>
 		public bool bCaptureEmissiveOnly
 		{
@@ -143,9 +143,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether all distant lighting from the lower hemisphere should be set to LowerHemisphereColor. </para>
+		/// Whether all distant lighting from the lower hemisphere should be set to LowerHemisphereColor.
 		/// <para>Enabling this is accurate when lighting a scene on a planet where the ground blocks the sky, </para>
-		/// <para>However disabling it can be useful to approximate skylight bounce lighting (eg Movable light). </para>
+		/// However disabling it can be useful to approximate skylight bounce lighting (eg Movable light).
 		/// </summary>
 		public bool LowerHemisphereIsSolidColor
 		{
@@ -155,7 +155,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Contrast S-curve applied to the computed AO.  A value of 0 means no contrast increase, 1 is a significant contrast increase. </para>
+		/// Contrast S-curve applied to the computed AO.  A value of 0 means no contrast increase, 1 is a significant contrast increase.
 		/// </summary>
 		public float OcclusionContrast
 		{
@@ -165,7 +165,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum resolution for the very top processed cubemap mip. Must be a power of 2. </para>
+		/// Maximum resolution for the very top processed cubemap mip. Must be a power of 2.
 		/// </summary>
 		public int CubemapResolution
 		{
@@ -181,7 +181,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the darkest that a fully occluded area can get.  This tends to destroy contact shadows, use Contrast or OcclusionExponent instead. </para>
+		/// Controls the darkest that a fully occluded area can get.  This tends to destroy contact shadows, use Contrast or OcclusionExponent instead.
 		/// </summary>
 		public float MinOcclusion
 		{
@@ -191,7 +191,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Exponent applied to the computed AO.  Values lower than 1 brighten occlusion overall without losing contact shadows. </para>
+		/// Exponent applied to the computed AO.  Values lower than 1 brighten occlusion overall without losing contact shadows.
 		/// </summary>
 		public float OcclusionExponent
 		{
@@ -201,7 +201,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance that the occlusion of one point will affect another. </para>
+		/// Max distance that the occlusion of one point will affect another.
 		/// <para>Higher values increase the cost of Distance Field AO exponentially. </para>
 		/// </summary>
 		public float OcclusionMaxDistance
@@ -212,7 +212,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance from the sky light at which any geometry should be treated as part of the sky. </para>
+		/// Distance from the sky light at which any geometry should be treated as part of the sky.
 		/// <para>This is also used by reflection captures, so update reflection captures to see the impact. </para>
 		/// </summary>
 		public float SkyDistanceThreshold
@@ -223,7 +223,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Angle to rotate the source cubemap when SourceType is set to SLS_SpecifiedCubemap. </para>
+		/// Angle to rotate the source cubemap when SourceType is set to SLS_SpecifiedCubemap.
 		/// </summary>
 		public float SourceCubemapAngle
 		{
@@ -236,16 +236,16 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Whether sky occlusion is supported by current feature level </para>
+		/// Whether sky occlusion is supported by current feature level
 		/// </summary>
 		public bool IsOcclusionSupported()
 			=> E_USkyLightComponent_IsOcclusionSupported(this);
 		
 		
 		/// <summary>
-		/// <para>Recaptures the scene for the skylight. </para>
+		/// Recaptures the scene for the skylight.
 		/// <para>This is useful for making sure the sky light is up to date after changing something in the world that it would capture. </para>
-		/// <para>Warning: this is very costly and will definitely cause a hitch. </para>
+		/// Warning: this is very costly and will definitely cause a hitch.
 		/// </summary>
 		public void RecaptureSky()
 			=> E_USkyLightComponent_RecaptureSky(this);
@@ -258,7 +258,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Indicates that the capture needs to recapture the scene, adds it to the recapture queue. </para>
+		/// Indicates that the capture needs to recapture the scene, adds it to the recapture queue.
 		/// </summary>
 		public void SetCaptureIsDirty()
 			=> E_USkyLightComponent_SetCaptureIsDirty(this);
@@ -271,7 +271,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set color of the light </para>
+		/// Set color of the light
 		/// </summary>
 		public void SetLightColor(FLinearColor newLightColor)
 			=> E_USkyLightComponent_SetLightColor(this, newLightColor);
@@ -299,7 +299,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called each tick to recapture and queued sky captures. </para>
+		/// Called each tick to recapture and queued sky captures.
 		/// </summary>
 		public void UpdateSkyCaptureContents(UWorld worldToUpdate)
 			=> E_USkyLightComponent_UpdateSkyCaptureContents(this, worldToUpdate);

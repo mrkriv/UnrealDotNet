@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The delegate bound to the key chord </para>
+		/// The delegate bound to the key chord
 		/// </summary>
 		public FInputActionUnifiedDelegate KeyDelegate
 		{

@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor. </para>
+		/// Default constructor.
 		/// <para>Constructs a unit-sized, origin-centered box with axes aligned to the coordinate system. </para>
 		/// </summary>
 		public FOrientedBox() :
@@ -75,7 +75,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the x-axis vector of the box. Must be a unit vector. </para>
+		/// Holds the x-axis vector of the box. Must be a unit vector.
 		/// </summary>
 		public FVector AxisX
 		{
@@ -85,7 +85,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the y-axis vector of the box. Must be a unit vector. </para>
+		/// Holds the y-axis vector of the box. Must be a unit vector.
 		/// </summary>
 		public FVector AxisY
 		{
@@ -95,7 +95,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the z-axis vector of the box. Must be a unit vector. </para>
+		/// Holds the z-axis vector of the box. Must be a unit vector.
 		/// </summary>
 		public FVector AxisZ
 		{
@@ -105,7 +105,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the center of the box. </para>
+		/// Holds the center of the box.
 		/// </summary>
 		public FVector Center
 		{
@@ -115,7 +115,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the extent of the box along its x-axis. </para>
+		/// Holds the extent of the box along its x-axis.
 		/// </summary>
 		public float ExtentX
 		{
@@ -125,7 +125,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the extent of the box along its y-axis. </para>
+		/// Holds the extent of the box along its y-axis.
 		/// </summary>
 		public float ExtentY
 		{
@@ -135,7 +135,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the extent of the box along its z-axis. </para>
+		/// Holds the extent of the box along its z-axis.
 		/// </summary>
 		public float ExtentZ
 		{
@@ -148,9 +148,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Fills in the Verts array with the eight vertices of the box. </para>
-		/// <param name="Verts">The array to fill in with the vertices. </param>
+		/// Fills in the Verts array with the eight vertices of the box.
 		/// </summary>
+		/// <param name="verts">The array to fill in with the vertices.</param>
 		public void CalcVertices(FVector verts)
 			=> E_FOrientedBox_CalcVertices(this, verts);
 		

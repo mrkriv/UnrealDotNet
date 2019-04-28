@@ -45,7 +45,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>BloomDirtMask intensity </para>
+		/// BloomDirtMask intensity
 		/// </summary>
 		public float DirtMaskIntensity
 		{
@@ -55,7 +55,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>BloomDirtMask tint color </para>
+		/// BloomDirtMask tint color
 		/// </summary>
 		public FLinearColor DirtMaskTint
 		{

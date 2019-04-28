@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FRotator() :
 			base(E_CreateStruct_FRotator(), false)
@@ -29,9 +29,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="InF">Value to set all components to. </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="inF">Value to set all components to.</param>
 		public FRotator(float inF) :
 			base(E_CreateStruct_FRotator_float(inF), false)
 		{
@@ -39,11 +39,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InPitch">Pitch in degrees. </param>
-		/// <param name="InYaw">Yaw in degrees. </param>
-		/// <param name="InRoll">Roll in degrees. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inPitch">Pitch in degrees.</param>
+		/// <param name="inYaw">Yaw in degrees.</param>
+		/// <param name="inRoll">Roll in degrees.</param>
 		public FRotator(float inPitch, float inYaw, float inRoll) :
 			base(E_CreateStruct_FRotator_float_float_float(inPitch, inYaw, inRoll), false)
 		{
@@ -51,9 +51,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Quat">Quaternion used to specify rotation. </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="quat">Quaternion used to specify rotation.</param>
 		public FRotator(FQuat quat) :
 			base(E_CreateStruct_FRotator_FQuat(quat), false)
 		{
@@ -179,7 +179,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down) </para>
+		/// Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down)
 		/// </summary>
 		public float Pitch
 		{
@@ -189,7 +189,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW. </para>
+		/// Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW.
 		/// </summary>
 		public float Roll
 		{
@@ -199,7 +199,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South. </para>
+		/// Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South.
 		/// </summary>
 		public float Yaw
 		{
@@ -212,55 +212,55 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Adds to each component of the rotator. </para>
-		/// <param name="DeltaPitch">Change in pitch. (+/-) </param>
-		/// <param name="DeltaYaw">Change in yaw. (+/-) </param>
-		/// <param name="DeltaRoll">Change in roll. (+/-) </param>
-		/// <return>Copy of rotator after addition. </return>
+		/// Adds to each component of the rotator.
 		/// </summary>
+		/// <param name="deltaPitch">Change in pitch. (+/-)</param>
+		/// <param name="deltaYaw">Change in yaw. (+/-)</param>
+		/// <param name="deltaRoll">Change in roll. (+/-)</param>
+		/// <return>Copy</return>
 		public FRotator Add(float deltaPitch, float deltaYaw, float deltaRoll)
 			=> E_FRotator_Add(this, deltaPitch, deltaYaw, deltaRoll);
 		
 		
 		/// <summary>
-		/// <para>Gets the rotation values so they fall within the range [0,360] </para>
-		/// <return>Clamped version of rotator. </return>
+		/// Gets the rotation values so they fall within the range [0,360]
 		/// </summary>
+		/// <return>Clamped</return>
 		public FRotator Clamp()
 			=> E_FRotator_Clamp(this);
 		
 		
 		/// <summary>
-		/// <para>Clamps an angle to the range of [0, 360). </para>
-		/// <param name="Angle">The angle to clamp. </param>
-		/// <return>The clamped angle. </return>
+		/// Clamps an angle to the range of [0, 360).
 		/// </summary>
+		/// <param name="angle">The angle to clamp.</param>
+		/// <return>The</return>
 		public float ClampAxis(float angle)
 			=> E_FRotator_ClampAxis(this, angle);
 		
 		
 		/// <summary>
-		/// <para>Compresses a floating point angle into a byte. </para>
-		/// <param name="Angle">The angle to compress. </param>
-		/// <return>The angle as a byte. </return>
+		/// Compresses a floating point angle into a byte.
 		/// </summary>
+		/// <param name="angle">The angle to compress.</param>
+		/// <return>The</return>
 		public byte CompressAxisToByte(float angle)
 			=> E_FRotator_CompressAxisToByte(this, angle);
 		
 		
 		/// <summary>
-		/// <para>Utility to check if there are any non-finite values (NaN or Inf) in this Rotator. </para>
-		/// <return>true if there are any non-finite values in this Rotator, otherwise false. </return>
+		/// Utility to check if there are any non-finite values (NaN or Inf) in this Rotator.
 		/// </summary>
+		/// <return>true</return>
 		public bool ContainsNaN()
 			=> E_FRotator_ContainsNaN(this);
 		
 		
 		/// <summary>
-		/// <para>Decompress a word into a floating point angle. </para>
-		/// <param name="Angle">The word angle. </param>
-		/// <return>The decompressed angle. </return>
+		/// Decompress a word into a floating point angle.
 		/// </summary>
+		/// <param name="angle">The word angle.</param>
+		/// <return>The</return>
 		public float DecompressAxisFromByte(byte angle)
 			=> E_FRotator_DecompressAxisFromByte(this, angle);
 		
@@ -269,193 +269,193 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks whether two rotators are equal within specified tolerance, when treated as an orientation. </para>
+		/// Checks whether two rotators are equal within specified tolerance, when treated as an orientation.
 		/// <para>This means that FRotator(0, 0, 360).Equals(FRotator(0,0,0)) is true, because they represent the same final orientation. </para>
-		/// <param name="R">The other rotator. </param>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if two rotators are equal, within specified tolerance, otherwise false. </return>
 		/// </summary>
+		/// <param name="r">The other rotator.</param>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool Equals(FRotator r, float tolerance)
 			=> E_FRotator_Equals(this, r, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Convert a Rotator into floating-point Euler angles (in degrees). Rotator now stored in degrees. </para>
-		/// <return>Rotation as a Euler angle vector. </return>
+		/// Convert a Rotator into floating-point Euler angles (in degrees). Rotator now stored in degrees.
 		/// </summary>
+		/// <return>Rotation</return>
 		public FVector Euler()
 			=> E_FRotator_Euler(this);
 		
 		
 		/// <summary>
-		/// <para>Create a copy of this rotator and denormalize, clamping each axis to 0 - 360. </para>
-		/// <return>Denormalized copy of this rotator </return>
+		/// Create a copy of this rotator and denormalize, clamping each axis to 0 - 360.
 		/// </summary>
+		/// <return>Denormalized</return>
 		public FRotator GetDenormalized()
 			=> E_FRotator_GetDenormalized(this);
 		
 		
 		/// <summary>
-		/// <para>Return a Rotator that has the same rotation but has different degree values for Yaw, Pitch, and Roll. </para>
+		/// Return a Rotator that has the same rotation but has different degree values for Yaw, Pitch, and Roll.
 		/// <para>This rotator should be within -180,180 range, </para>
-		/// <return>A Rotator with the same rotation but different degrees. </return>
 		/// </summary>
+		/// <return>A</return>
 		public FRotator GetEquivalentRotator()
 			=> E_FRotator_GetEquivalentRotator(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the inverse of the rotator. </para>
+		/// Returns the inverse of the rotator.
 		/// </summary>
 		public FRotator GetInverse()
 			=> E_FRotator_GetInverse(this);
 		
 		
 		/// <summary>
-		/// <para>Return the manhattan distance in degrees between this Rotator and the passed in one. </para>
-		/// <param name="Rotator">In] the Rotator we are comparing with. </param>
-		/// <return>Distance(Manhattan) between the two rotators. </return>
+		/// Return the manhattan distance in degrees between this Rotator and the passed in one.
 		/// </summary>
+		/// <param name="rotator">In] the Rotator we are comparing with.</param>
+		/// <return>Distance</return>
 		public float GetManhattanDistance(FRotator rotator)
 			=> E_FRotator_GetManhattanDistance(this, rotator);
 		
 		
 		/// <summary>
-		/// <para>Create a copy of this rotator and normalize, removes all winding and creates the "shortest route" rotation. </para>
-		/// <return>Normalized copy of this rotator </return>
+		/// Create a copy of this rotator and normalize, removes all winding and creates the "shortest route" rotation.
 		/// </summary>
+		/// <return>Normalized</return>
 		public FRotator GetNormalized()
 			=> E_FRotator_GetNormalized(this);
 		
 		
 		/// <summary>
-		/// <para>Decompose this Rotator into a Winding part (multiples of 360) and a Remainder part. </para>
+		/// Decompose this Rotator into a Winding part (multiples of 360) and a Remainder part.
 		/// <para>Remainder will always be in [-180, 180] range. </para>
-		/// <param name="Winding">Out] the Winding part of this Rotator </param>
-		/// <param name="Remainder">Out] the Remainder </param>
 		/// </summary>
+		/// <param name="winding">Out] the Winding part of this Rotator</param>
+		/// <param name="remainder">Out] the Remainder</param>
 		public void GetWindingAndRemainder(FRotator winding, FRotator remainder)
 			=> E_FRotator_GetWindingAndRemainder(this, winding, remainder);
 		
 		
 		/// <summary>
-		/// <para>Get the rotation, snapped to specified degree segments. </para>
-		/// <param name="RotGrid">A Rotator specifying how to snap each component. </param>
-		/// <return>Snapped version of rotation. </return>
+		/// Get the rotation, snapped to specified degree segments.
 		/// </summary>
+		/// <param name="rotGrid">A Rotator specifying how to snap each component.</param>
+		/// <return>Snapped</return>
 		public FRotator GridSnap(FRotator rotGrid)
 			=> E_FRotator_GridSnap(this, rotGrid);
 		
 		
 		/// <summary>
-		/// <para>Initialize this Rotator based on an FString. The String is expected to contain P=, Y=, R=. </para>
+		/// Initialize this Rotator based on an FString. The String is expected to contain P=, Y=, R=.
 		/// <para>The FRotator will be bogus when InitFromString returns false. </para>
-		/// <param name="InSourceString">FString containing the rotator values. </param>
-		/// <return>true if the P,Y,R values were read successfully; false otherwise. </return>
 		/// </summary>
+		/// <param name="inSourceString">FString containing the rotator values.</param>
+		/// <return>true</return>
 		public bool InitFromString(string inSourceString)
 			=> E_FRotator_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
-		/// <para>Checks whether rotator is nearly zero within specified tolerance, when treated as an orientation. </para>
+		/// Checks whether rotator is nearly zero within specified tolerance, when treated as an orientation.
 		/// <para>This means that FRotator(0, 0, 360) is "zero", because it is the same final orientation as the zero rotator. </para>
-		/// <param name="Tolerance">Error Tolerance. </param>
-		/// <return>true if rotator is nearly zero, within specified tolerance, otherwise false. </return>
 		/// </summary>
+		/// <param name="tolerance">Error Tolerance.</param>
+		/// <return>true</return>
 		public bool IsNearlyZero(float tolerance)
 			=> E_FRotator_IsNearlyZero(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Checks whether this has exactly zero rotation, when treated as an orientation. </para>
+		/// Checks whether this has exactly zero rotation, when treated as an orientation.
 		/// <para>This means that FRotator(0, 0, 360) is "zero", because it is the same final orientation as the zero rotator. </para>
-		/// <return>true if this has exactly zero rotation, otherwise false. </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool IsZero()
 			=> E_FRotator_IsZero(this);
 		
 		
 		/// <summary>
-		/// <para>Convert a vector of floating-point Euler angles (in degrees) into a Rotator. Rotator now stored in degrees </para>
-		/// <param name="Euler">Euler angle vector. </param>
-		/// <return>A rotator from a Euler angle. </return>
+		/// Convert a vector of floating-point Euler angles (in degrees) into a Rotator. Rotator now stored in degrees
 		/// </summary>
+		/// <param name="euler">Euler angle vector.</param>
+		/// <return>A</return>
 		public FRotator MakeFromEuler(FVector euler)
 			=> E_FRotator_MakeFromEuler(this, euler);
 		
 		
 		/// <summary>
-		/// <para>In-place normalize, removes all winding and creates the "shortest route" rotation. </para>
+		/// In-place normalize, removes all winding and creates the "shortest route" rotation.
 		/// </summary>
 		public void Normalize()
 			=> E_FRotator_Normalize(this);
 		
 		
 		/// <summary>
-		/// <para>Clamps an angle to the range of (-180, 180]. </para>
-		/// <param name="Angle">The Angle to clamp. </param>
-		/// <return>The clamped angle. </return>
+		/// Clamps an angle to the range of (-180, 180].
 		/// </summary>
+		/// <param name="angle">The Angle to clamp.</param>
+		/// <return>The</return>
 		public float NormalizeAxis(float angle)
 			=> E_FRotator_NormalizeAxis(this, angle);
 		
 		
 		/// <summary>
-		/// <para>Get Rotation as a quaternion. </para>
-		/// <return>Rotation as a quaternion. </return>
+		/// Get Rotation as a quaternion.
 		/// </summary>
+		/// <return>Rotation</return>
 		public FQuat Quaternion()
 			=> E_FRotator_Quaternion(this);
 		
 		
 		/// <summary>
-		/// <para>Rotate a vector rotated by this rotator. </para>
-		/// <param name="V">The vector to rotate. </param>
-		/// <return>The rotated vector. </return>
+		/// Rotate a vector rotated by this rotator.
 		/// </summary>
+		/// <param name="v">The vector to rotate.</param>
+		/// <return>The</return>
 		public FVector RotateVector(FVector v)
 			=> E_FRotator_RotateVector(this, v);
 		
 		
 		/// <summary>
-		/// <para>Modify if necessary the passed in rotator to be the closest rotator to it based upon it's equivalent. </para>
+		/// Modify if necessary the passed in rotator to be the closest rotator to it based upon it's equivalent.
 		/// <para>This Rotator should be within (-180, 180], usually just constructed from a Matrix or a Quaternion. </para>
-		/// <param name="MakeClosest">In/Out] the Rotator we want to make closest to us. Should be between </param>
-		/// <para>(-180, 180]. This Rotator may change if we need to use different degree values to make it closer. </para>
+		/// (-180, 180]. This Rotator may change if we need to use different degree values to make it closer.
 		/// </summary>
+		/// <param name="makeClosest">In/Out] the Rotator we want to make closest to us. Should be between</param>
 		public void SetClosestToMe(FRotator makeClosest)
 			=> E_FRotator_SetClosestToMe(this, makeClosest);
 		
 		
 		/// <summary>
-		/// <para>Get a short textural representation of this vector, for compact readable logging. </para>
+		/// Get a short textural representation of this vector, for compact readable logging.
 		/// </summary>
 		public string ToCompactString()
 			=> E_FRotator_ToCompactString(this);
 		
 		
 		/// <summary>
-		/// <para>Get a textual representation of the vector. </para>
-		/// <return>Text describing the vector. </return>
+		/// Get a textual representation of the vector.
 		/// </summary>
+		/// <return>Text</return>
 		public override string ToString()
 			=> E_FRotator_ToString(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the vector rotated by the inverse of this rotator. </para>
-		/// <param name="V">The vector to rotate. </param>
-		/// <return>The rotated vector. </return>
+		/// Returns the vector rotated by the inverse of this rotator.
 		/// </summary>
+		/// <param name="v">The vector to rotate.</param>
+		/// <return>The</return>
 		public FVector UnrotateVector(FVector v)
 			=> E_FRotator_UnrotateVector(this, v);
 		
 		
 		/// <summary>
-		/// <para>Convert a rotation into a unit vector facing in its direction. </para>
-		/// <return>Rotation as a unit direction vector. </return>
+		/// Convert a rotation into a unit vector facing in its direction.
 		/// </summary>
+		/// <return>Rotation</return>
 		public FVector Vector()
 			=> E_FRotator_Vector(this);
 		

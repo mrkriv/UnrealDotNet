@@ -71,7 +71,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Actor that is the base </para>
+		/// Actor that is the base
 		/// </summary>
 		public AActor Base
 		{
@@ -99,7 +99,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Position relative to the base actor </para>
+		/// Position relative to the base actor
 		/// </summary>
 		public FVector Position
 		{
@@ -112,14 +112,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Clear base/position </para>
+		/// Clear base/position
 		/// </summary>
 		public void Clear()
 			=> E_FBasedPosition_Clear(this);
 		
 		
 		/// <summary>
-		/// <para>Updates base/position </para>
+		/// Updates base/position
 		/// </summary>
 		public void Set(AActor inBase, FVector inPosition)
 			=> E_FBasedPosition_Set(this, inBase, inPosition);

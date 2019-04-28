@@ -112,7 +112,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Horizontal adjustment per character, default is 0.0 </para>
+		/// Horizontal adjustment per character, default is 0.0
 		/// </summary>
 		public float HorizSpacingAdjust
 		{
@@ -128,7 +128,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Text content, can be multi line using <br> as line separator </para>
+		/// Text content, can be multi line using <br> as line separator
 		/// </summary>
 		public string Text
 		{
@@ -138,7 +138,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Vertical adjustment per character, default is 0.0 </para>
+		/// Vertical adjustment per character, default is 0.0
 		/// </summary>
 		public float VertSpacingAdjust
 		{
@@ -148,7 +148,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Vertical size of the fonts largest character in world units. Transform, XScale and YScale will affect final size. </para>
+		/// Vertical size of the fonts largest character in world units. Transform, XScale and YScale will affect final size.
 		/// </summary>
 		public float WorldSize
 		{
@@ -158,7 +158,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Horizontal scale, default is 1.0 </para>
+		/// Horizontal scale, default is 1.0
 		/// </summary>
 		public float XScale
 		{
@@ -168,7 +168,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Vertical scale, default is 1.0 </para>
+		/// Vertical scale, default is 1.0
 		/// </summary>
 		public float YScale
 		{
@@ -181,14 +181,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Get local size of text </para>
+		/// Get local size of text
 		/// </summary>
 		public FVector GetTextLocalSize()
 			=> E_UTextRenderComponent_GetTextLocalSize(this);
 		
 		
 		/// <summary>
-		/// <para>Get world space size of text </para>
+		/// Get world space size of text
 		/// </summary>
 		public FVector GetTextWorldSize()
 			=> E_UTextRenderComponent_GetTextWorldSize(this);
@@ -198,28 +198,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Change the text value and signal the primitives to be rebuilt </para>
+		/// Change the text value and signal the primitives to be rebuilt
 		/// </summary>
 		public void K2_SetText(string value)
 			=> E_UTextRenderComponent_K2_SetText(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the horizontal alignment and signal the primitives to be rebuilt </para>
+		/// Change the horizontal alignment and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetHorizontalAlignment(EHorizTextAligment value)
 			=> E_UTextRenderComponent_SetHorizontalAlignment(this, (byte)value);
 		
 		
 		/// <summary>
-		/// <para>Change the text horizontal spacing adjustment and signal the primitives to be rebuilt </para>
+		/// Change the text horizontal spacing adjustment and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetHorizSpacingAdjust(float value)
 			=> E_UTextRenderComponent_SetHorizSpacingAdjust(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the text value and signal the primitives to be rebuilt </para>
+		/// Change the text value and signal the primitives to be rebuilt
 		/// <para>The FString variant is deprecated in favor of the FText variant </para>
 		/// </summary>
 		public void SetTextString(string value)
@@ -227,42 +227,42 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Change the text value and signal the primitives to be rebuilt </para>
+		/// Change the text value and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetText(string value)
 			=> E_UTextRenderComponent_SetText_o1(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the vertical alignment and signal the primitives to be rebuilt </para>
+		/// Change the vertical alignment and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetVerticalAlignment(EVerticalTextAligment value)
 			=> E_UTextRenderComponent_SetVerticalAlignment(this, (byte)value);
 		
 		
 		/// <summary>
-		/// <para>Change the text vertical spacing adjustment and signal the primitives to be rebuilt </para>
+		/// Change the text vertical spacing adjustment and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetVertSpacingAdjust(float value)
 			=> E_UTextRenderComponent_SetVertSpacingAdjust(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the world size of the text and signal the primitives to be rebuilt </para>
+		/// Change the world size of the text and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetWorldSize(float value)
 			=> E_UTextRenderComponent_SetWorldSize(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the text X scale and signal the primitives to be rebuilt </para>
+		/// Change the text X scale and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetXScale(float value)
 			=> E_UTextRenderComponent_SetXScale(this, value);
 		
 		
 		/// <summary>
-		/// <para>Change the text Y scale and signal the primitives to be rebuilt </para>
+		/// Change the text Y scale and signal the primitives to be rebuilt
 		/// </summary>
 		public void SetYScale(float value)
 			=> E_UTextRenderComponent_SetYScale(this, value);

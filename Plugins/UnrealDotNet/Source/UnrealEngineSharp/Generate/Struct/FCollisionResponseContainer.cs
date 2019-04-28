@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>This constructor will set all channels to ECR_Block </para>
+		/// This constructor will set all channels to ECR_Block
 		/// </summary>
 		public FCollisionResponseContainer() :
 			base(E_CreateStruct_FCollisionResponseContainer(), false)
@@ -62,42 +62,42 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Take two response containers and create a new container where each element is the 'min' of the two inputs (ie Ignore and Block results in Ignore) </para>
+		/// Take two response containers and create a new container where each element is the 'min' of the two inputs (ie Ignore and Block results in Ignore)
 		/// </summary>
 		public FCollisionResponseContainer CreateMinContainer(FCollisionResponseContainer a, FCollisionResponseContainer b)
 			=> E_FCollisionResponseContainer_CreateMinContainer(this, a, b);
 		
 		
 		/// <summary>
-		/// <para>Returns the game-wide default collision response </para>
+		/// Returns the game-wide default collision response
 		/// </summary>
 		public FCollisionResponseContainer GetDefaultResponseContainer()
 			=> E_FCollisionResponseContainer_GetDefaultResponseContainer(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the response set on the specified channel </para>
+		/// Returns the response set on the specified channel
 		/// </summary>
 		public ECollisionResponse GetResponse(ECollisionChannel channel)
 			=> (ECollisionResponse)E_FCollisionResponseContainer_GetResponse(this, (byte)channel);
 		
 		
 		/// <summary>
-		/// <para>Replace the channels matching the old response with the new response </para>
+		/// Replace the channels matching the old response with the new response
 		/// </summary>
 		public void ReplaceChannels(ECollisionResponse oldResponse, ECollisionResponse newResponse)
 			=> E_FCollisionResponseContainer_ReplaceChannels(this, (byte)oldResponse, (byte)newResponse);
 		
 		
 		/// <summary>
-		/// <para>Set all channels to the specified response </para>
+		/// Set all channels to the specified response
 		/// </summary>
 		public void SetAllChannels(ECollisionResponse newResponse)
 			=> E_FCollisionResponseContainer_SetAllChannels(this, (byte)newResponse);
 		
 		
 		/// <summary>
-		/// <para>Set the response of a particular channel in the structure. </para>
+		/// Set the response of a particular channel in the structure.
 		/// </summary>
 		public void SetResponse(ECollisionChannel channel, ECollisionResponse newResponse)
 			=> E_FCollisionResponseContainer_SetResponse(this, (byte)channel, (byte)newResponse);

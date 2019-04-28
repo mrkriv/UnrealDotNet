@@ -390,7 +390,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The fixed framerate to use. </para>
+		/// The fixed framerate to use.
 		/// </summary>
 		public float FixedFrameRate
 		{
@@ -472,7 +472,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Script maximum loop iteration count used as a threshold to warn users about script execution runaway </para>
+		/// Script maximum loop iteration count used as a threshold to warn users about script execution runaway
 		/// </summary>
 		public int MaximumLoopIterationCount
 		{
@@ -518,7 +518,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum desired framerate setting </para>
+		/// Minimum desired framerate setting
 		/// </summary>
 		public float MinDesiredFrameRate
 		{
@@ -534,7 +534,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The distance of the camera's near clipping plane. </para>
+		/// The distance of the camera's near clipping plane.
 		/// </summary>
 		public float NearClipPlane
 		{
@@ -604,7 +604,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Fudge factor for tweaking the distance based miplevel determination </para>
+		/// Fudge factor for tweaking the distance based miplevel determination
 		/// </summary>
 		public float StreamingDistanceFactor
 		{
@@ -677,14 +677,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Queries informations about the current state dynamic resolution. </para>
+		/// Queries informations about the current state dynamic resolution.
 		/// </summary>
 		public void GetDynamicResolutionCurrentStateInfos(FDynamicResolutionStateInfos outInfos)
 			=> E_UEngine_GetDynamicResolutionCurrentStateInfos(this, outInfos);
 		
 		
 		/// <summary>
-		/// <para>Get the user setting for dynamic resolution. </para>
+		/// Get the user setting for dynamic resolution.
 		/// </summary>
 		public bool GetDynamicResolutionUserSetting()
 			=> E_UEngine_GetDynamicResolutionUserSetting(this);
@@ -694,7 +694,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the color to use for object selection </para>
+		/// Get the color to use for object selection
 		/// </summary>
 		public FLinearColor GetSelectedMaterialColor()
 			=> E_UEngine_GetSelectedMaterialColor(this);
@@ -710,61 +710,61 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets an override color to use instead of the user setting </para>
-		/// <param name="OverrideColor">The override color to use </param>
+		/// Sets an override color to use instead of the user setting
 		/// </summary>
+		/// <param name="overrideColor">The override color to use</param>
 		public void OverrideSelectedMaterialColor(FLinearColor overrideColor)
 			=> E_UEngine_OverrideSelectedMaterialColor(this, overrideColor);
 		
 		
 		/// <summary>
-		/// <para>Called at startup, in the middle of FEngineLoop::Init. </para>
+		/// Called at startup, in the middle of FEngineLoop::Init.
 		/// </summary>
 		public void ParseCommandline()
 			=> E_UEngine_ParseCommandline(this);
 		
 		
 		/// <summary>
-		/// <para>Pause dynamic resolution for this frame. </para>
+		/// Pause dynamic resolution for this frame.
 		/// </summary>
 		public void PauseDynamicResolution()
 			=> E_UEngine_PauseDynamicResolution(this);
 		
 		
 		/// <summary>
-		/// <para>Called at shutdown, just before the exit purge. </para>
+		/// Called at shutdown, just before the exit purge.
 		/// </summary>
 		public virtual void PreExit()
 			=> E_UEngine_PreExit(this);
 		
 		
 		/// <summary>
-		/// <para>Restores the selected material color back to the user setting </para>
+		/// Restores the selected material color back to the user setting
 		/// </summary>
 		public void RestoreSelectedMaterialColor()
 			=> E_UEngine_RestoreSelectedMaterialColor(this);
 		
 		
 		/// <summary>
-		/// <para>Resume dynamic resolution for this frame. </para>
+		/// Resume dynamic resolution for this frame.
 		/// </summary>
 		public void ResumeDynamicResolution()
 			=> E_UEngine_ResumeDynamicResolution(this);
 		
 		
 		/// <summary>
-		/// <para>Set the user setting for dynamic resolution. </para>
+		/// Set the user setting for dynamic resolution.
 		/// </summary>
 		public void SetDynamicResolutionUserSetting(bool enable)
 			=> E_UEngine_SetDynamicResolutionUserSetting(this, enable);
 		
 		
 		/// <summary>
-		/// <para>Sets the selected material color. </para>
+		/// Sets the selected material color.
 		/// <para>Do not use this if you plan to override the selected material color.  Use OverrideSelectedMaterialColor instead </para>
-		/// <para>This is set by the editor preferences </para>
-		/// <param name="SelectedMaterialColor">The new selection color </param>
+		/// This is set by the editor preferences
 		/// </summary>
+		/// <param name="selectedMaterialColor">The new selection color</param>
 		public void SetSelectedMaterialColor(FLinearColor inSelectedMaterialColor)
 			=> E_UEngine_SetSelectedMaterialColor(this, inSelectedMaterialColor);
 		
@@ -782,28 +782,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Start the game, separate from the initialize call to allow for post initialize configuration before the game starts. </para>
+		/// Start the game, separate from the initialize call to allow for post initialize configuration before the game starts.
 		/// </summary>
 		public virtual void Start()
 			=> E_UEngine_Start(this);
 		
 		
 		/// <summary>
-		/// <para>Update everything. </para>
+		/// Update everything.
 		/// </summary>
 		public virtual void Tick(float deltaSeconds, bool bIdleMode)
 			=> E_UEngine_Tick(this, deltaSeconds, bIdleMode);
 		
 		
 		/// <summary>
-		/// <para>Needs to be called when a world is added to broadcast messages. </para>
+		/// Needs to be called when a world is added to broadcast messages.
 		/// </summary>
 		public virtual void WorldAdded(UWorld world)
 			=> E_UEngine_WorldAdded(this, world);
 		
 		
 		/// <summary>
-		/// <para>Needs to be called when a world is destroyed to broadcast messages. </para>
+		/// Needs to be called when a world is destroyed to broadcast messages.
 		/// </summary>
 		public virtual void WorldDestroyed(UWorld inWorld)
 			=> E_UEngine_WorldDestroyed(this, inWorld);

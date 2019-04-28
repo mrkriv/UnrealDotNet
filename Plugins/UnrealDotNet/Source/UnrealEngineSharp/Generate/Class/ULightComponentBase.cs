@@ -99,7 +99,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the indirect lighting contribution from this light. </para>
+		/// Scales the indirect lighting contribution from this light.
 		/// <para>A value of 0 disables any GI from this light. Default is 1. </para>
 		/// </summary>
 		public float IndirectLightingIntensity
@@ -110,7 +110,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Total energy that the light emits. </para>
+		/// Total energy that the light emits.
 		/// </summary>
 		public float Intensity
 		{
@@ -120,7 +120,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Samples per pixel for ray tracing </para>
+		/// Samples per pixel for ray tracing
 		/// </summary>
 		public int SamplesPerPixel
 		{
@@ -130,7 +130,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Intensity of the volumetric scattering from this light.  This scales Intensity and LightColor. </para>
+		/// Intensity of the volumetric scattering from this light.  This scales Intensity and LightColor.
 		/// </summary>
 		public float VolumetricScatteringIntensity
 		{
@@ -143,14 +143,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Gets the light color as a linear color </para>
+		/// Gets the light color as a linear color
 		/// </summary>
 		public FLinearColor GetLightColor()
 			=> E_ULightComponentBase_GetLightColor(this);
 		
 		
 		/// <summary>
-		/// <para>Return True if a light's parameters as well as its position is static during gameplay, and can thus use static lighting. </para>
+		/// Return True if a light's parameters as well as its position is static during gameplay, and can thus use static lighting.
 		/// <para>A light with HasStaticLighting() == true will always have HasStaticShadowing() == true as well. </para>
 		/// </summary>
 		public bool HasStaticLighting()
@@ -158,16 +158,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Whether the light has static direct shadowing. </para>
+		/// Whether the light has static direct shadowing.
 		/// <para>The light may still have dynamic brightness and color. </para>
-		/// <para>The light may or may not also have static lighting. </para>
+		/// The light may or may not also have static lighting.
 		/// </summary>
 		public bool HasStaticShadowing()
 			=> E_ULightComponentBase_HasStaticShadowing(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the light's Mobility is set to Movable </para>
+		/// Returns true if the light's Mobility is set to Movable
 		/// </summary>
 		public bool IsMovable()
 			=> E_ULightComponentBase_IsMovable(this);
@@ -180,7 +180,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets whether this light casts shadows </para>
+		/// Sets whether this light casts shadows
 		/// </summary>
 		public void SetCastShadows(bool bNewValue)
 			=> E_ULightComponentBase_SetCastShadows(this, bNewValue);
@@ -193,14 +193,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update/reset light GUIDs. </para>
+		/// Update/reset light GUIDs.
 		/// </summary>
 		public virtual void UpdateLightGUIDs()
 			=> E_ULightComponentBase_UpdateLightGUIDs(this);
 		
 		
 		/// <summary>
-		/// <para>Validate light GUIDs and resets as appropriate. </para>
+		/// Validate light GUIDs and resets as appropriate.
 		/// </summary>
 		public void ValidateLightGUIDs()
 			=> E_ULightComponentBase_ValidateLightGUIDs(this);

@@ -42,7 +42,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Axis Key these properties apply to </para>
+		/// Axis Key these properties apply to
 		/// </summary>
 		public string AxisKeyName
 		{
@@ -52,7 +52,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Properties for the Axis Key </para>
+		/// Properties for the Axis Key
 		/// </summary>
 		public FInputAxisProperties AxisProperties
 		{

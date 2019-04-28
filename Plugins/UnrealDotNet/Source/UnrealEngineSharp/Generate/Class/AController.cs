@@ -198,7 +198,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>PlayerState containing replicated information about the player using this controller (only exists for players, not NPCs). </para>
+		/// PlayerState containing replicated information about the player using this controller (only exists for players, not NPCs).
 		/// </summary>
 		public APlayerState PlayerState
 		{
@@ -217,44 +217,44 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add dependency that makes us tick before the given Pawn. This minimizes latency between input processing and Pawn movement. </para>
+		/// Add dependency that makes us tick before the given Pawn. This minimizes latency between input processing and Pawn movement.
 		/// </summary>
 		protected virtual void AddPawnTickDependency(APawn newPawn)
 			=> E_AController_AddPawnTickDependency(this, newPawn);
 		
 		
 		/// <summary>
-		/// <para>Physically attach the Controller to the specified Pawn, so that our position reflects theirs. </para>
+		/// Physically attach the Controller to the specified Pawn, so that our position reflects theirs.
 		/// <para>The attachment persists during possession of the pawn. The Controller's rotation continues to match the ControlRotation. </para>
-		/// <para>Attempting to attach to a nullptr Pawn will call DetachFromPawn() instead. </para>
+		/// Attempting to attach to a nullptr Pawn will call DetachFromPawn() instead.
 		/// </summary>
 		protected virtual void AttachToPawn(APawn inPawn)
 			=> E_AController_AttachToPawn(this, inPawn);
 		
 		
 		/// <summary>
-		/// <para>State entered when inactive (no possessed pawn, not spectating, etc). </para>
+		/// State entered when inactive (no possessed pawn, not spectating, etc).
 		/// </summary>
 		protected virtual void BeginInactiveState()
 			=> E_AController_BeginInactiveState(this);
 		
 		
 		/// <summary>
-		/// <para>DEPRECATED! Use the standard "Cast To" node instead. Casts this Controller to a Player Controller, if possible. </para>
+		/// DEPRECATED! Use the standard "Cast To" node instead. Casts this Controller to a Player Controller, if possible.
 		/// </summary>
 		public APlayerController CastToPlayerController()
 			=> E_AController_CastToPlayerController(this);
 		
 		
 		/// <summary>
-		/// <para>Change the current state to named state </para>
+		/// Change the current state to named state
 		/// </summary>
 		public virtual void ChangeState(string newState)
 			=> E_AController_ChangeState(this, newState);
 		
 		
 		/// <summary>
-		/// <para>Called from Destroyed().  Cleans up PlayerState. </para>
+		/// Called from Destroyed().  Cleans up PlayerState.
 		/// </summary>
 		public virtual void CleanupPlayerState()
 			=> E_AController_CleanupPlayerState(this);
@@ -267,51 +267,51 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when the level this controller is in is unloaded via streaming. </para>
+		/// Called when the level this controller is in is unloaded via streaming.
 		/// </summary>
 		public virtual void CurrentLevelUnloaded()
 			=> E_AController_CurrentLevelUnloaded(this);
 		
 		
 		/// <summary>
-		/// <para>Detach the RootComponent from its parent, but only if bAttachToPawn is true and it was attached to a Pawn. </para>
+		/// Detach the RootComponent from its parent, but only if bAttachToPawn is true and it was attached to a Pawn.
 		/// </summary>
 		protected virtual void DetachFromPawn()
 			=> E_AController_DetachFromPawn(this);
 		
 		
 		/// <summary>
-		/// <para>Called when leaving the inactive state </para>
+		/// Called when leaving the inactive state
 		/// </summary>
 		protected virtual void EndInactiveState()
 			=> E_AController_EndInactiveState(this);
 		
 		
 		/// <summary>
-		/// <para>GameMode failed to spawn pawn for me. </para>
+		/// GameMode failed to spawn pawn for me.
 		/// </summary>
 		public virtual void FailedToSpawnPawn()
 			=> E_AController_FailedToSpawnPawn(this);
 		
 		
 		/// <summary>
-		/// <para>Called from game mode upon end of the game, used to transition to proper state. </para>
-		/// <param name="EndGameFocus">Actor to set as the view target on end game </param>
-		/// <param name="bIsWinner">true if this controller is on winning team </param>
+		/// Called from game mode upon end of the game, used to transition to proper state.
 		/// </summary>
+		/// <param name="endGameFocus">Actor to set as the view target on end game</param>
+		/// <param name="bIsWinner">true if this controller is on winning team</param>
 		public virtual void GameHasEnded(AActor endGameFocus, bool bIsWinner)
 			=> E_AController_GameHasEnded(this, endGameFocus, bIsWinner);
 		
 		
 		/// <summary>
-		/// <para>Getter for Character </para>
+		/// Getter for Character
 		/// </summary>
 		public ACharacter GetCharacter()
 			=> E_AController_GetCharacter(this);
 		
 		
 		/// <summary>
-		/// <para>Get the control rotation. This is the full aim rotation, which may be different than a camera orientation (for example in a third person view), </para>
+		/// Get the control rotation. This is the full aim rotation, which may be different than a camera orientation (for example in a third person view),
 		/// <para>and may differ from the rotation of the controlled Pawn (which may choose not to visually pitch or roll, for example). </para>
 		/// </summary>
 		public virtual FRotator GetControlRotation()
@@ -319,122 +319,122 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the desired pawn target rotation </para>
+		/// Get the desired pawn target rotation
 		/// </summary>
 		public virtual FRotator GetDesiredRotation()
 			=> E_AController_GetDesiredRotation(this);
 		
 		
 		/// <summary>
-		/// <para>Getter for Pawn </para>
+		/// Getter for Pawn
 		/// </summary>
 		public APawn GetPawn()
 			=> E_AController_GetPawn(this);
 		
 		
 		/// <summary>
-		/// <para>Returns Player's Point of View </para>
+		/// Returns Player's Point of View
 		/// <para>For the AI this means the Pawn's 'Eyes' ViewPoint </para>
-		/// <para>For a Human player, this means the Camera's ViewPoint </para>
+		/// For a Human player, this means the Camera's ViewPoint
 		/// <para>@output	out_Location, view location of player </para>
-		/// <para>@output	out_rotation, view rotation of player </para>
+		/// @output	out_rotation, view rotation of player
 		/// </summary>
 		public virtual void GetPlayerViewPoint(FVector location, FRotator rotation)
 			=> E_AController_GetPlayerViewPoint(this, location, rotation);
 		
 		
 		/// <summary>
-		/// <return>the name of the current state </return>
 		/// </summary>
+		/// <return>the</return>
 		public string GetStateName()
 			=> E_AController_GetStateName(this);
 		
 		
 		/// <summary>
-		/// <para>Returns TransformComponent subobject </para>
+		/// Returns TransformComponent subobject
 		/// </summary>
 		protected USceneComponent GetTransformComponent()
 			=> E_AController_GetTransformComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Get the actor the controller is looking at </para>
+		/// Get the actor the controller is looking at
 		/// </summary>
 		public virtual AActor GetViewTarget()
 			=> E_AController_GetViewTarget(this);
 		
 		
 		/// <summary>
-		/// <para>spawns and initializes the PlayerState for this Controller </para>
+		/// spawns and initializes the PlayerState for this Controller
 		/// </summary>
 		public virtual void InitPlayerState()
 			=> E_AController_InitPlayerState(this);
 		
 		
 		/// <summary>
-		/// <para>States (uses FNames for replication, correlated to state flags) </para>
-		/// <param name="StateName">the name of the state to test against </param>
-		/// <return>true if current state is StateName </return>
+		/// States (uses FNames for replication, correlated to state flags)
 		/// </summary>
+		/// <param name="stateName">the name of the state to test against</param>
+		/// <return>true</return>
 		public bool IsInState(string inStateName)
 			=> E_AController_IsInState(this, inStateName);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this Controller is a local controller. </para>
+		/// Returns whether this Controller is a local controller.
 		/// </summary>
 		public virtual bool IsLocalController()
 			=> E_AController_IsLocalController(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this Controller is a locally controlled PlayerController. </para>
+		/// Returns whether this Controller is a locally controlled PlayerController.
 		/// </summary>
 		public bool IsLocalPlayerController()
 			=> E_AController_IsLocalPlayerController(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if look input is ignored. </para>
+		/// Returns true if look input is ignored.
 		/// </summary>
 		public virtual bool IsLookInputIgnored()
 			=> E_AController_IsLookInputIgnored(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if movement input is ignored. </para>
+		/// Returns true if movement input is ignored.
 		/// </summary>
 		public virtual bool IsMoveInputIgnored()
 			=> E_AController_IsMoveInputIgnored(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this Controller is a PlayerController. </para>
+		/// Returns whether this Controller is a PlayerController.
 		/// </summary>
 		public bool IsPlayerController()
 			=> E_AController_IsPlayerController(this);
 		
 		
 		/// <summary>
-		/// <para>Return the Pawn that is currently 'controlled' by this PlayerController </para>
+		/// Return the Pawn that is currently 'controlled' by this PlayerController
 		/// </summary>
 		public APawn GetControlledPawn()
 			=> E_AController_K2_GetPawn(this);
 		
 		
 		/// <summary>
-		/// <para>Checks line to center and top of other actor </para>
-		/// <param name="Other">is the actor whose visibility is being checked. </param>
-		/// <param name="ViewPoint">is eye position visibility is being checked from.  If vect(0,0,0) passed in, uses current viewtarget's eye position. </param>
-		/// <param name="bAlternateChecks">used only in AIController implementation </param>
-		/// <return>true if controller's pawn can see Other actor. </return>
+		/// Checks line to center and top of other actor
 		/// </summary>
+		/// <param name="other">is the actor whose visibility is being checked.</param>
+		/// <param name="viewPoint">is eye position visibility is being checked from.  If vect(0,0,0) passed in, uses current viewtarget's eye position.</param>
+		/// <param name="bAlternateChecks">used only in AIController implementation</param>
+		/// <return>true</return>
 		public virtual bool LineOfSightTo(AActor other, FVector viewPoint, bool bAlternateChecks)
 			=> E_AController_LineOfSightTo(this, other, viewPoint, bAlternateChecks);
 		
 		
 		/// <summary>
-		/// <para>Overridable native function for when this controller possesses a pawn. </para>
+		/// Overridable native function for when this controller possesses a pawn.
 		/// </summary>
 		protected virtual void OnPossess(APawn inPawn)
 			=> E_AController_OnPossess(this, inPawn);
@@ -447,14 +447,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Overridable native function for when this controller unpossesses its pawn. </para>
+		/// Overridable native function for when this controller unpossesses its pawn.
 		/// </summary>
 		protected virtual void OnUnPossess()
 			=> E_AController_OnUnPossess(this);
 		
 		
 		/// <summary>
-		/// <para>Called to unpossess our pawn because it is going to be destroyed. </para>
+		/// Called to unpossess our pawn because it is going to be destroyed.
 		/// <para>(other unpossession handled by UnPossess()) </para>
 		/// </summary>
 		public virtual void PawnPendingDestroy(APawn inPawn)
@@ -462,119 +462,119 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Handles attaching this controller to the specified pawn. </para>
+		/// Handles attaching this controller to the specified pawn.
 		/// <para>Only runs on the network authority (where HasAuthority() returns true). </para>
-		/// <param name="InPawn">The Pawn to be possessed. </param>
-		/// <para>@see HasAuthority() </para>
+		/// <see cref="HasAuthority"/>
 		/// </summary>
+		/// <param name="inPawn">The Pawn to be possessed.</param>
 		public virtual void Possess(APawn inPawn)
 			=> E_AController_Possess(this, inPawn);
 		
 		
 		/// <summary>
-		/// <para>Blueprint implementable event to react to the controller possessing a pawn </para>
+		/// Blueprint implementable event to react to the controller possessing a pawn
 		/// </summary>
 		protected void ReceivePossess(APawn possessedPawn)
 			=> E_AController_ReceivePossess(this, possessedPawn);
 		
 		
 		/// <summary>
-		/// <para>Blueprint implementable event to react to the controller unpossessing a pawn </para>
+		/// Blueprint implementable event to react to the controller unpossessing a pawn
 		/// </summary>
 		protected void ReceiveUnPossess(APawn unpossessedPawn)
 			=> E_AController_ReceiveUnPossess(this, unpossessedPawn);
 		
 		
 		/// <summary>
-		/// <para>Remove dependency that makes us tick before the given Pawn. </para>
+		/// Remove dependency that makes us tick before the given Pawn.
 		/// </summary>
 		protected virtual void RemovePawnTickDependency(APawn inOldPawn)
 			=> E_AController_RemovePawnTickDependency(this, inOldPawn);
 		
 		
 		/// <summary>
-		/// <para>Reset move and look input ignore flags. </para>
+		/// Reset move and look input ignore flags.
 		/// </summary>
 		public virtual void ResetIgnoreInputFlags()
 			=> E_AController_ResetIgnoreInputFlags(this);
 		
 		
 		/// <summary>
-		/// <para>Stops ignoring look input by resetting the ignore look input state. </para>
+		/// Stops ignoring look input by resetting the ignore look input state.
 		/// </summary>
 		public virtual void ResetIgnoreLookInput()
 			=> E_AController_ResetIgnoreLookInput(this);
 		
 		
 		/// <summary>
-		/// <para>Stops ignoring move input by resetting the ignore move input state. </para>
+		/// Stops ignoring move input by resetting the ignore move input state.
 		/// </summary>
 		public virtual void ResetIgnoreMoveInput()
 			=> E_AController_ResetIgnoreMoveInput(this);
 		
 		
 		/// <summary>
-		/// <para>Set the control rotation. The RootComponent's rotation will also be updated to match it if RootComponent->bAbsoluteRotation is true. </para>
+		/// Set the control rotation. The RootComponent's rotation will also be updated to match it if RootComponent->bAbsoluteRotation is true.
 		/// </summary>
 		public virtual void SetControlRotation(FRotator newRotation)
 			=> E_AController_SetControlRotation(this, newRotation);
 		
 		
 		/// <summary>
-		/// <para>Locks or unlocks look input, consecutive calls stack up and require the same amount of calls to undo, or can all be undone using ResetIgnoreLookInput. </para>
-		/// <param name="bNewLookInput">If true, look input is ignored. If false, input is not ignored. </param>
+		/// Locks or unlocks look input, consecutive calls stack up and require the same amount of calls to undo, or can all be undone using ResetIgnoreLookInput.
 		/// </summary>
+		/// <param name="bNewLookInput">If true, look input is ignored. If false, input is not ignored.</param>
 		public virtual void SetIgnoreLookInput(bool bNewLookInput)
 			=> E_AController_SetIgnoreLookInput(this, bNewLookInput);
 		
 		
 		/// <summary>
-		/// <para>Locks or unlocks movement input, consecutive calls stack up and require the same amount of calls to undo, or can all be undone using ResetIgnoreMoveInput. </para>
-		/// <param name="bNewMoveInput">If true, move input is ignored. If false, input is not ignored. </param>
+		/// Locks or unlocks movement input, consecutive calls stack up and require the same amount of calls to undo, or can all be undone using ResetIgnoreMoveInput.
 		/// </summary>
+		/// <param name="bNewMoveInput">If true, move input is ignored. If false, input is not ignored.</param>
 		public virtual void SetIgnoreMoveInput(bool bNewMoveInput)
 			=> E_AController_SetIgnoreMoveInput(this, bNewMoveInput);
 		
 		
 		/// <summary>
-		/// <para>Set the initial location and rotation of the controller, as well as the control rotation. Typically used when the controller is first created. </para>
+		/// Set the initial location and rotation of the controller, as well as the control rotation. Typically used when the controller is first created.
 		/// </summary>
 		public virtual void SetInitialLocationAndRotation(FVector newLocation, FRotator newRotation)
 			=> E_AController_SetInitialLocationAndRotation(this, newLocation, newRotation);
 		
 		
 		/// <summary>
-		/// <para>Setter for Pawn. Normally should only be used internally when possessing/unpossessing a Pawn. </para>
+		/// Setter for Pawn. Normally should only be used internally when possessing/unpossessing a Pawn.
 		/// </summary>
 		public virtual void SetPawn(APawn inPawn)
 			=> E_AController_SetPawn(this, inPawn);
 		
 		
 		/// <summary>
-		/// <para>Calls SetPawn and RepNotify locally </para>
+		/// Calls SetPawn and RepNotify locally
 		/// </summary>
 		public void SetPawnFromRep(APawn inPawn)
 			=> E_AController_SetPawnFromRep(this, inPawn);
 		
 		
 		/// <summary>
-		/// <para>Aborts the move the controller is currently performing </para>
+		/// Aborts the move the controller is currently performing
 		/// </summary>
 		public virtual void StopMovement()
 			=> E_AController_StopMovement(this);
 		
 		
 		/// <summary>
-		/// <para>Called to unpossess our pawn for any reason that is not the pawn being destroyed (destruction handled by PawnDestroyed()). </para>
+		/// Called to unpossess our pawn for any reason that is not the pawn being destroyed (destruction handled by PawnDestroyed()).
 		/// </summary>
 		public virtual void UnPossess()
 			=> E_AController_UnPossess(this);
 		
 		
 		/// <summary>
-		/// <para>If controller has any navigation-related components then this function </para>
+		/// If controller has any navigation-related components then this function
 		/// <para>makes them update their cached data </para>
-		/// <para>DEPRECATED: this functionality has been taken over by PathFollowingComponent </para>
+		/// DEPRECATED: this functionality has been taken over by PathFollowingComponent
 		/// <para>by observing newly possessed pawns (via OnNewPawn) </para>
 		/// </summary>
 		public virtual void UpdateNavigationComponents()

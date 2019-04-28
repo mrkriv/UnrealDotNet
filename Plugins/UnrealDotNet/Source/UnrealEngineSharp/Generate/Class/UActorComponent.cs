@@ -404,7 +404,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Can this component be destroyed (via K2_DestroyComponent) by any parent </para>
+		/// Can this component be destroyed (via K2_DestroyComponent) by any parent
 		/// </summary>
 		public byte bAllowAnyoneToDestroyMe
 		{
@@ -414,7 +414,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Can we tick this concurrently on other threads? </para>
+		/// Can we tick this concurrently on other threads?
 		/// </summary>
 		public byte bAllowConcurrentTick
 		{
@@ -424,7 +424,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether the component is activated at creation or must be explicitly activated. </para>
+		/// Whether the component is activated at creation or must be explicitly activated.
 		/// </summary>
 		public byte bAutoActivate
 		{
@@ -434,7 +434,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Does this component automatically register with its owner </para>
+		/// Does this component automatically register with its owner
 		/// </summary>
 		public byte bAutoRegister
 		{
@@ -444,7 +444,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True if this component can be modified when it was inherited from a parent actor class </para>
+		/// True if this component can be modified when it was inherited from a parent actor class
 		/// </summary>
 		public byte bEditableWhenInherited
 		{
@@ -454,7 +454,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether the component is currently active. </para>
+		/// Whether the component is currently active.
 		/// </summary>
 		public byte bIsActive
 		{
@@ -464,7 +464,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, the component will be excluded from non-editor builds </para>
+		/// If true, the component will be excluded from non-editor builds
 		/// </summary>
 		public byte bIsEditorOnly
 		{
@@ -474,7 +474,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Cached navigation relevancy flag for collision updates </para>
+		/// Cached navigation relevancy flag for collision updates
 		/// </summary>
 		public byte bNavigationRelevant
 		{
@@ -484,7 +484,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this component never needs a render update. </para>
+		/// If true, this component never needs a render update.
 		/// </summary>
 		public byte bNeverNeedsRenderUpdate
 		{
@@ -494,7 +494,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Should this component be ticked in the editor </para>
+		/// Should this component be ticked in the editor
 		/// </summary>
 		public byte bTickInEditor
 		{
@@ -504,7 +504,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, we call the virtual BeginPlay </para>
+		/// If true, we call the virtual BeginPlay
 		/// </summary>
 		public byte bWantsBeginPlay
 		{
@@ -514,7 +514,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, we call the virtual InitializeComponent </para>
+		/// If true, we call the virtual InitializeComponent
 		/// </summary>
 		public byte bWantsInitializeComponent
 		{
@@ -524,7 +524,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Main tick function for the Component </para>
+		/// Main tick function for the Component
 		/// </summary>
 		public FActorComponentTickFunction PrimaryComponentTick
 		{
@@ -536,7 +536,7 @@ namespace UnrealEngine
 		#region Events
 		
 		/// <summary>
-		/// <para>Called when the component has been activated, with parameter indicating if it was from a reset </para>
+		/// Called when the component has been activated, with parameter indicating if it was from a reset
 		/// </summary>
 		public event FActorComponentActivatedSignature OnComponentActivated
 		{
@@ -563,7 +563,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Called when the component has been deactivated </para>
+		/// Called when the component has been deactivated
 		/// </summary>
 		public event FActorComponentDeactivateSignature OnComponentDeactivated
 		{
@@ -593,55 +593,55 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Activates the SceneComponent, should be overridden by native child classes. </para>
-		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
+		/// Activates the SceneComponent, should be overridden by native child classes.
 		/// </summary>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false.</param>
 		public virtual void Activate(bool bReset)
 			=> E_UActorComponent_Activate(this, bReset);
 		
 		
 		/// <summary>
-		/// <para>Give a readable name for this component, including asset name if applicable </para>
+		/// Give a readable name for this component, including asset name if applicable
 		/// </summary>
 		public virtual UObject AdditionalStatObject()
 			=> E_UActorComponent_AdditionalStatObject(this);
 		
 		
 		/// <summary>
-		/// <para>Make this component tick after PrerequisiteActor </para>
+		/// Make this component tick after PrerequisiteActor
 		/// </summary>
 		public virtual void AddTickPrerequisiteActor(AActor prerequisiteActor)
 			=> E_UActorComponent_AddTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
-		/// <para>Make this component tick after PrerequisiteComponent. </para>
+		/// Make this component tick after PrerequisiteComponent.
 		/// </summary>
 		public virtual void AddTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
 			=> E_UActorComponent_AddTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
-		/// <para>Check whether the component class allows reregistration during ReregisterAllComponents </para>
+		/// Check whether the component class allows reregistration during ReregisterAllComponents
 		/// </summary>
 		public bool AllowReregistration()
 			=> E_UActorComponent_AllowReregistration(this);
 		
 		
 		/// <summary>
-		/// <para>Called by owner actor on position shifting </para>
+		/// Called by owner actor on position shifting
 		/// <para>Component should update all relevant data structures to reflect new actor location </para>
-		/// <param name="InWorldOffset">Offset vector the actor shifted by </param>
-		/// <param name="bWorldShift">Whether this call is part of whole world shifting </param>
 		/// </summary>
+		/// <param name="inWorldOffset">Offset vector the actor shifted by</param>
+		/// <param name="bWorldShift">Whether this call is part of whole world shifting</param>
 		public virtual void ApplyWorldOffset(FVector inOffset, bool bWorldShift)
 			=> E_UActorComponent_ApplyWorldOffset(this, inOffset, bWorldShift);
 		
 		
 		/// <summary>
-		/// <para>BeginsPlay for the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
+		/// BeginsPlay for the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component).
 		/// <para>All Components (that want initialization) in the level will be Initialized on load before any </para>
-		/// <para>Actor/Component gets BeginPlay. </para>
+		/// Actor/Component gets BeginPlay.
 		/// <para>Requires component to be registered and initialized. </para>
 		/// </summary>
 		public virtual void BeginPlay()
@@ -649,42 +649,42 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Can this component potentially influence navigation </para>
+		/// Can this component potentially influence navigation
 		/// </summary>
 		public bool CanEverAffectNavigation()
 			=> E_UActorComponent_CanEverAffectNavigation(this);
 		
 		
 		/// <summary>
-		/// <para>If we belong to a world, clear the request to do a deferred update. </para>
+		/// If we belong to a world, clear the request to do a deferred update.
 		/// </summary>
 		public void ClearNeedEndOfFrameUpdate()
 			=> E_UActorComponent_ClearNeedEndOfFrameUpdate(this);
 		
 		
 		/// <summary>
-		/// <para>See if this component contains the supplied tag </para>
+		/// See if this component contains the supplied tag
 		/// </summary>
 		public bool ComponentHasTag(string tag)
 			=> E_UActorComponent_ComponentHasTag(this, tag);
 		
 		
 		/// <summary>
-		/// <para>See if this component is in the persistent level </para>
+		/// See if this component is in the persistent level
 		/// </summary>
 		public bool ComponentIsInPersistentLevel(bool bIncludeLevelStreamingPersistent)
 			=> E_UActorComponent_ComponentIsInPersistentLevel(this, bIncludeLevelStreamingPersistent);
 		
 		
 		/// <summary>
-		/// <para>Create any physics engine information for this component </para>
+		/// Create any physics engine information for this component
 		/// </summary>
 		public void CreatePhysicsState()
 			=> E_UActorComponent_CreatePhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Used to create any rendering thread information for this component </para>
+		/// Used to create any rendering thread information for this component
 		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void CreateRenderState_Concurrent()
@@ -692,28 +692,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Deactivates the SceneComponent. </para>
+		/// Deactivates the SceneComponent.
 		/// </summary>
 		public virtual void Deactivate()
 			=> E_UActorComponent_Deactivate(this);
 		
 		
 		/// <summary>
-		/// <para>Unregister the component, remove it from its outer Actor's Components array and mark for pending kill. </para>
+		/// Unregister the component, remove it from its outer Actor's Components array and mark for pending kill.
 		/// </summary>
 		public virtual void DestroyComponent(bool bPromoteChildren)
 			=> E_UActorComponent_DestroyComponent(this, bPromoteChildren);
 		
 		
 		/// <summary>
-		/// <para>Shut down any physics engine structure for this component </para>
+		/// Shut down any physics engine structure for this component
 		/// </summary>
 		public void DestroyPhysicsState()
 			=> E_UActorComponent_DestroyPhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Used to shut down any rendering thread structure for this component </para>
+		/// Used to shut down any rendering thread structure for this component
 		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void DestroyRenderState_Concurrent()
@@ -721,66 +721,66 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Initializes the list of properties that are modified by the UserConstructionScript </para>
+		/// Initializes the list of properties that are modified by the UserConstructionScript
 		/// </summary>
 		public void DetermineUCSModifiedProperties()
 			=> E_UActorComponent_DetermineUCSModifiedProperties(this);
 		
 		
 		/// <summary>
-		/// <para>Uses the bRenderStateDirty/bRenderTransformDirty to perform any necessary work on this component. </para>
+		/// Uses the bRenderStateDirty/bRenderTransformDirty to perform any necessary work on this component.
 		/// <para>Do not call this directly, call MarkRenderStateDirty, MarkRenderDynamicDataDirty, </para>
-		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
+		/// @warning This is called concurrently on multiple threads (but never the same component concurrently)
 		/// </summary>
 		public void DoDeferredRenderUpdates_Concurrent()
 			=> E_UActorComponent_DoDeferredRenderUpdates_Concurrent(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if this type of component can ever replicate, override to disable the default behavior </para>
+		/// Returns true if this type of component can ever replicate, override to disable the default behavior
 		/// </summary>
 		public virtual bool GetComponentClassCanReplicate()
 			=> E_UActorComponent_GetComponentClassCanReplicate(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the tick interval for this component's primary tick function, which is the frequency in seconds at which it will be executed </para>
+		/// Returns the tick interval for this component's primary tick function, which is the frequency in seconds at which it will be executed
 		/// </summary>
 		public float GetComponentTickInterval()
 			=> E_UActorComponent_GetComponentTickInterval(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether replication is enabled or not. </para>
+		/// Returns whether replication is enabled or not.
 		/// </summary>
 		public bool GetIsReplicated()
 			=> E_UActorComponent_GetIsReplicated(this);
 		
 		
 		/// <summary>
-		/// <para>Get the network mode (dedicated server, client, standalone, etc) for this component. </para>
-		/// <para>@see IsNetMode() </para>
+		/// Get the network mode (dedicated server, client, standalone, etc) for this component.
+		/// <see cref="IsNetMode"/>
 		/// </summary>
 		public ENetMode GetNetMode()
 			=> (ENetMode)E_UActorComponent_GetNetMode(this);
 		
 		
 		/// <summary>
-		/// <para>Follow the Outer chain to get the  AActor  that 'Owns' this component </para>
+		/// Follow the Outer chain to get the  AActor  that 'Owns' this component
 		/// </summary>
 		public AActor GetOwner()
 			=> E_UActorComponent_GetOwner(this);
 		
 		
 		/// <summary>
-		/// <para>Get the network role of the Owner, or ROLE_None if there is no owner. </para>
+		/// Get the network role of the Owner, or ROLE_None if there is no owner.
 		/// </summary>
 		public ENetRole GetOwnerRole()
 			=> (ENetRole)E_UActorComponent_GetOwnerRole(this);
 		
 		
 		/// <summary>
-		/// <para>Returns a readable name for this component, including the asset name if applicable </para>
+		/// Returns a readable name for this component, including the asset name if applicable
 		/// <para>By default this appends a space plus AdditionalStatObject() </para>
 		/// </summary>
 		public virtual string GetReadableName()
@@ -788,268 +788,268 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Makes sure navigation system has up to date information regarding component's navigation relevancy </para>
+		/// Makes sure navigation system has up to date information regarding component's navigation relevancy
 		/// <para>and if it can affect navigation at all </para>
-		/// <param name="bForceUpdate">by default updating navigation system will take place only if the component has </param>
-		/// <para>already been registered. Setting bForceUpdate to true overrides that check </para>
+		/// already been registered. Setting bForceUpdate to true overrides that check
 		/// </summary>
+		/// <param name="bForceUpdate">by default updating navigation system will take place only if the component has</param>
 		protected void HandleCanEverAffectNavigationChange(bool bForceUpdate = false)
 			=> E_UActorComponent_HandleCanEverAffectNavigationChange(this, bForceUpdate);
 		
 		
 		/// <summary>
-		/// <para>Indicates that OnCreatedComponent has been called, but OnDestroyedComponent has not yet </para>
+		/// Indicates that OnCreatedComponent has been called, but OnDestroyedComponent has not yet
 		/// </summary>
 		public bool HasBeenCreated()
 			=> E_UActorComponent_HasBeenCreated(this);
 		
 		
 		/// <summary>
-		/// <para>Indicates that InitializeComponent has been called, but UninitializeComponent has not yet </para>
+		/// Indicates that InitializeComponent has been called, but UninitializeComponent has not yet
 		/// </summary>
 		public bool HasBeenInitialized()
 			=> E_UActorComponent_HasBeenInitialized(this);
 		
 		
 		/// <summary>
-		/// <para>Indicates that BeginPlay has been called, but EndPlay has not yet </para>
+		/// Indicates that BeginPlay has been called, but EndPlay has not yet
 		/// </summary>
 		public bool HasBegunPlay()
 			=> E_UActorComponent_HasBegunPlay(this);
 		
 		
 		/// <summary>
-		/// <para>Used to check that DestroyPhysicsState() is working correctly </para>
+		/// Used to check that DestroyPhysicsState() is working correctly
 		/// </summary>
 		protected virtual bool HasValidPhysicsState()
 			=> E_UActorComponent_HasValidPhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Initializes the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component). </para>
+		/// Initializes the component.  Occurs at level startup or actor spawn. This is before BeginPlay (Actor or Component).
 		/// <para>All Components in the level will be Initialized on load before any Actor/Component gets BeginPlay </para>
-		/// <para>Requires component to be registered, and bWantsInitializeComponent to be true. </para>
+		/// Requires component to be registered, and bWantsInitializeComponent to be true.
 		/// </summary>
 		public virtual void InitializeComponent()
 			=> E_UActorComponent_InitializeComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Invalidate lighting cache with default options. </para>
+		/// Invalidate lighting cache with default options.
 		/// </summary>
 		public void InvalidateLightingCache()
 			=> E_UActorComponent_InvalidateLightingCache(this);
 		
 		
 		/// <summary>
-		/// <para>Called when this actor component has moved, allowing it to discard statically cached lighting information. </para>
+		/// Called when this actor component has moved, allowing it to discard statically cached lighting information.
 		/// </summary>
 		public virtual void InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 			=> E_UActorComponent_InvalidateLightingCacheDetailed(this, bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the component is active or not </para>
-		/// <return>The active state of the component. </return>
+		/// Returns whether the component is active or not
 		/// </summary>
+		/// <return>The</return>
 		public virtual bool IsActive()
 			=> E_UActorComponent_IsActive(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the component is in the process of being destroyed. </para>
+		/// Returns whether the component is in the process of being destroyed.
 		/// </summary>
 		public bool IsComponentBeingDestroyed()
 			=> E_UActorComponent_IsBeingDestroyed(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this component has tick enabled or not </para>
+		/// Returns whether this component has tick enabled or not
 		/// </summary>
 		public virtual bool IsComponentTickEnabled()
 			=> E_UActorComponent_IsComponentTickEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if instances of this component are created by either the user or simple construction script </para>
+		/// Returns true if instances of this component are created by either the user or simple construction script
 		/// </summary>
 		public bool IsCreatedByConstructionScript()
 			=> E_UActorComponent_IsCreatedByConstructionScript(this);
 		
 		
 		/// <summary>
-		/// <para>True if this component can be modified when it was inherited from a parent actor class </para>
+		/// True if this component can be modified when it was inherited from a parent actor class
 		/// </summary>
 		public bool IsEditableWhenInherited()
 			=> E_UActorComponent_IsEditableWhenInherited(this);
 		
 		
 		/// <summary>
-		/// <para>Override to specify that a component is relevant to the navigation system </para>
+		/// Override to specify that a component is relevant to the navigation system
 		/// </summary>
 		public virtual bool IsNavigationRelevant()
 			=> E_UActorComponent_IsNavigationRelevant(this);
 		
 		
 		/// <summary>
-		/// <para>Test whether net mode is the given mode. </para>
+		/// Test whether net mode is the given mode.
 		/// <para>In optimized non-editor builds this can be more efficient than GetNetMode() </para>
-		/// <para>because it can check the static build flags without considering PIE. </para>
+		/// because it can check the static build flags without considering PIE.
 		/// </summary>
 		public bool IsNetMode(ENetMode mode)
 			=> E_UActorComponent_IsNetMode(this, (byte)mode);
 		
 		
 		/// <summary>
-		/// <para>Returns true if we are replicating and this client is not authoritative </para>
+		/// Returns true if we are replicating and this client is not authoritative
 		/// </summary>
 		public bool IsNetSimulating()
 			=> E_UActorComponent_IsNetSimulating(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if this component was owned by a net startup actor during level load. </para>
+		/// Returns true if this component was owned by a net startup actor during level load.
 		/// </summary>
 		public bool IsNetStartupComponent()
 			=> E_UActorComponent_IsNetStartupComponent(this);
 		
 		
 		/// <summary>
-		/// <para>See if the owning Actor is currently running the UCS </para>
+		/// See if the owning Actor is currently running the UCS
 		/// </summary>
 		public bool IsOwnerRunningUserConstructionScript()
 			=> E_UActorComponent_IsOwnerRunningUserConstructionScript(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the component's owner is selected in the editor </para>
+		/// Returns whether the component's owner is selected in the editor
 		/// </summary>
 		public bool IsOwnerSelected()
 			=> E_UActorComponent_IsOwnerSelected(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the physics 'state' (e.g. physx bodies) are created for this component </para>
+		/// Returns true if the physics 'state' (e.g. physx bodies) are created for this component
 		/// </summary>
 		public bool IsPhysicsStateCreated()
 			=> E_UActorComponent_IsPhysicsStateCreated(this);
 		
 		
 		/// <summary>
-		/// <para>Overridable check for a component to indicate to its Owner that it should prevent the Actor from auto destroying when finished </para>
+		/// Overridable check for a component to indicate to its Owner that it should prevent the Actor from auto destroying when finished
 		/// </summary>
 		public virtual bool IsReadyForOwnerToAutoDestroy()
 			=> E_UActorComponent_IsReadyForOwnerToAutoDestroy(this);
 		
 		
 		/// <summary>
-		/// <para>See if this component is currently registered </para>
+		/// See if this component is currently registered
 		/// </summary>
 		public bool IsRegistered()
 			=> E_UActorComponent_IsRegistered(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the render 'state' (e.g. scene proxy) is created for this component </para>
+		/// Returns true if the render 'state' (e.g. scene proxy) is created for this component
 		/// </summary>
 		public bool IsRenderStateCreated()
 			=> E_UActorComponent_IsRenderStateCreated(this);
 		
 		
 		/// <summary>
-		/// <para>Is this component in need of its whole state being sent to the renderer? </para>
+		/// Is this component in need of its whole state being sent to the renderer?
 		/// </summary>
 		public bool IsRenderStateDirty()
 			=> E_UActorComponent_IsRenderStateDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Is this component's transform in need of sending to the renderer? </para>
+		/// Is this component's transform in need of sending to the renderer?
 		/// </summary>
 		public bool IsRenderTransformDirty()
 			=> E_UActorComponent_IsRenderTransformDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Unregister and mark for pending kill a component.  This may not be used to destroy a component that is owned by an actor unless the owning actor is calling the function. </para>
+		/// Unregister and mark for pending kill a component.  This may not be used to destroy a component that is owned by an actor unless the owning actor is calling the function.
 		/// </summary>
 		public void K2_DestroyComponent(UObject @object)
 			=> E_UActorComponent_K2_DestroyComponent(this, @object);
 		
 		
 		/// <summary>
-		/// <para>If we belong to a world, mark this for a deferred update, otherwise do it now. </para>
+		/// If we belong to a world, mark this for a deferred update, otherwise do it now.
 		/// </summary>
 		public void MarkForNeededEndOfFrameRecreate()
 			=> E_UActorComponent_MarkForNeededEndOfFrameRecreate(this);
 		
 		
 		/// <summary>
-		/// <para>If we belong to a world, mark this for a deferred update, otherwise do it now. </para>
+		/// If we belong to a world, mark this for a deferred update, otherwise do it now.
 		/// </summary>
 		public void MarkForNeededEndOfFrameUpdate()
 			=> E_UActorComponent_MarkForNeededEndOfFrameUpdate(this);
 		
 		
 		/// <summary>
-		/// <para>Indicate that dynamic data for this component needs to be sent at the end of the frame. </para>
+		/// Indicate that dynamic data for this component needs to be sent at the end of the frame.
 		/// </summary>
 		public void MarkRenderDynamicDataDirty()
 			=> E_UActorComponent_MarkRenderDynamicDataDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Mark the render state as dirty - will be sent to the render thread at the end of the frame. </para>
+		/// Mark the render state as dirty - will be sent to the render thread at the end of the frame.
 		/// </summary>
 		public void MarkRenderStateDirty()
 			=> E_UActorComponent_MarkRenderStateDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Marks the transform as dirty - will be sent to the render thread at the end of the frame </para>
+		/// Marks the transform as dirty - will be sent to the render thread at the end of the frame
 		/// </summary>
 		public void MarkRenderTransformDirty()
 			=> E_UActorComponent_MarkRenderTransformDirty(this);
 		
 		
 		/// <summary>
-		/// <para>Called on each component when the Actor's bEnableCollisionChanged flag changes </para>
+		/// Called on each component when the Actor's bEnableCollisionChanged flag changes
 		/// </summary>
 		public virtual void OnActorEnableCollisionChanged()
 			=> E_UActorComponent_OnActorEnableCollisionChanged(this);
 		
 		
 		/// <summary>
-		/// <para>Called when a component is created (not loaded). This can happen in the editor or during gameplay </para>
+		/// Called when a component is created (not loaded). This can happen in the editor or during gameplay
 		/// </summary>
 		public virtual void OnComponentCreated()
 			=> E_UActorComponent_OnComponentCreated(this);
 		
 		
 		/// <summary>
-		/// <para>Called when a component is destroyed </para>
-		/// <param name="bDestroyingHierarchy">True if the entire component hierarchy is being torn down, allows avoiding expensive operations </param>
+		/// Called when a component is destroyed
 		/// </summary>
+		/// <param name="bDestroyingHierarchy">True if the entire component hierarchy is being torn down, allows avoiding expensive operations</param>
 		public virtual void OnComponentDestroyed(bool bDestroyingHierarchy)
 			=> E_UActorComponent_OnComponentDestroyed(this, bDestroyingHierarchy);
 		
 		
 		/// <summary>
-		/// <para>Used to create any physics engine information for this component </para>
+		/// Used to create any physics engine information for this component
 		/// </summary>
 		protected virtual void OnCreatePhysicsState()
 			=> E_UActorComponent_OnCreatePhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Used to shut down and physics engine structure for this component </para>
+		/// Used to shut down and physics engine structure for this component
 		/// </summary>
 		protected virtual void OnDestroyPhysicsState()
 			=> E_UActorComponent_OnDestroyPhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Called when a component is registered, after Scene is set, but before CreateRenderState_Concurrent or OnCreatePhysicsState are called. </para>
+		/// Called when a component is registered, after Scene is set, but before CreateRenderState_Concurrent or OnCreatePhysicsState are called.
 		/// </summary>
 		protected virtual void OnRegister()
 			=> E_UActorComponent_OnRegister(this);
@@ -1059,14 +1059,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when a component is unregistered. Called after DestroyRenderState_Concurrent and OnDestroyPhysicsState are called. </para>
+		/// Called when a component is unregistered. Called after DestroyRenderState_Concurrent and OnDestroyPhysicsState are called.
 		/// </summary>
 		protected virtual void OnUnregister()
 			=> E_UActorComponent_OnUnregister(this);
 		
 		
 		/// <summary>
-		/// <para>Blueprint implementable event for when the component is beginning play, called before its owning actor's BeginPlay </para>
+		/// Blueprint implementable event for when the component is beginning play, called before its owning actor's BeginPlay
 		/// <para>or when the component is dynamically created if the Actor has already BegunPlay. </para>
 		/// </summary>
 		public void ReceiveBeginPlay()
@@ -1074,21 +1074,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Event called every frame if tick is enabled </para>
+		/// Event called every frame if tick is enabled
 		/// </summary>
 		public void Tick(float deltaSeconds)
 			=> E_UActorComponent_ReceiveTick(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Recreate the physics state right way. </para>
+		/// Recreate the physics state right way.
 		/// </summary>
 		public void RecreatePhysicsState()
 			=> E_UActorComponent_RecreatePhysicsState(this);
 		
 		
 		/// <summary>
-		/// <para>Recreate the render state right away. Generally you always want to call MarkRenderStateDirty instead. </para>
+		/// Recreate the render state right away. Generally you always want to call MarkRenderStateDirty instead.
 		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		public void RecreateRenderState_Concurrent()
@@ -1096,81 +1096,81 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>When called, will call the virtual call chain to register all of the tick functions </para>
+		/// When called, will call the virtual call chain to register all of the tick functions
 		/// <para>Do not override this function or make it virtual </para>
-		/// <param name="bRegister">true to register, false, to unregister </param>
 		/// </summary>
+		/// <param name="bRegister">true to register, false, to unregister</param>
 		public void RegisterAllComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterAllComponentTickFunctions(this, bRegister);
 		
 		
 		/// <summary>
-		/// <para>Register this component, creating any rendering/physics state. Will also add itself to the outer Actor's Components array, if not already present. </para>
+		/// Register this component, creating any rendering/physics state. Will also add itself to the outer Actor's Components array, if not already present.
 		/// </summary>
 		public void RegisterComponent()
 			=> E_UActorComponent_RegisterComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Virtual call chain to register all tick functions </para>
-		/// <param name="bRegister">true to register, false, to unregister </param>
+		/// Virtual call chain to register all tick functions
 		/// </summary>
+		/// <param name="bRegister">true to register, false, to unregister</param>
 		protected virtual void RegisterComponentTickFunctions(bool bRegister)
 			=> E_UActorComponent_RegisterComponentTickFunctions(this, bRegister);
 		
 		
 		/// <summary>
-		/// <para>Registers a component with a specific world, which creates any visual/physical state </para>
-		/// <param name="InWorld">The world to register the component with. </param>
+		/// Registers a component with a specific world, which creates any visual/physical state
 		/// </summary>
+		/// <param name="inWorld">The world to register the component with.</param>
 		public void RegisterComponentWithWorld(UWorld inWorld)
 			=> E_UActorComponent_RegisterComponentWithWorld(this, inWorld);
 		
 		
 		/// <summary>
-		/// <para>Remove tick dependency on PrerequisiteActor. </para>
+		/// Remove tick dependency on PrerequisiteActor.
 		/// </summary>
 		public virtual void RemoveTickPrerequisiteActor(AActor prerequisiteActor)
 			=> E_UActorComponent_RemoveTickPrerequisiteActor(this, prerequisiteActor);
 		
 		
 		/// <summary>
-		/// <para>Remove tick dependency on PrerequisiteComponent. </para>
+		/// Remove tick dependency on PrerequisiteComponent.
 		/// </summary>
 		public virtual void RemoveTickPrerequisiteComponent(UActorComponent prerequisiteComponent)
 			=> E_UActorComponent_RemoveTickPrerequisiteComponent(this, prerequisiteComponent);
 		
 		
 		/// <summary>
-		/// <para>return true if this component requires end of frame recreates to happen from the game thread. </para>
+		/// return true if this component requires end of frame recreates to happen from the game thread.
 		/// </summary>
 		public virtual bool RequiresGameThreadEndOfFrameRecreate()
 			=> E_UActorComponent_RequiresGameThreadEndOfFrameRecreate(this);
 		
 		
 		/// <summary>
-		/// <para>return true if this component requires end of frame updates to happen from the game thread. </para>
+		/// return true if this component requires end of frame updates to happen from the game thread.
 		/// </summary>
 		public virtual bool RequiresGameThreadEndOfFrameUpdates()
 			=> E_UActorComponent_RequiresGameThreadEndOfFrameUpdates(this);
 		
 		
 		/// <summary>
-		/// <para>Unregisters and immediately re-registers component.  Handles bWillReregister properly. </para>
+		/// Unregisters and immediately re-registers component.  Handles bWillReregister properly.
 		/// </summary>
 		public void ReregisterComponent()
 			=> E_UActorComponent_ReregisterComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Called to send dynamic data for this component to the rendering thread </para>
+		/// Called to send dynamic data for this component to the rendering thread
 		/// </summary>
 		protected virtual void SendRenderDynamicData_Concurrent()
 			=> E_UActorComponent_SendRenderDynamicData_Concurrent(this);
 		
 		
 		/// <summary>
-		/// <para>Called to send a transform update for this component to the rendering thread </para>
+		/// Called to send a transform update for this component to the rendering thread
 		/// <para>@warning This is called concurrently on multiple threads (but never the same component concurrently) </para>
 		/// </summary>
 		protected virtual void SendRenderTransform_Concurrent()
@@ -1178,97 +1178,97 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets whether the component is active or not </para>
-		/// <param name="bNewActive">The new active state of the component </param>
-		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false. </param>
+		/// Sets whether the component is active or not
 		/// </summary>
+		/// <param name="bNewActive">The new active state of the component</param>
+		/// <param name="bReset">Whether the activation should happen even if ShouldActivate returns false.</param>
 		public virtual void SetActive(bool bNewActive, bool bReset)
 			=> E_UActorComponent_SetActive(this, bNewActive, bReset);
 		
 		
 		/// <summary>
-		/// <para>Sets whether the component should be auto activate or not. Only safe during construction scripts. </para>
-		/// <param name="bNewAutoActivate">The new auto activate state of the component </param>
+		/// Sets whether the component should be auto activate or not. Only safe during construction scripts.
 		/// </summary>
+		/// <param name="bNewAutoActivate">The new auto activate state of the component</param>
 		public virtual void SetAutoActivate(bool bNewAutoActivate)
 			=> E_UActorComponent_SetAutoActivate(this, bNewAutoActivate);
 		
 		
 		/// <summary>
-		/// <para>set value of bCanEverAffectNavigation flag and update navigation octree if needed </para>
+		/// set value of bCanEverAffectNavigation flag and update navigation octree if needed
 		/// </summary>
 		public void SetCanEverAffectNavigation(bool bRelevant)
 			=> E_UActorComponent_SetCanEverAffectNavigation(this, bRelevant);
 		
 		
 		/// <summary>
-		/// <para>Set this component's tick functions to be enabled or disabled. Only has an effect if the function is registered </para>
-		/// <param name="bEnabled">Whether it should be enabled or not </param>
+		/// Set this component's tick functions to be enabled or disabled. Only has an effect if the function is registered
 		/// </summary>
+		/// <param name="bEnabled">Whether it should be enabled or not</param>
 		public virtual void SetComponentTickEnabled(bool bEnabled)
 			=> E_UActorComponent_SetComponentTickEnabled(this, bEnabled);
 		
 		
 		/// <summary>
-		/// <para>Spawns a task on GameThread that will call SetComponentTickEnabled </para>
-		/// <param name="bEnabled">Whether it should be enabled or not </param>
+		/// Spawns a task on GameThread that will call SetComponentTickEnabled
 		/// </summary>
+		/// <param name="bEnabled">Whether it should be enabled or not</param>
 		public virtual void SetComponentTickEnabledAsync(bool bEnabled)
 			=> E_UActorComponent_SetComponentTickEnabledAsync(this, bEnabled);
 		
 		
 		/// <summary>
-		/// <para>Sets the tick interval for this component's primary tick function. Does not enable the tick interval. Takes effect on next tick. </para>
-		/// <param name="TickInterval">The duration between ticks for this component's primary tick function </param>
+		/// Sets the tick interval for this component's primary tick function. Does not enable the tick interval. Takes effect on next tick.
 		/// </summary>
+		/// <param name="tickInterval">The duration between ticks for this component's primary tick function</param>
 		public void SetComponentTickInterval(float tickInterval)
 			=> E_UActorComponent_SetComponentTickInterval(this, tickInterval);
 		
 		
 		/// <summary>
-		/// <para>This should only be called by the engine in ULevel::InitializeNetworkActors to initialize bIsNetStartupComponent. </para>
+		/// This should only be called by the engine in ULevel::InitializeNetworkActors to initialize bIsNetStartupComponent.
 		/// </summary>
 		public void SetIsNetStartupComponent(bool bInIsNetStartupComponent)
 			=> E_UActorComponent_SetIsNetStartupComponent(this, bInIsNetStartupComponent);
 		
 		
 		/// <summary>
-		/// <para>Enable or disable replication. This is the equivalent of RemoteRole for actors (only a bool is required for components) </para>
+		/// Enable or disable replication. This is the equivalent of RemoteRole for actors (only a bool is required for components)
 		/// </summary>
 		public void SetIsReplicated(bool shouldReplicate)
 			=> E_UActorComponent_SetIsReplicated(this, shouldReplicate);
 		
 		
 		/// <summary>
-		/// <para>This signifies the component can be ID'd by name over the network. This only needs to be called by engine code when constructing blueprint components. </para>
+		/// This signifies the component can be ID'd by name over the network. This only needs to be called by engine code when constructing blueprint components.
 		/// </summary>
 		public void SetNetAddressable()
 			=> E_UActorComponent_SetNetAddressable(this);
 		
 		
 		/// <summary>
-		/// <para>Sets whether this component can tick when paused. </para>
+		/// Sets whether this component can tick when paused.
 		/// </summary>
 		public void SetTickableWhenPaused(bool bTickableWhenPaused)
 			=> E_UActorComponent_SetTickableWhenPaused(this, bTickableWhenPaused);
 		
 		
 		/// <summary>
-		/// <para>Changes the ticking group for this component </para>
+		/// Changes the ticking group for this component
 		/// </summary>
 		public void SetTickGroup(ETickingGroup newTickGroup)
 			=> E_UActorComponent_SetTickGroup(this, (byte)newTickGroup);
 		
 		
 		/// <summary>
-		/// <para>Return true if this component is in a state where it can be activated normally. </para>
+		/// Return true if this component is in a state where it can be activated normally.
 		/// </summary>
 		protected virtual bool ShouldActivate()
 			=> E_UActorComponent_ShouldActivate(this);
 		
 		
 		/// <summary>
-		/// <para>Return true if CreatePhysicsState() should be called. </para>
+		/// Return true if CreatePhysicsState() should be called.
 		/// <para>Ideally CreatePhysicsState() should always succeed if this returns true, but this isn't currently the case </para>
 		/// </summary>
 		protected virtual bool ShouldCreatePhysicsState()
@@ -1276,21 +1276,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return true if CreateRenderState() should be called </para>
+		/// Return true if CreateRenderState() should be called
 		/// </summary>
 		protected virtual bool ShouldCreateRenderState()
 			=> E_UActorComponent_ShouldCreateRenderState(this);
 		
 		
 		/// <summary>
-		/// <para>Toggles the active state of the component </para>
+		/// Toggles the active state of the component
 		/// </summary>
 		public virtual void ToggleActive()
 			=> E_UActorComponent_ToggleActive(this);
 		
 		
 		/// <summary>
-		/// <para>Handle this component being Uninitialized. </para>
+		/// Handle this component being Uninitialized.
 		/// <para>Called from AActor::EndPlay only if bHasBeenInitialized is true </para>
 		/// </summary>
 		public virtual void UninitializeComponent()
@@ -1298,14 +1298,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Unregister this component, destroying any rendering/physics state. </para>
+		/// Unregister this component, destroying any rendering/physics state.
 		/// </summary>
 		public void UnregisterComponent()
 			=> E_UActorComponent_UnregisterComponent(this);
 		
 		
 		/// <summary>
-		/// <para>Recalculate the value of our component to world transform </para>
+		/// Recalculate the value of our component to world transform
 		/// </summary>
 		public virtual void UpdateComponentToWorld(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
 			=> E_UActorComponent_UpdateComponentToWorld(this, (byte)updateTransformFlags, (byte)teleport);

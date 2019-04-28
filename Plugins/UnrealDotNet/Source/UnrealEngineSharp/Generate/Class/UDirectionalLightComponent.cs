@@ -147,7 +147,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Controls whether the cascades are distributed closer to the camera (larger exponent) or further from the camera (smaller exponent). </para>
+		/// Controls whether the cascades are distributed closer to the camera (larger exponent) or further from the camera (smaller exponent).
 		/// <para>An exponent of 1 means that cascade transitions will happen at a distance proportional to their resolution. </para>
 		/// </summary>
 		public float DistributionExponent
@@ -158,13 +158,13 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Proportion of the fade region between cascades. </para>
+		/// Proportion of the fade region between cascades.
 		/// <para>Pixels within the fade region of two cascades have their shadows blended to avoid hard transitions between quality levels. </para>
-		/// <para>A value of zero eliminates the fade region, creating hard transitions. </para>
+		/// A value of zero eliminates the fade region, creating hard transitions.
 		/// <para>Higher values increase the size of the fade region, creating a more gradual transition between cascades. </para>
-		/// <para>The value is expressed as a percentage proportion (i.e. 0.1 = 10% overlap). </para>
+		/// The value is expressed as a percentage proportion (i.e. 0.1 = 10% overlap).
 		/// <para>Ideal values are the smallest possible which still hide the transition. </para>
-		/// <para>An increased fade region size causes an increase in shadow rendering cost. </para>
+		/// An increased fade region size causes an increase in shadow rendering cost.
 		/// </summary>
 		public float TransitionFraction
 		{
@@ -174,7 +174,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance at which the ray traced shadow cascade should end.  Distance field shadows will cover the range between 'Dynamic Shadow Distance' this distance. </para>
+		/// Distance at which the ray traced shadow cascade should end.  Distance field shadows will cover the range between 'Dynamic Shadow Distance' this distance.
 		/// </summary>
 		public float DistanceFieldShadowDistance
 		{
@@ -184,7 +184,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Number of cascades to split the view frustum into for the whole scene dynamic shadow. </para>
+		/// Number of cascades to split the view frustum into for the whole scene dynamic shadow.
 		/// <para>More cascades result in better shadow resolution, but adds significant rendering cost. </para>
 		/// </summary>
 		public int NumDynamicShadowCascades
@@ -195,7 +195,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How far Cascaded Shadow Map dynamic shadows will cover for a movable light, measured from the camera. </para>
+		/// How far Cascaded Shadow Map dynamic shadows will cover for a movable light, measured from the camera.
 		/// <para>A value of 0 disables the dynamic shadow. </para>
 		/// </summary>
 		public float DynamicShadowDistanceMovableLight
@@ -206,7 +206,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How far Cascaded Shadow Map dynamic shadows will cover for a stationary light, measured from the camera. </para>
+		/// How far Cascaded Shadow Map dynamic shadows will cover for a stationary light, measured from the camera.
 		/// <para>A value of 0 disables the dynamic shadow. </para>
 		/// </summary>
 		public float DynamicShadowDistanceStationaryLight
@@ -217,7 +217,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0: no DistantShadowCascades, otherwise the count of cascades between WholeSceneDynamicShadowRadius and DistantShadowDistance that are covered by distant shadow cascades. </para>
+		/// 0: no DistantShadowCascades, otherwise the count of cascades between WholeSceneDynamicShadowRadius and DistantShadowDistance that are covered by distant shadow cascades.
 		/// </summary>
 		public int FarShadowCascadeCount
 		{
@@ -227,7 +227,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance at which the far shadow cascade should end.  Far shadows will cover the range between 'Dynamic Shadow Distance' and this distance. </para>
+		/// Distance at which the far shadow cascade should end.  Far shadows will cover the range between 'Dynamic Shadow Distance' and this distance.
 		/// </summary>
 		public float FarShadowDistance
 		{
@@ -237,7 +237,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The Lightmass settings for this object. </para>
+		/// The Lightmass settings for this object.
 		/// </summary>
 		public FLightmassDirectionalLightSettings LightmassSettings
 		{
@@ -247,7 +247,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Can be used to make light shafts come from somewhere other than the light's actual direction. </para>
+		/// Can be used to make light shafts come from somewhere other than the light's actual direction.
 		/// <para>This will only be used when non-zero.  It does not have to be normalized. </para>
 		/// </summary>
 		public FVector LightShaftOverrideDirection
@@ -258,7 +258,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Angle subtended by light source in degrees (also known as angular diameter). </para>
+		/// Angle subtended by light source in degrees (also known as angular diameter).
 		/// <para>Defaults to 0.5357 which is the angle for our sun. </para>
 		/// </summary>
 		public float SourceAngle
@@ -269,7 +269,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Angle subtended by soft light source in degrees. </para>
+		/// Angle subtended by soft light source in degrees.
 		/// </summary>
 		public float SourceSoftAngle
 		{
@@ -279,7 +279,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Everything closer to the camera than this distance will occlude light shafts. </para>
+		/// Everything closer to the camera than this distance will occlude light shafts.
 		/// </summary>
 		public float OcclusionDepthRange
 		{
@@ -289,7 +289,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls how dark the occlusion masking is, a value of 1 results in no darkening term. </para>
+		/// Controls how dark the occlusion masking is, a value of 1 results in no darkening term.
 		/// </summary>
 		public float OcclusionMaskDarkness
 		{
@@ -299,7 +299,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the size of the fade out region at the far extent of the dynamic shadow's influence. </para>
+		/// Controls the size of the fade out region at the far extent of the dynamic shadow's influence.
 		/// <para>This is specified as a fraction of DynamicShadowDistance. </para>
 		/// </summary>
 		public float DistanceFadeoutFraction
@@ -310,7 +310,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Determines how far shadows can be cast, in world units.  Larger values increase the shadowing cost. </para>
+		/// Determines how far shadows can be cast, in world units.  Larger values increase the shadowing cost.
 		/// </summary>
 		public float DistanceFieldTraceDistance
 		{

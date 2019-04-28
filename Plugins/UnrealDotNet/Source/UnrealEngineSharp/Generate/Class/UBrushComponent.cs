@@ -38,7 +38,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Create the AggGeom collection-of-convex-primitives from the Brush UModel data. </para>
+		/// Create the AggGeom collection-of-convex-primitives from the Brush UModel data.
 		/// </summary>
 		public void BuildSimpleBrushCollision()
 			=> E_UBrushComponent_BuildSimpleBrushCollision(this);

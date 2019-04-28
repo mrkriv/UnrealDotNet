@@ -20,8 +20,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <param name="Scale">uniform scale to apply to matrix. </param>
 		/// </summary>
+		/// <param name="scale">uniform scale to apply to matrix.</param>
 		public FScaleMatrix(float scale) :
 			base(E_CreateStruct_FScaleMatrix_float(scale), false)
 		{
@@ -29,8 +29,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <param name="Scale">Non-uniform scale to apply to matrix. </param>
 		/// </summary>
+		/// <param name="scale">Non-uniform scale to apply to matrix.</param>
 		public FScaleMatrix(FVector scale) :
 			base(E_CreateStruct_FScaleMatrix_FVector(scale), false)
 		{
@@ -54,14 +54,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(float scale)
 			=> E_FScaleMatrix_Make(this, scale);
 		
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FVector scale)
 			=> E_FScaleMatrix_Make_o1(this, scale);

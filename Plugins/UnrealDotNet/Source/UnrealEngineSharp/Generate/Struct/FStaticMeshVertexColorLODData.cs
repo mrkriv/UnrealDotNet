@@ -35,7 +35,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Check whether this contains valid data </para>
+		/// Check whether this contains valid data
 		/// </summary>
 		public bool IsValid()
 			=> E_FStaticMeshVertexColorLODData_IsValid(this);

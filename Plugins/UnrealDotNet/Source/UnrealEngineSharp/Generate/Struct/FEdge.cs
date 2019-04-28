@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FEdge() :
 			base(E_CreateStruct_FEdge(), false)
@@ -29,10 +29,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new edge from two vertices. </para>
-		/// <param name="V1">The first vertex. </param>
-		/// <param name="V2">The second vertex. </param>
+		/// Creates and initializes a new edge from two vertices.
 		/// </summary>
+		/// <param name="v1">The first vertex.</param>
+		/// <param name="v2">The second vertex.</param>
 		public FEdge(FVector v1, FVector v2) :
 			base(E_CreateStruct_FEdge_FVector_FVector(v1, v2), false)
 		{
@@ -55,7 +55,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds a temporary variable used when creating arrays of unique edges. </para>
+		/// Holds a temporary variable used when creating arrays of unique edges.
 		/// </summary>
 		public int Count
 		{

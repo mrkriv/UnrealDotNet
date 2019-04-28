@@ -20,9 +20,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Rot">rotation </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="rot">rotation</param>
 		public FInverseRotationMatrix(FRotator rot) :
 			base(E_CreateStruct_FInverseRotationMatrix_FRotator(rot), false)
 		{

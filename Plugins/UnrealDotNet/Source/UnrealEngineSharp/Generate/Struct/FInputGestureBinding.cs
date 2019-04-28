@@ -37,7 +37,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Value parameter, meaning is dependent on the gesture. </para>
+		/// Value parameter, meaning is dependent on the gesture.
 		/// </summary>
 		public float GestureValue
 		{

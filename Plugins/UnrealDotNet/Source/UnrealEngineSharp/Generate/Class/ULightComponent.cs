@@ -207,7 +207,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Scales the additive color. </para>
+		/// Scales the additive color.
 		/// </summary>
 		public float BloomScale
 		{
@@ -217,7 +217,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scene color must be larger than this to create bloom in the light shafts. </para>
+		/// Scene color must be larger than this to create bloom in the light shafts.
 		/// </summary>
 		public float BloomThreshold
 		{
@@ -227,9 +227,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to use ray traced distance field area shadows.  The project setting bGenerateMeshDistanceFields must be enabled for this to have effect. </para>
+		/// Whether to use ray traced distance field area shadows.  The project setting bGenerateMeshDistanceFields must be enabled for this to have effect.
 		/// <para>Distance field shadows support area lights so they create soft shadows with sharp contacts. </para>
-		/// <para>They have less aliasing artifacts than standard shadowmaps, but inherit all the limitations of distance field representations (only uniform scale, no deformation). </para>
+		/// They have less aliasing artifacts than standard shadowmaps, but inherit all the limitations of distance field representations (only uniform scale, no deformation).
 		/// <para>These shadows have a low per-object cost (and don't depend on triangle count) so they are effective for distant shadows from a dynamic sun. </para>
 		/// </summary>
 		public bool RayTracedDistanceFieldShadows
@@ -240,7 +240,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Length of screen space ray trace for sharp contact shadows. Zero is disabled. </para>
+		/// Length of screen space ray trace for sharp contact shadows. Zero is disabled.
 		/// </summary>
 		public float ContactShadowLength
 		{
@@ -250,7 +250,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Brightness factor applied to the light when the light function is specified but disabled, for example in scene captures that use SceneCapView_LitNoShadows. </para>
+		/// Brightness factor applied to the light when the light function is specified but disabled, for example in scene captures that use SceneCapView_LitNoShadows.
 		/// <para>This should be set to the average brightness of the light function material's emissive input, which should be between 0 and 1. </para>
 		/// </summary>
 		public float DisabledBrightness
@@ -261,7 +261,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Global scale for IES brightness contribution. Only available when "Use IES Brightness" is selected, and a valid IES profile texture is set </para>
+		/// Global scale for IES brightness contribution. Only available when "Use IES Brightness" is selected, and a valid IES profile texture is set
 		/// </summary>
 		public float IESIntensityScale
 		{
@@ -271,7 +271,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance at which the light function should be completely faded to DisabledBrightness. </para>
+		/// Distance at which the light function should be completely faded to DisabledBrightness.
 		/// <para>This is useful for hiding aliasing from light functions applied in the distance. </para>
 		/// </summary>
 		public float FadeDistance
@@ -282,7 +282,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the light function projection.  X and Y scale in the directions perpendicular to the light's direction, Z scales along the light direction. </para>
+		/// Scales the light function projection.  X and Y scale in the directions perpendicular to the light's direction, Z scales along the light direction.
 		/// </summary>
 		public FVector LightFunctionScale
 		{
@@ -292,7 +292,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Channels that this light should affect. </para>
+		/// Channels that this light should affect.
 		/// <para>These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing. </para>
 		/// </summary>
 		public FLightingChannels LightingChannels
@@ -321,7 +321,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Transient shadowmap channel used to preview the results of stationary light shadowmap packing. </para>
+		/// Transient shadowmap channel used to preview the results of stationary light shadowmap packing.
 		/// </summary>
 		public int PreviewShadowMapChannel
 		{
@@ -331,7 +331,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls how large of an offset ray traced shadows have from the receiving surface as the camera gets further away. </para>
+		/// Controls how large of an offset ray traced shadows have from the receiving surface as the camera gets further away.
 		/// <para>This can be useful to hide self-shadowing artifacts from low resolution distance fields on huge static meshes. </para>
 		/// </summary>
 		public float RayStartOffsetDepthScale
@@ -342,9 +342,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls how accurate self shadowing of whole scene shadows from this light are. </para>
+		/// Controls how accurate self shadowing of whole scene shadows from this light are.
 		/// <para>At 0, shadows will start at the their caster surface, but there will be many self shadowing artifacts. </para>
-		/// <para>larger values, shadows will start further from their caster, and there won't be self shadowing artifacts but object might appear to fly. </para>
+		/// larger values, shadows will start further from their caster, and there won't be self shadowing artifacts but object might appear to fly.
 		/// <para>around 0.5 seems to be a good tradeoff. This also affects the soft transition of shadows </para>
 		/// </summary>
 		public float ShadowBias
@@ -361,7 +361,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the resolution of shadowmaps used to shadow this light.  By default shadowmap resolution is chosen based on screen size of the caster. </para>
+		/// Scales the resolution of shadowmaps used to shadow this light.  By default shadowmap resolution is chosen based on screen size of the caster.
 		/// <para>Note: shadowmap resolution is still clamped by 'r.Shadow.MaxResolution' </para>
 		/// </summary>
 		public float ShadowResolutionScale
@@ -372,7 +372,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Amount to sharpen shadow filtering </para>
+		/// Amount to sharpen shadow filtering
 		/// </summary>
 		public float ShadowFilterSharpen
 		{
@@ -382,7 +382,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Multiplier on specular highlights. Use only with great care! Any value besides 1 is not physical! </para>
+		/// Multiplier on specular highlights. Use only with great care! Any value besides 1 is not physical!
 		/// <para>Can be used to artistically remove highlights mimicking polarizing filters or photo touch up. </para>
 		/// </summary>
 		public float SpecularScale
@@ -393,7 +393,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Color temperature in Kelvin of the blackbody illuminant. </para>
+		/// Color temperature in Kelvin of the blackbody illuminant.
 		/// <para>White (D65) is 6500K. </para>
 		/// </summary>
 		public float Temperature
@@ -407,26 +407,26 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Test whether the light affects the given bounding volume. </para>
-		/// <param name="Bounds">The bounding volume to test. </param>
-		/// <return>True if the light affects the bounding volume </return>
+		/// Test whether the light affects the given bounding volume.
 		/// </summary>
+		/// <param name="bounds">The bounding volume to test.</param>
+		/// <return>True</return>
 		public virtual bool AffectsBounds(FBoxSphereBounds inBounds)
 			=> E_ULightComponent_AffectsBounds(this, inBounds);
 		
 		
 		/// <summary>
-		/// <para>Test whether this light affects the given primitive.  This checks both the primitive and light settings for light relevance </para>
+		/// Test whether this light affects the given primitive.  This checks both the primitive and light settings for light relevance
 		/// <para>and also calls AffectsBounds. </para>
-		/// <param name="PrimitiveSceneInfo">The primitive to test. </param>
-		/// <return>True if the light affects the primitive. </return>
 		/// </summary>
+		/// <param name="primitiveSceneInfo">The primitive to test.</param>
+		/// <return>True</return>
 		public bool AffectsPrimitive(UPrimitiveComponent primitive)
 			=> E_ULightComponent_AffectsPrimitive(this, primitive);
 		
 		
 		/// <summary>
-		/// <para>Return the world-space bounding box of the light's influence. </para>
+		/// Return the world-space bounding box of the light's influence.
 		/// </summary>
 		public virtual FBox GetBoundingBox()
 			=> E_ULightComponent_GetBoundingBox(this);
@@ -436,7 +436,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return the homogenous position of the light. </para>
+		/// Return the homogenous position of the light.
 		/// </summary>
 		public virtual FVector4 GetLightPosition()
 			=> E_ULightComponent_GetLightPosition(this);
@@ -467,14 +467,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set intensity of the light </para>
+		/// Set intensity of the light
 		/// </summary>
 		public void SetIntensity(float newIntensity)
 			=> E_ULightComponent_SetIntensity(this, newIntensity);
 		
 		
 		/// <summary>
-		/// <para>Set color of the light </para>
+		/// Set color of the light
 		/// </summary>
 		public void SetLightColor(FLinearColor newLightColor, bool bSRGB = true)
 			=> E_ULightComponent_SetLightColor(this, newLightColor, bSRGB);

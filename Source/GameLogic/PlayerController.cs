@@ -5,8 +5,6 @@ namespace GameLogic
 {
     public class PlayerController : ManagePlayerController
     {
-        public float MoveForwardValue = 0;
-
         public PlayerController(IntPtr Adress) : base(Adress)
         {
         }
@@ -29,9 +27,6 @@ namespace GameLogic
         {
             var forvard = new FRotator(0, GetControlRotation().Yaw, 0).Vector();
             GetCharacter()?.AddMovementInput(forvard, value, false);
-
-            Ue.ScreenDebugMessage(value.ToString("0.00"), 0);
-            MoveForwardValue = value;
         }
 
         private void MoveRight(float value)

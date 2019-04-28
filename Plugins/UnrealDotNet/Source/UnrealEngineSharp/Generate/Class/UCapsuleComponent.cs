@@ -80,99 +80,99 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns the capsule half-height scaled by the component scale. This includes both the cylinder and hemisphere cap. </para>
-		/// <return>The capsule half-height scaled by the component scale. </return>
+		/// Returns the capsule half-height scaled by the component scale. This includes both the cylinder and hemisphere cap.
 		/// </summary>
+		/// <return>The</return>
 		public float GetScaledCapsuleHalfHeight()
 			=> E_UCapsuleComponent_GetScaledCapsuleHalfHeight(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule half-height minus radius (to exclude the hemisphere), scaled by the component scale. </para>
+		/// Returns the capsule half-height minus radius (to exclude the hemisphere), scaled by the component scale.
 		/// <para>From the center of the capsule this is the vertical distance along the straight cylindrical portion to the point just before the curve of top hemisphere begins. </para>
-		/// <return>The capsule half-height minus radius, scaled by the component scale. </return>
 		/// </summary>
+		/// <return>The</return>
 		public float GetScaledCapsuleHalfHeight_WithoutHemisphere()
 			=> E_UCapsuleComponent_GetScaledCapsuleHalfHeight_WithoutHemisphere(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius scaled by the component scale. </para>
-		/// <return>The capsule radius scaled by the component scale. </return>
+		/// Returns the capsule radius scaled by the component scale.
 		/// </summary>
+		/// <return>The</return>
 		public float GetScaledCapsuleRadius()
 			=> E_UCapsuleComponent_GetScaledCapsuleRadius(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius and half-height scaled by the component scale. Half-height includes the hemisphere end cap. </para>
-		/// <param name="OutRadius">Radius of the capsule, scaled by the component scale. </param>
-		/// <param name="OutHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap. </param>
-		/// <return>The capsule radius and half-height scaled by the component scale. </return>
+		/// Returns the capsule radius and half-height scaled by the component scale. Half-height includes the hemisphere end cap.
 		/// </summary>
+		/// <param name="outRadius">Radius of the capsule, scaled by the component scale.</param>
+		/// <param name="outHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap.</param>
+		/// <return>The</return>
 		public void GetScaledCapsuleSize(float outRadius, float outHalfHeight)
 			=> E_UCapsuleComponent_GetScaledCapsuleSize(this, outRadius, outHalfHeight);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius and half-height scaled by the component scale. Half-height excludes the hemisphere end cap. </para>
-		/// <param name="OutRadius">Radius of the capsule, ignoring component scaling. </param>
-		/// <param name="OutHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap. </param>
-		/// <return>The capsule radius and half-height scaled by the component scale. </return>
+		/// Returns the capsule radius and half-height scaled by the component scale. Half-height excludes the hemisphere end cap.
 		/// </summary>
+		/// <param name="outRadius">Radius of the capsule, ignoring component scaling.</param>
+		/// <param name="outHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap.</param>
+		/// <return>The</return>
 		public void GetScaledCapsuleSize_WithoutHemisphere(float outRadius, float outHalfHeightWithoutHemisphere)
 			=> E_UCapsuleComponent_GetScaledCapsuleSize_WithoutHemisphere(this, outRadius, outHalfHeightWithoutHemisphere);
 		
 		
 		/// <summary>
-		/// <para>Get the scale used by this shape. This is a uniform scale that is the minimum of any non-uniform scaling. </para>
-		/// <return>the scale used by this shape. </return>
+		/// Get the scale used by this shape. This is a uniform scale that is the minimum of any non-uniform scaling.
 		/// </summary>
+		/// <return>the</return>
 		public float GetShapeScale()
 			=> E_UCapsuleComponent_GetShapeScale(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule half-height, ignoring component scaling. This includes the hemisphere end cap. </para>
-		/// <return>The capsule radius, ignoring component scaling. </return>
+		/// Returns the capsule half-height, ignoring component scaling. This includes the hemisphere end cap.
 		/// </summary>
+		/// <return>The</return>
 		public float GetUnscaledCapsuleHalfHeight()
 			=> E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule half-height minus radius (to exclude the hemisphere), ignoring component scaling. This excludes the hemisphere end cap. </para>
+		/// Returns the capsule half-height minus radius (to exclude the hemisphere), ignoring component scaling. This excludes the hemisphere end cap.
 		/// <para>From the center of the capsule this is the vertical distance along the straight cylindrical portion to the point just before the curve of top hemisphere begins. </para>
-		/// <return>The capsule half-height minus radius, ignoring component scaling. </return>
 		/// </summary>
+		/// <return>The</return>
 		public float GetUnscaledCapsuleHalfHeight_WithoutHemisphere()
 			=> E_UCapsuleComponent_GetUnscaledCapsuleHalfHeight_WithoutHemisphere(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius, ignoring component scaling. </para>
-		/// <return>the capsule radius, ignoring component scaling. </return>
+		/// Returns the capsule radius, ignoring component scaling.
 		/// </summary>
+		/// <return>the</return>
 		public float GetUnscaledCapsuleRadius()
 			=> E_UCapsuleComponent_GetUnscaledCapsuleRadius(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius and half-height scaled by the component scale. Half-height includes the hemisphere end cap. </para>
-		/// <param name="OutRadius">Radius of the capsule, scaled by the component scale. </param>
-		/// <param name="OutHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap. </param>
-		/// <return>The capsule radius and half-height scaled by the component scale. </return>
+		/// Returns the capsule radius and half-height scaled by the component scale. Half-height includes the hemisphere end cap.
 		/// </summary>
+		/// <param name="outRadius">Radius of the capsule, scaled by the component scale.</param>
+		/// <param name="outHalfHeight">Half-height of the capsule, scaled by the component scale. Includes the hemisphere end cap.</param>
+		/// <return>The</return>
 		public void GetUnscaledCapsuleSize(float outRadius, float outHalfHeight)
 			=> E_UCapsuleComponent_GetUnscaledCapsuleSize(this, outRadius, outHalfHeight);
 		
 		
 		/// <summary>
-		/// <para>Returns the capsule radius and half-height, ignoring component scaling. Half-height excludes the hemisphere end cap. </para>
-		/// <param name="OutRadius">Radius of the capsule, ignoring component scaling. </param>
-		/// <param name="OutHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap. </param>
-		/// <return>The capsule radius and half-height (excluding hemisphere end cap), ignoring component scaling. </return>
+		/// Returns the capsule radius and half-height, ignoring component scaling. Half-height excludes the hemisphere end cap.
 		/// </summary>
+		/// <param name="outRadius">Radius of the capsule, ignoring component scaling.</param>
+		/// <param name="outHalfHeightWithoutHemisphere">Half-height of the capsule, scaled by the component scale. Excludes the hemisphere end cap.</param>
+		/// <return>The</return>
 		public void GetUnscaledCapsuleSize_WithoutHemisphere(float outRadius, float outHalfHeightWithoutHemisphere)
 			=> E_UCapsuleComponent_GetUnscaledCapsuleSize_WithoutHemisphere(this, outRadius, outHalfHeightWithoutHemisphere);
 		
@@ -181,31 +181,31 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the capsule half-height. This is the unscaled half-height, before component scale is applied. </para>
+		/// Set the capsule half-height. This is the unscaled half-height, before component scale is applied.
 		/// <para>If this capsule collides, updates touching array for owner actor. </para>
-		/// <param name="HalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
-		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
+		/// <param name="halfHeight">half-height, from capsule center to end of top or bottom hemisphere.</param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor.</param>
 		public void SetCapsuleHalfHeight(float halfHeight, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleHalfHeight(this, halfHeight, bUpdateOverlaps);
 		
 		
 		/// <summary>
-		/// <para>Set the capsule radius. This is the unscaled radius, before component scale is applied. </para>
+		/// Set the capsule radius. This is the unscaled radius, before component scale is applied.
 		/// <para>If this capsule collides, updates touching array for owner actor. </para>
-		/// <param name="Radius">radius of end-cap hemispheres and center cylinder. </param>
-		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
 		/// </summary>
+		/// <param name="radius">radius of end-cap hemispheres and center cylinder.</param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor.</param>
 		public void SetCapsuleRadius(float radius, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleRadius(this, radius, bUpdateOverlaps);
 		
 		
 		/// <summary>
-		/// <para>Change the capsule size. This is the unscaled size, before component scale is applied. </para>
-		/// <param name="InRadius">radius of end-cap hemispheres and center cylinder. </param>
-		/// <param name="InHalfHeight">half-height, from capsule center to end of top or bottom hemisphere. </param>
-		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
+		/// Change the capsule size. This is the unscaled size, before component scale is applied.
 		/// </summary>
+		/// <param name="inRadius">radius of end-cap hemispheres and center cylinder.</param>
+		/// <param name="inHalfHeight">half-height, from capsule center to end of top or bottom hemisphere.</param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor.</param>
 		public void SetCapsuleSize(float inRadius, float inHalfHeight, bool bUpdateOverlaps = true)
 			=> E_UCapsuleComponent_SetCapsuleSize(this, inRadius, inHalfHeight, bUpdateOverlaps);
 		

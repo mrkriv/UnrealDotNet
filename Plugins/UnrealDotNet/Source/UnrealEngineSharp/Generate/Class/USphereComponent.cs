@@ -62,10 +62,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Change the sphere radius. This is the unscaled radius, before component scale is applied. </para>
-		/// <param name="InSphereRadius">the new sphere radius </param>
-		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor. </param>
+		/// Change the sphere radius. This is the unscaled radius, before component scale is applied.
 		/// </summary>
+		/// <param name="inSphereRadius">the new sphere radius</param>
+		/// <param name="bUpdateOverlaps">if true and this shape is registered and collides, updates touching array for owner actor.</param>
 		public void SetSphereRadius(float inSphereRadius, bool bUpdateOverlaps = true)
 			=> E_USphereComponent_SetSphereRadius(this, inSphereRadius, bUpdateOverlaps);
 		

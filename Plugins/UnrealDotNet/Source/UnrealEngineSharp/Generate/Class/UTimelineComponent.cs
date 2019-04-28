@@ -15,7 +15,7 @@ namespace UnrealEngine
 	
 	/// <summary>
 	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineComponent
-	/// <para>Returns the time value of the last keyframe in any of the timeline's curves </para>
+	/// Returns the time value of the last keyframe in any of the timeline's curves
 	/// </summary>
 	public  partial class UTimelineComponent : UActorComponent
 	{
@@ -103,149 +103,149 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Get whether to ignore time dilation. </para>
+		/// Get whether to ignore time dilation.
 		/// </summary>
 		public bool GetIgnoreTimeDilation()
 			=> E_UTimelineComponent_GetIgnoreTimeDilation(this);
 		
 		
 		/// <summary>
-		/// <para>Get the current playback position of the Timeline </para>
+		/// Get the current playback position of the Timeline
 		/// </summary>
 		public float GetPlaybackPosition()
 			=> E_UTimelineComponent_GetPlaybackPosition(this);
 		
 		
 		/// <summary>
-		/// <para>Get the current play rate for this timeline </para>
+		/// Get the current play rate for this timeline
 		/// </summary>
 		public float GetPlayRate()
 			=> E_UTimelineComponent_GetPlayRate(this);
 		
 		
 		/// <summary>
-		/// <para>Get length of the timeline </para>
+		/// Get length of the timeline
 		/// </summary>
 		public float GetTimelineLength()
 			=> E_UTimelineComponent_GetTimelineLength(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether we are looping or not </para>
+		/// Get whether we are looping or not
 		/// </summary>
 		public bool IsLooping()
 			=> E_UTimelineComponent_IsLooping(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether this timeline is playing or not. </para>
+		/// Get whether this timeline is playing or not.
 		/// </summary>
 		public bool IsPlaying()
 			=> E_UTimelineComponent_IsPlaying(this);
 		
 		
 		/// <summary>
-		/// <para>Get whether we are reversing or not </para>
+		/// Get whether we are reversing or not
 		/// </summary>
 		public bool IsReversing()
 			=> E_UTimelineComponent_IsReversing(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline </para>
+		/// Start playback of timeline
 		/// </summary>
 		public void Play()
 			=> E_UTimelineComponent_Play(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline from the start </para>
+		/// Start playback of timeline from the start
 		/// </summary>
 		public void PlayFromStart()
 			=> E_UTimelineComponent_PlayFromStart(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline in reverse </para>
+		/// Start playback of timeline in reverse
 		/// </summary>
 		public void Reverse()
 			=> E_UTimelineComponent_Reverse(this);
 		
 		
 		/// <summary>
-		/// <para>Start playback of timeline in reverse from the end </para>
+		/// Start playback of timeline in reverse from the end
 		/// </summary>
 		public void ReverseFromEnd()
 			=> E_UTimelineComponent_ReverseFromEnd(this);
 		
 		
 		/// <summary>
-		/// <para>Set the delegate to call when timeline is finished </para>
+		/// Set the delegate to call when timeline is finished
 		/// </summary>
 		public void SetDirectionPropertyName(string directionPropertyName)
 			=> E_UTimelineComponent_SetDirectionPropertyName(this, directionPropertyName);
 		
 		
 		/// <summary>
-		/// <para>Set whether to ignore time dilation. </para>
+		/// Set whether to ignore time dilation.
 		/// </summary>
 		public void SetIgnoreTimeDilation(bool bNewIgnoreTimeDilation)
 			=> E_UTimelineComponent_SetIgnoreTimeDilation(this, bNewIgnoreTimeDilation);
 		
 		
 		/// <summary>
-		/// <para>true means we would loop, false means we should not. </para>
+		/// true means we would loop, false means we should not.
 		/// </summary>
 		public void SetLooping(bool bNewLooping)
 			=> E_UTimelineComponent_SetLooping(this, bNewLooping);
 		
 		
 		/// <summary>
-		/// <para>Set the new playback position time to use </para>
+		/// Set the new playback position time to use
 		/// </summary>
 		public void SetNewTime(float newTime)
 			=> E_UTimelineComponent_SetNewTime(this, newTime);
 		
 		
 		/// <summary>
-		/// <para>Jump to a position in the timeline. </para>
-		/// <param name="bFireEvents">If true, event functions that are between current position and new playback position will fire. </param>
-		/// <param name="bFireUpdate">If true, the update output exec will fire after setting the new playback position. </param>
+		/// Jump to a position in the timeline.
 		/// </summary>
+		/// <param name="bFireEvents">If true, event functions that are between current position and new playback position will fire.</param>
+		/// <param name="bFireUpdate">If true, the update output exec will fire after setting the new playback position.</param>
 		public void SetPlaybackPosition(float newPosition, bool bFireEvents, bool bFireUpdate = true)
 			=> E_UTimelineComponent_SetPlaybackPosition(this, newPosition, bFireEvents, bFireUpdate);
 		
 		
 		/// <summary>
-		/// <para>Sets the new play rate for this timeline </para>
+		/// Sets the new play rate for this timeline
 		/// </summary>
 		public void SetPlayRate(float newRate)
 			=> E_UTimelineComponent_SetPlayRate(this, newRate);
 		
 		
 		/// <summary>
-		/// <para>Optionally provide an object to automatically update properties on </para>
+		/// Optionally provide an object to automatically update properties on
 		/// </summary>
 		public void SetPropertySetObject(UObject newPropertySetObject)
 			=> E_UTimelineComponent_SetPropertySetObject(this, newPropertySetObject);
 		
 		
 		/// <summary>
-		/// <para>Set length of the timeline </para>
+		/// Set length of the timeline
 		/// </summary>
 		public void SetTimelineLength(float newLength)
 			=> E_UTimelineComponent_SetTimelineLength(this, newLength);
 		
 		
 		/// <summary>
-		/// <para>Sets the length mode of the timeline </para>
+		/// Sets the length mode of the timeline
 		/// </summary>
 		public void SetTimelineLengthMode(ETimelineLengthMode newLengthMode)
 			=> E_UTimelineComponent_SetTimelineLengthMode(this, (byte)newLengthMode);
 		
 		
 		/// <summary>
-		/// <para>Stop playback of timeline </para>
+		/// Stop playback of timeline
 		/// </summary>
 		public void Stop()
 			=> E_UTimelineComponent_Stop(this);

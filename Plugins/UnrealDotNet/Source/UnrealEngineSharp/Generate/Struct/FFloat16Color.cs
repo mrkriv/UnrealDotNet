@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor </para>
+		/// Default constructor
 		/// </summary>
 		public FFloat16Color() :
 			base(E_CreateStruct_FFloat16Color(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Copy constructor. </para>
+		/// Copy constructor.
 		/// </summary>
 		public FFloat16Color(FFloat16Color src) :
 			base(E_CreateStruct_FFloat16Color_FFloat16Color(src), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor from a linear color. </para>
+		/// Constructor from a linear color.
 		/// </summary>
 		public FFloat16Color(FLinearColor src) :
 			base(E_CreateStruct_FFloat16Color_FLinearColor(src), false)

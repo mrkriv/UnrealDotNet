@@ -59,7 +59,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Set to limit the screen size of this arrow </para>
+		/// Set to limit the screen size of this arrow
 		/// </summary>
 		public bool bIsScreenSizeScaled
 		{
@@ -69,7 +69,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The size on screen to limit this arrow to (in screen space) </para>
+		/// The size on screen to limit this arrow to (in screen space)
 		/// </summary>
 		public float ScreenSize
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Updates the arrow's colour, and tells it to refresh </para>
+		/// Updates the arrow's colour, and tells it to refresh
 		/// </summary>
 		public virtual void SetArrowColor(FLinearColor newColor)
 			=> E_UArrowComponent_SetArrowColor(this, newColor);

@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Change the sprite's UVs </para>
+		/// Change the sprite's UVs
 		/// </summary>
 		public override void SetUV(int newU, int newUL, int newV, int newVL) { }
 		

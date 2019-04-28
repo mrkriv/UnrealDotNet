@@ -82,7 +82,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Ending offset of the mesh from the spline, in component space. </para>
+		/// Ending offset of the mesh from the spline, in component space.
 		/// </summary>
 		public FVector2D EndOffset
 		{
@@ -92,7 +92,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>End location of spline, in component space. </para>
+		/// End location of spline, in component space.
 		/// </summary>
 		public FVector EndPos
 		{
@@ -102,7 +102,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Roll around spline applied at end. </para>
+		/// Roll around spline applied at end.
 		/// </summary>
 		public float EndRoll
 		{
@@ -112,7 +112,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>X and Y scale applied to mesh at end of spline. </para>
+		/// X and Y scale applied to mesh at end of spline.
 		/// </summary>
 		public FVector2D EndScale
 		{
@@ -122,7 +122,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>End tangent of spline, in component space. </para>
+		/// End tangent of spline, in component space.
 		/// </summary>
 		public FVector EndTangent
 		{
@@ -132,7 +132,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Starting offset of the mesh from the spline, in component space. </para>
+		/// Starting offset of the mesh from the spline, in component space.
 		/// </summary>
 		public FVector2D StartOffset
 		{
@@ -142,7 +142,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Start location of spline, in component space. </para>
+		/// Start location of spline, in component space.
 		/// </summary>
 		public FVector StartPos
 		{
@@ -152,7 +152,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Roll around spline applied at start </para>
+		/// Roll around spline applied at start
 		/// </summary>
 		public float StartRoll
 		{
@@ -162,7 +162,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>X and Y scale applied to mesh at start of spline. </para>
+		/// X and Y scale applied to mesh at start of spline.
 		/// </summary>
 		public FVector2D StartScale
 		{
@@ -172,7 +172,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Start tangent of spline, in component space. </para>
+		/// Start tangent of spline, in component space.
 		/// </summary>
 		public FVector StartTangent
 		{

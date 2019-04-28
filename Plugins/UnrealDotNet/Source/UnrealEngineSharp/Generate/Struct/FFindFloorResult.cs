@@ -62,7 +62,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The distance to the floor, computed from the swept capsule trace. </para>
+		/// The distance to the floor, computed from the swept capsule trace.
 		/// </summary>
 		public float FloorDist
 		{
@@ -72,7 +72,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Hit result of the test that found a floor. Includes more specific data about the point of impact and surface normal at that point. </para>
+		/// Hit result of the test that found a floor. Includes more specific data about the point of impact and surface normal at that point.
 		/// </summary>
 		public FHitResult HitResult
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The distance to the floor, computed from the trace. Only valid if bLineTrace is true. </para>
+		/// The distance to the floor, computed from the trace. Only valid if bLineTrace is true.
 		/// </summary>
 		public float LineDist
 		{
@@ -98,14 +98,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the distance to floor, either LineDist or FloorDist. </para>
+		/// Gets the distance to floor, either LineDist or FloorDist.
 		/// </summary>
 		public float GetDistanceToFloor()
 			=> E_FFindFloorResult_GetDistanceToFloor(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the floor result hit a walkable surface. </para>
+		/// Returns true if the floor result hit a walkable surface.
 		/// </summary>
 		public bool IsWalkableFloor()
 			=> E_FFindFloorResult_IsWalkableFloor(this);

@@ -108,7 +108,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection. </para>
+		/// Receiving pixels whose normal is at this angle from the reflection plane will have completely faded out the planar reflection.
 		/// </summary>
 		public float AngleFromPlaneFadeEnd
 		{
@@ -118,7 +118,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection. </para>
+		/// Receiving pixels whose normal is at this angle from the reflection plane will begin to fade out the planar reflection.
 		/// </summary>
 		public float AngleFromPlaneFadeStart
 		{
@@ -128,9 +128,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to render the scene as two-sided, which can be useful to hide artifacts where normal distortion would read 'under' an object that has been clipped by the reflection plane. </para>
+		/// Whether to render the scene as two-sided, which can be useful to hide artifacts where normal distortion would read 'under' an object that has been clipped by the reflection plane.
 		/// <para>With this setting enabled, the backfaces of a mesh would be displayed in the clipped region instead of the background which is potentially a bright sky. </para>
-		/// <para>Be sure to add the water plane to HiddenActors if enabling this, as the water plane will now block the reflection. </para>
+		/// Be sure to add the water plane to HiddenActors if enabling this, as the water plane will now block the reflection.
 		/// </summary>
 		public bool bRenderSceneTwoSided
 		{
@@ -152,7 +152,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection. </para>
+		/// Receiving pixels at this distance from the reflection plane will have completely faded out the planar reflection.
 		/// </summary>
 		public float DistanceFromPlaneFadeoutEnd
 		{
@@ -162,7 +162,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection. </para>
+		/// Receiving pixels at this distance from the reflection plane will begin to fade out the planar reflection.
 		/// </summary>
 		public float DistanceFromPlaneFadeoutStart
 		{
@@ -178,9 +178,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Additional FOV used when rendering to the reflection texture. </para>
+		/// Additional FOV used when rendering to the reflection texture.
 		/// <para>This is useful when normal distortion is causing reads outside the reflection texture. </para>
-		/// <para>Larger values increase rendering thread and GPU cost, as more objects and triangles have to be rendered into the planar reflection. </para>
+		/// Larger values increase rendering thread and GPU cost, as more objects and triangles have to be rendered into the planar reflection.
 		/// </summary>
 		public float ExtraFOV
 		{
@@ -190,7 +190,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the strength of normals when distorting the planar reflection. </para>
+		/// Controls the strength of normals when distorting the planar reflection.
 		/// </summary>
 		public float NormalDistortionStrength
 		{
@@ -200,7 +200,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost. </para>
+		/// The roughness value to prefilter the planar reflection texture with, useful for hiding low resolution.  Larger values have larger GPU cost.
 		/// </summary>
 		public float PrefilterRoughness
 		{
@@ -210,7 +210,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The distance at which the prefilter roughness value will be achieved. </para>
+		/// The distance at which the prefilter roughness value will be achieved.
 		/// </summary>
 		public float PrefilterRoughnessDistance
 		{
@@ -226,7 +226,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Downsample percent, can be used to reduce GPU time rendering the planar reflection. </para>
+		/// Downsample percent, can be used to reduce GPU time rendering the planar reflection.
 		/// </summary>
 		public int ScreenPercentage
 		{

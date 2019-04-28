@@ -72,7 +72,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to weld simulated bodies together when attaching </para>
+		/// Whether to weld simulated bodies together when attaching
 		/// </summary>
 		public bool bWeldSimulatedBodies
 		{
@@ -82,7 +82,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Various preset attachment rules. Note that these default rules do NOT by default weld simulated bodies </para>
+		/// Various preset attachment rules. Note that these default rules do NOT by default weld simulated bodies
 		/// </summary>
 		public static FAttachmentTransformRules KeepRelativeTransform
 		{
@@ -96,7 +96,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to location when attaching </para>
+		/// The rule to apply to location when attaching
 		/// </summary>
 		public EAttachmentRule LocationRule
 		{
@@ -106,7 +106,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to rotation when attaching </para>
+		/// The rule to apply to rotation when attaching
 		/// </summary>
 		public EAttachmentRule RotationRule
 		{
@@ -116,7 +116,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The rule to apply to scale when attaching </para>
+		/// The rule to apply to scale when attaching
 		/// </summary>
 		public EAttachmentRule ScaleRule
 		{

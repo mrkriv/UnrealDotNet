@@ -20,11 +20,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor that will save the current relevant values of InWorld </para>
+		/// Constructor that will save the current relevant values of InWorld
 		/// <para>and set the collection's context values for InWorld. </para>
-		/// <param name="InLevelCollectionIndex">The index of the collection to use </param>
-		/// <param name="InWorld">The world on which to set the context. </param>
 		/// </summary>
+		/// <param name="inLevelCollectionIndex">The index of the collection to use</param>
+		/// <param name="inWorld">The world on which to set the context.</param>
 		public FScopedLevelCollectionContextSwitch(int inLevelCollectionIndex, UWorld inWorld) :
 			base(E_CreateStruct_FScopedLevelCollectionContextSwitch_int32_UWorld(inLevelCollectionIndex, inWorld), false)
 		{

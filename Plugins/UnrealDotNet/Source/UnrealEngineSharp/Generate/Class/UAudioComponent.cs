@@ -303,7 +303,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>A count of how many times we've started playing </para>
+		/// A count of how many times we've started playing
 		/// </summary>
 		public int ActiveCount
 		{
@@ -319,8 +319,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true. </para>
-		/// <para>@see bAutoManageAttachment, EAttachmentRule </para>
+		/// Options for how we handle our location when we attach to the AutoAttachParent, if bAutoManageAttachment is true.
+		/// <see cref="bAutoManageAttachment"/>
 		/// </summary>
 		public EAttachmentRule AutoAttachLocationRule
 		{
@@ -330,8 +330,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Options for how we handle our rotation when we attach to the AutoAttachParent, if bAutoManageAttachment is true. </para>
-		/// <para>@see bAutoManageAttachment, EAttachmentRule </para>
+		/// Options for how we handle our rotation when we attach to the AutoAttachParent, if bAutoManageAttachment is true.
+		/// <see cref="bAutoManageAttachment"/>
 		/// </summary>
 		public EAttachmentRule AutoAttachRotationRule
 		{
@@ -341,8 +341,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Options for how we handle our scale when we attach to the AutoAttachParent, if bAutoManageAttachment is true. </para>
-		/// <para>@see bAutoManageAttachment, EAttachmentRule </para>
+		/// Options for how we handle our scale when we attach to the AutoAttachParent, if bAutoManageAttachment is true.
+		/// <see cref="bAutoManageAttachment"/>
 		/// </summary>
 		public EAttachmentRule AutoAttachScaleRule
 		{
@@ -352,7 +352,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Socket we automatically attach to on the AutoAttachParent, if bAutoManageAttachment is true. </para>
+		/// Socket we automatically attach to on the AutoAttachParent, if bAutoManageAttachment is true.
 		/// <para>@see bAutoManageAttachment </para>
 		/// </summary>
 		public string AutoAttachSocketName
@@ -363,7 +363,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Overrides spatialization enablement in either the attenuation asset or on this audio component's attenuation settings override. </para>
+		/// Overrides spatialization enablement in either the attenuation asset or on this audio component's attenuation settings override.
 		/// </summary>
 		public byte bAllowSpatialization
 		{
@@ -373,7 +373,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to artificially prioritize the component to play </para>
+		/// Whether to artificially prioritize the component to play
 		/// </summary>
 		public byte bAlwaysPlay
 		{
@@ -389,12 +389,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True if we should automatically attach to AutoAttachParent when Played, and detach from our parent when playback is completed. </para>
+		/// True if we should automatically attach to AutoAttachParent when Played, and detach from our parent when playback is completed.
 		/// <para>This overrides any current attachment that may be present at the time of activation (deferring initial attachment until activation, if AutoAttachParent is null). </para>
-		/// <para>If enabled, this AudioComponent's WorldLocation will no longer be reliable when not currently playing audio, and any attach children will also be detached/attached along with it. </para>
+		/// If enabled, this AudioComponent's WorldLocation will no longer be reliable when not currently playing audio, and any attach children will also be detached/attached along with it.
 		/// <para>When enabled, detachment occurs regardless of whether AutoAttachParent is assigned, and the relative transform from the time of activation is restored. </para>
-		/// <para>This also disables attachment on dedicated servers, where we don't actually activate even if bAutoActivate is true. </para>
-		/// <para>@see AutoAttachParent, AutoAttachSocketName, AutoAttachLocationType </para>
+		/// This also disables attachment on dedicated servers, where we don't actually activate even if bAutoActivate is true.
+		/// <see cref="AutoAttachParent"/>
 		/// </summary>
 		public byte bAutoManageAttachment
 		{
@@ -404,7 +404,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not this sound class forces sounds to the center channel </para>
+		/// Whether or not this sound class forces sounds to the center channel
 		/// </summary>
 		public byte bCenterChannelOnly
 		{
@@ -414,7 +414,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not to apply a low-pass filter to the sound that plays in this audio component. </para>
+		/// Whether or not to apply a low-pass filter to the sound that plays in this audio component.
 		/// </summary>
 		public byte bEnableLowPassFilter
 		{
@@ -424,7 +424,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether audio effects are applied </para>
+		/// Whether audio effects are applied
 		/// </summary>
 		public byte bEQFilterApplied
 		{
@@ -434,7 +434,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this sound will not be stopped when flushing the audio device. </para>
+		/// If true, this sound will not be stopped when flushing the audio device.
 		/// </summary>
 		public byte bIgnoreForFlushing
 		{
@@ -444,7 +444,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not this audio component is a music clip </para>
+		/// Whether or not this audio component is a music clip
 		/// </summary>
 		public byte bIsMusic
 		{
@@ -454,7 +454,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not this audio component has been paused </para>
+		/// Whether or not this audio component has been paused
 		/// </summary>
 		public byte bIsPaused
 		{
@@ -464,7 +464,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not this sound is a preview sound </para>
+		/// Whether or not this sound is a preview sound
 		/// </summary>
 		public byte bIsPreviewSound
 		{
@@ -474,7 +474,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not this sound plays when the game is paused in the UI </para>
+		/// Whether or not this sound plays when the game is paused in the UI
 		/// </summary>
 		public byte bIsUISound
 		{
@@ -484,7 +484,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Allows defining attenuation settings directly on this audio component without using an attenuation settings asset. </para>
+		/// Allows defining attenuation settings directly on this audio component without using an attenuation settings asset.
 		/// </summary>
 		public byte bOverrideAttenuation
 		{
@@ -500,7 +500,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not to override the sound's subtitle priority. </para>
+		/// Whether or not to override the sound's subtitle priority.
 		/// </summary>
 		public byte bOverrideSubtitlePriority
 		{
@@ -510,7 +510,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether this audio component is previewing a sound </para>
+		/// Whether this audio component is previewing a sound
 		/// </summary>
 		public byte bPreviewComponent
 		{
@@ -520,7 +520,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not the audio component should be excluded from reverb EQ processing </para>
+		/// Whether or not the audio component should be excluded from reverb EQ processing
 		/// </summary>
 		public byte bReverb
 		{
@@ -542,7 +542,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, subtitles in the sound data will be ignored. </para>
+		/// If true, subtitles in the sound data will be ignored.
 		/// </summary>
 		public byte bSuppressSubtitles
 		{
@@ -552,7 +552,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The attack time in milliseconds for the envelope follower. Delegate callbacks can be registered to get the envelope value of sounds played with this audio component. Only used in audio mixer. </para>
+		/// The attack time in milliseconds for the envelope follower. Delegate callbacks can be registered to get the envelope value of sounds played with this audio component. Only used in audio mixer.
 		/// </summary>
 		public int EnvelopeFollowerAttackTime
 		{
@@ -562,7 +562,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The release time in milliseconds for the envelope follower. Delegate callbacks can be registered to get the envelope value of sounds played with this audio component. Only used in audio mixer. </para>
+		/// The release time in milliseconds for the envelope follower. Delegate callbacks can be registered to get the envelope value of sounds played with this audio component. Only used in audio mixer.
 		/// </summary>
 		public int EnvelopeFollowerReleaseTime
 		{
@@ -572,7 +572,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The frequency of the lowpass filter (in hertz) to apply to this voice. A frequency of 0.0 is the device sample rate and will bypass the filter. </para>
+		/// The frequency of the lowpass filter (in hertz) to apply to this voice. A frequency of 0.0 is the device sample rate and will bypass the filter.
 		/// </summary>
 		public float LowPassFilterFrequency
 		{
@@ -582,7 +582,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>while playing, this component will check for occlusion from its closest listener every this many seconds </para>
+		/// while playing, this component will check for occlusion from its closest listener every this many seconds
 		/// </summary>
 		public float OcclusionCheckInterval
 		{
@@ -592,7 +592,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The upper bound to use when randomly determining a pitch multiplier </para>
+		/// The upper bound to use when randomly determining a pitch multiplier
 		/// </summary>
 		public float PitchModulationMax
 		{
@@ -602,7 +602,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The lower bound to use when randomly determining a pitch multiplier </para>
+		/// The lower bound to use when randomly determining a pitch multiplier
 		/// </summary>
 		public float PitchModulationMin
 		{
@@ -612,7 +612,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A pitch multiplier to apply to sounds generated by this component </para>
+		/// A pitch multiplier to apply to sounds generated by this component
 		/// </summary>
 		public float PitchMultiplier
 		{
@@ -622,7 +622,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A priority value that is used for sounds that play on this component that scales against final output volume. </para>
+		/// A priority value that is used for sounds that play on this component that scales against final output volume.
 		/// </summary>
 		public float Priority
 		{
@@ -632,7 +632,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Used by the subtitle manager to prioritize subtitles wave instances spawned by this component. </para>
+		/// Used by the subtitle manager to prioritize subtitles wave instances spawned by this component.
 		/// </summary>
 		public float SubtitlePriority
 		{
@@ -642,7 +642,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The upper bound to use when randomly determining a volume multiplier </para>
+		/// The upper bound to use when randomly determining a volume multiplier
 		/// </summary>
 		public float VolumeModulationMax
 		{
@@ -652,7 +652,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The lower bound to use when randomly determining a volume multiplier </para>
+		/// The lower bound to use when randomly determining a volume multiplier
 		/// </summary>
 		public float VolumeModulationMin
 		{
@@ -662,7 +662,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A volume multiplier to apply to sounds generated by this component </para>
+		/// A volume multiplier to apply to sounds generated by this component
 		/// </summary>
 		public float VolumeMultiplier
 		{
@@ -724,38 +724,38 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>This will allow one to adjust the volume of an AudioComponent on the fly </para>
+		/// This will allow one to adjust the volume of an AudioComponent on the fly
 		/// </summary>
 		public void AdjustVolume(float adjustVolumeDuration, float adjustVolumeLevel)
 			=> E_UAudioComponent_AdjustVolume(this, adjustVolumeDuration, adjustVolumeLevel);
 		
 		
 		/// <summary>
-		/// <para>Restore relative transform from auto attachment and optionally detach from parent (regardless of whether it was an auto attachment). </para>
+		/// Restore relative transform from auto attachment and optionally detach from parent (regardless of whether it was an auto attachment).
 		/// </summary>
 		private void CancelAutoAttachment(bool bDetachFromParent)
 			=> E_UAudioComponent_CancelAutoAttachment(this, bDetachFromParent);
 		
 		
 		/// <summary>
-		/// <para>This can be used in place of "play" when it is desired to fade in the sound over time. </para>
+		/// This can be used in place of "play" when it is desired to fade in the sound over time.
 		/// <para>If FadeTime is 0.0, the change in volume is instant. </para>
-		/// <para>If FadeTime is > 0.0, the multiplier will be increased from 0 to FadeVolumeLevel over FadeIn seconds. </para>
-		/// <param name="FadeInDuration">how long it should take to reach the FadeVolumeLevel </param>
-		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume to fade to </param>
+		/// If FadeTime is > 0.0, the multiplier will be increased from 0 to FadeVolumeLevel over FadeIn seconds.
 		/// </summary>
+		/// <param name="fadeInDuration">how long it should take to reach the FadeVolumeLevel</param>
+		/// <param name="fadeVolumeLevel">the percentage of the AudioComponents's calculated volume to fade to</param>
 		public virtual void FadeIn(float fadeInDuration, float fadeVolumeLevel, float startTime)
 			=> E_UAudioComponent_FadeIn(this, fadeInDuration, fadeVolumeLevel, startTime);
 		
 		
 		/// <summary>
-		/// <para>This is used in place of "stop" when it is desired to fade the volume of the sound before stopping. </para>
+		/// This is used in place of "stop" when it is desired to fade the volume of the sound before stopping.
 		/// <para>If FadeTime is 0.0, this is the same as calling Stop(). </para>
-		/// <para>If FadeTime is > 0.0, this will adjust the volume multiplier to FadeVolumeLevel over FadeInTime seconds </para>
+		/// If FadeTime is > 0.0, this will adjust the volume multiplier to FadeVolumeLevel over FadeInTime seconds
 		/// <para>and then stop the sound. </para>
-		/// <param name="FadeOutDuration">how long it should take to reach the FadeVolumeLevel </param>
-		/// <param name="FadeVolumeLevel">the percentage of the AudioComponents's calculated volume in which to fade to </param>
 		/// </summary>
+		/// <param name="fadeOutDuration">how long it should take to reach the FadeVolumeLevel</param>
+		/// <param name="fadeVolumeLevel">the percentage of the AudioComponents's calculated volume in which to fade to</param>
 		public virtual void FadeOut(float fadeOutDuration, float fadeVolumeLevel)
 			=> E_UAudioComponent_FadeOut(this, fadeOutDuration, fadeVolumeLevel);
 		
@@ -764,119 +764,119 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the current cooked envelope data of the playing audio component. Returns true if there is data and the audio component is playing. </para>
+		/// Returns the current cooked envelope data of the playing audio component. Returns true if there is data and the audio component is playing.
 		/// </summary>
 		public bool GetCookedEnvelopeData(float outEnvelopeData)
 			=> E_UAudioComponent_GetCookedEnvelopeData(this, outEnvelopeData);
 		
 		
 		/// <summary>
-		/// <para>Queries if the sound wave playing in this audio component has cooked amplitude analyses. </para>
+		/// Queries if the sound wave playing in this audio component has cooked amplitude analyses.
 		/// </summary>
 		public bool HasCookedAmplitudeEnvelopeData()
 			=> E_UAudioComponent_HasCookedAmplitudeEnvelopeData(this);
 		
 		
 		/// <summary>
-		/// <para>Queries if the sound wave playing in this audio component has cooked FFT data. </para>
+		/// Queries if the sound wave playing in this audio component has cooked FFT data.
 		/// </summary>
 		public bool HasCookedFFTData()
 			=> E_UAudioComponent_HasCookedFFTData(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if this component is currently playing a SoundCue. </para>
+		/// Returns true if this component is currently playing a SoundCue.
 		/// </summary>
 		public virtual bool IsPlaying()
 			=> E_UAudioComponent_IsPlaying(this);
 		
 		
 		/// <summary>
-		/// <para>Start a sound playing on an audio component </para>
+		/// Start a sound playing on an audio component
 		/// </summary>
 		public virtual void Play(float startTime)
 			=> E_UAudioComponent_Play(this, startTime);
 		
 		
 		/// <summary>
-		/// <para>Utility function called by Play and FadeIn to start a sound playing. </para>
+		/// Utility function called by Play and FadeIn to start a sound playing.
 		/// </summary>
 		protected void PlayInternal(float startTime, float fadeInDuration, float fadeVolumeLevel)
 			=> E_UAudioComponent_PlayInternal(this, startTime, fadeInDuration, fadeVolumeLevel);
 		
 		
 		/// <summary>
-		/// <para>Set a boolean instance parameter for use in sound cues played by this audio component </para>
+		/// Set a boolean instance parameter for use in sound cues played by this audio component
 		/// </summary>
 		public void SetBooleanParameter(string inName, bool inBool)
 			=> E_UAudioComponent_SetBoolParameter(this, inName, inBool);
 		
 		
 		/// <summary>
-		/// <para>Set a float instance parameter for use in sound cues played by this audio component </para>
+		/// Set a float instance parameter for use in sound cues played by this audio component
 		/// </summary>
 		public void SetFloatParameter(string inName, float inFloat)
 			=> E_UAudioComponent_SetFloatParameter(this, inName, inFloat);
 		
 		
 		/// <summary>
-		/// <para>Set an integer instance parameter for use in sound cues played by this audio component </para>
+		/// Set an integer instance parameter for use in sound cues played by this audio component
 		/// </summary>
 		public void SetIntegerParameter(string inName, int inInt)
 			=> E_UAudioComponent_SetIntParameter(this, inName, inInt);
 		
 		
 		/// <summary>
-		/// <para>Sets whether or not the low pass filter is enabled on the audio component. </para>
+		/// Sets whether or not the low pass filter is enabled on the audio component.
 		/// </summary>
 		public void SetLowPassFilterEnabled(bool inLowPassFilterEnabled)
 			=> E_UAudioComponent_SetLowPassFilterEnabled(this, inLowPassFilterEnabled);
 		
 		
 		/// <summary>
-		/// <para>Sets lowpass filter frequency of the audio component. </para>
+		/// Sets lowpass filter frequency of the audio component.
 		/// </summary>
 		public void SetLowPassFilterFrequency(float inLowPassFilterFrequency)
 			=> E_UAudioComponent_SetLowPassFilterFrequency(this, inLowPassFilterFrequency);
 		
 		
 		/// <summary>
-		/// <para>Pause an audio component playing its sound cue, issue any delegates if needed </para>
+		/// Pause an audio component playing its sound cue, issue any delegates if needed
 		/// </summary>
 		public void SetPaused(bool bPause)
 			=> E_UAudioComponent_SetPaused(this, bPause);
 		
 		
 		/// <summary>
-		/// <para>Set a new pitch multiplier </para>
+		/// Set a new pitch multiplier
 		/// </summary>
 		public void SetPitchMultiplier(float newPitchMultiplier)
 			=> E_UAudioComponent_SetPitchMultiplier(this, newPitchMultiplier);
 		
 		
 		/// <summary>
-		/// <para>Sets the sound instance parameter. </para>
+		/// Sets the sound instance parameter.
 		/// </summary>
 		public void SetSoundParameter(FAudioComponentParam param)
 			=> E_UAudioComponent_SetSoundParameter(this, param);
 		
 		
 		/// <summary>
-		/// <para>Set whether sounds generated by this audio component should be considered UI sounds </para>
+		/// Set whether sounds generated by this audio component should be considered UI sounds
 		/// </summary>
 		public void SetUISound(bool bInUISound)
 			=> E_UAudioComponent_SetUISound(this, bInUISound);
 		
 		
 		/// <summary>
-		/// <para>Set a new volume multiplier </para>
+		/// Set a new volume multiplier
 		/// </summary>
 		public void SetVolumeMultiplier(float newVolumeMultiplier)
 			=> E_UAudioComponent_SetVolumeMultiplier(this, newVolumeMultiplier);
 		
 		
 		/// <summary>
-		/// <para>Stop an audio component playing its sound cue, issue any delegates if needed </para>
+		/// Stop an audio component playing its sound cue, issue any delegates if needed
 		/// </summary>
 		public virtual void Stop()
 			=> E_UAudioComponent_Stop(this);

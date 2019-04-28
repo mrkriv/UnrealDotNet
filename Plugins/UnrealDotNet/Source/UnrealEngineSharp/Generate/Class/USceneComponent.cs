@@ -512,7 +512,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>If RelativeLocation should be considered relative to the world, rather than the parent </para>
+		/// If RelativeLocation should be considered relative to the world, rather than the parent
 		/// </summary>
 		public byte bAbsoluteLocation
 		{
@@ -522,7 +522,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If RelativeRotation should be considered relative to the world, rather than the parent </para>
+		/// If RelativeRotation should be considered relative to the world, rather than the parent
 		/// </summary>
 		public byte bAbsoluteRotation
 		{
@@ -532,7 +532,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If RelativeScale3D should be considered relative to the world, rather than the parent </para>
+		/// If RelativeScale3D should be considered relative to the world, rather than the parent
 		/// </summary>
 		public byte bAbsoluteScale
 		{
@@ -548,7 +548,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to hide the primitive in game, if the primitive is Visible. </para>
+		/// Whether to hide the primitive in game, if the primitive is Visible.
 		/// </summary>
 		public byte bHiddenInGame
 		{
@@ -558,7 +558,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Current bounds of the component </para>
+		/// Current bounds of the component
 		/// </summary>
 		public FBoxSphereBounds Bounds
 		{
@@ -568,7 +568,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, this component uses its parents bounds when attached. </para>
+		/// If true, this component uses its parents bounds when attached.
 		/// <para>This can be a significant optimization with many components attached together. </para>
 		/// </summary>
 		public byte bUseAttachParentBound
@@ -579,7 +579,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to completely draw the primitive; if false, the primitive is not drawn, does not cast a shadow. </para>
+		/// Whether to completely draw the primitive; if false, the primitive is not drawn, does not cast a shadow.
 		/// </summary>
 		public byte bVisible
 		{
@@ -595,7 +595,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Location of the component relative to its parent </para>
+		/// Location of the component relative to its parent
 		/// </summary>
 		public FVector RelativeLocation
 		{
@@ -605,7 +605,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Rotation of the component relative to its parent </para>
+		/// Rotation of the component relative to its parent
 		/// </summary>
 		public FRotator RelativeRotation
 		{
@@ -615,7 +615,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Non-uniform scaling of the component relative to its parent. </para>
+		/// Non-uniform scaling of the component relative to its parent.
 		/// <para>Note that scaling is always applied in local space (no shearing etc) </para>
 		/// </summary>
 		public FVector RelativeScale3D
@@ -626,7 +626,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Global flag to enable/disable overlap optimizations, settable with p.SkipUpdateOverlapsOptimEnabled cvar </para>
+		/// Global flag to enable/disable overlap optimizations, settable with p.SkipUpdateOverlapsOptimEnabled cvar
 		/// </summary>
 		public static int SkipUpdateOverlapsOptimEnabled
 		{
@@ -671,28 +671,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Determine if dynamic data is allowed to be changed. </para>
-		/// <param name="bIgnoreStationary">Whether or not to ignore stationary mobility when checking. Default is true (i.e. - check for static mobility only). </param>
-		/// <return>Whether or not dynamic data is allowed to be changed. </return>
+		/// Determine if dynamic data is allowed to be changed.
 		/// </summary>
+		/// <param name="bIgnoreStationary">Whether or not to ignore stationary mobility when checking. Default is true (i.e. - check for static mobility only).</param>
+		/// <return>Whether</return>
 		protected bool AreDynamicDataChangesAllowed(bool bIgnoreStationary = true)
 			=> E_USceneComponent_AreDynamicDataChangesAllowed(this, bIgnoreStationary);
 		
 		
 		/// <summary>
-		/// <para>Attach this component to another scene component, optionally at a named socket. It is valid to call this on components whether or not they have been Registered, however from </para>
+		/// Attach this component to another scene component, optionally at a named socket. It is valid to call this on components whether or not they have been Registered, however from
 		/// <para>constructor or when not registered it is preferable to use SetupAttachment. </para>
-		/// <param name="Parent">Parent to attach to. </param>
-		/// <param name="AttachmentRules">How to handle transforms & welding when attaching. </param>
-		/// <param name="SocketName">Optional socket to attach to on the parent. </param>
-		/// <return>True if attachment is successful (or already attached to requested parent/socket), false if attachment is rejected and there is no change in AttachParent. </return>
 		/// </summary>
+		/// <param name="parent">Parent to attach to.</param>
+		/// <param name="attachmentRules">How to handle transforms & welding when attaching.</param>
+		/// <param name="socketName">Optional socket to attach to on the parent.</param>
+		/// <return>True</return>
 		public bool AttachToComponent(USceneComponent inParent, FAttachmentTransformRules attachmentRules, string inSocketName)
 			=> E_USceneComponent_AttachToComponent(this, inParent, attachmentRules, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Calculate the axis-aligned bounding cylinder of the component (radius in X-Y, half-height along Z axis). </para>
+		/// Calculate the axis-aligned bounding cylinder of the component (radius in X-Y, half-height along Z axis).
 		/// <para>Default behavior is just a cylinder around the box of the cached BoxSphereBounds. </para>
 		/// </summary>
 		public virtual void CalcBoundingCylinder(float cylinderRadius, float cylinderHalfHeight)
@@ -700,30 +700,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Calculate the bounds of the component. Default behavior is a bounding box/sphere of zero size. </para>
+		/// Calculate the bounds of the component. Default behavior is a bounding box/sphere of zero size.
 		/// </summary>
 		public virtual FBoxSphereBounds CalcBounds(FTransform localToWorld)
 			=> E_USceneComponent_CalcBounds(this, localToWorld);
 		
 		
 		/// <summary>
-		/// <para>Calculate the new ComponentToWorld transform for this component. </para>
+		/// Calculate the new ComponentToWorld transform for this component.
 		/// <para>Parent is optional and can be used for computing ComponentToWorld based on arbitrary USceneComponent. </para>
-		/// <para>If Parent is not passed in we use the component's AttachParent </para>
+		/// If Parent is not passed in we use the component's AttachParent
 		/// </summary>
 		protected FTransform CalcNewComponentToWorld(FTransform newRelativeTransform, USceneComponent parent, string socketName)
 			=> E_USceneComponent_CalcNewComponentToWorld(this, newRelativeTransform, parent, socketName);
 		
 		
 		/// <summary>
-		/// <para>Utility function to handle calculating transform with a parent </para>
+		/// Utility function to handle calculating transform with a parent
 		/// </summary>
 		protected FTransform CalcNewComponentToWorld_GeneralCase(FTransform newRelativeTransform, USceneComponent parent, string socketName)
 			=> E_USceneComponent_CalcNewComponentToWorld_GeneralCase(this, newRelativeTransform, parent, socketName);
 		
 		
 		/// <summary>
-		/// <para>Called to see if it's possible to attach another scene component as a child. </para>
+		/// Called to see if it's possible to attach another scene component as a child.
 		/// <para>Note: This can be called on template component as well! </para>
 		/// </summary>
 		public virtual bool CanAttachAsChild(USceneComponent childComponent, string socketName)
@@ -731,156 +731,156 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>return true if it can ever render </para>
+		/// return true if it can ever render
 		/// </summary>
 		public bool CanEverRender()
 			=> E_USceneComponent_CanEverRender(this);
 		
 		
 		/// <summary>
-		/// <para>Determines whether or not the component can have its mobility set to static </para>
+		/// Determines whether or not the component can have its mobility set to static
 		/// </summary>
 		public virtual bool CanHaveStaticMobility()
 			=> E_USceneComponent_CanHaveStaticMobility(this);
 		
 		
 		/// <summary>
-		/// <para>Check if mobility is set to non-static. If it's static we trigger a PIE warning and return true </para>
+		/// Check if mobility is set to non-static. If it's static we trigger a PIE warning and return true
 		/// </summary>
 		protected bool CheckStaticMobilityAndWarn(string actionText)
 			=> E_USceneComponent_CheckStaticMobilityAndWarn(this, actionText);
 		
 		
 		/// <summary>
-		/// <para>Clears the skip update overlaps flag. This should be called any time a change to state would prevent the result of UpdateOverlaps. For example attachment, changing collision settings, etc... </para>
+		/// Clears the skip update overlaps flag. This should be called any time a change to state would prevent the result of UpdateOverlaps. For example attachment, changing collision settings, etc...
 		/// </summary>
 		public void ClearSkipUpdateOverlaps()
 			=> E_USceneComponent_ClearSkipUpdateOverlaps(this);
 		
 		
 		/// <summary>
-		/// <para>Call UpdateComponentToWorld if bComponentToWorldUpdated is false. </para>
+		/// Call UpdateComponentToWorld if bComponentToWorldUpdated is false.
 		/// </summary>
 		public void ConditionalUpdateComponentToWorld()
 			=> E_USceneComponent_ConditionalUpdateComponentToWorld(this);
 		
 		
 		/// <summary>
-		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
-		/// <param name="DetachmentRules">How to handle transforms & modification when detaching. </param>
+		/// Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo)
 		/// </summary>
+		/// <param name="detachmentRules">How to handle transforms & modification when detaching.</param>
 		public virtual void DetachFromComponent(FDetachmentTransformRules detachmentRules)
 			=> E_USceneComponent_DetachFromComponent(this, detachmentRules);
 		
 		
 		/// <summary>
-		/// <para>DEPRECATED - Use DetachFromComponent() instead </para>
+		/// DEPRECATED - Use DetachFromComponent() instead
 		/// </summary>
 		public virtual void DetachFromParentDeprecated(bool bMaintainWorldPosition, bool bCallModify)
 			=> E_USceneComponent_DetachFromParent(this, bMaintainWorldPosition, bCallModify);
 		
 		
 		/// <summary>
-		/// <para>Return true if socket with the given name exists </para>
-		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
+		/// Return true if socket with the given name exists
 		/// </summary>
+		/// <param name="inSocketName">Name of the socket or the bone to get the transform</param>
 		public virtual bool DoesSocketExist(string inSocketName)
 			=> E_USceneComponent_DoesSocketExist(this, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Walks up the attachment chain from this SceneComponent and returns the SceneComponent at the top. If AttachParent is NULL, returns this. </para>
+		/// Walks up the attachment chain from this SceneComponent and returns the SceneComponent at the top. If AttachParent is NULL, returns this.
 		/// </summary>
 		public USceneComponent GetAttachmentRoot()
 			=> E_USceneComponent_GetAttachmentRoot(this);
 		
 		
 		/// <summary>
-		/// <para>Walks up the attachment chain from this SceneComponent and returns the top-level actor it's attached to.  Returns Owner if unattached. </para>
+		/// Walks up the attachment chain from this SceneComponent and returns the top-level actor it's attached to.  Returns Owner if unattached.
 		/// </summary>
 		public AActor GetAttachmentRootActor()
 			=> E_USceneComponent_GetAttachmentRootActor(this);
 		
 		
 		/// <summary>
-		/// <para>Get the SceneComponent we are attached to. </para>
+		/// Get the SceneComponent we are attached to.
 		/// </summary>
 		public USceneComponent GetAttachParent()
 			=> E_USceneComponent_GetAttachParent(this);
 		
 		
 		/// <summary>
-		/// <para>Get the socket we are attached to. </para>
+		/// Get the socket we are attached to.
 		/// </summary>
 		public string GetAttachSocketName()
 			=> E_USceneComponent_GetAttachSocketName(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the attached child component at the specified location </para>
+		/// Gets the attached child component at the specified location
 		/// </summary>
 		public USceneComponent GetChildComponent(int childIndex)
 			=> E_USceneComponent_GetChildComponent(this, childIndex);
 		
 		
 		/// <summary>
-		/// <para>Returns the channel that this component belongs to when it moves. </para>
+		/// Returns the channel that this component belongs to when it moves.
 		/// </summary>
 		public virtual ECollisionChannel GetCollisionObjectType()
 			=> (ECollisionChannel)E_USceneComponent_GetCollisionObjectType(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the response that this component has to a specific collision channel. </para>
+		/// Returns the response that this component has to a specific collision channel.
 		/// </summary>
 		public virtual ECollisionResponse GetCollisionResponseToChannel(ECollisionChannel channel)
 			=> (ECollisionResponse)E_USceneComponent_GetCollisionResponseToChannel(this, (byte)channel);
 		
 		
 		/// <summary>
-		/// <para>Return const reference to CollsionResponseContainer </para>
+		/// Return const reference to CollsionResponseContainer
 		/// </summary>
 		public virtual FCollisionResponseContainer GetCollisionResponseToChannels()
 			=> E_USceneComponent_GetCollisionResponseToChannels(this);
 		
 		
 		/// <summary>
-		/// <para>Compares the CollisionObjectType of each component against the Response of the other, to see what kind of response we should generate </para>
+		/// Compares the CollisionObjectType of each component against the Response of the other, to see what kind of response we should generate
 		/// </summary>
 		public ECollisionResponse GetCollisionResponseToComponent(USceneComponent otherComponent)
 			=> (ECollisionResponse)E_USceneComponent_GetCollisionResponseToComponent(this, otherComponent);
 		
 		
 		/// <summary>
-		/// <para>Return location of the component, in world space </para>
+		/// Return location of the component, in world space
 		/// </summary>
 		public FVector GetComponentLocation()
 			=> E_USceneComponent_GetComponentLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Return rotation quaternion of the component, in world space </para>
+		/// Return rotation quaternion of the component, in world space
 		/// </summary>
 		public FQuat GetComponentQuat()
 			=> E_USceneComponent_GetComponentQuat(this);
 		
 		
 		/// <summary>
-		/// <para>Return rotation of the component, in world space </para>
+		/// Return rotation of the component, in world space
 		/// </summary>
 		public FRotator GetComponentRotation()
 			=> E_USceneComponent_GetComponentRotation(this);
 		
 		
 		/// <summary>
-		/// <para>Return scale of the component, in world space </para>
+		/// Return scale of the component, in world space
 		/// </summary>
 		public FVector GetComponentScale()
 			=> E_USceneComponent_GetComponentScale(this);
 		
 		
 		/// <summary>
-		/// <para>Get the current component-to-world transform for this component </para>
+		/// Get the current component-to-world transform for this component
 		/// <para>TODO: probably deprecate this in favor of GetComponentTransform </para>
 		/// </summary>
 		public FTransform GetComponentToWorld()
@@ -888,73 +888,73 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the current component-to-world transform for this component </para>
+		/// Get the current component-to-world transform for this component
 		/// </summary>
 		public FTransform GetComponentTransform()
 			=> E_USceneComponent_GetComponentTransform(this);
 		
 		
 		/// <summary>
-		/// <para>Get velocity of the component: either ComponentVelocity, or the velocity of the physics body if simulating physics. </para>
-		/// <return>Velocity of the component </return>
+		/// Get velocity of the component: either ComponentVelocity, or the velocity of the physics body if simulating physics.
 		/// </summary>
+		/// <return>Velocity</return>
 		public virtual FVector GetComponentVelocity()
 			=> E_USceneComponent_GetComponentVelocity(this);
 		
 		
 		/// <summary>
-		/// <para>The name to use for the default scene root variable </para>
+		/// The name to use for the default scene root variable
 		/// </summary>
 		public string GetDefaultSceneRootVariableName()
 			=> E_USceneComponent_GetDefaultSceneRootVariableName(this);
 		
 		
 		/// <summary>
-		/// <para>Get the forward (X) unit direction vector from this component, in world space. </para>
+		/// Get the forward (X) unit direction vector from this component, in world space.
 		/// </summary>
 		public FVector GetForwardVector()
 			=> E_USceneComponent_GetForwardVector(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the number of attached children components </para>
+		/// Gets the number of attached children components
 		/// </summary>
 		public int GetNumChildrenComponents()
 			=> E_USceneComponent_GetNumChildrenComponents(this);
 		
 		
 		/// <summary>
-		/// <para>Get the extent used when placing this component in the editor, used for 'pulling back' hit. </para>
+		/// Get the extent used when placing this component in the editor, used for 'pulling back' hit.
 		/// </summary>
 		public virtual FBoxSphereBounds GetPlacementExtent()
 			=> E_USceneComponent_GetPlacementExtent(this);
 		
 		
 		/// <summary>
-		/// <para>Get the RelativeRotationCache. </para>
+		/// Get the RelativeRotationCache.
 		/// </summary>
 		public FRotationConversionCache GetRelativeRotationCache()
 			=> E_USceneComponent_GetRelativeRotationCache(this);
 		
 		
 		/// <summary>
-		/// <para>Convenience function to get the relative rotation from the passed in world rotation </para>
-		/// <param name="WorldRotation">World rotation that we want to convert to relative to the components parent </param>
-		/// <return>Returns the relative rotation </return>
+		/// Convenience function to get the relative rotation from the passed in world rotation
 		/// </summary>
+		/// <param name="worldRotation">World rotation that we want to convert to relative to the components parent</param>
+		/// <return>Returns</return>
 		public FQuat GetRelativeRotationFromWorld(FQuat worldRotation)
 			=> E_USceneComponent_GetRelativeRotationFromWorld(this, worldRotation);
 		
 		
 		/// <summary>
-		/// <para>Returns the transform of the component relative to its parent </para>
+		/// Returns the transform of the component relative to its parent
 		/// </summary>
 		public FTransform GetRelativeTransform()
 			=> E_USceneComponent_GetRelativeTransform(this);
 		
 		
 		/// <summary>
-		/// <para>Get the right (Y) unit direction vector from this component, in world space. </para>
+		/// Get the right (Y) unit direction vector from this component, in world space.
 		/// </summary>
 		public FVector GetRightVector()
 			=> E_USceneComponent_GetRightVector(this);
@@ -964,49 +964,49 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get world-space socket or bone location. </para>
-		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
-		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// Get world-space socket or bone location.
 		/// </summary>
+		/// <param name="inSocketName">Name of the socket or the bone to get the transform</param>
+		/// <return>Socket</return>
 		public virtual FVector GetSocketLocation(string inSocketName)
 			=> E_USceneComponent_GetSocketLocation(this, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Get world-space socket or bone FQuat rotation. </para>
-		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
-		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// Get world-space socket or bone FQuat rotation.
 		/// </summary>
+		/// <param name="inSocketName">Name of the socket or the bone to get the transform</param>
+		/// <return>Socket</return>
 		public virtual FQuat GetSocketQuaternion(string inSocketName)
 			=> E_USceneComponent_GetSocketQuaternion(this, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Get world-space socket or bone  FRotator rotation. </para>
-		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
-		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// Get world-space socket or bone  FRotator rotation.
 		/// </summary>
+		/// <param name="inSocketName">Name of the socket or the bone to get the transform</param>
+		/// <return>Socket</return>
 		public virtual FRotator GetSocketRotation(string inSocketName)
 			=> E_USceneComponent_GetSocketRotation(this, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Get world-space socket transform. </para>
-		/// <param name="InSocketName">Name of the socket or the bone to get the transform </param>
-		/// <return>Socket transform in world space if socket if found. Otherwise it will return component's transform in world space. </return>
+		/// Get world-space socket transform.
 		/// </summary>
+		/// <param name="inSocketName">Name of the socket or the bone to get the transform</param>
+		/// <return>Socket</return>
 		public virtual FTransform GetSocketTransform(string inSocketName, ERelativeTransformSpace transformSpace)
 			=> E_USceneComponent_GetSocketTransform(this, inSocketName, (byte)transformSpace);
 		
 		
 		/// <summary>
-		/// <para>Find the world-space location and rotation of the given named socket. </para>
+		/// Find the world-space location and rotation of the given named socket.
 		/// <para>If the socket is not found, then it returns the component's location and rotation in world space. </para>
-		/// <param name="InSocketName">the name of the socket to find </param>
-		/// <param name="OutLocation">out) set to the world space location of the socket </param>
-		/// <param name="OutRotation">out) set to the world space rotation of the socket </param>
-		/// <return>whether or not the socket was found </return>
 		/// </summary>
+		/// <param name="inSocketName">the name of the socket to find</param>
+		/// <param name="outLocation">out) set to the world space location of the socket</param>
+		/// <param name="outRotation">out) set to the world space rotation of the socket</param>
+		/// <return>whether</return>
 		public void GetSocketWorldLocationAndRotation(string inSocketName, FVector outLocation, FRotator outRotation)
 			=> E_USceneComponent_GetSocketWorldLocationAndRotation(this, inSocketName, outLocation, outRotation);
 		
@@ -1015,356 +1015,356 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the up (Z) unit direction vector from this component, in world space. </para>
+		/// Get the up (Z) unit direction vector from this component, in world space.
 		/// </summary>
 		public FVector GetUpVector()
 			=> E_USceneComponent_GetUpVector(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if this component has any sockets </para>
+		/// Returns true if this component has any sockets
 		/// </summary>
 		public virtual bool HasAnySockets()
 			=> E_USceneComponent_HasAnySockets(this);
 		
 		
 		/// <summary>
-		/// <para>Internal helper, for use from MoveComponent().  Special codepath since the normal setters call MoveComponent. </para>
-		/// <return>true if location or rotation was changed. </return>
+		/// Internal helper, for use from MoveComponent().  Special codepath since the normal setters call MoveComponent.
 		/// </summary>
+		/// <return>true</return>
 		protected bool InternalSetWorldLocationAndRotation(FVector newLocation, FQuat newQuat, bool bNoPhysics, ETeleportType teleport)
 			=> E_USceneComponent_InternalSetWorldLocationAndRotation(this, newLocation, newQuat, bNoPhysics, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the specified body is currently using physics simulation </para>
+		/// Returns whether the specified body is currently using physics simulation
 		/// </summary>
 		public virtual bool IsAnySimulatingPhysics()
 			=> E_USceneComponent_IsAnySimulatingPhysics(this);
 		
 		
 		/// <summary>
-		/// <para>Walks up the attachment chain to see if this component is attached to the supplied component. If TestComp == this, returns false. </para>
+		/// Walks up the attachment chain to see if this component is attached to the supplied component. If TestComp == this, returns false.
 		/// </summary>
 		public bool IsAttachedTo(USceneComponent testComp)
 			=> E_USceneComponent_IsAttachedTo(this, testComp);
 		
 		
 		/// <summary>
-		/// <para>Utility to see if there is any form of collision (query or physics) enabled on this component. </para>
+		/// Utility to see if there is any form of collision (query or physics) enabled on this component.
 		/// </summary>
 		public bool IsCollisionEnabled()
 			=> E_USceneComponent_IsCollisionEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if movement is currently within the scope of an FScopedMovementUpdate. </para>
+		/// Returns true if movement is currently within the scope of an FScopedMovementUpdate.
 		/// </summary>
 		public bool IsDeferringMovementUpdates()
 			=> E_USceneComponent_IsDeferringMovementUpdates(this);
 		
 		
 		/// <summary>
-		/// <para>Utility to see if there is any physics collision enabled on this component. </para>
+		/// Utility to see if there is any physics collision enabled on this component.
 		/// </summary>
 		public bool IsPhysicsCollisionEnabled()
 			=> E_USceneComponent_IsPhysicsCollisionEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>True if our precomputed lighting is up to date </para>
+		/// True if our precomputed lighting is up to date
 		/// </summary>
 		public virtual bool IsPrecomputedLightingValid()
 			=> E_USceneComponent_IsPrecomputedLightingValid(this);
 		
 		
 		/// <summary>
-		/// <para>Utility to see if there is any query collision enabled on this component. </para>
+		/// Utility to see if there is any query collision enabled on this component.
 		/// </summary>
 		public bool IsQueryCollisionEnabled()
 			=> E_USceneComponent_IsQueryCollisionEnabled(this);
 		
 		
 		/// <summary>
-		/// <para>Returns whether the specified body is currently using physics simulation </para>
+		/// Returns whether the specified body is currently using physics simulation
 		/// </summary>
 		public virtual bool IsSimulatingPhysics(string boneName)
 			=> E_USceneComponent_IsSimulatingPhysics(this, boneName);
 		
 		
 		/// <summary>
-		/// <para>Returns true if this component is visible in the current context </para>
+		/// Returns true if this component is visible in the current context
 		/// </summary>
 		public virtual bool IsVisible()
 			=> E_USceneComponent_IsVisible(this);
 		
 		
 		/// <summary>
-		/// <para>Return true if visible in editor </para>
+		/// Return true if visible in editor
 		/// </summary>
 		public virtual bool IsVisibleInEditor()
 			=> E_USceneComponent_IsVisibleInEditor(this);
 		
 		
 		/// <summary>
-		/// <para>Is this component considered 'world' geometry, by default checks if this uses the WorldStatic collision channel </para>
+		/// Is this component considered 'world' geometry, by default checks if this uses the WorldStatic collision channel
 		/// </summary>
 		public virtual bool IsWorldGeometry()
 			=> E_USceneComponent_IsWorldGeometry(this);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the location of the component in its local reference frame </para>
-		/// <param name="DeltaLocation">Change in location of the component in its local reference frame. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Adds a delta to the location of the component in its local reference frame
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="deltaLocation">Change in location of the component in its local reference frame.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddLocalOffset(FVector deltaLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddLocalOffset(this, deltaLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the rotation of the component in its local reference frame </para>
-		/// <param name="DeltaRotation">Change in rotation of the component in its local reference frame. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// Adds a delta to the rotation of the component in its local reference frame
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// </summary>
+		/// <param name="deltaRotation">Change in rotation of the component in its local reference frame.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddLocalRotation(FRotator deltaRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddLocalRotation(this, deltaRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the transform of the component in its local reference frame. Scale is unchanged. </para>
-		/// <param name="DeltaTransform">Change in transform of the component in its local reference frame. Scale is unchanged. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Adds a delta to the transform of the component in its local reference frame. Scale is unchanged.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="deltaTransform">Change in transform of the component in its local reference frame. Scale is unchanged.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddLocalTransform(FTransform deltaTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddLocalTransform(this, deltaTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the translation of the component relative to its parent </para>
-		/// <param name="DeltaLocation">Change in location of the component relative to its parent </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Adds a delta to the translation of the component relative to its parent
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="deltaLocation">Change in location of the component relative to its parent</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddRelativeLocation(FVector deltaLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddRelativeLocation(this, deltaLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta the rotation of the component relative to its parent </para>
-		/// <param name="DeltaRotation">Change in rotation of the component relative to is parent. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// Adds a delta the rotation of the component relative to its parent
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// </summary>
+		/// <param name="deltaRotation">Change in rotation of the component relative to is parent.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddRelativeRotation(FRotator deltaRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddRelativeRotation(this, deltaRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the location of the component in world space. </para>
-		/// <param name="DeltaLocation">Change in location in world space for the component. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Adds a delta to the location of the component in world space.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="deltaLocation">Change in location in world space for the component.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddWorldOffset(FVector deltaLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddWorldOffset(this, deltaLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the rotation of the component in world space. </para>
-		/// <param name="DeltaRotation">Change in rotation in world space for the component. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// Adds a delta to the rotation of the component in world space.
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
 		/// </summary>
+		/// <param name="deltaRotation">Change in rotation in world space for the component.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddWorldRotation(FRotator deltaRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddWorldRotation(this, deltaRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Adds a delta to the transform of the component in world space. Scale is unchanged. </para>
-		/// <param name="DeltaTransform">Change in transform in world space for the component. Scale is unchanged. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Adds a delta to the transform of the component in world space. Scale is unchanged.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="deltaTransform">Change in transform in world space for the component. Scale is unchanged.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_AddWorldTransform(FTransform deltaTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_AddWorldTransform(this, deltaTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Attach this component to another scene component, optionally at a named socket. It is valid to call this on components whether or not they have been Registered. </para>
-		/// <param name="Parent">Parent to attach to. </param>
-		/// <param name="SocketName">Optional socket to attach to on the parent. </param>
-		/// <param name="LocationRule">How to handle translation when attaching. </param>
-		/// <param name="RotationRule">How to handle rotation when attaching. </param>
-		/// <param name="ScaleRule">How to handle scale when attaching. </param>
-		/// <param name="bWeldSimulatedBodies">Whether to weld together simulated physics bodies. </param>
-		/// <return>True if attachment is successful (or already attached to requested parent/socket), false if attachment is rejected and there is no change in AttachParent. </return>
+		/// Attach this component to another scene component, optionally at a named socket. It is valid to call this on components whether or not they have been Registered.
 		/// </summary>
+		/// <param name="parent">Parent to attach to.</param>
+		/// <param name="socketName">Optional socket to attach to on the parent.</param>
+		/// <param name="locationRule">How to handle translation when attaching.</param>
+		/// <param name="rotationRule">How to handle rotation when attaching.</param>
+		/// <param name="scaleRule">How to handle scale when attaching.</param>
+		/// <param name="bWeldSimulatedBodies">Whether to weld together simulated physics bodies.</param>
+		/// <return>True</return>
 		public bool K2_AttachToComponent(USceneComponent parent, string socketName, EAttachmentRule locationRule, EAttachmentRule rotationRule, EAttachmentRule scaleRule, bool bWeldSimulatedBodies)
 			=> E_USceneComponent_K2_AttachToComponent(this, parent, socketName, (byte)locationRule, (byte)rotationRule, (byte)scaleRule, bWeldSimulatedBodies);
 		
 		
 		/// <summary>
-		/// <para>Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo) </para>
-		/// <param name="LocationRule">How to handle translations when detaching. </param>
-		/// <param name="RotationRule">How to handle rotation when detaching. </param>
-		/// <param name="ScaleRule">How to handle scales when detaching. </param>
-		/// <param name="bCallModify">If true, call Modify() on the component and the current attach parent component </param>
+		/// Detach this component from whatever it is attached to. Automatically unwelds components that are welded together (See WeldTo)
 		/// </summary>
+		/// <param name="locationRule">How to handle translations when detaching.</param>
+		/// <param name="rotationRule">How to handle rotation when detaching.</param>
+		/// <param name="scaleRule">How to handle scales when detaching.</param>
+		/// <param name="bCallModify">If true, call Modify() on the component and the current attach parent component</param>
 		public void K2_DetachFromComponent(EDetachmentRule locationRule, EDetachmentRule rotationRule, EDetachmentRule scaleRule, bool bCallModify = true)
 			=> E_USceneComponent_K2_DetachFromComponent(this, (byte)locationRule, (byte)rotationRule, (byte)scaleRule, bCallModify);
 		
 		
 		/// <summary>
-		/// <para>Return location of the component, in world space </para>
+		/// Return location of the component, in world space
 		/// </summary>
 		public FVector GetWorldLocation()
 			=> E_USceneComponent_K2_GetComponentLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Returns rotation of the component, in world space. </para>
+		/// Returns rotation of the component, in world space.
 		/// </summary>
 		public FRotator GetWorldRotation()
 			=> E_USceneComponent_K2_GetComponentRotation(this);
 		
 		
 		/// <summary>
-		/// <para>Returns scale of the component, in world space. </para>
+		/// Returns scale of the component, in world space.
 		/// </summary>
 		public FVector GetWorldScale()
 			=> E_USceneComponent_K2_GetComponentScale(this);
 		
 		
 		/// <summary>
-		/// <para>Get the current component-to-world transform for this component </para>
+		/// Get the current component-to-world transform for this component
 		/// </summary>
 		public FTransform GetWorldTransform()
 			=> E_USceneComponent_K2_GetComponentToWorld(this);
 		
 		
 		/// <summary>
-		/// <para>Set the location of the component relative to its parent </para>
-		/// <param name="NewLocation">New location of the component relative to its parent. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Set the location of the component relative to its parent
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="newLocation">New location of the component relative to its parent.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetRelativeLocation(FVector newLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetRelativeLocation(this, newLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Set the location and rotation of the component relative to its parent </para>
-		/// <param name="NewLocation">New location of the component relative to its parent. </param>
-		/// <param name="NewRotation">New rotation of the component relative to its parent. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Set the location and rotation of the component relative to its parent
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="newLocation">New location of the component relative to its parent.</param>
+		/// <param name="newRotation">New rotation of the component relative to its parent.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetRelativeLocationAndRotation(FVector newLocation, FRotator newRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetRelativeLocationAndRotation(this, newLocation, newRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Set the rotation of the component relative to its parent </para>
-		/// <param name="NewRotation">New rotation of the component relative to its parent </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// Set the rotation of the component relative to its parent
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// </summary>
+		/// <param name="newRotation">New rotation of the component relative to its parent</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetRelativeRotation(FRotator newRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetRelativeRotation(this, newRotation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Set the transform of the component relative to its parent </para>
-		/// <param name="NewTransform">New transform of the component relative to its parent. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// Set the transform of the component relative to its parent
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// </summary>
+		/// <param name="newTransform">New transform of the component relative to its parent.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetRelativeTransform(FTransform newTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetRelativeTransform(this, newTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Put this component at the specified location in world space. Updates relative location to achieve the final world location. </para>
-		/// <param name="NewLocation">New location in world space for the component. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Put this component at the specified location in world space. Updates relative location to achieve the final world location.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="newLocation">New location in world space for the component.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetWorldLocation(FVector newLocation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetWorldLocation(this, newLocation, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Set the relative location and rotation of the component to put it at the supplied pose in world space. </para>
-		/// <param name="NewLocation">New location in world space for the component. </param>
-		/// <param name="NewRotation">New rotation in world space for the component. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Set the relative location and rotation of the component to put it at the supplied pose in world space.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="newLocation">New location in world space for the component.</param>
+		/// <param name="newRotation">New rotation in world space for the component.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetWorldLocationAndRotation(FVector newLocation, FRotator newRotation, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetWorldLocationAndRotation(this, newLocation, newRotation, bSweep, sweepHitResult, bTeleport);
 		
@@ -1373,39 +1373,39 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the transform of the component in world space. </para>
-		/// <param name="NewTransform">New transform in world space for the component. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// Set the transform of the component in world space.
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire sweep volume. </para>
+		/// If CCD is on and not teleporting, this will affect objects along the entire sweep volume.
 		/// </summary>
+		/// <param name="newTransform">New transform in world space for the component.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void K2_SetWorldTransform(FTransform newTransform, bool bSweep, FHitResult sweepHitResult, bool bTeleport)
 			=> E_USceneComponent_K2_SetWorldTransform(this, newTransform, bSweep, sweepHitResult, bTeleport);
 		
 		
 		/// <summary>
-		/// <para>Tries to move the component by a movement vector (Delta) and sets rotation to NewRotation. </para>
+		/// Tries to move the component by a movement vector (Delta) and sets rotation to NewRotation.
 		/// <para>Assumes that the component's current location is valid and that the component does fit in its current Location. </para>
-		/// <para>Dispatches blocking hit notifications (if bSweep is true), and calls UpdateOverlaps() after movement to update overlap state. </para>
+		/// Dispatches blocking hit notifications (if bSweep is true), and calls UpdateOverlaps() after movement to update overlap state.
 		/// <para>@note This simply calls the virtual MoveComponentImpl() which can be overridden to implement custom behavior. </para>
-		/// <para>@note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat).. </para>
-		/// <param name="Delta">The desired location change in world space. </param>
-		/// <param name="NewRotation">The new desired rotation in world space. </param>
-		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something. </param>
+		/// @note The overload taking rotation as an FQuat is slightly faster than the version using FRotator (which will be converted to an FQuat)..
 		/// <para>Only the root component is swept and checked for blocking collision, child components move without sweeping. If collision is off, this has no effect. </para>
-		/// <param name="Teleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
-		/// <para>If TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
+		/// If TeleportPhysics, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location).
 		/// <para>If None, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
-		/// <para>If CCD is on and not teleporting, this will affect objects along the entire swept volume. </para>
-		/// <param name="Hit">Optional output describing the blocking hit that stopped the move, if any. </param>
-		/// <param name="MoveFlags">Flags controlling behavior of the move. @see EMoveComponentFlags </param>
-		/// <param name="Teleport">Determines whether to teleport the physics body or not. Teleporting will maintain constant velocity and avoid collisions along the path </param>
-		/// <return>True if some movement occurred, false if no movement occurred. </return>
+		/// If CCD is on and not teleporting, this will affect objects along the entire swept volume.
 		/// </summary>
+		/// <param name="delta">The desired location change in world space.</param>
+		/// <param name="newRotation">The new desired rotation in world space.</param>
+		/// <param name="bSweep">Whether we sweep to the destination location, triggering overlaps along the way and stopping short of the target if blocked by something.</param>
+		/// <param name="teleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
+		/// <param name="hit">Optional output describing the blocking hit that stopped the move, if any.</param>
+		/// <param name="moveFlags">Flags controlling behavior of the move. @see EMoveComponentFlags</param>
+		/// <param name="teleport">Determines whether to teleport the physics body or not. Teleporting will maintain constant velocity and avoid collisions along the path</param>
+		/// <return>True</return>
 		public bool MoveComponent(FVector delta, FQuat newRotation, bool bSweep, FHitResult hit, EMoveComponentFlags moveFlags, ETeleportType teleport)
 			=> E_USceneComponent_MoveComponent(this, delta, newRotation, bSweep, hit, (byte)moveFlags, (byte)teleport);
 		
@@ -1414,21 +1414,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Override this method for custom behavior for MoveComponent </para>
+		/// Override this method for custom behavior for MoveComponent
 		/// </summary>
 		protected virtual bool MoveComponentImpl(FVector delta, FQuat newRotation, bool bSweep, FHitResult hit, EMoveComponentFlags moveFlags, ETeleportType teleport)
 			=> E_USceneComponent_MoveComponentImpl(this, delta, newRotation, bSweep, hit, (byte)moveFlags, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Called when AttachParent changes, to allow the scene to update its attachment state. </para>
+		/// Called when AttachParent changes, to allow the scene to update its attachment state.
 		/// </summary>
 		public virtual void OnAttachmentChanged()
 			=> E_USceneComponent_OnAttachmentChanged(this);
 		
 		
 		/// <summary>
-		/// <para>Called after a child scene component is attached to this component. </para>
+		/// Called after a child scene component is attached to this component.
 		/// <para>Note: Do not change the attachment state of the child during this call. </para>
 		/// </summary>
 		protected virtual void OnChildAttached(USceneComponent childComponent)
@@ -1436,7 +1436,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called after a child scene component is detached from this component. </para>
+		/// Called after a child scene component is detached from this component.
 		/// <para>Note: Do not change the attachment state of the child during this call. </para>
 		/// </summary>
 		protected virtual void OnChildDetached(USceneComponent childComponent)
@@ -1444,63 +1444,63 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Overridable internal function to respond to changes in the hidden in game value of the component. </para>
+		/// Overridable internal function to respond to changes in the hidden in game value of the component.
 		/// </summary>
 		protected virtual void OnHiddenInGameChanged()
 			=> E_USceneComponent_OnHiddenInGameChanged(this);
 		
 		
 		/// <summary>
-		/// <para>Native callback when this component is moved </para>
+		/// Native callback when this component is moved
 		/// </summary>
 		protected virtual void OnUpdateTransform(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
 			=> E_USceneComponent_OnUpdateTransform(this, (byte)updateTransformFlags, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Overridable internal function to respond to changes in the visibility of the component. </para>
+		/// Overridable internal function to respond to changes in the visibility of the component.
 		/// </summary>
 		protected virtual void OnVisibilityChanged()
 			=> E_USceneComponent_OnVisibilityChanged(this);
 		
 		
 		/// <summary>
-		/// <para>Called after changing transform, tries to update navigation octree for owner </para>
+		/// Called after changing transform, tries to update navigation octree for owner
 		/// </summary>
 		protected void PostUpdateNavigationData()
 			=> E_USceneComponent_PostUpdateNavigationData(this);
 		
 		
 		/// <summary>
-		/// <para>Updates any visuals after the lighting has changed </para>
+		/// Updates any visuals after the lighting has changed
 		/// </summary>
 		public virtual void PropagateLightingScenarioChange()
 			=> E_USceneComponent_PropagateLightingScenarioChange(this);
 		
 		
 		/// <summary>
-		/// <para>Reset the transform of the component relative to its parent. Sets relative location to zero, relative rotation to no rotation, and Scale to 1. </para>
+		/// Reset the transform of the component relative to its parent. Sets relative location to zero, relative rotation to no rotation, and Scale to 1.
 		/// </summary>
 		public void ResetRelativeTransform()
 			=> E_USceneComponent_ResetRelativeTransform(this);
 		
 		
 		/// <summary>
-		/// <para>Set which parts of the relative transform should be relative to parent, and which should be relative to world </para>
+		/// Set which parts of the relative transform should be relative to parent, and which should be relative to world
 		/// </summary>
 		public void SetAbsolute(bool bNewAbsoluteLocation = false, bool bNewAbsoluteRotation = false, bool bNewAbsoluteScale = false)
 			=> E_USceneComponent_SetAbsolute(this, bNewAbsoluteLocation, bNewAbsoluteRotation, bNewAbsoluteScale);
 		
 		
 		/// <summary>
-		/// <para>Sets the cached component to world directly. This should be used very rarely. </para>
+		/// Sets the cached component to world directly. This should be used very rarely.
 		/// </summary>
 		public void SetComponentToWorld(FTransform newComponentToWorld)
 			=> E_USceneComponent_SetComponentToWorld(this, newComponentToWorld);
 		
 		
 		/// <summary>
-		/// <para>Changes the value of bHiddenInGame, if false this will disable Visibility during gameplay </para>
+		/// Changes the value of bHiddenInGame, if false this will disable Visibility during gameplay
 		/// </summary>
 		public void SetHiddenInGame(bool newHidden, bool bPropagateToChildren = false)
 			=> E_USceneComponent_SetHiddenInGame(this, newHidden, bPropagateToChildren);
@@ -1522,29 +1522,29 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the RelativeRotationCache. Used to ensure component ends up with the same RelativeRotation after calling SetWorldTransform(). </para>
+		/// Sets the RelativeRotationCache. Used to ensure component ends up with the same RelativeRotation after calling SetWorldTransform().
 		/// </summary>
 		public void SetRelativeRotationCache(FRotationConversionCache inCache)
 			=> E_USceneComponent_SetRelativeRotationCache(this, inCache);
 		
 		
 		/// <summary>
-		/// <para>Set the rotation of the component relative to its parent and force RelativeRotation to be equal to new rotation. </para>
+		/// Set the rotation of the component relative to its parent and force RelativeRotation to be equal to new rotation.
 		/// <para>This allows us to set and save Rotators with angles out side the normalized range, Note that doing so may break the </para>
-		/// <para>RotatorCache so use with care. </para>
-		/// <param name="NewRotation">New rotation of the component relative to its parent. We will force RelativeRotation to this value. </param>
-		/// <param name="SweepHitResult">Hit result from any impact if sweep is true. </param>
-		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation). </param>
-		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object). </param>
+		/// RotatorCache so use with care.
 		/// <para>If true, physics velocity for this object is unchanged (so ragdoll parts are not affected by change in location). </para>
-		/// <para>If false, physics velocity is updated based on the change in position (affecting ragdoll parts). </para>
+		/// If false, physics velocity is updated based on the change in position (affecting ragdoll parts).
 		/// </summary>
+		/// <param name="newRotation">New rotation of the component relative to its parent. We will force RelativeRotation to this value.</param>
+		/// <param name="sweepHitResult">Hit result from any impact if sweep is true.</param>
+		/// <param name="bSweep">Whether we sweep to the destination (currently not supported for rotation).</param>
+		/// <param name="bTeleport">Whether we teleport the physics state (if physics collision is enabled for this object).</param>
 		public void SetRelativeRotationExact(FRotator newRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
 			=> E_USceneComponent_SetRelativeRotationExact(this, newRotation, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Set the non-uniform scale of the component relative to its parent </para>
+		/// Set the non-uniform scale of the component relative to its parent
 		/// </summary>
 		public virtual void SetRelativeScale3D(FVector newScale3D)
 			=> E_USceneComponent_SetRelativeScale3D(this, newScale3D);
@@ -1557,18 +1557,18 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Initializes desired Attach Parent and SocketName to be attached to when the component is registered. </para>
+		/// Initializes desired Attach Parent and SocketName to be attached to when the component is registered.
 		/// <para>Generally intended to be called from its Owning Actor's constructor and should be preferred over AttachToComponent when </para>
-		/// <para>a component is not registered. </para>
-		/// <param name="InParent">Parent to attach to. </param>
-		/// <param name="InSocketName">Optional socket to attach to on the parent. </param>
+		/// a component is not registered.
 		/// </summary>
+		/// <param name="inParent">Parent to attach to.</param>
+		/// <param name="inSocketName">Optional socket to attach to on the parent.</param>
 		public void SetupAttachment(USceneComponent inParent, string inSocketName)
 			=> E_USceneComponent_SetupAttachment(this, inParent, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Set visibility of the component, if during game use this to turn on/off </para>
+		/// Set visibility of the component, if during game use this to turn on/off
 		/// </summary>
 		public void SetVisibility(bool bNewVisibility, bool bPropagateToChildren = false)
 			=> E_USceneComponent_SetVisibility(this, bNewVisibility, bPropagateToChildren);
@@ -1581,14 +1581,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the relative location and FQuat rotation of the component to put it at the supplied pose in world space. </para>
+		/// Set the relative location and FQuat rotation of the component to put it at the supplied pose in world space.
 		/// </summary>
 		public void SetWorldLocationAndRotation(FVector newLocation, FQuat newRotation, bool bSweep, FHitResult outSweepHitResult, ETeleportType teleport)
 			=> E_USceneComponent_SetWorldLocationAndRotation_o1(this, newLocation, newRotation, bSweep, outSweepHitResult, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Special version of SetWorldLocationAndRotation that does not affect physics. </para>
+		/// Special version of SetWorldLocationAndRotation that does not affect physics.
 		/// </summary>
 		public void SetWorldLocationAndRotationNoPhysics(FVector newLocation, FRotator newRotation)
 			=> E_USceneComponent_SetWorldLocationAndRotationNoPhysics(this, newLocation, newRotation);
@@ -1601,9 +1601,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the relative scale of the component to put it at the supplied scale in world space. </para>
-		/// <param name="NewScale">New scale in world space for this component. </param>
+		/// Set the relative scale of the component to put it at the supplied scale in world space.
 		/// </summary>
+		/// <param name="newScale">New scale in world space for this component.</param>
 		public void SetWorldScale3D(FVector newScale)
 			=> E_USceneComponent_SetWorldScale3D(this, newScale);
 		
@@ -1612,74 +1612,74 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>If true, bounds should be used when placing component/actor in level. Does not affect spawning. </para>
+		/// If true, bounds should be used when placing component/actor in level. Does not affect spawning.
 		/// </summary>
 		public virtual bool ShouldCollideWhenPlacing()
 			=> E_USceneComponent_ShouldCollideWhenPlacing(this);
 		
 		
 		/// <summary>
-		/// <para>Looking at various values of the component, determines if this </para>
+		/// Looking at various values of the component, determines if this
 		/// <para>component should be added to the scene </para>
-		/// <return>true if the component is visible and should be added to the scene, false otherwise </return>
 		/// </summary>
+		/// <return>true</return>
 		public bool ShouldComponentAddToScene()
 			=> E_USceneComponent_ShouldComponentAddToScene(this);
 		
 		
 		/// <summary>
-		/// <para>return true if it should render </para>
+		/// return true if it should render
 		/// </summary>
 		public bool ShouldRender()
 			=> E_USceneComponent_ShouldRender(this);
 		
 		
 		/// <summary>
-		/// <para>If true, we can use the old computed overlaps </para>
+		/// If true, we can use the old computed overlaps
 		/// </summary>
 		public bool ShouldSkipUpdateOverlaps()
 			=> E_USceneComponent_ShouldSkipUpdateOverlaps(this);
 		
 		
 		/// <summary>
-		/// <para>DEPRECATED - Use AttachToComponent() instead </para>
+		/// DEPRECATED - Use AttachToComponent() instead
 		/// </summary>
 		public bool SnapTo(USceneComponent inParent, string inSocketName)
 			=> E_USceneComponent_SnapTo(this, inParent, inSocketName);
 		
 		
 		/// <summary>
-		/// <para>Toggle visibility of the component </para>
+		/// Toggle visibility of the component
 		/// </summary>
 		public void ToggleVisibility(bool bPropagateToChildren = false)
 			=> E_USceneComponent_ToggleVisibility(this, bPropagateToChildren);
 		
 		
 		/// <summary>
-		/// <para>Update the Bounds of the component. </para>
+		/// Update the Bounds of the component.
 		/// </summary>
 		public virtual void UpdateBounds()
 			=> E_USceneComponent_UpdateBounds(this);
 		
 		
 		/// <summary>
-		/// <para>Update transforms of any components attached to this one. </para>
+		/// Update transforms of any components attached to this one.
 		/// </summary>
 		public void UpdateChildTransforms(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
 			=> E_USceneComponent_UpdateChildTransforms(this, (byte)updateTransformFlags, (byte)teleport);
 		
 		
 		/// <summary>
-		/// <para>Called after changing transform, tries to update navigation octree for this component </para>
+		/// Called after changing transform, tries to update navigation octree for this component
 		/// </summary>
 		protected void UpdateNavigationData()
 			=> E_USceneComponent_UpdateNavigationData(this);
 		
 		
 		/// <summary>
-		/// <para>Updates the PhysicsVolume of this SceneComponent, if bShouldUpdatePhysicsVolume is true. </para>
-		/// <param name="bTriggerNotifiers">if true, send zone/volume change events </param>
+		/// Updates the PhysicsVolume of this SceneComponent, if bShouldUpdatePhysicsVolume is true.
 		/// </summary>
+		/// <param name="bTriggerNotifiers">if true, send zone/volume change events</param>
 		public virtual void UpdatePhysicsVolume(bool bTriggerNotifiers)
 			=> E_USceneComponent_UpdatePhysicsVolume(this, bTriggerNotifiers);
 		

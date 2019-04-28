@@ -109,10 +109,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max number of iterations used for each discrete simulation step. </para>
+		/// Max number of iterations used for each discrete simulation step.
 		/// <para>Increasing this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
-		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationTimeStep, bForceSubStepping </para>
+		/// WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.
+		/// <see cref="MaxSimulationTimeStep"/>
 		/// </summary>
 		public int MaxSimulationIterations
 		{
@@ -122,10 +122,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max time delta for each discrete simulation step. </para>
+		/// Max time delta for each discrete simulation step.
 		/// <para>Lowering this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
-		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationIterations, bForceSubStepping </para>
+		/// WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation.
+		/// <see cref="MaxSimulationIterations"/>
 		/// </summary>
 		public float MaxSimulationTimeStep
 		{
@@ -144,7 +144,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>This will check to see if the InterpTo is still in the world.  It will check things like </para>
+		/// This will check to see if the InterpTo is still in the world.  It will check things like
 		/// <para>the KillZ, outside world bounds, etc. and handle the situation. </para>
 		/// </summary>
 		public virtual bool CheckStillInWorld()
@@ -152,7 +152,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Compute the distance for the given time. </para>
+		/// Compute the distance for the given time.
 		/// </summary>
 		protected virtual FVector ComputeMoveDelta(float time)
 			=> E_UInterpToMovementComponent_ComputeMoveDelta(this, time);
@@ -162,21 +162,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Compute remaining time step given remaining time and current iterations. </para>
+		/// Compute remaining time step given remaining time and current iterations.
 		/// <para>The last iteration (limited by MaxSimulationIterations) always returns the remaining time, which may violate MaxSimulationTimeStep. </para>
-		/// <param name="RemainingTime">Remaining time in the tick. </param>
-		/// <param name="Iterations">Current iteration of the tick (starting at 1). </param>
-		/// <return>The remaining time step to use for the next sub-step of iteration. </return>
-		/// <para>@see MaxSimulationTimeStep, MaxSimulationIterations </para>
-		/// <para>@see ShouldUseSubStepping() </para>
+		/// <see cref="MaxSimulationTimeStep"/>
+		/// <see cref="ShouldUseSubStepping"/>
 		/// </summary>
+		/// <param name="remainingTime">Remaining time in the tick.</param>
+		/// <param name="iterations">Current iteration of the tick (starting at 1).</param>
+		/// <return>The</return>
 		public float GetSimulationTimeStep(float remainingTime, int iterations)
 			=> E_UInterpToMovementComponent_GetSimulationTimeStep(this, remainingTime, iterations);
 		
 		
 		/// <summary>
-		/// <return>true if the simulation should stop. </return>
 		/// </summary>
+		/// <return>true</return>
 		protected bool HandleHitWall(FHitResult hit, float timeTick, FVector moveDelta)
 			=> E_UInterpToMovementComponent_HandleHitWall(this, hit, timeTick, moveDelta);
 		
@@ -194,17 +194,17 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Determine whether or not to use substepping in the InterpTo motion update. </para>
+		/// Determine whether or not to use substepping in the InterpTo motion update.
 		/// <para>If true, GetSimulationTimeStep() will be used to time-slice the update. If false, all remaining time will be used during the tick. </para>
-		/// <return>Whether or not to use substepping in the InterpTo motion update. </return>
-		/// <para>@see GetSimulationTimeStep() </para>
+		/// <see cref="GetSimulationTimeStep"/>
 		/// </summary>
+		/// <return>Whether</return>
 		public virtual bool ShouldUseSubStepping()
 			=> E_UInterpToMovementComponent_ShouldUseSubStepping(this);
 		
 		
 		/// <summary>
-		/// <para>Clears the reference to UpdatedComponent, fires stop event, and stops ticking. </para>
+		/// Clears the reference to UpdatedComponent, fires stop event, and stops ticking.
 		/// </summary>
 		public void StopSimulating(FHitResult hitResult)
 			=> E_UInterpToMovementComponent_StopSimulating(this, hitResult);

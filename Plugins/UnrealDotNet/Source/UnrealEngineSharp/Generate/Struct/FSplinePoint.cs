@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor </para>
+		/// Default constructor
 		/// </summary>
 		public FSplinePoint() :
 			base(E_CreateStruct_FSplinePoint(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor taking a point position </para>
+		/// Constructor taking a point position
 		/// </summary>
 		public FSplinePoint(float inInputKey, FVector inPosition) :
 			base(E_CreateStruct_FSplinePoint_float_FVector(inInputKey, inPosition), false)

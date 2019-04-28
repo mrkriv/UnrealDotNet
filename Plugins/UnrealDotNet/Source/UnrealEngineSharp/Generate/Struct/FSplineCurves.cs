@@ -41,28 +41,28 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns the length of the specified spline segment up to the parametric value given </para>
+		/// Returns the length of the specified spline segment up to the parametric value given
 		/// </summary>
 		public float GetSegmentLength(int index, float param, bool bClosedLoop, FVector scale3D)
 			=> E_FSplineCurves_GetSegmentLength(this, index, param, bClosedLoop, scale3D);
 		
 		
 		/// <summary>
-		/// <para>Returns total length along this spline </para>
+		/// Returns total length along this spline
 		/// </summary>
 		public float GetSplineLength()
 			=> E_FSplineCurves_GetSplineLength(this);
 		
 		
 		/// <summary>
-		/// <para>Update the spline's internal data according to the passed-in params </para>
-		/// <param name="bClosedLoop">Whether the spline is to be considered as a closed loop. </param>
-		/// <param name="bStationaryEndpoints">Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors. </param>
-		/// <param name="ReparamStepsPerSegment">Number of steps per spline segment to place in the reparameterization table </param>
-		/// <param name="bLoopPositionOverride">Whether to override the loop position with LoopPosition </param>
-		/// <param name="LoopPosition">The loop position to use instead of the last key </param>
-		/// <param name="Scale3D">The world scale to override </param>
+		/// Update the spline's internal data according to the passed-in params
 		/// </summary>
+		/// <param name="bClosedLoop">Whether the spline is to be considered as a closed loop.</param>
+		/// <param name="bStationaryEndpoints">Whether the endpoints of the spline are considered stationary when traversing the spline at non-constant velocity.  Essentially this sets the endpoints' tangents to zero vectors.</param>
+		/// <param name="reparamStepsPerSegment">Number of steps per spline segment to place in the reparameterization table</param>
+		/// <param name="bLoopPositionOverride">Whether to override the loop position with LoopPosition</param>
+		/// <param name="loopPosition">The loop position to use instead of the last key</param>
+		/// <param name="scale3D">The world scale to override</param>
 		public void UpdateSpline(bool bClosedLoop, bool bStationaryEndpoints, int reparamStepsPerSegment, bool bLoopPositionOverride, float loopPosition, FVector scale3D)
 			=> E_FSplineCurves_UpdateSpline(this, bClosedLoop, bStationaryEndpoints, reparamStepsPerSegment, bLoopPositionOverride, loopPosition, scale3D);
 		

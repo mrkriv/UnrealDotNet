@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize to an identity. </para>
+		/// Ctor. initialize to an identity.
 		/// </summary>
 		public FShear2D() :
 			base(E_CreateStruct_FShear2D(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a set of shears parallel to the X and Y axis, respectively. </para>
+		/// Ctor. initialize from a set of shears parallel to the X and Y axis, respectively.
 		/// </summary>
 		public FShear2D(float shearX, float shearY) :
 			base(E_CreateStruct_FShear2D_float_float(shearX, shearY), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a 2D vector representing a set of shears parallel to the X and Y axis, respectively. </para>
+		/// Ctor. initialize from a 2D vector representing a set of shears parallel to the X and Y axis, respectively.
 		/// </summary>
 		public FShear2D(FVector2D inShear) :
 			base(E_CreateStruct_FShear2D_FVector2D(inShear), false)
@@ -78,9 +78,9 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Concatenate two shears. The result is NOT a shear, but must be represented by a generalized 2x2 transform. </para>
+		/// Concatenate two shears. The result is NOT a shear, but must be represented by a generalized 2x2 transform.
 		/// <para>Defer the implementation until we can declare a 2x2 matrix. </para>
-		/// <para>[1 YYA] * [1 YYB] == [1+YYA*XXB YYB*YYA] </para>
+		/// [1 YYA] * [1 YYB] == [1+YYA*XXB YYB*YYA]
 		/// <para>[XXA 1]   [XXB 1]    [XXA+XXB XXA*XXB+1] </para>
 		/// </summary>
 		public FMatrix2x2 Concatenate(FShear2D rHS)
@@ -88,25 +88,25 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Generates a shear structure based on angles instead of slope. </para>
-		/// <param name="InShearAngles">The angles of shear. </param>
-		/// <return>the sheare structure. </return>
+		/// Generates a shear structure based on angles instead of slope.
 		/// </summary>
+		/// <param name="inShearAngles">The angles of shear.</param>
+		/// <return>the</return>
 		public FShear2D FromShearAngles(FVector2D inShearAngles)
 			=> E_FShear2D_FromShearAngles(this, inShearAngles);
 		
 		
 		/// <summary>
-		/// <para>Access to the underlying FVector2D that stores the scale. </para>
+		/// Access to the underlying FVector2D that stores the scale.
 		/// </summary>
 		public FVector2D GetVector()
 			=> E_FShear2D_GetVector(this);
 		
 		
 		/// <summary>
-		/// <para>Invert the shear. The result is NOT a shear, but must be represented by a generalized 2x2 transform. </para>
+		/// Invert the shear. The result is NOT a shear, but must be represented by a generalized 2x2 transform.
 		/// <para>Defer the implementation until we can declare a 2x2 matrix. </para>
-		/// <para>[1 YY]^-1  == 1/(1-YY*XX) * [1 -YY] </para>
+		/// [1 YY]^-1  == 1/(1-YY*XX) * [1 -YY]
 		/// <para>[XX 1]                      [-XX 1] </para>
 		/// </summary>
 		public FMatrix2x2 Inverse()
@@ -114,16 +114,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Transform 2D Point </para>
+		/// Transform 2D Point
 		/// <para>[X Y] * [1 YY] == [X+Y*XX Y+X*YY] </para>
-		/// <para>[XX 1] </para>
+		/// [XX 1]
 		/// </summary>
 		public FVector2D TransformPoint(FVector2D point)
 			=> E_FShear2D_TransformPoint(this, point);
 		
 		
 		/// <summary>
-		/// <para>Transform 2D Vector </para>
+		/// Transform 2D Vector
 		/// </summary>
 		public FVector2D TransformVector(FVector2D vector)
 			=> E_FShear2D_TransformVector(this, vector);

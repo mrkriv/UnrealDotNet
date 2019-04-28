@@ -67,9 +67,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Controls the radial falloff of the light when UseInverseSquaredFalloff is disabled. </para>
+		/// Controls the radial falloff of the light when UseInverseSquaredFalloff is disabled.
 		/// <para>2 is almost linear and very unrealistic and around 8 it looks reasonable. </para>
-		/// <para>With large exponents, the light has contribution to only a small area of its influence radius but still costs the same as low exponents. </para>
+		/// With large exponents, the light has contribution to only a small area of its influence radius but still costs the same as low exponents.
 		/// </summary>
 		public float LightFalloffExponent
 		{
@@ -79,7 +79,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Soft radius of light source shape. </para>
+		/// Soft radius of light source shape.
 		/// <para>Note that light sources shapes which intersect shadow casting geometry can cause shadowing artifacts. </para>
 		/// </summary>
 		public float SoftSourceRadius
@@ -90,7 +90,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Length of light source shape. </para>
+		/// Length of light source shape.
 		/// <para>Note that light sources shapes which intersect shadow casting geometry can cause shadowing artifacts. </para>
 		/// </summary>
 		public float SourceLength
@@ -101,7 +101,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Radius of light source shape. </para>
+		/// Radius of light source shape.
 		/// <para>Note that light sources shapes which intersect shadow casting geometry can cause shadowing artifacts. </para>
 		/// </summary>
 		public float SourceRadius

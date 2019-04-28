@@ -65,7 +65,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Implicit buffer region as a fraction of the screen size to insure the bloom does not wrap across the screen.  Larger sizes have perf impact. </para>
+		/// Implicit buffer region as a fraction of the screen size to insure the bloom does not wrap across the screen.  Larger sizes have perf impact.
 		/// </summary>
 		public float ConvolutionBuffer
 		{
@@ -75,7 +75,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The UV location of the center of the kernel.  Should be very close to (.5,.5) </para>
+		/// The UV location of the center of the kernel.  Should be very close to (.5,.5)
 		/// </summary>
 		public FVector2D ConvolutionCenter
 		{
@@ -85,7 +85,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMax
 		{
@@ -95,7 +95,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMin
 		{
@@ -105,7 +105,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMult
 		{
@@ -115,7 +115,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Relative size of the convolution kernel image compared to the minor axis of the viewport </para>
+		/// Relative size of the convolution kernel image compared to the minor axis of the viewport
 		/// </summary>
 		public float ConvolutionScale
 		{

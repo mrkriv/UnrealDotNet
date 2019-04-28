@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with initialization to the identity transform. </para>
+		/// Constructor with initialization to the identity transform.
 		/// </summary>
 		public FTransform() :
 			base(E_CreateStruct_FTransform(), false)
@@ -29,9 +29,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with an initial translation </para>
-		/// <param name="InTranslation">The value to use for the translation component </param>
+		/// Constructor with an initial translation
 		/// </summary>
+		/// <param name="inTranslation">The value to use for the translation component</param>
 		public FTransform(FVector inTranslation) :
 			base(E_CreateStruct_FTransform_FVector(inTranslation), false)
 		{
@@ -39,9 +39,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with an initial rotation </para>
-		/// <param name="InRotation">The value to use for rotation component </param>
+		/// Constructor with an initial rotation
 		/// </summary>
+		/// <param name="inRotation">The value to use for rotation component</param>
 		public FTransform(FQuat inRotation) :
 			base(E_CreateStruct_FTransform_FQuat(inRotation), false)
 		{
@@ -49,9 +49,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with an initial rotation </para>
-		/// <param name="InRotation">The value to use for rotation component  (after being converted to a quaternion) </param>
+		/// Constructor with an initial rotation
 		/// </summary>
+		/// <param name="inRotation">The value to use for rotation component  (after being converted to a quaternion)</param>
 		public FTransform(FRotator inRotation) :
 			base(E_CreateStruct_FTransform_FRotator(inRotation), false)
 		{
@@ -59,11 +59,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with all components initialized </para>
-		/// <param name="InRotation">The value to use for rotation component </param>
-		/// <param name="InTranslation">The value to use for the translation component </param>
-		/// <param name="InScale3D">The value to use for the scale component </param>
+		/// Constructor with all components initialized
 		/// </summary>
+		/// <param name="inRotation">The value to use for rotation component</param>
+		/// <param name="inTranslation">The value to use for the translation component</param>
+		/// <param name="inScale3D">The value to use for the scale component</param>
 		public FTransform(FQuat inRotation, FVector inTranslation, FVector inScale3D) :
 			base(E_CreateStruct_FTransform_FQuat_FVector_FVector(inRotation, inTranslation, inScale3D), false)
 		{
@@ -71,11 +71,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor with all components initialized, taking a FRotator as the rotation component </para>
-		/// <param name="InRotation">The value to use for rotation component (after being converted to a quaternion) </param>
-		/// <param name="InTranslation">The value to use for the translation component </param>
-		/// <param name="InScale3D">The value to use for the scale component </param>
+		/// Constructor with all components initialized, taking a FRotator as the rotation component
 		/// </summary>
+		/// <param name="inRotation">The value to use for rotation component (after being converted to a quaternion)</param>
+		/// <param name="inTranslation">The value to use for the translation component</param>
+		/// <param name="inScale3D">The value to use for the scale component</param>
 		public FTransform(FRotator inRotation, FVector inTranslation, FVector inScale3D) :
 			base(E_CreateStruct_FTransform_FRotator_FVector_FVector(inRotation, inTranslation, inScale3D), false)
 		{
@@ -83,9 +83,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Copy-constructor </para>
-		/// <param name="InTransform">The source transform from which all components will be copied </param>
+		/// Copy-constructor
 		/// </summary>
+		/// <param name="inTransform">The source transform from which all components will be copied</param>
 		public FTransform(FTransform inTransform) :
 			base(E_CreateStruct_FTransform_FTransform(inTransform), false)
 		{
@@ -93,7 +93,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor for converting a Matrix (including scale) into a FTransform. </para>
+		/// Constructor for converting a Matrix (including scale) into a FTransform.
 		/// </summary>
 		public FTransform(FMatrix inMatrix) :
 			base(E_CreateStruct_FTransform_FMatrix(inMatrix), false)
@@ -102,7 +102,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor that takes basis axes and translation </para>
+		/// Constructor that takes basis axes and translation
 		/// </summary>
 		public FTransform(FVector inX, FVector inY, FVector inZ, FVector inTranslation) :
 			base(E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(inX, inY, inZ, inTranslation), false)
@@ -373,28 +373,28 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Accumulates another transform with this one </para>
+		/// Accumulates another transform with this one
 		/// <para>Rotation is accumulated multiplicatively (Rotation = SourceAtom.Rotation * Rotation) </para>
-		/// <para>Translation is accumulated additively (Translation += SourceAtom.Translation) </para>
+		/// Translation is accumulated additively (Translation += SourceAtom.Translation)
 		/// <para>Scale3D is accumulated multiplicatively (Scale3D *= SourceAtom.Scale3D) </para>
-		/// <param name="SourceAtom">The other transform to accumulate into this one </param>
 		/// </summary>
+		/// <param name="sourceAtom">The other transform to accumulate into this one</param>
 		public void Accumulate(FTransform sourceAtom)
 			=> E_FTransform_Accumulate(this, sourceAtom);
 		
 		
 		/// <summary>
-		/// <para>Adjusts the translation component of this transformation </para>
-		/// <param name="DeltaTranslation">The translation to add in the following fashion: Translation += DeltaTranslation </param>
+		/// Adjusts the translation component of this transformation
 		/// </summary>
+		/// <param name="deltaTranslation">The translation to add in the following fashion: Translation += DeltaTranslation</param>
 		public void AddToTranslation(FVector deltaTranslation)
 			=> E_FTransform_AddToTranslation(this, deltaTranslation);
 		
 		
 		/// <summary>
-		/// <para>Add the translations from two FTransforms and return the result. </para>
-		/// <return>A.Translation + B.Translation </return>
+		/// Add the translations from two FTransforms and return the result.
 		/// </summary>
+		/// <return>A</return>
 		public FVector AddTranslations(FTransform a, FTransform b)
 			=> E_FTransform_AddTranslations(this, a, b);
 		
@@ -412,74 +412,74 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set this transform to the weighted blend of the supplied two transforms. </para>
+		/// Set this transform to the weighted blend of the supplied two transforms.
 		/// </summary>
 		public void Blend(FTransform atom1, FTransform atom2, float alpha)
 			=> E_FTransform_Blend(this, atom1, atom2, alpha);
 		
 		
 		/// <summary>
-		/// <para>Set this Transform to the weighted blend of it and the supplied Transform. </para>
+		/// Set this Transform to the weighted blend of it and the supplied Transform.
 		/// </summary>
 		public void BlendWith(FTransform otherAtom, float alpha)
 			=> E_FTransform_BlendWith(this, otherAtom, alpha);
 		
 		
 		/// <summary>
-		/// <para>Concatenates another rotation to this transformation </para>
-		/// <param name="DeltaRotation">The rotation to concatenate in the following fashion: Rotation = Rotation * DeltaRotation </param>
+		/// Concatenates another rotation to this transformation
 		/// </summary>
+		/// <param name="deltaRotation">The rotation to concatenate in the following fashion: Rotation = Rotation * DeltaRotation</param>
 		public void ConcatenateRotation(FQuat deltaRotation)
 			=> E_FTransform_ConcatenateRotation(this, deltaRotation);
 		
 		
 		/// <summary>
-		/// <para>Checks the components for NaN's </para>
-		/// <return>Returns true if any component (rotation, translation, or scale) is a NAN </return>
+		/// Checks the components for NaN's
 		/// </summary>
+		/// <return>Returns</return>
 		public bool ContainsNaN()
 			=> E_FTransform_ContainsNaN(this);
 		
 		
 		/// <summary>
-		/// <para>Copy rotation from another FTransform. </para>
+		/// Copy rotation from another FTransform.
 		/// </summary>
 		public void CopyRotation(FTransform other)
 			=> E_FTransform_CopyRotation(this, other);
 		
 		
 		/// <summary>
-		/// <para>Sets the Rotation and Scale3D of this transformation from another transform </para>
-		/// <param name="SrcBA">The transform to copy rotation and Scale3D from </param>
+		/// Sets the Rotation and Scale3D of this transformation from another transform
 		/// </summary>
+		/// <param name="srcBA">The transform to copy rotation and Scale3D from</param>
 		public void CopyRotationPart(FTransform srcBA)
 			=> E_FTransform_CopyRotationPart(this, srcBA);
 		
 		
 		/// <summary>
-		/// <para>Copy scale from another FTransform. </para>
+		/// Copy scale from another FTransform.
 		/// </summary>
 		public void CopyScale3D(FTransform other)
 			=> E_FTransform_CopyScale3D(this, other);
 		
 		
 		/// <summary>
-		/// <para>Copy translation from another FTransform. </para>
+		/// Copy translation from another FTransform.
 		/// </summary>
 		public void CopyTranslation(FTransform other)
 			=> E_FTransform_CopyTranslation(this, other);
 		
 		
 		/// <summary>
-		/// <para>Sets the Translation and Scale3D of this transformation from another transform </para>
-		/// <param name="SrcBA">The transform to copy translation and Scale3D from </param>
+		/// Sets the Translation and Scale3D of this transformation from another transform
 		/// </summary>
+		/// <param name="srcBA">The transform to copy translation and Scale3D from</param>
 		public void CopyTranslationAndScale3D(FTransform srcBA)
 			=> E_FTransform_CopyTranslationAndScale3D(this, srcBA);
 		
 		
 		/// <summary>
-		/// <para>Does a debugf of the contents of this Transform. </para>
+		/// Does a debugf of the contents of this Transform.
 		/// </summary>
 		public void DebugPrint()
 			=> E_FTransform_DebugPrint(this);
@@ -507,7 +507,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Calculate the </para>
+		/// Calculate the
 		/// </summary>
 		public float GetDeterminant()
 			=> E_FTransform_GetDeterminant(this);
@@ -523,11 +523,11 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>The below 2 functions are the ones to get delta transform and return FTransform format that can be concatenated </para>
+		/// The below 2 functions are the ones to get delta transform and return FTransform format that can be concatenated
 		/// <para>Inverse itself can't concatenate with VQS format(since VQS always transform from S->Q->T, where inverse happens from T(-1)->Q(-1)->S(-1)) </para>
-		/// <para>So these 2 provides ways to fix this </para>
+		/// So these 2 provides ways to fix this
 		/// <para>GetRelativeTransform returns this*Other(-1) and parameter is Other(not Other(-1)) </para>
-		/// <para>GetRelativeTransformReverse returns this(-1)*Other, and parameter is Other. </para>
+		/// GetRelativeTransformReverse returns this(-1)*Other, and parameter is Other.
 		/// </summary>
 		public FTransform GetRelativeTransform(FTransform other)
 			=> E_FTransform_GetRelativeTransform(this, other);
@@ -537,9 +537,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the rotation component </para>
-		/// <return>The rotation component </return>
+		/// Returns the rotation component
 		/// </summary>
+		/// <return>The</return>
 		public FQuat GetRotation()
 			=> E_FTransform_GetRotation(this);
 		
@@ -548,9 +548,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the Scale3D component </para>
-		/// <return>The Scale3D component </return>
+		/// Returns the Scale3D component
 		/// </summary>
+		/// <return>The</return>
 		public FVector GetScale3D()
 			=> E_FTransform_GetScale3D(this);
 		
@@ -562,29 +562,29 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the translation component </para>
-		/// <return>The translation component </return>
+		/// Returns the translation component
 		/// </summary>
+		/// <return>The</return>
 		public FVector GetTranslation()
 			=> E_FTransform_GetTranslation(this);
 		
 		
 		/// <summary>
-		/// <para>Acceptable form: "%f,%f,%f|%f,%f,%f|%f,%f,%f" </para>
+		/// Acceptable form: "%f,%f,%f|%f,%f,%f|%f,%f,%f"
 		/// </summary>
 		public bool InitFromString(string inSourceString)
 			=> E_FTransform_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
-		/// <para>Convert this Transform to inverse. </para>
+		/// Convert this Transform to inverse.
 		/// </summary>
 		public FTransform Inverse()
 			=> E_FTransform_Inverse(this);
 		
 		
 		/// <summary>
-		/// <para>Inverts the transform and then transforms V - correctly handles scaling in this transform. </para>
+		/// Inverts the transform and then transforms V - correctly handles scaling in this transform.
 		/// </summary>
 		public FVector InverseTransformPosition(FVector v)
 			=> E_FTransform_InverseTransformPosition(this, v);
@@ -594,7 +594,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Inverse transform a rotation. </para>
+		/// Inverse transform a rotation.
 		/// <para>For example if this is a LocalToWorld transform, InverseTransformRotation(Q) would transform Q from world to local space. </para>
 		/// </summary>
 		public FQuat InverseTransformRotation(FQuat q)
@@ -602,7 +602,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Transform a direction vector by the inverse of this matrix - will not take into account translation part. </para>
+		/// Transform a direction vector by the inverse of this matrix - will not take into account translation part.
 		/// <para>If you want to transform a surface normal (or plane) and correctly account for non-uniform scaling you should use TransformByUsingAdjointT with adjoint of matrix inverse. </para>
 		/// </summary>
 		public FVector InverseTransformVector(FVector v)
@@ -613,9 +613,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks whether the rotation component is normalized or not </para>
-		/// <return>true if the rotation component is normalized, and false otherwise. </return>
+		/// Checks whether the rotation component is normalized or not
 		/// </summary>
+		/// <return>true</return>
 		public bool IsRotationNormalized()
 			=> E_FTransform_IsRotationNormalized(this);
 		
@@ -627,15 +627,15 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Scales the Scale3D component by a new factor </para>
-		/// <param name="Scale3DMultiplier">The value to multiply Scale3D with </param>
+		/// Scales the Scale3D component by a new factor
 		/// </summary>
+		/// <param name="scale3DMultiplier">The value to multiply Scale3D with</param>
 		public void MultiplyScale3D(FVector scale3DMultiplier)
 			=> E_FTransform_MultiplyScale3D(this, scale3DMultiplier);
 		
 		
 		/// <summary>
-		/// <para>Normalize the rotation component of this transformation </para>
+		/// Normalize the rotation component of this transformation
 		/// </summary>
 		public void NormalizeRotation()
 			=> E_FTransform_NormalizeRotation(this);
@@ -660,11 +660,11 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the components </para>
-		/// <param name="InRotation">The new value for the Rotation component </param>
-		/// <param name="InTranslation">The new value for the Translation component </param>
-		/// <param name="InScale3D">The new value for the Scale3D component </param>
+		/// Sets the components
 		/// </summary>
+		/// <param name="inRotation">The new value for the Rotation component</param>
+		/// <param name="inTranslation">The new value for the Translation component</param>
+		/// <param name="inScale3D">The new value for the Scale3D component</param>
 		public void SetComponents(FQuat inRotation, FVector inTranslation, FVector inScale3D)
 			=> E_FTransform_SetComponents(this, inRotation, inTranslation, inScale3D);
 		
@@ -673,9 +673,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the components to the identity transform: </para>
+		/// Sets the components to the identity transform:
 		/// <para>Rotation = (0,0,0,1) </para>
-		/// <para>Translation = (0,0,0) </para>
+		/// Translation = (0,0,0)
 		/// <para>Scale3D = (1,1,1) </para>
 		/// </summary>
 		public void SetIdentity()
@@ -683,30 +683,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the translation of this transformation </para>
+		/// Set the translation of this transformation
 		/// </summary>
 		public void SetLocation(FVector origin)
 			=> E_FTransform_SetLocation(this, origin);
 		
 		
 		/// <summary>
-		/// <para>Sets the rotation component </para>
-		/// <param name="NewRotation">The new value for the rotation component </param>
+		/// Sets the rotation component
 		/// </summary>
+		/// <param name="newRotation">The new value for the rotation component</param>
 		public void SetRotation(FQuat newRotation)
 			=> E_FTransform_SetRotation(this, newRotation);
 		
 		
 		/// <summary>
-		/// <para>Sets the Scale3D component </para>
-		/// <param name="NewScale3D">The new value for the Scale3D component </param>
+		/// Sets the Scale3D component
 		/// </summary>
+		/// <param name="newScale3D">The new value for the Scale3D component</param>
 		public void SetScale3D(FVector newScale3D)
 			=> E_FTransform_SetScale3D(this, newScale3D);
 		
 		
 		/// <summary>
-		/// <para>Set current transform and the relative to ParentTransform. </para>
+		/// Set current transform and the relative to ParentTransform.
 		/// <para>Equates to This = This->GetRelativeTransform(Parent), but saves the intermediate FTransform storage and copy. </para>
 		/// </summary>
 		public void SetToRelativeTransform(FTransform parentTransform)
@@ -714,46 +714,46 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the translation component </para>
-		/// <param name="NewTranslation">The new value for the translation component </param>
+		/// Sets the translation component
 		/// </summary>
+		/// <param name="newTranslation">The new value for the translation component</param>
 		public void SetTranslation(FVector newTranslation)
 			=> E_FTransform_SetTranslation(this, newTranslation);
 		
 		
 		/// <summary>
-		/// <para>Sets both the translation and Scale3D components at the same time </para>
-		/// <param name="NewTranslation">The new value for the translation component </param>
-		/// <param name="NewScale3D">The new value for the Scale3D component </param>
+		/// Sets both the translation and Scale3D components at the same time
 		/// </summary>
+		/// <param name="newTranslation">The new value for the translation component</param>
+		/// <param name="newScale3D">The new value for the Scale3D component</param>
 		public void SetTranslationAndScale3D(FVector newTranslation, FVector newScale3D)
 			=> E_FTransform_SetTranslationAndScale3D(this, newTranslation, newScale3D);
 		
 		
 		/// <summary>
-		/// <para>Subtract translations from two FTransforms and return the difference. </para>
-		/// <return>A.Translation - B.Translation. </return>
+		/// Subtract translations from two FTransforms and return the difference.
 		/// </summary>
+		/// <return>A</return>
 		public FVector SubtractTranslations(FTransform a, FTransform b)
 			=> E_FTransform_SubtractTranslations(this, a, b);
 		
 		
 		/// <summary>
-		/// <para>Convert FTransform contents to a string </para>
+		/// Convert FTransform contents to a string
 		/// </summary>
 		public string ToHumanReadableString()
 			=> E_FTransform_ToHumanReadableString(this);
 		
 		
 		/// <summary>
-		/// <para>Convert this Transform to matrix with scaling and compute the inverse of that. </para>
+		/// Convert this Transform to matrix with scaling and compute the inverse of that.
 		/// </summary>
 		public FMatrix ToInverseMatrixWithScale()
 			=> E_FTransform_ToInverseMatrixWithScale(this);
 		
 		
 		/// <summary>
-		/// <para>Convert this Transform to a transformation matrix, ignoring its scaling </para>
+		/// Convert this Transform to a transformation matrix, ignoring its scaling
 		/// </summary>
 		public FMatrix ToMatrixNoScale()
 			=> E_FTransform_ToMatrixNoScale(this);
@@ -778,7 +778,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Transform a rotation. </para>
+		/// Transform a rotation.
 		/// <para>For example if this is a LocalToWorld transform, TransformRotation(Q) would transform Q from local to world space. </para>
 		/// </summary>
 		public FQuat TransformRotation(FQuat q)

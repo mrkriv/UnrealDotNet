@@ -251,7 +251,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>If we should should perform a debug capsule trace for pawns and draw results. Toggled with DebugCapsuleSweepPawn() </para>
+		/// If we should should perform a debug capsule trace for pawns and draw results. Toggled with DebugCapsuleSweepPawn()
 		/// </summary>
 		public static bool bDebugCapsuleSweepPawn
 		{
@@ -260,7 +260,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased </para>
+		/// Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased
 		/// </summary>
 		public int CurrentTraceIndex
 		{
@@ -270,7 +270,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased </para>
+		/// Index of the array for current trace to overwrite.  Whenever you capture, this index will be increased
 		/// </summary>
 		public int CurrentTracePawnIndex
 		{
@@ -280,7 +280,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Half distance between debug capsule sphere ends. Total heigh of capsule is 2*(this + DebugCapsuleRadius). </para>
+		/// Half distance between debug capsule sphere ends. Total heigh of capsule is 2*(this + DebugCapsuleRadius).
 		/// </summary>
 		public float DebugCapsuleHalfHeight
 		{
@@ -290,7 +290,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Radius of debug capsule </para>
+		/// Radius of debug capsule
 		/// </summary>
 		public float DebugCapsuleRadius
 		{
@@ -300,7 +300,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How far debug trace should go out from player viewpoint </para>
+		/// How far debug trace should go out from player viewpoint
 		/// </summary>
 		public float DebugTraceDistance
 		{
@@ -310,7 +310,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How long to draw the normal result </para>
+		/// How long to draw the normal result
 		/// </summary>
 		public float DebugTraceDrawNormalLength
 		{
@@ -323,7 +323,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add Debug Trace info into current index - used when DebugCapsuleSweepPawn is on </para>
+		/// Add Debug Trace info into current index - used when DebugCapsuleSweepPawn is on
 		/// </summary>
 		public void AddCapsuleSweepDebugInfo(FVector lineTraceStart, FVector lineTraceEnd, FVector hitImpactLocation, FVector hitNormal, FVector hitImpactNormal, FVector hitLocation, float capsuleHalfheight, float capsuleRadius, bool bTracePawn, bool bInsideOfObject)
 			=> E_UCheatManager_AddCapsuleSweepDebugInfo(this, lineTraceStart, lineTraceEnd, hitImpactLocation, hitNormal, hitImpactNormal, hitLocation, capsuleHalfheight, capsuleRadius, bTracePawn, bInsideOfObject);
@@ -336,7 +336,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>This will move the player and set their rotation to the passed in values. </para>
+		/// This will move the player and set their rotation to the passed in values.
 		/// <para>We have this version of the BugIt family strings can be passed in from the game ?options easily </para>
 		/// </summary>
 		public virtual void BugItGoString(string theLocation, string theRotation)
@@ -347,9 +347,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>This will move the player and set their rotation to the passed in values. </para>
+		/// This will move the player and set their rotation to the passed in values.
 		/// <para>This actually does the location / rotation setting.  Additionally it will set you as ghost as the level may have </para>
-		/// <para>changed since the last time you were here.  And the bug may actually be inside of something. </para>
+		/// changed since the last time you were here.  And the bug may actually be inside of something.
 		/// </summary>
 		public virtual void BugItWorker(FVector theLocation, FRotator theRotation)
 			=> E_UCheatManager_BugItWorker(this, theLocation, theRotation);
@@ -362,7 +362,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Damage the actor you're looking at (sourced from the player). </para>
+		/// Damage the actor you're looking at (sourced from the player).
 		/// </summary>
 		public virtual void DamageTarget(float damageAmount)
 			=> E_UCheatManager_DamageTarget(this, damageAmount);
@@ -396,14 +396,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Destroy the actor you're looking at. </para>
+		/// Destroy the actor you're looking at.
 		/// </summary>
 		public virtual void DestroyTarget()
 			=> E_UCheatManager_DestroyTarget(this);
 		
 		
 		/// <summary>
-		/// <para>Switch controller from debug camera back to normal controller </para>
+		/// Switch controller from debug camera back to normal controller
 		/// </summary>
 		protected virtual void DisableDebugCamera()
 			=> E_UCheatManager_DisableDebugCamera(this);
@@ -422,7 +422,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Switch controller to debug camera without locking gameplay and with locking local player controller input </para>
+		/// Switch controller to debug camera without locking gameplay and with locking local player controller input
 		/// </summary>
 		protected virtual void EnableDebugCamera()
 			=> E_UCheatManager_EnableDebugCamera(this);
@@ -432,42 +432,42 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Pawn can fly. </para>
+		/// Pawn can fly.
 		/// </summary>
 		public virtual void Fly()
 			=> E_UCheatManager_Fly(this);
 		
 		
 		/// <summary>
-		/// <para>Pause the game for Delay seconds. </para>
+		/// Pause the game for Delay seconds.
 		/// </summary>
 		public virtual void FreezeFrame(float delay)
 			=> E_UCheatManager_FreezeFrame(this, delay);
 		
 		
 		/// <summary>
-		/// <para>Retrieve the given PlayerContoller's current "target" AActor. </para>
+		/// Retrieve the given PlayerContoller's current "target" AActor.
 		/// </summary>
 		protected virtual AActor GetTarget(APlayerController playerController, FHitResult outHit)
 			=> E_UCheatManager_GetTarget(this, playerController, outHit);
 		
 		
 		/// <summary>
-		/// <para>Pawn no longer collides with the world, and can fly </para>
+		/// Pawn no longer collides with the world, and can fly
 		/// </summary>
 		public virtual void Ghost()
 			=> E_UCheatManager_Ghost(this);
 		
 		
 		/// <summary>
-		/// <para>Invulnerability cheat. </para>
+		/// Invulnerability cheat.
 		/// </summary>
 		public virtual void God()
 			=> E_UCheatManager_God(this);
 		
 		
 		/// <summary>
-		/// <para>Called when CheatManager is created to allow any needed initialization. </para>
+		/// Called when CheatManager is created to allow any needed initialization.
 		/// </summary>
 		public virtual void InitCheatManager()
 			=> E_UCheatManager_InitCheatManager(this);
@@ -477,7 +477,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return true if debug sweeps are enabled for pawns. </para>
+		/// Return true if debug sweeps are enabled for pawns.
 		/// </summary>
 		public bool IsDebugCapsuleSweepPawnEnabled()
 			=> E_UCheatManager_IsDebugCapsuleSweepPawnEnabled(this);
@@ -487,7 +487,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Bug it log to file </para>
+		/// Bug it log to file
 		/// </summary>
 		public virtual void LogOutBugItGoToLogFile(string inScreenShotDesc, string inScreenShotPath, string inGoString, string inLocString)
 			=> E_UCheatManager_LogOutBugItGoToLogFile(this, inScreenShotDesc, inScreenShotPath, inGoString, inLocString);
@@ -497,21 +497,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Freeze everything in the level except for players. </para>
+		/// Freeze everything in the level except for players.
 		/// </summary>
 		public virtual void PlayersOnly()
 			=> E_UCheatManager_PlayersOnly(this);
 		
 		
 		/// <summary>
-		/// <para>This is the End Play event for the CheatManager </para>
+		/// This is the End Play event for the CheatManager
 		/// </summary>
 		public void Shutdown()
 			=> E_UCheatManager_ReceiveEndPlay(this);
 		
 		
 		/// <summary>
-		/// <para>BP implementable event for when CheatManager is created to allow any needed initialization. </para>
+		/// BP implementable event for when CheatManager is created to allow any needed initialization.
 		/// </summary>
 		public void ReceiveInitCheatManager()
 			=> E_UCheatManager_ReceiveInitCheatManager(this);
@@ -521,7 +521,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>streaming level debugging </para>
+		/// streaming level debugging
 		/// </summary>
 		public virtual void SetLevelStreamingStatus(string packageName, bool bShouldBeLoaded, bool bShouldBeVisible)
 			=> E_UCheatManager_SetLevelStreamingStatus(this, packageName, bShouldBeLoaded, bShouldBeVisible);
@@ -534,7 +534,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Modify time dilation to change apparent speed of passage of time. e.g. "Slomo 0.1" makes everything move very slowly, while "Slomo 10" makes everything move very fast. </para>
+		/// Modify time dilation to change apparent speed of passage of time. e.g. "Slomo 0.1" makes everything move very slowly, while "Slomo 10" makes everything move very fast.
 		/// </summary>
 		public virtual void Slomo(float newTimeDilation)
 			=> E_UCheatManager_Slomo(this, newTimeDilation);
@@ -559,7 +559,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Do any trace debugging that is currently enabled </para>
+		/// Do any trace debugging that is currently enabled
 		/// </summary>
 		public void TickCollisionDebug()
 			=> E_UCheatManager_TickCollisionDebug(this);
@@ -590,7 +590,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return to walking movement mode from Fly or Ghost cheat. </para>
+		/// Return to walking movement mode from Fly or Ghost cheat.
 		/// </summary>
 		public virtual void Walk()
 			=> E_UCheatManager_Walk(this);

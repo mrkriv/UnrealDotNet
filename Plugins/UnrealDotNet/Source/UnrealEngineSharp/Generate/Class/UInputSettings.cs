@@ -137,7 +137,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Should the touch input interface be shown always, or only when the platform has a touch screen? </para>
+		/// Should the touch input interface be shown always, or only when the platform has a touch screen?
 		/// </summary>
 		public byte bAlwaysShowTouchInterface
 		{
@@ -147,7 +147,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls if the viewport will capture the mouse on Launch of the application </para>
+		/// Controls if the viewport will capture the mouse on Launch of the application
 		/// </summary>
 		public byte bCaptureMouseOnLaunch
 		{
@@ -169,7 +169,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not to use the gesture recognition system to convert touches in to gestures that can be bound and queried </para>
+		/// Whether or not to use the gesture recognition system to convert touches in to gestures that can be bound and queried
 		/// </summary>
 		public byte bEnableGestureRecognizer
 		{
@@ -191,7 +191,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not to show the console on 4 finger tap, on mobile platforms </para>
+		/// Whether or not to show the console on 4 finger tap, on mobile platforms
 		/// </summary>
 		public byte bShowConsoleOnFourFingerTap
 		{
@@ -201,7 +201,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, virtual keyboards will have autocorrect enabled. Currently only supported on mobile devices. </para>
+		/// If enabled, virtual keyboards will have autocorrect enabled. Currently only supported on mobile devices.
 		/// </summary>
 		public bool bUseAutocorrect
 		{
@@ -217,7 +217,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The default mouse capture mode for the game viewport </para>
+		/// The default mouse capture mode for the game viewport
 		/// </summary>
 		public EMouseCaptureMode DefaultViewportMouseCaptureMode
 		{
@@ -227,7 +227,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The default mouse lock state behavior when the viewport acquires capture </para>
+		/// The default mouse lock state behavior when the viewport acquires capture
 		/// </summary>
 		public EMouseLockMode DefaultViewportMouseLockMode
 		{
@@ -237,7 +237,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If a key is pressed twice in this amount of time it is considered a "double click" </para>
+		/// If a key is pressed twice in this amount of time it is considered a "double click"
 		/// </summary>
 		public float DoubleClickTime
 		{
@@ -256,49 +256,49 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Programmatically add an action mapping to the project defaults </para>
+		/// Programmatically add an action mapping to the project defaults
 		/// </summary>
 		public void AddActionMapping(FInputActionKeyMapping keyMapping, bool bForceRebuildKeymaps = true)
 			=> E_UInputSettings_AddActionMapping(this, keyMapping, bForceRebuildKeymaps);
 		
 		
 		/// <summary>
-		/// <para>Programmatically add an axis mapping to the project defaults </para>
+		/// Programmatically add an axis mapping to the project defaults
 		/// </summary>
 		public void AddAxisMapping(FInputAxisKeyMapping keyMapping, bool bForceRebuildKeymaps = true)
 			=> E_UInputSettings_AddAxisMapping(this, keyMapping, bForceRebuildKeymaps);
 		
 		
 		/// <summary>
-		/// <para>When changes are made to the default mappings, push those changes out to PlayerInput key maps </para>
+		/// When changes are made to the default mappings, push those changes out to PlayerInput key maps
 		/// </summary>
 		public void ForceRebuildKeymaps()
 			=> E_UInputSettings_ForceRebuildKeymaps(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the game local input settings (action mappings, axis mappings, etc...) </para>
+		/// Returns the game local input settings (action mappings, axis mappings, etc...)
 		/// </summary>
 		public UInputSettings GetInputSettings()
 			=> E_UInputSettings_GetInputSettings(this);
 		
 		
 		/// <summary>
-		/// <para>Programmatically remove an action mapping to the project defaults </para>
+		/// Programmatically remove an action mapping to the project defaults
 		/// </summary>
 		public void RemoveActionMapping(FInputActionKeyMapping keyMapping, bool bForceRebuildKeymaps = true)
 			=> E_UInputSettings_RemoveActionMapping(this, keyMapping, bForceRebuildKeymaps);
 		
 		
 		/// <summary>
-		/// <para>Programmatically remove an axis mapping to the project defaults </para>
+		/// Programmatically remove an axis mapping to the project defaults
 		/// </summary>
 		public void RemoveAxisMapping(FInputAxisKeyMapping keyMapping, bool bForceRebuildKeymaps = true)
 			=> E_UInputSettings_RemoveAxisMapping(this, keyMapping, bForceRebuildKeymaps);
 		
 		
 		/// <summary>
-		/// <para>Flush the current mapping values to the config file </para>
+		/// Flush the current mapping values to the config file
 		/// </summary>
 		public void SaveKeyMappings()
 			=> E_UInputSettings_SaveKeyMappings(this);

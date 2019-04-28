@@ -20,10 +20,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="Rot">rotation </param>
-		/// <param name="Origin">translation to apply </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="rot">rotation</param>
+		/// <param name="origin">translation to apply</param>
 		public FRotationTranslationMatrix(FRotator rot, FVector origin) :
 			base(E_CreateStruct_FRotationTranslationMatrix_FRotator_FVector(rot, origin), false)
 		{
@@ -41,7 +41,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions. </para>
+		/// Matrix factory. Return an FMatrix so we don't have type conversion issues in expressions.
 		/// </summary>
 		public FMatrix Make(FRotator rot, FVector origin)
 			=> E_FRotationTranslationMatrix_Make(this, rot, origin);

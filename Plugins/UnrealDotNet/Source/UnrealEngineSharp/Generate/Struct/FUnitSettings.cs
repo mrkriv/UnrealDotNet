@@ -47,7 +47,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Check whether unit display is globally enabled or disabled </para>
+		/// Check whether unit display is globally enabled or disabled
 		/// </summary>
 		public bool ShouldDisplayUnits()
 			=> E_FUnitSettings_ShouldDisplayUnits(this);

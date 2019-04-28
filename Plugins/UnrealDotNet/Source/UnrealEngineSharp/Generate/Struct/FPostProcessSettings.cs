@@ -1663,7 +1663,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>To scale the Ambient cubemap brightness </para>
+		/// To scale the Ambient cubemap brightness
 		/// <para>>=0: off, 1(default), >1 brighter </para>
 		/// </summary>
 		public float AmbientCubemapIntensity
@@ -1674,7 +1674,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>AmbientCubemap tint color </para>
+		/// AmbientCubemap tint color
 		/// </summary>
 		public FLinearColor AmbientCubemapTint
 		{
@@ -1684,7 +1684,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0, in unreal units, default (3.0) works well for flat surfaces but can reduce details </para>
+		/// >0, in unreal units, default (3.0) works well for flat surfaces but can reduce details
 		/// </summary>
 		public float Bias
 		{
@@ -1700,7 +1700,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0, in unreal units, at what distance the AO effect disppears in the distance (avoding artifacts and AO effects on huge object) </para>
+		/// >0, in unreal units, at what distance the AO effect disppears in the distance (avoding artifacts and AO effects on huge object)
 		/// </summary>
 		public float FadeOutDistance
 		{
@@ -1710,7 +1710,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0, in unreal units, how many units before AmbientOcclusionFadeOutDistance it starts fading out </para>
+		/// >0, in unreal units, how many units before AmbientOcclusionFadeOutDistance it starts fading out
 		/// </summary>
 		public float FadeOutRadius
 		{
@@ -1720,7 +1720,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0..1 0=off/no ambient occlusion .. 1=strong ambient occlusion, defines how much it affects the non direct lighting after base pass </para>
+		/// 0..1 0=off/no ambient occlusion .. 1=strong ambient occlusion, defines how much it affects the non direct lighting after base pass
 		/// </summary>
 		public float AmbientOcclusionIntensity
 		{
@@ -1730,7 +1730,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Affects the blend over the multiple mips (lower resolution versions) , 0:fully use full resolution, 1::fully use low resolution, around 0.6 seems to be a good value </para>
+		/// Affects the blend over the multiple mips (lower resolution versions) , 0:fully use full resolution, 1::fully use low resolution, around 0.6 seems to be a good value
 		/// </summary>
 		public float MipBlend
 		{
@@ -1740,7 +1740,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Affects the radius AO radius scale over the multiple mips (lower resolution versions) </para>
+		/// Affects the radius AO radius scale over the multiple mips (lower resolution versions)
 		/// </summary>
 		public float MipScale
 		{
@@ -1750,7 +1750,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>to tweak the bilateral upsampling when using multiple mips (lower resolution versions) </para>
+		/// to tweak the bilateral upsampling when using multiple mips (lower resolution versions)
 		/// </summary>
 		public float MipThreshold
 		{
@@ -1760,7 +1760,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0, in unreal units, bigger values means even distant surfaces affect the ambient occlusion </para>
+		/// >0, in unreal units, bigger values means even distant surfaces affect the ambient occlusion
 		/// </summary>
 		public float Power
 		{
@@ -1770,7 +1770,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0=lowest quality..100=maximum quality, only a few quality levels are implemented, no soft transition </para>
+		/// 0=lowest quality..100=maximum quality, only a few quality levels are implemented, no soft transition
 		/// </summary>
 		public float AmbientOcclusionQuality
 		{
@@ -1780,7 +1780,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0, in unreal units, bigger values means even distant surfaces affect the ambient occlusion </para>
+		/// >0, in unreal units, bigger values means even distant surfaces affect the ambient occlusion
 		/// </summary>
 		public float Radius
 		{
@@ -1790,7 +1790,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0..1 0=no effect on static lighting .. 1=AO affects the stat lighting, 0 is free meaning no extra rendering pass </para>
+		/// 0..1 0=no effect on static lighting .. 1=AO affects the stat lighting, 0 is free meaning no extra rendering pass
 		/// </summary>
 		public float StaticFraction
 		{
@@ -1800,7 +1800,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Logarithmic adjustment for the exposure. Only used if a tonemapper is specified. </para>
+		/// Logarithmic adjustment for the exposure. Only used if a tonemapper is specified.
 		/// <para>0: no adjustment, -1:2x darker, -2:4x darker, 1:2x brighter, 2:4x brighter, ... </para>
 		/// </summary>
 		public float ExposureCompensation
@@ -1811,7 +1811,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Calibration constant for 18% albedo. </para>
+		/// Calibration constant for 18% albedo.
 		/// </summary>
 		public float CalibrationConstant
 		{
@@ -1821,11 +1821,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color. </para>
+		/// The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color.
 		/// <para>The value is defined as having x percent below this brightness. Higher values give bright spots on the screen more priority </para>
-		/// <para>but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of </para>
+		/// but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of
 		/// <para>bright spots. </para>
-		/// <para>>0, <100, good values are in the range 80 .. 95 </para>
+		/// >0, <100, good values are in the range 80 .. 95
 		/// </summary>
 		public float HighPercent
 		{
@@ -1835,11 +1835,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color. </para>
+		/// The eye adaptation will adapt to a value extracted from the luminance histogram of the scene color.
 		/// <para>The value is defined as having x percent below this brightness. Higher values give bright spots on the screen more priority </para>
-		/// <para>but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of </para>
+		/// but can lead to less stable results. Lower values give the medium and darker values more priority but might cause burn out of
 		/// <para>bright spots. </para>
-		/// <para>>0, <100, good values are in the range 70 .. 80 </para>
+		/// >0, <100, good values are in the range 70 .. 80
 		/// </summary>
 		public float LowPercent
 		{
@@ -1849,9 +1849,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. </para>
+		/// Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max.
 		/// <para>Auto-exposure is implemented by choosing an exposure value for which the average luminance generates a pixel brightness equal to the Constant Calibration value. </para>
-		/// <para>The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings). </para>
+		/// The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings).
 		/// </summary>
 		public float MaxBrightness
 		{
@@ -1861,9 +1861,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. </para>
+		/// Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max.
 		/// <para>Auto-exposure is implemented by choosing an exposure value for which the average luminance generates a pixel brightness equal to the Constant Calibration value. </para>
-		/// <para>The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings). </para>
+		/// The Min/Max are expressed in pixel luminance (cd/m2) or in EV100 when using ExtendDefaultLuminanceRange (see project settings).
 		/// </summary>
 		public float MinBrightness
 		{
@@ -1873,7 +1873,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0 </para>
+		/// >0
 		/// </summary>
 		public float SpeedDown
 		{
@@ -1883,7 +1883,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>>0 </para>
+		/// >0
 		/// </summary>
 		public float SpeedUp
 		{
@@ -1893,9 +1893,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for the Bloom1 in percent of the screen width </para>
+		/// Diameter size for the Bloom1 in percent of the screen width
 		/// <para>(is done in 1/2 resolution, larger values cost more performance, good for high frequency details) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom1Size
 		{
@@ -1905,7 +1905,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom1 tint color </para>
+		/// Bloom1 tint color
 		/// </summary>
 		public FLinearColor Bloom1Tint
 		{
@@ -1915,9 +1915,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for Bloom2 in percent of the screen width </para>
+		/// Diameter size for Bloom2 in percent of the screen width
 		/// <para>(is done in 1/4 resolution, larger values cost more performance) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom2Size
 		{
@@ -1927,7 +1927,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom2 tint color </para>
+		/// Bloom2 tint color
 		/// </summary>
 		public FLinearColor Bloom2Tint
 		{
@@ -1937,9 +1937,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for Bloom3 in percent of the screen width </para>
+		/// Diameter size for Bloom3 in percent of the screen width
 		/// <para>(is done in 1/8 resolution, larger values cost more performance) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom3Size
 		{
@@ -1949,7 +1949,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom3 tint color </para>
+		/// Bloom3 tint color
 		/// </summary>
 		public FLinearColor Bloom3Tint
 		{
@@ -1959,9 +1959,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for Bloom4 in percent of the screen width </para>
+		/// Diameter size for Bloom4 in percent of the screen width
 		/// <para>(is done in 1/16 resolution, larger values cost more performance, best for wide contributions) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom4Size
 		{
@@ -1971,7 +1971,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom4 tint color </para>
+		/// Bloom4 tint color
 		/// </summary>
 		public FLinearColor Bloom4Tint
 		{
@@ -1981,9 +1981,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for Bloom5 in percent of the screen width </para>
+		/// Diameter size for Bloom5 in percent of the screen width
 		/// <para>(is done in 1/32 resolution, larger values cost more performance, best for wide contributions) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom5Size
 		{
@@ -1993,7 +1993,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom5 tint color </para>
+		/// Bloom5 tint color
 		/// </summary>
 		public FLinearColor Bloom5Tint
 		{
@@ -2003,9 +2003,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diameter size for Bloom6 in percent of the screen width </para>
+		/// Diameter size for Bloom6 in percent of the screen width
 		/// <para>(is done in 1/64 resolution, larger values cost more performance, best for wide contributions) </para>
-		/// <para>>=0: can be clamped because of shader limitations </para>
+		/// >=0: can be clamped because of shader limitations
 		/// </summary>
 		public float Bloom6Size
 		{
@@ -2015,7 +2015,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bloom6 tint color </para>
+		/// Bloom6 tint color
 		/// </summary>
 		public FLinearColor Bloom6Tint
 		{
@@ -2025,7 +2025,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Implicit buffer region as a fraction of the screen size to insure the bloom does not wrap across the screen.  Larger sizes have perf impact. </para>
+		/// Implicit buffer region as a fraction of the screen size to insure the bloom does not wrap across the screen.  Larger sizes have perf impact.
 		/// </summary>
 		public float ConvolutionBuffer
 		{
@@ -2035,7 +2035,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The UV location of the center of the kernel.  Should be very close to (.5,.5) </para>
+		/// The UV location of the center of the kernel.  Should be very close to (.5,.5)
 		/// </summary>
 		public FVector2D ConvolutionCenter
 		{
@@ -2045,7 +2045,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMax
 		{
@@ -2055,7 +2055,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMin
 		{
@@ -2065,7 +2065,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables </para>
+		/// Boost intensity of select pixels  prior to computing bloom convolution (Min, Max, Multiplier).  Max < Min disables
 		/// </summary>
 		public float ConvolutionBoostMult
 		{
@@ -2075,7 +2075,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Relative size of the convolution kernel image compared to the minor axis of the viewport </para>
+		/// Relative size of the convolution kernel image compared to the minor axis of the viewport
 		/// </summary>
 		public float ConvolutionScale
 		{
@@ -2085,7 +2085,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>BloomDirtMask intensity </para>
+		/// BloomDirtMask intensity
 		/// </summary>
 		public float DirtMaskIntensity
 		{
@@ -2095,7 +2095,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>BloomDirtMask tint color </para>
+		/// BloomDirtMask tint color
 		/// </summary>
 		public FLinearColor DirtMaskTint
 		{
@@ -2105,7 +2105,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Multiplier for all bloom contributions >=0: off, 1(default), >1 brighter </para>
+		/// Multiplier for all bloom contributions >=0: off, 1(default), >1 brighter
 		/// </summary>
 		public float BloomIntensity
 		{
@@ -2115,7 +2115,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scale for all bloom sizes </para>
+		/// Scale for all bloom sizes
 		/// </summary>
 		public float Sizescale
 		{
@@ -2125,7 +2125,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>minimum brightness the bloom starts having effect </para>
+		/// minimum brightness the bloom starts having effect
 		/// <para>-1:all pixels affect bloom equally (physically correct, faster as a threshold pass is omitted), 0:all pixels affect bloom brights more, 1(default), >1 brighter </para>
 		/// </summary>
 		public float BloomThreshold
@@ -2136,7 +2136,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Correct for artifacts with "electric" blues due to the ACEScg color space. Bright blue desaturates instead of going to violet. </para>
+		/// Correct for artifacts with "electric" blues due to the ACEScg color space. Bright blue desaturates instead of going to violet.
 		/// </summary>
 		public float BlueCorrection
 		{
@@ -2146,7 +2146,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Enable HQ Gaussian on high end mobile platforms. (ES3_1) </para>
+		/// Enable HQ Gaussian on high end mobile platforms. (ES3_1)
 		/// </summary>
 		public byte HighQualityGaussianDoFonMobile
 		{
@@ -3116,7 +3116,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The camera sensor sensitivity in ISO. </para>
+		/// The camera sensor sensitivity in ISO.
 		/// </summary>
 		public float ISO
 		{
@@ -3126,7 +3126,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The camera shutter in seconds. </para>
+		/// The camera shutter in seconds.
 		/// </summary>
 		public float ShutterSpeed1s
 		{
@@ -3136,7 +3136,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>A normalized distance to the center of the framebuffer where the effect takes place. </para>
+		/// A normalized distance to the center of the framebuffer where the effect takes place.
 		/// </summary>
 		public float StartOffset
 		{
@@ -3230,7 +3230,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Color grading lookup table intensity. 0 = no intensity, 1=full intensity </para>
+		/// Color grading lookup table intensity. 0 = no intensity, 1=full intensity
 		/// </summary>
 		public float ColorGradingLUTIntensity
 		{
@@ -3288,7 +3288,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Defines the number of blades of the diaphragm within the lens (between 4 and 16). </para>
+		/// Defines the number of blades of the diaphragm within the lens (between 4 and 16).
 		/// </summary>
 		public int Numberofdiaphragmblades
 		{
@@ -3298,7 +3298,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>DEPRECATED: Color threshold to do full quality DOF (BokehDOF only) </para>
+		/// DEPRECATED: Color threshold to do full quality DOF (BokehDOF only)
 		/// </summary>
 		public float ColorThreshold
 		{
@@ -3308,7 +3308,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>CircleDOF only: Depth blur km for 50% </para>
+		/// CircleDOF only: Depth blur km for 50%
 		/// </summary>
 		public float DepthBlurkmfor50
 		{
@@ -3318,7 +3318,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>CircleDOF only: Depth blur radius in pixels at 1920x </para>
+		/// CircleDOF only: Depth blur radius in pixels at 1920x
 		/// </summary>
 		public float DepthBlurRadius
 		{
@@ -3328,7 +3328,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Gaussian only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size) </para>
+		/// Gaussian only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size)
 		/// </summary>
 		public float FarBlurSize
 		{
@@ -3338,7 +3338,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>To define the width of the transition region next to the focal region on the near side (cm) </para>
+		/// To define the width of the transition region next to the focal region on the near side (cm)
 		/// </summary>
 		public float FarTransitionRegion
 		{
@@ -3348,7 +3348,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance in which the Depth of Field effect should be sharp, in unreal units (cm) </para>
+		/// Distance in which the Depth of Field effect should be sharp, in unreal units (cm)
 		/// </summary>
 		public float FocalDistance
 		{
@@ -3358,7 +3358,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Artificial region where all content is in focus, starting after DepthOfFieldFocalDistance, in unreal units  (cm) </para>
+		/// Artificial region where all content is in focus, starting after DepthOfFieldFocalDistance, in unreal units  (cm)
 		/// </summary>
 		public float FocalRegion
 		{
@@ -3368,7 +3368,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect </para>
+		/// Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect
 		/// </summary>
 		public float ApertureFstop
 		{
@@ -3378,7 +3378,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>DEPRECATED: BokehDOF only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size*size) </para>
+		/// DEPRECATED: BokehDOF only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size*size)
 		/// </summary>
 		public float MaxBokehSize
 		{
@@ -3388,7 +3388,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Defines the maximum opening of the camera lens to control the curvature of blades of the diaphragm. Set it to 0 to get straight blades. </para>
+		/// Defines the maximum opening of the camera lens to control the curvature of blades of the diaphragm. Set it to 0 to get straight blades.
 		/// </summary>
 		public float MaximumApertureminFstop
 		{
@@ -3398,7 +3398,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Gaussian only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size) </para>
+		/// Gaussian only: Maximum size of the Depth of Field blur (in percent of the view width) (note: performance cost scales with size)
 		/// </summary>
 		public float NearBlurSize
 		{
@@ -3408,7 +3408,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>To define the width of the transition region next to the focal region on the near side (cm) </para>
+		/// To define the width of the transition region next to the focal region on the near side (cm)
 		/// </summary>
 		public float NearTransitionRegion
 		{
@@ -3418,7 +3418,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Occlusion tweak factor 1 (0.18 to get natural occlusion, 0.4 to solve layer color leaking issues) </para>
+		/// Occlusion tweak factor 1 (0.18 to get natural occlusion, 0.4 to solve layer color leaking issues)
 		/// </summary>
 		public float Occlusion
 		{
@@ -3428,7 +3428,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>SM5: BokehDOF only: To amplify the depth of field effect (like aperture)  0=off </para>
+		/// SM5: BokehDOF only: To amplify the depth of field effect (like aperture)  0=off
 		/// <para>ES2: Used to blend DoF. 0=off </para>
 		/// </summary>
 		public float Scale
@@ -3439,7 +3439,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Width of the camera sensor to assume, in mm. </para>
+		/// Width of the camera sensor to assume, in mm.
 		/// </summary>
 		public float SensorWidthmm
 		{
@@ -3449,7 +3449,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>DEPRECATED: Size threshold to do full quality DOF (BokehDOF only) </para>
+		/// DEPRECATED: Size threshold to do full quality DOF (BokehDOF only)
 		/// </summary>
 		public float SizeThreshold
 		{
@@ -3459,7 +3459,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Artificial distance to allow the skybox to be in focus (e.g. 200000), <=0 to switch the feature off, only for GaussianDOF, can cost performance </para>
+		/// Artificial distance to allow the skybox to be in focus (e.g. 200000), <=0 to switch the feature off, only for GaussianDOF, can cost performance
 		/// </summary>
 		public float SkyDistance
 		{
@@ -3469,7 +3469,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Artificial circular mask to (near) blur content outside the radius, only for GaussianDOF, diameter in percent of screen width, costs performance if the mask is used, keep Feather can Radius on default to keep it off </para>
+		/// Artificial circular mask to (near) blur content outside the radius, only for GaussianDOF, diameter in percent of screen width, costs performance if the mask is used, keep Feather can Radius on default to keep it off
 		/// </summary>
 		public float VignetteSize
 		{
@@ -3479,7 +3479,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Expand bright saturated colors outside the sRGB gamut to fake wide gamut rendering. </para>
+		/// Expand bright saturated colors outside the sRGB gamut to fake wide gamut rendering.
 		/// </summary>
 		public float ExpandGamut
 		{
@@ -3591,7 +3591,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0..1 grain intensity </para>
+		/// 0..1 grain intensity
 		/// </summary>
 		public float GrainIntensity
 		{
@@ -3601,7 +3601,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0..1 grain jitter </para>
+		/// 0..1 grain jitter
 		/// </summary>
 		public float GrainJitter
 		{
@@ -3611,7 +3611,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Histogram Max value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings) </para>
+		/// Histogram Max value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings)
 		/// </summary>
 		public float HistogramLogMax
 		{
@@ -3621,7 +3621,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Histogram Min value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings) </para>
+		/// Histogram Min value. Expressed in Log2(Luminance) or in EV100 when using ExtendDefaultLuminanceRange (see project settings)
 		/// </summary>
 		public float HistogramLogMin
 		{
@@ -3631,7 +3631,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Adjusts indirect lighting color. (1,1,1) is default. (0,0,0) to disable GI. The show flag 'Global Illumination' must be enabled to use this property. </para>
+		/// Adjusts indirect lighting color. (1,1,1) is default. (0,0,0) to disable GI. The show flag 'Global Illumination' must be enabled to use this property.
 		/// </summary>
 		public FLinearColor IndirectLightingColor
 		{
@@ -3641,7 +3641,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scales the indirect lighting contribution. A value of 0 disables GI. Default is 1. The show flag 'Global Illumination' must be enabled to use this property. </para>
+		/// Scales the indirect lighting contribution. A value of 0 disables GI. Default is 1. The show flag 'Global Illumination' must be enabled to use this property.
 		/// </summary>
 		public float IndirectLightingIntensity
 		{
@@ -3651,7 +3651,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Size of the Lens Blur (in percent of the view width) that is done with the Bokeh texture (note: performance cost is radius*radius) </para>
+		/// Size of the Lens Blur (in percent of the view width) that is done with the Bokeh texture (note: performance cost is radius*radius)
 		/// </summary>
 		public float BokehSize
 		{
@@ -3661,7 +3661,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Brightness scale of the image cased lens flares (linear) </para>
+		/// Brightness scale of the image cased lens flares (linear)
 		/// </summary>
 		public float LensFlareIntensity
 		{
@@ -3671,7 +3671,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum brightness the lens flare starts having effect (this should be as high as possible to avoid the performance cost of blurring content that is too dark too see) </para>
+		/// Minimum brightness the lens flare starts having effect (this should be as high as possible to avoid the performance cost of blurring content that is too dark too see)
 		/// </summary>
 		public float LensFlareThreshold
 		{
@@ -3681,7 +3681,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Tint color for the image based lens flares. </para>
+		/// Tint color for the image based lens flares.
 		/// </summary>
 		public FLinearColor LensFlareTint
 		{
@@ -3691,7 +3691,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diffuse occlusion exponent - increase for more contrast. 1 to 2 is recommended </para>
+		/// Diffuse occlusion exponent - increase for more contrast. 1 to 2 is recommended
 		/// </summary>
 		public float Diffuseocclusionexponent
 		{
@@ -3701,7 +3701,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Diffuse occlusion intensity - higher values provide increased diffuse occlusion. </para>
+		/// Diffuse occlusion intensity - higher values provide increased diffuse occlusion.
 		/// </summary>
 		public float Diffuseocclusionintensity
 		{
@@ -3711,7 +3711,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>LPV Directional Occlusion Fade range - increase to fade more gradually towards the LPV edges. </para>
+		/// LPV Directional Occlusion Fade range - increase to fade more gradually towards the LPV edges.
 		/// </summary>
 		public float DOFaderange
 		{
@@ -3721,7 +3721,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the amount of directional occlusion. Requires LPV. Values very close to 1.0 are recommended </para>
+		/// Controls the amount of directional occlusion. Requires LPV. Values very close to 1.0 are recommended
 		/// </summary>
 		public float OcclusionIntensity
 		{
@@ -3731,7 +3731,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Occlusion Radius - 16 is recommended for most scenes </para>
+		/// Occlusion Radius - 16 is recommended for most scenes
 		/// </summary>
 		public float OcclusionRadius
 		{
@@ -3747,7 +3747,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>LPV Fade range - increase to fade more gradually towards the LPV edges. </para>
+		/// LPV Fade range - increase to fade more gradually towards the LPV edges.
 		/// </summary>
 		public float Faderange
 		{
@@ -3757,7 +3757,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bias applied to the geometry volume in cell units. Increase to reduce darkening due to secondary occlusion </para>
+		/// Bias applied to the geometry volume in cell units. Increase to reduce darkening due to secondary occlusion
 		/// </summary>
 		public float GeometryVolumeBias
 		{
@@ -3767,7 +3767,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How strong the dynamic GI from the LPV should be. 0.0 is off, 1.0 is the "normal" value, but higher values can be used to boost the effect </para>
+		/// How strong the dynamic GI from the LPV should be. 0.0 is off, 1.0 is the "normal" value, but higher values can be used to boost the effect
 		/// </summary>
 		public float LPVIntensity
 		{
@@ -3777,7 +3777,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Secondary bounce light strength (bounce light shadows). Set to 0 to disable </para>
+		/// Secondary bounce light strength (bounce light shadows). Set to 0 to disable
 		/// </summary>
 		public float SecondaryBounceIntensity
 		{
@@ -3787,7 +3787,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Secondary occlusion strength (bounce light shadows). Set to 0 to disable </para>
+		/// Secondary occlusion strength (bounce light shadows). Set to 0 to disable
 		/// </summary>
 		public float SecondaryOcclusionIntensity
 		{
@@ -3797,7 +3797,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The size of the LPV volume, in Unreal units </para>
+		/// The size of the LPV volume, in Unreal units
 		/// </summary>
 		public float Size
 		{
@@ -3807,7 +3807,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Specular occlusion exponent - increase for more contrast. 6 to 9 is recommended </para>
+		/// Specular occlusion exponent - increase for more contrast. 6 to 9 is recommended
 		/// </summary>
 		public float Specularocclusionexponent
 		{
@@ -3817,7 +3817,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Specular occlusion intensity - higher values provide increased specular occlusion. </para>
+		/// Specular occlusion intensity - higher values provide increased specular occlusion.
 		/// </summary>
 		public float Specularocclusionintensity
 		{
@@ -3827,7 +3827,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Bias applied to light injected into the LPV in cell units. Increase to reduce bleeding through thin walls </para>
+		/// Bias applied to light injected into the LPV in cell units. Increase to reduce bleeding through thin walls
 		/// </summary>
 		public float LightInjectionBias
 		{
@@ -3837,7 +3837,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Strength of motion blur, 0:off, should be renamed to intensity </para>
+		/// Strength of motion blur, 0:off, should be renamed to intensity
 		/// </summary>
 		public float Amount
 		{
@@ -3847,7 +3847,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>max distortion caused by motion blur, in percent of the screen width, 0:off </para>
+		/// max distortion caused by motion blur, in percent of the screen width, 0:off
 		/// </summary>
 		public float Max
 		{
@@ -3857,7 +3857,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4% </para>
+		/// The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4%
 		/// </summary>
 		public float PerObjectSize
 		{
@@ -3867,7 +3867,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the path tracing maximum bounces </para>
+		/// Sets the path tracing maximum bounces
 		/// </summary>
 		public int PathTracingMaxBounces
 		{
@@ -3877,7 +3877,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the samples per pixel for the path tracer. </para>
+		/// Sets the samples per pixel for the path tracer.
 		/// </summary>
 		public int PathTracingSamplesPerPixel
 		{
@@ -3887,7 +3887,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the samples per pixel for ray tracing global illumination. </para>
+		/// Sets the samples per pixel for ray tracing global illumination.
 		/// </summary>
 		public int RayTracingAOSamplesPerPixel
 		{
@@ -3897,7 +3897,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the ray tracing global illumination maximum bounces. </para>
+		/// Sets the ray tracing global illumination maximum bounces.
 		/// </summary>
 		public int RayTracingGIMaxBounces
 		{
@@ -3907,7 +3907,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the samples per pixel for ray tracing global illumination. </para>
+		/// Sets the samples per pixel for ray tracing global illumination.
 		/// </summary>
 		public int RayTracingGISamplesPerPixel
 		{
@@ -3917,7 +3917,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the maximum number of ray tracing reflection bounces. </para>
+		/// Sets the maximum number of ray tracing reflection bounces.
 		/// </summary>
 		public int RayTracingReflectionsMaxBounces
 		{
@@ -3927,7 +3927,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the maximum roughness until which ray tracing reflections will be visible (lower value is faster). Reflection contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness. </para>
+		/// Sets the maximum roughness until which ray tracing reflections will be visible (lower value is faster). Reflection contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness.
 		/// </summary>
 		public float RayTracingReflectionsMaxRoughness
 		{
@@ -3937,7 +3937,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the samples per pixel for ray traced reflections. </para>
+		/// Sets the samples per pixel for ray traced reflections.
 		/// </summary>
 		public int RayTracingReflectionsSamplesPerPixel
 		{
@@ -3947,7 +3947,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the reflected shadows type. </para>
+		/// Sets the reflected shadows type.
 		/// </summary>
 		public EReflectedAndRefractedRayTracedShadows RayTracingReflectionsShadows
 		{
@@ -3957,7 +3957,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the maximum roughness until which ray tracing translucency will be visible (lower value is faster). Translucency contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness. </para>
+		/// Sets the maximum roughness until which ray tracing translucency will be visible (lower value is faster). Translucency contribution is smoothly faded when close to roughness threshold. This parameter behaves similarly to ScreenSpaceReflectionMaxRoughness.
 		/// </summary>
 		public float RayTracingTranslucencyMaxRoughness
 		{
@@ -3967,7 +3967,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets whether refraction should be enabled or not (if not rays will not scatter and only travel in the same direction as before the intersection event). </para>
+		/// Sets whether refraction should be enabled or not (if not rays will not scatter and only travel in the same direction as before the intersection event).
 		/// </summary>
 		public byte Refraction
 		{
@@ -3977,7 +3977,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the maximum number of ray tracing refraction rays. </para>
+		/// Sets the maximum number of ray tracing refraction rays.
 		/// </summary>
 		public int MaxRefractionRays
 		{
@@ -3987,7 +3987,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the samples per pixel for ray traced translucency. </para>
+		/// Sets the samples per pixel for ray traced translucency.
 		/// </summary>
 		public int RayTracingTranslucencySamplesPerPixel
 		{
@@ -3997,7 +3997,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the translucency shadows type. </para>
+		/// Sets the translucency shadows type.
 		/// </summary>
 		public EReflectedAndRefractedRayTracedShadows RayTracingTranslucencyShadows
 		{
@@ -4007,7 +4007,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the reflections type </para>
+		/// Sets the reflections type
 		/// </summary>
 		public EReflectionsType ReflectionsType
 		{
@@ -4017,7 +4017,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scene tint color </para>
+		/// Scene tint color
 		/// </summary>
 		public FLinearColor SceneColorTint
 		{
@@ -4027,7 +4027,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. </para>
+		/// in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners.
 		/// </summary>
 		public float SceneFringeIntensity
 		{
@@ -4037,11 +4037,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>To render with lower or high resolution than it is presented, </para>
+		/// To render with lower or high resolution than it is presented,
 		/// <para>controlled by console variable, </para>
-		/// <para>100:off, needs to be <99 to get upsampling and lower to get performance, </para>
+		/// 100:off, needs to be <99 to get upsampling and lower to get performance,
 		/// <para>>100 for super sampling (slower but higher quality), </para>
-		/// <para>only applied in game </para>
+		/// only applied in game
 		/// </summary>
 		public float ScreenPercentage
 		{
@@ -4051,7 +4051,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Enable/Fade/disable the Screen Space Reflection feature, in percent, avoid numbers between 0 and 1 fo consistency </para>
+		/// Enable/Fade/disable the Screen Space Reflection feature, in percent, avoid numbers between 0 and 1 fo consistency
 		/// </summary>
 		public float ScreenSpaceReflectionIntensity
 		{
@@ -4061,7 +4061,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Until what roughness we fade the screen space reflections, 0.8 works well, smaller can run faster </para>
+		/// Until what roughness we fade the screen space reflections, 0.8 works well, smaller can run faster
 		/// </summary>
 		public float ScreenSpaceReflectionMaxRoughness
 		{
@@ -4071,7 +4071,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0=lowest quality..100=maximum quality, only a few quality levels are implemented, no soft transition, 50 is the default for better performance. </para>
+		/// 0=lowest quality..100=maximum quality, only a few quality levels are implemented, no soft transition, 50 is the default for better performance.
 		/// </summary>
 		public float ScreenSpaceReflectionQuality
 		{
@@ -4081,7 +4081,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Sets the translucency type </para>
+		/// Sets the translucency type
 		/// </summary>
 		public ETranslucencyType TranslucencyType
 		{
@@ -4091,7 +4091,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>0..1 0=off/no vignette .. 1=strong vignette </para>
+		/// 0..1 0=off/no vignette .. 1=strong vignette
 		/// </summary>
 		public float VignetteIntensity
 		{
@@ -4101,7 +4101,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Allows custom post process materials to be defined, using a MaterialInstance with the same Material as its parent to allow blending. </para>
+		/// Allows custom post process materials to be defined, using a MaterialInstance with the same Material as its parent to allow blending.
 		/// <para>For materials this needs to be the "PostProcess" domain type. This can be used for any UObject object implementing the IBlendableInterface (e.g. could be used to fade weather settings). </para>
 		/// </summary>
 		public FWeightedBlendables PostProcessMaterials
@@ -4127,7 +4127,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Used to define the values before any override happens. </para>
+		/// Used to define the values before any override happens.
 		/// <para>Should be as neutral as possible. </para>
 		/// </summary>
 		public void SetBaseValues()

@@ -141,7 +141,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True when this RootMotionSource has been marked for simulated catchup - this Simulated version </para>
+		/// True when this RootMotionSource has been marked for simulated catchup - this Simulated version
 		/// <para>of the Source needs to catch up to where it was before being corrected by authoritative version. </para>
 		/// </summary>
 		public bool bNeedsSimulatedCatchup
@@ -203,110 +203,110 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Checks if this source has timed out and marks for removal if necessary </para>
+		/// Checks if this source has timed out and marks for removal if necessary
 		/// </summary>
 		public virtual void CheckTimeOut()
 			=> E_FRootMotionSource_CheckTimeOut(this);
 		
 		
 		/// <summary>
-		/// <return>newly allocated copy of this FRootMotionSource. Must be overridden by child classes. </return>
 		/// </summary>
+		/// <return>newly</return>
 		public virtual FRootMotionSource Clone()
 			=> E_FRootMotionSource_Clone(this);
 		
 		
 		/// <summary>
-		/// <return>the Duration - the length of this root motion - < 0 for infinite (to be removed manually) </return>
 		/// </summary>
+		/// <return>the</return>
 		public float GetDuration()
 			=> E_FRootMotionSource_GetDuration(this);
 		
 		
 		/// <summary>
-		/// <return>the StartTime - time this source should start (in character movement client time) </return>
 		/// </summary>
+		/// <return>the</return>
 		public float GetStartTime()
 			=> E_FRootMotionSource_GetStartTime(this);
 		
 		
 		/// <summary>
-		/// <return>the CurrentTime - amount of time elapsed so far for this source </return>
 		/// </summary>
+		/// <return>the</return>
 		public float GetTime()
 			=> E_FRootMotionSource_GetTime(this);
 		
 		
 		/// <summary>
-		/// <para>True when this RootMotionSource should be affecting root motion </para>
+		/// True when this RootMotionSource should be affecting root motion
 		/// </summary>
 		public virtual bool IsActive()
 			=> E_FRootMotionSource_IsActive(this);
 		
 		
 		/// <summary>
-		/// <return>whether the start time has been set </return>
 		/// </summary>
+		/// <return>whether</return>
 		public bool IsStartTimeValid()
 			=> E_FRootMotionSource_IsStartTimeValid(this);
 		
 		
 		/// <summary>
-		/// <return>whether this source will be removed when CurrentTime reaches Duration </return>
 		/// </summary>
+		/// <return>whether</return>
 		public virtual bool IsTimeOutEnabled()
 			=> E_FRootMotionSource_IsTimeOutEnabled(this);
 		
 		
 		/// <summary>
-		/// <return>Whether this is the same RootMotionSource as Other. </return>
-		/// <para>This is used for networking when clients receive RootMotionSource data from the server and need </para>
+		/// This is used for networking when clients receive RootMotionSource data from the server and need
 		/// <para>to decide which local RootMotionSource to compare and apply the corrections to. </para>
-		/// <para>This is required due to RootMotionSources in general being added independently on server and </para>
+		/// This is required due to RootMotionSources in general being added independently on server and
 		/// <para>clients, not needing to know about each other by default. </para>
-		/// <para>For well-networked RootMotionSources, any given FRootMotionSource child class could implement </para>
+		/// For well-networked RootMotionSources, any given FRootMotionSource child class could implement
 		/// <para>their own unique ID and simply use that in the Matches check. This "heuristic-style" default </para>
-		/// <para>was chosen to simplify addition of new RootMotionSources, and assumes that in a networked setting </para>
+		/// was chosen to simplify addition of new RootMotionSources, and assumes that in a networked setting
 		/// <para>a given RootMotionSource won't be applied many times in a given frame by the same instigator </para>
-		/// <para>to the same target with the exact same parameters. </para>
+		/// to the same target with the exact same parameters.
 		/// <para>Guaranteed uniqueness would also require a strict application order ("RootMotionSources can only </para>
-		/// <para>be added on Authority") or a prediction-based setup ("Apply on Autonomous and Simulated predictively, </para>
+		/// be added on Authority") or a prediction-based setup ("Apply on Autonomous and Simulated predictively,
 		/// <para>then apply on Authority and confirm, and if Authority doesn't confirm remove them"). We avoid </para>
-		/// <para>that synchronization complexity for now. </para>
+		/// that synchronization complexity for now.
 		/// <para>See UCharacterMovementComponent::ConvertRootMotionServerIDsToLocalIDs </para>
-		/// <para>Should be overridden by child classes, as default implementation only contains basic equivalency checks </para>
+		/// Should be overridden by child classes, as default implementation only contains basic equivalency checks
 		/// </summary>
+		/// <return>Whether</return>
 		public virtual bool Matches(FRootMotionSource other)
 			=> E_FRootMotionSource_Matches(this, other);
 		
 		
 		/// <summary>
-		/// <para>Checks that it Matches() and has the same state (time, track position, etc.) </para>
+		/// Checks that it Matches() and has the same state (time, track position, etc.)
 		/// </summary>
 		public virtual bool MatchesAndHasSameState(FRootMotionSource other)
 			=> E_FRootMotionSource_MatchesAndHasSameState(this, other);
 		
 		
 		/// <summary>
-		/// <para>Generates the RootMotion for this Source, can be used for both "live" generation </para>
+		/// Generates the RootMotion for this Source, can be used for both "live" generation
 		/// <para>or for playback (client prediction correction, simulated proxies, etc.) </para>
-		/// <para>Examples: </para>
+		/// Examples:
 		/// <para>- Animation RootMotionSources use Time as track time into AnimMontage and </para>
-		/// <para>extract the root motion from AnimMontage chunk of time (Position,Position+DeltaTime) </para>
+		/// extract the root motion from AnimMontage chunk of time (Position,Position+DeltaTime)
 		/// <para>- ConstantForce source uses Time as the time into the application </para>
-		/// <para>so if its duration ends halfway through the frame it knows how much root </para>
+		/// so if its duration ends halfway through the frame it knows how much root
 		/// <para>motion it should have applied </para>
-		/// <para>- Spline/curve-based sources use Time for knowing where on spline/curve to extract </para>
+		/// - Spline/curve-based sources use Time for knowing where on spline/curve to extract
 		/// <para>from </para>
-		/// <param name="SimulationTime">How far forward in time to simulate root motion </param>
-		/// <param name="MovementTickTime">How much time the movement is going to take that this is being prepared for </param>
 		/// </summary>
+		/// <param name="simulationTime">How far forward in time to simulate root motion</param>
+		/// <param name="movementTickTime">How much time the movement is going to take that this is being prepared for</param>
 		public virtual void PrepareRootMotion(float simulationTime, float movementTickTime, ACharacter character, UCharacterMovementComponent moveComponent)
 			=> E_FRootMotionSource_PrepareRootMotion(this, simulationTime, movementTickTime, character, moveComponent);
 		
 		
 		/// <summary>
-		/// <para>Set the CurrentTime of this source. Use this setter so that sources based on duration can get correctly marked for end </para>
+		/// Set the CurrentTime of this source. Use this setter so that sources based on duration can get correctly marked for end
 		/// </summary>
 		public virtual void SetTime(float newTime)
 			=> E_FRootMotionSource_SetTime(this, newTime);
@@ -316,14 +316,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Mainly for server correction purposes - update this Source's state from </para>
+		/// Mainly for server correction purposes - update this Source's state from
 		/// <para>another's, usually the authoritative state from the server's version of the Source </para>
-		/// <param name="bMarkForSimulatedCatchup">sets the source for needing to "catch up" to current state next Prepare </param>
-		/// <return>Whether the update was sucessful or not. Note that failure to update </return>
-		/// <para>denotes a complete failure, and the Source will then be marked for removal. </para>
+		/// denotes a complete failure, and the Source will then be marked for removal.
 		/// <para>We need to remove since we don't have a way of reverting partial updates </para>
-		/// <para>depending on where the update failed. </para>
+		/// depending on where the update failed.
 		/// </summary>
+		/// <param name="bMarkForSimulatedCatchup">sets the source for needing to "catch up" to current state next Prepare</param>
+		/// <return>Whether</return>
 		public virtual bool UpdateStateFrom(FRootMotionSource sourceToTakeStateFrom, bool bMarkForSimulatedCatchup)
 			=> E_FRootMotionSource_UpdateStateFrom(this, sourceToTakeStateFrom, bMarkForSimulatedCatchup);
 		

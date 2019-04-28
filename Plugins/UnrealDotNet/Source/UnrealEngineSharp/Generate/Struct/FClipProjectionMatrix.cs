@@ -20,10 +20,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor </para>
-		/// <param name="SrcProjMat">source projection matrix to premultiply with the clip matrix </param>
-		/// <param name="Plane">clipping plane used to build the clip matrix (assumed to be in camera space) </param>
+		/// Constructor
 		/// </summary>
+		/// <param name="srcProjMat">source projection matrix to premultiply with the clip matrix</param>
+		/// <param name="plane">clipping plane used to build the clip matrix (assumed to be in camera space)</param>
 		public FClipProjectionMatrix(FMatrix srcProjMat, FPlane plane) :
 			base(E_CreateStruct_FClipProjectionMatrix_FMatrix_FPlane(srcProjMat, plane), false)
 		{

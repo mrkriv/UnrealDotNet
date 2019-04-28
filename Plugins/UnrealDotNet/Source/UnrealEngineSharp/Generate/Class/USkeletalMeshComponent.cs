@@ -398,7 +398,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>can't collide with part of attached children if total collision volumes exceed 16 capsules or 32 planes per convex </para>
+		/// can't collide with part of attached children if total collision volumes exceed 16 capsules or 32 planes per convex
 		/// </summary>
 		public byte bCollideWithAttachedChildren
 		{
@@ -408,7 +408,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>can't collide with part of environment if total collision volumes exceed 16 capsules or 32 planes per convex </para>
+		/// can't collide with part of environment if total collision volumes exceed 16 capsules or 32 planes per convex
 		/// </summary>
 		public byte bCollideWithEnvironment
 		{
@@ -418,7 +418,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether animation and world transform updates are deferred. If this is on, the kinematic bodies (scene query data) will not update until the next time the physics simulation is run </para>
+		/// Whether animation and world transform updates are deferred. If this is on, the kinematic bodies (scene query data) will not update until the next time the physics simulation is run
 		/// </summary>
 		public byte bDeferKinematicBoneUpdate
 		{
@@ -428,7 +428,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Indicates that this SkeletalMeshComponent has deferred kinematic bone updates until next physics sim. </para>
+		/// Indicates that this SkeletalMeshComponent has deferred kinematic bone updates until next physics sim.
 		/// </summary>
 		public byte bDeferredKinematicUpdate
 		{
@@ -438,7 +438,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Disable cloth simulation and play original animation without simulation </para>
+		/// Disable cloth simulation and play original animation without simulation
 		/// </summary>
 		public byte bDisableClothSimulation
 		{
@@ -454,7 +454,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Uses skinned data for collision data. </para>
+		/// Uses skinned data for collision data.
 		/// </summary>
 		public byte bEnablePerPolyCollision
 		{
@@ -464,9 +464,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, simulate physics for this component on a dedicated server. </para>
+		/// If true, simulate physics for this component on a dedicated server.
 		/// <para>This should be set if simulating physics and replicating with a dedicated server. </para>
-		/// <para>Note: This property cannot be changed at runtime. </para>
+		/// Note: This property cannot be changed at runtime.
 		/// </summary>
 		public byte bEnablePhysicsOnDedicatedServer
 		{
@@ -494,7 +494,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, the Location of this Component will be included into its bounds calculation </para>
+		/// If true, the Location of this Component will be included into its bounds calculation
 		/// <para>(this can be useful when using SMU_OnlyTickPoseWhenRendered on a character that moves away from the root and no bones are left near the origin of the component) </para>
 		/// </summary>
 		public byte bIncludeComponentLocationIntoBounds
@@ -511,7 +511,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Temporary fix for local space kinematics. This only works for bodies that have no constraints and is needed by vehicles. Proper support will remove this flag </para>
+		/// Temporary fix for local space kinematics. This only works for bodies that have no constraints and is needed by vehicles. Proper support will remove this flag
 		/// </summary>
 		public byte bLocalSpaceKinematics
 		{
@@ -521,11 +521,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>It's worth trying this option when you feel that the current cloth simulation is unstable. </para>
+		/// It's worth trying this option when you feel that the current cloth simulation is unstable.
 		/// <para>The scale of the actor is maintained during the simulation. </para>
-		/// <para>It is possible to add the inertia effects to the simulation, through the inertiaScale parameter of the clothing material. </para>
+		/// It is possible to add the inertia effects to the simulation, through the inertiaScale parameter of the clothing material.
 		/// <para>So with an inertiaScale of 1.0 there should be no visible difference between local space and global space simulation. </para>
-		/// <para>Known issues: - Currently there's simulation issues when this feature is used in 3.x (DE4076) So if localSpaceSim is enabled there's no inertia effect when the global pose of the clothing actor changes. </para>
+		/// Known issues: - Currently there's simulation issues when this feature is used in 3.x (DE4076) So if localSpaceSim is enabled there's no inertia effect when the global pose of the clothing actor changes.
 		/// </summary>
 		public byte bLocalSpaceSimulation
 		{
@@ -535,7 +535,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Skips Ticking and Bone Refresh. </para>
+		/// Skips Ticking and Bone Refresh.
 		/// </summary>
 		public byte bNoSkeletonUpdate
 		{
@@ -557,7 +557,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>pauses this component's animations (doesn't tick them, but still refreshes bones) </para>
+		/// pauses this component's animations (doesn't tick them, but still refreshes bones)
 		/// </summary>
 		public byte bPauseAnims
 		{
@@ -567,7 +567,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>To save previous state </para>
+		/// To save previous state
 		/// </summary>
 		public byte bPrevDisableClothSimulation
 		{
@@ -577,7 +577,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, propagates calls to ApplyAnimationCurvesToComponent for slave components, only needed if slave components do not tick themselves </para>
+		/// If true, propagates calls to ApplyAnimationCurvesToComponent for slave components, only needed if slave components do not tick themselves
 		/// </summary>
 		public byte bPropagateCurvesToSlaves
 		{
@@ -593,7 +593,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>reset the clothing after moving the clothing position (called teleport) </para>
+		/// reset the clothing after moving the clothing position (called teleport)
 		/// </summary>
 		public byte bResetAfterTeleport
 		{
@@ -609,7 +609,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Indicates that simulation (if it's enabled) is entirely responsible for children transforms. This is only ok if you are not animating attachment points relative to the simulation </para>
+		/// Indicates that simulation (if it's enabled) is entirely responsible for children transforms. This is only ok if you are not animating attachment points relative to the simulation
 		/// </summary>
 		public byte bSimulationUpdatesChildTransforms
 		{
@@ -619,7 +619,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to skip bounds update when interpolating. Bounds are updated to the target interpolation pose only on ticks when they are evaluated. </para>
+		/// Whether to skip bounds update when interpolating. Bounds are updated to the target interpolation pose only on ticks when they are evaluated.
 		/// </summary>
 		public byte bSkipBoundsUpdateWhenInterpolating
 		{
@@ -629,7 +629,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to skip UpdateKinematicBonesToAnim() when interpolating. Kinematic bones are updated to the target interpolation pose only on ticks when they are evaluated. </para>
+		/// Whether to skip UpdateKinematicBonesToAnim() when interpolating. Kinematic bones are updated to the target interpolation pose only on ticks when they are evaluated.
 		/// </summary>
 		public byte bSkipKinematicUpdateWhenInterpolating
 		{
@@ -639,7 +639,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If we should pass joint position to joints each frame, so that they can be used by motorized joints to drive the </para>
+		/// If we should pass joint position to joints each frame, so that they can be used by motorized joints to drive the
 		/// <para>ragdoll based on the animation. </para>
 		/// </summary>
 		public byte bUpdateJointsFromAnimation
@@ -650,7 +650,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls whether blending in physics bones will refresh overlaps on this component, defaults to true but can be disabled in cases where we know anim->physics blending doesn't meaningfully change overlaps </para>
+		/// Controls whether blending in physics bones will refresh overlaps on this component, defaults to true but can be disabled in cases where we know anim->physics blending doesn't meaningfully change overlaps
 		/// </summary>
 		public byte bUpdateOverlapsOnAnimationFinalize
 		{
@@ -672,7 +672,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>On InitAnim should we set to ref pose (if false use first tick of animation data) </para>
+		/// On InitAnim should we set to ref pose (if false use first tick of animation data)
 		/// </summary>
 		public byte bUseRefPoseOnInitAnim
 		{
@@ -700,7 +700,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>weight to blend between simulated results and key-framed positions </para>
+		/// weight to blend between simulated results and key-framed positions
 		/// <para>if weight is 1.0, shows only cloth simulation results and 0.0 will show only skinned results </para>
 		/// </summary>
 		public float ClothBlendWeight
@@ -723,7 +723,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Used to scale speed of all animations on this skeletal mesh. </para>
+		/// Used to scale speed of all animations on this skeletal mesh.
 		/// </summary>
 		public float GlobalAnimRateScale
 		{
@@ -739,7 +739,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Threshold for physics asset bodies above which we use an aggregate for broadphase collisions </para>
+		/// Threshold for physics asset bodies above which we use an aggregate for broadphase collisions
 		/// </summary>
 		public int RagdollAggregateThreshold
 		{
@@ -779,9 +779,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>If this component has a valid MasterPoseComponent then this function makes cloth items on the slave component </para>
+		/// If this component has a valid MasterPoseComponent then this function makes cloth items on the slave component
 		/// <para>take the transforms of the cloth items on the master component instead of simulating separately. </para>
-		/// <para>@Note This will FORCE any cloth actor on the master component to simulate in local space. Also </para>
+		/// @Note This will FORCE any cloth actor on the master component to simulate in local space. Also
 		/// <para>The meshes used in the components must be identical for the cloth to bind correctly </para>
 		/// </summary>
 		public void BindClothToMasterPoseComponent()
@@ -789,7 +789,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Clear all Morph Target that are set to this mesh </para>
+		/// Clear all Morph Target that are set to this mesh
 		/// </summary>
 		public void ClearMorphTargets()
 			=> E_USkeletalMeshComponent_ClearMorphTargets(this);
@@ -799,7 +799,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Used to indicate we should force 'teleport' during the next call to UpdateClothState, </para>
+		/// Used to indicate we should force 'teleport' during the next call to UpdateClothState,
 		/// <para>This will transform positions and velocities and thus keep the simulation state, just translate it to a new pose. </para>
 		/// </summary>
 		public void ForceClothNextUpdateTeleport()
@@ -807,7 +807,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Used to indicate we should force 'teleport and reset' during the next call to UpdateClothState. </para>
+		/// Used to indicate we should force 'teleport and reset' during the next call to UpdateClothState.
 		/// <para>This can be used to reset it from a bad state or by a teleport where the old state is not important anymore. </para>
 		/// </summary>
 		public void ForceClothNextUpdateTeleportAndReset()
@@ -818,7 +818,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get/Set the max distance scale of clothing mesh vertices </para>
+		/// Get/Set the max distance scale of clothing mesh vertices
 		/// </summary>
 		public float GetClothMaxDistanceScale()
 			=> E_USkeletalMeshComponent_GetClothMaxDistanceScale(this);
@@ -831,7 +831,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get Morph target with given name </para>
+		/// Get Morph target with given name
 		/// </summary>
 		public float GetMorphTarget(string morphTargetName)
 			=> E_USkeletalMeshComponent_GetMorphTarget(this, morphTargetName);
@@ -844,7 +844,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns whether there are any valid instances to run, currently this means whether we have </para>
+		/// Returns whether there are any valid instances to run, currently this means whether we have
 		/// <para>have an animation instance or a post process instance available to process. </para>
 		/// </summary>
 		public bool HasValidAnimationInstance()
@@ -855,7 +855,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets whether or not the clothing simulation is currently suspended </para>
+		/// Gets whether or not the clothing simulation is currently suspended
 		/// </summary>
 		public bool IsClothingSimulationSuspended()
 			=> E_USkeletalMeshComponent_IsClothingSimulationSuspended(this);
@@ -865,8 +865,8 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>true if wind is enabled </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool IsWindEnabled()
 			=> E_USkeletalMeshComponent_IsWindEnabled(this);
 		
@@ -875,14 +875,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>By reset, it will allow all the curves to be evaluated </para>
+		/// By reset, it will allow all the curves to be evaluated
 		/// </summary>
 		public void ResetAllowedAnimCurveEvaluation()
 			=> E_USkeletalMeshComponent_ResetAllowedAnimCurveEvaluation(this);
 		
 		
 		/// <summary>
-		/// <para>Informs any active anim instances (main instance, sub instances, post instance) that a dynamics reset is required </para>
+		/// Informs any active anim instances (main instance, sub instances, post instance) that a dynamics reset is required
 		/// <para>for example if a teleport occurs. </para>
 		/// </summary>
 		public void ResetAnimInstanceDynamics(ETeleportType inTeleportType)
@@ -890,14 +890,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Reset the teleport mode of a next update to 'Continuous' </para>
+		/// Reset the teleport mode of a next update to 'Continuous'
 		/// </summary>
 		public void ResetClothTeleportMode()
 			=> E_USkeletalMeshComponent_ResetClothTeleportMode(this);
 		
 		
 		/// <summary>
-		/// <para>Resumes a previously suspended clothing simulation, teleporting the clothing on the next tick </para>
+		/// Resumes a previously suspended clothing simulation, teleporting the clothing on the next tick
 		/// </summary>
 		public void ResumeClothingSimulation()
 			=> E_USkeletalMeshComponent_ResumeClothingSimulation(this);
@@ -910,7 +910,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>return true if currently updating in editor is true </para>
+		/// return true if currently updating in editor is true
 		/// <para>this is non BP because this is only used for slave component to detect master component ticking state </para>
 		/// </summary>
 		public void SetDisableAnimCurves(bool bInDisableAnimCurves)
@@ -921,9 +921,9 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set Morph Target with Name and Value(0-1) </para>
-		/// <param name="bRemoveZeroWeight">Used by editor code when it should stay in the active list with zero weight </param>
+		/// Set Morph Target with Name and Value(0-1)
 		/// </summary>
+		/// <param name="bRemoveZeroWeight">Used by editor code when it should stay in the active list with zero weight</param>
 		public void SetMorphTarget(string morphTargetName, float value, bool bRemoveZeroWeight = true)
 			=> E_USkeletalMeshComponent_SetMorphTarget(this, morphTargetName, value, bRemoveZeroWeight);
 		
@@ -935,7 +935,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets whether or not to force tick component in order to update animation and refresh transform for this component </para>
+		/// Sets whether or not to force tick component in order to update animation and refresh transform for this component
 		/// <para>This is supported only in the editor </para>
 		/// </summary>
 		public void SetUpdateAnimationInEditor(bool newUpdateState)
@@ -946,26 +946,26 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Stops simulating clothing, but does not show clothing ref pose. Keeps the last known simulation state </para>
+		/// Stops simulating clothing, but does not show clothing ref pose. Keeps the last known simulation state
 		/// </summary>
 		public void SuspendClothingSimulation()
 			=> E_USkeletalMeshComponent_SuspendClothingSimulation(this);
 		
 		
 		/// <summary>
-		/// <para>Toggles whether the post process blueprint will run for this component </para>
+		/// Toggles whether the post process blueprint will run for this component
 		/// </summary>
 		public void ToggleDisablePostProcessBlueprint()
 			=> E_USkeletalMeshComponent_ToggleDisablePostProcessBlueprint(this);
 		
 		
 		/// <summary>
-		/// <para>If this component has a valid MasterPoseComponent and has previously had its cloth bound to the </para>
+		/// If this component has a valid MasterPoseComponent and has previously had its cloth bound to the
 		/// <para>MCP, this function will unbind the cloth and resume simulation. </para>
-		/// <param name="bRestoreSimulationSpace">if true and the master pose cloth was originally simulating in world </param>
-		/// <para>space, we will restore this setting. This will cause the master component to reset which may be </para>
+		/// space, we will restore this setting. This will cause the master component to reset which may be
 		/// <para>undesirable. </para>
 		/// </summary>
+		/// <param name="bRestoreSimulationSpace">if true and the master pose cloth was originally simulating in world</param>
 		public void UnbindClothFromMasterPoseComponent(bool bRestoreSimulationSpace = true)
 			=> E_USkeletalMeshComponent_UnbindClothFromMasterPoseComponent(this, bRestoreSimulationSpace);
 		

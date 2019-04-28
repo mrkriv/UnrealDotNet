@@ -110,21 +110,21 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Is location relative? </para>
+		/// Is location relative?
 		/// </summary>
 		public bool HasRelativeLocation()
 			=> E_FBasedMovementInfo_HasRelativeLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Is rotation relative or absolute? It can only be relative if location is also relative. </para>
+		/// Is rotation relative or absolute? It can only be relative if location is also relative.
 		/// </summary>
 		public bool HasRelativeRotation()
 			=> E_FBasedMovementInfo_HasRelativeRotation(this);
 		
 		
 		/// <summary>
-		/// <para>Return true if the client should have MovementBase, but it hasn't replicated (possibly component has not streamed in). </para>
+		/// Return true if the client should have MovementBase, but it hasn't replicated (possibly component has not streamed in).
 		/// </summary>
 		public bool IsBaseUnresolved()
 			=> E_FBasedMovementInfo_IsBaseUnresolved(this);

@@ -1163,7 +1163,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>When falling, amount of lateral movement control available to the character. </para>
+		/// When falling, amount of lateral movement control available to the character.
 		/// <para>0 = no control, 1 = full control at max speed of MaxWalkSpeed. </para>
 		/// </summary>
 		public float AirControl
@@ -1174,7 +1174,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>When falling, multiplier applied to AirControl when lateral velocity is less than AirControlBoostVelocityThreshold. </para>
+		/// When falling, multiplier applied to AirControl when lateral velocity is less than AirControlBoostVelocityThreshold.
 		/// <para>Setting this to zero will disable air control boosting. Final result is clamped at 1. </para>
 		/// </summary>
 		public float AirControlBoostMultiplier
@@ -1185,7 +1185,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>When falling, if lateral velocity magnitude is less than this value, AirControl is multiplied by AirControlBoostMultiplier. </para>
+		/// When falling, if lateral velocity magnitude is less than this value, AirControl is multiplied by AirControlBoostMultiplier.
 		/// <para>Setting this to zero will disable air control boosting. </para>
 		/// </summary>
 		public float AirControlBoostVelocityThreshold
@@ -1202,7 +1202,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>No default value, for now it's assumed to be valid if GetAvoidanceManager() returns non-NULL. </para>
+		/// No default value, for now it's assumed to be valid if GetAvoidanceManager() returns non-NULL.
 		/// </summary>
 		public int AvoidanceUID
 		{
@@ -1212,7 +1212,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>De facto default value 0.5 (due to that being the default in the avoidance registration function), indicates RVO behavior. </para>
+		/// De facto default value 0.5 (due to that being the default in the avoidance registration function), indicates RVO behavior.
 		/// </summary>
 		public float AvoidanceWeight
 		{
@@ -1228,9 +1228,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether we always force floor checks for stationary Characters while walking. </para>
+		/// Whether we always force floor checks for stationary Characters while walking.
 		/// <para>Normally floor checks are avoided if possible when not moving, but this can be used to force them if there are use-cases where they are being skipped erroneously </para>
-		/// <para>(such as objects moving up into the character from below). </para>
+		/// (such as objects moving up into the character from below).
 		/// </summary>
 		public byte bAlwaysCheckFloor
 		{
@@ -1240,7 +1240,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Apply gravity while the character is actively jumping (e.g. holding the jump key). </para>
+		/// Apply gravity while the character is actively jumping (e.g. holding the jump key).
 		/// <para>Helps remove frame-rate dependent jump height, but may alter base jump height. </para>
 		/// </summary>
 		public byte bApplyGravityWhileJumping
@@ -1251,7 +1251,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, Character can walk off a ledge. </para>
+		/// If true, Character can walk off a ledge.
 		/// </summary>
 		public byte bCanWalkOffLedges
 		{
@@ -1261,7 +1261,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, Character can walk off a ledge when crouching. </para>
+		/// If true, Character can walk off a ledge when crouching.
 		/// </summary>
 		public byte bCanWalkOffLedgesWhenCrouching
 		{
@@ -1277,9 +1277,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, crouching should keep the base of the capsule in place by lowering the center of the shrunken capsule. If false, the base of the capsule moves up and the center stays in place. </para>
+		/// If true, crouching should keep the base of the capsule in place by lowering the center of the shrunken capsule. If false, the base of the capsule moves up and the center stays in place.
 		/// <para>The same behavior applies when the character uncrouches: if true, the base is kept in the same location and the center moves up. If false, the capsule grows and only moves up if the base impacts something. </para>
-		/// <para>By default this variable is set when the movement mode changes: set to true when walking and false otherwise. Feel free to override the behavior when the movement mode changes. </para>
+		/// By default this variable is set when the movement mode changes: set to true when walking and false otherwise. Feel free to override the behavior when the movement mode changes.
 		/// </summary>
 		public byte bCrouchMaintainsBaseLocation
 		{
@@ -1295,7 +1295,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, the player will interact with physics objects when walking into them. </para>
+		/// If enabled, the player will interact with physics objects when walking into them.
 		/// </summary>
 		public byte bEnablePhysicsInteraction
 		{
@@ -1305,9 +1305,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, high-level movement updates will be wrapped in a movement scope that accumulates updates and defers a bulk of the work until the end. </para>
+		/// If true, high-level movement updates will be wrapped in a movement scope that accumulates updates and defers a bulk of the work until the end.
 		/// <para>When enabled, touch and hit events will not be triggered until the end of multiple moves within an update, which can improve performance. </para>
-		/// <para>@see FScopedMovementUpdate </para>
+		/// @see FScopedMovementUpdate
 		/// </summary>
 		public byte bEnableScopedMovementUpdates
 		{
@@ -1317,9 +1317,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Optional scoped movement update to combine moves for cheaper performance on the server when the client sends two moves in one packet. </para>
+		/// Optional scoped movement update to combine moves for cheaper performance on the server when the client sends two moves in one packet.
 		/// <para>Be warned that since this wraps a larger scope than is normally done with bEnableScopedMovementUpdates, this can result in subtle changes in behavior </para>
-		/// <para>in regards to when overlap events are handled, when attached components are moved, etc. </para>
+		/// in regards to when overlap events are handled, when attached components are moved, etc.
 		/// <para>@see bEnableScopedMovementUpdates </para>
 		/// </summary>
 		public byte bEnableServerDualMoveScopedMovementUpdates
@@ -1342,7 +1342,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force the Character in MOVE_Walking to do a check for a valid floor even if he hasn't moved. Cleared after next floor check. </para>
+		/// Force the Character in MOVE_Walking to do a check for a valid floor even if he hasn't moved. Cleared after next floor check.
 		/// <para>Normally if bAlwaysCheckFloor is false we try to avoid the floor check unless some conditions are met, but this can be used to force the next check to always run. </para>
 		/// </summary>
 		public byte bForceNextFloorCheck
@@ -1353,9 +1353,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether the character ignores changes in rotation of the base it is standing on. </para>
+		/// Whether the character ignores changes in rotation of the base it is standing on.
 		/// <para>If true, the character maintains current world rotation. </para>
-		/// <para>If false, the character rotates with the moving base. </para>
+		/// If false, the character rotates with the moving base.
 		/// </summary>
 		public byte bIgnoreBaseRotation
 		{
@@ -1365,9 +1365,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True when we should ignore server location difference checks for client error on this movement component </para>
+		/// True when we should ignore server location difference checks for client error on this movement component
 		/// <para>This can be useful when character is moving at extreme speeds for a duration and you need it to look </para>
-		/// <para>smooth on clients. Make sure to disable when done, as this would break this character's server-client </para>
+		/// smooth on clients. Make sure to disable when done, as this would break this character's server-client
 		/// <para>movement correction. </para>
 		/// </summary>
 		public byte bIgnoreClientMovementErrorChecksAndCorrection
@@ -1378,9 +1378,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, impart the base component's tangential components of angular velocity when jumping or falling off it. </para>
+		/// If true, impart the base component's tangential components of angular velocity when jumping or falling off it.
 		/// <para>Only those components of the velocity allowed by the separate component settings (bImpartBaseVelocityX etc) will be applied. </para>
-		/// <para>@see bImpartBaseVelocityX, bImpartBaseVelocityY, bImpartBaseVelocityZ </para>
+		/// <see cref="bImpartBaseVelocityX"/>
 		/// </summary>
 		public byte bImpartBaseAngularVelocity
 		{
@@ -1390,7 +1390,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, impart the base actor's X velocity when falling off it (which includes jumping) </para>
+		/// If true, impart the base actor's X velocity when falling off it (which includes jumping)
 		/// </summary>
 		public byte bImpartBaseVelocityX
 		{
@@ -1400,7 +1400,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, impart the base actor's Y velocity when falling off it (which includes jumping) </para>
+		/// If true, impart the base actor's Y velocity when falling off it (which includes jumping)
 		/// </summary>
 		public byte bImpartBaseVelocityY
 		{
@@ -1410,7 +1410,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, impart the base actor's Z velocity when falling off it (which includes jumping) </para>
+		/// If true, impart the base actor's Z velocity when falling off it (which includes jumping)
 		/// </summary>
 		public byte bImpartBaseVelocityZ
 		{
@@ -1420,7 +1420,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Set on clients when server's movement mode is NavWalking </para>
+		/// Set on clients when server's movement mode is NavWalking
 		/// </summary>
 		public byte bIsNavWalkingOnServer
 		{
@@ -1430,7 +1430,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Used by movement code to determine if a change in position is based on normal movement or a teleport. If not a teleport, velocity can be recomputed based on the change in position. </para>
+		/// Used by movement code to determine if a change in position is based on normal movement or a teleport. If not a teleport, velocity can be recomputed based on the change in position.
 		/// </summary>
 		public byte bJustTeleported
 		{
@@ -1440,7 +1440,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, walking movement always maintains horizontal velocity when moving up ramps, which causes movement up ramps to be faster parallel to the ramp surface. </para>
+		/// If true, walking movement always maintains horizontal velocity when moving up ramps, which causes movement up ramps to be faster parallel to the ramp surface.
 		/// <para>If false, then walking movement maintains velocity magnitude parallel to the ramp surface. </para>
 		/// </summary>
 		public byte bMaintainHorizontalGroundVelocity
@@ -1451,9 +1451,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Flag used on the server to determine whether to always replicate ReplicatedServerLastTransformUpdateTimeStamp to clients. </para>
+		/// Flag used on the server to determine whether to always replicate ReplicatedServerLastTransformUpdateTimeStamp to clients.
 		/// <para>Normally this is only sent when the network smoothing mode on character movement is set to Linear smoothing (on the server), to save bandwidth. </para>
-		/// <para>Setting this to true will force the timestamp to replicate regardless, in case the server doesn't know about the smoothing mode, or if the timestamp is used for another purpose. </para>
+		/// Setting this to true will force the timestamp to replicate regardless, in case the server doesn't know about the smoothing mode, or if the timestamp is used for another purpose.
 		/// </summary>
 		public byte bNetworkAlwaysReplicateTransformUpdateTimestamp
 		{
@@ -1463,7 +1463,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Flag indicating the client correction was larger than NetworkLargeClientCorrectionThreshold. </para>
+		/// Flag indicating the client correction was larger than NetworkLargeClientCorrectionThreshold.
 		/// </summary>
 		public byte bNetworkLargeClientCorrection
 		{
@@ -1479,7 +1479,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether we skip prediction on frames where a proxy receives a network update. This can avoid expensive prediction on those frames, </para>
+		/// Whether we skip prediction on frames where a proxy receives a network update. This can avoid expensive prediction on those frames,
 		/// <para>with the side-effect of predicting with a frame of additional latency. </para>
 		/// </summary>
 		public byte bNetworkSkipProxyPredictionOnNetUpdate
@@ -1490,9 +1490,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Signals that smoothed position/rotation has reached target, and no more smoothing is necessary until a future update. </para>
+		/// Signals that smoothed position/rotation has reached target, and no more smoothing is necessary until a future update.
 		/// <para>This is used as an optimization to skip calls to SmoothClientPosition() when true. SmoothCorrection() sets it false when a new network update is received. </para>
-		/// <para>SmoothClientPosition_Interpolate() sets this to true when the interpolation reaches the target, before one last call to SmoothClientPosition_UpdateVisuals(). </para>
+		/// SmoothClientPosition_Interpolate() sets this to true when the interpolation reaches the target, before one last call to SmoothClientPosition_UpdateVisuals().
 		/// <para>If this is not desired, override SmoothClientPosition() to always set this to false to avoid this feature. </para>
 		/// </summary>
 		public byte bNetworkSmoothingComplete
@@ -1509,7 +1509,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, event NotifyJumpApex() to CharacterOwner's controller when at apex of jump. Is cleared when event is triggered. </para>
+		/// If true, event NotifyJumpApex() to CharacterOwner's controller when at apex of jump. Is cleared when event is triggered.
 		/// <para>By default this is off, and if you want the event to fire you typically set it to true when movement mode changes to "Falling" from another mode (see OnMovementModeChanged). </para>
 		/// </summary>
 		public byte bNotifyApex
@@ -1520,7 +1520,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, rotate the Character toward the direction of acceleration, using RotationRate as the rate of rotation change. Overrides UseControllerDesiredRotation. </para>
+		/// If true, rotate the Character toward the direction of acceleration, using RotationRate as the rate of rotation change. Overrides UseControllerDesiredRotation.
 		/// <para>Normally you will want to make sure that other settings are cleared, such as bUseControllerRotationYaw on the Character. </para>
 		/// </summary>
 		public byte bOrientRotationToMovement
@@ -1537,7 +1537,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, the PushForceFactor is applied per kg mass of the affected object. </para>
+		/// If enabled, the PushForceFactor is applied per kg mass of the affected object.
 		/// </summary>
 		public byte bPushForceScaledToMass
 		{
@@ -1547,7 +1547,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, the PushForce location is moved using PushForcePointZOffsetFactor. Otherwise simply use the impact point. </para>
+		/// If enabled, the PushForce location is moved using PushForcePointZOffsetFactor. Otherwise simply use the impact point.
 		/// </summary>
 		public byte bPushForceUsingZOffset
 		{
@@ -1557,7 +1557,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Lateral deceleration when falling and not applying acceleration. </para>
+		/// Lateral deceleration when falling and not applying acceleration.
 		/// <para>@see MaxAcceleration </para>
 		/// </summary>
 		public float BrakingDecelerationFalling
@@ -1568,7 +1568,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Deceleration when flying and not applying acceleration. </para>
+		/// Deceleration when flying and not applying acceleration.
 		/// <para>@see MaxAcceleration </para>
 		/// </summary>
 		public float BrakingDecelerationFlying
@@ -1579,7 +1579,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Deceleration when swimming and not applying acceleration. </para>
+		/// Deceleration when swimming and not applying acceleration.
 		/// <para>@see MaxAcceleration </para>
 		/// </summary>
 		public float BrakingDecelerationSwimming
@@ -1590,8 +1590,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Deceleration when walking and not applying acceleration. This is a constant opposing force that directly lowers velocity by a constant value. </para>
-		/// <para>@see GroundFriction, MaxAcceleration </para>
+		/// Deceleration when walking and not applying acceleration. This is a constant opposing force that directly lowers velocity by a constant value.
+		/// <see cref="GroundFriction"/>
 		/// </summary>
 		public float BrakingDecelerationWalking
 		{
@@ -1601,12 +1601,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Friction (drag) coefficient applied when braking (whenever Acceleration = 0, or if character is exceeding max speed); actual value used is this multiplied by BrakingFrictionFactor. </para>
+		/// Friction (drag) coefficient applied when braking (whenever Acceleration = 0, or if character is exceeding max speed); actual value used is this multiplied by BrakingFrictionFactor.
 		/// <para>When braking, this property allows you to control how much friction is applied when moving across the ground, applying an opposing force that scales with current velocity. </para>
-		/// <para>Braking is composed of friction (velocity-dependent drag) and constant deceleration. </para>
+		/// Braking is composed of friction (velocity-dependent drag) and constant deceleration.
 		/// <para>This is the current value, used in all movement modes; if this is not desired, override it or bUseSeparateBrakingFriction when movement mode changes. </para>
-		/// <para>@note Only used if bUseSeparateBrakingFriction setting is true, otherwise current friction such as GroundFriction is used. </para>
-		/// <para>@see bUseSeparateBrakingFriction, BrakingFrictionFactor, GroundFriction, BrakingDecelerationWalking </para>
+		/// @note Only used if bUseSeparateBrakingFriction setting is true, otherwise current friction such as GroundFriction is used.
+		/// <see cref="bUseSeparateBrakingFriction"/>
 		/// </summary>
 		public float BrakingFriction
 		{
@@ -1616,10 +1616,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Factor used to multiply actual value of friction used when braking. </para>
+		/// Factor used to multiply actual value of friction used when braking.
 		/// <para>This applies to any friction value that is currently used, which may depend on bUseSeparateBrakingFriction. </para>
-		/// <para>@note This is 2 by default for historical reasons, a value of 1 gives the true drag equation. </para>
-		/// <para>@see bUseSeparateBrakingFriction, GroundFriction, BrakingFriction </para>
+		/// @note This is 2 by default for historical reasons, a value of 1 gives the true drag equation.
+		/// <see cref="bUseSeparateBrakingFriction"/>
 		/// </summary>
 		public float BrakingFrictionFactor
 		{
@@ -1629,7 +1629,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Time substepping when applying braking friction. Smaller time steps increase accuracy at the slight cost of performance, especially if there are large frame times. </para>
+		/// Time substepping when applying braking friction. Smaller time steps increase accuracy at the slight cost of performance, especially if there are large frame times.
 		/// </summary>
 		public float BrakingSubStepTime
 		{
@@ -1639,9 +1639,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Should use acceleration for path following? </para>
+		/// Should use acceleration for path following?
 		/// <para>If true, acceleration is applied when path following to reach the target velocity. </para>
-		/// <para>If false, path following velocity is set directly, disregarding acceleration. </para>
+		/// If false, path following velocity is set directly, disregarding acceleration.
 		/// </summary>
 		public byte bRequestedMoveUseAcceleration
 		{
@@ -1651,10 +1651,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, movement will be performed even if there is no Controller for the Character owner. </para>
+		/// If true, movement will be performed even if there is no Controller for the Character owner.
 		/// <para>Normally without a Controller, movement will be aborted and velocity and acceleration are zeroed if the character is walking. </para>
-		/// <para>Characters that are spawned without a Controller but with this flag enabled will initialize the movement mode to DefaultLandMovementMode or DefaultWaterMovementMode appropriately. </para>
-		/// <para>@see DefaultLandMovementMode, DefaultWaterMovementMode </para>
+		/// Characters that are spawned without a Controller but with this flag enabled will initialize the movement mode to DefaultLandMovementMode or DefaultWaterMovementMode appropriately.
+		/// <see cref="DefaultLandMovementMode"/>
 		/// </summary>
 		public byte bRunPhysicsWithNoController
 		{
@@ -1664,7 +1664,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, the applied push force will try to get the physics object to the same velocity than the player, not faster. This will only </para>
+		/// If enabled, the applied push force will try to get the physics object to the same velocity than the player, not faster. This will only
 		/// <para>scale the force down, it will never apply more force than defined by PushForceFactor. </para>
 		/// </summary>
 		public byte bScalePushForceToVelocity
@@ -1681,8 +1681,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether or not the character should sweep for collision geometry while walking. </para>
-		/// <para>@see USceneComponent::MoveComponent. </para>
+		/// Whether or not the character should sweep for collision geometry while walking.
+		/// <see cref="USceneComponent"/>
 		/// </summary>
 		public byte bSweepWhileNavWalking
 		{
@@ -1692,7 +1692,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If enabled, the TouchForceFactor is applied per kg mass of the affected object. </para>
+		/// If enabled, the TouchForceFactor is applied per kg mass of the affected object.
 		/// </summary>
 		public byte bTouchForceScaledToMass
 		{
@@ -1702,7 +1702,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Water buoyancy. A ratio (1.0 = neutral buoyancy, 0.0 = no buoyancy) </para>
+		/// Water buoyancy. A ratio (1.0 = neutral buoyancy, 0.0 = no buoyancy)
 		/// </summary>
 		public float Buoyancy
 		{
@@ -1712,7 +1712,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, smoothly rotate the Character toward the Controller's desired rotation (typically Controller->ControlRotation), using RotationRate as the rate of rotation change. Overridden by OrientRotationToMovement. </para>
+		/// If true, smoothly rotate the Character toward the Controller's desired rotation (typically Controller->ControlRotation), using RotationRate as the rate of rotation change. Overridden by OrientRotationToMovement.
 		/// <para>Normally you will want to make sure that other settings are cleared, such as bUseControllerRotationYaw on the Character. </para>
 		/// </summary>
 		public byte bUseControllerDesiredRotation
@@ -1723,7 +1723,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Performs floor checks as if the character is using a shape with a flat base. </para>
+		/// Performs floor checks as if the character is using a shape with a flat base.
 		/// <para>This avoids the situation where characters slowly lower off the side of a ledge (as their capsule 'balances' on the edge). </para>
 		/// </summary>
 		public byte bUseFlatBaseForFloorChecks
@@ -1734,7 +1734,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If set, component will use RVO avoidance. This only runs on the server. </para>
+		/// If set, component will use RVO avoidance. This only runs on the server.
 		/// </summary>
 		public byte bUseRVOAvoidance
 		{
@@ -1744,9 +1744,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, BrakingFriction will be used to slow the character to a stop (when there is no Acceleration). </para>
+		/// If true, BrakingFriction will be used to slow the character to a stop (when there is no Acceleration).
 		/// <para>If false, braking uses the same friction passed to CalcVelocity() (ie GroundFriction when walking), multiplied by BrakingFrictionFactor. </para>
-		/// <para>This setting applies to all movement modes; if only desired in certain modes, consider toggling it when movement modes change. </para>
+		/// This setting applies to all movement modes; if only desired in certain modes, consider toggling it when movement modes change.
 		/// <para>@see BrakingFriction </para>
 		/// </summary>
 		public byte bUseSeparateBrakingFriction
@@ -1757,7 +1757,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, try to crouch (or keep crouching) on next update. If false, try to stop crouching on next update. </para>
+		/// If true, try to crouch (or keep crouching) on next update. If false, try to stop crouching on next update.
 		/// </summary>
 		public byte bWantsToCrouch
 		{
@@ -1779,7 +1779,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Last valid projected hit result from raycast to geometry from navmesh </para>
+		/// Last valid projected hit result from raycast to geometry from navmesh
 		/// </summary>
 		public FHitResult CachedProjectedNavMeshHitResult
 		{
@@ -1789,7 +1789,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Collision half-height when crouching (component scale is applied separately) </para>
+		/// Collision half-height when crouching (component scale is applied separately)
 		/// </summary>
 		public float CrouchedHalfHeight
 		{
@@ -1799,7 +1799,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Information about the floor the Character is standing on (updated only during walking movement). </para>
+		/// Information about the floor the Character is standing on (updated only during walking movement).
 		/// </summary>
 		public FFindFloorResult CurrentFloor
 		{
@@ -1815,9 +1815,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Current custom sub-mode if MovementMode is set to Custom. </para>
+		/// Current custom sub-mode if MovementMode is set to Custom.
 		/// <para>This is automatically replicated through the Character owner and for client-server movement functions. </para>
-		/// <para>@see SetMovementMode() </para>
+		/// <see cref="SetMovementMode"/>
 		/// </summary>
 		public byte CustomMovementMode
 		{
@@ -1833,9 +1833,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Friction to apply to lateral air movement when falling. </para>
+		/// Friction to apply to lateral air movement when falling.
 		/// <para>If bUseSeparateBrakingFriction is false, also affects the ability to stop more quickly when braking (whenever Acceleration is zero). </para>
-		/// <para>@see BrakingFriction, bUseSeparateBrakingFriction </para>
+		/// <see cref="BrakingFriction"/>
 		/// </summary>
 		public float FallingLateralFriction
 		{
@@ -1845,7 +1845,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Custom gravity scale. Gravity is multiplied by this amount for the character. </para>
+		/// Custom gravity scale. Gravity is multiplied by this amount for the character.
 		/// </summary>
 		public float GravityScale
 		{
@@ -1855,11 +1855,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Setting that affects movement control. Higher values allow faster changes in direction. </para>
+		/// Setting that affects movement control. Higher values allow faster changes in direction.
 		/// <para>If bUseSeparateBrakingFriction is false, also affects the ability to stop more quickly when braking (whenever Acceleration is zero), where it is multiplied by BrakingFrictionFactor. </para>
-		/// <para>When braking, this property allows you to control how much friction is applied when moving across the ground, applying an opposing force that scales with current velocity. </para>
+		/// When braking, this property allows you to control how much friction is applied when moving across the ground, applying an opposing force that scales with current velocity.
 		/// <para>This can be used to simulate slippery surfaces such as ice or oil by changing the value (possibly based on the material pawn is standing on). </para>
-		/// <para>@see BrakingDecelerationWalking, BrakingFriction, bUseSeparateBrakingFriction, BrakingFrictionFactor </para>
+		/// <see cref="BrakingDecelerationWalking"/>
 		/// </summary>
 		public float GroundFriction
 		{
@@ -1869,7 +1869,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Initial impulse force to apply when the player bounces into a blocking physics object. </para>
+		/// Initial impulse force to apply when the player bounces into a blocking physics object.
 		/// </summary>
 		public float InitialPushForceFactor
 		{
@@ -1879,7 +1879,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Fraction of JumpZVelocity to use when automatically "jumping off" of a base actor that's not allowed to be a base for a character. (For example, if you're not allowed to stand on other players.) </para>
+		/// Fraction of JumpZVelocity to use when automatically "jumping off" of a base actor that's not allowed to be a base for a character. (For example, if you're not allowed to stand on other players.)
 		/// </summary>
 		public float JumpOffJumpZFactor
 		{
@@ -1889,7 +1889,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>When exiting water, jump if control pitch angle is this high or above. </para>
+		/// When exiting water, jump if control pitch angle is this high or above.
 		/// </summary>
 		public float JumpOutOfWaterPitch
 		{
@@ -1899,7 +1899,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Initial velocity (instantaneous vertical acceleration) when jumping. </para>
+		/// Initial velocity (instantaneous vertical acceleration) when jumping.
 		/// </summary>
 		public float JumpZVelocity
 		{
@@ -1909,7 +1909,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Used in determining if pawn is going off ledge.  If the ledge is "shorter" than this value then the pawn will be able to walk off it. </para>
+		/// Used in determining if pawn is going off ledge.  If the ledge is "shorter" than this value then the pawn will be able to walk off it.
 		/// </summary>
 		public float LedgeCheckThreshold
 		{
@@ -1919,7 +1919,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Similar setting as NetworkSimulatedSmoothLocationTime but only used on Listen servers. </para>
+		/// Similar setting as NetworkSimulatedSmoothLocationTime but only used on Listen servers.
 		/// </summary>
 		public float ListenServerNetworkSimulatedSmoothLocationTime
 		{
@@ -1929,7 +1929,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Similar setting as NetworkSimulatedSmoothRotationTime but only used on Listen servers. </para>
+		/// Similar setting as NetworkSimulatedSmoothRotationTime but only used on Listen servers.
 		/// </summary>
 		public float ListenServerNetworkSimulatedSmoothRotationTime
 		{
@@ -1939,7 +1939,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Mass of pawn (for when momentum is imparted to it). </para>
+		/// Mass of pawn (for when momentum is imparted to it).
 		/// </summary>
 		public float Mass
 		{
@@ -1949,7 +1949,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max Acceleration (rate of change of velocity) </para>
+		/// Max Acceleration (rate of change of velocity)
 		/// </summary>
 		public float MaxAcceleration
 		{
@@ -1959,7 +1959,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The maximum speed when using Custom movement mode. </para>
+		/// The maximum speed when using Custom movement mode.
 		/// </summary>
 		public float MaxCustomMovementSpeed
 		{
@@ -1969,9 +1969,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance we allow simulated proxies to depenetrate when moving out of anything but Pawns. </para>
+		/// Max distance we allow simulated proxies to depenetrate when moving out of anything but Pawns.
 		/// <para>This is generally more tolerant than with Pawns, because other geometry is either not moving, or is moving predictably with a bit of delay compared to on the server. </para>
-		/// <para>@see MaxDepenetrationWithGeometryAsProxy, MaxDepenetrationWithPawn, MaxDepenetrationWithPawnAsProxy </para>
+		/// <see cref="MaxDepenetrationWithGeometryAsProxy"/>
 		/// </summary>
 		public float MaxDepenetrationWithGeometry
 		{
@@ -1981,9 +1981,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance we allow simulated proxies to depenetrate when moving out of anything but Pawns. </para>
+		/// Max distance we allow simulated proxies to depenetrate when moving out of anything but Pawns.
 		/// <para>This is generally more tolerant than with Pawns, because other geometry is either not moving, or is moving predictably with a bit of delay compared to on the server. </para>
-		/// <para>@see MaxDepenetrationWithGeometry, MaxDepenetrationWithPawn, MaxDepenetrationWithPawnAsProxy </para>
+		/// <see cref="MaxDepenetrationWithGeometry"/>
 		/// </summary>
 		public float MaxDepenetrationWithGeometryAsProxy
 		{
@@ -1993,8 +1993,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance we are allowed to depenetrate when moving out of other Pawns. </para>
-		/// <para>@see MaxDepenetrationWithGeometry, MaxDepenetrationWithGeometryAsProxy, MaxDepenetrationWithPawnAsProxy </para>
+		/// Max distance we are allowed to depenetrate when moving out of other Pawns.
+		/// <see cref="MaxDepenetrationWithGeometry"/>
 		/// </summary>
 		public float MaxDepenetrationWithPawn
 		{
@@ -2004,9 +2004,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max distance we allow simulated proxies to depenetrate when moving out of other Pawns. </para>
+		/// Max distance we allow simulated proxies to depenetrate when moving out of other Pawns.
 		/// <para>Typically we don't want a large value, because we receive a server authoritative position that we should not then ignore by pushing them out of the local player. </para>
-		/// <para>@see MaxDepenetrationWithGeometry, MaxDepenetrationWithGeometryAsProxy, MaxDepenetrationWithPawn </para>
+		/// <see cref="MaxDepenetrationWithGeometry"/>
 		/// </summary>
 		public float MaxDepenetrationWithPawnAsProxy
 		{
@@ -2016,7 +2016,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The maximum flying speed. </para>
+		/// The maximum flying speed.
 		/// </summary>
 		public float MaxFlySpeed
 		{
@@ -2026,7 +2026,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum step height for getting out of water </para>
+		/// Maximum step height for getting out of water
 		/// </summary>
 		public float MaxOutOfWaterStepHeight
 		{
@@ -2036,11 +2036,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max number of iterations used for each discrete simulation step. </para>
+		/// Max number of iterations used for each discrete simulation step.
 		/// <para>Used primarily in the the more advanced movement modes that break up larger time steps (usually those applying gravity such as falling and walking). </para>
-		/// <para>Increasing this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
+		/// Increasing this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.
 		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationTimeStep </para>
+		/// @see MaxSimulationTimeStep
 		/// </summary>
 		public int MaxSimulationIterations
 		{
@@ -2050,11 +2050,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Max time delta for each discrete simulation step. </para>
+		/// Max time delta for each discrete simulation step.
 		/// <para>Used primarily in the the more advanced movement modes that break up larger time steps (usually those applying gravity such as falling and walking). </para>
-		/// <para>Lowering this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance. </para>
+		/// Lowering this value can address issues with fast-moving objects or complex collision scenarios, at the cost of performance.
 		/// <para>WARNING: if (MaxSimulationTimeStep * MaxSimulationIterations) is too low for the min framerate, the last simulation step may exceed MaxSimulationTimeStep to complete the simulation. </para>
-		/// <para>@see MaxSimulationIterations </para>
+		/// @see MaxSimulationIterations
 		/// </summary>
 		public float MaxSimulationTimeStep
 		{
@@ -2064,7 +2064,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum height character can step up </para>
+		/// Maximum height character can step up
 		/// </summary>
 		public float MaxStepHeight
 		{
@@ -2074,7 +2074,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The maximum swimming speed. </para>
+		/// The maximum swimming speed.
 		/// </summary>
 		public float MaxSwimSpeed
 		{
@@ -2084,7 +2084,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum force applied to touched physics objects. If < 0.0f, there is no maximum. </para>
+		/// Maximum force applied to touched physics objects. If < 0.0f, there is no maximum.
 		/// </summary>
 		public float MaxTouchForce
 		{
@@ -2094,7 +2094,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The maximum ground speed when walking. Also determines maximum lateral speed when falling. </para>
+		/// The maximum ground speed when walking. Also determines maximum lateral speed when falling.
 		/// </summary>
 		public float MaxWalkSpeed
 		{
@@ -2104,7 +2104,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The maximum ground speed when walking and crouched. </para>
+		/// The maximum ground speed when walking and crouched.
 		/// </summary>
 		public float MaxWalkSpeedCrouched
 		{
@@ -2114,7 +2114,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The ground speed that we should accelerate up to when walking at minimum analog stick tilt </para>
+		/// The ground speed that we should accelerate up to when walking at minimum analog stick tilt
 		/// </summary>
 		public float MinAnalogWalkSpeed
 		{
@@ -2130,7 +2130,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum Force applied to touched physics objects. If < 0.0f, there is no minimum. </para>
+		/// Minimum Force applied to touched physics objects. If < 0.0f, there is no minimum.
 		/// </summary>
 		public float MinTouchForce
 		{
@@ -2140,7 +2140,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scale of the total capsule height to use for projection from navmesh to underlying geometry in the downward direction. </para>
+		/// Scale of the total capsule height to use for projection from navmesh to underlying geometry in the downward direction.
 		/// <para>In other words, trace down to [CapsuleHeight * NavMeshProjectionHeightScaleDown] below nav mesh. </para>
 		/// </summary>
 		public float NavMeshProjectionHeightScaleDown
@@ -2151,7 +2151,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Scale of the total capsule height to use for projection from navmesh to underlying geometry in the upward direction. </para>
+		/// Scale of the total capsule height to use for projection from navmesh to underlying geometry in the upward direction.
 		/// <para>In other words, start the trace at [CapsuleHeight * NavMeshProjectionHeightScaleUp] above nav mesh. </para>
 		/// </summary>
 		public float NavMeshProjectionHeightScaleUp
@@ -2162,7 +2162,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Speed at which to interpolate agent navmesh offset between traces. 0: Instant (no interp) > 0: Interp speed") </para>
+		/// Speed at which to interpolate agent navmesh offset between traces. 0: Instant (no interp) > 0: Interp speed")
 		/// </summary>
 		public float NavMeshProjectionInterpSpeed
 		{
@@ -2172,7 +2172,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How often we should raycast to project from navmesh to underlying geometry </para>
+		/// How often we should raycast to project from navmesh to underlying geometry
 		/// </summary>
 		public float NavMeshProjectionInterval
 		{
@@ -2188,7 +2188,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ignore small differences in ground height between server and client data during NavWalking mode </para>
+		/// Ignore small differences in ground height between server and client data during NavWalking mode
 		/// </summary>
 		public float NavWalkingFloorDistTolerance
 		{
@@ -2198,8 +2198,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Shrink simulated proxy capsule half height by this amount, to account for network rounding that may cause encroachment. Changing during gameplay is not supported. </para>
-		/// <para>@see AdjustProxyCapsuleSize() </para>
+		/// Shrink simulated proxy capsule half height by this amount, to account for network rounding that may cause encroachment. Changing during gameplay is not supported.
+		/// <see cref="AdjustProxyCapsuleSize"/>
 		/// </summary>
 		public float NetProxyShrinkHalfHeight
 		{
@@ -2209,8 +2209,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Shrink simulated proxy capsule radius by this amount, to account for network rounding that may cause encroachment. Changing during gameplay is not supported. </para>
-		/// <para>@see AdjustProxyCapsuleSize() </para>
+		/// Shrink simulated proxy capsule radius by this amount, to account for network rounding that may cause encroachment. Changing during gameplay is not supported.
+		/// <see cref="AdjustProxyCapsuleSize"/>
 		/// </summary>
 		public float NetProxyShrinkRadius
 		{
@@ -2220,8 +2220,8 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If client error is larger than this, sets bNetworkLargeClientCorrection to reduce delay between client adjustments. </para>
-		/// <para>@see NetworkMinTimeBetweenClientAdjustments, NetworkMinTimeBetweenClientAdjustmentsLargeCorrection </para>
+		/// If client error is larger than this, sets bNetworkLargeClientCorrection to reduce delay between client adjustments.
+		/// <see cref="NetworkMinTimeBetweenClientAdjustments"/>
 		/// </summary>
 		public float NetworkLargeClientCorrectionDistance
 		{
@@ -2231,7 +2231,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum distance character is allowed to lag behind server location when interpolating between updates. </para>
+		/// Maximum distance character is allowed to lag behind server location when interpolating between updates.
 		/// </summary>
 		public float NetworkMaxSmoothUpdateDistance
 		{
@@ -2241,7 +2241,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum time on the server between acknowledging good client moves. This can save on bandwidth. Set to 0 to disable throttling. </para>
+		/// Minimum time on the server between acknowledging good client moves. This can save on bandwidth. Set to 0 to disable throttling.
 		/// </summary>
 		public float NetworkMinTimeBetweenClientAckGoodMoves
 		{
@@ -2251,9 +2251,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum time on the server between sending client adjustments when client has exceeded allowable position error. </para>
+		/// Minimum time on the server between sending client adjustments when client has exceeded allowable position error.
 		/// <para>Should be >= NetworkMinTimeBetweenClientAdjustmentsLargeCorrection (the larger value is used regardless). </para>
-		/// <para>This can save on bandwidth. Set to 0 to disable throttling. </para>
+		/// This can save on bandwidth. Set to 0 to disable throttling.
 		/// <para>@see ServerLastClientAdjustmentTime </para>
 		/// </summary>
 		public float NetworkMinTimeBetweenClientAdjustments
@@ -2264,9 +2264,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Minimum time on the server between sending client adjustments when client has exceeded allowable position error by a large amount (NetworkLargeClientCorrectionDistance). </para>
+		/// Minimum time on the server between sending client adjustments when client has exceeded allowable position error by a large amount (NetworkLargeClientCorrectionDistance).
 		/// <para>Should be <= NetworkMinTimeBetweenClientAdjustments (the smaller value is used regardless). </para>
-		/// <para>@see NetworkMinTimeBetweenClientAdjustments </para>
+		/// @see NetworkMinTimeBetweenClientAdjustments
 		/// </summary>
 		public float NetworkMinTimeBetweenClientAdjustmentsLargeCorrection
 		{
@@ -2276,7 +2276,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Maximum distance beyond which character is teleported to the new server location without any smoothing. </para>
+		/// Maximum distance beyond which character is teleported to the new server location without any smoothing.
 		/// </summary>
 		public float NetworkNoSmoothUpdateDistance
 		{
@@ -2286,7 +2286,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How long to take to smoothly interpolate from the old pawn position on the client to the corrected one sent by the server. Not used by Linear smoothing. </para>
+		/// How long to take to smoothly interpolate from the old pawn position on the client to the corrected one sent by the server. Not used by Linear smoothing.
 		/// </summary>
 		public float NetworkSimulatedSmoothLocationTime
 		{
@@ -2296,7 +2296,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>How long to take to smoothly interpolate from the old pawn rotation on the client to the corrected one sent by the server. Not used by Linear smoothing. </para>
+		/// How long to take to smoothly interpolate from the old pawn rotation on the client to the corrected one sent by the server. Not used by Linear smoothing.
 		/// </summary>
 		public float NetworkSimulatedSmoothRotationTime
 		{
@@ -2306,7 +2306,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Smoothing mode for simulated proxies in network game. </para>
+		/// Smoothing mode for simulated proxies in network game.
 		/// </summary>
 		public ENetworkSmoothingMode NetworkSmoothingMode
 		{
@@ -2316,7 +2316,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Saved location of object we are standing on, for UpdateBasedMovement() to determine if base moved in the last frame, and therefore pawn needs an update. </para>
+		/// Saved location of object we are standing on, for UpdateBasedMovement() to determine if base moved in the last frame, and therefore pawn needs an update.
 		/// </summary>
 		public FVector OldBaseLocation
 		{
@@ -2326,7 +2326,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Saved location of object we are standing on, for UpdateBasedMovement() to determine if base moved in the last frame, and therefore pawn needs an update. </para>
+		/// Saved location of object we are standing on, for UpdateBasedMovement() to determine if base moved in the last frame, and therefore pawn needs an update.
 		/// </summary>
 		public FQuat OldBaseQuat
 		{
@@ -2336,7 +2336,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Z velocity applied when pawn tries to get out of water </para>
+		/// Z velocity applied when pawn tries to get out of water
 		/// </summary>
 		public float OutofWaterZ
 		{
@@ -2352,9 +2352,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>When perching on a ledge, add this additional distance to MaxStepHeight when determining how high above a walkable floor we can perch. </para>
+		/// When perching on a ledge, add this additional distance to MaxStepHeight when determining how high above a walkable floor we can perch.
 		/// <para>Note that we still enforce MaxStepHeight to start the step up; this just allows the character to hang off the edge or step slightly higher off the floor. </para>
-		/// <para>(@see PerchRadiusThreshold) </para>
+		/// <see cref="PerchRadiusThreshold"/>
 		/// </summary>
 		public float PerchAdditionalHeight
 		{
@@ -2364,7 +2364,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Don't allow the character to perch on the edge of a surface if the contact is this close to the edge of the capsule. </para>
+		/// Don't allow the character to perch on the edge of a surface if the contact is this close to the edge of the capsule.
 		/// <para>Note that characters will not fall off if they are within MaxStepHeight of a walkable surface below. </para>
 		/// </summary>
 		public float PerchRadiusThreshold
@@ -2375,7 +2375,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force to apply when the player collides with a blocking physics object. </para>
+		/// Force to apply when the player collides with a blocking physics object.
 		/// </summary>
 		public float PushForceFactor
 		{
@@ -2385,7 +2385,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Z-Offset for the position the force is applied to. 0.0f is the center of the physics object, 1.0f is the top and -1.0f is the bottom of the object. </para>
+		/// Z-Offset for the position the force is applied to. 0.0f is the center of the physics object, 1.0f is the top and -1.0f is the bottom of the object.
 		/// </summary>
 		public float PushForcePointZOffsetFactor
 		{
@@ -2395,7 +2395,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force per kg applied constantly to all overlapping components. </para>
+		/// Force per kg applied constantly to all overlapping components.
 		/// </summary>
 		public float RepulsionForce
 		{
@@ -2411,7 +2411,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Change in rotation per second, used when UseControllerDesiredRotation or OrientRotationToMovement are true. Set a negative value for infinite rotation rate and instant turns. </para>
+		/// Change in rotation per second, used when UseControllerDesiredRotation or OrientRotationToMovement are true. Set a negative value for infinite rotation rate and instant turns.
 		/// </summary>
 		public FRotator RotationRate
 		{
@@ -2421,7 +2421,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force applied to objects we stand on (due to Mass and Gravity) is scaled by this amount. </para>
+		/// Force applied to objects we stand on (due to Mass and Gravity) is scaled by this amount.
 		/// </summary>
 		public float StandingDownwardForceScale
 		{
@@ -2431,7 +2431,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Force to apply to physics objects that are touched by the player. </para>
+		/// Force to apply to physics objects that are touched by the player.
 		/// </summary>
 		public float TouchForceFactor
 		{
@@ -2444,40 +2444,40 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add force to character. Forces are accumulated each tick and applied together </para>
+		/// Add force to character. Forces are accumulated each tick and applied together
 		/// <para>so multiple calls to this function will accumulate. </para>
-		/// <para>Forces are scaled depending on timestep, so they can be applied each frame. If you want an </para>
+		/// Forces are scaled depending on timestep, so they can be applied each frame. If you want an
 		/// <para>instantaneous force, use AddImpulse. </para>
-		/// <para>Adding a force always takes the actor's mass into account. </para>
+		/// Adding a force always takes the actor's mass into account.
 		/// <para>Note that changing the momentum of characters like this can change the movement mode. </para>
-		/// <param name="Force">Force to apply. </param>
 		/// </summary>
+		/// <param name="force">Force to apply.</param>
 		public virtual void AddForce(FVector force)
 			=> E_UCharacterMovementComponent_AddForce(this, force);
 		
 		
 		/// <summary>
-		/// <para>Add impulse to character. Impulses are accumulated each tick and applied together </para>
+		/// Add impulse to character. Impulses are accumulated each tick and applied together
 		/// <para>so multiple calls to this function will accumulate. </para>
-		/// <para>An impulse is an instantaneous force, usually applied once. If you want to continually apply </para>
+		/// An impulse is an instantaneous force, usually applied once. If you want to continually apply
 		/// <para>forces each frame, use AddForce(). </para>
-		/// <para>Note that changing the momentum of characters like this can change the movement mode. </para>
-		/// <param name="Impulse">Impulse to apply. </param>
-		/// <param name="bVelocityChange">Whether or not the impulse is relative to mass. </param>
+		/// Note that changing the momentum of characters like this can change the movement mode.
 		/// </summary>
+		/// <param name="impulse">Impulse to apply.</param>
+		/// <param name="bVelocityChange">Whether or not the impulse is relative to mass.</param>
 		public virtual void AddImpulse(FVector impulse, bool bVelocityChange)
 			=> E_UCharacterMovementComponent_AddImpulse(this, impulse, bVelocityChange);
 		
 		
 		/// <summary>
-		/// <para>Adjust distance from floor, trying to maintain a slight offset from the floor when walking (based on CurrentFloor). </para>
+		/// Adjust distance from floor, trying to maintain a slight offset from the floor when walking (based on CurrentFloor).
 		/// </summary>
 		public virtual void AdjustFloorHeight()
 			=> E_UCharacterMovementComponent_AdjustFloorHeight(this);
 		
 		
 		/// <summary>
-		/// <para>Adjust the size of the capsule on simulated proxies, to avoid overlaps due to replication rounding. </para>
+		/// Adjust the size of the capsule on simulated proxies, to avoid overlaps due to replication rounding.
 		/// <para>Changes to the capsule size on the proxy should set bShrinkProxyCapsule=true and possibly call AdjustProxyCapsuleSize() immediately if applicable. </para>
 		/// </summary>
 		protected virtual void AdjustProxyCapsuleSize()
@@ -2485,26 +2485,26 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Applies momentum accumulated through AddImpulse() and AddForce(), then clears those forces. Does *not* use ClearAccumulatedForces() since that would clear pending launch velocity as well. </para>
+		/// Applies momentum accumulated through AddImpulse() and AddForce(), then clears those forces. Does *not* use ClearAccumulatedForces() since that would clear pending launch velocity as well.
 		/// </summary>
 		public virtual void ApplyAccumulatedForces(float deltaSeconds)
 			=> E_UCharacterMovementComponent_ApplyAccumulatedForces(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Applies downward force when walking on top of physics objects. </para>
-		/// <param name="DeltaSeconds">Time elapsed since last frame. </param>
+		/// Applies downward force when walking on top of physics objects.
 		/// </summary>
+		/// <param name="deltaSeconds">Time elapsed since last frame.</param>
 		public virtual void ApplyDownwardForce(float deltaSeconds)
 			=> E_UCharacterMovementComponent_ApplyDownwardForce(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Apply physics forces to the impacted component, if bEnablePhysicsInteraction is true. </para>
-		/// <param name="Impact">HitResult that resulted in the impact </param>
-		/// <param name="ImpactAcceleration">Acceleration of the character at the time of impact </param>
-		/// <param name="ImpactVelocity">Velocity of the character at the time of impact </param>
+		/// Apply physics forces to the impacted component, if bEnablePhysicsInteraction is true.
 		/// </summary>
+		/// <param name="impact">HitResult that resulted in the impact</param>
+		/// <param name="impactAcceleration">Acceleration of the character at the time of impact</param>
+		/// <param name="impactVelocity">Velocity of the character at the time of impact</param>
 		protected virtual void ApplyImpactPhysicsForces(FHitResult impact, FVector impactAcceleration, FVector impactVelocity)
 			=> E_UCharacterMovementComponent_ApplyImpactPhysicsForces(this, impact, impactAcceleration, impactVelocity);
 		
@@ -2513,84 +2513,84 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Applies repulsion force to all touched components. </para>
+		/// Applies repulsion force to all touched components.
 		/// </summary>
 		public virtual void ApplyRepulsionForce(float deltaSeconds)
 			=> E_UCharacterMovementComponent_ApplyRepulsionForce(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Use velocity requested by path following to compute a requested acceleration and speed. </para>
+		/// Use velocity requested by path following to compute a requested acceleration and speed.
 		/// <para>This does not affect the Acceleration member variable, as that is used to indicate input acceleration. </para>
-		/// <para>This may directly affect current Velocity. </para>
-		/// <param name="DeltaTime">Time slice for this operation </param>
-		/// <param name="MaxAccel">Max acceleration allowed in OutAcceleration result. </param>
-		/// <param name="MaxSpeed">Max speed allowed when computing OutRequestedSpeed. </param>
-		/// <param name="Friction">Current friction. </param>
-		/// <param name="BrakingDeceleration">Current braking deceleration. </param>
-		/// <param name="OutAcceleration">Acceleration computed based on requested velocity. </param>
-		/// <param name="OutRequestedSpeed">Speed of resulting velocity request, which can affect the max speed allowed by movement. </param>
-		/// <return>Whether there is a requested velocity and acceleration, resulting in valid OutAcceleration and OutRequestedSpeed values. </return>
+		/// This may directly affect current Velocity.
 		/// </summary>
+		/// <param name="deltaTime">Time slice for this operation</param>
+		/// <param name="maxAccel">Max acceleration allowed in OutAcceleration result.</param>
+		/// <param name="maxSpeed">Max speed allowed when computing OutRequestedSpeed.</param>
+		/// <param name="friction">Current friction.</param>
+		/// <param name="brakingDeceleration">Current braking deceleration.</param>
+		/// <param name="outAcceleration">Acceleration computed based on requested velocity.</param>
+		/// <param name="outRequestedSpeed">Speed of resulting velocity request, which can affect the max speed allowed by movement.</param>
+		/// <return>Whether</return>
 		public virtual bool ApplyRequestedMove(float deltaTime, float maxAccel, float maxSpeed, float friction, float brakingDeceleration, FVector outAcceleration, float outRequestedSpeed)
 			=> E_UCharacterMovementComponent_ApplyRequestedMove(this, deltaTime, maxAccel, maxSpeed, friction, brakingDeceleration, outAcceleration, outRequestedSpeed);
 		
 		
 		/// <summary>
-		/// <para>Slows towards stop. </para>
+		/// Slows towards stop.
 		/// </summary>
 		protected virtual void ApplyVelocityBraking(float deltaTime, float friction, float brakingDeceleration)
 			=> E_UCharacterMovementComponent_ApplyVelocityBraking(this, deltaTime, friction, brakingDeceleration);
 		
 		
 		/// <summary>
-		/// <para>Increase air control if conditions of AirControlBoostMultiplier and AirControlBoostVelocityThreshold are met. </para>
+		/// Increase air control if conditions of AirControlBoostMultiplier and AirControlBoostVelocityThreshold are met.
 		/// <para>This function is used internally by GetAirControl(). </para>
-		/// <param name="DeltaTime">Time step for the current update. </param>
-		/// <param name="TickAirControl">Current air control value. </param>
-		/// <param name="FallAcceleration">Acceleration used during movement. </param>
-		/// <return>Modified air control to use during falling movement </return>
-		/// <para>@see GetAirControl() </para>
+		/// <see cref="GetAirControl"/>
 		/// </summary>
+		/// <param name="deltaTime">Time step for the current update.</param>
+		/// <param name="tickAirControl">Current air control value.</param>
+		/// <param name="fallAcceleration">Acceleration used during movement.</param>
+		/// <return>Modified</return>
 		protected virtual float BoostAirControl(float deltaTime, float tickAirControl, FVector fallAcceleration)
 			=> E_UCharacterMovementComponent_BoostAirControl(this, deltaTime, tickAirControl, fallAcceleration);
 		
 		
 		/// <summary>
-		/// <para>Updates Velocity and Acceleration based on the current state, applying the effects of friction and acceleration or deceleration. Does not apply gravity. </para>
+		/// Updates Velocity and Acceleration based on the current state, applying the effects of friction and acceleration or deceleration. Does not apply gravity.
 		/// <para>This is used internally during movement updates. Normally you don't need to call this from outside code, but you might want to use it for custom movement modes. </para>
-		/// <param name="DeltaTime">time elapsed since last frame. </param>
-		/// <param name="Friction">coefficient of friction when not accelerating, or in the direction opposite acceleration. </param>
-		/// <param name="bFluid">true if moving through a fluid, causing Friction to always be applied regardless of acceleration. </param>
-		/// <param name="BrakingDeceleration">deceleration applied when not accelerating, or when exceeding max velocity. </param>
 		/// </summary>
+		/// <param name="deltaTime">time elapsed since last frame.</param>
+		/// <param name="friction">coefficient of friction when not accelerating, or in the direction opposite acceleration.</param>
+		/// <param name="bFluid">true if moving through a fluid, causing Friction to always be applied regardless of acceleration.</param>
+		/// <param name="brakingDeceleration">deceleration applied when not accelerating, or when exceeding max velocity.</param>
 		public virtual void CalcVelocity(float deltaTime, float friction, bool bFluid, float brakingDeceleration)
 			=> E_UCharacterMovementComponent_CalcVelocity(this, deltaTime, friction, bFluid, brakingDeceleration);
 		
 		
 		/// <summary>
-		/// <para>Internal function to call OnMovementUpdated delegate on CharacterOwner. </para>
+		/// Internal function to call OnMovementUpdated delegate on CharacterOwner.
 		/// </summary>
 		protected virtual void CallMovementUpdateDelegate(float deltaSeconds, FVector oldLocation, FVector oldVelocity)
 			=> E_UCharacterMovementComponent_CallMovementUpdateDelegate(this, deltaSeconds, oldLocation, oldVelocity);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the character is allowed to crouch in the current state. By default it is allowed when walking or falling, if CanEverCrouch() is true. </para>
+		/// Returns true if the character is allowed to crouch in the current state. By default it is allowed when walking or falling, if CanEverCrouch() is true.
 		/// </summary>
 		public virtual bool CanCrouchInCurrentState()
 			=> E_UCharacterMovementComponent_CanCrouchInCurrentState(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if we can step up on the actor in the given FHitResult. </para>
+		/// Returns true if we can step up on the actor in the given FHitResult.
 		/// </summary>
 		public virtual bool CanStepUp(FHitResult hit)
 			=> E_UCharacterMovementComponent_CanStepUp(this, hit);
 		
 		
 		/// <summary>
-		/// <para>Returns whether this pawn is currently allowed to walk off ledges </para>
+		/// Returns whether this pawn is currently allowed to walk off ledges
 		/// </summary>
 		public virtual bool CanWalkOffLedges()
 			=> E_UCharacterMovementComponent_CanWalkOffLedges(this);
@@ -2600,35 +2600,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Check if pawn is falling </para>
+		/// Check if pawn is falling
 		/// </summary>
 		public virtual bool CheckFall(FFindFloorResult oldFloor, FHitResult hit, FVector delta, FVector oldLocation, float remainingTime, float timeTick, int iterations, bool bMustJump)
 			=> E_UCharacterMovementComponent_CheckFall(this, oldFloor, hit, delta, oldLocation, remainingTime, timeTick, iterations, bMustJump);
 		
 		
 		/// <summary>
-		/// <para>Returns true if there is a suitable floor SideStep from current position. </para>
+		/// Returns true if there is a suitable floor SideStep from current position.
 		/// </summary>
 		public virtual bool CheckLedgeDirection(FVector oldLocation, FVector sideStep, FVector gravDir)
 			=> E_UCharacterMovementComponent_CheckLedgeDirection(this, oldLocation, sideStep, gravDir);
 		
 		
 		/// <summary>
-		/// <para>Check if swimming pawn just ran into edge of the pool and should jump out. </para>
+		/// Check if swimming pawn just ran into edge of the pool and should jump out.
 		/// </summary>
 		public virtual bool CheckWaterJump(FVector checkPoint, FVector wallNormal)
 			=> E_UCharacterMovementComponent_CheckWaterJump(this, checkPoint, wallNormal);
 		
 		
 		/// <summary>
-		/// <para>Clears forces accumulated through AddImpulse() and AddForce(), and also pending launch velocity. </para>
+		/// Clears forces accumulated through AddImpulse() and AddForce(), and also pending launch velocity.
 		/// </summary>
 		public virtual void ClearAccumulatedForces()
 			=> E_UCharacterMovementComponent_ClearAccumulatedForces(this);
 		
 		
 		/// <summary>
-		/// <para>If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves </para>
+		/// If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves
 		/// </summary>
 		public virtual void ClientAckGoodMove(float timeStamp)
 			=> E_UCharacterMovementComponent_ClientAckGoodMove(this, timeStamp);
@@ -2638,7 +2638,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Replicate position correction to client, associated with a timestamped servermove.  Client will replay subsequent moves after applying adjustment. </para>
+		/// Replicate position correction to client, associated with a timestamped servermove.  Client will replay subsequent moves after applying adjustment.
 		/// </summary>
 		public virtual void ClientAdjustPosition(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
 			=> E_UCharacterMovementComponent_ClientAdjustPosition(this, timeStamp, newLoc, newVel, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
@@ -2648,7 +2648,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>If bUpdatePosition is true, then replay any unacked moves. Returns whether any moves were actually replayed. </para>
+		/// If bUpdatePosition is true, then replay any unacked moves. Returns whether any moves were actually replayed.
 		/// </summary>
 		protected virtual bool ClientUpdatePositionAfterServerUpdate()
 			=> E_UCharacterMovementComponent_ClientUpdatePositionAfterServerUpdate(this);
@@ -2661,219 +2661,219 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Computes the analog input modifier based on current input vector and/or acceleration. </para>
+		/// Computes the analog input modifier based on current input vector and/or acceleration.
 		/// </summary>
 		protected virtual float ComputeAnalogInputModifier()
 			=> E_UCharacterMovementComponent_ComputeAnalogInputModifier(this);
 		
 		
 		/// <summary>
-		/// <para>Compute distance to the floor from bottom sphere of capsule and store the result in OutFloorResult. </para>
+		/// Compute distance to the floor from bottom sphere of capsule and store the result in OutFloorResult.
 		/// <para>This distance is the swept distance of the capsule to the first point impacted by the lower hemisphere, or distance from the bottom of the capsule in the case of a line trace. </para>
-		/// <para>This function does not care if collision is disabled on the capsule (unlike FindFloor). </para>
+		/// This function does not care if collision is disabled on the capsule (unlike FindFloor).
 		/// <para>@see FindFloor </para>
-		/// <param name="CapsuleLocation">Location of the capsule used for the query </param>
-		/// <param name="LineDistance">If non-zero, max distance to test for a simple line check from the capsule base. Used only if the sweep test fails to find a walkable floor, and only returns a valid result if the impact normal is a walkable normal. </param>
-		/// <param name="SweepDistance">If non-zero, max distance to use when sweeping a capsule downwards for the test. MUST be greater than or equal to the line distance. </param>
-		/// <param name="OutFloorResult">Result of the floor check. The HitResult will contain the valid sweep or line test upon success, or the result of the sweep upon failure. </param>
-		/// <param name="SweepRadius">The radius to use for sweep tests. Should be <= capsule radius. </param>
-		/// <param name="DownwardSweepResult">If non-null and it contains valid blocking hit info, this will be used as the result of a downward sweep test instead of doing it as part of the update. </param>
 		/// </summary>
+		/// <param name="capsuleLocation">Location of the capsule used for the query</param>
+		/// <param name="lineDistance">If non-zero, max distance to test for a simple line check from the capsule base. Used only if the sweep test fails to find a walkable floor, and only returns a valid result if the impact normal is a walkable normal.</param>
+		/// <param name="sweepDistance">If non-zero, max distance to use when sweeping a capsule downwards for the test. MUST be greater than or equal to the line distance.</param>
+		/// <param name="outFloorResult">Result of the floor check. The HitResult will contain the valid sweep or line test upon success, or the result of the sweep upon failure.</param>
+		/// <param name="sweepRadius">The radius to use for sweep tests. Should be <= capsule radius.</param>
+		/// <param name="downwardSweepResult">If non-null and it contains valid blocking hit info, this will be used as the result of a downward sweep test instead of doing it as part of the update.</param>
 		public virtual void ComputeFloorDist(FVector capsuleLocation, float lineDistance, float sweepDistance, FFindFloorResult outFloorResult, float sweepRadius, FHitResult downwardSweepResult)
 			=> E_UCharacterMovementComponent_ComputeFloorDist(this, capsuleLocation, lineDistance, sweepDistance, outFloorResult, sweepRadius, downwardSweepResult);
 		
 		
 		/// <summary>
-		/// <para>Compute a vector of movement, given a delta and a hit result of the surface we are on. </para>
-		/// <param name="Delta">Attempted movement direction </param>
-		/// <param name="RampHit">Hit result of sweep that found the ramp below the capsule </param>
-		/// <param name="bHitFromLineTrace">Whether the floor trace came from a line trace </param>
-		/// <return>If on a walkable surface, this returns a vector that moves parallel to the surface. The magnitude may be scaled if bMaintainHorizontalGroundVelocity is true. </return>
+		/// Compute a vector of movement, given a delta and a hit result of the surface we are on.
 		/// <para>If a ramp vector can't be computed, this will just return Delta. </para>
 		/// </summary>
+		/// <param name="delta">Attempted movement direction</param>
+		/// <param name="rampHit">Hit result of sweep that found the ramp below the capsule</param>
+		/// <param name="bHitFromLineTrace">Whether the floor trace came from a line trace</param>
+		/// <return>If</return>
 		protected virtual FVector ComputeGroundMovementDelta(FVector delta, FHitResult rampHit, bool bHitFromLineTrace)
 			=> E_UCharacterMovementComponent_ComputeGroundMovementDelta(this, delta, rampHit, bHitFromLineTrace);
 		
 		
 		/// <summary>
-		/// <para>Compute a target rotation based on current movement. Used by PhysicsRotation() when bOrientRotationToMovement is true. </para>
+		/// Compute a target rotation based on current movement. Used by PhysicsRotation() when bOrientRotationToMovement is true.
 		/// <para>Default implementation targets a rotation based on Acceleration. </para>
-		/// <param name="CurrentRotation">Current rotation of the Character </param>
-		/// <param name="DeltaTime">Time slice for this movement </param>
-		/// <param name="DeltaRotation">Proposed rotation change based simply on DeltaTime * RotationRate </param>
-		/// <return>The target rotation given current movement. </return>
 		/// </summary>
+		/// <param name="currentRotation">Current rotation of the Character</param>
+		/// <param name="deltaTime">Time slice for this movement</param>
+		/// <param name="deltaRotation">Proposed rotation change based simply on DeltaTime * RotationRate</param>
+		/// <return>The</return>
 		public virtual FRotator ComputeOrientToMovementRotation(FRotator currentRotation, float deltaTime, FRotator deltaRotation)
 			=> E_UCharacterMovementComponent_ComputeOrientToMovementRotation(this, currentRotation, deltaTime, deltaRotation);
 		
 		
 		/// <summary>
-		/// <para>Compute the sweep result of the smaller capsule with radius specified by GetValidPerchRadius(), </para>
+		/// Compute the sweep result of the smaller capsule with radius specified by GetValidPerchRadius(),
 		/// <para>and return true if the sweep contacts a valid walkable normal within InMaxFloorDist of InHit.ImpactPoint. </para>
-		/// <para>This may be used to determine if the capsule can or cannot stay at the current location if perched on the edge of a small ledge or unwalkable surface. </para>
+		/// This may be used to determine if the capsule can or cannot stay at the current location if perched on the edge of a small ledge or unwalkable surface.
 		/// <para>Note: Only returns a valid result if ShouldComputePerchResult returned true for the supplied hit value. </para>
-		/// <param name="TestRadius">Radius to use for the sweep, usually GetValidPerchRadius(). </param>
-		/// <param name="InHit">Result of the last sweep test before the query. </param>
-		/// <param name="InMaxFloorDist">Max distance to floor allowed by perching, from the supplied contact point (InHit.ImpactPoint). </param>
-		/// <param name="OutPerchFloorResult">Contains the result of the perch floor test. </param>
-		/// <return>True if the current location is a valid spot at which to perch. </return>
 		/// </summary>
+		/// <param name="testRadius">Radius to use for the sweep, usually GetValidPerchRadius().</param>
+		/// <param name="inHit">Result of the last sweep test before the query.</param>
+		/// <param name="inMaxFloorDist">Max distance to floor allowed by perching, from the supplied contact point (InHit.ImpactPoint).</param>
+		/// <param name="outPerchFloorResult">Contains the result of the perch floor test.</param>
+		/// <return>True</return>
 		public virtual bool ComputePerchResult(float testRadius, FHitResult inHit, float inMaxFloorDist, FFindFloorResult outPerchFloorResult)
 			=> E_UCharacterMovementComponent_ComputePerchResult(this, testRadius, inHit, inMaxFloorDist, outPerchFloorResult);
 		
 		
 		/// <summary>
-		/// <para>Enforce constraints on input given current state. For instance, don't move upwards if walking and looking up. </para>
+		/// Enforce constraints on input given current state. For instance, don't move upwards if walking and looking up.
 		/// </summary>
 		protected virtual FVector ConstrainInputAcceleration(FVector inputAcceleration)
 			=> E_UCharacterMovementComponent_ConstrainInputAcceleration(this, inputAcceleration);
 		
 		
 		/// <summary>
-		/// <para>Converts received server IDs in a root motion group to local IDs </para>
+		/// Converts received server IDs in a root motion group to local IDs
 		/// </summary>
 		public void ConvertRootMotionServerIDsToLocalIDs(FRootMotionSourceGroup localRootMotionToMatchWith, FRootMotionSourceGroup inOutServerRootMotion, float timeStamp)
 			=> E_UCharacterMovementComponent_ConvertRootMotionServerIDsToLocalIDs(this, localRootMotionToMatchWith, inOutServerRootMotion, timeStamp);
 		
 		
 		/// <summary>
-		/// <para>Checks if new capsule size fits (no encroachment), and call CharacterOwner->OnStartCrouch() if successful. </para>
+		/// Checks if new capsule size fits (no encroachment), and call CharacterOwner->OnStartCrouch() if successful.
 		/// <para>In general you should set bWantsToCrouch instead to have the crouch persist during movement, or just use the crouch functions on the owning Character. </para>
-		/// <param name="bClientSimulation">true when called when bIsCrouched is replicated to non owned clients, to update collision cylinder and offset. </param>
 		/// </summary>
+		/// <param name="bClientSimulation">true when called when bIsCrouched is replicated to non owned clients, to update collision cylinder and offset.</param>
 		public virtual void Crouch(bool bClientSimulation)
 			=> E_UCharacterMovementComponent_Crouch(this, bClientSimulation);
 		
 		
 		/// <summary>
-		/// <para>Make movement impossible (sets movement mode to MOVE_None). </para>
+		/// Make movement impossible (sets movement mode to MOVE_None).
 		/// </summary>
 		public virtual void DisableMovement()
 			=> E_UCharacterMovementComponent_DisableMovement(this);
 		
 		
 		/// <summary>
-		/// <para>Perform jump. Called by Character when a jump has been detected because Character->bPressedJump was true. Checks CanJump(). </para>
+		/// Perform jump. Called by Character when a jump has been detected because Character->bPressedJump was true. Checks CanJump().
 		/// <para>Note that you should usually trigger a jump through Character::Jump() instead. </para>
-		/// <param name="bReplayingMoves">true if this is being done as part of replaying moves on a locally controlled client after a server correction. </param>
-		/// <return>True if the jump was triggered successfully. </return>
 		/// </summary>
+		/// <param name="bReplayingMoves">true if this is being done as part of replaying moves on a locally controlled client after a server correction.</param>
+		/// <return>True</return>
 		public virtual bool DoJump(bool bReplayingMoves)
 			=> E_UCharacterMovementComponent_DoJump(this, bReplayingMoves);
 		
 		
 		/// <summary>
-		/// <para>Performs trace for ProjectLocationFromNavMesh </para>
+		/// Performs trace for ProjectLocationFromNavMesh
 		/// </summary>
 		protected virtual void FindBestNavMeshLocation(FVector traceStart, FVector traceEnd, FVector currentFeetLocation, FVector targetNavLocation, FHitResult outHitResult)
 			=> E_UCharacterMovementComponent_FindBestNavMeshLocation(this, traceStart, traceEnd, currentFeetLocation, targetNavLocation, outHitResult);
 		
 		
 		/// <summary>
-		/// <para>Sweeps a vertical trace to find the floor for the capsule at the given location. Will attempt to perch if ShouldComputePerchResult() returns true for the downward sweep result. </para>
+		/// Sweeps a vertical trace to find the floor for the capsule at the given location. Will attempt to perch if ShouldComputePerchResult() returns true for the downward sweep result.
 		/// <para>No floor will be found if collision is disabled on the capsule! </para>
-		/// <param name="CapsuleLocation">Location where the capsule sweep should originate </param>
-		/// <param name="OutFloorResult">Out] Contains the result of the floor check. The HitResult will contain the valid sweep or line test upon success, or the result of the sweep upon failure. </param>
-		/// <param name="bCanUseCachedLocation">If true, may use a cached value (can be used to avoid unnecessary floor tests, if for example the capsule was not moving since the last test). </param>
-		/// <param name="DownwardSweepResult">If non-null and it contains valid blocking hit info, this will be used as the result of a downward sweep test instead of doing it as part of the update. </param>
 		/// </summary>
+		/// <param name="capsuleLocation">Location where the capsule sweep should originate</param>
+		/// <param name="outFloorResult">Out] Contains the result of the floor check. The HitResult will contain the valid sweep or line test upon success, or the result of the sweep upon failure.</param>
+		/// <param name="bCanUseCachedLocation">If true, may use a cached value (can be used to avoid unnecessary floor tests, if for example the capsule was not moving since the last test).</param>
+		/// <param name="downwardSweepResult">If non-null and it contains valid blocking hit info, this will be used as the result of a downward sweep test instead of doing it as part of the update.</param>
 		public virtual void FindFloor(FVector capsuleLocation, FFindFloorResult outFloorResult, bool bCanUseCachedLocation, FHitResult downwardSweepResult)
 			=> E_UCharacterMovementComponent_FindFloor(this, capsuleLocation, outFloorResult, bCanUseCachedLocation, downwardSweepResult);
 		
 		
 		/// <summary>
-		/// <para>Get as close to waterline as possible, staying on same side as currently. </para>
+		/// Get as close to waterline as possible, staying on same side as currently.
 		/// </summary>
 		public FVector FindWaterLine(FVector start, FVector end)
 			=> E_UCharacterMovementComponent_FindWaterLine(this, start, end);
 		
 		
 		/// <summary>
-		/// <para>Force a client adjustment. Resets ServerLastClientAdjustmentTime. </para>
+		/// Force a client adjustment. Resets ServerLastClientAdjustmentTime.
 		/// </summary>
 		public void ForceClientAdjustment()
 			=> E_UCharacterMovementComponent_ForceClientAdjustment(this);
 		
 		
 		/// <summary>
-		/// <para>Force a client update by making it appear on the server that the client hasn't updated in a long time. </para>
+		/// Force a client update by making it appear on the server that the client hasn't updated in a long time.
 		/// </summary>
 		public virtual void ForceReplicationUpdate()
 			=> E_UCharacterMovementComponent_ForceReplicationUpdate(this);
 		
 		
 		/// <summary>
-		/// <para>Get the air control to use during falling movement. </para>
+		/// Get the air control to use during falling movement.
 		/// <para>Given an initial air control (TickAirControl), applies the result of BoostAirControl(). </para>
-		/// <para>This function is used internally by GetFallingLateralAcceleration(). </para>
-		/// <param name="DeltaTime">Time step for the current update. </param>
-		/// <param name="TickAirControl">Current air control value. </param>
-		/// <param name="FallAcceleration">Acceleration used during movement. </param>
-		/// <return>Air control to use during falling movement. </return>
-		/// <para>@see AirControl, BoostAirControl(), LimitAirControl(), GetFallingLateralAcceleration() </para>
+		/// This function is used internally by GetFallingLateralAcceleration().
+		/// <see cref="AirControl"/>
 		/// </summary>
+		/// <param name="deltaTime">Time step for the current update.</param>
+		/// <param name="tickAirControl">Current air control value.</param>
+		/// <param name="fallAcceleration">Acceleration used during movement.</param>
+		/// <return>Air</return>
 		public virtual FVector GetAirControl(float deltaTime, float tickAirControl, FVector fallAcceleration)
 			=> E_UCharacterMovementComponent_GetAirControl(this, deltaTime, tickAirControl, fallAcceleration);
 		
 		
 		/// <summary>
-		/// <para>Returns modifier [0..1] based on the magnitude of the last input vector, which is used to modify the acceleration and max speed during movement. </para>
+		/// Returns modifier [0..1] based on the magnitude of the last input vector, which is used to modify the acceleration and max speed during movement.
 		/// </summary>
 		public float GetAnalogInputModifier()
 			=> E_UCharacterMovementComponent_GetAnalogInputModifier(this);
 		
 		
 		/// <summary>
-		/// <para>Can be overridden to choose to jump based on character velocity, base actor dimensions, etc. </para>
+		/// Can be overridden to choose to jump based on character velocity, base actor dimensions, etc.
 		/// </summary>
 		public virtual FVector GetBestDirectionOffActor(AActor baseActor)
 			=> E_UCharacterMovementComponent_GetBestDirectionOffActor(this, baseActor);
 		
 		
 		/// <summary>
-		/// <para>Get the Character that owns UpdatedComponent. </para>
+		/// Get the Character that owns UpdatedComponent.
 		/// </summary>
 		public ACharacter GetCharacterOwner()
 			=> E_UCharacterMovementComponent_GetCharacterOwner(this);
 		
 		
 		/// <summary>
-		/// <para>Returns current acceleration, computed from input vector each update. </para>
+		/// Returns current acceleration, computed from input vector each update.
 		/// </summary>
 		public FVector GetCurrentAcceleration()
 			=> E_UCharacterMovementComponent_GetCurrentAcceleration(this);
 		
 		
 		/// <summary>
-		/// <para>Returns how far to rotate character during the time interval DeltaTime. </para>
+		/// Returns how far to rotate character during the time interval DeltaTime.
 		/// </summary>
 		public virtual FRotator GetDeltaRotation(float deltaTime)
 			=> E_UCharacterMovementComponent_GetDeltaRotation(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Get the lateral acceleration to use during falling movement. The Z component of the result is ignored. </para>
+		/// Get the lateral acceleration to use during falling movement. The Z component of the result is ignored.
 		/// <para>Default implementation returns current Acceleration value modified by GetAirControl(), with Z component removed, </para>
-		/// <para>with magnitude clamped to GetMaxAcceleration(). </para>
+		/// with magnitude clamped to GetMaxAcceleration().
 		/// <para>This function is used internally by PhysFalling(). </para>
-		/// <param name="DeltaTime">Time step for the current update. </param>
-		/// <return>Acceleration to use during falling movement. </return>
 		/// </summary>
+		/// <param name="deltaTime">Time step for the current update.</param>
+		/// <return>Acceleration</return>
 		public virtual FVector GetFallingLateralAcceleration(float deltaTime)
 			=> E_UCharacterMovementComponent_GetFallingLateralAcceleration(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Get current GroundMovementMode value. </para>
-		/// <return>current GroundMovementMode </return>
-		/// <para>@see GroundMovementMode, SetGroundMovementMode() </para>
+		/// Get current GroundMovementMode value.
+		/// <see cref="GroundMovementMode"/>
 		/// </summary>
+		/// <return>current</return>
 		public EMovementMode GetGroundMovementMode()
 			=> (EMovementMode)E_UCharacterMovementComponent_GetGroundMovementMode(this);
 		
 		
 		/// <summary>
-		/// <para>If we have a movement base, get the velocity that should be imparted by that base, usually when jumping off of it. </para>
+		/// If we have a movement base, get the velocity that should be imparted by that base, usually when jumping off of it.
 		/// <para>Only applies the components of the velocity enabled by bImpartBaseVelocityX, bImpartBaseVelocityY, bImpartBaseVelocityZ. </para>
 		/// </summary>
 		public virtual FVector GetImpartedMovementBaseVelocity()
@@ -2881,57 +2881,57 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns the location at the end of the last tick. </para>
+		/// Returns the location at the end of the last tick.
 		/// </summary>
 		public FVector GetLastUpdateLocation()
 			=> E_UCharacterMovementComponent_GetLastUpdateLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the rotation Quat at the end of the last tick. </para>
+		/// Returns the rotation Quat at the end of the last tick.
 		/// </summary>
 		public FQuat GetLastUpdateQuat()
 			=> E_UCharacterMovementComponent_GetLastUpdateQuat(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the rotation at the end of the last tick. </para>
+		/// Returns the rotation at the end of the last tick.
 		/// </summary>
 		public FRotator GetLastUpdateRotation()
 			=> E_UCharacterMovementComponent_GetLastUpdateRotation(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the velocity at the end of the last tick. </para>
+		/// Returns the velocity at the end of the last tick.
 		/// </summary>
 		public FVector GetLastUpdateVelocity()
 			=> E_UCharacterMovementComponent_GetLastUpdateVelocity(this);
 		
 		
 		/// <summary>
-		/// <param name="Delta">is the current move delta (which ended up going over a ledge). </param>
-		/// <return>new delta which moves along the ledge </return>
 		/// </summary>
+		/// <param name="delta">is the current move delta (which ended up going over a ledge).</param>
+		/// <return>new</return>
 		public virtual FVector GetLedgeMove(FVector oldLocation, FVector delta, FVector gravDir)
 			=> E_UCharacterMovementComponent_GetLedgeMove(this, oldLocation, delta, gravDir);
 		
 		
 		/// <summary>
-		/// <para>Returns maximum acceleration for the current state. </para>
+		/// Returns maximum acceleration for the current state.
 		/// </summary>
 		public virtual float GetMaxAcceleration()
 			=> E_UCharacterMovementComponent_GetMaxAcceleration(this);
 		
 		
 		/// <summary>
-		/// <para>Returns maximum deceleration for the current state when braking (ie when there is no acceleration). </para>
+		/// Returns maximum deceleration for the current state when braking (ie when there is no acceleration).
 		/// </summary>
 		public virtual float GetMaxBrakingDeceleration()
 			=> E_UCharacterMovementComponent_GetMaxBrakingDeceleration(this);
 		
 		
 		/// <summary>
-		/// <para>Compute the max jump height based on the JumpZVelocity velocity and gravity. </para>
+		/// Compute the max jump height based on the JumpZVelocity velocity and gravity.
 		/// <para>This does not take into account the CharacterOwner's MaxJumpHoldTime. </para>
 		/// </summary>
 		public virtual float GetMaxJumpHeight()
@@ -2939,7 +2939,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Compute the max jump height based on the JumpZVelocity velocity and gravity. </para>
+		/// Compute the max jump height based on the JumpZVelocity velocity and gravity.
 		/// <para>This does take into account the CharacterOwner's MaxJumpHoldTime. </para>
 		/// </summary>
 		public virtual float GetMaxJumpHeightWithJumpTime()
@@ -2947,7 +2947,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns maximum acceleration for the current state. </para>
+		/// Returns maximum acceleration for the current state.
 		/// </summary>
 		public virtual float GetMinAnalogSpeed()
 			=> E_UCharacterMovementComponent_GetMinAnalogSpeed(this);
@@ -2957,56 +2957,56 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return PrimitiveComponent we are based on (standing and walking on). </para>
+		/// Return PrimitiveComponent we are based on (standing and walking on).
 		/// </summary>
 		public UPrimitiveComponent GetMovementBase()
 			=> E_UCharacterMovementComponent_GetMovementBase(this);
 		
 		
 		/// <summary>
-		/// <para>Returns MovementMode string </para>
+		/// Returns MovementMode string
 		/// </summary>
 		public virtual string GetMovementName()
 			=> E_UCharacterMovementComponent_GetMovementName(this);
 		
 		
 		/// <summary>
-		/// <para>Generate a random angle in degrees that is approximately equal between client and server. </para>
+		/// Generate a random angle in degrees that is approximately equal between client and server.
 		/// <para>Note that in networked games this result changes with low frequency and has a low period, </para>
-		/// <para>so should not be used for frequent randomization. </para>
+		/// so should not be used for frequent randomization.
 		/// </summary>
 		public virtual float GetNetworkSafeRandomAngleDegrees()
 			=> E_UCharacterMovementComponent_GetNetworkSafeRandomAngleDegrees(this);
 		
 		
 		/// <summary>
-		/// <para>Returns The distance from the edge of the capsule within which we don't allow the character to perch on the edge of a surface. </para>
+		/// Returns The distance from the edge of the capsule within which we don't allow the character to perch on the edge of a surface.
 		/// </summary>
 		public float GetPerchRadiusThreshold()
 			=> E_UCharacterMovementComponent_GetPerchRadiusThreshold(this);
 		
 		
 		/// <summary>
-		/// <para>Get the value of ServerLastTransformUpdateTimeStamp. </para>
+		/// Get the value of ServerLastTransformUpdateTimeStamp.
 		/// </summary>
 		public float GetServerLastTransformUpdateTimeStamp()
 			=> E_UCharacterMovementComponent_GetServerLastTransformUpdateTimeStamp(this);
 		
 		
 		/// <summary>
-		/// <para>Compute remaining time step given remaining time and current iterations. </para>
+		/// Compute remaining time step given remaining time and current iterations.
 		/// <para>The last iteration (limited by MaxSimulationIterations) always returns the remaining time, which may violate MaxSimulationTimeStep. </para>
-		/// <param name="RemainingTime">Remaining time in the tick. </param>
-		/// <param name="Iterations">Current iteration of the tick (starting at 1). </param>
-		/// <return>The remaining time step to use for the next sub-step of iteration. </return>
-		/// <para>@see MaxSimulationTimeStep, MaxSimulationIterations </para>
+		/// <see cref="MaxSimulationTimeStep"/>
 		/// </summary>
+		/// <param name="remainingTime">Remaining time in the tick.</param>
+		/// <param name="iterations">Current iteration of the tick (starting at 1).</param>
+		/// <return>The</return>
 		public float GetSimulationTimeStep(float remainingTime, int iterations)
 			=> E_UCharacterMovementComponent_GetSimulationTimeStep(this, remainingTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Returns the radius within which we can stand on the edge of a surface without falling (if this is a walkable surface). </para>
+		/// Returns the radius within which we can stand on the edge of a surface without falling (if this is a walkable surface).
 		/// <para>Simply computed as the capsule radius minus the result of GetPerchRadiusThreshold(). </para>
 		/// </summary>
 		public float GetValidPerchRadius()
@@ -3014,35 +3014,35 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Get the max angle in degrees of a walkable surface for the character. </para>
+		/// Get the max angle in degrees of a walkable surface for the character.
 		/// </summary>
 		public float GetWalkableFloorAngle()
 			=> E_UCharacterMovementComponent_GetWalkableFloorAngle(this);
 		
 		
 		/// <summary>
-		/// <para>Get the Z component of the normal of the steepest walkable surface for the character. Any lower than this and it is not walkable. </para>
+		/// Get the Z component of the normal of the steepest walkable surface for the character. Any lower than this and it is not walkable.
 		/// </summary>
 		public float GetWalkableFloorZ()
 			=> E_UCharacterMovementComponent_GetWalkableFloorZ(this);
 		
 		
 		/// <summary>
-		/// <para>Handle a pending launch during an update. Returns true if the launch was triggered. </para>
+		/// Handle a pending launch during an update. Returns true if the launch was triggered.
 		/// </summary>
 		public virtual bool HandlePendingLaunch()
 			=> E_UCharacterMovementComponent_HandlePendingLaunch(this);
 		
 		
 		/// <summary>
-		/// <para>Limit the slide vector when falling if the resulting slide might boost the character faster upwards. </para>
-		/// <param name="SlideResult">Vector of movement for the slide (usually the result of ComputeSlideVector) </param>
-		/// <param name="Delta">Original attempted move </param>
-		/// <param name="Time">Amount of move to apply (between 0 and 1). </param>
-		/// <param name="Normal">Normal opposed to movement. Not necessarily equal to Hit.Normal (but usually is). </param>
-		/// <param name="Hit">HitResult of the move that resulted in the slide. </param>
-		/// <return>New slide result. </return>
+		/// Limit the slide vector when falling if the resulting slide might boost the character faster upwards.
 		/// </summary>
+		/// <param name="slideResult">Vector of movement for the slide (usually the result of ComputeSlideVector)</param>
+		/// <param name="delta">Original attempted move</param>
+		/// <param name="time">Amount of move to apply (between 0 and 1).</param>
+		/// <param name="normal">Normal opposed to movement. Not necessarily equal to Hit.Normal (but usually is).</param>
+		/// <param name="hit">HitResult of the move that resulted in the slide.</param>
+		/// <return>New</return>
 		protected virtual FVector HandleSlopeBoosting(FVector slideResult, FVector delta, float time, FVector normal, FHitResult hit)
 			=> E_UCharacterMovementComponent_HandleSlopeBoosting(this, slideResult, delta, time, normal, hit);
 		
@@ -3051,21 +3051,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Trigger OnWalkingOffLedge event on CharacterOwner. </para>
+		/// Trigger OnWalkingOffLedge event on CharacterOwner.
 		/// </summary>
 		public virtual void HandleWalkingOffLedge(FVector previousFloorImpactNormal, FVector previousFloorContactNormal, FVector previousLocation, float timeDelta)
 			=> E_UCharacterMovementComponent_HandleWalkingOffLedge(this, previousFloorImpactNormal, previousFloorContactNormal, previousLocation, timeDelta);
 		
 		
 		/// <summary>
-		/// <para>Returns true if we have Root Motion from any source to use in PerformMovement() physics. </para>
+		/// Returns true if we have Root Motion from any source to use in PerformMovement() physics.
 		/// </summary>
 		public bool HasRootMotionSources()
 			=> E_UCharacterMovementComponent_HasRootMotionSources(this);
 		
 		
 		/// <summary>
-		/// <para>Return true if we have a valid CharacterOwner and UpdatedComponent. </para>
+		/// Return true if we have a valid CharacterOwner and UpdatedComponent.
 		/// </summary>
 		public virtual bool HasValidData()
 			=> E_UCharacterMovementComponent_HasValidData(this);
@@ -3075,7 +3075,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns true if currently performing a movement update. </para>
+		/// Returns true if currently performing a movement update.
 		/// <para>@see bMovementInProgress </para>
 		/// </summary>
 		public bool IsMovementInProgress()
@@ -3083,28 +3083,28 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Verify that the supplied hit result is a valid landing spot when falling. </para>
+		/// Verify that the supplied hit result is a valid landing spot when falling.
 		/// </summary>
 		public virtual bool IsValidLandingSpot(FVector capsuleLocation, FHitResult hit)
 			=> E_UCharacterMovementComponent_IsValidLandingSpot(this, capsuleLocation, hit);
 		
 		
 		/// <summary>
-		/// <para>Return true if the hit result should be considered a walkable surface for the character. </para>
+		/// Return true if the hit result should be considered a walkable surface for the character.
 		/// </summary>
 		public virtual bool IsWalkable(FHitResult hit)
 			=> E_UCharacterMovementComponent_IsWalkable(this, hit);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the character is in the 'Walking' movement mode. </para>
+		/// Returns true if the character is in the 'Walking' movement mode.
 		/// </summary>
 		public bool IsWalking()
 			=> E_UCharacterMovementComponent_IsWalking(this);
 		
 		
 		/// <summary>
-		/// <para>Return true if the 2D distance to the impact point is inside the edge tolerance (CapsuleRadius minus a small rejection threshold). </para>
+		/// Return true if the 2D distance to the impact point is inside the edge tolerance (CapsuleRadius minus a small rejection threshold).
 		/// <para>Useful for rejecting adjacent hits when finding a floor or landing spot. </para>
 		/// </summary>
 		public virtual bool IsWithinEdgeTolerance(FVector capsuleLocation, FVector testImpactPoint, float capsuleRadius)
@@ -3112,87 +3112,87 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Force this pawn to bounce off its current base, which isn't an acceptable base for it. </para>
+		/// Force this pawn to bounce off its current base, which isn't an acceptable base for it.
 		/// </summary>
 		public virtual void JumpOff(AActor movementBaseActor)
 			=> E_UCharacterMovementComponent_JumpOff(this, movementBaseActor);
 		
 		
 		/// <summary>
-		/// <para>Jump onto shore from water </para>
+		/// Jump onto shore from water
 		/// </summary>
 		public virtual void JumpOutOfWater(FVector wallNormal)
 			=> E_UCharacterMovementComponent_JumpOutOfWater(this, wallNormal);
 		
 		
 		/// <summary>
-		/// <para>Compute distance to the floor from bottom sphere of capsule and store the result in FloorResult. </para>
+		/// Compute distance to the floor from bottom sphere of capsule and store the result in FloorResult.
 		/// <para>This distance is the swept distance of the capsule to the first point impacted by the lower hemisphere, or distance from the bottom of the capsule in the case of a line trace. </para>
-		/// <para>This function does not care if collision is disabled on the capsule (unlike FindFloor). </para>
-		/// <param name="CapsuleLocation">Location where the capsule sweep should originate </param>
-		/// <param name="LineDistance">If non-zero, max distance to test for a simple line check from the capsule base. Used only if the sweep test fails to find a walkable floor, and only returns a valid result if the impact normal is a walkable normal. </param>
-		/// <param name="SweepDistance">If non-zero, max distance to use when sweeping a capsule downwards for the test. MUST be greater than or equal to the line distance. </param>
-		/// <param name="SweepRadius">The radius to use for sweep tests. Should be <= capsule radius. </param>
-		/// <param name="FloorResult">Result of the floor check </param>
+		/// This function does not care if collision is disabled on the capsule (unlike FindFloor).
 		/// </summary>
+		/// <param name="capsuleLocation">Location where the capsule sweep should originate</param>
+		/// <param name="lineDistance">If non-zero, max distance to test for a simple line check from the capsule base. Used only if the sweep test fails to find a walkable floor, and only returns a valid result if the impact normal is a walkable normal.</param>
+		/// <param name="sweepDistance">If non-zero, max distance to use when sweeping a capsule downwards for the test. MUST be greater than or equal to the line distance.</param>
+		/// <param name="sweepRadius">The radius to use for sweep tests. Should be <= capsule radius.</param>
+		/// <param name="floorResult">Result of the floor check</param>
 		public virtual void ComputeFloorDistance(FVector capsuleLocation, float lineDistance, float sweepDistance, float sweepRadius, FFindFloorResult floorResult)
 			=> E_UCharacterMovementComponent_K2_ComputeFloorDist(this, capsuleLocation, lineDistance, sweepDistance, sweepRadius, floorResult);
 		
 		
 		/// <summary>
-		/// <para>Sweeps a vertical trace to find the floor for the capsule at the given location. Will attempt to perch if ShouldComputePerchResult() returns true for the downward sweep result. </para>
+		/// Sweeps a vertical trace to find the floor for the capsule at the given location. Will attempt to perch if ShouldComputePerchResult() returns true for the downward sweep result.
 		/// <para>No floor will be found if collision is disabled on the capsule! </para>
-		/// <param name="CapsuleLocation">Location where the capsule sweep should originate </param>
-		/// <param name="FloorResult">Result of the floor check </param>
 		/// </summary>
+		/// <param name="capsuleLocation">Location where the capsule sweep should originate</param>
+		/// <param name="floorResult">Result of the floor check</param>
 		public virtual void K2_FindFloor(FVector capsuleLocation, FFindFloorResult floorResult)
 			=> E_UCharacterMovementComponent_K2_FindFloor(this, capsuleLocation, floorResult);
 		
 		
 		/// <summary>
-		/// <para>Returns maximum acceleration for the current state, based on MaxAcceleration and any additional modifiers. </para>
+		/// Returns maximum acceleration for the current state, based on MaxAcceleration and any additional modifiers.
 		/// </summary>
 		public virtual float K2_GetModifiedMaxAcceleration()
 			=> E_UCharacterMovementComponent_K2_GetModifiedMaxAcceleration(this);
 		
 		
 		/// <summary>
-		/// <para>Get the max angle in degrees of a walkable surface for the character. </para>
+		/// Get the max angle in degrees of a walkable surface for the character.
 		/// </summary>
 		public float K2_GetWalkableFloorAngle()
 			=> E_UCharacterMovementComponent_K2_GetWalkableFloorAngle(this);
 		
 		
 		/// <summary>
-		/// <para>Get the Z component of the normal of the steepest walkable surface for the character. Any lower than this and it is not walkable. </para>
+		/// Get the Z component of the normal of the steepest walkable surface for the character. Any lower than this and it is not walkable.
 		/// </summary>
 		public float K2_GetWalkableFloorZ()
 			=> E_UCharacterMovementComponent_K2_GetWalkableFloorZ(this);
 		
 		
 		/// <summary>
-		/// <para>Queue a pending launch with velocity LaunchVel. </para>
+		/// Queue a pending launch with velocity LaunchVel.
 		/// </summary>
 		public virtual void Launch(FVector launchVel)
 			=> E_UCharacterMovementComponent_Launch(this, launchVel);
 		
 		
 		/// <summary>
-		/// <para>Limits the air control to use during falling movement, given an impact while falling. </para>
+		/// Limits the air control to use during falling movement, given an impact while falling.
 		/// <para>This function is used internally by PhysFalling(). </para>
-		/// <param name="DeltaTime">Time step for the current update. </param>
-		/// <param name="FallAcceleration">Acceleration used during movement. </param>
-		/// <param name="HitResult">Result of impact. </param>
-		/// <param name="bCheckForValidLandingSpot">If true, will use IsValidLandingSpot() to determine if HitResult is a walkable surface. If false, this check is skipped. </param>
-		/// <return>Modified air control acceleration to use during falling movement. </return>
-		/// <para>@see PhysFalling() </para>
+		/// <see cref="PhysFalling"/>
 		/// </summary>
+		/// <param name="deltaTime">Time step for the current update.</param>
+		/// <param name="fallAcceleration">Acceleration used during movement.</param>
+		/// <param name="hitResult">Result of impact.</param>
+		/// <param name="bCheckForValidLandingSpot">If true, will use IsValidLandingSpot() to determine if HitResult is a walkable surface. If false, this check is skipped.</param>
+		/// <return>Modified</return>
 		protected virtual FVector LimitAirControl(float deltaTime, FVector fallAcceleration, FHitResult hitResult, bool bCheckForValidLandingSpot)
 			=> E_UCharacterMovementComponent_LimitAirControl(this, deltaTime, fallAcceleration, hitResult, bCheckForValidLandingSpot);
 		
 		
 		/// <summary>
-		/// <para>Adjusts velocity when walking so that Z velocity is zero. </para>
+		/// Adjusts velocity when walking so that Z velocity is zero.
 		/// <para>When bMaintainHorizontalGroundVelocity is false, also rescales the velocity vector to maintain the original magnitude, but in the horizontal direction. </para>
 		/// </summary>
 		protected virtual void MaintainHorizontalGroundVelocity()
@@ -3200,14 +3200,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Call SaveBaseLocation() if not deferring updates (bDeferUpdateBasedMovement is false). </para>
+		/// Call SaveBaseLocation() if not deferring updates (bDeferUpdateBasedMovement is false).
 		/// </summary>
 		public virtual void MaybeSaveBaseLocation()
 			=> E_UCharacterMovementComponent_MaybeSaveBaseLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Update or defer updating of position based on Base movement </para>
+		/// Update or defer updating of position based on Base movement
 		/// </summary>
 		public virtual void MaybeUpdateBasedMovement(float deltaSeconds)
 			=> E_UCharacterMovementComponent_MaybeUpdateBasedMovement(this, deltaSeconds);
@@ -3217,42 +3217,42 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Compute new falling velocity from given velocity and gravity. Applies the limits of the current Physics Volume's TerminalVelocity. </para>
+		/// Compute new falling velocity from given velocity and gravity. Applies the limits of the current Physics Volume's TerminalVelocity.
 		/// </summary>
 		public virtual FVector NewFallVelocity(FVector initialVelocity, FVector gravity, float deltaTime)
 			=> E_UCharacterMovementComponent_NewFallVelocity(this, initialVelocity, gravity, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Called if bNotifyApex is true and character has just passed the apex of its jump. </para>
+		/// Called if bNotifyApex is true and character has just passed the apex of its jump.
 		/// </summary>
 		public virtual void NotifyJumpApex()
 			=> E_UCharacterMovementComponent_NotifyJumpApex(this);
 		
 		
 		/// <summary>
-		/// <para>Notification that the character is stuck in geometry.  Only called during walking movement. </para>
+		/// Notification that the character is stuck in geometry.  Only called during walking movement.
 		/// </summary>
 		protected virtual void OnCharacterStuckInGeometry(FHitResult hit)
 			=> E_UCharacterMovementComponent_OnCharacterStuckInGeometry(this, hit);
 		
 		
 		/// <summary>
-		/// <para>Called by UCharacterMovementComponent::VerifyClientTimeStamp() when a client timestamp reset has been detected and is valid. </para>
+		/// Called by UCharacterMovementComponent::VerifyClientTimeStamp() when a client timestamp reset has been detected and is valid.
 		/// </summary>
 		protected virtual void OnClientTimeStampResetDetected()
 			=> E_UCharacterMovementComponent_OnClientTimeStampResetDetected(this);
 		
 		
 		/// <summary>
-		/// <para>Called after MovementMode has changed. Base implementation does special handling for starting certain modes, then notifies the CharacterOwner. </para>
+		/// Called after MovementMode has changed. Base implementation does special handling for starting certain modes, then notifies the CharacterOwner.
 		/// </summary>
 		protected virtual void OnMovementModeChanged(EMovementMode previousMovementMode, byte previousCustomMode)
 			=> E_UCharacterMovementComponent_OnMovementModeChanged(this, (byte)previousMovementMode, previousCustomMode);
 		
 		
 		/// <summary>
-		/// <para>Event triggered at the end of a movement update. If scoped movement updates are enabled (bEnableScopedMovementUpdates), this is within such a scope. </para>
+		/// Event triggered at the end of a movement update. If scoped movement updates are enabled (bEnableScopedMovementUpdates), this is within such a scope.
 		/// <para>If that is not desired, bind to the CharacterOwner's OnMovementUpdated event instead, as that is triggered after the scoped movement update. </para>
 		/// </summary>
 		protected virtual void OnMovementUpdated(float deltaSeconds, FVector oldLocation, FVector oldVelocity)
@@ -3260,41 +3260,41 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called during ApplyRootMotionSource call, useful for project-specific alerts for "something is about to be altering our movement" </para>
+		/// Called during ApplyRootMotionSource call, useful for project-specific alerts for "something is about to be altering our movement"
 		/// </summary>
 		public virtual void OnRootMotionSourceBeingApplied(FRootMotionSource source)
 			=> E_UCharacterMovementComponent_OnRootMotionSourceBeingApplied(this, source);
 		
 		
 		/// <summary>
-		/// <para>Called by UCharacterMovementComponent::ProcessClientTimeStampForTimeDiscrepancy() (on server) when the time from client moves </para>
+		/// Called by UCharacterMovementComponent::ProcessClientTimeStampForTimeDiscrepancy() (on server) when the time from client moves
 		/// <para>significantly differs from the server time, indicating potential time manipulation by clients (speed hacks, significant network </para>
-		/// <para>issues, client performance problems) </para>
-		/// <param name="CurrentTimeDiscrepancy">Accumulated time difference between client ServerMove and server time - this is bounded </param>
+		/// issues, client performance problems)
 		/// <para>by MovementTimeDiscrepancy config variables in AGameNetworkManager, and is the value with which </para>
-		/// <para>we test against to trigger this function. This is reset when MovementTimeDiscrepancy resolution </para>
+		/// we test against to trigger this function. This is reset when MovementTimeDiscrepancy resolution
 		/// <para>is enabled </para>
-		/// <param name="LifetimeRawTimeDiscrepancy">Accumulated time difference between client ServerMove and server time - this is unbounded </param>
-		/// <para>and does NOT get affected by MovementTimeDiscrepancy resolution, and is useful as a longer-term </para>
+		/// and does NOT get affected by MovementTimeDiscrepancy resolution, and is useful as a longer-term
 		/// <para>view of how the given client is performing. High magnitude unbounded error points to </para>
-		/// <para>intentional tampering by a client vs. occasional "naturally caused" spikes in error due to </para>
+		/// intentional tampering by a client vs. occasional "naturally caused" spikes in error due to
 		/// <para>burst packet loss/performance hitches </para>
-		/// <param name="Lifetime">Game time over which LifetimeRawTimeDiscrepancy has accrued (useful for determining severity </param>
-		/// <para>of LifetimeUnboundedError) </para>
-		/// <param name="CurrentMoveError">Time difference between client ServerMove and how much time has passed on the server for the </param>
+		/// of LifetimeUnboundedError)
 		/// <para>current move that has caused TimeDiscrepancy to accumulate enough to trigger detection. </para>
 		/// </summary>
+		/// <param name="currentTimeDiscrepancy">Accumulated time difference between client ServerMove and server time - this is bounded</param>
+		/// <param name="lifetimeRawTimeDiscrepancy">Accumulated time difference between client ServerMove and server time - this is unbounded</param>
+		/// <param name="lifetime">Game time over which LifetimeRawTimeDiscrepancy has accrued (useful for determining severity</param>
+		/// <param name="currentMoveError">Time difference between client ServerMove and how much time has passed on the server for the</param>
 		protected virtual void OnTimeDiscrepancyDetected(float currentTimeDiscrepancy, float lifetimeRawTimeDiscrepancy, float lifetime, float currentMoveError)
 			=> E_UCharacterMovementComponent_OnTimeDiscrepancyDetected(this, currentTimeDiscrepancy, lifetimeRawTimeDiscrepancy, lifetime, currentMoveError);
 		
 		
 		/// <summary>
-		/// <para>Event triggered when we are moving on a base but we are not able to move the full DeltaPosition because something has blocked us. </para>
+		/// Event triggered when we are moving on a base but we are not able to move the full DeltaPosition because something has blocked us.
 		/// <para>Note: MoveComponentFlags includes the flag to ignore the movement base while this event is fired. </para>
-		/// <param name="DeltaPosition">How far we tried to move with the base. </param>
-		/// <param name="OldLocation">Location before we tried to move with the base. </param>
-		/// <param name="MoveOnBaseHit">Hit result for the object we hit when trying to move with the base. </param>
 		/// </summary>
+		/// <param name="deltaPosition">How far we tried to move with the base.</param>
+		/// <param name="oldLocation">Location before we tried to move with the base.</param>
+		/// <param name="moveOnBaseHit">Hit result for the object we hit when trying to move with the base.</param>
 		protected virtual void OnUnableToFollowBaseMove(FVector deltaPosition, FVector oldLocation, FHitResult moveOnBaseHit)
 			=> E_UCharacterMovementComponent_OnUnableToFollowBaseMove(this, deltaPosition, oldLocation, moveOnBaseHit);
 		
@@ -3303,103 +3303,103 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update Velocity and Acceleration to air control in the desired Direction for character using path following. </para>
-		/// <param name="Direction">is the desired direction of movement </param>
-		/// <param name="ZDiff">is the height difference between the destination and the Pawn's current position </param>
-		/// <para>@see RequestDirectMove() </para>
+		/// Update Velocity and Acceleration to air control in the desired Direction for character using path following.
+		/// <see cref="RequestDirectMove"/>
 		/// </summary>
+		/// <param name="direction">is the desired direction of movement</param>
+		/// <param name="zDiff">is the height difference between the destination and the Pawn's current position</param>
 		public virtual void PerformAirControlForPathFollowing(FVector direction, float zDiff)
 			=> E_UCharacterMovementComponent_PerformAirControlForPathFollowing(this, direction, zDiff);
 		
 		
 		/// <summary>
-		/// <para>Perform movement on an autonomous client </para>
+		/// Perform movement on an autonomous client
 		/// </summary>
 		protected virtual void PerformMovement(float deltaTime)
 			=> E_UCharacterMovementComponent_PerformMovement(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
+		/// @note Movement update functions should only be called through StartNewPhysics()
 		/// </summary>
 		protected virtual void PhysCustom(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysCustom(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Handle falling movement. </para>
+		/// Handle falling movement.
 		/// </summary>
 		public virtual void PhysFalling(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysFalling(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
+		/// @note Movement update functions should only be called through StartNewPhysics()
 		/// </summary>
 		protected virtual void PhysFlying(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysFlying(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Perform rotation over deltaTime </para>
+		/// Perform rotation over deltaTime
 		/// </summary>
 		public virtual void PhysicsRotation(float deltaTime)
 			=> E_UCharacterMovementComponent_PhysicsRotation(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
+		/// @note Movement update functions should only be called through StartNewPhysics()
 		/// </summary>
 		protected virtual void PhysNavWalking(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysNavWalking(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
+		/// @note Movement update functions should only be called through StartNewPhysics()
 		/// </summary>
 		protected virtual void PhysSwimming(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysSwimming(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>@note Movement update functions should only be called through StartNewPhysics() </para>
+		/// @note Movement update functions should only be called through StartNewPhysics()
 		/// </summary>
 		protected virtual void PhysWalking(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_PhysWalking(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Handle landing against Hit surface over remaingTime and iterations, calling SetPostLandedPhysics() and starting the new movement mode. </para>
+		/// Handle landing against Hit surface over remaingTime and iterations, calling SetPostLandedPhysics() and starting the new movement mode.
 		/// </summary>
 		protected virtual void ProcessLanded(FHitResult hit, float remainingTime, int iterations)
 			=> E_UCharacterMovementComponent_ProcessLanded(this, hit, remainingTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Attempts to better align navmesh walking characters with underlying geometry (sometimes </para>
+		/// Attempts to better align navmesh walking characters with underlying geometry (sometimes
 		/// <para>navmesh can differ quite significantly from geometry). </para>
-		/// <para>Updates CachedProjectedNavMeshHitResult, access this for more info about hits. </para>
+		/// Updates CachedProjectedNavMeshHitResult, access this for more info about hits.
 		/// </summary>
 		protected virtual FVector ProjectLocationFromNavMesh(float deltaSeconds, FVector currentFeetLocation, FVector targetNavLocation, float upOffset, float downOffset)
 			=> E_UCharacterMovementComponent_ProjectLocationFromNavMesh(this, deltaSeconds, currentFeetLocation, targetNavLocation, upOffset, downOffset);
 		
 		
 		/// <summary>
-		/// <para>Remove a RootMotionSource from current root motion by name </para>
+		/// Remove a RootMotionSource from current root motion by name
 		/// </summary>
 		public void RemoveRootMotionSource(string instanceName)
 			=> E_UCharacterMovementComponent_RemoveRootMotionSource(this, instanceName);
 		
 		
 		/// <summary>
-		/// <para>Perform local movement and send the move to the server. </para>
+		/// Perform local movement and send the move to the server.
 		/// </summary>
 		protected virtual void ReplicateMoveToServer(float deltaTime, FVector newAcceleration)
 			=> E_UCharacterMovementComponent_ReplicateMoveToServer(this, deltaTime, newAcceleration);
 		
 		
 		/// <summary>
-		/// <para>Revert to previous position OldLocation, return to being based on OldBase. </para>
+		/// Revert to previous position OldLocation, return to being based on OldBase.
 		/// <para>if bFailMove, stop movement and notify controller </para>
 		/// </summary>
 		public void RevertMove(FVector oldLocation, UPrimitiveComponent oldBase, FVector inOldBaseLocation, FFindFloorResult oldFloor, bool bFailMove)
@@ -3407,46 +3407,46 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Round acceleration, for better consistency and lower bandwidth in networked games. </para>
+		/// Round acceleration, for better consistency and lower bandwidth in networked games.
 		/// </summary>
 		public virtual FVector RoundAcceleration(FVector inAccel)
 			=> E_UCharacterMovementComponent_RoundAcceleration(this, inAccel);
 		
 		
 		/// <summary>
-		/// <para>Update OldBaseLocation and OldBaseQuat if there is a valid movement base, and store the relative location/rotation if necessary. Ignores bDeferUpdateBasedMovement and forces the update. </para>
+		/// Update OldBaseLocation and OldBaseQuat if there is a valid movement base, and store the relative location/rotation if necessary. Ignores bDeferUpdateBasedMovement and forces the update.
 		/// </summary>
 		public virtual void SaveBaseLocation()
 			=> E_UCharacterMovementComponent_SaveBaseLocation(this);
 		
 		
 		/// <summary>
-		/// <para>Scale input acceleration, based on movement acceleration rate. </para>
+		/// Scale input acceleration, based on movement acceleration rate.
 		/// </summary>
 		protected virtual FVector ScaleInputAcceleration(FVector inputAcceleration)
 			=> E_UCharacterMovementComponent_ScaleInputAcceleration(this, inputAcceleration);
 		
 		
 		/// <summary>
-		/// <para>Check for Server-Client disagreement in position or other movement state important enough to trigger a client correction. </para>
-		/// <para>@see ServerMoveHandleClientError() </para>
+		/// Check for Server-Client disagreement in position or other movement state important enough to trigger a client correction.
+		/// <see cref="ServerMoveHandleClientError"/>
 		/// </summary>
 		protected virtual bool ServerCheckClientError(float clientTimeStamp, float deltaTime, FVector accel, FVector clientWorldLocation, FVector relativeClientLocation, UPrimitiveComponent clientMovementBase, string clientBaseBoneName, byte clientMovementMode)
 			=> E_UCharacterMovementComponent_ServerCheckClientError(this, clientTimeStamp, deltaTime, accel, clientWorldLocation, relativeClientLocation, clientMovementBase, clientBaseBoneName, clientMovementMode);
 		
 		
 		/// <summary>
-		/// <para>Have the server check if the client is outside an error tolerance, and queue a client adjustment if so. </para>
+		/// Have the server check if the client is outside an error tolerance, and queue a client adjustment if so.
 		/// <para>If either GetPredictionData_Server_Character()->bForceClientUpdate or ServerCheckClientError() are true, the client adjustment will be sent. </para>
-		/// <para>RelativeClientLocation will be a relative location if MovementBaseUtility::UseRelativePosition(ClientMovementBase) is true, or a world location if false. </para>
-		/// <para>@see ServerCheckClientError() </para>
+		/// RelativeClientLocation will be a relative location if MovementBaseUtility::UseRelativePosition(ClientMovementBase) is true, or a world location if false.
+		/// <see cref="ServerCheckClientError"/>
 		/// </summary>
 		protected virtual void ServerMoveHandleClientError(float clientTimeStamp, float deltaTime, FVector accel, FVector relativeClientLocation, UPrimitiveComponent clientMovementBase, string clientBaseBoneName, byte clientMovementMode)
 			=> E_UCharacterMovementComponent_ServerMoveHandleClientError(this, clientTimeStamp, deltaTime, accel, relativeClientLocation, clientMovementBase, clientBaseBoneName, clientMovementMode);
 		
 		
 		/// <summary>
-		/// <para>Change avoidance state and registers in RVO manager if needed </para>
+		/// Change avoidance state and registers in RVO manager if needed
 		/// </summary>
 		public void SetAvoidanceEnabled(bool bEnable)
 			=> E_UCharacterMovementComponent_SetAvoidanceEnabled(this, bEnable);
@@ -3456,33 +3456,33 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update the base of the character, which is the PrimitiveComponent we are standing on. </para>
+		/// Update the base of the character, which is the PrimitiveComponent we are standing on.
 		/// </summary>
 		public virtual void SetBase(UPrimitiveComponent newBase, string boneName, bool bNotifyActor)
 			=> E_UCharacterMovementComponent_SetBase(this, newBase, boneName, bNotifyActor);
 		
 		
 		/// <summary>
-		/// <para>Update the base of the character, using the given floor result if it is walkable, or null if not. Calls SetBase(). </para>
+		/// Update the base of the character, using the given floor result if it is walkable, or null if not. Calls SetBase().
 		/// </summary>
 		public void SetBaseFromFloor(FFindFloorResult floorResult)
 			=> E_UCharacterMovementComponent_SetBaseFromFloor(this, floorResult);
 		
 		
 		/// <summary>
-		/// <para>Set movement mode to the default based on the current physics volume. </para>
+		/// Set movement mode to the default based on the current physics volume.
 		/// </summary>
 		public virtual void SetDefaultMovementMode()
 			=> E_UCharacterMovementComponent_SetDefaultMovementMode(this);
 		
 		
 		/// <summary>
-		/// <para>Set movement mode to use when returning to walking movement (either MOVE_Walking or MOVE_NavWalking). </para>
+		/// Set movement mode to use when returning to walking movement (either MOVE_Walking or MOVE_NavWalking).
 		/// <para>If movement mode is currently one of Walking or NavWalking, this will also change the current movement mode (via SetMovementMode()) </para>
-		/// <para>if the new mode is not the current ground mode. </para>
-		/// <param name="NewGroundMovementMode">New ground movement mode. Must be either MOVE_Walking or MOVE_NavWalking, other values are ignored. </param>
+		/// if the new mode is not the current ground mode.
 		/// <para>@see GroundMovementMode </para>
 		/// </summary>
+		/// <param name="newGroundMovementMode">New ground movement mode. Must be either MOVE_Walking or MOVE_NavWalking, other values are ignored.</param>
 		public void SetGroundMovementMode(EMovementMode newGroundMovementMode)
 			=> E_UCharacterMovementComponent_SetGroundMovementMode(this, (byte)newGroundMovementMode);
 		
@@ -3494,60 +3494,60 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Change movement mode. </para>
-		/// <param name="NewMovementMode">The new movement mode </param>
-		/// <param name="NewCustomMode">The new custom sub-mode, only applicable if NewMovementMode is Custom. </param>
+		/// Change movement mode.
 		/// </summary>
+		/// <param name="newMovementMode">The new movement mode</param>
+		/// <param name="newCustomMode">The new custom sub-mode, only applicable if NewMovementMode is Custom.</param>
 		public virtual void SetMovementMode(EMovementMode newMovementMode, byte newCustomMode)
 			=> E_UCharacterMovementComponent_SetMovementMode(this, (byte)newMovementMode, newCustomMode);
 		
 		
 		/// <summary>
-		/// <para>Switch collision settings for NavWalking mode (ignore world collisions) </para>
+		/// Switch collision settings for NavWalking mode (ignore world collisions)
 		/// </summary>
 		protected virtual void SetNavWalkingPhysics(bool bEnable)
 			=> E_UCharacterMovementComponent_SetNavWalkingPhysics(this, bEnable);
 		
 		
 		/// <summary>
-		/// <para>Use new physics after landing. Defaults to swimming if in water, walking otherwise. </para>
+		/// Use new physics after landing. Defaults to swimming if in water, walking otherwise.
 		/// </summary>
 		protected virtual void SetPostLandedPhysics(FHitResult hit)
 			=> E_UCharacterMovementComponent_SetPostLandedPhysics(this, hit);
 		
 		
 		/// <summary>
-		/// <para>Set the max angle in degrees of a walkable surface for the character. Also computes WalkableFloorZ. </para>
+		/// Set the max angle in degrees of a walkable surface for the character. Also computes WalkableFloorZ.
 		/// </summary>
 		public void SetWalkableFloorAngle(float inWalkableFloorAngle)
 			=> E_UCharacterMovementComponent_SetWalkableFloorAngle(this, inWalkableFloorAngle);
 		
 		
 		/// <summary>
-		/// <para>Set the Z component of the normal of the steepest walkable surface for the character. Also computes WalkableFloorAngle. </para>
+		/// Set the Z component of the normal of the steepest walkable surface for the character. Also computes WalkableFloorAngle.
 		/// </summary>
 		public void SetWalkableFloorZ(float inWalkableFloorZ)
 			=> E_UCharacterMovementComponent_SetWalkableFloorZ(this, inWalkableFloorZ);
 		
 		
 		/// <summary>
-		/// <para>On the server if we know we are having our replication rate throttled, this method checks if important replicated properties have changed that should cause us to return to the normal replication rate. </para>
+		/// On the server if we know we are having our replication rate throttled, this method checks if important replicated properties have changed that should cause us to return to the normal replication rate.
 		/// </summary>
 		protected virtual bool ShouldCancelAdaptiveReplication()
 			=> E_UCharacterMovementComponent_ShouldCancelAdaptiveReplication(this);
 		
 		
 		/// <summary>
-		/// <para>Whether Character should go into falling mode when walking and changing position, based on an old and new floor result (both of which are considered walkable). </para>
+		/// Whether Character should go into falling mode when walking and changing position, based on an old and new floor result (both of which are considered walkable).
 		/// <para>Default implementation always returns false. </para>
-		/// <return>true if Character should start falling </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool ShouldCatchAir(FFindFloorResult oldFloor, FFindFloorResult newFloor)
 			=> E_UCharacterMovementComponent_ShouldCatchAir(this, oldFloor, newFloor);
 		
 		
 		/// <summary>
-		/// <para>Determine whether we should try to find a valid landing spot after an impact with an invalid one (based on the Hit result). </para>
+		/// Determine whether we should try to find a valid landing spot after an impact with an invalid one (based on the Hit result).
 		/// <para>For example, landing on the lower portion of the capsule on the edge of geometry may be a walkable surface, but could have reported an unwalkable impact normal. </para>
 		/// </summary>
 		public virtual bool ShouldCheckForValidLandingSpot(float deltaTime, FVector delta, FHitResult hit)
@@ -3555,58 +3555,58 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Check if the result of a sweep test (passed in InHit) might be a valid location to perch, in which case we should use ComputePerchResult to validate the location. </para>
+		/// Check if the result of a sweep test (passed in InHit) might be a valid location to perch, in which case we should use ComputePerchResult to validate the location.
 		/// <para>@see ComputePerchResult </para>
-		/// <param name="InHit">Result of the last sweep test before this query. </param>
-		/// <param name="bCheckRadius">If true, only allow the perch test if the impact point is outside the radius returned by GetValidPerchRadius(). </param>
-		/// <return>Whether perching may be possible, such that ComputePerchResult can return a valid result. </return>
 		/// </summary>
+		/// <param name="inHit">Result of the last sweep test before this query.</param>
+		/// <param name="bCheckRadius">If true, only allow the perch test if the impact point is outside the radius returned by GetValidPerchRadius().</param>
+		/// <return>Whether</return>
 		public virtual bool ShouldComputePerchResult(FHitResult inHit, bool bCheckRadius)
 			=> E_UCharacterMovementComponent_ShouldComputePerchResult(this, inHit, bCheckRadius);
 		
 		
 		/// <summary>
-		/// <para>Determine whether the Character should jump when exiting water. </para>
-		/// <param name="JumpDir">is the desired direction to jump out of water </param>
-		/// <return>true if Pawn should jump out of water </return>
+		/// Determine whether the Character should jump when exiting water.
 		/// </summary>
+		/// <param name="jumpDir">is the desired direction to jump out of water</param>
+		/// <return>true</return>
 		public virtual bool ShouldJumpOutOfWater(FVector jumpDir)
 			=> E_UCharacterMovementComponent_ShouldJumpOutOfWater(this, jumpDir);
 		
 		
 		/// <summary>
-		/// <para>if true, DesiredRotation will be restricted to only Yaw component in PhysicsRotation() </para>
+		/// if true, DesiredRotation will be restricted to only Yaw component in PhysicsRotation()
 		/// </summary>
 		public virtual bool ShouldRemainVertical()
 			=> E_UCharacterMovementComponent_ShouldRemainVertical(this);
 		
 		
 		/// <summary>
-		/// <para>Special Tick for Simulated Proxies </para>
+		/// Special Tick for Simulated Proxies
 		/// </summary>
 		protected void SimulatedTick(float deltaSeconds)
 			=> E_UCharacterMovementComponent_SimulatedTick(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Simulate movement on a non-owning client. Called by SimulatedTick(). </para>
+		/// Simulate movement on a non-owning client. Called by SimulatedTick().
 		/// </summary>
 		protected virtual void SimulateMovement(float deltaTime)
 			=> E_UCharacterMovementComponent_SimulateMovement(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Smooth mesh location for network interpolation, based on values set up by SmoothCorrection. </para>
+		/// Smooth mesh location for network interpolation, based on values set up by SmoothCorrection.
 		/// <para>Internally this simply calls SmoothClientPosition_Interpolate() then SmoothClientPosition_UpdateVisuals(). </para>
-		/// <para>This function is not called when bNetworkSmoothingComplete is true. </para>
-		/// <param name="DeltaSeconds">Time since last update. </param>
+		/// This function is not called when bNetworkSmoothingComplete is true.
 		/// </summary>
+		/// <param name="deltaSeconds">Time since last update.</param>
 		protected virtual void SmoothClientPosition(float deltaSeconds)
 			=> E_UCharacterMovementComponent_SmoothClientPosition(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Update interpolation values for client smoothing. Does not change actual mesh location. </para>
+		/// Update interpolation values for client smoothing. Does not change actual mesh location.
 		/// <para>Sets bNetworkSmoothingComplete to true when the interpolation reaches the target. </para>
 		/// </summary>
 		protected void SmoothClientPosition_Interpolate(float deltaSeconds)
@@ -3614,34 +3614,34 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update mesh location based on interpolated values. </para>
+		/// Update mesh location based on interpolated values.
 		/// </summary>
 		protected void SmoothClientPosition_UpdateVisuals()
 			=> E_UCharacterMovementComponent_SmoothClientPosition_UpdateVisuals(this);
 		
 		
 		/// <summary>
-		/// <para>Transition from walking to falling </para>
+		/// Transition from walking to falling
 		/// </summary>
 		public virtual void StartFalling(int iterations, float remainingTime, float timeTick, FVector delta, FVector subLoc)
 			=> E_UCharacterMovementComponent_StartFalling(this, iterations, remainingTime, timeTick, delta, subLoc);
 		
 		
 		/// <summary>
-		/// <para>changes physics based on MovementMode </para>
+		/// changes physics based on MovementMode
 		/// </summary>
 		public virtual void StartNewPhysics(float deltaTime, int iterations)
 			=> E_UCharacterMovementComponent_StartNewPhysics(this, deltaTime, iterations);
 		
 		
 		/// <summary>
-		/// <para>Handle start swimming functionality </para>
-		/// <param name="OldLocation">Location on last tick </param>
-		/// <param name="OldVelocity">velocity at last tick </param>
-		/// <param name="timeTick">time since at OldLocation </param>
-		/// <param name="remainingTime">DeltaTime to complete transition to swimming </param>
-		/// <param name="Iterations">physics iteration count </param>
+		/// Handle start swimming functionality
 		/// </summary>
+		/// <param name="oldLocation">Location on last tick</param>
+		/// <param name="oldVelocity">velocity at last tick</param>
+		/// <param name="timeTick">time since at OldLocation</param>
+		/// <param name="remainingTime">DeltaTime to complete transition to swimming</param>
+		/// <param name="iterations">physics iteration count</param>
 		public void StartSwimming(FVector oldLocation, FVector oldVelocity, float timeTick, float remainingTime, int iterations)
 			=> E_UCharacterMovementComponent_StartSwimming(this, oldLocation, oldVelocity, timeTick, remainingTime, iterations);
 		
@@ -3650,83 +3650,83 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Ticks the characters pose and accumulates root motion </para>
+		/// Ticks the characters pose and accumulates root motion
 		/// </summary>
 		protected void TickCharacterPose(float deltaTime)
 			=> E_UCharacterMovementComponent_TickCharacterPose(this, deltaTime);
 		
 		
 		/// <summary>
-		/// <para>Checks to see if the current location is not encroaching blocking geometry so the character can leave NavWalking. </para>
+		/// Checks to see if the current location is not encroaching blocking geometry so the character can leave NavWalking.
 		/// <para>Restores collision settings and adjusts character location to avoid getting stuck in geometry. </para>
-		/// <para>If it's not possible, MovementMode change will be delayed until character reach collision free spot. </para>
-		/// <return>True if movement mode was successfully changed </return>
+		/// If it's not possible, MovementMode change will be delayed until character reach collision free spot.
 		/// </summary>
+		/// <return>True</return>
 		protected virtual bool TryToLeaveNavWalking()
 			=> E_UCharacterMovementComponent_TryToLeaveNavWalking(this);
 		
 		
 		/// <summary>
-		/// <para>Checks if default capsule size fits (no encroachment), and trigger OnEndCrouch() on the owner if successful. </para>
-		/// <param name="bClientSimulation">true when called when bIsCrouched is replicated to non owned clients, to update collision cylinder and offset. </param>
+		/// Checks if default capsule size fits (no encroachment), and trigger OnEndCrouch() on the owner if successful.
 		/// </summary>
+		/// <param name="bClientSimulation">true when called when bIsCrouched is replicated to non owned clients, to update collision cylinder and offset.</param>
 		public virtual void UnCrouch(bool bClientSimulation)
 			=> E_UCharacterMovementComponent_UnCrouch(this, bClientSimulation);
 		
 		
 		/// <summary>
-		/// <para>Update position based on Base movement </para>
+		/// Update position based on Base movement
 		/// </summary>
 		public virtual void UpdateBasedMovement(float deltaSeconds)
 			=> E_UCharacterMovementComponent_UpdateBasedMovement(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Update controller's view rotation as pawn's base rotates </para>
+		/// Update controller's view rotation as pawn's base rotates
 		/// </summary>
 		public virtual void UpdateBasedRotation(FRotator finalRotation, FRotator reducedRotation)
 			=> E_UCharacterMovementComponent_UpdateBasedRotation(this, finalRotation, reducedRotation);
 		
 		
 		/// <summary>
-		/// <para>Update the character state in PerformMovement after the position change. Some rotation updates happen after this. </para>
+		/// Update the character state in PerformMovement after the position change. Some rotation updates happen after this.
 		/// </summary>
 		public virtual void UpdateCharacterStateAfterMovement(float deltaSeconds)
 			=> E_UCharacterMovementComponent_UpdateCharacterStateAfterMovement(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>Update the character state in PerformMovement right before doing the actual position change </para>
+		/// Update the character state in PerformMovement right before doing the actual position change
 		/// </summary>
 		public virtual void UpdateCharacterStateBeforeMovement(float deltaSeconds)
 			=> E_UCharacterMovementComponent_UpdateCharacterStateBeforeMovement(this, deltaSeconds);
 		
 		
 		/// <summary>
-		/// <para>React to instantaneous change in position. Invalidates cached floor recomputes it if possible if there is a current movement base. </para>
+		/// React to instantaneous change in position. Invalidates cached floor recomputes it if possible if there is a current movement base.
 		/// </summary>
 		public virtual void UpdateFloorFromAdjustment()
 			=> E_UCharacterMovementComponent_UpdateFloorFromAdjustment(this);
 		
 		
 		/// <summary>
-		/// <para>Unpack compressed flags from a saved move and set state accordingly. See FSavedMove_Character. </para>
+		/// Unpack compressed flags from a saved move and set state accordingly. See FSavedMove_Character.
 		/// </summary>
 		protected virtual void UpdateFromCompressedFlags(byte flags)
 			=> E_UCharacterMovementComponent_UpdateFromCompressedFlags(this, flags);
 		
 		
 		/// <summary>
-		/// <para>Used during SimulateMovement for proxies, this computes a new value for Acceleration before running proxy simulation. </para>
+		/// Used during SimulateMovement for proxies, this computes a new value for Acceleration before running proxy simulation.
 		/// <para>The base implementation simply derives a value from the normalized Velocity value, which may help animations that want some indication of the direction of movement. </para>
-		/// <para>Proxies don't implement predictive acceleration by default so this value is not used for the actual simulation. </para>
+		/// Proxies don't implement predictive acceleration by default so this value is not used for the actual simulation.
 		/// </summary>
 		public virtual void UpdateProxyAcceleration()
 			=> E_UCharacterMovementComponent_UpdateProxyAcceleration(this);
 		
 		
 		/// <summary>
-		/// <para>Draw in-world debug information for character movement (called with p.VisualizeMovement > 0). </para>
+		/// Draw in-world debug information for character movement (called with p.VisualizeMovement > 0).
 		/// </summary>
 		public virtual void VisualizeMovement()
 			=> E_UCharacterMovementComponent_VisualizeMovement(this);

@@ -46,7 +46,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Friendly name of action, e.g "jump" </para>
+		/// Friendly name of action, e.g "jump"
 		/// </summary>
 		public string ActionName
 		{
@@ -56,7 +56,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>true if one of the Alt keys must be down when the KeyEvent is received to be acknowledged </para>
+		/// true if one of the Alt keys must be down when the KeyEvent is received to be acknowledged
 		/// </summary>
 		public byte bAlt
 		{
@@ -66,7 +66,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>true if one of the Cmd keys must be down when the KeyEvent is received to be acknowledged </para>
+		/// true if one of the Cmd keys must be down when the KeyEvent is received to be acknowledged
 		/// </summary>
 		public byte bCmd
 		{
@@ -76,7 +76,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>true if one of the Ctrl keys must be down when the KeyEvent is received to be acknowledged </para>
+		/// true if one of the Ctrl keys must be down when the KeyEvent is received to be acknowledged
 		/// </summary>
 		public byte bCtrl
 		{
@@ -86,7 +86,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>true if one of the Shift keys must be down when the KeyEvent is received to be acknowledged </para>
+		/// true if one of the Shift keys must be down when the KeyEvent is received to be acknowledged
 		/// </summary>
 		public byte bShift
 		{

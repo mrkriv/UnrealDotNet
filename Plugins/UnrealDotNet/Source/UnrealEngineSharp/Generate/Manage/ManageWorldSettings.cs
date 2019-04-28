@@ -22,13 +22,13 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Called from GameStateBase, calls BeginPlay on all actors </para>
+		/// Called from GameStateBase, calls BeginPlay on all actors
 		/// </summary>
 		public override void NotifyBeginPlay() { }
 		
 		
 		/// <summary>
-		/// <para>Called from GameStateBase, used to notify native classes of match startup (such as level scripting) </para>
+		/// Called from GameStateBase, used to notify native classes of match startup (such as level scripting)
 		/// </summary>
 		public override void NotifyMatchStarted() { }
 		

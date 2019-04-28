@@ -222,9 +222,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether to use the mesh distance field representation (when present) for shadowing indirect lighting (from lightmaps or skylight) on Movable components. </para>
+		/// Whether to use the mesh distance field representation (when present) for shadowing indirect lighting (from lightmaps or skylight) on Movable components.
 		/// <para>This works like capsule shadows on skeletal meshes, except using the mesh distance field so no physics asset is required. </para>
-		/// <para>The StaticMesh must have 'Generate Mesh Distance Field' enabled, or the project must have 'Generate Mesh Distance Fields' enabled for this feature to work. </para>
+		/// The StaticMesh must have 'Generate Mesh Distance Field' enabled, or the project must have 'Generate Mesh Distance Fields' enabled for this feature to work.
 		/// </summary>
 		public byte DistanceFieldIndirectShadow
 		{
@@ -234,7 +234,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, mesh painting is disallowed on this instance. Set if vertex colors are overridden in a construction script. </para>
+		/// If true, mesh painting is disallowed on this instance. Set if vertex colors are overridden in a construction script.
 		/// </summary>
 		public byte bDisallowMeshPaintPerInstance
 		{
@@ -244,7 +244,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Draw mesh collision if used for complex collision </para>
+		/// Draw mesh collision if used for complex collision
 		/// </summary>
 		public byte bDrawMeshCollisionIfComplex
 		{
@@ -254,7 +254,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Draw mesh collision if used for simple collision </para>
+		/// Draw mesh collision if used for simple collision
 		/// </summary>
 		public byte bDrawMeshCollisionIfSimple
 		{
@@ -270,9 +270,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ignore this instance of this static mesh when calculating streaming information. </para>
+		/// Ignore this instance of this static mesh when calculating streaming information.
 		/// <para>This can be useful when doing things like applying character textures to static geometry, </para>
-		/// <para>to avoid them using distance-based streaming. </para>
+		/// to avoid them using distance-based streaming.
 		/// </summary>
 		public byte bIgnoreInstanceForTextureStreaming
 		{
@@ -282,7 +282,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to override the DistanceFieldSelfShadowBias setting of the static mesh asset with the DistanceFieldSelfShadowBias of this component. </para>
+		/// Whether to override the DistanceFieldSelfShadowBias setting of the static mesh asset with the DistanceFieldSelfShadowBias of this component.
 		/// </summary>
 		public byte bOverrideDistanceFieldSelfShadowBias
 		{
@@ -292,7 +292,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to override the lightmap resolution defined in the static mesh. </para>
+		/// Whether to override the lightmap resolution defined in the static mesh.
 		/// </summary>
 		public byte bOverrideLightMapRes
 		{
@@ -302,7 +302,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to override the MinLOD setting of the static mesh asset with the MinLOD of this component. </para>
+		/// Whether to override the MinLOD setting of the static mesh asset with the MinLOD of this component.
 		/// </summary>
 		public byte bOverrideMinLOD
 		{
@@ -318,7 +318,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings </para>
+		/// If true, WireframeColorOverride will be used. If false, color is determined based on mobility and physics simulation settings
 		/// </summary>
 		public byte bOverrideWireframeColor
 		{
@@ -328,7 +328,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls whether the static mesh component's backface culling should be reversed </para>
+		/// Controls whether the static mesh component's backface culling should be reversed
 		/// </summary>
 		public byte bReverseCulling
 		{
@@ -338,7 +338,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Use the collision profile specified in the StaticMesh asset. </para>
+		/// Use the collision profile specified in the StaticMesh asset.
 		/// </summary>
 		public byte bUseDefaultCollision
 		{
@@ -354,7 +354,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls how dark the dynamic indirect shadow can be. </para>
+		/// Controls how dark the dynamic indirect shadow can be.
 		/// </summary>
 		public float DistanceFieldIndirectShadowMinVisibility
 		{
@@ -364,7 +364,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. </para>
+		/// Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices.
 		/// </summary>
 		public float DistanceFieldSelfShadowBias
 		{
@@ -374,7 +374,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1). </para>
+		/// If 0, auto-select LOD level. if >0, force to (ForcedLodModel-1).
 		/// </summary>
 		public int ForcedLodModel
 		{
@@ -384,7 +384,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The Lightmass settings for this object. </para>
+		/// The Lightmass settings for this object.
 		/// </summary>
 		public FLightmassPrimitiveSettings LightmassSettings
 		{
@@ -394,7 +394,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Specifies the smallest LOD that will be used for this component. </para>
+		/// Specifies the smallest LOD that will be used for this component.
 		/// <para>This is ignored if ForcedLodModel is enabled. </para>
 		/// </summary>
 		public int MinLOD
@@ -405,7 +405,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh. </para>
+		/// Light map resolution to use on this component, used if bOverrideLightMapRes is true and there is a valid StaticMesh.
 		/// </summary>
 		public int OverriddenLightMapRes
 		{
@@ -421,9 +421,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Allows adjusting the desired streaming distance of streaming textures that uses UV 0. </para>
+		/// Allows adjusting the desired streaming distance of streaming textures that uses UV 0.
 		/// <para>1.0 is the default, whereas a higher value makes the textures stream in sooner from far away. </para>
-		/// <para>A lower value (0.0-1.0) makes the textures stream in later (you have to be closer). </para>
+		/// A lower value (0.0-1.0) makes the textures stream in later (you have to be closer).
 		/// <para>Value can be < 0 (from legcay content, or code changes) </para>
 		/// </summary>
 		public float StreamingDistanceMultiplier
@@ -443,96 +443,96 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Save off the data painted on to this mesh per LOD if necessary </para>
+		/// Save off the data painted on to this mesh per LOD if necessary
 		/// </summary>
 		public void CachePaintedDataIfNecessary()
 			=> E_UStaticMeshComponent_CachePaintedDataIfNecessary(this);
 		
 		
 		/// <summary>
-		/// <para>Copies instance vertex colors from the SourceComponent into this component </para>
-		/// <param name="SourceComponent">The component to copy vertex colors from </param>
+		/// Copies instance vertex colors from the SourceComponent into this component
 		/// </summary>
+		/// <param name="sourceComponent">The component to copy vertex colors from</param>
 		public void CopyInstanceVertexColorsIfCompatible(UStaticMeshComponent sourceComponent)
 			=> E_UStaticMeshComponent_CopyInstanceVertexColorsIfCompatible(this, sourceComponent);
 		
 		
 		/// <summary>
-		/// <para>Update the vertex override colors if necessary (i.e. vertices from source mesh have changed from override colors) </para>
-		/// <param name="bRebuildingStaticMesh">true if we are rebuilding the static mesh used by this component </param>
+		/// Update the vertex override colors if necessary (i.e. vertices from source mesh have changed from override colors)
 		/// <para>@returns true if any fixup was performed. </para>
 		/// </summary>
+		/// <param name="bRebuildingStaticMesh">true if we are rebuilding the static mesh used by this component</param>
 		public bool FixupOverrideColorsIfNecessary(bool bRebuildingStaticMesh = false)
 			=> E_UStaticMeshComponent_FixupOverrideColorsIfNecessary(this, bRebuildingStaticMesh);
 		
 		
 		/// <summary>
-		/// <para>Get this components index in its parents blueprint created components array (used for matching instance data) </para>
+		/// Get this components index in its parents blueprint created components array (used for matching instance data)
 		/// </summary>
 		public int GetBlueprintCreatedComponentIndex()
 			=> E_UStaticMeshComponent_GetBlueprintCreatedComponentIndex(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the light and shadow map memory for this primite in its out variables. </para>
+		/// Returns the light and shadow map memory for this primite in its out variables.
 		/// <para>Shadow map memory usage is per light whereof lightmap data is independent of number of lights, assuming at least one. </para>
-		/// <param name="out">TextureLightMapMemoryUsage		Estimated memory usage in bytes for light map texel data </param>
-		/// <param name="out">TextureShadowMapMemoryUsage		Estimated memory usage in bytes for shadow map texel data </param>
-		/// <param name="out">VertexLightMapMemoryUsage		Estimated memory usage in bytes for light map vertex data </param>
-		/// <param name="out">VertexShadowMapMemoryUsage		Estimated memory usage in bytes for shadow map vertex data </param>
-		/// <param name="out">StaticLightingResolution		The StaticLightingResolution used for Texture estimates </param>
-		/// <param name="out">bIsUsingTextureMapping			Set to true if the mesh is using texture mapping currently; false if vertex </param>
-		/// <param name="out">bHasLightmapTexCoords			Set to true if the mesh has the proper UV channels </param>
-		/// <return>bool							true if the mesh has static lighting; false if not </return>
 		/// </summary>
+		/// <param name="@out">TextureLightMapMemoryUsage		Estimated memory usage in bytes for light map texel data</param>
+		/// <param name="@out">TextureShadowMapMemoryUsage		Estimated memory usage in bytes for shadow map texel data</param>
+		/// <param name="@out">VertexLightMapMemoryUsage		Estimated memory usage in bytes for light map vertex data</param>
+		/// <param name="@out">VertexShadowMapMemoryUsage		Estimated memory usage in bytes for shadow map vertex data</param>
+		/// <param name="@out">StaticLightingResolution		The StaticLightingResolution used for Texture estimates</param>
+		/// <param name="@out">bIsUsingTextureMapping			Set to true if the mesh is using texture mapping currently; false if vertex</param>
+		/// <param name="@out">bHasLightmapTexCoords			Set to true if the mesh has the proper UV channels</param>
+		/// <return>bool</return>
 		public virtual bool GetEstimatedLightAndShadowMapMemoryUsage(int textureLightMapMemoryUsage, int textureShadowMapMemoryUsage, int vertexLightMapMemoryUsage, int vertexShadowMapMemoryUsage, int staticLightingResolution, bool bIsUsingTextureMapping, bool bHasLightmapTexCoords)
 			=> E_UStaticMeshComponent_GetEstimatedLightAndShadowMapMemoryUsage(this, textureLightMapMemoryUsage, textureShadowMapMemoryUsage, vertexLightMapMemoryUsage, vertexShadowMapMemoryUsage, staticLightingResolution, bIsUsingTextureMapping, bHasLightmapTexCoords);
 		
 		
 		/// <summary>
-		/// <para>Returns the lightmap resolution used for this primitive instance in the case of it supporting texture light/ shadow maps. </para>
+		/// Returns the lightmap resolution used for this primitive instance in the case of it supporting texture light/ shadow maps.
 		/// <para>This will return the value assuming the primitive will be automatically switched to use texture mapping. </para>
-		/// <param name="Width">out]	Width of light/shadow map </param>
-		/// <param name="Height">out]	Height of light/shadow map </param>
 		/// </summary>
+		/// <param name="width">out]	Width of light/shadow map</param>
+		/// <param name="height">out]	Height of light/shadow map</param>
 		public virtual void GetEstimatedLightMapResolution(int width, int height)
 			=> E_UStaticMeshComponent_GetEstimatedLightMapResolution(this, width, height);
 		
 		
 		/// <summary>
-		/// <para>Get Local bounds </para>
+		/// Get Local bounds
 		/// </summary>
 		public void GetLocalBounds(FVector min, FVector max)
 			=> E_UStaticMeshComponent_GetLocalBounds(this, min, max);
 		
 		
 		/// <summary>
-		/// <para>Helper function to get the FName of the private static mesh member </para>
+		/// Helper function to get the FName of the private static mesh member
 		/// </summary>
 		public string GetMemberNameChecked_StaticMesh()
 			=> E_UStaticMeshComponent_GetMemberNameChecked_StaticMesh(this);
 		
 		
 		/// <summary>
-		/// <para>Get the memory used for texture-based light and shadow maps of the given width and height </para>
-		/// <param name="InWidth">The desired width of the light/shadow map </param>
-		/// <param name="InHeight">The desired height of the light/shadow map </param>
-		/// <param name="OutLightMapMemoryUsage">The resulting lightmap memory used </param>
-		/// <param name="OutShadowMapMemoryUsage">The resulting shadowmap memory used </param>
+		/// Get the memory used for texture-based light and shadow maps of the given width and height
 		/// </summary>
+		/// <param name="inWidth">The desired width of the light/shadow map</param>
+		/// <param name="inHeight">The desired height of the light/shadow map</param>
+		/// <param name="outLightMapMemoryUsage">The resulting lightmap memory used</param>
+		/// <param name="outShadowMapMemoryUsage">The resulting shadowmap memory used</param>
 		public virtual void GetTextureLightAndShadowMapMemoryUsage(int inWidth, int inHeight, int outLightMapMemoryUsage, int outShadowMapMemoryUsage)
 			=> E_UStaticMeshComponent_GetTextureLightAndShadowMapMemoryUsage(this, inWidth, inHeight, outLightMapMemoryUsage, outShadowMapMemoryUsage);
 		
 		
 		/// <summary>
-		/// <para>Get the scale comming form the component, when computing StreamingTexture data. Used to support instanced meshes. </para>
+		/// Get the scale comming form the component, when computing StreamingTexture data. Used to support instanced meshes.
 		/// </summary>
 		public virtual float GetTextureStreamingTransformScale()
 			=> E_UStaticMeshComponent_GetTextureStreamingTransformScale(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the static mesh the component uses has valid lightmap texture coordinates </para>
+		/// Returns true if the static mesh the component uses has valid lightmap texture coordinates
 		/// </summary>
 		public virtual bool HasLightmapTextureCoordinates()
 			=> E_UStaticMeshComponent_HasLightmapTextureCoordinates(this);
@@ -542,30 +542,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Removes instance vertex colors from all LODs </para>
+		/// Removes instance vertex colors from all LODs
 		/// </summary>
 		public void RemoveInstanceVertexColors()
 			=> E_UStaticMeshComponent_RemoveInstanceVertexColors(this);
 		
 		
 		/// <summary>
-		/// <para>Removes instance vertex colors from the specified LOD </para>
-		/// <param name="LODToRemoveColorsFrom">Index of the LOD to remove instance colors from </param>
+		/// Removes instance vertex colors from the specified LOD
 		/// </summary>
+		/// <param name="lODToRemoveColorsFrom">Index of the LOD to remove instance colors from</param>
 		public void RemoveInstanceVertexColorsFromLOD(int lODToRemoveColorsFrom)
 			=> E_UStaticMeshComponent_RemoveInstanceVertexColorsFromLOD(this, lODToRemoveColorsFrom);
 		
 		
 		/// <summary>
-		/// <para>Determines whether any of the component's LODs require override vertex color fixups </para>
-		/// <return>true if any LODs require override vertex color fixups </return>
+		/// Determines whether any of the component's LODs require override vertex color fixups
 		/// </summary>
+		/// <return>true</return>
 		public bool RequiresOverrideVertexColorsFixup()
 			=> E_UStaticMeshComponent_RequiresOverrideVertexColorsFixup(this);
 		
 		
 		/// <summary>
-		/// <para>Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect. </para>
+		/// Sets the component's DistanceFieldSelfShadowBias.  bOverrideDistanceFieldSelfShadowBias must be enabled for this to have an effect.
 		/// </summary>
 		public void SetDistanceFieldSelfShadowBias(float newValue)
 			=> E_UStaticMeshComponent_SetDistanceFieldSelfShadowBias(this, newValue);
@@ -575,60 +575,60 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the value of the MaterialIndexPreview flag and reattaches the component as necessary. </para>
-		/// <param name="InMaterialIndexPreview">New value of MaterialIndexPreview. </param>
+		/// Sets the value of the MaterialIndexPreview flag and reattaches the component as necessary.
 		/// </summary>
+		/// <param name="inMaterialIndexPreview">New value of MaterialIndexPreview.</param>
 		public void SetMaterialPreview(int inMaterialIndexPreview)
 			=> E_UStaticMeshComponent_SetMaterialPreview(this, inMaterialIndexPreview);
 		
 		
 		/// <summary>
-		/// <para>Set forced reverse culling </para>
+		/// Set forced reverse culling
 		/// </summary>
 		public void SetReverseCulling(bool reverseCulling)
 			=> E_UStaticMeshComponent_SetReverseCulling(this, reverseCulling);
 		
 		
 		/// <summary>
-		/// <para>Sets the value of the SectionIndexPreview flag and reattaches the component as necessary. </para>
-		/// <param name="InSectionIndexPreview">New value of SectionIndexPreview. </param>
+		/// Sets the value of the SectionIndexPreview flag and reattaches the component as necessary.
 		/// </summary>
+		/// <param name="inSectionIndexPreview">New value of SectionIndexPreview.</param>
 		public void SetSectionPreview(int inSectionIndexPreview)
 			=> E_UStaticMeshComponent_SetSectionPreview(this, inSectionIndexPreview);
 		
 		
 		/// <summary>
-		/// <para>Switches the static mesh component to use either Texture or Vertex static lighting. </para>
-		/// <param name="bTextureMapping">If true, set the component to use texture light mapping. </param>
+		/// Switches the static mesh component to use either Texture or Vertex static lighting.
 		/// <para>If false, set it to use vertex light mapping. </para>
-		/// <param name="ResolutionToUse">If != 0, set the resolution to the given value. </param>
-		/// <return>bool				true if successfully set; false if not </return>
-		/// <para>If false, set it to use vertex light mapping. </para>
+		/// If false, set it to use vertex light mapping.
 		/// </summary>
+		/// <param name="bTextureMapping">If true, set the component to use texture light mapping.</param>
+		/// <param name="resolutionToUse">If != 0, set the resolution to the given value.</param>
+		/// <return>bool</return>
 		public virtual bool SetStaticLightingMapping(bool bTextureMapping, int resolutionToUse)
 			=> E_UStaticMeshComponent_SetStaticLightingMapping(this, bTextureMapping, resolutionToUse);
 		
 		
 		/// <summary>
-		/// <para>Whether or not the component supports default collision from its static mesh asset </para>
+		/// Whether or not the component supports default collision from its static mesh asset
 		/// </summary>
 		public virtual bool SupportsDefaultCollision()
 			=> E_UStaticMeshComponent_SupportsDefaultCollision(this);
 		
 		
 		/// <summary>
-		/// <para>Sets the BodyInstance to use the mesh's body setup for external collision information </para>
+		/// Sets the BodyInstance to use the mesh's body setup for external collision information
 		/// </summary>
 		public void UpdateCollisionFromStaticMesh()
 			=> E_UStaticMeshComponent_UpdateCollisionFromStaticMesh(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if the component uses texture lightmaps </para>
-		/// <param name="InWidth">in]	The width of the light/shadow map </param>
-		/// <param name="InHeight">in]	The width of the light/shadow map </param>
-		/// <return>bool				true if texture lightmaps are used, false if not </return>
+		/// Returns true if the component uses texture lightmaps
 		/// </summary>
+		/// <param name="inWidth">in]	The width of the light/shadow map</param>
+		/// <param name="inHeight">in]	The width of the light/shadow map</param>
+		/// <return>bool</return>
 		public virtual bool UsesTextureLightmaps(int inWidth, int inHeight)
 			=> E_UStaticMeshComponent_UsesTextureLightmaps(this, inWidth, inHeight);
 		

@@ -41,21 +41,21 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Binds a dynamic delegate and unbinds any bound native delegate </para>
+		/// Binds a dynamic delegate and unbinds any bound native delegate
 		/// </summary>
 		public void BindDelegate(UObject @object, string funcName)
 			=> E_FInputActionUnifiedDelegate_BindDelegate(this, @object, funcName);
 		
 		
 		/// <summary>
-		/// <para>Returns if either the native or dynamic delegate is bound </para>
+		/// Returns if either the native or dynamic delegate is bound
 		/// </summary>
 		public bool IsBound()
 			=> E_FInputActionUnifiedDelegate_IsBound(this);
 		
 		
 		/// <summary>
-		/// <para>Unbinds any bound delegates </para>
+		/// Unbinds any bound delegates
 		/// </summary>
 		public void Unbind()
 			=> E_FInputActionUnifiedDelegate_Unbind(this);

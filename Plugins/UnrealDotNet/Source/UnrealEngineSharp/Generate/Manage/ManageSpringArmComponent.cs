@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done </para>
+		/// Updates the desired arm location, calling BlendLocations to do the actual blending if a trace is done
 		/// </summary>
 		protected override void UpdateDesiredArmLocation(bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float deltaTime) { }
 		

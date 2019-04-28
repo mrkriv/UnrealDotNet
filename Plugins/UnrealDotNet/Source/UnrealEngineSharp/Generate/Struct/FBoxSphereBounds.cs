@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor. </para>
+		/// Default constructor.
 		/// </summary>
 		public FBoxSphereBounds() :
 			base(E_CreateStruct_FBoxSphereBounds(), false)
@@ -29,11 +29,11 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new instance from the specified parameters. </para>
-		/// <param name="InOrigin">origin of the bounding box and sphere. </param>
-		/// <param name="InBoxExtent">half size of box. </param>
-		/// <param name="InSphereRadius">radius of the sphere. </param>
+		/// Creates and initializes a new instance from the specified parameters.
 		/// </summary>
+		/// <param name="inOrigin">origin of the bounding box and sphere.</param>
+		/// <param name="inBoxExtent">half size of box.</param>
+		/// <param name="inSphereRadius">radius of the sphere.</param>
 		public FBoxSphereBounds(FVector inOrigin, FVector inBoxExtent, float inSphereRadius) :
 			base(E_CreateStruct_FBoxSphereBounds_FVector_FVector_float(inOrigin, inBoxExtent, inSphereRadius), false)
 		{
@@ -41,10 +41,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new instance from the given Box and Sphere. </para>
-		/// <param name="Box">The bounding box. </param>
-		/// <param name="Sphere">The bounding sphere. </param>
+		/// Creates and initializes a new instance from the given Box and Sphere.
 		/// </summary>
+		/// <param name="box">The bounding box.</param>
+		/// <param name="sphere">The bounding sphere.</param>
 		public FBoxSphereBounds(FBox box, FSphere sphere) :
 			base(E_CreateStruct_FBoxSphereBounds_FBox_FSphere(box, sphere), false)
 		{
@@ -52,10 +52,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new instance the given Box. </para>
+		/// Creates and initializes a new instance the given Box.
 		/// <para>The sphere radius is taken from the extent of the box. </para>
-		/// <param name="Box">The bounding box. </param>
 		/// </summary>
+		/// <param name="box">The bounding box.</param>
 		public FBoxSphereBounds(FBox box) :
 			base(E_CreateStruct_FBoxSphereBounds_FBox(box), false)
 		{
@@ -63,7 +63,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new instance for the given sphere. </para>
+		/// Creates and initializes a new instance for the given sphere.
 		/// </summary>
 		public FBoxSphereBounds(FSphere sphere) :
 			base(E_CreateStruct_FBoxSphereBounds_FSphere(sphere), false)
@@ -139,7 +139,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Holds the extent of the bounding box. </para>
+		/// Holds the extent of the bounding box.
 		/// </summary>
 		public FVector BoxExtent
 		{
@@ -149,7 +149,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the origin of the bounding box and sphere. </para>
+		/// Holds the origin of the bounding box and sphere.
 		/// </summary>
 		public FVector Origin
 		{
@@ -159,7 +159,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Holds the radius of the bounding sphere. </para>
+		/// Holds the radius of the bounding sphere.
 		/// </summary>
 		public float SphereRadius
 		{
@@ -172,20 +172,20 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Test whether the boxes from two BoxSphereBounds intersect/overlap. </para>
-		/// <param name="A">First BoxSphereBounds to test. </param>
-		/// <param name="B">Second BoxSphereBounds to test. </param>
-		/// <return>true if boxes intersect, false otherwise. </return>
+		/// Test whether the boxes from two BoxSphereBounds intersect/overlap.
 		/// </summary>
+		/// <param name="a">First BoxSphereBounds to test.</param>
+		/// <param name="b">Second BoxSphereBounds to test.</param>
+		/// <return>true</return>
 		public bool BoxesIntersect(FBoxSphereBounds a, FBoxSphereBounds b)
 			=> E_FBoxSphereBounds_BoxesIntersect(this, a, b);
 		
 		
 		/// <summary>
-		/// <para>Calculates the squared distance from a point to a bounding box </para>
-		/// <param name="Point">The point. </param>
-		/// <return>The distance. </return>
+		/// Calculates the squared distance from a point to a bounding box
 		/// </summary>
+		/// <param name="point">The point.</param>
+		/// <return>The</return>
 		public float ComputeSquaredDistanceFromBoxToPoint(FVector point)
 			=> E_FBoxSphereBounds_ComputeSquaredDistanceFromBoxToPoint(this, point);
 		
@@ -197,63 +197,63 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Increase the size of the box and sphere by a given size. </para>
-		/// <param name="ExpandAmount">The size to increase by. </param>
-		/// <return>A new box with the expanded size. </return>
+		/// Increase the size of the box and sphere by a given size.
 		/// </summary>
+		/// <param name="expandAmount">The size to increase by.</param>
+		/// <return>A</return>
 		public FBoxSphereBounds ExpandBy(float expandAmount)
 			=> E_FBoxSphereBounds_ExpandBy(this, expandAmount);
 		
 		
 		/// <summary>
-		/// <para>Gets the bounding box. </para>
-		/// <return>The bounding box. </return>
+		/// Gets the bounding box.
 		/// </summary>
+		/// <return>The</return>
 		public FBox GetBox()
 			=> E_FBoxSphereBounds_GetBox(this);
 		
 		
 		/// <summary>
-		/// <para>Gets the bounding sphere. </para>
-		/// <return>The bounding sphere. </return>
+		/// Gets the bounding sphere.
 		/// </summary>
+		/// <return>The</return>
 		public FSphere GetSphere()
 			=> E_FBoxSphereBounds_GetSphere(this);
 		
 		
 		/// <summary>
-		/// <para>Test whether the spheres from two BoxSphereBounds intersect/overlap. </para>
-		/// <param name="A">First BoxSphereBounds to test. </param>
-		/// <param name="B">Second BoxSphereBounds to test. </param>
-		/// <param name="Tolerance">Error tolerance added to test distance. </param>
-		/// <return>true if spheres intersect, false otherwise. </return>
+		/// Test whether the spheres from two BoxSphereBounds intersect/overlap.
 		/// </summary>
+		/// <param name="a">First BoxSphereBounds to test.</param>
+		/// <param name="b">Second BoxSphereBounds to test.</param>
+		/// <param name="tolerance">Error tolerance added to test distance.</param>
+		/// <return>true</return>
 		public bool SpheresIntersect(FBoxSphereBounds a, FBoxSphereBounds b, float tolerance)
 			=> E_FBoxSphereBounds_SpheresIntersect(this, a, b, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Get a textual representation of this bounding box. </para>
-		/// <return>Text describing the bounding box. </return>
+		/// Get a textual representation of this bounding box.
 		/// </summary>
+		/// <return>Text</return>
 		public override string ToString()
 			=> E_FBoxSphereBounds_ToString(this);
 		
 		
 		/// <summary>
-		/// <para>Gets a bounding volume transformed by a matrix. </para>
-		/// <param name="M">The matrix. </param>
-		/// <return>The transformed volume. </return>
+		/// Gets a bounding volume transformed by a matrix.
 		/// </summary>
+		/// <param name="m">The matrix.</param>
+		/// <return>The</return>
 		public FBoxSphereBounds TransformBy(FMatrix m)
 			=> E_FBoxSphereBounds_TransformBy(this, m);
 		
 		
 		/// <summary>
-		/// <para>Gets a bounding volume transformed by a FTransform object. </para>
-		/// <param name="M">The FTransform object. </param>
-		/// <return>The transformed volume. </return>
+		/// Gets a bounding volume transformed by a FTransform object.
 		/// </summary>
+		/// <param name="m">The FTransform object.</param>
+		/// <return>The</return>
 		public FBoxSphereBounds TransformBy(FTransform m)
 			=> E_FBoxSphereBounds_TransformBy_o1(this, m);
 		

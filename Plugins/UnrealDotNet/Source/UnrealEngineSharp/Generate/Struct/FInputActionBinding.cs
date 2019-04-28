@@ -51,7 +51,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The delegate bound to the action </para>
+		/// The delegate bound to the action
 		/// </summary>
 		public FInputActionUnifiedDelegate ActionDelegate
 		{

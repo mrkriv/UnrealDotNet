@@ -9,7 +9,7 @@ namespace UnrealEngine
 {
 	
 	/// <summary>
-	/// <para>Enum defining if BeginPlay has started or finished </para>
+	/// Enum defining if BeginPlay has started or finished
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:349
 	
@@ -122,7 +122,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Holds the dynamic delegate to call. </para>
+	/// Holds the dynamic delegate to call.
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InputComponent.h:279
 	
@@ -629,7 +629,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>static variable for default data to be used without reconstructing everytime </para>
+	/// static variable for default data to be used without reconstructing everytime
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1063
 	
@@ -718,7 +718,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Collection of the most recent ID mappings </para>
+	/// Collection of the most recent ID mappings
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:2327
 	
@@ -875,7 +875,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Flags controlling how this tag should be shown in the UI </para>
+	/// Flags controlling how this tag should be shown in the UI
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:641
 	
@@ -890,7 +890,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Enum specifying the type of this tag </para>
+	/// Enum specifying the type of this tag
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:626
 	
@@ -941,7 +941,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Cache whether this function was rescheduled as an interval function during StartParallel </para>
+	/// Cache whether this function was rescheduled as an interval function during StartParallel
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:230
 	
@@ -1256,7 +1256,7 @@ namespace UnrealEngine
 
 	
 	/// <summary>
-	/// <para>Enum that dictates what propagation policy to follow when calling SetVisibility or SetHiddenInGame recursively </para>
+	/// Enum that dictates what propagation policy to follow when calling SetVisibility or SetHiddenInGame recursively
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:797
 	

@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Default constructor (no initialization). </para>
+		/// Default constructor (no initialization).
 		/// </summary>
 		public FQuat() :
 			base(E_CreateStruct_FQuat(), false)
@@ -29,12 +29,12 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Constructor. </para>
-		/// <param name="InX">X component of the quaternion </param>
-		/// <param name="InY">Y component of the quaternion </param>
-		/// <param name="InZ">Z component of the quaternion </param>
-		/// <param name="InW">W component of the quaternion </param>
+		/// Constructor.
 		/// </summary>
+		/// <param name="inX">X component of the quaternion</param>
+		/// <param name="inY">Y component of the quaternion</param>
+		/// <param name="inZ">Z component of the quaternion</param>
+		/// <param name="inW">W component of the quaternion</param>
 		public FQuat(float inX, float inY, float inZ, float inW) :
 			base(E_CreateStruct_FQuat_float_float_float_float(inX, inY, inZ, inW), false)
 		{
@@ -42,9 +42,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Copy constructor. </para>
-		/// <param name="Q">A FQuat object to use to create new quaternion from. </param>
+		/// Copy constructor.
 		/// </summary>
+		/// <param name="q">A FQuat object to use to create new quaternion from.</param>
 		public FQuat(FQuat q) :
 			base(E_CreateStruct_FQuat_FQuat(q), false)
 		{
@@ -52,9 +52,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new quaternion from the given matrix. </para>
-		/// <param name="M">The rotation matrix to initialize from. </param>
+		/// Creates and initializes a new quaternion from the given matrix.
 		/// </summary>
+		/// <param name="m">The rotation matrix to initialize from.</param>
 		public FQuat(FMatrix m) :
 			base(E_CreateStruct_FQuat_FMatrix(m), false)
 		{
@@ -62,9 +62,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new quaternion from the given rotator. </para>
-		/// <param name="R">The rotator to initialize from. </param>
+		/// Creates and initializes a new quaternion from the given rotator.
 		/// </summary>
+		/// <param name="r">The rotator to initialize from.</param>
 		public FQuat(FRotator r) :
 			base(E_CreateStruct_FQuat_FRotator(r), false)
 		{
@@ -72,10 +72,10 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Creates and initializes a new quaternion from the a rotation around the given axis. </para>
-		/// <param name="Axis">assumed to be a normalized vector </param>
-		/// <param name="Angle">angle to rotate above the given axis (in radians) </param>
+		/// Creates and initializes a new quaternion from the a rotation around the given axis.
 		/// </summary>
+		/// <param name="axis">assumed to be a normalized vector</param>
+		/// <param name="angle">angle to rotate above the given axis (in radians)</param>
 		public FQuat(FVector axis, float angleRad) :
 			base(E_CreateStruct_FQuat_FVector_float(axis, angleRad), false)
 		{
@@ -263,7 +263,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The quaternion's W-component. </para>
+		/// The quaternion's W-component.
 		/// </summary>
 		public float W
 		{
@@ -273,7 +273,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The quaternion's X-component. </para>
+		/// The quaternion's X-component.
 		/// </summary>
 		public float X
 		{
@@ -283,7 +283,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The quaternion's Y-component. </para>
+		/// The quaternion's Y-component.
 		/// </summary>
 		public float Y
 		{
@@ -293,7 +293,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The quaternion's Z-component. </para>
+		/// The quaternion's Z-component.
 		/// </summary>
 		public float Z
 		{
@@ -306,28 +306,28 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Find the angular distance between two rotation quaternions (in radians) </para>
+		/// Find the angular distance between two rotation quaternions (in radians)
 		/// </summary>
 		public float AngularDistance(FQuat q)
 			=> E_FQuat_AngularDistance(this, q);
 		
 		
 		/// <summary>
-		/// <para>Calculate tangents between given points </para>
-		/// <param name="PrevP">quaternion at P-1 </param>
-		/// <param name="P">quaternion to return the tangent </param>
-		/// <param name="NextP">quaternion P+1 </param>
-		/// <param name="Tension">todo document </param>
-		/// <param name="OutTan">Out control point </param>
+		/// Calculate tangents between given points
 		/// </summary>
+		/// <param name="prevP">quaternion at P-1</param>
+		/// <param name="p">quaternion to return the tangent</param>
+		/// <param name="nextP">quaternion P+1</param>
+		/// <param name="tension">todo document</param>
+		/// <param name="outTan">Out control point</param>
 		public void CalcTangents(FQuat prevP, FQuat p, FQuat nextP, float tension, FQuat outTan)
 			=> E_FQuat_CalcTangents(this, prevP, p, nextP, tension, outTan);
 		
 		
 		/// <summary>
-		/// <para>Utility to check if there are any non-finite values (NaN or Inf) in this Quat. </para>
-		/// <return>true if there are any non-finite values in this Quaternion, otherwise false. </return>
+		/// Utility to check if there are any non-finite values (NaN or Inf) in this Quat.
 		/// </summary>
+		/// <return>true</return>
 		public bool ContainsNaN()
 			=> E_FQuat_ContainsNaN(this);
 		
@@ -336,7 +336,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Enforce that the delta between this Quaternion and another one represents </para>
+		/// Enforce that the delta between this Quaternion and another one represents
 		/// <para>the shortest possible rotation angle </para>
 		/// </summary>
 		public void EnforceShortestArcWith(FQuat otherQuat)
@@ -344,49 +344,49 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Checks whether another Quaternion is equal to this, within specified tolerance. </para>
-		/// <param name="Q">The other Quaternion. </param>
-		/// <param name="Tolerance">Error tolerance for comparison with other Quaternion. </param>
-		/// <return>true if two Quaternions are equal, within specified tolerance, otherwise false. </return>
+		/// Checks whether another Quaternion is equal to this, within specified tolerance.
 		/// </summary>
+		/// <param name="q">The other Quaternion.</param>
+		/// <param name="tolerance">Error tolerance for comparison with other Quaternion.</param>
+		/// <return>true</return>
 		public bool Equals(FQuat q, float tolerance)
 			=> E_FQuat_Equals(this, q, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Error measure (angle) between two quaternions, ranged [0..1]. </para>
+		/// Error measure (angle) between two quaternions, ranged [0..1].
 		/// <para>Returns the hypersphere-angle between two quaternions; alignment shouldn't matter, though </para>
-		/// <para>@note normalized input is expected. </para>
+		/// @note normalized input is expected.
 		/// </summary>
 		public float Error(FQuat q1, FQuat q2)
 			=> E_FQuat_Error(this, q1, q2);
 		
 		
 		/// <summary>
-		/// <para>FQuat::Error with auto-normalization. </para>
+		/// FQuat::Error with auto-normalization.
 		/// </summary>
 		public float ErrorAutoNormalize(FQuat a, FQuat b)
 			=> E_FQuat_ErrorAutoNormalize(this, a, b);
 		
 		
 		/// <summary>
-		/// <para>Convert a Quaternion into floating-point Euler angles (in degrees). </para>
+		/// Convert a Quaternion into floating-point Euler angles (in degrees).
 		/// </summary>
 		public FVector Euler()
 			=> E_FQuat_Euler(this);
 		
 		
 		/// <summary>
-		/// <para>@note Exp should really only be used after Log. </para>
+		/// @note Exp should really only be used after Log.
 		/// <para>Assumes a quaternion with W=0 and V=theta*v (where |v| = 1). </para>
-		/// <para>Exp(q) = (sin(theta)*v, cos(theta)) </para>
+		/// Exp(q) = (sin(theta)*v, cos(theta))
 		/// </summary>
 		public FQuat Exp()
 			=> E_FQuat_Exp(this);
 		
 		
 		/// <summary>
-		/// <para>Bi-Linear Quaternion interpolation. </para>
+		/// Bi-Linear Quaternion interpolation.
 		/// <para>Result is NOT normalized. </para>
 		/// </summary>
 		public FQuat FastBilerp(FQuat p00, FQuat p10, FQuat p01, FQuat p11, float fracX, float fracY)
@@ -394,7 +394,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Fast Linear Quaternion Interpolation. </para>
+		/// Fast Linear Quaternion Interpolation.
 		/// <para>Result is NOT normalized. </para>
 		/// </summary>
 		public FQuat FastLerp(FQuat a, FQuat b, float alpha)
@@ -402,117 +402,117 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length. </para>
+		/// Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length.
 		/// </summary>
 		public FQuat FindBetween(FVector vector1, FVector vector2)
 			=> E_FQuat_FindBetween(this, vector1, vector2);
 		
 		
 		/// <summary>
-		/// <para>Generates the 'smallest' (geodesic) rotation between two normals (assumed to be unit length). </para>
+		/// Generates the 'smallest' (geodesic) rotation between two normals (assumed to be unit length).
 		/// </summary>
 		public FQuat FindBetweenNormals(FVector normal1, FVector normal2)
 			=> E_FQuat_FindBetweenNormals(this, normal1, normal2);
 		
 		
 		/// <summary>
-		/// <para>Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length. </para>
+		/// Generates the 'smallest' (geodesic) rotation between two vectors of arbitrary length.
 		/// </summary>
 		public FQuat FindBetweenVectors(FVector vector1, FVector vector2)
 			=> E_FQuat_FindBetweenVectors(this, vector1, vector2);
 		
 		
 		/// <summary>
-		/// <para>Get the angle of this quaternion </para>
+		/// Get the angle of this quaternion
 		/// </summary>
 		public float GetAngle()
 			=> E_FQuat_GetAngle(this);
 		
 		
 		/// <summary>
-		/// <para>Get the forward direction (X axis) after it has been rotated by this Quaternion. </para>
+		/// Get the forward direction (X axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetAxisX()
 			=> E_FQuat_GetAxisX(this);
 		
 		
 		/// <summary>
-		/// <para>Get the right direction (Y axis) after it has been rotated by this Quaternion. </para>
+		/// Get the right direction (Y axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetAxisY()
 			=> E_FQuat_GetAxisY(this);
 		
 		
 		/// <summary>
-		/// <para>Get the up direction (Z axis) after it has been rotated by this Quaternion. </para>
+		/// Get the up direction (Z axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetAxisZ()
 			=> E_FQuat_GetAxisZ(this);
 		
 		
 		/// <summary>
-		/// <para>Get the forward direction (X axis) after it has been rotated by this Quaternion. </para>
+		/// Get the forward direction (X axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetForwardVector()
 			=> E_FQuat_GetForwardVector(this);
 		
 		
 		/// <summary>
-		/// <para>Get a normalized copy of this quaternion. </para>
+		/// Get a normalized copy of this quaternion.
 		/// <para>If it is too small, returns an identity quaternion. </para>
-		/// <param name="Tolerance">Minimum squared length of quaternion for normalization. </param>
 		/// </summary>
+		/// <param name="tolerance">Minimum squared length of quaternion for normalization.</param>
 		public FQuat GetNormalized(float tolerance)
 			=> E_FQuat_GetNormalized(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Get the right direction (Y axis) after it has been rotated by this Quaternion. </para>
+		/// Get the right direction (Y axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetRightVector()
 			=> E_FQuat_GetRightVector(this);
 		
 		
 		/// <summary>
-		/// <para>Get the axis of rotation of the Quaternion. </para>
+		/// Get the axis of rotation of the Quaternion.
 		/// <para>This is the axis around which rotation occurs to transform the canonical coordinate system to the target orientation. </para>
-		/// <para>For the identity Quaternion which has no such rotation, FVector(1,0,0) is returned. </para>
+		/// For the identity Quaternion which has no such rotation, FVector(1,0,0) is returned.
 		/// </summary>
 		public FVector GetRotationAxis()
 			=> E_FQuat_GetRotationAxis(this);
 		
 		
 		/// <summary>
-		/// <para>Get the up direction (Z axis) after it has been rotated by this Quaternion. </para>
+		/// Get the up direction (Z axis) after it has been rotated by this Quaternion.
 		/// </summary>
 		public FVector GetUpVector()
 			=> E_FQuat_GetUpVector(this);
 		
 		
 		/// <summary>
-		/// <para>Initialize this FQuat from a FString. </para>
+		/// Initialize this FQuat from a FString.
 		/// <para>The string is expected to contain X=, Y=, Z=, W=, otherwise </para>
-		/// <para>this FQuat will have indeterminate (invalid) values. </para>
-		/// <param name="InSourceString">FString containing the quaternion values. </param>
-		/// <return>true if the FQuat was initialized; false otherwise. </return>
+		/// this FQuat will have indeterminate (invalid) values.
 		/// </summary>
+		/// <param name="inSourceString">FString containing the quaternion values.</param>
+		/// <return>true</return>
 		public bool InitFromString(string inSourceString)
 			=> E_FQuat_InitFromString(this, inSourceString);
 		
 		
 		/// <summary>
-		/// <return>inverse of this quaternion </return>
 		/// </summary>
+		/// <return>inverse</return>
 		public FQuat Inverse()
 			=> E_FQuat_Inverse(this);
 		
 		
 		/// <summary>
-		/// <para>Checks whether this Quaternion is an Identity Quaternion. </para>
+		/// Checks whether this Quaternion is an Identity Quaternion.
 		/// <para>Assumes Quaternion tested is normalized. </para>
-		/// <param name="Tolerance">Error tolerance for comparison with Identity Quaternion. </param>
-		/// <return>true if Quaternion is a normalized Identity Quaternion. </return>
 		/// </summary>
+		/// <param name="tolerance">Error tolerance for comparison with Identity Quaternion.</param>
+		/// <return>true</return>
 		public bool IsIdentity(float tolerance)
 			=> E_FQuat_IsIdentity(this, tolerance);
 		
@@ -521,96 +521,96 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <return>quaternion with W=0 and V=theta*v. </return>
 		/// </summary>
+		/// <return>quaternion</return>
 		public FQuat Log()
 			=> E_FQuat_Log(this);
 		
 		
 		/// <summary>
-		/// <para>Convert a vector of floating-point Euler angles (in degrees) into a Quaternion. </para>
-		/// <param name="Euler">the Euler angles </param>
-		/// <return>constructed FQuat </return>
+		/// Convert a vector of floating-point Euler angles (in degrees) into a Quaternion.
 		/// </summary>
+		/// <param name="euler">the Euler angles</param>
+		/// <return>constructed</return>
 		public FQuat MakeFromEuler(FVector euler)
 			=> E_FQuat_MakeFromEuler(this, euler);
 		
 		
 		/// <summary>
-		/// <para>Normalize this quaternion if it is large enough. </para>
+		/// Normalize this quaternion if it is large enough.
 		/// <para>If it is too small, returns an identity quaternion. </para>
-		/// <param name="Tolerance">Minimum squared length of quaternion for normalization. </param>
 		/// </summary>
+		/// <param name="tolerance">Minimum squared length of quaternion for normalization.</param>
 		public void Normalize(float tolerance)
 			=> E_FQuat_Normalize(this, tolerance);
 		
 		
 		/// <summary>
-		/// <para>Rotate a vector by this quaternion. </para>
-		/// <param name="V">the vector to be rotated </param>
-		/// <return>vector after rotation </return>
+		/// Rotate a vector by this quaternion.
 		/// </summary>
+		/// <param name="v">the vector to be rotated</param>
+		/// <return>vector</return>
 		public FVector RotateVector(FVector v)
 			=> E_FQuat_RotateVector(this, v);
 		
 		
 		/// <summary>
-		/// <para>Get the FRotator representation of this Quaternion. </para>
+		/// Get the FRotator representation of this Quaternion.
 		/// </summary>
 		public FRotator Rotator()
 			=> E_FQuat_Rotator(this);
 		
 		
 		/// <summary>
-		/// <para>Get the length of this quaternion. </para>
-		/// <return>The length of this quaternion. </return>
+		/// Get the length of this quaternion.
 		/// </summary>
+		/// <return>The</return>
 		public float Size()
 			=> E_FQuat_Size(this);
 		
 		
 		/// <summary>
-		/// <para>Get the length squared of this quaternion. </para>
-		/// <return>The length of this quaternion. </return>
+		/// Get the length squared of this quaternion.
 		/// </summary>
+		/// <return>The</return>
 		public float SizeSquared()
 			=> E_FQuat_SizeSquared(this);
 		
 		
 		/// <summary>
-		/// <para>Spherical interpolation. Will correct alignment. Result is normalized. </para>
+		/// Spherical interpolation. Will correct alignment. Result is normalized.
 		/// </summary>
 		public FQuat Slerp(FQuat quat1, FQuat quat2, float slerp)
 			=> E_FQuat_Slerp(this, quat1, quat2, slerp);
 		
 		
 		/// <summary>
-		/// <para>Spherical interpolation. Will correct alignment. Result is NOT normalized. </para>
+		/// Spherical interpolation. Will correct alignment. Result is NOT normalized.
 		/// </summary>
 		public FQuat Slerp_NotNormalized(FQuat quat1, FQuat quat2, float slerp)
 			=> E_FQuat_Slerp_NotNormalized(this, quat1, quat2, slerp);
 		
 		
 		/// <summary>
-		/// <para>Simpler Slerp that doesn't do any checks for 'shortest distance' etc. </para>
+		/// Simpler Slerp that doesn't do any checks for 'shortest distance' etc.
 		/// <para>We need this for the cubic interpolation stuff so that the multiple Slerps dont go in different directions. </para>
-		/// <para>Result is normalized. </para>
+		/// Result is normalized.
 		/// </summary>
 		public FQuat SlerpFullPath(FQuat quat1, FQuat quat2, float alpha)
 			=> E_FQuat_SlerpFullPath(this, quat1, quat2, alpha);
 		
 		
 		/// <summary>
-		/// <para>Simpler Slerp that doesn't do any checks for 'shortest distance' etc. </para>
+		/// Simpler Slerp that doesn't do any checks for 'shortest distance' etc.
 		/// <para>We need this for the cubic interpolation stuff so that the multiple Slerps dont go in different directions. </para>
-		/// <para>Result is NOT normalized. </para>
+		/// Result is NOT normalized.
 		/// </summary>
 		public FQuat SlerpFullPath_NotNormalized(FQuat quat1, FQuat quat2, float alpha)
 			=> E_FQuat_SlerpFullPath_NotNormalized(this, quat1, quat2, alpha);
 		
 		
 		/// <summary>
-		/// <para>Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized. </para>
+		/// Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized.
 		/// <para>This will correct alignment by ensuring that the shortest path is taken. </para>
 		/// </summary>
 		public FQuat Squad(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float alpha)
@@ -618,7 +618,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Simpler Squad that doesn't do any checks for 'shortest distance' etc. </para>
+		/// Simpler Squad that doesn't do any checks for 'shortest distance' etc.
 		/// <para>Given start and end quaternions of quat1 and quat2, and tangents at those points tang1 and tang2, calculate the point at Alpha (between 0 and 1) between them. Result is normalized. </para>
 		/// </summary>
 		public FQuat SquadFullPath(FQuat quat1, FQuat tang1, FQuat quat2, FQuat tang2, float alpha)
@@ -626,45 +626,45 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>get the axis and angle of rotation of this quaternion </para>
-		/// <param name="Axis">out] vector of axis of the quaternion </param>
-		/// <param name="Angle">out] angle of the quaternion </param>
+		/// get the axis and angle of rotation of this quaternion
 		/// <para>@warning : assumes normalized quaternions. </para>
 		/// </summary>
+		/// <param name="axis">out] vector of axis of the quaternion</param>
+		/// <param name="angle">out] angle of the quaternion</param>
 		public void ToAxisAndAngle(FVector axis, float angle)
 			=> E_FQuat_ToAxisAndAngle(this, axis, angle);
 		
 		
 		/// <summary>
-		/// <para>Get a textual representation of the vector. </para>
-		/// <return>Text describing the vector. </return>
+		/// Get a textual representation of the vector.
 		/// </summary>
+		/// <return>Text</return>
 		public override string ToString()
 			=> E_FQuat_ToString(this);
 		
 		
 		/// <summary>
-		/// <para>Get the swing and twist decomposition for a specified axis </para>
-		/// <param name="InTwistAxis">Axis to use for decomposition </param>
-		/// <param name="OutSwing">swing component quaternion </param>
-		/// <param name="OutTwist">Twist component quaternion </param>
+		/// Get the swing and twist decomposition for a specified axis
 		/// <para>@warning assumes normalised quaternion and twist axis </para>
 		/// </summary>
+		/// <param name="inTwistAxis">Axis to use for decomposition</param>
+		/// <param name="outSwing">swing component quaternion</param>
+		/// <param name="outTwist">Twist component quaternion</param>
 		public void ToSwingTwist(FVector inTwistAxis, FQuat outSwing, FQuat outTwist)
 			=> E_FQuat_ToSwingTwist(this, inTwistAxis, outSwing, outTwist);
 		
 		
 		/// <summary>
-		/// <para>Rotate a vector by the inverse of this quaternion. </para>
-		/// <param name="V">the vector to be rotated </param>
-		/// <return>vector after rotation by the inverse of this quaternion. </return>
+		/// Rotate a vector by the inverse of this quaternion.
 		/// </summary>
+		/// <param name="v">the vector to be rotated</param>
+		/// <return>vector</return>
 		public FVector UnrotateVector(FVector v)
 			=> E_FQuat_UnrotateVector(this, v);
 		
 		
 		/// <summary>
-		/// <para>Convert a rotation into a unit vector facing in its direction. Equivalent to GetForwardVector(). </para>
+		/// Convert a rotation into a unit vector facing in its direction. Equivalent to GetForwardVector().
 		/// </summary>
 		public FVector Vector()
 			=> E_FQuat_Vector(this);

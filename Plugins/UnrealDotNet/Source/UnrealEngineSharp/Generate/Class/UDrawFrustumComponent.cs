@@ -55,7 +55,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Angle of longest dimension of view shape. </para>
+		/// Angle of longest dimension of view shape.
 		/// <para>If the angle is 0 then an orthographic projection is used </para>
 		/// </summary>
 		public float FrustumAngle
@@ -66,7 +66,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ratio of horizontal size over vertical size. </para>
+		/// Ratio of horizontal size over vertical size.
 		/// </summary>
 		public float FrustumAspectRatio
 		{
@@ -76,7 +76,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance from origin to stop drawing the frustum. </para>
+		/// Distance from origin to stop drawing the frustum.
 		/// </summary>
 		public float FrustumEndDist
 		{
@@ -86,7 +86,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance from origin to start drawing the frustum. </para>
+		/// Distance from origin to start drawing the frustum.
 		/// </summary>
 		public float FrustumStartDist
 		{

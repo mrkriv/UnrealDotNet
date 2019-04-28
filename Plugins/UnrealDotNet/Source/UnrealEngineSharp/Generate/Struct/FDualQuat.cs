@@ -56,7 +56,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>half trans or dual part </para>
+		/// half trans or dual part
 		/// </summary>
 		public FQuat D
 		{
@@ -66,7 +66,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>rotation or real part </para>
+		/// rotation or real part
 		/// </summary>
 		public FQuat R
 		{
@@ -79,14 +79,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Convert dual quat to transform </para>
+		/// Convert dual quat to transform
 		/// </summary>
 		public FTransform AsFTransform(FVector scale)
 			=> E_FDualQuat_AsFTransform(this, scale);
 		
 		
 		/// <summary>
-		/// <para>Return normalized dual quat </para>
+		/// Return normalized dual quat
 		/// </summary>
 		public FDualQuat Normalized()
 			=> E_FDualQuat_Normalized(this);

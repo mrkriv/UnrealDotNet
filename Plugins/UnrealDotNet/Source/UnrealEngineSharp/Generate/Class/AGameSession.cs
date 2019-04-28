@@ -182,130 +182,130 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Add a player to the admin list of this session </para>
-		/// <param name="AdminPlayer">player to add to the list </param>
+		/// Add a player to the admin list of this session
 		/// </summary>
+		/// <param name="adminPlayer">player to add to the list</param>
 		public virtual void AddAdmin(APlayerController adminPlayer)
 			=> E_AGameSession_AddAdmin(this, adminPlayer);
 		
 		
 		/// <summary>
-		/// <para>Called from GameMode.PreLogin() and Login(). </para>
-		/// <param name="Options">The URL options (e.g. name/spectator) the player has passed </param>
-		/// <return>Non-empty Error String if player not approved </return>
+		/// Called from GameMode.PreLogin() and Login().
 		/// </summary>
+		/// <param name="options">The URL options (e.g. name/spectator) the player has passed</param>
+		/// <return>Non</return>
 		public virtual string ApproveLogin(string options)
 			=> E_AGameSession_ApproveLogin(this, options);
 		
 		
 		/// <summary>
-		/// <return>true if there is no room on the server for an additional player </return>
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool AtCapacity(bool bSpectator)
 			=> E_AGameSession_AtCapacity(this, bSpectator);
 		
 		
 		/// <summary>
-		/// <para>Forcibly remove player from the server and ban them permanently </para>
-		/// <param name="BannedPlayer">player to ban </param>
-		/// <param name="KickReason">text reason to display to player </param>
-		/// <return>true if player was able to be banned, false otherwise </return>
+		/// Forcibly remove player from the server and ban them permanently
 		/// </summary>
+		/// <param name="bannedPlayer">player to ban</param>
+		/// <param name="kickReason">text reason to display to player</param>
+		/// <return>true</return>
 		public virtual bool BanPlayer(APlayerController bannedPlayer, string banReason)
 			=> E_AGameSession_BanPlayer(this, bannedPlayer, banReason);
 		
 		
 		/// <summary>
-		/// <para>Called from GameMode.RestartGame(). </para>
+		/// Called from GameMode.RestartGame().
 		/// </summary>
 		public virtual bool CanRestartGame()
 			=> E_AGameSession_CanRestartGame(this);
 		
 		
 		/// <summary>
-		/// <para>Dump session info to log for debugging. </para>
+		/// Dump session info to log for debugging.
 		/// </summary>
 		public virtual void DumpSessionState()
 			=> E_AGameSession_DumpSessionState(this);
 		
 		
 		/// <summary>
-		/// <return>A new unique player ID </return>
 		/// </summary>
+		/// <return>A</return>
 		public int GetNextPlayerID()
 			=> E_AGameSession_GetNextPlayerID(this);
 		
 		
 		/// <summary>
-		/// <para>Handle when the match has completed </para>
+		/// Handle when the match has completed
 		/// </summary>
 		public virtual void HandleMatchHasEnded()
 			=> E_AGameSession_HandleMatchHasEnded(this);
 		
 		
 		/// <summary>
-		/// <para>Handle when the match has started </para>
+		/// Handle when the match has started
 		/// </summary>
 		public virtual void HandleMatchHasStarted()
 			=> E_AGameSession_HandleMatchHasStarted(this);
 		
 		
 		/// <summary>
-		/// <para>Handle when the match enters waiting to start </para>
+		/// Handle when the match enters waiting to start
 		/// </summary>
 		public virtual void HandleMatchIsWaitingToStart()
 			=> E_AGameSession_HandleMatchIsWaitingToStart(this);
 		
 		
 		/// <summary>
-		/// <para>@RETURNS true if GameSession handled the request, in case it wants to stall for some reason. Otherwise, game mode will start immediately </para>
+		/// @RETURNS true if GameSession handled the request, in case it wants to stall for some reason. Otherwise, game mode will start immediately
 		/// </summary>
 		public virtual bool HandleStartMatchRequest()
 			=> E_AGameSession_HandleStartMatchRequest(this);
 		
 		
 		/// <summary>
-		/// <para>Initialize options based on passed in options string </para>
+		/// Initialize options based on passed in options string
 		/// </summary>
 		public virtual void InitOptions(string options)
 			=> E_AGameSession_InitOptions(this, options);
 		
 		
 		/// <summary>
-		/// <para>Forcibly remove player from the server </para>
-		/// <param name="KickedPlayer">player to kick </param>
-		/// <param name="KickReason">text reason to display to player </param>
-		/// <return>true if player was able to be kicked, false otherwise </return>
+		/// Forcibly remove player from the server
 		/// </summary>
+		/// <param name="kickedPlayer">player to kick</param>
+		/// <param name="kickReason">text reason to display to player</param>
+		/// <return>true</return>
 		public virtual bool KickPlayer(APlayerController kickedPlayer, string kickReason)
 			=> E_AGameSession_KickPlayer(this, kickedPlayer, kickReason);
 		
 		
 		/// <summary>
-		/// <para>Called when a PlayerController logs out of game. </para>
-		/// <param name="PC">player controller currently logging out </param>
+		/// Called when a PlayerController logs out of game.
 		/// </summary>
+		/// <param name="pC">player controller currently logging out</param>
 		public virtual void NotifyLogout(APlayerController pC)
 			=> E_AGameSession_NotifyLogout(this, pC);
 		
 		
 		/// <summary>
-		/// <para>Delegate triggered on auto login completion </para>
+		/// Delegate triggered on auto login completion
 		/// </summary>
 		public virtual void OnAutoLoginComplete(int localUserNum, bool bWasSuccessful, string error)
 			=> E_AGameSession_OnAutoLoginComplete(this, localUserNum, bWasSuccessful, error);
 		
 		
 		/// <summary>
-		/// <para>Called by GameMode::PostLogin to give session code chance to do work after PostLogin </para>
-		/// <param name="NewPlayer">player logging in </param>
+		/// Called by GameMode::PostLogin to give session code chance to do work after PostLogin
 		/// </summary>
+		/// <param name="newPlayer">player logging in</param>
 		public virtual void PostLogin(APlayerController newPlayer)
 			=> E_AGameSession_PostLogin(this, newPlayer);
 		
 		
 		/// <summary>
-		/// <para>called after a seamless level transition has been completed on the *new* GameMode </para>
+		/// called after a seamless level transition has been completed on the *new* GameMode
 		/// <para>used to reinitialize players already in the game as they won't have *Login() called on them </para>
 		/// </summary>
 		public virtual void PostSeamlessTravel()
@@ -313,73 +313,73 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Allow an online service to process a login if specified on the commandline with -auth_login/-auth_password </para>
-		/// <return>true if login is in progress, false otherwise </return>
+		/// Allow an online service to process a login if specified on the commandline with -auth_login/-auth_password
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool ProcessAutoLogin()
 			=> E_AGameSession_ProcessAutoLogin(this);
 		
 		
 		/// <summary>
-		/// <para>Allow a dedicated server a chance to register itself with an online service </para>
+		/// Allow a dedicated server a chance to register itself with an online service
 		/// </summary>
 		public virtual void RegisterServer()
 			=> E_AGameSession_RegisterServer(this);
 		
 		
 		/// <summary>
-		/// <para>Callback when autologin was expected but failed </para>
+		/// Callback when autologin was expected but failed
 		/// </summary>
 		public virtual void RegisterServerFailed()
 			=> E_AGameSession_RegisterServerFailed(this);
 		
 		
 		/// <summary>
-		/// <para>Remove a player from the admin list of this session </para>
-		/// <param name="AdminPlayer">player to remove from the list </param>
+		/// Remove a player from the admin list of this session
 		/// </summary>
+		/// <param name="adminPlayer">player to remove from the list</param>
 		public virtual void RemoveAdmin(APlayerController adminPlayer)
 			=> E_AGameSession_RemoveAdmin(this, adminPlayer);
 		
 		
 		/// <summary>
-		/// <para>Does the session require push to talk </para>
-		/// <return>true if a push to talk keybinding is required or if voice is always enabled </return>
+		/// Does the session require push to talk
 		/// </summary>
+		/// <return>true</return>
 		public virtual bool RequiresPushToTalk()
 			=> E_AGameSession_RequiresPushToTalk(this);
 		
 		
 		/// <summary>
-		/// <para>Restart the session </para>
+		/// Restart the session
 		/// </summary>
 		public virtual void Restart()
 			=> E_AGameSession_Restart(this);
 		
 		
 		/// <summary>
-		/// <para>Gracefully tell all clients then local players to return to lobby </para>
+		/// Gracefully tell all clients then local players to return to lobby
 		/// </summary>
 		public virtual void ReturnToMainMenuHost()
 			=> E_AGameSession_ReturnToMainMenuHost(this);
 		
 		
 		/// <summary>
-		/// <para>Unregister a player from the online service session </para>
-		/// <param name="ExitingPlayer">the player to unregister </param>
+		/// Unregister a player from the online service session
 		/// </summary>
+		/// <param name="exitingPlayer">the player to unregister</param>
 		public virtual void UnregisterPlayer(APlayerController exitingPlayer)
 			=> E_AGameSession_UnregisterPlayer(this, exitingPlayer);
 		
 		
 		/// <summary>
-		/// <para>Update session join parameters </para>
-		/// <param name="SessionName">name of session to update </param>
-		/// <param name="bPublicSearchable">can the game be found via matchmaking </param>
-		/// <param name="bAllowInvites">can you invite friends </param>
-		/// <param name="bJoinViaPresence">anyone who can see you can join the game </param>
-		/// <param name="bJoinViaPresenceFriendsOnly">can only friends actively join your game </param>
+		/// Update session join parameters
 		/// </summary>
+		/// <param name="sessionName">name of session to update</param>
+		/// <param name="bPublicSearchable">can the game be found via matchmaking</param>
+		/// <param name="bAllowInvites">can you invite friends</param>
+		/// <param name="bJoinViaPresence">anyone who can see you can join the game</param>
+		/// <param name="bJoinViaPresenceFriendsOnly">can only friends actively join your game</param>
 		public virtual void UpdateSessionJoinability(string inSessionName, bool bPublicSearchable, bool bAllowInvites, bool bJoinViaPresence, bool bJoinViaPresenceFriendsOnly)
 			=> E_AGameSession_UpdateSessionJoinability(this, inSessionName, bPublicSearchable, bAllowInvites, bJoinViaPresence, bJoinViaPresenceFriendsOnly);
 		

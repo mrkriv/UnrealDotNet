@@ -453,9 +453,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>True to allow this player controller to manage the camera target for you, </para>
+		/// True to allow this player controller to manage the camera target for you,
 		/// <para>typically by using the possessed pawn as the camera target. Set to false </para>
-		/// <para>if you want to manually control the camera target. </para>
+		/// if you want to manually control the camera target.
 		/// </summary>
 		public bool bAutoManageActiveCameraTarget
 		{
@@ -465,7 +465,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Smoothed version of TargetViewRotation to remove jerkiness from intermittent replication updates. </para>
+		/// Smoothed version of TargetViewRotation to remove jerkiness from intermittent replication updates.
 		/// </summary>
 		public FRotator BlendedTargetViewRotation
 		{
@@ -475,7 +475,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Whether to render primitives component. </para>
+		/// Whether to render primitives component.
 		/// </summary>
 		public bool bRenderPrimitiveComponents
 		{
@@ -485,7 +485,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Object that manages "cheat" commands.  Not instantiated in shipping builds. </para>
+		/// Object that manages "cheat" commands.  Not instantiated in shipping builds.
 		/// </summary>
 		public UCheatManager CheatManager
 		{
@@ -507,7 +507,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Distance to trace when computing click events </para>
+		/// Distance to trace when computing click events
 		/// </summary>
 		public float TraceDistance
 		{
@@ -517,7 +517,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Pitch input speed scaling </para>
+		/// Pitch input speed scaling
 		/// </summary>
 		public float InputPitchScale
 		{
@@ -527,7 +527,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Roll input speed scaling </para>
+		/// Roll input speed scaling
 		/// </summary>
 		public float InputRollScale
 		{
@@ -537,7 +537,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Yaw input speed scaling </para>
+		/// Yaw input speed scaling
 		/// </summary>
 		public float InputYawScale
 		{
@@ -565,7 +565,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Last used FOV based multiplier to distance to an object when determining if it exceeds the object's cull distance </para>
+		/// Last used FOV based multiplier to distance to an object when determining if it exceeds the object's cull distance
 		/// <para>@note: only valid for local player </para>
 		/// </summary>
 		public float LocalPlayerCachedLODDistanceFactor
@@ -576,7 +576,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>List of muted players in various categories </para>
+		/// List of muted players in various categories
 		/// </summary>
 		public FPlayerMuteList MuteList
 		{
@@ -610,7 +610,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Input axes values, accumulated each tick. </para>
+		/// Input axes values, accumulated each tick.
 		/// </summary>
 		public FRotator RotationInput
 		{
@@ -620,7 +620,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Interp speed for blending remote view rotation for smoother client updates </para>
+		/// Interp speed for blending remote view rotation for smoother client updates
 		/// </summary>
 		public float SmoothTargetViewRotationSpeed
 		{
@@ -639,38 +639,38 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Activates a new touch interface for this player controller </para>
+		/// Activates a new touch interface for this player controller
 		/// </summary>
 		public virtual void ActivateTouchInterface(UTouchInterface newTouchInterface)
 			=> E_APlayerController_ActivateTouchInterface(this, newTouchInterface);
 		
 		
 		/// <summary>
-		/// <para>Add Pitch (look up) input. This value is multiplied by InputPitchScale. </para>
-		/// <param name="Val">Amount to add to Pitch. This value is multiplied by InputPitchScale. </param>
+		/// Add Pitch (look up) input. This value is multiplied by InputPitchScale.
 		/// </summary>
+		/// <param name="val">Amount to add to Pitch. This value is multiplied by InputPitchScale.</param>
 		public virtual void AddPitchInput(float val)
 			=> E_APlayerController_AddPitchInput(this, val);
 		
 		
 		/// <summary>
-		/// <para>Add Roll input. This value is multiplied by InputRollScale. </para>
-		/// <param name="Val">Amount to add to Roll. This value is multiplied by InputRollScale. </param>
+		/// Add Roll input. This value is multiplied by InputRollScale.
 		/// </summary>
+		/// <param name="val">Amount to add to Roll. This value is multiplied by InputRollScale.</param>
 		public virtual void AddRollInput(float val)
 			=> E_APlayerController_AddRollInput(this, val);
 		
 		
 		/// <summary>
-		/// <para>Add Yaw (turn) input. This value is multiplied by InputYawScale. </para>
-		/// <param name="Val">Amount to add to Yaw. This value is multiplied by InputYawScale. </param>
+		/// Add Yaw (turn) input. This value is multiplied by InputYawScale.
 		/// </summary>
+		/// <param name="val">Amount to add to Yaw. This value is multiplied by InputYawScale.</param>
 		public virtual void AddYawInput(float val)
 			=> E_APlayerController_AddYawInput(this, val);
 		
 		
 		/// <summary>
-		/// <para>Pawn has been possessed, so changing state to NAME_Playing. Start it walking and begin playing with it. </para>
+		/// Pawn has been possessed, so changing state to NAME_Playing. Start it walking and begin playing with it.
 		/// </summary>
 		protected virtual void BeginPlayingState()
 			=> E_APlayerController_BeginPlayingState(this);
@@ -689,7 +689,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Removes all Camera Lens Effects. </para>
+		/// Removes all Camera Lens Effects.
 		/// </summary>
 		public virtual void ClientClearCameraLensEffects()
 			=> E_APlayerController_ClientClearCameraLensEffects(this);
@@ -759,7 +759,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Indicate that the Spectator is waiting to join/respawn. </para>
+		/// Indicate that the Spectator is waiting to join/respawn.
 		/// </summary>
 		public void ClientSetSpectatorWaiting(bool bWaiting)
 			=> E_APlayerController_ClientSetSpectatorWaiting(this, bWaiting);
@@ -781,21 +781,21 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Used to wait until a map change can be prepared when one was already in progress </para>
+		/// Used to wait until a map change can be prepared when one was already in progress
 		/// </summary>
 		public virtual void DelayedPrepareMapChange()
 			=> E_APlayerController_DelayedPrepareMapChange(this);
 		
 		
 		/// <summary>
-		/// <para>Convert current mouse 2D position to World Space 3D position and direction. Returns false if unable to determine value. </para>
+		/// Convert current mouse 2D position to World Space 3D position and direction. Returns false if unable to determine value.
 		/// </summary>
 		public bool ConvertMouseLocationToWorldSpace(FVector worldLocation, FVector worldDirection)
 			=> E_APlayerController_DeprojectMousePositionToWorld(this, worldLocation, worldDirection);
 		
 		
 		/// <summary>
-		/// <para>Convert 2D screen position to World Space 3D position and direction. Returns false if unable to determine value. </para>
+		/// Convert 2D screen position to World Space 3D position and direction. Returns false if unable to determine value.
 		/// </summary>
 		public bool ConvertScreenLocationToWorldSpace(float screenX, float screenY, FVector worldLocation, FVector worldDirection)
 			=> E_APlayerController_DeprojectScreenPositionToWorld(this, screenX, screenY, worldLocation, worldDirection);
@@ -805,7 +805,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Leave playing state. </para>
+		/// Leave playing state.
 		/// </summary>
 		protected virtual void EndPlayingState()
 			=> E_APlayerController_EndPlayingState(this);
@@ -824,49 +824,49 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Performs a collision query under the mouse cursor, looking on a trace channel </para>
+		/// Performs a collision query under the mouse cursor, looking on a trace channel
 		/// </summary>
 		public bool GetHitResultUnderCursorByChannel(ETraceTypeQuery traceChannel, bool bTraceComplex, FHitResult hitResult)
 			=> E_APlayerController_GetHitResultUnderCursorByChannel(this, (byte)traceChannel, bTraceComplex, hitResult);
 		
 		
 		/// <summary>
-		/// <para>Gets the HUD currently being used by this player controller </para>
+		/// Gets the HUD currently being used by this player controller
 		/// </summary>
 		public AHUD GetHUD()
 			=> E_APlayerController_GetHUD(this);
 		
 		
 		/// <summary>
-		/// <para>Retrieves the current motion state of the player's input device </para>
+		/// Retrieves the current motion state of the player's input device
 		/// </summary>
 		public void GetInputMotionState(FVector tilt, FVector rotationRate, FVector gravity, FVector acceleration)
 			=> E_APlayerController_GetInputMotionState(this, tilt, rotationRate, gravity, acceleration);
 		
 		
 		/// <summary>
-		/// <para>Retrieves how far the mouse moved this frame. </para>
+		/// Retrieves how far the mouse moved this frame.
 		/// </summary>
 		public void GetInputMouseDelta(float deltaX, float deltaY)
 			=> E_APlayerController_GetInputMouseDelta(this, deltaX, deltaY);
 		
 		
 		/// <summary>
-		/// <para>Calculate minimal respawn delay </para>
+		/// Calculate minimal respawn delay
 		/// </summary>
 		public virtual float GetMinRespawnDelay()
 			=> E_APlayerController_GetMinRespawnDelay(this);
 		
 		
 		/// <summary>
-		/// <para>Retrieves the X and Y screen coordinates of the mouse cursor. Returns false if there is no associated mouse device </para>
+		/// Retrieves the X and Y screen coordinates of the mouse cursor. Returns false if there is no associated mouse device
 		/// </summary>
 		public bool GetMousePosition(float locationX, float locationY)
 			=> E_APlayerController_GetMousePosition(this, locationX, locationY);
 		
 		
 		/// <summary>
-		/// <para>Helper to get the size of the HUD canvas for this player controller.  Returns 0 if there is no HUD </para>
+		/// Helper to get the size of the HUD canvas for this player controller.  Returns 0 if there is no HUD
 		/// </summary>
 		public void GetViewportSize(int sizeX, int sizeY)
 			=> E_APlayerController_GetViewportSize(this, sizeX, sizeY);
@@ -876,10 +876,10 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called to notify the server when the client has loaded a new world via seamless traveling </para>
-		/// <param name="WorldPackageName">the name of the world package that was loaded </param>
-		/// <param name="bFinalDest">whether this world is the destination map for the travel (i.e. not the transition level) </param>
+		/// Called to notify the server when the client has loaded a new world via seamless traveling
 		/// </summary>
+		/// <param name="worldPackageName">the name of the world package that was loaded</param>
+		/// <param name="bFinalDest">whether this world is the destination map for the travel (i.e. not the transition level)</param>
 		public virtual void NotifyLoadedWorld(string worldPackageName, bool bFinalDest)
 			=> E_APlayerController_NotifyLoadedWorld(this, worldPackageName, bFinalDest);
 		
@@ -888,7 +888,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Processes player input (immediately after PlayerInput gets ticked) and calls UpdateRotation(). </para>
+		/// Processes player input (immediately after PlayerInput gets ticked) and calls UpdateRotation().
 		/// <para>PlayerTick is only called if the PlayerController has a PlayerInput object. Therefore, it will only be called for locally controlled PlayerControllers. </para>
 		/// </summary>
 		public virtual void PlayerTick(float deltaTime)
@@ -896,22 +896,22 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Method called after processing input </para>
+		/// Method called after processing input
 		/// </summary>
 		public virtual void PostProcessInput(float deltaTime, bool bGamePaused)
 			=> E_APlayerController_PostProcessInput(this, deltaTime, bGamePaused);
 		
 		
 		/// <summary>
-		/// <para>After successful world to screen projection, allows custom post-processing of the resulting ScreenLocation. </para>
-		/// <return>Whether projected location remains valid. </return>
+		/// After successful world to screen projection, allows custom post-processing of the resulting ScreenLocation.
 		/// </summary>
+		/// <return>Whether</return>
 		public virtual bool PostProcessWorldToScreen(FVector worldLocation, FVector2D screenLocation, bool bPlayerViewportRelative)
 			=> E_APlayerController_PostProcessWorldToScreen(this, worldLocation, screenLocation, bPlayerViewportRelative);
 		
 		
 		/// <summary>
-		/// <para>Called after this player controller has transitioned through seamless travel, but before that player is initialized </para>
+		/// Called after this player controller has transitioned through seamless travel, but before that player is initialized
 		/// <para>This is called both when a new player controller is created, and when it is maintained </para>
 		/// </summary>
 		public virtual void PostSeamlessTravel()
@@ -919,30 +919,30 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Method called prior to processing input </para>
+		/// Method called prior to processing input
 		/// </summary>
 		public virtual void PreProcessInput(float deltaTime, bool bGamePaused)
 			=> E_APlayerController_PreProcessInput(this, deltaTime, bGamePaused);
 		
 		
 		/// <summary>
-		/// <para>Convert a World Space 3D position into a 2D Screen Space position. </para>
-		/// <return>true if the world coordinate was successfully projected to the screen. </return>
+		/// Convert a World Space 3D position into a 2D Screen Space position.
 		/// </summary>
+		/// <return>true</return>
 		public bool ConvertWorldLocationToScreenLocation(FVector worldLocation, FVector2D screenLocation, bool bPlayerViewportRelative = false)
 			=> E_APlayerController_ProjectWorldLocationToScreen(this, worldLocation, screenLocation, bPlayerViewportRelative);
 		
 		
 		/// <summary>
-		/// <para>Convert a World Space 3D position into a 3D Screen Space position. </para>
-		/// <return>true if the world coordinate was successfully projected to the screen. </return>
+		/// Convert a World Space 3D position into a 3D Screen Space position.
 		/// </summary>
+		/// <return>true</return>
 		public bool ProjectWorldLocationToScreenWithDistance(FVector worldLocation, FVector screenLocation, bool bPlayerViewportRelative = false)
 			=> E_APlayerController_ProjectWorldLocationToScreenWithDistance(this, worldLocation, screenLocation, bPlayerViewportRelative);
 		
 		
 		/// <summary>
-		/// <para>Resets the light color of the player's controller to default </para>
+		/// Resets the light color of the player's controller to default
 		/// </summary>
 		public void ResetControllerLightColor()
 			=> E_APlayerController_ResetControllerLightColor(this);
@@ -952,39 +952,39 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Call ClientRetryClientRestart, but only if the current pawn is not the currently acknowledged pawn (and throttled to avoid saturating the network). </para>
+		/// Call ClientRetryClientRestart, but only if the current pawn is not the currently acknowledged pawn (and throttled to avoid saturating the network).
 		/// </summary>
 		public virtual void SafeRetryClientRestart()
 			=> E_APlayerController_SafeRetryClientRestart(this);
 		
 		
 		/// <summary>
-		/// <para>Call ServerCheckClientPossession on the server, but only if the current pawn is not the acknowledged pawn (and throttled to avoid saturating the network). </para>
+		/// Call ServerCheckClientPossession on the server, but only if the current pawn is not the acknowledged pawn (and throttled to avoid saturating the network).
 		/// </summary>
 		public virtual void SafeServerCheckClientPossession()
 			=> E_APlayerController_SafeServerCheckClientPossession(this);
 		
 		
 		/// <summary>
-		/// <para>Calls ServerSetSpectatorLocation but throttles it to reduce bandwidth and only calls it when necessary. </para>
+		/// Calls ServerSetSpectatorLocation but throttles it to reduce bandwidth and only calls it when necessary.
 		/// </summary>
 		public void SafeServerUpdateSpectatorState()
 			=> E_APlayerController_SafeServerUpdateSpectatorState(this);
 		
 		
 		/// <summary>
-		/// <para>Called when seamless traveling and the specified PC is being replaced by this one </para>
+		/// Called when seamless traveling and the specified PC is being replaced by this one
 		/// <para>copy over data that should persist </para>
-		/// <para>(not called if PlayerController is the same for the from and to GameModes) </para>
+		/// (not called if PlayerController is the same for the from and to GameModes)
 		/// </summary>
 		public virtual void SeamlessTravelFrom(APlayerController oldPC)
 			=> E_APlayerController_SeamlessTravelFrom(this, oldPC);
 		
 		
 		/// <summary>
-		/// <para>Called when seamless traveling and we are being replaced by the specified PC </para>
+		/// Called when seamless traveling and we are being replaced by the specified PC
 		/// <para>clean up any persistent state (post process chains on LocalPlayers, for example) </para>
-		/// <para>(not called if PlayerController is the same for the from and to GameModes) </para>
+		/// (not called if PlayerController is the same for the from and to GameModes)
 		/// </summary>
 		public virtual void SeamlessTravelTo(APlayerController newPC)
 			=> E_APlayerController_SeamlessTravelTo(this, newPC);
@@ -1021,7 +1021,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Indicate that the Spectator is waiting to join/respawn. </para>
+		/// Indicate that the Spectator is waiting to join/respawn.
 		/// </summary>
 		public void ServerSetSpectatorWaiting(bool bWaiting)
 			=> E_APlayerController_ServerSetSpectatorWaiting(this, bWaiting);
@@ -1046,25 +1046,25 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Adjust input based on cinematic mode </para>
-		/// <param name="bInCinematicMode">specify true if the player is entering cinematic mode; false if the player is leaving cinematic mode. </param>
-		/// <param name="bAffectsMovement">specify true to disable movement in cinematic mode, enable it when leaving </param>
-		/// <param name="bAffectsTurning">specify true to disable turning in cinematic mode or enable it when leaving </param>
+		/// Adjust input based on cinematic mode
 		/// </summary>
+		/// <param name="bInCinematicMode">specify true if the player is entering cinematic mode; false if the player is leaving cinematic mode.</param>
+		/// <param name="bAffectsMovement">specify true to disable movement in cinematic mode, enable it when leaving</param>
+		/// <param name="bAffectsTurning">specify true to disable turning in cinematic mode or enable it when leaving</param>
 		public virtual void SetCinematicMode(bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning)
 			=> E_APlayerController_SetCinematicMode(this, bInCinematicMode, bAffectsMovement, bAffectsTurning);
 		
 		
 		/// <summary>
-		/// <para>Allows the player controller to disable all haptic requests from being fired, e.g. in the case of a level loading </para>
-		/// <param name="bNewDisabled">If TRUE, the haptics will stop and prevented from being enabled again until set to FALSE </param>
+		/// Allows the player controller to disable all haptic requests from being fired, e.g. in the case of a level loading
 		/// </summary>
+		/// <param name="bNewDisabled">If TRUE, the haptics will stop and prevented from being enabled again until set to FALSE</param>
 		public virtual void SetDisableHaptics(bool bNewDisabled)
 			=> E_APlayerController_SetDisableHaptics(this, bNewDisabled);
 		
 		
 		/// <summary>
-		/// <para>Positions the mouse cursor in screen space, in pixels. </para>
+		/// Positions the mouse cursor in screen space, in pixels.
 		/// </summary>
 		public void SetMousePosition(int x, int y)
 			=> E_APlayerController_SetMouseLocation(this, x, y);
@@ -1074,7 +1074,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the virtual joystick visibility. </para>
+		/// Set the virtual joystick visibility.
 		/// </summary>
 		public virtual void SetVirtualJoystickVisibility(bool bVisible)
 			=> E_APlayerController_SetVirtualJoystickVisibility(this, bVisible);
@@ -1084,14 +1084,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Enable voice chat transmission </para>
+		/// Enable voice chat transmission
 		/// </summary>
 		public void StartTalking()
 			=> E_APlayerController_StartTalking(this);
 		
 		
 		/// <summary>
-		/// <para>Disable voice chat transmission </para>
+		/// Disable voice chat transmission
 		/// </summary>
 		public void StopTalking()
 			=> E_APlayerController_StopTalking(this);
@@ -1104,14 +1104,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Timer used by RoundEnded and Inactive states to accept player input again </para>
+		/// Timer used by RoundEnded and Inactive states to accept player input again
 		/// </summary>
 		public virtual void UnFreeze()
 			=> E_APlayerController_UnFreeze(this);
 		
 		
 		/// <summary>
-		/// <para>Updates the rotation of player, based on ControlRotation after RotationInput has been applied. </para>
+		/// Updates the rotation of player, based on ControlRotation after RotationInput has been applied.
 		/// <para>This may then be modified by the PlayerCamera, and is passed to Pawn->FaceRotation(). </para>
 		/// </summary>
 		public virtual void UpdateRotation(float deltaTime)

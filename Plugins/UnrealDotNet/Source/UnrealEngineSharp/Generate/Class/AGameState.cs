@@ -76,7 +76,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Elapsed game time since match has started. </para>
+		/// Elapsed game time since match has started.
 		/// </summary>
 		public int ElapsedTime
 		{
@@ -89,56 +89,56 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Called periodically, overridden by subclasses </para>
+		/// Called periodically, overridden by subclasses
 		/// </summary>
 		public virtual void DefaultTimer()
 			=> E_AGameState_DefaultTimer(this);
 		
 		
 		/// <summary>
-		/// <para>Returns the current match state, this is an accessor to protect the state machine flow </para>
+		/// Returns the current match state, this is an accessor to protect the state machine flow
 		/// </summary>
 		public string GetMatchState()
 			=> E_AGameState_GetMatchState(this);
 		
 		
 		/// <summary>
-		/// <para>Called when the match transitions to LeavingMap </para>
+		/// Called when the match transitions to LeavingMap
 		/// </summary>
 		protected virtual void HandleLeavingMap()
 			=> E_AGameState_HandleLeavingMap(this);
 		
 		
 		/// <summary>
-		/// <para>Called when the map transitions to WaitingPostMatch </para>
+		/// Called when the map transitions to WaitingPostMatch
 		/// </summary>
 		protected virtual void HandleMatchHasEnded()
 			=> E_AGameState_HandleMatchHasEnded(this);
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to InProgress </para>
+		/// Called when the state transitions to InProgress
 		/// </summary>
 		protected virtual void HandleMatchHasStarted()
 			=> E_AGameState_HandleMatchHasStarted(this);
 		
 		
 		/// <summary>
-		/// <para>Called when the state transitions to WaitingToStart </para>
+		/// Called when the state transitions to WaitingToStart
 		/// </summary>
 		protected virtual void HandleMatchIsWaitingToStart()
 			=> E_AGameState_HandleMatchIsWaitingToStart(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if match is WaitingPostMatch or later </para>
+		/// Returns true if match is WaitingPostMatch or later
 		/// </summary>
 		public virtual bool HasMatchEnded()
 			=> E_AGameState_HasMatchEnded(this);
 		
 		
 		/// <summary>
-		/// <para>Returns true if we're in progress </para>
+		/// Returns true if we're in progress
 		/// </summary>
 		public virtual bool IsMatchInProgress()
 			=> E_AGameState_IsMatchInProgress(this);
@@ -151,7 +151,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Updates the match state and calls the appropriate transition functions, only valid on server </para>
+		/// Updates the match state and calls the appropriate transition functions, only valid on server
 		/// </summary>
 		public void SetMatchState(string newState)
 			=> E_AGameState_SetMatchState(this, newState);

@@ -64,7 +64,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Bounds the light's visible influence. </para>
+		/// Bounds the light's visible influence.
 		/// <para>This clamping of the light's influence is not physically correct but very important for performance, larger lights cost more. </para>
 		/// </summary>
 		public float AttenuationRadius
@@ -75,9 +75,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Units used for the intensity. </para>
+		/// Units used for the intensity.
 		/// <para>The peak luminous intensity is measured in candelas, </para>
-		/// <para>while the luminous power is measured in lumens. </para>
+		/// while the luminous power is measured in lumens.
 		/// </summary>
 		public ELightUnits IntensityUnits
 		{
@@ -87,7 +87,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The Lightmass settings for this object. </para>
+		/// The Lightmass settings for this object.
 		/// </summary>
 		public FLightmassPointLightSettings LightmassSettings
 		{
@@ -112,7 +112,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Set the units used for the intensity of the light </para>
+		/// Set the units used for the intensity of the light
 		/// </summary>
 		public void SetIntensityUnits(ELightUnits newIntensityUnits)
 			=> E_ULocalLightComponent_SetIntensityUnits(this, (byte)newIntensityUnits);

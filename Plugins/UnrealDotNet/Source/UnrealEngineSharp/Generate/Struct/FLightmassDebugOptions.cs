@@ -42,7 +42,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>The tolerance level used when gathering BSP surfaces. </para>
+		/// The tolerance level used when gathering BSP surfaces.
 		/// </summary>
 		public float CoplanarTolerance
 		{
@@ -52,7 +52,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The amount of time that will be count as full red when bColorByExecutionTime is enabled </para>
+		/// The amount of time that will be count as full red when bColorByExecutionTime is enabled
 		/// </summary>
 		public float ExecutionTimeDivisor
 		{

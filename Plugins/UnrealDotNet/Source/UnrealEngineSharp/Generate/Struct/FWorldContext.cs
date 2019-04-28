@@ -88,7 +88,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Is this world context waiting for an online login to complete (for PIE) </para>
+		/// Is this world context waiting for an online login to complete (for PIE)
 		/// </summary>
 		public bool bWaitingOnOnlineSubsystem
 		{
@@ -116,7 +116,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Human readable error string for any failure during a map change request. Empty if there were no failures. </para>
+		/// Human readable error string for any failure during a map change request. Empty if there were no failures.
 		/// </summary>
 		public string PendingMapChangeFailureDescription
 		{
@@ -126,7 +126,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The PIE instance of this world, -1 is default </para>
+		/// The PIE instance of this world, -1 is default
 		/// </summary>
 		public int PIEInstance
 		{
@@ -136,7 +136,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The Prefix in front of PIE level names, empty is default </para>
+		/// The Prefix in front of PIE level names, empty is default
 		/// </summary>
 		public string PIEPrefix
 		{
@@ -146,7 +146,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Is this running as a dedicated server </para>
+		/// Is this running as a dedicated server
 		/// </summary>
 		public bool RunAsDedicated
 		{
@@ -156,7 +156,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>TravelType for pending client connects </para>
+		/// TravelType for pending client connects
 		/// </summary>
 		public byte TravelType
 		{
@@ -166,7 +166,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>URL to travel to for pending client connect </para>
+		/// URL to travel to for pending client connect
 		/// </summary>
 		public string TravelURL
 		{
@@ -179,7 +179,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Set CurrentWorld and update external reference pointers to reflect this </para>
+		/// Set CurrentWorld and update external reference pointers to reflect this
 		/// </summary>
 		public void SetCurrentWorld(UWorld world)
 			=> E_FWorldContext_SetCurrentWorld(this, world);

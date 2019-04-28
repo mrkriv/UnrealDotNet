@@ -50,7 +50,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Global density factor for this fog. </para>
+		/// Global density factor for this fog.
 		/// </summary>
 		public float FogDensity
 		{
@@ -60,7 +60,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Height density factor, controls how the density increases as height decreases. </para>
+		/// Height density factor, controls how the density increases as height decreases.
 		/// <para>Smaller values make the visible transition larger. </para>
 		/// </summary>
 		public float FogHeightFalloff
@@ -71,7 +71,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Height offset, relative to the actor position Z. </para>
+		/// Height offset, relative to the actor position Z.
 		/// </summary>
 		public float FogHeightOffset
 		{
@@ -84,7 +84,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Clamp to valid ranges. This might be different from the UI clamp. </para>
+		/// Clamp to valid ranges. This might be different from the UI clamp.
 		/// </summary>
 		public void ClampToValidRanges()
 			=> E_FExponentialHeightFogData_ClampToValidRanges(this);

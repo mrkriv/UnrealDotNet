@@ -83,7 +83,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Returns LightComponent subobject </para>
+		/// Returns LightComponent subobject
 		/// </summary>
 		public ULightComponent GetLightComponent()
 			=> E_ALight_GetLightComponent(this);
@@ -93,7 +93,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Return whether the light supports being toggled off and on on-the-fly. </para>
+		/// Return whether the light supports being toggled off and on on-the-fly.
 		/// </summary>
 		public bool IsToggleable()
 			=> E_ALight_IsToggleable(this);

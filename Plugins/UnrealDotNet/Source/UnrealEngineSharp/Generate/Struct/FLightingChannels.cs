@@ -47,7 +47,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Default channel for all primitives and lights. </para>
+		/// Default channel for all primitives and lights.
 		/// </summary>
 		public byte bChannel0
 		{
@@ -57,7 +57,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>First custom channel </para>
+		/// First custom channel
 		/// </summary>
 		public byte bChannel1
 		{
@@ -67,7 +67,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Second custom channel </para>
+		/// Second custom channel
 		/// </summary>
 		public byte bChannel2
 		{

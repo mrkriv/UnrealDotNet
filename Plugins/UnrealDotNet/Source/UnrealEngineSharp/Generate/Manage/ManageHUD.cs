@@ -22,31 +22,31 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>add an actor to the PostRenderedActors array </para>
+		/// add an actor to the PostRenderedActors array
 		/// </summary>
 		public override void AddPostRenderedActor(AActor a) { }
 		
 		
 		/// <summary>
-		/// <para>draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array </para>
+		/// draw overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array
 		/// </summary>
 		public override void DrawActorOverlays(FVector viewpoint, FRotator viewRotation) { }
 		
 		
 		/// <summary>
-		/// <para>The Main Draw loop for the hud.  Gets called before any messaging.  Should be subclassed </para>
+		/// The Main Draw loop for the hud.  Gets called before any messaging.  Should be subclassed
 		/// </summary>
 		public override void DrawHUD() { }
 		
 		
 		/// <summary>
-		/// <para>Draw the safe zone debugging overlay when enabled </para>
+		/// Draw the safe zone debugging overlay when enabled
 		/// </summary>
 		public override void DrawSafeZoneOverlay() { }
 		
 		
 		/// <summary>
-		/// <para>Gives the HUD a chance to display project-specific data when taking a "bug" screen shot. </para>
+		/// Gives the HUD a chance to display project-specific data when taking a "bug" screen shot.
 		/// </summary>
 		public override void HandleBugScreenShot() { }
 		
@@ -54,44 +54,44 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called in PostInitializeComponents or postprocessing chain has changed (happens because of the worldproperties can define it's own chain and this one is set late). </para>
+		/// Called in PostInitializeComponents or postprocessing chain has changed (happens because of the worldproperties can define it's own chain and this one is set late).
 		/// </summary>
 		public override void NotifyBindPostProcessEffects() { }
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is moused over. </para>
+		/// Native handler, called when a hit box is moused over.
 		/// </summary>
 		public override void NotifyHitBoxBeginCursorOver(string boxName) { }
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is clicked on. Provides the name associated with that box. </para>
+		/// Native handler, called when a hit box is clicked on. Provides the name associated with that box.
 		/// </summary>
 		public override void NotifyHitBoxClick(string boxName) { }
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box no longer has the mouse over it. </para>
+		/// Native handler, called when a hit box no longer has the mouse over it.
 		/// </summary>
 		public override void NotifyHitBoxEndCursorOver(string boxName) { }
 		
 		
 		/// <summary>
-		/// <para>Native handler, called when a hit box is unclicked. Provides the name associated with that box. </para>
+		/// Native handler, called when a hit box is unclicked. Provides the name associated with that box.
 		/// </summary>
 		public override void NotifyHitBoxRelease(string boxName) { }
 		
 		
 		/// <summary>
-		/// <para>Pauses or unpauses the game due to main window's focus being lost. </para>
-		/// <param name="Enable">tells whether to enable or disable the pause state </param>
+		/// Pauses or unpauses the game due to main window's focus being lost.
 		/// </summary>
+		/// <param name="enable">tells whether to enable or disable the pause state</param>
 		public override void OnLostFocusPause(bool bEnable) { }
 		
 		
 		/// <summary>
-		/// <para>PostRender is the main draw loop. </para>
+		/// PostRender is the main draw loop.
 		/// </summary>
 		public override void PostRender() { }
 		
@@ -99,7 +99,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>remove an actor from the PostRenderedActors array </para>
+		/// remove an actor from the PostRenderedActors array
 		/// </summary>
 		public override void RemovePostRenderedActor(AActor a) { }
 		
@@ -107,7 +107,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command. </para>
+		/// Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command.
 		/// <para>Can be overridden to display custom debug per-game. </para>
 		/// </summary>
 		public override void ShowDebugInfo(float yL, float yPos) { }

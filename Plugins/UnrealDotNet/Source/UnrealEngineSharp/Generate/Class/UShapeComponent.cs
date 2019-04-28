@@ -59,7 +59,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If set, shape will be exported for navigation as dynamic modifier instead of using regular collision data </para>
+		/// If set, shape will be exported for navigation as dynamic modifier instead of using regular collision data
 		/// </summary>
 		public byte bDynamicObstacle
 		{
@@ -78,7 +78,7 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Update the body setup parameters based on shape information </para>
+		/// Update the body setup parameters based on shape information
 		/// </summary>
 		public virtual void UpdateBodySetup()
 			=> E_UShapeComponent_UpdateBodySetup(this);

@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Applies the settings stored in ScalabilityQuality and saves settings </para>
+		/// Applies the settings stored in ScalabilityQuality and saves settings
 		/// </summary>
 		public override void ApplyHardwareBenchmarkResults() { }
 		
@@ -30,37 +30,37 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Applies all current user settings to the game and saves to permanent storage (e.g. file), optionally checking for command line overrides. </para>
+		/// Applies all current user settings to the game and saves to permanent storage (e.g. file), optionally checking for command line overrides.
 		/// </summary>
 		public override void ApplySettings(bool bCheckForCommandLineOverrides) { }
 		
 		
 		/// <summary>
-		/// <para>Mark current video mode settings (fullscreenmode/resolution) as being confirmed by the user </para>
+		/// Mark current video mode settings (fullscreenmode/resolution) as being confirmed by the user
 		/// </summary>
 		public override void ConfirmVideoMode() { }
 		
 		
 		/// <summary>
-		/// <para>Loads the user settings from persistent storage </para>
+		/// Loads the user settings from persistent storage
 		/// </summary>
 		public override void LoadSettings(bool bForceReload) { }
 		
 		
 		/// <summary>
-		/// <para>This function resets all settings to the current system settings </para>
+		/// This function resets all settings to the current system settings
 		/// </summary>
 		public override void ResetToCurrentSettings() { }
 		
 		
 		/// <summary>
-		/// <para>Runs the hardware benchmark and populates ScalabilityQuality as well as the last benchmark results config members, but does not apply the settings it determines. Designed to be called in conjunction with ApplyHardwareBenchmarkResults </para>
+		/// Runs the hardware benchmark and populates ScalabilityQuality as well as the last benchmark results config members, but does not apply the settings it determines. Designed to be called in conjunction with ApplyHardwareBenchmarkResults
 		/// </summary>
 		public override void RunHardwareBenchmark(int workScale, float cPUMultiplier, float gPUMultiplier) { }
 		
 		
 		/// <summary>
-		/// <para>Save the user settings to persistent storage (automatically happens as part of ApplySettings) </para>
+		/// Save the user settings to persistent storage (automatically happens as part of ApplySettings)
 		/// </summary>
 		public override void SaveSettings() { }
 		
@@ -72,13 +72,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Update the version of the game user settings to the current version </para>
+		/// Update the version of the game user settings to the current version
 		/// </summary>
 		protected override void UpdateVersion() { }
 		
 		
 		/// <summary>
-		/// <para>Validates and resets bad user settings to default. Deletes stale user settings file if necessary. </para>
+		/// Validates and resets bad user settings to default. Deletes stale user settings file if necessary.
 		/// </summary>
 		public override void ValidateSettings() { }
 		

@@ -43,9 +43,9 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>This is the index of the overlapping item. </para>
+		/// This is the index of the overlapping item.
 		/// <para>For DestructibleComponents, this is the ChunkInfo index. </para>
-		/// <para>For SkeletalMeshComponents this is the Body index or INDEX_NONE for single body </para>
+		/// For SkeletalMeshComponents this is the Body index or INDEX_NONE for single body
 		/// </summary>
 		public int ItemIndex
 		{
@@ -58,14 +58,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Utility to return the Actor that owns the Component that was hit </para>
+		/// Utility to return the Actor that owns the Component that was hit
 		/// </summary>
 		public AActor GetActor()
 			=> E_FOverlapResult_GetActor(this);
 		
 		
 		/// <summary>
-		/// <para>Utility to return the Component that was hit </para>
+		/// Utility to return the Component that was hit
 		/// </summary>
 		public UPrimitiveComponent GetComponent()
 			=> E_FOverlapResult_GetComponent(this);

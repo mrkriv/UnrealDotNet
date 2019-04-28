@@ -87,7 +87,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Max damage done </para>
+		/// Max damage done
 		/// </summary>
 		public float BaseDamage
 		{
@@ -97,7 +97,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Describes amount of exponential damage falloff </para>
+		/// Describes amount of exponential damage falloff
 		/// </summary>
 		public float DamageFalloff
 		{
@@ -107,7 +107,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Within InnerRadius, do max damage </para>
+		/// Within InnerRadius, do max damage
 		/// </summary>
 		public float InnerRadius
 		{
@@ -117,7 +117,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Damage will not fall below this if within range </para>
+		/// Damage will not fall below this if within range
 		/// </summary>
 		public float MinimumDamage
 		{
@@ -127,7 +127,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Outside OuterRadius, do no damage </para>
+		/// Outside OuterRadius, do no damage
 		/// </summary>
 		public float OuterRadius
 		{
@@ -140,14 +140,14 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Returns damage done at a certain distance </para>
+		/// Returns damage done at a certain distance
 		/// </summary>
 		public float GetDamageScale(float distanceFromEpicenter)
 			=> E_FRadialDamageParams_GetDamageScale(this, distanceFromEpicenter);
 		
 		
 		/// <summary>
-		/// <para>Return outermost radius of the damage area. Protects against malformed data. </para>
+		/// Return outermost radius of the damage area. Protects against malformed data.
 		/// </summary>
 		public float GetMaxRadius()
 			=> E_FRadialDamageParams_GetMaxRadius(this);

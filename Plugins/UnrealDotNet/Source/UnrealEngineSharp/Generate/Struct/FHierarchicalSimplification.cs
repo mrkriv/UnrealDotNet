@@ -88,7 +88,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Min number of actors to build LODActor </para>
+		/// Min number of actors to build LODActor
 		/// </summary>
 		public byte bOnlyGenerateClustersForVolumes
 		{
@@ -98,7 +98,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Will reuse the clusters generated for the previous (lower) HLOD level </para>
+		/// Will reuse the clusters generated for the previous (lower) HLOD level
 		/// </summary>
 		public byte bReusePreviousLevelClusters
 		{
@@ -108,9 +108,9 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>If this is true, it will simplify mesh but it is slower. </para>
+		/// If this is true, it will simplify mesh but it is slower.
 		/// <para>If false, it will just merge actors but not simplify using the lower LOD if exists. </para>
-		/// <para>For example if you build LOD 1, it will use LOD 1 of the mesh to merge actors if exists. </para>
+		/// For example if you build LOD 1, it will use LOD 1 of the mesh to merge actors if exists.
 		/// <para>If you merge material, it will reduce drawcalls. </para>
 		/// </summary>
 		public byte bSimplifyMesh
@@ -127,7 +127,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Desired Bounding Radius for clustering - this is not guaranteed but used to calculate filling factor for auto clustering </para>
+		/// Desired Bounding Radius for clustering - this is not guaranteed but used to calculate filling factor for auto clustering
 		/// </summary>
 		public float DesiredBoundRadius
 		{
@@ -137,7 +137,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Desired Filling Percentage for clustering - this is not guaranteed but used to calculate filling factor  for auto clustering </para>
+		/// Desired Filling Percentage for clustering - this is not guaranteed but used to calculate filling factor  for auto clustering
 		/// </summary>
 		public float DesiredFillingPercentage
 		{
@@ -147,7 +147,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Min number of actors to build LODActor </para>
+		/// Min number of actors to build LODActor
 		/// </summary>
 		public int MinNumberOfActorsToBuild
 		{
@@ -163,7 +163,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The screen radius an mesh object should reach before swapping to the LOD actor, once one of parent displays, it won't draw any of children. </para>
+		/// The screen radius an mesh object should reach before swapping to the LOD actor, once one of parent displays, it won't draw any of children.
 		/// </summary>
 		public float TransitionScreenSize
 		{

@@ -75,7 +75,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Whether any components lower on the input stack should be allowed to receive input. </para>
+		/// Whether any components lower on the input stack should be allowed to receive input.
 		/// </summary>
 		public byte bBlockInput
 		{
@@ -85,7 +85,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>The priority of this input component when pushed in to the stack. </para>
+		/// The priority of this input component when pushed in to the stack.
 		/// </summary>
 		public int Priority
 		{
@@ -98,34 +98,34 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Adds the specified action binding. </para>
-		/// <param name="Binding">The binding to add. </param>
-		/// <return>The last binding in the list. </return>
-		/// <para>@see ClearActionBindings, GetActionBinding, GetNumActionBindings, RemoveActionBinding </para>
+		/// Adds the specified action binding.
+		/// <see cref="ClearActionBindings"/>
 		/// </summary>
+		/// <param name="binding">The binding to add.</param>
+		/// <return>The</return>
 		public FInputActionBinding AddActionBinding(FInputActionBinding binding)
 			=> E_UInputComponent_AddActionBinding(this, binding);
 		
 		
 		/// <summary>
-		/// <para>Indicates that the InputComponent is interested in knowing the Axis value </para>
+		/// Indicates that the InputComponent is interested in knowing the Axis value
 		/// <para>(via GetAxisValue) but does not want a delegate function called each frame. </para>
-		/// <para>Returned reference is only guaranteed to be valid until another axis is bound. </para>
+		/// Returned reference is only guaranteed to be valid until another axis is bound.
 		/// </summary>
 		public FInputAxisBinding BindAxis(string axisName)
 			=> E_UInputComponent_BindAxis(this, axisName);
 		
 		
 		/// <summary>
-		/// <para>Removes all action bindings. </para>
-		/// <para>@see AddActionBinding, GetActionBinding, GetNumActionBindings, RemoveActionBinding </para>
+		/// Removes all action bindings.
+		/// <see cref="AddActionBinding"/>
 		/// </summary>
 		public void ClearActionBindings()
 			=> E_UInputComponent_ClearActionBindings(this);
 		
 		
 		/// <summary>
-		/// <para>Clears all cached binding values. </para>
+		/// Clears all cached binding values.
 		/// </summary>
 		public void ClearBindingValues()
 			=> E_UInputComponent_ClearBindingValues(this);
@@ -135,46 +135,46 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Gets the action binding with the specified index. </para>
-		/// <param name="BindingIndex">The index of the binding to get. </param>
-		/// <para>@see AddActionBinding, ClearActionBindings, GetNumActionBindings, RemoveActionBinding </para>
+		/// Gets the action binding with the specified index.
+		/// <see cref="AddActionBinding"/>
 		/// </summary>
+		/// <param name="bindingIndex">The index of the binding to get.</param>
 		public FInputActionBinding GetActionBinding(int bindingIndex)
 			=> E_UInputComponent_GetActionBinding(this, bindingIndex);
 		
 		
 		/// <summary>
-		/// <para>Gets the current value of the axis with the specified name. </para>
-		/// <param name="AxisName">The name of the axis. </param>
-		/// <return>Axis value. </return>
-		/// <para>@see GetAxisKeyValue, GetVectorAxisValue </para>
+		/// Gets the current value of the axis with the specified name.
+		/// <see cref="GetAxisKeyValue"/>
 		/// </summary>
+		/// <param name="axisName">The name of the axis.</param>
+		/// <return>Axis</return>
 		public float GetAxisValue(string axisName)
 			=> E_UInputComponent_GetAxisValue(this, axisName);
 		
 		
 		/// <summary>
-		/// <para>Gets the number of action bindings. </para>
-		/// <return>Number of bindings. </return>
-		/// <para>@see AddActionBinding, ClearActionBindings, GetActionBinding, RemoveActionBinding </para>
+		/// Gets the number of action bindings.
+		/// <see cref="AddActionBinding"/>
 		/// </summary>
+		/// <return>Number</return>
 		public int GetNumActionBindings()
 			=> E_UInputComponent_GetNumActionBindings(this);
 		
 		
 		/// <summary>
-		/// <para>Checks whether this component has any input bindings. </para>
-		/// <return>true if any bindings are set, false otherwise. </return>
+		/// Checks whether this component has any input bindings.
 		/// </summary>
+		/// <return>true</return>
 		public bool HasBindings()
 			=> E_UInputComponent_HasBindings(this);
 		
 		
 		/// <summary>
-		/// <para>Removes the action binding at the specified index. </para>
-		/// <param name="BindingIndex">The index of the binding to remove. </param>
-		/// <para>@see AddActionBinding, ClearActionBindings, GetActionBinding, GetNumActionBindings </para>
+		/// Removes the action binding at the specified index.
+		/// <see cref="AddActionBinding"/>
 		/// </summary>
+		/// <param name="bindingIndex">The index of the binding to remove.</param>
 		public void RemoveActionBinding(int bindingIndex)
 			=> E_UInputComponent_RemoveActionBinding(this, bindingIndex);
 		

@@ -20,7 +20,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize to an identity scale, 1.0. </para>
+		/// Ctor. initialize to an identity scale, 1.0.
 		/// </summary>
 		public FScale2D() :
 			base(E_CreateStruct_FScale2D(), false)
@@ -29,7 +29,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a uniform scale. </para>
+		/// Ctor. initialize from a uniform scale.
 		/// </summary>
 		public FScale2D(float inScale) :
 			base(E_CreateStruct_FScale2D_float(inScale), false)
@@ -38,7 +38,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from a non-uniform scale. </para>
+		/// Ctor. initialize from a non-uniform scale.
 		/// </summary>
 		public FScale2D(float inScaleX, float inScaleY) :
 			base(E_CreateStruct_FScale2D_float_float(inScaleX, inScaleY), false)
@@ -47,7 +47,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Ctor. initialize from an FVector defining the 3D scale. </para>
+		/// Ctor. initialize from an FVector defining the 3D scale.
 		/// </summary>
 		public FScale2D(FVector2D inScale) :
 			base(E_CreateStruct_FScale2D_FVector2D(inScale), false)
@@ -87,35 +87,35 @@ namespace UnrealEngine
 		#region ExternMethods
 		
 		/// <summary>
-		/// <para>Concatenate two scales. </para>
+		/// Concatenate two scales.
 		/// </summary>
 		public FScale2D Concatenate(FScale2D rHS)
 			=> E_FScale2D_Concatenate(this, rHS);
 		
 		
 		/// <summary>
-		/// <para>Access to the underlying FVector2D that stores the scale. </para>
+		/// Access to the underlying FVector2D that stores the scale.
 		/// </summary>
 		public FVector2D GetVector()
 			=> E_FScale2D_GetVector(this);
 		
 		
 		/// <summary>
-		/// <para>Invert the scale. </para>
+		/// Invert the scale.
 		/// </summary>
 		public FScale2D Inverse()
 			=> E_FScale2D_Inverse(this);
 		
 		
 		/// <summary>
-		/// <para>Transform 2D Point </para>
+		/// Transform 2D Point
 		/// </summary>
 		public FVector2D TransformPoint(FVector2D point)
 			=> E_FScale2D_TransformPoint(this, point);
 		
 		
 		/// <summary>
-		/// <para>Transform 2D Vector </para>
+		/// Transform 2D Vector
 		/// </summary>
 		public FVector2D TransformVector(FVector2D vector)
 			=> E_FScale2D_TransformVector(this, vector);

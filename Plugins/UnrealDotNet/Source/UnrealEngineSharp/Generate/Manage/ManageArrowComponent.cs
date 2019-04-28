@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Updates the arrow's colour, and tells it to refresh </para>
+		/// Updates the arrow's colour, and tells it to refresh
 		/// </summary>
 		public override void SetArrowColor(FLinearColor newColor) { }
 		

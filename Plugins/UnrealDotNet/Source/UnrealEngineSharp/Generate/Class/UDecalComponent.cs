@@ -114,7 +114,7 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
-		/// <para>Automatically destroys the owning actor after fully fading out. </para>
+		/// Automatically destroys the owning actor after fully fading out.
 		/// </summary>
 		public byte bDestroyOwnerAfterFade
 		{
@@ -124,7 +124,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Decal size in local space (does not include the component scale), technically redundant but there for convenience </para>
+		/// Decal size in local space (does not include the component scale), technically redundant but there for convenience
 		/// </summary>
 		public FVector DecalSize
 		{
@@ -134,7 +134,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Time in seconds for the decal to fade out. Set fade duration and start delay to 0 to make persistent. Only fades in active simulation or game. </para>
+		/// Time in seconds for the decal to fade out. Set fade duration and start delay to 0 to make persistent. Only fades in active simulation or game.
 		/// </summary>
 		public float FadeDuration
 		{
@@ -162,7 +162,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Time in seconds to wait before beginning to fade out the decal. Set fade duration and start delay to 0 to make persistent. </para>
+		/// Time in seconds to wait before beginning to fade out the decal. Set fade duration and start delay to 0 to make persistent.
 		/// </summary>
 		public float FadeStartDelay
 		{
@@ -172,7 +172,7 @@ namespace UnrealEngine
 
 		
 		/// <summary>
-		/// <para>Controls the order in which decal elements are rendered.  Higher values draw later (on top). </para>
+		/// Controls the order in which decal elements are rendered.  Higher values draw later (on top).
 		/// <para>Setting many different sort orders on many different decals prevents sorting by state and can reduce performance. </para>
 		/// </summary>
 		public int SortOrder
@@ -204,14 +204,14 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Called when the life span of the decal has been exceeded </para>
+		/// Called when the life span of the decal has been exceeded
 		/// </summary>
 		protected virtual void LifeSpanCallback()
 			=> E_UDecalComponent_LifeSpanCallback(this);
 		
 		
 		/// <summary>
-		/// <para>Pushes new selection state to the render thread primitive proxy </para>
+		/// Pushes new selection state to the render thread primitive proxy
 		/// </summary>
 		public void PushSelectionToProxy()
 			=> E_UDecalComponent_PushSelectionToProxy(this);
@@ -221,19 +221,19 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the decal's fade start time, duration and if the owning actor should be destroyed after the decal is fully faded out. </para>
+		/// Sets the decal's fade start time, duration and if the owning actor should be destroyed after the decal is fully faded out.
 		/// <para>The default value of 0 for FadeStartDelay and FadeDuration makes the decal persistent. See DecalLifetimeOpacity material </para>
-		/// <para>node to control the look of "fading out." </para>
-		/// <param name="StartDelay">Time in seconds to wait before beginning to fade out the decal. </param>
-		/// <param name="Duration">Time in second for the decal to fade out. </param>
-		/// <param name="DestroyOwnerAfterFade">Should the owning actor automatically be destroyed after it is completely faded out. </param>
+		/// node to control the look of "fading out."
 		/// </summary>
+		/// <param name="startDelay">Time in seconds to wait before beginning to fade out the decal.</param>
+		/// <param name="duration">Time in second for the decal to fade out.</param>
+		/// <param name="destroyOwnerAfterFade">Should the owning actor automatically be destroyed after it is completely faded out.</param>
 		public void SetFadeOut(float startDelay, float duration, bool destroyOwnerAfterFade = true)
 			=> E_UDecalComponent_SetFadeOut(this, startDelay, duration, destroyOwnerAfterFade);
 		
 		
 		/// <summary>
-		/// <para>Set the FadeScreenSize for this decal component </para>
+		/// Set the FadeScreenSize for this decal component
 		/// </summary>
 		public void SetFadeScreenSize(float newFadeScreenSize)
 			=> E_UDecalComponent_SetFadeScreenSize(this, newFadeScreenSize);
@@ -243,7 +243,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// <para>Sets the sort order for the decal component. Higher values draw later (on top). This will force the decal to reattach </para>
+		/// Sets the sort order for the decal component. Higher values draw later (on top). This will force the decal to reattach
 		/// </summary>
 		public void SetSortOrder(int value)
 			=> E_UDecalComponent_SetSortOrder(this, value);
