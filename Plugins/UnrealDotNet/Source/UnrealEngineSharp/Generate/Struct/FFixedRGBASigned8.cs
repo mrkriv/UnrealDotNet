@@ -48,7 +48,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FFixedRGBASigned8 self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FFixedRGBASigned8(IntPtr Adress)

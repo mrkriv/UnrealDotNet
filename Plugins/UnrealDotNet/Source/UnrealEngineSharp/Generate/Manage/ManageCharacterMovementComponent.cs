@@ -469,7 +469,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageCharacterMovementComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageCharacterMovementComponent(ObjectPointerDescription PtrDesc)

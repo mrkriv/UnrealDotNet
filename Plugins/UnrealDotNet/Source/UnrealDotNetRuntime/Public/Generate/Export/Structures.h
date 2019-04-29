@@ -30,6 +30,7 @@
 #include "Runtime/Engine/Classes/GameFramework/LocalMessage.h"
 #include "Runtime/Core/Public/Math/ClipProjectionMatrix.h"
 #include "Runtime/Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Runtime/Engine/Public/CollisionQueryParams.h"
 #include "Runtime/Core/Public/Math/CurveEdInterface.h"
 #include "Runtime/Engine/Classes/GameFramework/DebugTextInfo.h"
 #include "Runtime/Engine/Classes/GameFramework/CheatManager.h"
@@ -991,6 +992,125 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FClusterNode_DEPRECATED_LastInstance_SET(FClusterNode_DEPRECATED* Ptr, int32 Value) { Ptr->LastInstance = Value; }
 	
 	
+	/*	FCollisionObjectQueryParams	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionObjectQueryParams() { return (INT_PTR) new FCollisionObjectQueryParams(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionObjectQueryParams_ECollisionChannel(ECollisionChannel QueryChannel) { return (INT_PTR) new FCollisionObjectQueryParams(QueryChannel); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionObjectQueryParams_int32(int32 InObjectTypesToQuery) { return (INT_PTR) new FCollisionObjectQueryParams(InObjectTypesToQuery); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionObjectQueryParams_DefaultObjectQueryParam_GET() { return (INT_PTR)&(FCollisionObjectQueryParams::DefaultObjectQueryParam); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionObjectQueryParams_ObjectTypesToQuery_GET(FCollisionObjectQueryParams* Ptr) { return Ptr->ObjectTypesToQuery; }
+	DOTNET_EXPORT void E_PROP_FCollisionObjectQueryParams_ObjectTypesToQuery_SET(FCollisionObjectQueryParams* Ptr, int32 Value) { Ptr->ObjectTypesToQuery = Value; }
+	
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_AddObjectTypesToQuery(FCollisionObjectQueryParams* Self, ECollisionChannel QueryChannel)
+	{
+		auto _p0 = QueryChannel;
+		Self->AddObjectTypesToQuery(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_DoVerify(FCollisionObjectQueryParams* Self)
+	{
+		Self->DoVerify();
+	}
+
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_GetQueryBitfield(FCollisionObjectQueryParams* Self)
+	{
+		return Self->GetQueryBitfield();
+	}
+
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_IsValid(FCollisionObjectQueryParams* Self)
+	{
+		return Self->IsValid();
+	}
+
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_IsValidObjectQuery(FCollisionObjectQueryParams* Self, ECollisionChannel QueryChannel)
+	{
+		auto _p0 = QueryChannel;
+		return Self->IsValidObjectQuery(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionObjectQueryParams_RemoveObjectTypesToQuery(FCollisionObjectQueryParams* Self, ECollisionChannel QueryChannel)
+	{
+		auto _p0 = QueryChannel;
+		Self->RemoveObjectTypesToQuery(_p0);
+	}
+
+	
+	/*	FCollisionQueryParams	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionQueryParams_bool(bool bInTraceComplex) { return (INT_PTR) new FCollisionQueryParams(bInTraceComplex); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionQueryParams() { return (INT_PTR) new FCollisionQueryParams(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionQueryParams_FName_bool_AActor(char* InTraceTag, bool bInTraceComplex, AActor* InIgnoreActor) { return (INT_PTR) new FCollisionQueryParams(ConvertFromManage_FName(InTraceTag), bInTraceComplex, InIgnoreActor); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bFindInitialOverlaps_GET(FCollisionQueryParams* Ptr) { return Ptr->bFindInitialOverlaps; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bFindInitialOverlaps_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bFindInitialOverlaps = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bIgnoreBlocks_GET(FCollisionQueryParams* Ptr) { return Ptr->bIgnoreBlocks; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bIgnoreBlocks_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bIgnoreBlocks = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bIgnoreTouches_GET(FCollisionQueryParams* Ptr) { return Ptr->bIgnoreTouches; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bIgnoreTouches_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bIgnoreTouches = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bReturnFaceIndex_GET(FCollisionQueryParams* Ptr) { return Ptr->bReturnFaceIndex; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bReturnFaceIndex_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bReturnFaceIndex = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bReturnPhysicalMaterial_GET(FCollisionQueryParams* Ptr) { return Ptr->bReturnPhysicalMaterial; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bReturnPhysicalMaterial_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bReturnPhysicalMaterial = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_bTraceComplex_GET(FCollisionQueryParams* Ptr) { return Ptr->bTraceComplex; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_bTraceComplex_SET(FCollisionQueryParams* Ptr, bool Value) { Ptr->bTraceComplex = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_DefaultQueryParam_GET() { return (INT_PTR)&(FCollisionQueryParams::DefaultQueryParam); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_MobilityType_GET(FCollisionQueryParams* Ptr) { return Ptr->MobilityType; }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_MobilityType_SET(FCollisionQueryParams* Ptr, EQueryMobilityType Value) { Ptr->MobilityType = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_OwnerTag_GET(FCollisionQueryParams* Ptr) { return ConvertToManage_StringWrapper(Ptr->OwnerTag); }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_OwnerTag_SET(FCollisionQueryParams* Ptr, char* Value) { Ptr->OwnerTag = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionQueryParams_TraceTag_GET(FCollisionQueryParams* Ptr) { return ConvertToManage_StringWrapper(Ptr->TraceTag); }
+	DOTNET_EXPORT void E_PROP_FCollisionQueryParams_TraceTag_SET(FCollisionQueryParams* Ptr, char* Value) { Ptr->TraceTag = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_FCollisionQueryParams_AddIgnoredActor(FCollisionQueryParams* Self, AActor* InIgnoreActor)
+	{
+		auto _p0 = InIgnoreActor;
+		Self->AddIgnoredActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionQueryParams_AddIgnoredComponent(FCollisionQueryParams* Self, UPrimitiveComponent* InIgnoreComponent)
+	{
+		auto _p0 = InIgnoreComponent;
+		Self->AddIgnoredComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionQueryParams_AddIgnoredComponent_LikelyDuplicatedRoot(FCollisionQueryParams* Self, UPrimitiveComponent* InIgnoreComponent)
+	{
+		auto _p0 = InIgnoreComponent;
+		Self->AddIgnoredComponent_LikelyDuplicatedRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionQueryParams_ClearIgnoredComponents(FCollisionQueryParams* Self)
+	{
+		Self->ClearIgnoredComponents();
+	}
+
+	DOTNET_EXPORT auto E_FCollisionQueryParams_SetNumIgnoredComponents(FCollisionQueryParams* Self, int32 NewNum)
+	{
+		auto _p0 = NewNum;
+		Self->SetNumIgnoredComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCollisionQueryParams_ToString(FCollisionQueryParams* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	
 	/*	FCollisionResponseContainer	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionResponseContainer() { return (INT_PTR) new FCollisionResponseContainer(); }
@@ -1035,6 +1155,18 @@ extern "C"
 		Self->SetResponse(_p0, _p1);
 	}
 
+	
+	/*	FCollisionResponseParams	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionResponseParams_ECollisionResponse(ECollisionResponse DefaultResponse) { return (INT_PTR) new FCollisionResponseParams(DefaultResponse); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCollisionResponseParams_FCollisionResponseContainer(INT_PTR ResponseContainer) { return (INT_PTR) new FCollisionResponseParams(*(FCollisionResponseContainer*)ResponseContainer); }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionResponseParams_CollisionResponse_GET(FCollisionResponseParams* Ptr) { return (INT_PTR)&(Ptr->CollisionResponse); }
+	DOTNET_EXPORT void E_PROP_FCollisionResponseParams_CollisionResponse_SET(FCollisionResponseParams* Ptr, INT_PTR Value) { Ptr->CollisionResponse = *(FCollisionResponseContainer*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCollisionResponseParams_DefaultResponseParam_GET() { return (INT_PTR)&(FCollisionResponseParams::DefaultResponseParam); }
+	
 	
 	/*	FColorGradePerRangeSettings	*/
 	
@@ -1084,6 +1216,15 @@ extern "C"
 		Self->ExportToPostProcessSettings(_p0);
 	}
 
+	
+	/*	FComponentQueryParams	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FComponentQueryParams() { return (INT_PTR) new FComponentQueryParams(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FComponentQueryParams_FName_AActor(char* InTraceTag, AActor* InIgnoreActor) { return (INT_PTR) new FComponentQueryParams(ConvertFromManage_FName(InTraceTag), InIgnoreActor); }
+	
+	DOTNET_EXPORT auto E_PROP_FComponentQueryParams_DefaultComponentQueryParams_GET() { return (INT_PTR)&(FComponentQueryParams::DefaultComponentQueryParams); }
+	
 	
 	/*	FConvolutionBloomSettings	*/
 	

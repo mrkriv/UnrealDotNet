@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UHierarchicalLODSetup self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UHierarchicalLODSetup(ObjectPointerDescription PtrDesc)

@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UForceFeedbackAttenuation self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UForceFeedbackAttenuation(ObjectPointerDescription PtrDesc)

@@ -29,7 +29,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManagePlayer self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManagePlayer(ObjectPointerDescription PtrDesc)

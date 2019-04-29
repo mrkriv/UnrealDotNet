@@ -31,7 +31,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FDirectAttachChildrenAccessor self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FDirectAttachChildrenAccessor(IntPtr Adress)

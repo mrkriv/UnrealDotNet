@@ -56,7 +56,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageGameState self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageGameState(ObjectPointerDescription PtrDesc)

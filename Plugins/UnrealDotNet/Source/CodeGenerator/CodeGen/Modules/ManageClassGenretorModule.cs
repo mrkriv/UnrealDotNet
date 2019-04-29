@@ -157,7 +157,7 @@ namespace CodeGenerator.CodeGen.Modules
 
             cw.WriteLine($"public static implicit operator IntPtr({manageClassName} self)");
             cw.OpenBlock();
-            cw.WriteLine("return self.NativePointer;");
+            cw.WriteLine("return self?.NativePointer ?? IntPtr.Zero;");
             cw.CloseBlock();
             cw.WriteLine();
             cw.WriteLine($"public static implicit operator {manageClassName}(ObjectPointerDescription PtrDesc)");

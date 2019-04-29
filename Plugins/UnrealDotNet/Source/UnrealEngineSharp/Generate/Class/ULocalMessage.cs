@@ -47,7 +47,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ULocalMessage self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ULocalMessage(ObjectPointerDescription PtrDesc)

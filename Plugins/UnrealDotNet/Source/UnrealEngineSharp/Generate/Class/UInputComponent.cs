@@ -182,7 +182,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UInputComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UInputComponent(ObjectPointerDescription PtrDesc)

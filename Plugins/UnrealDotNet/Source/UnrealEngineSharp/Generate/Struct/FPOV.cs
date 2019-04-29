@@ -87,7 +87,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FPOV self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FPOV(IntPtr Adress)

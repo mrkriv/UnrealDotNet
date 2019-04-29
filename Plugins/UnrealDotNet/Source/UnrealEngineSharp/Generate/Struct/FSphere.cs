@@ -198,7 +198,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FSphere self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FSphere(IntPtr Adress)

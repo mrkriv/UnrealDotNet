@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(USpectatorPawnMovement self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator USpectatorPawnMovement(ObjectPointerDescription PtrDesc)

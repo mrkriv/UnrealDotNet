@@ -225,7 +225,7 @@ namespace CodeGenerator.CodeGen
         {
             str = char.ToLower(str[0]) + str.Substring(1);
 
-            if (str == "in" || str == "object" || str == "out" || str == "class" || str == "event" || str == "delegate")
+            if (Cfg.Filter.SystemLiteralList.Contains(str))
                 str = "@" + str;
 
             return str;

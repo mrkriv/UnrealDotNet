@@ -273,6 +273,16 @@ extern "C"
 		return Self->ActorHasTag(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_ActorLineTraceSingle(AActor* Self, INT_PTR OutHit, INT_PTR Start, INT_PTR End, ECollisionChannel TraceChannel, INT_PTR Params)
+	{
+		auto& _p0 = *(FHitResult*)OutHit;
+		auto& _p1 = *(FVector*)Start;
+		auto& _p2 = *(FVector*)End;
+		auto _p3 = TraceChannel;
+		auto& _p4 = *(FCollisionQueryParams*)Params;
+		return Self->ActorLineTraceSingle(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_AActor_ActorToWorld(AActor* Self)
 	{
 		return (INT_PTR) new FTransform(Self->ActorToWorld());

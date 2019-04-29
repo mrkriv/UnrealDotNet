@@ -812,7 +812,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UEngine self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UEngine(ObjectPointerDescription PtrDesc)

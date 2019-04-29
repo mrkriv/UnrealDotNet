@@ -98,7 +98,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FIntRect self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FIntRect(IntPtr Adress)

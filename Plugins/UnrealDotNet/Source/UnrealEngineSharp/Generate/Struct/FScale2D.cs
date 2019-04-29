@@ -124,7 +124,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FScale2D self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FScale2D(IntPtr Adress)

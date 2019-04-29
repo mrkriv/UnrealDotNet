@@ -707,7 +707,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UGameUserSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UGameUserSettings(ObjectPointerDescription PtrDesc)

@@ -58,7 +58,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FSkelMeshComponentLODInfo self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FSkelMeshComponentLODInfo(IntPtr Adress)

@@ -38,8 +38,9 @@ void FDotnetTypeNameCustomization::CustomizeHeader(TSharedRef<IPropertyHandle> S
 {
 	static const FName PropertyName_FullName = GET_MEMBER_NAME_CHECKED(FDotnetTypeName, FullName);
 	FullNamePropertyHandle = StructPropertyHandle->GetChildHandle(PropertyName_FullName);
+	ObjectClass = StructPropertyHandle->GetProperty()->GetOwnerClass();
 
-	auto onGenerateStrings = FOnGetPropertyComboBoxStrings::CreateStatic(&FDotnetTypeNameCustomization::GenerateStrings);
+	auto onGenerateStrings = FOnGetPropertyComboBoxStrings::CreateRaw(this, &FDotnetTypeNameCustomization::GenerateStrings);
 	auto onChangeFullName = FOnPropertyComboBoxValueSelected::CreateRaw(this, &FDotnetTypeNameCustomization::OnChangeFullName);
 
 	HeaderRow.NameContent()
@@ -62,30 +63,35 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 	MainLayoutBuilder = &StructBuilder.GetParentCategory().GetParentLayout();
 
 	TArray<FString> propertys;
+	FDotnetMetadata_Type manageType;
 
 	auto metadata = UCoreShell::GetInstance()->Metadata;
 
 	for (auto type : metadata.Types)
 	{
-		if (type.Name != DotnetTypeName->FullName)
-			continue;
-
-		for (auto prop : type.Propertys)
+		if (type.Name == DotnetTypeName->FullName)
 		{
-			auto onChange = [StructPropertyHandle, prop](const FText& NewText)
-			{
-				TArray<void*> RowData;
-				StructPropertyHandle->AccessRawData(RowData);
-				auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
+			manageType = type;
+			break;
+		}
+	}
 
-				DotnetTypeName->SetPropertyValue(prop.Name, NewText.ToString());
-			};
+	for (auto prop : manageType.Propertys)
+	{
+		auto onChange = [StructPropertyHandle, prop](const FText & NewText)
+		{
+			TArray<void*> RowData;
+			StructPropertyHandle->AccessRawData(RowData);
+			auto DotnetTypeName = ((FDotnetTypeName*)RowData[0]);
 
-			StructBuilder.AddCustomRow(FText::FromString(prop.Name)).NameContent()
+			DotnetTypeName->SetPropertyValue(prop.Name, NewText.ToString());
+		};
+
+		StructBuilder.AddCustomRow(FText::FromString(prop.Name)).NameContent()
 			[
 				StructPropertyHandle->CreatePropertyNameWidget(FText::FromString(prop.Name))
 			]
-			.ValueContent()
+		.ValueContent()
 			[
 				SNew(SEditableTextBox)
 				.Text(FText::FromString(DotnetTypeName->GetPropertyValueOrDefault(prop.Name, prop.Default)))
@@ -93,8 +99,7 @@ void FDotnetTypeNameCustomization::CustomizeChildren(TSharedRef<IPropertyHandle>
 				.IsEnabled(prop.bCanEdit)
 			];
 
-			propertys.Add(prop.Name);
-		}
+		propertys.Add(prop.Name);
 	}
 
 	DotnetTypeName->RemoveOtherProperys(propertys);
@@ -124,6 +129,11 @@ void FDotnetTypeNameCustomization::GenerateStrings(TArray<TSharedPtr<FString>>& 
 	for (auto type : metadata.Types)
 	{
 		if (!type.bIsManage)
+			continue;
+
+		auto typeClass = type.GetCppClass();
+
+		if (ObjectClass != typeClass && !ObjectClass->IsChildOf(typeClass))
 			continue;
 
 		OutComboBoxStrings.Add(MakeShared<FString>(type.Name));

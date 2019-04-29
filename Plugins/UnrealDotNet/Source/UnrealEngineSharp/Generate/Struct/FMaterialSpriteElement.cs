@@ -64,7 +64,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FMaterialSpriteElement self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FMaterialSpriteElement(IntPtr Adress)

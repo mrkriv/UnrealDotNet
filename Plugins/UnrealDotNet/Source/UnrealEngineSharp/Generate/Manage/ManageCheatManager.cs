@@ -185,7 +185,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageCheatManager self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageCheatManager(ObjectPointerDescription PtrDesc)

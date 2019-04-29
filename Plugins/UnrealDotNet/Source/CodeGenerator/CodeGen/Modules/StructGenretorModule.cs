@@ -348,7 +348,7 @@ namespace CodeGenerator.CodeGen.Modules
 
             cw.WriteLine($"public static implicit operator IntPtr({Class.Name} self)");
             cw.OpenBlock();
-            cw.WriteLine("return self.NativePointer;");
+            cw.WriteLine("return self?.NativePointer ?? IntPtr.Zero;");
             cw.CloseBlock();
             cw.WriteLine();
 

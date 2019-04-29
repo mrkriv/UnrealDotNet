@@ -202,7 +202,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FMatrix2x2 self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FMatrix2x2(IntPtr Adress)

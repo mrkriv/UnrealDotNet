@@ -49,7 +49,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FInputGestureBinding self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FInputGestureBinding(IntPtr Adress)

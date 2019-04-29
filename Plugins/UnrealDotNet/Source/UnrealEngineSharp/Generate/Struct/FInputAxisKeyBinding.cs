@@ -50,7 +50,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FInputAxisKeyBinding self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FInputAxisKeyBinding(IntPtr Adress)

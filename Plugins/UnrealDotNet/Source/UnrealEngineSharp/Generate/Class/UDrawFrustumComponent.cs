@@ -98,7 +98,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UDrawFrustumComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UDrawFrustumComponent(ObjectPointerDescription PtrDesc)

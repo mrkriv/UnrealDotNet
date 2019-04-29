@@ -21,7 +21,7 @@ namespace UnrealEngine
 
 		public static implicit operator IntPtr(UObjectBase self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UObjectBase(ObjectPointerDescription PtrDesc)

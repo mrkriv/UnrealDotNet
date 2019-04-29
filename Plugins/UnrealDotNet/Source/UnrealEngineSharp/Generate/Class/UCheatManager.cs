@@ -599,7 +599,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UCheatManager self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UCheatManager(ObjectPointerDescription PtrDesc)

@@ -72,7 +72,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FRootMotionSourceSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FRootMotionSourceSettings(IntPtr Adress)

@@ -53,7 +53,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(PingAvgDataV2 self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator PingAvgDataV2(IntPtr Adress)

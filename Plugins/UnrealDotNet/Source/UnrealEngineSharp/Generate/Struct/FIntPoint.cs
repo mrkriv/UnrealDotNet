@@ -82,7 +82,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FIntPoint self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FIntPoint(IntPtr Adress)

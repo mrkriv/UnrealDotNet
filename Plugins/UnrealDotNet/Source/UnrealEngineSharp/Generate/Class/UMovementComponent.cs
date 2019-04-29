@@ -139,6 +139,9 @@ namespace UnrealEngine
 		private static extern void E_UMovementComponent_HandleImpact(IntPtr self, IntPtr hit, float timeSlice, IntPtr moveDelta);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UMovementComponent_InitCollisionParams(IntPtr self, IntPtr outParams, IntPtr outResponseParam);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UMovementComponent_IsExceedingMaxSpeed(IntPtr self, float maxSpeed);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -487,6 +490,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Initialize collision params appropriately based on our collision settings. Use this before any Line, Overlap, or Sweep tests.
+		/// </summary>
+		public virtual void InitCollisionParams(FCollisionQueryParams outParams, FCollisionResponseParams outResponseParam)
+			=> E_UMovementComponent_InitCollisionParams(this, outParams, outResponseParam);
+		
+		
+		/// <summary>
 		/// Returns true if the current velocity is exceeding the given max speed (usually the result of GetMaxSpeed()), within a small error tolerance.
 		/// <para>Note that under normal circumstances updates cause by acceleration will not cause this to be true, however external forces or changes in the max speed limit </para>
 		/// can cause the max speed to be violated.
@@ -692,7 +702,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UMovementComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UMovementComponent(ObjectPointerDescription PtrDesc)

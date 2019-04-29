@@ -584,7 +584,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(AController self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator AController(ObjectPointerDescription PtrDesc)

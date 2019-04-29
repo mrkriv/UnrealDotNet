@@ -274,7 +274,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UTextRenderComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UTextRenderComponent(ObjectPointerDescription PtrDesc)

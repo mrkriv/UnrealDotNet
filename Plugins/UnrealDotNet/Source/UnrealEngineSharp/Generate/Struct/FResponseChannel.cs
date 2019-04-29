@@ -58,7 +58,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FResponseChannel self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FResponseChannel(IntPtr Adress)

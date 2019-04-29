@@ -26,7 +26,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageInterpToMovementComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageInterpToMovementComponent(ObjectPointerDescription PtrDesc)

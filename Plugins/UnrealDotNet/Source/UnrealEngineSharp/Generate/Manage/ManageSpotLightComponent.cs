@@ -22,7 +22,7 @@ namespace UnrealEngine
 
 		public static implicit operator IntPtr(ManageSpotLightComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageSpotLightComponent(ObjectPointerDescription PtrDesc)

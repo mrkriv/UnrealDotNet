@@ -450,6 +450,15 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_ClearMoveIgnoreComponents(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_ComponentOverlapComponent(IntPtr self, IntPtr primComp, IntPtr pos, IntPtr rot, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_ComponentOverlapComponent_o1(IntPtr self, IntPtr primComp, IntPtr pos, IntPtr rot, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_ComponentOverlapComponentImpl(IntPtr self, IntPtr primComp, IntPtr pos, IntPtr rot, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_DispatchMouseOverEvents(IntPtr self, IntPtr currentComponent, IntPtr newComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -555,6 +564,9 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_IgnoreComponentWhenMoving(IntPtr self, IntPtr component, bool bShouldIgnore);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_InitSweepCollisionParams(IntPtr self, IntPtr outParams, IntPtr outResponseParam);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_IsAnyRigidBodyAwake(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -604,6 +616,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPrimitiveComponent_K2_SphereTraceComponent(IntPtr self, IntPtr traceStart, IntPtr traceEnd, float sphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, IntPtr hitLocation, IntPtr hitNormal, string boneName, IntPtr outHit);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPrimitiveComponent_LineTraceComponent(IntPtr self, IntPtr outHit, IntPtr start, IntPtr end, IntPtr @params);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_OnComponentCollisionSettingsChanged(IntPtr self);
@@ -1855,6 +1870,30 @@ namespace UnrealEngine
 		public void ClearMoveIgnoreComponents()
 			=> E_UPrimitiveComponent_ClearMoveIgnoreComponents(this);
 		
+		
+		/// <summary>
+		/// Test the collision of the supplied component at the supplied location/rotation, and determine if it overlaps this component.
+		/// <para>@note This overload taking rotation as a FQuat is slightly faster than the version using FRotator. </para>
+		/// @note This simply calls the virtual ComponentOverlapComponentImpl() which can be overridden to implement custom behavior.
+		/// </summary>
+		/// <param name="primComp">Component to use geometry from to test against this component. Transform of this component is ignored.</param>
+		/// <param name="pos">Location to place PrimComp geometry at</param>
+		/// <param name="rot">Rotation to place PrimComp geometry at</param>
+		/// <param name="@params">Parameter for trace. TraceTag is only used.</param>
+		/// <return>true</return>
+		public bool ComponentOverlapComponent(UPrimitiveComponent primComp, FVector pos, FQuat rot, FCollisionQueryParams @params)
+			=> E_UPrimitiveComponent_ComponentOverlapComponent(this, primComp, pos, rot, @params);
+		
+		public bool ComponentOverlapComponent(UPrimitiveComponent primComp, FVector pos, FRotator rot, FCollisionQueryParams @params)
+			=> E_UPrimitiveComponent_ComponentOverlapComponent_o1(this, primComp, pos, rot, @params);
+		
+		
+		/// <summary>
+		/// Override this method for custom behavior for ComponentOverlapComponent()
+		/// </summary>
+		protected virtual bool ComponentOverlapComponentImpl(UPrimitiveComponent primComp, FVector pos, FQuat rot, FCollisionQueryParams @params)
+			=> E_UPrimitiveComponent_ComponentOverlapComponentImpl(this, primComp, pos, rot, @params);
+		
 		public void DispatchMouseOverEvents(UPrimitiveComponent currentComponent, UPrimitiveComponent newComponent)
 			=> E_UPrimitiveComponent_DispatchMouseOverEvents(this, currentComponent, newComponent);
 		
@@ -2137,6 +2176,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Set collision params on OutParams (such as CollisionResponse) to match the settings on this PrimitiveComponent.
+		/// </summary>
+		public virtual void InitSweepCollisionParams(FCollisionQueryParams outParams, FCollisionResponseParams outResponseParam)
+			=> E_UPrimitiveComponent_InitSweepCollisionParams(this, outParams, outResponseParam);
+		
+		
+		/// <summary>
 		/// Returns if any body in this component is currently awake and simulating.
 		/// </summary>
 		public virtual bool IsAnyRigidBodyAwake()
@@ -2252,7 +2298,7 @@ namespace UnrealEngine
 		/// <param name="bTraceComplex">Whether or not to trace the complex physics representation or just the simple representation</param>
 		/// <param name="bShowTrace">Whether or not to draw the trace in the world (for debugging)</param>
 		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently</param>
-		public bool LineTraceComponent(FVector traceStart, FVector traceEnd, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
+		public bool K2_LineTraceComponent(FVector traceStart, FVector traceEnd, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
 			=> E_UPrimitiveComponent_K2_LineTraceComponent(this, traceStart, traceEnd, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
 		
 		
@@ -2279,6 +2325,18 @@ namespace UnrealEngine
 		/// <param name="bPersistentShowTrace">Whether or not to make the debugging draw stay in the world permanently</param>
 		public bool SphereTraceComponent(FVector traceStart, FVector traceEnd, float sphereRadius, bool bTraceComplex, bool bShowTrace, bool bPersistentShowTrace, FVector hitLocation, FVector hitNormal, string boneName, FHitResult outHit)
 			=> E_UPrimitiveComponent_K2_SphereTraceComponent(this, traceStart, traceEnd, sphereRadius, bTraceComplex, bShowTrace, bPersistentShowTrace, hitLocation, hitNormal, boneName, outHit);
+		
+		
+		/// <summary>
+		/// Trace a ray against just this component.
+		/// </summary>
+		/// <param name="outHit">Information about hit against this component, if true is returned</param>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <return>true</return>
+		public virtual bool LineTraceComponent(FHitResult outHit, FVector start, FVector end, FCollisionQueryParams @params)
+			=> E_UPrimitiveComponent_LineTraceComponent(this, outHit, start, end, @params);
 		
 		
 		/// <summary>
@@ -2838,7 +2896,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UPrimitiveComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UPrimitiveComponent(ObjectPointerDescription PtrDesc)

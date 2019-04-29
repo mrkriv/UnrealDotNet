@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UDrawSphereComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UDrawSphereComponent(ObjectPointerDescription PtrDesc)

@@ -34,7 +34,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(AInfo self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator AInfo(ObjectPointerDescription PtrDesc)

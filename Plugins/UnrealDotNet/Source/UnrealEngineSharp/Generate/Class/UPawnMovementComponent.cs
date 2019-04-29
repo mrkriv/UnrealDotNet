@@ -135,12 +135,10 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UPawnMovementComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UPawnMovementComponent(ObjectPointerDescription PtrDesc)
 		{
 			return NativeManager.GetWrapper<UPawnMovementComponent>(PtrDesc);
-		}
-}
-}
+		}}}

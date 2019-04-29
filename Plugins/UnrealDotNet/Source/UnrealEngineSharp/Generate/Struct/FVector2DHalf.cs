@@ -123,7 +123,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FVector2DHalf self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FVector2DHalf(IntPtr Adress)

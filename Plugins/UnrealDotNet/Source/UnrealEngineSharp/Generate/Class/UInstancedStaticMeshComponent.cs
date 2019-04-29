@@ -183,7 +183,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UInstancedStaticMeshComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UInstancedStaticMeshComponent(ObjectPointerDescription PtrDesc)

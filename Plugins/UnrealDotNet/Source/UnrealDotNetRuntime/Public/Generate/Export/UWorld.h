@@ -690,6 +690,65 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->K2_GetWorldSettings());
 	}
 
+	DOTNET_EXPORT auto E_UWorld_LineTraceSingleByChannel(UWorld* Self, INT_PTR OutHit, INT_PTR Start, INT_PTR End, ECollisionChannel TraceChannel, INT_PTR Params, INT_PTR ResponseParam)
+	{
+		auto& _p0 = *(FHitResult*)OutHit;
+		auto& _p1 = *(FVector*)Start;
+		auto& _p2 = *(FVector*)End;
+		auto _p3 = TraceChannel;
+		auto& _p4 = *(FCollisionQueryParams*)Params;
+		auto& _p5 = *(FCollisionResponseParams*)ResponseParam;
+		return Self->LineTraceSingleByChannel(_p0, _p1, _p2, _p3, _p4, _p5);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_LineTraceSingleByObjectType(UWorld* Self, INT_PTR OutHit, INT_PTR Start, INT_PTR End, INT_PTR ObjectQueryParams, INT_PTR Params)
+	{
+		auto& _p0 = *(FHitResult*)OutHit;
+		auto& _p1 = *(FVector*)Start;
+		auto& _p2 = *(FVector*)End;
+		auto& _p3 = *(FCollisionObjectQueryParams*)ObjectQueryParams;
+		auto& _p4 = *(FCollisionQueryParams*)Params;
+		return Self->LineTraceSingleByObjectType(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_LineTraceSingleByProfile(UWorld* Self, INT_PTR OutHit, INT_PTR Start, INT_PTR End, char* ProfileName, INT_PTR Params)
+	{
+		auto& _p0 = *(FHitResult*)OutHit;
+		auto& _p1 = *(FVector*)Start;
+		auto& _p2 = *(FVector*)End;
+		auto _p3 = ConvertFromManage_FName(ProfileName);
+		auto& _p4 = *(FCollisionQueryParams*)Params;
+		return Self->LineTraceSingleByProfile(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_LineTraceTestByChannel(UWorld* Self, INT_PTR Start, INT_PTR End, ECollisionChannel TraceChannel, INT_PTR Params, INT_PTR ResponseParam)
+	{
+		auto& _p0 = *(FVector*)Start;
+		auto& _p1 = *(FVector*)End;
+		auto _p2 = TraceChannel;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		auto& _p4 = *(FCollisionResponseParams*)ResponseParam;
+		return Self->LineTraceTestByChannel(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_LineTraceTestByObjectType(UWorld* Self, INT_PTR Start, INT_PTR End, INT_PTR ObjectQueryParams, INT_PTR Params)
+	{
+		auto& _p0 = *(FVector*)Start;
+		auto& _p1 = *(FVector*)End;
+		auto& _p2 = *(FCollisionObjectQueryParams*)ObjectQueryParams;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return Self->LineTraceTestByObjectType(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_LineTraceTestByProfile(UWorld* Self, INT_PTR Start, INT_PTR End, char* ProfileName, INT_PTR Params)
+	{
+		auto& _p0 = *(FVector*)Start;
+		auto& _p1 = *(FVector*)End;
+		auto _p2 = ConvertFromManage_FName(ProfileName);
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return Self->LineTraceTestByProfile(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_Listen(UWorld* Self, INT_PTR InURL)
 	{
 		auto& _p0 = *(FURL*)InURL;

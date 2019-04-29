@@ -221,7 +221,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FRandomStream self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FRandomStream(IntPtr Adress)

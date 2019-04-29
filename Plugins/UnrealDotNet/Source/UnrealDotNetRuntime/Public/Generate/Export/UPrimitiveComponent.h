@@ -27,6 +27,11 @@ public:
 		ClearComponentOverlaps(bDoNotifies, bSkipNotifySelf);
 	}
 
+	bool ComponentOverlapComponentImpl_WRAP(UPrimitiveComponent* PrimComp, const FVector Pos, const FQuat& Rot, const FCollisionQueryParams& Params)
+	{
+		return ComponentOverlapComponentImpl(PrimComp, Pos, Rot, Params);
+	}
+
 	void EnsurePhysicsStateCreated_WRAP()
 	{
 		EnsurePhysicsStateCreated();
@@ -505,6 +510,33 @@ extern "C"
 		Self->ClearMoveIgnoreComponents();
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ComponentOverlapComponent(UPrimitiveComponent* Self, UPrimitiveComponent* PrimComp, INT_PTR Pos, INT_PTR Rot, INT_PTR Params)
+	{
+		auto _p0 = PrimComp;
+		auto _p1 = *(FVector*)Pos;
+		auto& _p2 = *(FQuat*)Rot;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return Self->ComponentOverlapComponent(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ComponentOverlapComponent_o1(UPrimitiveComponent* Self, UPrimitiveComponent* PrimComp, INT_PTR Pos, INT_PTR Rot, INT_PTR Params)
+	{
+		auto _p0 = PrimComp;
+		auto _p1 = *(FVector*)Pos;
+		auto _p2 = *(FRotator*)Rot;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return Self->ComponentOverlapComponent(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_ComponentOverlapComponentImpl(UPrimitiveComponent* Self, UPrimitiveComponent* PrimComp, INT_PTR Pos, INT_PTR Rot, INT_PTR Params)
+	{
+		auto _p0 = PrimComp;
+		auto _p1 = *(FVector*)Pos;
+		auto& _p2 = *(FQuat*)Rot;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return ((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->ComponentOverlapComponentImpl_WRAP(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchMouseOverEvents(UPrimitiveComponent* Self, UPrimitiveComponent* CurrentComponent, UPrimitiveComponent* NewComponent)
 	{
 		auto _p0 = CurrentComponent;
@@ -717,6 +749,13 @@ extern "C"
 		Self->IgnoreComponentWhenMoving(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_InitSweepCollisionParams(UPrimitiveComponent* Self, INT_PTR OutParams, INT_PTR OutResponseParam)
+	{
+		auto& _p0 = *(FCollisionQueryParams*)OutParams;
+		auto& _p1 = *(FCollisionResponseParams*)OutResponseParam;
+		Self->InitSweepCollisionParams(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_IsAnyRigidBodyAwake(UPrimitiveComponent* Self)
 	{
 		return Self->IsAnyRigidBodyAwake();
@@ -840,6 +879,15 @@ extern "C"
 		auto _p8 = ConvertFromManage_FName(BoneName);
 		auto& _p9 = *(FHitResult*)OutHit;
 		return Self->K2_SphereTraceComponent(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7, _p8, _p9);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_LineTraceComponent(UPrimitiveComponent* Self, INT_PTR OutHit, INT_PTR Start, INT_PTR End, INT_PTR Params)
+	{
+		auto& _p0 = *(FHitResult*)OutHit;
+		auto _p1 = *(FVector*)Start;
+		auto _p2 = *(FVector*)End;
+		auto& _p3 = *(FCollisionQueryParams*)Params;
+		return Self->LineTraceComponent(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_OnComponentCollisionSettingsChanged(UPrimitiveComponent* Self)

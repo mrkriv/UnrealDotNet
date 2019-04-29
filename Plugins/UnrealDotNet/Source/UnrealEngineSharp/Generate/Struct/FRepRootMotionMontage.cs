@@ -145,7 +145,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FRepRootMotionMontage self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FRepRootMotionMontage(IntPtr Adress)

@@ -22,16 +22,6 @@
   "IsGenerateFileHeader": true,
 
   "Filter": {
-    "SystemLiteralList": [
-      "base",
-      "this",
-      "default",
-      "dynamic",
-      "params",
-      "float",
-      "int",
-      "string"
-    ],
     "TemplateWhiteList": [
       "TArray",
       "TSet"
@@ -96,6 +86,7 @@
 
       "FQueuedReplayTask", // todo: не экспортировать абстрактные структруты
       "FSetPlayerStatePawn", // todo: приватный конструктор
+      "FCollisionQueryFlag", // todo: приватный конструктор
 
       "APlanarReflection", // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
       "ULevelActorContainer", // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
@@ -249,6 +240,21 @@
       "ULocalLightComponent": [
         "CosHalfConeAngle" //todo:: понять откуда парсер его взял
       ]
-    }
+    },
+    "SystemLiteralList": [
+      "base",
+      "default",
+      "delegate",
+      "dynamic",
+      "event",
+      "float",
+      "int",
+      "in",
+      "object",
+      "out",
+      "params",
+      "string",
+      "this"
+    ]
   }
 }

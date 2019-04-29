@@ -74,7 +74,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(USphereReflectionCaptureComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator USphereReflectionCaptureComponent(ObjectPointerDescription PtrDesc)

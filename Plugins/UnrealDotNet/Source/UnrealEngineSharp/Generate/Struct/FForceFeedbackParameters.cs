@@ -78,7 +78,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FForceFeedbackParameters self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FForceFeedbackParameters(IntPtr Adress)

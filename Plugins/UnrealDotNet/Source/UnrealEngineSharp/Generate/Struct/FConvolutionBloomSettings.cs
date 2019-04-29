@@ -133,7 +133,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FConvolutionBloomSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FConvolutionBloomSettings(IntPtr Adress)

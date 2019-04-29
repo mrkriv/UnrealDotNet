@@ -109,7 +109,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FColorGradingSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FColorGradingSettings(IntPtr Adress)

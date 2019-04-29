@@ -87,7 +87,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UPawnNoiseEmitterComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UPawnNoiseEmitterComponent(ObjectPointerDescription PtrDesc)

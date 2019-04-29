@@ -190,7 +190,7 @@ namespace CodeGenerator
         public bool MethodFilterNoCahed(Method m)
         {
             var Class = m.OwnerClass;
-
+            
             if (m.IsOverride || m.IsFriend || m.IsTemplate)
                 return false;
 
@@ -204,10 +204,6 @@ namespace CodeGenerator
                 return false;
 
             if (m.InputTypes.Any(v => v.IsPointer && v.IsReference || v.Type.IsVoid || v.IsReadOnly()))
-                return false;
-
-            if (m.InputTypes.Where(x => x.Name != null).Any(x => SystemLiteralList.Contains(x.Name.ToLower())))
-                //todo:: добавлять @ перед именем свойства в c#
                 return false;
 
             if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))

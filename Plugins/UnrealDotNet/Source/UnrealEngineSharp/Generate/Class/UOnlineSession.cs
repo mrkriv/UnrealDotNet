@@ -77,7 +77,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UOnlineSession self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UOnlineSession(ObjectPointerDescription PtrDesc)

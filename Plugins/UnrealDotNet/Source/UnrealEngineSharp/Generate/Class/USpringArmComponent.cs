@@ -279,7 +279,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(USpringArmComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator USpringArmComponent(ObjectPointerDescription PtrDesc)

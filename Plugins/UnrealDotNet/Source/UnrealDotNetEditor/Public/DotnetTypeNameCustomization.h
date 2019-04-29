@@ -6,6 +6,10 @@
 
 class UNREALDOTNETEDITOR_API FDotnetTypeNameCustomization : public IPropertyTypeCustomization
 {
+	TSharedPtr<IPropertyHandle> FullNamePropertyHandle;
+	class IDetailLayoutBuilder* MainLayoutBuilder;
+	class UClass* ObjectClass;
+
 public:
 	static TSharedRef<IPropertyTypeCustomization> MakeInstance();
 
@@ -15,10 +19,5 @@ public:
 	virtual void CustomizeChildren(TSharedRef<IPropertyHandle> StructPropertyHandle, class IDetailChildrenBuilder& StructBuilder, IPropertyTypeCustomizationUtils& StructCustomizationUtils) override;
 
 	void OnChangeFullName(const FString& value);
-
-private:
-	TSharedPtr<IPropertyHandle> FullNamePropertyHandle;
-	class IDetailLayoutBuilder* MainLayoutBuilder;
-
-	static void GenerateStrings(TArray<TSharedPtr<FString>>& OutComboBoxStrings, TArray<TSharedPtr<class SToolTip>>& OutToolTips, TArray<bool>& OutRestrictedItems);
+	void GenerateStrings(TArray<TSharedPtr<FString>>& OutComboBoxStrings, TArray<TSharedPtr<class SToolTip>>& OutToolTips, TArray<bool>& OutRestrictedItems);
 };

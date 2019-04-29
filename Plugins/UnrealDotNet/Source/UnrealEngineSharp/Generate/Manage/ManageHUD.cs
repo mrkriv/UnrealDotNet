@@ -116,7 +116,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageHUD self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageHUD(ObjectPointerDescription PtrDesc)

@@ -517,7 +517,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(AGameNetworkManager self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator AGameNetworkManager(ObjectPointerDescription PtrDesc)

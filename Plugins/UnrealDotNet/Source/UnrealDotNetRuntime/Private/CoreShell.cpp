@@ -43,11 +43,11 @@ UCoreShell::UCoreShell()
 	LoadMetadata();
 
 #if WITH_EDITOR
-	IDirectoryWatcher* DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
+	auto DirectoryWatcher = FModuleManager::Get().LoadModuleChecked<FDirectoryWatcherModule>(TEXT("DirectoryWatcher")).Get();
 	if (DirectoryWatcher)
 	{
 		FDelegateHandle DirectoryChangedHandle;
-		auto callback = IDirectoryWatcher::FDirectoryChanged::CreateLambda([=](const TArray<FFileChangeData>& files) {
+		auto callback = IDirectoryWatcher::FDirectoryChanged::CreateLambda([=](const TArray<FFileChangeData> & files) {
 			for (auto& change : files)
 			{
 				if (FPaths::GetCleanFilename(change.Filename) == FPaths::GetCleanFilename(Hotreload_HookFile))
@@ -56,9 +56,14 @@ UCoreShell::UCoreShell()
 					return;
 				}
 			}
-		});
+			});
 
 		DirectoryWatcher->RegisterDirectoryChangedCallback_Handle(Domain_Path, callback, DirectoryChangedHandle);
+	}
+
+	if (FPaths::FileExists(Hotreload_HookFile))
+	{
+		UpdateGameLib();
 	}
 #endif
 }

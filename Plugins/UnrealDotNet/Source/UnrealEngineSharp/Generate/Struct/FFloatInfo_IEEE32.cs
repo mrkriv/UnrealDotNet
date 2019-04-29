@@ -31,7 +31,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FFloatInfo_IEEE32 self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FFloatInfo_IEEE32(IntPtr Adress)

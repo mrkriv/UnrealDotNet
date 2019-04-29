@@ -76,7 +76,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FPerspectiveMatrix self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FPerspectiveMatrix(IntPtr Adress)

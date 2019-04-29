@@ -156,7 +156,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FRadialDamageParams self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FRadialDamageParams(IntPtr Adress)

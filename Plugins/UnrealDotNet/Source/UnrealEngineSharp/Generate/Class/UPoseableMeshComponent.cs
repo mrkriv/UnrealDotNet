@@ -73,7 +73,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UPoseableMeshComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UPoseableMeshComponent(ObjectPointerDescription PtrDesc)

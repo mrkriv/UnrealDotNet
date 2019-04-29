@@ -383,7 +383,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FLightmassWorldInfoSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FLightmassWorldInfoSettings(IntPtr Adress)

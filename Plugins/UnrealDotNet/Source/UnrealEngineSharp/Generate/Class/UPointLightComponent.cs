@@ -129,7 +129,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UPointLightComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UPointLightComponent(ObjectPointerDescription PtrDesc)

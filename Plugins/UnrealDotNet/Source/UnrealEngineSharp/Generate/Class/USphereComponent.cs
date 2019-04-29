@@ -73,7 +73,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(USphereComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator USphereComponent(ObjectPointerDescription PtrDesc)

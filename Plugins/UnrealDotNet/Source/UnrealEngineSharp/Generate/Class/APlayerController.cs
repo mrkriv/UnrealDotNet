@@ -275,10 +275,13 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_FOV(IntPtr self, float newFOV);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern bool E_APlayerController_GetHitResultAtScreenPosition(IntPtr self, IntPtr screenPosition, byte traceChannel, bool bTraceComplex, IntPtr hitResult);
+		private static extern bool E_APlayerController_GetHitResultAtScreenPosition(IntPtr self, IntPtr screenPosition, byte traceChannel, IntPtr collisionQueryParams, IntPtr hitResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APlayerController_GetHitResultAtScreenPosition_o1(IntPtr self, IntPtr screenPosition, byte traceChannel, bool bTraceComplex, IntPtr hitResult);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APlayerController_GetHitResultAtScreenPosition_o2(IntPtr self, IntPtr screenPosition, byte traceChannel, bool bTraceComplex, IntPtr hitResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_APlayerController_GetHitResultUnderCursor(IntPtr self, byte traceChannel, bool bTraceComplex, IntPtr hitResult);
@@ -813,11 +816,18 @@ namespace UnrealEngine
 		public virtual void FOV(float newFOV)
 			=> E_APlayerController_FOV(this, newFOV);
 		
+		
+		/// <summary>
+		/// Returns hit results from doing a collision query at a certain location on the screen
+		/// </summary>
+		public bool GetHitResultAtScreenPosition(FVector2D screenPosition, ECollisionChannel traceChannel, FCollisionQueryParams collisionQueryParams, FHitResult hitResult)
+			=> E_APlayerController_GetHitResultAtScreenPosition(this, screenPosition, (byte)traceChannel, collisionQueryParams, hitResult);
+		
 		public bool GetHitResultAtScreenPosition(FVector2D screenPosition, ECollisionChannel traceChannel, bool bTraceComplex, FHitResult hitResult)
-			=> E_APlayerController_GetHitResultAtScreenPosition(this, screenPosition, (byte)traceChannel, bTraceComplex, hitResult);
+			=> E_APlayerController_GetHitResultAtScreenPosition_o1(this, screenPosition, (byte)traceChannel, bTraceComplex, hitResult);
 		
 		public bool GetHitResultAtScreenPosition(FVector2D screenPosition, ETraceTypeQuery traceChannel, bool bTraceComplex, FHitResult hitResult)
-			=> E_APlayerController_GetHitResultAtScreenPosition_o1(this, screenPosition, (byte)traceChannel, bTraceComplex, hitResult);
+			=> E_APlayerController_GetHitResultAtScreenPosition_o2(this, screenPosition, (byte)traceChannel, bTraceComplex, hitResult);
 		
 		public bool GetHitResultUnderCursor(ECollisionChannel traceChannel, bool bTraceComplex, FHitResult hitResult)
 			=> E_APlayerController_GetHitResultUnderCursor(this, (byte)traceChannel, bTraceComplex, hitResult);
@@ -1121,7 +1131,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(APlayerController self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator APlayerController(ObjectPointerDescription PtrDesc)

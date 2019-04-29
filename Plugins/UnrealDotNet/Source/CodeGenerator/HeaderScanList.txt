@@ -8,16 +8,16 @@
 +Engine\Source\Runtime\Engine\Classes\Engine\Canvas.h
 
 +Engine\Source\Runtime\Engine\Classes\GameFramework\*.h
-
 +Engine\Source\Runtime\Engine\Classes\Components\*.h
+
++Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h
 
 +Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectArray.h
 +Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBase.h
 +Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectBaseUtility.h
++Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h
 
 +Engine\Source\Runtime\Core\Public\Math\*.h
 -Engine\Source\Runtime\Core\Public\Math\UnrealMathFPU.h
 -Engine\Source\Runtime\Core\Public\Math\UnrealMathSSE.h
 -Engine\Source\Runtime\Core\Public\Math\TransformNonVectorized.h
-
-+Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h

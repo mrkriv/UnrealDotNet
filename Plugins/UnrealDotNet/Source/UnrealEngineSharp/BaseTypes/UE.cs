@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace UnrealEngine
@@ -29,17 +28,17 @@ namespace UnrealEngine
             //#endif
         }
 
-        public static void Log(string message) => E_ULOG_L(message);
+        public static void Log(string message) => E_ULOG_L(message ?? "null");
 
-        public static void LogWarning(string message) => E_ULOG_W(message);
+        public static void LogWarning(string message) => E_ULOG_W(message ?? "null");
 
-        public static void LogError(string message) => E_ULOG_E(message);
+        public static void LogError(string message) => E_ULOG_E(message ?? "null");
 
-        public static void ScreenDebugMessage(string message, float time = 2.0f) => ScreenDebugMessage(message, time, Color.Gold);
+        public static void ScreenDebugMessage(string message, float time = 2.0f) => ScreenDebugMessage(message ?? "null", time, Color.Gold);
 
         public static void ScreenDebugMessage(string message, float time, Color color)
         {
-            E_ScreenDebugMessage(message, time, color.R, color.G, color.B);
+            E_ScreenDebugMessage(message ?? "null", time, color.R, color.G, color.B);
         }
     }
 }

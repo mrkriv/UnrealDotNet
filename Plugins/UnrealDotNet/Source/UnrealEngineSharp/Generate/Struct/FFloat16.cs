@@ -96,7 +96,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FFloat16 self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FFloat16(IntPtr Adress)

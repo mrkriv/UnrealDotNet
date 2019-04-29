@@ -78,7 +78,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(USceneCaptureComponentCube self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator USceneCaptureComponentCube(ObjectPointerDescription PtrDesc)

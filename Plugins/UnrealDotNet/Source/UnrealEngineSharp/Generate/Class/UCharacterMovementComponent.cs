@@ -3735,7 +3735,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UCharacterMovementComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UCharacterMovementComponent(ObjectPointerDescription PtrDesc)

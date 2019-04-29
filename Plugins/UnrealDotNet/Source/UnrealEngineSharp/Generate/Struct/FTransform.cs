@@ -797,7 +797,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FTransform self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FTransform(IntPtr Adress)

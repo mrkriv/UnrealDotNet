@@ -128,7 +128,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FBasedPosition self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FBasedPosition(IntPtr Adress)

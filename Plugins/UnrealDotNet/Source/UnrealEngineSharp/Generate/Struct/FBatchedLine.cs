@@ -108,7 +108,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FBatchedLine self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FBatchedLine(IntPtr Adress)

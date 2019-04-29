@@ -53,7 +53,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FInstancedStaticMeshInstanceData self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FInstancedStaticMeshInstanceData(IntPtr Adress)

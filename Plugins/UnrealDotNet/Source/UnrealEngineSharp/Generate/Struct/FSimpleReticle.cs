@@ -46,7 +46,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FSimpleReticle self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FSimpleReticle(IntPtr Adress)

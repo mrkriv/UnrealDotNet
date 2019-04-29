@@ -86,7 +86,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FLevelViewportInfo self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FLevelViewportInfo(IntPtr Adress)

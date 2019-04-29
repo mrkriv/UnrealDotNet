@@ -67,7 +67,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FNetDriverDefinition self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FNetDriverDefinition(IntPtr Adress)

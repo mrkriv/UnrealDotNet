@@ -180,6 +180,13 @@ extern "C"
 		Self->HandleImpact(_p0, _p1, _p2);
 	}
 
+	DOTNET_EXPORT auto E_UMovementComponent_InitCollisionParams(UMovementComponent* Self, INT_PTR OutParams, INT_PTR OutResponseParam)
+	{
+		auto& _p0 = *(FCollisionQueryParams*)OutParams;
+		auto& _p1 = *(FCollisionResponseParams*)OutResponseParam;
+		Self->InitCollisionParams(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UMovementComponent_IsExceedingMaxSpeed(UMovementComponent* Self, float MaxSpeed)
 	{
 		auto _p0 = MaxSpeed;

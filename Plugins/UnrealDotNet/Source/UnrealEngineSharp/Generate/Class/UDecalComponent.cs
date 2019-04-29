@@ -252,7 +252,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UDecalComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UDecalComponent(ObjectPointerDescription PtrDesc)

@@ -74,7 +74,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FOverlapResult self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FOverlapResult(IntPtr Adress)

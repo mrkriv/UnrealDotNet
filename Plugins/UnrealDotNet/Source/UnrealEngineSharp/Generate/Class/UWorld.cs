@@ -580,6 +580,24 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UWorld_K2_GetWorldSettings(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceSingleByChannel(IntPtr self, IntPtr outHit, IntPtr start, IntPtr end, byte traceChannel, IntPtr @params, IntPtr responseParam);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceSingleByObjectType(IntPtr self, IntPtr outHit, IntPtr start, IntPtr end, IntPtr objectQueryParams, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceSingleByProfile(IntPtr self, IntPtr outHit, IntPtr start, IntPtr end, string profileName, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceTestByChannel(IntPtr self, IntPtr start, IntPtr end, byte traceChannel, IntPtr @params, IntPtr responseParam);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceTestByObjectType(IntPtr self, IntPtr start, IntPtr end, IntPtr objectQueryParams, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UWorld_LineTraceTestByProfile(IntPtr self, IntPtr start, IntPtr end, string profileName, IntPtr @params);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_Listen(IntPtr self, IntPtr inURL);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1920,6 +1938,83 @@ namespace UnrealEngine
 		public AWorldSettings K2_GetWorldSettings()
 			=> E_UWorld_K2_GetWorldSettings(this);
 		
+		
+		/// <summary>
+		/// Trace a ray against the world using a specific channel and return the first blocking hit
+		/// </summary>
+		/// <param name="outHit">First blocking hit found</param>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="traceChannel">The 'channel' that this ray is in, used to determine which components to hit</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <param name="responseParam">ResponseContainer to be used for this trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceSingleByChannel(FHitResult outHit, FVector start, FVector end, ECollisionChannel traceChannel, FCollisionQueryParams @params, FCollisionResponseParams responseParam)
+			=> E_UWorld_LineTraceSingleByChannel(this, outHit, start, end, (byte)traceChannel, @params, responseParam);
+		
+		
+		/// <summary>
+		/// Trace a ray against the world using object types and return the first blocking hit
+		/// </summary>
+		/// <param name="outHit">First blocking hit found</param>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="objectQueryParams">List of object types it's looking for</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceSingleByObjectType(FHitResult outHit, FVector start, FVector end, FCollisionObjectQueryParams objectQueryParams, FCollisionQueryParams @params)
+			=> E_UWorld_LineTraceSingleByObjectType(this, outHit, start, end, objectQueryParams, @params);
+		
+		
+		/// <summary>
+		/// Trace a ray against the world using a specific profile and return the first blocking hit
+		/// </summary>
+		/// <param name="outHit">First blocking hit found</param>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="profileName">The 'profile' used to determine which components to hit</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceSingleByProfile(FHitResult outHit, FVector start, FVector end, string profileName, FCollisionQueryParams @params)
+			=> E_UWorld_LineTraceSingleByProfile(this, outHit, start, end, profileName, @params);
+		
+		
+		/// <summary>
+		/// Trace a ray against the world using a specific channel and return if a blocking hit is found.
+		/// </summary>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="traceChannel">The 'channel' that this ray is in, used to determine which components to hit</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <param name="responseParam">ResponseContainer to be used for this trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceTestByChannel(FVector start, FVector end, ECollisionChannel traceChannel, FCollisionQueryParams @params, FCollisionResponseParams responseParam)
+			=> E_UWorld_LineTraceTestByChannel(this, start, end, (byte)traceChannel, @params, responseParam);
+		
+		
+		/// <summary>
+		/// Trace a ray against the world using object types and return if a blocking hit is found.
+		/// </summary>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="objectQueryParams">List of object types it's looking for</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceTestByObjectType(FVector start, FVector end, FCollisionObjectQueryParams objectQueryParams, FCollisionQueryParams @params)
+			=> E_UWorld_LineTraceTestByObjectType(this, start, end, objectQueryParams, @params);
+		
+		
+		/// <summary>
+		/// Trace a ray against the world using a specific profile and return if a blocking hit is found.
+		/// </summary>
+		/// <param name="start">Start location of the ray</param>
+		/// <param name="end">End location of the ray</param>
+		/// <param name="profileName">The 'profile' used to determine which components to hit</param>
+		/// <param name="@params">Additional parameters used for the trace</param>
+		/// <return>TRUE</return>
+		public bool LineTraceTestByProfile(FVector start, FVector end, string profileName, FCollisionQueryParams @params)
+			=> E_UWorld_LineTraceTestByProfile(this, start, end, profileName, @params);
+		
 		public bool Listen(FURL inURL)
 			=> E_UWorld_Listen(this, inURL);
 		
@@ -2271,7 +2366,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UWorld self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UWorld(ObjectPointerDescription PtrDesc)

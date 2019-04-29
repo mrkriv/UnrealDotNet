@@ -213,7 +213,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(UCapsuleComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator UCapsuleComponent(ObjectPointerDescription PtrDesc)

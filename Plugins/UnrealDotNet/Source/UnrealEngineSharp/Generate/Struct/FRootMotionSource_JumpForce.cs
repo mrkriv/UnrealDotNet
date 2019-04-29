@@ -104,7 +104,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FRootMotionSource_JumpForce self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FRootMotionSource_JumpForce(IntPtr Adress)

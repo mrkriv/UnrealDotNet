@@ -80,7 +80,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FLightmassLightSettings self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FLightmassLightSettings(IntPtr Adress)

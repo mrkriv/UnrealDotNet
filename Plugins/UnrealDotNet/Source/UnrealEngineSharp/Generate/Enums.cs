@@ -627,6 +627,15 @@ namespace UnrealEngine
 		Reevaluate,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h:18
+	
+	public enum EQueryMobilityType : byte
+	{
+		Any,
+		Static,
+		Dynamic,
+	}
+
 	
 	/// <summary>
 	/// static variable for default data to be used without reconstructing everytime
@@ -1281,6 +1290,15 @@ namespace UnrealEngine
 	{
 		Directional,
 		Point,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h:348
+	
+	public enum InitType : byte
+	{
+		AllObjects,
+		AllStaticObjects,
+		AllDynamicObjects,
 	}
 
 }

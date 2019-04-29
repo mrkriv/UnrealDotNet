@@ -375,7 +375,16 @@ extern "C"
 		Self->FOV(_p0);
 	}
 
-	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition(APlayerController* Self, INT_PTR ScreenPosition, ECollisionChannel TraceChannel, bool bTraceComplex, INT_PTR HitResult)
+	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition(APlayerController* Self, INT_PTR ScreenPosition, ECollisionChannel TraceChannel, INT_PTR CollisionQueryParams, INT_PTR HitResult)
+	{
+		auto _p0 = *(FVector2D*)ScreenPosition;
+		auto _p1 = TraceChannel;
+		auto& _p2 = *(FCollisionQueryParams*)CollisionQueryParams;
+		auto& _p3 = *(FHitResult*)HitResult;
+		return Self->GetHitResultAtScreenPosition(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition_o1(APlayerController* Self, INT_PTR ScreenPosition, ECollisionChannel TraceChannel, bool bTraceComplex, INT_PTR HitResult)
 	{
 		auto _p0 = *(FVector2D*)ScreenPosition;
 		auto _p1 = TraceChannel;
@@ -384,7 +393,7 @@ extern "C"
 		return Self->GetHitResultAtScreenPosition(_p0, _p1, _p2, _p3);
 	}
 
-	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition_o1(APlayerController* Self, INT_PTR ScreenPosition, ETraceTypeQuery TraceChannel, bool bTraceComplex, INT_PTR HitResult)
+	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition_o2(APlayerController* Self, INT_PTR ScreenPosition, ETraceTypeQuery TraceChannel, bool bTraceComplex, INT_PTR HitResult)
 	{
 		auto _p0 = *(FVector2D*)ScreenPosition;
 		auto _p1 = TraceChannel;

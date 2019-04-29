@@ -55,7 +55,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ManageAudioComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ManageAudioComponent(ObjectPointerDescription PtrDesc)

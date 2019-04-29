@@ -14,6 +14,11 @@ namespace UnrealEngine
 
         public void CallFunction(string Function) => E_Call_UFunction(NativePointer, Function);
 
-        public void CallFunction(string Function, params object[] Params) => E_Call_UFunction(NativePointer, Function + " " + string.Join(' ', Params));
+        public void CallFunction(string Function, params object[] Params)
+        {
+            E_Call_UFunction(NativePointer, Function + " " + string.Join(' ', Params));
+        }
+
+        public override string ToString() => GetName();
     }
 }

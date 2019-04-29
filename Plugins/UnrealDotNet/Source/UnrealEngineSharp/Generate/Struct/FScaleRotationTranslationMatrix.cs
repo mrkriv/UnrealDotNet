@@ -38,7 +38,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FScaleRotationTranslationMatrix self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FScaleRotationTranslationMatrix(IntPtr Adress)

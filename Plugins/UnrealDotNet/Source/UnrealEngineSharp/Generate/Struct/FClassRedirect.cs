@@ -122,7 +122,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(FClassRedirect self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator FClassRedirect(IntPtr Adress)

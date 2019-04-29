@@ -77,7 +77,7 @@ namespace UnrealEngine
 		
 		public static implicit operator IntPtr(ULineBatchComponent self)
 		{
-			return self.NativePointer;
+			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
 		public static implicit operator ULineBatchComponent(ObjectPointerDescription PtrDesc)
