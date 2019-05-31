@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class APlayerState : AInfo
 	{
-		public APlayerState(IntPtr Adress)
-			: base(Adress)
+		public APlayerState(IntPtr adress)
+			: base(adress)
 		{
 		}
 

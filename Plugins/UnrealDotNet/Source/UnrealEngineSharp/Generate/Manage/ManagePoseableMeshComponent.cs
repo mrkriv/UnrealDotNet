@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManagePoseableMeshComponent")]
 	public partial class ManagePoseableMeshComponent : UPoseableMeshComponent
 	{
-		public ManagePoseableMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public ManagePoseableMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UVectorFieldComponent : UPrimitiveComponent
 	{
-		public UVectorFieldComponent(IntPtr Adress)
-			: base(Adress)
+		public UVectorFieldComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

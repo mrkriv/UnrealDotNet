@@ -76,7 +76,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInputAxisBinding(IntPtr Adress)
+		public static implicit operator FInputAxisBinding(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInputAxisBinding(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInputAxisBinding(adress, false);
 		}}}

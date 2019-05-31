@@ -239,7 +239,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRigidBodyErrorCorrection(IntPtr Adress)
+		public static implicit operator FRigidBodyErrorCorrection(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRigidBodyErrorCorrection(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRigidBodyErrorCorrection(adress, false);
 		}}}

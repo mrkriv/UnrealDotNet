@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CodeGenerator.Metadata;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CodeGenerator.Metadata;
 
 namespace CodeGenerator.CodeGen.Modules
 {
@@ -52,7 +52,8 @@ namespace CodeGenerator.CodeGen.Modules
 
             GenerateSourceInfo(cw, Class);
 
-            if (!Class.IsFinal) GenerateProtctedWrap(cw, Class);
+            if (!Class.IsFinal)
+                GenerateProtctedWrap(cw, Class);
 
             cw.WriteLine("extern \"C\"");
             cw.OpenBlock();
@@ -60,9 +61,21 @@ namespace CodeGenerator.CodeGen.Modules
             foreach (var prop in Class.Property.Where(p => !p.IsConst && p.AccessModifier == AccessModifier.Public))
                 GeneratePropertyH(cw, Class, prop);
 
-            if (!Cfg.Filter.NewObjectBlackList.Contains(Class.Name)) GenegateNewObjectMethod(cw, Class);
+            if (!Cfg.Filter.NewObjectBlackList.Contains(Class.Name))
+            {
+                GenegateNewObjectMethod(cw, Class);
+            }
 
-            foreach (var method in Class.Methods) GenerateMethod(cw, method);
+            foreach (var method in Class.Methods)
+                GenerateMethod(cw, method);
+
+            if (Cfg.Filter.CanGenerateManageType(Class))
+            {
+                foreach (var method in Class.Methods.Where(x => Cfg.Filter.CanGenerateManageOverride(x)))
+                {
+                    //todo::
+                }
+            }
 
             cw.CloseBlock();
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
@@ -122,9 +135,8 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine(
                 $"{Cfg.CppApi} auto {baseName}{Cfg.EventPropertyGetPostfix}({Class.Name}* Ptr) {{ {GenerateReturn(prop, $"Ptr->{prop.Name}", true)} }}");
 
-            if (!prop.IsReadOnly())
-                cw.WriteLine(
-                    $"{Cfg.CppApi} void {baseName}{Cfg.EventPropertySetPostfix}({Class.Name}* Ptr, {prop.GetTypeCpp()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
+            cw.WriteLine(!prop.IsReadOnly(),
+                $"{Cfg.CppApi} void {baseName}{Cfg.EventPropertySetPostfix}({Class.Name}* Ptr, {prop.GetTypeCpp()} Value) {{ Ptr->{prop.Name} = {GenerateGet(prop, "Value")}; }}");
 
             cw.WriteLine();
         }
@@ -161,7 +173,7 @@ namespace CodeGenerator.CodeGen.Modules
         {
             if (method.AccessModifier == AccessModifier.Private)
                 return;
-            
+
             if (method.OwnerClass.IsFinal && method.AccessModifier == AccessModifier.Protected)
                 return;
 
@@ -334,8 +346,8 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine($"public {(Class.IsFinal ? "sealed" : "")} partial class {Class.Name} : {baseClass}");
             cw.OpenBlock();
 
-            cw.WriteLine($"public {Class.Name}(IntPtr Adress)");
-            cw.WriteLine("\t: base(Adress)");
+            cw.WriteLine($"public {Class.Name}(IntPtr adress)");
+            cw.WriteLine("\t: base(adress)");
             cw.OpenBlock();
             cw.CloseBlock();
             cw.WriteLine();
@@ -535,7 +547,7 @@ namespace CodeGenerator.CodeGen.Modules
         {
             var type = prop.GetTypeCs();
             var name = prop.GetDisplayName();
-            var dlg = (Delegate) prop.Type;
+            var dlg = (Delegate)prop.Type;
 
             GenerateSummaty(cw, prop);
 

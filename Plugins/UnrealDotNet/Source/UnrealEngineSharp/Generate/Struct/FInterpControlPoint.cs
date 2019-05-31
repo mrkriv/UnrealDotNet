@@ -100,7 +100,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInterpControlPoint(IntPtr Adress)
+		public static implicit operator FInterpControlPoint(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInterpControlPoint(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInterpControlPoint(adress, false);
 		}}}

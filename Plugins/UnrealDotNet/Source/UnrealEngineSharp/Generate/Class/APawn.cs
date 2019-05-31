@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class APawn : AActor
 	{
-		public APawn(IntPtr Adress)
-			: base(Adress)
+		public APawn(IntPtr adress)
+			: base(adress)
 		{
 		}
 

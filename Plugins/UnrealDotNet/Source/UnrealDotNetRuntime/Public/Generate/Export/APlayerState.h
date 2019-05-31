@@ -112,13 +112,13 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerState_ClientInitialize(APlayerState* Self, AController* C)
 	{
 		auto _p0 = C;
-		Self->ClientInitialize(_p0);
+		Self->APlayerState::ClientInitialize(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_CopyProperties(APlayerState* Self, APlayerState* PlayerState)
 	{
 		auto _p0 = PlayerState;
-		((E_PROTECTED_WRAP_APlayerState*)Self)->CopyProperties_WRAP(_p0);
+		((E_PROTECTED_WRAP_APlayerState*)Self)->APlayerState::CopyProperties_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_DispatchCopyProperties(APlayerState* Self, APlayerState* PlayerState)
@@ -160,7 +160,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerState_HandleWelcomeMessage(APlayerState* Self)
 	{
-		((E_PROTECTED_WRAP_APlayerState*)Self)->HandleWelcomeMessage_WRAP();
+		((E_PROTECTED_WRAP_APlayerState*)Self)->APlayerState::HandleWelcomeMessage_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_IsPrimaryPlayer(APlayerState* Self)
@@ -170,48 +170,48 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerState_OnDeactivated(APlayerState* Self)
 	{
-		Self->OnDeactivated();
+		Self->APlayerState::OnDeactivated();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnReactivated(APlayerState* Self)
 	{
-		Self->OnReactivated();
+		Self->APlayerState::OnReactivated();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnRep_bIsInactive(APlayerState* Self)
 	{
-		Self->OnRep_bIsInactive();
+		Self->APlayerState::OnRep_bIsInactive();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnRep_PlayerId(APlayerState* Self)
 	{
-		Self->OnRep_PlayerId();
+		Self->APlayerState::OnRep_PlayerId();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnRep_PlayerName(APlayerState* Self)
 	{
-		Self->OnRep_PlayerName();
+		Self->APlayerState::OnRep_PlayerName();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnRep_Score(APlayerState* Self)
 	{
-		Self->OnRep_Score();
+		Self->APlayerState::OnRep_Score();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OnRep_UniqueId(APlayerState* Self)
 	{
-		Self->OnRep_UniqueId();
+		Self->APlayerState::OnRep_UniqueId();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_OverrideWith(APlayerState* Self, APlayerState* PlayerState)
 	{
 		auto _p0 = PlayerState;
-		((E_PROTECTED_WRAP_APlayerState*)Self)->OverrideWith_WRAP(_p0);
+		((E_PROTECTED_WRAP_APlayerState*)Self)->APlayerState::OverrideWith_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_RecalculateAvgPing(APlayerState* Self)
 	{
-		Self->RecalculateAvgPing();
+		Self->APlayerState::RecalculateAvgPing();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_ReceiveCopyProperties(APlayerState* Self, APlayerState* NewPlayerState)
@@ -229,31 +229,31 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerState_RegisterPlayerWithSession(APlayerState* Self, bool bWasFromInvite)
 	{
 		auto _p0 = bWasFromInvite;
-		Self->RegisterPlayerWithSession(_p0);
+		Self->APlayerState::RegisterPlayerWithSession(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_SeamlessTravelTo(APlayerState* Self, APlayerState* NewPlayerState)
 	{
 		auto _p0 = NewPlayerState;
-		Self->SeamlessTravelTo(_p0);
+		Self->APlayerState::SeamlessTravelTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_SetOldPlayerName(APlayerState* Self, char* S)
 	{
 		auto _p0 = ConvertFromManage_FString(S);
-		Self->SetOldPlayerName(_p0);
+		Self->APlayerState::SetOldPlayerName(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_SetPlayerName(APlayerState* Self, char* S)
 	{
 		auto _p0 = ConvertFromManage_FString(S);
-		Self->SetPlayerName(_p0);
+		Self->APlayerState::SetPlayerName(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_SetPlayerNameInternal(APlayerState* Self, char* S)
 	{
 		auto _p0 = ConvertFromManage_FString(S);
-		Self->SetPlayerNameInternal(_p0);
+		Self->APlayerState::SetPlayerNameInternal(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_SetShouldUpdateReplicatedPing(APlayerState* Self, bool bInShouldUpdateReplicatedPing)
@@ -270,13 +270,13 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerState_UnregisterPlayerWithSession(APlayerState* Self)
 	{
-		Self->UnregisterPlayerWithSession();
+		Self->APlayerState::UnregisterPlayerWithSession();
 	}
 
 	DOTNET_EXPORT auto E_APlayerState_UpdatePing(APlayerState* Self, float InPing)
 	{
 		auto _p0 = InPing;
-		Self->UpdatePing(_p0);
+		Self->APlayerState::UpdatePing(_p0);
 	}
 
 }

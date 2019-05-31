@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRigidBodyState(IntPtr Adress)
+		public static implicit operator FRigidBodyState(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRigidBodyState(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRigidBodyState(adress, false);
 		}}}

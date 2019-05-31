@@ -82,7 +82,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLightingChannels(IntPtr Adress)
+		public static implicit operator FLightingChannels(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLightingChannels(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLightingChannels(adress, false);
 		}}}

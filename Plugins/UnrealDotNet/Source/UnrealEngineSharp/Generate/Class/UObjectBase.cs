@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UObjectBase : NativeWrapper
 	{
-		public UObjectBase(IntPtr Adress)
-			: base(Adress)
+		public UObjectBase(IntPtr adress)
+			: base(adress)
 		{
 		}
 

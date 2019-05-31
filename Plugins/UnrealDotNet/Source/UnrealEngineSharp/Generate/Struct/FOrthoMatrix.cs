@@ -42,7 +42,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FOrthoMatrix(IntPtr Adress)
+		public static implicit operator FOrthoMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FOrthoMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FOrthoMatrix(adress, false);
 		}}}

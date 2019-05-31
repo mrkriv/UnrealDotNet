@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDropNoteInfo(IntPtr Adress)
+		public static implicit operator FDropNoteInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDropNoteInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDropNoteInfo(adress, false);
 		}}}

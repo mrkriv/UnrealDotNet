@@ -67,19 +67,19 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_AddControllerPitchInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->AddControllerPitchInput(_p0);
+		Self->APawn::AddControllerPitchInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddControllerRollInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->AddControllerRollInput(_p0);
+		Self->APawn::AddControllerRollInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddControllerYawInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->AddControllerYawInput(_p0);
+		Self->APawn::AddControllerYawInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddMovementInput(APawn* Self, INT_PTR WorldDirection, float ScaleValue, bool bForce)
@@ -87,7 +87,7 @@ extern "C"
 		auto _p0 = *(FVector*)WorldDirection;
 		auto _p1 = ScaleValue;
 		auto _p2 = bForce;
-		Self->AddMovementInput(_p0, _p1, _p2);
+		Self->APawn::AddMovementInput(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ConsumeMovementInputVector(APawn* Self)
@@ -102,19 +102,19 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_DestroyPlayerInputComponent(APawn* Self)
 	{
-		((E_PROTECTED_WRAP_APawn*)Self)->DestroyPlayerInputComponent_WRAP();
+		((E_PROTECTED_WRAP_APawn*)Self)->APawn::DestroyPlayerInputComponent_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_APawn_DetachFromControllerPendingDestroy(APawn* Self)
 	{
-		Self->DetachFromControllerPendingDestroy();
+		Self->APawn::DetachFromControllerPendingDestroy();
 	}
 
 	DOTNET_EXPORT auto E_APawn_FaceRotation(APawn* Self, INT_PTR NewControlRotation, float DeltaTime)
 	{
 		auto _p0 = *(FRotator*)NewControlRotation;
 		auto _p1 = DeltaTime;
-		Self->FaceRotation(_p0, _p1);
+		Self->APawn::FaceRotation(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetBaseAimRotation(APawn* Self)
@@ -272,17 +272,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_OnRep_Controller(APawn* Self)
 	{
-		Self->OnRep_Controller();
+		Self->APawn::OnRep_Controller();
 	}
 
 	DOTNET_EXPORT auto E_APawn_OnRep_PlayerState(APawn* Self)
 	{
-		Self->OnRep_PlayerState();
+		Self->APawn::OnRep_PlayerState();
 	}
 
 	DOTNET_EXPORT auto E_APawn_PawnClientRestart(APawn* Self)
 	{
-		Self->PawnClientRestart();
+		Self->APawn::PawnClientRestart();
 	}
 
 	DOTNET_EXPORT auto E_APawn_PawnMakeNoise(APawn* Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
@@ -297,13 +297,13 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_PawnStartFire(APawn* Self, uint8 FireModeNum)
 	{
 		auto _p0 = FireModeNum;
-		Self->PawnStartFire(_p0);
+		Self->APawn::PawnStartFire(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_PossessedBy(APawn* Self, AController* NewController)
 	{
 		auto _p0 = NewController;
-		Self->PossessedBy(_p0);
+		Self->APawn::PossessedBy(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ReachedDesiredRotation(APawn* Self)
@@ -313,7 +313,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_RecalculateBaseEyeHeight(APawn* Self)
 	{
-		Self->RecalculateBaseEyeHeight();
+		Self->APawn::RecalculateBaseEyeHeight();
 	}
 
 	DOTNET_EXPORT auto E_APawn_ReceivePossessed(APawn* Self, AController* NewController)
@@ -330,7 +330,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_Restart(APawn* Self)
 	{
-		Self->Restart();
+		Self->APawn::Restart();
 	}
 
 	DOTNET_EXPORT auto E_APawn_SetCanAffectNavigationGeneration(APawn* Self, bool bNewValue, bool bForceUpdate)
@@ -342,7 +342,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_SetPlayerDefaults(APawn* Self)
 	{
-		Self->SetPlayerDefaults();
+		Self->APawn::SetPlayerDefaults();
 	}
 
 	DOTNET_EXPORT auto E_APawn_SetPlayerState(APawn* Self, APlayerState* NewPlayerState)
@@ -360,7 +360,7 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_SetupPlayerInputComponent(APawn* Self, UInputComponent* PlayerInputComponent)
 	{
 		auto _p0 = PlayerInputComponent;
-		((E_PROTECTED_WRAP_APawn*)Self)->SetupPlayerInputComponent_WRAP(_p0);
+		((E_PROTECTED_WRAP_APawn*)Self)->APawn::SetupPlayerInputComponent_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ShouldTakeDamage(APawn* Self, float Damage, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -374,17 +374,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_SpawnDefaultController(APawn* Self)
 	{
-		Self->SpawnDefaultController();
+		Self->APawn::SpawnDefaultController();
 	}
 
 	DOTNET_EXPORT auto E_APawn_TurnOff(APawn* Self)
 	{
-		Self->TurnOff();
+		Self->APawn::TurnOff();
 	}
 
 	DOTNET_EXPORT auto E_APawn_UnPossessed(APawn* Self)
 	{
-		Self->UnPossessed();
+		Self->APawn::UnPossessed();
 	}
 
 	DOTNET_EXPORT auto E_APawn_UpdateNavAgent(APawn* Self)
@@ -394,7 +394,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_UpdateNavigationRelevance(APawn* Self)
 	{
-		Self->UpdateNavigationRelevance();
+		Self->APawn::UpdateNavigationRelevance();
 	}
 
 }

@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPreCulledStaticMeshSection(IntPtr Adress)
+		public static implicit operator FPreCulledStaticMeshSection(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPreCulledStaticMeshSection(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPreCulledStaticMeshSection(adress, false);
 		}}}

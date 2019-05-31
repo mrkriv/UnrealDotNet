@@ -471,7 +471,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FBox(IntPtr Adress)
+		public static implicit operator FBox(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FBox(Adress, false);
+			return adress == IntPtr.Zero ? null : new FBox(adress, false);
 		}}}

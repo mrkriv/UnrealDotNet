@@ -117,7 +117,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRotationConversionCache(IntPtr Adress)
+		public static implicit operator FRotationConversionCache(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRotationConversionCache(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRotationConversionCache(adress, false);
 		}}}

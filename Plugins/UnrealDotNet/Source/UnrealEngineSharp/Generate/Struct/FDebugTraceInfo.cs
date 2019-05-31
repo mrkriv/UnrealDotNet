@@ -125,7 +125,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDebugTraceInfo(IntPtr Adress)
+		public static implicit operator FDebugTraceInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDebugTraceInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDebugTraceInfo(adress, false);
 		}}}

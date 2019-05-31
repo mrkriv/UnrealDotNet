@@ -125,7 +125,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRootMotionSource_RadialForce(IntPtr Adress)
+		public static implicit operator FRootMotionSource_RadialForce(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRootMotionSource_RadialForce(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRootMotionSource_RadialForce(adress, false);
 		}}}

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AGameModeBase : AInfo
 	{
-		public AGameModeBase(IntPtr Adress)
-			: base(Adress)
+		public AGameModeBase(IntPtr adress)
+			: base(adress)
 		{
 		}
 

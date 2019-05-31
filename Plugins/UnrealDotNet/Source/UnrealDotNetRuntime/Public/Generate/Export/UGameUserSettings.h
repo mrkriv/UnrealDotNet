@@ -76,12 +76,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyHardwareBenchmarkResults(UGameUserSettings* Self)
 	{
-		Self->ApplyHardwareBenchmarkResults();
+		Self->UGameUserSettings::ApplyHardwareBenchmarkResults();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyNonResolutionSettings(UGameUserSettings* Self)
 	{
-		Self->ApplyNonResolutionSettings();
+		Self->UGameUserSettings::ApplyNonResolutionSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyResolutionSettings(UGameUserSettings* Self, bool bCheckForCommandLineOverrides)
@@ -93,12 +93,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplySettings(UGameUserSettings* Self, bool bCheckForCommandLineOverrides)
 	{
 		auto _p0 = bCheckForCommandLineOverrides;
-		Self->ApplySettings(_p0);
+		Self->UGameUserSettings::ApplySettings(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ConfirmVideoMode(UGameUserSettings* Self)
 	{
-		Self->ConfirmVideoMode();
+		Self->UGameUserSettings::ConfirmVideoMode();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_EnableHDRDisplayOutput(UGameUserSettings* Self, bool bEnable, int32 DisplayNits)
@@ -307,7 +307,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_LoadSettings(UGameUserSettings* Self, bool bForceReload)
 	{
 		auto _p0 = bForceReload;
-		Self->LoadSettings(_p0);
+		Self->UGameUserSettings::LoadSettings(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_PreloadResolutionSettings(UGameUserSettings* Self)
@@ -322,7 +322,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ResetToCurrentSettings(UGameUserSettings* Self)
 	{
-		Self->ResetToCurrentSettings();
+		Self->UGameUserSettings::ResetToCurrentSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_RevertVideoMode(UGameUserSettings* Self)
@@ -335,12 +335,12 @@ extern "C"
 		auto _p0 = WorkScale;
 		auto _p1 = CPUMultiplier;
 		auto _p2 = GPUMultiplier;
-		Self->RunHardwareBenchmark(_p0, _p1, _p2);
+		Self->UGameUserSettings::RunHardwareBenchmark(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SaveSettings(UGameUserSettings* Self)
 	{
-		Self->SaveSettings();
+		Self->UGameUserSettings::SaveSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetAntiAliasingQuality(UGameUserSettings* Self, int32 Value)
@@ -387,7 +387,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_SetOverallScalabilityLevel(UGameUserSettings* Self, int32 Value)
 	{
 		auto _p0 = Value;
-		Self->SetOverallScalabilityLevel(_p0);
+		Self->UGameUserSettings::SetOverallScalabilityLevel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetPostProcessingQuality(UGameUserSettings* Self, int32 Value)
@@ -446,7 +446,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetToDefaults(UGameUserSettings* Self)
 	{
-		Self->SetToDefaults();
+		Self->UGameUserSettings::SetToDefaults();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetViewDistanceQuality(UGameUserSettings* Self, int32 Value)
@@ -471,7 +471,7 @@ extern "C"
 	{
 		auto _p0 = WindowPosX;
 		auto _p1 = WindowPosY;
-		Self->SetWindowPosition(_p0, _p1);
+		Self->UGameUserSettings::SetWindowPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SupportsHDRDisplayOutput(UGameUserSettings* Self)
@@ -486,12 +486,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_UpdateVersion(UGameUserSettings* Self)
 	{
-		((E_PROTECTED_WRAP_UGameUserSettings*)Self)->UpdateVersion_WRAP();
+		((E_PROTECTED_WRAP_UGameUserSettings*)Self)->UGameUserSettings::UpdateVersion_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ValidateSettings(UGameUserSettings* Self)
 	{
-		Self->ValidateSettings();
+		Self->UGameUserSettings::ValidateSettings();
 	}
 
 }

@@ -67,7 +67,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FMaterialSpriteElement(IntPtr Adress)
+		public static implicit operator FMaterialSpriteElement(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FMaterialSpriteElement(Adress, false);
+			return adress == IntPtr.Zero ? null : new FMaterialSpriteElement(adress, false);
 		}}}

@@ -69,7 +69,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Pos;
 		auto _p1 = bPositionIsRelative;
-		Self->AddControlPointPosition(_p0, _p1);
+		Self->UInterpToMovementComponent::AddControlPointPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UInterpToMovementComponent_CalculateNewTime(UInterpToMovementComponent* Self, float TimeNow, float Delta, INT_PTR HitResult, bool InBroadcastEvent, bool OutStopped, float OutTimeRemainder)
@@ -152,7 +152,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UInterpToMovementComponent_UpdateControlPoints(UInterpToMovementComponent* Self, bool InForceUpdate)
 	{
 		auto _p0 = InForceUpdate;
-		((E_PROTECTED_WRAP_UInterpToMovementComponent*)Self)->UpdateControlPoints_WRAP(_p0);
+		((E_PROTECTED_WRAP_UInterpToMovementComponent*)Self)->UInterpToMovementComponent::UpdateControlPoints_WRAP(_p0);
 	}
 
 }

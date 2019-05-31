@@ -410,4 +410,140 @@ void UManageCheatManager::Walk()
 		UCoreShell::GetInstance()->InvokeInObject(this, "Walk");
 }
 
+void UManageCheatManager::BeginDestroy()
+{
+	Super::BeginDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+}
+
+void UManageCheatManager::FinishDestroy()
+{
+	Super::FinishDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+}
+
+void UManageCheatManager::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
+void UManageCheatManager::OverridePerObjectConfigSection(FString& SectionName)
+{
+	Super::OverridePerObjectConfigSection(SectionName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+}
+
+void UManageCheatManager::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+}
+
+void UManageCheatManager::PostEditImport()
+{
+	Super::PostEditImport();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+}
+
+void UManageCheatManager::PostInitProperties()
+{
+	Super::PostInitProperties();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+}
+
+void UManageCheatManager::PostLoad()
+{
+	Super::PostLoad();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+}
+
+void UManageCheatManager::PostNetReceive()
+{
+	Super::PostNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+}
+
+void UManageCheatManager::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void UManageCheatManager::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+}
+
+void UManageCheatManager::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void UManageCheatManager::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void UManageCheatManager::PreNetReceive()
+{
+	Super::PreNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+}
+
+void UManageCheatManager::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+}
+
+void UManageCheatManager::CreateCluster()
+{
+	Super::CreateCluster();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+}
+
+void UManageCheatManager::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

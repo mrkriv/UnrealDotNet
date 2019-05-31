@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ACharacter : APawn
 	{
-		public ACharacter(IntPtr Adress)
-			: base(Adress)
+		public ACharacter(IntPtr adress)
+			: base(adress)
 		{
 		}
 

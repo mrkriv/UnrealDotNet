@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSpriteCategoryInfo(IntPtr Adress)
+		public static implicit operator FSpriteCategoryInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSpriteCategoryInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSpriteCategoryInfo(adress, false);
 		}}}

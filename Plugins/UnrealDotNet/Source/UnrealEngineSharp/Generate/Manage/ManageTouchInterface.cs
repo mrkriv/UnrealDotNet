@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageTouchInterface")]
 	public partial class ManageTouchInterface : UTouchInterface
 	{
-		public ManageTouchInterface(IntPtr Adress)
-			: base(Adress)
+		public ManageTouchInterface(IntPtr adress)
+			: base(adress)
 		{
 		}
 

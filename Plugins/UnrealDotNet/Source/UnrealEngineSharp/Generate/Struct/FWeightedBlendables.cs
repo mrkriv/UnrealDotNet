@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FWeightedBlendables(IntPtr Adress)
+		public static implicit operator FWeightedBlendables(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FWeightedBlendables(Adress, false);
+			return adress == IntPtr.Zero ? null : new FWeightedBlendables(adress, false);
 		}}}

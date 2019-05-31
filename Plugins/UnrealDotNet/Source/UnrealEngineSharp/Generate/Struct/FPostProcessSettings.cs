@@ -4140,7 +4140,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPostProcessSettings(IntPtr Adress)
+		public static implicit operator FPostProcessSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPostProcessSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPostProcessSettings(adress, false);
 		}}}

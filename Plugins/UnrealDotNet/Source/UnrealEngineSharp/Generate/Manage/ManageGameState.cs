@@ -15,45 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageGameState")]
 	public partial class ManageGameState : AGameState
 	{
-		public ManageGameState(IntPtr Adress)
-			: base(Adress)
+		public ManageGameState(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Called periodically, overridden by subclasses
-		/// </summary>
-		public override void DefaultTimer() { }
-		
-		
-		/// <summary>
-		/// Called when the match transitions to LeavingMap
-		/// </summary>
-		protected override void HandleLeavingMap() { }
-		
-		
-		/// <summary>
-		/// Called when the map transitions to WaitingPostMatch
-		/// </summary>
-		protected override void HandleMatchHasEnded() { }
-		
-		
-		/// <summary>
-		/// Called when the state transitions to InProgress
-		/// </summary>
-		protected override void HandleMatchHasStarted() { }
-		
-		
-		/// <summary>
-		/// Called when the state transitions to WaitingToStart
-		/// </summary>
-		protected override void HandleMatchIsWaitingToStart() { }
-		
-		public override void OnRep_ElapsedTime() { }
-		
-		public override void OnRep_MatchState() { }
-		
 		public static implicit operator IntPtr(ManageGameState self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

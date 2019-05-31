@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageStaticMeshComponent")]
 	public partial class ManageStaticMeshComponent : UStaticMeshComponent
 	{
-		public ManageStaticMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageStaticMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

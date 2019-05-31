@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ULightmassPortalComponent : USceneComponent
 	{
-		public ULightmassPortalComponent(IntPtr Adress)
-			: base(Adress)
+		public ULightmassPortalComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

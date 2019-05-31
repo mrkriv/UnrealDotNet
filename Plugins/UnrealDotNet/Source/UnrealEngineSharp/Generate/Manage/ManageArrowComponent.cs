@@ -15,17 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageArrowComponent")]
 	public partial class ManageArrowComponent : UArrowComponent
 	{
-		public ManageArrowComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageArrowComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Updates the arrow's colour, and tells it to refresh
-		/// </summary>
-		public override void SetArrowColor(FLinearColor newColor) { }
-		
 		public static implicit operator IntPtr(ManageArrowComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

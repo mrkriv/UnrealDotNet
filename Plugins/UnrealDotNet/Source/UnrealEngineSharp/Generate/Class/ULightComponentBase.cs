@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ULightComponentBase : USceneComponent
 	{
-		public ULightComponentBase(IntPtr Adress)
-			: base(Adress)
+		public ULightComponentBase(IntPtr adress)
+			: base(adress)
 		{
 		}
 

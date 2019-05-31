@@ -252,6 +252,42 @@ namespace CodeGenerator
             return true;
         }
 
+        public bool CanGenerateManageType(Class Class)
+        {
+            if (ManageClassBlackList.Contains(Class.Name))
+                return false;
+
+            if (Class.IsFinal || Class.IsStructure)
+                return false;
+
+            if (Class.UMeta.ContainsKey("abstract"))
+                return false;
+
+            while (Class != null)
+            {
+                if (Class.Methods.Any(m => m.IsVirtual))
+                    return true;
+
+                Class = Class.BaseClass;
+            }
+
+            return false;
+        }
+
+        public bool CanGenerateManageOverride(Method method)
+        {
+            if (!method.IsVirtual || method.IsOverride || method.IsConst)
+                return false;
+
+            if (!method.ReturnType.Type.IsVoid)
+                return false;
+
+            if (method.InputTypes.Any(t => t.IsReadOnly()))
+                return false;
+
+            return true;
+        }
+
         public bool GetConvertToManageType(Type type, out string toType)
         {
             if (type.IsTemplate)

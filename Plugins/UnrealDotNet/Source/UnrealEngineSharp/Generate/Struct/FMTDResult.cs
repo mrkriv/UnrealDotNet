@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FMTDResult(IntPtr Adress)
+		public static implicit operator FMTDResult(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FMTDResult(Adress, false);
+			return adress == IntPtr.Zero ? null : new FMTDResult(adress, false);
 		}}}

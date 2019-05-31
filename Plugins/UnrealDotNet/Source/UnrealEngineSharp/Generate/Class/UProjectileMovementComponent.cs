@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UProjectileMovementComponent : UMovementComponent
 	{
-		public UProjectileMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public UProjectileMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

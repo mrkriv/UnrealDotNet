@@ -194,7 +194,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FWorldContext(IntPtr Adress)
+		public static implicit operator FWorldContext(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FWorldContext(Adress, false);
+			return adress == IntPtr.Zero ? null : new FWorldContext(adress, false);
 		}}}

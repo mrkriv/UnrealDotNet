@@ -52,7 +52,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInputGestureBinding(IntPtr Adress)
+		public static implicit operator FInputGestureBinding(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInputGestureBinding(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInputGestureBinding(adress, false);
 		}}}

@@ -147,7 +147,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FKeyBind(IntPtr Adress)
+		public static implicit operator FKeyBind(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FKeyBind(Adress, false);
+			return adress == IntPtr.Zero ? null : new FKeyBind(adress, false);
 		}}}

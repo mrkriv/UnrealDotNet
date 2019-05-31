@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USphereComponent : UShapeComponent
 	{
-		public USphereComponent(IntPtr Adress)
-			: base(Adress)
+		public USphereComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

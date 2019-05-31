@@ -19,8 +19,8 @@ namespace UnrealEngine
 	/// </summary>
 	public  partial class UTimelineComponent : UActorComponent
 	{
-		public UTimelineComponent(IntPtr Adress)
-			: base(Adress)
+		public UTimelineComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

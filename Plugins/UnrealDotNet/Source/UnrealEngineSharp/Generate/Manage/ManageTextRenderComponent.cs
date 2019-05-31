@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageTextRenderComponent")]
 	public partial class ManageTextRenderComponent : UTextRenderComponent
 	{
-		public ManageTextRenderComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageTextRenderComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

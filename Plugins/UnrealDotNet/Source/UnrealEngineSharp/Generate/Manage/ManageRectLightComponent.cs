@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageRectLightComponent")]
 	public partial class ManageRectLightComponent : URectLightComponent
 	{
-		public ManageRectLightComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageRectLightComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

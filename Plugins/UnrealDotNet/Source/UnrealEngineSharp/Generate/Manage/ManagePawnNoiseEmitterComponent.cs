@@ -15,20 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManagePawnNoiseEmitterComponent")]
 	public partial class ManagePawnNoiseEmitterComponent : UPawnNoiseEmitterComponent
 	{
-		public ManagePawnNoiseEmitterComponent(IntPtr Adress)
-			: base(Adress)
+		public ManagePawnNoiseEmitterComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Cache noises instigated by the owning pawn for AI sensing
-		/// </summary>
-		/// <param name="noiseMaker">is the actual actor which made the noise</param>
-		/// <param name="loudness">is the relative loudness of the noise (0.0 to 1.0)</param>
-		/// <param name="noiseLocation">is the position of the noise</param>
-		public override void MakeNoise(AActor noiseMaker, float loudness, FVector noiseLocation) { }
-		
 		public static implicit operator IntPtr(ManagePawnNoiseEmitterComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

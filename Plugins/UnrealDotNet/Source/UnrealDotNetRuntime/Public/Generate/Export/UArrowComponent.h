@@ -34,7 +34,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UArrowComponent_SetArrowColor(UArrowComponent* Self, INT_PTR NewColor)
 	{
 		auto _p0 = *(FLinearColor*)NewColor;
-		Self->SetArrowColor(_p0);
+		Self->UArrowComponent::SetArrowColor(_p0);
 	}
 
 }

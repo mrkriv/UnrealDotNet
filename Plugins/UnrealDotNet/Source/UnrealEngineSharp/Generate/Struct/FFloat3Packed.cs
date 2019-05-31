@@ -51,7 +51,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFloat3Packed(IntPtr Adress)
+		public static implicit operator FFloat3Packed(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFloat3Packed(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFloat3Packed(adress, false);
 		}}}

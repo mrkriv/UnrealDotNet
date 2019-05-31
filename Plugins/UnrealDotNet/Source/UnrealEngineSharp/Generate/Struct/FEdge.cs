@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FEdge(IntPtr Adress)
+		public static implicit operator FEdge(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FEdge(Adress, false);
+			return adress == IntPtr.Zero ? null : new FEdge(adress, false);
 		}}}

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UCanvas : UObject
 	{
-		public UCanvas(IntPtr Adress)
-			: base(Adress)
+		public UCanvas(IntPtr adress)
+			: base(adress)
 		{
 		}
 

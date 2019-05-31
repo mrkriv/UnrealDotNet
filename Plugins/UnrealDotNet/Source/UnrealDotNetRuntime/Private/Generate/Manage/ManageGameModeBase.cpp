@@ -204,4 +204,636 @@ void AManageGameModeBase::UpdateGameplayMuteList(APlayerController* aPlayer)
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateGameplayMuteList", aPlayer);
 }
 
+void AManageGameModeBase::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void AManageGameModeBase::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void AManageGameModeBase::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
+void AManageGameModeBase::BecomeViewTarget(APlayerController* PC)
+{
+	Super::BecomeViewTarget(PC);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BecomeViewTarget", PC);
+}
+
+void AManageGameModeBase::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+}
+
+void AManageGameModeBase::ClearCrossLevelReferences()
+{
+	Super::ClearCrossLevelReferences();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ClearCrossLevelReferences");
+}
+
+void AManageGameModeBase::Destroyed()
+{
+	Super::Destroyed();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "Destroyed");
+}
+
+void AManageGameModeBase::DisableInput(APlayerController* PlayerController)
+{
+	Super::DisableInput(PlayerController);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DisableInput", PlayerController);
+}
+
+void AManageGameModeBase::EnableInput(APlayerController* PlayerController)
+{
+	Super::EnableInput(PlayerController);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EnableInput", PlayerController);
+}
+
+void AManageGameModeBase::EndViewTarget(APlayerController* PC)
+{
+	Super::EndViewTarget(PC);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "EndViewTarget", PC);
+}
+
+void AManageGameModeBase::ForceNetRelevant()
+{
+	Super::ForceNetRelevant();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetRelevant");
+}
+
+void AManageGameModeBase::ForceNetUpdate()
+{
+	Super::ForceNetUpdate();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetUpdate");
+}
+
+void AManageGameModeBase::GatherCurrentMovement()
+{
+	Super::GatherCurrentMovement();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "GatherCurrentMovement");
+}
+
+void AManageGameModeBase::InvalidateLightingCacheDetailed(bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bTranslationOnly);
+}
+
+void AManageGameModeBase::K2_DestroyActor()
+{
+	Super::K2_DestroyActor();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "K2_DestroyActor");
+}
+
+void AManageGameModeBase::LifeSpanExpired()
+{
+	Super::LifeSpanExpired();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "LifeSpanExpired");
+}
+
+void AManageGameModeBase::MarkComponentsAsPendingKill()
+{
+	Super::MarkComponentsAsPendingKill();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MarkComponentsAsPendingKill");
+}
+
+void AManageGameModeBase::NotifyActorBeginCursorOver()
+{
+	Super::NotifyActorBeginCursorOver();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginCursorOver");
+}
+
+void AManageGameModeBase::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginOverlap", OtherActor);
+}
+
+void AManageGameModeBase::NotifyActorEndCursorOver()
+{
+	Super::NotifyActorEndCursorOver();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndCursorOver");
+}
+
+void AManageGameModeBase::NotifyActorEndOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorEndOverlap(OtherActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndOverlap", OtherActor);
+}
+
+void AManageGameModeBase::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+{
+	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyHit", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+}
+
+void AManageGameModeBase::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnConstruction", Transform);
+}
+
+void AManageGameModeBase::OnRep_AttachmentReplication()
+{
+	Super::OnRep_AttachmentReplication();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_AttachmentReplication");
+}
+
+void AManageGameModeBase::OnRep_Instigator()
+{
+	Super::OnRep_Instigator();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Instigator");
+}
+
+void AManageGameModeBase::OnRep_Owner()
+{
+	Super::OnRep_Owner();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Owner");
+}
+
+void AManageGameModeBase::OnRep_ReplicatedMovement()
+{
+	Super::OnRep_ReplicatedMovement();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicatedMovement");
+}
+
+void AManageGameModeBase::OnRep_ReplicateMovement()
+{
+	Super::OnRep_ReplicateMovement();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicateMovement");
+}
+
+void AManageGameModeBase::OnReplicationPausedChanged(bool bIsReplicationPaused)
+{
+	Super::OnReplicationPausedChanged(bIsReplicationPaused);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnReplicationPausedChanged", bIsReplicationPaused);
+}
+
+void AManageGameModeBase::OnSubobjectCreatedFromReplication(UObject* NewSubobject)
+{
+	Super::OnSubobjectCreatedFromReplication(NewSubobject);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectCreatedFromReplication", NewSubobject);
+}
+
+void AManageGameModeBase::OnSubobjectDestroyFromReplication(UObject* Subobject)
+{
+	Super::OnSubobjectDestroyFromReplication(Subobject);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
+}
+
+void AManageGameModeBase::OutsideWorldBounds()
+{
+	Super::OutsideWorldBounds();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OutsideWorldBounds");
+}
+
+void AManageGameModeBase::PostActorCreated()
+{
+	Super::PostActorCreated();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostActorCreated");
+}
+
+void AManageGameModeBase::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitializeComponents");
+}
+
+void AManageGameModeBase::PostNetInit()
+{
+	Super::PostNetInit();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetInit");
+}
+
+void AManageGameModeBase::PostNetReceiveLocationAndRotation()
+{
+	Super::PostNetReceiveLocationAndRotation();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveLocationAndRotation");
+}
+
+void AManageGameModeBase::PostNetReceivePhysicState()
+{
+	Super::PostNetReceivePhysicState();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceivePhysicState");
+}
+
+void AManageGameModeBase::PostNetReceiveRole()
+{
+	Super::PostNetReceiveRole();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveRole");
+}
+
+void AManageGameModeBase::PostNetReceiveVelocity(const FVector& NewVelocity)
+{
+	Super::PostNetReceiveVelocity(NewVelocity);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveVelocity", NewVelocity);
+}
+
+void AManageGameModeBase::PostRegisterAllComponents()
+{
+	Super::PostRegisterAllComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRegisterAllComponents");
+}
+
+void AManageGameModeBase::PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir)
+{
+	Super::PostRenderFor(PC, Canvas, CameraPosition, CameraDir);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRenderFor", PC, Canvas, CameraPosition, CameraDir);
+}
+
+void AManageGameModeBase::PostUnregisterAllComponents()
+{
+	Super::PostUnregisterAllComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostUnregisterAllComponents");
+}
+
+void AManageGameModeBase::PreInitializeComponents()
+{
+	Super::PreInitializeComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreInitializeComponents");
+}
+
+void AManageGameModeBase::PreRegisterAllComponents()
+{
+	Super::PreRegisterAllComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreRegisterAllComponents");
+}
+
+void AManageGameModeBase::PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PrestreamTextures", Seconds, bEnableStreaming, CinematicTextureGroups);
+}
+
+void AManageGameModeBase::RegisterActorTickFunctions(bool bRegister)
+{
+	Super::RegisterActorTickFunctions(bRegister);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterActorTickFunctions", bRegister);
+}
+
+void AManageGameModeBase::RegisterAllComponents()
+{
+	Super::RegisterAllComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterAllComponents");
+}
+
+void AManageGameModeBase::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void AManageGameModeBase::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void AManageGameModeBase::ReregisterAllComponents()
+{
+	Super::ReregisterAllComponents();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ReregisterAllComponents");
+}
+
+void AManageGameModeBase::RerunConstructionScripts()
+{
+	Super::RerunConstructionScripts();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RerunConstructionScripts");
+}
+
+void AManageGameModeBase::Reset()
+{
+	Super::Reset();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "Reset");
+}
+
+void AManageGameModeBase::RewindForReplay()
+{
+	Super::RewindForReplay();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RewindForReplay");
+}
+
+void AManageGameModeBase::SetActorHiddenInGame(bool bNewHidden)
+{
+	Super::SetActorHiddenInGame(bNewHidden);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetActorHiddenInGame", bNewHidden);
+}
+
+void AManageGameModeBase::SetLifeSpan(float InLifespan)
+{
+	Super::SetLifeSpan(InLifespan);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetLifeSpan", InLifespan);
+}
+
+void AManageGameModeBase::SetOwner(AActor* NewOwner)
+{
+	Super::SetOwner(NewOwner);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetOwner", NewOwner);
+}
+
+void AManageGameModeBase::SetReplicateMovement(bool bInReplicateMovement)
+{
+	Super::SetReplicateMovement(bInReplicateMovement);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetReplicateMovement", bInReplicateMovement);
+}
+
+void AManageGameModeBase::TearOff()
+{
+	Super::TearOff();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "TearOff");
+}
+
+void AManageGameModeBase::TeleportSucceeded(bool bIsATest)
+{
+	Super::TeleportSucceeded(bIsATest);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "TeleportSucceeded", bIsATest);
+}
+
+void AManageGameModeBase::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "Tick", DeltaSeconds);
+}
+
+void AManageGameModeBase::TornOff()
+{
+	Super::TornOff();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "TornOff");
+}
+
+void AManageGameModeBase::UnregisterAllComponents(bool bForReregister)
+{
+	Super::UnregisterAllComponents(bForReregister);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UnregisterAllComponents", bForReregister);
+}
+
+void AManageGameModeBase::BeginDestroy()
+{
+	Super::BeginDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+}
+
+void AManageGameModeBase::FinishDestroy()
+{
+	Super::FinishDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+}
+
+void AManageGameModeBase::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
+void AManageGameModeBase::OverridePerObjectConfigSection(FString& SectionName)
+{
+	Super::OverridePerObjectConfigSection(SectionName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+}
+
+void AManageGameModeBase::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+}
+
+void AManageGameModeBase::PostEditImport()
+{
+	Super::PostEditImport();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+}
+
+void AManageGameModeBase::PostInitProperties()
+{
+	Super::PostInitProperties();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+}
+
+void AManageGameModeBase::PostLoad()
+{
+	Super::PostLoad();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+}
+
+void AManageGameModeBase::PostNetReceive()
+{
+	Super::PostNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+}
+
+void AManageGameModeBase::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void AManageGameModeBase::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+}
+
+void AManageGameModeBase::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void AManageGameModeBase::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void AManageGameModeBase::PreNetReceive()
+{
+	Super::PreNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+}
+
+void AManageGameModeBase::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+}
+
+void AManageGameModeBase::CreateCluster()
+{
+	Super::CreateCluster();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+}
+
+void AManageGameModeBase::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageCanvas")]
 	public partial class ManageCanvas : UCanvas
 	{
-		public ManageCanvas(IntPtr Adress)
-			: base(Adress)
+		public ManageCanvas(IntPtr adress)
+			: base(adress)
 		{
 		}
 

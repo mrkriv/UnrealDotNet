@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UInterpToMovementComponent : UMovementComponent
 	{
-		public UInterpToMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public UInterpToMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

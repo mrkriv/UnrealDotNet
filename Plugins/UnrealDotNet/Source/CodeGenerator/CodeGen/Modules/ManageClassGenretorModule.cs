@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CodeGenerator.Metadata;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CodeGenerator.Metadata;
 
 namespace CodeGenerator.CodeGen.Modules
 {
@@ -33,34 +33,24 @@ namespace CodeGenerator.CodeGen.Modules
 
         protected override bool CanGenerate(Class Class)
         {
-            if (Cfg.Filter.ManageClassBlackList.Contains(Class.Name))
-                return false;
-
-            if (Class.IsFinal || Class.IsStructure)
-                return false;
-
-            if (Class.UMeta.ContainsKey("abstract"))
-                return false;
-
-            while (Class != null)
-            {
-                if (Class.Methods.Any(m => m.IsVirtual))
-                    return true;
-
-                Class = Class.BaseClass;
-            }
-
-            return false;
+            return Cfg.Filter.CanGenerateManageType(Class);
         }
 
         protected override void PreGenerate(Class Class)
         {
-            _virtualMethods = Class.Methods
-                .Where(m => m.IsVirtual &&
-                            !m.IsOverride &&
-                            !m.IsConst &&
-                            m.ReturnType.Type.IsVoid &&
-                            m.InputTypes.All(t => !t.IsReadOnly()))
+            var types = new List<Class>();
+
+            while (Class != null)
+            {
+                types.Add(Class);
+                Class = Class.BaseClass;
+            }
+
+            _virtualMethods = types.SelectMany(x => x.Methods)
+                .Where(m => Cfg.Filter.CanGenerateManageOverride(m))
+                .GroupBy(x => x.Name)
+                .Where(x => x.All(m => !m.IsFinal))
+                .Select(x => x.First())
                 .ToList();
         }
 
@@ -93,7 +83,6 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine(Class.IsChild("AActor") ? "GENERATED_UCLASS_BODY()" : "GENERATED_BODY()");
             cw.WriteLine();
             cw.WriteLine("bool bIsManageAttach = false;");
-            cw.WriteLine();
             cw.WriteLine("bool AddWrapperIfNotAttach();");
             cw.WriteLine();
 
@@ -102,15 +91,15 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
             cw.WriteLine();
-
-            foreach (var method in _virtualMethods.Where(m => m.AccessModifier == AccessModifier.Public))
+            
+            foreach (var method in _virtualMethods.Where(m => m.AccessModifier != AccessModifier.Private))
                 GenerateManageMethodHead(cw, method);
 
-            cw.WriteLine();
+            /*cw.WriteLine();
             cw.WriteLineNoTab("protected:");
 
             foreach (var method in _virtualMethods.Where(m => m.AccessModifier == AccessModifier.Protected))
-                GenerateManageMethodHead(cw, method);
+                GenerateManageMethodHead(cw, method);*/
 
             cw.CloseBlock(";");
             cw.WriteLine();
@@ -144,16 +133,16 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine($"public partial class {manageClassName} : {Class.Name}");
             cw.OpenBlock();
 
-            cw.WriteLine($"public {manageClassName}(IntPtr Adress)");
-            cw.WriteLine("\t: base(Adress)");
+            cw.WriteLine($"public {manageClassName}(IntPtr adress)");
+            cw.WriteLine("\t: base(adress)");
             cw.OpenBlock();
             cw.CloseBlock();
             cw.WriteLine();
 
-            foreach (var method in _virtualMethods)
+            /*foreach (var method in _virtualMethods)
             {
                 GenerateManageMethodCs(cw, method);
-            }
+            }*/
 
             cw.WriteLine($"public static implicit operator IntPtr({manageClassName} self)");
             cw.OpenBlock();
@@ -204,16 +193,6 @@ namespace CodeGenerator.CodeGen.Modules
             return result;
         }
 
-        private string VarNameForCall(Variable variable)
-        {
-            var name = ToLowerCamelCase(variable.Name);
-
-            if (variable is EnumVariable)
-                return $"(byte){name}";
-
-            return name;
-        }
-
         private string ValidateDefaultValue(string value)
         {
             if (bool.TryParse(value, out _))
@@ -248,7 +227,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
 
             GenerateSourceInfo(cw, Class);
-            
+
             var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
 
             if (Class.IsChild("AActor"))
@@ -281,7 +260,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.CloseBlock();
             cw.WriteLine();
 
-            _virtualMethods.ForEach(m => GenerateManageMethod(cw, m));
+            _virtualMethods.ForEach(m => GenerateManageMethod(cw, Class, m));
 
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
@@ -295,12 +274,12 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine($"virtual {method.ReturnType.GetTypeCppOgiginal()} {method.Name}({param}) override;");
         }
 
-        private void GenerateManageMethod(CodeWriter cw, Method method)
+        private void GenerateManageMethod(CodeWriter cw, Class Class, Method method)
         {
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
             var call = string.Join(", ", method.InputTypes.Select(v => v.Name));
             var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
-            var cppClassName = $"{method.OwnerClass.Litera}Manage{method.OwnerClass.BaseName}";
+            var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
 
             cw.WriteLine(
                 $"{method.ReturnType.GetTypeCppOgiginal()} {cppClassName}::{method.Name}({param})");

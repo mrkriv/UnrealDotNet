@@ -100,7 +100,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FBatchedPoint(IntPtr Adress)
+		public static implicit operator FBatchedPoint(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FBatchedPoint(Adress, false);
+			return adress == IntPtr.Zero ? null : new FBatchedPoint(adress, false);
 		}}}

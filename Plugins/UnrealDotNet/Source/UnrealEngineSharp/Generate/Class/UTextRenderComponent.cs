@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UTextRenderComponent : UPrimitiveComponent
 	{
-		public UTextRenderComponent(IntPtr Adress)
-			: base(Adress)
+		public UTextRenderComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

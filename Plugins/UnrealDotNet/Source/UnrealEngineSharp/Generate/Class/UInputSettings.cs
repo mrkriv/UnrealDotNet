@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UInputSettings : UObject
 	{
-		public UInputSettings(IntPtr Adress)
-			: base(Adress)
+		public UInputSettings(IntPtr adress)
+			: base(adress)
 		{
 		}
 

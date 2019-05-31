@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSkeletalMeshComponent")]
 	public partial class ManageSkeletalMeshComponent : USkeletalMeshComponent
 	{
-		public ManageSkeletalMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageSkeletalMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

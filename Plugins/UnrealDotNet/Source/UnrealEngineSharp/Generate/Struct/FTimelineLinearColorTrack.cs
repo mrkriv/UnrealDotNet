@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FTimelineLinearColorTrack(IntPtr Adress)
+		public static implicit operator FTimelineLinearColorTrack(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FTimelineLinearColorTrack(Adress, false);
+			return adress == IntPtr.Zero ? null : new FTimelineLinearColorTrack(adress, false);
 		}}}

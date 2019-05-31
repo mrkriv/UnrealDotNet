@@ -78,7 +78,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FBroadphaseSettings(IntPtr Adress)
+		public static implicit operator FBroadphaseSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FBroadphaseSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FBroadphaseSettings(adress, false);
 		}}}

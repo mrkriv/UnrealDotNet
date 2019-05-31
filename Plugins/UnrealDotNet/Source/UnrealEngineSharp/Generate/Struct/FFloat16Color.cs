@@ -109,7 +109,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFloat16Color(IntPtr Adress)
+		public static implicit operator FFloat16Color(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFloat16Color(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFloat16Color(adress, false);
 		}}}

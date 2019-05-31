@@ -109,7 +109,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FCollisionResponseContainer(IntPtr Adress)
+		public static implicit operator FCollisionResponseContainer(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FCollisionResponseContainer(Adress, false);
+			return adress == IntPtr.Zero ? null : new FCollisionResponseContainer(adress, false);
 		}}}

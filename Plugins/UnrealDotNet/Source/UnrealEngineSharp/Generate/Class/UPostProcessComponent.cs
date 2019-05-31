@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UPostProcessComponent : USceneComponent
 	{
-		public UPostProcessComponent(IntPtr Adress)
-			: base(Adress)
+		public UPostProcessComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -60,8 +60,10 @@ UCoreShell::UCoreShell()
 
 		DirectoryWatcher->RegisterDirectoryChangedCallback_Handle(Domain_Path, callback, DirectoryChangedHandle);
 	}
-
-	if (FPaths::FileExists(Hotreload_HookFile))
+	
+	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
+	auto gameLogicPath = Domain_Path / TEXT("GameLogic.dll");
+	if (PlatformFile.FileExists(*Hotreload_HookFile) && PlatformFile.GetTimeStamp(*Hotreload_HookFile) > PlatformFile.GetTimeStamp(*gameLogicPath))
 	{
 		UpdateGameLib();
 	}

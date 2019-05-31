@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UPlayer : UObject
 	{
-		public UPlayer(IntPtr Adress)
-			: base(Adress)
+		public UPlayer(IntPtr adress)
+			: base(adress)
 		{
 		}
 

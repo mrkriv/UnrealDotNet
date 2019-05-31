@@ -76,7 +76,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLensImperfectionSettings(IntPtr Adress)
+		public static implicit operator FLensImperfectionSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLensImperfectionSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLensImperfectionSettings(adress, false);
 		}}}

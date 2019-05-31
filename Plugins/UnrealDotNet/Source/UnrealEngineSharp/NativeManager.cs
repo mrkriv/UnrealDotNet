@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
+using System.Threading;
 
 namespace UnrealEngine
 {
@@ -289,6 +290,8 @@ namespace UnrealEngine
 
         public static void Invoke(IntPtr adress, string methodName, IntPtr arguments, int size)
         {
+            try
+            {
                 if (!_wrappers.TryGetValue(adress, out var obj))
                 {
                     Ue.LogError($"Failed call method {methodName}, {adress} not found");
@@ -305,6 +308,9 @@ namespace UnrealEngine
                     return;
                 }
 
+                //if (method.DeclaringType != obj.GetType())
+                //    return;
+
                 var Params = ParceParams(method, arguments, size, out var isSuccess);
                 if (!isSuccess)
                 {
@@ -313,8 +319,6 @@ namespace UnrealEngine
                     return;
                 }
 
-            try
-            {
                 method.Invoke(obj, Params);
             }
             catch (Exception e)

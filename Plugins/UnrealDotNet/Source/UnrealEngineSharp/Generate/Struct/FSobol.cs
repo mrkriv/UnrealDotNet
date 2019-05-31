@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSobol(IntPtr Adress)
+		public static implicit operator FSobol(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSobol(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSobol(adress, false);
 		}}}

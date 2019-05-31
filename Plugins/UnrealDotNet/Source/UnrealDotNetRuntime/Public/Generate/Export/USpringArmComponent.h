@@ -107,7 +107,7 @@ extern "C"
 		auto _p1 = bDoLocationLag;
 		auto _p2 = bDoRotationLag;
 		auto _p3 = DeltaTime;
-		((E_PROTECTED_WRAP_USpringArmComponent*)Self)->UpdateDesiredArmLocation_WRAP(_p0, _p1, _p2, _p3);
+		((E_PROTECTED_WRAP_USpringArmComponent*)Self)->USpringArmComponent::UpdateDesiredArmLocation_WRAP(_p0, _p1, _p2, _p3);
 	}
 
 }

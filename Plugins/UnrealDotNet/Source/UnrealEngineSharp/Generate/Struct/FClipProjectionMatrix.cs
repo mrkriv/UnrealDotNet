@@ -40,7 +40,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FClipProjectionMatrix(IntPtr Adress)
+		public static implicit operator FClipProjectionMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FClipProjectionMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FClipProjectionMatrix(adress, false);
 		}}}

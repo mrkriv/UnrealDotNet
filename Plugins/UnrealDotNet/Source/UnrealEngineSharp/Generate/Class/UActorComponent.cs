@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UActorComponent : UObject
 	{
-		public UActorComponent(IntPtr Adress)
-			: base(Adress)
+		public UActorComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
@@ -395,9 +395,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UActorComponent_UnregisterComponent(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UActorComponent_UpdateComponentToWorld(IntPtr self, byte updateTransformFlags, byte teleport);
 		
 		#endregion
 		
@@ -1302,13 +1299,6 @@ namespace UnrealEngine
 		/// </summary>
 		public void UnregisterComponent()
 			=> E_UActorComponent_UnregisterComponent(this);
-		
-		
-		/// <summary>
-		/// Recalculate the value of our component to world transform
-		/// </summary>
-		public virtual void UpdateComponentToWorld(EUpdateTransformFlags updateTransformFlags, ETeleportType teleport)
-			=> E_UActorComponent_UpdateComponentToWorld(this, (byte)updateTransformFlags, (byte)teleport);
 		
 		#endregion
 		

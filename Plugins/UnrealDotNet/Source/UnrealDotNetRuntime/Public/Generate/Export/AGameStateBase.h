@@ -59,13 +59,13 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameStateBase_AddPlayerState(AGameStateBase* Self, APlayerState* PlayerState)
 	{
 		auto _p0 = PlayerState;
-		Self->AddPlayerState(_p0);
+		Self->AGameStateBase::AddPlayerState(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_AsyncPackageLoaded(AGameStateBase* Self, UObject* Package)
 	{
 		auto _p0 = Package;
-		Self->AsyncPackageLoaded(_p0);
+		Self->AGameStateBase::AsyncPackageLoaded(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_GetDefaultGameMode(AGameStateBase* Self)
@@ -92,7 +92,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameStateBase_HandleBeginPlay(AGameStateBase* Self)
 	{
-		Self->HandleBeginPlay();
+		Self->AGameStateBase::HandleBeginPlay();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_HasBegunPlay(AGameStateBase* Self)
@@ -107,49 +107,49 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameStateBase_OnRep_GameModeClass(AGameStateBase* Self)
 	{
-		((E_PROTECTED_WRAP_AGameStateBase*)Self)->OnRep_GameModeClass_WRAP();
+		((E_PROTECTED_WRAP_AGameStateBase*)Self)->AGameStateBase::OnRep_GameModeClass_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_OnRep_ReplicatedHasBegunPlay(AGameStateBase* Self)
 	{
-		((E_PROTECTED_WRAP_AGameStateBase*)Self)->OnRep_ReplicatedHasBegunPlay_WRAP();
+		((E_PROTECTED_WRAP_AGameStateBase*)Self)->AGameStateBase::OnRep_ReplicatedHasBegunPlay_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_OnRep_ReplicatedWorldTimeSeconds(AGameStateBase* Self)
 	{
-		((E_PROTECTED_WRAP_AGameStateBase*)Self)->OnRep_ReplicatedWorldTimeSeconds_WRAP();
+		((E_PROTECTED_WRAP_AGameStateBase*)Self)->AGameStateBase::OnRep_ReplicatedWorldTimeSeconds_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_OnRep_SpectatorClass(AGameStateBase* Self)
 	{
-		((E_PROTECTED_WRAP_AGameStateBase*)Self)->OnRep_SpectatorClass_WRAP();
+		((E_PROTECTED_WRAP_AGameStateBase*)Self)->AGameStateBase::OnRep_SpectatorClass_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_ReceivedGameModeClass(AGameStateBase* Self)
 	{
-		Self->ReceivedGameModeClass();
+		Self->AGameStateBase::ReceivedGameModeClass();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_ReceivedSpectatorClass(AGameStateBase* Self)
 	{
-		Self->ReceivedSpectatorClass();
+		Self->AGameStateBase::ReceivedSpectatorClass();
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_RemovePlayerState(AGameStateBase* Self, APlayerState* PlayerState)
 	{
 		auto _p0 = PlayerState;
-		Self->RemovePlayerState(_p0);
+		Self->AGameStateBase::RemovePlayerState(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_SeamlessTravelTransitionCheckpoint(AGameStateBase* Self, bool bToTransitionMap)
 	{
 		auto _p0 = bToTransitionMap;
-		Self->SeamlessTravelTransitionCheckpoint(_p0);
+		Self->AGameStateBase::SeamlessTravelTransitionCheckpoint(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameStateBase_UpdateServerTimeSeconds(AGameStateBase* Self)
 	{
-		((E_PROTECTED_WRAP_AGameStateBase*)Self)->UpdateServerTimeSeconds_WRAP();
+		((E_PROTECTED_WRAP_AGameStateBase*)Self)->AGameStateBase::UpdateServerTimeSeconds_WRAP();
 	}
 
 }

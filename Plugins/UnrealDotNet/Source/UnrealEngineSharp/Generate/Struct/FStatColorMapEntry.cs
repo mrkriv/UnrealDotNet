@@ -48,7 +48,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FStatColorMapEntry(IntPtr Adress)
+		public static implicit operator FStatColorMapEntry(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FStatColorMapEntry(Adress, false);
+			return adress == IntPtr.Zero ? null : new FStatColorMapEntry(adress, false);
 		}}}

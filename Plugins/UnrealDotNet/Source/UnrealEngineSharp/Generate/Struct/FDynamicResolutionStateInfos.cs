@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDynamicResolutionStateInfos(IntPtr Adress)
+		public static implicit operator FDynamicResolutionStateInfos(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDynamicResolutionStateInfos(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDynamicResolutionStateInfos(adress, false);
 		}}}

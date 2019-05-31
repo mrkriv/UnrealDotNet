@@ -676,12 +676,5 @@ extern "C"
 		Self->UnregisterComponent();
 	}
 
-	DOTNET_EXPORT auto E_UActorComponent_UpdateComponentToWorld(UActorComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
-	{
-		auto _p0 = UpdateTransformFlags;
-		auto _p1 = Teleport;
-		Self->UpdateComponentToWorld(_p0, _p1);
-	}
-
 }
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

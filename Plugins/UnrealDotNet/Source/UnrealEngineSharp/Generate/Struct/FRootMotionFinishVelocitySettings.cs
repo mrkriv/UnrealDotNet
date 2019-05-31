@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRootMotionFinishVelocitySettings(IntPtr Adress)
+		public static implicit operator FRootMotionFinishVelocitySettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRootMotionFinishVelocitySettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRootMotionFinishVelocitySettings(adress, false);
 		}}}

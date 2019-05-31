@@ -90,7 +90,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPOV(IntPtr Adress)
+		public static implicit operator FPOV(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPOV(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPOV(adress, false);
 		}}}

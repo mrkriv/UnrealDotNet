@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UReflectionCaptureComponent : USceneComponent
 	{
-		public UReflectionCaptureComponent(IntPtr Adress)
-			: base(Adress)
+		public UReflectionCaptureComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

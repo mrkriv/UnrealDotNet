@@ -163,17 +163,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AWorldSettings_NotifyBeginPlay(AWorldSettings* Self)
 	{
-		Self->NotifyBeginPlay();
+		Self->AWorldSettings::NotifyBeginPlay();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_NotifyMatchStarted(AWorldSettings* Self)
 	{
-		Self->NotifyMatchStarted();
+		Self->AWorldSettings::NotifyMatchStarted();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_OnRep_WorldGravityZ(AWorldSettings* Self)
 	{
-		Self->OnRep_WorldGravityZ();
+		Self->AWorldSettings::OnRep_WorldGravityZ();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_SetTimeDilation(AWorldSettings* Self, float NewTimeDilation)

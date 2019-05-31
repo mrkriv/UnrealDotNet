@@ -15,23 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageInstancedStaticMeshComponent")]
 	public partial class ManageInstancedStaticMeshComponent : UInstancedStaticMeshComponent
 	{
-		public ManageInstancedStaticMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageInstancedStaticMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Clear all instances being rendered by this component.
-		/// </summary>
-		public override void ClearInstances() { }
-		
-		
-		/// <summary>
-		/// Preallocated memory to include the new added instances count, to prevent reallloc during the add operation.
-		/// </summary>
-		public override void PreAllocateInstancesMemory(int addedInstanceCount) { }
-		
 		public static implicit operator IntPtr(ManageInstancedStaticMeshComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

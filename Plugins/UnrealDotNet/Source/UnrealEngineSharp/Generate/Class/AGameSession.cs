@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AGameSession : AInfo
 	{
-		public AGameSession(IntPtr Adress)
-			: base(Adress)
+		public AGameSession(IntPtr adress)
+			: base(adress)
 		{
 		}
 

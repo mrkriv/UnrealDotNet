@@ -101,7 +101,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFilmStockSettings(IntPtr Adress)
+		public static implicit operator FFilmStockSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFilmStockSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFilmStockSettings(adress, false);
 		}}}

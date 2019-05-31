@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPluginRedirect(IntPtr Adress)
+		public static implicit operator FPluginRedirect(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPluginRedirect(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPluginRedirect(adress, false);
 		}}}

@@ -164,7 +164,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FURL(IntPtr Adress)
+		public static implicit operator FURL(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FURL(Adress, false);
+			return adress == IntPtr.Zero ? null : new FURL(adress, false);
 		}}}

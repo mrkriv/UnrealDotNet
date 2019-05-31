@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UBrushComponent : UPrimitiveComponent
 	{
-		public UBrushComponent(IntPtr Adress)
-			: base(Adress)
+		public UBrushComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

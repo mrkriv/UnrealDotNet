@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSceneCaptureComponent2D")]
 	public partial class ManageSceneCaptureComponent2D : USceneCaptureComponent2D
 	{
-		public ManageSceneCaptureComponent2D(IntPtr Adress)
-			: base(Adress)
+		public ManageSceneCaptureComponent2D(IntPtr adress)
+			: base(adress)
 		{
 		}
 

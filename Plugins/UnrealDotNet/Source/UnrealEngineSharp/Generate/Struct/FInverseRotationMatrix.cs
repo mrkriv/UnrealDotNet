@@ -39,7 +39,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInverseRotationMatrix(IntPtr Adress)
+		public static implicit operator FInverseRotationMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInverseRotationMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInverseRotationMatrix(adress, false);
 		}}}

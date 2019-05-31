@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UAudioComponent : USceneComponent
 	{
-		public UAudioComponent(IntPtr Adress)
-			: base(Adress)
+		public UAudioComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

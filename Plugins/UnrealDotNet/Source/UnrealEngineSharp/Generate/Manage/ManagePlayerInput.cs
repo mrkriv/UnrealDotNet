@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManagePlayerInput")]
 	public partial class ManagePlayerInput : UPlayerInput
 	{
-		public ManagePlayerInput(IntPtr Adress)
-			: base(Adress)
+		public ManagePlayerInput(IntPtr adress)
+			: base(adress)
 		{
 		}
 

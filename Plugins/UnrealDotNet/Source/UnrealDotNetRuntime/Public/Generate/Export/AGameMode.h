@@ -95,14 +95,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameMode_AbortMatch(AGameMode* Self)
 	{
-		Self->AbortMatch();
+		Self->AGameMode::AbortMatch();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_AddInactivePlayer(AGameMode* Self, APlayerState* PlayerState, APlayerController* PC)
 	{
 		auto _p0 = PlayerState;
 		auto _p1 = PC;
-		Self->AddInactivePlayer(_p0, _p1);
+		Self->AGameMode::AddInactivePlayer(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_Broadcast(AGameMode* Self, AActor* Sender, char* Msg, char* Type)
@@ -110,12 +110,12 @@ extern "C"
 		auto _p0 = Sender;
 		auto _p1 = ConvertFromManage_FString(Msg);
 		auto _p2 = ConvertFromManage_FName(Type);
-		Self->Broadcast(_p0, _p1, _p2);
+		Self->AGameMode::Broadcast(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_EndMatch(AGameMode* Self)
 	{
-		Self->EndMatch();
+		Self->AGameMode::EndMatch();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_FindInactivePlayer(AGameMode* Self, APlayerController* PC)
@@ -149,27 +149,27 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameMode_HandleLeavingMap(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleLeavingMap_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::HandleLeavingMap_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_HandleMatchAborted(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleMatchAborted_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::HandleMatchAborted_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_HandleMatchHasEnded(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleMatchHasEnded_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::HandleMatchHasEnded_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_HandleMatchHasStarted(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleMatchHasStarted_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::HandleMatchHasStarted_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_HandleMatchIsWaitingToStart(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->HandleMatchIsWaitingToStart_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::HandleMatchIsWaitingToStart_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_HasMatchEnded(AGameMode* Self)
@@ -190,19 +190,19 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameMode_MatineeCancelled(AGameMode* Self)
 	{
-		Self->MatineeCancelled();
+		Self->AGameMode::MatineeCancelled();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_OnMatchStateSet(AGameMode* Self)
 	{
-		((E_PROTECTED_WRAP_AGameMode*)Self)->OnMatchStateSet_WRAP();
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::OnMatchStateSet_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_OverridePlayerState(AGameMode* Self, APlayerController* PC, APlayerState* OldPlayerState)
 	{
 		auto _p0 = PC;
 		auto _p1 = OldPlayerState;
-		Self->OverridePlayerState(_p0, _p1);
+		Self->AGameMode::OverridePlayerState(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_PlayerSwitchedToSpectatorOnly(AGameMode* Self, APlayerController* PC)
@@ -213,14 +213,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameMode_PostCommitMapChange(AGameMode* Self)
 	{
-		Self->PostCommitMapChange();
+		Self->AGameMode::PostCommitMapChange();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_PreCommitMapChange(AGameMode* Self, char* PreviousMapName, char* NextMapName)
 	{
 		auto _p0 = ConvertFromManage_FString(PreviousMapName);
 		auto _p1 = ConvertFromManage_FString(NextMapName);
-		Self->PreCommitMapChange(_p0, _p1);
+		Self->AGameMode::PreCommitMapChange(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_ReadyToEndMatch(AGameMode* Self)
@@ -241,49 +241,49 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameMode_RestartGame(AGameMode* Self)
 	{
-		Self->RestartGame();
+		Self->AGameMode::RestartGame();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_Say(AGameMode* Self, char* Msg)
 	{
 		auto _p0 = ConvertFromManage_FString(Msg);
-		Self->Say(_p0);
+		Self->AGameMode::Say(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_SendPlayer(AGameMode* Self, APlayerController* aPlayer, char* URL)
 	{
 		auto _p0 = aPlayer;
 		auto _p1 = ConvertFromManage_FString(URL);
-		Self->SendPlayer(_p0, _p1);
+		Self->AGameMode::SendPlayer(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_SetBandwidthLimit(AGameMode* Self, float AsyncIOBandwidthLimit)
 	{
 		auto _p0 = AsyncIOBandwidthLimit;
-		Self->SetBandwidthLimit(_p0);
+		Self->AGameMode::SetBandwidthLimit(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_SetMatchState(AGameMode* Self, char* NewState)
 	{
 		auto _p0 = ConvertFromManage_FName(NewState);
-		((E_PROTECTED_WRAP_AGameMode*)Self)->SetMatchState_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameMode*)Self)->AGameMode::SetMatchState_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_SetSeamlessTravelViewTarget(AGameMode* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		Self->SetSeamlessTravelViewTarget(_p0);
+		Self->AGameMode::SetSeamlessTravelViewTarget(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_StartMatch(AGameMode* Self)
 	{
-		Self->StartMatch();
+		Self->AGameMode::StartMatch();
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_StartNewPlayer(AGameMode* Self, APlayerController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->StartNewPlayer(_p0);
+		Self->AGameMode::StartNewPlayer(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameMode_StaticGetFullGameClassName(AGameMode* Self, char* Str)

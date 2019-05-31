@@ -15,37 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageGameNetworkManager")]
 	public partial class ManageGameNetworkManager : AGameNetworkManager
 	{
-		public ManageGameNetworkManager(IntPtr Adress)
-			: base(Adress)
+		public ManageGameNetworkManager(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Turns standby detection on/off
-		/// </summary>
-		/// <param name="bIsEnabled">true to turn it on, false to disable it</param>
-		public override void EnableStandbyCheatDetection(bool bIsEnabled) { }
-		
-		
-		/// <summary>
-		/// Notifies the game code that a standby cheat was detected
-		/// </summary>
-		/// <param name="standbyType">the type of cheat detected</param>
-		public override void StandbyCheatDetected(EStandbyType standbyType) { }
-		
-		
-		/// <summary>
-		/// Update network speeds for listen servers based on number of connected players.
-		/// </summary>
-		public override void UpdateNetSpeeds(bool bIsLanMatch) { }
-		
-		
-		/// <summary>
-		/// Timer which calls UpdateNetSpeeds() once a second.
-		/// </summary>
-		public override void UpdateNetSpeedsTimer() { }
-		
 		public static implicit operator IntPtr(ManageGameNetworkManager self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

@@ -16,7 +16,7 @@
   "CppPch": "UnrealDotNetRuntime",
   "CppApi": "DOTNET_EXPORT",
   "CppApiUe": "UNREALDOTNETRUNTIME_API",
-  "GenerateStatFile": "..\\UnrealEngineSharp\\Generate\\summary.txt",
+  "GenerateStatFile": "..\\..\\Source\\UnrealEngineSharp\\Generate\\summary.txt",
   "IsDisableReSharperWarnings": true,
   "IsWriteSourceFileName": true,
   "IsGenerateFileHeader": true,
@@ -169,6 +169,7 @@
         "Register"
       ],
       "UObject": [
+        "PostDuplicate",
         "PreSaveRoot",
         "Implements"
       ],
@@ -183,6 +184,9 @@
       ],
       "UWindDirectionalSourceComponent": [
         "SetStrength"
+      ],
+      "UActorComponent": [
+        "UpdateComponentToWorld"
       ],
       "USceneCaptureComponent": [
         "GetSettingForShowFlag"

@@ -96,7 +96,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRootMotionSource_MoveToDynamicForce(IntPtr Adress)
+		public static implicit operator FRootMotionSource_MoveToDynamicForce(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRootMotionSource_MoveToDynamicForce(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRootMotionSource_MoveToDynamicForce(adress, false);
 		}}}

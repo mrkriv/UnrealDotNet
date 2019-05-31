@@ -39,7 +39,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFloat32(IntPtr Adress)
+		public static implicit operator FFloat32(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFloat32(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFloat32(adress, false);
 		}}}

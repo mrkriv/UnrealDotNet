@@ -15,17 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageDecalComponent")]
 	public partial class ManageDecalComponent : UDecalComponent
 	{
-		public ManageDecalComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageDecalComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Called when the life span of the decal has been exceeded
-		/// </summary>
-		protected override void LifeSpanCallback() { }
-		
 		public static implicit operator IntPtr(ManageDecalComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

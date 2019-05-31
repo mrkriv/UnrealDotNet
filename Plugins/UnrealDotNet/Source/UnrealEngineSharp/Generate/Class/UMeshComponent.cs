@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UMeshComponent : UPrimitiveComponent
 	{
-		public UMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public UMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -75,7 +75,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FScale(IntPtr Adress)
+		public static implicit operator FScale(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FScale(Adress, false);
+			return adress == IntPtr.Zero ? null : new FScale(adress, false);
 		}}}

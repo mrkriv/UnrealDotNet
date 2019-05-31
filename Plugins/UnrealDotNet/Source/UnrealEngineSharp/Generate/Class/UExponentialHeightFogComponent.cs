@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UExponentialHeightFogComponent : USceneComponent
 	{
-		public UExponentialHeightFogComponent(IntPtr Adress)
-			: base(Adress)
+		public UExponentialHeightFogComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

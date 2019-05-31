@@ -13,12 +13,10 @@ namespace GameLogic
 
         public override void Tick(float DeltaSeconds)
         {
-            base.Tick(DeltaSeconds);
         }
 
         public override void DrawHUD()
         {
-            base.DrawHUD();
         }
     }
 }

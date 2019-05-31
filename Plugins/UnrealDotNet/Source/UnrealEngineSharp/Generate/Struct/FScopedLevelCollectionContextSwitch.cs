@@ -41,7 +41,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FScopedLevelCollectionContextSwitch(IntPtr Adress)
+		public static implicit operator FScopedLevelCollectionContextSwitch(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FScopedLevelCollectionContextSwitch(Adress, false);
+			return adress == IntPtr.Zero ? null : new FScopedLevelCollectionContextSwitch(adress, false);
 		}}}

@@ -130,19 +130,19 @@ extern "C"
 		auto& _p1 = *(FDamageEvent*)DamageEvent;
 		auto _p2 = PawnInstigator;
 		auto _p3 = DamageCauser;
-		Self->ApplyDamageMomentum(_p0, _p1, _p2, _p3);
+		Self->ACharacter::ApplyDamageMomentum(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_BaseChange(ACharacter* Self)
 	{
-		((E_PROTECTED_WRAP_ACharacter*)Self)->BaseChange_WRAP();
+		((E_PROTECTED_WRAP_ACharacter*)Self)->ACharacter::BaseChange_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CacheInitialMeshOffset(ACharacter* Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
 	{
 		auto _p0 = *(FVector*)MeshRelativeLocation;
 		auto _p1 = *(FRotator*)MeshRelativeRotation;
-		Self->CacheInitialMeshOffset(_p0, _p1);
+		Self->ACharacter::CacheInitialMeshOffset(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CanCrouch(ACharacter* Self)
@@ -168,13 +168,13 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_CheckJumpInput(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->CheckJumpInput(_p0);
+		Self->ACharacter::CheckJumpInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClearJumpInput(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->ClearJumpInput(_p0);
+		Self->ACharacter::ClearJumpInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientAckGoodMove(ACharacter* Self, float TimeStamp)
@@ -222,7 +222,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatFly_Implementation(ACharacter* Self)
 	{
-		Self->ClientCheatFly_Implementation();
+		Self->ACharacter::ClientCheatFly_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatGhost(ACharacter* Self)
@@ -232,7 +232,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatGhost_Implementation(ACharacter* Self)
 	{
-		Self->ClientCheatGhost_Implementation();
+		Self->ACharacter::ClientCheatGhost_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatWalk(ACharacter* Self)
@@ -242,7 +242,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatWalk_Implementation(ACharacter* Self)
 	{
-		Self->ClientCheatWalk_Implementation();
+		Self->ACharacter::ClientCheatWalk_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientVeryShortAdjustPosition(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
@@ -272,12 +272,12 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_Crouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		Self->Crouch(_p0);
+		Self->ACharacter::Crouch(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_Falling(ACharacter* Self)
 	{
-		Self->Falling();
+		Self->ACharacter::Falling();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetAnimRootMotionTranslationScale(ACharacter* Self)
@@ -362,7 +362,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_Jump(ACharacter* Self)
 	{
-		Self->Jump();
+		Self->ACharacter::Jump();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_K2_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
@@ -397,7 +397,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_Landed(ACharacter* Self, INT_PTR Hit)
 	{
 		auto& _p0 = *(FHitResult*)Hit;
-		Self->Landed(_p0);
+		Self->ACharacter::Landed(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_LaunchCharacter(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
@@ -405,37 +405,37 @@ extern "C"
 		auto _p0 = *(FVector*)LaunchVelocity;
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
-		Self->LaunchCharacter(_p0, _p1, _p2);
+		Self->ACharacter::LaunchCharacter(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_MoveBlockedBy(ACharacter* Self, INT_PTR Impact)
 	{
 		auto& _p0 = *(FHitResult*)Impact;
-		Self->MoveBlockedBy(_p0);
+		Self->ACharacter::MoveBlockedBy(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyActorBeginOverlap(ACharacter* Self, AActor* OtherActor)
 	{
 		auto _p0 = OtherActor;
-		Self->NotifyActorBeginOverlap(_p0);
+		Self->ACharacter::NotifyActorBeginOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyActorEndOverlap(ACharacter* Self, AActor* OtherActor)
 	{
 		auto _p0 = OtherActor;
-		Self->NotifyActorEndOverlap(_p0);
+		Self->ACharacter::NotifyActorEndOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyJumpApex(ACharacter* Self)
 	{
-		Self->NotifyJumpApex();
+		Self->ACharacter::NotifyJumpApex();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		Self->OnEndCrouch(_p0, _p1);
+		Self->ACharacter::OnEndCrouch(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnJumped(ACharacter* Self)
@@ -445,7 +445,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnJumped_Implementation(ACharacter* Self)
 	{
-		Self->OnJumped_Implementation();
+		Self->ACharacter::OnJumped_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnLanded(ACharacter* Self, INT_PTR Hit)
@@ -466,12 +466,12 @@ extern "C"
 	{
 		auto _p0 = PrevMovementMode;
 		auto _p1 = PreviousCustomMode;
-		Self->OnMovementModeChanged(_p0, _p1);
+		Self->ACharacter::OnMovementModeChanged(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_IsCrouched(ACharacter* Self)
 	{
-		Self->OnRep_IsCrouched();
+		Self->ACharacter::OnRep_IsCrouched();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_ReplayLastTransformUpdateTimeStamp(ACharacter* Self)
@@ -481,7 +481,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_ReplicatedBasedMovement(ACharacter* Self)
 	{
-		Self->OnRep_ReplicatedBasedMovement();
+		Self->ACharacter::OnRep_ReplicatedBasedMovement();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_RootMotion(ACharacter* Self)
@@ -493,14 +493,14 @@ extern "C"
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		Self->OnStartCrouch(_p0, _p1);
+		Self->ACharacter::OnStartCrouch(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnUpdateSimulatedPosition(ACharacter* Self, INT_PTR OldLocation, INT_PTR OldRotation)
 	{
 		auto& _p0 = *(FVector*)OldLocation;
 		auto& _p1 = *(FQuat*)OldRotation;
-		Self->OnUpdateSimulatedPosition(_p0, _p1);
+		Self->ACharacter::OnUpdateSimulatedPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
@@ -518,12 +518,12 @@ extern "C"
 		auto& _p1 = *(FVector*)PreviousFloorContactNormal;
 		auto& _p2 = *(FVector*)PreviousLocation;
 		auto _p3 = TimeDelta;
-		Self->OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
+		Self->ACharacter::OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ResetJumpState(ACharacter* Self)
 	{
-		Self->ResetJumpState();
+		Self->ACharacter::ResetJumpState();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
@@ -541,7 +541,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(ACharacter* Self, char* InString)
 	{
 		auto _p0 = ConvertFromManage_FString(InString);
-		Self->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
+		Self->ACharacter::RootMotionDebugClientPrintOnScreen_Implementation(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_SaveRelativeBasedMovement(ACharacter* Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
@@ -563,7 +563,7 @@ extern "C"
 		auto _p0 = NewBase;
 		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bNotifyActor;
-		Self->SetBase(_p0, _p1, _p2);
+		Self->ACharacter::SetBase(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ShouldNotifyLanded(ACharacter* Self, INT_PTR Hit)
@@ -580,13 +580,13 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_StopJumping(ACharacter* Self)
 	{
-		Self->StopJumping();
+		Self->ACharacter::StopJumping();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_UnCrouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		Self->UnCrouch(_p0);
+		Self->ACharacter::UnCrouch(_p0);
 	}
 
 }

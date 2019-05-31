@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UInstancedStaticMeshComponent : UStaticMeshComponent
 	{
-		public UInstancedStaticMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public UInstancedStaticMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

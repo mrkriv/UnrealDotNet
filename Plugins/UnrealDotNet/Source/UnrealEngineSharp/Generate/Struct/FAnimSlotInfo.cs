@@ -48,7 +48,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FAnimSlotInfo(IntPtr Adress)
+		public static implicit operator FAnimSlotInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAnimSlotInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FAnimSlotInfo(adress, false);
 		}}}

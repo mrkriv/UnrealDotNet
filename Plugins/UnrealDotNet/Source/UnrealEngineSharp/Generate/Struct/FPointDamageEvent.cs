@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPointDamageEvent(IntPtr Adress)
+		public static implicit operator FPointDamageEvent(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPointDamageEvent(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPointDamageEvent(adress, false);
 		}}}

@@ -56,7 +56,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator PingAvgData(IntPtr Adress)
+		public static implicit operator PingAvgData(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new PingAvgData(Adress, false);
+			return adress == IntPtr.Zero ? null : new PingAvgData(adress, false);
 		}}}

@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageInputSettings")]
 	public partial class ManageInputSettings : UInputSettings
 	{
-		public ManageInputSettings(IntPtr Adress)
-			: base(Adress)
+		public ManageInputSettings(IntPtr adress)
+			: base(adress)
 		{
 		}
 

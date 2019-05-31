@@ -187,7 +187,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSplineMeshParams(IntPtr Adress)
+		public static implicit operator FSplineMeshParams(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSplineMeshParams(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSplineMeshParams(adress, false);
 		}}}

@@ -38,7 +38,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFixedUObjectArray(IntPtr Adress)
+		public static implicit operator FFixedUObjectArray(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFixedUObjectArray(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFixedUObjectArray(adress, false);
 		}}}

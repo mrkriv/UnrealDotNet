@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSphereComponent")]
 	public partial class ManageSphereComponent : USphereComponent
 	{
-		public ManageSphereComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageSphereComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

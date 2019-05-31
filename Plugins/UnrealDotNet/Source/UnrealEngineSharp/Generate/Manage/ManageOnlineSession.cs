@@ -15,35 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageOnlineSession")]
 	public partial class ManageOnlineSession : UOnlineSession
 	{
-		public ManageOnlineSession(IntPtr Adress)
-			: base(Adress)
+		public ManageOnlineSession(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Tear down all delegates used to manage online sessions.
-		/// </summary>
-		public override void ClearOnlineDelegates() { }
-		
-		
-		/// <summary>
-		/// End the online session specified
-		/// </summary>
-		public override void EndOnlineSession(string sessionName) { }
-		
-		
-		/// <summary>
-		/// Register all delegates needed to manage online sessions.
-		/// </summary>
-		public override void RegisterOnlineDelegates() { }
-		
-		
-		/// <summary>
-		/// Start the online session specified
-		/// </summary>
-		public override void StartOnlineSession(string sessionName) { }
-		
 		public static implicit operator IntPtr(ManageOnlineSession self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FActiveForceFeedbackEffect(IntPtr Adress)
+		public static implicit operator FActiveForceFeedbackEffect(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FActiveForceFeedbackEffect(Adress, false);
+			return adress == IntPtr.Zero ? null : new FActiveForceFeedbackEffect(adress, false);
 		}}}

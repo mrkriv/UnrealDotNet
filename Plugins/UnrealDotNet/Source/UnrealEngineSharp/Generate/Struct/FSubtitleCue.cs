@@ -67,7 +67,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSubtitleCue(IntPtr Adress)
+		public static implicit operator FSubtitleCue(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSubtitleCue(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSubtitleCue(adress, false);
 		}}}

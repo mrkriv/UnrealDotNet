@@ -15,18 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManagePlayer")]
 	public partial class ManagePlayer : UPlayer
 	{
-		public ManagePlayer(IntPtr Adress)
-			: base(Adress)
+		public ManagePlayer(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Dynamically assign Controller to Player and set viewport.
-		/// </summary>
-		/// <param name="pC">new player controller to assign to player</param>
-		public override void SwitchController(APlayerController pC) { }
-		
 		public static implicit operator IntPtr(ManagePlayer self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

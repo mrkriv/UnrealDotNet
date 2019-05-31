@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UDrawFrustumComponent : UPrimitiveComponent
 	{
-		public UDrawFrustumComponent(IntPtr Adress)
-			: base(Adress)
+		public UDrawFrustumComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

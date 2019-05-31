@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UPawnMovementComponent : UNavMovementComponent
 	{
-		public UPawnMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public UPawnMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

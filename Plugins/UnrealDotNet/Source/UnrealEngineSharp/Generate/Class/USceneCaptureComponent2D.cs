@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USceneCaptureComponent2D : USceneCaptureComponent
 	{
-		public USceneCaptureComponent2D(IntPtr Adress)
-			: base(Adress)
+		public USceneCaptureComponent2D(IntPtr adress)
+			: base(adress)
 		{
 		}
 

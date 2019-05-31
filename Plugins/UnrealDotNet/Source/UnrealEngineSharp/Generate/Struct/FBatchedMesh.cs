@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FBatchedMesh(IntPtr Adress)
+		public static implicit operator FBatchedMesh(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FBatchedMesh(Adress, false);
+			return adress == IntPtr.Zero ? null : new FBatchedMesh(adress, false);
 		}}}

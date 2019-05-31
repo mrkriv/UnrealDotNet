@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageDirectionalLightComponent")]
 	public partial class ManageDirectionalLightComponent : UDirectionalLightComponent
 	{
-		public ManageDirectionalLightComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageDirectionalLightComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

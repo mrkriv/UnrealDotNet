@@ -47,31 +47,31 @@ extern "C"
 	DOTNET_EXPORT auto E_ADefaultPawn_LookUpAtRate(ADefaultPawn* Self, float Rate)
 	{
 		auto _p0 = Rate;
-		Self->LookUpAtRate(_p0);
+		Self->ADefaultPawn::LookUpAtRate(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ADefaultPawn_MoveForward(ADefaultPawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->MoveForward(_p0);
+		Self->ADefaultPawn::MoveForward(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ADefaultPawn_MoveRight(ADefaultPawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->MoveRight(_p0);
+		Self->ADefaultPawn::MoveRight(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ADefaultPawn_MoveUp_World(ADefaultPawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->MoveUp_World(_p0);
+		Self->ADefaultPawn::MoveUp_World(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ADefaultPawn_TurnAtRate(ADefaultPawn* Self, float Rate)
 	{
 		auto _p0 = Rate;
-		Self->TurnAtRate(_p0);
+		Self->ADefaultPawn::TurnAtRate(_p0);
 	}
 
 }

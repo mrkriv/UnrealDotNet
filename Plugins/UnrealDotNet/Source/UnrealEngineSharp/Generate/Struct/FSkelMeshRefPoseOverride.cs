@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSkelMeshRefPoseOverride(IntPtr Adress)
+		public static implicit operator FSkelMeshRefPoseOverride(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSkelMeshRefPoseOverride(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSkelMeshRefPoseOverride(adress, false);
 		}}}

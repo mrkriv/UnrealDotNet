@@ -56,7 +56,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInputAxisKeyMapping(IntPtr Adress)
+		public static implicit operator FInputAxisKeyMapping(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInputAxisKeyMapping(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInputAxisKeyMapping(adress, false);
 		}}}

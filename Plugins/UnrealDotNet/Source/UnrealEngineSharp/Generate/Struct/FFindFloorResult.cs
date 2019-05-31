@@ -123,7 +123,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FFindFloorResult(IntPtr Adress)
+		public static implicit operator FFindFloorResult(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FFindFloorResult(Adress, false);
+			return adress == IntPtr.Zero ? null : new FFindFloorResult(adress, false);
 		}}}

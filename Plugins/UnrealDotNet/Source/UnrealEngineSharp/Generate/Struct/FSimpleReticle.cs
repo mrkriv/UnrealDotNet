@@ -49,7 +49,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSimpleReticle(IntPtr Adress)
+		public static implicit operator FSimpleReticle(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSimpleReticle(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSimpleReticle(adress, false);
 		}}}

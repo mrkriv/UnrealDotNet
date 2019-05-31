@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UObject : UObjectBaseUtility
 	{
-		public UObject(IntPtr Adress)
-			: base(Adress)
+		public UObject(IntPtr adress)
+			: base(adress)
 		{
 		}
 
@@ -155,9 +155,6 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostCDOContruct(IntPtr self);
-		
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern void E_UObject_PostDuplicate(IntPtr self, bool bDuplicateForPIE);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PostEditImport(IntPtr self);
@@ -529,14 +526,6 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PostCDOContruct()
 			=> E_UObject_PostCDOContruct(this);
-		
-		
-		/// <summary>
-		/// Called after duplication & serialization and before PostLoad. Used to e.g. make sure UStaticMesh's UModel gets copied as well.
-		/// <para>Note: NOT called on components on actor duplication (alt-drag or copy-paste).  Use PostEditImport as well to cover that case. </para>
-		/// </summary>
-		public virtual void PostDuplicate(bool bDuplicateForPIE)
-			=> E_UObject_PostDuplicate(this, bDuplicateForPIE);
 		
 		
 		/// <summary>

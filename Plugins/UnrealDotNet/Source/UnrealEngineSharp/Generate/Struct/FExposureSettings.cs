@@ -68,7 +68,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FExposureSettings(IntPtr Adress)
+		public static implicit operator FExposureSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FExposureSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FExposureSettings(adress, false);
 		}}}

@@ -15,17 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageBillboardComponent")]
 	public partial class ManageBillboardComponent : UBillboardComponent
 	{
-		public ManageBillboardComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageBillboardComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Change the sprite's UVs
-		/// </summary>
-		public override void SetUV(int newU, int newUL, int newV, int newVL) { }
-		
 		public static implicit operator IntPtr(ManageBillboardComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

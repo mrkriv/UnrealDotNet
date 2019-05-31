@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDirectAttachChildrenAccessor(IntPtr Adress)
+		public static implicit operator FDirectAttachChildrenAccessor(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDirectAttachChildrenAccessor(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDirectAttachChildrenAccessor(adress, false);
 		}}}

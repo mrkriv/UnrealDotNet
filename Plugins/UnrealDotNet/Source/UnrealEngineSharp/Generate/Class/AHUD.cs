@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AHUD : AActor
 	{
-		public AHUD(IntPtr Adress)
-			: base(Adress)
+		public AHUD(IntPtr adress)
+			: base(adress)
 		{
 		}
 

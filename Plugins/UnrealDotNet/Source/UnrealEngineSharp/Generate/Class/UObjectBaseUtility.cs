@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UObjectBaseUtility : UObjectBase
 	{
-		public UObjectBaseUtility(IntPtr Adress)
-			: base(Adress)
+		public UObjectBaseUtility(IntPtr adress)
+			: base(adress)
 		{
 		}
 

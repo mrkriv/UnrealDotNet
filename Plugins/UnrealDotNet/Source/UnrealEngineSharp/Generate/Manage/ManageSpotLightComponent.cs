@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSpotLightComponent")]
 	public partial class ManageSpotLightComponent : USpotLightComponent
 	{
-		public ManageSpotLightComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageSpotLightComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -48,7 +48,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDynamicForceFeedbackDetails(IntPtr Adress)
+		public static implicit operator FDynamicForceFeedbackDetails(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDynamicForceFeedbackDetails(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDynamicForceFeedbackDetails(adress, false);
 		}}}

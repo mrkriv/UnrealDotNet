@@ -53,7 +53,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UFloatingPawnMovement_ApplyControlInputToVelocity(UFloatingPawnMovement* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((E_PROTECTED_WRAP_UFloatingPawnMovement*)Self)->ApplyControlInputToVelocity_WRAP(_p0);
+		((E_PROTECTED_WRAP_UFloatingPawnMovement*)Self)->UFloatingPawnMovement::ApplyControlInputToVelocity_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UFloatingPawnMovement_LimitWorldBounds(UFloatingPawnMovement* Self)

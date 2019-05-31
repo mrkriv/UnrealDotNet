@@ -48,7 +48,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FTimelineEventEntry(IntPtr Adress)
+		public static implicit operator FTimelineEventEntry(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FTimelineEventEntry(Adress, false);
+			return adress == IntPtr.Zero ? null : new FTimelineEventEntry(adress, false);
 		}}}

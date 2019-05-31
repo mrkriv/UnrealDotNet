@@ -45,7 +45,7 @@ extern "C"
 		auto _p0 = NoiseMaker;
 		auto _p1 = Loudness;
 		auto& _p2 = *(FVector*)NoiseLocation;
-		Self->MakeNoise(_p0, _p1, _p2);
+		Self->UPawnNoiseEmitterComponent::MakeNoise(_p0, _p1, _p2);
 	}
 
 }

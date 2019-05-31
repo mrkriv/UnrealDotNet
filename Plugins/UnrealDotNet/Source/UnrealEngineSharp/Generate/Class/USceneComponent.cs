@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USceneComponent : UActorComponent
 	{
-		public USceneComponent(IntPtr Adress)
-			: base(Adress)
+		public USceneComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -178,7 +178,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FHierarchicalSimplification(IntPtr Adress)
+		public static implicit operator FHierarchicalSimplification(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FHierarchicalSimplification(Adress, false);
+			return adress == IntPtr.Zero ? null : new FHierarchicalSimplification(adress, false);
 		}}}

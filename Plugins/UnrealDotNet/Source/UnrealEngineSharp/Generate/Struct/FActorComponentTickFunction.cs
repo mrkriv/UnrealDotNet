@@ -52,7 +52,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FActorComponentTickFunction(IntPtr Adress)
+		public static implicit operator FActorComponentTickFunction(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FActorComponentTickFunction(Adress, false);
+			return adress == IntPtr.Zero ? null : new FActorComponentTickFunction(adress, false);
 		}}}

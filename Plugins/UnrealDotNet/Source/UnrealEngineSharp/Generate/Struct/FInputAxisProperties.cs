@@ -97,7 +97,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInputAxisProperties(IntPtr Adress)
+		public static implicit operator FInputAxisProperties(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInputAxisProperties(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInputAxisProperties(adress, false);
 		}}}

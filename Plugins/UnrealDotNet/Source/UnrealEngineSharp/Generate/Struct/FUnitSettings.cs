@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FUnitSettings(IntPtr Adress)
+		public static implicit operator FUnitSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FUnitSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FUnitSettings(adress, false);
 		}}}

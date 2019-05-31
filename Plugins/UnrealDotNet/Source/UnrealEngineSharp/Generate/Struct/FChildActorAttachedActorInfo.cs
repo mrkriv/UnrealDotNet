@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FChildActorAttachedActorInfo(IntPtr Adress)
+		public static implicit operator FChildActorAttachedActorInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FChildActorAttachedActorInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FChildActorAttachedActorInfo(adress, false);
 		}}}

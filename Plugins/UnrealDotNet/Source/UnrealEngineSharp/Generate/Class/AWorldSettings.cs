@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AWorldSettings : AInfo
 	{
-		public AWorldSettings(IntPtr Adress)
-			: base(Adress)
+		public AWorldSettings(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -89,7 +89,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UDecalComponent_LifeSpanCallback(UDecalComponent* Self)
 	{
-		((E_PROTECTED_WRAP_UDecalComponent*)Self)->LifeSpanCallback_WRAP();
+		((E_PROTECTED_WRAP_UDecalComponent*)Self)->UDecalComponent::LifeSpanCallback_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UDecalComponent_PushSelectionToProxy(UDecalComponent* Self)

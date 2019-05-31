@@ -50,7 +50,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UPlayer_SwitchController(UPlayer* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		Self->SwitchController(_p0);
+		Self->UPlayer::SwitchController(_p0);
 	}
 
 }

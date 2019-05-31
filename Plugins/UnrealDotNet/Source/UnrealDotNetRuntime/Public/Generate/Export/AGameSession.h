@@ -43,7 +43,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameSession_AddAdmin(AGameSession* Self, APlayerController* AdminPlayer)
 	{
 		auto _p0 = AdminPlayer;
-		Self->AddAdmin(_p0);
+		Self->AGameSession::AddAdmin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_ApproveLogin(AGameSession* Self, char* Options)
@@ -72,7 +72,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameSession_DumpSessionState(AGameSession* Self)
 	{
-		Self->DumpSessionState();
+		Self->AGameSession::DumpSessionState();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_GetNextPlayerID(AGameSession* Self)
@@ -82,17 +82,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameSession_HandleMatchHasEnded(AGameSession* Self)
 	{
-		Self->HandleMatchHasEnded();
+		Self->AGameSession::HandleMatchHasEnded();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_HandleMatchHasStarted(AGameSession* Self)
 	{
-		Self->HandleMatchHasStarted();
+		Self->AGameSession::HandleMatchHasStarted();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_HandleMatchIsWaitingToStart(AGameSession* Self)
 	{
-		Self->HandleMatchIsWaitingToStart();
+		Self->AGameSession::HandleMatchIsWaitingToStart();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_HandleStartMatchRequest(AGameSession* Self)
@@ -103,7 +103,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameSession_InitOptions(AGameSession* Self, char* Options)
 	{
 		auto _p0 = ConvertFromManage_FString(Options);
-		Self->InitOptions(_p0);
+		Self->AGameSession::InitOptions(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_KickPlayer(AGameSession* Self, APlayerController* KickedPlayer, char* KickReason)
@@ -116,7 +116,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameSession_NotifyLogout(AGameSession* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		Self->NotifyLogout(_p0);
+		Self->AGameSession::NotifyLogout(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_OnAutoLoginComplete(AGameSession* Self, int32 LocalUserNum, bool bWasSuccessful, char* Error)
@@ -124,18 +124,18 @@ extern "C"
 		auto _p0 = LocalUserNum;
 		auto _p1 = bWasSuccessful;
 		auto _p2 = ConvertFromManage_FString(Error);
-		Self->OnAutoLoginComplete(_p0, _p1, _p2);
+		Self->AGameSession::OnAutoLoginComplete(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_PostLogin(AGameSession* Self, APlayerController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->PostLogin(_p0);
+		Self->AGameSession::PostLogin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_PostSeamlessTravel(AGameSession* Self)
 	{
-		Self->PostSeamlessTravel();
+		Self->AGameSession::PostSeamlessTravel();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_ProcessAutoLogin(AGameSession* Self)
@@ -145,18 +145,18 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameSession_RegisterServer(AGameSession* Self)
 	{
-		Self->RegisterServer();
+		Self->AGameSession::RegisterServer();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_RegisterServerFailed(AGameSession* Self)
 	{
-		Self->RegisterServerFailed();
+		Self->AGameSession::RegisterServerFailed();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_RemoveAdmin(AGameSession* Self, APlayerController* AdminPlayer)
 	{
 		auto _p0 = AdminPlayer;
-		Self->RemoveAdmin(_p0);
+		Self->AGameSession::RemoveAdmin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_RequiresPushToTalk(AGameSession* Self)
@@ -166,18 +166,18 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameSession_Restart(AGameSession* Self)
 	{
-		Self->Restart();
+		Self->AGameSession::Restart();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_ReturnToMainMenuHost(AGameSession* Self)
 	{
-		Self->ReturnToMainMenuHost();
+		Self->AGameSession::ReturnToMainMenuHost();
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_UnregisterPlayer(AGameSession* Self, APlayerController* ExitingPlayer)
 	{
 		auto _p0 = ExitingPlayer;
-		Self->UnregisterPlayer(_p0);
+		Self->AGameSession::UnregisterPlayer(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameSession_UpdateSessionJoinability(AGameSession* Self, char* InSessionName, bool bPublicSearchable, bool bAllowInvites, bool bJoinViaPresence, bool bJoinViaPresenceFriendsOnly)
@@ -187,7 +187,7 @@ extern "C"
 		auto _p2 = bAllowInvites;
 		auto _p3 = bJoinViaPresence;
 		auto _p4 = bJoinViaPresenceFriendsOnly;
-		Self->UpdateSessionJoinability(_p0, _p1, _p2, _p3, _p4);
+		Self->AGameSession::UpdateSessionJoinability(_p0, _p1, _p2, _p3, _p4);
 	}
 
 }

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ULightComponent : ULightComponentBase
 	{
-		public ULightComponent(IntPtr Adress)
-			: base(Adress)
+		public ULightComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

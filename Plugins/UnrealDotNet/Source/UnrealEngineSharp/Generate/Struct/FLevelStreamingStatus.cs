@@ -60,7 +60,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLevelStreamingStatus(IntPtr Adress)
+		public static implicit operator FLevelStreamingStatus(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLevelStreamingStatus(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLevelStreamingStatus(adress, false);
 		}}}

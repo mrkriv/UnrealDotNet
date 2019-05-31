@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UWorldProxy : NativeWrapper
 	{
-		public UWorldProxy(IntPtr Adress)
-			: base(Adress)
+		public UWorldProxy(IntPtr adress)
+			: base(adress)
 		{
 		}
 

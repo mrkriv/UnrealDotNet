@@ -70,7 +70,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FNetDriverDefinition(IntPtr Adress)
+		public static implicit operator FNetDriverDefinition(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FNetDriverDefinition(Adress, false);
+			return adress == IntPtr.Zero ? null : new FNetDriverDefinition(adress, false);
 		}}}

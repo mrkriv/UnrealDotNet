@@ -183,14 +183,14 @@ extern "C"
 		auto _p0 = FadeInDuration;
 		auto _p1 = FadeVolumeLevel;
 		auto _p2 = StartTime;
-		Self->FadeIn(_p0, _p1, _p2);
+		Self->UAudioComponent::FadeIn(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_FadeOut(UAudioComponent* Self, float FadeOutDuration, float FadeVolumeLevel)
 	{
 		auto _p0 = FadeOutDuration;
 		auto _p1 = FadeVolumeLevel;
-		Self->FadeOut(_p0, _p1);
+		Self->UAudioComponent::FadeOut(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_GetAudioComponentUserID(UAudioComponent* Self)
@@ -222,7 +222,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UAudioComponent_Play(UAudioComponent* Self, float StartTime)
 	{
 		auto _p0 = StartTime;
-		Self->Play(_p0);
+		Self->UAudioComponent::Play(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_PlayInternal(UAudioComponent* Self, float StartTime, float FadeInDuration, float FadeVolumeLevel)
@@ -298,7 +298,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UAudioComponent_Stop(UAudioComponent* Self)
 	{
-		Self->Stop();
+		Self->UAudioComponent::Stop();
 	}
 
 }

@@ -79,7 +79,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPerspectiveMatrix(IntPtr Adress)
+		public static implicit operator FPerspectiveMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPerspectiveMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPerspectiveMatrix(adress, false);
 		}}}

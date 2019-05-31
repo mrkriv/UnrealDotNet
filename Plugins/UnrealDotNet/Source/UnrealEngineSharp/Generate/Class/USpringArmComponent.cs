@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USpringArmComponent : USceneComponent
 	{
-		public USpringArmComponent(IntPtr Adress)
-			: base(Adress)
+		public USpringArmComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

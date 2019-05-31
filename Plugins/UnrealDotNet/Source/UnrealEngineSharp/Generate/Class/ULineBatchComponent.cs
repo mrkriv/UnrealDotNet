@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ULineBatchComponent : UPrimitiveComponent
 	{
-		public ULineBatchComponent(IntPtr Adress)
-			: base(Adress)
+		public ULineBatchComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

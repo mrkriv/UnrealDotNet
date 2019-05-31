@@ -90,7 +90,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FActorSpawnParameters(IntPtr Adress)
+		public static implicit operator FActorSpawnParameters(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FActorSpawnParameters(Adress, false);
+			return adress == IntPtr.Zero ? null : new FActorSpawnParameters(adress, false);
 		}}}

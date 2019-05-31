@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class APlayerController : AController
 	{
-		public APlayerController(IntPtr Adress)
-			: base(Adress)
+		public APlayerController(IntPtr adress)
+			: base(adress)
 		{
 		}
 

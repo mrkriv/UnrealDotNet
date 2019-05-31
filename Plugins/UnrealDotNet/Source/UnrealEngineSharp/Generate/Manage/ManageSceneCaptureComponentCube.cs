@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSceneCaptureComponentCube")]
 	public partial class ManageSceneCaptureComponentCube : USceneCaptureComponentCube
 	{
-		public ManageSceneCaptureComponentCube(IntPtr Adress)
-			: base(Adress)
+		public ManageSceneCaptureComponentCube(IntPtr adress)
+			: base(adress)
 		{
 		}
 

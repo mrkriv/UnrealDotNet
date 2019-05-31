@@ -133,7 +133,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FDetachmentTransformRules(IntPtr Adress)
+		public static implicit operator FDetachmentTransformRules(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FDetachmentTransformRules(Adress, false);
+			return adress == IntPtr.Zero ? null : new FDetachmentTransformRules(adress, false);
 		}}}

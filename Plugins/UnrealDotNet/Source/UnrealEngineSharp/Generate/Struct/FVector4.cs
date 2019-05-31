@@ -375,7 +375,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FVector4(IntPtr Adress)
+		public static implicit operator FVector4(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FVector4(Adress, false);
+			return adress == IntPtr.Zero ? null : new FVector4(adress, false);
 		}}}

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ADefaultPawn : APawn
 	{
-		public ADefaultPawn(IntPtr Adress)
-			: base(Adress)
+		public ADefaultPawn(IntPtr adress)
+			: base(adress)
 		{
 		}
 

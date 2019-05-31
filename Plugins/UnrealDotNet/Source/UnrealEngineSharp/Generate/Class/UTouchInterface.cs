@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UTouchInterface : UObject
 	{
-		public UTouchInterface(IntPtr Adress)
-			: base(Adress)
+		public UTouchInterface(IntPtr adress)
+			: base(adress)
 		{
 		}
 

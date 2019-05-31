@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UArrowComponent : UPrimitiveComponent
 	{
-		public UArrowComponent(IntPtr Adress)
-			: base(Adress)
+		public UArrowComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

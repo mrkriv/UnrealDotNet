@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UBillboardComponent : UPrimitiveComponent
 	{
-		public UBillboardComponent(IntPtr Adress)
-			: base(Adress)
+		public UBillboardComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

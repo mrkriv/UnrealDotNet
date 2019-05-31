@@ -53,7 +53,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameState_DefaultTimer(AGameState* Self)
 	{
-		Self->DefaultTimer();
+		Self->AGameState::DefaultTimer();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_GetMatchState(AGameState* Self)
@@ -63,22 +63,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameState_HandleLeavingMap(AGameState* Self)
 	{
-		((E_PROTECTED_WRAP_AGameState*)Self)->HandleLeavingMap_WRAP();
+		((E_PROTECTED_WRAP_AGameState*)Self)->AGameState::HandleLeavingMap_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_HandleMatchHasEnded(AGameState* Self)
 	{
-		((E_PROTECTED_WRAP_AGameState*)Self)->HandleMatchHasEnded_WRAP();
+		((E_PROTECTED_WRAP_AGameState*)Self)->AGameState::HandleMatchHasEnded_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_HandleMatchHasStarted(AGameState* Self)
 	{
-		((E_PROTECTED_WRAP_AGameState*)Self)->HandleMatchHasStarted_WRAP();
+		((E_PROTECTED_WRAP_AGameState*)Self)->AGameState::HandleMatchHasStarted_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_HandleMatchIsWaitingToStart(AGameState* Self)
 	{
-		((E_PROTECTED_WRAP_AGameState*)Self)->HandleMatchIsWaitingToStart_WRAP();
+		((E_PROTECTED_WRAP_AGameState*)Self)->AGameState::HandleMatchIsWaitingToStart_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_HasMatchEnded(AGameState* Self)
@@ -93,12 +93,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameState_OnRep_ElapsedTime(AGameState* Self)
 	{
-		Self->OnRep_ElapsedTime();
+		Self->AGameState::OnRep_ElapsedTime();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_OnRep_MatchState(AGameState* Self)
 	{
-		Self->OnRep_MatchState();
+		Self->AGameState::OnRep_MatchState();
 	}
 
 	DOTNET_EXPORT auto E_AGameState_SetMatchState(AGameState* Self, char* NewState)

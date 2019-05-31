@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UCapsuleComponent : UShapeComponent
 	{
-		public UCapsuleComponent(IntPtr Adress)
-			: base(Adress)
+		public UCapsuleComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

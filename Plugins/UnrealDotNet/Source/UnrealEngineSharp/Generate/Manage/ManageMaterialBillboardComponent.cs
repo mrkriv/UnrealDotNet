@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageMaterialBillboardComponent")]
 	public partial class ManageMaterialBillboardComponent : UMaterialBillboardComponent
 	{
-		public ManageMaterialBillboardComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageMaterialBillboardComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

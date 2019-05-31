@@ -49,7 +49,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ALight_OnRep_bEnabled(ALight* Self)
 	{
-		Self->OnRep_bEnabled();
+		Self->ALight::OnRep_bEnabled();
 	}
 
 	DOTNET_EXPORT auto E_ALight_SetAffectTranslucentLighting(ALight* Self, bool bNewValue)

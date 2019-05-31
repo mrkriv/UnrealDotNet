@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageBoxComponent")]
 	public partial class ManageBoxComponent : UBoxComponent
 	{
-		public ManageBoxComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageBoxComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

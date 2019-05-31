@@ -15,13 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageLight")]
 	public partial class ManageLight : ALight
 	{
-		public ManageLight(IntPtr Adress)
-			: base(Adress)
+		public ManageLight(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		public override void OnRep_bEnabled() { }
-		
 		public static implicit operator IntPtr(ManageLight self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

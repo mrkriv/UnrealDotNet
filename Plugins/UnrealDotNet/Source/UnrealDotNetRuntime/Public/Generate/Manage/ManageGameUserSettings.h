@@ -22,7 +22,6 @@ class UNREALDOTNETRUNTIME_API UManageGameUserSettings : public UGameUserSettings
 	GENERATED_BODY()
 	
 	bool bIsManageAttach = false;
-	
 	bool AddWrapperIfNotAttach();
 	
 public:
@@ -41,10 +40,25 @@ public:
 	virtual void SetOverallScalabilityLevel(int32 Value) override;
 	virtual void SetToDefaults() override;
 	virtual void SetWindowPosition(int32 WindowPosX, int32 WindowPosY) override;
-	virtual void ValidateSettings() override;
-	
-protected:
 	virtual void UpdateVersion() override;
+	virtual void ValidateSettings() override;
+	virtual void BeginDestroy() override;
+	virtual void FinishDestroy() override;
+	virtual void MarkAsEditorOnlySubobject() override;
+	virtual void OverridePerObjectConfigSection(FString& SectionName) override;
+	virtual void PostCDOContruct() override;
+	virtual void PostEditImport() override;
+	virtual void PostInitProperties() override;
+	virtual void PostLoad() override;
+	virtual void PostNetReceive() override;
+	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
+	virtual void PostRepNotifies() override;
+	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
+	virtual void PreDestroyFromReplication() override;
+	virtual void PreNetReceive() override;
+	virtual void ShutdownAfterError() override;
+	virtual void CreateCluster() override;
+	virtual void OnClusterMarkedAsPendingKill() override;
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

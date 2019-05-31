@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageHierarchicalLODSetup")]
 	public partial class ManageHierarchicalLODSetup : UHierarchicalLODSetup
 	{
-		public ManageHierarchicalLODSetup(IntPtr Adress)
-			: base(Adress)
+		public ManageHierarchicalLODSetup(IntPtr adress)
+			: base(adress)
 		{
 		}
 

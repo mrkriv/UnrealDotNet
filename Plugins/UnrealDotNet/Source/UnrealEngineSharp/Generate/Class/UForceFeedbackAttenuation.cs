@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UForceFeedbackAttenuation : UObject
 	{
-		public UForceFeedbackAttenuation(IntPtr Adress)
-			: base(Adress)
+		public UForceFeedbackAttenuation(IntPtr adress)
+			: base(adress)
 		{
 		}
 

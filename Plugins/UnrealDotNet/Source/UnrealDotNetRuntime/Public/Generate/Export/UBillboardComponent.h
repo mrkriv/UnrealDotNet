@@ -43,7 +43,7 @@ extern "C"
 		auto _p1 = NewUL;
 		auto _p2 = NewV;
 		auto _p3 = NewVL;
-		Self->SetUV(_p0, _p1, _p2, _p3);
+		Self->UBillboardComponent::SetUV(_p0, _p1, _p2, _p3);
 	}
 
 }

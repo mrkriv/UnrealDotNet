@@ -101,7 +101,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FInputActionKeyMapping(IntPtr Adress)
+		public static implicit operator FInputActionKeyMapping(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FInputActionKeyMapping(Adress, false);
+			return adress == IntPtr.Zero ? null : new FInputActionKeyMapping(adress, false);
 		}}}

@@ -112,7 +112,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FColorGradingSettings(IntPtr Adress)
+		public static implicit operator FColorGradingSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FColorGradingSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FColorGradingSettings(adress, false);
 		}}}

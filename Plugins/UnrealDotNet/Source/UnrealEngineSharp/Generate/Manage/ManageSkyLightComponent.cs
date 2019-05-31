@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSkyLightComponent")]
 	public partial class ManageSkyLightComponent : USkyLightComponent
 	{
-		public ManageSkyLightComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageSkyLightComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

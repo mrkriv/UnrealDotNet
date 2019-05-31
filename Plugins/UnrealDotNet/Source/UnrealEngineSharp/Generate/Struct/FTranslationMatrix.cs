@@ -51,7 +51,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FTranslationMatrix(IntPtr Adress)
+		public static implicit operator FTranslationMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FTranslationMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FTranslationMatrix(adress, false);
 		}}}

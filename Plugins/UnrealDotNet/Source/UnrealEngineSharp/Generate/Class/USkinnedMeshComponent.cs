@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USkinnedMeshComponent : UMeshComponent
 	{
-		public USkinnedMeshComponent(IntPtr Adress)
-			: base(Adress)
+		public USkinnedMeshComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

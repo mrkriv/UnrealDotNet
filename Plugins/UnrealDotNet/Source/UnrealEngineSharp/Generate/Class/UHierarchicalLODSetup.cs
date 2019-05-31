@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UHierarchicalLODSetup : UObject
 	{
-		public UHierarchicalLODSetup(IntPtr Adress)
-			: base(Adress)
+		public UHierarchicalLODSetup(IntPtr adress)
+			: base(adress)
 		{
 		}
 

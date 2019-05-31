@@ -48,7 +48,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FUpdateLevelVisibilityLevelInfo(IntPtr Adress)
+		public static implicit operator FUpdateLevelVisibilityLevelInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FUpdateLevelVisibilityLevelInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FUpdateLevelVisibilityLevelInfo(adress, false);
 		}}}

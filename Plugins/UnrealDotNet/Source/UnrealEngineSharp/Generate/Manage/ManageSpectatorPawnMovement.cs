@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageSpectatorPawnMovement")]
 	public partial class ManageSpectatorPawnMovement : USpectatorPawnMovement
 	{
-		public ManageSpectatorPawnMovement(IntPtr Adress)
-			: base(Adress)
+		public ManageSpectatorPawnMovement(IntPtr adress)
+			: base(adress)
 		{
 		}
 

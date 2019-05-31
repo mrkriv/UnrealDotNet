@@ -254,24 +254,24 @@ extern "C"
 	{
 		auto& _p0 = *(FVector*)NewLocation;
 		auto& _p1 = *(FRotator*)NewRotation;
-		Self->MoveInterpolationTarget(_p0, _p1);
+		Self->UProjectileMovementComponent::MoveInterpolationTarget(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ResetInterpolation(UProjectileMovementComponent* Self)
 	{
-		Self->ResetInterpolation();
+		Self->UProjectileMovementComponent::ResetInterpolation();
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_SetInterpolatedComponent(UProjectileMovementComponent* Self, USceneComponent* Component)
 	{
 		auto _p0 = Component;
-		Self->SetInterpolatedComponent(_p0);
+		Self->UProjectileMovementComponent::SetInterpolatedComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_SetVelocityInLocalSpace(UProjectileMovementComponent* Self, INT_PTR NewVelocity)
 	{
 		auto _p0 = *(FVector*)NewVelocity;
-		Self->SetVelocityInLocalSpace(_p0);
+		Self->UProjectileMovementComponent::SetVelocityInLocalSpace(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ShouldApplyGravity(UProjectileMovementComponent* Self)
@@ -287,13 +287,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_StopSimulating(UProjectileMovementComponent* Self, INT_PTR HitResult)
 	{
 		auto& _p0 = *(FHitResult*)HitResult;
-		Self->StopSimulating(_p0);
+		Self->UProjectileMovementComponent::StopSimulating(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_TickInterpolation(UProjectileMovementComponent* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->TickInterpolation_WRAP(_p0);
+		((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->UProjectileMovementComponent::TickInterpolation_WRAP(_p0);
 	}
 
 }

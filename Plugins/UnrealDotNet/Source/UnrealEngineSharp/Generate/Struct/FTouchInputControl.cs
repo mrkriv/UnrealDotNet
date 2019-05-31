@@ -92,7 +92,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FTouchInputControl(IntPtr Adress)
+		public static implicit operator FTouchInputControl(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FTouchInputControl(Adress, false);
+			return adress == IntPtr.Zero ? null : new FTouchInputControl(adress, false);
 		}}}

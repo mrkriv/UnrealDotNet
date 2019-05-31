@@ -24,24 +24,24 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UOnlineSession_ClearOnlineDelegates(UOnlineSession* Self)
 	{
-		Self->ClearOnlineDelegates();
+		Self->UOnlineSession::ClearOnlineDelegates();
 	}
 
 	DOTNET_EXPORT auto E_UOnlineSession_EndOnlineSession(UOnlineSession* Self, char* SessionName)
 	{
 		auto _p0 = ConvertFromManage_FName(SessionName);
-		Self->EndOnlineSession(_p0);
+		Self->UOnlineSession::EndOnlineSession(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UOnlineSession_RegisterOnlineDelegates(UOnlineSession* Self)
 	{
-		Self->RegisterOnlineDelegates();
+		Self->UOnlineSession::RegisterOnlineDelegates();
 	}
 
 	DOTNET_EXPORT auto E_UOnlineSession_StartOnlineSession(UOnlineSession* Self, char* SessionName)
 	{
 		auto _p0 = ConvertFromManage_FName(SessionName);
-		Self->StartOnlineSession(_p0);
+		Self->UOnlineSession::StartOnlineSession(_p0);
 	}
 
 }

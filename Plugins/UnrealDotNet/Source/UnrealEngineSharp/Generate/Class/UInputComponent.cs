@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UInputComponent : UActorComponent
 	{
-		public UInputComponent(IntPtr Adress)
-			: base(Adress)
+		public UInputComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

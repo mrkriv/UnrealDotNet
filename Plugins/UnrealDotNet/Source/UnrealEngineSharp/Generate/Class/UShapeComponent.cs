@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UShapeComponent : UPrimitiveComponent
 	{
-		public UShapeComponent(IntPtr Adress)
-			: base(Adress)
+		public UShapeComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

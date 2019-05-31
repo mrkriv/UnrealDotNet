@@ -92,7 +92,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSceneCaptureViewInfo(IntPtr Adress)
+		public static implicit operator FSceneCaptureViewInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSceneCaptureViewInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSceneCaptureViewInfo(adress, false);
 		}}}

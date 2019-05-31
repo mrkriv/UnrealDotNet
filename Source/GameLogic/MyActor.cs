@@ -30,8 +30,6 @@ namespace GameLogic
             _box.SetCollisionProfileName("OverlapAll");
             _box.SetBoxExtent(new FVector(100, 100, 100), false);
             _box.SetHiddenInGame(false);
-            
-            base.OnConstruction(transform);
         }
 
         protected override void BeginPlay()

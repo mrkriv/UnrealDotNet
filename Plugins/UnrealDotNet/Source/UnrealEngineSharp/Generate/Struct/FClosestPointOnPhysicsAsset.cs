@@ -97,7 +97,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FClosestPointOnPhysicsAsset(IntPtr Adress)
+		public static implicit operator FClosestPointOnPhysicsAsset(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FClosestPointOnPhysicsAsset(Adress, false);
+			return adress == IntPtr.Zero ? null : new FClosestPointOnPhysicsAsset(adress, false);
 		}}}

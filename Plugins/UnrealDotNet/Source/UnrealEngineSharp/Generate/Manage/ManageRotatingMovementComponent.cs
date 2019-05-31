@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageRotatingMovementComponent")]
 	public partial class ManageRotatingMovementComponent : URotatingMovementComponent
 	{
-		public ManageRotatingMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageRotatingMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

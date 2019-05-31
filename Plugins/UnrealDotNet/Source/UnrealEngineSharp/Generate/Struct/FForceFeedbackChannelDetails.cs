@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FForceFeedbackChannelDetails(IntPtr Adress)
+		public static implicit operator FForceFeedbackChannelDetails(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FForceFeedbackChannelDetails(Adress, false);
+			return adress == IntPtr.Zero ? null : new FForceFeedbackChannelDetails(adress, false);
 		}}}

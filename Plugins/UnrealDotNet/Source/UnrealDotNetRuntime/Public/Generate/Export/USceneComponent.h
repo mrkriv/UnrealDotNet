@@ -309,14 +309,14 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromComponent(USceneComponent* Self, INT_PTR DetachmentRules)
 	{
 		auto& _p0 = *(FDetachmentTransformRules*)DetachmentRules;
-		Self->DetachFromComponent(_p0);
+		Self->USceneComponent::DetachFromComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
 	{
 		auto _p0 = bMaintainWorldPosition;
 		auto _p1 = bCallModify;
-		Self->DetachFromParent(_p0, _p1);
+		Self->USceneComponent::DetachFromParent(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_DoesSocketExist(USceneComponent* Self, char* InSocketName)
@@ -792,36 +792,36 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_OnAttachmentChanged(USceneComponent* Self)
 	{
-		Self->OnAttachmentChanged();
+		Self->USceneComponent::OnAttachmentChanged();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnChildAttached(USceneComponent* Self, USceneComponent* ChildComponent)
 	{
 		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildAttached_WRAP(_p0);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnChildAttached_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnChildDetached(USceneComponent* Self, USceneComponent* ChildComponent)
 	{
 		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildDetached_WRAP(_p0);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnChildDetached_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnHiddenInGameChanged(USceneComponent* Self)
 	{
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnHiddenInGameChanged_WRAP();
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnHiddenInGameChanged_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnUpdateTransform(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
 	{
 		auto _p0 = UpdateTransformFlags;
 		auto _p1 = Teleport;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnUpdateTransform_WRAP(_p0, _p1);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnUpdateTransform_WRAP(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnVisibilityChanged(USceneComponent* Self)
 	{
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnVisibilityChanged_WRAP();
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnVisibilityChanged_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_PostUpdateNavigationData(USceneComponent* Self)
@@ -831,7 +831,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_PropagateLightingScenarioChange(USceneComponent* Self)
 	{
-		Self->PropagateLightingScenarioChange();
+		Self->USceneComponent::PropagateLightingScenarioChange();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ResetRelativeTransform(USceneComponent* Self)
@@ -925,7 +925,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeScale3D(USceneComponent* Self, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewScale3D;
-		Self->SetRelativeScale3D(_p0);
+		Self->USceneComponent::SetRelativeScale3D(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
@@ -1061,7 +1061,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdateBounds(USceneComponent* Self)
 	{
-		Self->UpdateBounds();
+		Self->USceneComponent::UpdateBounds();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdateChildTransforms(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
@@ -1079,7 +1079,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
 	{
 		auto _p0 = bTriggerNotifiers;
-		Self->UpdatePhysicsVolume(_p0);
+		Self->USceneComponent::UpdatePhysicsVolume(_p0);
 	}
 
 }

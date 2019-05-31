@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AInfo : AActor
 	{
-		public AInfo(IntPtr Adress)
-			: base(Adress)
+		public AInfo(IntPtr adress)
+			: base(adress)
 		{
 		}
 

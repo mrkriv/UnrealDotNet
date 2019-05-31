@@ -45,7 +45,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UInstancedStaticMeshComponent_ClearInstances(UInstancedStaticMeshComponent* Self)
 	{
-		Self->ClearInstances();
+		Self->UInstancedStaticMeshComponent::ClearInstances();
 	}
 
 	DOTNET_EXPORT auto E_UInstancedStaticMeshComponent_GetInstanceCount(UInstancedStaticMeshComponent* Self)
@@ -64,7 +64,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UInstancedStaticMeshComponent_PreAllocateInstancesMemory(UInstancedStaticMeshComponent* Self, int32 AddedInstanceCount)
 	{
 		auto _p0 = AddedInstanceCount;
-		Self->PreAllocateInstancesMemory(_p0);
+		Self->UInstancedStaticMeshComponent::PreAllocateInstancesMemory(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UInstancedStaticMeshComponent_RemoveInstance(UInstancedStaticMeshComponent* Self, int32 InstanceIndex)

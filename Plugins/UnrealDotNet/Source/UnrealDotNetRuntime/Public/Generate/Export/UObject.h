@@ -263,12 +263,6 @@ extern "C"
 		Self->PostCDOContruct();
 	}
 
-	DOTNET_EXPORT auto E_UObject_PostDuplicate(UObject* Self, bool bDuplicateForPIE)
-	{
-		auto _p0 = bDuplicateForPIE;
-		Self->PostDuplicate(_p0);
-	}
-
 	DOTNET_EXPORT auto E_UObject_PostEditImport(UObject* Self)
 	{
 		Self->PostEditImport();

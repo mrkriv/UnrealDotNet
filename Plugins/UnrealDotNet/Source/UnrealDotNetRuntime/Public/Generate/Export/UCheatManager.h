@@ -81,7 +81,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UCheatManager_BugIt(UCheatManager* Self, char* ScreenShotDescription)
 	{
 		auto _p0 = ConvertFromManage_FString(ScreenShotDescription);
-		Self->BugIt(_p0);
+		Self->UCheatManager::BugIt(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_BugItGo(UCheatManager* Self, float X, float Y, float Z, float Pitch, float Yaw, float Roll)
@@ -92,14 +92,14 @@ extern "C"
 		auto _p3 = Pitch;
 		auto _p4 = Yaw;
 		auto _p5 = Roll;
-		Self->BugItGo(_p0, _p1, _p2, _p3, _p4, _p5);
+		Self->UCheatManager::BugItGo(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_BugItGoString(UCheatManager* Self, char* TheLocation, char* TheRotation)
 	{
 		auto _p0 = ConvertFromManage_FString(TheLocation);
 		auto _p1 = ConvertFromManage_FString(TheRotation);
-		Self->BugItGoString(_p0, _p1);
+		Self->UCheatManager::BugItGoString(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_BugItStringCreator(UCheatManager* Self, INT_PTR ViewLocation, INT_PTR ViewRotation, char* GoString, char* LocString)
@@ -108,20 +108,20 @@ extern "C"
 		auto _p1 = *(FRotator*)ViewRotation;
 		auto _p2 = ConvertFromManage_FString(GoString);
 		auto _p3 = ConvertFromManage_FString(LocString);
-		Self->BugItStringCreator(_p0, _p1, _p2, _p3);
+		Self->UCheatManager::BugItStringCreator(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_BugItWorker(UCheatManager* Self, INT_PTR TheLocation, INT_PTR TheRotation)
 	{
 		auto _p0 = *(FVector*)TheLocation;
 		auto _p1 = *(FRotator*)TheRotation;
-		Self->BugItWorker(_p0, _p1);
+		Self->UCheatManager::BugItWorker(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ChangeSize(UCheatManager* Self, float F)
 	{
 		auto _p0 = F;
-		Self->ChangeSize(_p0);
+		Self->UCheatManager::ChangeSize(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_CheatScript(UCheatManager* Self, char* ScriptName)
@@ -133,51 +133,51 @@ extern "C"
 	DOTNET_EXPORT auto E_UCheatManager_DamageTarget(UCheatManager* Self, float DamageAmount)
 	{
 		auto _p0 = DamageAmount;
-		Self->DamageTarget(_p0);
+		Self->UCheatManager::DamageTarget(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweep(UCheatManager* Self)
 	{
-		Self->DebugCapsuleSweep();
+		Self->UCheatManager::DebugCapsuleSweep();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepCapture(UCheatManager* Self)
 	{
-		Self->DebugCapsuleSweepCapture();
+		Self->UCheatManager::DebugCapsuleSweepCapture();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepChannel(UCheatManager* Self, ECollisionChannel Channel)
 	{
 		auto _p0 = Channel;
-		Self->DebugCapsuleSweepChannel(_p0);
+		Self->UCheatManager::DebugCapsuleSweepChannel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepClear(UCheatManager* Self)
 	{
-		Self->DebugCapsuleSweepClear();
+		Self->UCheatManager::DebugCapsuleSweepClear();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepComplex(UCheatManager* Self, bool bTraceComplex)
 	{
 		auto _p0 = bTraceComplex;
-		Self->DebugCapsuleSweepComplex(_p0);
+		Self->UCheatManager::DebugCapsuleSweepComplex(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepPawn(UCheatManager* Self)
 	{
-		Self->DebugCapsuleSweepPawn();
+		Self->UCheatManager::DebugCapsuleSweepPawn();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DebugCapsuleSweepSize(UCheatManager* Self, float HalfHeight, float Radius)
 	{
 		auto _p0 = HalfHeight;
 		auto _p1 = Radius;
-		Self->DebugCapsuleSweepSize(_p0, _p1);
+		Self->UCheatManager::DebugCapsuleSweepSize(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DestroyAllPawnsExceptTarget(UCheatManager* Self)
 	{
-		Self->DestroyAllPawnsExceptTarget();
+		Self->UCheatManager::DestroyAllPawnsExceptTarget();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DestroyServerStatReplicator(UCheatManager* Self)
@@ -187,53 +187,53 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCheatManager_DestroyTarget(UCheatManager* Self)
 	{
-		Self->DestroyTarget();
+		Self->UCheatManager::DestroyTarget();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DisableDebugCamera(UCheatManager* Self)
 	{
-		((E_PROTECTED_WRAP_UCheatManager*)Self)->DisableDebugCamera_WRAP();
+		((E_PROTECTED_WRAP_UCheatManager*)Self)->UCheatManager::DisableDebugCamera_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DumpChatState(UCheatManager* Self)
 	{
-		Self->DumpChatState();
+		Self->UCheatManager::DumpChatState();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DumpOnlineSessionState(UCheatManager* Self)
 	{
-		Self->DumpOnlineSessionState();
+		Self->UCheatManager::DumpOnlineSessionState();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DumpPartyState(UCheatManager* Self)
 	{
-		Self->DumpPartyState();
+		Self->UCheatManager::DumpPartyState();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_DumpVoiceMutingState(UCheatManager* Self)
 	{
-		Self->DumpVoiceMutingState();
+		Self->UCheatManager::DumpVoiceMutingState();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_EnableDebugCamera(UCheatManager* Self)
 	{
-		((E_PROTECTED_WRAP_UCheatManager*)Self)->EnableDebugCamera_WRAP();
+		((E_PROTECTED_WRAP_UCheatManager*)Self)->UCheatManager::EnableDebugCamera_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_FlushLog(UCheatManager* Self)
 	{
-		Self->FlushLog();
+		Self->UCheatManager::FlushLog();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_Fly(UCheatManager* Self)
 	{
-		Self->Fly();
+		Self->UCheatManager::Fly();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_FreezeFrame(UCheatManager* Self, float Delay)
 	{
 		auto _p0 = Delay;
-		Self->FreezeFrame(_p0);
+		Self->UCheatManager::FreezeFrame(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_GetTarget(UCheatManager* Self, APlayerController* PlayerController, INT_PTR OutHit)
@@ -245,22 +245,22 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCheatManager_Ghost(UCheatManager* Self)
 	{
-		Self->Ghost();
+		Self->UCheatManager::Ghost();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_God(UCheatManager* Self)
 	{
-		Self->God();
+		Self->UCheatManager::God();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_InitCheatManager(UCheatManager* Self)
 	{
-		Self->InitCheatManager();
+		Self->UCheatManager::InitCheatManager();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_InvertMouse(UCheatManager* Self)
 	{
-		Self->InvertMouse();
+		Self->UCheatManager::InvertMouse();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_IsDebugCapsuleSweepPawnEnabled(UCheatManager* Self)
@@ -270,7 +270,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCheatManager_LogLoc(UCheatManager* Self)
 	{
-		Self->LogLoc();
+		Self->UCheatManager::LogLoc();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_LogOutBugItGoToLogFile(UCheatManager* Self, char* InScreenShotDesc, char* InScreenShotPath, char* InGoString, char* InLocString)
@@ -279,18 +279,18 @@ extern "C"
 		auto _p1 = ConvertFromManage_FString(InScreenShotPath);
 		auto _p2 = ConvertFromManage_FString(InGoString);
 		auto _p3 = ConvertFromManage_FString(InLocString);
-		Self->LogOutBugItGoToLogFile(_p0, _p1, _p2, _p3);
+		Self->UCheatManager::LogOutBugItGoToLogFile(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_OnlyLoadLevel(UCheatManager* Self, char* PackageName)
 	{
 		auto _p0 = ConvertFromManage_FName(PackageName);
-		Self->OnlyLoadLevel(_p0);
+		Self->UCheatManager::OnlyLoadLevel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_PlayersOnly(UCheatManager* Self)
 	{
-		Self->PlayersOnly();
+		Self->UCheatManager::PlayersOnly();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ReceiveEndPlay(UCheatManager* Self)
@@ -305,7 +305,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCheatManager_ServerToggleAILogging(UCheatManager* Self)
 	{
-		Self->ServerToggleAILogging();
+		Self->UCheatManager::ServerToggleAILogging();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_SetLevelStreamingStatus(UCheatManager* Self, char* PackageName, bool bShouldBeLoaded, bool bShouldBeVisible)
@@ -313,12 +313,12 @@ extern "C"
 		auto _p0 = ConvertFromManage_FName(PackageName);
 		auto _p1 = bShouldBeLoaded;
 		auto _p2 = bShouldBeVisible;
-		Self->SetLevelStreamingStatus(_p0, _p1, _p2);
+		Self->UCheatManager::SetLevelStreamingStatus(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_SetMouseSensitivityToDefault(UCheatManager* Self)
 	{
-		Self->SetMouseSensitivityToDefault();
+		Self->UCheatManager::SetMouseSensitivityToDefault();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_SetWorldOrigin(UCheatManager* Self)
@@ -329,7 +329,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UCheatManager_Slomo(UCheatManager* Self, float NewTimeDilation)
 	{
 		auto _p0 = NewTimeDilation;
-		Self->Slomo(_p0);
+		Self->UCheatManager::Slomo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_SpawnServerStatReplicator(UCheatManager* Self)
@@ -340,29 +340,29 @@ extern "C"
 	DOTNET_EXPORT auto E_UCheatManager_StreamLevelIn(UCheatManager* Self, char* PackageName)
 	{
 		auto _p0 = ConvertFromManage_FName(PackageName);
-		Self->StreamLevelIn(_p0);
+		Self->UCheatManager::StreamLevelIn(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_StreamLevelOut(UCheatManager* Self, char* PackageName)
 	{
 		auto _p0 = ConvertFromManage_FName(PackageName);
-		Self->StreamLevelOut(_p0);
+		Self->UCheatManager::StreamLevelOut(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_Summon(UCheatManager* Self, char* ClassName)
 	{
 		auto _p0 = ConvertFromManage_FString(ClassName);
-		Self->Summon(_p0);
+		Self->UCheatManager::Summon(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_Teleport(UCheatManager* Self)
 	{
-		Self->Teleport();
+		Self->UCheatManager::Teleport();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_TestCollisionDistance(UCheatManager* Self)
 	{
-		Self->TestCollisionDistance();
+		Self->UCheatManager::TestCollisionDistance();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_TickCollisionDebug(UCheatManager* Self)
@@ -372,12 +372,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UCheatManager_ToggleAILogging(UCheatManager* Self)
 	{
-		Self->ToggleAILogging();
+		Self->UCheatManager::ToggleAILogging();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ToggleDebugCamera(UCheatManager* Self)
 	{
-		Self->ToggleDebugCamera();
+		Self->UCheatManager::ToggleDebugCamera();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ToggleServerStatReplicatorClientOverwrite(UCheatManager* Self)
@@ -398,23 +398,23 @@ extern "C"
 	DOTNET_EXPORT auto E_UCheatManager_ViewActor(UCheatManager* Self, char* ActorName)
 	{
 		auto _p0 = ConvertFromManage_FName(ActorName);
-		Self->ViewActor(_p0);
+		Self->UCheatManager::ViewActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ViewPlayer(UCheatManager* Self, char* S)
 	{
 		auto _p0 = ConvertFromManage_FString(S);
-		Self->ViewPlayer(_p0);
+		Self->UCheatManager::ViewPlayer(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_ViewSelf(UCheatManager* Self)
 	{
-		Self->ViewSelf();
+		Self->UCheatManager::ViewSelf();
 	}
 
 	DOTNET_EXPORT auto E_UCheatManager_Walk(UCheatManager* Self)
 	{
-		Self->Walk();
+		Self->UCheatManager::Walk();
 	}
 
 }

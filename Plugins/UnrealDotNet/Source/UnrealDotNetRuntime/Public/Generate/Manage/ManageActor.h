@@ -22,7 +22,6 @@ class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
 	GENERATED_UCLASS_BODY()
 	
 	bool bIsManageAttach = false;
-	
 	bool AddWrapperIfNotAttach();
 	
 public:
@@ -34,6 +33,7 @@ public:
 	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
 	virtual void BecomeViewTarget(APlayerController* PC) override;
+	virtual void BeginPlay() override;
 	virtual void ClearCrossLevelReferences() override;
 	virtual void Destroyed() override;
 	virtual void DisableInput(APlayerController* PlayerController) override;
@@ -54,6 +54,7 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void OnRep_AttachmentReplication() override;
 	virtual void OnRep_Instigator() override;
+	virtual void OnRep_Owner() override;
 	virtual void OnRep_ReplicatedMovement() override;
 	virtual void OnRep_ReplicateMovement() override;
 	virtual void OnReplicationPausedChanged(bool bIsReplicationPaused) override;
@@ -73,6 +74,7 @@ public:
 	virtual void PreInitializeComponents() override;
 	virtual void PreRegisterAllComponents() override;
 	virtual void PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups) override;
+	virtual void RegisterActorTickFunctions(bool bRegister) override;
 	virtual void RegisterAllComponents() override;
 	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
 	virtual void RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
@@ -89,11 +91,23 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void TornOff() override;
 	virtual void UnregisterAllComponents(bool bForReregister) override;
-	
-protected:
-	virtual void BeginPlay() override;
-	virtual void OnRep_Owner() override;
-	virtual void RegisterActorTickFunctions(bool bRegister) override;
+	virtual void BeginDestroy() override;
+	virtual void FinishDestroy() override;
+	virtual void MarkAsEditorOnlySubobject() override;
+	virtual void OverridePerObjectConfigSection(FString& SectionName) override;
+	virtual void PostCDOContruct() override;
+	virtual void PostEditImport() override;
+	virtual void PostInitProperties() override;
+	virtual void PostLoad() override;
+	virtual void PostNetReceive() override;
+	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
+	virtual void PostRepNotifies() override;
+	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
+	virtual void PreDestroyFromReplication() override;
+	virtual void PreNetReceive() override;
+	virtual void ShutdownAfterError() override;
+	virtual void CreateCluster() override;
+	virtual void OnClusterMarkedAsPendingKill() override;
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

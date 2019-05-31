@@ -141,7 +141,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FAttachmentTransformRules(IntPtr Adress)
+		public static implicit operator FAttachmentTransformRules(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAttachmentTransformRules(Adress, false);
+			return adress == IntPtr.Zero ? null : new FAttachmentTransformRules(adress, false);
 		}}}

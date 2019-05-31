@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FAnimSlotDesc(IntPtr Adress)
+		public static implicit operator FAnimSlotDesc(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAnimSlotDesc(Adress, false);
+			return adress == IntPtr.Zero ? null : new FAnimSlotDesc(adress, false);
 		}}}

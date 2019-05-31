@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UBoxReflectionCaptureComponent : UReflectionCaptureComponent
 	{
-		public UBoxReflectionCaptureComponent(IntPtr Adress)
-			: base(Adress)
+		public UBoxReflectionCaptureComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

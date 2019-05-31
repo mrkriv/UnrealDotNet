@@ -586,4 +586,532 @@ void UManageCharacterMovementComponent::UpdateProxyAcceleration()
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateProxyAcceleration");
 }
 
+void UManageCharacterMovementComponent::AddInputVector(FVector WorldVector, bool bForce)
+{
+	Super::AddInputVector(WorldVector, bForce);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddInputVector", WorldVector, bForce);
+}
+
+void UManageCharacterMovementComponent::NotifyBumpedPawn(APawn* BumpedPawn)
+{
+	Super::NotifyBumpedPawn(BumpedPawn);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyBumpedPawn", BumpedPawn);
+}
+
+void UManageCharacterMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	Super::RequestDirectMove(MoveVelocity, bForceMaxSpeed);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RequestDirectMove", MoveVelocity, bForceMaxSpeed);
+}
+
+void UManageCharacterMovementComponent::RequestPathMove(const FVector& MoveInput)
+{
+	Super::RequestPathMove(MoveInput);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RequestPathMove", MoveInput);
+}
+
+void UManageCharacterMovementComponent::StopActiveMovement()
+{
+	Super::StopActiveMovement();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "StopActiveMovement");
+}
+
+void UManageCharacterMovementComponent::AddRadialForce(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+{
+	Super::AddRadialForce(Origin, Radius, Strength, Falloff);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff);
+}
+
+void UManageCharacterMovementComponent::AddRadialImpulse(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
+{
+	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
+}
+
+void UManageCharacterMovementComponent::HandleImpact(const FHitResult& Hit, float TimeSlice, const FVector& MoveDelta)
+{
+	Super::HandleImpact(Hit, TimeSlice, MoveDelta);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "HandleImpact", Hit, TimeSlice, MoveDelta);
+}
+
+void UManageCharacterMovementComponent::OnTeleported()
+{
+	Super::OnTeleported();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnTeleported");
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
+{
+	Super::SetPlaneConstraintAxisSetting(NewAxisSetting);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintAxisSetting", NewAxisSetting);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintEnabled(bool bEnabled)
+{
+	Super::SetPlaneConstraintEnabled(bEnabled);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintEnabled", bEnabled);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
+{
+	Super::SetPlaneConstraintFromVectors(Forward, Up);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintFromVectors", Forward, Up);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintNormal(FVector PlaneNormal)
+{
+	Super::SetPlaneConstraintNormal(PlaneNormal);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintNormal", PlaneNormal);
+}
+
+void UManageCharacterMovementComponent::SetPlaneConstraintOrigin(FVector PlaneOrigin)
+{
+	Super::SetPlaneConstraintOrigin(PlaneOrigin);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintOrigin", PlaneOrigin);
+}
+
+void UManageCharacterMovementComponent::SetUpdatedComponent(USceneComponent* NewUpdatedComponent)
+{
+	Super::SetUpdatedComponent(NewUpdatedComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetUpdatedComponent", NewUpdatedComponent);
+}
+
+void UManageCharacterMovementComponent::SnapUpdatedComponentToPlane()
+{
+	Super::SnapUpdatedComponentToPlane();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SnapUpdatedComponentToPlane");
+}
+
+void UManageCharacterMovementComponent::StopMovementImmediately()
+{
+	Super::StopMovementImmediately();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "StopMovementImmediately");
+}
+
+void UManageCharacterMovementComponent::UpdateComponentVelocity()
+{
+	Super::UpdateComponentVelocity();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateComponentVelocity");
+}
+
+void UManageCharacterMovementComponent::UpdateTickRegistration()
+{
+	Super::UpdateTickRegistration();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateTickRegistration");
+}
+
+void UManageCharacterMovementComponent::Activate(bool bReset)
+{
+	Super::Activate(bReset);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+}
+
+void UManageCharacterMovementComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::AddTickPrerequisiteActor(PrerequisiteActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageCharacterMovementComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManageCharacterMovementComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
+{
+	Super::ApplyWorldOffset(InOffset, bWorldShift);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+}
+
+void UManageCharacterMovementComponent::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+}
+
+void UManageCharacterMovementComponent::CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+}
+
+void UManageCharacterMovementComponent::Deactivate()
+{
+	Super::Deactivate();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+}
+
+void UManageCharacterMovementComponent::DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+}
+
+void UManageCharacterMovementComponent::DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+}
+
+void UManageCharacterMovementComponent::InitializeComponent()
+{
+	Super::InitializeComponent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+}
+
+void UManageCharacterMovementComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageCharacterMovementComponent::OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+}
+
+void UManageCharacterMovementComponent::OnComponentCreated()
+{
+	Super::OnComponentCreated();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+}
+
+void UManageCharacterMovementComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+}
+
+void UManageCharacterMovementComponent::OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+}
+
+void UManageCharacterMovementComponent::OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+}
+
+void UManageCharacterMovementComponent::OnRegister()
+{
+	Super::OnRegister();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+}
+
+void UManageCharacterMovementComponent::OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+}
+
+void UManageCharacterMovementComponent::OnUnregister()
+{
+	Super::OnUnregister();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+}
+
+void UManageCharacterMovementComponent::RegisterComponentTickFunctions(bool bRegister)
+{
+	Super::RegisterComponentTickFunctions(bRegister);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+}
+
+void UManageCharacterMovementComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+{
+	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
+}
+
+void UManageCharacterMovementComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
+{
+	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+}
+
+void UManageCharacterMovementComponent::SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+}
+
+void UManageCharacterMovementComponent::SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+}
+
+void UManageCharacterMovementComponent::SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+}
+
+void UManageCharacterMovementComponent::SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+}
+
+void UManageCharacterMovementComponent::SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+}
+
+void UManageCharacterMovementComponent::SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+}
+
+void UManageCharacterMovementComponent::ToggleActive()
+{
+	Super::ToggleActive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+}
+
+void UManageCharacterMovementComponent::UninitializeComponent()
+{
+	Super::UninitializeComponent();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+}
+
+void UManageCharacterMovementComponent::BeginDestroy()
+{
+	Super::BeginDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+}
+
+void UManageCharacterMovementComponent::FinishDestroy()
+{
+	Super::FinishDestroy();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+}
+
+void UManageCharacterMovementComponent::MarkAsEditorOnlySubobject()
+{
+	Super::MarkAsEditorOnlySubobject();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+}
+
+void UManageCharacterMovementComponent::OverridePerObjectConfigSection(FString& SectionName)
+{
+	Super::OverridePerObjectConfigSection(SectionName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+}
+
+void UManageCharacterMovementComponent::PostCDOContruct()
+{
+	Super::PostCDOContruct();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+}
+
+void UManageCharacterMovementComponent::PostEditImport()
+{
+	Super::PostEditImport();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+}
+
+void UManageCharacterMovementComponent::PostInitProperties()
+{
+	Super::PostInitProperties();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+}
+
+void UManageCharacterMovementComponent::PostLoad()
+{
+	Super::PostLoad();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+}
+
+void UManageCharacterMovementComponent::PostNetReceive()
+{
+	Super::PostNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+}
+
+void UManageCharacterMovementComponent::PostRename(UObject* OldOuter, const FName OldName)
+{
+	Super::PostRename(OldOuter, OldName);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+}
+
+void UManageCharacterMovementComponent::PostRepNotifies()
+{
+	Super::PostRepNotifies();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+}
+
+void UManageCharacterMovementComponent::PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+}
+
+void UManageCharacterMovementComponent::PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+}
+
+void UManageCharacterMovementComponent::PreNetReceive()
+{
+	Super::PreNetReceive();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+}
+
+void UManageCharacterMovementComponent::ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+}
+
+void UManageCharacterMovementComponent::CreateCluster()
+{
+	Super::CreateCluster();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+}
+
+void UManageCharacterMovementComponent::OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
+	
+	if(AddWrapperIfNotAttach())
+		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+}
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

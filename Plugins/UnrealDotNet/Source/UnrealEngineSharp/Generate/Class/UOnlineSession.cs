@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UOnlineSession : UObject
 	{
-		public UOnlineSession(IntPtr Adress)
-			: base(Adress)
+		public UOnlineSession(IntPtr adress)
+			: base(adress)
 		{
 		}
 

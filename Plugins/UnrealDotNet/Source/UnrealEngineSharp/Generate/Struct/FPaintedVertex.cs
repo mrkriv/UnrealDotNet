@@ -59,7 +59,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPaintedVertex(IntPtr Adress)
+		public static implicit operator FPaintedVertex(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPaintedVertex(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPaintedVertex(adress, false);
 		}}}

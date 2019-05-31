@@ -116,7 +116,7 @@ extern "C"
 		auto _p0 = Controller;
 		auto _p1 = ConvertFromManage_FString(NewName);
 		auto _p2 = bNameChange;
-		Self->ChangeName(_p0, _p1, _p2);
+		Self->AGameModeBase::ChangeName(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ChoosePlayerStart(AGameModeBase* Self, AController* Player)
@@ -141,7 +141,7 @@ extern "C"
 	{
 		auto _p0 = NewPlayer;
 		auto& _p1 = *(FRotator*)StartRotation;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->FinishRestartPlayer_WRAP(_p0, _p1);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::FinishRestartPlayer_WRAP(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ForceClearUnpauseDelegates(AGameModeBase* Self, AActor* PauseActor)
@@ -153,7 +153,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_GenericPlayerInitialization(AGameModeBase* Self, AController* C)
 	{
 		auto _p0 = C;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->GenericPlayerInitialization_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::GenericPlayerInitialization_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_GetNumPlayers(AGameModeBase* Self)
@@ -182,12 +182,12 @@ extern "C"
 		auto _p0 = ConvertFromManage_FString(MapName);
 		auto _p1 = ConvertFromManage_FString(Options);
 		auto _p2 = ConvertFromManage_FString(ErrorMessage);
-		Self->InitGame(_p0, _p1, _p2);
+		Self->AGameModeBase::InitGame(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitGameState(AGameModeBase* Self)
 	{
-		Self->InitGameState();
+		Self->AGameModeBase::InitGameState();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitializeHUDForPlayer(AGameModeBase* Self, APlayerController* NewPlayer)
@@ -199,7 +199,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_InitSeamlessTravelPlayer(AGameModeBase* Self, AController* NewController)
 	{
 		auto _p0 = NewController;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->InitSeamlessTravelPlayer_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::InitSeamlessTravelPlayer_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitStartSpot(AGameModeBase* Self, AActor* StartSpot, AController* NewPlayer)
@@ -262,7 +262,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_Logout(AGameModeBase* Self, AController* Exiting)
 	{
 		auto _p0 = Exiting;
-		Self->Logout(_p0);
+		Self->AGameModeBase::Logout(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_MustSpectate(AGameModeBase* Self, APlayerController* NewPlayerController)
@@ -280,61 +280,61 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_PostLogin(AGameModeBase* Self, APlayerController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->PostLogin(_p0);
+		Self->AGameModeBase::PostLogin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_PostSeamlessTravel(AGameModeBase* Self)
 	{
-		Self->PostSeamlessTravel();
+		Self->AGameModeBase::PostSeamlessTravel();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ProcessServerTravel(AGameModeBase* Self, char* URL, bool bAbsolute)
 	{
 		auto _p0 = ConvertFromManage_FString(URL);
 		auto _p1 = bAbsolute;
-		Self->ProcessServerTravel(_p0, _p1);
+		Self->AGameModeBase::ProcessServerTravel(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ReplicateStreamingStatus(AGameModeBase* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->ReplicateStreamingStatus_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::ReplicateStreamingStatus_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ResetLevel(AGameModeBase* Self)
 	{
-		Self->ResetLevel();
+		Self->AGameModeBase::ResetLevel();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayer(AGameModeBase* Self, AController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->RestartPlayer(_p0);
+		Self->AGameModeBase::RestartPlayer(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayerAtPlayerStart(AGameModeBase* Self, AController* NewPlayer, AActor* StartSpot)
 	{
 		auto _p0 = NewPlayer;
 		auto _p1 = StartSpot;
-		Self->RestartPlayerAtPlayerStart(_p0, _p1);
+		Self->AGameModeBase::RestartPlayerAtPlayerStart(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayerAtTransform(AGameModeBase* Self, AController* NewPlayer, INT_PTR SpawnTransform)
 	{
 		auto _p0 = NewPlayer;
 		auto& _p1 = *(FTransform*)SpawnTransform;
-		Self->RestartPlayerAtTransform(_p0, _p1);
+		Self->AGameModeBase::RestartPlayerAtTransform(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ReturnToMainMenuHost(AGameModeBase* Self)
 	{
-		Self->ReturnToMainMenuHost();
+		Self->AGameModeBase::ReturnToMainMenuHost();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_SetPlayerDefaults(AGameModeBase* Self, APawn* PlayerPawn)
 	{
 		auto _p0 = PlayerPawn;
-		Self->SetPlayerDefaults(_p0);
+		Self->AGameModeBase::SetPlayerDefaults(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ShouldReset(AGameModeBase* Self, AActor* ActorToReset)
@@ -405,25 +405,25 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameModeBase_StartPlay(AGameModeBase* Self)
 	{
-		Self->StartPlay();
+		Self->AGameModeBase::StartPlay();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_StartToLeaveMap(AGameModeBase* Self)
 	{
-		Self->StartToLeaveMap();
+		Self->AGameModeBase::StartToLeaveMap();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_SwapPlayerControllers(AGameModeBase* Self, APlayerController* OldPC, APlayerController* NewPC)
 	{
 		auto _p0 = OldPC;
 		auto _p1 = NewPC;
-		Self->SwapPlayerControllers(_p0, _p1);
+		Self->AGameModeBase::SwapPlayerControllers(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_UpdateGameplayMuteList(AGameModeBase* Self, APlayerController* aPlayer)
 	{
 		auto _p0 = aPlayer;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->UpdateGameplayMuteList_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::UpdateGameplayMuteList_WRAP(_p0);
 	}
 
 }

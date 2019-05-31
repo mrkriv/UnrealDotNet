@@ -34,7 +34,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLinearColor(IntPtr Adress)
+		public static implicit operator FLinearColor(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLinearColor(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLinearColor(adress, false);
 		}}}

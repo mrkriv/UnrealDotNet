@@ -76,7 +76,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_AddPostRenderedActor(AHUD* Self, AActor* A)
 	{
 		auto _p0 = A;
-		Self->AddPostRenderedActor(_p0);
+		Self->AHUD::AddPostRenderedActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_AnyCurrentHitBoxHits(AHUD* Self)
@@ -97,7 +97,7 @@ extern "C"
 	{
 		auto _p0 = *(FVector*)Viewpoint;
 		auto _p1 = *(FRotator*)ViewRotation;
-		Self->DrawActorOverlays(_p0, _p1);
+		Self->AHUD::DrawActorOverlays(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_DrawDebugTextList(AHUD* Self)
@@ -107,7 +107,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_DrawHUD(AHUD* Self)
 	{
-		Self->DrawHUD();
+		Self->AHUD::DrawHUD();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_DrawLine(AHUD* Self, float StartScreenX, float StartScreenY, float EndScreenX, float EndScreenY, INT_PTR LineColor, float LineThickness)
@@ -133,7 +133,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_DrawSafeZoneOverlay(AHUD* Self)
 	{
-		Self->DrawSafeZoneOverlay();
+		Self->AHUD::DrawSafeZoneOverlay();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_GetCurrentDebugTargetActor(AHUD* Self)
@@ -153,7 +153,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)
 	{
-		Self->HandleBugScreenShot();
+		Self->AHUD::HandleBugScreenShot();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_IsCanvasValid_WarnIfNot(AHUD* Self)
@@ -163,52 +163,52 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_NextDebugTarget(AHUD* Self)
 	{
-		Self->NextDebugTarget();
+		Self->AHUD::NextDebugTarget();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyBindPostProcessEffects(AHUD* Self)
 	{
-		Self->NotifyBindPostProcessEffects();
+		Self->AHUD::NotifyBindPostProcessEffects();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxBeginCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoxName);
-		Self->NotifyHitBoxBeginCursorOver(_p0);
+		Self->AHUD::NotifyHitBoxBeginCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxClick(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoxName);
-		Self->NotifyHitBoxClick(_p0);
+		Self->AHUD::NotifyHitBoxClick(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxEndCursorOver(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoxName);
-		Self->NotifyHitBoxEndCursorOver(_p0);
+		Self->AHUD::NotifyHitBoxEndCursorOver(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_NotifyHitBoxRelease(AHUD* Self, char* BoxName)
 	{
 		auto _p0 = ConvertFromManage_FName(BoxName);
-		Self->NotifyHitBoxRelease(_p0);
+		Self->AHUD::NotifyHitBoxRelease(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_OnLostFocusPause(AHUD* Self, bool bEnable)
 	{
 		auto _p0 = bEnable;
-		Self->OnLostFocusPause(_p0);
+		Self->AHUD::OnLostFocusPause(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_PostRender(AHUD* Self)
 	{
-		Self->PostRender();
+		Self->AHUD::PostRender();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_PreviousDebugTarget(AHUD* Self)
 	{
-		Self->PreviousDebugTarget();
+		Self->AHUD::PreviousDebugTarget();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_Project(AHUD* Self, INT_PTR Location)
@@ -263,7 +263,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_RemovePostRenderedActor(AHUD* Self, AActor* A)
 	{
 		auto _p0 = A;
-		Self->RemovePostRenderedActor(_p0);
+		Self->AHUD::RemovePostRenderedActor(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_SetCanvas(AHUD* Self, UCanvas* InCanvas, UCanvas* InDebugCanvas)
@@ -282,14 +282,14 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_ShowDebug(AHUD* Self, char* DebugType)
 	{
 		auto _p0 = ConvertFromManage_FName(DebugType);
-		Self->ShowDebug(_p0);
+		Self->AHUD::ShowDebug(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ShowDebugInfo(AHUD* Self, float YL, float YPos)
 	{
 		auto& _p0 = YL;
 		auto& _p1 = YPos;
-		Self->ShowDebugInfo(_p0, _p1);
+		Self->AHUD::ShowDebugInfo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_ShowDebugToggleSubCategory(AHUD* Self, char* Category)
@@ -300,7 +300,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AHUD_ShowHUD(AHUD* Self)
 	{
-		Self->ShowHUD();
+		Self->AHUD::ShowHUD();
 	}
 
 	DOTNET_EXPORT auto E_AHUD_UpdateAndDispatchHitBoxClickEvents(AHUD* Self, INT_PTR ClickLocation, EInputEvent InEventType)

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UCharacterMovementComponent : UPawnMovementComponent
 	{
-		public UCharacterMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public UCharacterMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -89,7 +89,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FAudioComponentParam(IntPtr Adress)
+		public static implicit operator FAudioComponentParam(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAudioComponentParam(Adress, false);
+			return adress == IntPtr.Zero ? null : new FAudioComponentParam(adress, false);
 		}}}

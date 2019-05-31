@@ -15,25 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageWorldSettings")]
 	public partial class ManageWorldSettings : AWorldSettings
 	{
-		public ManageWorldSettings(IntPtr Adress)
-			: base(Adress)
+		public ManageWorldSettings(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Called from GameStateBase, calls BeginPlay on all actors
-		/// </summary>
-		public override void NotifyBeginPlay() { }
-		
-		
-		/// <summary>
-		/// Called from GameStateBase, used to notify native classes of match startup (such as level scripting)
-		/// </summary>
-		public override void NotifyMatchStarted() { }
-		
-		public override void OnRep_WorldGravityZ() { }
-		
 		public static implicit operator IntPtr(ManageWorldSettings self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

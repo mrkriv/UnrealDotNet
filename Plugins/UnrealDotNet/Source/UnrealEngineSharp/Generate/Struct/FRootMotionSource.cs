@@ -334,7 +334,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRootMotionSource(IntPtr Adress)
+		public static implicit operator FRootMotionSource(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRootMotionSource(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRootMotionSource(adress, false);
 		}}}

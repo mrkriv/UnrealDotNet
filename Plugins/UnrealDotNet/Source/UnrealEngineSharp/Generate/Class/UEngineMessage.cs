@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UEngineMessage : ULocalMessage
 	{
-		public UEngineMessage(IntPtr Adress)
-			: base(Adress)
+		public UEngineMessage(IntPtr adress)
+			: base(adress)
 		{
 		}
 

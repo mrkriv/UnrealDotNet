@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UBoxComponent : UShapeComponent
 	{
-		public UBoxComponent(IntPtr Adress)
-			: base(Adress)
+		public UBoxComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

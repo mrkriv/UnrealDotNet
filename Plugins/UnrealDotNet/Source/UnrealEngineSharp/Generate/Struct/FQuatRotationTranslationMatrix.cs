@@ -53,7 +53,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FQuatRotationTranslationMatrix(IntPtr Adress)
+		public static implicit operator FQuatRotationTranslationMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FQuatRotationTranslationMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FQuatRotationTranslationMatrix(adress, false);
 		}}}

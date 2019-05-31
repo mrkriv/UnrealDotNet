@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public sealed partial class UWorld : UObject
 	{
-		public UWorld(IntPtr Adress)
-			: base(Adress)
+		public UWorld(IntPtr adress)
+			: base(adress)
 		{
 		}
 

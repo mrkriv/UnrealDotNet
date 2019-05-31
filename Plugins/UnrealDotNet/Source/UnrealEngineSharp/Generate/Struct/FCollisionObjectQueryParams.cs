@@ -115,7 +115,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FCollisionObjectQueryParams(IntPtr Adress)
+		public static implicit operator FCollisionObjectQueryParams(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FCollisionObjectQueryParams(Adress, false);
+			return adress == IntPtr.Zero ? null : new FCollisionObjectQueryParams(adress, false);
 		}}}

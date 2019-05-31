@@ -85,7 +85,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FCanvasIcon(IntPtr Adress)
+		public static implicit operator FCanvasIcon(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FCanvasIcon(Adress, false);
+			return adress == IntPtr.Zero ? null : new FCanvasIcon(adress, false);
 		}}}

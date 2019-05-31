@@ -152,7 +152,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FRotationMatrix(IntPtr Adress)
+		public static implicit operator FRotationMatrix(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FRotationMatrix(Adress, false);
+			return adress == IntPtr.Zero ? null : new FRotationMatrix(adress, false);
 		}}}

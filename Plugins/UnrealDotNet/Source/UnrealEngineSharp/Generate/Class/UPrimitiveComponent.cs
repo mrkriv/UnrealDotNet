@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UPrimitiveComponent : USceneComponent
 	{
-		public UPrimitiveComponent(IntPtr Adress)
-			: base(Adress)
+		public UPrimitiveComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

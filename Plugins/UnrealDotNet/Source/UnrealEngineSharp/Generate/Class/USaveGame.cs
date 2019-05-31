@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USaveGame : UObject
 	{
-		public USaveGame(IntPtr Adress)
-			: base(Adress)
+		public USaveGame(IntPtr adress)
+			: base(adress)
 		{
 		}
 

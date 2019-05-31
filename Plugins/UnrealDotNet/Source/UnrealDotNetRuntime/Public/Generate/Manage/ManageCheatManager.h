@@ -22,7 +22,6 @@ class UNREALDOTNETRUNTIME_API UManageCheatManager : public UCheatManager, public
 	GENERATED_BODY()
 	
 	bool bIsManageAttach = false;
-	
 	bool AddWrapperIfNotAttach();
 	
 public:
@@ -46,10 +45,12 @@ public:
 	virtual void DebugCapsuleSweepSize(float HalfHeight, float Radius) override;
 	virtual void DestroyAllPawnsExceptTarget() override;
 	virtual void DestroyTarget() override;
+	virtual void DisableDebugCamera() override;
 	virtual void DumpChatState() override;
 	virtual void DumpOnlineSessionState() override;
 	virtual void DumpPartyState() override;
 	virtual void DumpVoiceMutingState() override;
+	virtual void EnableDebugCamera() override;
 	virtual void FlushLog() override;
 	virtual void Fly() override;
 	virtual void FreezeFrame(float Delay) override;
@@ -76,10 +77,23 @@ public:
 	virtual void ViewPlayer(const FString& S) override;
 	virtual void ViewSelf() override;
 	virtual void Walk() override;
-	
-protected:
-	virtual void DisableDebugCamera() override;
-	virtual void EnableDebugCamera() override;
+	virtual void BeginDestroy() override;
+	virtual void FinishDestroy() override;
+	virtual void MarkAsEditorOnlySubobject() override;
+	virtual void OverridePerObjectConfigSection(FString& SectionName) override;
+	virtual void PostCDOContruct() override;
+	virtual void PostEditImport() override;
+	virtual void PostInitProperties() override;
+	virtual void PostLoad() override;
+	virtual void PostNetReceive() override;
+	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
+	virtual void PostRepNotifies() override;
+	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
+	virtual void PreDestroyFromReplication() override;
+	virtual void PreNetReceive() override;
+	virtual void ShutdownAfterError() override;
+	virtual void CreateCluster() override;
+	virtual void OnClusterMarkedAsPendingKill() override;
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

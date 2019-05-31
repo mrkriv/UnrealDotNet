@@ -15,17 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageFloatingPawnMovement")]
 	public partial class ManageFloatingPawnMovement : UFloatingPawnMovement
 	{
-		public ManageFloatingPawnMovement(IntPtr Adress)
-			: base(Adress)
+		public ManageFloatingPawnMovement(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		
-		/// <summary>
-		/// Update Velocity based on input. Also applies gravity.
-		/// </summary>
-		protected override void ApplyControlInputToVelocity(float deltaTime) { }
-		
 		public static implicit operator IntPtr(ManageFloatingPawnMovement self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

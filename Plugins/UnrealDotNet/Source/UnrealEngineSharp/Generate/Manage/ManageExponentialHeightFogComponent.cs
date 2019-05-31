@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageExponentialHeightFogComponent")]
 	public partial class ManageExponentialHeightFogComponent : UExponentialHeightFogComponent
 	{
-		public ManageExponentialHeightFogComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageExponentialHeightFogComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

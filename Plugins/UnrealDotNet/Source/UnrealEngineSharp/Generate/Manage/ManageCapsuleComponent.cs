@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageCapsuleComponent")]
 	public partial class ManageCapsuleComponent : UCapsuleComponent
 	{
-		public ManageCapsuleComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageCapsuleComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

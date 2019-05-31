@@ -15,8 +15,8 @@ namespace UnrealEngine
 	[ManageType("ManageForceFeedbackAttenuation")]
 	public partial class ManageForceFeedbackAttenuation : UForceFeedbackAttenuation
 	{
-		public ManageForceFeedbackAttenuation(IntPtr Adress)
-			: base(Adress)
+		public ManageForceFeedbackAttenuation(IntPtr adress)
+			: base(adress)
 		{
 		}
 

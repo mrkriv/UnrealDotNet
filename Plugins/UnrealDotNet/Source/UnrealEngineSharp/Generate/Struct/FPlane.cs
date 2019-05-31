@@ -220,7 +220,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FPlane(IntPtr Adress)
+		public static implicit operator FPlane(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FPlane(Adress, false);
+			return adress == IntPtr.Zero ? null : new FPlane(adress, false);
 		}}}

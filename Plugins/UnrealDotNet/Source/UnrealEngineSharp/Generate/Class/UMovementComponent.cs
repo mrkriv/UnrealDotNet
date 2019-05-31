@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UMovementComponent : UActorComponent
 	{
-		public UMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public UMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

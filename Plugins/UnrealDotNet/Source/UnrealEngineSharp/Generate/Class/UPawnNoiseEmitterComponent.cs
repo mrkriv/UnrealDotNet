@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UPawnNoiseEmitterComponent : UActorComponent
 	{
-		public UPawnNoiseEmitterComponent(IntPtr Adress)
-			: base(Adress)
+		public UPawnNoiseEmitterComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

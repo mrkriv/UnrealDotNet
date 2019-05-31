@@ -107,7 +107,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FAnimationEvaluationContext(IntPtr Adress)
+		public static implicit operator FAnimationEvaluationContext(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FAnimationEvaluationContext(Adress, false);
+			return adress == IntPtr.Zero ? null : new FAnimationEvaluationContext(adress, false);
 		}}}

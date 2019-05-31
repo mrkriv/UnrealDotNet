@@ -67,7 +67,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLightmassDebugOptions(IntPtr Adress)
+		public static implicit operator FLightmassDebugOptions(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLightmassDebugOptions(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLightmassDebugOptions(adress, false);
 		}}}

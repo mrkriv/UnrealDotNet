@@ -83,7 +83,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FLensSettings(IntPtr Adress)
+		public static implicit operator FLensSettings(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FLensSettings(Adress, false);
+			return adress == IntPtr.Zero ? null : new FLensSettings(adress, false);
 		}}}

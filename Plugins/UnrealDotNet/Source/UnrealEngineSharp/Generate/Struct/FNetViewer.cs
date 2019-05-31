@@ -81,7 +81,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FNetViewer(IntPtr Adress)
+		public static implicit operator FNetViewer(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FNetViewer(Adress, false);
+			return adress == IntPtr.Zero ? null : new FNetViewer(adress, false);
 		}}}

@@ -15,15 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageLineBatchComponent")]
 	public partial class ManageLineBatchComponent : ULineBatchComponent
 	{
-		public ManageLineBatchComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageLineBatchComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		public override void DrawLine(FVector start, FVector end, FLinearColor color, byte depthPriority, float thickness, float lifeTime) { }
-		
-		public override void DrawPoint(FVector position, FLinearColor color, float pointSize, byte depthPriority, float lifeTime) { }
-		
 		public static implicit operator IntPtr(ManageLineBatchComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

@@ -135,7 +135,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameNetworkManager_EnableStandbyCheatDetection(AGameNetworkManager* Self, bool bIsEnabled)
 	{
 		auto _p0 = bIsEnabled;
-		Self->EnableStandbyCheatDetection(_p0);
+		Self->AGameNetworkManager::EnableStandbyCheatDetection(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_ExceedsAllowablePositionError(AGameNetworkManager* Self, INT_PTR LocDiff)
@@ -158,18 +158,18 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameNetworkManager_StandbyCheatDetected(AGameNetworkManager* Self, EStandbyType StandbyType)
 	{
 		auto _p0 = StandbyType;
-		Self->StandbyCheatDetected(_p0);
+		Self->AGameNetworkManager::StandbyCheatDetected(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_UpdateNetSpeeds(AGameNetworkManager* Self, bool bIsLanMatch)
 	{
 		auto _p0 = bIsLanMatch;
-		Self->UpdateNetSpeeds(_p0);
+		Self->AGameNetworkManager::UpdateNetSpeeds(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_UpdateNetSpeedsTimer(AGameNetworkManager* Self)
 	{
-		Self->UpdateNetSpeedsTimer();
+		Self->AGameNetworkManager::UpdateNetSpeedsTimer();
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_WithinUpdateDelayBounds(AGameNetworkManager* Self, APlayerController* PC, float LastUpdateTime)

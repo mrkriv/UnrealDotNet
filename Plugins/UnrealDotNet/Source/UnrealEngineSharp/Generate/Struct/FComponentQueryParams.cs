@@ -57,7 +57,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FComponentQueryParams(IntPtr Adress)
+		public static implicit operator FComponentQueryParams(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FComponentQueryParams(Adress, false);
+			return adress == IntPtr.Zero ? null : new FComponentQueryParams(adress, false);
 		}}}

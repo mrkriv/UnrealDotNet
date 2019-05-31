@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class AGameNetworkManager : AInfo
 	{
-		public AGameNetworkManager(IntPtr Adress)
-			: base(Adress)
+		public AGameNetworkManager(IntPtr adress)
+			: base(adress)
 		{
 		}
 

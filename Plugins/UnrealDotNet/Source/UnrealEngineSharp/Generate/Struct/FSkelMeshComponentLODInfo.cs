@@ -61,7 +61,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSkelMeshComponentLODInfo(IntPtr Adress)
+		public static implicit operator FSkelMeshComponentLODInfo(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSkelMeshComponentLODInfo(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSkelMeshComponentLODInfo(adress, false);
 		}}}

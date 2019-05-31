@@ -103,7 +103,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FClusterNode_DEPRECATED(IntPtr Adress)
+		public static implicit operator FClusterNode_DEPRECATED(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FClusterNode_DEPRECATED(Adress, false);
+			return adress == IntPtr.Zero ? null : new FClusterNode_DEPRECATED(adress, false);
 		}}}

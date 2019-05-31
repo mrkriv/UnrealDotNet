@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class USpectatorPawnMovement : UFloatingPawnMovement
 	{
-		public USpectatorPawnMovement(IntPtr Adress)
-			: base(Adress)
+		public USpectatorPawnMovement(IntPtr adress)
+			: base(adress)
 		{
 		}
 

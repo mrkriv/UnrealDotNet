@@ -15,15 +15,11 @@ namespace UnrealEngine
 	[ManageType("ManageInterpToMovementComponent")]
 	public partial class ManageInterpToMovementComponent : UInterpToMovementComponent
 	{
-		public ManageInterpToMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public ManageInterpToMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 
-		public override void AddControlPointPosition(FVector pos, bool bPositionIsRelative) { }
-		
-		protected override void UpdateControlPoints(bool inForceUpdate) { }
-		
 		public static implicit operator IntPtr(ManageInterpToMovementComponent self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UDrawSphereComponent : USphereComponent
 	{
-		public UDrawSphereComponent(IntPtr Adress)
-			: base(Adress)
+		public UDrawSphereComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

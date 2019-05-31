@@ -52,7 +52,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FActiveMorphTarget(IntPtr Adress)
+		public static implicit operator FActiveMorphTarget(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FActiveMorphTarget(Adress, false);
+			return adress == IntPtr.Zero ? null : new FActiveMorphTarget(adress, false);
 		}}}

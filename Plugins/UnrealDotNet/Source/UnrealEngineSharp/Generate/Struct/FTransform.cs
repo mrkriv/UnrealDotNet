@@ -800,7 +800,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FTransform(IntPtr Adress)
+		public static implicit operator FTransform(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FTransform(Adress, false);
+			return adress == IntPtr.Zero ? null : new FTransform(adress, false);
 		}}}

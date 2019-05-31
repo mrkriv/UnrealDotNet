@@ -33,7 +33,7 @@ extern "C"
 		auto _p3 = DepthPriority;
 		auto _p4 = Thickness;
 		auto _p5 = LifeTime;
-		Self->DrawLine(_p0, _p1, _p2, _p3, _p4, _p5);
+		Self->ULineBatchComponent::DrawLine(_p0, _p1, _p2, _p3, _p4, _p5);
 	}
 
 	DOTNET_EXPORT auto E_ULineBatchComponent_DrawPoint(ULineBatchComponent* Self, INT_PTR Position, INT_PTR Color, float PointSize, uint8 DepthPriority, float LifeTime)
@@ -43,7 +43,7 @@ extern "C"
 		auto _p2 = PointSize;
 		auto _p3 = DepthPriority;
 		auto _p4 = LifeTime;
-		Self->DrawPoint(_p0, _p1, _p2, _p3, _p4);
+		Self->ULineBatchComponent::DrawPoint(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT auto E_ULineBatchComponent_Flush(ULineBatchComponent* Self)

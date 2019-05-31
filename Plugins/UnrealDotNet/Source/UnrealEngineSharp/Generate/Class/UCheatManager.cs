@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UCheatManager : UObject
 	{
-		public UCheatManager(IntPtr Adress)
-			: base(Adress)
+		public UCheatManager(IntPtr adress)
+			: base(adress)
 		{
 		}
 

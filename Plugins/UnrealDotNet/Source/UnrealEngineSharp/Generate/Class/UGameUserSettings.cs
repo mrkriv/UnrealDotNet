@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UGameUserSettings : UObject
 	{
-		public UGameUserSettings(IntPtr Adress)
-			: base(Adress)
+		public UGameUserSettings(IntPtr adress)
+			: base(adress)
 		{
 		}
 

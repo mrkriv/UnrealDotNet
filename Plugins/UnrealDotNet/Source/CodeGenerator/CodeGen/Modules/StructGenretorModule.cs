@@ -352,9 +352,9 @@ namespace CodeGenerator.CodeGen.Modules
             cw.CloseBlock();
             cw.WriteLine();
 
-            cw.WriteLine($"public static implicit operator {Class.Name}(IntPtr Adress)");
+            cw.WriteLine($"public static implicit operator {Class.Name}(IntPtr adress)");
             cw.OpenBlock();
-            cw.WriteLine($"return Adress == IntPtr.Zero ? null : new {Class.Name}(Adress, false);");
+            cw.WriteLine($"return adress == IntPtr.Zero ? null : new {Class.Name}(adress, false);");
             cw.CloseBlock();
 
             cw.CloseBlock();

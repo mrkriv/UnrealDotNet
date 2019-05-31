@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class URotatingMovementComponent : UMovementComponent
 	{
-		public URotatingMovementComponent(IntPtr Adress)
-			: base(Adress)
+		public URotatingMovementComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

@@ -119,7 +119,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FSplinePoint(IntPtr Adress)
+		public static implicit operator FSplinePoint(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FSplinePoint(Adress, false);
+			return adress == IntPtr.Zero ? null : new FSplinePoint(adress, false);
 		}}}

@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class UDecalComponent : USceneComponent
 	{
-		public UDecalComponent(IntPtr Adress)
-			: base(Adress)
+		public UDecalComponent(IntPtr adress)
+			: base(adress)
 		{
 		}
 

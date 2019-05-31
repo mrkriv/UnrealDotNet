@@ -244,7 +244,7 @@ namespace UnrealEngine
 			return self?.NativePointer ?? IntPtr.Zero;
 		}
 
-		public static implicit operator FHitResult(IntPtr Adress)
+		public static implicit operator FHitResult(IntPtr adress)
 		{
-			return Adress == IntPtr.Zero ? null : new FHitResult(Adress, false);
+			return adress == IntPtr.Zero ? null : new FHitResult(adress, false);
 		}}}

@@ -29,8 +29,6 @@ namespace GameLogic
 
         protected override void BeginPlay()
         {
-            base.BeginPlay();
-            
             Health = HealthMax;
             Energy = EnergyMax;
             SatietyFood = 1;
@@ -40,10 +38,6 @@ namespace GameLogic
 
         public override void Tick(float dt)
         {
-            base.Tick(dt);
-            
-            Ue.Log(GetController()?.GetType()?.FullName);
-
             if (IsDeath)
                 return;
 

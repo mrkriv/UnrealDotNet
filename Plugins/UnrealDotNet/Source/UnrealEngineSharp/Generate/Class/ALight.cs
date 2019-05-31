@@ -14,8 +14,8 @@ namespace UnrealEngine
 {
 	public  partial class ALight : AActor
 	{
-		public ALight(IntPtr Adress)
-			: base(Adress)
+		public ALight(IntPtr adress)
+			: base(adress)
 		{
 		}
 
