@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRendererStencilMaskEvaluation : NativeStructWrapper
+	public partial class FRendererStencilMaskEvaluation : NativeStructWrapper
 	{
-		internal FRendererStencilMaskEvaluation(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRendererStencilMaskEvaluation(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

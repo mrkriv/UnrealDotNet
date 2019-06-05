@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FMTDResult : NativeStructWrapper
+	public partial class FMTDResult : NativeStructWrapper
 	{
-		internal FMTDResult(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FMTDResult(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

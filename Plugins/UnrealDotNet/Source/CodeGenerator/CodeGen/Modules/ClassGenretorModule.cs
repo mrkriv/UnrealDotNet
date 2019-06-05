@@ -47,6 +47,10 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
             cw.WriteLine("#include \"CoreMinimal.h\"");
             cw.WriteLine("#include \"ManageEventSender.h\"");
+
+            if (Cfg.Filter.CanGenerateManageType(Class))
+                cw.WriteLine($"#include \"Generate/Manage/Manage{Class.BaseName}.h\"");
+            
             cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
             cw.WriteLine();
 
@@ -69,18 +73,45 @@ namespace CodeGenerator.CodeGen.Modules
             foreach (var method in Class.Methods)
                 GenerateMethod(cw, method);
 
+//            if (Cfg.Filter.CanGenerateManageType(Class))
+//            {
+//                foreach (var method in Class.Methods.Where(x => Cfg.Filter.CanGenerateManageOverride(x)))
+//                {
+//                    //todo::
+//                }
+//            }
+
             if (Cfg.Filter.CanGenerateManageType(Class))
             {
-                foreach (var method in Class.Methods.Where(x => Cfg.Filter.CanGenerateManageOverride(x)))
-                {
-                    //todo::
-                }
+                GenerateSuperCalls(cw, Class);
             }
 
             cw.CloseBlock();
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
             cw.SaveToFile(Path.Combine(PathOutputH, Class.Name + ".h"));
+        }
+
+        private void GenerateSuperCalls(CodeWriter cw, Class Class)
+        {
+            var types = new List<Class>();
+            var classCursor = Class;
+
+            while (classCursor != null)
+            {
+                types.Add(classCursor);
+                classCursor = classCursor.BaseClass;
+            }
+
+            var virtualMethods = types.SelectMany(x => x.Methods)
+                .Where(m => Cfg.Filter.CanGenerateManageOverride(m))
+                .GroupBy(x => x.Name)
+                .Where(x => x.All(m => !m.IsFinal))
+                .Select(x => x.First())
+                .ToList();
+
+            foreach (var method in virtualMethods)
+                GenerateSuperCall(cw, Class, method);
         }
 
         private void GeneratePropertyH(CodeWriter cw, Class Class, Variable prop)
@@ -196,6 +227,32 @@ namespace CodeGenerator.CodeGen.Modules
                 : $"(({Cfg.ExportProtectedPrefix}{method.OwnerClass.Name}*)Self)->{method.Name}{Cfg.ExportProtectedPostfix}({call})";
 
             cw.WriteLine(GenerateReturn(method.ReturnType, ret, false));
+
+            cw.CloseBlock();
+            cw.WriteLine();
+        }
+
+        private void GenerateSuperCall(CodeWriter cw, Class Class, Method method)
+        {
+            var param = GetMethodSignatuteParam(method);
+            var call = string.Join(", ", Enumerable.Range(0, method.InputTypes.Count).Select(i => "_p" + i));
+
+            var overloadPostfix = method.OverloadIndex > 0 ? $"_o{method.OverloadIndex}" : "";
+            var methodName = $"{Cfg.ExportPrefix}_Supper__{Class.Name}_{method.Name}{overloadPostfix}";
+            
+            cw.WriteLine($"{Cfg.CppApi} auto {methodName}({param})");
+            cw.OpenBlock();
+
+            for (var i = 0; i < method.InputTypes.Count; i++)
+            {
+                var m = method.InputTypes[i];
+                var reference = m.IsReference && !Cfg.Filter.IsUseConvertFromManageType(m.Type) ? "&" : "";
+
+                cw.WriteLine($"auto{reference} _p{i} = {GenerateGet(m)};");
+            }
+
+            var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
+            cw.WriteLine($"(({cppClassName}*)Self)->_Supper__{method.Name}({call});");
 
             cw.CloseBlock();
             cw.WriteLine();
@@ -343,7 +400,7 @@ namespace CodeGenerator.CodeGen.Modules
                 ? Class.BaseClass.Name
                 : (Class.IsStructure ? "NativeStructWrapper" : "NativeWrapper");
 
-            cw.WriteLine($"public {(Class.IsFinal ? "sealed" : "")} partial class {Class.Name} : {baseClass}");
+            cw.WriteLine($"public{(Class.IsFinal ? " sealed" : "")} partial class {Class.Name} : {baseClass}");
             cw.OpenBlock();
 
             cw.WriteLine($"public {Class.Name}(IntPtr adress)");
@@ -375,8 +432,8 @@ namespace CodeGenerator.CodeGen.Modules
 
             foreach (var method in Class.Methods)
             {
-                GenerateMethodDllImport(cwDllImport, Class, method);
-                GenerateMethodBody(cwExternMethods, Class, method);
+                GenerateMethodDllImport(cwDllImport, method);
+                GenerateMethodBody(cwExternMethods, method);
             }
 
             if (!cwDllImport.IsEmpty())
@@ -428,7 +485,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.SaveToFile(Path.Combine(PathOutputCs, Class.Name + ".cs"));
         }
 
-        private void GenerateMethodDllImport(CodeWriter cw, Class Class, Method method)
+        private void GenerateMethodDllImport(CodeWriter cw, Method method)
         {
             var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
             inputs.Insert(0, "IntPtr self");
@@ -441,7 +498,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
         }
 
-        private void GenerateMethodBody(CodeWriter cw, Class Class, Method method)
+        private void GenerateMethodBody(CodeWriter cw, Method method)
         {
             var inputs = method.InputTypes.Select(VarNameForCall).ToList();
 

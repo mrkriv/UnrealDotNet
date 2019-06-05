@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FClosestPointOnPhysicsAsset : NativeStructWrapper
+	public partial class FClosestPointOnPhysicsAsset : NativeStructWrapper
 	{
-		internal FClosestPointOnPhysicsAsset(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FClosestPointOnPhysicsAsset(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

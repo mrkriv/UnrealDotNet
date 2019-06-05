@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSubtitleCue : NativeStructWrapper
+	public partial class FSubtitleCue : NativeStructWrapper
 	{
-		internal FSubtitleCue(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSubtitleCue(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FBatchedMesh : NativeStructWrapper
+	public partial class FBatchedMesh : NativeStructWrapper
 	{
-		internal FBatchedMesh(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FBatchedMesh(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

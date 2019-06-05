@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FAttachmentTransformRules : NativeStructWrapper
+	public partial class FAttachmentTransformRules : NativeStructWrapper
 	{
-		internal FAttachmentTransformRules(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FAttachmentTransformRules(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

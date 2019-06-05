@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FLevelViewportInfo : NativeStructWrapper
+	public partial class FLevelViewportInfo : NativeStructWrapper
 	{
-		internal FLevelViewportInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FLevelViewportInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

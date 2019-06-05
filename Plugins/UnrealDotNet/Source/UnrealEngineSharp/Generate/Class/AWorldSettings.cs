@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AWorldSettings : AInfo
+	public partial class AWorldSettings : AInfo
 	{
 		public AWorldSettings(IntPtr adress)
 			: base(adress)

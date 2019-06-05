@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRootMotionSource_ConstantForce : FRootMotionSource
+	public partial class FRootMotionSource_ConstantForce : FRootMotionSource
 	{
-		internal FRootMotionSource_ConstantForce(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRootMotionSource_ConstantForce(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

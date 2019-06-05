@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UHierarchicalLODSetup : UObject
+	public partial class UHierarchicalLODSetup : UObject
 	{
 		public UHierarchicalLODSetup(IntPtr adress)
 			: base(adress)

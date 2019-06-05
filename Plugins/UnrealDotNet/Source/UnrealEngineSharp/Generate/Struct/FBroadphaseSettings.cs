@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FBroadphaseSettings : NativeStructWrapper
+	public partial class FBroadphaseSettings : NativeStructWrapper
 	{
-		internal FBroadphaseSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FBroadphaseSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

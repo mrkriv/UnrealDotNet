@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class APawn : AActor
+	public partial class APawn : AActor
 	{
 		public APawn(IntPtr adress)
 			: base(adress)

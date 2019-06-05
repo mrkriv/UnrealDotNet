@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FLinearColor : NativeStructWrapper
+	public partial class FLinearColor : NativeStructWrapper
 	{
-		internal FLinearColor(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FLinearColor(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

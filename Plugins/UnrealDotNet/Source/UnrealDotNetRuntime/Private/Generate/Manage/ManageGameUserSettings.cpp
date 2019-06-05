@@ -28,242 +28,366 @@ bool UManageGameUserSettings::AddWrapperIfNotAttach()
 
 void UManageGameUserSettings::ApplyHardwareBenchmarkResults()
 {
-	Super::ApplyHardwareBenchmarkResults();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyHardwareBenchmarkResults");
+	else
+		Super::ApplyHardwareBenchmarkResults();
+}
+
+void UManageGameUserSettings::_Supper__ApplyHardwareBenchmarkResults()
+{
+	Super::ApplyHardwareBenchmarkResults();
 }
 
 void UManageGameUserSettings::ApplyNonResolutionSettings()
 {
-	Super::ApplyNonResolutionSettings();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyNonResolutionSettings");
+	else
+		Super::ApplyNonResolutionSettings();
+}
+
+void UManageGameUserSettings::_Supper__ApplyNonResolutionSettings()
+{
+	Super::ApplyNonResolutionSettings();
 }
 
 void UManageGameUserSettings::ApplySettings(bool bCheckForCommandLineOverrides)
 {
-	Super::ApplySettings(bCheckForCommandLineOverrides);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ApplySettings", bCheckForCommandLineOverrides);
+	else
+		Super::ApplySettings(bCheckForCommandLineOverrides);
+}
+
+void UManageGameUserSettings::_Supper__ApplySettings(bool bCheckForCommandLineOverrides)
+{
+	Super::ApplySettings(bCheckForCommandLineOverrides);
 }
 
 void UManageGameUserSettings::ConfirmVideoMode()
 {
-	Super::ConfirmVideoMode();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ConfirmVideoMode");
+	else
+		Super::ConfirmVideoMode();
+}
+
+void UManageGameUserSettings::_Supper__ConfirmVideoMode()
+{
+	Super::ConfirmVideoMode();
 }
 
 void UManageGameUserSettings::LoadSettings(bool bForceReload)
 {
-	Super::LoadSettings(bForceReload);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LoadSettings", bForceReload);
+	else
+		Super::LoadSettings(bForceReload);
+}
+
+void UManageGameUserSettings::_Supper__LoadSettings(bool bForceReload)
+{
+	Super::LoadSettings(bForceReload);
 }
 
 void UManageGameUserSettings::ResetToCurrentSettings()
 {
-	Super::ResetToCurrentSettings();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ResetToCurrentSettings");
+	else
+		Super::ResetToCurrentSettings();
+}
+
+void UManageGameUserSettings::_Supper__ResetToCurrentSettings()
+{
+	Super::ResetToCurrentSettings();
 }
 
 void UManageGameUserSettings::RunHardwareBenchmark(int32 WorkScale, float CPUMultiplier, float GPUMultiplier)
 {
-	Super::RunHardwareBenchmark(WorkScale, CPUMultiplier, GPUMultiplier);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RunHardwareBenchmark", WorkScale, CPUMultiplier, GPUMultiplier);
+	else
+		Super::RunHardwareBenchmark(WorkScale, CPUMultiplier, GPUMultiplier);
+}
+
+void UManageGameUserSettings::_Supper__RunHardwareBenchmark(int32 WorkScale, float CPUMultiplier, float GPUMultiplier)
+{
+	Super::RunHardwareBenchmark(WorkScale, CPUMultiplier, GPUMultiplier);
 }
 
 void UManageGameUserSettings::SaveSettings()
 {
-	Super::SaveSettings();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SaveSettings");
+	else
+		Super::SaveSettings();
+}
+
+void UManageGameUserSettings::_Supper__SaveSettings()
+{
+	Super::SaveSettings();
 }
 
 void UManageGameUserSettings::SetOverallScalabilityLevel(int32 Value)
 {
-	Super::SetOverallScalabilityLevel(Value);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetOverallScalabilityLevel", Value);
+	else
+		Super::SetOverallScalabilityLevel(Value);
+}
+
+void UManageGameUserSettings::_Supper__SetOverallScalabilityLevel(int32 Value)
+{
+	Super::SetOverallScalabilityLevel(Value);
 }
 
 void UManageGameUserSettings::SetToDefaults()
 {
-	Super::SetToDefaults();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetToDefaults");
+	else
+		Super::SetToDefaults();
+}
+
+void UManageGameUserSettings::_Supper__SetToDefaults()
+{
+	Super::SetToDefaults();
 }
 
 void UManageGameUserSettings::SetWindowPosition(int32 WindowPosX, int32 WindowPosY)
 {
-	Super::SetWindowPosition(WindowPosX, WindowPosY);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetWindowPosition", WindowPosX, WindowPosY);
+	else
+		Super::SetWindowPosition(WindowPosX, WindowPosY);
+}
+
+void UManageGameUserSettings::_Supper__SetWindowPosition(int32 WindowPosX, int32 WindowPosY)
+{
+	Super::SetWindowPosition(WindowPosX, WindowPosY);
 }
 
 void UManageGameUserSettings::UpdateVersion()
 {
-	Super::UpdateVersion();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateVersion");
+	else
+		Super::UpdateVersion();
+}
+
+void UManageGameUserSettings::_Supper__UpdateVersion()
+{
+	Super::UpdateVersion();
 }
 
 void UManageGameUserSettings::ValidateSettings()
 {
-	Super::ValidateSettings();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ValidateSettings");
+	else
+		Super::ValidateSettings();
+}
+
+void UManageGameUserSettings::_Supper__ValidateSettings()
+{
+	Super::ValidateSettings();
 }
 
 void UManageGameUserSettings::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageGameUserSettings::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageGameUserSettings::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageGameUserSettings::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageGameUserSettings::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageGameUserSettings::OverridePerObjectConfigSection(FString& SectionName)
+void UManageGameUserSettings::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageGameUserSettings::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageGameUserSettings::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageGameUserSettings::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageGameUserSettings::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageGameUserSettings::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageGameUserSettings::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageGameUserSettings::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageGameUserSettings::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageGameUserSettings::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageGameUserSettings::PostRename(UObject* OldOuter, const FName OldName)
+void UManageGameUserSettings::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageGameUserSettings::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageGameUserSettings::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageGameUserSettings::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageGameUserSettings::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageGameUserSettings::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageGameUserSettings::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageGameUserSettings::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageGameUserSettings::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageGameUserSettings::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageGameUserSettings::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageGameUserSettings::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageGameUserSettings::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageGameUserSettings::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageGameUserSettings::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

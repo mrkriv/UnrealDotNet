@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AController : AActor
+	public partial class AController : AActor
 	{
 		public AController(IntPtr adress)
 			: base(adress)

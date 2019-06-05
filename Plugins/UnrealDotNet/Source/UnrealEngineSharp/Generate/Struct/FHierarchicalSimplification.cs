@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FHierarchicalSimplification : NativeStructWrapper
+	public partial class FHierarchicalSimplification : NativeStructWrapper
 	{
-		internal FHierarchicalSimplification(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FHierarchicalSimplification(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

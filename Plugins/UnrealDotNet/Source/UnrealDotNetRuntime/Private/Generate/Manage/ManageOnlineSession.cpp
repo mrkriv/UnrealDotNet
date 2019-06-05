@@ -28,170 +28,223 @@ bool UManageOnlineSession::AddWrapperIfNotAttach()
 
 void UManageOnlineSession::ClearOnlineDelegates()
 {
-	Super::ClearOnlineDelegates();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ClearOnlineDelegates");
+	else
+		Super::ClearOnlineDelegates();
 }
 
-void UManageOnlineSession::EndOnlineSession(FName SessionName)
+void UManageOnlineSession::_Supper__ClearOnlineDelegates()
 {
-	Super::EndOnlineSession(SessionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EndOnlineSession", SessionName);
+	Super::ClearOnlineDelegates();
 }
 
 void UManageOnlineSession::RegisterOnlineDelegates()
 {
-	Super::RegisterOnlineDelegates();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterOnlineDelegates");
+	else
+		Super::RegisterOnlineDelegates();
 }
 
-void UManageOnlineSession::StartOnlineSession(FName SessionName)
+void UManageOnlineSession::_Supper__RegisterOnlineDelegates()
 {
-	Super::StartOnlineSession(SessionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "StartOnlineSession", SessionName);
+	Super::RegisterOnlineDelegates();
 }
 
 void UManageOnlineSession::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageOnlineSession::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageOnlineSession::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageOnlineSession::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageOnlineSession::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageOnlineSession::OverridePerObjectConfigSection(FString& SectionName)
+void UManageOnlineSession::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageOnlineSession::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageOnlineSession::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageOnlineSession::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageOnlineSession::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageOnlineSession::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageOnlineSession::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageOnlineSession::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageOnlineSession::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageOnlineSession::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageOnlineSession::PostRename(UObject* OldOuter, const FName OldName)
+void UManageOnlineSession::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageOnlineSession::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageOnlineSession::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageOnlineSession::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageOnlineSession::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageOnlineSession::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageOnlineSession::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageOnlineSession::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageOnlineSession::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageOnlineSession::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageOnlineSession::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageOnlineSession::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageOnlineSession::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageOnlineSession::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageOnlineSession::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

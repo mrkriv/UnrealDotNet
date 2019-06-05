@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRootMotionServerToLocalIDMapping : NativeStructWrapper
+	public partial class FRootMotionServerToLocalIDMapping : NativeStructWrapper
 	{
-		internal FRootMotionServerToLocalIDMapping(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRootMotionServerToLocalIDMapping(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

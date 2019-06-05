@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInverseRotationMatrix : FMatrix
+	public partial class FInverseRotationMatrix : FMatrix
 	{
-		internal FInverseRotationMatrix(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInverseRotationMatrix(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

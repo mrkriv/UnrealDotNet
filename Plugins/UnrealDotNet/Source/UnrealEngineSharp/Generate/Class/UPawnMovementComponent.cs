@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UPawnMovementComponent : UNavMovementComponent
+	public partial class UPawnMovementComponent : UNavMovementComponent
 	{
 		public UPawnMovementComponent(IntPtr adress)
 			: base(adress)

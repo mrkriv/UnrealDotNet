@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSceneCaptureViewInfo : NativeStructWrapper
+	public partial class FSceneCaptureViewInfo : NativeStructWrapper
 	{
-		internal FSceneCaptureViewInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSceneCaptureViewInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

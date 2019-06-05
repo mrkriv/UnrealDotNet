@@ -67,6 +67,7 @@
       "FInstanceUpdateCmdBuffer",
       "FStreamingLevelsToConsider",
       "FDisplayDebugManager",
+      "UCameraAnim",
 
       "FCompareFActorPriority", // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
 

@@ -28,138 +28,197 @@ bool UManagePlayerInput::AddWrapperIfNotAttach()
 
 void UManagePlayerInput::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManagePlayerInput::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManagePlayerInput::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManagePlayerInput::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManagePlayerInput::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManagePlayerInput::OverridePerObjectConfigSection(FString& SectionName)
+void UManagePlayerInput::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManagePlayerInput::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManagePlayerInput::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManagePlayerInput::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManagePlayerInput::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManagePlayerInput::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManagePlayerInput::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManagePlayerInput::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManagePlayerInput::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManagePlayerInput::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManagePlayerInput::PostRename(UObject* OldOuter, const FName OldName)
+void UManagePlayerInput::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManagePlayerInput::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManagePlayerInput::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManagePlayerInput::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManagePlayerInput::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManagePlayerInput::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManagePlayerInput::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManagePlayerInput::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManagePlayerInput::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManagePlayerInput::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManagePlayerInput::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManagePlayerInput::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManagePlayerInput::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManagePlayerInput::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManagePlayerInput::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

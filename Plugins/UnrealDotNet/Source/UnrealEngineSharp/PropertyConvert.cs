@@ -47,7 +47,12 @@ namespace UnrealEngine
                 return ByteArrayToStructure(data, type);
             }
 
-            return null;
+            //todo:: заменить
+            var ptr = Marshal.SizeOf<IntPtr>() == Marshal.SizeOf<Int32>()
+                    ? (IntPtr)br.ReadInt32()
+                    : (IntPtr)br.ReadInt64();
+
+            return Activator.CreateInstance(type, ptr);
         }
 
         private static object ByteArrayToStructure(IEnumerable bytes, Type type)

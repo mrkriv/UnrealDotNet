@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInputAxisConfigEntry : NativeStructWrapper
+	public partial class FInputAxisConfigEntry : NativeStructWrapper
 	{
-		internal FInputAxisConfigEntry(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInputAxisConfigEntry(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

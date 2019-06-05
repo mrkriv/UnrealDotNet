@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageWorldSettings.h"
 #include "Runtime/Engine/Classes/GameFramework/WorldSettings.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:395
@@ -163,23 +164,346 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AWorldSettings_NotifyBeginPlay(AWorldSettings* Self)
 	{
-		Self->AWorldSettings::NotifyBeginPlay();
+		Self->NotifyBeginPlay();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_NotifyMatchStarted(AWorldSettings* Self)
 	{
-		Self->AWorldSettings::NotifyMatchStarted();
+		Self->NotifyMatchStarted();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_OnRep_WorldGravityZ(AWorldSettings* Self)
 	{
-		Self->AWorldSettings::OnRep_WorldGravityZ();
+		Self->OnRep_WorldGravityZ();
 	}
 
 	DOTNET_EXPORT auto E_AWorldSettings_SetTimeDilation(AWorldSettings* Self, float NewTimeDilation)
 	{
 		auto _p0 = NewTimeDilation;
 		return Self->SetTimeDilation(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_NotifyBeginPlay(AWorldSettings* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__NotifyBeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_NotifyMatchStarted(AWorldSettings* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__NotifyMatchStarted();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_WorldGravityZ(AWorldSettings* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_WorldGravityZ();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_BeginPlay(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_Destroyed(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_ForceNetRelevant(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_ForceNetUpdate(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_GatherCurrentMovement(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManageWorldSettings*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_K2_DestroyActor(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_LifeSpanExpired(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_Instigator(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_Owner(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManageWorldSettings*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OutsideWorldBounds(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostActorCreated(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostInitializeComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostNetInit(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostNetReceiveRole(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PreInitializeComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManageWorldSettings*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManageWorldSettings*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_RegisterAllComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_ReregisterAllComponents(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_RerunConstructionScripts(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_Reset(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_RewindForReplay(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManageWorldSettings*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManageWorldSettings*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManageWorldSettings*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_TearOff(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManageWorldSettings*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManageWorldSettings*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_TornOff(AActor* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManageWorldSettings*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_BeginDestroy(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_FinishDestroy(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostCDOContruct(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostEditImport(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostInitProperties(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostLoad(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostNetReceive(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostRepNotifies(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManageWorldSettings*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_PreNetReceive(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_ShutdownAfterError(UObject* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AWorldSettings_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManageWorldSettings*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

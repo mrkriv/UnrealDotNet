@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPlane : FVector
+	public partial class FPlane : FVector
 	{
-		internal FPlane(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPlane(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

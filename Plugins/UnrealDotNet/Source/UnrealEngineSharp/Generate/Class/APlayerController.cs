@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class APlayerController : AController
+	public partial class APlayerController : AController
 	{
 		public APlayerController(IntPtr adress)
 			: base(adress)
@@ -120,6 +120,11 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_PROP_APlayerController_Player_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_APlayerController_Player_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_APlayerController_PlayerCameraManager_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_APlayerController_PlayerCameraManager_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_APlayerController_PlayerInput_GET(IntPtr Ptr);
@@ -240,6 +245,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientSetSpectatorWaiting(IntPtr self, bool bWaiting);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ClientSetViewTarget(IntPtr self, IntPtr a, IntPtr transitionParams);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientStartOnlineSession(IntPtr self);
@@ -410,6 +418,9 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_ServerViewPrevPlayer(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ServerViewSelf(IntPtr self, IntPtr transitionParams);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_SetCinematicMode(IntPtr self, bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -420,6 +431,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_SetName(IntPtr self, string s);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_SetViewTargetWithBlend(IntPtr self, IntPtr newViewTarget, float blendTime, byte blendFunc, float blendExp, bool bLockOutgoing);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_SetVirtualJoystickVisibility(IntPtr self, bool bVisible);
@@ -605,6 +619,16 @@ namespace UnrealEngine
 			set => E_PROP_APlayerController_Player_SET(NativePointer, value);
 		}
 
+		
+		/// <summary>
+		/// Camera manager associated with this Player Controller.
+		/// </summary>
+		public APlayerCameraManager PlayerCameraManager
+		{
+			get => E_PROP_APlayerController_PlayerCameraManager_GET(NativePointer);
+			set => E_PROP_APlayerController_PlayerCameraManager_SET(NativePointer, value);
+		}
+
 		public UPlayerInput PlayerInput
 		{
 			get => E_PROP_APlayerController_PlayerInput_GET(NativePointer);
@@ -766,6 +790,9 @@ namespace UnrealEngine
 		/// </summary>
 		public void ClientSetSpectatorWaiting(bool bWaiting)
 			=> E_APlayerController_ClientSetSpectatorWaiting(this, bWaiting);
+		
+		public void ClientSetViewTarget(AActor a, FViewTargetTransitionParams transitionParams)
+			=> E_APlayerController_ClientSetViewTarget(this, a, transitionParams);
 		
 		public void ClientStartOnlineSession()
 			=> E_APlayerController_ClientStartOnlineSession(this);
@@ -1054,6 +1081,9 @@ namespace UnrealEngine
 		public void ServerViewPrevPlayer()
 			=> E_APlayerController_ServerViewPrevPlayer(this);
 		
+		public void ServerViewSelf(FViewTargetTransitionParams transitionParams)
+			=> E_APlayerController_ServerViewSelf(this, transitionParams);
+		
 		
 		/// <summary>
 		/// Adjust input based on cinematic mode
@@ -1081,6 +1111,18 @@ namespace UnrealEngine
 		
 		public virtual void SetName(string s)
 			=> E_APlayerController_SetName(this, s);
+		
+		
+		/// <summary>
+		/// Set the view target blending with variable control
+		/// </summary>
+		/// <param name="newViewTarget">new actor to set as view target</param>
+		/// <param name="blendTime">time taken to blend</param>
+		/// <param name="blendFunc">Cubic, Linear etc functions for blending</param>
+		/// <param name="blendExp">Exponent, used by certain blend functions to control the shape of the curve.</param>
+		/// <param name="bLockOutgoing">If true, lock outgoing viewtarget to last frame's camera position for the remainder of the blend.</param>
+		public virtual void SetViewTargetWithBlend(AActor newViewTarget, float blendTime, EViewTargetBlendFunction blendFunc, float blendExp, bool bLockOutgoing)
+			=> E_APlayerController_SetViewTargetWithBlend(this, newViewTarget, blendTime, (byte)blendFunc, blendExp, bLockOutgoing);
 		
 		
 		/// <summary>

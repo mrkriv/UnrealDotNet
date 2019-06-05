@@ -38,834 +38,1042 @@ bool AManageSpectatorPawn::AddWrapperIfNotAttach()
 
 void AManageSpectatorPawn::LookUpAtRate(float Rate)
 {
-	Super::LookUpAtRate(Rate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LookUpAtRate", Rate);
+	else
+		Super::LookUpAtRate(Rate);
+}
+
+void AManageSpectatorPawn::_Supper__LookUpAtRate(float Rate)
+{
+	Super::LookUpAtRate(Rate);
 }
 
 void AManageSpectatorPawn::MoveForward(float Val)
 {
-	Super::MoveForward(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MoveForward", Val);
+	else
+		Super::MoveForward(Val);
+}
+
+void AManageSpectatorPawn::_Supper__MoveForward(float Val)
+{
+	Super::MoveForward(Val);
 }
 
 void AManageSpectatorPawn::MoveRight(float Val)
 {
-	Super::MoveRight(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MoveRight", Val);
+	else
+		Super::MoveRight(Val);
+}
+
+void AManageSpectatorPawn::_Supper__MoveRight(float Val)
+{
+	Super::MoveRight(Val);
 }
 
 void AManageSpectatorPawn::MoveUp_World(float Val)
 {
-	Super::MoveUp_World(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MoveUp_World", Val);
+	else
+		Super::MoveUp_World(Val);
+}
+
+void AManageSpectatorPawn::_Supper__MoveUp_World(float Val)
+{
+	Super::MoveUp_World(Val);
 }
 
 void AManageSpectatorPawn::TurnAtRate(float Rate)
 {
-	Super::TurnAtRate(Rate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TurnAtRate", Rate);
+	else
+		Super::TurnAtRate(Rate);
+}
+
+void AManageSpectatorPawn::_Supper__TurnAtRate(float Rate)
+{
+	Super::TurnAtRate(Rate);
 }
 
 void AManageSpectatorPawn::AddControllerPitchInput(float Val)
 {
-	Super::AddControllerPitchInput(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "AddControllerPitchInput", Val);
+	else
+		Super::AddControllerPitchInput(Val);
+}
+
+void AManageSpectatorPawn::_Supper__AddControllerPitchInput(float Val)
+{
+	Super::AddControllerPitchInput(Val);
 }
 
 void AManageSpectatorPawn::AddControllerRollInput(float Val)
 {
-	Super::AddControllerRollInput(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "AddControllerRollInput", Val);
+	else
+		Super::AddControllerRollInput(Val);
+}
+
+void AManageSpectatorPawn::_Supper__AddControllerRollInput(float Val)
+{
+	Super::AddControllerRollInput(Val);
 }
 
 void AManageSpectatorPawn::AddControllerYawInput(float Val)
 {
-	Super::AddControllerYawInput(Val);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "AddControllerYawInput", Val);
+	else
+		Super::AddControllerYawInput(Val);
 }
 
-void AManageSpectatorPawn::AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
+void AManageSpectatorPawn::_Supper__AddControllerYawInput(float Val)
 {
-	Super::AddMovementInput(WorldDirection, ScaleValue, bForce);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddMovementInput", WorldDirection, ScaleValue, bForce);
+	Super::AddControllerYawInput(Val);
 }
 
 void AManageSpectatorPawn::DestroyPlayerInputComponent()
 {
-	Super::DestroyPlayerInputComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyPlayerInputComponent");
+	else
+		Super::DestroyPlayerInputComponent();
+}
+
+void AManageSpectatorPawn::_Supper__DestroyPlayerInputComponent()
+{
+	Super::DestroyPlayerInputComponent();
 }
 
 void AManageSpectatorPawn::DetachFromControllerPendingDestroy()
 {
-	Super::DetachFromControllerPendingDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromControllerPendingDestroy");
+	else
+		Super::DetachFromControllerPendingDestroy();
 }
 
-void AManageSpectatorPawn::FaceRotation(FRotator NewControlRotation, float DeltaTime)
+void AManageSpectatorPawn::_Supper__DetachFromControllerPendingDestroy()
 {
-	Super::FaceRotation(NewControlRotation, DeltaTime);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "FaceRotation", NewControlRotation, DeltaTime);
+	Super::DetachFromControllerPendingDestroy();
 }
 
 void AManageSpectatorPawn::OnRep_Controller()
 {
-	Super::OnRep_Controller();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Controller");
+	else
+		Super::OnRep_Controller();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_Controller()
+{
+	Super::OnRep_Controller();
 }
 
 void AManageSpectatorPawn::OnRep_PlayerState()
 {
-	Super::OnRep_PlayerState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_PlayerState");
+	else
+		Super::OnRep_PlayerState();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
 }
 
 void AManageSpectatorPawn::PawnClientRestart()
 {
-	Super::PawnClientRestart();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PawnClientRestart");
+	else
+		Super::PawnClientRestart();
+}
+
+void AManageSpectatorPawn::_Supper__PawnClientRestart()
+{
+	Super::PawnClientRestart();
 }
 
 void AManageSpectatorPawn::PawnStartFire(uint8 FireModeNum)
 {
-	Super::PawnStartFire(FireModeNum);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PawnStartFire", FireModeNum);
+	else
+		Super::PawnStartFire(FireModeNum);
 }
 
-void AManageSpectatorPawn::PossessedBy(AController* NewController)
+void AManageSpectatorPawn::_Supper__PawnStartFire(uint8 FireModeNum)
 {
-	Super::PossessedBy(NewController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PossessedBy", NewController);
+	Super::PawnStartFire(FireModeNum);
 }
 
 void AManageSpectatorPawn::RecalculateBaseEyeHeight()
 {
-	Super::RecalculateBaseEyeHeight();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RecalculateBaseEyeHeight");
+	else
+		Super::RecalculateBaseEyeHeight();
+}
+
+void AManageSpectatorPawn::_Supper__RecalculateBaseEyeHeight()
+{
+	Super::RecalculateBaseEyeHeight();
 }
 
 void AManageSpectatorPawn::Restart()
 {
-	Super::Restart();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Restart");
+	else
+		Super::Restart();
+}
+
+void AManageSpectatorPawn::_Supper__Restart()
+{
+	Super::Restart();
 }
 
 void AManageSpectatorPawn::SetPlayerDefaults()
 {
-	Super::SetPlayerDefaults();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlayerDefaults");
+	else
+		Super::SetPlayerDefaults();
 }
 
-void AManageSpectatorPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AManageSpectatorPawn::_Supper__SetPlayerDefaults()
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetupPlayerInputComponent", PlayerInputComponent);
+	Super::SetPlayerDefaults();
 }
 
 void AManageSpectatorPawn::SpawnDefaultController()
 {
-	Super::SpawnDefaultController();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SpawnDefaultController");
+	else
+		Super::SpawnDefaultController();
+}
+
+void AManageSpectatorPawn::_Supper__SpawnDefaultController()
+{
+	Super::SpawnDefaultController();
 }
 
 void AManageSpectatorPawn::TurnOff()
 {
-	Super::TurnOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TurnOff");
+	else
+		Super::TurnOff();
+}
+
+void AManageSpectatorPawn::_Supper__TurnOff()
+{
+	Super::TurnOff();
 }
 
 void AManageSpectatorPawn::UnPossessed()
 {
-	Super::UnPossessed();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnPossessed");
+	else
+		Super::UnPossessed();
+}
+
+void AManageSpectatorPawn::_Supper__UnPossessed()
+{
+	Super::UnPossessed();
 }
 
 void AManageSpectatorPawn::UpdateNavigationRelevance()
 {
-	Super::UpdateNavigationRelevance();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateNavigationRelevance");
+	else
+		Super::UpdateNavigationRelevance();
 }
 
-void AManageSpectatorPawn::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void AManageSpectatorPawn::_Supper__UpdateNavigationRelevance()
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageSpectatorPawn::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void AManageSpectatorPawn::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
-}
-
-void AManageSpectatorPawn::BecomeViewTarget(APlayerController* PC)
-{
-	Super::BecomeViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BecomeViewTarget", PC);
+	Super::UpdateNavigationRelevance();
 }
 
 void AManageSpectatorPawn::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void AManageSpectatorPawn::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void AManageSpectatorPawn::ClearCrossLevelReferences()
 {
-	Super::ClearCrossLevelReferences();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ClearCrossLevelReferences");
+	else
+		Super::ClearCrossLevelReferences();
+}
+
+void AManageSpectatorPawn::_Supper__ClearCrossLevelReferences()
+{
+	Super::ClearCrossLevelReferences();
 }
 
 void AManageSpectatorPawn::Destroyed()
 {
-	Super::Destroyed();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Destroyed");
+	else
+		Super::Destroyed();
 }
 
-void AManageSpectatorPawn::DisableInput(APlayerController* PlayerController)
+void AManageSpectatorPawn::_Supper__Destroyed()
 {
-	Super::DisableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DisableInput", PlayerController);
-}
-
-void AManageSpectatorPawn::EnableInput(APlayerController* PlayerController)
-{
-	Super::EnableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EnableInput", PlayerController);
-}
-
-void AManageSpectatorPawn::EndViewTarget(APlayerController* PC)
-{
-	Super::EndViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EndViewTarget", PC);
+	Super::Destroyed();
 }
 
 void AManageSpectatorPawn::ForceNetRelevant()
 {
-	Super::ForceNetRelevant();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetRelevant");
+	else
+		Super::ForceNetRelevant();
+}
+
+void AManageSpectatorPawn::_Supper__ForceNetRelevant()
+{
+	Super::ForceNetRelevant();
 }
 
 void AManageSpectatorPawn::ForceNetUpdate()
 {
-	Super::ForceNetUpdate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetUpdate");
+	else
+		Super::ForceNetUpdate();
+}
+
+void AManageSpectatorPawn::_Supper__ForceNetUpdate()
+{
+	Super::ForceNetUpdate();
 }
 
 void AManageSpectatorPawn::GatherCurrentMovement()
 {
-	Super::GatherCurrentMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "GatherCurrentMovement");
+	else
+		Super::GatherCurrentMovement();
+}
+
+void AManageSpectatorPawn::_Supper__GatherCurrentMovement()
+{
+	Super::GatherCurrentMovement();
 }
 
 void AManageSpectatorPawn::InvalidateLightingCacheDetailed(bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bTranslationOnly);
+}
+
+void AManageSpectatorPawn::_Supper__InvalidateLightingCacheDetailed(bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
 }
 
 void AManageSpectatorPawn::K2_DestroyActor()
 {
-	Super::K2_DestroyActor();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "K2_DestroyActor");
+	else
+		Super::K2_DestroyActor();
+}
+
+void AManageSpectatorPawn::_Supper__K2_DestroyActor()
+{
+	Super::K2_DestroyActor();
 }
 
 void AManageSpectatorPawn::LifeSpanExpired()
 {
-	Super::LifeSpanExpired();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LifeSpanExpired");
+	else
+		Super::LifeSpanExpired();
+}
+
+void AManageSpectatorPawn::_Supper__LifeSpanExpired()
+{
+	Super::LifeSpanExpired();
 }
 
 void AManageSpectatorPawn::MarkComponentsAsPendingKill()
 {
-	Super::MarkComponentsAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkComponentsAsPendingKill");
+	else
+		Super::MarkComponentsAsPendingKill();
+}
+
+void AManageSpectatorPawn::_Supper__MarkComponentsAsPendingKill()
+{
+	Super::MarkComponentsAsPendingKill();
 }
 
 void AManageSpectatorPawn::NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginCursorOver");
+	else
+		Super::NotifyActorBeginCursorOver();
 }
 
-void AManageSpectatorPawn::NotifyActorBeginOverlap(AActor* OtherActor)
+void AManageSpectatorPawn::_Supper__NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginOverlap", OtherActor);
+	Super::NotifyActorBeginCursorOver();
 }
 
 void AManageSpectatorPawn::NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndCursorOver");
+	else
+		Super::NotifyActorEndCursorOver();
 }
 
-void AManageSpectatorPawn::NotifyActorEndOverlap(AActor* OtherActor)
+void AManageSpectatorPawn::_Supper__NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndOverlap", OtherActor);
-}
-
-void AManageSpectatorPawn::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
-{
-	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyHit", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-}
-
-void AManageSpectatorPawn::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnConstruction", Transform);
+	Super::NotifyActorEndCursorOver();
 }
 
 void AManageSpectatorPawn::OnRep_AttachmentReplication()
 {
-	Super::OnRep_AttachmentReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_AttachmentReplication");
+	else
+		Super::OnRep_AttachmentReplication();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_AttachmentReplication()
+{
+	Super::OnRep_AttachmentReplication();
 }
 
 void AManageSpectatorPawn::OnRep_Instigator()
 {
-	Super::OnRep_Instigator();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Instigator");
+	else
+		Super::OnRep_Instigator();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_Instigator()
+{
+	Super::OnRep_Instigator();
 }
 
 void AManageSpectatorPawn::OnRep_Owner()
 {
-	Super::OnRep_Owner();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Owner");
+	else
+		Super::OnRep_Owner();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_Owner()
+{
+	Super::OnRep_Owner();
 }
 
 void AManageSpectatorPawn::OnRep_ReplicatedMovement()
 {
-	Super::OnRep_ReplicatedMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicatedMovement");
+	else
+		Super::OnRep_ReplicatedMovement();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_ReplicatedMovement()
+{
+	Super::OnRep_ReplicatedMovement();
 }
 
 void AManageSpectatorPawn::OnRep_ReplicateMovement()
 {
-	Super::OnRep_ReplicateMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicateMovement");
+	else
+		Super::OnRep_ReplicateMovement();
+}
+
+void AManageSpectatorPawn::_Supper__OnRep_ReplicateMovement()
+{
+	Super::OnRep_ReplicateMovement();
 }
 
 void AManageSpectatorPawn::OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnReplicationPausedChanged(bIsReplicationPaused);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnReplicationPausedChanged", bIsReplicationPaused);
+	else
+		Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
-void AManageSpectatorPawn::OnSubobjectCreatedFromReplication(UObject* NewSubobject)
+void AManageSpectatorPawn::_Supper__OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnSubobjectCreatedFromReplication(NewSubobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectCreatedFromReplication", NewSubobject);
-}
-
-void AManageSpectatorPawn::OnSubobjectDestroyFromReplication(UObject* Subobject)
-{
-	Super::OnSubobjectDestroyFromReplication(Subobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
+	Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
 void AManageSpectatorPawn::OutsideWorldBounds()
 {
-	Super::OutsideWorldBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OutsideWorldBounds");
+	else
+		Super::OutsideWorldBounds();
+}
+
+void AManageSpectatorPawn::_Supper__OutsideWorldBounds()
+{
+	Super::OutsideWorldBounds();
 }
 
 void AManageSpectatorPawn::PostActorCreated()
 {
-	Super::PostActorCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostActorCreated");
+	else
+		Super::PostActorCreated();
+}
+
+void AManageSpectatorPawn::_Supper__PostActorCreated()
+{
+	Super::PostActorCreated();
 }
 
 void AManageSpectatorPawn::PostInitializeComponents()
 {
-	Super::PostInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitializeComponents");
+	else
+		Super::PostInitializeComponents();
+}
+
+void AManageSpectatorPawn::_Supper__PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
 }
 
 void AManageSpectatorPawn::PostNetInit()
 {
-	Super::PostNetInit();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetInit");
+	else
+		Super::PostNetInit();
+}
+
+void AManageSpectatorPawn::_Supper__PostNetInit()
+{
+	Super::PostNetInit();
 }
 
 void AManageSpectatorPawn::PostNetReceiveLocationAndRotation()
 {
-	Super::PostNetReceiveLocationAndRotation();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveLocationAndRotation");
+	else
+		Super::PostNetReceiveLocationAndRotation();
+}
+
+void AManageSpectatorPawn::_Supper__PostNetReceiveLocationAndRotation()
+{
+	Super::PostNetReceiveLocationAndRotation();
 }
 
 void AManageSpectatorPawn::PostNetReceivePhysicState()
 {
-	Super::PostNetReceivePhysicState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceivePhysicState");
+	else
+		Super::PostNetReceivePhysicState();
+}
+
+void AManageSpectatorPawn::_Supper__PostNetReceivePhysicState()
+{
+	Super::PostNetReceivePhysicState();
 }
 
 void AManageSpectatorPawn::PostNetReceiveRole()
 {
-	Super::PostNetReceiveRole();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveRole");
+	else
+		Super::PostNetReceiveRole();
 }
 
-void AManageSpectatorPawn::PostNetReceiveVelocity(const FVector& NewVelocity)
+void AManageSpectatorPawn::_Supper__PostNetReceiveRole()
 {
-	Super::PostNetReceiveVelocity(NewVelocity);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveVelocity", NewVelocity);
+	Super::PostNetReceiveRole();
 }
 
 void AManageSpectatorPawn::PostRegisterAllComponents()
 {
-	Super::PostRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRegisterAllComponents");
+	else
+		Super::PostRegisterAllComponents();
 }
 
-void AManageSpectatorPawn::PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir)
+void AManageSpectatorPawn::_Supper__PostRegisterAllComponents()
 {
-	Super::PostRenderFor(PC, Canvas, CameraPosition, CameraDir);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRenderFor", PC, Canvas, CameraPosition, CameraDir);
+	Super::PostRegisterAllComponents();
 }
 
 void AManageSpectatorPawn::PostUnregisterAllComponents()
 {
-	Super::PostUnregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostUnregisterAllComponents");
+	else
+		Super::PostUnregisterAllComponents();
+}
+
+void AManageSpectatorPawn::_Supper__PostUnregisterAllComponents()
+{
+	Super::PostUnregisterAllComponents();
 }
 
 void AManageSpectatorPawn::PreInitializeComponents()
 {
-	Super::PreInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreInitializeComponents");
+	else
+		Super::PreInitializeComponents();
+}
+
+void AManageSpectatorPawn::_Supper__PreInitializeComponents()
+{
+	Super::PreInitializeComponents();
 }
 
 void AManageSpectatorPawn::PreRegisterAllComponents()
 {
-	Super::PreRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreRegisterAllComponents");
+	else
+		Super::PreRegisterAllComponents();
+}
+
+void AManageSpectatorPawn::_Supper__PreRegisterAllComponents()
+{
+	Super::PreRegisterAllComponents();
 }
 
 void AManageSpectatorPawn::PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
 {
-	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PrestreamTextures", Seconds, bEnableStreaming, CinematicTextureGroups);
+	else
+		Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
+}
+
+void AManageSpectatorPawn::_Supper__PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
 }
 
 void AManageSpectatorPawn::RegisterActorTickFunctions(bool bRegister)
 {
-	Super::RegisterActorTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterActorTickFunctions", bRegister);
+	else
+		Super::RegisterActorTickFunctions(bRegister);
+}
+
+void AManageSpectatorPawn::_Supper__RegisterActorTickFunctions(bool bRegister)
+{
+	Super::RegisterActorTickFunctions(bRegister);
 }
 
 void AManageSpectatorPawn::RegisterAllComponents()
 {
-	Super::RegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterAllComponents");
+	else
+		Super::RegisterAllComponents();
 }
 
-void AManageSpectatorPawn::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void AManageSpectatorPawn::_Supper__RegisterAllComponents()
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageSpectatorPawn::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterAllComponents();
 }
 
 void AManageSpectatorPawn::ReregisterAllComponents()
 {
-	Super::ReregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ReregisterAllComponents");
+	else
+		Super::ReregisterAllComponents();
+}
+
+void AManageSpectatorPawn::_Supper__ReregisterAllComponents()
+{
+	Super::ReregisterAllComponents();
 }
 
 void AManageSpectatorPawn::RerunConstructionScripts()
 {
-	Super::RerunConstructionScripts();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RerunConstructionScripts");
+	else
+		Super::RerunConstructionScripts();
+}
+
+void AManageSpectatorPawn::_Supper__RerunConstructionScripts()
+{
+	Super::RerunConstructionScripts();
 }
 
 void AManageSpectatorPawn::Reset()
 {
-	Super::Reset();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Reset");
+	else
+		Super::Reset();
+}
+
+void AManageSpectatorPawn::_Supper__Reset()
+{
+	Super::Reset();
 }
 
 void AManageSpectatorPawn::RewindForReplay()
 {
-	Super::RewindForReplay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RewindForReplay");
+	else
+		Super::RewindForReplay();
+}
+
+void AManageSpectatorPawn::_Supper__RewindForReplay()
+{
+	Super::RewindForReplay();
 }
 
 void AManageSpectatorPawn::SetActorHiddenInGame(bool bNewHidden)
 {
-	Super::SetActorHiddenInGame(bNewHidden);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActorHiddenInGame", bNewHidden);
+	else
+		Super::SetActorHiddenInGame(bNewHidden);
+}
+
+void AManageSpectatorPawn::_Supper__SetActorHiddenInGame(bool bNewHidden)
+{
+	Super::SetActorHiddenInGame(bNewHidden);
 }
 
 void AManageSpectatorPawn::SetLifeSpan(float InLifespan)
 {
-	Super::SetLifeSpan(InLifespan);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLifeSpan", InLifespan);
+	else
+		Super::SetLifeSpan(InLifespan);
 }
 
-void AManageSpectatorPawn::SetOwner(AActor* NewOwner)
+void AManageSpectatorPawn::_Supper__SetLifeSpan(float InLifespan)
 {
-	Super::SetOwner(NewOwner);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetOwner", NewOwner);
+	Super::SetLifeSpan(InLifespan);
 }
 
 void AManageSpectatorPawn::SetReplicateMovement(bool bInReplicateMovement)
 {
-	Super::SetReplicateMovement(bInReplicateMovement);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetReplicateMovement", bInReplicateMovement);
+	else
+		Super::SetReplicateMovement(bInReplicateMovement);
+}
+
+void AManageSpectatorPawn::_Supper__SetReplicateMovement(bool bInReplicateMovement)
+{
+	Super::SetReplicateMovement(bInReplicateMovement);
 }
 
 void AManageSpectatorPawn::TearOff()
 {
-	Super::TearOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TearOff");
+	else
+		Super::TearOff();
+}
+
+void AManageSpectatorPawn::_Supper__TearOff()
+{
+	Super::TearOff();
 }
 
 void AManageSpectatorPawn::TeleportSucceeded(bool bIsATest)
 {
-	Super::TeleportSucceeded(bIsATest);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TeleportSucceeded", bIsATest);
+	else
+		Super::TeleportSucceeded(bIsATest);
+}
+
+void AManageSpectatorPawn::_Supper__TeleportSucceeded(bool bIsATest)
+{
+	Super::TeleportSucceeded(bIsATest);
 }
 
 void AManageSpectatorPawn::Tick(float DeltaSeconds)
 {
-	Super::Tick(DeltaSeconds);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Tick", DeltaSeconds);
+	else
+		Super::Tick(DeltaSeconds);
+}
+
+void AManageSpectatorPawn::_Supper__Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }
 
 void AManageSpectatorPawn::TornOff()
 {
-	Super::TornOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TornOff");
+	else
+		Super::TornOff();
+}
+
+void AManageSpectatorPawn::_Supper__TornOff()
+{
+	Super::TornOff();
 }
 
 void AManageSpectatorPawn::UnregisterAllComponents(bool bForReregister)
 {
-	Super::UnregisterAllComponents(bForReregister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnregisterAllComponents", bForReregister);
+	else
+		Super::UnregisterAllComponents(bForReregister);
+}
+
+void AManageSpectatorPawn::_Supper__UnregisterAllComponents(bool bForReregister)
+{
+	Super::UnregisterAllComponents(bForReregister);
 }
 
 void AManageSpectatorPawn::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void AManageSpectatorPawn::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void AManageSpectatorPawn::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void AManageSpectatorPawn::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void AManageSpectatorPawn::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void AManageSpectatorPawn::OverridePerObjectConfigSection(FString& SectionName)
+void AManageSpectatorPawn::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void AManageSpectatorPawn::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void AManageSpectatorPawn::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void AManageSpectatorPawn::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void AManageSpectatorPawn::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void AManageSpectatorPawn::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void AManageSpectatorPawn::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void AManageSpectatorPawn::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void AManageSpectatorPawn::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void AManageSpectatorPawn::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void AManageSpectatorPawn::PostRename(UObject* OldOuter, const FName OldName)
+void AManageSpectatorPawn::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void AManageSpectatorPawn::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void AManageSpectatorPawn::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void AManageSpectatorPawn::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void AManageSpectatorPawn::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void AManageSpectatorPawn::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void AManageSpectatorPawn::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void AManageSpectatorPawn::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void AManageSpectatorPawn::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void AManageSpectatorPawn::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void AManageSpectatorPawn::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void AManageSpectatorPawn::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void AManageSpectatorPawn::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void AManageSpectatorPawn::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void AManageSpectatorPawn::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

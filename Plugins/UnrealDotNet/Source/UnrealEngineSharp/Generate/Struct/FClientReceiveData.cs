@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FClientReceiveData : NativeStructWrapper
+	public partial class FClientReceiveData : NativeStructWrapper
 	{
-		internal FClientReceiveData(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FClientReceiveData(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FCurveEdInterface : NativeStructWrapper
+	public partial class FCurveEdInterface : NativeStructWrapper
 	{
-		internal FCurveEdInterface(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FCurveEdInterface(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

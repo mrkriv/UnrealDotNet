@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FComponentQueryParams : FCollisionQueryParams
+	public partial class FComponentQueryParams : FCollisionQueryParams
 	{
-		internal FComponentQueryParams(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FComponentQueryParams(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

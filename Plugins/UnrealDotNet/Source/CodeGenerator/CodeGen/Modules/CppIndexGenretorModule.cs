@@ -19,8 +19,8 @@ namespace CodeGenerator.CodeGen.Modules
         {
             base.SetOutputPath(outputCppDir, outputCsDir);
 
-            PathOutputCpp = Path.Combine(PathOutputCpp, "Export");
-            CreateDirectoryIfNotExist(PathOutputCpp);
+            PathOutputH = Path.Combine(PathOutputH, "Export");
+            CreateDirectoryIfNotExist(PathOutputH);
         }
 
         protected override bool CanGenerate(Class Class)
@@ -47,7 +47,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
-            cw.SaveToFile(Path.Combine(PathOutputH, "Export", "Index.h"));
+            cw.SaveToFile(Path.Combine(PathOutputH, "Index.h"));
         }
 
         #endregion

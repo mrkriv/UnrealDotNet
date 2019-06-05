@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDynamicResolutionStateInfos : NativeStructWrapper
+	public partial class FDynamicResolutionStateInfos : NativeStructWrapper
 	{
-		internal FDynamicResolutionStateInfos(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDynamicResolutionStateInfos(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

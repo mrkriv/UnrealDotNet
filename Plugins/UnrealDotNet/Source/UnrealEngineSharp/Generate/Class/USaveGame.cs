@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class USaveGame : UObject
+	public partial class USaveGame : UObject
 	{
 		public USaveGame(IntPtr adress)
 			: base(adress)

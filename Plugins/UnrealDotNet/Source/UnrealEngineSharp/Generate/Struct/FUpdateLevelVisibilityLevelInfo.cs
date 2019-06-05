@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FUpdateLevelVisibilityLevelInfo : NativeStructWrapper
+	public partial class FUpdateLevelVisibilityLevelInfo : NativeStructWrapper
 	{
-		internal FUpdateLevelVisibilityLevelInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FUpdateLevelVisibilityLevelInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class ULightmassPortalComponent : USceneComponent
+	public partial class ULightmassPortalComponent : USceneComponent
 	{
 		public ULightmassPortalComponent(IntPtr adress)
 			: base(adress)

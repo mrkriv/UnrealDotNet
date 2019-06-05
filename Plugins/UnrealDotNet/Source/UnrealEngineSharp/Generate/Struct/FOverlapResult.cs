@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FOverlapResult : NativeStructWrapper
+	public partial class FOverlapResult : NativeStructWrapper
 	{
-		internal FOverlapResult(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FOverlapResult(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

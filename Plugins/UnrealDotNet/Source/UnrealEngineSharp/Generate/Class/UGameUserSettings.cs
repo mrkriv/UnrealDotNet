@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UGameUserSettings : UObject
+	public partial class UGameUserSettings : UObject
 	{
 		public UGameUserSettings(IntPtr adress)
 			: base(adress)

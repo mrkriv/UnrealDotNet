@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FActiveMorphTarget : NativeStructWrapper
+	public partial class FActiveMorphTarget : NativeStructWrapper
 	{
-		internal FActiveMorphTarget(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FActiveMorphTarget(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

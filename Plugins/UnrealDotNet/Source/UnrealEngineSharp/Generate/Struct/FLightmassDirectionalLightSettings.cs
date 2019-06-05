@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FLightmassDirectionalLightSettings : FLightmassLightSettings
+	public partial class FLightmassDirectionalLightSettings : FLightmassLightSettings
 	{
-		internal FLightmassDirectionalLightSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FLightmassDirectionalLightSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

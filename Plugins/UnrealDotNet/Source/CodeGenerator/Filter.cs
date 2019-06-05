@@ -276,6 +276,9 @@ namespace CodeGenerator
 
         public bool CanGenerateManageOverride(Method method)
         {
+            if (method.AccessModifier == AccessModifier.Private)
+                return false;
+            
             if (!method.IsVirtual || method.IsOverride || method.IsConst)
                 return false;
 
@@ -283,6 +286,9 @@ namespace CodeGenerator
                 return false;
 
             if (method.InputTypes.Any(t => t.IsReadOnly()))
+                return false;
+
+            if (!method.InputTypes.All(t => t is PrimitiveVariable && t.GetTypeCs() != "string")) //todo:: нет возможности передавать не приметивные типы (с.м. UnrealEngine.PropertyConvert.ParceObjectFromByteStream)
                 return false;
 
             return true;

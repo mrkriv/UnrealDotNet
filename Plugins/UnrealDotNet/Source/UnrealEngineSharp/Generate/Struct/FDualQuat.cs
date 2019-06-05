@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDualQuat : NativeStructWrapper
+	public partial class FDualQuat : NativeStructWrapper
 	{
-		internal FDualQuat(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDualQuat(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

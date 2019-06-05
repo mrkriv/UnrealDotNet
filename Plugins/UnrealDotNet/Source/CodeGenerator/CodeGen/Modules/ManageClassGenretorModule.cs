@@ -67,6 +67,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
             cw.WriteLine("#include \"CoreShell.h\"");
             cw.WriteLine("#include \"IManageObject.h\"");
+            cw.WriteLine("#include \"TypeConvertor.h\"");
             cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
             cw.WriteLine($"#include \"Manage{Class.BaseName}.generated.h\"");
             cw.WriteLine();
@@ -76,8 +77,7 @@ namespace CodeGenerator.CodeGen.Modules
             var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
 
             cw.WriteLine("UCLASS()");
-            cw.WriteLine(
-                $"class {Cfg.CppApiUe} {cppClassName} : public {Class.Name}, public IManageObject");
+            cw.WriteLine($"class {Cfg.CppApiUe} {cppClassName} : public {Class.Name}, public IManageObject");
             cw.OpenBlock();
 
             cw.WriteLine(Class.IsChild("AActor") ? "GENERATED_UCLASS_BODY()" : "GENERATED_BODY()");
@@ -91,24 +91,22 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
             cw.WriteLine();
-            
-            foreach (var method in _virtualMethods.Where(m => m.AccessModifier != AccessModifier.Private))
+
+            foreach (var method in _virtualMethods)
                 GenerateManageMethodHead(cw, method);
 
-            /*cw.WriteLine();
-            cw.WriteLineNoTab("protected:");
-
-            foreach (var method in _virtualMethods.Where(m => m.AccessModifier == AccessModifier.Protected))
-                GenerateManageMethodHead(cw, method);*/
+            cw.WriteLine();
+            foreach (var method in _virtualMethods)
+                GenerateManageMethodSuperHead(cw, method);
 
             cw.CloseBlock(";");
             cw.WriteLine();
-
+            
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
             cw.SaveToFile(Path.Combine(PathOutputH, "Manage" + Class.BaseName + ".h"));
         }
-
+        
         #endregion
 
         #region CS
@@ -138,11 +136,31 @@ namespace CodeGenerator.CodeGen.Modules
             cw.OpenBlock();
             cw.CloseBlock();
             cw.WriteLine();
+            
+            var cwDllImport = new CodeWriter(cw);
+            var cwExternMethods = new CodeWriter(cw);
 
-            /*foreach (var method in _virtualMethods)
+            foreach (var method in _virtualMethods)
             {
-                GenerateManageMethodCs(cw, method);
-            }*/
+                GenerateMethodDllImport(cwDllImport, Class, method);
+                GenerateManageMethodCs(cwExternMethods, Class, method);
+            }
+            
+            if (!cwDllImport.IsEmpty())
+            {
+                cw.WriteLine("#region DLLInmport");
+                cw.Write(cwDllImport);
+                cw.WriteLine("#endregion");
+                cw.WriteLine();
+            }
+
+            if (!cwExternMethods.IsEmpty())
+            {
+                cw.WriteLine("#region Methods");
+                cw.Write(cwExternMethods);
+                cw.WriteLine("#endregion");
+                cw.WriteLine();
+            }
 
             cw.WriteLine($"public static implicit operator IntPtr({manageClassName} self)");
             cw.OpenBlock();
@@ -160,15 +178,33 @@ namespace CodeGenerator.CodeGen.Modules
             cw.SaveToFile(Path.Combine(PathOutputCs, manageClassName + ".cs"));
         }
 
-        private void GenerateManageMethodCs(CodeWriter cw, Method method)
+        private void GenerateMethodDllImport(CodeWriter cw, Class Class, Method method)
+        {
+            var inputs = method.InputTypes.Select(m => ExportVariable(m, false, true)).ToList();
+            inputs.Insert(0, "IntPtr self");
+
+            var param = string.Join(", ", inputs);
+            var ret = ExportVariable(method.ReturnType, false, true, true);
+            
+            var overloadPostfix = method.OverloadIndex > 0 ? $"_o{method.OverloadIndex}" : "";
+            var methodName = $"{Cfg.ExportPrefix}_Supper__{Class.Name}_{method.Name}{overloadPostfix}";
+
+            WriteDllImport(cw);
+            cw.WriteLine($"private static extern {ret} {methodName}({param});");
+            cw.WriteLine();
+        }
+
+        private void GenerateManageMethodCs(CodeWriter cw, Class Class, Method method)
         {
             var param = string.Join(", ", method.InputTypes.Select(m => ExportVariable(m, false)));
-
+            var inputs = method.InputTypes.Select(VarNameForCall).ToList();
+            inputs.Insert(0, "this");
+            
             GenerateSummaty(cw, method);
 
             cw.Write(method.AccessModifier.ToString().ToLower() + " ");
-            cw.WriteLine($"override {ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param}) {{ }}");
-            // cw.WriteLine($"\t=> base.{name}({string.Join(", ", inputs)});"); // todo: доделать виртуальные методы
+            cw.WriteLine($"override {ExportVariable(method.ReturnType)} {method.GetDisplayName()}({param})");
+            cw.WriteLine($"\t=> {Cfg.ExportPrefix}_Supper__{Class.Name}_{method.Name}({string.Join(", ", inputs)});");
 
             cw.WriteLine();
         }
@@ -208,6 +244,16 @@ namespace CodeGenerator.CodeGen.Modules
                 return "null";
 
             return null;
+        }
+
+        private string VarNameForCall(Variable variable)
+        {
+            var name = ToLowerCamelCase(variable.Name);
+
+            if (variable is EnumVariable)
+                return $"(byte){name}";
+
+            return name;
         }
 
         #endregion
@@ -261,7 +307,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine();
 
             _virtualMethods.ForEach(m => GenerateManageMethod(cw, Class, m));
-
+            
             cw.WriteLine("PRAGMA_ENABLE_DEPRECATION_WARNINGS");
 
             cw.SaveToFile(Path.Combine(PathOutputCpp, "Manage" + Class.BaseName + ".cpp"));
@@ -270,10 +316,17 @@ namespace CodeGenerator.CodeGen.Modules
         private void GenerateManageMethodHead(CodeWriter cw, Method method)
         {
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
-
+            
             cw.WriteLine($"virtual {method.ReturnType.GetTypeCppOgiginal()} {method.Name}({param}) override;");
         }
 
+        private void GenerateManageMethodSuperHead(CodeWriter cw, Method method)
+        {
+            var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
+            
+            cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} _Supper__{method.Name}({param});");
+        }
+        
         private void GenerateManageMethod(CodeWriter cw, Class Class, Method method)
         {
             var param = string.Join(", ", method.InputTypes.Select(v => v.GetTypeCppOgiginal()));
@@ -281,19 +334,19 @@ namespace CodeGenerator.CodeGen.Modules
             var callInObject = string.IsNullOrEmpty(call) ? call : ", " + call;
             var cppClassName = $"{Class.Litera}Manage{Class.BaseName}";
 
-            cw.WriteLine(
-                $"{method.ReturnType.GetTypeCppOgiginal()} {cppClassName}::{method.Name}({param})");
+            cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {cppClassName}::{method.Name}({param})");
             cw.OpenBlock();
-
-            cw.WriteLine($"Super::{method.Name}({call});"); // todo: убрать это отсюда и вызывать из управляемого кода
-
-            if (method.ReturnType.Type.Name != "void")
-                cw.Write("return ");
-
-            cw.WriteLine("");
             cw.WriteLine("if(AddWrapperIfNotAttach())");
             cw.WriteLine($"\tUCoreShell::GetInstance()->InvokeInObject(this, \"{method.Name}\"{callInObject});");
+            cw.WriteLine($"else");
+            cw.WriteLine($"\tSuper::{method.Name}({call});");
+            cw.CloseBlock();
+            cw.WriteLine();
 
+
+            cw.WriteLine($"{method.ReturnType.GetTypeCppOgiginal()} {cppClassName}::_Supper__{method.Name}({param})");
+            cw.OpenBlock();
+            cw.WriteLine($"Super::{method.Name}({call});");
             cw.CloseBlock();
             cw.WriteLine();
         }

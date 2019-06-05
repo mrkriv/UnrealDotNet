@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSpriteCategoryInfo : NativeStructWrapper
+	public partial class FSpriteCategoryInfo : NativeStructWrapper
 	{
-		internal FSpriteCategoryInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSpriteCategoryInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

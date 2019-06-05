@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FMeshBuildSettings : NativeStructWrapper
+	public partial class FMeshBuildSettings : NativeStructWrapper
 	{
-		internal FMeshBuildSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FMeshBuildSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

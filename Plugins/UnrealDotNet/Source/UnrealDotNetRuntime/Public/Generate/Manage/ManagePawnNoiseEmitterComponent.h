@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
 #include "IManageObject.h"
+#include "TypeConvertor.h"
 #include "Runtime/Engine/Classes/Components/PawnNoiseEmitterComponent.h"
 #include "ManagePawnNoiseEmitterComponent.generated.h"
 
@@ -29,11 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;
 	
-	virtual void MakeNoise(AActor* NoiseMaker, float Loudness, const FVector& NoiseLocation) override;
 	virtual void Activate(bool bReset) override;
-	virtual void AddTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	virtual void AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
-	virtual void ApplyWorldOffset(const FVector& InOffset, bool bWorldShift) override;
 	virtual void BeginPlay() override;
 	virtual void CreateRenderState_Concurrent() override;
 	virtual void Deactivate() override;
@@ -50,8 +47,6 @@ public:
 	virtual void OnRep_IsActive() override;
 	virtual void OnUnregister() override;
 	virtual void RegisterComponentTickFunctions(bool bRegister) override;
-	virtual void RemoveTickPrerequisiteActor(AActor* PrerequisiteActor) override;
-	virtual void RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent) override;
 	virtual void SendRenderDynamicData_Concurrent() override;
 	virtual void SendRenderTransform_Concurrent() override;
 	virtual void SetActive(bool bNewActive, bool bReset) override;
@@ -63,13 +58,11 @@ public:
 	virtual void BeginDestroy() override;
 	virtual void FinishDestroy() override;
 	virtual void MarkAsEditorOnlySubobject() override;
-	virtual void OverridePerObjectConfigSection(FString& SectionName) override;
 	virtual void PostCDOContruct() override;
 	virtual void PostEditImport() override;
 	virtual void PostInitProperties() override;
 	virtual void PostLoad() override;
 	virtual void PostNetReceive() override;
-	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
 	virtual void PostRepNotifies() override;
 	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
 	virtual void PreDestroyFromReplication() override;
@@ -77,6 +70,47 @@ public:
 	virtual void ShutdownAfterError() override;
 	virtual void CreateCluster() override;
 	virtual void OnClusterMarkedAsPendingKill() override;
+	
+	void _Supper__Activate(bool bReset);
+	void _Supper__BeginPlay();
+	void _Supper__CreateRenderState_Concurrent();
+	void _Supper__Deactivate();
+	void _Supper__DestroyComponent(bool bPromoteChildren);
+	void _Supper__DestroyRenderState_Concurrent();
+	void _Supper__InitializeComponent();
+	void _Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly);
+	void _Supper__OnActorEnableCollisionChanged();
+	void _Supper__OnComponentCreated();
+	void _Supper__OnComponentDestroyed(bool bDestroyingHierarchy);
+	void _Supper__OnCreatePhysicsState();
+	void _Supper__OnDestroyPhysicsState();
+	void _Supper__OnRegister();
+	void _Supper__OnRep_IsActive();
+	void _Supper__OnUnregister();
+	void _Supper__RegisterComponentTickFunctions(bool bRegister);
+	void _Supper__SendRenderDynamicData_Concurrent();
+	void _Supper__SendRenderTransform_Concurrent();
+	void _Supper__SetActive(bool bNewActive, bool bReset);
+	void _Supper__SetAutoActivate(bool bNewAutoActivate);
+	void _Supper__SetComponentTickEnabled(bool bEnabled);
+	void _Supper__SetComponentTickEnabledAsync(bool bEnabled);
+	void _Supper__ToggleActive();
+	void _Supper__UninitializeComponent();
+	void _Supper__BeginDestroy();
+	void _Supper__FinishDestroy();
+	void _Supper__MarkAsEditorOnlySubobject();
+	void _Supper__PostCDOContruct();
+	void _Supper__PostEditImport();
+	void _Supper__PostInitProperties();
+	void _Supper__PostLoad();
+	void _Supper__PostNetReceive();
+	void _Supper__PostRepNotifies();
+	void _Supper__PostSaveRoot(bool bCleanupIsRequired);
+	void _Supper__PreDestroyFromReplication();
+	void _Supper__PreNetReceive();
+	void _Supper__ShutdownAfterError();
+	void _Supper__CreateCluster();
+	void _Supper__OnClusterMarkedAsPendingKill();
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

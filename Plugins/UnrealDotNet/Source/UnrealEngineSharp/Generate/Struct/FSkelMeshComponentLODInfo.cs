@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSkelMeshComponentLODInfo : NativeStructWrapper
+	public partial class FSkelMeshComponentLODInfo : NativeStructWrapper
 	{
-		internal FSkelMeshComponentLODInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSkelMeshComponentLODInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

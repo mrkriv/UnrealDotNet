@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UExponentialHeightFogComponent : USceneComponent
+	public partial class UExponentialHeightFogComponent : USceneComponent
 	{
 		public UExponentialHeightFogComponent(IntPtr adress)
 			: base(adress)

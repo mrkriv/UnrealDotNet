@@ -28,802 +28,795 @@ bool UManageBillboardComponent::AddWrapperIfNotAttach()
 
 void UManageBillboardComponent::SetUV(int32 NewU, int32 NewUL, int32 NewV, int32 NewVL)
 {
-	Super::SetUV(NewU, NewUL, NewV, NewVL);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetUV", NewU, NewUL, NewV, NewVL);
+	else
+		Super::SetUV(NewU, NewUL, NewV, NewVL);
 }
 
-void UManageBillboardComponent::AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange)
+void UManageBillboardComponent::_Supper__SetUV(int32 NewU, int32 NewUL, int32 NewV, int32 NewVL)
 {
-	Super::AddAngularImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageBillboardComponent::AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddAngularImpulseInRadians(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulseInRadians", Impulse, BoneName, bVelChange);
-}
-
-void UManageBillboardComponent::AddForce(FVector Force, FName BoneName, bool bAccelChange)
-{
-	Super::AddForce(Force, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForce", Force, BoneName, bAccelChange);
-}
-
-void UManageBillboardComponent::AddForceAtLocation(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocation(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocation", Force, Location, BoneName);
-}
-
-void UManageBillboardComponent::AddForceAtLocationLocal(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocationLocal(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocationLocal", Force, Location, BoneName);
-}
-
-void UManageBillboardComponent::AddImpulse(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageBillboardComponent::AddImpulseAtLocation(FVector Impulse, FVector Location, FName BoneName)
-{
-	Super::AddImpulseAtLocation(Impulse, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulseAtLocation", Impulse, Location, BoneName);
-}
-
-void UManageBillboardComponent::AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
-{
-	Super::AddRadialForce(Origin, Radius, Strength, Falloff, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff, bAccelChange);
-}
-
-void UManageBillboardComponent::AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-{
-	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
-}
-
-void UManageBillboardComponent::AddTorqueInRadians(FVector Torque, FName BoneName, bool bAccelChange)
-{
-	Super::AddTorqueInRadians(Torque, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTorqueInRadians", Torque, BoneName, bAccelChange);
+	Super::SetUV(NewU, NewUL, NewV, NewVL);
 }
 
 void UManageBillboardComponent::OnComponentCollisionSettingsChanged()
 {
-	Super::OnComponentCollisionSettingsChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCollisionSettingsChanged");
+	else
+		Super::OnComponentCollisionSettingsChanged();
+}
+
+void UManageBillboardComponent::_Supper__OnComponentCollisionSettingsChanged()
+{
+	Super::OnComponentCollisionSettingsChanged();
 }
 
 void UManageBillboardComponent::PutAllRigidBodiesToSleep()
 {
-	Super::PutAllRigidBodiesToSleep();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PutAllRigidBodiesToSleep");
+	else
+		Super::PutAllRigidBodiesToSleep();
 }
 
-void UManageBillboardComponent::ReceiveComponentDamage(float DamageAmount, const FDamageEvent& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void UManageBillboardComponent::_Supper__PutAllRigidBodiesToSleep()
 {
-	Super::ReceiveComponentDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ReceiveComponentDamage", DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Super::PutAllRigidBodiesToSleep();
 }
 
 void UManageBillboardComponent::SetAllMassScale(float InMassScale)
 {
-	Super::SetAllMassScale(InMassScale);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllMassScale", InMassScale);
+	else
+		Super::SetAllMassScale(InMassScale);
 }
 
-void UManageBillboardComponent::SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent)
+void UManageBillboardComponent::_Supper__SetAllMassScale(float InMassScale)
 {
-	Super::SetAllPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent);
-}
-
-void UManageBillboardComponent::SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent)
-{
-	Super::SetAllPhysicsLinearVelocity(NewVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsLinearVelocity", NewVel, bAddToCurrent);
-}
-
-void UManageBillboardComponent::SetAllPhysicsPosition(FVector NewPos)
-{
-	Super::SetAllPhysicsPosition(NewPos);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsPosition", NewPos);
-}
-
-void UManageBillboardComponent::SetAllPhysicsRotation(FRotator NewRot)
-{
-	Super::SetAllPhysicsRotation(NewRot);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsRotation", NewRot);
+	Super::SetAllMassScale(InMassScale);
 }
 
 void UManageBillboardComponent::SetAllUseCCD(bool InUseCCD)
 {
-	Super::SetAllUseCCD(InUseCCD);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllUseCCD", InUseCCD);
+	else
+		Super::SetAllUseCCD(InUseCCD);
+}
+
+void UManageBillboardComponent::_Supper__SetAllUseCCD(bool InUseCCD)
+{
+	Super::SetAllUseCCD(InUseCCD);
 }
 
 void UManageBillboardComponent::SetAngularDamping(float InDamping)
 {
-	Super::SetAngularDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAngularDamping", InDamping);
+	else
+		Super::SetAngularDamping(InDamping);
 }
 
-void UManageBillboardComponent::SetCollisionObjectType(ECollisionChannel Channel)
+void UManageBillboardComponent::_Supper__SetAngularDamping(float InDamping)
 {
-	Super::SetCollisionObjectType(Channel);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionObjectType", Channel);
-}
-
-void UManageBillboardComponent::SetCollisionProfileName(FName InCollisionProfileName)
-{
-	Super::SetCollisionProfileName(InCollisionProfileName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionProfileName", InCollisionProfileName);
-}
-
-void UManageBillboardComponent::SetCollisionResponseToAllChannels(ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToAllChannels(NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToAllChannels", NewResponse);
-}
-
-void UManageBillboardComponent::SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToChannel(Channel, NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannel", Channel, NewResponse);
-}
-
-void UManageBillboardComponent::SetCollisionResponseToChannels(const FCollisionResponseContainer& NewReponses)
-{
-	Super::SetCollisionResponseToChannels(NewReponses);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannels", NewReponses);
+	Super::SetAngularDamping(InDamping);
 }
 
 void UManageBillboardComponent::SetEnableGravity(bool bGravityEnabled)
 {
-	Super::SetEnableGravity(bGravityEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetEnableGravity", bGravityEnabled);
+	else
+		Super::SetEnableGravity(bGravityEnabled);
+}
+
+void UManageBillboardComponent::_Supper__SetEnableGravity(bool bGravityEnabled)
+{
+	Super::SetEnableGravity(bGravityEnabled);
 }
 
 void UManageBillboardComponent::SetLinearDamping(float InDamping)
 {
-	Super::SetLinearDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLinearDamping", InDamping);
+	else
+		Super::SetLinearDamping(InDamping);
 }
 
-void UManageBillboardComponent::SetMassOverrideInKg(FName BoneName, float MassInKg, bool bOverrideMass)
+void UManageBillboardComponent::_Supper__SetLinearDamping(float InDamping)
 {
-	Super::SetMassOverrideInKg(BoneName, MassInKg, bOverrideMass);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassOverrideInKg", BoneName, MassInKg, bOverrideMass);
-}
-
-void UManageBillboardComponent::SetMassScale(FName BoneName, float InMassScale)
-{
-	Super::SetMassScale(BoneName, InMassScale);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassScale", BoneName, InMassScale);
+	Super::SetLinearDamping(InDamping);
 }
 
 void UManageBillboardComponent::SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetNotifyRigidBodyCollision", bNewNotifyRigidBodyCollision);
+	else
+		Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
-void UManageBillboardComponent::SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, FName BoneName)
+void UManageBillboardComponent::_Supper__SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent, BoneName);
-}
-
-void UManageBillboardComponent::SetPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent, FName BoneName)
-{
-	Super::SetPhysicsLinearVelocity(NewVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsLinearVelocity", NewVel, bAddToCurrent, BoneName);
+	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
 void UManageBillboardComponent::SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetSimulatePhysics(bSimulate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetSimulatePhysics", bSimulate);
+	else
+		Super::SetSimulatePhysics(bSimulate);
 }
 
-void UManageBillboardComponent::SetUseCCD(bool InUseCCD, FName BoneName)
+void UManageBillboardComponent::_Supper__SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetUseCCD(InUseCCD, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetUseCCD", InUseCCD, BoneName);
+	Super::SetSimulatePhysics(bSimulate);
 }
 
 void UManageBillboardComponent::UnWeldChildren()
 {
-	Super::UnWeldChildren();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldChildren");
+	else
+		Super::UnWeldChildren();
+}
+
+void UManageBillboardComponent::_Supper__UnWeldChildren()
+{
+	Super::UnWeldChildren();
 }
 
 void UManageBillboardComponent::UnWeldFromParent()
 {
-	Super::UnWeldFromParent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldFromParent");
+	else
+		Super::UnWeldFromParent();
+}
+
+void UManageBillboardComponent::_Supper__UnWeldFromParent()
+{
+	Super::UnWeldFromParent();
 }
 
 void UManageBillboardComponent::UpdatePhysicsToRBChannels()
 {
-	Super::UpdatePhysicsToRBChannels();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsToRBChannels");
+	else
+		Super::UpdatePhysicsToRBChannels();
+}
+
+void UManageBillboardComponent::_Supper__UpdatePhysicsToRBChannels()
+{
+	Super::UpdatePhysicsToRBChannels();
 }
 
 void UManageBillboardComponent::WakeAllRigidBodies()
 {
-	Super::WakeAllRigidBodies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "WakeAllRigidBodies");
+	else
+		Super::WakeAllRigidBodies();
 }
 
-void UManageBillboardComponent::WakeRigidBody(FName BoneName)
+void UManageBillboardComponent::_Supper__WakeAllRigidBodies()
 {
-	Super::WakeRigidBody(BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WakeRigidBody", BoneName);
-}
-
-void UManageBillboardComponent::WeldTo(USceneComponent* InParent, FName InSocketName)
-{
-	Super::WeldTo(InParent, InSocketName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WeldTo", InParent, InSocketName);
-}
-
-void UManageBillboardComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
-{
-	Super::DetachFromComponent(DetachmentRules);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+	Super::WakeAllRigidBodies();
 }
 
 void UManageBillboardComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
-	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromParent", bMaintainWorldPosition, bCallModify);
+	else
+		Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
+}
+
+void UManageBillboardComponent::_Supper__DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
+{
+	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
 }
 
 void UManageBillboardComponent::OnAttachmentChanged()
 {
-	Super::OnAttachmentChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnAttachmentChanged");
+	else
+		Super::OnAttachmentChanged();
 }
 
-void UManageBillboardComponent::OnChildAttached(USceneComponent* ChildComponent)
+void UManageBillboardComponent::_Supper__OnAttachmentChanged()
 {
-	Super::OnChildAttached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildAttached", ChildComponent);
-}
-
-void UManageBillboardComponent::OnChildDetached(USceneComponent* ChildComponent)
-{
-	Super::OnChildDetached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildDetached", ChildComponent);
+	Super::OnAttachmentChanged();
 }
 
 void UManageBillboardComponent::OnHiddenInGameChanged()
 {
-	Super::OnHiddenInGameChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnHiddenInGameChanged");
+	else
+		Super::OnHiddenInGameChanged();
 }
 
-void UManageBillboardComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+void UManageBillboardComponent::_Supper__OnHiddenInGameChanged()
 {
-	Super::OnUpdateTransform(UpdateTransformFlags, Teleport);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnUpdateTransform", UpdateTransformFlags, Teleport);
+	Super::OnHiddenInGameChanged();
 }
 
 void UManageBillboardComponent::OnVisibilityChanged()
 {
-	Super::OnVisibilityChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnVisibilityChanged");
+	else
+		Super::OnVisibilityChanged();
+}
+
+void UManageBillboardComponent::_Supper__OnVisibilityChanged()
+{
+	Super::OnVisibilityChanged();
 }
 
 void UManageBillboardComponent::PropagateLightingScenarioChange()
 {
-	Super::PropagateLightingScenarioChange();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PropagateLightingScenarioChange");
+	else
+		Super::PropagateLightingScenarioChange();
 }
 
-void UManageBillboardComponent::SetRelativeScale3D(FVector NewScale3D)
+void UManageBillboardComponent::_Supper__PropagateLightingScenarioChange()
 {
-	Super::SetRelativeScale3D(NewScale3D);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetRelativeScale3D", NewScale3D);
+	Super::PropagateLightingScenarioChange();
 }
 
 void UManageBillboardComponent::UpdateBounds()
 {
-	Super::UpdateBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateBounds");
+	else
+		Super::UpdateBounds();
+}
+
+void UManageBillboardComponent::_Supper__UpdateBounds()
+{
+	Super::UpdateBounds();
 }
 
 void UManageBillboardComponent::UpdatePhysicsVolume(bool bTriggerNotifiers)
 {
-	Super::UpdatePhysicsVolume(bTriggerNotifiers);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsVolume", bTriggerNotifiers);
+	else
+		Super::UpdatePhysicsVolume(bTriggerNotifiers);
+}
+
+void UManageBillboardComponent::_Supper__UpdatePhysicsVolume(bool bTriggerNotifiers)
+{
+	Super::UpdatePhysicsVolume(bTriggerNotifiers);
 }
 
 void UManageBillboardComponent::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManageBillboardComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageBillboardComponent::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageBillboardComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManageBillboardComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManageBillboardComponent::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManageBillboardComponent::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManageBillboardComponent::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManageBillboardComponent::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManageBillboardComponent::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManageBillboardComponent::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManageBillboardComponent::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManageBillboardComponent::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManageBillboardComponent::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManageBillboardComponent::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManageBillboardComponent::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManageBillboardComponent::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManageBillboardComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageBillboardComponent::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManageBillboardComponent::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManageBillboardComponent::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManageBillboardComponent::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManageBillboardComponent::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManageBillboardComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManageBillboardComponent::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManageBillboardComponent::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManageBillboardComponent::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManageBillboardComponent::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManageBillboardComponent::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManageBillboardComponent::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManageBillboardComponent::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManageBillboardComponent::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManageBillboardComponent::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManageBillboardComponent::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManageBillboardComponent::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManageBillboardComponent::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManageBillboardComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageBillboardComponent::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageBillboardComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManageBillboardComponent::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManageBillboardComponent::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManageBillboardComponent::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManageBillboardComponent::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManageBillboardComponent::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManageBillboardComponent::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManageBillboardComponent::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManageBillboardComponent::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManageBillboardComponent::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManageBillboardComponent::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManageBillboardComponent::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManageBillboardComponent::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManageBillboardComponent::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManageBillboardComponent::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManageBillboardComponent::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManageBillboardComponent::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManageBillboardComponent::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageBillboardComponent::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageBillboardComponent::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageBillboardComponent::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageBillboardComponent::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageBillboardComponent::OverridePerObjectConfigSection(FString& SectionName)
+void UManageBillboardComponent::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageBillboardComponent::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageBillboardComponent::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageBillboardComponent::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageBillboardComponent::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageBillboardComponent::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageBillboardComponent::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageBillboardComponent::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageBillboardComponent::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageBillboardComponent::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageBillboardComponent::PostRename(UObject* OldOuter, const FName OldName)
+void UManageBillboardComponent::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageBillboardComponent::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageBillboardComponent::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageBillboardComponent::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageBillboardComponent::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageBillboardComponent::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageBillboardComponent::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageBillboardComponent::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageBillboardComponent::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageBillboardComponent::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageBillboardComponent::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageBillboardComponent::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageBillboardComponent::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageBillboardComponent::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageBillboardComponent::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

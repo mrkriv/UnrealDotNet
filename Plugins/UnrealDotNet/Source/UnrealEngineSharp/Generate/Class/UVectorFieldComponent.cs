@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UVectorFieldComponent : UPrimitiveComponent
+	public partial class UVectorFieldComponent : UPrimitiveComponent
 	{
 		public UVectorFieldComponent(IntPtr adress)
 			: base(adress)

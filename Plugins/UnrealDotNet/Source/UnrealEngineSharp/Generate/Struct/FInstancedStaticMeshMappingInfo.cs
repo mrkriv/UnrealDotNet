@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInstancedStaticMeshMappingInfo : NativeStructWrapper
+	public partial class FInstancedStaticMeshMappingInfo : NativeStructWrapper
 	{
-		internal FInstancedStaticMeshMappingInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInstancedStaticMeshMappingInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

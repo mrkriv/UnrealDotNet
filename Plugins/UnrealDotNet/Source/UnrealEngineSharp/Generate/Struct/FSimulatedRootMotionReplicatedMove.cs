@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSimulatedRootMotionReplicatedMove : NativeStructWrapper
+	public partial class FSimulatedRootMotionReplicatedMove : NativeStructWrapper
 	{
-		internal FSimulatedRootMotionReplicatedMove(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSimulatedRootMotionReplicatedMove(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

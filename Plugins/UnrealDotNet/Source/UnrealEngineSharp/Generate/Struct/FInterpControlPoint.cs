@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInterpControlPoint : NativeStructWrapper
+	public partial class FInterpControlPoint : NativeStructWrapper
 	{
-		internal FInterpControlPoint(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInterpControlPoint(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

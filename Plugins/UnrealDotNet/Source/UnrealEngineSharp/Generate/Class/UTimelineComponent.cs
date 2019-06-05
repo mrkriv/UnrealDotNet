@@ -17,7 +17,7 @@ namespace UnrealEngine
 	/// Класс не может быть наследован в Вашем коде, используйте ManageTimelineComponent
 	/// Returns the time value of the last keyframe in any of the timeline's curves
 	/// </summary>
-	public  partial class UTimelineComponent : UActorComponent
+	public partial class UTimelineComponent : UActorComponent
 	{
 		public UTimelineComponent(IntPtr adress)
 			: base(adress)

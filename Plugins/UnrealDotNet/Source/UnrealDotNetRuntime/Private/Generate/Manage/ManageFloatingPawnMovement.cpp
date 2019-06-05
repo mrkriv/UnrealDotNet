@@ -28,538 +28,626 @@ bool UManageFloatingPawnMovement::AddWrapperIfNotAttach()
 
 void UManageFloatingPawnMovement::ApplyControlInputToVelocity(float DeltaTime)
 {
-	Super::ApplyControlInputToVelocity(DeltaTime);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyControlInputToVelocity", DeltaTime);
+	else
+		Super::ApplyControlInputToVelocity(DeltaTime);
 }
 
-void UManageFloatingPawnMovement::AddInputVector(FVector WorldVector, bool bForce)
+void UManageFloatingPawnMovement::_Supper__ApplyControlInputToVelocity(float DeltaTime)
 {
-	Super::AddInputVector(WorldVector, bForce);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddInputVector", WorldVector, bForce);
-}
-
-void UManageFloatingPawnMovement::NotifyBumpedPawn(APawn* BumpedPawn)
-{
-	Super::NotifyBumpedPawn(BumpedPawn);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyBumpedPawn", BumpedPawn);
-}
-
-void UManageFloatingPawnMovement::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
-{
-	Super::RequestDirectMove(MoveVelocity, bForceMaxSpeed);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RequestDirectMove", MoveVelocity, bForceMaxSpeed);
-}
-
-void UManageFloatingPawnMovement::RequestPathMove(const FVector& MoveInput)
-{
-	Super::RequestPathMove(MoveInput);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RequestPathMove", MoveInput);
+	Super::ApplyControlInputToVelocity(DeltaTime);
 }
 
 void UManageFloatingPawnMovement::StopActiveMovement()
 {
-	Super::StopActiveMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "StopActiveMovement");
+	else
+		Super::StopActiveMovement();
 }
 
-void UManageFloatingPawnMovement::AddRadialForce(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff)
+void UManageFloatingPawnMovement::_Supper__StopActiveMovement()
 {
-	Super::AddRadialForce(Origin, Radius, Strength, Falloff);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff);
-}
-
-void UManageFloatingPawnMovement::AddRadialImpulse(const FVector& Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-{
-	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
-}
-
-void UManageFloatingPawnMovement::HandleImpact(const FHitResult& Hit, float TimeSlice, const FVector& MoveDelta)
-{
-	Super::HandleImpact(Hit, TimeSlice, MoveDelta);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "HandleImpact", Hit, TimeSlice, MoveDelta);
+	Super::StopActiveMovement();
 }
 
 void UManageFloatingPawnMovement::OnTeleported()
 {
-	Super::OnTeleported();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnTeleported");
+	else
+		Super::OnTeleported();
 }
 
-void UManageFloatingPawnMovement::SetPlaneConstraintAxisSetting(EPlaneConstraintAxisSetting NewAxisSetting)
+void UManageFloatingPawnMovement::_Supper__OnTeleported()
 {
-	Super::SetPlaneConstraintAxisSetting(NewAxisSetting);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintAxisSetting", NewAxisSetting);
+	Super::OnTeleported();
 }
 
 void UManageFloatingPawnMovement::SetPlaneConstraintEnabled(bool bEnabled)
 {
-	Super::SetPlaneConstraintEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintEnabled", bEnabled);
+	else
+		Super::SetPlaneConstraintEnabled(bEnabled);
 }
 
-void UManageFloatingPawnMovement::SetPlaneConstraintFromVectors(FVector Forward, FVector Up)
+void UManageFloatingPawnMovement::_Supper__SetPlaneConstraintEnabled(bool bEnabled)
 {
-	Super::SetPlaneConstraintFromVectors(Forward, Up);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintFromVectors", Forward, Up);
-}
-
-void UManageFloatingPawnMovement::SetPlaneConstraintNormal(FVector PlaneNormal)
-{
-	Super::SetPlaneConstraintNormal(PlaneNormal);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintNormal", PlaneNormal);
-}
-
-void UManageFloatingPawnMovement::SetPlaneConstraintOrigin(FVector PlaneOrigin)
-{
-	Super::SetPlaneConstraintOrigin(PlaneOrigin);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPlaneConstraintOrigin", PlaneOrigin);
-}
-
-void UManageFloatingPawnMovement::SetUpdatedComponent(USceneComponent* NewUpdatedComponent)
-{
-	Super::SetUpdatedComponent(NewUpdatedComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetUpdatedComponent", NewUpdatedComponent);
+	Super::SetPlaneConstraintEnabled(bEnabled);
 }
 
 void UManageFloatingPawnMovement::SnapUpdatedComponentToPlane()
 {
-	Super::SnapUpdatedComponentToPlane();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SnapUpdatedComponentToPlane");
+	else
+		Super::SnapUpdatedComponentToPlane();
+}
+
+void UManageFloatingPawnMovement::_Supper__SnapUpdatedComponentToPlane()
+{
+	Super::SnapUpdatedComponentToPlane();
 }
 
 void UManageFloatingPawnMovement::StopMovementImmediately()
 {
-	Super::StopMovementImmediately();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "StopMovementImmediately");
+	else
+		Super::StopMovementImmediately();
+}
+
+void UManageFloatingPawnMovement::_Supper__StopMovementImmediately()
+{
+	Super::StopMovementImmediately();
 }
 
 void UManageFloatingPawnMovement::UpdateComponentVelocity()
 {
-	Super::UpdateComponentVelocity();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateComponentVelocity");
+	else
+		Super::UpdateComponentVelocity();
+}
+
+void UManageFloatingPawnMovement::_Supper__UpdateComponentVelocity()
+{
+	Super::UpdateComponentVelocity();
 }
 
 void UManageFloatingPawnMovement::UpdateTickRegistration()
 {
-	Super::UpdateTickRegistration();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateTickRegistration");
+	else
+		Super::UpdateTickRegistration();
+}
+
+void UManageFloatingPawnMovement::_Supper__UpdateTickRegistration()
+{
+	Super::UpdateTickRegistration();
 }
 
 void UManageFloatingPawnMovement::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManageFloatingPawnMovement::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageFloatingPawnMovement::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageFloatingPawnMovement::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManageFloatingPawnMovement::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManageFloatingPawnMovement::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManageFloatingPawnMovement::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManageFloatingPawnMovement::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManageFloatingPawnMovement::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManageFloatingPawnMovement::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManageFloatingPawnMovement::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManageFloatingPawnMovement::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManageFloatingPawnMovement::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManageFloatingPawnMovement::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManageFloatingPawnMovement::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManageFloatingPawnMovement::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManageFloatingPawnMovement::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManageFloatingPawnMovement::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageFloatingPawnMovement::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManageFloatingPawnMovement::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManageFloatingPawnMovement::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManageFloatingPawnMovement::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManageFloatingPawnMovement::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManageFloatingPawnMovement::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManageFloatingPawnMovement::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManageFloatingPawnMovement::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManageFloatingPawnMovement::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManageFloatingPawnMovement::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManageFloatingPawnMovement::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManageFloatingPawnMovement::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageFloatingPawnMovement::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageFloatingPawnMovement::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManageFloatingPawnMovement::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManageFloatingPawnMovement::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManageFloatingPawnMovement::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManageFloatingPawnMovement::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManageFloatingPawnMovement::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManageFloatingPawnMovement::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManageFloatingPawnMovement::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManageFloatingPawnMovement::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManageFloatingPawnMovement::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManageFloatingPawnMovement::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManageFloatingPawnMovement::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManageFloatingPawnMovement::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManageFloatingPawnMovement::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManageFloatingPawnMovement::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManageFloatingPawnMovement::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManageFloatingPawnMovement::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManageFloatingPawnMovement::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageFloatingPawnMovement::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageFloatingPawnMovement::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageFloatingPawnMovement::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageFloatingPawnMovement::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageFloatingPawnMovement::OverridePerObjectConfigSection(FString& SectionName)
+void UManageFloatingPawnMovement::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageFloatingPawnMovement::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageFloatingPawnMovement::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageFloatingPawnMovement::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageFloatingPawnMovement::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageFloatingPawnMovement::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageFloatingPawnMovement::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageFloatingPawnMovement::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageFloatingPawnMovement::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageFloatingPawnMovement::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageFloatingPawnMovement::PostRename(UObject* OldOuter, const FName OldName)
+void UManageFloatingPawnMovement::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageFloatingPawnMovement::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageFloatingPawnMovement::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageFloatingPawnMovement::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageFloatingPawnMovement::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageFloatingPawnMovement::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageFloatingPawnMovement::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageFloatingPawnMovement::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageFloatingPawnMovement::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageFloatingPawnMovement::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageFloatingPawnMovement::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageFloatingPawnMovement::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageFloatingPawnMovement::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageFloatingPawnMovement::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageFloatingPawnMovement::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

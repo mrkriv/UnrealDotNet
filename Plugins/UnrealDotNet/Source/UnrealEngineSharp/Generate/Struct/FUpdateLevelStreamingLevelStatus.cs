@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FUpdateLevelStreamingLevelStatus : NativeStructWrapper
+	public partial class FUpdateLevelStreamingLevelStatus : NativeStructWrapper
 	{
-		internal FUpdateLevelStreamingLevelStatus(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FUpdateLevelStreamingLevelStatus(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

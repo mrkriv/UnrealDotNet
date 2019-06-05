@@ -1,11 +1,3 @@
-#ifndef DOTNET_EXPORT
-# if defined(WIN32)
-#   define DOTNET_EXPORT __declspec(dllexport)
-# elif defined(__GNUC__)
-#  define DOTNET_EXPORT __attribute__ ((visibility ("default")))
-# endif
-#endif
-
 #include "ExportUtilites.h"
 #include "TypeConvertor.h"
 

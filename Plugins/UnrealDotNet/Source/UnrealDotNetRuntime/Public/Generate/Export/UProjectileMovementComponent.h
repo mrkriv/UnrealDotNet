@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageProjectileMovementComponent.h"
 #include "Runtime/Engine/Classes/GameFramework/ProjectileMovementComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
@@ -254,24 +255,24 @@ extern "C"
 	{
 		auto& _p0 = *(FVector*)NewLocation;
 		auto& _p1 = *(FRotator*)NewRotation;
-		Self->UProjectileMovementComponent::MoveInterpolationTarget(_p0, _p1);
+		Self->MoveInterpolationTarget(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ResetInterpolation(UProjectileMovementComponent* Self)
 	{
-		Self->UProjectileMovementComponent::ResetInterpolation();
+		Self->ResetInterpolation();
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_SetInterpolatedComponent(UProjectileMovementComponent* Self, USceneComponent* Component)
 	{
 		auto _p0 = Component;
-		Self->UProjectileMovementComponent::SetInterpolatedComponent(_p0);
+		Self->SetInterpolatedComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_SetVelocityInLocalSpace(UProjectileMovementComponent* Self, INT_PTR NewVelocity)
 	{
 		auto _p0 = *(FVector*)NewVelocity;
-		Self->UProjectileMovementComponent::SetVelocityInLocalSpace(_p0);
+		Self->SetVelocityInLocalSpace(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_ShouldApplyGravity(UProjectileMovementComponent* Self)
@@ -287,13 +288,267 @@ extern "C"
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_StopSimulating(UProjectileMovementComponent* Self, INT_PTR HitResult)
 	{
 		auto& _p0 = *(FHitResult*)HitResult;
-		Self->UProjectileMovementComponent::StopSimulating(_p0);
+		Self->StopSimulating(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UProjectileMovementComponent_TickInterpolation(UProjectileMovementComponent* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->UProjectileMovementComponent::TickInterpolation_WRAP(_p0);
+		((E_PROTECTED_WRAP_UProjectileMovementComponent*)Self)->TickInterpolation_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_ResetInterpolation(UProjectileMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__ResetInterpolation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_TickInterpolation(UProjectileMovementComponent* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		((UManageProjectileMovementComponent*)Self)->_Supper__TickInterpolation(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnTeleported(UMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnTeleported();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SetPlaneConstraintEnabled(UMovementComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageProjectileMovementComponent*)Self)->_Supper__SetPlaneConstraintEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SnapUpdatedComponentToPlane(UMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__SnapUpdatedComponentToPlane();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_StopMovementImmediately(UMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__StopMovementImmediately();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_UpdateComponentVelocity(UMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__UpdateComponentVelocity();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_UpdateTickRegistration(UMovementComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__UpdateTickRegistration();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageProjectileMovementComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageProjectileMovementComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageProjectileMovementComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageProjectileMovementComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageProjectileMovementComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageProjectileMovementComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageProjectileMovementComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageProjectileMovementComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostEditImport(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostLoad(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageProjectileMovementComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UProjectileMovementComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageProjectileMovementComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

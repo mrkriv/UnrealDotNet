@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FCapsuleShape : NativeStructWrapper
+	public partial class FCapsuleShape : NativeStructWrapper
 	{
-		internal FCapsuleShape(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FCapsuleShape(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

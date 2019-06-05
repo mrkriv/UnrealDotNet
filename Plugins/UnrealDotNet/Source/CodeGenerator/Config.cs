@@ -8,6 +8,7 @@
         public string DllPaksImportName { get; set; }
         public string EnginePathSeg { get; set; }
         public string ExportPrefix { get; set; }
+        //public string ... { get; set; }    // todo:: add "_Supper__"
         public string ExportOperatorPrefix { get; set; }
         public string ExportPropertyPrefix { get; set; }
         public string ExportProtectedPrefix { get; set; }

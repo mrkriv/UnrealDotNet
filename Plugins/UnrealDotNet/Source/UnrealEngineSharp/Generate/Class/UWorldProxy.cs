@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UWorldProxy : NativeWrapper
+	public partial class UWorldProxy : NativeWrapper
 	{
 		public UWorldProxy(IntPtr adress)
 			: base(adress)

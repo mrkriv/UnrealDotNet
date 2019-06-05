@@ -38,658 +38,808 @@ bool AManageWorldSettings::AddWrapperIfNotAttach()
 
 void AManageWorldSettings::NotifyBeginPlay()
 {
-	Super::NotifyBeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyBeginPlay");
+	else
+		Super::NotifyBeginPlay();
+}
+
+void AManageWorldSettings::_Supper__NotifyBeginPlay()
+{
+	Super::NotifyBeginPlay();
 }
 
 void AManageWorldSettings::NotifyMatchStarted()
 {
-	Super::NotifyMatchStarted();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyMatchStarted");
+	else
+		Super::NotifyMatchStarted();
+}
+
+void AManageWorldSettings::_Supper__NotifyMatchStarted()
+{
+	Super::NotifyMatchStarted();
 }
 
 void AManageWorldSettings::OnRep_WorldGravityZ()
 {
-	Super::OnRep_WorldGravityZ();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_WorldGravityZ");
+	else
+		Super::OnRep_WorldGravityZ();
 }
 
-void AManageWorldSettings::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void AManageWorldSettings::_Supper__OnRep_WorldGravityZ()
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageWorldSettings::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void AManageWorldSettings::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
-}
-
-void AManageWorldSettings::BecomeViewTarget(APlayerController* PC)
-{
-	Super::BecomeViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BecomeViewTarget", PC);
+	Super::OnRep_WorldGravityZ();
 }
 
 void AManageWorldSettings::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void AManageWorldSettings::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void AManageWorldSettings::ClearCrossLevelReferences()
 {
-	Super::ClearCrossLevelReferences();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ClearCrossLevelReferences");
+	else
+		Super::ClearCrossLevelReferences();
+}
+
+void AManageWorldSettings::_Supper__ClearCrossLevelReferences()
+{
+	Super::ClearCrossLevelReferences();
 }
 
 void AManageWorldSettings::Destroyed()
 {
-	Super::Destroyed();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Destroyed");
+	else
+		Super::Destroyed();
 }
 
-void AManageWorldSettings::DisableInput(APlayerController* PlayerController)
+void AManageWorldSettings::_Supper__Destroyed()
 {
-	Super::DisableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DisableInput", PlayerController);
-}
-
-void AManageWorldSettings::EnableInput(APlayerController* PlayerController)
-{
-	Super::EnableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EnableInput", PlayerController);
-}
-
-void AManageWorldSettings::EndViewTarget(APlayerController* PC)
-{
-	Super::EndViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EndViewTarget", PC);
+	Super::Destroyed();
 }
 
 void AManageWorldSettings::ForceNetRelevant()
 {
-	Super::ForceNetRelevant();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetRelevant");
+	else
+		Super::ForceNetRelevant();
+}
+
+void AManageWorldSettings::_Supper__ForceNetRelevant()
+{
+	Super::ForceNetRelevant();
 }
 
 void AManageWorldSettings::ForceNetUpdate()
 {
-	Super::ForceNetUpdate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetUpdate");
+	else
+		Super::ForceNetUpdate();
+}
+
+void AManageWorldSettings::_Supper__ForceNetUpdate()
+{
+	Super::ForceNetUpdate();
 }
 
 void AManageWorldSettings::GatherCurrentMovement()
 {
-	Super::GatherCurrentMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "GatherCurrentMovement");
+	else
+		Super::GatherCurrentMovement();
+}
+
+void AManageWorldSettings::_Supper__GatherCurrentMovement()
+{
+	Super::GatherCurrentMovement();
 }
 
 void AManageWorldSettings::InvalidateLightingCacheDetailed(bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bTranslationOnly);
+}
+
+void AManageWorldSettings::_Supper__InvalidateLightingCacheDetailed(bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
 }
 
 void AManageWorldSettings::K2_DestroyActor()
 {
-	Super::K2_DestroyActor();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "K2_DestroyActor");
+	else
+		Super::K2_DestroyActor();
+}
+
+void AManageWorldSettings::_Supper__K2_DestroyActor()
+{
+	Super::K2_DestroyActor();
 }
 
 void AManageWorldSettings::LifeSpanExpired()
 {
-	Super::LifeSpanExpired();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LifeSpanExpired");
+	else
+		Super::LifeSpanExpired();
+}
+
+void AManageWorldSettings::_Supper__LifeSpanExpired()
+{
+	Super::LifeSpanExpired();
 }
 
 void AManageWorldSettings::MarkComponentsAsPendingKill()
 {
-	Super::MarkComponentsAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkComponentsAsPendingKill");
+	else
+		Super::MarkComponentsAsPendingKill();
+}
+
+void AManageWorldSettings::_Supper__MarkComponentsAsPendingKill()
+{
+	Super::MarkComponentsAsPendingKill();
 }
 
 void AManageWorldSettings::NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginCursorOver");
+	else
+		Super::NotifyActorBeginCursorOver();
 }
 
-void AManageWorldSettings::NotifyActorBeginOverlap(AActor* OtherActor)
+void AManageWorldSettings::_Supper__NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginOverlap", OtherActor);
+	Super::NotifyActorBeginCursorOver();
 }
 
 void AManageWorldSettings::NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndCursorOver");
+	else
+		Super::NotifyActorEndCursorOver();
 }
 
-void AManageWorldSettings::NotifyActorEndOverlap(AActor* OtherActor)
+void AManageWorldSettings::_Supper__NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndOverlap", OtherActor);
-}
-
-void AManageWorldSettings::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
-{
-	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyHit", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-}
-
-void AManageWorldSettings::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnConstruction", Transform);
+	Super::NotifyActorEndCursorOver();
 }
 
 void AManageWorldSettings::OnRep_AttachmentReplication()
 {
-	Super::OnRep_AttachmentReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_AttachmentReplication");
+	else
+		Super::OnRep_AttachmentReplication();
+}
+
+void AManageWorldSettings::_Supper__OnRep_AttachmentReplication()
+{
+	Super::OnRep_AttachmentReplication();
 }
 
 void AManageWorldSettings::OnRep_Instigator()
 {
-	Super::OnRep_Instigator();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Instigator");
+	else
+		Super::OnRep_Instigator();
+}
+
+void AManageWorldSettings::_Supper__OnRep_Instigator()
+{
+	Super::OnRep_Instigator();
 }
 
 void AManageWorldSettings::OnRep_Owner()
 {
-	Super::OnRep_Owner();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Owner");
+	else
+		Super::OnRep_Owner();
+}
+
+void AManageWorldSettings::_Supper__OnRep_Owner()
+{
+	Super::OnRep_Owner();
 }
 
 void AManageWorldSettings::OnRep_ReplicatedMovement()
 {
-	Super::OnRep_ReplicatedMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicatedMovement");
+	else
+		Super::OnRep_ReplicatedMovement();
+}
+
+void AManageWorldSettings::_Supper__OnRep_ReplicatedMovement()
+{
+	Super::OnRep_ReplicatedMovement();
 }
 
 void AManageWorldSettings::OnRep_ReplicateMovement()
 {
-	Super::OnRep_ReplicateMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicateMovement");
+	else
+		Super::OnRep_ReplicateMovement();
+}
+
+void AManageWorldSettings::_Supper__OnRep_ReplicateMovement()
+{
+	Super::OnRep_ReplicateMovement();
 }
 
 void AManageWorldSettings::OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnReplicationPausedChanged(bIsReplicationPaused);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnReplicationPausedChanged", bIsReplicationPaused);
+	else
+		Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
-void AManageWorldSettings::OnSubobjectCreatedFromReplication(UObject* NewSubobject)
+void AManageWorldSettings::_Supper__OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnSubobjectCreatedFromReplication(NewSubobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectCreatedFromReplication", NewSubobject);
-}
-
-void AManageWorldSettings::OnSubobjectDestroyFromReplication(UObject* Subobject)
-{
-	Super::OnSubobjectDestroyFromReplication(Subobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
+	Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
 void AManageWorldSettings::OutsideWorldBounds()
 {
-	Super::OutsideWorldBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OutsideWorldBounds");
+	else
+		Super::OutsideWorldBounds();
+}
+
+void AManageWorldSettings::_Supper__OutsideWorldBounds()
+{
+	Super::OutsideWorldBounds();
 }
 
 void AManageWorldSettings::PostActorCreated()
 {
-	Super::PostActorCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostActorCreated");
+	else
+		Super::PostActorCreated();
+}
+
+void AManageWorldSettings::_Supper__PostActorCreated()
+{
+	Super::PostActorCreated();
 }
 
 void AManageWorldSettings::PostInitializeComponents()
 {
-	Super::PostInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitializeComponents");
+	else
+		Super::PostInitializeComponents();
+}
+
+void AManageWorldSettings::_Supper__PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
 }
 
 void AManageWorldSettings::PostNetInit()
 {
-	Super::PostNetInit();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetInit");
+	else
+		Super::PostNetInit();
+}
+
+void AManageWorldSettings::_Supper__PostNetInit()
+{
+	Super::PostNetInit();
 }
 
 void AManageWorldSettings::PostNetReceiveLocationAndRotation()
 {
-	Super::PostNetReceiveLocationAndRotation();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveLocationAndRotation");
+	else
+		Super::PostNetReceiveLocationAndRotation();
+}
+
+void AManageWorldSettings::_Supper__PostNetReceiveLocationAndRotation()
+{
+	Super::PostNetReceiveLocationAndRotation();
 }
 
 void AManageWorldSettings::PostNetReceivePhysicState()
 {
-	Super::PostNetReceivePhysicState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceivePhysicState");
+	else
+		Super::PostNetReceivePhysicState();
+}
+
+void AManageWorldSettings::_Supper__PostNetReceivePhysicState()
+{
+	Super::PostNetReceivePhysicState();
 }
 
 void AManageWorldSettings::PostNetReceiveRole()
 {
-	Super::PostNetReceiveRole();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveRole");
+	else
+		Super::PostNetReceiveRole();
 }
 
-void AManageWorldSettings::PostNetReceiveVelocity(const FVector& NewVelocity)
+void AManageWorldSettings::_Supper__PostNetReceiveRole()
 {
-	Super::PostNetReceiveVelocity(NewVelocity);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveVelocity", NewVelocity);
+	Super::PostNetReceiveRole();
 }
 
 void AManageWorldSettings::PostRegisterAllComponents()
 {
-	Super::PostRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRegisterAllComponents");
+	else
+		Super::PostRegisterAllComponents();
 }
 
-void AManageWorldSettings::PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir)
+void AManageWorldSettings::_Supper__PostRegisterAllComponents()
 {
-	Super::PostRenderFor(PC, Canvas, CameraPosition, CameraDir);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRenderFor", PC, Canvas, CameraPosition, CameraDir);
+	Super::PostRegisterAllComponents();
 }
 
 void AManageWorldSettings::PostUnregisterAllComponents()
 {
-	Super::PostUnregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostUnregisterAllComponents");
+	else
+		Super::PostUnregisterAllComponents();
+}
+
+void AManageWorldSettings::_Supper__PostUnregisterAllComponents()
+{
+	Super::PostUnregisterAllComponents();
 }
 
 void AManageWorldSettings::PreInitializeComponents()
 {
-	Super::PreInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreInitializeComponents");
+	else
+		Super::PreInitializeComponents();
+}
+
+void AManageWorldSettings::_Supper__PreInitializeComponents()
+{
+	Super::PreInitializeComponents();
 }
 
 void AManageWorldSettings::PreRegisterAllComponents()
 {
-	Super::PreRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreRegisterAllComponents");
+	else
+		Super::PreRegisterAllComponents();
+}
+
+void AManageWorldSettings::_Supper__PreRegisterAllComponents()
+{
+	Super::PreRegisterAllComponents();
 }
 
 void AManageWorldSettings::PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
 {
-	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PrestreamTextures", Seconds, bEnableStreaming, CinematicTextureGroups);
+	else
+		Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
+}
+
+void AManageWorldSettings::_Supper__PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
 }
 
 void AManageWorldSettings::RegisterActorTickFunctions(bool bRegister)
 {
-	Super::RegisterActorTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterActorTickFunctions", bRegister);
+	else
+		Super::RegisterActorTickFunctions(bRegister);
+}
+
+void AManageWorldSettings::_Supper__RegisterActorTickFunctions(bool bRegister)
+{
+	Super::RegisterActorTickFunctions(bRegister);
 }
 
 void AManageWorldSettings::RegisterAllComponents()
 {
-	Super::RegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterAllComponents");
+	else
+		Super::RegisterAllComponents();
 }
 
-void AManageWorldSettings::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void AManageWorldSettings::_Supper__RegisterAllComponents()
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageWorldSettings::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterAllComponents();
 }
 
 void AManageWorldSettings::ReregisterAllComponents()
 {
-	Super::ReregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ReregisterAllComponents");
+	else
+		Super::ReregisterAllComponents();
+}
+
+void AManageWorldSettings::_Supper__ReregisterAllComponents()
+{
+	Super::ReregisterAllComponents();
 }
 
 void AManageWorldSettings::RerunConstructionScripts()
 {
-	Super::RerunConstructionScripts();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RerunConstructionScripts");
+	else
+		Super::RerunConstructionScripts();
+}
+
+void AManageWorldSettings::_Supper__RerunConstructionScripts()
+{
+	Super::RerunConstructionScripts();
 }
 
 void AManageWorldSettings::Reset()
 {
-	Super::Reset();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Reset");
+	else
+		Super::Reset();
+}
+
+void AManageWorldSettings::_Supper__Reset()
+{
+	Super::Reset();
 }
 
 void AManageWorldSettings::RewindForReplay()
 {
-	Super::RewindForReplay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RewindForReplay");
+	else
+		Super::RewindForReplay();
+}
+
+void AManageWorldSettings::_Supper__RewindForReplay()
+{
+	Super::RewindForReplay();
 }
 
 void AManageWorldSettings::SetActorHiddenInGame(bool bNewHidden)
 {
-	Super::SetActorHiddenInGame(bNewHidden);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActorHiddenInGame", bNewHidden);
+	else
+		Super::SetActorHiddenInGame(bNewHidden);
+}
+
+void AManageWorldSettings::_Supper__SetActorHiddenInGame(bool bNewHidden)
+{
+	Super::SetActorHiddenInGame(bNewHidden);
 }
 
 void AManageWorldSettings::SetLifeSpan(float InLifespan)
 {
-	Super::SetLifeSpan(InLifespan);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLifeSpan", InLifespan);
+	else
+		Super::SetLifeSpan(InLifespan);
 }
 
-void AManageWorldSettings::SetOwner(AActor* NewOwner)
+void AManageWorldSettings::_Supper__SetLifeSpan(float InLifespan)
 {
-	Super::SetOwner(NewOwner);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetOwner", NewOwner);
+	Super::SetLifeSpan(InLifespan);
 }
 
 void AManageWorldSettings::SetReplicateMovement(bool bInReplicateMovement)
 {
-	Super::SetReplicateMovement(bInReplicateMovement);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetReplicateMovement", bInReplicateMovement);
+	else
+		Super::SetReplicateMovement(bInReplicateMovement);
+}
+
+void AManageWorldSettings::_Supper__SetReplicateMovement(bool bInReplicateMovement)
+{
+	Super::SetReplicateMovement(bInReplicateMovement);
 }
 
 void AManageWorldSettings::TearOff()
 {
-	Super::TearOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TearOff");
+	else
+		Super::TearOff();
+}
+
+void AManageWorldSettings::_Supper__TearOff()
+{
+	Super::TearOff();
 }
 
 void AManageWorldSettings::TeleportSucceeded(bool bIsATest)
 {
-	Super::TeleportSucceeded(bIsATest);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TeleportSucceeded", bIsATest);
+	else
+		Super::TeleportSucceeded(bIsATest);
+}
+
+void AManageWorldSettings::_Supper__TeleportSucceeded(bool bIsATest)
+{
+	Super::TeleportSucceeded(bIsATest);
 }
 
 void AManageWorldSettings::Tick(float DeltaSeconds)
 {
-	Super::Tick(DeltaSeconds);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Tick", DeltaSeconds);
+	else
+		Super::Tick(DeltaSeconds);
+}
+
+void AManageWorldSettings::_Supper__Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }
 
 void AManageWorldSettings::TornOff()
 {
-	Super::TornOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TornOff");
+	else
+		Super::TornOff();
+}
+
+void AManageWorldSettings::_Supper__TornOff()
+{
+	Super::TornOff();
 }
 
 void AManageWorldSettings::UnregisterAllComponents(bool bForReregister)
 {
-	Super::UnregisterAllComponents(bForReregister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnregisterAllComponents", bForReregister);
+	else
+		Super::UnregisterAllComponents(bForReregister);
+}
+
+void AManageWorldSettings::_Supper__UnregisterAllComponents(bool bForReregister)
+{
+	Super::UnregisterAllComponents(bForReregister);
 }
 
 void AManageWorldSettings::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void AManageWorldSettings::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void AManageWorldSettings::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void AManageWorldSettings::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void AManageWorldSettings::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void AManageWorldSettings::OverridePerObjectConfigSection(FString& SectionName)
+void AManageWorldSettings::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void AManageWorldSettings::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void AManageWorldSettings::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void AManageWorldSettings::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void AManageWorldSettings::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void AManageWorldSettings::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void AManageWorldSettings::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void AManageWorldSettings::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void AManageWorldSettings::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void AManageWorldSettings::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void AManageWorldSettings::PostRename(UObject* OldOuter, const FName OldName)
+void AManageWorldSettings::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void AManageWorldSettings::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void AManageWorldSettings::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void AManageWorldSettings::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void AManageWorldSettings::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void AManageWorldSettings::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void AManageWorldSettings::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void AManageWorldSettings::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void AManageWorldSettings::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void AManageWorldSettings::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void AManageWorldSettings::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void AManageWorldSettings::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void AManageWorldSettings::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void AManageWorldSettings::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void AManageWorldSettings::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

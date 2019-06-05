@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPluginRedirect : NativeStructWrapper
+	public partial class FPluginRedirect : NativeStructWrapper
 	{
-		internal FPluginRedirect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPluginRedirect(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

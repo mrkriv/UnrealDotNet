@@ -26,388 +26,524 @@ bool UManagePawnNoiseEmitterComponent::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
-void UManagePawnNoiseEmitterComponent::MakeNoise(AActor* NoiseMaker, float Loudness, const FVector& NoiseLocation)
-{
-	Super::MakeNoise(NoiseMaker, Loudness, NoiseLocation);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "MakeNoise", NoiseMaker, Loudness, NoiseLocation);
-}
-
 void UManagePawnNoiseEmitterComponent::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManagePawnNoiseEmitterComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManagePawnNoiseEmitterComponent::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManagePawnNoiseEmitterComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManagePawnNoiseEmitterComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManagePawnNoiseEmitterComponent::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManagePawnNoiseEmitterComponent::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManagePawnNoiseEmitterComponent::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManagePawnNoiseEmitterComponent::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManagePawnNoiseEmitterComponent::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManagePawnNoiseEmitterComponent::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManagePawnNoiseEmitterComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManagePawnNoiseEmitterComponent::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManagePawnNoiseEmitterComponent::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManagePawnNoiseEmitterComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManagePawnNoiseEmitterComponent::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManagePawnNoiseEmitterComponent::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManagePawnNoiseEmitterComponent::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManagePawnNoiseEmitterComponent::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManagePawnNoiseEmitterComponent::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManagePawnNoiseEmitterComponent::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManagePawnNoiseEmitterComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManagePawnNoiseEmitterComponent::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManagePawnNoiseEmitterComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManagePawnNoiseEmitterComponent::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManagePawnNoiseEmitterComponent::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManagePawnNoiseEmitterComponent::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManagePawnNoiseEmitterComponent::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManagePawnNoiseEmitterComponent::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManagePawnNoiseEmitterComponent::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManagePawnNoiseEmitterComponent::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManagePawnNoiseEmitterComponent::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManagePawnNoiseEmitterComponent::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManagePawnNoiseEmitterComponent::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManagePawnNoiseEmitterComponent::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManagePawnNoiseEmitterComponent::OverridePerObjectConfigSection(FString& SectionName)
+void UManagePawnNoiseEmitterComponent::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManagePawnNoiseEmitterComponent::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManagePawnNoiseEmitterComponent::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManagePawnNoiseEmitterComponent::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManagePawnNoiseEmitterComponent::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManagePawnNoiseEmitterComponent::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManagePawnNoiseEmitterComponent::PostRename(UObject* OldOuter, const FName OldName)
+void UManagePawnNoiseEmitterComponent::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManagePawnNoiseEmitterComponent::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManagePawnNoiseEmitterComponent::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManagePawnNoiseEmitterComponent::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManagePawnNoiseEmitterComponent::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManagePawnNoiseEmitterComponent::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManagePawnNoiseEmitterComponent::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManagePawnNoiseEmitterComponent::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManagePawnNoiseEmitterComponent::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

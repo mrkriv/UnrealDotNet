@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FTouchInputControl : NativeStructWrapper
+	public partial class FTouchInputControl : NativeStructWrapper
 	{
-		internal FTouchInputControl(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FTouchInputControl(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

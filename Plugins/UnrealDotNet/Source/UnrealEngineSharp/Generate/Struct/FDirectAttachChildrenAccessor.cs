@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDirectAttachChildrenAccessor : NativeStructWrapper
+	public partial class FDirectAttachChildrenAccessor : NativeStructWrapper
 	{
-		internal FDirectAttachChildrenAccessor(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDirectAttachChildrenAccessor(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

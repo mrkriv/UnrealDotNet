@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInputAxisBinding : FInputBinding
+	public partial class FInputAxisBinding : FInputBinding
 	{
-		internal FInputAxisBinding(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInputAxisBinding(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

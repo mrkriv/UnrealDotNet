@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManagePlayer.h"
 #include "Runtime/Engine/Classes/Engine/Player.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Player.h:17
@@ -50,7 +51,83 @@ extern "C"
 	DOTNET_EXPORT auto E_UPlayer_SwitchController(UPlayer* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		Self->UPlayer::SwitchController(_p0);
+		Self->SwitchController(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_BeginDestroy(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_FinishDestroy(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostCDOContruct(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostEditImport(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostInitProperties(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostLoad(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostNetReceive(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostRepNotifies(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManagePlayer*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_PreNetReceive(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_ShutdownAfterError(UObject* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UPlayer_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManagePlayer*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPostProcessSettings : NativeStructWrapper
+	public partial class FPostProcessSettings : NativeStructWrapper
 	{
-		internal FPostProcessSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPostProcessSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

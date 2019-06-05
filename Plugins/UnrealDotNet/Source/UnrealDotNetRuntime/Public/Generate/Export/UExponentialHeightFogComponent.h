@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageExponentialHeightFogComponent.h"
 #include "Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ExponentialHeightFogComponent.h:47
@@ -207,6 +208,256 @@ extern "C"
 	{
 		auto _p0 = NewValue;
 		Self->SetVolumetricFogScatteringDistribution(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostEditImport(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostLoad(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UExponentialHeightFogComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageExponentialHeightFogComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageSkyLightComponent.h"
 #include "Runtime/Engine/Classes/Components/SkyLightComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:96
@@ -155,6 +156,261 @@ extern "C"
 	{
 		auto _p0 = WorldToUpdate;
 		Self->UpdateSkyCaptureContents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_UpdateLightGUIDs(ULightComponentBase* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__UpdateLightGUIDs();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageSkyLightComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageSkyLightComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageSkyLightComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageSkyLightComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageSkyLightComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageSkyLightComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageSkyLightComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageSkyLightComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageSkyLightComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSkyLightComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSkyLightComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostEditImport(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostLoad(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageSkyLightComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkyLightComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageSkyLightComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

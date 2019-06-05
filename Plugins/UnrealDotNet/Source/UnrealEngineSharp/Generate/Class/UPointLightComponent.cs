@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UPointLightComponent : ULocalLightComponent
+	public partial class UPointLightComponent : ULocalLightComponent
 	{
 		public UPointLightComponent(IntPtr adress)
 			: base(adress)

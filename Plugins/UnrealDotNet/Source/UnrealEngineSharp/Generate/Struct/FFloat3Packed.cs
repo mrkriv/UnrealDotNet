@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFloat3Packed : NativeStructWrapper
+	public partial class FFloat3Packed : NativeStructWrapper
 	{
-		internal FFloat3Packed(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFloat3Packed(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

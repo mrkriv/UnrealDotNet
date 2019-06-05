@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class USkinnedMeshComponent : UMeshComponent
+	public partial class USkinnedMeshComponent : UMeshComponent
 	{
 		public USkinnedMeshComponent(IntPtr adress)
 			: base(adress)

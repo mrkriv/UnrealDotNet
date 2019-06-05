@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRotationConversionCache : NativeStructWrapper
+	public partial class FRotationConversionCache : NativeStructWrapper
 	{
-		internal FRotationConversionCache(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRotationConversionCache(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

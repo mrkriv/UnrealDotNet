@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRadialDamageParams : NativeStructWrapper
+	public partial class FRadialDamageParams : NativeStructWrapper
 	{
-		internal FRadialDamageParams(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRadialDamageParams(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

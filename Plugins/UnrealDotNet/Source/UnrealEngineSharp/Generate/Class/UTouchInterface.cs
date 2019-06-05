@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UTouchInterface : UObject
+	public partial class UTouchInterface : UObject
 	{
 		public UTouchInterface(IntPtr adress)
 			: base(adress)

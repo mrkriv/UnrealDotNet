@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRandomStream : NativeStructWrapper
+	public partial class FRandomStream : NativeStructWrapper
 	{
-		internal FRandomStream(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRandomStream(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

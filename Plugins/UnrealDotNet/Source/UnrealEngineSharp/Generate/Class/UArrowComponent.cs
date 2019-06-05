@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UArrowComponent : UPrimitiveComponent
+	public partial class UArrowComponent : UPrimitiveComponent
 	{
 		public UArrowComponent(IntPtr adress)
 			: base(adress)

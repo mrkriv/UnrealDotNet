@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class RootMotionSourceDebug : NativeStructWrapper
+	public partial class RootMotionSourceDebug : NativeStructWrapper
 	{
-		internal RootMotionSourceDebug(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public RootMotionSourceDebug(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

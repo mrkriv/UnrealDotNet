@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPlayerMuteList : NativeStructWrapper
+	public partial class FPlayerMuteList : NativeStructWrapper
 	{
-		internal FPlayerMuteList(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPlayerMuteList(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

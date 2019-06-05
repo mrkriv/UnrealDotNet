@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManagePlayerController.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerController.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\PlayerController.h:237
@@ -89,6 +90,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_APlayerController_Player_GET(APlayerController* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Player); }
 	DOTNET_EXPORT void E_PROP_APlayerController_Player_SET(APlayerController* Ptr, UPlayer* Value) { Ptr->Player = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_APlayerController_PlayerCameraManager_GET(APlayerController* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PlayerCameraManager); }
+	DOTNET_EXPORT void E_PROP_APlayerController_PlayerCameraManager_SET(APlayerController* Ptr, APlayerCameraManager* Value) { Ptr->PlayerCameraManager = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_APlayerController_PlayerInput_GET(APlayerController* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->PlayerInput); }
 	DOTNET_EXPORT void E_PROP_APlayerController_PlayerInput_SET(APlayerController* Ptr, UPlayerInput* Value) { Ptr->PlayerInput = Value; }
 	
@@ -110,36 +114,36 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_ActivateTouchInterface(APlayerController* Self, UTouchInterface* NewTouchInterface)
 	{
 		auto _p0 = NewTouchInterface;
-		Self->APlayerController::ActivateTouchInterface(_p0);
+		Self->ActivateTouchInterface(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_AddPitchInput(APlayerController* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APlayerController::AddPitchInput(_p0);
+		Self->AddPitchInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_AddRollInput(APlayerController* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APlayerController::AddRollInput(_p0);
+		Self->AddRollInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_AddYawInput(APlayerController* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APlayerController::AddYawInput(_p0);
+		Self->AddYawInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_BeginPlayingState(APlayerController* Self)
 	{
-		((E_PROTECTED_WRAP_APlayerController*)Self)->APlayerController::BeginPlayingState_WRAP();
+		((E_PROTECTED_WRAP_APlayerController*)Self)->BeginPlayingState_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_Camera(APlayerController* Self, char* NewMode)
 	{
 		auto _p0 = ConvertFromManage_FName(NewMode);
-		Self->APlayerController::Camera(_p0);
+		Self->Camera(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientAddTextureStreamingLoc(APlayerController* Self, INT_PTR InLoc, float Duration, bool bOverrideLocation)
@@ -163,7 +167,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_ClientClearCameraLensEffects(APlayerController* Self)
 	{
-		Self->APlayerController::ClientClearCameraLensEffects();
+		Self->ClientClearCameraLensEffects();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientCommitMapChange(APlayerController* Self)
@@ -174,7 +178,7 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_ClientEnableNetworkVoice(APlayerController* Self, bool bEnable)
 	{
 		auto _p0 = bEnable;
-		Self->APlayerController::ClientEnableNetworkVoice(_p0);
+		Self->ClientEnableNetworkVoice(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientEndOnlineSession(APlayerController* Self)
@@ -245,7 +249,7 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_ClientRepObjRef(APlayerController* Self, UObject* Object)
 	{
 		auto _p0 = Object;
-		Self->APlayerController::ClientRepObjRef(_p0);
+		Self->ClientRepObjRef(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientReset(APlayerController* Self)
@@ -268,13 +272,13 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_ClientReturnToMainMenu(APlayerController* Self, char* ReturnReason)
 	{
 		auto _p0 = ConvertFromManage_FString(ReturnReason);
-		Self->APlayerController::ClientReturnToMainMenu(_p0);
+		Self->ClientReturnToMainMenu(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientReturnToMainMenuWithTextReason(APlayerController* Self, char* ReturnReason)
 	{
 		auto _p0 = ConvertFromManage_FText(ReturnReason);
-		Self->APlayerController::ClientReturnToMainMenuWithTextReason(_p0);
+		Self->ClientReturnToMainMenuWithTextReason(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientSetBlockOnAsyncLoading(APlayerController* Self)
@@ -303,6 +307,13 @@ extern "C"
 		Self->ClientSetSpectatorWaiting(_p0);
 	}
 
+	DOTNET_EXPORT auto E_APlayerController_ClientSetViewTarget(APlayerController* Self, AActor* A, INT_PTR TransitionParams)
+	{
+		auto _p0 = A;
+		auto _p1 = *(FViewTargetTransitionParams*)TransitionParams;
+		Self->ClientSetViewTarget(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_APlayerController_ClientStartOnlineSession(APlayerController* Self)
 	{
 		Self->ClientStartOnlineSession();
@@ -329,7 +340,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_ClientVoiceHandshakeComplete(APlayerController* Self)
 	{
-		Self->APlayerController::ClientVoiceHandshakeComplete();
+		Self->ClientVoiceHandshakeComplete();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientWasKicked(APlayerController* Self, char* KickReason)
@@ -340,7 +351,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_DelayedPrepareMapChange(APlayerController* Self)
 	{
-		Self->APlayerController::DelayedPrepareMapChange();
+		Self->DelayedPrepareMapChange();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_DeprojectMousePositionToWorld(APlayerController* Self, INT_PTR WorldLocation, INT_PTR WorldDirection)
@@ -361,18 +372,18 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_EnableCheats(APlayerController* Self)
 	{
-		Self->APlayerController::EnableCheats();
+		Self->EnableCheats();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_EndPlayingState(APlayerController* Self)
 	{
-		((E_PROTECTED_WRAP_APlayerController*)Self)->APlayerController::EndPlayingState_WRAP();
+		((E_PROTECTED_WRAP_APlayerController*)Self)->EndPlayingState_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_FOV(APlayerController* Self, float NewFOV)
 	{
 		auto _p0 = NewFOV;
-		Self->APlayerController::FOV(_p0);
+		Self->FOV(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_GetHitResultAtScreenPosition(APlayerController* Self, INT_PTR ScreenPosition, ECollisionChannel TraceChannel, INT_PTR CollisionQueryParams, INT_PTR HitResult)
@@ -461,32 +472,32 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_LocalTravel(APlayerController* Self, char* URL)
 	{
 		auto _p0 = ConvertFromManage_FString(URL);
-		Self->APlayerController::LocalTravel(_p0);
+		Self->LocalTravel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_NotifyLoadedWorld(APlayerController* Self, char* WorldPackageName, bool bFinalDest)
 	{
 		auto _p0 = ConvertFromManage_FName(WorldPackageName);
 		auto _p1 = bFinalDest;
-		Self->APlayerController::NotifyLoadedWorld(_p0, _p1);
+		Self->NotifyLoadedWorld(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_Pause(APlayerController* Self)
 	{
-		Self->APlayerController::Pause();
+		Self->Pause();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_PlayerTick(APlayerController* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->APlayerController::PlayerTick(_p0);
+		Self->PlayerTick(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_PostProcessInput(APlayerController* Self, float DeltaTime, bool bGamePaused)
 	{
 		auto _p0 = DeltaTime;
 		auto _p1 = bGamePaused;
-		Self->APlayerController::PostProcessInput(_p0, _p1);
+		Self->PostProcessInput(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_PostProcessWorldToScreen(APlayerController* Self, INT_PTR WorldLocation, INT_PTR ScreenLocation, bool bPlayerViewportRelative)
@@ -499,14 +510,14 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_PostSeamlessTravel(APlayerController* Self)
 	{
-		Self->APlayerController::PostSeamlessTravel();
+		Self->PostSeamlessTravel();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_PreProcessInput(APlayerController* Self, float DeltaTime, bool bGamePaused)
 	{
 		auto _p0 = DeltaTime;
 		auto _p1 = bGamePaused;
-		Self->APlayerController::PreProcessInput(_p0, _p1);
+		Self->PreProcessInput(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ProjectWorldLocationToScreen(APlayerController* Self, INT_PTR WorldLocation, INT_PTR ScreenLocation, bool bPlayerViewportRelative)
@@ -532,17 +543,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APlayerController_RestartLevel(APlayerController* Self)
 	{
-		Self->APlayerController::RestartLevel();
+		Self->RestartLevel();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SafeRetryClientRestart(APlayerController* Self)
 	{
-		Self->APlayerController::SafeRetryClientRestart();
+		Self->SafeRetryClientRestart();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SafeServerCheckClientPossession(APlayerController* Self)
 	{
-		Self->APlayerController::SafeServerCheckClientPossession();
+		Self->SafeServerCheckClientPossession();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SafeServerUpdateSpectatorState(APlayerController* Self)
@@ -553,19 +564,19 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_SeamlessTravelFrom(APlayerController* Self, APlayerController* OldPC)
 	{
 		auto _p0 = OldPC;
-		Self->APlayerController::SeamlessTravelFrom(_p0);
+		Self->SeamlessTravelFrom(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SeamlessTravelTo(APlayerController* Self, APlayerController* NewPC)
 	{
 		auto _p0 = NewPC;
-		Self->APlayerController::SeamlessTravelTo(_p0);
+		Self->SeamlessTravelTo(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SendToConsole(APlayerController* Self, char* Command)
 	{
 		auto _p0 = ConvertFromManage_FString(Command);
-		Self->APlayerController::SendToConsole(_p0);
+		Self->SendToConsole(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ServerAcknowledgePossession(APlayerController* Self, APawn* P)
@@ -657,18 +668,24 @@ extern "C"
 		Self->ServerViewPrevPlayer();
 	}
 
+	DOTNET_EXPORT auto E_APlayerController_ServerViewSelf(APlayerController* Self, INT_PTR TransitionParams)
+	{
+		auto _p0 = *(FViewTargetTransitionParams*)TransitionParams;
+		Self->ServerViewSelf(_p0);
+	}
+
 	DOTNET_EXPORT auto E_APlayerController_SetCinematicMode(APlayerController* Self, bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning)
 	{
 		auto _p0 = bInCinematicMode;
 		auto _p1 = bAffectsMovement;
 		auto _p2 = bAffectsTurning;
-		Self->APlayerController::SetCinematicMode(_p0, _p1, _p2);
+		Self->SetCinematicMode(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SetDisableHaptics(APlayerController* Self, bool bNewDisabled)
 	{
 		auto _p0 = bNewDisabled;
-		Self->APlayerController::SetDisableHaptics(_p0);
+		Self->SetDisableHaptics(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SetMouseLocation(APlayerController* Self, int X, int Y)
@@ -681,19 +698,29 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_SetName(APlayerController* Self, char* S)
 	{
 		auto _p0 = ConvertFromManage_FString(S);
-		Self->APlayerController::SetName(_p0);
+		Self->SetName(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APlayerController_SetViewTargetWithBlend(APlayerController* Self, AActor* NewViewTarget, float BlendTime, EViewTargetBlendFunction BlendFunc, float BlendExp, bool bLockOutgoing)
+	{
+		auto _p0 = NewViewTarget;
+		auto _p1 = BlendTime;
+		auto _p2 = BlendFunc;
+		auto _p3 = BlendExp;
+		auto _p4 = bLockOutgoing;
+		Self->SetViewTargetWithBlend(_p0, _p1, _p2, _p3, _p4);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SetVirtualJoystickVisibility(APlayerController* Self, bool bVisible)
 	{
 		auto _p0 = bVisible;
-		Self->APlayerController::SetVirtualJoystickVisibility(_p0);
+		Self->SetVirtualJoystickVisibility(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_StartFire(APlayerController* Self, uint8 FireModeNum)
 	{
 		auto _p0 = FireModeNum;
-		Self->APlayerController::StartFire(_p0);
+		Self->StartFire(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_StartTalking(APlayerController* Self)
@@ -709,24 +736,567 @@ extern "C"
 	DOTNET_EXPORT auto E_APlayerController_SwitchLevel(APlayerController* Self, char* URL)
 	{
 		auto _p0 = ConvertFromManage_FString(URL);
-		Self->APlayerController::SwitchLevel(_p0);
+		Self->SwitchLevel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ToggleSpeaking(APlayerController* Self, bool bInSpeaking)
 	{
 		auto _p0 = bInSpeaking;
-		Self->APlayerController::ToggleSpeaking(_p0);
+		Self->ToggleSpeaking(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_UnFreeze(APlayerController* Self)
 	{
-		Self->APlayerController::UnFreeze();
+		Self->UnFreeze();
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_UpdateRotation(APlayerController* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->APlayerController::UpdateRotation(_p0);
+		Self->UpdateRotation(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_AddPitchInput(APlayerController* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePlayerController*)Self)->_Supper__AddPitchInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_AddRollInput(APlayerController* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePlayerController*)Self)->_Supper__AddRollInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_AddYawInput(APlayerController* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePlayerController*)Self)->_Supper__AddYawInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_BeginPlayingState(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__BeginPlayingState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ClientClearCameraLensEffects(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ClientClearCameraLensEffects();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ClientEnableNetworkVoice(APlayerController* Self, bool bEnable)
+	{
+		auto _p0 = bEnable;
+		((AManagePlayerController*)Self)->_Supper__ClientEnableNetworkVoice(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ClientVoiceHandshakeComplete(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ClientVoiceHandshakeComplete();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_DelayedPrepareMapChange(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__DelayedPrepareMapChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_EnableCheats(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__EnableCheats();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_EndPlayingState(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__EndPlayingState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_FOV(APlayerController* Self, float NewFOV)
+	{
+		auto _p0 = NewFOV;
+		((AManagePlayerController*)Self)->_Supper__FOV(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_Pause(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__Pause();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PlayerTick(APlayerController* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		((AManagePlayerController*)Self)->_Supper__PlayerTick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostProcessInput(APlayerController* Self, float DeltaTime, bool bGamePaused)
+	{
+		auto _p0 = DeltaTime;
+		auto _p1 = bGamePaused;
+		((AManagePlayerController*)Self)->_Supper__PostProcessInput(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostSeamlessTravel(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostSeamlessTravel();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PreProcessInput(APlayerController* Self, float DeltaTime, bool bGamePaused)
+	{
+		auto _p0 = DeltaTime;
+		auto _p1 = bGamePaused;
+		((AManagePlayerController*)Self)->_Supper__PreProcessInput(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_RestartLevel(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__RestartLevel();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SafeRetryClientRestart(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__SafeRetryClientRestart();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SafeServerCheckClientPossession(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__SafeServerCheckClientPossession();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetCinematicMode(APlayerController* Self, bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning)
+	{
+		auto _p0 = bInCinematicMode;
+		auto _p1 = bAffectsMovement;
+		auto _p2 = bAffectsTurning;
+		((AManagePlayerController*)Self)->_Supper__SetCinematicMode(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetDisableHaptics(APlayerController* Self, bool bNewDisabled)
+	{
+		auto _p0 = bNewDisabled;
+		((AManagePlayerController*)Self)->_Supper__SetDisableHaptics(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetVirtualJoystickVisibility(APlayerController* Self, bool bVisible)
+	{
+		auto _p0 = bVisible;
+		((AManagePlayerController*)Self)->_Supper__SetVirtualJoystickVisibility(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_StartFire(APlayerController* Self, uint8 FireModeNum)
+	{
+		auto _p0 = FireModeNum;
+		((AManagePlayerController*)Self)->_Supper__StartFire(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ToggleSpeaking(APlayerController* Self, bool bInSpeaking)
+	{
+		auto _p0 = bInSpeaking;
+		((AManagePlayerController*)Self)->_Supper__ToggleSpeaking(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_UnFreeze(APlayerController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__UnFreeze();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_UpdateRotation(APlayerController* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		((AManagePlayerController*)Self)->_Supper__UpdateRotation(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_BeginInactiveState(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__BeginInactiveState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_CleanupPlayerState(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__CleanupPlayerState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_CurrentLevelUnloaded(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__CurrentLevelUnloaded();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_DetachFromPawn(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__DetachFromPawn();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_EndInactiveState(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__EndInactiveState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_FailedToSpawnPawn(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__FailedToSpawnPawn();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_InitPlayerState(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__InitPlayerState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_Pawn(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_Pawn();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_PlayerState(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_PlayerState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnUnPossess(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnUnPossess();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ResetIgnoreInputFlags(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ResetIgnoreInputFlags();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ResetIgnoreLookInput(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ResetIgnoreLookInput();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ResetIgnoreMoveInput(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ResetIgnoreMoveInput();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetIgnoreLookInput(AController* Self, bool bNewLookInput)
+	{
+		auto _p0 = bNewLookInput;
+		((AManagePlayerController*)Self)->_Supper__SetIgnoreLookInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetIgnoreMoveInput(AController* Self, bool bNewMoveInput)
+	{
+		auto _p0 = bNewMoveInput;
+		((AManagePlayerController*)Self)->_Supper__SetIgnoreMoveInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_StopMovement(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__StopMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_UpdateNavigationComponents(AController* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__UpdateNavigationComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_BeginPlay(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_Destroyed(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ForceNetRelevant(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ForceNetUpdate(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_GatherCurrentMovement(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManagePlayerController*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_K2_DestroyActor(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_LifeSpanExpired(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_Instigator(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_Owner(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManagePlayerController*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OutsideWorldBounds(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostActorCreated(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostInitializeComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostNetInit(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostNetReceiveRole(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PreInitializeComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManagePlayerController*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManagePlayerController*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_RegisterAllComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ReregisterAllComponents(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_RerunConstructionScripts(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_Reset(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_RewindForReplay(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManagePlayerController*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManagePlayerController*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManagePlayerController*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_TearOff(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManagePlayerController*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManagePlayerController*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_TornOff(AActor* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManagePlayerController*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_BeginDestroy(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_FinishDestroy(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostCDOContruct(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostEditImport(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostInitProperties(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostLoad(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostNetReceive(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostRepNotifies(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManagePlayerController*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_PreNetReceive(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_ShutdownAfterError(UObject* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APlayerController_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManagePlayerController*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

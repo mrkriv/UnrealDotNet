@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UOnlineSession : UObject
+	public partial class UOnlineSession : UObject
 	{
 		public UOnlineSession(IntPtr adress)
 			: base(adress)

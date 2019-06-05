@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UAudioComponent : USceneComponent
+	public partial class UAudioComponent : USceneComponent
 	{
 		public UAudioComponent(IntPtr adress)
 			: base(adress)

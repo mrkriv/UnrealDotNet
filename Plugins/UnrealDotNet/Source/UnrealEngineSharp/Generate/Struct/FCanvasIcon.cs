@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FCanvasIcon : NativeStructWrapper
+	public partial class FCanvasIcon : NativeStructWrapper
 	{
-		internal FCanvasIcon(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FCanvasIcon(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

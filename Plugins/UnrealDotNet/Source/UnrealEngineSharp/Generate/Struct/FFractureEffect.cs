@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFractureEffect : NativeStructWrapper
+	public partial class FFractureEffect : NativeStructWrapper
 	{
-		internal FFractureEffect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFractureEffect(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

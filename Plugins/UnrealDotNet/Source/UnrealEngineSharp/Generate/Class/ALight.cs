@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class ALight : AActor
+	public partial class ALight : AActor
 	{
 		public ALight(IntPtr adress)
 			: base(adress)

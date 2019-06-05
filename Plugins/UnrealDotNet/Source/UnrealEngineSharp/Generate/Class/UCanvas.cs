@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UCanvas : UObject
+	public partial class UCanvas : UObject
 	{
 		public UCanvas(IntPtr adress)
 			: base(adress)

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDamageEvent : NativeStructWrapper
+	public partial class FDamageEvent : NativeStructWrapper
 	{
-		internal FDamageEvent(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDamageEvent(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

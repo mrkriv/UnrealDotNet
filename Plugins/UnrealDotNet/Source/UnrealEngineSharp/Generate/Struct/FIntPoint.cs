@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FIntPoint : NativeStructWrapper
+	public partial class FIntPoint : NativeStructWrapper
 	{
-		internal FIntPoint(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FIntPoint(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

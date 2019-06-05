@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFloatInfo_IEEE32 : NativeStructWrapper
+	public partial class FFloatInfo_IEEE32 : NativeStructWrapper
 	{
-		internal FFloatInfo_IEEE32(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFloatInfo_IEEE32(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class ULocalMessage : UObject
+	public partial class ULocalMessage : UObject
 	{
 		public ULocalMessage(IntPtr adress)
 			: base(adress)

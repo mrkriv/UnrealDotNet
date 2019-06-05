@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageSceneComponent.h"
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:106
@@ -309,14 +310,14 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromComponent(USceneComponent* Self, INT_PTR DetachmentRules)
 	{
 		auto& _p0 = *(FDetachmentTransformRules*)DetachmentRules;
-		Self->USceneComponent::DetachFromComponent(_p0);
+		Self->DetachFromComponent(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
 	{
 		auto _p0 = bMaintainWorldPosition;
 		auto _p1 = bCallModify;
-		Self->USceneComponent::DetachFromParent(_p0, _p1);
+		Self->DetachFromParent(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_DoesSocketExist(USceneComponent* Self, char* InSocketName)
@@ -792,36 +793,36 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_OnAttachmentChanged(USceneComponent* Self)
 	{
-		Self->USceneComponent::OnAttachmentChanged();
+		Self->OnAttachmentChanged();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnChildAttached(USceneComponent* Self, USceneComponent* ChildComponent)
 	{
 		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnChildAttached_WRAP(_p0);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildAttached_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnChildDetached(USceneComponent* Self, USceneComponent* ChildComponent)
 	{
 		auto _p0 = ChildComponent;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnChildDetached_WRAP(_p0);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnChildDetached_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnHiddenInGameChanged(USceneComponent* Self)
 	{
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnHiddenInGameChanged_WRAP();
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnHiddenInGameChanged_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnUpdateTransform(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
 	{
 		auto _p0 = UpdateTransformFlags;
 		auto _p1 = Teleport;
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnUpdateTransform_WRAP(_p0, _p1);
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnUpdateTransform_WRAP(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_OnVisibilityChanged(USceneComponent* Self)
 	{
-		((E_PROTECTED_WRAP_USceneComponent*)Self)->USceneComponent::OnVisibilityChanged_WRAP();
+		((E_PROTECTED_WRAP_USceneComponent*)Self)->OnVisibilityChanged_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_PostUpdateNavigationData(USceneComponent* Self)
@@ -831,7 +832,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_PropagateLightingScenarioChange(USceneComponent* Self)
 	{
-		Self->USceneComponent::PropagateLightingScenarioChange();
+		Self->PropagateLightingScenarioChange();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_ResetRelativeTransform(USceneComponent* Self)
@@ -925,7 +926,7 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeScale3D(USceneComponent* Self, INT_PTR NewScale3D)
 	{
 		auto _p0 = *(FVector*)NewScale3D;
-		Self->USceneComponent::SetRelativeScale3D(_p0);
+		Self->SetRelativeScale3D(_p0);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_SetRelativeTransform(USceneComponent* Self, INT_PTR NewTransform, bool bSweep, INT_PTR OutSweepHitResult, ETeleportType Teleport)
@@ -1061,7 +1062,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdateBounds(USceneComponent* Self)
 	{
-		Self->USceneComponent::UpdateBounds();
+		Self->UpdateBounds();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdateChildTransforms(USceneComponent* Self, EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
@@ -1079,7 +1080,257 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
 	{
 		auto _p0 = bTriggerNotifiers;
-		Self->USceneComponent::UpdatePhysicsVolume(_p0);
+		Self->UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageSceneComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageSceneComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageSceneComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageSceneComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageSceneComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageSceneComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageSceneComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageSceneComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageSceneComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSceneComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSceneComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostEditImport(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostLoad(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageSceneComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageSceneComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

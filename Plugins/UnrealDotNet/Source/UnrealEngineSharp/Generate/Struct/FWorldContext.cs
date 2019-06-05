@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FWorldContext : NativeStructWrapper
+	public partial class FWorldContext : NativeStructWrapper
 	{
-		internal FWorldContext(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FWorldContext(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

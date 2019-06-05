@@ -28,506 +28,665 @@ bool UManageAudioComponent::AddWrapperIfNotAttach()
 
 void UManageAudioComponent::FadeIn(float FadeInDuration, float FadeVolumeLevel, float StartTime)
 {
-	Super::FadeIn(FadeInDuration, FadeVolumeLevel, StartTime);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FadeIn", FadeInDuration, FadeVolumeLevel, StartTime);
+	else
+		Super::FadeIn(FadeInDuration, FadeVolumeLevel, StartTime);
+}
+
+void UManageAudioComponent::_Supper__FadeIn(float FadeInDuration, float FadeVolumeLevel, float StartTime)
+{
+	Super::FadeIn(FadeInDuration, FadeVolumeLevel, StartTime);
 }
 
 void UManageAudioComponent::FadeOut(float FadeOutDuration, float FadeVolumeLevel)
 {
-	Super::FadeOut(FadeOutDuration, FadeVolumeLevel);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FadeOut", FadeOutDuration, FadeVolumeLevel);
+	else
+		Super::FadeOut(FadeOutDuration, FadeVolumeLevel);
+}
+
+void UManageAudioComponent::_Supper__FadeOut(float FadeOutDuration, float FadeVolumeLevel)
+{
+	Super::FadeOut(FadeOutDuration, FadeVolumeLevel);
 }
 
 void UManageAudioComponent::Play(float StartTime)
 {
-	Super::Play(StartTime);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Play", StartTime);
+	else
+		Super::Play(StartTime);
+}
+
+void UManageAudioComponent::_Supper__Play(float StartTime)
+{
+	Super::Play(StartTime);
 }
 
 void UManageAudioComponent::Stop()
 {
-	Super::Stop();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Stop");
+	else
+		Super::Stop();
 }
 
-void UManageAudioComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
+void UManageAudioComponent::_Supper__Stop()
 {
-	Super::DetachFromComponent(DetachmentRules);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+	Super::Stop();
 }
 
 void UManageAudioComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
-	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromParent", bMaintainWorldPosition, bCallModify);
+	else
+		Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
+}
+
+void UManageAudioComponent::_Supper__DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
+{
+	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
 }
 
 void UManageAudioComponent::OnAttachmentChanged()
 {
-	Super::OnAttachmentChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnAttachmentChanged");
+	else
+		Super::OnAttachmentChanged();
 }
 
-void UManageAudioComponent::OnChildAttached(USceneComponent* ChildComponent)
+void UManageAudioComponent::_Supper__OnAttachmentChanged()
 {
-	Super::OnChildAttached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildAttached", ChildComponent);
-}
-
-void UManageAudioComponent::OnChildDetached(USceneComponent* ChildComponent)
-{
-	Super::OnChildDetached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildDetached", ChildComponent);
+	Super::OnAttachmentChanged();
 }
 
 void UManageAudioComponent::OnHiddenInGameChanged()
 {
-	Super::OnHiddenInGameChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnHiddenInGameChanged");
+	else
+		Super::OnHiddenInGameChanged();
 }
 
-void UManageAudioComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+void UManageAudioComponent::_Supper__OnHiddenInGameChanged()
 {
-	Super::OnUpdateTransform(UpdateTransformFlags, Teleport);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnUpdateTransform", UpdateTransformFlags, Teleport);
+	Super::OnHiddenInGameChanged();
 }
 
 void UManageAudioComponent::OnVisibilityChanged()
 {
-	Super::OnVisibilityChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnVisibilityChanged");
+	else
+		Super::OnVisibilityChanged();
+}
+
+void UManageAudioComponent::_Supper__OnVisibilityChanged()
+{
+	Super::OnVisibilityChanged();
 }
 
 void UManageAudioComponent::PropagateLightingScenarioChange()
 {
-	Super::PropagateLightingScenarioChange();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PropagateLightingScenarioChange");
+	else
+		Super::PropagateLightingScenarioChange();
 }
 
-void UManageAudioComponent::SetRelativeScale3D(FVector NewScale3D)
+void UManageAudioComponent::_Supper__PropagateLightingScenarioChange()
 {
-	Super::SetRelativeScale3D(NewScale3D);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetRelativeScale3D", NewScale3D);
+	Super::PropagateLightingScenarioChange();
 }
 
 void UManageAudioComponent::UpdateBounds()
 {
-	Super::UpdateBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateBounds");
+	else
+		Super::UpdateBounds();
+}
+
+void UManageAudioComponent::_Supper__UpdateBounds()
+{
+	Super::UpdateBounds();
 }
 
 void UManageAudioComponent::UpdatePhysicsVolume(bool bTriggerNotifiers)
 {
-	Super::UpdatePhysicsVolume(bTriggerNotifiers);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsVolume", bTriggerNotifiers);
+	else
+		Super::UpdatePhysicsVolume(bTriggerNotifiers);
+}
+
+void UManageAudioComponent::_Supper__UpdatePhysicsVolume(bool bTriggerNotifiers)
+{
+	Super::UpdatePhysicsVolume(bTriggerNotifiers);
 }
 
 void UManageAudioComponent::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManageAudioComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageAudioComponent::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageAudioComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManageAudioComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManageAudioComponent::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManageAudioComponent::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManageAudioComponent::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManageAudioComponent::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManageAudioComponent::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManageAudioComponent::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManageAudioComponent::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManageAudioComponent::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManageAudioComponent::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManageAudioComponent::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManageAudioComponent::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManageAudioComponent::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManageAudioComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageAudioComponent::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManageAudioComponent::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManageAudioComponent::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManageAudioComponent::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManageAudioComponent::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManageAudioComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManageAudioComponent::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManageAudioComponent::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManageAudioComponent::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManageAudioComponent::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManageAudioComponent::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManageAudioComponent::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManageAudioComponent::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManageAudioComponent::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManageAudioComponent::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManageAudioComponent::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManageAudioComponent::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManageAudioComponent::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManageAudioComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageAudioComponent::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageAudioComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManageAudioComponent::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManageAudioComponent::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManageAudioComponent::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManageAudioComponent::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManageAudioComponent::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManageAudioComponent::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManageAudioComponent::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManageAudioComponent::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManageAudioComponent::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManageAudioComponent::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManageAudioComponent::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManageAudioComponent::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManageAudioComponent::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManageAudioComponent::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManageAudioComponent::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManageAudioComponent::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManageAudioComponent::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageAudioComponent::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageAudioComponent::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageAudioComponent::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageAudioComponent::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageAudioComponent::OverridePerObjectConfigSection(FString& SectionName)
+void UManageAudioComponent::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageAudioComponent::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageAudioComponent::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageAudioComponent::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageAudioComponent::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageAudioComponent::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageAudioComponent::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageAudioComponent::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageAudioComponent::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageAudioComponent::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageAudioComponent::PostRename(UObject* OldOuter, const FName OldName)
+void UManageAudioComponent::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageAudioComponent::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageAudioComponent::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageAudioComponent::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageAudioComponent::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageAudioComponent::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageAudioComponent::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageAudioComponent::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageAudioComponent::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageAudioComponent::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageAudioComponent::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageAudioComponent::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageAudioComponent::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageAudioComponent::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageAudioComponent::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

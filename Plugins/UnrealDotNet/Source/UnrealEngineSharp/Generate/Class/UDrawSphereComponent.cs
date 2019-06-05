@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UDrawSphereComponent : USphereComponent
+	public partial class UDrawSphereComponent : USphereComponent
 	{
 		public UDrawSphereComponent(IntPtr adress)
 			: base(adress)

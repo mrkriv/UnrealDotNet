@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FChildActorAttachedActorInfo : NativeStructWrapper
+	public partial class FChildActorAttachedActorInfo : NativeStructWrapper
 	{
-		internal FChildActorAttachedActorInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FChildActorAttachedActorInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

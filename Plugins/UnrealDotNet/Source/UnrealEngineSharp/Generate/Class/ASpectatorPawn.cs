@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class ASpectatorPawn : ADefaultPawn
+	public partial class ASpectatorPawn : ADefaultPawn
 	{
 		public ASpectatorPawn(IntPtr adress)
 			: base(adress)

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UTextRenderComponent : UPrimitiveComponent
+	public partial class UTextRenderComponent : UPrimitiveComponent
 	{
 		public UTextRenderComponent(IntPtr adress)
 			: base(adress)

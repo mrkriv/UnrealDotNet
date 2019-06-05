@@ -28,802 +28,795 @@ bool UManageBoxComponent::AddWrapperIfNotAttach()
 
 void UManageBoxComponent::UpdateBodySetup()
 {
-	Super::UpdateBodySetup();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateBodySetup");
+	else
+		Super::UpdateBodySetup();
 }
 
-void UManageBoxComponent::AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange)
+void UManageBoxComponent::_Supper__UpdateBodySetup()
 {
-	Super::AddAngularImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageBoxComponent::AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddAngularImpulseInRadians(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulseInRadians", Impulse, BoneName, bVelChange);
-}
-
-void UManageBoxComponent::AddForce(FVector Force, FName BoneName, bool bAccelChange)
-{
-	Super::AddForce(Force, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForce", Force, BoneName, bAccelChange);
-}
-
-void UManageBoxComponent::AddForceAtLocation(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocation(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocation", Force, Location, BoneName);
-}
-
-void UManageBoxComponent::AddForceAtLocationLocal(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocationLocal(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocationLocal", Force, Location, BoneName);
-}
-
-void UManageBoxComponent::AddImpulse(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageBoxComponent::AddImpulseAtLocation(FVector Impulse, FVector Location, FName BoneName)
-{
-	Super::AddImpulseAtLocation(Impulse, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulseAtLocation", Impulse, Location, BoneName);
-}
-
-void UManageBoxComponent::AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
-{
-	Super::AddRadialForce(Origin, Radius, Strength, Falloff, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff, bAccelChange);
-}
-
-void UManageBoxComponent::AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-{
-	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
-}
-
-void UManageBoxComponent::AddTorqueInRadians(FVector Torque, FName BoneName, bool bAccelChange)
-{
-	Super::AddTorqueInRadians(Torque, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTorqueInRadians", Torque, BoneName, bAccelChange);
+	Super::UpdateBodySetup();
 }
 
 void UManageBoxComponent::OnComponentCollisionSettingsChanged()
 {
-	Super::OnComponentCollisionSettingsChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCollisionSettingsChanged");
+	else
+		Super::OnComponentCollisionSettingsChanged();
+}
+
+void UManageBoxComponent::_Supper__OnComponentCollisionSettingsChanged()
+{
+	Super::OnComponentCollisionSettingsChanged();
 }
 
 void UManageBoxComponent::PutAllRigidBodiesToSleep()
 {
-	Super::PutAllRigidBodiesToSleep();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PutAllRigidBodiesToSleep");
+	else
+		Super::PutAllRigidBodiesToSleep();
 }
 
-void UManageBoxComponent::ReceiveComponentDamage(float DamageAmount, const FDamageEvent& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void UManageBoxComponent::_Supper__PutAllRigidBodiesToSleep()
 {
-	Super::ReceiveComponentDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ReceiveComponentDamage", DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Super::PutAllRigidBodiesToSleep();
 }
 
 void UManageBoxComponent::SetAllMassScale(float InMassScale)
 {
-	Super::SetAllMassScale(InMassScale);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllMassScale", InMassScale);
+	else
+		Super::SetAllMassScale(InMassScale);
 }
 
-void UManageBoxComponent::SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent)
+void UManageBoxComponent::_Supper__SetAllMassScale(float InMassScale)
 {
-	Super::SetAllPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent);
-}
-
-void UManageBoxComponent::SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent)
-{
-	Super::SetAllPhysicsLinearVelocity(NewVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsLinearVelocity", NewVel, bAddToCurrent);
-}
-
-void UManageBoxComponent::SetAllPhysicsPosition(FVector NewPos)
-{
-	Super::SetAllPhysicsPosition(NewPos);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsPosition", NewPos);
-}
-
-void UManageBoxComponent::SetAllPhysicsRotation(FRotator NewRot)
-{
-	Super::SetAllPhysicsRotation(NewRot);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsRotation", NewRot);
+	Super::SetAllMassScale(InMassScale);
 }
 
 void UManageBoxComponent::SetAllUseCCD(bool InUseCCD)
 {
-	Super::SetAllUseCCD(InUseCCD);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllUseCCD", InUseCCD);
+	else
+		Super::SetAllUseCCD(InUseCCD);
+}
+
+void UManageBoxComponent::_Supper__SetAllUseCCD(bool InUseCCD)
+{
+	Super::SetAllUseCCD(InUseCCD);
 }
 
 void UManageBoxComponent::SetAngularDamping(float InDamping)
 {
-	Super::SetAngularDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAngularDamping", InDamping);
+	else
+		Super::SetAngularDamping(InDamping);
 }
 
-void UManageBoxComponent::SetCollisionObjectType(ECollisionChannel Channel)
+void UManageBoxComponent::_Supper__SetAngularDamping(float InDamping)
 {
-	Super::SetCollisionObjectType(Channel);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionObjectType", Channel);
-}
-
-void UManageBoxComponent::SetCollisionProfileName(FName InCollisionProfileName)
-{
-	Super::SetCollisionProfileName(InCollisionProfileName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionProfileName", InCollisionProfileName);
-}
-
-void UManageBoxComponent::SetCollisionResponseToAllChannels(ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToAllChannels(NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToAllChannels", NewResponse);
-}
-
-void UManageBoxComponent::SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToChannel(Channel, NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannel", Channel, NewResponse);
-}
-
-void UManageBoxComponent::SetCollisionResponseToChannels(const FCollisionResponseContainer& NewReponses)
-{
-	Super::SetCollisionResponseToChannels(NewReponses);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannels", NewReponses);
+	Super::SetAngularDamping(InDamping);
 }
 
 void UManageBoxComponent::SetEnableGravity(bool bGravityEnabled)
 {
-	Super::SetEnableGravity(bGravityEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetEnableGravity", bGravityEnabled);
+	else
+		Super::SetEnableGravity(bGravityEnabled);
+}
+
+void UManageBoxComponent::_Supper__SetEnableGravity(bool bGravityEnabled)
+{
+	Super::SetEnableGravity(bGravityEnabled);
 }
 
 void UManageBoxComponent::SetLinearDamping(float InDamping)
 {
-	Super::SetLinearDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLinearDamping", InDamping);
+	else
+		Super::SetLinearDamping(InDamping);
 }
 
-void UManageBoxComponent::SetMassOverrideInKg(FName BoneName, float MassInKg, bool bOverrideMass)
+void UManageBoxComponent::_Supper__SetLinearDamping(float InDamping)
 {
-	Super::SetMassOverrideInKg(BoneName, MassInKg, bOverrideMass);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassOverrideInKg", BoneName, MassInKg, bOverrideMass);
-}
-
-void UManageBoxComponent::SetMassScale(FName BoneName, float InMassScale)
-{
-	Super::SetMassScale(BoneName, InMassScale);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassScale", BoneName, InMassScale);
+	Super::SetLinearDamping(InDamping);
 }
 
 void UManageBoxComponent::SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetNotifyRigidBodyCollision", bNewNotifyRigidBodyCollision);
+	else
+		Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
-void UManageBoxComponent::SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, FName BoneName)
+void UManageBoxComponent::_Supper__SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent, BoneName);
-}
-
-void UManageBoxComponent::SetPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent, FName BoneName)
-{
-	Super::SetPhysicsLinearVelocity(NewVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsLinearVelocity", NewVel, bAddToCurrent, BoneName);
+	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
 void UManageBoxComponent::SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetSimulatePhysics(bSimulate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetSimulatePhysics", bSimulate);
+	else
+		Super::SetSimulatePhysics(bSimulate);
 }
 
-void UManageBoxComponent::SetUseCCD(bool InUseCCD, FName BoneName)
+void UManageBoxComponent::_Supper__SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetUseCCD(InUseCCD, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetUseCCD", InUseCCD, BoneName);
+	Super::SetSimulatePhysics(bSimulate);
 }
 
 void UManageBoxComponent::UnWeldChildren()
 {
-	Super::UnWeldChildren();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldChildren");
+	else
+		Super::UnWeldChildren();
+}
+
+void UManageBoxComponent::_Supper__UnWeldChildren()
+{
+	Super::UnWeldChildren();
 }
 
 void UManageBoxComponent::UnWeldFromParent()
 {
-	Super::UnWeldFromParent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldFromParent");
+	else
+		Super::UnWeldFromParent();
+}
+
+void UManageBoxComponent::_Supper__UnWeldFromParent()
+{
+	Super::UnWeldFromParent();
 }
 
 void UManageBoxComponent::UpdatePhysicsToRBChannels()
 {
-	Super::UpdatePhysicsToRBChannels();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsToRBChannels");
+	else
+		Super::UpdatePhysicsToRBChannels();
+}
+
+void UManageBoxComponent::_Supper__UpdatePhysicsToRBChannels()
+{
+	Super::UpdatePhysicsToRBChannels();
 }
 
 void UManageBoxComponent::WakeAllRigidBodies()
 {
-	Super::WakeAllRigidBodies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "WakeAllRigidBodies");
+	else
+		Super::WakeAllRigidBodies();
 }
 
-void UManageBoxComponent::WakeRigidBody(FName BoneName)
+void UManageBoxComponent::_Supper__WakeAllRigidBodies()
 {
-	Super::WakeRigidBody(BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WakeRigidBody", BoneName);
-}
-
-void UManageBoxComponent::WeldTo(USceneComponent* InParent, FName InSocketName)
-{
-	Super::WeldTo(InParent, InSocketName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WeldTo", InParent, InSocketName);
-}
-
-void UManageBoxComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
-{
-	Super::DetachFromComponent(DetachmentRules);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+	Super::WakeAllRigidBodies();
 }
 
 void UManageBoxComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
-	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromParent", bMaintainWorldPosition, bCallModify);
+	else
+		Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
+}
+
+void UManageBoxComponent::_Supper__DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
+{
+	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
 }
 
 void UManageBoxComponent::OnAttachmentChanged()
 {
-	Super::OnAttachmentChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnAttachmentChanged");
+	else
+		Super::OnAttachmentChanged();
 }
 
-void UManageBoxComponent::OnChildAttached(USceneComponent* ChildComponent)
+void UManageBoxComponent::_Supper__OnAttachmentChanged()
 {
-	Super::OnChildAttached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildAttached", ChildComponent);
-}
-
-void UManageBoxComponent::OnChildDetached(USceneComponent* ChildComponent)
-{
-	Super::OnChildDetached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildDetached", ChildComponent);
+	Super::OnAttachmentChanged();
 }
 
 void UManageBoxComponent::OnHiddenInGameChanged()
 {
-	Super::OnHiddenInGameChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnHiddenInGameChanged");
+	else
+		Super::OnHiddenInGameChanged();
 }
 
-void UManageBoxComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+void UManageBoxComponent::_Supper__OnHiddenInGameChanged()
 {
-	Super::OnUpdateTransform(UpdateTransformFlags, Teleport);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnUpdateTransform", UpdateTransformFlags, Teleport);
+	Super::OnHiddenInGameChanged();
 }
 
 void UManageBoxComponent::OnVisibilityChanged()
 {
-	Super::OnVisibilityChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnVisibilityChanged");
+	else
+		Super::OnVisibilityChanged();
+}
+
+void UManageBoxComponent::_Supper__OnVisibilityChanged()
+{
+	Super::OnVisibilityChanged();
 }
 
 void UManageBoxComponent::PropagateLightingScenarioChange()
 {
-	Super::PropagateLightingScenarioChange();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PropagateLightingScenarioChange");
+	else
+		Super::PropagateLightingScenarioChange();
 }
 
-void UManageBoxComponent::SetRelativeScale3D(FVector NewScale3D)
+void UManageBoxComponent::_Supper__PropagateLightingScenarioChange()
 {
-	Super::SetRelativeScale3D(NewScale3D);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetRelativeScale3D", NewScale3D);
+	Super::PropagateLightingScenarioChange();
 }
 
 void UManageBoxComponent::UpdateBounds()
 {
-	Super::UpdateBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateBounds");
+	else
+		Super::UpdateBounds();
+}
+
+void UManageBoxComponent::_Supper__UpdateBounds()
+{
+	Super::UpdateBounds();
 }
 
 void UManageBoxComponent::UpdatePhysicsVolume(bool bTriggerNotifiers)
 {
-	Super::UpdatePhysicsVolume(bTriggerNotifiers);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsVolume", bTriggerNotifiers);
+	else
+		Super::UpdatePhysicsVolume(bTriggerNotifiers);
+}
+
+void UManageBoxComponent::_Supper__UpdatePhysicsVolume(bool bTriggerNotifiers)
+{
+	Super::UpdatePhysicsVolume(bTriggerNotifiers);
 }
 
 void UManageBoxComponent::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManageBoxComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageBoxComponent::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageBoxComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManageBoxComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManageBoxComponent::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManageBoxComponent::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManageBoxComponent::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManageBoxComponent::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManageBoxComponent::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManageBoxComponent::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManageBoxComponent::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManageBoxComponent::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManageBoxComponent::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManageBoxComponent::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManageBoxComponent::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManageBoxComponent::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManageBoxComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageBoxComponent::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManageBoxComponent::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManageBoxComponent::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManageBoxComponent::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManageBoxComponent::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManageBoxComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManageBoxComponent::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManageBoxComponent::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManageBoxComponent::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManageBoxComponent::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManageBoxComponent::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManageBoxComponent::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManageBoxComponent::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManageBoxComponent::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManageBoxComponent::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManageBoxComponent::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManageBoxComponent::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManageBoxComponent::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManageBoxComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageBoxComponent::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageBoxComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManageBoxComponent::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManageBoxComponent::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManageBoxComponent::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManageBoxComponent::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManageBoxComponent::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManageBoxComponent::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManageBoxComponent::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManageBoxComponent::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManageBoxComponent::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManageBoxComponent::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManageBoxComponent::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManageBoxComponent::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManageBoxComponent::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManageBoxComponent::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManageBoxComponent::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManageBoxComponent::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManageBoxComponent::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageBoxComponent::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageBoxComponent::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageBoxComponent::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageBoxComponent::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageBoxComponent::OverridePerObjectConfigSection(FString& SectionName)
+void UManageBoxComponent::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageBoxComponent::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageBoxComponent::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageBoxComponent::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageBoxComponent::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageBoxComponent::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageBoxComponent::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageBoxComponent::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageBoxComponent::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageBoxComponent::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageBoxComponent::PostRename(UObject* OldOuter, const FName OldName)
+void UManageBoxComponent::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageBoxComponent::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageBoxComponent::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageBoxComponent::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageBoxComponent::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageBoxComponent::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageBoxComponent::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageBoxComponent::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageBoxComponent::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageBoxComponent::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageBoxComponent::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageBoxComponent::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageBoxComponent::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageBoxComponent::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageBoxComponent::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UCheatManager : UObject
+	public partial class UCheatManager : UObject
 	{
 		public UCheatManager(IntPtr adress)
 			: base(adress)

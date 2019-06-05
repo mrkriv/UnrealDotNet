@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageAudioComponent.h"
 #include "Runtime/Engine/Classes/Components/AudioComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\AudioComponent.h:110
@@ -183,14 +184,14 @@ extern "C"
 		auto _p0 = FadeInDuration;
 		auto _p1 = FadeVolumeLevel;
 		auto _p2 = StartTime;
-		Self->UAudioComponent::FadeIn(_p0, _p1, _p2);
+		Self->FadeIn(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_FadeOut(UAudioComponent* Self, float FadeOutDuration, float FadeVolumeLevel)
 	{
 		auto _p0 = FadeOutDuration;
 		auto _p1 = FadeVolumeLevel;
-		Self->UAudioComponent::FadeOut(_p0, _p1);
+		Self->FadeOut(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_GetAudioComponentUserID(UAudioComponent* Self)
@@ -222,7 +223,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UAudioComponent_Play(UAudioComponent* Self, float StartTime)
 	{
 		auto _p0 = StartTime;
-		Self->UAudioComponent::Play(_p0);
+		Self->Play(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UAudioComponent_PlayInternal(UAudioComponent* Self, float StartTime, float FadeInDuration, float FadeVolumeLevel)
@@ -298,7 +299,283 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UAudioComponent_Stop(UAudioComponent* Self)
 	{
-		Self->UAudioComponent::Stop();
+		Self->Stop();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_FadeIn(UAudioComponent* Self, float FadeInDuration, float FadeVolumeLevel, float StartTime)
+	{
+		auto _p0 = FadeInDuration;
+		auto _p1 = FadeVolumeLevel;
+		auto _p2 = StartTime;
+		((UManageAudioComponent*)Self)->_Supper__FadeIn(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_FadeOut(UAudioComponent* Self, float FadeOutDuration, float FadeVolumeLevel)
+	{
+		auto _p0 = FadeOutDuration;
+		auto _p1 = FadeVolumeLevel;
+		((UManageAudioComponent*)Self)->_Supper__FadeOut(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_Play(UAudioComponent* Self, float StartTime)
+	{
+		auto _p0 = StartTime;
+		((UManageAudioComponent*)Self)->_Supper__Play(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_Stop(UAudioComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__Stop();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageAudioComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageAudioComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageAudioComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageAudioComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageAudioComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageAudioComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageAudioComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageAudioComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageAudioComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageAudioComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageAudioComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostEditImport(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostLoad(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageAudioComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UAudioComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageAudioComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

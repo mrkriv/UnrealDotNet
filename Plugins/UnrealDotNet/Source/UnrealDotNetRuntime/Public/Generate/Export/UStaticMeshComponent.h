@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageStaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\StaticMeshComponent.h:171
@@ -236,6 +237,342 @@ extern "C"
 		auto _p0 = InWidth;
 		auto _p1 = InHeight;
 		return Self->UsesTextureLightmaps(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PrestreamTextures(UMeshComponent* Self, float Seconds, bool bPrioritizeCharacterTextures, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bPrioritizeCharacterTextures;
+		auto _p2 = CinematicTextureGroups;
+		((UManageStaticMeshComponent*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetTextureForceResidentFlag(UMeshComponent* Self, bool bForceMiplevelsToBeResident)
+	{
+		auto _p0 = bForceMiplevelsToBeResident;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetTextureForceResidentFlag(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnComponentCollisionSettingsChanged(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnComponentCollisionSettingsChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PutAllRigidBodiesToSleep(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PutAllRigidBodiesToSleep();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetAllMassScale(UPrimitiveComponent* Self, float InMassScale)
+	{
+		auto _p0 = InMassScale;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetAllMassScale(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetAllUseCCD(UPrimitiveComponent* Self, bool InUseCCD)
+	{
+		auto _p0 = InUseCCD;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetAllUseCCD(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetAngularDamping(UPrimitiveComponent* Self, float InDamping)
+	{
+		auto _p0 = InDamping;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetAngularDamping(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetEnableGravity(UPrimitiveComponent* Self, bool bGravityEnabled)
+	{
+		auto _p0 = bGravityEnabled;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetEnableGravity(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetLinearDamping(UPrimitiveComponent* Self, float InDamping)
+	{
+		auto _p0 = InDamping;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetLinearDamping(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetNotifyRigidBodyCollision(UPrimitiveComponent* Self, bool bNewNotifyRigidBodyCollision)
+	{
+		auto _p0 = bNewNotifyRigidBodyCollision;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetNotifyRigidBodyCollision(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetSimulatePhysics(UPrimitiveComponent* Self, bool bSimulate)
+	{
+		auto _p0 = bSimulate;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetSimulatePhysics(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UnWeldChildren(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__UnWeldChildren();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UnWeldFromParent(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__UnWeldFromParent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UpdatePhysicsToRBChannels(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__UpdatePhysicsToRBChannels();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_WakeAllRigidBodies(UPrimitiveComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__WakeAllRigidBodies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageStaticMeshComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageStaticMeshComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageStaticMeshComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageStaticMeshComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageStaticMeshComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageStaticMeshComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageStaticMeshComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageStaticMeshComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostEditImport(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostLoad(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageStaticMeshComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UStaticMeshComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageStaticMeshComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

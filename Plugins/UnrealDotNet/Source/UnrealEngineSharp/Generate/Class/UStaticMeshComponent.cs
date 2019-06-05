@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UStaticMeshComponent : UMeshComponent
+	public partial class UStaticMeshComponent : UMeshComponent
 	{
 		public UStaticMeshComponent(IntPtr adress)
 			: base(adress)

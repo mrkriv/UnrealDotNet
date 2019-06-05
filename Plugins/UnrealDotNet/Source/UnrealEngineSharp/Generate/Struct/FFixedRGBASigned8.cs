@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFixedRGBASigned8 : NativeStructWrapper
+	public partial class FFixedRGBASigned8 : NativeStructWrapper
 	{
-		internal FFixedRGBASigned8(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFixedRGBASigned8(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

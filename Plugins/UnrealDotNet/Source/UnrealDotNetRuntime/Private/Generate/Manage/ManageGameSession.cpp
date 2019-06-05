@@ -36,772 +36,888 @@ bool AManageGameSession::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
-void AManageGameSession::AddAdmin(APlayerController* AdminPlayer)
-{
-	Super::AddAdmin(AdminPlayer);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAdmin", AdminPlayer);
-}
-
 void AManageGameSession::DumpSessionState()
 {
-	Super::DumpSessionState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DumpSessionState");
+	else
+		Super::DumpSessionState();
+}
+
+void AManageGameSession::_Supper__DumpSessionState()
+{
+	Super::DumpSessionState();
 }
 
 void AManageGameSession::HandleMatchHasEnded()
 {
-	Super::HandleMatchHasEnded();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "HandleMatchHasEnded");
+	else
+		Super::HandleMatchHasEnded();
+}
+
+void AManageGameSession::_Supper__HandleMatchHasEnded()
+{
+	Super::HandleMatchHasEnded();
 }
 
 void AManageGameSession::HandleMatchHasStarted()
 {
-	Super::HandleMatchHasStarted();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "HandleMatchHasStarted");
+	else
+		Super::HandleMatchHasStarted();
+}
+
+void AManageGameSession::_Supper__HandleMatchHasStarted()
+{
+	Super::HandleMatchHasStarted();
 }
 
 void AManageGameSession::HandleMatchIsWaitingToStart()
 {
-	Super::HandleMatchIsWaitingToStart();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "HandleMatchIsWaitingToStart");
+	else
+		Super::HandleMatchIsWaitingToStart();
 }
 
-void AManageGameSession::InitOptions(const FString& Options)
+void AManageGameSession::_Supper__HandleMatchIsWaitingToStart()
 {
-	Super::InitOptions(Options);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "InitOptions", Options);
-}
-
-void AManageGameSession::NotifyLogout(const APlayerController* PC)
-{
-	Super::NotifyLogout(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyLogout", PC);
-}
-
-void AManageGameSession::OnAutoLoginComplete(int32 LocalUserNum, bool bWasSuccessful, const FString& Error)
-{
-	Super::OnAutoLoginComplete(LocalUserNum, bWasSuccessful, Error);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnAutoLoginComplete", LocalUserNum, bWasSuccessful, Error);
-}
-
-void AManageGameSession::PostLogin(APlayerController* NewPlayer)
-{
-	Super::PostLogin(NewPlayer);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostLogin", NewPlayer);
+	Super::HandleMatchIsWaitingToStart();
 }
 
 void AManageGameSession::PostSeamlessTravel()
 {
-	Super::PostSeamlessTravel();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSeamlessTravel");
+	else
+		Super::PostSeamlessTravel();
+}
+
+void AManageGameSession::_Supper__PostSeamlessTravel()
+{
+	Super::PostSeamlessTravel();
 }
 
 void AManageGameSession::RegisterServer()
 {
-	Super::RegisterServer();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterServer");
+	else
+		Super::RegisterServer();
+}
+
+void AManageGameSession::_Supper__RegisterServer()
+{
+	Super::RegisterServer();
 }
 
 void AManageGameSession::RegisterServerFailed()
 {
-	Super::RegisterServerFailed();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterServerFailed");
+	else
+		Super::RegisterServerFailed();
 }
 
-void AManageGameSession::RemoveAdmin(APlayerController* AdminPlayer)
+void AManageGameSession::_Supper__RegisterServerFailed()
 {
-	Super::RemoveAdmin(AdminPlayer);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveAdmin", AdminPlayer);
+	Super::RegisterServerFailed();
 }
 
 void AManageGameSession::Restart()
 {
-	Super::Restart();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Restart");
+	else
+		Super::Restart();
+}
+
+void AManageGameSession::_Supper__Restart()
+{
+	Super::Restart();
 }
 
 void AManageGameSession::ReturnToMainMenuHost()
 {
-	Super::ReturnToMainMenuHost();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ReturnToMainMenuHost");
+	else
+		Super::ReturnToMainMenuHost();
 }
 
-void AManageGameSession::UnregisterPlayer(const APlayerController* ExitingPlayer)
+void AManageGameSession::_Supper__ReturnToMainMenuHost()
 {
-	Super::UnregisterPlayer(ExitingPlayer);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "UnregisterPlayer", ExitingPlayer);
-}
-
-void AManageGameSession::UpdateSessionJoinability(FName InSessionName, bool bPublicSearchable, bool bAllowInvites, bool bJoinViaPresence, bool bJoinViaPresenceFriendsOnly)
-{
-	Super::UpdateSessionJoinability(InSessionName, bPublicSearchable, bAllowInvites, bJoinViaPresence, bJoinViaPresenceFriendsOnly);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateSessionJoinability", InSessionName, bPublicSearchable, bAllowInvites, bJoinViaPresence, bJoinViaPresenceFriendsOnly);
-}
-
-void AManageGameSession::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
-{
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageGameSession::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void AManageGameSession::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
-}
-
-void AManageGameSession::BecomeViewTarget(APlayerController* PC)
-{
-	Super::BecomeViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BecomeViewTarget", PC);
+	Super::ReturnToMainMenuHost();
 }
 
 void AManageGameSession::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void AManageGameSession::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void AManageGameSession::ClearCrossLevelReferences()
 {
-	Super::ClearCrossLevelReferences();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ClearCrossLevelReferences");
+	else
+		Super::ClearCrossLevelReferences();
+}
+
+void AManageGameSession::_Supper__ClearCrossLevelReferences()
+{
+	Super::ClearCrossLevelReferences();
 }
 
 void AManageGameSession::Destroyed()
 {
-	Super::Destroyed();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Destroyed");
+	else
+		Super::Destroyed();
 }
 
-void AManageGameSession::DisableInput(APlayerController* PlayerController)
+void AManageGameSession::_Supper__Destroyed()
 {
-	Super::DisableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DisableInput", PlayerController);
-}
-
-void AManageGameSession::EnableInput(APlayerController* PlayerController)
-{
-	Super::EnableInput(PlayerController);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EnableInput", PlayerController);
-}
-
-void AManageGameSession::EndViewTarget(APlayerController* PC)
-{
-	Super::EndViewTarget(PC);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "EndViewTarget", PC);
+	Super::Destroyed();
 }
 
 void AManageGameSession::ForceNetRelevant()
 {
-	Super::ForceNetRelevant();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetRelevant");
+	else
+		Super::ForceNetRelevant();
+}
+
+void AManageGameSession::_Supper__ForceNetRelevant()
+{
+	Super::ForceNetRelevant();
 }
 
 void AManageGameSession::ForceNetUpdate()
 {
-	Super::ForceNetUpdate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ForceNetUpdate");
+	else
+		Super::ForceNetUpdate();
+}
+
+void AManageGameSession::_Supper__ForceNetUpdate()
+{
+	Super::ForceNetUpdate();
 }
 
 void AManageGameSession::GatherCurrentMovement()
 {
-	Super::GatherCurrentMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "GatherCurrentMovement");
+	else
+		Super::GatherCurrentMovement();
+}
+
+void AManageGameSession::_Supper__GatherCurrentMovement()
+{
+	Super::GatherCurrentMovement();
 }
 
 void AManageGameSession::InvalidateLightingCacheDetailed(bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bTranslationOnly);
+}
+
+void AManageGameSession::_Supper__InvalidateLightingCacheDetailed(bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bTranslationOnly);
 }
 
 void AManageGameSession::K2_DestroyActor()
 {
-	Super::K2_DestroyActor();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "K2_DestroyActor");
+	else
+		Super::K2_DestroyActor();
+}
+
+void AManageGameSession::_Supper__K2_DestroyActor()
+{
+	Super::K2_DestroyActor();
 }
 
 void AManageGameSession::LifeSpanExpired()
 {
-	Super::LifeSpanExpired();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LifeSpanExpired");
+	else
+		Super::LifeSpanExpired();
+}
+
+void AManageGameSession::_Supper__LifeSpanExpired()
+{
+	Super::LifeSpanExpired();
 }
 
 void AManageGameSession::MarkComponentsAsPendingKill()
 {
-	Super::MarkComponentsAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkComponentsAsPendingKill");
+	else
+		Super::MarkComponentsAsPendingKill();
+}
+
+void AManageGameSession::_Supper__MarkComponentsAsPendingKill()
+{
+	Super::MarkComponentsAsPendingKill();
 }
 
 void AManageGameSession::NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginCursorOver");
+	else
+		Super::NotifyActorBeginCursorOver();
 }
 
-void AManageGameSession::NotifyActorBeginOverlap(AActor* OtherActor)
+void AManageGameSession::_Supper__NotifyActorBeginCursorOver()
 {
-	Super::NotifyActorBeginOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorBeginOverlap", OtherActor);
+	Super::NotifyActorBeginCursorOver();
 }
 
 void AManageGameSession::NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndCursorOver();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndCursorOver");
+	else
+		Super::NotifyActorEndCursorOver();
 }
 
-void AManageGameSession::NotifyActorEndOverlap(AActor* OtherActor)
+void AManageGameSession::_Supper__NotifyActorEndCursorOver()
 {
-	Super::NotifyActorEndOverlap(OtherActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyActorEndOverlap", OtherActor);
-}
-
-void AManageGameSession::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
-{
-	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "NotifyHit", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-}
-
-void AManageGameSession::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnConstruction", Transform);
+	Super::NotifyActorEndCursorOver();
 }
 
 void AManageGameSession::OnRep_AttachmentReplication()
 {
-	Super::OnRep_AttachmentReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_AttachmentReplication");
+	else
+		Super::OnRep_AttachmentReplication();
+}
+
+void AManageGameSession::_Supper__OnRep_AttachmentReplication()
+{
+	Super::OnRep_AttachmentReplication();
 }
 
 void AManageGameSession::OnRep_Instigator()
 {
-	Super::OnRep_Instigator();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Instigator");
+	else
+		Super::OnRep_Instigator();
+}
+
+void AManageGameSession::_Supper__OnRep_Instigator()
+{
+	Super::OnRep_Instigator();
 }
 
 void AManageGameSession::OnRep_Owner()
 {
-	Super::OnRep_Owner();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_Owner");
+	else
+		Super::OnRep_Owner();
+}
+
+void AManageGameSession::_Supper__OnRep_Owner()
+{
+	Super::OnRep_Owner();
 }
 
 void AManageGameSession::OnRep_ReplicatedMovement()
 {
-	Super::OnRep_ReplicatedMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicatedMovement");
+	else
+		Super::OnRep_ReplicatedMovement();
+}
+
+void AManageGameSession::_Supper__OnRep_ReplicatedMovement()
+{
+	Super::OnRep_ReplicatedMovement();
 }
 
 void AManageGameSession::OnRep_ReplicateMovement()
 {
-	Super::OnRep_ReplicateMovement();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_ReplicateMovement");
+	else
+		Super::OnRep_ReplicateMovement();
+}
+
+void AManageGameSession::_Supper__OnRep_ReplicateMovement()
+{
+	Super::OnRep_ReplicateMovement();
 }
 
 void AManageGameSession::OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnReplicationPausedChanged(bIsReplicationPaused);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnReplicationPausedChanged", bIsReplicationPaused);
+	else
+		Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
-void AManageGameSession::OnSubobjectCreatedFromReplication(UObject* NewSubobject)
+void AManageGameSession::_Supper__OnReplicationPausedChanged(bool bIsReplicationPaused)
 {
-	Super::OnSubobjectCreatedFromReplication(NewSubobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectCreatedFromReplication", NewSubobject);
-}
-
-void AManageGameSession::OnSubobjectDestroyFromReplication(UObject* Subobject)
-{
-	Super::OnSubobjectDestroyFromReplication(Subobject);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnSubobjectDestroyFromReplication", Subobject);
+	Super::OnReplicationPausedChanged(bIsReplicationPaused);
 }
 
 void AManageGameSession::OutsideWorldBounds()
 {
-	Super::OutsideWorldBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OutsideWorldBounds");
+	else
+		Super::OutsideWorldBounds();
+}
+
+void AManageGameSession::_Supper__OutsideWorldBounds()
+{
+	Super::OutsideWorldBounds();
 }
 
 void AManageGameSession::PostActorCreated()
 {
-	Super::PostActorCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostActorCreated");
+	else
+		Super::PostActorCreated();
+}
+
+void AManageGameSession::_Supper__PostActorCreated()
+{
+	Super::PostActorCreated();
 }
 
 void AManageGameSession::PostInitializeComponents()
 {
-	Super::PostInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitializeComponents");
+	else
+		Super::PostInitializeComponents();
+}
+
+void AManageGameSession::_Supper__PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
 }
 
 void AManageGameSession::PostNetInit()
 {
-	Super::PostNetInit();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetInit");
+	else
+		Super::PostNetInit();
+}
+
+void AManageGameSession::_Supper__PostNetInit()
+{
+	Super::PostNetInit();
 }
 
 void AManageGameSession::PostNetReceiveLocationAndRotation()
 {
-	Super::PostNetReceiveLocationAndRotation();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveLocationAndRotation");
+	else
+		Super::PostNetReceiveLocationAndRotation();
+}
+
+void AManageGameSession::_Supper__PostNetReceiveLocationAndRotation()
+{
+	Super::PostNetReceiveLocationAndRotation();
 }
 
 void AManageGameSession::PostNetReceivePhysicState()
 {
-	Super::PostNetReceivePhysicState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceivePhysicState");
+	else
+		Super::PostNetReceivePhysicState();
+}
+
+void AManageGameSession::_Supper__PostNetReceivePhysicState()
+{
+	Super::PostNetReceivePhysicState();
 }
 
 void AManageGameSession::PostNetReceiveRole()
 {
-	Super::PostNetReceiveRole();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveRole");
+	else
+		Super::PostNetReceiveRole();
 }
 
-void AManageGameSession::PostNetReceiveVelocity(const FVector& NewVelocity)
+void AManageGameSession::_Supper__PostNetReceiveRole()
 {
-	Super::PostNetReceiveVelocity(NewVelocity);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceiveVelocity", NewVelocity);
+	Super::PostNetReceiveRole();
 }
 
 void AManageGameSession::PostRegisterAllComponents()
 {
-	Super::PostRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRegisterAllComponents");
+	else
+		Super::PostRegisterAllComponents();
 }
 
-void AManageGameSession::PostRenderFor(APlayerController* PC, UCanvas* Canvas, FVector CameraPosition, FVector CameraDir)
+void AManageGameSession::_Supper__PostRegisterAllComponents()
 {
-	Super::PostRenderFor(PC, Canvas, CameraPosition, CameraDir);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRenderFor", PC, Canvas, CameraPosition, CameraDir);
+	Super::PostRegisterAllComponents();
 }
 
 void AManageGameSession::PostUnregisterAllComponents()
 {
-	Super::PostUnregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostUnregisterAllComponents");
+	else
+		Super::PostUnregisterAllComponents();
+}
+
+void AManageGameSession::_Supper__PostUnregisterAllComponents()
+{
+	Super::PostUnregisterAllComponents();
 }
 
 void AManageGameSession::PreInitializeComponents()
 {
-	Super::PreInitializeComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreInitializeComponents");
+	else
+		Super::PreInitializeComponents();
+}
+
+void AManageGameSession::_Supper__PreInitializeComponents()
+{
+	Super::PreInitializeComponents();
 }
 
 void AManageGameSession::PreRegisterAllComponents()
 {
-	Super::PreRegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreRegisterAllComponents");
+	else
+		Super::PreRegisterAllComponents();
+}
+
+void AManageGameSession::_Supper__PreRegisterAllComponents()
+{
+	Super::PreRegisterAllComponents();
 }
 
 void AManageGameSession::PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
 {
-	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PrestreamTextures", Seconds, bEnableStreaming, CinematicTextureGroups);
+	else
+		Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
+}
+
+void AManageGameSession::_Supper__PrestreamTextures(float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bEnableStreaming, CinematicTextureGroups);
 }
 
 void AManageGameSession::RegisterActorTickFunctions(bool bRegister)
 {
-	Super::RegisterActorTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterActorTickFunctions", bRegister);
+	else
+		Super::RegisterActorTickFunctions(bRegister);
+}
+
+void AManageGameSession::_Supper__RegisterActorTickFunctions(bool bRegister)
+{
+	Super::RegisterActorTickFunctions(bRegister);
 }
 
 void AManageGameSession::RegisterAllComponents()
 {
-	Super::RegisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterAllComponents");
+	else
+		Super::RegisterAllComponents();
 }
 
-void AManageGameSession::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void AManageGameSession::_Supper__RegisterAllComponents()
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void AManageGameSession::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterAllComponents();
 }
 
 void AManageGameSession::ReregisterAllComponents()
 {
-	Super::ReregisterAllComponents();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ReregisterAllComponents");
+	else
+		Super::ReregisterAllComponents();
+}
+
+void AManageGameSession::_Supper__ReregisterAllComponents()
+{
+	Super::ReregisterAllComponents();
 }
 
 void AManageGameSession::RerunConstructionScripts()
 {
-	Super::RerunConstructionScripts();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RerunConstructionScripts");
+	else
+		Super::RerunConstructionScripts();
+}
+
+void AManageGameSession::_Supper__RerunConstructionScripts()
+{
+	Super::RerunConstructionScripts();
 }
 
 void AManageGameSession::Reset()
 {
-	Super::Reset();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Reset");
+	else
+		Super::Reset();
+}
+
+void AManageGameSession::_Supper__Reset()
+{
+	Super::Reset();
 }
 
 void AManageGameSession::RewindForReplay()
 {
-	Super::RewindForReplay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RewindForReplay");
+	else
+		Super::RewindForReplay();
+}
+
+void AManageGameSession::_Supper__RewindForReplay()
+{
+	Super::RewindForReplay();
 }
 
 void AManageGameSession::SetActorHiddenInGame(bool bNewHidden)
 {
-	Super::SetActorHiddenInGame(bNewHidden);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActorHiddenInGame", bNewHidden);
+	else
+		Super::SetActorHiddenInGame(bNewHidden);
+}
+
+void AManageGameSession::_Supper__SetActorHiddenInGame(bool bNewHidden)
+{
+	Super::SetActorHiddenInGame(bNewHidden);
 }
 
 void AManageGameSession::SetLifeSpan(float InLifespan)
 {
-	Super::SetLifeSpan(InLifespan);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLifeSpan", InLifespan);
+	else
+		Super::SetLifeSpan(InLifespan);
 }
 
-void AManageGameSession::SetOwner(AActor* NewOwner)
+void AManageGameSession::_Supper__SetLifeSpan(float InLifespan)
 {
-	Super::SetOwner(NewOwner);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetOwner", NewOwner);
+	Super::SetLifeSpan(InLifespan);
 }
 
 void AManageGameSession::SetReplicateMovement(bool bInReplicateMovement)
 {
-	Super::SetReplicateMovement(bInReplicateMovement);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetReplicateMovement", bInReplicateMovement);
+	else
+		Super::SetReplicateMovement(bInReplicateMovement);
+}
+
+void AManageGameSession::_Supper__SetReplicateMovement(bool bInReplicateMovement)
+{
+	Super::SetReplicateMovement(bInReplicateMovement);
 }
 
 void AManageGameSession::TearOff()
 {
-	Super::TearOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TearOff");
+	else
+		Super::TearOff();
+}
+
+void AManageGameSession::_Supper__TearOff()
+{
+	Super::TearOff();
 }
 
 void AManageGameSession::TeleportSucceeded(bool bIsATest)
 {
-	Super::TeleportSucceeded(bIsATest);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TeleportSucceeded", bIsATest);
+	else
+		Super::TeleportSucceeded(bIsATest);
+}
+
+void AManageGameSession::_Supper__TeleportSucceeded(bool bIsATest)
+{
+	Super::TeleportSucceeded(bIsATest);
 }
 
 void AManageGameSession::Tick(float DeltaSeconds)
 {
-	Super::Tick(DeltaSeconds);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Tick", DeltaSeconds);
+	else
+		Super::Tick(DeltaSeconds);
+}
+
+void AManageGameSession::_Supper__Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }
 
 void AManageGameSession::TornOff()
 {
-	Super::TornOff();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TornOff");
+	else
+		Super::TornOff();
+}
+
+void AManageGameSession::_Supper__TornOff()
+{
+	Super::TornOff();
 }
 
 void AManageGameSession::UnregisterAllComponents(bool bForReregister)
 {
-	Super::UnregisterAllComponents(bForReregister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnregisterAllComponents", bForReregister);
+	else
+		Super::UnregisterAllComponents(bForReregister);
+}
+
+void AManageGameSession::_Supper__UnregisterAllComponents(bool bForReregister)
+{
+	Super::UnregisterAllComponents(bForReregister);
 }
 
 void AManageGameSession::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void AManageGameSession::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void AManageGameSession::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void AManageGameSession::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void AManageGameSession::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void AManageGameSession::OverridePerObjectConfigSection(FString& SectionName)
+void AManageGameSession::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void AManageGameSession::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void AManageGameSession::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void AManageGameSession::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void AManageGameSession::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void AManageGameSession::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void AManageGameSession::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void AManageGameSession::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void AManageGameSession::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void AManageGameSession::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void AManageGameSession::PostRename(UObject* OldOuter, const FName OldName)
+void AManageGameSession::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void AManageGameSession::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void AManageGameSession::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void AManageGameSession::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void AManageGameSession::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void AManageGameSession::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void AManageGameSession::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void AManageGameSession::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void AManageGameSession::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void AManageGameSession::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void AManageGameSession::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void AManageGameSession::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void AManageGameSession::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void AManageGameSession::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void AManageGameSession::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

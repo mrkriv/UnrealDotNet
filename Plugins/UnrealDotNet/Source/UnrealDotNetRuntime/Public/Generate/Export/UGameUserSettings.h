@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageGameUserSettings.h"
 #include "Runtime/Engine/Classes/GameFramework/GameUserSettings.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameUserSettings.h:38
@@ -76,12 +77,12 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyHardwareBenchmarkResults(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::ApplyHardwareBenchmarkResults();
+		Self->ApplyHardwareBenchmarkResults();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyNonResolutionSettings(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::ApplyNonResolutionSettings();
+		Self->ApplyNonResolutionSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplyResolutionSettings(UGameUserSettings* Self, bool bCheckForCommandLineOverrides)
@@ -93,12 +94,12 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_ApplySettings(UGameUserSettings* Self, bool bCheckForCommandLineOverrides)
 	{
 		auto _p0 = bCheckForCommandLineOverrides;
-		Self->UGameUserSettings::ApplySettings(_p0);
+		Self->ApplySettings(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ConfirmVideoMode(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::ConfirmVideoMode();
+		Self->ConfirmVideoMode();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_EnableHDRDisplayOutput(UGameUserSettings* Self, bool bEnable, int32 DisplayNits)
@@ -307,7 +308,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_LoadSettings(UGameUserSettings* Self, bool bForceReload)
 	{
 		auto _p0 = bForceReload;
-		Self->UGameUserSettings::LoadSettings(_p0);
+		Self->LoadSettings(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_PreloadResolutionSettings(UGameUserSettings* Self)
@@ -322,7 +323,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ResetToCurrentSettings(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::ResetToCurrentSettings();
+		Self->ResetToCurrentSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_RevertVideoMode(UGameUserSettings* Self)
@@ -335,12 +336,12 @@ extern "C"
 		auto _p0 = WorkScale;
 		auto _p1 = CPUMultiplier;
 		auto _p2 = GPUMultiplier;
-		Self->UGameUserSettings::RunHardwareBenchmark(_p0, _p1, _p2);
+		Self->RunHardwareBenchmark(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SaveSettings(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::SaveSettings();
+		Self->SaveSettings();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetAntiAliasingQuality(UGameUserSettings* Self, int32 Value)
@@ -387,7 +388,7 @@ extern "C"
 	DOTNET_EXPORT auto E_UGameUserSettings_SetOverallScalabilityLevel(UGameUserSettings* Self, int32 Value)
 	{
 		auto _p0 = Value;
-		Self->UGameUserSettings::SetOverallScalabilityLevel(_p0);
+		Self->SetOverallScalabilityLevel(_p0);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetPostProcessingQuality(UGameUserSettings* Self, int32 Value)
@@ -446,7 +447,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetToDefaults(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::SetToDefaults();
+		Self->SetToDefaults();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SetViewDistanceQuality(UGameUserSettings* Self, int32 Value)
@@ -471,7 +472,7 @@ extern "C"
 	{
 		auto _p0 = WindowPosX;
 		auto _p1 = WindowPosY;
-		Self->UGameUserSettings::SetWindowPosition(_p0, _p1);
+		Self->SetWindowPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_SupportsHDRDisplayOutput(UGameUserSettings* Self)
@@ -486,12 +487,161 @@ extern "C"
 
 	DOTNET_EXPORT auto E_UGameUserSettings_UpdateVersion(UGameUserSettings* Self)
 	{
-		((E_PROTECTED_WRAP_UGameUserSettings*)Self)->UGameUserSettings::UpdateVersion_WRAP();
+		((E_PROTECTED_WRAP_UGameUserSettings*)Self)->UpdateVersion_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_UGameUserSettings_ValidateSettings(UGameUserSettings* Self)
 	{
-		Self->UGameUserSettings::ValidateSettings();
+		Self->ValidateSettings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ApplyHardwareBenchmarkResults(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ApplyHardwareBenchmarkResults();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ApplyNonResolutionSettings(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ApplyNonResolutionSettings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ApplySettings(UGameUserSettings* Self, bool bCheckForCommandLineOverrides)
+	{
+		auto _p0 = bCheckForCommandLineOverrides;
+		((UManageGameUserSettings*)Self)->_Supper__ApplySettings(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ConfirmVideoMode(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ConfirmVideoMode();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_LoadSettings(UGameUserSettings* Self, bool bForceReload)
+	{
+		auto _p0 = bForceReload;
+		((UManageGameUserSettings*)Self)->_Supper__LoadSettings(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ResetToCurrentSettings(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ResetToCurrentSettings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_RunHardwareBenchmark(UGameUserSettings* Self, int32 WorkScale, float CPUMultiplier, float GPUMultiplier)
+	{
+		auto _p0 = WorkScale;
+		auto _p1 = CPUMultiplier;
+		auto _p2 = GPUMultiplier;
+		((UManageGameUserSettings*)Self)->_Supper__RunHardwareBenchmark(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_SaveSettings(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__SaveSettings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_SetOverallScalabilityLevel(UGameUserSettings* Self, int32 Value)
+	{
+		auto _p0 = Value;
+		((UManageGameUserSettings*)Self)->_Supper__SetOverallScalabilityLevel(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_SetToDefaults(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__SetToDefaults();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_SetWindowPosition(UGameUserSettings* Self, int32 WindowPosX, int32 WindowPosY)
+	{
+		auto _p0 = WindowPosX;
+		auto _p1 = WindowPosY;
+		((UManageGameUserSettings*)Self)->_Supper__SetWindowPosition(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_UpdateVersion(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__UpdateVersion();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ValidateSettings(UGameUserSettings* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ValidateSettings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_BeginDestroy(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_FinishDestroy(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostCDOContruct(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostEditImport(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostInitProperties(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostLoad(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostNetReceive(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostRepNotifies(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageGameUserSettings*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_PreNetReceive(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_ShutdownAfterError(UObject* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UGameUserSettings_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageGameUserSettings*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

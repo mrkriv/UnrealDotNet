@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageGameModeBase.h"
 #include "Runtime/Engine/Classes/GameFramework/GameModeBase.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameModeBase.h:46
@@ -116,7 +117,7 @@ extern "C"
 		auto _p0 = Controller;
 		auto _p1 = ConvertFromManage_FString(NewName);
 		auto _p2 = bNameChange;
-		Self->AGameModeBase::ChangeName(_p0, _p1, _p2);
+		Self->ChangeName(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ChoosePlayerStart(AGameModeBase* Self, AController* Player)
@@ -141,7 +142,7 @@ extern "C"
 	{
 		auto _p0 = NewPlayer;
 		auto& _p1 = *(FRotator*)StartRotation;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::FinishRestartPlayer_WRAP(_p0, _p1);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->FinishRestartPlayer_WRAP(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ForceClearUnpauseDelegates(AGameModeBase* Self, AActor* PauseActor)
@@ -153,7 +154,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_GenericPlayerInitialization(AGameModeBase* Self, AController* C)
 	{
 		auto _p0 = C;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::GenericPlayerInitialization_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->GenericPlayerInitialization_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_GetNumPlayers(AGameModeBase* Self)
@@ -182,12 +183,12 @@ extern "C"
 		auto _p0 = ConvertFromManage_FString(MapName);
 		auto _p1 = ConvertFromManage_FString(Options);
 		auto _p2 = ConvertFromManage_FString(ErrorMessage);
-		Self->AGameModeBase::InitGame(_p0, _p1, _p2);
+		Self->InitGame(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitGameState(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::InitGameState();
+		Self->InitGameState();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitializeHUDForPlayer(AGameModeBase* Self, APlayerController* NewPlayer)
@@ -199,7 +200,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_InitSeamlessTravelPlayer(AGameModeBase* Self, AController* NewController)
 	{
 		auto _p0 = NewController;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::InitSeamlessTravelPlayer_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->InitSeamlessTravelPlayer_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_InitStartSpot(AGameModeBase* Self, AActor* StartSpot, AController* NewPlayer)
@@ -262,7 +263,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_Logout(AGameModeBase* Self, AController* Exiting)
 	{
 		auto _p0 = Exiting;
-		Self->AGameModeBase::Logout(_p0);
+		Self->Logout(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_MustSpectate(AGameModeBase* Self, APlayerController* NewPlayerController)
@@ -280,61 +281,61 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameModeBase_PostLogin(AGameModeBase* Self, APlayerController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->AGameModeBase::PostLogin(_p0);
+		Self->PostLogin(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_PostSeamlessTravel(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::PostSeamlessTravel();
+		Self->PostSeamlessTravel();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ProcessServerTravel(AGameModeBase* Self, char* URL, bool bAbsolute)
 	{
 		auto _p0 = ConvertFromManage_FString(URL);
 		auto _p1 = bAbsolute;
-		Self->AGameModeBase::ProcessServerTravel(_p0, _p1);
+		Self->ProcessServerTravel(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ReplicateStreamingStatus(AGameModeBase* Self, APlayerController* PC)
 	{
 		auto _p0 = PC;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::ReplicateStreamingStatus_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->ReplicateStreamingStatus_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ResetLevel(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::ResetLevel();
+		Self->ResetLevel();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayer(AGameModeBase* Self, AController* NewPlayer)
 	{
 		auto _p0 = NewPlayer;
-		Self->AGameModeBase::RestartPlayer(_p0);
+		Self->RestartPlayer(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayerAtPlayerStart(AGameModeBase* Self, AController* NewPlayer, AActor* StartSpot)
 	{
 		auto _p0 = NewPlayer;
 		auto _p1 = StartSpot;
-		Self->AGameModeBase::RestartPlayerAtPlayerStart(_p0, _p1);
+		Self->RestartPlayerAtPlayerStart(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_RestartPlayerAtTransform(AGameModeBase* Self, AController* NewPlayer, INT_PTR SpawnTransform)
 	{
 		auto _p0 = NewPlayer;
 		auto& _p1 = *(FTransform*)SpawnTransform;
-		Self->AGameModeBase::RestartPlayerAtTransform(_p0, _p1);
+		Self->RestartPlayerAtTransform(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ReturnToMainMenuHost(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::ReturnToMainMenuHost();
+		Self->ReturnToMainMenuHost();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_SetPlayerDefaults(AGameModeBase* Self, APawn* PlayerPawn)
 	{
 		auto _p0 = PlayerPawn;
-		Self->AGameModeBase::SetPlayerDefaults(_p0);
+		Self->SetPlayerDefaults(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_ShouldReset(AGameModeBase* Self, AActor* ActorToReset)
@@ -405,25 +406,363 @@ extern "C"
 
 	DOTNET_EXPORT auto E_AGameModeBase_StartPlay(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::StartPlay();
+		Self->StartPlay();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_StartToLeaveMap(AGameModeBase* Self)
 	{
-		Self->AGameModeBase::StartToLeaveMap();
+		Self->StartToLeaveMap();
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_SwapPlayerControllers(AGameModeBase* Self, APlayerController* OldPC, APlayerController* NewPC)
 	{
 		auto _p0 = OldPC;
 		auto _p1 = NewPC;
-		Self->AGameModeBase::SwapPlayerControllers(_p0, _p1);
+		Self->SwapPlayerControllers(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AGameModeBase_UpdateGameplayMuteList(AGameModeBase* Self, APlayerController* aPlayer)
 	{
 		auto _p0 = aPlayer;
-		((E_PROTECTED_WRAP_AGameModeBase*)Self)->AGameModeBase::UpdateGameplayMuteList_WRAP(_p0);
+		((E_PROTECTED_WRAP_AGameModeBase*)Self)->UpdateGameplayMuteList_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_InitGameState(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__InitGameState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostSeamlessTravel(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostSeamlessTravel();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ResetLevel(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ResetLevel();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ReturnToMainMenuHost(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ReturnToMainMenuHost();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_StartPlay(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__StartPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_StartToLeaveMap(AGameModeBase* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__StartToLeaveMap();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_BeginPlay(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_Destroyed(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ForceNetRelevant(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ForceNetUpdate(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_GatherCurrentMovement(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManageGameModeBase*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_K2_DestroyActor(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_LifeSpanExpired(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnRep_Instigator(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnRep_Owner(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManageGameModeBase*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OutsideWorldBounds(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostActorCreated(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostInitializeComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostNetInit(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostNetReceiveRole(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PreInitializeComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManageGameModeBase*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManageGameModeBase*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_RegisterAllComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ReregisterAllComponents(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_RerunConstructionScripts(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_Reset(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_RewindForReplay(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManageGameModeBase*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManageGameModeBase*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManageGameModeBase*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_TearOff(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManageGameModeBase*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManageGameModeBase*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_TornOff(AActor* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManageGameModeBase*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_BeginDestroy(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_FinishDestroy(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostCDOContruct(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostEditImport(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostInitProperties(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostLoad(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostNetReceive(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostRepNotifies(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManageGameModeBase*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_PreNetReceive(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_ShutdownAfterError(UObject* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameModeBase_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManageGameModeBase*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

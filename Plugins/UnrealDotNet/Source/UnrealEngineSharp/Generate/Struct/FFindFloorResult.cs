@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFindFloorResult : NativeStructWrapper
+	public partial class FFindFloorResult : NativeStructWrapper
 	{
-		internal FFindFloorResult(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFindFloorResult(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

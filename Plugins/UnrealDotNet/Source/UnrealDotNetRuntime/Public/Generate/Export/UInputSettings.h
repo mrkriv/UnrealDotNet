@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageInputSettings.h"
 #include "Runtime/Engine/Classes/GameFramework/InputSettings.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\InputSettings.h:20
@@ -108,6 +109,82 @@ extern "C"
 	DOTNET_EXPORT auto E_UInputSettings_SaveKeyMappings(UInputSettings* Self)
 	{
 		Self->SaveKeyMappings();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_BeginDestroy(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_FinishDestroy(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostCDOContruct(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostEditImport(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostInitProperties(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostLoad(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostNetReceive(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostRepNotifies(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageInputSettings*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_PreNetReceive(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_ShutdownAfterError(UObject* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UInputSettings_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageInputSettings*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

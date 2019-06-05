@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AGameNetworkManager : AInfo
+	public partial class AGameNetworkManager : AInfo
 	{
 		public AGameNetworkManager(IntPtr adress)
 			: base(adress)

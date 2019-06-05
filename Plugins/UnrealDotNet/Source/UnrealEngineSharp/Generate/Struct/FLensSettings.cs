@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FLensSettings : NativeStructWrapper
+	public partial class FLensSettings : NativeStructWrapper
 	{
-		internal FLensSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FLensSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

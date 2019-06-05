@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FEngineShowFlagsSetting : NativeStructWrapper
+	public partial class FEngineShowFlagsSetting : NativeStructWrapper
 	{
-		internal FEngineShowFlagsSetting(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FEngineShowFlagsSetting(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

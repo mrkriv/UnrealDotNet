@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FColorGradePerRangeSettings : NativeStructWrapper
+	public partial class FColorGradePerRangeSettings : NativeStructWrapper
 	{
-		internal FColorGradePerRangeSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FColorGradePerRangeSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

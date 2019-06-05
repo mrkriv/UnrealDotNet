@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FConvolutionBloomSettings : NativeStructWrapper
+	public partial class FConvolutionBloomSettings : NativeStructWrapper
 	{
-		internal FConvolutionBloomSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FConvolutionBloomSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

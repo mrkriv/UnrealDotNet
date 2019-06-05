@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FTimelineFloatTrack : NativeStructWrapper
+	public partial class FTimelineFloatTrack : NativeStructWrapper
 	{
-		internal FTimelineFloatTrack(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FTimelineFloatTrack(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

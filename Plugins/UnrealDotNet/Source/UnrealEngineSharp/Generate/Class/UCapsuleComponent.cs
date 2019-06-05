@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UCapsuleComponent : UShapeComponent
+	public partial class UCapsuleComponent : UShapeComponent
 	{
 		public UCapsuleComponent(IntPtr adress)
 			: base(adress)

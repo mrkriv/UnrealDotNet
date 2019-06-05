@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FShear2D : NativeStructWrapper
+	public partial class FShear2D : NativeStructWrapper
 	{
-		internal FShear2D(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FShear2D(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

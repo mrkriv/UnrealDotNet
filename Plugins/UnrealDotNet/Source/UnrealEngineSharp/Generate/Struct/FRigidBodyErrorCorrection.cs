@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRigidBodyErrorCorrection : NativeStructWrapper
+	public partial class FRigidBodyErrorCorrection : NativeStructWrapper
 	{
-		internal FRigidBodyErrorCorrection(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRigidBodyErrorCorrection(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

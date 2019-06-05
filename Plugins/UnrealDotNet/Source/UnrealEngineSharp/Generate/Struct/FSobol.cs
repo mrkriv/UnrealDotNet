@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSobol : NativeStructWrapper
+	public partial class FSobol : NativeStructWrapper
 	{
-		internal FSobol(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSobol(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

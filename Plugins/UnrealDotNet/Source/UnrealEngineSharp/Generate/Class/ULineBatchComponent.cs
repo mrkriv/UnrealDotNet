@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class ULineBatchComponent : UPrimitiveComponent
+	public partial class ULineBatchComponent : UPrimitiveComponent
 	{
 		public ULineBatchComponent(IntPtr adress)
 			: base(adress)

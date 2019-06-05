@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FBox2D : NativeStructWrapper
+	public partial class FBox2D : NativeStructWrapper
 	{
-		internal FBox2D(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FBox2D(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageCharacter.h"
 #include "Runtime/Engine/Classes/GameFramework/Character.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Character.h:210
@@ -130,19 +131,19 @@ extern "C"
 		auto& _p1 = *(FDamageEvent*)DamageEvent;
 		auto _p2 = PawnInstigator;
 		auto _p3 = DamageCauser;
-		Self->ACharacter::ApplyDamageMomentum(_p0, _p1, _p2, _p3);
+		Self->ApplyDamageMomentum(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_BaseChange(ACharacter* Self)
 	{
-		((E_PROTECTED_WRAP_ACharacter*)Self)->ACharacter::BaseChange_WRAP();
+		((E_PROTECTED_WRAP_ACharacter*)Self)->BaseChange_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CacheInitialMeshOffset(ACharacter* Self, INT_PTR MeshRelativeLocation, INT_PTR MeshRelativeRotation)
 	{
 		auto _p0 = *(FVector*)MeshRelativeLocation;
 		auto _p1 = *(FRotator*)MeshRelativeRotation;
-		Self->ACharacter::CacheInitialMeshOffset(_p0, _p1);
+		Self->CacheInitialMeshOffset(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_CanCrouch(ACharacter* Self)
@@ -168,13 +169,13 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_CheckJumpInput(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->ACharacter::CheckJumpInput(_p0);
+		Self->CheckJumpInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClearJumpInput(ACharacter* Self, float DeltaTime)
 	{
 		auto _p0 = DeltaTime;
-		Self->ACharacter::ClearJumpInput(_p0);
+		Self->ClearJumpInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientAckGoodMove(ACharacter* Self, float TimeStamp)
@@ -222,7 +223,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatFly_Implementation(ACharacter* Self)
 	{
-		Self->ACharacter::ClientCheatFly_Implementation();
+		Self->ClientCheatFly_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatGhost(ACharacter* Self)
@@ -232,7 +233,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatGhost_Implementation(ACharacter* Self)
 	{
-		Self->ACharacter::ClientCheatGhost_Implementation();
+		Self->ClientCheatGhost_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatWalk(ACharacter* Self)
@@ -242,7 +243,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_ClientCheatWalk_Implementation(ACharacter* Self)
 	{
-		Self->ACharacter::ClientCheatWalk_Implementation();
+		Self->ClientCheatWalk_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ClientVeryShortAdjustPosition(ACharacter* Self, float TimeStamp, INT_PTR NewLoc, UPrimitiveComponent* NewBase, char* NewBaseBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
@@ -272,12 +273,12 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_Crouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		Self->ACharacter::Crouch(_p0);
+		Self->Crouch(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_Falling(ACharacter* Self)
 	{
-		Self->ACharacter::Falling();
+		Self->Falling();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_GetAnimRootMotionTranslationScale(ACharacter* Self)
@@ -362,7 +363,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_Jump(ACharacter* Self)
 	{
-		Self->ACharacter::Jump();
+		Self->Jump();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_K2_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
@@ -397,7 +398,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_Landed(ACharacter* Self, INT_PTR Hit)
 	{
 		auto& _p0 = *(FHitResult*)Hit;
-		Self->ACharacter::Landed(_p0);
+		Self->Landed(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_LaunchCharacter(ACharacter* Self, INT_PTR LaunchVelocity, bool bXYOverride, bool bZOverride)
@@ -405,37 +406,37 @@ extern "C"
 		auto _p0 = *(FVector*)LaunchVelocity;
 		auto _p1 = bXYOverride;
 		auto _p2 = bZOverride;
-		Self->ACharacter::LaunchCharacter(_p0, _p1, _p2);
+		Self->LaunchCharacter(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_MoveBlockedBy(ACharacter* Self, INT_PTR Impact)
 	{
 		auto& _p0 = *(FHitResult*)Impact;
-		Self->ACharacter::MoveBlockedBy(_p0);
+		Self->MoveBlockedBy(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyActorBeginOverlap(ACharacter* Self, AActor* OtherActor)
 	{
 		auto _p0 = OtherActor;
-		Self->ACharacter::NotifyActorBeginOverlap(_p0);
+		Self->NotifyActorBeginOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyActorEndOverlap(ACharacter* Self, AActor* OtherActor)
 	{
 		auto _p0 = OtherActor;
-		Self->ACharacter::NotifyActorEndOverlap(_p0);
+		Self->NotifyActorEndOverlap(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_NotifyJumpApex(ACharacter* Self)
 	{
-		Self->ACharacter::NotifyJumpApex();
+		Self->NotifyJumpApex();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		Self->ACharacter::OnEndCrouch(_p0, _p1);
+		Self->OnEndCrouch(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnJumped(ACharacter* Self)
@@ -445,7 +446,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnJumped_Implementation(ACharacter* Self)
 	{
-		Self->ACharacter::OnJumped_Implementation();
+		Self->OnJumped_Implementation();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnLanded(ACharacter* Self, INT_PTR Hit)
@@ -466,12 +467,12 @@ extern "C"
 	{
 		auto _p0 = PrevMovementMode;
 		auto _p1 = PreviousCustomMode;
-		Self->ACharacter::OnMovementModeChanged(_p0, _p1);
+		Self->OnMovementModeChanged(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_IsCrouched(ACharacter* Self)
 	{
-		Self->ACharacter::OnRep_IsCrouched();
+		Self->OnRep_IsCrouched();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_ReplayLastTransformUpdateTimeStamp(ACharacter* Self)
@@ -481,7 +482,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_ReplicatedBasedMovement(ACharacter* Self)
 	{
-		Self->ACharacter::OnRep_ReplicatedBasedMovement();
+		Self->OnRep_ReplicatedBasedMovement();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnRep_RootMotion(ACharacter* Self)
@@ -493,14 +494,14 @@ extern "C"
 	{
 		auto _p0 = HalfHeightAdjust;
 		auto _p1 = ScaledHalfHeightAdjust;
-		Self->ACharacter::OnStartCrouch(_p0, _p1);
+		Self->OnStartCrouch(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnUpdateSimulatedPosition(ACharacter* Self, INT_PTR OldLocation, INT_PTR OldRotation)
 	{
 		auto& _p0 = *(FVector*)OldLocation;
 		auto& _p1 = *(FQuat*)OldRotation;
-		Self->ACharacter::OnUpdateSimulatedPosition(_p0, _p1);
+		Self->OnUpdateSimulatedPosition(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_OnWalkingOffLedge(ACharacter* Self, INT_PTR PreviousFloorImpactNormal, INT_PTR PreviousFloorContactNormal, INT_PTR PreviousLocation, float TimeDelta)
@@ -518,12 +519,12 @@ extern "C"
 		auto& _p1 = *(FVector*)PreviousFloorContactNormal;
 		auto& _p2 = *(FVector*)PreviousLocation;
 		auto _p3 = TimeDelta;
-		Self->ACharacter::OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
+		Self->OnWalkingOffLedge_Implementation(_p0, _p1, _p2, _p3);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ResetJumpState(ACharacter* Self)
 	{
-		Self->ACharacter::ResetJumpState();
+		Self->ResetJumpState();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_RestoreReplicatedMove(ACharacter* Self, INT_PTR RootMotionRepMove)
@@ -541,7 +542,7 @@ extern "C"
 	DOTNET_EXPORT auto E_ACharacter_RootMotionDebugClientPrintOnScreen_Implementation(ACharacter* Self, char* InString)
 	{
 		auto _p0 = ConvertFromManage_FString(InString);
-		Self->ACharacter::RootMotionDebugClientPrintOnScreen_Implementation(_p0);
+		Self->RootMotionDebugClientPrintOnScreen_Implementation(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_SaveRelativeBasedMovement(ACharacter* Self, INT_PTR NewRelativeLocation, INT_PTR NewRotation, bool bRelativeRotation)
@@ -563,7 +564,7 @@ extern "C"
 		auto _p0 = NewBase;
 		auto _p1 = ConvertFromManage_FName(BoneName);
 		auto _p2 = bNotifyActor;
-		Self->ACharacter::SetBase(_p0, _p1, _p2);
+		Self->SetBase(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_ShouldNotifyLanded(ACharacter* Self, INT_PTR Hit)
@@ -580,13 +581,503 @@ extern "C"
 
 	DOTNET_EXPORT auto E_ACharacter_StopJumping(ACharacter* Self)
 	{
-		Self->ACharacter::StopJumping();
+		Self->StopJumping();
 	}
 
 	DOTNET_EXPORT auto E_ACharacter_UnCrouch(ACharacter* Self, bool bClientSimulation)
 	{
 		auto _p0 = bClientSimulation;
-		Self->ACharacter::UnCrouch(_p0);
+		Self->UnCrouch(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_BaseChange(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__BaseChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_CheckJumpInput(ACharacter* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		((AManageCharacter*)Self)->_Supper__CheckJumpInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ClearJumpInput(ACharacter* Self, float DeltaTime)
+	{
+		auto _p0 = DeltaTime;
+		((AManageCharacter*)Self)->_Supper__ClearJumpInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ClientCheatFly_Implementation(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ClientCheatFly_Implementation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ClientCheatGhost_Implementation(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ClientCheatGhost_Implementation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ClientCheatWalk_Implementation(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ClientCheatWalk_Implementation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Crouch(ACharacter* Self, bool bClientSimulation)
+	{
+		auto _p0 = bClientSimulation;
+		((AManageCharacter*)Self)->_Supper__Crouch(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Falling(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__Falling();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Jump(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__Jump();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_NotifyJumpApex(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__NotifyJumpApex();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnEndCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	{
+		auto _p0 = HalfHeightAdjust;
+		auto _p1 = ScaledHalfHeightAdjust;
+		((AManageCharacter*)Self)->_Supper__OnEndCrouch(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnJumped_Implementation(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnJumped_Implementation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_IsCrouched(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_IsCrouched();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_ReplicatedBasedMovement(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_ReplicatedBasedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnStartCrouch(ACharacter* Self, float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+	{
+		auto _p0 = HalfHeightAdjust;
+		auto _p1 = ScaledHalfHeightAdjust;
+		((AManageCharacter*)Self)->_Supper__OnStartCrouch(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ResetJumpState(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ResetJumpState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_StopJumping(ACharacter* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__StopJumping();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_UnCrouch(ACharacter* Self, bool bClientSimulation)
+	{
+		auto _p0 = bClientSimulation;
+		((AManageCharacter*)Self)->_Supper__UnCrouch(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_AddControllerPitchInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManageCharacter*)Self)->_Supper__AddControllerPitchInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_AddControllerRollInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManageCharacter*)Self)->_Supper__AddControllerRollInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_AddControllerYawInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManageCharacter*)Self)->_Supper__AddControllerYawInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_DestroyPlayerInputComponent(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__DestroyPlayerInputComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_DetachFromControllerPendingDestroy(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__DetachFromControllerPendingDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_Controller(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_Controller();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_PlayerState(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_PlayerState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PawnClientRestart(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PawnClientRestart();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PawnStartFire(APawn* Self, uint8 FireModeNum)
+	{
+		auto _p0 = FireModeNum;
+		((AManageCharacter*)Self)->_Supper__PawnStartFire(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_RecalculateBaseEyeHeight(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__RecalculateBaseEyeHeight();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Restart(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__Restart();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_SetPlayerDefaults(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__SetPlayerDefaults();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_SpawnDefaultController(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__SpawnDefaultController();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_TurnOff(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__TurnOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_UnPossessed(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__UnPossessed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_UpdateNavigationRelevance(APawn* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__UpdateNavigationRelevance();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_BeginPlay(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Destroyed(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ForceNetRelevant(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ForceNetUpdate(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_GatherCurrentMovement(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManageCharacter*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_K2_DestroyActor(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_LifeSpanExpired(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_Instigator(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_Owner(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManageCharacter*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OutsideWorldBounds(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostActorCreated(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostInitializeComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostNetInit(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostNetReceiveRole(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PreInitializeComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManageCharacter*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManageCharacter*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_RegisterAllComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ReregisterAllComponents(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_RerunConstructionScripts(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Reset(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_RewindForReplay(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManageCharacter*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManageCharacter*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManageCharacter*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_TearOff(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManageCharacter*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManageCharacter*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_TornOff(AActor* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManageCharacter*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_BeginDestroy(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_FinishDestroy(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostCDOContruct(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostEditImport(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostInitProperties(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostLoad(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostNetReceive(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostRepNotifies(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManageCharacter*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_PreNetReceive(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_ShutdownAfterError(UObject* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__ACharacter_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManageCharacter*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

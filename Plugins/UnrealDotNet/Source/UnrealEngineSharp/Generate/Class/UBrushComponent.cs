@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UBrushComponent : UPrimitiveComponent
+	public partial class UBrushComponent : UPrimitiveComponent
 	{
 		public UBrushComponent(IntPtr adress)
 			: base(adress)

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFixedUObjectArray : NativeStructWrapper
+	public partial class FFixedUObjectArray : NativeStructWrapper
 	{
-		internal FFixedUObjectArray(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFixedUObjectArray(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

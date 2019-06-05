@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UInputSettings : UObject
+	public partial class UInputSettings : UObject
 	{
 		public UInputSettings(IntPtr adress)
 			: base(adress)

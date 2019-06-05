@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FCollisionResponseContainer : NativeStructWrapper
+	public partial class FCollisionResponseContainer : NativeStructWrapper
 	{
-		internal FCollisionResponseContainer(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FCollisionResponseContainer(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

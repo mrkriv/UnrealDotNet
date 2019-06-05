@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSplineCurves : NativeStructWrapper
+	public partial class FSplineCurves : NativeStructWrapper
 	{
-		internal FSplineCurves(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSplineCurves(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

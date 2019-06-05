@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UMeshComponent : UPrimitiveComponent
+	public partial class UMeshComponent : UPrimitiveComponent
 	{
 		public UMeshComponent(IntPtr adress)
 			: base(adress)

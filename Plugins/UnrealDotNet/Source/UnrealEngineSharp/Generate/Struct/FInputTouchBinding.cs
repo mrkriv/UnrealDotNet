@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInputTouchBinding : FInputBinding
+	public partial class FInputTouchBinding : FInputBinding
 	{
-		internal FInputTouchBinding(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInputTouchBinding(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

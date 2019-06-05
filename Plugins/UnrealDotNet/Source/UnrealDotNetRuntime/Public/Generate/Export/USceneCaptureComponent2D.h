@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageSceneCaptureComponent2D.h"
 #include "Runtime/Engine/Classes/Components/SceneCaptureComponent2D.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent2D.h:20
@@ -62,6 +63,256 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneCaptureComponent2D_UpdateContent(USceneCaptureComponent2D* Self)
 	{
 		Self->UpdateContent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_BeginPlay(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_Deactivate(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnRegister(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnUnregister(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_ToggleActive(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_BeginDestroy(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_FinishDestroy(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostCDOContruct(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostEditImport(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostInitProperties(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostLoad(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostNetReceive(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostRepNotifies(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_PreNetReceive(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_ShutdownAfterError(UObject* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USceneCaptureComponent2D_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageSceneCaptureComponent2D*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

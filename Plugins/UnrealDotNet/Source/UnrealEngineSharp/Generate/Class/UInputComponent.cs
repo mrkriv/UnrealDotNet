@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UInputComponent : UActorComponent
+	public partial class UInputComponent : UActorComponent
 	{
 		public UInputComponent(IntPtr adress)
 			: base(adress)

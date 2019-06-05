@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FScale : NativeStructWrapper
+	public partial class FScale : NativeStructWrapper
 	{
-		internal FScale(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FScale(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

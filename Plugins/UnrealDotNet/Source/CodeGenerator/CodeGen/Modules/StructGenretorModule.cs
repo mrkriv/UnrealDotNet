@@ -294,7 +294,7 @@ namespace CodeGenerator.CodeGen.Modules
                 ? Class.BaseClass.Name
                 : "NativeStructWrapper";
 
-            cw.WriteLine($"public {(Class.IsFinal ? "sealed" : "")} partial class {Class.Name} : {baseClass}");
+            cw.WriteLine($"public{(Class.IsFinal ? " sealed" : "")} partial class {Class.Name} : {baseClass}");
             cw.OpenBlock();
 
             var cwDllImport = new CodeWriter(cw);
@@ -378,7 +378,12 @@ namespace CodeGenerator.CodeGen.Modules
 
         private void GenerateStructConstructors(CodeWriter cw, Class Class)
         {
-            cw.WriteLine($"internal {Class.Name}(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)");
+//            cw.WriteLine($"public {Class.Name}(IntPtr NativePointer) : base(NativePointer, false)");
+//            cw.OpenBlock();
+//            cw.CloseBlock();
+//            cw.WriteLine();
+            
+            cw.WriteLine($"public {Class.Name}(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)");
             cw.OpenBlock();
             cw.CloseBlock();
             cw.WriteLine();

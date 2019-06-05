@@ -6,9 +6,12 @@
 +Engine\Source\Runtime\Engine\Classes\Engine\Scene.h
 +Engine\Source\Runtime\Engine\Classes\Engine\World.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Canvas.h
++Engine\Source\Runtime\Engine\Classes\Engine\LocalPlayer.h
++Engine\Source\Runtime\Engine\Classes\Engine\GameViewportClient.h
 
 +Engine\Source\Runtime\Engine\Classes\GameFramework\*.h
 +Engine\Source\Runtime\Engine\Classes\Components\*.h
++Engine\Source\Runtime\Engine\Classes\Camera\*.h
 
 +Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h
 

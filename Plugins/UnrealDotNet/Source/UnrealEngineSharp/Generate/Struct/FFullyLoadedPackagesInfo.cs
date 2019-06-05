@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FFullyLoadedPackagesInfo : NativeStructWrapper
+	public partial class FFullyLoadedPackagesInfo : NativeStructWrapper
 	{
-		internal FFullyLoadedPackagesInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FFullyLoadedPackagesInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

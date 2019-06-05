@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FScopedLevelCollectionContextSwitch : NativeStructWrapper
+	public partial class FScopedLevelCollectionContextSwitch : NativeStructWrapper
 	{
-		internal FScopedLevelCollectionContextSwitch(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FScopedLevelCollectionContextSwitch(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

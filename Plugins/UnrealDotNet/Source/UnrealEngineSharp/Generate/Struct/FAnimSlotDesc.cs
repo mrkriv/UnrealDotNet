@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FAnimSlotDesc : NativeStructWrapper
+	public partial class FAnimSlotDesc : NativeStructWrapper
 	{
-		internal FAnimSlotDesc(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FAnimSlotDesc(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

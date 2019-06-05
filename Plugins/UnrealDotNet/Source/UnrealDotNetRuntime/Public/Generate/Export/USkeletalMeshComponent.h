@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageSkeletalMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:279
@@ -357,6 +358,342 @@ extern "C"
 	{
 		auto _p0 = bRestoreSimulationSpace;
 		Self->UnbindClothFromMasterPoseComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PrestreamTextures(UMeshComponent* Self, float Seconds, bool bPrioritizeCharacterTextures, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bPrioritizeCharacterTextures;
+		auto _p2 = CinematicTextureGroups;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetTextureForceResidentFlag(UMeshComponent* Self, bool bForceMiplevelsToBeResident)
+	{
+		auto _p0 = bForceMiplevelsToBeResident;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetTextureForceResidentFlag(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnComponentCollisionSettingsChanged(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnComponentCollisionSettingsChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PutAllRigidBodiesToSleep(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PutAllRigidBodiesToSleep();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetAllMassScale(UPrimitiveComponent* Self, float InMassScale)
+	{
+		auto _p0 = InMassScale;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetAllMassScale(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetAllUseCCD(UPrimitiveComponent* Self, bool InUseCCD)
+	{
+		auto _p0 = InUseCCD;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetAllUseCCD(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetAngularDamping(UPrimitiveComponent* Self, float InDamping)
+	{
+		auto _p0 = InDamping;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetAngularDamping(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetEnableGravity(UPrimitiveComponent* Self, bool bGravityEnabled)
+	{
+		auto _p0 = bGravityEnabled;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetEnableGravity(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetLinearDamping(UPrimitiveComponent* Self, float InDamping)
+	{
+		auto _p0 = InDamping;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetLinearDamping(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetNotifyRigidBodyCollision(UPrimitiveComponent* Self, bool bNewNotifyRigidBodyCollision)
+	{
+		auto _p0 = bNewNotifyRigidBodyCollision;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetNotifyRigidBodyCollision(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetSimulatePhysics(UPrimitiveComponent* Self, bool bSimulate)
+	{
+		auto _p0 = bSimulate;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetSimulatePhysics(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UnWeldChildren(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UnWeldChildren();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UnWeldFromParent(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UnWeldFromParent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UpdatePhysicsToRBChannels(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UpdatePhysicsToRBChannels();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_WakeAllRigidBodies(UPrimitiveComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__WakeAllRigidBodies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostEditImport(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostLoad(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USkeletalMeshComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageSkeletalMeshComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FIntRect : NativeStructWrapper
+	public partial class FIntRect : NativeStructWrapper
 	{
-		internal FIntRect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FIntRect(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

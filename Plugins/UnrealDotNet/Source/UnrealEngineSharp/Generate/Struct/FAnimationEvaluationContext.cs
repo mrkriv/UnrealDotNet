@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FAnimationEvaluationContext : NativeStructWrapper
+	public partial class FAnimationEvaluationContext : NativeStructWrapper
 	{
-		internal FAnimationEvaluationContext(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FAnimationEvaluationContext(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

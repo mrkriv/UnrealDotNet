@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FInputGestureBinding : FInputBinding
+	public partial class FInputGestureBinding : FInputBinding
 	{
-		internal FInputGestureBinding(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FInputGestureBinding(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

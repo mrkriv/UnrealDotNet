@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageCanvas.h"
 #include "Runtime/Engine/Classes/Engine/Canvas.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Canvas.h:154
@@ -96,6 +97,82 @@ extern "C"
 	DOTNET_EXPORT auto E_UCanvas_UpdateSafeZoneData(UCanvas* Self)
 	{
 		Self->UpdateSafeZoneData();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_BeginDestroy(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_FinishDestroy(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostCDOContruct(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostEditImport(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostInitProperties(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostLoad(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostNetReceive(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostRepNotifies(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageCanvas*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_PreNetReceive(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_ShutdownAfterError(UObject* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__UCanvas_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageCanvas*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

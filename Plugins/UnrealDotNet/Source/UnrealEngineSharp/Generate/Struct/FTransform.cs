@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FTransform : NativeStructWrapper
+	public partial class FTransform : NativeStructWrapper
 	{
-		internal FTransform(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FTransform(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

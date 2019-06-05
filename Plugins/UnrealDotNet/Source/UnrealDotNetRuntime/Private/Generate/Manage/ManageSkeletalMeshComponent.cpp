@@ -28,810 +28,808 @@ bool UManageSkeletalMeshComponent::AddWrapperIfNotAttach()
 
 void UManageSkeletalMeshComponent::PrestreamTextures(float Seconds, bool bPrioritizeCharacterTextures, int32 CinematicTextureGroups)
 {
-	Super::PrestreamTextures(Seconds, bPrioritizeCharacterTextures, CinematicTextureGroups);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PrestreamTextures", Seconds, bPrioritizeCharacterTextures, CinematicTextureGroups);
+	else
+		Super::PrestreamTextures(Seconds, bPrioritizeCharacterTextures, CinematicTextureGroups);
+}
+
+void UManageSkeletalMeshComponent::_Supper__PrestreamTextures(float Seconds, bool bPrioritizeCharacterTextures, int32 CinematicTextureGroups)
+{
+	Super::PrestreamTextures(Seconds, bPrioritizeCharacterTextures, CinematicTextureGroups);
 }
 
 void UManageSkeletalMeshComponent::SetTextureForceResidentFlag(bool bForceMiplevelsToBeResident)
 {
-	Super::SetTextureForceResidentFlag(bForceMiplevelsToBeResident);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetTextureForceResidentFlag", bForceMiplevelsToBeResident);
+	else
+		Super::SetTextureForceResidentFlag(bForceMiplevelsToBeResident);
 }
 
-void UManageSkeletalMeshComponent::AddAngularImpulse(FVector Impulse, FName BoneName, bool bVelChange)
+void UManageSkeletalMeshComponent::_Supper__SetTextureForceResidentFlag(bool bForceMiplevelsToBeResident)
 {
-	Super::AddAngularImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageSkeletalMeshComponent::AddAngularImpulseInRadians(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddAngularImpulseInRadians(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddAngularImpulseInRadians", Impulse, BoneName, bVelChange);
-}
-
-void UManageSkeletalMeshComponent::AddForce(FVector Force, FName BoneName, bool bAccelChange)
-{
-	Super::AddForce(Force, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForce", Force, BoneName, bAccelChange);
-}
-
-void UManageSkeletalMeshComponent::AddForceAtLocation(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocation(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocation", Force, Location, BoneName);
-}
-
-void UManageSkeletalMeshComponent::AddForceAtLocationLocal(FVector Force, FVector Location, FName BoneName)
-{
-	Super::AddForceAtLocationLocal(Force, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddForceAtLocationLocal", Force, Location, BoneName);
-}
-
-void UManageSkeletalMeshComponent::AddImpulse(FVector Impulse, FName BoneName, bool bVelChange)
-{
-	Super::AddImpulse(Impulse, BoneName, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulse", Impulse, BoneName, bVelChange);
-}
-
-void UManageSkeletalMeshComponent::AddImpulseAtLocation(FVector Impulse, FVector Location, FName BoneName)
-{
-	Super::AddImpulseAtLocation(Impulse, Location, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddImpulseAtLocation", Impulse, Location, BoneName);
-}
-
-void UManageSkeletalMeshComponent::AddRadialForce(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bAccelChange)
-{
-	Super::AddRadialForce(Origin, Radius, Strength, Falloff, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialForce", Origin, Radius, Strength, Falloff, bAccelChange);
-}
-
-void UManageSkeletalMeshComponent::AddRadialImpulse(FVector Origin, float Radius, float Strength, ERadialImpulseFalloff Falloff, bool bVelChange)
-{
-	Super::AddRadialImpulse(Origin, Radius, Strength, Falloff, bVelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddRadialImpulse", Origin, Radius, Strength, Falloff, bVelChange);
-}
-
-void UManageSkeletalMeshComponent::AddTorqueInRadians(FVector Torque, FName BoneName, bool bAccelChange)
-{
-	Super::AddTorqueInRadians(Torque, BoneName, bAccelChange);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTorqueInRadians", Torque, BoneName, bAccelChange);
+	Super::SetTextureForceResidentFlag(bForceMiplevelsToBeResident);
 }
 
 void UManageSkeletalMeshComponent::OnComponentCollisionSettingsChanged()
 {
-	Super::OnComponentCollisionSettingsChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCollisionSettingsChanged");
+	else
+		Super::OnComponentCollisionSettingsChanged();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnComponentCollisionSettingsChanged()
+{
+	Super::OnComponentCollisionSettingsChanged();
 }
 
 void UManageSkeletalMeshComponent::PutAllRigidBodiesToSleep()
 {
-	Super::PutAllRigidBodiesToSleep();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PutAllRigidBodiesToSleep");
+	else
+		Super::PutAllRigidBodiesToSleep();
 }
 
-void UManageSkeletalMeshComponent::ReceiveComponentDamage(float DamageAmount, const FDamageEvent& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void UManageSkeletalMeshComponent::_Supper__PutAllRigidBodiesToSleep()
 {
-	Super::ReceiveComponentDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ReceiveComponentDamage", DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Super::PutAllRigidBodiesToSleep();
 }
 
 void UManageSkeletalMeshComponent::SetAllMassScale(float InMassScale)
 {
-	Super::SetAllMassScale(InMassScale);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllMassScale", InMassScale);
+	else
+		Super::SetAllMassScale(InMassScale);
 }
 
-void UManageSkeletalMeshComponent::SetAllPhysicsAngularVelocityInRadians(const FVector& NewAngVel, bool bAddToCurrent)
+void UManageSkeletalMeshComponent::_Supper__SetAllMassScale(float InMassScale)
 {
-	Super::SetAllPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent);
-}
-
-void UManageSkeletalMeshComponent::SetAllPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent)
-{
-	Super::SetAllPhysicsLinearVelocity(NewVel, bAddToCurrent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsLinearVelocity", NewVel, bAddToCurrent);
-}
-
-void UManageSkeletalMeshComponent::SetAllPhysicsPosition(FVector NewPos)
-{
-	Super::SetAllPhysicsPosition(NewPos);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsPosition", NewPos);
-}
-
-void UManageSkeletalMeshComponent::SetAllPhysicsRotation(FRotator NewRot)
-{
-	Super::SetAllPhysicsRotation(NewRot);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllPhysicsRotation", NewRot);
+	Super::SetAllMassScale(InMassScale);
 }
 
 void UManageSkeletalMeshComponent::SetAllUseCCD(bool InUseCCD)
 {
-	Super::SetAllUseCCD(InUseCCD);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAllUseCCD", InUseCCD);
+	else
+		Super::SetAllUseCCD(InUseCCD);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetAllUseCCD(bool InUseCCD)
+{
+	Super::SetAllUseCCD(InUseCCD);
 }
 
 void UManageSkeletalMeshComponent::SetAngularDamping(float InDamping)
 {
-	Super::SetAngularDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAngularDamping", InDamping);
+	else
+		Super::SetAngularDamping(InDamping);
 }
 
-void UManageSkeletalMeshComponent::SetCollisionObjectType(ECollisionChannel Channel)
+void UManageSkeletalMeshComponent::_Supper__SetAngularDamping(float InDamping)
 {
-	Super::SetCollisionObjectType(Channel);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionObjectType", Channel);
-}
-
-void UManageSkeletalMeshComponent::SetCollisionProfileName(FName InCollisionProfileName)
-{
-	Super::SetCollisionProfileName(InCollisionProfileName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionProfileName", InCollisionProfileName);
-}
-
-void UManageSkeletalMeshComponent::SetCollisionResponseToAllChannels(ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToAllChannels(NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToAllChannels", NewResponse);
-}
-
-void UManageSkeletalMeshComponent::SetCollisionResponseToChannel(ECollisionChannel Channel, ECollisionResponse NewResponse)
-{
-	Super::SetCollisionResponseToChannel(Channel, NewResponse);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannel", Channel, NewResponse);
-}
-
-void UManageSkeletalMeshComponent::SetCollisionResponseToChannels(const FCollisionResponseContainer& NewReponses)
-{
-	Super::SetCollisionResponseToChannels(NewReponses);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetCollisionResponseToChannels", NewReponses);
+	Super::SetAngularDamping(InDamping);
 }
 
 void UManageSkeletalMeshComponent::SetEnableGravity(bool bGravityEnabled)
 {
-	Super::SetEnableGravity(bGravityEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetEnableGravity", bGravityEnabled);
+	else
+		Super::SetEnableGravity(bGravityEnabled);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetEnableGravity(bool bGravityEnabled)
+{
+	Super::SetEnableGravity(bGravityEnabled);
 }
 
 void UManageSkeletalMeshComponent::SetLinearDamping(float InDamping)
 {
-	Super::SetLinearDamping(InDamping);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetLinearDamping", InDamping);
+	else
+		Super::SetLinearDamping(InDamping);
 }
 
-void UManageSkeletalMeshComponent::SetMassOverrideInKg(FName BoneName, float MassInKg, bool bOverrideMass)
+void UManageSkeletalMeshComponent::_Supper__SetLinearDamping(float InDamping)
 {
-	Super::SetMassOverrideInKg(BoneName, MassInKg, bOverrideMass);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassOverrideInKg", BoneName, MassInKg, bOverrideMass);
-}
-
-void UManageSkeletalMeshComponent::SetMassScale(FName BoneName, float InMassScale)
-{
-	Super::SetMassScale(BoneName, InMassScale);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetMassScale", BoneName, InMassScale);
+	Super::SetLinearDamping(InDamping);
 }
 
 void UManageSkeletalMeshComponent::SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetNotifyRigidBodyCollision", bNewNotifyRigidBodyCollision);
+	else
+		Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
-void UManageSkeletalMeshComponent::SetPhysicsAngularVelocityInRadians(FVector NewAngVel, bool bAddToCurrent, FName BoneName)
+void UManageSkeletalMeshComponent::_Supper__SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision)
 {
-	Super::SetPhysicsAngularVelocityInRadians(NewAngVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsAngularVelocityInRadians", NewAngVel, bAddToCurrent, BoneName);
-}
-
-void UManageSkeletalMeshComponent::SetPhysicsLinearVelocity(FVector NewVel, bool bAddToCurrent, FName BoneName)
-{
-	Super::SetPhysicsLinearVelocity(NewVel, bAddToCurrent, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetPhysicsLinearVelocity", NewVel, bAddToCurrent, BoneName);
+	Super::SetNotifyRigidBodyCollision(bNewNotifyRigidBodyCollision);
 }
 
 void UManageSkeletalMeshComponent::SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetSimulatePhysics(bSimulate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetSimulatePhysics", bSimulate);
+	else
+		Super::SetSimulatePhysics(bSimulate);
 }
 
-void UManageSkeletalMeshComponent::SetUseCCD(bool InUseCCD, FName BoneName)
+void UManageSkeletalMeshComponent::_Supper__SetSimulatePhysics(bool bSimulate)
 {
-	Super::SetUseCCD(InUseCCD, BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetUseCCD", InUseCCD, BoneName);
+	Super::SetSimulatePhysics(bSimulate);
 }
 
 void UManageSkeletalMeshComponent::UnWeldChildren()
 {
-	Super::UnWeldChildren();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldChildren");
+	else
+		Super::UnWeldChildren();
+}
+
+void UManageSkeletalMeshComponent::_Supper__UnWeldChildren()
+{
+	Super::UnWeldChildren();
 }
 
 void UManageSkeletalMeshComponent::UnWeldFromParent()
 {
-	Super::UnWeldFromParent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UnWeldFromParent");
+	else
+		Super::UnWeldFromParent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__UnWeldFromParent()
+{
+	Super::UnWeldFromParent();
 }
 
 void UManageSkeletalMeshComponent::UpdatePhysicsToRBChannels()
 {
-	Super::UpdatePhysicsToRBChannels();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsToRBChannels");
+	else
+		Super::UpdatePhysicsToRBChannels();
+}
+
+void UManageSkeletalMeshComponent::_Supper__UpdatePhysicsToRBChannels()
+{
+	Super::UpdatePhysicsToRBChannels();
 }
 
 void UManageSkeletalMeshComponent::WakeAllRigidBodies()
 {
-	Super::WakeAllRigidBodies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "WakeAllRigidBodies");
+	else
+		Super::WakeAllRigidBodies();
 }
 
-void UManageSkeletalMeshComponent::WakeRigidBody(FName BoneName)
+void UManageSkeletalMeshComponent::_Supper__WakeAllRigidBodies()
 {
-	Super::WakeRigidBody(BoneName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WakeRigidBody", BoneName);
-}
-
-void UManageSkeletalMeshComponent::WeldTo(USceneComponent* InParent, FName InSocketName)
-{
-	Super::WeldTo(InParent, InSocketName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "WeldTo", InParent, InSocketName);
-}
-
-void UManageSkeletalMeshComponent::DetachFromComponent(const FDetachmentTransformRules& DetachmentRules)
-{
-	Super::DetachFromComponent(DetachmentRules);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromComponent", DetachmentRules);
+	Super::WakeAllRigidBodies();
 }
 
 void UManageSkeletalMeshComponent::DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
 {
-	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DetachFromParent", bMaintainWorldPosition, bCallModify);
+	else
+		Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
+}
+
+void UManageSkeletalMeshComponent::_Supper__DetachFromParent(bool bMaintainWorldPosition, bool bCallModify)
+{
+	Super::DetachFromParent(bMaintainWorldPosition, bCallModify);
 }
 
 void UManageSkeletalMeshComponent::OnAttachmentChanged()
 {
-	Super::OnAttachmentChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnAttachmentChanged");
+	else
+		Super::OnAttachmentChanged();
 }
 
-void UManageSkeletalMeshComponent::OnChildAttached(USceneComponent* ChildComponent)
+void UManageSkeletalMeshComponent::_Supper__OnAttachmentChanged()
 {
-	Super::OnChildAttached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildAttached", ChildComponent);
-}
-
-void UManageSkeletalMeshComponent::OnChildDetached(USceneComponent* ChildComponent)
-{
-	Super::OnChildDetached(ChildComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnChildDetached", ChildComponent);
+	Super::OnAttachmentChanged();
 }
 
 void UManageSkeletalMeshComponent::OnHiddenInGameChanged()
 {
-	Super::OnHiddenInGameChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnHiddenInGameChanged");
+	else
+		Super::OnHiddenInGameChanged();
 }
 
-void UManageSkeletalMeshComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
+void UManageSkeletalMeshComponent::_Supper__OnHiddenInGameChanged()
 {
-	Super::OnUpdateTransform(UpdateTransformFlags, Teleport);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnUpdateTransform", UpdateTransformFlags, Teleport);
+	Super::OnHiddenInGameChanged();
 }
 
 void UManageSkeletalMeshComponent::OnVisibilityChanged()
 {
-	Super::OnVisibilityChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnVisibilityChanged");
+	else
+		Super::OnVisibilityChanged();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnVisibilityChanged()
+{
+	Super::OnVisibilityChanged();
 }
 
 void UManageSkeletalMeshComponent::PropagateLightingScenarioChange()
 {
-	Super::PropagateLightingScenarioChange();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PropagateLightingScenarioChange");
+	else
+		Super::PropagateLightingScenarioChange();
 }
 
-void UManageSkeletalMeshComponent::SetRelativeScale3D(FVector NewScale3D)
+void UManageSkeletalMeshComponent::_Supper__PropagateLightingScenarioChange()
 {
-	Super::SetRelativeScale3D(NewScale3D);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetRelativeScale3D", NewScale3D);
+	Super::PropagateLightingScenarioChange();
 }
 
 void UManageSkeletalMeshComponent::UpdateBounds()
 {
-	Super::UpdateBounds();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdateBounds");
+	else
+		Super::UpdateBounds();
+}
+
+void UManageSkeletalMeshComponent::_Supper__UpdateBounds()
+{
+	Super::UpdateBounds();
 }
 
 void UManageSkeletalMeshComponent::UpdatePhysicsVolume(bool bTriggerNotifiers)
 {
-	Super::UpdatePhysicsVolume(bTriggerNotifiers);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UpdatePhysicsVolume", bTriggerNotifiers);
+	else
+		Super::UpdatePhysicsVolume(bTriggerNotifiers);
+}
+
+void UManageSkeletalMeshComponent::_Supper__UpdatePhysicsVolume(bool bTriggerNotifiers)
+{
+	Super::UpdatePhysicsVolume(bTriggerNotifiers);
 }
 
 void UManageSkeletalMeshComponent::Activate(bool bReset)
 {
-	Super::Activate(bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Activate", bReset);
+	else
+		Super::Activate(bReset);
 }
 
-void UManageSkeletalMeshComponent::AddTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageSkeletalMeshComponent::_Supper__Activate(bool bReset)
 {
-	Super::AddTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageSkeletalMeshComponent::AddTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::AddTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "AddTickPrerequisiteComponent", PrerequisiteComponent);
-}
-
-void UManageSkeletalMeshComponent::ApplyWorldOffset(const FVector& InOffset, bool bWorldShift)
-{
-	Super::ApplyWorldOffset(InOffset, bWorldShift);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ApplyWorldOffset", InOffset, bWorldShift);
+	Super::Activate(bReset);
 }
 
 void UManageSkeletalMeshComponent::BeginPlay()
 {
-	Super::BeginPlay();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginPlay");
+	else
+		Super::BeginPlay();
+}
+
+void UManageSkeletalMeshComponent::_Supper__BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void UManageSkeletalMeshComponent::CreateRenderState_Concurrent()
 {
-	Super::CreateRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateRenderState_Concurrent");
+	else
+		Super::CreateRenderState_Concurrent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__CreateRenderState_Concurrent()
+{
+	Super::CreateRenderState_Concurrent();
 }
 
 void UManageSkeletalMeshComponent::Deactivate()
 {
-	Super::Deactivate();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Deactivate");
+	else
+		Super::Deactivate();
+}
+
+void UManageSkeletalMeshComponent::_Supper__Deactivate()
+{
+	Super::Deactivate();
 }
 
 void UManageSkeletalMeshComponent::DestroyComponent(bool bPromoteChildren)
 {
-	Super::DestroyComponent(bPromoteChildren);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyComponent", bPromoteChildren);
+	else
+		Super::DestroyComponent(bPromoteChildren);
+}
+
+void UManageSkeletalMeshComponent::_Supper__DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
 }
 
 void UManageSkeletalMeshComponent::DestroyRenderState_Concurrent()
 {
-	Super::DestroyRenderState_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyRenderState_Concurrent");
+	else
+		Super::DestroyRenderState_Concurrent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__DestroyRenderState_Concurrent()
+{
+	Super::DestroyRenderState_Concurrent();
 }
 
 void UManageSkeletalMeshComponent::InitializeComponent()
 {
-	Super::InitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitializeComponent");
+	else
+		Super::InitializeComponent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__InitializeComponent()
+{
+	Super::InitializeComponent();
 }
 
 void UManageSkeletalMeshComponent::InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
 {
-	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvalidateLightingCacheDetailed", bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+	else
+		Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
+}
+
+void UManageSkeletalMeshComponent::_Supper__InvalidateLightingCacheDetailed(bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+{
+	Super::InvalidateLightingCacheDetailed(bInvalidateBuildEnqueuedLighting, bTranslationOnly);
 }
 
 void UManageSkeletalMeshComponent::OnActorEnableCollisionChanged()
 {
-	Super::OnActorEnableCollisionChanged();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnActorEnableCollisionChanged");
+	else
+		Super::OnActorEnableCollisionChanged();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnActorEnableCollisionChanged()
+{
+	Super::OnActorEnableCollisionChanged();
 }
 
 void UManageSkeletalMeshComponent::OnComponentCreated()
 {
-	Super::OnComponentCreated();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentCreated");
+	else
+		Super::OnComponentCreated();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnComponentCreated()
+{
+	Super::OnComponentCreated();
 }
 
 void UManageSkeletalMeshComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
-	Super::OnComponentDestroyed(bDestroyingHierarchy);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnComponentDestroyed", bDestroyingHierarchy);
+	else
+		Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UManageSkeletalMeshComponent::OnCreatePhysicsState()
 {
-	Super::OnCreatePhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnCreatePhysicsState");
+	else
+		Super::OnCreatePhysicsState();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnCreatePhysicsState()
+{
+	Super::OnCreatePhysicsState();
 }
 
 void UManageSkeletalMeshComponent::OnDestroyPhysicsState()
 {
-	Super::OnDestroyPhysicsState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnDestroyPhysicsState");
+	else
+		Super::OnDestroyPhysicsState();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnDestroyPhysicsState()
+{
+	Super::OnDestroyPhysicsState();
 }
 
 void UManageSkeletalMeshComponent::OnRegister()
 {
-	Super::OnRegister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRegister");
+	else
+		Super::OnRegister();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnRegister()
+{
+	Super::OnRegister();
 }
 
 void UManageSkeletalMeshComponent::OnRep_IsActive()
 {
-	Super::OnRep_IsActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnRep_IsActive");
+	else
+		Super::OnRep_IsActive();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnRep_IsActive()
+{
+	Super::OnRep_IsActive();
 }
 
 void UManageSkeletalMeshComponent::OnUnregister()
 {
-	Super::OnUnregister();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnUnregister");
+	else
+		Super::OnUnregister();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnUnregister()
+{
+	Super::OnUnregister();
 }
 
 void UManageSkeletalMeshComponent::RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RegisterComponentTickFunctions(bRegister);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "RegisterComponentTickFunctions", bRegister);
+	else
+		Super::RegisterComponentTickFunctions(bRegister);
 }
 
-void UManageSkeletalMeshComponent::RemoveTickPrerequisiteActor(AActor* PrerequisiteActor)
+void UManageSkeletalMeshComponent::_Supper__RegisterComponentTickFunctions(bool bRegister)
 {
-	Super::RemoveTickPrerequisiteActor(PrerequisiteActor);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteActor", PrerequisiteActor);
-}
-
-void UManageSkeletalMeshComponent::RemoveTickPrerequisiteComponent(UActorComponent* PrerequisiteComponent)
-{
-	Super::RemoveTickPrerequisiteComponent(PrerequisiteComponent);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "RemoveTickPrerequisiteComponent", PrerequisiteComponent);
+	Super::RegisterComponentTickFunctions(bRegister);
 }
 
 void UManageSkeletalMeshComponent::SendRenderDynamicData_Concurrent()
 {
-	Super::SendRenderDynamicData_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderDynamicData_Concurrent");
+	else
+		Super::SendRenderDynamicData_Concurrent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__SendRenderDynamicData_Concurrent()
+{
+	Super::SendRenderDynamicData_Concurrent();
 }
 
 void UManageSkeletalMeshComponent::SendRenderTransform_Concurrent()
 {
-	Super::SendRenderTransform_Concurrent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SendRenderTransform_Concurrent");
+	else
+		Super::SendRenderTransform_Concurrent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__SendRenderTransform_Concurrent()
+{
+	Super::SendRenderTransform_Concurrent();
 }
 
 void UManageSkeletalMeshComponent::SetActive(bool bNewActive, bool bReset)
 {
-	Super::SetActive(bNewActive, bReset);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetActive", bNewActive, bReset);
+	else
+		Super::SetActive(bNewActive, bReset);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetActive(bool bNewActive, bool bReset)
+{
+	Super::SetActive(bNewActive, bReset);
 }
 
 void UManageSkeletalMeshComponent::SetAutoActivate(bool bNewAutoActivate)
 {
-	Super::SetAutoActivate(bNewAutoActivate);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetAutoActivate", bNewAutoActivate);
+	else
+		Super::SetAutoActivate(bNewAutoActivate);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetAutoActivate(bool bNewAutoActivate)
+{
+	Super::SetAutoActivate(bNewAutoActivate);
 }
 
 void UManageSkeletalMeshComponent::SetComponentTickEnabled(bool bEnabled)
 {
-	Super::SetComponentTickEnabled(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabled", bEnabled);
+	else
+		Super::SetComponentTickEnabled(bEnabled);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetComponentTickEnabled(bool bEnabled)
+{
+	Super::SetComponentTickEnabled(bEnabled);
 }
 
 void UManageSkeletalMeshComponent::SetComponentTickEnabledAsync(bool bEnabled)
 {
-	Super::SetComponentTickEnabledAsync(bEnabled);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetComponentTickEnabledAsync", bEnabled);
+	else
+		Super::SetComponentTickEnabledAsync(bEnabled);
+}
+
+void UManageSkeletalMeshComponent::_Supper__SetComponentTickEnabledAsync(bool bEnabled)
+{
+	Super::SetComponentTickEnabledAsync(bEnabled);
 }
 
 void UManageSkeletalMeshComponent::ToggleActive()
 {
-	Super::ToggleActive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleActive");
+	else
+		Super::ToggleActive();
+}
+
+void UManageSkeletalMeshComponent::_Supper__ToggleActive()
+{
+	Super::ToggleActive();
 }
 
 void UManageSkeletalMeshComponent::UninitializeComponent()
 {
-	Super::UninitializeComponent();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "UninitializeComponent");
+	else
+		Super::UninitializeComponent();
+}
+
+void UManageSkeletalMeshComponent::_Supper__UninitializeComponent()
+{
+	Super::UninitializeComponent();
 }
 
 void UManageSkeletalMeshComponent::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageSkeletalMeshComponent::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageSkeletalMeshComponent::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageSkeletalMeshComponent::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageSkeletalMeshComponent::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageSkeletalMeshComponent::OverridePerObjectConfigSection(FString& SectionName)
+void UManageSkeletalMeshComponent::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageSkeletalMeshComponent::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageSkeletalMeshComponent::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageSkeletalMeshComponent::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageSkeletalMeshComponent::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageSkeletalMeshComponent::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageSkeletalMeshComponent::PostRename(UObject* OldOuter, const FName OldName)
+void UManageSkeletalMeshComponent::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageSkeletalMeshComponent::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageSkeletalMeshComponent::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageSkeletalMeshComponent::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageSkeletalMeshComponent::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageSkeletalMeshComponent::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageSkeletalMeshComponent::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageSkeletalMeshComponent::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageSkeletalMeshComponent::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageSkeletalMeshComponent::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageSkeletalMeshComponent::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageSkeletalMeshComponent::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageSkeletalMeshComponent::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

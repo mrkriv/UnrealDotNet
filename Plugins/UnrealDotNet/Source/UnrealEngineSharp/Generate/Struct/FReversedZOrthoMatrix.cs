@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FReversedZOrthoMatrix : FMatrix
+	public partial class FReversedZOrthoMatrix : FMatrix
 	{
-		internal FReversedZOrthoMatrix(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FReversedZOrthoMatrix(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

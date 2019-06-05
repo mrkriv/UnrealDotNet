@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FNetViewer : NativeStructWrapper
+	public partial class FNetViewer : NativeStructWrapper
 	{
-		internal FNetViewer(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FNetViewer(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

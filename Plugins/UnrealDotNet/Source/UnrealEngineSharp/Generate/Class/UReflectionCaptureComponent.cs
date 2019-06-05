@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UReflectionCaptureComponent : USceneComponent
+	public partial class UReflectionCaptureComponent : USceneComponent
 	{
 		public UReflectionCaptureComponent(IntPtr adress)
 			: base(adress)

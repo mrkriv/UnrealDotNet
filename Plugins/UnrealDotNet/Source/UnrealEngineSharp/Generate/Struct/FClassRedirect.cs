@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FClassRedirect : NativeStructWrapper
+	public partial class FClassRedirect : NativeStructWrapper
 	{
-		internal FClassRedirect(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FClassRedirect(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UProjectileMovementComponent : UMovementComponent
+	public partial class UProjectileMovementComponent : UMovementComponent
 	{
 		public UProjectileMovementComponent(IntPtr adress)
 			: base(adress)

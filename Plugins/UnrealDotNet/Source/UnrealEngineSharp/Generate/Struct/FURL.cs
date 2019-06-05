@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FURL : NativeStructWrapper
+	public partial class FURL : NativeStructWrapper
 	{
-		internal FURL(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FURL(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

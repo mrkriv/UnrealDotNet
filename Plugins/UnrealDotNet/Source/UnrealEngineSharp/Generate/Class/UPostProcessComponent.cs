@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UPostProcessComponent : USceneComponent
+	public partial class UPostProcessComponent : USceneComponent
 	{
 		public UPostProcessComponent(IntPtr adress)
 			: base(adress)

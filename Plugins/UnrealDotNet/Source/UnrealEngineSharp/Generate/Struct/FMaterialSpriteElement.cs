@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FMaterialSpriteElement : NativeStructWrapper
+	public partial class FMaterialSpriteElement : NativeStructWrapper
 	{
-		internal FMaterialSpriteElement(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FMaterialSpriteElement(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

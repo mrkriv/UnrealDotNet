@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPOV : NativeStructWrapper
+	public partial class FPOV : NativeStructWrapper
 	{
-		internal FPOV(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPOV(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FVector2DHalf : NativeStructWrapper
+	public partial class FVector2DHalf : NativeStructWrapper
 	{
-		internal FVector2DHalf(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FVector2DHalf(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

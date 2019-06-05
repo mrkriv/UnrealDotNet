@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class PingAvgData : NativeStructWrapper
+	public partial class PingAvgData : NativeStructWrapper
 	{
-		internal PingAvgData(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public PingAvgData(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AGameStateBase : AInfo
+	public partial class AGameStateBase : AInfo
 	{
 		public AGameStateBase(IntPtr adress)
 			: base(adress)

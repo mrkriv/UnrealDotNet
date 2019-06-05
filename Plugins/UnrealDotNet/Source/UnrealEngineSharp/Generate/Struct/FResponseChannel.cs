@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FResponseChannel : NativeStructWrapper
+	public partial class FResponseChannel : NativeStructWrapper
 	{
-		internal FResponseChannel(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FResponseChannel(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

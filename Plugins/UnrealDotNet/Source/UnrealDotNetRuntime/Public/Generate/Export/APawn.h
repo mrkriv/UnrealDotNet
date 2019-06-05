@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManagePawn.h"
 #include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Pawn.h:37
@@ -67,19 +68,19 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_AddControllerPitchInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APawn::AddControllerPitchInput(_p0);
+		Self->AddControllerPitchInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddControllerRollInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APawn::AddControllerRollInput(_p0);
+		Self->AddControllerRollInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddControllerYawInput(APawn* Self, float Val)
 	{
 		auto _p0 = Val;
-		Self->APawn::AddControllerYawInput(_p0);
+		Self->AddControllerYawInput(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_AddMovementInput(APawn* Self, INT_PTR WorldDirection, float ScaleValue, bool bForce)
@@ -87,7 +88,7 @@ extern "C"
 		auto _p0 = *(FVector*)WorldDirection;
 		auto _p1 = ScaleValue;
 		auto _p2 = bForce;
-		Self->APawn::AddMovementInput(_p0, _p1, _p2);
+		Self->AddMovementInput(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ConsumeMovementInputVector(APawn* Self)
@@ -102,19 +103,19 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_DestroyPlayerInputComponent(APawn* Self)
 	{
-		((E_PROTECTED_WRAP_APawn*)Self)->APawn::DestroyPlayerInputComponent_WRAP();
+		((E_PROTECTED_WRAP_APawn*)Self)->DestroyPlayerInputComponent_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_APawn_DetachFromControllerPendingDestroy(APawn* Self)
 	{
-		Self->APawn::DetachFromControllerPendingDestroy();
+		Self->DetachFromControllerPendingDestroy();
 	}
 
 	DOTNET_EXPORT auto E_APawn_FaceRotation(APawn* Self, INT_PTR NewControlRotation, float DeltaTime)
 	{
 		auto _p0 = *(FRotator*)NewControlRotation;
 		auto _p1 = DeltaTime;
-		Self->APawn::FaceRotation(_p0, _p1);
+		Self->FaceRotation(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_APawn_GetBaseAimRotation(APawn* Self)
@@ -272,17 +273,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_OnRep_Controller(APawn* Self)
 	{
-		Self->APawn::OnRep_Controller();
+		Self->OnRep_Controller();
 	}
 
 	DOTNET_EXPORT auto E_APawn_OnRep_PlayerState(APawn* Self)
 	{
-		Self->APawn::OnRep_PlayerState();
+		Self->OnRep_PlayerState();
 	}
 
 	DOTNET_EXPORT auto E_APawn_PawnClientRestart(APawn* Self)
 	{
-		Self->APawn::PawnClientRestart();
+		Self->PawnClientRestart();
 	}
 
 	DOTNET_EXPORT auto E_APawn_PawnMakeNoise(APawn* Self, float Loudness, INT_PTR NoiseLocation, bool bUseNoiseMakerLocation, AActor* NoiseMaker)
@@ -297,13 +298,13 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_PawnStartFire(APawn* Self, uint8 FireModeNum)
 	{
 		auto _p0 = FireModeNum;
-		Self->APawn::PawnStartFire(_p0);
+		Self->PawnStartFire(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_PossessedBy(APawn* Self, AController* NewController)
 	{
 		auto _p0 = NewController;
-		Self->APawn::PossessedBy(_p0);
+		Self->PossessedBy(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ReachedDesiredRotation(APawn* Self)
@@ -313,7 +314,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_RecalculateBaseEyeHeight(APawn* Self)
 	{
-		Self->APawn::RecalculateBaseEyeHeight();
+		Self->RecalculateBaseEyeHeight();
 	}
 
 	DOTNET_EXPORT auto E_APawn_ReceivePossessed(APawn* Self, AController* NewController)
@@ -330,7 +331,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_Restart(APawn* Self)
 	{
-		Self->APawn::Restart();
+		Self->Restart();
 	}
 
 	DOTNET_EXPORT auto E_APawn_SetCanAffectNavigationGeneration(APawn* Self, bool bNewValue, bool bForceUpdate)
@@ -342,7 +343,7 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_SetPlayerDefaults(APawn* Self)
 	{
-		Self->APawn::SetPlayerDefaults();
+		Self->SetPlayerDefaults();
 	}
 
 	DOTNET_EXPORT auto E_APawn_SetPlayerState(APawn* Self, APlayerState* NewPlayerState)
@@ -360,7 +361,7 @@ extern "C"
 	DOTNET_EXPORT auto E_APawn_SetupPlayerInputComponent(APawn* Self, UInputComponent* PlayerInputComponent)
 	{
 		auto _p0 = PlayerInputComponent;
-		((E_PROTECTED_WRAP_APawn*)Self)->APawn::SetupPlayerInputComponent_WRAP(_p0);
+		((E_PROTECTED_WRAP_APawn*)Self)->SetupPlayerInputComponent_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APawn_ShouldTakeDamage(APawn* Self, float Damage, INT_PTR DamageEvent, AController* EventInstigator, AActor* DamageCauser)
@@ -374,17 +375,17 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_SpawnDefaultController(APawn* Self)
 	{
-		Self->APawn::SpawnDefaultController();
+		Self->SpawnDefaultController();
 	}
 
 	DOTNET_EXPORT auto E_APawn_TurnOff(APawn* Self)
 	{
-		Self->APawn::TurnOff();
+		Self->TurnOff();
 	}
 
 	DOTNET_EXPORT auto E_APawn_UnPossessed(APawn* Self)
 	{
-		Self->APawn::UnPossessed();
+		Self->UnPossessed();
 	}
 
 	DOTNET_EXPORT auto E_APawn_UpdateNavAgent(APawn* Self)
@@ -394,7 +395,399 @@ extern "C"
 
 	DOTNET_EXPORT auto E_APawn_UpdateNavigationRelevance(APawn* Self)
 	{
-		Self->APawn::UpdateNavigationRelevance();
+		Self->UpdateNavigationRelevance();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_AddControllerPitchInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePawn*)Self)->_Supper__AddControllerPitchInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_AddControllerRollInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePawn*)Self)->_Supper__AddControllerRollInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_AddControllerYawInput(APawn* Self, float Val)
+	{
+		auto _p0 = Val;
+		((AManagePawn*)Self)->_Supper__AddControllerYawInput(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_DestroyPlayerInputComponent(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__DestroyPlayerInputComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_DetachFromControllerPendingDestroy(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__DetachFromControllerPendingDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_Controller(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_Controller();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_PlayerState(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_PlayerState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PawnClientRestart(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PawnClientRestart();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PawnStartFire(APawn* Self, uint8 FireModeNum)
+	{
+		auto _p0 = FireModeNum;
+		((AManagePawn*)Self)->_Supper__PawnStartFire(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_RecalculateBaseEyeHeight(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__RecalculateBaseEyeHeight();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_Restart(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__Restart();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_SetPlayerDefaults(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__SetPlayerDefaults();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_SpawnDefaultController(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__SpawnDefaultController();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_TurnOff(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__TurnOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_UnPossessed(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__UnPossessed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_UpdateNavigationRelevance(APawn* Self)
+	{
+		((AManagePawn*)Self)->_Supper__UpdateNavigationRelevance();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_BeginPlay(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_Destroyed(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_ForceNetRelevant(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_ForceNetUpdate(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_GatherCurrentMovement(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManagePawn*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_K2_DestroyActor(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_LifeSpanExpired(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_Instigator(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_Owner(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManagePawn*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OutsideWorldBounds(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostActorCreated(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostInitializeComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostNetInit(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostNetReceiveRole(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PreInitializeComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManagePawn*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManagePawn*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_RegisterAllComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_ReregisterAllComponents(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_RerunConstructionScripts(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_Reset(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_RewindForReplay(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManagePawn*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManagePawn*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManagePawn*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_TearOff(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManagePawn*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManagePawn*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_TornOff(AActor* Self)
+	{
+		((AManagePawn*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManagePawn*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_BeginDestroy(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_FinishDestroy(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostCDOContruct(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostEditImport(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostInitProperties(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostLoad(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostNetReceive(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostRepNotifies(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManagePawn*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_PreNetReceive(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_ShutdownAfterError(UObject* Self)
+	{
+		((AManagePawn*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManagePawn*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__APawn_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManagePawn*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

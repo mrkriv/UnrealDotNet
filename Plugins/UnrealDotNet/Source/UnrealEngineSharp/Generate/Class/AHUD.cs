@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AHUD : AActor
+	public partial class AHUD : AActor
 	{
 		public AHUD(IntPtr adress)
 			: base(adress)

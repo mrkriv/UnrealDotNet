@@ -445,6 +445,9 @@ namespace UnrealEngine
 		private static extern int E_UWorld_GetDetailMode(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetFirstLocalPlayerFromController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_UWorld_GetFirstPlayerController(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -620,6 +623,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_PropagateLightingScenarioChange(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_RegisterAutoActivateCamera(IntPtr self, IntPtr cameraActor, int playerIndex);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UWorld_RemapCompiledScriptActor(IntPtr self, string str);
@@ -1625,6 +1631,9 @@ namespace UnrealEngine
 		public int GetDetailMode()
 			=> E_UWorld_GetDetailMode(this);
 		
+		public ULocalPlayer GetFirstLocalPlayerFromController()
+			=> E_UWorld_GetFirstLocalPlayerFromController(this);
+		
 		
 		/// <summary>
 		/// </summary>
@@ -2029,7 +2038,7 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
-		/// Marks all objects that have this World as an Outer as pending kill
+		/// Marks this world and all objects within as pending kill
 		/// </summary>
 		public void MarkObjectsPendingKill()
 			=> E_UWorld_MarkObjectsPendingKill(this);
@@ -2070,6 +2079,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void PropagateLightingScenarioChange()
 			=> E_UWorld_PropagateLightingScenarioChange(this);
+		
+		
+		/// <summary>
+		/// Register a CameraActor that auto-activates for a PlayerController.
+		/// </summary>
+		public void RegisterAutoActivateCamera(ACameraActor cameraActor, int playerIndex)
+			=> E_UWorld_RegisterAutoActivateCamera(this, cameraActor, playerIndex);
 		
 		
 		/// <summary>

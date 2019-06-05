@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
 #include "IManageObject.h"
+#include "TypeConvertor.h"
 #include "Runtime/Engine/Classes/GameFramework/GameUserSettings.h"
 #include "ManageGameUserSettings.generated.h"
 
@@ -45,13 +46,11 @@ public:
 	virtual void BeginDestroy() override;
 	virtual void FinishDestroy() override;
 	virtual void MarkAsEditorOnlySubobject() override;
-	virtual void OverridePerObjectConfigSection(FString& SectionName) override;
 	virtual void PostCDOContruct() override;
 	virtual void PostEditImport() override;
 	virtual void PostInitProperties() override;
 	virtual void PostLoad() override;
 	virtual void PostNetReceive() override;
-	virtual void PostRename(UObject* OldOuter, const FName OldName) override;
 	virtual void PostRepNotifies() override;
 	virtual void PostSaveRoot(bool bCleanupIsRequired) override;
 	virtual void PreDestroyFromReplication() override;
@@ -59,6 +58,35 @@ public:
 	virtual void ShutdownAfterError() override;
 	virtual void CreateCluster() override;
 	virtual void OnClusterMarkedAsPendingKill() override;
+	
+	void _Supper__ApplyHardwareBenchmarkResults();
+	void _Supper__ApplyNonResolutionSettings();
+	void _Supper__ApplySettings(bool bCheckForCommandLineOverrides);
+	void _Supper__ConfirmVideoMode();
+	void _Supper__LoadSettings(bool bForceReload);
+	void _Supper__ResetToCurrentSettings();
+	void _Supper__RunHardwareBenchmark(int32 WorkScale, float CPUMultiplier, float GPUMultiplier);
+	void _Supper__SaveSettings();
+	void _Supper__SetOverallScalabilityLevel(int32 Value);
+	void _Supper__SetToDefaults();
+	void _Supper__SetWindowPosition(int32 WindowPosX, int32 WindowPosY);
+	void _Supper__UpdateVersion();
+	void _Supper__ValidateSettings();
+	void _Supper__BeginDestroy();
+	void _Supper__FinishDestroy();
+	void _Supper__MarkAsEditorOnlySubobject();
+	void _Supper__PostCDOContruct();
+	void _Supper__PostEditImport();
+	void _Supper__PostInitProperties();
+	void _Supper__PostLoad();
+	void _Supper__PostNetReceive();
+	void _Supper__PostRepNotifies();
+	void _Supper__PostSaveRoot(bool bCleanupIsRequired);
+	void _Supper__PreDestroyFromReplication();
+	void _Supper__PreNetReceive();
+	void _Supper__ShutdownAfterError();
+	void _Supper__CreateCluster();
+	void _Supper__OnClusterMarkedAsPendingKill();
 };
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

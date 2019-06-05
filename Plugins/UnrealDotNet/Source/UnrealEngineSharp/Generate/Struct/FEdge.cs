@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FEdge : NativeStructWrapper
+	public partial class FEdge : NativeStructWrapper
 	{
-		internal FEdge(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FEdge(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

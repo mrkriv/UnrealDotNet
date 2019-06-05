@@ -26,524 +26,654 @@ bool UManageCheatManager::AddWrapperIfNotAttach()
 	return bIsManageAttach;
 }
 
-void UManageCheatManager::BugIt(const FString& ScreenShotDescription)
-{
-	Super::BugIt(ScreenShotDescription);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BugIt", ScreenShotDescription);
-}
-
 void UManageCheatManager::BugItGo(float X, float Y, float Z, float Pitch, float Yaw, float Roll)
 {
-	Super::BugItGo(X, Y, Z, Pitch, Yaw, Roll);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BugItGo", X, Y, Z, Pitch, Yaw, Roll);
+	else
+		Super::BugItGo(X, Y, Z, Pitch, Yaw, Roll);
 }
 
-void UManageCheatManager::BugItGoString(const FString& TheLocation, const FString& TheRotation)
+void UManageCheatManager::_Supper__BugItGo(float X, float Y, float Z, float Pitch, float Yaw, float Roll)
 {
-	Super::BugItGoString(TheLocation, TheRotation);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BugItGoString", TheLocation, TheRotation);
-}
-
-void UManageCheatManager::BugItStringCreator(FVector ViewLocation, FRotator ViewRotation, FString& GoString, FString& LocString)
-{
-	Super::BugItStringCreator(ViewLocation, ViewRotation, GoString, LocString);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BugItStringCreator", ViewLocation, ViewRotation, GoString, LocString);
-}
-
-void UManageCheatManager::BugItWorker(FVector TheLocation, FRotator TheRotation)
-{
-	Super::BugItWorker(TheLocation, TheRotation);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "BugItWorker", TheLocation, TheRotation);
+	Super::BugItGo(X, Y, Z, Pitch, Yaw, Roll);
 }
 
 void UManageCheatManager::ChangeSize(float F)
 {
-	Super::ChangeSize(F);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ChangeSize", F);
+	else
+		Super::ChangeSize(F);
+}
+
+void UManageCheatManager::_Supper__ChangeSize(float F)
+{
+	Super::ChangeSize(F);
 }
 
 void UManageCheatManager::DamageTarget(float DamageAmount)
 {
-	Super::DamageTarget(DamageAmount);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DamageTarget", DamageAmount);
+	else
+		Super::DamageTarget(DamageAmount);
+}
+
+void UManageCheatManager::_Supper__DamageTarget(float DamageAmount)
+{
+	Super::DamageTarget(DamageAmount);
 }
 
 void UManageCheatManager::DebugCapsuleSweep()
 {
-	Super::DebugCapsuleSweep();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweep");
+	else
+		Super::DebugCapsuleSweep();
+}
+
+void UManageCheatManager::_Supper__DebugCapsuleSweep()
+{
+	Super::DebugCapsuleSweep();
 }
 
 void UManageCheatManager::DebugCapsuleSweepCapture()
 {
-	Super::DebugCapsuleSweepCapture();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepCapture");
+	else
+		Super::DebugCapsuleSweepCapture();
 }
 
-void UManageCheatManager::DebugCapsuleSweepChannel(ECollisionChannel Channel)
+void UManageCheatManager::_Supper__DebugCapsuleSweepCapture()
 {
-	Super::DebugCapsuleSweepChannel(Channel);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepChannel", Channel);
+	Super::DebugCapsuleSweepCapture();
 }
 
 void UManageCheatManager::DebugCapsuleSweepClear()
 {
-	Super::DebugCapsuleSweepClear();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepClear");
+	else
+		Super::DebugCapsuleSweepClear();
+}
+
+void UManageCheatManager::_Supper__DebugCapsuleSweepClear()
+{
+	Super::DebugCapsuleSweepClear();
 }
 
 void UManageCheatManager::DebugCapsuleSweepComplex(bool bTraceComplex)
 {
-	Super::DebugCapsuleSweepComplex(bTraceComplex);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepComplex", bTraceComplex);
+	else
+		Super::DebugCapsuleSweepComplex(bTraceComplex);
+}
+
+void UManageCheatManager::_Supper__DebugCapsuleSweepComplex(bool bTraceComplex)
+{
+	Super::DebugCapsuleSweepComplex(bTraceComplex);
 }
 
 void UManageCheatManager::DebugCapsuleSweepPawn()
 {
-	Super::DebugCapsuleSweepPawn();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepPawn");
+	else
+		Super::DebugCapsuleSweepPawn();
+}
+
+void UManageCheatManager::_Supper__DebugCapsuleSweepPawn()
+{
+	Super::DebugCapsuleSweepPawn();
 }
 
 void UManageCheatManager::DebugCapsuleSweepSize(float HalfHeight, float Radius)
 {
-	Super::DebugCapsuleSweepSize(HalfHeight, Radius);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DebugCapsuleSweepSize", HalfHeight, Radius);
+	else
+		Super::DebugCapsuleSweepSize(HalfHeight, Radius);
+}
+
+void UManageCheatManager::_Supper__DebugCapsuleSweepSize(float HalfHeight, float Radius)
+{
+	Super::DebugCapsuleSweepSize(HalfHeight, Radius);
 }
 
 void UManageCheatManager::DestroyAllPawnsExceptTarget()
 {
-	Super::DestroyAllPawnsExceptTarget();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyAllPawnsExceptTarget");
+	else
+		Super::DestroyAllPawnsExceptTarget();
+}
+
+void UManageCheatManager::_Supper__DestroyAllPawnsExceptTarget()
+{
+	Super::DestroyAllPawnsExceptTarget();
 }
 
 void UManageCheatManager::DestroyTarget()
 {
-	Super::DestroyTarget();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DestroyTarget");
+	else
+		Super::DestroyTarget();
+}
+
+void UManageCheatManager::_Supper__DestroyTarget()
+{
+	Super::DestroyTarget();
 }
 
 void UManageCheatManager::DisableDebugCamera()
 {
-	Super::DisableDebugCamera();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DisableDebugCamera");
+	else
+		Super::DisableDebugCamera();
+}
+
+void UManageCheatManager::_Supper__DisableDebugCamera()
+{
+	Super::DisableDebugCamera();
 }
 
 void UManageCheatManager::DumpChatState()
 {
-	Super::DumpChatState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DumpChatState");
+	else
+		Super::DumpChatState();
+}
+
+void UManageCheatManager::_Supper__DumpChatState()
+{
+	Super::DumpChatState();
 }
 
 void UManageCheatManager::DumpOnlineSessionState()
 {
-	Super::DumpOnlineSessionState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DumpOnlineSessionState");
+	else
+		Super::DumpOnlineSessionState();
+}
+
+void UManageCheatManager::_Supper__DumpOnlineSessionState()
+{
+	Super::DumpOnlineSessionState();
 }
 
 void UManageCheatManager::DumpPartyState()
 {
-	Super::DumpPartyState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DumpPartyState");
+	else
+		Super::DumpPartyState();
+}
+
+void UManageCheatManager::_Supper__DumpPartyState()
+{
+	Super::DumpPartyState();
 }
 
 void UManageCheatManager::DumpVoiceMutingState()
 {
-	Super::DumpVoiceMutingState();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "DumpVoiceMutingState");
+	else
+		Super::DumpVoiceMutingState();
+}
+
+void UManageCheatManager::_Supper__DumpVoiceMutingState()
+{
+	Super::DumpVoiceMutingState();
 }
 
 void UManageCheatManager::EnableDebugCamera()
 {
-	Super::EnableDebugCamera();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "EnableDebugCamera");
+	else
+		Super::EnableDebugCamera();
+}
+
+void UManageCheatManager::_Supper__EnableDebugCamera()
+{
+	Super::EnableDebugCamera();
 }
 
 void UManageCheatManager::FlushLog()
 {
-	Super::FlushLog();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FlushLog");
+	else
+		Super::FlushLog();
+}
+
+void UManageCheatManager::_Supper__FlushLog()
+{
+	Super::FlushLog();
 }
 
 void UManageCheatManager::Fly()
 {
-	Super::Fly();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Fly");
+	else
+		Super::Fly();
+}
+
+void UManageCheatManager::_Supper__Fly()
+{
+	Super::Fly();
 }
 
 void UManageCheatManager::FreezeFrame(float Delay)
 {
-	Super::FreezeFrame(Delay);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FreezeFrame", Delay);
+	else
+		Super::FreezeFrame(Delay);
+}
+
+void UManageCheatManager::_Supper__FreezeFrame(float Delay)
+{
+	Super::FreezeFrame(Delay);
 }
 
 void UManageCheatManager::Ghost()
 {
-	Super::Ghost();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Ghost");
+	else
+		Super::Ghost();
+}
+
+void UManageCheatManager::_Supper__Ghost()
+{
+	Super::Ghost();
 }
 
 void UManageCheatManager::God()
 {
-	Super::God();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "God");
+	else
+		Super::God();
+}
+
+void UManageCheatManager::_Supper__God()
+{
+	Super::God();
 }
 
 void UManageCheatManager::InitCheatManager()
 {
-	Super::InitCheatManager();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InitCheatManager");
+	else
+		Super::InitCheatManager();
+}
+
+void UManageCheatManager::_Supper__InitCheatManager()
+{
+	Super::InitCheatManager();
 }
 
 void UManageCheatManager::InvertMouse()
 {
-	Super::InvertMouse();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "InvertMouse");
+	else
+		Super::InvertMouse();
+}
+
+void UManageCheatManager::_Supper__InvertMouse()
+{
+	Super::InvertMouse();
 }
 
 void UManageCheatManager::LogLoc()
 {
-	Super::LogLoc();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "LogLoc");
+	else
+		Super::LogLoc();
 }
 
-void UManageCheatManager::LogOutBugItGoToLogFile(const FString& InScreenShotDesc, const FString& InScreenShotPath, const FString& InGoString, const FString& InLocString)
+void UManageCheatManager::_Supper__LogLoc()
 {
-	Super::LogOutBugItGoToLogFile(InScreenShotDesc, InScreenShotPath, InGoString, InLocString);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "LogOutBugItGoToLogFile", InScreenShotDesc, InScreenShotPath, InGoString, InLocString);
-}
-
-void UManageCheatManager::OnlyLoadLevel(FName PackageName)
-{
-	Super::OnlyLoadLevel(PackageName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OnlyLoadLevel", PackageName);
+	Super::LogLoc();
 }
 
 void UManageCheatManager::PlayersOnly()
 {
-	Super::PlayersOnly();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PlayersOnly");
+	else
+		Super::PlayersOnly();
+}
+
+void UManageCheatManager::_Supper__PlayersOnly()
+{
+	Super::PlayersOnly();
 }
 
 void UManageCheatManager::ServerToggleAILogging()
 {
-	Super::ServerToggleAILogging();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ServerToggleAILogging");
+	else
+		Super::ServerToggleAILogging();
 }
 
-void UManageCheatManager::SetLevelStreamingStatus(FName PackageName, bool bShouldBeLoaded, bool bShouldBeVisible)
+void UManageCheatManager::_Supper__ServerToggleAILogging()
 {
-	Super::SetLevelStreamingStatus(PackageName, bShouldBeLoaded, bShouldBeVisible);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "SetLevelStreamingStatus", PackageName, bShouldBeLoaded, bShouldBeVisible);
+	Super::ServerToggleAILogging();
 }
 
 void UManageCheatManager::SetMouseSensitivityToDefault()
 {
-	Super::SetMouseSensitivityToDefault();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "SetMouseSensitivityToDefault");
+	else
+		Super::SetMouseSensitivityToDefault();
+}
+
+void UManageCheatManager::_Supper__SetMouseSensitivityToDefault()
+{
+	Super::SetMouseSensitivityToDefault();
 }
 
 void UManageCheatManager::Slomo(float NewTimeDilation)
 {
-	Super::Slomo(NewTimeDilation);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Slomo", NewTimeDilation);
+	else
+		Super::Slomo(NewTimeDilation);
 }
 
-void UManageCheatManager::StreamLevelIn(FName PackageName)
+void UManageCheatManager::_Supper__Slomo(float NewTimeDilation)
 {
-	Super::StreamLevelIn(PackageName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "StreamLevelIn", PackageName);
-}
-
-void UManageCheatManager::StreamLevelOut(FName PackageName)
-{
-	Super::StreamLevelOut(PackageName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "StreamLevelOut", PackageName);
-}
-
-void UManageCheatManager::Summon(const FString& ClassName)
-{
-	Super::Summon(ClassName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "Summon", ClassName);
+	Super::Slomo(NewTimeDilation);
 }
 
 void UManageCheatManager::Teleport()
 {
-	Super::Teleport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Teleport");
+	else
+		Super::Teleport();
+}
+
+void UManageCheatManager::_Supper__Teleport()
+{
+	Super::Teleport();
 }
 
 void UManageCheatManager::TestCollisionDistance()
 {
-	Super::TestCollisionDistance();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "TestCollisionDistance");
+	else
+		Super::TestCollisionDistance();
+}
+
+void UManageCheatManager::_Supper__TestCollisionDistance()
+{
+	Super::TestCollisionDistance();
 }
 
 void UManageCheatManager::ToggleAILogging()
 {
-	Super::ToggleAILogging();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleAILogging");
+	else
+		Super::ToggleAILogging();
+}
+
+void UManageCheatManager::_Supper__ToggleAILogging()
+{
+	Super::ToggleAILogging();
 }
 
 void UManageCheatManager::ToggleDebugCamera()
 {
-	Super::ToggleDebugCamera();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ToggleDebugCamera");
+	else
+		Super::ToggleDebugCamera();
 }
 
-void UManageCheatManager::ViewActor(FName ActorName)
+void UManageCheatManager::_Supper__ToggleDebugCamera()
 {
-	Super::ViewActor(ActorName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ViewActor", ActorName);
-}
-
-void UManageCheatManager::ViewPlayer(const FString& S)
-{
-	Super::ViewPlayer(S);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "ViewPlayer", S);
+	Super::ToggleDebugCamera();
 }
 
 void UManageCheatManager::ViewSelf()
 {
-	Super::ViewSelf();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ViewSelf");
+	else
+		Super::ViewSelf();
+}
+
+void UManageCheatManager::_Supper__ViewSelf()
+{
+	Super::ViewSelf();
 }
 
 void UManageCheatManager::Walk()
 {
-	Super::Walk();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "Walk");
+	else
+		Super::Walk();
+}
+
+void UManageCheatManager::_Supper__Walk()
+{
+	Super::Walk();
 }
 
 void UManageCheatManager::BeginDestroy()
 {
-	Super::BeginDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "BeginDestroy");
+	else
+		Super::BeginDestroy();
+}
+
+void UManageCheatManager::_Supper__BeginDestroy()
+{
+	Super::BeginDestroy();
 }
 
 void UManageCheatManager::FinishDestroy()
 {
-	Super::FinishDestroy();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "FinishDestroy");
+	else
+		Super::FinishDestroy();
+}
+
+void UManageCheatManager::_Supper__FinishDestroy()
+{
+	Super::FinishDestroy();
 }
 
 void UManageCheatManager::MarkAsEditorOnlySubobject()
 {
-	Super::MarkAsEditorOnlySubobject();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "MarkAsEditorOnlySubobject");
+	else
+		Super::MarkAsEditorOnlySubobject();
 }
 
-void UManageCheatManager::OverridePerObjectConfigSection(FString& SectionName)
+void UManageCheatManager::_Supper__MarkAsEditorOnlySubobject()
 {
-	Super::OverridePerObjectConfigSection(SectionName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "OverridePerObjectConfigSection", SectionName);
+	Super::MarkAsEditorOnlySubobject();
 }
 
 void UManageCheatManager::PostCDOContruct()
 {
-	Super::PostCDOContruct();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostCDOContruct");
+	else
+		Super::PostCDOContruct();
+}
+
+void UManageCheatManager::_Supper__PostCDOContruct()
+{
+	Super::PostCDOContruct();
 }
 
 void UManageCheatManager::PostEditImport()
 {
-	Super::PostEditImport();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostEditImport");
+	else
+		Super::PostEditImport();
+}
+
+void UManageCheatManager::_Supper__PostEditImport()
+{
+	Super::PostEditImport();
 }
 
 void UManageCheatManager::PostInitProperties()
 {
-	Super::PostInitProperties();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostInitProperties");
+	else
+		Super::PostInitProperties();
+}
+
+void UManageCheatManager::_Supper__PostInitProperties()
+{
+	Super::PostInitProperties();
 }
 
 void UManageCheatManager::PostLoad()
 {
-	Super::PostLoad();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostLoad");
+	else
+		Super::PostLoad();
+}
+
+void UManageCheatManager::_Supper__PostLoad()
+{
+	Super::PostLoad();
 }
 
 void UManageCheatManager::PostNetReceive()
 {
-	Super::PostNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostNetReceive");
+	else
+		Super::PostNetReceive();
 }
 
-void UManageCheatManager::PostRename(UObject* OldOuter, const FName OldName)
+void UManageCheatManager::_Supper__PostNetReceive()
 {
-	Super::PostRename(OldOuter, OldName);
-	
-	if(AddWrapperIfNotAttach())
-		UCoreShell::GetInstance()->InvokeInObject(this, "PostRename", OldOuter, OldName);
+	Super::PostNetReceive();
 }
 
 void UManageCheatManager::PostRepNotifies()
 {
-	Super::PostRepNotifies();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostRepNotifies");
+	else
+		Super::PostRepNotifies();
+}
+
+void UManageCheatManager::_Supper__PostRepNotifies()
+{
+	Super::PostRepNotifies();
 }
 
 void UManageCheatManager::PostSaveRoot(bool bCleanupIsRequired)
 {
-	Super::PostSaveRoot(bCleanupIsRequired);
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PostSaveRoot", bCleanupIsRequired);
+	else
+		Super::PostSaveRoot(bCleanupIsRequired);
+}
+
+void UManageCheatManager::_Supper__PostSaveRoot(bool bCleanupIsRequired)
+{
+	Super::PostSaveRoot(bCleanupIsRequired);
 }
 
 void UManageCheatManager::PreDestroyFromReplication()
 {
-	Super::PreDestroyFromReplication();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreDestroyFromReplication");
+	else
+		Super::PreDestroyFromReplication();
+}
+
+void UManageCheatManager::_Supper__PreDestroyFromReplication()
+{
+	Super::PreDestroyFromReplication();
 }
 
 void UManageCheatManager::PreNetReceive()
 {
-	Super::PreNetReceive();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "PreNetReceive");
+	else
+		Super::PreNetReceive();
+}
+
+void UManageCheatManager::_Supper__PreNetReceive()
+{
+	Super::PreNetReceive();
 }
 
 void UManageCheatManager::ShutdownAfterError()
 {
-	Super::ShutdownAfterError();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "ShutdownAfterError");
+	else
+		Super::ShutdownAfterError();
+}
+
+void UManageCheatManager::_Supper__ShutdownAfterError()
+{
+	Super::ShutdownAfterError();
 }
 
 void UManageCheatManager::CreateCluster()
 {
-	Super::CreateCluster();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "CreateCluster");
+	else
+		Super::CreateCluster();
+}
+
+void UManageCheatManager::_Supper__CreateCluster()
+{
+	Super::CreateCluster();
 }
 
 void UManageCheatManager::OnClusterMarkedAsPendingKill()
 {
-	Super::OnClusterMarkedAsPendingKill();
-	
 	if(AddWrapperIfNotAttach())
 		UCoreShell::GetInstance()->InvokeInObject(this, "OnClusterMarkedAsPendingKill");
+	else
+		Super::OnClusterMarkedAsPendingKill();
+}
+
+void UManageCheatManager::_Supper__OnClusterMarkedAsPendingKill()
+{
+	Super::OnClusterMarkedAsPendingKill();
 }
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

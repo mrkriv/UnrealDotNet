@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FRootMotionFinishVelocitySettings : NativeStructWrapper
+	public partial class FRootMotionFinishVelocitySettings : NativeStructWrapper
 	{
-		internal FRootMotionFinishVelocitySettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FRootMotionFinishVelocitySettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

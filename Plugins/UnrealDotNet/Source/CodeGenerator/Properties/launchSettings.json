@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CodeGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "--ue \"C:\\Program Files\\Epic Games\\UE_4.22\" -o ..\\..\\Source\\"
+    }
+  }
+}

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FForceFeedbackEffectHistoryEntry : NativeStructWrapper
+	public partial class FForceFeedbackEffectHistoryEntry : NativeStructWrapper
 	{
-		internal FForceFeedbackEffectHistoryEntry(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FForceFeedbackEffectHistoryEntry(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSimpleReticle : NativeStructWrapper
+	public partial class FSimpleReticle : NativeStructWrapper
 	{
-		internal FSimpleReticle(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSimpleReticle(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

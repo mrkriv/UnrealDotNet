@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UMaterialBillboardComponent : UPrimitiveComponent
+	public partial class UMaterialBillboardComponent : UPrimitiveComponent
 	{
 		public UMaterialBillboardComponent(IntPtr adress)
 			: base(adress)

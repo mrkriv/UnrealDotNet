@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FForceFeedbackParameters : NativeStructWrapper
+	public partial class FForceFeedbackParameters : NativeStructWrapper
 	{
-		internal FForceFeedbackParameters(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FForceFeedbackParameters(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

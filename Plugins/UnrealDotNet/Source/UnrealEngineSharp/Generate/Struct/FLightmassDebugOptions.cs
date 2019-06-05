@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FLightmassDebugOptions : NativeStructWrapper
+	public partial class FLightmassDebugOptions : NativeStructWrapper
 	{
-		internal FLightmassDebugOptions(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FLightmassDebugOptions(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

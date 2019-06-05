@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FExposureSettings : NativeStructWrapper
+	public partial class FExposureSettings : NativeStructWrapper
 	{
-		internal FExposureSettings(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FExposureSettings(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FStaticMeshVertexColorLODData : NativeStructWrapper
+	public partial class FStaticMeshVertexColorLODData : NativeStructWrapper
 	{
-		internal FStaticMeshVertexColorLODData(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FStaticMeshVertexColorLODData(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UDrawFrustumComponent : UPrimitiveComponent
+	public partial class UDrawFrustumComponent : UPrimitiveComponent
 	{
 		public UDrawFrustumComponent(IntPtr adress)
 			: base(adress)

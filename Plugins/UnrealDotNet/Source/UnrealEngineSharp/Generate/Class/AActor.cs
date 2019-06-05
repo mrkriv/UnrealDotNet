@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class AActor : UObject
+	public partial class AActor : UObject
 	{
 		public AActor(IntPtr adress)
 			: base(adress)
@@ -309,6 +309,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_BeginPlay(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_CalcCamera(IntPtr self, float deltaTime, IntPtr outResult);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_AActor_CalculateComponentsBoundingBoxInLocalSpace(IntPtr self, bool bNonColliding);
@@ -1760,6 +1763,15 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void BeginPlay()
 			=> E_AActor_BeginPlay(this);
+		
+		
+		/// <summary>
+		/// Calculate camera view point, when viewing this actor.
+		/// </summary>
+		/// <param name="deltaTime">Delta time seconds since last update</param>
+		/// <param name="outResult">Camera configuration</param>
+		public virtual void CalcCamera(float deltaTime, FMinimalViewInfo outResult)
+			=> E_AActor_CalcCamera(this, deltaTime, outResult);
 		
 		
 		/// <summary>

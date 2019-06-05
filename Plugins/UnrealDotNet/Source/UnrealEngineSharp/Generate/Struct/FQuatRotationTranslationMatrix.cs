@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FQuatRotationTranslationMatrix : FMatrix
+	public partial class FQuatRotationTranslationMatrix : FMatrix
 	{
-		internal FQuatRotationTranslationMatrix(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FQuatRotationTranslationMatrix(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

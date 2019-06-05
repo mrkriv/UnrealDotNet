@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FTickFunction : NativeStructWrapper
+	public partial class FTickFunction : NativeStructWrapper
 	{
-		internal FTickFunction(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FTickFunction(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

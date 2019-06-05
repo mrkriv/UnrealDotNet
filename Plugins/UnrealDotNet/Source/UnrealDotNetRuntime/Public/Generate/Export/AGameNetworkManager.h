@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageGameNetworkManager.h"
 #include "Runtime/Engine/Classes/GameFramework/GameNetworkManager.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameNetworkManager.h:27
@@ -135,7 +136,7 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameNetworkManager_EnableStandbyCheatDetection(AGameNetworkManager* Self, bool bIsEnabled)
 	{
 		auto _p0 = bIsEnabled;
-		Self->AGameNetworkManager::EnableStandbyCheatDetection(_p0);
+		Self->EnableStandbyCheatDetection(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_ExceedsAllowablePositionError(AGameNetworkManager* Self, INT_PTR LocDiff)
@@ -158,18 +159,18 @@ extern "C"
 	DOTNET_EXPORT auto E_AGameNetworkManager_StandbyCheatDetected(AGameNetworkManager* Self, EStandbyType StandbyType)
 	{
 		auto _p0 = StandbyType;
-		Self->AGameNetworkManager::StandbyCheatDetected(_p0);
+		Self->StandbyCheatDetected(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_UpdateNetSpeeds(AGameNetworkManager* Self, bool bIsLanMatch)
 	{
 		auto _p0 = bIsLanMatch;
-		Self->AGameNetworkManager::UpdateNetSpeeds(_p0);
+		Self->UpdateNetSpeeds(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_UpdateNetSpeedsTimer(AGameNetworkManager* Self)
 	{
-		Self->AGameNetworkManager::UpdateNetSpeedsTimer();
+		Self->UpdateNetSpeedsTimer();
 	}
 
 	DOTNET_EXPORT auto E_AGameNetworkManager_WithinUpdateDelayBounds(AGameNetworkManager* Self, APlayerController* PC, float LastUpdateTime)
@@ -177,6 +178,331 @@ extern "C"
 		auto _p0 = PC;
 		auto _p1 = LastUpdateTime;
 		return Self->WithinUpdateDelayBounds(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_EnableStandbyCheatDetection(AGameNetworkManager* Self, bool bIsEnabled)
+	{
+		auto _p0 = bIsEnabled;
+		((AManageGameNetworkManager*)Self)->_Supper__EnableStandbyCheatDetection(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_UpdateNetSpeeds(AGameNetworkManager* Self, bool bIsLanMatch)
+	{
+		auto _p0 = bIsLanMatch;
+		((AManageGameNetworkManager*)Self)->_Supper__UpdateNetSpeeds(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_UpdateNetSpeedsTimer(AGameNetworkManager* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__UpdateNetSpeedsTimer();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_BeginPlay(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_ClearCrossLevelReferences(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__ClearCrossLevelReferences();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_Destroyed(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__Destroyed();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_ForceNetRelevant(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__ForceNetRelevant();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_ForceNetUpdate(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__ForceNetUpdate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_GatherCurrentMovement(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__GatherCurrentMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_InvalidateLightingCacheDetailed(AActor* Self, bool bTranslationOnly)
+	{
+		auto _p0 = bTranslationOnly;
+		((AManageGameNetworkManager*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_K2_DestroyActor(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__K2_DestroyActor();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_LifeSpanExpired(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__LifeSpanExpired();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_MarkComponentsAsPendingKill(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__MarkComponentsAsPendingKill();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_NotifyActorBeginCursorOver(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__NotifyActorBeginCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_NotifyActorEndCursorOver(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__NotifyActorEndCursorOver();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnRep_AttachmentReplication(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnRep_AttachmentReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnRep_Instigator(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnRep_Instigator();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnRep_Owner(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnRep_Owner();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnRep_ReplicatedMovement(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnRep_ReplicatedMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnRep_ReplicateMovement(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnRep_ReplicateMovement();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnReplicationPausedChanged(AActor* Self, bool bIsReplicationPaused)
+	{
+		auto _p0 = bIsReplicationPaused;
+		((AManageGameNetworkManager*)Self)->_Supper__OnReplicationPausedChanged(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OutsideWorldBounds(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OutsideWorldBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostActorCreated(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostActorCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostInitializeComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostNetInit(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostNetInit();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostNetReceiveLocationAndRotation(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostNetReceiveLocationAndRotation();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostNetReceivePhysicState(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostNetReceivePhysicState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostNetReceiveRole(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostNetReceiveRole();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostRegisterAllComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostUnregisterAllComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostUnregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PreInitializeComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PreInitializeComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PreRegisterAllComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PreRegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PrestreamTextures(AActor* Self, float Seconds, bool bEnableStreaming, int32 CinematicTextureGroups)
+	{
+		auto _p0 = Seconds;
+		auto _p1 = bEnableStreaming;
+		auto _p2 = CinematicTextureGroups;
+		((AManageGameNetworkManager*)Self)->_Supper__PrestreamTextures(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_RegisterActorTickFunctions(AActor* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((AManageGameNetworkManager*)Self)->_Supper__RegisterActorTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_RegisterAllComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__RegisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_ReregisterAllComponents(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__ReregisterAllComponents();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_RerunConstructionScripts(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__RerunConstructionScripts();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_Reset(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__Reset();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_RewindForReplay(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__RewindForReplay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_SetActorHiddenInGame(AActor* Self, bool bNewHidden)
+	{
+		auto _p0 = bNewHidden;
+		((AManageGameNetworkManager*)Self)->_Supper__SetActorHiddenInGame(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_SetLifeSpan(AActor* Self, float InLifespan)
+	{
+		auto _p0 = InLifespan;
+		((AManageGameNetworkManager*)Self)->_Supper__SetLifeSpan(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_SetReplicateMovement(AActor* Self, bool bInReplicateMovement)
+	{
+		auto _p0 = bInReplicateMovement;
+		((AManageGameNetworkManager*)Self)->_Supper__SetReplicateMovement(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_TearOff(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__TearOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_TeleportSucceeded(AActor* Self, bool bIsATest)
+	{
+		auto _p0 = bIsATest;
+		((AManageGameNetworkManager*)Self)->_Supper__TeleportSucceeded(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_Tick(AActor* Self, float DeltaSeconds)
+	{
+		auto _p0 = DeltaSeconds;
+		((AManageGameNetworkManager*)Self)->_Supper__Tick(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_TornOff(AActor* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__TornOff();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_UnregisterAllComponents(AActor* Self, bool bForReregister)
+	{
+		auto _p0 = bForReregister;
+		((AManageGameNetworkManager*)Self)->_Supper__UnregisterAllComponents(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_BeginDestroy(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_FinishDestroy(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostCDOContruct(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostEditImport(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostInitProperties(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostLoad(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostNetReceive(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostRepNotifies(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((AManageGameNetworkManager*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PreDestroyFromReplication(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_PreNetReceive(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_ShutdownAfterError(UObject* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__AGameNetworkManager_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((AManageGameNetworkManager*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

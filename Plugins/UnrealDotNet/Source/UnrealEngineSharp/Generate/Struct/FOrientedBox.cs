@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FOrientedBox : NativeStructWrapper
+	public partial class FOrientedBox : NativeStructWrapper
 	{
-		internal FOrientedBox(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FOrientedBox(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FExponentialHeightFogData : NativeStructWrapper
+	public partial class FExponentialHeightFogData : NativeStructWrapper
 	{
-		internal FExponentialHeightFogData(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FExponentialHeightFogData(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

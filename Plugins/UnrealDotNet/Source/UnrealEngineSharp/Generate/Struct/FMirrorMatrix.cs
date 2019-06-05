@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FMirrorMatrix : FMatrix
+	public partial class FMirrorMatrix : FMatrix
 	{
-		internal FMirrorMatrix(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FMirrorMatrix(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

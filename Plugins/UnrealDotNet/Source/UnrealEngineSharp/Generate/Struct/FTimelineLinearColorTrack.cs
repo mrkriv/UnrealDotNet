@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FTimelineLinearColorTrack : NativeStructWrapper
+	public partial class FTimelineLinearColorTrack : NativeStructWrapper
 	{
-		internal FTimelineLinearColorTrack(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FTimelineLinearColorTrack(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

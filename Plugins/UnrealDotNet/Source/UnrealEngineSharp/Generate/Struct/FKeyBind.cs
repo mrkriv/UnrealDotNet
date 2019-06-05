@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FKeyBind : NativeStructWrapper
+	public partial class FKeyBind : NativeStructWrapper
 	{
-		internal FKeyBind(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FKeyBind(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

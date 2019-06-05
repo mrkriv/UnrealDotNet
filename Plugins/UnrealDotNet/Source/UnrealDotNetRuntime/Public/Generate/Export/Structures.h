@@ -22,7 +22,10 @@
 #include "Runtime/Core/Public/Math/BoxSphereBounds.h"
 #include "Runtime/Engine/Classes/GameFramework/WorldSettings.h"
 #include "Runtime/Engine/Classes/Components/InputComponent.h"
+#include "Runtime/Engine/Classes/Camera/PlayerCameraManager.h"
 #include "Runtime/Engine/Classes/Engine/Scene.h"
+#include "Runtime/Engine/Classes/Camera/CameraPhotography.h"
+#include "Runtime/Engine/Classes/Camera/CameraStackTypes.h"
 #include "Runtime/Engine/Classes/Engine/Canvas.h"
 #include "Runtime/Core/Public/Math/CapsuleShape.h"
 #include "Runtime/Engine/Classes/Components/ChildActorComponent.h"
@@ -47,6 +50,7 @@
 #include "Runtime/Core/Public/Math/Float16Color.h"
 #include "Runtime/Core/Public/Math/Float32.h"
 #include "Runtime/Core/Public/Math/FloatPacker.h"
+#include "Runtime/Engine/Classes/Camera/CameraShake.h"
 #include "Runtime/Engine/Classes/GameFramework/GameModeBase.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerInput.h"
 #include "Runtime/Engine/Classes/Components/InstancedStaticMeshComponent.h"
@@ -56,9 +60,11 @@
 #include "Runtime/Core/Public/Math/IntVector.h"
 #include "Runtime/Core/Public/Math/InverseRotationMatrix.h"
 #include "Runtime/Core/Public/Math/Color.h"
+#include "Runtime/Engine/Classes/Engine/LocalPlayer.h"
 #include "Runtime/Engine/Classes/Components/MaterialBillboardComponent.h"
 #include "Runtime/Core/Public/Math/Matrix.h"
 #include "Runtime/Core/Public/Math/TransformCalculus2D.h"
+#include "Runtime/Engine/Classes/Camera/CameraTypes.h"
 #include "Runtime/Core/Public/Math/MirrorMatrix.h"
 #include "Runtime/Core/Public/Math/OrientedBox.h"
 #include "Runtime/Core/Public/Math/OrthoMatrix.h"
@@ -66,6 +72,7 @@
 #include "Runtime/Core/Public/Math/PerspectiveMatrix.h"
 #include "Runtime/Core/Public/Math/Plane.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerMuteList.h"
+#include "Runtime/Engine/Classes/Camera/CameraModifier_CameraShake.h"
 #include "Runtime/Core/Public/Math/Quat.h"
 #include "Runtime/Core/Public/Math/QuatRotationTranslationMatrix.h"
 #include "Runtime/Core/Public/Math/RandomStream.h"
@@ -773,6 +780,17 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FCachedKeyToActionInfo_PlayerInput_SET(FCachedKeyToActionInfo* Ptr, UPlayerInput* Value) { Ptr->PlayerInput = Value; }
 	
 	
+	/*	FCameraCacheEntry	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCameraCacheEntry() { return (INT_PTR) new FCameraCacheEntry(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCameraCacheEntry_POV_GET(FCameraCacheEntry* Ptr) { return (INT_PTR)&(Ptr->POV); }
+	DOTNET_EXPORT void E_PROP_FCameraCacheEntry_POV_SET(FCameraCacheEntry* Ptr, INT_PTR Value) { Ptr->POV = *(FMinimalViewInfo*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCameraCacheEntry_TimeStamp_GET(FCameraCacheEntry* Ptr) { return Ptr->TimeStamp; }
+	DOTNET_EXPORT void E_PROP_FCameraCacheEntry_TimeStamp_SET(FCameraCacheEntry* Ptr, float Value) { Ptr->TimeStamp = Value; }
+	
+	
 	/*	FCameraExposureSettings	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FCameraExposureSettings() { return (INT_PTR) new FCameraExposureSettings(); }
@@ -811,6 +829,97 @@ extern "C"
 	{
 		auto _p0 = (FPostProcessSettings*)OutPostProcessSettings;
 		Self->ExportToPostProcessSettings(_p0);
+	}
+
+	
+	/*	FCameraPhotographyManager	*/
+	
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_DefaultConstrainCamera(FCameraPhotographyManager* Self, INT_PTR NewCameraLocation, INT_PTR PreviousCameraLocation, INT_PTR OriginalCameraLocation, INT_PTR OutCameraLocation, APlayerCameraManager* PCMgr)
+	{
+		auto _p0 = *(FVector*)NewCameraLocation;
+		auto _p1 = *(FVector*)PreviousCameraLocation;
+		auto _p2 = *(FVector*)OriginalCameraLocation;
+		auto& _p3 = *(FVector*)OutCameraLocation;
+		auto _p4 = PCMgr;
+		Self->DefaultConstrainCamera(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_Destroy(FCameraPhotographyManager* Self)
+	{
+		Self->Destroy();
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_Get(FCameraPhotographyManager* Self)
+	{
+		return (INT_PTR) new FCameraPhotographyManager(Self->Get());
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_IsSupported(FCameraPhotographyManager* Self, UWorld* InWorld)
+	{
+		auto _p0 = InWorld;
+		return Self->IsSupported(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_SetUIControlVisibility(FCameraPhotographyManager* Self, uint8 UIControlTarget, bool bIsVisible)
+	{
+		auto _p0 = UIControlTarget;
+		auto _p1 = bIsVisible;
+		Self->SetUIControlVisibility(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_StartSession(FCameraPhotographyManager* Self)
+	{
+		Self->StartSession();
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_StopSession(FCameraPhotographyManager* Self)
+	{
+		Self->StopSession();
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_UpdateCamera(FCameraPhotographyManager* Self, INT_PTR InOutPOV, APlayerCameraManager* PCMgr)
+	{
+		auto& _p0 = *(FMinimalViewInfo*)InOutPOV;
+		auto _p1 = PCMgr;
+		return Self->UpdateCamera(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCameraPhotographyManager_UpdatePostProcessing(FCameraPhotographyManager* Self, INT_PTR InOutPostProcessingSettings)
+	{
+		auto& _p0 = *(FPostProcessSettings*)InOutPostProcessingSettings;
+		Self->UpdatePostProcessing(_p0);
+	}
+
+	
+	/*	FCameraUpdateContext	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCameraUpdateContext_APlayerCameraManager_float(APlayerCameraManager* InCamera, float InDeltaTime) { return (INT_PTR) new FCameraUpdateContext(InCamera, InDeltaTime); }
+	
+	DOTNET_EXPORT auto E_FCameraUpdateContext_FractionalWeight(FCameraUpdateContext* Self, float Multiplier, bool bFromDebugNode)
+	{
+		auto _p0 = Multiplier;
+		auto _p1 = bFromDebugNode;
+		return (INT_PTR) new FCameraUpdateContext(Self->FractionalWeight(_p0, _p1));
+	}
+
+	DOTNET_EXPORT auto E_FCameraUpdateContext_GetCameraManager(FCameraUpdateContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetCameraManager());
+	}
+
+	DOTNET_EXPORT auto E_FCameraUpdateContext_GetDeltaTime(FCameraUpdateContext* Self)
+	{
+		return Self->GetDeltaTime();
+	}
+
+	DOTNET_EXPORT auto E_FCameraUpdateContext_GetNonDebugWeight(FCameraUpdateContext* Self)
+	{
+		return Self->GetNonDebugWeight();
+	}
+
+	DOTNET_EXPORT auto E_FCameraUpdateContext_GetTrueWeight(FCameraUpdateContext* Self)
+	{
+		return Self->GetTrueWeight();
 	}
 
 	
@@ -1515,6 +1624,11 @@ extern "C"
 	}
 
 	
+	/*	FDummySpacerCameraTypes	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FDummySpacerCameraTypes() { return (INT_PTR) new FDummySpacerCameraTypes(); }
+	
+	
 	/*	FDynamicForceFeedbackDetails	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDynamicForceFeedbackDetails() { return (INT_PTR) new FDynamicForceFeedbackDetails(); }
@@ -1783,6 +1897,42 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FForceFeedbackParameters_Tag_GET(FForceFeedbackParameters* Ptr) { return ConvertToManage_StringWrapper(Ptr->Tag); }
 	DOTNET_EXPORT void E_PROP_FForceFeedbackParameters_Tag_SET(FForceFeedbackParameters* Ptr, char* Value) { Ptr->Tag = ConvertFromManage_FName(Value); }
 	
+	
+	/*	FFOscillator	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFOscillator() { return (INT_PTR) new FFOscillator(); }
+	
+	DOTNET_EXPORT auto E_PROP_FFOscillator_Amplitude_GET(FFOscillator* Ptr) { return Ptr->Amplitude; }
+	DOTNET_EXPORT void E_PROP_FFOscillator_Amplitude_SET(FFOscillator* Ptr, float Value) { Ptr->Amplitude = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFOscillator_Frequency_GET(FFOscillator* Ptr) { return Ptr->Frequency; }
+	DOTNET_EXPORT void E_PROP_FFOscillator_Frequency_SET(FFOscillator* Ptr, float Value) { Ptr->Frequency = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFOscillator_Waveform_GET(FFOscillator* Ptr) { return Ptr->Waveform; }
+	DOTNET_EXPORT void E_PROP_FFOscillator_Waveform_SET(FFOscillator* Ptr, EOscillatorWaveform Value) { Ptr->Waveform = Value; }
+	
+	DOTNET_EXPORT auto E_FFOscillator_GetInitialOffset(FFOscillator* Self, INT_PTR Osc)
+	{
+		auto& _p0 = *(FFOscillator*)Osc;
+		return Self->GetInitialOffset(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FFOscillator_GetOffsetAtTime(FFOscillator* Self, INT_PTR Osc, float InitialOffset, float Time)
+	{
+		auto& _p0 = *(FFOscillator*)Osc;
+		auto _p1 = InitialOffset;
+		auto _p2 = Time;
+		return Self->GetOffsetAtTime(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_FFOscillator_UpdateOffset(FFOscillator* Self, INT_PTR Osc, float CurrentOffset, float DeltaTime)
+	{
+		auto& _p0 = *(FFOscillator*)Osc;
+		auto& _p1 = CurrentOffset;
+		auto _p2 = DeltaTime;
+		return Self->UpdateOffset(_p0, _p1, _p2);
+	}
+
 	
 	/*	FFractureEffect	*/
 	
@@ -2479,6 +2629,68 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FLinearColor() { return (INT_PTR) new FLinearColor(); }
 	
 	
+	/*	FLocalPlayerContext	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLocalPlayerContext() { return (INT_PTR) new FLocalPlayerContext(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLocalPlayerContext_ULocalPlayer_UWorld(ULocalPlayer* InLocalPlayer, UWorld* InWorld) { return (INT_PTR) new FLocalPlayerContext(InLocalPlayer, InWorld); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLocalPlayerContext_APlayerController(APlayerController* InPlayerController) { return (INT_PTR) new FLocalPlayerContext(InPlayerController); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FLocalPlayerContext_FLocalPlayerContext(INT_PTR InPlayerContext) { return (INT_PTR) new FLocalPlayerContext(*(FLocalPlayerContext*)InPlayerContext); }
+	
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetGameState(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetGameState());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetHUD(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetHUD());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetLocalPlayer(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetLocalPlayer());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetPawn(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPawn());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetPlayerController(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPlayerController());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetPlayerState(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetPlayerState());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_GetWorld(FLocalPlayerContext* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetWorld());
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_IsFromLocalPlayer(FLocalPlayerContext* Self, AActor* ActorToTest)
+	{
+		auto _p0 = ActorToTest;
+		return Self->IsFromLocalPlayer(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_IsInitialized(FLocalPlayerContext* Self)
+	{
+		return Self->IsInitialized();
+	}
+
+	DOTNET_EXPORT auto E_FLocalPlayerContext_IsValid(FLocalPlayerContext* Self)
+	{
+		return Self->IsValid();
+	}
+
+	
 	/*	FMaterialSpriteElement	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMaterialSpriteElement() { return (INT_PTR) new FMaterialSpriteElement(); }
@@ -2630,6 +2842,75 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FMeshBuildSettings_SrcLightmapIndex_GET(FMeshBuildSettings* Ptr) { return Ptr->SrcLightmapIndex; }
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_SrcLightmapIndex_SET(FMeshBuildSettings* Ptr, int32 Value) { Ptr->SrcLightmapIndex = Value; }
 	
+	
+	/*	FMinimalViewInfo	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMinimalViewInfo() { return (INT_PTR) new FMinimalViewInfo(); }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_AspectRatio_GET(FMinimalViewInfo* Ptr) { return Ptr->AspectRatio; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_AspectRatio_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->AspectRatio = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_DesiredFOV_GET(FMinimalViewInfo* Ptr) { return Ptr->DesiredFOV; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_DesiredFOV_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->DesiredFOV = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_FOV_GET(FMinimalViewInfo* Ptr) { return Ptr->FOV; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_FOV_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->FOV = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_Location_GET(FMinimalViewInfo* Ptr) { return (INT_PTR)&(Ptr->Location); }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_Location_SET(FMinimalViewInfo* Ptr, INT_PTR Value) { Ptr->Location = *(FVector*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_OffCenterProjectionOffset_GET(FMinimalViewInfo* Ptr) { return (INT_PTR)&(Ptr->OffCenterProjectionOffset); }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_OffCenterProjectionOffset_SET(FMinimalViewInfo* Ptr, INT_PTR Value) { Ptr->OffCenterProjectionOffset = *(FVector2D*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_OrthoFarClipPlane_GET(FMinimalViewInfo* Ptr) { return Ptr->OrthoFarClipPlane; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_OrthoFarClipPlane_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->OrthoFarClipPlane = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_OrthoNearClipPlane_GET(FMinimalViewInfo* Ptr) { return Ptr->OrthoNearClipPlane; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_OrthoNearClipPlane_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->OrthoNearClipPlane = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_OrthoWidth_GET(FMinimalViewInfo* Ptr) { return Ptr->OrthoWidth; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_OrthoWidth_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->OrthoWidth = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_PostProcessBlendWeight_GET(FMinimalViewInfo* Ptr) { return Ptr->PostProcessBlendWeight; }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_PostProcessBlendWeight_SET(FMinimalViewInfo* Ptr, float Value) { Ptr->PostProcessBlendWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_PostProcessSettings_GET(FMinimalViewInfo* Ptr) { return (INT_PTR)&(Ptr->PostProcessSettings); }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_PostProcessSettings_SET(FMinimalViewInfo* Ptr, INT_PTR Value) { Ptr->PostProcessSettings = *(FPostProcessSettings*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FMinimalViewInfo_Rotation_GET(FMinimalViewInfo* Ptr) { return (INT_PTR)&(Ptr->Rotation); }
+	DOTNET_EXPORT void E_PROP_FMinimalViewInfo_Rotation_SET(FMinimalViewInfo* Ptr, INT_PTR Value) { Ptr->Rotation = *(FRotator*)Value; }
+	
+	DOTNET_EXPORT auto E_FMinimalViewInfo_AddWeightedViewInfo(FMinimalViewInfo* Self, INT_PTR OtherView, float Weight)
+	{
+		auto& _p0 = *(FMinimalViewInfo*)OtherView;
+		auto& _p1 = Weight;
+		Self->AddWeightedViewInfo(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FMinimalViewInfo_ApplyBlendWeight(FMinimalViewInfo* Self, float Weight)
+	{
+		auto& _p0 = Weight;
+		Self->ApplyBlendWeight(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FMinimalViewInfo_BlendViewInfo(FMinimalViewInfo* Self, INT_PTR OtherInfo, float OtherWeight)
+	{
+		auto& _p0 = *(FMinimalViewInfo*)OtherInfo;
+		auto _p1 = OtherWeight;
+		Self->BlendViewInfo(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FMinimalViewInfo_CalculateProjectionMatrix(FMinimalViewInfo* Self)
+	{
+		return (INT_PTR) new FMatrix(Self->CalculateProjectionMatrix());
+	}
+
+	DOTNET_EXPORT auto E_FMinimalViewInfo_Equals(FMinimalViewInfo* Self, INT_PTR OtherInfo)
+	{
+		auto& _p0 = *(FMinimalViewInfo*)OtherInfo;
+		return Self->Equals(_p0);
+	}
+
 	
 	/*	FMirrorMatrix	*/
 	
@@ -2862,6 +3143,11 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_HitInfo_GET(FPointDamageEvent* Ptr) { return (INT_PTR)&(Ptr->HitInfo); }
 	DOTNET_EXPORT void E_PROP_FPointDamageEvent_HitInfo_SET(FPointDamageEvent* Ptr, INT_PTR Value) { Ptr->HitInfo = *(FHitResult*)Value; }
+	
+	
+	/*	FPooledCameraShakes	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPooledCameraShakes() { return (INT_PTR) new FPooledCameraShakes(); }
 	
 	
 	/*	FPostProcessSettings	*/
@@ -4972,6 +5258,20 @@ extern "C"
 	}
 
 	
+	/*	FROscillator	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FROscillator() { return (INT_PTR) new FROscillator(); }
+	
+	DOTNET_EXPORT auto E_PROP_FROscillator_Pitch_GET(FROscillator* Ptr) { return (INT_PTR)&(Ptr->Pitch); }
+	DOTNET_EXPORT void E_PROP_FROscillator_Pitch_SET(FROscillator* Ptr, INT_PTR Value) { Ptr->Pitch = *(FFOscillator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FROscillator_Roll_GET(FROscillator* Ptr) { return (INT_PTR)&(Ptr->Roll); }
+	DOTNET_EXPORT void E_PROP_FROscillator_Roll_SET(FROscillator* Ptr, INT_PTR Value) { Ptr->Roll = *(FFOscillator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FROscillator_Yaw_GET(FROscillator* Ptr) { return (INT_PTR)&(Ptr->Yaw); }
+	DOTNET_EXPORT void E_PROP_FROscillator_Yaw_SET(FROscillator* Ptr, INT_PTR Value) { Ptr->Yaw = *(FFOscillator*)Value; }
+	
+	
 	/*	FRotationAboutPointMatrix	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRotationAboutPointMatrix_FRotator_FVector(INT_PTR Rot, INT_PTR Origin) { return (INT_PTR) new FRotationAboutPointMatrix(*(FRotator*)Rot, *(FVector*)Origin); }
@@ -6483,6 +6783,40 @@ extern "C"
 	}
 
 	
+	/*	FTViewTarget	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FTViewTarget() { return (INT_PTR) new FTViewTarget(); }
+	
+	DOTNET_EXPORT auto E_PROP_FTViewTarget_POV_GET(FTViewTarget* Ptr) { return (INT_PTR)&(Ptr->POV); }
+	DOTNET_EXPORT void E_PROP_FTViewTarget_POV_SET(FTViewTarget* Ptr, INT_PTR Value) { Ptr->POV = *(FMinimalViewInfo*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FTViewTarget_Target_GET(FTViewTarget* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
+	DOTNET_EXPORT void E_PROP_FTViewTarget_Target_SET(FTViewTarget* Ptr, AActor* Value) { Ptr->Target = Value; }
+	
+	DOTNET_EXPORT auto E_FTViewTarget_CheckViewTarget(FTViewTarget* Self, APlayerController* OwningController)
+	{
+		auto _p0 = OwningController;
+		Self->CheckViewTarget(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FTViewTarget_Equal(FTViewTarget* Self, INT_PTR OtherTarget)
+	{
+		auto& _p0 = *(FTViewTarget*)OtherTarget;
+		return Self->Equal(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FTViewTarget_GetTargetPawn(FTViewTarget* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetTargetPawn());
+	}
+
+	DOTNET_EXPORT auto E_FTViewTarget_SetNewTarget(FTViewTarget* Self, AActor* NewTarget)
+	{
+		auto _p0 = NewTarget;
+		Self->SetNewTarget(_p0);
+	}
+
+	
 	/*	FTwoVectors	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTwoVectors() { return (INT_PTR) new FTwoVectors(); }
@@ -7501,6 +7835,37 @@ extern "C"
 		return ConvertToManage_StringWrapper(Self->ToString());
 	}
 
+	
+	/*	FViewTargetTransitionParams	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FViewTargetTransitionParams() { return (INT_PTR) new FViewTargetTransitionParams(); }
+	
+	DOTNET_EXPORT auto E_PROP_FViewTargetTransitionParams_BlendExp_GET(FViewTargetTransitionParams* Ptr) { return Ptr->BlendExp; }
+	DOTNET_EXPORT void E_PROP_FViewTargetTransitionParams_BlendExp_SET(FViewTargetTransitionParams* Ptr, float Value) { Ptr->BlendExp = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FViewTargetTransitionParams_BlendTime_GET(FViewTargetTransitionParams* Ptr) { return Ptr->BlendTime; }
+	DOTNET_EXPORT void E_PROP_FViewTargetTransitionParams_BlendTime_SET(FViewTargetTransitionParams* Ptr, float Value) { Ptr->BlendTime = Value; }
+	
+	DOTNET_EXPORT auto E_FViewTargetTransitionParams_GetBlendAlpha(FViewTargetTransitionParams* Self, float TimePct)
+	{
+		auto& _p0 = TimePct;
+		return Self->GetBlendAlpha(_p0);
+	}
+
+	
+	/*	FVOscillator	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVOscillator() { return (INT_PTR) new FVOscillator(); }
+	
+	DOTNET_EXPORT auto E_PROP_FVOscillator_X_GET(FVOscillator* Ptr) { return (INT_PTR)&(Ptr->X); }
+	DOTNET_EXPORT void E_PROP_FVOscillator_X_SET(FVOscillator* Ptr, INT_PTR Value) { Ptr->X = *(FFOscillator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FVOscillator_Y_GET(FVOscillator* Ptr) { return (INT_PTR)&(Ptr->Y); }
+	DOTNET_EXPORT void E_PROP_FVOscillator_Y_SET(FVOscillator* Ptr, INT_PTR Value) { Ptr->Y = *(FFOscillator*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FVOscillator_Z_GET(FVOscillator* Ptr) { return (INT_PTR)&(Ptr->Z); }
+	DOTNET_EXPORT void E_PROP_FVOscillator_Z_SET(FVOscillator* Ptr, INT_PTR Value) { Ptr->Z = *(FFOscillator*)Value; }
+	
 	
 	/*	FWeightedBlendable	*/
 	

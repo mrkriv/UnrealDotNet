@@ -459,6 +459,11 @@ extern "C"
 		return Self->GetDetailMode();
 	}
 
+	DOTNET_EXPORT auto E_UWorld_GetFirstLocalPlayerFromController(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetFirstLocalPlayerFromController());
+	}
+
 	DOTNET_EXPORT auto E_UWorld_GetFirstPlayerController(UWorld* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetFirstPlayerController());
@@ -792,6 +797,13 @@ extern "C"
 	DOTNET_EXPORT auto E_UWorld_PropagateLightingScenarioChange(UWorld* Self)
 	{
 		Self->PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_RegisterAutoActivateCamera(UWorld* Self, ACameraActor* CameraActor, int32 PlayerIndex)
+	{
+		auto _p0 = CameraActor;
+		auto _p1 = PlayerIndex;
+		Self->RegisterAutoActivateCamera(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_RemapCompiledScriptActor(UWorld* Self, char* Str)

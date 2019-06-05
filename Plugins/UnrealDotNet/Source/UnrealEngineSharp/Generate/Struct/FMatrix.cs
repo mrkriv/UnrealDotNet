@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FMatrix : NativeStructWrapper
+	public partial class FMatrix : NativeStructWrapper
 	{
-		internal FMatrix(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FMatrix(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

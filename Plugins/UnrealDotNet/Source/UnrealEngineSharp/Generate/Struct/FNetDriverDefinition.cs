@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FNetDriverDefinition : NativeStructWrapper
+	public partial class FNetDriverDefinition : NativeStructWrapper
 	{
-		internal FNetDriverDefinition(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FNetDriverDefinition(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

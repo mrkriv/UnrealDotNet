@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UObjectBase : NativeWrapper
+	public partial class UObjectBase : NativeWrapper
 	{
 		public UObjectBase(IntPtr adress)
 			: base(adress)

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class USkyLightComponent : ULightComponentBase
+	public partial class USkyLightComponent : ULightComponentBase
 	{
 		public USkyLightComponent(IntPtr adress)
 			: base(adress)

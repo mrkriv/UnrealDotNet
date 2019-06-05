@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UPlayerInput : UObject
+	public partial class UPlayerInput : UObject
 	{
 		public UPlayerInput(IntPtr adress)
 			: base(adress)

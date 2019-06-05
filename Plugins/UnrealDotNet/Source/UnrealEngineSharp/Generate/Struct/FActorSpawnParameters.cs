@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FActorSpawnParameters : NativeStructWrapper
+	public partial class FActorSpawnParameters : NativeStructWrapper
 	{
-		internal FActorSpawnParameters(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FActorSpawnParameters(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

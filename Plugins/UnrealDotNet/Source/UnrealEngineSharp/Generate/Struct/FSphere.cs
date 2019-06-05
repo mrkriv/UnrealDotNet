@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FSphere : NativeStructWrapper
+	public partial class FSphere : NativeStructWrapper
 	{
-		internal FSphere(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FSphere(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

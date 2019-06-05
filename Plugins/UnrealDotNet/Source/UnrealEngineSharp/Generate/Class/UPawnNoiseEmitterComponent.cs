@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UPawnNoiseEmitterComponent : UActorComponent
+	public partial class UPawnNoiseEmitterComponent : UActorComponent
 	{
 		public UPawnNoiseEmitterComponent(IntPtr adress)
 			: base(adress)

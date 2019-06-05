@@ -318,6 +318,15 @@ namespace UnrealEngine
 		ILCQ_Volume,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\CameraShake.h:31
+	
+	public enum EInitialOscillatorOffset : byte
+	{
+		EOO_OffsetRandom,
+		EOO_OffsetZero,
+		EOO_MAX,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:26
 	
 	public enum EInputEvent : byte
@@ -588,6 +597,14 @@ namespace UnrealEngine
 	{
 		TrailMode,
 		LookAheadMode,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\CameraShake.h:20
+	
+	public enum EOscillatorWaveform : byte
+	{
+		SineWave,
+		PerlinNoise,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:663
@@ -1241,6 +1258,18 @@ namespace UnrealEngine
 		VMI_RayTracingDebug = 28,
 		VMI_Max,
 		VMI_Unknown = 255,
+	}
+
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\PlayerCameraManager.h:23
+	
+	public enum EViewTargetBlendFunction : byte
+	{
+		VTBlend_Linear,
+		VTBlend_Cubic,
+		VTBlend_EaseIn,
+		VTBlend_EaseOut,
+		VTBlend_EaseInOut,
+		VTBlend_MAX,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:22

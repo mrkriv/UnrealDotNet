@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
 #include "ManageEventSender.h"
+#include "Generate/Manage/ManageSpringArmComponent.h"
 #include "Runtime/Engine/Classes/GameFramework/SpringArmComponent.h"
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\SpringArmComponent.h:19
@@ -107,7 +108,266 @@ extern "C"
 		auto _p1 = bDoLocationLag;
 		auto _p2 = bDoRotationLag;
 		auto _p3 = DeltaTime;
-		((E_PROTECTED_WRAP_USpringArmComponent*)Self)->USpringArmComponent::UpdateDesiredArmLocation_WRAP(_p0, _p1, _p2, _p3);
+		((E_PROTECTED_WRAP_USpringArmComponent*)Self)->UpdateDesiredArmLocation_WRAP(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_UpdateDesiredArmLocation(USpringArmComponent* Self, bool bDoTrace, bool bDoLocationLag, bool bDoRotationLag, float DeltaTime)
+	{
+		auto _p0 = bDoTrace;
+		auto _p1 = bDoLocationLag;
+		auto _p2 = bDoRotationLag;
+		auto _p3 = DeltaTime;
+		((UManageSpringArmComponent*)Self)->_Supper__UpdateDesiredArmLocation(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_DetachFromParent(USceneComponent* Self, bool bMaintainWorldPosition, bool bCallModify)
+	{
+		auto _p0 = bMaintainWorldPosition;
+		auto _p1 = bCallModify;
+		((UManageSpringArmComponent*)Self)->_Supper__DetachFromParent(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnAttachmentChanged(USceneComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnAttachmentChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnHiddenInGameChanged(USceneComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnHiddenInGameChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnVisibilityChanged(USceneComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnVisibilityChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PropagateLightingScenarioChange(USceneComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PropagateLightingScenarioChange();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_UpdateBounds(USceneComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__UpdateBounds();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)
+	{
+		auto _p0 = bTriggerNotifiers;
+		((UManageSpringArmComponent*)Self)->_Supper__UpdatePhysicsVolume(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_Activate(UActorComponent* Self, bool bReset)
+	{
+		auto _p0 = bReset;
+		((UManageSpringArmComponent*)Self)->_Supper__Activate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_BeginPlay(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__BeginPlay();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_CreateRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__CreateRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_Deactivate(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__Deactivate();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_DestroyComponent(UActorComponent* Self, bool bPromoteChildren)
+	{
+		auto _p0 = bPromoteChildren;
+		((UManageSpringArmComponent*)Self)->_Supper__DestroyComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_DestroyRenderState_Concurrent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__DestroyRenderState_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_InitializeComponent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__InitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_InvalidateLightingCacheDetailed(UActorComponent* Self, bool bInvalidateBuildEnqueuedLighting, bool bTranslationOnly)
+	{
+		auto _p0 = bInvalidateBuildEnqueuedLighting;
+		auto _p1 = bTranslationOnly;
+		((UManageSpringArmComponent*)Self)->_Supper__InvalidateLightingCacheDetailed(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnActorEnableCollisionChanged(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnActorEnableCollisionChanged();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnComponentCreated(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnComponentCreated();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnComponentDestroyed(UActorComponent* Self, bool bDestroyingHierarchy)
+	{
+		auto _p0 = bDestroyingHierarchy;
+		((UManageSpringArmComponent*)Self)->_Supper__OnComponentDestroyed(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnCreatePhysicsState(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnCreatePhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnDestroyPhysicsState(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnDestroyPhysicsState();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnRegister(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnRegister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnRep_IsActive(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnRep_IsActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnUnregister(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnUnregister();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_RegisterComponentTickFunctions(UActorComponent* Self, bool bRegister)
+	{
+		auto _p0 = bRegister;
+		((UManageSpringArmComponent*)Self)->_Supper__RegisterComponentTickFunctions(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SendRenderDynamicData_Concurrent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__SendRenderDynamicData_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SendRenderTransform_Concurrent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__SendRenderTransform_Concurrent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SetActive(UActorComponent* Self, bool bNewActive, bool bReset)
+	{
+		auto _p0 = bNewActive;
+		auto _p1 = bReset;
+		((UManageSpringArmComponent*)Self)->_Supper__SetActive(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SetAutoActivate(UActorComponent* Self, bool bNewAutoActivate)
+	{
+		auto _p0 = bNewAutoActivate;
+		((UManageSpringArmComponent*)Self)->_Supper__SetAutoActivate(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SetComponentTickEnabled(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSpringArmComponent*)Self)->_Supper__SetComponentTickEnabled(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_SetComponentTickEnabledAsync(UActorComponent* Self, bool bEnabled)
+	{
+		auto _p0 = bEnabled;
+		((UManageSpringArmComponent*)Self)->_Supper__SetComponentTickEnabledAsync(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_ToggleActive(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__ToggleActive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_UninitializeComponent(UActorComponent* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__UninitializeComponent();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_BeginDestroy(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__BeginDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_FinishDestroy(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__FinishDestroy();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_MarkAsEditorOnlySubobject(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__MarkAsEditorOnlySubobject();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostCDOContruct(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostCDOContruct();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostEditImport(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostEditImport();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostInitProperties(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostInitProperties();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostLoad(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostLoad();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostNetReceive(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostRepNotifies(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PostRepNotifies();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PostSaveRoot(UObject* Self, bool bCleanupIsRequired)
+	{
+		auto _p0 = bCleanupIsRequired;
+		((UManageSpringArmComponent*)Self)->_Supper__PostSaveRoot(_p0);
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PreDestroyFromReplication(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PreDestroyFromReplication();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_PreNetReceive(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_ShutdownAfterError(UObject* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__ShutdownAfterError();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_CreateCluster(UObjectBaseUtility* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__CreateCluster();
+	}
+
+	DOTNET_EXPORT auto E__Supper__USpringArmComponent_OnClusterMarkedAsPendingKill(UObjectBaseUtility* Self)
+	{
+		((UManageSpringArmComponent*)Self)->_Supper__OnClusterMarkedAsPendingKill();
 	}
 
 }

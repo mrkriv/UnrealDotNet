@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDropNoteInfo : NativeStructWrapper
+	public partial class FDropNoteInfo : NativeStructWrapper
 	{
-		internal FDropNoteInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDropNoteInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

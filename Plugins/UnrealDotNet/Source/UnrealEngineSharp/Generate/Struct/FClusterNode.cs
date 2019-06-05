@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FClusterNode : NativeStructWrapper
+	public partial class FClusterNode : NativeStructWrapper
 	{
-		internal FClusterNode(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FClusterNode(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

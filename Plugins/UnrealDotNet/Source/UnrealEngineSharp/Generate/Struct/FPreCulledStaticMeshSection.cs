@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FPreCulledStaticMeshSection : NativeStructWrapper
+	public partial class FPreCulledStaticMeshSection : NativeStructWrapper
 	{
-		internal FPreCulledStaticMeshSection(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FPreCulledStaticMeshSection(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

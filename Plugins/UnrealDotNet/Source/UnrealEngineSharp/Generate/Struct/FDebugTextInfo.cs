@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class FDebugTextInfo : NativeStructWrapper
+	public partial class FDebugTextInfo : NativeStructWrapper
 	{
-		internal FDebugTextInfo(IntPtr NativePointer, bool IsRef) : base(NativePointer, IsRef)
+		public FDebugTextInfo(IntPtr NativePointer, bool IsRef = false) : base(NativePointer, IsRef)
 		{
 		}
 

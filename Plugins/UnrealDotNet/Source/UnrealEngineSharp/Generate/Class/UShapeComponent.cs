@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UShapeComponent : UPrimitiveComponent
+	public partial class UShapeComponent : UPrimitiveComponent
 	{
 		public UShapeComponent(IntPtr adress)
 			: base(adress)

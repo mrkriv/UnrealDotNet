@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace UnrealEngine
 {
-	public  partial class UFloatingPawnMovement : UPawnMovementComponent
+	public partial class UFloatingPawnMovement : UPawnMovementComponent
 	{
 		public UFloatingPawnMovement(IntPtr adress)
 			: base(adress)
