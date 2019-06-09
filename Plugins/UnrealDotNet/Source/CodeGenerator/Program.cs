@@ -35,7 +35,6 @@ namespace CodeGenerator
             }
 
             var config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(args.ConfigPath));
-            var files = GetScanFiles(args);
 
             if (!Directory.Exists(args.Output))
             {
@@ -43,23 +42,32 @@ namespace CodeGenerator
                 return;
             }
 
-            Watch.Start();
-
-            var domain = ParceManager.Parce(files, config);
-            GenarateDomain(domain, args.Output, config);
-
-            Watch.Stop();
-
-            Console.WriteLine();
-            Console.WriteLine("Export:");
-            Console.WriteLine(domain.PrintTotal());
-
-            if (!string.IsNullOrEmpty(config.GenerateStatFile))
+            if (args.IsInteractive)
             {
-                File.WriteAllText(config.GenerateStatFile, domain.PrintTotal());
+                new InteractiveShell(config, args).Enter();
             }
+            else
+            {
+                Watch.Start();
+                
+                var files = GetScanFiles(args);
+                
+                var domain = ParceManager.Parce(files, config);
+                GenarateDomain(domain, args.Output, config);
 
-            Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
+                Watch.Stop();
+
+                Console.WriteLine();
+                Console.WriteLine("Export:");
+                Console.WriteLine(domain.PrintTotal());
+
+                if (!string.IsNullOrEmpty(config.GenerateStatFile))
+                {
+                    File.WriteAllText(config.GenerateStatFile, domain.PrintTotal());
+                }
+
+                Console.WriteLine($"Total time {Watch.ElapsedMilliseconds / 1000.0}s");
+            }
         }
 
         public static void GenarateDomain(Domain domain, string outputDir, Config config)
@@ -88,7 +96,7 @@ namespace CodeGenerator
             Console.WriteLine($"Total generate time {watch.ElapsedMilliseconds / 1000.0}s");
         }
 
-        private static List<string> GetScanFiles(CommandLineArguments commandLineArguments)
+        public static List<string> GetScanFiles(CommandLineArguments commandLineArguments)
         {
             var scanMasks = File.ReadAllLines(commandLineArguments.HeaderScanListFile)
                 .Where(x => !x.StartsWith("//") && x.Any()).ToList();

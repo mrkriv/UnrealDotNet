@@ -20,7 +20,6 @@
   "IsDisableReSharperWarnings": true,
   "IsWriteSourceFileName": true,
   "IsGenerateFileHeader": true,
-
   "Filter": {
     "TemplateWhiteList": [
       "TArray",
@@ -38,7 +37,6 @@
       "FPrecomputedVolumeDistanceField",
       "FPrecomputedVisibilityHandler",
       "FUObjectItem",
-
       "UForceFeedbackComponent",
       "USplineComponent",
       "USplineMeshComponent",
@@ -48,18 +46,15 @@
       "UModelComponent",
       "UWindDirectionalSourceComponent",
       "UHierarchicalInstancedStaticMeshComponent",
-
       "FWorldDelegates",
       "FSkelMeshSkinWeightInfo",
-
       "FRenderStateRecreator",
-
-      "FNamedNetDriver", // todo:: "xxx *" в "const xxx &"
+      "FNamedNetDriver",
+      // todo:: "xxx *" в "const xxx &"
       "FTickPrerequisite",
-
       "EOptimizeMode",
-
-      "FCollisionImpactData", // todo:: не линкует
+      "FCollisionImpactData",
+      // todo:: не линкует
       "FRigidBodyContactInfo",
       "FSwarmDebugOptions",
       "FAnimUpdateRateParameters",
@@ -68,48 +63,53 @@
       "FStreamingLevelsToConsider",
       "FDisplayDebugManager",
       "UCameraAnim",
+      "FCompareFActorPriority",
+      // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
 
-      "FCompareFActorPriority", // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
+      "UActorChannel",
+      // todo: не генерировать manage оболочку для классов не наследованных от UObject
 
-      "UActorChannel", // todo: не генерировать manage оболочку для классов не наследованных от UObject
-
-      "FExampleArray", // необъявленный идентификатор
+      "FExampleArray",
+      // необъявленный идентификатор
       "FExampleItemEntry",
       "FExampleStruct",
-
       "FQueuedDemoPacket",
       "FNetGUIDCache",
       "FCopyPropertiesForUnrelatedObjectsParams",
-
       "UAssetManager",
-
       "ScalarRegister",
+      "FQueuedReplayTask",
+      // todo: не экспортировать абстрактные структруты
+      "FSetPlayerStatePawn",
+      // todo: приватный конструктор
+      "FCollisionQueryFlag",
+      // todo: приватный конструктор
 
-      "FQueuedReplayTask", // todo: не экспортировать абстрактные структруты
-      "FSetPlayerStatePawn", // todo: приватный конструктор
-      "FCollisionQueryFlag", // todo: приватный конструктор
+      "APlanarReflection",
+      // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
+      "ULevelActorContainer",
+      // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
 
-      "APlanarReflection", // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
-      "ULevelActorContainer", // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
+      "FInputModeDataBase",
+      // todo:: проверять наличие методов без тела
 
-      "FInputModeDataBase", // todo:: проверять наличие методов без тела
-
-      "IBlendableInterface", // todo: различать интерфейсы
+      "IBlendableInterface",
+      // todo: различать интерфейсы
       "IImportantToggleSettingInterface",
-
-      "FPrimitiveComponentPostPhysicsTickFunction", // ExecuteTick абстрактный
+      "FPrimitiveComponentPostPhysicsTickFunction",
+      // ExecuteTick абстрактный
       "FCharacterMovementComponentPostPhysicsTickFunction",
       "FSkeletalMeshComponentEndPhysicsTickFunction",
       "FSkeletalMeshComponentClothTickFunction",
       "FStartPhysicsTickFunction",
       "FEndPhysicsTickFunction",
       "FStartAsyncSimulationFunction",
-      
-      "UForceFeedbackEffect", //todo:: пытается ликовать PostEditChangeChainProperty хотя там WITH_EDITOR
+      "UForceFeedbackEffect",
+      //todo:: пытается ликовать PostEditChangeChainProperty хотя там WITH_EDITOR
 
       "FSetActorWantsDestroyDuringBeginPlay",
-
-      "FHUDHitBox" // невозможно преобразовать аргумент 2 из "TArray<FHUDHitBox,FDefaultAllocator>" в "TArray<const FHUDHitBox *,FDefaultAllocator> &"
+      "FHUDHitBox"
+      // невозможно преобразовать аргумент 2 из "TArray<FHUDHitBox,FDefaultAllocator>" в "TArray<const FHUDHitBox *,FDefaultAllocator> &"
     ],
     "ManualImplementedClassMasks": [
       "TArray__\\w+",
@@ -134,7 +134,8 @@
       "UObjectBase",
       "UObjectBaseUtility",
       "UEngineBaseTypes",
-      "UPostProcessComponent", // TODO: понять почему не линкует перегруженные методы в базовых классах
+      "UPostProcessComponent",
+      // TODO: понять почему не линкует перегруженные методы в базовых классах
       "UBrushComponent",
       "UDrawFrustumComponent",
       "UDrawSphereComponent",
@@ -148,10 +149,13 @@
       "UPlanarReflectionComponent",
       "UAssetManager",
       "UTexture",
-      "UShapeComponent" // todo: не найдена соответствующая перегруженная функция
+      "UScriptViewportClient",
+      "UShapeComponent"
+      // todo: не найдена соответствующая перегруженная функция
     ],
     "ReadOnlyClass": [
-      "FTickFunction" // TODO: находить удаленный оператор присваивания
+      "FTickFunction"
+      // TODO: находить удаленный оператор присваивания
     ],
     "UseConvertToManageType": {
       "TCHAR": "StringWrapper",
@@ -212,30 +216,36 @@
         "FillArrayFromResponses"
       ],
       "AActor": [
-        "ActorGetDistanceToCollision" // TODO: указатель на указатель **
+        "ActorGetDistanceToCollision"
+        // TODO: указатель на указатель **
       ],
       "UTexture": [
         "GetRunningPlatformData"
       ],
       "FURL": [
-        "ToString" // TODO: конвертировать 0 в false
+        "ToString"
+        // TODO: конвертировать 0 в false
       ],
       "FDisplayDebugManager": [
-        "AddColumnIfNeeded", // TODO: не линкует, не обрабатывать методы без апи или не имеющих реализации в заголовочном файле
+        "AddColumnIfNeeded",
+        // TODO: не линкует, не обрабатывать методы без апи или не имеющих реализации в заголовочном файле
         "GetTextScale"
       ],
       "FPoly": [
         "CalcNormal"
       ],
       "FScale": [
-        "Concatenate", // const cast
+        "Concatenate",
+        // const cast
         "Inverse"
       ],
       "UGameUserSettings": [
-        "GetConfigDir" // не линкует
+        "GetConfigDir"
+        // не линкует
       ],
       "FTransform": [
-        "DebugEqualMatrix" // не линкует
+        "DebugEqualMatrix"
+        // не линкует
       ]
     },
     "PropertyInClassBlackList": {
@@ -243,7 +253,8 @@
         "ExternalReferences"
       ],
       "ULocalLightComponent": [
-        "CosHalfConeAngle" //todo:: понять откуда парсер его взял
+        "CosHalfConeAngle"
+        //todo:: понять откуда парсер его взял
       ]
     },
     "SystemLiteralList": [

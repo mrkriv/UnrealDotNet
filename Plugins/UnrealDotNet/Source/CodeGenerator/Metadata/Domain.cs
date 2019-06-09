@@ -50,79 +50,84 @@ namespace CodeGenerator.Metadata
             return sb.ToString();
         }
 
-        public void Print(bool full)
+        public void Print(bool printDetails)
         {
             Console.WriteLine();
 
             foreach (var cl in Classes.OrderBy(cl => cl.IsImplemented ? 0 : 1))
             {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write(cl.IsStructure ? "Struct " : "Class ");
-
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(cl.Name);
-
-                if (cl.BaseClass != null)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.Write(" base of ");
-                    Console.ForegroundColor = cl.BaseClass.IsImplemented ? ConsoleColor.Cyan : ConsoleColor.Red;
-                    Console.Write(cl.BaseClass.Name);
-                }
-
-                if (cl.IsTemplate)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.Write(" (Template)");
-                }
-
-                if (!cl.IsImplemented)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(" (Not Implemented)");
-                }
-                else
-                {
-                    if (!full)
-                    {
-                        Console.ResetColor();
-                        Console.WriteLine($"\tProperty: ({cl.Property.Count}) Methods: ({cl.Methods.Count})");
-                        continue;
-                    }
-
-                    Console.WriteLine();
-
-                    if (cl.Property.Count != 0)
-                    {
-                        Console.ResetColor();
-                        Console.WriteLine($"Property: ({cl.Property.Count})");
-
-                        foreach (var prop in cl.Property)
-                        {
-                            Console.Write("\t");
-                            PrintVariable(prop);
-                            Console.WriteLine();
-                        }
-
-                        Console.WriteLine();
-                    }
-
-                    if (cl.Methods.Count != 0)
-                    {
-                        Console.ResetColor();
-                        Console.WriteLine($"Methods: ({cl.Methods.Count})");
-
-                        foreach (var method in cl.Methods) PrintMehod(method);
-                    }
-                }
-
-                Console.WriteLine();
+                PrintClass(cl, printDetails);
             }
 
             Console.ResetColor();
         }
 
-        private static void PrintMehod(Method method)
+        public void PrintClass(Class cl, bool printDetails)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(cl.IsStructure ? "Struct " : "Class ");
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(cl.Name);
+
+            if (cl.BaseClass != null)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(" base of ");
+                Console.ForegroundColor = cl.BaseClass.IsImplemented ? ConsoleColor.Cyan : ConsoleColor.Red;
+                Console.Write(cl.BaseClass.Name);
+            }
+
+            if (cl.IsTemplate)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(" (Template)");
+            }
+
+            if (!cl.IsImplemented)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(" (Not Implemented)");
+            }
+            else
+            {
+                if (!printDetails)
+                {
+                    Console.ResetColor();
+                    Console.WriteLine($"\tProperty: ({cl.Property.Count}) Methods: ({cl.Methods.Count})");
+                    return;
+                }
+
+                Console.WriteLine();
+
+                if (cl.Property.Count != 0)
+                {
+                    Console.ResetColor();
+                    Console.WriteLine($"Property: ({cl.Property.Count})");
+
+                    foreach (var prop in cl.Property)
+                    {
+                        Console.Write("\t");
+                        PrintVariable(prop);
+                        Console.WriteLine();
+                    }
+
+                    Console.WriteLine();
+                }
+
+                if (cl.Methods.Count != 0)
+                {
+                    Console.ResetColor();
+                    Console.WriteLine($"Methods: ({cl.Methods.Count})");
+
+                    foreach (var method in cl.Methods) PrintMehod(method);
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        public void PrintMehod(Method method)
         {
             var ext = new List<string>();
 
@@ -158,7 +163,7 @@ namespace CodeGenerator.Metadata
             Console.WriteLine();
         }
 
-        private static void PrintVariable(Variable variable)
+        public void PrintVariable(Variable variable)
         {
             var ext = new List<string>();
 

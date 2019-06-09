@@ -15,5 +15,8 @@ namespace CodeGenerator
 
         [Option('c', "config", HelpText = "Path to config file", Default = @"CodeGenerator.json")]
         public string ConfigPath { get; set; }
+
+        [Option('i', "interactive", HelpText = "Run in interactive mode", Default = false)]
+        public bool IsInteractive { get; set; }
     }
 }

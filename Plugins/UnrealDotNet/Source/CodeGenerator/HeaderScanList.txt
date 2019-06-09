@@ -1,12 +1,14 @@
 +Engine\Source\Runtime\Engine\Classes\Engine\Engine.h
 +Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h
 +Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h
++Engine\Source\Runtime\Engine\Classes\Engine\NetSerialization.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Light.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Player.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Scene.h
 +Engine\Source\Runtime\Engine\Classes\Engine\World.h
 +Engine\Source\Runtime\Engine\Classes\Engine\Canvas.h
 +Engine\Source\Runtime\Engine\Classes\Engine\LocalPlayer.h
++Engine\Source\Runtime\Engine\Classes\Engine\ScriptViewportClient.h
 +Engine\Source\Runtime\Engine\Classes\Engine\GameViewportClient.h
 
 +Engine\Source\Runtime\Engine\Classes\GameFramework\*.h

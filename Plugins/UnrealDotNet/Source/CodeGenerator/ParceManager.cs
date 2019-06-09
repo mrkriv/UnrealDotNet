@@ -23,10 +23,11 @@ namespace CodeGenerator
 
             foreach (var file in files)
             {
-                tasks.Add(Task.Run(() => { AppendFile(file, types, config); }));
+                AppendFile(file, types, config);
+                //tasks.Add(Task.Run(() => { AppendFile(file, types, config); }));
             }
 
-            Task.WaitAll(tasks.ToArray());
+            //Task.WaitAll(tasks.ToArray());
 
             Console.WriteLine($"Total parce time {watch.ElapsedMilliseconds / 1000.0}s");
 
