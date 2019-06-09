@@ -43,6 +43,11 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRootMotionSourceGroup_LastAccumulatedSettings_SET(IntPtr Ptr, IntPtr Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FRootMotionSourceGroup();
@@ -117,6 +122,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FRootMotionSourceGroup_LastAccumulatedSettings_GET(NativePointer);
 			set => E_PROP_FRootMotionSourceGroup_LastAccumulatedSettings_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize10 LastPreAdditiveVelocity
+		{
+			get => E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_GET(NativePointer);
+			set => E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_SET(NativePointer, value);
 		}
 
 		#endregion

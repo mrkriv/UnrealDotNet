@@ -24,9 +24,24 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRigidBodyState_AngVel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRigidBodyState_AngVel_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FRigidBodyState_Flags_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRigidBodyState_Flags_SET(IntPtr Ptr, byte Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRigidBodyState_LinVel_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRigidBodyState_LinVel_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRigidBodyState_Position_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRigidBodyState_Position_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FRigidBodyState_Quaternion_GET(IntPtr Ptr);
@@ -40,10 +55,28 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public FVector_NetQuantize100 AngVel
+		{
+			get => E_PROP_FRigidBodyState_AngVel_GET(NativePointer);
+			set => E_PROP_FRigidBodyState_AngVel_SET(NativePointer, value);
+		}
+
 		public byte Flags
 		{
 			get => E_PROP_FRigidBodyState_Flags_GET(NativePointer);
 			set => E_PROP_FRigidBodyState_Flags_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize100 LinVel
+		{
+			get => E_PROP_FRigidBodyState_LinVel_GET(NativePointer);
+			set => E_PROP_FRigidBodyState_LinVel_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize100 Position
+		{
+			get => E_PROP_FRigidBodyState_Position_GET(NativePointer);
+			set => E_PROP_FRigidBodyState_Position_SET(NativePointer, value);
 		}
 
 		public FQuat Quaternion

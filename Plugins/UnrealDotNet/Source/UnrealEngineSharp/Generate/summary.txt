@@ -1,6 +1,6 @@
-Class       102
-Structures  218
+Class       104
+Structures  226
 Enums       112
 Delegates   25
-Methods     2961
-Properys    1917
+Methods     3029
+Properys    1945

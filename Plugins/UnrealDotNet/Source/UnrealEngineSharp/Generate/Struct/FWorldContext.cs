@@ -34,6 +34,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FWorldContext_ContextHandle_SET(IntPtr Ptr, string Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_FWorldContext_GameViewport_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FWorldContext_GameViewport_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FWorldContext_LastRemoteURL_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FWorldContext_LastRemoteURL_SET(IntPtr Ptr, IntPtr Value);
@@ -100,6 +105,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FWorldContext_ContextHandle_GET(NativePointer);
 			set => E_PROP_FWorldContext_ContextHandle_SET(NativePointer, value);
+		}
+
+		public UGameViewportClient GameViewport
+		{
+			get => E_PROP_FWorldContext_GameViewport_GET(NativePointer);
+			set => E_PROP_FWorldContext_GameViewport_SET(NativePointer, value);
 		}
 
 		public FURL LastRemoteURL

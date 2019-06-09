@@ -24,6 +24,11 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_Acceleration_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRepRootMotionMontage_Acceleration_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_SET(IntPtr Ptr, IntPtr Value);
@@ -42,6 +47,16 @@ namespace UnrealEngine
 		private static extern bool E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(IntPtr Ptr, bool Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_LinearVelocity_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRepRootMotionMontage_LinearVelocity_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRepRootMotionMontage_Location_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FRepRootMotionMontage_Location_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FRepRootMotionMontage_MovementBase_GET(IntPtr Ptr);
@@ -76,6 +91,12 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		public FVector_NetQuantize10 Acceleration
+		{
+			get => E_PROP_FRepRootMotionMontage_Acceleration_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Acceleration_SET(NativePointer, value);
+		}
+
 		public FRootMotionSourceGroup AuthoritativeRootMotion
 		{
 			get => E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_GET(NativePointer);
@@ -98,6 +119,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(NativePointer);
 			set => E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize10 LinearVelocity
+		{
+			get => E_PROP_FRepRootMotionMontage_LinearVelocity_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_LinearVelocity_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize100 Location
+		{
+			get => E_PROP_FRepRootMotionMontage_Location_GET(NativePointer);
+			set => E_PROP_FRepRootMotionMontage_Location_SET(NativePointer, value);
 		}
 
 		public UPrimitiveComponent MovementBase

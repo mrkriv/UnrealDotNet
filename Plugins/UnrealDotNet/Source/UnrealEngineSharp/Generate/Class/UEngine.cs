@@ -77,6 +77,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_UEngine_GameUserSettings_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_UEngine_GameViewport_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_UEngine_GameViewport_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_UEngine_IdealLightMapDensity_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_UEngine_IdealLightMapDensity_SET(IntPtr Ptr, float Value);
@@ -414,6 +419,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UEngine_GameUserSettings_GET(NativePointer);
 			set => E_PROP_UEngine_GameUserSettings_SET(NativePointer, value);
+		}
+
+		public UGameViewportClient GameViewport
+		{
+			get => E_PROP_UEngine_GameViewport_GET(NativePointer);
+			set => E_PROP_UEngine_GameViewport_SET(NativePointer, value);
 		}
 
 		public float IdealLightMapDensity

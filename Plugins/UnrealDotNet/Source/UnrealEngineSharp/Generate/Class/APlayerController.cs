@@ -406,6 +406,9 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_ServerToggleAILogging(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ServerUpdateCamera(IntPtr self, IntPtr camLoc, int camPitchAndYaw);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ServerUpdateLevelVisibility(IntPtr self, string packageName, bool bIsVisible);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1068,6 +1071,9 @@ namespace UnrealEngine
 		
 		public void ServerToggleAILogging()
 			=> E_APlayerController_ServerToggleAILogging(this);
+		
+		public void ServerUpdateCamera(FVector_NetQuantize camLoc, int camPitchAndYaw)
+			=> E_APlayerController_ServerUpdateCamera(this, camLoc, camPitchAndYaw);
 		
 		public void ServerUpdateLevelVisibility(string packageName, bool bIsVisible)
 			=> E_APlayerController_ServerUpdateLevelVisibility(this, packageName, bIsVisible);

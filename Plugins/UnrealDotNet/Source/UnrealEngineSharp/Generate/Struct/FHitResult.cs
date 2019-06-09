@@ -68,14 +68,34 @@ namespace UnrealEngine
 		private static extern void E_PROP_FHitResult_FaceIndex_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_ImpactNormal_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_ImpactNormal_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_ImpactPoint_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_ImpactPoint_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_FHitResult_Item_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FHitResult_Item_SET(IntPtr Ptr, int Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_Location_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_Location_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FHitResult_MyBoneName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FHitResult_MyBoneName_SET(IntPtr Ptr, string Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_Normal_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_Normal_SET(IntPtr Ptr, IntPtr Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FHitResult_PenetrationDepth_GET(IntPtr Ptr);
@@ -86,6 +106,16 @@ namespace UnrealEngine
 		private static extern float E_PROP_FHitResult_Time_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FHitResult_Time_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_TraceEnd_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_TraceEnd_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FHitResult_TraceStart_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FHitResult_TraceStart_SET(IntPtr Ptr, IntPtr Value);
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -157,16 +187,40 @@ namespace UnrealEngine
 			set => E_PROP_FHitResult_FaceIndex_SET(NativePointer, value);
 		}
 
+		public FVector_NetQuantizeNormal ImpactNormal
+		{
+			get => E_PROP_FHitResult_ImpactNormal_GET(NativePointer);
+			set => E_PROP_FHitResult_ImpactNormal_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize ImpactPoint
+		{
+			get => E_PROP_FHitResult_ImpactPoint_GET(NativePointer);
+			set => E_PROP_FHitResult_ImpactPoint_SET(NativePointer, value);
+		}
+
 		public int Item
 		{
 			get => E_PROP_FHitResult_Item_GET(NativePointer);
 			set => E_PROP_FHitResult_Item_SET(NativePointer, value);
 		}
 
+		public FVector_NetQuantize Location
+		{
+			get => E_PROP_FHitResult_Location_GET(NativePointer);
+			set => E_PROP_FHitResult_Location_SET(NativePointer, value);
+		}
+
 		public string MyBoneName
 		{
 			get => E_PROP_FHitResult_MyBoneName_GET(NativePointer);
 			set => E_PROP_FHitResult_MyBoneName_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantizeNormal Normal
+		{
+			get => E_PROP_FHitResult_Normal_GET(NativePointer);
+			set => E_PROP_FHitResult_Normal_SET(NativePointer, value);
 		}
 
 		public float PenetrationDepth
@@ -179,6 +233,18 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FHitResult_Time_GET(NativePointer);
 			set => E_PROP_FHitResult_Time_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize TraceEnd
+		{
+			get => E_PROP_FHitResult_TraceEnd_GET(NativePointer);
+			set => E_PROP_FHitResult_TraceEnd_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize TraceStart
+		{
+			get => E_PROP_FHitResult_TraceStart_GET(NativePointer);
+			set => E_PROP_FHitResult_TraceStart_SET(NativePointer, value);
 		}
 
 		#endregion

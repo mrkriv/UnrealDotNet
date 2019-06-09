@@ -21,11 +21,11 @@ UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
 {
 	GENERATED_UCLASS_BODY()
-	
+
 	bool bIsManageAttach = false;
-	bool AddWrapperIfNotAttach();
 	
 public:
+	bool AddWrapperIfNotAttach();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;

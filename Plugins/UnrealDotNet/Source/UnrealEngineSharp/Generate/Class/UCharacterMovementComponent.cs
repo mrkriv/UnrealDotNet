@@ -739,6 +739,18 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_ClientAdjustPosition_Implementation(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newVel, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ClientAdjustRootMotionPosition(IntPtr self, float timeStamp, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ClientAdjustRootMotionPosition_Implementation(IntPtr self, float timeStamp, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition(IntPtr self, float timeStamp, IntPtr serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition_Implementation(IntPtr self, float timeStamp, IntPtr serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UCharacterMovementComponent_ClientUpdatePositionAfterServerUpdate(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1040,6 +1052,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_ServerMoveHandleClientError(IntPtr self, float clientTimeStamp, float deltaTime, IntPtr accel, IntPtr relativeClientLocation, IntPtr clientMovementBase, string clientBaseBoneName, byte clientMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ServerMoveOld(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_ServerMoveOld_Implementation(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_ServerMoveOld_Validate(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_SetAvoidanceEnabled(IntPtr self, bool bEnable);
@@ -2648,6 +2669,26 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Replicate position correction to client when using root motion for movement. (animation root motion specific)
+		/// </summary>
+		public virtual void ClientAdjustRootMotionPosition(float timeStamp, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_UCharacterMovementComponent_ClientAdjustRootMotionPosition(this, timeStamp, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public virtual void ClientAdjustRootMotionPosition_Implementation(float timeStamp, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_UCharacterMovementComponent_ClientAdjustRootMotionPosition_Implementation(this, timeStamp, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		
+		/// <summary>
+		/// Replicate root motion source correction to client when using root motion for movement.
+		/// </summary>
+		public virtual void ClientAdjustRootMotionSourcePosition(float timeStamp, FRootMotionSourceGroup serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition(this, timeStamp, serverRootMotion, bHasAnimRootMotion, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public virtual void ClientAdjustRootMotionSourcePosition_Implementation(float timeStamp, FRootMotionSourceGroup serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition_Implementation(this, timeStamp, serverRootMotion, bHasAnimRootMotion, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		
+		/// <summary>
 		/// If bUpdatePosition is true, then replay any unacked moves. Returns whether any moves were actually replayed.
 		/// </summary>
 		protected virtual bool ClientUpdatePositionAfterServerUpdate()
@@ -3443,6 +3484,15 @@ namespace UnrealEngine
 		/// </summary>
 		protected virtual void ServerMoveHandleClientError(float clientTimeStamp, float deltaTime, FVector accel, FVector relativeClientLocation, UPrimitiveComponent clientMovementBase, string clientBaseBoneName, byte clientMovementMode)
 			=> E_UCharacterMovementComponent_ServerMoveHandleClientError(this, clientTimeStamp, deltaTime, accel, relativeClientLocation, clientMovementBase, clientBaseBoneName, clientMovementMode);
+		
+		public virtual void ServerMoveOld(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_UCharacterMovementComponent_ServerMoveOld(this, oldTimeStamp, oldAccel, oldMoveFlags);
+		
+		public virtual void ServerMoveOld_Implementation(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_UCharacterMovementComponent_ServerMoveOld_Implementation(this, oldTimeStamp, oldAccel, oldMoveFlags);
+		
+		public virtual bool ServerMoveOld_Validate(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_UCharacterMovementComponent_ServerMoveOld_Validate(this, oldTimeStamp, oldAccel, oldMoveFlags);
 		
 		
 		/// <summary>

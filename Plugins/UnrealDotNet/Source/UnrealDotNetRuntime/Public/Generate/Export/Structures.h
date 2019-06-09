@@ -43,6 +43,7 @@
 #include "Runtime/Core/Public/Math/Edge.h"
 #include "Runtime/Engine/Classes/Components/SceneCaptureComponent.h"
 #include "Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h"
+#include "Runtime/Engine/Classes/Engine/NetSerialization.h"
 #include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
 #include "Runtime/Core/Public/Math/PackedVector.h"
 #include "Runtime/CoreUObject/Public/UObject/UObjectArray.h"
@@ -273,6 +274,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FBasedMovementInfo_bServerHasVelocity_GET(FBasedMovementInfo* Ptr) { return Ptr->bServerHasVelocity; }
 	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_bServerHasVelocity_SET(FBasedMovementInfo* Ptr, bool Value) { Ptr->bServerHasVelocity = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FBasedMovementInfo_Location_GET(FBasedMovementInfo* Ptr) { return (INT_PTR)&(Ptr->Location); }
+	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_Location_SET(FBasedMovementInfo* Ptr, INT_PTR Value) { Ptr->Location = *(FVector_NetQuantize100*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FBasedMovementInfo_MovementBase_GET(FBasedMovementInfo* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->MovementBase); }
 	DOTNET_EXPORT void E_PROP_FBasedMovementInfo_MovementBase_SET(FBasedMovementInfo* Ptr, UPrimitiveComponent* Value) { Ptr->MovementBase = Value; }
@@ -1707,6 +1711,91 @@ extern "C"
 	}
 
 	
+	/*	FFastArraySerializer	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFastArraySerializer() { return (INT_PTR) new FFastArraySerializer(); }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializer_ArrayReplicationKey_GET(FFastArraySerializer* Ptr) { return Ptr->ArrayReplicationKey; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializer_ArrayReplicationKey_SET(FFastArraySerializer* Ptr, int32 Value) { Ptr->ArrayReplicationKey = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializer_IDCounter_GET(FFastArraySerializer* Ptr) { return Ptr->IDCounter; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializer_IDCounter_SET(FFastArraySerializer* Ptr, int32 Value) { Ptr->IDCounter = Value; }
+	
+	DOTNET_EXPORT auto E_FFastArraySerializer_IncrementArrayReplicationKey(FFastArraySerializer* Self)
+	{
+		Self->IncrementArrayReplicationKey();
+	}
+
+	DOTNET_EXPORT auto E_FFastArraySerializer_MarkArrayDirty(FFastArraySerializer* Self)
+	{
+		Self->MarkArrayDirty();
+	}
+
+	DOTNET_EXPORT auto E_FFastArraySerializer_MarkItemDirty(FFastArraySerializer* Self, INT_PTR Item)
+	{
+		auto& _p0 = *(FFastArraySerializerItem*)Item;
+		Self->MarkItemDirty(_p0);
+	}
+
+	
+	/*	FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair_int32_int32(int32 _idx, int32 _id) { return (INT_PTR) new FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair(_idx, _id); }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair_ID_GET(FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair* Ptr) { return Ptr->ID; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair_ID_SET(FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair* Ptr, int32 Value) { Ptr->ID = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair_Idx_GET(FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair* Ptr) { return Ptr->Idx; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair_Idx_SET(FFastArraySerializer_FastArrayDeltaSerialize_FIdxIDPair* Ptr, int32 Value) { Ptr->Idx = Value; }
+	
+	
+	/*	FFastArraySerializerGuidReferences	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFastArraySerializerGuidReferences() { return (INT_PTR) new FFastArraySerializerGuidReferences(); }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializerGuidReferences_NumBufferBits_GET(FFastArraySerializerGuidReferences* Ptr) { return Ptr->NumBufferBits; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializerGuidReferences_NumBufferBits_SET(FFastArraySerializerGuidReferences* Ptr, int32 Value) { Ptr->NumBufferBits = Value; }
+	
+	
+	/*	FFastArraySerializerItem	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFastArraySerializerItem() { return (INT_PTR) new FFastArraySerializerItem(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFastArraySerializerItem_FFastArraySerializerItem(INT_PTR InItem) { return (INT_PTR) new FFastArraySerializerItem(*(FFastArraySerializerItem*)InItem); }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializerItem_MostRecentArrayReplicationKey_GET(FFastArraySerializerItem* Ptr) { return Ptr->MostRecentArrayReplicationKey; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializerItem_MostRecentArrayReplicationKey_SET(FFastArraySerializerItem* Ptr, int32 Value) { Ptr->MostRecentArrayReplicationKey = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializerItem_ReplicationID_GET(FFastArraySerializerItem* Ptr) { return Ptr->ReplicationID; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializerItem_ReplicationID_SET(FFastArraySerializerItem* Ptr, int32 Value) { Ptr->ReplicationID = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FFastArraySerializerItem_ReplicationKey_GET(FFastArraySerializerItem* Ptr) { return Ptr->ReplicationKey; }
+	DOTNET_EXPORT void E_PROP_FFastArraySerializerItem_ReplicationKey_SET(FFastArraySerializerItem* Ptr, int32 Value) { Ptr->ReplicationKey = Value; }
+	
+	DOTNET_EXPORT auto E_FFastArraySerializerItem_GetDebugString(FFastArraySerializerItem* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetDebugString());
+	}
+
+	DOTNET_EXPORT auto E_FFastArraySerializerItem_PostReplicatedAdd(FFastArraySerializerItem* Self, INT_PTR InArraySerializer)
+	{
+		auto& _p0 = *(FFastArraySerializer*)InArraySerializer;
+		Self->PostReplicatedAdd(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FFastArraySerializerItem_PostReplicatedChange(FFastArraySerializerItem* Self, INT_PTR InArraySerializer)
+	{
+		auto& _p0 = *(FFastArraySerializer*)InArraySerializer;
+		Self->PostReplicatedChange(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FFastArraySerializerItem_PreReplicatedRemove(FFastArraySerializerItem* Self, INT_PTR InArraySerializer)
+	{
+		auto& _p0 = *(FFastArraySerializer*)InArraySerializer;
+		Self->PreReplicatedRemove(_p0);
+	}
+
+	
 	/*	FFilmStockSettings	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FFilmStockSettings() { return (INT_PTR) new FFilmStockSettings(); }
@@ -2028,17 +2117,35 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FHitResult_FaceIndex_GET(FHitResult* Ptr) { return Ptr->FaceIndex; }
 	DOTNET_EXPORT void E_PROP_FHitResult_FaceIndex_SET(FHitResult* Ptr, int32 Value) { Ptr->FaceIndex = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FHitResult_ImpactNormal_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->ImpactNormal); }
+	DOTNET_EXPORT void E_PROP_FHitResult_ImpactNormal_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->ImpactNormal = *(FVector_NetQuantizeNormal*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_ImpactPoint_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->ImpactPoint); }
+	DOTNET_EXPORT void E_PROP_FHitResult_ImpactPoint_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->ImpactPoint = *(FVector_NetQuantize*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FHitResult_Item_GET(FHitResult* Ptr) { return Ptr->Item; }
 	DOTNET_EXPORT void E_PROP_FHitResult_Item_SET(FHitResult* Ptr, int32 Value) { Ptr->Item = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FHitResult_Location_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->Location); }
+	DOTNET_EXPORT void E_PROP_FHitResult_Location_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->Location = *(FVector_NetQuantize*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FHitResult_MyBoneName_GET(FHitResult* Ptr) { return ConvertToManage_StringWrapper(Ptr->MyBoneName); }
 	DOTNET_EXPORT void E_PROP_FHitResult_MyBoneName_SET(FHitResult* Ptr, char* Value) { Ptr->MyBoneName = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_Normal_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->Normal); }
+	DOTNET_EXPORT void E_PROP_FHitResult_Normal_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->Normal = *(FVector_NetQuantizeNormal*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FHitResult_PenetrationDepth_GET(FHitResult* Ptr) { return Ptr->PenetrationDepth; }
 	DOTNET_EXPORT void E_PROP_FHitResult_PenetrationDepth_SET(FHitResult* Ptr, float Value) { Ptr->PenetrationDepth = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FHitResult_Time_GET(FHitResult* Ptr) { return Ptr->Time; }
 	DOTNET_EXPORT void E_PROP_FHitResult_Time_SET(FHitResult* Ptr, float Value) { Ptr->Time = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_TraceEnd_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->TraceEnd); }
+	DOTNET_EXPORT void E_PROP_FHitResult_TraceEnd_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->TraceEnd = *(FVector_NetQuantize*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FHitResult_TraceStart_GET(FHitResult* Ptr) { return (INT_PTR)&(Ptr->TraceStart); }
+	DOTNET_EXPORT void E_PROP_FHitResult_TraceStart_SET(FHitResult* Ptr, INT_PTR Value) { Ptr->TraceStart = *(FVector_NetQuantize*)Value; }
 	
 	DOTNET_EXPORT auto E_FHitResult_GetActor(FHitResult* Self)
 	{
@@ -3143,6 +3250,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_HitInfo_GET(FPointDamageEvent* Ptr) { return (INT_PTR)&(Ptr->HitInfo); }
 	DOTNET_EXPORT void E_PROP_FPointDamageEvent_HitInfo_SET(FPointDamageEvent* Ptr, INT_PTR Value) { Ptr->HitInfo = *(FHitResult*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_ShotDirection_GET(FPointDamageEvent* Ptr) { return (INT_PTR)&(Ptr->ShotDirection); }
+	DOTNET_EXPORT void E_PROP_FPointDamageEvent_ShotDirection_SET(FPointDamageEvent* Ptr, INT_PTR Value) { Ptr->ShotDirection = *(FVector_NetQuantizeNormal*)Value; }
 	
 	
 	/*	FPooledCameraShakes	*/
@@ -4707,6 +4817,9 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRepRootMotionMontage() { return (INT_PTR) new FRepRootMotionMontage(); }
 	
+	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_Acceleration_GET(FRepRootMotionMontage* Ptr) { return (INT_PTR)&(Ptr->Acceleration); }
+	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_Acceleration_SET(FRepRootMotionMontage* Ptr, INT_PTR Value) { Ptr->Acceleration = *(FVector_NetQuantize10*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_GET(FRepRootMotionMontage* Ptr) { return (INT_PTR)&(Ptr->AuthoritativeRootMotion); }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_AuthoritativeRootMotion_SET(FRepRootMotionMontage* Ptr, INT_PTR Value) { Ptr->AuthoritativeRootMotion = *(FRootMotionSourceGroup*)Value; }
 	
@@ -4718,6 +4831,12 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_bRelativeRotation_GET(FRepRootMotionMontage* Ptr) { return Ptr->bRelativeRotation; }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_bRelativeRotation_SET(FRepRootMotionMontage* Ptr, bool Value) { Ptr->bRelativeRotation = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_LinearVelocity_GET(FRepRootMotionMontage* Ptr) { return (INT_PTR)&(Ptr->LinearVelocity); }
+	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_LinearVelocity_SET(FRepRootMotionMontage* Ptr, INT_PTR Value) { Ptr->LinearVelocity = *(FVector_NetQuantize10*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_Location_GET(FRepRootMotionMontage* Ptr) { return (INT_PTR)&(Ptr->Location); }
+	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_Location_SET(FRepRootMotionMontage* Ptr, INT_PTR Value) { Ptr->Location = *(FVector_NetQuantize100*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FRepRootMotionMontage_MovementBase_GET(FRepRootMotionMontage* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->MovementBase); }
 	DOTNET_EXPORT void E_PROP_FRepRootMotionMontage_MovementBase_SET(FRepRootMotionMontage* Ptr, UPrimitiveComponent* Value) { Ptr->MovementBase = Value; }
@@ -4814,8 +4933,17 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRigidBodyState() { return (INT_PTR) new FRigidBodyState(); }
 	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyState_AngVel_GET(FRigidBodyState* Ptr) { return (INT_PTR)&(Ptr->AngVel); }
+	DOTNET_EXPORT void E_PROP_FRigidBodyState_AngVel_SET(FRigidBodyState* Ptr, INT_PTR Value) { Ptr->AngVel = *(FVector_NetQuantize100*)Value; }
+	
 	DOTNET_EXPORT auto E_PROP_FRigidBodyState_Flags_GET(FRigidBodyState* Ptr) { return Ptr->Flags; }
 	DOTNET_EXPORT void E_PROP_FRigidBodyState_Flags_SET(FRigidBodyState* Ptr, uint8 Value) { Ptr->Flags = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyState_LinVel_GET(FRigidBodyState* Ptr) { return (INT_PTR)&(Ptr->LinVel); }
+	DOTNET_EXPORT void E_PROP_FRigidBodyState_LinVel_SET(FRigidBodyState* Ptr, INT_PTR Value) { Ptr->LinVel = *(FVector_NetQuantize100*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRigidBodyState_Position_GET(FRigidBodyState* Ptr) { return (INT_PTR)&(Ptr->Position); }
+	DOTNET_EXPORT void E_PROP_FRigidBodyState_Position_SET(FRigidBodyState* Ptr, INT_PTR Value) { Ptr->Position = *(FVector_NetQuantize100*)Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FRigidBodyState_Quaternion_GET(FRigidBodyState* Ptr) { return (INT_PTR)&(Ptr->Quaternion); }
 	DOTNET_EXPORT void E_PROP_FRigidBodyState_Quaternion_SET(FRigidBodyState* Ptr, INT_PTR Value) { Ptr->Quaternion = *(FQuat*)Value; }
@@ -5099,6 +5227,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FRootMotionSourceGroup_LastAccumulatedSettings_GET(FRootMotionSourceGroup* Ptr) { return (INT_PTR)&(Ptr->LastAccumulatedSettings); }
 	DOTNET_EXPORT void E_PROP_FRootMotionSourceGroup_LastAccumulatedSettings_SET(FRootMotionSourceGroup* Ptr, INT_PTR Value) { Ptr->LastAccumulatedSettings = *(FRootMotionSourceSettings*)Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_GET(FRootMotionSourceGroup* Ptr) { return (INT_PTR)&(Ptr->LastPreAdditiveVelocity); }
+	DOTNET_EXPORT void E_PROP_FRootMotionSourceGroup_LastPreAdditiveVelocity_SET(FRootMotionSourceGroup* Ptr, INT_PTR Value) { Ptr->LastPreAdditiveVelocity = *(FVector_NetQuantize10*)Value; }
 	
 	DOTNET_EXPORT auto E_FRootMotionSourceGroup_AccumulateAdditiveRootMotionVelocity(FRootMotionSourceGroup* Self, float DeltaTime, ACharacter& Character, UCharacterMovementComponent& MoveComponent, INT_PTR InOutVelocity)
 	{
@@ -7484,6 +7615,42 @@ extern "C"
 	}
 
 	
+	/*	FVector_NetQuantize	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize() { return (INT_PTR) new FVector_NetQuantize(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize_float_float_float(float InX, float InY, float InZ) { return (INT_PTR) new FVector_NetQuantize(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize_FVector(INT_PTR InVec) { return (INT_PTR) new FVector_NetQuantize(*(FVector*)InVec); }
+	
+	
+	/*	FVector_NetQuantize10	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize10() { return (INT_PTR) new FVector_NetQuantize10(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize10_float_float_float(float InX, float InY, float InZ) { return (INT_PTR) new FVector_NetQuantize10(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize10_FVector(INT_PTR InVec) { return (INT_PTR) new FVector_NetQuantize10(*(FVector*)InVec); }
+	
+	
+	/*	FVector_NetQuantize100	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize100() { return (INT_PTR) new FVector_NetQuantize100(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize100_float_float_float(float InX, float InY, float InZ) { return (INT_PTR) new FVector_NetQuantize100(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantize100_FVector(INT_PTR InVec) { return (INT_PTR) new FVector_NetQuantize100(*(FVector*)InVec); }
+	
+	
+	/*	FVector_NetQuantizeNormal	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantizeNormal() { return (INT_PTR) new FVector_NetQuantizeNormal(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantizeNormal_float_float_float(float InX, float InY, float InZ) { return (INT_PTR) new FVector_NetQuantizeNormal(InX, InY, InZ); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_NetQuantizeNormal_FVector(INT_PTR InVec) { return (INT_PTR) new FVector_NetQuantizeNormal(*(FVector*)InVec); }
+	
+	
 	/*	FVector2D	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D() { return (INT_PTR) new FVector2D(); }
@@ -7894,6 +8061,9 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FWorldContext_ContextHandle_GET(FWorldContext* Ptr) { return ConvertToManage_StringWrapper(Ptr->ContextHandle); }
 	DOTNET_EXPORT void E_PROP_FWorldContext_ContextHandle_SET(FWorldContext* Ptr, char* Value) { Ptr->ContextHandle = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_PROP_FWorldContext_GameViewport_GET(FWorldContext* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameViewport); }
+	DOTNET_EXPORT void E_PROP_FWorldContext_GameViewport_SET(FWorldContext* Ptr, UGameViewportClient* Value) { Ptr->GameViewport = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FWorldContext_LastRemoteURL_GET(FWorldContext* Ptr) { return (INT_PTR)&(Ptr->LastRemoteURL); }
 	DOTNET_EXPORT void E_PROP_FWorldContext_LastRemoteURL_SET(FWorldContext* Ptr, INT_PTR Value) { Ptr->LastRemoteURL = *(FURL*)Value; }

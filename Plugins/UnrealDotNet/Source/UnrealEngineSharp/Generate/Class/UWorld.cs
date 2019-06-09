@@ -454,6 +454,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UWorld_GetGameState(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UWorld_GetGameViewport(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UWorld_GetGravityZ(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1647,6 +1650,13 @@ namespace UnrealEngine
 		/// </summary>
 		public AGameStateBase GetGameState()
 			=> E_UWorld_GetGameState(this);
+		
+		
+		/// <summary>
+		/// Returns a reference to the game viewport displaying this world if one exists.
+		/// </summary>
+		public UGameViewportClient GetGameViewport()
+			=> E_UWorld_GetGameViewport(this);
 		
 		
 		/// <summary>

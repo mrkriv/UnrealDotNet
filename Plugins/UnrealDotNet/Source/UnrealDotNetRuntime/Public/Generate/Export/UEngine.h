@@ -46,6 +46,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UEngine_GameUserSettings_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameUserSettings); }
 	DOTNET_EXPORT void E_PROP_UEngine_GameUserSettings_SET(UEngine* Ptr, UGameUserSettings* Value) { Ptr->GameUserSettings = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UEngine_GameViewport_GET(UEngine* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->GameViewport); }
+	DOTNET_EXPORT void E_PROP_UEngine_GameViewport_SET(UEngine* Ptr, UGameViewportClient* Value) { Ptr->GameViewport = Value; }
+	
 	DOTNET_EXPORT auto E_PROP_UEngine_IdealLightMapDensity_GET(UEngine* Ptr) { return Ptr->IdealLightMapDensity; }
 	DOTNET_EXPORT void E_PROP_UEngine_IdealLightMapDensity_SET(UEngine* Ptr, float Value) { Ptr->IdealLightMapDensity = Value; }
 	

@@ -474,6 +474,11 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetGameState());
 	}
 
+	DOTNET_EXPORT auto E_UWorld_GetGameViewport(UWorld* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetGameViewport());
+	}
+
 	DOTNET_EXPORT auto E_UWorld_GetGravityZ(UWorld* Self)
 	{
 		return Self->GetGravityZ();

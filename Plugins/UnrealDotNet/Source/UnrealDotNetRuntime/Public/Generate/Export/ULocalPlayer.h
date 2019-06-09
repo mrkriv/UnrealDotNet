@@ -26,6 +26,9 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_ULocalPlayer_Size_GET(ULocalPlayer* Ptr) { return (INT_PTR)&(Ptr->Size); }
 	DOTNET_EXPORT void E_PROP_ULocalPlayer_Size_SET(ULocalPlayer* Ptr, INT_PTR Value) { Ptr->Size = *(FVector2D*)Value; }
 	
+	DOTNET_EXPORT auto E_PROP_ULocalPlayer_ViewportClient_GET(ULocalPlayer* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->ViewportClient); }
+	DOTNET_EXPORT void E_PROP_ULocalPlayer_ViewportClient_SET(ULocalPlayer* Ptr, UGameViewportClient* Value) { Ptr->ViewportClient = Value; }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_ULocalPlayer(UObject* Parent, char* Name)
 	{
@@ -77,6 +80,13 @@ extern "C"
 	DOTNET_EXPORT auto E_ULocalPlayer_IsPrimaryPlayer(ULocalPlayer* Self)
 	{
 		return Self->IsPrimaryPlayer();
+	}
+
+	DOTNET_EXPORT auto E_ULocalPlayer_PlayerAdded(ULocalPlayer* Self, UGameViewportClient* InViewportClient, int32 InControllerID)
+	{
+		auto _p0 = InViewportClient;
+		auto _p1 = InControllerID;
+		Self->PlayerAdded(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_ULocalPlayer_PlayerRemoved(ULocalPlayer* Self)

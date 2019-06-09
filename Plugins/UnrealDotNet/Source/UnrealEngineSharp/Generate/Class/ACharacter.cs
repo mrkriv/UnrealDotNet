@@ -148,6 +148,18 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_ClientAdjustPosition_Implementation(IntPtr self, float timeStamp, IntPtr newLoc, IntPtr newVel, IntPtr newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustRootMotionPosition(IntPtr self, float timeStamp, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustRootMotionPosition_Implementation(IntPtr self, float timeStamp, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustRootMotionSourcePosition(IntPtr self, float timeStamp, IntPtr serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ClientAdjustRootMotionSourcePosition_Implementation(IntPtr self, float timeStamp, IntPtr serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, IntPtr serverLoc, IntPtr serverRotation, float serverVelZ, IntPtr serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_ClientCheatFly(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -314,6 +326,15 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SaveRelativeBasedMovement(IntPtr self, IntPtr newRelativeLocation, IntPtr newRotation, bool bRelativeRotation);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ServerMoveOld(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_ServerMoveOld_Implementation(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_ACharacter_ServerMoveOld_Validate(IntPtr self, float oldTimeStamp, IntPtr oldAccel, byte oldMoveFlags);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_SetAnimRootMotionTranslationScale(IntPtr self, float inAnimRootMotionTranslationScale);
@@ -663,6 +684,18 @@ namespace UnrealEngine
 		
 		public void ClientAdjustPosition_Implementation(float timeStamp, FVector newLoc, FVector newVel, UPrimitiveComponent newBase, string newBaseBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
 			=> E_ACharacter_ClientAdjustPosition_Implementation(this, timeStamp, newLoc, newVel, newBase, newBaseBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public void ClientAdjustRootMotionPosition(float timeStamp, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustRootMotionPosition(this, timeStamp, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public void ClientAdjustRootMotionPosition_Implementation(float timeStamp, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustRootMotionPosition_Implementation(this, timeStamp, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public void ClientAdjustRootMotionSourcePosition(float timeStamp, FRootMotionSourceGroup serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustRootMotionSourcePosition(this, timeStamp, serverRootMotion, bHasAnimRootMotion, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
+		
+		public void ClientAdjustRootMotionSourcePosition_Implementation(float timeStamp, FRootMotionSourceGroup serverRootMotion, bool bHasAnimRootMotion, float serverMontageTrackPosition, FVector serverLoc, FVector_NetQuantizeNormal serverRotation, float serverVelZ, UPrimitiveComponent serverBase, string serverBoneName, bool bHasBase, bool bBaseRelativePosition, byte serverMovementMode)
+			=> E_ACharacter_ClientAdjustRootMotionSourcePosition_Implementation(this, timeStamp, serverRootMotion, bHasAnimRootMotion, serverMontageTrackPosition, serverLoc, serverRotation, serverVelZ, serverBase, serverBoneName, bHasBase, bBaseRelativePosition, serverMovementMode);
 		
 		public void ClientCheatFly()
 			=> E_ACharacter_ClientCheatFly(this);
@@ -1022,6 +1055,15 @@ namespace UnrealEngine
 		/// </summary>
 		public void SaveRelativeBasedMovement(FVector newRelativeLocation, FRotator newRotation, bool bRelativeRotation)
 			=> E_ACharacter_SaveRelativeBasedMovement(this, newRelativeLocation, newRotation, bRelativeRotation);
+		
+		public void ServerMoveOld(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_ACharacter_ServerMoveOld(this, oldTimeStamp, oldAccel, oldMoveFlags);
+		
+		public void ServerMoveOld_Implementation(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_ACharacter_ServerMoveOld_Implementation(this, oldTimeStamp, oldAccel, oldMoveFlags);
+		
+		public bool ServerMoveOld_Validate(float oldTimeStamp, FVector_NetQuantize10 oldAccel, byte oldMoveFlags)
+			=> E_ACharacter_ServerMoveOld_Validate(this, oldTimeStamp, oldAccel, oldMoveFlags);
 		
 		
 		/// <summary>

@@ -44,6 +44,11 @@ namespace UnrealEngine
 		private static extern void E_PROP_FBasedMovementInfo_bServerHasVelocity_SET(IntPtr Ptr, bool Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FBasedMovementInfo_Location_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_FBasedMovementInfo_Location_SET(IntPtr Ptr, IntPtr Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_PROP_FBasedMovementInfo_MovementBase_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FBasedMovementInfo_MovementBase_SET(IntPtr Ptr, IntPtr Value);
@@ -91,6 +96,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FBasedMovementInfo_bServerHasVelocity_GET(NativePointer);
 			set => E_PROP_FBasedMovementInfo_bServerHasVelocity_SET(NativePointer, value);
+		}
+
+		public FVector_NetQuantize100 Location
+		{
+			get => E_PROP_FBasedMovementInfo_Location_GET(NativePointer);
+			set => E_PROP_FBasedMovementInfo_Location_SET(NativePointer, value);
 		}
 
 		public UPrimitiveComponent MovementBase

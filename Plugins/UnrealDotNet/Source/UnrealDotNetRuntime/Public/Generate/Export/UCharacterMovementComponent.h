@@ -830,6 +830,70 @@ extern "C"
 		Self->ClientAdjustPosition_Implementation(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ClientAdjustRootMotionPosition(UCharacterMovementComponent* Self, float TimeStamp, float ServerMontageTrackPosition, INT_PTR ServerLoc, INT_PTR ServerRotation, float ServerVelZ, UPrimitiveComponent* ServerBase, char* ServerBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = ServerMontageTrackPosition;
+		auto _p2 = *(FVector*)ServerLoc;
+		auto _p3 = *(FVector_NetQuantizeNormal*)ServerRotation;
+		auto _p4 = ServerVelZ;
+		auto _p5 = ServerBase;
+		auto _p6 = ConvertFromManage_FName(ServerBoneName);
+		auto _p7 = bHasBase;
+		auto _p8 = bBaseRelativePosition;
+		auto _p9 = ServerMovementMode;
+		Self->ClientAdjustRootMotionPosition(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7, _p8, _p9);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ClientAdjustRootMotionPosition_Implementation(UCharacterMovementComponent* Self, float TimeStamp, float ServerMontageTrackPosition, INT_PTR ServerLoc, INT_PTR ServerRotation, float ServerVelZ, UPrimitiveComponent* ServerBase, char* ServerBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = ServerMontageTrackPosition;
+		auto _p2 = *(FVector*)ServerLoc;
+		auto _p3 = *(FVector_NetQuantizeNormal*)ServerRotation;
+		auto _p4 = ServerVelZ;
+		auto _p5 = ServerBase;
+		auto _p6 = ConvertFromManage_FName(ServerBoneName);
+		auto _p7 = bHasBase;
+		auto _p8 = bBaseRelativePosition;
+		auto _p9 = ServerMovementMode;
+		Self->ClientAdjustRootMotionPosition_Implementation(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7, _p8, _p9);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition(UCharacterMovementComponent* Self, float TimeStamp, INT_PTR ServerRootMotion, bool bHasAnimRootMotion, float ServerMontageTrackPosition, INT_PTR ServerLoc, INT_PTR ServerRotation, float ServerVelZ, UPrimitiveComponent* ServerBase, char* ServerBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FRootMotionSourceGroup*)ServerRootMotion;
+		auto _p2 = bHasAnimRootMotion;
+		auto _p3 = ServerMontageTrackPosition;
+		auto _p4 = *(FVector*)ServerLoc;
+		auto _p5 = *(FVector_NetQuantizeNormal*)ServerRotation;
+		auto _p6 = ServerVelZ;
+		auto _p7 = ServerBase;
+		auto _p8 = ConvertFromManage_FName(ServerBoneName);
+		auto _p9 = bHasBase;
+		auto _p10 = bBaseRelativePosition;
+		auto _p11 = ServerMovementMode;
+		Self->ClientAdjustRootMotionSourcePosition(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7, _p8, _p9, _p10, _p11);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ClientAdjustRootMotionSourcePosition_Implementation(UCharacterMovementComponent* Self, float TimeStamp, INT_PTR ServerRootMotion, bool bHasAnimRootMotion, float ServerMontageTrackPosition, INT_PTR ServerLoc, INT_PTR ServerRotation, float ServerVelZ, UPrimitiveComponent* ServerBase, char* ServerBoneName, bool bHasBase, bool bBaseRelativePosition, uint8 ServerMovementMode)
+	{
+		auto _p0 = TimeStamp;
+		auto _p1 = *(FRootMotionSourceGroup*)ServerRootMotion;
+		auto _p2 = bHasAnimRootMotion;
+		auto _p3 = ServerMontageTrackPosition;
+		auto _p4 = *(FVector*)ServerLoc;
+		auto _p5 = *(FVector_NetQuantizeNormal*)ServerRotation;
+		auto _p6 = ServerVelZ;
+		auto _p7 = ServerBase;
+		auto _p8 = ConvertFromManage_FName(ServerBoneName);
+		auto _p9 = bHasBase;
+		auto _p10 = bBaseRelativePosition;
+		auto _p11 = ServerMovementMode;
+		Self->ClientAdjustRootMotionSourcePosition_Implementation(_p0, _p1, _p2, _p3, _p4, _p5, _p6, _p7, _p8, _p9, _p10, _p11);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_ClientUpdatePositionAfterServerUpdate(UCharacterMovementComponent* Self)
 	{
 		return ((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ClientUpdatePositionAfterServerUpdate_WRAP();
@@ -1493,6 +1557,30 @@ extern "C"
 		auto _p5 = ConvertFromManage_FName(ClientBaseBoneName);
 		auto _p6 = ClientMovementMode;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->ServerMoveHandleClientError_WRAP(_p0, _p1, _p2, _p3, _p4, _p5, _p6);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ServerMoveOld(UCharacterMovementComponent* Self, float OldTimeStamp, INT_PTR OldAccel, uint8 OldMoveFlags)
+	{
+		auto _p0 = OldTimeStamp;
+		auto _p1 = *(FVector_NetQuantize10*)OldAccel;
+		auto _p2 = OldMoveFlags;
+		Self->ServerMoveOld(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ServerMoveOld_Implementation(UCharacterMovementComponent* Self, float OldTimeStamp, INT_PTR OldAccel, uint8 OldMoveFlags)
+	{
+		auto _p0 = OldTimeStamp;
+		auto _p1 = *(FVector_NetQuantize10*)OldAccel;
+		auto _p2 = OldMoveFlags;
+		Self->ServerMoveOld_Implementation(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_ServerMoveOld_Validate(UCharacterMovementComponent* Self, float OldTimeStamp, INT_PTR OldAccel, uint8 OldMoveFlags)
+	{
+		auto _p0 = OldTimeStamp;
+		auto _p1 = *(FVector_NetQuantize10*)OldAccel;
+		auto _p2 = OldMoveFlags;
+		return Self->ServerMoveOld_Validate(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_SetAvoidanceEnabled(UCharacterMovementComponent* Self, bool bEnable)

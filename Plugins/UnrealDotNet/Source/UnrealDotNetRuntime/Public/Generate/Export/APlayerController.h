@@ -646,6 +646,13 @@ extern "C"
 		Self->ServerToggleAILogging();
 	}
 
+	DOTNET_EXPORT auto E_APlayerController_ServerUpdateCamera(APlayerController* Self, INT_PTR CamLoc, int32 CamPitchAndYaw)
+	{
+		auto _p0 = *(FVector_NetQuantize*)CamLoc;
+		auto _p1 = CamPitchAndYaw;
+		Self->ServerUpdateCamera(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_APlayerController_ServerUpdateLevelVisibility(APlayerController* Self, char* PackageName, bool bIsVisible)
 	{
 		auto _p0 = ConvertFromManage_FName(PackageName);

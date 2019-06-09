@@ -41,6 +41,11 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_ULocalPlayer_Size_SET(IntPtr Ptr, IntPtr Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_PROP_ULocalPlayer_ViewportClient_GET(IntPtr Ptr);
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_PROP_ULocalPlayer_ViewportClient_SET(IntPtr Ptr, IntPtr Value);
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_ULocalPlayer(IntPtr Parent, string Name);
@@ -68,6 +73,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_ULocalPlayer_IsPrimaryPlayer(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULocalPlayer_PlayerAdded(IntPtr self, IntPtr inViewportClient, int inControllerID);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULocalPlayer_PlayerRemoved(IntPtr self);
@@ -112,6 +120,12 @@ namespace UnrealEngine
 		{
 			get => E_PROP_ULocalPlayer_Size_GET(NativePointer);
 			set => E_PROP_ULocalPlayer_Size_SET(NativePointer, value);
+		}
+
+		public UGameViewportClient ViewportClient
+		{
+			get => E_PROP_ULocalPlayer_ViewportClient_GET(NativePointer);
+			set => E_PROP_ULocalPlayer_ViewportClient_SET(NativePointer, value);
 		}
 
 		#endregion
@@ -187,6 +201,13 @@ namespace UnrealEngine
 		/// <return>true</return>
 		public bool IsPrimaryPlayer()
 			=> E_ULocalPlayer_IsPrimaryPlayer(this);
+		
+		
+		/// <summary>
+		/// Called at creation time for internal setup
+		/// </summary>
+		public virtual void PlayerAdded(UGameViewportClient inViewportClient, int inControllerID)
+			=> E_ULocalPlayer_PlayerAdded(this, inViewportClient, inControllerID);
 		
 		
 		/// <summary>
