@@ -108,7 +108,7 @@ namespace UnrealEngine
 
             if (_wrappers.ContainsKey(adress))
             {
-                Ue.LogWarning($"Object is already registered. Type:{className}, Adress: 0x{(long)adress:X}");
+                Ue.LogWarning($"Object is already registered. Type:{className}, Adress: 0x{(long) adress:X}");
                 return false;
             }
 
@@ -119,7 +119,7 @@ namespace UnrealEngine
                 return false;
             }
 
-            var constructor = type.GetConstructor(new[] { typeof(IntPtr) });
+            var constructor = type.GetConstructor(new[] {typeof(IntPtr)});
             if (constructor == null)
             {
                 Ue.LogError($"Failed create object, type {className} not have IntPtr constructor");
@@ -128,7 +128,7 @@ namespace UnrealEngine
 
             try
             {
-                var obj = constructor.Invoke(new object[] { adress });
+                var obj = constructor.Invoke(new object[] {adress});
 
                 foreach (var prop in type.GetProperties())
                 {
@@ -166,7 +166,7 @@ namespace UnrealEngine
                 return false;
             }
 
-            Ue.LogDebug($"Create object, Type:{className}, Adress: 0x{(long)adress:X}");
+            Ue.LogDebug($"Create object, Type:{className}, Adress: 0x{(long) adress:X}");
             return true;
         }
 
