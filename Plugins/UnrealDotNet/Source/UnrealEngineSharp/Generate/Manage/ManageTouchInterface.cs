@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageTouchInterface")]
-	public partial class ManageTouchInterface : UTouchInterface
+	public partial class ManageTouchInterface : UTouchInterface, IManageWrapper
 	{
 		public ManageTouchInterface(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSpringArmComponent")]
-	public partial class ManageSpringArmComponent : USpringArmComponent
+	public partial class ManageSpringArmComponent : USpringArmComponent, IManageWrapper
 	{
 		public ManageSpringArmComponent(IntPtr adress)
 			: base(adress)

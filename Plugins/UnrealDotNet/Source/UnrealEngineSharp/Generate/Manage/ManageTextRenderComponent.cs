@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageTextRenderComponent")]
-	public partial class ManageTextRenderComponent : UTextRenderComponent
+	public partial class ManageTextRenderComponent : UTextRenderComponent, IManageWrapper
 	{
 		public ManageTextRenderComponent(IntPtr adress)
 			: base(adress)

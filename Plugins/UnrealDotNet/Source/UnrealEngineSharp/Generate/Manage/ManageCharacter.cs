@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageCharacter")]
-	public partial class ManageCharacter : ACharacter
+	public partial class ManageCharacter : ACharacter, IManageWrapper
 	{
 		public ManageCharacter(IntPtr adress)
 			: base(adress)

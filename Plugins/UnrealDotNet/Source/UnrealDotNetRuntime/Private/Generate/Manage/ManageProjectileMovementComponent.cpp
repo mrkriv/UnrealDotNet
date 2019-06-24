@@ -13,6 +13,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:22
 
+void UManageProjectileMovementComponent::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool UManageProjectileMovementComponent::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

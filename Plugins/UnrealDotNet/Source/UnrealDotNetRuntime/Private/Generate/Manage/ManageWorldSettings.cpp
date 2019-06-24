@@ -23,6 +23,11 @@ AManageWorldSettings::AManageWorldSettings(const FObjectInitializer& ObjectIniti
 	AddWrapperIfNotAttach();
 }
 
+void AManageWorldSettings::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageWorldSettings::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

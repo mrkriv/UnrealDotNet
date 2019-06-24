@@ -13,6 +13,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\ForceFeedbackAttenuation.h:20
 
+void UManageForceFeedbackAttenuation::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool UManageForceFeedbackAttenuation::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

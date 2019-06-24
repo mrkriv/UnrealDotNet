@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageAudioComponent")]
-	public partial class ManageAudioComponent : UAudioComponent
+	public partial class ManageAudioComponent : UAudioComponent, IManageWrapper
 	{
 		public ManageAudioComponent(IntPtr adress)
 			: base(adress)

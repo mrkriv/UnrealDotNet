@@ -23,6 +23,11 @@ AManageLight::AManageLight(const FObjectInitializer& ObjectInitializer)
 	AddWrapperIfNotAttach();
 }
 
+void AManageLight::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageLight::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

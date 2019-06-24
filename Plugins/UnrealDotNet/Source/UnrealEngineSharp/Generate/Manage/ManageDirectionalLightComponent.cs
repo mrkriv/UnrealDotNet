@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageDirectionalLightComponent")]
-	public partial class ManageDirectionalLightComponent : UDirectionalLightComponent
+	public partial class ManageDirectionalLightComponent : UDirectionalLightComponent, IManageWrapper
 	{
 		public ManageDirectionalLightComponent(IntPtr adress)
 			: base(adress)

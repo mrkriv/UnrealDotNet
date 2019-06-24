@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageGameUserSettings")]
-	public partial class ManageGameUserSettings : UGameUserSettings
+	public partial class ManageGameUserSettings : UGameUserSettings, IManageWrapper
 	{
 		public ManageGameUserSettings(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageForceFeedbackAttenuation")]
-	public partial class ManageForceFeedbackAttenuation : UForceFeedbackAttenuation
+	public partial class ManageForceFeedbackAttenuation : UForceFeedbackAttenuation, IManageWrapper
 	{
 		public ManageForceFeedbackAttenuation(IntPtr adress)
 			: base(adress)

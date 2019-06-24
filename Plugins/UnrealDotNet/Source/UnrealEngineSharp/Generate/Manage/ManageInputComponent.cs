@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageInputComponent")]
-	public partial class ManageInputComponent : UInputComponent
+	public partial class ManageInputComponent : UInputComponent, IManageWrapper
 	{
 		public ManageInputComponent(IntPtr adress)
 			: base(adress)

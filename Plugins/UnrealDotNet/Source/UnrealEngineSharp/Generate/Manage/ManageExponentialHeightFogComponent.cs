@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageExponentialHeightFogComponent")]
-	public partial class ManageExponentialHeightFogComponent : UExponentialHeightFogComponent
+	public partial class ManageExponentialHeightFogComponent : UExponentialHeightFogComponent, IManageWrapper
 	{
 		public ManageExponentialHeightFogComponent(IntPtr adress)
 			: base(adress)

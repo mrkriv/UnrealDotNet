@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageCameraActor")]
-	public partial class ManageCameraActor : ACameraActor
+	public partial class ManageCameraActor : ACameraActor, IManageWrapper
 	{
 		public ManageCameraActor(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageLineBatchComponent")]
-	public partial class ManageLineBatchComponent : ULineBatchComponent
+	public partial class ManageLineBatchComponent : ULineBatchComponent, IManageWrapper
 	{
 		public ManageLineBatchComponent(IntPtr adress)
 			: base(adress)

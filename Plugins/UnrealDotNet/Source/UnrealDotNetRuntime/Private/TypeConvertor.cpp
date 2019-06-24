@@ -15,6 +15,8 @@ INT_PTR PushToTransferBeffer(INT_PTR source, size_t len)
 {
 	TransferBufferMutex.lock();
 
+	check((INT_PTR)len <= TransferBuffer_End);
+
 	if (TransferBuffer_Index + (INT_PTR)len > TransferBuffer_End)
 	{
 		TransferBuffer_Index = (INT_PTR)& TransferBuffer[0];

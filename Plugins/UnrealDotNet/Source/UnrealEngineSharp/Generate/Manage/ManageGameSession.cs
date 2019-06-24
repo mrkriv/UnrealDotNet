@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageGameSession")]
-	public partial class ManageGameSession : AGameSession
+	public partial class ManageGameSession : AGameSession, IManageWrapper
 	{
 		public ManageGameSession(IntPtr adress)
 			: base(adress)

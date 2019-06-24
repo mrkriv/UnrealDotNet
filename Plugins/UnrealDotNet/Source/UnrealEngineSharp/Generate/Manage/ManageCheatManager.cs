@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageCheatManager")]
-	public partial class ManageCheatManager : UCheatManager
+	public partial class ManageCheatManager : UCheatManager, IManageWrapper
 	{
 		public ManageCheatManager(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManagePoseableMeshComponent")]
-	public partial class ManagePoseableMeshComponent : UPoseableMeshComponent
+	public partial class ManagePoseableMeshComponent : UPoseableMeshComponent, IManageWrapper
 	{
 		public ManagePoseableMeshComponent(IntPtr adress)
 			: base(adress)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace UnrealEngine
@@ -19,23 +20,29 @@ namespace UnrealEngine
             return (T) E_AActor_CreateDefaultSubobject(this, typeof(T).Name.Substring(1), subobjectName);
         }
 
-        public T SpawnActor<T>(string className, FTransform transform = null) where T : AActor
+        public T SpawnActor<T>(string className, FTransform transform) where T : AActor
         {
+            var type = typeof(T);
+            
+            var manageAttr = type.GetCustomAttribute<ManageTypeAttribute>();
+            if (manageAttr != null)
+            {
+                return (T) E_AActor_SpawnActorManage(NativePointer, className, transform, type.FullName);
+            }
+
             return (T) E_AActor_SpawnActor(NativePointer, className, transform);
         }
-        
-        public T SpawnActor<T>(FTransform transform = null) where T : AActor
+
+        public T SpawnActor<T>(FTransform transform) where T : AActor
         {
             transform = transform ?? new FTransform();
 
             var type = typeof(T);
-
-            //if (type.BaseType.Name.StartsWith("Manage"))
-            //    type = type.BaseType;
-
-            if (type.BaseType.Name.StartsWith("Manage"))
+            
+            var manageAttr = type.GetCustomAttribute<ManageTypeAttribute>();
+            if (manageAttr != null)
             {
-                return (T) E_AActor_SpawnActorManage(NativePointer, type.BaseType.Name, transform, typeof(T).Name);
+                return (T) E_AActor_SpawnActorManage(NativePointer, manageAttr.CppTypeName, transform, type.FullName);
             }
 
             return (T) E_AActor_SpawnActor(NativePointer, type.Name.Substring(1), transform);

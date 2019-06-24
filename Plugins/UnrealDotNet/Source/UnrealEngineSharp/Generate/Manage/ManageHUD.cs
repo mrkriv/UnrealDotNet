@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageHUD")]
-	public partial class ManageHUD : AHUD
+	public partial class ManageHUD : AHUD, IManageWrapper
 	{
 		public ManageHUD(IntPtr adress)
 			: base(adress)

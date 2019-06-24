@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageBoxComponent")]
-	public partial class ManageBoxComponent : UBoxComponent
+	public partial class ManageBoxComponent : UBoxComponent, IManageWrapper
 	{
 		public ManageBoxComponent(IntPtr adress)
 			: base(adress)

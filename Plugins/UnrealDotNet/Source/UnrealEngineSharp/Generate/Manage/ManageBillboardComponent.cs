@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageBillboardComponent")]
-	public partial class ManageBillboardComponent : UBillboardComponent
+	public partial class ManageBillboardComponent : UBillboardComponent, IManageWrapper
 	{
 		public ManageBillboardComponent(IntPtr adress)
 			: base(adress)

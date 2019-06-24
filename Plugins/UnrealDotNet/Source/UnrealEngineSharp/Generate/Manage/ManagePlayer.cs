@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManagePlayer")]
-	public partial class ManagePlayer : UPlayer
+	public partial class ManagePlayer : UPlayer, IManageWrapper
 	{
 		public ManagePlayer(IntPtr adress)
 			: base(adress)

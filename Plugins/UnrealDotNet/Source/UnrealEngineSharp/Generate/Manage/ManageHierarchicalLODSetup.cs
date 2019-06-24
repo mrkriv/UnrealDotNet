@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageHierarchicalLODSetup")]
-	public partial class ManageHierarchicalLODSetup : UHierarchicalLODSetup
+	public partial class ManageHierarchicalLODSetup : UHierarchicalLODSetup, IManageWrapper
 	{
 		public ManageHierarchicalLODSetup(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageRotatingMovementComponent")]
-	public partial class ManageRotatingMovementComponent : URotatingMovementComponent
+	public partial class ManageRotatingMovementComponent : URotatingMovementComponent, IManageWrapper
 	{
 		public ManageRotatingMovementComponent(IntPtr adress)
 			: base(adress)

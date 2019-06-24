@@ -23,6 +23,11 @@ AManageActor::AManageActor(const FObjectInitializer& ObjectInitializer)
 	AddWrapperIfNotAttach();
 }
 
+void AManageActor::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageActor::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

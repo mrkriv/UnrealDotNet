@@ -23,6 +23,11 @@ AManageSpectatorPawn::AManageSpectatorPawn(const FObjectInitializer& ObjectIniti
 	AddWrapperIfNotAttach();
 }
 
+void AManageSpectatorPawn::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageSpectatorPawn::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

@@ -10,7 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "IManageObject.h"
+#include "ManageObject.h"
 #include "TypeConvertor.h"
 #include "Runtime/Engine/Classes/GameFramework/HUD.h"
 #include "ManageHUD.generated.h"
@@ -22,10 +22,10 @@ class UNREALDOTNETRUNTIME_API AManageHUD : public AHUD, public IManageObject
 {
 	GENERATED_UCLASS_BODY()
 	
-	bool bIsManageAttach = false;
-	bool AddWrapperIfNotAttach();
-	
 public:
+	bool bIsManageAttach = false;
+	bool AddWrapperIfNotAttach() override;
+	void SetManageType(const FDotnetTypeName& ManageType) override;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;

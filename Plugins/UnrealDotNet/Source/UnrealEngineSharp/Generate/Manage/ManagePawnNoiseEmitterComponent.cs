@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManagePawnNoiseEmitterComponent")]
-	public partial class ManagePawnNoiseEmitterComponent : UPawnNoiseEmitterComponent
+	public partial class ManagePawnNoiseEmitterComponent : UPawnNoiseEmitterComponent, IManageWrapper
 	{
 		public ManagePawnNoiseEmitterComponent(IntPtr adress)
 			: base(adress)

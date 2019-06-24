@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageInputSettings")]
-	public partial class ManageInputSettings : UInputSettings
+	public partial class ManageInputSettings : UInputSettings, IManageWrapper
 	{
 		public ManageInputSettings(IntPtr adress)
 			: base(adress)

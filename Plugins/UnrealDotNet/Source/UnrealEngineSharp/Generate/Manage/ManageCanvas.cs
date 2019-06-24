@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageCanvas")]
-	public partial class ManageCanvas : UCanvas
+	public partial class ManageCanvas : UCanvas, IManageWrapper
 	{
 		public ManageCanvas(IntPtr adress)
 			: base(adress)

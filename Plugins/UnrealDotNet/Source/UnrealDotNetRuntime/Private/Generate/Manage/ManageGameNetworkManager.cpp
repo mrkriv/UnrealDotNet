@@ -23,6 +23,11 @@ AManageGameNetworkManager::AManageGameNetworkManager(const FObjectInitializer& O
 	AddWrapperIfNotAttach();
 }
 
+void AManageGameNetworkManager::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageGameNetworkManager::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

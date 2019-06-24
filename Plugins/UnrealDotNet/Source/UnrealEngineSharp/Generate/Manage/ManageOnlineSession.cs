@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageOnlineSession")]
-	public partial class ManageOnlineSession : UOnlineSession
+	public partial class ManageOnlineSession : UOnlineSession, IManageWrapper
 	{
 		public ManageOnlineSession(IntPtr adress)
 			: base(adress)

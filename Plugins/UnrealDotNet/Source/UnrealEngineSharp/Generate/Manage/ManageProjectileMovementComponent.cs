@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageProjectileMovementComponent")]
-	public partial class ManageProjectileMovementComponent : UProjectileMovementComponent
+	public partial class ManageProjectileMovementComponent : UProjectileMovementComponent, IManageWrapper
 	{
 		public ManageProjectileMovementComponent(IntPtr adress)
 			: base(adress)

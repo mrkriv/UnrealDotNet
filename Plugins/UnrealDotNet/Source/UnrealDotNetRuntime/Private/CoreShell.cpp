@@ -349,3 +349,10 @@ void UCoreShell::LoadMetadata()
 
 	Metadata = FDotnetMetadata(json);
 }
+
+
+UManageObject::UManageObject(const class FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+
+}

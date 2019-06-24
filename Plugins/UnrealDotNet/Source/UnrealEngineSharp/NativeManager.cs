@@ -104,7 +104,7 @@ namespace UnrealEngine
         public static bool AddWrapper(IntPtr adress, string dotnetTypeName)
         {
             var typeName = JsonConvert.DeserializeObject<FDotnetTypeName>(dotnetTypeName);
-            var className = _gameLogicAssembly.GetName().Name + "." + typeName.FullName;
+            var className = typeName.FullName;
 
             if (_wrappers.ContainsKey(adress))
             {
@@ -248,7 +248,6 @@ namespace UnrealEngine
         {
             try
             {
-                className = _gameLogicAssembly.GetName().Name + "." + className;
                 var type = _gameLogicAssembly.GetType(className, false, true);
 
                 if (type == null)
@@ -404,14 +403,14 @@ namespace UnrealEngine
             try
             {
                 var classes = _gameLogicAssembly.GetTypes();
-                var asmName = _gameLogicAssembly.GetName().Name;
+                //var asmName = _gameLogicAssembly.GetName().Name;
 
                 return JsonConvert.SerializeObject(
                     new
                     {
                         Types = classes.Select(t => new
                         {
-                            Name = t.FullName.Substring(asmName.Length + 1),
+                            Name = t.FullName,
                             Base = t.BaseType.Name,
                             IsManage = t.GetCustomAttribute<ManageTypeAttribute>() != null,
                             ManageClassName = t.GetCustomAttribute<ManageTypeAttribute>()?.CppTypeName ?? "",

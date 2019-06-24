@@ -23,6 +23,11 @@ AManagePlayerCameraManager::AManagePlayerCameraManager(const FObjectInitializer&
 	AddWrapperIfNotAttach();
 }
 
+void AManagePlayerCameraManager::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManagePlayerCameraManager::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

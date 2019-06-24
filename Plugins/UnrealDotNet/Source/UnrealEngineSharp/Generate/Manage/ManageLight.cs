@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageLight")]
-	public partial class ManageLight : ALight
+	public partial class ManageLight : ALight, IManageWrapper
 	{
 		public ManageLight(IntPtr adress)
 			: base(adress)

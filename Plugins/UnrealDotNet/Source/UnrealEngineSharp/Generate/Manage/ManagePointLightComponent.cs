@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManagePointLightComponent")]
-	public partial class ManagePointLightComponent : UPointLightComponent
+	public partial class ManagePointLightComponent : UPointLightComponent, IManageWrapper
 	{
 		public ManagePointLightComponent(IntPtr adress)
 			: base(adress)

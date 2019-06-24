@@ -23,6 +23,11 @@ AManageDefaultPawn::AManageDefaultPawn(const FObjectInitializer& ObjectInitializ
 	AddWrapperIfNotAttach();
 }
 
+void AManageDefaultPawn::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageDefaultPawn::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

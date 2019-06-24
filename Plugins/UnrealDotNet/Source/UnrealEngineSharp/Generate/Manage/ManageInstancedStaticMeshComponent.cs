@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageInstancedStaticMeshComponent")]
-	public partial class ManageInstancedStaticMeshComponent : UInstancedStaticMeshComponent
+	public partial class ManageInstancedStaticMeshComponent : UInstancedStaticMeshComponent, IManageWrapper
 	{
 		public ManageInstancedStaticMeshComponent(IntPtr adress)
 			: base(adress)

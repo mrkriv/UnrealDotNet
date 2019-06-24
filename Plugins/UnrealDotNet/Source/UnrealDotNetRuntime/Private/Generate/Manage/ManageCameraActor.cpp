@@ -23,6 +23,11 @@ AManageCameraActor::AManageCameraActor(const FObjectInitializer& ObjectInitializ
 	AddWrapperIfNotAttach();
 }
 
+void AManageCameraActor::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageCameraActor::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

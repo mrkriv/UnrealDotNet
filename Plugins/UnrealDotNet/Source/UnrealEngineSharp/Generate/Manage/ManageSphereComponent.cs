@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSphereComponent")]
-	public partial class ManageSphereComponent : USphereComponent
+	public partial class ManageSphereComponent : USphereComponent, IManageWrapper
 	{
 		public ManageSphereComponent(IntPtr adress)
 			: base(adress)

@@ -66,7 +66,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreShell.h\"");
-            cw.WriteLine("#include \"IManageObject.h\"");
+            cw.WriteLine("#include \"ManageObject.h\"");
             cw.WriteLine("#include \"TypeConvertor.h\"");
             cw.WriteLine($"#include \"{GetSourceFileName(Class)}\"");
             cw.WriteLine($"#include \"Manage{Class.BaseName}.generated.h\"");
@@ -82,11 +82,11 @@ namespace CodeGenerator.CodeGen.Modules
 
             cw.WriteLine(Class.IsChild("AActor") ? "GENERATED_UCLASS_BODY()" : "GENERATED_BODY()");
             cw.WriteLine();
-            cw.WriteLine("bool bIsManageAttach = false;");
-            cw.WriteLine("bool AddWrapperIfNotAttach();");
-            cw.WriteLine();
 
             cw.WriteLineNoTab("public:");
+            cw.WriteLine("bool bIsManageAttach = false;");
+            cw.WriteLine("bool AddWrapperIfNotAttach() override;");
+            cw.WriteLine("void SetManageType(const FDotnetTypeName& ManageType) override;");
             cw.WriteLine();
             cw.WriteLine("UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"C#\")");
             cw.WriteLine("FDotnetTypeName ManageClassName;");
@@ -128,7 +128,7 @@ namespace CodeGenerator.CodeGen.Modules
             var manageClassName = "Manage" + Class.BaseName;
 
             cw.WriteLine($"[ManageType(\"{manageClassName}\")]");
-            cw.WriteLine($"public partial class {manageClassName} : {Class.Name}");
+            cw.WriteLine($"public partial class {manageClassName} : {Class.Name}, IManageWrapper");
             cw.OpenBlock();
 
             cw.WriteLine($"public {manageClassName}(IntPtr adress)");
@@ -290,6 +290,12 @@ namespace CodeGenerator.CodeGen.Modules
                 cw.CloseBlock();
                 cw.WriteLine();
             }
+
+            cw.WriteLine($"void {cppClassName}::SetManageType(const FDotnetTypeName& ManageType)");
+            cw.OpenBlock();
+            cw.WriteLine("ManageClassName = ManageType;");
+            cw.CloseBlock();
+            cw.WriteLine();
 
             cw.WriteLine($"bool {cppClassName}::AddWrapperIfNotAttach()");
             cw.OpenBlock();

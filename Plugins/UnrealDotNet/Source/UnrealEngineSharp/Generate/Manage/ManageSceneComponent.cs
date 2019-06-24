@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSceneComponent")]
-	public partial class ManageSceneComponent : USceneComponent
+	public partial class ManageSceneComponent : USceneComponent, IManageWrapper
 	{
 		public ManageSceneComponent(IntPtr adress)
 			: base(adress)

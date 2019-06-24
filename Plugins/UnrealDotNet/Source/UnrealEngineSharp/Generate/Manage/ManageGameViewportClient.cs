@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageGameViewportClient")]
-	public partial class ManageGameViewportClient : UGameViewportClient
+	public partial class ManageGameViewportClient : UGameViewportClient, IManageWrapper
 	{
 		public ManageGameViewportClient(IntPtr adress)
 			: base(adress)

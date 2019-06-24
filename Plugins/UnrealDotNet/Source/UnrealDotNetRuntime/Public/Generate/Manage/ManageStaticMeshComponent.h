@@ -10,7 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "IManageObject.h"
+#include "ManageObject.h"
 #include "TypeConvertor.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "ManageStaticMeshComponent.generated.h"
@@ -22,10 +22,10 @@ class UNREALDOTNETRUNTIME_API UManageStaticMeshComponent : public UStaticMeshCom
 {
 	GENERATED_BODY()
 	
-	bool bIsManageAttach = false;
-	bool AddWrapperIfNotAttach();
-	
 public:
+	bool bIsManageAttach = false;
+	bool AddWrapperIfNotAttach() override;
+	void SetManageType(const FDotnetTypeName& ManageType) override;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;

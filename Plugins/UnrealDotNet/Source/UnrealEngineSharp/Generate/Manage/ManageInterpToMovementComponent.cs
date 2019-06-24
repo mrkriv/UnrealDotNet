@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageInterpToMovementComponent")]
-	public partial class ManageInterpToMovementComponent : UInterpToMovementComponent
+	public partial class ManageInterpToMovementComponent : UInterpToMovementComponent, IManageWrapper
 	{
 		public ManageInterpToMovementComponent(IntPtr adress)
 			: base(adress)

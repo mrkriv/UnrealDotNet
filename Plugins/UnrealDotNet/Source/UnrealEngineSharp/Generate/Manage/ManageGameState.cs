@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageGameState")]
-	public partial class ManageGameState : AGameState
+	public partial class ManageGameState : AGameState, IManageWrapper
 	{
 		public ManageGameState(IntPtr adress)
 			: base(adress)

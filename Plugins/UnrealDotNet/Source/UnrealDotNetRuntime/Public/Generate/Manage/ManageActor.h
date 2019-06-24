@@ -10,7 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreShell.h"
-#include "IManageObject.h"
+#include "ManageObject.h"
 #include "TypeConvertor.h"
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "ManageActor.generated.h"
@@ -21,11 +21,11 @@ UCLASS()
 class UNREALDOTNETRUNTIME_API AManageActor : public AActor, public IManageObject
 {
 	GENERATED_UCLASS_BODY()
-
-	bool bIsManageAttach = false;
 	
 public:
-	bool AddWrapperIfNotAttach();
+	bool bIsManageAttach = false;
+	bool AddWrapperIfNotAttach() override;
+	void SetManageType(const FDotnetTypeName& ManageType) override;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "C#")
 	FDotnetTypeName ManageClassName;

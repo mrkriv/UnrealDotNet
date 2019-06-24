@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageFloatingPawnMovement")]
-	public partial class ManageFloatingPawnMovement : UFloatingPawnMovement
+	public partial class ManageFloatingPawnMovement : UFloatingPawnMovement, IManageWrapper
 	{
 		public ManageFloatingPawnMovement(IntPtr adress)
 			: base(adress)

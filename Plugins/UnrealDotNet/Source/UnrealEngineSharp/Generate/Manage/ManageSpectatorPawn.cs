@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSpectatorPawn")]
-	public partial class ManageSpectatorPawn : ASpectatorPawn
+	public partial class ManageSpectatorPawn : ASpectatorPawn, IManageWrapper
 	{
 		public ManageSpectatorPawn(IntPtr adress)
 			: base(adress)

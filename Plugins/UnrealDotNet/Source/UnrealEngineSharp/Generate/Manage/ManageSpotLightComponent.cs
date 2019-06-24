@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSpotLightComponent")]
-	public partial class ManageSpotLightComponent : USpotLightComponent
+	public partial class ManageSpotLightComponent : USpotLightComponent, IManageWrapper
 	{
 		public ManageSpotLightComponent(IntPtr adress)
 			: base(adress)

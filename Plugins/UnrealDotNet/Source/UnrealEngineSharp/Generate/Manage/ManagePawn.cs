@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManagePawn")]
-	public partial class ManagePawn : APawn
+	public partial class ManagePawn : APawn, IManageWrapper
 	{
 		public ManagePawn(IntPtr adress)
 			: base(adress)

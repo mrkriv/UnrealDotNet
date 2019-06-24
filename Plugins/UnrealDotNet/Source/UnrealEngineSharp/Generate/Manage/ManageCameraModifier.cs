@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageCameraModifier")]
-	public partial class ManageCameraModifier : UCameraModifier
+	public partial class ManageCameraModifier : UCameraModifier, IManageWrapper
 	{
 		public ManageCameraModifier(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageArrowComponent")]
-	public partial class ManageArrowComponent : UArrowComponent
+	public partial class ManageArrowComponent : UArrowComponent, IManageWrapper
 	{
 		public ManageArrowComponent(IntPtr adress)
 			: base(adress)

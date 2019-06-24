@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageGameNetworkManager")]
-	public partial class ManageGameNetworkManager : AGameNetworkManager
+	public partial class ManageGameNetworkManager : AGameNetworkManager, IManageWrapper
 	{
 		public ManageGameNetworkManager(IntPtr adress)
 			: base(adress)

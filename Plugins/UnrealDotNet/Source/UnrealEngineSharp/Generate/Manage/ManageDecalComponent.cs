@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageDecalComponent")]
-	public partial class ManageDecalComponent : UDecalComponent
+	public partial class ManageDecalComponent : UDecalComponent, IManageWrapper
 	{
 		public ManageDecalComponent(IntPtr adress)
 			: base(adress)

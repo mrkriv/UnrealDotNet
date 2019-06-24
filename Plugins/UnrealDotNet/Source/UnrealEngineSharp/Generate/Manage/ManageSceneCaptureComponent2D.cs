@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSceneCaptureComponent2D")]
-	public partial class ManageSceneCaptureComponent2D : USceneCaptureComponent2D
+	public partial class ManageSceneCaptureComponent2D : USceneCaptureComponent2D, IManageWrapper
 	{
 		public ManageSceneCaptureComponent2D(IntPtr adress)
 			: base(adress)

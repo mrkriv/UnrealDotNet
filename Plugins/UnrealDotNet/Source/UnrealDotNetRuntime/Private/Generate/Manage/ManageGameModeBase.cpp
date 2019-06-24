@@ -23,6 +23,11 @@ AManageGameModeBase::AManageGameModeBase(const FObjectInitializer& ObjectInitial
 	AddWrapperIfNotAttach();
 }
 
+void AManageGameModeBase::SetManageType(const FDotnetTypeName& ManageType)
+{
+	ManageClassName = ManageType;
+}
+
 bool AManageGameModeBase::AddWrapperIfNotAttach()
 {
 	if (!bIsManageAttach && !ManageClassName.FullName.IsEmpty())

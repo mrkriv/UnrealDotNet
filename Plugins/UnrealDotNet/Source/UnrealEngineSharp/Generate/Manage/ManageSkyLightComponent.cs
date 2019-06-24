@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageSkyLightComponent")]
-	public partial class ManageSkyLightComponent : USkyLightComponent
+	public partial class ManageSkyLightComponent : USkyLightComponent, IManageWrapper
 	{
 		public ManageSkyLightComponent(IntPtr adress)
 			: base(adress)

@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageActor")]
-	public partial class ManageActor : AActor
+	public partial class ManageActor : AActor, IManageWrapper
 	{
 		public ManageActor(IntPtr adress)
 			: base(adress)

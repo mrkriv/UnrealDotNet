@@ -12,6 +12,24 @@ DECLARE_LOG_CATEGORY_EXTERN(DotNetRuntime, Log, All);
 
 #define MAX_INVOKE_ARGUMENT_SIZE 1024
 
+UINTERFACE(BlueprintType)
+class UNREALDOTNETRUNTIME_API UManageObject : public UInterface
+{
+	GENERATED_UINTERFACE_BODY()
+};
+
+class UNREALDOTNETRUNTIME_API IManageObject
+{
+	GENERATED_IINTERFACE_BODY()
+
+public:
+	UFUNCTION()
+	virtual void SetManageType(const FDotnetTypeName& ManageType) = 0;
+
+	UFUNCTION()
+	virtual bool AddWrapperIfNotAttach() = 0;
+};
+
 UCLASS()
 class UNREALDOTNETRUNTIME_API UCoreShell : public UObject
 {

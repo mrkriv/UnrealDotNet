@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace UnrealEngine
 {
 	[ManageType("ManageWorldSettings")]
-	public partial class ManageWorldSettings : AWorldSettings
+	public partial class ManageWorldSettings : AWorldSettings, IManageWrapper
 	{
 		public ManageWorldSettings(IntPtr adress)
 			: base(adress)
