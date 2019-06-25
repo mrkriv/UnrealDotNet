@@ -63,6 +63,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("#pragma once");
             cw.WriteLine();
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreShell.h\"");
@@ -116,6 +117,8 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCsharp(cw);
+            
             cw.WriteLine("using System;");
             cw.WriteLine("using System.Runtime.InteropServices;");
             cw.WriteLine();
@@ -265,6 +268,8 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
+            
             cw.WriteLine($"#include \"{Cfg.CppPch}.h\"");
             cw.WriteLine($"#include \"DotnetTypeName.h\"");
             cw.WriteLine($"#include \"Generate/Manage/Manage{Class.BaseName}.h\"");

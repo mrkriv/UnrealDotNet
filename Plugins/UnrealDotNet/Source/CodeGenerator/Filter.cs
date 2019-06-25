@@ -236,6 +236,9 @@ namespace CodeGenerator
             if (m.IsArray)
                 return false;
 
+            if (m.IsInterface)
+                return false;
+
             if (m.IsPointer && (m.Type as Class)?.IsStructure != false)
                 return false;
 

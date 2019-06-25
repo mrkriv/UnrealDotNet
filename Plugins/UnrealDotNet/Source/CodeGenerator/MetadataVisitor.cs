@@ -416,6 +416,7 @@ namespace CodeGenerator
             variable.IsConst = context.FoundChild<UHeaderParser.IsConstContext>();
             variable.IsPointer = context.FoundChild<UHeaderParser.IsPtrQuantContext>();
             variable.IsReference = context.FoundChild<UHeaderParser.IsRefQuantContext>();
+            variable.IsInterface = typeName.StartsWith("I");
 
             return variable;
         }

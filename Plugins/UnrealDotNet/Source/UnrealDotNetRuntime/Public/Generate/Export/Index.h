@@ -1,14 +1,10 @@
 // This file was created automatically, do not modify the contents of this file.
 
-// ReSharper disable InvalidXmlDocComment
-// ReSharper disable InconsistentNaming
-// ReSharper disable CheckNamespace
-// ReSharper disable MemberCanBePrivate.Global
-
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "Structures.h"
 #include "AActor.h"
+#include "AAIController.h"
 #include "ACameraActor.h"
 #include "ACharacter.h"
 #include "AController.h"
@@ -22,18 +18,26 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "AHUD.h"
 #include "AInfo.h"
 #include "ALight.h"
+#include "ANavLinkProxy.h"
 #include "APawn.h"
 #include "APlayerCameraManager.h"
 #include "APlayerController.h"
 #include "APlayerState.h"
 #include "ASpectatorPawn.h"
 #include "AWorldSettings.h"
+#include "IAIResourceInterface.h"
+#include "ICrowdAgentInterface.h"
 #include "UActorComponent.h"
+#include "UAIDataProvider.h"
+#include "UAIDataProvider_QueryParams.h"
+#include "UAIHotSpotManager.h"
+#include "UAISubsystem.h"
 #include "UArrowComponent.h"
 #include "UAudioComponent.h"
 #include "UBillboardComponent.h"
 #include "UBoxComponent.h"
 #include "UBoxReflectionCaptureComponent.h"
+#include "UBrainComponent.h"
 #include "UBrushComponent.h"
 #include "UCameraAnimInst.h"
 #include "UCameraComponent.h"
@@ -71,11 +75,20 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UMaterialBillboardComponent.h"
 #include "UMeshComponent.h"
 #include "UMovementComponent.h"
+#include "UNavLocalGridManager.h"
 #include "UNavMovementComponent.h"
 #include "UObject.h"
 #include "UObjectBase.h"
 #include "UObjectBaseUtility.h"
 #include "UOnlineSession.h"
+#include "UPathFollowingManager.h"
+#include "UPawnAction.h"
+#include "UPawnAction_BlueprintBase.h"
+#include "UPawnAction_Move.h"
+#include "UPawnAction_Repeat.h"
+#include "UPawnAction_Sequence.h"
+#include "UPawnAction_Wait.h"
+#include "UPawnActionsComponent.h"
 #include "UPawnMovementComponent.h"
 #include "UPawnNoiseEmitterComponent.h"
 #include "UPlanarReflectionComponent.h"
@@ -110,6 +123,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #include "UTimelineComponent.h"
 #include "UTouchInterface.h"
 #include "UVectorFieldComponent.h"
+#include "UVisualLoggerExtension.h"
 #include "UWorld.h"
 #include "UWorldProxy.h"
 

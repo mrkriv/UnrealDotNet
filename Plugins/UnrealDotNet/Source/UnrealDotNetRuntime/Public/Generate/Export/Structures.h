@@ -2,16 +2,12 @@
 
 // This file was created automatically, do not modify the contents of this file.
 
-// ReSharper disable InvalidXmlDocComment
-// ReSharper disable InconsistentNaming
-// ReSharper disable CheckNamespace
-// ReSharper disable MemberCanBePrivate.Global
-
 #include "CoreMinimal.h"
 #include "Runtime/Engine/Classes/GameFramework/ForceFeedbackEffect.h"
 #include "Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineBaseTypes.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
+#include "Runtime/AIModule/Classes/DataProviders/AIDataProvider.h"
 #include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineTypes.h"
 #include "Runtime/Engine/Classes/Components/AudioComponent.h"
@@ -34,9 +30,8 @@
 #include "Runtime/Core/Public/Math/ClipProjectionMatrix.h"
 #include "Runtime/Engine/Classes/Components/HierarchicalInstancedStaticMeshComponent.h"
 #include "Runtime/Engine/Public/CollisionQueryParams.h"
+#include "Runtime/AIModule/Classes/Navigation/CrowdManager.h"
 #include "Runtime/Core/Public/Math/CurveEdInterface.h"
-#include "Runtime/Engine/Classes/GameFramework/DebugTextInfo.h"
-#include "Runtime/Engine/Classes/GameFramework/CheatManager.h"
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 #include "Runtime/Core/Public/Math/DualQuat.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerController.h"
@@ -51,8 +46,10 @@
 #include "Runtime/Core/Public/Math/Float16Color.h"
 #include "Runtime/Core/Public/Math/Float32.h"
 #include "Runtime/Core/Public/Math/FloatPacker.h"
+#include "Runtime/AIModule/Classes/AIController.h"
 #include "Runtime/Engine/Classes/Camera/CameraShake.h"
 #include "Runtime/Engine/Classes/GameFramework/GameModeBase.h"
+#include "Runtime/AIModule/Classes/GenericTeamAgentInterface.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerInput.h"
 #include "Runtime/Engine/Classes/Components/InstancedStaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Components/InterpToMovementComponent.h"
@@ -65,11 +62,13 @@
 #include "Runtime/Engine/Classes/Components/MaterialBillboardComponent.h"
 #include "Runtime/Core/Public/Math/Matrix.h"
 #include "Runtime/Core/Public/Math/TransformCalculus2D.h"
+#include "Runtime/AIModule/Classes/Navigation/MetaNavMeshPath.h"
 #include "Runtime/Engine/Classes/Camera/CameraTypes.h"
 #include "Runtime/Core/Public/Math/MirrorMatrix.h"
 #include "Runtime/Core/Public/Math/OrientedBox.h"
 #include "Runtime/Core/Public/Math/OrthoMatrix.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/AIModule/Classes/Actions/PawnActionsComponent.h"
 #include "Runtime/Core/Public/Math/PerspectiveMatrix.h"
 #include "Runtime/Core/Public/Math/Plane.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerMuteList.h"
@@ -162,6 +161,91 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FActorTickFunction_Target_GET(FActorTickFunction* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Target); }
 	DOTNET_EXPORT void E_PROP_FActorTickFunction_Target_SET(FActorTickFunction* Ptr, AActor* Value) { Ptr->Target = Value; }
 	
+	
+	/*	FAIDataProviderBoolValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderBoolValue() { return (INT_PTR) new FAIDataProviderBoolValue(); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderBoolValue_DefaultValue_GET(FAIDataProviderBoolValue* Ptr) { return Ptr->DefaultValue; }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderBoolValue_DefaultValue_SET(FAIDataProviderBoolValue* Ptr, bool Value) { Ptr->DefaultValue = Value; }
+	
+	DOTNET_EXPORT auto E_FAIDataProviderBoolValue_GetValue(FAIDataProviderBoolValue* Self)
+	{
+		return Self->GetValue();
+	}
+
+	
+	/*	FAIDataProviderFloatValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderFloatValue() { return (INT_PTR) new FAIDataProviderFloatValue(); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderFloatValue_DefaultValue_GET(FAIDataProviderFloatValue* Ptr) { return Ptr->DefaultValue; }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderFloatValue_DefaultValue_SET(FAIDataProviderFloatValue* Ptr, float Value) { Ptr->DefaultValue = Value; }
+	
+	DOTNET_EXPORT auto E_FAIDataProviderFloatValue_GetValue(FAIDataProviderFloatValue* Self)
+	{
+		return Self->GetValue();
+	}
+
+	
+	/*	FAIDataProviderIntValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderIntValue() { return (INT_PTR) new FAIDataProviderIntValue(); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderIntValue_DefaultValue_GET(FAIDataProviderIntValue* Ptr) { return Ptr->DefaultValue; }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderIntValue_DefaultValue_SET(FAIDataProviderIntValue* Ptr, int32 Value) { Ptr->DefaultValue = Value; }
+	
+	DOTNET_EXPORT auto E_FAIDataProviderIntValue_GetValue(FAIDataProviderIntValue* Self)
+	{
+		return Self->GetValue();
+	}
+
+	
+	/*	FAIDataProviderStructValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderStructValue() { return (INT_PTR) new FAIDataProviderStructValue(); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderStructValue_StructName_GET(FAIDataProviderStructValue* Ptr) { return ConvertToManage_StringWrapper(Ptr->StructName); }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderStructValue_StructName_SET(FAIDataProviderStructValue* Ptr, char* Value) { Ptr->StructName = ConvertFromManage_FString(Value); }
+	
+	
+	/*	FAIDataProviderTypedValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderTypedValue() { return (INT_PTR) new FAIDataProviderTypedValue(); }
+	
+	
+	/*	FAIDataProviderValue	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIDataProviderValue() { return (INT_PTR) new FAIDataProviderValue(); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderValue_DataBinding_GET(FAIDataProviderValue* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->DataBinding); }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderValue_DataBinding_SET(FAIDataProviderValue* Ptr, UAIDataProvider* Value) { Ptr->DataBinding = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FAIDataProviderValue_DataField_GET(FAIDataProviderValue* Ptr) { return ConvertToManage_StringWrapper(Ptr->DataField); }
+	DOTNET_EXPORT void E_PROP_FAIDataProviderValue_DataField_SET(FAIDataProviderValue* Ptr, char* Value) { Ptr->DataField = ConvertFromManage_FName(Value); }
+	
+	DOTNET_EXPORT auto E_FAIDataProviderValue_BindData(FAIDataProviderValue* Self, UObject* Owner, int32 RequestId)
+	{
+		auto _p0 = Owner;
+		auto _p1 = RequestId;
+		Self->BindData(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FAIDataProviderValue_IsDynamic(FAIDataProviderValue* Self)
+	{
+		return Self->IsDynamic();
+	}
+
+	DOTNET_EXPORT auto E_FAIDataProviderValue_ToString(FAIDataProviderValue* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	DOTNET_EXPORT auto E_FAIDataProviderValue_ValueToString(FAIDataProviderValue* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ValueToString());
+	}
+
 	
 	/*	FAnimationEvaluationContext	*/
 	
@@ -1368,6 +1452,81 @@ extern "C"
 	}
 
 	
+	/*	FCrowdAgentData	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCrowdAgentData() { return (INT_PTR) new FCrowdAgentData(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAgentData_AgentIndex_GET(FCrowdAgentData* Ptr) { return Ptr->AgentIndex; }
+	DOTNET_EXPORT void E_PROP_FCrowdAgentData_AgentIndex_SET(FCrowdAgentData* Ptr, int32 Value) { Ptr->AgentIndex = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAgentData_PathOptRemainingTime_GET(FCrowdAgentData* Ptr) { return Ptr->PathOptRemainingTime; }
+	DOTNET_EXPORT void E_PROP_FCrowdAgentData_PathOptRemainingTime_SET(FCrowdAgentData* Ptr, float Value) { Ptr->PathOptRemainingTime = Value; }
+	
+	DOTNET_EXPORT auto E_FCrowdAgentData_ClearFilter(FCrowdAgentData* Self)
+	{
+		Self->ClearFilter();
+	}
+
+	DOTNET_EXPORT auto E_FCrowdAgentData_IsValid(FCrowdAgentData* Self)
+	{
+		return Self->IsValid();
+	}
+
+	
+	/*	FCrowdAvoidanceConfig	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCrowdAvoidanceConfig() { return (INT_PTR) new FCrowdAvoidanceConfig(); }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_AdaptiveDepth_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->AdaptiveDepth; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_AdaptiveDepth_SET(FCrowdAvoidanceConfig* Ptr, uint8 Value) { Ptr->AdaptiveDepth = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_AdaptiveDivisions_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->AdaptiveDivisions; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_AdaptiveDivisions_SET(FCrowdAvoidanceConfig* Ptr, uint8 Value) { Ptr->AdaptiveDivisions = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_AdaptiveRings_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->AdaptiveRings; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_AdaptiveRings_SET(FCrowdAvoidanceConfig* Ptr, uint8 Value) { Ptr->AdaptiveRings = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_CurrentVelocityWeight_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->CurrentVelocityWeight; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_CurrentVelocityWeight_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->CurrentVelocityWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_CustomPatternIdx_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->CustomPatternIdx; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_CustomPatternIdx_SET(FCrowdAvoidanceConfig* Ptr, uint8 Value) { Ptr->CustomPatternIdx = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_DesiredVelocityWeight_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->DesiredVelocityWeight; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_DesiredVelocityWeight_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->DesiredVelocityWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_ImpactTimeRange_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->ImpactTimeRange; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_ImpactTimeRange_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->ImpactTimeRange = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_ImpactTimeWeight_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->ImpactTimeWeight; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_ImpactTimeWeight_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->ImpactTimeWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_SideBiasWeight_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->SideBiasWeight; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_SideBiasWeight_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->SideBiasWeight = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FCrowdAvoidanceConfig_VelocityBias_GET(FCrowdAvoidanceConfig* Ptr) { return Ptr->VelocityBias; }
+	DOTNET_EXPORT void E_PROP_FCrowdAvoidanceConfig_VelocityBias_SET(FCrowdAvoidanceConfig* Ptr, float Value) { Ptr->VelocityBias = Value; }
+	
+	
+	/*	FCrowdAvoidanceSamplingPattern	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FCrowdAvoidanceSamplingPattern() { return (INT_PTR) new FCrowdAvoidanceSamplingPattern(); }
+	
+	DOTNET_EXPORT auto E_FCrowdAvoidanceSamplingPattern_AddSample(FCrowdAvoidanceSamplingPattern* Self, float AngleInDegrees, float NormalizedRadius)
+	{
+		auto _p0 = AngleInDegrees;
+		auto _p1 = NormalizedRadius;
+		Self->AddSample(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_FCrowdAvoidanceSamplingPattern_AddSampleWithMirror(FCrowdAvoidanceSamplingPattern* Self, float AngleInDegrees, float NormalizedRadius)
+	{
+		auto _p0 = AngleInDegrees;
+		auto _p1 = NormalizedRadius;
+		Self->AddSampleWithMirror(_p0, _p1);
+	}
+
+	
 	/*	FCurveEdInterface	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FCurveEdInterface() { return (INT_PTR) new FCurveEdInterface(); }
@@ -1501,64 +1660,6 @@ extern "C"
 		return Self->IsOfType(_p0);
 	}
 
-	
-	/*	FDebugTextInfo	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FDebugTextInfo() { return (INT_PTR) new FDebugTextInfo(); }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_DebugText_GET(FDebugTextInfo* Ptr) { return ConvertToManage_StringWrapper(Ptr->DebugText); }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_DebugText_SET(FDebugTextInfo* Ptr, char* Value) { Ptr->DebugText = ConvertFromManage_FString(Value); }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_Duration_GET(FDebugTextInfo* Ptr) { return Ptr->Duration; }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_Duration_SET(FDebugTextInfo* Ptr, float Value) { Ptr->Duration = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_FontScale_GET(FDebugTextInfo* Ptr) { return Ptr->FontScale; }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_FontScale_SET(FDebugTextInfo* Ptr, float Value) { Ptr->FontScale = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_OrigActorLocation_GET(FDebugTextInfo* Ptr) { return (INT_PTR)&(Ptr->OrigActorLocation); }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_OrigActorLocation_SET(FDebugTextInfo* Ptr, INT_PTR Value) { Ptr->OrigActorLocation = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_SrcActor_GET(FDebugTextInfo* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->SrcActor); }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_SrcActor_SET(FDebugTextInfo* Ptr, AActor* Value) { Ptr->SrcActor = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_SrcActorDesiredOffset_GET(FDebugTextInfo* Ptr) { return (INT_PTR)&(Ptr->SrcActorDesiredOffset); }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_SrcActorDesiredOffset_SET(FDebugTextInfo* Ptr, INT_PTR Value) { Ptr->SrcActorDesiredOffset = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_SrcActorOffset_GET(FDebugTextInfo* Ptr) { return (INT_PTR)&(Ptr->SrcActorOffset); }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_SrcActorOffset_SET(FDebugTextInfo* Ptr, INT_PTR Value) { Ptr->SrcActorOffset = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTextInfo_TimeRemaining_GET(FDebugTextInfo* Ptr) { return Ptr->TimeRemaining; }
-	DOTNET_EXPORT void E_PROP_FDebugTextInfo_TimeRemaining_SET(FDebugTextInfo* Ptr, float Value) { Ptr->TimeRemaining = Value; }
-	
-	
-	/*	FDebugTraceInfo	*/
-	
-	DOTNET_EXPORT INT_PTR E_CreateStruct_FDebugTraceInfo() { return (INT_PTR) new FDebugTraceInfo(); }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_CapsuleHalfHeight_GET(FDebugTraceInfo* Ptr) { return Ptr->CapsuleHalfHeight; }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_CapsuleHalfHeight_SET(FDebugTraceInfo* Ptr, float Value) { Ptr->CapsuleHalfHeight = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_CapsuleRadius_GET(FDebugTraceInfo* Ptr) { return Ptr->CapsuleRadius; }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_CapsuleRadius_SET(FDebugTraceInfo* Ptr, float Value) { Ptr->CapsuleRadius = Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_HitImpactNormalEnd_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->HitImpactNormalEnd); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_HitImpactNormalEnd_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->HitImpactNormalEnd = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_HitLocation_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->HitLocation); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_HitLocation_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->HitLocation = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_HitNormalEnd_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->HitNormalEnd); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_HitNormalEnd_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->HitNormalEnd = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_HitNormalStart_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->HitNormalStart); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_HitNormalStart_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->HitNormalStart = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_LineTraceEnd_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->LineTraceEnd); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_LineTraceEnd_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->LineTraceEnd = *(FVector*)Value; }
-	
-	DOTNET_EXPORT auto E_PROP_FDebugTraceInfo_LineTraceStart_GET(FDebugTraceInfo* Ptr) { return (INT_PTR)&(Ptr->LineTraceStart); }
-	DOTNET_EXPORT void E_PROP_FDebugTraceInfo_LineTraceStart_SET(FDebugTraceInfo* Ptr, INT_PTR Value) { Ptr->LineTraceStart = *(FVector*)Value; }
-	
 	
 	/*	FDetachmentTransformRules	*/
 	
@@ -1954,6 +2055,11 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FFloatInfo_IEEE32() { return (INT_PTR) new FFloatInfo_IEEE32(); }
 	
 	
+	/*	FFocusKnowledge	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FFocusKnowledge() { return (INT_PTR) new FFocusKnowledge(); }
+	
+	
 	/*	FForceFeedbackChannelDetails	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FForceFeedbackChannelDetails() { return (INT_PTR) new FForceFeedbackChannelDetails(); }
@@ -2051,6 +2157,22 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FGameNameRedirect_OldGameName_GET(FGameNameRedirect* Ptr) { return ConvertToManage_StringWrapper(Ptr->OldGameName); }
 	DOTNET_EXPORT void E_PROP_FGameNameRedirect_OldGameName_SET(FGameNameRedirect* Ptr, char* Value) { Ptr->OldGameName = ConvertFromManage_FName(Value); }
 	
+	
+	/*	FGenericTeamId	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FGenericTeamId_uint8(uint8 InTeamID) { return (INT_PTR) new FGenericTeamId(InTeamID); }
+	
+	DOTNET_EXPORT auto E_FGenericTeamId_GetId(FGenericTeamId* Self)
+	{
+		return Self->GetId();
+	}
+
+	DOTNET_EXPORT auto E_FGenericTeamId_GetTeamIdentifier(FGenericTeamId* Self, AActor* TeamMember)
+	{
+		auto _p0 = TeamMember;
+		return (INT_PTR) new FGenericTeamId(Self->GetTeamIdentifier(_p0));
+	}
+
 	
 	/*	FGetActionsBoundToKey	*/
 	
@@ -2950,6 +3072,11 @@ extern "C"
 	DOTNET_EXPORT void E_PROP_FMeshBuildSettings_SrcLightmapIndex_SET(FMeshBuildSettings* Ptr, int32 Value) { Ptr->SrcLightmapIndex = Value; }
 	
 	
+	/*	FMetaPathWayPoint	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMetaPathWayPoint() { return (INT_PTR) new FMetaPathWayPoint(); }
+	
+	
 	/*	FMinimalViewInfo	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMinimalViewInfo() { return (INT_PTR) new FMinimalViewInfo(); }
@@ -3151,6 +3278,56 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPaintedVertex_Position_GET(FPaintedVertex* Ptr) { return (INT_PTR)&(Ptr->Position); }
 	DOTNET_EXPORT void E_PROP_FPaintedVertex_Position_SET(FPaintedVertex* Ptr, INT_PTR Value) { Ptr->Position = *(FVector*)Value; }
 	
+	
+	/*	FPawnActionEvent	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPawnActionEvent() { return (INT_PTR) new FPawnActionEvent(); }
+	
+	DOTNET_EXPORT auto E_PROP_FPawnActionEvent_Action_GET(FPawnActionEvent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Action); }
+	DOTNET_EXPORT void E_PROP_FPawnActionEvent_Action_SET(FPawnActionEvent* Ptr, UPawnAction* Value) { Ptr->Action = Value; }
+	
+	
+	/*	FPawnActionStack	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FPawnActionStack() { return (INT_PTR) new FPawnActionStack(); }
+	
+	DOTNET_EXPORT auto E_FPawnActionStack_GetStackSize(FPawnActionStack* Self)
+	{
+		return Self->GetStackSize();
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_GetTop(FPawnActionStack* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetTop());
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_IsEmpty(FPawnActionStack* Self)
+	{
+		return Self->IsEmpty();
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_Pause(FPawnActionStack* Self)
+	{
+		Self->Pause();
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_PopAction(FPawnActionStack* Self, UPawnAction& ActionToPop)
+	{
+		auto& _p0 = ActionToPop;
+		Self->PopAction(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_PushAction(FPawnActionStack* Self, UPawnAction& NewTopAction)
+	{
+		auto& _p0 = NewTopAction;
+		Self->PushAction(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FPawnActionStack_Resume(FPawnActionStack* Self)
+	{
+		Self->Resume();
+	}
+
 	
 	/*	FPerspectiveMatrix	*/
 	

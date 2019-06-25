@@ -49,12 +49,10 @@
       "FWorldDelegates",
       "FSkelMeshSkinWeightInfo",
       "FRenderStateRecreator",
-      "FNamedNetDriver",
-      // todo:: "xxx *" в "const xxx &"
+      "FNamedNetDriver",      // todo:: "xxx *" в "const xxx &"
       "FTickPrerequisite",
       "EOptimizeMode",
-      "FCollisionImpactData",
-      // todo:: не линкует
+      "FCollisionImpactData",      // todo:: не линкует
       "FRigidBodyContactInfo",
       "FSwarmDebugOptions",
       "FAnimUpdateRateParameters",
@@ -63,14 +61,11 @@
       "FStreamingLevelsToConsider",
       "FDisplayDebugManager",
       "UCameraAnim",
-      "FCompareFActorPriority",
-      // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
+      "FCompareFActorPriority",      // todo: переименовывать поля с именами, которые совподают с ключивыми словами C# (метод operator)
 
-      "UActorChannel",
-      // todo: не генерировать manage оболочку для классов не наследованных от UObject
+      "UActorChannel",      // todo: не генерировать manage оболочку для классов не наследованных от UObject
 
-      "FExampleArray",
-      // необъявленный идентификатор
+      "FExampleArray",      // необъявленный идентификатор
       "FExampleItemEntry",
       "FExampleStruct",
       "FQueuedDemoPacket",
@@ -78,49 +73,51 @@
       "FCopyPropertiesForUnrelatedObjectsParams",
       "UAssetManager",
       "ScalarRegister",
-      "FQueuedReplayTask",
-      // todo: не экспортировать абстрактные структруты
-      "FSetPlayerStatePawn",
-      // todo: приватный конструктор
-      "FCollisionQueryFlag",
-      // todo: приватный конструктор
+      "FQueuedReplayTask",      // todo: не экспортировать абстрактные структруты
+      "FSetPlayerStatePawn",      // todo: приватный конструктор
+      "FCollisionQueryFlag",      // todo: приватный конструктор
 
-      "APlanarReflection",
-      // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
-      "ULevelActorContainer",
-      // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
+      "APlanarReflection",      // невозможно преобразовать "UPlanarReflectionComponent *" в "UObject *", но почему?
+      "ULevelActorContainer",      // невозможно преобразовать "ULevelActorContainer *" в "UObject *"
 
-      "FInputModeDataBase",
-      // todo:: проверять наличие методов без тела
+      "FInputModeDataBase",      // todo:: проверять наличие методов без тела
 
-      "IBlendableInterface",
-      // todo: различать интерфейсы
+      "IBlendableInterface",      // todo: различать интерфейсы
       "IImportantToggleSettingInterface",
-      "FPrimitiveComponentPostPhysicsTickFunction",
-      // ExecuteTick абстрактный
+      "FPrimitiveComponentPostPhysicsTickFunction",      // ExecuteTick абстрактный
       "FCharacterMovementComponentPostPhysicsTickFunction",
       "FSkeletalMeshComponentEndPhysicsTickFunction",
       "FSkeletalMeshComponentClothTickFunction",
       "FStartPhysicsTickFunction",
       "FEndPhysicsTickFunction",
       "FStartAsyncSimulationFunction",
-      "UForceFeedbackEffect",
-      //todo:: пытается ликовать PostEditChangeChainProperty хотя там WITH_EDITOR
+      "UForceFeedbackEffect",      //todo:: пытается ликовать PostEditChangeChainProperty хотя там WITH_EDITOR
 
       "FSetActorWantsDestroyDuringBeginPlay",
-      "FHUDHitBox"
-      // невозможно преобразовать аргумент 2 из "TArray<FHUDHitBox,FDefaultAllocator>" в "TArray<const FHUDHitBox *,FDefaultAllocator> &"
+      "FAIMessage", // enum отпредеел в теле класса
+      "FAIStimulus",
+      "FDebugHelper",
+      "FDebugTextInfo",
+      "FDebugTraceInfo",
+      "UEventSender",
+      "FHUDHitBox",      // невозможно преобразовать аргумент 2 из "TArray<FHUDHitBox,FDefaultAllocator>" в "TArray<const FHUDHitBox *,FDefaultAllocator> &"
+
+      "UAIDataProvider_Random", // не линкует
+      "ADetourCrowdAIController",
+      "AGridPathAIController",
+      "UAIAsyncTaskBlueprintProxy"
     ],
     "ManualImplementedClassMasks": [
-      "TArray__\\w+",
-      "UBlueprintFunctionLibrary"
+      "TArray__\\w+"
     ],
     "NewObjectBlackList": [
       "UScene",
       "UWorldProxy",
       "UObjectBase",
       "UObjectBaseUtility",
-      "UEngineBaseTypes"
+      "UEngineBaseTypes",
+      "IAIResourceInterface",
+      "ICrowdAgentInterface"
     ],
     "EnumBlackList": [
       "Type",
@@ -134,8 +131,7 @@
       "UObjectBase",
       "UObjectBaseUtility",
       "UEngineBaseTypes",
-      "UPostProcessComponent",
-      // TODO: понять почему не линкует перегруженные методы в базовых классах
+      "UPostProcessComponent",      // TODO: понять почему не линкует перегруженные методы в базовых классах
       "UBrushComponent",
       "UDrawFrustumComponent",
       "UDrawSphereComponent",
@@ -150,12 +146,10 @@
       "UAssetManager",
       "UTexture",
       "UScriptViewportClient",
-      "UShapeComponent"
-      // todo: не найдена соответствующая перегруженная функция
+      "UShapeComponent"      // todo: не найдена соответствующая перегруженная функция
     ],
     "ReadOnlyClass": [
-      "FTickFunction"
-      // TODO: находить удаленный оператор присваивания
+      "FTickFunction"      // TODO: находить удаленный оператор присваивания
     ],
     "UseConvertToManageType": {
       "TCHAR": "StringWrapper",
@@ -216,36 +210,42 @@
         "FillArrayFromResponses"
       ],
       "AActor": [
-        "ActorGetDistanceToCollision"
-        // TODO: указатель на указатель **
+        "ActorGetDistanceToCollision"        // TODO: указатель на указатель **
       ],
       "UTexture": [
         "GetRunningPlatformData"
       ],
       "FURL": [
-        "ToString"
-        // TODO: конвертировать 0 в false
+        "ToString"        // TODO: конвертировать 0 в false
       ],
       "FDisplayDebugManager": [
-        "AddColumnIfNeeded",
-        // TODO: не линкует, не обрабатывать методы без апи или не имеющих реализации в заголовочном файле
+        "AddColumnIfNeeded",        // TODO: не линкует, не обрабатывать методы без апи или не имеющих реализации в заголовочном файле
         "GetTextScale"
       ],
       "FPoly": [
         "CalcNormal"
       ],
       "FScale": [
-        "Concatenate",
-        // const cast
+        "Concatenate",        // const cast
         "Inverse"
       ],
       "UGameUserSettings": [
-        "GetConfigDir"
-        // не линкует
+        "GetConfigDir"        // не линкует
       ],
       "FTransform": [
-        "DebugEqualMatrix"
-        // не линкует
+        "DebugEqualMatrix"        // не линкует
+      ],
+      "UPawnAction": [
+        "HandleAIMessage",        // нет имен у аргументов
+        "SetInstigator"        //  UObject* const
+      ],
+      "UNavLocalGridManager": [
+        "AddLocalNavigationGridForBox",        //   Необязательные параметры должны быть указаны после всех требуемых параметров
+        "AddLocalNavigationGridForCapsule",    //   Необязательные параметры должны быть указаны после всех требуемых параметров
+        "AddLocalNavigationGridForPoint"       //   Необязательные параметры должны быть указаны после всех требуемых параметров
+      ],
+      "FActorPerceptionInfo": [
+        "GetLastStimulusLocation",        //   float = null, нужно конвертить хотябы в default
       ]
     },
     "PropertyInClassBlackList": {
@@ -253,8 +253,7 @@
         "ExternalReferences"
       ],
       "ULocalLightComponent": [
-        "CosHalfConeAngle"
-        //todo:: понять откуда парсер его взял
+        "CosHalfConeAngle"        //todo:: понять откуда парсер его взял
       ]
     },
     "SystemLiteralList": [

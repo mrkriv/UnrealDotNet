@@ -15,6 +15,11 @@
 +Engine\Source\Runtime\Engine\Classes\Components\*.h
 +Engine\Source\Runtime\Engine\Classes\Camera\*.h
 
++Engine\Source\Runtime\AIModule\Classes\*.h
+-Engine\Source\Runtime\AIModule\Classes\BehaviorTree\*.h
+-Engine\Source\Runtime\AIModule\Classes\EnvironmentQuery\*.h
+-Engine\Source\Runtime\AIModule\Classes\Perception\*.h
+
 +Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h
 
 +Engine\Source\Runtime\CoreUObject\Public\UObject\UObjectArray.h

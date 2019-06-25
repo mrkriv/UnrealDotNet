@@ -51,7 +51,7 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_ULocalLightComponent(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern float E_ULocalLightComponent_GetUnitsConversionFactor(IntPtr self, byte srcUnits, byte targetUnits);
+		private static extern float E_ULocalLightComponent_GetUnitsConversionFactor(IntPtr self, byte srcUnits, byte targetUnits, float cosHalfConeAngle);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULocalLightComponent_SetAttenuationRadius(IntPtr self, float newRadius);
@@ -104,8 +104,8 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
-		public float GetUnitsConversionFactor(ELightUnits srcUnits, ELightUnits targetUnits)
-			=> E_ULocalLightComponent_GetUnitsConversionFactor(this, (byte)srcUnits, (byte)targetUnits);
+		public float GetUnitsConversionFactor(ELightUnits srcUnits, ELightUnits targetUnits, float cosHalfConeAngle = -1)
+			=> E_ULocalLightComponent_GetUnitsConversionFactor(this, (byte)srcUnits, (byte)targetUnits, cosHalfConeAngle);
 		
 		public void SetAttenuationRadius(float newRadius)
 			=> E_ULocalLightComponent_SetAttenuationRadius(this, newRadius);

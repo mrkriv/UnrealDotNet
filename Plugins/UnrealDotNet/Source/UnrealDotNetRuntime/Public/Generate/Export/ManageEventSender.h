@@ -2,11 +2,6 @@
 
 // This file was created automatically, do not modify the contents of this file.
 
-// ReSharper disable InvalidXmlDocComment
-// ReSharper disable InconsistentNaming
-// ReSharper disable CheckNamespace
-// ReSharper disable MemberCanBePrivate.Global
-
 #include "TypeConvertor.h"
 #include "ManageEventSender.generated.h"
 
@@ -217,6 +212,14 @@ class UNREALDOTNETRUNTIME_API UManageEventSender : public UObject
 	void Wrapper_FOnGameUserSettingsUINeedsUpdate()
 	{
 		UCoreShell::GetInstance()->InvokeEventInObject(SourceObject, ManageDelegateName);
+	}
+
+	UFUNCTION()
+	void Wrapper_FSmartLinkReachedSignature(AActor* MovingActor, const FVector& DestinationPoint)
+	{
+		auto _p0 = ConvertToManage_ObjectPointerDescription(MovingActor);
+		auto _p1 = DestinationPoint;
+		UCoreShell::GetInstance()->InvokeEventInObject<ObjectPointerDescription, const FVector&>(SourceObject, ManageDelegateName, _p0, _p1);
 	}
 
 }

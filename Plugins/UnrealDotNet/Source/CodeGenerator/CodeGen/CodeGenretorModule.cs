@@ -116,7 +116,7 @@ namespace CodeGenerator.CodeGen
             return $"{Cfg.ExportPrefix}CreateStruct_{ctr.OwnerClass.Name}{signature}";
         }
 
-        protected static void GenerateReSharperDisables(CodeWriter cw)
+        protected static void GenerateReSharperDisablesCsharp(CodeWriter cw)
         {
             if (Cfg.IsDisableReSharperWarnings)
             {
@@ -128,12 +128,19 @@ namespace CodeGenerator.CodeGen
             }
         }
 
-        protected static void GenerateSourceInfo(CodeWriter cw, Primitive primitive)
+        protected static void GenerateReSharperDisablesCpp(CodeWriter cw)
+        {
+            if (Cfg.IsDisableReSharperWarnings)
+            {
+            }
+        }
+
+        protected static void GenerateSourceInfo(CodeWriter cw, Primitive primitive, bool needPadding = true)
         {
             if (Cfg.IsWriteSourceFileName)
             {
                 cw.WriteLine($"// Source file {primitive.SourceFile}:{primitive.SourceLine}");
-                cw.WriteLine();
+                cw.WriteLine(needPadding, "");
             }
         }
 
@@ -144,8 +151,6 @@ namespace CodeGenerator.CodeGen
                 cw.WriteLine($"// This file was created automatically, do not modify the contents of this file.");
                 cw.WriteLine();
             }
-
-            GenerateReSharperDisables(cw);
         }
 
         protected void CreateDirectoryIfNotExist(string path)

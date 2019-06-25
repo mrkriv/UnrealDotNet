@@ -33,6 +33,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("#pragma once");
             cw.WriteLine();
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
             cw.WriteLine("#include \"TypeConvertor.h\"");
             cw.WriteLine("#include \"ManageEventSender.generated.h\"");
             cw.WriteLine();
@@ -123,18 +124,18 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCsharp(cw);
+            
             cw.WriteLine("namespace UnrealEngine");
             cw.OpenBlock();
 
             foreach (var dlg in delegates)
             {
                 GenerateSummaty(cw, dlg);
-
-                GenerateSourceInfo(cw, dlg);
+                GenerateSourceInfo(cw, dlg, false);
 
                 var param = string.Join(", ", dlg.Parametrs.Select(m => ExportVariable(m, false)));
-                cw.Write($"public delegate void {dlg.Name}({param});");
-
+                cw.WriteLine($"public delegate void {dlg.Name}({param});");
                 cw.WriteLine();
             }
 

@@ -42,6 +42,7 @@ namespace CodeGenerator.CodeGen.Modules
             cw.WriteLine("#pragma once");
             cw.WriteLine();
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
             cw.WriteLine("#include \"CoreMinimal.h\"");
 
             foreach (var header in classes.Select(GetSourceFileName).Distinct()) cw.WriteLine($"#include \"{header}\"");
@@ -281,6 +282,7 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCsharp(cw);
             cw.WriteLine("using System;");
             cw.WriteLine("using System.Runtime.InteropServices;");
             cw.WriteLine();

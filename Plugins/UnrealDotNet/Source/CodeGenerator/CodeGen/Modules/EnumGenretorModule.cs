@@ -30,14 +30,15 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCsharp(cw);
+            
             cw.WriteLine("namespace UnrealEngine");
             cw.OpenBlock();
 
             foreach (var enm in enums)
             {
                 GenerateSummaty(cw, enm);
-
-                GenerateSourceInfo(cw, enm);
+                GenerateSourceInfo(cw, enm, false);
 
                 cw.WriteLine($"public enum {enm.Name} : byte");
                 cw.OpenBlock();

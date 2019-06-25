@@ -43,6 +43,7 @@ namespace CodeGenerator.CodeGen.Modules
 
             cw.WriteLine("#pragma once");
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"CoreMinimal.h\"");
@@ -384,6 +385,7 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCsharp(cw);
             cw.WriteLine("using System;");
             cw.WriteLine("using System.Runtime.InteropServices;");
             cw.WriteLine();

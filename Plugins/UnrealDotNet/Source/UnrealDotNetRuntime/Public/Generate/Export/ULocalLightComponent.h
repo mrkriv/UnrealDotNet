@@ -1,11 +1,6 @@
 #pragma once
 // This file was created automatically, do not modify the contents of this file.
 
-// ReSharper disable InvalidXmlDocComment
-// ReSharper disable InconsistentNaming
-// ReSharper disable CheckNamespace
-// ReSharper disable MemberCanBePrivate.Global
-
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #include "CoreMinimal.h"
@@ -34,11 +29,12 @@ extern "C"
 		return (INT_PTR)NewObject<ULocalLightComponent>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
-	DOTNET_EXPORT auto E_ULocalLightComponent_GetUnitsConversionFactor(ULocalLightComponent* Self, ELightUnits SrcUnits, ELightUnits TargetUnits)
+	DOTNET_EXPORT auto E_ULocalLightComponent_GetUnitsConversionFactor(ULocalLightComponent* Self, ELightUnits SrcUnits, ELightUnits TargetUnits, float CosHalfConeAngle)
 	{
 		auto _p0 = SrcUnits;
 		auto _p1 = TargetUnits;
-		return Self->GetUnitsConversionFactor(_p0, _p1);
+		auto _p2 = CosHalfConeAngle;
+		return Self->GetUnitsConversionFactor(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_ULocalLightComponent_SetAttenuationRadius(ULocalLightComponent* Self, float NewRadius)

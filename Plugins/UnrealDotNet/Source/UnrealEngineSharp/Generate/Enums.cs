@@ -12,7 +12,6 @@ namespace UnrealEngine
 	/// Enum defining if BeginPlay has started or finished
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\Actor.h:349
-	
 	public enum EActorBeginPlayState : byte
 	{
 		HasNotBegunPlay,
@@ -20,8 +19,17 @@ namespace UnrealEngine
 		HasBegunPlay,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\Tasks\AITask.h:13
+	public enum EAITaskPriority : byte
+	{
+		Lowest = 0,
+		Low = 64,
+		AutonomousAI = 127,
+		High = 192,
+		Ultimate = 254,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:175
-	
 	public enum EAllowKinematicDeferral : byte
 	{
 		AllowDeferral,
@@ -29,7 +37,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:58
-	
 	public enum EAnimCurveType : byte
 	{
 		AttributeCurve,
@@ -39,7 +46,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:32
-	
 	public enum EAntiAliasingMethod : byte
 	{
 		AAM_None,
@@ -50,7 +56,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:32
-	
 	public enum EAspectRatioAxisConstraint : byte
 	{
 		AspectRatio_MaintainYFOV,
@@ -60,7 +65,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:56
-	
 	public enum EAttachmentRule : byte
 	{
 		KeepRelative,
@@ -69,7 +73,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:44
-	
 	public enum EAutoExposureMethod : byte
 	{
 		AEM_Histogram,
@@ -79,7 +82,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2777
-	
 	public enum EAutoPossessAI : byte
 	{
 		Disabled,
@@ -89,7 +91,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:239
-	
 	public enum EBlendMode : byte
 	{
 		BLEND_Opaque,
@@ -102,7 +103,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:56
-	
 	public enum EBloomMethod : byte
 	{
 		BM_SOG,
@@ -111,7 +111,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:32
-	
 	public enum EBoneVisibilityStatus : byte
 	{
 		BVS_HiddenByParent,
@@ -125,7 +124,6 @@ namespace UnrealEngine
 	/// Holds the dynamic delegate to call.
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InputComponent.h:279
-	
 	public enum EBoundDelegate : byte
 	{
 		Unbound,
@@ -135,7 +133,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:36
-	
 	public enum ECanBeCharacterBase : byte
 	{
 		ECB_No,
@@ -145,7 +142,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:605
-	
 	public enum ECollisionChannel : byte
 	{
 		ECC_WorldStatic,
@@ -185,7 +181,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:755
-	
 	public enum ECollisionResponse : byte
 	{
 		ECR_Ignore,
@@ -195,7 +190,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:106
-	
 	public enum EConsoleType : byte
 	{
 		CONSOLE_Any,
@@ -203,8 +197,15 @@ namespace UnrealEngine
 		CONSOLE_MAX,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\Navigation\CrowdFollowingComponent.h:29
+	public enum ECrowdSimulationState : byte
+	{
+		Enabled,
+		ObstacleOnly,
+		Disabled,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:22
-	
 	public enum EDepthOfFieldMethod : byte
 	{
 		DOFM_BokehDOF,
@@ -214,7 +215,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:106
-	
 	public enum EDetachmentRule : byte
 	{
 		KeepRelative,
@@ -222,7 +222,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:50
-	
 	public enum EDetailMode : byte
 	{
 		DM_Low,
@@ -232,7 +231,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:114
-	
 	public enum EDynamicResolutionStatus : byte
 	{
 		Unsupported,
@@ -243,7 +241,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:765
-	
 	public enum EFilterInterpolationType : byte
 	{
 		BSIT_Average,
@@ -253,7 +250,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:808
-	
 	public enum EFlushLevelStreamingType : byte
 	{
 		None,
@@ -262,7 +258,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:72
-	
 	public enum EFullyLoadPackageType : byte
 	{
 		FULLYLOAD_Map,
@@ -274,7 +269,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\Color.h:17
-	
 	public enum EGammaSpace : byte
 	{
 		Linear,
@@ -283,7 +277,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:56
-	
 	public enum EGetWorldErrorMode : byte
 	{
 		ReturnNull,
@@ -292,7 +285,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\ProjectileMovementComponent.h:342
-	
 	public enum EHandleBlockingHitResult : byte
 	{
 		Deflect,
@@ -301,7 +293,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:17
-	
 	public enum EHorizTextAligment : byte
 	{
 		EHTA_Left,
@@ -310,7 +301,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:192
-	
 	public enum EIndirectLightingCacheQuality : byte
 	{
 		ILCQ_Off,
@@ -319,7 +309,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\CameraShake.h:31
-	
 	public enum EInitialOscillatorOffset : byte
 	{
 		EOO_OffsetRandom,
@@ -328,7 +317,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:26
-	
 	public enum EInputEvent : byte
 	{
 		IE_Pressed = 0,
@@ -340,7 +328,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\InterpCurvePoint.h:15
-	
 	public enum EInterpCurveMode : byte
 	{
 		CIM_Linear,
@@ -353,7 +340,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InterpToMovementComponent.h:14
-	
 	public enum EInterpToBehaviourType : byte
 	{
 		OneShot,
@@ -363,7 +349,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:65
-	
 	public enum ELevelTick : byte
 	{
 		LEVELTICK_TimeOnly = 0,
@@ -373,7 +358,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:507
-	
 	public enum ELightingBuildQuality : byte
 	{
 		Quality_Preview,
@@ -384,7 +368,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1775
-	
 	public enum ELightMapPaddingType : byte
 	{
 		LMPT_NormalPadding,
@@ -393,7 +376,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:204
-	
 	public enum ELightmapType : byte
 	{
 		Default,
@@ -402,7 +384,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:66
-	
 	public enum ELightUnits : byte
 	{
 		Unitless,
@@ -411,7 +392,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:491
-	
 	public enum EMaterialSamplerType : byte
 	{
 		SAMPLERTYPE_Color,
@@ -427,7 +407,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:461
-	
 	public enum EMaterialShadingModel : byte
 	{
 		MSM_Unlit,
@@ -444,7 +423,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:478
-	
 	public enum EMaterialTessellationMode : byte
 	{
 		MTM_NoTessellation,
@@ -453,8 +431,14 @@ namespace UnrealEngine
 		MTM_MAX,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\Navigation\MetaNavMeshPath.h:14
+	public enum EMetaPathUpdateReason : byte
+	{
+		PathFinished,
+		MoveTick,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:37
-	
 	public enum EMouseCaptureMode : byte
 	{
 		NoCapture,
@@ -465,7 +449,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:52
-	
 	public enum EMouseLockMode : byte
 	{
 		DoNotLock,
@@ -475,7 +458,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:73
-	
 	public enum EMoveComponentFlags : byte
 	{
 		MOVECOMP_NoFlags = 0x0000,
@@ -486,7 +468,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:518
-	
 	public enum EMovementMode : byte
 	{
 		MOVE_None,
@@ -500,7 +481,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2741
-	
 	public enum ENetDormancy : byte
 	{
 		DORM_Never,
@@ -512,7 +492,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:904
-	
 	public enum ENetMode : byte
 	{
 		NM_Standalone,
@@ -523,7 +502,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2726
-	
 	public enum ENetRole : byte
 	{
 		ROLE_None,
@@ -534,7 +512,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:550
-	
 	public enum ENetworkSmoothingMode : byte
 	{
 		Disabled,
@@ -544,7 +521,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:675
-	
 	public enum EObjectTypeQuery : byte
 	{
 		ObjectTypeQuery1,
@@ -583,7 +559,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:220
-	
 	public enum EOcclusionCombineMode : byte
 	{
 		OCM_Minimum,
@@ -592,7 +567,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2220
-	
 	public enum EOptimizeMode : byte
 	{
 		TrailMode,
@@ -600,7 +574,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\CameraShake.h:20
-	
 	public enum EOscillatorWaveform : byte
 	{
 		SineWave,
@@ -608,7 +581,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:663
-	
 	public enum EOverlapFilterOption : byte
 	{
 		OverlapFilter_All,
@@ -617,7 +589,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:45
-	
 	public enum EPhysBodyOp : byte
 	{
 		PBO_None,
@@ -626,7 +597,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\MovementComponent.h:28
-	
 	public enum EPlaneConstraintAxisSetting : byte
 	{
 		Custom,
@@ -636,8 +606,13 @@ namespace UnrealEngine
 		UseGlobalPhysicsSetting,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\GenericTeamAgentInterface.h:28
+	public enum EPredefinedId : byte
+	{
+		NoTeamId = 255,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\World.h:730
-	
 	public enum EProcessReason : byte
 	{
 		Add,
@@ -645,7 +620,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h:18
-	
 	public enum EQueryMobilityType : byte
 	{
 		Any,
@@ -658,7 +632,6 @@ namespace UnrealEngine
 	/// static variable for default data to be used without reconstructing everytime
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1063
-	
 	public enum ERadialImpulseFalloff : byte
 	{
 		RIF_Constant,
@@ -667,7 +640,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:88
-	
 	public enum EReflectedAndRefractedRayTracedShadows : byte
 	{
 		Disabled,
@@ -676,7 +648,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ReflectionCaptureComponent.h:18
-	
 	public enum EReflectionSourceType : byte
 	{
 		CapturedScene,
@@ -684,7 +655,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:74
-	
 	public enum EReflectionsType : byte
 	{
 		ScreenSpace,
@@ -692,7 +662,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:309
-	
 	public enum ERefractionMode : byte
 	{
 		RM_IndexOfRefraction,
@@ -700,7 +669,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:60
-	
 	public enum ERelativeTransformSpace : byte
 	{
 		RTS_World,
@@ -710,7 +678,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\PrimitiveComponent.h:91
-	
 	public enum ERendererStencilMask : byte
 	{
 		ERSM_Default,
@@ -726,7 +693,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:32
-	
 	public enum ERootMotionAccumulateMode : byte
 	{
 		Override = 0,
@@ -734,7 +700,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:134
-	
 	public enum ERootMotionFinishVelocityMode : byte
 	{
 		MaintainLastRootMotionVelocity = 0,
@@ -747,21 +712,18 @@ namespace UnrealEngine
 	/// Collection of the most recent ID mappings
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\CharacterMovementComponent.h:2327
-	
 	public enum ERootMotionMapping : byte
 	{
 		MapSize = 16,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:71
-	
 	public enum ERootMotionSourceID : byte
 	{
 		Invalid = 0,
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:58
-	
 	public enum ERootMotionSourceSettingsFlags : byte
 	{
 		UseSensitiveLiftoffCheck = 0x01,
@@ -769,7 +731,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\RootMotionSource.h:44
-	
 	public enum ERootMotionSourceStatusFlags : byte
 	{
 		Prepared = 0x01,
@@ -778,7 +739,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:252
-	
 	public enum ESamplerSourceMode : byte
 	{
 		SSM_FromTextureAsset,
@@ -787,7 +747,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:362
-	
 	public enum ESceneCaptureCompositeMode : byte
 	{
 		SCCM_Overwrite,
@@ -796,7 +755,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneCaptureComponent.h:48
-	
 	public enum ESceneCapturePrimitiveRenderMode : byte
 	{
 		PRM_LegacySceneCapture,
@@ -805,7 +763,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:348
-	
 	public enum ESceneCaptureSource : byte
 	{
 		SCS_SceneColorHDR,
@@ -819,7 +776,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:181
-	
 	public enum ESceneDepthPriorityGroup : byte
 	{
 		SDPG_World,
@@ -828,7 +784,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1784
-	
 	public enum EShadowMapFlags : byte
 	{
 		SMF_None = 0,
@@ -836,7 +791,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ShapeComponent.h:105
-	
 	public enum EShapeBodySetupHelper : byte
 	{
 		InvalidateSharingIfStale,
@@ -844,7 +798,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkyLightComponent.h:86
-	
 	public enum ESkyLightSourceType : byte
 	{
 		SLS_CapturedScene,
@@ -853,7 +806,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1167
-	
 	public enum ESleepEvent : byte
 	{
 		SET_Wakeup,
@@ -861,7 +813,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1074
-	
 	public enum ESleepFamily : byte
 	{
 		Normal,
@@ -870,7 +821,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\GameNetworkManager.h:13
-	
 	public enum EStandbyType : byte
 	{
 		STDBY_Rx,
@@ -879,8 +829,14 @@ namespace UnrealEngine
 		STDBY_MAX,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\BrainComponent.h:28
+	public enum EStatus : byte
+	{
+		Failure,
+		Success,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:30
-	
 	public enum EStereoLayerShape : byte
 	{
 		SLSH_QuadLayer,
@@ -890,7 +846,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\StereoLayerComponent.h:14
-	
 	public enum EStereoLayerType : byte
 	{
 		SLT_WorldLocked,
@@ -904,7 +859,6 @@ namespace UnrealEngine
 	/// Flags controlling how this tag should be shown in the UI
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:641
-	
 	public enum ETagDisplay : byte
 	{
 		TD_None = 0,
@@ -919,7 +873,6 @@ namespace UnrealEngine
 	/// Enum specifying the type of this tag
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject\Object.h:626
-	
 	public enum ETagType : byte
 	{
 		TT_Hidden,
@@ -930,7 +883,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2089
-	
 	public enum ETeleportType : byte
 	{
 		None,
@@ -939,7 +891,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ApplicationLifecycleComponent.h:15
-	
 	public enum ETemperatureSeverityType : byte
 	{
 		Unknown,
@@ -951,7 +902,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:79
-	
 	public enum ETickingGroup : byte
 	{
 		TG_PrePhysics,
@@ -970,7 +920,6 @@ namespace UnrealEngine
 	/// Cache whether this function was rescheduled as an interval function during StartParallel
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:230
-	
 	public enum ETickState : byte
 	{
 		Disabled,
@@ -979,7 +928,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\TimelineComponent.h:34
-	
 	public enum ETimelineLengthMode : byte
 	{
 		TL_TimelineLength,
@@ -987,7 +935,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:1086
-	
 	public enum ETimelineSigType : byte
 	{
 		ETS_EventSignature,
@@ -999,7 +946,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:715
-	
 	public enum ETraceTypeQuery : byte
 	{
 		TraceTypeQuery1,
@@ -1038,7 +984,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:438
-	
 	public enum ETrailWidthMode : byte
 	{
 		ETrailWidthMode_FromCentre,
@@ -1047,7 +992,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:92
-	
 	public enum ETransitionType : byte
 	{
 		TT_None,
@@ -1061,7 +1005,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:264
-	
 	public enum ETranslucencyLightingMode : byte
 	{
 		TLM_VolumetricNonDirectional,
@@ -1074,7 +1017,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Scene.h:81
-	
 	public enum ETranslucencyType : byte
 	{
 		Raster,
@@ -1082,7 +1024,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:701
-	
 	public enum ETravelType : byte
 	{
 		TRAVEL_Absolute,
@@ -1092,7 +1033,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkeletalMeshComponent.h:671
-	
 	public enum EType : byte
 	{
 		AddImpulse,
@@ -1100,7 +1040,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.h:17
-	
 	public enum EUnit : byte
 	{
 		Micrometers,
@@ -1160,7 +1099,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Core\Public\Math\UnitConversion.h:63
-	
 	public enum EUnitType : byte
 	{
 		Distance,
@@ -1183,7 +1121,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\InstancedStaticMeshComponent.h:34
-	
 	public enum EUpdateCommandType : byte
 	{
 		Add,
@@ -1194,7 +1131,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h:2201
-	
 	public enum EUpdateRateShiftBucket : byte
 	{
 		ShiftBucket0 = 0,
@@ -1207,7 +1143,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\ActorComponent.h:35
-	
 	public enum EUpdateTransformFlags : byte
 	{
 		None = 0x0,
@@ -1217,7 +1152,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\TextRenderComponent.h:28
-	
 	public enum EVerticalTextAligment : byte
 	{
 		EVRTA_TextTop,
@@ -1227,7 +1161,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\EngineBaseTypes.h:929
-	
 	public enum EViewModeIndex : byte
 	{
 		VMI_BrushWireframe = 0,
@@ -1261,7 +1194,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Camera\PlayerCameraManager.h:23
-	
 	public enum EViewTargetBlendFunction : byte
 	{
 		VTBlend_Linear,
@@ -1273,7 +1205,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:22
-	
 	public enum EVisibilityAggressiveness : byte
 	{
 		VIS_LeastAggressive,
@@ -1283,7 +1214,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SkinnedMeshComponent.h:56
-	
 	public enum EVisibilityBasedAnimTickOption : byte
 	{
 		AlwaysTickPoseAndRefreshBones,
@@ -1297,7 +1227,6 @@ namespace UnrealEngine
 	/// Enum that dictates what propagation policy to follow when calling SetVisibility or SetHiddenInGame recursively
 	/// </summary>
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\SceneComponent.h:797
-	
 	public enum EVisibilityPropagation : byte
 	{
 		NoPropagation,
@@ -1306,7 +1235,6 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework\WorldSettings.h:31
-	
 	public enum EVolumeLightingMethod : byte
 	{
 		VLM_VolumetricLightmap,
@@ -1314,15 +1242,22 @@ namespace UnrealEngine
 	}
 
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Components\WindDirectionalSourceComponent.h:12
-	
 	public enum EWindSourceType : byte
 	{
 		Directional,
 		Point,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\AITypes.h:69
+	public enum FAIDistanceType : byte
+	{
+		Distance3D,
+		Distance2D,
+		DistanceZ,
+		MAX,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Public\CollisionQueryParams.h:348
-	
 	public enum InitType : byte
 	{
 		AllObjects,

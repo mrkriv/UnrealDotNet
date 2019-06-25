@@ -38,6 +38,7 @@ namespace CodeGenerator.CodeGen.Modules
             var cw = new CodeWriter();
 
             GenerateFileHeader(cw);
+            GenerateReSharperDisablesCpp(cw);
             cw.WriteLine("PRAGMA_DISABLE_DEPRECATION_WARNINGS");
             cw.WriteLine();
             cw.WriteLine("#include \"Structures.h\"");

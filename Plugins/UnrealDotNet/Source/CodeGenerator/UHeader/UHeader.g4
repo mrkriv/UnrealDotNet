@@ -528,8 +528,8 @@ Literal
 
 fragment
 RealDIGIT
-	: DIGIT* '.'? 'e-'? DIGIT+ 'f'?
-	| DIGIT+ '.' 'f'?
+	: '-'? DIGIT* '.'? 'e-'? DIGIT+ 'f'?
+	| '-'? DIGIT+ '.' 'f'?
 ;
 
 fragment
