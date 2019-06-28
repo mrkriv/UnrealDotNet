@@ -109,6 +109,9 @@ namespace UnrealEngine
 		private static extern void E_UPawnAction_TickAction(IntPtr self, float deltaTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPawnAction_WaitForMessage(IntPtr self, string messageType, IntPtr requestID);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPawnAction_WantsTick(IntPtr self);
 		
 		#endregion
@@ -213,6 +216,9 @@ namespace UnrealEngine
 		
 		protected void TickAction(float deltaTime)
 			=> E_UPawnAction_TickAction(this, deltaTime);
+		
+		public void WaitForMessage(string messageType, FAIRequestID requestID)
+			=> E_UPawnAction_WaitForMessage(this, messageType, requestID);
 		
 		public bool WantsTick()
 			=> E_UPawnAction_WantsTick(this);

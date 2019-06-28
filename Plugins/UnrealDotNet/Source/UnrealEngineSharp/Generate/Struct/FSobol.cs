@@ -23,10 +23,37 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FSobol_MaxCell2DBits_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FSobol_MaxCell3DBits_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FSobol_MaxDimension_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSobol();
 		
+		#endregion
+		
+		#region Property
+		public static int MaxCell2DBits
+		{
+			get => E_PROP_FSobol_MaxCell2DBits_GET();
+		}
+
+		public static int MaxCell3DBits
+		{
+			get => E_PROP_FSobol_MaxCell3DBits_GET();
+		}
+
+		public static int MaxDimension
+		{
+			get => E_PROP_FSobol_MaxDimension_GET();
+		}
+
 		#endregion
 		
 		public static implicit operator IntPtr(FSobol self)

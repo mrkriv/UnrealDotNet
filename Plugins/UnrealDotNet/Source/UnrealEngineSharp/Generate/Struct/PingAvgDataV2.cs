@@ -32,6 +32,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_PingAvgDataV2_AvgPingV2_SET(IntPtr Ptr, float Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern byte E_PROP_PingAvgDataV2_MAX_PING_VALUES_SIZE_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_PingAvgDataV2();
@@ -47,6 +50,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_PingAvgDataV2_AvgPingV2_GET(NativePointer);
 			set => E_PROP_PingAvgDataV2_AvgPingV2_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// The maximum number of ping values we will keep track of
+		/// </summary>
+		public static byte MAX_PING_VALUES_SIZE
+		{
+			get => E_PROP_PingAvgDataV2_MAX_PING_VALUES_SIZE_GET();
 		}
 
 		#endregion

@@ -55,6 +55,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_USpringArmComponent_ProbeSize_GET(USpringArmComponent* Ptr) { return Ptr->ProbeSize; }
 	DOTNET_EXPORT void E_PROP_USpringArmComponent_ProbeSize_SET(USpringArmComponent* Ptr, float Value) { Ptr->ProbeSize = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_USpringArmComponent_SocketName_GET() { return ConvertToManage_StringWrapper(USpringArmComponent::SocketName); }
+	
 	DOTNET_EXPORT auto E_PROP_USpringArmComponent_SocketOffset_GET(USpringArmComponent* Ptr) { return (INT_PTR)&(Ptr->SocketOffset); }
 	DOTNET_EXPORT void E_PROP_USpringArmComponent_SocketOffset_SET(USpringArmComponent* Ptr, INT_PTR Value) { Ptr->SocketOffset = *(FVector*)Value; }
 	

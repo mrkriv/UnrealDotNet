@@ -32,6 +32,9 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FDamageEvent_ClassID_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FDamageEvent();
@@ -48,6 +51,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FDamageEvent_IsOfType(IntPtr self, int inID);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// ID for this class. NOTE this must be unique for all damage events.
+		/// </summary>
+		public static int ClassID
+		{
+			get => E_PROP_FDamageEvent_ClassID_GET();
+		}
+
 		#endregion
 		
 		#region ExternMethods

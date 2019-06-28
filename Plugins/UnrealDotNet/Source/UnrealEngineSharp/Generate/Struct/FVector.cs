@@ -101,6 +101,27 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_BackwardVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_DownVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_ForwardVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_LeftVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_OneVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_RightVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_UpVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector_X_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FVector_X_SET(IntPtr Ptr, float Value);
@@ -114,6 +135,9 @@ namespace UnrealEngine
 		private static extern float E_PROP_FVector_Z_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FVector_Z_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector_ZeroVector_GET();
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -391,6 +415,69 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
+		/// Unreal backward vector (-1,0,0)
+		/// </summary>
+		public static FVector BackwardVector
+		{
+			get => E_PROP_FVector_BackwardVector_GET();
+		}
+
+		
+		/// <summary>
+		/// Unreal down vector (0,0,-1)
+		/// </summary>
+		public static FVector DownVector
+		{
+			get => E_PROP_FVector_DownVector_GET();
+		}
+
+		
+		/// <summary>
+		/// Unreal forward vector (1,0,0)
+		/// </summary>
+		public static FVector ForwardVector
+		{
+			get => E_PROP_FVector_ForwardVector_GET();
+		}
+
+		
+		/// <summary>
+		/// Unreal left vector (0,-1,0)
+		/// </summary>
+		public static FVector LeftVector
+		{
+			get => E_PROP_FVector_LeftVector_GET();
+		}
+
+		
+		/// <summary>
+		/// One vector (1,1,1)
+		/// </summary>
+		public static FVector OneVector
+		{
+			get => E_PROP_FVector_OneVector_GET();
+		}
+
+		
+		/// <summary>
+		/// Unreal right vector (0,1,0)
+		/// </summary>
+		public static FVector RightVector
+		{
+			get => E_PROP_FVector_RightVector_GET();
+		}
+
+		
+		/// <summary>
+		/// Unreal up vector (0,0,1)
+		/// </summary>
+		public static FVector UpVector
+		{
+			get => E_PROP_FVector_UpVector_GET();
+		}
+
+		
+		/// <summary>
 		/// Vector's X component.
 		/// </summary>
 		public float X
@@ -417,6 +504,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FVector_Z_GET(NativePointer);
 			set => E_PROP_FVector_Z_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// A zero vector (0,0,0)
+		/// </summary>
+		public static FVector ZeroVector
+		{
+			get => E_PROP_FVector_ZeroVector_GET();
 		}
 
 		#endregion

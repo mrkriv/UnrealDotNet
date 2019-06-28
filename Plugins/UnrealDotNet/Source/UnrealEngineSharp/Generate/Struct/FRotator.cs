@@ -74,6 +74,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRotator_Yaw_SET(IntPtr Ptr, float Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FRotator_ZeroRotator_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FRotator();
@@ -205,6 +208,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FRotator_Yaw_GET(NativePointer);
 			set => E_PROP_FRotator_Yaw_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// A rotator of zero degrees on each axis.
+		/// </summary>
+		public static FRotator ZeroRotator
+		{
+			get => E_PROP_FRotator_ZeroRotator_GET();
 		}
 
 		#endregion

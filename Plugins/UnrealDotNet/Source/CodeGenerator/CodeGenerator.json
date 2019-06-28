@@ -116,6 +116,7 @@
       "UObjectBase",
       "UObjectBaseUtility",
       "UEngineBaseTypes",
+      "UScriptViewportClient",
       "IAIResourceInterface",
       "ICrowdAgentInterface"
     ],

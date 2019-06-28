@@ -8,6 +8,7 @@
 #include "Runtime/Engine/Classes/Engine/EngineBaseTypes.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 #include "Runtime/AIModule/Classes/DataProviders/AIDataProvider.h"
+#include "Runtime/AIModule/Classes/AITypes.h"
 #include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 #include "Runtime/Engine/Classes/Engine/EngineTypes.h"
 #include "Runtime/Engine/Classes/Components/AudioComponent.h"
@@ -244,6 +245,246 @@ extern "C"
 	DOTNET_EXPORT auto E_FAIDataProviderValue_ValueToString(FAIDataProviderValue* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->ValueToString());
+	}
+
+	
+	/*	FAIMoveRequest	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIMoveRequest() { return (INT_PTR) new FAIMoveRequest(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIMoveRequest_AActor(AActor* InGoalActor) { return (INT_PTR) new FAIMoveRequest(InGoalActor); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIMoveRequest_FVector(INT_PTR InGoalLocation) { return (INT_PTR) new FAIMoveRequest(*(FVector*)InGoalLocation); }
+	
+	DOTNET_EXPORT auto E_FAIMoveRequest_CanStopOnOverlap(FAIMoveRequest* Self)
+	{
+		return Self->CanStopOnOverlap();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_CanStrafe(FAIMoveRequest* Self)
+	{
+		return Self->CanStrafe();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_GetAcceptanceRadius(FAIMoveRequest* Self)
+	{
+		return Self->GetAcceptanceRadius();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_GetDestination(FAIMoveRequest* Self)
+	{
+		return (INT_PTR) new FVector(Self->GetDestination());
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_GetGoalActor(FAIMoveRequest* Self)
+	{
+		return ConvertToManage_ObjectPointerDescription(Self->GetGoalActor());
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_GetGoalLocation(FAIMoveRequest* Self)
+	{
+		return (INT_PTR) new FVector(Self->GetGoalLocation());
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_GetUserFlags(FAIMoveRequest* Self)
+	{
+		return Self->GetUserFlags();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsMoveToActorRequest(FAIMoveRequest* Self)
+	{
+		return Self->IsMoveToActorRequest();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsProjectingGoal(FAIMoveRequest* Self)
+	{
+		return Self->IsProjectingGoal();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsReachTestIncludingAgentRadius(FAIMoveRequest* Self)
+	{
+		return Self->IsReachTestIncludingAgentRadius();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsReachTestIncludingGoalRadius(FAIMoveRequest* Self)
+	{
+		return Self->IsReachTestIncludingGoalRadius();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsUsingPartialPaths(FAIMoveRequest* Self)
+	{
+		return Self->IsUsingPartialPaths();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsUsingPathfinding(FAIMoveRequest* Self)
+	{
+		return Self->IsUsingPathfinding();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_IsValid(FAIMoveRequest* Self)
+	{
+		return Self->IsValid();
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetAcceptanceRadius(FAIMoveRequest* Self, float Radius)
+	{
+		auto _p0 = Radius;
+		return (INT_PTR) new FAIMoveRequest(Self->SetAcceptanceRadius(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetAllowPartialPath(FAIMoveRequest* Self, bool bAllowPartial)
+	{
+		auto _p0 = bAllowPartial;
+		return (INT_PTR) new FAIMoveRequest(Self->SetAllowPartialPath(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetCanStrafe(FAIMoveRequest* Self, bool bStrafe)
+	{
+		auto _p0 = bStrafe;
+		return (INT_PTR) new FAIMoveRequest(Self->SetCanStrafe(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetGoalActor(FAIMoveRequest* Self, AActor* InGoalActor)
+	{
+		auto _p0 = InGoalActor;
+		Self->SetGoalActor(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetGoalLocation(FAIMoveRequest* Self, INT_PTR InGoalLocation)
+	{
+		auto& _p0 = *(FVector*)InGoalLocation;
+		Self->SetGoalLocation(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetProjectGoalLocation(FAIMoveRequest* Self, bool bProject)
+	{
+		auto _p0 = bProject;
+		return (INT_PTR) new FAIMoveRequest(Self->SetProjectGoalLocation(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetReachTestIncludesAgentRadius(FAIMoveRequest* Self, bool bIncludeRadius)
+	{
+		auto _p0 = bIncludeRadius;
+		return (INT_PTR) new FAIMoveRequest(Self->SetReachTestIncludesAgentRadius(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetReachTestIncludesGoalRadius(FAIMoveRequest* Self, bool bIncludeRadius)
+	{
+		auto _p0 = bIncludeRadius;
+		return (INT_PTR) new FAIMoveRequest(Self->SetReachTestIncludesGoalRadius(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetStopOnOverlap(FAIMoveRequest* Self, bool bStop)
+	{
+		auto _p0 = bStop;
+		return (INT_PTR) new FAIMoveRequest(Self->SetStopOnOverlap(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetUsePathfinding(FAIMoveRequest* Self, bool bPathfinding)
+	{
+		auto _p0 = bPathfinding;
+		return (INT_PTR) new FAIMoveRequest(Self->SetUsePathfinding(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_SetUserFlags(FAIMoveRequest* Self, int32 InUserFlags)
+	{
+		auto _p0 = InUserFlags;
+		return (INT_PTR) new FAIMoveRequest(Self->SetUserFlags(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_ToString(FAIMoveRequest* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	DOTNET_EXPORT auto E_FAIMoveRequest_UpdateGoalLocation(FAIMoveRequest* Self, INT_PTR NewLocation)
+	{
+		auto& _p0 = *(FVector*)NewLocation;
+		return Self->UpdateGoalLocation(_p0);
+	}
+
+	
+	/*	FAIRequestID	*/
+	
+	DOTNET_EXPORT auto E_PROP_FAIRequestID_AnyRequest_GET() { return (INT_PTR)&(FAIRequestID::AnyRequest); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIRequestID_CurrentRequest_GET() { return (INT_PTR)&(FAIRequestID::CurrentRequest); }
+	
+	DOTNET_EXPORT auto E_PROP_FAIRequestID_InvalidRequest_GET() { return (INT_PTR)&(FAIRequestID::InvalidRequest); }
+	
+	DOTNET_EXPORT auto E_FAIRequestID_IsEquivalent(FAIRequestID* Self, INT_PTR Other)
+	{
+		auto _p0 = *(FAIRequestID*)Other;
+		return Self->IsEquivalent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FAIRequestID_IsValid(FAIRequestID* Self)
+	{
+		return Self->IsValid();
+	}
+
+	DOTNET_EXPORT auto E_FAIRequestID_ToString(FAIRequestID* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->ToString());
+	}
+
+	
+	/*	FAIResourceLock	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIResourceLock() { return (INT_PTR) new FAIResourceLock(); }
+	
+	DOTNET_EXPORT auto E_FAIResourceLock_ForceClearAllLocks(FAIResourceLock* Self)
+	{
+		Self->ForceClearAllLocks();
+	}
+
+	DOTNET_EXPORT auto E_FAIResourceLock_GetLockPriorityName(FAIResourceLock* Self)
+	{
+		return ConvertToManage_StringWrapper(Self->GetLockPriorityName());
+	}
+
+	DOTNET_EXPORT auto E_FAIResourceLock_IsLocked(FAIResourceLock* Self)
+	{
+		return Self->IsLocked();
+	}
+
+	DOTNET_EXPORT auto E_FAIResourceLock_SetUseResourceLockCount(FAIResourceLock* Self, bool inUseResourceLockCount)
+	{
+		auto _p0 = inUseResourceLockCount;
+		Self->SetUseResourceLockCount(_p0);
+	}
+
+	
+	/*	FAIResourcesSet	*/
+	
+	DOTNET_EXPORT auto E_PROP_FAIResourcesSet_MaxFlags_GET() { return FAIResourcesSet::MaxFlags; }
+	
+	DOTNET_EXPORT auto E_FAIResourcesSet_AddResourceIndex(FAIResourcesSet* Self, uint8 ResourceIndex)
+	{
+		auto _p0 = ResourceIndex;
+		return (INT_PTR) new FAIResourcesSet(Self->AddResourceIndex(_p0));
+	}
+
+	DOTNET_EXPORT auto E_FAIResourcesSet_Clear(FAIResourcesSet* Self)
+	{
+		Self->Clear();
+	}
+
+	DOTNET_EXPORT auto E_FAIResourcesSet_ContainsResourceIndex(FAIResourcesSet* Self, uint8 ResourceID)
+	{
+		auto _p0 = ResourceID;
+		return Self->ContainsResourceIndex(_p0);
+	}
+
+	DOTNET_EXPORT auto E_FAIResourcesSet_IsEmpty(FAIResourcesSet* Self)
+	{
+		return Self->IsEmpty();
+	}
+
+	DOTNET_EXPORT auto E_FAIResourcesSet_RemoveResourceIndex(FAIResourcesSet* Self, uint8 ResourceIndex)
+	{
+		auto _p0 = ResourceIndex;
+		return (INT_PTR) new FAIResourcesSet(Self->RemoveResourceIndex(_p0));
 	}
 
 	
@@ -1640,6 +1881,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FDamageEvent_FDamageEvent(INT_PTR InDamageEvent) { return (INT_PTR) new FDamageEvent(*(FDamageEvent*)InDamageEvent); }
 	
+	DOTNET_EXPORT auto E_PROP_FDamageEvent_ClassID_GET() { return FDamageEvent::ClassID; }
+	
 	DOTNET_EXPORT auto E_FDamageEvent_GetBestHitInfo(FDamageEvent* Self, AActor* HitActor, AActor* HitInstigator, INT_PTR OutHitInfo, INT_PTR OutImpulseDir)
 	{
 		auto _p0 = HitActor;
@@ -2518,11 +2761,15 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntPoint_int32_int32(int32 InX, int32 InY) { return (INT_PTR) new FIntPoint(InX, InY); }
 	
+	DOTNET_EXPORT auto E_PROP_FIntPoint_NoneValue_GET() { return (INT_PTR)&(FIntPoint::NoneValue); }
+	
 	DOTNET_EXPORT auto E_PROP_FIntPoint_X_GET(FIntPoint* Ptr) { return Ptr->X; }
 	DOTNET_EXPORT void E_PROP_FIntPoint_X_SET(FIntPoint* Ptr, int32 Value) { Ptr->X = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FIntPoint_Y_GET(FIntPoint* Ptr) { return Ptr->Y; }
 	DOTNET_EXPORT void E_PROP_FIntPoint_Y_SET(FIntPoint* Ptr, int32 Value) { Ptr->Y = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntPoint_ZeroValue_GET() { return (INT_PTR)&(FIntPoint::ZeroValue); }
 	
 	
 	/*	FIntRect	*/
@@ -2550,6 +2797,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FIntVector_FVector(INT_PTR InVector) { return (INT_PTR) new FIntVector(*(FVector*)InVector); }
 	
+	DOTNET_EXPORT auto E_PROP_FIntVector_NoneValue_GET() { return (INT_PTR)&(FIntVector::NoneValue); }
+	
 	DOTNET_EXPORT auto E_PROP_FIntVector_X_GET(FIntVector* Ptr) { return Ptr->X; }
 	DOTNET_EXPORT void E_PROP_FIntVector_X_SET(FIntVector* Ptr, int32 Value) { Ptr->X = Value; }
 	
@@ -2558,6 +2807,8 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FIntVector_Z_GET(FIntVector* Ptr) { return Ptr->Z; }
 	DOTNET_EXPORT void E_PROP_FIntVector_Z_SET(FIntVector* Ptr, int32 Value) { Ptr->Z = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FIntVector_ZeroValue_GET() { return (INT_PTR)&(FIntVector::ZeroValue); }
 	
 	
 	/*	FInverseRotationMatrix	*/
@@ -3286,6 +3537,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FPawnActionEvent_Action_GET(FPawnActionEvent* Ptr) { return ConvertToManage_ObjectPointerDescription(Ptr->Action); }
 	DOTNET_EXPORT void E_PROP_FPawnActionEvent_Action_SET(FPawnActionEvent* Ptr, UPawnAction* Value) { Ptr->Action = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FPawnActionEvent_FakeActionIndex_GET() { return FPawnActionEvent::FakeActionIndex; }
+	
 	
 	/*	FPawnActionStack	*/
 	
@@ -3421,6 +3674,8 @@ extern "C"
 	/*	FPointDamageEvent	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FPointDamageEvent() { return (INT_PTR) new FPointDamageEvent(); }
+	
+	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_ClassID_GET() { return FPointDamageEvent::ClassID; }
 	
 	DOTNET_EXPORT auto E_PROP_FPointDamageEvent_Damage_GET(FPointDamageEvent* Ptr) { return Ptr->Damage; }
 	DOTNET_EXPORT void E_PROP_FPointDamageEvent_Damage_SET(FPointDamageEvent* Ptr, float Value) { Ptr->Damage = Value; }
@@ -4474,6 +4729,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FQuat_FVector_float(INT_PTR Axis, float AngleRad) { return (INT_PTR) new FQuat(*(FVector*)Axis, AngleRad); }
 	
+	DOTNET_EXPORT auto E_PROP_FQuat_Identity_GET() { return (INT_PTR)&(FQuat::Identity); }
+	
 	DOTNET_EXPORT auto E_PROP_FQuat_W_GET(FQuat* Ptr) { return Ptr->W; }
 	DOTNET_EXPORT void E_PROP_FQuat_W_SET(FQuat* Ptr, float Value) { Ptr->W = Value; }
 	
@@ -4842,6 +5099,8 @@ extern "C"
 	/*	FRadialDamageEvent	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FRadialDamageEvent() { return (INT_PTR) new FRadialDamageEvent(); }
+	
+	DOTNET_EXPORT auto E_PROP_FRadialDamageEvent_ClassID_GET() { return FRadialDamageEvent::ClassID; }
 	
 	DOTNET_EXPORT auto E_PROP_FRadialDamageEvent_Origin_GET(FRadialDamageEvent* Ptr) { return (INT_PTR)&(Ptr->Origin); }
 	DOTNET_EXPORT void E_PROP_FRadialDamageEvent_Origin_SET(FRadialDamageEvent* Ptr, INT_PTR Value) { Ptr->Origin = *(FVector*)Value; }
@@ -5758,6 +6017,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_FRotator_Yaw_GET(FRotator* Ptr) { return Ptr->Yaw; }
 	DOTNET_EXPORT void E_PROP_FRotator_Yaw_SET(FRotator* Ptr, float Value) { Ptr->Yaw = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_FRotator_ZeroRotator_GET() { return (INT_PTR)&(FRotator::ZeroRotator); }
+	
 	DOTNET_EXPORT auto E_FRotator_Add(FRotator* Self, float DeltaPitch, float DeltaYaw, float DeltaRoll)
 	{
 		auto _p0 = DeltaPitch;
@@ -6148,6 +6409,12 @@ extern "C"
 	/*	FSobol	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSobol() { return (INT_PTR) new FSobol(); }
+	
+	DOTNET_EXPORT auto E_PROP_FSobol_MaxCell2DBits_GET() { return FSobol::MaxCell2DBits; }
+	
+	DOTNET_EXPORT auto E_PROP_FSobol_MaxCell3DBits_GET() { return FSobol::MaxCell3DBits; }
+	
+	DOTNET_EXPORT auto E_PROP_FSobol_MaxDimension_GET() { return FSobol::MaxDimension; }
 	
 	
 	/*	FSphere	*/
@@ -6618,6 +6885,8 @@ extern "C"
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FMatrix(INT_PTR InMatrix) { return (INT_PTR) new FTransform(*(FMatrix*)InMatrix); }
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FTransform_FVector_FVector_FVector_FVector(INT_PTR InX, INT_PTR InY, INT_PTR InZ, INT_PTR InTranslation) { return (INT_PTR) new FTransform(*(FVector*)InX, *(FVector*)InY, *(FVector*)InZ, *(FVector*)InTranslation); }
+	
+	DOTNET_EXPORT auto E_PROP_FTransform_Identity_GET() { return (INT_PTR)&(FTransform::Identity); }
 	
 	DOTNET_EXPORT auto E_FTransform_Accumulate(FTransform* Self, INT_PTR SourceAtom)
 	{
@@ -7272,6 +7541,20 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector_FIntPoint(INT_PTR A) { return (INT_PTR) new FVector(*(FIntPoint*)A); }
 	
+	DOTNET_EXPORT auto E_PROP_FVector_BackwardVector_GET() { return (INT_PTR)&(FVector::BackwardVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_DownVector_GET() { return (INT_PTR)&(FVector::DownVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_ForwardVector_GET() { return (INT_PTR)&(FVector::ForwardVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_LeftVector_GET() { return (INT_PTR)&(FVector::LeftVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_OneVector_GET() { return (INT_PTR)&(FVector::OneVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_RightVector_GET() { return (INT_PTR)&(FVector::RightVector); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_UpVector_GET() { return (INT_PTR)&(FVector::UpVector); }
+	
 	DOTNET_EXPORT auto E_PROP_FVector_X_GET(FVector* Ptr) { return Ptr->X; }
 	DOTNET_EXPORT void E_PROP_FVector_X_SET(FVector* Ptr, float Value) { Ptr->X = Value; }
 	
@@ -7280,6 +7563,8 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_FVector_Z_GET(FVector* Ptr) { return Ptr->Z; }
 	DOTNET_EXPORT void E_PROP_FVector_Z_SET(FVector* Ptr, float Value) { Ptr->Z = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FVector_ZeroVector_GET() { return (INT_PTR)&(FVector::ZeroVector); }
 	
 	DOTNET_EXPORT auto E_FVector_AddBounded(FVector* Self, INT_PTR V, float Radius)
 	{
@@ -7838,11 +8123,17 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FVector2D_FVector(INT_PTR V) { return (INT_PTR) new FVector2D(*(FVector*)V); }
 	
+	DOTNET_EXPORT auto E_PROP_FVector2D_Unit45Deg_GET() { return (INT_PTR)&(FVector2D::Unit45Deg); }
+	
+	DOTNET_EXPORT auto E_PROP_FVector2D_UnitVector_GET() { return (INT_PTR)&(FVector2D::UnitVector); }
+	
 	DOTNET_EXPORT auto E_PROP_FVector2D_X_GET(FVector2D* Ptr) { return Ptr->X; }
 	DOTNET_EXPORT void E_PROP_FVector2D_X_SET(FVector2D* Ptr, float Value) { Ptr->X = Value; }
 	
 	DOTNET_EXPORT auto E_PROP_FVector2D_Y_GET(FVector2D* Ptr) { return Ptr->Y; }
 	DOTNET_EXPORT void E_PROP_FVector2D_Y_SET(FVector2D* Ptr, float Value) { Ptr->Y = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_FVector2D_ZeroVector_GET() { return (INT_PTR)&(FVector2D::ZeroVector); }
 	
 	DOTNET_EXPORT auto E_FVector2D_ClampAxes(FVector2D* Self, float MinAxisVal, float MaxAxisVal)
 	{
@@ -8292,6 +8583,8 @@ extern "C"
 	
 	DOTNET_EXPORT auto E_PROP_PingAvgDataV2_AvgPingV2_GET(PingAvgDataV2* Ptr) { return Ptr->AvgPingV2; }
 	DOTNET_EXPORT void E_PROP_PingAvgDataV2_AvgPingV2_SET(PingAvgDataV2* Ptr, float Value) { Ptr->AvgPingV2 = Value; }
+	
+	DOTNET_EXPORT auto E_PROP_PingAvgDataV2_MAX_PING_VALUES_SIZE_GET() { return PingAvgDataV2::MAX_PING_VALUES_SIZE; }
 	
 	
 	/*	RootMotionSourceDebug	*/

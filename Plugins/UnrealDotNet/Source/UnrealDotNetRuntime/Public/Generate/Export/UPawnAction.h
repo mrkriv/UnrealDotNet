@@ -218,6 +218,13 @@ extern "C"
 		((E_PROTECTED_WRAP_UPawnAction*)Self)->TickAction_WRAP(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UPawnAction_WaitForMessage(UPawnAction* Self, char* MessageType, INT_PTR RequestID)
+	{
+		auto _p0 = ConvertFromManage_FName(MessageType);
+		auto _p1 = *(FAIRequestID*)RequestID;
+		Self->WaitForMessage(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UPawnAction_WantsTick(UPawnAction* Self)
 	{
 		return Self->WantsTick();

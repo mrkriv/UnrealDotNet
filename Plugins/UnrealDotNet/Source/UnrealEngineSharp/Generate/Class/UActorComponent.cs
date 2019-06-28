@@ -87,6 +87,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_UActorComponent_bWantsInitializeComponent_SET(IntPtr Ptr, byte Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_UActorComponent_ComponentTemplateNameSuffix_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_EVENT_ADD_UActorComponent_OnComponentActivated(IntPtr Ptr);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -517,6 +520,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_UActorComponent_bWantsInitializeComponent_GET(NativePointer);
 			set => E_PROP_UActorComponent_bWantsInitializeComponent_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// Prefix used to identify template component instances
+		/// </summary>
+		public static string ComponentTemplateNameSuffix
+		{
+			get => E_PROP_UActorComponent_ComponentTemplateNameSuffix_GET();
 		}
 
 		

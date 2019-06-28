@@ -24,6 +24,9 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FRadialDamageEvent_ClassID_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FRadialDamageEvent_Origin_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FRadialDamageEvent_Origin_SET(IntPtr Ptr, IntPtr Value);
@@ -40,6 +43,15 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// ID for this class. NOTE this must be unique for all damage events.
+		/// </summary>
+		public static int ClassID
+		{
+			get => E_PROP_FRadialDamageEvent_ClassID_GET();
+		}
+
 		public FVector Origin
 		{
 			get => E_PROP_FRadialDamageEvent_Origin_GET(NativePointer);

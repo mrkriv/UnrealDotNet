@@ -12,6 +12,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 extern "C"
 {
+	DOTNET_EXPORT auto E_PROP_UBrainComponent_AIMessage_MoveFinished_GET() { return ConvertToManage_StringWrapper(UBrainComponent::AIMessage_MoveFinished); }
+	
+	DOTNET_EXPORT auto E_PROP_UBrainComponent_AIMessage_QueryFinished_GET() { return ConvertToManage_StringWrapper(UBrainComponent::AIMessage_QueryFinished); }
+	
+	DOTNET_EXPORT auto E_PROP_UBrainComponent_AIMessage_RepathFailed_GET() { return ConvertToManage_StringWrapper(UBrainComponent::AIMessage_RepathFailed); }
+	
 	
 	DOTNET_EXPORT INT_PTR E_NewObject_UBrainComponent(UObject* Parent, char* Name)
 	{

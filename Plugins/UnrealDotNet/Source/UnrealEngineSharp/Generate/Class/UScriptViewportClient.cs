@@ -19,19 +19,6 @@ namespace UnrealEngine
 		{
 		}
 
-		public UScriptViewportClient(UObject Parent = null, string Name = "ScriptViewportClient")
-			: base(IntPtr.Zero)
-		{
-			NativePointer = E_NewObject_UScriptViewportClient(Parent, Name);
-			NativeManager.AddNativeWrapper(NativePointer, this);
-		}
-
-		#region DLLInmport
-		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
-		private static extern IntPtr E_NewObject_UScriptViewportClient(IntPtr Parent, string Name);
-		
-		#endregion
-		
 		public static implicit operator IntPtr(UScriptViewportClient self)
 		{
 			return self?.NativePointer ?? IntPtr.Zero;

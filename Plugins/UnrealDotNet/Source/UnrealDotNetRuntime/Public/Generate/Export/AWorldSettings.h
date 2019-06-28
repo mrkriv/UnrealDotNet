@@ -81,6 +81,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_MatineeTimeDilation_GET(AWorldSettings* Ptr) { return Ptr->MatineeTimeDilation; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_MatineeTimeDilation_SET(AWorldSettings* Ptr, float Value) { Ptr->MatineeTimeDilation = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_AWorldSettings_MAX_BOOKMARK_NUMBER_GET() { return AWorldSettings::MAX_BOOKMARK_NUMBER; }
+	
 	DOTNET_EXPORT auto E_PROP_AWorldSettings_MaxGlobalTimeDilation_GET(AWorldSettings* Ptr) { return Ptr->MaxGlobalTimeDilation; }
 	DOTNET_EXPORT void E_PROP_AWorldSettings_MaxGlobalTimeDilation_SET(AWorldSettings* Ptr, float Value) { Ptr->MaxGlobalTimeDilation = Value; }
 	

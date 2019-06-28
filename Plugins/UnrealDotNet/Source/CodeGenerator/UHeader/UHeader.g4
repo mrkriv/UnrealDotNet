@@ -242,13 +242,13 @@ methodName
 ;
 
 methodOperator
-	: ( PtrQuant | SpecalSymbol | '&' | Identifier)+
+	: ( PtrQuant | SpecalSymbol | '=' | '&' | Identifier)+
 ;
 
 /* Property */
 
 property
-	: templateDefine? (Mutable|Extern|isStatic)* type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
+	: templateDefine? (Typename|Const|Mutable|Extern|isStatic)* type propertyName isArray? ( ('=' | DotDot) propertyDefaultValue )? ';'
 ;
 
 propertyName

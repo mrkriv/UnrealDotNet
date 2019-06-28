@@ -142,6 +142,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_AWorldSettings_MatineeTimeDilation_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_AWorldSettings_MAX_BOOKMARK_NUMBER_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_AWorldSettings_MaxGlobalTimeDilation_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_AWorldSettings_MaxGlobalTimeDilation_SET(IntPtr Ptr, float Value);
@@ -436,6 +439,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_AWorldSettings_MatineeTimeDilation_GET(NativePointer);
 			set => E_PROP_AWorldSettings_MatineeTimeDilation_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// Maximum number of bookmarks
+		/// </summary>
+		public static int MAX_BOOKMARK_NUMBER
+		{
+			get => E_PROP_AWorldSettings_MAX_BOOKMARK_NUMBER_GET();
 		}
 
 		

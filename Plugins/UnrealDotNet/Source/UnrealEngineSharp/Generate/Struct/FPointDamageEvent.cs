@@ -24,6 +24,9 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPointDamageEvent_ClassID_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FPointDamageEvent_Damage_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPointDamageEvent_Damage_SET(IntPtr Ptr, float Value);
@@ -45,6 +48,15 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// ID for this class. NOTE this must be unique for all damage events.
+		/// </summary>
+		public static int ClassID
+		{
+			get => E_PROP_FPointDamageEvent_ClassID_GET();
+		}
+
 		public float Damage
 		{
 			get => E_PROP_FPointDamageEvent_Damage_GET(NativePointer);

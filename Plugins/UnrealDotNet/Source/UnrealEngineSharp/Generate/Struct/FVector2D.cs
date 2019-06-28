@@ -60,6 +60,12 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector2D_Unit45Deg_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector2D_UnitVector_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FVector2D_X_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FVector2D_X_SET(IntPtr Ptr, float Value);
@@ -68,6 +74,9 @@ namespace UnrealEngine
 		private static extern float E_PROP_FVector2D_Y_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FVector2D_Y_SET(IntPtr Ptr, float Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FVector2D_ZeroVector_GET();
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -177,6 +186,26 @@ namespace UnrealEngine
 		#region Property
 		
 		/// <summary>
+		/// Global 2D unit vector constant along the 45 degree angle or symmetrical positive axes (sqrt(.5),sqrt(.5)) or (.707,.707). https://en.wikipedia.org/wiki/Unit_vector
+		/// <para>@note The `UnitVector` above is actually a value with axes of 1 rather than a magnitude of one. </para>
+		/// </summary>
+		public static FVector2D Unit45Deg
+		{
+			get => E_PROP_FVector2D_Unit45Deg_GET();
+		}
+
+		
+		/// <summary>
+		/// Global 2D one vector (poorly named) constant (1,1).
+		/// <para>@note Incorrectly named "unit" vector though its magnitude/length/size is not one. Would fix, though likely used all over the world. Use `Unit45Deg` below for an actual unit vector. </para>
+		/// </summary>
+		public static FVector2D UnitVector
+		{
+			get => E_PROP_FVector2D_UnitVector_GET();
+		}
+
+		
+		/// <summary>
 		/// Vector's X component.
 		/// </summary>
 		public float X
@@ -193,6 +222,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FVector2D_Y_GET(NativePointer);
 			set => E_PROP_FVector2D_Y_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// Global 2D zero vector constant (0,0)
+		/// </summary>
+		public static FVector2D ZeroVector
+		{
+			get => E_PROP_FVector2D_ZeroVector_GET();
 		}
 
 		#endregion

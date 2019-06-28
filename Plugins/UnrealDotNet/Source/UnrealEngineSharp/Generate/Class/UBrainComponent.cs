@@ -31,6 +31,15 @@ namespace UnrealEngine
 			NativeManager.AddNativeWrapper(NativePointer, this);
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_UBrainComponent_AIMessage_MoveFinished_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_UBrainComponent_AIMessage_QueryFinished_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_UBrainComponent_AIMessage_RepathFailed_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_NewObject_UBrainComponent(IntPtr Parent, string Name);
@@ -62,6 +71,24 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UBrainComponent_StopLogic(IntPtr self, string reason);
 		
+		#endregion
+		
+		#region Property
+		public static string AIMessage_MoveFinished
+		{
+			get => E_PROP_UBrainComponent_AIMessage_MoveFinished_GET();
+		}
+
+		public static string AIMessage_QueryFinished
+		{
+			get => E_PROP_UBrainComponent_AIMessage_QueryFinished_GET();
+		}
+
+		public static string AIMessage_RepathFailed
+		{
+			get => E_PROP_UBrainComponent_AIMessage_RepathFailed_GET();
+		}
+
 		#endregion
 		
 		#region ExternMethods

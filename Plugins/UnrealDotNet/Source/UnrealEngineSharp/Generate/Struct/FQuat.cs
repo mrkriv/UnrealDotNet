@@ -82,6 +82,9 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FQuat_Identity_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_PROP_FQuat_W_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FQuat_W_SET(IntPtr Ptr, float Value);
@@ -261,6 +264,15 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// Identity quaternion.
+		/// </summary>
+		public static FQuat Identity
+		{
+			get => E_PROP_FQuat_Identity_GET();
+		}
+
 		
 		/// <summary>
 		/// The quaternion's W-component.

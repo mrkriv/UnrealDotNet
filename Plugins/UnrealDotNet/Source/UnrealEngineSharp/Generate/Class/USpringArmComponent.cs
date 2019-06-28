@@ -72,6 +72,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_USpringArmComponent_ProbeSize_SET(IntPtr Ptr, float Value);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern StringWrapper E_PROP_USpringArmComponent_SocketName_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_USpringArmComponent_SocketOffset_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_USpringArmComponent_SocketOffset_SET(IntPtr Ptr, IntPtr Value);
@@ -197,6 +200,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_USpringArmComponent_ProbeSize_GET(NativePointer);
 			set => E_PROP_USpringArmComponent_ProbeSize_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// The name of the socket at the end of the spring arm (looking back towards the spring arm origin)
+		/// </summary>
+		public static string SocketName
+		{
+			get => E_PROP_USpringArmComponent_SocketName_GET();
 		}
 
 		

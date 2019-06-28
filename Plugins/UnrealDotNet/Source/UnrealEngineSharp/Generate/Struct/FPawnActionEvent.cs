@@ -28,6 +28,9 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FPawnActionEvent_Action_SET(IntPtr Ptr, IntPtr Value);
 		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int E_PROP_FPawnActionEvent_FakeActionIndex_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FPawnActionEvent();
@@ -39,6 +42,11 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FPawnActionEvent_Action_GET(NativePointer);
 			set => E_PROP_FPawnActionEvent_Action_SET(NativePointer, value);
+		}
+
+		public static int FakeActionIndex
+		{
+			get => E_PROP_FPawnActionEvent_FakeActionIndex_GET();
 		}
 
 		#endregion

@@ -276,6 +276,19 @@ namespace UnrealEngine
 		sRGB,
 	}
 
+	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\AIModule\Classes\AITypes.h:590
+	public enum EGenericAICheck : byte
+	{
+		Less,
+		LessOrEqual,
+		Equal,
+		NotEqual,
+		GreaterOrEqual,
+		Greater,
+		IsTrue,
+		MAX,
+	}
+
 	// Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\Engine.h:56
 	public enum EGetWorldErrorMode : byte
 	{

@@ -60,6 +60,9 @@ namespace UnrealEngine
 		}
 
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FIntVector_NoneValue_GET();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int E_PROP_FIntVector_X_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FIntVector_X_SET(IntPtr Ptr, int Value);
@@ -73,6 +76,9 @@ namespace UnrealEngine
 		private static extern int E_PROP_FIntVector_Z_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FIntVector_Z_SET(IntPtr Ptr, int Value);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FIntVector_ZeroValue_GET();
 		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -90,6 +96,15 @@ namespace UnrealEngine
 		#endregion
 		
 		#region Property
+		
+		/// <summary>
+		/// An int point with INDEX_NONE values.
+		/// </summary>
+		public static FIntVector NoneValue
+		{
+			get => E_PROP_FIntVector_NoneValue_GET();
+		}
+
 		
 		/// <summary>
 		/// Holds the point's x-coordinate.
@@ -118,6 +133,15 @@ namespace UnrealEngine
 		{
 			get => E_PROP_FIntVector_Z_GET(NativePointer);
 			set => E_PROP_FIntVector_Z_SET(NativePointer, value);
+		}
+
+		
+		/// <summary>
+		/// An int point with zeroed values.
+		/// </summary>
+		public static FIntVector ZeroValue
+		{
+			get => E_PROP_FIntVector_ZeroValue_GET();
 		}
 
 		#endregion

@@ -38,6 +38,11 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetBrainComponent());
 	}
 
+	DOTNET_EXPORT auto E_AAIController_GetCurrentMoveRequestID(AAIController* Self)
+	{
+		return (INT_PTR) new FAIRequestID(Self->GetCurrentMoveRequestID());
+	}
+
 	DOTNET_EXPORT auto E_AAIController_GetDebugIcon(AAIController* Self)
 	{
 		return ConvertToManage_StringWrapper(Self->GetDebugIcon());
@@ -89,6 +94,18 @@ extern "C"
 	{
 		auto _p0 = NewFocus;
 		Self->K2_SetFocus(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AAIController_PauseMove(AAIController* Self, INT_PTR RequestToPause)
+	{
+		auto _p0 = *(FAIRequestID*)RequestToPause;
+		return Self->PauseMove(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AAIController_ResumeMove(AAIController* Self, INT_PTR RequestToResume)
+	{
+		auto _p0 = *(FAIRequestID*)RequestToResume;
+		return Self->ResumeMove(_p0);
 	}
 
 	DOTNET_EXPORT auto E_AAIController_SetMoveBlockDetection(AAIController* Self, bool bEnable)

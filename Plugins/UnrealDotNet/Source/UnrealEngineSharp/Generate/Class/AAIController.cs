@@ -48,6 +48,9 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_AAIController_GetBrainComponent(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_AAIController_GetCurrentMoveRequestID(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_AAIController_GetDebugIcon(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -76,6 +79,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AAIController_K2_SetFocus(IntPtr self, IntPtr newFocus);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AAIController_PauseMove(IntPtr self, IntPtr requestToPause);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AAIController_ResumeMove(IntPtr self, IntPtr requestToResume);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AAIController_SetMoveBlockDetection(IntPtr self, bool bEnable);
@@ -126,6 +135,13 @@ namespace UnrealEngine
 		
 		public UBrainComponent GetBrainComponent()
 			=> E_AAIController_GetBrainComponent(this);
+		
+		
+		/// <summary>
+		/// Returns the Move Request ID for the current move
+		/// </summary>
+		public FAIRequestID GetCurrentMoveRequestID()
+			=> E_AAIController_GetCurrentMoveRequestID(this);
 		
 		public virtual string GetDebugIcon()
 			=> E_AAIController_GetDebugIcon(this);
@@ -188,6 +204,20 @@ namespace UnrealEngine
 		/// </summary>
 		public void SetFocus(AActor newFocus)
 			=> E_AAIController_K2_SetFocus(this, newFocus);
+		
+		
+		/// <summary>
+		/// if AI is currently moving due to request given by RequestToPause, then the move will be paused
+		/// </summary>
+		public bool PauseMove(FAIRequestID requestToPause)
+			=> E_AAIController_PauseMove(this, requestToPause);
+		
+		
+		/// <summary>
+		/// resumes last AI-performed, paused request provided it's ID was equivalent to RequestToResume
+		/// </summary>
+		public bool ResumeMove(FAIRequestID requestToResume)
+			=> E_AAIController_ResumeMove(this, requestToResume);
 		
 		
 		/// <summary>

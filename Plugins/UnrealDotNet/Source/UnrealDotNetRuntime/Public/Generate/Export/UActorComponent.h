@@ -123,6 +123,8 @@ extern "C"
 	DOTNET_EXPORT auto E_PROP_UActorComponent_bWantsInitializeComponent_GET(UActorComponent* Ptr) { return Ptr->bWantsInitializeComponent; }
 	DOTNET_EXPORT void E_PROP_UActorComponent_bWantsInitializeComponent_SET(UActorComponent* Ptr, uint8 Value) { Ptr->bWantsInitializeComponent = Value; }
 	
+	DOTNET_EXPORT auto E_PROP_UActorComponent_ComponentTemplateNameSuffix_GET() { return ConvertToManage_StringWrapper(UActorComponent::ComponentTemplateNameSuffix); }
+	
 	DOTNET_EXPORT void E_EVENT_ADD_UActorComponent_OnComponentActivated(UActorComponent* Obj)
 	{
 		auto wrapper = NewObject<UManageEventSender>(UCoreShell::GetInstance());

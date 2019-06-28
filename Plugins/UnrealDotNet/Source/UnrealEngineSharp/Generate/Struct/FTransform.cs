@@ -109,6 +109,9 @@ namespace UnrealEngine
 		{
 		}
 
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_PROP_FTransform_Identity_GET();
+		
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FTransform();
@@ -368,6 +371,18 @@ namespace UnrealEngine
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FTransform_TranslationEquals(IntPtr self, IntPtr other, float tolerance);
 		
+		#endregion
+		
+		#region Property
+		
+		/// <summary>
+		/// The identity transformation (Rotation = FQuat::Identity, Translation = FVector::ZeroVector, Scale3D = (1,1,1))
+		/// </summary>
+		public static FTransform Identity
+		{
+			get => E_PROP_FTransform_Identity_GET();
+		}
+
 		#endregion
 		
 		#region ExternMethods
