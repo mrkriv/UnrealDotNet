@@ -142,6 +142,11 @@ extern "C"
 		return Self->IsRooted();
 	}
 
+	DOTNET_EXPORT auto E_UObjectBaseUtility_IsTemplate(UObjectBaseUtility* Self)
+	{
+		return Self->IsTemplate();
+	}
+
 	DOTNET_EXPORT auto E_UObjectBaseUtility_IsUnreachable(UObjectBaseUtility* Self)
 	{
 		return Self->IsUnreachable();

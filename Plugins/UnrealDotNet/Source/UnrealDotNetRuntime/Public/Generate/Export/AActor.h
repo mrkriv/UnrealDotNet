@@ -571,6 +571,11 @@ extern "C"
 		Self->DispatchBlockingHit(_p0, _p1, _p2, _p3);
 	}
 
+	DOTNET_EXPORT auto E_AActor_DrawDebugComponents(AActor* Self)
+	{
+		Self->DrawDebugComponents();
+	}
+
 	DOTNET_EXPORT auto E_AActor_EnableInput(AActor* Self, APlayerController* PlayerController)
 	{
 		auto _p0 = PlayerController;
@@ -593,6 +598,13 @@ extern "C"
 	{
 		auto _p0 = Component;
 		Self->FinishAndRegisterComponent(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_FinishSpawning(AActor* Self, INT_PTR Transform, bool bIsDefaultTransform)
+	{
+		auto& _p0 = *(FTransform*)Transform;
+		auto _p1 = bIsDefaultTransform;
+		Self->FinishSpawning(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_AActor_FlushNetDormancy(AActor* Self)
@@ -1210,6 +1222,20 @@ extern "C"
 		Self->K2_AddActorWorldTransform(_p0, _p1, _p2, _p3);
 	}
 
+	DOTNET_EXPORT auto E_AActor_K2_AttachRootComponentTo(AActor* Self, USceneComponent* InParent, char* InSocketName)
+	{
+		auto _p0 = InParent;
+		auto _p1 = ConvertFromManage_FName(InSocketName);
+		Self->K2_AttachRootComponentTo(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_AActor_K2_AttachRootComponentToActor(AActor* Self, AActor* InParentActor, char* InSocketName)
+	{
+		auto _p0 = InParentActor;
+		auto _p1 = ConvertFromManage_FName(InSocketName);
+		Self->K2_AttachRootComponentToActor(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_AActor_K2_AttachToActor(AActor* Self, AActor* ParentActor, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
 	{
 		auto _p0 = ParentActor;
@@ -1410,6 +1436,16 @@ extern "C"
 		Self->NotifyActorEndOverlap(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AActor_NotifyActorOnClicked(AActor* Self)
+	{
+		Self->NotifyActorOnClicked();
+	}
+
+	DOTNET_EXPORT auto E_AActor_NotifyActorOnReleased(AActor* Self)
+	{
+		Self->NotifyActorOnReleased();
+	}
+
 	DOTNET_EXPORT auto E_AActor_NotifyHit(AActor* Self, UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, INT_PTR HitLocation, INT_PTR HitNormal, INT_PTR NormalImpulse, INT_PTR Hit)
 	{
 		auto _p0 = MyComp;
@@ -1603,6 +1639,16 @@ extern "C"
 	{
 		auto _p0 = OtherActor;
 		Self->ReceiveActorEndOverlap(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AActor_ReceiveActorOnClicked(AActor* Self)
+	{
+		Self->ReceiveActorOnClicked();
+	}
+
+	DOTNET_EXPORT auto E_AActor_ReceiveActorOnReleased(AActor* Self)
+	{
+		Self->ReceiveActorOnReleased();
 	}
 
 	DOTNET_EXPORT auto E_AActor_ReceiveBeginPlay(AActor* Self)

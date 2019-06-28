@@ -87,6 +87,9 @@ namespace UnrealEngine
 		private static extern bool E_UObjectBaseUtility_IsRooted(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObjectBaseUtility_IsTemplate(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObjectBaseUtility_IsUnreachable(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -291,6 +294,14 @@ namespace UnrealEngine
 		/// <return>true</return>
 		public bool IsRooted()
 			=> E_UObjectBaseUtility_IsRooted(this);
+		
+		
+		/// <summary>
+		/// Determines whether this object is a template object
+		/// </summary>
+		/// <return>true</return>
+		public bool IsTemplate()
+			=> E_UObjectBaseUtility_IsTemplate(this);
 		
 		
 		/// <summary>

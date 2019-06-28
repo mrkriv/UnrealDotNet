@@ -583,6 +583,16 @@ extern "C"
 		Self->InitializeActorsForPlay(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_InitializeNewWorld(UWorld* Self)
+	{
+		Self->InitializeNewWorld();
+	}
+
+	DOTNET_EXPORT auto E_UWorld_InitWorld(UWorld* Self)
+	{
+		Self->InitWorld();
+	}
+
 	DOTNET_EXPORT auto E_UWorld_InvalidateModelSurface(UWorld* Self, bool bCurrentLevelOnly)
 	{
 		auto _p0 = bCurrentLevelOnly;
@@ -760,6 +770,12 @@ extern "C"
 		return Self->Listen(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UWorld_LoadSecondaryLevels(UWorld* Self, bool bForce)
+	{
+		auto _p0 = bForce;
+		Self->LoadSecondaryLevels(_p0);
+	}
+
 	DOTNET_EXPORT auto E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(UWorld* Self, UActorComponent* Component, bool bForceGameThread)
 	{
 		auto _p0 = Component;
@@ -871,6 +887,13 @@ extern "C"
 		auto _p0 = Group;
 		auto _p1 = bBlockTillComplete;
 		Self->RunTickGroup(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UWorld_SeamlessTravel(UWorld* Self, char* InURL, bool bAbsolute)
+	{
+		auto _p0 = ConvertFromManage_FString(InURL);
+		auto _p1 = bAbsolute;
+		Self->SeamlessTravel(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UWorld_SendAllEndOfFrameUpdates(UWorld* Self)

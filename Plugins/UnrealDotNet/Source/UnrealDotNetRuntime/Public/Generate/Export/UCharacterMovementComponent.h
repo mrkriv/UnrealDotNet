@@ -88,6 +88,11 @@ public:
 		MaintainHorizontalGroundVelocity();
 	}
 
+	void MoveAlongFloor_WRAP(const FVector& InVelocity, float DeltaSeconds)
+	{
+		MoveAlongFloor(InVelocity, DeltaSeconds);
+	}
+
 	void MoveAutonomous_WRAP(float ClientTimeStamp, float DeltaTime, uint8 CompressedFlags, const FVector& NewAccel)
 	{
 		MoveAutonomous(ClientTimeStamp, DeltaTime, CompressedFlags, NewAccel);
@@ -1334,6 +1339,13 @@ extern "C"
 		Self->MaybeUpdateBasedMovement(_p0);
 	}
 
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_MoveAlongFloor(UCharacterMovementComponent* Self, INT_PTR InVelocity, float DeltaSeconds)
+	{
+		auto& _p0 = *(FVector*)InVelocity;
+		auto _p1 = DeltaSeconds;
+		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->MoveAlongFloor_WRAP(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_MoveAutonomous(UCharacterMovementComponent* Self, float ClientTimeStamp, float DeltaTime, uint8 CompressedFlags, INT_PTR NewAccel)
 	{
 		auto _p0 = ClientTimeStamp;
@@ -1341,6 +1353,13 @@ extern "C"
 		auto _p2 = CompressedFlags;
 		auto& _p3 = *(FVector*)NewAccel;
 		((E_PROTECTED_WRAP_UCharacterMovementComponent*)Self)->MoveAutonomous_WRAP(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_MoveSmooth(UCharacterMovementComponent* Self, INT_PTR InVelocity, float DeltaSeconds)
+	{
+		auto& _p0 = *(FVector*)InVelocity;
+		auto _p1 = DeltaSeconds;
+		Self->MoveSmooth(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_NewFallVelocity(UCharacterMovementComponent* Self, INT_PTR InitialVelocity, INT_PTR Gravity, float DeltaTime)
@@ -1750,6 +1769,14 @@ extern "C"
 		auto _p3 = remainingTime;
 		auto _p4 = Iterations;
 		Self->StartSwimming(_p0, _p1, _p2, _p3, _p4);
+	}
+
+	DOTNET_EXPORT auto E_UCharacterMovementComponent_StepUp(UCharacterMovementComponent* Self, INT_PTR GravDir, INT_PTR Delta, INT_PTR Hit)
+	{
+		auto& _p0 = *(FVector*)GravDir;
+		auto& _p1 = *(FVector*)Delta;
+		auto& _p2 = *(FHitResult*)Hit;
+		return Self->StepUp(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_UCharacterMovementComponent_Swim(UCharacterMovementComponent* Self, INT_PTR Delta, INT_PTR Hit)

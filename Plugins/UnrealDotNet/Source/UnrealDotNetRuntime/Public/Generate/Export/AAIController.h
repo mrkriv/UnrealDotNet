@@ -108,6 +108,18 @@ extern "C"
 		return Self->ResumeMove(_p0);
 	}
 
+	DOTNET_EXPORT auto E_AAIController_SetFocalPoint(AAIController* Self, INT_PTR NewFocus)
+	{
+		auto _p0 = *(FVector*)NewFocus;
+		Self->SetFocalPoint(_p0);
+	}
+
+	DOTNET_EXPORT auto E_AAIController_SetFocus(AAIController* Self, AActor* NewFocus)
+	{
+		auto _p0 = NewFocus;
+		Self->SetFocus(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AAIController_SetMoveBlockDetection(AAIController* Self, bool bEnable)
 	{
 		auto _p0 = bEnable;

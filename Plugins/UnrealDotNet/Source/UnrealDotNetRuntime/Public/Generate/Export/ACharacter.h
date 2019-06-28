@@ -662,6 +662,11 @@ extern "C"
 		Self->SimulatedRootMotionPositionFixup(_p0);
 	}
 
+	DOTNET_EXPORT auto E_ACharacter_StopAnimMontage(ACharacter* Self)
+	{
+		Self->StopAnimMontage();
+	}
+
 	DOTNET_EXPORT auto E_ACharacter_StopJumping(ACharacter* Self)
 	{
 		Self->StopJumping();

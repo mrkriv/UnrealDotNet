@@ -190,7 +190,7 @@ namespace CodeGenerator
         public bool MethodFilterNoCahed(Method m)
         {
             var Class = m.OwnerClass;
-            
+
             if (m.IsOverride || m.IsFriend || m.IsTemplate)
                 return false;
 
@@ -209,13 +209,23 @@ namespace CodeGenerator
             if (MethodInClassBlackList.ContainsKey(Class.Name) && MethodInClassBlackList[Class.Name].Contains(m.Name))
                 return false;
 
-            if (!m.Dependent.All(TypeFilter))
+            if (!TypeFilter(m.ReturnType.Type))
                 return false;
+
+            while (m.InputTypes.Any(x => !TypeFilter(x.Type)))
+            {
+                if (m.InputTypes.Count(x => !string.IsNullOrEmpty(x.Default)) == 0)
+                    return false;
+
+                m.InputTypes.RemoveAt(m.InputTypes.Count - 1);
+                m.IsClippedArguments = true;
+            }
 
             var overloads = Class.Methods.Where(x => x.Name == m.Name && x.ValidForExport == true).ToList();
             m.OverloadIndex = overloads.Count;
 
-            if (overloads.Any(x => x != m && x.EqualsInputTypes(m))) return false;
+            if (overloads.Any(x => x != m && x.EqualsInputTypes(m)))
+                return false;
 
             return true;
         }
@@ -283,6 +293,9 @@ namespace CodeGenerator
                 return false;
             
             if (!method.IsVirtual || method.IsOverride || method.IsConst)
+                return false;
+            
+            if (method.IsClippedArguments)
                 return false;
 
             if (!method.ReturnType.Type.IsVoid)

@@ -964,7 +964,13 @@ namespace UnrealEngine
 		private static extern void E_UCharacterMovementComponent_MaybeUpdateBasedMovement(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_MoveAlongFloor(IntPtr self, IntPtr inVelocity, float deltaSeconds);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_MoveAutonomous(IntPtr self, float clientTimeStamp, float deltaTime, byte compressedFlags, IntPtr newAccel);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UCharacterMovementComponent_MoveSmooth(IntPtr self, IntPtr inVelocity, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_UCharacterMovementComponent_NewFallVelocity(IntPtr self, IntPtr initialVelocity, IntPtr gravity, float deltaTime);
@@ -1142,6 +1148,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UCharacterMovementComponent_StartSwimming(IntPtr self, IntPtr oldLocation, IntPtr oldVelocity, float timeTick, float remainingTime, int iterations);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UCharacterMovementComponent_StepUp(IntPtr self, IntPtr gravDir, IntPtr delta, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern float E_UCharacterMovementComponent_Swim(IntPtr self, IntPtr delta, IntPtr hit);
@@ -3253,8 +3262,29 @@ namespace UnrealEngine
 		public virtual void MaybeUpdateBasedMovement(float deltaSeconds)
 			=> E_UCharacterMovementComponent_MaybeUpdateBasedMovement(this, deltaSeconds);
 		
+		
+		/// <summary>
+		/// Move along the floor, using CurrentFloor and ComputeGroundMovementDelta() to get a movement direction.
+		/// <para>If a second walkable surface is hit, it will also be moved along using the same approach. </para>
+		/// </summary>
+		/// <param name="inVelocity">Velocity of movement</param>
+		/// <param name="deltaSeconds">Time over which movement occurs</param>
+		/// <param name="outStepDownResult">Out] If non-null, and a floor check is performed, this will be updated to reflect that result.</param>
+		protected virtual void MoveAlongFloor(FVector inVelocity, float deltaSeconds)
+			=> E_UCharacterMovementComponent_MoveAlongFloor(this, inVelocity, deltaSeconds);
+		
 		protected virtual void MoveAutonomous(float clientTimeStamp, float deltaTime, byte compressedFlags, FVector newAccel)
 			=> E_UCharacterMovementComponent_MoveAutonomous(this, clientTimeStamp, deltaTime, compressedFlags, newAccel);
+		
+		
+		/// <summary>
+		/// Moves along the given movement direction using simple movement rules based on the current movement mode (usually used by simulated proxies).
+		/// </summary>
+		/// <param name="inVelocity">Velocity of movement</param>
+		/// <param name="deltaSeconds">Time over which movement occurs</param>
+		/// <param name="outStepDownResult">Out] If non-null, and a floor check is performed, this will be updated to reflect that result.</param>
+		public virtual void MoveSmooth(FVector inVelocity, float deltaSeconds)
+			=> E_UCharacterMovementComponent_MoveSmooth(this, inVelocity, deltaSeconds);
 		
 		
 		/// <summary>
@@ -3694,6 +3724,18 @@ namespace UnrealEngine
 		/// <param name="iterations">physics iteration count</param>
 		public void StartSwimming(FVector oldLocation, FVector oldVelocity, float timeTick, float remainingTime, int iterations)
 			=> E_UCharacterMovementComponent_StartSwimming(this, oldLocation, oldVelocity, timeTick, remainingTime, iterations);
+		
+		
+		/// <summary>
+		/// Move up steps or slope. Does nothing and returns false if CanStepUp(Hit) returns false.
+		/// </summary>
+		/// <param name="gravDir">Gravity vector direction (assumed normalized or zero)</param>
+		/// <param name="delta">Requested move</param>
+		/// <param name="hit">In] The hit before the step up.</param>
+		/// <param name="outStepDownResult">Out] If non-null, a floor check will be performed if possible as part of the final step down, and it will be updated to reflect this result.</param>
+		/// <return>true</return>
+		public virtual bool StepUp(FVector gravDir, FVector delta, FHitResult hit)
+			=> E_UCharacterMovementComponent_StepUp(this, gravDir, delta, hit);
 		
 		public float Swim(FVector delta, FHitResult hit)
 			=> E_UCharacterMovementComponent_Swim(this, delta, hit);

@@ -462,6 +462,12 @@ namespace UnrealEngine
 		private static extern void E_UPrimitiveComponent_DispatchMouseOverEvents(IntPtr self, IntPtr currentComponent, IntPtr newComponent);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_DispatchOnClicked(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_DispatchOnReleased(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_DispatchWakeEvents(IntPtr self, byte wakeEvent, string boneName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -646,6 +652,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SendPhysicsTransform(IntPtr self, byte teleport);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UPrimitiveComponent_SendRenderDebugPhysics(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPrimitiveComponent_SetAllMassScale(IntPtr self, float inMassScale);
@@ -1897,6 +1906,12 @@ namespace UnrealEngine
 		public void DispatchMouseOverEvents(UPrimitiveComponent currentComponent, UPrimitiveComponent newComponent)
 			=> E_UPrimitiveComponent_DispatchMouseOverEvents(this, currentComponent, newComponent);
 		
+		public void DispatchOnClicked()
+			=> E_UPrimitiveComponent_DispatchOnClicked(this);
+		
+		public void DispatchOnReleased()
+			=> E_UPrimitiveComponent_DispatchOnReleased(this);
+		
 		
 		/// <summary>
 		/// Dispatch notification for wake events and propagate to any welded bodies
@@ -2403,6 +2418,13 @@ namespace UnrealEngine
 		/// </summary>
 		protected void SendPhysicsTransform(ETeleportType teleport)
 			=> E_UPrimitiveComponent_SendPhysicsTransform(this, (byte)teleport);
+		
+		
+		/// <summary>
+		/// Updates the renderer with the center of mass data
+		/// </summary>
+		public virtual void SendRenderDebugPhysics()
+			=> E_UPrimitiveComponent_SendRenderDebugPhysics(this);
 		
 		
 		/// <summary>

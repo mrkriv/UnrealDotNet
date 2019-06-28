@@ -36,6 +36,15 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// Constructor taking a point position and tangent, and optionally rotation and scale
+		/// </summary>
+		public FSplinePoint(float inInputKey, FVector inPosition, FVector inArriveTangent, FVector inLeaveTangent, FRotator inRotation, FVector inScale) :
+			base(E_CreateStruct_FSplinePoint_float_FVector_FVector_FVector_FRotator_FVector(inInputKey, inPosition, inArriveTangent, inLeaveTangent, inRotation, inScale), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FSplinePoint_ArriveTangent_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -72,6 +81,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FSplinePoint_float_FVector(float inInputKey, IntPtr inPosition);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FSplinePoint_float_FVector_FVector_FVector_FRotator_FVector(float inInputKey, IntPtr inPosition, IntPtr inArriveTangent, IntPtr inLeaveTangent, IntPtr inRotation, IntPtr inScale);
 		
 		#endregion
 		

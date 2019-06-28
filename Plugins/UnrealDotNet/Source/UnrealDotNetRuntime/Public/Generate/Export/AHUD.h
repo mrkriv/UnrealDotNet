@@ -59,6 +59,16 @@ extern "C"
 		return (INT_PTR)NewObject<AHUD>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_AHUD_AddDebugText(AHUD* Self, char* DebugText, AActor* SrcActor, float Duration, INT_PTR Offset, INT_PTR DesiredOffset)
+	{
+		auto _p0 = ConvertFromManage_FString(DebugText);
+		auto _p1 = SrcActor;
+		auto _p2 = Duration;
+		auto _p3 = *(FVector*)Offset;
+		auto _p4 = *(FVector*)DesiredOffset;
+		Self->AddDebugText(_p0, _p1, _p2, _p3, _p4);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_AddHitBox(AHUD* Self, INT_PTR Position, INT_PTR Size, char* InName, bool bConsumesInput, int32 Priority)
 	{
 		auto _p0 = *(FVector2D*)Position;
@@ -132,6 +142,15 @@ extern "C"
 		Self->DrawSafeZoneOverlay();
 	}
 
+	DOTNET_EXPORT auto E_AHUD_DrawText(AHUD* Self, char* Text, INT_PTR TextColor, float ScreenX, float ScreenY)
+	{
+		auto _p0 = ConvertFromManage_FString(Text);
+		auto _p1 = *(FLinearColor*)TextColor;
+		auto _p2 = ScreenX;
+		auto _p3 = ScreenY;
+		Self->DrawText(_p0, _p1, _p2, _p3);
+	}
+
 	DOTNET_EXPORT auto E_AHUD_GetCurrentDebugTargetActor(AHUD* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetCurrentDebugTargetActor());
@@ -145,6 +164,14 @@ extern "C"
 	DOTNET_EXPORT auto E_AHUD_GetOwningPlayerController(AHUD* Self)
 	{
 		return ConvertToManage_ObjectPointerDescription(Self->GetOwningPlayerController());
+	}
+
+	DOTNET_EXPORT auto E_AHUD_GetTextSize(AHUD* Self, char* Text, float OutWidth, float OutHeight)
+	{
+		auto _p0 = ConvertFromManage_FString(Text);
+		auto& _p1 = OutWidth;
+		auto& _p2 = OutHeight;
+		Self->GetTextSize(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_AHUD_HandleBugScreenShot(AHUD* Self)

@@ -46,6 +46,12 @@ namespace UnrealEngine
 		private static extern ObjectPointerDescription E_UPawnActionsComponent_GetCurrentAction(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPawnActionsComponent_K2_PerformAction(IntPtr self, IntPtr pawn, IntPtr action);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UPawnActionsComponent_PerformAction(IntPtr self, IntPtr pawn, IntPtr action);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UPawnActionsComponent_SetControlledPawn(IntPtr self, IntPtr newPawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -71,6 +77,12 @@ namespace UnrealEngine
 		
 		public UPawnAction GetCurrentAction()
 			=> E_UPawnActionsComponent_GetCurrentAction(this);
+		
+		public bool K2_PerformAction(APawn pawn, UPawnAction action)
+			=> E_UPawnActionsComponent_K2_PerformAction(this, pawn, action);
+		
+		public bool PerformAction(APawn pawn, UPawnAction action)
+			=> E_UPawnActionsComponent_PerformAction(this, pawn, action);
 		
 		
 		/// <summary>

@@ -64,6 +64,9 @@ namespace UnrealEngine
 		private static extern void E_UObject_ConditionalPostLoad(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_ConditionalPostLoadSubobjects(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_DestroyNonNativeProperties(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -100,6 +103,9 @@ namespace UnrealEngine
 		private static extern bool E_UObject_ImplementsGetWorld(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_InstanceSubobjectTemplates(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_IsAsset(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -134,6 +140,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UObject_IsSupportedForNetworking(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_LoadConfig(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_MarkAsEditorOnlySubobject(IntPtr self);
@@ -182,6 +191,18 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_PreNetReceive(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_ReinitializeProperties(IntPtr self, IntPtr sourceObject);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_ReloadConfig(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_UObject_Rename(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UObject_SaveConfig(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UObject_ShutdownAfterError(IntPtr self);
@@ -285,6 +306,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Instances subobjects and components for objects being loaded from disk, if necessary.  Ensures that references
+		/// <para>between nested components are fixed up correctly. </para>
+		/// subobjects and components for a subobject root.
+		/// </summary>
+		/// <param name="outerInstanceGraph">when calling this method on subobjects, specifies the instancing graph which contains all instanced</param>
+		public void ConditionalPostLoadSubobjects()
+			=> E_UObject_ConditionalPostLoadSubobjects(this);
+		
+		
+		/// <summary>
 		/// Destroy properties that won't be destroyed by the native destructor
 		/// </summary>
 		public void DestroyNonNativeProperties()
@@ -377,6 +408,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Wrapper for calling UClass::InstanceSubobjectTemplates() for this object.
+		/// </summary>
+		public void InstanceSubobjectTemplates()
+			=> E_UObject_InstanceSubobjectTemplates(this);
+		
+		
+		/// <summary>
 		/// Returns true if this object is considered an asset.
 		/// </summary>
 		public virtual bool IsAsset()
@@ -464,6 +502,17 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual bool IsSupportedForNetworking()
 			=> E_UObject_IsSupportedForNetworking(this);
+		
+		
+		/// <summary>
+		/// Imports property values from an .ini file.
+		/// </summary>
+		/// <param name="class">the class to use for determining which section of the ini to retrieve text values from</param>
+		/// <param name="filename">indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName</param>
+		/// <param name="propagationFlags">indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.</param>
+		/// <param name="propertyToLoad">if specified, only the ini value for the specified property will be imported.</param>
+		public void LoadConfig()
+			=> E_UObject_LoadConfig(this);
 		
 		
 		/// <summary>
@@ -595,6 +644,47 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void PreNetReceive()
 			=> E_UObject_PreNetReceive(this);
+		
+		
+		/// <summary>
+		/// Wrapper function for InitProperties() which handles safely tearing down this object before re-initializing it
+		/// <para>from the specified source object. </para>
+		/// </summary>
+		/// <param name="sourceObject">the object to use for initializing property values in this object.  If not specified, uses this object's archetype.</param>
+		/// <param name="instanceGraph">contains the mappings of instanced objects and components to their templates</param>
+		public void ReinitializeProperties(UObject sourceObject = null)
+			=> E_UObject_ReinitializeProperties(this, sourceObject);
+		
+		
+		/// <summary>
+		/// Wrapper method for LoadConfig that is used when reloading the config data for objects at runtime which have already loaded their config data at least once.
+		/// <para>Allows the objects the receive a callback that its configuration data has been reloaded. </para>
+		/// </summary>
+		/// <param name="class">the class to use for determining which section of the ini to retrieve text values from</param>
+		/// <param name="filename">indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName</param>
+		/// <param name="propagationFlags">indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.</param>
+		/// <param name="propertyToLoad">if specified, only the ini value for the specified property will be imported</param>
+		public void ReloadConfig()
+			=> E_UObject_ReloadConfig(this);
+		
+		
+		/// <summary>
+		/// Rename this object to a unique name, or change its outer.
+		/// <para>@warning Unless ForceNoResetLoaders is passed in, this will cause a flush of all level streaming. </para>
+		/// </summary>
+		/// <param name="newName">The new name of the object, if null then NewOuter should be set</param>
+		/// <param name="newOuter">New Outer this object will be placed within, if null it will use the current outer</param>
+		/// <param name="flags">Flags to specify what happens during the rename</param>
+		public virtual bool Rename()
+			=> E_UObject_Rename(this);
+		
+		
+		/// <summary>
+		/// Save configuration out to ini files
+		/// <para>@warning Must be safe to call on class-default object </para>
+		/// </summary>
+		public void SaveConfig()
+			=> E_UObject_SaveConfig(this);
 		
 		
 		/// <summary>

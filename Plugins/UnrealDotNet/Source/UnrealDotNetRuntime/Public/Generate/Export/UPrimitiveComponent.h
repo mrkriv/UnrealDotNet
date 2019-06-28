@@ -539,6 +539,16 @@ extern "C"
 		Self->DispatchMouseOverEvents(_p0, _p1);
 	}
 
+	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchOnClicked(UPrimitiveComponent* Self)
+	{
+		Self->DispatchOnClicked();
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchOnReleased(UPrimitiveComponent* Self)
+	{
+		Self->DispatchOnReleased();
+	}
+
 	DOTNET_EXPORT auto E_UPrimitiveComponent_DispatchWakeEvents(UPrimitiveComponent* Self, ESleepEvent WakeEvent, char* BoneName)
 	{
 		auto _p0 = WakeEvent;
@@ -938,6 +948,11 @@ extern "C"
 	{
 		auto _p0 = Teleport;
 		((E_PROTECTED_WRAP_UPrimitiveComponent*)Self)->SendPhysicsTransform_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UPrimitiveComponent_SendRenderDebugPhysics(UPrimitiveComponent* Self)
+	{
+		Self->SendRenderDebugPhysics();
 	}
 
 	DOTNET_EXPORT auto E_UPrimitiveComponent_SetAllMassScale(UPrimitiveComponent* Self, float InMassScale)

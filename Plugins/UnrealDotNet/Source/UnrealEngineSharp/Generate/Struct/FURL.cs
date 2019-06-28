@@ -18,6 +18,15 @@ namespace UnrealEngine
 		{
 		}
 
+		
+		/// <summary>
+		/// Construct a purely default, local URL from an optional filename.
+		/// </summary>
+		public FURL() :
+			base(E_CreateStruct_FURL(), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_PROP_FURL_bDefaultsInitialized_GET();
 		
@@ -57,6 +66,9 @@ namespace UnrealEngine
 		private static extern void E_PROP_FURL_Valid_SET(IntPtr Ptr, int Value);
 		
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FURL();
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_FURL_FilterURLString(IntPtr self, string str);
 		

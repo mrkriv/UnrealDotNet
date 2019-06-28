@@ -18,6 +18,11 @@ namespace UnrealEngine
 		{
 		}
 
+		public FInputActionKeyMapping(string inActionName) :
+			base(E_CreateStruct_FInputActionKeyMapping_FName(inActionName), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FInputActionKeyMapping_ActionName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -42,6 +47,12 @@ namespace UnrealEngine
 		private static extern byte E_PROP_FInputActionKeyMapping_bShift_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FInputActionKeyMapping_bShift_SET(IntPtr Ptr, byte Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FInputActionKeyMapping_FName(string inActionName);
+		
+		#endregion
 		
 		#region Property
 		

@@ -349,6 +349,9 @@ namespace UnrealEngine
 		private static extern void E_ACharacter_SimulatedRootMotionPositionFixup(IntPtr self, float deltaSeconds);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ACharacter_StopAnimMontage(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ACharacter_StopJumping(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -1092,6 +1095,13 @@ namespace UnrealEngine
 		/// </summary>
 		public void SimulatedRootMotionPositionFixup(float deltaSeconds)
 			=> E_ACharacter_SimulatedRootMotionPositionFixup(this, deltaSeconds);
+		
+		
+		/// <summary>
+		/// Stop Animation Montage. If nullptr, it will stop what's currently active. The Blend Out Time is taken from the montage asset that is being stopped.
+		/// </summary>
+		public virtual void StopAnimMontage()
+			=> E_ACharacter_StopAnimMontage(this);
 		
 		
 		/// <summary>

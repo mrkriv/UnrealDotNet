@@ -130,6 +130,9 @@ namespace UnrealEngine
 		private static extern bool E_USceneComponent_AreDynamicDataChangesAllowed(IntPtr self, bool bIgnoreStationary);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_AttachTo(IntPtr self, IntPtr inParent, string inSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_AttachToComponent(IntPtr self, IntPtr inParent, IntPtr attachmentRules, string inSocketName);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -331,6 +334,9 @@ namespace UnrealEngine
 		private static extern void E_USceneComponent_K2_AddWorldTransform(IntPtr self, IntPtr deltaTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_K2_AttachTo(IntPtr self, IntPtr inParent, string inSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_USceneComponent_K2_AttachToComponent(IntPtr self, IntPtr parent, string socketName, byte locationRule, byte rotationRule, byte scaleRule, bool bWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -505,6 +511,12 @@ namespace UnrealEngine
 		private static extern void E_USceneComponent_UpdateNavigationData(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_UpdateOverlaps(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_USceneComponent_UpdateOverlapsImpl(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_USceneComponent_UpdatePhysicsVolume(IntPtr self, bool bTriggerNotifiers);
 		
 		#endregion
@@ -677,6 +689,9 @@ namespace UnrealEngine
 		/// <return>Whether</return>
 		protected bool AreDynamicDataChangesAllowed(bool bIgnoreStationary = true)
 			=> E_USceneComponent_AreDynamicDataChangesAllowed(this, bIgnoreStationary);
+		
+		public bool AttachTo(USceneComponent inParent, string inSocketName)
+			=> E_USceneComponent_AttachTo(this, inParent, inSocketName);
 		
 		
 		/// <summary>
@@ -1229,6 +1244,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// DEPRECATED - Use AttachToComponent() instead
+		/// </summary>
+		public bool AttachToDeprecated(USceneComponent inParent, string inSocketName)
+			=> E_USceneComponent_K2_AttachTo(this, inParent, inSocketName);
+		
+		
+		/// <summary>
 		/// Attach this component to another scene component, optionally at a named socket. It is valid to call this on components whether or not they have been Registered.
 		/// </summary>
 		/// <param name="parent">Parent to attach to.</param>
@@ -1674,6 +1696,20 @@ namespace UnrealEngine
 		/// </summary>
 		protected void UpdateNavigationData()
 			=> E_USceneComponent_UpdateNavigationData(this);
+		
+		
+		/// <summary>
+		/// Queries world and updates overlap tracking state for this component
+		/// </summary>
+		public bool UpdateOverlaps()
+			=> E_USceneComponent_UpdateOverlaps(this);
+		
+		
+		/// <summary>
+		/// Internal helper for UpdateOverlaps
+		/// </summary>
+		protected virtual bool UpdateOverlapsImpl()
+			=> E_USceneComponent_UpdateOverlapsImpl(this);
 		
 		
 		/// <summary>

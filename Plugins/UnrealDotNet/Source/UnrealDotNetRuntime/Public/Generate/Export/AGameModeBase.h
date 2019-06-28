@@ -327,6 +327,12 @@ extern "C"
 		Self->ReturnToMainMenuHost();
 	}
 
+	DOTNET_EXPORT auto E_AGameModeBase_SetPause(AGameModeBase* Self, APlayerController* PC)
+	{
+		auto _p0 = PC;
+		return Self->SetPause(_p0);
+	}
+
 	DOTNET_EXPORT auto E_AGameModeBase_SetPlayerDefaults(AGameModeBase* Self, APawn* PlayerPawn)
 	{
 		auto _p0 = PlayerPawn;

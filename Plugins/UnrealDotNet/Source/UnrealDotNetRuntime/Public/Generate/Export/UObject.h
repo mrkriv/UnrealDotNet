@@ -98,6 +98,11 @@ extern "C"
 		Self->ConditionalPostLoad();
 	}
 
+	DOTNET_EXPORT auto E_UObject_ConditionalPostLoadSubobjects(UObject* Self)
+	{
+		Self->ConditionalPostLoadSubobjects();
+	}
+
 	DOTNET_EXPORT auto E_UObject_DestroyNonNativeProperties(UObject* Self)
 	{
 		Self->DestroyNonNativeProperties();
@@ -160,6 +165,11 @@ extern "C"
 		return Self->ImplementsGetWorld();
 	}
 
+	DOTNET_EXPORT auto E_UObject_InstanceSubobjectTemplates(UObject* Self)
+	{
+		Self->InstanceSubobjectTemplates();
+	}
+
 	DOTNET_EXPORT auto E_UObject_IsAsset(UObject* Self)
 	{
 		return Self->IsAsset();
@@ -219,6 +229,11 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_IsSupportedForNetworking(UObject* Self)
 	{
 		return Self->IsSupportedForNetworking();
+	}
+
+	DOTNET_EXPORT auto E_UObject_LoadConfig(UObject* Self)
+	{
+		Self->LoadConfig();
 	}
 
 	DOTNET_EXPORT auto E_UObject_MarkAsEditorOnlySubobject(UObject* Self)
@@ -304,6 +319,27 @@ extern "C"
 	DOTNET_EXPORT auto E_UObject_PreNetReceive(UObject* Self)
 	{
 		Self->PreNetReceive();
+	}
+
+	DOTNET_EXPORT auto E_UObject_ReinitializeProperties(UObject* Self, UObject* SourceObject)
+	{
+		auto _p0 = SourceObject;
+		Self->ReinitializeProperties(_p0);
+	}
+
+	DOTNET_EXPORT auto E_UObject_ReloadConfig(UObject* Self)
+	{
+		Self->ReloadConfig();
+	}
+
+	DOTNET_EXPORT auto E_UObject_Rename(UObject* Self)
+	{
+		return Self->Rename();
+	}
+
+	DOTNET_EXPORT auto E_UObject_SaveConfig(UObject* Self)
+	{
+		Self->SaveConfig();
 	}
 
 	DOTNET_EXPORT auto E_UObject_ShutdownAfterError(UObject* Self)

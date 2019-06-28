@@ -66,6 +66,9 @@ namespace UnrealEngine
 		private static extern bool E_ULocalPlayer_GetPixelPoint(IntPtr self, IntPtr inPoint, IntPtr outPoint, IntPtr optionalAllotedSize);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_ULocalPlayer_GetViewPoint(IntPtr self, IntPtr outViewInfo);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_ULocalPlayer_InitOnlineSession(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -179,6 +182,15 @@ namespace UnrealEngine
 		/// <return>False</return>
 		public bool GetPixelPoint(FVector inPoint, FVector2D outPoint, FVector2D optionalAllotedSize = null)
 			=> E_ULocalPlayer_GetPixelPoint(this, inPoint, outPoint, optionalAllotedSize);
+		
+		
+		/// <summary>
+		/// Retrieve the viewpoint of this player.
+		/// </summary>
+		/// <param name="outViewInfo">Upon return contains the view information for the player.</param>
+		/// <param name="stereoPass">Which stereoscopic pass, if any, to get the viewport for.  This will include eye offsetting</param>
+		protected virtual void GetViewPoint(FMinimalViewInfo outViewInfo)
+			=> E_ULocalPlayer_GetViewPoint(this, outViewInfo);
 		
 		
 		/// <summary>

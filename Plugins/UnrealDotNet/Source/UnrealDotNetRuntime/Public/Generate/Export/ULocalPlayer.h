@@ -10,6 +10,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // Source file C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine\LocalPlayer.h:163
 
+class E_PROTECTED_WRAP_ULocalPlayer : protected ULocalPlayer
+{
+public:
+	void GetViewPoint_WRAP(FMinimalViewInfo& OutViewInfo)
+	{
+		GetViewPoint(OutViewInfo);
+	}
+
+};
+
+
 extern "C"
 {
 	DOTNET_EXPORT auto E_PROP_ULocalPlayer_LastViewLocation_GET(ULocalPlayer* Ptr) { return (INT_PTR)&(Ptr->LastViewLocation); }
@@ -60,6 +71,12 @@ extern "C"
 		auto& _p1 = *(FVector2D*)OutPoint;
 		auto _p2 = (FVector2D*)OptionalAllotedSize;
 		return Self->GetPixelPoint(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_ULocalPlayer_GetViewPoint(ULocalPlayer* Self, INT_PTR OutViewInfo)
+	{
+		auto& _p0 = *(FMinimalViewInfo*)OutViewInfo;
+		((E_PROTECTED_WRAP_ULocalPlayer*)Self)->GetViewPoint_WRAP(_p0);
 	}
 
 	DOTNET_EXPORT auto E_ULocalPlayer_InitOnlineSession(ULocalPlayer* Self)

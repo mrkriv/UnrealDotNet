@@ -46,6 +46,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_UPawnAction_Repeat(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern ObjectPointerDescription E_UPawnAction_Repeat_CreateAction(IntPtr self, IntPtr world, IntPtr actionToRepeat, int numberOfRepeats);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_UPawnAction_Repeat_PushSubAction(IntPtr self);
 		
 		#endregion
@@ -72,6 +75,13 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		
+		/// <summary>
+		/// </summary>
+		/// <param name="numberOfRepeats">number of times to repeat action. UPawnAction_Repeat::LoopForever loops forever</param>
+		public UPawnAction_Repeat CreateAction(UWorld world, UPawnAction actionToRepeat, int numberOfRepeats)
+			=> E_UPawnAction_Repeat_CreateAction(this, world, actionToRepeat, numberOfRepeats);
+		
 		protected bool PushSubAction()
 			=> E_UPawnAction_Repeat_PushSubAction(this);
 		

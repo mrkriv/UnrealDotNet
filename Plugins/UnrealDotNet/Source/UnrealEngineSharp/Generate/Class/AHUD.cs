@@ -81,6 +81,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_NewObject_AHUD(IntPtr Parent, string Name);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_AddDebugText(IntPtr self, string debugText, IntPtr srcActor, float duration, IntPtr offset, IntPtr desiredOffset);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_AddHitBox(IntPtr self, IntPtr position, IntPtr size, string inName, bool bConsumesInput, int priority);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -111,6 +114,9 @@ namespace UnrealEngine
 		private static extern void E_AHUD_DrawSafeZoneOverlay(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_DrawText(IntPtr self, string text, IntPtr textColor, float screenX, float screenY);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AHUD_GetCurrentDebugTargetActor(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -118,6 +124,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern ObjectPointerDescription E_AHUD_GetOwningPlayerController(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AHUD_GetTextSize(IntPtr self, string text, float outWidth, float outHeight);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AHUD_HandleBugScreenShot(IntPtr self);
@@ -302,6 +311,9 @@ namespace UnrealEngine
 		#endregion
 		
 		#region ExternMethods
+		public void AddDebugText(string debugText, AActor srcActor, float duration, FVector offset, FVector desiredOffset)
+			=> E_AHUD_AddDebugText(this, debugText, srcActor, duration, offset, desiredOffset);
+		
 		
 		/// <summary>
 		/// Add a hitbox to the hud
@@ -391,6 +403,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Draws a string on the HUD.
+		/// </summary>
+		/// <param name="text">String to draw</param>
+		/// <param name="textColor">Color to draw string</param>
+		/// <param name="screenX">Screen-space X coordinate of upper left corner of the string.</param>
+		/// <param name="screenY">Screen-space Y coordinate of upper left corner of the string.</param>
+		/// <param name="font">Font to draw text.  If NULL, default font is chosen.</param>
+		/// <param name="scale">Scale multiplier to control size of the text.</param>
+		/// <param name="bScalePosition">Whether the "Scale" parameter should also scale the position of this draw call.</param>
+		public void DrawText(string text, FLinearColor textColor, float screenX, float screenY)
+			=> E_AHUD_DrawText(this, text, textColor, screenX, screenY);
+		
+		
+		/// <summary>
 		/// Get Target to view 'showdebug' on
 		/// </summary>
 		public virtual AActor GetCurrentDebugTargetActor()
@@ -409,6 +435,18 @@ namespace UnrealEngine
 		/// </summary>
 		public APlayerController GetOwningPlayerController()
 			=> E_AHUD_GetOwningPlayerController(this);
+		
+		
+		/// <summary>
+		/// Returns the width and height of a string.
+		/// </summary>
+		/// <param name="text">String to draw</param>
+		/// <param name="outWidth">Returns the width in pixels of the string.</param>
+		/// <param name="outHeight">Returns the height in pixels of the string.</param>
+		/// <param name="font">Font to draw text.  If NULL, default font is chosen.</param>
+		/// <param name="scale">Scale multiplier to control size of the text.</param>
+		public void GetTextSize(string text, float outWidth, float outHeight)
+			=> E_AHUD_GetTextSize(this, text, outWidth, outHeight);
 		
 		
 		/// <summary>

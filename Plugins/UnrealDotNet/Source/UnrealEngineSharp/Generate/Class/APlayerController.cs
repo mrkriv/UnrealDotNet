@@ -238,6 +238,9 @@ namespace UnrealEngine
 		private static extern void E_APlayerController_ClientSetBlockOnAsyncLoading(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ClientSetCameraFade(IntPtr self, bool bEnableFading);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientSetCameraMode(IntPtr self, string newCamMode);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -254,6 +257,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientTeamMessage(IntPtr self, IntPtr senderPlayerState, string s, string type, float msgLifeTime);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ClientTravel(IntPtr self, string uRL, byte travelType, bool bSeamless);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_APlayerController_ClientTravelInternal(IntPtr self, string uRL, byte travelType, bool bSeamless);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_ClientUpdateLevelStreamingStatus(IntPtr self, string packageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad, int lODIndex);
@@ -434,6 +443,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_SetName(IntPtr self, string s);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_APlayerController_SetPause(IntPtr self, bool bPause);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_APlayerController_SetViewTargetWithBlend(IntPtr self, IntPtr newViewTarget, float blendTime, byte blendFunc, float blendExp, bool bLockOutgoing);
@@ -781,6 +793,9 @@ namespace UnrealEngine
 		public void ClientSetBlockOnAsyncLoading()
 			=> E_APlayerController_ClientSetBlockOnAsyncLoading(this);
 		
+		public void ClientSetCameraFade(bool bEnableFading)
+			=> E_APlayerController_ClientSetCameraFade(this, bEnableFading);
+		
 		public void ClientSetCameraMode(string newCamMode)
 			=> E_APlayerController_ClientSetCameraMode(this, newCamMode);
 		
@@ -802,6 +817,12 @@ namespace UnrealEngine
 		
 		public void ClientTeamMessage(APlayerState senderPlayerState, string s, string type, float msgLifeTime = 0)
 			=> E_APlayerController_ClientTeamMessage(this, senderPlayerState, s, type, msgLifeTime);
+		
+		public void ClientTravel(string uRL, ETravelType travelType, bool bSeamless = false)
+			=> E_APlayerController_ClientTravel(this, uRL, (byte)travelType, bSeamless);
+		
+		public void ClientTravelInternal(string uRL, ETravelType travelType, bool bSeamless = false)
+			=> E_APlayerController_ClientTravelInternal(this, uRL, (byte)travelType, bSeamless);
 		
 		public void ClientUpdateLevelStreamingStatus(string packageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad, int lODIndex)
 			=> E_APlayerController_ClientUpdateLevelStreamingStatus(this, packageName, bNewShouldBeLoaded, bNewShouldBeVisible, bNewShouldBlockOnLoad, lODIndex);
@@ -1117,6 +1138,14 @@ namespace UnrealEngine
 		
 		public virtual void SetName(string s)
 			=> E_APlayerController_SetName(this, s);
+		
+		
+		/// <summary>
+		/// Locally try to pause game (call serverpause to pause network game); returns success indicator.  Calls GameModeBase's SetPause().
+		/// </summary>
+		/// <return>true</return>
+		public virtual bool SetPause(bool bPause)
+			=> E_APlayerController_SetPause(this, bPause);
 		
 		
 		/// <summary>

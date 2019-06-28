@@ -383,6 +383,9 @@ namespace UnrealEngine
 		private static extern void E_AActor_DispatchBlockingHit(IntPtr self, IntPtr myComp, IntPtr otherComp, bool bSelfMoved, IntPtr hit);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_DrawDebugComponents(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_EnableInput(IntPtr self, IntPtr playerController);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -393,6 +396,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_FinishAndRegisterComponent(IntPtr self, IntPtr component);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_FinishSpawning(IntPtr self, IntPtr transform, bool bIsDefaultTransform);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_FlushNetDormancy(IntPtr self);
@@ -719,6 +725,12 @@ namespace UnrealEngine
 		private static extern void E_AActor_K2_AddActorWorldTransform(IntPtr self, IntPtr deltaTransform, bool bSweep, IntPtr sweepHitResult, bool bTeleport);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AttachRootComponentTo(IntPtr self, IntPtr inParent, string inSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_K2_AttachRootComponentToActor(IntPtr self, IntPtr inParentActor, string inSocketName);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_K2_AttachToActor(IntPtr self, IntPtr parentActor, string socketName, byte locationRule, byte rotationRule, byte scaleRule, bool bWeldSimulatedBodies);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -801,6 +813,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_NotifyActorEndOverlap(IntPtr self, IntPtr otherActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_NotifyActorOnClicked(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_NotifyActorOnReleased(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_NotifyHit(IntPtr self, IntPtr myComp, IntPtr other, IntPtr otherComp, bool bSelfMoved, IntPtr hitLocation, IntPtr hitNormal, IntPtr normalImpulse, IntPtr hit);
@@ -900,6 +918,12 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_ReceiveActorEndOverlap(IntPtr self, IntPtr otherActor);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_ReceiveActorOnClicked(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AActor_ReceiveActorOnReleased(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AActor_ReceiveBeginPlay(IntPtr self);
@@ -1950,6 +1974,13 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Debug rendering to visualize the component tree for this actor.
+		/// </summary>
+		public void DrawDebugComponents()
+			=> E_AActor_DrawDebugComponents(this);
+		
+		
+		/// <summary>
 		/// Pushes this actor on to the stack of input being handled by a PlayerController.
 		/// </summary>
 		/// <param name="playerController">The PlayerController whose input events we want to receive.</param>
@@ -1977,6 +2008,13 @@ namespace UnrealEngine
 		/// <param name="component">Component to be finalized</param>
 		public void FinishAndRegisterComponent(UActorComponent component)
 			=> E_AActor_FinishAndRegisterComponent(this, component);
+		
+		
+		/// <summary>
+		/// Called to finish the spawning process, generally in the case of deferred spawning
+		/// </summary>
+		public void FinishSpawning(FTransform transform, bool bIsDefaultTransform = false)
+			=> E_AActor_FinishSpawning(this, transform, bIsDefaultTransform);
 		
 		
 		/// <summary>
@@ -2813,6 +2851,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// DEPRECATED - Use AttachToComponent() instead
+		/// </summary>
+		public void AttachActorToComponentDeprecated(USceneComponent inParent, string inSocketName)
+			=> E_AActor_K2_AttachRootComponentTo(this, inParent, inSocketName);
+		
+		
+		/// <summary>
+		/// DEPRECATED - Use AttachToActor() instead
+		/// </summary>
+		public void AttachActorToActorDeprecated(AActor inParentActor, string inSocketName)
+			=> E_AActor_K2_AttachRootComponentToActor(this, inParentActor, inSocketName);
+		
+		
+		/// <summary>
 		/// Attaches the RootComponent of this Actor to the supplied component, optionally at a named socket. It is not valid to call this on components that are not Registered.
 		/// </summary>
 		/// <param name="parentActor">Actor to attach this actor's RootComponent to</param>
@@ -3081,6 +3133,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Event when this actor is clicked by the mouse when using the clickable interface.
+		/// </summary>
+		public virtual void NotifyActorOnClicked()
+			=> E_AActor_NotifyActorOnClicked(this);
+		
+		
+		/// <summary>
+		/// Event when this actor is under the mouse when left mouse button is released while using the clickable interface.
+		/// </summary>
+		public virtual void NotifyActorOnReleased()
+			=> E_AActor_NotifyActorOnReleased(this);
+		
+		
+		/// <summary>
 		/// Event when this actor bumps into a blocking object, or blocks another actor that bumps into it.
 		/// <para>This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation. </para>
 		/// For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event.
@@ -3307,6 +3373,20 @@ namespace UnrealEngine
 		/// </summary>
 		public void ActorEndOverlap(AActor otherActor)
 			=> E_AActor_ReceiveActorEndOverlap(this, otherActor);
+		
+		
+		/// <summary>
+		/// Event when this actor is clicked by the mouse when using the clickable interface.
+		/// </summary>
+		public void ActorOnClicked()
+			=> E_AActor_ReceiveActorOnClicked(this);
+		
+		
+		/// <summary>
+		/// Event when this actor is under the mouse when left mouse button is released while using the clickable interface.
+		/// </summary>
+		public void ActorOnReleased()
+			=> E_AActor_ReceiveActorOnReleased(this);
 		
 		
 		/// <summary>

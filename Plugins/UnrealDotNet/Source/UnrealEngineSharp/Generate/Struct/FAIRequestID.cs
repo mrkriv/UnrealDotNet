@@ -18,6 +18,11 @@ namespace UnrealEngine
 		{
 		}
 
+		public FAIRequestID() :
+			base(E_CreateStruct_FAIRequestID(), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_PROP_FAIRequestID_AnyRequest_GET();
 		
@@ -28,6 +33,9 @@ namespace UnrealEngine
 		private static extern IntPtr E_PROP_FAIRequestID_InvalidRequest_GET();
 		
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FAIRequestID();
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool E_FAIRequestID_IsEquivalent(IntPtr self, IntPtr other);
 		

@@ -87,6 +87,12 @@ namespace UnrealEngine
 		private static extern bool E_AAIController_ResumeMove(IntPtr self, IntPtr requestToResume);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AAIController_SetFocalPoint(IntPtr self, IntPtr newFocus);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_AAIController_SetFocus(IntPtr self, IntPtr newFocus);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AAIController_SetMoveBlockDetection(IntPtr self, bool bEnable);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -195,14 +201,14 @@ namespace UnrealEngine
 		/// <summary>
 		/// Set the position that controller should be looking at.
 		/// </summary>
-		public void SetFocalPoint(FVector fP)
+		public void K2_SetFocalPoint(FVector fP)
 			=> E_AAIController_K2_SetFocalPoint(this, fP);
 		
 		
 		/// <summary>
 		/// Set Focus for actor, will set FocalPoint as a result.
 		/// </summary>
-		public void SetFocus(AActor newFocus)
+		public void K2_SetFocus(AActor newFocus)
 			=> E_AAIController_K2_SetFocus(this, newFocus);
 		
 		
@@ -218,6 +224,16 @@ namespace UnrealEngine
 		/// </summary>
 		public bool ResumeMove(FAIRequestID requestToResume)
 			=> E_AAIController_ResumeMove(this, requestToResume);
+		
+		
+		/// <summary>
+		/// Set FocalPoint for given priority as absolute position or offset from base.
+		/// </summary>
+		public virtual void SetFocalPoint(FVector newFocus)
+			=> E_AAIController_SetFocalPoint(this, newFocus);
+		
+		public virtual void SetFocus(AActor newFocus)
+			=> E_AAIController_SetFocus(this, newFocus);
 		
 		
 		/// <summary>

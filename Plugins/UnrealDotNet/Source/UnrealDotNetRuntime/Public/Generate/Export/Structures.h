@@ -406,6 +406,8 @@ extern "C"
 	
 	/*	FAIRequestID	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIRequestID() { return (INT_PTR) new FAIRequestID(); }
+	
 	DOTNET_EXPORT auto E_PROP_FAIRequestID_AnyRequest_GET() { return (INT_PTR)&(FAIRequestID::AnyRequest); }
 	
 	DOTNET_EXPORT auto E_PROP_FAIRequestID_CurrentRequest_GET() { return (INT_PTR)&(FAIRequestID::CurrentRequest); }
@@ -456,6 +458,8 @@ extern "C"
 
 	
 	/*	FAIResourcesSet	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FAIResourcesSet() { return (INT_PTR) new FAIResourcesSet(); }
 	
 	DOTNET_EXPORT auto E_PROP_FAIResourcesSet_MaxFlags_GET() { return FAIResourcesSet::MaxFlags; }
 	
@@ -2580,6 +2584,8 @@ extern "C"
 	
 	/*	FInputActionKeyMapping	*/
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FInputActionKeyMapping_FName(char* InActionName) { return (INT_PTR) new FInputActionKeyMapping(ConvertFromManage_FName(InActionName)); }
+	
 	DOTNET_EXPORT auto E_PROP_FInputActionKeyMapping_ActionName_GET(FInputActionKeyMapping* Ptr) { return ConvertToManage_StringWrapper(Ptr->ActionName); }
 	DOTNET_EXPORT void E_PROP_FInputActionKeyMapping_ActionName_SET(FInputActionKeyMapping* Ptr, char* Value) { Ptr->ActionName = ConvertFromManage_FName(Value); }
 	
@@ -2651,6 +2657,8 @@ extern "C"
 	
 	
 	/*	FInputAxisKeyMapping	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FInputAxisKeyMapping_FName(char* InAxisName) { return (INT_PTR) new FInputAxisKeyMapping(ConvertFromManage_FName(InAxisName)); }
 	
 	DOTNET_EXPORT auto E_PROP_FInputAxisKeyMapping_AxisName_GET(FInputAxisKeyMapping* Ptr) { return ConvertToManage_StringWrapper(Ptr->AxisName); }
 	DOTNET_EXPORT void E_PROP_FInputAxisKeyMapping_AxisName_SET(FInputAxisKeyMapping* Ptr, char* Value) { Ptr->AxisName = ConvertFromManage_FName(Value); }
@@ -3326,6 +3334,8 @@ extern "C"
 	/*	FMetaPathWayPoint	*/
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FMetaPathWayPoint() { return (INT_PTR) new FMetaPathWayPoint(); }
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FMetaPathWayPoint_FVector(INT_PTR Location) { return (INT_PTR) new FMetaPathWayPoint(*(FVector*)Location); }
 	
 	
 	/*	FMinimalViewInfo	*/
@@ -6550,6 +6560,8 @@ extern "C"
 	
 	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplinePoint_float_FVector(float InInputKey, INT_PTR InPosition) { return (INT_PTR) new FSplinePoint(InInputKey, *(FVector*)InPosition); }
 	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FSplinePoint_float_FVector_FVector_FVector_FRotator_FVector(float InInputKey, INT_PTR InPosition, INT_PTR InArriveTangent, INT_PTR InLeaveTangent, INT_PTR InRotation, INT_PTR InScale) { return (INT_PTR) new FSplinePoint(InInputKey, *(FVector*)InPosition, *(FVector*)InArriveTangent, *(FVector*)InLeaveTangent, *(FRotator*)InRotation, *(FVector*)InScale); }
+	
 	DOTNET_EXPORT auto E_PROP_FSplinePoint_ArriveTangent_GET(FSplinePoint* Ptr) { return (INT_PTR)&(Ptr->ArriveTangent); }
 	DOTNET_EXPORT void E_PROP_FSplinePoint_ArriveTangent_SET(FSplinePoint* Ptr, INT_PTR Value) { Ptr->ArriveTangent = *(FVector*)Value; }
 	
@@ -7472,6 +7484,8 @@ extern "C"
 	
 	
 	/*	FURL	*/
+	
+	DOTNET_EXPORT INT_PTR E_CreateStruct_FURL() { return (INT_PTR) new FURL(); }
 	
 	DOTNET_EXPORT auto E_PROP_FURL_bDefaultsInitialized_GET() { return FURL::bDefaultsInitialized; }
 	

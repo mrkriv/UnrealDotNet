@@ -520,6 +520,12 @@ namespace UnrealEngine
 		private static extern void E_UWorld_InitializeActorsForPlay(IntPtr self, IntPtr inURL, bool bResetTime);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_InitializeNewWorld(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_InitWorld(IntPtr self);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_InvalidateModelSurface(IntPtr self, bool bCurrentLevelOnly);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -607,6 +613,9 @@ namespace UnrealEngine
 		private static extern bool E_UWorld_Listen(IntPtr self, IntPtr inURL);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_LoadSecondaryLevels(IntPtr self, bool bForce);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_MarkActorComponentForNeededEndOfFrameUpdate(IntPtr self, IntPtr component, bool bForceGameThread);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -662,6 +671,9 @@ namespace UnrealEngine
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_RunTickGroup(IntPtr self, byte group, bool bBlockTillComplete);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void E_UWorld_SeamlessTravel(IntPtr self, string inURL, bool bAbsolute);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_UWorld_SendAllEndOfFrameUpdates(IntPtr self);
@@ -1800,6 +1812,20 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Initializes a newly created world.
+		/// </summary>
+		public void InitializeNewWorld()
+			=> E_UWorld_InitializeNewWorld(this);
+		
+		
+		/// <summary>
+		/// Initializes the world, associates the persistent level and sets the proper zones.
+		/// </summary>
+		public void InitWorld()
+			=> E_UWorld_InitWorld(this);
+		
+		
+		/// <summary>
 		/// Discards the cached data used to render the levels' UModel.  Assumes that the
 		/// <para>faces and vertex positions haven't changed, only the applied materials. </para>
 		/// </summary>
@@ -2039,6 +2065,16 @@ namespace UnrealEngine
 		
 		
 		/// <summary>
+		/// Called after GWorld has been set. Used to load, but not associate, all
+		/// <para>levels in the world in the Editor and at least create linkers in the game. </para>
+		/// Should only be called against GWorld::PersistentLevel's WorldSettings.
+		/// </summary>
+		/// <param name="bForce">If true, load the levels even is a commandlet</param>
+		public void LoadSecondaryLevels(bool bForce = false)
+			=> E_UWorld_LoadSecondaryLevels(this, bForce);
+		
+		
+		/// <summary>
 		/// Mark a component as needing an end of frame update
 		/// </summary>
 		/// <param name="component">Component to update at the end of the frame</param>
@@ -2182,6 +2218,23 @@ namespace UnrealEngine
 		/// <param name="bBlockTillComplete">if true, do not return until all ticks are complete</param>
 		public void RunTickGroup(ETickingGroup group, bool bBlockTillComplete)
 			=> E_UWorld_RunTickGroup(this, (byte)group, bBlockTillComplete);
+		
+		
+		/// <summary>
+		/// seamlessly travels to the given URL by first loading the entry level in the background,
+		/// <para>switching to it, and then loading the specified level. Does not disrupt network communication or disconnect clients. </para>
+		/// You may need to implement GameModeBase::GetSeamlessTravelActorList(), PlayerController::GetSeamlessTravelActorList(),
+		/// <para>GameModeBase::PostSeamlessTravel(), and/or GameModeBase::HandleSeamlessTravelPlayer() to handle preserving any information </para>
+		/// that should be maintained (player teams, etc)
+		/// <para>This codepath is designed for worlds that use little or no level streaming and GameModes where the game state </para>
+		/// is reset/reloaded when transitioning. (like UT)
+		/// <para>so it is only needed for clients </para>
+		/// </summary>
+		/// <param name="uRL">the URL to travel to; must be on the same server as the current URL</param>
+		/// <param name="bAbsolute">opt) - if true, URL is absolute, otherwise relative</param>
+		/// <param name="mapPackageGuid">opt) - the GUID of the map package to travel to - this is used to find the file when it has been auto-downloaded,</param>
+		public void SeamlessTravel(string inURL, bool bAbsolute = false)
+			=> E_UWorld_SeamlessTravel(this, inURL, bAbsolute);
 		
 		
 		/// <summary>

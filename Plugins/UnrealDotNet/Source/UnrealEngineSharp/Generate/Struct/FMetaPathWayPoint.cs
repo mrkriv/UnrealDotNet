@@ -23,9 +23,17 @@ namespace UnrealEngine
 		{
 		}
 
+		public FMetaPathWayPoint(FVector location) :
+			base(E_CreateStruct_FMetaPathWayPoint_FVector(location), false)
+		{
+		}
+
 		#region DLLInmport
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_CreateStruct_FMetaPathWayPoint();
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FMetaPathWayPoint_FVector(IntPtr location);
 		
 		#endregion
 		

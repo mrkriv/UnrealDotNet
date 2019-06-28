@@ -18,6 +18,11 @@ namespace UnrealEngine
 		{
 		}
 
+		public FInputAxisKeyMapping(string inAxisName) :
+			base(E_CreateStruct_FInputAxisKeyMapping_FName(inAxisName), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern StringWrapper E_PROP_FInputAxisKeyMapping_AxisName_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -27,6 +32,12 @@ namespace UnrealEngine
 		private static extern float E_PROP_FInputAxisKeyMapping_Scale_GET(IntPtr Ptr);
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_PROP_FInputAxisKeyMapping_Scale_SET(IntPtr Ptr, float Value);
+		
+		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FInputAxisKeyMapping_FName(string inAxisName);
+		
+		#endregion
 		
 		#region Property
 		

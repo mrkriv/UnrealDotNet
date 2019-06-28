@@ -29,6 +29,7 @@ namespace CodeGenerator.Metadata
         public bool IsFriend { get; set; }
         public bool IsVirtual { get; set; }
         public bool IsOverride { get; set; }
+        public bool IsClippedArguments { get; set; }
         public string Operator { get; set; }
         public int OverloadIndex { get; set; }
 

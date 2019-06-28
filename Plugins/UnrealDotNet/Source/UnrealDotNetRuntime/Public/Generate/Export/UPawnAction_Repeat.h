@@ -38,6 +38,14 @@ extern "C"
 		return (INT_PTR)NewObject<UPawnAction_Repeat>(Parent, FName(UTF8_TO_TCHAR(Name)));
 	}
 
+	DOTNET_EXPORT auto E_UPawnAction_Repeat_CreateAction(UPawnAction_Repeat* Self, UWorld& World, UPawnAction* ActionToRepeat, int32 NumberOfRepeats)
+	{
+		auto& _p0 = World;
+		auto _p1 = ActionToRepeat;
+		auto _p2 = NumberOfRepeats;
+		return ConvertToManage_ObjectPointerDescription(Self->CreateAction(_p0, _p1, _p2));
+	}
+
 	DOTNET_EXPORT auto E_UPawnAction_Repeat_PushSubAction(UPawnAction_Repeat* Self)
 	{
 		return ((E_PROTECTED_WRAP_UPawnAction_Repeat*)Self)->PushSubAction_WRAP();

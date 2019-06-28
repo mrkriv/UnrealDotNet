@@ -78,6 +78,11 @@ public:
 		UpdateNavigationData();
 	}
 
+	bool UpdateOverlapsImpl_WRAP()
+	{
+		return UpdateOverlapsImpl();
+	}
+
 };
 
 
@@ -230,6 +235,13 @@ extern "C"
 	{
 		auto _p0 = bIgnoreStationary;
 		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->AreDynamicDataChangesAllowed_WRAP(_p0);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_AttachTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
+	{
+		auto _p0 = InParent;
+		auto _p1 = ConvertFromManage_FName(InSocketName);
+		return Self->AttachTo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_AttachToComponent(USceneComponent* Self, USceneComponent* InParent, INT_PTR AttachmentRules, char* InSocketName)
@@ -637,6 +649,13 @@ extern "C"
 		auto& _p2 = *(FHitResult*)SweepHitResult;
 		auto _p3 = bTeleport;
 		Self->K2_AddWorldTransform(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_K2_AttachTo(USceneComponent* Self, USceneComponent* InParent, char* InSocketName)
+	{
+		auto _p0 = InParent;
+		auto _p1 = ConvertFromManage_FName(InSocketName);
+		return Self->K2_AttachTo(_p0, _p1);
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_K2_AttachToComponent(USceneComponent* Self, USceneComponent* Parent, char* SocketName, EAttachmentRule LocationRule, EAttachmentRule RotationRule, EAttachmentRule ScaleRule, bool bWeldSimulatedBodies)
@@ -1070,6 +1089,16 @@ extern "C"
 	DOTNET_EXPORT auto E_USceneComponent_UpdateNavigationData(USceneComponent* Self)
 	{
 		((E_PROTECTED_WRAP_USceneComponent*)Self)->UpdateNavigationData_WRAP();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_UpdateOverlaps(USceneComponent* Self)
+	{
+		return Self->UpdateOverlaps();
+	}
+
+	DOTNET_EXPORT auto E_USceneComponent_UpdateOverlapsImpl(USceneComponent* Self)
+	{
+		return ((E_PROTECTED_WRAP_USceneComponent*)Self)->UpdateOverlapsImpl_WRAP();
 	}
 
 	DOTNET_EXPORT auto E_USceneComponent_UpdatePhysicsVolume(USceneComponent* Self, bool bTriggerNotifiers)

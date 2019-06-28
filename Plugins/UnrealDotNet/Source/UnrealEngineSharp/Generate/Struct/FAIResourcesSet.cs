@@ -18,10 +18,18 @@ namespace UnrealEngine
 		{
 		}
 
+		public FAIResourcesSet() :
+			base(E_CreateStruct_FAIResourcesSet(), false)
+		{
+		}
+
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern byte E_PROP_FAIResourcesSet_MaxFlags_GET();
 		
 		#region DLLInmport
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern IntPtr E_CreateStruct_FAIResourcesSet();
+		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr E_FAIResourcesSet_AddResourceIndex(IntPtr self, byte resourceIndex);
 		

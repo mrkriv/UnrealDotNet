@@ -171,6 +171,9 @@ namespace UnrealEngine
 		private static extern void E_AGameModeBase_ReturnToMainMenuHost(IntPtr self);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
+		private static extern bool E_AGameModeBase_SetPause(IntPtr self, IntPtr pC);
+		
+		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void E_AGameModeBase_SetPlayerDefaults(IntPtr self, IntPtr playerPawn);
 		
 		[DllImport(NativeManager.UnrealDotNetDll, CallingConvention = CallingConvention.Cdecl)]
@@ -560,6 +563,17 @@ namespace UnrealEngine
 		/// </summary>
 		public virtual void ReturnToMainMenuHost()
 			=> E_AGameModeBase_ReturnToMainMenuHost(this);
+		
+		
+		/// <summary>
+		/// Adds the delegate to the list if the player Controller has the right to pause
+		/// <para>the game. The delegate is called to see if it is ok to unpause the game, e.g. </para>
+		/// the reason the game was paused has been cleared.
+		/// </summary>
+		/// <param name="pC">the player Controller to check for admin privs</param>
+		/// <param name="canUnpauseDelegate">the delegate to query when checking for unpause</param>
+		public virtual bool SetPause(APlayerController pC)
+			=> E_AGameModeBase_SetPause(this, pC);
 		
 		
 		/// <summary>

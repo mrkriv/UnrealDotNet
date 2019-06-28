@@ -64,6 +64,20 @@ extern "C"
 		return ConvertToManage_ObjectPointerDescription(Self->GetCurrentAction());
 	}
 
+	DOTNET_EXPORT auto E_UPawnActionsComponent_K2_PerformAction(UPawnActionsComponent* Self, APawn* Pawn, UPawnAction* Action)
+	{
+		auto _p0 = Pawn;
+		auto _p1 = Action;
+		return Self->K2_PerformAction(_p0, _p1);
+	}
+
+	DOTNET_EXPORT auto E_UPawnActionsComponent_PerformAction(UPawnActionsComponent* Self, APawn& Pawn, UPawnAction& Action)
+	{
+		auto& _p0 = Pawn;
+		auto& _p1 = Action;
+		return Self->PerformAction(_p0, _p1);
+	}
+
 	DOTNET_EXPORT auto E_UPawnActionsComponent_SetControlledPawn(UPawnActionsComponent* Self, APawn* NewPawn)
 	{
 		auto _p0 = NewPawn;

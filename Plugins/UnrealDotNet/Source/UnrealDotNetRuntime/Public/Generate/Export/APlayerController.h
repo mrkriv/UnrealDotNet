@@ -281,6 +281,12 @@ extern "C"
 		Self->ClientSetBlockOnAsyncLoading();
 	}
 
+	DOTNET_EXPORT auto E_APlayerController_ClientSetCameraFade(APlayerController* Self, bool bEnableFading)
+	{
+		auto _p0 = bEnableFading;
+		Self->ClientSetCameraFade(_p0);
+	}
+
 	DOTNET_EXPORT auto E_APlayerController_ClientSetCameraMode(APlayerController* Self, char* NewCamMode)
 	{
 		auto _p0 = ConvertFromManage_FName(NewCamMode);
@@ -321,6 +327,22 @@ extern "C"
 		auto _p2 = ConvertFromManage_FName(Type);
 		auto _p3 = MsgLifeTime;
 		Self->ClientTeamMessage(_p0, _p1, _p2, _p3);
+	}
+
+	DOTNET_EXPORT auto E_APlayerController_ClientTravel(APlayerController* Self, char* URL, ETravelType TravelType, bool bSeamless)
+	{
+		auto _p0 = ConvertFromManage_FString(URL);
+		auto _p1 = TravelType;
+		auto _p2 = bSeamless;
+		Self->ClientTravel(_p0, _p1, _p2);
+	}
+
+	DOTNET_EXPORT auto E_APlayerController_ClientTravelInternal(APlayerController* Self, char* URL, ETravelType TravelType, bool bSeamless)
+	{
+		auto _p0 = ConvertFromManage_FString(URL);
+		auto _p1 = TravelType;
+		auto _p2 = bSeamless;
+		Self->ClientTravelInternal(_p0, _p1, _p2);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_ClientUpdateLevelStreamingStatus(APlayerController* Self, char* PackageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad, int32 LODIndex)
@@ -701,6 +723,12 @@ extern "C"
 	{
 		auto _p0 = ConvertFromManage_FString(S);
 		Self->SetName(_p0);
+	}
+
+	DOTNET_EXPORT auto E_APlayerController_SetPause(APlayerController* Self, bool bPause)
+	{
+		auto _p0 = bPause;
+		return Self->SetPause(_p0);
 	}
 
 	DOTNET_EXPORT auto E_APlayerController_SetViewTargetWithBlend(APlayerController* Self, AActor* NewViewTarget, float BlendTime, EViewTargetBlendFunction BlendFunc, float BlendExp, bool bLockOutgoing)
